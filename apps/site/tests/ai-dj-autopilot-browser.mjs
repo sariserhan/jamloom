@@ -3,11 +3,11 @@ import {mkdir,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {chromium,webkit} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
-const folder=resolve('../../renders/ai-dj-baseline-20261024');await mkdir(folder,{recursive:true});
+const folder=resolve(process.argv.includes('--chromium-only')?'../../renders/ai-dj-pipeline-20261024/regression/ai-dj-autopilot-browser':'../../renders/ai-dj-baseline-20261024');await mkdir(folder,{recursive:true});
 function fixture(tone){const rate=16000,frames=32*rate,b=Buffer.alloc(44+frames*2);b.write('RIFF');b.writeUInt32LE(b.length-8,4);b.write('WAVEfmt ',8);b.writeUInt32LE(16,16);b.writeUInt16LE(1,20);b.writeUInt16LE(1,22);b.writeUInt32LE(rate,24);b.writeUInt32LE(rate*2,28);b.writeUInt16LE(2,32);b.writeUInt16LE(16,34);b.write('data',36);b.writeUInt32LE(frames*2,40);for(let i=0;i<frames;i++){const t=i/rate,v=.12*Math.sin(2*Math.PI*tone*t)+.3*Math.sin(2*Math.PI*80*t)*Math.exp(-(t%.5)*40);b.writeInt16LE(Math.round(v*32767),44+i*2);}return b;}
 const files=[{name:'fixture-a.wav',mimeType:'audio/wav',buffer:fixture(220)},{name:'fixture-b.wav',mimeType:'audio/wav',buffer:fixture(330)}],results=[];
-for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
- const browser=await engine.launch();try{
+for(const [name,engine] of (process.argv.includes('--chromium-only')?[['chromium',chromium]]:[['chromium',chromium],['webkit',webkit]])){
+ const browser=await engine.launch(process.argv.includes('--chromium-only')?{args:['--disable-audio-output']}:{});try{
  const context=await browser.newContext({viewport:{width:1440,height:1000}});await context.addInitScript(silenceSpeakers);const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(30000);
  await page.goto('http://localhost:3000/ai-dj');await page.getByLabel('Party or venue name',{exact:true}).fill('Playback test');await page.getByText('Tracks & mix-point review',{exact:true}).click();
  for(const title of ['Party Sector','Black Diamond'])await page.getByRole('button',{name:'Remove '+title,exact:true}).click();

@@ -1,0 +1,44 @@
+{
+  "status": "PASS technical",
+  "human_listening": "NOT RUN",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "receipt": {
+        "version": 1,
+        "title": "Rooftop Friday",
+        "frames": 120320,
+        "rate": 32000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 3.76,
+        "bytes": 58517,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "20c55e9d7155b41122f579e50363961c8cb142668cd54954fdae048b5c4f80a6"
+      },
+      "decoded": {
+        "seconds": 3.72,
+        "channels": 2,
+        "rms": 0.061399011062787855,
+        "peak": 0.09223947674036026
+      },
+      "checks": [
+        "name required",
+        "automatic recording before playback, without opt-in",
+        "codec failure prevents unrecorded playback",
+        "pause/resume preserves one clip",
+        "named download and byte hash",
+        "later name edits preserve take",
+        "prior local recording protected",
+        "stop and natural ending finalize",
+        "hidden-page interruption",
+        "no microphone; speakers muted",
+        "390/320px and scoped accessibility",
+        "existing Studio consent and recording remain intact"
+      ],
+      "errors": [],
+      "navigationAborts": []
+    }
+  ]
+}

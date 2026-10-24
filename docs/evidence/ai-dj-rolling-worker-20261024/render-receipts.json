@@ -1,0 +1,71 @@
+[
+  {
+    "request": {
+      "version": 1,
+      "session": "9b829a39d601420b96a55ad325d27415",
+      "sequence": 0,
+      "seed": 546495763,
+      "style": "house",
+      "energy": 4
+    },
+    "backend": "procedural-test",
+    "seconds": 60,
+    "bytes": 11520044,
+    "sha256": "80cec359e9cf3740e79845a439ffbfb8cb0a207d2e0d1230b5635845c977c1df",
+    "elapsed_seconds": 3.0179033749736845,
+    "quality_gate": "NOT RUN",
+    "worker_sha256": "5a86e40197cf7c8f194f80b242b4e42fdbedb02d9f0bc0028345d815b55a5e74",
+    "provenance": {
+      "scripts/club_studies.py": "e41d40b0f8ecc5b5a2ac1d6bb3dfe9d7fe2e131cfdca4477c791f4587c2aa5ab",
+      "scripts/prepare_electronic_bank.py": "9eae4d896dec423bb11ca80d2a1e0bbd814c6441b1b262624d7f1eaa66dbdf70",
+      "assets/manifests/electronic-v2.json": "8aeda83877a3a26c5276b5baf58192b9d59164e8cdad52b5033ed6fed413bcb3"
+    },
+    "events_sha256": "44488712f7604e8134467a69dad02d8217bbe9ec4d152fa773b1d022cad31a5e"
+  },
+  {
+    "request": {
+      "version": 1,
+      "session": "9b829a39d601420b96a55ad325d27415",
+      "sequence": 1,
+      "seed": 2648443233,
+      "style": "house",
+      "energy": 4
+    },
+    "backend": "procedural-test",
+    "seconds": 60,
+    "bytes": 11520044,
+    "sha256": "e88dd821803871a5516db0dd2823646ac28430541e5d2f5a2b7905df975d83be",
+    "elapsed_seconds": 1.5146958749974146,
+    "quality_gate": "NOT RUN",
+    "worker_sha256": "5a86e40197cf7c8f194f80b242b4e42fdbedb02d9f0bc0028345d815b55a5e74",
+    "provenance": {
+      "scripts/club_studies.py": "e41d40b0f8ecc5b5a2ac1d6bb3dfe9d7fe2e131cfdca4477c791f4587c2aa5ab",
+      "scripts/prepare_electronic_bank.py": "9eae4d896dec423bb11ca80d2a1e0bbd814c6441b1b262624d7f1eaa66dbdf70",
+      "assets/manifests/electronic-v2.json": "8aeda83877a3a26c5276b5baf58192b9d59164e8cdad52b5033ed6fed413bcb3"
+    },
+    "events_sha256": "b5d6335ed82612f406925c99482c5ea6b58e6942f27e677dcdf06dd394074974"
+  },
+  {
+    "request": {
+      "version": 1,
+      "session": "9b829a39d601420b96a55ad325d27415",
+      "sequence": 2,
+      "seed": 1000398924,
+      "style": "house",
+      "energy": 2
+    },
+    "backend": "procedural-test",
+    "seconds": 60,
+    "bytes": 11520044,
+    "sha256": "d4da5487fa4ca7899aaffea34586762ccfaedfff29af3f0e1756859f27f8018d",
+    "elapsed_seconds": 1.3306169169954956,
+    "quality_gate": "NOT RUN",
+    "worker_sha256": "5a86e40197cf7c8f194f80b242b4e42fdbedb02d9f0bc0028345d815b55a5e74",
+    "provenance": {
+      "scripts/club_studies.py": "e41d40b0f8ecc5b5a2ac1d6bb3dfe9d7fe2e131cfdca4477c791f4587c2aa5ab",
+      "scripts/prepare_electronic_bank.py": "9eae4d896dec423bb11ca80d2a1e0bbd814c6441b1b262624d7f1eaa66dbdf70",
+      "assets/manifests/electronic-v2.json": "8aeda83877a3a26c5276b5baf58192b9d59164e8cdad52b5033ed6fed413bcb3"
+    },
+    "events_sha256": "152a05958048fa444d707319b9fad32c70d464546991b9f78d77641b53ced96f"
+  }
+]

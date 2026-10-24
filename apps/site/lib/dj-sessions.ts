@@ -34,7 +34,8 @@ export class DJSessions{
  private async insertBatch(db:PoolClient,owner:string,id:string,sequence:number,reservation:string){await db.query('INSERT INTO dj_session_batches(session_id,sequence,reservation_id,seed) VALUES($1,$2,$3,$4)',[id,sequence,reservation,this.seed(owner,id,sequence)]);}
  async status(owner:string,id:string){const s=await this.session(owner,id);const batches=(await this.pool.query('SELECT sequence,state,played_at,audio_sha256 FROM dj_session_batches WHERE session_id=$1 ORDER BY sequence DESC LIMIT 3',[id])).rows;return {id,title:s.title,visibility:s.visibility,state:s.state,endReason:s.end_reason,maxCredits:s.max_credits,batches};}
  async heartbeat(owner:string,id:string){await this.session(owner,id);await this.pool.query("UPDATE dj_sessions SET heartbeat_at=now() WHERE id=$1 AND state='active'",[id]);}
- async next(owner:string,id:string,sequence:number){
+ async next(owner:string,id:string,sequence:number,energy?:number){
+  if(energy!==undefined&&(!Number.isInteger(energy)||energy<1||energy>5))throw new AudioError('Invalid energy.');
   const s=await this.session(owner,id);if(!Number.isSafeInteger(sequence)||sequence<1||sequence>1000000)throw new AudioError('Invalid sequence.');
   const prior=(await this.pool.query('SELECT reservation_id FROM dj_session_batches WHERE session_id=$1 AND sequence=$2',[id,sequence])).rows[0];if(prior)return {reservation:prior.reservation_id};
   if(s.state!=='active')throw new AudioError('Session is ending.',409);
@@ -46,6 +47,7 @@ export class DJSessions{
    if(current.state!=='active'||Date.now()-new Date(current.heartbeat_at).getTime()>75000)throw new AudioError('Session stopped or disconnected.',409);
    const rows=(await db.query('SELECT sequence,state,played_at FROM dj_session_batches WHERE session_id=$1 ORDER BY sequence DESC LIMIT 3',[id])).rows;
    if(rows[0]?.sequence!==sequence-1||rows.some(b=>!closed(b.state))||rows.filter(b=>b.state==='completed'&&!b.played_at).length>=2)throw new AudioError('Prepared music is still waiting to play.',409);
+   if(energy!==undefined)await db.query("UPDATE dj_sessions SET settings=jsonb_set(settings,'{energy}',$2::jsonb) WHERE id=$1",[id,JSON.stringify(energy)]);
    await this.insertBatch(db,owner,id,sequence,r);
   }});return {reservation};
  }

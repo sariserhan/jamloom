@@ -6,10 +6,10 @@ import AxeBuilder from '@axe-core/playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
 const base=process.env.JAMLOOM_AI_DJ_TEST_URL??'http://localhost:3000';
 assert.ok(['localhost','127.0.0.1'].includes(new URL(base).hostname));
-const folder=resolve('../../renders/ai-dj-baseline-20261024');await mkdir(folder,{recursive:true});
+const folder=resolve(process.argv.includes('--chromium-only')?'../../renders/ai-dj-pipeline-20261024/regression/ai-dj-browser':'../../renders/ai-dj-baseline-20261024');await mkdir(folder,{recursive:true});
 const results=[];
-for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
- const browser=await engine.launch();
+for(const [name,engine] of (process.argv.includes('--chromium-only')?[['chromium',chromium]]:[['chromium',chromium],['webkit',webkit]])){
+ const browser=await engine.launch(process.argv.includes('--chromium-only')?{args:['--disable-audio-output']}:{});
  try{
  const context=await browser.newContext({viewport:{width:1440,height:1000}});
  await context.addInitScript(silenceSpeakers);

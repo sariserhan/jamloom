@@ -1,0 +1,22 @@
+{
+  "scope": "Minimal 32 kHz AudioContext, oscillator, MediaRecorder, speaker isolation, 1500 ms wait; no Jamloom player",
+  "native_chromium": {
+    "state": "running",
+    "currentTime": 0.008,
+    "result": "FAIL clock stalled"
+  },
+  "native_webkit": {
+    "state": "running",
+    "currentTime": 0,
+    "result": "FAIL clock stalled"
+  },
+  "isolated_chromium": {
+    "args": [
+      "--disable-audio-output"
+    ],
+    "state": "running",
+    "currentTime": 1.516,
+    "result": "PASS clock advances"
+  },
+  "physical_audio": "NOT RUN"
+}

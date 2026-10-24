@@ -25,6 +25,8 @@ async function prepare(track:DJTrack,context:AudioContext,signal:AbortSignal):Pr
  return {track,buffer,analysis,bpm:analysis.review?.bpm??analysis.bpm,wave:analysis.wave};
 }
 
+// One source per generated session; null means credits/Stop ended further generation.
+export type DJTrackSource=(direction:Direction,signal:AbortSignal)=>Promise<{sequence:number;track:DJTrack}|null>;
 export class AIDJPlayer{
  context:AudioContext;
  mixer:ReturnType<typeof createMixer>;
@@ -48,8 +50,11 @@ export class AIDJPlayer{
  private early=false;
  private meter=new Float32Array(256);
  private disposed=false;
+ private sequence=0;
+ private sourceEnded=false;
+ private generatedHashes:string[]=[];
  private performed:PerformanceEvent[]=[];
- constructor(private changed:(snapshot:DJSnapshot)=>void,private tracks=djTracks){
+ constructor(private changed:(snapshot:DJSnapshot)=>void,private tracks=djTracks,private source?:DJTrackSource){
   this.context=new AudioContext({sampleRate:32000});this.mixer=createMixer(this.context);this.mixer.meter.fftSize=256;
   this.applyMaster();this.context.onstatechange=()=>{if(this.context.state!=='running'&&this.running)this.stop('Audio was interrupted. Press Start set to resume.');};
  }
@@ -67,7 +72,7 @@ export class AIDJPlayer{
  private emit(){if(!this.disposed)this.changed(this.snapshot());}
  async start(beforePlay?:()=>Promise<boolean>){
   if(this.disposed||this.running||this.state==='loading'||this.state==='paused')return;
-  this.stopSources();this.performed=[];this.history=[];this.unavailable.clear();this.endedElapsed=0;this.endAt=null;this.active=0;this.blend=null;this.early=false;
+  this.stopSources();this.performed=[];this.history=[];this.sequence=0;this.sourceEnded=false;this.generatedHashes=[];this.unavailable.clear();this.endedElapsed=0;this.endAt=null;this.active=0;this.blend=null;this.early=false;
   this.state='loading';this.message='Preparing the first track…';const run=++this.request;this.emit();
   try{
    await this.context.resume();if(run!==this.request)return;
@@ -80,6 +85,24 @@ export class AIDJPlayer{
  }
  private async loadCandidate():Promise<Prepared|null>{
   const version=this.request;
+  if(this.source){
+   if(this.sourceEnded)return null;
+   const controller=new AbortController();this.abort=controller;
+   const timer=setTimeout(()=>controller.abort(),60000);
+   try{
+    const direction={...this.direction,...(this.endAt===null?{}:{energy:Math.min(this.direction.energy,2)})};
+    const result=await this.source(direction,controller.signal);
+    if(version!==this.request)return null;
+    if(controller.signal.aborted){this.sourceEnded=true;return null;}
+    if(!result){this.sourceEnded=true;return null;}
+    if(result.sequence!==this.sequence||this.generatedHashes.includes(result.track.sha256))throw Error('Repeated or out-of-order generated track');
+    const prepared=await prepare(result.track,this.context,controller.signal);
+    if(controller.signal.aborted||version!==this.request)return null;
+    this.sequence++;this.generatedHashes=[...this.generatedHashes,result.track.sha256].slice(-100);
+    return prepared;
+   }catch(error){if(version===this.request)this.sourceEnded=true;throw error;}
+   finally{clearTimeout(timer);if(this.abort===controller)this.abort=null;}
+  }
   while(!this.disposed&&version===this.request){
    const remaining=this.endAt===null?Infinity:this.endAt-this.context.currentTime;
    const direction=remaining<120?{...this.direction,energy:Math.min(this.direction.energy,2)}:this.direction;
@@ -95,9 +118,9 @@ export class AIDJPlayer{
   if(!this.running||this.loading||this.blend||this.decks[1-this.active])return;
   if(this.endAt!==null&&this.endAt-this.context.currentTime<12)return;
   this.loading=true;const run=this.request;
-  try{const prepared=await this.loadCandidate();if(run!==this.request||!this.running)return;if(!prepared){this.message='Library exhausted · finishing this track without repeats.';return;}
+  try{const prepared=await this.loadCandidate();if(run!==this.request||(!this.running&&!(this.source&&this.state==='paused')))return;if(!prepared){this.message=this.source?'Generation ended · finishing the prepared music.':'Library exhausted · finishing this track without repeats.';return;}
    this.decks[1-this.active]={...prepared,start:Infinity};this.message=this.mode==='auto'?'Next track ready. Planning a transition.':'Next track ready. Press Mix next to blend.';this.tick();
-  }catch{if(run===this.request)this.message='No next track could load. This preview will stop at the end.';}
+  }catch{if(run===this.request)this.message=this.source?'The next generated track was not ready. Finishing this track safely.':'No next track could load. This preview will stop at the end.';}
   finally{if(run===this.request){this.loading=false;this.emit();}}
  }
  private beginDeck(index:number,at:number,gainValue:number,offset=0,rate=1){
@@ -129,7 +152,7 @@ export class AIDJPlayer{
   const now=this.context.currentTime;
   if(this.endAt!==null&&now>=this.endAt){this.stop('Set finished. Thanks for the music.');return;}
   const current=this.decks[this.active];
-  if(current&&!this.blend&&(current.performance?.position(now)??0)>=current.buffer.duration-.001){this.stop('Library finished. Add more tracks to continue.');return;}
+  if(current&&!this.blend&&(current.performance?.position(now)??0)>=current.buffer.duration-.001){this.stop(this.source?'Prepared music finished. The set has stopped.':'Library finished. Add more tracks to continue.');return;}
   if(this.blend&&now>=this.blend.end){
    const {from,to}=this.blend;this.release(from);this.active=to;this.history=[...this.history,this.decks[to]!.track.id].slice(-100);this.blend=null;this.early=false;
    this.message=this.endAt===null?'New groove playing. Preparing what comes next.':'Closing set · preparing the final stretch.';void this.prepareNext();
@@ -157,13 +180,18 @@ export class AIDJPlayer{
  private cancelFuture(){
   if(this.blend&&this.context.currentTime>=this.blend.at)return false;
   if(this.blend){this.mixer.strips.forEach(strip=>{strip.eq[0].gain.cancelScheduledValues(this.context.currentTime);strip.eq[0].gain.setValueAtTime(0,this.context.currentTime);});const current=this.decks[this.active];current?.gain?.gain.cancelScheduledValues(this.context.currentTime);current?.gain?.gain.setValueAtTime(1,this.context.currentTime);this.blend=null;}
-  this.abort?.abort();this.request++;this.loading=false;this.release(1-this.active);return true;
+  if(this.source){
+   const incoming=this.decks[1-this.active];
+   if(incoming){incoming.performance?.dispose();incoming.performance=undefined;incoming.gain=undefined;incoming.start=Infinity;}
+  }else{this.abort?.abort();this.request++;this.loading=false;this.release(1-this.active);}
+  return true;
  }
  setDirection(change:Partial<Direction>){
   if(change.energy!==undefined&&(!Number.isFinite(change.energy)||change.energy<1||change.energy>5))return;
   if(change.mood!==undefined&&!['warm','bright','deep'].includes(change.mood))return;
   this.direction={...this.direction,...change};
-  if(this.running&&this.cancelFuture()){this.message='Direction updated. Preparing the next track.';void this.prepareNext();}
+  if(this.running&&this.source){this.message='Direction saved for the next generated track. Prepared music stays in the set.';}
+  else if(this.running&&this.cancelFuture()){this.message='Direction updated. Preparing the next track.';void this.prepareNext();}
   else this.message=this.running?'Direction saved for after this transition.':'Direction ready for your next set.';
   this.emit();
  }

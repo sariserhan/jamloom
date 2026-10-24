@@ -1,0 +1,23 @@
+{
+  "status": "PASS local technical; PARTIAL product",
+  "python_tests": 4,
+  "site_tests": 118,
+  "session_tests": 12,
+  "typecheck": "PASS",
+  "pipeline": "PASS isolated Chromium",
+  "existing_chromium": {
+    "deck": "PASS",
+    "performance": "PASS after scrolling the wheel into view",
+    "autopilot": "PASS",
+    "automatic_recording": "PASS"
+  },
+  "webkit": "NOT RUN for rolling playback; native clock probe FAIL",
+  "production_build": "NOT RUN this increment",
+  "gpu": "NOT RUN",
+  "physical_audio": "NOT RUN",
+  "human_listening": "NOT RUN",
+  "external_spend_micros": 0,
+  "disposable_databases_remaining": 0,
+  "push": false,
+  "deployment": false
+}

@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "scope": "Disposable test wallet, real procedural rendering and browser mixer; no GPU, public publication or musical qualification",
+  "folder": "/Users/serhansari/Documents/projects/jamloom/renders/ai-dj-pipeline-20261024/run-aH9GAq",
+  "results": [
+    {
+      "session": "9b829a39d601420b96a55ad325d27415",
+      "sequence": 0,
+      "state": "completed",
+      "folder": "/Users/serhansari/Documents/projects/jamloom/renders/ai-dj-pipeline-20261024/run-aH9GAq/dj-OJzzc5",
+      "externalSpendMicros": 0,
+      "sha256": "80cec359e9cf3740e79845a439ffbfb8cb0a207d2e0d1230b5635845c977c1df"
+    },
+    {
+      "session": "9b829a39d601420b96a55ad325d27415",
+      "sequence": 1,
+      "state": "completed",
+      "folder": "/Users/serhansari/Documents/projects/jamloom/renders/ai-dj-pipeline-20261024/run-aH9GAq/dj-n6dOpg",
+      "externalSpendMicros": 0,
+      "sha256": "e88dd821803871a5516db0dd2823646ac28430541e5d2f5a2b7905df975d83be"
+    },
+    {
+      "session": "9b829a39d601420b96a55ad325d27415",
+      "sequence": 2,
+      "state": "completed",
+      "folder": "/Users/serhansari/Documents/projects/jamloom/renders/ai-dj-pipeline-20261024/run-aH9GAq/dj-AkJBON",
+      "externalSpendMicros": 0,
+      "sha256": "d4da5487fa4ca7899aaffea34586762ccfaedfff29af3f0e1756859f27f8018d"
+    },
+    {
+      "session": "6e91883a11d742a78591d0a9b0a50e7d",
+      "sequence": 0,
+      "state": "cancelled",
+      "folder": "/Users/serhansari/Documents/projects/jamloom/renders/ai-dj-pipeline-20261024/run-aH9GAq/dj-BlPoKK",
+      "externalSpendMicros": 0,
+      "sha256": null
+    },
+    {
+      "session": "b334225180b54154baf5adba3c359517",
+      "sequence": 0,
+      "state": "failed",
+      "folder": "/Users/serhansari/Documents/projects/jamloom/renders/ai-dj-pipeline-20261024/run-aH9GAq/dj-H0udyH",
+      "externalSpendMicros": 0,
+      "sha256": null
+    }
+  ],
+  "requests": [
+    {
+      "sequence": 0,
+      "energy": 4
+    },
+    {
+      "sequence": 1,
+      "energy": 4
+    },
+    {
+      "sequence": 2,
+      "energy": 2
+    },
+    {
+      "sequence": 3,
+      "energy": 2
+    }
+  ],
+  "browsers": [
+    {
+      "browser": "chromium",
+      "history": [
+        "9b829a39d601420b96a55ad325d27415-0",
+        "9b829a39d601420b96a55ad325d27415-1",
+        "9b829a39d601420b96a55ad325d27415-2"
+      ],
+      "starts": 5,
+      "seconds": 8.58,
+      "peak": 0.1580079346895218,
+      "rms": 0.032460723879659065,
+      "mime": "audio/webm;codecs=opus",
+      "muted": true
+    }
+  ],
+  "checks": [
+    "three distinct rendered tracks",
+    "two deck buffers",
+    "direction preserves paid prepared music",
+    "future direction passed to source",
+    "pause preserves arriving track",
+    "Stop rejects late results",
+    "duplicate sequence/hash rejected",
+    "one real mixed recording",
+    "local child cancellation and deadline",
+    "test wallet holds released"
+  ],
+  "webkit": "NOT RUN in this invocation"
+}

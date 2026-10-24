@@ -1,10 +1,10 @@
 // Automatic compressed capture, with synthetic audio and physical speakers muted.
 import assert from 'node:assert/strict';import {mkdir,writeFile,readFile} from 'node:fs/promises';import {createHash} from 'node:crypto';import {resolve} from 'node:path';
 import {chromium,webkit} from 'playwright';import AxeBuilder from '@axe-core/playwright';import {silenceSpeakers} from './silent-audio.mjs';
-const folder=resolve('../../renders/ai-dj-recording-20261024');await mkdir(folder,{recursive:true});const results=[];
+const folder=resolve(process.argv.includes('--chromium-only')?'../../renders/ai-dj-pipeline-20261024/regression/ai-dj-recording-browser':'../../renders/ai-dj-recording-20261024');await mkdir(folder,{recursive:true});const results=[];
 function fixture(){const rate=16000,frames=12*rate,b=Buffer.alloc(44+frames*2);b.write('RIFF');b.writeUInt32LE(b.length-8,4);b.write('WAVEfmt ',8);b.writeUInt32LE(16,16);b.writeUInt16LE(1,20);b.writeUInt16LE(1,22);b.writeUInt32LE(rate,24);b.writeUInt32LE(rate*2,28);b.writeUInt16LE(2,32);b.writeUInt16LE(16,34);b.write('data',36);b.writeUInt32LE(frames*2,40);for(let i=0;i<frames;i++)b.writeInt16LE(Math.round(.2*Math.sin(2*Math.PI*220*i/rate)*32767),44+i*2);return b;}
-for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
- const browser=await engine.launch();try{
+for(const [name,engine] of (process.argv.includes('--chromium-only')?[['chromium',chromium]]:[['chromium',chromium],['webkit',webkit]])){
+ const browser=await engine.launch(process.argv.includes('--chromium-only')?{args:['--disable-audio-output']}:{});try{
   const context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true});await context.addInitScript(silenceSpeakers);await context.addInitScript(()=>{window.micCalls=0;navigator.mediaDevices.getUserMedia=()=>{window.micCalls++;throw Error('No microphone expected');};});
   const page=await context.newPage(),errors=[],navigationAborts=[];let navigating=false;page.on('pageerror',e=>{if(name==='webkit'&&navigating&&e.message==='/localhost:3000/api/site-status due to access control checks.')navigationAborts.push(e.message);else errors.push(e.message);});page.setDefaultTimeout(25000);
   await page.goto('http://localhost:3000/ai-dj');assert.match(await page.title(),/Jamloom/);await page.getByRole('heading',{name:'Set recording',exact:true}).waitFor();

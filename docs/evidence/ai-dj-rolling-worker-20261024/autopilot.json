@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "checks": [
+        "audio engine creation failure recovers for import retry",
+        "local import and worker analysis",
+        "reviewed phrase grid persisted",
+        "32-beat audio-clock transition",
+        "actual bass automation",
+        "pause, change master and resume audible graph",
+        "manual takeover during transition",
+        "offline loaded-asset playback",
+        "library exhausts without repeats",
+        "speakers muted"
+      ],
+      "fixture": "Generated engineering tones with known 120 BPM; not musical acceptance"
+    }
+  ]
+}

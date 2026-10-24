@@ -5,9 +5,9 @@ import ts from 'typescript';
 import {chromium,webkit} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
 const source=ts.transpileModule(await readFile('lib/ai-dj-performance.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
-const folder=resolve('../../renders/ai-dj-baseline-20261024');await mkdir(folder,{recursive:true});const results=[];
-for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
- const browser=await engine.launch();try{
+const folder=resolve(process.argv.includes('--chromium-only')?'../../renders/ai-dj-pipeline-20261024/regression/ai-dj-performance-browser':'../../renders/ai-dj-baseline-20261024');await mkdir(folder,{recursive:true});const results=[];
+for(const [name,engine] of (process.argv.includes('--chromium-only')?[['chromium',chromium]]:[['chromium',chromium],['webkit',webkit]])){
+ const browser=await engine.launch(process.argv.includes('--chromium-only')?{args:['--disable-audio-output']}:{});try{
  const context=await browser.newContext({viewport:{width:1440,height:1000}});await context.addInitScript(silenceSpeakers);
  await context.addInitScript(()=>{const Native=window.AudioContext;window.graphs=[];window.AudioContext=class extends Native{constructor(...args){super(...args);this.sources=[];this.meters=[];window.graphs.push(this);}createBufferSource(){const s=super.createBufferSource();this.sources.push(s);return s;}createAnalyser(){const a=super.createAnalyser();this.meters.push(a);return a;}};});
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://localhost:3000/ai-dj');await page.getByLabel('Party or venue name',{exact:true}).fill('Playback test');
@@ -49,7 +49,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  await page.getByRole('button',{name:'Keep the party going ↗',exact:true}).click();
  await page.getByRole('button',{name:'Deck A Echo',exact:true}).click();await page.waitForFunction(()=>parseInt(document.querySelector('.channel-0 .aidj-fx-readout b').textContent)>10);
  await page.waitForFunction(()=>!document.querySelector('.deck-0 .aidj-pads .active'));
- const wheel=page.getByRole('group',{name:'Deck A jog wheel'}),box=await wheel.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2+35,box.y+box.height/2,{steps:4});await page.mouse.up();
+ const wheel=page.getByRole('group',{name:'Deck A jog wheel'});await wheel.scrollIntoViewIfNeeded();const box=await wheel.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2+35,box.y+box.height/2,{steps:4});await page.mouse.up();
  await page.waitForFunction(()=>document.querySelector('.deck-0 .aidj-jog-display b').textContent==='Jog +');
  await page.getByRole('button',{name:'Deck A 4 loop',exact:true}).click();await page.waitForFunction(()=>document.querySelector('.deck-0 .aidj-pads .active')?.textContent.includes('4 loop'));
  await page.getByRole('button',{name:'Release deck A performance'}).click();await page.waitForFunction(()=>!document.querySelector('.deck-0 .aidj-pads .active'));
