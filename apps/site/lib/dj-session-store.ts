@@ -1,4 +1,5 @@
 import {createHash} from 'node:crypto';
+import type {Readable} from 'node:stream';
 import {CreateMultipartUploadCommand,UploadPartCommand,ListPartsCommand,CompleteMultipartUploadCommand,AbortMultipartUploadCommand,GetObjectCommand,HeadObjectCommand,DeleteObjectCommand,type Part} from '@aws-sdk/client-s3';
 import {getSignedUrl} from '@aws-sdk/s3-request-presigner';
 import {recordingTitle,recordingFileStem} from '../../web/set-recording-name.js';
@@ -55,6 +56,18 @@ export function djSessionStore(env:Record<string,string|undefined>=process.env){
    return {bytes:object.ContentLength,mime:object.ContentType,etag:object.ETag,parts:count};
   },
   async abort(key:string,uploadId:string){validUpload(uploadId);await client.send(new AbortMultipartUploadCommand({...base(key),UploadId:uploadId}),options());},
+  async verify(key:string,bytes:number,sha256:string,mime:DJRecordingMime){
+   if(!Number.isSafeInteger(bytes)||bytes<1||bytes>96*1024*1024||!/^[a-f0-9]{64}$/.test(sha256))throw Error('Invalid recording verification');
+   let object;try{object=await client.send(new GetObjectCommand(base(key)),options());}catch(error){if((error as {$metadata?:{httpStatusCode:number}}).$metadata?.httpStatusCode===404)return false;throw error;}
+   const body=object.Body as Readable;let size=0,header=Buffer.alloc(0);const hash=createHash('sha256');
+   try{
+    if(object.ContentLength!==bytes||object.ContentType!==mime)throw Error('Recording format or length changed');
+    for await(const chunk of body){const data=Buffer.from(chunk);size+=data.length;if(size>bytes)throw Error('Recording exceeded reserved bytes');hash.update(data);if(header.length<16)header=Buffer.concat([header,data.subarray(0,16-header.length)]);}
+    if(size!==bytes||hash.digest('hex')!==sha256)throw Error('Recording checksum changed');
+    if(mime==='audio/mp4'?header.toString('ascii',4,8)!=='ftyp':header.subarray(0,4).toString('hex')!=='1a45dfa3')throw Error('Unsupported recording container');
+    return true;
+   }finally{body?.destroy();}
+  },
   playbackURL(key:string,download=false,title=''){const named=recordingTitle(title),extension=key.endsWith('.m4a')?'m4a':'webm';return getSignedUrl(client,new GetObjectCommand({...base(key),ResponseCacheControl:'private, no-store',ResponseContentDisposition:`${download?'attachment':'inline'}; filename="jamloom-dj-session.${extension}"${named?`; filename*=UTF-8''${encodeURIComponent(recordingFileStem(named)+'.'+extension)}`:''}`}),{expiresIn:300});},
   async remove(key:string){await client.send(new DeleteObjectCommand(base(key)),options());},
  };

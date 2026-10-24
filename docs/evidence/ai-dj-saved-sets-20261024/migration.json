@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "target": "ep-flat-hill-b4q0lix4.c-6.us-east-2.aws.neon.tech/neondb",
+  "backup": {
+    "target": "ep-flat-hill-b4q0lix4.c-6.us-east-2.aws.neon.tech/neondb",
+    "bytes": 103313,
+    "sha256": "fd5d62bf062542427645786288366fe20cc317d2b568e09027ec0f114af1e1ef",
+    "catalogue_verified": true,
+    "path": "build-neon/dj-recordings-20261024/before-0022.dump"
+  },
+  "applied": [
+    "0022_dj_recordings.sql"
+  ],
+  "idempotent": true,
+  "rows_before_feature_use": 0
+}

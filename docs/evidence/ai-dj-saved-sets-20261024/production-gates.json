@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "process": "local production build; launch gate disabled only for this process",
+  "checks": [
+    {
+      "method": "GET",
+      "path": "/ai-dj",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/ai-dj/recordings",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/ai-dj/recordings",
+      "status": 404
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/ai-dj/recordings/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": 404
+    }
+  ]
+}

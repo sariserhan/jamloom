@@ -65,13 +65,14 @@ export class AIDJPlayer{
   })};
  }
  private emit(){if(!this.disposed)this.changed(this.snapshot());}
- async start(){
+ async start(beforePlay?:()=>Promise<boolean>){
   if(this.disposed||this.running||this.state==='loading'||this.state==='paused')return;
   this.stopSources();this.performed=[];this.history=[];this.unavailable.clear();this.endedElapsed=0;this.endAt=null;this.active=0;this.blend=null;this.early=false;
   this.state='loading';this.message='Preparing the first track…';const run=++this.request;this.emit();
   try{
    await this.context.resume();if(run!==this.request)return;
    const prepared=await this.loadCandidate();if(run!==this.request)return;if(!prepared)throw Error('No tracks remain');
+   if(beforePlay&&!await beforePlay()){if(run===this.request){this.state='error';this.message='Recording could not start. Check the recording status below and try again.';this.emit();}return;}if(run!==this.request)return;
    this.decks[0]={...prepared,start:0};this.began=this.context.currentTime+.1;this.beginDeck(0,this.began,1);
    this.history=[prepared.track.id];this.state='playing';this.message='Set started. Preparing the next groove.';this.applyMaster();
    this.interval=setInterval(()=>this.tick(),100);this.emit();void this.prepareNext();

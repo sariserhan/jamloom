@@ -34,7 +34,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  const audit=await new AxeBuilder({page}).include('.ai-dj').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
  assert.deepEqual(audit.violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)})),[]);
  const command=async text=>{await page.getByLabel('Playback command',{exact:true}).fill(text);await page.getByRole('button',{name:'Apply DJ direction'}).click();};
- await page.getByRole('button',{name:'Start set'}).click();
+ await startSet(page);
  await page.waitForFunction(()=>document.querySelectorAll('.aidj-deck-head span')[0]?.textContent==='PLAYING',{},{timeout:35000});
  await page.waitForFunction(()=>document.querySelectorAll('.aidj-deck-head span')[1]?.textContent==='READY',{},{timeout:35000});
  await page.waitForFunction(()=>Number(document.querySelector('[aria-label="Output peak"]').getAttribute('aria-valuenow'))>.001);
@@ -68,11 +68,11 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  assert.ok(await page.evaluate(()=>window.__jamloomSilentOutput().every(o=>o.gain===0&&o.peak===0)),'speakers muted');
  // Cancellation must prevent a late fetch/decode from starting the set.
  await page.route('**/studio/practice-audio/*.mp3',async route=>{await new Promise(r=>setTimeout(r,600));try{await route.continue();}catch{}});
- await page.getByRole('button',{name:'Start set'}).click();await command('stop now');await page.waitForTimeout(1200);
+ await startSet(page);await command('stop now');await page.waitForTimeout(1200);
  assert.equal(await page.locator('.aidj-deck-head').filter({hasText:'PLAYING'}).count(),0);
  assert.equal(await page.getByRole('button',{name:'Start set'}).isEnabled(),true);
  await page.unroute('**/studio/practice-audio/*.mp3');
- await page.getByRole('button',{name:'Start set'}).click();await page.waitForFunction(()=>document.querySelector('.aidj-deck-head span').textContent==='PLAYING');
+ await startSet(page);await page.waitForFunction(()=>document.querySelector('.aidj-deck-head span').textContent==='PLAYING');
  await page.getByRole('button',{name:'Take control',exact:true}).click();await page.getByLabel('Deck A filter',{exact:true}).fill('0.3');
  await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:true});document.dispatchEvent(new Event('visibilitychange'));});
  await page.getByText(/Set stopped because this tab was hidden/).waitFor();
@@ -80,7 +80,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:false});});
  // Every source fails checksum: bounded fallback, then a recoverable error, no playback.
  await page.route('**/studio/practice-audio/*.mp3',r=>r.fulfill({status:200,body:'corrupt audio'}));
- await page.getByRole('button',{name:'Start set'}).click();await page.getByText(/prepared music could not load/).waitFor();assert.equal(await page.getByRole('button',{name:'Start set'}).isEnabled(),true);
+ await startSet(page);await page.getByText(/prepared music could not load/).waitFor();assert.equal(await page.getByRole('button',{name:'Start set'}).isEnabled(),true);
  await page.unroute('**/studio/practice-audio/*.mp3');
  assert.deepEqual(errors,[]);assert.deepEqual(referenceRequests,[]);assert.equal((await context.request.get(base+'/ai-dj/reference')).status(),404);
  results.push({browser:name,status:'PASS',widths:[1440,800,390,320],initialPeak:Number(peak),captureBytes:capture.length,checks:['no autoplay','no reference requests or route','real PCM','two-deck crossfade','direction','shared controls','closing and cancellation','stop during load','hidden tab stop','corrupt bank recovery','accessibility','speaker isolation']});
@@ -88,3 +88,5 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  }finally{await browser.close();}
 }
 await writeFile(resolve(folder,'report.json'),JSON.stringify({status:'PASS',results},null,2)+'\n');console.log(folder);
+
+async function startSet(page){const remove=page.locator('#set-record-delete');if(await remove.isEnabled())await remove.click();await page.getByRole('button',{name:'Start set'}).click();}

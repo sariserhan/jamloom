@@ -1,0 +1,78 @@
+{
+  "status": "PASS technical; overall product PARTIAL",
+  "date": "2026-10-24",
+  "source_sha256": {
+    "apps/site/app/ai-dj/library.tsx": "1820b660097743df5cf0e8f4899c8675cf647f178bf3d4d3974f0dbd963ada73",
+    "apps/site/app/ai-dj/page.tsx": "764fa5bb1d22fc3261b7e0602a674790ac2bbcb6d23a2c7d7783abf7b62486eb",
+    "apps/site/app/ai-dj/recording.tsx": "5a7aaa98cdab1f380d540bdf22c983cec7992ef8c6bc135e0d748a00140a6fe3",
+    "apps/site/app/ai-dj/studio.css": "4f7829f417c3dc1ac9e0221aadad89d68fd66d0076a433707cd9871b519ec642",
+    "apps/site/app/ai-dj/studio.tsx": "f84b88582580726710a1e42661a126401dd469433898886c52f3b6e575285eee",
+    "apps/site/lib/account-deletion.ts": "2903d0b024b596ddce69a0ce522ae4bd2c77af4dc2984db6e36dd8b94402f057",
+    "apps/site/lib/ai-dj-player.ts": "e67fe4d762b8956513826ec34dc5e7ecd441a6953fbad3f535b2a92746228fee",
+    "apps/site/lib/dj-session-store.ts": "a147dfcb10337aa3e6b6414293861537c6916b8db836eba51b76fbe508c3679b",
+    "apps/site/lib/maintenance.ts": "181cef821b8ea9a483dcb1f38feda4145ac1de2e3c309f02b781a14eb0ffaf3c",
+    "apps/site/package.json": "154482da2237aff9a893b0bc1a2719a279b9d7385fd86d13113d872b6eb07cbd",
+    "apps/site/tests/ai-dj-autopilot-browser.mjs": "f96e5f53baf06470255d072dce524a4dce9235602a521eefc4b08e2701753899",
+    "apps/site/tests/ai-dj-browser.mjs": "4e0097347f62de2ee0d0178ff48f1157eaac05a10a7cfa1e8bf21b3d0b879d00",
+    "apps/site/tests/ai-dj-endurance-browser.mjs": "dc02566ae95d442061eba50c865364949b1ab5dcce59087426ab11e00b91e754",
+    "apps/site/tests/ai-dj-performance-browser.mjs": "474237c8e765ee9db4cc55d0f2046e1ed0f9d5ac7776bd8132eae5927cf3e2a0",
+    "apps/site/tests/ai-dj-recording-browser.mjs": "cdf4e859bb85b579d9d25d528b3b597c2a7705b6c08f3e4bf550c116101866b7",
+    "apps/site/tests/maintenance.test.ts": "5b84d805a7bc20bb6a274269049606602a9fc1f9b60a8db09d828c7da1b9491b",
+    "apps/web/set-recording.js": "5513b04ffe9b0efbfbef4bbb5dbbaeda5121c70892ffafd1cb683ad52618d41e",
+    "apps/web/tests/set-recording.test.js": "9fa0c29e2b64a569039ac83332ea38e5498256a03b432a7852e5e1cda17c02b3",
+    "apps/site/app/ai-dj/saved-sets.tsx": "db0c824a63bb5cfd19dc1254dd5ad75daa55e26039a7845255e816ebf53d3ccf",
+    "apps/site/app/api/ai-dj/recordings/[[...path]]/route.ts": "584cce6ef18c8b6470a02102871568195b0a45257984eec2b29c7e4553de7216",
+    "apps/site/lib/dj-recording-upload.ts": "0d7077d40d41ea1019b16dfd63b913aac5f4ead62a2e8ecd0ebccd89d1d0db40",
+    "apps/site/lib/dj-recordings-http.ts": "a7b30ba8b42ba4650a52b87ffdc684b0f9fde6a436cb0a7ec66342d75c085b9a",
+    "apps/site/lib/dj-recordings.ts": "0a8a17cfe6497c5fe81d4508261a9b25bfc1fc8a7be12a9b76696323362747ef",
+    "apps/site/migrations/0022_dj_recordings.sql": "a08bccce1917d0c48e0c7f6cd9f5231f18650cd1efb01efd0b8c45bbebb63f6b",
+    "apps/site/tests/dj-recordings-browser.mjs": "1ff74fd23f2180fbfa09f77575e334dfbfd9f3c3feebd43437a5f345653ecd4b",
+    "apps/site/tests/dj-recordings.test.ts": "7ec73e82d80bd3119727db2ae0e5e5b75bff57bb43d48bd083e3414b0dcf15f3"
+  },
+  "checks": {
+    "site_unit": {
+      "passed": 118,
+      "failed": 0
+    },
+    "web_unit": {
+      "passed": 163,
+      "failed": 0
+    },
+    "isolated_postgresql": {
+      "passed": 8,
+      "failed": 0
+    },
+    "chromium_webkit": [
+      "deck",
+      "performance",
+      "autopilot",
+      "automatic recording",
+      "real R2 save/playback/delete/retry"
+    ],
+    "typecheck": "PASS in production build",
+    "production_build": "PASS",
+    "bundle_audit": "PASS; 42 client files checked",
+    "production_preview_gates": "PASS: page and API return 404",
+    "localhost": "PASS: /ai-dj HTTP 200"
+  },
+  "provider_changes": {
+    "neon": "0022 applied after verified private backup",
+    "r2": "localhost:3000 CORS added; bucket remains private"
+  },
+  "test_accounts": "four synthetic accounts and their recordings removed after final provider run",
+  "initial_test_issues": [
+    "synthetic x-real-ip header interfered with direct R2 CORS; fixture header cleared after authentication",
+    "launch proxy initially redirected production page before route could be checked; rerun isolated local process with launch gate disabled"
+  ],
+  "not_run": [
+    "continuous original generation",
+    "progressive recording and crash recovery before finalization",
+    "public generated-set publication",
+    "private credit surcharge billing",
+    "musical listening and venue qualification",
+    "deployment"
+  ],
+  "publication": false,
+  "pushed": false,
+  "paid_compute_started": false
+}

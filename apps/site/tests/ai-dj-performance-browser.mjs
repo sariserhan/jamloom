@@ -30,7 +30,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   }return report;
  },source);
  for(const row of rendered){assert.ok(row.meanDifference>.001,row.action+' must change actual PCM');assert.ok(row.peak<1,row.action+' must stay bounded');}
- await page.getByRole('button',{name:'Start set'}).click();await page.waitForFunction(()=>document.querySelector('.deck-0 .aidj-deck-head span').textContent==='PLAYING');
+ await startSet(page);await page.waitForFunction(()=>document.querySelector('.deck-0 .aidj-deck-head span').textContent==='PLAYING');
  await page.waitForTimeout(10000);
  assert.equal(await page.locator('.aidj-pads .active').count(),0,'no scheduled automatic moves');
  assert.equal(await page.evaluate(()=>window.graphs[0].sources.length),1,'no automatic source replacement');
@@ -60,3 +60,5 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  }finally{await browser.close();}
 }
 await writeFile(resolve(folder,'performance-report.json'),JSON.stringify({status:'PASS',results},null,2)+'\n');
+
+async function startSet(page){const remove=page.locator('#set-record-delete');if(await remove.isEnabled())await remove.click();await page.getByRole('button',{name:'Start set'}).click();}

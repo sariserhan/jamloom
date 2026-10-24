@@ -10,7 +10,7 @@ const empty:DJSnapshot={status:'idle',message:'Choose your music, then start. Au
 const time=(seconds:number)=>`${Math.floor(seconds/60)}:${Math.floor(seconds%60).toString().padStart(2,'0')}`;
 const energies=['Warm-up','Steady','Driving','Peak','Full power'];
 
-export function AIDJ(){
+export function AIDJ({owner=null}:{owner?:string|null}){
  const [state,setState]=useState<DJSnapshot>(empty),[request,setRequest]=useState(''),[reply,setReply]=useState(''),[finishMinutes,setFinishMinutes]=useState('10');
  const [bank,setBank]=useState(djTracks),[importing,setImporting]=useState(false),[sessionName,setSessionName]=useState('');
  const sessionTitle=useRef('');
@@ -29,14 +29,14 @@ export function AIDJ(){
   if(player.current)player.current.setDirection(value);else setState(s=>({...s,direction:{...direction.current}}));
  }
  function start(){
-  const title=recordingTitle(sessionName);if(!title)return;sessionTitle.current=title;
+  const title=recordingTitle(sessionName);if(!title)return;if(recording.current?.hasTake()){setReply('Download or delete the previous local copy before starting another test set.');return;}sessionTitle.current=title;
   setReply('');document.querySelectorAll('audio,video').forEach(a=>(a as HTMLMediaElement).pause());
-  try{if(!player.current){player.current=new AIDJPlayer(snapshot=>{setState(snapshot);if(snapshot.analysis)setBank(rows=>rows.some(t=>t.sha256===snapshot.analysis!.sha256&&!t.analysis)?rows.map(t=>t.sha256===snapshot.analysis!.sha256?{...t,analysis:snapshot.analysis!}:t):rows);if(snapshot.status==='stopped'||snapshot.status==='error')setReply('');},bank);player.current.setDirection(direction.current);player.current.setMaster(state.master);player.current.setMode(state.mode);}void player.current.start();}
+  try{if(!player.current){player.current=new AIDJPlayer(snapshot=>{setState(snapshot);if(snapshot.analysis)setBank(rows=>rows.some(t=>t.sha256===snapshot.analysis!.sha256&&!t.analysis)?rows.map(t=>t.sha256===snapshot.analysis!.sha256?{...t,analysis:snapshot.analysis!}:t):rows);if(snapshot.status==='stopped'||snapshot.status==='error')setReply('');},bank);player.current.setDirection(direction.current);player.current.setMaster(state.master);player.current.setMode(state.mode);}void player.current.start(()=>recording.current?.start()??Promise.resolve(false));}
   catch{setReply('Audio could not start. Try a supported browser and press Start set again.');}
  }
  async function pauseOrResume(){
   const current=player.current;if(!current)return;
-  try{if(state.status==='paused')await current.resume();else{await recording.current?.stop();if(player.current===current)await current.pause();}}
+  try{if(state.status==='paused'){recording.current?.resume();await current.resume();}else{recording.current?.pause();if(player.current===current)await current.pause();}}
   catch{setReply('Playback could not pause or resume. Stop the set and try again.');}
  }
  function command(text:string){
@@ -97,7 +97,7 @@ export function AIDJ(){
     <div className="aidj-ending"><label>Wrap it up<select aria-label="Closing time" value={finishMinutes} onChange={e=>setFinishMinutes(e.target.value)}><option value="track">After this track</option><option value="1">In 1 minute</option><option value="5">In 5 minutes</option><option value="10">In 10 minutes</option><option value="30">In 30 minutes</option></select></label><button disabled={!running} onClick={()=>{player.current?.finish(finishMinutes==='track'?null:Number(finishMinutes)*60);setReply('');}}>Plan the ending ↘</button>{state.remaining!==null&&<button onClick={()=>{player.current?.continue();setReply('');}}>Keep the party going ↗</button>}</div>
    </aside>
   </div>
-  <DJRecording title={sessionTitle} player={player} status={state.status} controls={recording}/>
+  <DJRecording owner={owner} title={sessionTitle} player={player} status={state.status} controls={recording}/>
   <section className="aidj-performance-feed" aria-label="Performance history"><strong>LIVE MOVES</strong>{state.performance.length?state.performance.slice(-4).map((event,i)=><span key={event.at+'-'+i}><small>{event.by}</small>{event.label}</span>):<span>Loops · rolls · jog · filter · echo</span>}</section>
   <p className="aidj-explanation" role="status">{state.plan}</p>
   <section className="aidj-plan" aria-label="Set plan"><div><small>NOW</small><strong>{state.decks.find(d=>d?.playing)?.title??'Ready for your first track'}</strong></div><span aria-hidden="true">→</span><div><small>NEXT DIRECTION</small><strong>{energies[state.direction.energy-1]} · {state.direction.mood}</strong></div><span aria-hidden="true">→</span><div><small>{state.remaining!==null?'THE FINISH':'NEXT TRANSITION'}</small><strong>{state.remaining!==null?`About ${time(state.remaining)}`:running&&state.transitionIn!==null?`In ${time(state.transitionIn)}`:'Waiting for Mix next'}</strong></div></section>

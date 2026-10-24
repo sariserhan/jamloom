@@ -34,4 +34,6 @@ test('retention validates storage before deleting auth records when public uploa
  const response=await maintenance(request,getServices,configured);
  assert.equal(response.status,200);assert(queries>0);
  assert.deepEqual((await response.json()).audio,{checked:0,cleaned:0,failed:0});
+ const dj=await maintenance(request,getServices,{...configured,R2_AI_DJ_BUCKET:'jamloom-ai-dj-sessions'});
+ assert.equal(dj.status,200);assert.deepEqual((await dj.json()).djRecordings,{checked:0,cleaned:0,failed:0});
 });

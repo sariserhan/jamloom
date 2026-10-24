@@ -1,0 +1,82 @@
+{
+  "status": "PASS technical",
+  "human_listening": "NOT RUN",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "receipt": {
+        "version": 1,
+        "title": "Rooftop Friday",
+        "frames": 113408,
+        "rate": 32000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 3.544,
+        "bytes": 54653,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "7ca16f4c7311c4b0a95d32e7a57952b8977a183c29048f3f210ce1d36867f863"
+      },
+      "decoded": {
+        "seconds": 3.48,
+        "channels": 2,
+        "rms": 0.061493162387338804,
+        "peak": 0.08861234784126282
+      },
+      "checks": [
+        "name required",
+        "automatic recording before playback, without opt-in",
+        "codec failure prevents unrecorded playback",
+        "pause/resume preserves one clip",
+        "named download and byte hash",
+        "later name edits preserve take",
+        "prior local recording protected",
+        "stop and natural ending finalize",
+        "hidden-page interruption",
+        "no microphone; speakers muted",
+        "390/320px and scoped accessibility",
+        "existing Studio consent and recording remain intact"
+      ],
+      "errors": [],
+      "navigationAborts": []
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "receipt": {
+        "version": 1,
+        "title": "Rooftop Friday",
+        "frames": 111104,
+        "rate": 32000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 3.472,
+        "bytes": 65683,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "20e60c4171caa35e77ac54c4d6cec55704d2ac241596b99f36983e3ae3c6bdeb"
+      },
+      "decoded": {
+        "seconds": 3.4775,
+        "channels": 2,
+        "rms": 0.0621873342179676,
+        "peak": 0.1017565205693245
+      },
+      "checks": [
+        "name required",
+        "automatic recording before playback, without opt-in",
+        "codec failure prevents unrecorded playback",
+        "pause/resume preserves one clip",
+        "named download and byte hash",
+        "later name edits preserve take",
+        "prior local recording protected",
+        "stop and natural ending finalize",
+        "hidden-page interruption",
+        "no microphone; speakers muted",
+        "390/320px and scoped accessibility",
+        "existing Studio consent and recording remain intact"
+      ],
+      "errors": [],
+      "navigationAborts": []
+    }
+  ]
+}

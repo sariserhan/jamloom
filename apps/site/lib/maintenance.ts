@@ -1,6 +1,8 @@
 import {cleanupAuth} from './auth-cleanup';
 import type {Pool} from 'pg';
 import {PrivateAudio} from './private-audio';
+import {DJRecordings} from './dj-recordings';
+import {djSessionStore} from './dj-session-store';
 import {r2AudioStore} from './audio-store';
 
 export async function maintenance(request:Request,getServices:()=>{pool:Pool;audio:PrivateAudio|null;config:{databaseURL:string}},env:Record<string,string|undefined>=process.env){
@@ -14,6 +16,7 @@ export async function maintenance(request:Request,getServices:()=>{pool:Pool;aud
   // Retention must keep working while public upload/generation features are disabled.
   const retention=audio??new PrivateAudio(pool,r2AudioStore(env));
   const auth=await cleanupAuth(pool),files=await retention.cleanup();
-  return Response.json({auth,audio:files},{status:files.failed?503:200});
+  const dj=env.R2_AI_DJ_BUCKET?await new DJRecordings(pool,djSessionStore(env)).cleanup():null;
+  return Response.json({auth,audio:files,...(dj?{djRecordings:dj}:{})},{status:files.failed||dj?.failed?503:200});
  }catch{return Response.json({error:'Maintenance needs retry'},{status:503});}
 }

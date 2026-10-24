@@ -24,7 +24,7 @@ try{
  const files=Array.from({length:12},(_,i)=>({name:`engineering-${i}.wav`,mimeType:'audio/wav',buffer:fixture(160+i*17)}));
  await page.getByLabel('Add local tracks',{exact:true}).setInputFiles(files);files.length=0;
  await page.getByText('12 tracks added. Files stay on this device.',{exact:true}).waitFor({timeout:120000});
- await page.getByRole('button',{name:'Autopilot · baseline',exact:true}).click();await page.getByRole('button',{name:'Start set'}).click();
+ await page.getByRole('button',{name:'Autopilot · baseline',exact:true}).click();await startSet(page);
  await page.waitForFunction(()=>window.endurance.starts.length>=2);await context.setOffline(true);
  const began=Date.now();let samples=0,quiet=0,maxQuiet=0,maxScheduledSources=0;
  while(Date.now()-began<1850000){
@@ -40,3 +40,5 @@ try{
  const report={status:'PASS',browser:'chromium',seconds:(Date.now()-began)/1000,samples,maxQuietSamples:maxQuiet,maxScheduledSources,...state,errors,scope:'12 distinct synthetic engineering tones, offline local blobs, short fallback fades; 1 Hz continuity screen is not sample-accurate or human listening evidence'};
  await writeFile(resolve(folder,'endurance-report.json'),JSON.stringify(report,null,2)+'\n');console.log('PASS 30-minute engineering endurance');
 }finally{await browser.close();}
+
+async function startSet(page){const remove=page.locator('#set-record-delete');if(await remove.isEnabled())await remove.click();await page.getByRole('button',{name:'Start set'}).click();}

@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "checks": [
+        "automatic recording before playback",
+        "pause/resume produces one clip",
+        "automatic private save after Stop",
+        "named R2 download and playback",
+        "byte-identical stored recording",
+        "cross-owner read/upload/complete/delete denied",
+        "account switch cannot discard pending save",
+        "foreign origin denied",
+        "actual R2 deletion",
+        "persistent retry after blocked part",
+        "two-part AAC save",
+        "lost completion response and reload recovery without reupload",
+        "390px and scoped accessibility",
+        "no microphone; speakers muted"
+      ],
+      "recorded": {
+        "seconds": 3.34,
+        "bytes": 51755,
+        "mime": "audio/webm;codecs=opus"
+      },
+      "multipartBytes": 6652627
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "checks": [
+        "automatic recording before playback",
+        "pause/resume produces one clip",
+        "automatic private save after Stop",
+        "named R2 download and playback",
+        "byte-identical stored recording",
+        "cross-owner read/upload/complete/delete denied",
+        "account switch cannot discard pending save",
+        "foreign origin denied",
+        "actual R2 deletion",
+        "persistent retry after blocked part",
+        "two-part AAC save",
+        "lost completion response and reload recovery without reupload",
+        "390px and scoped accessibility",
+        "no microphone; speakers muted"
+      ],
+      "recorded": {
+        "seconds": 3.152,
+        "bytes": 59349,
+        "mime": "audio/webm;codecs=opus"
+      },
+      "multipartBytes": 6652627
+    }
+  ],
+  "syntheticAccountsRemoved": 4,
+  "noPublicPublication": true,
+  "noCreditCharges": true
+}

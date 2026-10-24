@@ -1,0 +1,1 @@
+{"bucket":"jamloom-ai-dj-sessions","cors":{"rules":[{"allowed":{"origins":["https://www.jamloom.com","https://jamloom.com","http://localhost:3000"],"methods":["GET","PUT","HEAD"],"headers":["Content-Type","Range"]},"exposeHeaders":["ETag","Content-Length","Content-Range","Accept-Ranges"],"maxAgeSeconds":3600}]},"public_r2_dev_enabled":false}

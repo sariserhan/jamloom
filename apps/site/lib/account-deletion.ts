@@ -19,7 +19,7 @@ export async function requestDeletion(pool:Pool,origin:string,owner:string,creat
   const existing=(await db.query("SELECT id,status,created_at FROM support_tickets WHERE owner_id=$1 AND subject=$2 AND status='open' ORDER BY created_at DESC LIMIT 1",[owner,subject])).rows[0];
   if(existing){await db.query('COMMIT');return existing;}
   const row=(await db.query(`INSERT INTO support_tickets(kind,owner_id,name,email,subject,body) VALUES('support',$1,$2,$3,$4,$5) RETURNING id,status,created_at`,[owner,user.name,user.email,subject,'Verified account holder requested deletion in Jamloom after a recent sign-in. Remove the account and associated personal data; retain only records required for financial, fraud or legal obligations. Confirm scope and completion with the account holder. This ticket is a request, not evidence of completed deletion.'])).rows[0];
-  await enqueueEmail(db,'ticket:'+row.id,{to:OWNER_EMAIL,subject:'Jamloom account deletion request',text:`A verified account holder requested account deletion. Request: ${row.id}. Review associated storage, active jobs and financial retention before completing deletion.`,action:{label:'Review deletion request',url:origin+'/admin/inbox/'+row.id}});
+  await enqueueEmail(db,'ticket:'+row.id,{to:OWNER_EMAIL,subject:'Jamloom account deletion request',text:`A verified account holder requested account deletion. Request: ${row.id}. Review associated storage (including private AI DJ set recordings), active jobs and financial retention before completing deletion.`,action:{label:'Review deletion request',url:origin+'/admin/inbox/'+row.id}});
   await db.query('COMMIT');return row;
  }catch(error){await db.query('ROLLBACK');throw error;}finally{db.release();}
 }

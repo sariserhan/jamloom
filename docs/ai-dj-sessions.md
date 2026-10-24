@@ -8,12 +8,22 @@ product. The current `/ai-dj` local-file player is a mixing/recording test only;
 its finite session-length selector has been removed and the page says so.
 
 The owner also requires the complete mixed experience to be saved as **one audio
-file in R2** when the session ends. This includes transitions, EQ, loops and any
+file in R2** when the session ends. Recording is automatic: there is no separate
+recording opt-in. **Public is the default generated-session choice** and publishes
+the completed set on the public page. **Private costs more credits** and must never
+be published. Show visibility and the actual credit quote before Start; record the
+Start action and selected quote, without a separate recording permission checkbox.
+This supersedes the earlier private-only final-product wording. This includes transitions, EQ, loops and any
 manual performance heard through the master output, not a concatenation of
 unmixed source songs. Session recording is not consent to train on the take.
 
 ## Product contract
 
+- Reuse the existing wallet visibility pricing: private creation adds
+  `privacyCredits(baseCredits)` (25%, rounded up). Quote and reserve each generated
+  batch consistently with the session choice; no flat fee or invented estimate.
+  Publication waits for complete, verified audio. A private session cannot become
+  public because credits run out, a request retries, or the user disconnects.
 - Start creates an authenticated session with fresh generation identity, seeds
   and musical variation. Use the accepted rolling-house draft as a development
   reference; do not recycle it as a shared default song.
@@ -36,6 +46,11 @@ unmixed source songs. Session recording is not consent to train on the take.
 - Interrupted uploads need durable progress, retry/cancel handling and recovery.
   Do not mark a session saved until the finalized object is verified. Retention,
   account deletion and owner-only replay must be integrated before activation.
+
+## Earlier local recording increment
+
+**Superseded by [automatic recording and saved sets](ai-dj-saved-sets.md).**
+The details below preserve the earlier increment and its evidence.
 
 ## Implemented local recording
 
