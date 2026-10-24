@@ -20,6 +20,7 @@ DISK_GB = 60
 LEASE_SECONDS = 5400
 HOURLY_CEILING = 0.75
 QUOTE_CEILING = 6
+CLUB_CAMPAIGN = 'jamloom-club-benchmark-20261024'
 
 
 def api(path, method="GET", data=None):
@@ -113,14 +114,25 @@ def write_state(state):
     temporary.replace(STATE)
 
 
-def retry_credit(account, previous):
+def retry_credit(account, previous, stop=7):
     if not previous.get("destroy_requested_at"):
         raise RuntimeError("Previous trial has no cleanup receipt")
     credit = float(account["credit"])
     anchor = float(previous["starting_credit"])
-    if not math.isfinite(credit) or not math.isfinite(anchor) or anchor - credit >= 7:
+    if not math.isfinite(credit) or not math.isfinite(anchor) or anchor - credit >= stop:
         raise RuntimeError("Combined trial budget is unavailable")
     return anchor
+
+
+def club_revision_limits(account, previous, now):
+    anchor = retry_credit(account, previous, 4)
+    deadline = float(previous['deadline'])
+    started = float(previous['started_at'])
+    if (previous.get('label') != CLUB_CAMPAIGN or previous.get('budget_usd') != 6 or
+            not all(math.isfinite(v) for v in (started, deadline, now)) or deadline > started + 2400.01 or
+            deadline - now < 900):
+        raise RuntimeError('Original campaign bounds unavailable for refinement')
+    return anchor, deadline
 
 
 def attach_key(instance_id, public_key):
@@ -194,7 +206,10 @@ def main():
     profile.add_argument("--blood-training", action="store_true", help="Approved one-instance Blood Club trial")
     profile.add_argument("--musician-training", action="store_true", help="Approved one-instance musician reference trial")
     profile.add_argument("--club-benchmark", action="store_true", help="One capped text-only club benchmark; requires campaign budget receipt")
+    parser.add_argument('--revision', action='store_true', help='House refinement sharing the original club campaign budget and deadline')
     args = parser.parse_args()
+    if args.revision and not args.club_benchmark:
+        parser.error('--revision requires --club-benchmark')
     if args.training or args.training_retry:
         WORK = ROOT / ("build-style-training-retry" if args.training_retry else "build-style-training")
         STATE = WORK / "trial-state.json"
@@ -208,9 +223,9 @@ def main():
         LEASE_SECONDS = 7200
         HOURLY_CEILING = 0.50
     if args.club_benchmark:
-        WORK = ROOT / 'build-club-benchmark-20261024'
+        WORK = ROOT / ('build-club-benchmark-revision-20261024' if args.revision else 'build-club-benchmark-20261024')
         STATE = WORK / 'trial-state.json'
-        LABEL = 'jamloom-club-benchmark-20261024'
+        LABEL = CLUB_CAMPAIGN + ('-revision' if args.revision else '')
         LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING = 2400, .50, 4
     WORK.mkdir(exist_ok=True)
     if args.action == "status":
@@ -226,7 +241,7 @@ def main():
     elif args.action == "rent":
         if args.club_benchmark:
             approval = json.loads((ROOT / 'docs/evidence/ai-dj-baseline-20261024/gpu-authorization.json').read_text())
-            if (approval.get('campaign') != LABEL or approval.get('budget_usd') != 6 or
+            if (approval.get('campaign') != CLUB_CAMPAIGN or approval.get('budget_usd') != 6 or
                     approval.get('instances_max') != 1 or approval.get('max_elapsed_seconds') != 2400 or
                     not isinstance(approval.get('owner_statement'), str) or not approval['owner_statement'].strip()):
                 raise RuntimeError('Missing current campaign budget receipt')
@@ -242,6 +257,10 @@ def main():
             raise RuntimeError("Insufficient credit for reserved trial budget")
         available = offers()
         starting_credit = float(account["credit"])
+        deadline = time.time() + LEASE_SECONDS
+        if args.revision:
+            previous = json.loads((ROOT / 'build-club-benchmark-20261024/trial-state.json').read_text())
+            starting_credit, deadline = club_revision_limits(account, previous, time.time())
         if args.training_retry:
             previous = json.loads((ROOT / "build-style-training/trial-state.json").read_text())
             starting_credit = retry_credit(account, previous)
@@ -253,15 +272,17 @@ def main():
                           o["geolocation"].endswith(", US")), None)
         if offer is None:
             raise RuntimeError("Selected offer is unavailable or outside limits")
+        if args.club_benchmark and max(0, starting_credit-float(account['credit'])) + offer['reserved_lease_plus_transfer'] > 6:
+            raise RuntimeError('Quote exceeds remaining total campaign budget')
         state = {"label": LABEL, "offer": offer, "starting_credit": starting_credit,
                  "credit_before_this_attempt": float(account["credit"]),
-                 "started_at": time.time(), "deadline": time.time() + LEASE_SECONDS,
+                 "started_at": time.time(), "deadline": deadline,
                  "budget_usd": 6 if args.club_benchmark else 10, "disk_gb": DISK_GB,
                  "observed_debit_stop_usd": 4 if args.club_benchmark else 7}
         write_state(state)  # Prevent duplicate rental if the create response is lost.
         with (WORK / "watchdog.log").open("a") as log:
             subprocess.Popen(["caffeinate", "-i", sys.executable, str(Path(__file__).resolve()), "watch"] +
-                             (["--club-benchmark"] if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
+                             (["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
                              stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
         # The watchdog also reconciles by unique label if this response is lost.
         result = api("v0/asks/" + str(offer["id"]), "PUT", {

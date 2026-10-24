@@ -14,6 +14,23 @@ spec.loader.exec_module(trial)
 
 
 class PriceBounds(unittest.TestCase):
+    def test_house_refinement_preserves_original_money_and_time_bounds(self):
+        previous = dict(starting_credit=9.5, destroy_requested_at=400, label=trial.CLUB_CAMPAIGN,
+                        budget_usd=6, started_at=0, deadline=2400)
+        self.assertEqual(trial.club_revision_limits({'credit':9.4}, previous, 1000), (9.5,2400))
+        for account, state, now in [({'credit':5.5}, previous, 1000),
+                                    ({'credit':9.4}, {**previous,'deadline':3000}, 1000),
+                                    ({'credit':9.4}, {**previous,'started_at':float('nan')}, 1000),
+                                    ({'credit':9.4}, previous, float('nan')),
+                                    ({'credit':9.4}, {**previous,'destroy_requested_at':None}, 1000),
+                                    ({'credit':9.4}, previous, 1600)]:
+            with self.assertRaises(RuntimeError): trial.club_revision_limits(account,state,now)
+
+    def test_revision_flag_cannot_change_other_rental_profiles(self):
+        with patch.object(trial.sys,'argv',['vast_trial.py','rent','--revision']), patch.object(trial,'api') as api, contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit):trial.main()
+            api.assert_not_called()
+
     def test_watch_uses_lower_campaign_debit_stop(self):
         with tempfile.TemporaryDirectory() as directory:
             state = Path(directory)/'state.json'

@@ -1,0 +1,51 @@
+{
+  "status": "PASS technical",
+  "research_tests": 23,
+  "breakdown": {
+    "rental_budget_and_cleanup": 17,
+    "cloud_batch": 2,
+    "procedural_studies": 1,
+    "cue_baseline": 1,
+    "groove_predictor": 1,
+    "waveform_comparison": 1
+  },
+  "shell_syntax": "PASS",
+  "browser_script_syntax": "PASS",
+  "audio_files_decoded_per_browser": 37,
+  "browsers": [
+    "chromium",
+    "webkit"
+  ],
+  "mobile_width_px": 390,
+  "native_playback": "PASS muted, one clip per set in both browsers",
+  "screenshot_review": "PASS Chromium 390px; all four controls fit",
+  "new_outputs": 4,
+  "duration_seconds": 60,
+  "matched_loudness_spread_lu": 0,
+  "owner_listening": "NOT RUN for refinement; first-round owner feedback retained separately",
+  "source_hashes": {
+    "scripts/vast_trial.py": "2352554be36b48eca5738643b3e4042fd9922af64cb3b212eceb2a207cf7a6d9",
+    "scripts/cloud_music_batch.py": "d51a2f48238695381a2b51f0d76b54ae6fa479cb0454fc2a0848c6fe408a8309",
+    "scripts/cloud_club_benchmark.sh": "c49adb86176c76af790f78664367868e12786951e1dcd757e2a9fb7bfda5a464",
+    "scripts/club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb",
+    "scripts/review_cloud_music.py": "db1c7dde4c6d9ddd8b04bafb25689e2672a0087829cab88774356d565dd3594f",
+    "apps/site/tests/club-studies-browser.mjs": "8de804129cb834b31f1651cd401ec93b459f495c9ab714fb61ce553151694c7f",
+    "tests/test_vast_trial.py": "a0613dfbde6f9cf5a1c6946c8111815d217185bfeead4d1e7e032b1da5b7f3a4",
+    "tests/test_cloud_music_batch.py": "d602129712174ad1ec65fa3668e0b502a51b0ae956aaf416334153e2b3d417e4"
+  },
+  "log_hashes": {
+    "/tmp/jamloom-revision-vast-tests.log": "ca3691546a64a4d2c903e70a78b53a9453c2785cda14a3ed2f0c3bde38f8d3dd",
+    "/tmp/jamloom-revision-batch-tests.log": "8d4ba34110b61a04968b3c21b43a548049f239d1e00dfd37998e7b39f074f98e",
+    "/tmp/jamloom-revision-studies-tests.log": "2299339565fdc7c4fedeb54e99b181ba53b821f77194926422cc7df3301ba0ee",
+    "/tmp/jamloom-revision-cue-tests.log": "fb184ea57734512b1f088f9181209901b9cd46df3eb7eaa2500ea9e48dde20b5",
+    "/tmp/jamloom-revision-groove-tests.log": "27720ea34c6e809f456b08ef815888e0f633d38494a7382b76939c824a99e8b8",
+    "/tmp/jamloom-revision-review-tests.log": "d10ffbd9f0faa72cd6837063279524e199b59fbc3d035051302a1e8dbc4b36ad",
+    "/tmp/jamloom-house-revision-review.log": "ce8213568001b6a43d5e19c29e7286b7e83e814263268f698a414cb6d513621b",
+    "/tmp/jamloom-house-revision-browser.log": "84a0bb8f14cd9cdd59f41e2edd6b309b096e6d3a9ed5d24396803e18d7a43d11"
+  },
+  "limits": [
+    "Browser playback is engineering evidence, not musical listening",
+    "No production deployment, fine-tuning or DJ model promotion",
+    "Existing website implementation unchanged since local checkpoint 42d72ea; full website checks not repeated for research-only changes"
+  ]
+}

@@ -1,0 +1,588 @@
+{
+  "status": "PASS technical",
+  "human_listening": "NOT RUN by this automated test",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "sets": [
+        {
+          "path": "/",
+          "rows": [
+            {
+              "file": "/listen-01.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.3051467537879944,
+              "rms": 0.084070544459405
+            },
+            {
+              "file": "/listen-02.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.3788474500179291,
+              "rms": 0.07754030348085432
+            },
+            {
+              "file": "/listen-03.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.31795066595077515,
+              "rms": 0.082483540163665
+            },
+            {
+              "file": "/listen-04.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.3164885938167572,
+              "rms": 0.08152919369001653
+            },
+            {
+              "file": "/listen-05.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.4207572638988495,
+              "rms": 0.0778453792950151
+            },
+            {
+              "file": "/listen-06.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.29357051849365234,
+              "rms": 0.08190704885344426
+            },
+            {
+              "file": "/listen-07.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.4067457914352417,
+              "rms": 0.07708229030674299
+            },
+            {
+              "file": "/listen-08.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.38553327322006226,
+              "rms": 0.07858277259241325
+            },
+            {
+              "file": "/listen-09.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.3348842263221741,
+              "rms": 0.08109356254096114
+            },
+            {
+              "file": "/listen-10.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.3075120747089386,
+              "rms": 0.08316410550563173
+            },
+            {
+              "file": "/listen-11.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.3926367163658142,
+              "rms": 0.07737346783008778
+            },
+            {
+              "file": "/listen-12.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.32858505845069885,
+              "rms": 0.08151941488286694
+            },
+            {
+              "file": "/listen-13.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.35217559337615967,
+              "rms": 0.07825403207552017
+            },
+            {
+              "file": "/listen-14.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.31578168272972107,
+              "rms": 0.08162235126500901
+            },
+            {
+              "file": "/listen-15.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.33224526047706604,
+              "rms": 0.08081700802919894
+            }
+          ]
+        },
+        {
+          "path": "/recorded-comparison/",
+          "rows": [
+            {
+              "file": "/recorded-comparison/listen-01.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.4207572638988495,
+              "rms": 0.0778453792950151
+            },
+            {
+              "file": "/recorded-comparison/listen-02.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.36283186078071594,
+              "rms": 0.0697231950468806
+            },
+            {
+              "file": "/recorded-comparison/listen-03.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.4058718979358673,
+              "rms": 0.0687744814658624
+            },
+            {
+              "file": "/recorded-comparison/listen-04.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.38553327322006226,
+              "rms": 0.07858277259241325
+            },
+            {
+              "file": "/recorded-comparison/listen-05.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.3788474500179291,
+              "rms": 0.07754030348085432
+            },
+            {
+              "file": "/recorded-comparison/listen-06.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.404050350189209,
+              "rms": 0.06854501937431112
+            }
+          ]
+        },
+        {
+          "path": "/heldout/",
+          "rows": [
+            {
+              "file": "/heldout/listen-01.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.3954005539417267,
+              "rms": 0.0688763712199462
+            },
+            {
+              "file": "/heldout/listen-02.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.36283186078071594,
+              "rms": 0.0697520343868673
+            },
+            {
+              "file": "/heldout/listen-03.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.38463902473449707,
+              "rms": 0.07867048055322409
+            },
+            {
+              "file": "/heldout/listen-04.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.3909531533718109,
+              "rms": 0.0689704583304105
+            },
+            {
+              "file": "/heldout/listen-05.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.40920302271842957,
+              "rms": 0.07808192879168695
+            },
+            {
+              "file": "/heldout/listen-06.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.3780500590801239,
+              "rms": 0.0777494432503859
+            }
+          ]
+        },
+        {
+          "path": "/gpu-comparison/review/",
+          "rows": [
+            {
+              "file": "/gpu-comparison/review/listen-01.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.412811279296875,
+              "rms": 0.049328024444367784
+            },
+            {
+              "file": "/gpu-comparison/review/listen-02.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.415924072265625,
+              "rms": 0.0458293122382267
+            },
+            {
+              "file": "/gpu-comparison/review/listen-03.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.361572265625,
+              "rms": 0.04624976981608104
+            },
+            {
+              "file": "/gpu-comparison/review/listen-04.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.30340576171875,
+              "rms": 0.048342801044931216
+            },
+            {
+              "file": "/gpu-comparison/review/listen-05.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.55499267578125,
+              "rms": 0.04306227837325606
+            },
+            {
+              "file": "/gpu-comparison/review/listen-06.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.313323974609375,
+              "rms": 0.05486083706917189
+            }
+          ]
+        },
+        {
+          "path": "/gpu-revision/review/",
+          "rows": [
+            {
+              "file": "/gpu-revision/review/listen-01.wav",
+              "seconds": 60,
+              "channels": 2,
+              "peak": 0.44158935546875,
+              "rms": 0.049774136343867716
+            },
+            {
+              "file": "/gpu-revision/review/listen-02.wav",
+              "seconds": 60,
+              "channels": 2,
+              "peak": 0.33807373046875,
+              "rms": 0.049702145190096754
+            },
+            {
+              "file": "/gpu-revision/review/listen-03.wav",
+              "seconds": 60,
+              "channels": 2,
+              "peak": 0.338287353515625,
+              "rms": 0.05126055928244284
+            },
+            {
+              "file": "/gpu-revision/review/listen-04.wav",
+              "seconds": 60,
+              "channels": 2,
+              "peak": 0.3012787103652954,
+              "rms": 0.049531188040235465
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "sets": [
+        {
+          "path": "/",
+          "rows": [
+            {
+              "file": "/listen-01.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.3051120638847351,
+              "rms": 0.08406586207409869
+            },
+            {
+              "file": "/listen-02.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.37879347801208496,
+              "rms": 0.07753602872109905
+            },
+            {
+              "file": "/listen-03.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.3179226517677307,
+              "rms": 0.08247960052330472
+            },
+            {
+              "file": "/listen-04.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.3164606988430023,
+              "rms": 0.08152540676830164
+            },
+            {
+              "file": "/listen-05.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.4207039177417755,
+              "rms": 0.07784112763013766
+            },
+            {
+              "file": "/listen-06.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.2935304641723633,
+              "rms": 0.0819024798233888
+            },
+            {
+              "file": "/listen-07.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.40674641728401184,
+              "rms": 0.07707886127798454
+            },
+            {
+              "file": "/listen-08.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.38546833395957947,
+              "rms": 0.07857843698100553
+            },
+            {
+              "file": "/listen-09.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.3346807062625885,
+              "rms": 0.08108977760485293
+            },
+            {
+              "file": "/listen-10.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.30748486518859863,
+              "rms": 0.08316022807836286
+            },
+            {
+              "file": "/listen-11.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.3925052881240845,
+              "rms": 0.07737002317980635
+            },
+            {
+              "file": "/listen-12.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.3283819258213043,
+              "rms": 0.08151569069054018
+            },
+            {
+              "file": "/listen-13.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.3518119156360626,
+              "rms": 0.07825050544455353
+            },
+            {
+              "file": "/listen-14.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.315753698348999,
+              "rms": 0.08161857045216164
+            },
+            {
+              "file": "/listen-15.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.3322106599807739,
+              "rms": 0.08081243486247047
+            }
+          ]
+        },
+        {
+          "path": "/recorded-comparison/",
+          "rows": [
+            {
+              "file": "/recorded-comparison/listen-01.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.4207039177417755,
+              "rms": 0.07784112763013766
+            },
+            {
+              "file": "/recorded-comparison/listen-02.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.36282193660736084,
+              "rms": 0.06972100732334398
+            },
+            {
+              "file": "/recorded-comparison/listen-03.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.40585601329803467,
+              "rms": 0.06877230752931339
+            },
+            {
+              "file": "/recorded-comparison/listen-04.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.38546833395957947,
+              "rms": 0.07857843698100553
+            },
+            {
+              "file": "/recorded-comparison/listen-05.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.37879347801208496,
+              "rms": 0.07753602872109905
+            },
+            {
+              "file": "/recorded-comparison/listen-06.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.40403440594673157,
+              "rms": 0.06854286718722534
+            }
+          ]
+        },
+        {
+          "path": "/heldout/",
+          "rows": [
+            {
+              "file": "/heldout/listen-01.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.39538517594337463,
+              "rms": 0.06887421647914861
+            },
+            {
+              "file": "/heldout/listen-02.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.36282193660736084,
+              "rms": 0.06974985406919887
+            },
+            {
+              "file": "/heldout/listen-03.wav",
+              "seconds": 28.235291666666665,
+              "channels": 1,
+              "peak": 0.38457444310188293,
+              "rms": 0.07866615573104448
+            },
+            {
+              "file": "/heldout/listen-04.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.39092928171157837,
+              "rms": 0.06896828289710419
+            },
+            {
+              "file": "/heldout/listen-05.wav",
+              "seconds": 30,
+              "channels": 1,
+              "peak": 0.4091496169567108,
+              "rms": 0.07807767625244251
+            },
+            {
+              "file": "/heldout/listen-06.wav",
+              "seconds": 30.96775,
+              "channels": 1,
+              "peak": 0.3779837489128113,
+              "rms": 0.0777451698113064
+            }
+          ]
+        },
+        {
+          "path": "/gpu-comparison/review/",
+          "rows": [
+            {
+              "file": "/gpu-comparison/review/listen-01.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.412811279296875,
+              "rms": 0.04932725428559049
+            },
+            {
+              "file": "/gpu-comparison/review/listen-02.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.415924072265625,
+              "rms": 0.04582860085826814
+            },
+            {
+              "file": "/gpu-comparison/review/listen-03.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.361572265625,
+              "rms": 0.04624900888219619
+            },
+            {
+              "file": "/gpu-comparison/review/listen-04.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.30340576171875,
+              "rms": 0.04834206221576823
+            },
+            {
+              "file": "/gpu-comparison/review/listen-05.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.55499267578125,
+              "rms": 0.043061658215998826
+            },
+            {
+              "file": "/gpu-comparison/review/listen-06.wav",
+              "seconds": 30,
+              "channels": 2,
+              "peak": 0.313323974609375,
+              "rms": 0.05485999456256189
+            }
+          ]
+        },
+        {
+          "path": "/gpu-revision/review/",
+          "rows": [
+            {
+              "file": "/gpu-revision/review/listen-01.wav",
+              "seconds": 60,
+              "channels": 2,
+              "peak": 0.44158935546875,
+              "rms": 0.04977336416790018
+            },
+            {
+              "file": "/gpu-revision/review/listen-02.wav",
+              "seconds": 60,
+              "channels": 2,
+              "peak": 0.33807373046875,
+              "rms": 0.04970137259631506
+            },
+            {
+              "file": "/gpu-revision/review/listen-03.wav",
+              "seconds": 60,
+              "channels": 2,
+              "peak": 0.338287353515625,
+              "rms": 0.051259773236555846
+            },
+            {
+              "file": "/gpu-revision/review/listen-04.wav",
+              "seconds": 60,
+              "channels": 2,
+              "peak": 0.30126953125,
+              "rms": 0.04953040075187319
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

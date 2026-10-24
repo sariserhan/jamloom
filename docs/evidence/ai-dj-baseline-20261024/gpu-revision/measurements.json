@@ -1,0 +1,156 @@
+{
+  "files": [
+    {
+      "name": "rolling-house-132",
+      "technical": {
+        "file": "renders/club-studies-20261024/gpu-revision/rolling-house-132.wav",
+        "sha256": "6fe84aa714395cae557219169598df383a338803bcfbf7ea0fe288ae41ed54fd",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 2880000,
+        "duration_seconds": 60.0,
+        "peak_linear": 0.891265869140625,
+        "peak_dbfs": -0.9998544876801003,
+        "rms_dbfs_left": -19.960093147771133,
+        "rms_dbfs_right": -20.033422163539992,
+        "dc_left": 0.0010638623767428928,
+        "dc_right": 0.001165952099694146,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 0,
+        "last_nonzero_frame": 2879999,
+        "max_adjacent_sample_step": 0.583343505859375,
+        "last_100ms_peak": 0.001556396484375,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      },
+      "original": {
+        "lufs": -18.48,
+        "true_peak_dbfs": -1.0
+      },
+      "gain_db": -6.099999999999998,
+      "review": {
+        "lufs": -24.58,
+        "true_peak_dbfs": -7.1
+      },
+      "listening_file": "listen-01.wav",
+      "listening_sha256": "5be5aa2a58a8765975e4f1c335bc92fb3e2f4336acae7e15878d1fc60ababbff"
+    },
+    {
+      "name": "driving-house-128",
+      "technical": {
+        "file": "renders/club-studies-20261024/gpu-revision/driving-house-128.wav",
+        "sha256": "40380c0d9da5525c52e8491d14988b99d15a7fb66ea98c87ba54c5878910266d",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 2880000,
+        "duration_seconds": 60.0,
+        "peak_linear": 0.891265869140625,
+        "peak_dbfs": -0.9998544876801003,
+        "rms_dbfs_left": -17.65262995103704,
+        "rms_dbfs_right": -17.779240954568035,
+        "dc_left": 0.0014289218690660265,
+        "dc_right": 0.0015417305416531033,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 0,
+        "last_nonzero_frame": 2879999,
+        "max_adjacent_sample_step": 0.533721923828125,
+        "last_100ms_peak": 0.001800537109375,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      },
+      "original": {
+        "lufs": -16.16,
+        "true_peak_dbfs": -1.0
+      },
+      "gain_db": -8.419999999999998,
+      "review": {
+        "lufs": -24.58,
+        "true_peak_dbfs": -9.42
+      },
+      "listening_file": "listen-02.wav",
+      "listening_sha256": "29f998c6c349201c2a350618eca75565a0fad6f0162624532212a547c9ea6306"
+    },
+    {
+      "name": "rolling-house-128",
+      "technical": {
+        "file": "renders/club-studies-20261024/gpu-revision/rolling-house-128.wav",
+        "sha256": "170c4f49277e6ba2ed1b92296f4e7d03f3f508a5eac1353db80762f65ce25836",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 2880000,
+        "duration_seconds": 60.0,
+        "peak_linear": 0.891265869140625,
+        "peak_dbfs": -0.9998544876801003,
+        "rms_dbfs_left": -18.90444481748938,
+        "rms_dbfs_right": -18.937308745722717,
+        "dc_left": 0.0012185741106669108,
+        "dc_right": 0.0012931251102023655,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 0,
+        "last_nonzero_frame": 2879999,
+        "max_adjacent_sample_step": 0.566925048828125,
+        "last_100ms_peak": 0.001708984375,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      },
+      "original": {
+        "lufs": -17.68,
+        "true_peak_dbfs": -1.0
+      },
+      "gain_db": -6.899999999999999,
+      "review": {
+        "lufs": -24.58,
+        "true_peak_dbfs": -7.9
+      },
+      "listening_file": "listen-03.wav",
+      "listening_sha256": "31697ac4b93c87959dd0c411b0654f9509f9f5a56323a15054e24f0dd2b7cf21"
+    },
+    {
+      "name": "driving-house-132",
+      "technical": {
+        "file": "renders/club-studies-20261024/gpu-revision/driving-house-132.wav",
+        "sha256": "72759c0ec70fb9f4911480930a40662a8917c87cabd7ceb55e15e13243acb4db",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 2880000,
+        "duration_seconds": 60.0,
+        "peak_linear": 0.891265869140625,
+        "peak_dbfs": -0.9998544876801003,
+        "rms_dbfs_left": -18.82257086412983,
+        "rms_dbfs_right": -19.041039963450967,
+        "dc_left": 0.0011698115666707357,
+        "dc_right": 0.001359644391801622,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 0,
+        "last_nonzero_frame": 2879999,
+        "max_adjacent_sample_step": 0.704010009765625,
+        "last_100ms_peak": 0.00164794921875,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      },
+      "original": {
+        "lufs": -17.3,
+        "true_peak_dbfs": -1.0
+      },
+      "gain_db": -7.279999999999998,
+      "review": {
+        "lufs": -24.58,
+        "true_peak_dbfs": -8.28
+      },
+      "listening_file": "listen-04.wav",
+      "listening_sha256": "3768afcb963d0269c5f235ca551e56b1f956bd8c1a784dd38f2a360da9db0f9d"
+    }
+  ],
+  "comparisons": {
+    "driving-house-128 vs driving-house-132": {
+      "maximum_pcm_difference": 1.127655029296875,
+      "rms_pcm_difference": 0.16728338612205573,
+      "equal_sample_fraction": 0.006245833333333333
+    },
+    "rolling-house-128 vs rolling-house-132": {
+      "maximum_pcm_difference": 1.007293701171875,
+      "rms_pcm_difference": 0.14948538410251652,
+      "equal_sample_fraction": 0.0034927083333333333
+    }
+  },
+  "target_lufs": -24.58,
+  "meter": "ffmpeg loudnorm input measurements",
+  "listening_gate": "NOT RUN",
+  "event_frame_agreement": "NOT RUN: audio model emits no engine event trace"
+}

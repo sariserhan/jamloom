@@ -48,19 +48,22 @@ def difference(left, right):
             "equal_sample_fraction": same / len(samples[0])}
 
 
-def main(club=False):
+def main(club=False, revision=False):
     global ROOT, EVIDENCE
+    club = club or revision
     if club:
-        ROOT = Path('renders/club-studies-20261024/gpu-comparison')
-        EVIDENCE = Path('docs/evidence/ai-dj-baseline-20261024/gpu')
+        ROOT = Path('renders/club-studies-20261024') / ('gpu-revision' if revision else 'gpu-comparison')
+        EVIDENCE = Path('docs/evidence/ai-dj-baseline-20261024') / ('gpu-revision' if revision else 'gpu')
+    duration = 60 if revision else 30
     report = json.loads((ROOT / "batch.json").read_text())
     cases = [case for case in report["cases"] if case["status"] == "PASS"]
     assert cases, "No successful cases to review"
     target, source_levels = -22, {}
     if club:
-        from club_benchmark_cases import CASES
+        from club_benchmark_cases import CASES, REVISION_CASES
+        expected = REVISION_CASES if revision else CASES
         from q0_audit import loudness as input_levels, level_match
-        assert len(report['cases']) == len(cases) == 6 and {c['name'] for c in cases} == {c[0] for c in CASES}
+        assert len(report['cases']) == len(cases) == len(expected) and {c['name'] for c in cases} == {c[0] for c in expected}
         assert all(c['file'] == c['name'] + '.wav' for c in cases)
         source_levels = {c['name']: input_levels(ROOT / c['file']) for c in cases}
         target = min(-24.58, min(float(v['input_i']) - max(0, float(v['input_tp']) + 2.5) for v in source_levels.values()))
@@ -75,7 +78,7 @@ def main(club=False):
         path = ROOT / case["file"]
         assert hashlib.sha256(path.read_bytes()).hexdigest() == case["sha256"], "Transfer mismatch"
         technical = inspect(path)
-        assert technical["full_scale_samples"] == 0 and 29 <= technical["duration_seconds"] <= 31
+        assert technical["full_scale_samples"] == 0 and duration-1 <= technical["duration_seconds"] <= duration+1
         before = {'lufs': float(source_levels[case['name']]['input_i']),
                   'true_peak_dbfs': float(source_levels[case['name']]['input_tp'])} if club else loudness(path)
         gain = min(target - before["lufs"], -2 - before["true_peak_dbfs"])
@@ -92,7 +95,7 @@ def main(club=False):
                              "gain_db": gain, "review": after, "listening_file": destination.name,
                              "listening_sha256": hashlib.sha256(destination.read_bytes()).hexdigest()})
         if club:
-            label = f'Clip {index:02} · ' + case['name'].rsplit('-', 1)[0]
+            label = f'Clip {index:02} · ' + ('house' if revision else case['name'].rsplit('-', 1)[0])
             cards.append(f'<article><h2>{label}</h2><audio controls preload="none" aria-label="{label}" src="{destination.name}"></audio></article>')
             continue
         label = html.escape(case["name"].replace("-", " "))
@@ -104,13 +107,14 @@ def main(club=False):
     pairs = [(style+'-baseline', style+'-phrased') for style in ('house','tech-house','techno')] if club else [
         ("hiphop-seed-4123", "hiphop-repeat-4123"), ("hiphop-seed-4123", "hiphop-seed-4124"),
         ("hiphop-seed-4123", "hiphop-seed-4125"), ("club-seed-7441", "club-seed-7442")]
+    if revision: pairs = [(brief+'-house-128',brief+'-house-132') for brief in ('driving','rolling')]
     for a, b in pairs:
         if (ROOT / (a + ".wav")).exists() and (ROOT / (b + ".wav")).exists():
             comparisons[a + " vs " + b] = difference(ROOT / (a + ".wav"), ROOT / (b + ".wav"))
     if club:
         assert max(m['review']['lufs'] for m in measurements) - min(m['review']['lufs'] for m in measurements) <= .2
         (review/'blind-key.json').write_text(json.dumps(blind_key, indent=2)+'\n')
-        (review/'ratings.csv').write_text('clip,groove,instrument_realism,kick_bass,melodic_development,build_drop,arrangement,mix,enjoyment,repeat_preference,notes\n'+''.join(f'listen-{i:02}.wav,,,,,,,,,,\n' for i in range(1,7)))
+        (review/'ratings.csv').write_text('clip,groove,instrument_realism,kick_bass,melodic_development,build_drop,arrangement,mix,enjoyment,repeat_preference,notes\n'+''.join(f'listen-{i:02}.wav,,,,,,,,,,\n' for i in range(1,len(cases)+1)))
     (EVIDENCE / "measurements.json").write_text(json.dumps({"files": measurements, "comparisons": comparisons, "target_lufs": target,
         "meter": "ffmpeg loudnorm input measurements" if club else "ffmpeg ebur128 summary",
         "listening_gate": "NOT RUN", "event_frame_agreement": "NOT RUN: audio model emits no engine event trace"}, indent=2) + "\n")
@@ -130,8 +134,10 @@ document.addEventListener('play',e=>{if(e.target.tagName==='AUDIO')document.quer
     assert page.count("<audio ") == len(cases)
     if club:
         start, end = page.index('<h1>'), page.index('<main>')
-        page = page[:start] + f'''<h1>Club comparison: six takes.</h1>
-<p>House, tech-house and techno. Each pair uses the same model and seed with two different musical briefs. Conditions are concealed.</p>
+        heading = 'House refinement: four longer takes.' if revision else 'Club comparison: six takes.'
+        intro = 'Building on the house clips you preferred: 60-second drafts at 128–132 BPM, with two original groove briefs.' if revision else 'House, tech-house and techno. Each pair uses the same model and seed with two different musical briefs.'
+        page = page[:start] + f'''<h1>{heading}</h1>
+<p>{intro} Conditions are concealed.</p>
 <p>Playback is matched to {target:.2f} LUFS. Judge groove, sound, musical development and enjoyment. Open blind-key.json only after rating; these are unqualified experiments.</p>''' + page[end:]
     (review / "index.html").write_text(page)
     print(f"PASS: verified {len(cases)} transferred files; listening NOT RUN")
@@ -139,5 +145,8 @@ document.addEventListener('play',e=>{if(e.target.tagName==='AUDIO')document.quer
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--club-benchmark', action='store_true')
-    main(parser.parse_args().club_benchmark)
+    modes=parser.add_mutually_exclusive_group()
+    modes.add_argument('--club-benchmark', action='store_true')
+    modes.add_argument('--club-revision', action='store_true')
+    args=parser.parse_args()
+    main(args.club_benchmark,args.club_revision)

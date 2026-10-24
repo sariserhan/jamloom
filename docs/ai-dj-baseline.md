@@ -28,7 +28,7 @@ qualification. Historical rejected renders remain recorded in earlier reports. N
 
 ## Engineering verification
 
-- **PASS:** 114 website unit tests, 154 mixer/recorder unit tests and 20 research
+- **PASS:** 114 website unit tests, 154 mixer/recorder unit tests and 23 current research
   checks; website typecheck, production build and bundle audit.
 - **PASS:** Chromium/WebKit deck controls, actual PCM effects, accessibility,
   responsive layouts, reviewed phrase transitions, offline playback, manual
@@ -167,9 +167,33 @@ All six listening copies match −24.58 LUFS within 0.01 LU, with no clipping.
 1 and 5 (both house)** and rejected the remaining tech-house/techno outputs.
 Thus house is a development direction; no winning prompt or professional DJ
 quality has been established. [Feedback](evidence/ai-dj-baseline-20261024/gpu/listening-feedback.json).
-A four-output, 60-second house refinement is planned within the **same $6 total**
-cap, after the first rental's verified destruction. DJ-policy fitting still
-needs reviewed demonstrations; compute cannot replace absent expert labels.
+The [house refinement](evidence/ai-dj-baseline-20261024/gpu-revision-plan.json)
+completed four **60-second stereo** drafts: two original groove briefs, each at
+requested 128/132 BPM with a shared seed within its pair. Both briefs request
+kick/bass from the opening beat and continuous dancefloor energy. The different
+briefs also have different seeds, so this is exploratory development, not a
+controlled proof of prompt superiority. Requested tempo/arrangement still need
+musical verification. No reference audio or adapters were used.
+
+Each minute took **1.89–3.24 seconds** to generate after setup; the second rental
+lasted **481 seconds**. Both rentals are destroyed and the account inventory is
+empty. Combined observed debit is approximately **$0.113**, within the **same $6
+total cap and original 40-minute deadline**; this is not a final invoice. No
+fine-tuning or production promotion occurred. [Execution and limits](evidence/ai-dj-baseline-20261024/gpu-revision/execution.json).
+
+[Listen to the four new drafts](http://localhost:8766/gpu-revision/review/).
+They match −24.58 LUFS with **0.00 LU measured spread**, no full-scale samples,
+and verified 60-second / 48 kHz / stereo / PCM16 transfers. All **37** listening
+WAVs decode in Chromium/WebKit; muted native playback and 390px layout pass.
+[Current checks](evidence/ai-dj-baseline-20261024/gpu-revision/verification.json),
+[browser receipt](evidence/ai-dj-baseline-20261024/gpu-revision-listening-browser.json).
+Reproduce the listening preparation with `python3 scripts/review_cloud_music.py
+--club-revision` in a fresh review directory, then run
+`node tests/club-studies-browser.mjs --revision` from `apps/site`.
+New-draft human listening is **NOT RUN**; the earlier 1/5 preference does not
+qualify these outputs. DJ-policy fitting still needs reviewed demonstrations;
+compute cannot replace absent expert labels. Local implementation checkpoint:
+`42d72ea`; this report links the refinement evidence separately.
 
 Still required: independent listening and realistic sound improvements, diverse
 cleared full tracks and genuine demonstrations, generation ahead of playback,

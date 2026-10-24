@@ -4,9 +4,10 @@ import {writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {chromium,webkit} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
-const results=[],gpu=process.argv.includes('--gpu');
+const results=[],revision=process.argv.includes('--revision'),gpu=revision||process.argv.includes('--gpu');
 const plans=[['/',15],['/recorded-comparison/',6],['/heldout/',6]];
 if(gpu)plans.push(['/gpu-comparison/review/',6]);
+if(revision)plans.push(['/gpu-revision/review/',4]);
 for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  const browser=await engine.launch();
  try{
@@ -27,7 +28,8 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
      rows.push({file:new URL(audio.src).pathname,seconds:buffer.duration,channels:buffer.numberOfChannels,peak,rms:Math.sqrt(power/buffer.length)});
     }}finally{await audioContext.close();}return rows;
    });
-   assert.ok(rows.every(r=>r.seconds>28&&r.seconds<32&&r.channels===(path.includes('gpu-')?2:1)&&r.peak>0&&r.peak<1&&r.rms>.001));
+   const seconds=path.includes('gpu-revision')?60:30;
+   assert.ok(rows.every(r=>r.seconds>seconds-2&&r.seconds<seconds+2&&r.channels===(path.includes('gpu-')?2:1)&&r.peak>0&&r.peak<1&&r.rms>.001));
    await page.locator('audio').first().evaluate(a=>a.play());
    await page.waitForFunction(()=>document.querySelector('audio').currentTime>.3);
    assert.ok(await page.locator('audio').first().evaluate(a=>a.muted&&!a.paused));
@@ -35,9 +37,9 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
    sets.push({path,rows});
   }
-  await page.screenshot({path:resolve('../../renders/club-studies-20261024/'+name+(gpu?'-gpu':'')+'-listening.png'),fullPage:true});
+  await page.screenshot({path:resolve('../../renders/club-studies-20261024/'+name+(revision?'-gpu-revision':gpu?'-gpu':'')+'-listening.png'),fullPage:true});
   assert.deepEqual(errors,[]);results.push({browser:name,status:'PASS',sets,errors});
  }finally{await browser.close();}
 }
-await writeFile(resolve('../../docs/evidence/ai-dj-baseline-20261024/'+(gpu?'gpu-':'')+'listening-browser.json'),JSON.stringify({status:'PASS technical',human_listening:'NOT RUN by this automated test',results},null,2)+'\n');
-console.log(`PASS: ${gpu?33:27} WAVs decode in Chromium and WebKit; muted playback and mobile layout`);
+await writeFile(resolve('../../docs/evidence/ai-dj-baseline-20261024/'+(revision?'gpu-revision-':gpu?'gpu-':'')+'listening-browser.json'),JSON.stringify({status:'PASS technical',human_listening:'NOT RUN by this automated test',results},null,2)+'\n');
+console.log(`PASS: ${revision?37:gpu?33:27} WAVs decode in Chromium and WebKit; muted playback and mobile layout`);

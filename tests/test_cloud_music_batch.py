@@ -37,6 +37,8 @@ class CloudBatchTests(unittest.TestCase):
 
     def test_stop_after_first_failure_and_preserve_results(self):
         batch = self.load_batch()
+        with self.assertRaisesRegex(ValueError, 'Unsupported bounded'):
+            batch.main([], duration=3600)
         cases = [('first', 'Original house', 124, 1, False),
                  ('second', 'Original techno', 136, 2, False)]
         with tempfile.TemporaryDirectory() as directory:

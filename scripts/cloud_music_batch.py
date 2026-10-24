@@ -34,7 +34,8 @@ CASES = [
 ]
 
 
-def main(cases=CASES, stop_on_failure=False):
+def main(cases=CASES, stop_on_failure=False, duration=30):
+    if duration not in (30, 60): raise ValueError('Unsupported bounded study duration')
     OUT.mkdir(exist_ok=True)
     if stop_on_failure and ((OUT / 'batch.json').exists() or any((OUT / (row[0]+'.wav')).exists() for row in cases)):
         raise ValueError('Preserve previous benchmark outputs')
@@ -43,7 +44,7 @@ def main(cases=CASES, stop_on_failure=False):
               "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
               "python": platform.python_version(), "torch": torch.__version__,
               "cuda": torch.version.cuda, "gpu": torch.cuda.get_device_name(),
-              "cases": [], "quality_gate": "NOT RUN"}
+              "cases": [], "duration_seconds": duration, "quality_gate": "NOT RUN"}
 
     def save():
         (OUT / "batch.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
@@ -71,7 +72,7 @@ def main(cases=CASES, stop_on_failure=False):
             np.random.seed(seed)
             torch.manual_seed(seed)
             torch.cuda.manual_seed_all(seed)
-            params = GenerationParams(caption=caption, bpm=bpm, duration=30, seed=seed,
+            params = GenerationParams(caption=caption, bpm=bpm, duration=duration, seed=seed,
                 instrumental=True, lyrics="[Instrumental]", inference_steps=8,
                 thinking=thinking, use_cot_metas=thinking, use_cot_caption=thinking,
                 use_cot_language=thinking, use_cot_lyrics=False)
@@ -90,7 +91,7 @@ def main(cases=CASES, stop_on_failure=False):
             audio = result.audios[0]
             source = Path(audio["path"])
             pcm, rate = sf.read(source, always_2d=True, dtype="float32")
-            assert pcm.shape[1] == 2 and 29 <= len(pcm)/rate <= 31, "Unexpected duration or channels"
+            assert pcm.shape[1] == 2 and duration-1 <= len(pcm)/rate <= duration+1, "Unexpected duration or channels"
             assert np.isfinite(pcm).all() and 0.001 < np.max(np.abs(pcm)) < 1, "Invalid, silent or clipped output"
             destination = OUT / (name + ".wav")
             sf.write(destination, pcm, rate, subtype="PCM_16")
@@ -110,9 +111,14 @@ def main(cases=CASES, stop_on_failure=False):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--club-benchmark', action='store_true')
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument('--club-benchmark', action='store_true')
+    modes.add_argument('--club-revision', action='store_true')
     args = parser.parse_args()
-    if args.club_benchmark:
+    if args.club_revision:
+        from club_benchmark_cases import REVISION_CASES
+        main(REVISION_CASES, stop_on_failure=True, duration=60)
+    elif args.club_benchmark:
         from club_benchmark_cases import CASES as club_cases
         main(club_cases, stop_on_failure=True)
     else:

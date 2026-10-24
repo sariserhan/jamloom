@@ -1,0 +1,54 @@
+{
+  "status": "PASS_EXECUTION_CLEANUP; OWNER_LISTENING_NOT_RUN",
+  "reason": "Owner liked both house clips 1/5 and rejected other genres",
+  "cases": [
+    {
+      "name": "driving-house-128",
+      "caption": "Original instrumental energetic club house, 128 BPM. Punchy four-on-the-floor kick and tight bass from the first beat. Maintain a strong continuous dancefloor groove through most of the track. Warm chord stabs, short syncopated bass answers, crisp swung offbeat hats and claps. Clear eight-bar phrases, a brief percussion fill before a strong bass return, clean percussive ending. No vocals.",
+      "bpm": 128,
+      "seed": 71024,
+      "thinking": false,
+      "duration": 60
+    },
+    {
+      "name": "driving-house-132",
+      "caption": "Original instrumental energetic club house, 132 BPM. Punchy four-on-the-floor kick and tight bass from the first beat. Maintain a strong continuous dancefloor groove through most of the track. Warm chord stabs, short syncopated bass answers, crisp swung offbeat hats and claps. Clear eight-bar phrases, a brief percussion fill before a strong bass return, clean percussive ending. No vocals.",
+      "bpm": 132,
+      "seed": 71024,
+      "thinking": false,
+      "duration": 60
+    },
+    {
+      "name": "rolling-house-128",
+      "caption": "Original instrumental energetic club house, 128 BPM. Punchy four-on-the-floor kick and tight bass from the first beat. Maintain a strong continuous dancefloor groove through most of the track. Rolling bass groove, crisp clap, shuffled high hats and a sparse memorable percussive synth hook. Layer percussion into the hook, one brief stripped-back phrase, immediate full-drum return and a DJ-friendly percussion outro. No vocals.",
+      "bpm": 128,
+      "seed": 71025,
+      "thinking": false,
+      "duration": 60
+    },
+    {
+      "name": "rolling-house-132",
+      "caption": "Original instrumental energetic club house, 132 BPM. Punchy four-on-the-floor kick and tight bass from the first beat. Maintain a strong continuous dancefloor groove through most of the track. Rolling bass groove, crisp clap, shuffled high hats and a sparse memorable percussive synth hook. Layer percussion into the hook, one brief stripped-back phrase, immediate full-drum return and a DJ-friendly percussion outro. No vocals.",
+      "bpm": 132,
+      "seed": 71025,
+      "thinking": false,
+      "duration": 60
+    }
+  ],
+  "max_outputs": 4,
+  "authorization": "Same owner-approved $6 total, one GPU at a time; no added budget or infrastructure",
+  "deadline": "Inherits first rental deadline, 40 minutes from original campaign start",
+  "budget_anchor": "Inherits initial campaign account-credit anchor; cleanup at $4 combined observed debit",
+  "training": false,
+  "references": [],
+  "scripts": {
+    "scripts/cloud_music_batch.py": "d51a2f48238695381a2b51f0d76b54ae6fa479cb0454fc2a0848c6fe408a8309",
+    "scripts/club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb",
+    "scripts/cloud_club_benchmark.sh": "c49adb86176c76af790f78664367868e12786951e1dcd757e2a9fb7bfda5a464",
+    "scripts/cloud_music_setup.sh": "6b3a092a6d1ce00e3cf6d71707c9283a6bae75451e05ca65f0648cad0e402c7b",
+    "scripts/vast_trial.py": "b4a98dd5dbb400a9375c117d35e7af9350108f13fe1637e5fb2794017a99dd71"
+  },
+  "instance_id": 57482516,
+  "additional_time_or_budget": false,
+  "controller_hardening_after_rent_sha256": "2352554be36b48eca5738643b3e4042fd9922af64cb3b212eceb2a207cf7a6d9"
+}

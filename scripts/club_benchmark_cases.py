@@ -15,3 +15,17 @@ for style, bpm, seed, character in [
                   (style+'-phrased', revised, bpm, seed, False)])
 
 assert len(CASES) == 6 and all(not row[4] for row in CASES)
+
+# Owner accepted both house arms and rejected the other genres; this is development, not held-out validation.
+REVISION_CASES = []
+for brief, seed, character in [
+    ('driving', 71024, 'Warm chord stabs, short syncopated bass answers, crisp swung offbeat hats and claps. Clear eight-bar phrases, a brief percussion fill before a strong bass return, clean percussive ending.'),
+    ('rolling', 71025, 'Rolling bass groove, crisp clap, shuffled high hats and a sparse memorable percussive synth hook. Layer percussion into the hook, one brief stripped-back phrase, immediate full-drum return and a DJ-friendly percussion outro.'),
+]:
+    for bpm in (128, 132):
+        caption = (f'Original instrumental energetic club house, {bpm} BPM. '
+                   'Punchy four-on-the-floor kick and tight bass from the first beat. '
+                   'Maintain a strong continuous dancefloor groove through most of the track. '
+                   + character + ' No vocals.')
+        REVISION_CASES.append((f'{brief}-house-{bpm}', caption, bpm, seed, False))
+assert len(REVISION_CASES) == 4 and all(row[2] in (128,132) and not row[4] for row in REVISION_CASES)

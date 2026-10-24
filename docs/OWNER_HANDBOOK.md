@@ -651,9 +651,12 @@ Club. GPU compute is permitted only within the existing authorized Vast.ai
 budget. The owner approved a new $6 total campaign cap, one GPU at a time. The first
 six-output comparison finished and its rental was destroyed (~$0.053 observed
 debit). The owner likes GPU clips 1/5 (house), and rejects the other four.
-The comparison is at http://localhost:8766/gpu-comparison/review/. A longer house
-refinement is planned under the same total campaign cap. No top-up, paid
-dataset, new API, outreach, model promotion, push or deployment occurred.
+The first comparison is at http://localhost:8766/gpu-comparison/review/. Four new
+60-second house drafts are at http://localhost:8766/gpu-revision/review/. Both
+rentals are destroyed, with approximately $0.113 combined observed debit under
+the same $6 cap and original deadline; billing is not a final invoice. New drafts
+passed audio/browser checks and await owner listening. No top-up, paid dataset,
+new API, outreach, model promotion, push or deployment occurred.
 
 Owner feedback on the studies: “okay, not perfect but a good start.”
 Needed from outside the current implementation: more specific comparative listening; qualified DJs
