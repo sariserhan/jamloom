@@ -1,6 +1,6 @@
 {
   "status": "PASS technical",
-  "unit_tests": 19,
+  "unit_tests": 20,
   "checks": [
     "Vast budget and cleanup guards",
     "Mocked GPU provider failure stops batch and preserves receipt",
@@ -9,7 +9,8 @@
     "MIDI clock residual and sparse-feature fallback",
     "Groove benchmark reproduced with pinned metadata",
     "75 initial study WAVs reproduced byte-for-byte",
-    "27 listening WAVs decoded in Chromium and WebKit"
+    "27 listening WAVs decoded in Chromium and WebKit",
+    "Unknown cloud setup mode exits before any work"
   ],
   "gpu_rentals_started": 0,
   "new_data_purchases": 0,
@@ -22,8 +23,11 @@
     "scripts/club_studies.py": "e41d40b0f8ecc5b5a2ac1d6bb3dfe9d7fe2e131cfdca4477c791f4587c2aa5ab",
     "scripts/club_benchmark_cases.py": "f33ad9fe46232719e41d89ccc980206eaa90e252f2a11678999482b099ed2a64",
     "scripts/cloud_music_batch.py": "88dc90d851113c7e181fc333cc8ebb16480e09e46b6a4f0813aad0dc7fe27a6d",
-    "scripts/vast_trial.py": "00160fcbd195fc9aca472ea294d40457c64d4c40b61447ea3baab161f364fa81"
+    "scripts/vast_trial.py": "00160fcbd195fc9aca472ea294d40457c64d4c40b61447ea3baab161f364fa81",
+    "scripts/cloud_music_setup.sh": "6b3a092a6d1ce00e3cf6d71707c9283a6bae75451e05ca65f0648cad0e402c7b",
+    "scripts/cloud_club_benchmark.sh": "44f1410795b27d829b6fa693fd4c28f17972e6af35a6656966bca3d56df30dad",
+    "scripts/review_cloud_music.py": "088cf944234cd2ac20414a7b4414199b92b37d2311bc09e419c35246beda76d3"
   },
-  "unit_log_sha256": "2b9e0d9f561353056d8e0324e64151744c0fce0f0bbddd419460ea3cb31b5699",
+  "unit_log_sha256": "98b343490b5fa90b083225f9700551bf874a9c0961d75e235eeec4837e065605",
   "unit_log_note": "The FAIL provider-failure line is the deliberate mocked negative case, whose unit test passes."
 }

@@ -1,16 +1,17 @@
+import type {TrackAnalysis} from './ai-dj-analysis';
 import practice from '../../web/practice-audio/manifest.json';
 import {validationSongs} from './music-validation';
 
 export type Mood='warm'|'bright'|'deep';
 export type Direction={energy:number;mood:Mood;vocals:boolean};
-export type DJTrack={id:string;title:string;artist:string;url:string;sha256:string;energy:number;mood:Mood;vocal:boolean;credit:string};
+export type DJTrack={id:string;title:string;artist:string;url:string;sha256:string;energy:number;mood:Mood;vocal:boolean;credit:string;analysis?:TrackAnalysis;local?:boolean};
 const selections:[string,number,Mood][]=[['party-sector',4,'bright'],['black-diamond',5,'deep']];
 export const djTracks:DJTrack[]=selections.map(([id,energy,mood])=>{
  const track=practice.tracks.find(t=>t.id===id)!;
  return {id,title:track.title,artist:track.artist,url:'/studio/'+track.url.slice(2),sha256:track.sha256,energy,mood,vocal:false,credit:track.source_page};
 });
 export const vocalSample=validationSongs.find(t=>t.id==='9547b2b976f83213a4ccb264da6b0cb7')!;
-djTracks.push({id:vocalSample.id,title:'House · vocal moment',artist:'Jamloom listening collection',url:'/ai-dj/audio',sha256:vocalSample.audioSha256,energy:4,mood:'warm',vocal:true,credit:'/improvise#public-songs'});
+
 
 export function pickTrack(tracks:DJTrack[],direction:Direction,history:string[],unavailable:Set<string>,closing=false):DJTrack|undefined{
  const recent=history.slice(-3),sinceVocal=history.slice(-3).every(id=>!tracks.find(t=>t.id===id)?.vocal);

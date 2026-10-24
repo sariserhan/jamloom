@@ -5,6 +5,7 @@ import { MixSources } from './mix-sources.js';
 import { MixTransport } from './mix-transport.js';
 import { MIX_STEMS, stemWav, validateMixStems } from './mix-stems.js';
 import { resumeAudio } from './audio.js';
+import { mixIntent } from './mix-intent.js';
 
 export function validateMixRecording(recording) {
   const keys = ['schema_version', 'scope', 'origin', 'training_authorized', 'permission', 'sample_rate',
@@ -28,11 +29,13 @@ export function attachMixRecording({ graph, context, mixer, getSources, getTrans
 
   let state = 'idle', version = 0, node, sink, nodeError, timer, started, loaded = false, urls = [];
   let sourceCapture, sourceJob, transportCapture;
+  let intents = [];
   function refresh() {
     $('mix-record-start').disabled = state !== 'idle' || !$('mix-record-consent').checked;
     $('mix-record-stems').disabled = state !== 'idle';
     $('mix-record-stop').disabled = state !== 'recording';
     $('mix-record-delete').disabled = state === 'idle';
+    $('mix-intent-add').disabled = state !== 'recording';
   }
   function disconnect(completed = false) {
     clearInterval(timer);
@@ -57,9 +60,10 @@ export function attachMixRecording({ graph, context, mixer, getSources, getTrans
   function clear(text = 'Mix recording deleted from this tab. Downloaded copies remain on your device.') {
     version++; disconnect(); state = 'idle';
     const player = $('mix-record-player'); player.pause(); player.removeAttribute('src'); player.load(); player.hidden = true;
-    for (const id of ['mix-record-wav', 'mix-record-json', 'mix-record-automation', 'mix-record-sources', 'mix-record-transport', 'mix-record-stems-json', ...MIX_STEMS.map(name=>'mix-stem-'+name)]) { $(id).hidden = true; $(id).removeAttribute('href'); }
+    for (const id of ['mix-record-wav', 'mix-record-json', 'mix-record-automation', 'mix-record-sources', 'mix-record-transport', 'mix-record-intent', 'mix-record-stems-json', ...MIX_STEMS.map(name=>'mix-stem-'+name)]) { $(id).hidden = true; $(id).removeAttribute('href'); }
     urls.forEach(url => URL.revokeObjectURL(url)); urls = [];
     $('mix-record-status').textContent = text; $('mix-stems-status').textContent = ''; refresh();
+    intents = []; $('mix-intent-status').textContent = '';
   }
   function stop() {
     if (state !== 'recording') return;
@@ -124,6 +128,7 @@ export function attachMixRecording({ graph, context, mixer, getSources, getTrans
       if (includeStems && context().sampleRate > 96000) throw Error('Stems support up to 96 kHz. Turn off stems to record at this rate.');
       const automation = new MixAutomation(mixer(), context(), getSampler?.());
       const transport = transportCapture = new MixTransport(getTransport, context());
+      intents = [];
       mixer().automationTrace = automation;
       const inventory = new MixSources();
       sourceCapture = sourceJob = inventory; inventory.record(getSources(), context());
@@ -166,6 +171,11 @@ export function attachMixRecording({ graph, context, mixer, getSources, getTrans
             if (movements) {
               const url = URL.createObjectURL(new Blob([JSON.stringify(movements, null, 2)], { type: 'application/json' }));
               urls.push(url); $('mix-record-transport').href = url; $('mix-record-transport').hidden = false;
+              try {
+                const annotation = mixIntent(intents, receipt, movements);
+                const intentURL = URL.createObjectURL(new Blob([JSON.stringify(annotation, null, 2)], { type: 'application/json' }));
+                urls.push(intentURL); $('mix-record-intent').href = intentURL; $('mix-record-intent').hidden = false;
+              } catch { $('mix-intent-status').textContent = 'Intent timing was incomplete; annotations excluded. Mix retained.'; }
             }
             $('mix-record-player').src = urls[0]; $('mix-record-player').hidden = false;
             state = 'ready'; refresh();
@@ -181,6 +191,18 @@ export function attachMixRecording({ graph, context, mixer, getSources, getTrans
     } catch (error) { if (token === version) clear(`Recording unavailable: ${error.message}`); }
   };
   $('mix-record-stop').onclick = stop; $('mix-record-delete').onclick = () => clear();
+  $('mix-intent-add').onclick = () => {
+    if (state !== 'recording' || !transportCapture || intents.length >= 128) return;
+    const reason = $('mix-intent-reason').value.trim(), kind = $('mix-intent-kind').value;
+    if (!reason || reason.length > 240 || !['hold', 'action_reason'].includes(kind)) {
+      $('mix-intent-status').textContent = 'Add a short reason before marking the moment.'; return;
+    }
+    transportCapture.record('all', 'snapshot', getTransport, context());
+    const observed = transportCapture.events.at(-1);
+    if (transportCapture.failed || !observed) { $('mix-intent-status').textContent = 'Deck context unavailable; annotation excluded.'; return; }
+    intents.push({ context_frame: observed.context_frame, transport_event_index: transportCapture.events.length-1, kind, reason });
+    $('mix-intent-status').textContent = `${intents.length} moments marked · private, unreviewed demonstration.`;
+  };
   $('mix-record-consent').onchange = () => {
     if (!$('mix-record-consent').checked) clear('Mix recording permission removed. Recording discarded.'); else refresh();
   };

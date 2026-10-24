@@ -27,17 +27,18 @@ export class PerformanceDeck{
  private voices:Voice[]=[];
  event:PerformanceEvent|null=null;
  private filterValue=0;
- constructor(private context:AudioContext,readonly buffer:AudioBuffer,readonly bpm:number,destination:AudioNode,private echo:{wet:GainNode;dry:GainNode;delays:DelayNode[]}){
+ private lastPosition=0;
+ constructor(private context:AudioContext,readonly buffer:AudioBuffer,readonly bpm:number,destination:AudioNode,private echo:{wet:GainNode;dry:GainNode;delays:DelayNode[]},private baseRate=1){
   this.gain=context.createGain();this.level=context.createGain();this.filter=context.createBiquadFilter();
   this.filter.type='lowpass';this.filter.frequency.value=20000;this.filter.Q.value=.5;
   this.filter.connect(this.level);this.level.connect(this.gain);this.gain.connect(destination);
  }
  private voice(now:number){return this.voices.filter(v=>v.at<=now&&v.end>now).at(-1);}
- position(now=this.context.currentTime){const v=this.voice(now);return v?voicePosition(v,now,this.buffer.duration):0;}
+ position(now=this.context.currentTime){const v=this.voice(now);return v?voicePosition(v,now,this.buffer.duration):this.lastPosition;}
  private retire(voice:Voice,at:number){
   voice.end=Math.min(voice.end,at+.006);voice.gain.gain.cancelAndHoldAtTime(at);voice.gain.gain.linearRampToValueAtTime(0,at+.006);voice.source.stop(at+.006);
  }
- play(at:number,offset=0,rate=1,loop?:{start:number;end:number},reverseSeconds=0){
+ play(at:number,offset=0,rate=this.baseRate,loop?:{start:number;end:number},reverseSeconds=0){
   for(const v of this.voices)if(v.end>at)this.retire(v,at);
   const source=this.context.createBufferSource(),gain=this.context.createGain();
   if(reverseSeconds){
@@ -49,31 +50,29 @@ export class PerformanceDeck{
    const frames=Math.floor((loop.end-loop.start)*this.buffer.sampleRate),segment=this.context.createBuffer(2,frames,this.buffer.sampleRate),first=Math.floor(loop.start*this.buffer.sampleRate),fade=Math.min(128,Math.floor(frames/4));
    for(let c=0;c<2;c++){const input=this.buffer.getChannelData(c),output=segment.getChannelData(c);for(let i=0;i<frames;i++)output[i]=input[first+i]*Math.min(1,i/fade,(frames-1-i)/fade);}
    source.buffer=segment;source.loop=true;source.loopStart=0;source.loopEnd=segment.duration;
-  }else{
-   source.buffer=this.buffer;source.loop=true;const region=loop??{start:this.buffer.duration-Math.min(this.buffer.duration/2,960/this.bpm),end:this.buffer.duration};
-   source.loopStart=region.start;source.loopEnd=region.end;loop=region;
-  }
+  }else{source.buffer=this.buffer;source.loop=false;}
+
   source.playbackRate.value=Math.abs(rate);source.connect(gain);gain.connect(this.filter);
   gain.gain.setValueAtTime(0,at);gain.gain.linearRampToValueAtTime(1,at+.006);
   const voice:Voice={source,gain,at,offset,rate,loop:reverseSeconds?null:loop!,end:Infinity};this.voices.push(voice);
-  source.onended=()=>{source.disconnect();gain.disconnect();this.voices=this.voices.filter(v=>v!==voice);};
+  source.onended=()=>{if(voice.end===Infinity)this.lastPosition=this.buffer.duration;source.disconnect();gain.disconnect();this.voices=this.voices.filter(v=>v!==voice);};
   source.start(at,reverseSeconds||source.buffer!==this.buffer?0:Math.max(0,Math.min(this.buffer.duration-.001,offset)));
  }
  perform(action:PerformanceAction,at:number,by:'AI'|'You'){
   if(!performancePads.some(p=>p.id===action)&&!['filter','jog-back','jog-forward'].includes(action))return false;
   if(!this.voice(at)||this.event&&this.event.until>at)return false;
-  const beat=60/this.bpm,position=this.position(at);let duration=beat*4;
+  const beat=60/(this.bpm*this.baseRate),position=this.position(at);let duration=beat*4;
   if(action.startsWith('loop-')||action.startsWith('roll-')){
    const beats=action==='roll-half'?.5:action==='roll-one'?1:Number(action.slice(5));
    const loop=loopRegion(position,this.bpm,beats,this.buffer.duration);duration=beat*(action.startsWith('roll')?2:8);
-   this.play(at,loop.start,1,loop);
-   const resume=action.startsWith('roll')?position+duration:loop.start;
+   this.play(at,loop.start,this.baseRate,loop);
+   const resume=action.startsWith('roll')?position+duration*this.baseRate:loop.start;
    this.play(at+duration,Math.min(this.buffer.duration-.01,resume));
-  }else if(action.startsWith('cue-')){duration=beat;this.play(at,action==='cue-1'?0:beat*8);}
+  }else if(action.startsWith('cue-')){duration=beat;this.play(at,action==='cue-1'?0:480/this.bpm);}
   else if(action==='backspin'){
-   if(position<1)return false;duration=Math.min(beat,position/2);this.play(at,position,-2,undefined,duration);this.play(at+duration,Math.min(this.buffer.duration-.01,position+duration));
+   if(position<1)return false;duration=Math.min(beat,position/2);this.play(at,position,-2,undefined,duration);this.play(at+duration,Math.min(this.buffer.duration-.01,position+duration*this.baseRate));
   }else if(action.startsWith('jog-')){
-   duration=beat*2;const rate=action==='jog-back'?.88:1.12;this.play(at,position,rate);this.play(at+duration,Math.min(this.buffer.duration-.01,position+duration*rate));
+   duration=beat*2;const rate=this.baseRate*(action==='jog-back'?.88:1.12);this.play(at,position,rate);this.play(at+duration,Math.min(this.buffer.duration-.01,position+duration*rate));
   }else if(action==='filter'){
    this.filter.frequency.cancelScheduledValues(at);this.filter.frequency.setValueAtTime(20000,at);this.filter.frequency.exponentialRampToValueAtTime(650,at+duration/2);this.filter.frequency.exponentialRampToValueAtTime(20000,at+duration);
   }else if(action==='echo'){

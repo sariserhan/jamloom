@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "browser": "chromium",
+  "seconds": 1808.153,
+  "samples": 1804,
+  "maxQuietSamples": 0,
+  "maxScheduledSources": 2,
+  "starts": [
+    {
+      "at": 0.20800000000000002,
+      "duration": 152.5
+    },
+    {
+      "at": 150.654,
+      "duration": 152.5
+    },
+    {
+      "at": 301.104,
+      "duration": 152.5
+    },
+    {
+      "at": 451.554,
+      "duration": 152.5
+    },
+    {
+      "at": 602.004,
+      "duration": 152.5
+    },
+    {
+      "at": 752.4540000000001,
+      "duration": 152.5
+    },
+    {
+      "at": 902.9040000000001,
+      "duration": 152.5
+    },
+    {
+      "at": 1053.354,
+      "duration": 152.5
+    },
+    {
+      "at": 1203.804,
+      "duration": 152.5
+    },
+    {
+      "at": 1354.2540000000001,
+      "duration": 152.5
+    },
+    {
+      "at": 1504.7040000000002,
+      "duration": 152.5
+    },
+    {
+      "at": 1655.1540000000002,
+      "duration": 152.5
+    }
+  ],
+  "ended": 12,
+  "muted": true,
+  "errors": [],
+  "scope": "12 distinct synthetic engineering tones, offline local blobs, short fallback fades; 1 Hz continuity screen is not sample-accurate or human listening evidence",
+  "tested_sources_before_edge_fixes": {
+    "apps/site/lib/ai-dj-player.ts": "4c913c771145fbc35ca91263d7e4807610f8c98a7bb328e372a9372087aa37c5",
+    "apps/site/app/ai-dj/library.tsx": "48c28d5bd5120a357e8604648fa1ff29f88a565ac06ac93feeaa18da221c7093"
+  },
+  "scope_note": "Completed before the after-cue ending calculation and audio-context-construction error recovery fixes; those branches are checked separately in the subsequent browser suite."
+}

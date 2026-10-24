@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_RUN",
+  "status": "PASS_EXECUTION_CLEANUP; PARTIAL_OWNER_QUALITY",
   "purpose": "Paired baseline vs phrase-directed original club generation; not training or musical acceptance",
   "cases": [
     {
@@ -51,7 +51,7 @@
   "adapters": [],
   "training_data": [],
   "stop_on_failure": true,
-  "budget": "Pending current campaign cap; historical trials cannot be silently reopened",
+  "budget": "Owner approved $6 total, one GPU at a time; this first run also has a 40-minute lease and $4 observed-debit cleanup trigger",
   "infrastructure": "Existing Vast controller and pinned setup only",
   "new_model_downloads_to_mac": false,
   "publisher_model": "ACE-Step/Ace-Step1.5",
@@ -59,8 +59,9 @@
   "scripts": {
     "scripts/cloud_music_batch.py": "88dc90d851113c7e181fc333cc8ebb16480e09e46b6a4f0813aad0dc7fe27a6d",
     "scripts/club_benchmark_cases.py": "f33ad9fe46232719e41d89ccc980206eaa90e252f2a11678999482b099ed2a64",
-    "scripts/cloud_music_setup.sh": "019cbe98064c191113620cb687d684b6c50acb55c602e0bbc44ad85d40bb42d4",
-    "scripts/vast_trial.py": "00160fcbd195fc9aca472ea294d40457c64d4c40b61447ea3baab161f364fa81"
+    "scripts/cloud_music_setup.sh": "6b3a092a6d1ce00e3cf6d71707c9283a6bae75451e05ca65f0648cad0e402c7b",
+    "scripts/vast_trial.py": "00160fcbd195fc9aca472ea294d40457c64d4c40b61447ea3baab161f364fa81",
+    "scripts/cloud_club_benchmark.sh": "44f1410795b27d829b6fa693fd4c28f17972e6af35a6656966bca3d56df30dad"
   },
   "promotion": false,
   "rental_proposal": {
@@ -71,7 +72,7 @@
     "hourly_with_disk_ceiling_usd": 0.5,
     "quote_reserved_ceiling_usd": 4,
     "observed_debit_stop_usd": 4,
-    "authorization_receipt": "Absent; rent fails before provider calls",
+    "authorization_receipt": "gpu-authorization.json",
     "watchdog": "Independent local process; provider/network outage can delay destruction; not a provider-enforced dollar cap"
   },
   "read_only_offer_check": {
@@ -95,5 +96,10 @@
     ],
     "rental_started": false,
     "note": "Volatile indicative quotes; controller refetches before rental; no provider-enforced dollar cap"
-  }
+  },
+  "setup": "cloud_music_setup.sh --club-benchmark skips unused language-model weights",
+  "instance_id": 57480314,
+  "actual_hourly_at_start_usd": 0.27,
+  "observed_debit_usd": 0.05271135629999968,
+  "results": "gpu/execution.json"
 }

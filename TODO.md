@@ -1,3 +1,19 @@
+## Free-data music and AI DJ campaign — 2026-10-24
+
+**Overall PARTIAL; owner accepts the new studies as a good starting point, not professional quality.** The owner permits Vast.ai GPU work within existing authorized controls and prohibits paid data/licenses/musicians/APIs or expanded infrastructure. No publication or push. [Training-data registry](docs/TRAINING_DATA_REGISTRY.md) scopes numerical EDM-CUE metadata, Groove MIDI and project-authored synthesis separately from uncleared audio. The new deterministic Autopilot baseline is locally implemented; it does not reconnect the rejected periodic FX policy or claim trained expertise.
+
+| Task | Status | Evidence / blocker / next action |
+|---|---|---|
+| Local music library and conservative Autopilot | PASS technical; PARTIAL product | 114 tests and Chromium/WebKit library/transition/controller checks; [baseline report](docs/ai-dj-baseline.md). 30-minute synthetic offline endurance PASS; human musical/venue qualification remains PARTIAL/NOT RUN |
+| Free-data rights registry | PASS initial review | [Registry](docs/TRAINING_DATA_REGISTRY.md); Raveform component provenance, Slakh underlying rights and OnAir commercial-model obligations remain unresolved and excluded |
+| EDM-CUE metadata baseline | PASS experiment; no promotion | 4,285 training / 101 held-out rows; cue-prior F1 0.386 → 0.459 versus fixed phrase-grid proxy. Duplicate validation/test counted once; full collaborator independence remains unverified |
+| Original club studies and controlled audio comparisons | PASS technical; owner feedback PARTIAL | 27 short WAV studies with stems/events/sections/seeds, including hash-checked CC0 recorded-drum pairs and a separate motif seed. Matched levels, no clipping; 186 MiB retained |
+| Demonstration recorder and explicit hold intent | PASS implementation; expert data NOT RUN | Existing 30-second recorder exports explicit hold/action reasons linked to actual transport frames and WAV hash. Chromium/WebKit capture, stems, withdrawal and failure checks pass; private unreviewed status retained |
+| Groove MIDI timing/velocity experiment | PASS experiment; candidate NOT QUALIFIED | 1,097 training / 40 held-out performances, separate drummers. Velocity MAE 29.54 → 26.16; timing MAE 22.07 → 22.28 ms worsened. No retuning or promotion |
+| Original generation model and learned DJ policy | NOT RUN | Train only where qualified data and an experiment justify it; do not relabel deterministic or synthetic behavior as expertise |
+| GPU campaign | PARTIAL | First six-output trial PASS and rental destroyed; ~$0.053 observed debit. Owner accepts house clips 1/5 and rejects tech-house/techno. Longer house refinement planned under the same $6 total cap |
+| Listening and production promotion | PARTIAL listening; promotion NOT RUN | Owner: “okay, not perfect but a good start.” First GPU clips 1/5 accepted; remaining four rejected. No numeric scores or automatic model promotion |
+
 ## AI DJ correction and licensed training sources — 2026-10-24
 
 **Owner musical acceptance FAIL; training readiness PARTIAL; new model training NOT RUN. Local only.** Blood Club was a quality reference, not playback/training material: private route and preparation command removed, preview derivatives deleted, original preserved. Rejected periodic FX and unattended transitions removed; manual controller retained with Autopilot unavailable. EDM-CUE MIT cue metadata staged (309 KB, pinned hashes); GCX House/Techno and Rights Foundry identified as commercial music licensing leads. 112 unit tests, typecheck/build/bundle audit and Chromium/WebKit controller/audio checks PASS. No reviewed full DJ-action corpus, paid compute, outreach, push or deployment. [Source decisions, acquisition brief and evidence](docs/ai-dj-training-sources.md).

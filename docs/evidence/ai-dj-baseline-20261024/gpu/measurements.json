@@ -1,0 +1,229 @@
+{
+  "files": [
+    {
+      "name": "house-baseline",
+      "technical": {
+        "file": "renders/club-studies-20261024/gpu-comparison/house-baseline.wav",
+        "sha256": "79fce3a5824cb1bb758892a1d6037ac43a2e6ea20074b77005bfc14ffe6ea00f",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 1440000,
+        "duration_seconds": 30.0,
+        "peak_linear": 0.891265869140625,
+        "peak_dbfs": -0.9998544876801003,
+        "rms_dbfs_left": -19.698293647446064,
+        "rms_dbfs_right": -19.995272363094113,
+        "dc_left": 0.0011468999862670898,
+        "dc_right": 0.0012944419436984591,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 0,
+        "last_nonzero_frame": 1439999,
+        "max_adjacent_sample_step": 0.67669677734375,
+        "last_100ms_peak": 0.0018310546875,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      },
+      "original": {
+        "lufs": -18.14,
+        "true_peak_dbfs": -0.83
+      },
+      "gain_db": -6.439999999999998,
+      "review": {
+        "lufs": -24.58,
+        "true_peak_dbfs": -7.27
+      },
+      "listening_file": "listen-01.wav",
+      "listening_sha256": "7c58b562e54bf14d6e185a38d895a6d74ac5a7d45cfcd46de229c06e8067cf6a"
+    },
+    {
+      "name": "tech-house-baseline",
+      "technical": {
+        "file": "renders/club-studies-20261024/gpu-comparison/tech-house-baseline.wav",
+        "sha256": "b60927cfed2f528d0b77d94049c23f18ddb5b8d1d7bfe2a831c18ca7e73d8c57",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 1440000,
+        "duration_seconds": 30.0,
+        "peak_linear": 0.891265869140625,
+        "peak_dbfs": -0.9998544876801003,
+        "rms_dbfs_left": -20.15726781873635,
+        "rms_dbfs_right": -20.18537949993703,
+        "dc_left": 0.0009402186499701606,
+        "dc_right": 0.0011472524219089085,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 0,
+        "last_nonzero_frame": 1439999,
+        "max_adjacent_sample_step": 0.708221435546875,
+        "last_100ms_peak": 0.001708984375,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      },
+      "original": {
+        "lufs": -17.96,
+        "true_peak_dbfs": -0.91
+      },
+      "gain_db": -6.619999999999997,
+      "review": {
+        "lufs": -24.57,
+        "true_peak_dbfs": -7.53
+      },
+      "listening_file": "listen-02.wav",
+      "listening_sha256": "190484029a70cf72e37a6db6ba0cecf8d9c2853d8325a60b62daff252b353a68"
+    },
+    {
+      "name": "tech-house-phrased",
+      "technical": {
+        "file": "renders/club-studies-20261024/gpu-comparison/tech-house-phrased.wav",
+        "sha256": "5a5d15f53b697c769ea5474b69331ddef9dca0ad97117fc4a0c40eb0bf1f1ecf",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 1440000,
+        "duration_seconds": 30.0,
+        "peak_linear": 0.891265869140625,
+        "peak_dbfs": -0.9998544876801003,
+        "rms_dbfs_left": -20.647966178239976,
+        "rms_dbfs_right": -20.542444479429825,
+        "dc_left": 0.0011398298687405057,
+        "dc_right": 0.001233131832546658,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 0,
+        "last_nonzero_frame": 1439999,
+        "max_adjacent_sample_step": 0.45745849609375,
+        "last_100ms_peak": 0.00177001953125,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      },
+      "original": {
+        "lufs": -18.53,
+        "true_peak_dbfs": -0.89
+      },
+      "gain_db": -6.049999999999997,
+      "review": {
+        "lufs": -24.58,
+        "true_peak_dbfs": -6.94
+      },
+      "listening_file": "listen-03.wav",
+      "listening_sha256": "0886205039bf03caa6cfe75517f0a489ce4658448d03dd024664cf55f88db368"
+    },
+    {
+      "name": "techno-phrased",
+      "technical": {
+        "file": "renders/club-studies-20261024/gpu-comparison/techno-phrased.wav",
+        "sha256": "14a59d4deccd732c82ad4d8c5306ca0329c759332e4d541168b475d6df1f84ff",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 1440000,
+        "duration_seconds": 30.0,
+        "peak_linear": 0.891265869140625,
+        "peak_dbfs": -0.9998544876801003,
+        "rms_dbfs_left": -16.953505936941855,
+        "rms_dbfs_right": -17.055369945590474,
+        "dc_left": 0.0017840684678819445,
+        "dc_right": 0.0020377102533976235,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 0,
+        "last_nonzero_frame": 1439999,
+        "max_adjacent_sample_step": 0.301727294921875,
+        "last_100ms_peak": 0.002655029296875,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      },
+      "original": {
+        "lufs": -15.22,
+        "true_peak_dbfs": -1.0
+      },
+      "gain_db": -9.359999999999998,
+      "review": {
+        "lufs": -24.58,
+        "true_peak_dbfs": -10.36
+      },
+      "listening_file": "listen-04.wav",
+      "listening_sha256": "7ff85e9c16819e63400334bb8b09da407e2629956d687f161cb2207796c2ac64"
+    },
+    {
+      "name": "house-phrased",
+      "technical": {
+        "file": "renders/club-studies-20261024/gpu-comparison/house-phrased.wav",
+        "sha256": "26b2503a9497094eda3fcbc8ef10477b6778151c6b517ebac39661a0530c16bd",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 1440000,
+        "duration_seconds": 30.0,
+        "peak_linear": 0.891265869140625,
+        "peak_dbfs": -0.9998544876801003,
+        "rms_dbfs_left": -23.238190294642,
+        "rms_dbfs_right": -23.338881629594187,
+        "dc_left": 0.0007277396519978841,
+        "dc_right": 0.0007306621975368923,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 0,
+        "last_nonzero_frame": 1439999,
+        "max_adjacent_sample_step": 0.684967041015625,
+        "last_100ms_peak": 0.00152587890625,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      },
+      "original": {
+        "lufs": -20.5,
+        "true_peak_dbfs": -0.49
+      },
+      "gain_db": -4.079999999999998,
+      "review": {
+        "lufs": -24.58,
+        "true_peak_dbfs": -4.57
+      },
+      "listening_file": "listen-05.wav",
+      "listening_sha256": "02e3c4ead7a2246f74a6bae0b45022fb004013b21ba1c831b6ee417fed7e71c1"
+    },
+    {
+      "name": "techno-baseline",
+      "technical": {
+        "file": "renders/club-studies-20261024/gpu-comparison/techno-baseline.wav",
+        "sha256": "fd6eba943e30d6053dc6db489a3700c695b0088ded71fe9669856d865b0e9207",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 1440000,
+        "duration_seconds": 30.0,
+        "peak_linear": 0.891265869140625,
+        "peak_dbfs": -0.9998544876801003,
+        "rms_dbfs_left": -16.1348990947237,
+        "rms_dbfs_right": -16.43827530071809,
+        "dc_left": 0.001244709947374132,
+        "dc_right": 0.001982187228732639,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 0,
+        "last_nonzero_frame": 1439999,
+        "max_adjacent_sample_step": 0.38043212890625,
+        "last_100ms_peak": 0.0025634765625,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      },
+      "original": {
+        "lufs": -15.5,
+        "true_peak_dbfs": -0.99
+      },
+      "gain_db": -9.079999999999998,
+      "review": {
+        "lufs": -24.57,
+        "true_peak_dbfs": -10.07
+      },
+      "listening_file": "listen-06.wav",
+      "listening_sha256": "45af804c6ef3a46517af79201631b05fe295a54d74e003af77f7195e001465f2"
+    }
+  ],
+  "comparisons": {
+    "house-baseline vs house-phrased": {
+      "maximum_pcm_difference": 1.104278564453125,
+      "rms_pcm_difference": 0.10408737249647691,
+      "equal_sample_fraction": 0.008972222222222222
+    },
+    "tech-house-baseline vs tech-house-phrased": {
+      "maximum_pcm_difference": 0.9442138671875,
+      "rms_pcm_difference": 0.13352793845699082,
+      "equal_sample_fraction": 0.016181597222222222
+    },
+    "techno-baseline vs techno-phrased": {
+      "maximum_pcm_difference": 1.2635498046875,
+      "rms_pcm_difference": 0.16323382291159935,
+      "equal_sample_fraction": 0.004686805555555555
+    }
+  },
+  "target_lufs": -24.58,
+  "meter": "ffmpeg loudnorm input measurements",
+  "listening_gate": "NOT RUN",
+  "event_frame_agreement": "NOT RUN: audio model emits no engine event trace"
+}

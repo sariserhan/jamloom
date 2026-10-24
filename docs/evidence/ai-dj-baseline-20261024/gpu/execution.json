@@ -1,0 +1,40 @@
+{
+  "status": "PASS technical; PARTIAL owner quality",
+  "instance_id": 57480314,
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "vram_mib": 24576,
+  "driver": "580.95.05",
+  "python": "3.12.3",
+  "torch": "2.10.0+cu128",
+  "cuda": "12.8",
+  "outputs": 6,
+  "seconds_per_output": 30,
+  "rental_seconds": 445.62946009635925,
+  "gpu_generation_seconds": [
+    2.6767783170216717,
+    1.394990989996586,
+    1.3775400779559277,
+    1.3702150260214694,
+    1.3468541559996083,
+    1.4180397810414433
+  ],
+  "initialization_seconds": 5.143211118003819,
+  "peak_torch_allocated_gib": 7.033688545227051,
+  "peak_torch_reserved_gib": 7.646484375,
+  "authorized_cap_usd": 6,
+  "observed_credit_debit_usd": 0.05271135629999968,
+  "cost_scope": "Observed account balance change, including startup and transfer; not a final invoice or production per-song price",
+  "cleanup": "PASS: rental destroyed; account instance list empty",
+  "model_fine_tuning": false,
+  "reference_audio_used": false,
+  "personal_files_uploaded": false,
+  "new_data_purchases": 0,
+  "promoted": false,
+  "run_log_sha256": "202da5b449b5ea158f96df64f2e369beb40b4386ad02a62ce5b9a08f828c1ed2",
+  "limits": [
+    "Six short seed-paired prompt comparisons, not independent full-song musical validation",
+    "Timing figures exclude cold setup, initialization and retrieval",
+    "Model peak normalization is not evidence of mastering or absence of artifacts",
+    "No model training, voice cloning, reference input or production activation"
+  ]
+}

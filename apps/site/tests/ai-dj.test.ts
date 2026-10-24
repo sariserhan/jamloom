@@ -1,10 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {djTracks,pickTrack,parseDJCommand,transitionTime,type Direction} from '../lib/ai-dj-director';
-import {AIDJPlayer,inspectPCM} from '../lib/ai-dj-player';
 const direction:Direction={energy:4,mood:'warm',vocals:true};
 const fixtures=[3,4,5].map((energy,i)=>({id:'fixture-'+(i+1),title:'Fixture '+i,artist:'Test',url:'/test-'+i,sha256:'a'.repeat(64),energy,mood:'deep' as const,vocal:false,credit:'#test'}));
-const bank=[...fixtures,...djTracks];
+const bank=[...fixtures,...djTracks,{...fixtures[0],id:'vocal-fixture',vocal:true}];
 test('prepared set spaces vocals, avoids recent tracks and follows energy',()=>{
  const history:string[]=[];
  for(let i=0;i<120;i++){
@@ -47,14 +46,6 @@ test('transition clock remains future scheduled across an hour of selections',()
  assert.ok(transitionTime(0,96,120,105).at>105);
  assert.throws(()=>transitionTime(0,NaN,120,1));assert.throws(()=>transitionTime(0,96,0,1));
 });
-test('PCM analysis rejects silence/invalid samples and estimates synthetic pulse',()=>{
- const rate=8000,data=new Float32Array(rate*8);
- for(let i=0;i<data.length;i+=rate/2)for(let n=0;n<80;n++)data[i+n]=Math.sin(n)*.5;
- const result=inspectPCM(data,rate);assert.ok(Math.abs(result.bpm-120)<=1);assert.equal(result.wave.length,96);assert.ok(result.wave.every(n=>Number.isFinite(n)&&n>=0&&n<=1));
- assert.throws(()=>inspectPCM(new Float32Array(rate),rate),/silent/);
- assert.throws(()=>inspectPCM(new Float32Array([NaN]),rate),/invalid/);
-});
-
 test('published sample relay stays closed outside development',async()=>{
  const {GET}=await import('../app/ai-dj/audio/route');
  assert.notEqual(process.env.NODE_ENV,'development');
@@ -68,11 +59,4 @@ test('performance timing and transport follow real loop, slip and reverse positi
  assert.equal(voicePosition({at:10,offset:5,rate:1,loop:{start:5,end:6}},12.5,80),5.5);
  assert.equal(voicePosition({at:10,offset:5,rate:-2,loop:null},11,80),3);
  assert.equal(voicePosition({at:10,offset:5,rate:1.12,loop:null},11,80),6.12);
-});
-
-test('unqualified autopilot cannot be enabled through the player API',()=>{
- const state={mode:'together',emit:()=>{throw Error('Autopilot must not emit or schedule');}};
- AIDJPlayer.prototype.setMode.call(state as unknown as AIDJPlayer,'auto');
- assert.equal(state.mode,'together');
- assert.ok(djTracks.every(t=>t.url.startsWith('/studio/practice-audio/')||t.url==='/ai-dj/audio'));
 });

@@ -3,12 +3,19 @@ import importlib.util
 import json
 from pathlib import Path
 import tempfile
+import subprocess
 import types
 import unittest
 from unittest.mock import MagicMock, patch
 
 
 class CloudBatchTests(unittest.TestCase):
+    def test_setup_rejects_unknown_mode_before_starting(self):
+        script = Path(__file__).resolve().parents[1] / 'scripts/cloud_music_setup.sh'
+        with tempfile.TemporaryDirectory() as directory:
+            result = subprocess.run(['bash', str(script), '--invalid'], cwd=directory, capture_output=True)
+        self.assertEqual(result.returncode, 2)
+
     def load_batch(self):
         names = ('numpy', 'soundfile', 'torch', 'acestep', 'acestep.handler',
                  'acestep.llm_inference', 'acestep.inference')

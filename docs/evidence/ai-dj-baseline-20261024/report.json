@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "widths": [
+        1440,
+        800,
+        390,
+        320
+      ],
+      "initialPeak": 0.1859653890132904,
+      "captureBytes": 234959,
+      "checks": [
+        "no autoplay",
+        "no reference requests or route",
+        "real PCM",
+        "two-deck crossfade",
+        "direction",
+        "shared controls",
+        "closing and cancellation",
+        "stop during load",
+        "hidden tab stop",
+        "corrupt bank recovery",
+        "accessibility",
+        "speaker isolation"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "widths": [
+        1440,
+        800,
+        390,
+        320
+      ],
+      "initialPeak": 0.051467955112457275,
+      "captureBytes": 334466,
+      "checks": [
+        "no autoplay",
+        "no reference requests or route",
+        "real PCM",
+        "two-deck crossfade",
+        "direction",
+        "shared controls",
+        "closing and cancellation",
+        "stop during load",
+        "hidden tab stop",
+        "corrupt bank recovery",
+        "accessibility",
+        "speaker isolation"
+      ]
+    }
+  ]
+}

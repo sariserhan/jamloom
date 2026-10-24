@@ -1,0 +1,9 @@
+{
+  "campaign": "jamloom-club-benchmark-20261024",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "owner_statement": "$6 total, one GPU at a time",
+  "scope": "Existing Vast.ai compute; six text-only original generation outputs; no paid data, new infrastructure, top-up or public activation",
+  "approved_at_recorded": "2026-10-24T07:00:14.079619+00:00"
+}

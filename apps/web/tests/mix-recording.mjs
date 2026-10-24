@@ -12,6 +12,7 @@ import { validateMixTransport } from '../mix-transport.js';
 import { validateMixSources } from '../mix-sources.js';
 import { validateMixAutomation } from '../mix-automation.js';
 import { validateMixRecording } from '../mix-recording.js';
+import { mixIntent } from '../mix-intent.js';
 
 const root = fileURLToPath(new URL('../../../', import.meta.url));
 const kind = process.env.JAMLOOM_BROWSER || 'chromium'; assert.ok(['chromium','webkit'].includes(kind));
@@ -55,7 +56,7 @@ try {
   page.on('request', r => { if (!r.url().startsWith(url.replace('/dj.html','/')) && !r.url().startsWith('blob:')) external.push(r.url()); });
   await page.goto(url);await revealStudioTools(page);
   for (const deck of ['a','b']) await page.locator(`.deck-${deck} .deck-fx-panel summary`).click();
-  assert.equal(await page.title(), 'Jamloom Pro — Performance Studio');
+  assert.equal(await page.title(), 'Jamloom — Performance Studio');
   assert.equal(await page.locator('#mix-record-start').isDisabled(), true);
   const reference = await page.evaluate(async () => {
     const { createMixer, updateToneEcho, clearEcho } = await import('./mixer.js');
@@ -125,6 +126,9 @@ try {
   await page.locator('#mix-record-consent').check(); await page.locator('#mix-record-stems').check(); await page.locator('#mix-record-start').click();
   const recording=()=>page.waitForFunction(()=>!document.getElementById('mix-record-stop').disabled);
   await recording();
+  await page.getByText('Explain a DJ decision',{exact:true}).click();
+  await page.locator('#mix-intent-reason').fill('Preserve this groove until the phrase ends');
+  await page.locator('#mix-intent-add').click();
   const bWav=Buffer.from(stereoWav(pcm.slice(0,48000*2),48000,48000));
   await page.locator('#file-b').setInputFiles({name:'temporary-source.wav',mimeType:'audio/wav',buffer:bWav});
   await page.waitForFunction(()=>!document.getElementById('play-b').disabled);
@@ -141,11 +145,15 @@ try {
   await page.waitForTimeout(300); await page.locator('#mix-record-stop').click();
   await page.locator('#mix-record-wav').waitFor({state:'visible'});
   assert.equal(await page.locator('#state-a').textContent(),'Playing');
-  for(const [id,name] of [['mix-record-wav','mix.wav'],['mix-record-json','mix.json'],['mix-record-automation','controls.json'],['mix-record-sources','sources.json'],['mix-record-transport','transport.json']]) {
+  for(const [id,name] of [['mix-record-wav','mix.wav'],['mix-record-json','mix.json'],['mix-record-automation','controls.json'],['mix-record-sources','sources.json'],['mix-record-transport','transport.json'],['mix-record-intent','intent.json']]) {
     const promise=page.waitForEvent('download'); await page.locator(`#${id}`).click();
     await(await promise).saveAs(path.join(output,name));
   }
   const receipt=validateMixRecording(JSON.parse(await fs.readFile(path.join(output,'mix.json'),'utf8')));
+  const intent=JSON.parse(await fs.readFile(path.join(output,'intent.json'),'utf8'));
+  const intentTransport=JSON.parse(await fs.readFile(path.join(output,'transport.json'),'utf8'));
+  assert.deepEqual(mixIntent(intent.events,receipt,intentTransport),intent);assert.equal(intent.events[0].kind,'hold');
+  checks.push('explicit hold reason linked to actual audio clock and transport snapshot; unreviewed and not training-authorized');
   const wav=await fs.readFile(path.join(output,'mix.wav')); assert.equal(await sha256(wav),receipt.wav_sha256);
   assert.equal(wav.length,44+receipt.frames*4); assert.equal(receipt.training_authorized,false);
   await page.locator('#mix-record-stems-json').waitFor({state:'visible'});
@@ -153,6 +161,7 @@ try {
   const stemDetails=validateMixStems(JSON.parse(await fs.readFile(path.join(output,'stems.json'),'utf8')),receipt);
   const stemBuffers=[];
   for(const name of MIX_STEMS){
+    await page.waitForTimeout(1100); // Chromium throttles bursts of automatic downloads.
     const promise=page.waitForEvent('download');await page.locator('#mix-stem-'+name).click();await(await promise).saveAs(path.join(output,'stem-'+name+'.wav'));
     const bytes=await fs.readFile(path.join(output,'stem-'+name+'.wav'));assert.equal(await sha256(bytes),stemDetails.stems[name]);
     stemBuffers.push(bytes);assert.equal(bytes.readUInt16LE(20),3);assert.equal(bytes.readUInt32LE(46),receipt.frames);assert.equal(bytes.length,58+receipt.frames*8);
@@ -188,7 +197,7 @@ try {
   const automation=validateMixAutomation(JSON.parse(await fs.readFile(path.join(output,'controls.json'),'utf8')),receipt);
   for (const [target,value] of [['eq-a-0',-6],['c',.3*.75*.8],['rack',.5*.75]])
     assert.ok(automation.events.some(e=>e.target===target && e.value===value));
-  assert.equal(automation.schema_version,'3.0-mix-automation');
+  assert.equal(automation.schema_version,'4.0-mix-automation');
   for (const target of ['a','rack']) {
     assert.ok(automation.events.some(e=>e.kind==='tone_echo' && e.target===target && e.echo>0));
     assert.ok(automation.events.some(e=>e.kind==='clear_echo' && e.target===target));
@@ -289,8 +298,9 @@ try {
   assert.equal(await page.locator('#mix-record-automation').getAttribute('href'),null);
   checks.push('music/voice/capture withdrawal and source replacement discard captures; delayed hashes cannot restore exports');
   await page.locator('#mix-record-start').click(); await recording();
-  await page.evaluate(()=>window.dispatchEvent(new Event('blur')));
-  assert.match(await page.locator('#mix-record-status').textContent(),/interrupted/);
+  await page.evaluate(()=>{document.hasFocus=()=>false;window.dispatchEvent(new Event('blur'));});
+  await page.waitForFunction(()=>document.getElementById('mix-record-status').textContent.includes('interrupted'));
+  await page.evaluate(()=>delete document.hasFocus);
   await page.locator('#mix-record-start').click(); await recording();
   await page.evaluate(()=>mixNode.context.suspend());
   await page.waitForFunction(()=>document.getElementById('mix-record-status').textContent.includes('interrupted'));

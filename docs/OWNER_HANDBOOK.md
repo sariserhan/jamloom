@@ -619,3 +619,46 @@ extended online saves. It was tested only in disposable local PostgreSQL; no hos
 migration ran. Keep its wider constraints if rolling back code with extended
 assets present. Do not delete user audio to restore old bounds. See the
 [implementation, reproducible checks and remaining gates](duration-and-live-phrases.md).
+
+
+## AI DJ baseline and free training data — 2026-10-24
+
+Open http://localhost:3000/ai-dj. Add permitted local tracks; they remain in this
+browser tab. Select Autopilot explicitly, then Start set. Review BPM and eight-bar
+instrumental entry/exit points to enable phrase/bass transitions. Unreviewed
+tracks use short fades. Pause freezes playback; Take control returns the deck
+controls. Imported files must be reselected after a reload. No trained DJ or
+original generation is claimed by this baseline.
+
+In DJ Studio → Record & save → Record a short mix & stems, the existing recorder
+now has **Explain a DJ decision**. Select hold or action reason, enter a short
+explanation and mark the moment while recording. Download the decision notes
+alongside the mix, controls, source details and deck history. All remain private,
+unreviewed and ineligible for training until rights, performer consent and
+expert review are established. Recording permission is not training permission.
+
+The controlled original audio studies are at http://localhost:8766. Use the
+numbered playlist before opening blind-key.json; ratings.csv has blank listening
+fields. Recorded-drum pairs are at http://localhost:8766/recorded-comparison/;
+a separate motif seed is at http://localhost:8766/heldout/. These are short
+controlled studies, not professional finished songs. All 27 studies/stems use
+186 MiB; the recorded-drum versions reuse existing CC0 source samples.
+The [implementation report](ai-dj-baseline.md) records reproduction and limits.
+
+The [training-data registry](TRAINING_DATA_REGISTRY.md) and updated
+[data-sourcing request](ai-dj-data-sourcing-request.md) exclude paid data and Blood
+Club. GPU compute is permitted only within the existing authorized Vast.ai
+budget. The owner approved a new $6 total campaign cap, one GPU at a time. The first
+six-output comparison finished and its rental was destroyed (~$0.053 observed
+debit). The owner likes GPU clips 1/5 (house), and rejects the other four.
+The comparison is at http://localhost:8766/gpu-comparison/review/. A longer house
+refinement is planned under the same total campaign cap. No top-up, paid
+dataset, new API, outreach, model promotion, push or deployment occurred.
+
+Owner feedback on the studies: “okay, not perfect but a good start.”
+Needed from outside the current implementation: more specific comparative listening; qualified DJs
+who can volunteer genuine demonstrations using cleared material; source-specific
+rights evidence for any additional data; physical output/venue verification.
+Do not buy or commission these without changing the current financial policy.
+Models and signed releases in the large project folders should be archived
+before removing their internal-disk copies; no broad deletion was performed.

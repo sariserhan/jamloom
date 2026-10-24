@@ -1,0 +1,38 @@
+{
+  "status": "PASS technical",
+  "website_unit_tests": 114,
+  "web_mixer_recorder_unit_tests": 154,
+  "research_unit_tests": 20,
+  "typecheck": "PASS",
+  "production_build": "PASS",
+  "bundle_audit": "PASS",
+  "browsers": [
+    "chromium",
+    "webkit"
+  ],
+  "ending_regression": "FAIL before correction; PASS in both browsers after using actual playback position",
+  "import_recovery": "PASS both browsers after simulated AudioContext constructor failure",
+  "endurance_seconds": 1808.153,
+  "endurance_scope": "Synthetic offline short-fade scheduling, before isolated ending/import error-branch fixes; subsequent short suite covers those fixes",
+  "human_music_quality": "PARTIAL; owner calls studies a good starting point, not perfect",
+  "physical_venue": "NOT RUN",
+  "push_or_deploy": false,
+  "source_hashes": {
+    "apps/site/lib/ai-dj-player.ts": "2ea7b88696e8d2e03752a08dc5ba6d5943191ba34455bd5aa79334fefac5db11",
+    "apps/site/lib/ai-dj-plan.ts": "a934be171ac04bb14be73a8b8ec6bb71aca98fdc4b407e747be0064a3f08506c",
+    "apps/site/lib/ai-dj-analysis.ts": "7075a8739c2e11caa0884eadb39a5339259f1e3b697526f47f28132f7feae50c",
+    "apps/site/lib/ai-dj-library.ts": "672fcb86bd1b722a05ae5ff0954070544cc3d54af24d829dc5d094c5b8d7fef9",
+    "apps/site/app/ai-dj/library.tsx": "91555255b97b0d506c459cad3d21a038862c129ee5420837b54c0571fab5f314",
+    "apps/web/mix-intent.js": "14516b51daf004e95815480ec3ab2d5814ba689e9fe60d9ad451a2f4209958f5",
+    "apps/web/mix-recording.js": "5b9d5396cb8a7b3241de3dd79967ad4c846d1828d5e52d775eadb38d3606bcaa"
+  },
+  "log_hashes": {
+    "/tmp/jamloom-final-baseline-unit.log": "cae1cd1b9f41ef2758cd2fadaec6835c322fbb16cc1f0456b92b71e21b6d0ab0",
+    "/tmp/jamloom-dj-intent-tests.log": "86dd517bb9b6f76a6cb383f456be8ddb23ece308c916a7ad9276cb527f499297",
+    "/tmp/jamloom-final-baseline-types.log": "76d575f32c96b28d06783b82331bc5d133a4feed0a9804f0aa5139880abaa7c6",
+    "/tmp/jamloom-final-baseline-build.log": "6f266dc2f8aece13540e7ab107faa361ef74d89f8504125be8f21d7c585c8024",
+    "/tmp/jamloom-final-baseline-audit.log": "ae0f06644afcd68cee1507159bafd08904e498f86f502d0cd9c7f84f2acb9224",
+    "/tmp/jamloom-final-baseline-browser.log": "b4b6710bd8d57df9f7ab4c131edcf35708cd93a70b7bfbe9cea0e04143d1a3c5",
+    "/tmp/jamloom-ending-regression-before.log": "6e853f91126b8d16ec287c70f2c9bc38eb30ddc639770dcbb3046b22e59f9c41"
+  }
+}

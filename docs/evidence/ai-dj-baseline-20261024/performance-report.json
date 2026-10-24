@@ -1,0 +1,149 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "rendered": [
+        {
+          "action": "loop-2",
+          "meanDifference": 0.13010786820204376,
+          "peak": 0.24903129041194916
+        },
+        {
+          "action": "loop-4",
+          "meanDifference": 0.10148991925312828,
+          "peak": 0.24903129041194916
+        },
+        {
+          "action": "roll-half",
+          "meanDifference": 0.030592960715225957,
+          "peak": 0.25
+        },
+        {
+          "action": "roll-one",
+          "meanDifference": 0.02514102373198667,
+          "peak": 0.25
+        },
+        {
+          "action": "cue-1",
+          "meanDifference": 0.2030649803161234,
+          "peak": 0.25
+        },
+        {
+          "action": "cue-2",
+          "meanDifference": 0.2027342654741517,
+          "peak": 0.25
+        },
+        {
+          "action": "jog-back",
+          "meanDifference": 0.1860538852376656,
+          "peak": 0.25
+        },
+        {
+          "action": "jog-forward",
+          "meanDifference": 0.18884062345574096,
+          "peak": 0.25
+        },
+        {
+          "action": "backspin",
+          "meanDifference": 0.02176810836750792,
+          "peak": 0.25
+        },
+        {
+          "action": "filter",
+          "meanDifference": 0.0024119627778129596,
+          "peak": 0.25294989347457886
+        },
+        {
+          "action": "echo",
+          "meanDifference": 0.01961912785565596,
+          "peak": 0.25
+        }
+      ],
+      "checks": [
+        "automatic moves disabled",
+        "manual roll and real short buffer",
+        "backspin reverse buffer",
+        "cue seek and correct after-track ending",
+        "echo automation",
+        "pointer jog",
+        "loop release",
+        "stop cancels future return",
+        "silent speakers"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "rendered": [
+        {
+          "action": "loop-2",
+          "meanDifference": 0.13010786520764048,
+          "peak": 0.24903135001659393
+        },
+        {
+          "action": "loop-4",
+          "meanDifference": 0.10148990923216848,
+          "peak": 0.24903135001659393
+        },
+        {
+          "action": "roll-half",
+          "meanDifference": 0.030592964230890588,
+          "peak": 0.25
+        },
+        {
+          "action": "roll-one",
+          "meanDifference": 0.025141030615414905,
+          "peak": 0.25
+        },
+        {
+          "action": "cue-1",
+          "meanDifference": 0.20306498031127398,
+          "peak": 0.25
+        },
+        {
+          "action": "cue-2",
+          "meanDifference": 0.20273426546611176,
+          "peak": 0.25
+        },
+        {
+          "action": "jog-back",
+          "meanDifference": 0.18605388216697566,
+          "peak": 0.25
+        },
+        {
+          "action": "jog-forward",
+          "meanDifference": 0.18884062035000693,
+          "peak": 0.25
+        },
+        {
+          "action": "backspin",
+          "meanDifference": 0.02176810941801625,
+          "peak": 0.25
+        },
+        {
+          "action": "filter",
+          "meanDifference": 0.002411956931521672,
+          "peak": 0.25294986367225647
+        },
+        {
+          "action": "echo",
+          "meanDifference": 0.019619121351079002,
+          "peak": 0.25
+        }
+      ],
+      "checks": [
+        "automatic moves disabled",
+        "manual roll and real short buffer",
+        "backspin reverse buffer",
+        "cue seek and correct after-track ending",
+        "echo automation",
+        "pointer jog",
+        "loop release",
+        "stop cancels future return",
+        "silent speakers"
+      ]
+    }
+  ]
+}

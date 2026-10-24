@@ -1,0 +1,18 @@
+{
+  "owner_statement": "1 and 5 is good the rests are bad not a dj performance songs",
+  "scope": "First six GPU-generated comparison clips",
+  "accepted_for_development": {
+    "listen-01.wav": "house-baseline",
+    "listen-05.wav": "house-phrased"
+  },
+  "rejected": {
+    "listen-02.wav": "tech-house-baseline",
+    "listen-03.wav": "tech-house-phrased",
+    "listen-04.wav": "techno-phrased",
+    "listen-06.wav": "techno-baseline"
+  },
+  "finding": "Both house arms accepted; both tech-house and both techno arms rejected. No evidence that the longer phrase-directed house prompt beats the short house prompt.",
+  "overall_quality": "PARTIAL",
+  "professional_DJ_qualification": "NOT RUN",
+  "next": "Four longer 60-second house-based drafts at 128/132 BPM; same $6 total campaign authorization and one GPU at a time; no use of rejected tracks as training data or default playback."
+}

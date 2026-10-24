@@ -1,6 +1,11 @@
 #!/bin/bash
 # Run only inside the temporary research GPU container. No owner audio or credentials.
 set -euo pipefail
+case "${1-}" in
+  --club-benchmark) export JAMLOOM_CLUB_BENCHMARK=1 ;;
+  "") ;;
+  *) exit 2 ;;
+esac
 cd /workspace
 test ! -e ace-step
 export DEBIAN_FRONTEND=noninteractive
@@ -16,9 +21,12 @@ cd ace-step
 timeout 1200 uv sync --frozen --no-dev --python 3.12
 timeout 1200 .venv/bin/python - <<'PY'
 from huggingface_hub import snapshot_download
+import os
+patterns = ['config.json', 'Qwen3-Embedding-0.6B/*', 'acestep-v15-turbo/*', 'vae/*']
+if os.environ.get('JAMLOOM_CLUB_BENCHMARK') != '1':
+    patterns.append('acestep-5Hz-lm-1.7B/*')
 snapshot_download('ACE-Step/Ace-Step1.5', revision='19671f406d603126926c1b7e2adc169acbcade22',
-    local_dir='checkpoints', allow_patterns=['config.json', 'Qwen3-Embedding-0.6B/*',
-    'acestep-v15-turbo/*', 'vae/*', 'acestep-5Hz-lm-1.7B/*'])
+    local_dir='checkpoints', allow_patterns=patterns)
 PY
 mkdir -p /workspace/results
 nvidia-smi -q > /workspace/results/nvidia-smi.txt
