@@ -18,6 +18,8 @@
 | GPU campaign | PARTIAL | Both trials PASS technical; ten outputs retrieved and both rentals destroyed. ~$0.113 combined observed debit under the same $6 cap and original deadline. Owner accepts first-round house clips 1/5; refinement clip 3 (rolling-house brief, requested 128 BPM) accepted for development |
 | Listening and production promotion | PARTIAL listening; promotion NOT RUN | Owner: “okay, not perfect but a good start.” First GPU clips 1/5 accepted; remaining four rejected. Refinement clip 3 selected; other refinement clips not rated explicitly. No numeric scores or automatic model promotion |
 
+**Naming increment:** party/venue name required before Start, safe named audio/details downloads, session title in recording receipt, named private R2 download support; local-file test controls clarified. 118 site tests, 161 web tests, final filename-boundary checks and Chromium/WebKit naming/recording checks, build and bundle audit PASS; hosted saving remains unfinished.
+
 **Completed increment:** local mixer recording, finite-duration selector removal, private `jamloom-ai-dj-sessions` bucket and multipart storage adapter. 276 unit tests, Chromium/WebKit suite, TypeScript, production build, bundle audit and real R2 multipart check PASS. Continuous generation and automatic session saving remain open. [Evidence](ai-dj-sessions.md).
 
 ## AI DJ correction and licensed training sources — 2026-10-24

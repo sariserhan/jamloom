@@ -23,3 +23,13 @@ test('invalid multipart requests fail before provider access',async()=>{
  await assert.rejects(store.complete(key,'upload',10001,100),/final recording bounds/);
  await assert.rejects(store.abort('../another-user','upload'),/recording key/);
 });
+
+test('signed session downloads use the party name without changing private object identity',async()=>{
+ const store=djSessionStore({R2_AI_DJ_BUCKET:'jamloom-ai-dj-sessions',R2_ACCOUNT_ID:'a'.repeat(32),R2_ACCESS_KEY_ID:'test-only',R2_SECRET_ACCESS_KEY:'test-only'}),key=djRecordingKey('owner','a'.repeat(32),'audio/mp4');
+ const url=new URL(await store.playbackURL(key,true,'東京 / Rooftop Friday\r\n"'));
+ assert.equal(decodeURIComponent(url.pathname),'/jamloom-ai-dj-sessions/'+key);
+ const disposition=url.searchParams.get('response-content-disposition')!;
+ assert.match(disposition,/^attachment; filename="jamloom-dj-session.m4a";/);
+ assert.ok(disposition.endsWith("filename*=UTF-8''"+encodeURIComponent('東京-rooftop-friday-jamloom.m4a')));
+ assert.ok(!/[\r\n]/.test(disposition));
+});

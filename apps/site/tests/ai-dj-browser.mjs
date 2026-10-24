@@ -24,7 +24,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   };
  });
  const page=await context.newPage(),errors=[],referenceRequests=[];page.on('request',r=>{if(r.url().includes('/ai-dj/reference'))referenceRequests.push(r.url());});page.on('pageerror',e=>errors.push(e.message));
- await page.goto(base+'/ai-dj');await page.getByRole('heading',{name:'Your music. Your room. Let the set flow.'}).waitFor();
+ await page.goto(base+'/ai-dj');await page.getByLabel('Party or venue name',{exact:true}).fill('Playback test');await page.getByRole('heading',{name:'Your music. Your room. Let the set flow.'}).waitFor();
  assert.equal(await page.evaluate(()=>window.graphs.length),0,'no audio before gesture');
  for(const width of [1440,800,390,320]){
   await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow '+width);

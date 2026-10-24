@@ -18,7 +18,7 @@ try{
   window.AudioContext=class extends Native{createBufferSource(){const source=super.createBufferSource(),start=source.start.bind(source);source.start=(...args)=>{window.endurance.starts.push({at:args[0],duration:source.buffer.duration});return start(...args);};source.addEventListener('ended',()=>window.endurance.ended++);return source;}createAnalyser(){const meter=super.createAnalyser();window.endurance.meter=meter;return meter;}};
  });
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(30000);
- await page.goto('http://localhost:3000/ai-dj');await page.getByText('Tracks & mix-point review',{exact:true}).click();
+ await page.goto('http://localhost:3000/ai-dj');await page.getByLabel('Party or venue name',{exact:true}).fill('Playback test');await page.getByText('Tracks & mix-point review',{exact:true}).click();
  for(const title of ['Party Sector','Black Diamond'])await page.getByRole('button',{name:'Remove '+title,exact:true}).click();
  await page.getByLabel(/I have permission to process/).check();
  const files=Array.from({length:12},(_,i)=>({name:`engineering-${i}.wav`,mimeType:'audio/wav',buffer:fixture(160+i*17)}));

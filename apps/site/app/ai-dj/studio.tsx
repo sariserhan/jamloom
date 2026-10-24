@@ -1,5 +1,6 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
+import {recordingTitle} from '../../../web/set-recording-name.js';
 import {DJLibrary} from './library';
 import {DJRecording,type DJRecordingControls} from './recording';
 import {AIDJPlayer,type DJSnapshot} from '../../lib/ai-dj-player';
@@ -11,7 +12,8 @@ const energies=['Warm-up','Steady','Driving','Peak','Full power'];
 
 export function AIDJ(){
  const [state,setState]=useState<DJSnapshot>(empty),[request,setRequest]=useState(''),[reply,setReply]=useState(''),[finishMinutes,setFinishMinutes]=useState('10');
- const [bank,setBank]=useState(djTracks),[importing,setImporting]=useState(false);
+ const [bank,setBank]=useState(djTracks),[importing,setImporting]=useState(false),[sessionName,setSessionName]=useState('');
+ const sessionTitle=useRef('');
  const jog=useRef<{index:number;x:number;time:number}|null>(null);
  const player=useRef<AIDJPlayer|null>(null),direction=useRef<Direction>(empty.direction),recording=useRef<DJRecordingControls|null>(null);
  const active=['loading','playing','closing','paused'].includes(state.status),running=['playing','closing'].includes(state.status);
@@ -27,6 +29,7 @@ export function AIDJ(){
   if(player.current)player.current.setDirection(value);else setState(s=>({...s,direction:{...direction.current}}));
  }
  function start(){
+  const title=recordingTitle(sessionName);if(!title)return;sessionTitle.current=title;
   setReply('');document.querySelectorAll('audio,video').forEach(a=>(a as HTMLMediaElement).pause());
   try{if(!player.current){player.current=new AIDJPlayer(snapshot=>{setState(snapshot);if(snapshot.analysis)setBank(rows=>rows.some(t=>t.sha256===snapshot.analysis!.sha256&&!t.analysis)?rows.map(t=>t.sha256===snapshot.analysis!.sha256?{...t,analysis:snapshot.analysis!}:t):rows);if(snapshot.status==='stopped'||snapshot.status==='error')setReply('');},bank);player.current.setDirection(direction.current);player.current.setMaster(state.master);player.current.setMode(state.mode);}void player.current.start();}
   catch{setReply('Audio could not start. Try a supported browser and press Start set again.');}
@@ -49,7 +52,7 @@ export function AIDJ(){
   else{player.current?.next();setReply('The next prepared track will enter with a short handoff.');}
  }
  return <div className="ai-dj">
-  <header className="aidj-intro"><div><p className="eyebrow">Jamloom AI DJ <span>Playback test</span></p><h1>Your music. Your room.<br/><em>Let the set flow.</em></h1></div><div className="aidj-start"><p>Continuous original generation is in development.<br/>This local preview tests mixing and recording.</p><div className="product-actions"><button className="primary" onClick={start} disabled={active||importing||!bank.length}>{state.status==='loading'?'Preparing…':'▶ Start set'}</button><button className="aidj-stop" onClick={()=>{player.current?.stop();setReply('');}} disabled={!active}>■ Stop</button></div></div></header>
+  <header className="aidj-intro"><div><p className="eyebrow">Jamloom AI DJ <span>Playback test</span></p><h1>Your music. Your room.<br/><em>Let the set flow.</em></h1></div><div className="aidj-start"><p>Continuous original generation is in development.<br/>This local preview tests mixing and recording.</p><label className="aidj-name">Party or venue name<input required maxLength={80} value={sessionName} onChange={e=>setSessionName(e.target.value)} disabled={active} placeholder="e.g. Rooftop Friday" aria-describedby="aidj-name-help"/></label><small id="aidj-name-help">Used to name your recording.</small><div className="product-actions"><button className="primary" onClick={start} disabled={active||importing||!bank.length||!recordingTitle(sessionName)}>{state.status==='loading'?'Preparing…':'▶ Start set'}</button><button className="aidj-stop" onClick={()=>{player.current?.stop();setReply('');}} disabled={!active}>■ Stop</button></div></div></header>
   <DJLibrary tracks={bank} disabled={active} onBusy={setImporting} onChange={tracks=>{player.current?.dispose();player.current=null;setState({...empty,direction:direction.current});setBank(tracks);}}/>
   <div className="aidj-session"><span>Playback test · local tracks</span><span>Output: system audio device</span><button disabled={!running&&state.status!=='paused'} onClick={()=>void pauseOrResume()}>{state.status==='paused'?'Resume':'Pause'}</button></div>
   <div className="aidj-topbar"><span className={'aidj-led '+(running?'on':'')}>{state.status==='closing'?'Closing set':state.status==='playing'?'On air':state.status==='loading'?'Preparing':state.status==='paused'?'Paused':'Ready when you are'}</span><span>Set time <b>{time(state.elapsed)}</b></span><span>{state.remaining!==null?`Finish in ${time(state.remaining)}`:state.mode==='auto'?'Autopilot · no automatic repeats':'Manual control'}</span></div>
@@ -94,7 +97,7 @@ export function AIDJ(){
     <div className="aidj-ending"><label>Wrap it up<select aria-label="Closing time" value={finishMinutes} onChange={e=>setFinishMinutes(e.target.value)}><option value="track">After this track</option><option value="1">In 1 minute</option><option value="5">In 5 minutes</option><option value="10">In 10 minutes</option><option value="30">In 30 minutes</option></select></label><button disabled={!running} onClick={()=>{player.current?.finish(finishMinutes==='track'?null:Number(finishMinutes)*60);setReply('');}}>Plan the ending ↘</button>{state.remaining!==null&&<button onClick={()=>{player.current?.continue();setReply('');}}>Keep the party going ↗</button>}</div>
    </aside>
   </div>
-  <DJRecording player={player} status={state.status} controls={recording}/>
+  <DJRecording title={sessionTitle} player={player} status={state.status} controls={recording}/>
   <section className="aidj-performance-feed" aria-label="Performance history"><strong>LIVE MOVES</strong>{state.performance.length?state.performance.slice(-4).map((event,i)=><span key={event.at+'-'+i}><small>{event.by}</small>{event.label}</span>):<span>Loops · rolls · jog · filter · echo</span>}</section>
   <p className="aidj-explanation" role="status">{state.plan}</p>
   <section className="aidj-plan" aria-label="Set plan"><div><small>NOW</small><strong>{state.decks.find(d=>d?.playing)?.title??'Ready for your first track'}</strong></div><span aria-hidden="true">→</span><div><small>NEXT DIRECTION</small><strong>{energies[state.direction.energy-1]} · {state.direction.mood}</strong></div><span aria-hidden="true">→</span><div><small>{state.remaining!==null?'THE FINISH':'NEXT TRANSITION'}</small><strong>{state.remaining!==null?`About ${time(state.remaining)}`:running&&state.transitionIn!==null?`In ${time(state.transitionIn)}`:'Waiting for Mix next'}</strong></div></section>

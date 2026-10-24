@@ -1,8 +1,9 @@
 import { studioElement, onStudioHidden } from './studio-windows.js';
 import {resumeAudio} from './audio.js';
 import {sha256} from './live-take.js';
+import {recordingTitle,recordingFileStem} from './set-recording-name.js';
 export const SET_SECONDS=3600,SET_BYTES=96*1024*1024;
-export function attachSetRecording({graph,context,mixer,emit,element: $=studioElement,onHidden=onStudioHidden,workletURL='./set-meter-worklet.js',canStart=()=>true}){
+export function attachSetRecording({graph,context,mixer,emit,element: $=studioElement,onHidden=onStudioHidden,workletURL='./set-meter-worklet.js',canStart=()=>true,getTitle=()=>''}){
  let recorder,destination,meter,sink,chunks=[],bytes=0,url,receiptURL,token=0,timer,loadedContext,summary=null,starting=false;
  let finished=Promise.resolve(),finish;
  function disconnect(){clearTimeout(timer);if(meter){try{mixer().meter.disconnect(meter);}catch{}meter.port.close();meter.disconnect();sink.disconnect();meter=null;}if(destination){try{mixer().meter.disconnect(destination);}catch{}destination.stream.getTracks().forEach(t=>t.stop());destination=null;}}
@@ -19,7 +20,7 @@ export function attachSetRecording({graph,context,mixer,emit,element: $=studioEl
   return finished;
  }
  $('set-record-start').onclick=async()=>{
-  if(recorder||starting||url||!$('set-record-consent').checked||!canStart())return;clear('Preparing set recording…');const version=token;starting=true;finished=new Promise(resolve=>finish=resolve);controls();timer=setTimeout(()=>clear('Recorder did not start. Please try again.'),15000);
+  if(recorder||starting||url||!$('set-record-consent').checked||!canStart())return;clear('Preparing set recording…');const version=token,title=recordingTitle(getTitle()),fileStem=title?recordingFileStem(title):'jamloom-practice-set';starting=true;finished=new Promise(resolve=>finish=resolve);controls();timer=setTimeout(()=>clear('Recorder did not start. Please try again.'),15000);
   try{graph();await resumeAudio(context());if(version!==token)return;
    const type=['audio/webm;codecs=opus','audio/mp4'].find(t=>window.MediaRecorder?.isTypeSupported(t));if(!type)throw Error('Long recordings are unavailable in this browser. Use a browser with Opus or AAC recording support.');
    const audio=context();if(loadedContext!==audio){await audio.audioWorklet.addModule(workletURL);if(version!==token)return;loadedContext=audio;}if(version!==token)return;
@@ -39,9 +40,9 @@ export function attachSetRecording({graph,context,mixer,emit,element: $=studioEl
    capture.onstop=async()=>{if(version!==token)return;try{
     let deadline;await Promise.race([measured,new Promise((_,reject)=>{deadline=setTimeout(()=>reject(Error('Audio measurement timed out.')),5000);})]).finally(()=>clearTimeout(deadline));
     if(version!==token)return;const blob=new Blob(chunks,{type});if(!blob.size||!summary?.frames)throw Error('No audio captured.');
-    const receipt={version:1,frames:summary.frames,rate:summary.rate,gaps:summary.gaps,clockStalls:summary.clockStalls,seconds:summary.frames/summary.rate,bytes:blob.size,mime:type,sha256:await sha256(await blob.arrayBuffer())};
+    const receipt={version:1,...(title?{title}:{}),frames:summary.frames,rate:summary.rate,gaps:summary.gaps,clockStalls:summary.clockStalls,seconds:summary.frames/summary.rate,bytes:blob.size,mime:type,sha256:await sha256(await blob.arrayBuffer())};
     if(version!==token)return;disconnect();recorder=null;chunks=[];url=URL.createObjectURL(blob);receiptURL=URL.createObjectURL(new Blob([JSON.stringify(receipt,null,2)],{type:'application/json'}));
-    $('set-record-download').href=url;$('set-record-download').download='jamloom-practice-set.'+(type.includes('mp4')?'m4a':'webm');$('set-record-download').hidden=false;$('set-record-details').href=receiptURL;$('set-record-details').hidden=false;
+    $('set-record-download').href=url;$('set-record-download').download=fileStem+'.'+(type.includes('mp4')?'m4a':'webm');$('set-record-download').hidden=false;$('set-record-details').href=receiptURL;$('set-record-details').download=title?fileStem+'-details.json':'jamloom-set-details.json';$('set-record-details').hidden=false;
     $('set-record-player').src=url;$('set-record-player').hidden=false;$('set-record-status').textContent=`${receipt.seconds.toFixed(1)} seconds saved in this tab. Download before leaving.${receipt.gaps?' Audio-clock discontinuity detected; this take cannot pass a set assessment.':''}`;emit({action:'recording.complete',receipt});controls();finish?.();finish=null;
    }catch(e){if(version===token)clear(e.message);}};
    controls();

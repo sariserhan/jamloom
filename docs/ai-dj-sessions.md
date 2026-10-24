@@ -52,6 +52,35 @@ for progressive R2 recording. The shared recorder now supports host teardown,
 new audio contexts, bounded finalization and protection against stale errors.
 The existing Studio/Academy host uses its original default configuration.
 
+## Party and venue names — 2026-10-24
+
+The preview asks for a **Party or venue name** before Start set. Blank names do
+not start playback; the name stays locked while the set is active. A recording
+snapshots the session title so later edits cannot rename an earlier take.
+The readable title is included in the recording receipt; audio and receipt
+filenames use a bounded, safe stem such as `rooftop-friday-jamloom.webm` and
+`rooftop-friday-jamloom-details.json`. AAC browsers use `.m4a`. International
+letters are retained; path separators and control characters cannot become
+filename syntax. Existing Studio/Academy downloads keep their original names.
+
+The R2 adapter accepts the title for its signed download disposition, including
+UTF-8 filenames. Internal object keys remain owner/session identities, so two
+parties with the same name cannot overwrite each other. Persisting that title
+with the authenticated session remains part of the unfinished session service.
+The original live R2 receipt below predates named downloads; the new disposition
+is checked locally through the actual SDK signer, without another provider write.
+
+[Naming verification](evidence/ai-dj-sessions-20261024/naming-verification.json):
+118 site tests, 161 web tests, final filename-boundary checks and Chromium/WebKit
+required-name, named download, preserved prior filename, layout/accessibility and
+legacy Studio checks PASS. The first WebKit run failed inside the test harness
+when suspending every created audio context; the corrected test targets the
+active recording context and passes in both engines.
+
+The old “Practice bank” and “Your music · stays on this device” labels are now
+**Load test tracks** and **Local playback test**. These controls load example or
+user-selected local files for engineering checks; they do not generate music.
+
 ## R2 infrastructure and storage adapter
 
 Created **`jamloom-ai-dj-sessions`** in the existing Cloudflare account, ENAM,

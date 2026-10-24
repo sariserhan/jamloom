@@ -1,0 +1,125 @@
+{
+  "status": "PASS technical",
+  "human_listening": "NOT RUN",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "receipt": {
+        "version": 1,
+        "title": "Rooftop Friday",
+        "frames": 99584,
+        "rate": 32000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 3.112,
+        "bytes": 49459,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "dc7f268c4c3e721b12d8e30897d858c17994e627e97489a15058236daebf5a2a"
+      },
+      "decoded": {
+        "seconds": 3.06,
+        "channels": 2,
+        "rms": 0.06217614096046117,
+        "peak": 0.08866074681282043
+      },
+      "legacyStudioReceipt": {
+        "version": 1,
+        "frames": 59904,
+        "rate": 48000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 1.248,
+        "bytes": 19497,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "508f5c0f1a652ad61b56b9b99cbbeaf40270867b2ed7afd0be3674b984588bc0"
+      },
+      "checks": [
+        "party name required before Start; locked during session; named audio and receipt",
+        "consent and playing gate",
+        "actual compressed capture",
+        "download SHA-256 and decoded PCM",
+        "pause finalizes",
+        "stop and natural end finalize",
+        "withdrawal removes take without stopping playback",
+        "unsupported codec recovery",
+        "hidden/audio interruption",
+        "no finite product session selector",
+        "route cleanup",
+        "no microphone",
+        "speakers muted",
+        "390/320px layout",
+        "scoped Axe",
+        "existing Studio/Academy recorder"
+      ],
+      "errors": [],
+      "aiDJConsoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+      ],
+      "navigationAborts": []
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "receipt": {
+        "version": 1,
+        "title": "Rooftop Friday",
+        "frames": 98304,
+        "rate": 32000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 3.072,
+        "bytes": 58517,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "ebc35b3379b8fca0df7892429e65279bee2c3fc398b3fada50c0a080908a7b33"
+      },
+      "decoded": {
+        "seconds": 3.075,
+        "channels": 2,
+        "rms": 0.062487977561244946,
+        "peak": 0.09480445832014084
+      },
+      "legacyStudioReceipt": {
+        "version": 1,
+        "frames": 59904,
+        "rate": 48000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 1.248,
+        "bytes": 24810,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "be457fa4c548c07633d85a956aac14388d0c434d22568dc0a5e2821f3e16b24d"
+      },
+      "checks": [
+        "party name required before Start; locked during session; named audio and receipt",
+        "consent and playing gate",
+        "actual compressed capture",
+        "download SHA-256 and decoded PCM",
+        "pause finalizes",
+        "stop and natural end finalize",
+        "withdrawal removes take without stopping playback",
+        "unsupported codec recovery",
+        "hidden/audio interruption",
+        "no finite product session selector",
+        "route cleanup",
+        "no microphone",
+        "speakers muted",
+        "390/320px layout",
+        "scoped Axe",
+        "existing Studio/Academy recorder"
+      ],
+      "errors": [],
+      "aiDJConsoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+      ],
+      "navigationAborts": [
+        "/localhost:3000/api/site-status due to access control checks.",
+        "/localhost:3000/api/site-status due to access control checks.",
+        "/localhost:3000/api/site-status due to access control checks.",
+        "/localhost:3000/api/site-status due to access control checks."
+      ]
+    }
+  ]
+}

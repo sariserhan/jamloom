@@ -1,6 +1,7 @@
 import {createHash} from 'node:crypto';
 import {CreateMultipartUploadCommand,UploadPartCommand,ListPartsCommand,CompleteMultipartUploadCommand,AbortMultipartUploadCommand,GetObjectCommand,HeadObjectCommand,DeleteObjectCommand,type Part} from '@aws-sdk/client-s3';
 import {getSignedUrl} from '@aws-sdk/s3-request-presigner';
+import {recordingTitle,recordingFileStem} from '../../web/set-recording-name.js';
 import {r2Client} from './audio-store';
 
 export const DJ_PART_BYTES=5*1024*1024,DJ_MAX_PARTS=10000;
@@ -54,7 +55,7 @@ export function djSessionStore(env:Record<string,string|undefined>=process.env){
    return {bytes:object.ContentLength,mime:object.ContentType,etag:object.ETag,parts:count};
   },
   async abort(key:string,uploadId:string){validUpload(uploadId);await client.send(new AbortMultipartUploadCommand({...base(key),UploadId:uploadId}),options());},
-  playbackURL(key:string,download=false){return getSignedUrl(client,new GetObjectCommand({...base(key),ResponseCacheControl:'private, no-store',ResponseContentDisposition:`${download?'attachment':'inline'}; filename="jamloom-dj-session.${key.endsWith('.m4a')?'m4a':'webm'}"`}),{expiresIn:300});},
+  playbackURL(key:string,download=false,title=''){const named=recordingTitle(title),extension=key.endsWith('.m4a')?'m4a':'webm';return getSignedUrl(client,new GetObjectCommand({...base(key),ResponseCacheControl:'private, no-store',ResponseContentDisposition:`${download?'attachment':'inline'}; filename="jamloom-dj-session.${extension}"${named?`; filename*=UTF-8''${encodeURIComponent(recordingFileStem(named)+'.'+extension)}`:''}`}),{expiresIn:300});},
   async remove(key:string){await client.send(new DeleteObjectCommand(base(key)),options());},
  };
 }

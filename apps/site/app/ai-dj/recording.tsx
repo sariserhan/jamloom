@@ -3,13 +3,13 @@ import {attachSetRecording} from '../../../web/set-recording.js';
 import type {AIDJPlayer,DJSnapshot} from '../../lib/ai-dj-player';
 
 export type DJRecordingControls=ReturnType<typeof attachSetRecording>;
-export function DJRecording({player,status,controls}:{player:RefObject<AIDJPlayer|null>;status:DJSnapshot['status'];controls:RefObject<DJRecordingControls|null>}){
+export function DJRecording({player,status,controls,title}:{title:RefObject<string>;player:RefObject<AIDJPlayer|null>;status:DJSnapshot['status'];controls:RefObject<DJRecordingControls|null>}){
  const root=useRef<HTMLElement>(null);
  useEffect(()=>{
   const host=root.current!;
   const element=(id:string)=>host.querySelector('#'+id);
   const canStart=()=>['playing','closing'].includes(player.current?.snapshot().status??'');
-  const recording=attachSetRecording({element,canStart,
+  const recording=attachSetRecording({element,canStart,getTitle:()=>title.current,
    graph:()=>{if(!canStart())throw Error('Start the set before recording.');},
    context:()=>player.current!.context,mixer:()=>player.current!.mixer,emit:()=>{},
    workletURL:'/studio/set-meter-worklet.js',
@@ -17,7 +17,7 @@ export function DJRecording({player,status,controls}:{player:RefObject<AIDJPlaye
   });
   controls.current=recording;
   return()=>{recording.dispose();controls.current=null;};
- },[player,controls]);
+ },[player,controls,title]);
  useEffect(()=>{
   if(status==='stopped'||status==='error'){
    if(player.current?.context.state==='running')void controls.current?.stop();else controls.current?.interrupt();

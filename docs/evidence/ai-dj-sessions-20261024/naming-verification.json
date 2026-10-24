@@ -1,0 +1,41 @@
+{
+  "status": "PASS naming implementation and completed local checks",
+  "checks": {
+    "site_units": "PASS 118",
+    "shared_web_units": "PASS 161; final filename-boundary assertions also PASS in 9 focused recorder tests",
+    "typescript": "PASS",
+    "browsers": "PASS Chromium and WebKit: required title, real named download and receipt, later party rename preserves existing take, legacy Studio recording, responsive layout and accessibility",
+    "r2_filename": "PASS actual SDK signer, Unicode Content-Disposition and unchanged private key; no provider write",
+    "build": "PASS production build and bundle audit; no server secrets in 42 client files"
+  },
+  "source_sha256": {
+    "apps/web/set-recording-name.js": "7659d8718d9c688e2c7c67ecca2f22667d873e17bfeaede909adca0f4410ae25",
+    "apps/web/set-recording.js": "3bd7c90ca13f2e7ca06207520c9dceaec75c7ce3792c6cdd5ef599ec5e74a1d0",
+    "apps/site/app/ai-dj/studio.tsx": "627367b65a5c6b6406196ea3cc560535119613ebfa833324db9ca83e65c78b5e",
+    "apps/site/app/ai-dj/library.tsx": "7bb0c15ea6bca06cce6286bf7509c468aaf06fbf52f00801d1db79a2e846f72d",
+    "apps/site/app/ai-dj/recording.tsx": "a5580e20dd7c6ef999260d10032524a0fab0ca37316d22a8cebc245f2e850669",
+    "apps/site/lib/dj-session-store.ts": "36446f92ebdea915af340a17d33d5254f88705d5b7c0143c62405eee86a87976",
+    "apps/site/tests/ai-dj-recording-browser.mjs": "af2592b00bc2ec329259847c6b1e2d8df08a35667b6f385a61f0f9b1774b651a"
+  },
+  "test_retry": {
+    "initial": "WebKit InvalidStateError: AudioDestinationNode is not initialized while the test tried to suspend every AudioContext it had created.",
+    "change": "Interruption test now suspends the context that created the active recording MediaStreamDestination.",
+    "final": "PASS Chromium and WebKit"
+  },
+  "not_run": [
+    "New named download against live R2",
+    "Continuous generation, authenticated session persistence and automatic R2 saving remain unfinished",
+    "Venue or musical-quality qualification"
+  ],
+  "pushed": false,
+  "deployed": false,
+  "log_sha256": {
+    "jamloom-party-site-tests.log": "554a8e07ee25b8f4cbd735b30dec12c1747c9f9e8aa473e0a0b3f4fe76cc6b2c",
+    "jamloom-party-web-tests.log": "a2024682999a657b8a93e122726f0677b8609d1094d941a764e3f4ce819133e0",
+    "jamloom-party-names.log": "d7b9cbe79852af4ed43a847184f047c148423d6be036637cbd4d3bcf0663fa48",
+    "jamloom-party-browser.log": "2c0699921cdeffc055ac105fe539a5ddbfa5b95735049174f9bb1a5864f952c1",
+    "jamloom-party-recording-final.log": "b41de2b3c2906b2ad8fa4eaf30a174cd8bd63481b08fc4f2b3b41b7d7c14d4c3",
+    "jamloom-party-build.log": "4b198e5740213eac18d74fd47f0faca077fec2cab348664683c2ca439e97b11e",
+    "jamloom-party-audit.log": "ae0f06644afcd68cee1507159bafd08904e498f86f502d0cd9c7f84f2acb9224"
+  }
+}

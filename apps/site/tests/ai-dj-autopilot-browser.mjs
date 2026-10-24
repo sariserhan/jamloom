@@ -9,7 +9,7 @@ const files=[{name:'fixture-a.wav',mimeType:'audio/wav',buffer:fixture(220)},{na
 for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  const browser=await engine.launch();try{
  const context=await browser.newContext({viewport:{width:1440,height:1000}});await context.addInitScript(silenceSpeakers);const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(30000);
- await page.goto('http://localhost:3000/ai-dj');await page.getByText('Tracks & mix-point review',{exact:true}).click();
+ await page.goto('http://localhost:3000/ai-dj');await page.getByLabel('Party or venue name',{exact:true}).fill('Playback test');await page.getByText('Tracks & mix-point review',{exact:true}).click();
  for(const title of ['Party Sector','Black Diamond'])await page.getByRole('button',{name:'Remove '+title,exact:true}).click();
  await page.getByLabel(/I have permission to process/).check();
  await page.evaluate(()=>{const Native=window.AudioContext;let fail=true;window.AudioContext=class extends Native{constructor(...args){if(fail){fail=false;throw Error('Audio engine unavailable');}super(...args);}};});

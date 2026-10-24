@@ -32,7 +32,7 @@ export class AIDJPlayer{
  private active=0;
  private blend:Blend|null=null;
  private state:DJSnapshot['status']='idle';
- private message='Choose local tracks or try the two-track practice bank.';
+ private message='Choose local files or load the two example tracks for playback testing.';
  private direction:Direction={energy:4,mood:'deep',vocals:true};
  private master=.65;
  private mode:'auto'|'together'='together';

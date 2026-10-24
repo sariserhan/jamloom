@@ -10,7 +10,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  const browser=await engine.launch();try{
  const context=await browser.newContext({viewport:{width:1440,height:1000}});await context.addInitScript(silenceSpeakers);
  await context.addInitScript(()=>{const Native=window.AudioContext;window.graphs=[];window.AudioContext=class extends Native{constructor(...args){super(...args);this.sources=[];this.meters=[];window.graphs.push(this);}createBufferSource(){const s=super.createBufferSource();this.sources.push(s);return s;}createAnalyser(){const a=super.createAnalyser();this.meters.push(a);return a;}};});
- const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://localhost:3000/ai-dj');
+ const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://localhost:3000/ai-dj');await page.getByLabel('Party or venue name',{exact:true}).fill('Playback test');
  const rendered=await page.evaluate(async code=>{
   const exports={};new Function('exports',code)(exports);const {PerformanceDeck}=exports;
   const render=async action=>{
