@@ -1,0 +1,248 @@
+{
+  "date": "2026-10-24",
+  "status": "PASS",
+  "website_tests": {
+    "passed": 112,
+    "failed": 0
+  },
+  "typecheck": "PASS",
+  "build": "PASS",
+  "bundle_audit": "PASS",
+  "playback_browser": {
+    "status": "PASS",
+    "results": [
+      {
+        "browser": "chromium",
+        "status": "PASS",
+        "widths": [
+          1440,
+          800,
+          390,
+          320
+        ],
+        "initialPeak": 0.30822330713272095,
+        "captureBytes": 1632192,
+        "checks": [
+          "no autoplay",
+          "real PCM",
+          "two-deck crossfade",
+          "direction",
+          "shared controls",
+          "closing and cancellation",
+          "stop during load",
+          "hidden tab stop",
+          "corrupt bank recovery",
+          "accessibility",
+          "speaker isolation"
+        ]
+      },
+      {
+        "browser": "webkit",
+        "status": "PASS",
+        "widths": [
+          1440,
+          800,
+          390,
+          320
+        ],
+        "initialPeak": 0.08401310443878174,
+        "captureBytes": 512942,
+        "checks": [
+          "no autoplay",
+          "real PCM",
+          "two-deck crossfade",
+          "direction",
+          "shared controls",
+          "closing and cancellation",
+          "stop during load",
+          "hidden tab stop",
+          "corrupt bank recovery",
+          "accessibility",
+          "speaker isolation"
+        ]
+      }
+    ]
+  },
+  "performance_browser": {
+    "status": "PASS",
+    "results": [
+      {
+        "browser": "chromium",
+        "status": "PASS",
+        "rendered": [
+          {
+            "action": "loop-2",
+            "meanDifference": 0.13010786820204376,
+            "peak": 0.24903129041194916
+          },
+          {
+            "action": "loop-4",
+            "meanDifference": 0.10148991925312828,
+            "peak": 0.24903129041194916
+          },
+          {
+            "action": "roll-half",
+            "meanDifference": 0.030592960715225957,
+            "peak": 0.25
+          },
+          {
+            "action": "roll-one",
+            "meanDifference": 0.02514102373198667,
+            "peak": 0.25
+          },
+          {
+            "action": "cue-1",
+            "meanDifference": 0.2030649803161234,
+            "peak": 0.25
+          },
+          {
+            "action": "cue-2",
+            "meanDifference": 0.2027342654741517,
+            "peak": 0.25
+          },
+          {
+            "action": "jog-back",
+            "meanDifference": 0.1860538852376656,
+            "peak": 0.25
+          },
+          {
+            "action": "jog-forward",
+            "meanDifference": 0.18884062345574096,
+            "peak": 0.25
+          },
+          {
+            "action": "backspin",
+            "meanDifference": 0.02176810836750792,
+            "peak": 0.25
+          },
+          {
+            "action": "filter",
+            "meanDifference": 0.0024119627778129596,
+            "peak": 0.25294989347457886
+          },
+          {
+            "action": "echo",
+            "meanDifference": 0.019619127865562178,
+            "peak": 0.25
+          }
+        ],
+        "checks": [
+          "auto loop and illuminated pad",
+          "manual roll and real short buffer",
+          "backspin reverse buffer",
+          "cue seek",
+          "echo automation",
+          "pointer jog",
+          "loop release",
+          "stop cancels future return",
+          "silent speakers"
+        ]
+      },
+      {
+        "browser": "webkit",
+        "status": "PASS",
+        "rendered": [
+          {
+            "action": "loop-2",
+            "meanDifference": 0.13010786520764048,
+            "peak": 0.24903135001659393
+          },
+          {
+            "action": "loop-4",
+            "meanDifference": 0.10148990923216848,
+            "peak": 0.24903135001659393
+          },
+          {
+            "action": "roll-half",
+            "meanDifference": 0.030592964230890588,
+            "peak": 0.25
+          },
+          {
+            "action": "roll-one",
+            "meanDifference": 0.025141030615414905,
+            "peak": 0.25
+          },
+          {
+            "action": "cue-1",
+            "meanDifference": 0.20306498031127398,
+            "peak": 0.25
+          },
+          {
+            "action": "cue-2",
+            "meanDifference": 0.20273426546611176,
+            "peak": 0.25
+          },
+          {
+            "action": "jog-back",
+            "meanDifference": 0.18605388216697566,
+            "peak": 0.25
+          },
+          {
+            "action": "jog-forward",
+            "meanDifference": 0.18884062035000693,
+            "peak": 0.25
+          },
+          {
+            "action": "backspin",
+            "meanDifference": 0.02176810941801625,
+            "peak": 0.25
+          },
+          {
+            "action": "filter",
+            "meanDifference": 0.002411956931521672,
+            "peak": 0.25294986367225647
+          },
+          {
+            "action": "echo",
+            "meanDifference": 0.019619121351079002,
+            "peak": 0.25
+          }
+        ],
+        "checks": [
+          "auto loop and illuminated pad",
+          "manual roll and real short buffer",
+          "backspin reverse buffer",
+          "cue seek",
+          "echo automation",
+          "pointer jog",
+          "loop release",
+          "stop cancels future return",
+          "silent speakers"
+        ]
+      }
+    ]
+  },
+  "production_routes": {
+    "/ai-dj": 404,
+    "/ai-dj/audio": 404,
+    "/ai-dj/reference": 404
+  },
+  "private_assets_in_production_traces": false,
+  "private_reference": {
+    "excerpts": 3,
+    "seconds_each": 80,
+    "total_bytes": 3843261,
+    "uploaded": false,
+    "original_modified": false
+  },
+  "resources": {
+    "disk_free_before_gib": 22,
+    "disk_free_after_gib": 23,
+    "macos_memory_free_percent_at_initial_check": 53,
+    "browsers_run_sequentially": true
+  },
+  "human_listening": "NOT RUN",
+  "verified_beat_grid": "NOT RUN",
+  "venue_endurance": "NOT RUN",
+  "paid_generation": "NOT RUN",
+  "push_deployment": "NOT RUN",
+  "audible_wav": {
+    "seconds": 12,
+    "bytes": 2117054,
+    "peak": 0.635894775390625,
+    "rms": 0.0965402034527931,
+    "sha256": "6076a1afa0e4fe7097576be0c90c28180406ce672389b6cad0633971bf1a56a7",
+    "path": "renders/ai-dj-performance-20261024/performance-sample.wav",
+    "status": "PASS"
+  }
+}

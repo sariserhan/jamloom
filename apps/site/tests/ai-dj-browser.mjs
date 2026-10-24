@@ -6,7 +6,7 @@ import AxeBuilder from '@axe-core/playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
 const base=process.env.JAMLOOM_AI_DJ_TEST_URL??'http://localhost:3000';
 assert.ok(['localhost','127.0.0.1'].includes(new URL(base).hostname));
-const folder=resolve('../../renders/ai-dj-local-20261024');await mkdir(folder,{recursive:true});
+const folder=resolve('../../renders/ai-dj-performance-20261024');await mkdir(folder,{recursive:true});
 const results=[];
 for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  const browser=await engine.launch();
@@ -24,7 +24,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   };
  });
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto(base+'/ai-dj');await page.getByRole('heading',{name:'You set the mood. We take the decks.'}).waitFor();
+ await page.goto(base+'/ai-dj');await page.getByRole('heading',{name:'The room is yours. Watch the set unfold.'}).waitFor();
  assert.equal(await page.evaluate(()=>window.graphs.length),0,'no audio before gesture');
  for(const width of [1440,800,390,320]){
   await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow '+width);
@@ -45,12 +45,12 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   const graph=window.graphs[0],tap=graph.createMediaStreamDestination();graph.probes[0].connect(tap);
   const recorder=new MediaRecorder(tap.stream),chunks=[];window.captureDone=new Promise(resolve=>{recorder.ondataavailable=e=>chunks.push(e.data);recorder.onstop=async()=>resolve(Array.from(new Uint8Array(await new Blob(chunks).arrayBuffer())));});window.recorder=recorder;recorder.start();
  });
- await page.getByRole('button',{name:'Play together',exact:true}).click();assert.equal(await page.getByLabel('DJ tone',{exact:true}).isEnabled(),true);
- await page.getByLabel('DJ tone',{exact:true}).fill('6');await page.getByLabel('DJ echo',{exact:true}).fill('0.2');
+ await page.getByRole('button',{name:'Play together',exact:true}).click();assert.equal(await page.getByLabel('Deck A low',{exact:true}).isEnabled(),true);
+ await page.getByLabel('Deck A low',{exact:true}).fill('6');await page.getByLabel('Deck A filter',{exact:true}).fill('0.2');
  await page.waitForTimeout(250);assert.ok(await page.evaluate(()=>Math.abs(window.graphs[0].filters[0].gain.value-6)<.01),'real tone filter');
- await page.getByRole('button',{name:'Autopilot',exact:true}).click();assert.equal(await page.getByLabel('DJ echo',{exact:true}).inputValue(),'0');
+ await page.getByRole('button',{name:'Autopilot',exact:true}).click();await page.waitForTimeout(250);assert.ok(Number(await page.getByLabel('Deck A filter',{exact:true}).inputValue())<.001);
  await command('play an unknown artist');assert.match(await page.locator('.aidj-reply').innerText(),/haven’t changed/);
- await command('more energy');assert.equal(await page.getByLabel('Set energy',{exact:true}).inputValue(),'4');
+ await command('more energy');assert.equal(await page.getByLabel('Set energy',{exact:true}).inputValue(),'5');
  await page.waitForFunction(()=>document.querySelectorAll('.aidj-deck-head span')[1]?.textContent==='READY');
  await page.getByRole('button',{name:'Mix next →',exact:true}).click();
  await page.waitForFunction(()=>Array.from(document.querySelectorAll('.aidj-deck-head span')).every(n=>n.textContent==='PLAYING'),{},{timeout:12000});
@@ -75,21 +75,21 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  await page.evaluate(()=>window.recorder.stop());const capture=await page.evaluate(()=>window.captureDone);await writeFile(resolve(folder,`${name}-actual-mix.audio`),Buffer.from(capture));
  assert.ok(await page.evaluate(()=>window.__jamloomSilentOutput().every(o=>o.gain===0&&o.peak===0)),'speakers muted');
  // Cancellation must prevent a late fetch/decode from starting the set.
- await page.route('**/studio/practice-audio/*.mp3',async route=>{await new Promise(r=>setTimeout(r,600));try{await route.continue();}catch{}});
+ await page.route('**/ai-dj/reference?id=*',async route=>{await new Promise(r=>setTimeout(r,600));try{await route.continue();}catch{}});
  await page.getByRole('button',{name:'Start set'}).click();await command('stop now');await page.waitForTimeout(1200);
  assert.equal(await page.locator('.aidj-deck-head').filter({hasText:'PLAYING'}).count(),0);
  assert.equal(await page.getByRole('button',{name:'Start set'}).isEnabled(),true);
- await page.unroute('**/studio/practice-audio/*.mp3');
+ await page.unroute('**/ai-dj/reference?id=*');
  await page.getByRole('button',{name:'Start set'}).click();await page.waitForFunction(()=>document.querySelector('.aidj-deck-head span').textContent==='PLAYING');
- await page.getByRole('button',{name:'Play together',exact:true}).click();await page.getByLabel('DJ echo',{exact:true}).fill('0.3');
+ await page.getByRole('button',{name:'Play together',exact:true}).click();await page.getByLabel('Deck A filter',{exact:true}).fill('0.3');
  await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:true});document.dispatchEvent(new Event('visibilitychange'));});
  assert.match(await page.locator('.aidj-reply').innerText(),/tab was hidden/);
  await page.waitForTimeout(200);assert.ok(await page.evaluate(()=>{const a=window.graphs[0].probes[0],d=new Float32Array(a.fftSize);a.getFloatTimeDomainData(d);return d.every(n=>Math.abs(n)<.0001);}),'stop silences echo tails');
  await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:false});});
  // Every source fails checksum: bounded fallback, then a recoverable error, no playback.
- await page.route('**/studio/practice-audio/*.mp3',r=>r.fulfill({status:200,body:'corrupt audio'}));
+ await page.route('**/ai-dj/reference?id=*',r=>r.fulfill({status:200,body:'corrupt audio'}));await page.route('**/studio/practice-audio/*.mp3',r=>r.fulfill({status:200,body:'corrupt audio'}));
  await page.getByRole('button',{name:'Start set'}).click();await page.getByText(/prepared music could not load/).waitFor();assert.equal(await page.getByRole('button',{name:'Start set'}).isEnabled(),true);
- await page.unroute('**/studio/practice-audio/*.mp3');
+ await page.unroute('**/ai-dj/reference?id=*');
  assert.deepEqual(errors,[]);
  results.push({browser:name,status:'PASS',widths:[1440,800,390,320],initialPeak:Number(peak),captureBytes:capture.length,checks:['no autoplay','real PCM','two-deck crossfade','direction','shared controls','closing and cancellation','stop during load','hidden tab stop','corrupt bank recovery','accessibility','speaker isolation']});
  console.log(name+' PASS');

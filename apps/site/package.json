@@ -49,7 +49,8 @@
     "test:generation-output": "tsx --test tests/generation-output.test.ts",
     "runpod:setup": "tsx scripts/runpod-setup.ts",
     "test:credits-provider": "node --import tsx tests/credits-provider.mjs",
-    "test:ai-dj-browser": "node tests/ai-dj-browser.mjs"
+    "test:ai-dj-browser": "node tests/ai-dj-browser.mjs && node tests/ai-dj-performance-browser.mjs",
+    "ai-dj:reference": "node scripts/prepare-ai-dj-reference.mjs"
   },
   "dependencies": {
     "@apple/app-store-server-library": "3.1.0",

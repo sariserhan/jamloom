@@ -1,5 +1,7 @@
 # AI DJ local prototype — 2026-10-24
 
+Historical first increment. The [performance deck and private party reference](ai-dj-performance.md) supersede its controls and prepared bank.
+
 Owner authorized the first local prototype after discussing an instrumental-led continuous DJ set, occasional vocal moments, energy/mood direction, shared controls and a planned ending. **No push, deployment, paid generation or public activation is authorized by this increment.**
 
 Open http://localhost:3000/ai-dj with the development server running and `JAMLOOM_COMING_SOON=false`. The development navbar includes **AI DJ · Preview**. The page and its single-sample audio route return 404 in a production build; the production navbar omits the link.
