@@ -3,6 +3,7 @@ import importlib.util
 import io
 import contextlib
 import tempfile
+import json
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -13,6 +14,28 @@ spec.loader.exec_module(trial)
 
 
 class PriceBounds(unittest.TestCase):
+    def test_watch_uses_lower_campaign_debit_stop(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state = Path(directory)/'state.json'
+            state.write_text(json.dumps({'starting_credit': 9, 'deadline': 9999999999, 'observed_debit_stop_usd': 4}))
+            with patch.object(trial, 'STATE', state), patch.object(trial, 'api', return_value={'credit': 5}), patch.object(trial, 'destroy') as destroy, patch.object(trial.time, 'sleep') as sleep, contextlib.redirect_stdout(io.StringIO()):
+                trial.watch()
+                destroy.assert_called_once()
+                sleep.assert_not_called()
+
+    def test_club_profile_cannot_rent_without_current_campaign_receipt(self):
+        names = ('ROOT', 'WORK', 'STATE', 'LABEL', 'LEASE_SECONDS', 'HOURLY_CEILING', 'QUOTE_CEILING')
+        previous = {name: getattr(trial, name) for name in names}
+        try:
+            with tempfile.TemporaryDirectory() as directory, patch.object(trial, 'ROOT', Path(directory)), patch.object(
+                    trial.sys, 'argv', ['vast_trial.py', 'rent', '--club-benchmark']), patch.object(trial, 'api') as api:
+                with self.assertRaises(FileNotFoundError): trial.main()
+                api.assert_not_called()
+                self.assertEqual((trial.LEASE_SECONDS, trial.HOURLY_CEILING, trial.QUOTE_CEILING), (2400, .5, 4))
+                self.assertEqual(trial.LABEL, 'jamloom-club-benchmark-20261024')
+        finally:
+            for name, value in previous.items(): setattr(trial, name, value)
+
     def test_musician_profile_isolated_and_bounded(self):
         names = ('ROOT', 'WORK', 'STATE', 'LABEL', 'LEASE_SECONDS', 'HOURLY_CEILING')
         previous = {name: getattr(trial, name) for name in names}

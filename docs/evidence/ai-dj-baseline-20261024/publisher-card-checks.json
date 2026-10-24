@@ -1,0 +1,16 @@
+[
+  {
+    "url": "https://huggingface.co/ACE-Step/Ace-Step1.5/raw/19671f406d603126926c1b7e2adc169acbcade22/README.md",
+    "bytes": 5496,
+    "sha256": "69d69b89e313706b93b420b13aa6232259b207a1cd19b0b70358d166e8e451a0",
+    "license_header": "\nlibrary_name: transformers\nlicense: mit\npipeline_tag: text-to-audio\ntags:\n- audio\n- music\n- text2music\n",
+    "commercial_output_statement_present": false
+  },
+  {
+    "url": "https://huggingface.co/datasets/taejunkim/raveform/raw/main/README.md",
+    "bytes": 30,
+    "sha256": "8f0c7e5b67cd5f155f6570a713fd5f75ed8202614734e37df3566efa045460d2",
+    "license_header": "\r\nlicense: cc-by-4.0\r\n",
+    "commercial_output_statement_present": false
+  }
+]

@@ -1,0 +1,69 @@
+{
+  "prior": {
+    "0": 0.2465717981888745,
+    "1": 0.6511857707509882,
+    "2": 0.3104733507267984,
+    "3": 0.37386073641997813,
+    "4": 0.21310073541987343,
+    "5": 0.1314725697786333,
+    "6": 0.10708520179372197,
+    "7": 0.09536226485379028,
+    "8": 0.11183977313009572,
+    "9": 0.12470023980815348,
+    "10": 0.11484204251937215,
+    "11": 0.12112932604735883,
+    "12": 0.10037641154328733,
+    "13": 0.07124728063814358,
+    "14": 0.061448427212874905,
+    "15": 0.035694470131311266,
+    "16": 0.033404406538734895,
+    "17": 0.02191380569758948,
+    "18": 0.004715270221254987,
+    "19": 0.00881966597860762
+  },
+  "metrics": {
+    "first_four_phrase_points": {
+      "precision": 0.48267326732673266,
+      "recall": 0.3212520593080725,
+      "f1": 0.3857566765578635,
+      "hits": 195,
+      "predictions": 404,
+      "labels": 607
+    },
+    "learned_position_prior": {
+      "precision": 0.5742574257425742,
+      "recall": 0.38220757825370677,
+      "f1": 0.45895153313550935,
+      "hits": 232,
+      "predictions": 404,
+      "labels": 607
+    }
+  },
+  "schema": "jamloom-cue-prior-1",
+  "status": "PASS",
+  "source": "disco-eth/edm-cue",
+  "revision": "9def8d53f22ff9e49ec8978128e22b9d2bb7738e",
+  "license": "MIT metadata only",
+  "source_hashes": {
+    "README.md": "cbc803bca1356146af03d53dcb25bb9bee23d0147433ae11b85eaf006f7b2766",
+    "train-00000-of-00001.parquet": "8dc7d05a0d7536d3f46871aa0d9b37ea421629b137318099bf14a2ab55b14543",
+    "valid-00000-of-00001.parquet": "eebde91f292df9657f8ded8b809b5311d458c2aaeb2afceef3b6dec8c63b9c55",
+    "test-00000-of-00001.parquet": "eebde91f292df9657f8ded8b809b5311d458c2aaeb2afceef3b6dec8c63b9c55"
+  },
+  "train_rows": 4285,
+  "heldout_rows": 101,
+  "discarded": {
+    "invalid_or_duplicate": 4
+  },
+  "test_duplicates_validation": true,
+  "split": "Publisher validation held out once; exact normalized artist strings and IDs excluded from training",
+  "limitations": [
+    "No audio or deck-action learning",
+    "Full artist collaboration/session independence unverified",
+    "Four predictions per track; 100 ms matching; no tuning on held-out scores",
+    "Current player requires human-reviewed phrase points; fixed phrase grid is an offline proxy, not a listening benchmark"
+  ],
+  "commercial_audio_used": false,
+  "promoted": false,
+  "gpu_cost_usd": 0
+}

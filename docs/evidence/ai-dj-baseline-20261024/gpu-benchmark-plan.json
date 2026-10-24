@@ -1,0 +1,99 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "purpose": "Paired baseline vs phrase-directed original club generation; not training or musical acceptance",
+  "cases": [
+    {
+      "name": "house-baseline",
+      "caption": "Instrumental house, 124 BPM. Club music with drums, bass and synthesizers. No vocals.",
+      "bpm": 124,
+      "seed": 61024,
+      "thinking": false
+    },
+    {
+      "name": "house-phrased",
+      "caption": "Original instrumental house, 124 BPM, warm chord stabs, syncopated bass answers, swung offbeat hats. A short DJ-friendly percussion intro, a clear rhythmic motif, an eight-bar rise, a strong bass-and-kick drop, brief contrast and a changed return. Keep the kick and bass separated, controlled low end, expressive percussion accents, purposeful fills at phrase ends and room between phrases. No vocals or spoken words.",
+      "bpm": 124,
+      "seed": 61024,
+      "thinking": false
+    },
+    {
+      "name": "tech-house-baseline",
+      "caption": "Instrumental tech-house, 128 BPM. Club music with drums, bass and synthesizers. No vocals.",
+      "bpm": 128,
+      "seed": 61025,
+      "thinking": false
+    },
+    {
+      "name": "tech-house-phrased",
+      "caption": "Original instrumental tech-house, 128 BPM, dry punchy drums, rolling bass, sparse percussive hook and deliberate rests. A short DJ-friendly percussion intro, a clear rhythmic motif, an eight-bar rise, a strong bass-and-kick drop, brief contrast and a changed return. Keep the kick and bass separated, controlled low end, expressive percussion accents, purposeful fills at phrase ends and room between phrases. No vocals or spoken words.",
+      "bpm": 128,
+      "seed": 61025,
+      "thinking": false
+    },
+    {
+      "name": "techno-baseline",
+      "caption": "Instrumental techno, 136 BPM. Club music with drums, bass and synthesizers. No vocals.",
+      "bpm": 136,
+      "seed": 61026,
+      "thinking": false
+    },
+    {
+      "name": "techno-phrased",
+      "caption": "Original instrumental techno, 136 BPM, driving four-on-the-floor kick, pulsing low bass, evolving rhythmic synth motif. A short DJ-friendly percussion intro, a clear rhythmic motif, an eight-bar rise, a strong bass-and-kick drop, brief contrast and a changed return. Keep the kick and bass separated, controlled low end, expressive percussion accents, purposeful fills at phrase ends and room between phrases. No vocals or spoken words.",
+      "bpm": 136,
+      "seed": 61026,
+      "thinking": false
+    }
+  ],
+  "duration_seconds_each": 30,
+  "outputs_max": 6,
+  "reference_audio": null,
+  "adapters": [],
+  "training_data": [],
+  "stop_on_failure": true,
+  "budget": "Pending current campaign cap; historical trials cannot be silently reopened",
+  "infrastructure": "Existing Vast controller and pinned setup only",
+  "new_model_downloads_to_mac": false,
+  "publisher_model": "ACE-Step/Ace-Step1.5",
+  "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+  "scripts": {
+    "scripts/cloud_music_batch.py": "88dc90d851113c7e181fc333cc8ebb16480e09e46b6a4f0813aad0dc7fe27a6d",
+    "scripts/club_benchmark_cases.py": "f33ad9fe46232719e41d89ccc980206eaa90e252f2a11678999482b099ed2a64",
+    "scripts/cloud_music_setup.sh": "019cbe98064c191113620cb687d684b6c50acb55c602e0bbc44ad85d40bb42d4",
+    "scripts/vast_trial.py": "00160fcbd195fc9aca472ea294d40457c64d4c40b61447ea3baab161f364fa81"
+  },
+  "promotion": false,
+  "rental_proposal": {
+    "profile": "--club-benchmark",
+    "instances_max": 1,
+    "budget_usd": 6,
+    "lease_seconds": 2400,
+    "hourly_with_disk_ceiling_usd": 0.5,
+    "quote_reserved_ceiling_usd": 4,
+    "observed_debit_stop_usd": 4,
+    "authorization_receipt": "Absent; rent fails before provider calls",
+    "watchdog": "Independent local process; provider/network outage can delay destruction; not a provider-enforced dollar cap"
+  },
+  "read_only_offer_check": {
+    "checked_at": "2026-10-24T06:38:41.715299+00:00",
+    "eligible_offers": 12,
+    "examples": [
+      {
+        "id": 49987155,
+        "gpu_name": "RTX 3090",
+        "gpu_ram": 24576,
+        "hourly_with_60gb_disk": 0.30592592592592593,
+        "reserved_lease_plus_transfer": 0.23520061728395064
+      },
+      {
+        "id": 56607982,
+        "gpu_name": "RTX 3090",
+        "gpu_ram": 24576,
+        "hourly_with_60gb_disk": 0.2722222222222222,
+        "reserved_lease_plus_transfer": 0.33773148148148147
+      }
+    ],
+    "rental_started": false,
+    "note": "Volatile indicative quotes; controller refetches before rental; no provider-enforced dollar cap"
+  }
+}

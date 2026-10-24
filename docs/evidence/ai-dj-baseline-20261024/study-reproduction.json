@@ -1,0 +1,307 @@
+{
+  "status": "PASS",
+  "scope": "All 15 original mixes and 60 stems recreated byte-for-byte with the final generator; temporary reproduction outputs removed",
+  "generator_sha256": "e41d40b0f8ecc5b5a2ac1d6bb3dfe9d7fe2e131cfdca4477c791f4587c2aa5ab",
+  "files": [
+    {
+      "file": "house-baseline/bass.wav",
+      "sha256": "e573c39e8c473b98948afb93240553735e4b0ef37219ab66b1225c3eda8d087d"
+    },
+    {
+      "file": "house-baseline/drums.wav",
+      "sha256": "fa5eef8b5e8aa755de92c5f585f95c6a42d0354462dad1015f6988c9f48596b7"
+    },
+    {
+      "file": "house-baseline/harmony.wav",
+      "sha256": "dd75bbfb0ad00942e4b00ec8fe79d6ad36641e7ad53784efcc9f6513c3a1f3d3"
+    },
+    {
+      "file": "house-baseline/kick.wav",
+      "sha256": "a08efd37d34ea0ca21327d1f5672e394868bd483a22d599a25231c3fcd0d046a"
+    },
+    {
+      "file": "house-baseline/mix.wav",
+      "sha256": "55b8cfc13717260be2c9709c2a6b2f69a6e0b8bf74f9332c34f51385f7a47d53"
+    },
+    {
+      "file": "house-combined/bass.wav",
+      "sha256": "16e29464357e51aa3773ba24348dff5e601efc03d88c9c8e5ca0516e85b71378"
+    },
+    {
+      "file": "house-combined/drums.wav",
+      "sha256": "bdd9bffde6884df86024bcfe09f7edf9adec8f8aa2eb0347852d11d3c345a917"
+    },
+    {
+      "file": "house-combined/harmony.wav",
+      "sha256": "f1f4091a142cda4a793dbe3203c8d3b9ef5a694c1fdf59176b8bf0570915c088"
+    },
+    {
+      "file": "house-combined/kick.wav",
+      "sha256": "6096cada2fbede48411b5f96b4d153bbe9012762e0c10ad33381aeb607c0bd91"
+    },
+    {
+      "file": "house-combined/mix.wav",
+      "sha256": "78a640f4a3ffc4d0ae68fd5f569e7c28a0b6c7fc3e0b5dfe033b645303c64e66"
+    },
+    {
+      "file": "house-groove/bass.wav",
+      "sha256": "4443886db239d3d3422cda107c6f5c0ce7df581f2412265b88a293070107b177"
+    },
+    {
+      "file": "house-groove/drums.wav",
+      "sha256": "8c0eaf00b1332cfdec9efc8cd5b4115c17c3324a032bd29c3ecfe65dca3fd043"
+    },
+    {
+      "file": "house-groove/harmony.wav",
+      "sha256": "3525fac111ac379881d224ede05dd3df2753e46f61185648d181d888b76ffc94"
+    },
+    {
+      "file": "house-groove/kick.wav",
+      "sha256": "e02725e492efbf3953d05368c5be276df2019621344769eb10e98e72c424d12b"
+    },
+    {
+      "file": "house-groove/mix.wav",
+      "sha256": "54da010302a7abf02c03d8e49aa05958ca1a70bd0bdbb221c7bd19da00079d2a"
+    },
+    {
+      "file": "house-phrasing/bass.wav",
+      "sha256": "c4295e6ffab7cae641988b2d35db7caf9276b69c9004077e6577bb88d8c92ec8"
+    },
+    {
+      "file": "house-phrasing/drums.wav",
+      "sha256": "58f0004089b48ecbbdd23c5dab2b131db593d0f95f247a8af6821d03f0e03e1f"
+    },
+    {
+      "file": "house-phrasing/harmony.wav",
+      "sha256": "29376f5a8f393b534af99bb778f80bd5698949d74a3dab4cc59abca83f6a07c6"
+    },
+    {
+      "file": "house-phrasing/kick.wav",
+      "sha256": "63581d58a813476b6bd546986be21b6c7100408e59fc86174aeb47e933e18b9a"
+    },
+    {
+      "file": "house-phrasing/mix.wav",
+      "sha256": "0607f6998956794f281bc2fb694c9693e0c22db2f6870503f9ce91a620484b79"
+    },
+    {
+      "file": "house-sound/bass.wav",
+      "sha256": "25ab44d15fe9590fbae194c1c159904e664b39b0f234221a9d3e3e3dbe836b45"
+    },
+    {
+      "file": "house-sound/drums.wav",
+      "sha256": "ad921b26ee1594988162630d5fad8853486e0c399ae7d38c6f594c2a53bf06f1"
+    },
+    {
+      "file": "house-sound/harmony.wav",
+      "sha256": "4005a2e45ce6e01599c298f59f7d462b103d3ea4973acc21861b0a1e7188edc0"
+    },
+    {
+      "file": "house-sound/kick.wav",
+      "sha256": "b27fb6794335a5b59940ba29df9ac3e74438e9b8694c3db15f2a1c7882d7b310"
+    },
+    {
+      "file": "house-sound/mix.wav",
+      "sha256": "6fe5191487de556f8c3b3e608d7779ab678b12c11b92cd1de5946c8943cedf23"
+    },
+    {
+      "file": "tech-house-baseline/bass.wav",
+      "sha256": "368b84c0bb200251ebb28adc082734f640fc0864afec858ff0b76b055857fe50"
+    },
+    {
+      "file": "tech-house-baseline/drums.wav",
+      "sha256": "e45af01b477edc1e0ff2bb38c0c84eec09aae6d93f06e8a54c58ede844479940"
+    },
+    {
+      "file": "tech-house-baseline/harmony.wav",
+      "sha256": "dfdd9843c2fed0de3ed55d50c177276abc57136074712e36c2f0a5214d9a5dfd"
+    },
+    {
+      "file": "tech-house-baseline/kick.wav",
+      "sha256": "fdf12d4a8858ec8fa3be891fed7b48284c781cd45a984123e98836c02b303059"
+    },
+    {
+      "file": "tech-house-baseline/mix.wav",
+      "sha256": "0f55a9edc886220e87e2a0471fdd7c751ff20de7515e587ad643f249145134ad"
+    },
+    {
+      "file": "tech-house-combined/bass.wav",
+      "sha256": "1d5d6f6a98b04091b1aeefc724ee8d21d62a7f1a986e040782180db8b9091001"
+    },
+    {
+      "file": "tech-house-combined/drums.wav",
+      "sha256": "f6754310c6cf92e442f324070c9518caba3aa986b65a895c76cfe7e2f394db0d"
+    },
+    {
+      "file": "tech-house-combined/harmony.wav",
+      "sha256": "a0e16ed489b399bfcc82225f3593e8670bba5301fc2cdf493abd0612c7ecdf4b"
+    },
+    {
+      "file": "tech-house-combined/kick.wav",
+      "sha256": "69101f1158eb4b44c3303ae570808027d2b9cde74a941eff0511b0942401bb18"
+    },
+    {
+      "file": "tech-house-combined/mix.wav",
+      "sha256": "5575dcda7be31171eaa8f8364f89a7f21d463ef1438eb30dccf981604e6a44a9"
+    },
+    {
+      "file": "tech-house-groove/bass.wav",
+      "sha256": "86427d27e8d68819a847a93af4f9d6be74bba95e7e433b8327cb18fe1c22388a"
+    },
+    {
+      "file": "tech-house-groove/drums.wav",
+      "sha256": "28b77b2b622afa4084705bde710b06ea63b4edd9d362ac551930d6b8180156e4"
+    },
+    {
+      "file": "tech-house-groove/harmony.wav",
+      "sha256": "300249cc979048e53dcbb20bd68346b209c927791800aa54185a1d970e0ff625"
+    },
+    {
+      "file": "tech-house-groove/kick.wav",
+      "sha256": "fbea44ff181f092490c9158c804f798c1bb44e0b9cc728b27aa46f45b4cb9135"
+    },
+    {
+      "file": "tech-house-groove/mix.wav",
+      "sha256": "475a88129bcb043344733dbfeaee1cc19d88a3c92fe41afcce68c6f72d6b713f"
+    },
+    {
+      "file": "tech-house-phrasing/bass.wav",
+      "sha256": "cab406198e9570a24380029b34bb102ed85f19bf39968f562b98e0552e03b73e"
+    },
+    {
+      "file": "tech-house-phrasing/drums.wav",
+      "sha256": "c0024af33f5aa5b4b6fd61d7779b831292f104f6f88caeb812f73ea7a47fc027"
+    },
+    {
+      "file": "tech-house-phrasing/harmony.wav",
+      "sha256": "57a883f86f6ea84dfe042c16338fc6ab6b28e5e3b5b5d7ef2403cbcada707f40"
+    },
+    {
+      "file": "tech-house-phrasing/kick.wav",
+      "sha256": "3ac1ac4f890f226f0549d71e63400b2f6691d3226c83902cf761693132796a2f"
+    },
+    {
+      "file": "tech-house-phrasing/mix.wav",
+      "sha256": "e8e49e49d03869da9b8ed32ec4eeb80fc96fb90fc8c5609a4dba47e9ec9c39a5"
+    },
+    {
+      "file": "tech-house-sound/bass.wav",
+      "sha256": "b7d7749aee6f7b4d72a6558cc37f79b8484c5417c8adb4b07b66462d6655691d"
+    },
+    {
+      "file": "tech-house-sound/drums.wav",
+      "sha256": "ca0b0ca14c902c40604a5aa35f8fe1c5637795b9537f6f1176b16e8758489ba9"
+    },
+    {
+      "file": "tech-house-sound/harmony.wav",
+      "sha256": "113a5975282342d118e2f75d88248ac3dc850aa4925c53974ee1483512723c43"
+    },
+    {
+      "file": "tech-house-sound/kick.wav",
+      "sha256": "0f93ddbde6b5cdd80cf3b613d85fe7177c61ac5405d6a44918ed60b139bfc384"
+    },
+    {
+      "file": "tech-house-sound/mix.wav",
+      "sha256": "ba7d7d2997bf2712e932d2cfac7fef03a339361d481fda3c13f1796e820e6e5e"
+    },
+    {
+      "file": "techno-baseline/bass.wav",
+      "sha256": "cbb768a7fb214e9b213db39cdf715d5cdc54ae322d5367c53e844ff37b1e5563"
+    },
+    {
+      "file": "techno-baseline/drums.wav",
+      "sha256": "ca5a20c3d6d2a04bca40915e814a5d12a2d55780a04c4ff57b1e23bfdbedac79"
+    },
+    {
+      "file": "techno-baseline/harmony.wav",
+      "sha256": "20dadfde171ae29e087c9a4be3da14106c1cb0b15788a8cd766db1bec838f39c"
+    },
+    {
+      "file": "techno-baseline/kick.wav",
+      "sha256": "5baec76503b2e44120cc5b146ff766cacb88ed6da9f4593d41affd5243952f08"
+    },
+    {
+      "file": "techno-baseline/mix.wav",
+      "sha256": "65164ed6489f1846cb3758c032946ff7eab32a043475ec7d7a674e2094bbfda7"
+    },
+    {
+      "file": "techno-combined/bass.wav",
+      "sha256": "4c20ef413f509e79a9c765dcf26bbff2f8b1f1d35271c6bdf1b039ff57390e2a"
+    },
+    {
+      "file": "techno-combined/drums.wav",
+      "sha256": "b17a332435ab3405e445cab50311d0e939fb19095481d62ee1603b01cc66c549"
+    },
+    {
+      "file": "techno-combined/harmony.wav",
+      "sha256": "5d4110391ea2fd3bed9bd04218128a8511e81aeb7242194d3269720250d78693"
+    },
+    {
+      "file": "techno-combined/kick.wav",
+      "sha256": "7db354abfe7cefca76756bb33d4a702d0c4f76dbaf04a9edd857784588f8f18a"
+    },
+    {
+      "file": "techno-combined/mix.wav",
+      "sha256": "dfcef81928e69afa36d62024df8c8375f6e8eba885d7818aa8f1f5f685f2abe1"
+    },
+    {
+      "file": "techno-groove/bass.wav",
+      "sha256": "8aa4de98a85974c84a1a0a8fbe212b2299aa8a9576b0d5a6ae0b9c69314c3905"
+    },
+    {
+      "file": "techno-groove/drums.wav",
+      "sha256": "87146f1883be096273f9749d8699d2371eab609ff5184b21ef8ae87bd41db38c"
+    },
+    {
+      "file": "techno-groove/harmony.wav",
+      "sha256": "2aa1c0bce162be2616d6b225816c665104afcaae56501db96c0e5469316e31bd"
+    },
+    {
+      "file": "techno-groove/kick.wav",
+      "sha256": "0ce85f789498ebb846d9e86a39ce432dceb42411dd97e0e9987ac948018d215a"
+    },
+    {
+      "file": "techno-groove/mix.wav",
+      "sha256": "fe1b006495adb6ed201b71f012183e086b044bfd371f37c85e2c802fd26de144"
+    },
+    {
+      "file": "techno-phrasing/bass.wav",
+      "sha256": "1ce199b1fe98a4494508b374feeb72eee305982a4fe2703dbcd2877b6ca72f6b"
+    },
+    {
+      "file": "techno-phrasing/drums.wav",
+      "sha256": "734691ad4accb049d120a11edf36f43c8f914bb80d43865a1ec81e3b15050668"
+    },
+    {
+      "file": "techno-phrasing/harmony.wav",
+      "sha256": "7000b09de52a44cf7a9cb0f4a55243b4631e5eba96b21aeb9c05d009d8245d36"
+    },
+    {
+      "file": "techno-phrasing/kick.wav",
+      "sha256": "133e5f1493f2cd31b83d7942039219d835e25d4dc9f853fb135f22bdf007ecdc"
+    },
+    {
+      "file": "techno-phrasing/mix.wav",
+      "sha256": "f745c8c2054a7eb04c6d593acb93fc508e23610181bdc91e2930a82fb73079f0"
+    },
+    {
+      "file": "techno-sound/bass.wav",
+      "sha256": "249d7eecd7cd118ce6a848953d80655f38c555861a76e68d7ffecd7fe1a1908a"
+    },
+    {
+      "file": "techno-sound/drums.wav",
+      "sha256": "93b854a684a9ac1cdf080961f586422366d3605b9bacbe48e19f6c76a45147d5"
+    },
+    {
+      "file": "techno-sound/harmony.wav",
+      "sha256": "efa1f2eeae876efcff4d919423f892a624c9b3b53e888907f9392e60a563e156"
+    },
+    {
+      "file": "techno-sound/kick.wav",
+      "sha256": "604cf1056dc2eccaa99b5f3a4caf14889cbccc1e7b0f962385fc891da8dec1b7"
+    },
+    {
+      "file": "techno-sound/mix.wav",
+      "sha256": "2a401f365b1e104492471ed6652b8d2cb988fc879bc9db0d1f75816badf70d3a"
+    }
+  ]
+}

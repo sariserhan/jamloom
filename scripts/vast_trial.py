@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Control one explicitly authorized $10 research rental; never upload the key."""
+"""Control one explicitly authorized bounded research rental; never upload the key."""
 import argparse
 import json
 import math
@@ -19,6 +19,7 @@ LABEL = "djayvo-music-trial-20261018"
 DISK_GB = 60
 LEASE_SECONDS = 5400
 HOURLY_CEILING = 0.75
+QUOTE_CEILING = 6
 
 
 def api(path, method="GET", data=None):
@@ -76,7 +77,7 @@ def quote(offer):
     # Reserve 60 GB in each direction, even though this small batch needs far less.
     reserved = hourly * LEASE_SECONDS / 3600 + 60 * (
         float(offer["inet_down_cost"]) + float(offer["inet_up_cost"]))
-    if hourly > HOURLY_CEILING or reserved > 6:
+    if hourly > HOURLY_CEILING or reserved > QUOTE_CEILING:
         raise ValueError("Offer exceeds trial price ceiling")
     if offer.get("num_gpus") != 1 or offer.get("gpu_ram", 0) < 24000:
         raise ValueError("Trial requires one GPU with at least 24 GB")
@@ -158,9 +159,11 @@ def watch():
             return
         try:
             current = api("v0/users/current")
+            if not math.isfinite(float(current["credit"])) or not math.isfinite(state["starting_credit"]):
+                raise RuntimeError('Invalid provider balance')
             spent = max(0, state["starting_credit"] - float(current["credit"]))
             failures = 0
-            if time.time() >= state["deadline"] or spent >= 7:
+            if time.time() >= state["deadline"] or spent >= state.get("observed_debit_stop_usd", 7):
                 break
         except Exception:
             failures += 1
@@ -181,7 +184,7 @@ def watch():
 
 
 def main():
-    global WORK, STATE, LABEL, LEASE_SECONDS, HOURLY_CEILING
+    global WORK, STATE, LABEL, LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["status", "offers", "rent", "destroy", "watch"])
     parser.add_argument("--offer", type=int)
@@ -190,6 +193,7 @@ def main():
     profile.add_argument("--training-retry", action="store_true", help="Approved single replacement, sharing the original budget")
     profile.add_argument("--blood-training", action="store_true", help="Approved one-instance Blood Club trial")
     profile.add_argument("--musician-training", action="store_true", help="Approved one-instance musician reference trial")
+    profile.add_argument("--club-benchmark", action="store_true", help="One capped text-only club benchmark; requires campaign budget receipt")
     args = parser.parse_args()
     if args.training or args.training_retry:
         WORK = ROOT / ("build-style-training-retry" if args.training_retry else "build-style-training")
@@ -203,6 +207,11 @@ def main():
         LABEL = "jamloom-musician-training-20261021" if args.musician_training else "djayvo-blood-training-20261019"
         LEASE_SECONDS = 7200
         HOURLY_CEILING = 0.50
+    if args.club_benchmark:
+        WORK = ROOT / 'build-club-benchmark-20261024'
+        STATE = WORK / 'trial-state.json'
+        LABEL = 'jamloom-club-benchmark-20261024'
+        LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING = 2400, .50, 4
     WORK.mkdir(exist_ok=True)
     if args.action == "status":
         account = api("v0/users/current")
@@ -215,6 +224,12 @@ def main():
         (WORK / "offers.json").write_text(json.dumps(result, indent=2) + "\n")
         print(json.dumps(result[:8], indent=2))
     elif args.action == "rent":
+        if args.club_benchmark:
+            approval = json.loads((ROOT / 'docs/evidence/ai-dj-baseline-20261024/gpu-authorization.json').read_text())
+            if (approval.get('campaign') != LABEL or approval.get('budget_usd') != 6 or
+                    approval.get('instances_max') != 1 or approval.get('max_elapsed_seconds') != 2400 or
+                    not isinstance(approval.get('owner_statement'), str) or not approval['owner_statement'].strip()):
+                raise RuntimeError('Missing current campaign budget receipt')
         public_key = (WORK / "trial-key.pub").read_text().strip()
         if not public_key.startswith("ssh-ed25519 ") or not shutil.which("caffeinate"):
             raise RuntimeError("Trial SSH key or sleep inhibitor is missing")
@@ -233,7 +248,7 @@ def main():
             # Excluding the entire previous location also excludes its physical host.
             available = [o for o in available if o["geolocation"] != previous["offer"]["geolocation"]]
         offer = next((o for o in available if o["id"] == args.offer), None)
-        if (args.training or args.training_retry or args.blood_training or args.musician_training) and args.offer is None:
+        if (args.training or args.training_retry or args.blood_training or args.musician_training or args.club_benchmark) and args.offer is None:
             offer = next((o for o in available if o["gpu_name"] == "RTX 3090" and
                           o["geolocation"].endswith(", US")), None)
         if offer is None:
@@ -241,16 +256,17 @@ def main():
         state = {"label": LABEL, "offer": offer, "starting_credit": starting_credit,
                  "credit_before_this_attempt": float(account["credit"]),
                  "started_at": time.time(), "deadline": time.time() + LEASE_SECONDS,
-                 "budget_usd": 10, "disk_gb": DISK_GB}
+                 "budget_usd": 6 if args.club_benchmark else 10, "disk_gb": DISK_GB,
+                 "observed_debit_stop_usd": 4 if args.club_benchmark else 7}
         write_state(state)  # Prevent duplicate rental if the create response is lost.
         with (WORK / "watchdog.log").open("a") as log:
             subprocess.Popen(["caffeinate", "-i", sys.executable, str(Path(__file__).resolve()), "watch"] +
-                             (["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
+                             (["--club-benchmark"] if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
                              stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
         # The watchdog also reconciles by unique label if this response is lost.
         result = api("v0/asks/" + str(offer["id"]), "PUT", {
             "image": "pytorch/pytorch@sha256:b85566342b86d13a67712e9315d40cdc2dad7f8d86df1aff3831f80835edbcca", "disk": DISK_GB,
-            "label": LABEL, "runtype": "ssh_direct" if args.training_retry or args.blood_training or args.musician_training else "ssh", "target_state": "running", "cancel_unavail": True,
+            "label": LABEL, "runtype": "ssh_direct" if args.training_retry or args.blood_training or args.musician_training or args.club_benchmark else "ssh", "target_state": "running", "cancel_unavail": True,
         })
         state["id"] = result["new_contract"]
         write_state(state)

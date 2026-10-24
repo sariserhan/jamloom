@@ -34,8 +34,10 @@ CASES = [
 ]
 
 
-def main():
+def main(cases=CASES, stop_on_failure=False):
     OUT.mkdir(exist_ok=True)
+    if stop_on_failure and ((OUT / 'batch.json').exists() or any((OUT / (row[0]+'.wav')).exists() for row in cases)):
+        raise ValueError('Preserve previous benchmark outputs')
     torch.set_num_threads(4)
     report = {"code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
               "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
@@ -54,7 +56,7 @@ def main():
     report["dit_initialization_seconds"] = time.monotonic() - start
     save()
     lm_ready = False
-    for name, caption, bpm, seed, thinking in CASES:
+    for name, caption, bpm, seed, thinking in cases:
         record = {"name": name, "caption": caption, "bpm": bpm, "seed": seed, "thinking": thinking}
         report["cases"].append(record)
         try:
@@ -101,8 +103,17 @@ def main():
             record.update(status="FAIL", error=str(exc))
         save()
         print(json.dumps({k: record[k] for k in ("name", "status", "generation_seconds", "error") if k in record}), flush=True)
+        if stop_on_failure and record['status'] == 'FAIL': break
     assert all(r["status"] == "PASS" for r in report["cases"]), "Some batch cases failed; inspect batch.json"
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--club-benchmark', action='store_true')
+    args = parser.parse_args()
+    if args.club_benchmark:
+        from club_benchmark_cases import CASES as club_cases
+        main(club_cases, stop_on_failure=True)
+    else:
+        main()

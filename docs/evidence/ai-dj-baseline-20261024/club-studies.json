@@ -1,0 +1,143 @@
+{
+  "status": "PASS technical",
+  "human_quality": "NOT RUN",
+  "scope": "15 original mono 16-bar studies; not full hosted-model comparisons",
+  "rows": [
+    {
+      "style": "house",
+      "condition": "baseline",
+      "seconds": 30.96775,
+      "lufs": -24.59,
+      "true_peak_db": -10.04,
+      "full_scale_samples": 0,
+      "sha256": "55b8cfc13717260be2c9709c2a6b2f69a6e0b8bf74f9332c34f51385f7a47d53"
+    },
+    {
+      "style": "house",
+      "condition": "sound",
+      "seconds": 30.96775,
+      "lufs": -24.57,
+      "true_peak_db": -10.69,
+      "full_scale_samples": 0,
+      "sha256": "6fe5191487de556f8c3b3e608d7779ab678b12c11b92cd1de5946c8943cedf23"
+    },
+    {
+      "style": "house",
+      "condition": "groove",
+      "seconds": 30.96775,
+      "lufs": -24.58,
+      "true_peak_db": -10.02,
+      "full_scale_samples": 0,
+      "sha256": "54da010302a7abf02c03d8e49aa05958ca1a70bd0bdbb221c7bd19da00079d2a"
+    },
+    {
+      "style": "house",
+      "condition": "phrasing",
+      "seconds": 30.96775,
+      "lufs": -24.58,
+      "true_peak_db": -7.99,
+      "full_scale_samples": 0,
+      "sha256": "0607f6998956794f281bc2fb694c9693e0c22db2f6870503f9ce91a620484b79"
+    },
+    {
+      "style": "house",
+      "condition": "combined",
+      "seconds": 30.96775,
+      "lufs": -24.58,
+      "true_peak_db": -8.47,
+      "full_scale_samples": 0,
+      "sha256": "78a640f4a3ffc4d0ae68fd5f569e7c28a0b6c7fc3e0b5dfe033b645303c64e66"
+    },
+    {
+      "style": "tech-house",
+      "condition": "baseline",
+      "seconds": 30.0,
+      "lufs": -24.59,
+      "true_peak_db": -9.48,
+      "full_scale_samples": 0,
+      "sha256": "0f55a9edc886220e87e2a0471fdd7c751ff20de7515e587ad643f249145134ad"
+    },
+    {
+      "style": "tech-house",
+      "condition": "sound",
+      "seconds": 30.0,
+      "lufs": -24.58,
+      "true_peak_db": -9.6,
+      "full_scale_samples": 0,
+      "sha256": "ba7d7d2997bf2712e932d2cfac7fef03a339361d481fda3c13f1796e820e6e5e"
+    },
+    {
+      "style": "tech-house",
+      "condition": "groove",
+      "seconds": 30.0,
+      "lufs": -24.58,
+      "true_peak_db": -9.63,
+      "full_scale_samples": 0,
+      "sha256": "475a88129bcb043344733dbfeaee1cc19d88a3c92fe41afcce68c6f72d6b713f"
+    },
+    {
+      "style": "tech-house",
+      "condition": "phrasing",
+      "seconds": 30.0,
+      "lufs": -24.58,
+      "true_peak_db": -7.8,
+      "full_scale_samples": 0,
+      "sha256": "e8e49e49d03869da9b8ed32ec4eeb80fc96fb90fc8c5609a4dba47e9ec9c39a5"
+    },
+    {
+      "style": "tech-house",
+      "condition": "combined",
+      "seconds": 30.0,
+      "lufs": -24.58,
+      "true_peak_db": -7.56,
+      "full_scale_samples": 0,
+      "sha256": "5575dcda7be31171eaa8f8364f89a7f21d463ef1438eb30dccf981604e6a44a9"
+    },
+    {
+      "style": "techno",
+      "condition": "baseline",
+      "seconds": 28.235291666666665,
+      "lufs": -24.58,
+      "true_peak_db": -10.27,
+      "full_scale_samples": 0,
+      "sha256": "65164ed6489f1846cb3758c032946ff7eab32a043475ec7d7a674e2094bbfda7"
+    },
+    {
+      "style": "techno",
+      "condition": "sound",
+      "seconds": 28.235291666666665,
+      "lufs": -24.58,
+      "true_peak_db": -10.34,
+      "full_scale_samples": 0,
+      "sha256": "2a401f365b1e104492471ed6652b8d2cb988fc879bc9db0d1f75816badf70d3a"
+    },
+    {
+      "style": "techno",
+      "condition": "groove",
+      "seconds": 28.235291666666665,
+      "lufs": -24.58,
+      "true_peak_db": -9.98,
+      "full_scale_samples": 0,
+      "sha256": "fe1b006495adb6ed201b71f012183e086b044bfd371f37c85e2c802fd26de144"
+    },
+    {
+      "style": "techno",
+      "condition": "phrasing",
+      "seconds": 28.235291666666665,
+      "lufs": -24.58,
+      "true_peak_db": -9.02,
+      "full_scale_samples": 0,
+      "sha256": "f745c8c2054a7eb04c6d593acb93fc508e23610181bdc91e2930a82fb73079f0"
+    },
+    {
+      "style": "techno",
+      "condition": "combined",
+      "seconds": 28.235291666666665,
+      "lufs": -24.58,
+      "true_peak_db": -8.33,
+      "full_scale_samples": 0,
+      "sha256": "dfcef81928e69afa36d62024df8c8375f6e8eba885d7818aa8f1f5f685f2abe1"
+    }
+  ],
+  "manifest_sha256": "0e733e6e3a0a98fcbdfb563c444a3006770b264192673fd224c85bc2a6156eab"
+}

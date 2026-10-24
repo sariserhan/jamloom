@@ -1,0 +1,29 @@
+{
+  "status": "PASS technical",
+  "unit_tests": 19,
+  "checks": [
+    "Vast budget and cleanup guards",
+    "Mocked GPU provider failure stops batch and preserves receipt",
+    "Deterministic study ablations and phrase boundaries",
+    "Cue matching and invalid metadata",
+    "MIDI clock residual and sparse-feature fallback",
+    "Groove benchmark reproduced with pinned metadata",
+    "75 initial study WAVs reproduced byte-for-byte",
+    "27 listening WAVs decoded in Chromium and WebKit"
+  ],
+  "gpu_rentals_started": 0,
+  "new_data_purchases": 0,
+  "human_quality": "NOT RUN",
+  "promoted_models": [],
+  "source_hashes": {
+    "scripts/audit_groove_midi.py": "751adb7a68a3feccd69dec302d3aecced28bab945ea2e08c57fb8e84b267f330",
+    "scripts/evaluate_dj_cues.py": "603e931e1fdb19a8eed8ea77b8372357da27060ee091c1e01e1c6d761a16dc0d",
+    "scripts/evaluate_groove_timing.py": "c6775218f00aac05c4bc29b57656f3eb1962adbe7e8278e631bfc315548d59b8",
+    "scripts/club_studies.py": "e41d40b0f8ecc5b5a2ac1d6bb3dfe9d7fe2e131cfdca4477c791f4587c2aa5ab",
+    "scripts/club_benchmark_cases.py": "f33ad9fe46232719e41d89ccc980206eaa90e252f2a11678999482b099ed2a64",
+    "scripts/cloud_music_batch.py": "88dc90d851113c7e181fc333cc8ebb16480e09e46b6a4f0813aad0dc7fe27a6d",
+    "scripts/vast_trial.py": "00160fcbd195fc9aca472ea294d40457c64d4c40b61447ea3baab161f364fa81"
+  },
+  "unit_log_sha256": "2b9e0d9f561353056d8e0324e64151744c0fce0f0bbddd419460ea3cb31b5699",
+  "unit_log_note": "The FAIL provider-failure line is the deliberate mocked negative case, whose unit test passes."
+}
