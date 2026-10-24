@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "target": "ep-flat-hill-b4q0lix4.c-6.us-east-2.aws.neon.tech/neondb",
+  "applied": [
+    "0023_dj_sessions.sql"
+  ],
+  "idempotent": true,
+  "backup": {
+    "path": "build-neon/dj-sessions-20261024/before-0023.dump",
+    "bytes": 106729,
+    "sha256": "76ea821d87c9a5cdf4e5aa53884d96d2638741fb0ca3bdb683eaa75a95a2de4c",
+    "catalogueVerified": true
+  },
+  "sessions": 0
+}

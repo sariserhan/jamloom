@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "checks": [
+        "Public default",
+        "Private choice and premium disclosure",
+        "party name and direction controls",
+        "automatic recording without checkbox",
+        "Start remains disabled without renderer",
+        "public empty state and anonymous API",
+        "unknown set denied",
+        "390px and 320px no horizontal overflow",
+        "scoped WCAG 2A/AA",
+        "no credit/session mutations",
+        "no page errors"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "checks": [
+        "Public default",
+        "Private choice and premium disclosure",
+        "party name and direction controls",
+        "automatic recording without checkbox",
+        "Start remains disabled without renderer",
+        "public empty state and anonymous API",
+        "unknown set denied",
+        "390px and 320px no horizontal overflow",
+        "scoped WCAG 2A/AA",
+        "no credit/session mutations",
+        "no page errors"
+      ]
+    }
+  ],
+  "paidCompute": false,
+  "publication": false
+}

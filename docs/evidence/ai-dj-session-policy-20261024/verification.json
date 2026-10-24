@@ -1,0 +1,53 @@
+{
+  "status": "PASS local implementation; PARTIAL product",
+  "source_sha256": {
+    "apps/site/app/ai-dj/saved-sets.tsx": "b8410d98b99cc5d2a26331dad36828d50ef7158384854631e2902c3d9ec39f72",
+    "apps/site/app/ai-dj/studio.css": "fb5376ef847da6dfbb7aa23852d2b7a8f39ca1e9f96afd5980143d3d3f468ee6",
+    "apps/site/app/ai-dj/studio.tsx": "c3e5a16c8554f0caaaaa987e023768f369cc4400adf4ab88643c7bf766f5d3f8",
+    "apps/site/lib/dj-recordings-http.ts": "7b6d96b9be800819388a24b894149f84c7433e971fee63f11c589061170df52a",
+    "apps/site/lib/dj-recordings.ts": "f6e3ba009aa17f39a4de2942e69406840516a167c1720f639b060c8f6d52e36d",
+    "apps/site/lib/generation-queue.ts": "8fcb685e447913bd4b10874992c5ff8fd9691fe730ace5f13b86e5ac9a51d1a3",
+    "apps/site/package.json": "c77f097149873c9096ab6c14b70b488b8ffa5ba9da726f06a0604582c333beef",
+    "apps/site/app/ai-dj/session/page.tsx": "912eac79fdf4285d48a65dc058d5352985249377f5b89c461f0fdf36c8b0df05",
+    "apps/site/app/ai-dj/session/setup.tsx": "7b4d6f1f5328edc5099caa8d0d396314258f7a7bcd18a68d81a1018708dbe2bc",
+    "apps/site/app/ai-dj/sets/page.tsx": "6eafbc558a367a06be9907606eaf8bef5e054bbe8721ae042236246573b3fd79",
+    "apps/site/app/api/ai-dj/sets/[[...path]]/route.ts": "b2e5aa231cad182e19883b775b7fa4bf1db125696c76d034e19eb975938b1d3d",
+    "apps/site/lib/dj-public-http.ts": "bb84f9ac43eb42fb6b7860447f7020c56e51b7304228c41675c3c936aab8d057",
+    "apps/site/lib/dj-session-input.ts": "c5ac9eb2ed1fba1b78e6eef2f750ddcb0db3f16267965028eba05e85f0bae4cf",
+    "apps/site/lib/dj-sessions.ts": "73bbab9c4df8a7774375588d72dbd466c01f3a2e215136a54ee712974d41598d",
+    "apps/site/migrations/0023_dj_sessions.sql": "d3730a88d12934dea9b055a3e5870ab616afa90bc6831424ff36f43e56033c2a",
+    "apps/site/tests/dj-session-browser.mjs": "1277c8c44fe35db7b1bc5c31e927f7189c3dc27f6bcc9452fc2c311fdda77ffb",
+    "apps/site/tests/dj-sessions.test.ts": "1e0b2da9a8abd27c15a7122969f529a3857e6b63dc5a8ca88fab87f6444b2c49"
+  },
+  "tests": {
+    "site_unit": 118,
+    "session_recording_and_queue": 21,
+    "existing_wallet_suite": 42,
+    "chromium_webkit_setup_public_empty_state": "PASS",
+    "chromium_webkit_real_private_r2_regression": "PASS",
+    "typescript_and_production_build": "PASS",
+    "bundle_audit": "PASS",
+    "production_preview_routes": "404",
+    "rendered_viewports": [
+      1440,
+      390,
+      320
+    ],
+    "accessibility": "Scoped WCAG 2A/AA PASS"
+  },
+  "database": "0023 applied on verified Neon target after private pg_dump backup; no sessions created",
+  "provider_mutations": "Only synthetic private storage-regression accounts and files, removed by test cleanup",
+  "pushed": false,
+  "deployed": false,
+  "paid_compute_started": false,
+  "customer_credits_charged": false,
+  "public_audio_published": false,
+  "not_run": [
+    "rolling DJ renderer and refill",
+    "provider shutdown watchdog and actual cost receipts",
+    "progressive recording and recovery",
+    "populated public-gallery browser test",
+    "generated public R2 end-to-end",
+    "human musical and venue qualification"
+  ]
+}

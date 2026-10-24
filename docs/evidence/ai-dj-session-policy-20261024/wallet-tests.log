@@ -1,0 +1,57 @@
+
+> jamloom-site@0.1.0 test:wallet
+> tsx --test tests/wallet.test.ts tests/generation-queue.test.ts tests/generation-watchdog.test.ts tests/vast-provider.test.ts tests/dna-commerce.test.ts tests/cloud-songs.test.ts
+
+✔ cloud song configuration is opt-in and requires a bounded rate (2.155791ms)
+✔ Improvise receipts require a bounded audible use of this recording and this output (0.378875ms)
+▶ real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+  ✔ Improvise omission or mismatched recording refunds; valid loops settle once (267.445ms)
+  ✔ one request is reserved and dispatched once under duplicate concurrent calls (14.229958ms)
+  ✔ several users queue independently; cancellation refunds while other songs continue (412.471791ms)
+  ✔ duration boundaries settle once and a mismatched saved length refunds (694.974584ms)
+  ✔ restart after output storage failure uses persisted receipt and charges only once (422.057083ms)
+  ✔ saved descriptions reach the next worker only for their owner (443.682667ms)
+  ✔ failed jobs refund all credits and invalid completed output cannot become public (251.983875ms)
+  ✔ website input, feedback ownership, personalization and consent withdrawal (327.142083ms)
+  ✔ disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds (20.852417ms)
+  ✔ lost submit response never retries paid work; quiet endpoint after TTL releases reservation (9.332625ms)
+  ✔ missing provider receipt refunds only after the full provider TTL and a quiet queue (10.420625ms)
+  ✔ test credit lots cannot fund live requests or inflate live balances (2.163292ms)
+  ✔ recovery rotates ambiguous jobs and releases credits after persistent storage failure (369.500208ms)
+✔ real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission (3522.140417ms)
+✔ DNA requires explicit visibility and public-sharing permission (0.685125ms)
+▶ real Postgres Music DNA credits, privacy, idempotence, failure and recovery
+  ✔ whole playlist account profiles persist all Unicode favorites privately (17.031791ms)
+  ✔ song descriptions survive restart and stay bound to owner, billing environment and favorites (75.98575ms)
+  ✔ price, atomic reservation and duplicate request binding (10.978ms)
+  ✔ private audio and notes are owner-only, with full premium charged once (27.417041ms)
+  ✔ public success enters the feed, without favorites or identities; withdrawal removes access (16.46425ms)
+  ✔ failure refunds all held credits and never publishes; anonymous generation is denied (4.643208ms)
+  ✔ interrupted startup and missing worker files recover without stranded credits (8.75525ms)
+  ✔ cloud storage failure holds completion; durable private/public songs survive without renderer files (21.041708ms)
+  ✔ gallery filters cover all pages without exposing private, withdrawn or other-product metadata (112.90675ms)
+✔ real Postgres Music DNA credits, privacy, idempotence, failure and recovery (504.154875ms)
+✔ durable local queue: one claim, lease loss, cancellation, crash recovery, funded immutable work (447.918792ms)
+✔ durable watchdog: lost create/delete responses, restart, cancellation, identity/cost holds and settlement recovery (462.683ms)
+✔ Vast adapter verifies account, traverses complete inventory, limits returned fields and confirms delete response (35.812541ms)
+✔ invalid, incomplete, changing or cyclic inventory is never interpreted as absence (1.357458ms)
+✔ provider failures, body size and error text cannot leak secrets or prove destruction (0.6725ms)
+✔ provider billing verifies identity and complete pagination, rounds costs up and never asserts finality (1.805417ms)
+▶ real Postgres ledger: conservation, concurrency, receipts, tenant isolation and costs
+  ✔ private premium is reserved atomically, rounded, captured only on success and bound to retries (34.812959ms)
+  ✔ receipt replay grants exactly once and cannot move between accounts (24.820417ms)
+  ✔ parallel reservations enforce one active job and no overspend (18.117791ms)
+  ✔ zero-cost cancellation returns original lots; changed quote rejected (17.68475ms)
+  ✔ Apple sandbox lots preserve their own economics, ledgers immutable, disputes freeze (12.969791ms)
+  ✔ unfunded jobs and invalid cost caps rejected without mutation (2.010709ms)
+  ✔ out-of-order refund and grant races cannot leave spendable disputed credits (6.539875ms)
+  ✔ taste profiles are owner-scoped with optimistic concurrency and deletion (4.183959ms)
+✔ real Postgres ledger: conservation, concurrency, receipts, tenant isolation and costs (472.893417ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 42
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3778.224875

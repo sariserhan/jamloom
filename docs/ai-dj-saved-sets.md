@@ -14,7 +14,8 @@ the session and every generation reservation. Reuse the wallet's existing privat
 premium (`privacyCredits`: 25%, rounded up). Never turn a private set public to
 handle insufficient credits, a retry or a disconnect.
 
-Public publication and credit-backed continuous generation remain unfinished.
+[The next increment](ai-dj-session-policy.md) implements the sharing/ledger service
+and local public page. The renderer and customer session flow remain unfinished.
 The local-file engineering preview is private and free; imported tracks are not
 silently published. No paid generation, credit charge, publication or deployment
 was performed in this increment.

@@ -1,0 +1,31 @@
+✔ recording metadata rejects missing permission, malformed identity and unsafe bounds (1.00225ms)
+▶ isolated Postgres: owned multipart recordings, retry recovery, quotas and deletion
+  ✔ retry identity, owner isolation and immutable recording details (6.803875ms)
+  ✔ lost R2 completion response recovers once without completing or charging twice (7.364792ms)
+  ✔ authenticated HTTP boundary, account switch, size limit, CSRF and private headers (15.993ms)
+  ✔ deletion retries provider failures and blocks new upload/playback grants (3.140167ms)
+  ✔ concurrent reservations respect quota and expired uploads are aborted (11.753042ms)
+  ✔ account deletion cannot silently orphan R2 recordings (5.849416ms)
+✔ isolated Postgres: owned multipart recordings, retry recovery, quotas and deletion (208.061916ms)
+✔ DJ session input defaults Public and rejects unsafe fields (0.842583ms)
+▶ isolated DJ session ledger, fresh batches and public set policy
+  ✔ quotes bind owner and sharing, private premium, atomic idempotent Start (10.186458ms)
+  ✔ bounded preparation, fresh seeds, verified output and immutable settlement retries (368.259541ms)
+  ✔ private, local and unplayed recordings never enter public listing or playback (171.110125ms)
+  ✔ credit exhaustion stops new reservations without changing visibility (93.795583ms)
+  ✔ Stop race refunds queued work; running work waits for its shutdown receipt (129.665625ms)
+  ✔ lost settlement response retries once; disconnected sessions cannot dispatch (121.030292ms)
+  ✔ rising per-track price preserves Private and requires a fresh decision (96.129792ms)
+  ✔ DJ and existing generation queues share one worker capacity (16.6095ms)
+  ✔ frozen accounts cannot complete new public music (49.078333ms)
+  ✔ account purge keeps running work and saved recordings protected (10.018875ms)
+✔ isolated DJ session ledger, fresh batches and public set policy (1203.401083ms)
+✔ durable local queue: one claim, lease loss, cancellation, crash recovery, funded immutable work (259.027666ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1421.163041

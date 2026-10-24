@@ -51,7 +51,9 @@
     "test:credits-provider": "node --import tsx tests/credits-provider.mjs",
     "test:ai-dj-browser": "node tests/ai-dj-browser.mjs && node tests/ai-dj-performance-browser.mjs && node tests/ai-dj-autopilot-browser.mjs && node tests/ai-dj-recording-browser.mjs",
     "test:ai-dj-storage": "node --import tsx --test tests/dj-recordings.test.ts",
-    "test:ai-dj-storage-browser": "node --import tsx tests/dj-recordings-browser.mjs"
+    "test:ai-dj-storage-browser": "node --import tsx tests/dj-recordings-browser.mjs",
+    "test:ai-dj-sessions": "node --import tsx --test tests/dj-sessions.test.ts",
+    "test:ai-dj-session-browser": "node tests/dj-session-browser.mjs"
   },
   "dependencies": {
     "@apple/app-store-server-library": "3.1.0",

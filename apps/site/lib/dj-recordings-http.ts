@@ -24,6 +24,7 @@ export async function djRecordingRequest(request:Request,context:()=>Promise<Con
    }
    if(!id){if(body.owner!==owner)throw new AudioError('Your account changed. Sign back into the recording’s account.',409);return Response.json(await recordings.reserve(owner,body),{headers});}
    if(action==='part'&&Object.keys(body).join(',')==='number')return Response.json(await recordings.part(owner,id,body.number),{headers});
+   if(action==='withdraw'&&Object.keys(body).join(',')==='owner'){if(body.owner!==owner)throw new AudioError('Your account changed.',409);return Response.json(await recordings.withdraw(owner,id),{headers});}
    if(action==='complete'&&Object.keys(body).length===0)return Response.json(await recordings.complete(owner,id),{headers});
   }
   throw new AudioError('Unsupported recording operation.',404);

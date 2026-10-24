@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "scope": "local production build, launch gate disabled in this process only",
+  "checks": [
+    {
+      "path": "/ai-dj",
+      "status": 404
+    },
+    {
+      "path": "/ai-dj/session",
+      "status": 404
+    },
+    {
+      "path": "/ai-dj/sets",
+      "status": 404
+    },
+    {
+      "path": "/api/ai-dj/sets",
+      "status": 404
+    },
+    {
+      "path": "/api/ai-dj/sets/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/audio",
+      "status": 404
+    },
+    {
+      "path": "/api/ai-dj/recordings",
+      "status": 404
+    }
+  ]
+}

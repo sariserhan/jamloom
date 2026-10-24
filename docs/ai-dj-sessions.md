@@ -47,6 +47,13 @@ unmixed source songs. Session recording is not consent to train on the take.
   Do not mark a session saved until the finalized object is verified. Retention,
   account deletion and owner-only replay must be integrated before activation.
 
+## Session pricing and sharing follow-up
+
+[Current implementation and evidence](ai-dj-session-policy.md): Public-default setup,
+wallet-backed session/batch reservations and public-listing exclusion rules are
+implemented locally. The rolling renderer, automatic refill and progressive capture
+remain disconnected; no live session or paid dispatch is enabled.
+
 ## Earlier local recording increment
 
 **Superseded by [automatic recording and saved sets](ai-dj-saved-sets.md).**

@@ -12,7 +12,7 @@ export class GenerationQueue {
   const db=await this.pool.connect();
   try{await db.query('BEGIN');await db.query("SELECT pg_advisory_xact_lock(hashtextextended('jamloom-generation-capacity',0))");
    // Start with one allocation globally, including allocations awaiting shutdown reconciliation.
-   if((await db.query("SELECT 1 FROM generation_jobs WHERE state IN ('running','stopping') LIMIT 1")).rowCount){await db.query('COMMIT');return null;}
+   if((await db.query("SELECT 1 FROM generation_jobs WHERE state IN ('running','stopping') UNION ALL SELECT 1 FROM dj_session_batches WHERE state='running' LIMIT 1")).rowCount){await db.query('COMMIT');return null;}
    const job=(await db.query(`SELECT j.*,r.cost_cap_micros FROM generation_jobs j
     JOIN generation_reservations r ON r.id=j.reservation_id JOIN credit_wallets w ON w.owner_id=j.owner_id
     WHERE j.state='queued' AND NOT j.cancel_requested AND NOT w.frozen AND r.status='reserved'
