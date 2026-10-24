@@ -1,0 +1,47 @@
+{
+  "status": "PARTIAL product; PASS completed technical checks",
+  "source_sha256": {
+    "apps/web/set-recording.js": "e1bc8ac4b6978f1e3eb24f7898333106a3e9008aadd36ac0bb798fb9353ec118",
+    "apps/web/tests/set-recording.test.js": "bc8c353a933a5b8c81046d2c818ca60b9a2c933599d25298020cf420ba3cb8f8",
+    "apps/site/app/ai-dj/recording.tsx": "47d872458077d10e3395b286997b11e78634be94b9810c26427ba90227da3eb0",
+    "apps/site/app/ai-dj/studio.tsx": "ec3647c920be35e202d934e9569847de959b8750314e10c62d2d57f4bd477581",
+    "apps/site/app/ai-dj/studio.css": "36db857b6cd1ba236ce7765f47c0dae75ea378c616622a07e4f3bdd792805b1a",
+    "apps/site/lib/dj-session-store.ts": "8636046716628449bcca2e047f731e8024ba07dca1dd2a13b04948ad589df363",
+    "apps/site/lib/audio-store.ts": "cca7d989d957a17a93f5de2a9745059d0d941b591c7938f080fa52ac9304c0fc",
+    "apps/site/tests/dj-session-store.test.ts": "dd7525c2ff5a1d68c563171624e55165098047ac9cfd9580af762bd65546dd21",
+    "apps/site/tests/dj-session-r2-live.ts": "006a7c75108229f72e27e5b5f3c49e6c964a6af3b6f6c65bf02ae26119e0ea90",
+    "apps/site/tests/ai-dj-recording-browser.mjs": "a292fa4bbf9fdc347610de02858bf67c957995208abc25de530ed4c6277347e1"
+  },
+  "checks": {
+    "site_units": "PASS 117/117",
+    "shared_web_units": "PASS 159/159",
+    "typescript": "PASS",
+    "r2_provider": "PASS; see r2-provider.json",
+    "browser_suite": "PASS Chromium and WebKit: library, performance, autopilot, recording",
+    "production_build": "PASS",
+    "bundle_audit": "PASS 42 client files; server secrets absent"
+  },
+  "limitations": [
+    "Continuous original generation and credit-backed session orchestration not implemented",
+    "Automatic progressive browser-to-R2 recording not implemented",
+    "Authenticated session ownership API, recovery and deletion integration not implemented",
+    "Local recorder test retains 60-minute and 96-MB caps",
+    "Human listening and real venue qualification NOT RUN"
+  ],
+  "paid_gpu_used": false,
+  "code_pushed": false,
+  "website_deployed": false,
+  "diagnostics": [
+    "WebKit navigation may report an aborted /api/site-status request; exact navigation-only diagnostic retained in recording report. Endpoint HTTP 200 verified.",
+    "Recording report includes expected unauthenticated/forbidden diagnostics after navigating to the guest Academy host. No AI DJ application errors."
+  ],
+  "log_sha256": {
+    "jamloom-session-site-tests.log": "b1f7fdef5a76c18aaafdc7c224fee8a01084fe7c39f4211f6ffec5010fef305e",
+    "jamloom-session-web-tests.log": "f471b7e0955599a96a80b406ccdb6374062734e23207d935861357726b14de9b",
+    "jamloom-session-final-typecheck.log": "76d575f32c96b28d06783b82331bc5d133a4feed0a9804f0aa5139880abaa7c6",
+    "jamloom-session-all-browser.log": "e6cef7c733cdd77b4039783734e544f32afff6b2f326788d74a30fada288b473",
+    "jamloom-session-build.log": "545aedc95e5695bb48fe02436d36d3a88591bff37f91bf87909568b1b195aee0",
+    "jamloom-session-audit.log": "ae0f06644afcd68cee1507159bafd08904e498f86f502d0cd9c7f84f2acb9224",
+    "jamloom-session-r2-live.log": "a321fe0ac1201231e72bd3e65742b5a9d9fbeb3b153f7f252412ba59e820fdae"
+  }
+}

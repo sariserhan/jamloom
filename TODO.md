@@ -2,17 +2,23 @@
 
 **Overall PARTIAL; owner accepts the new studies as a good starting point, not professional quality.** The owner permits Vast.ai GPU work within existing authorized controls and prohibits paid data/licenses/musicians/APIs or expanded infrastructure. No publication or push. [Training-data registry](docs/TRAINING_DATA_REGISTRY.md) scopes numerical EDM-CUE metadata, Groove MIDI and project-authored synthesis separately from uncleared audio. The new deterministic Autopilot baseline is locally implemented; it does not reconnect the rejected periodic FX policy or claim trained expertise.
 
+**Owner clarification:** the product generates fresh music continuously until Stop or exhausted credits, with a distinct session per user and one complete mixed recording saved privately in R2. Local-file playback is only a test harness. [Continuous-session contract and implementation](docs/ai-dj-sessions.md).
+
 | Task | Status | Evidence / blocker / next action |
 |---|---|---|
 | Local music library and conservative Autopilot | PASS technical; PARTIAL product | 114 tests and Chromium/WebKit library/transition/controller checks; [baseline report](docs/ai-dj-baseline.md). 30-minute synthetic offline endurance PASS; human musical/venue qualification remains PARTIAL/NOT RUN |
 | Free-data rights registry | PASS initial review | [Registry](docs/TRAINING_DATA_REGISTRY.md); Raveform component provenance, Slakh underlying rights and OnAir commercial-model obligations remain unresolved and excluded |
 | EDM-CUE metadata baseline | PASS experiment; no promotion | 4,285 training / 101 held-out rows; cue-prior F1 0.386 → 0.459 versus fixed phrase-grid proxy. Duplicate validation/test counted once; full collaborator independence remains unverified |
 | Original club studies and controlled audio comparisons | PASS technical; owner feedback PARTIAL | 27 short WAV studies with stems/events/sections/seeds, including hash-checked CC0 recorded-drum pairs and a separate motif seed. Matched levels, no clipping; 186 MiB retained |
+| Integrated AI DJ set recording | PARTIAL | Local compressed recording and private R2 multipart storage PASS technically; 117 site tests and 159 web tests pass. Continuous-session API and progressive browser upload remain NOT RUN. [Report](docs/ai-dj-sessions.md) |
 | Demonstration recorder and explicit hold intent | PASS implementation; expert data NOT RUN | Existing 30-second recorder exports explicit hold/action reasons linked to actual transport frames and WAV hash. Chromium/WebKit capture, stems, withdrawal and failure checks pass; private unreviewed status retained |
 | Groove MIDI timing/velocity experiment | PASS experiment; candidate NOT QUALIFIED | 1,097 training / 40 held-out performances, separate drummers. Velocity MAE 29.54 → 26.16; timing MAE 22.07 → 22.28 ms worsened. No retuning or promotion |
+| Continuous original generation and credit-backed session queue | NOT RUN | No fixed library or repeated-song fallback; prepare fresh tracks ahead, reserve credits before dispatch, unique session/job identities, handle Stop/exhaustion and reconcile actual costs |
 | Original generation model and learned DJ policy | NOT RUN | Train only where qualified data and an experiment justify it; do not relabel deterministic or synthetic behavior as expertise |
 | GPU campaign | PARTIAL | Both trials PASS technical; ten outputs retrieved and both rentals destroyed. ~$0.113 combined observed debit under the same $6 cap and original deadline. Owner accepts first-round house clips 1/5; refinement clip 3 (rolling-house brief, requested 128 BPM) accepted for development |
 | Listening and production promotion | PARTIAL listening; promotion NOT RUN | Owner: “okay, not perfect but a good start.” First GPU clips 1/5 accepted; remaining four rejected. Refinement clip 3 selected; other refinement clips not rated explicitly. No numeric scores or automatic model promotion |
+
+**Completed increment:** local mixer recording, finite-duration selector removal, private `jamloom-ai-dj-sessions` bucket and multipart storage adapter. 276 unit tests, Chromium/WebKit suite, TypeScript, production build, bundle audit and real R2 multipart check PASS. Continuous generation and automatic session saving remain open. [Evidence](docs/ai-dj-sessions.md).
 
 ## AI DJ correction and licensed training sources — 2026-10-24
 

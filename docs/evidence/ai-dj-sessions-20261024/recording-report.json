@@ -1,0 +1,119 @@
+{
+  "status": "PASS technical",
+  "human_listening": "NOT RUN",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "receipt": {
+        "version": 1,
+        "frames": 98176,
+        "rate": 32000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 3.068,
+        "bytes": 49145,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "95c1937b176efa8573ef07f78a7c123cc8f8a0a0952c3165759eb0eae223c0bb"
+      },
+      "decoded": {
+        "seconds": 3.06,
+        "channels": 2,
+        "rms": 0.062162897387972295,
+        "peak": 0.08861134201288223
+      },
+      "legacyStudioReceipt": {
+        "version": 1,
+        "frames": 59904,
+        "rate": 48000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 1.248,
+        "bytes": 19497,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "fbd3bbb8706bc9b623e6b8916bf8ab8812319266f424d39b7b62ca6d6f7a953b"
+      },
+      "checks": [
+        "consent and playing gate",
+        "actual compressed capture",
+        "download SHA-256 and decoded PCM",
+        "pause finalizes",
+        "stop and natural end finalize",
+        "withdrawal removes take without stopping playback",
+        "unsupported codec recovery",
+        "hidden/audio interruption",
+        "no finite product session selector",
+        "route cleanup",
+        "no microphone",
+        "speakers muted",
+        "390/320px layout",
+        "scoped Axe",
+        "existing Studio/Academy recorder"
+      ],
+      "errors": [],
+      "aiDJConsoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+      ],
+      "navigationAborts": []
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "receipt": {
+        "version": 1,
+        "frames": 98432,
+        "rate": 32000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 3.076,
+        "bytes": 59408,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "55fee16e846ba91054c25fd436db5e598bad15e8ad19041cb328f4c9c0fa3d21"
+      },
+      "decoded": {
+        "seconds": 3.08,
+        "channels": 2,
+        "rms": 0.06358952492302591,
+        "peak": 0.0961923897266388
+      },
+      "legacyStudioReceipt": {
+        "version": 1,
+        "frames": 60416,
+        "rate": 48000,
+        "gaps": 0,
+        "clockStalls": 0,
+        "seconds": 1.2586666666666666,
+        "bytes": 24985,
+        "mime": "audio/webm;codecs=opus",
+        "sha256": "2a1ee92941695131fa3840d7920394c0ac7c2d12f7cb66c8fc873faf34215d04"
+      },
+      "checks": [
+        "consent and playing gate",
+        "actual compressed capture",
+        "download SHA-256 and decoded PCM",
+        "pause finalizes",
+        "stop and natural end finalize",
+        "withdrawal removes take without stopping playback",
+        "unsupported codec recovery",
+        "hidden/audio interruption",
+        "no finite product session selector",
+        "route cleanup",
+        "no microphone",
+        "speakers muted",
+        "390/320px layout",
+        "scoped Axe",
+        "existing Studio/Academy recorder"
+      ],
+      "errors": [],
+      "aiDJConsoleErrors": [
+        "Failed to load resource: the server responded with a status of 403 (Forbidden)",
+        "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+      ],
+      "navigationAborts": [
+        "/localhost:3000/api/site-status due to access control checks.",
+        "/localhost:3000/api/site-status due to access control checks."
+      ]
+    }
+  ]
+}

@@ -49,12 +49,17 @@ export function audioStore(config: Config, env: Record<string,string|undefined> 
   if ((env.JAMLOOM_R2_ENABLED ?? env.DJAYVO_R2_ENABLED) !== 'true') return null;
   return r2AudioStore(env);
 }
-export function r2AudioStore(env: Record<string,string|undefined> = process.env): AudioStore {
-  const { R2_ACCOUNT_ID: account, R2_ACCESS_KEY_ID: access, R2_SECRET_ACCESS_KEY: secret, R2_BUCKET: bucket }=env;
-  if (!account || !/^[a-f0-9]{32}$/.test(account) || !access || !secret || !bucket || !/^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$/.test(bucket)) throw new Error('R2 configuration is incomplete.');
-  const client=new S3Client({region:'auto',endpoint:`https://${account}.r2.cloudflarestorage.com`,forcePathStyle:true,
+export function r2Client(env: Record<string,string|undefined> = process.env) {
+  const {R2_ACCOUNT_ID:account,R2_ACCESS_KEY_ID:access,R2_SECRET_ACCESS_KEY:secret}=env;
+  if(!account||!/^[a-f0-9]{32}$/.test(account)||!access||!secret)throw new Error('R2 configuration is incomplete.');
+  return new S3Client({region:'auto',endpoint:`https://${account}.r2.cloudflarestorage.com`,forcePathStyle:true,
     credentials:{accessKeyId:access,secretAccessKey:secret},maxAttempts:1,
     requestChecksumCalculation:'WHEN_REQUIRED',responseChecksumValidation:'WHEN_REQUIRED'});
+}
+export function r2AudioStore(env: Record<string,string|undefined> = process.env): AudioStore {
+  const bucket=env.R2_BUCKET;
+  if(!bucket||!/^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$/.test(bucket))throw new Error('R2 configuration is incomplete.');
+  const client=r2Client(env);
   return {
     local:false,
     async put(key,data) { await client.send(new PutObjectCommand({Bucket:bucket,Key:key,Body:data,ContentType:'audio/wav',CacheControl:'private, no-store'}),{abortSignal:AbortSignal.timeout(15000)}); },

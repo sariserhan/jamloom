@@ -666,3 +666,13 @@ rights evidence for any additional data; physical output/venue verification.
 Do not buy or commission these without changing the current financial policy.
 Models and signed releases in the large project folders should be archived
 before removing their internal-disk copies; no broad deletion was performed.
+
+## Continuous AI DJ sessions — owner clarification, 2026-10-24
+
+AI DJ should generate fresh music continuously until Stop or insufficient credits,
+with a distinct experience per session and one complete mixed recording saved
+privately in R2. Local libraries are a playback test, not the product model.
+The new private bucket is `jamloom-ai-dj-sessions`; multipart storage is verified.
+The local page can now record/download its mixer output, but automatic R2 saving
+and the continuous generation/credit session service are not enabled.
+[Implementation, evidence and remaining gates](ai-dj-sessions.md).

@@ -6,6 +6,10 @@ professional DJ intelligence. The owner describes the new studies as **“okay,
 not perfect but a good start”**: **PARTIAL musical acceptance**, not professional
 qualification. Historical rejected renders remain recorded in earlier reports. No push, deployment or model promotion.
 
+The owner clarified that continuous fresh generation, credit-controlled ending and
+one complete R2 recording are the actual product. This local-file baseline is a
+test harness. [Current continuous-session contract](ai-dj-sessions.md).
+
 ## Implemented
 
 - Reused `/ai-dj`, the shared mixer, controller and local audio analyzer. Local
@@ -205,7 +209,7 @@ compute cannot replace absent expert labels. Local implementation checkpoint:
 Still required: independent listening and realistic sound improvements, diverse
 cleared full tracks and genuine demonstrations, generation ahead of playback,
 qualified vocal/section detection, key-preserving tempo, harmonic selection,
-extended reserve/recovery, integrated Autopilot recording, physical routing and
+extended reserve/recovery, progressive full-session R2 recording, physical routing and
 venue/endurance evidence. Only candidates that beat the baseline and pass those
 relevant gates can be promoted. No claim of being better than a real DJ.
 
