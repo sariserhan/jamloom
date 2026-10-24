@@ -35,7 +35,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   const sample=await context.request.get(base+'/api/taste/song?id=06d89abd7d194ddf81bbc54af3e9b67f&file=audio');assert.equal(sample.status(),200);const bytes=await sample.body();
   await context.route('**/api/catalogue/*/audio',r=>r.fulfill({contentType:'audio/wav',body:bytes}));
   await page.goto(base+'/');assert.match(await page.title(),/Learn, Mix/);assert.equal(await page.locator('h1').count(),1);
-  const gallery=page.getByRole('region',{name:'Made with Music DNA',exact:true});assert.equal(await gallery.locator('audio').count(),4);
+  const gallery=page.getByRole('region',{name:'Music DNA song preview',exact:true});assert.equal(await gallery.locator('audio').count(),4);
   const initial=await gallery.locator('audio').evaluateAll(list=>list.map(a=>a.src));await gallery.getByRole('button',{name:'Next songs',exact:true}).click();assert.equal(await gallery.locator('audio').count(),4);assert.ok((await gallery.locator('audio').evaluateAll(list=>list.map(a=>a.src))).every(src=>!initial.includes(src)));
   await gallery.getByRole('button',{name:'Back to previous songs',exact:true}).click();assert.deepEqual(await gallery.locator('audio').evaluateAll(list=>list.map(a=>a.src)),initial);
   assert.equal(await page.locator('#public-songs').count(),0);assert.equal(await page.locator('#music-dna img').count(),0);

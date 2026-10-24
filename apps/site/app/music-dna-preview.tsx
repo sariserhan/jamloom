@@ -12,7 +12,7 @@ export function MusicDnaPreview({songs}:{songs:Song[]}){
   setError('');try{await player.play();}catch{if(audio.current[id]===player)setError('This song could not play. Try another song.');}
  }
  function changePage(step:number){Object.values(audio.current).forEach(player=>player?.pause());setPlaying(null);setError('');setStart((start+step*4+songs.length)%songs.length);}
- return <section className="dna-listen-preview" aria-label="Made with Music DNA">
+ return <section className="dna-listen-preview" aria-label="Music DNA song preview">
   <h3>Made with Music DNA</h3>
   <div className="dna-preview-grid">{displayed.map(song=><div className="dna-preview-song" key={song.id}>
    <span className="dna-preview-record" aria-hidden="true">♫</span>

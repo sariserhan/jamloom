@@ -1,3 +1,7 @@
+## Homepage galleries: local review only — 2026-10-24
+
+**PASS locally; not pushed or deployed. Owner handles batch pushes from now on.** Both Made with Improvise and Made with Music DNA show three responsive rows per page, independent pagination and product-correct collections. Added “Your next song could be here” with both creation links. Chromium/WebKit, typecheck, filters, pagination and scoped accessibility checks pass. Localhost remains running at http://localhost:3000 for owner testing. [Evidence](docs/homepage-three-rows-20261024.md).
+
 ## Homepage Improvise collection — 2026-10-24
 
 **Implementation, local browser checks and deployment PASS.** Replaced the empty community query on the homepage with the existing 56-song Improvise listening collection, accurately titled “Made with Improvise.” Pagination, filters, real muted playback, Chromium/WebKit rendering, scoped accessibility and production build pass. Actual community songs remain on the Improvise page; privacy and launch gates are unchanged. [Evidence](docs/homepage-gallery-20261024.md).

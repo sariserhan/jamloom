@@ -3,7 +3,7 @@ import {useEffect,useRef,useState} from 'react';
 import {SongFeedback} from './song-feedback';
 import languages from '../../../../assets/manifests/dna-languages.json';
 type Entry={id:string;title:string;language:string;direction?:string;historical?:boolean;visibility?:string;withdrawn_at?:string;check?:'owner-reviewed'|'passed'|'style-mismatch'|'not-checked';product?:string};
-export function SongGallery({scope,title,product='music-dna'}:{scope:'examples'|'mine'|'public'|'validation'|'showcase';title:string;product?:'music-dna'|'improvise'}){
+export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'examples'|'mine'|'public'|'validation'|'showcase';title:string;product?:'music-dna'|'improvise';rows?:3|6;id?:string}){
  const curated=scope==='validation'||scope==='showcase';
  const paginated=curated||scope==='examples';
  const [page,setPage]=useState(1),[columns,setColumns]=useState(1);
@@ -34,8 +34,9 @@ export function SongGallery({scope,title,product='music-dna'}:{scope:'examples'|
    if(!response.ok)throw Error(result.error??'Songs could not load.');
    if(!Array.isArray(result.songs))throw Error('Invalid song collection');
    if(result.filters)setOptions(result.filters);
-   setSongs(old=>after?[...old,...result.songs]:result.songs);setNext(result.next);setFeedbackAvailable(result.feedbackAvailable!==false);setAccountFeedback(result.accountFeedback===true);
-   setMessage(result.signIn?'Sign in to see all your songs.':result.available===false?'Song collections are not enabled on this server yet.':result.songs.length?'':(publicLanguage||publicGenre)?'No songs match these filters.':scope==='public'?'Public songs will appear here after successful generation.':'No songs yet. Make your first song above.');
+   const collection:Entry[]=scope==='showcase'?result.songs.filter((song:Entry)=>song.product===product):result.songs;
+   setSongs(old=>after?[...old,...collection]:collection);setNext(result.next);setFeedbackAvailable(result.feedbackAvailable!==false);setAccountFeedback(result.accountFeedback===true);
+   setMessage(result.signIn?'Sign in to see all your songs.':result.available===false?'Song collections are not enabled on this server yet.':collection.length?'':(publicLanguage||publicGenre)?'No songs match these filters.':scope==='public'?'Public songs will appear here after successful generation.':'No songs yet. Make your first song above.');
   }catch{if(current===requestId.current)setMessage('Songs could not load. Please try again.');}finally{if(current===requestId.current)setBusy(false);}
  }
  useEffect(()=>{void load();const refresh=()=>{if(!document.hidden)void load();};
@@ -48,7 +49,7 @@ export function SongGallery({scope,title,product='music-dna'}:{scope:'examples'|
  }
  const filtered=songs.filter(song=>(!language||song.language===language)&&(!genre||song.direction===genre));
  const ordered=scope==='showcase'?[...filtered].reverse():filtered;
- const pageSize=columns*6,pageCount=Math.max(1,Math.ceil(ordered.length/pageSize));
+ const pageSize=columns*rows,pageCount=Math.max(1,Math.ceil(ordered.length/pageSize));
  const currentPage=Math.min(page,pageCount);
  const displayed=paginated?ordered.slice((currentPage-1)*pageSize,currentPage*pageSize):ordered;
  function changePage(value:number){
@@ -59,7 +60,7 @@ export function SongGallery({scope,title,product='music-dna'}:{scope:'examples'|
   <span role="status">Page {currentPage} of {pageCount}</span>
   <button className="secondary" disabled={currentPage===pageCount} onClick={()=>changePage(currentPage+1)}>Next</button>
  </nav>;
- return <section id={scope==='showcase'?'public-songs':undefined} className="product-panel" aria-label={title}><h2>{title}</h2>
+ return <section id={scope==='showcase'?(id??'public-songs'):undefined} className="product-panel" aria-label={title}><h2>{title}</h2>
   <p>{scope==='showcase'?'Every song from our listening collection. Choose a language or genre, then press play.':scope==='validation'?'Listen to our test songs. Automated checks do not judge pronunciation or musical quality.':scope==='examples'?'Press play. Original AI songs inspired by example favorites.':scope==='mine'?'All your songs. Private stays private.':'Made by listeners. Shared with everyone.'}</p>
   {filterable&&<div className="product-actions song-filters">
    <label>Language <select aria-label="Language" value={language} onChange={e=>{setLanguage(e.target.value);setPage(1);}}><option value="">All languages</option>{(scope==='public'?[...options.languages]:[...new Set(songs.map(s=>s.language))]).sort((a,b)=>((languages.languages as Record<string,string>)[a]??a).localeCompare((languages.languages as Record<string,string>)[b]??b)).map(code=><option key={code} value={code}>{(languages.languages as Record<string,string>)[code]??code}</option>)}</select></label>

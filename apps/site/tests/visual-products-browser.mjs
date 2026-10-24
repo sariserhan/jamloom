@@ -5,6 +5,7 @@ import {chromium,webkit} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
 import {homeProducts} from '../lib/home-products.ts';
+import {validationSongs} from '../lib/music-validation.ts';
 import {comingSoonResponse} from '../lib/coming-soon.ts';
 const base=process.env.JAMLOOM_TEST_URL??'http://127.0.0.1:4247',output=process.env.JAMLOOM_EVIDENCE_DIR??'/tmp/jamloom-visual-products';
 assert.equal(new URL(base).hostname,'127.0.0.1');
@@ -24,15 +25,33 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   for(const p of homeProducts){await choices.getByRole('button',{name:p.intent+' '+p.name,exact:true}).click();assert.equal(await choices.locator('[aria-pressed=true]').count(),1);assert.equal(await preview.getAttribute('aria-label'),p.name+' preview');assert.equal(await preview.locator('a.primary').getAttribute('href'),p.slug==='dj-studio'?'#dj-studio':p.href);if(p.slug!=='music-dna')await preview.locator('img').evaluate(img=>img.decode());}
   await choices.getByRole('button',{name:'Taste to song Music DNA',exact:true}).click();assert.equal(await preview.locator('audio').evaluate(a=>a.paused),true);
   for(const width of [1280,390,320]){await page.setViewportSize({width,height:900});await page.evaluate(()=>scrollTo(0,0));assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.ok(await choices.getByRole('button').last().evaluate(e=>e.getBoundingClientRect().bottom<=innerHeight),'All six choices should fit the initial viewport');await page.screenshot({path:join(output,`${name}-home-${width}.png`)});}
-  const gallery=page.getByRole('region',{name:'Made with Improvise',exact:true});
-  await gallery.locator('article').first().waitFor();
-  assert.ok(await gallery.locator('audio').count()>0,'Homepage must show existing Improvise examples');
-  assert.ok((await gallery.locator('audio').first().getAttribute('src')).startsWith('/api/improvise/song?'));
+  for(const [product,title] of [['improvise','Made with Improvise'],['music-dna','Made with Music DNA']]){
+   const gallery=page.getByRole('region',{name:title,exact:true}),id=product+'-songs';
+   const expected=new Set(validationSongs.filter(song=>song.product===product).map(song=>song.id));
+   await gallery.locator('article').first().waitFor();
+   assert.equal(await gallery.getByRole('status').filter({hasText:/^\d+ songs$/}).innerText(),expected.size+' songs');
+   for(const width of [1280,800,390,320]){
+    await page.setViewportSize({width,height:900});
+    await page.waitForFunction(id=>{const grid=document.querySelector('#'+id+' .song-paged-grid');return grid.children.length===getComputedStyle(grid).gridTemplateColumns.split(' ').length*3;},id);
+    const ids=await gallery.locator('audio').evaluateAll(players=>players.map(a=>new URL(a.src).searchParams.get('id')));
+    assert.ok(ids.every(id=>expected.has(id)),'Gallery must contain only its own product');
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+    const first=await gallery.locator('article h3').first().innerText();
+    await gallery.getByRole('button',{name:'Next',exact:true}).first().click();
+    assert.match(await gallery.locator('.song-pagination').first().innerText(),/Page 2 of/);
+    assert.notEqual(await gallery.locator('article h3').first().innerText(),first);
+    await gallery.getByRole('button',{name:'Previous',exact:true}).first().click();
+   }
+   await gallery.getByRole('combobox',{name:'Genre',exact:true}).selectOption({index:1});
+   assert.ok(await gallery.locator('article').count()>0);
+   assert.ok(await gallery.locator('article').count()<=3);
+   await gallery.getByRole('button',{name:'Clear filters',exact:true}).click();
+   await gallery.evaluate(el=>el.scrollIntoView({block:'start'}));
+   await page.screenshot({path:join(output,`${name}-${product}-gallery-320.png`)});
+  }
   assert.equal(await page.getByRole('heading',{name:'Community songs · Improvise',exact:true}).count(),0);
-  await gallery.getByRole('button',{name:'Next',exact:true}).first().click();
-  assert.match(await gallery.locator('.song-pagination').first().innerText(),/Page 2 of/);
-  await gallery.getByRole('button',{name:'Previous',exact:true}).first().click();
-  assert.deepEqual((await new AxeBuilder({page}).include('.product-showcase').include('#public-songs').analyze()).violations,[]);
+  assert.equal(await page.getByRole('heading',{name:'Your next song could be here.',exact:true}).count(),1);
+  assert.deepEqual((await new AxeBuilder({page}).include('.product-showcase').include('#improvise-songs').include('#music-dna-songs').include('.sharing-panel').analyze()).violations,[]);
   assert.equal(await page.locator('.product-chapters > article').count(),6);assert.equal(await page.locator('.product-chapters details[open]').count(),0);
   const screens=[];
   for(const slug of ['music-dna','improvise','dj-studio','academy','live-dj','studio/index.html']){
@@ -47,7 +66,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   for(const width of [1280,390,320]){await page.setViewportSize({width,height:900});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:join(output,`${name}-coming-soon-${width}.png`)});}
   await page.locator('.launch-products-nav a[href="#music-dna"]').click();assert.ok(page.url().endsWith('#music-dna'));
   assert.deepEqual((await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()).violations,[]);assert.deepEqual(errors,[]);
-  results.push({browser:name,status:'PASS',six_choices_above_fold:true,real_example_muted_playback:true,preview_switches_and_routes:true,improvise_examples_and_pagination:true,all_features_preserved_under_details:true,product_routes:screens,public_coming_soon:'rendered actual response fixture; no deployment',widths:[1280,390,320],axe_violations:0,errors});
+  results.push({browser:name,status:'PASS',six_choices_above_fold:true,real_example_muted_playback:true,preview_switches_and_routes:true,three_row_galleries_and_pagination:true,product_collections_separate:true,all_features_preserved_under_details:true,product_routes:screens,public_coming_soon:'rendered actual response fixture; no deployment',widths:[1280,390,320],axe_violations:0,errors});
  }finally{await browser.close();}
 }
 await writeFile(join(output,'report.json'),JSON.stringify(results,null,2)+'\n');console.log(JSON.stringify(results));
