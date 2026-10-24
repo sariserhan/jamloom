@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "widths": [
+        1440,
+        800,
+        390,
+        320
+      ],
+      "initialPeak": 0.2671331763267517,
+      "captureBytes": 1380339,
+      "checks": [
+        "no autoplay",
+        "real PCM",
+        "two-deck crossfade",
+        "direction",
+        "shared controls",
+        "closing and cancellation",
+        "stop during load",
+        "hidden tab stop",
+        "corrupt bank recovery",
+        "accessibility",
+        "speaker isolation"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "widths": [
+        1440,
+        800,
+        390,
+        320
+      ],
+      "initialPeak": 0.23164188861846924,
+      "captureBytes": 476711,
+      "checks": [
+        "no autoplay",
+        "real PCM",
+        "two-deck crossfade",
+        "direction",
+        "shared controls",
+        "closing and cancellation",
+        "stop during load",
+        "hidden tab stop",
+        "corrupt bank recovery",
+        "accessibility",
+        "speaker isolation"
+      ]
+    }
+  ],
+  "date": "2026-10-24",
+  "audio": [
+    {
+      "browser": "chromium",
+      "seconds": 86.58,
+      "peak": 0.38768208026885986,
+      "rms": 0.053642047675941704,
+      "final_half_second_rms": 0.0,
+      "sha256": "354314fb7ddb1a9b8e4852a08fb02b1a36d73446a328b5e64f1476fd7d39dcd7",
+      "status": "PASS"
+    },
+    {
+      "browser": "webkit",
+      "seconds": 20.862666666666666,
+      "peak": 0.33770185708999634,
+      "rms": 0.04491155864235538,
+      "final_half_second_rms": 0.0,
+      "sha256": "b37d59cdcb3e9e021d81e7ceebe4ff9ac3e75522db30b6a7a16b086a57beb094",
+      "status": "PASS"
+    }
+  ],
+  "website_tests": {
+    "passed": 110,
+    "failed": 0
+  },
+  "typecheck": "PASS",
+  "production_build": "PASS",
+  "bundle_audit": "PASS",
+  "production_page_status": 404,
+  "production_sample_route_status": 404,
+  "chromium_unattended_transition_and_spaced_vocal": "PASS",
+  "human_listening": "NOT RUN",
+  "venue_and_long_endurance": "NOT RUN",
+  "live_generation": "NOT RUN",
+  "push_deployment_public_activation": "NOT RUN",
+  "note": "Prepared bank, pulse estimates and built-in commands; automated audio evidence is not musical acceptance."
+}

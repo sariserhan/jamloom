@@ -1,3 +1,7 @@
+## AI DJ local prototype — 2026-10-24
+
+**Local implementation and technical checks PASS; overall product quality PARTIAL. Not pushed or deployed.** Prepared-bank autopilot, real animated decks/crossfades, energy/mood and vocal spacing, shared tone/echo controls, supported direction commands and planned endings are ready at http://localhost:3000/ai-dj. 110 website tests, typecheck, build, bundle audit and Chromium/WebKit playback/responsive/accessibility/recovery checks pass; Chromium also verifies an unattended transition and spaced vocal playback. Production page/audio routes return 404. Human listening, verified beat/key/loudness quality, 30–60 minute/venue endurance and generation-ahead remain NOT RUN. No paid compute started. [Scope and evidence](docs/ai-dj-local-prototype.md).
+
 ## Homepage galleries: local review only — 2026-10-24
 
 **PASS locally; not pushed or deployed. Owner handles batch pushes from now on.** Both Made with Improvise and Made with Music DNA show three responsive rows per page, independent pagination and product-correct collections. Added “Your next song could be here” with both creation links. Chromium/WebKit, typecheck, filters, pagination and scoped accessibility checks pass. Localhost remains running at http://localhost:3000 for owner testing. [Evidence](docs/homepage-three-rows-20261024.md).
