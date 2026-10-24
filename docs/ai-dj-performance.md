@@ -1,5 +1,7 @@
 # AI DJ performance deck — 2026-10-24
 
+**Superseded:** the owner rejected automatic timing/technique and clarified Blood Club was only a quality reference. Current correction, disabled Autopilot and training status: [source review](ai-dj-training-sources.md). Historical technical results below do not establish musical acceptance.
+
 **Local implementation and technical checks PASS. Musical qualification PARTIAL. No push or deployment.** This supersedes the original vinyl-style preview described in [the first increment](ai-dj-local-prototype.md).
 
 The owner requested a modern DJ controller and an audible, visible performance rather than track-to-track playback, then supplied `Downloads/blood_club.mp3` as the party reference and asked to conserve computer resources.

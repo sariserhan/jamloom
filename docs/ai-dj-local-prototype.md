@@ -1,5 +1,7 @@
 # AI DJ local prototype — 2026-10-24
 
+**Superseded:** the owner rejected automatic timing/technique and clarified Blood Club was only a quality reference. Current correction, disabled Autopilot and training status: [source review](ai-dj-training-sources.md). Historical technical results below do not establish musical acceptance.
+
 Historical first increment. The [performance deck and private party reference](ai-dj-performance.md) supersede its controls and prepared bank.
 
 Owner authorized the first local prototype after discussing an instrumental-led continuous DJ set, occasional vocal moments, energy/mood direction, shared controls and a planned ending. **No push, deployment, paid generation or public activation is authorized by this increment.**

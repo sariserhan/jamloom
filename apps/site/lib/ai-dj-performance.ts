@@ -7,11 +7,6 @@ export const performancePads=[
 export type PerformanceAction=typeof performancePads[number]['id']|'filter'|'jog-back'|'jog-forward';
 export type PerformanceEvent={action:PerformanceAction;label:string;at:number;until:number;position:number;by:'AI'|'You'};
 export const actionLabel=(action:PerformanceAction)=>performancePads.find(p=>p.id===action)?.label??({'filter':'Filter sweep','jog-back':'Jog −','jog-forward':'Jog +'} as Record<string,string>)[action];
-export function performanceChoice(step:number,energy:number,vocal:boolean):PerformanceAction{
- if(vocal)return step%2?'filter':'echo';
- const moves:PerformanceAction[]=energy>=4?['loop-4','roll-half','filter','jog-back','echo','backspin']:['loop-4','filter','jog-forward','echo','roll-one'];
- return moves[step%moves.length];
-}
 export function loopRegion(position:number,bpm:number,beats:number,duration:number){
  if(![position,bpm,beats,duration].every(Number.isFinite)||bpm<60||bpm>180||![.5,1,2,4,8].includes(beats)||duration<8)throw Error('Invalid loop');
  const length=60/bpm*beats,start=Math.max(0,Math.min(duration-length,Math.floor(position/(60/bpm))*(60/bpm)));

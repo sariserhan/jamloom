@@ -1,9 +1,9 @@
-import {PerformanceDeck,performanceChoice,type PerformanceAction,type PerformanceEvent} from './ai-dj-performance';
+import {PerformanceDeck,type PerformanceAction,type PerformanceEvent} from './ai-dj-performance';
 import {createMixer,clearEcho} from '../../web/mixer.js';
 import {djTracks,pickTrack,transitionTime,type Direction,type DJTrack} from './ai-dj-director';
 
 type Prepared={track:DJTrack;buffer:AudioBuffer;bpm:number;wave:number[]};
-type Deck=Prepared&{performance?:PerformanceDeck;gain?:GainNode;start:number;nextMove?:number;move?:number};
+type Deck=Prepared&{performance?:PerformanceDeck;gain?:GainNode;start:number};
 type Blend={from:number;to:number;at:number;end:number};
 export type DJSnapshot={status:'idle'|'loading'|'playing'|'closing'|'stopped'|'error';message:string;direction:Direction;master:number;mode:'auto'|'together';cross:number;elapsed:number;remaining:number|null;transitionIn:number|null;history:string[];mixing:boolean;performance:PerformanceEvent[];decks:({title:string;artist:string;vocal:boolean;bpm:number;duration:number;position:number;playing:boolean;wave:number[];rate:number;loopBeats:number;filter:number;level:number;echo:number;eq:number[];event:PerformanceEvent|null}|null)[];peak:number};
 
@@ -41,10 +41,10 @@ export class AIDJPlayer{
  private active=0;
  private blend:Blend|null=null;
  private state:DJSnapshot['status']='idle';
- private message='Choose a mood, then start your set.';
+ private message='Manual controller test. AI performance is awaiting training.';
  private direction:Direction={energy:4,mood:'deep',vocals:true};
  private master=.65;
- private mode:'auto'|'together'='auto';
+ private mode:'auto'|'together'='together';
  private history:string[]=[];
  private unavailable=new Set<string>();
  private request=0;
@@ -68,7 +68,7 @@ export class AIDJPlayer{
   const cross=this.blend?Math.max(0,Math.min(1,(now-this.blend.at)/(this.blend.end-this.blend.at))):0;
   const active=this.decks[this.active];
   this.mixer.meter.getFloatTimeDomainData(this.meter);
-  return {status:this.state,message:this.message,direction:{...this.direction},master:this.master,mode:this.mode,cross:this.blend?(this.blend.to===1?cross:1-cross):this.active,elapsed:this.running?Math.max(0,now-this.began):this.endedElapsed,remaining:this.endAt===null?null:Math.max(0,this.endAt-now),transitionIn:this.blend?Math.max(0,this.blend.at-now):active&&this.running?Math.max(0,transitionTime(active.start,active.buffer.duration,active.bpm,now,this.early).at-now):null,history:[...this.history],peak:Math.max(...this.meter.map(Math.abs)),mixing:!!this.blend,performance:[...this.performed],decks:this.decks.map((d,i)=>{
+  return {status:this.state,message:this.message,direction:{...this.direction},master:this.master,mode:this.mode,cross:this.blend?(this.blend.to===1?cross:1-cross):this.active,elapsed:this.running?Math.max(0,now-this.began):this.endedElapsed,remaining:this.endAt===null?null:Math.max(0,this.endAt-now),transitionIn:this.blend?Math.max(0,this.blend.at-now):active&&this.running&&this.early?Math.max(0,transitionTime(active.start,active.buffer.duration,active.bpm,now,this.early).at-now):null,history:[...this.history],peak:Math.max(...this.meter.map(Math.abs)),mixing:!!this.blend,performance:[...this.performed],decks:this.decks.map((d,i)=>{
    if(!d)return null;const position=d.performance?.position(now)??0;
    return {title:d.track.title,artist:d.track.artist,vocal:d.track.vocal,bpm:d.bpm,duration:d.buffer.duration,position,playing:!!d.performance&&now>=d.start,wave:d.wave,eq:this.mixer.strips[i].eq.map(n=>n.gain.value),...(d.performance?.snapshot(now)??{rate:1,loopBeats:0,filter:0,level:1,echo:0,event:null})};
   })};
@@ -103,8 +103,8 @@ export class AIDJPlayer{
   if(this.endAt!==null&&this.endAt-this.context.currentTime<12)return;
   this.loading=true;const run=this.request;
   try{const prepared=await this.loadCandidate();if(run!==this.request||!this.running||!prepared)return;
-   this.decks[1-this.active]={...prepared,start:Infinity};this.message=this.endAt===null?'Next track ready. The AI will blend it in.':'Closing sequence ready.';
-  }catch{if(run===this.request)this.message='No next track could load. Holding the current groove; stop and restart to retry.';}
+   this.decks[1-this.active]={...prepared,start:Infinity};this.message=this.endAt===null?'Next practice track ready. Press Mix next to blend.':'Closing sequence ready.';
+  }catch{if(run===this.request)this.message='No next track could load. This preview will stop at the end.';}
   finally{if(run===this.request){this.loading=false;this.emit();}}
  }
  private beginDeck(index:number,at:number,gainValue:number){
@@ -112,7 +112,7 @@ export class AIDJPlayer{
   clearEcho(this.context,strip.fx);strip.fx.wet.gain.cancelScheduledValues(this.context.currentTime);strip.fx.wet.gain.setValueAtTime(0,this.context.currentTime);strip.fx.dry.gain.cancelScheduledValues(this.context.currentTime);strip.fx.dry.gain.setValueAtTime(1,this.context.currentTime);
   strip.eq.forEach(n=>{n.gain.cancelScheduledValues(at);n.gain.setValueAtTime(0,at);});
   deck.performance=new PerformanceDeck(this.context,deck.buffer,deck.bpm,strip.input,strip.fx);deck.gain=deck.performance.gain;
-  deck.gain.gain.setValueAtTime(gainValue,at);deck.start=at;deck.nextMove=at+480/deck.bpm;deck.move=0;deck.performance.play(at);
+  deck.gain.gain.setValueAtTime(gainValue,at);deck.start=at;deck.performance.play(at);
  }
  private perform(index:number,action:PerformanceAction,at:number,by:'AI'|'You'){
   const deck=this.decks[index];if(!deck?.performance||!this.running||this.blend)return false;
@@ -136,28 +136,18 @@ export class AIDJPlayer{
   const now=this.context.currentTime;
   if(this.endAt!==null&&now>=this.endAt){this.stop('Set finished. Thanks for the music.');return;}
   const current=this.decks[this.active];
-  if(this.mode==='auto'&&!this.blend&&current?.performance&&current.nextMove!==undefined&&current.nextMove<=now+.15){
-   const at=Math.max(now+.02,current.nextMove),beat=60/current.bpm;
-   const next=transitionTime(current.start,current.buffer.duration,current.bpm,now,this.early).at;
-   if(next-at>beat*10&&(this.endAt===null||this.endAt-at>20))this.perform(this.active,performanceChoice(current.move??0,this.direction.energy,current.track.vocal),at,'AI');
-   current.move=(current.move??0)+1;current.nextMove=at+beat*(this.direction.energy<=2?32:16);
-  }
+  if(current&&!this.blend&&now>=current.start+current.buffer.duration){this.stop('Practice track finished. AI performance is awaiting training.');return;}
   if(this.blend&&now>=this.blend.end){
    const {from,to}=this.blend;this.release(from);this.active=to;this.history=[...this.history,this.decks[to]!.track.id].slice(-12);this.blend=null;this.early=false;
    this.message=this.endAt===null?'New groove playing. Preparing what comes next.':'Closing set · preparing the final stretch.';void this.prepareNext();
   }
-  if(!this.blend&&this.decks[this.active]&&this.decks[1-this.active]){
+  if(this.early&&!this.blend&&this.decks[this.active]&&this.decks[1-this.active]){
    const deck=this.decks[this.active]!,timing=transitionTime(deck.start,deck.buffer.duration,deck.bpm,now,this.early);
    if(timing.at<=now+2&&(this.endAt===null||timing.at+timing.fade+4<this.endAt)){
     deck.performance?.cancel();
     const to=1-this.active;this.beginDeck(to,timing.at,0);const incoming=this.decks[to]!;
     deck.gain!.gain.cancelScheduledValues(now);deck.gain!.gain.setValueAtTime(1,now);deck.gain!.gain.setValueAtTime(1,timing.at);deck.gain!.gain.linearRampToValueAtTime(0,timing.at+timing.fade);
     incoming.gain!.gain.cancelScheduledValues(timing.at);incoming.gain!.gain.setValueAtTime(0,timing.at);incoming.gain!.gain.linearRampToValueAtTime(1,timing.at+timing.fade);
-    if(this.mode==='auto'){
-     const outgoing=this.mixer.strips[this.active].eq[0].gain,incomingBass=this.mixer.strips[to].eq[0].gain;
-     outgoing.cancelScheduledValues(now);outgoing.setValueAtTime(0,timing.at);outgoing.linearRampToValueAtTime(-12,timing.at+timing.fade);
-     incomingBass.setValueAtTime(-12,timing.at);incomingBass.linearRampToValueAtTime(0,timing.at+timing.fade);
-    }
     this.blend={from:this.active,to,at:timing.at,end:timing.at+timing.fade};this.message='Blending into '+incoming.track.title+'.';
    }
   }
@@ -165,7 +155,7 @@ export class AIDJPlayer{
  }
  private cancelFuture(){
   if(this.blend&&this.context.currentTime>=this.blend.at)return false;
-  if(this.blend){if(this.mode==='auto')this.mixer.strips.forEach(strip=>{strip.eq[0].gain.cancelScheduledValues(this.context.currentTime);strip.eq[0].gain.setValueAtTime(0,this.context.currentTime);});const current=this.decks[this.active];current?.gain?.gain.cancelScheduledValues(this.context.currentTime);current?.gain?.gain.setValueAtTime(1,this.context.currentTime);this.blend=null;}
+  if(this.blend){const current=this.decks[this.active];current?.gain?.gain.cancelScheduledValues(this.context.currentTime);current?.gain?.gain.setValueAtTime(1,this.context.currentTime);this.blend=null;}
   this.abort?.abort();this.request++;this.loading=false;this.release(1-this.active);return true;
  }
  setDirection(change:Partial<Direction>){
@@ -191,7 +181,8 @@ export class AIDJPlayer{
   this.mixer.channels.forEach(channel=>{const gain=channel.gain;gain.cancelScheduledValues(now);gain.setTargetAtTime(level*fade,now,.02);if(this.endAt!==null){gain.setValueAtTime(level*fade,Math.min(this.endAt,Math.max(now+.03,this.endAt-8)));gain.linearRampToValueAtTime(0,this.endAt);}});
  }
  setMaster(value:number){if(!Number.isFinite(value)||value<0||value>1)return;this.master=value;this.applyMaster();this.emit();}
- setMode(value:'auto'|'together'){this.mode=value;this.decks.forEach((d,i)=>{d?.performance?.cancel();if(d){d.nextMove=this.context.currentTime+480/d.bpm;if(value==='auto'){d.performance?.setFilter(0);d.performance?.level.gain.setTargetAtTime(1,this.context.currentTime,.02);this.mixer.strips[i].eq.forEach(n=>{n.gain.cancelScheduledValues(this.context.currentTime);n.gain.setTargetAtTime(0,this.context.currentTime,.02);});}}});this.emit();}
+ // Autopilot needs a qualified decision model; timed effects are not a fallback.
+ setMode(value:'auto'|'together'){if(value!=='together')return;this.mode=value;this.emit();}
  private release(index:number){this.decks[index]?.performance?.dispose();this.decks[index]=null;}
  private stopSources(){this.abort?.abort();this.abort=null;this.request++;this.loading=false;clearInterval(this.interval);this.interval=undefined;this.release(0);this.release(1);this.blend=null;}
  stop(message='Set stopped. Start again whenever you’re ready.'){

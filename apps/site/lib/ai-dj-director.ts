@@ -3,7 +3,7 @@ import {validationSongs} from './music-validation';
 
 export type Mood='warm'|'bright'|'deep';
 export type Direction={energy:number;mood:Mood;vocals:boolean};
-export type DJTrack={id:string;title:string;artist:string;url:string;sha256:string;energy:number;mood:Mood;vocal:boolean;credit:string;reference?:boolean};
+export type DJTrack={id:string;title:string;artist:string;url:string;sha256:string;energy:number;mood:Mood;vocal:boolean;credit:string};
 const selections:[string,number,Mood][]=[['party-sector',4,'bright'],['black-diamond',5,'deep']];
 export const djTracks:DJTrack[]=selections.map(([id,energy,mood])=>{
  const track=practice.tracks.find(t=>t.id===id)!;
@@ -15,9 +15,7 @@ djTracks.push({id:vocalSample.id,title:'House · vocal moment',artist:'Jamloom l
 export function pickTrack(tracks:DJTrack[],direction:Direction,history:string[],unavailable:Set<string>,closing=false):DJTrack|undefined{
  const recent=history.slice(-3),sinceVocal=history.slice(-3).every(id=>!tracks.find(t=>t.id===id)?.vocal);
  const vocalDue=direction.vocals&&!closing&&history.length>=3&&sinceVocal;
- const references=tracks.filter(t=>t.reference&&!unavailable.has(t.id));
- const bank=references.length?tracks.filter(t=>t.reference||t.vocal):tracks;
- let candidates=bank.filter(t=>!unavailable.has(t.id)&&t.id!==history.at(-1)&&(!t.vocal||vocalDue));
+ let candidates=tracks.filter(t=>!unavailable.has(t.id)&&t.id!==history.at(-1)&&(!t.vocal||vocalDue));
  if(!candidates.length)return undefined;
  const fresh=candidates.filter(t=>!recent.includes(t.id));if(fresh.length)candidates=fresh;
  return [...candidates].sort((a,b)=>{
@@ -60,8 +58,4 @@ export function transitionTime(start:number,duration:number,bpm:number,now:numbe
  const natural=start+Math.max(1,Math.floor((duration-fade)/phrase))*phrase;
  const at=early?start+Math.ceil((now+.3-start)/bar)*bar:Math.max(natural,start+Math.ceil((now+.3-start)/phrase)*phrase);
  return {at,fade};
-}
-
-export function validReferenceBank(value:unknown):value is DJTrack[]{
- return Array.isArray(value)&&value.length===3&&new Set(value.map(t=>t?.id)).size===3&&value.every(t=>t&&/^blood-club-[1-3]$/.test(t.id)&&t.url==='/ai-dj/reference?id='+t.id&&/^[a-f0-9]{64}$/.test(t.sha256)&&typeof t.title==='string'&&t.title.length<=80&&typeof t.artist==='string'&&t.artist.length<=80&&Number.isInteger(t.energy)&&t.energy>=3&&t.energy<=5&&t.mood==='deep'&&t.vocal===false&&t.reference===true&&t.credit==='#reference-bank');
 }

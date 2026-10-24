@@ -1,0 +1,41 @@
+{
+  "reason": "Owner supplied reference for desired music, not playback or this training.",
+  "removed": [
+    {
+      "path": "renders/ai-dj-reference/bank.json",
+      "bytes": 1143,
+      "sha256": "380aa906ab559b6347b4925d9a2f221394e3fa55cd2db3f4d4346c49803d787c"
+    },
+    {
+      "path": "renders/ai-dj-reference/blood-club-1.mp3",
+      "bytes": 1281087,
+      "sha256": "62b03a149954d223328c59abda2ef3e683a4a31049effcafdb401a42895c37b8"
+    },
+    {
+      "path": "renders/ai-dj-reference/blood-club-3.mp3",
+      "bytes": 1281087,
+      "sha256": "3c3d27086d75bc976b54b56467ec248d71604ee5ca639f6b80dc97bf8400b9ed"
+    },
+    {
+      "path": "renders/ai-dj-reference/blood-club-2.mp3",
+      "bytes": 1281087,
+      "sha256": "b7a976b4325486b6d3ff8da4930fa761096fd14c340b10e04c0825a6d2aab4a0"
+    },
+    {
+      "path": "renders/ai-dj-performance-20261024/chromium-actual-mix.audio",
+      "bytes": 1632192,
+      "sha256": "2389f964ae08949890c5274803a91e372ab77224c52ac724d211dbc73fba6e11"
+    },
+    {
+      "path": "renders/ai-dj-performance-20261024/webkit-actual-mix.audio",
+      "bytes": 512942,
+      "sha256": "2ab2b3af3cf43f2be450cbad9948f2270ba2a0cde4793c8909a8d31e06ac3af0"
+    },
+    {
+      "path": "renders/ai-dj-performance-20261024/performance-sample.wav",
+      "bytes": 2117054,
+      "sha256": "6076a1afa0e4fe7097576be0c90c28180406ce672389b6cad0633971bf1a56a7"
+    }
+  ],
+  "original_preserved": true
+}

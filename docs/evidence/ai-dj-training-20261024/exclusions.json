@@ -1,0 +1,14 @@
+{
+  "scope": "This AI DJ training and playback effort",
+  "excluded_source": {
+    "name": "blood_club.mp3",
+    "sha256": "12cad3d3b5d66383d69207630d09d66d5203d963ab48d0f0ade7d1ee32672188"
+  },
+  "excluded_derivatives": [
+    "Blood Club audio excerpts",
+    "Blood Club training datasets",
+    "Blood Club LoRA adapters and generated outputs"
+  ],
+  "enforcement": "Reference playback route and generator deleted; no new training export or model run. This register is not a general-purpose ingestion filter.",
+  "historical_artifacts": "Preserved, not authorized for this new effort."
+}

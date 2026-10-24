@@ -5,7 +5,7 @@ import ts from 'typescript';
 import {chromium,webkit} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
 const source=ts.transpileModule(await readFile('lib/ai-dj-performance.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
-const folder=resolve('../../renders/ai-dj-performance-20261024');await mkdir(folder,{recursive:true});const results=[];
+const folder=resolve('../../renders/ai-dj-correction-20261024');await mkdir(folder,{recursive:true});const results=[];
 for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  const browser=await engine.launch();try{
  const context=await browser.newContext({viewport:{width:1440,height:1000}});await context.addInitScript(silenceSpeakers);
@@ -30,13 +30,11 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   }return report;
  },source);
  for(const row of rendered){assert.ok(row.meanDifference>.001,row.action+' must change actual PCM');assert.ok(row.peak<1,row.action+' must stay bounded');}
- await page.getByRole('button',{name:'Start set'}).click();await page.getByText('Blood club · excerpt 2',{exact:true}).first().waitFor();
- await page.waitForFunction(()=>document.querySelector('.deck-0 .aidj-pads .active')?.textContent.includes('4 loop'),{},{timeout:12000});
- assert.equal(await page.locator('.deck-0 .aidj-pads .active').evaluate(n=>getComputedStyle(n).backgroundColor),'rgb(255, 193, 110)');
- await page.screenshot({path:resolve(folder,name+'-auto-loop.png'),fullPage:true});
- assert.match(await page.locator('.deck-0 .aidj-jog-display').innerText(),/AI/);
- assert.ok(await page.evaluate(()=>window.graphs[0].sources.some(s=>s.loop&&s.buffer.duration<3&&s.buffer.duration>1)),'actual loop buffer is running');
- await page.getByRole('button',{name:'Play together',exact:true}).click();
+ await page.getByRole('button',{name:'Start set'}).click();await page.waitForFunction(()=>document.querySelector('.deck-0 .aidj-deck-head span').textContent==='PLAYING');
+ await page.waitForTimeout(10000);
+ assert.equal(await page.locator('.aidj-pads .active').count(),0,'no scheduled automatic moves');
+ assert.equal(await page.evaluate(()=>window.graphs[0].sources.length),1,'no automatic source replacement');
+ assert.equal(await page.getByRole('button',{name:'Autopilot · awaiting training',exact:true}).isDisabled(),true);
  await page.getByRole('button',{name:'Deck A ½ roll',exact:true}).click();await page.waitForFunction(()=>document.querySelector('.deck-0 .aidj-pads .active')?.textContent.includes('½ roll'));
  assert.ok(await page.evaluate(()=>window.graphs[0].sources.some(s=>s.loop&&s.buffer.duration<.4)),'real short roll');
  await page.getByRole('button',{name:'Deck A Backspin',exact:true}).waitFor();await page.getByRole('button',{name:'Deck A Backspin',exact:true}).click();
@@ -54,7 +52,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  await page.getByRole('button',{name:'Deck A 4 loop',exact:true}).click();await page.getByRole('button',{name:'■ Stop',exact:true}).click();await page.waitForTimeout(5000);
  assert.ok(await page.evaluate(()=>{const a=window.graphs[0].meters[0],data=new Float32Array(a.fftSize);a.getFloatTimeDomainData(data);return data.every(n=>Math.abs(n)<.00001);}),'scheduled loop return cannot restart after Stop');
  assert.ok(await page.evaluate(()=>window.__jamloomSilentOutput().every(o=>o.peak===0)));
- assert.deepEqual(errors,[]);results.push({browser:name,status:'PASS',rendered,checks:['auto loop and illuminated pad','manual roll and real short buffer','backspin reverse buffer','cue seek','echo automation','pointer jog','loop release','stop cancels future return','silent speakers']});console.log(name+' performance PASS');
+ assert.deepEqual(errors,[]);results.push({browser:name,status:'PASS',rendered,checks:['automatic moves disabled','manual roll and real short buffer','backspin reverse buffer','cue seek','echo automation','pointer jog','loop release','stop cancels future return','silent speakers']});console.log(name+' performance PASS');
  }finally{await browser.close();}
 }
 await writeFile(resolve(folder,'performance-report.json'),JSON.stringify({status:'PASS',results},null,2)+'\n');

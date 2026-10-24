@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "widths": [
+        1440,
+        800,
+        390,
+        320
+      ],
+      "initialPeak": 0.09045335650444031,
+      "captureBytes": 338969,
+      "checks": [
+        "no autoplay",
+        "no unattended effects or transition; stops at track end (Chromium)",
+        "no reference requests or route",
+        "real PCM",
+        "two-deck crossfade",
+        "direction",
+        "shared controls",
+        "closing and cancellation",
+        "stop during load",
+        "hidden tab stop",
+        "corrupt bank recovery",
+        "accessibility",
+        "speaker isolation"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "widths": [
+        1440,
+        800,
+        390,
+        320
+      ],
+      "initialPeak": 0.09046486020088196,
+      "captureBytes": 497616,
+      "checks": [
+        "no autoplay",
+        "no unattended effects or transition; stops at track end (Chromium)",
+        "no reference requests or route",
+        "real PCM",
+        "two-deck crossfade",
+        "direction",
+        "shared controls",
+        "closing and cancellation",
+        "stop during load",
+        "hidden tab stop",
+        "corrupt bank recovery",
+        "accessibility",
+        "speaker isolation"
+      ]
+    }
+  ]
+}

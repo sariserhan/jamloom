@@ -1,3 +1,13 @@
+## AI DJ correction and licensed training sources — 2026-10-24
+
+**Owner musical acceptance FAIL; training readiness PARTIAL; new model training NOT RUN. Local only.** Blood Club was a quality reference, not playback/training material: private route and preparation command removed, preview derivatives deleted, original preserved. Rejected periodic FX and unattended transitions removed; manual controller retained with Autopilot unavailable. EDM-CUE MIT cue metadata staged (309 KB, pinned hashes); GCX House/Techno and Rights Foundry identified as commercial music licensing leads. 112 unit tests, typecheck/build/bundle audit and Chromium/WebKit controller/audio checks PASS. No reviewed full DJ-action corpus, paid compute, outreach, push or deployment. [Source decisions, acquisition brief and evidence](docs/ai-dj-training-sources.md).
+
+- [x] Remove reference playback and unqualified automatic performance.
+- [x] Research licenses and stage eligible cue metadata without large downloads.
+- [ ] Acquire cleared audio/stems and expert timestamped DJ decisions, including no-op examples.
+- [ ] Train and evaluate the decision model on independent sources/sessions; pass blind listening.
+- [ ] Qualify original club generation separately, then reconnect nonstop Autopilot.
+
 ## AI DJ performance deck and party reference — 2026-10-24
 
 **Local implementation and technical checks PASS; musical qualification PARTIAL. Not pushed or deployed.** Modern jog-wheel controller with eight pads per deck, real loops/rolls/cues/backspin, timed filter/echo/nudge moves, channel EQ/faders and visible automatic bass exchange. Slow selections removed; three private 80-second Blood club excerpts provide the requested party reference (3.7 MB total, original untouched, no upload). 112 tests, typecheck/build/audit, Chromium/WebKit playback and eleven-action PCM checks pass. Production routes stay closed and private audio is absent from build traces. Human listening, verified beat grids, venue/endurance and live generation remain NOT RUN. [Scope, resource checks and evidence](docs/ai-dj-performance.md).
