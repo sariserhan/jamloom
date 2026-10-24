@@ -655,7 +655,8 @@ The first comparison is at http://localhost:8766/gpu-comparison/review/. Four ne
 60-second house drafts are at http://localhost:8766/gpu-revision/review/. Both
 rentals are destroyed, with approximately $0.113 combined observed debit under
 the same $6 cap and original deadline; billing is not a final invoice. New drafts
-passed audio/browser checks and await owner listening. No top-up, paid dataset,
+passed audio/browser checks. The owner selected new clip 3 (rolling-house brief,
+requested 128 BPM) as good; the remaining new clips have no explicit ratings. No top-up, paid dataset,
 new API, outreach, model promotion, push or deployment occurred.
 
 Owner feedback on the studies: “okay, not perfect but a good start.”

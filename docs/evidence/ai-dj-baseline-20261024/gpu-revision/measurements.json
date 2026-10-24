@@ -151,6 +151,6 @@
   },
   "target_lufs": -24.58,
   "meter": "ffmpeg loudnorm input measurements",
-  "listening_gate": "NOT RUN",
+  "listening_gate": "PARTIAL: owner selected clip 3; see listening-feedback.json",
   "event_frame_agreement": "NOT RUN: audio model emits no engine event trace"
 }

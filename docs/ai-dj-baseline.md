@@ -190,8 +190,15 @@ WAVs decode in Chromium/WebKit; muted native playback and 390px layout pass.
 Reproduce the listening preparation with `python3 scripts/review_cloud_music.py
 --club-revision` in a fresh review directory, then run
 `node tests/club-studies-browser.mjs --revision` from `apps/site`.
-New-draft human listening is **NOT RUN**; the earlier 1/5 preference does not
-qualify these outputs. DJ-policy fitting still needs reviewed demonstrations;
+Refinement listening is **PARTIAL**: the owner says **“3 is good one”**, selecting
+`rolling-house-128` (requested 128 BPM, seed 71025). The brief requests rolling
+bass, shuffled hats, a sparse percussive synth hook and a brief stripped-back
+phrase before the full drums return. These describe the requested generation,
+not independently verified audio features. [Exact feedback and file hashes](evidence/ai-dj-baseline-20261024/gpu-revision/listening-feedback.json).
+The other three drafts were not selected; explicit rejection and numeric ratings
+were not supplied. Keep clip 3 as the comparison anchor for a future fresh-seed
+consistency test using the same brief, before changing multiple factors. One
+accepted draft does not qualify consistent generation or autonomous DJ skill. DJ-policy fitting still needs reviewed demonstrations;
 compute cannot replace absent expert labels. Local implementation checkpoint:
 `42d72ea`; this report links the refinement evidence separately.
 

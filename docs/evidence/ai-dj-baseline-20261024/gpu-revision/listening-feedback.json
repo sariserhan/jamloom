@@ -1,0 +1,18 @@
+{
+  "owner_statement": "3 is good one",
+  "scope": "Four 60-second GPU house refinement drafts",
+  "accepted_for_development": {
+    "listen-03.wav": "rolling-house-128"
+  },
+  "requested_bpm": 128,
+  "seed": 71025,
+  "caption": "Original instrumental energetic club house, 128 BPM. Punchy four-on-the-floor kick and tight bass from the first beat. Maintain a strong continuous dancefloor groove through most of the track. Rolling bass groove, crisp clap, shuffled high hats and a sparse memorable percussive synth hook. Layer percussion into the hook, one brief stripped-back phrase, immediate full-drum return and a DJ-friendly percussion outro. No vocals.",
+  "source_sha256": "170c4f49277e6ba2ed1b92296f4e7d03f3f508a5eac1353db80762f65ce25836",
+  "listening_sha256": "31697ac4b93c87959dd0c411b0654f9509f9f5a56323a15054e24f0dd2b7cf21",
+  "other_clips": "Not selected; no explicit rejection or detailed ratings supplied",
+  "overall_quality": "PARTIAL",
+  "finding": "Owner selects rolling-house-128 for further development. This does not isolate tempo from seed/brief effects or establish consistent model quality.",
+  "professional_DJ_qualification": "NOT RUN",
+  "promoted": false,
+  "next_experiment": "Keep this exact accepted draft as the comparison anchor. Test the same 128 BPM rolling-house brief across fresh seeds before changing multiple musical factors. Evaluate consistency and full-length arrangement separately; no additional rental started."
+}

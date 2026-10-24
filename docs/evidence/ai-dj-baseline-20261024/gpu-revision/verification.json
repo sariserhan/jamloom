@@ -22,7 +22,7 @@
   "new_outputs": 4,
   "duration_seconds": 60,
   "matched_loudness_spread_lu": 0,
-  "owner_listening": "NOT RUN for refinement; first-round owner feedback retained separately",
+  "owner_listening": "PARTIAL: owner selected refinement clip 3; see listening-feedback.json",
   "source_hashes": {
     "scripts/vast_trial.py": "2352554be36b48eca5738643b3e4042fd9922af64cb3b212eceb2a207cf7a6d9",
     "scripts/cloud_music_batch.py": "d51a2f48238695381a2b51f0d76b54ae6fa479cb0454fc2a0848c6fe408a8309",

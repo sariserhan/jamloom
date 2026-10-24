@@ -11,8 +11,8 @@
 | Demonstration recorder and explicit hold intent | PASS implementation; expert data NOT RUN | Existing 30-second recorder exports explicit hold/action reasons linked to actual transport frames and WAV hash. Chromium/WebKit capture, stems, withdrawal and failure checks pass; private unreviewed status retained |
 | Groove MIDI timing/velocity experiment | PASS experiment; candidate NOT QUALIFIED | 1,097 training / 40 held-out performances, separate drummers. Velocity MAE 29.54 → 26.16; timing MAE 22.07 → 22.28 ms worsened. No retuning or promotion |
 | Original generation model and learned DJ policy | NOT RUN | Train only where qualified data and an experiment justify it; do not relabel deterministic or synthetic behavior as expertise |
-| GPU campaign | PARTIAL | Both trials PASS technical; ten outputs retrieved and both rentals destroyed. ~$0.113 combined observed debit under the same $6 cap and original deadline. Owner accepts first-round house clips 1/5; four new 60-second house drafts await listening |
-| Listening and production promotion | PARTIAL listening; promotion NOT RUN | Owner: “okay, not perfect but a good start.” First GPU clips 1/5 accepted; remaining four rejected. No numeric scores or automatic model promotion |
+| GPU campaign | PARTIAL | Both trials PASS technical; ten outputs retrieved and both rentals destroyed. ~$0.113 combined observed debit under the same $6 cap and original deadline. Owner accepts first-round house clips 1/5; refinement clip 3 (rolling-house brief, requested 128 BPM) accepted for development |
+| Listening and production promotion | PARTIAL listening; promotion NOT RUN | Owner: “okay, not perfect but a good start.” First GPU clips 1/5 accepted; remaining four rejected. Refinement clip 3 selected; other refinement clips not rated explicitly. No numeric scores or automatic model promotion |
 
 ## AI DJ correction and licensed training sources — 2026-10-24
 

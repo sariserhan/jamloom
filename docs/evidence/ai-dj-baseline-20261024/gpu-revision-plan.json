@@ -1,5 +1,5 @@
 {
-  "status": "PASS_EXECUTION_CLEANUP; OWNER_LISTENING_NOT_RUN",
+  "status": "PASS_EXECUTION_CLEANUP; PARTIAL_OWNER_QUALITY",
   "reason": "Owner liked both house clips 1/5 and rejected other genres",
   "cases": [
     {
