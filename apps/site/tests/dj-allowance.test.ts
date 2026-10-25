@@ -3,7 +3,8 @@ import {createPool} from '../lib/database';import {migrate} from '../lib/migrati
 const id=()=>randomUUID().replaceAll('-',''),record={fingerprint:'isolated-test',save:async()=>{}};
 const budget={costCapMicros:50000,maxRuntimeMs:60000,hourlyMicros:600000,fixedCostMicros:40000};
 test('DJ allowance retains unused value without changing whole-credit account balances',async t=>{
- const target=new URL('postgresql://127.0.0.1:5432/postgres'),admin=createPool(target.toString()),name='jamloom_allowance_'+id();await admin.query(`CREATE DATABASE "${name}"`);target.pathname='/'+name;const pool=createPool(target.toString()),wallet=new Wallet(pool,false,true);
+ const target=new URL(process.env.JAMLOOM_TEST_DATABASE_URL??'');assert.equal(target.hostname,'127.0.0.1');
+ const admin=createPool(target.toString()),name='jamloom_allowance_'+id();await admin.query(`CREATE DATABASE "${name}"`);target.pathname='/'+name;const pool=createPool(target.toString()),wallet=new Wallet(pool,false,true);
  const grant=async(owner:string,credits=1)=>{await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.test']);await wallet.grant(owner,{provider:'stripe_test',receipt:owner,credits,netMicros:credits*1000000});};
  const reserve=async(owner:string,key=id(),visibility:'public'|'private'='public')=>{const q=await wallet.quote(owner,50000,5000,visibility);return {q,id:await wallet.reserve(owner,key,50000,5000,undefined,visibility,q.credits,record)};};
  const objects=new Map<string,Buffer>(),store={local:true,put:async(k:string,b:Buffer)=>{objects.set(k,b);},get:async(k:string)=>objects.get(k)!,remove:async(k:string)=>{objects.delete(k);},uploadURL:async()=>'',playbackURL:async()=>''};

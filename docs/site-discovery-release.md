@@ -48,3 +48,9 @@ npm run audit:bundle
 ```
 
 The isolated browser suite cleans its test database, accounts and audio. Real production audio and phone API checks follow the GitHub deployment. Physical iPhone playback has not been repeated in this website release.
+
+## First hosted verification and corrections
+
+Implementation `80c1243` was pushed through GitHub and Vercel deployment `dpl_2YCJzKZXc8QoS5Wm3LX1Bv7arERr` reached READY on the production domains. Initial read-only verification found the public DJ-set feed returning 503 because Production lacked `R2_AI_DJ_BUCKET`. The already-existing dedicated bucket `jamloom-ai-dj-sessions` is now configured for the next Git deployment; no new bucket, credential permissions, generation flag or purchase flag was introduced.
+
+GitHub run [40176946471](https://github.com/sariserhan/jamloom/actions/runs/40176946471) passed the website and desktop jobs but exposed a hard-coded passwordless database URL in the DJ allowance test and concurrent database-drop timeouts in the wallet test group. The allowance test now uses the existing isolated test URL and loopback guard; wallet test files run sequentially while their internal concurrency assertions remain intact. Production database timeouts are unchanged. Final hosted verification follows the correction deployment.
