@@ -1,0 +1,126 @@
+{
+  "recorded_at_utc": "2026-10-25T03:06:34.904043+00:00",
+  "source": "Owner reply to the six-clip/two-mix listening question",
+  "owner_statement": "all are good only the beginning of 2 is bad but rest is fine",
+  "overall": "PARTIAL: clips accepted overall; clip 2 opening requires improvement",
+  "tracks": [
+    {
+      "clip": 1,
+      "sha256": "d0a7870a8e961a22c62da64c872f5c06506380b3d840fce47f51b40d89753bf2",
+      "listening_sha256": "2b19c08d1307ee3e89f4e6009664606724e0bce174681b1ab8c2d295ac8700e8",
+      "request": {
+        "version": 1,
+        "session": "08c8bcc4808d40e8b1ab91cb1b929fc5",
+        "sequence": 0,
+        "seed": 1493114100,
+        "style": "house",
+        "energy": 4
+      },
+      "owner_acceptance": "PASS: owner says good",
+      "rejected_region": null
+    },
+    {
+      "clip": 2,
+      "sha256": "0bbdd494c2743c625a6a206fa4ed5800c1f6065bc223ffd4d11005d7300cf404",
+      "listening_sha256": "83e13bfdf38f42c0aca12784ad7684a2136733528570cb159992250148cbe0f5",
+      "request": {
+        "version": 1,
+        "session": "08c8bcc4808d40e8b1ab91cb1b929fc5",
+        "sequence": 1,
+        "seed": 3231943823,
+        "style": "house",
+        "energy": 4
+      },
+      "owner_acceptance": "PARTIAL: opening rejected, remainder accepted",
+      "rejected_region": {
+        "description": "beginning",
+        "start_seconds": null,
+        "end_seconds": null,
+        "cause": "Not specified by owner"
+      }
+    },
+    {
+      "clip": 3,
+      "sha256": "dc5cda7e07267edea733df2d208eaf142c002c78177d618cc6c5eeaf9dbf52e7",
+      "listening_sha256": "a690721555c2a215a8704023fc399d22a87995953f7a89fdc43d389d8eb0f751",
+      "request": {
+        "version": 1,
+        "session": "08c8bcc4808d40e8b1ab91cb1b929fc5",
+        "sequence": 2,
+        "seed": 2568815448,
+        "style": "house",
+        "energy": 5
+      },
+      "owner_acceptance": "PASS: owner says good",
+      "rejected_region": null
+    },
+    {
+      "clip": 4,
+      "sha256": "3f4c926aa0824865ac1db43ff694c4f98c1b284e3221c4c9637f1f6d40f69421",
+      "listening_sha256": "d2d84c2038f7542da73fc1a4c1cd01d715aba2c1846503ff3dcf58da6e216347",
+      "request": {
+        "version": 1,
+        "session": "f4960c69bde642f69115bd2634606479",
+        "sequence": 0,
+        "seed": 3914121639,
+        "style": "house",
+        "energy": 4
+      },
+      "owner_acceptance": "PASS: owner says good",
+      "rejected_region": null
+    },
+    {
+      "clip": 5,
+      "sha256": "11bba4feb35539c5a05c3c5f647745c2c5278f28ccf28509c595c4deefb99b31",
+      "listening_sha256": "0261ae1d7c43d21754c68c3b4c2f63aa42074052fa9262f00c69b316f660abbd",
+      "request": {
+        "version": 1,
+        "session": "f4960c69bde642f69115bd2634606479",
+        "sequence": 1,
+        "seed": 4191565068,
+        "style": "house",
+        "energy": 4
+      },
+      "owner_acceptance": "PASS: owner says good",
+      "rejected_region": null
+    },
+    {
+      "clip": 6,
+      "sha256": "55e2455851e91f2d583681783b9f8cca83a49972f2a43f05b116644fb3ec1ab7",
+      "listening_sha256": "52c1318ef4e6b85ea832b41d61abc10bdd14b11d192f69f1d430b25c86fd932c",
+      "request": {
+        "version": 1,
+        "session": "f4960c69bde642f69115bd2634606479",
+        "sequence": 2,
+        "seed": 2071320057,
+        "style": "house",
+        "energy": 5
+      },
+      "owner_acceptance": "PASS: owner says good",
+      "rejected_region": null
+    }
+  ],
+  "clip_2_reproduction": {
+    "prompt": "Original instrumental energetic club house, 128 BPM. Punchy four-on-the-floor kick and tight bass from the first beat. Maintain a strong continuous dancefloor groove through most of the track. Rolling bass groove, crisp clap, shuffled high hats and a sparse memorable percussive synth hook. Layer percussion into the hook, one brief stripped-back phrase, immediate full-drum return and a DJ-friendly percussion outro. No vocals. Energy 4 of 5; confident dancefloor momentum.",
+    "requested_bpm": 128,
+    "request": {
+      "version": 1,
+      "session": "08c8bcc4808d40e8b1ab91cb1b929fc5",
+      "sequence": 1,
+      "seed": 3231943823,
+      "style": "house",
+      "energy": 4
+    },
+    "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22"
+  },
+  "transition_specific_rating": "Not supplied separately; broad positive feedback does not establish measured beat or phrase alignment",
+  "mixes": {
+    "public": "05af81916a7fd207d0f13270b503356a80f0b47df3798bab9767a6e2354e966b",
+    "private": "6a835bdce3e127e644b26813219bae7fe5b3e1de09613b5107294c799ec5e52a"
+  },
+  "vocal_and_loop_listening": "NOT RUN: none inserted in this batch",
+  "audio_modified": false,
+  "new_compute": false,
+  "push_or_deployment": false
+}
