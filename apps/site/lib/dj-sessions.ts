@@ -26,7 +26,7 @@ export class DJSessions{
   if(prior){if(prior.fingerprint!==fingerprint)throw new AudioError('Your session choices changed.',409);return {id:input.id,reservation:prior.reservation_id};}
   const q=verifyQuote(token,owner,this.secret);
   if(q.visibility!==input.visibility||q.costCapMicros!==this.budget.costCapMicros||!!q.djAllowance!==this.allowance||hash(q.job)!==hash(this.job(input)))throw new AudioError('Your session choices changed. Get a new quote.',409);
-  const id=await this.wallet.reserve(owner,'dj_'+input.id+'_0',q.costCapMicros,q.marginBps,undefined,input.visibility,q.credits,{fingerprint,save:async(db,reservation)=>{
+  const id=await this.wallet.reserve(owner,'dj_'+input.id+'_0',q.costCapMicros,q.marginBps,undefined,input.visibility,q.credits,{fingerprint,minAllowancePer10kCredits:q.djAllowance?.minMicrosPer10kCredits,save:async(db,reservation)=>{
    if(!(await db.query('SELECT 1 FROM "user" WHERE id=$1 AND "emailVerified" AND NOT suspended',[owner])).rowCount)throw new AudioError('Verified sign-in required.',401);
    await db.query("SELECT pg_advisory_xact_lock(hashtextextended('jamloom-generation-capacity',0))");
    const worker=(await db.query("SELECT * FROM dj_warm_workers WHERE state<>'stopped' FOR SHARE")).rows[0];
@@ -36,7 +36,7 @@ export class DJSessions{
     if(Number((await db.query("SELECT count(*) FROM dj_sessions WHERE state='active' AND heartbeat_at>now()-interval '75 seconds'")).rows[0].count)>=2)throw new AudioError('All DJ slots are in use. Please try again shortly; no credits were charged.',503);
    }
    if((await db.query("SELECT 1 FROM dj_sessions WHERE owner_id=$1 AND state='active' AND heartbeat_at>now()-interval '75 seconds'",[owner])).rowCount)throw new AudioError('Finish your current set before starting another.',409);
-   await db.query('INSERT INTO dj_sessions(id,owner_id,title,visibility,settings,budget,max_credits,billing_live,fingerprint,allowance_billing) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',[input.id,owner,input.title,input.visibility,JSON.stringify({style:input.style,energy:input.energy,...(input.mood?{mood:input.mood}:{})}),JSON.stringify(this.budget),q.djAllowance?.maxCredits??q.credits,this.live,fingerprint,this.allowance]);
+   await db.query('INSERT INTO dj_sessions(id,owner_id,title,visibility,settings,budget,max_credits,billing_live,fingerprint,allowance_billing,min_allowance_per_10k_credits) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)',[input.id,owner,input.title,input.visibility,JSON.stringify({style:input.style,energy:input.energy,...(input.mood?{mood:input.mood}:{})}),JSON.stringify(this.budget),q.djAllowance?.maxCredits??q.credits,this.live,fingerprint,this.allowance,q.djAllowance?.minMicrosPer10kCredits??0]);
    await this.insertBatch(db,owner,input.id,0,reservation);
   }});return {id:input.id,reservation:id};
  }
@@ -51,11 +51,10 @@ export class DJSessions{
   const s=await this.session(owner,id);if(!Number.isSafeInteger(sequence)||sequence<1||sequence>1000000)throw new AudioError('Invalid sequence.');
   const prior=(await this.pool.query('SELECT reservation_id FROM dj_session_batches WHERE session_id=$1 AND sequence=$2',[id,sequence])).rows[0];if(prior)return {reservation:prior.reservation_id};
   if(s.state!=='active')throw new AudioError('Session is ending.',409);
-  if(s.allowance_billing!==this.allowance){await this.stop(owner,id,'price');return {ending:'price'};}
-  if(!isDeepStrictEqual(s.budget,this.budget))throw new AudioError('Session pricing changed.',409);
+  if(s.allowance_billing!==this.allowance||!isDeepStrictEqual(s.budget,this.budget)){await this.stop(owner,id,'price');return {ending:'price'};}
   let price;try{price=await this.wallet.quote(owner,this.budget.costCapMicros,5000,s.visibility);}catch(e){if(e instanceof Error&&e.message.startsWith('Insufficient credits')){await this.stop(owner,id,'credits');return {ending:'credits'};}throw e;}
-  if(price.credits>s.max_credits){await this.stop(owner,id,'price');return {ending:'price'};}
-  const reservation=await this.wallet.reserve(owner,'dj_'+id+'_'+sequence,price.costCapMicros,price.marginBps,undefined,s.visibility,price.credits,{fingerprint:hash([s.fingerprint,sequence]),save:async(db,r)=>{
+  if(price.credits>s.max_credits||price.credits>0&&price.djAllowance&&price.djAllowance.minMicrosPer10kCredits<Number(s.min_allowance_per_10k_credits)){await this.stop(owner,id,'price');return {ending:'price'};}
+  const reservation=await this.wallet.reserve(owner,'dj_'+id+'_'+sequence,price.costCapMicros,price.marginBps,undefined,s.visibility,price.credits,{fingerprint:hash([s.fingerprint,sequence]),minAllowancePer10kCredits:this.allowance?Number(s.min_allowance_per_10k_credits):undefined,save:async(db,r)=>{
    const current=await this.session(owner,id,db,true);
    if(current.state!=='active'||Date.now()-new Date(current.heartbeat_at).getTime()>75000)throw new AudioError('Session stopped or disconnected.',409);
    const rows=(await db.query('SELECT sequence,state,played_at FROM dj_session_batches WHERE session_id=$1 ORDER BY sequence DESC LIMIT 3',[id])).rows;

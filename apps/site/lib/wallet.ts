@@ -52,22 +52,23 @@ export class Wallet {
       if(this.djAllowance){
         const plan=exempt?null:await planDJAllowance(db,owner,this.live,lots,cap,marginBps,visibility);
         return {credits:plan?.credits??0,privacyCredits:0,costCapMicros:cap,marginBps,visibility,creditExempt:exempt,
-          djAllowance:plan?.quote??{availableMicros:0,chargeMicros:djCharge(cap,visibility),maxCredits:0,topUpMinutes:0}};
+          djAllowance:plan?.quote??{availableMicros:0,chargeMicros:djCharge(cap,visibility),maxCredits:0,minMicrosPer10kCredits:0,topUpMinutes:0}};
       }
       const allocations=exempt?[]:allocateCredits(lots,cap,marginBps,visibility==='private');
       return {credits:allocations.reduce((sum,a)=>sum+a.n,0),privacyCredits:allocations.reduce((sum,a)=>sum+a.privacy,0),
         costCapMicros:cap,marginBps,visibility,creditExempt:exempt};
     });
   }
-  async reserve(owner:string,key:string,cap:number,marginBps=5000,job?:JobBudget,visibility?:'public'|'private',expectedCredits?:number,record?:{fingerprint:string;save:(db:PoolClient,id:string)=>Promise<void>}){
+  async reserve(owner:string,key:string,cap:number,marginBps=5000,job?:JobBudget,visibility?:'public'|'private',expectedCredits?:number,record?:{fingerprint:string;minAllowancePer10kCredits?:number;save:(db:PoolClient,id:string)=>Promise<void>}){
     if(this.djAllowance&&(!record||job||!visibility))throw Error('DJ allowance requires an internal session record');
     if(visibility!==undefined && !['public','private'].includes(visibility))throw new Error('Invalid visibility');
     if(expectedCredits!==undefined)integer(expectedCredits,0,100000);
+    if(record?.minAllowancePer10kCredits!==undefined)integer(record.minAllowancePer10kCredits,0,Number.MAX_SAFE_INTEGER);
     const privacyBps=visibility==='private'?2500:0;
     integer(cap,1,5_000_000);integer(marginBps,3000,9000);
     if(!/^[a-zA-Z0-9_-]{8,100}$/.test(key))throw new Error('Invalid request key');
     if(job)validatePermit({...job,version:1,reservationId:'00000000-0000-0000-0000-000000000000',expiresAt:Date.now()+60000,costCapMicros:cap,attempt:1},Date.now());
-    const fingerprint=createHash('sha256').update(JSON.stringify({cap,marginBps,job,...(visibility?{visibility}: {}),...(expectedCredits!==undefined?{expectedCredits}:{}),...(record?{record:record.fingerprint}:{}),...(this.djAllowance?{djAllowance:true}:{})})).digest('hex');
+    const fingerprint=createHash('sha256').update(JSON.stringify({cap,marginBps,job,...(visibility?{visibility}: {}),...(expectedCredits!==undefined?{expectedCredits}:{}),...(record?{record:record.fingerprint}:{}),...(this.djAllowance?{djAllowance:true,minAllowancePer10kCredits:record?.minAllowancePer10kCredits}:{})})).digest('hex');
     return this.atomic(owner,async db=>{
       const prior=(await db.query('SELECT * FROM generation_reservations WHERE owner_id=$1 AND request_key=$2',[owner,key])).rows[0];
       if(prior){if(prior.fingerprint!==fingerprint)throw new Error('Changed quote');return prior.id as string;}
@@ -79,6 +80,7 @@ export class Wallet {
         FROM credit_lots l JOIN wallet_ledger_entries e ON e.lot_id=l.id WHERE l.owner_id=$1 AND (l.provider IN ('stripe_live','apple_live'))=$2
         GROUP BY l.id ORDER BY l.created_at,l.id`,[owner,this.live])).rows;
       const plan=this.djAllowance&&!exempt?await planDJAllowance(db,owner,this.live,lots,cap,marginBps,visibility!):null;
+      if(plan&&plan.credits>0&&record?.minAllowancePer10kCredits!==undefined&&plan.quote.minMicrosPer10kCredits<record.minAllowancePer10kCredits)throw new Error('Quote changed; request a new quote');
       const allocations=exempt||this.djAllowance?[]:allocateCredits(lots,cap,marginBps,!!privacyBps);
       const credits=plan?.credits??allocations.reduce((sum,a)=>sum+a.n,0);
       if(expectedCredits!==undefined && credits!==expectedCredits)throw new Error('Quote changed; request a new quote');

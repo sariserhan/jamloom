@@ -6,6 +6,8 @@ test('DJ allowance retains unused value without changing whole-credit account ba
  const target=new URL('postgresql://127.0.0.1:5432/postgres'),admin=createPool(target.toString()),name='jamloom_allowance_'+id();await admin.query(`CREATE DATABASE "${name}"`);target.pathname='/'+name;const pool=createPool(target.toString()),wallet=new Wallet(pool,false,true);
  const grant=async(owner:string,credits=1)=>{await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.test']);await wallet.grant(owner,{provider:'stripe_test',receipt:owner,credits,netMicros:credits*1000000});};
  const reserve=async(owner:string,key=id(),visibility:'public'|'private'='public')=>{const q=await wallet.quote(owner,50000,5000,visibility);return {q,id:await wallet.reserve(owner,key,50000,5000,undefined,visibility,q.credits,record)};};
+ const objects=new Map<string,Buffer>(),store={local:true,put:async(k:string,b:Buffer)=>{objects.set(k,b);},get:async(k:string)=>objects.get(k)!,remove:async(k:string)=>{objects.delete(k);},uploadURL:async()=>'',playbackURL:async()=>''};
+ let sample=0;const finishBatch=async(service:DJSessions,owner:string)=>{const job=await service.claim();assert.ok(job);const audio=Buffer.alloc(11520044);audio.write('RIFF');audio.writeUInt32LE(audio.length-8,4);audio.write('WAVEfmt ',8);audio.writeUInt32LE(16,16);audio.writeUInt16LE(1,20);audio.writeUInt16LE(2,22);audio.writeUInt32LE(48000,24);audio.writeUInt32LE(192000,28);audio.writeUInt16LE(4,32);audio.writeUInt16LE(16,34);audio.write('data',36);audio.writeUInt32LE(audio.length-44,40);for(let i=44;i<audio.length;i+=2)audio.writeInt16LE((i%200<100?1000:-1000)+sample,i);sample++;await service.localStopped(job.session_id,job.sequence,job.lease,'e'.repeat(64));await service.finish(job.session_id,job.sequence,job.lease,'completed',1000,audio);await service.played(owner,job.session_id,job.sequence);};
  try{
   assert.ok((await migrate(pool)).includes('0027_dj_allowance.sql'));assert.deepEqual(await migrate(pool),[]);
   await t.test('one credit funds ten public minutes or eight private minutes, with no per-minute rounding',async()=>{
@@ -48,14 +50,29 @@ test('DJ allowance retains unused value without changing whole-credit account ba
    assert.deepEqual(await wallet.balance('mixed'),{available:1,reserved:0});await assert.rejects(wallet.quote('mixed',50000,5000,'public'),/Insufficient/);
   });
   await t.test('a new session can begin with carried allowance and top up later within its signed maximum',async()=>{
-   await grant('session',2);const objects=new Map<string,Buffer>(),store={local:true,put:async(k:string,b:Buffer)=>{objects.set(k,b);},get:async(k:string)=>objects.get(k)!,remove:async(k:string)=>{objects.delete(k);},uploadURL:async()=>'',playbackURL:async()=>''};
+   await grant('session',2);
    const sessions=new DJSessions(pool,'isolated-allowance-secret-1234567890',store,budget,false,true);
    const start=async()=>{const input={id:id(),title:'Carryover party',style:'house',energy:4,visibility:'public'};const q=await sessions.quote('session',input);await sessions.start('session',input,q.token);return {input,q};};
-   let sample=0;const finish=async()=>{const job=await sessions.claim();assert.ok(job);const audio=Buffer.alloc(11520044);audio.write('RIFF');audio.writeUInt32LE(audio.length-8,4);audio.write('WAVEfmt ',8);audio.writeUInt32LE(16,16);audio.writeUInt16LE(1,20);audio.writeUInt16LE(2,22);audio.writeUInt32LE(48000,24);audio.writeUInt32LE(192000,28);audio.writeUInt16LE(4,32);audio.writeUInt16LE(16,34);audio.write('data',36);audio.writeUInt32LE(audio.length-44,40);for(let i=44;i<audio.length;i+=2)audio.writeInt16LE((i%200<100?1000:-1000)+sample,i);sample++;await sessions.localStopped(job.session_id,job.sequence,job.lease,'e'.repeat(64));await sessions.finish(job.session_id,job.sequence,job.lease,'completed',1000,audio);await sessions.played('session',job.session_id,job.sequence);};
+   const finish=()=>finishBatch(sessions,'session');
    const first=await start();await finish();await sessions.stop('session',first.input.id);const second=await start();assert.equal(second.q.credits,0);assert.equal((await sessions.status('session',second.input.id)).maxCredits,1);
    for(let n=0;n<10;n++){if(n)assert.ok((await sessions.next('session',second.input.id,n)).reservation);await finish();}
    assert.equal((await sessions.status('session',second.input.id)).state,'active');assert.deepEqual(await sessions.wallet.balance('session'),{available:0,reserved:0});await sessions.stop('session',second.input.id);
    const third=await start();const legacy=new DJSessions(pool,'isolated-allowance-secret-1234567890',store,budget);await finish();assert.deepEqual(await legacy.next('session',third.input.id,1),{ending:'price'});
+   const fourth=await start();await finish();const repriced=new DJSessions(pool,'isolated-allowance-secret-1234567890',store,{...budget,costCapMicros:51000},false,true);assert.deepEqual(await repriced.next('session',fourth.input.id,1),{ending:'price'});assert.equal((await sessions.status('session',fourth.input.id)).endReason,'price');
+  });
+  await t.test('a stale quote cannot spend a lower-value purchase lot even when the credit count is unchanged',async()=>{
+   await grant('rate-start');await wallet.grant('rate-start',{provider:'apple_sandbox',receipt:'rate-start-low',credits:1,netMicros:500000});
+   const sessions=new DJSessions(pool,'isolated-allowance-secret-1234567890',store,budget,false,true),input={id:id(),title:'Bound top-up value',style:'house',energy:4,visibility:'public'},q=await sessions.quote('rate-start',input);assert.equal(q.djAllowance!.minMicrosPer10kCredits,5000000000);
+   const regular=new Wallet(pool),spent=await regular.reserve('rate-start','other_product',500000);await regular.settle('rate-start',spent,500000,'completed');
+   await assert.rejects(sessions.start('rate-start',input,q.token),/Quote changed/);assert.deepEqual(await wallet.balance('rate-start'),{available:1,reserved:0});assert.equal(Number((await pool.query("SELECT count(*) FROM dj_allowance_lots WHERE owner_id='rate-start'")).rows[0].count),0);
+   assert.equal((await sessions.quote('rate-start',input)).djAllowance!.minMicrosPer10kCredits,2500000000);
+  });
+  await t.test('automatic top-ups stop before buying less music per credit from the next purchase lot',async()=>{
+   await grant('rate-next');await wallet.grant('rate-next',{provider:'apple_sandbox',receipt:'rate-next-low',credits:1,netMicros:500000});
+   const sessions=new DJSessions(pool,'isolated-allowance-secret-1234567890',store,budget,false,true),input={id:id(),title:'Bound ongoing rate',style:'house',energy:4,visibility:'public'},q=await sessions.quote('rate-next',input);await sessions.start('rate-next',input,q.token);
+   for(let n=0;n<10;n++){if(n)await sessions.next('rate-next',input.id,n);await finishBatch(sessions,'rate-next');}
+   assert.deepEqual(await sessions.next('rate-next',input.id,10),{ending:'price'});assert.deepEqual(await wallet.balance('rate-next'),{available:1,reserved:0});
+   const next=await sessions.quote('rate-next',{...input,id:id()});assert.equal(next.credits,1);assert.equal(next.djAllowance!.topUpMinutes,5);
   });
   await t.test('unavailable capacity rolls back a top-up and legacy quotes cannot switch billing modes',async()=>{
    await grant('unavailable');const store={local:false,put:async()=>{},get:async()=>Buffer.alloc(0),remove:async()=>{},uploadURL:async()=>'',playbackURL:async()=>''};
@@ -63,6 +80,11 @@ test('DJ allowance retains unused value without changing whole-credit account ba
    const q=await sessions.quote('unavailable',input);await assert.rejects(sessions.start('unavailable',input,q.token),/warming up/);
    assert.deepEqual(await wallet.balance('unavailable'),{available:1,reserved:0});assert.equal(Number((await pool.query("SELECT count(*) FROM dj_allowance_lots WHERE owner_id='unavailable'")).rows[0].count),0);
    await assert.rejects(legacy.start('unavailable',input,q.token),/choices changed/);const old=await legacy.quote('unavailable',input);await assert.rejects(sessions.start('unavailable',input,old.token),/choices changed/);
+  });
+  await t.test('fractional micro-unit purchase values retain a nonzero bound without floating-point money',async()=>{
+   await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES(\'tiny\',\'tiny\',\'tiny@example.test\',true)');await wallet.grant('tiny',{provider:'stripe_test',receipt:'tiny',credits:100000,netMicros:100000});
+   const sessions=new DJSessions(pool,'isolated-allowance-secret-1234567890',store,budget,false,true),input={id:id(),title:'Small unit boundary',style:'house',energy:4,visibility:'public'},q=await sessions.quote('tiny',input);
+   assert.equal(q.credits,100000);assert.equal(q.djAllowance!.minMicrosPer10kCredits,5000);await sessions.start('tiny',input,q.token);await sessions.stop('tiny',input.id);assert.deepEqual(await wallet.balance('tiny'),{available:100000,reserved:0});
   });
  }finally{await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();}
 });

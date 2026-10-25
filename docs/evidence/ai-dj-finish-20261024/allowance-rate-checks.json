@@ -1,0 +1,31 @@
+{
+  "status": "PASS ledger and quote-value protection; customer browser pending",
+  "checks": {
+    "allowance": {
+      "tests": 12,
+      "passed": 12
+    },
+    "walletAndProviderRegression": {
+      "tests": 54,
+      "passed": 54,
+      "note": "Includes the earlier eleven allowance checks; final added boundary check passes in the twelve-check focused run"
+    },
+    "sessionsAndAppleNotifications": {
+      "tests": 20,
+      "passed": 20
+    },
+    "typescript": "PASS",
+    "migration0028": "Restored backup, matching PostgreSQL 18 rehearsal, apply and repeat PASS"
+  },
+  "unitOfRateBound": "Integer allowance micro-units per 10000 credits",
+  "guards": [
+    "stale quotes cannot use a lower-value purchase at the same credit count",
+    "automatic top-ups stop before reduced value",
+    "minimum value checked under owner lock",
+    "budget or billing-mode changes end with price reason",
+    "fully unused failed top-ups return to source credits",
+    "held purchases remain unavailable"
+  ],
+  "noPaidCompute": true,
+  "publicBillingEnabled": false
+}

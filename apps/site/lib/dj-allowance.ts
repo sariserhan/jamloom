@@ -1,6 +1,6 @@
 import type {PoolClient} from 'pg';
 import {integer,type CreditLot} from './economics';
-export type DJAllowanceQuote={availableMicros:number;chargeMicros:number;maxCredits:number;topUpMinutes:number};
+export type DJAllowanceQuote={availableMicros:number;chargeMicros:number;maxCredits:number;minMicrosPer10kCredits:number;topUpMinutes:number};
 export const djCharge=(cap:number,visibility:'public'|'private')=>integer(cap+(visibility==='private'?Math.ceil(cap/4):0),1,6250000);
 
 // All mutations run under Wallet's owner row lock, including purchases, refunds and settlement.
@@ -26,10 +26,13 @@ export async function planDJAllowance(db:PoolClient,owner:string,live:boolean,lo
  const charge=djCharge(cap,visibility),bank=await djAllowanceLots(db,owner,live);
  const available=integer(bank.reduce((n,l)=>n+integer(Number(l.available)),0));
  const additions=funding(lots,Math.max(0,charge-available),margin),credits=additions.reduce((n,l)=>n+l.credits,0);
- const maximum=funding(lots.map(l=>({...l,available:l.credits})),charge,margin);
+ let maximum;
+ try{maximum=funding(lots,charge,margin);}catch(e){if(!(e instanceof Error&&e.message.startsWith('Insufficient credits')))throw e;maximum=funding(lots.map(l=>({...l,available:l.credits})),charge,margin);}
  const maxCredits=Math.max(credits,maximum.reduce((n,l)=>n+l.credits,0));
  const funded=additions.reduce((n,l)=>n+l.capacity,0);
- return {bank,additions,credits,quote:{availableMicros:available,chargeMicros:charge,maxCredits,topUpMinutes:funded/charge} satisfies DJAllowanceQuote};
+ // Per 10,000 credits keeps fractional micro-unit rates representable using integer arithmetic.
+ const rateLots=credits?additions:maximum,minMicrosPer10kCredits=Number(BigInt(rateLots.reduce((n,l)=>n+l.capacity,0))*10000n/BigInt(rateLots.reduce((n,l)=>n+l.credits,0)));
+ return {bank,additions,credits,quote:{availableMicros:available,chargeMicros:charge,maxCredits,minMicrosPer10kCredits,topUpMinutes:funded/charge} satisfies DJAllowanceQuote};
 }
 export async function reserveDJAllowance(db:PoolClient,owner:string,reservation:string,charge:number,plan:Awaited<ReturnType<typeof planDJAllowance>>){
  const bank=[...plan.bank];
