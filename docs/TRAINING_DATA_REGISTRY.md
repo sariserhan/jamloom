@@ -78,6 +78,9 @@ This does not turn the predominantly non-club corpus into a qualified club datas
 Three new 60-second house outputs used the same pinned ACE-Step code and weights,
 with fresh seeds, no reference audio and no historical adapters. Actual weight
 hashes match the earlier trial. These are listening candidates, not admitted
-training examples or evidence of new model training. Human review is pending.
+training examples or evidence of new model training. The owner subsequently
+accepted all three for party development, preferring clip 1; this listening
+acceptance does not admit them as training data.
+[Owner feedback](evidence/ai-dj-customer-flow-20261024/gpu-retry/owner-listening.json).
 [Execution and provenance](evidence/ai-dj-customer-flow-20261024/gpu-retry/),
 [technical scope](ai-dj-streaming-recordings.md).
