@@ -1,3 +1,15 @@
+## AI DJ live performance and beat direction — 2026-10-25
+
+**PASS local implementation and technical replay; PARTIAL musical qualification.** Real filter/roll/echo moves and deck feedback, energy-aware equal-power handoffs, and Keep/change beat commands are implemented. Fixed an early voice fade found by captured-audio checks. Four final three-track recordings pass Chromium/WebKit with no silence at -60 dB lasting 250 ms. No new GPU rental, training, publication or public activation.
+
+- [x] Improve transition continuity and verify actual captured audio.
+- [x] Add restrained beat-timed performance moves, manual takeover and synchronized controls.
+- [x] Wire Keep/change beat through typed commands, UI, immutable session settings and renderer requests.
+- [x] Verify tests, production build, browser controls, recording and local listening-page playback.
+- [ ] Obtain human acceptance of the new performances and a freshly authorized GPU check of beat-direction adherence. Future supplied DJ samples still need verified analysis/training rights; no learned DJ training claimed.
+
+[Report and checks](ai-dj-live-performance.md). [Local listening](http://localhost:8766/live-performance/review/).
+
 ## Local AI DJ listening-page playback — 2026-10-25
 
 **PASS local fix.** Public/private full sets now use finalized MP3 listening copies with duration metadata, seeking and download links. The loopback review server supports byte ranges (206) and rejects invalid ranges/private symlink targets. Original captures remain unchanged. No generation, cloud writes or website deployment.

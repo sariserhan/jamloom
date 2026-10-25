@@ -49,7 +49,7 @@ test('upgrading numerical analysis preserves existing human mix-point reviews',a
   Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:(key:string)=>storage.get(key),setItem:(key:string,value:string)=>storage.set(key,value)}});
   Object.defineProperty(globalThis,'Worker',{configurable:true,value:class{
    onmessage:(message:unknown)=>void=()=>{};terminate(){}
-   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:2,audible:{start:0,end:128}}}}));}
+   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:2,mixVersion:1,mixBounds:{start:0,end:128},audible:{start:0,end:128}}}}));}
   }});
   const pcm=new Float32Array(128*8000).fill(.1),buffer={duration:128,numberOfChannels:1,length:pcm.length,sampleRate:8000,getChannelData:()=>pcm} as unknown as AudioBuffer;
   assert.deepEqual((await analyseBuffer(buffer,base.sha256)).review,reviewed.review);
@@ -90,4 +90,18 @@ test('silent outer padding is skipped without removing internal musical rests or
  assert.equal(validAnalysis({...a,audible:{start:0,end:61}},base.sha256),false);assert.equal(validAnalysis({...a,audible:{start:17,end:53}},base.sha256),false);
  const late=planTransition(a,a,59.99,1,10);assert.ok(late.at+late.fade<=10.011);
  const invalid=planTransition({...base,audible:{start:0,end:NaN}},base,5,1,10);assert.ok(Number.isFinite(invalid.at));
+});
+
+test('sustained energy mix edges avoid weak fade tails while retaining internal breaks',()=>{
+ const pcm=new Float32Array(60*8000);for(let i=0;i<pcm.length;i++){const t=i/8000;pcm[i]=.2*Math.sin(2*Math.PI*110*t)*(t<5?t/5:t>50?(60-t)/10:1);}
+ const a=analyzeTrack(pcm,8000,base.sha256);assert.ok(a.mixBounds!.start>a.audible!.start);assert.ok(a.mixBounds!.end<a.audible!.end-1);
+ const plan=planTransition(a,a,10,1,20);assert.equal(plan.fade,4);assert.equal(plan.offset,a.mixBounds!.start);assert.ok(plan.at+plan.fade<=20+a.mixBounds!.end-10);
+ assert.equal(validAnalysis({...a,mixBounds:{start:NaN,end:55}},base.sha256),false);
+});
+test('automatic moves use steady measured beats, leave transition space and hold on uncertain audio',async()=>{
+ const {performanceMove}=await import('../lib/ai-dj-moves');
+ const a={...base,duration:60,grid:{bpm:120,offset:0,maxError:.01,coverage:.9,entry:0,exit:59,hookSafe:true}};
+ for(const ordinal of [-1,.5,NaN,Infinity])assert.equal(performanceMove(a,10,1,20,50,-1000,ordinal,false),null);
+ for(const [ordinal,action] of ['filter','roll-one','echo'].entries()){const p=performanceMove(a,10.1,1,20,50,-1000,ordinal,false);assert.ok(p);assert.equal(p.action,action);assert.ok(Math.abs(p.position/.5-Math.round(p.position/.5))<.001);assert.ok(p.at>20);}
+ assert.equal(performanceMove(a,10,1,20,25,-1000,0,false),null);assert.equal(performanceMove(a,10,1,20,50,8,0,false),null);assert.equal(performanceMove(a,10,1,20,50,-1000,0,true),null);assert.equal(performanceMove(base,10,1,20,50,-1000,0,false),null);assert.equal(performanceMove({...a,changes:[11]},10,1,20,50,-1000,0,false),null);
 });

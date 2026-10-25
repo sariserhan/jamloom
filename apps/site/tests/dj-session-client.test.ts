@@ -34,3 +34,10 @@ test('DJ price labels distinguish generated time, carried allowance and a whole-
  assert.equal(sessionPrice({...q,credits:0,djAllowance:{...q.djAllowance,maxCredits:0}}),'No credits required for this account');
  assert.equal(sessionPrice({...q,djAllowance:undefined}),'1 credit maximum per generated minute');
 });
+
+test('beat instructions travel with the next request and playback uses delivered batch metadata',async()=>{
+ const original=globalThis.fetch,calls:any[]=[],beat={bpm:126,groove:'syncopated' as const};let sequence=0;
+ const client=new DJSessionClient({owner:'test',input:{id:'a'.repeat(32),title:'Party',style:'house',energy:4,mood:'deep',visibility:'public'},quote:{credits:2,privacyCredits:0,token:'original',expiresAt:Date.now()+100000}},()=>{});
+ globalThis.fetch=async(input,options)=>{const url=String(input),body=options?.body?JSON.parse(String(options.body)):undefined;calls.push({url,body});if(url.endsWith('/next'))sequence=body.sequence;return Response.json(options?.method==='POST'?{}:{state:'active',batches:[{sequence,state:'completed',ready:true,audio_sha256:String(sequence).repeat(64),beat:sequence?beat:undefined}]});};
+ try{await client.source({energy:4,mood:'deep',vocals:true},new AbortController().signal);const result=await client.source({energy:4,mood:'deep',vocals:true,beat},new AbortController().signal);assert.deepEqual(calls.find(c=>c.url.endsWith('/next')).body.beat,beat);assert.deepEqual(result?.track.beat,beat);assert.equal(calls.filter(c=>c.url.endsWith('/next')).length,1);}finally{await client.stop();globalThis.fetch=original;}
+});

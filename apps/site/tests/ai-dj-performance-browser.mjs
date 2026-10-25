@@ -27,10 +27,12 @@ for(const [name,engine] of (process.argv.includes('--chromium-only')?[['chromium
   for(const action of ['vocal-repeat','loop-2','loop-4','roll-half','roll-one','cue-1','cue-2','jog-back','jog-forward','backspin','filter','echo']){
    const audio=await render(action);let difference=0,peak=0;
    for(let i=8000;i<40000;i++){if(!Number.isFinite(audio[i]))throw Error('Invalid PCM');difference+=Math.abs(audio[i]-baseline[i]);peak=Math.max(peak,Math.abs(audio[i]));}
-   report.push({action,meanDifference:difference/32000,peak});
+   let minimumLevelRatio=1;
+   if(action==='roll-one')for(let start=4000;start<24000;start+=800){let power=0,original=0;for(let i=start;i<start+800;i++){power+=audio[i]**2;original+=baseline[i]**2;}minimumLevelRatio=Math.min(minimumLevelRatio,Math.sqrt(power/original));}
+   report.push({action,meanDifference:difference/32000,peak,minimumLevelRatio});
   }return report;
  },source);
- for(const row of rendered){assert.ok(row.meanDifference>.001,row.action+' must change actual PCM');assert.ok(row.peak<1,row.action+' must stay bounded');}
+ for(const row of rendered){assert.ok(row.meanDifference>.001,row.action+' must change actual PCM');assert.ok(row.peak<1,row.action+' must stay bounded');assert.ok(row.minimumLevelRatio>.75,row.action+' must not fade early while its return is scheduled');}
  await startSet(page);await page.waitForFunction(()=>document.querySelector('.deck-0 .aidj-deck-head span').textContent==='PLAYING');
  await page.waitForTimeout(10000);
  assert.equal(await page.locator('.aidj-pads .active').count(),0,'no scheduled automatic moves');

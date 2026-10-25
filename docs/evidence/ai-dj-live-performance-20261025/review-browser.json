@@ -1,0 +1,26 @@
+[
+  {
+    "browser": "chromium",
+    "status": "PASS",
+    "checks": [
+      "both recordings start stopped",
+      "finite MP3 durations",
+      "muted playback and seek",
+      "only one player at a time",
+      "390px layout",
+      "no page errors"
+    ]
+  },
+  {
+    "browser": "webkit",
+    "status": "PASS",
+    "checks": [
+      "both recordings start stopped",
+      "finite MP3 durations",
+      "muted playback and seek",
+      "only one player at a time",
+      "390px layout",
+      "no page errors"
+    ]
+  }
+]

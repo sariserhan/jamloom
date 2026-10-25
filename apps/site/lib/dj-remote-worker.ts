@@ -17,7 +17,7 @@ export async function runRemoteDJBatch(warm:DJWarmWorker,worker:WarmIdentity,tok
  if(!/^[a-f0-9]{64}$/.test(token))throw Error('Renderer token required');
  if(signal?.aborted)return null;
  const sessions=warm.sessions,job=await sessions.claim(worker)??await warm.pending(worker);if(!job)return null;
- const request={version:1,session:job.session_id,sequence:job.sequence,seed:job.seed,style:job.settings.style,energy:job.settings.energy,...(job.settings.mood?{mood:job.settings.mood}:{})};
+ const request={version:1,session:job.session_id,sequence:job.sequence,seed:job.seed,style:job.settings.style,energy:job.settings.energy,...(job.settings.mood?{mood:job.settings.mood}:{}),...(job.settings.beat?{beat:job.settings.beat}:{})};
  const abort=new AbortController(),cancel=()=>abort.abort();signal?.addEventListener('abort',cancel,{once:true});if(signal?.aborted)cancel();
  const deadline=setTimeout(cancel,Math.min(35000,sessions.budget.maxRuntimeMs));let checking=false;
  const heartbeat=setInterval(async()=>{if(checking)return;checking=true;try{await sessions.shutdownRequired();if(!await warm.jobHeartbeat(worker,job))cancel();}catch{cancel();}finally{checking=false;}},3000);

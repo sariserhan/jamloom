@@ -3,11 +3,13 @@ import {planTransition,type TransitionPlan} from './ai-dj-plan';
 import type {TrackAnalysis} from './ai-dj-analysis';
 import {PerformanceDeck,type PerformanceAction,type PerformanceEvent} from './ai-dj-performance';
 import {vocalLoopReady} from './dj-vocal';
+import {performanceMove} from './ai-dj-moves';
+import {validBeatDirection} from './dj-beat';
 import {createMixer,clearEcho} from '../../web/mixer.js';
 import {djTracks,pickTrack,type Direction,type DJTrack} from './ai-dj-director';
 
 type Prepared={track:DJTrack;buffer:AudioBuffer;bpm:number;wave:number[];analysis:TrackAnalysis};
-type Deck=Prepared&{performance?:PerformanceDeck;gain?:GainNode;start:number;offset?:number;rate?:number;vocalPlayed?:boolean};
+type Deck=Prepared&{performance?:PerformanceDeck;gain?:GainNode;start:number;offset?:number;rate?:number;vocalPlayed?:boolean;moves?:number;lastMove?:number};
 type Blend=TransitionPlan&{from:number;to:number;end:number};
 export type DJSnapshot={status:'idle'|'loading'|'playing'|'closing'|'paused'|'stopped'|'error';message:string;direction:Direction;master:number;analysis:TrackAnalysis|null;plan:string;mode:'auto'|'together';cross:number;elapsed:number;remaining:number|null;transitionIn:number|null;history:string[];mixing:boolean;performance:PerformanceEvent[];decks:({title:string;artist:string;vocal:boolean;reviewed:boolean;bpm:number;duration:number;position:number;playing:boolean;wave:number[];rate:number;loopBeats:number;filter:number;level:number;echo:number;eq:number[];event:PerformanceEvent|null}|null)[];peak:number};
 
@@ -55,6 +57,7 @@ export class AIDJPlayer{
  private sourceEnded=false;
  private generatedHashes:string[]=[];
  private performed:PerformanceEvent[]=[];
+ private moveOrdinal=0;
  constructor(private changed:(snapshot:DJSnapshot)=>void,private tracks=djTracks,private source?:DJTrackSource){
   this.context=new AudioContext({sampleRate:32000});this.mixer=createMixer(this.context);this.mixer.meter.fftSize=256;
   this.applyMaster();this.context.onstatechange=()=>{if(this.context.state!=='running'&&this.running)this.stop('Audio was interrupted. Press Start set to resume.');};
@@ -65,23 +68,23 @@ export class AIDJPlayer{
   const cross=this.blend?Math.max(0,Math.min(1,(now-this.blend.at)/(this.blend.end-this.blend.at))):0;
   const active=this.decks[this.active];
   this.mixer.meter.getFloatTimeDomainData(this.meter);
-  return {status:this.state,message:this.message,direction:{...this.direction},master:this.master,analysis:active?.analysis??null,plan:this.blend?.reason??(this.mode==='auto'?'Preparing a conservative transition':'Manual control'),mode:this.mode,cross:this.blend?(this.blend.to===1?cross:1-cross):this.active,elapsed:this.running||this.state==='paused'?Math.max(0,now-this.began):this.endedElapsed,remaining:this.endAt===null?null:Math.max(0,this.endAt-now),transitionIn:this.blend?Math.max(0,this.blend.at-now):null,history:[...this.history],peak:Math.max(...this.meter.map(Math.abs)),mixing:!!this.blend&&now>=this.blend.at,performance:[...this.performed],decks:this.decks.map((d,i)=>{
+  return {status:this.state,message:this.message,direction:{...this.direction},master:this.master,analysis:active?.analysis??null,plan:this.blend?.reason??(this.mode==='auto'?'Preparing a conservative transition':'Manual control'),mode:this.mode,cross:this.blend?(this.blend.to===1?cross:1-cross):this.active,elapsed:this.running||this.state==='paused'?Math.max(0,now-this.began):this.endedElapsed,remaining:this.endAt===null?null:Math.max(0,this.endAt-now),transitionIn:this.blend?Math.max(0,this.blend.at-now):null,history:[...this.history],peak:Math.max(...this.meter.map(Math.abs)),mixing:!!this.blend&&now>=this.blend.at,performance:this.performed.filter(e=>e.at<=now),decks:this.decks.map((d,i)=>{
    if(!d)return null;const position=d.performance?.position(now)??0;
-   return {title:d.track.title,artist:d.track.artist,vocal:d.track.vocal,reviewed:!!d.analysis.review,bpm:d.bpm*(d.rate??1),duration:d.buffer.duration,position,playing:!!d.performance&&now>=d.start&&this.running,wave:d.wave,eq:this.mixer.strips[i].eq.map(n=>n.gain.value),...(d.performance?.snapshot(now)??{rate:1,loopBeats:0,filter:0,level:1,echo:0,event:null})};
+   return {title:d.track.title,artist:d.track.artist,vocal:d.track.vocal,reviewed:!!d.analysis.review,bpm:d.bpm*(d.rate??1),duration:d.buffer.duration,position,playing:!!d.performance&&now>=d.start&&this.running,wave:d.wave,eq:this.mixer.strips[i].eq.map(n=>n.gain.value),...(d.performance?.snapshot(now)??{rate:1,loopBeats:0,filter:0,level:1,echo:0,event:null}),level:(d.performance?.level.gain.value??1)*(d.gain?.gain.value??0)};
   })};
  }
  private emit(){if(!this.disposed)this.changed(this.snapshot());}
  async start(beforePlay?:()=>Promise<boolean>){
   if(this.disposed||this.running||this.state==='loading'||this.state==='paused')return;
-  this.stopSources();this.performed=[];this.history=[];this.sequence=0;this.sourceEnded=false;this.generatedHashes=[];this.unavailable.clear();this.endedElapsed=0;this.endAt=null;this.active=0;this.blend=null;this.early=false;
+  this.stopSources();this.performed=[];this.moveOrdinal=0;this.history=[];this.sequence=0;this.sourceEnded=false;this.generatedHashes=[];this.unavailable.clear();this.endedElapsed=0;this.endAt=null;this.active=0;this.blend=null;this.early=false;
   this.state='loading';this.message='Preparing the first track…';const run=++this.request;this.emit();
   try{
    await this.context.resume();if(run!==this.request)return;
    const prepared=await this.loadCandidate();if(run!==this.request)return;if(!prepared)throw Error('No tracks remain');
    if(beforePlay&&!await beforePlay()){if(run===this.request){this.state='error';this.message='Recording could not start. Check the recording status below and try again.';this.emit();}return;}if(run!==this.request)return;
-   this.decks[0]={...prepared,start:0};this.began=this.context.currentTime+.1;this.beginDeck(0,this.began,1,this.mode==='auto'?prepared.analysis.audible?.start??0:0);
+   this.decks[0]={...prepared,start:0};this.began=this.context.currentTime+.1;this.beginDeck(0,this.began,1,this.mode==='auto'?prepared.analysis.mixBounds?.start??prepared.analysis.audible?.start??0:0);
    this.history=[prepared.track.id];this.state='playing';this.message='Set started. Preparing the next groove.';this.applyMaster();
-   this.interval=setInterval(()=>this.tick(),100);this.emit();void this.prepareNext();
+   this.interval=setInterval(()=>this.tick(),50);this.emit();void this.prepareNext();
   }catch{if(run===this.request){this.state='error';this.message='The prepared music could not load. Check your connection and try Start set again.';this.emit();}}
  }
  private async loadCandidate():Promise<Prepared|null>{
@@ -158,10 +161,16 @@ export class AIDJPlayer{
    const at=now+(cue.start-position)/(current.rate??1);current.vocalPlayed=true;
    if(current.performance?.repeatPhrase(at,cue.start,cue.seconds)){this.performed=[...this.performed,current.performance.event!].slice(-6);this.message='AI · brief vocal loop';}
   }
-  if(current&&!this.blend&&(current.performance?.position(now)??0)>=(this.mode==='auto'?current.analysis.audible?.end??current.buffer.duration:current.buffer.duration)-.001){this.stop(this.source?'Prepared music finished. The set has stopped.':'Library finished. Add more tracks to continue.');return;}
+  if(current&&!this.blend&&(current.performance?.position(now)??0)>=(this.mode==='auto'?current.analysis.mixBounds?.end??current.analysis.audible?.end??current.buffer.duration:current.buffer.duration)-.001){this.stop(this.source?'Prepared music finished. The set has stopped.':'Library finished. Add more tracks to continue.');return;}
   if(this.blend&&now>=this.blend.end){
    const {from,to}=this.blend;this.release(from);this.active=to;this.history=[...this.history,this.decks[to]!.track.id].slice(-100);this.blend=null;this.early=false;
    this.message=this.endAt===null?'New groove playing. Preparing what comes next.':'Closing set · preparing the final stretch.';void this.prepareNext();
+  }
+  const live=this.decks[this.active],livePosition=live?.performance?.position(now)??0;
+  if(this.mode==='auto'&&this.endAt===null&&live?.performance&&(!live.performance.event||live.performance.event.until<=now)&&(live.moves??0)<2){
+   const boundary=this.blend?.at??now+((live.analysis.mixBounds?.end??live.analysis.audible?.end??live.buffer.duration)-livePosition)/(live.rate??1);
+   const move=performanceMove(live.analysis,livePosition,live.rate??1,now,boundary,live.lastMove??-1000,this.moveOrdinal,live.track.vocal);
+   if(move&&this.perform(this.active,move.action,move.at,'AI')){live.lastMove=move.position;live.moves=(live.moves??0)+1;this.moveOrdinal++;}
   }
   if((this.mode==='auto'||this.early)&&!this.blend&&!(current?.performance?.event&&current.performance.event.until>now)&&this.decks[this.active]&&this.decks[1-this.active]){
    const deck=this.decks[this.active]!,to=1-this.active,incoming=this.decks[to]!;
@@ -170,8 +179,9 @@ export class AIDJPlayer{
     const plan=planTransition(deck.analysis,incoming.analysis,position,deck.rate??1,now,this.early);
     if(this.endAt===null||plan.at+plan.fade+2<this.endAt){
      deck.performance?.cancel();this.beginDeck(to,plan.at,0,plan.offset,plan.rate);
-     deck.gain!.gain.cancelScheduledValues(now);deck.gain!.gain.setValueAtTime(1,now);deck.gain!.gain.setValueAtTime(1,plan.at);deck.gain!.gain.linearRampToValueAtTime(0,plan.at+plan.fade);
-     incoming.gain!.gain.setValueAtTime(0,plan.at);incoming.gain!.gain.linearRampToValueAtTime(1,plan.at+plan.fade);
+     const out=Float32Array.from({length:65},(_,i)=>Math.cos(i/64*Math.PI/2)),into=Float32Array.from({length:65},(_,i)=>Math.sin(i/64*Math.PI/2));
+     deck.gain!.gain.cancelScheduledValues(now);deck.gain!.gain.setValueAtTime(1,now);deck.gain!.gain.setValueCurveAtTime(out,plan.at,plan.fade);
+     incoming.gain!.gain.setValueCurveAtTime(into,plan.at,plan.fade);
      if(plan.technique!=='short-fade'){
       const low=this.mixer.strips[this.active].eq[0].gain,next=this.mixer.strips[to].eq[0].gain;
       low.setValueAtTime(0,plan.at);low.linearRampToValueAtTime(-12,plan.at+plan.fade/2);
@@ -193,6 +203,7 @@ export class AIDJPlayer{
   return true;
  }
  setDirection(change:Partial<Direction>){
+  if(change.beat!==undefined&&!validBeatDirection(change.beat))return;
   if(change.energy!==undefined&&(!Number.isFinite(change.energy)||change.energy<1||change.energy>5))return;
   if(change.mood!==undefined&&!['warm','bright','deep'].includes(change.mood))return;
   this.direction={...this.direction,...change};
@@ -200,6 +211,15 @@ export class AIDJPlayer{
   else if(this.running&&this.cancelFuture()){this.message='Direction updated. Preparing the next track.';void this.prepareNext();}
   else this.message=this.running?'Direction saved for after this transition.':'Direction ready for your next set.';
   this.emit();
+ }
+ beat(change:boolean){
+  const deck=this.decks[this.active];if(!this.running||!deck)return;
+  const bpm=Math.max(90,Math.min(160,Math.round((deck.analysis.grid?.bpm??deck.bpm)*(deck.rate??1))));
+  const patterns=['steady','syncopated','rolling'] as const,current=this.direction.beat?.groove??deck.track.beat?.groove??'steady';
+  const groove=change?patterns[(patterns.indexOf(current)+1)%patterns.length]:deck.track.beat?.groove??current;
+  this.direction={...this.direction,beat:{bpm,groove}};
+  if(!this.source&&change)this.next();
+  this.message=(change?'A different groove':'This tempo and groove')+(this.source?' requested for the next unprepared original. Already prepared music stays in the set.':change?' requested at the next safe handoff.':' selected for the next tracks.');this.emit();
  }
  next(){if(!this.running||this.blend&&this.context.currentTime>=this.blend.at)return;if(this.blend){this.cancelFuture();void this.prepareNext();}this.early=true;this.message=this.decks[1-this.active]?'Next track will enter with a short handoff.':'Preparing a track before changing the music.';this.tick();}
  finish(seconds:number|null){
@@ -218,6 +238,10 @@ export class AIDJPlayer{
  setMaster(value:number){if(!Number.isFinite(value)||value<0||value>1)return;this.master=value;this.applyMaster();this.emit();}
  setMode(value:'auto'|'together'){
   if(!['auto','together'].includes(value))return;
+  if(value==='together'){
+   this.performed=this.performed.filter(e=>e.at<=this.context.currentTime);
+   for(const deck of this.decks)if(deck?.performance?.event?.by==='AI')deck.performance.cancel();
+  }
   if(value==='together'&&!this.source&&this.blend&&this.context.currentTime>=this.blend.at){
    const now=this.context.currentTime,progress=(now-this.blend.at)/this.blend.fade,keep=progress<.5?this.blend.from:this.blend.to,drop=1-keep;
    const old=this.decks[drop]?.performance;this.decks[drop]=null;
@@ -226,7 +250,7 @@ export class AIDJPlayer{
    this.active=keep;if(!this.history.includes(chosen.track.id))this.history.push(chosen.track.id);this.blend=null;this.early=false;
    this.mixer.strips.forEach(strip=>{strip.eq[0].gain.cancelAndHoldAtTime(now);strip.eq[0].gain.linearRampToValueAtTime(0,now+.04);});
   }else if(value==='together'&&this.blend)this.cancelFuture();
-  this.mode=value;this.message=value==='auto'?'Autopilot baseline · measured timing and occasional brief vocal loops.':'You have control.';
+  this.mode=value;this.message=value==='auto'?'Autopilot · beat-timed moves, smooth handoffs and space for the groove.':'You have control.';
   if(this.running){void this.prepareNext();this.tick();}this.emit();
  }
  async pause(){if(!this.running)return;this.state='paused';this.message='Paused';this.emit();await this.context.suspend();}

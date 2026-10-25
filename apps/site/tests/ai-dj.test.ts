@@ -55,8 +55,24 @@ test('published sample relay stays closed outside development',async()=>{
 test('performance timing and transport follow real loop, slip and reverse positions',async()=>{
  const {loopRegion,voicePosition}=await import('../lib/ai-dj-performance');
  assert.deepEqual(loopRegion(5.2,120,2,80),{start:5,end:6});
+ assert.deepEqual(loopRegion(5-1e-12,120,1,80),{start:5,end:5.5});
  assert.throws(()=>loopRegion(1,120,0,80));assert.throws(()=>loopRegion(1,Infinity,4,80));
  assert.equal(voicePosition({at:10,offset:5,rate:1,loop:{start:5,end:6}},12.5,80),5.5);
  assert.equal(voicePosition({at:10,offset:5,rate:-2,loop:null},11,80),3);
  assert.equal(voicePosition({at:10,offset:5,rate:1.12,loop:null},11,80),6.12);
+});
+
+test('beat commands preserve negation and reject conflicting instructions',async()=>{
+ const {validBeatDirection}=await import('../lib/dj-beat');
+ for(const text of ['keep this beat','hold the groove','stay with that rhythm'])assert.deepEqual(parseDJCommand(text),{kind:'beat',change:false});
+ for(const text of ['change the beat','different groove','switch this rhythm'])assert.deepEqual(parseDJCommand(text),{kind:'beat',change:true});
+ for(const text of ['do not change the beat','keep this beat and change the beat'])assert.equal(parseDJCommand(text).kind,'unknown');
+ assert.ok(validBeatDirection({bpm:128,groove:'rolling'}));for(const v of [null,{bpm:128.5,groove:'steady'},{bpm:200,groove:'steady'},{bpm:120,groove:'anything'},{bpm:120,groove:'steady',prompt:'override'}])assert.equal(validBeatDirection(v),false);
+});
+
+test('automatic loops reject quiet beats, including silence across the repeat seam',async()=>{
+ const {loopHasEnergy}=await import('../lib/ai-dj-performance');const pcm=new Float32Array(8000).fill(.1),buffer={sampleRate:8000,numberOfChannels:1,getChannelData:()=>pcm} as unknown as AudioBuffer,loop={start:0,end:.5};
+ assert.equal(loopHasEnergy(buffer,loop),true);pcm.fill(0,1000,3000);assert.equal(loopHasEnergy(buffer,loop),false);
+ pcm.fill(.1);pcm.fill(0,0,400);pcm.fill(0,3600,4000);assert.equal(loopHasEnergy(buffer,loop),false);
+ pcm.fill(0);assert.equal(loopHasEnergy(buffer,loop),false);
 });

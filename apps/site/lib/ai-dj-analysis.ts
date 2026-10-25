@@ -1,13 +1,13 @@
 import {analyzeContext} from '../../web/session-analysis.js';
 import {measureBeatGrid,validBeatGrid,type BeatGrid} from './ai-dj-beat-grid';
 export type MixReview={bpm:number;phraseStart:number;mixIn:number;mixOut:number;instrumentalEdges:boolean};
-export type TrackAnalysis={version:1;sha256:string;duration:number;bpm:number;confidence:number;beatOffset:number;rms:number;peak:number;wave:number[];keyEstimate:string|null;changes:number[];review?:MixReview;audible?:{start:number;end:number};grid?:BeatGrid;gridVersion?:2};
+export type TrackAnalysis={version:1;sha256:string;duration:number;bpm:number;confidence:number;beatOffset:number;rms:number;peak:number;wave:number[];keyEstimate:string|null;changes:number[];review?:MixReview;audible?:{start:number;end:number};mixBounds?:{start:number;end:number};mixVersion?:1;grid?:BeatGrid;gridVersion?:2};
 export function validAudibleBounds(a:TrackAnalysis['audible'],duration:number){return !!a&&[a.start,a.end,duration].every(Number.isFinite)&&a.start>=0&&a.start<=16&&a.end<=duration&&a.end>=duration-16&&a.end-a.start>=8;}
 export function validReview(r:MixReview,duration:number){
  return !!r&&[r.bpm,r.phraseStart,r.mixIn,r.mixOut,duration].every(Number.isFinite)&&r.bpm>=60&&r.bpm<=180&&r.phraseStart>=0&&r.phraseStart<duration&&r.mixIn>=r.phraseStart&&r.mixOut>r.mixIn&&r.mixOut+32*60/r.bpm<=duration+.01&&typeof r.instrumentalEdges==='boolean'&&[r.mixIn,r.mixOut].every(t=>Math.abs((t-r.phraseStart)*r.bpm/60/32-Math.round((t-r.phraseStart)*r.bpm/60/32))<.002);
 }
 export function validAnalysis(a:TrackAnalysis,hash:string){
- return !!a&&a.version===1&&(a.gridVersion===undefined||a.gridVersion===2)&&a.sha256===hash&&/^[a-f0-9]{64}$/.test(hash)&&[a.duration,a.bpm,a.confidence,a.beatOffset,a.rms,a.peak].every(Number.isFinite)&&a.duration>=8&&a.duration<=300&&a.bpm>=60&&a.bpm<=180&&a.confidence>=0&&a.confidence<=1&&a.beatOffset>=0&&a.beatOffset<60/a.bpm&&a.rms>0&&a.rms<=2&&a.peak>0&&a.peak<=8&&Array.isArray(a.wave)&&a.wave.length===96&&a.wave.every(n=>Number.isFinite(n)&&n>=0&&n<=1)&&Array.isArray(a.changes)&&a.changes.length<=40&&a.changes.every(n=>Number.isFinite(n)&&n>=0&&n<a.duration)&&(a.keyEstimate===null||typeof a.keyEstimate==='string'&&a.keyEstimate.length<40)&&(!a.audible||validAudibleBounds(a.audible,a.duration))&&(!a.review||validReview(a.review,a.duration))&&(!a.grid||validBeatGrid(a.grid)&&a.grid.exit<a.duration);
+ return !!a&&a.version===1&&(a.gridVersion===undefined||a.gridVersion===2)&&a.sha256===hash&&/^[a-f0-9]{64}$/.test(hash)&&[a.duration,a.bpm,a.confidence,a.beatOffset,a.rms,a.peak].every(Number.isFinite)&&a.duration>=8&&a.duration<=300&&a.bpm>=60&&a.bpm<=180&&a.confidence>=0&&a.confidence<=1&&a.beatOffset>=0&&a.beatOffset<60/a.bpm&&a.rms>0&&a.rms<=2&&a.peak>0&&a.peak<=8&&Array.isArray(a.wave)&&a.wave.length===96&&a.wave.every(n=>Number.isFinite(n)&&n>=0&&n<=1)&&Array.isArray(a.changes)&&a.changes.length<=40&&a.changes.every(n=>Number.isFinite(n)&&n>=0&&n<a.duration)&&(a.keyEstimate===null||typeof a.keyEstimate==='string'&&a.keyEstimate.length<40)&&(!a.audible||validAudibleBounds(a.audible,a.duration))&&(a.mixVersion===undefined||a.mixVersion===1)&&(!a.mixBounds||validAudibleBounds(a.mixBounds,a.duration))&&(!a.review||validReview(a.review,a.duration))&&(!a.grid||validBeatGrid(a.grid)&&a.grid.exit<a.duration);
 }
 // Estimates remain suggestions: neither autocorrelation nor energy changes establish musical phrases.
 export function analyzeTrack(samples:Float32Array,rate:number,sha256:string):TrackAnalysis{
@@ -18,6 +18,11 @@ export function analyzeTrack(samples:Float32Array,rate:number,sha256:string):Tra
  let first=-1,last=-1;for(let i=0;i<envelope.length;i++)if(envelope[i]>=Math.max(.002,rms*.05)){if(first<0)first=i;last=i;}
  const bounds={start:Math.max(0,first/200-.05),end:Math.min(seconds,(last+1)/200+.05)};
  const audible=validAudibleBounds(bounds,seconds)?{start:bounds.start>=.25?bounds.start:0,end:seconds-bounds.end>=.25?bounds.end:seconds}:{start:0,end:seconds};
+ // Mix while there is still sustained energy, before a merely audible fading tail.
+ let mixFirst=-1,mixLast=-1,power=0;const width=50;
+ for(let i=0;i<envelope.length;i++){power+=envelope[i]**2;if(i>=width)power-=envelope[i-width]**2;if(i>=width-1&&Math.sqrt(Math.max(0,power)/width)>=rms*.45){if(mixFirst<0)mixFirst=i-width+1;mixLast=i;}}
+ const mix={start:Math.max(audible.start,mixFirst/200),end:Math.min(audible.end,(mixLast+1)/200)};
+ const mixBounds=validAudibleBounds(mix,seconds)?mix:audible;
  const window=Math.min(samples.length,rate*30),starts=[0,Math.floor((samples.length-window)/2),samples.length-window];
  const estimates=[...new Set(starts)].map(start=>analyzeContext(samples.subarray(start,start+window),rate));
  const best=[...estimates].sort((a,b)=>b.tempo.confidence-a.tempo.confidence)[0];
@@ -28,7 +33,7 @@ export function analyzeTrack(samples:Float32Array,rate:number,sha256:string):Tra
  for(let bin=0;bin<96;bin++){let value=0;for(let i=Math.floor(bin*samples.length/96);i<Math.floor((bin+1)*samples.length/96);i++)value=Math.max(value,Math.abs(samples[i]));wave.push(value/peak);}
  const changes:number[]=[];for(let t=4;t<seconds-4&&changes.length<40;t+=4){const mean=(start:number)=>envelope.slice(start*200,(start+4)*200).reduce((s,n)=>s+n*n,0)/800;if(Math.abs(Math.log((mean(t)+1e-8)/(mean(t-4)+1e-8)))>1.2)changes.push(t);}
  const notes=['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];
- const key=best.keys[0];return {version:1,gridVersion:2,sha256,duration:seconds,audible,bpm,confidence,beatOffset:phase,rms,peak,wave,keyEstimate:key?notes[key.tonic]+' '+key.mode:null,changes,grid:measureBeatGrid(samples,rate,bpm)};
+ const key=best.keys[0];return {version:1,gridVersion:2,mixVersion:1,mixBounds,sha256,duration:seconds,audible,bpm,confidence,beatOffset:phase,rms,peak,wave,keyEstimate:key?notes[key.tonic]+' '+key.mode:null,changes,grid:measureBeatGrid(samples,rate,bpm)};
 }
 export const analysisKey='jamloom.ai-dj.analysis.v1';
 export function readAnalysis(hash:string):TrackAnalysis|null{

@@ -53,6 +53,16 @@ class WorkerContract(unittest.TestCase):
         self.assertEqual(config.seeds,[123456]); self.assertFalse(config.use_random_seed)
         self.assertEqual(config.batch_size,1)
 
+    def test_beat_direction_reaches_model_tempo_and_caption(self):
+        value=dict(version=1,session='a'*32,sequence=1,seed=4,style='house',energy=4)
+        captions=[]
+        for groove in ('steady','syncopated','rolling'):
+            directed=request({**value,'beat':dict(bpm=126,groove=groove)})
+            caption,bpm=brief(directed);self.assertEqual(bpm,126);self.assertIn('126 BPM',caption);captions.append(caption)
+        self.assertEqual(len(set(captions)),3)
+        for beat in (None,{},dict(bpm=True,groove='steady'),dict(bpm=200,groove='rolling'),dict(bpm=120,groove='unknown'),dict(bpm=120,groove='steady',prompt='override')):
+            with self.assertRaises(ValueError):request({**value,'beat':beat})
+
     def test_audio_contract(self):
         t=np.arange(60*8000)/8000
         a=np.column_stack((np.sin(t*600)*.2,np.sin(t*900)*.2)).astype('float32')

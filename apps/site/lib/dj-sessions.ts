@@ -7,6 +7,7 @@ import {signQuote,verifyQuote} from './generation-quote';
 import {AudioError,validateWav} from './audio-validation';
 import type {AudioStore} from './audio-store';
 import {djSessionInput,type DJSessionInput} from './dj-session-input';
+import {validBeatDirection,type BeatDirection} from './dj-beat';
 export type DJBudget=Omit<JobBudget,'inputSha256'|'planSha256'>&{costCapMicros:number};
 const hash=(value:unknown)=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const idCheck=(id:string)=>{if(!/^[a-f0-9]{32}$/.test(id))throw new AudioError('Invalid session.');};
@@ -42,9 +43,10 @@ export class DJSessions{
  }
  private seed(owner:string,id:string,sequence:number){return createHmac('sha256',this.secret).update(JSON.stringify(['dj-seed-1',owner,id,sequence])).digest().readUInt32BE(0);}
  private async insertBatch(db:PoolClient,owner:string,id:string,sequence:number,reservation:string){await db.query('INSERT INTO dj_session_batches(session_id,sequence,reservation_id,seed,render_settings) SELECT $1,$2,$3,$4,settings FROM dj_sessions WHERE id=$1',[id,sequence,reservation,this.seed(owner,id,sequence)]);}
- async status(owner:string,id:string){const s=await this.session(owner,id);const batches=(await this.pool.query(`SELECT b.sequence,b.state,b.played_at,b.audio_sha256,b.vocal,(r.status='completed') AS ready FROM dj_session_batches b JOIN generation_reservations r ON r.id=b.reservation_id WHERE b.session_id=$1 ORDER BY b.sequence DESC LIMIT 3`,[id])).rows;return {id,title:s.title,visibility:s.visibility,settings:s.settings,state:s.state,endReason:s.end_reason,maxCredits:s.max_credits,batches};}
+ async status(owner:string,id:string){const s=await this.session(owner,id);const batches=(await this.pool.query(`SELECT b.sequence,b.state,b.played_at,b.audio_sha256,b.vocal,b.render_settings->'beat' AS beat,(r.status='completed') AS ready FROM dj_session_batches b JOIN generation_reservations r ON r.id=b.reservation_id WHERE b.session_id=$1 ORDER BY b.sequence DESC LIMIT 3`,[id])).rows;return {id,title:s.title,visibility:s.visibility,settings:s.settings,state:s.state,endReason:s.end_reason,maxCredits:s.max_credits,batches};}
  async heartbeat(owner:string,id:string){await this.session(owner,id);await this.pool.query("UPDATE dj_sessions SET heartbeat_at=now() WHERE id=$1 AND state='active'",[id]);}
- async next(owner:string,id:string,sequence:number,energy?:number,vocals?:boolean,mood?:'warm'|'bright'|'deep'){
+ async next(owner:string,id:string,sequence:number,energy?:number,vocals?:boolean,mood?:'warm'|'bright'|'deep',beat?:BeatDirection){
+  if(beat!==undefined&&!validBeatDirection(beat))throw new AudioError('Invalid beat direction.');
   if(mood!==undefined&&!['warm','bright','deep'].includes(mood))throw new AudioError('Invalid mood.');
   if(vocals!==undefined&&typeof vocals!=='boolean')throw new AudioError('Invalid vocal choice.');
   if(energy!==undefined&&(!Number.isInteger(energy)||energy<1||energy>5))throw new AudioError('Invalid energy.');
@@ -62,6 +64,7 @@ export class DJSessions{
    if(energy!==undefined)await db.query("UPDATE dj_sessions SET settings=jsonb_set(settings,'{energy}',$2::jsonb) WHERE id=$1",[id,JSON.stringify(energy)]);
    if(vocals!==undefined)await db.query("UPDATE dj_sessions SET settings=jsonb_set(settings,'{vocals}',$2::jsonb) WHERE id=$1",[id,JSON.stringify(vocals)]);
    if(mood!==undefined)await db.query("UPDATE dj_sessions SET settings=jsonb_set(settings,'{mood}',$2::jsonb) WHERE id=$1",[id,JSON.stringify(mood)]);
+   if(beat!==undefined)await db.query("UPDATE dj_sessions SET settings=jsonb_set(settings,'{beat}',$2::jsonb) WHERE id=$1",[id,JSON.stringify(beat)]);
    await this.insertBatch(db,owner,id,sequence,r);
   }});return {reservation};
  }

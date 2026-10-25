@@ -1,11 +1,12 @@
 import type {VocalCue} from './dj-vocal';
+import type {BeatDirection} from './dj-beat';
 import type {TrackAnalysis} from './ai-dj-analysis';
 import practice from '../../web/practice-audio/manifest.json';
 import {validationSongs} from './music-validation';
 
 export type Mood='warm'|'bright'|'deep';
-export type Direction={energy:number;mood:Mood;vocals:boolean};
-export type DJTrack={id:string;title:string;artist:string;url:string;sha256:string;energy:number;mood:Mood;vocal:boolean;vocalCue?:VocalCue;credit:string;analysis?:TrackAnalysis;local?:boolean};
+export type Direction={energy:number;mood:Mood;vocals:boolean;beat?:BeatDirection};
+export type DJTrack={id:string;title:string;artist:string;url:string;sha256:string;energy:number;mood:Mood;vocal:boolean;vocalCue?:VocalCue;beat?:BeatDirection;credit:string;analysis?:TrackAnalysis;local?:boolean};
 const selections:[string,number,Mood][]=[['party-sector',4,'bright'],['black-diamond',5,'deep']];
 export const djTracks:DJTrack[]=selections.map(([id,energy,mood])=>{
  const track=practice.tracks.find(t=>t.id===id)!;
@@ -21,11 +22,11 @@ export function pickTrack(tracks:DJTrack[],direction:Direction,history:string[],
  if(!candidates.length)return undefined;
  const fresh=candidates.filter(t=>!recent.includes(t.id));if(fresh.length)candidates=fresh;
  return [...candidates].sort((a,b)=>{
-  const score=(t:DJTrack)=>Math.abs(t.energy-direction.energy)*2+(t.mood===direction.mood?0:1)-(vocalDue&&t.vocal?3:0);
+  const score=(t:DJTrack)=>Math.abs(t.energy-direction.energy)*2+(t.mood===direction.mood?0:1)+(direction.beat&&t.analysis?Math.abs((t.analysis.grid?.bpm??t.analysis.bpm)-direction.beat.bpm)/4:0)-(vocalDue&&t.vocal?3:0);
   return score(a)-score(b)||history.lastIndexOf(a.id)-history.lastIndexOf(b.id)||a.id.localeCompare(b.id);
  })[0];
 }
-export type DJCommand={kind:'direction';change:Partial<Direction>}|{kind:'finish';seconds:number|null}|{kind:'continue'|'stop'|'next'|'hold'}|{kind:'unknown'};
+export type DJCommand={kind:'direction';change:Partial<Direction>}|{kind:'finish';seconds:number|null}|{kind:'beat';change:boolean}|{kind:'continue'|'stop'|'next'|'hold'}|{kind:'unknown'};
 export function parseDJCommand(input:string):DJCommand{
  const text=input.toLowerCase().replace(/[’']/g,'').trim();
  if(!text||text.length>240)return {kind:'unknown'};
@@ -33,6 +34,9 @@ export function parseDJCommand(input:string):DJCommand{
  // shortcut: built-in commands only; replace with a validated director when generation is qualified.
  // Negated or mixed instructions need clarification rather than a guessed destructive action.
  if(/\b(dont|do not|not|never|except|without)\b/.test(text)||/\bno\b/.test(text.replace(/\bno vocals\b/g,'')))return {kind:'unknown'};
+ const keepBeat=/\b(keep|hold|stay with) (this|the|that|same) (beat|groove|rhythm)\b/.test(text),changeBeat=/\b(change|switch|new|different|another) (the |this |that |to a |a )?(beat|groove|rhythm)\b/.test(text);
+ if(keepBeat&&changeBeat)return {kind:'unknown'};
+ if(keepBeat||changeBeat)return {kind:'beat',change:changeBeat};
  if(/\b(stop now|stop immediately|stop music)\b/.test(text)||text==='stop')return {kind:'stop'};
  if(/\b(wrap|finish|end|last track|final track|wind down|party.*over)\b/.test(text)){
   const timed=text.match(/\b(\d+(?:\.\d+)?|one|two|five|ten|fifteen|thirty)\s*(minutes?|mins?|seconds?|secs?)\b/);

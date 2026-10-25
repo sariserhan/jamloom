@@ -1,0 +1,143 @@
+{
+  "status": "PASS local technical",
+  "results": [
+    {
+      "browser": "chromium",
+      "source": "public",
+      "status": "PASS",
+      "quiet_spans": [],
+      "threshold_db": -60,
+      "minimum_quiet_seconds": 0.25,
+      "peak_db": -7.6,
+      "duration_seconds": 140.582,
+      "moves": [
+        "AIFilter sweep",
+        "AIBass handoff",
+        "AI1 roll",
+        "AISmooth crossfade"
+      ],
+      "source_sha256": [
+        "f89529f51e98add002a76f00f093bc0eb41b245ca8f8972f98d1b750c2960ea1",
+        "b42cf06957cdbf2f229eea193be389604612a0001295a93d277c25a21965d5b1",
+        "3b572d17e06d8584ad3bcb33e26ca7f19f6a25cd7ac3c51e29b00148ead4b5a2"
+      ],
+      "capture_sha256": "7a5152f782dd99f5a126a9cfa75619965f0119a69477b6b00433a1744ca6e374",
+      "controls": [
+        "Keep button",
+        "typed Keep/change",
+        "cancel active AI effect on takeover",
+        "neutral filter",
+        "no new AI moves in manual mode",
+        "return to auto and Stop",
+        "390px no overflow"
+      ],
+      "page_errors": []
+    },
+    {
+      "browser": "chromium",
+      "source": "private",
+      "status": "PASS",
+      "quiet_spans": [],
+      "threshold_db": -60,
+      "minimum_quiet_seconds": 0.25,
+      "peak_db": -7.8,
+      "duration_seconds": 155.028,
+      "moves": [
+        "AIFilter sweep",
+        "AI1 roll",
+        "AIBass handoff",
+        "AIEcho",
+        "AISmooth crossfade"
+      ],
+      "source_sha256": [
+        "ecb4fe2e545adbc5d05ac89469fa749d99e80ddb35e139ae125d31764e8be0b4",
+        "0361060d99fb3322a2b4e3e875fa8160b21969ae4a4fa5fd3db4e406b12c3b6b",
+        "ea9318eed49ce069419ef8dbd0038106c2197fd4c1874f4683cc3d2200e16ddc"
+      ],
+      "capture_sha256": "4bc35936a966f1f7a6c9a87e0e589496060370ffa48a150913ffac298eb97c6e",
+      "controls": [
+        "Keep button",
+        "typed Keep/change",
+        "cancel active AI effect on takeover",
+        "neutral filter",
+        "no new AI moves in manual mode",
+        "return to auto and Stop",
+        "390px no overflow"
+      ],
+      "page_errors": []
+    },
+    {
+      "browser": "webkit",
+      "source": "public",
+      "status": "PASS",
+      "quiet_spans": [],
+      "threshold_db": -60,
+      "minimum_quiet_seconds": 0.25,
+      "peak_db": -6.5,
+      "duration_seconds": 142.658,
+      "moves": [
+        "AIFilter sweep",
+        "AIBass handoff",
+        "AI1 roll",
+        "AISmooth crossfade"
+      ],
+      "source_sha256": [
+        "f89529f51e98add002a76f00f093bc0eb41b245ca8f8972f98d1b750c2960ea1",
+        "b42cf06957cdbf2f229eea193be389604612a0001295a93d277c25a21965d5b1",
+        "3b572d17e06d8584ad3bcb33e26ca7f19f6a25cd7ac3c51e29b00148ead4b5a2"
+      ],
+      "capture_sha256": "d4053d78eec068e091fa5a3a4de4e45ab8570632beb1d671f6973c18e012f09d",
+      "controls": [
+        "Keep button",
+        "typed Keep/change",
+        "cancel active AI effect on takeover",
+        "neutral filter",
+        "no new AI moves in manual mode",
+        "return to auto and Stop",
+        "390px no overflow"
+      ],
+      "page_errors": []
+    },
+    {
+      "browser": "webkit",
+      "source": "private",
+      "status": "PASS",
+      "quiet_spans": [],
+      "threshold_db": -60,
+      "minimum_quiet_seconds": 0.25,
+      "peak_db": -7.6,
+      "duration_seconds": 154.923,
+      "moves": [
+        "AIFilter sweep",
+        "AI1 roll",
+        "AIBass handoff",
+        "AIEcho",
+        "AISmooth crossfade"
+      ],
+      "source_sha256": [
+        "ecb4fe2e545adbc5d05ac89469fa749d99e80ddb35e139ae125d31764e8be0b4",
+        "0361060d99fb3322a2b4e3e875fa8160b21969ae4a4fa5fd3db4e406b12c3b6b",
+        "ea9318eed49ce069419ef8dbd0038106c2197fd4c1874f4683cc3d2200e16ddc"
+      ],
+      "capture_sha256": "8fcd0caff5b2b4ba860627643db4db8bba8d71d4aa4372dc4f30604002b23007",
+      "controls": [
+        "Keep button",
+        "typed Keep/change",
+        "cancel active AI effect on takeover",
+        "neutral filter",
+        "no new AI moves in manual mode",
+        "return to auto and Stop",
+        "390px no overflow"
+      ],
+      "page_errors": []
+    }
+  ],
+  "site_tests": 142,
+  "focused_tests": 47,
+  "python_tests": 5,
+  "human_listening": "NOT RUN",
+  "fresh_generation": "NOT RUN",
+  "training": false,
+  "paid_compute": false,
+  "publication": false
+}

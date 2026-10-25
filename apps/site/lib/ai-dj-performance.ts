@@ -9,7 +9,7 @@ export type PerformanceEvent={action:PerformanceAction;label:string;at:number;un
 export const actionLabel=(action:PerformanceAction)=>performancePads.find(p=>p.id===action)?.label??({'filter':'Filter sweep','jog-back':'Jog −','jog-forward':'Jog +'} as Record<string,string>)[action];
 export function loopRegion(position:number,bpm:number,beats:number,duration:number,offset=0){
  if(![position,bpm,beats,duration,offset].every(Number.isFinite)||bpm<60||bpm>180||offset<0||offset>=60/bpm||![.5,1,2,4,8].includes(beats)||duration<8)throw Error('Invalid loop');
- const length=60/bpm*beats,start=Math.max(0,Math.min(duration-length,offset+Math.floor((position-offset)/(60/bpm))*(60/bpm)));
+ const length=60/bpm*beats,start=Math.max(0,Math.min(duration-length,offset+Math.floor((position-offset)/(60/bpm)+1e-7)*(60/bpm)));
  return {start,end:start+length};
 }
 type Voice={source:AudioBufferSourceNode;gain:GainNode;at:number;offset:number;rate:number;loop:{start:number;end:number}|null;end:number};
@@ -17,6 +17,12 @@ export function voicePosition(voice:Pick<Voice,'at'|'offset'|'rate'|'loop'>,now:
  let position=voice.offset+Math.max(0,now-voice.at)*voice.rate;
  if(voice.loop&&position>=voice.loop.end)position=voice.loop.start+(position-voice.loop.start)%(voice.loop.end-voice.loop.start);
  return Math.max(0,Math.min(duration,position));
+}
+export function loopHasEnergy(buffer:AudioBuffer,loop:{start:number;end:number}){
+ const first=Math.floor(loop.start*buffer.sampleRate),end=Math.floor(loop.end*buffer.sampleRate),width=Math.ceil(buffer.sampleRate*.05),windows:number[]=[];
+ for(let i=first;i<end;i+=width){let power=0;const last=Math.min(end,i+width);for(let c=0;c<buffer.numberOfChannels;c++){const pcm=buffer.getChannelData(c);for(let j=i;j<last;j++)power+=pcm[j]*pcm[j];}windows.push(Math.sqrt(power/((last-i)*buffer.numberOfChannels)));}
+ const threshold=Math.max(.002,Math.sqrt(windows.reduce((sum,n)=>sum+n*n,0)/windows.length)*.15);
+ return windows.length>=2&&windows.every(Number.isFinite)&&!windows.some((n,i)=>n<threshold&&windows[(i+1)%windows.length]<threshold);
 }
 
 // Each gesture changes the same source/parameter timeline used by the visual readout.
@@ -30,13 +36,15 @@ export class PerformanceDeck{
  private lastPosition=0;
  constructor(private context:AudioContext,readonly buffer:AudioBuffer,readonly bpm:number,destination:AudioNode,private echo:{wet:GainNode;dry:GainNode;delays:DelayNode[]},private baseRate=1,private beatOffset=0){
   this.gain=context.createGain();this.level=context.createGain();this.filter=context.createBiquadFilter();
-  this.filter.type='lowpass';this.filter.frequency.value=20000;this.filter.Q.value=.5;
+  this.filter.type='lowpass';this.filter.frequency.value=Math.min(20000,context.sampleRate/2);this.filter.Q.value=.5;
   this.filter.connect(this.level);this.level.connect(this.gain);this.gain.connect(destination);
  }
  private voice(now:number){return this.voices.filter(v=>v.at<=now&&v.end>now).at(-1);}
  position(now=this.context.currentTime){const v=this.voice(now);return v?voicePosition(v,now,this.buffer.duration):this.lastPosition;}
  private retire(voice:Voice,at:number){
-  voice.end=Math.min(voice.end,at+.006);voice.gain.gain.cancelAndHoldAtTime(at);voice.gain.gain.linearRampToValueAtTime(0,at+.006);voice.source.stop(at+.006);
+  const level=Math.max(0,Math.min(1,(at-voice.at)/.006,(voice.end-at)/.006));
+  // Anchor the retirement: otherwise a future ramp can fade from the last attack event.
+  voice.end=Math.min(voice.end,at+.006);voice.gain.gain.cancelAndHoldAtTime(at);voice.gain.gain.setValueAtTime(level,at);voice.gain.gain.linearRampToValueAtTime(0,at+.006);voice.source.stop(at+.006);
  }
  play(at:number,offset=0,rate=this.baseRate,loop?:{start:number;end:number},reverseSeconds=0){
   for(const v of this.voices)if(v.end>at)this.retire(v,at);
@@ -65,6 +73,7 @@ export class PerformanceDeck{
   if(action.startsWith('loop-')||action.startsWith('roll-')){
    const beats=action==='roll-half'?.5:action==='roll-one'?1:Number(action.slice(5));
    const loop=loopRegion(position,this.bpm,beats,this.buffer.duration,this.beatOffset);duration=beat*(action.startsWith('roll')?2:8);
+   if(by==='AI'&&!loopHasEnergy(this.buffer,loop))return false;
    this.play(at,loop.start,this.baseRate,loop);
    const resume=action.startsWith('roll')?position+duration*this.baseRate:loop.start;
    this.play(at+duration,Math.min(this.buffer.duration-.01,resume));
@@ -74,7 +83,7 @@ export class PerformanceDeck{
   }else if(action.startsWith('jog-')){
    duration=beat*2;const rate=this.baseRate*(action==='jog-back'?.88:1.12);this.play(at,position,rate);this.play(at+duration,Math.min(this.buffer.duration-.01,position+duration*rate));
   }else if(action==='filter'){
-   this.filter.frequency.cancelScheduledValues(at);this.filter.frequency.setValueAtTime(20000,at);this.filter.frequency.exponentialRampToValueAtTime(650,at+duration/2);this.filter.frequency.exponentialRampToValueAtTime(20000,at+duration);
+   const open=Math.min(20000,this.context.sampleRate/2);this.filter.frequency.cancelScheduledValues(at);this.filter.frequency.setValueAtTime(open,at);this.filter.frequency.exponentialRampToValueAtTime(650,at+duration/2);this.filter.frequency.exponentialRampToValueAtTime(open,at+duration);
   }else if(action==='echo'){
    this.echo.delays.forEach((delay,i)=>delay.delayTime.setValueAtTime(beat*(i+1),at));
    for(const [param,from,to] of [[this.echo.wet.gain,0,.28],[this.echo.dry.gain,1,.72]] as const){param.cancelScheduledValues(at);param.setValueAtTime(from,at);param.linearRampToValueAtTime(to,at+.03);param.setValueAtTime(to,at+duration-beat);param.linearRampToValueAtTime(from,at+duration);}
@@ -96,11 +105,11 @@ export class PerformanceDeck{
  }
  setFilter(value:number){
   if(!Number.isFinite(value)||value<0||value>1)return;
-  this.filterValue=value;const now=this.context.currentTime;this.filter.frequency.cancelScheduledValues(now);this.filter.frequency.setTargetAtTime(20000*Math.pow(.025,value),now,.02);
+  this.filterValue=value;const now=this.context.currentTime;this.filter.frequency.cancelScheduledValues(now);this.filter.frequency.setTargetAtTime(Math.min(20000,this.context.sampleRate/2)*Math.pow(.025,value),now,.02);
  }
  snapshot(now:number){
   const event=this.event&&now>=this.event.at&&now<this.event.until?this.event:null,voice=this.voice(now);
-  return {event,rate:voice?.rate??1,loopBeats:event&&/loop|roll/.test(event.action)?(voice?.loop?(voice.loop.end-voice.loop.start)*this.bpm/60:0):0,filter:Math.max(0,Math.min(1,Math.log(this.filter.frequency.value/20000)/Math.log(.025))),level:this.level.gain.value,echo:this.echo.wet.gain.value};
+  return {event,rate:voice?.rate??1,loopBeats:event&&/loop|roll/.test(event.action)?(voice?.loop?(voice.loop.end-voice.loop.start)*this.bpm/60:0):0,filter:Math.max(0,Math.min(1,Math.log(this.filter.frequency.value/Math.min(20000,this.context.sampleRate/2))/Math.log(.025))),level:this.level.gain.value,echo:this.echo.wet.gain.value};
  }
  dispose(){const now=this.context.currentTime;for(const v of this.voices)this.retire(v,now);this.event=null;this.gain.gain.cancelScheduledValues(now);this.gain.gain.setTargetAtTime(0,now,.002);setTimeout(()=>{this.filter.disconnect();this.level.disconnect();this.gain.disconnect();},30);}
 }

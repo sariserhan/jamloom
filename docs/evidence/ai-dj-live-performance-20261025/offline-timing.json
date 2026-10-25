@@ -1,0 +1,26 @@
+{
+  "scope": "Offline planner timing preview; equal-power fades and tempo rates; excludes browser EQ automation, GPU dispatch, recording transport and human listening acceptance",
+  "sets": [
+    {
+      "visibility": "public",
+      "longest_quiet_seconds": 0,
+      "spans": [],
+      "sha256": "295f6049d3b27ad65be8d97bcbdf276295c32d8e3c8a9e719eea7cc3f72c068e",
+      "path": "renders/ai-dj-live-moves-20261025/offline-timing/public-timing-replay.wav",
+      "duration": 468.9773330161983
+    },
+    {
+      "visibility": "private",
+      "longest_quiet_seconds": 1.058375,
+      "spans": [
+        {
+          "end": 218.466563,
+          "seconds": 1.058375
+        }
+      ],
+      "sha256": "1490f52757650fe698f1873f655af9dacdbe2991b5ed640b33521c18cf77f140",
+      "path": "renders/ai-dj-live-moves-20261025/offline-timing/private-timing-replay.wav",
+      "duration": 486.1267628516073
+    }
+  ]
+}
