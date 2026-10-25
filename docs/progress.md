@@ -1,12 +1,13 @@
 ## Audible before/after comparison — 2026-10-25
 
-**PASS technical mixing replay; PARTIAL fresh sample generation.** Created new recordings of identical Jamloom originals through the previous and current DJ engines; the current capture includes a real filter sweep and one-beat roll. Both pass decoding, clipping and silence checks. Fresh house/Bass Playground requests are prepared under the owner's $3 cap; the first GPU host timed out before rendering and was deleted. Human listening remains NOT RUN.
+**PASS technical generation, mixing replay and playback.** Created a fresh 60-second house/Bass Playground pair on the same seed/model plus an old/current mixer comparison using identical retained originals. The approved replacement succeeded; both rentals are deleted. Total rental time was 732 seconds with about $0.062 observed debit within the original $3 cap. All four listening clips play and seek in Chromium/WebKit. Human listening remains NOT RUN; these test presets, not fine-tuned music weights.
 
 - [x] Produce and serve an actual old/current mixer comparison without new compute.
 - [x] Record the exact fresh-generation pair and enforce budget/request/cleanup bounds.
-- [ ] Complete the separately approved replacement, if granted, and verify the two fresh tracks.
+- [x] Complete the approved replacement, verify both fresh tracks and confirm cleanup.
+- [ ] Obtain human feedback on the new generation direction; live generation remains disabled.
 
-[Report and evidence](dj-audible-comparison.md). [Listen to the mixing comparison](http://localhost:8766/mix-comparison/review/).
+[Report and evidence](dj-audible-comparison.md). [Listen to all four clips](http://localhost:8766/audible-comparison/review/).
 
 ## DJ reference analysis, experimental learning and style choices — 2026-10-25
 

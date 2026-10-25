@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED - NOT AUTHORIZED",
+  "status": "AUTHORIZED",
   "budget_usd_total": 3,
   "remaining_rental_seconds": 890,
   "max_workers": 1,
@@ -10,5 +10,6 @@
   "public_activation": false,
   "previous_instance": 57699475,
   "previous_rental_seconds": 309.65183186531067,
-  "reason": "Host did not expose SSH before startup timeout; no model requests; first rental deleted."
+  "reason": "Host did not expose SSH before startup timeout; no model requests; first rental deleted.",
+  "owner_statement": "Approve one replacement within the original cap"
 }

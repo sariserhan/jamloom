@@ -1,0 +1,45 @@
+{
+  "status": "PASS technical",
+  "target_lufs": -20.830000000000002,
+  "tracks": [
+    {
+      "file": "house.wav",
+      "original": {
+        "input_i": "-19.12",
+        "input_tp": "-0.79",
+        "input_lra": "5.00",
+        "input_thresh": "-29.18"
+      },
+      "gain_db": -1.7100000000000009,
+      "matched": {
+        "input_i": "-20.83",
+        "input_tp": "-2.50",
+        "input_lra": "5.00",
+        "input_thresh": "-30.89"
+      }
+    },
+    {
+      "file": "bass.wav",
+      "original": {
+        "input_i": "-18.32",
+        "input_tp": "-0.82",
+        "input_lra": "4.40",
+        "input_thresh": "-28.59"
+      },
+      "gain_db": -2.5100000000000016,
+      "matched": {
+        "input_i": "-20.83",
+        "input_tp": "-3.33",
+        "input_lra": "4.40",
+        "input_thresh": "-31.10"
+      }
+    }
+  ],
+  "files": {
+    "bass.mp3": "71485e0e3a766709f17d971d8304ad5a742b514cd41d9304a6e39b7f73982111",
+    "house.mp3": "6386cfa6a1a74630f1c223b1592ac5218782f7078c1c59b000bda2951160f34e",
+    "before.mp3": "6e36e949e9cf81a825d9c096c28e602325ed5e0983660691fec11b6bbf66c9b2",
+    "after.mp3": "1a140e502ba59275b15a1e0e7bad7a1411808f6132096c26153e789fa8ebbfbe"
+  },
+  "human_listening": "NOT RUN"
+}

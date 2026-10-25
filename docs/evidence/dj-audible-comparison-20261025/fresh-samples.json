@@ -1,0 +1,107 @@
+{
+  "status": "PASS technical",
+  "scope": "Two original style prompts; same seed and base model; no reference audio or research weights",
+  "tracks": [
+    {
+      "file": "house.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "261211aed3053422202d12f3866a47bd",
+        "job": "998bc246-97e0-41eb-b37c-507617bd6fff",
+        "request": {
+          "version": 1,
+          "session": "a7d7cebb567e4b5da38ed325b8abbe50",
+          "sequence": 0,
+          "seed": 251025,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 7144,
+        "bytes": 11520044,
+        "sha256": "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+        "vocal": null
+      },
+      "audio_check": {
+        "file": "renders/dj-style-samples-20261025-replacement/house.wav",
+        "sha256": "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 2880000,
+        "duration_seconds": 60.0,
+        "peak_linear": 0.8912353515625,
+        "peak_dbfs": -1.000151903819357,
+        "rms_dbfs_left": -21.921333320223866,
+        "rms_dbfs_right": -21.82528762809476,
+        "dc_left": 0.0009580007235209147,
+        "dc_right": 0.0010894695811801487,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 8,
+        "last_nonzero_frame": 2879987,
+        "max_adjacent_sample_step": 0.70025634765625,
+        "last_100ms_peak": 0.00164794921875,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      }
+    },
+    {
+      "file": "bass.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "261211aed3053422202d12f3866a47bd",
+        "job": "a7750a21-1c7c-476a-90f3-64deebb1e467",
+        "request": {
+          "version": 1,
+          "session": "a7d7cebb567e4b5da38ed325b8abbe50",
+          "sequence": 1,
+          "seed": 251025,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 2129,
+        "bytes": 11520044,
+        "sha256": "938cc8392017b055f2f5820bd50dfa70ea8e58883083e39e086e675226007ae2",
+        "vocal": null
+      },
+      "audio_check": {
+        "file": "renders/dj-style-samples-20261025-replacement/bass.wav",
+        "sha256": "938cc8392017b055f2f5820bd50dfa70ea8e58883083e39e086e675226007ae2",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 2880000,
+        "duration_seconds": 60.0,
+        "peak_linear": 0.8912353515625,
+        "peak_dbfs": -1.000151903819357,
+        "rms_dbfs_left": -19.719856471135955,
+        "rms_dbfs_right": -20.103398221960266,
+        "dc_left": 0.0010712776396009658,
+        "dc_right": 0.001424330128563775,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 8,
+        "last_nonzero_frame": 2879989,
+        "max_adjacent_sample_step": 0.455078125,
+        "last_100ms_peak": 0.001800537109375,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      }
+    }
+  ],
+  "human_listening": "NOT RUN",
+  "cleanup_confirmed": true,
+  "observed_debit_usd": 0.06243589490000012,
+  "rental_seconds": 422.75634813308716,
+  "total_rental_seconds": 732.2668497562408,
+  "verified_script_files": [
+    "cloud_music_setup.sh",
+    "cloud_dj_warm.sh",
+    "dj_track_worker.py",
+    "dj_warm_engine.py",
+    "dj_vocal.py",
+    "club_benchmark_cases.py",
+    "dj-styles.json"
+  ],
+  "instances_remaining": 0
+}

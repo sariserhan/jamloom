@@ -1,0 +1,60 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "1 · House baseline",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "2 · Bass Playground",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "3 · Previous DJ engine",
+          "seconds": 146.22,
+          "error": null
+        },
+        {
+          "label": "4 · Current DJ engine",
+          "seconds": 141.72,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "1 · House baseline",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "2 · Bass Playground",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "3 · Previous DJ engine",
+          "seconds": 146.256,
+          "error": null
+        },
+        {
+          "label": "4 · Current DJ engine",
+          "seconds": 141.744,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "speakerOutput": "Muted",
+  "humanListening": "NOT RUN"
+}
