@@ -2,13 +2,15 @@ import {createHmac,timingSafeEqual} from 'node:crypto';
 import {integer} from './economics';
 import type {JobBudget} from './wallet';
 import {validatePermit} from './generation-budget';
+import {djCharge,type DJAllowanceQuote} from './dj-allowance';
 
 export type GenerationQuote={version:1;owner:string;expiresAt:number;credits:number;costCapMicros:number;
- marginBps:number;visibility:'public'|'private';job:JobBudget};
+ marginBps:number;visibility:'public'|'private';job:JobBudget;djAllowance?:DJAllowanceQuote};
 function validate(q:GenerationQuote,owner:string,now:number){
  if(q.version!==1||q.owner!==owner||!owner||owner.length>255||!['public','private'].includes(q.visibility))throw new Error('Invalid quote identity');
  integer(q.expiresAt,now+1,now+300000);integer(q.credits,0,100000);integer(q.marginBps,3000,9000);
  validatePermit({...q.job,version:1,reservationId:'00000000-0000-0000-0000-000000000000',expiresAt:now+60000,costCapMicros:q.costCapMicros,attempt:1},now);
+ if(q.djAllowance){const a=q.djAllowance;integer(a.availableMicros);integer(a.maxCredits,q.credits,100000);if(a.chargeMicros!==djCharge(q.costCapMicros,q.visibility)||!Number.isFinite(a.topUpMinutes)||a.topUpMinutes<0||a.topUpMinutes>1000000)throw Error('Invalid DJ allowance quote');}
 }
 export function signQuote(q:GenerationQuote,secret:string,now=Date.now()){
  if(secret.length<32)throw new Error('Quote secret missing');validate(q,q.owner,now);

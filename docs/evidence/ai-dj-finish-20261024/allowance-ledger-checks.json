@@ -1,0 +1,27 @@
+{
+  "status": "PASS ledger; UI qualification pending",
+  "checks": {
+    "allowance": {
+      "tests": 9,
+      "passed": 9
+    },
+    "existingWalletQueueAndSessions": {
+      "tests": 57,
+      "passed": 57
+    },
+    "typescript": "PASS",
+    "migration": "Backup restore and same-version rehearsal PASS; 0027 applied and repeat empty"
+  },
+  "scope": [
+    "ten Public or eight Private generated minutes per $1 net credit at the configured sample tariff",
+    "carryover across sessions and Wallet restart",
+    "failure cancellation and duplicate settlement",
+    "purchase holds and provenance",
+    "concurrent reserve and rollback",
+    "signed maximum for later top-ups",
+    "billing-mode changes stop before spending",
+    "legacy quotes cannot switch to allowance billing"
+  ],
+  "publicBillingEnabled": false,
+  "customerUI": "Pending active endurance run before HMR-sensitive edits"
+}
