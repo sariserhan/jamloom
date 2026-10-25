@@ -1,6 +1,19 @@
+## DJ quality iteration and completed phone check — 2026-10-25
+
+**PARTIAL overall; PASS local implementation and checks.** Added a separately selectable arrangement candidate, sustained-energy beat handoffs and sparse vocals placed where the midrange is less busy. Existing generation remains the default. The owner confirmed the installed phone language filter and bottom player work. Fresh originals await explicit approval of the prepared $3 / one GPU / 20-minute comparison; no paid compute, promotion or public activation has occurred.
+
+- [x] Preserve style, mood, energy and beat direction in a coherent arrangement candidate.
+- [x] Keep beat handoffs inside strong audio and continuous measured regions.
+- [x] Place brief vocal hooks on supported beats with less midrange competition.
+- [x] Complete owner verification of the iPhone player and language filter.
+- [x] Capture both real mixers: complete, unclipped audio without measured long silence. The same handoff timings on this material do not establish an audible improvement.
+- [ ] Run the separately approved fresh comparison and obtain human musical acceptance.
+
+[Report and evidence](docs/dj-quality.md).
+
 ## iPhone bottom music player — 2026-10-25
 
-**PASS implementation, simulator validation, signed Release build, iPhone install and launch.** Jamloom 0.9.4 (17) adds pause/resume, 15-second rewind/forward and a seek slider for songs and streamed DJ recordings. Community playback survives language/collection/Favorites browsing. Final targeted run: 23 passed, 2 live-service tests skipped, 0 failed. Human device interaction and App Store release remain NOT RUN; background playback retains the existing stop behavior.
+**PASS implementation, simulator validation, signed Release build, iPhone install and launch.** Jamloom 0.9.4 (17) adds pause/resume, 15-second rewind/forward and a seek slider for songs and streamed DJ recordings. Community playback survives language/collection/Favorites browsing. Final targeted run: 23 passed, 2 live-service tests skipped, 0 failed. Owner confirmed the language filter and bottom controls work on the physical iPhone ("Everything works"). App Store release remains NOT RUN; background playback retains the existing stop behavior.
 
 - [x] Reuse the native and streaming players with visible bottom controls.
 - [x] Verify seek boundaries, pause/resume, streaming cleanup and Community filter continuity.
@@ -10,7 +23,7 @@
 
 ## iPhone Community language filter — 2026-10-25
 
-**PASS implementation, simulator validation, signed build, iPhone install and launch.** Jamloom 0.9.3 (16) adds a dedicated Language menu, server-side language filtering before pagination, Favorites filtering, legacy-name normalization and Clear filters. Final targeted run: 18 passed, 2 environment-gated live tests skipped, 0 failed. Physical interaction acceptance and App Store release remain NOT RUN.
+**PASS implementation, simulator validation, signed build, iPhone install and launch.** Jamloom 0.9.3 (16) adds a dedicated Language menu, server-side language filtering before pagination, Favorites filtering, legacy-name normalization and Clear filters. Final targeted run: 18 passed, 2 environment-gated live tests skipped, 0 failed. Owner confirmed the language filter works on the physical iPhone with 0.9.4; App Store release remains NOT RUN.
 
 - [x] Filter the full public catalogue and preserve language on pagination/refresh.
 - [x] Combine language with existing filters and support legacy examples/Favorites.

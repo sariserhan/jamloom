@@ -23,6 +23,42 @@ LABEL = 'jamloom-dj-style-samples-20261025'
 vast.WORK, vast.STATE, vast.LABEL = WORK, WORK/'trial-state.json', LABEL
 vast.LEASE_SECONDS, vast.HOURLY_CEILING, vast.QUOTE_CEILING = 1200, .50, 2
 REPLACEMENT = False
+QUALITY = False
+
+
+def configure_quality():
+    global EVIDENCE, WORK, OUTPUT, LABEL, QUALITY
+    QUALITY = True
+    EVIDENCE = ROOT/'docs/evidence/dj-quality-20261025'
+    WORK = ROOT/'build-dj-quality-20261025'
+    OUTPUT = ROOT/'renders/dj-quality-20261025'
+    LABEL = 'jamloom-dj-quality-20261025'
+    vast.WORK, vast.STATE, vast.LABEL = WORK, WORK/'trial-state.json', LABEL
+
+
+def validate_quality(plan):
+    from dj_track_worker import request, arranged_brief, CODE_REVISION, WEIGHTS_REVISION
+    if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != 'jamloom-dj-quality-20261025'
+        or plan['owner_statement'] != 'Approve the capped $3 quality comparison'
+        or plan['budget_usd'] != 3 or plan['max_workers'] != 1 or plan['max_minutes'] != 20
+        or plan['max_requests'] != 6 or plan['stop_on_failure'] is not True or plan['automatic_cleanup'] is not True
+        or any(plan[key] is not False for key in ['public_activation','source_audio_used','learned_reference_weights_used'])
+        or plan['model'] != dict(code=CODE_REVISION,weights=WEIGHTS_REVISION)):
+        raise ValueError('Fresh bounded quality-comparison authorization required')
+    expected = [('house',0,251025,False),('bass',1,251025,False),('house',2,261025,True),('bass',7,261025,True)]
+    if len(plan['tracks']) != len(expected): raise ValueError('Exactly four quality tracks required')
+    for row,(style,sequence,seed,vocals) in zip(plan['tracks'],expected):
+        value=request(row['request'])
+        if (set(value) != {'version','session','sequence','seed','style','energy','mood'}
+            or (value['style'],value['sequence'],value['seed'],row['vocals']) != (style,sequence,seed,vocals)
+            or type(row['vocals']) is not bool or value['energy'] != 4 or value['mood'] != 'deep'
+            or row['seconds'] != 60 or arranged_brief(value) != (row['caption'],row['bpm'])):
+            raise ValueError('Prepared quality request changed')
+    for filename,digest in plan['worker_sha256'].items():
+        if filename not in ['cloud_music_setup.sh','cloud_dj_warm.sh','dj_track_worker.py','dj_warm_engine.py','dj_vocal.py','club_benchmark_cases.py'] or hashlib.sha256((ROOT/'scripts'/filename).read_bytes()).hexdigest()!=digest:
+            raise ValueError('Prepared worker changed')
+    if len(plan['worker_sha256']) != 6 or hashlib.sha256((ROOT/'assets/manifests/dj-styles.json').read_bytes()).hexdigest()!=plan['manifest_sha256']:
+        raise ValueError('Prepared worker manifest changed')
 
 
 def configure_replacement():
@@ -41,6 +77,7 @@ def configure_replacement():
 
 
 def validate(plan):
+    if QUALITY: return validate_quality(plan)
     if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != 'jamloom-dj-style-samples-20261025' or plan['budget_usd'] != 3
         or plan['max_workers'] != 1 or plan['max_minutes'] != 20
         or plan['stop_on_failure'] is not True or plan['automatic_cleanup'] is not True
@@ -75,7 +112,7 @@ def preflight():
     if vast.instances(): raise RuntimeError('Existing rental prevents this one-GPU trial')
     account = vast.api('v0/users/current')
     if float(account['credit']) < 3: raise RuntimeError('Insufficient prepaid balance')
-    proven = json.loads((ROOT/('build-dj-style-samples-20261025' if REPLACEMENT else 'build-dj-qualification-20261025-hosted')/'trial-state.json').read_text())['offer']['host_id']
+    proven = json.loads((ROOT/('build-dj-style-samples-20261025-replacement' if QUALITY else 'build-dj-style-samples-20261025' if REPLACEMENT else 'build-dj-qualification-20261025-hosted')/'trial-state.json').read_text())['offer']['host_id']
     offers = vast.offers(proven)
     if not offers:
         failed = [json.loads((ROOT/name/'trial-state.json').read_text())['offer']['host_id'] for name in
@@ -101,9 +138,9 @@ def run():
                  confirm_absence=True, disk_gb=60)
     vast.write_state(state)
     with (WORK/'watchdog.log').open('a') as log:
-        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else [])],
+        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--quality'] if QUALITY else [])],
                          stdin=subprocess.DEVNULL, stdout=log, stderr=log, start_new_session=True)
-    report = dict(status='FAIL', scope='Two original style prompts; same seed and base model; no reference audio or research weights', tracks=[])
+    report = dict(status='FAIL', scope='Four arrangement candidates with at most two brief vocal candidates; no reference audio or research weights' if QUALITY else 'Two original style prompts; same seed and base model; no reference audio or research weights', tracks=[])
     tunnel = None; ssh = None
     try:
         result = vast.api('v0/asks/'+str(offer['id']), 'PUT', dict(
@@ -124,7 +161,7 @@ def run():
         files = [ROOT/'scripts'/name for name in ['cloud_music_setup.sh', 'cloud_dj_warm.sh', 'dj_track_worker.py', 'dj_warm_engine.py', 'dj_vocal.py', 'club_benchmark_cases.py']]
         files += [ROOT/'assets/manifests/dj-styles.json', WORK/'renderer-token']
         subprocess.run([*scp, *map(str, files), 'root@'+item['ssh_host']+':/workspace/'], check=True, capture_output=True, timeout=60)
-        subprocess.run([*ssh, vast.dj_bootstrap_command(state['deadline'], 2)], check=True, capture_output=True, timeout=20)
+        subprocess.run([*ssh, vast.dj_bootstrap_command(state['deadline'], plan.get('max_requests', 2), arranged=QUALITY)], check=True, capture_output=True, timeout=20)
         with socket.socket() as sock:
             sock.bind(('127.0.0.1', 0)); port = sock.getsockname()[1]
         with (WORK/'tunnel.log').open('a') as log:
@@ -145,7 +182,7 @@ def run():
         else: raise RuntimeError('Renderer startup exhausted time allowance')
         for row in plan['tracks']:
             if time.time() >= state['deadline']-80: raise RuntimeError('Insufficient bounded rendering time')
-            body = dict(job=str(uuid.uuid4()), request=row['request'], vocals=False)
+            body = dict(job=str(uuid.uuid4()), request=row['request'], vocals=row.get('vocals',False))
             with request('/render', body, 40) as response:
                 receipt = json.loads(response.headers['X-Jamloom-Receipt']); data = response.read(12_000_001)
             if receipt['request'] != row['request'] or receipt['sha256'] != hashlib.sha256(data).hexdigest() or len(data) != 11_520_044:
@@ -153,10 +190,14 @@ def run():
             with wave.open(io.BytesIO(data)) as audio:
                 if (audio.getnchannels(), audio.getframerate(), audio.getnframes(), audio.getsampwidth()) != (2, 48000, 2880000, 2):
                     raise RuntimeError('Generated audio format failed')
-            filename = row['request']['style']+'.wav'; (OUTPUT/filename).write_bytes(data)
+            filename = row['request']['style']+(('-'+str(row['request']['sequence'])) if QUALITY else '')+'.wav'; (OUTPUT/filename).write_bytes(data)
             report['tracks'].append(dict(file=filename, receipt=receipt))
             print(row['label']+' rendered and verified.', flush=True)
         subprocess.run([*scp, 'root@'+item['ssh_host']+':/workspace/results/executed-scripts.sha256', str(OUTPUT)], check=True, capture_output=True, timeout=30)
+        executed = {Path(name).name: digest for digest,name in (line.split(maxsplit=1) for line in (OUTPUT/'executed-scripts.sha256').read_text().splitlines())}
+        for path in files[:-1]:
+            if executed.get(path.name) != hashlib.sha256(path.read_bytes()).hexdigest():
+                raise RuntimeError('Executed worker provenance mismatch')
         report['status'] = 'PASS technical'; report['human_listening'] = 'NOT RUN'
     finally:
         if ssh:
@@ -179,8 +220,10 @@ def run():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--watch', action='store_true'); parser.add_argument('--preflight', action='store_true'); parser.add_argument('--replacement', action='store_true')
+    parser.add_argument('--watch', action='store_true'); parser.add_argument('--preflight', action='store_true'); parser.add_argument('--replacement', action='store_true'); parser.add_argument('--quality', action='store_true')
     args = parser.parse_args()
+    if args.quality and args.replacement: parser.error('Quality replacements require a new prepared permit')
+    if args.quality: configure_quality()
     if args.replacement: configure_replacement()
     if args.watch: vast.watch()
     elif args.preflight:

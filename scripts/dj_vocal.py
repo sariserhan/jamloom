@@ -62,7 +62,14 @@ def add_hook(value, samples, rate, directory, engine, generate=ace):
     fade = min(round(.03*rate), length//4)
     clip[:fade] *= np.linspace(0, 1, fade)[:, None]; clip[-fade:] *= np.linspace(1, 0, fade)[:, None]
     clip *= .18/max(float(np.max(np.abs(clip))), 1e-9)
-    start = offset+round((30-offset)*bpm/60)*60/bpm
+    # Choose space in the midrange on a supported beat, not a guessed musical downbeat.
+    mono = samples.mean(axis=1)
+    def lowpass(hz):
+        alpha = 1-math.exp(-2*math.pi*hz/rate)
+        return lfilter([alpha], [1, alpha-1], mono)
+    mids = lowpass(3000)-lowpass(300)
+    candidates = offset+np.arange(math.ceil((28-offset)*bpm/60), math.floor((32-offset)*bpm/60)+1)*60/bpm
+    start = float(min(candidates, key=lambda t: np.mean(mids[round(t*rate):round(t*rate)+length]**2)))
     index = round(start*rate); output = samples.copy()
     duck = np.ones(length)*.8; duck[:fade] = np.linspace(1, .8, fade); duck[-fade:] = np.linspace(.8, 1, fade)
     output[index:index+length] = output[index:index+length]*duck[:, None]+clip

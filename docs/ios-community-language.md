@@ -1,6 +1,6 @@
 # Community language filtering — 2026-10-25
 
-**PASS implementation, simulator checks, signed Release build, physical installation and launch.** Jamloom 0.9.3 (16) is installed on the connected iPhone 14 Pro. Physical interaction acceptance is NOT RUN; no App Store upload or website deployment.
+**PASS implementation, simulator checks, signed Release build, physical installation and launch.** Jamloom 0.9.3 (16) is installed on the connected iPhone 14 Pro. Owner interaction acceptance is PASS on the subsequent 0.9.4 build (“Everything works”); no App Store upload or website deployment.
 
 Community has a separate globe-labelled Language menu beneath Product and Genre, preserving comfortable widths. All languages resets the selection. The filter combines with existing product, genre and text filters and also works in Favorites. Empty matches offer Clear filters. Tracks and full DJ sets without language metadata remain visible under All languages; no language or instrumental status is guessed from their audio.
 

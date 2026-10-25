@@ -1,0 +1,31 @@
+✔ beat handoffs stay inside strong audio and do not cross gaps in measured regions (0.709625ms)
+✔ measured steady beats enable only short aligned handoffs and reject drift (76.771125ms)
+✔ phrase matching requires reviewed instrumental regions and bounds tempo changes (0.768834ms)
+✔ fallback ends before exhaustion, changes no tempo, and handles late preparation (0.140667ms)
+✔ a conservative handoff skips an unsupported opening only with a validated early steady entry (0.090833ms)
+✔ review and cached metadata are hash bound and reject fabricated bounds (0.141583ms)
+✔ upgrading numerical analysis preserves existing human mix-point reviews (17.795042ms)
+✔ analysis measures actual audio and exposes uncertainty without inventing a reviewed grid (21.997667ms)
+✔ vocal loop requires matching measured beat timing and a brief approved cue (1.257542ms)
+✔ section grids tolerate breakdowns but reject noise, drift and unsafe mix edges (82.493084ms)
+✔ silent outer padding is skipped without removing internal musical rests or trusting invalid cached edges (110.245333ms)
+✔ sustained energy mix edges avoid weak fade tails while retaining internal breaks (116.013125ms)
+✔ automatic moves use steady measured beats, leave transition space and hold on uncertain audio (4.440625ms)
+✔ chill holds the track and uses a longer blend; style cooldowns retain beat and safety guards (0.127333ms)
+✔ prepared set spaces vocals, avoids recent tracks and follows energy (11.203042ms)
+✔ closing and disabled vocals stay instrumental; failed tracks cannot return (0.083583ms)
+✔ supported commands and ambiguous commands have explicit outcomes (1.888041ms)
+✔ transition clock remains future scheduled across an hour of selections (0.1925ms)
+✔ published sample relay stays closed outside development (91.580208ms)
+✔ performance timing and transport follow real loop, slip and reverse positions (3.185875ms)
+✔ beat commands preserve negation and reject conflicting instructions (1.424ms)
+✔ automatic loops reject quiet beats, including silence across the repeat seam (1.864042ms)
+✔ neutral DJ styles preserve legacy choices and carry their own tempo and performance limits (5.465625ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 606.3925

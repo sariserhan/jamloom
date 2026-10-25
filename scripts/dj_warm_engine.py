@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Bounded, authenticated loopback renderer; rental shutdown is independently supervised."""
 import argparse
+from functools import partial
 import hashlib
 import hmac
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -108,13 +109,14 @@ def main():
     parser.add_argument('--token-file', type=Path, required=True)
     parser.add_argument('--expires-unix', type=float, required=True)
     parser.add_argument('--max-requests', type=int, required=True)
+    parser.add_argument('--arranged', action='store_true', help='Use the unqualified arrangement candidate for a bounded listening trial')
     args = parser.parse_args()
     if args.token_file.stat().st_mode & 0o077:
         raise ValueError('Token file must be private')
     token = args.token_file.read_text().strip()
     if len(token) != 64 or any(c not in '0123456789abcdef' for c in token):
         raise ValueError('Invalid token')
-    renderer = Renderer(args.expires_unix, args.max_requests)
+    renderer = Renderer(args.expires_unix, args.max_requests, generate=partial(ace, arranged=args.arranged))
     renderer.engine = load_ace()
     server = HTTPServer(('127.0.0.1', 8768), handler(renderer, token))
     server.timeout = 1

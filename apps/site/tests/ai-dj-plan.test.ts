@@ -5,6 +5,16 @@ import {planTransition} from '../lib/ai-dj-plan';
 import {measureBeatGrid,validBeatGrid} from '../lib/ai-dj-beat-grid';
 const base:TrackAnalysis={version:1,sha256:'a'.repeat(64),duration:128,bpm:120,confidence:.8,beatOffset:0,rms:.1,peak:.6,wave:Array(96).fill(.5),changes:[],keyEstimate:null};
 const reviewed={...base,review:{bpm:120,phraseStart:0,mixIn:0,mixOut:112,instrumentalEdges:true}};
+test('beat handoffs stay inside strong audio and do not cross gaps in measured regions',()=>{
+ const grid={bpm:120,offset:.25,maxError:.01,coverage:.95,entry:.25,exit:59.25,hookSafe:true};
+ const a={...base,duration:60,grid,mixBounds:{start:3.1,end:54.9}};
+ const p=planTransition(a,a,5,1,10);assert.equal(p.technique,'beat-bass');assert.equal(p.offset,3.25);
+ assert.equal(p.at+ p.fade,10+54.75-5);assert.ok(p.offset>=a.mixBounds.start);
+ const broken={...grid,regions:[{start:.25,end:40.25,beats:81},{start:55.25,end:59.25,beats:9}]};
+ assert.ok(validBeatGrid(broken));assert.equal(planTransition({...a,grid:broken},a,5,1,10).technique,'short-fade');
+ const incoming={...grid,regions:[{start:.25,end:3.75,beats:8},{start:20.25,end:59.25,beats:79}]};
+ assert.ok(validBeatGrid(incoming));assert.equal(planTransition(a,{...a,grid:incoming},5,1,10).technique,'short-fade');
+});
 test('measured steady beats enable only short aligned handoffs and reject drift',()=>{
  const samples=new Float32Array(48*8000);
  for(let i=0;i<samples.length;i++){const t=i/8000;samples[i]=.2*Math.sin(2*Math.PI*80*t)*Math.exp(-((t+.25)%.5)*40);}

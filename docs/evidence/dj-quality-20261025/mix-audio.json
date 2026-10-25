@@ -1,0 +1,21 @@
+{
+  "status": "PASS technical",
+  "checks": [
+    {
+      "name": "before",
+      "decode": "PASS",
+      "silence_at_minus_60db_over_250ms": [],
+      "peak": 0.4049600660800934,
+      "seconds": 141.72
+    },
+    {
+      "name": "after",
+      "decode": "PASS",
+      "silence_at_minus_60db_over_250ms": [],
+      "peak": 0.4049600660800934,
+      "seconds": 141.72
+    }
+  ],
+  "handoff_times_unchanged": true,
+  "musical_improvement": "NOT ESTABLISHED"
+}

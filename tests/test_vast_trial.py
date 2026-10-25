@@ -21,6 +21,8 @@ class PriceBounds(unittest.TestCase):
         for count in [True,0,101,'24; unsafe']:
             with self.assertRaises(ValueError):trial.dj_bootstrap_command(1792904659,count)
         self.assertIn('1792904659 24 >',trial.dj_bootstrap_command(1792904659,24))
+        self.assertIn('1792904659 6 --arranged >',trial.dj_bootstrap_command(1792904659,6,arranged=True))
+        with self.assertRaises(ValueError):trial.dj_bootstrap_command(1792904659,6,arranged='--unsafe')
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);(root/'renderer-token').write_text('test-only')
             (root/'cloud_dj_warm.sh').write_text('sleep 5\n')

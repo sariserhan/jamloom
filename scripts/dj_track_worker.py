@@ -60,6 +60,28 @@ def brief(value):
     return caption + (' '+mood if mood else '') + f" Energy {value['energy']} of 5; {'restrained closing groove' if value['energy'] <= 2 else 'confident dancefloor momentum'}.", beat['bpm'] if beat else bpm
 
 
+def arranged_brief(value):
+    """Candidate for listening qualification; the serving default keeps the accepted baseline."""
+    request(value)
+    profile = STYLES[value['style']]
+    bpm = value.get('beat', {}).get('bpm', profile['bpm'])
+    groove = value.get('beat', {}).get('groove', profile['groove'])
+    color = {'warm': 'warm rounded chords', 'bright': 'bright uplifting accents', 'deep': 'hypnotic minor-key color'}[value.get('mood', profile['mood'])]
+    drums = ('a punchy half-time snare pocket, syncopated kick and short bass call-and-response'
+             if value['style'] == 'bass' else 'swung kick and snare with a relaxed bass pocket'
+             if value['style'] in ('hip-hop', 'chill') else 'a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove')
+    arc = ('Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; '
+           'next eight bars vary its answer while keeping the same bass sound and pulse. '
+           'Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. '
+           'Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out.'
+           if value['energy'] >= 3 else
+           'Start with a gentle complete groove. Develop one motif in eight-bar phrases, with subtle percussion variation and a relaxed final four bars. No festival build or drop.')
+    return (f"Original instrumental {profile['genre']}, {bpm} BPM, {groove} groove, {color}. "
+            f"Use {drums}. {arc} Keep the kick transient clear, the sub bass controlled and separate from the kick, "
+            'consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. '
+            f"Energy {value['energy']} of 5. No vocals, borrowed melodies or artist imitation."), bpm
+
+
 def procedural(value, directory):
     if value.get('beat') or value['style'] not in ('house', 'tech-house', 'techno'):
         raise ValueError('This direction requires the music model, not the procedural test fixture')
@@ -92,7 +114,7 @@ def load_ace():
     return dit, lm
 
 
-def ace(value, directory, engine=None, hook=None):
+def ace(value, directory, engine=None, hook=None, arranged=False):
     import random
     import soundfile as sf
     import torch
@@ -100,7 +122,7 @@ def ace(value, directory, engine=None, hook=None):
     random.seed(value['seed']); np.random.seed(value['seed']); torch.manual_seed(value['seed'])
     torch.cuda.manual_seed_all(value['seed']); torch.set_num_threads(4)
     dit, lm = engine if engine is not None else load_ace()
-    caption, bpm = brief(value)
+    caption, bpm = arranged_brief(value) if arranged else brief(value)
     if hook is not None:
         if hook not in ('Feel alive', 'Keep moving', 'Stay together', 'One more'): raise ValueError('Original two-word phrase required')
         caption = 'Dry spoken rhythmic vocal, one original voice saying only '+hook+'. No backing music, no drums, no instruments, no imitation of any singer.'

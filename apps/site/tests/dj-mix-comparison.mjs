@@ -8,7 +8,8 @@ import {createServer} from 'node:http';
 import {build} from 'esbuild';
 import {chromium} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
-const root=resolve('../..'),folder=resolve(root,'renders/dj-audible-comparison-20261025');
+const quality=process.argv.includes('--quality');
+const root=resolve('../..'),folder=resolve(root,quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
 await mkdir(folder);
 const source=resolve(root,'renders/ai-dj-hosted-20261025'),report=JSON.parse(await readFile(source+'/result.json','utf8'));
 const session=report.customers.find(c=>c.visibility==='public').session;
@@ -16,9 +17,9 @@ const tracks=await Promise.all(report.tracks.filter(t=>t.session===session&&t.se
  const bytes=await readFile(`${source}/${session}-${index}.wav`);assert.equal(createHash('sha256').update(bytes).digest('hex'),row.sha256);
  return {bytes,track:{id:String(index),title:`Original ${index+1}`,artist:'Jamloom original',url:'/audio/'+index,sha256:row.sha256,energy:4,style:'house',mood:'deep',vocal:false,credit:''}};
 }));assert.equal(tracks.length,3);
-const revisions={before:execFileSync('git',['rev-parse','35bbee7'],{encoding:'utf8'}).trim(),after:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
+const revisions={before:execFileSync('git',['rev-parse',quality?'f0fde92':'35bbee7'],{encoding:'utf8'}).trim(),after:quality?'working-tree':execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
 for(const [name,ref] of Object.entries(revisions)){
- const plugins=[{name:'historical-source',setup(b){b.onLoad({filter:/\.(ts|js|json)$/},args=>{
+ const plugins=ref==='working-tree'?[]:[{name:'historical-source',setup(b){b.onLoad({filter:/\.(ts|js|json)$/},args=>{
   const path=relative(root,args.path);assert.ok(!path.startsWith('..')&&!path.includes('node_modules'));
   return {contents:execFileSync('git',['show',ref+':'+path],{cwd:root,encoding:'utf8'}),loader:extname(path).slice(1),resolveDir:resolve(args.path,'..')};
  });}}];
@@ -62,5 +63,5 @@ try{await Promise.all(Object.keys(revisions).map(async name=>{
  results.push({name,revision:revisions[name],...result,sha256:createHash('sha256').update(bytes).digest('hex')});await context.close();console.log(name+' capture PASS');
 }));
  assert.ok(results.find(r=>r.name==='after').events.some(e=>e.by==='AI'),'Current engine must perform real moves');
- await writeFile(folder+'/report.json',JSON.stringify({status:'PASS technical',sourceTracks:tracks.map(t=>t.track.sha256),newGeneration:false,learnedWeights:false,humanListening:'NOT RUN',results},null,2)+'\n');
+ await writeFile(folder+'/report.json',JSON.stringify({status:'PASS technical',sourceTracks:tracks.map(t=>t.track.sha256),currentPlanSha256:createHash('sha256').update(await readFile('lib/ai-dj-plan.ts')).digest('hex'),newGeneration:false,learnedWeights:false,humanListening:'NOT RUN',results},null,2)+'\n');
 }finally{await browser.close();await new Promise(ok=>server.close(ok));}

@@ -7,10 +7,21 @@ from unittest.mock import MagicMock, patch
 from types import SimpleNamespace
 import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts'))
-from dj_track_worker import request, brief, canonical, ace
+from dj_track_worker import request, brief, arranged_brief, canonical, ace, STYLES
 import dj_gpu_qualification as qualification
 
 class WorkerContract(unittest.TestCase):
+    def test_arrangement_candidate_preserves_style_energy_and_beat_direction(self):
+        for style,profile in STYLES.items():
+            value=dict(version=1,session='a'*32,sequence=0,seed=17,style=style,energy=4,mood='deep')
+            caption,bpm=arranged_brief(value)
+            self.assertEqual(bpm,profile['bpm']);self.assertIn('First eight bars',caption)
+            self.assertNotEqual(caption,brief(value)[0]);self.assertIn('No vocals',caption)
+            self.assertIn('gentle complete groove',arranged_brief({**value,'energy':2})[0])
+            changed,tempo=arranged_brief({**value,'beat':dict(bpm=126,groove='rolling')})
+            self.assertEqual(tempo,126);self.assertIn('126 BPM, rolling groove',changed)
+            if style in ('bass','hip-hop','chill'):self.assertNotIn('four-on-the-floor',caption)
+
     def test_qualification_reuses_model_and_stops_on_deadline_failure(self):
         for slow in (False, True):
             with self.subTest(slow=slow), tempfile.TemporaryDirectory() as temp:
@@ -67,6 +78,11 @@ class WorkerContract(unittest.TestCase):
         self.assertTrue(params.instrumental); self.assertFalse(params.thinking)
         self.assertEqual(config.seeds,[123456]); self.assertFalse(config.use_random_seed)
         self.assertEqual(config.batch_size,1)
+        with patch.dict(sys.modules, modules): ace(value, Path('/tmp'), arranged=True)
+        self.assertEqual(generate.call_args.args[2].caption,arranged_brief(value)[0])
+        with patch.dict(sys.modules, modules): ace(value, Path('/tmp'), hook='Keep moving', arranged=True)
+        self.assertEqual(generate.call_args.args[2].duration,10)
+        self.assertNotIn('First eight bars',generate.call_args.args[2].caption)
 
     def test_beat_direction_reaches_model_tempo_and_caption(self):
         value=dict(version=1,session='a'*32,sequence=1,seed=4,style='house',energy=4)

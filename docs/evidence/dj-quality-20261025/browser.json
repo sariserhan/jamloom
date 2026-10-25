@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Previous handoffs",
+          "seconds": 141.72,
+          "error": null
+        },
+        {
+          "label": "Revised handoffs",
+          "seconds": 141.72,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Previous handoffs",
+          "seconds": 141.744,
+          "error": null
+        },
+        {
+          "label": "Revised handoffs",
+          "seconds": 141.744,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "speakerOutput": "Muted",
+  "humanListening": "NOT RUN"
+}

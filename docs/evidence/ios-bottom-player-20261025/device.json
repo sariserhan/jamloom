@@ -6,7 +6,9 @@
   "codesign_verification": "PASS",
   "install": "PASS",
   "launch": "PASS",
-  "human_player_check": "NOT RUN",
+  "human_player_check": "PASS",
   "app_store_upload": "NOT RUN",
-  "binary_sha256": "3743e627559c5e22791e71373a91ce2a89c9238965a719a1a530018fdc162eb8"
+  "binary_sha256": "3743e627559c5e22791e71373a91ce2a89c9238965a719a1a530018fdc162eb8",
+  "owner_statement": "Everything works",
+  "scope": "Community language filter, song playback, pause, rewind/forward and bottom seek slider"
 }

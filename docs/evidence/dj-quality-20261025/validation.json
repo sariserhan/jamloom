@@ -1,0 +1,16 @@
+{
+  "python_tests": 22,
+  "watchdog_tests": 29,
+  "site_tests": 23,
+  "typecheck": "PASS",
+  "shell_syntax": "PASS",
+  "fresh_generation": "NOT RUN - awaiting explicit capped approval",
+  "music_model_fine_tuning": "NOT RUN",
+  "downloaded_reference_audio_used": false,
+  "public_activation": false,
+  "human_music_quality": "NOT RUN",
+  "mobile_human_check": "PASS",
+  "real_mixer_capture": "PASS regression only; same handoff timing on retained tracks",
+  "browser_playback": "PASS Chromium/WebKit desktop/mobile",
+  "paid_compute_started": false
+}

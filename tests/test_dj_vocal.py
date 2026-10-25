@@ -7,6 +7,21 @@ from dj_vocal import add_hook, steady_grid
 
 
 class VocalTests(unittest.TestCase):
+    def test_hook_chooses_quieter_midrange_without_leaving_supported_beats(self):
+        rate=8000;t=np.arange(60*rate)/rate
+        bass=.2*np.sin(2*np.pi*80*t)*np.exp(-(t%(.5))*40)
+        lead=.1*np.sin(2*np.pi*900*t);lead[(t>=28)&(t<30)]=0
+        samples=np.column_stack((bass+lead,bass+lead))
+        def generate(*args,**kwargs):
+            voice=.2*np.sin(np.arange(10*rate)/rate*1000);voice[rate:]=0
+            return np.column_stack((voice,voice)),rate
+        from unittest.mock import patch
+        value=dict(version=1,session='a'*32,sequence=2,seed=17,style='house',energy=4)
+        with patch('dj_vocal.steady_grid',return_value=(120.,0.)):
+            output,cue=add_hook(value,samples,rate,Path('/tmp'),None,generate)
+        self.assertEqual(cue['start'],28);self.assertEqual(cue['seconds'],2)
+        np.testing.assert_array_equal(output[:28*rate],samples[:28*rate])
+        np.testing.assert_array_equal(output[30*rate:],samples[30*rate:])
     def test_slow_styles_skip_hooks_that_exceed_the_current_duration_guard(self):
         samples=np.ones((8000,2))*.1
         for style in ['hip-hop','chill']:
