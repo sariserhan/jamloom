@@ -8,7 +8,8 @@ async function handle(request:Request,context:{params:Promise<{path?:string[]}>}
  return djSessionRequest(request,async()=>{
   const {auth,pool,config}=services(),account=await auth.api.getSession({headers:request.headers}),store=audioStore(config);
   const budget=process.env.JAMLOOM_AI_DJ_BUDGET?JSON.parse(process.env.JAMLOOM_AI_DJ_BUDGET):null;
-  return {owner:account?.user.emailVerified?account.user.id:null,origin:config.baseURL,sessions:store&&budget?new DJSessions(pool,config.secret,store,budget):null,enabled:process.env.JAMLOOM_AI_DJ_ENABLED==='true'};
+  const sessions=store&&budget?new DJSessions(pool,config.secret,store,budget):null;
+  return {owner:account?.user.emailVerified?account.user.id:null,origin:config.baseURL,sessions,enabled:process.env.JAMLOOM_AI_DJ_ENABLED==='true'&&!!sessions&&await sessions.available()};
  },(await context.params).path);
 }
 export const GET=handle;

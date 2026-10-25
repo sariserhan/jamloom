@@ -4,12 +4,19 @@ import type {DJWarmWorker,WarmIdentity} from './dj-warm-worker';
 import {validVocalCue} from './dj-vocal';
 
 const code='ca1e85fe9430179831e6bc6be790c332190a3866',weights='19671f406d603126926c1b7e2adc169acbcade22';
+export async function checkDJRenderer(token:string,fetcher:typeof fetch=fetch){
+ if(!/^[a-f0-9]{64}$/.test(token))throw Error('Renderer token required');
+ const response=await fetcher('http://127.0.0.1:8768/health',{headers:{Authorization:'Bearer '+token},redirect:'error',signal:AbortSignal.timeout(5000)});
+ if(!response.ok||response.headers.get('content-type')!=='application/json'){await response.body?.cancel();throw Error('Renderer is not ready');}
+ const status=JSON.parse((await readBody(response.body,1024)).toString());
+ if(status.ready!==true||status.code_revision!==code||status.weights_revision!==weights)throw Error('Renderer readiness mismatch');
+}
 // The loopback endpoint is an SSH tunnel, never a public GPU port or browser credential.
 export async function runRemoteDJBatch(warm:DJWarmWorker,worker:WarmIdentity,token:string,signal?:AbortSignal,fetcher:typeof fetch=fetch){
  if(!/^[a-f0-9]{64}$/.test(token))throw Error('Renderer token required');
  if(signal?.aborted)return null;
  const sessions=warm.sessions,job=await sessions.claim(worker);if(!job)return null;
- const request={version:1,session:job.session_id,sequence:job.sequence,seed:job.seed,style:job.settings.style,energy:job.settings.energy};
+ const request={version:1,session:job.session_id,sequence:job.sequence,seed:job.seed,style:job.settings.style,energy:job.settings.energy,...(job.settings.mood?{mood:job.settings.mood}:{})};
  const abort=new AbortController(),cancel=()=>abort.abort();signal?.addEventListener('abort',cancel,{once:true});if(signal?.aborted)cancel();
  const deadline=setTimeout(cancel,Math.min(35000,sessions.budget.maxRuntimeMs));let checking=false;
  const heartbeat=setInterval(async()=>{if(checking)return;checking=true;try{await sessions.shutdownRequired();if(!await sessions.workerHeartbeat(job.session_id,job.sequence,job.lease))cancel();}catch{cancel();}finally{checking=false;}},3000);

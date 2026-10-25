@@ -15,6 +15,7 @@ const closed=(s:string)=>['completed','failed','cancelled'].includes(s);
 export class DJSessions{
  readonly wallet:Wallet;
  constructor(readonly pool:Pool,private secret:string,readonly store:AudioStore,readonly budget:DJBudget,readonly live=false){integer(budget.maxRuntimeMs,1,900000);integer(budget.hourlyMicros,1,5000000);integer(budget.fixedCostMicros);integer(budget.costCapMicros,1,5000000);if(budget.fixedCostMicros+Math.ceil(budget.hourlyMicros*budget.maxRuntimeMs/3600000)>budget.costCapMicros)throw Error('DJ budget exceeds its reserved cap');this.wallet=new Wallet(pool,live);}
+ async available(){return !!(await this.pool.query("SELECT 1 FROM dj_warm_workers WHERE billing_live=$1 AND state='ready' AND heartbeat_at>now()-interval '15 seconds' AND deadline>now()+interval '90 seconds' AND observed_micros<budget_micros LIMIT 1",[this.live])).rowCount;}
  private async atomic<T>(run:(db:PoolClient)=>Promise<T>){const db=await this.pool.connect();try{await db.query('BEGIN');const result=await run(db);await db.query('COMMIT');return result;}catch(e){await db.query('ROLLBACK');throw e;}finally{db.release();}}
  private async session(owner:string,id:string,db:Pool|PoolClient=this.pool,lock=false){idCheck(id);const r=(await db.query(`SELECT * FROM dj_sessions WHERE id=$1 AND owner_id=$2 AND billing_live=$3${lock?' FOR UPDATE':''}`,[id,owner,this.live])).rows[0];if(!r)throw new AudioError('Session not found.',404);return r;}
  private job(input:DJSessionInput){const {costCapMicros,...budget}=this.budget;return {...budget,inputSha256:hash(input),planSha256:hash(['ai-dj-session-1',this.budget,this.live])};}
@@ -27,7 +28,7 @@ export class DJSessions{
   if(q.visibility!==input.visibility||q.costCapMicros!==this.budget.costCapMicros||hash(q.job)!==hash(this.job(input)))throw new AudioError('Your session choices changed. Get a new quote.',409);
   const id=await this.wallet.reserve(owner,'dj_'+input.id+'_0',q.costCapMicros,q.marginBps,undefined,input.visibility,q.credits,{fingerprint,save:async(db,reservation)=>{
    if(!(await db.query('SELECT 1 FROM "user" WHERE id=$1 AND "emailVerified" AND NOT suspended',[owner])).rowCount)throw new AudioError('Verified sign-in required.',401);
-   await db.query('INSERT INTO dj_sessions(id,owner_id,title,visibility,settings,budget,max_credits,billing_live,fingerprint) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)',[input.id,owner,input.title,input.visibility,JSON.stringify({style:input.style,energy:input.energy}),JSON.stringify(this.budget),q.credits,this.live,fingerprint]);
+   await db.query('INSERT INTO dj_sessions(id,owner_id,title,visibility,settings,budget,max_credits,billing_live,fingerprint) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)',[input.id,owner,input.title,input.visibility,JSON.stringify({style:input.style,energy:input.energy,...(input.mood?{mood:input.mood}:{})}),JSON.stringify(this.budget),q.credits,this.live,fingerprint]);
    await this.insertBatch(db,owner,input.id,0,reservation);
   }});return {id:input.id,reservation:id};
  }
@@ -35,7 +36,8 @@ export class DJSessions{
  private async insertBatch(db:PoolClient,owner:string,id:string,sequence:number,reservation:string){await db.query('INSERT INTO dj_session_batches(session_id,sequence,reservation_id,seed,render_settings) SELECT $1,$2,$3,$4,settings FROM dj_sessions WHERE id=$1',[id,sequence,reservation,this.seed(owner,id,sequence)]);}
  async status(owner:string,id:string){const s=await this.session(owner,id);const batches=(await this.pool.query(`SELECT b.sequence,b.state,b.played_at,b.audio_sha256,b.vocal,(r.status='completed') AS ready FROM dj_session_batches b JOIN generation_reservations r ON r.id=b.reservation_id WHERE b.session_id=$1 ORDER BY b.sequence DESC LIMIT 3`,[id])).rows;return {id,title:s.title,visibility:s.visibility,settings:s.settings,state:s.state,endReason:s.end_reason,maxCredits:s.max_credits,batches};}
  async heartbeat(owner:string,id:string){await this.session(owner,id);await this.pool.query("UPDATE dj_sessions SET heartbeat_at=now() WHERE id=$1 AND state='active'",[id]);}
- async next(owner:string,id:string,sequence:number,energy?:number,vocals?:boolean){
+ async next(owner:string,id:string,sequence:number,energy?:number,vocals?:boolean,mood?:'warm'|'bright'|'deep'){
+  if(mood!==undefined&&!['warm','bright','deep'].includes(mood))throw new AudioError('Invalid mood.');
   if(vocals!==undefined&&typeof vocals!=='boolean')throw new AudioError('Invalid vocal choice.');
   if(energy!==undefined&&(!Number.isInteger(energy)||energy<1||energy>5))throw new AudioError('Invalid energy.');
   const s=await this.session(owner,id);if(!Number.isSafeInteger(sequence)||sequence<1||sequence>1000000)throw new AudioError('Invalid sequence.');
@@ -51,6 +53,7 @@ export class DJSessions{
    if(rows[0]?.sequence!==sequence-1||rows.some(b=>!closed(b.state))||rows.filter(b=>b.state==='completed'&&!b.played_at).length>=2)throw new AudioError('Prepared music is still waiting to play.',409);
    if(energy!==undefined)await db.query("UPDATE dj_sessions SET settings=jsonb_set(settings,'{energy}',$2::jsonb) WHERE id=$1",[id,JSON.stringify(energy)]);
    if(vocals!==undefined)await db.query("UPDATE dj_sessions SET settings=jsonb_set(settings,'{vocals}',$2::jsonb) WHERE id=$1",[id,JSON.stringify(vocals)]);
+   if(mood!==undefined)await db.query("UPDATE dj_sessions SET settings=jsonb_set(settings,'{mood}',$2::jsonb) WHERE id=$1",[id,JSON.stringify(mood)]);
    await this.insertBatch(db,owner,id,sequence,r);
   }});return {reservation};
  }

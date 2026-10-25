@@ -14,6 +14,8 @@ import { readConfig } from '../lib/config';
 import { migrate } from '../lib/migrations';
 import { listTracks } from '../lib/library';
 import { cleanupAuth } from '../lib/auth-cleanup';
+import {DJSessions} from '../lib/dj-sessions';
+import {djSessionRequest} from '../lib/dj-sessions-http';
 
 test('isolated Postgres account lifecycle, schema safety and owner isolation', async t => {
   const base = readConfig();
@@ -115,6 +117,23 @@ test('isolated Postgres account lifecycle, schema safety and owner isolation', a
     });
     const alice = await signup('alice@example.com');
     const bob = await signup('bob@example.com');
+    await t.test('AI DJ resolves real verified cookies and isolates session reservations',async()=>{
+      const store={local:true,put:async()=>{},get:async()=>{throw Error('No audio expected');},remove:async()=>{},uploadURL:async()=>'',playbackURL:async()=>''};
+      const sessions=new DJSessions(pool,config.secret,store,{costCapMicros:50000,maxRuntimeMs:60000,hourlyMicros:600000,fixedCostMicros:40000});
+      await sessions.wallet.grant(alice.id,{provider:'stripe_test',receipt:'dj-auth-test',credits:10,netMicros:500000});
+      const input={id:randomUUID().replaceAll('-',''),title:'Authenticated party',style:'house',energy:4,visibility:'private',mood:'bright'};
+      const call=async(cookie:string,path:string,body?:unknown)=>{
+        const request=new Request(config.baseURL+'/api/ai-dj/sessions/'+path,{method:body?'POST':'GET',headers:{cookie,origin:config.baseURL,'content-type':'application/json'},...(body?{body:JSON.stringify(body)}:{})});
+        return djSessionRequest(request,async()=>{const account=await auth.api.getSession({headers:request.headers});return{owner:account?.user.emailVerified?account.user.id:null,origin:config.baseURL,sessions,enabled:true};},path.split('/'));
+      };
+      const price=await call(alice.cookie,'quote',{owner:alice.id,input});assert.equal(price.status,200);const quote=await price.json();
+      assert.equal((await call(bob.cookie,'start',{owner:alice.id,input,token:quote.token})).status,409);
+      assert.equal((await call('better-auth.session_token=forged','start',{owner:alice.id,input,token:quote.token})).status,401);
+      assert.equal((await call(alice.cookie,'start',{owner:alice.id,input,token:quote.token})).status,200);
+      assert.equal((await call(bob.cookie,input.id)).status,404);
+      const own=await call(alice.cookie,input.id);assert.equal(own.status,200);assert.equal((await own.json()).settings.mood,'bright');
+      assert.equal((await call(alice.cookie,input.id+'/stop',{owner:alice.id})).status,200);assert.deepEqual(await sessions.wallet.balance(alice.id),{available:10,reserved:0});
+    });
     await t.test('session cookies are validated; library pages isolate owners including cursor ties', async () => {
       const session = await auth.api.getSession({ headers: new Headers({ cookie: alice.cookie }) });
       assert.equal(session?.user.id, alice.id);

@@ -19,7 +19,7 @@ export async function runLocalDJBatch(sessions:DJSessions,directory:string,signa
  let stopped=false,failed=false,folder:string|undefined,audio:Buffer|undefined;
  try{
   folder=await mkdtemp(join(resolve(directory),'dj-'));
-  const request={version:1,session:job.session_id,sequence:job.sequence,seed:job.seed,style:job.settings.style,energy:job.settings.energy};
+  const request={version:1,session:job.session_id,sequence:job.sequence,seed:job.seed,style:job.settings.style,energy:job.settings.energy,...(job.settings.mood?{mood:job.settings.mood}:{})};
   await writeFile(join(folder,'request.json'),JSON.stringify(request),{mode:0o600});
   const child=spawn(join(root,'.venv-analysis/bin/python'),[join(root,'scripts/dj_track_worker.py'),'--request',join(folder,'request.json'),'--output',join(folder,'result'),'--backend','procedural-test'],{cwd:root,stdio:'ignore',env:{NODE_ENV:'test',PATH:process.env.PATH,PYTHONNOUSERSITE:'1',OPENBLAS_NUM_THREADS:'1',OMP_NUM_THREADS:'1'}});
   const abort=()=>{stopped=true;child.kill('SIGKILL');};

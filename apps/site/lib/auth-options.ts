@@ -28,7 +28,7 @@ export function authOptions(config: Config, database: Pool, background?: (task: 
       sendOnSignUp: true, sendOnSignIn: true, autoSignInAfterVerification: false,
       sendVerificationEmail: ({ user, url }) => deliver({
         to: user.email, subject: 'Verify your Jamloom email',
-        text: 'Confirm your email to finish setting up your Jamloom account.\n\nYour recordings stay on your device unless you explicitly save them online. If you did not create this account, ignore this email.',
+        text: 'Confirm your email to finish setting up your Jamloom account.\n\nIf you did not create this account, ignore this email.',
         action: { label: 'Verify email', url },
       }),
     },

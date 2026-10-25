@@ -68,6 +68,18 @@ def handler(renderer, token):
         def log_message(self, *_):
             pass
 
+        def do_GET(self):
+            if self.path != '/health' or not hmac.compare_digest(self.headers.get('Authorization', ''), 'Bearer '+token):
+                self.send_error(403); return
+            ready = time.time()+90 < renderer.deadline and renderer.requests < renderer.limit
+            data = json.dumps(dict(ready=ready, code_revision=CODE_REVISION, weights_revision=WEIGHTS_REVISION)).encode()
+            self.send_response(200 if ready else 503)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Content-Length', str(len(data)))
+            self.send_header('Cache-Control', 'no-store')
+            self.end_headers()
+            self.wfile.write(data)
+
         def do_POST(self):
             self.connection.settimeout(35)
             if self.path != '/render' or not hmac.compare_digest(self.headers.get('Authorization', ''), 'Bearer '+token):

@@ -28,7 +28,7 @@ export async function djSessionRequest(request:Request,context:()=>Promise<Conte
    if(action==='stop'){keys([]);await sessions.stop(owner,id);return Response.json(await sessions.status(owner,id),{headers});}
    if(action==='heartbeat'){keys([]);await sessions.heartbeat(owner,id);return Response.json({ok:true},{headers});}
    if(action==='played'){keys(['sequence']);await sessions.played(owner,id,body.sequence);return Response.json({ok:true},{headers});}
-   if(action==='next'){keys(['sequence','energy','vocals']);if(!enabled){await sessions.stop(owner,id,'failure');throw new AudioError('Generation is unavailable. Your prepared music can finish.',503);}return Response.json(await sessions.next(owner,id,body.sequence,body.energy,body.vocals),{headers});}
+   if(action==='next'){keys(['sequence','energy','vocals','mood']);if(!enabled){await sessions.stop(owner,id,'failure');throw new AudioError('Generation is unavailable. Your prepared music can finish.',503);}return Response.json(await sessions.next(owner,id,body.sequence,body.energy,body.vocals,body.mood),{headers});}
   }
   throw new AudioError('Unsupported session operation.',404);
  }catch(e){return Response.json({error:e instanceof AudioError?e.message:'Session service is temporarily unavailable.'},{status:e instanceof AudioError?e.status:503,headers});}

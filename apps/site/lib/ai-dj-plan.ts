@@ -10,7 +10,7 @@ export function planTransition(out:TrackAnalysis,incoming:TrackAnalysis,position
    return {at,fade,offset:b.mixIn,rate:speed,technique:'phrase-bass',reason:'Reviewed 8-bar instrumental phrases · tempo match and bass exchange'+(Math.abs(speed-1)>.0001?' · pitch follows tempo':'')};
  }
  const ga=out.grid,gb=incoming.grid;
- if(!early&&ga&&gb&&validBeatGrid(ga)&&validBeatGrid(gb)){
+ if(!early&&ga&&gb&&validBeatGrid(ga)&&validBeatGrid(gb)&&ga.exit>=Math.max(out.duration*.6,out.duration-20)&&gb.entry<=Math.min(16,incoming.duration/3)){
   const speed=ga.bpm*rate/gb.bpm,period=60/ga.bpm,fade=4*period/rate;
   const end=ga.exit;
   const start=end-4*period,at=now+(start-position)/rate;

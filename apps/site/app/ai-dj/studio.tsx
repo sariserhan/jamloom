@@ -12,12 +12,12 @@ const time=(seconds:number)=>`${Math.floor(seconds/60)}:${Math.floor(seconds%60)
 const energies=['Warm-up','Steady','Driving','Peak','Full power'];
 
 export function AIDJ({owner=null,generated}:{owner?:string|null;generated?:SessionConfig}){
- const [state,setState]=useState<DJSnapshot>(generated?{...empty,mode:'auto',direction:{...empty.direction,energy:generated.input.energy,vocals:true}}:empty),[request,setRequest]=useState(''),[reply,setReply]=useState(''),[finishMinutes,setFinishMinutes]=useState('10');
+ const [state,setState]=useState<DJSnapshot>(generated?{...empty,mode:'auto',direction:{...empty.direction,energy:generated.input.energy,mood:generated.input.mood??empty.direction.mood,vocals:true}}:empty),[request,setRequest]=useState(''),[reply,setReply]=useState(''),[finishMinutes,setFinishMinutes]=useState('10');
  const [bank,setBank]=useState(djTracks),[importing,setImporting]=useState(false),[sessionName,setSessionName]=useState(generated?.input.title??'');
  const sessionClient=useRef<DJSessionClient|null>(null),[generatedStarted,setGeneratedStarted]=useState(false);
  const sessionTitle=useRef('');
  const jog=useRef<{index:number;x:number;time:number}|null>(null);
- const player=useRef<AIDJPlayer|null>(null),direction=useRef<Direction>(generated?{...empty.direction,energy:generated.input.energy,vocals:true}:empty.direction),recording=useRef<DJRecordingControls|null>(null);
+ const player=useRef<AIDJPlayer|null>(null),direction=useRef<Direction>(generated?{...empty.direction,energy:generated.input.energy,mood:generated.input.mood??empty.direction.mood,vocals:true}:empty.direction),recording=useRef<DJRecordingControls|null>(null);
  const active=['loading','playing','closing','paused'].includes(state.status),running=['playing','closing'].includes(state.status);
  useEffect(()=>{
   const hidden=()=>{if(document.hidden)player.current?.stop('Set stopped because this tab was hidden. Press Start set when you return.');};
@@ -45,7 +45,6 @@ export function AIDJ({owner=null,generated}:{owner?:string|null;generated?:Sessi
  function command(text:string){
   const action=parseDJCommand(text);
   if(action.kind==='unknown'){setReply('Try “more energy”, “less vocals”, “a deeper mood”, or “finish in 10 minutes”. I haven’t changed the set.');return;}
-  if(generated&&action.kind==='direction'&&action.change.mood!==undefined){setReply('Mood control is coming later. Energy, vocals and ending controls are available.');return;}
   if(action.kind==='direction'){
    const value={...action.change};if(value.energy!==undefined)value.energy=Math.max(1,Math.min(5,direction.current.energy+value.energy));change(value);setReply(running?'Got it. This direction applies to the next selection.':'Got it. Your starting direction is set.');
   }else if(action.kind==='hold'){setReply('Keeping this energy and mood for the next tracks.');}
@@ -94,7 +93,7 @@ export function AIDJ({owner=null,generated}:{owner?:string|null;generated?:Sessi
    <aside className="aidj-direction" aria-label="Set direction"><p className="eyebrow">{generated?'Next generated track':'Practice selection'}</p><h2>Where next?</h2>
     <label className="aidj-energy-label">Energy <output>{energies[state.direction.energy-1]}</output><input aria-label="Set energy" type="range" min="1" max="5" step="1" value={state.direction.energy} onChange={e=>change({energy:Number(e.target.value)})}/></label>
     <div className="aidj-energy" aria-hidden="true">{energies.map((label,i)=><span key={label} className={i<state.direction.energy?'on':''} style={{height:16+i*10}}/>)}</div>
-    <fieldset disabled={!!generated}><legend>Mood{generated?' · coming later':''}</legend><div className="aidj-moods">{(['warm','bright','deep'] as const).map(mood=><button key={mood} aria-pressed={state.direction.mood===mood} onClick={()=>change({mood})}><span aria-hidden="true">{mood==='warm'?'◒':mood==='bright'?'☀':'◐'}</span>{mood}</button>)}</div></fieldset>
+    <fieldset><legend>Mood</legend><div className="aidj-moods">{(['warm','bright','deep'] as const).map(mood=><button key={mood} aria-pressed={state.direction.mood===mood} onClick={()=>change({mood})}><span aria-hidden="true">{mood==='warm'?'◒':mood==='bright'?'☀':'◐'}</span>{mood}</button>)}</div></fieldset>
     <label className="aidj-vocals"><input type="checkbox" checked={state.direction.vocals} onChange={e=>change({vocals:e.target.checked})}/><span>Occasional vocal moments<small>{generated?'Brief original phrases, with space between them.':'Instrumental selections lead the set.'}</small></span></label>
     <div className="aidj-quick"><button onClick={()=>command('more energy')}>↗ More energy</button><button onClick={()=>command('keep this vibe')}>Keep this vibe</button><button disabled={!running} onClick={()=>command('mix next')}>Mix next →</button></div>
     <form onSubmit={e=>{e.preventDefault();command(request);}}><label htmlFor="aidj-request">Playback command</label><div className="aidj-prompt"><input id="aidj-request" maxLength={240} value={request} onChange={e=>setRequest(e.target.value)} placeholder="Finish in 10 minutes…"/><button type="submit" aria-label="Apply DJ direction">↵</button></div></form>

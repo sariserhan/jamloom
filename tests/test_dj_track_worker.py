@@ -30,7 +30,10 @@ class WorkerContract(unittest.TestCase):
         self.assertEqual(request(value), value)
         self.assertIn('Rolling bass groove', brief(value)[0])
         self.assertEqual(brief(value)[1], 128)
-        for change in [dict(seed=True), dict(seed=2**32), dict(sequence=-1), dict(energy=6), dict(style='ambient'), dict(session='../a'), dict(reference_audio='x')]:
+        for mood, phrase in [('warm','Warm rounded chords'),('bright','Bright uplifting chords'),('deep','Deep hypnotic bass')]:
+            self.assertEqual(request({**value,'mood':mood})['mood'],mood)
+            self.assertIn(phrase,brief({**value,'mood':mood})[0])
+        for change in [dict(mood='angry'), dict(mood=None), dict(seed=True), dict(seed=2**32), dict(sequence=-1), dict(energy=6), dict(style='ambient'), dict(session='../a'), dict(reference_audio='x')]:
             with self.assertRaises(ValueError): request({**value, **change})
     def test_ace_adapter_uses_one_fresh_instrumental_request(self):
         value=dict(version=1, session='a'*32, sequence=2, seed=123456, style='house', energy=4)

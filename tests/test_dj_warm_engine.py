@@ -29,11 +29,25 @@ class WarmEngineTests(unittest.TestCase):
             req = urllib.request.Request('http://127.0.0.1:'+str(server.server_port)+'/render', data=json.dumps(data).encode(), headers={'Authorization': 'Bearer '+token})
             with urllib.request.urlopen(req, timeout=5) as response:
                 return json.loads(response.headers['X-Jamloom-Receipt']), response.read()
+        def health(token='a'*64):
+            req = urllib.request.Request('http://127.0.0.1:'+str(server.server_port)+'/health', headers={'Authorization': 'Bearer '+token})
+            with urllib.request.urlopen(req, timeout=5) as response:
+                return json.load(response)
         try:
+            with self.assertRaises(urllib.error.HTTPError) as denied: health(token='b'*64)
+            self.assertEqual(denied.exception.code, 403)
+            self.assertTrue(health()['ready']); self.assertEqual(calls, [])
+            deadline = renderer.deadline
+            renderer.deadline = time.time()+80
+            with self.assertRaises(urllib.error.HTTPError) as expired: health()
+            self.assertEqual(expired.exception.code, 503)
+            renderer.deadline = deadline
             with self.assertRaises(urllib.error.HTTPError) as denied: post(token='b'*64)
             self.assertEqual(denied.exception.code, 403); self.assertEqual(calls, [])
             receipt, audio = post(); self.assertEqual(len(audio), 11520044)
             self.assertEqual(receipt['request'], value['request']); self.assertEqual(post(), (receipt, audio)); self.assertEqual(len(calls), 1)
+            with self.assertRaises(urllib.error.HTTPError) as exhausted: health()
+            self.assertEqual(exhausted.exception.code, 503)
             with self.assertRaises(urllib.error.HTTPError): post({**value, 'request': {**value['request'], 'seed': 2}})
             with self.assertRaises(urllib.error.HTTPError): post({**value, 'job': str(uuid.uuid4())})
             renderer.deadline = time.time()

@@ -18,7 +18,7 @@ WEIGHTS_REVISION = '19671f406d603126926c1b7e2adc169acbcade22'
 
 
 def request(value):
-    if not isinstance(value, dict) or set(value) != {'version', 'session', 'sequence', 'seed', 'style', 'energy'}:
+    if not isinstance(value, dict) or set(value) - {'mood'} != {'version', 'session', 'sequence', 'seed', 'style', 'energy'}:
         raise ValueError('Invalid track request fields')
     if type(value['version']) is not int or value['version'] != 1 or not isinstance(value['session'], str) or len(value['session']) != 32 or any(c not in '0123456789abcdef' for c in value['session']):
         raise ValueError('Invalid session')
@@ -27,13 +27,16 @@ def request(value):
             raise ValueError('Invalid '+key)
     if value['style'] not in ('house', 'tech-house', 'techno'):
         raise ValueError('Invalid style')
+    if 'mood' in value and value['mood'] not in ('warm', 'bright', 'deep'):
+        raise ValueError('Invalid mood')
     return value
 
 
 def brief(value):
     from club_benchmark_cases import REVISION_CASES, CASES
     row = REVISION_CASES[2] if value['style'] == 'house' else next(r for r in CASES if r[0] == value['style']+'-phrased')
-    return row[1]+f" Energy {value['energy']} of 5; {'restrained closing groove' if value['energy'] <= 2 else 'confident dancefloor momentum'}.", row[2]
+    mood = {'warm': 'Warm rounded chords, soulful textures and mellow harmonic color.', 'bright': 'Bright uplifting chords, crisp melodic accents and optimistic color.', 'deep': 'Deep hypnotic bass, restrained minor-key harmony and spacious textures.'}.get(value.get('mood'), '')
+    return row[1] + (' '+mood if mood else '') + f" Energy {value['energy']} of 5; {'restrained closing groove' if value['energy'] <= 2 else 'confident dancefloor momentum'}.", row[2]
 
 
 def procedural(value, directory):

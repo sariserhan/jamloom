@@ -7,6 +7,16 @@ from dj_vocal import add_hook, steady_grid
 
 
 class VocalTests(unittest.TestCase):
+    def test_grid_allows_instrumental_breaks_but_requires_supported_hook_region(self):
+        rate=8000; t=np.arange(60*rate)/rate
+        base=.2*np.sin(2*np.pi*80*t)*np.exp(-((t+.1)%(60/128))*40)
+        base[(t<6)|(t>46)]=0
+        self.assertIsNotNone(steady_grid(np.column_stack((base,base)),rate,128))
+        base[(t>28)&(t<34)]=0
+        self.assertIsNone(steady_grid(np.column_stack((base,base)),rate,128))
+        noise=np.random.default_rng(1).normal(0,.1,(len(t),2))
+        self.assertIsNone(steady_grid(noise,rate,128))
+
     def test_brief_hook_is_bounded_and_grid_aligned_without_changing_instrumental_edges(self):
         rate=8000; t=np.arange(60*rate)/rate
         base=.2*np.sin(2*np.pi*80*t)*np.exp(-((t+.1)%(60/128))*40)

@@ -14,6 +14,41 @@ spec.loader.exec_module(trial)
 
 
 class PriceBounds(unittest.TestCase):
+    def test_completion_never_falls_back_to_an_unproven_host(self):
+        names=('ROOT','WORK','STATE','LABEL','LEASE_SECONDS','HOURLY_CEILING','QUOTE_CEILING')
+        prior={name:getattr(trial,name) for name in names}
+        try:
+            with tempfile.TemporaryDirectory() as folder,patch.object(trial,'ROOT',Path(folder)),patch.object(trial.sys,'argv',['vast_trial.py','rent','--dj-qualification','--dj-sessions','--dj-finish']),patch.object(trial,'instances',return_value=[]),patch.object(trial,'api',return_value={'credit':9}) as api,patch.object(trial.shutil,'which',return_value='/usr/bin/caffeinate'),patch.object(trial,'offers',return_value=[{'id':1,'host_id':300,'machine_id':30,'gpu_name':'RTX 3090','geolocation':'Oregon, US'}]):
+                root=Path(folder);work=root/'build-dj-qualification-20261024-sessions-finish';work.mkdir();(work/'trial-key.pub').write_text('ssh-ed25519 synthetic-test')
+                receipt=root/'docs/evidence/ai-dj-finish-20261024/authorization.json';receipt.parent.mkdir(parents=True);receipt.write_text(json.dumps(dict(campaign='jamloom-dj-qualification-20261024-sessions-finish',budget_usd=6,instances_max=1,max_elapsed_seconds=2400,model_requests_max=8,public_activation=False,owner_statement='Test only')))
+                for directory,host in [('build-dj-qualification-20261024',100),('build-dj-qualification-20261024-sessions-retry',200)]:
+                    p=root/directory;p.mkdir();(p/'trial-state.json').write_text(json.dumps({'offer':{'host_id':host,'machine_id':host}}))
+                with self.assertRaisesRegex(RuntimeError,'Selected offer is unavailable'):trial.main()
+                api.assert_called_once_with('v0/users/current');self.assertFalse((work/'trial-state.json').exists())
+        finally:
+            for name,value in prior.items():setattr(trial,name,value)
+
+    def test_completion_requires_its_own_receipt_and_isolated_state(self):
+        names=('ROOT','WORK','STATE','LABEL','LEASE_SECONDS','HOURLY_CEILING','QUOTE_CEILING')
+        prior={name:getattr(trial,name) for name in names}
+        try:
+            with tempfile.TemporaryDirectory() as folder,patch.object(trial,'ROOT',Path(folder)),patch.object(trial.sys,'argv',['vast_trial.py','rent','--dj-qualification','--dj-sessions','--dj-finish']),patch.object(trial,'api') as api:
+                with self.assertRaises(FileNotFoundError):trial.main()
+                api.assert_not_called()
+                self.assertEqual(trial.LABEL,'jamloom-dj-qualification-20261024-sessions-finish')
+                self.assertEqual(trial.STATE,Path(folder)/'build-dj-qualification-20261024-sessions-finish/trial-state.json')
+                self.assertEqual((trial.LEASE_SECONDS,trial.HOURLY_CEILING,trial.QUOTE_CEILING),(2400,.5,4))
+            with tempfile.TemporaryDirectory() as folder,patch.object(trial,'ROOT',Path(folder)),patch.object(trial.sys,'argv',['vast_trial.py','rent','--dj-qualification','--dj-sessions','--dj-finish','--dj-retry']),patch.object(trial,'api') as api:
+                with self.assertRaises(FileNotFoundError):trial.main()
+                api.assert_not_called()
+                self.assertEqual(trial.LABEL,'jamloom-dj-qualification-20261024-sessions-finish-retry')
+            for args in [['--dj-finish'],['--dj-qualification','--dj-finish']]:
+                with patch.object(trial.sys,'argv',['vast_trial.py','rent',*args]),patch.object(trial,'api') as api,contextlib.redirect_stderr(io.StringIO()):
+                    with self.assertRaises(SystemExit):trial.main()
+                    api.assert_not_called()
+        finally:
+            for name,value in prior.items():setattr(trial,name,value)
+
     def test_dj_retry_keeps_total_money_time_and_confirmed_cleanup(self):
         prior=dict(starting_credit=9.5,destroy_requested_at=1600,destroy_confirmed_at=1606,
                    started_at=1000,label='jamloom-dj-qualification-20261024',budget_usd=6)

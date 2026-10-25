@@ -10,7 +10,7 @@ export async function audioDuration(blob:Blob,signal?:AbortSignal){
  });}finally{audio.removeAttribute('src');audio.load();URL.revokeObjectURL(url);}
 }
 export async function analyseBuffer(buffer:AudioBuffer,hash:string,signal?:AbortSignal):Promise<TrackAnalysis>{
- const cached=readAnalysis(hash);if(cached&&Math.abs(cached.duration-buffer.duration)<.1)return cached;
+ const cached=readAnalysis(hash);if(cached?.gridVersion===2&&Math.abs(cached.duration-buffer.duration)<.1)return cached;
  const samples=new Float32Array(Math.floor(buffer.duration*8000)),channels=Array.from({length:buffer.numberOfChannels},(_,i)=>buffer.getChannelData(i));
  let peak=0,power=0,loudest=channels[0],best=-1;
  for(const c of channels){let energy=0;for(const v of c){if(!Number.isFinite(v)||Math.abs(v)>8)throw Error('Invalid PCM');energy+=v*v;peak=Math.max(peak,Math.abs(v));}power+=energy;if(energy>best){best=energy;loudest=c;}}
@@ -18,7 +18,7 @@ export async function analyseBuffer(buffer:AudioBuffer,hash:string,signal?:Abort
  // Choose the louder channel so out-of-phase stereo does not cancel into false silence.
  for(let i=0;i<samples.length;i++){const start=Math.floor(i*buffer.sampleRate/8000),end=Math.min(buffer.length,Math.floor((i+1)*buffer.sampleRate/8000));let sum=0;for(let j=start;j<end;j++)sum+=loudest[j];samples[i]=sum/Math.max(1,end-start);}
  const worker=new Worker(new URL('./ai-dj-analysis.worker.ts',import.meta.url));
- return new Promise((resolve,reject)=>{const stop=()=>{worker.terminate();clearTimeout(timer);signal?.removeEventListener('abort',abort);};const abort=()=>{stop();reject(Error('Cancelled'));};const timer=setTimeout(()=>{stop();reject(Error('Analysis timed out'));},20000);worker.onerror=()=>{stop();reject(Error('Analysis failed'));};worker.onmessage=({data})=>{stop();if(data.error||!validAnalysis(data.analysis,hash)){reject(Error(data.error??'Invalid analysis'));return;}const analysis={...data.analysis,rms,peak};if(!validAnalysis(analysis,hash)){reject(Error('Invalid level analysis'));return;}saveAnalysis(analysis);resolve(analysis);};if(signal?.aborted){abort();return;}signal?.addEventListener('abort',abort,{once:true});worker.postMessage({samples,hash},[samples.buffer]);});
+ return new Promise((resolve,reject)=>{const stop=()=>{worker.terminate();clearTimeout(timer);signal?.removeEventListener('abort',abort);};const abort=()=>{stop();reject(Error('Cancelled'));};const timer=setTimeout(()=>{stop();reject(Error('Analysis timed out'));},20000);worker.onerror=()=>{stop();reject(Error('Analysis failed'));};worker.onmessage=({data})=>{stop();if(data.error||!validAnalysis(data.analysis,hash)){reject(Error(data.error??'Invalid analysis'));return;}const analysis={...data.analysis,...(cached?.review?{review:cached.review}:{}),rms,peak};if(!validAnalysis(analysis,hash)){reject(Error('Invalid level analysis'));return;}saveAnalysis(analysis);resolve(analysis);};if(signal?.aborted){abort();return;}signal?.addEventListener('abort',abort,{once:true});worker.postMessage({samples,hash},[samples.buffer]);});
 }
 export async function importTrack(file:File,context:AudioContext,signal:AbortSignal):Promise<DJTrack>{
  if(file.size>32*1024*1024||file.size===0||!/^audio\//.test(file.type)&&!/[.](mp3|wav|m4a|aac|flac|ogg)$/i.test(file.name))throw Error('Choose an audio file under 32 MB.');

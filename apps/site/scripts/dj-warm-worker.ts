@@ -6,7 +6,7 @@ import {readConfig} from '../lib/config';
 import {audioStore} from '../lib/audio-store';
 import {DJSessions} from '../lib/dj-sessions';
 import {DJWarmWorker,type WarmIdentity,type WarmPermit} from '../lib/dj-warm-worker';
-import {runRemoteDJBatch} from '../lib/dj-remote-worker';
+import {checkDJRenderer,runRemoteDJBatch} from '../lib/dj-remote-worker';
 import {VastProvider} from '../lib/vast-provider';
 
 const config=readConfig(),url=new URL(config.databaseURL),target=url.host+url.pathname;
@@ -20,11 +20,13 @@ process.once('SIGINT',()=>abort.abort());process.once('SIGTERM',()=>abort.abort(
 const warm=new DJWarmWorker(new DJSessions(pool,config.secret,store,JSON.parse(process.env.JAMLOOM_AI_DJ_BUDGET)),new VastProvider(process.env.VASTAI_KEY??''));
 let worker:WarmIdentity|undefined,timer:ReturnType<typeof setInterval>|undefined,checking=false;
 try{
+ if(!process.argv.includes('--register'))worker=JSON.parse(await privateFile(identityFile));
+ await checkDJRenderer(token);
  if(process.argv.includes('--register')){
   // Reserve the receipt file before consuming a permit, so an existing lease is never overwritten.
   await writeFile(identityFile,'',{flag:'wx',mode:0o600});
   worker=await warm.register(permit);await writeFile(identityFile,JSON.stringify(worker),{mode:0o600});
- }else worker=JSON.parse(await privateFile(identityFile));
+ }
  if(!worker)throw Error('Worker identity missing');
  const saved=(await pool.query('SELECT * FROM dj_warm_workers WHERE id=$1 AND lease=$2 AND permit_sha256=$3',[worker.id,worker.lease,permit.permitSha256])).rows[0];
  if(!saved||Number(saved.hourly_micros)!==permit.hourlyMicros||new Date(saved.created_at).getTime()!==permit.startedAt||new Date(saved.deadline).getTime()!==permit.deadline)throw Error('Permit does not match the recorded worker');
