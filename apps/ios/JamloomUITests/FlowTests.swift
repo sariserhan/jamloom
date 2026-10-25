@@ -1,6 +1,35 @@
 import XCTest
 
 final class FlowTests: XCTestCase {
+    func testCommunityBottomPlayerPausesSeeksAndKeepsPlayingWhileBrowsing() {
+        let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture", "--community-player"]
+        app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
+        app.launch(); app.buttons["Community"].firstMatch.tap()
+        let song = app.buttons["Play Night lights"]; XCTAssertTrue(song.waitForExistence(timeout: 15)); song.tap()
+        let toggle = app.buttons["playbackToggle"], found = app.buttons["playbackToggle"].waitForExistence(timeout: 10)
+        if !found { let tree = XCTAttachment(string: app.debugDescription); tree.name = "Missing playback control"; tree.lifetime = .keepAlways; add(tree) }
+        XCTAssertTrue(found); XCTAssertEqual(toggle.label, "Pause"); toggle.tap(); XCTAssertEqual(toggle.label, "Play")
+        let slider = app.sliders["Playback position"]; XCTAssertTrue(slider.isHittable); slider.adjust(toNormalizedSliderPosition: 0.5)
+        let middle = app.staticTexts["playbackTime"].label; XCTAssertFalse(middle.hasPrefix("0:00"))
+        app.buttons["Rewind 15 seconds"].tap(); XCTAssertTrue(app.staticTexts["playbackTime"].label.hasPrefix("0:00"))
+        app.buttons["Forward 15 seconds"].tap(); XCTAssertTrue(app.staticTexts["playbackTime"].label.hasPrefix("0:15"))
+        slider.adjust(toNormalizedSliderPosition: 0.3)
+        app.buttons["communityLanguage"].tap(); app.buttons["English"].tap()
+        XCTAssertTrue(toggle.waitForExistence(timeout: 10)); XCTAssertEqual(toggle.label, "Play")
+        app.buttons["Favorite Night lights"].tap(); app.buttons["collection-Favorites"].tap()
+        XCTAssertTrue(app.buttons["Unfavorite Night lights"].waitForExistence(timeout: 10)); XCTAssertTrue(toggle.exists); XCTAssertEqual(toggle.label, "Play")
+        toggle.tap(); XCTAssertEqual(toggle.label, "Pause")
+        let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); image.name = "Community bottom music player"; image.lifetime = .keepAlways; add(image)
+        app.buttons["Close music player"].tap(); XCTAssertFalse(toggle.exists)
+        app.buttons["collection-All songs"].tap()
+        app.buttons["communityLanguage"].tap(); app.buttons["All languages"].tap()
+        let set = app.buttons["Play Rooftop party"]; XCTAssertTrue(set.waitForExistence(timeout: 15)); set.tap()
+        let webPause = app.webViews.buttons["Pause"]; XCTAssertTrue(webPause.waitForExistence(timeout: 10)); webPause.tap()
+        XCTAssertTrue(app.webViews.buttons["Play"].exists); XCTAssertTrue(app.webViews.sliders["Playback position"].exists)
+        app.webViews.buttons["Rewind 15 seconds"].tap()
+        let streamImage = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); streamImage.name = "Community bottom set player"; streamImage.lifetime = .keepAlways; add(streamImage)
+        app.buttons["Close music player"].tap(); XCTAssertFalse(app.webViews.sliders["Playback position"].exists)
+    }
     func testCommunityLanguageFilterAndFavorites() {
         let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture", "--community-languages"]
         app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString

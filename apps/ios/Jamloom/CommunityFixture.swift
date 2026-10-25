@@ -3,6 +3,12 @@ import Foundation
 
 // Isolated UI-test responses; never installed by a release build or an ordinary launch.
 final class CommunityFixture: URLProtocol {
+    static func playbackAudio() throws -> Data {
+        if ProcessInfo.processInfo.arguments.contains("--community-player") {
+            return try CloudRecording.wav(AudioInput(samples: Array(repeating: 0, count: 720000), rate: 48000), start: 0, end: 15)
+        }
+        return try Data(contentsOf: Bundle.main.url(forResource: "synthetic-speech", withExtension: "wav")!)
+    }
     static func transport() -> AccountTransport {
         guard ProcessInfo.processInfo.arguments.contains("--ui-testing"), ProcessInfo.processInfo.arguments.contains("--community-fixture") else { return AccountTransport() }
         let configuration = URLSessionConfiguration.ephemeral
@@ -23,7 +29,7 @@ final class CommunityFixture: URLProtocol {
             }
             let audio = query.contains { $0.name == "file" && $0.value == "audio" }
             let data: Data
-            if audio { data = try Data(contentsOf: Bundle.main.url(forResource: "synthetic-speech", withExtension: "wav")!) }
+            if audio { data = try Self.playbackAudio() }
             else if url.path == "/api/ai-dj/sets" { data = Data(#"{"sets":[{"id":"cccccccccccccccccccccccccccccccc","title":"Rooftop party","seconds":600}],"next":null}"#.utf8) }
             else if query.contains(where: { $0.name == "view" && $0.value == "mine" }) { data = Data(#"{"songs":[],"next":null,"signIn":true}"#.utf8) }
             else {

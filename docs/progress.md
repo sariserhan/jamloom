@@ -1,3 +1,13 @@
+## iPhone bottom music player — 2026-10-25
+
+**PASS implementation, simulator validation, signed Release build, iPhone install and launch.** Jamloom 0.9.4 (17) adds pause/resume, 15-second rewind/forward and a seek slider for songs and streamed DJ recordings. Community playback survives language/collection/Favorites browsing. Final targeted run: 23 passed, 2 live-service tests skipped, 0 failed. Human device interaction and App Store release remain NOT RUN; background playback retains the existing stop behavior.
+
+- [x] Reuse the native and streaming players with visible bottom controls.
+- [x] Verify seek boundaries, pause/resume, streaming cleanup and Community filter continuity.
+- [x] Audit, sign, install and launch the update on iPhone.
+
+[Report and evidence](ios-bottom-player.md).
+
 ## iPhone Community language filter — 2026-10-25
 
 **PASS implementation, simulator validation, signed build, iPhone install and launch.** Jamloom 0.9.3 (16) adds a dedicated Language menu, server-side language filtering before pagination, Favorites filtering, legacy-name normalization and Clear filters. Final targeted run: 18 passed, 2 environment-gated live tests skipped, 0 failed. Physical interaction acceptance and App Store release remain NOT RUN.

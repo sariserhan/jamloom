@@ -16,8 +16,8 @@ struct JamloomApp: App {
     @Environment(\.scenePhase) private var scenePhase
     var body: some Scene { WindowGroup {
         TabView {
-            RemixView(account: account, model: model, clearDecks: { decks.clear(); dnaCloud.clearDownloadedAudio() }).tabItem { Label("Improvise", systemImage: "waveform") }
-            MusicDNAView(model: model, account: account, cloud: dnaCloud).tabItem { Label("Music DNA", systemImage: "music.note.list") }
+            RemixView(account: account, model: model, clearDecks: { decks.clear(); dnaCloud.clearDownloadedAudio() }).safeAreaInset(edge: .bottom, spacing: 0) { PlaybackBar(model: model) }.tabItem { Label("Improvise", systemImage: "waveform") }
+            MusicDNAView(model: model, account: account, cloud: dnaCloud).safeAreaInset(edge: .bottom, spacing: 0) { PlaybackBar(model: model) }.tabItem { Label("Music DNA", systemImage: "music.note.list") }
             DJDeckView(decks: decks, model: model).tabItem { Label("DJ Deck", systemImage: "opticaldisc") }
             SongLibraryView(account: account, model: model).tabItem { Label("Community", systemImage: "music.note.house.fill") }
         }
@@ -45,6 +45,37 @@ struct JamloomApp: App {
                 Button("OK") { model.error = nil }
             } message: { Text(model.error ?? "") }
     } }
+}
+
+struct PlaybackBar: View {
+    @ObservedObject var model: AppModel
+    @State private var seeking = false
+    @State private var position = 0.0
+    private func clock(_ value: Double) -> String { let seconds = Int(max(0, value.isFinite ? value : 0)); return String(format: "%d:%02d", seconds / 60, seconds % 60) }
+    var body: some View {
+        if model.playing != nil {
+            VStack(spacing: 0) {
+                HStack {
+                    Text(model.playbackTitle).font(.headline).lineLimit(1)
+                    Spacer()
+                    Button { model.stopPlayback() } label: { Image(systemName: "xmark").frame(width: 44, height: 44) }.accessibilityLabel("Close music player")
+                }
+                HStack(spacing: 16) {
+                    Button { model.seekPlayback(to: model.playbackPosition - 15) } label: { Image(systemName: "gobackward.15").font(.title2).frame(width: 44, height: 44) }.accessibilityLabel("Rewind 15 seconds")
+                    Button { model.togglePlayback() } label: { Image(systemName: model.playbackPaused ? "play.circle.fill" : "pause.circle.fill").font(.system(size: 42)).frame(width: 48, height: 48) }.accessibilityLabel(model.playbackPaused ? "Play" : "Pause").accessibilityIdentifier("playbackToggle")
+                    Button { model.seekPlayback(to: model.playbackPosition + 15) } label: { Image(systemName: "goforward.15").font(.title2).frame(width: 44, height: 44) }.accessibilityLabel("Forward 15 seconds")
+                    Spacer(minLength: 0)
+                    Text("\(clock(seeking ? position : model.playbackPosition)) / \(clock(model.playbackDuration))").font(.caption.monospacedDigit()).foregroundStyle(.secondary).accessibilityIdentifier("playbackTime")
+                }
+                Slider(value: Binding(get: { seeking ? position : model.playbackPosition }, set: { position = $0; if !seeking { model.seekPlayback(to: $0) } }), in: 0...max(0.1, model.playbackDuration), onEditingChanged: { editing in
+                    if editing { position = model.playbackPosition; seeking = true }
+                    else { seeking = false; model.seekPlayback(to: position) }
+                }).frame(minHeight: 44).accessibilityLabel("Playback position").accessibilityValue("\(clock(seeking ? position : model.playbackPosition)) of \(clock(model.playbackDuration))").disabled(model.playbackDuration <= 0)
+            }.padding(.horizontal, 16).padding(.bottom, 4).frame(maxWidth: 760).frame(maxWidth: .infinity)
+                .background(.ultraThinMaterial).tint(Color(red: 0.78, green: 0.96, blue: 0.32)).buttonStyle(.plain)
+                .onChange(of: model.playing) { _, _ in seeking = false }
+        }
+    }
 }
 
 struct RemixView: View {
@@ -257,7 +288,7 @@ struct SavedSessionView: View {
             ForEach(session.styles, id: \.self) { style in
                 if let url = model.library?.wav(session, style: style) {
                     HStack {
-                        Button { Task { await model.play(url) } } label: {
+                        Button { Task { await model.play(url, title: session.isTaste ? "Music DNA · \(style)" : style.capitalized) } } label: {
                             Label(style == "taste_a" ? "Variation A" : style == "taste_b" ? "Variation B" : style == "hiphop" ? "Hip-hop" : style.capitalized,
                                   systemImage: model.playing == url ? "stop.circle.fill" : "play.circle.fill")
                                 .frame(minHeight: 44)

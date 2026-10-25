@@ -1,0 +1,12 @@
+{
+  "version": "0.9.4",
+  "build": 17,
+  "device": "iPhone 14 Pro",
+  "signed_release": "PASS",
+  "codesign_verification": "PASS",
+  "install": "PASS",
+  "launch": "PASS",
+  "human_player_check": "NOT RUN",
+  "app_store_upload": "NOT RUN",
+  "binary_sha256": "3743e627559c5e22791e71373a91ce2a89c9238965a719a1a530018fdc162eb8"
+}

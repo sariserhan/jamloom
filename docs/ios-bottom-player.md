@@ -1,0 +1,15 @@
+# iPhone bottom music player — 2026-10-25
+
+Jamloom 0.9.4 (17) adds a bottom player for Community songs and recordings, on-device mixes, and cloud Improvise/Music DNA results. Play/pause, 15-second backward/forward jumps, elapsed/duration labels, a seek slider and a close button remain visible above navigation. DJ recordings stream inline instead of opening a separate sheet.
+
+Community keeps the current audio while changing language, collection, search or Favorites. Starting a different song stops the previous player. Account changes, leaving the listening screen, app backgrounding and interruptions retain the existing stop behavior. Lock-screen/background playback and automatic next-track queues are outside this change.
+
+Native playback reuses the existing AVAudioPlayer. The timer reads its playback position; paused seeks publish the clamped requested time because the engine can briefly return an old time. A pending timer callback cannot overwrite a paused seek. Streamed recordings retain the existing ephemeral WebKit player, validated URLs, authentication cookies and cancellation cleanup. No new dependencies or media storage are introduced.
+
+**PASS simulator validation:** 23 targeted tests passed, 2 environment-gated live-service tests skipped, 0 failed. The checks cover pause/seek/resume, finite and boundary handling, WebM controls, cookie copying/cancellation, account/song transport, Community browsing without interrupting playback, language filters and Favorites. Screenshots show the controls above the tab bar. **PASS signed Release build, strict code-signature verification, bundle audit, physical iPhone 14 Pro installation and launch.** Human interaction acceptance and App Store upload/release remain NOT RUN. No website push or deployment.
+
+[Bundle audit](evidence/ios-bottom-player-20261025/bundle.json), [device result](evidence/ios-bottom-player-20261025/device.json), [Test summary](evidence/ios-bottom-player-20261025/tests.json), [song player](evidence/ios-bottom-player-20261025/community-song-player.png), [streamed set player](evidence/ios-bottom-player-20261025/community-set-player.png).
+
+The first UI attempt exposed a parent accessibility identifier hiding the controls. A subsequent test exposed stale paused seek display; both were fixed and the targeted rerun passed. The WebM boundary assertion allows the final audio frame rather than requiring exact floating-point duration equality. The first failed test run hung while collecting Xcode diagnostics and was terminated after test execution; its log is retained. Later runs disable diagnostic collection and retain normal test results.
+
+Reproduce with the Jamloom Xcode scheme and `JamloomTests/MobileAudioTests`, `JamloomTests/SetPlayerTests`, `JamloomTests/AccountTests`, and the Community bottom-player/language UI tests. Use a fresh result bundle and run simulator/device builds sequentially because their studio-resource preparation shares a directory. UI fixtures remain Debug-only, with synthetic silent audio for long-enough control interactions; they are not production listening evidence.

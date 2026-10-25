@@ -17,12 +17,17 @@ final class AppModel: NSObject, ObservableObject, AVAudioRecorderDelegate, AVAud
     @Published var sessions: [RemixSession] = []
     @Published var incomplete = 0
     @Published var playing: URL?
+    @Published private(set) var playbackTitle = ""
+    @Published private(set) var playbackPosition = 0.0
+    @Published private(set) var playbackDuration = 0.0
+    @Published private(set) var playbackPaused = false
     @Published var permissionPending = false
     @Published var audioPreparing = false
     var foreground = true
     private(set) var library: RemixLibrary?
     private var recorder: AVAudioRecorder?
     private var player: AVAudioPlayer?
+    private var playbackTimer: Timer?
     private var audioGeneration: UInt64 = 0
     private var timer: Timer?
     private var cancellation: RenderCancellation?
@@ -146,7 +151,7 @@ final class AppModel: NSObject, ObservableObject, AVAudioRecorderDelegate, AVAud
         busy = false; cancellation = nil
     }
     func cancel() { cancellation?.cancel() }
-    func play(_ url: URL) async {
+    func play(_ url: URL, title: String = "Your music") async {
         if playing == url { stopPlayback(); return }
         guard editable else { return }
         stopPlayback()
@@ -162,11 +167,37 @@ final class AppModel: NSObject, ObservableObject, AVAudioRecorderDelegate, AVAud
             player?.delegate = self
             guard player?.play() == true else { throw RemixError.message("This mix could not play.") }
             playing = url
+            playbackTitle = title; playbackDuration = prepared.duration; playbackPosition = 0; playbackPaused = false
+            startPlaybackTimer()
         } catch { stopPlayback(); self.error = error.localizedDescription }
+    }
+    private func startPlaybackTimer() {
+        playbackTimer?.invalidate()
+        playbackTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { [weak self] _ in
+            Task { @MainActor [weak self] in
+                guard let self, !self.playbackPaused, let player = self.player else { return }
+                self.playbackPosition = player.currentTime
+            }
+        }
+    }
+    func togglePlayback() {
+        guard let player, foreground, !recording else { return }
+        if player.isPlaying { player.pause(); playbackTimer?.invalidate(); playbackPaused = true; playbackPosition = player.currentTime }
+        else {
+            if playbackPosition >= player.duration { player.currentTime = 0; playbackPosition = 0 }
+            guard player.play() else { stopPlayback(); error = "This song could not resume."; return }
+            playbackPaused = false; startPlaybackTimer()
+        }
+    }
+    func seekPlayback(to seconds: Double) {
+        guard seconds.isFinite, let player else { return }
+        playbackPosition = min(player.duration, max(0, seconds)); player.currentTime = playbackPosition
     }
     func stopPlayback() {
         audioGeneration &+= 1
+        playbackTimer?.invalidate(); playbackTimer = nil
         player?.stop(); player = nil; playing = nil
+        playbackTitle = ""; playbackPosition = 0; playbackDuration = 0; playbackPaused = false
         if !recording { AudioSession.deactivate() }
     }
     nonisolated func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {

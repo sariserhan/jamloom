@@ -22,6 +22,19 @@ import WebKit
             try await Task.sleep(for: .milliseconds(100))
         }
         XCTAssertTrue(started, "The actual iOS WebKit player must decode WebM/Opus without audible output")
+        _ = try await player.evaluateJavaScript("document.getElementById('toggle').click()")
+        let paused = try await player.evaluateJavaScript("document.querySelector('audio').paused") as? Bool
+        XCTAssertEqual(paused, true)
+        _ = try await player.evaluateJavaScript("const s=document.getElementById('seek');s.value=1;s.dispatchEvent(new Event('input'))")
+        let position = try await player.evaluateJavaScript("document.querySelector('audio').currentTime") as? Double
+        XCTAssertEqual(try XCTUnwrap(position), 1, accuracy: 0.15)
+        _ = try await player.evaluateJavaScript("document.getElementById('back').click()")
+        let rewound = try await player.evaluateJavaScript("document.querySelector('audio').currentTime") as? Double
+        XCTAssertEqual(rewound, 0)
+        _ = try await player.evaluateJavaScript("document.getElementById('forward').click()")
+        let atEnd = try await player.evaluateJavaScript("document.querySelector('audio').currentTime") as? Double
+        let duration = try await player.evaluateJavaScript("document.querySelector('audio').duration") as? Double
+        XCTAssertEqual(try XCTUnwrap(atEnd), try XCTUnwrap(duration), accuracy: 0.05)
         SetAudioView.dismantleUIView(player, coordinator: coordinator)
         try await Task.sleep(for: .milliseconds(200))
         let stopped = try await player.evaluateJavaScript("!document.querySelector('audio') || document.querySelector('audio').paused")

@@ -160,10 +160,10 @@ struct PublicSetPage: Decodable {
         if let audio { try? FileManager.default.removeItem(at: audio) }
         audio = nil; audioKey = nil
     }
-    func reset() { revision += 1; songs = []; next = [:]; languages = []; busy = false; message = ""; needsSignIn = false; clearAudio() }
+    func reset(clearPlayback: Bool = true) { revision += 1; songs = []; next = [:]; languages = []; busy = false; message = ""; needsSignIn = false; if clearPlayback { clearAudio() } }
     func load(_ collection: SongCollection, account: AccountModel, more: Bool = false, language: String = "") async {
         if more && busy { return }
-        if !more { reset() }
+        if !more { reset(clearPlayback: false) }
         loadFavorites(owner: account.snapshot?.user.id)
         deviceFavorites = favorites; importKey = favoriteKey
         if account.snapshot != nil && deviceFavorites.isEmpty { let guest = SongLibraryModel(defaults: defaults); guest.loadFavorites(owner: nil); deviceFavorites = guest.favorites; importKey = guest.favoriteKey }
@@ -252,6 +252,14 @@ struct SongLibraryView: View {
         (collection == .favorites ? library.favorites : library.songs).filter { (product.isEmpty || $0.source.rawValue == product) && (genre.isEmpty || $0.direction == genre) && (language.isEmpty || $0.languageCode == language) && (search.isEmpty || [$0.title, $0.languageName, $0.direction ?? ""].joined(separator: " ").localizedCaseInsensitiveContains(search)) }
     }
     private func stop() { playingSet = nil; playbackTask?.cancel(); playbackTask = nil; model.stopPlayback(); library.clearAudio() }
+    private func streamURL(_ song: LibrarySong) -> URL? {
+        #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("--ui-testing"), ProcessInfo.processInfo.arguments.contains("--community-fixture"), let audio = try? CommunityFixture.playbackAudio() {
+            return URL(string: "data:audio/wav;base64," + audio.base64EncodedString())
+        }
+        #endif
+        return try? account.transport.listeningURL(song)
+    }
     var body: some View {
         NavigationStack {
             List {
@@ -279,7 +287,10 @@ struct SongLibraryView: View {
                         ForEach(model.sessions) { session in
                             ForEach(session.styles, id: \.self) { style in
                                 if let url = model.library?.wav(session, style: style) {
-                                    Button { Task { await model.play(url) } } label: {
+                                    Button {
+                                        let wasPlaying = model.playing == url; stop()
+                                        if !wasPlaying { Task { await model.play(url, title: session.isTaste ? "Music DNA · \(style)" : style.capitalized) } }
+                                    } label: {
                                         Label(session.isTaste ? "Music DNA · \(style)" : style.capitalized, systemImage: model.playing == url ? "stop.circle.fill" : "play.circle.fill").padding(.vertical, 8)
                                     }
                                 }
@@ -300,17 +311,17 @@ struct SongLibraryView: View {
                     if library.busy { ProgressView("Loading songs…") }
                     if !library.message.isEmpty {
                         Text(library.message).foregroundStyle(.secondary)
-                        Button("Try again") { stop(); Task { await library.load(collection, account: account) } }
+                        Button("Try again") { Task { await library.load(collection, account: account, language: language) } }
                     }
                     if library.needsSignIn { Button(account.snapshot == nil ? "Sign in" : "Change account", systemImage: "person.crop.circle") { showAccount = true } }
                     ForEach(filtered, id: \.key) { song in
-                        let playing = library.audioKey == song.key && model.playing == library.audio && model.playing != nil
+                        let playing = playingSet?.key == song.key || (library.audioKey == song.key && model.playing == library.audio && model.playing != nil)
                         HStack {
                         Button {
-                            if playing { model.stopPlayback(); return }
+                            if playing { stop(); return }
                             stop()
                             if song.source == .aiDJ || ["catalogue", "aurowall"].contains(song.listeningKind ?? "") { playingSet = song; return }
-                            playbackTask = Task { if let file = await library.prepare(song, account: account), !Task.isCancelled { await model.play(file) } }
+                            playbackTask = Task { if let file = await library.prepare(song, account: account), !Task.isCancelled { await model.play(file, title: song.title) } }
                         } label: {
                             HStack(spacing: 14) {
                                 Image(systemName: playing ? "stop.circle.fill" : "play.circle.fill").font(.system(size: 38)).foregroundStyle(accent)
@@ -340,16 +351,19 @@ struct SongLibraryView: View {
             .navigationTitle("Community").searchable(text: $search, prompt: "Search loaded songs")
             .toolbar { Button("Account", systemImage: "person.crop.circle") { stop(); showAccount = true } }
             .sheet(isPresented: $showAccount) { AccountView(account: account) }
-            .sheet(item: $playingSet) { song in
-                NavigationStack {
-                    if #available(iOS 17.4, *), let url = try? account.transport.listeningURL(song) {
-                        SetAudioView(url: url, cookies: account.transport.session.configuration.httpCookieStorage?.cookies(for: url) ?? []).navigationTitle(song.title).navigationBarTitleDisplayMode(.inline)
-                            .toolbar { Button("Done") { playingSet = nil } }
-                    } else { ContentUnavailableView("Update iOS to listen", systemImage: "waveform", description: Text("DJ set playback requires iOS 17.4 or later.")) }
-                }.preferredColorScheme(.dark)
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                if let song = playingSet {
+                    VStack(spacing: 0) {
+                        HStack { Text(song.title).font(.headline).lineLimit(1); Spacer(); Button { stop() } label: { Image(systemName: "xmark").frame(width: 44, height: 44) }.accessibilityLabel("Close music player") }.padding(.horizontal, 16)
+                        if #available(iOS 17.4, *), let url = streamURL(song) {
+                            SetAudioView(url: url, cookies: account.transport.session.configuration.httpCookieStorage?.cookies(for: url) ?? []).id(song.key).frame(height: 150)
+                        } else { Text("DJ set playback requires iOS 17.4 or later.").padding() }
+                    }.frame(maxWidth: 760).frame(maxWidth: .infinity).background(.ultraThinMaterial)
+                } else { PlaybackBar(model: model) }
             }
-            .refreshable { stop(); await library.load(collection, account: account, language: language); await model.loadLibrary() }
-            .task(id: selection) { stop(); await library.load(collection, account: account, language: language); if collection == .device { await model.loadLibrary() } }
+            .refreshable { await library.load(collection, account: account, language: language); await model.loadLibrary() }
+            .task(id: selection) { await library.load(collection, account: account, language: language); if collection == .device { await model.loadLibrary() } }
+            .onChange(of: account.snapshot?.user.id) { _, _ in stop() }
             .onChange(of: collection) { _, _ in genre = "" }
             .onDisappear { stop(); library.reset() }
             .onChange(of: scenePhase) { _, phase in if phase != .active { stop() } else { Task { await library.syncFavorites(account: account) } } }
@@ -373,7 +387,21 @@ struct SetAudioView: UIViewRepresentable {
         view.isOpaque = false; view.backgroundColor = .black; view.scrollView.backgroundColor = .black
         let source = url.absoluteString.replacingOccurrences(of: "&", with: "&amp;").replacingOccurrences(of: "\"", with: "&quot;").replacingOccurrences(of: "<", with: "&lt;")
         let html = """
-        <!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; media-src data: https://www.jamloom.com https://*.r2.cloudflarestorage.com http://127.0.0.1:*; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'"><style>body{background:#101310;color:#fff;font:17px -apple-system;padding:32px 20px}audio{width:100%;margin:24px 0}p{line-height:1.5}button{font:inherit;padding:12px}#error{display:none}</style></head><body><h2>Your music</h2><audio controls autoplay playsinline \(muted ? "muted" : "") src="\(source)"></audio><p>Stream this recording. Close this player to stop.</p><div id="error" role="status"><p>This recording could not play. Check your connection and try again.</p><button onclick="document.getElementById('error').style.display='none';document.querySelector('audio').load();document.querySelector('audio').play().catch(()=>{})">Retry playback</button></div><script>document.querySelector('audio').addEventListener('error',()=>document.getElementById('error').style.display='block')</script></body></html>
+        <!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; media-src data: https://www.jamloom.com https://*.r2.cloudflarestorage.com http://127.0.0.1:*; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'">
+        <style>body{background:#101310;color:#fff;font:14px -apple-system;margin:0;padding:8px 16px}audio{display:none}.controls{display:flex;align-items:center;gap:16px}button{font:24px -apple-system;color:#c7f550;background:transparent;border:0;min-width:44px;min-height:44px;border-radius:24px}#toggle{background:#c7f550;color:#101310;font-size:24px}#time{margin-left:auto;font-variant-numeric:tabular-nums;color:#bcc5bf}input{box-sizing:border-box;width:100%;height:40px;accent-color:#c7f550}#error{display:none;font-size:13px}#error button{font-size:14px}:focus-visible{outline:3px solid #c7f550;outline-offset:2px}</style></head><body>
+        <audio autoplay playsinline \(muted ? "muted" : "") src="\(source)"></audio>
+        <div class="controls"><button id="back" aria-label="Rewind 15 seconds">↶15</button><button id="toggle" aria-label="Pause">Ⅱ</button><button id="forward" aria-label="Forward 15 seconds">15↷</button><span id="time" aria-live="off">0:00 / 0:00</span></div>
+        <input id="seek" type="range" min="0" max="1" value="0" step="0.1" aria-label="Playback position" disabled>
+        <div id="error" role="status">This recording could not play. <button id="retry">Retry playback</button></div>
+        <script>
+        const a=document.querySelector('audio'),seek=document.getElementById('seek'),toggle=document.getElementById('toggle'),back=document.getElementById('back'),forward=document.getElementById('forward'),error=document.getElementById('error');
+        function ready(){return Number.isFinite(a.duration)&&a.duration>0}
+        function clock(t){t=Number.isFinite(t)?Math.max(0,Math.floor(t)):0;return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')}
+        function update(){const valid=ready();seek.disabled=back.disabled=forward.disabled=!valid;seek.max=valid?a.duration:1;seek.value=Number.isFinite(a.currentTime)?a.currentTime:0;seek.setAttribute('aria-valuetext',clock(a.currentTime)+' of '+clock(a.duration));toggle.textContent=a.paused?'▶':'Ⅱ';toggle.setAttribute('aria-label',a.paused?'Play':'Pause');document.getElementById('time').textContent=clock(a.currentTime)+' / '+clock(a.duration)}
+        function jump(t){if(ready()&&Number.isFinite(t)){a.currentTime=Math.min(a.duration,Math.max(0,t));update()}}
+        toggle.onclick=()=>{if(a.paused){if(a.ended)a.currentTime=0;a.play().catch(()=>error.style.display='block')}else a.pause()};back.onclick=()=>jump(a.currentTime-15);forward.onclick=()=>jump(a.currentTime+15);seek.oninput=()=>jump(Number(seek.value));
+        ['loadedmetadata','durationchange','timeupdate','play','pause','ended','seeked'].forEach(event=>a.addEventListener(event,update));a.addEventListener('error',()=>error.style.display='block');document.getElementById('retry').onclick=()=>{error.style.display='none';a.load();a.play().catch(()=>error.style.display='block')};update();
+        </script></body></html>
         """
         let base = ["http", "https"].contains(url.scheme ?? "") ? url.deletingLastPathComponent() : nil
         coordinator.loading = Task { @MainActor [weak view] in

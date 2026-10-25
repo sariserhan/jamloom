@@ -331,6 +331,7 @@ struct CloudDNAView: View {
                 .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done", systemImage: "checkmark") { dismiss() } } }
                 .sheet(isPresented: $showAccount, onDismiss: { Task { await cloud.connect(account) } }) { AccountView(account: account) }
                 .task { await cloud.connect(account) }
+                .safeAreaInset(edge: .bottom, spacing: 0) { PlaybackBar(model: model) }
                 .onDisappear { cloud.stopPolling(); model.stopPlayback() }
         }.preferredColorScheme(.dark).tint(.mint)
     }
