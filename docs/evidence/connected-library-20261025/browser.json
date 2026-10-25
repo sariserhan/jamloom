@@ -1,0 +1,29 @@
+[
+  {
+    "browser": "chromium",
+    "status": "PASS",
+    "crossClientSaveAndRemoval": true,
+    "accountIsolation": true,
+    "playlist": true,
+    "queue": true,
+    "failedSaveVisible": true,
+    "explicitGuestImport": true
+  },
+  {
+    "browser": "webkit",
+    "status": "PASS",
+    "crossClientSaveAndRemoval": true,
+    "accountIsolation": true,
+    "playlist": true,
+    "queue": true,
+    "failedSaveVisible": true,
+    "explicitGuestImport": true
+  },
+  {
+    "check": "Closed beta HTTP",
+    "status": "PASS",
+    "invitedOnly": true,
+    "unfundedStartRejected": true,
+    "noSessionsCreated": true
+  }
+]

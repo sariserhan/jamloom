@@ -16,10 +16,25 @@ struct LibrarySong: Codable, Identifiable, Equatable {
     let visibility: String?
     let withdrawn_at: String?
     var source: CloudSongProduct = .musicDNA
-    enum CodingKeys: String, CodingKey { case id, title, language, direction, product, visibility, withdrawn_at }
-    var key: String { source.rawValue + ":" + id }
-    var productName: String { source == .aiDJ ? "DJ sets" : source == .improvise ? "Improvise" : "Music DNA" }
+    var listeningKind: String? = nil
+    enum CodingKeys: String, CodingKey { case id, title, language, direction, product, visibility, withdrawn_at, listeningKind }
+    var key: String { (listeningKind == "sets" ? "ai-dj" : listeningKind ?? source.rawValue) + ":" + id }
+    var productName: String { listeningKind == "catalogue" ? "Community mix" : listeningKind == "aurowall" ? "Aurowall" : source == .aiDJ ? "DJ sets" : source == .improvise ? "Improvise" : "Music DNA" }
     var languageName: String { Locale.current.localizedString(forLanguageCode: language) ?? language }
+}
+struct SyncedMusic: Decodable {
+    let id: String; let kind: String; let title: String; let language: String?; let mood: String?
+    func song() throws -> LibrarySong {
+        let pattern = kind == "catalogue" ? "^[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$" : kind == "aurowall" ? "^[a-f0-9]{24}$" : "^[a-f0-9]{32}$"
+        guard ["music-dna", "improvise", "sets", "catalogue", "aurowall"].contains(kind), id.range(of: pattern, options: .regularExpression) != nil,
+              !title.isEmpty, title.count <= 300, (language?.count ?? 0) <= 32, (mood?.count ?? 0) <= 100 else { throw URLError(.cannotParseResponse) }
+        let source: CloudSongProduct = kind == "sets" ? .aiDJ : kind == "improvise" ? .improvise : .musicDNA
+        return LibrarySong(id: id, title: title, language: language ?? "", direction: mood, product: source.rawValue, visibility: nil, withdrawn_at: nil, source: source, listeningKind: kind)
+    }
+}
+struct SyncedFavorites: Decodable {
+    struct Reference: Decodable, Identifiable { let kind: String; let id: String; var key: String { kind + ":" + id } }
+    let owner: String; let tracks: [SyncedMusic]; let unavailable: [Reference]
 }
 struct LibraryFavorite: Codable { let song: LibrarySong; let product: String }
 struct LibraryPage: Decodable {
@@ -60,12 +75,19 @@ struct PublicSetPage: Decodable {
     @Published private(set) var audio: URL?
     @Published private(set) var audioKey: String?
     @Published private(set) var favorites: [LibrarySong] = []
+    @Published private(set) var favoriteSync = "Saved on this device."
+    @Published private(set) var syncingFavorites = false
+    @Published private(set) var deviceFavorites: [LibrarySong] = []
+    @Published private(set) var unavailableFavorites: [SyncedFavorites.Reference] = []
+    private var favoriteEpoch = 0
     private var favoriteKey = ""
+    private var importKey = ""
     private let defaults: UserDefaults
     private var revision = 0
     private var audioRevision = 0
     init(defaults: UserDefaults = .standard) { self.defaults = defaults }
     func loadFavorites(owner: String?) {
+        favoriteEpoch += 1
         var namespace = "jamloom-song-favorites-"
         #if DEBUG
         if ProcessInfo.processInfo.arguments.contains("--ui-testing") { namespace += "test-" + (ProcessInfo.processInfo.environment["JAMLOOM_UI_TEST_LIBRARY"] ?? "isolated") }
@@ -89,6 +111,41 @@ struct PublicSetPage: Decodable {
         do { let data = try JSONEncoder().encode(favorites.map { LibraryFavorite(song: $0, product: $0.source.rawValue) }); guard data.count <= 1024 * 1024 else { throw URLError(.dataLengthExceedsMaximum) }; defaults.set(data, forKey: favoriteKey) }
         catch { favorites = previous; message = "Favorites could not be saved." }
     }
+    func syncFavorites(account: AccountModel) async {
+        guard let owner = account.snapshot?.user.id else { favoriteSync = "Saved on this device. Sign in to sync."; unavailableFavorites = []; return }
+        favoriteEpoch += 1; let epoch = favoriteEpoch
+        do {
+            let result: SyncedFavorites = try await account.transport.request("/api/favorites")
+            guard epoch == favoriteEpoch, owner == account.snapshot?.user.id, result.owner == owner else { return }
+            guard result.tracks.count + result.unavailable.count <= 500 else { throw URLError(.cannotParseResponse) }
+            favorites = try result.tracks.map { try $0.song() }; unavailableFavorites = result.unavailable
+            favoriteSync = "Synced with your account."
+        } catch { if owner == account.snapshot?.user.id { favoriteSync = "Favorites could not sync. Pull to refresh and retry." } }
+    }
+    func toggleFavorite(_ song: LibrarySong, account: AccountModel) async {
+        guard let owner = account.snapshot?.user.id else { toggleFavorite(song); return }
+        guard !syncingFavorites else { return }; favoriteEpoch += 1; syncingFavorites = true
+        defer { syncingFavorites = false }
+        let remove = favorites.contains { $0.key == song.key } || unavailableFavorites.contains { $0.id == song.id && $0.kind == song.listeningKind }
+        do {
+            let body = try JSONSerialization.data(withJSONObject: ["owner": owner, "id": song.id, "kind": song.listeningKind ?? (song.source == .aiDJ ? "sets" : song.source.rawValue)])
+            _ = try await account.transport.requestData("/api/favorites", method: remove ? "DELETE" : "POST", body: body)
+            guard owner == account.snapshot?.user.id else { return }; await syncFavorites(account: account)
+        } catch { if owner == account.snapshot?.user.id { favoriteSync = "Favorite was not saved. Refresh and try again."; message = favoriteSync } }
+    }
+    func importDeviceFavorites(account: AccountModel) async {
+        guard let owner = account.snapshot?.user.id, !syncingFavorites else { return }; syncingFavorites = true
+        defer { syncingFavorites = false }
+        do {
+            for song in deviceFavorites {
+                guard owner == account.snapshot?.user.id else { return }
+                let body = try JSONSerialization.data(withJSONObject: ["owner": owner, "id": song.id, "kind": song.listeningKind ?? (song.source == .aiDJ ? "sets" : song.source.rawValue)])
+                _ = try await account.transport.requestData("/api/favorites", method: "POST", body: body)
+            }
+            guard owner == account.snapshot?.user.id else { return }
+            defaults.removeObject(forKey: importKey); deviceFavorites = []; await syncFavorites(account: account)
+        } catch { favoriteSync = "Import paused. Device favorites are kept; try again." }
+    }
     func clearAudio() {
         audioRevision += 1; loadingSong = nil
         if let audio { try? FileManager.default.removeItem(at: audio) }
@@ -99,6 +156,9 @@ struct PublicSetPage: Decodable {
         if more && busy { return }
         if !more { reset() }
         loadFavorites(owner: account.snapshot?.user.id)
+        deviceFavorites = favorites; importKey = favoriteKey
+        if account.snapshot != nil && deviceFavorites.isEmpty { let guest = SongLibraryModel(defaults: defaults); guest.loadFavorites(owner: nil); deviceFavorites = guest.favorites; importKey = guest.favoriteKey }
+        await syncFavorites(account: account)
         if collection == .favorites { return }
         guard collection != .device else { return }
         guard collection != .mine || account.snapshot != nil else { message = "Sign in to see your songs."; needsSignIn = true; return }
@@ -206,7 +266,15 @@ struct SongLibraryView: View {
                         if model.sessions.isEmpty { ContentUnavailableView("No local mixes", systemImage: "waveform", description: Text("Your on-device creations will appear here.")) }
                     }
                 } else {
-                    if collection == .favorites { Text("Saved on this device. Connect to the internet to listen.").font(.caption).foregroundStyle(.secondary) }
+                    if collection == .favorites { Text(library.favoriteSync).font(.caption).foregroundStyle(.secondary) }
+                    if collection == .favorites && account.snapshot != nil && !library.deviceFavorites.isEmpty {
+                        Button("Import device favorites") { Task { await library.importDeviceFavorites(account: account) } }.disabled(library.syncingFavorites)
+                    }
+                    if collection == .favorites {
+                        ForEach(library.unavailableFavorites, id: \.key) { item in
+                            Button("Remove unavailable song") { if let song = try? SyncedMusic(id: item.id, kind: item.kind, title: "Unavailable song", language: nil, mood: nil).song() { Task { await library.toggleFavorite(song, account: account) } } }.disabled(library.syncingFavorites)
+                        }
+                    }
                     if library.busy { ProgressView("Loading songs…") }
                     if !library.message.isEmpty {
                         Text(library.message).foregroundStyle(.secondary)
@@ -219,7 +287,7 @@ struct SongLibraryView: View {
                         Button {
                             if playing { model.stopPlayback(); return }
                             stop()
-                            if song.source == .aiDJ { playingSet = song; return }
+                            if song.source == .aiDJ || ["catalogue", "aurowall"].contains(song.listeningKind ?? "") { playingSet = song; return }
                             playbackTask = Task { if let file = await library.prepare(song, account: account), !Task.isCancelled { await model.play(file) } }
                         } label: {
                             HStack(spacing: 14) {
@@ -233,9 +301,9 @@ struct SongLibraryView: View {
                                 if library.loadingSong == song.key { ProgressView() }
                             }.padding(.vertical, 8).frame(minHeight: 60)
                         }.buttonStyle(.plain).accessibilityLabel("\(playing ? "Stop" : "Play") \(song.title)").accessibilityIdentifier("librarySong-\(song.key)")
-                        Button { library.toggleFavorite(song) } label: {
+                        Button { Task { await library.toggleFavorite(song, account: account) } } label: {
                             Image(systemName: library.favorites.contains(where: { $0.key == song.key }) ? "heart.fill" : "heart").font(.title2).frame(minWidth: 44, minHeight: 44)
-                        }.buttonStyle(.plain).foregroundStyle(accent).accessibilityLabel("\(library.favorites.contains(where: { $0.key == song.key }) ? "Unfavorite" : "Favorite") \(song.title)")
+                        }.buttonStyle(.plain).disabled(library.syncingFavorites).foregroundStyle(accent).accessibilityLabel("\(library.favorites.contains(where: { $0.key == song.key }) ? "Unfavorite" : "Favorite") \(song.title)")
                         }
                     }
                     if !library.next.isEmpty { Button("Load more songs") { Task { await library.load(collection, account: account, more: true) } }.disabled(library.busy) }
@@ -247,8 +315,8 @@ struct SongLibraryView: View {
             .sheet(isPresented: $showAccount) { AccountView(account: account) }
             .sheet(item: $playingSet) { song in
                 NavigationStack {
-                    if #available(iOS 17.4, *), let url = try? account.transport.publicSetURL(song.id) {
-                        SetAudioView(url: url).navigationTitle(song.title).navigationBarTitleDisplayMode(.inline)
+                    if #available(iOS 17.4, *), let url = try? account.transport.listeningURL(song) {
+                        SetAudioView(url: url, cookies: account.transport.session.configuration.httpCookieStorage?.cookies(for: url) ?? []).navigationTitle(song.title).navigationBarTitleDisplayMode(.inline)
                             .toolbar { Button("Done") { playingSet = nil } }
                     } else { ContentUnavailableView("Update iOS to listen", systemImage: "waveform", description: Text("DJ set playback requires iOS 17.4 or later.")) }
                 }.preferredColorScheme(.dark)
@@ -256,7 +324,7 @@ struct SongLibraryView: View {
             .refreshable { stop(); await library.load(collection, account: account); await model.loadLibrary() }
             .task(id: selection) { stop(); genre = ""; await library.load(collection, account: account); if collection == .device { await model.loadLibrary() } }
             .onDisappear { stop(); library.reset() }
-            .onChange(of: scenePhase) { _, phase in if phase != .active { stop() } }
+            .onChange(of: scenePhase) { _, phase in if phase != .active { stop() } else { Task { await library.syncFavorites(account: account) } } }
             .tint(accent).preferredColorScheme(.dark)
         }
     }
@@ -265,7 +333,10 @@ struct SongLibraryView: View {
 // Stream long performances through the same audio element used on the website.
 struct SetAudioView: UIViewRepresentable {
     let url: URL
-    static func player(url: URL, muted: Bool = false) -> WKWebView {
+    var cookies: [HTTPCookie] = []
+    final class Coordinator { var loading: Task<Void, Never>? }
+    func makeCoordinator() -> Coordinator { Coordinator() }
+    static func player(url: URL, muted: Bool = false, cookies: [HTTPCookie] = [], coordinator: Coordinator = Coordinator()) -> WKWebView {
         let configuration = WKWebViewConfiguration()
         configuration.websiteDataStore = .nonPersistent()
         configuration.allowsInlineMediaPlayback = true
@@ -273,20 +344,31 @@ struct SetAudioView: UIViewRepresentable {
         let view = WKWebView(frame: .zero, configuration: configuration)
         view.isOpaque = false; view.backgroundColor = .black; view.scrollView.backgroundColor = .black
         let source = url.absoluteString.replacingOccurrences(of: "&", with: "&amp;").replacingOccurrences(of: "\"", with: "&quot;").replacingOccurrences(of: "<", with: "&lt;")
-        view.loadHTMLString("""
-        <!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; media-src data: https://www.jamloom.com https://*.r2.cloudflarestorage.com http://127.0.0.1:*; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'"><style>body{background:#101310;color:#fff;font:17px -apple-system;padding:32px 20px}audio{width:100%;margin:24px 0}p{line-height:1.5}button{font:inherit;padding:12px}#error{display:none}</style></head><body><h2>Full DJ set</h2><audio controls autoplay playsinline \(muted ? "muted" : "") src="\(source)"></audio><p>Stream the whole performance. Close this player to stop.</p><div id="error" role="status"><p>This set could not play. Check your connection and try again.</p><button onclick="document.getElementById('error').style.display='none';document.querySelector('audio').load();document.querySelector('audio').play().catch(()=>{})">Retry playback</button></div><script>document.querySelector('audio').addEventListener('error',()=>document.getElementById('error').style.display='block')</script></body></html>
-        """, baseURL: ["http", "https"].contains(url.scheme ?? "") ? url.deletingLastPathComponent() : nil)
+        let html = """
+        <!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; media-src data: https://www.jamloom.com https://*.r2.cloudflarestorage.com http://127.0.0.1:*; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'"><style>body{background:#101310;color:#fff;font:17px -apple-system;padding:32px 20px}audio{width:100%;margin:24px 0}p{line-height:1.5}button{font:inherit;padding:12px}#error{display:none}</style></head><body><h2>Your music</h2><audio controls autoplay playsinline \(muted ? "muted" : "") src="\(source)"></audio><p>Stream this recording. Close this player to stop.</p><div id="error" role="status"><p>This recording could not play. Check your connection and try again.</p><button onclick="document.getElementById('error').style.display='none';document.querySelector('audio').load();document.querySelector('audio').play().catch(()=>{})">Retry playback</button></div><script>document.querySelector('audio').addEventListener('error',()=>document.getElementById('error').style.display='block')</script></body></html>
+        """
+        let base = ["http", "https"].contains(url.scheme ?? "") ? url.deletingLastPathComponent() : nil
+        coordinator.loading = Task { @MainActor [weak view] in
+            guard let view else { return }
+            for cookie in cookies {
+                guard !Task.isCancelled else { return }
+                await view.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
+            }
+            guard !Task.isCancelled else { return }
+            view.loadHTMLString(html, baseURL: base)
+        }
         return view
     }
     func makeUIView(context: Context) -> WKWebView {
         #if DEBUG
-        return Self.player(url: url, muted: ProcessInfo.processInfo.arguments.contains("--ui-testing"))
+        return Self.player(url: url, muted: ProcessInfo.processInfo.arguments.contains("--ui-testing"), cookies: cookies, coordinator: context.coordinator)
         #else
-        return Self.player(url: url)
+        return Self.player(url: url, cookies: cookies, coordinator: context.coordinator)
         #endif
     }
     func updateUIView(_ uiView: WKWebView, context: Context) {}
-    static func dismantleUIView(_ uiView: WKWebView, coordinator: ()) {
+    static func dismantleUIView(_ uiView: WKWebView, coordinator: Coordinator) {
+        coordinator.loading?.cancel()
         uiView.pauseAllMediaPlayback(completionHandler: nil); uiView.stopLoading(); uiView.loadHTMLString("", baseURL: nil)
     }
 }

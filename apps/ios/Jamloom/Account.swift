@@ -45,7 +45,7 @@ final class AccountTransport: NSObject, URLSessionTaskDelegate, @unchecked Senda
         try JSONDecoder().decode(T.self, from: await requestData(path, method: method, body: body, query: query))
     }
     func requestData(_ path: String, method: String = "GET", body: Data? = nil, query: [String: String] = [:]) async throws -> Data {
-        let limit = ["/api/taste", CloudSongProduct.musicDNA.path].contains(path) ? TasteProfile.maximumBytes : 65536
+        let limit = path == "/api/favorites" ? 1024 * 1024 : ["/api/taste", CloudSongProduct.musicDNA.path].contains(path) ? TasteProfile.maximumBytes : 65536
         guard (body?.count ?? 0) <= limit else { throw RemixError.message("Account request is too large.") }
         var request = URLRequest(url: try requestURL(path, query: query))
         request.httpMethod = method; request.httpBody = body
@@ -73,6 +73,17 @@ final class AccountTransport: NSObject, URLSessionTaskDelegate, @unchecked Senda
             throw RemixError.message("Account service unavailable. Try again later.")
         }
         return data
+    }
+    func listeningURL(_ song: LibrarySong) throws -> URL {
+        if song.listeningKind == "catalogue" {
+            guard UUID(uuidString: song.id) != nil else { throw URLError(.badURL) }
+            return try requestURL("/api/catalogue/" + song.id + "/audio", query: [:])
+        }
+        if song.listeningKind == "aurowall" {
+            guard song.id.range(of: "^[a-f0-9]{24}$", options: .regularExpression) != nil else { throw URLError(.badURL) }
+            return try requestURL("/api/aurowall/" + song.id, query: [:])
+        }
+        return try publicSetURL(song.id)
     }
     func publicSetURL(_ id: String) throws -> URL {
         guard id.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil else { throw URLError(.badURL) }

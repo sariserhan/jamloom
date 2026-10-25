@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import {trackKind,type ListeningTrack} from '../../lib/listening';
 
 async function send(path:string,body:object={},method='POST') {
   const response=await fetch(path,{method,headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
@@ -61,8 +62,14 @@ export function PlaylistAdd({trackId,lists}:{trackId:string;lists:{id:string;tit
   return <form className="account-form" onSubmit={async event=>{event.preventDefault();const id=new FormData(event.currentTarget).get('playlist');setBusy(true);try{await send(`/api/playlists/${id}/${trackId}`);setMessage('Added to your private playlist.');}catch(e){setMessage((e as Error).message);}finally{setBusy(false);}}}>
     <label>Playlist<select name="playlist" aria-label="Playlist" disabled={busy}>{lists.map(list=><option key={list.id} value={list.id}>{list.title}</option>)}</select></label><button className="secondary" disabled={busy}>Add to playlist</button><p role="status">{message}</p></form>;
 }
-export function PlaylistRemove({id,track}:{id:string;track?:string}) {
+export function PlaylistRemove({id,track,reference}:{id:string;track?:string;reference?:Pick<ListeningTrack,'id'|'kind'>}) {
   const router=useRouter(),[message,setMessage]=useState(''),[busy,setBusy]=useState(false),[confirm,setConfirm]=useState(false);
-  if(!track&&!confirm)return <button className="secondary" onClick={()=>setConfirm(true)}>Delete playlist</button>;
-  return <><button className="secondary" disabled={busy} onClick={async()=>{setBusy(true);try{await send(`/api/playlists/${id}${track?'/'+track:''}`,{},'DELETE');if(!track)router.push('/playlists');router.refresh();}catch(e){setMessage((e as Error).message);}finally{setBusy(false);}}}>{track?'Remove from playlist':'Confirm playlist deletion'}</button>{!track&&<button className="text-button" onClick={()=>setConfirm(false)}>Keep playlist</button>}<p role="alert">{message}</p></>;
+  if(!track&&!reference&&!confirm)return <button className="secondary" onClick={()=>setConfirm(true)}>Delete playlist</button>;
+  return <><button className="secondary" disabled={busy} onClick={async()=>{setBusy(true);try{await send(`/api/playlists/${id}${track?'/'+track:''}`,reference?{track:{id:reference.id,kind:reference.kind}}:{},'DELETE');if(!track&&!reference)router.push('/playlists');router.refresh();}catch(e){setMessage((e as Error).message);}finally{setBusy(false);}}}>{track||reference?'Remove from playlist':'Confirm playlist deletion'}</button>{!track&&!reference&&<button className="text-button" onClick={()=>setConfirm(false)}>Keep playlist</button>}<p role="alert">{message}</p></>;
+}
+
+export function AddToPlaylist({track}:{track:ListeningTrack}){
+ const [open,setOpen]=useState(false),[lists,setLists]=useState<{id:string;title:string}[]>([]),[message,setMessage]=useState(''),[busy,setBusy]=useState(false);
+ async function load(){setOpen(!open);if(open)return;setBusy(true);try{const r=await fetch('/api/playlists');if(!r.ok)throw Error(r.status===401?'Sign in to use your playlists.':'Playlists could not load. Try again.');setLists(await r.json());setMessage('');}catch(e){setMessage((e as Error).message);}finally{setBusy(false);}}
+ return <div><button className="text-button" aria-label={`Add ${track.title} to playlist`} aria-expanded={open} onClick={load}>＋ Playlist</button>{open&&<form className="account-form" onSubmit={async e=>{e.preventDefault();const data=new FormData(e.currentTarget);setBusy(true);try{let id=String(data.get('playlist')??'');if(!id)id=(await send('/api/playlists',{title:data.get('title')})).id;await send('/api/playlists/'+id,{track:{id:track.id,kind:trackKind(track)}});setMessage('Added to your playlist.');}catch(e){setMessage((e as Error).message);}finally{setBusy(false);}}}><label>Playlist<select name="playlist" disabled={busy}>{lists.map(l=><option key={l.id} value={l.id}>{l.title}</option>)}<option value="">New playlist</option></select></label><label>New playlist name<input name="title" maxLength={80} placeholder="For the weekend"/></label><button className="secondary" disabled={busy}>Add song</button><p role="status">{message}</p><Link prefetch={false} href="/playlists">Your playlists</Link></form>}</div>;
 }

@@ -1,0 +1,15 @@
+{
+  "status": "PARTIAL operating economics; observed historical GPU charges reconciled",
+  "observedRentalUSD": 0.144,
+  "generatedSeconds": 1200,
+  "originalCapturedSeconds": 941.711,
+  "gpuUSDPerGeneratedHour": 0.432,
+  "gpuUSDPerCapturedHour": 0.5505,
+  "finalInvoice": false,
+  "newCompute": false,
+  "limitations": [
+    "Original captures predate the quiet-ending repair.",
+    "This includes observed rental startup and idle charges, but excludes other operating costs.",
+    "Full-cost scenarios reuse the previously reviewed assumptions; no new tariff or billing change."
+  ]
+}

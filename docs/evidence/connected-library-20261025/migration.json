@@ -1,0 +1,34 @@
+{
+  "target": "ep-flat-hill-b4q0lix4.c-6.us-east-2.aws.neon.tech/neondb",
+  "authorization": "Necessary reviewed migration preauthorized by owner",
+  "status": "PASS",
+  "before": {
+    "user": 1,
+    "playlists": 0,
+    "playlist_items": 0,
+    "tracks": 0,
+    "dna_song_jobs": 0,
+    "dj_recordings": 0,
+    "wallet_ledger_entries": 0
+  },
+  "backup": {
+    "path": "/Users/serhansari/Documents/projects/jamloom/build-neon/connected-library-20261025/before-0029.dump",
+    "bytes": 133112,
+    "sha256": "6a518a083f97023c648935399de5498e956d3762abf1b6826f6f14c97f832060"
+  },
+  "restoredBackup": "PASS",
+  "rehearsal": "PASS",
+  "applied": [
+    "0029_listening_collections.sql"
+  ],
+  "after": {
+    "user": 1,
+    "playlists": 0,
+    "playlist_items": 0,
+    "tracks": 0,
+    "dna_song_jobs": 0,
+    "dj_recordings": 0,
+    "wallet_ledger_entries": 0
+  },
+  "idempotent": true
+}

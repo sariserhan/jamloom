@@ -1,0 +1,52 @@
+Test Suite 'Selected tests' started at 2026-10-25 05:05:51.528.
+Test Suite 'JamloomTests.xctest' started at 2026-10-25 05:05:51.529.
+Test Suite 'AccountTests' started at 2026-10-25 05:05:51.529.
+Test Case '-[JamloomTests.AccountTests testAccountBalanceTasteConflictAndSignout]' started.
+Test Case '-[JamloomTests.AccountTests testAccountBalanceTasteConflictAndSignout]' passed (0.059 seconds).
+Test Case '-[JamloomTests.AccountTests testAccountDeletionRequestRequiresSignInAndKeepsAccountUntilReviewed]' started.
+Test Case '-[JamloomTests.AccountTests testAccountDeletionRequestRequiresSignInAndKeepsAccountUntilReviewed]' passed (0.018 seconds).
+Test Case '-[JamloomTests.AccountTests testActualLocalAccountAndProfileSync]' started.
+Test Case '-[JamloomTests.AccountTests testActualLocalAccountAndProfileSync]' skipped (0.006 seconds).
+Test Case '-[JamloomTests.AccountTests testActualPublicWebsiteSongsWithoutSignIn]' started.
+Test Case '-[JamloomTests.AccountTests testActualPublicWebsiteSongsWithoutSignIn]' skipped (0.001 seconds).
+Test Case '-[JamloomTests.AccountTests testAllSongsIncludesTheCompleteWebsiteManifestsAndPublicPages]' started.
+Test Case '-[JamloomTests.AccountTests testAllSongsIncludesTheCompleteWebsiteManifestsAndPublicPages]' passed (0.046 seconds).
+Test Case '-[JamloomTests.AccountTests testCatalogueSearchUsesPublicRouteWithoutSigningIn]' started.
+Test Case '-[JamloomTests.AccountTests testCatalogueSearchUsesPublicRouteWithoutSigningIn]' passed (0.016 seconds).
+Test Case '-[JamloomTests.AccountTests testCloudDownloadFollowsOnlySignedSongStorageWithoutCredentials]' started.
+Test Case '-[JamloomTests.AccountTests testCloudDownloadFollowsOnlySignedSongStorageWithoutCredentials]' passed (0.082 seconds).
+Test Case '-[JamloomTests.AccountTests testCloudUnavailableAndNoConsentNeverUpload]' started.
+Test Case '-[JamloomTests.AccountTests testCloudUnavailableAndNoConsentNeverUpload]' passed (0.010 seconds).
+Test Case '-[JamloomTests.AccountTests testCommunityCollectionsAndPaginationWithoutSignIn]' started.
+Test Case '-[JamloomTests.AccountTests testCommunityCollectionsAndPaginationWithoutSignIn]' passed (0.004 seconds).
+Test Case '-[JamloomTests.AccountTests testFavoritesSyncAcrossClientsAndKeepFailedWritesVisible]' started.
+Test Case '-[JamloomTests.AccountTests testFavoritesSyncAcrossClientsAndKeepFailedWritesVisible]' passed (0.022 seconds).
+Test Case '-[JamloomTests.AccountTests testMusicDNAQuotesCompleteFavoritesAndRecoversAnInterruptedSubmission]' started.
+Test Case '-[JamloomTests.AccountTests testMusicDNAQuotesCompleteFavoritesAndRecoversAnInterruptedSubmission]' passed (0.162 seconds).
+Test Case '-[JamloomTests.AccountTests testNativeCloudFlowQuotesBeforeSubmissionAndKeepsStorageUnauthenticated]' started.
+Test Case '-[JamloomTests.AccountTests testNativeCloudFlowQuotesBeforeSubmissionAndKeepsStorageUnauthenticated]' passed (0.077 seconds).
+Test Case '-[JamloomTests.AccountTests testOversizedUnauthorizedAndInvalidEndpointResponses]' started.
+Test Case '-[JamloomTests.AccountTests testOversizedUnauthorizedAndInvalidEndpointResponses]' passed (0.011 seconds).
+Test Case '-[JamloomTests.AccountTests testPublicDJSetsValidateAndPersistAsFavorites]' started.
+Test Case '-[JamloomTests.AccountTests testPublicDJSetsValidateAndPersistAsFavorites]' passed (0.006 seconds).
+Test Case '-[JamloomTests.AccountTests testPublicSongOutageDoesNotAskForOwnerSignIn]' started.
+Test Case '-[JamloomTests.AccountTests testPublicSongOutageDoesNotAskForOwnerSignIn]' passed (0.010 seconds).
+Test Case '-[JamloomTests.AccountTests testSongFavoritesPersistWithoutAudioAndStayAccountScoped]' started.
+Test Case '-[JamloomTests.AccountTests testSongFavoritesPersistWithoutAudioAndStayAccountScoped]' passed (0.004 seconds).
+Test Case '-[JamloomTests.AccountTests testSongTransportKeepsOriginQueryAndAcceptedResponseBoundaries]' started.
+Test Case '-[JamloomTests.AccountTests testSongTransportKeepsOriginQueryAndAcceptedResponseBoundaries]' passed (0.002 seconds).
+Test Suite 'AccountTests' passed at 2026-10-25 05:05:52.070.
+	 Executed 17 tests, with 2 tests skipped and 0 failures (0 unexpected) in 0.536 (0.541) seconds
+Test Suite 'SetPlayerTests' started at 2026-10-25 05:05:52.071.
+Test Case '-[JamloomTests.SetPlayerTests testAuthenticatedPlayerCopiesCookiesAndCancellationDoesNotRestartAudio]' started.
+Test Case '-[JamloomTests.SetPlayerTests testAuthenticatedPlayerCopiesCookiesAndCancellationDoesNotRestartAudio]' passed (0.081 seconds).
+Test Case '-[JamloomTests.SetPlayerTests testWebMSetPlaysMutedAndStopsOnDismissal]' started.
+Test Case '-[JamloomTests.SetPlayerTests testWebMSetPlaysMutedAndStopsOnDismissal]' passed (2.249 seconds).
+Test Suite 'SetPlayerTests' passed at 2026-10-25 05:05:54.401.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 2.330 (2.330) seconds
+Test Suite 'JamloomTests.xctest' passed at 2026-10-25 05:05:54.401.
+	 Executed 19 tests, with 2 tests skipped and 0 failures (0 unexpected) in 2.866 (2.873) seconds
+Test Suite 'Selected tests' passed at 2026-10-25 05:05:54.401.
+	 Executed 19 tests, with 2 tests skipped and 0 failures (0 unexpected) in 2.866 (2.873) seconds
+	/tmp/jamloom-library-ios/Logs/Test/Test-Jamloom-2026.10.25_05-05-14--0400.xcresult
+** TEST SUCCEEDED **

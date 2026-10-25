@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-25T08:58:25.711Z",
+  "billing": "test",
+  "runtime": "Held",
+  "activeListeners": 0,
+  "listenerLimit": 2,
+  "freeListenerSlots": 2,
+  "workers": [],
+  "jobs": [],
+  "qualification": "Runtime health only. Continuous hosting, provider invoice reconciliation, musical and venue acceptance remain separate release gates.",
+  "costBoundary": "Observed rental charges include idle time; allocated costs cover metered jobs. Neither is a final invoice or complete operating cost."
+}

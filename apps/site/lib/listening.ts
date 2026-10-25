@@ -13,3 +13,6 @@ export function readFavorites(raw:string|null):ListeningTrack[]{
 }
 
 export function publicCredit(segment:string){try{const credit=decodeURIComponent(segment);return credit.trim()&&credit.length<=80&&!/[\x00-\x1f\x7f]/.test(credit)?credit:null;}catch{return null;}}
+
+export function trackKind(track:ListeningTrack){return track.kind??(/^[a-f0-9]{24}$/.test(track.id)?'aurowall':track.url?.startsWith('/api/improvise/')?'improvise':track.url?.startsWith('/api/taste/')?'music-dna':track.url?.startsWith('/api/ai-dj/')?'sets':track.url?.startsWith('/api/aurowall/')?'aurowall':'catalogue');}
+export function trackKey(track:ListeningTrack){return trackKind(track)+':'+track.id;}

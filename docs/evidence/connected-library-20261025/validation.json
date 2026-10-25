@@ -1,0 +1,32 @@
+{
+  "status": "PASS scoped implementation checks",
+  "websiteUnit": {
+    "passed": 137,
+    "failed": 0
+  },
+  "databaseSessionAndLibrary": {
+    "passed": 23,
+    "failed": 0,
+    "legacyPlaylistAdditionalCheck": "PASS"
+  },
+  "productionBuild": "PASS",
+  "clientSecretAudit": {
+    "status": "PASS",
+    "files": 47
+  },
+  "browsers": [
+    "Chromium",
+    "WebKit"
+  ],
+  "privateSongOwnerOnly": "PASS HTTP and SQL fixture",
+  "betaInviteAndNoCapacity": "PASS production-build HTTP",
+  "iosSimulator": {
+    "tests": 19,
+    "skippedOptionalHTTP": 2,
+    "failures": 0,
+    "physicalRelease": "SKIPPED by owner"
+  },
+  "productionMigration": "PASS restored backup rehearsal and idempotent application",
+  "newCompute": false,
+  "liveBillingChanged": false
+}

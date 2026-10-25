@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-25T09:01:51.599Z",
+  "status": "PASS read-only reconciliation",
+  "instance": 57630306,
+  "inventory": [],
+  "observedCostMicros": 144000,
+  "evidenceSha256": "bcef56a6bf3d9ae4b72d3470952b97eeeaf469a702929516ac20899953623e22",
+  "finalInvoice": false,
+  "newCompute": false
+}

@@ -105,7 +105,7 @@ try{
   assert.equal((await anonymous.request.get(base+`/api/catalogue/${track.id}/audio`)).status(),404);await lp.goto(base+`/playlists/${list.id}`);await lp.getByText('No available tracks in this playlist.',{exact:true}).waitFor();
   assert.deepEqual(await (await owner.request.get(base+`/api/library/${track.id}/audio`)).body(),wav);
   const unavailable=await (await listener.request.get(base+`/api/playlists/${list.id}`)).json();
-  assert.deepEqual(unavailable.unavailable,[{id:track.id}]);assert.deepEqual(unavailable.tracks,[]);
+  assert.deepEqual(unavailable.unavailable,[{kind:'catalogue',id:track.id}]);assert.deepEqual(unavailable.tracks,[]);
   await lp.getByRole('heading',{name:'Unavailable tracks',exact:true}).waitFor();
   assert.equal(await lp.getByText('Test credit',{exact:true}).count(),0);
   await shot(lp,kind+'-unavailable-desktop');await lp.setViewportSize({width:390,height:844});

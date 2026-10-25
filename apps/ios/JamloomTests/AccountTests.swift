@@ -124,6 +124,40 @@ private final class AccountProtocol: URLProtocol {
         let bad = try JSONDecoder().decode(LibraryPage.self, from: Data(#"{"songs":[{"id":"../account","title":"Invalid","language":"en"}],"next":null}"#.utf8))
         XCTAssertThrowsError(try bad.validated(product: .musicDNA))
     }
+    func testFavoritesSyncAcrossClientsAndKeepFailedWritesVisible() async throws {
+        let suite = "jamloom-sync-test-" + UUID().uuidString, defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let transport = transport(), account = AccountModel(transport: transport), first = SongLibraryModel(defaults: defaults), second = SongLibraryModel(defaults: defaults)
+        defer { transport.session.invalidateAndCancel() }
+        var saved = false, fail = false
+        AccountProtocol.headers = ["Content-Type": "application/json"]
+        AccountProtocol.handle = { request in
+            if request.url?.path == "/api/auth/sign-in/email" { return (200, Data(#"{"user":{"id":"owner","email":"test@example.test"}}"#.utf8)) }
+            if request.url?.path == "/api/account" { return (200, Data(#"{"user":{"id":"owner","email":"test@example.test","emailVerified":true},"balance":{"available":10,"reserved":0},"purchasesReleased":false}"#.utf8)) }
+            XCTAssertEqual(request.url?.path, "/api/favorites")
+            if request.httpMethod != "GET" {
+                if fail { return (503, Data(#"{"error":"Unavailable"}"#.utf8)) }
+                saved = request.httpMethod == "POST"; return (200, Data(#"{"saved":true}"#.utf8))
+            }
+            let track = #"{"id":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","kind":"sets","title":"Party","language":""}"#
+            return (200, Data("{\"owner\":\"owner\",\"tracks\":[\(saved ? track : "")],\"unavailable\":[]}".utf8))
+        }
+        await account.signIn(email: "test@example.test", password: "test-password-1234")
+        XCTAssertNotNil(account.snapshot, account.message)
+        let song = try SyncedMusic(id: String(repeating: "a", count: 32), kind: "sets", title: "Party", language: "", mood: nil).song()
+        XCTAssertEqual(song.key, "ai-dj:" + song.id)
+        await first.toggleFavorite(song, account: account); await second.syncFavorites(account: account)
+        XCTAssertEqual(first.favorites, second.favorites); XCTAssertEqual(second.favorites.count, 1)
+        fail = true; await second.toggleFavorite(song, account: account); XCTAssertEqual(second.favorites.count, 1); XCTAssertTrue(second.favoriteSync.contains("not saved"))
+        fail = false; await second.toggleFavorite(song, account: account); await first.syncFavorites(account: account); XCTAssertTrue(first.favorites.isEmpty)
+        for kind in ["private", "catalogue", "aurowall"] { XCTAssertThrowsError(try SyncedMusic(id: "../escape", kind: kind, title: "Invalid", language: nil, mood: nil).song()) }
+        first.loadFavorites(owner: nil); first.toggleFavorite(song)
+        await first.load(.favorites, account: account); XCTAssertEqual(first.deviceFavorites.count, 1); XCTAssertTrue(first.favorites.isEmpty)
+        fail = true; await first.importDeviceFavorites(account: account); XCTAssertEqual(first.deviceFavorites.count, 1)
+        fail = false; await first.importDeviceFavorites(account: account); XCTAssertEqual(first.favorites.count, 1)
+        await first.load(.favorites, account: account); XCTAssertTrue(first.deviceFavorites.isEmpty)
+        account.reset(); await first.load(.favorites, account: account); XCTAssertTrue(first.favorites.isEmpty)
+    }
     func testAccountDeletionRequestRequiresSignInAndKeepsAccountUntilReviewed() async throws {
         let transport = transport(), account = AccountModel(transport: transport)
         var requested = false, requests = 0

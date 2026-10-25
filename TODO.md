@@ -1,3 +1,16 @@
+## Connected library and AI DJ beta preparation — 2026-10-25
+
+**PASS implementation, isolated browser/database/simulator verification and production migration; PARTIAL operational AI DJ beta. Website release verification in progress.** Owner selected favorites synchronization, existing-playlist integration and AI DJ beta preparation, explicitly skipping the first-user trial and mobile release checks.
+
+- [x] Sync account favorites across web/iPhone; preserve local favorites with explicit import and account isolation.
+- [x] Extend existing private playlists to Community songs and recordings; play through the shared queue.
+- [x] Verify unavailable/private tracks, concurrent saves/removals, failed requests and sign-out behavior.
+- [x] Rehearse and apply the additive collection migration with backup and target checks.
+- [x] Add read-only AI DJ worker/capacity/cost readiness, rehearse failure recovery and prepare the bounded qualification packet.
+- [x] Record verification and remaining hosted/musical gates. No new compute or live billing authorized.
+
+[Connected library report](docs/connected-library.md), [beta handoff](docs/ai-dj-limited-beta.md). Mobile installation/App Store work and first-user trial are skipped; beta activation, new compute and live billing remain off.
+
 ## Website discovery and release — 2026-10-25
 
 **PASS implementation, GitHub deployment, full platform CI and live browser/API verification.** Owner explicitly authorized all eight improvements and GitHub push/deployment after verification, superseding the earlier no-push instruction. No new GPU spending, live purchases or AI DJ service activation is included.

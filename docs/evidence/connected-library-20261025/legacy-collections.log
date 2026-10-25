@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: listening references reject untrusted metadata, routes and malformed identities
+ok 1 - listening references reject untrusted metadata, routes and malformed identities
+  ---
+  duration_ms: 2.3685
+  type: 'test'
+  ...
+# Subtest: account favorites and existing playlists sync by identity without metadata leaks or lost removals
+ok 2 - account favorites and existing playlists sync by identity without metadata leaks or lost removals
+  ---
+  duration_ms: 410.243833
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 738.105875
