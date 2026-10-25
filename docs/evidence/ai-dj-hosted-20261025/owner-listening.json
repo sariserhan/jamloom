@@ -1,0 +1,19 @@
+{
+  "status": "PASS owner listening for both full-set listening copies",
+  "ownerStatement": "they are good",
+  "scope": "Public and private full sessions on the hosted-sessions review page; not a separate rating of each numbered track or live deck choreography",
+  "audio": [
+    {
+      "visibility": "public",
+      "file": "public-mixed.mp3",
+      "sha256": "5f053c38c4b3b4d7e4d96bab00d5775bd220e508bfe298ba056c5e2569e94424"
+    },
+    {
+      "visibility": "private",
+      "file": "private-mixed.mp3",
+      "sha256": "32306d56a547abb30eaa6ecafbfe33b1c03dcf91815fd580f84a49919fb1f22a"
+    }
+  ],
+  "liveDeckAcceptance": "NOT RUN",
+  "venueAcceptance": "NOT RUN"
+}

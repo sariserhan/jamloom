@@ -14,7 +14,7 @@ Review: <http://localhost:8766/hosted-sessions/review/>. Restart server: `python
 - [x] Run two fresh independent listeners, capacity refusal, moods, Stop and credit exhaustion.
 - [x] Decode complete R2 captures, check continuity/privacy, reconcile cost and verify provider cleanup. Retain initial fixture-cleanup failure and successful recovery.
 - [x] Record operational limits and keep public beta/live billing off.
-- [ ] Human review of this new batch, including the private set's source-origin quiet passage near 3:44. Continuous hosting and venue acceptance remain separate; first-user trial and mobile release checks stay skipped.
+- [x] Owner accepted both full listening sets: “they are good.” Approval applies to the audio copies, not live deck choreography or separate individual-track ratings. Continuous hosting and venue acceptance remain separate; first-user trial and mobile release checks stay skipped.
 
 [Execution report and evidence](ai-dj-hosted-operation.md).
 
