@@ -4,6 +4,7 @@ import {createPool} from '../lib/database';import {migrate} from '../lib/migrati
 import {DJRecordings,recordingInput,DJ_RECORDING_BYTES} from '../lib/dj-recordings';
 import {djRecordingRequest} from '../lib/dj-recordings-http';
 import {DJ_PART_BYTES} from '../lib/dj-session-store';
+import {DJSessions} from '../lib/dj-sessions';
 const id=()=>randomUUID().replaceAll('-',''),sha=(b:Buffer)=>createHash('sha256').update(b).digest('hex');
 test('recording metadata rejects missing permission, malformed identity and unsafe bounds',()=>{
  const input={id:id(),title:'Rooftop Friday',mime:'audio/mp4',bytes:32,sha256:'a'.repeat(64),seconds:1,consent:true};
@@ -19,6 +20,8 @@ test('isolated Postgres: owned multipart recordings, retry recovery, quotas and 
   async partURL(key:string,upload:string,number:number,bytes:number){calls++;assert.equal(uploads.get(upload)?.key,key);return `https://storage.invalid/part?number=${number}&bytes=${bytes}`;},
   async complete(key:string,upload:string,count:number,bytes:number){calls++;completions++;const parts=uploads.get(upload)!.parts;assert.equal(parts.size,count);const data=Buffer.concat(Array.from({length:count},(_,i)=>parts.get(i+1)!));assert.equal(data.length,bytes);objects.set(key,data);uploads.delete(upload);if(crash){crash=false;throw Error('lost completion response');}return {bytes,mime:'audio/mp4',etag:'etag',parts:count};},
   async verify(key:string,bytes:number,checksum:string){calls++;const b=objects.get(key);if(!b)return false;assert.equal(b.length,bytes);assert.equal(sha(b),checksum);return true;},
+  async exists(key:string,bytes:number){const b=objects.get(key);if(!b)return false;assert.equal(b.length,bytes);return true;},
+  async verifyPart(key:string,number:number,bytes:number,total:number,checksum:string){const b=objects.get(key)!;assert.equal(b.length,total);assert.equal(sha(b.subarray((number-1)*DJ_PART_BYTES,(number-1)*DJ_PART_BYTES+bytes)),checksum);},
   async abort(key:string,upload:string){calls++;uploads.delete(upload);},async remove(key:string){calls++;if(failDelete)throw Error('storage unavailable');objects.delete(key);},
   async playbackURL(key:string,download=false,title=''){calls++;assert.ok(objects.has(key));return `https://storage.invalid/audio?download=${download}&title=${encodeURIComponent(title)}`;},
  };
@@ -69,6 +72,33 @@ test('isolated Postgres: owned multipart recordings, retry recovery, quotas and 
    await assert.rejects(pool.query('DELETE FROM "user" WHERE id=$1',['alice']),/foreign key/);
    await assert.rejects(service.purgeOwner('alice'),/Suspend/);await pool.query('UPDATE "user" SET suspended=true WHERE id=$1',['alice']);await assert.rejects(service.reserve('alice',{...input,id:id()}),/sign-in/);
    await service.purgeOwner('alice');await pool.query('DELETE FROM "user" WHERE id=$1',['alice']);
+  });
+  await t.test('progressive parts are immutable, ordered, private until verified, and allow a two-hour receipt',async()=>{
+   const sessions=new DJSessions(pool,'stream-test-secret-1234567890123456',{local:true} as any,{costCapMicros:50000,maxRuntimeMs:60000,hourlyMicros:600000,fixedCostMicros:40000});
+   await sessions.wallet.grant('bob',{provider:'stripe_test',receipt:id(),credits:100,netMicros:5000000});
+   const choice={id:id(),title:'Long party',visibility:'public',style:'house',energy:4};const quote=await sessions.quote('bob',choice);await sessions.start('bob',choice,quote.token);
+   const recording=id(),value={id:recording,sessionId:choice.id,title:choice.title,mime:'audio/mp4'};
+   await service.stream('bob',value);await service.stream('bob',value);assert.equal((await service.list('bob')).length,1);
+   await assert.rejects(service.stream('quota',value),/not found/);await assert.rejects(service.stream('bob',{...value,title:'changed'}),/changed/);
+   const first={number:1,bytes:DJ_PART_BYTES,sha256:sha(bytes.subarray(0,DJ_PART_BYTES))},last={number:2,bytes:71,sha256:sha(bytes.subarray(DJ_PART_BYTES))};
+   await assert.rejects(service.streamPart('bob',recording,last),/ordered/);await service.streamPart('bob',recording,first);await service.streamPart('bob',recording,first);
+   await assert.rejects(service.streamPart('bob',recording,{...first,sha256:'f'.repeat(64)}),/changed/);await service.streamPart('bob',recording,last);await assert.rejects(service.streamPart('bob',recording,{...last,number:3}),/ordered/);
+   await assert.rejects(service.part('bob',recording,1),/Streaming/);await assert.rejects(service.complete('bob',recording),/Streaming/);await assert.rejects(service.sealStream('bob',recording,7200),/Finished/);
+   // Fixture proof of an ended, paid generated session; this is not two hours of real-time audio.
+   await pool.query("UPDATE dj_sessions SET state='ended',created_at=now()-interval '2 hours',ended_at=now() WHERE id=$1",[choice.id]);
+   await pool.query("UPDATE dj_session_batches SET state='completed',played_at=now() WHERE session_id=$1",[choice.id]);
+   await pool.query("UPDATE generation_reservations SET status='completed' WHERE id=(SELECT reservation_id FROM dj_session_batches WHERE session_id=$1)",[choice.id]);
+   await service.sealStream('bob',recording,7200);await service.sealStream('bob',recording,7200);await assert.rejects(service.sealStream('bob',recording,7201),/changed/);await assert.rejects(service.streamPart('bob',recording,last),/finishing/);
+   await upload(recording);crash=true;await assert.rejects(service.completeStream('bob',recording),/lost completion/);assert.equal((await service.publicList()).sets.length,0);
+   assert.equal((await service.completeStream('bob',recording)).ready,false);assert.equal((await service.publicList()).sets.length,0);
+   const key=[...objects.keys()][0],clean=objects.get(key)!;objects.set(key,Buffer.from(clean));objects.get(key)![DJ_PART_BYTES]^=1;await assert.rejects(service.completeStream('bob',recording));objects.set(key,clean);
+   assert.equal((await service.completeStream('bob',recording)).ready,true);assert.equal((await service.completeStream('bob',recording)).ready,true);assert.equal((await service.publicList()).sets[0].id,recording);
+   await service.remove('bob',recording);assert.equal(objects.size,0);
+   const interruptedSession={...choice,id:id()},interruptedQuote=await sessions.quote('bob',interruptedSession);await sessions.start('bob',interruptedSession,interruptedQuote.token);
+   const recovered=id(),prefix=Buffer.from('captured prefix');await service.stream('bob',{...value,id:recovered,sessionId:interruptedSession.id});await service.streamPart('bob',recovered,{number:1,bytes:prefix.length,sha256:sha(prefix)});
+   await pool.query("UPDATE dj_sessions SET state='ended',created_at=now()-interval '2 minutes',ended_at=now() WHERE id=$1",[interruptedSession.id]);await pool.query("UPDATE dj_session_batches SET state='completed',played_at=now() WHERE session_id=$1",[interruptedSession.id]);await pool.query("UPDATE generation_reservations SET status='completed' WHERE id=(SELECT reservation_id FROM dj_session_batches WHERE session_id=$1)",[interruptedSession.id]);
+   await service.sealStream('bob',recovered,120,true);await assert.rejects(service.sealStream('bob',recovered,120,false),/changed/);await upload(recovered,prefix);assert.equal((await service.completeStream('bob',recovered)).ready,true);
+   assert.equal((await service.publicList()).sets.length,0);const own=(await service.list('bob')).find(r=>r.id===recovered);assert.equal(own.interrupted,true);assert.ok(own.withdrawn_at);await service.remove('bob',recovered);
   });
  }finally{await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();}
 });

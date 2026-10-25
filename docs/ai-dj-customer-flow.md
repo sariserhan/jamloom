@@ -5,6 +5,11 @@ the rolling deck, immutable Public/Private selection, credit settlement and one
 named automatic R2 recording. Actual paid GPU generation is not connected or
 qualified for customers. No push, deployment, live billing or launch activation.
 
+**Follow-through:** The authorized replacement now produced three tracks and the
+progressive recording implementation passes technical checks. Persistent customer
+GPU dispatch remains unfinished. See the [current report](ai-dj-streaming-recordings.md);
+the attempt and test table below retain this earlier increment's scope.
+
 ## Implemented
 
 - Owner-scoped session quote/start/status/audio/next/played/heartbeat/stop APIs.
@@ -61,26 +66,20 @@ local PostgreSQL and the existing dedicated R2 credentials; speakers are muted.
 From the root use `.venv-analysis/bin/python -m unittest
 tests/test_dj_track_worker.py tests/test_vast_trial.py`.
 
-## Remaining work
+## Remaining work (updated after replacement qualification)
 
-1. The authorized qualification attempt failed at provider startup, before model
-   installation or inference. A usable host and a successful bounded rerun are
-   still needed before audio, render timing and listening can be evaluated.
-   The plan caps one GPU and 40 minutes, with an early $4 debit stop inside the
-   $6 authorization. Provider/network outages can delay deletion; this is not a
-   provider-enforced hard spending cap.
-2. Connect a persistent GPU worker to the customer queue with per-session cost
+1. Connect a persistent GPU worker to the customer queue with per-session cost
    allocation and recovery. The current remote watchdog settles a batch only
-   after rental shutdown; it does not yet support a continuously warm customer
-   generation service. Do not enable Start based on these local tests alone.
-3. Replace the current 60-minute/96 MiB in-memory recorder with progressive
-   durable upload before claiming unlimited sessions or robust long-party capture.
-   A reload during active playback is not resumable; heartbeat expiry stops the
-   orphaned session. Recovery verified here covers an already-finished recording.
-4. Qualify real GPU playback, credit exhaustion, long-session endurance and
-   musical transitions. Fresh seeds and exact-byte duplicate rejection do not
-   establish musical originality or professional DJ quality. Learned DJ expertise
-   and commercial quality are not certified by the procedural test renderer.
+   after rental shutdown; it does not support a continuously warm customer
+   generation service. Do not enable Start based on the isolated qualification.
+2. Qualify live GPU customer playback, credit exhaustion, human musical quality,
+   verified beat/phrase transitions and multi-hour recording/venue endurance.
+   Fresh seeds and exact-byte duplicate rejection do not establish musical
+   originality or professional DJ quality.
+
+The replacement qualification and progressive recording code are now implemented
+and technically checked; their precise evidence and limits are in the
+[current report](ai-dj-streaming-recordings.md).
 
 See [rolling worker](ai-dj-rolling-worker.md), [session policy](ai-dj-session-policy.md)
 and [GPU plan](evidence/ai-dj-customer-flow-20261024/gpu-plan.json).

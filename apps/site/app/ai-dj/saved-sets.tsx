@@ -1,6 +1,6 @@
 import {useEffect,useRef,useState} from 'react';
 import {pendingSet,stageSet,forgetSet,uploadSet,recordingAPI,type RecordedSet,type PendingSet} from '../../lib/dj-recording-upload';
-type Saved={id:string;title:string;seconds:number;state:string;created_at:string;visibility:'public'|'private';withdrawn_at:string|null};
+type Saved={id:string;title:string;seconds:number;state:string;created_at:string;visibility:'public'|'private';withdrawn_at:string|null;interrupted?:boolean};
 export function SavedSets({owner,take}:{owner:string|null;take:RecordedSet|null}){
  const [items,setItems]=useState<Saved[]>([]),[pending,setPending]=useState<PendingSet|null>(null),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  const controller=useRef<AbortController|null>(null),handled=useRef<RecordedSet|null>(null),alive=useRef(false),active=useRef(false);
@@ -35,7 +35,7 @@ export function SavedSets({owner,take}:{owner:string|null;take:RecordedSet|null}
    {pending&&<div className="aidj-record-actions"><button disabled={busy} onClick={()=>void save(pending)}>Retry save</button><button disabled={busy} onClick={()=>void discard()}>Discard pending save</button></div>}
    <p role="status">{message}</p>
    {items.length===0&&<p>No saved sets yet.</p>}
-   <ul className="aidj-saved-list">{items.map(item=><li key={item.id}><strong>{item.title}</strong><small>{item.visibility==='private'?'Private':item.withdrawn_at?'Not listed':'Public'}</small><span>{Math.round(item.seconds/60)} min · {new Date(item.created_at).toLocaleDateString()}</span>
+   <ul className="aidj-saved-list">{items.map(item=><li key={item.id}><strong>{item.title}</strong><small>{item.visibility==='private'?'Private':item.withdrawn_at?'Not listed':'Public'}</small><span>{item.interrupted?'Interrupted · ':''}{item.seconds<60?`${Math.round(item.seconds)} sec`:`${Math.round(item.seconds/60)} min`} · {new Date(item.created_at).toLocaleDateString()}</span>
     {item.state==='ready'?<><audio controls preload="none" aria-label={'Play '+item.title} src={'/api/ai-dj/recordings/'+item.id+'/audio'}/><a href={'/api/ai-dj/recordings/'+item.id+'/audio?download=1'}>Download set</a></>:<span>{item.state==='deleting'?'Deletion needs retry':'Saving not completed'}</span>}
     {item.visibility==='public'&&!item.withdrawn_at&&<button disabled={busy} onClick={()=>void withdraw(item.id)}>Remove from public page</button>}
     <button disabled={busy} onClick={()=>void remove(item.id)} aria-label={'Delete saved set '+item.title}>Delete saved set</button></li>)}</ul>

@@ -1,6 +1,6 @@
 import {recordingTitle,recordingFileStem} from '../set-recording-name.js';
 import test from 'node:test';import assert from 'node:assert/strict';import vm from 'node:vm';import fs from 'node:fs';
-function fixture(onComplete=()=>{}){
+function fixture(onComplete=()=>{},streamSink=null){
  const nodes=new Map(),timers=new Map(),messages=[];let now=0,next=0,meter,recorder,allowed=true,title='',unwatched=0,modules=0; const blobs=new Map(),listeners=new Set();
  const node=id=>{if(!nodes.has(id))nodes.set(id,{checked:true,pause(){},load(){},removeAttribute(){},addEventListener(){},removeEventListener(){}});return nodes.get(id);};
  const scope={recordingTitle,recordingFileStem,document:{getElementById:node,addEventListener(){}},window:{addEventListener(type,fn){listeners.add(fn);},removeEventListener(type,fn){listeners.delete(fn);}},setTimeout(fn,ms){const id=++next;timers.set(id,{at:now+ms,fn});return id;},clearTimeout(id){timers.delete(id);},resumeAudio:async()=>{},sha256:async()=>"a".repeat(64),URL:{createObjectURL(blob){const url="blob:"+ ++next;blobs.set(url,blob);return url;},revokeObjectURL(url){blobs.delete(url);}},Blob,
@@ -11,7 +11,7 @@ function fixture(onComplete=()=>{}){
  const source=fs.readFileSync(new URL('../set-recording.js',import.meta.url),'utf8').replace(/^import .*;\n/gm,'').replaceAll('export ','');
  vm.runInNewContext(source+'\nglobalThis.attach=attachSetRecording;',scope);
  let context={audioWorklet:{addModule:async()=>{modules++;}},createMediaStreamDestination:()=>({stream:{getTracks:()=>[]}}),createGain:()=>({gain:{},connect(){},disconnect(){}})};
- const api=scope.attach({graph(){},context:()=>context,mixer:()=>({meter:{connect(){},disconnect(){}}}),emit(){},canStart:()=>allowed,getTitle:()=>title,onComplete});
+ const api=scope.attach({graph(){},context:()=>context,mixer:()=>({meter:{connect(){},disconnect(){}}}),emit(){},canStart:()=>allowed,getTitle:()=>title,onComplete,streamSink});
  return {api,node,blobs,listeners,name(value){title=value;},get unwatched(){return unwatched;},get modules(){return modules;},get recorder(){return recorder;},allow(value){allowed=value;api.refresh();},newContext(){context={...context};},async complete(){const waiting=api.stop();meter.port.onmessage({data:{type:'stopped',frames:48000,rate:48000,gaps:0,clockStalls:0}});recorder.ondataavailable({data:new Blob(['captured-audio'])});await recorder.onstop();await waiting;},async start(){const ready=node('set-record-start').onclick();await new Promise(setImmediate);meter.port.onmessage({data:{type:'ready'}});assert.equal(await ready,true);},advance(seconds){now+=seconds*1000;for(const [id,t]of timers)if(t.at<=now){timers.delete(id);t.fn();}},sample(seconds){meter.port.onmessage({data:{type:'meter',frames:seconds*48000,rate:48000}});},get state(){return recorder.state;},messages};
 }
 test('one-hour cap follows captured frames despite a short wall-clock delay',async()=>{
@@ -20,6 +20,16 @@ test('one-hour cap follows captured frames despite a short wall-clock delay',asy
 });
 test('wall-clock safety deadline still stops a stalled recorder',async()=>{
  const h=fixture();await h.start();h.advance(3900);assert.equal(h.state,'inactive');assert.equal(h.messages.at(-1).type,'stop');
+});
+test('durable streaming capture passes the local hour/byte caps without retaining a full Blob',async()=>{
+ let bytes=0,seconds=0,finished=false;
+ const h=fixture(()=>assert.fail('Legacy full-Blob callback must not run'),{start:async()=>{},write:async b=>{bytes+=b.size;},sample:async s=>{seconds=s;},finish:async()=>{finished=true;}});
+ await h.start();h.advance(7200);h.sample(7200);assert.equal(h.state,'recording');assert.equal(seconds,7200);
+ const chunk=new Blob([new Uint8Array(1024*1024)]);for(let i=0;i<100;i++)h.recorder.ondataavailable({data:chunk});assert.equal(bytes,100*1024*1024);assert.equal(h.blobs.size,0);
+ await h.complete();assert.ok(finished);assert.equal(h.blobs.size,0);h.api.dispose();
+});
+test('streaming storage failure stops capture and leaves recovery to the durable sink',async()=>{
+ const h=fixture(undefined,{start:async()=>{},write:async()=>{throw Error('Durable copy unavailable');},sample:async()=>{},finish:async()=>{}});await h.start();h.recorder.ondataavailable({data:new Blob(['audio'])});await new Promise(setImmediate);assert.equal(h.state,'inactive');assert.match(h.node('set-record-status').textContent,/Durable copy unavailable/);assert.equal(h.blobs.size,0);h.api.dispose();
 });
 
 test('finishing resolves only after the download and receipt are ready',async()=>{

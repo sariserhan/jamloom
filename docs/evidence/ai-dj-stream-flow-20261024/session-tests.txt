@@ -1,0 +1,28 @@
+
+> jamloom-site@0.1.0 test:ai-dj-sessions
+> node --import tsx --test tests/dj-sessions.test.ts
+
+✔ DJ session input defaults Public and rejects unsafe fields (0.935166ms)
+▶ isolated DJ session ledger, fresh batches and public set policy
+  ✔ quotes bind owner and sharing, private premium, atomic idempotent Start (10.991584ms)
+  ✔ bounded preparation, fresh seeds, verified output and immutable settlement retries (378.918625ms)
+  ✔ private, local and unplayed recordings never enter public listing or playback (184.863042ms)
+  ✔ credit exhaustion stops new reservations without changing visibility (89.85325ms)
+  ✔ Stop race refunds queued work; running work waits for its shutdown receipt (130.11725ms)
+  ✔ lost settlement response retries once; disconnected sessions cannot dispatch (102.2245ms)
+  ✔ rising per-track price preserves Private and requires a fresh decision (75.240334ms)
+  ✔ DJ and existing generation queues share one worker capacity (16.8355ms)
+  ✔ frozen accounts cannot complete new public music (50.371416ms)
+  ✔ durable deadlines hold capacity and receipts recover a settlement crash (131.610625ms)
+  ✔ remote shutdown, complete inventory and immutable cost evidence precede delivery (188.331708ms)
+  ✔ customer HTTP protects quotes, account identity, audio and paused launch gates (82.327625ms)
+  ✔ account purge keeps running work and saved recordings protected (13.917333ms)
+✔ isolated DJ session ledger, fresh batches and public set policy (1652.636458ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1818.934334

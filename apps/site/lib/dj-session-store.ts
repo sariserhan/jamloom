@@ -56,6 +56,21 @@ export function djSessionStore(env:Record<string,string|undefined>=process.env){
    return {bytes:object.ContentLength,mime:object.ContentType,etag:object.ETag,parts:count};
   },
   async abort(key:string,uploadId:string){validUpload(uploadId);await client.send(new AbortMultipartUploadCommand({...base(key),UploadId:uploadId}),options());},
+  async exists(key:string,bytes:number,mime:DJRecordingMime){
+   try{const object=await client.send(new HeadObjectCommand(base(key)),options());if(object.ContentLength!==bytes||object.ContentType!==mime)throw Error('Recording format or length changed');return true;}
+   catch(error){if((error as {$metadata?:{httpStatusCode:number}}).$metadata?.httpStatusCode===404)return false;throw error;}
+  },
+  async verifyPart(key:string,number:number,bytes:number,total:number,sha256:string,mime:DJRecordingMime){
+   if(!Number.isSafeInteger(number)||number<1||number>2048||!Number.isSafeInteger(bytes)||bytes<1||bytes>DJ_PART_BYTES||!Number.isSafeInteger(total)||total<bytes||total>10*1024**3||!/^[a-f0-9]{64}$/.test(sha256))throw Error('Invalid recording part verification');
+   const start=(number-1)*DJ_PART_BYTES,end=start+bytes-1;if(end>=total)throw Error('Part exceeds recording');
+   const object=await client.send(new GetObjectCommand({...base(key),Range:`bytes=${start}-${end}`}),options()),body=object.Body as Readable;
+   let size=0,header=Buffer.alloc(0);const hash=createHash('sha256');try{
+    if(object.ContentRange!==`bytes ${start}-${end}/${total}`||object.ContentLength!==bytes||object.ContentType!==mime)throw Error('Recording range changed');
+    for await(const chunk of body){const data=Buffer.from(chunk);size+=data.length;if(size>bytes)throw Error('Part exceeded reserved bytes');hash.update(data);if(header.length<16)header=Buffer.concat([header,data.subarray(0,16-header.length)]);}
+    if(size!==bytes||hash.digest('hex')!==sha256)throw Error('Recording part checksum changed');
+    if(number===1&&(mime==='audio/mp4'?header.toString('ascii',4,8)!=='ftyp':header.subarray(0,4).toString('hex')!=='1a45dfa3'))throw Error('Unsupported recording container');
+   }finally{body?.destroy();}
+  },
   async verify(key:string,bytes:number,sha256:string,mime:DJRecordingMime){
    if(!Number.isSafeInteger(bytes)||bytes<1||bytes>96*1024*1024||!/^[a-f0-9]{64}$/.test(sha256))throw Error('Invalid recording verification');
    let object;try{object=await client.send(new GetObjectCommand(base(key)),options());}catch(error){if((error as {$metadata?:{httpStatusCode:number}}).$metadata?.httpStatusCode===404)return false;throw error;}

@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "scope": "Actual private R2 multipart completion, two SHA256-verified ranges, changed-checksum rejection and byte-identical download",
+  "bytes": 6652627,
+  "parts": 2,
+  "removed": true,
+  "noPublicPublication": true
+}

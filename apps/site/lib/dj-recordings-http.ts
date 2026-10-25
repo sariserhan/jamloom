@@ -22,7 +22,11 @@ export async function djRecordingRequest(request:Request,context:()=>Promise<Con
     if(id&&!action)return Response.json(await recordings.remove(owner,id),{headers});
     throw new AudioError('Unsupported recording operation.',404);
    }
+   if(id==='stream'&&!action){if(body.owner!==owner)throw new AudioError('Your account changed.',409);return Response.json(await recordings.stream(owner,body),{headers});}
    if(!id){if(body.owner!==owner)throw new AudioError('Your account changed. Sign back into the recording’s account.',409);return Response.json(await recordings.reserve(owner,body),{headers});}
+   if(action==='stream-part')return Response.json(await recordings.streamPart(owner,id,body),{headers});
+   if(action==='seal'&&Object.keys(body).every(k=>['seconds','interrupted'].includes(k)))return Response.json(await recordings.sealStream(owner,id,body.seconds,body.interrupted??false),{headers});
+   if(action==='complete-stream'&&Object.keys(body).length===0)return Response.json(await recordings.completeStream(owner,id),{headers});
    if(action==='part'&&Object.keys(body).join(',')==='number')return Response.json(await recordings.part(owner,id,body.number),{headers});
    if(action==='withdraw'&&Object.keys(body).join(',')==='owner'){if(body.owner!==owner)throw new AudioError('Your account changed.',409);return Response.json(await recordings.withdraw(owner,id),{headers});}
    if(action==='complete'&&Object.keys(body).length===0)return Response.json(await recordings.complete(owner,id),{headers});

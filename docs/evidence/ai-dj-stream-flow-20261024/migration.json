@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "target": "ep-flat-hill-b4q0lix4.c-6.us-east-2.aws.neon.tech/neondb",
+  "applied": [
+    "0025_dj_stream_recordings.sql"
+  ],
+  "idempotent": true,
+  "backup": {
+    "path": "/Users/serhansari/Documents/projects/jamloom/build-neon/dj-stream-20261024/before-0025.dump",
+    "bytes": 117985,
+    "sha256": "31a16b4077c49b51b975122b70a45dbbee3deddba9cd157749f2031c99a647ed",
+    "catalogueVerified": true
+  },
+  "sessionsBefore": 0,
+  "rentalsAfter": 0
+}

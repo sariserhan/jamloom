@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "visibility": "public",
+      "status": "PASS",
+      "saved": "89bf196e3b6e4ea3a65da1f2593bc2d0",
+      "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+    },
+    {
+      "visibility": "private",
+      "status": "PASS",
+      "saved": "01ed90fdc1894934afffe38fb2eda03b",
+      "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+    }
+  ],
+  "errors": [],
+  "syntheticStorageRemoved": true,
+  "noPaidCompute": true,
+  "noPublicDeployment": true
+}

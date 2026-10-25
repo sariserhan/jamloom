@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "browser": "webkit",
+  "scope": "101 MiB + 17 bytes of synthetic transport data; mocked HTTP/R2; two-hour metadata, not real-time endurance",
+  "bytes": 105906193,
+  "maximum_part_bytes": 5242880,
+  "parts": 21,
+  "reload_recovery": true,
+  "account_isolation": true,
+  "interrupted_recovery": true,
+  "errors": []
+}

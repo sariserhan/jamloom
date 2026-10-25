@@ -22,6 +22,9 @@ test('invalid multipart requests fail before provider access',async()=>{
  await assert.rejects(store.complete(key,'upload',1,NaN),/final recording bounds/);
  await assert.rejects(store.complete(key,'upload',10001,100),/final recording bounds/);
  await assert.rejects(store.abort('../another-user','upload'),/recording key/);
+ await assert.rejects(store.verifyPart(key,0,1,1,'a'.repeat(64),'audio/mp4'),/Invalid recording part/);
+ await assert.rejects(store.verifyPart(key,1,DJ_PART_BYTES+1,DJ_PART_BYTES+1,'a'.repeat(64),'audio/mp4'),/Invalid recording part/);
+ await assert.rejects(store.verifyPart(key,2,1,DJ_PART_BYTES,'a'.repeat(64),'audio/mp4'),/exceeds recording/);
 });
 
 test('signed session downloads use the party name without changing private object identity',async()=>{
