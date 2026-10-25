@@ -1,0 +1,12 @@
+{
+  "campaign": "jamloom-dj-qualification-20261024",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "observed_debit_stop_usd": 4,
+  "public_activation": false,
+  "owner_statement": "Approve the capped $6 qualification",
+  "approved_at": "2026-10-25T01:35:38.391858+00:00",
+  "question": "Three fresh 60-second house tracks; one GPU; 40 minutes; automatic shutdown/cleanup; no public activation",
+  "plan_sha256": "f2168e77d63083490a40754c315293a2d690aaed1db1bc3cd416eb8525405982"
+}

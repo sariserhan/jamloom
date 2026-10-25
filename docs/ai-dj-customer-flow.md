@@ -45,7 +45,8 @@ qualified for customers. No push, deployment, live billing or launch activation.
 | Responsive/accessibility checks | PASS scoped | 390px customer layout; saved-set axe checks; recording regression at 390/320px |
 | Production session endpoints | PASS closed | GET/POST root and quote 404 with launch proxy disabled locally; default launch proxy blocks with 503 |
 | Migration 0024 | PASS applied | Verified Neon host/database, private pg_dump backup, migration idempotence; zero sessions/rentals |
-| Fresh GPU qualification | NOT RUN | New capped $6 approval pending; zero rentals created |
+| Fresh GPU qualification | FAIL startup; generation NOT RUN | Owner approved $6; one RTX 3090 remained loading for approximately ten minutes; zero requests/outputs |
+| Qualification rental cleanup | PASS | Independent watchdog confirmed destruction; complete inventory empty; observed debit $0.005174 (not final invoice) |
 | WebKit rolling audio / human listening | NOT RUN | Native audio clock limitation from prior report remains unresolved |
 
 [Machine-readable evidence and test output](evidence/ai-dj-customer-flow-20261024/).
@@ -62,8 +63,9 @@ tests/test_dj_track_worker.py tests/test_vast_trial.py`.
 
 ## Remaining work
 
-1. Run the prepared qualification after fresh spending approval, retain audio,
-   timing and cost receipts, confirm rental absence, and obtain owner listening.
+1. The authorized qualification attempt failed at provider startup, before model
+   installation or inference. A usable host and a successful bounded rerun are
+   still needed before audio, render timing and listening can be evaluated.
    The plan caps one GPU and 40 minutes, with an early $4 debit stop inside the
    $6 authorization. Provider/network outages can delay deletion; this is not a
    provider-enforced hard spending cap.
@@ -82,3 +84,25 @@ tests/test_dj_track_worker.py tests/test_vast_trial.py`.
 
 See [rolling worker](ai-dj-rolling-worker.md), [session policy](ai-dj-session-policy.md)
 and [GPU plan](evidence/ai-dj-customer-flow-20261024/gpu-plan.json).
+
+## Approved GPU attempt — startup failure
+
+The owner replied “Approve the capped $6 qualification.” The exact prepared plan
+and its script hashes were verified before one rental was created. Authorization
+is retained in [the receipt](evidence/ai-dj-customer-flow-20261024/gpu-authorization.json);
+the original plan remains an immutable pre-approval snapshot.
+
+Instance 57593037 (offer 48396258, RTX 3090) remained in `loading` state. Its
+provider message was an image-layer `Pull complete` line, with no assigned ports
+and repeated SSH refusal. This does not establish the underlying host fault.
+The attempt was stopped after approximately ten minutes without usable compute,
+rather than waiting out the full 40-minute maximum. No replacement was rented.
+
+**PASS cleanup:** the independent watchdog confirmed destruction and complete
+inventory returned zero instances. The observed account debit was $0.0051737448;
+this is a balance delta, not a final invoice. No project files or audio were
+uploaded, no model setup/generation ran, and no new tracks were produced.
+**NOT RUN:** render latency, generated-audio checks, automatic mixed playback and
+human listening for this attempt. The existing development flow remains disabled.
+[Startup snapshot](evidence/ai-dj-customer-flow-20261024/gpu/startup.json) and
+[execution/cost/cleanup receipt](evidence/ai-dj-customer-flow-20261024/gpu/execution.json).

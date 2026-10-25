@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-10-25T01:45:23.715544+00:00",
+  "instance_id": 57593037,
+  "elapsed_seconds": 584.7545771598816,
+  "actual_status": "loading",
+  "provider_message": "6831761682dc: Pull complete\n",
+  "ports_assigned": false,
+  "ssh_usable": false,
+  "outputs": 0,
+  "generation_requests": 0
+}
