@@ -49,3 +49,7 @@ Listen at <http://localhost:8766/hosted-sessions/review/>. Twenty hash-verified,
 From `apps/site`, `node --import tsx tests/dj-padding-analysis.mjs --hosted` reproduces source analysis and planned transition positions without GPU use. From the root, `python3 scripts/review_dj_warm.py --beta --hosted` builds the review into a new folder and refuses overwriting existing review files. Full recording decode/signal screening uses `ffmpeg -nostdin -hide_banner -xerror -i RECORDING -af silencedetect=noise=-60dB:d=0.25,volumedetect -progress pipe:1 -f null -`; both decode logs and hashes are retained.
 
 The bounded operator qualification is completed with the documented cleanup correction and source-quality caveat. Always-on hosting, production controller/GPU restart, new expert listening, venue acceptance and public beta activation remain unqualified. No live billing or beta flag was enabled.
+
+## Publication
+
+**PASS:** code `d21a640a` was pushed through GitHub and deployed READY to production. All eight GitHub jobs passed, including the new isolated dispatcher regression in the database lane. Read-only production checks confirm Community and real public song audio remain available, private account APIs require sign-in, and the AI DJ session API remains disabled (503). [Release receipt](evidence/ai-dj-hosted-20261025/release.json), [live checks](evidence/ai-dj-hosted-20261025/production-checks.json). No mobile installation or release submission occurred.

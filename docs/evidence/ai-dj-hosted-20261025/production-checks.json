@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "codeCommit": "d21a640a168f9932894e4160ee85ba73d9731564",
+  "checkedAt": "2026-10-25T16:33:45.561Z",
+  "endpoints": [
+    {
+      "path": "/api/ai-dj/sessions",
+      "status": 503
+    },
+    {
+      "path": "/api/favorites",
+      "status": 401
+    },
+    {
+      "path": "/api/playlists",
+      "status": 401
+    },
+    {
+      "path": "/community",
+      "status": 200
+    }
+  ],
+  "publicSongAudioRange": true,
+  "publicSetsAvailable": true,
+  "hostedWrites": false,
+  "betaActivated": false
+}

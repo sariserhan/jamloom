@@ -1,6 +1,6 @@
 ## AI DJ hosted-operation qualification — 2026-10-25
 
-**PASS bounded session operation, privacy, provider shutdown and recovered cleanup; PARTIAL musical acceptance.** Twenty distinct fresh tracks across two listeners, real dispatcher crash/recovery, capacity refusal, mood changes, Stop and credit exhaustion verified. Observed GPU cost $0.169; no running rentals.
+**PASS bounded session operation, privacy, provider shutdown and recovered cleanup; PARTIAL musical acceptance.** Twenty distinct fresh tracks across two listeners, real dispatcher crash/recovery, capacity refusal, mood changes, Stop and credit exhaustion verified. Observed GPU cost $0.169; no running rentals. GitHub push, production deployment, all eight CI jobs and live public/gating checks PASS.
 
 - [x] Align standalone worker accounting and verify actual dispatcher process crash/restart: one render, identical receipt/deadline and one allowance capture.
 - [x] Run two fresh independent listeners, capacity refusal, moods, Stop and credit exhaustion.

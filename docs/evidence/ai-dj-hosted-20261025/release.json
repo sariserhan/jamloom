@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "codeCommit": "d21a640a168f9932894e4160ee85ba73d9731564",
+  "workflow": "https://github.com/sariserhan/jamloom/actions/runs/40212094072",
+  "jobs": [
+    {
+      "name": "website",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "desktop-pro",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "build (ubuntu-24.04, ON)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "build (macos-15, OFF)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "academy",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "build (ubuntu-24.04, OFF)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "build (macos-15, ON)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "compare",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "deployment": {
+    "id": "dpl_8ixdsNLZk7MQtsALtYrCuqbemkj7",
+    "target": "production",
+    "status": "READY",
+    "via": "GitHub push",
+    "url": "https://www.jamloom.com"
+  },
+  "liveChecks": "production-checks.json",
+  "betaActivated": false,
+  "liveBillingActivated": false,
+  "mobileInstalled": false
+}
