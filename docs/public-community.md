@@ -29,9 +29,12 @@ The cause of the missing mobile songs was the blanket coming-soon proxy gate ret
 | Final production HTTP reads with coming-soon enabled | PASS public collection/audio routing; private-input and generation routes remain gated |
 | Production build, client-secret audit, signed iOS bundle | PASS; test-only manifests/audio excluded from Release |
 | Physical installation/launch | PASS 0.9.2 (15), launched after the owner unlocked the phone |
-| Owner review of this landscape update, physical iPad/foldable | NOT RUN |
+| Owner review of this landscape update | PASS: owner says “Looks clear now” on installed 0.9.2 |
+| Physical iPad/foldable | NOT RUN |
 | Website push/deployment, App Store upload | NOT RUN |
 
 [Machine-readable checks](evidence/public-community-20261025/checks.json), [HTTP status/counts](evidence/public-community-20261025/public-http.json), [homepage browser checks](evidence/public-community-20261025/home-browser.json), [deck geometry](evidence/public-community-20261025/deck-webkit.json), [before](evidence/public-community-20261025/deck-before.png), [after](evidence/public-community-20261025/deck-after.png), [native landscape](evidence/public-community-20261025/deck-native-landscape.png).
 
 Full local Xcode logs/xcresults are retained in `renders/mobile-community-fix-20261025/`: `final-phone-tests`, `final-native-http`, `final-device-build.log`, `final-bundle.json`, `final-install.txt` and `final-launch-unlocked.txt`. The first WebM test used an unattached view and failed; attaching it to a real window fixes the harness and actual playback passes. No codec workaround or production bypass was introduced. Existing owner evidence for 0.9.0 remains historical and does not count as acceptance of this update.
+
+On 2026-10-25 the owner reported Community was unavailable. A fresh anonymous production GET `/api/catalogue` returned HTTP 503 with the coming-soon message, confirming the website fix is still awaiting owner deployment. Signing in or reinstalling the phone app does not remove that server gate.

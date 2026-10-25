@@ -114,7 +114,7 @@ export class DJSessions{
    if(!b.stop_confirmed_at)throw new AudioError('Worker shutdown must be confirmed.',409);
    if(b.warm_worker_id){
     const worker=(await db.query('SELECT * FROM dj_warm_workers WHERE id=$1',[b.warm_worker_id])).rows[0];
-    if(!worker||b.compute_ms===null||!b.stop_evidence_sha256||Number(b.actual_cost_micros)!==actualCost||(!b.audio_sha256&&worker.state!=='stopped'))throw new AudioError('Warm worker receipt required.',409);
+    if(!worker||b.compute_ms===null||!b.stop_evidence_sha256||Number(b.actual_cost_micros)!==actualCost||(!b.audio_sha256&&worker.state!=='stopped'&&b.compute_ms<=0))throw new AudioError('Warm worker receipt required.',409);
    }
    const rental=(await db.query('SELECT * FROM dj_rentals WHERE reservation_id=$1',[b.reservation_id])).rows[0];
    if(rental&&(!rental.destroy_confirmed_at||rental.final_cost_micros===null||Number(rental.final_cost_micros)!==actualCost))throw new AudioError('Provider shutdown and cost evidence required.',409);
@@ -139,7 +139,7 @@ export class DJSessions{
   await this.wallet.settle(receipt.owner,receipt.reservation,actualCost,receipt.state);
   await this.pool.query('UPDATE dj_session_batches SET settled_at=now() WHERE reservation_id=$1',[receipt.reservation]);
   if(receipt.state!=='completed'){await this.store.remove('masters/'+receipt.reservation+'.wav');await this.stop(receipt.owner,id,'failure');}
-  await this.closeIfSettled(id);
+  await this.closeIfSettled(id);return receipt.state as 'completed'|'failed'|'cancelled';
  }
  async played(owner:string,id:string,sequence:number){if(!Number.isSafeInteger(sequence)||sequence<0||sequence>1000000)throw new AudioError('Invalid sequence.');await this.session(owner,id);const r=await this.pool.query(`UPDATE dj_session_batches b SET played_at=coalesce(played_at,now()) FROM generation_reservations r WHERE b.session_id=$1 AND b.sequence=$2 AND b.state='completed' AND r.id=b.reservation_id AND r.status='completed' AND NOT EXISTS(SELECT 1 FROM dj_session_batches prior WHERE prior.session_id=b.session_id AND prior.sequence<b.sequence AND prior.state='completed' AND prior.played_at IS NULL) RETURNING b.sequence`,[id,sequence]);if(!r.rowCount)throw new AudioError('Track is not ready in playback order.',409);}
  async stop(owner:string,id:string,reason:'stop'|'credits'|'price'|'failure'|'disconnected'='stop'){

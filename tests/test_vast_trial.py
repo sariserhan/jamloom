@@ -18,6 +18,9 @@ class PriceBounds(unittest.TestCase):
     def test_remote_bootstrap_releases_ssh_pipes_before_worker_exits(self):
         for value in [True,0,'1234567890; unsafe']:
             with self.assertRaises(ValueError):trial.dj_bootstrap_command(value)
+        for count in [True,0,101,'24; unsafe']:
+            with self.assertRaises(ValueError):trial.dj_bootstrap_command(1792904659,count)
+        self.assertIn('1792904659 24 >',trial.dj_bootstrap_command(1792904659,24))
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);(root/'renderer-token').write_text('test-only')
             (root/'cloud_dj_warm.sh').write_text('sleep 5\n')
@@ -257,6 +260,8 @@ class PriceBounds(unittest.TestCase):
         label='jamloom-dj-qualification-20261024-sessions'
         approved=dict(campaign=label,budget_usd=6,instances_max=1,max_elapsed_seconds=2400,model_requests_max=8,public_activation=False,owner_statement='Approved test fixture')
         trial.dj_session_approval(approved,label)
+        with self.assertRaises(RuntimeError): trial.dj_session_approval(approved,label,24)
+        trial.dj_session_approval({**approved,'model_requests_max':24},label,24)
         for change in [dict(campaign='old'),dict(budget_usd=10),dict(instances_max=2),dict(max_elapsed_seconds=3600),dict(model_requests_max=9),dict(public_activation=True),dict(owner_statement='')]:
             with self.assertRaises(RuntimeError): trial.dj_session_approval({**approved,**change},label)
 

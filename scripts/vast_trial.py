@@ -124,12 +124,14 @@ def write_state(state):
     temporary.replace(STATE)
 
 
-def dj_bootstrap_command(deadline):
+def dj_bootstrap_command(deadline, requests=8):
     if type(deadline) is not int or not 1000000000 <= deadline <= 9999999999:
         raise ValueError('Absolute renderer deadline required')
+    if type(requests) is not int or not 1 <= requests <= 100:
+        raise ValueError('Bounded model request allowance required')
     # Background only the fully redirected renderer, not an AND-list that retains SSH pipes.
     return ('chmod 600 /workspace/renderer-token || exit 1\n'
-            f'nohup bash /workspace/cloud_dj_warm.sh {deadline} > /workspace/boot.log 2>&1 < /dev/null &\n'
+            f'nohup bash /workspace/cloud_dj_warm.sh {deadline} {requests} > /workspace/boot.log 2>&1 < /dev/null &\n'
             'printf "%s\\n" "$!"\n')
 
 
@@ -250,10 +252,10 @@ def watch():
             time.sleep(20)
 
 
-def dj_session_approval(approval, label):
+def dj_session_approval(approval, label, requests=8):
     if (approval.get('campaign') != label or approval.get('budget_usd') != 6 or
             approval.get('instances_max') != 1 or approval.get('max_elapsed_seconds') != 2400 or
-            approval.get('model_requests_max') != 8 or approval.get('public_activation') is not False or
+            approval.get('model_requests_max') != requests or approval.get('public_activation') is not False or
             not isinstance(approval.get('owner_statement'), str) or not approval['owner_statement'].strip()):
         raise RuntimeError('Fresh capped customer-session approval required')
 
@@ -275,7 +277,10 @@ def main():
     parser.add_argument('--dj-sessions', action='store_true', help='Fresh eight-request customer-session qualification; requires --dj-qualification and a new approval')
     parser.add_argument('--dj-finish', action='store_true', help='Fresh completion qualification; requires --dj-qualification --dj-sessions and its own approval')
     parser.add_argument('--dj-resume', action='store_true', help='Owner-requested completion resumption; retains both earlier attempts in the original cap')
+    parser.add_argument('--dj-beta', action='store_true', help='Fresh 24-request, two-listener qualification; requires its own approval')
     args = parser.parse_args()
+    if args.dj_beta and (not args.dj_qualification or not args.dj_sessions or args.dj_finish or args.dj_retry or args.dj_resume):
+        parser.error('--dj-beta requires --dj-qualification --dj-sessions and no previous campaign flags')
     if args.dj_resume and not args.dj_finish:
         parser.error('--dj-resume requires --dj-finish')
     if args.dj_finish and (not args.dj_qualification or not args.dj_sessions):
@@ -307,6 +312,8 @@ def main():
         suffix=('-sessions' if args.dj_sessions else '')+('-finish' if args.dj_finish else '')+('-launch-fix' if args.dj_resume and args.dj_retry else '-resume' if args.dj_resume else '-retry' if args.dj_retry else '')
         WORK=ROOT/('build-dj-qualification-20261024'+suffix); STATE=WORK/'trial-state.json'; LABEL='jamloom-dj-qualification-20261024'+suffix
         LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING=2400,.50,4
+        if args.dj_beta:
+            LABEL='jamloom-dj-qualification-20261025-beta';WORK=ROOT/'build-dj-qualification-20261025-beta';STATE=WORK/'trial-state.json'
     WORK.mkdir(exist_ok=True)
     if args.action == "status":
         account = api("v0/users/current")
@@ -320,7 +327,9 @@ def main():
         print(json.dumps(result[:8], indent=2))
     elif args.action == "rent":
         if args.club_benchmark or args.dj_qualification:
-            if args.dj_finish:
+            if args.dj_beta:
+                approval=json.loads((ROOT/'docs/evidence/ai-dj-beta-20261025/authorization.json').read_text())
+            elif args.dj_finish:
                 approval = json.loads((ROOT/('docs/evidence/ai-dj-finish-20261024/launch-fix-authorization.json' if args.dj_resume and args.dj_retry else 'docs/evidence/ai-dj-finish-20261024/resume-authorization.json' if args.dj_resume else 'docs/evidence/ai-dj-finish-20261024/retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-finish-20261024/authorization.json')).read_text())
             else:
                 approval = json.loads((ROOT / ((('docs/evidence/ai-dj-warm-20261024/retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-warm-20261024/authorization.json') if args.dj_sessions else 'docs/evidence/ai-dj-customer-flow-20261024/gpu-retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-customer-flow-20261024/gpu-authorization.json') if args.dj_qualification else 'docs/evidence/ai-dj-baseline-20261024/gpu-authorization.json')).read_text())
@@ -329,7 +338,7 @@ def main():
                     not isinstance(approval.get('owner_statement'), str) or not approval['owner_statement'].strip()):
                 raise RuntimeError('Missing current campaign budget receipt')
         if args.dj_sessions:
-            dj_session_approval(approval, LABEL)
+            dj_session_approval(approval, LABEL, 24 if args.dj_beta else 8)
         public_key = (WORK / "trial-key.pub").read_text().strip()
         if not public_key.startswith("ssh-ed25519 ") or not shutil.which("caffeinate"):
             raise RuntimeError("Trial SSH key or sleep inhibitor is missing")
@@ -340,7 +349,7 @@ def main():
         account = api("v0/users/current")
         if float(account.get("credit", 0)) < 7:
             raise RuntimeError("Insufficient credit for reserved trial budget")
-        proven_host = json.loads((ROOT/'build-dj-qualification-20261024-sessions-retry/trial-state.json').read_text())['offer']['host_id'] if args.dj_finish else None
+        proven_host = json.loads((ROOT/'build-dj-qualification-20261024-sessions-retry/trial-state.json').read_text())['offer']['host_id'] if args.dj_finish or args.dj_beta else None
         available = offers(proven_host)
         starting_credit = float(account["credit"])
         deadline = time.time() + LEASE_SECONDS
@@ -372,7 +381,7 @@ def main():
         if (args.training or args.training_retry or args.blood_training or args.musician_training or args.club_benchmark or args.dj_qualification) and args.offer is None:
             offer = next((o for o in available if o["gpu_name"] == "RTX 3090" and
                           o["geolocation"].endswith(", US")), None)
-        if args.dj_finish:
+        if args.dj_finish or args.dj_beta:
             proven=json.loads((ROOT/'build-dj-qualification-20261024-sessions-retry/trial-state.json').read_text())
             offer=next((o for o in available if o['host_id']==proven['offer']['host_id'] and (args.offer is None or o['id']==args.offer)),None)
         if offer is None:
@@ -388,7 +397,7 @@ def main():
         write_state(state)  # Prevent duplicate rental if the create response is lost.
         with (WORK / "watchdog.log").open("a") as log:
             subprocess.Popen(["caffeinate", "-i", sys.executable, str(Path(__file__).resolve()), "watch"] +
-                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
+                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) + (['--dj-beta'] if args.dj_beta else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
                              stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
         # The watchdog also reconciles by unique label if this response is lost.
         result = api("v0/asks/" + str(offer["id"]), "PUT", {

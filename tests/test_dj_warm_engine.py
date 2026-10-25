@@ -15,6 +15,19 @@ from dj_warm_engine import Renderer, handler
 
 
 class WarmEngineTests(unittest.TestCase):
+    def test_last_request_keeps_instrumental_instead_of_exceeding_vocal_budget(self):
+        calls = []
+        def generate(value, directory, engine):
+            calls.append(value)
+            signal = .1*np.sin(np.arange(480000)*2*np.pi*220/8000)
+            return np.column_stack((signal, signal)), 8000
+        renderer = Renderer(time.time()+100, 1, generate=generate)
+        value = dict(job=str(uuid.uuid4()), vocals=True, request=dict(version=1, session='b'*32, sequence=2, seed=1, style='house', energy=4))
+        receipt, audio = renderer.render(value)
+        self.assertEqual(len(calls), 1)
+        self.assertIsNone(receipt['vocal'])
+        self.assertEqual(renderer.render(value), (receipt, audio))
+
     def test_bounded_authenticated_idempotent_renderer(self):
         calls = []
         def generate(value, directory, engine):

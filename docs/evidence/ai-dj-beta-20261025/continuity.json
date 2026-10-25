@@ -1,0 +1,14 @@
+[
+  {
+    "visibility": "public",
+    "longest_quiet_seconds": 5.467458,
+    "quiet_spans_over_250ms": 4,
+    "scope": "Signal screening, not a listening or sample-accurate dropout diagnosis"
+  },
+  {
+    "visibility": "private",
+    "longest_quiet_seconds": 6.368562,
+    "quiet_spans_over_250ms": 34,
+    "scope": "Signal screening, not a listening or sample-accurate dropout diagnosis"
+  }
+]

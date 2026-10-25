@@ -1,0 +1,846 @@
+{
+  "target_lufs": -24.58,
+  "clips": [
+    {
+      "number": 1,
+      "track": {
+        "session": "adbe4ae43f5243d18d4e818ee898d648",
+        "sequence": 0,
+        "sha256": "92ec2b46153ea23da89b6d5d234c309e3300b215e51d613254ebdfc290f81a98",
+        "computeMs": 6712,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "e1842acf-97b3-4cbf-bf1c-755c5ac48425",
+          "request": {
+            "version": 1,
+            "session": "adbe4ae43f5243d18d4e818ee898d648",
+            "sequence": 0,
+            "seed": 577365977,
+            "style": "house",
+            "energy": 4,
+            "mood": "bright"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 6712,
+          "bytes": 11520044,
+          "sha256": "92ec2b46153ea23da89b6d5d234c309e3300b215e51d613254ebdfc290f81a98",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.88",
+        "input_tp": "-0.83",
+        "input_lra": "7.80",
+        "input_thresh": "-28.02"
+      },
+      "gain_db": -6.699999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.53",
+        "input_lra": "7.80",
+        "input_thresh": "-34.72"
+      }
+    },
+    {
+      "number": 2,
+      "track": {
+        "session": "adbe4ae43f5243d18d4e818ee898d648",
+        "sequence": 1,
+        "sha256": "692c47fc427901e41ae6622a347a079dfabc6bed0d1d6487dae00864e13b9c04",
+        "computeMs": 1760,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "2c6511da-22d4-4d03-889b-35eb6e362e2f",
+          "request": {
+            "version": 1,
+            "session": "adbe4ae43f5243d18d4e818ee898d648",
+            "sequence": 1,
+            "seed": 2143981486,
+            "style": "house",
+            "energy": 4,
+            "mood": "bright"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1760,
+          "bytes": 11520044,
+          "sha256": "692c47fc427901e41ae6622a347a079dfabc6bed0d1d6487dae00864e13b9c04",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-18.38",
+        "input_tp": "-0.83",
+        "input_lra": "6.30",
+        "input_thresh": "-28.48"
+      },
+      "gain_db": -6.199999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.03",
+        "input_lra": "6.30",
+        "input_thresh": "-34.68"
+      }
+    },
+    {
+      "number": 3,
+      "track": {
+        "session": "adbe4ae43f5243d18d4e818ee898d648",
+        "sequence": 2,
+        "sha256": "01fc16069e511e28dd892b45d730cefcfb4869e6437ca2f1fbe39eb1db572e71",
+        "computeMs": 5175,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "eb544b01-df7e-4930-a491-c1d69d8e990c",
+          "request": {
+            "version": 1,
+            "session": "adbe4ae43f5243d18d4e818ee898d648",
+            "sequence": 2,
+            "seed": 3027815122,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 5175,
+          "bytes": 11520044,
+          "sha256": "01fc16069e511e28dd892b45d730cefcfb4869e6437ca2f1fbe39eb1db572e71",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.36",
+        "input_tp": "-0.57",
+        "input_lra": "9.30",
+        "input_thresh": "-25.80"
+      },
+      "gain_db": -9.219999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.79",
+        "input_lra": "9.40",
+        "input_thresh": "-35.02"
+      }
+    },
+    {
+      "number": 4,
+      "track": {
+        "session": "adbe4ae43f5243d18d4e818ee898d648",
+        "sequence": 3,
+        "sha256": "2ac5dd51dc53c8df29182052887f1c445bff809ad959b861b75c5f7ed8a3a03f",
+        "computeMs": 1662,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "98b60243-5386-4f76-ab9d-3652a3e00652",
+          "request": {
+            "version": 1,
+            "session": "adbe4ae43f5243d18d4e818ee898d648",
+            "sequence": 3,
+            "seed": 647958080,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1662,
+          "bytes": 11520044,
+          "sha256": "2ac5dd51dc53c8df29182052887f1c445bff809ad959b861b75c5f7ed8a3a03f",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-18.26",
+        "input_tp": "-0.73",
+        "input_lra": "1.60",
+        "input_thresh": "-28.38"
+      },
+      "gain_db": -6.319999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.05",
+        "input_lra": "1.60",
+        "input_thresh": "-34.69"
+      }
+    },
+    {
+      "number": 5,
+      "track": {
+        "session": "adbe4ae43f5243d18d4e818ee898d648",
+        "sequence": 4,
+        "sha256": "a095191fac9f5a9475172e7e79b05b939c874571dc3331f9c622f5a5d540cecf",
+        "computeMs": 1822,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "9da15821-b6bf-4bcf-a845-e5e3a390e4a7",
+          "request": {
+            "version": 1,
+            "session": "adbe4ae43f5243d18d4e818ee898d648",
+            "sequence": 4,
+            "seed": 4105139837,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1822,
+          "bytes": 11520044,
+          "sha256": "a095191fac9f5a9475172e7e79b05b939c874571dc3331f9c622f5a5d540cecf",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.18",
+        "input_tp": "-0.88",
+        "input_lra": "1.60",
+        "input_thresh": "-25.30"
+      },
+      "gain_db": -9.399999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-10.28",
+        "input_lra": "1.60",
+        "input_thresh": "-34.64"
+      }
+    },
+    {
+      "number": 6,
+      "track": {
+        "session": "adbe4ae43f5243d18d4e818ee898d648",
+        "sequence": 5,
+        "sha256": "f0e7fb6dd123d717add5f7110637e34bd606e2e0b29b421f8a549c85a1f8b3bf",
+        "computeMs": 1828,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "f451adc0-9349-4684-aa78-ddccc92319df",
+          "request": {
+            "version": 1,
+            "session": "adbe4ae43f5243d18d4e818ee898d648",
+            "sequence": 5,
+            "seed": 1136887909,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1828,
+          "bytes": 11520044,
+          "sha256": "f0e7fb6dd123d717add5f7110637e34bd606e2e0b29b421f8a549c85a1f8b3bf",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.30",
+        "input_tp": "-0.83",
+        "input_lra": "5.40",
+        "input_thresh": "-25.56"
+      },
+      "gain_db": -9.279999999999998,
+      "review": {
+        "input_i": "-24.57",
+        "input_tp": "-10.11",
+        "input_lra": "5.40",
+        "input_thresh": "-34.84"
+      }
+    },
+    {
+      "number": 7,
+      "track": {
+        "session": "adbe4ae43f5243d18d4e818ee898d648",
+        "sequence": 6,
+        "sha256": "b07d8f6038b4299e5804c0a01cf6ab0932ad8f586c063f690afd7f28381998ee",
+        "computeMs": 1680,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "1e1014ce-377a-4771-b9f1-fa3273a8e13d",
+          "request": {
+            "version": 1,
+            "session": "adbe4ae43f5243d18d4e818ee898d648",
+            "sequence": 6,
+            "seed": 1451282317,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1680,
+          "bytes": 11520044,
+          "sha256": "b07d8f6038b4299e5804c0a01cf6ab0932ad8f586c063f690afd7f28381998ee",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-18.46",
+        "input_tp": "-1.00",
+        "input_lra": "8.90",
+        "input_thresh": "-28.58"
+      },
+      "gain_db": -6.119999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.12",
+        "input_lra": "9.00",
+        "input_thresh": "-34.70"
+      }
+    },
+    {
+      "number": 8,
+      "track": {
+        "session": "adbe4ae43f5243d18d4e818ee898d648",
+        "sequence": 7,
+        "sha256": "774f2f27795259a61959d7371cf8c2dff93b6d28b704c0096b4e5278ebc1cfdd",
+        "computeMs": 2130,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "3bc44ad3-9ae1-4b9e-9a62-069c22a8ae44",
+          "request": {
+            "version": 1,
+            "session": "adbe4ae43f5243d18d4e818ee898d648",
+            "sequence": 7,
+            "seed": 426397958,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2130,
+          "bytes": 11520044,
+          "sha256": "774f2f27795259a61959d7371cf8c2dff93b6d28b704c0096b4e5278ebc1cfdd",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-18.69",
+        "input_tp": "-0.73",
+        "input_lra": "6.00",
+        "input_thresh": "-29.01"
+      },
+      "gain_db": -5.889999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-6.62",
+        "input_lra": "6.00",
+        "input_thresh": "-34.90"
+      }
+    },
+    {
+      "number": 9,
+      "track": {
+        "session": "adbe4ae43f5243d18d4e818ee898d648",
+        "sequence": 8,
+        "sha256": "9855e3a0004e2d420bc2046350ef8f9f337e1c5752281918233edf8bc874b684",
+        "computeMs": 1749,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "08eae82a-3bc2-45dd-bb50-25eaf6d47758",
+          "request": {
+            "version": 1,
+            "session": "adbe4ae43f5243d18d4e818ee898d648",
+            "sequence": 8,
+            "seed": 3546258711,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1749,
+          "bytes": 11520044,
+          "sha256": "9855e3a0004e2d420bc2046350ef8f9f337e1c5752281918233edf8bc874b684",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.02",
+        "input_tp": "-0.90",
+        "input_lra": "4.60",
+        "input_thresh": "-27.09"
+      },
+      "gain_db": -7.559999999999999,
+      "review": {
+        "input_i": "-24.57",
+        "input_tp": "-8.46",
+        "input_lra": "4.50",
+        "input_thresh": "-34.64"
+      }
+    },
+    {
+      "number": 10,
+      "track": {
+        "session": "adbe4ae43f5243d18d4e818ee898d648",
+        "sequence": 9,
+        "sha256": "9648ca135a6a68b082e6b3a3b3cb6df5155870a11db6bc11593e03e21384faca",
+        "computeMs": 1681,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "f73e3b20-6931-449b-a9de-40d0c3e791a0",
+          "request": {
+            "version": 1,
+            "session": "adbe4ae43f5243d18d4e818ee898d648",
+            "sequence": 9,
+            "seed": 4230205310,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1681,
+          "bytes": 11520044,
+          "sha256": "9648ca135a6a68b082e6b3a3b3cb6df5155870a11db6bc11593e03e21384faca",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-16.49",
+        "input_tp": "-0.58",
+        "input_lra": "5.80",
+        "input_thresh": "-26.74"
+      },
+      "gain_db": -8.09,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.67",
+        "input_lra": "5.80",
+        "input_thresh": "-34.77"
+      }
+    },
+    {
+      "number": 11,
+      "track": {
+        "session": "f8f7e71101b1419296de8418f37ac36f",
+        "sequence": 0,
+        "sha256": "8343b0fcc18dbdefc40bb0dc1b977fb4a68f3d0dd46503cce680ddc88d01f8d2",
+        "computeMs": 1751,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "d6cde4f0-0452-4f32-9eab-7f6d3d8efb20",
+          "request": {
+            "version": 1,
+            "session": "f8f7e71101b1419296de8418f37ac36f",
+            "sequence": 0,
+            "seed": 3413528500,
+            "style": "house",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1751,
+          "bytes": 11520044,
+          "sha256": "8343b0fcc18dbdefc40bb0dc1b977fb4a68f3d0dd46503cce680ddc88d01f8d2",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-16.01",
+        "input_tp": "-0.95",
+        "input_lra": "3.80",
+        "input_thresh": "-26.16"
+      },
+      "gain_db": -8.569999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.52",
+        "input_lra": "3.80",
+        "input_thresh": "-34.73"
+      }
+    },
+    {
+      "number": 12,
+      "track": {
+        "session": "f8f7e71101b1419296de8418f37ac36f",
+        "sequence": 1,
+        "sha256": "ab40d59cc8d0b2c3413a0336eb277c890c68bb50644b987a2966b6d47bb93cb9",
+        "computeMs": 1778,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "812d1e5a-ea4b-4772-955e-b70ab48bbb8a",
+          "request": {
+            "version": 1,
+            "session": "f8f7e71101b1419296de8418f37ac36f",
+            "sequence": 1,
+            "seed": 2908750512,
+            "style": "house",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1778,
+          "bytes": 11520044,
+          "sha256": "ab40d59cc8d0b2c3413a0336eb277c890c68bb50644b987a2966b6d47bb93cb9",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-18.21",
+        "input_tp": "-0.93",
+        "input_lra": "6.10",
+        "input_thresh": "-28.99"
+      },
+      "gain_db": -6.369999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.30",
+        "input_lra": "6.10",
+        "input_thresh": "-35.31"
+      }
+    },
+    {
+      "number": 13,
+      "track": {
+        "session": "f8f7e71101b1419296de8418f37ac36f",
+        "sequence": 2,
+        "sha256": "c91915bacf7a99f0c018a7d9657e0f6aa992f74ebaffef155ae660bc061b68e6",
+        "computeMs": 1905,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "64016865-52e4-42e1-af5d-f14a43fa18bf",
+          "request": {
+            "version": 1,
+            "session": "f8f7e71101b1419296de8418f37ac36f",
+            "sequence": 2,
+            "seed": 1244164969,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1905,
+          "bytes": 11520044,
+          "sha256": "c91915bacf7a99f0c018a7d9657e0f6aa992f74ebaffef155ae660bc061b68e6",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-18.95",
+        "input_tp": "-0.96",
+        "input_lra": "3.20",
+        "input_thresh": "-29.03"
+      },
+      "gain_db": -5.629999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-6.59",
+        "input_lra": "3.20",
+        "input_thresh": "-34.66"
+      }
+    },
+    {
+      "number": 14,
+      "track": {
+        "session": "f8f7e71101b1419296de8418f37ac36f",
+        "sequence": 3,
+        "sha256": "8f599070a03b5263d0eb63648e9d839b456807f7f6622177e9cc239d22c8e703",
+        "computeMs": 1653,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "f74d19b5-226e-4d5c-a812-21af2ac817bc",
+          "request": {
+            "version": 1,
+            "session": "f8f7e71101b1419296de8418f37ac36f",
+            "sequence": 3,
+            "seed": 815352752,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1653,
+          "bytes": 11520044,
+          "sha256": "8f599070a03b5263d0eb63648e9d839b456807f7f6622177e9cc239d22c8e703",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.67",
+        "input_tp": "-0.58",
+        "input_lra": "6.10",
+        "input_thresh": "-27.70"
+      },
+      "gain_db": -6.909999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.49",
+        "input_lra": "6.10",
+        "input_thresh": "-34.62"
+      }
+    },
+    {
+      "number": 15,
+      "track": {
+        "session": "f8f7e71101b1419296de8418f37ac36f",
+        "sequence": 4,
+        "sha256": "4a78585e5a171c104bd6517340c0c3904bfccbd06b53afa3b6fc3be324b2840c",
+        "computeMs": 1824,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "d30d107b-584b-4719-85ac-671a78a0c6ca",
+          "request": {
+            "version": 1,
+            "session": "f8f7e71101b1419296de8418f37ac36f",
+            "sequence": 4,
+            "seed": 1067102774,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1824,
+          "bytes": 11520044,
+          "sha256": "4a78585e5a171c104bd6517340c0c3904bfccbd06b53afa3b6fc3be324b2840c",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.12",
+        "input_tp": "-1.00",
+        "input_lra": "5.20",
+        "input_thresh": "-25.19"
+      },
+      "gain_db": -9.459999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-10.46",
+        "input_lra": "5.30",
+        "input_thresh": "-34.65"
+      }
+    },
+    {
+      "number": 16,
+      "track": {
+        "session": "f8f7e71101b1419296de8418f37ac36f",
+        "sequence": 5,
+        "sha256": "00b66c66bc2b3939a13d0b0fb642ec19ef16b80427d9c2311c5929c97cd6a56b",
+        "computeMs": 1648,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "83a0f108-7bf9-4182-b9b9-ac33b871866d",
+          "request": {
+            "version": 1,
+            "session": "f8f7e71101b1419296de8418f37ac36f",
+            "sequence": 5,
+            "seed": 2660202112,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1648,
+          "bytes": 11520044,
+          "sha256": "00b66c66bc2b3939a13d0b0fb642ec19ef16b80427d9c2311c5929c97cd6a56b",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.50",
+        "input_tp": "-0.96",
+        "input_lra": "8.40",
+        "input_thresh": "-27.98"
+      },
+      "gain_db": -7.079999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.04",
+        "input_lra": "8.40",
+        "input_thresh": "-35.06"
+      }
+    },
+    {
+      "number": 17,
+      "track": {
+        "session": "f8f7e71101b1419296de8418f37ac36f",
+        "sequence": 6,
+        "sha256": "4d31bfd4cc579a638db13d6666aa7251e7be9e71abb2070cfaa64823c217200a",
+        "computeMs": 1806,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "6a6fbeb9-e561-4edb-8fc5-8a11b04cc861",
+          "request": {
+            "version": 1,
+            "session": "f8f7e71101b1419296de8418f37ac36f",
+            "sequence": 6,
+            "seed": 3319890870,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1806,
+          "bytes": 11520044,
+          "sha256": "4d31bfd4cc579a638db13d6666aa7251e7be9e71abb2070cfaa64823c217200a",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-14.71",
+        "input_tp": "-0.81",
+        "input_lra": "2.20",
+        "input_thresh": "-24.80"
+      },
+      "gain_db": -9.869999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-10.68",
+        "input_lra": "2.20",
+        "input_thresh": "-34.67"
+      }
+    },
+    {
+      "number": 18,
+      "track": {
+        "session": "f8f7e71101b1419296de8418f37ac36f",
+        "sequence": 7,
+        "sha256": "417fab1a4580c8295324da57b55cfc8c2089b4690b2d1fa3a6a80f57239cfff9",
+        "computeMs": 3183,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "a800dec3-0769-41e1-962e-3d0e8ea7e436",
+          "request": {
+            "version": 1,
+            "session": "f8f7e71101b1419296de8418f37ac36f",
+            "sequence": 7,
+            "seed": 2420752680,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 3183,
+          "bytes": 11520044,
+          "sha256": "417fab1a4580c8295324da57b55cfc8c2089b4690b2d1fa3a6a80f57239cfff9",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.45",
+        "input_tp": "-1.00",
+        "input_lra": "7.90",
+        "input_thresh": "-27.84"
+      },
+      "gain_db": -7.129999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.13",
+        "input_lra": "7.90",
+        "input_thresh": "-34.95"
+      }
+    },
+    {
+      "number": 19,
+      "track": {
+        "session": "f8f7e71101b1419296de8418f37ac36f",
+        "sequence": 8,
+        "sha256": "3b52260ca2d38a837bc2f2362c06ae0d13730b74be976316723a67bfdb16169b",
+        "computeMs": 1835,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "7ca16595-b8dd-44fd-a728-fa2965366744",
+          "request": {
+            "version": 1,
+            "session": "f8f7e71101b1419296de8418f37ac36f",
+            "sequence": 8,
+            "seed": 2880542522,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1835,
+          "bytes": 11520044,
+          "sha256": "3b52260ca2d38a837bc2f2362c06ae0d13730b74be976316723a67bfdb16169b",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-14.49",
+        "input_tp": "-1.00",
+        "input_lra": "15.70",
+        "input_thresh": "-25.56"
+      },
+      "gain_db": -10.089999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-11.09",
+        "input_lra": "15.70",
+        "input_thresh": "-35.65"
+      }
+    },
+    {
+      "number": 20,
+      "track": {
+        "session": "f8f7e71101b1419296de8418f37ac36f",
+        "sequence": 9,
+        "sha256": "f049f56e261cead86f3233981b11301b820b50fbaa4e5789202dd576e64172e5",
+        "computeMs": 1834,
+        "receipt": {
+          "version": 1,
+          "engine": "75366e9745bd36a51a7c665b9635018a",
+          "job": "c66f732c-3710-4704-8001-d27f1a733d61",
+          "request": {
+            "version": 1,
+            "session": "f8f7e71101b1419296de8418f37ac36f",
+            "sequence": 9,
+            "seed": 88454882,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1834,
+          "bytes": 11520044,
+          "sha256": "f049f56e261cead86f3233981b11301b820b50fbaa4e5789202dd576e64172e5",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-19.50",
+        "input_tp": "-0.76",
+        "input_lra": "2.90",
+        "input_thresh": "-29.56"
+      },
+      "gain_db": -5.079999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-5.84",
+        "input_lra": "3.00",
+        "input_thresh": "-34.64"
+      }
+    }
+  ],
+  "human_listening": "PASS provisional owner acceptance of original batch"
+}

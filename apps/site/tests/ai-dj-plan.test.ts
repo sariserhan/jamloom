@@ -29,6 +29,12 @@ test('fallback ends before exhaustion, changes no tempo, and handles late prepar
  for(const position of [0,100,127,127.9,127.99,127.999]){const p=planTransition(base,base,position,1,10);assert.equal(p.rate,1);assert.ok(p.at>=10);assert.ok(p.at+p.fade<=10+128-position+1e-9);const early=planTransition(base,base,position,1,10,true);assert.ok(early.at+early.fade<=10+128-position+1e-9);assert.equal(p.technique,'short-fade');}
  assert.throws(()=>planTransition(base,base,NaN,1,10));assert.throws(()=>planTransition(base,base,128,1,10));
 });
+test('a conservative handoff skips an unsupported opening only with a validated early steady entry',()=>{
+ const grid={bpm:120,offset:.25,maxError:.01,coverage:.95,entry:12.25,exit:47.25,hookSafe:true};
+ const incoming={...base,duration:60,grid};
+ const plan=planTransition(base,incoming,120,1,10);assert.equal(plan.technique,'short-fade');assert.equal(plan.offset,12.25);assert.equal(plan.rate,1);
+ for(const change of [{entry:25},{coverage:.1},{maxError:.1}])assert.equal(planTransition(base,{...incoming,grid:{...grid,...change}},120,1,10).offset,0);
+});
 test('review and cached metadata are hash bound and reject fabricated bounds',()=>{
  assert.ok(validReview(reviewed.review,128));assert.ok(validAnalysis(reviewed,base.sha256));
  assert.equal(validAnalysis(reviewed,'b'.repeat(64)),false);
@@ -43,7 +49,7 @@ test('upgrading numerical analysis preserves existing human mix-point reviews',a
   Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:(key:string)=>storage.get(key),setItem:(key:string,value:string)=>storage.set(key,value)}});
   Object.defineProperty(globalThis,'Worker',{configurable:true,value:class{
    onmessage:(message:unknown)=>void=()=>{};terminate(){}
-   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:2}}}));}
+   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:2,audible:{start:0,end:128}}}}));}
   }});
   const pcm=new Float32Array(128*8000).fill(.1),buffer={duration:128,numberOfChannels:1,length:pcm.length,sampleRate:8000,getChannelData:()=>pcm} as unknown as AudioBuffer;
   assert.deepEqual((await analyseBuffer(buffer,base.sha256)).review,reviewed.review);
@@ -74,4 +80,14 @@ test('section grids tolerate breakdowns but reject noise, drift and unsafe mix e
  assert.equal(planTransition({...measured,duration:128},measured,5,1,10).technique,'short-fade');
  let seed=17;for(let i=0;i<samples.length;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;samples[i]=(seed/2**32-.5)*.3;}
  assert.equal(measureBeatGrid(samples,rate,128),undefined);
+});
+
+test('silent outer padding is skipped without removing internal musical rests or trusting invalid cached edges',()=>{
+ const samples=new Float32Array(60*8000);for(let i=2*8000;i<53*8000;i++)if(i<25*8000||i>28*8000)samples[i]=.2*Math.sin(2*Math.PI*100*i/8000);
+ for(let i=53*8000;i<samples.length;i++)samples[i]=.0007+.001*Math.sin(i);
+ const a=analyzeTrack(samples,8000,base.sha256);assert.ok(a.audible);assert.ok(Math.abs(a.audible.start-1.95)<.01);assert.ok(Math.abs(a.audible.end-53.05)<.01);assert.equal(a.duration,60);
+ const p=planTransition(a,a,5,1,10);assert.equal(p.technique,'short-fade');assert.equal(p.offset,a.audible.start);assert.ok(p.at+p.fade<=10+a.audible.end-5);
+ assert.equal(validAnalysis({...a,audible:{start:0,end:61}},base.sha256),false);assert.equal(validAnalysis({...a,audible:{start:17,end:53}},base.sha256),false);
+ const late=planTransition(a,a,59.99,1,10);assert.ok(late.at+late.fade<=10.011);
+ const invalid=planTransition({...base,audible:{start:0,end:NaN}},base,5,1,10);assert.ok(Number.isFinite(invalid.at));
 });

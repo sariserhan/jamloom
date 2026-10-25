@@ -45,7 +45,7 @@ class Renderer:
         with tempfile.TemporaryDirectory(prefix='jamloom-dj-') as directory:
             samples, rate = generate(track, Path(directory), self.engine)
             vocal = None
-            if value['vocals'] and track['sequence'] % 5 == 2 and track['energy'] >= 3:
+            if self.requests < self.limit and value['vocals'] and track['sequence'] % 5 == 2 and track['energy'] >= 3:
                 samples, vocal = add_hook(track, samples, rate, Path(directory), self.engine, generate)
             pcm = canonical(samples, rate)
         stream = io.BytesIO()

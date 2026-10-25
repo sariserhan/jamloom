@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-25",
+  "status": "PASS owner provisional acceptance",
+  "owner_statement": "lets call it okay for now, I will later provide real dj performance sample so you can train and analyze on it",
+  "scope": "Original twenty-track batch and its two captured mixes; no claim of expert DJ or later repaired replay acceptance",
+  "track_sha256": [
+    "92ec2b46153ea23da89b6d5d234c309e3300b215e51d613254ebdfc290f81a98",
+    "8343b0fcc18dbdefc40bb0dc1b977fb4a68f3d0dd46503cce680ddc88d01f8d2",
+    "692c47fc427901e41ae6622a347a079dfabc6bed0d1d6487dae00864e13b9c04",
+    "ab40d59cc8d0b2c3413a0336eb277c890c68bb50644b987a2966b6d47bb93cb9",
+    "01fc16069e511e28dd892b45d730cefcfb4869e6437ca2f1fbe39eb1db572e71",
+    "c91915bacf7a99f0c018a7d9657e0f6aa992f74ebaffef155ae660bc061b68e6",
+    "2ac5dd51dc53c8df29182052887f1c445bff809ad959b861b75c5f7ed8a3a03f",
+    "8f599070a03b5263d0eb63648e9d839b456807f7f6622177e9cc239d22c8e703",
+    "a095191fac9f5a9475172e7e79b05b939c874571dc3331f9c622f5a5d540cecf",
+    "f0e7fb6dd123d717add5f7110637e34bd606e2e0b29b421f8a549c85a1f8b3bf",
+    "4a78585e5a171c104bd6517340c0c3904bfccbd06b53afa3b6fc3be324b2840c",
+    "b07d8f6038b4299e5804c0a01cf6ab0932ad8f586c063f690afd7f28381998ee",
+    "00b66c66bc2b3939a13d0b0fb642ec19ef16b80427d9c2311c5929c97cd6a56b",
+    "774f2f27795259a61959d7371cf8c2dff93b6d28b704c0096b4e5278ebc1cfdd",
+    "4d31bfd4cc579a638db13d6666aa7251e7be9e71abb2070cfaa64823c217200a",
+    "9855e3a0004e2d420bc2046350ef8f9f337e1c5752281918233edf8bc874b684",
+    "417fab1a4580c8295324da57b55cfc8c2089b4690b2d1fa3a6a80f57239cfff9",
+    "9648ca135a6a68b082e6b3a3b3cb6df5155870a11db6bc11593e03e21384faca",
+    "3b52260ca2d38a837bc2f2362c06ae0d13730b74be976316723a67bfdb16169b",
+    "f049f56e261cead86f3233981b11301b820b50fbaa4e5789202dd576e64172e5"
+  ],
+  "recordings": [
+    {
+      "visibility": "public",
+      "state": "ready",
+      "seconds": 386.5,
+      "bytes": 6226945,
+      "decoded_seconds": 386.51,
+      "sha256": "86bdd4e8d42ec9309a1e42565d19caee1f2548a59c42637e5edf7399cf832a13",
+      "full_decode": "PASS"
+    },
+    {
+      "visibility": "private",
+      "state": "ready",
+      "seconds": 555.136,
+      "bytes": 8945193,
+      "decoded_seconds": 555.2009999999999,
+      "sha256": "e46471b485e4c08ba7c5b0585d6c28e4b8da9ee92fac3e88ad12c9e08faa7410",
+      "full_decode": "PASS"
+    }
+  ],
+  "real_dj_training": "Pending owner samples and source rights verification"
+}

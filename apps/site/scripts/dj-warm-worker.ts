@@ -21,7 +21,7 @@ const warm=new DJWarmWorker(new DJSessions(pool,config.secret,store,JSON.parse(p
 let worker:WarmIdentity|undefined,timer:ReturnType<typeof setInterval>|undefined,checking=false;
 try{
  if(!process.argv.includes('--register'))worker=JSON.parse(await privateFile(identityFile));
- await checkDJRenderer(token);
+ if(!worker||!await warm.pending(worker))await checkDJRenderer(token);
  if(process.argv.includes('--register')){
   // Reserve the receipt file before consuming a permit, so an existing lease is never overwritten.
   await writeFile(identityFile,'',{flag:'wx',mode:0o600});
@@ -36,6 +36,7 @@ try{
  }catch{abort.abort();}finally{checking=false;}};
  await pulse();timer=setInterval(()=>{void pulse();},3000);
  while(!abort.signal.aborted){
+  if(!await warm.pending(worker))await checkDJRenderer(token);
   const result=await runRemoteDJBatch(warm,worker,token,abort.signal);
   if(result)console.log(JSON.stringify(result));else await delay(500);
  }

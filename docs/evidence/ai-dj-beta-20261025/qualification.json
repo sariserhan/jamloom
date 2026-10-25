@@ -1,0 +1,2014 @@
+{
+  "status": "PASS technical",
+  "tracks": 20,
+  "per_listener_tracks": 10,
+  "recovered_lost_response": true,
+  "vocals": 0,
+  "human_listening": "PASS provisional owner acceptance; expert training pending",
+  "customers": [
+    {
+      "visibility": "public",
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "endReason": "stop",
+      "recording": "aac60eceafb5453cb052f830d973a7b2",
+      "performance": "LIVE MOVES\nLoops \u00b7 rolls \u00b7 jog \u00b7 filter \u00b7 echo"
+    },
+    {
+      "visibility": "private",
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "endReason": "credits",
+      "recording": "5e20d109262c4931bbfd38ba80414d38",
+      "performance": "LIVE MOVES\nLoops \u00b7 rolls \u00b7 jog \u00b7 filter \u00b7 echo"
+    }
+  ],
+  "batches": [
+    {
+      "session_id": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 0,
+      "seed": 577365977,
+      "render_settings": {
+        "mood": "bright",
+        "style": "house",
+        "energy": 4
+      },
+      "vocal": null,
+      "audio_sha256": "92ec2b46153ea23da89b6d5d234c309e3300b215e51d613254ebdfc290f81a98"
+    },
+    {
+      "session_id": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 1,
+      "seed": 2143981486,
+      "render_settings": {
+        "mood": "bright",
+        "style": "house",
+        "energy": 4,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "692c47fc427901e41ae6622a347a079dfabc6bed0d1d6487dae00864e13b9c04"
+    },
+    {
+      "session_id": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 2,
+      "seed": 3027815122,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "01fc16069e511e28dd892b45d730cefcfb4869e6437ca2f1fbe39eb1db572e71"
+    },
+    {
+      "session_id": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 3,
+      "seed": 647958080,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "2ac5dd51dc53c8df29182052887f1c445bff809ad959b861b75c5f7ed8a3a03f"
+    },
+    {
+      "session_id": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 4,
+      "seed": 4105139837,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "a095191fac9f5a9475172e7e79b05b939c874571dc3331f9c622f5a5d540cecf"
+    },
+    {
+      "session_id": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 5,
+      "seed": 1136887909,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "f0e7fb6dd123d717add5f7110637e34bd606e2e0b29b421f8a549c85a1f8b3bf"
+    },
+    {
+      "session_id": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 6,
+      "seed": 1451282317,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "b07d8f6038b4299e5804c0a01cf6ab0932ad8f586c063f690afd7f28381998ee"
+    },
+    {
+      "session_id": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 7,
+      "seed": 426397958,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "774f2f27795259a61959d7371cf8c2dff93b6d28b704c0096b4e5278ebc1cfdd"
+    },
+    {
+      "session_id": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 8,
+      "seed": 3546258711,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "9855e3a0004e2d420bc2046350ef8f9f337e1c5752281918233edf8bc874b684"
+    },
+    {
+      "session_id": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 9,
+      "seed": 4230205310,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "9648ca135a6a68b082e6b3a3b3cb6df5155870a11db6bc11593e03e21384faca"
+    },
+    {
+      "session_id": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 0,
+      "seed": 3413528500,
+      "render_settings": {
+        "mood": "deep",
+        "style": "house",
+        "energy": 4
+      },
+      "vocal": null,
+      "audio_sha256": "8343b0fcc18dbdefc40bb0dc1b977fb4a68f3d0dd46503cce680ddc88d01f8d2"
+    },
+    {
+      "session_id": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 1,
+      "seed": 2908750512,
+      "render_settings": {
+        "mood": "deep",
+        "style": "house",
+        "energy": 4,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "ab40d59cc8d0b2c3413a0336eb277c890c68bb50644b987a2966b6d47bb93cb9"
+    },
+    {
+      "session_id": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 2,
+      "seed": 1244164969,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "c91915bacf7a99f0c018a7d9657e0f6aa992f74ebaffef155ae660bc061b68e6"
+    },
+    {
+      "session_id": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 3,
+      "seed": 815352752,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "8f599070a03b5263d0eb63648e9d839b456807f7f6622177e9cc239d22c8e703"
+    },
+    {
+      "session_id": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 4,
+      "seed": 1067102774,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "4a78585e5a171c104bd6517340c0c3904bfccbd06b53afa3b6fc3be324b2840c"
+    },
+    {
+      "session_id": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 5,
+      "seed": 2660202112,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "00b66c66bc2b3939a13d0b0fb642ec19ef16b80427d9c2311c5929c97cd6a56b"
+    },
+    {
+      "session_id": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 6,
+      "seed": 3319890870,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "4d31bfd4cc579a638db13d6666aa7251e7be9e71abb2070cfaa64823c217200a"
+    },
+    {
+      "session_id": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 7,
+      "seed": 2420752680,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "417fab1a4580c8295324da57b55cfc8c2089b4690b2d1fa3a6a80f57239cfff9"
+    },
+    {
+      "session_id": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 8,
+      "seed": 2880542522,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "3b52260ca2d38a837bc2f2362c06ae0d13730b74be976316723a67bfdb16169b"
+    },
+    {
+      "session_id": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 9,
+      "seed": 88454882,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "f049f56e261cead86f3233981b11301b820b50fbaa4e5789202dd576e64172e5"
+    }
+  ],
+  "tracks_metadata": [
+    {
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 0,
+      "sha256": "92ec2b46153ea23da89b6d5d234c309e3300b215e51d613254ebdfc290f81a98",
+      "computeMs": 6712
+    },
+    {
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 0,
+      "sha256": "8343b0fcc18dbdefc40bb0dc1b977fb4a68f3d0dd46503cce680ddc88d01f8d2",
+      "computeMs": 1751
+    },
+    {
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 1,
+      "sha256": "692c47fc427901e41ae6622a347a079dfabc6bed0d1d6487dae00864e13b9c04",
+      "computeMs": 1760
+    },
+    {
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 1,
+      "sha256": "ab40d59cc8d0b2c3413a0336eb277c890c68bb50644b987a2966b6d47bb93cb9",
+      "computeMs": 1778
+    },
+    {
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 2,
+      "sha256": "01fc16069e511e28dd892b45d730cefcfb4869e6437ca2f1fbe39eb1db572e71",
+      "computeMs": 5175
+    },
+    {
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 2,
+      "sha256": "c91915bacf7a99f0c018a7d9657e0f6aa992f74ebaffef155ae660bc061b68e6",
+      "computeMs": 1905
+    },
+    {
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 3,
+      "sha256": "2ac5dd51dc53c8df29182052887f1c445bff809ad959b861b75c5f7ed8a3a03f",
+      "computeMs": 1662
+    },
+    {
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 3,
+      "sha256": "8f599070a03b5263d0eb63648e9d839b456807f7f6622177e9cc239d22c8e703",
+      "computeMs": 1653
+    },
+    {
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 4,
+      "sha256": "a095191fac9f5a9475172e7e79b05b939c874571dc3331f9c622f5a5d540cecf",
+      "computeMs": 1822
+    },
+    {
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 5,
+      "sha256": "f0e7fb6dd123d717add5f7110637e34bd606e2e0b29b421f8a549c85a1f8b3bf",
+      "computeMs": 1828
+    },
+    {
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 4,
+      "sha256": "4a78585e5a171c104bd6517340c0c3904bfccbd06b53afa3b6fc3be324b2840c",
+      "computeMs": 1824
+    },
+    {
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 6,
+      "sha256": "b07d8f6038b4299e5804c0a01cf6ab0932ad8f586c063f690afd7f28381998ee",
+      "computeMs": 1680
+    },
+    {
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 5,
+      "sha256": "00b66c66bc2b3939a13d0b0fb642ec19ef16b80427d9c2311c5929c97cd6a56b",
+      "computeMs": 1648
+    },
+    {
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 7,
+      "sha256": "774f2f27795259a61959d7371cf8c2dff93b6d28b704c0096b4e5278ebc1cfdd",
+      "computeMs": 2130
+    },
+    {
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 6,
+      "sha256": "4d31bfd4cc579a638db13d6666aa7251e7be9e71abb2070cfaa64823c217200a",
+      "computeMs": 1806
+    },
+    {
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 8,
+      "sha256": "9855e3a0004e2d420bc2046350ef8f9f337e1c5752281918233edf8bc874b684",
+      "computeMs": 1749
+    },
+    {
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 7,
+      "sha256": "417fab1a4580c8295324da57b55cfc8c2089b4690b2d1fa3a6a80f57239cfff9",
+      "computeMs": 3183
+    },
+    {
+      "session": "adbe4ae43f5243d18d4e818ee898d648",
+      "sequence": 9,
+      "sha256": "9648ca135a6a68b082e6b3a3b3cb6df5155870a11db6bc11593e03e21384faca",
+      "computeMs": 1681
+    },
+    {
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 8,
+      "sha256": "3b52260ca2d38a837bc2f2362c06ae0d13730b74be976316723a67bfdb16169b",
+      "computeMs": 1835
+    },
+    {
+      "session": "f8f7e71101b1419296de8418f37ac36f",
+      "sequence": 9,
+      "sha256": "f049f56e261cead86f3233981b11301b820b50fbaa4e5789202dd576e64172e5",
+      "computeMs": 1834
+    }
+  ],
+  "samples": [
+    {
+      "at": 1792913686381,
+      "visibility": "public",
+      "heap": 18078270,
+      "activeSources": 0,
+      "nodeRss": 189071360
+    },
+    {
+      "at": 1792913686383,
+      "visibility": "private",
+      "heap": 18785761,
+      "activeSources": 0,
+      "nodeRss": 189071360
+    },
+    {
+      "at": 1792913691380,
+      "visibility": "public",
+      "heap": 41663949,
+      "activeSources": 1,
+      "nodeRss": 291028992
+    },
+    {
+      "at": 1792913691380,
+      "visibility": "private",
+      "heap": 21395842,
+      "activeSources": 0,
+      "nodeRss": 291160064
+    },
+    {
+      "at": 1792913696442,
+      "visibility": "public",
+      "heap": 46806727,
+      "activeSources": 1,
+      "nodeRss": 346030080
+    },
+    {
+      "at": 1792913696443,
+      "visibility": "private",
+      "heap": 39525364,
+      "activeSources": 1,
+      "nodeRss": 346030080
+    },
+    {
+      "at": 1792913701381,
+      "visibility": "public",
+      "heap": 62724292,
+      "activeSources": 2,
+      "nodeRss": 347521024
+    },
+    {
+      "at": 1792913701381,
+      "visibility": "private",
+      "heap": 52676617,
+      "activeSources": 2,
+      "nodeRss": 347521024
+    },
+    {
+      "at": 1792913706381,
+      "visibility": "public",
+      "heap": 56529336,
+      "activeSources": 2,
+      "nodeRss": 351551488
+    },
+    {
+      "at": 1792913706382,
+      "visibility": "private",
+      "heap": 59565200,
+      "activeSources": 2,
+      "nodeRss": 351682560
+    },
+    {
+      "at": 1792913711384,
+      "visibility": "public",
+      "heap": 68995703,
+      "activeSources": 2,
+      "nodeRss": 323158016
+    },
+    {
+      "at": 1792913711384,
+      "visibility": "private",
+      "heap": 72372766,
+      "activeSources": 2,
+      "nodeRss": 323158016
+    },
+    {
+      "at": 1792913716385,
+      "visibility": "public",
+      "heap": 49017426,
+      "activeSources": 2,
+      "nodeRss": 324091904
+    },
+    {
+      "at": 1792913716386,
+      "visibility": "private",
+      "heap": 51741474,
+      "activeSources": 2,
+      "nodeRss": 324091904
+    },
+    {
+      "at": 1792913721386,
+      "visibility": "public",
+      "heap": 58410983,
+      "activeSources": 2,
+      "nodeRss": 324354048
+    },
+    {
+      "at": 1792913721387,
+      "visibility": "private",
+      "heap": 65050707,
+      "activeSources": 2,
+      "nodeRss": 324419584
+    },
+    {
+      "at": 1792913726388,
+      "visibility": "public",
+      "heap": 64438031,
+      "activeSources": 2,
+      "nodeRss": 307970048
+    },
+    {
+      "at": 1792913726389,
+      "visibility": "private",
+      "heap": 55371019,
+      "activeSources": 2,
+      "nodeRss": 307970048
+    },
+    {
+      "at": 1792913731391,
+      "visibility": "public",
+      "heap": 64715669,
+      "activeSources": 2,
+      "nodeRss": 308314112
+    },
+    {
+      "at": 1792913731391,
+      "visibility": "private",
+      "heap": 77945235,
+      "activeSources": 2,
+      "nodeRss": 308314112
+    },
+    {
+      "at": 1792913736392,
+      "visibility": "public",
+      "heap": 72152937,
+      "activeSources": 2,
+      "nodeRss": 308461568
+    },
+    {
+      "at": 1792913736393,
+      "visibility": "private",
+      "heap": 59538989,
+      "activeSources": 2,
+      "nodeRss": 308461568
+    },
+    {
+      "at": 1792913741395,
+      "visibility": "public",
+      "heap": 69712450,
+      "activeSources": 2,
+      "nodeRss": 277856256
+    },
+    {
+      "at": 1792913741395,
+      "visibility": "private",
+      "heap": 74251822,
+      "activeSources": 2,
+      "nodeRss": 277856256
+    },
+    {
+      "at": 1792913746396,
+      "visibility": "public",
+      "heap": 52158811,
+      "activeSources": 2,
+      "nodeRss": 278855680
+    },
+    {
+      "at": 1792913746397,
+      "visibility": "private",
+      "heap": 61058699,
+      "activeSources": 2,
+      "nodeRss": 278855680
+    },
+    {
+      "at": 1792913751398,
+      "visibility": "public",
+      "heap": 56109449,
+      "activeSources": 1,
+      "nodeRss": 240287744
+    },
+    {
+      "at": 1792913751398,
+      "visibility": "private",
+      "heap": 51405682,
+      "activeSources": 2,
+      "nodeRss": 240304128
+    },
+    {
+      "at": 1792913756400,
+      "visibility": "public",
+      "heap": 68715800,
+      "activeSources": 2,
+      "nodeRss": 350142464
+    },
+    {
+      "at": 1792913756400,
+      "visibility": "private",
+      "heap": 51449165,
+      "activeSources": 1,
+      "nodeRss": 350142464
+    },
+    {
+      "at": 1792913761402,
+      "visibility": "public",
+      "heap": 49916212,
+      "activeSources": 2,
+      "nodeRss": 359677952
+    },
+    {
+      "at": 1792913761403,
+      "visibility": "private",
+      "heap": 57938457,
+      "activeSources": 2,
+      "nodeRss": 359677952
+    },
+    {
+      "at": 1792913766403,
+      "visibility": "public",
+      "heap": 52487217,
+      "activeSources": 2,
+      "nodeRss": 363249664
+    },
+    {
+      "at": 1792913766403,
+      "visibility": "private",
+      "heap": 48681388,
+      "activeSources": 2,
+      "nodeRss": 363364352
+    },
+    {
+      "at": 1792913771405,
+      "visibility": "public",
+      "heap": 62972399,
+      "activeSources": 2,
+      "nodeRss": 339492864
+    },
+    {
+      "at": 1792913771406,
+      "visibility": "private",
+      "heap": 66823866,
+      "activeSources": 2,
+      "nodeRss": 339492864
+    },
+    {
+      "at": 1792913776407,
+      "visibility": "public",
+      "heap": 68782328,
+      "activeSources": 2,
+      "nodeRss": 339836928
+    },
+    {
+      "at": 1792913776416,
+      "visibility": "private",
+      "heap": 57390480,
+      "activeSources": 2,
+      "nodeRss": 339951616
+    },
+    {
+      "at": 1792913781408,
+      "visibility": "public",
+      "heap": 51900361,
+      "activeSources": 2,
+      "nodeRss": 340295680
+    },
+    {
+      "at": 1792913781410,
+      "visibility": "private",
+      "heap": 51748592,
+      "activeSources": 2,
+      "nodeRss": 340295680
+    },
+    {
+      "at": 1792913786409,
+      "visibility": "public",
+      "heap": 49416907,
+      "activeSources": 1,
+      "nodeRss": 283983872
+    },
+    {
+      "at": 1792913786416,
+      "visibility": "private",
+      "heap": 70377938,
+      "activeSources": 2,
+      "nodeRss": 283983872
+    },
+    {
+      "at": 1792913791410,
+      "visibility": "public",
+      "heap": 50166248,
+      "activeSources": 2,
+      "nodeRss": 374128640
+    },
+    {
+      "at": 1792913791411,
+      "visibility": "private",
+      "heap": 69134791,
+      "activeSources": 2,
+      "nodeRss": 374161408
+    },
+    {
+      "at": 1792913796412,
+      "visibility": "public",
+      "heap": 63352472,
+      "activeSources": 2,
+      "nodeRss": 354041856
+    },
+    {
+      "at": 1792913796418,
+      "visibility": "private",
+      "heap": 53710955,
+      "activeSources": 2,
+      "nodeRss": 354058240
+    },
+    {
+      "at": 1792913801412,
+      "visibility": "public",
+      "heap": 64510805,
+      "activeSources": 2,
+      "nodeRss": 179306496
+    },
+    {
+      "at": 1792913801415,
+      "visibility": "private",
+      "heap": 71920555,
+      "activeSources": 2,
+      "nodeRss": 179306496
+    },
+    {
+      "at": 1792913806413,
+      "visibility": "public",
+      "heap": 73302834,
+      "activeSources": 2,
+      "nodeRss": 179929088
+    },
+    {
+      "at": 1792913806415,
+      "visibility": "private",
+      "heap": 58186514,
+      "activeSources": 2,
+      "nodeRss": 179929088
+    },
+    {
+      "at": 1792913811413,
+      "visibility": "public",
+      "heap": 49964449,
+      "activeSources": 2,
+      "nodeRss": 179257344
+    },
+    {
+      "at": 1792913811415,
+      "visibility": "private",
+      "heap": 82632228,
+      "activeSources": 2,
+      "nodeRss": 179257344
+    },
+    {
+      "at": 1792913816413,
+      "visibility": "public",
+      "heap": 49470197,
+      "activeSources": 2,
+      "nodeRss": 271106048
+    },
+    {
+      "at": 1792913816415,
+      "visibility": "private",
+      "heap": 48758663,
+      "activeSources": 2,
+      "nodeRss": 271106048
+    },
+    {
+      "at": 1792913821415,
+      "visibility": "public",
+      "heap": 56877419,
+      "activeSources": 2,
+      "nodeRss": 273022976
+    },
+    {
+      "at": 1792913821423,
+      "visibility": "private",
+      "heap": 75008724,
+      "activeSources": 2,
+      "nodeRss": 273022976
+    },
+    {
+      "at": 1792913826415,
+      "visibility": "public",
+      "heap": 61069899,
+      "activeSources": 1,
+      "nodeRss": 253329408
+    },
+    {
+      "at": 1792913826415,
+      "visibility": "private",
+      "heap": 79104772,
+      "activeSources": 2,
+      "nodeRss": 253329408
+    },
+    {
+      "at": 1792913831416,
+      "visibility": "public",
+      "heap": 57960546,
+      "activeSources": 2,
+      "nodeRss": 284983296
+    },
+    {
+      "at": 1792913831416,
+      "visibility": "private",
+      "heap": 71303317,
+      "activeSources": 2,
+      "nodeRss": 284983296
+    },
+    {
+      "at": 1792913836416,
+      "visibility": "public",
+      "heap": 67446009,
+      "activeSources": 2,
+      "nodeRss": 266518528
+    },
+    {
+      "at": 1792913836417,
+      "visibility": "private",
+      "heap": 64864802,
+      "activeSources": 2,
+      "nodeRss": 266649600
+    },
+    {
+      "at": 1792913841417,
+      "visibility": "public",
+      "heap": 71059713,
+      "activeSources": 2,
+      "nodeRss": 267993088
+    },
+    {
+      "at": 1792913841417,
+      "visibility": "private",
+      "heap": 52466871,
+      "activeSources": 2,
+      "nodeRss": 267993088
+    },
+    {
+      "at": 1792913846416,
+      "visibility": "public",
+      "heap": 46555358,
+      "activeSources": 2,
+      "nodeRss": 268615680
+    },
+    {
+      "at": 1792913846418,
+      "visibility": "private",
+      "heap": 68155291,
+      "activeSources": 2,
+      "nodeRss": 268615680
+    },
+    {
+      "at": 1792913851418,
+      "visibility": "public",
+      "heap": 56838789,
+      "activeSources": 2,
+      "nodeRss": 241074176
+    },
+    {
+      "at": 1792913851418,
+      "visibility": "private",
+      "heap": 70867486,
+      "activeSources": 2,
+      "nodeRss": 241074176
+    },
+    {
+      "at": 1792913856419,
+      "visibility": "public",
+      "heap": 57456030,
+      "activeSources": 2,
+      "nodeRss": 241336320
+    },
+    {
+      "at": 1792913856419,
+      "visibility": "private",
+      "heap": 54035275,
+      "activeSources": 2,
+      "nodeRss": 241336320
+    },
+    {
+      "at": 1792913861419,
+      "visibility": "public",
+      "heap": 69910950,
+      "activeSources": 1,
+      "nodeRss": 200212480
+    },
+    {
+      "at": 1792913861419,
+      "visibility": "private",
+      "heap": 60924359,
+      "activeSources": 2,
+      "nodeRss": 200212480
+    },
+    {
+      "at": 1792913866419,
+      "visibility": "public",
+      "heap": 54887411,
+      "activeSources": 2,
+      "nodeRss": 302956544
+    },
+    {
+      "at": 1792913866420,
+      "visibility": "private",
+      "heap": 63732173,
+      "activeSources": 2,
+      "nodeRss": 303071232
+    },
+    {
+      "at": 1792913871421,
+      "visibility": "public",
+      "heap": 61286776,
+      "activeSources": 2,
+      "nodeRss": 283475968
+    },
+    {
+      "at": 1792913871421,
+      "visibility": "private",
+      "heap": 71471865,
+      "activeSources": 1,
+      "nodeRss": 283574272
+    },
+    {
+      "at": 1792913876422,
+      "visibility": "public",
+      "heap": 64853544,
+      "activeSources": 2,
+      "nodeRss": 318537728
+    },
+    {
+      "at": 1792913876423,
+      "visibility": "private",
+      "heap": 61133906,
+      "activeSources": 2,
+      "nodeRss": 318652416
+    },
+    {
+      "at": 1792913881422,
+      "visibility": "public",
+      "heap": 76549268,
+      "activeSources": 2,
+      "nodeRss": 300023808
+    },
+    {
+      "at": 1792913881422,
+      "visibility": "private",
+      "heap": 50746263,
+      "activeSources": 2,
+      "nodeRss": 300023808
+    },
+    {
+      "at": 1792913886423,
+      "visibility": "public",
+      "heap": 50751864,
+      "activeSources": 2,
+      "nodeRss": 301367296
+    },
+    {
+      "at": 1792913886423,
+      "visibility": "private",
+      "heap": 68605038,
+      "activeSources": 2,
+      "nodeRss": 301481984
+    },
+    {
+      "at": 1792913891423,
+      "visibility": "public",
+      "heap": 50420965,
+      "activeSources": 2,
+      "nodeRss": 301809664
+    },
+    {
+      "at": 1792913891424,
+      "visibility": "private",
+      "heap": 56997428,
+      "activeSources": 2,
+      "nodeRss": 301809664
+    },
+    {
+      "at": 1792913896425,
+      "visibility": "public",
+      "heap": 60646360,
+      "activeSources": 2,
+      "nodeRss": 301826048
+    },
+    {
+      "at": 1792913896425,
+      "visibility": "private",
+      "heap": 73149184,
+      "activeSources": 2,
+      "nodeRss": 301826048
+    },
+    {
+      "at": 1792913901425,
+      "visibility": "public",
+      "heap": 60818158,
+      "activeSources": 2,
+      "nodeRss": 248315904
+    },
+    {
+      "at": 1792913901426,
+      "visibility": "private",
+      "heap": 58000896,
+      "activeSources": 2,
+      "nodeRss": 248315904
+    },
+    {
+      "at": 1792913906427,
+      "visibility": "public",
+      "heap": 70279516,
+      "activeSources": 2,
+      "nodeRss": 248512512
+    },
+    {
+      "at": 1792913906428,
+      "visibility": "private",
+      "heap": 60295779,
+      "activeSources": 2,
+      "nodeRss": 248512512
+    },
+    {
+      "at": 1792913911428,
+      "visibility": "public",
+      "heap": 74095480,
+      "activeSources": 2,
+      "nodeRss": 248643584
+    },
+    {
+      "at": 1792913911429,
+      "visibility": "private",
+      "heap": 75001415,
+      "activeSources": 2,
+      "nodeRss": 248643584
+    },
+    {
+      "at": 1792913916429,
+      "visibility": "public",
+      "heap": 52770561,
+      "activeSources": 1,
+      "nodeRss": 249954304
+    },
+    {
+      "at": 1792913916430,
+      "visibility": "private",
+      "heap": 62797876,
+      "activeSources": 2,
+      "nodeRss": 250068992
+    },
+    {
+      "at": 1792913921430,
+      "visibility": "public",
+      "heap": 71246853,
+      "activeSources": 2,
+      "nodeRss": 332152832
+    },
+    {
+      "at": 1792913921431,
+      "visibility": "private",
+      "heap": 73553102,
+      "activeSources": 2,
+      "nodeRss": 332283904
+    },
+    {
+      "at": 1792913926430,
+      "visibility": "public",
+      "heap": 54546342,
+      "activeSources": 2,
+      "nodeRss": 332349440
+    },
+    {
+      "at": 1792913926431,
+      "visibility": "private",
+      "heap": 56903972,
+      "activeSources": 2,
+      "nodeRss": 332349440
+    },
+    {
+      "at": 1792913931430,
+      "visibility": "public",
+      "heap": 60901014,
+      "activeSources": 2,
+      "nodeRss": 329842688
+    },
+    {
+      "at": 1792913931431,
+      "visibility": "private",
+      "heap": 33770026,
+      "activeSources": 1,
+      "nodeRss": 329842688
+    },
+    {
+      "at": 1792913936432,
+      "visibility": "public",
+      "heap": 67495443,
+      "activeSources": 2,
+      "nodeRss": 332742656
+    },
+    {
+      "at": 1792913936432,
+      "visibility": "private",
+      "heap": 68777078,
+      "activeSources": 2,
+      "nodeRss": 332742656
+    },
+    {
+      "at": 1792913941433,
+      "visibility": "public",
+      "heap": 68055796,
+      "activeSources": 2,
+      "nodeRss": 313049088
+    },
+    {
+      "at": 1792913941434,
+      "visibility": "private",
+      "heap": 57309012,
+      "activeSources": 2,
+      "nodeRss": 313245696
+    },
+    {
+      "at": 1792913946434,
+      "visibility": "public",
+      "heap": 74428815,
+      "activeSources": 2,
+      "nodeRss": 315179008
+    },
+    {
+      "at": 1792913946435,
+      "visibility": "private",
+      "heap": 57804747,
+      "activeSources": 2,
+      "nodeRss": 315277312
+    },
+    {
+      "at": 1792913951435,
+      "visibility": "public",
+      "heap": 50416503,
+      "activeSources": 2,
+      "nodeRss": 315867136
+    },
+    {
+      "at": 1792913951436,
+      "visibility": "private",
+      "heap": 72773992,
+      "activeSources": 2,
+      "nodeRss": 315867136
+    },
+    {
+      "at": 1792913956436,
+      "visibility": "public",
+      "heap": 51220960,
+      "activeSources": 2,
+      "nodeRss": 316129280
+    },
+    {
+      "at": 1792913956436,
+      "visibility": "private",
+      "heap": 59733504,
+      "activeSources": 2,
+      "nodeRss": 316129280
+    },
+    {
+      "at": 1792913961437,
+      "visibility": "public",
+      "heap": 54625345,
+      "activeSources": 2,
+      "nodeRss": 316145664
+    },
+    {
+      "at": 1792913961437,
+      "visibility": "private",
+      "heap": 69894646,
+      "activeSources": 2,
+      "nodeRss": 316145664
+    },
+    {
+      "at": 1792913966437,
+      "visibility": "public",
+      "heap": 58152531,
+      "activeSources": 2,
+      "nodeRss": 258146304
+    },
+    {
+      "at": 1792913966437,
+      "visibility": "private",
+      "heap": 71714267,
+      "activeSources": 2,
+      "nodeRss": 258146304
+    },
+    {
+      "at": 1792913971437,
+      "visibility": "public",
+      "heap": 70546654,
+      "activeSources": 2,
+      "nodeRss": 258146304
+    },
+    {
+      "at": 1792913971437,
+      "visibility": "private",
+      "heap": 56385751,
+      "activeSources": 2,
+      "nodeRss": 258146304
+    },
+    {
+      "at": 1792913976438,
+      "visibility": "public",
+      "heap": 53216308,
+      "activeSources": 1,
+      "nodeRss": 177963008
+    },
+    {
+      "at": 1792913976438,
+      "visibility": "private",
+      "heap": 67602043,
+      "activeSources": 2,
+      "nodeRss": 177963008
+    },
+    {
+      "at": 1792913981439,
+      "visibility": "public",
+      "heap": 72071752,
+      "activeSources": 2,
+      "nodeRss": 269697024
+    },
+    {
+      "at": 1792913981439,
+      "visibility": "private",
+      "heap": 67388447,
+      "activeSources": 2,
+      "nodeRss": 269828096
+    },
+    {
+      "at": 1792913986440,
+      "visibility": "public",
+      "heap": 52121630,
+      "activeSources": 2,
+      "nodeRss": 251346944
+    },
+    {
+      "at": 1792913986440,
+      "visibility": "private",
+      "heap": 54794499,
+      "activeSources": 1,
+      "nodeRss": 251494400
+    },
+    {
+      "at": 1792913991441,
+      "visibility": "public",
+      "heap": 73633672,
+      "activeSources": 2,
+      "nodeRss": 289128448
+    },
+    {
+      "at": 1792913991441,
+      "visibility": "private",
+      "heap": 58505382,
+      "activeSources": 2,
+      "nodeRss": 289128448
+    },
+    {
+      "at": 1792913996443,
+      "visibility": "public",
+      "heap": 58887678,
+      "activeSources": 2,
+      "nodeRss": 290930688
+    },
+    {
+      "at": 1792913996443,
+      "visibility": "private",
+      "heap": 49009772,
+      "activeSources": 2,
+      "nodeRss": 291061760
+    },
+    {
+      "at": 1792914001445,
+      "visibility": "public",
+      "heap": 52955943,
+      "activeSources": 2,
+      "nodeRss": 271515648
+    },
+    {
+      "at": 1792914001445,
+      "visibility": "private",
+      "heap": 71284886,
+      "activeSources": 2,
+      "nodeRss": 271515648
+    },
+    {
+      "at": 1792914006446,
+      "visibility": "public",
+      "heap": 49560589,
+      "activeSources": 2,
+      "nodeRss": 272072704
+    },
+    {
+      "at": 1792914006446,
+      "visibility": "private",
+      "heap": 53170663,
+      "activeSources": 2,
+      "nodeRss": 272072704
+    },
+    {
+      "at": 1792914011457,
+      "visibility": "public",
+      "heap": 59287250,
+      "activeSources": 2,
+      "nodeRss": 218710016
+    },
+    {
+      "at": 1792914011458,
+      "visibility": "private",
+      "heap": 78846825,
+      "activeSources": 2,
+      "nodeRss": 218710016
+    },
+    {
+      "at": 1792914016457,
+      "visibility": "public",
+      "heap": 60511884,
+      "activeSources": 1,
+      "nodeRss": 219430912
+    },
+    {
+      "at": 1792914016458,
+      "visibility": "private",
+      "heap": 56101201,
+      "activeSources": 2,
+      "nodeRss": 219430912
+    },
+    {
+      "at": 1792914021455,
+      "visibility": "public",
+      "heap": 73449730,
+      "activeSources": 2,
+      "nodeRss": 324370432
+    },
+    {
+      "at": 1792914021455,
+      "visibility": "private",
+      "heap": 75649110,
+      "activeSources": 2,
+      "nodeRss": 324370432
+    },
+    {
+      "at": 1792914026455,
+      "visibility": "public",
+      "heap": 53808152,
+      "activeSources": 2,
+      "nodeRss": 326418432
+    },
+    {
+      "at": 1792914026456,
+      "visibility": "private",
+      "heap": 66701788,
+      "activeSources": 2,
+      "nodeRss": 326549504
+    },
+    {
+      "at": 1792914031451,
+      "visibility": "public",
+      "heap": 61090760,
+      "activeSources": 2,
+      "nodeRss": 294977536
+    },
+    {
+      "at": 1792914031452,
+      "visibility": "private",
+      "heap": 57406991,
+      "activeSources": 2,
+      "nodeRss": 295108608
+    },
+    {
+      "at": 1792914036456,
+      "visibility": "public",
+      "heap": 69926153,
+      "activeSources": 2,
+      "nodeRss": 296173568
+    },
+    {
+      "at": 1792914036456,
+      "visibility": "private",
+      "heap": 69498008,
+      "activeSources": 2,
+      "nodeRss": 296173568
+    },
+    {
+      "at": 1792914041458,
+      "visibility": "public",
+      "heap": 69879321,
+      "activeSources": 2,
+      "nodeRss": 296370176
+    },
+    {
+      "at": 1792914041458,
+      "visibility": "private",
+      "heap": 56922294,
+      "activeSources": 2,
+      "nodeRss": 296370176
+    },
+    {
+      "at": 1792914046456,
+      "visibility": "public",
+      "heap": 79875494,
+      "activeSources": 2,
+      "nodeRss": 298024960
+    },
+    {
+      "at": 1792914046457,
+      "visibility": "private",
+      "heap": 82503518,
+      "activeSources": 1,
+      "nodeRss": 298024960
+    },
+    {
+      "at": 1792914051455,
+      "visibility": "public",
+      "heap": 52585806,
+      "activeSources": 2,
+      "nodeRss": 333873152
+    },
+    {
+      "at": 1792914051456,
+      "visibility": "private",
+      "heap": 56046055,
+      "activeSources": 2,
+      "nodeRss": 333873152
+    },
+    {
+      "at": 1792914056456,
+      "visibility": "public",
+      "heap": 62578518,
+      "activeSources": 2,
+      "nodeRss": 335462400
+    },
+    {
+      "at": 1792914056457,
+      "visibility": "private",
+      "heap": 82923755,
+      "activeSources": 2,
+      "nodeRss": 335462400
+    },
+    {
+      "at": 1792914061455,
+      "visibility": "public",
+      "heap": 61083227,
+      "activeSources": 2,
+      "nodeRss": 314900480
+    },
+    {
+      "at": 1792914061456,
+      "visibility": "private",
+      "heap": 82561162,
+      "activeSources": 2,
+      "nodeRss": 314900480
+    },
+    {
+      "at": 1792914066458,
+      "visibility": "public",
+      "heap": 61596761,
+      "activeSources": 2,
+      "nodeRss": 315392000
+    },
+    {
+      "at": 1792914066459,
+      "visibility": "private",
+      "heap": 87357612,
+      "activeSources": 2,
+      "nodeRss": 315457536
+    },
+    {
+      "at": 1792914071458,
+      "visibility": "public",
+      "heap": 69003261,
+      "activeSources": 2,
+      "nodeRss": 315949056
+    },
+    {
+      "at": 1792914071458,
+      "visibility": "private",
+      "heap": 72947275,
+      "activeSources": 2,
+      "nodeRss": 315949056
+    },
+    {
+      "at": 1792914076459,
+      "visibility": "public",
+      "heap": 58236943,
+      "activeSources": 1,
+      "nodeRss": 318308352
+    },
+    {
+      "at": 1792914076460,
+      "visibility": "private",
+      "heap": 75736874,
+      "activeSources": 2,
+      "nodeRss": 318308352
+    },
+    {
+      "at": 1792914081460,
+      "visibility": "public",
+      "heap": 18912448,
+      "activeSources": 0,
+      "nodeRss": 367247360
+    },
+    {
+      "at": 1792914081461,
+      "visibility": "private",
+      "heap": 65464777,
+      "activeSources": 2,
+      "nodeRss": 367247360
+    },
+    {
+      "at": 1792914086461,
+      "visibility": "public",
+      "heap": 18923800,
+      "activeSources": 0,
+      "nodeRss": 368148480
+    },
+    {
+      "at": 1792914086462,
+      "visibility": "private",
+      "heap": 67392175,
+      "activeSources": 2,
+      "nodeRss": 368263168
+    },
+    {
+      "at": 1792914091462,
+      "visibility": "public",
+      "heap": 18958185,
+      "activeSources": 0,
+      "nodeRss": 359317504
+    },
+    {
+      "at": 1792914091464,
+      "visibility": "private",
+      "heap": 62424987,
+      "activeSources": 2,
+      "nodeRss": 359415808
+    },
+    {
+      "at": 1792914096462,
+      "visibility": "public",
+      "heap": 15489063,
+      "activeSources": 0,
+      "nodeRss": 355500032
+    },
+    {
+      "at": 1792914096463,
+      "visibility": "private",
+      "heap": 60487037,
+      "activeSources": 1,
+      "nodeRss": 355500032
+    },
+    {
+      "at": 1792914101464,
+      "visibility": "public",
+      "heap": 15560259,
+      "activeSources": 0,
+      "nodeRss": 336576512
+    },
+    {
+      "at": 1792914101465,
+      "visibility": "private",
+      "heap": 75555554,
+      "activeSources": 2,
+      "nodeRss": 336707584
+    },
+    {
+      "at": 1792914106466,
+      "visibility": "public",
+      "heap": 15564659,
+      "activeSources": 0,
+      "nodeRss": 316620800
+    },
+    {
+      "at": 1792914106467,
+      "visibility": "private",
+      "heap": 74985591,
+      "activeSources": 2,
+      "nodeRss": 316751872
+    },
+    {
+      "at": 1792914111466,
+      "visibility": "public",
+      "heap": 15569059,
+      "activeSources": 0,
+      "nodeRss": 318341120
+    },
+    {
+      "at": 1792914111466,
+      "visibility": "private",
+      "heap": 69545459,
+      "activeSources": 2,
+      "nodeRss": 318341120
+    },
+    {
+      "at": 1792914116467,
+      "visibility": "public",
+      "heap": 15573459,
+      "activeSources": 0,
+      "nodeRss": 316915712
+    },
+    {
+      "at": 1792914116468,
+      "visibility": "private",
+      "heap": 56400031,
+      "activeSources": 2,
+      "nodeRss": 316915712
+    },
+    {
+      "at": 1792914121467,
+      "visibility": "public",
+      "heap": 15577859,
+      "activeSources": 0,
+      "nodeRss": 317046784
+    },
+    {
+      "at": 1792914121468,
+      "visibility": "private",
+      "heap": 70364677,
+      "activeSources": 2,
+      "nodeRss": 317046784
+    },
+    {
+      "at": 1792914126469,
+      "visibility": "public",
+      "heap": 15582259,
+      "activeSources": 0,
+      "nodeRss": 314540032
+    },
+    {
+      "at": 1792914126469,
+      "visibility": "private",
+      "heap": 57876500,
+      "activeSources": 2,
+      "nodeRss": 314540032
+    },
+    {
+      "at": 1792914131470,
+      "visibility": "public",
+      "heap": 15586659,
+      "activeSources": 0,
+      "nodeRss": 314605568
+    },
+    {
+      "at": 1792914131471,
+      "visibility": "private",
+      "heap": 73526579,
+      "activeSources": 2,
+      "nodeRss": 314621952
+    },
+    {
+      "at": 1792914136471,
+      "visibility": "public",
+      "heap": 15591195,
+      "activeSources": 0,
+      "nodeRss": 313180160
+    },
+    {
+      "at": 1792914136471,
+      "visibility": "private",
+      "heap": 60997293,
+      "activeSources": 1,
+      "nodeRss": 313180160
+    },
+    {
+      "at": 1792914141471,
+      "visibility": "public",
+      "heap": 15595615,
+      "activeSources": 0,
+      "nodeRss": 359497728
+    },
+    {
+      "at": 1792914141472,
+      "visibility": "private",
+      "heap": 57978061,
+      "activeSources": 2,
+      "nodeRss": 359546880
+    },
+    {
+      "at": 1792914146471,
+      "visibility": "public",
+      "heap": 15600287,
+      "activeSources": 0,
+      "nodeRss": 339525632
+    },
+    {
+      "at": 1792914146472,
+      "visibility": "private",
+      "heap": 82628739,
+      "activeSources": 2,
+      "nodeRss": 339656704
+    },
+    {
+      "at": 1792914151473,
+      "visibility": "public",
+      "heap": 15622051,
+      "activeSources": 0,
+      "nodeRss": 319422464
+    },
+    {
+      "at": 1792914151473,
+      "visibility": "private",
+      "heap": 82126592,
+      "activeSources": 2,
+      "nodeRss": 319422464
+    },
+    {
+      "at": 1792914156474,
+      "visibility": "public",
+      "heap": 15626459,
+      "activeSources": 0,
+      "nodeRss": 318980096
+    },
+    {
+      "at": 1792914156474,
+      "visibility": "private",
+      "heap": 67403099,
+      "activeSources": 2,
+      "nodeRss": 318980096
+    },
+    {
+      "at": 1792914161474,
+      "visibility": "public",
+      "heap": 15680495,
+      "activeSources": 0,
+      "nodeRss": 318668800
+    },
+    {
+      "at": 1792914161474,
+      "visibility": "private",
+      "heap": 61899517,
+      "activeSources": 2,
+      "nodeRss": 318668800
+    },
+    {
+      "at": 1792914166476,
+      "visibility": "public",
+      "heap": 15684903,
+      "activeSources": 0,
+      "nodeRss": 318570496
+    },
+    {
+      "at": 1792914166477,
+      "visibility": "private",
+      "heap": 52398201,
+      "activeSources": 2,
+      "nodeRss": 318586880
+    },
+    {
+      "at": 1792914171476,
+      "visibility": "public",
+      "heap": 15689311,
+      "activeSources": 0,
+      "nodeRss": 318636032
+    },
+    {
+      "at": 1792914171477,
+      "visibility": "private",
+      "heap": 74374794,
+      "activeSources": 2,
+      "nodeRss": 318636032
+    },
+    {
+      "at": 1792914176476,
+      "visibility": "public",
+      "heap": 15693719,
+      "activeSources": 0,
+      "nodeRss": 318701568
+    },
+    {
+      "at": 1792914176477,
+      "visibility": "private",
+      "heap": 78268495,
+      "activeSources": 2,
+      "nodeRss": 318701568
+    },
+    {
+      "at": 1792914181477,
+      "visibility": "public",
+      "heap": 15698127,
+      "activeSources": 0,
+      "nodeRss": 318767104
+    },
+    {
+      "at": 1792914181478,
+      "visibility": "private",
+      "heap": 78635064,
+      "activeSources": 2,
+      "nodeRss": 318767104
+    },
+    {
+      "at": 1792914186478,
+      "visibility": "public",
+      "heap": 15702535,
+      "activeSources": 0,
+      "nodeRss": 318783488
+    },
+    {
+      "at": 1792914186479,
+      "visibility": "private",
+      "heap": 65175538,
+      "activeSources": 2,
+      "nodeRss": 318783488
+    },
+    {
+      "at": 1792914191479,
+      "visibility": "public",
+      "heap": 15706943,
+      "activeSources": 0,
+      "nodeRss": 318963712
+    },
+    {
+      "at": 1792914191480,
+      "visibility": "private",
+      "heap": 67289040,
+      "activeSources": 1,
+      "nodeRss": 318963712
+    },
+    {
+      "at": 1792914196481,
+      "visibility": "public",
+      "heap": 15711351,
+      "activeSources": 0,
+      "nodeRss": 319094784
+    },
+    {
+      "at": 1792914196482,
+      "visibility": "private",
+      "heap": 53900502,
+      "activeSources": 1,
+      "nodeRss": 319094784
+    },
+    {
+      "at": 1792914201483,
+      "visibility": "public",
+      "heap": 15715759,
+      "activeSources": 0,
+      "nodeRss": 319176704
+    },
+    {
+      "at": 1792914201484,
+      "visibility": "private",
+      "heap": 53483941,
+      "activeSources": 1,
+      "nodeRss": 319176704
+    },
+    {
+      "at": 1792914206483,
+      "visibility": "public",
+      "heap": 15720167,
+      "activeSources": 0,
+      "nodeRss": 319291392
+    },
+    {
+      "at": 1792914206484,
+      "visibility": "private",
+      "heap": 49496757,
+      "activeSources": 1,
+      "nodeRss": 319291392
+    },
+    {
+      "at": 1792914211484,
+      "visibility": "public",
+      "heap": 15742199,
+      "activeSources": 0,
+      "nodeRss": 319373312
+    },
+    {
+      "at": 1792914211485,
+      "visibility": "private",
+      "heap": 36218068,
+      "activeSources": 1,
+      "nodeRss": 319373312
+    },
+    {
+      "at": 1792914216484,
+      "visibility": "public",
+      "heap": 15746607,
+      "activeSources": 0,
+      "nodeRss": 319422464
+    },
+    {
+      "at": 1792914216485,
+      "visibility": "private",
+      "heap": 61574869,
+      "activeSources": 1,
+      "nodeRss": 319422464
+    },
+    {
+      "at": 1792914221486,
+      "visibility": "public",
+      "heap": 15802535,
+      "activeSources": 0,
+      "nodeRss": 319488000
+    },
+    {
+      "at": 1792914221487,
+      "visibility": "private",
+      "heap": 38927344,
+      "activeSources": 1,
+      "nodeRss": 319488000
+    },
+    {
+      "at": 1792914226487,
+      "visibility": "public",
+      "heap": 15806943,
+      "activeSources": 0,
+      "nodeRss": 319586304
+    },
+    {
+      "at": 1792914226488,
+      "visibility": "private",
+      "heap": 63949636,
+      "activeSources": 1,
+      "nodeRss": 319586304
+    },
+    {
+      "at": 1792914231486,
+      "visibility": "public",
+      "heap": 15811351,
+      "activeSources": 0,
+      "nodeRss": 288915456
+    },
+    {
+      "at": 1792914231487,
+      "visibility": "private",
+      "heap": 33860836,
+      "activeSources": 1,
+      "nodeRss": 288915456
+    },
+    {
+      "at": 1792914236488,
+      "visibility": "public",
+      "heap": 15815759,
+      "activeSources": 0,
+      "nodeRss": 288980992
+    },
+    {
+      "at": 1792914236488,
+      "visibility": "private",
+      "heap": 56569370,
+      "activeSources": 1,
+      "nodeRss": 288980992
+    },
+    {
+      "at": 1792914241489,
+      "visibility": "public",
+      "heap": 15820167,
+      "activeSources": 0,
+      "nodeRss": 234733568
+    },
+    {
+      "at": 1792914241490,
+      "visibility": "private",
+      "heap": 55655703,
+      "activeSources": 1,
+      "nodeRss": 234749952
+    },
+    {
+      "at": 1792914246490,
+      "visibility": "public",
+      "heap": 15824575,
+      "activeSources": 0,
+      "nodeRss": 234881024
+    },
+    {
+      "at": 1792914246491,
+      "visibility": "private",
+      "heap": 53584920,
+      "activeSources": 1,
+      "nodeRss": 234881024
+    },
+    {
+      "at": 1792914251490,
+      "visibility": "public",
+      "heap": 15828983,
+      "activeSources": 0,
+      "nodeRss": 259309568
+    },
+    {
+      "at": 1792914251491,
+      "visibility": "private",
+      "heap": 21831388,
+      "activeSources": 0,
+      "nodeRss": 259424256
+    }
+  ],
+  "peak_browser_heap_mib": 83.31071090698242,
+  "peak_node_rss_mib": 356.828125,
+  "max_active_sources": 2,
+  "scope": "Two real Chromium clients; injected isolated authentication/HTTP context; real GPU and R2; not production authentication or venue proof",
+  "public_stop": "Stops after track 9 starts and track 10 is prepared; private plays all ten until credits end",
+  "cleanup": {
+    "testOwnersPurged": 2,
+    "recordingObjectsPurged": true,
+    "isolatedDatabaseDropped": true
+  }
+}

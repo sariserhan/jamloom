@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "instrumental_model_calls": 20,
+  "vocal_candidate_model_calls": 2,
+  "total_model_calls": 22,
+  "authorized_maximum": 24,
+  "lost_response_regenerated_audio": false,
+  "boot_log_sha256": "82cdb60d96cb41a1f3f4183a4c22d385604233d549c2e4e643d32cde19b144ec",
+  "boot_log_path": "build-dj-qualification-20261025-beta/gpu-boot-complete.log",
+  "inserted_vocals": 0,
+  "vocal_quality": "PARTIAL: two eligible candidates rejected by bounded phrase-length check; two other eligible sequences skipped by timing gate"
+}

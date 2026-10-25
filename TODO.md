@@ -1,3 +1,17 @@
+## AI DJ beta reliability — 2026-10-25
+
+**PASS scoped engineering qualification and provisional owner acceptance; PARTIAL production product.** Twenty distinct GPU tracks and two complete R2 captures passed Stop/credit/visibility/recovery checks. All rentals are deleted: $0.134 observed charges, 1,072.01 seconds, within $6/40 minutes. Owner: “lets call it okay for now”; real DJ samples will follow. No push, deployment, activation or live billing.
+
+- [x] Isolate listener Stop from the shared worker and release unused allowance; recover one lost response and an unexpired lease without new generation or deadline renewal.
+- [x] Add bounded continuous supervision; verify empty/repeated sweeps, deadlines and target guards locally.
+- [x] Qualify twenty fresh tracks, ten per listener, full Public/Private R2 recordings and confirmed cleanup. 22/24 allowed model calls; two vocal candidates rejected, no inserted vocal.
+- [x] Reconcile rental charges and model full operating costs, idle utilization and retained storage. Actual production economics remain PARTIAL.
+- [x] Record owner provisional acceptance and physical landscape-deck acceptance.
+- [x] Repair quiet endings found after GPU qualification; all-twenty-track offline replay and the actual Chromium problem-pair recording pass (longest quiet span 0.457 seconds). Original capture and post-fix replay evidence remain distinct.
+- [ ] Rights-cleared expert demonstrations, phrase/vocal quality, continuous production-host capacity, venue evidence and owner-controlled release remain open.
+
+[Readiness report](docs/ai-dj-beta-readiness.md), [qualification](docs/evidence/ai-dj-beta-20261025/qualification.json), [rental](docs/evidence/ai-dj-beta-20261025/rental.json).
+
 ## Public cloud music and mobile deck repair — 2026-10-25
 
 **PASS local implementation and checks; PARTIAL release.** Public cloud Improvise, Music DNA and complete AI DJ sets are available through narrow anonymous read routes. New cloud songs default to Public with an explicit Private choice; existing private songs remain private and on-device results are not uploaded. Native All songs combines all 166 curated songs and public customer results; homepage showcases include new community songs with three-row pagination. Corner-dot and jog-display collisions are fixed in the mobile deck. Jamloom 0.9.2 (15) is signed and installed. No website push/deployment or App Store upload; production public-song access still needs the owner's deployment.
@@ -8,7 +22,7 @@
 - [x] Recheck homepage pagination/refresh, Chromium/WebKit privacy flows, native Favorites/playback, landscape and rotation.
 - [x] Remove overlapping mobile deck ornaments and compact the wheel display; sign and install 0.9.2 (15).
 - [ ] Owner bulk push/deployment and post-deployment anonymous phone catalogue check.
-- [ ] Owner review of the updated physical landscape layout; physical iPad/foldable remain NOT RUN.
+- [x] Owner review of the updated physical landscape layout: “Looks clear now” on 0.9.2. Physical iPad/foldable remain NOT RUN.
 
 [Report](docs/public-community.md), [checks](docs/evidence/public-community-20261025/checks.json), [native deck](docs/evidence/public-community-20261025/deck-native-landscape.png).
 

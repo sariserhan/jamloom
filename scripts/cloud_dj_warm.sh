@@ -2,6 +2,8 @@
 # GPU-only bootstrap; the independent Vast watchdog owns rental cleanup.
 set -euo pipefail
 deadline=${1:?Absolute authorized deadline required}
+requests=${2:-8}
+[[ $requests =~ ^[0-9]{1,3}$ ]] && ((requests >= 1 && requests <= 100)) || exit 2
 [[ $deadline =~ ^[0-9]{10}$ ]] || exit 2
 remaining=$((deadline - $(date +%s)))
 ((remaining > 120 && remaining <= 2400)) || exit 2
@@ -14,4 +16,4 @@ sha256sum /workspace/cloud_music_setup.sh /workspace/cloud_dj_warm.sh dj_track_w
 find checkpoints -type f -name '*.safetensors' -exec sha256sum '{}' + > /workspace/results/weights.sha256
 remaining=$((deadline - $(date +%s)))
 ((remaining > 90)) || exit 2
-timeout "$remaining" .venv/bin/python dj_warm_engine.py --token-file /workspace/renderer-token --expires-unix "$deadline" --max-requests 8
+timeout "$remaining" .venv/bin/python dj_warm_engine.py --token-file /workspace/renderer-token --expires-unix "$deadline" --max-requests "$requests"

@@ -1,0 +1,66 @@
+{
+  "website": {
+    "status": "PASS",
+    "tests": 131,
+    "log": "site-tests.log"
+  },
+  "reliability": {
+    "status": "PASS",
+    "tests": 35,
+    "log": "reliability.log"
+  },
+  "python": {
+    "status": "PASS",
+    "tests": 32,
+    "log": "python-tests.log"
+  },
+  "economics": {
+    "status": "PASS scenarios; PARTIAL actual operations",
+    "tests": 2,
+    "log": "economics-tests.log"
+  },
+  "typecheck": {
+    "status": "PASS",
+    "log": "typecheck.log"
+  },
+  "browser_replay": {
+    "status": "PASS",
+    "report": "measured-replay.json"
+  },
+  "fresh_gpu": {
+    "status": "PASS technical",
+    "report": "qualification.json",
+    "tracks": 20,
+    "human_listening": "PASS provisional owner acceptance"
+  },
+  "publication": {
+    "status": "NOT RUN",
+    "reason": "Owner handles bulk push"
+  },
+  "build": {
+    "status": "PASS",
+    "log": "build.log"
+  },
+  "client_secret_audit": {
+    "status": "PASS",
+    "client_files_checked": 43,
+    "log": "bundle.log"
+  },
+  "rental": {
+    "status": "PASS shutdown confirmed",
+    "report": "rental.json"
+  },
+  "full_recordings": {
+    "status": "PASS real R2, complete decode and cleanup",
+    "report": "recordings.json"
+  },
+  "quiet_edge_offline_repair": {
+    "status": "PASS",
+    "report": "padding-replays.json"
+  },
+  "quiet_edge_browser_repair": {
+    "status": "PASS real Chromium player and recorded output",
+    "report": "padding-browser.json",
+    "longest_quiet_seconds": 0.457292
+  }
+}

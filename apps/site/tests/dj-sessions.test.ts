@@ -1,3 +1,4 @@
+import {spawnSync} from 'node:child_process';
 import test from 'node:test';import assert from 'node:assert/strict';import {randomUUID,createHash} from 'node:crypto';
 import {djRecordingRequest} from '../lib/dj-recordings-http';
 import {DJWatchdog} from '../lib/dj-watchdog';
@@ -25,6 +26,18 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
  const record=async(owner:string,sessionId?:string,complete=true)=>{const v={id:id(),title:'Rooftop Friday',mime:'audio/mp4',bytes:100,sha256:'a'.repeat(64),seconds:60,consent:true,...(sessionId?{sessionId}:{})};await recordings.reserve(owner,v);if(complete)await recordings.complete(owner,v.id);return v.id;};
  try{
   assert.ok((await migrate(pool)).includes('0023_dj_sessions.sql'));assert.deepEqual(await migrate(pool),[]);
+  await t.test('bounded supervisor exits on empty inventory and rejects unsafe watch options',async()=>{
+   const env={...process.env,DATABASE_URL:target.toString(),BETTER_AUTH_URL:'http://127.0.0.1:3000',BETTER_AUTH_SECRET:'isolated-supervisor-fixture-secret',JAMLOOM_LOCAL_OUTBOX:'/tmp/jamloom-watchdog-test-outbox',JAMLOOM_LOCAL_AUDIO_DIR:'/tmp/jamloom-watchdog-test-audio',JAMLOOM_AI_DJ_BUDGET:JSON.stringify(budget),JAMLOOM_WATCHDOG_TARGET:target.host+target.pathname,JAMLOOM_DJ_SUPERVISOR_SECONDS:'1',VASTAI_KEY:'invalid-test-only-key',VERCEL:''};
+   const run=(args:string[],extra:Record<string,string>={})=>spawnSync(process.execPath,['--import','tsx','scripts/dj-watchdog.ts',...args],{env:{...env,...extra},encoding:'utf8',timeout:10000});
+   const empty=run(['--apply','--warm','--watch']);assert.equal(empty.status,0,empty.stderr);assert.deepEqual(JSON.parse(empty.stdout).results,[]);
+   let inventory=[{id:999,label:'jamloom-supervisor-fixture'}];const active=new DJWarmWorker(sessions,{inventory:async()=>inventory,destroy:async()=>{throw Error('No provider mutation expected');}});
+   const identity=await active.register({account:123,instance:999,label:'jamloom-supervisor-fixture',permitSha256:'9'.repeat(64),hourlyMicros:600000,budgetMicros:1000000,startedAt:Date.now()-1000,deadline:Date.now()+180000});
+   const bounded=run(['--apply','--warm','--watch'],{JAMLOOM_DJ_SUPERVISOR_SECONDS:'4'});assert.equal(bounded.status,0,bounded.stderr);assert.equal((bounded.stdout.match(/"apply": true/g)??[]).length,2);
+   assert.equal((await pool.query('SELECT state FROM dj_warm_workers WHERE id=$1',[identity.id])).rows[0].state,'ready');inventory=[];await active.stop(identity);await active.sweep();
+   const preview=run(['--warm','--watch']);assert.notEqual(preview.status,0);assert.match(preview.stderr,/requires --apply --warm/);
+   const deadline=run(['--apply','--warm','--watch'],{JAMLOOM_DJ_SUPERVISOR_SECONDS:'2401'});assert.notEqual(deadline.status,0);
+   const wrong=run(['--apply','--warm','--watch'],{JAMLOOM_WATCHDOG_TARGET:'wrong'});assert.notEqual(wrong.status,0);assert.match(wrong.stderr,/target confirmation/);
+  });
   for(const owner of ['alice','bob','tiny','pending','race','queue','retry','capacity','legacy','price','frozen','watch','http','recover','warm-a','warm-b','warm-fail']){await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.com']);await sessions.wallet.grant(owner,{provider:'stripe_test',receipt:'fixture-'+owner,credits:owner==='tiny'?2:100,netMicros:owner==='tiny'?100000:5000000});}
   await t.test('warm rental delivers distinct customer tracks before shutdown and recovers failed work safely',async()=>{
    assert.equal(await sessions.available(),false);
@@ -44,10 +57,31 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
    assert.equal((await pool.query('SELECT allocated_micros FROM dj_warm_workers WHERE id=$1',[worker.id])).rows[0].allocated_micros,2n);
    await sessions.played('warm-a',a.v.id,0);await sessions.stop('warm-a',a.v.id);await sessions.stop('warm-b',b.v.id);
    const failure=await begin('warm-fail'),job=await sessions.claim(worker);assert.ok(job);await sessions.stop('warm-fail',failure.v.id);
+   await warm.stop(worker);
    assert.equal((await warm.sweep())[0].status,'destroy_requested');assert.equal((await sessions.status('warm-fail',failure.v.id)).state,'ending');
    const finish=sessions.finish.bind(sessions);sessions.finish=async()=>{throw Error('crash after confirmed absence');};await assert.rejects(warm.sweep(),/crash after/);sessions.finish=finish;
    assert.equal((await warm.sweep())[0].status,'shutdown_confirmed');assert.equal((await sessions.status('warm-fail',failure.v.id)).state,'ended');assert.deepEqual(await sessions.wallet.balance('warm-fail'),{available:100,reserved:0});
    assert.equal(await warm.heartbeat(worker,0),false);assert.equal(await sessions.available(),false);assert.equal(destroyed,1);
+  });
+  await t.test('one listener stopping drains and refunds only their render while the other continues',async()=>{
+   const sessions=new DJSessions(pool,'test-only-secret-for-dj-sessions-12345',store,budget,false,true);
+   const begin=async(owner:string)=>{const v=input();await sessions.start(owner,v,(await sessions.quote(owner,v)).token);return {v};};
+   let inventory=[{id:656,label:'jamloom-drain-fixture'}],destroyed=0;
+   const warm=new DJWarmWorker(sessions,{inventory:async()=>inventory,destroy:async()=>{destroyed++;inventory=[];}});
+   const worker=await warm.register({account:123,instance:656,label:inventory[0].label,permitSha256:'c'.repeat(64),hourlyMicros:600000,budgetMicros:1000000,startedAt:Date.now()-1000,deadline:Date.now()+180000});
+   const before=await sessions.wallet.balance('warm-a'),a=await begin('warm-a'),b=await begin('warm-b');
+   const job=await sessions.claim(worker);assert.equal(job.session_id,a.v.id);
+   const resumed=await warm.pending(worker);assert.equal(resumed.lease,job.lease);assert.equal(resumed.seed,job.seed);assert.deepEqual(resumed.settings,job.settings);
+   assert.equal(await warm.pending({...worker,lease:randomUUID()}),null);
+   await sessions.stop('warm-a',a.v.id);assert.equal(await warm.jobHeartbeat(worker,job),true);assert.deepEqual(await warm.sweep(),[]);
+   await assert.rejects(sessions.finish(job.session_id,0,job.lease,'cancelled',1),/shutdown/);
+   const sound=wav(1013);await assert.rejects(warm.complete(worker,job,Buffer.from('corrupt'),1,{}));
+   assert.equal(await warm.complete(worker,job,sound,1,{done:true}),'cancelled');assert.equal(await warm.complete(worker,job,sound,1,{done:true}),'cancelled');
+   assert.deepEqual(await sessions.wallet.balance('warm-a'),before);assert.equal((await sessions.status('warm-a',a.v.id)).state,'ended');assert.equal(objects.has('masters/'+job.reservation_id+'.wav'),false);
+   assert.equal(await warm.jobHeartbeat(worker,job),false);assert.equal(await sessions.available(),true);assert.equal(destroyed,0);
+   assert.equal(await warm.pending(worker),null);
+   const next=await sessions.claim(worker);assert.equal(next.session_id,b.v.id);await warm.complete(worker,next,wav(1014),1,{done:true});assert.equal((await sessions.status('warm-b',b.v.id)).batches[0].ready,true);
+   await sessions.stop('warm-b',b.v.id);await warm.stop(worker);await warm.sweep();await warm.sweep();
   });
   await t.test('concurrent Starts cannot overbook a warm worker or consume rejected credits',async()=>{
    let inventory=[{id:655,label:'jamloom-admission-fixture'}];const warm=new DJWarmWorker(sessions,{inventory:async()=>inventory,destroy:async()=>{inventory=[];}});
@@ -71,7 +105,11 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
     if(condition==='deadline')await pool.query("UPDATE dj_warm_workers SET deadline=now()+interval '20 seconds' WHERE id=$1",[worker.id]);
     if(condition==='budget')assert.equal(await warm.heartbeat(worker,1000000),false);
     if(condition==='heartbeat')await pool.query("UPDATE dj_warm_workers SET heartbeat_at=now()-interval '16 seconds' WHERE id=$1",[worker.id]);
-    if(condition==='disconnect')await pool.query("UPDATE dj_sessions SET heartbeat_at=now()-interval '76 seconds' WHERE id=$1",[started.v.id]);
+    if(condition==='disconnect'){
+     await pool.query("UPDATE dj_sessions SET heartbeat_at=now()-interval '76 seconds' WHERE id=$1",[started.v.id]);
+     assert.deepEqual(await warm.sweep(),[],'An active bounded render may drain after a client disconnect');
+     await pool.query("UPDATE dj_session_batches SET lease_until=now()-interval '1 second' WHERE session_id=$1",[started.v.id]);
+    }
     if(condition!=='disconnect')assert.equal(await sessions.available(),false);
     assert.equal((await warm.sweep())[0].status,'destroy_requested');assert.equal(await sessions.claim(worker),null);assert.ok((await sessions.wallet.balance('warm-fail')).reserved>0);
     assert.equal((await warm.sweep())[0].status,'shutdown_confirmed');assert.equal((await sessions.status('warm-fail',started.v.id)).state,'ended');assert.equal((await sessions.wallet.balance('warm-fail')).reserved,0);

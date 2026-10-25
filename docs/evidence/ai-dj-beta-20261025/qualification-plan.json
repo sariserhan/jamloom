@@ -1,0 +1,36 @@
+{
+  "status": "PASS technical; provisional owner acceptance; original capture has quiet-ending gaps repaired locally afterward",
+  "campaign": "jamloom-dj-qualification-20261025-beta",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_requests_max": 24,
+  "tracks": 20,
+  "track_seconds": 60,
+  "vocal_candidates_max": 4,
+  "vocal_candidate_seconds": 10,
+  "public_activation": false,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "replacement_rental_authorized": false,
+  "checks": [
+    "Two independent listeners with ten fresh tracks each",
+    "Recover one deliberately lost completed render response without regenerating",
+    "Mood and energy changes affect future tracks",
+    "Public Stop and Private credit exhaustion",
+    "Complete public/private R2 recordings and visibility checks",
+    "Full audio decode, distinct seeds/hashes, timing report, bounded playback memory",
+    "Provider inventory confirms deletion and isolated test data cleaned"
+  ],
+  "commands": {
+    "rental": "python3 scripts/vast_trial.py rent --dj-qualification --dj-sessions --dj-beta",
+    "bootstrap": "dj_bootstrap_command(absolute_authorized_deadline, 24)",
+    "qualification": "node --import tsx tests/dj-warm-qualification.mjs --apply --beta"
+  },
+  "limits": [
+    "No new model or dataset purchase",
+    "No automatic rental replacement",
+    "This is about 9 minutes of real playback per listener, not a two-hour GPU endurance claim",
+    "No live billing, push, deployment or customer activation"
+  ]
+}

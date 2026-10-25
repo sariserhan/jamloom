@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-25",
+  "version": "0.9.2",
+  "landscape": "PASS",
+  "owner_statement": "Looks clear now",
+  "production_catalogue": {
+    "status": 503,
+    "error": "Jamloom is coming soon. Public access is not open yet.",
+    "deployment": "NOT RUN; owner handles pushes"
+  }
+}

@@ -10,7 +10,7 @@ export async function audioDuration(blob:Blob,signal?:AbortSignal){
  });}finally{audio.removeAttribute('src');audio.load();URL.revokeObjectURL(url);}
 }
 export async function analyseBuffer(buffer:AudioBuffer,hash:string,signal?:AbortSignal):Promise<TrackAnalysis>{
- const cached=readAnalysis(hash);if(cached?.gridVersion===2&&Math.abs(cached.duration-buffer.duration)<.1)return cached;
+ const cached=readAnalysis(hash);if(cached?.gridVersion===2&&cached.audible&&Math.abs(cached.duration-buffer.duration)<.1)return cached;
  const samples=new Float32Array(Math.floor(buffer.duration*8000)),channels=Array.from({length:buffer.numberOfChannels},(_,i)=>buffer.getChannelData(i));
  let peak=0,power=0,loudest=channels[0],best=-1;
  for(const c of channels){let energy=0;for(const v of c){if(!Number.isFinite(v)||Math.abs(v)>8)throw Error('Invalid PCM');energy+=v*v;peak=Math.max(peak,Math.abs(v));}power+=energy;if(energy>best){best=energy;loudest=c;}}

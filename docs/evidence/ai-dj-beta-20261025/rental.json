@@ -1,0 +1,15 @@
+{
+  "status": "PASS bounded rental and shutdown",
+  "instance": 57630306,
+  "label": "jamloom-dj-qualification-20261025-beta",
+  "rental_seconds": 1072.012111902237,
+  "authorized_seconds": 2400,
+  "budget_usd": 6,
+  "observed_provider_cost_usd": 0.134,
+  "provider_evidence_sha256": "a9292850c56d0de3c3b8931436aa4552044f9cb1e69a8350f1d8e0e5298ad40c",
+  "account_debit_observed_usd": 0.1276910319000013,
+  "complete_inventory": [],
+  "inventory_verified_after_shutdown": true,
+  "final_invoice": false,
+  "customer_billing_changed": false
+}

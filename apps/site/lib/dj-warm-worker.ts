@@ -3,6 +3,7 @@ import type {DJSessions} from './dj-sessions';
 import type {RentalProvider} from './vast-provider';
 import {integer} from './economics';
 import {validVocalCue,type VocalCue} from './dj-vocal';
+import {AudioError} from './audio-validation';
 const digest=(v:unknown)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 export type WarmPermit={account:number;instance:number;label:string;permitSha256:string;hourlyMicros:number;budgetMicros:number;startedAt:number;deadline:number};
 export type WarmIdentity={id:string;lease:string};
@@ -26,12 +27,25 @@ export class DJWarmWorker{
   integer(observedMicros);const row=(await this.sessions.pool.query(`UPDATE dj_warm_workers SET observed_micros=greatest(observed_micros,$3),heartbeat_at=now(),state=CASE WHEN $3>=budget_micros OR deadline<=now()+interval '30 seconds' THEN 'stopping' ELSE state END WHERE id=$1 AND lease=$2 AND billing_live=$4 AND state='ready' AND heartbeat_at>now()-interval '15 seconds' RETURNING state`,[worker.id,worker.lease,observedMicros,this.sessions.live])).rows[0];return row?.state==='ready';
  }
  async stop(worker:WarmIdentity){await this.sessions.pool.query("UPDATE dj_warm_workers SET state='stopping' WHERE id=$1 AND lease=$2 AND billing_live=$3 AND state='ready'",[worker.id,worker.lease,this.sessions.live]);}
+ async pending(worker:WarmIdentity){
+  const row=(await this.sessions.pool.query(`SELECT b.*,b.render_settings AS settings FROM dj_session_batches b JOIN dj_warm_workers w ON w.id=b.warm_worker_id WHERE w.id=$1 AND w.lease=$2 AND w.billing_live=$3 AND w.state='ready' AND w.heartbeat_at>now()-interval '15 seconds' AND w.deadline>now() AND w.observed_micros<w.budget_micros AND b.state='running' AND b.lease_until>now() AND b.deadline>now() LIMIT 1`,[worker.id,worker.lease,this.sessions.live])).rows[0];
+  return row?{...row,seed:Number(row.seed)}:null;
+ }
+ async jobHeartbeat(worker:WarmIdentity,job:{session_id:string;sequence:number;lease:string}){
+  // A customer Stop drains this bounded render; it must not kill another listener's worker.
+  return !!(await this.sessions.pool.query(`UPDATE dj_session_batches b SET lease_until=least(now()+interval '15 seconds',b.deadline) FROM dj_warm_workers w WHERE b.session_id=$1 AND b.sequence=$2 AND b.lease=$3 AND b.warm_worker_id=w.id AND w.id=$4 AND w.lease=$5 AND w.billing_live=$6 AND w.state='ready' AND w.heartbeat_at>now()-interval '15 seconds' AND w.deadline>now() AND w.observed_micros<w.budget_micros AND b.state='running' AND b.lease_until>now() AND b.deadline>now() RETURNING b.sequence`,[job.session_id,job.sequence,job.lease,worker.id,worker.lease,this.sessions.live])).rowCount;
+ }
  async complete(worker:WarmIdentity,job:{session_id:string;sequence:number;lease:string},audio:Buffer,computeMs:number,receipt:unknown,vocal:VocalCue|null=null){
   if(vocal!==null&&!validVocalCue(vocal))throw Error('Invalid vocal cue');
   integer(computeMs,1,this.sessions.budget.maxRuntimeMs);const proof=digest({receipt,vocal});
   const prior=(await this.sessions.pool.query('SELECT b.* FROM dj_session_batches b JOIN dj_warm_workers w ON w.id=b.warm_worker_id WHERE b.session_id=$1 AND b.sequence=$2 AND b.lease=$3 AND w.id=$4 AND w.lease=$5 AND w.billing_live=$6',[job.session_id,job.sequence,job.lease,worker.id,worker.lease,this.sessions.live])).rows[0];if(!prior)throw Error('Warm job identity mismatch');
-  if(prior.stop_confirmed_at){if(prior.stop_evidence_sha256!==proof||prior.compute_ms!==computeMs)throw Error('Warm receipt changed');return this.sessions.finish(job.session_id,job.sequence,job.lease,'completed',Number(prior.actual_cost_micros),audio);}
-  await this.sessions.stageOutput(job.session_id,job.sequence,job.lease,audio);
+  if(prior.stop_confirmed_at){if(prior.stop_evidence_sha256!==proof||prior.compute_ms!==computeMs)throw Error('Warm receipt changed');return this.sessions.finish(job.session_id,job.sequence,job.lease,prior.audio_sha256?'completed':'cancelled',Number(prior.actual_cost_micros),prior.audio_sha256?audio:undefined);}
+  let cancelled=false;
+  try{await this.sessions.stageOutput(job.session_id,job.sequence,job.lease,audio);}catch(error){
+   if(!(error instanceof AudioError)||error.message!=='Worker no longer active.')throw error;
+   cancelled=!!(await this.sessions.pool.query(`SELECT 1 FROM dj_session_batches b JOIN dj_sessions s ON s.id=b.session_id WHERE b.session_id=$1 AND b.sequence=$2 AND b.lease=$3 AND b.warm_worker_id=$4 AND b.state='running' AND b.deadline>now() AND b.lease_until>now() AND (s.state<>'active' OR b.stop_requested_at IS NOT NULL)`,[job.session_id,job.sequence,job.lease,worker.id])).rowCount;
+   if(!cancelled)throw error;
+  }
   const db=await this.sessions.pool.connect();let cost=0;
   try{await db.query('BEGIN');
    const w=(await db.query("SELECT * FROM dj_warm_workers WHERE id=$1 AND lease=$2 AND billing_live=$3 AND state='ready' AND heartbeat_at>now()-interval '15 seconds' AND deadline>now() FOR UPDATE",[worker.id,worker.lease,this.sessions.live])).rows[0];if(!w)throw Error('Warm worker no longer active');
@@ -42,11 +56,11 @@ export class DJWarmWorker{
    else{await db.query('UPDATE dj_session_batches SET compute_ms=$4,actual_cost_micros=$5,stop_confirmed_at=now(),stop_evidence_sha256=$6,vocal=$7::jsonb WHERE session_id=$1 AND sequence=$2 AND lease=$3',[job.session_id,job.sequence,job.lease,computeMs,cost,proof,vocal===null?null:JSON.stringify(vocal)]);await db.query('UPDATE dj_warm_workers SET allocated_micros=allocated_micros+$2 WHERE id=$1',[worker.id,cost]);}
    await db.query('COMMIT');
   }catch(e){await db.query('ROLLBACK');throw e;}finally{db.release();}
-  await this.sessions.finish(job.session_id,job.sequence,job.lease,'completed',cost,audio);
+  return this.sessions.finish(job.session_id,job.sequence,job.lease,cancelled?'cancelled':'completed',cost,cancelled?undefined:audio);
  }
  async sweep(){
   await this.sessions.shutdownRequired();
-  await this.sessions.pool.query(`UPDATE dj_warm_workers w SET state='stopping' WHERE billing_live=$1 AND state='ready' AND (heartbeat_at<=now()-interval '15 seconds' OR deadline<=now()+interval '30 seconds' OR observed_micros>=budget_micros OR EXISTS(SELECT 1 FROM dj_session_batches b WHERE b.warm_worker_id=w.id AND b.state='running' AND b.stop_requested_at IS NOT NULL AND b.stop_confirmed_at IS NULL))`,[this.sessions.live]);
+  await this.sessions.pool.query(`UPDATE dj_warm_workers w SET state='stopping' WHERE billing_live=$1 AND state='ready' AND (heartbeat_at<=now()-interval '15 seconds' OR deadline<=now()+interval '30 seconds' OR observed_micros>=budget_micros OR EXISTS(SELECT 1 FROM dj_session_batches b WHERE b.warm_worker_id=w.id AND b.state='running' AND b.stop_confirmed_at IS NULL AND (b.lease_until<=now() OR b.deadline<=now())))`,[this.sessions.live]);
   const workers=(await this.sessions.pool.query("SELECT w.* FROM dj_warm_workers w WHERE billing_live=$1 AND (state='stopping' OR state='stopped' AND EXISTS(SELECT 1 FROM dj_session_batches b WHERE b.warm_worker_id=w.id AND b.state='running'))",[this.sessions.live])).rows,results=[];
   for(const w of workers){
    const inventory=await this.provider.inventory(Number(w.account_id)),matches=inventory.filter(i=>i.id===Number(w.instance_id)||i.label===w.label);

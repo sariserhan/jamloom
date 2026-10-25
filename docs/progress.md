@@ -1,3 +1,7 @@
+## AI DJ beta reliability — 2026-10-25
+
+**PASS scoped GPU/session/R2 qualification and provisional owner acceptance; PARTIAL production product.** Twenty fresh tracks, ten per listener, passed response-loss recovery, immutable mood/energy updates, Stop, natural credit exhaustion, complete recordings, privacy and cleanup. Provider inventory is empty; $0.134 observed charges over 1,072.01 seconds within $6/40 minutes. 22 model calls, including two rejected vocal candidates; no inserted vocals. Owner calls the batch okay for now and will provide DJ samples later. The full-mix scan found quiet endings; bounded edge analysis and all-twenty-track offline timing replay now pass, and the real Chromium problem-pair recording passes (longest quiet span 0.457 seconds). Cost scenarios and bounded supervision are implemented; production utilization, expert voice/phrasing, venue and release gates remain open. No push, activation or live billing. [Current report](ai-dj-beta-readiness.md).
+
 ## Public cloud music and mobile deck repair — 2026-10-25
 
 **PASS local implementation and checks; PARTIAL release.** Public cloud Improvise, Music DNA and complete AI DJ sets are available through narrow anonymous read routes. New cloud songs default to Public with an explicit Private choice; existing private songs remain private and on-device results are not uploaded. Native All songs combines all 166 curated songs and public customer results; homepage showcases include new community songs with three-row pagination. Corner-dot and jog-display collisions are fixed in the mobile deck. Jamloom 0.9.2 (15) is signed and installed. No website push/deployment or App Store upload; production public-song access still needs the owner's deployment.
@@ -8,7 +12,7 @@
 - [x] Recheck homepage pagination/refresh, Chromium/WebKit privacy flows, native Favorites/playback, landscape and rotation.
 - [x] Remove overlapping mobile deck ornaments and compact the wheel display; sign and install 0.9.2 (15).
 - [ ] Owner bulk push/deployment and post-deployment anonymous phone catalogue check.
-- [ ] Owner review of the updated physical landscape layout; physical iPad/foldable remain NOT RUN.
+- [x] Owner review of the updated physical landscape layout: “Looks clear now” on 0.9.2. Physical iPad/foldable remain NOT RUN.
 
 [Report](public-community.md), [checks](evidence/public-community-20261025/checks.json), [native deck](evidence/public-community-20261025/deck-native-landscape.png).
 

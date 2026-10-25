@@ -1,0 +1,494 @@
+{
+  "status": "SCENARIOS ONLY; production economics remain PARTIAL",
+  "checked_date": "2026-10-25",
+  "sources": {
+    "r2": "https://developers.cloudflare.com/r2/pricing/",
+    "neon": "https://neon.com/pricing",
+    "rental": "Approved one-GPU qualification ceiling, not a perpetual rental authorization",
+    "allowance": "apps/site/lib/dj-allowance.ts; current $0.05 base budget and 50% margin"
+  },
+  "assumptions": {
+    "gpu_hour_with_disk_usd": 0.5,
+    "database_cu": 0.25,
+    "database_usd_per_cu_hour": 0.106,
+    "database_metadata_gb_per_generated_hour": 0.001,
+    "database_storage_usd_per_gb_month": 0.35,
+    "shared_infrastructure_usd_per_month": 30,
+    "listener_hours_per_month": 100,
+    "support_usd_per_generated_hour": 0.1,
+    "gpu_failure_reserve_percent": 10,
+    "r2_writes_per_generated_hour": 240,
+    "r2_reads_per_generated_hour": 3600,
+    "recording_bits_per_second": 128000,
+    "all_source_masters_retained": true,
+    "free_tier_discount": false
+  },
+  "boundaries": [
+    "Net proceeds already exclude verified payment fees/taxes; do not deduct them twice.",
+    "Private has the same storage cost assumption, but consumes 25% more allowance.",
+    "Generated time exceeds playback time because of overlaps.",
+    "Retention durations are scenarios, not deletion settings; no user audio is deleted.",
+    "R2 marginal operation/storage estimates do not allocate account-level billing rounding.",
+    "Database/infrastructure/support/utilization assumptions require actual invoice and load evidence.",
+    "Indefinite retention has no finite one-time lifetime-cost guarantee.",
+    "No live prices, tariffs or billing flags are changed."
+  ],
+  "scenarios": [
+    {
+      "utilization": 1,
+      "listeners": 1,
+      "retention_months": 12,
+      "costs_usd_per_generated_hour": {
+        "gpu": 0.5,
+        "database": 0.0307,
+        "storage": 0.134784,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.05
+      },
+      "total_usd": 1.11786,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 81.37,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 1,
+      "listeners": 2,
+      "retention_months": 12,
+      "costs_usd_per_generated_hour": {
+        "gpu": 0.25,
+        "database": 0.01745,
+        "storage": 0.134784,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.025
+      },
+      "total_usd": 0.82961,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 86.17,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.5,
+      "listeners": 1,
+      "retention_months": 12,
+      "costs_usd_per_generated_hour": {
+        "gpu": 1.0,
+        "database": 0.0572,
+        "storage": 0.134784,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.1
+      },
+      "total_usd": 1.69436,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 71.76,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.5,
+      "listeners": 2,
+      "retention_months": 12,
+      "costs_usd_per_generated_hour": {
+        "gpu": 0.5,
+        "database": 0.0307,
+        "storage": 0.134784,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.05
+      },
+      "total_usd": 1.11786,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 81.37,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.25,
+      "listeners": 1,
+      "retention_months": 12,
+      "costs_usd_per_generated_hour": {
+        "gpu": 2.0,
+        "database": 0.1102,
+        "storage": 0.134784,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.2
+      },
+      "total_usd": 2.84736,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 52.54,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.25,
+      "listeners": 2,
+      "retention_months": 12,
+      "costs_usd_per_generated_hour": {
+        "gpu": 1.0,
+        "database": 0.0572,
+        "storage": 0.134784,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.1
+      },
+      "total_usd": 1.69436,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 71.76,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.1,
+      "listeners": 1,
+      "retention_months": 12,
+      "costs_usd_per_generated_hour": {
+        "gpu": 5.0,
+        "database": 0.2692,
+        "storage": 0.134784,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.5
+      },
+      "total_usd": 6.30636,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": -5.11,
+      "meets_50_percent_margin": false
+    },
+    {
+      "utilization": 0.1,
+      "listeners": 2,
+      "retention_months": 12,
+      "costs_usd_per_generated_hour": {
+        "gpu": 2.5,
+        "database": 0.1367,
+        "storage": 0.134784,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.25
+      },
+      "total_usd": 3.42386,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 42.94,
+      "meets_50_percent_margin": false
+    },
+    {
+      "utilization": 1,
+      "listeners": 1,
+      "retention_months": 60,
+      "costs_usd_per_generated_hour": {
+        "gpu": 0.5,
+        "database": 0.0475,
+        "storage": 0.673922,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.05
+      },
+      "total_usd": 1.673798,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 72.1,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 1,
+      "listeners": 2,
+      "retention_months": 60,
+      "costs_usd_per_generated_hour": {
+        "gpu": 0.25,
+        "database": 0.03425,
+        "storage": 0.673922,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.025
+      },
+      "total_usd": 1.385548,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 76.91,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.5,
+      "listeners": 1,
+      "retention_months": 60,
+      "costs_usd_per_generated_hour": {
+        "gpu": 1.0,
+        "database": 0.074,
+        "storage": 0.673922,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.1
+      },
+      "total_usd": 2.250298,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 62.5,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.5,
+      "listeners": 2,
+      "retention_months": 60,
+      "costs_usd_per_generated_hour": {
+        "gpu": 0.5,
+        "database": 0.0475,
+        "storage": 0.673922,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.05
+      },
+      "total_usd": 1.673798,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 72.1,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.25,
+      "listeners": 1,
+      "retention_months": 60,
+      "costs_usd_per_generated_hour": {
+        "gpu": 2.0,
+        "database": 0.127,
+        "storage": 0.673922,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.2
+      },
+      "total_usd": 3.403298,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 43.28,
+      "meets_50_percent_margin": false
+    },
+    {
+      "utilization": 0.25,
+      "listeners": 2,
+      "retention_months": 60,
+      "costs_usd_per_generated_hour": {
+        "gpu": 1.0,
+        "database": 0.074,
+        "storage": 0.673922,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.1
+      },
+      "total_usd": 2.250298,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 62.5,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.1,
+      "listeners": 1,
+      "retention_months": 60,
+      "costs_usd_per_generated_hour": {
+        "gpu": 5.0,
+        "database": 0.286,
+        "storage": 0.673922,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.5
+      },
+      "total_usd": 6.862298,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": -14.37,
+      "meets_50_percent_margin": false
+    },
+    {
+      "utilization": 0.1,
+      "listeners": 2,
+      "retention_months": 60,
+      "costs_usd_per_generated_hour": {
+        "gpu": 2.5,
+        "database": 0.1535,
+        "storage": 0.673922,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.25
+      },
+      "total_usd": 3.979798,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 33.67,
+      "meets_50_percent_margin": false
+    },
+    {
+      "utilization": 1,
+      "listeners": 1,
+      "retention_months": 120,
+      "costs_usd_per_generated_hour": {
+        "gpu": 0.5,
+        "database": 0.0685,
+        "storage": 1.347845,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.05
+      },
+      "total_usd": 2.368721,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 60.52,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 1,
+      "listeners": 2,
+      "retention_months": 120,
+      "costs_usd_per_generated_hour": {
+        "gpu": 0.25,
+        "database": 0.05525,
+        "storage": 1.347845,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.025
+      },
+      "total_usd": 2.080471,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 65.33,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.5,
+      "listeners": 1,
+      "retention_months": 120,
+      "costs_usd_per_generated_hour": {
+        "gpu": 1.0,
+        "database": 0.095,
+        "storage": 1.347845,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.1
+      },
+      "total_usd": 2.945221,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 50.91,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.5,
+      "listeners": 2,
+      "retention_months": 120,
+      "costs_usd_per_generated_hour": {
+        "gpu": 0.5,
+        "database": 0.0685,
+        "storage": 1.347845,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.05
+      },
+      "total_usd": 2.368721,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 60.52,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.25,
+      "listeners": 1,
+      "retention_months": 120,
+      "costs_usd_per_generated_hour": {
+        "gpu": 2.0,
+        "database": 0.148,
+        "storage": 1.347845,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.2
+      },
+      "total_usd": 4.098221,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 31.7,
+      "meets_50_percent_margin": false
+    },
+    {
+      "utilization": 0.25,
+      "listeners": 2,
+      "retention_months": 120,
+      "costs_usd_per_generated_hour": {
+        "gpu": 1.0,
+        "database": 0.095,
+        "storage": 1.347845,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.1
+      },
+      "total_usd": 2.945221,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 50.91,
+      "meets_50_percent_margin": true
+    },
+    {
+      "utilization": 0.1,
+      "listeners": 1,
+      "retention_months": 120,
+      "costs_usd_per_generated_hour": {
+        "gpu": 5.0,
+        "database": 0.307,
+        "storage": 1.347845,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.5
+      },
+      "total_usd": 7.557221,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": -25.95,
+      "meets_50_percent_margin": false
+    },
+    {
+      "utilization": 0.1,
+      "listeners": 2,
+      "retention_months": 120,
+      "costs_usd_per_generated_hour": {
+        "gpu": 2.5,
+        "database": 0.1745,
+        "storage": 1.347845,
+        "operations": 0.002376,
+        "infrastructure": 0.3,
+        "support": 0.1,
+        "retry_reserve": 0.25
+      },
+      "total_usd": 4.674721,
+      "public_net_revenue_usd": 6.0,
+      "private_net_revenue_usd": 7.5,
+      "public_margin_percent": 22.09,
+      "meets_50_percent_margin": false
+    }
+  ]
+}

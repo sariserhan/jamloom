@@ -52,6 +52,9 @@ def add_hook(value, samples, rate, directory, engine, generate=ace):
     activity = np.max(np.abs(voice), axis=1); peak = float(activity.max())
     if peak<.001: raise ValueError('Silent vocal output')
     first = max(0, int(np.flatnonzero(activity>peak*.15)[0])-round(.015*rate))
+    # Keep a complete short phrase; never force a longer vocal into a two-second chop.
+    active = np.flatnonzero(activity>peak*.15)
+    if active[-1]-first > length-round(.06*rate): return samples, None
     clip = voice[first:first+length].copy()
     if len(clip)!=length: raise ValueError('Incomplete vocal phrase')
     fade = min(round(.03*rate), length//4)

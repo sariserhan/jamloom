@@ -24,6 +24,7 @@ class VocalTests(unittest.TestCase):
         def generate(value, path, engine, hook):
             calls.append((value, hook))
             voice=.2*np.sin(np.arange(10*rate)/rate*1000)
+            voice[round(1.2*rate):]=0
             return np.column_stack((voice, voice)), rate
         value=dict(version=1,session='a'*32,sequence=2,seed=17,style='house',energy=4)
         output,cue=add_hook(value,samples,rate,Path('/tmp'),None,generate)
@@ -36,6 +37,11 @@ class VocalTests(unittest.TestCase):
         self.assertIsNone(steady_grid(np.column_stack((drift,drift)),rate,128))
         _,silent=add_hook(value,np.zeros_like(samples),rate,Path('/tmp'),None,generate)
         self.assertIsNone(silent); self.assertEqual(len(calls),1)
+        def long_voice(*args, **kwargs):
+            voice=.2*np.sin(np.arange(10*rate)/rate*1000)
+            return np.column_stack((voice,voice)),rate
+        rejected,cue=add_hook(value,samples,rate,Path('/tmp'),None,long_voice)
+        self.assertIsNone(cue);np.testing.assert_array_equal(rejected,samples)
 
 
 if __name__=='__main__': unittest.main()

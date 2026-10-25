@@ -79,7 +79,7 @@ export class AIDJPlayer{
    await this.context.resume();if(run!==this.request)return;
    const prepared=await this.loadCandidate();if(run!==this.request)return;if(!prepared)throw Error('No tracks remain');
    if(beforePlay&&!await beforePlay()){if(run===this.request){this.state='error';this.message='Recording could not start. Check the recording status below and try again.';this.emit();}return;}if(run!==this.request)return;
-   this.decks[0]={...prepared,start:0};this.began=this.context.currentTime+.1;this.beginDeck(0,this.began,1);
+   this.decks[0]={...prepared,start:0};this.began=this.context.currentTime+.1;this.beginDeck(0,this.began,1,this.mode==='auto'?prepared.analysis.audible?.start??0:0);
    this.history=[prepared.track.id];this.state='playing';this.message='Set started. Preparing the next groove.';this.applyMaster();
    this.interval=setInterval(()=>this.tick(),100);this.emit();void this.prepareNext();
   }catch{if(run===this.request){this.state='error';this.message='The prepared music could not load. Check your connection and try Start set again.';this.emit();}}
@@ -158,7 +158,7 @@ export class AIDJPlayer{
    const at=now+(cue.start-position)/(current.rate??1);current.vocalPlayed=true;
    if(current.performance?.repeatPhrase(at,cue.start,cue.seconds)){this.performed=[...this.performed,current.performance.event!].slice(-6);this.message='AI · brief vocal loop';}
   }
-  if(current&&!this.blend&&(current.performance?.position(now)??0)>=current.buffer.duration-.001){this.stop(this.source?'Prepared music finished. The set has stopped.':'Library finished. Add more tracks to continue.');return;}
+  if(current&&!this.blend&&(current.performance?.position(now)??0)>=(this.mode==='auto'?current.analysis.audible?.end??current.buffer.duration:current.buffer.duration)-.001){this.stop(this.source?'Prepared music finished. The set has stopped.':'Library finished. Add more tracks to continue.');return;}
   if(this.blend&&now>=this.blend.end){
    const {from,to}=this.blend;this.release(from);this.active=to;this.history=[...this.history,this.decks[to]!.track.id].slice(-100);this.blend=null;this.early=false;
    this.message=this.endAt===null?'New groove playing. Preparing what comes next.':'Closing set · preparing the final stretch.';void this.prepareNext();

@@ -1,0 +1,63 @@
+{
+  "scope": "Offline planner timing preview; linear fades and tempo rates; excludes browser EQ automation, GPU dispatch, recording transport and human listening acceptance",
+  "sets": [
+    {
+      "visibility": "public",
+      "longest_quiet_seconds": 0,
+      "spans": [],
+      "sha256": "ae45b8da8a17b667c2d8e500a2469e8511072060557e1873250dbe8caad882c6",
+      "path": "renders/ai-dj-beta-20261025/timing-replays/public-timing-replay.wav",
+      "duration": 446.6656272041776
+    },
+    {
+      "visibility": "private",
+      "longest_quiet_seconds": 0.463594,
+      "spans": [
+        {
+          "end": 58.191969,
+          "seconds": 0.463594
+        },
+        {
+          "end": 60.09225,
+          "seconds": 0.456656
+        },
+        {
+          "end": 71.41425,
+          "seconds": 0.4355
+        },
+        {
+          "end": 75.156031,
+          "seconds": 0.279562
+        },
+        {
+          "end": 99.950688,
+          "seconds": 0.256594
+        },
+        {
+          "end": 105.614063,
+          "seconds": 0.253094
+        },
+        {
+          "end": 106.685313,
+          "seconds": 0.399062
+        },
+        {
+          "end": 107.557031,
+          "seconds": 0.335781
+        },
+        {
+          "end": 108.556344,
+          "seconds": 0.434875
+        },
+        {
+          "end": 109.370937,
+          "seconds": 0.286187
+        }
+      ],
+      "sha256": "6c8c336871612cf34d04879b5602583e3872a250b0d0c14cb77b0cfcae0fb2ae",
+      "path": "renders/ai-dj-beta-20261025/timing-replays/private-timing-replay.wav",
+      "duration": 522.2501562499999
+    }
+  ],
+  "status": "PASS offline timing regression"
+}
