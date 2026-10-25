@@ -1,6 +1,6 @@
 ## Connected library and AI DJ beta preparation — 2026-10-25
 
-**PASS implementation, isolated browser/database/simulator verification and production migration; PARTIAL operational AI DJ beta. Website release verification in progress.** Owner selected favorites synchronization, existing-playlist integration and AI DJ beta preparation, explicitly skipping the first-user trial and mobile release checks.
+**PASS implementation, isolated browser/database/simulator verification and production migration; PARTIAL operational AI DJ beta. All eight GitHub CI jobs, website deployment and live Chromium/WebKit checks PASS.** Owner selected favorites synchronization, existing-playlist integration and AI DJ beta preparation, explicitly skipping the first-user trial and mobile release checks.
 
 - [x] Sync account favorites across web/iPhone; preserve local favorites with explicit import and account isolation.
 - [x] Extend existing private playlists to Community songs and recordings; play through the shared queue.

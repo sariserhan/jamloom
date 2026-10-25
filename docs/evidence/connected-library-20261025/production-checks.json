@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-25T09:11:09.331Z",
+  "commit": "b1e9a050667e0d9672cf0cd0b085ea4e2b70b5d7",
+  "hostedMutations": false,
+  "endpoints": [
+    {
+      "path": "/api/favorites",
+      "status": 401
+    },
+    {
+      "path": "/api/playlists",
+      "status": 401
+    },
+    {
+      "path": "/api/ai-dj/sessions",
+      "status": 503
+    },
+    {
+      "path": "/community",
+      "status": 200
+    }
+  ],
+  "browsers": [
+    {
+      "name": "chromium",
+      "status": "PASS",
+      "guestFavorites": true,
+      "realR2Playback": true,
+      "mobile": true
+    },
+    {
+      "name": "webkit",
+      "status": "PASS",
+      "guestFavorites": true,
+      "realR2Playback": true,
+      "mobile": true
+    }
+  ],
+  "publicSongs": 166,
+  "status": "PASS"
+}

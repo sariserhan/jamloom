@@ -1,6 +1,8 @@
 # Connected listening library — 2026-10-25
 
-**PASS implementation, local tests and production migration. Website release verification pending.** The owner selected favorites sync, Community playlists and limited AI DJ beta preparation; first-user trials and mobile release checks are explicitly skipped.
+**PASS implementation, local tests, production migration and GitHub-triggered website deployment/live checks.** The owner selected favorites sync, Community playlists and limited AI DJ beta preparation; first-user trials and mobile release checks are explicitly skipped.
+
+All eight GitHub CI jobs passed, including the clean website build, database lane, portable/sanitized core, desktop checks and automatic iPhone compilation. [Release receipt](evidence/connected-library-20261025/release.json). Native installation and App Store submission remain skipped.
 
 ## Customer behavior
 
@@ -18,7 +20,7 @@ Migration `0029_listening_collections.sql` adds two reference tables; it does no
 - PASS: optimized production build and 47-client-file secret/bundle audit.
 - PASS: iOS simulator AccountTests/SetPlayerTests, 19 tests with 2 optional HTTP tests skipped and zero failures. Includes cross-client mocked transport, failed writes/imports, successful import cleanup, cookie transfer, muted WebM playback and dismissal. This is not physical-device or App Store release evidence.
 - PASS: Chromium and WebKit at desktop/mobile sizes: cross-client save/removal, explicit guest import, account isolation, private-song metadata/audio denial, existing playlist queue playback and visible failed-save errors. Production-build beta HTTP admits only invited verified accounts and refuses unfunded Start with no session created. [Browser receipt](evidence/connected-library-20261025/browser.json).
-- Production website deployment verification is recorded separately.
+- PASS: code commit `b1e9a050667e0d9672cf0cd0b085ea4e2b70b5d7` deployed through GitHub to Vercel production `dpl_HCrkp73nrtXoFYKS1RL8CMXzH5ge`. Live Chromium/WebKit checks confirm all 166 curated songs, actual R2 playback, guest favorites and mobile layout. Anonymous account collections return 401; AI DJ remains closed. No hosted account writes or sign-ins were used for this smoke check. [Production receipt](evidence/connected-library-20261025/production-checks.json).
 
 [AI DJ beta handoff](ai-dj-limited-beta.md) separates completed admission/operations preparation from funded hosting and musical gates. No new compute or live billing was enabled.
 
