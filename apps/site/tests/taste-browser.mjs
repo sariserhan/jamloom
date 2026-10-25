@@ -86,7 +86,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.match(await page.locator('.dna-summary').innerText(),i?/Dance/:/Classical/);
    await language.selectOption(i?'tr':'auto');
    await page.getByRole('button',{name:i?'Make another song':'Make my music',exact:true}).click();
-   await page.getByRole('checkbox',{name:'I agree to publish this new song on the community page.'}).check();await page.getByRole('button',{name:/^Generate song/}).click();
+   await page.getByRole('button',{name:/^Generate song/}).click();
    await page.getByLabel(`Play Fixture song ${i+1}`,{exact:true}).waitFor({timeout:120000});
    const plan=await page.getByRole('region',{name:'Songs for this list',exact:true}).getByRole('link',{name:'Download song notes',exact:true}).evaluate(async a=>await(await fetch(a.href)).json());
    assert.equal(plan.cases[0].voice,'female');assert.ok(plan.cases[0].lyrics.includes('[Chorus]'));plans.push(plan);

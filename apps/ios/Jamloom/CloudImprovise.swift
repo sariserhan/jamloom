@@ -36,8 +36,8 @@ enum CloudRecording {
 }
 
 enum CloudSongProduct: String {
-    case improvise, musicDNA = "music-dna"
-    var path: String { self == .improvise ? "/api/improvise/song" : "/api/taste/song" }
+    case improvise, musicDNA = "music-dna", aiDJ = "ai-dj"
+    var path: String { self == .aiDJ ? "/api/ai-dj/sets" : self == .improvise ? "/api/improvise/song" : "/api/taste/song" }
 }
 
 @MainActor final class CloudSongModel: ObservableObject {
@@ -47,6 +47,8 @@ enum CloudSongProduct: String {
     @Published var genre = "surprise"
     @Published var voice = "surprise"
     @Published var consent = false
+    @Published var keepPrivate = false { didSet { if oldValue != keepPrivate { invalidateQuote() } } }
+    var visibility: String { keepPrivate ? "private" : "public" }
     @Published private(set) var available = false
     @Published private(set) var busy = false
     @Published private(set) var quote: Quote?
@@ -56,7 +58,7 @@ enum CloudSongProduct: String {
     @Published private(set) var audio: URL?
     let product: CloudSongProduct
     private var tasteInput: [String: Any]?
-    init(product: CloudSongProduct = .improvise) { self.product = product }
+    init(product: CloudSongProduct = .improvise) { precondition(product != .aiDJ); self.product = product }
     private var source: String?
     private var sourceDigest: String?
     private var requestID: String?
@@ -109,9 +111,9 @@ enum CloudSongProduct: String {
                 try await transport.uploadSong(data, to: grant.url)
                 source = grant.id; sourceDigest = digest
             }
-            let price: Quote = try await post(["action": "quote", "profile": profile, "visibility": "private", "publicConsent": false])
+            let price: Quote = try await post(["action": "quote", "profile": profile, "visibility": visibility, "publicConsent": !keepPrivate])
             guard price.credits > 0, price.expiresAt > Date().timeIntervalSince1970 * 1000 else { throw RemixError.message("Refresh the price and try again.") }
-            quote = price; message = "Private song. Review the price before creating."
+            quote = price; message = "\(keepPrivate ? "Private" : "Public") song. Review the price before creating."
         } catch { message = error.localizedDescription }
     }
     func reviewTaste(_ value: TasteProfile) async {
@@ -121,9 +123,9 @@ enum CloudSongProduct: String {
             try value.validate()
             guard !value.references.isEmpty else { throw RemixError.message("Add a favorite song or artist first.") }
             tasteInput = try JSONSerialization.jsonObject(with: JSONEncoder().encode(value)) as? [String: Any]
-            let price: Quote = try await post(["action": "quote", "profile": profile, "visibility": "private", "publicConsent": false])
+            let price: Quote = try await post(["action": "quote", "profile": profile, "visibility": visibility, "publicConsent": !keepPrivate])
             guard price.credits > 0, price.expiresAt > Date().timeIntervalSince1970 * 1000 else { throw RemixError.message("Refresh the price and try again.") }
-            quote = price; message = "Private song. Review the price before creating."
+            quote = price; message = "\(keepPrivate ? "Private" : "Public") song. Review the price before creating."
         } catch { message = error.localizedDescription }
     }
     func submit() async {
@@ -136,7 +138,7 @@ enum CloudSongProduct: String {
         // Persist before submitting: an interrupted response must never trigger a second charge.
         job = id; state = "reconnecting"; message = ""
         do {
-            let result: Job = try await post(["action": "submit", "requestId": id, "profile": profile, "visibility": "private", "publicConsent": false, "token": quote.token])
+            let result: Job = try await post(["action": "submit", "requestId": id, "profile": profile, "visibility": visibility, "publicConsent": !keepPrivate, "token": quote.token])
             guard result.id == id else { throw URLError(.cannotParseResponse) }
             state = result.state ?? "queued"
         } catch { message = "Checking whether your song started. Do not submit again." }
@@ -235,7 +237,7 @@ struct CloudImproviseView: View {
                         Spacer()
                         Toggle("Send this clip for cloud processing", isOn: $cloud.consent).labelsHidden().fixedSize().disabled(cloud.controlsLocked)
                     }
-                    Text("Only your selected clip is uploaded. Your song stays private. Credits are used only after you confirm the price.").font(.footnote).foregroundStyle(.secondary)
+                    Text("Only your selected clip is uploaded. Public songs include any part of this clip used in the music. Credits are used only after you confirm the price.").font(.footnote).foregroundStyle(.secondary)
                     CloudSongActions(cloud: cloud, model: model, account: account, reviewTitle: "Upload clip & review price") {
                         if let input = model.input { Task { await cloud.review(input: input, start: model.trimStart, end: model.trimEnd) } }
                     }
@@ -256,6 +258,10 @@ struct CloudSongActions: View {
     let reviewTitle: String
     let review: () -> Void
     var body: some View {
+        if cloud.job == nil {
+            Toggle("Keep this song private", isOn: $cloud.keepPrivate).disabled(cloud.controlsLocked || cloud.quote != nil)
+            Label(cloud.keepPrivate ? "Only you can listen. Private songs use more credits." : "Your finished song appears in Community on the website and app.", systemImage: cloud.keepPrivate ? "lock.fill" : "globe").font(.footnote).foregroundStyle(.secondary)
+        }
         if !cloud.message.isEmpty { Text(cloud.message).accessibilityIdentifier("cloudSongStatus") }
         if cloud.active {
             ProgressView(cloud.state.capitalized)

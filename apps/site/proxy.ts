@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import {readConfig} from './lib/config';
 import {cachedSiteSettings} from './lib/site-settings';
 import {isAdmin} from './lib/admin-access';
-import {comingSoonEnabled,comingSoonRecovery,comingSoonResponse} from './lib/coming-soon';
+import {comingSoonEnabled,comingSoonRecovery,comingSoonResponse,publicSongRead} from './lib/coming-soon';
 
 export async function proxy(request: NextRequest) {
   const path=request.nextUrl.pathname;
   const recovery=/^\/(admin|account|contact|support)(\/|$)/.test(path)||['/maintenance','/api/maintenance','/api/site-status','/api/contact','/api/notifications','/api/song-jobs','/api/payments/stripe','/api/academy/stripe','/api/pro/stripe','/api/pro/refresh'].includes(path)||path.startsWith('/api/admin/')||path.startsWith('/api/auth/');
   let configured=false;try{readConfig();configured=true;}catch{}
   let launchBypass=false;
-  if(comingSoonEnabled()&&!comingSoonRecovery(path)){
+  if(comingSoonEnabled()&&!comingSoonRecovery(path)&&!publicSongRead(request)){
     try{if(configured&&request.headers.has('cookie')){const {services}=await import('./lib/services');const session=await services().auth.api.getSession({headers:request.headers});launchBypass=isAdmin(session?.user);}}catch{/* Unavailable authentication never opens the preview. */}
     if(!launchBypass)return comingSoonResponse(request);
   }

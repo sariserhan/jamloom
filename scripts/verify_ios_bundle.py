@@ -41,6 +41,8 @@ def verify(bundle):
     assert not list(bundle.rglob('*.storekit')), 'Local StoreKit fixture found in Release'
     assert not list(bundle.rglob('*.wav')), 'Test/private audio found in Release'
     assert not list(bundle.rglob('*.m4a'))
+    for name in ['set-player.webm', 'music-validation.json', 'dna-examples.json']:
+        assert not list(bundle.rglob(name)), 'Test-only resource found in Release: ' + name
     repo = Path(__file__).resolve().parents[1]
     tracks = json.loads((repo / 'apps/web/practice-audio/manifest.json').read_text())['tracks']
     expected_audio = {bundle / 'Studio' / row['url'].removeprefix('./'): row['sha256'] for row in tracks}

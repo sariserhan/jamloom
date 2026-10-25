@@ -25,6 +25,7 @@ private final class AccountProtocol: URLProtocol {
         var queries: [[String: String]] = []
         AccountProtocol.headers = ["Content-Type": "application/json"]
         AccountProtocol.handle = { request in
+            if request.url?.path == "/api/ai-dj/sets" { return (200, Data(#"{"sets":[],"next":null}"#.utf8)) }
             let query = Dictionary(uniqueKeysWithValues: URLComponents(url: request.url!, resolvingAgainstBaseURL: false)!.queryItems!.map { ($0.name, $0.value!) })
             queries.append(query); XCTAssertEqual(request.httpMethod, "GET")
             let id = query["after"] == nil ? first : second
@@ -41,6 +42,72 @@ private final class AccountProtocol: URLProtocol {
             do { let _: LibraryPage = try await transport.request("/api/taste/song", query: query); XCTFail("Reject invalid collection query") } catch { }
         }
         XCTAssertEqual(queries.count, count)
+    }
+    func testAllSongsIncludesTheCompleteWebsiteManifestsAndPublicPages() async throws {
+        let transport = transport(), account = AccountModel(transport: transport), library = SongLibraryModel()
+        defer { transport.session.invalidateAndCancel() }
+        func manifest(_ name: String, key: String) throws -> [[String: Any]] {
+            let url = try XCTUnwrap(Bundle(for: AccountTests.self).url(forResource: name, withExtension: "json"))
+            let json = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any])
+            return try XCTUnwrap(json[key] as? [[String: Any]])
+        }
+        let validation = try manifest("music-validation", key: "songs"), examples = try manifest("dna-examples", key: "examples")
+        let expected = Set(validation.map { "\($0["product"]!):\($0["id"]!)" } + examples.map { "music-dna:\($0["id"]!)" })
+        var requests = 0
+        AccountProtocol.headers = ["Content-Type": "application/json"]
+        AccountProtocol.handle = { request in
+            requests += 1
+            if request.url?.path == "/api/ai-dj/sets" { return (200, Data(#"{"sets":[],"next":null}"#.utf8)) }
+            let q = Dictionary(uniqueKeysWithValues: URLComponents(url: request.url!, resolvingAgainstBaseURL: false)!.queryItems!.map { ($0.name, $0.value!) })
+            let product = request.url!.path.contains("improvise") ? "improvise" : "music-dna"
+            var rows: [[String: Any]] = [], next: Any = NSNull()
+            if q["view"] == "validation" { rows = validation }
+            else if q["view"] == "examples" { rows = examples }
+            else {
+                XCTAssertEqual(q["view"], "public")
+                let id = String(repeating: q["after"] == nil ? "f" : "e", count: 32)
+                rows = [["id": id, "title": "Public original", "language": "en", "product": product]]
+                if q["after"] == nil {
+                    rows.append(validation.first { $0["product"] as? String == product }!)
+                    next = id
+                } else { XCTAssertEqual(q["after"], String(repeating: "f", count: 32)) }
+            }
+            return (200, try JSONSerialization.data(withJSONObject: ["songs": rows, "next": next]))
+        }
+        await library.load(.all, account: account)
+        XCTAssertEqual(requests, 6); XCTAssertEqual(library.songs.count, expected.count + 2)
+        XCTAssertTrue(expected.isSubset(of: Set(library.songs.map(\.key))))
+        XCTAssertTrue(library.message.isEmpty); XCTAssertFalse(library.needsSignIn)
+        await library.load(.all, account: account, more: true)
+        XCTAssertEqual(requests, 8); XCTAssertEqual(library.songs.count, expected.count + 4)
+        XCTAssertTrue(library.next.isEmpty); XCTAssertEqual(Set(library.songs.map(\.key)).count, library.songs.count)
+    }
+    func testPublicDJSetsValidateAndPersistAsFavorites() async throws {
+        let transport = transport(); defer { transport.session.invalidateAndCancel() }
+        let page = try JSONDecoder().decode(PublicSetPage.self, from: Data(#"{"sets":[{"id":"cccccccccccccccccccccccccccccccc","title":"Rooftop party","seconds":7200}],"next":null}"#.utf8))
+        let song = try XCTUnwrap(page.songPage().validated(product: .aiDJ).first)
+        XCTAssertEqual(song.key, "ai-dj:cccccccccccccccccccccccccccccccc"); XCTAssertEqual(song.productName, "DJ sets")
+        XCTAssertEqual(try transport.publicSetURL(song.id).path, "/api/ai-dj/sets/" + song.id + "/audio")
+        XCTAssertThrowsError(try transport.publicSetURL("../private"))
+        let suite = "jamloom-set-favorite-" + UUID().uuidString, defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let library = SongLibraryModel(defaults: defaults); library.loadFavorites(owner: nil); library.toggleFavorite(song)
+        let restored = SongLibraryModel(defaults: defaults); restored.loadFavorites(owner: nil)
+        XCTAssertEqual(restored.favorites, [song])
+        let bad = try JSONDecoder().decode(PublicSetPage.self, from: Data(#"{"sets":[{"id":"cccccccccccccccccccccccccccccccc","title":"Invalid","seconds":-1}],"next":null}"#.utf8))
+        XCTAssertThrowsError(try bad.songPage())
+    }
+    func testPublicSongOutageDoesNotAskForOwnerSignIn() async throws {
+        let transport = transport(), account = AccountModel(transport: transport), library = SongLibraryModel()
+        defer { transport.session.invalidateAndCancel() }
+        AccountProtocol.headers = ["Content-Type": "application/json"]
+        AccountProtocol.handle = { _ in (503, Data(#"{"error":"Jamloom is coming soon. Public access is not open yet."}"#.utf8)) }
+        await library.load(.all, account: account)
+        XCTAssertTrue(library.songs.isEmpty); XCTAssertFalse(library.needsSignIn)
+        XCTAssertEqual(library.message, "Public songs are temporarily unavailable. Please try again later.")
+        AccountProtocol.handle = { r in (200, Data((r.url?.path == "/api/ai-dj/sets" ? #"{"sets":[],"next":null}"# : #"{"songs":[],"next":null}"#).utf8)) }
+        await library.load(.all, account: account)
+        XCTAssertFalse(library.needsSignIn); XCTAssertTrue(library.message.isEmpty)
     }
     func testSongFavoritesPersistWithoutAudioAndStayAccountScoped() throws {
         let suite = "jamloom-favorites-test-" + UUID().uuidString, defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
@@ -152,6 +219,7 @@ private final class AccountProtocol: URLProtocol {
         }
         await account.signIn(email: "test@example.test", password: "test-password"); await cloud.connect(account)
         await cloud.reviewTaste(profile); XCTAssertTrue(actions.isEmpty)
+        XCTAssertFalse(cloud.keepPrivate); cloud.keepPrivate = true
         cloud.consent = true; await cloud.reviewTaste(profile); XCTAssertEqual(actions, ["quote"])
         await cloud.submit(); XCTAssertEqual(actions, ["quote", "submit"])
         for _ in 0..<50 { if cloud.state == "completed" { break }; try await Task.sleep(for: .milliseconds(100)) }
@@ -188,12 +256,12 @@ private final class AccountProtocol: URLProtocol {
                 XCTAssertEqual((body["sha256"] as? String)?.count, 64)
                 return (200, Data("{\"id\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\":\"https://aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.r2.cloudflarestorage.com/test/uploads/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa.wav?X-Amz-Signature=test\"}".utf8))
             case "quote":
-                quotes += 1; XCTAssertEqual(submits, 0); XCTAssertEqual(body["visibility"] as? String, "private")
+                quotes += 1; XCTAssertEqual(submits, 0); XCTAssertEqual(body["visibility"] as? String, "public")
                 return (200, Data("{\"credits\":7,\"token\":\"test-quote\",\"expiresAt\":\(Date().addingTimeInterval(300).timeIntervalSince1970 * 1000)}".utf8))
             case "submit":
                 submits += 1; submittedID = try XCTUnwrap(body["requestId"] as? String)
                 XCTAssertEqual(UserDefaults.standard.string(forKey: "jamloom-native-improvise-\(user)"), submittedID)
-                XCTAssertEqual(body["token"] as? String, "test-quote"); XCTAssertEqual(body["publicConsent"] as? Bool, false)
+                XCTAssertEqual(body["token"] as? String, "test-quote"); XCTAssertEqual(body["publicConsent"] as? Bool, true)
                 return (202, Data("{\"id\":\"\(submittedID)\",\"state\":\"queued\"}".utf8))
             default: throw URLError(.badServerResponse)
             }
@@ -205,7 +273,10 @@ private final class AccountProtocol: URLProtocol {
         cloud.consent = true
         await cloud.review(input: input, start: 0, end: 1)
         XCTAssertEqual(uploads, 1); XCTAssertEqual(quotes, 1); XCTAssertEqual(submits, 0); XCTAssertEqual(cloud.quote?.credits, 7, cloud.message)
-        cloud.invalidateQuote(); await cloud.review(input: input, start: 0, end: 1)
+        cloud.keepPrivate = true
+        XCTAssertNil(cloud.quote, "Changing privacy must invalidate the price before charging")
+        cloud.keepPrivate = false
+        await cloud.review(input: input, start: 0, end: 1)
         XCTAssertEqual(uploads, 1); XCTAssertEqual(quotes, 2)
         await cloud.submit()
         for _ in 0..<50 { if cloud.state == "completed" { break }; try await Task.sleep(for: .milliseconds(20)) }
@@ -299,6 +370,28 @@ private final class AccountProtocol: URLProtocol {
         let foreign = AccountTransport(base: URL(string: "https://foreign.example")!)
         defer { foreign.session.invalidateAndCancel() }
         do { let _: AccountSnapshot = try await foreign.request("/api/account"); XCTFail("Expected origin restriction") } catch { }
+    }
+    func testActualPublicWebsiteSongsWithoutSignIn() async throws {
+        guard let origin = ProcessInfo.processInfo.environment["JAMLOOM_PUBLIC_SONGS_TEST_ORIGIN"] else { throw XCTSkip("Run against the local production server with its launch gate enabled.") }
+        let base = try XCTUnwrap(URL(string: origin)); XCTAssertEqual(base.host, "127.0.0.1")
+        let account = AccountModel(transport: AccountTransport(base: base)), library = SongLibraryModel()
+        defer { library.clearAudio(); account.transport.session.invalidateAndCancel() }
+        await library.load(.all, account: account)
+        XCTAssertNil(account.snapshot); XCTAssertFalse(library.needsSignIn); XCTAssertTrue(library.message.isEmpty, library.message)
+        for (file, key, fallback) in [("music-validation", "songs", ""), ("dna-examples", "examples", "music-dna")] {
+            let url = try XCTUnwrap(Bundle(for: AccountTests.self).url(forResource: file, withExtension: "json"))
+            let json = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any])
+            let rows = try XCTUnwrap(json[key] as? [[String: Any]])
+            let expected = Set(rows.map { "\($0["product"] as? String ?? fallback):\($0["id"]!)" })
+            XCTAssertTrue(expected.isSubset(of: Set(library.songs.map(\.key))), "Every website manifest song must load anonymously")
+        }
+        for product in [CloudSongProduct.improvise, .musicDNA] {
+            let song = try XCTUnwrap(library.songs.first { $0.source == product })
+            let prepared = await library.prepare(song, account: account)
+            let url = try XCTUnwrap(prepared, library.message)
+            XCTAssertGreaterThan(try Data(contentsOf: url).count, 44)
+            library.clearAudio(); XCTAssertFalse(FileManager.default.fileExists(atPath: url.path))
+        }
     }
     func testActualLocalAccountAndProfileSync() async throws {
         guard let origin = ProcessInfo.processInfo.environment["JAMLOOM_ACCOUNT_TEST_ORIGIN"] else { throw XCTSkip("Run the disposable local account harness for HTTP integration.") }

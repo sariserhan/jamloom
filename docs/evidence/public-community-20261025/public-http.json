@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "anonymous": true,
+  "coming_soon_enabled": true,
+  "results": [
+    {
+      "path": "/api/improvise/song?view=validation",
+      "status": 200,
+      "entries": 56
+    },
+    {
+      "path": "/api/taste/song?view=validation",
+      "status": 200,
+      "entries": 157
+    },
+    {
+      "path": "/api/taste/song?view=examples",
+      "status": 200,
+      "entries": 9
+    },
+    {
+      "path": "/api/improvise/song?view=public",
+      "status": 200,
+      "entries": 0
+    },
+    {
+      "path": "/api/taste/song?view=public",
+      "status": 200,
+      "entries": 0
+    },
+    {
+      "path": "/api/ai-dj/sets",
+      "status": 200,
+      "entries": 0
+    },
+    {
+      "path": "/ai-dj/sets",
+      "status": 200,
+      "entries": null
+    },
+    {
+      "path": "/api/ai-dj/sets/00000000000000000000000000000000/audio",
+      "status": 404,
+      "entries": 0
+    },
+    {
+      "path": "/api/taste/song?view=mine",
+      "status": 503,
+      "entries": 0
+    },
+    {
+      "path": "/api/improvise/song?file=input&id=00000000000000000000000000000000",
+      "status": 503,
+      "entries": 0
+    },
+    {
+      "path": "/api/ai-dj/sessions",
+      "status": 503,
+      "entries": 0
+    },
+    {
+      "path": "/api/ai-dj/recordings",
+      "status": 503,
+      "entries": 0
+    }
+  ]
+}

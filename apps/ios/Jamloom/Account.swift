@@ -29,8 +29,10 @@ final class AccountTransport: NSObject, URLSessionTaskDelegate, @unchecked Senda
             query.keys.allSatisfy { ["view", "after"].contains($0) } &&
             ["validation", "examples", "public", "mine"].contains(query["view"] ?? "") &&
             (query["after"] == nil || query["after"]?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil)
+        let publicSets = path == CloudSongProduct.aiDJ.path && query.keys.allSatisfy { $0 == "after" } &&
+            (query["after"] == nil || query["after"]?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil)
         guard allowed, path.hasPrefix("/api/"), !path.contains(".."), !path.contains("?"),
-              query.isEmpty || collection || ([CloudSongProduct.improvise.path, CloudSongProduct.musicDNA.path].contains(path) && query.keys.allSatisfy({ ["id", "file"].contains($0) }) &&
+              query.isEmpty || collection || publicSets || ([CloudSongProduct.improvise.path, CloudSongProduct.musicDNA.path].contains(path) && query.keys.allSatisfy({ ["id", "file"].contains($0) }) &&
                 query["id"]?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil &&
                 (query["file"] == nil || query["file"] == "audio")) else {
             throw RemixError.message("Invalid account request.")
@@ -71,6 +73,10 @@ final class AccountTransport: NSObject, URLSessionTaskDelegate, @unchecked Senda
             throw RemixError.message("Account service unavailable. Try again later.")
         }
         return data
+    }
+    func publicSetURL(_ id: String) throws -> URL {
+        guard id.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil else { throw URLError(.badURL) }
+        return try requestURL(CloudSongProduct.aiDJ.path + "/" + id + "/audio", query: [:])
     }
     func songAudio(_ id: String, product: CloudSongProduct = .improvise, temporaryID: UUID? = nil) async throws -> URL {
         let url = try requestURL(product.path, query: ["id": id, "file": "audio"])

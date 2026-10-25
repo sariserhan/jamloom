@@ -17,6 +17,13 @@ final class FlowTests: XCTestCase {
         let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); image.name = "Community favorites"; image.lifetime = .keepAlways; add(image)
         app.buttons["Unfavorite Night lights"].tap(); XCTAssertTrue(app.staticTexts["Your favorites"].waitForExistence(timeout: 5))
     }
+    func testCommunityPublicOutageDoesNotAskForOwnerSignIn() {
+        let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture", "--community-gated"]
+        app.launch(); app.buttons["Community"].firstMatch.tap()
+        XCTAssertTrue(app.staticTexts["Public songs are temporarily unavailable. Please try again later."].waitForExistence(timeout: 15))
+        XCTAssertFalse(app.buttons["Sign in"].exists)
+        let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); image.name = "Community public service unavailable"; image.lifetime = .keepAlways; add(image)
+    }
     override func setUpWithError() throws { continueAfterFailure = false }
     private func waitUntilEnabled(_ element: XCUIElement) {
         let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: element)

@@ -15,9 +15,16 @@ final class CommunityFixture: URLProtocol {
         guard let url = request.url else { return }
         let query = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
         do {
+            if ProcessInfo.processInfo.arguments.contains("--community-gated") {
+                let response = HTTPURLResponse(url: url, statusCode: 503, httpVersion: nil, headerFields: ["Content-Type": "application/json"])!
+                client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+                client?.urlProtocol(self, didLoad: Data(#"{"error":"Jamloom is coming soon. Public access is not open yet."}"#.utf8))
+                client?.urlProtocolDidFinishLoading(self); return
+            }
             let audio = query.contains { $0.name == "file" && $0.value == "audio" }
             let data: Data
             if audio { data = try Data(contentsOf: Bundle.main.url(forResource: "synthetic-speech", withExtension: "wav")!) }
+            else if url.path == "/api/ai-dj/sets" { data = Data(#"{"sets":[{"id":"cccccccccccccccccccccccccccccccc","title":"Rooftop party","seconds":600}],"next":null}"#.utf8) }
             else if query.contains(where: { $0.name == "view" && $0.value == "mine" }) { data = Data(#"{"songs":[],"next":null,"signIn":true}"#.utf8) }
             else {
                 let product = url.path.contains("improvise") ? "improvise" : "music-dna"

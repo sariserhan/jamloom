@@ -19,6 +19,14 @@ try {
   const result=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,controls:['play-a','play-b','jog-a','jog-b','crossfade','eq-a-0','eq-b-2'].map(id=>{const r=document.getElementById(id).getBoundingClientRect();return{id,x:r.x,y:r.y,w:r.width,h:r.height,visible:r.x>=0&&r.y>=0&&r.right<=innerWidth&&r.bottom<=innerHeight};})}));
   geometry.push({name,width,height,...result});await page.screenshot({path:`${output}/${name}.png`,fullPage:true});
   assert.equal(result.overflow,false,`${name}: horizontal overflow`);
+  const collisions=await page.evaluate(()=>[...document.querySelectorAll('.deck')].flatMap(deck=>{
+   const issues=[],wheel=deck.querySelector('.jog').getBoundingClientRect(),pitch=deck.querySelector('.pitch-strip').getBoundingClientRect(),screen=deck.querySelector('.pro-jog-screen').getBoundingClientRect();
+   if(getComputedStyle(deck,'::before').display!=='none'||getComputedStyle(deck,'::after').display!=='none')issues.push('decorative dots overlap heading');
+   if(wheel.right>pitch.left)issues.push('wheel overlaps pitch');
+   for(const child of deck.querySelector('.pro-jog-screen').children){if(getComputedStyle(child).display==='none')continue;const r=child.getBoundingClientRect();if(r.x<screen.x||r.right>screen.right||r.y<screen.y||r.bottom>screen.bottom)issues.push('jog text outside display');}
+   return issues;
+  }));
+  assert.deepEqual(collisions,[],`${name}: deck collisions`);
   if(name==='landscape'||name==='ipad')for(const control of result.controls)assert(control.visible,`${name}: clipped ${control.id} ${JSON.stringify(control)}`);
  }
  for(const [name,width,height,region] of [['fold-vertical',1024,768,{x:500,y:0,width:24,height:768}],['fold-horizontal',850,1050,{x:0,y:500,width:850,height:24}]]){

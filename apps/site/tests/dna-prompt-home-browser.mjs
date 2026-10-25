@@ -20,7 +20,8 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   assert.match(await page.title(),/Music DNA/);const start=page.getByRole('button',{name:'Make my music',exact:true}),dialog=page.getByRole('dialog',{name:'Make your song',exact:true});
   assert.equal(await page.getByRole('radio').count(),0);assert.equal(await page.getByText('Starting price:',{exact:false}).isVisible(),false);
   await start.click();await dialog.waitFor();assert.equal(quotes,0);assert.equal(fixture.bodies.length,0);
-  assert.equal(await dialog.getByRole('button',{name:/^Generate song/}).isDisabled(),true);
+  assert.equal(await dialog.getByRole('radio',{name:'Public · from 1 credit',exact:true}).isChecked(),true);
+  assert.equal(await dialog.getByRole('button',{name:/^Generate song/}).isDisabled(),false);
   for(const width of [1280,390,320]){await page.setViewportSize({width,height:900});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:join(output,`${name}-prompt-${width}.png`)});}
   assert.deepEqual((await new AxeBuilder({page}).include('dialog').analyze()).violations,[]);
   await page.keyboard.press('Escape');await dialog.waitFor({state:'hidden'});assert.equal(await start.evaluate(e=>e===document.activeElement),true);assert.equal(quotes,0);
@@ -30,11 +31,26 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   await dialog.getByRole('button',{name:'Generate song · 3 credits',exact:true}).click();
   await dialog.waitFor({state:'hidden'});await page.getByLabel('Play Fixture song 1',{exact:true}).waitFor();assert.equal(fixture.bodies.length,1);assert.equal(quotes,1);
   await context.unroute('**/api/taste/song*');
+  let fresh=false;
+  for(const product of ['taste','improvise'])await context.route(`**/api/${product}/song*`,route=>{
+   const view=new URL(route.request().url()).searchParams.get('view');if(!view)return route.continue();
+   const songs=view==='public'?[{id:'a'.repeat(32),title:`New ${product} community song`,language:'en'},...(fresh?[{id:'b'.repeat(32),title:`Latest ${product} community song`,language:'en'}]:[])]:Array.from({length:20},(_,i)=>({id:i.toString(16).padStart(32,'0'),title:`${product} studio ${i}`,language:'en'}));
+   return route.fulfill({json:{songs,next:null}});
+  });
+  await context.route('**/api/ai-dj/sets',route=>route.fulfill({json:{sets:[{id:'c'.repeat(32),title:'Community rooftop party',seconds:600}],next:null}}));
   const track={id:'11111111-1111-4111-8111-111111111111',title:'Public studio mix',artist:'Shared artist',strategy:'funk',duration_ms:120000,mood:'playful',description:'Public catalogue fixture'};
   await context.route('**/api/catalogue?sort=latest',r=>r.fulfill({json:{tracks:[track]}}));
   const sample=await context.request.get(base+'/api/taste/song?id=06d89abd7d194ddf81bbc54af3e9b67f&file=audio');assert.equal(sample.status(),200);const bytes=await sample.body();
   await context.route('**/api/catalogue/*/audio',r=>r.fulfill({contentType:'audio/wav',body:bytes}));
   await page.goto(base+'/');assert.match(await page.title(),/Learn, Mix/);assert.equal(await page.locator('h1').count(),1);
+  for(const [id,product] of [['improvise-songs','improvise'],['music-dna-songs','taste']]){
+   const songs=page.locator('#'+id);await songs.getByRole('heading',{name:`New ${product} community song`,exact:true}).waitFor();
+   const count=await songs.locator('article').count(),columns=await songs.locator('.song-paged-grid').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length);assert.equal(count,columns*3);
+   await songs.getByRole('button',{name:'Next',exact:true}).first().click();assert.equal(await songs.getByRole('heading',{name:`New ${product} community song`,exact:true}).count(),0);
+   await songs.getByRole('button',{name:'Previous',exact:true}).first().click();await songs.getByRole('heading',{name:`New ${product} community song`,exact:true}).waitFor();
+  }
+  await page.getByRole('heading',{name:'Community rooftop party',exact:true}).waitFor();
+  fresh=true;await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await page.getByRole('heading',{name:'Latest taste community song',exact:true}).waitFor();
   const gallery=page.getByRole('region',{name:'Music DNA song preview',exact:true});assert.equal(await gallery.locator('audio').count(),4);
   const initial=await gallery.locator('audio').evaluateAll(list=>list.map(a=>a.src));await gallery.getByRole('button',{name:'Next songs',exact:true}).click();assert.equal(await gallery.locator('audio').count(),4);assert.ok((await gallery.locator('audio').evaluateAll(list=>list.map(a=>a.src))).every(src=>!initial.includes(src)));
   await gallery.getByRole('button',{name:'Back to previous songs',exact:true}).click();assert.deepEqual(await gallery.locator('audio').evaluateAll(list=>list.map(a=>a.src)),initial);
@@ -47,7 +63,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   await audio.evaluate(a=>a.play());assert.equal(await page.locator('.mini-deck audio').first().evaluate(a=>a.paused),true);await audio.evaluate(a=>a.pause());
   for(const width of [1280,390,320]){await page.setViewportSize({width,height:900});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await gallery.scrollIntoViewIfNeeded();await page.screenshot({path:join(output,`${name}-home-${width}.png`)});}
   assert.deepEqual((await new AxeBuilder({page}).include('.product-home').analyze()).violations,[]);assert.deepEqual(errors,[]);
-  results.push({browser:name,status:'PASS',prompt_after_click:true,escape_restores_focus:true,no_charge_on_open:true,higher_quote_requires_second_confirmation:true,one_generation:true,homepage_preview_songs:4,catalogue_and_dna_playback:true,exclusive_players:true,widths:[1280,390,320],axe_violations:0,errors,model_execution:'fixture only',human_listening:'NOT RUN'});
+  results.push({browser:name,status:'PASS',prompt_after_click:true,public_default:true,escape_restores_focus:true,no_charge_on_open:true,higher_quote_requires_second_confirmation:true,one_generation:true,homepage_preview_songs:4,public_songs_in_showcase:true,three_row_pagination:true,refresh_new_songs:true,public_dj_sets:true,catalogue_and_dna_playback:true,exclusive_players:true,widths:[1280,390,320],axe_violations:0,errors,model_execution:'fixture only',human_listening:'NOT RUN'});
  }finally{await browser.close();}
 }
 await writeFile(join(output,'report.json'),JSON.stringify(results,null,2)+'\n');console.log(JSON.stringify(results));

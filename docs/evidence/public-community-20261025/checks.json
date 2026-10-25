@@ -1,0 +1,41 @@
+{
+  "status": "PASS local implementation and automated checks; PARTIAL release",
+  "version": "0.9.2 (15)",
+  "site_tests": {
+    "passed": 129,
+    "failed": 0
+  },
+  "privacy_and_sessions": {
+    "passed": 46,
+    "failed": 0,
+    "database": "disposable local PostgreSQL"
+  },
+  "native_tests": {
+    "passed": 15,
+    "skipped": 2,
+    "failed": 0,
+    "skip_reason": "Separate live HTTP harnesses are opt-in; public catalogue harness ran separately and passed"
+  },
+  "native_ui_tests": {
+    "passed": 4,
+    "failed": 0,
+    "scope": "iPhone 18 Pro simulator: Community, favorites/playback, public outage, landscape and rotation"
+  },
+  "native_http": {
+    "status": "PASS",
+    "signed_in": false,
+    "manifest_songs": 166,
+    "audio_downloads": 2,
+    "scope": "Actual URLSession against final local production build with coming-soon enabled; actual Improvise and Music DNA R2 WAVs, verified and removed"
+  },
+  "webm_playback": "PASS actual iOS WebKit decoding and muted playback of an original three-second fixture; stops on dismissal",
+  "site_build": "PASS",
+  "client_bundle_audit": "PASS 43 files",
+  "signing": "PASS",
+  "iphone_install": "PASS",
+  "iphone_launch": "PASS after owner unlocked the phone",
+  "physical_layout_acceptance": "NOT RUN for this update",
+  "hosted_deployment": "NOT RUN; owner handles bulk push",
+  "paid_compute": "NOT RUN; not needed",
+  "data_changes": "No hosted writes, no migrations, no republishing existing private songs, no local-result uploads"
+}

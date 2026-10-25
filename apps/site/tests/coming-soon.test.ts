@@ -9,6 +9,26 @@ test('launch gate defaults on and only explicit false disables it',()=>{
  for(const value of [undefined,'','true','FALSE','0'])assert.equal(comingSoonEnabled({JAMLOOM_COMING_SOON:value}),true);
  assert.equal(comingSoonEnabled({JAMLOOM_COMING_SOON:'false'}),false);
 });
+test('public song collections and playback pass the launch gate without opening generation or private collections',async()=>{
+ const id='a'.repeat(32);
+ for(const path of ['/api/taste/song','/api/improvise/song']){
+  for(const query of ['view=public','view=validation','view=examples','view=public&after='+id+'&language=en&genre=House','id='+id+'&file=audio','id='+id+'&file=audio&download=1']){
+   const response=await proxy(new NextRequest('https://www.jamloom.com'+path+'?'+query));
+   assert.equal(response.headers.get('x-middleware-next'),'1',query);
+  }
+  for(const query of ['', 'view=mine','view=public&view=mine','view=public&id='+id,'id='+id,'id='+id+'&file=plan','id='+id+'&file=input','id=invalid&file=audio','id='+id+'&file=audio&action=submit']){
+   assert.equal((await proxy(new NextRequest('https://www.jamloom.com'+path+'?'+query))).status,503,query);
+  }
+  for(const method of ['POST','DELETE','PUT'])assert.equal((await proxy(new NextRequest('https://www.jamloom.com'+path+'?view=public',{method}))).status,503);
+ }
+ assert.equal((await proxy(new NextRequest('https://www.jamloom.com/api/taste/song/fake?view=public'))).status,503);
+});
+test('public DJ set playback is open while creation and private recordings stay protected',async()=>{
+ const id='a'.repeat(32);
+ for(const path of ['/ai-dj/sets','/api/ai-dj/sets','/api/ai-dj/sets?after='+id,'/api/ai-dj/sets/'+id+'/audio'])assert.equal((await proxy(new NextRequest('https://www.jamloom.com'+path))).headers.get('x-middleware-next'),'1',path);
+ for(const path of ['/api/ai-dj/sets?owner=someone','/api/ai-dj/sets/'+id+'/private','/api/ai-dj/recordings','/api/ai-dj/sessions'])assert.equal((await proxy(new NextRequest('https://www.jamloom.com'+path))).status,503,path);
+ assert.equal((await proxy(new NextRequest('https://www.jamloom.com/api/ai-dj/sets',{method:'POST'}))).status,503);
+});
 test('account-free native catalogue suggestions pass the launch gate without opening creation or purchases',async()=>{
  assert.equal(comingSoonRecovery('/api/music-search'),true);assert.equal(comingSoonRecovery('/api/playlist-import'),true);assert.equal(comingSoonRecovery('/api/playlist-import/fake'),false);
  for(const path of ['/api/music-search/fake','/api/taste/song','/api/payments/checkout','/music-dna'])assert.equal(comingSoonRecovery(path),false);

@@ -49,7 +49,7 @@ fs.mkdirSync(work+'/singer');fs.writeFileSync(work+'/singer/singer.wav',wav);fs.
    for(const visibility of ['public','private']){
     await page.getByRole('button',{name:jobs.length?'Make another song':'Make my music',exact:true}).click();
     await page.getByRole('radio',{name:visibility==='public'?'Public · from 1 credit':'Private · from 2 credits',exact:true}).check();
-    if(visibility==='public')await page.getByRole('checkbox',{name:'I agree to publish this new song on the community page.'}).check();
+    if(visibility==='public')
     const submitted=page.waitForResponse(r=>r.url()===base+'/api/taste/song'&&r.request().method()==='POST'&&r.request().postDataJSON().action==='submit');
     await page.getByRole('button',{name:/^Generate song/}).click();
     const response=await submitted;assert.equal(response.status(),202);const {id}=await response.json();jobs.push({id,visibility});

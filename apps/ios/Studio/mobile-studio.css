@@ -9,6 +9,7 @@ html.mobile-studio, .mobile-studio body { margin:0; background:#090e16; height:1
 .mobile-bar #mobile-stop { color:#ffc4be; }.mobile-bar button[aria-pressed=true] { color:#07121d; background:#ffbf69; }
 .mobile-studio .console { flex:1; min-height:0; grid-template-columns:minmax(0,1fr) 168px minmax(0,1fr); align-items:stretch; gap:6px; padding:6px; overflow:auto; }
 .mobile-studio .deck { padding:10px; display:flex; flex-direction:column; min-height:0; overflow:auto; border-radius:8px; }
+.mobile-studio .deck::before,.mobile-studio .deck::after { display:none; }
 .mobile-studio .deck-heading { flex-wrap:nowrap; gap:6px; margin:0; }.mobile-studio .deck-heading h2 { font-size:12px; letter-spacing:1px; white-space:nowrap; margin:0 auto 0 0; }.mobile-studio .deck-state { font-size:9px; padding:4px; }
 .mobile-studio .deck-heading > button[id^=clear] { display:none; }.mobile-studio .mobile-load { padding:4px 8px; }
 .mobile-studio .deck-display { margin-top:4px; padding:6px 8px; flex-shrink:0; }.mobile-studio .deck-display .track-name { font-size:12px; margin:0; }
@@ -58,10 +59,21 @@ html.mobile-studio, .mobile-studio body { margin:0; background:#090e16; height:1
 @media (orientation:landscape) and (max-height:500px) {
  .mobile-studio .deck-heading { min-height:20px; flex:0 0 20px; }.mobile-studio .deck-heading > .mobile-load { display:none; }.mobile-studio .deck-state { padding:2px 4px; }
  .mobile-studio .jog { width:100px; height:100px; }.mobile-studio .platter-row { min-height:112px; padding-block:6px; }
+ .mobile-studio .pro-jog-screen { inset:23%; }
+ .mobile-studio .pro-jog-screen small { display:none; }
+ .mobile-studio .pro-jog-screen strong { font-size:16px; line-height:18px; }
+ .mobile-studio .pro-jog-screen span { font-size:7px; line-height:9px; }
+ .mobile-studio .pro-jog-screen output { font-size:9px; line-height:11px; margin-top:0; }
  .mobile-studio .eq label { padding:0; }.mobile-studio #peak { display:none; }
  .mobile-studio .transport { padding-block:2px; gap:5px; }.mobile-studio .deck-display { margin-top:1px; }
  .mobile-studio .mix-bus .channel-strip h3 { white-space:nowrap; font-size:8px; line-height:12px; }.mobile-studio .mix-bus .channel-fader { height:44px; }
  .mobile-studio .mix-bus .channel-fader input { margin:0; }.mobile-studio .blend { flex-shrink:0; }
+}
+@media (orientation:landscape) and (max-height:500px) and (max-width:650px) {
+ .mobile-studio .platter-row { gap:10px; }
+ .mobile-studio .pitch-strip { width:44px; grid-template-columns:44px; }
+ .mobile-studio .pitch-strip input { grid-row:1; height:44px; }
+ .mobile-studio .pitch-strip output,.mobile-studio .pitch-strip button { grid-column:1; }
 }
 @media (max-width:600px) and (orientation:portrait) { .mobile-studio .jog { height:180px; } }
 .mobile-studio #crossfade { height:44px; min-height:44px; margin:0; }

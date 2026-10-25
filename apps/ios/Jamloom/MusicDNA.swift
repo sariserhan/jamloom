@@ -322,7 +322,7 @@ struct CloudDNAView: View {
                     Text(TasteProfile.languages[profile.vocalLanguage ?? ""] ?? "Automatic singing language").foregroundStyle(.secondary)
                     if account.snapshot == nil { Button("Sign in", systemImage: "person.crop.circle") { showAccount = true }.buttonStyle(.borderedProminent) }
                     Toggle("Use these favorites for cloud generation", isOn: $cloud.consent).disabled(cloud.controlsLocked)
-                    Text("Only your favorite names and preferences are sent. Your song stays private. Credits are used after you confirm the price.").font(.footnote).foregroundStyle(.secondary)
+                    Text("Only your favorite names and preferences are sent for generation. Your favorites stay private. Credits are used after you confirm the price.").font(.footnote).foregroundStyle(.secondary)
                     CloudSongActions(cloud: cloud, model: model, account: account, reviewTitle: "Review Music DNA price") {
                         Task { await cloud.reviewTaste(profile) }
                     }

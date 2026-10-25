@@ -1,5 +1,7 @@
 # Mobile Community and Favorites — 2026-10-24
 
+**Update 2026-10-25:** 0.9.2 (15) adds All songs, public DJ sets, anonymous catalogue access, Public-by-default cloud creation and landscape layout fixes. The earlier owner-preview restriction is removed for public reads in local website code; deployment is still pending. [Current report and evidence](public-community.md). The 0.9.0 acceptance below is historical.
+
 **PASS implementation, iPhone owner check and iPhone/iPad simulator checks.** Jamloom 0.9.0 (13) adds Community as a main tab, with Jamloom examples, Community songs, Favorites, My songs and On device collections. Both Improvise and Music DNA use the existing website APIs and visibility rules. Songs load in pages, play on demand and have large play/heart controls, search, product and genre filters.
 
 Favorites survive app relaunch and are isolated by account on this device. They store references, not offline audio or a new cloud library. Sign-out does not expose another account's favorites. Downloads retain the existing signed R2 URL allowlist, size and SHA-256 checks; leaving the screen or backgrounding stops playback and removes its temporary audio.

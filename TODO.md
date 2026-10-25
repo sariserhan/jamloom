@@ -1,3 +1,17 @@
+## Public cloud music and mobile deck repair — 2026-10-25
+
+**PASS local implementation and checks; PARTIAL release.** Public cloud Improvise, Music DNA and complete AI DJ sets are available through narrow anonymous read routes. New cloud songs default to Public with an explicit Private choice; existing private songs remain private and on-device results are not uploaded. Native All songs combines all 166 curated songs and public customer results; homepage showcases include new community songs with three-row pagination. Corner-dot and jog-display collisions are fixed in the mobile deck. Jamloom 0.9.2 (15) is signed and installed. No website push/deployment or App Store upload; production public-song access still needs the owner's deployment.
+
+- [x] Fix the shared public-read gate and keep private inputs, withdrawn songs and generation protected.
+- [x] Align web/native cloud sharing defaults, preserve private pricing and add public DJ sets to Community.
+- [x] Verify anonymous native loading of all 166 curated songs and real R2 audio against the final local production server.
+- [x] Recheck homepage pagination/refresh, Chromium/WebKit privacy flows, native Favorites/playback, landscape and rotation.
+- [x] Remove overlapping mobile deck ornaments and compact the wheel display; sign and install 0.9.2 (15).
+- [ ] Owner bulk push/deployment and post-deployment anonymous phone catalogue check.
+- [ ] Owner review of the updated physical landscape layout; physical iPad/foldable remain NOT RUN.
+
+[Report](docs/public-community.md), [checks](docs/evidence/public-community-20261025/checks.json), [native deck](docs/evidence/public-community-20261025/deck-native-landscape.png).
+
 ## AI DJ completion resumption — 2026-10-25
 
 **PARTIAL; fresh GPU/customer flow and owner track acceptance PASS.** The approved launch-fix replacement produced six fresh tracks, one brief vocal and two complete R2 sets; one measured bass exchange also passes a real browser replay. All rentals are deleted. Four campaign attempts used 1,252.72/2,400 authorized seconds and $0.061 in observed charge records within the combined $6; final invoice unverified. Owner accepts the tracks and reiterates occasional correctly timed voice. Two-session admission, no-charge rejection, budget/readiness checks and abandoned-queue refunds pass. The two-hour procedural/R2 run passes: 129 unique tracks, complete 2:00:04 decoded recording and cleanup. Carryover DJ allowance and a bound minimum top-up value are implemented; migrations 0027/0028 pass backup restore/rehearsal. The quote UI and complete Public/Private customer flow pass Chromium/WebKit with real R2, carryover, failed-upload recovery and natural credit exhaustion. Always-on GPU supervision/capacity, expert phrasing and physical venue/release gates remain open. No push, deployment, public activation or live billing.

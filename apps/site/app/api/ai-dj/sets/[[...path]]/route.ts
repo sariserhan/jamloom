@@ -4,6 +4,5 @@ import {djSessionStore} from '../../../../../lib/dj-session-store';
 import {djPublicRequest} from '../../../../../lib/dj-public-http';
 export const runtime='nodejs';
 export async function GET(request:Request,context:{params:Promise<{path?:string[]}>}){
- if(process.env.NODE_ENV!=='development')return new Response(null,{status:404});
- try{return await djPublicRequest(request,new DJRecordings(services().pool,djSessionStore()),(await context.params).path);}catch{return Response.json({error:'Sets are temporarily unavailable.'},{status:503,headers:{'Cache-Control':'no-store'}});}
+ try{return await djPublicRequest(request,new DJRecordings(services().pool,djSessionStore()),(await context.params).path,process.env.CREDIT_BILLING_MODE==='live');}catch{return Response.json({error:'Sets are temporarily unavailable.'},{status:503,headers:{'Cache-Control':'no-store'}});}
 }

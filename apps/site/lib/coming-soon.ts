@@ -3,9 +3,19 @@ import {origin} from './product';
 import {homeProducts} from './home-products';
 
 export const comingSoonEnabled=(env:Record<string,string|undefined>=process.env)=>env.JAMLOOM_COMING_SOON!=='false';
+export function publicSongRead(request:Request){
+ const url=new URL(request.url),q=url.searchParams,keys=[...q.keys()];
+ if(request.method!=='GET'||new Set(keys).size!==keys.length)return false;
+ if(url.pathname==='/api/ai-dj/sets')return keys.every(k=>k==='after');
+ if(/^\/api\/ai-dj\/sets\/[a-f0-9]{32}\/audio$/.test(url.pathname))return keys.length===0;
+ if(!['/api/taste/song','/api/improvise/song'].includes(url.pathname))return false;
+ if(q.has('view'))return ['public','validation','examples'].includes(q.get('view')!)&&keys.every(k=>['view','after','language','genre'].includes(k));
+ // Audio handlers still enforce public consent, withdrawal and private-song ownership.
+ return q.get('file')==='audio'&&/^[a-f0-9]{32}$/.test(q.get('id')??'')&&keys.every(k=>['id','file','download'].includes(k))&&(!q.has('download')||q.get('download')==='1');
+}
 export function comingSoonRecovery(path:string){
  return /^\/api\/aurowall(?:\/[a-f0-9]{24})?$/.test(path)||/^\/admin(?:\/|$)/.test(path)||path.startsWith('/api/admin/')||
-  ['/api/account','/api/account/deletion','/api/playlist-import','/api/music-search','/api/maintenance','/api/song-jobs','/pricing','/download','/pro','/dj-studio','/studio/dj.html','/studio/index.html','/account','/account/sign-up','/account/purchases','/api/pro/checkout','/api/pro/access','/api/pro/license','/api/pro/refresh','/api/pro/stripe','/live-dj','/account/sign-in','/account/forgot-password','/account/reset-password','/account/verify','/contact','/support','/privacy','/terms','/licenses','/robots.txt','/sitemap.xml','/api/site-status','/api/contact','/api/notifications','/api/payments/stripe','/api/payments/apple/notifications','/api/academy/stripe'].includes(path)||
+  ['/ai-dj/sets','/api/account','/api/account/deletion','/api/playlist-import','/api/music-search','/api/maintenance','/api/song-jobs','/pricing','/download','/pro','/dj-studio','/studio/dj.html','/studio/index.html','/account','/account/sign-up','/account/purchases','/api/pro/checkout','/api/pro/access','/api/pro/license','/api/pro/refresh','/api/pro/stripe','/live-dj','/account/sign-in','/account/forgot-password','/account/reset-password','/account/verify','/contact','/support','/privacy','/terms','/licenses','/robots.txt','/sitemap.xml','/api/site-status','/api/contact','/api/notifications','/api/payments/stripe','/api/payments/apple/notifications','/api/academy/stripe'].includes(path)||
   ['/sign-up/email','/sign-in/email','/sign-out','/get-session','/request-password-reset','/reset-password','/send-verification-email','/verify-email'].some(p=>path==='/api/auth'+p)||path.startsWith('/api/auth/reset-password/');
 }
 export const launchCacheHeaders={'Cache-Control':'private, no-store','Vary':'Cookie','X-Content-Type-Options':'nosniff'};
