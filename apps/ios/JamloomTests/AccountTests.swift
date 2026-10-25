@@ -18,6 +18,45 @@ private final class AccountProtocol: URLProtocol {
     override func stopLoading() {}
 }
 @MainActor final class AccountTests: XCTestCase {
+    func testCommunityCollectionsAndPaginationWithoutSignIn() async throws {
+        let transport = transport(), account = AccountModel(transport: transport), library = SongLibraryModel()
+        defer { transport.session.invalidateAndCancel() }
+        let first = String(repeating: "a", count: 32), second = String(repeating: "b", count: 32)
+        var queries: [[String: String]] = []
+        AccountProtocol.headers = ["Content-Type": "application/json"]
+        AccountProtocol.handle = { request in
+            let query = Dictionary(uniqueKeysWithValues: URLComponents(url: request.url!, resolvingAgainstBaseURL: false)!.queryItems!.map { ($0.name, $0.value!) })
+            queries.append(query); XCTAssertEqual(request.httpMethod, "GET")
+            let id = query["after"] == nil ? first : second
+            return (200, Data("{\"songs\":[{\"id\":\"\(id)\",\"title\":\"Original groove\",\"language\":\"en\"}],\"next\":\(query["after"] == nil ? "\"\(first)\"" : "null")}".utf8))
+        }
+        await library.load(.community, account: account)
+        XCTAssertEqual(library.songs.count, 2); XCTAssertEqual(Set(library.songs.map(\.key)).count, 2)
+        await library.load(.community, account: account, more: true)
+        XCTAssertEqual(library.songs.count, 4); XCTAssertTrue(library.next.isEmpty)
+        XCTAssertEqual(queries.filter { $0["after"] == first }.count, 2)
+        let count = queries.count; await library.load(.mine, account: account)
+        XCTAssertEqual(queries.count, count); XCTAssertTrue(library.songs.isEmpty); XCTAssertTrue(library.message.contains("Sign in"))
+        for query in [["view": "public", "after": "../private"], ["view": "all-users"], ["view": "mine", "owner": "other"]] {
+            do { let _: LibraryPage = try await transport.request("/api/taste/song", query: query); XCTFail("Reject invalid collection query") } catch { }
+        }
+        XCTAssertEqual(queries.count, count)
+    }
+    func testSongFavoritesPersistWithoutAudioAndStayAccountScoped() throws {
+        let suite = "jamloom-favorites-test-" + UUID().uuidString, defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let page = try JSONDecoder().decode(LibraryPage.self, from: Data("{\"songs\":[{\"id\":\"\(String(repeating: "c", count: 32))\",\"title\":\"A favorite\",\"language\":\"en\",\"visibility\":\"private\"}],\"next\":null}".utf8))
+        let song = try XCTUnwrap(page.validated(product: .improvise).first), first = SongLibraryModel(defaults: defaults)
+        first.loadFavorites(owner: "alice"); first.toggleFavorite(song); XCTAssertEqual(first.favorites.first?.source, .improvise)
+        let restored = SongLibraryModel(defaults: defaults); restored.loadFavorites(owner: "alice")
+        XCTAssertEqual(restored.favorites, [song]); XCTAssertNil(restored.audio)
+        restored.loadFavorites(owner: "bob"); XCTAssertTrue(restored.favorites.isEmpty)
+        restored.loadFavorites(owner: nil); XCTAssertTrue(restored.favorites.isEmpty)
+        restored.loadFavorites(owner: "alice"); restored.toggleFavorite(song)
+        first.loadFavorites(owner: "alice"); XCTAssertTrue(first.favorites.isEmpty)
+        let bad = try JSONDecoder().decode(LibraryPage.self, from: Data(#"{"songs":[{"id":"../account","title":"Invalid","language":"en"}],"next":null}"#.utf8))
+        XCTAssertThrowsError(try bad.validated(product: .musicDNA))
+    }
     func testAccountDeletionRequestRequiresSignInAndKeepsAccountUntilReviewed() async throws {
         let transport = transport(), account = AccountModel(transport: transport)
         var requested = false, requests = 0

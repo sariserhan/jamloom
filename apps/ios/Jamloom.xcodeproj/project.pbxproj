@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		021A1890F1B361C7A45E324F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F16A8D072B07DB6A914D103 /* Assets.xcassets */; };
 		03691B81D660974A3768DCCB /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2939FD8D1B87A8606A585960 /* Account.swift */; };
+		0419AA3338DC6523DE80DF90 /* SongLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9B09A91A6463FF980E49DF /* SongLibrary.swift */; };
 		0CEE4B08A0AA65B0D554D98B /* MobileAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6008279FB014E3E2C600ACE2 /* MobileAudioTests.swift */; };
 		1331031A07F060E981933E67 /* RemixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2246AE44A64358577B0C3E29 /* RemixTests.swift */; };
 		1848E2688592EA4B70C92346 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E46D0F0B6F3890F3CD11F /* AppModel.swift */; };
@@ -19,6 +20,7 @@
 		311802DFDCD8BEE11C9F86E8 /* JamloomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3D83B51DF8B7F58A197A3 /* JamloomApp.swift */; };
 		35E9023246CF950B0E50A8C5 /* PurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696D52DCA58CAE4E76EB9A2 /* PurchaseTests.swift */; };
 		37DA10713F6BFBEBC0D27BD2 /* taste.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051D4A855C4E9FEC22F210C7 /* taste.cpp */; };
+		3A7CF37B82608DC8B6B0DCE5 /* CommunityFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5385816A3574CAD4FDCAFFF8 /* CommunityFixture.swift */; };
 		3FFAC8FE5D21643B13F1F976 /* MusicDNA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D63F9E78BE8A4E9C10828F /* MusicDNA.swift */; };
 		4F29BC4EA06E5FB1EF6404B8 /* remix_plan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EC5EFD29381443D7AC7792F /* remix_plan.cpp */; };
 		500B28424A444A961F83AA56 /* remix_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3629937B433702DD137C634 /* remix_file.cpp */; };
@@ -82,6 +84,7 @@
 /* Begin PBXFileReference section */
 		017B27BE3D48223E7D7E6471 /* renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = renderer.cpp; sourceTree = "<group>"; };
 		051D4A855C4E9FEC22F210C7 /* taste.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = taste.cpp; sourceTree = "<group>"; };
+		0D9B09A91A6463FF980E49DF /* SongLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongLibrary.swift; sourceTree = "<group>"; };
 		102524A2E8C6A45767B51DFA /* TasteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteTests.swift; sourceTree = "<group>"; };
 		1E5064135B14BB6C3D155EC0 /* acoustic_bank.inc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.pascal; path = acoustic_bank.inc; sourceTree = "<group>"; };
 		1EC5EFD29381443D7AC7792F /* remix_plan.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = remix_plan.cpp; sourceTree = "<group>"; };
@@ -97,6 +100,7 @@
 		41F5DCCD4669793436DBDB99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4E104CA55FFE73815BFB8771 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		52F047FEAC97E68B7223E5F6 /* CloudImprovise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudImprovise.swift; sourceTree = "<group>"; };
+		5385816A3574CAD4FDCAFFF8 /* CommunityFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFixture.swift; sourceTree = "<group>"; };
 		599320B94B8B3C60346D5875 /* session.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = session.cpp; sourceTree = "<group>"; };
 		59B384EBAF464D2E904ACCD9 /* YouTubeFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeFavorites.swift; sourceTree = "<group>"; };
 		6008279FB014E3E2C600ACE2 /* MobileAudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAudioTests.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 				C02DDB4842983D2C220FE180 /* AudioSession.swift */,
 				917F5B7E0A4EDD7D8CA8C490 /* Bridge.h */,
 				52F047FEAC97E68B7223E5F6 /* CloudImprovise.swift */,
+				5385816A3574CAD4FDCAFFF8 /* CommunityFixture.swift */,
 				B2D1DD8B5B38100F8208C16D /* CreditPurchases.swift */,
 				8711C5E29451A1F38F39D291 /* DJDeck.swift */,
 				41F5DCCD4669793436DBDB99 /* Info.plist */,
@@ -253,6 +258,7 @@
 				97D63F9E78BE8A4E9C10828F /* MusicDNA.swift */,
 				7B95B54DEB78D0ABE3BEFF43 /* PrivacyInfo.xcprivacy */,
 				E6759756AEC3E73B056A85E2 /* RemixEngine.swift */,
+				0D9B09A91A6463FF980E49DF /* SongLibrary.swift */,
 				AFC0A3578A8991E5DEF6503A /* StudioServer.swift */,
 				83B30E6BC18016D1AD3A2426 /* TasteCatalogue.swift */,
 				25F31AC2FFEB8CFE139F4EDF /* TasteRender.swift */,
@@ -480,12 +486,14 @@
 				B763B68E36CB1CBEC3467D83 /* AudioInput.swift in Sources */,
 				233A512B1D3A82BB05E7A9E6 /* AudioSession.swift in Sources */,
 				21AA43411FB50CE5B8EC6684 /* CloudImprovise.swift in Sources */,
+				3A7CF37B82608DC8B6B0DCE5 /* CommunityFixture.swift in Sources */,
 				AD3B17FC8F3C9E6F302163C7 /* CreditPurchases.swift in Sources */,
 				E5FC49CC280317B13A61C625 /* DJDeck.swift in Sources */,
 				311802DFDCD8BEE11C9F86E8 /* JamloomApp.swift in Sources */,
 				74BD772DD3B699ABBE8B8D86 /* Library.swift in Sources */,
 				3FFAC8FE5D21643B13F1F976 /* MusicDNA.swift in Sources */,
 				FDBB60E7CEA0BAFCB273A8ED /* RemixEngine.swift in Sources */,
+				0419AA3338DC6523DE80DF90 /* SongLibrary.swift in Sources */,
 				F2E6D213AB1C32C13D2EEF23 /* StudioServer.swift in Sources */,
 				BD48F2F523EE0F3B3FB96539 /* TasteCatalogue.swift in Sources */,
 				8F7A55CB236A88FA1553BA73 /* TasteRender.swift in Sources */,
@@ -600,7 +608,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -616,7 +624,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../core/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.8.0;
+				MARKETING_VERSION = 0.9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -684,7 +692,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -706,7 +714,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../core/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.8.0;
+				MARKETING_VERSION = 0.9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

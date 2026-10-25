@@ -1,3 +1,13 @@
+## Mobile Community and Favorites — 2026-10-24
+
+- [x] Add Community with web-aligned Jamloom examples, user-generated public songs, My songs and local mixes.
+- [x] Add persistent account-isolated Favorites and on-demand playback.
+- [x] Validate collection/security boundaries, iPhone/iPad simulator UI and signed release bundle.
+- [x] Install 0.9.0 (13); owner confirms browsing, playback and Favorites: “Everything works.”
+- [ ] Physical iPad and App Store release checks remain separate. No push or deployment.
+
+[Implementation and evidence](docs/mobile-community.md).
+
 ## Free-data music and AI DJ campaign — 2026-10-24
 
 **Overall PARTIAL; owner accepts all three latest GPU house clips, with clip 1 preferred. Professional/venue qualification remains open.** The owner permits Vast.ai GPU work within existing authorized controls and prohibits paid data/licenses/musicians/APIs or expanded infrastructure. No publication or push. [Training-data registry](docs/TRAINING_DATA_REGISTRY.md) scopes numerical EDM-CUE metadata, Groove MIDI and project-authored synthesis separately from uncleared audio. The new deterministic Autopilot baseline is locally implemented; it does not reconnect the rejected periodic FX policy or claim trained expertise.

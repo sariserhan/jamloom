@@ -1,0 +1,7 @@
+App installed:
+• bundleID: com.djayvo.app
+• installationURL: file:///private/var/containers/Bundle/Application/E4FCB440-2FAC-4632-AB3F-2CFC406B1266/Jamloom.app/
+• launchServicesIdentifier: unknown
+• databaseUUID: F39E89E5-1651-4D8E-927A-45F14CDB6E88
+• databaseSequenceNumber: 3780
+• options:

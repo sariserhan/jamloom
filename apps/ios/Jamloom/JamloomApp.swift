@@ -5,7 +5,11 @@ import AVFoundation
 @main
 struct JamloomApp: App {
     @StateObject private var model = AppModel()
+    #if DEBUG
+    @StateObject private var account = AccountModel(transport: CommunityFixture.transport())
+    #else
     @StateObject private var account = AccountModel()
+    #endif
     @StateObject private var decks = DJModel()
     @StateObject private var dnaCloud = CloudSongModel(product: .musicDNA)
     @State private var showError = false
@@ -15,6 +19,7 @@ struct JamloomApp: App {
             RemixView(account: account, model: model, clearDecks: { decks.clear(); dnaCloud.clearDownloadedAudio() }).tabItem { Label("Improvise", systemImage: "waveform") }
             MusicDNAView(model: model, account: account, cloud: dnaCloud).tabItem { Label("Music DNA", systemImage: "music.note.list") }
             DJDeckView(decks: decks, model: model).tabItem { Label("DJ Deck", systemImage: "opticaldisc") }
+            SongLibraryView(account: account, model: model).tabItem { Label("Community", systemImage: "music.note.house.fill") }
         }
             .onChange(of: scenePhase) { _, phase in
                 model.foreground = phase == .active

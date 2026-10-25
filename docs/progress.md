@@ -1,3 +1,7 @@
+## Mobile Community and Favorites — 2026-10-24
+
+**PASS local, simulator and owner iPhone check.** Jamloom 0.9.0 (13) adds the Community tab with web collections and persistent account-isolated Favorites. Secure on-demand audio, pagination, search/filter and local mixes reuse existing services. Account tests, iPhone/iPad UI checks and signed bundle validation pass. Installed on the iPhone; owner: “Everything works.” Physical iPad and App Store upload remain NOT RUN; favorites are device-local references, not offline downloads or cross-device sync. [Report](mobile-community.md). No push or deployment.
+
 ## Free-data music and AI DJ campaign — 2026-10-24
 
 **Overall PARTIAL; owner accepts all three latest GPU house clips, with clip 1 preferred. Professional/venue qualification remains open.** The owner permits Vast.ai GPU work within existing authorized controls and prohibits paid data/licenses/musicians/APIs or expanded infrastructure. No publication or push. [Training-data registry](TRAINING_DATA_REGISTRY.md) scopes numerical EDM-CUE metadata, Groove MIDI and project-authored synthesis separately from uncleared audio. The new deterministic Autopilot baseline is locally implemented; it does not reconnect the rejected periodic FX policy or claim trained expertise.

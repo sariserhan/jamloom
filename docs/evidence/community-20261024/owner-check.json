@@ -1,0 +1,13 @@
+{
+  "version": "0.9.0 (13)",
+  "device": "physical iPhone",
+  "checks": [
+    "Community browsing",
+    "song playback",
+    "heart saving",
+    "Favorites playback discovery"
+  ],
+  "owner_statement": "Everything works",
+  "status": "PASS owner observation",
+  "ipad": "PASS simulator; physical iPad NOT RUN"
+}

@@ -25,8 +25,12 @@ final class AccountTransport: NSObject, URLSessionTaskDelegate, @unchecked Senda
         #if DEBUG
         allowed = allowed || (base.scheme == "http" && base.host == "127.0.0.1" && base.path.isEmpty && base.user == nil && base.password == nil && base.query == nil && base.fragment == nil)
         #endif
+        let collection = [CloudSongProduct.improvise.path, CloudSongProduct.musicDNA.path].contains(path) &&
+            query.keys.allSatisfy { ["view", "after"].contains($0) } &&
+            ["validation", "examples", "public", "mine"].contains(query["view"] ?? "") &&
+            (query["after"] == nil || query["after"]?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil)
         guard allowed, path.hasPrefix("/api/"), !path.contains(".."), !path.contains("?"),
-              query.isEmpty || ([CloudSongProduct.improvise.path, CloudSongProduct.musicDNA.path].contains(path) && query.keys.allSatisfy({ ["id", "file"].contains($0) }) &&
+              query.isEmpty || collection || ([CloudSongProduct.improvise.path, CloudSongProduct.musicDNA.path].contains(path) && query.keys.allSatisfy({ ["id", "file"].contains($0) }) &&
                 query["id"]?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil &&
                 (query["file"] == nil || query["file"] == "audio")) else {
             throw RemixError.message("Invalid account request.")
@@ -68,7 +72,7 @@ final class AccountTransport: NSObject, URLSessionTaskDelegate, @unchecked Senda
         }
         return data
     }
-    func songAudio(_ id: String, product: CloudSongProduct = .improvise) async throws -> URL {
+    func songAudio(_ id: String, product: CloudSongProduct = .improvise, temporaryID: UUID? = nil) async throws -> URL {
         let url = try requestURL(product.path, query: ["id": id, "file": "audio"])
         var (stream, response) = try await session.bytes(from: url)
         var storage: URLSession?
@@ -86,7 +90,7 @@ final class AccountTransport: NSObject, URLSessionTaskDelegate, @unchecked Senda
         var data = Data()
         for try await byte in stream { guard data.count < 64 * 1024 * 1024 else { throw URLError(.dataLengthExceedsMaximum) }; data.append(byte) }
         guard data.count > 44, digest == nil || digest == SHA256.hash(data: data).map({ String(format: "%02x", $0) }).joined() else { throw RemixError.message("The song download is incomplete. Try again.") }
-        let file = FileManager.default.temporaryDirectory.appendingPathComponent("jamloom-\(id).wav")
+        let file = FileManager.default.temporaryDirectory.appendingPathComponent("jamloom-\(temporaryID?.uuidString ?? id).wav")
         try data.write(to: file, options: [.atomic, .completeFileProtection])
         return file
     }

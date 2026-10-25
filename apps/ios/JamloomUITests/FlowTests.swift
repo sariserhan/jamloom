@@ -1,6 +1,22 @@
 import XCTest
 
 final class FlowTests: XCTestCase {
+    func testCommunityFavoritesAndPlayback() {
+        let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture"]
+        app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
+        app.launch(); app.buttons["Community"].firstMatch.tap()
+        let play = app.buttons["Play Night lights"]
+        XCTAssertTrue(play.waitForExistence(timeout: 15)); XCTAssertTrue(play.isHittable)
+        app.buttons["Favorite Night lights"].tap()
+        app.buttons["collection-Favorites"].tap()
+        XCTAssertTrue(app.buttons["Unfavorite Night lights"].waitForExistence(timeout: 5))
+        play.tap(); XCTAssertTrue(app.buttons["Stop Night lights"].waitForExistence(timeout: 10))
+        app.terminate(); app.launch(); app.buttons["Community"].firstMatch.tap()
+        XCTAssertTrue(app.buttons["collection-Favorites"].waitForExistence(timeout: 10)); app.buttons["collection-Favorites"].tap()
+        XCTAssertTrue(app.buttons["Unfavorite Night lights"].waitForExistence(timeout: 5))
+        let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); image.name = "Community favorites"; image.lifetime = .keepAlways; add(image)
+        app.buttons["Unfavorite Night lights"].tap(); XCTAssertTrue(app.staticTexts["Your favorites"].waitForExistence(timeout: 5))
+    }
     override func setUpWithError() throws { continueAfterFailure = false }
     private func waitUntilEnabled(_ element: XCUIElement) {
         let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: element)
