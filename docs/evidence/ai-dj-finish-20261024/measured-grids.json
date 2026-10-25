@@ -1,0 +1,186 @@
+{
+  "kind": "Measured timing, not human phrase review",
+  "results": [
+    {
+      "file": "../../renders/ai-dj-warm-20261024/08c8bcc4808d40e8b1ab91cb1b929fc5-0.wav",
+      "sha256": "d0a7870a8e961a22c62da64c872f5c06506380b3d840fce47f51b40d89753bf2",
+      "bpm": 127.7,
+      "confidence": 0.6100727707971751,
+      "grid": {
+        "bpm": 127.95,
+        "offset": 0.05499999999999999,
+        "maxError": 0.0242672919109026,
+        "coverage": 0.6031746031746031,
+        "entry": 0.5239331770222744,
+        "exit": 31.47352286049242,
+        "hookSafe": false,
+        "regions": [
+          {
+            "start": 0.5239331770222744,
+            "end": 31.47352286049242,
+            "beats": 67
+          }
+        ]
+      },
+      "review": null
+    },
+    {
+      "file": "../../renders/ai-dj-warm-20261024/08c8bcc4808d40e8b1ab91cb1b929fc5-1.wav",
+      "sha256": "0bbdd494c2743c625a6a206fa4ed5800c1f6065bc223ffd4d11005d7300cf404",
+      "bpm": 84.5,
+      "confidence": 0.22764259563435923,
+      "grid": null,
+      "review": null
+    },
+    {
+      "file": "../../renders/ai-dj-warm-20261024/08c8bcc4808d40e8b1ab91cb1b929fc5-2.wav",
+      "sha256": "dc5cda7e07267edea733df2d208eaf142c002c78177d618cc6c5eeaf9dbf52e7",
+      "bpm": 127.7,
+      "confidence": 0.5976650266471699,
+      "grid": {
+        "bpm": 128,
+        "offset": 0.049999999999999996,
+        "maxError": 0.01875000000000071,
+        "coverage": 0.6984126984126984,
+        "entry": 23.4875,
+        "exit": 48.8,
+        "hookSafe": true,
+        "regions": [
+          {
+            "start": 23.4875,
+            "end": 34.7375,
+            "beats": 25
+          },
+          {
+            "start": 45.51875,
+            "end": 48.8,
+            "beats": 8
+          }
+        ]
+      },
+      "review": null
+    },
+    {
+      "file": "../../renders/ai-dj-warm-20261024/f4960c69bde642f69115bd2634606479-0.wav",
+      "sha256": "3f4c926aa0824865ac1db43ff694c4f98c1b284e3221c4c9637f1f6d40f69421",
+      "bpm": 127.7,
+      "confidence": 0.6906562574178015,
+      "grid": {
+        "bpm": 128,
+        "offset": 0.2100000000000001,
+        "maxError": 0.021249999999998437,
+        "coverage": 0.5396825396825397,
+        "entry": 15.21,
+        "exit": 45.21,
+        "hookSafe": true,
+        "regions": [
+          {
+            "start": 15.21,
+            "end": 45.21,
+            "beats": 65
+          }
+        ]
+      },
+      "review": null
+    },
+    {
+      "file": "../../renders/ai-dj-warm-20261024/f4960c69bde642f69115bd2634606479-1.wav",
+      "sha256": "11bba4feb35539c5a05c3c5f647745c2c5278f28ccf28509c595c4deefb99b31",
+      "bpm": 127.7,
+      "confidence": 0.13870421062331248,
+      "grid": null,
+      "review": null
+    },
+    {
+      "file": "../../renders/ai-dj-warm-20261024/f4960c69bde642f69115bd2634606479-2.wav",
+      "sha256": "55e2455851e91f2d583681783b9f8cca83a49972f2a43f05b116644fb3ec1ab7",
+      "bpm": 126.3,
+      "confidence": 0.2761942189543852,
+      "grid": {
+        "bpm": 126,
+        "offset": 0.12500000000000003,
+        "maxError": 0.022380952380963492,
+        "coverage": 0.6532258064516129,
+        "entry": 25.83928571428568,
+        "exit": 46.79166666666656,
+        "hookSafe": true,
+        "regions": [
+          {
+            "start": 25.83928571428568,
+            "end": 36.31547619047612,
+            "beats": 23
+          },
+          {
+            "start": 37.26785714285707,
+            "end": 42.02976190476181,
+            "beats": 11
+          },
+          {
+            "start": 42.98214285714276,
+            "end": 46.79166666666656,
+            "beats": 9
+          }
+        ]
+      },
+      "review": null
+    }
+  ],
+  "originalAdjacentPairs": [
+    {
+      "clips": [
+        1,
+        2
+      ],
+      "plan": {
+        "at": 57.95,
+        "fade": 2,
+        "offset": 0,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+      }
+    },
+    {
+      "clips": [
+        2,
+        3
+      ],
+      "plan": {
+        "at": 57.95,
+        "fade": 2,
+        "offset": 0,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+      }
+    },
+    {
+      "clips": [
+        4,
+        5
+      ],
+      "plan": {
+        "at": 57.95,
+        "fade": 2,
+        "offset": 0,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+      }
+    },
+    {
+      "clips": [
+        5,
+        6
+      ],
+      "plan": {
+        "at": 57.95,
+        "fade": 2,
+        "offset": 0,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+      }
+    }
+  ]
+}

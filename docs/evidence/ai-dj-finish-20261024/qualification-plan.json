@@ -1,0 +1,41 @@
+{
+  "status": "APPROVED; execution pending",
+  "campaign": "jamloom-dj-qualification-20261024-sessions-finish",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_requests_max": 8,
+  "tracks": 6,
+  "track_seconds": 60,
+  "vocal_candidates_max": 2,
+  "vocal_candidate_seconds": 10,
+  "inserted_phrase_seconds_max": 2,
+  "clients": 2,
+  "public_activation": false,
+  "controls": [
+    "existing provider account/debit watchdog",
+    "30-second generation-ahead failure stops worker",
+    "one worker shared by both customer queues",
+    "six song jobs and at most two hook generations",
+    "complete inventory confirms shutdown",
+    "test R2 objects removed after local capture retrieval"
+  ],
+  "checks": [
+    "two independent users and six fresh hash-distinct house tracks",
+    "starting bright/deep mood and future warm mood, energy five",
+    "safe short vocal insertion and loop only when measured timing permits",
+    "Stop, credit exhaustion, complete public/private R2 recordings and cleanup",
+    "generation-ahead latency under 30 seconds per track"
+  ],
+  "scripts_sha256": {
+    "scripts/vast_trial.py": "81865bd623447ee500d67f587708143e4b9fe600ba5928a320f0bf244d923629",
+    "scripts/cloud_dj_warm.sh": "9d83516bdfcc379b30bc7ba94cd6be37b8e9cad4afd0080df62551c4b7701803",
+    "scripts/dj_warm_engine.py": "9be7bc4aad0941f7a1fffc222301871fcb92f3ab697da855dad6e04cd78b456c",
+    "scripts/dj_track_worker.py": "6f0fd79fe83a36755f684b1894f980aeb815d446970832947edf15ed7ffff3f6",
+    "scripts/dj_vocal.py": "b7317111b3ac5801d9ee87b79a29329a25a6c924b9871c151ea307713d831682",
+    "apps/site/tests/dj-warm-qualification.mjs": "4aaf0a71381a883490687a96a3149435f781a9b0008b94fa6a11213297b1bbe6",
+    "apps/site/lib/dj-remote-worker.ts": "53c64c5cb2807aea9cbc7940669dc8f7b3b9f411371c17c9f30d8a66926495fd",
+    "apps/site/lib/dj-warm-worker.ts": "ebb96cf895e9eb9a8ca55dc8b4a6385a6715e78d27c4299a2526a217ca568bcb"
+  },
+  "human_review": "Strong opening energy, short vocal intelligibility and transitions require listening. Zero eligible vocal windows is PARTIAL, not a vocal pass."
+}

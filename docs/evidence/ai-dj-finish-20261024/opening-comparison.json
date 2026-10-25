@@ -1,0 +1,46 @@
+{
+  "source_sha256": "0bbdd494c2743c625a6a206fa4ed5800c1f6065bc223ffd4d11005d7300cf404",
+  "owner_statement": "weak energy, it gets good after 15 second and after 35 it is much better",
+  "interval_precision": "Approximate owner observations; not beat or phrase annotations",
+  "target_lufs": -24.58,
+  "clips": [
+    {
+      "source_start": 0,
+      "seconds": 25,
+      "sha256": "7aef9f44cd8edfdf94428809c104f3e7e8c0794e366250bfadda1566070c0a11",
+      "gain_db": -6.709999999999997,
+      "loudness": {
+        "input_i": "-24.58",
+        "input_tp": "-8.08",
+        "input_lra": "13.20",
+        "input_thresh": "-35.68"
+      }
+    },
+    {
+      "source_start": 15,
+      "seconds": 25,
+      "sha256": "74836b2c0973b38b05a8f2c0301b2b6b80ff481f6f7aa948d7b07b75028e2dcb",
+      "gain_db": -8.569999999999997,
+      "loudness": {
+        "input_i": "-24.58",
+        "input_tp": "-9.61",
+        "input_lra": "2.20",
+        "input_thresh": "-34.79"
+      }
+    },
+    {
+      "source_start": 35,
+      "seconds": 25,
+      "sha256": "40495de890d16e4b9e802997bebcf393d8112889c06f2460fa390cf6e8f62bf6",
+      "gain_db": -10.219999999999999,
+      "loudness": {
+        "input_i": "-24.58",
+        "input_tp": "-11.22",
+        "input_lra": "3.30",
+        "input_thresh": "-34.69"
+      }
+    }
+  ],
+  "acceptance": "NOT RUN: editorial comparison",
+  "new_generation": false
+}

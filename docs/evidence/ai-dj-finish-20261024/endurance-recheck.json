@@ -1,0 +1,66 @@
+{
+  "status": "PASS technical",
+  "requestedSeconds": 125,
+  "source": "Fresh procedural originals; no GPU or musical acceptance claim",
+  "recordedSeconds": 126.308,
+  "tracks": 4,
+  "longestQuietSeconds": 1.005,
+  "actualSeconds": 127.642,
+  "errors": [],
+  "humanListening": "NOT RUN",
+  "hostedAuthentication": "Injected test context",
+  "sampledContinuity": "5-second screening, not sample-accurate glitch proof",
+  "cleanup": "PASS: own R2 objects, user, database and source cache removed",
+  "source_artifact": "renders/ai-dj-finish-20261024/endurance-6158d1f1a063451493cdd18ccb4a7fa2",
+  "unique_output_hashes": 4,
+  "moods": [
+    "bright",
+    "warm"
+  ],
+  "sample_count": 25,
+  "batches": [
+    {
+      "sequence": 0,
+      "seed": 4202316852,
+      "settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 4
+      },
+      "sha256": "39a415544e3dc42300796719c73c30058dabd09bc8f12af25e9867713dc813c8"
+    },
+    {
+      "sequence": 1,
+      "seed": 3163201344,
+      "settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 4,
+        "vocals": true
+      },
+      "sha256": "808ed4f31af1474b8dc199bcf5a4ca574e4c8434e9f2f3e5d7af7f57d9d581eb"
+    },
+    {
+      "sequence": 2,
+      "seed": 3741837211,
+      "settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 4,
+        "vocals": true
+      },
+      "sha256": "ece9dc50a13caa8b9f3b0efe81e5067b4740682cea68ac188169e00eee042bcb"
+    },
+    {
+      "sequence": 3,
+      "seed": 2024284642,
+      "settings": {
+        "mood": "bright",
+        "style": "house",
+        "energy": 3,
+        "vocals": true
+      },
+      "sha256": "fadaf5381c3420c9d229ee4d2590d995833d37a943a2e79e942396e54b97b2f3"
+    }
+  ]
+}

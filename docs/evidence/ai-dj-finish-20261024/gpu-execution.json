@@ -1,0 +1,28 @@
+{
+  "status": "FAIL provider startup; PASS shutdown",
+  "attempts": [
+    {
+      "instance": 57603082,
+      "host": 344939,
+      "started_at": 1792898393.022969,
+      "destroy_confirmed_at": 1792899018.421996
+    },
+    {
+      "instance": 57604316,
+      "host": 344939,
+      "started_at": 1792899134.332392,
+      "destroy_confirmed_at": 1792899215.2805812
+    }
+  ],
+  "total_rental_seconds": 706.3472163677216,
+  "observed_total_debit_usd": 0.006807764400001304,
+  "budget_usd": 6,
+  "final_invoice_verified": false,
+  "tracks": 0,
+  "vocal_candidates": 0,
+  "inventory": [],
+  "reason": "First container failed startup; replacement loaded its image but SSH closed before any model work",
+  "selection_correction": "The preferred successful host was not selected and fallback reused the first host. Completion mode now refuses an unproven fallback; test covers no rental side effect.",
+  "next_paid_action": "None authorized after replacement failure",
+  "inventory_checked_at": 1792902413.257257
+}

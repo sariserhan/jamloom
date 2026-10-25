@@ -1,0 +1,16 @@
+{
+  "status": "FAIL provider startup; PASS shutdown",
+  "instance": 57603082,
+  "campaign": "jamloom-dj-qualification-20261024-sessions-finish",
+  "started_at": 1792898393.022969,
+  "destroy_confirmed_at": 1792899018.421996,
+  "elapsed_seconds": 625.3990271091461,
+  "observed_debit_usd": 0.004751811100000225,
+  "final_invoice_verified": false,
+  "inventory": [],
+  "tracks": 0,
+  "vocal_candidates": 0,
+  "r2_objects": 0,
+  "reason": "Container remained loading; no SSH endpoint before the startup deadline",
+  "cleanup": "Independent startup cleanup and provider watchdog confirmed absence"
+}

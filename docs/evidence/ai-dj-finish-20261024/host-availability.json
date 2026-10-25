@@ -1,0 +1,18 @@
+{
+  "checked_at": 1792901030.4117591,
+  "read_only": true,
+  "qualified_host": 24953,
+  "matching_offers": [
+    {
+      "id": 56607988,
+      "host_id": 24953,
+      "machine_id": 52126,
+      "gpu_name": "RTX 3090",
+      "geolocation": "Oregon, US",
+      "hourly_with_60gb_disk": 0.24555555555555555,
+      "reserved_lease_plus_transfer": 0.3199537037037037
+    }
+  ],
+  "rental_created": false,
+  "authorization": "No further paid attempt authorized"
+}

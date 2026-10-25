@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "localProductionBuild": true,
+  "comingSoonBypassedInThisLocalProcessOnly": true,
+  "results": [
+    {
+      "path": "/ai-dj",
+      "status": 404,
+      "closed": true
+    },
+    {
+      "path": "/ai-dj/session",
+      "status": 404,
+      "closed": true
+    },
+    {
+      "path": "/api/ai-dj/sessions",
+      "status": 404,
+      "closed": true
+    },
+    {
+      "path": "/api/ai-dj/recordings",
+      "status": 404,
+      "closed": true
+    },
+    {
+      "path": "/api/ai-dj/sets",
+      "status": 404,
+      "closed": true
+    }
+  ],
+  "noDeployment": true
+}

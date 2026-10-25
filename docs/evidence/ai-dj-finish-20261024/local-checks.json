@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-10-25T04:28:22.866315+00:00",
+  "status": "PASS technical",
+  "checks": {
+    "node22_integration": 36,
+    "account_lifecycle_including_real_cookie_dj": 10,
+    "python_suite": 32,
+    "timing_and_cache": 8,
+    "typescript": "PASS final source",
+    "production_build": "PASS final source on Node 22.23.1",
+    "client_secret_bundle_audit": "PASS 43 client files",
+    "chromium_autopilot": "PASS",
+    "chromium_performance": "PASS",
+    "opening_comparison_responsive": "PASS",
+    "webkit_autopilot": "PASS",
+    "worker_availability": "PASS: 17 session checks",
+    "vast_budget_host_selection": 25,
+    "production_build_node22": "PASS",
+    "server_storage_and_renderer_readiness": 32,
+    "renderer_health": "PASS authenticated startup, pins, expiry and request limit; no model call",
+    "site_tests": 125,
+    "session_policy_chromium_webkit": "PASS public/private, unavailable Start, mobile, scoped accessibility",
+    "webkit_generated_customer_flow": "PASS: default Deep, real private R2 Public/Private, failed PUT and reload recovery",
+    "production_route_closure": "PASS five AI DJ routes return 404, local production process only",
+    "corrected_endurance_harness": "PASS 125 seconds, four fresh tracks, complete decode and private R2 cleanup"
+  },
+  "long_endurance": "PARTIAL: one hour and complete private recording; original silence-percentage assertion failed on authored rests, independent recording audit passes",
+  "musical_acceptance": "NOT IMPLIED",
+  "production_activation": false
+}

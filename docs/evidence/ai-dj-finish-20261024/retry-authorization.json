@@ -1,0 +1,12 @@
+{
+  "campaign": "jamloom-dj-qualification-20261024-sessions-finish-retry",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_requests_max": 8,
+  "public_activation": false,
+  "owner_statement": "Approve replacement within the original cap",
+  "recorded_at_utc": "2026-10-25T03:32:13.801611+00:00",
+  "plan_sha256": "b1bfb956734629e104ca7751b5d8eeb9dddbe8c8a2d7a9e8341f9c41e8d79d27",
+  "remaining_rental_seconds": 1774
+}

@@ -1,0 +1,11 @@
+{
+  "campaign": "jamloom-dj-qualification-20261024-sessions-finish",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_requests_max": 8,
+  "public_activation": false,
+  "owner_statement": "Approve this capped $6 qualification",
+  "recorded_at_utc": "2026-10-25T03:19:52.462095+00:00",
+  "plan_sha256": "5a9b6b2d3fa202fdc7b8cbb17ea6e9dd8b7fa6c68ff71aa4953d817df01820bc"
+}

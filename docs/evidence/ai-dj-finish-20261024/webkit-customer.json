@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "visibility": "public",
+      "status": "PASS",
+      "saved": "b3844b8db02846e0937d30f3a1fc5f5e",
+      "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+    },
+    {
+      "visibility": "private",
+      "status": "PASS",
+      "saved": "0e41d5ae073c4090bc7181e0cc1046d6",
+      "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+    }
+  ],
+  "errors": [],
+  "syntheticStorageRemoved": true,
+  "noPaidCompute": true,
+  "noPublicDeployment": true,
+  "browser": "webkit",
+  "checks": [
+    "Default Deep persisted on first immutable batch",
+    "Public and Private complete saves",
+    "R2 failed PUT and reload recovery",
+    "Pause, Resume, Mix next, Stop",
+    "No retained credit reservations",
+    "Mobile layout and saved-set accessibility"
+  ],
+  "reproduce": "JAMLOOM_TEST_BROWSER=webkit node --import tsx tests/dj-customer-browser.mjs --apply (local isolated test data and real private R2)"
+}

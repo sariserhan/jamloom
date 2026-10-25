@@ -1,0 +1,47 @@
+[
+  {
+    "file": "08c8bcc4808d40e8b1ab91cb1b929fc5-0.wav",
+    "sha256": "d0a7870a8e961a22c62da64c872f5c06506380b3d840fce47f51b40d89753bf2",
+    "seconds": 0.09425841690972447,
+    "grid": null
+  },
+  {
+    "file": "08c8bcc4808d40e8b1ab91cb1b929fc5-1.wav",
+    "sha256": "0bbdd494c2743c625a6a206fa4ed5800c1f6065bc223ffd4d11005d7300cf404",
+    "seconds": 0.08823295799084008,
+    "grid": null
+  },
+  {
+    "file": "08c8bcc4808d40e8b1ab91cb1b929fc5-2.wav",
+    "sha256": "dc5cda7e07267edea733df2d208eaf142c002c78177d618cc6c5eeaf9dbf52e7",
+    "seconds": 0.09037891693878919,
+    "grid": [
+      127.99999999999989,
+      0.05
+    ]
+  },
+  {
+    "file": "f4960c69bde642f69115bd2634606479-0.wav",
+    "sha256": "3f4c926aa0824865ac1db43ff694c4f98c1b284e3221c4c9637f1f6d40f69421",
+    "seconds": 0.09488125005736947,
+    "grid": [
+      127.99999999999989,
+      0.21
+    ]
+  },
+  {
+    "file": "f4960c69bde642f69115bd2634606479-1.wav",
+    "sha256": "11bba4feb35539c5a05c3c5f647745c2c5278f28ccf28509c595c4deefb99b31",
+    "seconds": 0.09263941703829914,
+    "grid": null
+  },
+  {
+    "file": "f4960c69bde642f69115bd2634606479-2.wav",
+    "sha256": "55e2455851e91f2d583681783b9f8cca83a49972f2a43f05b116644fb3ec1ab7",
+    "seconds": 0.09014258394017816,
+    "grid": [
+      126.0,
+      0.125
+    ]
+  }
+]
