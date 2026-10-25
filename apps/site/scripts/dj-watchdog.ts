@@ -16,7 +16,7 @@ if(apply&&process.env.JAMLOOM_WATCHDOG_TARGET!==target)throw Error('Watchdog tar
 const store=audioStore(config);if(!store||!process.env.JAMLOOM_AI_DJ_BUDGET)throw Error('DJ worker configuration missing');
 const pool=createPool(config.databaseURL);
 try{
- const sessions=new DJSessions(pool,config.secret,store,JSON.parse(process.env.JAMLOOM_AI_DJ_BUDGET));
+ const sessions=new DJSessions(pool,config.secret,store,JSON.parse(process.env.JAMLOOM_AI_DJ_BUDGET),false,true);
  const provider=apply?new VastProvider(process.env.VASTAI_KEY??''):{inventory:async()=>{throw Error('Preview only');},destroy:async()=>{throw Error('Preview only');}};
  do{
  const results=process.argv.includes('--warm')

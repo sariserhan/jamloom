@@ -220,6 +220,17 @@ class PriceBounds(unittest.TestCase):
             for name, value in previous.items():
                 setattr(trial, name, value)
 
+    def test_hosted_campaign_has_separate_receipt_and_unchanged_bounds(self):
+        previous={k:getattr(trial,k) for k in ('ROOT','WORK','STATE','LABEL','LEASE_SECONDS','HOURLY_CEILING','QUOTE_CEILING')}
+        try:
+            with tempfile.TemporaryDirectory() as directory, patch.object(trial,'ROOT',Path(directory)), patch.object(trial.sys,'argv',['vast_trial.py','status','--dj-qualification','--dj-sessions','--dj-beta','--dj-hosted']), patch.object(trial,'api',return_value={'credit':9}), patch.object(trial,'instances',return_value=[]), contextlib.redirect_stdout(io.StringIO()):
+                trial.main()
+                self.assertEqual(trial.LABEL,'jamloom-dj-qualification-20261025-hosted')
+                self.assertEqual(trial.STATE,Path(directory)/'build-dj-qualification-20261025-hosted/trial-state.json')
+                self.assertEqual((trial.LEASE_SECONDS,trial.HOURLY_CEILING,trial.QUOTE_CEILING),(2400,.5,4))
+        finally:
+            for key,value in previous.items():setattr(trial,key,value)
+
     def setUp(self):
         self.offer = dict(dph_total=.2, storage_cost=.2, inet_down_cost=.01,
                           inet_up_cost=.01, num_gpus=1, gpu_ram=24576)

@@ -278,7 +278,10 @@ def main():
     parser.add_argument('--dj-finish', action='store_true', help='Fresh completion qualification; requires --dj-qualification --dj-sessions and its own approval')
     parser.add_argument('--dj-resume', action='store_true', help='Owner-requested completion resumption; retains both earlier attempts in the original cap')
     parser.add_argument('--dj-beta', action='store_true', help='Fresh 24-request, two-listener qualification; requires its own approval')
+    parser.add_argument('--dj-hosted', action='store_true', help='Fresh hosted-operation qualification with its own permit')
     args = parser.parse_args()
+    if args.dj_hosted and not args.dj_beta:
+        parser.error('--dj-hosted requires --dj-beta')
     if args.dj_beta and (not args.dj_qualification or not args.dj_sessions or args.dj_finish or args.dj_retry or args.dj_resume):
         parser.error('--dj-beta requires --dj-qualification --dj-sessions and no previous campaign flags')
     if args.dj_resume and not args.dj_finish:
@@ -314,6 +317,8 @@ def main():
         LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING=2400,.50,4
         if args.dj_beta:
             LABEL='jamloom-dj-qualification-20261025-beta';WORK=ROOT/'build-dj-qualification-20261025-beta';STATE=WORK/'trial-state.json'
+    if args.dj_hosted:
+        LABEL='jamloom-dj-qualification-20261025-hosted';WORK=ROOT/'build-dj-qualification-20261025-hosted';STATE=WORK/'trial-state.json'
     WORK.mkdir(exist_ok=True)
     if args.action == "status":
         account = api("v0/users/current")
@@ -328,7 +333,7 @@ def main():
     elif args.action == "rent":
         if args.club_benchmark or args.dj_qualification:
             if args.dj_beta:
-                approval=json.loads((ROOT/'docs/evidence/ai-dj-beta-20261025/authorization.json').read_text())
+                approval=json.loads((ROOT/('docs/evidence/ai-dj-hosted-20261025/authorization.json' if args.dj_hosted else 'docs/evidence/ai-dj-beta-20261025/authorization.json')).read_text())
             elif args.dj_finish:
                 approval = json.loads((ROOT/('docs/evidence/ai-dj-finish-20261024/launch-fix-authorization.json' if args.dj_resume and args.dj_retry else 'docs/evidence/ai-dj-finish-20261024/resume-authorization.json' if args.dj_resume else 'docs/evidence/ai-dj-finish-20261024/retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-finish-20261024/authorization.json')).read_text())
             else:
@@ -397,7 +402,7 @@ def main():
         write_state(state)  # Prevent duplicate rental if the create response is lost.
         with (WORK / "watchdog.log").open("a") as log:
             subprocess.Popen(["caffeinate", "-i", sys.executable, str(Path(__file__).resolve()), "watch"] +
-                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) + (['--dj-beta'] if args.dj_beta else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
+                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) + (['--dj-beta'] if args.dj_beta else []) + (['--dj-hosted'] if args.dj_hosted else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
                              stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
         # The watchdog also reconciles by unique label if this response is lost.
         result = api("v0/asks/" + str(offer["id"]), "PUT", {

@@ -1,3 +1,12 @@
+## AI DJ hosted-operation qualification — 2026-10-25
+
+**IN PROGRESS.** Owner accepted the proposed $6 / one GPU / 40-minute completion run. Stop on failure, automatic cleanup, no replacement or public activation.
+
+- [ ] Align standalone worker accounting and verify actual dispatcher process crash/restart locally.
+- [ ] Run two fresh independent listeners, capacity refusal, moods, Stop and credit exhaustion.
+- [ ] Decode complete R2 captures, check continuity/privacy, reconcile cost and verify provider cleanup.
+- [ ] Record operational limits and keep public beta/live billing off.
+
 ## Connected library and AI DJ beta preparation — 2026-10-25
 
 **PASS implementation, isolated browser/database/simulator verification and production migration; PARTIAL operational AI DJ beta. All eight GitHub CI jobs, website deployment and live Chromium/WebKit checks PASS.** Owner selected favorites synchronization, existing-playlist integration and AI DJ beta preparation, explicitly skipping the first-user trial and mobile release checks.

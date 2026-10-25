@@ -1,0 +1,26 @@
+{
+  "campaign": "jamloom-dj-qualification-20261025-hosted",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_requests_max": 24,
+  "tracks": 20,
+  "track_seconds": 60,
+  "vocal_candidates_max": 4,
+  "vocal_candidate_seconds": 10,
+  "public_activation": false,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "replacement_rental_authorized": false,
+  "context": "Owner instructed completion immediately after the proposed one-GPU $6 maximum / 40-minute hosted-operation qualification. This authorizes that bounded run only, not always-on rentals or public activation.",
+  "status": "PREPARED",
+  "checks": [
+    "Actual standalone dispatcher killed after completed response and resumed with identical receipt, engine, lease and deadline",
+    "Two distinct listeners, twenty fresh tracks, current quiet-ending repair",
+    "Third listener rejected without credit use",
+    "Mood/energy changes, Public Stop, Private credit exhaustion",
+    "Full R2 capture decode, public/private ownership, browser memory, CPU and continuity",
+    "Provider cleanup and observed charge reconciliation"
+  ],
+  "scope": "Remote GPU renderer and real R2; local dispatcher/API/database/browser. This does not establish always-on hosting."
+}

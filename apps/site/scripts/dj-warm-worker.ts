@@ -17,7 +17,7 @@ async function privateFile(file:string){const meta=await stat(file);if(meta.size
 const permit:WarmPermit=JSON.parse(await privateFile(permitFile)),token=(await privateFile(tokenFile)).trim();
 const pool=createPool(config.databaseURL),abort=new AbortController();
 process.once('SIGINT',()=>abort.abort());process.once('SIGTERM',()=>abort.abort());
-const warm=new DJWarmWorker(new DJSessions(pool,config.secret,store,JSON.parse(process.env.JAMLOOM_AI_DJ_BUDGET)),new VastProvider(process.env.VASTAI_KEY??''));
+const warm=new DJWarmWorker(new DJSessions(pool,config.secret,store,JSON.parse(process.env.JAMLOOM_AI_DJ_BUDGET),false,true),new VastProvider(process.env.VASTAI_KEY??''));
 let worker:WarmIdentity|undefined,timer:ReturnType<typeof setInterval>|undefined,checking=false;
 try{
  if(!process.argv.includes('--register'))worker=JSON.parse(await privateFile(identityFile));
@@ -36,7 +36,11 @@ try{
  }catch{abort.abort();}finally{checking=false;}};
  await pulse();timer=setInterval(()=>{void pulse();},3000);
  while(!abort.signal.aborted){
-  if(!await warm.pending(worker))await checkDJRenderer(token);
+  if(!await warm.pending(worker)){
+   const queued=await pool.query("SELECT 1 FROM dj_session_batches b JOIN dj_sessions s ON s.id=b.session_id WHERE b.state='queued' AND s.state='active' AND NOT s.billing_live LIMIT 1");
+   if(!queued.rowCount){await delay(500);continue;}
+   await checkDJRenderer(token);
+  }
   const result=await runRemoteDJBatch(warm,worker,token,abort.signal);
   if(result)console.log(JSON.stringify(result));else await delay(500);
  }

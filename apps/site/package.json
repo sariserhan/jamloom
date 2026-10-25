@@ -55,7 +55,7 @@
     "test:ai-dj-pipeline": "node --import tsx tests/dj-pipeline.mjs",
     "generation:dj-watchdog": "tsx scripts/dj-watchdog.ts",
     "test:ai-dj-customer": "node --import tsx tests/dj-customer-browser.mjs",
-    "test:ai-dj-sessions": "node --import tsx --test tests/dj-sessions.test.ts tests/dj-allowance.test.ts",
+    "test:ai-dj-sessions": "node --import tsx --test tests/dj-sessions.test.ts tests/dj-allowance.test.ts tests/dj-worker-process.test.ts",
     "test:ai-dj-session-browser": "node tests/dj-session-browser.mjs"
   },
   "dependencies": {
