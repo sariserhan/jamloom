@@ -1,0 +1,967 @@
+{
+  "status": "PASS experiment execution; NOT QUALIFIED for deployment",
+  "actual_fitting": true,
+  "audio_input": false,
+  "model_sha256": "c239170c7fbb4bfb54455ead8281242e823f6ac8a3730121ec3179e12e792b3b",
+  "analysis_sha256": "5220b4b62a33027b15af0f139d40015b78b452a27f286d9a97416630cea3c23f",
+  "validation": [
+    {
+      "penalty": 0.01,
+      "threshold": 0,
+      "rows": 223,
+      "macro_f1": 0.4401,
+      "accuracy": 0.5067,
+      "hold_false_action_rate": 0.5318,
+      "confusion_drop_hold_rise": [
+        [
+          15,
+          7,
+          8
+        ],
+        [
+          50,
+          81,
+          42
+        ],
+        [
+          0,
+          3,
+          17
+        ]
+      ]
+    },
+    {
+      "penalty": 0.01,
+      "threshold": 0.5,
+      "rows": 223,
+      "macro_f1": 0.4549,
+      "accuracy": 0.5874,
+      "hold_false_action_rate": 0.3757,
+      "confusion_drop_hold_rise": [
+        [
+          9,
+          16,
+          5
+        ],
+        [
+          36,
+          108,
+          29
+        ],
+        [
+          0,
+          6,
+          14
+        ]
+      ]
+    },
+    {
+      "penalty": 0.01,
+      "threshold": 0.6,
+      "rows": 223,
+      "macro_f1": 0.4509,
+      "accuracy": 0.7175,
+      "hold_false_action_rate": 0.1503,
+      "confusion_drop_hold_rise": [
+        [
+          3,
+          22,
+          5
+        ],
+        [
+          6,
+          147,
+          20
+        ],
+        [
+          0,
+          10,
+          10
+        ]
+      ]
+    },
+    {
+      "penalty": 0.01,
+      "threshold": 0.7,
+      "rows": 223,
+      "macro_f1": 0.4115,
+      "accuracy": 0.7534,
+      "hold_false_action_rate": 0.0751,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          26,
+          4
+        ],
+        [
+          2,
+          160,
+          11
+        ],
+        [
+          0,
+          12,
+          8
+        ]
+      ]
+    },
+    {
+      "penalty": 0.01,
+      "threshold": 0.8,
+      "rows": 223,
+      "macro_f1": 0.4171,
+      "accuracy": 0.7713,
+      "hold_false_action_rate": 0.0462,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          27,
+          3
+        ],
+        [
+          1,
+          165,
+          7
+        ],
+        [
+          0,
+          13,
+          7
+        ]
+      ]
+    },
+    {
+      "penalty": 0.01,
+      "threshold": 0.9,
+      "rows": 223,
+      "macro_f1": 0.3873,
+      "accuracy": 0.7803,
+      "hold_false_action_rate": 0.0173,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          29,
+          1
+        ],
+        [
+          0,
+          170,
+          3
+        ],
+        [
+          0,
+          16,
+          4
+        ]
+      ]
+    },
+    {
+      "penalty": 0.01,
+      "threshold": 0.95,
+      "rows": 223,
+      "macro_f1": 0.3654,
+      "accuracy": 0.7758,
+      "hold_false_action_rate": 0.0173,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          29,
+          1
+        ],
+        [
+          0,
+          170,
+          3
+        ],
+        [
+          0,
+          17,
+          3
+        ]
+      ]
+    },
+    {
+      "penalty": 0.01,
+      "threshold": 1.0,
+      "rows": 223,
+      "macro_f1": 0.2912,
+      "accuracy": 0.7758,
+      "hold_false_action_rate": 0.0,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          173,
+          0
+        ],
+        [
+          0,
+          20,
+          0
+        ]
+      ]
+    },
+    {
+      "penalty": 0.1,
+      "threshold": 0,
+      "rows": 223,
+      "macro_f1": 0.4175,
+      "accuracy": 0.4664,
+      "hold_false_action_rate": 0.5896,
+      "confusion_drop_hold_rise": [
+        [
+          16,
+          6,
+          8
+        ],
+        [
+          59,
+          71,
+          43
+        ],
+        [
+          0,
+          3,
+          17
+        ]
+      ]
+    },
+    {
+      "penalty": 0.1,
+      "threshold": 0.5,
+      "rows": 223,
+      "macro_f1": 0.4933,
+      "accuracy": 0.6682,
+      "hold_false_action_rate": 0.2601,
+      "confusion_drop_hold_rise": [
+        [
+          9,
+          16,
+          5
+        ],
+        [
+          20,
+          128,
+          25
+        ],
+        [
+          0,
+          8,
+          12
+        ]
+      ]
+    },
+    {
+      "penalty": 0.1,
+      "threshold": 0.6,
+      "rows": 223,
+      "macro_f1": 0.4422,
+      "accuracy": 0.7534,
+      "hold_false_action_rate": 0.0867,
+      "confusion_drop_hold_rise": [
+        [
+          1,
+          26,
+          3
+        ],
+        [
+          3,
+          158,
+          12
+        ],
+        [
+          0,
+          11,
+          9
+        ]
+      ]
+    },
+    {
+      "penalty": 0.1,
+      "threshold": 0.7,
+      "rows": 223,
+      "macro_f1": 0.3973,
+      "accuracy": 0.7623,
+      "hold_false_action_rate": 0.052,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          27,
+          3
+        ],
+        [
+          1,
+          164,
+          8
+        ],
+        [
+          0,
+          14,
+          6
+        ]
+      ]
+    },
+    {
+      "penalty": 0.1,
+      "threshold": 0.8,
+      "rows": 223,
+      "macro_f1": 0.4047,
+      "accuracy": 0.7848,
+      "hold_false_action_rate": 0.0173,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          28,
+          2
+        ],
+        [
+          0,
+          170,
+          3
+        ],
+        [
+          0,
+          15,
+          5
+        ]
+      ]
+    },
+    {
+      "penalty": 0.1,
+      "threshold": 0.9,
+      "rows": 223,
+      "macro_f1": 0.3654,
+      "accuracy": 0.7758,
+      "hold_false_action_rate": 0.0173,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          29,
+          1
+        ],
+        [
+          0,
+          170,
+          3
+        ],
+        [
+          0,
+          17,
+          3
+        ]
+      ]
+    },
+    {
+      "penalty": 0.1,
+      "threshold": 0.95,
+      "rows": 223,
+      "macro_f1": 0.3759,
+      "accuracy": 0.7848,
+      "hold_false_action_rate": 0.0058,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          172,
+          1
+        ],
+        [
+          0,
+          17,
+          3
+        ]
+      ]
+    },
+    {
+      "penalty": 0.1,
+      "threshold": 1.0,
+      "rows": 223,
+      "macro_f1": 0.2912,
+      "accuracy": 0.7758,
+      "hold_false_action_rate": 0.0,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          173,
+          0
+        ],
+        [
+          0,
+          20,
+          0
+        ]
+      ]
+    },
+    {
+      "penalty": 1.0,
+      "threshold": 0,
+      "rows": 223,
+      "macro_f1": 0.3652,
+      "accuracy": 0.3812,
+      "hold_false_action_rate": 0.711,
+      "confusion_drop_hold_rise": [
+        [
+          18,
+          3,
+          9
+        ],
+        [
+          78,
+          50,
+          45
+        ],
+        [
+          1,
+          2,
+          17
+        ]
+      ]
+    },
+    {
+      "penalty": 1.0,
+      "threshold": 0.5,
+      "rows": 223,
+      "macro_f1": 0.4288,
+      "accuracy": 0.7623,
+      "hold_false_action_rate": 0.0636,
+      "confusion_drop_hold_rise": [
+        [
+          1,
+          26,
+          3
+        ],
+        [
+          2,
+          162,
+          9
+        ],
+        [
+          1,
+          12,
+          7
+        ]
+      ]
+    },
+    {
+      "penalty": 1.0,
+      "threshold": 0.6,
+      "rows": 223,
+      "macro_f1": 0.4047,
+      "accuracy": 0.7848,
+      "hold_false_action_rate": 0.0173,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          28,
+          2
+        ],
+        [
+          0,
+          170,
+          3
+        ],
+        [
+          0,
+          15,
+          5
+        ]
+      ]
+    },
+    {
+      "penalty": 1.0,
+      "threshold": 0.7,
+      "rows": 223,
+      "macro_f1": 0.3716,
+      "accuracy": 0.7803,
+      "hold_false_action_rate": 0.0116,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          171,
+          2
+        ],
+        [
+          0,
+          17,
+          3
+        ]
+      ]
+    },
+    {
+      "penalty": 1.0,
+      "threshold": 0.8,
+      "rows": 223,
+      "macro_f1": 0.3533,
+      "accuracy": 0.7848,
+      "hold_false_action_rate": 0.0,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          173,
+          0
+        ],
+        [
+          0,
+          18,
+          2
+        ]
+      ]
+    },
+    {
+      "penalty": 1.0,
+      "threshold": 0.9,
+      "rows": 223,
+      "macro_f1": 0.3237,
+      "accuracy": 0.7803,
+      "hold_false_action_rate": 0.0,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          173,
+          0
+        ],
+        [
+          0,
+          19,
+          1
+        ]
+      ]
+    },
+    {
+      "penalty": 1.0,
+      "threshold": 0.95,
+      "rows": 223,
+      "macro_f1": 0.2912,
+      "accuracy": 0.7758,
+      "hold_false_action_rate": 0.0,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          173,
+          0
+        ],
+        [
+          0,
+          20,
+          0
+        ]
+      ]
+    },
+    {
+      "penalty": 1.0,
+      "threshold": 1.0,
+      "rows": 223,
+      "macro_f1": 0.2912,
+      "accuracy": 0.7758,
+      "hold_false_action_rate": 0.0,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          30,
+          0
+        ],
+        [
+          0,
+          173,
+          0
+        ],
+        [
+          0,
+          20,
+          0
+        ]
+      ]
+    }
+  ],
+  "selected_penalty": 0.1,
+  "selected_threshold": 0.6,
+  "selection_rule": "Max validation macro-F1 subject to at most 10 percent false changes on hold; threshold selected on validation; test reused from initial research iteration, not a blind final audit",
+  "test": {
+    "learned": {
+      "rows": 218,
+      "macro_f1": 0.4849,
+      "accuracy": 0.7661,
+      "hold_false_action_rate": 0.1143,
+      "confusion_drop_hold_rise": [
+        [
+          3,
+          17,
+          1
+        ],
+        [
+          7,
+          155,
+          13
+        ],
+        [
+          0,
+          13,
+          9
+        ]
+      ]
+    },
+    "hold": {
+      "rows": 218,
+      "macro_f1": 0.2969,
+      "accuracy": 0.8028,
+      "hold_false_action_rate": 0.0,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          21,
+          0
+        ],
+        [
+          0,
+          175,
+          0
+        ],
+        [
+          0,
+          22,
+          0
+        ]
+      ]
+    },
+    "momentum": {
+      "rows": 218,
+      "macro_f1": 0.2971,
+      "accuracy": 0.6835,
+      "hold_false_action_rate": 0.1543,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          17,
+          4
+        ],
+        [
+          10,
+          148,
+          17
+        ],
+        [
+          11,
+          10,
+          1
+        ]
+      ]
+    }
+  },
+  "by_style": {
+    "bass": {
+      "learned": {
+        "rows": 101,
+        "macro_f1": 0.4765,
+        "accuracy": 0.7129,
+        "hold_false_action_rate": 0.1975,
+        "confusion_drop_hold_rise": [
+          [
+            2,
+            7,
+            1
+          ],
+          [
+            6,
+            65,
+            10
+          ],
+          [
+            0,
+            5,
+            5
+          ]
+        ]
+      },
+      "hold": {
+        "rows": 101,
+        "macro_f1": 0.2967,
+        "accuracy": 0.802,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            10,
+            0
+          ],
+          [
+            0,
+            81,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ]
+      }
+    },
+    "house": {
+      "learned": {
+        "rows": 11,
+        "macro_f1": 0.5714,
+        "accuracy": 0.6364,
+        "hold_false_action_rate": 0.2857,
+        "confusion_drop_hold_rise": [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            5,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ]
+      },
+      "hold": {
+        "rows": 11,
+        "macro_f1": 0.2593,
+        "accuracy": 0.6364,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    "peak-time": {
+      "learned": {
+        "rows": 37,
+        "macro_f1": 0.2985,
+        "accuracy": 0.8108,
+        "hold_false_action_rate": 0.0323,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            30,
+            1
+          ],
+          [
+            0,
+            4,
+            0
+          ]
+        ]
+      },
+      "hold": {
+        "rows": 37,
+        "macro_f1": 0.3039,
+        "accuracy": 0.8378,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            31,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ]
+        ]
+      }
+    },
+    "hip-hop": {
+      "learned": {
+        "rows": 21,
+        "macro_f1": 0.3167,
+        "accuracy": 0.9048,
+        "hold_false_action_rate": 0.05,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ]
+      },
+      "hold": {
+        "rows": 21,
+        "macro_f1": 0.3252,
+        "accuracy": 0.9524,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            20,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    "chill": {
+      "learned": {
+        "rows": 48,
+        "macro_f1": 0.5463,
+        "accuracy": 0.8125,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            36,
+            0
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ]
+      },
+      "hold": {
+        "rows": 48,
+        "macro_f1": 0.2857,
+        "accuracy": 0.75,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            36,
+            0
+          ],
+          [
+            0,
+            5,
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "splits": {
+    "train": {
+      "rows": 707,
+      "recordings": [
+        "ref-092e32866f1b",
+        "ref-36ba23f9c325",
+        "ref-38b9a95f7a58",
+        "ref-40c00cfee0d2",
+        "ref-4ea6aeb253de",
+        "ref-7693d26f548c",
+        "ref-bf6a54e43d0b"
+      ]
+    },
+    "validation": {
+      "rows": 223,
+      "recordings": [
+        "ref-092e32866f1b",
+        "ref-36ba23f9c325",
+        "ref-7693d26f548c",
+        "ref-7c431fa8ac07",
+        "ref-bf6a54e43d0b"
+      ]
+    },
+    "test": {
+      "rows": 218,
+      "recordings": [
+        "ref-092e32866f1b",
+        "ref-36ba23f9c325",
+        "ref-7693d26f548c",
+        "ref-9523c4cadaf0",
+        "ref-bf6a54e43d0b"
+      ]
+    }
+  },
+  "limitations": [
+    "Held-out diagnostics were inspected in the initial run; this calibrated run reuses that diagnostic split.",
+    "Only bass has separate recordings for train, validation and test; still one named performer, not unseen-performer validation.",
+    "Other styles use chronologically blocked portions of one recording each with a 120-second feature gap; not independent performance evidence.",
+    "Targets describe measured energy evolution, not DJ intent, transition quality or labeled deck actions.",
+    "Original music rights and commercial training/model rights unverified.",
+    "No model promotion, no reference audio or voices in product, no GPU rental."
+  ]
+}

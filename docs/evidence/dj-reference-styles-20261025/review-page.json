@@ -1,0 +1,18 @@
+[
+  {
+    "browser": "chromium",
+    "status": "PASS",
+    "charts": true,
+    "styles": 5,
+    "noAudioOrWeights": true,
+    "noOverflow": true
+  },
+  {
+    "browser": "webkit",
+    "status": "PASS",
+    "charts": true,
+    "styles": 5,
+    "noAudioOrWeights": true,
+    "noOverflow": true
+  }
+]

@@ -1,3 +1,15 @@
+## DJ reference analysis, experimental learning and style choices — 2026-10-25
+
+**PASS local analysis/experiment/implementation; PARTIAL learned DJ capability.** Fully analyzed nine recordings (10 h 14 min), excluding Blood Club, without copying audio. Fitted and calibrated a private numeric energy-direction model; macro F1 improves over hold/momentum, but its 11.4% false-change rate misses the restraint target. Weights remain outside the live player. Added neutral visual style choices and connected their generation/performance settings.
+
+- [x] Inventory and hash every source; analyze full recordings by folder with bounded memory.
+- [x] Fit a numeric structure model and compare against deterministic baselines with recorded split limitations.
+- [x] Add Bass Playground, Club Flow, Peak Time, Hip-hop and Chill & Groove; preserve legacy sounds and omit performer names.
+- [x] Verify original prompt transport, style validation, safety guards, browser controls and resource boundaries.
+- [ ] Complete independent expert-action/listening qualification and commercial model-rights review before promoting learned weights. Fresh GPU generation for the new styles remains NOT RUN; no new compute or deployment.
+
+[Report and evidence](dj-reference-styles.md). [Local reference study](http://localhost:8766/reference-styles/review/).
+
 ## AI DJ live performance and beat direction — 2026-10-25
 
 **PASS local implementation and technical replay; PARTIAL musical qualification.** Real filter/roll/echo moves and deck feedback, energy-aware equal-power handoffs, and Keep/change beat commands are implemented. Fixed an early voice fade found by captured-audio checks. Four final three-track recordings pass Chromium/WebKit with no silence at -60 dB lasting 250 ms. No new GPU rental, training, publication or public activation.

@@ -1,0 +1,436 @@
+{
+  "status": "PASS experiment execution; NOT QUALIFIED for deployment",
+  "actual_fitting": true,
+  "audio_input": false,
+  "model_sha256": "5944634972d09a251625c168a19fecfa414a19e1d5006a1b5e6a083ddb82119b",
+  "analysis_sha256": "5220b4b62a33027b15af0f139d40015b78b452a27f286d9a97416630cea3c23f",
+  "validation": [
+    {
+      "penalty": 0.01,
+      "rows": 223,
+      "macro_f1": 0.4401,
+      "accuracy": 0.5067,
+      "hold_false_action_rate": 0.5318,
+      "confusion_drop_hold_rise": [
+        [
+          15,
+          7,
+          8
+        ],
+        [
+          50,
+          81,
+          42
+        ],
+        [
+          0,
+          3,
+          17
+        ]
+      ]
+    },
+    {
+      "penalty": 0.1,
+      "rows": 223,
+      "macro_f1": 0.4175,
+      "accuracy": 0.4664,
+      "hold_false_action_rate": 0.5896,
+      "confusion_drop_hold_rise": [
+        [
+          16,
+          6,
+          8
+        ],
+        [
+          59,
+          71,
+          43
+        ],
+        [
+          0,
+          3,
+          17
+        ]
+      ]
+    },
+    {
+      "penalty": 1.0,
+      "rows": 223,
+      "macro_f1": 0.3652,
+      "accuracy": 0.3812,
+      "hold_false_action_rate": 0.711,
+      "confusion_drop_hold_rise": [
+        [
+          18,
+          3,
+          9
+        ],
+        [
+          78,
+          50,
+          45
+        ],
+        [
+          1,
+          2,
+          17
+        ]
+      ]
+    }
+  ],
+  "selected_penalty": 0.01,
+  "test": {
+    "learned": {
+      "rows": 218,
+      "macro_f1": 0.4294,
+      "accuracy": 0.445,
+      "hold_false_action_rate": 0.6457,
+      "confusion_drop_hold_rise": [
+        [
+          16,
+          3,
+          2
+        ],
+        [
+          81,
+          62,
+          32
+        ],
+        [
+          0,
+          3,
+          19
+        ]
+      ]
+    },
+    "hold": {
+      "rows": 218,
+      "macro_f1": 0.2969,
+      "accuracy": 0.8028,
+      "hold_false_action_rate": 0.0,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          21,
+          0
+        ],
+        [
+          0,
+          175,
+          0
+        ],
+        [
+          0,
+          22,
+          0
+        ]
+      ]
+    },
+    "momentum": {
+      "rows": 218,
+      "macro_f1": 0.2971,
+      "accuracy": 0.6835,
+      "hold_false_action_rate": 0.1543,
+      "confusion_drop_hold_rise": [
+        [
+          0,
+          17,
+          4
+        ],
+        [
+          10,
+          148,
+          17
+        ],
+        [
+          11,
+          10,
+          1
+        ]
+      ]
+    }
+  },
+  "by_style": {
+    "bass": {
+      "learned": {
+        "rows": 101,
+        "macro_f1": 0.3703,
+        "accuracy": 0.396,
+        "hold_false_action_rate": 0.6914,
+        "confusion_drop_hold_rise": [
+          [
+            7,
+            1,
+            2
+          ],
+          [
+            33,
+            25,
+            23
+          ],
+          [
+            0,
+            2,
+            8
+          ]
+        ]
+      },
+      "hold": {
+        "rows": 101,
+        "macro_f1": 0.2967,
+        "accuracy": 0.802,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            10,
+            0
+          ],
+          [
+            0,
+            81,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ]
+      }
+    },
+    "house": {
+      "learned": {
+        "rows": 11,
+        "macro_f1": 0.4667,
+        "accuracy": 0.4545,
+        "hold_false_action_rate": 0.7143,
+        "confusion_drop_hold_rise": [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            3,
+            2,
+            2
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ]
+      },
+      "hold": {
+        "rows": 11,
+        "macro_f1": 0.2593,
+        "accuracy": 0.6364,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    "peak-time": {
+      "learned": {
+        "rows": 37,
+        "macro_f1": 0.5061,
+        "accuracy": 0.4865,
+        "hold_false_action_rate": 0.5806,
+        "confusion_drop_hold_rise": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            17,
+            13,
+            1
+          ],
+          [
+            0,
+            1,
+            3
+          ]
+        ]
+      },
+      "hold": {
+        "rows": 37,
+        "macro_f1": 0.3039,
+        "accuracy": 0.8378,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            31,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ]
+        ]
+      }
+    },
+    "hip-hop": {
+      "learned": {
+        "rows": 21,
+        "macro_f1": 0.3737,
+        "accuracy": 0.6667,
+        "hold_false_action_rate": 0.35,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            13,
+            4
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "hold": {
+        "rows": 21,
+        "macro_f1": 0.3252,
+        "accuracy": 0.9524,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            20,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    "chill": {
+      "learned": {
+        "rows": 48,
+        "macro_f1": 0.5135,
+        "accuracy": 0.4167,
+        "hold_false_action_rate": 0.75,
+        "confusion_drop_hold_rise": [
+          [
+            6,
+            1,
+            0
+          ],
+          [
+            25,
+            9,
+            2
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ]
+      },
+      "hold": {
+        "rows": 48,
+        "macro_f1": 0.2857,
+        "accuracy": 0.75,
+        "hold_false_action_rate": 0.0,
+        "confusion_drop_hold_rise": [
+          [
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            36,
+            0
+          ],
+          [
+            0,
+            5,
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "splits": {
+    "train": {
+      "rows": 707,
+      "recordings": [
+        "ref-092e32866f1b",
+        "ref-36ba23f9c325",
+        "ref-38b9a95f7a58",
+        "ref-40c00cfee0d2",
+        "ref-4ea6aeb253de",
+        "ref-7693d26f548c",
+        "ref-bf6a54e43d0b"
+      ]
+    },
+    "validation": {
+      "rows": 223,
+      "recordings": [
+        "ref-092e32866f1b",
+        "ref-36ba23f9c325",
+        "ref-7693d26f548c",
+        "ref-7c431fa8ac07",
+        "ref-bf6a54e43d0b"
+      ]
+    },
+    "test": {
+      "rows": 218,
+      "recordings": [
+        "ref-092e32866f1b",
+        "ref-36ba23f9c325",
+        "ref-7693d26f548c",
+        "ref-9523c4cadaf0",
+        "ref-bf6a54e43d0b"
+      ]
+    }
+  },
+  "limitations": [
+    "Only bass has separate recordings for train, validation and test; still one named performer, not unseen-performer validation.",
+    "Other styles use chronologically blocked portions of one recording each with a 120-second feature gap; not independent performance evidence.",
+    "Targets describe measured energy evolution, not DJ intent, transition quality or labeled deck actions.",
+    "Original music rights and commercial training/model rights unverified.",
+    "No model promotion, no reference audio or voices in product, no GPU rental."
+  ]
+}

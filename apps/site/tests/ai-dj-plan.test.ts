@@ -105,3 +105,11 @@ test('automatic moves use steady measured beats, leave transition space and hold
  for(const [ordinal,action] of ['filter','roll-one','echo'].entries()){const p=performanceMove(a,10.1,1,20,50,-1000,ordinal,false);assert.ok(p);assert.equal(p.action,action);assert.ok(Math.abs(p.position/.5-Math.round(p.position/.5))<.001);assert.ok(p.at>20);}
  assert.equal(performanceMove(a,10,1,20,25,-1000,0,false),null);assert.equal(performanceMove(a,10,1,20,50,8,0,false),null);assert.equal(performanceMove(a,10,1,20,50,-1000,0,true),null);assert.equal(performanceMove(base,10,1,20,50,-1000,0,false),null);assert.equal(performanceMove({...a,changes:[11]},10,1,20,50,-1000,0,false),null);
 });
+
+test('chill holds the track and uses a longer blend; style cooldowns retain beat and safety guards',async()=>{
+ const {performanceMove}=await import('../lib/ai-dj-moves');const grid={bpm:120,offset:0,maxError:.01,coverage:.9,entry:0,exit:59,hookSafe:true},a={...base,duration:60,grid};
+ assert.equal(performanceMove(a,20,1,20,55,-1000,0,false,'chill'),null);
+ assert.equal(performanceMove(a,20,1,20,55,10,0,false,'bass'),null);assert.ok(performanceMove(a,20,1,20,55,10,0,false,'house'));
+ const plan=planTransition(a,a,10,1,10,false,8);assert.equal(plan.technique,'short-fade');assert.equal(plan.fade,8);
+ assert.throws(()=>planTransition(a,a,10,1,10,false,Infinity));
+});

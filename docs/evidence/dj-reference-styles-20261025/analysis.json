@@ -1,0 +1,123 @@
+{
+  "status": "PASS full descriptive decode; PARTIAL learned director",
+  "files": 9,
+  "hours": 10.238696527777778,
+  "source_audio_copies": 0,
+  "excluded": [
+    {
+      "sha256": "12cad3d3b5d66383d69207630d09d66d5203d963ab48d0f0ade7d1ee32672188",
+      "reason": "Explicit owner exclusion"
+    }
+  ],
+  "styles": [
+    {
+      "style": "bass",
+      "label": "Bass Playground",
+      "recordings": 5,
+      "hours": 4.638,
+      "raw_pulse_bpm_p10_p50_p90": [
+        62.5,
+        85.2,
+        144.2
+      ],
+      "pulse_normalized_p10_p50_p90": [
+        117.2,
+        133.9,
+        156.2
+      ],
+      "source_hashes": [
+        "38b9a95f7a58fa5730feb94c27b2f7d44cb78f86c5b3cad1db8c4646767f83f8",
+        "7c431fa8ac071a552a80f03978500b3731df5c3c8bfcfc8ac8e2f0dc70c29340",
+        "4ea6aeb253de5c748a232c3c1705a0320a72f0d2b4c7f45d6bfb3f88afd0a4e1",
+        "40c00cfee0d267b4961c4bcbe583760e70d73854a73bccc0cad7728ad945a35a",
+        "9523c4cadaf0084d6c3513d9eb7b84143812aff8797af189e9f595bf24e82420"
+      ],
+      "candidate_changes": 477
+    },
+    {
+      "style": "house",
+      "label": "Club Flow",
+      "recordings": 1,
+      "hours": 0.637,
+      "raw_pulse_bpm_p10_p50_p90": [
+        63.6,
+        63.6,
+        129.3
+      ],
+      "pulse_normalized_p10_p50_p90": [
+        127.1,
+        127.1,
+        129.3
+      ],
+      "source_hashes": [
+        "7693d26f548cffdaf8650a075c308265012892e6f425486a77a781b5f33a6064"
+      ],
+      "candidate_changes": 73
+    },
+    {
+      "style": "peak-time",
+      "label": "Peak Time",
+      "recordings": 1,
+      "hours": 1.722,
+      "raw_pulse_bpm_p10_p50_p90": [
+        62.5,
+        125.0,
+        129.3
+      ],
+      "pulse_normalized_p10_p50_p90": [
+        125.0,
+        125.0,
+        129.3
+      ],
+      "source_hashes": [
+        "092e32866f1b745ee90627d451c9e6eaef94e6a16f89eb4f94e3ed98cbeb944e"
+      ],
+      "candidate_changes": 120
+    },
+    {
+      "style": "hip-hop",
+      "label": "Hip-hop",
+      "recordings": 1,
+      "hours": 1.051,
+      "raw_pulse_bpm_p10_p50_p90": [
+        68.2,
+        91.5,
+        138.9
+      ],
+      "pulse_normalized_p10_p50_p90": [
+        93.8,
+        136.4,
+        156.2
+      ],
+      "source_hashes": [
+        "bf6a54e43d0b121b5c67e781cb6ccc8d590676618c47a6f2b13b3d2999de7374"
+      ],
+      "candidate_changes": 109
+    },
+    {
+      "style": "chill",
+      "label": "Chill & Groove",
+      "recordings": 1,
+      "hours": 2.191,
+      "raw_pulse_bpm_p10_p50_p90": [
+        85.2,
+        87.2,
+        89.3
+      ],
+      "pulse_normalized_p10_p50_p90": [
+        170.5,
+        174.4,
+        178.6
+      ],
+      "source_hashes": [
+        "36ba23f9c325af5a8d27e277722a479db0c961f78a08adc12b9747ca9505c034"
+      ],
+      "candidate_changes": 120
+    }
+  ],
+  "source_report_sha256": "5220b4b62a33027b15af0f139d40015b78b452a27f286d9a97416630cea3c23f",
+  "reference_audio_in_product": false,
+  "model_in_product": false,
+  "commercial_training_rights": "unverified",
+  "audio_generation_finetuning": false
+}

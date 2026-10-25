@@ -4,7 +4,8 @@ import type {TrackAnalysis} from './ai-dj-analysis';
 import {PerformanceDeck,type PerformanceAction,type PerformanceEvent} from './ai-dj-performance';
 import {vocalLoopReady} from './dj-vocal';
 import {performanceMove} from './ai-dj-moves';
-import {validBeatDirection} from './dj-beat';
+import {djStyles} from './dj-styles';
+import {beatTempo,validBeatDirection} from './dj-beat';
 import {createMixer,clearEcho} from '../../web/mixer.js';
 import {djTracks,pickTrack,type Direction,type DJTrack} from './ai-dj-director';
 
@@ -167,16 +168,16 @@ export class AIDJPlayer{
    this.message=this.endAt===null?'New groove playing. Preparing what comes next.':'Closing set · preparing the final stretch.';void this.prepareNext();
   }
   const live=this.decks[this.active],livePosition=live?.performance?.position(now)??0;
-  if(this.mode==='auto'&&this.endAt===null&&live?.performance&&(!live.performance.event||live.performance.event.until<=now)&&(live.moves??0)<2){
+  if(this.mode==='auto'&&this.endAt===null&&live?.performance&&(!live.performance.event||live.performance.event.until<=now)&&(live.moves??0)<djStyles[live.track.style??'house'].maxMoves){
    const boundary=this.blend?.at??now+((live.analysis.mixBounds?.end??live.analysis.audible?.end??live.buffer.duration)-livePosition)/(live.rate??1);
-   const move=performanceMove(live.analysis,livePosition,live.rate??1,now,boundary,live.lastMove??-1000,this.moveOrdinal,live.track.vocal);
+   const move=performanceMove(live.analysis,livePosition,live.rate??1,now,boundary,live.lastMove??-1000,this.moveOrdinal,live.track.vocal,live.track.style);
    if(move&&this.perform(this.active,move.action,move.at,'AI')){live.lastMove=move.position;live.moves=(live.moves??0)+1;this.moveOrdinal++;}
   }
   if((this.mode==='auto'||this.early)&&!this.blend&&!(current?.performance?.event&&current.performance.event.until>now)&&this.decks[this.active]&&this.decks[1-this.active]){
    const deck=this.decks[this.active]!,to=1-this.active,incoming=this.decks[to]!;
    const position=deck.performance?.position(now)??0;
    if(position<deck.buffer.duration){
-    const plan=planTransition(deck.analysis,incoming.analysis,position,deck.rate??1,now,this.early);
+    const plan=planTransition(deck.analysis,incoming.analysis,position,deck.rate??1,now,this.early,djStyles[deck.track.style??'house'].fadeSeconds);
     if(this.endAt===null||plan.at+plan.fade+2<this.endAt){
      deck.performance?.cancel();this.beginDeck(to,plan.at,0,plan.offset,plan.rate);
      const out=Float32Array.from({length:65},(_,i)=>Math.cos(i/64*Math.PI/2)),into=Float32Array.from({length:65},(_,i)=>Math.sin(i/64*Math.PI/2));
@@ -214,7 +215,7 @@ export class AIDJPlayer{
  }
  beat(change:boolean){
   const deck=this.decks[this.active];if(!this.running||!deck)return;
-  const bpm=Math.max(90,Math.min(160,Math.round((deck.analysis.grid?.bpm??deck.bpm)*(deck.rate??1))));
+  const bpm=beatTempo((deck.analysis.grid?.bpm??deck.bpm)*(deck.rate??1),deck.track.beat?.bpm);
   const patterns=['steady','syncopated','rolling'] as const,current=this.direction.beat?.groove??deck.track.beat?.groove??'steady';
   const groove=change?patterns[(patterns.indexOf(current)+1)%patterns.length]:deck.track.beat?.groove??current;
   this.direction={...this.direction,beat:{bpm,groove}};

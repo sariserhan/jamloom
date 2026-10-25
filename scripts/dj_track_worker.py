@@ -15,6 +15,9 @@ from scipy.signal import resample_poly
 ROOT = Path(__file__).resolve().parents[1]
 CODE_REVISION = 'ca1e85fe9430179831e6bc6be790c332190a3866'
 WEIGHTS_REVISION = '19671f406d603126926c1b7e2adc169acbcade22'
+STYLE_MANIFEST = Path(__file__).with_name('dj-styles.json')
+if not STYLE_MANIFEST.exists(): STYLE_MANIFEST = ROOT/'assets/manifests/dj-styles.json'
+STYLES = json.loads(STYLE_MANIFEST.read_text())['styles']
 
 
 def request(value):
@@ -25,34 +28,41 @@ def request(value):
     for key, low, high in [('sequence', 0, 1000000), ('seed', 0, 2**32-1), ('energy', 1, 5)]:
         if type(value[key]) is not int or not low <= value[key] <= high:
             raise ValueError('Invalid '+key)
-    if value['style'] not in ('house', 'tech-house', 'techno'):
+    if not isinstance(value['style'], str) or value['style'] not in STYLES:
         raise ValueError('Invalid style')
     if 'mood' in value and value['mood'] not in ('warm', 'bright', 'deep'):
         raise ValueError('Invalid mood')
     if 'beat' in value:
         beat = value['beat']
-        if not isinstance(beat, dict) or set(beat) != {'bpm', 'groove'} or type(beat['bpm']) is not int or not 90 <= beat['bpm'] <= 160 or beat['groove'] not in ('steady', 'syncopated', 'rolling'):
+        if not isinstance(beat, dict) or set(beat) != {'bpm', 'groove'} or type(beat['bpm']) is not int or not 70 <= beat['bpm'] <= 160 or beat['groove'] not in ('steady', 'syncopated', 'rolling'):
             raise ValueError('Invalid beat direction')
     return value
 
 
 def brief(value):
     from club_benchmark_cases import REVISION_CASES, CASES
-    row = REVISION_CASES[2] if value['style'] == 'house' else next(r for r in CASES if r[0] == value['style']+'-phrased')
+    profile = STYLES[value['style']]
+    row = REVISION_CASES[2] if value['style'] == 'house' else next((r for r in CASES if r[0] == value['style']+'-phrased'), None)
+    caption = row[1] if row else f"Original instrumental {profile['genre']}, {profile['bpm']} BPM. {profile['character']} No vocals."
+    bpm = row[2] if row else profile['bpm']
     mood = {'warm': 'Warm rounded chords, soulful textures and mellow harmonic color.', 'bright': 'Bright uplifting chords, crisp melodic accents and optimistic color.', 'deep': 'Deep hypnotic bass, restrained minor-key harmony and spacious textures.'}.get(value.get('mood'), '')
     if mood and value['energy'] >= 3:
         mood += ' Start at full dancefloor energy immediately: kick, bass and offbeat hats together, no ambient intro or fade-in. Keep a steady kick and bass through the first and last eight bars for mixing; use short fills instead of long drumless breakdowns.'
+    if not row: mood = mood.replace('steady kick and bass', 'clear drum groove and bass')
     beat = value.get('beat')
     if beat:
         groove = {'steady': 'Steady four-on-the-floor kick, locked offbeat hats and a consistent bass pulse.', 'syncopated': 'Syncopated bass and percussion, displaced rhythmic accents over a clear four-on-the-floor kick.', 'rolling': 'Rolling tom and shuffled percussion patterns, a driving repeated bass rhythm and a steady kick.'}[beat['groove']]
+        if value['style'] in ('bass', 'hip-hop', 'chill'):
+            groove = {'steady': 'Keep a consistent kick and snare pulse.', 'syncopated': 'Use syncopated bass answers and displaced percussion accents.', 'rolling': 'Use rolling bass patterns and gently shuffled percussion.'}[beat['groove']]
         mood += f" Keep the tempo at {beat['bpm']} BPM. {groove} Compose new original notes and melodies around this rhythmic direction."
-    caption = row[1] if not beat else f"Original instrumental {value['style']}, {beat['bpm']} BPM. Punchy kick and bass from the first beat, clear drum transients and clean bass separation. No vocals."
-    return caption + (' '+mood if mood else '') + f" Energy {value['energy']} of 5; {'restrained closing groove' if value['energy'] <= 2 else 'confident dancefloor momentum'}.", beat['bpm'] if beat else row[2]
+    if beat:
+        caption = f"Original instrumental {profile['genre']}, {beat['bpm']} BPM. {profile['character']} Clear drum transients and clean bass separation. No vocals."
+    return caption + (' '+mood if mood else '') + f" Energy {value['energy']} of 5; {'restrained closing groove' if value['energy'] <= 2 else 'confident dancefloor momentum'}.", beat['bpm'] if beat else bpm
 
 
 def procedural(value, directory):
-    if value.get('beat'):
-        raise ValueError('Beat-directed generation requires the music model, not the procedural test fixture')
+    if value.get('beat') or value['style'] not in ('house', 'tech-house', 'techno'):
+        raise ValueError('This direction requires the music model, not the procedural test fixture')
     from club_studies import events, render, RATE
     manifest = json.loads((ROOT/'assets/manifests/electronic-v2.json').read_text())
     if manifest['reference_audio_used'] or manifest['third_party_sound_assets'] or manifest['generator_sha256'] != hashlib.sha256((ROOT/'scripts/prepare_electronic_bank.py').read_bytes()).hexdigest():

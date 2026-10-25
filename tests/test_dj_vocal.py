@@ -7,6 +7,14 @@ from dj_vocal import add_hook, steady_grid
 
 
 class VocalTests(unittest.TestCase):
+    def test_slow_styles_skip_hooks_that_exceed_the_current_duration_guard(self):
+        samples=np.ones((8000,2))*.1
+        for style in ['hip-hop','chill']:
+            value=dict(version=1,session='a'*32,sequence=2,seed=17,style=style,energy=2)
+            def forbidden(*a,**k):raise AssertionError('No paid vocal call for unsupported tempo')
+            output,cue=add_hook(value,samples,8000,Path('/tmp'),None,forbidden)
+            self.assertIs(output,samples);self.assertIsNone(cue)
+
     def test_grid_allows_instrumental_breaks_but_requires_supported_hook_region(self):
         rate=8000; t=np.arange(60*rate)/rate
         base=.2*np.sin(2*np.pi*80*t)*np.exp(-((t+.1)%(60/128))*40)

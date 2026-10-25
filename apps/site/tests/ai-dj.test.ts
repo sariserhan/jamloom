@@ -76,3 +76,11 @@ test('automatic loops reject quiet beats, including silence across the repeat se
  pcm.fill(.1);pcm.fill(0,0,400);pcm.fill(0,3600,4000);assert.equal(loopHasEnergy(buffer,loop),false);
  pcm.fill(0);assert.equal(loopHasEnergy(buffer,loop),false);
 });
+
+test('neutral DJ styles preserve legacy choices and carry their own tempo and performance limits',async()=>{
+ const {djStyles,validDJStyle,defaultBeat}=await import('../lib/dj-styles');const {djSessionInput}=await import('../lib/dj-session-input');const {beatTempo,validBeatDirection}=await import('../lib/dj-beat');
+ for(const style of Object.keys(djStyles)){assert.ok(validDJStyle(style));assert.equal(djSessionInput({id:'a'.repeat(32),title:'Test party',style,energy:3}).style,style);assert.ok(validBeatDirection(defaultBeat(style)));}
+ assert.equal(validDJStyle('__proto__'),false);assert.equal(validDJStyle('unknown'),false);assert.equal(defaultBeat('chill').bpm,86);assert.equal(beatTempo(172,86),86);assert.equal(beatTempo(70,140),140);assert.equal(beatTempo(128,128),128);
+ assert.equal(djStyles.chill.maxMoves,0);assert.equal(djStyles.chill.fadeSeconds,8);assert.ok(djStyles.bass.maxMoves>djStyles.house.maxMoves);
+ assert.doesNotMatch(JSON.stringify(djStyles),/wobble|james hype|sanholobeats/i);
+});

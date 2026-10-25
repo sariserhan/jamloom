@@ -39,7 +39,9 @@ def steady_grid(samples, rate, estimate):
 
 
 def add_hook(value, samples, rate, directory, engine, generate=ace):
-    grid = steady_grid(samples, rate, brief(value)[1])
+    bpm = brief(value)[1]
+    if bpm < 120: return samples, None  # Four beats would exceed the existing two-second vocal limit.
+    grid = steady_grid(samples, rate, bpm)
     if not grid: return samples, None
     bpm, offset = grid
     phrase = ('Feel alive', 'Keep moving', 'Stay together', 'One more')[value['seed'] % 4]

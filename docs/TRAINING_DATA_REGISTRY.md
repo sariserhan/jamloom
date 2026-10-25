@@ -1,6 +1,6 @@
 # Training data registry
 
-Updated 2026-10-24. Applies to the new original-club-music and AI DJ campaign.
+Updated 2026-10-25. Applies to the new original-club-music and AI DJ campaign.
 The owner's GPU correction supersedes the attached directive's CPU-only / no-GPU
 restrictions. Existing Vast.ai controls remain required; no paid data, licenses,
 musicians, music APIs, new infrastructure or public deployment are authorized.
@@ -84,3 +84,9 @@ acceptance does not admit them as training data.
 [Owner feedback](evidence/ai-dj-customer-flow-20261024/gpu-retry/owner-listening.json).
 [Execution and provenance](evidence/ai-dj-customer-flow-20261024/gpu-retry/),
 [technical scope](ai-dj-streaming-recordings.md).
+
+## Owner-supplied DJ references — 2026-10-25
+
+Nine recordings in the five owner-named Downloads folders were fully analyzed locally. Blood Club was excluded, including its exact hash. The owner initially chose reference-only use, then explicitly requested training; that subsequent instruction authorizes the **private numeric experiment** documented in [the study](dj-reference-styles.md). Source and model admission to the commercial pipeline remains **NOT APPROVED**: recording, composition, training, retention and commercial-output permissions are unverified. Public availability has not been recorded as a license grant.
+
+The private experiment fits relative energy/structure measurements, not audio samples, voices or song-generation weights. Its model is not distributed or loaded by the player. Candidate action labels remain unknown; measured energy changes are not expert DJ intent. [Exact source hashes and exclusions](evidence/dj-reference-styles-20261025/analysis.json), [model experiment and limitations](evidence/dj-reference-styles-20261025/training-calibrated.json). No audio copies, uploads, purchases or GPU rental. Source filenames and detailed measurements remain under ignored `renders/dj-reference-analysis-20261025/`; weights explicitly forbid serving.

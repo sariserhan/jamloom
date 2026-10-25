@@ -1,3 +1,4 @@
+import {defaultBeat} from './dj-styles';
 import type {DJSessionInput} from './dj-session-input';
 import type {DJTrackSource,DJSnapshot} from './ai-dj-player';
 import type {DJAllowanceQuote} from './dj-allowance';
@@ -38,7 +39,7 @@ export class DJSessionClient{
   }else{await this.ack;const result=await this.post('next',{sequence,energy:direction.energy,vocals:direction.vocals,mood:direction.mood,...(direction.beat?{beat:direction.beat}:{})},signal);if(result.ending)return null;}
   while(!signal.aborted&&!this.stopped){
    const status=await sessionAPI('/'+this.config.input.id,undefined,signal),batch=status.batches.find((b:{sequence:number})=>b.sequence===sequence);
-   if(batch?.state==='completed'&&batch.ready&&batch.audio_sha256){this.sequence++;return {sequence,track:{id:String(sequence),title:this.config.input.title+' · '+(sequence+1),artist:'Jamloom original',url:'/api/ai-dj/sessions/'+this.config.input.id+'/audio/'+sequence,sha256:batch.audio_sha256,energy:direction.energy,mood:direction.mood,vocal:!!batch.vocal,vocalCue:batch.vocal??undefined,beat:batch.beat??{bpm:this.config.input.style==='techno'?136:128,groove:this.config.input.style==='techno'?'steady':'rolling'},credit:''}};}
+   if(batch?.state==='completed'&&batch.ready&&batch.audio_sha256){this.sequence++;return {sequence,track:{id:String(sequence),title:this.config.input.title+' · '+(sequence+1),artist:'Jamloom original',url:'/api/ai-dj/sessions/'+this.config.input.id+'/audio/'+sequence,sha256:batch.audio_sha256,energy:direction.energy,mood:direction.mood,style:this.config.input.style,vocal:!!batch.vocal,vocalCue:batch.vocal??undefined,beat:batch.beat??defaultBeat(this.config.input.style),credit:''}};}
    if(status.state!=='active'||batch&&['failed','cancelled'].includes(batch.state))return null;
    await waitForSession(signal);
   }return null;

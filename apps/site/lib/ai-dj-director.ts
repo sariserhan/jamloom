@@ -1,3 +1,4 @@
+import type {DJStyle} from './dj-styles';
 import type {VocalCue} from './dj-vocal';
 import type {BeatDirection} from './dj-beat';
 import type {TrackAnalysis} from './ai-dj-analysis';
@@ -6,7 +7,7 @@ import {validationSongs} from './music-validation';
 
 export type Mood='warm'|'bright'|'deep';
 export type Direction={energy:number;mood:Mood;vocals:boolean;beat?:BeatDirection};
-export type DJTrack={id:string;title:string;artist:string;url:string;sha256:string;energy:number;mood:Mood;vocal:boolean;vocalCue?:VocalCue;beat?:BeatDirection;credit:string;analysis?:TrackAnalysis;local?:boolean};
+export type DJTrack={id:string;title:string;artist:string;url:string;sha256:string;energy:number;mood:Mood;vocal:boolean;vocalCue?:VocalCue;style?:DJStyle;beat?:BeatDirection;credit:string;analysis?:TrackAnalysis;local?:boolean};
 const selections:[string,number,Mood][]=[['party-sector',4,'bright'],['black-diamond',5,'deep']];
 export const djTracks:DJTrack[]=selections.map(([id,energy,mood])=>{
  const track=practice.tracks.find(t=>t.id===id)!;

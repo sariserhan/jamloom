@@ -1,0 +1,30 @@
+[
+  {
+    "browser": "chromium",
+    "status": "PASS",
+    "styles": 7,
+    "checks": [
+      "artist-free labels",
+      "style and default energy reach quote",
+      "changing style invalidates old quote",
+      "keyboard-accessible radios and scoped WCAG 2A/AA",
+      "desktop 390px 320px layouts",
+      "no generation or account mutations",
+      "no page errors"
+    ]
+  },
+  {
+    "browser": "webkit",
+    "status": "PASS",
+    "styles": 7,
+    "checks": [
+      "artist-free labels",
+      "style and default energy reach quote",
+      "changing style invalidates old quote",
+      "keyboard-accessible radios and scoped WCAG 2A/AA",
+      "desktop 390px 320px layouts",
+      "no generation or account mutations",
+      "no page errors"
+    ]
+  }
+]

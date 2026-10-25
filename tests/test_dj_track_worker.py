@@ -25,6 +25,21 @@ class WorkerContract(unittest.TestCase):
                 self.assertEqual(report['status'],'FAIL buffer deadline' if slow else 'PASS technical')
                 self.assertEqual(report['human_listening'],'NOT RUN')
 
+    def test_neutral_styles_and_staged_worker_manifest(self):
+        import tempfile, shutil, runpy
+        from dj_track_worker import STYLES, ROOT
+        for style, profile in STYLES.items():
+            value=dict(version=1,session='a'*32,sequence=0,seed=7,style=style,energy=profile['energy'])
+            self.assertEqual(request(value),value)
+            caption,bpm=brief(value);self.assertEqual(bpm,profile['bpm']);self.assertNotIn('wobble',caption.lower())
+            caption,bpm=brief({**value,'beat':{'bpm':86,'groove':'syncopated'}});self.assertEqual(bpm,86)
+            if style in ('hip-hop','chill'):self.assertNotIn('four-on-the-floor',caption)
+        with tempfile.TemporaryDirectory() as directory:
+            target=Path(directory)/'worker';target.mkdir()
+            shutil.copyfile(ROOT/'scripts/dj_track_worker.py',target/'dj_track_worker.py')
+            shutil.copyfile(ROOT/'assets/manifests/dj-styles.json',target/'dj-styles.json')
+            self.assertEqual(runpy.run_path(str(target/'dj_track_worker.py'))['STYLES'],STYLES)
+
     def test_request_and_selected_house_brief(self):
         value=dict(version=1, session='a'*32, sequence=0, seed=2**32-1, style='house', energy=4)
         self.assertEqual(request(value), value)
@@ -36,7 +51,7 @@ class WorkerContract(unittest.TestCase):
             self.assertIn('no ambient intro or fade-in',brief({**value,'mood':mood})[0])
         self.assertNotIn('no ambient intro or fade-in',brief(value)[0])
         self.assertNotIn('Start at full dancefloor energy',brief({**value,'mood':'deep','energy':2})[0])
-        for change in [dict(mood='angry'), dict(mood=None), dict(seed=True), dict(seed=2**32), dict(sequence=-1), dict(energy=6), dict(style='ambient'), dict(session='../a'), dict(reference_audio='x')]:
+        for change in [dict(mood='angry'), dict(mood=None), dict(seed=True), dict(seed=2**32), dict(sequence=-1), dict(energy=6), dict(style='ambient'), dict(style=[]), dict(session='../a'), dict(reference_audio='x')]:
             with self.assertRaises(ValueError): request({**value, **change})
     def test_ace_adapter_uses_one_fresh_instrumental_request(self):
         value=dict(version=1, session='a'*32, sequence=2, seed=123456, style='house', energy=4)
