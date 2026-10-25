@@ -1,0 +1,30 @@
+{
+  "sequence": 4,
+  "sha256": "e23bed5d985052e9d1875222e81b22eaa45bd153654a10f4fe020d0f41f37cdc",
+  "playbackGain": 0.4570486060032412,
+  "plannedTrackStart": {
+    "at": 209.71459566074938,
+    "offset": 0,
+    "rate": 1
+  },
+  "plannedNextTransition": {
+    "at": 264.1145956607494,
+    "fade": 2,
+    "offset": 9.478663540445483,
+    "rate": 1,
+    "technique": "short-fade",
+    "reason": "Short handoff into measured steady entry \u00b7 no tempo change or FX"
+  },
+  "sourceQuietAtPlaybackLevel": [
+    {
+      "sourceEnd": 15.022979,
+      "seconds": 1.056833,
+      "predictedMixEnd": 224.73757466074937
+    },
+    {
+      "sourceEnd": 60.0,
+      "seconds": 3.554792,
+      "predictedMixEnd": 269.7145956607494
+    }
+  ]
+}

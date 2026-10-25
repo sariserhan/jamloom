@@ -84,6 +84,7 @@ jobs:
           npm run test:academy
           npm run test:admin
           npm run test:wallet
+          npm run test:ai-dj-sessions
           node --import tsx --test tests/pro.test.ts
   build:
     strategy:

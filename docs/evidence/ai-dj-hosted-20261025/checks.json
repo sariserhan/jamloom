@@ -1,0 +1,36 @@
+{
+  "status": "PASS technical session checks; initial cleanup failed and recovered",
+  "tracks": 20,
+  "distinctHashes": 20,
+  "distinctSeeds": 20,
+  "vocals": 0,
+  "endReasons": [
+    "stop",
+    "credits"
+  ],
+  "moods": [
+    "bright",
+    "deep",
+    "warm"
+  ],
+  "computeMs": {
+    "min": 1604,
+    "max": 6979,
+    "p95": 4016
+  },
+  "browserSamples": 210,
+  "maxBrowserHeapBytes": 79831751,
+  "maxActiveSources": 2,
+  "maxHarnessRssBytes": 292421632,
+  "maxProcessTreeRssBytes": 1412743168,
+  "maxProcessTreeCpuPercent": 84.5,
+  "resourceScope": "Qualification process and descendants; CPU can exceed 100 percent across cores; ps samples are not a profiling trace.",
+  "resourceSamples": 52,
+  "rentalSeconds": 1171.7357981204987,
+  "coldStartupSeconds": 644.0998191833496,
+  "dispatcherRecoverySeconds": 1.1053810119628906,
+  "providerShutdownConfirmed": true,
+  "humanListening": "NOT RUN",
+  "publicActivation": false,
+  "initialHarnessExit": 1
+}

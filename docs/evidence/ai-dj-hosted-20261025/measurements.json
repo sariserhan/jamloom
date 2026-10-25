@@ -1,0 +1,846 @@
+{
+  "target_lufs": -24.58,
+  "clips": [
+    {
+      "number": 1,
+      "track": {
+        "session": "0e4d4bdc6ba842c59060c1a11667e449",
+        "sequence": 0,
+        "sha256": "ecb4fe2e545adbc5d05ac89469fa749d99e80ddb35e139ae125d31764e8be0b4",
+        "computeMs": 6979,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "327f0551-b708-4ed4-bbd5-f901e464f2b9",
+          "request": {
+            "version": 1,
+            "session": "0e4d4bdc6ba842c59060c1a11667e449",
+            "sequence": 0,
+            "seed": 3781897151,
+            "style": "house",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 6979,
+          "bytes": 11520044,
+          "sha256": "ecb4fe2e545adbc5d05ac89469fa749d99e80ddb35e139ae125d31764e8be0b4",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.43",
+        "input_tp": "-0.79",
+        "input_lra": "2.70",
+        "input_thresh": "-27.43"
+      },
+      "gain_db": -7.149999999999999,
+      "review": {
+        "input_i": "-24.57",
+        "input_tp": "-7.94",
+        "input_lra": "2.70",
+        "input_thresh": "-34.58"
+      }
+    },
+    {
+      "number": 2,
+      "track": {
+        "session": "0e4d4bdc6ba842c59060c1a11667e449",
+        "sequence": 1,
+        "sha256": "0361060d99fb3322a2b4e3e875fa8160b21969ae4a4fa5fd3db4e406b12c3b6b",
+        "computeMs": 1618,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "dcac8ef3-3277-4440-b6e6-1c2f71fad2bd",
+          "request": {
+            "version": 1,
+            "session": "0e4d4bdc6ba842c59060c1a11667e449",
+            "sequence": 1,
+            "seed": 4105922797,
+            "style": "house",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1618,
+          "bytes": 11520044,
+          "sha256": "0361060d99fb3322a2b4e3e875fa8160b21969ae4a4fa5fd3db4e406b12c3b6b",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.83",
+        "input_tp": "-0.75",
+        "input_lra": "2.50",
+        "input_thresh": "-27.87"
+      },
+      "gain_db": -6.75,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.50",
+        "input_lra": "2.60",
+        "input_thresh": "-34.62"
+      }
+    },
+    {
+      "number": 3,
+      "track": {
+        "session": "0e4d4bdc6ba842c59060c1a11667e449",
+        "sequence": 2,
+        "sha256": "ea9318eed49ce069419ef8dbd0038106c2197fd4c1874f4683cc3d2200e16ddc",
+        "computeMs": 4016,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "a8e77b86-85bb-45d3-b228-bfd630e0aece",
+          "request": {
+            "version": 1,
+            "session": "0e4d4bdc6ba842c59060c1a11667e449",
+            "sequence": 2,
+            "seed": 2875895263,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 4016,
+          "bytes": 11520044,
+          "sha256": "ea9318eed49ce069419ef8dbd0038106c2197fd4c1874f4683cc3d2200e16ddc",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-18.04",
+        "input_tp": "-0.83",
+        "input_lra": "4.70",
+        "input_thresh": "-28.53"
+      },
+      "gain_db": -6.539999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.37",
+        "input_lra": "4.70",
+        "input_thresh": "-35.08"
+      }
+    },
+    {
+      "number": 4,
+      "track": {
+        "session": "0e4d4bdc6ba842c59060c1a11667e449",
+        "sequence": 3,
+        "sha256": "c643531b8b2795bbc126a80323335328047972f93902a780ca0f5b1571e16de6",
+        "computeMs": 1651,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "d55bf3be-fd87-43df-aaae-63cbef8b869a",
+          "request": {
+            "version": 1,
+            "session": "0e4d4bdc6ba842c59060c1a11667e449",
+            "sequence": 3,
+            "seed": 3175926472,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1651,
+          "bytes": 11520044,
+          "sha256": "c643531b8b2795bbc126a80323335328047972f93902a780ca0f5b1571e16de6",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-16.32",
+        "input_tp": "-1.00",
+        "input_lra": "4.20",
+        "input_thresh": "-26.40"
+      },
+      "gain_db": -8.259999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.26",
+        "input_lra": "4.20",
+        "input_thresh": "-34.66"
+      }
+    },
+    {
+      "number": 5,
+      "track": {
+        "session": "0e4d4bdc6ba842c59060c1a11667e449",
+        "sequence": 4,
+        "sha256": "e23bed5d985052e9d1875222e81b22eaa45bd153654a10f4fe020d0f41f37cdc",
+        "computeMs": 1650,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "12f629e0-6b37-426b-9a70-237662554915",
+          "request": {
+            "version": 1,
+            "session": "0e4d4bdc6ba842c59060c1a11667e449",
+            "sequence": 4,
+            "seed": 1528838753,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1650,
+          "bytes": 11520044,
+          "sha256": "e23bed5d985052e9d1875222e81b22eaa45bd153654a10f4fe020d0f41f37cdc",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.21",
+        "input_tp": "-0.59",
+        "input_lra": "3.30",
+        "input_thresh": "-25.33"
+      },
+      "gain_db": -9.369999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.96",
+        "input_lra": "3.30",
+        "input_thresh": "-34.66"
+      }
+    },
+    {
+      "number": 6,
+      "track": {
+        "session": "0e4d4bdc6ba842c59060c1a11667e449",
+        "sequence": 5,
+        "sha256": "34173f89ff946ec39ac7d495e8b9c66dbc250cb6ce814ccd0605c567aac5fd77",
+        "computeMs": 1795,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "3230812b-42d1-45a4-a7ce-563243739dfd",
+          "request": {
+            "version": 1,
+            "session": "0e4d4bdc6ba842c59060c1a11667e449",
+            "sequence": 5,
+            "seed": 1037832986,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1795,
+          "bytes": 11520044,
+          "sha256": "34173f89ff946ec39ac7d495e8b9c66dbc250cb6ce814ccd0605c567aac5fd77",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.83",
+        "input_tp": "-0.76",
+        "input_lra": "3.80",
+        "input_thresh": "-26.15"
+      },
+      "gain_db": -8.749999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.51",
+        "input_lra": "3.70",
+        "input_thresh": "-34.87"
+      }
+    },
+    {
+      "number": 7,
+      "track": {
+        "session": "0e4d4bdc6ba842c59060c1a11667e449",
+        "sequence": 6,
+        "sha256": "9afc80c0b733292b51d06aff3fce1be65798cc85b871989984b94cd737ee09e1",
+        "computeMs": 1821,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "1612a725-b6df-460f-84e4-8ae5177a2d9c",
+          "request": {
+            "version": 1,
+            "session": "0e4d4bdc6ba842c59060c1a11667e449",
+            "sequence": 6,
+            "seed": 762576489,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1821,
+          "bytes": 11520044,
+          "sha256": "9afc80c0b733292b51d06aff3fce1be65798cc85b871989984b94cd737ee09e1",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-16.63",
+        "input_tp": "-0.95",
+        "input_lra": "8.00",
+        "input_thresh": "-26.77"
+      },
+      "gain_db": -7.949999999999999,
+      "review": {
+        "input_i": "-24.57",
+        "input_tp": "-8.90",
+        "input_lra": "8.10",
+        "input_thresh": "-34.72"
+      }
+    },
+    {
+      "number": 8,
+      "track": {
+        "session": "0e4d4bdc6ba842c59060c1a11667e449",
+        "sequence": 7,
+        "sha256": "f1ff5bc6628f91f472c0dcc7ca0fef1536077f0bce12d2da16a5a6183c52e955",
+        "computeMs": 3156,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "2138c297-86a8-4142-aebd-10b8e3a17451",
+          "request": {
+            "version": 1,
+            "session": "0e4d4bdc6ba842c59060c1a11667e449",
+            "sequence": 7,
+            "seed": 2857926343,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 3156,
+          "bytes": 11520044,
+          "sha256": "f1ff5bc6628f91f472c0dcc7ca0fef1536077f0bce12d2da16a5a6183c52e955",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.73",
+        "input_tp": "-0.98",
+        "input_lra": "10.50",
+        "input_thresh": "-28.23"
+      },
+      "gain_db": -6.849999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.83",
+        "input_lra": "10.40",
+        "input_thresh": "-35.07"
+      }
+    },
+    {
+      "number": 9,
+      "track": {
+        "session": "0e4d4bdc6ba842c59060c1a11667e449",
+        "sequence": 8,
+        "sha256": "aba6f773d903589cb88c3f63926f166bb94003c9ffb7b655afc0639cfff97bc6",
+        "computeMs": 1805,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "ef17783e-096d-489c-8c50-d797311fea2e",
+          "request": {
+            "version": 1,
+            "session": "0e4d4bdc6ba842c59060c1a11667e449",
+            "sequence": 8,
+            "seed": 2829483362,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1805,
+          "bytes": 11520044,
+          "sha256": "aba6f773d903589cb88c3f63926f166bb94003c9ffb7b655afc0639cfff97bc6",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-16.75",
+        "input_tp": "-1.00",
+        "input_lra": "2.90",
+        "input_thresh": "-26.79"
+      },
+      "gain_db": -7.829999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.83",
+        "input_lra": "2.90",
+        "input_thresh": "-34.61"
+      }
+    },
+    {
+      "number": 10,
+      "track": {
+        "session": "0e4d4bdc6ba842c59060c1a11667e449",
+        "sequence": 9,
+        "sha256": "ec0a97edd074f76c9555148f9d9bb7010ca3eaca6f6253bc3be595b187105c84",
+        "computeMs": 1648,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "d74d8f0e-0e1d-4daa-b286-1e21854ff3c6",
+          "request": {
+            "version": 1,
+            "session": "0e4d4bdc6ba842c59060c1a11667e449",
+            "sequence": 9,
+            "seed": 4126736847,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1648,
+          "bytes": 11520044,
+          "sha256": "ec0a97edd074f76c9555148f9d9bb7010ca3eaca6f6253bc3be595b187105c84",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-18.11",
+        "input_tp": "-0.81",
+        "input_lra": "4.90",
+        "input_thresh": "-28.15"
+      },
+      "gain_db": -6.469999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.28",
+        "input_lra": "4.80",
+        "input_thresh": "-34.62"
+      }
+    },
+    {
+      "number": 11,
+      "track": {
+        "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+        "sequence": 0,
+        "sha256": "f89529f51e98add002a76f00f093bc0eb41b245ca8f8972f98d1b750c2960ea1",
+        "computeMs": 2147,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "7c54e001-59b2-46cf-af55-4c0873fef794",
+          "request": {
+            "version": 1,
+            "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+            "sequence": 0,
+            "seed": 1496171723,
+            "style": "house",
+            "energy": 4,
+            "mood": "bright"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2147,
+          "bytes": 11520044,
+          "sha256": "f89529f51e98add002a76f00f093bc0eb41b245ca8f8972f98d1b750c2960ea1",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.51",
+        "input_tp": "-0.84",
+        "input_lra": "11.70",
+        "input_thresh": "-26.08"
+      },
+      "gain_db": -9.069999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.91",
+        "input_lra": "11.70",
+        "input_thresh": "-35.15"
+      }
+    },
+    {
+      "number": 12,
+      "track": {
+        "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+        "sequence": 1,
+        "sha256": "b42cf06957cdbf2f229eea193be389604612a0001295a93d277c25a21965d5b1",
+        "computeMs": 1604,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "71287c04-b693-494b-a4eb-ea6e2a1fcbf4",
+          "request": {
+            "version": 1,
+            "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+            "sequence": 1,
+            "seed": 805005889,
+            "style": "house",
+            "energy": 4,
+            "mood": "bright"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1604,
+          "bytes": 11520044,
+          "sha256": "b42cf06957cdbf2f229eea193be389604612a0001295a93d277c25a21965d5b1",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-16.96",
+        "input_tp": "-0.92",
+        "input_lra": "7.10",
+        "input_thresh": "-27.04"
+      },
+      "gain_db": -7.619999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.54",
+        "input_lra": "7.10",
+        "input_thresh": "-34.66"
+      }
+    },
+    {
+      "number": 13,
+      "track": {
+        "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+        "sequence": 2,
+        "sha256": "3b572d17e06d8584ad3bcb33e26ca7f19f6a25cd7ac3c51e29b00148ead4b5a2",
+        "computeMs": 2084,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "8b9c650a-04a9-44c6-a36d-84546849f28b",
+          "request": {
+            "version": 1,
+            "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+            "sequence": 2,
+            "seed": 3987177763,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2084,
+          "bytes": 11520044,
+          "sha256": "3b572d17e06d8584ad3bcb33e26ca7f19f6a25cd7ac3c51e29b00148ead4b5a2",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.02",
+        "input_tp": "-0.67",
+        "input_lra": "2.40",
+        "input_thresh": "-25.22"
+      },
+      "gain_db": -9.559999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-10.23",
+        "input_lra": "2.40",
+        "input_thresh": "-34.74"
+      }
+    },
+    {
+      "number": 14,
+      "track": {
+        "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+        "sequence": 3,
+        "sha256": "dd56322a72defe25f9fb8ea81a0fb28e49070c5856bbce918308d1b9c32af01f",
+        "computeMs": 1653,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "6eb4e50d-2fb6-4438-88bc-84e93abcf1de",
+          "request": {
+            "version": 1,
+            "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+            "sequence": 3,
+            "seed": 3434354603,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1653,
+          "bytes": 11520044,
+          "sha256": "dd56322a72defe25f9fb8ea81a0fb28e49070c5856bbce918308d1b9c32af01f",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.19",
+        "input_tp": "-1.00",
+        "input_lra": "4.20",
+        "input_thresh": "-25.35"
+      },
+      "gain_db": -9.389999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-10.39",
+        "input_lra": "4.20",
+        "input_thresh": "-34.73"
+      }
+    },
+    {
+      "number": 15,
+      "track": {
+        "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+        "sequence": 4,
+        "sha256": "a957f6d379977a491c65e31326ae190b913a085696313336c0de4eae34fec577",
+        "computeMs": 1615,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "eb845e30-2b6b-4268-84a8-08eecbbdabcd",
+          "request": {
+            "version": 1,
+            "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+            "sequence": 4,
+            "seed": 4183220322,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1615,
+          "bytes": 11520044,
+          "sha256": "a957f6d379977a491c65e31326ae190b913a085696313336c0de4eae34fec577",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.52",
+        "input_tp": "-0.92",
+        "input_lra": "3.00",
+        "input_thresh": "-27.67"
+      },
+      "gain_db": -7.059999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.98",
+        "input_lra": "3.00",
+        "input_thresh": "-34.73"
+      }
+    },
+    {
+      "number": 16,
+      "track": {
+        "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+        "sequence": 5,
+        "sha256": "dacb83207843d8565202740223a025ac02e14187700f5262a9717033007cfde4",
+        "computeMs": 1689,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "02a75786-eba0-4b33-954d-e2782292465b",
+          "request": {
+            "version": 1,
+            "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+            "sequence": 5,
+            "seed": 1079925093,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1689,
+          "bytes": 11520044,
+          "sha256": "dacb83207843d8565202740223a025ac02e14187700f5262a9717033007cfde4",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-14.52",
+        "input_tp": "-0.93",
+        "input_lra": "3.00",
+        "input_thresh": "-24.55"
+      },
+      "gain_db": -10.059999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-10.99",
+        "input_lra": "3.10",
+        "input_thresh": "-34.61"
+      }
+    },
+    {
+      "number": 17,
+      "track": {
+        "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+        "sequence": 6,
+        "sha256": "a0d1ee7a077ba3dbe3b353961e29e75949dbe7eeb09aad5375f73c5841b17ef5",
+        "computeMs": 1800,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "9bc3a64e-c948-42be-8c52-d7540c50784e",
+          "request": {
+            "version": 1,
+            "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+            "sequence": 6,
+            "seed": 4132944750,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1800,
+          "bytes": 11520044,
+          "sha256": "a0d1ee7a077ba3dbe3b353961e29e75949dbe7eeb09aad5375f73c5841b17ef5",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.88",
+        "input_tp": "-0.96",
+        "input_lra": "3.60",
+        "input_thresh": "-26.24"
+      },
+      "gain_db": -8.699999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.66",
+        "input_lra": "3.60",
+        "input_thresh": "-34.89"
+      }
+    },
+    {
+      "number": 18,
+      "track": {
+        "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+        "sequence": 7,
+        "sha256": "f8f017518dff881e86dca1eec7e7cc52377d426875a57e0525acd6d14531859e",
+        "computeMs": 3346,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "62cda21b-914a-4f24-bf98-dc2930cdbbc6",
+          "request": {
+            "version": 1,
+            "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+            "sequence": 7,
+            "seed": 4026233582,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 3346,
+          "bytes": 11520044,
+          "sha256": "f8f017518dff881e86dca1eec7e7cc52377d426875a57e0525acd6d14531859e",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.39",
+        "input_tp": "-0.81",
+        "input_lra": "1.50",
+        "input_thresh": "-25.46"
+      },
+      "gain_db": -9.189999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-10.00",
+        "input_lra": "1.50",
+        "input_thresh": "-34.64"
+      }
+    },
+    {
+      "number": 19,
+      "track": {
+        "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+        "sequence": 8,
+        "sha256": "d40ff8950103a86738730dec53fd5ed1337448fbfe30826104abe5859ddef7d7",
+        "computeMs": 1800,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "f3cde3d9-a5d9-4fea-a7ac-aaadafa96325",
+          "request": {
+            "version": 1,
+            "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+            "sequence": 8,
+            "seed": 3966088392,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1800,
+          "bytes": 11520044,
+          "sha256": "d40ff8950103a86738730dec53fd5ed1337448fbfe30826104abe5859ddef7d7",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-16.80",
+        "input_tp": "-0.82",
+        "input_lra": "5.40",
+        "input_thresh": "-27.08"
+      },
+      "gain_db": -7.779999999999998,
+      "review": {
+        "input_i": "-24.56",
+        "input_tp": "-8.60",
+        "input_lra": "5.40",
+        "input_thresh": "-34.84"
+      }
+    },
+    {
+      "number": 20,
+      "track": {
+        "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+        "sequence": 9,
+        "sha256": "62302c11ceaa2cea3c5d072c3e799fa4a2ff6cfc2d87ebe372eb007f0d2bed15",
+        "computeMs": 1740,
+        "receipt": {
+          "version": 1,
+          "engine": "69fc0576c59689e718d3b6a407fed603",
+          "job": "25e19d5c-5e29-4433-9291-fa27e77ad0d4",
+          "request": {
+            "version": 1,
+            "session": "4a1c22d88ca64d9fb3a0a1999e72ffa1",
+            "sequence": 9,
+            "seed": 2158322845,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1740,
+          "bytes": 11520044,
+          "sha256": "62302c11ceaa2cea3c5d072c3e799fa4a2ff6cfc2d87ebe372eb007f0d2bed15",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-16.50",
+        "input_tp": "-0.79",
+        "input_lra": "2.40",
+        "input_thresh": "-26.57"
+      },
+      "gain_db": -8.079999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.87",
+        "input_lra": "2.40",
+        "input_thresh": "-34.65"
+      }
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

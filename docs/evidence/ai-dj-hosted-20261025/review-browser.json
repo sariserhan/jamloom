@@ -1,0 +1,20 @@
+[
+  {
+    "browser": "chromium",
+    "players": 22,
+    "stoppedByDefault": true,
+    "mutedPlayback": true,
+    "exclusivePlayback": true,
+    "mobileOverflow": false,
+    "pageErrors": []
+  },
+  {
+    "browser": "webkit",
+    "players": 22,
+    "stoppedByDefault": true,
+    "mutedPlayback": true,
+    "exclusivePlayback": true,
+    "mobileOverflow": false,
+    "pageErrors": []
+  }
+]

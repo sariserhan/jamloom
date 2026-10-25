@@ -1,0 +1,14 @@
+Preparing public customer
+public deck ready
+Preparing private customer
+private deck ready
+/Users/serhansari/Documents/projects/jamloom/apps/site/lib/dj-sessions.ts:152
+  if(!(await this.pool.query('SELECT 1 FROM "user" WHERE id=$1 AND suspended',[owner])).rowCount)throw Error('Suspend the account before fulfilling deletion');
+                                                                                                       ^
+
+Error: Suspend the account before fulfilling deletion
+    at DJSessions.purgeOwner (/Users/serhansari/Documents/projects/jamloom/apps/site/lib/dj-sessions.ts:152:104)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file:///Users/serhansari/Documents/projects/jamloom/apps/site/tests/dj-warm-qualification.mjs:84:19
+
+Node.js v22.23.1

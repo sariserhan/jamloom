@@ -1,0 +1,220 @@
+
+> jamloom-site@0.1.0 test:ai-dj-sessions
+> node --import tsx --test tests/dj-sessions.test.ts tests/dj-allowance.test.ts tests/dj-worker-process.test.ts
+
+TAP version 13
+# Subtest: DJ allowance retains unused value without changing whole-credit account balances
+    # Subtest: one credit funds ten public minutes or eight private minutes, with no per-minute rounding
+    ok 1 - one credit funds ten public minutes or eight private minutes, with no per-minute rounding
+      ---
+      duration_ms: 116.985959
+      type: 'test'
+      ...
+    # Subtest: cancelled and failed work refunds unused top-ups, with immutable settlement retries
+    ok 2 - cancelled and failed work refunds unused top-ups, with immutable settlement retries
+      ---
+      duration_ms: 18.250459
+      type: 'test'
+      ...
+    # Subtest: a partial top-up survives Stop and process restart; failure restores its reserved allowance
+    ok 3 - a partial top-up survives Stop and process restart; failure restores its reserved allowance
+      ---
+      duration_ms: 18.605
+      type: 'test'
+      ...
+    # Subtest: quote mismatch and racing starts cannot convert twice or overdraw allowance
+    ok 4 - quote mismatch and racing starts cannot convert twice or overdraw allowance
+      ---
+      duration_ms: 13.715125
+      type: 'test'
+      ...
+    # Subtest: purchase disputes cannot return converted or held credits into spendable allowance
+    ok 5 - purchase disputes cannot return converted or held credits into spendable allowance
+      ---
+      duration_ms: 18.464667
+      type: 'test'
+      ...
+    # Subtest: mixed purchase lots preserve carried value and return only an untouched failed top-up
+    ok 6 - mixed purchase lots preserve carried value and return only an untouched failed top-up
+      ---
+      duration_ms: 43.449458
+      type: 'test'
+      ...
+    # Subtest: a new session can begin with carried allowance and top up later within its signed maximum
+    ok 7 - a new session can begin with carried allowance and top up later within its signed maximum
+      ---
+      duration_ms: 658.87375
+      type: 'test'
+      ...
+    # Subtest: a stale quote cannot spend a lower-value purchase lot even when the credit count is unchanged
+    ok 8 - a stale quote cannot spend a lower-value purchase lot even when the credit count is unchanged
+      ---
+      duration_ms: 14.951333
+      type: 'test'
+      ...
+    # Subtest: automatic top-ups stop before buying less music per credit from the next purchase lot
+    ok 9 - automatic top-ups stop before buying less music per credit from the next purchase lot
+      ---
+      duration_ms: 418.881542
+      type: 'test'
+      ...
+    # Subtest: unavailable capacity rolls back a top-up and legacy quotes cannot switch billing modes
+    ok 10 - unavailable capacity rolls back a top-up and legacy quotes cannot switch billing modes
+      ---
+      duration_ms: 7.894542
+      type: 'test'
+      ...
+    # Subtest: fractional micro-unit purchase values retain a nonzero bound without floating-point money
+    ok 11 - fractional micro-unit purchase values retain a nonzero bound without floating-point money
+      ---
+      duration_ms: 10.86425
+      type: 'test'
+      ...
+    1..11
+ok 1 - DJ allowance retains unused value without changing whole-credit account balances
+  ---
+  duration_ms: 1658.766375
+  type: 'test'
+  ...
+# Subtest: DJ session input defaults Public and rejects unsafe fields
+ok 2 - DJ session input defaults Public and rejects unsafe fields
+  ---
+  duration_ms: 1.051625
+  type: 'test'
+  ...
+# Subtest: isolated DJ session ledger, fresh batches and public set policy
+    # Subtest: bounded supervisor exits on empty inventory and rejects unsafe watch options
+    ok 1 - bounded supervisor exits on empty inventory and rejects unsafe watch options
+      ---
+      duration_ms: 4976.425083
+      type: 'test'
+      ...
+    # Subtest: warm rental delivers distinct customer tracks before shutdown and recovers failed work safely
+    ok 2 - warm rental delivers distinct customer tracks before shutdown and recovers failed work safely
+      ---
+      duration_ms: 338.622875
+      type: 'test'
+      ...
+    # Subtest: one listener stopping drains and refunds only their render while the other continues
+    ok 3 - one listener stopping drains and refunds only their render while the other continues
+      ---
+      duration_ms: 267.481292
+      type: 'test'
+      ...
+    # Subtest: concurrent Starts cannot overbook a warm worker or consume rejected credits
+    ok 4 - concurrent Starts cannot overbook a warm worker or consume rejected credits
+      ---
+      duration_ms: 37.313375
+      type: 'test'
+      ...
+    # Subtest: warm deadline, budget and lost heartbeat stop capacity and refund unacknowledged jobs
+    ok 5 - warm deadline, budget and lost heartbeat stop capacity and refund unacknowledged jobs
+      ---
+      duration_ms: 49.202
+      type: 'test'
+      ...
+    # Subtest: quotes bind owner and sharing, private premium, atomic idempotent Start
+    ok 6 - quotes bind owner and sharing, private premium, atomic idempotent Start
+      ---
+      duration_ms: 7.027041
+      type: 'test'
+      ...
+    # Subtest: bounded preparation, fresh seeds, verified output and immutable settlement retries
+    ok 7 - bounded preparation, fresh seeds, verified output and immutable settlement retries
+      ---
+      duration_ms: 370.358792
+      type: 'test'
+      ...
+    # Subtest: private, local and unplayed recordings never enter public listing or playback
+    ok 8 - private, local and unplayed recordings never enter public listing or playback
+      ---
+      duration_ms: 228.2655
+      type: 'test'
+      ...
+    # Subtest: credit exhaustion stops new reservations without changing visibility
+    ok 9 - credit exhaustion stops new reservations without changing visibility
+      ---
+      duration_ms: 95.639417
+      type: 'test'
+      ...
+    # Subtest: Stop race refunds queued work; running work waits for its shutdown receipt
+    ok 10 - Stop race refunds queued work; running work waits for its shutdown receipt
+      ---
+      duration_ms: 175.064291
+      type: 'test'
+      ...
+    # Subtest: lost settlement response retries once; disconnected sessions cannot dispatch
+    ok 11 - lost settlement response retries once; disconnected sessions cannot dispatch
+      ---
+      duration_ms: 124.230208
+      type: 'test'
+      ...
+    # Subtest: abandoned queued work expires even while its customer keeps heartbeating
+    ok 12 - abandoned queued work expires even while its customer keeps heartbeating
+      ---
+      duration_ms: 6.984333
+      type: 'test'
+      ...
+    # Subtest: rising per-track price preserves Private and requires a fresh decision
+    ok 13 - rising per-track price preserves Private and requires a fresh decision
+      ---
+      duration_ms: 104.590833
+      type: 'test'
+      ...
+    # Subtest: DJ and existing generation queues share one worker capacity
+    ok 14 - DJ and existing generation queues share one worker capacity
+      ---
+      duration_ms: 15.133792
+      type: 'test'
+      ...
+    # Subtest: frozen accounts cannot complete new public music
+    ok 15 - frozen accounts cannot complete new public music
+      ---
+      duration_ms: 84.364875
+      type: 'test'
+      ...
+    # Subtest: durable deadlines hold capacity and receipts recover a settlement crash
+    ok 16 - durable deadlines hold capacity and receipts recover a settlement crash
+      ---
+      duration_ms: 196.183417
+      type: 'test'
+      ...
+    # Subtest: remote shutdown, complete inventory and immutable cost evidence precede delivery
+    ok 17 - remote shutdown, complete inventory and immutable cost evidence precede delivery
+      ---
+      duration_ms: 244.232542
+      type: 'test'
+      ...
+    # Subtest: customer HTTP protects quotes, account identity, audio and paused launch gates
+    ok 18 - customer HTTP protects quotes, account identity, audio and paused launch gates
+      ---
+      duration_ms: 117.875208
+      type: 'test'
+      ...
+    # Subtest: account purge keeps running work and saved recordings protected
+    ok 19 - account purge keeps running work and saved recordings protected
+      ---
+      duration_ms: 11.994333
+      type: 'test'
+      ...
+    1..19
+ok 3 - isolated DJ session ledger, fresh batches and public set policy
+  ---
+  duration_ms: 7671.604
+  type: 'test'
+  ...
+# Subtest: standalone dispatcher resumes a killed process with one render, unchanged lease and one allowance capture
+ok 4 - standalone dispatcher resumes a killed process with one render, unchanged lease and one allowance capture
+  ---
+  duration_ms: 1593.817708
+  type: 'test'
+  ...
+1..4
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7897.53625

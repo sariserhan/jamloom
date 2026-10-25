@@ -1,0 +1,9 @@
+{
+  "status": "PASS recovered cleanup",
+  "testOwnersPurged": 3,
+  "recordingObjectsPurged": true,
+  "isolatedDatabaseDropped": true,
+  "initialHarnessExit": 1,
+  "reason": "Third admission fixture required suspension before purge; both listener sessions and R2 captures had already been purged",
+  "manualRecovery": true
+}

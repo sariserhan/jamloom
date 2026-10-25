@@ -1,0 +1,54 @@
+[
+  {
+    "visibility": "public",
+    "sha256": "5bb7d60be612ee4c77430329900ff2ad0df3967c53547aadb9110d444ae29e43",
+    "decodedSeconds": 384.53,
+    "recordedSeconds": 384.52,
+    "fullDecode": "PASS",
+    "durationMatches": true,
+    "longestQuietSeconds": 0.256667,
+    "quietSpans": [
+      {
+        "end": 219.819646,
+        "seconds": 0.256667
+      }
+    ],
+    "peakDb": -7.6,
+    "continuityScreen": "PASS",
+    "scope": "Full decode and signal screening, not human listening or a sample-accurate dropout diagnosis"
+  },
+  {
+    "visibility": "private",
+    "sha256": "b05d199dd4231dea0e535d9e4365e0e215d846f060888aa132d0bf469c5c470a",
+    "decodedSeconds": 508.2785,
+    "recordedSeconds": 508.26,
+    "fullDecode": "PASS",
+    "durationMatches": true,
+    "longestQuietSeconds": 1.103479,
+    "quietSpans": [
+      {
+        "end": 202.804833,
+        "seconds": 0.267
+      },
+      {
+        "end": 224.881083,
+        "seconds": 1.103479
+      },
+      {
+        "end": 239.878896,
+        "seconds": 0.703187
+      },
+      {
+        "end": 304.176396,
+        "seconds": 0.440104
+      },
+      {
+        "end": 397.420667,
+        "seconds": 0.493729
+      }
+    ],
+    "peakDb": -7.3,
+    "continuityScreen": "FAIL",
+    "scope": "Full decode and signal screening, not human listening or a sample-accurate dropout diagnosis"
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "recordings": [
+    {
+      "visibility": "public",
+      "seconds": 384.52,
+      "crossAccountDenied": true,
+      "anonymousPrivateDenied": false,
+      "ownerR2Read": true
+    },
+    {
+      "visibility": "private",
+      "seconds": 508.26,
+      "crossAccountDenied": true,
+      "anonymousPrivateDenied": true,
+      "ownerR2Read": true
+    }
+  ],
+  "temporaryR2ObjectsAbsent": true
+}

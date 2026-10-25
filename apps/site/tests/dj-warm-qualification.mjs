@@ -33,7 +33,7 @@ const id=()=>randomUUID().replaceAll('-',''),name='jamloom_dj_pipeline_'+id(),ad
 const folder=resolve(beta?(hosted?'../../renders/ai-dj-hosted-20261025':'../../renders/ai-dj-beta-20261025'):finish?'../../renders/ai-dj-finish-20261024/'+(permit.label.endsWith('-launch-fix')?'gpu-launch-fix':permit.label.endsWith('-resume')?'gpu-resume':'gpu'):'../../renders/ai-dj-warm-20261024');await mkdir(folder,{recursive:true});
 const objects=new Map(),store=hosted?localAudioStore(resolve(folder,'audio-cache')):{local:true,put:async(k,b)=>objects.set(k,b),get:async k=>objects.get(k),remove:async k=>objects.delete(k),uploadURL:async()=>'',playbackURL:async()=>''};
 const sessions=new DJSessions(pool,'isolated-warm-qualification-secret-12345',store,{costCapMicros:50000,maxRuntimeMs:60000,hourlyMicros:600000,fixedCostMicros:40000},false,true),warm=new DJWarmWorker(sessions,new VastProvider(process.env.VASTAI_KEY??'')),recordings=new DJRecordings(pool,djSessionStore());
-const abort=new AbortController(),timeout=setTimeout(()=>abort.abort(),(beta?18:5)*60000),tracks=[],customers=[],errors=[],samples=[];let worker,pulse,sampling,driver,browser,processRecovery,capacityOwner;
+const abort=new AbortController(),timeout=setTimeout(()=>abort.abort(),(beta?18:5)*60000),tracks=[],customers=[],errors=[],samples=[],privacy=[],recordingURLs=[];let worker,pulse,sampling,driver,browser,processRecovery,capacityOwner;
 try{
  await migrate(pool);await checkDJRenderer(token);worker=await warm.register(permit);
  await writeFile(resolve(folder,'worker-private.json'),JSON.stringify(worker),{mode:0o600,flag:'wx'});
@@ -66,7 +66,8 @@ try{
   const record=(await recordings.list(owner)).find(r=>r.title==='Warm '+visibility+' qualification');assert.equal(record.state,'ready');assert.equal(record.visibility,visibility);
   const session=(await pool.query('SELECT s.* FROM dj_sessions s JOIN dj_recordings r ON r.session_id=s.id WHERE r.id=$1',[record.id])).rows[0];assert.equal(session.state,'ended');assert.equal(session.end_reason,visibility==='public'?'stop':'credits');
   assert.equal((await sessions.wallet.balance(owner)).reserved,0);assert.equal(Number((await pool.query("SELECT count(*) FROM dj_allowance_allocations WHERE owner_id=$1 AND state='reserved'",[owner])).rows[0].count),0);assert.equal((await recordings.publicList()).sets.some(r=>r.id===record.id),visibility==='public');
-  const audio=await fetch(await recordings.playback(owner,record.id));assert.equal(audio.status,200);await writeFile(resolve(folder,visibility+'-mixed.'+(record.mime==='audio/mp4'?'m4a':'webm')),Buffer.from(await audio.arrayBuffer()));
+  await assert.rejects(recordings.playback('unrelated-listener',record.id),/not found/i);if(visibility==='private')await assert.rejects(recordings.publicPlayback(record.id),/not found/i);else assert.ok((await recordings.publicPlayback(record.id)).startsWith('https://'));
+  const recordingURL=await recordings.playback(owner,record.id);recordingURLs.push(recordingURL);const audio=await fetch(recordingURL);assert.equal(audio.status,200);privacy.push({visibility,seconds:record.seconds,crossAccountDenied:true,anonymousPrivateDenied:visibility==='private',ownerR2Read:true});await writeFile(resolve(folder,visibility+'-mixed.'+(record.mime==='audio/mp4'?'m4a':'webm')),Buffer.from(await audio.arrayBuffer()));
   await page.screenshot({path:resolve(folder,visibility+'-saved.png'),fullPage:true});assert.ok(await page.evaluate(()=>__jamloomSilentOutput().every(o=>o.peak===0)));
   customer.result={visibility,session:session.id,endReason:session.end_reason,recording:record.id,performance:await page.getByLabel('Performance history',{exact:true}).innerText()};
  }));
@@ -81,7 +82,9 @@ try{
  abort.abort();clearTimeout(timeout);if(sampling)clearInterval(sampling);if(pulse)clearInterval(pulse);await browser?.close();if(driver)await driver;
  if(worker){await warm.stop(worker);for(let i=0;i<8;i++){const results=await warm.sweep();await writeFile(resolve(folder,'shutdown.json'),JSON.stringify(results));if(results.some(r=>r.status==='shutdown_confirmed'))break;await delay(2000);}}
  for(const {owner} of customers){await pool.query('UPDATE "user" SET suspended=true WHERE id=$1',[owner]);await recordings.purgeOwner(owner);await sessions.purgeOwner(owner);}
- if(capacityOwner)await sessions.purgeOwner(capacityOwner);
+ if(capacityOwner){await pool.query('UPDATE "user" SET suspended=true WHERE id=$1',[capacityOwner]);await sessions.purgeOwner(capacityOwner);}
  await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();
- await writeFile(resolve(folder,'cleanup.json'),JSON.stringify({testOwnersPurged:customers.length,recordingObjectsPurged:true,isolatedDatabaseDropped:true}));
+ for(const url of recordingURLs){const response=await fetch(url,{headers:{Range:'bytes=0-0'}});await response.body?.cancel();assert.equal(response.status,404);}
+ await writeFile(resolve(folder,'privacy.json'),JSON.stringify({status:privacy.length===2?'PASS':'PARTIAL',recordings:privacy,temporaryR2ObjectsAbsent:true}));
+ await writeFile(resolve(folder,'cleanup.json'),JSON.stringify({testOwnersPurged:customers.length+Number(!!capacityOwner),recordingObjectsPurged:true,isolatedDatabaseDropped:true}));
 }
