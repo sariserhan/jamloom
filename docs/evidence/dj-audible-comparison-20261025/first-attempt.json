@@ -1,0 +1,22 @@
+{
+  "status": "FAIL",
+  "scope": "Two original style prompts; same seed and base model; no reference audio or research weights",
+  "tracks": [],
+  "cleanup_confirmed": true,
+  "observed_debit_usd": 0.0013415028999990142,
+  "rental_seconds": 309.7989008426666,
+  "label": "jamloom-dj-style-samples-20261025",
+  "id": 57699475,
+  "started_at": 1792949355.950098,
+  "deadline": 1792950555,
+  "destroy_requested_at": 1792949665.454591,
+  "destroy_confirmed_at": 1792949665.60193,
+  "budget_usd": 3,
+  "offer": {
+    "gpu_name": "RTX 3090",
+    "host_id": 54354,
+    "hourly_with_60gb_disk": 0.28555555555555556,
+    "reserved_lease_plus_transfer": 0.48581018518518515
+  },
+  "failure": "SSH startup deadline exceeded before script upload or model requests"
+}

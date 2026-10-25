@@ -1,0 +1,50 @@
+{
+  "status": "AUTHORIZED",
+  "campaign": "jamloom-dj-style-samples-20261025",
+  "budget_usd": 3,
+  "max_workers": 1,
+  "max_minutes": 20,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "public_activation": false,
+  "source_audio_used": false,
+  "learned_reference_weights_used": false,
+  "model": {
+    "code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "weights": "19671f406d603126926c1b7e2adc169acbcade22"
+  },
+  "manifest_sha256": "37920c432079b6a51be2321e46a0b5071cdca2ded8d3e50f6cb06f07abcfafe3",
+  "tracks": [
+    {
+      "label": "Previous house direction",
+      "request": {
+        "version": 1,
+        "session": "a7d7cebb567e4b5da38ed325b8abbe50",
+        "sequence": 0,
+        "seed": 251025,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental energetic club house, 128 BPM. Punchy four-on-the-floor kick and tight bass from the first beat. Maintain a strong continuous dancefloor groove through most of the track. Rolling bass groove, crisp clap, shuffled high hats and a sparse memorable percussive synth hook. Layer percussion into the hook, one brief stripped-back phrase, immediate full-drum return and a DJ-friendly percussion outro. No vocals. Deep hypnotic bass, restrained minor-key harmony and spacious textures. Start at full dancefloor energy immediately: kick, bass and offbeat hats together, no ambient intro or fade-in. Keep a steady kick and bass through the first and last eight bars for mixing; use short fills instead of long drumless breakdowns. Energy 4 of 5; confident dancefloor momentum.",
+      "bpm": 128,
+      "seconds": 60
+    },
+    {
+      "label": "New Bass Playground direction",
+      "request": {
+        "version": 1,
+        "session": "a7d7cebb567e4b5da38ed325b8abbe50",
+        "sequence": 1,
+        "seed": 251025,
+        "style": "bass",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental bass music with half-time and broken-beat sections, 140 BPM. Original evolving bass timbres, punchy drums, rhythmic call and response, short contrasting sections and deliberate space before bass returns. No artist imitation. No vocals. Deep hypnotic bass, restrained minor-key harmony and spacious textures. Start at full dancefloor energy immediately: kick, bass and offbeat hats together, no ambient intro or fade-in. Keep a clear drum groove and bass through the first and last eight bars for mixing; use short fills instead of long drumless breakdowns. Energy 4 of 5; confident dancefloor momentum.",
+      "bpm": 140,
+      "seconds": 60
+    }
+  ],
+  "owner_statement": "Approve the capped $3 sample pair"
+}

@@ -1,3 +1,13 @@
+## Audible before/after comparison — 2026-10-25
+
+**PASS technical mixing replay; PARTIAL fresh sample generation.** Created new recordings of identical Jamloom originals through the previous and current DJ engines; the current capture includes a real filter sweep and one-beat roll. Both pass decoding, clipping and silence checks. Fresh house/Bass Playground requests are prepared under the owner's $3 cap; the first GPU host timed out before rendering and was deleted. Human listening remains NOT RUN.
+
+- [x] Produce and serve an actual old/current mixer comparison without new compute.
+- [x] Record the exact fresh-generation pair and enforce budget/request/cleanup bounds.
+- [ ] Complete the separately approved replacement, if granted, and verify the two fresh tracks.
+
+[Report and evidence](docs/dj-audible-comparison.md). [Listen to the mixing comparison](http://localhost:8766/mix-comparison/review/).
+
 ## DJ reference analysis, experimental learning and style choices — 2026-10-25
 
 **PASS local analysis/experiment/implementation; PARTIAL learned DJ capability.** Fully analyzed nine recordings (10 h 14 min), excluding Blood Club, without copying audio. Fitted and calibrated a private numeric energy-direction model; macro F1 improves over hold/momentum, but its 11.4% false-change rate misses the restraint target. Weights remain outside the live player. Added neutral visual style choices and connected their generation/performance settings.

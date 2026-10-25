@@ -1,0 +1,106 @@
+{
+  "status": "PASS technical",
+  "sourceTracks": [
+    "f89529f51e98add002a76f00f093bc0eb41b245ca8f8972f98d1b750c2960ea1",
+    "b42cf06957cdbf2f229eea193be389604612a0001295a93d277c25a21965d5b1",
+    "3b572d17e06d8584ad3bcb33e26ca7f19f6a25cd7ac3c51e29b00148ead4b5a2"
+  ],
+  "newGeneration": false,
+  "learnedWeights": false,
+  "humanListening": "NOT RUN",
+  "results": [
+    {
+      "name": "after",
+      "revision": "46ae96e7e4fcc8e555de47e8cd02bd1e3edefd5a",
+      "history": [
+        "0",
+        "1",
+        "2"
+      ],
+      "seconds": 141.72,
+      "peak": 0.4049600660800934,
+      "rms": 0.06348812811005645,
+      "events": [
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 31.61029418650019,
+          "until": 33.48309949278189,
+          "position": 33.28229418650019,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 54.08395786188051,
+          "until": 55.020360515021366,
+          "position": 17.417857142857137,
+          "by": "AI"
+        }
+      ],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 53.2,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 3,
+          "elapsed": 92.5,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "muted": true,
+      "sha256": "0080596810749800176711c818fbcc6ba11e63fd8017875c0263c24ddebabf4e",
+      "quiet_spans": []
+    },
+    {
+      "name": "before",
+      "revision": "35bbee7ff3cb8e0a3f9f366ee0951119549a61b5",
+      "history": [
+        "0",
+        "1",
+        "2"
+      ],
+      "seconds": 146.22,
+      "peak": 0.3874281048774719,
+      "rms": 0.06271941544948213,
+      "events": [],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 54.896,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 3,
+          "elapsed": 94.296,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "muted": true,
+      "sha256": "c00e2062dcf2764483c37941a50a69e72b2b546bbd4bde40fa5004fb308f674f",
+      "quiet_spans": []
+    }
+  ]
+}
