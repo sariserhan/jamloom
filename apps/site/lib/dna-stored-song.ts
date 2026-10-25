@@ -14,7 +14,7 @@ export async function storedDnaSong(request:Request,context?:DnaContext):Promise
   if(view!=='public'&&view!=='mine')return json({error:'Unknown collection.'},400);
   if(view==='mine'&&!owner)return json({songs:[],next:null,signIn:true});
   const result=await commerce.list(owner,view,url.searchParams.get('after')??'',{language:url.searchParams.get('language')??'',genre:url.searchParams.get('genre')??''});
-  return json({...result,accountFeedback:process.env.JAMLOOM_CLOUD_SONGS_ENABLED==='true',feedbackAvailable:commerce.product==='music-dna'&&process.env.JAMLOOM_CLOUD_SONGS_ENABLED==='true'});
+  return json({...result,accountFeedback:!!context.readOnly||process.env.JAMLOOM_CLOUD_SONGS_ENABLED==='true',feedbackAvailable:commerce.product==='music-dna'&&(!!context.readOnly||process.env.JAMLOOM_CLOUD_SONGS_ENABLED==='true')});
  }
  if(!id&&request.method==='GET')return json({available:false,creditsEnabled:false,signedIn:!!owner});
  if(!id||!/^[a-f0-9]{32}$/.test(id))return json({error:'Song not found.'},404);
@@ -22,7 +22,7 @@ export async function storedDnaSong(request:Request,context?:DnaContext):Promise
  if(!row||(!owns&&(row.visibility!=='public'||!row.public_consent_at||row.state!=='completed'||row.withdrawn_at)))return json({error:'Song not found.'},404);
  if(request.method==='DELETE'){
   if(!owns)return json({error:'Song not found.'},404);
-  if(request.headers.get('x-jamloom-dna')!=='1'||request.headers.get('sec-fetch-site')==='cross-site'||request.headers.get('origin')!==url.origin)return json({error:'Same-origin request required.'},403);
+  if(request.headers.get('x-jamloom-dna')!=='1'||request.headers.get('sec-fetch-site')==='cross-site'||request.headers.get('origin')!==(context.origin??url.origin))return json({error:'Same-origin request required.'},403);
   if(row.state!=='completed')return json({error:'This song is still being made.'},409);
   await commerce.withdraw(owner!,id);return json({withdrawn:true});
  }

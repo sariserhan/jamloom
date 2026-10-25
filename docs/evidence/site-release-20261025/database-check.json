@@ -1,0 +1,1 @@
+{"target":"Existing production Neon database","operation":"read-only migration name and checksum comparison","applied":28,"pending":[],"checksumMismatches":[],"newMigrationsRequired":false}

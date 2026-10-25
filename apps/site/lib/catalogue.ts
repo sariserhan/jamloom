@@ -15,14 +15,14 @@ const publicJoin=`FROM catalogue_submissions c JOIN tracks t ON t.id=c.track_id 
 
 export class Catalogue {
   constructor(private pool:Pool,private audio:PrivateAudio) {}
-  async list(query='',strategy='',mood='',after='') {
-    if(query.length>80 || (strategy && !STRATEGIES.includes(strategy as typeof STRATEGIES[number])) || (mood && !MOODS.includes(mood))) throw new AudioError('Invalid catalogue filter.');
+  async list(query='',strategy='',mood='',after='',artist='') {
+    if(artist.length>80 || query.length>80 || (strategy && !STRATEGIES.includes(strategy as typeof STRATEGIES[number])) || (mood && !MOODS.includes(mood))) throw new AudioError('Invalid catalogue filter.');
     if(after)uuid(after);
     const match='%'+query.replace(/[\\%_]/g,'\\$&')+'%';
     const rows=(await this.pool.query<PublicTrack>(`SELECT ${publicFields} ${publicJoin}
       AND ($1='' OR t.strategy=$1) AND ($2='' OR c.mood=$2)
       AND (t.title ILIKE $3 OR c.artist ILIKE $3 OR c.description ILIKE $3)
-      AND ($4::uuid IS NULL OR t.id>$4::uuid) ORDER BY t.id LIMIT 25`,[strategy,mood,match,after||null])).rows;
+      AND ($5='' OR c.artist=$5) AND ($4::uuid IS NULL OR t.id>$4::uuid) ORDER BY t.id LIMIT 25`,[strategy,mood,match,after||null,artist])).rows;
     return {tracks:rows.slice(0,24),next:rows.length>24?rows[23].id:null};
   }
   async latest() {

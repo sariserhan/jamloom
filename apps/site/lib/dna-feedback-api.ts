@@ -9,7 +9,7 @@ const json=(value:unknown,status=200)=>Response.json(value,{status,headers:priva
 const state=globalThis as typeof globalThis&{jamloomFeedbackWrites?:Set<string>};
 const writes=state.jamloomFeedbackWrites??=new Set<string>();
 export async function dnaFeedback(request:Request,context?:DnaContext){
- if(context&&process.env.JAMLOOM_CLOUD_SONGS_ENABLED==='true')return cloudSongFeedback(request,context);
+ if(context&&(context.readOnly||process.env.JAMLOOM_CLOUD_SONGS_ENABLED==='true'))return cloudSongFeedback(request,context);
  let root:string;try{root=localSingerRoot(request);}catch(error){return json({error:(error as Error).message},503);}
  let claimed:string|undefined;
  try{

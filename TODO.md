@@ -1,3 +1,19 @@
+## Website discovery and release — 2026-10-25
+
+**PASS local implementation and verification; deployment pending.** Owner explicitly authorized all eight improvements and GitHub push/deployment after verification, superseding the earlier no-push instruction. No new GPU spending, live purchases or AI DJ service activation is included.
+
+- [x] Implement visual starting points and unified public Community discovery.
+- [x] Extend the shared player with queue controls and browser favorites; add public credit pages.
+- [x] Add public song pages, cover art and bounded browser video export.
+- [x] Extend existing consent-aware feedback with a moment timestamp and opening/transition tags.
+- [x] Add mobile navigation, loading/retry states and operations visibility.
+- [x] Prepare a visual product tour with real workspace images and interactive decks.
+- [x] Verify privacy, playback, exports, responsive screens, metrics and regression checks.
+- [x] Capture launch material and record evidence.
+- [ ] Push through GitHub, verify deployment and anonymous production Community/audio.
+
+[Release report](docs/site-discovery-release.md).
+
 ## AI DJ beta reliability — 2026-10-25
 
 **PASS scoped engineering qualification and provisional owner acceptance; PARTIAL production product.** Twenty distinct GPU tracks and two complete R2 captures passed Stop/credit/visibility/recovery checks. All rentals are deleted: $0.134 observed charges, 1,072.01 seconds, within $6/40 minutes. Owner: “lets call it okay for now”; real DJ samples will follow. No push, deployment, activation or live billing.

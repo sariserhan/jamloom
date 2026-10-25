@@ -8,7 +8,7 @@ import type {AudioStore} from './audio-store';
 import {musicAudioKey} from './music-storage';
 
 export type DnaVisibility='public'|'private';
-export type DnaContext={commerce:DnaCommerce;owner:string|null;readOnly?:boolean};
+export type DnaContext={commerce:DnaCommerce;owner:string|null;readOnly?:boolean;origin?:string};
 export type SongCommerceOptions={product?:'music-dna'|'improvise';live?:boolean;budget?:{costCapMicros:number;maxRuntimeMs:number;hourlyMicros:number;fixedCostMicros:number}};
 export const DNA_RUNTIME_MS=15*60*1000;
 // Local rehearsal cost ceiling, not a cloud-provider price. Production generation stays closed.

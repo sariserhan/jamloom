@@ -7,11 +7,11 @@ import {privateHeaders} from './audio-response';
 import {AudioError} from './audio-validation';
 import {storedDnaSong} from './dna-stored-song';
 
-export async function cloudSongAPI(request:Request,songs:CloudSongs,owner:string|null,schedule:(id:string)=>void){
+export async function cloudSongAPI(request:Request,songs:CloudSongs,owner:string|null,schedule:(id:string)=>void,origin=new URL(request.url).origin){
  const url=new URL(request.url),id=url.searchParams.get('id'),view=url.searchParams.get('view');
  const json=(value:unknown,status=200)=>Response.json(value,{status,headers:privateHeaders});
  try{
-  if(request.method==='GET'&&view)return storedDnaSong(request,{commerce:songs.commerce,owner,readOnly:true});
+  if(request.method==='GET'&&view)return storedDnaSong(request,{commerce:songs.commerce,owner,readOnly:true,origin});
   if(request.method==='GET'&&!id){
    const active=owner?(await songs.commerce.pool.query("SELECT id FROM dna_song_jobs WHERE owner_id=$1 AND product=$2 AND billing_live=$3 AND state IN ('queued','running') ORDER BY created_at DESC LIMIT 1",[owner,songs.commerce.product,!!songs.commerce.options.live])).rows[0]?.id:undefined;
    return json({available:true,creditsEnabled:true,signedIn:!!owner,mode:'cloud',active,balance:owner?await songs.commerce.wallet.balance(owner):null});
@@ -23,9 +23,9 @@ export async function cloudSongAPI(request:Request,songs:CloudSongs,owner:string
     if(url.searchParams.has('file'))return json({error:'Your song is not ready yet.'},409);
     schedule(id);return json(await songs.status(owner!,id));
    }
-   return storedDnaSong(request,{commerce:songs.commerce,owner,readOnly:true});
+   return storedDnaSong(request,{commerce:songs.commerce,owner,readOnly:true,origin});
   }
-  if(request.headers.get('origin')!==url.origin||request.headers.get('sec-fetch-site')==='cross-site'||request.headers.get('x-jamloom-dna')!=='1')return json({error:'Same-origin request required.'},403);
+  if(request.headers.get('origin')!==origin||request.headers.get('sec-fetch-site')==='cross-site'||request.headers.get('x-jamloom-dna')!=='1')return json({error:'Same-origin request required.'},403);
   if(!owner)return json({error:'Sign in with a verified account to make a song.'},401);
   if(request.method==='DELETE'&&songId(id)){const result=await songs.cancel(owner,id);schedule(id);return json(result);}
   if(request.method!=='POST')return json({error:'Unknown song action.'},400);

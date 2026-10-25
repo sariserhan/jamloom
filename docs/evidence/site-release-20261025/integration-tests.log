@@ -1,0 +1,284 @@
+TAP version 13
+# Subtest: admin boundaries reject unverified identities, invalid settings and mixed Stripe environments
+ok 1 - admin boundaries reject unverified identities, invalid settings and mixed Stripe environments
+  ---
+  duration_ms: 0.737333
+  type: 'test'
+  ...
+# Subtest: real Postgres administration, durable mail, credit exemption and billing isolation
+    # Subtest: settings require real owner, reject stale writes and absent live credentials, audit cannot be edited
+    ok 1 - settings require real owner, reject stale writes and absent live credentials, audit cannot be edited
+      ---
+      duration_ms: 5.122208
+      type: 'test'
+      ...
+    # Subtest: contact transaction persists notification, reply is private and stale replay cannot email twice
+    ok 2 - contact transaction persists notification, reply is private and stale replay cannot email twice
+      ---
+      duration_ms: 22.555625
+      type: 'test'
+      ...
+    # Subtest: email failures remain durable, retry leases avoid concurrent sends, template escapes submitted content
+    ok 3 - email failures remain durable, retry leases avoid concurrent sends, template escapes submitted content
+      ---
+      duration_ms: 18.818167
+      type: 'test'
+      ...
+    # Subtest: only verified owner can reserve without credits; caps, actual costs, replays and frozen wallets remain enforced
+    ok 4 - only verified owner can reserve without credits; caps, actual costs, replays and frozen wallets remain enforced
+      ---
+      duration_ms: 24.592875
+      type: 'test'
+      ...
+    # Subtest: suspension removes sessions, cancels queued work with released credits, restore does not restore sessions
+    ok 5 - suspension removes sessions, cancels queued work with released credits, restore does not restore sessions
+      ---
+      duration_ms: 14.934167
+      type: 'test'
+      ...
+    # Subtest: owner course preview requires verified active identity and preserves prerequisites and receipts
+    ok 6 - owner course preview requires verified active identity and preserves prerequisites and receipts
+      ---
+      duration_ms: 5.237709
+      type: 'test'
+      ...
+    # Subtest: verified live and test receipts stay separate; wrong-mode signed events fail
+    ok 7 - verified live and test receipts stay separate; wrong-mode signed events fail
+      ---
+      duration_ms: 4.24375
+      type: 'test'
+      ...
+    1..7
+ok 2 - real Postgres administration, durable mail, credit exemption and billing isolation
+  ---
+  duration_ms: 526.01575
+  type: 'test'
+  ...
+# Subtest: cloud song configuration is opt-in and requires a bounded rate
+ok 3 - cloud song configuration is opt-in and requires a bounded rate
+  ---
+  duration_ms: 0.801417
+  type: 'test'
+  ...
+# Subtest: Improvise receipts require a bounded audible use of this recording and this output
+ok 4 - Improvise receipts require a bounded audible use of this recording and this output
+  ---
+  duration_ms: 0.198791
+  type: 'test'
+  ...
+# Subtest: real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+    # Subtest: Improvise omission or mismatched recording refunds; valid loops settle once
+    ok 1 - Improvise omission or mismatched recording refunds; valid loops settle once
+      ---
+      duration_ms: 450.513416
+      type: 'test'
+      ...
+    # Subtest: one request is reserved and dispatched once under duplicate concurrent calls
+    ok 2 - one request is reserved and dispatched once under duplicate concurrent calls
+      ---
+      duration_ms: 46.229333
+      type: 'test'
+      ...
+    # Subtest: several users queue independently; cancellation refunds while other songs continue
+    ok 3 - several users queue independently; cancellation refunds while other songs continue
+      ---
+      duration_ms: 658.212667
+      type: 'test'
+      ...
+    # Subtest: duration boundaries settle once and a mismatched saved length refunds
+    ok 4 - duration boundaries settle once and a mismatched saved length refunds
+      ---
+      duration_ms: 790.250833
+      type: 'test'
+      ...
+    # Subtest: restart after output storage failure uses persisted receipt and charges only once
+    ok 5 - restart after output storage failure uses persisted receipt and charges only once
+      ---
+      duration_ms: 296.798
+      type: 'test'
+      ...
+    # Subtest: saved descriptions reach the next worker only for their owner
+    ok 6 - saved descriptions reach the next worker only for their owner
+      ---
+      duration_ms: 266.403791
+      type: 'test'
+      ...
+    # Subtest: failed jobs refund all credits and invalid completed output cannot become public
+    ok 7 - failed jobs refund all credits and invalid completed output cannot become public
+      ---
+      duration_ms: 325.88975
+      type: 'test'
+      ...
+    # Subtest: website input, feedback ownership, personalization and consent withdrawal
+    ok 8 - website input, feedback ownership, personalization and consent withdrawal
+      ---
+      duration_ms: 842.754209
+      type: 'test'
+      ...
+    # Subtest: disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+    ok 9 - disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+      ---
+      duration_ms: 22.59325
+      type: 'test'
+      ...
+    # Subtest: lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+    ok 10 - lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+      ---
+      duration_ms: 11.190667
+      type: 'test'
+      ...
+    # Subtest: missing provider receipt refunds only after the full provider TTL and a quiet queue
+    ok 11 - missing provider receipt refunds only after the full provider TTL and a quiet queue
+      ---
+      duration_ms: 17.792542
+      type: 'test'
+      ...
+    # Subtest: test credit lots cannot fund live requests or inflate live balances
+    ok 12 - test credit lots cannot fund live requests or inflate live balances
+      ---
+      duration_ms: 4.215333
+      type: 'test'
+      ...
+    # Subtest: recovery rotates ambiguous jobs and releases credits after persistent storage failure
+    ok 13 - recovery rotates ambiguous jobs and releases credits after persistent storage failure
+      ---
+      duration_ms: 383.202333
+      type: 'test'
+      ...
+    1..13
+ok 5 - real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+  ---
+  duration_ms: 4445.861167
+  type: 'test'
+  ...
+# Subtest: recording metadata rejects missing permission, malformed identity and unsafe bounds
+ok 6 - recording metadata rejects missing permission, malformed identity and unsafe bounds
+  ---
+  duration_ms: 0.922
+  type: 'test'
+  ...
+# Subtest: isolated Postgres: owned multipart recordings, retry recovery, quotas and deletion
+    # Subtest: retry identity, owner isolation and immutable recording details
+    ok 1 - retry identity, owner isolation and immutable recording details
+      ---
+      duration_ms: 18.270709
+      type: 'test'
+      ...
+    # Subtest: lost R2 completion response recovers once without completing or charging twice
+    ok 2 - lost R2 completion response recovers once without completing or charging twice
+      ---
+      duration_ms: 12.857417
+      type: 'test'
+      ...
+    # Subtest: authenticated HTTP boundary, account switch, size limit, CSRF and private headers
+    ok 3 - authenticated HTTP boundary, account switch, size limit, CSRF and private headers
+      ---
+      duration_ms: 21.731666
+      type: 'test'
+      ...
+    # Subtest: deletion retries provider failures and blocks new upload/playback grants
+    ok 4 - deletion retries provider failures and blocks new upload/playback grants
+      ---
+      duration_ms: 6.134959
+      type: 'test'
+      ...
+    # Subtest: concurrent reservations respect quota and expired uploads are aborted
+    ok 5 - concurrent reservations respect quota and expired uploads are aborted
+      ---
+      duration_ms: 26.434083
+      type: 'test'
+      ...
+    # Subtest: account deletion cannot silently orphan R2 recordings
+    ok 6 - account deletion cannot silently orphan R2 recordings
+      ---
+      duration_ms: 8.355
+      type: 'test'
+      ...
+    # Subtest: progressive parts are immutable, ordered, private until verified, and allow a two-hour receipt
+    ok 7 - progressive parts are immutable, ordered, private until verified, and allow a two-hour receipt
+      ---
+      duration_ms: 45.33725
+      type: 'test'
+      ...
+    1..7
+ok 7 - isolated Postgres: owned multipart recordings, retry recovery, quotas and deletion
+  ---
+  duration_ms: 501.80775
+  type: 'test'
+  ...
+# Subtest: DNA requires explicit visibility and public-sharing permission
+ok 8 - DNA requires explicit visibility and public-sharing permission
+  ---
+  duration_ms: 0.516875
+  type: 'test'
+  ...
+# Subtest: real Postgres Music DNA credits, privacy, idempotence, failure and recovery
+    # Subtest: whole playlist account profiles persist all Unicode favorites privately
+    ok 1 - whole playlist account profiles persist all Unicode favorites privately
+      ---
+      duration_ms: 19.066708
+      type: 'test'
+      ...
+    # Subtest: song descriptions survive restart and stay bound to owner, billing environment and favorites
+    ok 2 - song descriptions survive restart and stay bound to owner, billing environment and favorites
+      ---
+      duration_ms: 90.120459
+      type: 'test'
+      ...
+    # Subtest: price, atomic reservation and duplicate request binding
+    ok 3 - price, atomic reservation and duplicate request binding
+      ---
+      duration_ms: 18.584666
+      type: 'test'
+      ...
+    # Subtest: private audio and notes are owner-only, with full premium charged once
+    ok 4 - private audio and notes are owner-only, with full premium charged once
+      ---
+      duration_ms: 57.659167
+      type: 'test'
+      ...
+    # Subtest: public success enters the feed, without favorites or identities; withdrawal removes access
+    ok 5 - public success enters the feed, without favorites or identities; withdrawal removes access
+      ---
+      duration_ms: 73.093667
+      type: 'test'
+      ...
+    # Subtest: failure refunds all held credits and never publishes; anonymous generation is denied
+    ok 6 - failure refunds all held credits and never publishes; anonymous generation is denied
+      ---
+      duration_ms: 12.828417
+      type: 'test'
+      ...
+    # Subtest: interrupted startup and missing worker files recover without stranded credits
+    ok 7 - interrupted startup and missing worker files recover without stranded credits
+      ---
+      duration_ms: 38.268875
+      type: 'test'
+      ...
+    # Subtest: cloud storage failure holds completion; durable private/public songs survive without renderer files
+    ok 8 - cloud storage failure holds completion; durable private/public songs survive without renderer files
+      ---
+      duration_ms: 50.033917
+      type: 'test'
+      ...
+    # Subtest: gallery filters cover all pages without exposing private, withdrawn or other-product metadata
+    ok 9 - gallery filters cover all pages without exposing private, withdrawn or other-product metadata
+      ---
+      duration_ms: 233.86075
+      type: 'test'
+      ...
+    1..9
+ok 9 - real Postgres Music DNA credits, privacy, idempotence, failure and recovery
+  ---
+  duration_ms: 899.676875
+  type: 'test'
+  ...
+1..9
+# tests 45
+# suites 0
+# pass 45
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4701.2355

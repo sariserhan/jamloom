@@ -13,8 +13,8 @@ export function hostedSongs(product:'music-dna'|'improvise'){
 }
 export async function hostedSongRequest(request:Request,product:'music-dna'|'improvise'){
  const songs=hostedSongs(product);if(!songs)return null;
- const {auth}=services(),session=await auth.api.getSession({headers:request.headers});
+ const {auth,config}=services(),session=await auth.api.getSession({headers:request.headers});
  return cloudSongAPI(request,songs,session?.user.emailVerified?session.user.id:null,id=>{
   after(async()=>{try{await songs.tick(id);}catch{console.error('Song update pending; scheduled recovery will retry.');}});
- });
+ },config.baseURL);
 }

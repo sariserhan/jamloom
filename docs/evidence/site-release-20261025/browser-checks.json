@@ -1,0 +1,74 @@
+{
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "discovery": "PASS",
+      "privacy": "PASS",
+      "navigation": "PASS",
+      "favorites": "PASS",
+      "continuousPlayer": "PASS",
+      "cover": "PASS",
+      "video": {
+        "seconds": 14.995479,
+        "peak": 0.08793814480304718
+      },
+      "operations": "PASS",
+      "a11y": "PASS"
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "discovery": "PASS",
+      "privacy": "PASS",
+      "navigation": "PASS",
+      "favorites": "PASS",
+      "continuousPlayer": "PASS",
+      "cover": "PASS",
+      "video": {
+        "seconds": 15.096666,
+        "peak": 0.08908215165138245
+      },
+      "operations": "PASS",
+      "a11y": "PASS"
+    }
+  ],
+  "fixture": "Synthetic tone for exports; no quality claims, no hosted writes",
+  "metrics": {
+    "jobs": [
+      {
+        "status": "completed",
+        "count": 3,
+        "cost": "3000",
+        "unsettled": 0
+      }
+    ],
+    "refunds": [],
+    "storage": [
+      {
+        "source": "Generated songs",
+        "objects": 3,
+        "bytes": "11520132",
+        "added": "11520132"
+      },
+      {
+        "source": "Uploaded mixes",
+        "objects": 1,
+        "bytes": "3840044",
+        "added": "3840044"
+      }
+    ],
+    "days": [
+      {
+        "day": "2026-10-25",
+        "jobs": 3,
+        "failed": 0,
+        "cost": "3000"
+      }
+    ],
+    "curated": {
+      "objects": 166,
+      "bytes": 2867527304
+    }
+  }
+}

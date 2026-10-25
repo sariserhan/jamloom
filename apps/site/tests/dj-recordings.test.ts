@@ -89,11 +89,11 @@ test('isolated Postgres: owned multipart recordings, retry recovery, quotas and 
    await pool.query("UPDATE dj_session_batches SET state='completed',played_at=now()-interval '1 minute' WHERE session_id=$1",[choice.id]);
    await pool.query("UPDATE generation_reservations SET status='completed' WHERE id=(SELECT reservation_id FROM dj_session_batches WHERE session_id=$1)",[choice.id]);
    await service.sealStream('bob',recording,7200);await service.sealStream('bob',recording,7200);await assert.rejects(service.sealStream('bob',recording,7201),/changed/);await assert.rejects(service.streamPart('bob',recording,last),/finishing/);
-   await upload(recording);crash=true;await assert.rejects(service.completeStream('bob',recording),/lost completion/);assert.equal((await service.publicList()).sets.length,0);
+   await assert.rejects(service.publicTrack(recording),/not found/);await upload(recording);crash=true;await assert.rejects(service.completeStream('bob',recording),/lost completion/);assert.equal((await service.publicList()).sets.length,0);
    assert.equal((await service.completeStream('bob',recording)).ready,false);assert.equal((await service.publicList()).sets.length,0);
    const key=[...objects.keys()][0],clean=objects.get(key)!;objects.set(key,Buffer.from(clean));objects.get(key)![DJ_PART_BYTES]^=1;await assert.rejects(service.completeStream('bob',recording));objects.set(key,clean);
-   assert.equal((await service.completeStream('bob',recording)).ready,true);assert.equal((await service.completeStream('bob',recording)).ready,true);assert.equal((await service.publicList()).sets[0].id,recording);
-   await service.remove('bob',recording);assert.equal(objects.size,0);
+   assert.equal((await service.completeStream('bob',recording)).ready,true);assert.equal((await service.completeStream('bob',recording)).ready,true);assert.equal((await service.publicList()).sets[0].id,recording);const publicInfo=await service.publicTrack(recording);assert.equal(publicInfo.id,recording);assert.deepEqual(Object.keys(publicInfo).sort(),['completed_at','id','seconds','title']);
+   await service.remove('bob',recording);assert.equal(objects.size,0);await assert.rejects(service.publicTrack(recording),/not found/);
    const interruptedSession={...choice,id:id()},interruptedQuote=await sessions.quote('bob',interruptedSession);await sessions.start('bob',interruptedSession,interruptedQuote.token);
    const recovered=id(),prefix=Buffer.from('captured prefix');await service.stream('bob',{...value,id:recovered,sessionId:interruptedSession.id});await service.streamPart('bob',recovered,{number:1,bytes:prefix.length,sha256:sha(prefix)});
    // Credits end generation a minute before the final prepared track finishes playing.

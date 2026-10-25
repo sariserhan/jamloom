@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import {homeProducts} from '../../lib/home-products';
+export const metadata={title:'Start here'};
+export default function Start(){return <section className="start-page"><p className="eyebrow">Your next musical idea</p><h1>What do you want to make?</h1><p>Pick a starting point. No experience needed.</p><div className="intent-grid">{homeProducts.map(p=><Link prefetch={false} href={p.href} key={p.slug}><img src={'/product-previews/'+p.slug+'.png'} alt="" width={400} height={220} loading="lazy"/><div><span className="eyebrow">{p.badge}</span><h2>{p.symbol} {p.intent} ↗</h2><p>{p.description}</p></div></Link>)}</div><div className="sharing-panel"><h2>Just here to listen?</h2><Link prefetch={false} className="primary" href="/community">Explore Community →</Link></div></section>;}

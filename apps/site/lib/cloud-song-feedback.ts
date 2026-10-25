@@ -4,10 +4,10 @@ import {boundedAuthRequest} from './bounded-request';
 import {privateHeaders} from './audio-response';
 import {songId} from './cloud-songs';
 const json=(value:unknown,status=200)=>Response.json(value,{status,headers:privateHeaders});
-export async function cloudSongFeedback(request:Request,{commerce,owner}:DnaContext){
+export async function cloudSongFeedback(request:Request,{commerce,owner,origin=new URL(request.url).origin}:DnaContext){
  if(!owner)return json({error:'Sign in to save feedback.'},401);
  const url=new URL(request.url),id=url.searchParams.get('id'),pool=commerce.pool;
- if(request.method!=='GET'&&(request.headers.get('origin')!==url.origin||request.headers.get('sec-fetch-site')==='cross-site'||request.headers.get('x-jamloom-dna')!=='1'))return json({error:'Same-origin request required.'},403);
+ if(request.method!=='GET'&&(request.headers.get('origin')!==origin||request.headers.get('sec-fetch-site')==='cross-site'||request.headers.get('x-jamloom-dna')!=='1'))return json({error:'Same-origin request required.'},403);
  if(request.method==='DELETE'){
   if(id!==null&&!songId(id))return json({error:'Unknown song.'},400);
   await pool.query('DELETE FROM song_feedback WHERE owner_id=$1 AND ($2::text IS NULL OR song_id=$2)',[owner,id]);return json({deleted:true});
@@ -19,6 +19,8 @@ export async function cloudSongFeedback(request:Request,{commerce,owner}:DnaCont
  if(request.method!=='POST')return json({error:'Unknown feedback action.'},400);
  const body=await boundedAuthRequest(request,4096);if(!body)return json({error:'Feedback is too large.'},413);
  let feedback;try{feedback=validateFeedback(await body.json());}catch{return json({error:'Choose a rating and valid feedback options.'},400);}
+ // Cloud songs are verified 48 kHz stereo PCM before storage.
+ if(feedback.momentSeconds!==undefined&&row.audio_bytes&&feedback.momentSeconds>(Number(row.audio_bytes)-44)/192000)return json({error:'Choose a moment within this song.'},400);
  if(feedback.trainingConsent&&row.owner_id!==owner)return json({error:'Only the song owner can allow model training.'},403);
  await pool.query(`INSERT INTO song_feedback(owner_id,song_id,feedback) VALUES($1,$2,$3)
   ON CONFLICT(owner_id,song_id) DO UPDATE SET feedback=EXCLUDED.feedback,updated_at=now()`,[owner,id,JSON.stringify({...feedback,consentVersion:1})]);

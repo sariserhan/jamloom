@@ -1,5 +1,8 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
+import {PlayTrack,FavoriteTrack} from '../player';
+import {songTrack} from '../../lib/listening';
+import Link from 'next/link';
 import {SongFeedback} from './song-feedback';
 import languages from '../../../../assets/manifests/dna-languages.json';
 type Entry={id:string;title:string;language:string;direction?:string;historical?:boolean;visibility?:string;withdrawn_at?:string;check?:'owner-reviewed'|'passed'|'style-mismatch'|'not-checked';product?:string};
@@ -9,13 +12,14 @@ export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'
  const [page,setPage]=useState(1),[columns,setColumns]=useState(1);
  const grid=useRef<HTMLDivElement>(null);
  useEffect(()=>{
-  if(!paginated||!grid.current)return;
+  const element=grid.current;if(!paginated||!element)return;
   let previousColumns=0;
   const measure=()=>{
-   const count=getComputedStyle(grid.current!).gridTemplateColumns.split(' ').length;
+   if(!element.isConnected)return;
+   const count=getComputedStyle(element).gridTemplateColumns.split(' ').length;
    if(previousColumns!==count){previousColumns=count;setColumns(count);setPage(1);}
   };
-  const observer=new ResizeObserver(measure);observer.observe(grid.current);measure();
+  const observer=new ResizeObserver(measure);observer.observe(element);measure();
   return()=>observer.disconnect();
  },[paginated]);
  const endpoint=product==='improvise'?'/api/improvise/song':'/api/taste/song';
@@ -80,7 +84,7 @@ export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'
   <div ref={grid} className={`dna-song-grid${paginated?' song-paged-grid':''}`} aria-busy={busy} hidden={scope==='public'&&busy}>{displayed.map(song=><article key={song.id}><h3>{song.title}</h3><p>{(languages.languages as Record<string,string>)[song.language]??song.language}{song.direction?' · '+song.direction:''}{scope==='mine'?' · '+(song.withdrawn_at?'Removed from public page':song.visibility):''}</p>
    {scope==='validation'&&song.check&&<p>Sample {song.id.slice(0,6)} · {song.product==='improvise'?'Improvise':'Music DNA'} · {song.check==='owner-reviewed'?'Backing style approved by a listener':song.check==='passed'?'Passed automated style check':song.check==='style-mismatch'?'Flagged by automated style check':'Test take · style not verified'}. Automated checks can be wrong; they do not judge lyrics or singing.</p>}
    {song.historical&&<p>Earlier experiment · style match not checked.</p>}
-   <audio controls preload="none" aria-label={`Listen to ${song.title}`} src={`${endpoint}?id=${song.id}&file=audio`} onPlay={event=>document.querySelectorAll('audio').forEach(audio=>{if(audio!==event.currentTarget)audio.pause();})}/>
+   <div className="product-actions">{scope==='mine'?<audio controls preload="none" aria-label={`Listen to ${song.title}`} src={`${endpoint}?id=${song.id}&file=audio`} onPlay={event=>document.querySelectorAll('audio').forEach(a=>{if(a!==event.currentTarget)a.pause();})}/>:<PlayTrack track={songTrack(song,product)} queue={displayed.map(s=>songTrack(s,product))}/>}{scope!=='mine'&&<><FavoriteTrack track={songTrack(song,product)}/><Link href={`/listen/${product}/${song.id}`}>Song page ↗</Link></>}</div>
    <div className="product-actions"><a className="secondary" href={`${endpoint}?id=${song.id}&file=audio&download=1`} download>Download song</a>
    {scope==='mine'&&song.visibility==='public'&&!song.withdrawn_at&&<button className="secondary" disabled={busy} onClick={()=>withdraw(song.id)}>Remove from public page</button>}</div>
    {feedbackAvailable&&scope!=='public'&&!curated&&!song.historical&&<details><summary>Rate this song</summary><SongFeedback id={song.id} account={accountFeedback}/></details>}

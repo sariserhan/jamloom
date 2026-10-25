@@ -1,3 +1,19 @@
+## Website discovery and release — 2026-10-25
+
+**PASS local implementation and verification; deployment pending.** Owner explicitly authorized all eight improvements and GitHub push/deployment after verification, superseding the earlier no-push instruction. No new GPU spending, live purchases or AI DJ service activation is included.
+
+- [x] Implement visual starting points and unified public Community discovery.
+- [x] Extend the shared player with queue controls and browser favorites; add public credit pages.
+- [x] Add public song pages, cover art and bounded browser video export.
+- [x] Extend existing consent-aware feedback with a moment timestamp and opening/transition tags.
+- [x] Add mobile navigation, loading/retry states and operations visibility.
+- [x] Prepare a visual product tour with real workspace images and interactive decks.
+- [x] Verify privacy, playback, exports, responsive screens, metrics and regression checks.
+- [x] Capture launch material and record evidence.
+- [ ] Push through GitHub, verify deployment and anonymous production Community/audio.
+
+[Release report](site-discovery-release.md).
+
 ## AI DJ beta reliability — 2026-10-25
 
 **PASS scoped GPU/session/R2 qualification and provisional owner acceptance; PARTIAL production product.** Twenty fresh tracks, ten per listener, passed response-loss recovery, immutable mood/energy updates, Stop, natural credit exhaustion, complete recordings, privacy and cleanup. Provider inventory is empty; $0.134 observed charges over 1,072.01 seconds within $6/40 minutes. 22 model calls, including two rejected vocal candidates; no inserted vocals. Owner calls the batch okay for now and will provide DJ samples later. The full-mix scan found quiet endings; bounded edge analysis and all-twenty-track offline timing replay now pass, and the real Chromium problem-pair recording passes (longest quiet span 0.457 seconds). Cost scenarios and bounded supervision are implemented; production utilization, expert voice/phrasing, venue and release gates remain open. No push, activation or live billing. [Current report](ai-dj-beta-readiness.md).
