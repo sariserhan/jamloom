@@ -29,7 +29,13 @@ final class CommunityFixture: URLProtocol {
             else {
                 let product = url.path.contains("improvise") ? "improvise" : "music-dna"
                 let id = String(repeating: product == "improvise" ? "a" : "b", count: 32)
-                data = Data("{\"songs\":[{\"id\":\"\(id)\",\"title\":\"\(product == "improvise" ? "Night lights" : "Morning groove")\",\"language\":\"en\",\"direction\":\"House\",\"product\":\"\(product)\"}],\"next\":null}".utf8)
+                var rows = [["id": id, "title": product == "improvise" ? "Night lights" : "Morning groove", "language": "en", "direction": "House", "product": product]]
+                if ProcessInfo.processInfo.arguments.contains("--community-languages"), product == "improvise" {
+                    rows.append(["id": String(repeating: "d", count: 32), "title": "Gece ritmi", "language": "tr", "direction": "House", "product": product])
+                }
+                let languages = Array(Set(rows.compactMap { $0["language"] })).sorted()
+                if let language = query.first(where: { $0.name == "language" })?.value { rows = rows.filter { $0["language"] == language } }
+                data = try JSONSerialization.data(withJSONObject: ["songs": rows, "next": NSNull(), "filters": ["languages": languages]])
             }
             let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: ["Content-Type": audio ? "audio/wav" : "application/json", "Content-Length": String(data.count)])!
             client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed); client?.urlProtocol(self, didLoad: data); client?.urlProtocolDidFinishLoading(self)

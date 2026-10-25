@@ -18,6 +18,39 @@ private final class AccountProtocol: URLProtocol {
     override func stopLoading() {}
 }
 @MainActor final class AccountTests: XCTestCase {
+    func testLanguageNamesFromLegacyExamplesUseSameFilterCodes() {
+        for (raw, code) in [("English", "en"), (" Turkish ", "tr"), ("tr", "tr"), ("zh", "zh"), ("", "")] {
+            let song = LibrarySong(id: String(repeating: "a", count: 32), title: "Example", language: raw, direction: nil, product: nil, visibility: nil, withdrawn_at: nil)
+            XCTAssertEqual(song.languageCode, code)
+        }
+    }
+    func testCommunityLanguageUsesFullCatalogueAndKeepsPaginationFiltered() async throws {
+        let transport = transport(), account = AccountModel(transport: transport), library = SongLibraryModel()
+        defer { transport.session.invalidateAndCancel() }
+        var queries: [[String: String]] = []
+        let first = String(repeating: "a", count: 32), second = String(repeating: "b", count: 32)
+        AccountProtocol.headers = ["Content-Type": "application/json"]
+        AccountProtocol.handle = { request in
+            if request.url?.path == "/api/ai-dj/sets" { return (200, Data(#"{"sets":[],"next":null}"#.utf8)) }
+            let query = Dictionary(uniqueKeysWithValues: URLComponents(url: request.url!, resolvingAgainstBaseURL: false)!.queryItems!.map { ($0.name, $0.value!) })
+            queries.append(query)
+            let language = query["language"] ?? "en", id = query["after"] == nil ? first : second
+            return (200, try JSONSerialization.data(withJSONObject: ["songs": [["id": id, "title": "Original groove", "language": language]], "next": query["after"] == nil ? first as Any : NSNull(), "filters": ["languages": ["en", "tr"]]]))
+        }
+        await library.load(.community, account: account)
+        XCTAssertEqual(library.languages, ["en", "tr"]); XCTAssertTrue(library.songs.allSatisfy { $0.language == "en" })
+        await library.load(.community, account: account, language: "tr")
+        XCTAssertEqual(library.songs.count, 2); XCTAssertTrue(library.songs.allSatisfy { $0.language == "tr" })
+        await library.load(.community, account: account, more: true, language: "tr")
+        XCTAssertEqual(library.songs.count, 4); XCTAssertTrue(library.next.isEmpty)
+        XCTAssertTrue(queries.suffix(4).allSatisfy { $0["language"] == "tr" })
+        XCTAssertEqual(queries.suffix(2).map { $0["after"] }, [first, first])
+        await library.load(.community, account: account, language: "en")
+        XCTAssertTrue(queries.suffix(2).allSatisfy { $0["after"] == nil && $0["language"] == "en" })
+        let count = queries.count
+        do { let _: LibraryPage = try await transport.request(CloudSongProduct.musicDNA.path, query: ["view": "public", "language": "tr&owner=other"]); XCTFail("Reject malformed language") } catch { }
+        XCTAssertEqual(queries.count, count)
+    }
     func testCommunityCollectionsAndPaginationWithoutSignIn() async throws {
         let transport = transport(), account = AccountModel(transport: transport), library = SongLibraryModel()
         defer { transport.session.invalidateAndCancel() }

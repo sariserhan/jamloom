@@ -1,0 +1,13 @@
+{
+  "version": "0.9.3",
+  "build": 16,
+  "device": "iPhone 14 Pro",
+  "signed_release": "PASS",
+  "install": "PASS",
+  "launch": "PASS",
+  "human_language_filter_check": "NOT RUN",
+  "initial_install": "Connection reset by peer; one retry succeeded",
+  "app_store_upload": "NOT RUN",
+  "final_build_reinstalled_and_launched": "PASS",
+  "binary_sha256": "ad3d53c3c4cd691bb7c15f07fb7c72b65a3b262ff0241a17eacf5c34591d9cb1"
+}

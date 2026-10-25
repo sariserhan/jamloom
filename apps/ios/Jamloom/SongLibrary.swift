@@ -20,7 +20,12 @@ struct LibrarySong: Codable, Identifiable, Equatable {
     enum CodingKeys: String, CodingKey { case id, title, language, direction, product, visibility, withdrawn_at, listeningKind }
     var key: String { (listeningKind == "sets" ? "ai-dj" : listeningKind ?? source.rawValue) + ":" + id }
     var productName: String { listeningKind == "catalogue" ? "Community mix" : listeningKind == "aurowall" ? "Aurowall" : source == .aiDJ ? "DJ sets" : source == .improvise ? "Improvise" : "Music DNA" }
-    var languageName: String { Locale.current.localizedString(forLanguageCode: language) ?? language }
+    var languageCode: String {
+        let value = language.trimmingCharacters(in: .whitespacesAndNewlines)
+        return TasteProfile.languages.first { $0.value.caseInsensitiveCompare(value) == .orderedSame }?.key ?? value.lowercased()
+    }
+    var languageName: String { Locale.current.localizedString(forLanguageCode: languageCode) ?? language }
+    static func validLanguage(_ value: String) -> Bool { value.count <= 32 && value.range(of: "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$", options: .regularExpression) != nil }
 }
 struct SyncedMusic: Decodable {
     let id: String; let kind: String; let title: String; let language: String?; let mood: String?
@@ -38,12 +43,15 @@ struct SyncedFavorites: Decodable {
 }
 struct LibraryFavorite: Codable { let song: LibrarySong; let product: String }
 struct LibraryPage: Decodable {
+    struct Filters: Decodable { let languages: [String] }
     let songs: [LibrarySong]
     let next: String?
     let signIn: Bool?
     let available: Bool?
+    var filters: Filters? = nil
     func validated(product: CloudSongProduct) throws -> [LibrarySong] {
         guard songs.count <= 500, next == nil || next?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil else { throw URLError(.cannotParseResponse) }
+        if let filters { guard filters.languages.count <= 256, filters.languages.allSatisfy({ $0.isEmpty || LibrarySong.validLanguage($0) }) else { throw URLError(.cannotParseResponse) } }
         return try songs.filter { $0.product == nil || $0.product == product.rawValue }.map { song in
             guard song.id.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil,
                   !song.title.isEmpty, song.title.count <= 300, song.language.count <= 32,
@@ -71,6 +79,7 @@ struct PublicSetPage: Decodable {
     @Published private(set) var message = ""
     @Published private(set) var needsSignIn = false
     @Published private(set) var next: [String: String] = [:]
+    @Published private(set) var languages: Set<String> = []
     @Published private(set) var loadingSong: String?
     @Published private(set) var audio: URL?
     @Published private(set) var audioKey: String?
@@ -151,8 +160,8 @@ struct PublicSetPage: Decodable {
         if let audio { try? FileManager.default.removeItem(at: audio) }
         audio = nil; audioKey = nil
     }
-    func reset() { revision += 1; songs = []; next = [:]; busy = false; message = ""; needsSignIn = false; clearAudio() }
-    func load(_ collection: SongCollection, account: AccountModel, more: Bool = false) async {
+    func reset() { revision += 1; songs = []; next = [:]; languages = []; busy = false; message = ""; needsSignIn = false; clearAudio() }
+    func load(_ collection: SongCollection, account: AccountModel, more: Bool = false, language: String = "") async {
         if more && busy { return }
         if !more { reset() }
         loadFavorites(owner: account.snapshot?.user.id)
@@ -178,6 +187,7 @@ struct PublicSetPage: Decodable {
             do {
                 var query = ["view": view]
                 if more { query["after"] = next[product.rawValue] }
+                if !language.isEmpty && product != .aiDJ && ["public", "mine"].contains(view) { query["language"] = language }
                 let page: LibraryPage
                 if product == .aiDJ {
                     query.removeValue(forKey: "view")
@@ -187,6 +197,7 @@ struct PublicSetPage: Decodable {
                 try Task.checkCancellation()
                 guard current == revision, owner == account.snapshot?.user.id else { return }
                 let rows = try page.validated(product: product)
+                languages.formUnion((page.filters?.languages ?? []) + rows.map(\.languageCode))
                 let existing = Set(songs.map(\.key))
                 songs += rows.filter { !existing.contains($0.key) }
                 if more && page.next == query["after"] { throw URLError(.cannotParseResponse) }
@@ -225,14 +236,20 @@ struct SongLibraryView: View {
     @State private var search = ""
     @State private var product = ""
     @State private var genre = ""
+    @State private var language = ""
     @State private var showAccount = false
     @State private var playingSet: LibrarySong?
     @State private var playbackTask: Task<Void, Never>?
     @Environment(\.scenePhase) private var scenePhase
     private let accent = Color(red: 0.78, green: 0.96, blue: 0.32)
-    private var selection: String { collection.rawValue + ":" + (account.snapshot?.user.id ?? "") }
+    private var selection: String { collection.rawValue + ":" + (account.snapshot?.user.id ?? "") + ":" + language }
+    private var languageOptions: [String] {
+        Set((collection == .favorites ? library.favorites.map(\.languageCode) : Array(library.languages)) + [language]).filter { LibrarySong.validLanguage($0) }.sorted {
+            (Locale.current.localizedString(forLanguageCode: $0) ?? $0).localizedStandardCompare(Locale.current.localizedString(forLanguageCode: $1) ?? $1) == .orderedAscending
+        }
+    }
     private var filtered: [LibrarySong] {
-        (collection == .favorites ? library.favorites : library.songs).filter { (product.isEmpty || $0.source.rawValue == product) && (genre.isEmpty || $0.direction == genre) && (search.isEmpty || [$0.title, $0.languageName, $0.direction ?? ""].joined(separator: " ").localizedCaseInsensitiveContains(search)) }
+        (collection == .favorites ? library.favorites : library.songs).filter { (product.isEmpty || $0.source.rawValue == product) && (genre.isEmpty || $0.direction == genre) && (language.isEmpty || $0.languageCode == language) && (search.isEmpty || [$0.title, $0.languageName, $0.direction ?? ""].joined(separator: " ").localizedCaseInsensitiveContains(search)) }
     }
     private func stop() { playingSet = nil; playbackTask?.cancel(); playbackTask = nil; model.stopPlayback(); library.clearAudio() }
     var body: some View {
@@ -248,8 +265,13 @@ struct SongLibraryView: View {
                     if collection != .device {
                         HStack {
                             Picker("Product", selection: $product) { Text("All music").tag(""); Text("Improvise").tag("improvise"); Text("Music DNA").tag("music-dna"); Text("DJ sets").tag("ai-dj") }
-                            Picker("Genre", selection: $genre) { Text("All genres").tag(""); ForEach(Array(Set((collection == .favorites ? library.favorites : library.songs).compactMap(\.direction))).sorted(), id: \.self) { Text($0).tag($0) } }
+                            Picker("Genre", selection: $genre) { Text("All genres").tag(""); ForEach(Array(Set((collection == .favorites ? library.favorites : library.songs).compactMap(\.direction) + [genre])).filter { !$0.isEmpty }.sorted(), id: \.self) { Text($0).tag($0) } }
                         }.labelsHidden()
+                        Picker(selection: $language) {
+                            Text("All languages").tag("")
+                            ForEach(languageOptions, id: \.self) { Text(Locale.current.localizedString(forLanguageCode: $0) ?? $0).tag($0) }
+                        } label: { Label("Language", systemImage: "globe") }
+                        .pickerStyle(.menu).accessibilityIdentifier("communityLanguage")
                     }
                 }
                 if collection == .device {
@@ -306,8 +328,13 @@ struct SongLibraryView: View {
                         }.buttonStyle(.plain).disabled(library.syncingFavorites).foregroundStyle(accent).accessibilityLabel("\(library.favorites.contains(where: { $0.key == song.key }) ? "Unfavorite" : "Favorite") \(song.title)")
                         }
                     }
-                    if !library.next.isEmpty { Button("Load more songs") { Task { await library.load(collection, account: account, more: true) } }.disabled(library.busy) }
-                    if filtered.isEmpty && !library.busy && library.message.isEmpty { ContentUnavailableView(collection == .favorites ? "Your favorites" : "No songs yet", systemImage: collection == .favorites ? "heart" : "music.note.list", description: Text(collection == .favorites ? "Tap a heart beside a song to find it here later." : search.isEmpty ? "Your generated music could be here." : "Try another search or filter.")) }
+                    if !library.next.isEmpty { Button("Load more songs") { Task { await library.load(collection, account: account, more: true, language: language) } }.disabled(library.busy) }
+                    if filtered.isEmpty && !library.busy && library.message.isEmpty {
+                        if !language.isEmpty || !genre.isEmpty || !product.isEmpty || !search.isEmpty {
+                            ContentUnavailableView("No matching songs", systemImage: "line.3.horizontal.decrease", description: Text("Try another language or clear your filters."))
+                            Button("Clear filters") { language = ""; genre = ""; product = ""; search = "" }
+                        } else { ContentUnavailableView(collection == .favorites ? "Your favorites" : "No songs yet", systemImage: collection == .favorites ? "heart" : "music.note.list", description: Text(collection == .favorites ? "Tap a heart beside a song to find it here later." : "Your generated music could be here.")) }
+                    }
                 }
             }
             .navigationTitle("Community").searchable(text: $search, prompt: "Search loaded songs")
@@ -321,8 +348,9 @@ struct SongLibraryView: View {
                     } else { ContentUnavailableView("Update iOS to listen", systemImage: "waveform", description: Text("DJ set playback requires iOS 17.4 or later.")) }
                 }.preferredColorScheme(.dark)
             }
-            .refreshable { stop(); await library.load(collection, account: account); await model.loadLibrary() }
-            .task(id: selection) { stop(); genre = ""; await library.load(collection, account: account); if collection == .device { await model.loadLibrary() } }
+            .refreshable { stop(); await library.load(collection, account: account, language: language); await model.loadLibrary() }
+            .task(id: selection) { stop(); await library.load(collection, account: account, language: language); if collection == .device { await model.loadLibrary() } }
+            .onChange(of: collection) { _, _ in genre = "" }
             .onDisappear { stop(); library.reset() }
             .onChange(of: scenePhase) { _, phase in if phase != .active { stop() } else { Task { await library.syncFavorites(account: account) } } }
             .tint(accent).preferredColorScheme(.dark)

@@ -1,6 +1,28 @@
 import XCTest
 
 final class FlowTests: XCTestCase {
+    func testCommunityLanguageFilterAndFavorites() {
+        let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture", "--community-languages"]
+        app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
+        app.launch(); app.buttons["Community"].firstMatch.tap()
+        XCTAssertTrue(app.buttons["Play Night lights"].waitForExistence(timeout: 15))
+        let language = app.buttons["communityLanguage"]
+        XCTAssertTrue(language.isHittable); language.tap(); app.buttons["Turkish"].tap()
+        XCTAssertTrue(app.buttons["Play Gece ritmi"].waitForExistence(timeout: 15))
+        XCTAssertFalse(app.buttons["Play Night lights"].exists)
+        app.buttons["Favorite Gece ritmi"].tap(); app.buttons["collection-Favorites"].tap()
+        XCTAssertTrue(app.buttons["Play Gece ritmi"].waitForExistence(timeout: 10))
+        language.tap(); app.buttons["All languages"].tap()
+        XCTAssertTrue(app.buttons["Play Gece ritmi"].waitForExistence(timeout: 10))
+        app.buttons["collection-All songs"].tap()
+        XCTAssertTrue(app.buttons["Play Night lights"].waitForExistence(timeout: 15))
+        language.tap(); app.buttons["English"].tap()
+        XCTAssertTrue(app.buttons["Play Night lights"].waitForExistence(timeout: 15)); XCTAssertFalse(app.buttons["Play Gece ritmi"].exists)
+        app.buttons["collection-Favorites"].tap()
+        XCTAssertTrue(app.staticTexts["No matching songs"].waitForExistence(timeout: 10))
+        app.buttons["Clear filters"].tap(); XCTAssertTrue(app.buttons["Play Gece ritmi"].waitForExistence(timeout: 10))
+        let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); image.name = "Community language filter"; image.lifetime = .keepAlways; add(image)
+    }
     func testCommunityFavoritesAndPlayback() {
         let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture"]
         app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString

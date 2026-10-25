@@ -1,3 +1,13 @@
+## iPhone Community language filter — 2026-10-25
+
+**PASS implementation, simulator validation, signed build, iPhone install and launch.** Jamloom 0.9.3 (16) adds a dedicated Language menu, server-side language filtering before pagination, Favorites filtering, legacy-name normalization and Clear filters. Final targeted run: 18 passed, 2 environment-gated live tests skipped, 0 failed. Physical interaction acceptance and App Store release remain NOT RUN.
+
+- [x] Filter the full public catalogue and preserve language on pagination/refresh.
+- [x] Combine language with existing filters and support legacy examples/Favorites.
+- [x] Verify the UI and transport, audit the Release bundle, install and launch on iPhone.
+
+[Report and evidence](ios-community-language.md).
+
 ## Audible before/after comparison — 2026-10-25
 
 **PASS technical generation, mixing replay and playback.** Created a fresh 60-second house/Bass Playground pair on the same seed/model plus an old/current mixer comparison using identical retained originals. The approved replacement succeeded; both rentals are deleted. Total rental time was 732 seconds with about $0.062 observed debit within the original $3 cap. All four listening clips play and seek in Chromium/WebKit. Human listening remains NOT RUN; these test presets, not fine-tuned music weights.

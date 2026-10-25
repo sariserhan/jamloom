@@ -26,8 +26,9 @@ final class AccountTransport: NSObject, URLSessionTaskDelegate, @unchecked Senda
         allowed = allowed || (base.scheme == "http" && base.host == "127.0.0.1" && base.path.isEmpty && base.user == nil && base.password == nil && base.query == nil && base.fragment == nil)
         #endif
         let collection = [CloudSongProduct.improvise.path, CloudSongProduct.musicDNA.path].contains(path) &&
-            query.keys.allSatisfy { ["view", "after"].contains($0) } &&
+            query.keys.allSatisfy { ["view", "after", "language"].contains($0) } &&
             ["validation", "examples", "public", "mine"].contains(query["view"] ?? "") &&
+            (query["language"] == nil || LibrarySong.validLanguage(query["language"]!)) &&
             (query["after"] == nil || query["after"]?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil)
         let publicSets = path == CloudSongProduct.aiDJ.path && query.keys.allSatisfy { $0 == "after" } &&
             (query["after"] == nil || query["after"]?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil)
