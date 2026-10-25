@@ -1,0 +1,90 @@
+{
+  "status": "PASS isolated preview; applied to main with source hashes verified before final plural-copy correction",
+  "source": {
+    "apps/site/lib/dj-allowance.ts": "5a25c597fda1a23a7debba3ebaf031737551d4784f17de69b207ca50c77c4619",
+    "apps/site/lib/dj-sessions.ts": "6afbae8cf844b7639d5d7a648906de9b450d852443b70d88a893f2c0317d9f83",
+    "apps/site/lib/generation-quote.ts": "f8cebb516fbae7e8eb1873b979833a32639d08892e8a852f60113d3ce75a466f",
+    "apps/site/lib/wallet.ts": "fdbec775cecca82285ff6cda5b8ccb9525a938ba11466e1a3a6a8e0d303aca28",
+    "apps/site/lib/dj-session-client.ts": "274e5446bc3e40a9c1fd6b3cfb10a919e7f6525d2746260ed4b77f10901f054f",
+    "apps/site/app/ai-dj/session/setup.tsx": "7db019555ef4d64b7f68b8d89c649c62ddc3e07b710d20d9e4f83dd7f7c55840",
+    "apps/site/app/ai-dj/studio.tsx": "f0d167074d20b2357b53bfb668ef4057ce2382647dba3fd42be7b3e9fd9de0ea",
+    "apps/site/app/api/ai-dj/sessions/[[...path]]/route.ts": "a58bc04fb4695ee5916a8e0de173a2ba63cb779942a9084cd8812c2fe7fd1a7f",
+    "apps/site/lib/ai-dj-player.ts": "b2af7504b91198f8894671e4cf8cae9cc342bfd248735fba8b4e0e0197533469",
+    "apps/site/lib/dj-stream-upload.ts": "8f1580fbbd5b79e2fc5ba92f434ad4875aa991ffc6e7c9734ce47de2dc42a375",
+    "apps/site/app/ai-dj/recording.tsx": "5b8855fa002c2c6b12bbae5550a82f08630df5be5aef13fbdb3af51f54034ce4",
+    "apps/web/set-recording.js": "9af8648c50f6dab410de71453eb9e0967ce4f495d86f99f858b184d7680604e7",
+    "apps/site/next.config.ts": "5bfc8ed09e604a56fb7398fc0ab12fcca48f58a81483a8e0d16a94327f891599",
+    "apps/site/package.json": "b23c49c129a1033ee7f5ea680638e2aaf73d054574531b0f53a2c8b3bce2f9ff",
+    "apps/site/package-lock.json": "c9093b0b5218b42f9224293a68a9e2b9fad72f3dbf91fea986df97f4d251c11e"
+  },
+  "siteTests": {
+    "passed": 127,
+    "failed": 0
+  },
+  "typescript": "PASS",
+  "productionBuild": "PASS Node 22.23.1",
+  "bundleAudit": {
+    "status": "PASS",
+    "client_files_checked": 43,
+    "server_secrets_absent": "PASS",
+    "studio_assets_unchanged_except_site_shell_and_offline_hashes": "PASS",
+    "wasm_sha256": "31c08301a66dcd4350c6da2fa5dbfe336ed352b3873483238e131f9301b937d9"
+  },
+  "productionRoutes": {
+    "status": "PASS",
+    "checks": [
+      {
+        "path": "/ai-dj",
+        "status": 404
+      },
+      {
+        "path": "/ai-dj/session",
+        "status": 404
+      },
+      {
+        "path": "/api/ai-dj/sessions",
+        "status": 404
+      },
+      {
+        "path": "/api/ai-dj/recordings",
+        "status": 404
+      },
+      {
+        "path": "/api/ai-dj/sets",
+        "status": 404
+      }
+    ]
+  },
+  "layout": {
+    "status": "PASS display only",
+    "checks": [
+      {
+        "browser": "chromium",
+        "carry": false,
+        "status": "PASS",
+        "scope": "Displayed quote fixture; no financial service or R2 call"
+      },
+      {
+        "browser": "chromium",
+        "carry": true,
+        "status": "PASS",
+        "scope": "Displayed quote fixture; no financial service or R2 call"
+      },
+      {
+        "browser": "webkit",
+        "carry": false,
+        "status": "PASS",
+        "scope": "Displayed quote fixture; no financial service or R2 call"
+      },
+      {
+        "browser": "webkit",
+        "carry": true,
+        "status": "PASS",
+        "scope": "Displayed quote fixture; no financial service or R2 call"
+      }
+    ]
+  },
+  "customerStorageFlow": "PASS on main localhost:3000 in Chromium and WebKit; see allowance-customer-checks.json. Earlier preview failures retained under renders/ai-dj-finish-20261024/allowance-isolated-preview.",
+  "paidCompute": false,
+  "pushed": false
+}

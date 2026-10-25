@@ -1,0 +1,48 @@
+{
+  "status": "PASS technical",
+  "requestedWallClockSeconds": 7200,
+  "actualSecondsIncludingFinalSaveAndChecks": 7222.63,
+  "recording": {
+    "reportedSeconds": 7201.236,
+    "fullyDecodedSeconds": 7204.008,
+    "bytes": 111696793,
+    "sha256": "7f2d48fe8e1ef2416b76c6a6bec5f3bace11f2dfe0ee8afe90a194365a5b828e",
+    "codec": "Opus",
+    "sampleRate": 48000,
+    "channels": 2,
+    "longestQuietSeconds": 1.076604,
+    "quietLimitSeconds": 1.25,
+    "quietScope": "Authored procedural fixture has one-second rests; not sample-accurate glitch proof"
+  },
+  "freshTracks": 129,
+  "uniqueHashes": 129,
+  "uniqueSeeds": 129,
+  "samples": 1438,
+  "lastPlaybackSampleSeconds": 7197.862,
+  "maxBrowserJSHeapBytes": 94196033,
+  "maxHarnessRssBytes": 271040512,
+  "combinedProcessRss": {
+    "maxBytes": 1132003328,
+    "samples": 206,
+    "windowSeconds": 6155.550639152527,
+    "firstUTC": "2026-10-25T04:56:05.515792+00:00",
+    "lastUTC": "2026-10-25T06:38:41.066431+00:00",
+    "scope": "Harness and Chromium descendants sampled every 30 seconds, starting about 17 minutes into the run; not a full-run startup peak"
+  },
+  "errors": [],
+  "cleanup": "PASS: own R2 objects, user, database and source cache removed",
+  "independentCleanup": {
+    "isolatedDatabaseAbsent": true,
+    "remainingSourceMasters": 0
+  },
+  "billing": "Legacy test-credit mode; allowance customer flow qualified separately",
+  "source": "Fresh procedural originals, no GPU",
+  "authentication": "Injected isolated test context",
+  "humanListening": "NOT RUN",
+  "rawReport": "renders/ai-dj-finish-20261024/endurance-7afe9d2857854303a017274bab29b089/report.json",
+  "rawReportSha256": "d89c65bcea05f0af54ad9f6bbdc84aaa01cf7420d75486941f3bd52024a76c91",
+  "resourceLogSha256": "065772569f41f0009aee80dcc9afb6fe317d993245186836a4b67227025788d3",
+  "harnessSha256": "728f33edc3c67056e110873b2b8f274d550f48ce03d39cca652f95cff630d411",
+  "paidCompute": false,
+  "pushed": false
+}

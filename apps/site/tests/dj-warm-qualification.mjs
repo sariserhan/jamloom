@@ -29,7 +29,7 @@ const target=new URL(process.env.JAMLOOM_TEST_DATABASE_URL||'postgresql://127.0.
 const id=()=>randomUUID().replaceAll('-',''),name='jamloom_dj_pipeline_'+id(),admin=createPool(target.toString());await admin.query(`CREATE DATABASE "${name}"`);target.pathname='/'+name;const pool=createPool(target.toString());
 const folder=resolve(finish?'../../renders/ai-dj-finish-20261024/'+(permit.label.endsWith('-launch-fix')?'gpu-launch-fix':permit.label.endsWith('-resume')?'gpu-resume':'gpu'):'../../renders/ai-dj-warm-20261024');await mkdir(folder,{recursive:true});
 const objects=new Map(),store={local:true,put:async(k,b)=>objects.set(k,b),get:async k=>objects.get(k),remove:async k=>objects.delete(k),uploadURL:async()=>'',playbackURL:async()=>''};
-const sessions=new DJSessions(pool,'isolated-warm-qualification-secret-12345',store,{costCapMicros:50000,maxRuntimeMs:60000,hourlyMicros:600000,fixedCostMicros:40000}),warm=new DJWarmWorker(sessions,new VastProvider(process.env.VASTAI_KEY??'')),recordings=new DJRecordings(pool,djSessionStore());
+const sessions=new DJSessions(pool,'isolated-warm-qualification-secret-12345',store,{costCapMicros:50000,maxRuntimeMs:60000,hourlyMicros:600000,fixedCostMicros:40000},false,true),warm=new DJWarmWorker(sessions,new VastProvider(process.env.VASTAI_KEY??'')),recordings=new DJRecordings(pool,djSessionStore());
 const abort=new AbortController(),timeout=setTimeout(()=>abort.abort(),5*60000),tracks=[],customers=[],errors=[];let worker,pulse,driver,browser;
 try{
  await migrate(pool);await checkDJRenderer(token);worker=await warm.register(permit);
@@ -37,7 +37,7 @@ try{
  let checking=false;pulse=setInterval(async()=>{if(checking)return;checking=true;try{if(!await warm.heartbeat(worker,Math.ceil((Date.now()-permit.startedAt)*permit.hourlyMicros/3600000)))abort.abort();}catch{abort.abort();}finally{checking=false;}},3000);
  browser=await chromium.launch({args:['--disable-audio-output']});
  const origin='http://localhost:3000';
- for(const [visibility,credits] of [['public',100],['private',7]]){
+ for(const [visibility,credits] of [['public',100],['private',8]]){
   const owner='warm-test-'+id();customers.push({owner,visibility});
   await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.com']);await sessions.wallet.grant(owner,{provider:'stripe_test',receipt:id(),credits,netMicros:credits*50000});
   const context=await browser.newContext({viewport:{width:1440,height:1000}});await context.addInitScript(silenceSpeakers);const page=await context.newPage();customers.at(-1).page=page;page.setDefaultTimeout(30000);page.on('pageerror',e=>errors.push(e.message));
@@ -55,7 +55,7 @@ try{
   await page.getByText('Your complete set is saved.',{exact:true}).waitFor({timeout:240000});
   const record=(await recordings.list(owner)).find(r=>r.title==='Warm '+visibility+' qualification');assert.equal(record.state,'ready');assert.equal(record.visibility,visibility);
   const session=(await pool.query('SELECT s.* FROM dj_sessions s JOIN dj_recordings r ON r.session_id=s.id WHERE r.id=$1',[record.id])).rows[0];assert.equal(session.state,'ended');assert.equal(session.end_reason,visibility==='public'?'stop':'credits');
-  assert.equal((await sessions.wallet.balance(owner)).reserved,0);assert.equal((await recordings.publicList()).sets.some(r=>r.id===record.id),visibility==='public');
+  assert.equal((await sessions.wallet.balance(owner)).reserved,0);assert.equal(Number((await pool.query("SELECT count(*) FROM dj_allowance_allocations WHERE owner_id=$1 AND state='reserved'",[owner])).rows[0].count),0);assert.equal((await recordings.publicList()).sets.some(r=>r.id===record.id),visibility==='public');
   const audio=await fetch(await recordings.playback(owner,record.id));assert.equal(audio.status,200);await writeFile(resolve(folder,visibility+'-mixed.'+(record.mime==='audio/mp4'?'m4a':'webm')),Buffer.from(await audio.arrayBuffer()));
   await page.screenshot({path:resolve(folder,visibility+'-saved.png'),fullPage:true});assert.ok(await page.evaluate(()=>__jamloomSilentOutput().every(o=>o.peak===0)));
   customer.result={visibility,session:session.id,endReason:session.end_reason,recording:record.id,performance:await page.getByLabel('Performance history',{exact:true}).innerText()};
@@ -64,7 +64,7 @@ try{
  const batches=(await pool.query("SELECT session_id,sequence,seed,render_settings,vocal,audio_sha256 FROM dj_session_batches WHERE state='completed' ORDER BY session_id,sequence")).rows;
  assert.equal(new Set(batches.map(b=>String(b.seed))).size,6);assert.ok(batches.some(b=>b.render_settings.energy===5));if(finish){assert.ok(batches.some(b=>b.render_settings.mood==='bright'));assert.ok(batches.some(b=>b.render_settings.mood==='deep'));assert.ok(batches.some(b=>b.render_settings.mood==='warm'));}
  for(const b of batches){const audio=await sessions.audio(customers.find(c=>c.result.session===b.session_id).owner,b.session_id,b.sequence);await writeFile(resolve(folder,b.session_id+'-'+b.sequence+'.wav'),audio);}
- await writeFile(resolve(folder,'result.json'),JSON.stringify({status:'PASS technical',customers:customers.map(c=>c.result),tracks,batches:batches.map(b=>({...b,seed:Number(b.seed)})),vocals:batches.filter(b=>b.vocal).length,humanListening:'NOT RUN'},null,2));
+ await writeFile(resolve(folder,'result.json'),JSON.stringify({status:'PASS technical',billing:'Carryover DJ allowance with a bound top-up rate',customers:customers.map(c=>c.result),tracks,batches:batches.map(b=>({...b,seed:Number(b.seed)})),vocals:batches.filter(b=>b.vocal).length,humanListening:'NOT RUN'},null,2));
 }catch(error){
  console.error(error);for(const {page,visibility} of customers){if(page&&!page.isClosed()){console.error(visibility,(await page.locator('body').innerText()).slice(0,8000));await page.screenshot({path:resolve(folder,visibility+'-failure.png'),fullPage:true}).catch(()=>{});}}throw error;
 }finally{

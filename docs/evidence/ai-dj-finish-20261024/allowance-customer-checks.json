@@ -1,0 +1,160 @@
+{
+  "status": "PASS",
+  "browsers": {
+    "chromium": {
+      "status": "PASS",
+      "results": [
+        {
+          "scenario": "public",
+          "visibility": "public",
+          "seconds": 3.72,
+          "allowance": "Purchase-bound carryover and automatic top-ups",
+          "status": "PASS",
+          "saved": "e75dad8f55474b8886aa98800f37113b",
+          "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+        },
+        {
+          "scenario": "private",
+          "visibility": "private",
+          "seconds": 4.728,
+          "allowance": "Purchase-bound carryover and automatic top-ups",
+          "status": "PASS",
+          "saved": "418e3dd2bdce49029ad1543b50893679",
+          "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+        },
+        {
+          "scenario": "exhausted",
+          "visibility": "private",
+          "seconds": 173.404,
+          "allowance": "Purchase-bound carryover and automatic top-ups",
+          "status": "PASS",
+          "saved": "feca5e7fe7db4e48bbc11ff4a53fe954",
+          "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+        }
+      ],
+      "errors": [],
+      "syntheticStorageRemoved": true,
+      "browserAndStorageOrigin": "http://localhost:3000",
+      "noPaidCompute": true,
+      "noPublicDeployment": true
+    },
+    "webkit": {
+      "status": "PASS",
+      "results": [
+        {
+          "scenario": "public",
+          "visibility": "public",
+          "seconds": 5.092,
+          "allowance": "Purchase-bound carryover and automatic top-ups",
+          "status": "PASS",
+          "saved": "ab65d98097f44d15b56829d3a9aa3d1c",
+          "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+        },
+        {
+          "scenario": "private",
+          "visibility": "private",
+          "seconds": 3.772,
+          "allowance": "Purchase-bound carryover and automatic top-ups",
+          "status": "PASS",
+          "saved": "77f29073c1e9485ba73f73ace5f4d777",
+          "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+        },
+        {
+          "scenario": "exhausted",
+          "visibility": "private",
+          "seconds": 173.432,
+          "allowance": "Purchase-bound carryover and automatic top-ups",
+          "status": "PASS",
+          "saved": "2774a63a8ca44a66bf78e1fb3ba31fe8",
+          "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+        }
+      ],
+      "errors": [],
+      "syntheticStorageRemoved": true,
+      "browserAndStorageOrigin": "http://localhost:3000",
+      "noPaidCompute": true,
+      "noPublicDeployment": true
+    }
+  },
+  "scope": "Next UI, signed service handlers, isolated PostgreSQL/auth context, fresh procedural renders and actual private R2. No GPU or live billing.",
+  "checks": [
+    "Public Stop and Private Stop preserve complete recordings",
+    "Failed first upload, reload and successful retry",
+    "Public list visibility and Private exclusion",
+    "Carryover permits next set without another whole-credit top-up",
+    "Quoted per-top-up limit and minimum allowance rate",
+    "Credit exhaustion plays exactly three fresh tracks then saves the full set",
+    "No reserved whole credits or allowance left after ending",
+    "Default Deep bound to first immutable batch",
+    "390px quote and Saved sets layout, scoped WCAG 2A/AA",
+    "Muted physical output and no page errors",
+    "Own R2 objects and isolated databases removed"
+  ],
+  "setup": {
+    "status": "PASS",
+    "results": [
+      {
+        "browser": "chromium",
+        "status": "PASS",
+        "checks": [
+          "Public default",
+          "Private choice and premium disclosure",
+          "party name and direction controls",
+          "automatic recording without checkbox",
+          "Start remains disabled without renderer",
+          "public empty state and anonymous API",
+          "unknown set denied",
+          "390px and 320px no horizontal overflow",
+          "scoped WCAG 2A/AA",
+          "no credit/session mutations",
+          "no page errors"
+        ]
+      },
+      {
+        "browser": "webkit",
+        "status": "PASS",
+        "checks": [
+          "Public default",
+          "Private choice and premium disclosure",
+          "party name and direction controls",
+          "automatic recording without checkbox",
+          "Start remains disabled without renderer",
+          "public empty state and anonymous API",
+          "unknown set denied",
+          "390px and 320px no horizontal overflow",
+          "scoped WCAG 2A/AA",
+          "no credit/session mutations",
+          "no page errors"
+        ]
+      }
+    ],
+    "paidCompute": false,
+    "publication": false
+  },
+  "copyOnlyFollowup": "Plural quote corrected from credits adds to credits add after screenshots; no behavior change. Client checks and final build rechecked.",
+  "harnessSha256": "c43bf97302e19b2cb13904c610c20bcb5ab35661ab69168103c5afaa51b6b3ce",
+  "finalSourceChecks": {
+    "clientTests": {
+      "passed": 3,
+      "failed": 0
+    },
+    "productionBuild": "PASS Node 22.23.1, including TypeScript",
+    "bundleAudit": {
+      "status": "PASS",
+      "client_files_checked": 43,
+      "server_secrets_absent": "PASS",
+      "studio_assets_unchanged_except_site_shell_and_offline_hashes": "PASS",
+      "wasm_sha256": "31c08301a66dcd4350c6da2fa5dbfe336ed352b3873483238e131f9301b937d9"
+    },
+    "isolatedPipelineDatabasesRemaining": 0,
+    "temporaryPreviewCheckoutRemoved": true,
+    "mainLocalhostHTTP": 200,
+    "reviewHTTP": 200,
+    "source": {
+      "apps/site/lib/dj-session-client.ts": "4db537d73a6d11ed33b3a5b04a7cf8b51c6408aac85fe2bab79c5da1eda0efaa",
+      "apps/site/app/ai-dj/session/setup.tsx": "7db019555ef4d64b7f68b8d89c649c62ddc3e07b710d20d9e4f83dd7f7c55840",
+      "apps/site/app/ai-dj/studio.tsx": "f0d167074d20b2357b53bfb668ef4057ce2382647dba3fd42be7b3e9fd9de0ea",
+      "apps/site/app/api/ai-dj/sessions/[[...path]]/route.ts": "a58bc04fb4695ee5916a8e0de173a2ba63cb779942a9084cd8812c2fe7fd1a7f"
+    }
+  }
+}
