@@ -1,6 +1,6 @@
 # Audible DJ comparison — 2026-10-25
 
-**PASS fresh generation, mixing replay and local playback; human musical acceptance NOT RUN.** The owner requested an audible sample because the original-generation setup is disabled. That page requires an enabled, configured session service and a ready supervised worker. This listening trial does not enable ongoing generation.
+**PASS fresh generation, mixing replay and local playback; human musical acceptance PARTIAL.** The owner requested an audible sample because the original-generation setup is disabled. That page requires an enabled, configured session service and a ready supervised worker. This listening trial does not enable ongoing generation.
 
 ## Actual mixer comparison
 
@@ -23,7 +23,11 @@ The replacement completed both tracks. House took 7.144 seconds of warm generati
 
 [Listen to the fresh tracks and mixer comparison](http://localhost:8766/audible-comparison/review/). The fresh pair is constant-gain matched to −20.83 LUFS; peak headroom is retained. All four MP3s play, seek and pause each other correctly in Chromium and WebKit, with no mobile overflow. [Fresh generation/cleanup](evidence/dj-audible-comparison-20261025/fresh-samples.json), [levels and listening-copy hashes](evidence/dj-audible-comparison-20261025/listening.json), [browser checks](evidence/dj-audible-comparison-20261025/browser.json).
 
-These are different prompts on the same existing model, not a comparison of newly fine-tuned audio-model weights. No reference recordings or research weights were uploaded. Listener feedback is pending; ongoing public generation remains disabled.
+These are different prompts on the same existing model, not a comparison of newly fine-tuned audio-model weights. No reference recordings or research weights were uploaded. The owner reports that the fresh pair is getting better but remains well below the supplied DJ performances. This is progress, not a quality pass; ongoing public generation remains disabled.
+
+A free local descriptor comparison reused the existing reference measurements, excluding Blood Club. The house sample has a 12.0 dB P90–P10 energy range versus a 6.0 dB median across 38 reference windows; its texture-change measure also exceeds the reference 90th percentile. Bass falls within the broad reference energy/texture ranges across 276 windows, which demonstrates why these measurements cannot establish musical quality. One sample per style is not a controlled quality benchmark. [Descriptive gap report and exact feedback](evidence/dj-audible-comparison-20261025/quality-gap.json).
+
+Next quality work should test explicit musical arrangement, groove/timbre consistency and phrase continuity before additional cosmetic deck effects. Compare against this retained baseline and require human listening. No additional GPU request or audio-model fine-tuning was performed.
 
 ## Reproduction and limits
 

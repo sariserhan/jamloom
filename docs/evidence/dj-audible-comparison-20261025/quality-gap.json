@@ -1,0 +1,77 @@
+{
+  "status": "PASS descriptive comparison",
+  "quality": "PARTIAL - owner reports improvement but below supplied reference performances",
+  "owner_feedback": "it is getting better but we need much more improvement they are not in the level of the ones I have provided to you in downloads folder",
+  "limits": [
+    "One generated track per style; no statistical quality conclusion.",
+    "Reference mixes include human selection, mastered tracks, vocals and possible audience sound; not matched source conditions.",
+    "Features do not measure melody, groove quality, timbre realism or expert DJ technique.",
+    "No new training, audio uploads or paid compute. Blood Club excluded."
+  ],
+  "styles": {
+    "house": {
+      "sha256": "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+      "sample": {
+        "energy_range_p90_p10_db": 12.011,
+        "opening_15_minus_last_30_db": -2.983,
+        "median_low_band_fraction": 0.7815,
+        "mean_second_to_second_texture_distance": 0.2266
+      },
+      "reference_60_second_windows": 38,
+      "reference_p10_p50_p90": {
+        "energy_range_p90_p10_db": [
+          3.9262,
+          5.953,
+          8.5677
+        ],
+        "opening_15_minus_last_30_db": [
+          -4.2679,
+          0.5182,
+          3.9114
+        ],
+        "median_low_band_fraction": [
+          0.0315,
+          0.4628,
+          0.849
+        ],
+        "mean_second_to_second_texture_distance": [
+          0.0692,
+          0.1144,
+          0.1668
+        ]
+      }
+    },
+    "bass": {
+      "sha256": "938cc8392017b055f2f5820bd50dfa70ea8e58883083e39e086e675226007ae2",
+      "sample": {
+        "energy_range_p90_p10_db": 8.754,
+        "opening_15_minus_last_30_db": 2.7437,
+        "median_low_band_fraction": 0.8186,
+        "mean_second_to_second_texture_distance": 0.2333
+      },
+      "reference_60_second_windows": 276,
+      "reference_p10_p50_p90": {
+        "energy_range_p90_p10_db": [
+          2.954,
+          6.39,
+          11.616
+        ],
+        "opening_15_minus_last_30_db": [
+          -4.3872,
+          0.3097,
+          4.198
+        ],
+        "median_low_band_fraction": [
+          0.3178,
+          0.7705,
+          0.9212
+        ],
+        "mean_second_to_second_texture_distance": [
+          0.0821,
+          0.1677,
+          0.2704
+        ]
+      }
+    }
+  }
+}

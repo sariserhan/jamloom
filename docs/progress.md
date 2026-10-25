@@ -10,12 +10,13 @@
 
 ## Audible before/after comparison — 2026-10-25
 
-**PASS technical generation, mixing replay and playback.** Created a fresh 60-second house/Bass Playground pair on the same seed/model plus an old/current mixer comparison using identical retained originals. The approved replacement succeeded; both rentals are deleted. Total rental time was 732 seconds with about $0.062 observed debit within the original $3 cap. All four listening clips play and seek in Chromium/WebKit. Human listening remains NOT RUN; these test presets, not fine-tuned music weights.
+**PASS technical generation, mixing replay and playback.** Created a fresh 60-second house/Bass Playground pair on the same seed/model plus an old/current mixer comparison using identical retained originals. The approved replacement succeeded; both rentals are deleted. Total rental time was 732 seconds with about $0.062 observed debit within the original $3 cap. All four listening clips play and seek in Chromium/WebKit. Human listening is PARTIAL: the owner hears improvement but says the samples remain below the supplied references. These test presets, not fine-tuned music weights.
 
 - [x] Produce and serve an actual old/current mixer comparison without new compute.
 - [x] Record the exact fresh-generation pair and enforce budget/request/cleanup bounds.
 - [x] Complete the approved replacement, verify both fresh tracks and confirm cleanup.
-- [ ] Obtain human feedback on the new generation direction; live generation remains disabled.
+- [x] Record human feedback: improving, but below reference quality.
+- [ ] Improve and qualify musical arrangement, groove/timbre consistency and phrase continuity; live generation remains disabled.
 
 [Report and evidence](dj-audible-comparison.md). [Listen to all four clips](http://localhost:8766/audible-comparison/review/).
 
