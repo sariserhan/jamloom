@@ -1,0 +1,64 @@
+{
+  "status": "PASS technical",
+  "target_lufs": -24.58,
+  "files": [
+    {
+      "file": "track-1.wav",
+      "sha256": "f588187e55f5482dc5bf94e2bc84c9b4d5ddc12f64ee3a8c18f71d7d1bc653cf",
+      "original": {
+        "input_i": "-14.42",
+        "input_tp": "-0.91",
+        "input_lra": "4.80",
+        "input_thresh": "-24.49"
+      },
+      "gain_db": -10.159999999999998,
+      "review": {
+        "input_i": "-24.57",
+        "input_tp": "-11.07",
+        "input_lra": "4.70",
+        "input_thresh": "-34.64"
+      },
+      "listening_file": "listen-01.wav",
+      "listening_sha256": "2c8c635f3a2fa9682bae6b1923699d0d75d60d5bc15c11e0efcbd8d8e60fe823"
+    },
+    {
+      "file": "track-2.wav",
+      "sha256": "94919bee1f2108b78d9ca6bcdf84e9237938366674c30e607194337b6ab88513",
+      "original": {
+        "input_i": "-16.03",
+        "input_tp": "-0.98",
+        "input_lra": "6.70",
+        "input_thresh": "-26.27"
+      },
+      "gain_db": -8.549999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.53",
+        "input_lra": "6.70",
+        "input_thresh": "-34.82"
+      },
+      "listening_file": "listen-02.wav",
+      "listening_sha256": "348432c9375584b57e7b48e93cf8723aa49db2433f54e447b70d2a1152a557a9"
+    },
+    {
+      "file": "track-3.wav",
+      "sha256": "763c89137fdbcc703608414c1de11f7476a61369a66ffd9dd2062532717d81ca",
+      "original": {
+        "input_i": "-17.52",
+        "input_tp": "-1.00",
+        "input_lra": "3.60",
+        "input_thresh": "-27.55"
+      },
+      "gain_db": -7.059999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.06",
+        "input_lra": "3.50",
+        "input_thresh": "-34.61"
+      },
+      "listening_file": "listen-03.wav",
+      "listening_sha256": "792e84c52c843463faf43ea4589cd7ca7c96b5e916a8f22fb913324911b1c855"
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

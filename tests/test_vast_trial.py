@@ -14,6 +14,17 @@ spec.loader.exec_module(trial)
 
 
 class PriceBounds(unittest.TestCase):
+    def test_dj_retry_keeps_total_money_time_and_confirmed_cleanup(self):
+        prior=dict(starting_credit=9.5,destroy_requested_at=1600,destroy_confirmed_at=1606,
+                   started_at=1000,label='jamloom-dj-qualification-20261024',budget_usd=6)
+        self.assertEqual(trial.dj_retry_limits({'credit':9.49},prior,5000),(9.5,6794))
+        for change in [dict(destroy_confirmed_at=0),dict(destroy_confirmed_at=999),dict(destroy_confirmed_at=5001),dict(destroy_confirmed_at=2600),dict(started_at=float('nan')),dict(label='other')]:
+            with self.assertRaises(RuntimeError):trial.dj_retry_limits({'credit':9.49},{**prior,**change},5000)
+        with self.assertRaises(RuntimeError):trial.dj_retry_limits({'credit':5.5},prior,5000)
+        with patch.object(trial.sys,'argv',['vast_trial.py','rent','--dj-retry']),patch.object(trial,'api') as api,contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit):trial.main()
+            api.assert_not_called()
+
     def test_house_refinement_preserves_original_money_and_time_bounds(self):
         previous = dict(starting_credit=9.5, destroy_requested_at=400, label=trial.CLUB_CAMPAIGN,
                         budget_usd=6, started_at=0, deadline=2400)
@@ -62,6 +73,19 @@ class PriceBounds(unittest.TestCase):
                 api.assert_not_called()
                 self.assertEqual(trial.LABEL,'jamloom-dj-qualification-20261024')
                 self.assertEqual((trial.LEASE_SECONDS,trial.HOURLY_CEILING,trial.QUOTE_CEILING),(2400,.5,4))
+        finally:
+            for name,value in prior.items():setattr(trial,name,value)
+
+    def test_dj_retry_cannot_reuse_the_first_approval(self):
+        names=('ROOT','WORK','STATE','LABEL','LEASE_SECONDS','HOURLY_CEILING','QUOTE_CEILING')
+        prior={name:getattr(trial,name) for name in names}
+        try:
+            with tempfile.TemporaryDirectory() as folder,patch.object(trial,'ROOT',Path(folder)),patch.object(trial.sys,'argv',['vast_trial.py','rent','--dj-qualification','--dj-retry']),patch.object(trial,'api') as api:
+                first=Path(folder)/'docs/evidence/ai-dj-customer-flow-20261024/gpu-authorization.json';first.parent.mkdir(parents=True);first.write_text('{}')
+                with self.assertRaises(FileNotFoundError):trial.main()
+                api.assert_not_called()
+                self.assertEqual(trial.LABEL,'jamloom-dj-qualification-20261024-retry')
+                self.assertEqual(trial.STATE,Path(folder)/'build-dj-qualification-20261024-retry/trial-state.json')
         finally:
             for name,value in prior.items():setattr(trial,name,value)
 

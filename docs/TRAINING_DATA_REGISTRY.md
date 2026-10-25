@@ -72,3 +72,12 @@ and 40 evaluation performances; 13 unsupported-meter/tempo rows excluded.
 Velocity error improved, timing error did not; no model promotion or player use.
 [Fixed experiment and parameters](evidence/ai-dj-baseline-20261024/groove-timing.json).
 This does not turn the predominantly non-club corpus into a qualified club dataset.
+
+## Additional inference qualification — 2026-10-24
+
+Three new 60-second house outputs used the same pinned ACE-Step code and weights,
+with fresh seeds, no reference audio and no historical adapters. Actual weight
+hashes match the earlier trial. These are listening candidates, not admitted
+training examples or evidence of new model training. Human review is pending.
+[Execution and provenance](evidence/ai-dj-customer-flow-20261024/gpu-retry/),
+[technical scope](ai-dj-streaming-recordings.md).

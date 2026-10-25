@@ -1,0 +1,7 @@
+{
+  "checked_at": "2026-10-25T02:07:07.582280+00:00",
+  "complete_inventory_count": 0,
+  "no_active_instances": true,
+  "observed_total_debit_usd": 0.06608126279999915,
+  "scope": "Read-only complete inventory and balance delta for both qualification attempts, not final invoice"
+}

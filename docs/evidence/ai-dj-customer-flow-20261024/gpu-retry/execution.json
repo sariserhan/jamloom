@@ -1,0 +1,33 @@
+{
+  "status": "PASS generation and shutdown; playback and listening tracked separately",
+  "instance_id": 57594141,
+  "gpu": "RTX 3090",
+  "host_id": 608696,
+  "previous_failed_host_excluded": true,
+  "outputs": 3,
+  "seconds_per_track": 60,
+  "render_seconds": [
+    5.042573933955282,
+    4.846390524064191,
+    2.069966497947462
+  ],
+  "initialization_seconds": 19.194506861967966,
+  "container_start_and_connection_seconds": 366.18182611465454,
+  "rental_to_confirmed_absence_seconds": 787.3734757900238,
+  "total_rental_seconds_including_first_failure": 1393.3730878829956,
+  "maximum_total_rental_seconds": 2400,
+  "authorized_total_budget_usd": 6,
+  "observed_total_debit_usd": 0.06608126279999915,
+  "cost_scope": "Combined observed account balance change for the failed attempt and this replacement; not a final invoice or production per-song price",
+  "checked_at": "2026-10-25T02:02:39.902480+00:00",
+  "cleanup": "PASS: independent watchdog confirmed destruction; complete account inventory empty",
+  "script_and_transfer_hashes": "PASS",
+  "weights_match_prior_pinned_trial": true,
+  "run_log_sha256": "5652acc030461803d284b36411b0df914072b20266ab37e03096f0bd665c3034",
+  "human_listening": "NOT RUN",
+  "reference_audio_used": false,
+  "new_training": false,
+  "new_data_purchases": 0,
+  "public_activation": false,
+  "push_or_deployment": false
+}

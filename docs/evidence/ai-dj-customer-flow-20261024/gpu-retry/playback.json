@@ -1,0 +1,48 @@
+{
+  "status": "stopped",
+  "scope": "Retrieved GPU outputs; unattended real-time Chromium mixer and capture; no live GPU dispatch",
+  "physicalAudio": "NOT RUN; isolated browser output",
+  "humanListening": "NOT RUN",
+  "history": [
+    "0",
+    "1",
+    "2"
+  ],
+  "seconds": 175.98,
+  "channels": 2,
+  "peak": 0.4051017463207245,
+  "rms": 0.060709570899796415,
+  "mime": "audio/webm;codecs=opus",
+  "changes": [
+    {
+      "length": 0,
+      "elapsed": 0,
+      "status": "idle"
+    },
+    {
+      "length": 1,
+      "elapsed": 0,
+      "status": "playing"
+    },
+    {
+      "length": 2,
+      "elapsed": 60,
+      "status": "playing"
+    },
+    {
+      "length": 3,
+      "elapsed": 117.9,
+      "status": "playing"
+    }
+  ],
+  "plans": [
+    {
+      "plan": "Timing or mix sections unverified/incompatible · short handoff, no FX",
+      "elapsed": 0.09999999999999998,
+      "transitionIn": 57.85
+    }
+  ],
+  "muted": true,
+  "sha256": "f6925d29e85325db85e2d37c4a173dabf63f97322a7c1b0100254ea6e984a547",
+  "errors": []
+}

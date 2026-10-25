@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "layouts": [
+    {
+      "name": "desktop",
+      "width": 1280,
+      "overflow": false,
+      "violations": 0
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "overflow": false,
+      "violations": 0
+    }
+  ],
+  "mutedPlayers": 4,
+  "errors": []
+}
