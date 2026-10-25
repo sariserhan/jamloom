@@ -1,0 +1,348 @@
+
+> jamloom-site@0.1.0 test:wallet
+> tsx --test --test-concurrency=1 tests/wallet.test.ts tests/dj-allowance.test.ts tests/generation-queue.test.ts tests/generation-watchdog.test.ts tests/vast-provider.test.ts tests/dna-commerce.test.ts tests/cloud-songs.test.ts
+
+TAP version 13
+# Subtest: cloud song configuration is opt-in and requires a bounded rate
+ok 1 - cloud song configuration is opt-in and requires a bounded rate
+  ---
+  duration_ms: 0.637417
+  type: 'test'
+  ...
+# Subtest: Improvise receipts require a bounded audible use of this recording and this output
+ok 2 - Improvise receipts require a bounded audible use of this recording and this output
+  ---
+  duration_ms: 0.147958
+  type: 'test'
+  ...
+# Subtest: real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+    # Subtest: Improvise omission or mismatched recording refunds; valid loops settle once
+    ok 1 - Improvise omission or mismatched recording refunds; valid loops settle once
+      ---
+      duration_ms: 301.590666
+      type: 'test'
+      ...
+    # Subtest: one request is reserved and dispatched once under duplicate concurrent calls
+    ok 2 - one request is reserved and dispatched once under duplicate concurrent calls
+      ---
+      duration_ms: 21.486125
+      type: 'test'
+      ...
+    # Subtest: several users queue independently; cancellation refunds while other songs continue
+    ok 3 - several users queue independently; cancellation refunds while other songs continue
+      ---
+      duration_ms: 507.471125
+      type: 'test'
+      ...
+    # Subtest: duration boundaries settle once and a mismatched saved length refunds
+    ok 4 - duration boundaries settle once and a mismatched saved length refunds
+      ---
+      duration_ms: 734.84325
+      type: 'test'
+      ...
+    # Subtest: restart after output storage failure uses persisted receipt and charges only once
+    ok 5 - restart after output storage failure uses persisted receipt and charges only once
+      ---
+      duration_ms: 386.919708
+      type: 'test'
+      ...
+    # Subtest: saved descriptions reach the next worker only for their owner
+    ok 6 - saved descriptions reach the next worker only for their owner
+      ---
+      duration_ms: 306.246875
+      type: 'test'
+      ...
+    # Subtest: failed jobs refund all credits and invalid completed output cannot become public
+    ok 7 - failed jobs refund all credits and invalid completed output cannot become public
+      ---
+      duration_ms: 217.773459
+      type: 'test'
+      ...
+    # Subtest: website input, feedback ownership, personalization and consent withdrawal
+    ok 8 - website input, feedback ownership, personalization and consent withdrawal
+      ---
+      duration_ms: 327.730416
+      type: 'test'
+      ...
+    # Subtest: disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+    ok 9 - disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+      ---
+      duration_ms: 23.878459
+      type: 'test'
+      ...
+    # Subtest: lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+    ok 10 - lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+      ---
+      duration_ms: 8.169584
+      type: 'test'
+      ...
+    # Subtest: missing provider receipt refunds only after the full provider TTL and a quiet queue
+    ok 11 - missing provider receipt refunds only after the full provider TTL and a quiet queue
+      ---
+      duration_ms: 9.404416
+      type: 'test'
+      ...
+    # Subtest: test credit lots cannot fund live requests or inflate live balances
+    ok 12 - test credit lots cannot fund live requests or inflate live balances
+      ---
+      duration_ms: 2.0535
+      type: 'test'
+      ...
+    # Subtest: recovery rotates ambiguous jobs and releases credits after persistent storage failure
+    ok 13 - recovery rotates ambiguous jobs and releases credits after persistent storage failure
+      ---
+      duration_ms: 311.072209
+      type: 'test'
+      ...
+    1..13
+ok 3 - real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+  ---
+  duration_ms: 3351.838666
+  type: 'test'
+  ...
+# Subtest: DJ allowance retains unused value without changing whole-credit account balances
+    # Subtest: one credit funds ten public minutes or eight private minutes, with no per-minute rounding
+    ok 1 - one credit funds ten public minutes or eight private minutes, with no per-minute rounding
+      ---
+      duration_ms: 74.871042
+      type: 'test'
+      ...
+    # Subtest: cancelled and failed work refunds unused top-ups, with immutable settlement retries
+    ok 2 - cancelled and failed work refunds unused top-ups, with immutable settlement retries
+      ---
+      duration_ms: 8.288541
+      type: 'test'
+      ...
+    # Subtest: a partial top-up survives Stop and process restart; failure restores its reserved allowance
+    ok 3 - a partial top-up survives Stop and process restart; failure restores its reserved allowance
+      ---
+      duration_ms: 10.495625
+      type: 'test'
+      ...
+    # Subtest: quote mismatch and racing starts cannot convert twice or overdraw allowance
+    ok 4 - quote mismatch and racing starts cannot convert twice or overdraw allowance
+      ---
+      duration_ms: 7.683084
+      type: 'test'
+      ...
+    # Subtest: purchase disputes cannot return converted or held credits into spendable allowance
+    ok 5 - purchase disputes cannot return converted or held credits into spendable allowance
+      ---
+      duration_ms: 9.213083
+      type: 'test'
+      ...
+    # Subtest: mixed purchase lots preserve carried value and return only an untouched failed top-up
+    ok 6 - mixed purchase lots preserve carried value and return only an untouched failed top-up
+      ---
+      duration_ms: 27.098958
+      type: 'test'
+      ...
+    # Subtest: a new session can begin with carried allowance and top up later within its signed maximum
+    ok 7 - a new session can begin with carried allowance and top up later within its signed maximum
+      ---
+      duration_ms: 566.570542
+      type: 'test'
+      ...
+    # Subtest: a stale quote cannot spend a lower-value purchase lot even when the credit count is unchanged
+    ok 8 - a stale quote cannot spend a lower-value purchase lot even when the credit count is unchanged
+      ---
+      duration_ms: 13.698375
+      type: 'test'
+      ...
+    # Subtest: automatic top-ups stop before buying less music per credit from the next purchase lot
+    ok 9 - automatic top-ups stop before buying less music per credit from the next purchase lot
+      ---
+      duration_ms: 416.480459
+      type: 'test'
+      ...
+    # Subtest: unavailable capacity rolls back a top-up and legacy quotes cannot switch billing modes
+    ok 10 - unavailable capacity rolls back a top-up and legacy quotes cannot switch billing modes
+      ---
+      duration_ms: 9.537459
+      type: 'test'
+      ...
+    # Subtest: fractional micro-unit purchase values retain a nonzero bound without floating-point money
+    ok 11 - fractional micro-unit purchase values retain a nonzero bound without floating-point money
+      ---
+      duration_ms: 10.514292
+      type: 'test'
+      ...
+    1..11
+ok 4 - DJ allowance retains unused value without changing whole-credit account balances
+  ---
+  duration_ms: 1327.53925
+  type: 'test'
+  ...
+# Subtest: DNA requires explicit visibility and public-sharing permission
+ok 5 - DNA requires explicit visibility and public-sharing permission
+  ---
+  duration_ms: 0.523708
+  type: 'test'
+  ...
+# Subtest: real Postgres Music DNA credits, privacy, idempotence, failure and recovery
+    # Subtest: whole playlist account profiles persist all Unicode favorites privately
+    ok 1 - whole playlist account profiles persist all Unicode favorites privately
+      ---
+      duration_ms: 23.123458
+      type: 'test'
+      ...
+    # Subtest: song descriptions survive restart and stay bound to owner, billing environment and favorites
+    ok 2 - song descriptions survive restart and stay bound to owner, billing environment and favorites
+      ---
+      duration_ms: 88.924792
+      type: 'test'
+      ...
+    # Subtest: price, atomic reservation and duplicate request binding
+    ok 3 - price, atomic reservation and duplicate request binding
+      ---
+      duration_ms: 15.544875
+      type: 'test'
+      ...
+    # Subtest: private audio and notes are owner-only, with full premium charged once
+    ok 4 - private audio and notes are owner-only, with full premium charged once
+      ---
+      duration_ms: 24.166416
+      type: 'test'
+      ...
+    # Subtest: public success enters the feed, without favorites or identities; withdrawal removes access
+    ok 5 - public success enters the feed, without favorites or identities; withdrawal removes access
+      ---
+      duration_ms: 14.737125
+      type: 'test'
+      ...
+    # Subtest: failure refunds all held credits and never publishes; anonymous generation is denied
+    ok 6 - failure refunds all held credits and never publishes; anonymous generation is denied
+      ---
+      duration_ms: 6.208125
+      type: 'test'
+      ...
+    # Subtest: interrupted startup and missing worker files recover without stranded credits
+    ok 7 - interrupted startup and missing worker files recover without stranded credits
+      ---
+      duration_ms: 11.125833
+      type: 'test'
+      ...
+    # Subtest: cloud storage failure holds completion; durable private/public songs survive without renderer files
+    ok 8 - cloud storage failure holds completion; durable private/public songs survive without renderer files
+      ---
+      duration_ms: 20.038125
+      type: 'test'
+      ...
+    # Subtest: gallery filters cover all pages without exposing private, withdrawn or other-product metadata
+    ok 9 - gallery filters cover all pages without exposing private, withdrawn or other-product metadata
+      ---
+      duration_ms: 86.367167
+      type: 'test'
+      ...
+    1..9
+ok 6 - real Postgres Music DNA credits, privacy, idempotence, failure and recovery
+  ---
+  duration_ms: 472.356959
+  type: 'test'
+  ...
+# Subtest: durable local queue: one claim, lease loss, cancellation, crash recovery, funded immutable work
+ok 7 - durable local queue: one claim, lease loss, cancellation, crash recovery, funded immutable work
+  ---
+  duration_ms: 156.155583
+  type: 'test'
+  ...
+# Subtest: durable watchdog: lost create/delete responses, restart, cancellation, identity/cost holds and settlement recovery
+ok 8 - durable watchdog: lost create/delete responses, restart, cancellation, identity/cost holds and settlement recovery
+  ---
+  duration_ms: 173.098
+  type: 'test'
+  ...
+# Subtest: Vast adapter verifies account, traverses complete inventory, limits returned fields and confirms delete response
+ok 9 - Vast adapter verifies account, traverses complete inventory, limits returned fields and confirms delete response
+  ---
+  duration_ms: 17.182166
+  type: 'test'
+  ...
+# Subtest: invalid, incomplete, changing or cyclic inventory is never interpreted as absence
+ok 10 - invalid, incomplete, changing or cyclic inventory is never interpreted as absence
+  ---
+  duration_ms: 1.537833
+  type: 'test'
+  ...
+# Subtest: provider failures, body size and error text cannot leak secrets or prove destruction
+ok 11 - provider failures, body size and error text cannot leak secrets or prove destruction
+  ---
+  duration_ms: 1.470375
+  type: 'test'
+  ...
+# Subtest: provider billing verifies identity and complete pagination, rounds costs up and never asserts finality
+ok 12 - provider billing verifies identity and complete pagination, rounds costs up and never asserts finality
+  ---
+  duration_ms: 1.082083
+  type: 'test'
+  ...
+# Subtest: warm qualification billing uses the same exact instance and label verification
+ok 13 - warm qualification billing uses the same exact instance and label verification
+  ---
+  duration_ms: 0.209083
+  type: 'test'
+  ...
+# Subtest: real Postgres ledger: conservation, concurrency, receipts, tenant isolation and costs
+    # Subtest: private premium is reserved atomically, rounded, captured only on success and bound to retries
+    ok 1 - private premium is reserved atomically, rounded, captured only on success and bound to retries
+      ---
+      duration_ms: 22.773458
+      type: 'test'
+      ...
+    # Subtest: receipt replay grants exactly once and cannot move between accounts
+    ok 2 - receipt replay grants exactly once and cannot move between accounts
+      ---
+      duration_ms: 8.374833
+      type: 'test'
+      ...
+    # Subtest: parallel reservations enforce one active job and no overspend
+    ok 3 - parallel reservations enforce one active job and no overspend
+      ---
+      duration_ms: 8.300958
+      type: 'test'
+      ...
+    # Subtest: zero-cost cancellation returns original lots; changed quote rejected
+    ok 4 - zero-cost cancellation returns original lots; changed quote rejected
+      ---
+      duration_ms: 8.021625
+      type: 'test'
+      ...
+    # Subtest: Apple sandbox lots preserve their own economics, ledgers immutable, disputes freeze
+    ok 5 - Apple sandbox lots preserve their own economics, ledgers immutable, disputes freeze
+      ---
+      duration_ms: 8.372709
+      type: 'test'
+      ...
+    # Subtest: unfunded jobs and invalid cost caps rejected without mutation
+    ok 6 - unfunded jobs and invalid cost caps rejected without mutation
+      ---
+      duration_ms: 2.972917
+      type: 'test'
+      ...
+    # Subtest: out-of-order refund and grant races cannot leave spendable disputed credits
+    ok 7 - out-of-order refund and grant races cannot leave spendable disputed credits
+      ---
+      duration_ms: 6.205042
+      type: 'test'
+      ...
+    # Subtest: taste profiles are owner-scoped with optimistic concurrency and deletion
+    ok 8 - taste profiles are owner-scoped with optimistic concurrency and deletion
+      ---
+      duration_ms: 2.918875
+      type: 'test'
+      ...
+    1..8
+ok 14 - real Postgres ledger: conservation, concurrency, receipts, tenant isolation and costs
+  ---
+  duration_ms: 239.368167
+  type: 'test'
+  ...
+1..14
+# tests 55
+# suites 0
+# pass 55
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6652.946

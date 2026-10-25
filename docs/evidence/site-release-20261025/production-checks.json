@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-10-25T08:37:47.570Z",
+  "base": "https://www.jamloom.com",
+  "pages": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/start",
+      "status": 200
+    },
+    {
+      "path": "/community",
+      "status": 200
+    },
+    {
+      "path": "/tour",
+      "status": 200
+    },
+    {
+      "path": "/listen/music-dna/06d89abd7d194ddf81bbc54af3e9b67f",
+      "status": 200
+    }
+  ],
+  "collections": {
+    "curated": 166,
+    "dna": 0,
+    "improvise": 0,
+    "sets": 0,
+    "catalogue": 0
+  },
+  "audio": [
+    {
+      "product": "improvise",
+      "id": "326b3d1c88049c15342f8abfbbb079f1",
+      "status": 206,
+      "headerBytes": 44
+    },
+    {
+      "product": "music-dna",
+      "id": "2c4705adcf7d2ba21d2c41eda6f9bee6",
+      "status": 206,
+      "headerBytes": 44
+    }
+  ],
+  "browsers": [
+    {
+      "name": "chromium",
+      "status": "PASS",
+      "actualR2Playback": true,
+      "favorites": true,
+      "navigation": true,
+      "mobile": true,
+      "videoSeconds": 14.995479,
+      "videoAudioPeak": 0.9845559597015381
+    },
+    {
+      "name": "webkit",
+      "status": "PASS",
+      "actualR2Playback": true,
+      "favorites": true,
+      "navigation": true,
+      "mobile": true,
+      "videoSeconds": 15.113333,
+      "videoAudioPeak": 0.9658883213996887
+    }
+  ],
+  "mutations": "No hosted writes, generation, purchases or sign-ins",
+  "adminAnonymousDenied": 307,
+  "status": "PASS"
+}

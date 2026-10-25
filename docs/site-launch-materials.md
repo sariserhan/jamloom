@@ -36,3 +36,5 @@ For a shareable generated song: open Community, choose a song page, then use **S
 ## Screenshot set
 
 Current rendered screenshots are recorded under `docs/evidence/site-release-20261025/`: Community desktop/mobile, visual chooser, song page and cover artwork. Browser export validation uses an explicitly synthetic audio fixture; those exports are not customer music or musical-quality samples. Admin screenshots are internal evidence and must not be used as public promotional material.
+
+Production-verified launch assets now include `live-chromium-community.png`, `live-webkit-community.png`, mobile screenshots and public song pages. [The 15-second Community video](evidence/site-release-20261025/community-share-demo.mp4) exports the actual public Concrete Roots audio from R2; both Chromium and WebKit exports were decoded and played successfully. This is a product demonstration, not a new musical-quality claim.

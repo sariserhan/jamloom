@@ -1,6 +1,6 @@
 ## Website discovery and release — 2026-10-25
 
-**PASS local implementation and verification; deployment pending.** Owner explicitly authorized all eight improvements and GitHub push/deployment after verification, superseding the earlier no-push instruction. No new GPU spending, live purchases or AI DJ service activation is included.
+**PASS implementation, GitHub deployment, full platform CI and live browser/API verification.** Owner explicitly authorized all eight improvements and GitHub push/deployment after verification, superseding the earlier no-push instruction. No new GPU spending, live purchases or AI DJ service activation is included.
 
 - [x] Implement visual starting points and unified public Community discovery.
 - [x] Extend the shared player with queue controls and browser favorites; add public credit pages.
@@ -10,7 +10,7 @@
 - [x] Prepare a visual product tour with real workspace images and interactive decks.
 - [x] Verify privacy, playback, exports, responsive screens, metrics and regression checks.
 - [x] Capture launch material and record evidence.
-- [ ] Push through GitHub, verify deployment and anonymous production Community/audio.
+- [x] Push through GitHub, verify deployment and anonymous production Community/audio: 166 curated songs, public feeds, real R2 playback and exports pass Chromium/WebKit.
 
 [Release report](site-discovery-release.md).
 
@@ -20,14 +20,14 @@
 
 ## Public cloud music and mobile deck repair — 2026-10-25
 
-**PASS local implementation and checks; PARTIAL release.** Public cloud Improvise, Music DNA and complete AI DJ sets are available through narrow anonymous read routes. New cloud songs default to Public with an explicit Private choice; existing private songs remain private and on-device results are not uploaded. Native All songs combines all 166 curated songs and public customer results; homepage showcases include new community songs with three-row pagination. Corner-dot and jog-display collisions are fixed in the mobile deck. Jamloom 0.9.2 (15) is signed and installed. No website push/deployment or App Store upload; production public-song access still needs the owner's deployment.
+**PASS local implementation and checks; PARTIAL release.** Public cloud Improvise, Music DNA and complete AI DJ sets are available through narrow anonymous read routes. New cloud songs default to Public with an explicit Private choice; existing private songs remain private and on-device results are not uploaded. Native All songs combines all 166 curated songs and public customer results; homepage showcases include new community songs with three-row pagination. Corner-dot and jog-display collisions are fixed in the mobile deck. Jamloom 0.9.2 (15) is signed and installed. Website deployment and anonymous production catalogue/audio checks now PASS in the website release above. App Store upload and a fresh physical iPhone Community check remain NOT RUN.
 
 - [x] Fix the shared public-read gate and keep private inputs, withdrawn songs and generation protected.
 - [x] Align web/native cloud sharing defaults, preserve private pricing and add public DJ sets to Community.
 - [x] Verify anonymous native loading of all 166 curated songs and real R2 audio against the final local production server.
 - [x] Recheck homepage pagination/refresh, Chromium/WebKit privacy flows, native Favorites/playback, landscape and rotation.
 - [x] Remove overlapping mobile deck ornaments and compact the wheel display; sign and install 0.9.2 (15).
-- [ ] Owner bulk push/deployment and post-deployment anonymous phone catalogue check.
+- [x] Owner-authorized GitHub push/deployment and anonymous checks of the collection/audio endpoints used by the phone. Fresh physical iPhone observation remains NOT RUN.
 - [x] Owner review of the updated physical landscape layout: “Looks clear now” on 0.9.2. Physical iPad/foldable remain NOT RUN.
 
 [Report](public-community.md), [checks](evidence/public-community-20261025/checks.json), [native deck](evidence/public-community-20261025/deck-native-landscape.png).

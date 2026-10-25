@@ -33,7 +33,10 @@ The owner requested all eight proposed improvements and explicitly authorized pu
 | Video exports | PASS — both engines, video plus measured audible audio, approximately 15 seconds; cancellation | Browser checks above; synthetic tone fixture only |
 | Client bundle | PASS — 47 client files, no server secrets | [Audit](evidence/site-release-20261025/bundle-audit.json) |
 | Production database compatibility | PASS — read-only ledger comparison and operations queries | [Database check](evidence/site-release-20261025/database-check.json) |
-| Push, hosted CI and production verification | NOT RUN — next release step | Recorded after deployment |
+| GitHub push and production deployment | PASS — correction `0d67151`, Vercel `dpl_CkNGc2yMq73XdEkV2tFtyanUY116` | [Deployment](https://vercel.com/ssari/jamloom/CkNGc2yMq73XdEkV2tFtyanUY116) |
+| Anonymous production APIs and real R2 playback/export | PASS — 166 curated songs, both browser engines, mobile, favorites and continuous navigation | [Live checks](evidence/site-release-20261025/production-checks.json) |
+| Full hosted CI | PASS — all eight jobs, including iPhone compilation, Mac companion, sanitizers and cross-platform comparison | [CI receipt](evidence/site-release-20261025/hosted-ci.json) |
+| Corrected wallet/allowance suite | PASS — 55 locally; hosted Academy and website jobs pass | [Wallet log](evidence/site-release-20261025/wallet-ci-fix.log), [CI](https://github.com/sariserhan/jamloom/actions/runs/40177186575) |
 
 The browser suite exercises real authentication and isolated PostgreSQL state, public/private/withdrawn metadata, artist-credit lookup, failed-feed recovery, continuous playback across navigation, favorites after reload, actual canvas/audio video export, artwork download, feedback save/reload and administrator isolation. Audio export uses a synthetic tone; no generated-quality claim is inferred.
 
@@ -47,10 +50,14 @@ JAMLOOM_TEST_DATABASE_URL=postgresql://127.0.0.1:5432/postgres node --import tsx
 npm run audit:bundle
 ```
 
-The isolated browser suite cleans its test database, accounts and audio. Real production audio and phone API checks follow the GitHub deployment. Physical iPhone playback has not been repeated in this website release.
+The isolated browser suite cleans its test database, accounts and audio. Real production audio and the public collection/audio endpoints consumed by the phone now pass after the GitHub deployment. Physical iPhone playback has not been repeated in this website release.
 
 ## First hosted verification and corrections
 
 Implementation `80c1243` was pushed through GitHub and Vercel deployment `dpl_2YCJzKZXc8QoS5Wm3LX1Bv7arERr` reached READY on the production domains. Initial read-only verification found the public DJ-set feed returning 503 because Production lacked `R2_AI_DJ_BUCKET`. The already-existing dedicated bucket `jamloom-ai-dj-sessions` is now configured for the next Git deployment; no new bucket, credential permissions, generation flag or purchase flag was introduced.
 
-GitHub run [40176946471](https://github.com/sariserhan/jamloom/actions/runs/40176946471) passed the website and desktop jobs but exposed a hard-coded passwordless database URL in the DJ allowance test and concurrent database-drop timeouts in the wallet test group. The allowance test now uses the existing isolated test URL and loopback guard; wallet test files run sequentially while their internal concurrency assertions remain intact. Production database timeouts are unchanged. Final hosted verification follows the correction deployment.
+GitHub run [40176946471](https://github.com/sariserhan/jamloom/actions/runs/40176946471) passed the website and desktop jobs but exposed a hard-coded passwordless database URL in the DJ allowance test and concurrent database-drop timeouts in the wallet test group. The allowance test now uses the existing isolated test URL and loopback guard; wallet test files run sequentially while their internal concurrency assertions remain intact. Production database timeouts are unchanged. The correction deployment passes anonymous production APIs and real R2 playback/video export in Chromium and WebKit. No hosted customer data was written by these checks.
+
+Production Community currently contains 166 curated songs; public customer DNA/Improvise collections, DJ sets and uploaded catalogue feeds return valid empty lists. Test qualification outputs were not republished. The browser harness waits for populated cards rather than assuming an empty feed response means all collections have finished. Reproduce the read-only live check with `node tests/discovery-live.mjs` from `apps/site`.
+
+All eight hosted CI jobs pass on `0d67151`. The final follow-up contains release evidence, tracker updates and live-check timing/screenshot stabilization only; application runtime source is unchanged from that fully verified deployment.

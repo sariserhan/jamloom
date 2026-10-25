@@ -1,0 +1,17 @@
+{
+  "id": "dpl_CkNGc2yMq73XdEkV2tFtyanUY116",
+  "url": "jamloom-bwai6xxn4-ssari.vercel.app",
+  "target": "production",
+  "readyState": "READY",
+  "aliases": [
+    "www.jamloom.com",
+    "site-kappa-sable-52.vercel.app",
+    "jamloom.com",
+    "jamloom-ssari.vercel.app",
+    "jamloom-git-main-ssari.vercel.app"
+  ],
+  "checkedAt": "2026-10-25T08:39:16.488873+00:00",
+  "commit": "0d6715135987a3325f61cc83c95c5b0b0049eaac",
+  "source": "GitHub main push",
+  "configurationCorrection": "Existing R2_AI_DJ_BUCKET added to Production; no generation or purchase flags changed"
+}

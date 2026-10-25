@@ -1,6 +1,6 @@
 # Public cloud music and mobile deck repair — 2026-10-25
 
-**PASS local implementation and automated verification; PARTIAL release.** Jamloom 0.9.2 (15) is signed, installed and launched on the owner's iPhone. Website changes remain local: no push or deployment. The installed app will still encounter the old production owner-preview gate until the owner deploys the website fix.
+**PASS implementation, website deployment and public production API checks; PARTIAL native release.** Jamloom 0.9.2 (15) is signed, installed and launched on the owner's iPhone. The owner-authorized website deployment removes the blanket public-song gate. Anonymous production reads now return all 166 curated songs, public collection feeds and valid R2 audio. A new physical iPhone Community check and App Store upload remain NOT RUN. [Website release and live evidence](site-discovery-release.md).
 
 The cause of the missing mobile songs was the blanket coming-soon proxy gate returning HTTP 503 before the public song handlers ran. The initial 0.9.1 owner-sign-in explanation was incorrect and is superseded. A narrow GET exception now admits public song collections, authorized audio and public DJ sets. Existing handlers still check private ownership, public consent, withdrawal, billing mode and recording completeness. Generation, input recordings and other launch-gated APIs remain closed.
 
@@ -31,10 +31,11 @@ The cause of the missing mobile songs was the blanket coming-soon proxy gate ret
 | Physical installation/launch | PASS 0.9.2 (15), launched after the owner unlocked the phone |
 | Owner review of this landscape update | PASS: owner says “Looks clear now” on installed 0.9.2 |
 | Physical iPad/foldable | NOT RUN |
-| Website push/deployment, App Store upload | NOT RUN |
+| Website push/deployment and anonymous production collection/audio checks | PASS — GitHub deployment and Chromium/WebKit real R2 checks |
+| Fresh physical iPhone Community check and App Store upload | NOT RUN |
 
 [Machine-readable checks](evidence/public-community-20261025/checks.json), [HTTP status/counts](evidence/public-community-20261025/public-http.json), [homepage browser checks](evidence/public-community-20261025/home-browser.json), [deck geometry](evidence/public-community-20261025/deck-webkit.json), [before](evidence/public-community-20261025/deck-before.png), [after](evidence/public-community-20261025/deck-after.png), [native landscape](evidence/public-community-20261025/deck-native-landscape.png).
 
 Full local Xcode logs/xcresults are retained in `renders/mobile-community-fix-20261025/`: `final-phone-tests`, `final-native-http`, `final-device-build.log`, `final-bundle.json`, `final-install.txt` and `final-launch-unlocked.txt`. The first WebM test used an unattached view and failed; attaching it to a real window fixes the harness and actual playback passes. No codec workaround or production bypass was introduced. Existing owner evidence for 0.9.0 remains historical and does not count as acceptance of this update.
 
-On 2026-10-25 the owner reported Community was unavailable. A fresh anonymous production GET `/api/catalogue` returned HTTP 503 with the coming-soon message, confirming the website fix is still awaiting owner deployment. Signing in or reinstalling the phone app does not remove that server gate.
+On 2026-10-25 the owner reported Community was unavailable. A fresh anonymous production GET `/api/catalogue` returned HTTP 503 with the coming-soon message, confirming the website fix was then awaiting owner deployment. The later owner-authorized website release resolves this HTTP gate; the hosted verification above supersedes that result. Signing in or reinstalling the phone app does not remove that server gate.
