@@ -53,6 +53,22 @@ class PriceBounds(unittest.TestCase):
         finally:
             for name, value in previous.items(): setattr(trial, name, value)
 
+    def test_dj_qualification_requires_separate_approval(self):
+        names=('ROOT','WORK','STATE','LABEL','LEASE_SECONDS','HOURLY_CEILING','QUOTE_CEILING')
+        prior={name:getattr(trial,name) for name in names}
+        try:
+            with tempfile.TemporaryDirectory() as folder, patch.object(trial,'ROOT',Path(folder)), patch.object(trial.sys,'argv',['vast_trial.py','rent','--dj-qualification']), patch.object(trial,'api') as api:
+                with self.assertRaises(FileNotFoundError): trial.main()
+                api.assert_not_called()
+                self.assertEqual(trial.LABEL,'jamloom-dj-qualification-20261024')
+                self.assertEqual((trial.LEASE_SECONDS,trial.HOURLY_CEILING,trial.QUOTE_CEILING),(2400,.5,4))
+        finally:
+            for name,value in prior.items():setattr(trial,name,value)
+
+    def test_inventory_cannot_hide_missing_instances(self):
+        with patch.object(trial,'api',return_value=dict(success=True,instances=[],instances_found=0,total_instances=1,next_token=None)):
+            with self.assertRaises(RuntimeError):trial.instances()
+
     def test_musician_profile_isolated_and_bounded(self):
         names = ('ROOT', 'WORK', 'STATE', 'LABEL', 'LEASE_SECONDS', 'HOURLY_CEILING')
         previous = {name: getattr(trial, name) for name in names}

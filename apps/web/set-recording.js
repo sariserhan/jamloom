@@ -3,7 +3,7 @@ import {resumeAudio} from './audio.js';
 import {sha256} from './live-take.js';
 import {recordingTitle,recordingFileStem} from './set-recording-name.js';
 export const SET_SECONDS=3600,SET_BYTES=96*1024*1024;
-export function attachSetRecording({graph,context,mixer,emit,element: $=studioElement,onHidden=onStudioHidden,workletURL='./set-meter-worklet.js',canStart=()=>true,getTitle=()=>'',onComplete=(_take)=>{}}){
+export function attachSetRecording({graph,context,mixer,emit,element: $=studioElement,onHidden=onStudioHidden,workletURL='./set-meter-worklet.js',canStart=()=>true,getTitle=()=>'',getVisibility=()=> 'private',onComplete=(_take)=>{}}){
  let recorder,destination,meter,sink,chunks=[],bytes=0,url,receiptURL,token=0,timer,loadedContext,summary=null,starting=false;
  let finished=Promise.resolve(),finish,begin;
  function disconnect(){clearTimeout(timer);if(meter){try{mixer().meter.disconnect(meter);}catch{}meter.port.close();meter.disconnect();sink.disconnect();meter=null;}if(destination){try{mixer().meter.disconnect(destination);}catch{}destination.stream.getTracks().forEach(t=>t.stop());destination=null;}}
@@ -16,7 +16,7 @@ export function attachSetRecording({graph,context,mixer,emit,element: $=studioEl
  }
  function stop(){
   if(starting)clear('Recording cancelled before capture started.');
-  if(recorder&&['recording','paused'].includes(recorder.state)){$('set-record-stop').disabled=true;$('set-record-status').textContent='Finishing your private set…';clearTimeout(timer);timer=setTimeout(()=>clear('Recorder did not finish. Incomplete set discarded.'),8000);meter.port.postMessage({type:'stop'});recorder.stop();}
+  if(recorder&&['recording','paused'].includes(recorder.state)){$('set-record-stop').disabled=true;$('set-record-status').textContent='Finishing your set…';clearTimeout(timer);timer=setTimeout(()=>clear('Recorder did not finish. Incomplete set discarded.'),8000);meter.port.postMessage({type:'stop'});recorder.stop();}
   return finished;
  }
  /** @returns {Promise<boolean>} */
@@ -34,7 +34,7 @@ export function attachSetRecording({graph,context,mixer,emit,element: $=studioEl
    let finishMeter;const measured=new Promise(resolve=>finishMeter=resolve);
    // Audio frames can lag wall time under load; allow five minutes of bounded wall-clock grace for the measured hour.
    meter.port.onmessage=({data})=>{if(version!==token)return;if(data.type==='ready'){if(recorder?.state==='inactive'){recorder.start(1000);starting=false;begin?.(true);begin=null;clearTimeout(timer);timer=setTimeout(stop,(SET_SECONDS+300)*1000);controls();emit({action:'recording.start'});}}else if(data.type==='meter'){
-    emit({action:'recording.sample',...data});$('set-record-status').textContent=`Recording private set · ${Math.floor(data.frames/data.rate)} / ${SET_SECONDS} seconds`;
+    emit({action:'recording.sample',...data});$('set-record-status').textContent=`Recording ${getVisibility()==='public'?'public':'private'} set · ${Math.floor(data.frames/data.rate)} / ${SET_SECONDS} seconds`;
     if(data.frames/data.rate>=SET_SECONDS)stop();
    }else if(data.type==='stopped'){summary=data;finishMeter(data);}};
    const capture=recorder=new MediaRecorder(destination.stream,{mimeType:type,audioBitsPerSecond:128000});

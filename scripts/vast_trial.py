@@ -54,8 +54,8 @@ def api(path, method="GET", data=None):
 
 
 def instances():
-    items, token = [], None
-    while True:
+    items, token, seen, total = [], None, set(), None
+    for _ in range(40):
         path = "v1/instances?limit=25"
         if token:
             path += "&after_token=" + urllib.parse.quote(token, safe="")
@@ -63,10 +63,19 @@ def instances():
         page = result.get("instances")
         if not isinstance(page, list) or any(not isinstance(i.get("id"), int) for i in page):
             raise RuntimeError("Unexpected instance response; refusing to infer an empty account")
+        count=result.get('total_instances')
+        if result.get('success') is not True or result.get('instances_found')!=len(page) or type(count) is not int or count<0 or count>1000 or len(page)>25 or (total is not None and count!=total):
+            raise RuntimeError('Incomplete or changing inventory')
+        total=count
+        if any(i['id'] in {row['id'] for row in items} for i in page): raise RuntimeError('Duplicate instance identity')
         items.extend(page)
         token = result.get("next_token")
-        if not token:
+        if token is None:
+            if len(items)!=total: raise RuntimeError('Incomplete inventory')
             return items
+        if not isinstance(token,str) or not token or token in seen: raise RuntimeError('Invalid inventory cursor')
+        seen.add(token)
+    raise RuntimeError('Inventory limit exceeded')
 
 
 def quote(offer):
@@ -168,7 +177,8 @@ def watch():
     while True:
         state = json.loads(STATE.read_text())
         if state.get("destroy_requested_at"):
-            return
+            if not state.get("confirm_absence") or state.get("destroy_confirmed_at"): return
+            break
         try:
             current = api("v0/users/current")
             if not math.isfinite(float(current["credit"])) or not math.isfinite(state["starting_credit"]):
@@ -188,7 +198,12 @@ def watch():
     while True:
         try:
             destroy(state)
-            print("Cleanup request accepted", flush=True)
+            if state.get('confirm_absence'):
+                remaining=[i for i in instances() if i['id']==state.get('id') or i.get('label')==state['label']]
+                if remaining or not state.get('id'):
+                    time.sleep(20);continue
+                state['destroy_confirmed_at']=time.time();write_state(state)
+            print("Cleanup request accepted and checked", flush=True)
             return
         except Exception:
             print("Cleanup unavailable; retrying in 20 seconds", flush=True)
@@ -205,6 +220,7 @@ def main():
     profile.add_argument("--training-retry", action="store_true", help="Approved single replacement, sharing the original budget")
     profile.add_argument("--blood-training", action="store_true", help="Approved one-instance Blood Club trial")
     profile.add_argument("--musician-training", action="store_true", help="Approved one-instance musician reference trial")
+    profile.add_argument('--dj-qualification',action='store_true',help='Separate capped AI DJ qualification; requires fresh budget receipt')
     profile.add_argument("--club-benchmark", action="store_true", help="One capped text-only club benchmark; requires campaign budget receipt")
     parser.add_argument('--revision', action='store_true', help='House refinement sharing the original club campaign budget and deadline')
     args = parser.parse_args()
@@ -227,6 +243,9 @@ def main():
         STATE = WORK / 'trial-state.json'
         LABEL = CLUB_CAMPAIGN + ('-revision' if args.revision else '')
         LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING = 2400, .50, 4
+    if args.dj_qualification:
+        WORK=ROOT/'build-dj-qualification-20261024'; STATE=WORK/'trial-state.json'; LABEL='jamloom-dj-qualification-20261024'
+        LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING=2400,.50,4
     WORK.mkdir(exist_ok=True)
     if args.action == "status":
         account = api("v0/users/current")
@@ -239,9 +258,9 @@ def main():
         (WORK / "offers.json").write_text(json.dumps(result, indent=2) + "\n")
         print(json.dumps(result[:8], indent=2))
     elif args.action == "rent":
-        if args.club_benchmark:
-            approval = json.loads((ROOT / 'docs/evidence/ai-dj-baseline-20261024/gpu-authorization.json').read_text())
-            if (approval.get('campaign') != CLUB_CAMPAIGN or approval.get('budget_usd') != 6 or
+        if args.club_benchmark or args.dj_qualification:
+            approval = json.loads((ROOT / ('docs/evidence/ai-dj-customer-flow-20261024/gpu-authorization.json' if args.dj_qualification else 'docs/evidence/ai-dj-baseline-20261024/gpu-authorization.json')).read_text())
+            if (approval.get('campaign') != (LABEL if args.dj_qualification else CLUB_CAMPAIGN) or approval.get('budget_usd') != 6 or
                     approval.get('instances_max') != 1 or approval.get('max_elapsed_seconds') != 2400 or
                     not isinstance(approval.get('owner_statement'), str) or not approval['owner_statement'].strip()):
                 raise RuntimeError('Missing current campaign budget receipt')
@@ -267,27 +286,28 @@ def main():
             # Excluding the entire previous location also excludes its physical host.
             available = [o for o in available if o["geolocation"] != previous["offer"]["geolocation"]]
         offer = next((o for o in available if o["id"] == args.offer), None)
-        if (args.training or args.training_retry or args.blood_training or args.musician_training or args.club_benchmark) and args.offer is None:
+        if (args.training or args.training_retry or args.blood_training or args.musician_training or args.club_benchmark or args.dj_qualification) and args.offer is None:
             offer = next((o for o in available if o["gpu_name"] == "RTX 3090" and
                           o["geolocation"].endswith(", US")), None)
         if offer is None:
             raise RuntimeError("Selected offer is unavailable or outside limits")
-        if args.club_benchmark and max(0, starting_credit-float(account['credit'])) + offer['reserved_lease_plus_transfer'] > 6:
+        if (args.club_benchmark or args.dj_qualification) and max(0, starting_credit-float(account['credit'])) + offer['reserved_lease_plus_transfer'] > 6:
             raise RuntimeError('Quote exceeds remaining total campaign budget')
         state = {"label": LABEL, "offer": offer, "starting_credit": starting_credit,
                  "credit_before_this_attempt": float(account["credit"]),
                  "started_at": time.time(), "deadline": deadline,
-                 "budget_usd": 6 if args.club_benchmark else 10, "disk_gb": DISK_GB,
-                 "observed_debit_stop_usd": 4 if args.club_benchmark else 7}
+                 "confirm_absence": args.dj_qualification,
+                 "budget_usd": 6 if args.club_benchmark or args.dj_qualification else 10, "disk_gb": DISK_GB,
+                 "observed_debit_stop_usd": 4 if args.club_benchmark or args.dj_qualification else 7}
         write_state(state)  # Prevent duplicate rental if the create response is lost.
         with (WORK / "watchdog.log").open("a") as log:
             subprocess.Popen(["caffeinate", "-i", sys.executable, str(Path(__file__).resolve()), "watch"] +
-                             (["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
+                             (["--dj-qualification"] if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark or args.dj_qualification else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
                              stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
         # The watchdog also reconciles by unique label if this response is lost.
         result = api("v0/asks/" + str(offer["id"]), "PUT", {
             "image": "pytorch/pytorch@sha256:b85566342b86d13a67712e9315d40cdc2dad7f8d86df1aff3831f80835edbcca", "disk": DISK_GB,
-            "label": LABEL, "runtype": "ssh_direct" if args.training_retry or args.blood_training or args.musician_training or args.club_benchmark else "ssh", "target_state": "running", "cancel_unavail": True,
+            "label": LABEL, "runtype": "ssh_direct" if args.training_retry or args.blood_training or args.musician_training or args.club_benchmark or args.dj_qualification else "ssh", "target_state": "running", "cancel_unavail": True,
         })
         state["id"] = result["new_contract"]
         write_state(state)

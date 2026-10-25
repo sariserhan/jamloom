@@ -7,7 +7,7 @@ export function SavedSets({owner,take}:{owner:string|null;take:RecordedSet|null}
  async function refresh(){const data=await recordingAPI();if(data.owner!==owner)throw Error('Your account changed. Reload before saving.');if(alive.current)setItems(data.recordings);}
  async function save(value:PendingSet){
   if(active.current)return;active.current=true;setBusy(true);const abort=new AbortController();controller.current=abort;
-  try{await uploadSet(value,text=>{if(alive.current)setMessage(text);},abort.signal);if(alive.current){setPending(null);setMessage('Saved “'+value.title+'” privately to your account.');await refresh();}}
+  try{await uploadSet(value,text=>{if(alive.current)setMessage(text);},abort.signal);if(alive.current){setPending(null);setMessage(value.sessionId&&value.visibility==='public'?'Saved “'+value.title+'” to the public sets page.':'Saved “'+value.title+'” privately to your account.');await refresh();}}
   catch(error){if(alive.current&&!abort.signal.aborted)setMessage(error instanceof Error?error.message:'Saving interrupted. Retry below.');}
   finally{active.current=false;if(alive.current)setBusy(false);if(controller.current===abort)controller.current=null;}
  }
@@ -31,7 +31,7 @@ export function SavedSets({owner,take}:{owner:string|null;take:RecordedSet|null}
  }
  return <section className="aidj-recording" aria-label="Saved sets"><div className="aidj-record-heading"><h2>Saved sets</h2><span>Your recordings</span></div>
   {!owner?<p><a href="/account/sign-in">Sign in</a> to save your recordings and listen again later.</p>:<>
-   <small>Finished test recordings save automatically. Keep this page open until saving completes.</small>
+   <small>Finished recordings save automatically. Keep this page open until saving completes.</small>
    {pending&&<div className="aidj-record-actions"><button disabled={busy} onClick={()=>void save(pending)}>Retry save</button><button disabled={busy} onClick={()=>void discard()}>Discard pending save</button></div>}
    <p role="status">{message}</p>
    {items.length===0&&<p>No saved sets yet.</p>}

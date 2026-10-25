@@ -1,0 +1,18 @@
+✔ recording metadata rejects missing permission, malformed identity and unsafe bounds (1.094166ms)
+▶ isolated Postgres: owned multipart recordings, retry recovery, quotas and deletion
+  ✔ retry identity, owner isolation and immutable recording details (6.861458ms)
+  ✔ lost R2 completion response recovers once without completing or charging twice (8.026583ms)
+  ✔ authenticated HTTP boundary, account switch, size limit, CSRF and private headers (15.376667ms)
+  ✔ deletion retries provider failures and blocks new upload/playback grants (2.8435ms)
+  ✔ concurrent reservations respect quota and expired uploads are aborted (11.475958ms)
+  ✔ account deletion cannot silently orphan R2 recordings (5.811125ms)
+✔ isolated Postgres: owned multipart recordings, retry recovery, quotas and deletion (204.791ms)
+✔ durable local queue: one claim, lease loss, cancellation, crash recovery, funded immutable work (262.381666ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 391.149

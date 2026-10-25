@@ -1,5 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {randomUUID,createHash} from 'node:crypto';
 import {djRecordingRequest} from '../lib/dj-recordings-http';
+import {DJWatchdog} from '../lib/dj-watchdog';
+import {djSessionRequest} from '../lib/dj-sessions-http';
 import {GenerationQueue} from '../lib/generation-queue';
 import {createPool} from '../lib/database';import {migrate} from '../lib/migrations';import {DJSessions} from '../lib/dj-sessions';import {djSessionInput} from '../lib/dj-session-input';import {DJRecordings} from '../lib/dj-recordings';import {djPublicRequest} from '../lib/dj-public-http';
 const id=()=>randomUUID().replaceAll('-',''),hash=(b:Buffer)=>createHash('sha256').update(b).digest('hex');
@@ -14,14 +16,15 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
  const target=new URL(process.env.JAMLOOM_TEST_DATABASE_URL||'postgresql://localhost:5432/postgres');assert.ok(['localhost','127.0.0.1'].includes(target.hostname));const admin=createPool(target.toString()),name='jamloom_sessions_'+id();await admin.query(`CREATE DATABASE "${name}"`);target.pathname='/'+name;const pool=createPool(target.toString());
  const objects=new Map<string,Buffer>(),store={local:true,put:async(k:string,b:Buffer)=>{objects.set(k,b);},get:async(k:string)=>objects.get(k)!,remove:async(k:string)=>{objects.delete(k);},uploadURL:async()=>'',playbackURL:async()=>''};
  const sessions=new DJSessions(pool,'test-only-secret-for-dj-sessions-12345',store,budget);
+ const finishWorker=async(...args:Parameters<typeof sessions.finish>)=>{await sessions.localStopped(args[0],args[1],args[2],'e'.repeat(64));return sessions.finish(...args);};
  const recordStore={begin:async()=>id(),partURL:async()=>'',complete:async()=>({}),verify:async()=>true,abort:async()=>{},remove:async()=>{},playbackURL:async(k:string)=>'https://storage.invalid/'+k};
  const recordings=new DJRecordings(pool,recordStore as any);let pitch=220;
  const begin=async(owner:string,visibility:'public'|'private'='public')=>{const v={...input(),visibility};const q=await sessions.quote(owner,v);await sessions.start(owner,v,q.token);return {v,q};};
- const finish=async()=>{const job=await sessions.claim();assert.ok(job);const audio=wav(pitch++);await sessions.finish(job.session_id,job.sequence,job.lease,'completed',40000,audio);return {job,audio};};
+ const finish=async()=>{const job=await sessions.claim();assert.ok(job);const audio=wav(pitch++);await finishWorker(job.session_id,job.sequence,job.lease,'completed',40000,audio);return {job,audio};};
  const record=async(owner:string,sessionId?:string,complete=true)=>{const v={id:id(),title:'Rooftop Friday',mime:'audio/mp4',bytes:100,sha256:'a'.repeat(64),seconds:60,consent:true,...(sessionId?{sessionId}:{})};await recordings.reserve(owner,v);if(complete)await recordings.complete(owner,v.id);return v.id;};
  try{
   assert.ok((await migrate(pool)).includes('0023_dj_sessions.sql'));assert.deepEqual(await migrate(pool),[]);
-  for(const owner of ['alice','bob','tiny','pending','race','queue','retry','capacity','legacy','price','frozen']){await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.com']);await sessions.wallet.grant(owner,{provider:'stripe_test',receipt:'fixture-'+owner,credits:owner==='tiny'?2:100,netMicros:owner==='tiny'?100000:5000000});}
+  for(const owner of ['alice','bob','tiny','pending','race','queue','retry','capacity','legacy','price','frozen','watch','http','recover']){await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.com']);await sessions.wallet.grant(owner,{provider:'stripe_test',receipt:'fixture-'+owner,credits:owner==='tiny'?2:100,netMicros:owner==='tiny'?100000:5000000});}
   await t.test('quotes bind owner and sharing, private premium, atomic idempotent Start',async()=>{
    const v=input(),pub=await sessions.quote('alice',v),priv=await sessions.quote('alice',{...v,visibility:'private'});assert.equal(pub.credits,2);assert.equal(priv.credits,3);assert.equal(priv.privacyCredits,1);
    await assert.rejects(sessions.start('bob',v,pub.token));await assert.rejects(sessions.start('alice',{...v,visibility:'private'},pub.token),/changed/);
@@ -29,13 +32,13 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
    await sessions.stop('alice',v.id);assert.deepEqual(await sessions.wallet.balance('alice'),{available:100,reserved:0});await assert.rejects(sessions.next('alice',v.id,1),/ending/);await assert.rejects(sessions.status('bob',v.id),/not found/);
   });
   await t.test('bounded preparation, fresh seeds, verified output and immutable settlement retries',async()=>{
-   const {v}=await begin('alice'),first=await finish();assert.equal(first.job.session_id,v.id);const before=await sessions.wallet.balance('alice');await sessions.finish(v.id,0,first.job.lease,'completed',40000,first.audio);assert.deepEqual(await sessions.wallet.balance('alice'),before);
-   await assert.rejects(sessions.finish(v.id,0,first.job.lease,'completed',40001,first.audio),/changed/);await assert.rejects(sessions.finish(v.id,0,first.job.lease,'completed',40000,wav(900)),/changed/);assert.equal(hash(objects.get('masters/'+first.job.reservation_id+'.wav')!),hash(first.audio));
+   const {v}=await begin('alice'),first=await finish();assert.equal(first.job.session_id,v.id);const before=await sessions.wallet.balance('alice');await finishWorker(v.id,0,first.job.lease,'completed',40000,first.audio);assert.deepEqual(await sessions.wallet.balance('alice'),before);
+   await assert.rejects(finishWorker(v.id,0,first.job.lease,'completed',40001,first.audio),/changed/);await assert.rejects(finishWorker(v.id,0,first.job.lease,'completed',40000,wav(900)),/changed/);assert.equal(hash(objects.get('masters/'+first.job.reservation_id+'.wav')!),hash(first.audio));
    await assert.rejects(sessions.next('alice',v.id,1,6),/energy/);await sessions.next('alice',v.id,1,2);await sessions.next('alice',v.id,1,5);const second=await finish();assert.equal(second.job.settings.energy,2);assert.notEqual(first.job.seed,second.job.seed);await assert.rejects(sessions.next('alice',v.id,2),/waiting/);await assert.rejects(sessions.played('alice',v.id,1),/order/);await sessions.played('alice',v.id,0);await sessions.next('alice',v.id,2);await sessions.stop('alice',v.id);assert.equal((await sessions.status('alice',v.id)).state,'ended');assert.equal((await sessions.wallet.balance('alice')).reserved,0);
    const recording=await record('alice',v.id,false);assert.deepEqual((await recordings.publicList()).sets,[]);await recordings.complete('alice',recording);await assert.rejects(record('bob',v.id),/finished/);assert.equal((await recordings.publicList()).sets[0].id,recording);assert.match(await recordings.publicPlayback(recording),/^https:/);assert.deepEqual((await recordings.publicList('',true)).sets,[]);await assert.rejects(recordings.publicPlayback(recording,true),/not found/);
    const result=await djPublicRequest(new Request('https://jamloom.test/api/ai-dj/sets'),recordings);assert.equal(result.status,200);assert.match(result.headers.get('cache-control')!,/no-store/);
    await assert.rejects(recordings.withdraw('bob',recording),/not found/);const request=new Request('https://jamloom.test/api/ai-dj/recordings/'+recording+'/withdraw',{method:'POST',headers:{origin:'https://jamloom.test','content-type':'application/json'},body:JSON.stringify({owner:'alice'})});assert.equal((await djRecordingRequest(request.clone(),async()=>({owner:'bob',origin:'https://jamloom.test',recordings}),[recording,'withdraw'])).status,409);assert.equal((await djRecordingRequest(request,async()=>({owner:'alice',origin:'https://jamloom.test',recordings}),[recording,'withdraw'])).status,200);assert.deepEqual((await recordings.publicList()).sets,[]);await assert.rejects(recordings.publicPlayback(recording),/not found/);
-   const {v:other}=await begin('bob'),otherJob=await sessions.claim();assert.notEqual(otherJob.seed,first.job.seed);await assert.rejects(sessions.finish(other.id,0,otherJob.lease,'completed',40000,first.audio),/Repeated/);await sessions.finish(other.id,0,otherJob.lease,'failed',1000);
+   const {v:other}=await begin('bob'),otherJob=await sessions.claim();assert.notEqual(otherJob.seed,first.job.seed);await assert.rejects(finishWorker(other.id,0,otherJob.lease,'completed',40000,first.audio),/Repeated/);await finishWorker(other.id,0,otherJob.lease,'failed',1000);
   });
   await t.test('private, local and unplayed recordings never enter public listing or playback',async()=>{
    const {v}=await begin('bob','private'),ready=await finish();await sessions.played('bob',v.id,0);await sessions.stop('bob',v.id);const privateId=await record('bob',v.id),localId=await record('alice');for(const id of [privateId,localId])assert.equal((await djPublicRequest(new Request('https://jamloom.test/api/ai-dj/sets/'+id+'/audio'),recordings,[id,'audio'])).status,404);
@@ -47,11 +50,11 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
   });
   await t.test('Stop race refunds queued work; running work waits for its shutdown receipt',async()=>{
    const {v}=await begin('race');await finish();await sessions.played('race',v.id,0);await Promise.allSettled([sessions.next('race',v.id,1),sessions.stop('race',v.id)]);await sessions.stop('race',v.id);assert.equal((await sessions.wallet.balance('race')).reserved,0);
-   const b=await begin('queue'),job=await sessions.claim();await sessions.stop('queue',b.v.id);assert.equal((await sessions.status('queue',b.v.id)).state,'ending');assert.ok((await sessions.wallet.balance('queue')).reserved>0);await sessions.finish(b.v.id,0,job.lease,'completed',1000,wav(777));assert.equal((await sessions.status('queue',b.v.id)).state,'ended');assert.equal((await sessions.wallet.balance('queue')).reserved,0);assert.equal((await sessions.status('queue',b.v.id)).batches[0].state,'cancelled');
+   const b=await begin('queue'),job=await sessions.claim();await sessions.stop('queue',b.v.id);assert.equal((await sessions.status('queue',b.v.id)).state,'ending');assert.ok((await sessions.wallet.balance('queue')).reserved>0);await finishWorker(b.v.id,0,job.lease,'completed',1000,wav(777));assert.equal((await sessions.status('queue',b.v.id)).state,'ended');assert.equal((await sessions.wallet.balance('queue')).reserved,0);assert.equal((await sessions.status('queue',b.v.id)).batches[0].state,'cancelled');
   });
   await t.test('lost settlement response retries once; disconnected sessions cannot dispatch',async()=>{
    const {v}=await begin('retry'),job=await sessions.claim(),audio=wav(888),settle=sessions.wallet.settle.bind(sessions.wallet);let fail=true;sessions.wallet.settle=async(...args:Parameters<typeof settle>)=>{await settle(...args);if(fail){fail=false;throw Error('lost settlement response');}};
-   await assert.rejects(sessions.finish(v.id,0,job.lease,'completed',40000,audio),/lost settlement/);const balance=await sessions.wallet.balance('retry');await sessions.finish(v.id,0,job.lease,'completed',40000,audio);assert.deepEqual(await sessions.wallet.balance('retry'),balance);sessions.wallet.settle=settle;await sessions.stop('retry',v.id);
+   await assert.rejects(finishWorker(v.id,0,job.lease,'completed',40000,audio),/lost settlement/);const balance=await sessions.wallet.balance('retry');await finishWorker(v.id,0,job.lease,'completed',40000,audio);assert.deepEqual(await sessions.wallet.balance('retry'),balance);sessions.wallet.settle=settle;await sessions.stop('retry',v.id);
    const stale=await begin('retry');await pool.query("UPDATE dj_sessions SET heartbeat_at=now()-interval '2 minutes' WHERE id=$1",[stale.v.id]);assert.equal(await sessions.claim(),null);assert.equal(await sessions.expire(),1);assert.equal((await sessions.status('retry',stale.v.id)).endReason,'disconnected');
   });
   await t.test('rising per-track price preserves Private and requires a fresh decision',async()=>{
@@ -64,10 +67,41 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
   await t.test('DJ and existing generation queues share one worker capacity',async()=>{
    const {v}=await begin('capacity'),legacy=new GenerationQueue(pool,'q'.repeat(32));const job=await sessions.wallet.reserve('legacy','legacy_capacity',50000,5000,{inputSha256:'a'.repeat(64),planSha256:'b'.repeat(64),maxRuntimeMs:60000,hourlyMicros:600000,fixedCostMicros:40000});
    const [dj,old]=await Promise.all([sessions.claim(),legacy.claim('capacity_check')]);assert.equal(Number(!!dj)+Number(!!old),1);
-   if(dj){assert.equal(await legacy.claim('second_check'),null);await sessions.finish(v.id,0,dj.lease,'failed',0);await legacy.cancel('legacy',job);}else{assert.equal(await sessions.claim(),null);await legacy.stopped(job,old!.leaseToken,0,'failed');await sessions.stop('capacity',v.id);}
+   if(dj){assert.equal(await legacy.claim('second_check'),null);await finishWorker(v.id,0,dj.lease,'failed',0);await legacy.cancel('legacy',job);}else{assert.equal(await sessions.claim(),null);await legacy.stopped(job,old!.leaseToken,0,'failed');await sessions.stop('capacity',v.id);}
   });
   await t.test('frozen accounts cannot complete new public music',async()=>{
-   const {v}=await begin('frozen'),job=await sessions.claim();await pool.query("UPDATE credit_wallets SET frozen=true WHERE owner_id='frozen'");await sessions.finish(v.id,0,job.lease,'completed',1000,wav(999));assert.equal((await sessions.status('frozen',v.id)).batches[0].state,'cancelled');assert.equal((await sessions.wallet.balance('frozen')).reserved,0);
+   const {v}=await begin('frozen'),job=await sessions.claim();await pool.query("UPDATE credit_wallets SET frozen=true WHERE owner_id='frozen'");await finishWorker(v.id,0,job.lease,'completed',1000,wav(999));assert.equal((await sessions.status('frozen',v.id)).batches[0].state,'cancelled');assert.equal((await sessions.wallet.balance('frozen')).reserved,0);
+  });
+  await t.test('durable deadlines hold capacity and receipts recover a settlement crash',async()=>{
+   const {v}=await begin('watch'),job=await sessions.claim();assert.equal(await sessions.workerHeartbeat(v.id,0,job.lease),true);
+   await assert.rejects(sessions.finish(v.id,0,job.lease,'completed',0,wav(801)),/shutdown/);
+   await pool.query("UPDATE dj_session_batches SET deadline=now()-interval '1 second' WHERE session_id=$1",[v.id]);assert.equal((await sessions.shutdownRequired()).length,1);assert.equal(await sessions.workerHeartbeat(v.id,0,job.lease),false);assert.equal(await sessions.claim(),null);assert.ok((await sessions.wallet.balance('watch')).reserved>0);
+   await finishWorker(v.id,0,job.lease,'failed',0);assert.equal((await sessions.wallet.balance('watch')).reserved,0);
+   const next=await begin('recover'),work=await sessions.claim(),settle=sessions.wallet.settle.bind(sessions.wallet);sessions.wallet.settle=async()=>{throw Error('lost before settlement');};
+   await assert.rejects(finishWorker(next.v.id,0,work.lease,'completed',0,wav(802)),/lost before/);assert.equal((await sessions.status('recover',next.v.id)).batches[0].ready,false);await assert.rejects(sessions.audio('recover',next.v.id,0),/not ready/);
+   sessions.wallet.settle=settle;await new DJSessions(pool,'test-only-secret-for-dj-sessions-12345',store,budget).reconcile();assert.equal((await sessions.status('recover',next.v.id)).batches[0].ready,true);await sessions.stop('recover',next.v.id);
+  });
+  await t.test('remote shutdown, complete inventory and immutable cost evidence precede delivery',async()=>{
+   const {v}=await begin('watch'),job=await sessions.claim();let instances:any[]=[],deletes=0;
+   const watchdog=new DJWatchdog(sessions,{inventory:async()=>instances,destroy:async()=>{deletes++;instances=[];}});
+   const rental=await watchdog.prepare(v.id,0,job.lease,123);await assert.rejects(sessions.localStopped(v.id,0,job.lease,'e'.repeat(64)),/conflicts/);
+   instances=[{id:456,label:rental.label}];await watchdog.attached(rental.reservation,456);await sessions.stageOutput(v.id,0,job.lease,wav(803));await assert.rejects(sessions.stageOutput(v.id,0,job.lease,wav(804)),/changed/);
+   await assert.rejects(watchdog.recordCost(rental.reservation,5000,'c'.repeat(64)),/Shutdown/);assert.equal((await watchdog.sweep(true))[0].status,'destroy_requested');assert.equal(deletes,1);assert.ok((await sessions.wallet.balance('watch')).reserved>0);
+   assert.equal((await watchdog.sweep(true))[0].status,'cost_evidence_required');await watchdog.recordCost(rental.reservation,5000,'c'.repeat(64));await assert.rejects(watchdog.recordCost(rental.reservation,5001,'d'.repeat(64)),/conflicts/);assert.equal((await watchdog.sweep(true))[0].status,'settled');assert.equal((await sessions.status('watch',v.id)).batches[0].state,'completed');assert.equal((await sessions.audio('watch',v.id,0)).length,11520044);await sessions.stop('watch',v.id);
+   const lost=await begin('watch'),unknown=await sessions.claim();await watchdog.prepare(lost.v.id,0,unknown.lease,123);await sessions.stop('watch',lost.v.id);assert.equal((await watchdog.sweep(true))[0].status,'creation_unresolved');assert.ok((await sessions.wallet.balance('watch')).reserved>0);
+   // An observed late creation can be bound and destroyed, never re-rented.
+   const label='jamloom-job-'+unknown.reservation_id;instances=[{id:789,label}];assert.equal((await watchdog.sweep(true))[0].status,'destroy_requested');assert.equal((await watchdog.sweep(true))[0].status,'cost_evidence_required');await watchdog.recordCost(unknown.reservation_id,0,'d'.repeat(64));assert.equal((await watchdog.sweep(true))[0].status,'settled');
+  });
+  await t.test('customer HTTP protects quotes, account identity, audio and paused launch gates',async()=>{
+   const value=input(),origin='https://jamloom.test';const context=async()=>({owner:'http',origin,sessions,enabled:true});
+   const call=(path:string,body:any,headers:any={origin})=>djSessionRequest(new Request(origin+'/api/ai-dj/sessions/'+path,{method:'POST',headers:{'content-type':'application/json',...headers},body:JSON.stringify(body)}),context,path.split('/'));
+   assert.equal((await call('quote',{owner:'http',input:value},{origin:'https://evil.test'})).status,403);assert.equal((await call('quote',{owner:'alice',input:value})).status,409);
+   const price=await (await call('quote',{owner:'http',input:value})).json();assert.equal((await call('start',{owner:'http',input:value,token:price.token})).status,200);
+   const ownerless=await djSessionRequest(new Request(origin),async()=>({...await context(),owner:null}),[value.id]);assert.equal(ownerless.status,401);
+   assert.equal((await call(value.id+'/played',{owner:'http',sequence:0})).status,409);
+   await finish();assert.equal((await djSessionRequest(new Request(origin),context,[value.id,'audio','0'])).status,200);assert.equal((await djSessionRequest(new Request(origin),async()=>({...await context(),owner:'alice'}),[value.id,'audio','0'])).status,404);
+   assert.equal((await call(value.id+'/stop',{owner:'http'})).status,200);
+   const closed=await djSessionRequest(new Request(origin,{method:'POST',headers:{origin,'content-type':'application/json'},body:JSON.stringify({owner:'http',input:input()})}),async()=>({...await context(),enabled:false}),['quote']);assert.equal(closed.status,503);
   });
   await t.test('account purge keeps running work and saved recordings protected',async()=>{
    await assert.rejects(sessions.purgeOwner('bob'),/Suspend/);await pool.query(`UPDATE "user" SET suspended=true WHERE id='bob'`);await assert.rejects(sessions.purgeOwner('bob'),/saved set/);await recordings.purgeOwner('bob');await sessions.purgeOwner('bob');assert.equal((await pool.query("SELECT count(*)::int AS n FROM dj_sessions WHERE owner_id='bob'")).rows[0].n,0);

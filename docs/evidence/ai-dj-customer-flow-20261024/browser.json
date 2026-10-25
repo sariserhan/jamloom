@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "visibility": "public",
+      "status": "PASS",
+      "saved": "602b02b5ed2748f8984d93b1993df6b5",
+      "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+    },
+    {
+      "visibility": "private",
+      "status": "PASS",
+      "saved": "7fcebe44075d4d0288062932ed03106f",
+      "scope": "Actual local renders, signed quotes, service handlers and private R2; isolated auth context"
+    }
+  ],
+  "errors": [],
+  "syntheticStorageRemoved": true,
+  "noPaidCompute": true,
+  "noPublicDeployment": true,
+  "publicUploadRecovery": "PASS: first PUT deliberately aborted; original session/name/public visibility recovered from IndexedDB after reload",
+  "productionRoutes": "PASS: GET and POST root/quote return 404 with launch proxy disabled locally; default launch proxy returns 503",
+  "limitations": [
+    "Injected authentication context; full account login not exercised",
+    "Procedural original test renderer; no actual GPU inference",
+    "Chromium with isolated audio output; WebKit rolling audio and human listening NOT RUN"
+  ]
+}

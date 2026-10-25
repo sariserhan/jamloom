@@ -1,0 +1,52 @@
+{
+  "status": "PREPARED; awaiting spending approval",
+  "campaign": "jamloom-dj-qualification-20261024",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "observed_debit_stop_usd": 4,
+  "hourly_with_disk_ceiling_usd": 0.5,
+  "quote_reservation_ceiling_usd": 4,
+  "outputs": [
+    {
+      "style": "house",
+      "energy": 4,
+      "seconds": 60,
+      "fresh_seed": true
+    },
+    {
+      "style": "house",
+      "energy": 5,
+      "seconds": 60,
+      "fresh_seed": true
+    },
+    {
+      "style": "house",
+      "energy": 2,
+      "seconds": 60,
+      "fresh_seed": true
+    }
+  ],
+  "warm_model": true,
+  "reference_audio": null,
+  "purchased_data": false,
+  "public_activation": false,
+  "stop_on_failure": true,
+  "cleanup": "Independent watchdog, explicit destroy and complete inventory confirmation; provider/network outages can delay deletion",
+  "read_only_balance_usd": 9.3830037861,
+  "existing_instances": 0,
+  "scripts": {
+    "scripts/vast_trial.py": "d691c4ca4d7fa3792548d5d601867e87727175a04ca2834252c422dc181e1482",
+    "scripts/dj_track_worker.py": "d3b0804710c433d29929969dae0f2558c2e744af619133a328d91b885fa88bdf",
+    "scripts/dj_gpu_qualification.py": "411ce50ee77a4cfd92b12177af9359d4c22920f7b2608103c3681d158f7bb439",
+    "scripts/cloud_music_setup.sh": "6b3a092a6d1ce00e3cf6d71707c9283a6bae75451e05ca65f0648cad0e402c7b",
+    "scripts/club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb"
+  },
+  "acceptance": [
+    "Three valid distinct stereo48k PCM16 tracks",
+    "Each warm render under30 seconds",
+    "Actual mixed playback/capture",
+    "Explicit shutdown and final inventory",
+    "Human listening remains separate"
+  ]
+}

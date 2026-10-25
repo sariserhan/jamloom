@@ -212,7 +212,7 @@ export class AIDJPlayer{
  setMaster(value:number){if(!Number.isFinite(value)||value<0||value>1)return;this.master=value;this.applyMaster();this.emit();}
  setMode(value:'auto'|'together'){
   if(!['auto','together'].includes(value))return;
-  if(value==='together'&&this.blend&&this.context.currentTime>=this.blend.at){
+  if(value==='together'&&!this.source&&this.blend&&this.context.currentTime>=this.blend.at){
    const now=this.context.currentTime,progress=(now-this.blend.at)/this.blend.fade,keep=progress<.5?this.blend.from:this.blend.to,drop=1-keep;
    const old=this.decks[drop]?.performance;this.decks[drop]=null;
    old?.gain.gain.cancelAndHoldAtTime(now);old?.gain.gain.linearRampToValueAtTime(0,now+.04);if(old)setTimeout(()=>old.dispose(),60);

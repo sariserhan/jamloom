@@ -1,0 +1,6 @@
+
+> jamloom-site@0.1.0 test:ai-dj-session-browser
+> node tests/dj-session-browser.mjs
+
+chromium session policy PASS
+webkit session policy PASS

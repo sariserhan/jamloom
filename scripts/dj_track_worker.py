@@ -55,20 +55,25 @@ def procedural(value, directory):
     return np.column_stack((mono, mono)), RATE
 
 
-def ace(value, directory):
+def load_ace():
     os.environ['HF_HUB_OFFLINE'] = '1'
     os.environ['ACESTEP_DISABLE_TQDM'] = '1'
-    import random
-    import soundfile as sf
-    import torch
     from acestep.handler import AceStepHandler
     from acestep.llm_inference import LLMHandler
-    from acestep.inference import GenerationParams, GenerationConfig, generate_music
-    random.seed(value['seed']); np.random.seed(value['seed']); torch.manual_seed(value['seed'])
-    torch.cuda.manual_seed_all(value['seed']); torch.set_num_threads(4)
     dit, lm = AceStepHandler(), LLMHandler()
     status, ok = dit.initialize_service(project_root=str(Path.cwd()), config_path='acestep-v15-turbo', device='cuda', compile_model=False, use_mlx_dit=False)
     if not ok: raise RuntimeError(status)
+    return dit, lm
+
+
+def ace(value, directory, engine=None):
+    import random
+    import soundfile as sf
+    import torch
+    from acestep.inference import GenerationParams, GenerationConfig, generate_music
+    random.seed(value['seed']); np.random.seed(value['seed']); torch.manual_seed(value['seed'])
+    torch.cuda.manual_seed_all(value['seed']); torch.set_num_threads(4)
+    dit, lm = engine if engine is not None else load_ace()
     caption, bpm = brief(value)
     params = GenerationParams(caption=caption, bpm=bpm, duration=60, seed=value['seed'], instrumental=True, lyrics='[Instrumental]', inference_steps=8, thinking=False, use_cot_metas=False, use_cot_caption=False, use_cot_language=False, use_cot_lyrics=False)
     config = GenerationConfig(batch_size=1, audio_format='wav', use_random_seed=False, seeds=[value['seed']])

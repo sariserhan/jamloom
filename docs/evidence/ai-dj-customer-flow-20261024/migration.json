@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "target": "ep-flat-hill-b4q0lix4.c-6.us-east-2.aws.neon.tech/neondb",
+  "applied": [
+    "0024_dj_worker_leases.sql"
+  ],
+  "idempotent": true,
+  "backup": {
+    "path": "/Users/serhansari/Documents/projects/jamloom/build-neon/dj-worker-20261024/before-0024.dump",
+    "bytes": 114615,
+    "sha256": "221deb255e040d80108d62036bf70a86364ba9f9d396aef7913c80e620273de6",
+    "catalogueVerified": true
+  },
+  "sessionsBefore": 0,
+  "rentalsAfter": 0
+}

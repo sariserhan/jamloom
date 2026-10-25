@@ -25,7 +25,7 @@ export async function runLocalDJBatch(sessions:DJSessions,directory:string,signa
   const abort=()=>{stopped=true;child.kill('SIGKILL');};
   const deadline=setTimeout(()=>{failed=true;child.kill('SIGKILL');},runtime);
   let checking=false;
-  const poll=setInterval(async()=>{if(checking)return;checking=true;try{await sessions.expire();if((await sessions.status(job.owner_id,job.session_id)).state!=='active')abort();}catch{failed=true;child.kill('SIGKILL');}finally{checking=false;}},250);
+  const poll=setInterval(async()=>{if(checking)return;checking=true;try{await sessions.shutdownRequired();if(!await sessions.workerHeartbeat(job.session_id,job.sequence,job.lease))abort();}catch{failed=true;child.kill('SIGKILL');}finally{checking=false;}},250);
   signal?.addEventListener('abort',abort,{once:true});if(signal?.aborted)abort();
   // close, not kill(), proves this local child has actually stopped before settlement.
   try{await new Promise<void>((ok,no)=>{let processError=false;child.on('error',()=>{processError=true;});child.on('close',code=>code===0&&!processError?ok():no(Error('Local renderer stopped')));});}
@@ -38,6 +38,7 @@ export async function runLocalDJBatch(sessions:DJSessions,directory:string,signa
   }
  }catch{failed=true;}
  const state=stopped?'cancelled':failed?'failed':'completed';
+ await sessions.localStopped(job.session_id,job.sequence,job.lease,createHash('sha256').update(JSON.stringify([job.session_id,job.sequence,'child-exited'])).digest('hex'));
  await sessions.finish(job.session_id,job.sequence,job.lease,state,0,audio);
  return {session:job.session_id,sequence:job.sequence,state,folder,externalSpendMicros:0,sha256:audio?createHash('sha256').update(audio).digest('hex'):null};
 }
