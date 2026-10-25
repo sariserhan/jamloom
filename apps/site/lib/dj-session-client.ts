@@ -17,10 +17,10 @@ export class DJSessionClient{
    await sessionAPI('/start',{owner:this.config.owner,input:this.config.input,token:this.config.quote.token},signal);this.started=true;
    if(this.stopped||signal.aborted){this.stopTask=undefined;void this.stop();return null;}
    this.interval=setInterval(()=>{if(this.heartbeating)return;this.heartbeating=true;void this.post('heartbeat').catch(()=>{this.fail('Connection lost. Stopping the session safely.');void this.stop();}).finally(()=>{this.heartbeating=false;});},20000);
-  }else{await this.ack;const result=await this.post('next',{sequence,energy:direction.energy},signal);if(result.ending)return null;}
+  }else{await this.ack;const result=await this.post('next',{sequence,energy:direction.energy,vocals:direction.vocals},signal);if(result.ending)return null;}
   while(!signal.aborted&&!this.stopped){
    const status=await sessionAPI('/'+this.config.input.id,undefined,signal),batch=status.batches.find((b:{sequence:number})=>b.sequence===sequence);
-   if(batch?.state==='completed'&&batch.ready&&batch.audio_sha256){this.sequence++;return {sequence,track:{id:String(sequence),title:this.config.input.title+' · '+(sequence+1),artist:'Jamloom original',url:'/api/ai-dj/sessions/'+this.config.input.id+'/audio/'+sequence,sha256:batch.audio_sha256,energy:direction.energy,mood:direction.mood,vocal:false,credit:''}};}
+   if(batch?.state==='completed'&&batch.ready&&batch.audio_sha256){this.sequence++;return {sequence,track:{id:String(sequence),title:this.config.input.title+' · '+(sequence+1),artist:'Jamloom original',url:'/api/ai-dj/sessions/'+this.config.input.id+'/audio/'+sequence,sha256:batch.audio_sha256,energy:direction.energy,mood:direction.mood,vocal:!!batch.vocal,vocalCue:batch.vocal??undefined,credit:''}};}
    if(status.state!=='active'||batch&&['failed','cancelled'].includes(batch.state))return null;
    await waitForSession(signal);
   }return null;

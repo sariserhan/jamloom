@@ -2,11 +2,12 @@ import {analyseBuffer,audioDuration} from './ai-dj-library';
 import {planTransition,type TransitionPlan} from './ai-dj-plan';
 import type {TrackAnalysis} from './ai-dj-analysis';
 import {PerformanceDeck,type PerformanceAction,type PerformanceEvent} from './ai-dj-performance';
+import {vocalLoopReady} from './dj-vocal';
 import {createMixer,clearEcho} from '../../web/mixer.js';
 import {djTracks,pickTrack,type Direction,type DJTrack} from './ai-dj-director';
 
 type Prepared={track:DJTrack;buffer:AudioBuffer;bpm:number;wave:number[];analysis:TrackAnalysis};
-type Deck=Prepared&{performance?:PerformanceDeck;gain?:GainNode;start:number;offset?:number;rate?:number};
+type Deck=Prepared&{performance?:PerformanceDeck;gain?:GainNode;start:number;offset?:number;rate?:number;vocalPlayed?:boolean};
 type Blend=TransitionPlan&{from:number;to:number;end:number};
 export type DJSnapshot={status:'idle'|'loading'|'playing'|'closing'|'paused'|'stopped'|'error';message:string;direction:Direction;master:number;analysis:TrackAnalysis|null;plan:string;mode:'auto'|'together';cross:number;elapsed:number;remaining:number|null;transitionIn:number|null;history:string[];mixing:boolean;performance:PerformanceEvent[];decks:({title:string;artist:string;vocal:boolean;reviewed:boolean;bpm:number;duration:number;position:number;playing:boolean;wave:number[];rate:number;loopBeats:number;filter:number;level:number;echo:number;eq:number[];event:PerformanceEvent|null}|null)[];peak:number};
 
@@ -22,7 +23,7 @@ async function prepare(track:DJTrack,context:AudioContext,signal:AbortSignal):Pr
  let buffer=decoded;
  if(decoded.numberOfChannels===1){buffer=context.createBuffer(2,decoded.length,context.sampleRate);for(let c=0;c<2;c++)buffer.copyToChannel(decoded.getChannelData(0),c);}
  const analysis=await analyseBuffer(buffer,track.sha256,signal);
- return {track,buffer,analysis,bpm:analysis.review?.bpm??analysis.bpm,wave:analysis.wave};
+ return {track,buffer,analysis,bpm:analysis.review?.bpm??analysis.grid?.bpm??analysis.bpm,wave:analysis.wave};
 }
 
 // One source per generated session; null means credits/Stop ended further generation.
@@ -127,7 +128,7 @@ export class AIDJPlayer{
   const deck=this.decks[index]!,strip=this.mixer.strips[index];
   clearEcho(this.context,strip.fx);strip.fx.wet.gain.cancelScheduledValues(this.context.currentTime);strip.fx.wet.gain.setValueAtTime(0,this.context.currentTime);strip.fx.dry.gain.cancelScheduledValues(this.context.currentTime);strip.fx.dry.gain.setValueAtTime(1,this.context.currentTime);
   strip.eq.forEach(n=>{n.gain.cancelScheduledValues(at);n.gain.setValueAtTime(0,at);});
-  deck.performance=new PerformanceDeck(this.context,deck.buffer,deck.bpm,strip.input,strip.fx,rate);deck.gain=deck.performance.gain;
+  deck.performance=new PerformanceDeck(this.context,deck.buffer,deck.bpm,strip.input,strip.fx,rate,deck.analysis.review?deck.analysis.review.phraseStart%(60/deck.bpm):deck.analysis.grid?.offset??deck.analysis.beatOffset);deck.gain=deck.performance.gain;
   deck.gain.gain.setValueAtTime(gainValue,at);deck.start=at;deck.offset=offset;deck.rate=rate;deck.performance.level.gain.setValueAtTime(Math.min(1,.12/deck.analysis.rms,.8/deck.analysis.peak),at);deck.performance.play(at,offset,rate);
  }
  private perform(index:number,action:PerformanceAction,at:number,by:'AI'|'You'){
@@ -152,12 +153,17 @@ export class AIDJPlayer{
   const now=this.context.currentTime;
   if(this.endAt!==null&&now>=this.endAt){this.stop('Set finished. Thanks for the music.');return;}
   const current=this.decks[this.active];
+  const cue=current?.track.vocalCue,position=current?.performance?.position(now)??0;
+  if(this.source&&this.mode==='auto'&&this.direction.vocals&&this.endAt===null&&current&&!current.vocalPlayed&&cue&&vocalLoopReady(cue,current.analysis.grid,position)&&this.cancelFuture()){
+   const at=now+(cue.start-position)/(current.rate??1);current.vocalPlayed=true;
+   if(current.performance?.repeatPhrase(at,cue.start,cue.seconds)){this.performed=[...this.performed,current.performance.event!].slice(-6);this.message='AI · brief vocal loop';}
+  }
   if(current&&!this.blend&&(current.performance?.position(now)??0)>=current.buffer.duration-.001){this.stop(this.source?'Prepared music finished. The set has stopped.':'Library finished. Add more tracks to continue.');return;}
   if(this.blend&&now>=this.blend.end){
    const {from,to}=this.blend;this.release(from);this.active=to;this.history=[...this.history,this.decks[to]!.track.id].slice(-100);this.blend=null;this.early=false;
    this.message=this.endAt===null?'New groove playing. Preparing what comes next.':'Closing set · preparing the final stretch.';void this.prepareNext();
   }
-  if((this.mode==='auto'||this.early)&&!this.blend&&this.decks[this.active]&&this.decks[1-this.active]){
+  if((this.mode==='auto'||this.early)&&!this.blend&&!(current?.performance?.event&&current.performance.event.until>now)&&this.decks[this.active]&&this.decks[1-this.active]){
    const deck=this.decks[this.active]!,to=1-this.active,incoming=this.decks[to]!;
    const position=deck.performance?.position(now)??0;
    if(position<deck.buffer.duration){
@@ -166,7 +172,7 @@ export class AIDJPlayer{
      deck.performance?.cancel();this.beginDeck(to,plan.at,0,plan.offset,plan.rate);
      deck.gain!.gain.cancelScheduledValues(now);deck.gain!.gain.setValueAtTime(1,now);deck.gain!.gain.setValueAtTime(1,plan.at);deck.gain!.gain.linearRampToValueAtTime(0,plan.at+plan.fade);
      incoming.gain!.gain.setValueAtTime(0,plan.at);incoming.gain!.gain.linearRampToValueAtTime(1,plan.at+plan.fade);
-     if(plan.technique==='phrase-bass'){
+     if(plan.technique!=='short-fade'){
       const low=this.mixer.strips[this.active].eq[0].gain,next=this.mixer.strips[to].eq[0].gain;
       low.setValueAtTime(0,plan.at);low.linearRampToValueAtTime(-12,plan.at+plan.fade/2);
       next.setValueAtTime(-12,plan.at);next.setValueAtTime(-12,plan.at+plan.fade/2);next.linearRampToValueAtTime(0,plan.at+plan.fade);
@@ -220,7 +226,7 @@ export class AIDJPlayer{
    this.active=keep;if(!this.history.includes(chosen.track.id))this.history.push(chosen.track.id);this.blend=null;this.early=false;
    this.mixer.strips.forEach(strip=>{strip.eq[0].gain.cancelAndHoldAtTime(now);strip.eq[0].gain.linearRampToValueAtTime(0,now+.04);});
   }else if(value==='together'&&this.blend)this.cancelFuture();
-  this.mode=value;this.message=value==='auto'?'Autopilot baseline · conservative transitions, no automatic tricks.':'You have control.';
+  this.mode=value;this.message=value==='auto'?'Autopilot baseline · measured timing and occasional brief vocal loops.':'You have control.';
   if(this.running){void this.prepareNext();this.tick();}this.emit();
  }
  async pause(){if(!this.running)return;this.state='paused';this.message='Paused';this.emit();await this.context.suspend();}

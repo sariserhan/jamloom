@@ -1,0 +1,33 @@
+✔ measured steady beats enable only short aligned handoffs and reject drift (106.364375ms)
+✔ phrase matching requires reviewed instrumental regions and bounds tempo changes (0.936708ms)
+✔ fallback ends before exhaustion, changes no tempo, and handles late preparation (0.145833ms)
+✔ review and cached metadata are hash bound and reject fabricated bounds (0.164625ms)
+✔ analysis measures actual audio and exposes uncertainty without inventing a reviewed grid (26.935084ms)
+✔ vocal loop requires matching measured beat timing and a brief approved cue (0.653542ms)
+✔ remote worker binds receipts to claimed jobs and rejects corrupt or late output (224.256542ms)
+✔ DJ session input defaults Public and rejects unsafe fields (0.9435ms)
+▶ isolated DJ session ledger, fresh batches and public set policy
+  ✔ warm rental delivers distinct customer tracks before shutdown and recovers failed work safely (309.769333ms)
+  ✔ warm deadline, budget and lost heartbeat stop capacity and refund unacknowledged jobs (37.946417ms)
+  ✔ quotes bind owner and sharing, private premium, atomic idempotent Start (8.981584ms)
+  ✔ bounded preparation, fresh seeds, verified output and immutable settlement retries (325.829375ms)
+  ✔ private, local and unplayed recordings never enter public listing or playback (193.072167ms)
+  ✔ credit exhaustion stops new reservations without changing visibility (93.244709ms)
+  ✔ Stop race refunds queued work; running work waits for its shutdown receipt (142.419875ms)
+  ✔ lost settlement response retries once; disconnected sessions cannot dispatch (133.327583ms)
+  ✔ rising per-track price preserves Private and requires a fresh decision (94.061541ms)
+  ✔ DJ and existing generation queues share one worker capacity (16.735209ms)
+  ✔ frozen accounts cannot complete new public music (51.319458ms)
+  ✔ durable deadlines hold capacity and receipts recover a settlement crash (153.48825ms)
+  ✔ remote shutdown, complete inventory and immutable cost evidence precede delivery (202.314667ms)
+  ✔ customer HTTP protects quotes, account identity, audio and paused launch gates (89.911709ms)
+  ✔ account purge keeps running work and saved recordings protected (14.257292ms)
+✔ isolated DJ session ledger, fresh batches and public set policy (2047.586625ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2396.369792

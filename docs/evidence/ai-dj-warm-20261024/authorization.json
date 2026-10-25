@@ -1,0 +1,12 @@
+{
+  "campaign": "jamloom-dj-qualification-20261024-sessions",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_requests_max": 8,
+  "public_activation": false,
+  "owner_statement": "Approve the capped $6 qualification",
+  "scope": "Six fresh 60-second tracks plus at most two 10-second vocal candidates, two users, energy change, Stop, credit exhaustion, complete R2 recordings; automatic shutdown/cleanup and stop on failure.",
+  "approved_at_utc": "2026-10-25T02:30:11.507316+00:00",
+  "plan_sha256": "68f0b4149edded7cd2811e5ab2d2fb632e4d467c8793b8cf3d84bc6fcf7eebbd"
+}

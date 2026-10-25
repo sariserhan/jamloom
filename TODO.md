@@ -1,3 +1,16 @@
+## Warm AI DJ session, timing and vocal increment — 2026-10-24
+
+**PASS local; PARTIAL overall.** Warm model/remote dispatch, metered settlement and crash recovery, measured beat handoffs, sparse brief vocal candidates and real rhythm-checked vocal loops are implemented. 24 focused checks, 42 wallet checks, 120 site checks, Python/budget tests, Chromium deck/Autopilot, real Public/Private R2 regression and production build/audit pass. Migration 0026 applied after backup. No paid execution, push, deployment or public activation.
+
+- [x] Implement one warm GPU consumer with bounded internal dispatch and separate rental/job settlement.
+- [x] Validate timing from audio and retain conservative handoffs when uncertain.
+- [x] Implement occasional original two-word candidates, maximum two-second inserts and bounded real loops.
+- [x] Recheck Stop/credit/disconnect/worker deadlines locally and Public/Private whole-recording R2 recovery.
+- [ ] Run prepared two-user, six-track / two-hook, $6 / one-GPU / 40-minute qualification under the approved cap.
+- [ ] Listen to new vocal phrases/transitions; qualify multi-hour and physical venue use before promotion.
+
+[Report and reproducible evidence](docs/ai-dj-warm-worker.md). Prior completed $6 approval is not reused.
+
 ## Mobile Community and Favorites — 2026-10-24
 
 - [x] Add Community with web-aligned Jamloom examples, user-generated public songs, My songs and local mixes.
@@ -32,7 +45,7 @@
 
 **Owner listening and vocal direction:** “all are acceptable. 1 is the best” for the three new house clips. Clip 1 is the preferred musical direction, while each session must continue using fresh music and seeds. Add occasional brief original vocals (a couple of words) and sometimes rhythmically loop them; keep the set predominantly instrumental. [Hash-bound owner feedback](docs/evidence/ai-dj-customer-flow-20261024/gpu-retry/owner-listening.json).
 
-- [ ] Implement and qualify occasional short vocal phrases and musically timed repetitions; the current generation adapter is still instrumental-only. Preserve distinct fresh sessions and avoid unverified automatic loop timing.
+- [ ] Qualify occasional short vocal phrases and musically timed repetitions: implementation and local timing/length tests now PASS; fresh GPU and listening checks remain. See the warm-worker increment above.
 
 **Earlier failed GPU attempt:** First host never became usable; zero outputs, independent shutdown and empty inventory confirmed. The authorized replacement above supersedes its generation blocker, while [original failure evidence](docs/evidence/ai-dj-customer-flow-20261024/gpu/execution.json) remains preserved.
 

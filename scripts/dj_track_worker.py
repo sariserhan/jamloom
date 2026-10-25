@@ -66,7 +66,7 @@ def load_ace():
     return dit, lm
 
 
-def ace(value, directory, engine=None):
+def ace(value, directory, engine=None, hook=None):
     import random
     import soundfile as sf
     import torch
@@ -75,7 +75,10 @@ def ace(value, directory, engine=None):
     torch.cuda.manual_seed_all(value['seed']); torch.set_num_threads(4)
     dit, lm = engine if engine is not None else load_ace()
     caption, bpm = brief(value)
-    params = GenerationParams(caption=caption, bpm=bpm, duration=60, seed=value['seed'], instrumental=True, lyrics='[Instrumental]', inference_steps=8, thinking=False, use_cot_metas=False, use_cot_caption=False, use_cot_language=False, use_cot_lyrics=False)
+    if hook is not None:
+        if hook not in ('Feel alive', 'Keep moving', 'Stay together', 'One more'): raise ValueError('Original two-word phrase required')
+        caption = 'Dry spoken rhythmic vocal, one original voice saying only '+hook+'. No backing music, no drums, no instruments, no imitation of any singer.'
+    params = GenerationParams(caption=caption, bpm=bpm, duration=10 if hook else 60, seed=value['seed'], instrumental=hook is None, lyrics=hook or '[Instrumental]', inference_steps=8, thinking=False, use_cot_metas=False, use_cot_caption=False, use_cot_language=False, use_cot_lyrics=False)
     config = GenerationConfig(batch_size=1, audio_format='wav', use_random_seed=False, seeds=[value['seed']])
     result = generate_music(dit, lm, params, config, save_dir=str(directory/'raw'))
     if not result.success or len(result.audios) != 1: raise RuntimeError('Generation failed')

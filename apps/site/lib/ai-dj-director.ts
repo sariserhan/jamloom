@@ -1,10 +1,11 @@
+import type {VocalCue} from './dj-vocal';
 import type {TrackAnalysis} from './ai-dj-analysis';
 import practice from '../../web/practice-audio/manifest.json';
 import {validationSongs} from './music-validation';
 
 export type Mood='warm'|'bright'|'deep';
 export type Direction={energy:number;mood:Mood;vocals:boolean};
-export type DJTrack={id:string;title:string;artist:string;url:string;sha256:string;energy:number;mood:Mood;vocal:boolean;credit:string;analysis?:TrackAnalysis;local?:boolean};
+export type DJTrack={id:string;title:string;artist:string;url:string;sha256:string;energy:number;mood:Mood;vocal:boolean;vocalCue?:VocalCue;credit:string;analysis?:TrackAnalysis;local?:boolean};
 const selections:[string,number,Mood][]=[['party-sector',4,'bright'],['black-diamond',5,'deep']];
 export const djTracks:DJTrack[]=selections.map(([id,energy,mood])=>{
  const track=practice.tracks.find(t=>t.id===id)!;

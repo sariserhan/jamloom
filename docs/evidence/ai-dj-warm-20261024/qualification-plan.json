@@ -1,0 +1,40 @@
+{
+  "status": "APPROVED; execution pending",
+  "campaign": "jamloom-dj-qualification-20261024-sessions",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_requests_max": 8,
+  "tracks": 6,
+  "track_seconds": 60,
+  "vocal_candidates_max": 2,
+  "vocal_candidate_seconds": 10,
+  "inserted_phrase_seconds_max": 2,
+  "clients": 2,
+  "public_activation": false,
+  "controls": [
+    "existing provider account/debit watchdog",
+    "30-second generation-ahead failure stops worker",
+    "one worker shared by both customer queues",
+    "six song jobs and at most two hook generations",
+    "complete inventory confirms shutdown",
+    "test R2 objects removed after local capture retrieval"
+  ],
+  "checks": [
+    "different seeds/audio for both users",
+    "next-track energy change",
+    "short vocal candidate and real loop when measured timing qualifies",
+    "Stop and credit exhaustion",
+    "complete public/private mixed recordings through real R2"
+  ],
+  "scripts_sha256": {
+    "scripts/vast_trial.py": "1153819e9e63a3ed1c366f7f9bb642dd0c1b51540f09c4393e6340465f48123f",
+    "scripts/cloud_dj_warm.sh": "9d83516bdfcc379b30bc7ba94cd6be37b8e9cad4afd0080df62551c4b7701803",
+    "scripts/dj_warm_engine.py": "9be7bc4aad0941f7a1fffc222301871fcb92f3ab697da855dad6e04cd78b456c",
+    "scripts/dj_track_worker.py": "5fe98a43cb3059acf9f7788ec9df70c035081c8e3063794776ac80b61594ae36",
+    "scripts/dj_vocal.py": "c5a452c0ba03b59f004360ddfa0d05a658da88a8be6c4a929e3d29ea596345d0",
+    "apps/site/tests/dj-warm-qualification.mjs": "554baa1aad925e8de34a5c9c1946e65b15e1afa8b05735d3d3963a1617b11258",
+    "apps/site/lib/dj-remote-worker.ts": "b184b3e986ae6bbe9e3ee851668fda6c1e94d3ed3c9ba1e5f43bb235862849a7",
+    "apps/site/lib/dj-warm-worker.ts": "ebb96cf895e9eb9a8ca55dc8b4a6385a6715e78d27c4299a2526a217ca568bcb"
+  }
+}

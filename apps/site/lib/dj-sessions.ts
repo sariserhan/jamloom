@@ -11,7 +11,7 @@ export type DJBudget=Omit<JobBudget,'inputSha256'|'planSha256'>&{costCapMicros:n
 const hash=(value:unknown)=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const idCheck=(id:string)=>{if(!/^[a-f0-9]{32}$/.test(id))throw new AudioError('Invalid session.');};
 const closed=(s:string)=>['completed','failed','cancelled'].includes(s);
-// No dispatcher is connected until a DJ renderer, cost cap and shutdown adapter are qualified.
+// Dispatch is internal and separately gated from customer session APIs.
 export class DJSessions{
  readonly wallet:Wallet;
  constructor(readonly pool:Pool,private secret:string,readonly store:AudioStore,readonly budget:DJBudget,readonly live=false){integer(budget.maxRuntimeMs,1,900000);integer(budget.hourlyMicros,1,5000000);integer(budget.fixedCostMicros);integer(budget.costCapMicros,1,5000000);if(budget.fixedCostMicros+Math.ceil(budget.hourlyMicros*budget.maxRuntimeMs/3600000)>budget.costCapMicros)throw Error('DJ budget exceeds its reserved cap');this.wallet=new Wallet(pool,live);}
@@ -33,9 +33,10 @@ export class DJSessions{
  }
  private seed(owner:string,id:string,sequence:number){return createHmac('sha256',this.secret).update(JSON.stringify(['dj-seed-1',owner,id,sequence])).digest().readUInt32BE(0);}
  private async insertBatch(db:PoolClient,owner:string,id:string,sequence:number,reservation:string){await db.query('INSERT INTO dj_session_batches(session_id,sequence,reservation_id,seed,render_settings) SELECT $1,$2,$3,$4,settings FROM dj_sessions WHERE id=$1',[id,sequence,reservation,this.seed(owner,id,sequence)]);}
- async status(owner:string,id:string){const s=await this.session(owner,id);const batches=(await this.pool.query(`SELECT b.sequence,b.state,b.played_at,b.audio_sha256,(r.status='completed') AS ready FROM dj_session_batches b JOIN generation_reservations r ON r.id=b.reservation_id WHERE b.session_id=$1 ORDER BY b.sequence DESC LIMIT 3`,[id])).rows;return {id,title:s.title,visibility:s.visibility,settings:s.settings,state:s.state,endReason:s.end_reason,maxCredits:s.max_credits,batches};}
+ async status(owner:string,id:string){const s=await this.session(owner,id);const batches=(await this.pool.query(`SELECT b.sequence,b.state,b.played_at,b.audio_sha256,b.vocal,(r.status='completed') AS ready FROM dj_session_batches b JOIN generation_reservations r ON r.id=b.reservation_id WHERE b.session_id=$1 ORDER BY b.sequence DESC LIMIT 3`,[id])).rows;return {id,title:s.title,visibility:s.visibility,settings:s.settings,state:s.state,endReason:s.end_reason,maxCredits:s.max_credits,batches};}
  async heartbeat(owner:string,id:string){await this.session(owner,id);await this.pool.query("UPDATE dj_sessions SET heartbeat_at=now() WHERE id=$1 AND state='active'",[id]);}
- async next(owner:string,id:string,sequence:number,energy?:number){
+ async next(owner:string,id:string,sequence:number,energy?:number,vocals?:boolean){
+  if(vocals!==undefined&&typeof vocals!=='boolean')throw new AudioError('Invalid vocal choice.');
   if(energy!==undefined&&(!Number.isInteger(energy)||energy<1||energy>5))throw new AudioError('Invalid energy.');
   const s=await this.session(owner,id);if(!Number.isSafeInteger(sequence)||sequence<1||sequence>1000000)throw new AudioError('Invalid sequence.');
   const prior=(await this.pool.query('SELECT reservation_id FROM dj_session_batches WHERE session_id=$1 AND sequence=$2',[id,sequence])).rows[0];if(prior)return {reservation:prior.reservation_id};
@@ -49,18 +50,21 @@ export class DJSessions{
    const rows=(await db.query('SELECT sequence,state,played_at FROM dj_session_batches WHERE session_id=$1 ORDER BY sequence DESC LIMIT 3',[id])).rows;
    if(rows[0]?.sequence!==sequence-1||rows.some(b=>!closed(b.state))||rows.filter(b=>b.state==='completed'&&!b.played_at).length>=2)throw new AudioError('Prepared music is still waiting to play.',409);
    if(energy!==undefined)await db.query("UPDATE dj_sessions SET settings=jsonb_set(settings,'{energy}',$2::jsonb) WHERE id=$1",[id,JSON.stringify(energy)]);
+   if(vocals!==undefined)await db.query("UPDATE dj_sessions SET settings=jsonb_set(settings,'{vocals}',$2::jsonb) WHERE id=$1",[id,JSON.stringify(vocals)]);
    await this.insertBatch(db,owner,id,sequence,r);
   }});return {reservation};
  }
  // Internal worker boundary only. There is no browser route for claiming or settling work.
- async claim(){return this.atomic(async db=>{
+ async claim(warm?:{id:string;lease:string}){return this.atomic(async db=>{
   await db.query("SELECT pg_advisory_xact_lock(hashtextextended('jamloom-generation-capacity',0))");
+  const worker=(await db.query("SELECT * FROM dj_warm_workers WHERE state<>'stopped' FOR UPDATE")).rows[0];
+  if(worker||warm){if(!worker||!warm||worker.id!==warm.id||worker.lease!==warm.lease||worker.state!=='ready'||worker.billing_live!==this.live||Date.now()-new Date(worker.heartbeat_at).getTime()>15000||new Date(worker.deadline).getTime()-Date.now()<this.budget.maxRuntimeMs+30000||Number(worker.observed_micros)>=Number(worker.budget_micros)||Number(worker.hourly_micros)>this.budget.hourlyMicros)return null;}
   if((await db.query("SELECT 1 FROM dj_session_batches WHERE state='running' UNION ALL SELECT 1 FROM generation_jobs WHERE state IN ('running','stopping') LIMIT 1")).rowCount)return null;
   const row=(await db.query(`SELECT b.*,s.owner_id,b.render_settings AS settings,s.visibility,s.budget FROM dj_session_batches b JOIN dj_sessions s ON s.id=b.session_id JOIN generation_reservations r ON r.id=b.reservation_id JOIN credit_wallets w ON w.owner_id=s.owner_id JOIN "user" u ON u.id=s.owner_id
    WHERE b.state='queued' AND s.state='active' AND s.billing_live=$1 AND s.budget=$2::jsonb AND s.heartbeat_at>now()-interval '75 seconds' AND NOT w.frozen AND NOT u.suspended AND r.status='reserved' ORDER BY b.created_at FOR UPDATE OF s,b SKIP LOCKED LIMIT 1`,[this.live,JSON.stringify(this.budget)])).rows[0];
   if(!row)return null;
   const runtime=row.budget.maxRuntimeMs;if(!Number.isSafeInteger(runtime)||runtime<1||runtime>900000)throw new AudioError('Invalid worker deadline.');
-  const lease=randomUUID();await db.query("UPDATE dj_session_batches SET state='running',lease=$3,started_at=now(),deadline=now()+$4*interval '1 millisecond',lease_until=now()+least($4,15000)*interval '1 millisecond' WHERE session_id=$1 AND sequence=$2",[row.session_id,row.sequence,lease,runtime]);return {...row,seed:Number(row.seed),lease};
+  const lease=randomUUID();await db.query("UPDATE dj_session_batches SET state='running',lease=$3,started_at=now(),deadline=now()+$4*interval '1 millisecond',lease_until=now()+least($4,15000)*interval '1 millisecond',warm_worker_id=$5 WHERE session_id=$1 AND sequence=$2",[row.session_id,row.sequence,lease,runtime,warm?.id??null]);return {...row,seed:Number(row.seed),lease,warm_worker_id:warm?.id??null};
  });}
  async stageOutput(id:string,sequence:number,lease:string,audio:Buffer){
   const sha=createHash('sha256').update(audio).digest('hex');if(validateWav(audio,audio.length,sha)!==60000)throw new AudioError('Expected a complete track.');
@@ -69,7 +73,7 @@ export class DJSessions{
    if(b.audio_sha256){if(b.audio_sha256!==sha)throw new AudioError('Worker output changed.',409);return;}
    if((await db.query('SELECT 1 FROM dj_session_batches WHERE audio_sha256=$1',[sha])).rowCount)throw new AudioError('Repeated generated audio is not accepted.',422);
    const key='masters/'+b.reservation_id+'.wav';await this.store.put(key,audio);if(createHash('sha256').update(await this.store.get(key,audio.length)).digest('hex')!==sha)throw Error('Stored output changed');
-   await db.query('UPDATE dj_session_batches SET audio_sha256=$3,audio_bytes=$4,stop_requested_at=now() WHERE session_id=$1 AND sequence=$2',[id,sequence,sha,audio.length]);
+   await db.query('UPDATE dj_session_batches SET audio_sha256=$3,audio_bytes=$4,stop_requested_at=CASE WHEN warm_worker_id IS NULL THEN now() ELSE stop_requested_at END WHERE session_id=$1 AND sequence=$2',[id,sequence,sha,audio.length]);
   });
  }
  async workerHeartbeat(id:string,sequence:number,lease:string){return !!(await this.pool.query(`UPDATE dj_session_batches b SET lease_until=least(now()+interval '15 seconds',deadline) FROM dj_sessions s WHERE b.session_id=$1 AND b.sequence=$2 AND b.lease=$3 AND b.state='running' AND b.stop_requested_at IS NULL AND b.lease_until>now() AND b.deadline>now() AND s.id=b.session_id AND s.state='active' AND s.billing_live=$4 AND s.heartbeat_at>now()-interval '75 seconds' RETURNING b.sequence`,[id,sequence,lease,this.live])).rowCount;}
@@ -79,7 +83,7 @@ export class DJSessions{
  }
  async localStopped(id:string,sequence:number,lease:string,evidence:string){
   if(!this.store.local||this.live||!/^[a-f0-9]{64}$/.test(evidence))throw new AudioError('Local shutdown evidence required.');
-  const result=await this.pool.query(`UPDATE dj_session_batches b SET stop_confirmed_at=coalesce(stop_confirmed_at,now()),stop_evidence_sha256=$4 FROM dj_sessions s WHERE b.session_id=$1 AND b.sequence=$2 AND b.lease=$3 AND s.id=b.session_id AND s.billing_live=$5 AND (b.stop_evidence_sha256 IS NULL OR b.stop_evidence_sha256=$4) AND NOT EXISTS(SELECT 1 FROM dj_rentals r WHERE r.reservation_id=b.reservation_id) RETURNING b.sequence`,[id,sequence,lease,evidence,this.live]);if(!result.rowCount)throw new AudioError('Shutdown receipt conflicts.',409);
+  const result=await this.pool.query(`UPDATE dj_session_batches b SET stop_confirmed_at=coalesce(stop_confirmed_at,now()),stop_evidence_sha256=$4 FROM dj_sessions s WHERE b.session_id=$1 AND b.sequence=$2 AND b.lease=$3 AND s.id=b.session_id AND s.billing_live=$5 AND b.warm_worker_id IS NULL AND (b.stop_evidence_sha256 IS NULL OR b.stop_evidence_sha256=$4) AND NOT EXISTS(SELECT 1 FROM dj_rentals r WHERE r.reservation_id=b.reservation_id) RETURNING b.sequence`,[id,sequence,lease,evidence,this.live]);if(!result.rowCount)throw new AudioError('Shutdown receipt conflicts.',409);
  }
  async reconcile(){
   const rows=(await this.pool.query(`SELECT b.*,s.owner_id FROM dj_session_batches b JOIN dj_sessions s ON s.id=b.session_id WHERE s.billing_live=$1 AND b.state IN ('completed','failed','cancelled') AND b.actual_cost_micros IS NOT NULL AND (b.lease IS NULL OR b.stop_confirmed_at IS NOT NULL) AND b.settled_at IS NULL LIMIT 100`,[this.live])).rows;
@@ -97,6 +101,10 @@ export class DJSessions{
    const s=(await db.query('SELECT * FROM dj_sessions WHERE id=$1 AND billing_live=$2 FOR UPDATE',[id,this.live])).rows[0];if(!s)throw new AudioError('Invalid worker lease.',403);
    const b=(await db.query('SELECT b.*,r.cost_cap_micros FROM dj_session_batches b JOIN generation_reservations r ON r.id=b.reservation_id WHERE b.session_id=$1 AND b.sequence=$2 AND b.lease=$3 FOR UPDATE OF b',[id,sequence,lease])).rows[0];if(!b)throw new AudioError('Invalid worker lease.',403);
    if(!b.stop_confirmed_at)throw new AudioError('Worker shutdown must be confirmed.',409);
+   if(b.warm_worker_id){
+    const worker=(await db.query('SELECT * FROM dj_warm_workers WHERE id=$1',[b.warm_worker_id])).rows[0];
+    if(!worker||b.compute_ms===null||!b.stop_evidence_sha256||Number(b.actual_cost_micros)!==actualCost||(!b.audio_sha256&&worker.state!=='stopped'))throw new AudioError('Warm worker receipt required.',409);
+   }
    const rental=(await db.query('SELECT * FROM dj_rentals WHERE reservation_id=$1',[b.reservation_id])).rows[0];
    if(rental&&(!rental.destroy_confirmed_at||rental.final_cost_micros===null||Number(rental.final_cost_micros)!==actualCost))throw new AudioError('Provider shutdown and cost evidence required.',409);
    if(actualCost>Number(b.cost_cap_micros))throw new AudioError('Worker cost exceeds its reservation.');

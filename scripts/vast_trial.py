@@ -222,6 +222,14 @@ def watch():
             time.sleep(20)
 
 
+def dj_session_approval(approval, label):
+    if (approval.get('campaign') != label or approval.get('budget_usd') != 6 or
+            approval.get('instances_max') != 1 or approval.get('max_elapsed_seconds') != 2400 or
+            approval.get('model_requests_max') != 8 or approval.get('public_activation') is not False or
+            not isinstance(approval.get('owner_statement'), str) or not approval['owner_statement'].strip()):
+        raise RuntimeError('Fresh capped customer-session approval required')
+
+
 def main():
     global WORK, STATE, LABEL, LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING
     parser = argparse.ArgumentParser(description=__doc__)
@@ -236,7 +244,10 @@ def main():
     profile.add_argument("--club-benchmark", action="store_true", help="One capped text-only club benchmark; requires campaign budget receipt")
     parser.add_argument('--revision', action='store_true', help='House refinement sharing the original club campaign budget and deadline')
     parser.add_argument('--dj-retry', action='store_true', help='Authorized replacement; shared qualification spend and total rental time')
+    parser.add_argument('--dj-sessions', action='store_true', help='Fresh eight-request customer-session qualification; requires --dj-qualification and a new approval')
     args = parser.parse_args()
+    if args.dj_sessions and (not args.dj_qualification or args.dj_retry):
+        parser.error('--dj-sessions requires --dj-qualification and cannot reuse a retry')
     if args.dj_retry and not args.dj_qualification:
         parser.error('--dj-retry requires --dj-qualification')
     if args.revision and not args.club_benchmark:
@@ -259,7 +270,7 @@ def main():
         LABEL = CLUB_CAMPAIGN + ('-revision' if args.revision else '')
         LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING = 2400, .50, 4
     if args.dj_qualification:
-        suffix='-retry' if args.dj_retry else ''
+        suffix='-sessions' if args.dj_sessions else '-retry' if args.dj_retry else ''
         WORK=ROOT/('build-dj-qualification-20261024'+suffix); STATE=WORK/'trial-state.json'; LABEL='jamloom-dj-qualification-20261024'+suffix
         LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING=2400,.50,4
     WORK.mkdir(exist_ok=True)
@@ -275,11 +286,13 @@ def main():
         print(json.dumps(result[:8], indent=2))
     elif args.action == "rent":
         if args.club_benchmark or args.dj_qualification:
-            approval = json.loads((ROOT / (('docs/evidence/ai-dj-customer-flow-20261024/gpu-retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-customer-flow-20261024/gpu-authorization.json') if args.dj_qualification else 'docs/evidence/ai-dj-baseline-20261024/gpu-authorization.json')).read_text())
+            approval = json.loads((ROOT / (('docs/evidence/ai-dj-warm-20261024/authorization.json' if args.dj_sessions else 'docs/evidence/ai-dj-customer-flow-20261024/gpu-retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-customer-flow-20261024/gpu-authorization.json') if args.dj_qualification else 'docs/evidence/ai-dj-baseline-20261024/gpu-authorization.json')).read_text())
             if (approval.get('campaign') != (LABEL if args.dj_qualification else CLUB_CAMPAIGN) or approval.get('budget_usd') != 6 or
                     approval.get('instances_max') != 1 or approval.get('max_elapsed_seconds') != 2400 or
                     not isinstance(approval.get('owner_statement'), str) or not approval['owner_statement'].strip()):
                 raise RuntimeError('Missing current campaign budget receipt')
+        if args.dj_sessions:
+            dj_session_approval(approval, LABEL)
         public_key = (WORK / "trial-key.pub").read_text().strip()
         if not public_key.startswith("ssh-ed25519 ") or not shutil.which("caffeinate"):
             raise RuntimeError("Trial SSH key or sleep inhibitor is missing")
@@ -322,7 +335,7 @@ def main():
         write_state(state)  # Prevent duplicate rental if the create response is lost.
         with (WORK / "watchdog.log").open("a") as log:
             subprocess.Popen(["caffeinate", "-i", sys.executable, str(Path(__file__).resolve()), "watch"] +
-                             (["--dj-qualification"] + (["--dj-retry"] if args.dj_retry else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
+                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else ["--dj-retry"] if args.dj_retry else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
                              stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
         # The watchdog also reconciles by unique label if this response is lost.
         result = api("v0/asks/" + str(offer["id"]), "PUT", {

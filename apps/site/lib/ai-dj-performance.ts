@@ -7,9 +7,9 @@ export const performancePads=[
 export type PerformanceAction=typeof performancePads[number]['id']|'filter'|'jog-back'|'jog-forward';
 export type PerformanceEvent={action:PerformanceAction;label:string;at:number;until:number;position:number;by:'AI'|'You'};
 export const actionLabel=(action:PerformanceAction)=>performancePads.find(p=>p.id===action)?.label??({'filter':'Filter sweep','jog-back':'Jog −','jog-forward':'Jog +'} as Record<string,string>)[action];
-export function loopRegion(position:number,bpm:number,beats:number,duration:number){
- if(![position,bpm,beats,duration].every(Number.isFinite)||bpm<60||bpm>180||![.5,1,2,4,8].includes(beats)||duration<8)throw Error('Invalid loop');
- const length=60/bpm*beats,start=Math.max(0,Math.min(duration-length,Math.floor(position/(60/bpm))*(60/bpm)));
+export function loopRegion(position:number,bpm:number,beats:number,duration:number,offset=0){
+ if(![position,bpm,beats,duration,offset].every(Number.isFinite)||bpm<60||bpm>180||offset<0||offset>=60/bpm||![.5,1,2,4,8].includes(beats)||duration<8)throw Error('Invalid loop');
+ const length=60/bpm*beats,start=Math.max(0,Math.min(duration-length,offset+Math.floor((position-offset)/(60/bpm))*(60/bpm)));
  return {start,end:start+length};
 }
 type Voice={source:AudioBufferSourceNode;gain:GainNode;at:number;offset:number;rate:number;loop:{start:number;end:number}|null;end:number};
@@ -28,7 +28,7 @@ export class PerformanceDeck{
  event:PerformanceEvent|null=null;
  private filterValue=0;
  private lastPosition=0;
- constructor(private context:AudioContext,readonly buffer:AudioBuffer,readonly bpm:number,destination:AudioNode,private echo:{wet:GainNode;dry:GainNode;delays:DelayNode[]},private baseRate=1){
+ constructor(private context:AudioContext,readonly buffer:AudioBuffer,readonly bpm:number,destination:AudioNode,private echo:{wet:GainNode;dry:GainNode;delays:DelayNode[]},private baseRate=1,private beatOffset=0){
   this.gain=context.createGain();this.level=context.createGain();this.filter=context.createBiquadFilter();
   this.filter.type='lowpass';this.filter.frequency.value=20000;this.filter.Q.value=.5;
   this.filter.connect(this.level);this.level.connect(this.gain);this.gain.connect(destination);
@@ -64,7 +64,7 @@ export class PerformanceDeck{
   const beat=60/(this.bpm*this.baseRate),position=this.position(at);let duration=beat*4;
   if(action.startsWith('loop-')||action.startsWith('roll-')){
    const beats=action==='roll-half'?.5:action==='roll-one'?1:Number(action.slice(5));
-   const loop=loopRegion(position,this.bpm,beats,this.buffer.duration);duration=beat*(action.startsWith('roll')?2:8);
+   const loop=loopRegion(position,this.bpm,beats,this.buffer.duration,this.beatOffset);duration=beat*(action.startsWith('roll')?2:8);
    this.play(at,loop.start,this.baseRate,loop);
    const resume=action.startsWith('roll')?position+duration*this.baseRate:loop.start;
    this.play(at+duration,Math.min(this.buffer.duration-.01,resume));
@@ -80,6 +80,13 @@ export class PerformanceDeck{
    for(const [param,from,to] of [[this.echo.wet.gain,0,.28],[this.echo.dry.gain,1,.72]] as const){param.cancelScheduledValues(at);param.setValueAtTime(from,at);param.linearRampToValueAtTime(to,at+.03);param.setValueAtTime(to,at+duration-beat);param.linearRampToValueAtTime(from,at+duration);}
   }
   this.event={action,label:actionLabel(action),at,until:at+duration,position,by};return true;
+ }
+ repeatPhrase(at:number,start:number,seconds:number){
+  if(![at,start,seconds].every(Number.isFinite)||at<this.context.currentTime||start<0||seconds<=0||seconds>2||start+seconds>=this.buffer.duration||!this.voice(at)||this.event&&this.event.until>at)return false;
+  const duration=2*seconds/this.baseRate;
+  this.play(at,start,this.baseRate,{start,end:start+seconds});
+  this.play(at+duration,start+seconds,this.baseRate);
+  this.event={action:'loop-4',label:'Vocal loop · 2 repeats',at,until:at+duration,position:start,by:'AI'};return true;
  }
  cancel(){
   const now=this.context.currentTime,position=this.position(now);

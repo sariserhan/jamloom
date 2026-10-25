@@ -159,6 +159,13 @@ class PriceBounds(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 trial.attach_key(42, 'ssh-ed25519 abc')
 
+    def test_customer_session_qualification_requires_new_exact_bounds(self):
+        label='jamloom-dj-qualification-20261024-sessions'
+        approved=dict(campaign=label,budget_usd=6,instances_max=1,max_elapsed_seconds=2400,model_requests_max=8,public_activation=False,owner_statement='Approved test fixture')
+        trial.dj_session_approval(approved,label)
+        for change in [dict(campaign='old'),dict(budget_usd=10),dict(instances_max=2),dict(max_elapsed_seconds=3600),dict(model_requests_max=9),dict(public_activation=True),dict(owner_statement='')]:
+            with self.assertRaises(RuntimeError): trial.dj_session_approval({**approved,**change},label)
+
     def test_training_lease_and_stricter_hourly_ceiling(self):
         with patch.object(trial, "LEASE_SECONDS", 7200), patch.object(trial, "HOURLY_CEILING", .5):
             self.assertAlmostEqual(trial.quote(self.offer)["reserved_lease_plus_transfer"], 2 * (.2 + 60 * .2 / 720) + 1.2)

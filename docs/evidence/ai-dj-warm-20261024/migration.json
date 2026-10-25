@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "target": "ep-flat-hill-b4q0lix4.c-6.us-east-2.aws.neon.tech/neondb",
+  "applied": [
+    "0026_dj_warm_workers.sql"
+  ],
+  "idempotent": true,
+  "before": {
+    "sessions": 0,
+    "rentals": 0,
+    "recordings": 0
+  },
+  "after": {
+    "sessions": 0,
+    "rentals": 0,
+    "recordings": 0
+  },
+  "backup": {
+    "path": "/Users/serhansari/Documents/projects/jamloom/build-neon/dj-warm-20261024/before-0026-v18.dump",
+    "bytes": 121033,
+    "sha256": "44a629cea64fa89bc8ff984a2db2aced9e1fbe39244a64622c902e86512223ea",
+    "catalogueVerified": true
+  },
+  "note": "Initial pg_dump 16 version check refused server 18; no migration ran before the successful version-18 backup."
+}

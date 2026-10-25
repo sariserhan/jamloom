@@ -19,11 +19,12 @@ for(const [name,engine] of (process.argv.includes('--chromium-only')?[['chromium
    const input=ctx.createGain(),dry=ctx.createGain(),wet=ctx.createGain();wet.gain.value=0;input.connect(dry);dry.connect(ctx.destination);wet.connect(ctx.destination);
    const delays=[1,2,3].map(i=>{const d=ctx.createDelay(2.4),tap=ctx.createGain();d.delayTime.value=.5*i;tap.gain.value=.2/i;input.connect(d);d.connect(tap);tap.connect(wet);return d;});
    const deck=new PerformanceDeck(ctx,buffer,120,input,{dry,wet,delays});deck.play(0);
-   if(action&&!deck.perform(action,1,'You'))throw Error('Action rejected '+action);
+   if(action==='vocal-repeat'){if(!deck.repeatPhrase(1,1,2))throw Error('Vocal repeat rejected');if(deck.position(5)!==3)throw Error('Vocal loop did not resume after the phrase');}
+   else if(action&&!deck.perform(action,1,'You'))throw Error('Action rejected '+action);
    const out=(await ctx.startRendering()).getChannelData(0);return Array.from(out);
   };
   const baseline=await render(null),report=[];
-  for(const action of ['loop-2','loop-4','roll-half','roll-one','cue-1','cue-2','jog-back','jog-forward','backspin','filter','echo']){
+  for(const action of ['vocal-repeat','loop-2','loop-4','roll-half','roll-one','cue-1','cue-2','jog-back','jog-forward','backspin','filter','echo']){
    const audio=await render(action);let difference=0,peak=0;
    for(let i=8000;i<40000;i++){if(!Number.isFinite(audio[i]))throw Error('Invalid PCM');difference+=Math.abs(audio[i]-baseline[i]);peak=Math.max(peak,Math.abs(audio[i]));}
    report.push({action,meanDifference:difference/32000,peak});
