@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "status": "PASS",
+      "audioControls": 8,
+      "autoplay": false,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "status": "PASS",
+      "audioControls": 8,
+      "autoplay": false,
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

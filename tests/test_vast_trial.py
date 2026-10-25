@@ -18,6 +18,9 @@ class PriceBounds(unittest.TestCase):
         prior=dict(starting_credit=9.5,destroy_requested_at=1600,destroy_confirmed_at=1606,
                    started_at=1000,label='jamloom-dj-qualification-20261024',budget_usd=6)
         self.assertEqual(trial.dj_retry_limits({'credit':9.49},prior,5000),(9.5,6794))
+        sessions={**prior,'label':prior['label']+'-sessions'}
+        self.assertEqual(trial.dj_retry_limits({'credit':9.49},sessions,5000,sessions['label']),(9.5,6794))
+        with self.assertRaises(RuntimeError):trial.dj_retry_limits({'credit':9.49},sessions,5000)
         for change in [dict(destroy_confirmed_at=0),dict(destroy_confirmed_at=999),dict(destroy_confirmed_at=5001),dict(destroy_confirmed_at=2600),dict(started_at=float('nan')),dict(label='other')]:
             with self.assertRaises(RuntimeError):trial.dj_retry_limits({'credit':9.49},{**prior,**change},5000)
         with self.assertRaises(RuntimeError):trial.dj_retry_limits({'credit':5.5},prior,5000)
@@ -86,6 +89,18 @@ class PriceBounds(unittest.TestCase):
                 api.assert_not_called()
                 self.assertEqual(trial.LABEL,'jamloom-dj-qualification-20261024-retry')
                 self.assertEqual(trial.STATE,Path(folder)/'build-dj-qualification-20261024-retry/trial-state.json')
+        finally:
+            for name,value in prior.items():setattr(trial,name,value)
+
+    def test_session_replacement_cannot_reuse_initial_approval(self):
+        names=('ROOT','WORK','STATE','LABEL','LEASE_SECONDS','HOURLY_CEILING','QUOTE_CEILING')
+        prior={name:getattr(trial,name) for name in names}
+        try:
+            with tempfile.TemporaryDirectory() as folder,patch.object(trial,'ROOT',Path(folder)),patch.object(trial.sys,'argv',['vast_trial.py','rent','--dj-qualification','--dj-sessions','--dj-retry']),patch.object(trial,'api') as api:
+                first=Path(folder)/'docs/evidence/ai-dj-warm-20261024/authorization.json';first.parent.mkdir(parents=True);first.write_text('{}')
+                with self.assertRaises(FileNotFoundError):trial.main()
+                api.assert_not_called()
+                self.assertEqual(trial.LABEL,'jamloom-dj-qualification-20261024-sessions-retry')
         finally:
             for name,value in prior.items():setattr(trial,name,value)
 

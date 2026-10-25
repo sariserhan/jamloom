@@ -1,0 +1,22 @@
+
+> jamloom-site@0.1.0 test:ai-dj-storage
+> node --import tsx --test tests/dj-recordings.test.ts
+
+✔ recording metadata rejects missing permission, malformed identity and unsafe bounds (0.864083ms)
+▶ isolated Postgres: owned multipart recordings, retry recovery, quotas and deletion
+  ✔ retry identity, owner isolation and immutable recording details (9.315667ms)
+  ✔ lost R2 completion response recovers once without completing or charging twice (9.994333ms)
+  ✔ authenticated HTTP boundary, account switch, size limit, CSRF and private headers (32.524833ms)
+  ✔ deletion retries provider failures and blocks new upload/playback grants (4.071958ms)
+  ✔ concurrent reservations respect quota and expired uploads are aborted (14.6465ms)
+  ✔ account deletion cannot silently orphan R2 recordings (7.7285ms)
+  ✔ progressive parts are immutable, ordered, private until verified, and allow a two-hour receipt (35.946625ms)
+✔ isolated Postgres: owned multipart recordings, retry recovery, quotas and deletion (271.416208ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 500.351292

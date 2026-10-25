@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "three_weight_hashes_match_accepted_trial": true,
+  "uploaded_scripts_match_local": true,
+  "renderer_ready": true,
+  "bootstrap_note": "SSH launcher connection timed out; independently checked detached bootstrap continued successfully. No restart or extra model request."
+}

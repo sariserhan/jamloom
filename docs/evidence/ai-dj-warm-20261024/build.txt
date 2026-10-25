@@ -18,7 +18,7 @@ EMSDK_NODE = /Users/serhansari/Documents/projects/jamloom/build-web-tools/emsdk/
 EMSDK_PYTHON = /Users/serhansari/Documents/projects/jamloom/build-web-tools/emsdk/python/3.13.3_64bit/bin/python3
 SSL_CERT_FILE = /Users/serhansari/Documents/projects/jamloom/build-web-tools/emsdk/python/3.13.3_64bit/lib/python3.13/site-packages/certifi/cacert.pem
 emcmake: cmake -S . -B build-web -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_TOOLCHAIN_FILE=/Users/serhansari/Documents/projects/jamloom/build-web-tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/Users/serhansari/Documents/projects/jamloom/build-web-tools/emsdk/node/24.19.0_64bit/bin/node in directory /Users/serhansari/Documents/projects/jamloom
--- Configuring done (0.4s)
+-- Configuring done (0.3s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/serhansari/Documents/projects/jamloom/build-web
 [ 88%] Built target jamloom_core
@@ -136,18 +136,18 @@ Prepared free Academy offline pack: 95 public assets, 62028540 bytes. No account
 
 ▲ Next.js 16.4.2 (Turbopack)
 - Environments: .env.local
-✓ Running next.config.ts took 26ms
+✓ Running next.config.ts took 12ms
 
   Creating an optimized production build ...
-✓ Compiled successfully in 1614ms
+✓ Compiled successfully in 1147ms
   Running TypeScript ...
-  Finished TypeScript in 1977ms ...
+  Finished TypeScript in 1622ms ...
   Collecting page data using 9 workers ...
   Generating static pages using 9 workers (0/60) ...
-  Generating static pages using 9 workers (15/60) 
-  Generating static pages using 9 workers (30/60) 
-  Generating static pages using 9 workers (45/60) 
-✓ Generating static pages using 9 workers (60/60) in 323ms
+  Generating static pages using 9 workers (15/60)
+  Generating static pages using 9 workers (30/60)
+  Generating static pages using 9 workers (45/60)
+✓ Generating static pages using 9 workers (60/60) in 283ms
   Finalizing page optimization ...
 
 Route (app)

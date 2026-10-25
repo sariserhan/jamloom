@@ -1,0 +1,12 @@
+/Users/serhansari/Documents/projects/jamloom/apps/site/lib/vast-provider.ts:24
+  }catch{throw new Error('Vast request failed or returned invalid data');}
+               ^
+
+Error: Vast request failed or returned invalid data
+    at VastProvider.api (/Users/serhansari/Documents/projects/jamloom/apps/site/lib/vast-provider.ts:24:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async VastProvider.inventory (/Users/serhansari/Documents/projects/jamloom/apps/site/lib/vast-provider.ts:27:33)
+    at async DJWarmWorker.register (/Users/serhansari/Documents/projects/jamloom/apps/site/lib/dj-warm-worker.ts:16:19)
+    at async file:///Users/serhansari/Documents/projects/jamloom/apps/site/tests/dj-warm-qualification.mjs:34:29
+
+Node.js v22.23.1

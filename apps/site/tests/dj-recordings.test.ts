@@ -85,8 +85,8 @@ test('isolated Postgres: owned multipart recordings, retry recovery, quotas and 
    await assert.rejects(service.streamPart('bob',recording,{...first,sha256:'f'.repeat(64)}),/changed/);await service.streamPart('bob',recording,last);await assert.rejects(service.streamPart('bob',recording,{...last,number:3}),/ordered/);
    await assert.rejects(service.part('bob',recording,1),/Streaming/);await assert.rejects(service.complete('bob',recording),/Streaming/);await assert.rejects(service.sealStream('bob',recording,7200),/Finished/);
    // Fixture proof of an ended, paid generated session; this is not two hours of real-time audio.
-   await pool.query("UPDATE dj_sessions SET state='ended',created_at=now()-interval '2 hours',ended_at=now() WHERE id=$1",[choice.id]);
-   await pool.query("UPDATE dj_session_batches SET state='completed',played_at=now() WHERE session_id=$1",[choice.id]);
+   await pool.query("UPDATE dj_sessions SET state='ended',created_at=now()-interval '2 hours',ended_at=now()-interval '1 minute' WHERE id=$1",[choice.id]);
+   await pool.query("UPDATE dj_session_batches SET state='completed',played_at=now()-interval '1 minute' WHERE session_id=$1",[choice.id]);
    await pool.query("UPDATE generation_reservations SET status='completed' WHERE id=(SELECT reservation_id FROM dj_session_batches WHERE session_id=$1)",[choice.id]);
    await service.sealStream('bob',recording,7200);await service.sealStream('bob',recording,7200);await assert.rejects(service.sealStream('bob',recording,7201),/changed/);await assert.rejects(service.streamPart('bob',recording,last),/finishing/);
    await upload(recording);crash=true;await assert.rejects(service.completeStream('bob',recording),/lost completion/);assert.equal((await service.publicList()).sets.length,0);
@@ -96,7 +96,9 @@ test('isolated Postgres: owned multipart recordings, retry recovery, quotas and 
    await service.remove('bob',recording);assert.equal(objects.size,0);
    const interruptedSession={...choice,id:id()},interruptedQuote=await sessions.quote('bob',interruptedSession);await sessions.start('bob',interruptedSession,interruptedQuote.token);
    const recovered=id(),prefix=Buffer.from('captured prefix');await service.stream('bob',{...value,id:recovered,sessionId:interruptedSession.id});await service.streamPart('bob',recovered,{number:1,bytes:prefix.length,sha256:sha(prefix)});
-   await pool.query("UPDATE dj_sessions SET state='ended',created_at=now()-interval '2 minutes',ended_at=now() WHERE id=$1",[interruptedSession.id]);await pool.query("UPDATE dj_session_batches SET state='completed',played_at=now() WHERE session_id=$1",[interruptedSession.id]);await pool.query("UPDATE generation_reservations SET status='completed' WHERE id=(SELECT reservation_id FROM dj_session_batches WHERE session_id=$1)",[interruptedSession.id]);
+   // Credits end generation a minute before the final prepared track finishes playing.
+   await pool.query("UPDATE dj_sessions SET state='ended',end_reason='credits',created_at=now()-interval '2 minutes',ended_at=now()-interval '1 minute' WHERE id=$1",[interruptedSession.id]);await pool.query("UPDATE dj_session_batches SET state='completed',played_at=now()-interval '1 minute' WHERE session_id=$1",[interruptedSession.id]);await pool.query("UPDATE generation_reservations SET status='completed' WHERE id=(SELECT reservation_id FROM dj_session_batches WHERE session_id=$1)",[interruptedSession.id]);
+   await assert.rejects(service.sealStream('bob',recovered,180,true),/Finished/);
    await service.sealStream('bob',recovered,120,true);await assert.rejects(service.sealStream('bob',recovered,120,false),/changed/);await upload(recovered,prefix);assert.equal((await service.completeStream('bob',recovered)).ready,true);
    assert.equal((await service.publicList()).sets.length,0);const own=(await service.list('bob')).find(r=>r.id===recovered);assert.equal(own.interrupted,true);assert.ok(own.withdrawn_at);await service.remove('bob',recovered);
   });

@@ -1,0 +1,23 @@
+{
+  "status": "PREPARED; replacement approval NOT RECEIVED",
+  "campaign": "jamloom-dj-qualification-20261024-sessions-retry",
+  "budget_usd": 6,
+  "prior_observed_debit_usd": 0.045873436040000826,
+  "remaining_budget_usd": 5.954126563959999,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "prior_rental_seconds": 547,
+  "remaining_rental_seconds": 1853,
+  "model_requests_max": 8,
+  "tracks": 6,
+  "track_seconds": 60,
+  "vocal_candidates_max": 2,
+  "public_activation": false,
+  "reuse_completed_approval": false,
+  "scope": "One replacement after canonical provider URL fix; original total money and cumulative rental time remain capped; stop on failure; cleanup and no activation.",
+  "code_sha256": {
+    "scripts/vast_trial.py": "e254b44cc9d29aec63c7fada00ff36f4ee41ac6bb571cde830cbaf6a567045d8",
+    "apps/site/lib/vast-provider.ts": "b38eb22d1b70afd1cdabeb0468c41ed8e6bc6eedc93b114a8b19d7e7d0b2df89",
+    "apps/site/tests/dj-warm-qualification.mjs": "74ebe8324468481c4d0bc6a021f8e5b852e3cc5da45f0063791e1d7d8861e29e"
+  }
+}

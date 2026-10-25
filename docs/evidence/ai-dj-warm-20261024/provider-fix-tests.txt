@@ -1,0 +1,12 @@
+✔ Vast adapter verifies account, traverses complete inventory, limits returned fields and confirms delete response (18.531334ms)
+✔ invalid, incomplete, changing or cyclic inventory is never interpreted as absence (1.198542ms)
+✔ provider failures, body size and error text cannot leak secrets or prove destruction (0.669ms)
+✔ provider billing verifies identity and complete pagination, rounds costs up and never asserts finality (0.955166ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 136.258084

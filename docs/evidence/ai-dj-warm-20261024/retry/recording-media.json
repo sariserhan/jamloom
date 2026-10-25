@@ -1,0 +1,24 @@
+{
+  "private-mixed.webm": {
+    "duration_seconds": 176.109,
+    "bytes": 2835681,
+    "packets": 2934,
+    "levels": {
+      "input_i": "-22.74",
+      "input_tp": "-7.57",
+      "input_lra": "7.20",
+      "input_thresh": "-33.08"
+    }
+  },
+  "public-mixed.webm": {
+    "duration_seconds": 152.096,
+    "bytes": 2448890,
+    "packets": 2534,
+    "levels": {
+      "input_i": "-25.39",
+      "input_tp": "-7.38",
+      "input_lra": "4.80",
+      "input_thresh": "-35.43"
+    }
+  }
+}

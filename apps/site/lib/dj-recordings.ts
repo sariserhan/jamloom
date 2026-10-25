@@ -59,7 +59,8 @@ export class DJRecordings{
  async sealStream(owner:string,id:string,seconds:unknown,interrupted=false){
   if(typeof seconds!=='number'||!Number.isFinite(seconds)||seconds<=0||typeof interrupted!=='boolean')throw new AudioError('Invalid recording duration.');
   return this.locked(async db=>{const row=await this.row(db,owner,id);if(!row.streaming)throw new AudioError('Streaming recording required.');if(row.sealed_at){if(row.seconds!==seconds||row.interrupted!==interrupted)throw new AudioError('Recording details changed.',409);return {id};}this.live(row);
-   const session=(await db.query("SELECT extract(epoch FROM ended_at-created_at)::float AS seconds FROM dj_sessions s WHERE id=$1 AND owner_id=$2 AND state='ended' AND EXISTS(SELECT 1 FROM dj_session_batches b JOIN generation_reservations r ON r.id=b.reservation_id WHERE b.session_id=s.id AND b.state='completed' AND b.played_at IS NOT NULL AND r.status='completed')",[row.session_id,owner])).rows[0];
+   // Generation can end before playback drains its final 60-second track and brief vocal repeat.
+   const session=(await db.query("SELECT extract(epoch FROM least(now(),greatest(s.ended_at,max(b.played_at)+interval '64 seconds'))-s.created_at)::float AS seconds FROM dj_sessions s JOIN dj_session_batches b ON b.session_id=s.id JOIN generation_reservations r ON r.id=b.reservation_id WHERE s.id=$1 AND s.owner_id=$2 AND s.state='ended' AND b.state='completed' AND b.played_at IS NOT NULL AND r.status='completed' GROUP BY s.id",[row.session_id,owner])).rows[0];
    if(!session||seconds>session.seconds+5)throw new AudioError('Finished session duration required.',409);
    const parts=(await db.query('SELECT number,bytes,sha256 FROM dj_recording_parts WHERE recording_id=$1 ORDER BY number',[id])).rows;if(!parts.length)throw new AudioError('No recording captured.');
    // Streaming receipts hash the ordered part manifest; every object's range is checked before publication.

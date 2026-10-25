@@ -1,0 +1,12 @@
+{
+  "scripts/cloud_music_setup.sh": "6b3a092a6d1ce00e3cf6d71707c9283a6bae75451e05ca65f0648cad0e402c7b",
+  "scripts/cloud_dj_warm.sh": "9d83516bdfcc379b30bc7ba94cd6be37b8e9cad4afd0080df62551c4b7701803",
+  "scripts/dj_track_worker.py": "5fe98a43cb3059acf9f7788ec9df70c035081c8e3063794776ac80b61594ae36",
+  "scripts/dj_warm_engine.py": "9be7bc4aad0941f7a1fffc222301871fcb92f3ab697da855dad6e04cd78b456c",
+  "scripts/dj_vocal.py": "c5a452c0ba03b59f004360ddfa0d05a658da88a8be6c4a929e3d29ea596345d0",
+  "scripts/club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb",
+  "scripts/vast_trial.py": "e254b44cc9d29aec63c7fada00ff36f4ee41ac6bb571cde830cbaf6a567045d8",
+  "apps/site/lib/vast-provider.ts": "b38eb22d1b70afd1cdabeb0468c41ed8e6bc6eedc93b114a8b19d7e7d0b2df89",
+  "apps/site/lib/dj-recordings.ts": "bf85c88bb991edc4bb5d8ac44507b646486b5d00b332ca4c5728132ebd29444a",
+  "apps/site/tests/dj-warm-qualification.mjs": "afd1724f1d353f09c51a5e5de9b744dbdd776dba220d163a526cb41d87cff147"
+}

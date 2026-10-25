@@ -21,7 +21,7 @@ export async function runRemoteDJBatch(warm:DJWarmWorker,worker:WarmIdentity,tok
   if(receipt.version!==1||receipt.job!==job.lease||!isDeepStrictEqual(receipt.request,request)||receipt.code_revision!==code||receipt.weights_revision!==weights||!/^[a-f0-9]{32}$/.test(receipt.engine)||!Number.isSafeInteger(receipt.compute_ms)||receipt.compute_ms<1||receipt.compute_ms>30000||receipt.bytes!==11520044||validateWav(audio,receipt.bytes,receipt.sha256)!==60000||abort.signal.aborted)throw Error('Renderer receipt mismatch');
   if(receipt.vocal!=null&&(!validVocalCue(receipt.vocal)||job.settings.vocals===false||job.sequence%5!==2||job.settings.energy<3))throw Error('Invalid vocal cue');
   await warm.complete(worker,job,audio,receipt.compute_ms,receipt,receipt.vocal??null);
-  return {session:job.session_id,sequence:job.sequence,sha256:receipt.sha256,computeMs:receipt.compute_ms};
+  return {session:job.session_id,sequence:job.sequence,sha256:receipt.sha256,computeMs:receipt.compute_ms,receipt};
  }catch(e){await warm.stop(worker);throw e;}
  finally{clearTimeout(deadline);clearInterval(heartbeat);signal?.removeEventListener('abort',cancel);}
 }

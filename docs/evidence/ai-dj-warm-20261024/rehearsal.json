@@ -1,0 +1,246 @@
+{
+  "status": "PASS fixture only",
+  "source": "Synthetic 60-second tones and fake provider; actual browser, ledger and R2. No GPU or musical-quality evidence.",
+  "customers": [
+    {
+      "visibility": "public",
+      "session": "b20c75c7b4164b0198c15a32b6330f12",
+      "endReason": "stop",
+      "recording": "6f65348020054e3c918d1577404b6b67",
+      "performance": "LIVE MOVES\nLoops \u00b7 rolls \u00b7 jog \u00b7 filter \u00b7 echo"
+    },
+    {
+      "visibility": "private",
+      "session": "c23db2f201e24025826b80a0961d174e",
+      "endReason": "credits",
+      "recording": "60202ec976874878ac68f93ed6deb5cb",
+      "performance": "LIVE MOVES\nLoops \u00b7 rolls \u00b7 jog \u00b7 filter \u00b7 echo"
+    }
+  ],
+  "tracks": [
+    {
+      "session": "b20c75c7b4164b0198c15a32b6330f12",
+      "sequence": 0,
+      "sha256": "ae5ddda3f3069637c30ff3e4dcd6a88490c1ac7ebcdb65a7349c835946595fc4",
+      "computeMs": 1,
+      "receipt": {
+        "version": 1,
+        "engine": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "job": "24578e55-51a0-4523-bffb-217052000b2f",
+        "request": {
+          "version": 1,
+          "session": "b20c75c7b4164b0198c15a32b6330f12",
+          "sequence": 0,
+          "seed": 184994858,
+          "style": "house",
+          "energy": 4
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1,
+        "bytes": 11520044,
+        "sha256": "ae5ddda3f3069637c30ff3e4dcd6a88490c1ac7ebcdb65a7349c835946595fc4",
+        "vocal": null
+      }
+    },
+    {
+      "session": "c23db2f201e24025826b80a0961d174e",
+      "sequence": 0,
+      "sha256": "1a4358a7963f19e7daa5f586dccc099f847c09e1498ae446ec59f2efabebbaba",
+      "computeMs": 1,
+      "receipt": {
+        "version": 1,
+        "engine": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "job": "29e78072-8ba2-4a95-a931-6115fff9f279",
+        "request": {
+          "version": 1,
+          "session": "c23db2f201e24025826b80a0961d174e",
+          "sequence": 0,
+          "seed": 1474255625,
+          "style": "house",
+          "energy": 4
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1,
+        "bytes": 11520044,
+        "sha256": "1a4358a7963f19e7daa5f586dccc099f847c09e1498ae446ec59f2efabebbaba",
+        "vocal": null
+      }
+    },
+    {
+      "session": "c23db2f201e24025826b80a0961d174e",
+      "sequence": 1,
+      "sha256": "f8c5d4ecf3df53b801d00a3659da9bf24faf254cd6783e6cffb8ca9f6ce173c0",
+      "computeMs": 1,
+      "receipt": {
+        "version": 1,
+        "engine": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "job": "0268ae53-3680-4006-bd3e-adf8c5680309",
+        "request": {
+          "version": 1,
+          "session": "c23db2f201e24025826b80a0961d174e",
+          "sequence": 1,
+          "seed": 2236224680,
+          "style": "house",
+          "energy": 4
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1,
+        "bytes": 11520044,
+        "sha256": "f8c5d4ecf3df53b801d00a3659da9bf24faf254cd6783e6cffb8ca9f6ce173c0",
+        "vocal": null
+      }
+    },
+    {
+      "session": "b20c75c7b4164b0198c15a32b6330f12",
+      "sequence": 1,
+      "sha256": "7166c837cb79add68924b58016e149e3c304056d077e69214c576f6c852fca28",
+      "computeMs": 1,
+      "receipt": {
+        "version": 1,
+        "engine": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "job": "9b2f4c63-b318-45de-8016-245d6551d5fc",
+        "request": {
+          "version": 1,
+          "session": "b20c75c7b4164b0198c15a32b6330f12",
+          "sequence": 1,
+          "seed": 1482542800,
+          "style": "house",
+          "energy": 4
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1,
+        "bytes": 11520044,
+        "sha256": "7166c837cb79add68924b58016e149e3c304056d077e69214c576f6c852fca28",
+        "vocal": null
+      }
+    },
+    {
+      "session": "c23db2f201e24025826b80a0961d174e",
+      "sequence": 2,
+      "sha256": "aa9371d73e4ba276d400d10ee4cb6ba0fe10c0bedd99bd7930ea2deca26288b5",
+      "computeMs": 1,
+      "receipt": {
+        "version": 1,
+        "engine": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "job": "4e6ece84-3d7f-452c-976a-f11e5de36c2a",
+        "request": {
+          "version": 1,
+          "session": "c23db2f201e24025826b80a0961d174e",
+          "sequence": 2,
+          "seed": 637953280,
+          "style": "house",
+          "energy": 5
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1,
+        "bytes": 11520044,
+        "sha256": "aa9371d73e4ba276d400d10ee4cb6ba0fe10c0bedd99bd7930ea2deca26288b5",
+        "vocal": null
+      }
+    },
+    {
+      "session": "b20c75c7b4164b0198c15a32b6330f12",
+      "sequence": 2,
+      "sha256": "923da8bb9e0c4de6945dbaa849ee62067392dbff10a8f7f33252557c0bcea22e",
+      "computeMs": 1,
+      "receipt": {
+        "version": 1,
+        "engine": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "job": "3dae6297-58e6-4b8a-a359-86b6406aa691",
+        "request": {
+          "version": 1,
+          "session": "b20c75c7b4164b0198c15a32b6330f12",
+          "sequence": 2,
+          "seed": 2175473088,
+          "style": "house",
+          "energy": 5
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1,
+        "bytes": 11520044,
+        "sha256": "923da8bb9e0c4de6945dbaa849ee62067392dbff10a8f7f33252557c0bcea22e",
+        "vocal": null
+      }
+    }
+  ],
+  "batches": [
+    {
+      "session_id": "b20c75c7b4164b0198c15a32b6330f12",
+      "sequence": 0,
+      "seed": 184994858,
+      "render_settings": {
+        "style": "house",
+        "energy": 4
+      },
+      "vocal": null,
+      "audio_sha256": "ae5ddda3f3069637c30ff3e4dcd6a88490c1ac7ebcdb65a7349c835946595fc4"
+    },
+    {
+      "session_id": "b20c75c7b4164b0198c15a32b6330f12",
+      "sequence": 1,
+      "seed": 1482542800,
+      "render_settings": {
+        "style": "house",
+        "energy": 4,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "7166c837cb79add68924b58016e149e3c304056d077e69214c576f6c852fca28"
+    },
+    {
+      "session_id": "b20c75c7b4164b0198c15a32b6330f12",
+      "sequence": 2,
+      "seed": 2175473088,
+      "render_settings": {
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "923da8bb9e0c4de6945dbaa849ee62067392dbff10a8f7f33252557c0bcea22e"
+    },
+    {
+      "session_id": "c23db2f201e24025826b80a0961d174e",
+      "sequence": 0,
+      "seed": 1474255625,
+      "render_settings": {
+        "style": "house",
+        "energy": 4
+      },
+      "vocal": null,
+      "audio_sha256": "1a4358a7963f19e7daa5f586dccc099f847c09e1498ae446ec59f2efabebbaba"
+    },
+    {
+      "session_id": "c23db2f201e24025826b80a0961d174e",
+      "sequence": 1,
+      "seed": 2236224680,
+      "render_settings": {
+        "style": "house",
+        "energy": 4,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "f8c5d4ecf3df53b801d00a3659da9bf24faf254cd6783e6cffb8ca9f6ce173c0"
+    },
+    {
+      "session_id": "c23db2f201e24025826b80a0961d174e",
+      "sequence": 2,
+      "seed": 637953280,
+      "render_settings": {
+        "style": "house",
+        "energy": 5,
+        "vocals": true
+      },
+      "vocal": null,
+      "audio_sha256": "aa9371d73e4ba276d400d10ee4cb6ba0fe10c0bedd99bd7930ea2deca26288b5"
+    }
+  ],
+  "vocals": 0,
+  "humanListening": "NOT RUN"
+}

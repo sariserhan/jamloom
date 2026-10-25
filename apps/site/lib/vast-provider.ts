@@ -15,7 +15,8 @@ export class VastProvider implements RentalProvider {
  }
  private async api(path:string,method='GET'){
   try{
-   const response=await this.request('https://console.vast.ai/api/'+path,{method,
+   const url=new URL('https://console.vast.ai/api/'+path);if(!url.pathname.endsWith('/'))url.pathname+='/';
+   const response=await this.request(url.href,{method,
     headers:{Authorization:'Bearer '+this.key},redirect:'error',signal:AbortSignal.timeout(10000)});
    if(!response.ok){await response.body?.cancel();throw new Error('Request failed');}
    const body=JSON.parse((await readBody(response.body,1_048_576)).toString());
