@@ -6,10 +6,18 @@ import json
 from pathlib import Path
 import re
 import shutil
+import subprocess
 from inspect_wav import inspect
 from q0_audit import loudness, level_match
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def listening_copy(source, destination):
+    # Finalized MP3 carries duration/seek metadata and works in native Safari audio controls.
+    subprocess.run(['ffmpeg', '-nostdin', '-v', 'error', '-n', '-i', str(source),
+                    '-map', '0:a:0', '-c:a', 'libmp3lame', '-b:a', '192k',
+                    str(destination)], check=True, timeout=120)
 
 
 def main():
@@ -49,9 +57,11 @@ def main():
         assert len(candidates) == 1 and candidates[0].suffix in ('.webm', '.m4a')
         file = candidates[0]
         shutil.copyfile(file, review / file.name)
-        mixes.append(f'<article><h2>{visibility.title()} session</h2><audio controls preload="none" aria-label="{visibility} session" src="{file.name}"></audio><p>Ends on {"Stop" if visibility == "public" else "exhausted credits"}.</p></article>')
+        playable = review / f'{visibility}-mixed.mp3'
+        listening_copy(file, playable)
+        mixes.append(f'<article><h2>{visibility.title()} session</h2><audio controls preload="metadata" aria-label="{visibility} session" src="{playable.name}"></audio><p>Ends on {"Stop" if visibility == "public" else "exhausted credits"}.</p><a href="{playable.name}" download>Download this set</a></article>')
     vocal_note = (f"This batch contains {result['vocals']} brief vocal insertions. Listen for intelligibility and timing." if result['vocals'] else 'This batch has no inserted vocals: candidates must pass both timing and length checks.')
-    page = '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jamloom · Two fresh sets</title><style>body{font:18px/1.6 system-ui;max-width:1000px;margin:32px auto;padding:0 20px;background:#111b20;color:#e9f0eb}h1{line-height:1.15}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:20px}article{padding:22px;background:#213039;border:1px solid #41545b;border-radius:12px;margin-bottom:20px}audio{width:100%}:focus-visible{outline:3px solid #d7ff80;outline-offset:4px}</style><h1>Two users. Two fresh sets.</h1><p>Listen for groove and transitions. ' + vocal_note + ' Individual clips are level-matched; complete sets retain their recorded levels. Nothing plays automatically.</p><h2>Complete experiences</h2><main>' + ''.join(mixes) + '</main>' + f'<h2>{count} new tracks</h2><p>Clips 1–{count//2} belong to one session, {count//2+1}–{count} to the other.</p><main>' + ''.join(cards) + '</main><script>document.addEventListener("play",e=>{if(e.target.tagName==="AUDIO")document.querySelectorAll("audio").forEach(a=>{if(a!==e.target)a.pause()})},true)</script></html>'
+    page = '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jamloom · Two fresh sets</title><style>body{font:18px/1.6 system-ui;max-width:1000px;margin:32px auto;padding:0 20px;background:#111b20;color:#e9f0eb}h1{line-height:1.15}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:20px}article{padding:22px;background:#213039;border:1px solid #41545b;border-radius:12px;margin-bottom:20px}audio{width:100%}a{color:#d7ff80}:focus-visible{outline:3px solid #d7ff80;outline-offset:4px}</style><h1>Two users. Two fresh sets.</h1><p>Listen for groove and transitions. ' + vocal_note + ' Individual clips are level-matched; complete sets retain their recorded levels. Nothing plays automatically.</p><h2>Complete experiences</h2><main>' + ''.join(mixes) + '</main>' + f'<h2>{count} new tracks</h2><p>Clips 1–{count//2} belong to one session, {count//2+1}–{count} to the other.</p><main>' + ''.join(cards) + '</main><script>document.addEventListener("play",e=>{if(e.target.tagName==="AUDIO")document.querySelectorAll("audio").forEach(a=>{if(a!==e.target)a.pause()})},true)</script></html>'
     (review / 'index.html').write_text(page)
     (ROOT / (('docs/evidence/ai-dj-hosted-20261025/measurements.json' if args.hosted else 'docs/evidence/ai-dj-beta-20261025/measurements.json') if args.beta else ('docs/evidence/ai-dj-finish-20261024/launch-fix-measurements.json' if args.launch_fix else 'docs/evidence/ai-dj-finish-20261024/measurements.json') if args.finish else 'docs/evidence/ai-dj-warm-20261024/measurements.json')).write_text(json.dumps(dict(target_lufs=target, clips=measurements, human_listening='NOT RUN'), indent=2) + '\n')
     print(f'PASS: {count} hash-verified listening copies and two full mixes; private worker files excluded')

@@ -1,3 +1,11 @@
+## Local AI DJ listening-page playback — 2026-10-25
+
+**PASS local fix.** Public/private full sets now use finalized MP3 listening copies with duration metadata, seeking and download links. The loopback review server supports byte ranges (206) and rejects invalid ranges/private symlink targets. Original captures remain unchanged. No generation, cloud writes or website deployment.
+
+Chromium and WebKit: both sets play muted, seek beyond 3:40, pause, show finite durations and stop the other player; desktop/mobile layout and console checks PASS. Server range/boundary regression PASS. Native Safari on the owner's device remains NOT RUN. Earlier browser checks only proved playback started and missed the infinite-duration Chromium result and server range limitation.
+
+Review: <http://localhost:8766/hosted-sessions/review/>. Restart server: `python3 scripts/review_serve.py`. Evidence: `/tmp/jamloom-review-playback.json`, `/tmp/jamloom-review-fixed-chromium.png`, `/tmp/jamloom-review-fixed-webkit.png`, `/tmp/jamloom-review-server-tests.log`.
+
 ## AI DJ hosted-operation qualification — 2026-10-25
 
 **PASS bounded session operation, privacy, provider shutdown and recovered cleanup; PARTIAL musical acceptance.** Twenty distinct fresh tracks across two listeners, real dispatcher crash/recovery, capacity refusal, mood changes, Stop and credit exhaustion verified. Observed GPU cost $0.169; no running rentals. GitHub push, production deployment, all eight CI jobs and live public/gating checks PASS.
