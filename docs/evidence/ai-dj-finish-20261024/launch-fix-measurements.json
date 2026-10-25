@@ -1,0 +1,263 @@
+{
+  "target_lufs": -24.58,
+  "clips": [
+    {
+      "number": 1,
+      "track": {
+        "session": "9fd0c32719ed4adabe415f81251ca5c9",
+        "sequence": 0,
+        "sha256": "312b0e990b1bb8085639763f8402cd6f82a091287af2060416dc7740683ca552",
+        "computeMs": 3363,
+        "receipt": {
+          "version": 1,
+          "engine": "dfe407622979e71300b647cca583a10e",
+          "job": "21029680-47e2-42e5-b624-31e82e8100c9",
+          "request": {
+            "version": 1,
+            "session": "9fd0c32719ed4adabe415f81251ca5c9",
+            "sequence": 0,
+            "seed": 3468367745,
+            "style": "house",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 3363,
+          "bytes": 11520044,
+          "sha256": "312b0e990b1bb8085639763f8402cd6f82a091287af2060416dc7740683ca552",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.72",
+        "input_tp": "-0.93",
+        "input_lra": "4.50",
+        "input_thresh": "-27.73"
+      },
+      "gain_db": -6.859999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.79",
+        "input_lra": "4.50",
+        "input_thresh": "-34.59"
+      }
+    },
+    {
+      "number": 2,
+      "track": {
+        "session": "9fd0c32719ed4adabe415f81251ca5c9",
+        "sequence": 1,
+        "sha256": "c1433d7348a966a1fecfad0411c5c79b01678a261bf1ec981658fed996cc1434",
+        "computeMs": 2021,
+        "receipt": {
+          "version": 1,
+          "engine": "dfe407622979e71300b647cca583a10e",
+          "job": "cb167f29-26b8-4c09-b3c1-40a61ec35894",
+          "request": {
+            "version": 1,
+            "session": "9fd0c32719ed4adabe415f81251ca5c9",
+            "sequence": 1,
+            "seed": 2258029042,
+            "style": "house",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2021,
+          "bytes": 11520044,
+          "sha256": "c1433d7348a966a1fecfad0411c5c79b01678a261bf1ec981658fed996cc1434",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.42",
+        "input_tp": "-0.82",
+        "input_lra": "4.60",
+        "input_thresh": "-27.48"
+      },
+      "gain_db": -7.159999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.98",
+        "input_lra": "4.50",
+        "input_thresh": "-34.63"
+      }
+    },
+    {
+      "number": 3,
+      "track": {
+        "session": "9fd0c32719ed4adabe415f81251ca5c9",
+        "sequence": 2,
+        "sha256": "7095e2cba2f5bf5f5a9d7414e382b142e6b5c0c39b11b2e0740ba7772aeede32",
+        "computeMs": 2349,
+        "receipt": {
+          "version": 1,
+          "engine": "dfe407622979e71300b647cca583a10e",
+          "job": "437f1e5c-8e6c-445d-bdc6-521149fbbf20",
+          "request": {
+            "version": 1,
+            "session": "9fd0c32719ed4adabe415f81251ca5c9",
+            "sequence": 2,
+            "seed": 824053607,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2349,
+          "bytes": 11520044,
+          "sha256": "7095e2cba2f5bf5f5a9d7414e382b142e6b5c0c39b11b2e0740ba7772aeede32",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-17.78",
+        "input_tp": "-0.84",
+        "input_lra": "5.20",
+        "input_thresh": "-27.80"
+      },
+      "gain_db": -6.799999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.64",
+        "input_lra": "5.20",
+        "input_thresh": "-34.59"
+      }
+    },
+    {
+      "number": 4,
+      "track": {
+        "session": "f6a7a2a8a29c408cac5b1e4b59ed2604",
+        "sequence": 0,
+        "sha256": "20d3c2b9ce117679f4cfd5b118b0fd947b3aa40a855569c44df1939125a3e4a4",
+        "computeMs": 1965,
+        "receipt": {
+          "version": 1,
+          "engine": "dfe407622979e71300b647cca583a10e",
+          "job": "9abb06f3-03e5-42d9-9a76-acc920977092",
+          "request": {
+            "version": 1,
+            "session": "f6a7a2a8a29c408cac5b1e4b59ed2604",
+            "sequence": 0,
+            "seed": 566482777,
+            "style": "house",
+            "energy": 4,
+            "mood": "bright"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1965,
+          "bytes": 11520044,
+          "sha256": "20d3c2b9ce117679f4cfd5b118b0fd947b3aa40a855569c44df1939125a3e4a4",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-16.51",
+        "input_tp": "-0.99",
+        "input_lra": "2.80",
+        "input_thresh": "-26.78"
+      },
+      "gain_db": -8.069999999999997,
+      "review": {
+        "input_i": "-24.57",
+        "input_tp": "-9.06",
+        "input_lra": "2.90",
+        "input_thresh": "-34.84"
+      }
+    },
+    {
+      "number": 5,
+      "track": {
+        "session": "f6a7a2a8a29c408cac5b1e4b59ed2604",
+        "sequence": 1,
+        "sha256": "03751bd4bebe3ed33974993062d2f3a2a098d298ab2fe018b34df1f74cf1291b",
+        "computeMs": 2053,
+        "receipt": {
+          "version": 1,
+          "engine": "dfe407622979e71300b647cca583a10e",
+          "job": "3b20de29-5ddc-44d1-8018-e7c76e573afe",
+          "request": {
+            "version": 1,
+            "session": "f6a7a2a8a29c408cac5b1e4b59ed2604",
+            "sequence": 1,
+            "seed": 1458044381,
+            "style": "house",
+            "energy": 4,
+            "mood": "bright"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2053,
+          "bytes": 11520044,
+          "sha256": "03751bd4bebe3ed33974993062d2f3a2a098d298ab2fe018b34df1f74cf1291b",
+          "vocal": null
+        }
+      },
+      "original": {
+        "input_i": "-15.95",
+        "input_tp": "-0.86",
+        "input_lra": "3.40",
+        "input_thresh": "-26.11"
+      },
+      "gain_db": -8.629999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.49",
+        "input_lra": "3.30",
+        "input_thresh": "-34.74"
+      }
+    },
+    {
+      "number": 6,
+      "track": {
+        "session": "f6a7a2a8a29c408cac5b1e4b59ed2604",
+        "sequence": 2,
+        "sha256": "8eed92ea4766b371bdc40792c8d37f80f36adf127b9e263b7cb912580f2307fb",
+        "computeMs": 3870,
+        "receipt": {
+          "version": 1,
+          "engine": "dfe407622979e71300b647cca583a10e",
+          "job": "5edf147d-a558-4e66-8c66-586ce06db3a8",
+          "request": {
+            "version": 1,
+            "session": "f6a7a2a8a29c408cac5b1e4b59ed2604",
+            "sequence": 2,
+            "seed": 300168161,
+            "style": "house",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 3870,
+          "bytes": 11520044,
+          "sha256": "8eed92ea4766b371bdc40792c8d37f80f36adf127b9e263b7cb912580f2307fb",
+          "vocal": {
+            "start": 29.792441860465154,
+            "seconds": 1.8604583333333333,
+            "bpm": 128.99999999999983,
+            "repeat": true
+          }
+        }
+      },
+      "original": {
+        "input_i": "-18.06",
+        "input_tp": "-0.78",
+        "input_lra": "4.00",
+        "input_thresh": "-28.15"
+      },
+      "gain_db": -6.52,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.30",
+        "input_lra": "4.00",
+        "input_thresh": "-34.67"
+      }
+    }
+  ],
+  "human_listening": "PASS overall owner track acceptance; requests occasional correctly timed voice; separate vocal/transition rating not supplied"
+}

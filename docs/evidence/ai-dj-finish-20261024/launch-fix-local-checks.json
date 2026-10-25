@@ -1,0 +1,31 @@
+{
+  "status": "PASS local checks; two-hour run still in progress",
+  "checks": {
+    "website_tests": 125,
+    "session_ledger_and_admission_tests": 19,
+    "provider_tests": 5,
+    "storage_and_renderer_tests": 15,
+    "python_tests": 35,
+    "typescript": "PASS",
+    "production_build": "PASS Node 22",
+    "client_secret_audit": "PASS 43 files",
+    "production_routes": "PASS five local production 404s",
+    "gpu_qualification": "PASS six tracks and two R2 recordings, cleanup confirmed",
+    "measured_audio_replay": "PASS real bass exchange on retained original audio",
+    "owner_listening": "PASS overall track acceptance; occasional properly timed voice requested"
+  },
+  "two_hour_endurance": "RUNNING; not included in these PASS claims",
+  "public_activation": false,
+  "pushed": false,
+  "sources": {
+    "apps/site/lib/dj-sessions.ts": "f5841dd068afeba21f0a675c940ac98bd6bd5a3e60f291c11f6030ade17ccb1b",
+    "apps/site/lib/vast-provider.ts": "393830bd533a9760aa11e266d81e7cebce8afdf2d8c71d6e70a3df907240b5ca",
+    "apps/site/scripts/dj-rental-cost.ts": "99dd8b2e0bc69803bd4e14ed15ad2079f9f90061213831e3cf7d02c479ecb421",
+    "apps/site/tests/dj-sessions.test.ts": "41e8fa333aebbb4b2b746a9290369c01385c1a8eeeaff39125cba62988a515bd",
+    "apps/site/tests/dj-measured-replay.mjs": "6becfc6e7b6fb4912feba0a67f7c0b49e37d59036c925a852ce40314dba5981f",
+    "apps/site/tests/dj-warm-qualification.mjs": "49995cccaf41d6b411ea2b650ebeb909d82d8fd29691c2e3a84786fd94ca14a2",
+    "scripts/dj_track_worker.py": "4c20ef154278a9629016a2f8df4966fabb06fdf8c23ea4e71dfd4485c8604146",
+    "scripts/vast_trial.py": "6fa8d3bf1f95eac7487ddb09d29cdbdd518716770dc00555f5f381ef792cac58",
+    "scripts/review_dj_warm.py": "c91b28fa52fc6d917a91955bd3525565e3dac931ac8667984d526dd0bf9522eb"
+  }
+}

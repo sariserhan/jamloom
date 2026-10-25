@@ -1,0 +1,138 @@
+{
+  "kind": "Measured timing, not human phrase review",
+  "results": [
+    {
+      "file": "../../renders/ai-dj-finish-20261024/gpu-launch-fix/9fd0c32719ed4adabe415f81251ca5c9-0.wav",
+      "sha256": "312b0e990b1bb8085639763f8402cd6f82a091287af2060416dc7740683ca552",
+      "bpm": 63.8,
+      "confidence": 0.4520541300051395,
+      "grid": {
+        "bpm": 127.9,
+        "offset": 0.14500000000000005,
+        "maxError": 0.02110633307275478,
+        "coverage": 0.6190476190476191,
+        "entry": 0.6141164972634872,
+        "exit": 15.62584440969507,
+        "hookSafe": false,
+        "regions": [
+          {
+            "start": 0.6141164972634872,
+            "end": 15.62584440969507,
+            "beats": 33
+          }
+        ]
+      },
+      "review": null
+    },
+    {
+      "file": "../../renders/ai-dj-finish-20261024/gpu-launch-fix/f6a7a2a8a29c408cac5b1e4b59ed2604-0.wav",
+      "sha256": "20d3c2b9ce117679f4cfd5b118b0fd947b3aa40a855569c44df1939125a3e4a4",
+      "bpm": 127.7,
+      "confidence": 0.5052960879455843,
+      "grid": {
+        "bpm": 128,
+        "offset": 0.085,
+        "maxError": 0.007500000000000284,
+        "coverage": 0.8492063492063492,
+        "entry": 0.55375,
+        "exit": 51.6475,
+        "hookSafe": true,
+        "regions": [
+          {
+            "start": 0.55375,
+            "end": 10.86625,
+            "beats": 23
+          },
+          {
+            "start": 13.67875,
+            "end": 41.335,
+            "beats": 60
+          },
+          {
+            "start": 42.2725,
+            "end": 51.6475,
+            "beats": 21
+          }
+        ]
+      },
+      "review": null
+    },
+    {
+      "file": "../../renders/ai-dj-finish-20261024/gpu-launch-fix/9fd0c32719ed4adabe415f81251ca5c9-1.wav",
+      "sha256": "c1433d7348a966a1fecfad0411c5c79b01678a261bf1ec981658fed996cc1434",
+      "bpm": 126.3,
+      "confidence": 0.26827435929177756,
+      "grid": {
+        "bpm": 127.45,
+        "offset": 0.40500000000000025,
+        "maxError": 0.024401726167152304,
+        "coverage": 0.488,
+        "entry": 16.882049823460182,
+        "exit": 41.83301098469982,
+        "hookSafe": true,
+        "regions": [
+          {
+            "start": 16.882049823460182,
+            "end": 41.83301098469982,
+            "beats": 54
+          }
+        ]
+      },
+      "review": null
+    },
+    {
+      "file": "../../renders/ai-dj-finish-20261024/gpu-launch-fix/f6a7a2a8a29c408cac5b1e4b59ed2604-1.wav",
+      "sha256": "03751bd4bebe3ed33974993062d2f3a2a098d298ab2fe018b34df1f74cf1291b",
+      "bpm": 63.5,
+      "confidence": 0.3127091633931427,
+      "grid": {
+        "bpm": 127,
+        "offset": 0.05499999999999999,
+        "maxError": 0.01700787401568249,
+        "coverage": 0.44,
+        "entry": 0.5274409448818898,
+        "exit": 15.645551181102348,
+        "hookSafe": false,
+        "regions": [
+          {
+            "start": 0.5274409448818898,
+            "end": 15.645551181102348,
+            "beats": 33
+          }
+        ]
+      },
+      "review": null
+    },
+    {
+      "file": "../../renders/ai-dj-finish-20261024/gpu-launch-fix/9fd0c32719ed4adabe415f81251ca5c9-2.wav",
+      "sha256": "7095e2cba2f5bf5f5a9d7414e382b142e6b5c0c39b11b2e0740ba7772aeede32",
+      "bpm": 127.7,
+      "confidence": 0.38627693581663197,
+      "grid": null,
+      "review": null
+    },
+    {
+      "file": "../../renders/ai-dj-finish-20261024/gpu-launch-fix/f6a7a2a8a29c408cac5b1e4b59ed2604-2.wav",
+      "sha256": "8eed92ea4766b371bdc40792c8d37f80f36adf127b9e263b7cb912580f2307fb",
+      "bpm": 64.5,
+      "confidence": 0.36833630996802824,
+      "grid": {
+        "bpm": 129,
+        "offset": 0.025,
+        "maxError": 0.022674418604580637,
+        "coverage": 0.7322834645669292,
+        "entry": 18.629651162790715,
+        "exit": 44.21104651162797,
+        "hookSafe": true,
+        "regions": [
+          {
+            "start": 18.629651162790715,
+            "end": 44.21104651162797,
+            "beats": 56
+          }
+        ]
+      },
+      "review": null
+    }
+  ]
+}

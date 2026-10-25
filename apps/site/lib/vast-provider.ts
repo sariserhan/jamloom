@@ -57,7 +57,7 @@ export class VastProvider implements RentalProvider {
  }
  async charges(account:number,instance:number,label:string,from:number,to:number){
   integer(account,1);integer(instance,1);integer(from,0);integer(to,from+1);
-  if(to-from>32*86400||!/^jamloom-job-[a-f0-9-]{36}$/.test(label))throw Error('Invalid billing window or label');
+  if(to-from>32*86400||!/^jamloom-[a-z0-9-]{1,100}$/.test(label))throw Error('Invalid billing window or label');
   if((await this.api('v0/users/current')).id!==account)throw Error('Vast account mismatch');
   const rows:Record<string,unknown>[]=[],seen=new Set<string>(),sources=new Set<string>();let token:string|null=null,total:number|undefined;
   for(let page=0;page<40;page++){

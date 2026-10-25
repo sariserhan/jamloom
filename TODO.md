@@ -1,3 +1,10 @@
+## AI DJ completion resumption — 2026-10-25
+
+**PARTIAL; fresh GPU/customer flow and owner track acceptance PASS.** The approved launch-fix replacement produced six fresh tracks, one brief vocal and two complete R2 sets; one measured bass exchange also passes a real browser replay. All rentals are deleted. Four campaign attempts used 1,252.72/2,400 authorized seconds and $0.061 in observed charge records within the combined $6; final invoice unverified. Owner accepts the tracks and reiterates occasional correctly timed voice. Two-session admission, no-charge rejection, budget/readiness checks and abandoned-queue refunds pass. The two-hour procedural/R2 run is still running. Whole-credit billing, always-on GPU supervision/capacity, expert phrasing and physical venue/release gates remain open. No push, deployment, public activation or live billing.
+
+[Completion report](docs/ai-dj-completion.md), [owner feedback](docs/evidence/ai-dj-finish-20261024/launch-fix-owner-listening.json), [cost worksheet](docs/evidence/ai-dj-finish-20261024/operating-costs.json).
+
+
 ## AI DJ completion pass — 2026-10-24
 
 Owner: “do all in one go and lets try to finish this product”. Continue local implementation, integration, endurance and release preparation; preserve no-push/no-public-activation and explicit compute caps.
@@ -5,12 +12,12 @@ Owner: “do all in one go and lets try to finish this product”. Continue loca
 - [x] Diagnose beat rejection on retained audio; known-timing and negative controls PASS. Four of six retained tracks have supported sections; all original adjacent pairs still require fallback fades.
 - [x] Carry Warm/Bright/Deep through signed startup quotes, authenticated immutable batches and the renderer; default-Deep regression and WebKit customer flow PASS.
 - [x] Preserve the rejected opening and prepare hash-bound, level-matched 0/15/35-second comparisons without replacing accepted audio.
-- [ ] Generate and obtain acceptance for a stronger opening and brief vocals. No new GPU audio was produced this pass.
+- [x] Generate a new six-track opening candidate and obtain overall owner acceptance; one brief vocal and two repeats exercised. Separate vocal/phrase quality remains PARTIAL.
 - [x] Exercise one real hour of procedural generation and save a complete private recording: 65 fresh tracks, 60:06.84 decoded output, bounded memory and verified cleanup.
 - [ ] Close strict endurance/venue qualification: original silence-percentage assertion failed on authored rests; independent recording checks pass, but this does not establish glitch-free GPU or venue playback.
 - [x] Gate generation on worker availability and authenticated renderer readiness; keep Stop, prepared playback and recovery available.
 - [ ] Reconcile complete operating costs, decide viable billing units and qualify production capacity before paid release.
-- [ ] Complete fresh GPU timing/vocal qualification. Two approved attempts failed before model work; shutdown PASS, no active rentals, about $0.0068 observed debit within the original $6. No further paid attempt is authorized.
+- [x] Complete fresh GPU/customer timing/vocal qualification after the approved launch fix; six tracks, one short phrase, two saved sets and cleanup PASS. Exact musical phrasing and production promotion remain open.
 - [x] Update evidence, remaining owner/release gates and local commits. Implementation `5acb7d6`; [completion report](docs/ai-dj-completion.md). Musical/venue acceptance remains explicit.
 
 ## Warm AI DJ session, timing and vocals — 2026-10-24

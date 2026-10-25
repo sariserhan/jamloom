@@ -1,0 +1,16 @@
+{
+  "campaign": "jamloom-dj-qualification-20261024-sessions-finish-resume",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_requests_max": 8,
+  "public_activation": false,
+  "owner_statement": "do all",
+  "authorization_context": "Owner requested all listed unfinished AI DJ work, including a fresh GPU qualification. This resumption conservatively uses only the unused original campaign allowance; it does not add budget or authorize publication.",
+  "prior_rental_seconds": 706.3472163677216,
+  "remaining_rental_seconds": 1693,
+  "prior_observed_debit_usd": 0.006807764400001304,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "required_host": 24953
+}

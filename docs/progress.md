@@ -1,3 +1,10 @@
+## AI DJ completion resumption — 2026-10-25
+
+**PARTIAL; fresh GPU/customer flow and owner track acceptance PASS.** The approved launch-fix replacement produced six fresh tracks, one brief vocal and two complete R2 sets; one measured bass exchange also passes a real browser replay. All rentals are deleted. Four campaign attempts used 1,252.72/2,400 authorized seconds and $0.061 in observed charge records within the combined $6; final invoice unverified. Owner accepts the tracks and reiterates occasional correctly timed voice. Two-session admission, no-charge rejection, budget/readiness checks and abandoned-queue refunds pass. The two-hour procedural/R2 run is still running. Whole-credit billing, always-on GPU supervision/capacity, expert phrasing and physical venue/release gates remain open. No push, deployment, public activation or live billing.
+
+[Completion report](ai-dj-completion.md), [owner feedback](evidence/ai-dj-finish-20261024/launch-fix-owner-listening.json), [cost worksheet](evidence/ai-dj-finish-20261024/operating-costs.json).
+
+
 ## AI DJ completion pass — 2026-10-24
 
 **PARTIAL; local implementation complete, release qualification open.** Mood now reaches the immutable generation request, including the starting direction; a changed starting price must be checked again. Numerical beat analysis supports stable sections around breakdowns, preserves human mix-point reviews and refuses unsafe handoff edges. Hook-grid checks take about 0.09 seconds per retained track locally, with three of six eligible windows; this is not vocal or phrase-quality acceptance.

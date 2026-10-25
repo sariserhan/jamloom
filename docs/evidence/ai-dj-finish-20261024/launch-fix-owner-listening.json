@@ -1,0 +1,53 @@
+{
+  "owner_statement": "they are good but sometimes in the right time and right beat add some vocal voice too",
+  "overall_track_acceptance": "PASS owner acceptance of this six-track batch",
+  "vocal_requirement": "Occasional brief voice at appropriate musical moments, aligned to the beat; do not force a vocal into every track.",
+  "separate_vocal_intelligibility_or_transition_rating": "NOT PROVIDED",
+  "reference": {
+    "review": "http://localhost:8766/completion-launch-fix/review/",
+    "clips": [
+      {
+        "number": 1,
+        "sha256": "312b0e990b1bb8085639763f8402cd6f82a091287af2060416dc7740683ca552",
+        "session": "9fd0c32719ed4adabe415f81251ca5c9",
+        "sequence": 0
+      },
+      {
+        "number": 2,
+        "sha256": "c1433d7348a966a1fecfad0411c5c79b01678a261bf1ec981658fed996cc1434",
+        "session": "9fd0c32719ed4adabe415f81251ca5c9",
+        "sequence": 1
+      },
+      {
+        "number": 3,
+        "sha256": "7095e2cba2f5bf5f5a9d7414e382b142e6b5c0c39b11b2e0740ba7772aeede32",
+        "session": "9fd0c32719ed4adabe415f81251ca5c9",
+        "sequence": 2
+      },
+      {
+        "number": 4,
+        "sha256": "20d3c2b9ce117679f4cfd5b118b0fd947b3aa40a855569c44df1939125a3e4a4",
+        "session": "f6a7a2a8a29c408cac5b1e4b59ed2604",
+        "sequence": 0
+      },
+      {
+        "number": 5,
+        "sha256": "03751bd4bebe3ed33974993062d2f3a2a098d298ab2fe018b34df1f74cf1291b",
+        "session": "f6a7a2a8a29c408cac5b1e4b59ed2604",
+        "sequence": 1
+      },
+      {
+        "number": 6,
+        "sha256": "8eed92ea4766b371bdc40792c8d37f80f36adf127b9e263b7cb912580f2307fb",
+        "session": "f6a7a2a8a29c408cac5b1e4b59ed2604",
+        "sequence": 2
+      }
+    ]
+  },
+  "observed_implementation": {
+    "vocal_insertions": 1,
+    "public_mix_loop": "Performance history reports Vocal loop \u00b7 2 repeats",
+    "timing": "Inserted phrase requires supported beats; repeating it requires an independent browser-grid check. No claimed human phrase/downbeat review."
+  },
+  "trained_expert_DJ_or_venue_acceptance": false
+}

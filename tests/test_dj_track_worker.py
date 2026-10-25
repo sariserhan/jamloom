@@ -33,6 +33,9 @@ class WorkerContract(unittest.TestCase):
         for mood, phrase in [('warm','Warm rounded chords'),('bright','Bright uplifting chords'),('deep','Deep hypnotic bass')]:
             self.assertEqual(request({**value,'mood':mood})['mood'],mood)
             self.assertIn(phrase,brief({**value,'mood':mood})[0])
+            self.assertIn('no ambient intro or fade-in',brief({**value,'mood':mood})[0])
+        self.assertNotIn('no ambient intro or fade-in',brief(value)[0])
+        self.assertNotIn('Start at full dancefloor energy',brief({**value,'mood':'deep','energy':2})[0])
         for change in [dict(mood='angry'), dict(mood=None), dict(seed=True), dict(seed=2**32), dict(sequence=-1), dict(energy=6), dict(style='ambient'), dict(session='../a'), dict(reference_audio='x')]:
             with self.assertRaises(ValueError): request({**value, **change})
     def test_ace_adapter_uses_one_fresh_instrumental_request(self):

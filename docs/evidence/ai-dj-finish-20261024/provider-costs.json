@@ -1,0 +1,42 @@
+[
+  {
+    "instance": 57603082,
+    "rentalSeconds": 625.3990271091461,
+    "observedProviderCostMicros": 5000,
+    "evidenceSha256": "714587c9c6e084bf5fe20acac43e2c3fdbeb56a03f130572883a04cc6f88315c",
+    "final": false,
+    "customerBillingChanged": false
+  },
+  {
+    "instance": 57604316,
+    "rentalSeconds": 80.94818925857544,
+    "observedProviderCostMicros": 2000,
+    "evidenceSha256": "a8fc6394e442c91245249fb087363e5ab45d4a80df3e45f9229c0b59e7761aa9",
+    "final": false,
+    "customerBillingChanged": false
+  },
+  {
+    "instance": 57600349,
+    "rentalSeconds": 489.53795981407166,
+    "observedProviderCostMicros": 57000,
+    "evidenceSha256": "5815f499d861d1f32aa847a5a9fb49273252d5a40aab2b69bfadf718d6410f5a",
+    "final": false,
+    "customerBillingChanged": false
+  },
+  {
+    "instance": 57611081,
+    "rentalSeconds": 81.00594210624695,
+    "observedProviderCostMicros": 8000,
+    "evidenceSha256": "de6c2432fc2d05b6721a90d4139915d1b2015bbf546cc2086dd78ea13010ff3f",
+    "final": false,
+    "customerBillingChanged": false
+  },
+  {
+    "instance": 57611655,
+    "rentalSeconds": 465.3649878501892,
+    "observedProviderCostMicros": 46000,
+    "evidenceSha256": "2d785ef1e99d2958239426ccf1208037187ad9375d0ebc7c825ca2cee0944062",
+    "final": false,
+    "customerBillingChanged": false
+  }
+]

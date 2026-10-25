@@ -1,0 +1,156 @@
+{
+  "status": "PASS numerical inspection",
+  "scope": "Raw RMS/peak windows on six fresh tracks. These describe signal level, not groove, musical energy, causal prompt improvement or owner acceptance.",
+  "clips": [
+    {
+      "clip": 1,
+      "sha256": "312b0e990b1bb8085639763f8402cd6f82a091287af2060416dc7740683ca552",
+      "windows": [
+        {
+          "start": 0,
+          "seconds": 15,
+          "rms_dbfs": -19.6,
+          "peak_dbfs": -1.578
+        },
+        {
+          "start": 15,
+          "seconds": 15,
+          "rms_dbfs": -21.668,
+          "peak_dbfs": -2.112
+        },
+        {
+          "start": 35,
+          "seconds": 15,
+          "rms_dbfs": -17.578,
+          "peak_dbfs": -1.0
+        }
+      ],
+      "opening_vs_late_rms_db": -2.022
+    },
+    {
+      "clip": 2,
+      "sha256": "c1433d7348a966a1fecfad0411c5c79b01678a261bf1ec981658fed996cc1434",
+      "windows": [
+        {
+          "start": 0,
+          "seconds": 15,
+          "rms_dbfs": -20.854,
+          "peak_dbfs": -2.414
+        },
+        {
+          "start": 15,
+          "seconds": 15,
+          "rms_dbfs": -18.501,
+          "peak_dbfs": -2.681
+        },
+        {
+          "start": 35,
+          "seconds": 15,
+          "rms_dbfs": -17.151,
+          "peak_dbfs": -1.0
+        }
+      ],
+      "opening_vs_late_rms_db": -3.703
+    },
+    {
+      "clip": 3,
+      "sha256": "7095e2cba2f5bf5f5a9d7414e382b142e6b5c0c39b11b2e0740ba7772aeede32",
+      "windows": [
+        {
+          "start": 0,
+          "seconds": 15,
+          "rms_dbfs": -19.198,
+          "peak_dbfs": -1.599
+        },
+        {
+          "start": 15,
+          "seconds": 15,
+          "rms_dbfs": -17.953,
+          "peak_dbfs": -1.0
+        },
+        {
+          "start": 35,
+          "seconds": 15,
+          "rms_dbfs": -19.405,
+          "peak_dbfs": -1.689
+        }
+      ],
+      "opening_vs_late_rms_db": 0.207
+    },
+    {
+      "clip": 4,
+      "sha256": "20d3c2b9ce117679f4cfd5b118b0fd947b3aa40a855569c44df1939125a3e4a4",
+      "windows": [
+        {
+          "start": 0,
+          "seconds": 15,
+          "rms_dbfs": -16.981,
+          "peak_dbfs": -1.0
+        },
+        {
+          "start": 15,
+          "seconds": 15,
+          "rms_dbfs": -16.962,
+          "peak_dbfs": -3.111
+        },
+        {
+          "start": 35,
+          "seconds": 15,
+          "rms_dbfs": -18.686,
+          "peak_dbfs": -3.499
+        }
+      ],
+      "opening_vs_late_rms_db": 1.705
+    },
+    {
+      "clip": 5,
+      "sha256": "03751bd4bebe3ed33974993062d2f3a2a098d298ab2fe018b34df1f74cf1291b",
+      "windows": [
+        {
+          "start": 0,
+          "seconds": 15,
+          "rms_dbfs": -16.945,
+          "peak_dbfs": -2.938
+        },
+        {
+          "start": 15,
+          "seconds": 15,
+          "rms_dbfs": -18.44,
+          "peak_dbfs": -1.0
+        },
+        {
+          "start": 35,
+          "seconds": 15,
+          "rms_dbfs": -18.129,
+          "peak_dbfs": -2.474
+        }
+      ],
+      "opening_vs_late_rms_db": 1.184
+    },
+    {
+      "clip": 6,
+      "sha256": "8eed92ea4766b371bdc40792c8d37f80f36adf127b9e263b7cb912580f2307fb",
+      "windows": [
+        {
+          "start": 0,
+          "seconds": 15,
+          "rms_dbfs": -21.542,
+          "peak_dbfs": -1.846
+        },
+        {
+          "start": 15,
+          "seconds": 15,
+          "rms_dbfs": -18.404,
+          "peak_dbfs": -2.01
+        },
+        {
+          "start": 35,
+          "seconds": 15,
+          "rms_dbfs": -17.88,
+          "peak_dbfs": -3.536
+        }
+      ],
+      "opening_vs_late_rms_db": -3.662
+    }
+  ]
+}

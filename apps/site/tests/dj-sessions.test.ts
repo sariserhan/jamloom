@@ -49,6 +49,20 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
    assert.equal((await warm.sweep())[0].status,'shutdown_confirmed');assert.equal((await sessions.status('warm-fail',failure.v.id)).state,'ended');assert.deepEqual(await sessions.wallet.balance('warm-fail'),{available:100,reserved:0});
    assert.equal(await warm.heartbeat(worker,0),false);assert.equal(await sessions.available(),false);assert.equal(destroyed,1);
   });
+  await t.test('concurrent Starts cannot overbook a warm worker or consume rejected credits',async()=>{
+   let inventory=[{id:655,label:'jamloom-admission-fixture'}];const warm=new DJWarmWorker(sessions,{inventory:async()=>inventory,destroy:async()=>{inventory=[];}});
+   const worker=await warm.register({account:123,instance:655,label:inventory[0].label,permitSha256:'d'.repeat(64),hourlyMicros:600000,budgetMicros:1000000,startedAt:Date.now()-1000,deadline:Date.now()+180000});
+   const cheaper=new DJSessions(pool,'test-only-secret-for-dj-sessions-12345',store,{...budget,hourlyMicros:500000});assert.equal(await cheaper.available(),false);
+   const costly=input(),q=await cheaper.quote('warm-fail',costly),before=await cheaper.wallet.balance('warm-fail');await assert.rejects(cheaper.start('warm-fail',costly,q.token),/warming/);assert.deepEqual(await cheaper.wallet.balance('warm-fail'),before);
+   const longer=new DJSessions(pool,'test-only-secret-for-dj-sessions-12345',store,{...budget,maxRuntimeMs:180000,costCapMicros:70000});assert.equal(await longer.available(),false);
+   const owners=['warm-a','warm-b','warm-fail'],starts=await Promise.all(owners.map(async owner=>({owner,v:input(),before:await sessions.wallet.balance(owner)})));
+   const results=await Promise.allSettled(starts.map(async s=>{const q=await sessions.quote(s.owner,s.v);return sessions.start(s.owner,s.v,q.token);}));
+   assert.equal(results.filter(r=>r.status==='fulfilled').length,2);const index=results.findIndex(r=>r.status==='rejected');assert.match((results[index] as PromiseRejectedResult).reason.message,/slots/);
+   assert.deepEqual(await sessions.wallet.balance(starts[index].owner),starts[index].before);
+   for(const [i,s] of starts.entries())if(i!==index){assert.equal((await sessions.start(s.owner,s.v,'expired')).id,s.v.id);await sessions.stop(s.owner,s.v.id);}
+   await sessions.start(starts[index].owner,starts[index].v,(await sessions.quote(starts[index].owner,starts[index].v)).token);await sessions.stop(starts[index].owner,starts[index].v.id);
+   await warm.stop(worker);await warm.sweep();await warm.sweep();
+  });
   await t.test('warm deadline, budget and lost heartbeat stop capacity and refund unacknowledged jobs',async()=>{
    for(const [index,condition] of ['deadline','budget','heartbeat','disconnect'].entries()){
     let inventory=[{id:700+index,label:'jamloom-warm-'+condition}];const warm=new DJWarmWorker(sessions,{inventory:async()=>inventory,destroy:async()=>{inventory=[];}});
@@ -94,6 +108,13 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
    const {v}=await begin('retry'),job=await sessions.claim(),audio=wav(888),settle=sessions.wallet.settle.bind(sessions.wallet);let fail=true;sessions.wallet.settle=async(...args:Parameters<typeof settle>)=>{await settle(...args);if(fail){fail=false;throw Error('lost settlement response');}};
    await assert.rejects(finishWorker(v.id,0,job.lease,'completed',40000,audio),/lost settlement/);const balance=await sessions.wallet.balance('retry');await finishWorker(v.id,0,job.lease,'completed',40000,audio);assert.deepEqual(await sessions.wallet.balance('retry'),balance);sessions.wallet.settle=settle;await sessions.stop('retry',v.id);
    const stale=await begin('retry');await pool.query("UPDATE dj_sessions SET heartbeat_at=now()-interval '2 minutes' WHERE id=$1",[stale.v.id]);assert.equal(await sessions.claim(),null);assert.equal(await sessions.expire(),1);assert.equal((await sessions.status('retry',stale.v.id)).endReason,'disconnected');
+  });
+  await t.test('abandoned queued work expires even while its customer keeps heartbeating',async()=>{
+   const before=await sessions.wallet.balance('retry'),started=await begin('retry');
+   await pool.query("UPDATE dj_session_batches SET created_at=now()-interval '151 seconds' WHERE session_id=$1",[started.v.id]);
+   await sessions.heartbeat('retry',started.v.id);assert.equal(await sessions.expire(),1);
+   assert.equal((await sessions.status('retry',started.v.id)).endReason,'failure');assert.deepEqual(await sessions.wallet.balance('retry'),before);
+   assert.equal(await sessions.expire(),0);
   });
   await t.test('rising per-track price preserves Private and requires a fresh decision',async()=>{
    await pool.query("UPDATE credit_lots SET created_at=now()-interval '1 day' WHERE owner_id='price'");

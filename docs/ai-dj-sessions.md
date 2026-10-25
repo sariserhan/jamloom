@@ -49,10 +49,11 @@ unmixed source songs. Session recording is not consent to train on the take.
 
 ## Session pricing and sharing follow-up
 
-[Current implementation and evidence](ai-dj-session-policy.md): Public-default setup,
-wallet-backed session/batch reservations and public-listing exclusion rules are
-implemented locally. The rolling renderer, automatic refill and progressive capture
-remain disconnected; no live session or paid dispatch is enabled.
+[Current implementation and evidence](ai-dj-completion.md): Public-default setup,
+wallet-backed sessions, fresh GPU generation, automatic refill and progressive R2
+capture are integrated and have bounded qualification evidence. Production uptime,
+affordable billing units and musical release gates remain open; public dispatch
+and live billing remain disabled. Earlier milestones below are historical evidence.
 
 ## Earlier local recording increment
 

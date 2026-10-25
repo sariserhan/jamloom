@@ -36,6 +36,8 @@ def brief(value):
     from club_benchmark_cases import REVISION_CASES, CASES
     row = REVISION_CASES[2] if value['style'] == 'house' else next(r for r in CASES if r[0] == value['style']+'-phrased')
     mood = {'warm': 'Warm rounded chords, soulful textures and mellow harmonic color.', 'bright': 'Bright uplifting chords, crisp melodic accents and optimistic color.', 'deep': 'Deep hypnotic bass, restrained minor-key harmony and spacious textures.'}.get(value.get('mood'), '')
+    if mood and value['energy'] >= 3:
+        mood += ' Start at full dancefloor energy immediately: kick, bass and offbeat hats together, no ambient intro or fade-in. Keep a steady kick and bass through the first and last eight bars for mixing; use short fills instead of long drumless breakdowns.'
     return row[1] + (' '+mood if mood else '') + f" Energy {value['energy']} of 5; {'restrained closing groove' if value['energy'] <= 2 else 'confident dancefloor momentum'}.", row[2]
 
 

@@ -1,0 +1,17 @@
+{
+  "status": "FAIL startup launch timeout",
+  "cause": "The remote AND-list was backgrounded, retaining SSH pipes after bootstrap launched. Local controller timed out after 20 seconds and destroyed its exact rental. This is an orchestration defect, not evidence that the provider host failed.",
+  "tracks": 0,
+  "vocal_candidates": 0,
+  "r2_objects": 0,
+  "instance": 57611081,
+  "host": 24953,
+  "combined_rental_seconds": 787.3531584739685,
+  "observed_combined_balance_debit_usd": 0.014500988300000017,
+  "observed_campaign_charge_micros": 15000,
+  "charges_final": false,
+  "all_rentals_absent": true,
+  "public_activation": false,
+  "next_paid_attempt_authorized": false,
+  "fix": "dj_bootstrap_command backgrounds only the redirected renderer; a real subprocess regression verifies prompt pipe closure and a still-running child. No GPU execution of this corrected command yet."
+}

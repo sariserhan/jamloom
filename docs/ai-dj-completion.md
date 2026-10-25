@@ -1,6 +1,6 @@
 # AI DJ completion pass — 2026-10-24
 
-**PARTIAL; local implementation complete, release qualification remains open. No public activation, push, deployment or live billing.** This pass follows the owner's request to finish the remaining product work together. It improves the existing deterministic performance policy and pinned original-music renderer; it does not claim a newly trained expert DJ model.
+**PARTIAL; the core session flow is implemented; production operation, billing and release qualification remain open. No public activation, push, deployment or live billing.** This pass follows the owner's request to finish the remaining product work together. It improves the existing deterministic performance policy and pinned original-music renderer; it does not claim a newly trained expert DJ model.
 
 Implementation commit: `5acb7d63ad31d5ab2c5c21a09b64324dafda7526` (local only).
 
@@ -61,3 +61,39 @@ Both approved attempts ended before model work: the first did not finish contain
 The selected direct SSH field matches the provider's [official CLI connection documentation](https://github.com/vast-ai/vast-cli/blob/master/vastai/SKILL.md). The replacement returned a closed connection before authentication/model setup. A proxy-route comparison was not performed before cleanup, so the underlying host/network cause is unresolved. Context7 was unavailable; this check used the provider's primary documentation.
 
 A later read-only availability check found the previously successful host again. This is a point-in-time offer, not a reservation or a successful startup. No further rental was created or approved. [Availability snapshot](evidence/ai-dj-finish-20261024/host-availability.json).
+
+
+## Completion resumption — 2026-10-25
+
+Owner: “do all”. The two previous failed completion rentals still count against the original $6 / 2,400 cumulative rental seconds. A third attempt reached the previously successful host, but our backgrounded SSH AND-list retained the connection; the local 20-second command timeout stopped the rental before generation. This is a confirmed orchestration defect, not evidence of another host failure. Complete provider inventory confirmed absence. The corrected `dj_bootstrap_command` backgrounds only the fully redirected renderer; a real shell regression proves its pipes close promptly while the child continues. [Execution](evidence/ai-dj-finish-20261024/resume-execution.json).
+
+The owner explicitly approved one replacement after this fix, with 1,612 seconds remaining and no added budget. The controller counts all three earlier receipts, targets the proven host directly before the provider's result limit, and preserves the independent deadline/debit watchdog. The corrected bootstrap and qualification pass: six distinct fresh tracks, starting Bright/Deep and future Warm/energy-five settings, Public Stop and Private credit exhaustion, complete R2 recordings, and confirmed cleanup. One 1.86-second vocal phrase was inserted; its Public mix history confirms two repeats. All six render requests took 1.965–3.870 seconds each, including the eligible hook work. Both test accounts, objects and the isolated database were removed. [Prepared scope](evidence/ai-dj-finish-20261024/launch-fix-plan.json), [approval](evidence/ai-dj-finish-20261024/launch-fix-authorization.json).
+
+### Admission and recovery
+
+Start now locks shared worker capacity inside the credit reservation transaction. A single experimental worker admits at most two active, recently connected sessions; a racing third Start is rejected without a reservation or credit deduction. A repeated identical Start remains idempotent even when capacity is full. Production storage requires a healthy worker at the point of reservation; the earlier route check alone could race shutdown. One account cannot start a second active set after its first generated batch settles.
+
+Queued work now expires after two maximum render windows plus 30 seconds, even if its browser continues heartbeating. This prevents an initial spinner and held credits from surviving indefinitely after worker loss. The watchdog cancels that work, returns its reservation and closes the session. Existing Stop, prepared playback and recording recovery remain available. These changes bound failure; they do not claim seamless GPU replacement or an always-on service.
+
+### Costs and billing decision
+
+The new read-only `apps/site/scripts/dj-rental-cost.ts` reconciles a private shutdown receipt against complete provider inventory and exact instance/label charges. It includes the entire rental rather than only acknowledged rendering slices. It does not change customer billing and does not call an observed charge a final invoice. [Observed receipts](evidence/ai-dj-finish-20261024/provider-costs.json).
+
+The accepted six-track rental has $0.057 observed provider charges versus $0.002675 allocated metered compute: $0.054325 remains operator cost. The earlier three completion attempts have $0.015 observed charges and no delivered music. Account credit deltas differ slightly from the billing rows; both forms of evidence are retained rather than treated as interchangeable.
+
+[The pricing worksheet](evidence/ai-dj-finish-20261024/operating-costs.json) includes low-utilization cases. At the accepted host's $0.2722/hour quoted rate, one active listener costs $0.2722 per listener-hour at full utilization, $0.5444 at 50%, or $2.7222 at 10%. Those are rental costs only. At an illustrative 70% net receipt and 50% target margin, the 10% case alone needs about $7.78 gross per listener-hour before storage, orchestration and support. Neither a six-track experiment nor its introductory free/test credits establishes a sustainable production margin.
+
+A concrete retail candidate is 6 credits per generated hour Public / 7.5 Private, metered in fractions or a reusable DJ time balance. This is **a proposal, not an implemented or approved live price**. It requires reasonable utilization and measured non-GPU costs; it does not pass the conservative 10%-utilization scenario above. The current whole-credit wallet still rounds each generated batch and privacy premium. Removing that rounding requires a separately verified ledger change across reservation, refunds, purchase holds, account balances and mobile compatibility; do not enable paid AI DJ with the existing per-minute behavior.
+
+R2 Standard lists $0.015/GB-month with account-level storage and operation rounding; internet egress is free. A 128 kbps hour plus sixty retained stereo source WAVs is roughly 0.749 GB, or $0.0112/month marginal storage before account-level rounding and operations. Source retention therefore matters as well as the final recording. No per-user free tier or indefinite zero storage cost is assumed. [Official pricing](https://developers.cloudflare.com/r2/pricing/).
+
+A fresh two-hour browser/procedural-generation/R2 run is in progress. Its real wall-clock completion, media decode, resource bounds and cleanup must pass before the duration gate changes. It remains separate from GPU uptime, musical acceptance and physical venue evidence.
+
+
+### New music, real automation and owner review
+
+The replacement produced six new 60-second originals and two complete recordings: Public 142.922 seconds / Private 176.094 seconds, decoded with true peaks -7.39 / -6.58 dBTP. Complete provider inventory confirms shutdown. All four attempts together consumed 1,252.72 of 2,400 authorized rental seconds; observed provider charge rows total $0.061 within the combined $6 cap, with final invoice still unverified. [Execution](evidence/ai-dj-finish-20261024/launch-fix-execution.json), [session results](evidence/ai-dj-finish-20261024/launch-fix-result.json), [media](evidence/ai-dj-finish-20261024/launch-fix-recording-media.json), [cleanup](evidence/ai-dj-finish-20261024/launch-fix-cleanup.json).
+
+Five of six tracks now have supported measured beat regions. One of the four adjacent pairs qualifies for a short beat-aligned bass exchange; the other three retain conservative fades. A real Chromium replay of that exact original pair, without manually entered timing or a fabricated human grid, verifies the rendered crossfade and actual bass controls. [Grids](evidence/ai-dj-finish-20261024/launch-fix-grids.json), [plans](evidence/ai-dj-finish-20261024/launch-fix-transition-plans.json), [browser replay](evidence/ai-dj-finish-20261024/launch-fix-measured-replay.json). This is measurable progress, not proof of full phrase-aware DJ expertise.
+
+Owner: “they are good but sometimes in the right time and right beat add some vocal voice too”. The six-track batch is accepted overall; occasional correctly timed voice remains the intended policy. One short phrase and two browser-gated repeats were exercised, but no separate intelligibility score or expert phrase/transition rating was supplied. [Hash-bound feedback](evidence/ai-dj-finish-20261024/launch-fix-owner-listening.json). The [listening page](http://localhost:8766/completion-launch-fix/review/) exposes only audio and HTML, not private worker files, and passes desktop/mobile layout and no-autoplay checks.

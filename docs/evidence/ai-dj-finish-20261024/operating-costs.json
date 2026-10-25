@@ -1,0 +1,80 @@
+{
+  "scope": "Offline pricing worksheet. Proposed amounts are not a live price, final invoice or production capacity proof.",
+  "source": "docs/evidence/ai-dj-warm-20261024/retry/result.json",
+  "accepted_batch": {
+    "tracks": 6,
+    "generated_seconds": 360,
+    "rental_seconds": 489.53795981407166,
+    "compute_ms": 35345,
+    "acknowledged_compute_micros": 2675,
+    "observed_provider_micros": 57000,
+    "unallocated_provider_micros": 54325,
+    "provider_final": false
+  },
+  "missing_costs": [
+    "database and orchestration",
+    "persistent source/recording retention policy",
+    "R2 account-level rounded operations/storage allocation",
+    "support/refunds/payment tax deductions",
+    "real utilization and production failover"
+  ],
+  "scenarios": [
+    {
+      "utilization_percent": 100,
+      "concurrent_listeners": 1,
+      "rental_usd_per_listener_hour": 0.2722,
+      "break_even_gross_usd_at_70_percent_net": 0.3889,
+      "gross_usd_for_50_percent_margin_at_70_percent_net": 0.7778
+    },
+    {
+      "utilization_percent": 100,
+      "concurrent_listeners": 2,
+      "rental_usd_per_listener_hour": 0.1361,
+      "break_even_gross_usd_at_70_percent_net": 0.1944,
+      "gross_usd_for_50_percent_margin_at_70_percent_net": 0.3889
+    },
+    {
+      "utilization_percent": 50,
+      "concurrent_listeners": 1,
+      "rental_usd_per_listener_hour": 0.5444,
+      "break_even_gross_usd_at_70_percent_net": 0.7778,
+      "gross_usd_for_50_percent_margin_at_70_percent_net": 1.5556
+    },
+    {
+      "utilization_percent": 50,
+      "concurrent_listeners": 2,
+      "rental_usd_per_listener_hour": 0.2722,
+      "break_even_gross_usd_at_70_percent_net": 0.3889,
+      "gross_usd_for_50_percent_margin_at_70_percent_net": 0.7778
+    },
+    {
+      "utilization_percent": 10,
+      "concurrent_listeners": 1,
+      "rental_usd_per_listener_hour": 2.7222,
+      "break_even_gross_usd_at_70_percent_net": 3.8889,
+      "gross_usd_for_50_percent_margin_at_70_percent_net": 7.7778
+    },
+    {
+      "utilization_percent": 10,
+      "concurrent_listeners": 2,
+      "rental_usd_per_listener_hour": 1.3611,
+      "break_even_gross_usd_at_70_percent_net": 1.9444,
+      "gross_usd_for_50_percent_margin_at_70_percent_net": 3.8889
+    }
+  ],
+  "price_candidate": {
+    "status": "PROPOSAL ONLY; do not enable billing",
+    "public_credits_per_generated_hour": 6,
+    "private_credits_per_generated_hour": 7.5,
+    "settlement": "Fractional credits or a reusable DJ time balance required; whole-credit rounding per minute must be removed before paid release."
+  },
+  "storage_model": {
+    "source_wav_bytes_per_hour": 691202640,
+    "recording_bitrate_bps_assumption": 128000,
+    "recording_bytes_per_hour": 57600000,
+    "standard_usd_per_gb_month": 0.015,
+    "source_plus_recording_usd_per_hour_per_month": 0.011232,
+    "billing_note": "Marginal illustration only; actual account usage rounds to GB-month/million-operation units. No assumption of a fresh free tier per user.",
+    "source": "https://developers.cloudflare.com/r2/pricing/"
+  }
+}

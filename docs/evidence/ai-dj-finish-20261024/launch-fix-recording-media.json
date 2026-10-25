@@ -1,0 +1,55 @@
+{
+  "status": "PASS complete decode, nonzero level and headroom",
+  "recordings": [
+    {
+      "file": "private-mixed.webm",
+      "sha256": "647e2880f94ce26349d11269b21a22b47e8e8467956d7d32d4c5db6843b1cc84",
+      "decoded_seconds": 176.094,
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "opus",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "size": "2835681"
+        }
+      },
+      "loudness": {
+        "input_i": "-23.89",
+        "input_tp": "-6.58",
+        "input_lra": "5.00",
+        "input_thresh": "-33.98"
+      }
+    },
+    {
+      "file": "public-mixed.webm",
+      "sha256": "5c705b0f6e05c34cf0e65b7635048f8777c6e41c64a65b3b73816a4c45a0c8d6",
+      "decoded_seconds": 142.9215,
+      "media": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "opus",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "size": "2300939"
+        }
+      },
+      "loudness": {
+        "input_i": "-23.24",
+        "input_tp": "-7.39",
+        "input_lra": "4.60",
+        "input_thresh": "-33.45"
+      }
+    }
+  ]
+}

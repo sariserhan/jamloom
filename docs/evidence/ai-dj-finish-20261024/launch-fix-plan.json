@@ -1,0 +1,24 @@
+{
+  "status": "PREPARED, NOT AUTHORIZED",
+  "campaign": "jamloom-dj-qualification-20261024-sessions-finish-launch-fix",
+  "total_campaign_budget_usd": 6,
+  "one_gpu_max": true,
+  "remaining_rental_seconds": 1612,
+  "previous_observed_charge_usd": 0.015,
+  "new_tracks": 6,
+  "track_seconds": 60,
+  "vocal_candidates_max": 2,
+  "vocal_candidate_seconds": 10,
+  "required_host": 24953,
+  "stop_on_failure": true,
+  "automatic_shutdown_and_cleanup": true,
+  "public_activation": false,
+  "startup_fix_regression": "PASS real subprocess: renderer survives while shell pipes close within 1 second",
+  "sources": {
+    "scripts/vast_trial.py": "832a9636e1fa069ba692b6624f40a33fbe1e1ff25fbb36fb4475cb60367d9cbe",
+    "scripts/dj_track_worker.py": "4c20ef154278a9629016a2f8df4966fabb06fdf8c23ea4e71dfd4485c8604146",
+    "scripts/cloud_dj_warm.sh": "9d83516bdfcc379b30bc7ba94cd6be37b8e9cad4afd0080df62551c4b7701803",
+    "scripts/dj_warm_engine.py": "e4f134b6a67da63a698e50c53ad180de17a955fa8c424d5e90d861d890c9d722",
+    "tests/test_vast_trial.py": "fca07efef7bd07610bae04f95a19f3fe3233abad6b304ac67403c5810b4b9781"
+  }
+}

@@ -94,7 +94,7 @@ def quote(offer):
     return {"hourly_with_60gb_disk": hourly, "reserved_lease_plus_transfer": reserved}
 
 
-def offers():
+def offers(host_id=None):
     result = api("v0/bundles", "POST", {
         "limit": 30, "type": "on-demand", "verified": {"eq": True},
         "rentable": {"eq": True}, "rented": {"eq": False}, "num_gpus": {"eq": 1},
@@ -102,6 +102,7 @@ def offers():
         "reliability": {"gte": 0.99}, "cpu_ram": {"gte": 32000},
         "disk_space": {"gte": DISK_GB}, "cuda_max_good": {"gte": 12.8},
         "inet_down": {"gte": 100}, "order": [["dph_total", "asc"]],
+        **({"host_id": {"eq": host_id}} if host_id is not None else {}),
     })
     valid = []
     for offer in result.get("offers", []):
@@ -121,6 +122,15 @@ def write_state(state):
     temporary.write_text(json.dumps(state, indent=2) + "\n")
     temporary.chmod(0o600)
     temporary.replace(STATE)
+
+
+def dj_bootstrap_command(deadline):
+    if type(deadline) is not int or not 1000000000 <= deadline <= 9999999999:
+        raise ValueError('Absolute renderer deadline required')
+    # Background only the fully redirected renderer, not an AND-list that retains SSH pipes.
+    return ('chmod 600 /workspace/renderer-token || exit 1\n'
+            f'nohup bash /workspace/cloud_dj_warm.sh {deadline} > /workspace/boot.log 2>&1 < /dev/null &\n'
+            'printf "%s\\n" "$!"\n')
 
 
 def retry_credit(account, previous, stop=7):
@@ -154,6 +164,24 @@ def dj_retry_limits(account, previous, now, label='jamloom-dj-qualification-2026
     if remaining < 900:
         raise RuntimeError('Insufficient shared qualification time')
     return anchor, now + remaining
+
+
+def dj_completion_limits(account, attempts, now):
+    labels = ['jamloom-dj-qualification-20261024-sessions-finish'+suffix for suffix in ('', '-retry', '-resume')]
+    if len(attempts) not in (2,3) or [a.get('label') for a in attempts] != labels[:len(attempts)]:
+        raise RuntimeError('All prior completion attempt receipts required')
+    anchor = retry_credit(account, attempts[0], 4)
+    elapsed, prior_end = 0, 0
+    for attempt, label in zip(attempts, labels):
+        dj_retry_limits(account, attempt, now, label)
+        if float(attempt['starting_credit']) != anchor or attempt['started_at'] < prior_end:
+            raise RuntimeError('Completion campaign receipts conflict')
+        elapsed += attempt['destroy_confirmed_at']-attempt['started_at']
+        prior_end = attempt['destroy_confirmed_at']
+    remaining = 2400-math.ceil(elapsed)
+    if remaining < 900:
+        raise RuntimeError('Insufficient cumulative qualification time')
+    return anchor, now+remaining
 
 
 def attach_key(instance_id, public_key):
@@ -246,7 +274,10 @@ def main():
     parser.add_argument('--dj-retry', action='store_true', help='Authorized replacement; shared qualification spend and total rental time')
     parser.add_argument('--dj-sessions', action='store_true', help='Fresh eight-request customer-session qualification; requires --dj-qualification and a new approval')
     parser.add_argument('--dj-finish', action='store_true', help='Fresh completion qualification; requires --dj-qualification --dj-sessions and its own approval')
+    parser.add_argument('--dj-resume', action='store_true', help='Owner-requested completion resumption; retains both earlier attempts in the original cap')
     args = parser.parse_args()
+    if args.dj_resume and not args.dj_finish:
+        parser.error('--dj-resume requires --dj-finish')
     if args.dj_finish and (not args.dj_qualification or not args.dj_sessions):
         parser.error('--dj-finish requires --dj-qualification --dj-sessions')
     if args.dj_sessions and not args.dj_qualification:
@@ -273,7 +304,7 @@ def main():
         LABEL = CLUB_CAMPAIGN + ('-revision' if args.revision else '')
         LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING = 2400, .50, 4
     if args.dj_qualification:
-        suffix=('-sessions' if args.dj_sessions else '')+('-finish' if args.dj_finish else '')+('-retry' if args.dj_retry else '')
+        suffix=('-sessions' if args.dj_sessions else '')+('-finish' if args.dj_finish else '')+('-launch-fix' if args.dj_resume and args.dj_retry else '-resume' if args.dj_resume else '-retry' if args.dj_retry else '')
         WORK=ROOT/('build-dj-qualification-20261024'+suffix); STATE=WORK/'trial-state.json'; LABEL='jamloom-dj-qualification-20261024'+suffix
         LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING=2400,.50,4
     WORK.mkdir(exist_ok=True)
@@ -290,7 +321,7 @@ def main():
     elif args.action == "rent":
         if args.club_benchmark or args.dj_qualification:
             if args.dj_finish:
-                approval = json.loads((ROOT/('docs/evidence/ai-dj-finish-20261024/retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-finish-20261024/authorization.json')).read_text())
+                approval = json.loads((ROOT/('docs/evidence/ai-dj-finish-20261024/launch-fix-authorization.json' if args.dj_resume and args.dj_retry else 'docs/evidence/ai-dj-finish-20261024/resume-authorization.json' if args.dj_resume else 'docs/evidence/ai-dj-finish-20261024/retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-finish-20261024/authorization.json')).read_text())
             else:
                 approval = json.loads((ROOT / ((('docs/evidence/ai-dj-warm-20261024/retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-warm-20261024/authorization.json') if args.dj_sessions else 'docs/evidence/ai-dj-customer-flow-20261024/gpu-retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-customer-flow-20261024/gpu-authorization.json') if args.dj_qualification else 'docs/evidence/ai-dj-baseline-20261024/gpu-authorization.json')).read_text())
             if (approval.get('campaign') != (LABEL if args.dj_qualification else CLUB_CAMPAIGN) or approval.get('budget_usd') != 6 or
@@ -309,19 +340,26 @@ def main():
         account = api("v0/users/current")
         if float(account.get("credit", 0)) < 7:
             raise RuntimeError("Insufficient credit for reserved trial budget")
-        available = offers()
+        proven_host = json.loads((ROOT/'build-dj-qualification-20261024-sessions-retry/trial-state.json').read_text())['offer']['host_id'] if args.dj_finish else None
+        available = offers(proven_host)
         starting_credit = float(account["credit"])
         deadline = time.time() + LEASE_SECONDS
         if args.dj_sessions:
             # The earlier qualification documented this host's failed startup.
             previous=json.loads((ROOT/'build-dj-qualification-20261024/trial-state.json').read_text())
             available=[o for o in available if o['host_id']!=previous['offer']['host_id'] and o['machine_id']!=previous['offer']['machine_id']]
-        if args.dj_retry:
+        if args.dj_retry and not args.dj_resume:
             previous_label='jamloom-dj-qualification-20261024'+('-sessions' if args.dj_sessions else '')+('-finish' if args.dj_finish else '')
             previous=json.loads((ROOT/('build-'+previous_label.removeprefix('jamloom-'))/'trial-state.json').read_text())
             starting_credit,deadline=dj_retry_limits(account,previous,time.time(),previous_label)
             if not args.dj_sessions or args.dj_finish:
                 available=[o for o in available if o['host_id']!=previous['offer']['host_id'] and o['machine_id']!=previous['offer']['machine_id']]
+        if args.dj_resume:
+            attempts=[json.loads((ROOT/('build-dj-qualification-20261024-sessions-finish'+suffix)/'trial-state.json').read_text()) for suffix in (('','-retry','-resume') if args.dj_retry else ('','-retry'))]
+            starting_credit,deadline=dj_completion_limits(account,attempts,time.time())
+            # The third attempt failed in our SSH launch command, not the qualified host.
+            failed_hosts={a['offer']['host_id'] for a in attempts[:2]}
+            available=[o for o in available if o['host_id'] not in failed_hosts]
         if args.revision:
             previous = json.loads((ROOT / 'build-club-benchmark-20261024/trial-state.json').read_text())
             starting_credit, deadline = club_revision_limits(account, previous, time.time())
@@ -334,9 +372,9 @@ def main():
         if (args.training or args.training_retry or args.blood_training or args.musician_training or args.club_benchmark or args.dj_qualification) and args.offer is None:
             offer = next((o for o in available if o["gpu_name"] == "RTX 3090" and
                           o["geolocation"].endswith(", US")), None)
-        if args.dj_finish and args.offer is None:
+        if args.dj_finish:
             proven=json.loads((ROOT/'build-dj-qualification-20261024-sessions-retry/trial-state.json').read_text())
-            offer=next((o for o in available if o['host_id']==proven['offer']['host_id']),None)
+            offer=next((o for o in available if o['host_id']==proven['offer']['host_id'] and (args.offer is None or o['id']==args.offer)),None)
         if offer is None:
             raise RuntimeError("Selected offer is unavailable or outside limits")
         if (args.club_benchmark or args.dj_qualification) and max(0, starting_credit-float(account['credit'])) + offer['reserved_lease_plus_transfer'] > 6:
@@ -350,7 +388,7 @@ def main():
         write_state(state)  # Prevent duplicate rental if the create response is lost.
         with (WORK / "watchdog.log").open("a") as log:
             subprocess.Popen(["caffeinate", "-i", sys.executable, str(Path(__file__).resolve()), "watch"] +
-                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
+                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
                              stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
         # The watchdog also reconciles by unique label if this response is lost.
         result = api("v0/asks/" + str(offer["id"]), "PUT", {

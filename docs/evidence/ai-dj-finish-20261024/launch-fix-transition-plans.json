@@ -1,0 +1,45 @@
+{
+  "scope": "Offline plans from measured grids; not human phrase review or proof of rendered browser automation",
+  "plans": [
+    {
+      "out": "312b0e990b1bb8085639763f8402cd6f82a091287af2060416dc7740683ca552",
+      "incoming": "c1433d7348a966a1fecfad0411c5c79b01678a261bf1ec981658fed996cc1434",
+      "at": 57.95,
+      "fade": 2,
+      "offset": 0,
+      "rate": 1,
+      "technique": "short-fade",
+      "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+    },
+    {
+      "out": "c1433d7348a966a1fecfad0411c5c79b01678a261bf1ec981658fed996cc1434",
+      "incoming": "7095e2cba2f5bf5f5a9d7414e382b142e6b5c0c39b11b2e0740ba7772aeede32",
+      "at": 57.95,
+      "fade": 2,
+      "offset": 0,
+      "rate": 1,
+      "technique": "short-fade",
+      "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+    },
+    {
+      "out": "20d3c2b9ce117679f4cfd5b118b0fd947b3aa40a855569c44df1939125a3e4a4",
+      "incoming": "03751bd4bebe3ed33974993062d2f3a2a098d298ab2fe018b34df1f74cf1291b",
+      "at": 49.7725,
+      "fade": 1.875,
+      "offset": 0.5274409448818898,
+      "rate": 1.0078740157480315,
+      "technique": "beat-bass",
+      "reason": "Measured steady beats · short bass handoff; phrase boundaries unreviewed"
+    },
+    {
+      "out": "03751bd4bebe3ed33974993062d2f3a2a098d298ab2fe018b34df1f74cf1291b",
+      "incoming": "8eed92ea4766b371bdc40792c8d37f80f36adf127b9e263b7cb912580f2307fb",
+      "at": 57.95,
+      "fade": 2,
+      "offset": 0,
+      "rate": 1,
+      "technique": "short-fade",
+      "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+    }
+  ]
+}

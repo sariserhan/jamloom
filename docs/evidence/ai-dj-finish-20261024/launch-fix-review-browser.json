@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "width": 1280,
+      "audioPlayers": 8,
+      "noAutoplay": true,
+      "noOverflow": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "audioPlayers": 8,
+      "noAutoplay": true,
+      "noOverflow": true,
+      "errors": []
+    }
+  ]
+}

@@ -54,3 +54,11 @@ test('provider billing verifies identity and complete pagination, rounds costs u
   const invalid=new VastProvider('fixture',async input=>Response.json(String(input).endsWith('/users/current/')?{id:42}:{...response,...patch}));await assert.rejects(invalid.charges(42,77,label,0,300));
  }
 });
+
+test('warm qualification billing uses the same exact instance and label verification',async()=>{
+ const label='jamloom-dj-qualification-20261024-sessions-finish-resume';
+ const api=new VastProvider('fixture',async input=>Response.json(String(input).endsWith('/users/current/')?{id:42}:{success:true,count:1,total:1,next_token:null,results:[{start:100,end:200,type:'instance',source:'instance-77',amount:'0.0029',metadata:{label}}]}));
+ assert.equal((await api.charges(42,77,label,0,300)).observedCostMicros,2900);
+ await assert.rejects(api.charges(42,77,label+'-other',0,300),/identity/);
+ for(const invalid of ['other-label','jamloom-../unsafe','jamloom-'+ 'a'.repeat(101)])await assert.rejects(api.charges(42,77,invalid,0,300),/label/);
+});

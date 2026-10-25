@@ -1,0 +1,15 @@
+{
+  "status": "AVAILABLE",
+  "eligible_proven_host_offers": [
+    {
+      "id": 56607988,
+      "host_id": 24953,
+      "machine_id": 52126,
+      "gpu_name": "RTX 3090",
+      "hourly_with_60gb_disk": 0.24555555555555555,
+      "reserved_lease_plus_transfer": 0.27172932098765434
+    }
+  ],
+  "provider_mutations": 0,
+  "note": "Read-only targeted host search; no rental or extra budget."
+}

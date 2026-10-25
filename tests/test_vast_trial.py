@@ -4,6 +4,7 @@ import io
 import contextlib
 import tempfile
 import json
+import os, signal, subprocess
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -14,6 +15,45 @@ spec.loader.exec_module(trial)
 
 
 class PriceBounds(unittest.TestCase):
+    def test_remote_bootstrap_releases_ssh_pipes_before_worker_exits(self):
+        for value in [True,0,'1234567890; unsafe']:
+            with self.assertRaises(ValueError):trial.dj_bootstrap_command(value)
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);(root/'renderer-token').write_text('test-only')
+            (root/'cloud_dj_warm.sh').write_text('sleep 5\n')
+            command=trial.dj_bootstrap_command(1792904659).replace('/workspace/',folder+'/')
+            process=subprocess.Popen(['bash','-c',command],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,start_new_session=True)
+            try:
+                out,err=process.communicate(timeout=1)
+                self.assertEqual(process.returncode,0);self.assertTrue(out.strip().isdigit());self.assertEqual(err,'')
+                os.kill(int(out.strip()),0)
+            finally:
+                try:os.killpg(process.pid,signal.SIGTERM)
+                except ProcessLookupError:pass
+                process.wait(timeout=2)
+
+    def test_proven_host_search_is_targeted_before_provider_result_limit(self):
+        with patch.object(trial,'api',return_value={'offers':[]}) as api:
+            self.assertEqual(trial.offers(24953),[])
+            self.assertEqual(api.call_args.args[2]['host_id'],{'eq':24953})
+            trial.offers()
+            self.assertNotIn('host_id',api.call_args.args[2])
+
+    def test_completion_resume_counts_both_prior_rentals(self):
+        prefix='jamloom-dj-qualification-20261024-sessions-finish'
+        first=dict(starting_credit=9.5,destroy_requested_at=1600,destroy_confirmed_at=1606.4,started_at=1000,label=prefix,budget_usd=6)
+        second={**first,'label':prefix+'-retry','started_at':1700,'destroy_requested_at':1779,'destroy_confirmed_at':1780.1}
+        self.assertEqual(trial.dj_completion_limits({'credit':9.49},[first,second],5000),(9.5,6713))
+        third={**first,'label':prefix+'-resume','started_at':1800,'destroy_requested_at':1879,'destroy_confirmed_at':1881}
+        self.assertEqual(trial.dj_completion_limits({'credit':9.48},[first,second,third],5000),(9.5,6632))
+        for attempts in [[first],[second,first],[first,{**second,'started_at':1500}],[first,{**second,'starting_credit':9.49}],[first,{**second,'destroy_confirmed_at':2700}]]:
+            with self.assertRaises(RuntimeError):trial.dj_completion_limits({'credit':9.49},attempts,5000)
+        with self.assertRaises(RuntimeError):trial.dj_completion_limits({'credit':5.5},[first,second],5000)
+        for args in [['--dj-resume'],['--dj-finish','--dj-resume','--dj-retry']]:
+            with patch.object(trial.sys,'argv',['vast_trial.py','rent',*args]),patch.object(trial,'api') as api,contextlib.redirect_stderr(io.StringIO()):
+                with self.assertRaises(SystemExit):trial.main()
+                api.assert_not_called()
+
     def test_completion_never_falls_back_to_an_unproven_host(self):
         names=('ROOT','WORK','STATE','LABEL','LEASE_SECONDS','HOURLY_CEILING','QUOTE_CEILING')
         prior={name:getattr(trial,name) for name in names}
@@ -24,6 +64,10 @@ class PriceBounds(unittest.TestCase):
                 for directory,host in [('build-dj-qualification-20261024',100),('build-dj-qualification-20261024-sessions-retry',200)]:
                     p=root/directory;p.mkdir();(p/'trial-state.json').write_text(json.dumps({'offer':{'host_id':host,'machine_id':host}}))
                 with self.assertRaisesRegex(RuntimeError,'Selected offer is unavailable'):trial.main()
+                api.assert_called_once_with('v0/users/current');self.assertFalse((work/'trial-state.json').exists())
+                api.reset_mock()
+                with patch.object(trial.sys,'argv',[*trial.sys.argv,'--offer','1']):
+                    with self.assertRaisesRegex(RuntimeError,'Selected offer is unavailable'):trial.main()
                 api.assert_called_once_with('v0/users/current');self.assertFalse((work/'trial-state.json').exists())
         finally:
             for name,value in prior.items():setattr(trial,name,value)

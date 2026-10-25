@@ -15,7 +15,7 @@ const closed=(s:string)=>['completed','failed','cancelled'].includes(s);
 export class DJSessions{
  readonly wallet:Wallet;
  constructor(readonly pool:Pool,private secret:string,readonly store:AudioStore,readonly budget:DJBudget,readonly live=false){integer(budget.maxRuntimeMs,1,900000);integer(budget.hourlyMicros,1,5000000);integer(budget.fixedCostMicros);integer(budget.costCapMicros,1,5000000);if(budget.fixedCostMicros+Math.ceil(budget.hourlyMicros*budget.maxRuntimeMs/3600000)>budget.costCapMicros)throw Error('DJ budget exceeds its reserved cap');this.wallet=new Wallet(pool,live);}
- async available(){return !!(await this.pool.query("SELECT 1 FROM dj_warm_workers WHERE billing_live=$1 AND state='ready' AND heartbeat_at>now()-interval '15 seconds' AND deadline>now()+interval '90 seconds' AND observed_micros<budget_micros LIMIT 1",[this.live])).rowCount;}
+ async available(){return !!(await this.pool.query("SELECT 1 FROM dj_warm_workers WHERE billing_live=$1 AND state='ready' AND heartbeat_at>now()-interval '15 seconds' AND deadline>now()+$2*interval '1 millisecond' AND hourly_micros<=$3 AND observed_micros<budget_micros LIMIT 1",[this.live,this.budget.maxRuntimeMs+30000,this.budget.hourlyMicros])).rowCount;}
  private async atomic<T>(run:(db:PoolClient)=>Promise<T>){const db=await this.pool.connect();try{await db.query('BEGIN');const result=await run(db);await db.query('COMMIT');return result;}catch(e){await db.query('ROLLBACK');throw e;}finally{db.release();}}
  private async session(owner:string,id:string,db:Pool|PoolClient=this.pool,lock=false){idCheck(id);const r=(await db.query(`SELECT * FROM dj_sessions WHERE id=$1 AND owner_id=$2 AND billing_live=$3${lock?' FOR UPDATE':''}`,[id,owner,this.live])).rows[0];if(!r)throw new AudioError('Session not found.',404);return r;}
  private job(input:DJSessionInput){const {costCapMicros,...budget}=this.budget;return {...budget,inputSha256:hash(input),planSha256:hash(['ai-dj-session-1',this.budget,this.live])};}
@@ -28,6 +28,14 @@ export class DJSessions{
   if(q.visibility!==input.visibility||q.costCapMicros!==this.budget.costCapMicros||hash(q.job)!==hash(this.job(input)))throw new AudioError('Your session choices changed. Get a new quote.',409);
   const id=await this.wallet.reserve(owner,'dj_'+input.id+'_0',q.costCapMicros,q.marginBps,undefined,input.visibility,q.credits,{fingerprint,save:async(db,reservation)=>{
    if(!(await db.query('SELECT 1 FROM "user" WHERE id=$1 AND "emailVerified" AND NOT suspended',[owner])).rowCount)throw new AudioError('Verified sign-in required.',401);
+   await db.query("SELECT pg_advisory_xact_lock(hashtextextended('jamloom-generation-capacity',0))");
+   const worker=(await db.query("SELECT * FROM dj_warm_workers WHERE state<>'stopped' FOR SHARE")).rows[0];
+   if(worker||!this.store.local){
+    if(!worker||worker.billing_live!==this.live||worker.state!=='ready'||Date.now()-new Date(worker.heartbeat_at).getTime()>15000||new Date(worker.deadline).getTime()-Date.now()<this.budget.maxRuntimeMs+30000||Number(worker.hourly_micros)>this.budget.hourlyMicros||Number(worker.observed_micros)>=Number(worker.budget_micros))throw new AudioError('The DJ is warming up. Please try again shortly.',503);
+    // shortcut: two listeners per experimental worker; expand only after a measured concurrency qualification.
+    if(Number((await db.query("SELECT count(*) FROM dj_sessions WHERE state='active' AND heartbeat_at>now()-interval '75 seconds'")).rows[0].count)>=2)throw new AudioError('All DJ slots are in use. Please try again shortly; no credits were charged.',503);
+   }
+   if((await db.query("SELECT 1 FROM dj_sessions WHERE owner_id=$1 AND state='active' AND heartbeat_at>now()-interval '75 seconds'",[owner])).rowCount)throw new AudioError('Finish your current set before starting another.',409);
    await db.query('INSERT INTO dj_sessions(id,owner_id,title,visibility,settings,budget,max_credits,billing_live,fingerprint) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)',[input.id,owner,input.title,input.visibility,JSON.stringify({style:input.style,energy:input.energy,...(input.mood?{mood:input.mood}:{})}),JSON.stringify(this.budget),q.credits,this.live,fingerprint]);
    await this.insertBatch(db,owner,input.id,0,reservation);
   }});return {id:input.id,reservation:id};
@@ -139,7 +147,7 @@ export class DJSessions{
   const rows=(await this.pool.query("SELECT reservation_id FROM dj_session_batches WHERE session_id=$1 AND state='cancelled' AND lease IS NULL",[id])).rows;for(const r of rows){await this.wallet.settle(owner,r.reservation_id,0,'cancelled');await this.pool.query('UPDATE dj_session_batches SET settled_at=now() WHERE reservation_id=$1',[r.reservation_id]);}await this.closeIfSettled(id);
  }
  private async closeIfSettled(id:string){await this.pool.query(`UPDATE dj_sessions s SET state='ended',ended_at=coalesce(ended_at,now()) WHERE id=$1 AND state='ending' AND NOT EXISTS(SELECT 1 FROM dj_session_batches b JOIN generation_reservations r ON r.id=b.reservation_id WHERE b.session_id=s.id AND (b.state IN ('queued','running') OR r.status IN ('reserved','running')))`,[id]);}
- async expire(){const rows=(await this.pool.query("SELECT owner_id,id FROM dj_sessions WHERE state='active' AND billing_live=$1 AND heartbeat_at<now()-interval '75 seconds' LIMIT 20",[this.live])).rows;for(const r of rows)await this.stop(r.owner_id,r.id,'disconnected');return rows.length;}
+ async expire(){const rows=(await this.pool.query(`SELECT owner_id,id,heartbeat_at<now()-interval '75 seconds' AS disconnected FROM dj_sessions s WHERE state='active' AND billing_live=$1 AND (heartbeat_at<now()-interval '75 seconds' OR EXISTS(SELECT 1 FROM dj_session_batches b WHERE b.session_id=s.id AND b.state='queued' AND b.created_at<now()-$2*interval '1 millisecond')) LIMIT 20`,[this.live,2*this.budget.maxRuntimeMs+30000])).rows;for(const r of rows)await this.stop(r.owner_id,r.id,r.disconnected?'disconnected':'failure');return rows.length;}
  async purgeOwner(owner:string){
   if(!(await this.pool.query('SELECT 1 FROM "user" WHERE id=$1 AND suspended',[owner])).rowCount)throw Error('Suspend the account before fulfilling deletion');
   const sessions=(await this.pool.query('SELECT id FROM dj_sessions WHERE owner_id=$1 AND billing_live=$2',[owner,this.live])).rows;
