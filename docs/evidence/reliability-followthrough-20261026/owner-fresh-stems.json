@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-26",
+  "review_url": "http://localhost:8766/delivered-stems/review/",
+  "question": "Compare the 60-second original with the complete arrangement, or use Perform set and the four faders. Does the arrangement feel connected and developing, or too repetitive?",
+  "owner_response": "good",
+  "status": "PASS owner acceptance of this bounded arrangement",
+  "render_sha256": "ff455ae3adb71c4a7b2079a5584303bd18401adc9f733338cf203a7cbe79f5eb",
+  "plan_sha256": "6e6659a110a39b956c741374451fdd35a4690f30ee5f24e2ffc1f6ac25afd848",
+  "scope": "One fresh instrumental original developed into a 192.863-second source-and-parts study; not acceptance of other sets, indefinite unique generation or professional superiority."
+}

@@ -6,7 +6,7 @@
 - [x] Fix DC-offset promotion of subthreshold periodic noise; the retained forty-recording benchmark has identical frame classifications before/after. This is not a fix for the owner's quiet-room issue.
 - [x] Record the owner's Standard/raw microphone result: 57.99% quiet periodic detections; negligible DC and no clipping. Add explicit optional local input playback; Chromium/WebKit stop, play, clear and permission checks pass.
 - [x] Add bounded consecutive stem scheduling on the existing transport/clock; exact boundaries, rhythm coverage, order, compatibility, capacity and late-arrival tests pass.
-- [x] Complete 210-second live stem playback and progressive offline equivalence; render a fresh-source 192.863-second arrangement with two-block delivery. This repeats/develops one original, not endless fresh composition.
+- [x] Complete 210-second live stem playback and progressive offline equivalence; render a fresh-source 192.863-second arrangement with two-block delivery. This repeats/develops one original, not endless fresh composition. Owner replied “good”: listening acceptance PASS for this specific arrangement; other sets and overall professional quality remain separate.
 - [x] Execute the capped reliability run: twenty distinct originals, both complete R2 sets, crash recovery, privacy and cleanup evidence retained; $0.104 provisional usage, zero rentals. Final counter assertion FAIL is preserved.
 - [x] Fix test source accounting and concurrent deletion handling with focused regressions; do not alter the consumed authorization hashes.
 - [x] Pass corrected-meter retained rehearsal: twenty tracks, complete 307.412/420.348-second R2 sets, lost-response recovery, Stop/credits, privacy/cleanup; at most three sources, no duplicate/unstarted endings.
