@@ -1,3 +1,11 @@
+## Current all-product candidate — 2026-10-26
+
+Use [Product completion](PRODUCT_COMPLETION.md) for the current status of every product and [Release acceptance](RELEASE_ACCEPTANCE.md) for release decisions. Older dated notes below retain history; they may describe superseded builds or blockers. The new built preview is http://localhost:3008; the older stable preview on port 3000 remains untouched.
+
+Singing Academy is now discoverable alongside the other six homepage products. The public preview footer links Report a bug. Eleven help overlays, rating persistence and bug-to-admin pass in both browsers; 160 website and 100 isolated service tests pass. Signed iPhone **0.10.2 (24)** is installed and launched after five passing physical tests for Community playback, language/favorites and Singing lifecycle. Real microphone accuracy and signed-in physical rating save are not inferred from these tests.
+
+The remaining work is substantive: AI DJ musical quality and sustained fresh delivery, real-room singing analysis, popular-song permissions/assets, and provider-specific payment/release checks. Current changes remain local; prior GPU permits are consumed and no new rental occurred. Existing product acceptances and existing sales settings are preserved. No App Store upload or website deployment occurred.
+
 ## Build costs and display polling — 2026-10-26
 
 ## Reliability follow-through — 2026-10-26

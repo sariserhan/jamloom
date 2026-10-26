@@ -4,6 +4,7 @@ import {mkdtemp,readdir,readFile,rm,writeFile} from 'node:fs/promises';import {t
 import {spawn} from 'node:child_process';import {once} from 'node:events';import {setTimeout as delay} from 'node:timers/promises';
 import {createPool} from '../lib/database.ts';import {migrate} from '../lib/migrations.ts';import {emptyTaste,applySongPreferences} from '../lib/taste.ts';
 import Stripe from 'stripe';
+import {MAX_TASTE_BYTES} from '../lib/taste-limits.ts';
 const url=new URL(process.env.JAMLOOM_TEST_DATABASE_URL??'');assert.equal(url.hostname,'127.0.0.1');
 const admin=createPool(url.toString()),name='jamloom_http_'+randomUUID().replaceAll('-','');await admin.query(`CREATE DATABASE "${name}"`);url.pathname='/'+name;
 const pool=createPool(url.toString()),folder=await mkdtemp(join(tmpdir(),'jamloom-http-')),base='http://127.0.0.1:4221';
@@ -41,7 +42,8 @@ try{
  assert.equal((await api('/api/taste',{method:'POST',body:{profile:{...dnaProfile,songPreferences:[{reference:'Unknown',aspects:['piano'],weight:5}]},revision:0},cookie:bob})).status,400);
  const attempts=await Promise.all([110,130].map(tempo=>api('/api/taste',{method:'POST',body:{profile:{...dnaProfile,tempo},revision},cookie:alice})));assert.deepEqual(attempts.map(r=>r.status).sort(),[200,409]);
  assert.equal((await api('/api/taste',{method:'POST',body:{profile:{...emptyTaste,tempo:999},revision:0},cookie:bob})).status,400);
- assert.equal((await api('/api/taste',{method:'POST',body:{profile:'x'.repeat(66000),revision:0},cookie:carol})).status,413);
+ assert.equal((await api('/api/taste',{method:'POST',body:{profile:'invalid',revision:0},cookie:carol})).status,400);
+ assert.equal((await api('/api/taste',{method:'POST',body:{profile:'x'.repeat(MAX_TASTE_BYTES),revision:0},cookie:carol})).status,413);
  const current=(await (await api('/api/taste',{cookie:alice})).json()).saved;
  assert.deepEqual(current.profile.songPreferences,dnaProfile.songPreferences);assert.equal(current.profile.direction,1);
  assert.equal((await api('/api/taste',{method:'DELETE',body:{revision:current.revision},cookie:bob})).status,409);

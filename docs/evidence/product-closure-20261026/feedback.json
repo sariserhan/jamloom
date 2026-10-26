@@ -1,0 +1,30 @@
+[
+  {
+    "browser": "chromium",
+    "helpRoutes": 11,
+    "widths": [
+      1440,
+      390
+    ],
+    "modalBlurFocusEscapeClose": "PASS",
+    "bugToAdmin": "PASS",
+    "ratingsPersistenceDelete": "PASS",
+    "ownerConsentRightsReview": "PASS",
+    "audio": "muted",
+    "pageErrors": []
+  },
+  {
+    "browser": "webkit",
+    "helpRoutes": 11,
+    "widths": [
+      1440,
+      390
+    ],
+    "modalBlurFocusEscapeClose": "PASS",
+    "bugToAdmin": "PASS",
+    "ratingsPersistenceDelete": "PASS",
+    "ownerConsentRightsReview": "PASS",
+    "audio": "muted",
+    "pageErrors": []
+  }
+]

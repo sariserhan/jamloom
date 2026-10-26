@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-26T19:20:47.637Z",
+  "key": "uploads/2918e84d-e4ae-495e-8b93-60c9774525a2.wav",
+  "operation": "HEAD only; no writes or deletion",
+  "status": "PASS absent after lifecycle deadline",
+  "httpStatus": 404,
+  "error": "NotFound"
+}

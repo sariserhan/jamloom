@@ -28,7 +28,7 @@
     "auth:cleanup": "tsx scripts/cleanup-auth.ts",
     "test:wallet": "tsx --test --test-concurrency=1 tests/wallet.test.ts tests/dj-allowance.test.ts tests/generation-queue.test.ts tests/generation-watchdog.test.ts tests/vast-provider.test.ts tests/dna-commerce.test.ts tests/cloud-songs.test.ts tests/listening-library.test.ts",
     "generation:watchdog": "tsx scripts/generation-watchdog.ts",
-    "test:product-browser": "node tests/product-browser.mjs",
+    "test:product-browser": "node --import tsx tests/product-browser.mjs",
     "test:product-a11y": "node tests/product-a11y.mjs",
     "test:product-http": "node --import tsx tests/product-http.mjs",
     "test:generation-render": "tsx tests/generation-render-smoke.ts",

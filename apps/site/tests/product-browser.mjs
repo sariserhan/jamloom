@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {homeProducts} from '../lib/home-products.ts';
 import {silenceSpeakers} from './silent-audio.mjs';
 import {chromium,webkit} from 'playwright';
 import {mkdir,writeFile} from 'node:fs/promises';
@@ -6,7 +7,7 @@ const base=process.env.JAMLOOM_TEST_URL??'http://127.0.0.1:4220';
 assert.equal(new URL(base).hostname,'127.0.0.1');
 const evidence=new URL(process.env.JAMLOOM_EVIDENCE_DIR??'../../../docs/evidence/full-product/',import.meta.url),results=[];
 await mkdir(evidence,{recursive:true});
-const routes=['/','/improvise','/dj-studio','/live-dj','/music-dna','/pricing','/examples','/learn','/learn/voice-remix','/learn/laptop-dj','/learn/live-source','/help','/privacy','/terms','/licenses','/status','/download'];
+const routes=['/','/improvise','/dj-studio','/live-dj','/music-dna','/singing-academy','/pricing','/examples','/learn','/learn/voice-remix','/learn/laptop-dj','/learn/live-source','/help','/privacy','/terms','/licenses','/status','/download'];
 for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  const browser=await engine.launch(name==='chromium'?{args:['--mute-audio']}:{});
  try{
@@ -24,9 +25,9 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   await page.goto(base+'/');await page.setViewportSize({width:1280,height:1000});
   if(name==='chromium')await page.screenshot({path:new URL('home-desktop.png',evidence).pathname,fullPage:true});
   await page.getByRole('link',{name:'Create an AI song',exact:true}).first().click();await page.waitForURL(base+'/improvise');
-  await page.goto(base+'/dj-studio');const structured=JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());assert.equal(structured['@type'],'WebApplication');assert.equal(structured.offers.price,0);assert.equal(structured.aggregateRating,undefined);
+  await page.goto(base+'/dj-studio');const structured=JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());assert.equal(structured['@type'],'WebApplication');assert.deepEqual(structured.offers.map(({name,price})=>({name,price})),[{name:'Basic',price:0},{name:'Pro',price:49}]);assert.equal(structured.aggregateRating,undefined);
   await page.goto(base+'/');await page.setViewportSize({width:390,height:844});await page.screenshot({path:new URL(name+'-home-mobile.png',evidence).pathname,fullPage:true});
-  const offlineJS=await browser.newContext({javaScriptEnabled:false});const ssr=await offlineJS.newPage();await ssr.goto(base+'/');assert.equal(await ssr.locator('.feature-list article').count(),6);await offlineJS.close();
+  const offlineJS=await browser.newContext({javaScriptEnabled:false});const ssr=await offlineJS.newPage();await ssr.goto(base+'/');assert.equal(await ssr.locator('.product-chapters > article').count(),homeProducts.length);await offlineJS.close();
   await page.goto(base+'/music-dna');await page.getByRole('combobox',{name:'Search artists or tracks'}).fill('An original song — a musician');await page.getByRole('option',{name:/Add by name/}).click();
   await page.waitForFunction(()=>JSON.parse(localStorage.getItem('jamloom-taste-v1')??'{}').references?.length===1);
   await page.reload();assert.equal(await page.getByRole('group',{name:'An original song — a musician',exact:true}).count(),1);
@@ -58,7 +59,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   for(const mode of ['denied','silent']){await page.evaluate(m=>window.captureMode=m,mode);await page.getByRole('button',{name:'Select tab audio'}).click();await page.waitForFunction(()=>!document.querySelectorAll('[role=status]')[1].textContent.includes('Capture active'));assert.ok(await page.getByRole('button',{name:'Select tab audio'}).isEnabled());}
   await page.screenshot({path:new URL(name+'-live-source.png',evidence).pathname,fullPage:true});
   assert.deepEqual(errors,[]);
-  assert.equal((await context.request.post(base+'/api/payments/checkout')).status(),503);
+  assert.equal((await context.request.post(base+'/api/payments/checkout')).status(),403,'Checkout rejects a request without an Origin');
   assert.equal((await context.request.get(base+'/opengraph-image')).status(),200);
   const sitemap=await (await context.request.get(base+'/sitemap.xml')).text();assert.ok(!sitemap.includes('/account'));for(const path of routes)assert.ok(sitemap.includes('https://www.jamloom.com'+path));
   results.push({browser:name,version:browser.version(),routes:routes.length,widths:[1440,390,320],SSR:'PASS',taste_storage:'PASS',audio_demo_decode:'PASS',synthetic_capture_PCM_filter_bypass_stop:captureTracks?'PASS':'NOT RUN: headless WebKit destination supplied zero audio tracks',permission_simulation:'PASS',real_capture_permission:'NOT RUN',human_listening:'NOT RUN'});

@@ -13,7 +13,7 @@ import '../../web/generation-progress.css';
 
 export const metadata: Metadata = {
   title: { default: 'Jamloom', template: '%s · Jamloom' },
-  description: 'Learn to DJ, mix without a controller, improvise with recordings, explore Music DNA, and shape computer audio with Jamloom Live DJ.',
+  description: 'Learn to DJ and sing, mix without a controller, improvise with recordings, explore Music DNA, and shape computer audio with Jamloom Live DJ.',
   metadataBase: new URL('https://www.jamloom.com'),
   icons: { icon: [
     { url: '/favicon.ico', sizes: '16x16 32x32 48x48', type: 'image/x-icon' },

@@ -45,6 +45,9 @@ test('launch responses contain real navigation, one tracker and private caching;
  const html=await home.text();assert.match(html,/Jamloom is coming soon/);assert.equal((html.match(/vp_QBDH92AC.js/g)||[]).length,1);assert.match(html,/href="\/account\/sign-in"/);assert.ok(!html.includes('mini-deck'));
  for(const product of homeProducts){assert.ok(html.includes(`id="${product.slug}"`));assert.ok(html.includes(product.headline));assert.ok(html.includes(`href="#${product.slug}"`));}
  assert.match(html,/other product access is not open yet/);
+ assert.match(html,/<a href="\/report-bug">Report a bug<\/a>/);
+ assert.equal(comingSoonRecovery('/report-bug'),true);
+ assert.equal(comingSoonRecovery('/singing-academy'),false);
  assert.equal(comingSoonResponse(new Request('https://www.jamloom.com/studio/dj.html')).headers.get('location'),'https://www.jamloom.com/');
  assert.equal(comingSoonResponse(new Request('https://www.jamloom.com/api/catalogue')).status,503);
  assert.equal(comingSoonResponse(new Request('https://www.jamloom.com/',{method:'POST'})).status,503);

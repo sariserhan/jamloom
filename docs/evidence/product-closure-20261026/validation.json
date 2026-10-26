@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-26",
+  "base_commit": "e22567cbec04597c115884c7e80e06cd51a563f1",
+  "scope": "Local all-product candidate; no deployment, paid compute or App Store upload",
+  "site_tests": {
+    "passed": 160,
+    "failed": 0
+  },
+  "isolated_database_tests": {
+    "passed": 100,
+    "failed": 0
+  },
+  "typecheck": "PASS",
+  "production_build": "PASS isolated .next-qualification",
+  "bundle_audit": "PASS",
+  "phone_tests": {
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0
+  },
+  "preview_asset": {
+    "path": "apps/site/public/product-previews/singing-academy.png",
+    "sha256": "74baa0d05f1ffd0ecad14f2a8f79aa6c5c34c700c09520863c91e61c27f6e27b",
+    "provenance": "Actual existing City Lights Hear song UI, muted Chromium; original Jamloom lyrics, no microphone recording"
+  },
+  "limitations": [
+    "WebKit synthetic capture destination provides zero tracks; PCM filter subcheck NOT RUN there",
+    "Physical tests exercise fixture playback and lifecycle, not real singing accuracy or authenticated owner rating save",
+    "Live purchases, fresh GPU generation, public release and physical iPad NOT RUN",
+    "R2 HEAD absence observed after expiry deadline; deletion instant and lifecycle cause not independently observed"
+  ],
+  "logs": {
+    "unit": {
+      "path": "/tmp/jamloom-product-unit.log",
+      "sha256": "f7594f603fd949aa3c0a5d161de5f4c120bd39f0947244e9b767b156e177baab"
+    },
+    "services": {
+      "path": "/tmp/jamloom-product-services.log",
+      "sha256": "8e096168d2a929e7f90c6b28f875549ec5c60f67fc109254559fe929d6f912b7"
+    },
+    "build": {
+      "path": "/tmp/jamloom-product-build.log",
+      "sha256": "80f06bef81722867e162425413c96c76af2f8b36998bad3fb6b372c505c3eba3"
+    },
+    "typecheck": {
+      "path": "/tmp/jamloom-product-typecheck.log",
+      "sha256": "76d575f32c96b28d06783b82331bc5d133a4feed0a9804f0aa5139880abaa7c6"
+    },
+    "phone": {
+      "path": "/tmp/jamloom-product-phone.log",
+      "sha256": "da39316fad813ef22dbf52fd64a76f0e38cf48427bd4418ec84350936a47c568"
+    },
+    "phone-release": {
+      "path": "/tmp/jamloom-product-phone-release.log",
+      "sha256": "444045ed2c93fe8de703909e4dd844f44819e48fe8ffc4c53cd3a33a2d6f4e10"
+    }
+  }
+}

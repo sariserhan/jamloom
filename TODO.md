@@ -1,3 +1,19 @@
+## All-product completion pass — 2026-10-26
+
+**PARTIAL overall; current local regression PASS.** [Current product ledger](docs/PRODUCT_COMPLETION.md) supersedes older status summaries without erasing their evidence. The owner-unlocked iPhone has signed **0.10.2 (24)** installed and launched. Website remains local.
+
+- [x] Add Singing Academy to the existing homepage/Start/Tour/catalogue, with an actual UI preview; preserve access gates.
+- [x] Expose Report a bug in the public preview footer; verify eleven guides, rating persistence and bug-to-admin in both browsers.
+- [x] Correct Basic/Pro structured pricing and update product/request-bound regression fixtures.
+- [x] Pass 160 site and 100 isolated database tests, HTTP account/privacy/payment guards, types, production build and Chromium/WebKit product/visual checks.
+- [x] Pass five physical iPhone tests for server, Community language/favorites/player and Singing playback/tab cleanup; audit, install and launch signed build 24.
+- [x] Confirm the historical temporary R2 object is absent after its lifecycle deadline with a read-only HEAD. No exact deletion-time claim.
+- [x] Preserve accepted DJ Studio/Live DJ v1 and DJ Academy scope; consolidate every product's remaining gates.
+- [ ] Resolve actual-room microphone accuracy and physical latency; retain existing failed diagnostic evidence.
+- [ ] Complete AI DJ professional quality and sustained fresh-generation qualification; corrected retained tests do not supersede the fresh-run harness failure.
+- [ ] Complete remaining hosted generation/payment and release gates; no new compute, live purchases, push, deployment or App Store upload in this pass.
+- [ ] Obtain permissions/assets for popular-song lessons; supplier reply still pending.
+
 ## Reliability follow-through — 2026-10-26
 
 **PARTIAL overall.** [Report](docs/RELIABILITY_FOLLOWTHROUGH.md). Current work remains local. Twenty fresh tracks and both R2 recordings completed; the final browser-meter assertion failed, cleanup passed, and the permit is consumed.
