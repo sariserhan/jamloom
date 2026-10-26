@@ -1,3 +1,12 @@
+## Popular karaoke catalogue preparation — 2026-10-26
+
+**PASS research/preparation; BLOCKED playable catalogue pending permissions and assets.** [Supplier and integration findings](SINGING_POPULAR_SONGS.md).
+
+- [x] Verify all six requested songs in Tency/KaraFun catalogues; preserve exact serial IDs, instrumental ISRCs, version-specific duration/key/tempo and source links. No audio or lyrics copied.
+- [x] Audit shared browser/native singing integration: retain live pitch and lyric UI, add exact-recording playback and bounded phrase grading only after supplied asset formats are known. Identify variable-tempo and duet-part requirements.
+- [x] Prepare the [non-binding licensing enquiry](SINGING_LICENSING_ENQUIRY.md), including master/publishing/lyrics scope, delivery formats, audience/territory quote scenarios and no training or user-recording distribution.
+- [ ] Obtain approval to send the prepared enquiry, provider terms/quote and separately authorized licenses/assets. No external message, purchase, playable commercial lesson or deployment has occurred.
+
 ## Singing Academy completion and fresh DJ qualification — 2026-10-26
 
 **PASS expanded local course and signed iPhone installation; PARTIAL qualification.** [Completion report](SINGING_COMPLETION.md). Eight original songs now progress through four stages, with twelve optional warm-ups, full lyrics, live pitch feedback and targeted section practice. Existing scores and the original two songs are preserved.

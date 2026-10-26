@@ -61,3 +61,5 @@ The owner requested these songs for karaoke-style lessons: instrumental backing 
 | Someone You Loved | Lewis Capaldi | Requested; catalogue permissions and lesson preparation pending |
 
 Keep existing original songs and features available while this catalogue is prepared.
+
+The six requested recordings now have verified supplier references and an integration review: [popular-song preparation](SINGING_POPULAR_SONGS.md). This does not make them playable; the supplier enquiry is prepared but unsent.

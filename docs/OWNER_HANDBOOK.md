@@ -1,3 +1,7 @@
+## Popular-song karaoke request — 2026-10-26
+
+All six requested songs have matching Tency Music catalogue entries, including Lewis Capaldi’s Someone You Loved. [Exact versions and implementation requirements](SINGING_POPULAR_SONGS.md); [prepared supplier enquiry](SINGING_LICENSING_ENQUIRY.md). These are candidate licensed covers, not acquired audio or playable Jamloom lessons. The eight original songs remain available locally. No supplier has been contacted and no license purchased.
+
 ## Expanded Singing Academy and phone — 2026-10-26
 
 [Open the course](http://localhost:3000/singing-academy). Eight original songs now span four stages. Choose a comfortable register, use headphones and start with Hear song. Practice a section when needed, then choose Full song to save course progress. The live view, current/upcoming words and full highlighted lyrics remain together. Warm-ups contains the twelve optional note drills. On Jamloom 0.10.0, use the new Sing tab; progress stays on that device. The owner confirms music, microphone tracking and stopping on tab changes work. [Checks and remaining evidence](SINGING_COMPLETION.md).
