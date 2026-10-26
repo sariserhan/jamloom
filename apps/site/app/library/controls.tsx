@@ -1,4 +1,5 @@
 'use client';
+import {SongFeedback} from '../music-dna/song-feedback';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {loadSession,verifySession} from '../../../web/library.js';
@@ -76,7 +77,7 @@ export function SaveMix({publicSharing=true}:{publicSharing?:boolean}) {
 }
 export function TrackControls({id,title}:{id:string;title:string}) {
   const router=useRouter(), [confirm,setConfirm]=useState(false), [busy,setBusy]=useState(false), [error,setError]=useState('');
-  return <div className="track-actions"><audio controls preload="none" aria-label={`Play ${title}`} src={`/api/library/${id}/audio`}/>
+  return <div className="track-actions"><audio controls preload="none" aria-label={`Play ${title}`} src={`/api/library/${id}/audio`}/><details><summary>Rate this mix</summary><SongFeedback id={id} product="library" account/></details>
     <a href={`/api/library/${id}/audio?download=1`} download="jamloom-mix.wav">Download WAV</a>
     {!confirm ? <button className="secondary" onClick={()=>setConfirm(true)}>Remove from account</button> : <div><p>Remove this saved mix and any catalogue listing? Your local copy stays on your device.</p>
       <button className="danger" disabled={busy} onClick={async()=>{setBusy(true);setError('');try {await result(await fetch(`/api/library/${id}/audio`,{method:'DELETE'}));router.refresh();}catch(e){setError(e instanceof Error?e.message:'Removal failed. Try again.');}finally{setBusy(false);}}}>Confirm removal</button>

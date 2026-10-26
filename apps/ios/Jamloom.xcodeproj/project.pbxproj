@@ -25,6 +25,7 @@
 		3FFAC8FE5D21643B13F1F976 /* MusicDNA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D63F9E78BE8A4E9C10828F /* MusicDNA.swift */; };
 		4F29BC4EA06E5FB1EF6404B8 /* remix_plan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EC5EFD29381443D7AC7792F /* remix_plan.cpp */; };
 		500B28424A444A961F83AA56 /* remix_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3629937B433702DD137C634 /* remix_file.cpp */; };
+		5FB2D69760974EE1997A8014 /* ProductHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309D7EE9D2C1A8464A1EBF65 /* ProductHelp.swift */; };
 		6EDED2CE18CA3081A4EED5EE /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56535D124F9214619CD1F94 /* AccountTests.swift */; };
 		74BD772DD3B699ABBE8B8D86 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E104CA55FFE73815BFB8771 /* Library.swift */; };
 		74EB69FFD361B18F224363FD /* live.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE34D5E5A24FFDE26FE4B7B5 /* live.cpp */; };
@@ -37,6 +38,7 @@
 		8E8E73993328B394DF69C825 /* StudioServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7898394A1CA5697717DA10 /* StudioServerTests.swift */; };
 		8F7A55CB236A88FA1553BA73 /* TasteRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F31AC2FFEB8CFE139F4EDF /* TasteRender.swift */; };
 		91F91D1B9B7EF3EE8B17CDE2 /* Studio in Resources */ = {isa = PBXBuildFile; fileRef = 7F3D1A759500C8151936462F /* Studio */; };
+		936E99EDB7BC48223B951033 /* MusicFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A07EFBBC67C9C69D9FDFF /* MusicFeedback.swift */; };
 		9594ED6B246734DDD9648325 /* analysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E3764675A02ECC77FCB18D7 /* analysis.cpp */; };
 		997616C15CFC7023A67F0673 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6FC7B79AED84081562F85C /* PerformanceTests.swift */; };
 		9D3AFC0695A502C09836CB14 /* remix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D36F09BD0C31A98B93E8591 /* remix.cpp */; };
@@ -97,6 +99,7 @@
 		25F31AC2FFEB8CFE139F4EDF /* TasteRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteRender.swift; sourceTree = "<group>"; };
 		2939FD8D1B87A8606A585960 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		3011783CFD4669F4D164C9ED /* JamloomUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = JamloomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		309D7EE9D2C1A8464A1EBF65 /* ProductHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHelp.swift; sourceTree = "<group>"; };
 		32D3D83B51DF8B7F58A197A3 /* JamloomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamloomApp.swift; sourceTree = "<group>"; };
 		349507E6CB1B4CAF64C016D2 /* c_api.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = c_api.cpp; sourceTree = "<group>"; };
 		34C3D65EB06A5BB9B9CC86B6 /* Jamloom.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Jamloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +147,7 @@
 		E3F8BB997819B3B7E8D19081 /* full_band_interpolation.inc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.pascal; path = full_band_interpolation.inc; sourceTree = "<group>"; };
 		E46E6D6A00B2BC919A9FE502 /* performance_voices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = performance_voices.h; sourceTree = "<group>"; };
 		E6759756AEC3E73B056A85E2 /* RemixEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemixEngine.swift; sourceTree = "<group>"; };
+		E91A07EFBBC67C9C69D9FDFF /* MusicFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFeedback.swift; sourceTree = "<group>"; };
 		E9E7D80A812646BF27A24CEC /* plan.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = plan.cpp; sourceTree = "<group>"; };
 		EA3023065583600FBCEF3071 /* LocalCredits.storekit */ = {isa = PBXFileReference; path = LocalCredits.storekit; sourceTree = "<group>"; };
 		ECADB888A44B343A9F98AFC7 /* input.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = input.cpp; sourceTree = "<group>"; };
@@ -268,7 +272,9 @@
 				32D3D83B51DF8B7F58A197A3 /* JamloomApp.swift */,
 				4E104CA55FFE73815BFB8771 /* Library.swift */,
 				97D63F9E78BE8A4E9C10828F /* MusicDNA.swift */,
+				E91A07EFBBC67C9C69D9FDFF /* MusicFeedback.swift */,
 				7B95B54DEB78D0ABE3BEFF43 /* PrivacyInfo.xcprivacy */,
+				309D7EE9D2C1A8464A1EBF65 /* ProductHelp.swift */,
 				E6759756AEC3E73B056A85E2 /* RemixEngine.swift */,
 				0D9B09A91A6463FF980E49DF /* SongLibrary.swift */,
 				AFC0A3578A8991E5DEF6503A /* StudioServer.swift */,
@@ -515,6 +521,8 @@
 				311802DFDCD8BEE11C9F86E8 /* JamloomApp.swift in Sources */,
 				74BD772DD3B699ABBE8B8D86 /* Library.swift in Sources */,
 				3FFAC8FE5D21643B13F1F976 /* MusicDNA.swift in Sources */,
+				936E99EDB7BC48223B951033 /* MusicFeedback.swift in Sources */,
+				5FB2D69760974EE1997A8014 /* ProductHelp.swift in Sources */,
 				FDBB60E7CEA0BAFCB273A8ED /* RemixEngine.swift in Sources */,
 				0419AA3338DC6523DE80DF90 /* SongLibrary.swift in Sources */,
 				F2E6D213AB1C32C13D2EEF23 /* StudioServer.swift in Sources */,
@@ -632,7 +640,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -648,7 +656,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../core/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.9.4;
+				MARKETING_VERSION = 0.9.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -716,7 +724,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -738,7 +746,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../core/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.9.4;
+				MARKETING_VERSION = 0.9.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

@@ -1,0 +1,6 @@
+.product-help-button{border:1px solid #b8d789;background:#1b2926;color:#eaffd1;border-radius:50%;width:44px;height:44px;font:700 24px system-ui;cursor:pointer;margin:8px 0}
+.product-help-host{display:flex;justify-content:flex-end}
+.product-help-dialog{color:#edf3ec;background:#182427;border:1px solid #61736c;border-radius:24px;padding:clamp(20px,4vw,36px);width:min(680px,calc(100vw - 32px));max-height:85dvh;box-sizing:border-box;overflow:auto;box-shadow:0 24px 100px #0009;text-align:left;font:16px/1.65 system-ui}
+.product-help-dialog::backdrop{background:#06110eb3;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.product-help-dialog h2{font-size:30px;margin:0 0 20px}.product-help-dialog h3{font-size:18px;margin:22px 0 8px}.product-help-dialog li{margin:12px 0}.product-help-dialog p{color:#d3ded7}.product-help-note{border-top:1px solid #61736c;padding-top:20px}
+.product-help-close{display:block;margin-left:auto;min-height:44px;background:#d2fa91;color:#172214;border:0;border-radius:12px;padding:8px 18px;font:600 16px system-ui;cursor:pointer}.product-help-button:focus-visible,.product-help-dialog :focus-visible{outline:3px solid #d2fa91;outline-offset:4px}

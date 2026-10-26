@@ -1,0 +1,63 @@
+
+> jamloom-site@0.1.0 test:feedback
+> node --import tsx --test tests/creation-feedback.test.ts
+
+TAP version 13
+# Subtest: references reject traversal and malformed IDs
+ok 1 - references reject traversal and malformed IDs
+  ---
+  duration_ms: 0.532583
+  type: 'test'
+  ...
+# Subtest: isolated database: cross-product ratings, ownership, rights review, withdrawal and bug inbox
+    # Subtest: local ratings never grant training; suspended and absent accounts fail
+    ok 1 - local ratings never grant training; suspended and absent accounts fail
+      ---
+      duration_ms: 3.072208
+      type: 'test'
+      ...
+    # Subtest: private library and sets are owner-only with bounded timestamps and tags
+    ok 2 - private library and sets are owner-only with bounded timestamps and tags
+      ---
+      duration_ms: 10.86275
+      type: 'test'
+      ...
+    # Subtest: training requires permission, reviewed unchanged audio; withdrawal and deletion exclude it
+    ok 3 - training requires permission, reviewed unchanged audio; withdrawal and deletion exclude it
+      ---
+      duration_ms: 14.855625
+      type: 'test'
+      ...
+    # Subtest: public DNA and Improvise listeners may rate but cannot authorize training
+    ok 4 - public DNA and Improvise listeners may rate but cannot authorize training
+      ---
+      duration_ms: 30.010167
+      type: 'test'
+      ...
+    # Subtest: published Jamloom samples accept ratings without granting ownership
+    ok 5 - published Jamloom samples accept ratings without granting ownership
+      ---
+      duration_ms: 3.049125
+      type: 'test'
+      ...
+    # Subtest: anonymous bug reaches private inbox with durable notification and admin-only updates
+    ok 6 - anonymous bug reaches private inbox with durable notification and admin-only updates
+      ---
+      duration_ms: 3.295083
+      type: 'test'
+      ...
+    1..6
+ok 2 - isolated database: cross-product ratings, ownership, rights review, withdrawal and bug inbox
+  ---
+  duration_ms: 260.536042
+  type: 'test'
+  ...
+1..2
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 587.660333

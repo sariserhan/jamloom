@@ -122,7 +122,7 @@ struct RemixView: View {
             }
             .background(Color(red: 0.055, green: 0.07, blue: 0.075))
             .navigationTitle("Jamloom").navigationBarTitleDisplayMode(.inline)
-            .toolbar { Button("Account", systemImage: "person.crop.circle") { model.suspendAudio(cancelRender: false); showAccount = true } }
+            .toolbar { ProductHelpButton(product: "remix"); Button("Account", systemImage: "person.crop.circle") { model.suspendAudio(cancelRender: false); showAccount = true } }
             .sheet(isPresented: $showAccount) { AccountView(account: account) }
             .sheet(isPresented: $showCloud) { CloudImproviseView(cloud: cloud, account: account, model: model) }
             .onChange(of: model.trimStart) { _, _ in cloud.recordingChanged() }
@@ -188,7 +188,7 @@ struct RemixView: View {
         VStack(alignment: .leading, spacing: 20) {
             if model.sessions.contains(where: { !$0.isTaste }) {
                 Text("Your mixes").font(.title2.bold())
-                ForEach(model.sessions.filter { !$0.isTaste }) { session in SavedSessionView(model: model, session: session) }
+                ForEach(model.sessions.filter { !$0.isTaste }) { session in SavedSessionView(model: model, account: account, session: session) }
             }
             if model.incomplete > 0 {
                 Text("\(model.incomplete) incomplete or changed sessions were kept out of playback. Delete all local data to remove them.")
@@ -272,6 +272,7 @@ struct RemixView: View {
 
 struct SavedSessionView: View {
     @ObservedObject var model: AppModel
+    @ObservedObject var account: AccountModel
     let session: RemixSession
     var prefer: ((String) -> Void)? = nil
     @State private var showDeleteSession = false
@@ -298,6 +299,7 @@ struct SavedSessionView: View {
                         Button { model.stopPlayback(); share = ShareItem(url: url) } label: { Label("Share", systemImage: "square.and.arrow.up").frame(minHeight: 44) }
                             .accessibilityIdentifier("share-\(style)")
                     }.disabled(!model.editable)
+                    MusicRatingButton(kind: "local-remix", id: session.id.uuidString + style, title: style.capitalized, account: account, localAudio: url)
                     if let prefer { Button("Use \(style == "taste_a" ? "A" : "B") settings next time") { prefer(style) }.disabled(!model.editable) }
                 }
             }

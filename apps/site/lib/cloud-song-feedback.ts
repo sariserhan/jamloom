@@ -1,3 +1,4 @@
+import {CreationFeedback} from './creation-feedback';
 import type {DnaContext} from './dna-commerce';
 import {validateFeedback} from './dna-feedback-schema';
 import {boundedAuthRequest} from './bounded-request';
@@ -10,7 +11,7 @@ export async function cloudSongFeedback(request:Request,{commerce,owner,origin=n
  if(request.method!=='GET'&&(request.headers.get('origin')!==origin||request.headers.get('sec-fetch-site')==='cross-site'||request.headers.get('x-jamloom-dna')!=='1'))return json({error:'Same-origin request required.'},403);
  if(request.method==='DELETE'){
   if(id!==null&&!songId(id))return json({error:'Unknown song.'},400);
-  await pool.query('DELETE FROM song_feedback WHERE owner_id=$1 AND ($2::text IS NULL OR song_id=$2)',[owner,id]);return json({deleted:true});
+  await new CreationFeedback(pool).remove(owner,id===null?undefined:'music-dna',id??undefined);return json({deleted:true});
  }
  if(!songId(id))return json({error:'Unknown song.'},400);
  const row=await commerce.row(id);

@@ -1,3 +1,4 @@
+import {mountLocalRating} from './creation-rating.js';
 import './site-announcement.js';
 import './offline.js';
 import './install.js';
@@ -273,7 +274,7 @@ function renderLibrary() {
         save.onclick = event => { try { sessionStorage.setItem('jamloom-save-selection', JSON.stringify({ id: session.id, name: file.name })); } catch { event.preventDefault(); fail(new Error('Browser storage is unavailable. Download the WAV and save it from your cloud library.')); } };
         row.append(save);
       }
-      section.append(row);
+      section.append(row); mountLocalRating(section,file.sha256);
     }
     $('library').append(section);
   }

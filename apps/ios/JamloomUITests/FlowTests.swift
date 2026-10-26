@@ -1,6 +1,21 @@
 import XCTest
 
 final class FlowTests: XCTestCase {
+    func testCommunityRatingExplainsSignInAndDismisses() {
+        let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture"]
+        app.launch(); app.buttons["Community"].firstMatch.tap()
+        let help = app.buttons["How to use Community"]
+        XCTAssertTrue(help.waitForExistence(timeout: 10)); help.tap()
+        XCTAssertTrue(app.staticTexts["How to use it"].waitForExistence(timeout: 5)); let guide = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); guide.name = "Community product guide"; guide.lifetime = .keepAlways; add(guide); app.buttons["Close"].tap()
+        let rate = app.buttons["Rate"].firstMatch
+        XCTAssertTrue(rate.waitForExistence(timeout: 15)); rate.tap()
+        XCTAssertTrue(app.navigationBars["Your feedback"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Sign in through Account to rate this music."].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["Like"].isEnabled)
+        let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); image.name = "Music feedback sign-in"; image.lifetime = .keepAlways; add(image)
+        app.buttons["Done"].tap(); XCTAssertTrue(rate.waitForExistence(timeout: 5))
+    }
+
     func testCommunityBottomPlayerPausesSeeksAndKeepsPlayingWhileBrowsing() {
         let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture", "--community-player"]
         app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
@@ -104,6 +119,9 @@ final class FlowTests: XCTestCase {
         XCUIDevice.shared.orientation = .landscapeLeft
         defer { XCUIDevice.shared.orientation = .portrait }
         app.launch(); app.buttons["DJ Deck"].firstMatch.tap()
+        let help = app.webViews.descendants(matching: .any)["How to use DJ Studio"].firstMatch
+        XCTAssertTrue(help.waitForExistence(timeout: 15)); XCTAssertTrue(help.isHittable); help.tap()
+        XCTAssertTrue(app.webViews.staticTexts["What it does"].waitForExistence(timeout: 5)); app.webViews.buttons["Close ×"].tap()
         loadPracticeDecks(app)
         for name in ["Play A", "Play B", "Cue", "Stop"] {
             let control = app.webViews.buttons[name].firstMatch

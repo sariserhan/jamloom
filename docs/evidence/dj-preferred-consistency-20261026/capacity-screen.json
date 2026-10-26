@@ -1,0 +1,40 @@
+{
+  "status": "SCREENING ONLY; sustained capacity NOT RUN",
+  "shortest_current_mix_handoff_interval_seconds": 39.847999999999985,
+  "models": [
+    {
+      "model": "turbo",
+      "cold_initialization_and_generation_seconds": 81.224,
+      "warm_samples": 2,
+      "warm_seconds": [
+        25.599,
+        20.115
+      ],
+      "worst_observed_warm_seconds": 25.599,
+      "two_serialized_renders_seconds": 51.198,
+      "two_listener_compute_only_margin_seconds": -11.350000000000016,
+      "sustained_capacity_qualified": false
+    },
+    {
+      "model": "base",
+      "cold_initialization_and_generation_seconds": 80.947,
+      "warm_samples": 2,
+      "warm_seconds": [
+        28.254,
+        33.82
+      ],
+      "worst_observed_warm_seconds": 33.82,
+      "two_serialized_renders_seconds": 67.64,
+      "two_listener_compute_only_margin_seconds": -27.792000000000016,
+      "sustained_capacity_qualified": false
+    }
+  ],
+  "overhead_measured": false,
+  "limitations": [
+    "Prepared tracks; not generated during playback.",
+    "Two warm requests per model; not a percentile or sustained throughput.",
+    "Transport, storage, retries and analysis excluded.",
+    "Cold requests and one base warm request exceed thirty-second serving limit.",
+    "No listener capacity, customer prices or live timeout changed."
+  ]
+}

@@ -239,6 +239,7 @@ struct SongLibraryView: View {
     @State private var language = ""
     @State private var showAccount = false
     @State private var playingSet: LibrarySong?
+    @State private var ratingSong: LibrarySong?
     @State private var playbackTask: Task<Void, Never>?
     @Environment(\.scenePhase) private var scenePhase
     private let accent = Color(red: 0.78, green: 0.96, blue: 0.32)
@@ -293,6 +294,7 @@ struct SongLibraryView: View {
                                     } label: {
                                         Label(session.isTaste ? "Music DNA · \(style)" : style.capitalized, systemImage: model.playing == url ? "stop.circle.fill" : "play.circle.fill").padding(.vertical, 8)
                                     }
+                                    MusicRatingButton(kind: "local-remix", id: session.id.uuidString + style, title: style.capitalized, account: account, localAudio: url)
                                 }
                             }
                         }
@@ -337,7 +339,8 @@ struct SongLibraryView: View {
                         Button { Task { await library.toggleFavorite(song, account: account) } } label: {
                             Image(systemName: library.favorites.contains(where: { $0.key == song.key }) ? "heart.fill" : "heart").font(.title2).frame(minWidth: 44, minHeight: 44)
                         }.buttonStyle(.plain).disabled(library.syncingFavorites).foregroundStyle(accent).accessibilityLabel("\(library.favorites.contains(where: { $0.key == song.key }) ? "Unfavorite" : "Favorite") \(song.title)")
-                        }
+                        }.contextMenu { if song.listeningKind != "aurowall" { Button("Rate this music", systemImage: "hand.thumbsup") { ratingSong = song } } }
+                        if song.listeningKind != "aurowall" { Button("Rate", systemImage: "hand.thumbsup") { ratingSong = song }.font(.caption) }
                     }
                     if !library.next.isEmpty { Button("Load more songs") { Task { await library.load(collection, account: account, more: true, language: language) } }.disabled(library.busy) }
                     if filtered.isEmpty && !library.busy && library.message.isEmpty {
@@ -349,7 +352,8 @@ struct SongLibraryView: View {
                 }
             }
             .navigationTitle("Community").searchable(text: $search, prompt: "Search loaded songs")
-            .toolbar { Button("Account", systemImage: "person.crop.circle") { stop(); showAccount = true } }
+            .toolbar { ProductHelpButton(product: "community"); Button("Account", systemImage: "person.crop.circle") { stop(); showAccount = true } }
+            .sheet(item: $ratingSong) { song in MusicFeedbackView(kind: song.listeningKind == "catalogue" ? "library" : song.source == .aiDJ ? "sets" : song.source.rawValue, id: song.id, title: song.title, account: account) }
             .sheet(isPresented: $showAccount) { AccountView(account: account) }
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 if let song = playingSet {

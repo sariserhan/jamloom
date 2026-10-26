@@ -1,3 +1,4 @@
+import {mountProductHelp} from './product-help.js';
 // Rearrange the existing controls; their shared transport and DSP handlers stay intact.
 export function attachMobileStudio() {
  const $=id=>document.getElementById(id), main=$('dj');
@@ -5,6 +6,7 @@ export function attachMobileStudio() {
  const bar=document.createElement('nav');bar.className='mobile-bar';bar.setAttribute('aria-label','DJ tools');
  bar.innerHTML='<strong>JAMLOOM <span>DJ</span></strong><button id="mobile-music">Music</button><button id="mobile-mode" aria-label="Performance pads and effects" aria-pressed="false">Pads & FX</button><button id="mobile-stop">Stop</button>';
  main.prepend(bar);
+ const help=document.createElement("span");help.className="mobile-help";bar.append(help);mountProductHelp(help,"dj-studio");
  const dialog=document.createElement('dialog');dialog.className='mobile-library';dialog.setAttribute('aria-label','Load music');
  dialog.innerHTML='<div class="mobile-library-heading"><h2>Load music</h2><button id="mobile-close">Done</button></div><p>Choose a track for each deck. Playback starts when you press Play.</p>';
  const own=document.createElement('fieldset');own.innerHTML='<legend>Your audio files</legend>';

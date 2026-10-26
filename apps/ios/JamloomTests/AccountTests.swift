@@ -18,6 +18,26 @@ private final class AccountProtocol: URLProtocol {
     override func stopLoading() {}
 }
 @MainActor final class AccountTests: XCTestCase {
+    func testMusicRatingUsesSharedAccountEndpointAndDecodesOwnerPermission() async throws {
+        let transport = transport(); defer { transport.session.invalidateAndCancel() }
+        AccountProtocol.headers = ["Content-Type": "application/json"]
+        AccountProtocol.handle = { request in
+            XCTAssertEqual(request.url?.path, "/api/creation-feedback")
+            XCTAssertEqual(request.httpMethod, "GET")
+            let query = URLComponents(url: request.url!, resolvingAgainstBaseURL: false)!.queryItems!
+            XCTAssertEqual(query.first { $0.name == "kind" }?.value, "improvise")
+            return (200, Data(#"{"owner":"listener","feedback":{"rating":"like","tags":["groove"],"personalize":false,"trainingConsent":false,"momentSeconds":12},"canTrain":false,"rightsConfirmed":false}"#.utf8))
+        }
+        let response: MusicFeedbackResponse = try await transport.request("/api/creation-feedback", query: ["kind":"improvise", "id":String(repeating:"a",count:32)])
+        XCTAssertEqual(response.owner, "listener"); XCTAssertFalse(response.canTrain)
+        XCTAssertEqual(response.feedback?.momentSeconds, 12); XCTAssertEqual(response.feedback?.tags, ["groove"])
+        let decoded = try JSONDecoder().decode(MusicFeedbackValue.self, from: JSONEncoder().encode(response.feedback!))
+        XCTAssertFalse(decoded.trainingConsent); XCTAssertEqual(decoded.rating, "like")
+        for query in [["kind":"improvise","id":"../private"], ["kind":"unknown","id":String(repeating:"a",count:32)], ["kind":"sets","id":String(repeating:"a",count:32),"owner":"other"]] {
+            do { let _: MusicFeedbackResponse = try await transport.request("/api/creation-feedback", query: query); XCTFail("Reject invalid feedback reference") } catch { }
+        }
+    }
+
     func testLanguageNamesFromLegacyExamplesUseSameFilterCodes() {
         for (raw, code) in [("English", "en"), (" Turkish ", "tr"), ("tr", "tr"), ("zh", "zh"), ("", "")] {
             let song = LibrarySong(id: String(repeating: "a", count: 32), title: "Example", language: raw, direction: nil, product: nil, visibility: nil, withdrawn_at: nil)
@@ -475,6 +495,18 @@ private final class AccountProtocol: URLProtocol {
         let loaded = try await account.loadTaste(); XCTAssertEqual(loaded, profile)
         try await account.deleteTaste()
         let deleted = try await account.loadTaste(); XCTAssertNil(deleted)
+        let owner = try XCTUnwrap(account.snapshot?.user.id)
+        let query = ["kind":"library", "id":"cccccccc-cccc-4ccc-8ccc-cccccccccccc"]
+        let initial: MusicFeedbackResponse = try await account.transport.request("/api/creation-feedback", query: query)
+        XCTAssertEqual(initial.owner, owner); XCTAssertTrue(initial.canTrain); XCTAssertNil(initial.feedback)
+        let rating = try JSONSerialization.data(withJSONObject: ["owner":owner,"rating":"like","tags":["groove"],"personalize":false,"trainingConsent":true,"rightsConfirmed":true,"momentSeconds":12])
+        let saved: MusicFeedbackResponse = try await account.transport.request("/api/creation-feedback", method:"POST", body:rating, query:query)
+        XCTAssertTrue(saved.feedback?.trainingConsent == true); XCTAssertTrue(saved.rightsConfirmed)
+        let loadedRating: MusicFeedbackResponse = try await account.transport.request("/api/creation-feedback", query:query)
+        XCTAssertEqual(loadedRating.feedback?.momentSeconds,12)
+        _ = try await account.transport.requestData("/api/creation-feedback", method:"DELETE", body:JSONSerialization.data(withJSONObject:["owner":owner]), query:query)
+        let removedRating: MusicFeedbackResponse = try await account.transport.request("/api/creation-feedback", query:query)
+        XCTAssertNil(removedRating.feedback); XCTAssertFalse(removedRating.rightsConfirmed)
         await account.signOut(); XCTAssertNil(account.snapshot)
         do { let _: AccountSnapshot = try await account.transport.request("/api/account"); XCTFail("Sign-out must revoke the session") } catch AccountError.signedOut { }
     }

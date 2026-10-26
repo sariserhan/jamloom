@@ -1,0 +1,349 @@
+TAP version 13
+# Subtest: admin boundaries reject unverified identities, invalid settings and mixed Stripe environments
+ok 1 - admin boundaries reject unverified identities, invalid settings and mixed Stripe environments
+  ---
+  duration_ms: 0.6505
+  type: 'test'
+  ...
+# Subtest: real Postgres administration, durable mail, credit exemption and billing isolation
+    # Subtest: settings require real owner, reject stale writes and absent live credentials, audit cannot be edited
+    ok 1 - settings require real owner, reject stale writes and absent live credentials, audit cannot be edited
+      ---
+      duration_ms: 5.028833
+      type: 'test'
+      ...
+    # Subtest: contact transaction persists notification, reply is private and stale replay cannot email twice
+    ok 2 - contact transaction persists notification, reply is private and stale replay cannot email twice
+      ---
+      duration_ms: 10.509708
+      type: 'test'
+      ...
+    # Subtest: email failures remain durable, retry leases avoid concurrent sends, template escapes submitted content
+    ok 3 - email failures remain durable, retry leases avoid concurrent sends, template escapes submitted content
+      ---
+      duration_ms: 7.440917
+      type: 'test'
+      ...
+    # Subtest: only verified owner can reserve without credits; caps, actual costs, replays and frozen wallets remain enforced
+    ok 4 - only verified owner can reserve without credits; caps, actual costs, replays and frozen wallets remain enforced
+      ---
+      duration_ms: 13.423875
+      type: 'test'
+      ...
+    # Subtest: suspension removes sessions, cancels queued work with released credits, restore does not restore sessions
+    ok 5 - suspension removes sessions, cancels queued work with released credits, restore does not restore sessions
+      ---
+      duration_ms: 8.676125
+      type: 'test'
+      ...
+    # Subtest: owner course preview requires verified active identity and preserves prerequisites and receipts
+    ok 6 - owner course preview requires verified active identity and preserves prerequisites and receipts
+      ---
+      duration_ms: 4.915666
+      type: 'test'
+      ...
+    # Subtest: verified live and test receipts stay separate; wrong-mode signed events fail
+    ok 7 - verified live and test receipts stay separate; wrong-mode signed events fail
+      ---
+      duration_ms: 3.767833
+      type: 'test'
+      ...
+    1..7
+ok 2 - real Postgres administration, durable mail, credit exemption and billing isolation
+  ---
+  duration_ms: 233.97775
+  type: 'test'
+  ...
+# Subtest: cloud song configuration is opt-in and requires a bounded rate
+ok 3 - cloud song configuration is opt-in and requires a bounded rate
+  ---
+  duration_ms: 0.578125
+  type: 'test'
+  ...
+# Subtest: Improvise receipts require a bounded audible use of this recording and this output
+ok 4 - Improvise receipts require a bounded audible use of this recording and this output
+  ---
+  duration_ms: 0.169959
+  type: 'test'
+  ...
+# Subtest: real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+    # Subtest: Improvise omission or mismatched recording refunds; valid loops settle once
+    ok 1 - Improvise omission or mismatched recording refunds; valid loops settle once
+      ---
+      duration_ms: 305.648917
+      type: 'test'
+      ...
+    # Subtest: one request is reserved and dispatched once under duplicate concurrent calls
+    ok 2 - one request is reserved and dispatched once under duplicate concurrent calls
+      ---
+      duration_ms: 23.070792
+      type: 'test'
+      ...
+    # Subtest: several users queue independently; cancellation refunds while other songs continue
+    ok 3 - several users queue independently; cancellation refunds while other songs continue
+      ---
+      duration_ms: 543.645917
+      type: 'test'
+      ...
+    # Subtest: duration boundaries settle once and a mismatched saved length refunds
+    ok 4 - duration boundaries settle once and a mismatched saved length refunds
+      ---
+      duration_ms: 798.964167
+      type: 'test'
+      ...
+    # Subtest: restart after output storage failure uses persisted receipt and charges only once
+    ok 5 - restart after output storage failure uses persisted receipt and charges only once
+      ---
+      duration_ms: 315.81025
+      type: 'test'
+      ...
+    # Subtest: saved descriptions reach the next worker only for their owner
+    ok 6 - saved descriptions reach the next worker only for their owner
+      ---
+      duration_ms: 296.97625
+      type: 'test'
+      ...
+    # Subtest: failed jobs refund all credits and invalid completed output cannot become public
+    ok 7 - failed jobs refund all credits and invalid completed output cannot become public
+      ---
+      duration_ms: 238.02525
+      type: 'test'
+      ...
+    # Subtest: website input, feedback ownership, personalization and consent withdrawal
+    ok 8 - website input, feedback ownership, personalization and consent withdrawal
+      ---
+      duration_ms: 370.912083
+      type: 'test'
+      ...
+    # Subtest: disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+    ok 9 - disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+      ---
+      duration_ms: 26.483833
+      type: 'test'
+      ...
+    # Subtest: lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+    ok 10 - lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+      ---
+      duration_ms: 8.831292
+      type: 'test'
+      ...
+    # Subtest: missing provider receipt refunds only after the full provider TTL and a quiet queue
+    ok 11 - missing provider receipt refunds only after the full provider TTL and a quiet queue
+      ---
+      duration_ms: 9.290792
+      type: 'test'
+      ...
+    # Subtest: test credit lots cannot fund live requests or inflate live balances
+    ok 12 - test credit lots cannot fund live requests or inflate live balances
+      ---
+      duration_ms: 2.156625
+      type: 'test'
+      ...
+    # Subtest: recovery rotates ambiguous jobs and releases credits after persistent storage failure
+    ok 13 - recovery rotates ambiguous jobs and releases credits after persistent storage failure
+      ---
+      duration_ms: 329.181417
+      type: 'test'
+      ...
+    1..13
+ok 5 - real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+  ---
+  duration_ms: 3475.830208
+  type: 'test'
+  ...
+# Subtest: launch gate defaults on and only explicit false disables it
+ok 6 - launch gate defaults on and only explicit false disables it
+  ---
+  duration_ms: 0.505584
+  type: 'test'
+  ...
+# Subtest: public song collections and playback pass the launch gate without opening generation or private collections
+ok 7 - public song collections and playback pass the launch gate without opening generation or private collections
+  ---
+  duration_ms: 5.662
+  type: 'test'
+  ...
+# Subtest: public DJ set playback is open while creation and private recordings stay protected
+ok 8 - public DJ set playback is open while creation and private recordings stay protected
+  ---
+  duration_ms: 0.280459
+  type: 'test'
+  ...
+# Subtest: account-free native catalogue suggestions pass the launch gate without opening creation or purchases
+ok 9 - account-free native catalogue suggestions pass the launch gate without opening creation or purchases
+  ---
+  duration_ms: 0.133875
+  type: 'test'
+  ...
+# Subtest: coming-soon recovery allows login, support and signed callbacks, Pro registration but not unrelated product APIs
+ok 10 - coming-soon recovery allows login, support and signed callbacks, Pro registration but not unrelated product APIs
+  ---
+  duration_ms: 0.093042
+  type: 'test'
+  ...
+# Subtest: launch responses contain real navigation, one tracker and private caching; product APIs stay closed
+ok 11 - launch responses contain real navigation, one tracker and private caching; product APIs stay closed
+  ---
+  duration_ms: 0.823417
+  type: 'test'
+  ...
+# Subtest: anonymous requests cannot bypass the default gate with request headers or query flags
+ok 12 - anonymous requests cannot bypass the default gate with request headers or query flags
+  ---
+  duration_ms: 0.171167
+  type: 'test'
+  ...
+# Subtest: published Live DJ preview is accessible while other product routes remain gated
+ok 13 - published Live DJ preview is accessible while other product routes remain gated
+  ---
+  duration_ms: 0.161958
+  type: 'test'
+  ...
+# Subtest: retention cron reaches its own authorization while launch access stays closed
+ok 14 - retention cron reaches its own authorization while launch access stays closed
+  ---
+  duration_ms: 0.149083
+  type: 'test'
+  ...
+# Subtest: free Local Remixes opens directly while cloud creation remains gated
+ok 15 - free Local Remixes opens directly while cloud creation remains gated
+  ---
+  duration_ms: 0.311167
+  type: 'test'
+  ...
+# Subtest: DJ cleanup reaches its own auth during a launch hold without opening session APIs
+ok 16 - DJ cleanup reaches its own auth during a launch hold without opening session APIs
+  ---
+  duration_ms: 0.059875
+  type: 'test'
+  ...
+# Subtest: companion download uses the signed release and rejects unsafe overrides
+ok 17 - companion download uses the signed release and rejects unsafe overrides
+  ---
+  duration_ms: 0.707541
+  type: 'test'
+  ...
+# Subtest: production template binds auth and private R2 grants to Jamloom configuration
+ok 18 - production template binds auth and private R2 grants to Jamloom configuration
+  ---
+  duration_ms: 10.51075
+  type: 'test'
+  ...
+# Subtest: account configuration fails closed and forbids hosted development mail
+ok 19 - account configuration fails closed and forbids hosted development mail
+  ---
+  duration_ms: 0.171834
+  type: 'test'
+  ...
+# Subtest: Resend request routes replies to support and binds retry identity to the full payload
+ok 20 - Resend request routes replies to support and binds retry identity to the full payload
+  ---
+  duration_ms: 2.535
+  type: 'test'
+  ...
+# Subtest: reply-to accepts a single mailbox and rejects malformed or injected headers
+ok 21 - reply-to accepts a single mailbox and rejects malformed or injected headers
+  ---
+  duration_ms: 0.1125
+  type: 'test'
+  ...
+# Subtest: localhost can use Neon without enabling local database/storage shortcuts
+ok 22 - localhost can use Neon without enabling local database/storage shortcuts
+  ---
+  duration_ms: 0.112541
+  type: 'test'
+  ...
+# Subtest: email outbox cannot run in a hosted app even if a config is supplied directly
+ok 23 - email outbox cannot run in a hosted app even if a config is supplied directly
+  ---
+  duration_ms: 0.058083
+  type: 'test'
+  ...
+# Subtest: auth body limit measures real streamed bytes rather than trusting Content-Length
+ok 24 - auth body limit measures real streamed bytes rather than trusting Content-Length
+  ---
+  duration_ms: 2.087
+  type: 'test'
+  ...
+# Subtest: Jamloom config accepts legacy deployment keys and gives explicit new values priority
+ok 25 - Jamloom config accepts legacy deployment keys and gives explicit new values priority
+  ---
+  duration_ms: 0.224167
+  type: 'test'
+  ...
+# Subtest: VisitorPing can connect without weakening script or framing protections
+ok 26 - VisitorPing can connect without weakening script or framing protections
+  ---
+  duration_ms: 1.018584
+  type: 'test'
+  ...
+# Subtest: references reject traversal and malformed IDs
+ok 27 - references reject traversal and malformed IDs
+  ---
+  duration_ms: 0.596125
+  type: 'test'
+  ...
+# Subtest: isolated database: cross-product ratings, ownership, rights review, withdrawal and bug inbox
+    # Subtest: local ratings never grant training; suspended and absent accounts fail
+    ok 1 - local ratings never grant training; suspended and absent accounts fail
+      ---
+      duration_ms: 2.954333
+      type: 'test'
+      ...
+    # Subtest: private library and sets are owner-only with bounded timestamps and tags
+    ok 2 - private library and sets are owner-only with bounded timestamps and tags
+      ---
+      duration_ms: 10.193916
+      type: 'test'
+      ...
+    # Subtest: training requires permission, reviewed unchanged audio; withdrawal and deletion exclude it
+    ok 3 - training requires permission, reviewed unchanged audio; withdrawal and deletion exclude it
+      ---
+      duration_ms: 11.018167
+      type: 'test'
+      ...
+    # Subtest: public DNA and Improvise listeners may rate but cannot authorize training
+    ok 4 - public DNA and Improvise listeners may rate but cannot authorize training
+      ---
+      duration_ms: 25.063375
+      type: 'test'
+      ...
+    # Subtest: published Jamloom samples accept ratings without granting ownership
+    ok 5 - published Jamloom samples accept ratings without granting ownership
+      ---
+      duration_ms: 1.899042
+      type: 'test'
+      ...
+    # Subtest: anonymous bug reaches private inbox with durable notification and admin-only updates
+    ok 6 - anonymous bug reaches private inbox with durable notification and admin-only updates
+      ---
+      duration_ms: 3.068042
+      type: 'test'
+      ...
+    1..6
+ok 28 - isolated database: cross-product ratings, ownership, rights review, withdrawal and bug inbox
+  ---
+  duration_ms: 228.570166
+  type: 'test'
+  ...
+# Subtest: language and feedback require supported values and explicit consent
+ok 29 - language and feedback require supported values and explicit consent
+  ---
+  duration_ms: 0.732459
+  type: 'test'
+  ...
+# Subtest: feedback is listener-isolated, consented, bound to a real checked song and withdrawable
+ok 30 - feedback is listener-isolated, consented, bound to a real checked song and withdrawable
+  ---
+  duration_ms: 35.471208
+  type: 'test'
+  ...
+1..30
+# tests 56
+# suites 0
+# pass 56
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5310.673541

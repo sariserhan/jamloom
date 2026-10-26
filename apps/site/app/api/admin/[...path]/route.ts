@@ -14,7 +14,8 @@ export async function POST(request:Request,{params}:{params:Promise<{path:string
   const bounded=await boundedAuthRequest(request);if(!bounded)throw new AudioError('Request too large.',413);
   let v;try{v=await bounded.json();if(!v||Array.isArray(v)||typeof v!=='object')throw Error();}catch{throw new AudioError('Invalid request.');}
   const {path}=await params,store=new AdminStore(pool,config.baseURL);let result;
-  if(path.length===1&&path[0]==='settings')result=await store.settings(session!.user.id,v);
+  if(path.length===1&&path[0]==='training')result=await store.training(session!.user.id,v);
+  else if(path.length===1&&path[0]==='settings')result=await store.settings(session!.user.id,v);
   else if(path.length===2&&path[0]==='users'&&Object.keys(v).join(',')==='suspended')result=await store.user(session!.user.id,path[1],v.suspended);
   else if(path.length===2&&path[0]==='tickets')result=await store.ticket(session!.user.id,path[1],v);
   else if(path.length===1&&path[0]==='notifications'&&Object.keys(v).length===0)result=await store.retry(session!.user.id);

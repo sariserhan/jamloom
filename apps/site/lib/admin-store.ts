@@ -1,3 +1,4 @@
+import {creationReference,creationSources} from './creation-feedback';
 import {createHash} from 'node:crypto';
 import type {Pool,PoolClient} from 'pg';
 import {adminAccount,OWNER_EMAIL} from './admin-access';
@@ -9,7 +10,7 @@ import {billingReadiness} from './billing-mode';
 
 function field(v:unknown,max:number){if(typeof v!=='string'||!v.trim()||v.length>max||/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(v))throw new AudioError('Check the message fields and length.');return v.trim();}
 export function ticketInput(v:Record<string,unknown>){
- if(Object.keys(v).sort().join(',')!=='body,email,kind,name,subject'||(typeof v.kind!=='string'||!['contact','support'].includes(v.kind)))throw new AudioError('Invalid message.');
+ if(Object.keys(v).sort().join(',')!=='body,email,kind,name,subject'||(typeof v.kind!=='string'||!['contact','support','bug'].includes(v.kind)))throw new AudioError('Invalid message.');
  if(['name','subject'].some(key=>typeof v[key]==='string'&&/[\r\n]/.test(v[key] as string)))throw new AudioError('Name and subject must each be one line.');
  const email=field(v.email,254).toLowerCase();if(!/^[^\s@<>,;]+@[^\s@<>,;]+\.[^\s@<>,;]+$/.test(email))throw new AudioError('Enter a valid email address.');
  return {kind:String(v.kind),name:field(v.name,80),email,subject:field(v.subject,120),body:field(v.body,5000)};
@@ -77,6 +78,16 @@ export class AdminStore{
    if(body){const reply=(await db.query('INSERT INTO support_replies(ticket_id,actor_id,body) VALUES($1,$2,$3) RETURNING id',[id,actor,body])).rows[0];
     await enqueueEmail(db,'reply:'+reply.id,{to:ticket.email,subject:'Jamloom: '+ticket.subject,text:`Hello ${ticket.name},\n\n${body}\n\nMessage reference: ${id}`,action:{label:'Contact support',url:this.origin+'/support'}});}
    return {saved:true};
+  });
+ }
+ async training(actor:string,value:Record<string,unknown>){
+  const {kind,id}=creationReference(value.kind,value.id);
+  if(typeof value.approved!=='boolean'||typeof value.sha256!=='string'||!/^[a-f0-9]{64}$/.test(value.sha256)||typeof value.note!=='string'||value.note.trim().length<10||value.note.length>1000)throw new AudioError('Record the rights evidence and exact audio hash.');
+  const note=value.note.trim();
+  return this.change(actor,'training.review',kind+':'+id,async db=>{
+   if(value.approved&&!(await db.query(`WITH sources AS (${creationSources}) SELECT 1 FROM sources s JOIN creation_feedback f ON f.kind=s.kind AND f.creation_id=s.id AND f.owner_id=s.owner_id AND f.audio_sha256=s.sha256 WHERE s.kind=$1 AND s.id=$2 AND s.sha256=$3 AND s.retained AND f.rights_confirmed AND f.feedback->>'trainingConsent'='true'`,[kind,id,value.sha256])).rowCount)throw new AudioError('Current owner consent and unchanged saved audio are required.',409);
+   await db.query(`INSERT INTO creation_training_reviews(kind,creation_id,audio_sha256,approved,rights_note,reviewer_id) VALUES($1,$2,$3,$4,$5,$6) ON CONFLICT(kind,creation_id) DO UPDATE SET audio_sha256=EXCLUDED.audio_sha256,approved=EXCLUDED.approved,rights_note=EXCLUDED.rights_note,reviewer_id=EXCLUDED.reviewer_id,reviewed_at=now()`,[kind,id,value.sha256,value.approved,note,actor]);
+   return {approved:value.approved,sha256:value.sha256};
   });
  }
  async retry(actor:string){return this.change(actor,'notifications.retry','outbox',async db=>{

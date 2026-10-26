@@ -1,0 +1,150 @@
+{
+  "status": "AUTHORIZED",
+  "campaign": "jamloom-dj-preferred-consistency-20261026",
+  "owner_statement": "Approve the capped $3 preferred-music consistency study",
+  "budget_usd": 3,
+  "max_workers": 1,
+  "max_minutes": 40,
+  "max_requests": 6,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "replacements": false,
+  "public_activation": false,
+  "source_audio_used": false,
+  "learned_reference_weights_used": false,
+  "model": {
+    "code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "weights": "19671f406d603126926c1b7e2adc169acbcade22",
+    "base": "e432212fec32b8965a14ffa57ae653438d6abd14"
+  },
+  "tracks": [
+    {
+      "request": {
+        "version": 1,
+        "session": "26102633333333333333333333333333",
+        "sequence": 0,
+        "seed": 701026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-turbo",
+      "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+      "bpm": 128,
+      "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+      "instrumental": false,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-turbo: house musical vocal"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102633333333333333333333333333",
+        "sequence": 1,
+        "seed": 711026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-turbo",
+      "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+      "bpm": 128,
+      "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+      "instrumental": false,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-turbo: house musical vocal"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102633333333333333333333333333",
+        "sequence": 2,
+        "seed": 721026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-turbo",
+      "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+      "bpm": 128,
+      "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+      "instrumental": false,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-turbo: house musical vocal"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102633333333333333333333333333",
+        "sequence": 3,
+        "seed": 701026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-base",
+      "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+      "bpm": 128,
+      "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+      "instrumental": false,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-base: house musical vocal"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102633333333333333333333333333",
+        "sequence": 4,
+        "seed": 711026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-base",
+      "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+      "bpm": 128,
+      "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+      "instrumental": false,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-base: house musical vocal"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102633333333333333333333333333",
+        "sequence": 5,
+        "seed": 721026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-base",
+      "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+      "bpm": 128,
+      "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+      "instrumental": false,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-base: house musical vocal"
+    }
+  ],
+  "worker_sha256": {
+    "cloud_music_setup.sh": "d85947bf174f3ea3de901116309edd6695eb1d3562ff1931cc95eb8a55792d4e",
+    "cloud_dj_warm.sh": "02a6a29f6a23ee45f835d733d7b10a9d9f0f93fa9ed4848d165202043f8b1c48",
+    "dj_track_worker.py": "d6cd4b54f1f7b30677198e5ab45357763e72b073cdbb455156938354f97d2ad2",
+    "dj_warm_engine.py": "f1a463b165aaf2b71c5189e40e98b531e767e6062c30941014c48dc04ecadd38",
+    "dj_vocal.py": "379749084447fee489c8143aa782aa12e3392fc7dce7849eab9d4c5a0abd9d21",
+    "club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb",
+    "dj_model_study.py": "178ad3aeb2b9bc07ddd7784e120c43cd672ff93b553ca43edb360d37e80de1fb"
+  },
+  "manifest_sha256": "37920c432079b6a51be2321e46a0b5071cdca2ded8d3e50f6cb06f07abcfafe3",
+  "base_manifest_sha256": "608b720e0c042d128ada91dcc18ffc0f8719721eecd1fae011a228376161aff0",
+  "purpose": "Compare complete planned generation recipes; short singing and party quality need owner listening.",
+  "research_render_limit_seconds": 120,
+  "production_render_limit_seconds": 30
+}

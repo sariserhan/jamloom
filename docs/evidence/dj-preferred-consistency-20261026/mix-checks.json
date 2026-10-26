@@ -1,0 +1,321 @@
+{
+  "status": "PASS technical",
+  "sourceTracks": [
+    "b0ef7613d19dc6c1bfea3ccb417b9bf18e52b1d3969b8fa3432eed1eca2d16c3",
+    "7563496b9e16dd6456747613dcdb6034c580a9fc30b3c01f71c0a9989b8a198f",
+    "5bfaa6516a02730640a907d67159b2228b94e4746376414b0bfc79c8db7f252e",
+    "d40bd09eae2ec38cff072d78999e3c0d44d7f07a744f638395d95def6558d08c",
+    "74d655edbb6c4c20532e848e109228e214643c0e7a46ce8409fa345344768bd8",
+    "135a37f442669b2cd34c6a8c3e331b6a496cc19fc25c196d6b248cecfbaadae6"
+  ],
+  "currentPlanSha256": "b6afe1fcc3a5a5579b6dce69ef41619b763fc9c0c2bc7b1d47aa0f7dc576cc56",
+  "newGeneration": false,
+  "learnedWeights": false,
+  "humanListening": "NOT RUN",
+  "performance": "Transitions verified; optional effects held on vocal tracks without qualified cues.",
+  "results": [
+    {
+      "name": "after",
+      "revision": "working-tree",
+      "history": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "seconds": 284.76,
+      "peak": 0.3637821674346924,
+      "rms": 0.0653610056272697,
+      "events": [],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 53.903999999999996,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 3,
+          "elapsed": 106.756,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 4,
+          "elapsed": 150.056,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 5,
+          "elapsed": 189.904,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 6,
+          "elapsed": 230.656,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "blends": [
+        {
+          "elapsed": 49.903999999999996,
+          "cross": 0.002249999999998309,
+          "levels": [
+            0.6751082852686245,
+            0.002543256498508173
+          ]
+        },
+        {
+          "elapsed": 50.452,
+          "cross": 0.13924999999999876,
+          "levels": [
+            0.659036743736948,
+            0.15669465724086962
+          ]
+        },
+        {
+          "elapsed": 50.955999999999996,
+          "cross": 0.2652499999999982,
+          "levels": [
+            0.6173772303465697,
+            0.2922556935357363
+          ]
+        },
+        {
+          "elapsed": 51.504,
+          "cross": 0.40224999999999866,
+          "levels": [
+            0.5447652540789214,
+            0.426514050209704
+          ]
+        },
+        {
+          "elapsed": 52.007999999999996,
+          "cross": 0.5282499999999981,
+          "levels": [
+            0.4557315964803905,
+            0.5327735708204102
+          ]
+        },
+        {
+          "elapsed": 52.552,
+          "cross": 0.6642499999999991,
+          "levels": [
+            0.33976739558069013,
+            0.6239945256302235
+          ]
+        },
+        {
+          "elapsed": 53.1,
+          "cross": 0.8012499999999996,
+          "levels": [
+            0.2063522810119398,
+            0.6875634143709419
+          ]
+        },
+        {
+          "elapsed": 53.604,
+          "cross": 0.927249999999999,
+          "levels": [
+            0.07698693804877221,
+            0.7174141726609946
+          ]
+        },
+        {
+          "elapsed": 102.75200000000001,
+          "cross": 0.9911539812646382,
+          "levels": [
+            0.01127678185697173,
+            0.7220511452096048
+          ]
+        },
+        {
+          "elapsed": 103.256,
+          "cross": 0.8651539812646405,
+          "levels": [
+            0.1707636458531656,
+            0.7059863881648027
+          ]
+        },
+        {
+          "elapsed": 103.804,
+          "cross": 0.72815398126464,
+          "levels": [
+            0.3375670675628015,
+            0.6572836702613927
+          ]
+        },
+        {
+          "elapsed": 104.352,
+          "cross": 0.5911539812646396,
+          "levels": [
+            0.4865463817459563,
+            0.5782779639836804
+          ]
+        },
+        {
+          "elapsed": 104.9,
+          "cross": 0.45415398126463913,
+          "levels": [
+            0.6142444723660994,
+            0.47258560343294675
+          ]
+        },
+        {
+          "elapsed": 105.40400000000001,
+          "cross": 0.3281539812646379,
+          "levels": [
+            0.7067940908496304,
+            0.35599439454395565
+          ]
+        },
+        {
+          "elapsed": 105.952,
+          "cross": 0.191153981264641,
+          "levels": [
+            0.7763475458795099,
+            0.212514521503266
+          ]
+        },
+        {
+          "elapsed": 106.456,
+          "cross": 0.06515398126463978,
+          "levels": [
+            0.8080668645349824,
+            0.07378648103889063
+          ]
+        },
+        {
+          "elapsed": 148.20000000000002,
+          "cross": 0.011945128317729235,
+          "levels": [
+            0.8121661509453233,
+            0.015062319670623436
+          ]
+        },
+        {
+          "elapsed": 148.704,
+          "cross": 0.28085012831772416,
+          "levels": [
+            0.734579719526689,
+            0.3432565141297772
+          ]
+        },
+        {
+          "elapsed": 149.252,
+          "cross": 0.5732309616510584,
+          "levels": [
+            0.5046773995016096,
+            0.629919533396297
+          ]
+        },
+        {
+          "elapsed": 149.756,
+          "cross": 0.8421359616510533,
+          "levels": [
+            0.19939775045881003,
+            0.7793359456342053
+          ]
+        },
+        {
+          "elapsed": 188.008,
+          "cross": 0.9988282050156045,
+          "levels": [
+            0.00136392899925028,
+            0.8039363814050304
+          ]
+        },
+        {
+          "elapsed": 188.556,
+          "cross": 0.7064473716822703,
+          "levels": [
+            0.33446300873483636,
+            0.7199610164984982
+          ]
+        },
+        {
+          "elapsed": 189.1,
+          "cross": 0.416200705015613,
+          "levels": [
+            0.5967041964125812,
+            0.4889321934131985
+          ]
+        },
+        {
+          "elapsed": 189.604,
+          "cross": 0.14729570501560296,
+          "levels": [
+            0.7316834950460915,
+            0.1843637988364577
+          ]
+        },
+        {
+          "elapsed": 228.808,
+          "cross": 0.01967179498438204,
+          "levels": [
+            0.7513730880867939,
+            0.024419573283464446
+          ]
+        },
+        {
+          "elapsed": 229.356,
+          "cross": 0.31205262831771624,
+          "levels": [
+            0.6632584523834453,
+            0.37241722676323974
+          ]
+        },
+        {
+          "elapsed": 229.86,
+          "cross": 0.5809576283177263,
+          "levels": [
+            0.4598691669993471,
+            0.6257915767773454
+          ]
+        },
+        {
+          "elapsed": 230.404,
+          "cross": 0.8712042949843837,
+          "levels": [
+            0.15106822101525452,
+            0.7749328434732021
+          ]
+        }
+      ],
+      "muted": true,
+      "sha256": "4bcd86d248eeb70c05b2bf6c3510b2051c26fc0a60b6a3e1da50e1ffb036c6fd"
+    }
+  ],
+  "quiet_scan": {
+    "threshold_db": -60,
+    "min_seconds": 0.25,
+    "events": []
+  },
+  "acceptance": "Engineering capture of prepared tracks; not continuous generation or musical acceptance.",
+  "source_loudness": {
+    "input_i": "-22.18",
+    "input_tp": "-8.44",
+    "input_lra": "4.50",
+    "input_thresh": "-32.23"
+  },
+  "listening": {
+    "sha256": "4417c37f4e9a92921582d0e1e0c81d1cdeec3e9dfe12d408e9891e3734e91e27",
+    "gain_db": -2.3999999999999986,
+    "matched": {
+      "input_i": "-24.58",
+      "input_tp": "-10.84",
+      "input_lra": "4.50",
+      "input_thresh": "-34.63"
+    }
+  }
+}

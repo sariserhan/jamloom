@@ -87,7 +87,7 @@ export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'
    <div className="product-actions">{scope==='mine'?<audio controls preload="none" aria-label={`Listen to ${song.title}`} src={`${endpoint}?id=${song.id}&file=audio`} onPlay={event=>document.querySelectorAll('audio').forEach(a=>{if(a!==event.currentTarget)a.pause();})}/>:<PlayTrack track={songTrack(song,product)} queue={displayed.map(s=>songTrack(s,product))}/>}{scope!=='mine'&&<><FavoriteTrack track={songTrack(song,product)}/><Link href={`/listen/${product}/${song.id}`}>Song page ↗</Link></>}</div>
    <div className="product-actions"><a className="secondary" href={`${endpoint}?id=${song.id}&file=audio&download=1`} download>Download song</a>
    {scope==='mine'&&song.visibility==='public'&&!song.withdrawn_at&&<button className="secondary" disabled={busy} onClick={()=>withdraw(song.id)}>Remove from public page</button>}</div>
-   {feedbackAvailable&&scope!=='public'&&!curated&&!song.historical&&<details><summary>Rate this song</summary><SongFeedback id={song.id} account={accountFeedback}/></details>}
+   {!song.historical&&(curated||accountFeedback||feedbackAvailable)&&<details><summary>Rate this song</summary><SongFeedback id={song.id} account={curated||accountFeedback||product!=='music-dna'} product={product}/></details>}
   </article>)}</div>
   {pagination('bottom')}
   <p role="status">{message}</p>{next&&<button className="secondary" disabled={busy} onClick={()=>load(next)}>Load more songs</button>}

@@ -1,4 +1,12 @@
-# Jamloom 0.8.0 release packet
+# Jamloom 0.9.5 candidate addendum — build 18
+
+**PARTIAL release preparation.** Question-mark product guides, cross-product ratings and explicit training permission are implemented. Simulator account/API tests and help/landscape interaction checks pass; the unsigned device Release build and bundle privacy audit pass. This candidate is not installed on the physical phone, uploaded or submitted. Deploy the matching website feedback endpoint before installing it for customer use.
+
+Privacy delta from the published October 24 answers: optional account-linked generated audio, ratings and user IDs may be used for model improvement after owner permission and rights review. Audio, user content and user ID add Other Purposes; rating/user-ID analysis adds Analytics. No tracking or analytics SDK is added. The native manifest and website disclosure are updated; **App Store Connect answers for this delta are NOT PUBLISHED** and must match before release. Public/private visibility does not decide training permission. Local ratings do not upload audio.
+
+[Implementation and verification](product-feedback.md). Historical listing text and evidence below describe the earlier candidate and must not be mistaken for 0.9.5 release evidence.
+
+## Historical Jamloom 0.8.0 release packet
 
 Status: **PARTIAL — prepared for owner review, not submitted to Apple.** Bundle `com.djayvo.app`, version 0.8.0, build 12. The historical bundle ID preserves existing installations; the product name is Jamloom.
 

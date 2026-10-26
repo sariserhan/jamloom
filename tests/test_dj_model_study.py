@@ -21,6 +21,41 @@ from dj_warm_engine import Renderer
 
 
 class ModelStudyTests(unittest.TestCase):
+    def test_fresh_consistency_preserves_preferred_recipes_and_needs_its_own_permit(self):
+        rows=cases(True); originals=cases()
+        self.assertEqual(len(rows),6)
+        self.assertEqual([r['request']['seed'] for r in rows],[701026,711026,721026]*2)
+        for index,row in enumerate(rows):
+            original=originals[2 if index<3 else 5]
+            self.assertEqual({k:v for k,v in row.items() if k!='request'}, {k:v for k,v in original.items() if k!='request'})
+            self.assertEqual(row['request']['sequence'],index)
+        plan=json.loads((ROOT/'docs/evidence/dj-preferred-consistency-20261026/gpu-plan.json').read_text())
+        plan['status']='PREPARED'
+        with self.assertRaises(ValueError):validate_model_study(plan,True)
+        plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 preferred-music consistency study')
+        validate_model_study(plan,True)
+        with self.assertRaises(ValueError):validate_model_study(plan,False)
+        with self.assertRaises(ValueError):validate_model_study({**plan,'max_requests':7},True)
+
+    def test_consistency_can_use_quoted_4090_without_relaxing_memory_or_region(self):
+        import dj_sample_trial as trial
+        offer=dict(host_id=999999,gpu_name='RTX 4090',geolocation='Michigan, US',cpu_ram=128000)
+        evidence=ROOT/'docs/evidence/dj-preferred-consistency-20261026'
+        with patch.object(trial,'CONSISTENCY',True),patch.object(trial,'MODEL_STUDY',True),patch.object(trial,'EVIDENCE',evidence),patch.object(trial.vast,'instances',return_value=[]),patch.object(trial.vast,'api',return_value={'credit':3}):
+            with patch.object(trial.vast,'offers',side_effect=lambda host=None,**kwargs: [] if host else [offer]):
+                self.assertEqual(trial.preflight()[2],offer)
+            for change in [dict(cpu_ram=32000),dict(geolocation='Sweden, SE'),dict(gpu_name='RTX A5000')]:
+                with patch.object(trial.vast,'offers',side_effect=lambda host=None,**kwargs: [] if host else [{**offer,**change}]):
+                    with self.assertRaisesRegex(RuntimeError,'No compatible'):trial.preflight()
+
+    def test_offer_query_filters_memory_before_the_thirty_result_limit(self):
+        import vast_trial as vast
+        with patch.object(vast,'api',return_value={'offers':[]}) as call:
+            self.assertEqual(vast.offers(minimum_ram=60000),[])
+            self.assertEqual(call.call_args.args[2]['cpu_ram'],{'gte':60000})
+            with self.assertRaises(ValueError):vast.offers(minimum_ram=1)
+            self.assertEqual(call.call_count,1)
+
     def test_pairs_share_composition_controls_and_retain_the_planner(self):
         rows=cases();self.assertEqual(len(rows),6)
         for a,b in zip(rows[:3],rows[3:]):
@@ -36,7 +71,7 @@ class ModelStudyTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate_model_study({**plan,'status':'PREPARED'})
         # The consumed permit must not authorize the later retention repair.
         with self.assertRaises(ValueError):validate_model_study(plan)
-        plan['worker_sha256']['dj_model_study.py']=hashlib.sha256((ROOT/'scripts/dj_model_study.py').read_bytes()).hexdigest()
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 base-model comparison')
         validate_model_study(plan)
         for key,value in [('owner_statement','finish everything'),('budget_usd',4),('max_minutes',41),('max_requests',7),

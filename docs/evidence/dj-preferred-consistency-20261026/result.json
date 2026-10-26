@@ -1,0 +1,358 @@
+{
+  "status": "PASS technical",
+  "scope": "Six fresh vocal-house originals: the two owner-preferred recipes across three matched seeds; offline consistency benchmark",
+  "tracks": [
+    {
+      "file": "house-0.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "7c07f52c07afd4bdcb7b2cdd82634f00",
+        "job": "77e9371a-7855-4b6b-8a23-e57e6650c27c",
+        "request": {
+          "version": 1,
+          "session": "26102633333333333333333333333333",
+          "sequence": 0,
+          "seed": 701026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 81224,
+        "bytes": 11520044,
+        "sha256": "b0ef7613d19dc6c1bfea3ccb417b9bf18e52b1d3969b8fa3432eed1eca2d16c3",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+            "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": false,
+            "vocal_language": "en",
+            "seed": 701026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "c4f61c7bad87277278e7997c4074e885a9bb0aa97ebd20d5e7efa2ac97b441f4",
+          "audio_codes_sha256": "58ceb2d58d97cb12ef95dc4ff1233de2801de43756d857ac9e2874fb7fe52568",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      }
+    },
+    {
+      "file": "house-1.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "7c07f52c07afd4bdcb7b2cdd82634f00",
+        "job": "a5eda2ee-23eb-4147-bc3f-cef83e8d4189",
+        "request": {
+          "version": 1,
+          "session": "26102633333333333333333333333333",
+          "sequence": 1,
+          "seed": 711026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 25599,
+        "bytes": 11520044,
+        "sha256": "d40bd09eae2ec38cff072d78999e3c0d44d7f07a744f638395d95def6558d08c",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+            "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": false,
+            "vocal_language": "en",
+            "seed": 711026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "fae1354fe6b0abb849fcca94385be0249f353533b58c6a00a8fd0b87d52246ce",
+          "audio_codes_sha256": "a5d3385db3be889b54223aba9360383d8efd8479d6f80fea5fe3935f8b28f9e4",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      }
+    },
+    {
+      "file": "house-2.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "7c07f52c07afd4bdcb7b2cdd82634f00",
+        "job": "d1a831ce-7a86-452f-8072-be9cc56ff07d",
+        "request": {
+          "version": 1,
+          "session": "26102633333333333333333333333333",
+          "sequence": 2,
+          "seed": 721026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 20115,
+        "bytes": 11520044,
+        "sha256": "74d655edbb6c4c20532e848e109228e214643c0e7a46ce8409fa345344768bd8",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+            "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": false,
+            "vocal_language": "en",
+            "seed": 721026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "8ef26c2abe4f5b0b1c35539609f94293a53c58a70518186caffc86d645fe0b8a",
+          "audio_codes_sha256": "d0cbf2b7ac1ca4c701c166811536fa339d8145912d989ef0f5a42d25df5f8d3e",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      }
+    },
+    {
+      "file": "house-3.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "7c07f52c07afd4bdcb7b2cdd82634f00",
+        "job": "7a834bb1-e6e6-4caa-8f7c-0076df193b68",
+        "request": {
+          "version": 1,
+          "session": "26102633333333333333333333333333",
+          "sequence": 3,
+          "seed": 701026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 80947,
+        "bytes": 11520044,
+        "sha256": "7563496b9e16dd6456747613dcdb6034c580a9fc30b3c01f71c0a9989b8a198f",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-base",
+          "weights_revision": "e432212fec32b8965a14ffa57ae653438d6abd14",
+          "parameters": {
+            "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+            "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": false,
+            "vocal_language": "en",
+            "seed": 701026,
+            "inference_steps": 64,
+            "guidance_scale": 7.0,
+            "use_adg": true,
+            "shift": 3.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "56bf8752c2e56b436214a20be3422240dd6463dfeb3b80197763dcfdcb2b9dc6",
+          "audio_codes_sha256": "58ceb2d58d97cb12ef95dc4ff1233de2801de43756d857ac9e2874fb7fe52568",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      }
+    },
+    {
+      "file": "house-4.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "7c07f52c07afd4bdcb7b2cdd82634f00",
+        "job": "3a43f833-0a47-44ed-8462-cf9796de5daa",
+        "request": {
+          "version": 1,
+          "session": "26102633333333333333333333333333",
+          "sequence": 4,
+          "seed": 711026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 28254,
+        "bytes": 11520044,
+        "sha256": "5bfaa6516a02730640a907d67159b2228b94e4746376414b0bfc79c8db7f252e",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-base",
+          "weights_revision": "e432212fec32b8965a14ffa57ae653438d6abd14",
+          "parameters": {
+            "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+            "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": false,
+            "vocal_language": "en",
+            "seed": 711026,
+            "inference_steps": 64,
+            "guidance_scale": 7.0,
+            "use_adg": true,
+            "shift": 3.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "12aac062f3f75d56e1eee3fa4bf65c394c1a44957c13b37794a573be618009e5",
+          "audio_codes_sha256": "a5d3385db3be889b54223aba9360383d8efd8479d6f80fea5fe3935f8b28f9e4",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      }
+    },
+    {
+      "file": "house-5.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "7c07f52c07afd4bdcb7b2cdd82634f00",
+        "job": "11a26cae-dd9f-4551-bba6-0f4777cdd505",
+        "request": {
+          "version": 1,
+          "session": "26102633333333333333333333333333",
+          "sequence": 5,
+          "seed": 721026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 33820,
+        "bytes": 11520044,
+        "sha256": "135a37f442669b2cd34c6a8c3e331b6a496cc19fc25c196d6b248cecfbaadae6",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-base",
+          "weights_revision": "e432212fec32b8965a14ffa57ae653438d6abd14",
+          "parameters": {
+            "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a resolved ending. No speech narration or robotic voice effects.",
+            "lyrics": "[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": false,
+            "vocal_language": "en",
+            "seed": 721026,
+            "inference_steps": 64,
+            "guidance_scale": 7.0,
+            "use_adg": true,
+            "shift": 3.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "97c916015ee7677f6991cca75927675a5bfc2eb31074addab6e64dce709368db",
+          "audio_codes_sha256": "d0cbf2b7ac1ca4c701c166811536fa339d8145912d989ef0f5a42d25df5f8d3e",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      }
+    }
+  ],
+  "human_listening": "NOT RUN",
+  "cleanup_confirmed": true,
+  "observed_debit_usd": 0.10157670185,
+  "rental_seconds": 850.3296630382538
+}

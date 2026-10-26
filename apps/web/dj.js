@@ -1,3 +1,4 @@
+import {mountLocalRating} from './creation-rating.js';
 import { studioElement as $, attachStudioWindows } from './studio-windows.js';
 import { attachStudioAccess } from './studio-access.js';
 import './site-announcement.js';
@@ -364,7 +365,7 @@ function academySnapshot() {
     ...Object.fromEntries(decks.map(d=>['loopBeats'+d.id.toUpperCase(),d.audio.region?(d.audio.region[1]-d.audio.region[0])*Number($(`bpm-${d.id}`).value)/60:0])),buffered:decks.every(d=>!!d.audio.buffer)?1:0};
 }
 const bridge=deckBridge(academySnapshot);
-const setRecording=attachSetRecording({graph:audioGraph,context:()=>context,mixer:()=>mixer,emit:event=>bridge.publish({...event,...(event.action==='recording.sample'?{sample:{...academySnapshot(),peak:event.peak,rms:event.rms}}:{})})});
+const setRecording=attachSetRecording({graph:audioGraph,context:()=>context,mixer:()=>mixer,onComplete:take=>{const host=document.getElementById('set-rating');if(host){host.replaceChildren();mountLocalRating(host,take.receipt.sha256,'local-dj');}},emit:event=>{if(event.action==='recording.cancel')document.getElementById('set-rating')?.replaceChildren();bridge.publish({...event,...(event.action==='recording.sample'?{sample:{...academySnapshot(),peak:event.peak,rms:event.rms}}:{})});}});
 for(const id of ['set-record-start','set-record-stop'])bridge.bind($(id),'onclick','recording.control');
 for(const id of ['crossfade','master','level-a','level-b','rate-a','rate-b','seek-a','seek-b','rack-level',...['a','b'].flatMap(d=>['tone','echo','delay',...['eq'].flatMap(p=>[`${p}-${d}-0`,`${p}-${d}-1`,`${p}-${d}-2`])].map(p=>p.startsWith('eq-')?p:`${p}-${d}`))])bridge.bind($(id),'oninput',id==='crossfade'?'crossfader.set':'parameter.set');
 for(const id of ['pause-all',...['a','b'].flatMap(d=>['play','cue','set-cue','loop','fx-reset','match','tap','rate-reset','prepare-frames','beat-loop','beat-roll','loop-exit','jump-back','jump-forward','align',...Array.from({length:8},(_,i)=>`hot-${d}-${i}`).filter(id=>$(id))].map(p=>p.startsWith('hot-')?p:`${p}-${d}`))])bridge.bind($(id),'onclick','deck.control');

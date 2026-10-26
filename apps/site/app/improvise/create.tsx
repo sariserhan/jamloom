@@ -1,4 +1,5 @@
 'use client';
+import {SongFeedback} from '../music-dna/song-feedback';
 import {useEffect,useRef,useState} from 'react';
 import styles from '../../../../assets/manifests/improvise-styles.json';
 import {GenerationProgress,type SongProgress} from '../generation-progress';
@@ -111,6 +112,6 @@ export function ImproviseCreate(){
   <dialog ref={dialog} aria-labelledby="improvise-confirm-title" className="dna-generation-dialog improvise-confirm" onCancel={e=>{e.preventDefault();void cancel();}}><h2 id="improvise-confirm-title">Make your song</h2><fieldset disabled={busy}><legend>Who can listen?</legend><label><input type="radio" checked={visibility==='public'} onChange={()=>{setVisibility('public');}}/>Public · from 1 credit</label><label><input type="radio" checked={visibility==='private'} onChange={()=>{setVisibility('private');}}/>Private · from 2 credits</label>{visibility==='public'&&<p>Your finished song, including parts of your clip used in it, appears in Community on the website and app. Choose Private to keep it to yourself.</p>}</fieldset>
   <p>Generate sends your recording to create your song. Your source recording is removed after processing. Failed or cancelled songs return reserved credits. A higher price needs your confirmation.</p><p><a href="/account/credits">Your credits</a> · <a href="/account/sign-in?callbackURL=%2Fimprovise">Sign in</a></p>
   <div className="product-actions"><button className="primary" disabled={busy} onClick={generate}>{busy?'Preparing your song…':`Generate song · ${quote?.credits??(visibility==='private'?2:1)} credits`}</button><button className="secondary" onClick={cancel}>Cancel</button></div>{open&&progress&&<GenerationProgress {...progress}/>}<p role="status">{message}</p></dialog>
-  {ready&&<article><h3>Your new song</h3><audio controls preload="none" src={endpoint+'?id='+ready+'&file=audio'} aria-label="Play your new song"/><a href={endpoint+'?id='+ready+'&file=audio&download=1'} download>Download song</a></article>}
+  {ready&&<article><h3>Your new song</h3><audio controls preload="none" src={endpoint+'?id='+ready+'&file=audio'} aria-label="Play your new song"/><a href={endpoint+'?id='+ready+'&file=audio&download=1'} download>Download song</a><SongFeedback id={ready} product="improvise" account/></article>}
  </section>;
 }

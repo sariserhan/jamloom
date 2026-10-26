@@ -32,8 +32,13 @@ final class AccountTransport: NSObject, URLSessionTaskDelegate, @unchecked Senda
             (query["after"] == nil || query["after"]?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil)
         let publicSets = path == CloudSongProduct.aiDJ.path && query.keys.allSatisfy { $0 == "after" } &&
             (query["after"] == nil || query["after"]?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil)
+        let feedbackKind = query["kind"] ?? ""
+        let feedbackPattern = feedbackKind == "library" ? "^[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$" : feedbackKind.hasPrefix("local-") ? "^[a-f0-9]{64}$" : "^[a-f0-9]{32}$"
+        let feedback = path == "/api/creation-feedback" && Set(query.keys) == Set(["kind", "id"]) &&
+            ["music-dna", "improvise", "sets", "library", "local-remix", "local-dj"].contains(feedbackKind) &&
+            query["id"]?.range(of: feedbackPattern, options: .regularExpression) != nil
         guard allowed, path.hasPrefix("/api/"), !path.contains(".."), !path.contains("?"),
-              query.isEmpty || collection || publicSets || ([CloudSongProduct.improvise.path, CloudSongProduct.musicDNA.path].contains(path) && query.keys.allSatisfy({ ["id", "file"].contains($0) }) &&
+              query.isEmpty || collection || publicSets || feedback || ([CloudSongProduct.improvise.path, CloudSongProduct.musicDNA.path].contains(path) && query.keys.allSatisfy({ ["id", "file"].contains($0) }) &&
                 query["id"]?.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil &&
                 (query["file"] == nil || query["file"] == "audio")) else {
             throw RemixError.message("Invalid account request.")
@@ -70,7 +75,7 @@ final class AccountTransport: NSObject, URLSessionTaskDelegate, @unchecked Senda
         }
         guard http.statusCode == 200 || (song && http.statusCode == 202) else {
             let message = (try? JSONDecoder().decode(Failure.self, from: data).error) ?? "Song service unavailable. Check your song before trying again."
-            if song || ["/api/music-search", "/api/playlist-import", "/api/account/deletion"].contains(path) { throw SongRequestError(status: http.statusCode, message: message) }
+            if song || ["/api/music-search", "/api/playlist-import", "/api/account/deletion", "/api/creation-feedback"].contains(path) { throw SongRequestError(status: http.statusCode, message: message) }
             throw RemixError.message("Account service unavailable. Try again later.")
         }
         return data

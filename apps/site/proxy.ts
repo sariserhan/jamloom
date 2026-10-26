@@ -6,7 +6,7 @@ import {comingSoonEnabled,comingSoonRecovery,comingSoonResponse,publicSongRead} 
 
 export async function proxy(request: NextRequest) {
   const path=request.nextUrl.pathname;
-  const recovery=/^\/(admin|account|contact|support)(\/|$)/.test(path)||['/maintenance','/api/maintenance','/api/ai-dj/supervisor','/api/site-status','/api/contact','/api/notifications','/api/song-jobs','/api/payments/stripe','/api/academy/stripe','/api/pro/stripe','/api/pro/refresh'].includes(path)||path.startsWith('/api/admin/')||path.startsWith('/api/auth/');
+  const recovery=/^\/(admin|account|contact|support|report-bug)(\/|$)/.test(path)||['/maintenance','/api/maintenance','/api/ai-dj/supervisor','/api/site-status','/api/contact','/api/notifications','/api/song-jobs','/api/payments/stripe','/api/academy/stripe','/api/pro/stripe','/api/pro/refresh'].includes(path)||path.startsWith('/api/admin/')||path.startsWith('/api/auth/');
   let configured=false;try{readConfig();configured=true;}catch{}
   let launchBypass=false;
   if(comingSoonEnabled()&&!comingSoonRecovery(path)&&!publicSongRead(request)){
@@ -36,7 +36,7 @@ export async function proxy(request: NextRequest) {
     }catch{/* Basic and sample demos remain available without an account service. */}
     return response;
   }
-  if(!/^\/(account|library|catalogue|playlists|review|admin|contact|support)(\/|$)/.test(path)){const response=NextResponse.next();if(launchBypass)response.headers.set('Cache-Control','private, no-store');return response;}
+  if(!/^\/(account|library|catalogue|playlists|review|admin|contact|support|report-bug)(\/|$)/.test(path)){const response=NextResponse.next();if(launchBypass)response.headers.set('Cache-Control','private, no-store');return response;}
   const nonce = btoa(crypto.randomUUID());
   const development = process.env.NODE_ENV === 'development';
   const account=process.env.R2_ACCOUNT_ID ?? '', bucket=process.env.R2_BUCKET ?? '';

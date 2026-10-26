@@ -1,5 +1,6 @@
 """Fixed, unqualified base/turbo comparison; never selected by production requests."""
 import gc
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -12,7 +13,7 @@ BASE_REVISION = 'e432212fec32b8965a14ffa57ae653438d6abd14'
 MANIFEST = 'dj-base-model.json'
 
 
-def cases():
+def cases(consistency=False):
     rows = []
     for model in ('acestep-v15-turbo', 'acestep-v15-base'):
         for i, style in enumerate(('house', 'bass', 'house')):
@@ -29,6 +30,14 @@ def cases():
             rows.append(dict(request=value, model=model, caption=caption, bpm=bpm, lyrics=lyrics,
                              instrumental=i != 2, seconds=60, vocals=False,
                              label=f'{model}: {style}' + (' musical vocal' if i == 2 else ' instrumental')))
+    if consistency:
+        preferred = [rows[2], rows[5]]
+        rows = []
+        for template in preferred:
+            for seed in (701026, 711026, 721026):
+                row = copy.deepcopy(template)
+                row['request'].update(session='26102633333333333333333333333333', sequence=len(rows), seed=seed)
+                rows.append(row)
     return rows
 
 
@@ -59,11 +68,12 @@ def verify_base(root, manifest):
 
 
 class ModelStudy:
-    def __init__(self):
+    def __init__(self, consistency=False):
+        self.consistency = consistency
         self.engine, self.model, self.sequence = None, None, 0
 
     def __call__(self, value, directory, engine=None, hook=None):
-        prepared = cases()
+        prepared = cases(self.consistency)
         if hook is not None or self.sequence >= len(prepared) or request(value) != prepared[self.sequence]['request']:
             raise ValueError('Exact ordered model-study request required')
         case = prepared[self.sequence]

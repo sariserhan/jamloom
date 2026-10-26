@@ -94,12 +94,13 @@ def quote(offer):
     return {"hourly_with_60gb_disk": hourly, "reserved_lease_plus_transfer": reserved}
 
 
-def offers(host_id=None):
+def offers(host_id=None, minimum_ram=32000):
+    if type(minimum_ram) is not int or not 32000 <= minimum_ram <= 256000: raise ValueError("Invalid host memory bound")
     result = api("v0/bundles", "POST", {
         "limit": 30, "type": "on-demand", "verified": {"eq": True},
         "rentable": {"eq": True}, "rented": {"eq": False}, "num_gpus": {"eq": 1},
         "gpu_name": {"in": ["RTX 3090", "RTX 4090", "RTX A5000"]},
-        "reliability": {"gte": 0.99}, "cpu_ram": {"gte": 32000},
+        "reliability": {"gte": 0.99}, "cpu_ram": {"gte": minimum_ram},
         "disk_space": {"gte": DISK_GB}, "cuda_max_good": {"gte": 12.8},
         "inet_down": {"gte": 100}, "order": [["dph_total", "asc"]],
         **({"host_id": {"eq": host_id}} if host_id is not None else {}),
@@ -124,15 +125,15 @@ def write_state(state):
     temporary.replace(STATE)
 
 
-def dj_bootstrap_command(deadline, requests=8, arranged=False, house_study=False, composition_study=False, guided_set=False, recovery_study=False, planner_study=False, sung_study=False, model_study=False):
+def dj_bootstrap_command(deadline, requests=8, arranged=False, house_study=False, composition_study=False, guided_set=False, recovery_study=False, planner_study=False, sung_study=False, model_study=False, consistency_study=False):
     if type(deadline) is not int or not 1000000000 <= deadline <= 9999999999:
         raise ValueError('Absolute renderer deadline required')
     if type(requests) is not int or not 1 <= requests <= 100:
         raise ValueError('Bounded model request allowance required')
-    if any(type(v) is not bool for v in (arranged,house_study,composition_study,guided_set,recovery_study,planner_study,sung_study,model_study)) or sum((arranged,house_study,composition_study,guided_set,recovery_study,planner_study,sung_study,model_study))>1: raise ValueError('Invalid arrangement mode')
+    if any(type(v) is not bool for v in (arranged,house_study,composition_study,guided_set,recovery_study,planner_study,sung_study,model_study,consistency_study)) or sum((arranged,house_study,composition_study,guided_set,recovery_study,planner_study,sung_study,model_study,consistency_study))>1: raise ValueError('Invalid arrangement mode')
     # Background only the fully redirected renderer, not an AND-list that retains SSH pipes.
     return ('chmod 600 /workspace/renderer-token || exit 1\n'
-            f'nohup bash /workspace/cloud_dj_warm.sh {deadline} {requests}{" --arranged" if arranged else " --house-study" if house_study else " --composition-study" if composition_study else " --guided-set" if guided_set else " --recovery-study" if recovery_study else " --planner-study" if planner_study else " --sung-study" if sung_study else " --model-study" if model_study else ""} > /workspace/boot.log 2>&1 < /dev/null &\n'
+            f'nohup bash /workspace/cloud_dj_warm.sh {deadline} {requests}{" --arranged" if arranged else " --house-study" if house_study else " --composition-study" if composition_study else " --guided-set" if guided_set else " --recovery-study" if recovery_study else " --planner-study" if planner_study else " --sung-study" if sung_study else " --model-study" if model_study else " --consistency-study" if consistency_study else ""} > /workspace/boot.log 2>&1 < /dev/null &\n'
             'printf "%s\\n" "$!"\n')
 
 

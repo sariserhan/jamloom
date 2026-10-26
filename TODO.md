@@ -1,3 +1,31 @@
+## Product help, ratings and training intake — 2026-10-26
+
+**PASS implementation and local verification; PARTIAL release.** Product question-mark guides, shared web/iPhone ratings, explicit owner training permission, hash-bound rights review and public bug reports into the admin inbox are complete locally. Public visibility does not grant training rights; local ratings do not upload audio. No training starts automatically.
+
+- [x] Implement feedback storage, ownership/visibility checks, audited rights review and a fresh expiring training manifest.
+- [x] Verify 56 website/database regression checks, including eight new feedback checks; website build, TypeScript and bundle audit pass.
+- [x] Apply reviewed migration 0030 to the verified production database after a full private backup; repeat is a no-op.
+- [x] Verify ten help routes in Chromium/WebKit at desktop/mobile sizes; modal blur/focus/Close/Escape, ratings, permission/withdrawal, and bug submission through the admin inbox pass.
+- [x] Verify native account tests, actual Simulator account/feedback HTTP flow, Community help/rating sheet, landscape DJ guide and unsigned 0.9.5/build 18 Release bundle.
+- [x] Prepare matching website/native privacy disclosures and release addendum.
+- [ ] Deploy the matching website, update App Store privacy answers and install/verify the new physical iPhone candidate before release. No push, deployment or upload in this increment.
+- [ ] Train/evaluate from eligible reviewed music when enough suitable consented data is available; this increment implements intake, not new learned weights.
+
+[Implementation and evidence](docs/product-feedback.md).
+
+## Preferred DJ music consistency — 2026-10-26
+
+**PASS six-output GPU execution and cleanup; PARTIAL quality qualification.** The owner approved one $3/one-GPU/forty-minute attempt with no replacement. All six fresh sixty-second outputs completed in 850.33 rental seconds. Observed provider cost is $0.111, not a final invoice; independent inventory confirms zero rentals. Blinded individual playback/seek checks pass in Chromium/WebKit desktop/mobile. Owner rankings favor clips 1, 4 and 5 within their pairs, but 5–6 are weakest overall; the turbo recipe wins all three comparisons, not universal acceptance. No new training or public activation.
+
+- [x] Retain exact preferred recipes across three fresh matched seeds, raw outputs, execution hashes and strict permit checks; 61 Python checks pass.
+- [x] Execute the single authorized attempt, reconcile observed charges and consume its permit.
+- [x] Prepare the six-clip listening comparison and verify all players with speakers muted.
+- [x] Record exact-file owner rankings and screen all six vocal stems under local memory/time limits; no complete short phrase qualifies.
+- [x] Capture all six through the actual mixer: 284.76 seconds, measured crossfader/level changes and deliberate holds on unqualified vocal effects. Complete a conservative capacity screen; two-listener throughput is not established.
+- [ ] Improve the weak third-seed results, obtain full-set acceptance, qualify short sung hooks and sustained hosting/venue/release gates.
+
+[Study and evidence](docs/dj-preferred-consistency.md).
+
 ## AI DJ model-quality completion work — 2026-10-26
 
 **PARTIAL; PASS bounded GPU run, cleanup and owner acceptance of samples 5–6.** Prepared a different model/sampling comparison after rejected voice conversion and the Mac memory hold. Six matched planned outputs compare turbo/base house, bass and sparse singing in musical context. No new third-party audio or training. The owner approved the $3 / one-GPU / forty-minute / six-call plan; its single attempt produced all six outputs in 739.997 seconds and is consumed. Zero rentals remain; observed provider cost is $0.11. No replacement or public activation.

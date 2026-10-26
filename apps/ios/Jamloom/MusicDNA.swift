@@ -221,13 +221,14 @@ struct MusicDNAView: View {
                     }.disabled(account.busy)
                 }
                 ForEach(model.sessions.filter { $0.isTaste }) { session in
-                    Section("Earlier instrumental previews") { SavedSessionView(model: model, session: session) }
+                    Section("Earlier instrumental previews") { SavedSessionView(model: model, account: account, session: session) }
                 }
                 Section("Availability") {
                     Text("Music DNA uses the same song service as the website when available. Credit purchases remain closed.")
                 }
             }.scrollDismissesKeyboard(.interactively).disabled(account.busy || !profileLoaded).navigationTitle("My Music DNA").navigationBarTitleDisplayMode(.inline).preferredColorScheme(.dark).tint(.mint)
                 .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) { ProductHelpButton(product: "music-dna") }
                     ToolbarItem(placement: .topBarTrailing) { Button("Account", systemImage: "person.crop.circle") { model.suspendAudio(cancelRender: false); showAccount = true } }
                     ToolbarItemGroup(placement: .keyboard) { if activeInput == .references { Spacer(); Button("Done editing") { activeInput = nil } } }
                 }

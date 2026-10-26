@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "scope": "actual simulator URLSession / Better Auth / disposable Postgres",
+  "checks": [
+    "sign-in cookie",
+    "wallet balance",
+    "catalogue profile save/load/delete",
+    "rating save/load/delete",
+    "owner training permission/withdrawal",
+    "server session revoked",
+    "no credit consumption"
+  ],
+  "appleVerification": "NOT RUN - synthetic test lot",
+  "providerSpend": 0
+}

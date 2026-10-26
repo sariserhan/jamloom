@@ -33,12 +33,13 @@ SUNG = False
 SUNG_AGGRESSIVE = False
 ISOLATED = False
 MODEL_STUDY = False
+CONSISTENCY = False
 
 
-def configure_model_study():
-    global EVIDENCE, WORK, OUTPUT, LABEL, MODEL_STUDY, QUALITY
-    MODEL_STUDY, QUALITY = True, True
-    campaign='dj-model-comparison-20261026'
+def configure_model_study(consistency=False):
+    global EVIDENCE, WORK, OUTPUT, LABEL, MODEL_STUDY, QUALITY, CONSISTENCY
+    MODEL_STUDY, QUALITY, CONSISTENCY = True, True, consistency
+    campaign='dj-preferred-consistency-20261026' if consistency else 'dj-model-comparison-20261026'
     EVIDENCE=ROOT/'docs/evidence'/campaign
     WORK=ROOT/('build-'+campaign)
     OUTPUT=ROOT/'renders'/campaign
@@ -46,17 +47,17 @@ def configure_model_study():
     vast.WORK, vast.STATE, vast.LABEL, vast.LEASE_SECONDS=WORK, WORK/'trial-state.json', LABEL, 2400
 
 
-def validate_model_study(plan):
+def validate_model_study(plan, consistency=False):
     from dj_model_study import cases, BASE_REVISION
     from dj_track_worker import CODE_REVISION, WEIGHTS_REVISION
-    if (plan.get('status')!='AUTHORIZED' or plan.get('owner_statement')!='Approve the capped $3 base-model comparison'
-        or plan.get('campaign')!='jamloom-dj-model-comparison-20261026'
+    if (plan.get('status')!='AUTHORIZED' or plan.get('owner_statement')!=('Approve the capped $3 preferred-music consistency study' if consistency else 'Approve the capped $3 base-model comparison')
+        or plan.get('campaign')!=('jamloom-dj-preferred-consistency-20261026' if consistency else 'jamloom-dj-model-comparison-20261026')
         or any(plan.get(k)!=v for k,v in dict(budget_usd=3,max_workers=1,max_minutes=40,max_requests=6).items())
         or plan.get('research_render_limit_seconds')!=120 or plan.get('production_render_limit_seconds')!=30
         or plan.get('stop_on_failure') is not True or plan.get('automatic_cleanup') is not True
         or any(plan.get(k) is not False for k in ('public_activation','replacements','source_audio_used','learned_reference_weights_used'))
         or plan.get('model')!=dict(code=CODE_REVISION,weights=WEIGHTS_REVISION,base=BASE_REVISION)
-        or plan.get('tracks')!=cases()):
+        or plan.get('tracks')!=cases(consistency)):
         raise ValueError('Fresh bounded base-model comparison authorization required')
     expected={'cloud_music_setup.sh','cloud_dj_warm.sh','dj_track_worker.py','dj_warm_engine.py','dj_vocal.py','club_benchmark_cases.py','dj_model_study.py'}
     if set(plan.get('worker_sha256',{}))!=expected or any(hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest()!=sha for name,sha in plan['worker_sha256'].items()):
@@ -178,7 +179,7 @@ def configure_replacement():
 
 
 def validate(plan):
-    if MODEL_STUDY: return validate_model_study(plan)
+    if MODEL_STUDY: return validate_model_study(plan, CONSISTENCY)
     if SUNG: return validate_sung(plan,replacement=REPLACEMENT,aggressive=SUNG_AGGRESSIVE,isolated=ISOLATED)
     if QUALITY: return validate_quality(plan,house=HOUSE,composition=COMPOSITION,guided_set=GUIDED_SET,recovery=RECOVERY,planner=PLANNER)
     if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != 'jamloom-dj-style-samples-20261025' or plan['budget_usd'] != 3
@@ -225,7 +226,7 @@ def preflight():
     if not offers:
         failed = [json.loads((ROOT/name/'trial-state.json').read_text())['offer']['host_id'] for name in
                   ['build-dj-qualification-20261024', 'build-dj-qualification-20261024-sessions-finish', 'build-dj-qualification-20261024-sessions-finish-retry']]
-        offers = [o for o in vast.offers() if o['host_id'] not in failed and o['gpu_name'] == 'RTX 3090'
+        offers = [o for o in vast.offers(**({'minimum_ram':60000} if CONSISTENCY else {})) if o['host_id'] not in failed and o['gpu_name'] in (('RTX 3090','RTX 4090') if CONSISTENCY else ('RTX 3090',))
                   and o['geolocation'].endswith(', US') and o['cpu_ram'] >= 60000]
     if not offers: raise RuntimeError('No compatible host within bounds')
     return plan, account, offers[0]
@@ -255,10 +256,11 @@ def run():
                  confirm_absence=True, disk_gb=60)
     vast.write_state(state)
     with (WORK/'watchdog.log').open('a') as log:
-        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--model-study'] if MODEL_STUDY else ['--isolated-hooks'] if ISOLATED else ['--sung-aggressive'] if SUNG_AGGRESSIVE else ['--sung-study'] if SUNG else ['--planner-study'] if PLANNER else ['--recovery-study'] if RECOVERY else ['--guided-set'] if GUIDED_SET else ['--composition-study'] if COMPOSITION else ['--house-study'] if HOUSE else ['--quality'] if QUALITY else [])],
+        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--consistency-study'] if CONSISTENCY else ['--model-study'] if MODEL_STUDY else ['--isolated-hooks'] if ISOLATED else ['--sung-aggressive'] if SUNG_AGGRESSIVE else ['--sung-study'] if SUNG else ['--planner-study'] if PLANNER else ['--recovery-study'] if RECOVERY else ['--guided-set'] if GUIDED_SET else ['--composition-study'] if COMPOSITION else ['--house-study'] if HOUSE else ['--quality'] if QUALITY else [])],
                          stdin=subprocess.DEVNULL, stdout=log, stderr=log, start_new_session=True)
     report = dict(status='FAIL', scope='Four isolated sung candidates, mixed locally into two retained originals; no TTS or repaint' if ISOLATED else 'Four short sung edits on two retained Jamloom originals; no TTS or external references' if SUNG else 'Paired unconditioned generation with or without semantic music planning; no reference material' if PLANNER else 'Four guide/model seed controls plus two original vocal opportunities; no reference material' if RECOVERY else 'Six guided bass originals with at most three short vocal candidates; direction and consistency study' if GUIDED_SET else 'Four paired originals; same captions/model/seeds, with and without newly authored audio guides' if COMPOSITION else 'Six paired instrumental house tracks; no reference audio or research weights' if HOUSE else 'Four arrangement candidates with at most two brief vocal candidates; no reference audio or research weights' if QUALITY else 'Two original style prompts; same seed and base model; no reference audio or research weights', tracks=[])
-    if MODEL_STUDY:report['scope']='Six matched base/turbo outputs: house, bass and sparse singing in musical context; offline quality benchmark, not live capacity'
+    if CONSISTENCY:report['scope']='Six fresh vocal-house originals: the two owner-preferred recipes across three matched seeds; offline consistency benchmark'
+    elif MODEL_STUDY:report['scope']='Six matched base/turbo outputs: house, bass and sparse singing in musical context; offline quality benchmark, not live capacity'
     tunnel = None; ssh = None; scp = None
     try:
         result = vast.api('v0/asks/'+str(offer['id']), 'PUT', dict(
@@ -282,7 +284,7 @@ def run():
         subprocess.run([*scp, *map(str, files), 'root@'+item['ssh_host']+':/workspace/'], check=True, capture_output=True, timeout=60)
         if SUNG:
             subprocess.run([*scp,str(EVIDENCE/'sung-fixtures.json'),str(ROOT/'renders/dj-planner-20261026/house-1.wav'),str(ROOT/'renders/dj-planner-20261026/house-7.wav'),*[str(ROOT/'assets/manifests'/name) for name in plan['dna_manifest_sha256']],'root@'+item['ssh_host']+':/workspace/'],check=True,capture_output=True,timeout=60)
-        subprocess.run([*ssh, vast.dj_bootstrap_command(state['deadline'], plan.get('max_requests', 2), arranged=QUALITY and not HOUSE and not COMPOSITION and not PLANNER and not SUNG and not MODEL_STUDY, house_study=HOUSE, composition_study=COMPOSITION and not GUIDED_SET and not RECOVERY, guided_set=GUIDED_SET, recovery_study=RECOVERY, planner_study=PLANNER,sung_study=SUNG,model_study=MODEL_STUDY)], check=True, capture_output=True, timeout=20)
+        subprocess.run([*ssh, vast.dj_bootstrap_command(state['deadline'], plan.get('max_requests', 2), arranged=QUALITY and not HOUSE and not COMPOSITION and not PLANNER and not SUNG and not MODEL_STUDY, house_study=HOUSE, composition_study=COMPOSITION and not GUIDED_SET and not RECOVERY, guided_set=GUIDED_SET, recovery_study=RECOVERY, planner_study=PLANNER,sung_study=SUNG,model_study=MODEL_STUDY and not CONSISTENCY, consistency_study=CONSISTENCY)], check=True, capture_output=True, timeout=20)
         with socket.socket() as sock:
             sock.bind(('127.0.0.1', 0)); port = sock.getsockname()[1]
         with (WORK/'tunnel.log').open('a') as log:
@@ -405,11 +407,12 @@ if __name__ == '__main__':
     parser.add_argument('--sung-aggressive',action='store_true')
     parser.add_argument('--isolated-hooks',action='store_true')
     parser.add_argument('--model-study',action='store_true')
+    parser.add_argument('--consistency-study',action='store_true')
     args = parser.parse_args()
-    if sum([args.quality,args.replacement,args.house_study,args.composition_study,args.guided_set,args.recovery_study,args.planner_study,args.sung_study,args.sung_aggressive,args.isolated_hooks,args.model_study])>(2 if args.replacement and (args.recovery_study or args.sung_study or args.sung_aggressive) else 1): parser.error('Choose one campaign; replacements require a new prepared permit')
+    if sum([args.quality,args.replacement,args.house_study,args.composition_study,args.guided_set,args.recovery_study,args.planner_study,args.sung_study,args.sung_aggressive,args.isolated_hooks,args.model_study,args.consistency_study])>(2 if args.replacement and (args.recovery_study or args.sung_study or args.sung_aggressive) else 1): parser.error('Choose one campaign; replacements require a new prepared permit')
     if args.quality or args.house_study or args.composition_study or args.guided_set or args.recovery_study or args.planner_study or args.sung_study or args.sung_aggressive or args.isolated_hooks: configure_quality(house=args.house_study,composition=args.composition_study,guided_set=args.guided_set,recovery=args.recovery_study,planner=args.planner_study,sung=args.sung_study,sung_aggressive=args.sung_aggressive,isolated=args.isolated_hooks)
     if args.replacement: configure_replacement()
-    if args.model_study: configure_model_study()
+    if args.model_study or args.consistency_study: configure_model_study(args.consistency_study)
     if args.watch: vast.watch()
     elif args.preflight:
         _, account, offer = preflight()

@@ -1,0 +1,10 @@
+{
+  "status": "PASS local release preparation",
+  "websiteBuild": "PASS",
+  "websiteTypecheck": "PASS",
+  "websiteBundle": "PASS",
+  "iOSReleaseBuild": "PASS unsigned 0.9.5 build 18",
+  "physicalDevice": "NOT RUN for 0.9.5",
+  "publication": "NOT RUN",
+  "appStorePrivacyUpdate": "Prepared, not published"
+}

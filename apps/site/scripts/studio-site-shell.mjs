@@ -10,6 +10,6 @@ export function studioSiteShell(html) {
   if (!original || !shortcuts) throw new Error('Studio navigation changed; review the integration.');
   const back = html.includes('class="voice-studio"') ? '<a href="/improvise">Create an AI song</a>' : '';
   const mode = original.match(/<span class="brand-mode">.*?<\/span>/)?.[0] ?? '';
-  return html.replace(original, `${header}<div class="studio-page-tools">${mode}<nav aria-label="Studio shortcuts">${back}${shortcuts}</nav></div>`)
+  return html.replace('</body>','<footer><a href="/report-bug">Report a bug</a></footer></body>').replace(original, `${header}<div class="studio-page-tools">${mode}<nav aria-label="Studio shortcuts">${back}${shortcuts}</nav></div>`)
     .replace('Save the app in local remixes → Privacy &amp; credits for offline preparation', 'Open <a href="/pro">your Pro account</a> → Use the web studio offline to prepare offline access');
 }

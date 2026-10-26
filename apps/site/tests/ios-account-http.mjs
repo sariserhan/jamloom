@@ -28,6 +28,9 @@ try{
  let message;for(let i=0;i<50&&!message;i++){try{for(const file of await readdir(env.JAMLOOM_LOCAL_OUTBOX)){const m=JSON.parse(await readFile(join(env.JAMLOOM_LOCAL_OUTBOX,file),'utf8'));if(m.to==='native@example.test'&&m.subject.includes('Verify'))message=m;}}catch{}if(!message)await delay(100);}
  assert.ok(message);assert.equal((await fetch(message.text.match(/https?:\/\/\S+/)[0],{redirect:'manual'})).status,302);
  await new Wallet(pool).grant(user.id,{provider:'apple_sandbox',receipt:'native-fixture',credits:10,netMicros:4_000_000});
+ // Metadata-only original-audio fixture for native feedback/consent HTTP checks.
+ await pool.query("INSERT INTO tracks(id,owner_id,title,strategy,duration_ms) VALUES('cccccccc-cccc-4ccc-8ccc-cccccccccccc',$1,'Feedback fixture','club',30000)",[user.id]);
+ await pool.query("INSERT INTO track_assets(track_id,request_id,owner_id,sha256,bytes,state) VALUES('cccccccc-cccc-4ccc-8ccc-cccccccccccc',$1,$2,$3,5760044,'ready')",[randomUUID(),user.id,'c'.repeat(64)]);
  // This synthetic ledger lot tests display/sync only, never Apple receipt verification.
  const destination=resolve(output);await run('mkdir',[destination]);
  const copied=join(destination,'native.xctestrun');
@@ -35,8 +38,9 @@ try{
  await run('xcodebuild',['test-without-building','-xctestrun',copied,'-destination',`platform=iOS Simulator,id=${simulator}`,'-parallel-testing-enabled','NO','-only-testing:JamloomTests/AccountTests/testActualLocalAccountAndProfileSync','-resultBundlePath',join(destination,'tests.xcresult')]);
  assert.equal((await pool.query('SELECT count(*)::int n FROM taste_profiles')).rows[0].n,0);
  assert.equal((await pool.query('SELECT count(*)::int n FROM session')).rows[0].n,0);
+ assert.equal((await pool.query('SELECT count(*)::int n FROM creation_feedback')).rows[0].n,0);
  assert.deepEqual(await new Wallet(pool).balance(user.id),{available:10,reserved:0});
- await writeFile(join(destination,'report.json'),JSON.stringify({status:'PASS',scope:'actual simulator URLSession / Better Auth / disposable Postgres',checks:['sign-in cookie','wallet balance','catalogue profile save/load/delete','server session revoked','no credit consumption'],appleVerification:'NOT RUN - synthetic test lot',providerSpend:0},null,2));
+ await writeFile(join(destination,'report.json'),JSON.stringify({status:'PASS',scope:'actual simulator URLSession / Better Auth / disposable Postgres',checks:['sign-in cookie','wallet balance','catalogue profile save/load/delete','rating save/load/delete','owner training permission/withdrawal','server session revoked','no credit consumption'],appleVerification:'NOT RUN - synthetic test lot',providerSpend:0},null,2));
 }finally{
  if(server&&server.exitCode===null){const stopped=once(server,'exit');server.kill('SIGTERM');await stopped;}
  await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();await rm(scratch,{recursive:true,force:true});

@@ -32,6 +32,10 @@ def verify(bundle):
         expected = {'NSPrivacyCollectedDataTypePurposeAppFunctionality'}
         if kind in personalized:
             expected.add('NSPrivacyCollectedDataTypePurposeProductPersonalization')
+        if kind in {'NSPrivacyCollectedDataTypeAudioData','NSPrivacyCollectedDataTypeUserID','NSPrivacyCollectedDataTypeOtherUserContent'}:
+            expected.add('NSPrivacyCollectedDataTypePurposeOther')
+        if kind in {'NSPrivacyCollectedDataTypeUserID','NSPrivacyCollectedDataTypeOtherUserContent'}:
+            expected.add('NSPrivacyCollectedDataTypePurposeAnalytics')
         assert set(row['NSPrivacyCollectedDataTypePurposes']) == expected
     reasons = {row['NSPrivacyAccessedAPIType']: set(row['NSPrivacyAccessedAPITypeReasons'])
                for row in privacy['NSPrivacyAccessedAPITypes']}

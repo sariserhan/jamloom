@@ -243,7 +243,7 @@ struct CloudImproviseView: View {
                     }
                 }.padding().frame(maxWidth: 760).frame(maxWidth: .infinity)
             }.navigationTitle("Improvise").navigationBarTitleDisplayMode(.inline)
-                .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done", systemImage: "checkmark") { dismiss() } } }
+                .toolbar { ToolbarItem(placement: .topBarLeading) { ProductHelpButton(product: "cloud") }; ToolbarItem(placement: .confirmationAction) { Button("Done", systemImage: "checkmark") { dismiss() } } }
                 .sheet(isPresented: $showAccount, onDismiss: { Task { await cloud.connect(account) } }) { AccountView(account: account) }
                 .task { await cloud.connect(account) }
                 .safeAreaInset(edge: .bottom, spacing: 0) { PlaybackBar(model: model) }
@@ -272,6 +272,7 @@ struct CloudSongActions: View {
                 Button("Play song", systemImage: "play.circle.fill") { Task { await model.play(audio) } }.buttonStyle(.borderedProminent)
                 ShareLink("Save or share song", item: audio)
             } else { Button("Download song", systemImage: "arrow.down.circle") { Task { await cloud.download() } }.disabled(cloud.busy) }
+            if let job = cloud.job { MusicRatingButton(kind: cloud.product.rawValue, id: job, title: "Your song", account: account) }
             Button("Make another song") { cloud.newSong() }
         } else if ["failed", "cancelled"].contains(cloud.state) {
             Button("Try another song") { cloud.newSong() }

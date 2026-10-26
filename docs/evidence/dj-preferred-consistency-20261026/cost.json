@@ -1,0 +1,14 @@
+{
+  "status": "PASS observed accounting; final invoice NOT RUN",
+  "observed_provider_cost_usd": 0.111,
+  "observed_account_debit_usd": 0.10157670185,
+  "provider_evidence_sha256": "c97cf7aeeefcf797742973e68a63234cb1fd29cba20c1a25d26964dbcef5c655",
+  "rental_seconds": 850.3296630382538,
+  "confirmed_instance_lifetime_seconds": 850.1772019863129,
+  "outputs": 6,
+  "total_generated_seconds": 360,
+  "average_observed_full_rental_cost_per_generated_minute_usd": 0.0185,
+  "budget_usd": 3,
+  "customer_billing_changed": false,
+  "scope": "Includes observed setup, loading, inference and retrieval. Not production unit cost or a final invoice."
+}

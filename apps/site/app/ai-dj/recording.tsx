@@ -1,4 +1,5 @@
 import {useEffect,useRef,useState,type RefObject} from 'react';
+import {mountLocalRating} from '../../../web/creation-rating.js';
 import {attachSetRecording} from '../../../web/set-recording.js';
 import {SavedSets} from './saved-sets';
 import type {RecordedSet} from '../../lib/dj-recording-upload';
@@ -8,6 +9,8 @@ import {DJStreamUpload,pendingStream,forgetStream,type StreamTake} from '../../l
 export type DJRecordingControls=ReturnType<typeof attachSetRecording>;
 export function DJRecording({player,status,controls,title,owner,sessionId,visibility}:{owner:string|null;sessionId?:string;visibility?:'public'|'private';title:RefObject<string>;player:RefObject<AIDJPlayer|null>;status:DJSnapshot['status'];controls:RefObject<DJRecordingControls|null>}){
  const root=useRef<HTMLElement>(null),[take,setTake]=useState<RecordedSet|null>(null);
+ const rating=useRef<HTMLDivElement>(null);
+ useEffect(()=>{if(take&&!sessionId&&rating.current){const box=mountLocalRating(rating.current,take.receipt.sha256,'local-dj');return()=>box.remove();}},[take,sessionId]);
  const stream=useRef<DJStreamUpload|null>(null),[streamMessage,setStreamMessage]=useState(''),[pending,setPending]=useState<StreamTake|null>(null),[saving,setSaving]=useState(false),[settling,setSettling]=useState(false),[savedVersion,setSavedVersion]=useState(0);
  useEffect(()=>{
   const host=root.current!;
@@ -41,7 +44,7 @@ export function DJRecording({player,status,controls,title,owner,sessionId,visibi
   <input id="set-record-consent" type="checkbox" defaultChecked hidden readOnly/>
   <div className="aidj-record-actions"><button id="set-record-start" hidden disabled>● Record set</button><button id="set-record-stop" hidden disabled>■ Finish recording</button><button id="set-record-delete" hidden={!!sessionId||['loading','playing','closing','paused'].includes(status)} disabled>Delete local copy</button></div>
   <p id="set-record-status" role="status">Your set records automatically when playback starts.</p>
-  <audio id="set-record-player" controls preload="none" hidden aria-label="Recorded AI DJ set"/>
+  <audio id="set-record-player" controls preload="none" hidden aria-label="Recorded AI DJ set"/><div ref={rating}/>
   <div className="aidj-record-actions"><a id="set-record-download" download hidden>↓ Download recording</a><a id="set-record-details" download="jamloom-set-details.json" hidden>Download recording details</a></div>
   <small>Pause keeps the same recording. Stop finishes it. {sessionId?(visibility==='public'?'Your full set will appear on the public page.':'Your full set stays private.'):'Local-file tests stay private and use no credits.'}</small>
   {sessionId&&<><p role="status">{streamMessage}</p>{pending&&!settling&&!['loading','playing','closing','paused'].includes(status)&&<div className="aidj-record-actions"><button disabled={saving} onClick={()=>void recover()}>{pending.complete?'Retry save':'Recover captured audio'}</button><button disabled={saving} onClick={()=>void discard()}>Discard pending recording</button>{!pending.complete&&<small>This recording was interrupted. Recovery keeps the captured audio off the public page.</small>}</div>}</>}
