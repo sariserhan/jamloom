@@ -1,0 +1,13 @@
+{
+  "site_tests": 152,
+  "database_tests": 71,
+  "planner_analysis_tests": 16,
+  "website_build": "PASS",
+  "bundle_audit": "PASS",
+  "feedback_browser": "PASS Chromium and WebKit; ten help routes; actual disposable database flows",
+  "deck_browser": "PASS Chromium and WebKit; playback, controls, transitions, stop, accessibility",
+  "native_release": "PASS signed 0.9.5 build 18 and bundle audit",
+  "physical_device": "NOT RUN",
+  "deployment": "NOT RUN",
+  "musical_acceptance": "PARTIAL; revised set pending"
+}

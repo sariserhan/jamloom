@@ -1,3 +1,16 @@
+## Release follow-through and sustained transition energy — 2026-10-26
+
+**PASS local checks and Apple privacy publication; PARTIAL full release.** The owner authorized the website deployment, App Store privacy update and physical 0.9.5 verification. The new mix-edge detector requires two seconds of sustained body-level energy instead of accepting an isolated loud hit in a weak intro. Cached analysis is upgraded while preserving human mix-point reviews; internal rests and original files are retained. This remains an estimate, not verified musical phrasing.
+
+- [x] Verify 152 website tests, 71 isolated database tests, 16 planner/analysis checks, production build/bundle audit, Chromium/WebKit product-help/feedback and deck controls.
+- [x] Build and audit signed iPhone 0.9.5/build 18.
+- [x] Publish matching Apple privacy answers for optional training and rating analysis; retain existing purposes and no tracking.
+- [x] Capture a representative 180.48-second set with instrumental spacing and one accepted vocal original; real mixer actions and quiet-scan checks pass.
+- [ ] Obtain owner listening acceptance for the representative set.
+- [ ] Push/deploy the completed website and verify live routes.
+- [ ] Install and verify 0.9.5 on the physical iPhone.
+- [ ] Qualify sustained preferred-generator capacity under a fresh capped compute approval; all previous permits remain consumed. Public AI DJ activation stays held.
+
 ## Rejected DJ set: transition and vocal repetition — 2026-10-26
 
 **FAIL original full-set listening; PARTIAL corrected boundary, owner confirms improvement.** The owner reports awkward transitions, especially around 3:10, and too much “Feel alive”. The exact recording switches clip 4 → 5 at 189.904 seconds; no extra vocal loop was applied. All six controlled benchmark inputs reused the same lyrics. Previous clip rankings still stand.

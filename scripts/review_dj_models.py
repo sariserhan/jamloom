@@ -72,16 +72,22 @@ def main(consistency=False):
     print('http://localhost:8766/'+slug+'/review/')
 
 
-def review_mix(consistency=False):
-    source=ROOT/'renders'/('dj-preferred-mix-20261026' if consistency else 'dj-model-mix-20261026')
-    evidence=ROOT/'docs/evidence'/('dj-preferred-consistency-20261026' if consistency else CAMPAIGN)
+def review_mix(consistency=False, representative=False):
+    source=ROOT/'renders'/('dj-representative-mix-20261026' if representative else 'dj-preferred-mix-20261026' if consistency else 'dj-model-mix-20261026')
+    evidence=ROOT/'docs/evidence'/('product-release-20261026' if representative else 'dj-preferred-consistency-20261026' if consistency else CAMPAIGN)
     report=json.loads((source/'report.json').read_text())
-    originals=json.loads((evidence/'result.json').read_text());validate_result(originals,consistency)
+    if representative:
+        quality=json.loads((ROOT/'docs/evidence/dj-quality-20261025/owner-feedback.json').read_text())
+        originals=json.loads((ROOT/'renders/dj-model-comparison-20261026/report.json').read_text())
+        expected=[r['source_sha256'] for r in quality['clips'][:2]]+[originals['tracks'][i]['receipt']['sha256'] for i in (5,0)]
+    else:
+        originals=json.loads((evidence/'result.json').read_text());validate_result(originals,consistency)
+        expected=[originals['tracks'][i]['receipt']['sha256'] for i in (0,3,4,1,2,5)]
     assert report['status']=='PASS technical' and len(report['results'])==1
-    assert report['sourceTracks']==[originals['tracks'][i]['receipt']['sha256'] for i in (0,3,4,1,2,5)]
+    assert report['sourceTracks']==expected
     capture=report['results'][0];audio=source/'after.webm'
     assert hashlib.sha256(audio.read_bytes()).hexdigest()==capture['sha256']
-    assert capture['history']==[str(i) for i in range(6)] and capture['muted']
+    assert capture['history']==[str(i) for i in range(len(expected))] and capture['muted']
     if consistency:
         assert not capture['events'] and len(capture['blends'])>=5
         assert max(b['cross'] for b in capture['blends'])-min(b['cross'] for b in capture['blends'])>.5
@@ -91,7 +97,7 @@ def review_mix(consistency=False):
     gaps=[line.strip() for line in scan.stderr.splitlines() if 'silence_start:' in line or 'silence_end:' in line]
     report['quiet_scan']=dict(threshold_db=-60,min_seconds=.25,events=gaps)
     report['acceptance']='Engineering capture of prepared tracks; not continuous generation or musical acceptance.'
-    slug='preferred-performance' if consistency else 'model-performance'
+    slug='representative-performance' if representative else 'preferred-performance' if consistency else 'model-performance'
     review=ROOT/'renders/club-studies-20261024'/slug/'review';review.mkdir(parents=True,exist_ok=False)
     level=loudness(audio);target=min(-24.58,float(level['input_i'])-max(0,float(level['input_tp'])+2.5))
     assert float(level['input_tp'])<0
@@ -103,14 +109,17 @@ def review_mix(consistency=False):
     report['listening']=dict(sha256=hashlib.sha256((review/'set.mp3').read_bytes()).hexdigest(),gain_db=gain,matched=measured)
     (evidence/'mix-checks.json').write_text(json.dumps(report,indent=2)+'\n')
     (review/'index.html').write_text('''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jamloom · Fresh comparison set</title><style>body{font:18px/1.5 system-ui;background:#111b20;color:#edf3ec;max-width:760px;margin:36px auto;padding:0 20px}article{padding:22px;border-radius:16px;background:#213039}audio{width:100%}a{color:#d7ff80}</style><h1>Hear the new tracks as a set</h1><p>Clips 1–6 in order through Jamloom’s actual mixer. Listen for the handoffs, groove and musical development.</p><article><audio controls preload="metadata" aria-label="Fresh comparison set" src="set.mp3"></audio></article><p>This capture uses prepared tracks. It checks the real mixer’s performance, not ongoing generation. No short vocal-loop cue was qualified for this batch.</p><p><a href="../../model-comparison/review/">Compare the individual tracks</a></p><p>Awaiting listening acceptance. Nothing plays automatically.</p></html>''')
+    if representative:
+        page=review/'index.html';page.write_text(page.read_text().replace('Fresh comparison set','Selected originals set').replace('Hear the new tracks as a set','Instrumentals with one vocal moment').replace('Clips 1–6 in order', 'Four retained originals, with one previously accepted vocal track in position three,').replace('Compare the individual tracks','Earlier model comparison'))
     if consistency:
         page=review/'index.html';page.write_text(page.read_text().replace('../../model-comparison/', '../../preferred-consistency/'))
     print('http://localhost:8766/'+slug+'/review/')
 
 
 if __name__=='__main__':
-    if sys.argv[1:]==['--mix']:review_mix()
+    if sys.argv[1:]==['--representative']:review_mix(representative=True)
+    elif sys.argv[1:]==['--mix']:review_mix()
     elif sys.argv[1:]==['--consistency','--mix']:review_mix(True)
     elif sys.argv[1:]==['--consistency']:main(True)
     elif not sys.argv[1:]:main()
-    else:raise SystemExit('Use no arguments, --consistency, --mix or --consistency --mix')
+    else:raise SystemExit('Use no arguments, --consistency, --mix, --consistency --mix or --representative')

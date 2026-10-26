@@ -1,0 +1,301 @@
+{
+  "status": "PASS technical",
+  "sourceTracks": [
+    "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+    "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "ba8df987ea9be0250c9946586c109c30bf08361c24eca94f5331065612bfbd97",
+    "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675"
+  ],
+  "currentAnalysisSha256": "d7db4ba7e5de535679cf6bafb3a965e64b3d8920bd96e6689fdc3f2fd067cc4d",
+  "currentPlanSha256": "f15d800c8abb9d8b87acf3cf75519b5e33aad8eaf32bb830064fdd1a39dd2e3f",
+  "newGeneration": false,
+  "learnedWeights": false,
+  "humanListening": "NOT RUN",
+  "performance": "AI performance actions verified.",
+  "results": [
+    {
+      "name": "after",
+      "revision": "working-tree",
+      "history": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "seconds": 180.48,
+      "peak": 0.4045068025588989,
+      "rms": 0.05620471774936612,
+      "events": [
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 86.53825,
+          "until": 88.41325,
+          "position": 33.45125000000001,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 94.507,
+          "until": 95.4445,
+          "position": 41.42000000000001,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 147.77824999999999,
+          "until": 149.65324999999999,
+          "position": 12.232499999999987,
+          "by": "AI"
+        }
+      ],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 56.704,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 3,
+          "elapsed": 109.356,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 4,
+          "elapsed": 147.152,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "blends": [
+        {
+          "elapsed": 52.7,
+          "cross": 0.006250000000001421,
+          "levels": [
+            0.9617692800828372,
+            0.008764080468915192
+          ]
+        },
+        {
+          "elapsed": 53.204,
+          "cross": 0.13225000000000087,
+          "levels": [
+            0.9411364036553991,
+            0.18434133847641831
+          ]
+        },
+        {
+          "elapsed": 53.748,
+          "cross": 0.2682500000000001,
+          "levels": [
+            0.8770888257702119,
+            0.365589867576265
+          ]
+        },
+        {
+          "elapsed": 54.256,
+          "cross": 0.39525000000000077,
+          "levels": [
+            0.782336027707256,
+            0.5199743206063658
+          ]
+        },
+        {
+          "elapsed": 54.800000000000004,
+          "cross": 0.5312500000000018,
+          "levels": [
+            0.6459711865818214,
+            0.6623353553044744
+          ]
+        },
+        {
+          "elapsed": 55.348,
+          "cross": 0.6682500000000005,
+          "levels": [
+            0.4775481854907042,
+            0.7759170173859076
+          ]
+        },
+        {
+          "elapsed": 55.856,
+          "cross": 0.7952500000000011,
+          "levels": [
+            0.3040585974656249,
+            0.8480458588118118
+          ]
+        },
+        {
+          "elapsed": 56.404,
+          "cross": 0.9322500000000016,
+          "levels": [
+            0.10217678138493813,
+            0.8887907864603442
+          ]
+        },
+        {
+          "elapsed": 105.39999999999999,
+          "cross": 0.9887499999999996,
+          "levels": [
+            0.015251888920981393,
+            0.8937151877388061
+          ]
+        },
+        {
+          "elapsed": 105.904,
+          "cross": 0.8627499999999984,
+          "levels": [
+            0.1847622130142108,
+            0.8731725440060387
+          ]
+        },
+        {
+          "elapsed": 106.45599999999999,
+          "cross": 0.7247500000000002,
+          "levels": [
+            0.3618970979215579,
+            0.8115969881521501
+          ]
+        },
+        {
+          "elapsed": 107,
+          "cross": 0.5887499999999974,
+          "levels": [
+            0.5199356935983168,
+            0.7137499877798987
+          ]
+        },
+        {
+          "elapsed": 107.54799999999999,
+          "cross": 0.45175000000000054,
+          "levels": [
+            0.6552461664311657,
+            0.5824081287978053
+          ]
+        },
+        {
+          "elapsed": 108.05199999999999,
+          "cross": 0.3257499999999993,
+          "levels": [
+            0.7531009329410345,
+            0.43769419968535317
+          ]
+        },
+        {
+          "elapsed": 108.556,
+          "cross": 0.1997499999999981,
+          "levels": [
+            0.8215506784115476,
+            0.2758957582400736
+          ]
+        },
+        {
+          "elapsed": 109.104,
+          "cross": 0.06274999999999764,
+          "levels": [
+            0.8595690075276252,
+            0.08797819075344826
+          ]
+        },
+        {
+          "elapsed": 143.148,
+          "cross": 0.003562500000001023,
+          "levels": [
+            0.8637076418473484,
+            0.004116918374328371
+          ]
+        },
+        {
+          "elapsed": 143.652,
+          "cross": 0.1295624999999987,
+          "levels": [
+            0.8458899319633453,
+            0.1490178477274089
+          ]
+        },
+        {
+          "elapsed": 144.156,
+          "cross": 0.25556250000000347,
+          "levels": [
+            0.795047221736521,
+            0.28809850367868606
+          ]
+        },
+        {
+          "elapsed": 144.704,
+          "cross": 0.3925625000000039,
+          "levels": [
+            0.7046689337010328,
+            0.4264039523964698
+          ]
+        },
+        {
+          "elapsed": 145.248,
+          "cross": 0.5285624999999996,
+          "levels": [
+            0.5827496350178407,
+            0.5442417809170621
+          ]
+        },
+        {
+          "elapsed": 145.75199999999998,
+          "cross": 0.6545624999999973,
+          "levels": [
+            0.4460231835357824,
+            0.6314464469558132
+          ]
+        },
+        {
+          "elapsed": 146.304,
+          "cross": 0.7925625000000025,
+          "levels": [
+            0.2764907211005845,
+            0.6985403577678113
+          ]
+        },
+        {
+          "elapsed": 146.852,
+          "cross": 0.929562500000003,
+          "levels": [
+            0.09537821969794802,
+            0.7328203598404102
+          ]
+        }
+      ],
+      "muted": true,
+      "sha256": "1e55476ab420d324b3057fa4339981d196eda40dc278f5fb32a0671053fc37ce"
+    }
+  ],
+  "quiet_scan": {
+    "threshold_db": -60,
+    "min_seconds": 0.25,
+    "events": []
+  },
+  "acceptance": "Engineering capture of prepared tracks; not continuous generation or musical acceptance.",
+  "source_loudness": {
+    "input_i": "-23.44",
+    "input_tp": "-7.31",
+    "input_lra": "6.40",
+    "input_thresh": "-33.55"
+  },
+  "listening": {
+    "sha256": "4b99bc2a21bd8e33d30f9141531580b93cf44c1a5a39628c1ec8d3a79cb1ef69",
+    "gain_db": -1.139999999999997,
+    "matched": {
+      "input_i": "-24.58",
+      "input_tp": "-8.45",
+      "input_lra": "6.40",
+      "input_thresh": "-34.69"
+    }
+  }
+}

@@ -54,12 +54,12 @@ test('review and cached metadata are hash bound and reject fabricated bounds',()
 test('upgrading numerical analysis preserves existing human mix-point reviews',async()=>{
  const {analyseBuffer}=await import('../lib/ai-dj-library'),{analysisKey}=await import('../lib/ai-dj-analysis');
  const descriptors=['localStorage','Worker'].map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)] as const);
- const storage=new Map([[analysisKey,JSON.stringify([reviewed])]]);let analyses=0;
+ const storage=new Map([[analysisKey,JSON.stringify([{...reviewed,gridVersion:3,mixVersion:1,mixBounds:{start:0,end:128},audible:{start:0,end:128}}])]]);let analyses=0;
  try{
   Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:(key:string)=>storage.get(key),setItem:(key:string,value:string)=>storage.set(key,value)}});
   Object.defineProperty(globalThis,'Worker',{configurable:true,value:class{
    onmessage:(message:unknown)=>void=()=>{};terminate(){}
-   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:3,mixVersion:1,mixBounds:{start:0,end:128},audible:{start:0,end:128}}}}));}
+   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:3,mixVersion:2,mixBounds:{start:0,end:128},audible:{start:0,end:128}}}}));}
   }});
   const pcm=new Float32Array(128*8000).fill(.1),buffer={duration:128,numberOfChannels:1,length:pcm.length,sampleRate:8000,getChannelData:()=>pcm} as unknown as AudioBuffer;
   assert.deepEqual((await analyseBuffer(buffer,base.sha256)).review,reviewed.review);
@@ -98,7 +98,7 @@ test('silent outer padding is skipped without removing internal musical rests or
  const samples=new Float32Array(60*8000);for(let i=2*8000;i<53*8000;i++)if(i<25*8000||i>28*8000)samples[i]=.2*Math.sin(2*Math.PI*100*i/8000);
  for(let i=53*8000;i<samples.length;i++)samples[i]=.0007+.001*Math.sin(i);
  const a=analyzeTrack(samples,8000,base.sha256);assert.ok(a.audible);assert.ok(Math.abs(a.audible.start-1.95)<.01);assert.ok(Math.abs(a.audible.end-53.05)<.01);assert.equal(a.duration,60);
- const p=planTransition(a,a,5,1,10);assert.equal(p.technique,'short-fade');assert.equal(p.offset,a.audible.start);assert.ok(p.at+p.fade<=10+a.audible.end-5);
+ const p=planTransition(a,a,5,1,10);assert.equal(p.technique,'short-fade');assert.equal(p.offset,a.mixBounds!.start);assert.ok(p.offset-a.audible.start<=.25);assert.ok(p.at+p.fade<=10+a.audible.end-5);
  assert.equal(validAnalysis({...a,audible:{start:0,end:61}},base.sha256),false);assert.equal(validAnalysis({...a,audible:{start:17,end:53}},base.sha256),false);
  const late=planTransition(a,a,59.99,1,10);assert.ok(late.at+late.fade<=10.011);
  const invalid=planTransition({...base,audible:{start:0,end:NaN}},base,5,1,10);assert.ok(Number.isFinite(invalid.at));
@@ -133,4 +133,10 @@ test('vocal tracks cannot use an unreviewed one-bar bass exchange',()=>{
  const p=planTransition(vocal,vocal,40,1,0,false,4,true);
  assert.equal(p.technique,'short-fade');assert.equal(p.rate,1);assert.equal(p.fade,4);assert.match(p.reason,/vocal edges/);
  assert.equal(planTransition(reviewed,reviewed,4,1,10,false,4,true).technique,'phrase-bass');
+});
+
+test('mix entries ignore isolated intro hits and weak tails without deleting internal breaks',()=>{
+ const pcm=new Float32Array(60*8000);
+ for(let i=0;i<pcm.length;i++){const t=i/8000,level=t<8||t>=50?.025:.2;pcm[i]=level*Math.sin(2*Math.PI*110*t);if(t<.25||t>=58&&t<58.25)pcm[i]*=8;if(t>=25&&t<28)pcm[i]=0;}
+ const a=analyzeTrack(pcm,8000,base.sha256);assert.equal(a.mixVersion,2);assert.ok(a.mixBounds!.start>=8);assert.ok(a.mixBounds!.start<9);assert.ok(a.mixBounds!.end<=50.25);assert.ok(a.mixBounds!.end>=49);assert.equal(a.duration,60);assert.ok(a.mixBounds!.start<25&&a.mixBounds!.end>28);
 });

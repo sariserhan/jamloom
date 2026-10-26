@@ -4,8 +4,9 @@ import {createRequire} from 'node:module';
 import {writeFile} from 'node:fs/promises';
 import {silenceSpeakers} from '../../../apps/site/tests/silent-audio.mjs';
 const {chromium,webkit}=createRequire(new URL('../../../apps/site/package.json',import.meta.url))('playwright');
-const mix=process.argv[2]==='--mix';assert.ok(process.argv.length===2||mix&&process.argv.length===3);
-const players=mix?1:6,route=mix?'preferred-performance':'preferred-consistency',prefix=mix?'mix-':'';
+const representative=process.argv[2]==='--representative',mix=process.argv[2]==='--mix'||representative;assert.ok(process.argv.length===2||mix&&process.argv.length===3);
+const output=representative?new URL('../product-release-20261026/',import.meta.url):new URL('./',import.meta.url);
+const players=mix?1:6,route=representative?'representative-performance':mix?'preferred-performance':'preferred-consistency',prefix=mix?'mix-':'';
 const results=[];
 for(const [name,engine] of Object.entries({chromium,webkit})){
  const browser=await engine.launch();
@@ -29,11 +30,11 @@ for(const [name,engine] of Object.entries({chromium,webkit})){
    }
    await page.locator('audio').evaluateAll(nodes=>nodes.forEach(a=>a.pause()));
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-   await page.screenshot({path:new URL(`${prefix}${name}-${layout}.png`,import.meta.url).pathname,fullPage:true});
+   await page.screenshot({path:new URL(`${prefix}${name}-${layout}.png`,output).pathname,fullPage:true});
    results.push({engine:name,layout,players,play:'PASS',seek:'PASS',one_at_a_time:'PASS',no_autoplay:'PASS'});
   }
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
 }
-await writeFile(new URL(prefix+'browser.json',import.meta.url),JSON.stringify({results,output:'Muted',listening:'NOT RUN'},null,2)+'\n');
+await writeFile(new URL(prefix+'browser.json',output),JSON.stringify({results,output:'Muted',listening:'NOT RUN'},null,2)+'\n');
 console.log(`PASS ${players} players: Chromium/WebKit, desktop/mobile, playback, seek, one at a time, no autoplay.`);

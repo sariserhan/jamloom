@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-26",
+  "app_id": "6826480059",
+  "status": "PASS published",
+  "verified_by": "App Store Connect visible privacy page after saving all three data types",
+  "purpose_additions": {
+    "Audio Data": [
+      "Other Purposes"
+    ],
+    "Other User Content": [
+      "Analytics",
+      "Other Purposes"
+    ],
+    "User ID": [
+      "Analytics",
+      "Other Purposes"
+    ]
+  },
+  "linked_to_identity": true,
+  "tracking": false,
+  "existing_purposes_preserved": true,
+  "other_data_types_changed": false,
+  "app_submission": "NOT RUN",
+  "source": "https://developer.apple.com/app-store/app-privacy-details/"
+}
