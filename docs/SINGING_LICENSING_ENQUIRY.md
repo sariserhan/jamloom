@@ -1,6 +1,8 @@
-# Unsent enquiry — Jamloom Singing Academy
+# Submitted enquiry — Jamloom Singing Academy
 
-Status: **DRAFT, NOT SENT**. Proposed recipient: Tency Music through its [official contact form](https://www.tencymusic.com/contact.php), verified on 2026-10-26. No order, payment or contractual acceptance is authorized. Reply address requires owner approval; proposed support@jamloom.com. Audience figures below are quote scenarios, not claims about current users.
+Status: **SENT — submission confirmed on 2026-10-26** through Tency Music's [official contact form](https://www.tencymusic.com/contact.php), after the owner explicitly replied “Send the enquiry.” Reply address: support@jamloom.com. The form displayed “Thanks for reaching out to us!” and an expected reply within 48 hours. [Submission record](evidence/singing-popular-20261026/submission.json), [confirmation screenshot](evidence/singing-popular-20261026/submission-confirmation.png), [exact submitted project description](evidence/singing-popular-20261026/submitted-message.txt). No provider response or email receipt has been verified; no order, payment or contractual acceptance occurred. Audience figures below are quote scenarios, not claims about current users.
+
+The form has no subject field; the body below was submitted as the project description, with the six serials and project/use/term/format fields recorded separately.
 
 Subject: Six-song instrumental and teaching-metadata licence enquiry — Jamloom
 

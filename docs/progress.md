@@ -1,11 +1,12 @@
 ## Popular karaoke catalogue preparation — 2026-10-26
 
-**PASS research/preparation; BLOCKED playable catalogue pending permissions and assets.** [Supplier and integration findings](SINGING_POPULAR_SONGS.md).
+**PASS research/preparation and approved supplier enquiry submission; BLOCKED playable catalogue pending permissions and assets.** [Supplier and integration findings](SINGING_POPULAR_SONGS.md).
 
 - [x] Verify all six requested songs in Tency/KaraFun catalogues; preserve exact serial IDs, instrumental ISRCs, version-specific duration/key/tempo and source links. No audio or lyrics copied.
 - [x] Audit shared browser/native singing integration: retain live pitch and lyric UI, add exact-recording playback and bounded phrase grading only after supplied asset formats are known. Identify variable-tempo and duet-part requirements.
 - [x] Prepare the [non-binding licensing enquiry](SINGING_LICENSING_ENQUIRY.md), including master/publishing/lyrics scope, delivery formats, audience/territory quote scenarios and no training or user-recording distribution.
-- [ ] Obtain approval to send the prepared enquiry, provider terms/quote and separately authorized licenses/assets. No external message, purchase, playable commercial lesson or deployment has occurred.
+- [x] Submit the approved six-song enquiry through Tency’s official form with support@jamloom.com for replies; confirmation captured on 2026-10-26. No purchase or paid terms accepted.
+- [ ] Receive provider terms/quote and separately authorized licenses/assets; playable commercial lessons and deployment remain pending.
 
 ## Singing Academy completion and fresh DJ qualification — 2026-10-26
 

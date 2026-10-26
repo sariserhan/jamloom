@@ -1,0 +1,92 @@
+- paragraph
+  - StaticText "Discover our curated playlists on"
+- link "DISCO " [ref=e1]
+  - StaticText "DISCO"
+- banner
+  - generic
+    - link "Tency Music: Music licensing for premium covers | Sync & Commercial Use Tency Music" [ref=e4]
+      - StaticText "Tency Music"
+    - menu
+      - group
+        - menuitem "Search" [ref=e19]
+          - button "Search" [ref=e27]
+        - menuitem "Catalog" [ref=e20]
+          - link "Catalog" [ref=e28]
+        - menuitem "Services" [ref=e21]
+          - link "Services" [ref=e29]
+        - menuitem "Help" [ref=e22]
+          - link "Help" [ref=e30]
+        - menuitem "Get License" [ref=e23]
+          - link "Get License" [ref=e31]
+        - menuitem "Log in" [ref=e24]
+          - link "Log in" [ref=e32]
+            - StaticText "Log in"
+  - search
+    - button [ref=e8]
+    - LabelText
+      - textbox [ref=e25]
+  - button "Close modal" [ref=e5]
+- main
+  - navigation "breadcrumb" [ref=e2]
+    - list
+      - listitem [level=1]
+        - link "Home" [ref=e26]
+      - listitem [level=1]
+        - StaticText "Get License"
+  - heading "Get License" [level=1, ref=e6]
+  - Iframe "Contact the Tency Music Team" [ref=e9]
+    - generic [ref=e35] focusable [tabindex]
+      - generic
+        - banner
+        - main
+          - generic
+            - group "Thanks for reaching out to us!"
+              - generic
+                - heading "Thanks for reaching out to us!" [level=2, ref=e37]
+                - StaticText "You'll receive an answer within 48h of the submission of this request."
+        - contentinfo
+          - StaticText "How you ask is everything"
+          - link "Create a typeform" [ref=e36]
+            - StaticText "Create a "
+            - strong
+              - StaticText "typeform"
+      - status
+- contentinfo
+  - paragraph
+    - StaticText "Product"
+  - list
+    - listitem [level=1]
+      - link "Catalog" [ref=e10]
+    - listitem [level=1]
+      - link "Services" [ref=e11]
+    - listitem [level=1]
+      - link "CSV Catalog" [ref=e12]
+  - paragraph
+    - StaticText "Resources"
+  - list
+    - listitem [level=1]
+      - link "Help" [ref=e13]
+  - paragraph
+    - StaticText "Company"
+  - list
+    - listitem [level=1]
+      - link "About" [ref=e14]
+    - listitem [level=1]
+      - link "Contact" [ref=e15]
+    - listitem [level=1]
+      - link "Join Us" [ref=e16]
+  - paragraph
+    - StaticText "Languages"
+  - form [ref=e3] focusable [tabindex]
+    - LabelText
+      - combobox [expanded=false, ref=e17]: English
+        - MenuListPopup
+          - option "English" [selected, ref=e33]
+          - option "Français" [ref=e34]
+  - list
+    - listitem [level=1]
+      - link "Terms of Service" [ref=e18]
+  - paragraph
+    - StaticText "Copyright © 2004-2026, "
+    - link "Recisio" [ref=e7]
+    - StaticText " - All rights reserved"

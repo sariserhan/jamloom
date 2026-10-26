@@ -1,0 +1,40 @@
+{
+  "status": "PASS \u2014 submission confirmed by provider form",
+  "confirmed_at_utc": "2026-10-26T15:27:33.341709+00:00",
+  "url": "https://www.tencymusic.com/contact.php",
+  "authorization": "Owner explicitly replied: Send the enquiry",
+  "reply_email": "support@jamloom.com",
+  "form_answers": {
+    "discovery": "Internet search",
+    "identity": "A professional",
+    "email": "support@jamloom.com",
+    "full_name": "Jamloom Team",
+    "phone": "Optional field skipped",
+    "project_description_file": "submitted-message.txt",
+    "project_url": "https://jamloom.com",
+    "serials": [
+      "25701",
+      "44323",
+      "12257",
+      "29498",
+      "56015",
+      "57377"
+    ],
+    "usage": [
+      "Gaming & App (Video games, Music Learning, Karaoke, etc.)"
+    ],
+    "term": "One-year pilot, for quotation only. Please include renewal and termination terms; no start date or paid commitment is agreed.",
+    "territory": "World; description additionally requests a US-only quote",
+    "formats": [
+      "Instrumental only",
+      "Multitrack"
+    ]
+  },
+  "confirmation_heading": "Thanks for reaching out to us!",
+  "confirmation_detail": "You'll receive an answer within 48h of the submission of this request.",
+  "limitations": [
+    "Form confirmation is not a provider quote or rights grant.",
+    "No order, payment, paid terms or publication.",
+    "No email receipt or human response verified."
+  ]
+}

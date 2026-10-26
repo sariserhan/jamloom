@@ -62,4 +62,4 @@ The owner requested these songs for karaoke-style lessons: instrumental backing 
 
 Keep existing original songs and features available while this catalogue is prepared.
 
-The six requested recordings now have verified supplier references and an integration review: [popular-song preparation](SINGING_POPULAR_SONGS.md). This does not make them playable; the supplier enquiry is prepared but unsent.
+The six requested recordings now have verified supplier references and an integration review: [popular-song preparation](SINGING_POPULAR_SONGS.md). This does not make them playable; the owner-approved supplier enquiry was submitted on 2026-10-26 with confirmation captured. Provider terms and authorized assets remain pending.

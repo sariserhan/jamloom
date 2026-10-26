@@ -1,6 +1,6 @@
 ## Popular-song karaoke request — 2026-10-26
 
-All six requested songs have matching Tency Music catalogue entries, including Lewis Capaldi’s Someone You Loved. [Exact versions and implementation requirements](SINGING_POPULAR_SONGS.md); [prepared supplier enquiry](SINGING_LICENSING_ENQUIRY.md). These are candidate licensed covers, not acquired audio or playable Jamloom lessons. The eight original songs remain available locally. No supplier has been contacted and no license purchased.
+All six requested songs have matching Tency Music catalogue entries, including Lewis Capaldi’s Someone You Loved. [Exact versions and implementation requirements](SINGING_POPULAR_SONGS.md); [submitted supplier enquiry](SINGING_LICENSING_ENQUIRY.md). These are candidate licensed covers, not acquired audio or playable Jamloom lessons. The eight original songs remain available locally. The approved enquiry was submitted to Tency on 2026-10-26, with support@jamloom.com as the reply address. The form confirmed submission and stated a reply within 48 hours; a human response is still pending. No license purchased.
 
 ## Expanded Singing Academy and phone — 2026-10-26
 
