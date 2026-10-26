@@ -1,5 +1,14 @@
 # Dependencies, licenses, and asset provenance
 
+AI DJ base-model research (2026-10-26): `ACE-Step/acestep-v15-base` is pinned
+by [file hashes](../assets/manifests/dj-base-model.json). Its model card declares
+MIT and commercial-output permission; the configuration and model Python files
+carry Apache-2.0 headers, which must be retained. No additional third-party
+training audio is admitted. Publisher statements are not independently audited
+underlying recording/composition rights or an output guarantee. Only small code,
+configuration and card files are local; weights and public distribution remain
+unexecuted. [Scope and evidence](dj-model-comparison.md).
+
 Talk bass/percussion increment (2026-10-18): original procedural corrected-saw,
 formant-filter, clap, rimshot, tom and shaker code. No new recordings, model,
 third-party DSP implementation or runtime dependency. Standard filter equations

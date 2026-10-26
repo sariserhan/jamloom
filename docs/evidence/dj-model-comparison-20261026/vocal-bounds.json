@@ -1,0 +1,50 @@
+{
+  "status": "PASS technical analysis only",
+  "paid_compute": false,
+  "quality": "NOT RUN; stems can contain instrumental bleed",
+  "tracks": [
+    {
+      "sequence": 2,
+      "source_sha256": "9d782d4e9084ac6812346fc86fc941a9521bc7a09224a3cd3a2fe280c1eb3f7c",
+      "peak_rss_bytes": 1881309184,
+      "candidates": [],
+      "separation": {
+        "technical": "PASS",
+        "source_sha256": "9d782d4e9084ac6812346fc86fc941a9521bc7a09224a3cd3a2fe280c1eb3f7c",
+        "model_sha256": "a004b2790d73ffeaa535db458a1a79b539dfdbafbccc31f275d07e632ebd7816",
+        "stems": {
+          "vocals": "867f596cd57072f73d5ebbb352b06486b1fb374d3f97de4294af6d19a68b0f71",
+          "drums": "c33b8b07e606d77bf61fdd4f256d4616d8461ba1bdbe8512190095dcb91088cf"
+        },
+        "sample_rate": 48000,
+        "frames": 2880000,
+        "device": "cpu",
+        "seconds": 8.143031707964838,
+        "separation_quality": "NOT RUN: estimated stems can contain bleed"
+      },
+      "short_hook_qualified": false
+    },
+    {
+      "sequence": 5,
+      "source_sha256": "ba8df987ea9be0250c9946586c109c30bf08361c24eca94f5331065612bfbd97",
+      "peak_rss_bytes": 1747288064,
+      "candidates": [],
+      "separation": {
+        "technical": "PASS",
+        "source_sha256": "ba8df987ea9be0250c9946586c109c30bf08361c24eca94f5331065612bfbd97",
+        "model_sha256": "a004b2790d73ffeaa535db458a1a79b539dfdbafbccc31f275d07e632ebd7816",
+        "stems": {
+          "vocals": "caff479be92b0f0502d5e4904dabb3cdeb93f817bea7ff3430c7d12894192f19",
+          "drums": "44f49078409331df19a7cebb7571d59acf2137ce8088643912f7a7e59e407cf1"
+        },
+        "sample_rate": 48000,
+        "frames": 2880000,
+        "device": "cpu",
+        "seconds": 7.674954709014855,
+        "separation_quality": "NOT RUN: estimated stems can contain bleed"
+      },
+      "short_hook_qualified": false
+    }
+  ],
+  "seconds": 19.153011374990456
+}

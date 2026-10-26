@@ -3,6 +3,7 @@
 set -euo pipefail
 case "${1-}" in
   --club-benchmark) export JAMLOOM_CLUB_BENCHMARK=1 ;;
+  --model-study) export JAMLOOM_MODEL_STUDY=1 ;;
   "") ;;
   *) exit 2 ;;
 esac
@@ -27,6 +28,11 @@ if os.environ.get('JAMLOOM_CLUB_BENCHMARK') != '1':
     patterns.append('acestep-5Hz-lm-1.7B/*')
 snapshot_download('ACE-Step/Ace-Step1.5', revision='19671f406d603126926c1b7e2adc169acbcade22',
     local_dir='checkpoints', allow_patterns=patterns)
+if os.environ.get('JAMLOOM_MODEL_STUDY') == '1':
+    import json
+    manifest = json.load(open('/workspace/dj-base-model.json'))
+    snapshot_download(manifest['repo'], revision=manifest['revision'],
+        local_dir='checkpoints/acestep-v15-base', allow_patterns=list(manifest['files']))
 PY
 mkdir -p /workspace/results
 nvidia-smi -q > /workspace/results/nvidia-smi.txt

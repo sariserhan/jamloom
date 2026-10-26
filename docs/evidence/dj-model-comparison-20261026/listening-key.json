@@ -1,0 +1,90 @@
+{
+  "target_lufs": -24.58,
+  "clips": [
+    {
+      "number": 1,
+      "sequence": 0,
+      "model": "acestep-v15-turbo",
+      "source_sha256": "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675",
+      "listening_sha256": "38ed04aa59ebc43bca079d1f0bc108f694a9affe629e2f9ea90138c531f68e0e",
+      "gain_db": -9.54,
+      "matched": {
+        "input_i": "-24.58",
+        "input_tp": "-10.54",
+        "input_lra": "6.50",
+        "input_thresh": "-34.67"
+      }
+    },
+    {
+      "number": 2,
+      "sequence": 3,
+      "model": "acestep-v15-base",
+      "source_sha256": "4233dd15be1d86108751dbd5fb2c635b39ed78906dc9269786d6cb0eb833c62a",
+      "listening_sha256": "2ae2e26e9515b621307f561192c4630ec4d59fba3a193799fb6ea2c81904b494",
+      "gain_db": -9.319999999999999,
+      "matched": {
+        "input_i": "-24.58",
+        "input_tp": "-9.84",
+        "input_lra": "3.70",
+        "input_thresh": "-34.60"
+      }
+    },
+    {
+      "number": 3,
+      "sequence": 4,
+      "model": "acestep-v15-base",
+      "source_sha256": "097b89a121f4d3ad8cabab56fdd146224157c2d3416b5f9685a731aa9006eb4f",
+      "listening_sha256": "c5ba4e6cc4391a90c290962d0c7dc562070ee8590564d014b1ff5ab61a694f56",
+      "gain_db": -9.019999999999998,
+      "matched": {
+        "input_i": "-24.59",
+        "input_tp": "-9.85",
+        "input_lra": "1.30",
+        "input_thresh": "-34.61"
+      }
+    },
+    {
+      "number": 4,
+      "sequence": 1,
+      "model": "acestep-v15-turbo",
+      "source_sha256": "2f04e4f6014679090b75d30ec344098702fe3b804f00f0c3a092c99376a6182d",
+      "listening_sha256": "565655a8853ae8a19e710fb4f6ba5b583912d293fa53dd8580bead8d679d4346",
+      "gain_db": -9.469999999999999,
+      "matched": {
+        "input_i": "-24.58",
+        "input_tp": "-10.27",
+        "input_lra": "1.80",
+        "input_thresh": "-34.64"
+      }
+    },
+    {
+      "number": 5,
+      "sequence": 2,
+      "model": "acestep-v15-turbo",
+      "source_sha256": "9d782d4e9084ac6812346fc86fc941a9521bc7a09224a3cd3a2fe280c1eb3f7c",
+      "listening_sha256": "3c3714bec330e0a41be5bfbf37e4647c39a61e6f31057f34bf623b62d298ef08",
+      "gain_db": -11.669999999999998,
+      "matched": {
+        "input_i": "-24.58",
+        "input_tp": "-12.59",
+        "input_lra": "8.20",
+        "input_thresh": "-35.45"
+      }
+    },
+    {
+      "number": 6,
+      "sequence": 5,
+      "model": "acestep-v15-base",
+      "source_sha256": "ba8df987ea9be0250c9946586c109c30bf08361c24eca94f5331065612bfbd97",
+      "listening_sha256": "ea1f20d9a0a054464dcd0d44894ba69ab308a3ad4b7c9a298e128ebfdfb06b9f",
+      "gain_db": -9.249999999999998,
+      "matched": {
+        "input_i": "-24.58",
+        "input_tp": "-10.11",
+        "input_lra": "3.60",
+        "input_thresh": "-34.59"
+      }
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

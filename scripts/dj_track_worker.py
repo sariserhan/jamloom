@@ -104,13 +104,14 @@ def procedural(value, directory):
     return np.column_stack((mono, mono)), RATE
 
 
-def load_ace(planned=False):
+def load_ace(planned=False, model='acestep-v15-turbo'):
+    if model not in ('acestep-v15-turbo', 'acestep-v15-base'): raise ValueError('Unsupported music model')
     os.environ['HF_HUB_OFFLINE'] = '1'
     os.environ['ACESTEP_DISABLE_TQDM'] = '1'
     from acestep.handler import AceStepHandler
     from acestep.llm_inference import LLMHandler
     dit, lm = AceStepHandler(), LLMHandler()
-    status, ok = dit.initialize_service(project_root=str(Path.cwd()), config_path='acestep-v15-turbo', device='cuda', compile_model=False, use_mlx_dit=False)
+    status, ok = dit.initialize_service(project_root=str(Path.cwd()), config_path=model, device='cuda', compile_model=False, use_mlx_dit=False)
     if not ok: raise RuntimeError(status)
     if planned:
         status, ok = lm.initialize(checkpoint_dir=str(Path.cwd()/'checkpoints'), lm_model_path='acestep-5Hz-lm-1.7B', backend='pt', device='cuda', offload_to_cpu=False)

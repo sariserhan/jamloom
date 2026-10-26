@@ -1,0 +1,127 @@
+{
+  "status": "PASS technical",
+  "sourceTracks": [
+    "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675",
+    "4233dd15be1d86108751dbd5fb2c635b39ed78906dc9269786d6cb0eb833c62a",
+    "097b89a121f4d3ad8cabab56fdd146224157c2d3416b5f9685a731aa9006eb4f",
+    "2f04e4f6014679090b75d30ec344098702fe3b804f00f0c3a092c99376a6182d",
+    "9d782d4e9084ac6812346fc86fc941a9521bc7a09224a3cd3a2fe280c1eb3f7c",
+    "ba8df987ea9be0250c9946586c109c30bf08361c24eca94f5331065612bfbd97"
+  ],
+  "currentPlanSha256": "b6afe1fcc3a5a5579b6dce69ef41619b763fc9c0c2bc7b1d47aa0f7dc576cc56",
+  "newGeneration": false,
+  "learnedWeights": false,
+  "humanListening": "NOT RUN",
+  "results": [
+    {
+      "name": "after",
+      "revision": "working-tree",
+      "history": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "seconds": 289.32,
+      "peak": 0.39003220200538635,
+      "rms": 0.06666888601622352,
+      "events": [
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 12.064499999999999,
+          "until": 13.939499999999999,
+          "position": 12.2325,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 20.033250000000002,
+          "until": 20.970750000000002,
+          "position": 20.20125,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 55.65825,
+          "until": 57.53325,
+          "position": 9.405000000000001,
+          "by": "AI"
+        },
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 68.78325000000001,
+          "until": 70.65825000000001,
+          "position": 22.53000000000001,
+          "by": "AI"
+        }
+      ],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 54.8,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 3,
+          "elapsed": 101.056,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 4,
+          "elapsed": 152.404,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 5,
+          "elapsed": 203.20000000000002,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 6,
+          "elapsed": 247.5,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "muted": true,
+      "sha256": "a1c4d87fc25ffe8e2b941a1567e1a3b8334207819c2657f21f45f9b146c20200"
+    }
+  ],
+  "quiet_scan": {
+    "threshold_db": -60,
+    "min_seconds": 0.25,
+    "events": []
+  },
+  "acceptance": "Engineering capture of prepared tracks; not continuous generation or musical acceptance.",
+  "listening": {
+    "sha256": "11c6c65419312e1caf903633210f499b2195771411ba4f2dff184ffb9c3c590d",
+    "gain_db": -1.9799999999999969,
+    "matched": {
+      "input_i": "-24.58",
+      "input_tp": "-9.57",
+      "input_lra": "3.50",
+      "input_thresh": "-34.65"
+    }
+  },
+  "source_loudness": {
+    "input_i": "-22.60",
+    "input_tp": "-7.59",
+    "input_lra": "3.40",
+    "input_thresh": "-32.67"
+  }
+}

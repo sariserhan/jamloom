@@ -1,0 +1,7 @@
+{
+  "permit_sha256": "f053f48ed1a6eb686e68c2c373559b3ae8321852c79367dc1f55bbc9f938edba",
+  "controller_sha256": "e3a0a47150e0506c28a6469c6422d971219730b7cb884df35980488e81f97535",
+  "attempts_authorized": 1,
+  "replacements_authorized": false,
+  "owner_statement": "Approve the capped $3 base-model comparison"
+}

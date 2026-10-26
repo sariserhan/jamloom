@@ -11,7 +11,7 @@ const meta=await stat(statePath);
 if(meta.size>16384||(meta.mode&0o077)!==0)throw Error('Small private rental receipt required');
 const state=JSON.parse(await readFile(statePath,'utf8'));
 integer(state.id,1);
-if(!/^jamloom-dj-qualification-[a-z0-9-]{1,80}$/.test(state.label)||!Number.isFinite(state.started_at)||!Number.isFinite(state.destroy_confirmed_at)||state.destroy_confirmed_at<=state.started_at)throw Error('Confirmed DJ shutdown receipt required');
+if(!/^jamloom-dj-(?:qualification|model-comparison)-[a-z0-9-]{1,80}$/.test(state.label)||!Number.isFinite(state.started_at)||!Number.isFinite(state.destroy_confirmed_at)||state.destroy_confirmed_at<=state.started_at)throw Error('Confirmed DJ shutdown receipt required');
 const provider=new VastProvider(process.env.VASTAI_KEY??''),inventory=await provider.inventory(account);
 if(inventory.some(i=>i.id===state.id||i.label===state.label))throw Error('Rental is still present');
 const from=Math.floor(state.started_at/86400)*86400,to=(Math.floor(state.destroy_confirmed_at/86400)+1)*86400-1;

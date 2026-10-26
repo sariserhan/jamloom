@@ -1,0 +1,14 @@
+{
+  "status": "PASS observed accounting; final invoice NOT RUN",
+  "observed_provider_cost_usd": 0.11,
+  "observed_account_debit_usd": 0.10355271799999866,
+  "provider_evidence_sha256": "2122f0112d63efa96280a01239345665508d397dde9a3551e74e51593a9d5072",
+  "rental_seconds": 739.9969608783722,
+  "confirmed_instance_lifetime_seconds": 737.8054430484772,
+  "outputs": 6,
+  "total_generated_seconds": 360,
+  "average_observed_full_rental_cost_per_generated_minute_usd": 0.018333333333333333,
+  "budget_usd": 3,
+  "customer_billing_changed": false,
+  "scope": "Includes the observed rental charge for setup, loading, inference and retrieval. Not a production unit cost; no paid hosting or R2 writes in this experiment."
+}

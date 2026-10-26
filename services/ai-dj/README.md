@@ -6,6 +6,8 @@ The manual `Build AI DJ worker` workflow builds Linux/amd64, verifies packaged
 source hashes and imports the CLI without networking, and records image size.
 Publishing defaults to false. The optional `music_planner` build includes the
 pinned 1.7B semantic model; it does not enable that model in normal serving.
+The separate base-model comparison is a source-bootstrap research mode; its
+base weights and study module are not packaged in this serving-image candidate.
 Neither workflow choice rents hardware, changes website settings or starts a
 renderer. A workflow run can consume repository Actions allowance; do not treat
 it as a free/unbounded build service.

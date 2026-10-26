@@ -20,19 +20,20 @@ from dj_vocal import add_hook
 
 
 class Renderer:
-    def __init__(self, deadline, limit, engine=None, generate=ace):
-        if not time.time() < deadline <= time.time()+2400 or type(limit) is not int or not 1 <= limit <= 100:
+    def __init__(self, deadline, limit, engine=None, generate=ace, render_seconds=30):
+        if not time.time() < deadline <= time.time()+2400 or type(limit) is not int or not 1 <= limit <= 100 or type(render_seconds) is not int or render_seconds not in (30, 120):
             raise ValueError('Invalid renderer bounds')
         self.deadline, self.limit, self.engine, self.generate = deadline, limit, engine, generate
         self.identity, self.seen, self.cached = secrets.token_hex(16), set(), None
         self.requests = 0
+        self.render_seconds = render_seconds
 
     def render(self, value):
         if not isinstance(value, dict) or set(value) != {'job', 'request', 'vocals'} or type(value['vocals']) is not bool or str(uuid.UUID(value['job'])) != value['job']:
             raise ValueError('Invalid job')
         track = request(value['request'])
         fingerprint = hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
-        if time.time()+30 >= self.deadline:
+        if time.time()+self.render_seconds >= self.deadline:
             raise ValueError('Renderer expired')
         if self.cached and self.cached[0] == fingerprint:
             return self.cached[1:]
@@ -56,6 +57,8 @@ class Renderer:
             composition=json.loads(guide_path.read_text()) if guide_path.is_file() else None
             sung_path=Path(directory)/'musical-hook.json'
             sung=json.loads(sung_path.read_text()) if sung_path.is_file() else None
+            model_path=Path(directory)/'model-study.json'
+            model_study=json.loads(model_path.read_text()) if model_path.is_file() else None
             planning={name:json.loads(path.read_text()) for name,path in [('track',Path(directory)/'planning.json'),('vocal',Path(directory)/'hook/planning.json')] if path.is_file()}
         stream = io.BytesIO()
         with wave.open(stream, 'wb') as audio:
@@ -63,7 +66,7 @@ class Renderer:
             audio.writeframes(pcm.tobytes())
         data = stream.getvalue()
         elapsed = max(1, round((time.monotonic()-started)*1000))
-        if elapsed > 30000 or time.time() >= self.deadline:
+        if elapsed > self.render_seconds*1000 or time.time() >= self.deadline:
             raise ValueError('Generation-ahead deadline failed')
         receipt = dict(version=1, engine=self.identity, job=value['job'], request=track,
                        code_revision=CODE_REVISION, weights_revision=WEIGHTS_REVISION,
@@ -71,6 +74,7 @@ class Renderer:
         if composition is not None:receipt['composition']=composition
         if planning:receipt['planning']=planning
         if sung is not None:receipt['musical_hook']=sung
+        if model_study is not None:receipt['model_comparison']=model_study
         self.cached = fingerprint, receipt, data
         return receipt, data
 
@@ -83,7 +87,7 @@ def handler(renderer, token):
         def do_GET(self):
             if self.path != '/health' or not hmac.compare_digest(self.headers.get('Authorization', ''), 'Bearer '+token):
                 self.send_error(403); return
-            ready = time.time()+90 < renderer.deadline and renderer.requests < renderer.limit
+            ready = time.time()+max(90,renderer.render_seconds+30) < renderer.deadline and renderer.requests < renderer.limit
             data = json.dumps(dict(ready=ready, code_revision=CODE_REVISION, weights_revision=WEIGHTS_REVISION)).encode()
             self.send_response(200 if ready else 503)
             self.send_header('Content-Type', 'application/json')
@@ -93,7 +97,7 @@ def handler(renderer, token):
             self.wfile.write(data)
 
         def do_POST(self):
-            self.connection.settimeout(35)
+            self.connection.settimeout(renderer.render_seconds+5)
             if self.path != '/render' or not hmac.compare_digest(self.headers.get('Authorization', ''), 'Bearer '+token):
                 self.send_error(403); return
             try:
@@ -130,6 +134,7 @@ def main():
     modes.add_argument('--recovery-study',action='store_true',help='Isolate guide and model seeds; original material only')
     modes.add_argument('--planner-study',action='store_true',help='Paired semantic music planning; unqualified experiment')
     modes.add_argument('--sung-study',action='store_true',help='Short musical repaint on prepared Jamloom originals; unqualified experiment')
+    modes.add_argument('--model-study',action='store_true',help='Offline base/turbo benchmark; not production latency qualification')
     args = parser.parse_args()
     if args.token_file.stat().st_mode & 0o077:
         raise ValueError('Token file must be private')
@@ -140,12 +145,17 @@ def main():
     if args.sung_study:
         from dj_sung_hooks import sung_study
         renderer.generate=sung_study
-    renderer.engine = load_ace(planned=True) if args.planner_study else load_ace()
+    if args.model_study:
+        from dj_model_study import ModelStudy
+        renderer.generate=ModelStudy()
+        renderer.render_seconds=120
+    else:
+        renderer.engine = load_ace(planned=True) if args.planner_study else load_ace()
     server = HTTPServer(('127.0.0.1', 8768), handler(renderer, token))
     server.timeout = 1
     print('Jamloom renderer ready', flush=True)
     try:
-        while time.time()+30 < renderer.deadline:
+        while time.time()+renderer.render_seconds < renderer.deadline:
             server.handle_request()
     finally:
         server.server_close()

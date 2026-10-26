@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "layout": "desktop",
+      "players": 6,
+      "play": "PASS",
+      "seek": "PASS",
+      "one_at_a_time": "PASS",
+      "no_autoplay": "PASS"
+    },
+    {
+      "engine": "chromium",
+      "layout": "mobile",
+      "players": 6,
+      "play": "PASS",
+      "seek": "PASS",
+      "one_at_a_time": "PASS",
+      "no_autoplay": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "layout": "desktop",
+      "players": 6,
+      "play": "PASS",
+      "seek": "PASS",
+      "one_at_a_time": "PASS",
+      "no_autoplay": "PASS"
+    },
+    {
+      "engine": "webkit",
+      "layout": "mobile",
+      "players": 6,
+      "play": "PASS",
+      "seek": "PASS",
+      "one_at_a_time": "PASS",
+      "no_autoplay": "PASS"
+    }
+  ],
+  "output": "Muted",
+  "listening": "NOT RUN"
+}
