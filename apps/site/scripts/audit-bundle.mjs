@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { studioSiteShell } from './studio-site-shell.mjs';
+import { studioSiteShell, studioSingingCourse } from './studio-site-shell.mjs';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -12,6 +12,7 @@ let count = 0;
 for (const path of await readdir(`${dist}/static`, { recursive: true })) {
   if (!(await stat(`${dist}/static/${path}`)).isFile()) continue;
   const bytes = await readFile(`${dist}/static/${path}`); count++;
+  assert.ok(!bytes.includes('Wake with me'),'Paid Singing lyrics found in public client bundle');
   for (const name of ['YOUTUBE_API_KEY','RUNPOD_API_KEY','RUNPOD_GHCR_TOKEN','CREDIT_STRIPE_LIVE_WEBHOOK_SECRET']) {
     assert.ok(!process.env[name] || !bytes.includes(process.env[name]), `Server secret found in browser bundle: ${name}`);
   }
@@ -28,10 +29,11 @@ for (const path of sourceFiles) {
   const before = await readFile(new URL(path, source));
   const after = await readFile(new URL(path, publicRoot));
   if (path === 'index.html' || path === 'dj.html') assert.equal(after.toString(), studioSiteShell(before.toString()));
+  else if (path === 'singing-course.js') assert.equal(after.toString(),studioSingingCourse(before.toString()));
   else if (path !== 'service-worker.js') assert.ok(before.equals(after), `Studio asset changed: ${path}`);
 }
 execFileSync('python3', ['scripts/build_offline.py', fileURLToPath(publicRoot), '--check'], { cwd: fileURLToPath(new URL('../../../', import.meta.url)), stdio: 'pipe' });
 console.log(JSON.stringify({ status: 'PASS', client_files_checked: count, server_secrets_absent: 'PASS',
-  studio_assets_unchanged_except_site_shell_and_offline_hashes: 'PASS',
+  studio_assets_verified_with_protected_singing_content: 'PASS',
   wasm_sha256: createHash('sha256').update(await readFile(new URL('engine/jamloom_web.wasm', publicRoot))).digest('hex'),
 }, null, 2));

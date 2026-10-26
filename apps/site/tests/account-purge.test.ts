@@ -1,9 +1,10 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {randomUUID} from 'node:crypto';
-import {createPool} from '../lib/database';import {migrate} from '../lib/migrations';import {requestDeletion} from '../lib/account-deletion';import {fulfillDeletion} from '../lib/account-purge';import {OWNER_EMAIL} from '../lib/admin-access';import {AdminStore} from '../lib/admin-store';import {Wallet} from '../lib/wallet';import {DJRecordings} from '../lib/dj-recordings';import type {AudioStore} from '../lib/audio-store';
+import {createPool} from '../lib/database';import {migrate} from '../lib/migrations';import {requestDeletion} from '../lib/account-deletion';import {fulfillDeletion} from '../lib/account-purge';import {OWNER_EMAIL} from '../lib/admin-access';import {AdminStore} from '../lib/admin-store';import {Wallet} from '../lib/wallet';import {DJRecordings} from '../lib/dj-recordings';import {r2AudioStore,type AudioStore} from '../lib/audio-store';
 test('verified deletion waits for work and upload expiry, retries storage failure, removes personal data and retains financial evidence',async()=>{
  const url=new URL(process.env.JAMLOOM_TEST_DATABASE_URL??'');assert.equal(url.hostname,'127.0.0.1');const admin=createPool(url.href),name='jamloom_purge_'+randomUUID().replaceAll('-','');await admin.query(`CREATE DATABASE "${name}"`);url.pathname='/'+name;const pool=createPool(url.href);
- const objects=new Map<string,Buffer>();let fail=false;
- const store:AudioStore={local:true,put:async(k,v)=>{objects.set(k,v);},get:async k=>objects.get(k)!,remove:async k=>{if(fail)throw Error('storage offline');objects.delete(k);},uploadURL:async()=>'',playbackURL:async()=>''};
+ const remote=process.env.JAMLOOM_PURGE_R2_TEST_BUCKET?(()=>{assert.equal(process.env.JAMLOOM_PURGE_R2_TEST_BUCKET,process.env.R2_BUCKET);return r2AudioStore();})():null;
+ const ownedKeys=new Set<string>(),objects=new Map<string,Buffer>();let fail=false;
+ const store:AudioStore={local:true,put:async(k,v)=>{ownedKeys.add(k);if(remote)await remote.put(k,v);objects.set(k,v);},get:async(k,n)=>remote?remote.get(k,n):objects.get(k)!,remove:async k=>{assert(ownedKeys.has(k),'Deletion must target only this test run');if(fail)throw Error('storage offline');if(remote)await remote.remove(k);objects.delete(k);},uploadURL:async()=>'',playbackURL:async()=>''};
  const recordings=new DJRecordings(pool,{remove:store.remove,abort:async()=>{}} as never);
  try{
   await migrate(pool);for(const [id,email] of [['owner',OWNER_EMAIL],['alice','alice@example.test'],['bob','bob@example.test']])await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[id,email]);
@@ -14,7 +15,7 @@ test('verified deletion waits for work and upload expiry, retries storage failur
   await pool.query(`INSERT INTO verification(id,identifier,value,"expiresAt") VALUES('reset-alice','reset-password:test','alice',now()+interval '1 hour')`);
   const wallet=new Wallet(pool);await wallet.grant('alice',{provider:'stripe_test',receipt:'receipt_alice',credits:10,netMicros:1000000});
   const track=randomUUID(),other=randomUUID();
-  for(const [id,owner] of [[track,'alice'],[other,'bob']]){await pool.query(`INSERT INTO tracks(id,owner_id,title,strategy,duration_ms) VALUES($1,$2,'Personal title','hiphop',20000)`,[id,owner]);await pool.query(`INSERT INTO track_assets(track_id,request_id,owner_id,sha256,bytes,state,expires_at) VALUES($1,$2,$3,$4,3840044,'ready',now()-interval '1 hour')`,[id,randomUUID(),owner,'a'.repeat(64)]);objects.set('masters/'+id+'.wav',Buffer.from('test object'));objects.set('uploads/'+id+'.wav',Buffer.from('test upload'));}
+  for(const [id,owner] of [[track,'alice'],[other,'bob']]){await pool.query(`INSERT INTO tracks(id,owner_id,title,strategy,duration_ms) VALUES($1,$2,'Personal title','hiphop',20000)`,[id,owner]);await pool.query(`INSERT INTO track_assets(track_id,request_id,owner_id,sha256,bytes,state,expires_at) VALUES($1,$2,$3,$4,3840044,'ready',now()-interval '1 hour')`,[id,randomUUID(),owner,'a'.repeat(64)]);await store.put('masters/'+id+'.wav',Buffer.from('test object'));await store.put('uploads/'+id+'.wav',Buffer.from('test upload'));}
   const ticket=await requestDeletion(pool,'http://localhost:3000','alice',new Date(),true);
   await assert.rejects(fulfillDeletion(pool,store,recordings,'bob',ticket.id,'alice'),/Administrator/);
   await assert.rejects(fulfillDeletion(pool,store,recordings,'owner',ticket.id,'bob'),/matching/);
@@ -31,6 +32,7 @@ test('verified deletion waits for work and upload expiry, retries storage failur
   fail=false;assert.equal((await fulfillDeletion(pool,store,recordings,'owner',ticket.id,'alice')).status,'complete');
   assert.equal((await fulfillDeletion(pool,store,recordings,'owner',ticket.id,'alice')).status,'complete');
   assert(!objects.has('masters/'+track+'.wav'));assert(objects.has('masters/'+other+'.wav'));
+  if(remote){for(const prefix of ['masters/','uploads/'])await assert.rejects(remote.get(prefix+track+'.wav',100),e=>(e as {name:string}).name==='NoSuchKey');assert.equal((await remote.get('masters/'+other+'.wav',100)).toString(),'test object');console.log('PASS real R2 deletion, exact missing-key verification and other-account preservation');}
   for(const table of ['tracks','track_assets','taste_profiles'])assert.equal((await pool.query(`SELECT count(*)::int n FROM ${table} WHERE owner_id='alice'`)).rows[0].n,0);
   assert.equal((await pool.query('SELECT count(*)::int n FROM "account" WHERE "userId"=\'alice\'')).rows[0].n,0);
   assert.equal((await pool.query("SELECT count(*)::int n FROM notification_outbox WHERE message::text LIKE '%alice@example.test%'")).rows[0].n,0);
@@ -38,5 +40,5 @@ test('verified deletion waits for work and upload expiry, retries storage failur
   const tombstone=(await pool.query('SELECT * FROM "user" WHERE id=\'alice\'')).rows[0];assert.equal(tombstone.name,'Deleted account');assert.equal(tombstone.emailVerified,false);assert.equal(tombstone.suspended,true);assert.match(tombstone.email,/@accounts.invalid$/);
   assert.equal((await pool.query("SELECT count(*)::int n FROM credit_lots WHERE owner_id='alice'")).rows[0].n,1);assert.equal((await pool.query("SELECT count(*)::int n FROM wallet_ledger_entries WHERE owner_id='alice'")).rows[0].n,1);
   assert.equal((await pool.query("SELECT count(*)::int n FROM admin_audit WHERE action='account.deleted'")).rows[0].n,1);
- }finally{await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();}
+ }finally{if(remote)for(const key of ownedKeys)await remote.remove(key);await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();}
 });

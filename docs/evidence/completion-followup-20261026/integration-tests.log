@@ -1,0 +1,71 @@
+TAP version 13
+# PASS 1,000 tracks / 2,000 files, interruption after 500 removals, operator resume and unrelated-file preservation
+# Subtest: large-account partial deletion resumes through the operator command without deleting another account
+ok 1 - large-account partial deletion resumes through the operator command without deleting another account
+  ---
+  duration_ms: 1202.63425
+  type: 'test'
+  ...
+# Subtest: verified deletion waits for work and upload expiry, retries storage failure, removes personal data and retains financial evidence
+ok 2 - verified deletion waits for work and upload expiry, retries storage failure, removes personal data and retains financial evidence
+  ---
+  duration_ms: 390.633083
+  type: 'test'
+  ...
+# Subtest: free singing content contains warm-ups and First Light, never paid scores or lyrics
+ok 3 - free singing content contains warm-ups and First Light, never paid scores or lyrics
+  ---
+  duration_ms: 0.591917
+  type: 'test'
+  ...
+# Subtest: Apple course purchase and restore are account-bound, idempotent, refund-safe and isolated from credits and DJ Academy
+ok 4 - Apple course purchase and restore are account-bound, idempotent, refund-safe and isolated from credits and DJ Academy
+  ---
+  duration_ms: 284.135083
+  type: 'test'
+  ...
+# Subtest: Apple consumables bind exact app/account/product/price/environment, reject revocation and offers
+ok 5 - Apple consumables bind exact app/account/product/price/environment, reject revocation and offers
+  ---
+  duration_ms: 0.884
+  type: 'test'
+  ...
+# Subtest: production refunds cannot act on sandbox transactions or ledger providers
+ok 6 - production refunds cannot act on sandbox transactions or ledger providers
+  ---
+  duration_ms: 0.285125
+  type: 'test'
+  ...
+# Subtest: Apple official verifier rejects forged unsigned transactions
+ok 7 - Apple official verifier rejects forged unsigned transactions
+  ---
+  duration_ms: 0.369209
+  type: 'test'
+  ...
+# Subtest: Apple sandbox refund notifications verify both signatures and hold the exact consumable receipt
+ok 8 - Apple sandbox refund notifications verify both signatures and hold the exact consumable receipt
+  ---
+  duration_ms: 0.274917
+  type: 'test'
+  ...
+# Subtest: Singing is $39 once and cannot enable live sales or borrow DJ billing configuration
+ok 9 - Singing is $39 once and cannot enable live sales or borrow DJ billing configuration
+  ---
+  duration_ms: 1.234041
+  type: 'test'
+  ...
+# Subtest: Singing receipts grant only the purchased course; retries, refund, dispute and mode stay isolated
+ok 10 - Singing receipts grant only the purchased course; retries, refund, dispute and mode stay isolated
+  ---
+  duration_ms: 211.172708
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3524.854125

@@ -1,0 +1,32 @@
+Checking for new versions...
+
+A newer version of the Stripe CLI is available, please update to: v1.55.2
+Getting ready...
+Ready! You are using Stripe API Version [2026-06-24.dahlia]. Your webhook signing secret is [redacted] (^C to quit)
+2026-10-26 18:16:31   --> checkout.session.completed [evt_1UUwBvDlEXWDEeHOXlu0tuYV]
+2026-10-26 18:16:31  <--  [200] POST http://127.0.0.1:4228 [evt_1UUwBvDlEXWDEeHOXlu0tuYV]
+2026-10-26 18:16:34   --> charge.refunded [evt_3UUwBrDlEXWDEeHO3I6briIT]
+2026-10-26 18:16:34  <--  [200] POST http://127.0.0.1:4228 [evt_3UUwBrDlEXWDEeHO3I6briIT]
+2026-10-26 18:16:41   --> checkout.session.completed [evt_1UUwC5DlEXWDEeHOuTq753vO]
+2026-10-26 18:16:41  <--  [200] POST http://127.0.0.1:4228 [evt_1UUwC5DlEXWDEeHOuTq753vO]
+2026-10-26 18:16:43   --> charge.refunded [evt_3UUwC3DlEXWDEeHO2pcBnVYT]
+2026-10-26 18:16:43  <--  [200] POST http://127.0.0.1:4228 [evt_3UUwC3DlEXWDEeHO2pcBnVYT]
+2026-10-26 18:16:49   --> checkout.session.completed [evt_1UUwCDDlEXWDEeHOu1DLNGgl]
+2026-10-26 18:16:49  <--  [200] POST http://127.0.0.1:4228 [evt_1UUwCDDlEXWDEeHOu1DLNGgl]
+2026-10-26 18:16:51   --> charge.refunded [evt_3UUwCBDlEXWDEeHO3ZhpPmlS]
+2026-10-26 18:16:51  <--  [200] POST http://127.0.0.1:4228 [evt_3UUwCBDlEXWDEeHO3ZhpPmlS]
+2026-10-26 18:16:58   --> checkout.session.completed [evt_1UUwCMDlEXWDEeHOP7X2vE5h]
+2026-10-26 18:16:58   --> charge.dispute.created [evt_1UUwCMDlEXWDEeHOCCkgWRtu]
+2026-10-26 18:16:58  <--  [200] POST http://127.0.0.1:4228 [evt_1UUwCMDlEXWDEeHOCCkgWRtu]
+2026-10-26 18:16:58  <--  [200] POST http://127.0.0.1:4228 [evt_1UUwCMDlEXWDEeHOP7X2vE5h]
+2026-10-26 18:17:05   --> charge.dispute.closed [evt_1UUwCTDlEXWDEeHOcaC8JJfS]
+2026-10-26 18:17:05  <--  [200] POST http://127.0.0.1:4228 [evt_1UUwCTDlEXWDEeHOcaC8JJfS]
+2026-10-26 18:17:07   --> charge.refunded [evt_3UUwCJDlEXWDEeHO2zBiuUED]
+2026-10-26 18:17:07  <--  [200] POST http://127.0.0.1:4228 [evt_3UUwCJDlEXWDEeHO2zBiuUED]
+2026-10-26 18:17:13   --> charge.dispute.created [evt_1UUwCbDlEXWDEeHOVDHInPDZ]
+2026-10-26 18:17:13   --> checkout.session.completed [evt_1UUwCbDlEXWDEeHO3L96tS6P]
+2026-10-26 18:17:14  <--  [200] POST http://127.0.0.1:4228 [evt_1UUwCbDlEXWDEeHOVDHInPDZ]
+2026-10-26 18:17:14  <--  [200] POST http://127.0.0.1:4228 [evt_1UUwCbDlEXWDEeHO3L96tS6P]
+2026-10-26 18:17:18   --> charge.dispute.closed [evt_1UUwCfDlEXWDEeHOI2uoaCnG]
+2026-10-26 18:17:18  <--  [200] POST http://127.0.0.1:4228 [evt_1UUwCfDlEXWDEeHOI2uoaCnG]
+

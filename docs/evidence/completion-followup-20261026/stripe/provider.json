@@ -1,0 +1,8 @@
+{
+  "database": "disposable loopback",
+  "human_learning": "NOT RUN",
+  "provider_transactions": "NOT RUN",
+  "browser": "Chromium embedded Checkout on Jamloom; muted output",
+  "status": "FAIL",
+  "error": "Expected values to be strictly equal:\n\n503 !== 200\n"
+}

@@ -153,10 +153,12 @@ enum AccountError: LocalizedError {
 }
 struct AccountUser: Decodable, Equatable { let id: String; let email: String }
 struct AccountSnapshot: Decodable {
+    struct Singing: Decodable { let released: Bool; let access: Bool }
     struct Balance: Decodable { let available: Int; let reserved: Int }
     let user: AccountUser
     let balance: Balance
     let purchasesReleased: Bool
+    var singing: Singing? = nil
     var deletionRequest: AccountDeletionRequest? = nil
 }
 struct AccountDeletionRequest: Decodable { let id: UUID; let status: String; let created_at: String }
@@ -166,9 +168,11 @@ struct AccountTaste: Decodable { let profile: TasteProfile; let revision: Int }
     @Published private(set) var snapshot: AccountSnapshot?
     @Published private(set) var busy = false
     @Published private(set) var creditProducts: [Product] = []
+    @Published private(set) var singingProduct: Product?
     @Published var message = ""
     private var revision: Int? = nil
     private let purchases = CreditPurchases()
+    private let singingPurchases = CreditPurchases(course: true)
     private var updates: Task<Void, Never>?
     let transport: AccountTransport
     init(transport: AccountTransport = AccountTransport()) {
@@ -182,7 +186,26 @@ struct AccountTaste: Decodable { let profile: TasteProfile; let revision: Int }
         }
     }
     deinit { updates?.cancel(); transport.session.invalidateAndCancel() }
-    func reset() { snapshot = nil; revision = nil; creditProducts = []; transport.clearCookies() }
+    func reset() { snapshot = nil; revision = nil; creditProducts = []; singingProduct = nil; transport.clearCookies() }
+    var canPurchaseSinging: Bool { CreditPurchases.singingReleased && snapshot?.singing?.released == true }
+    func loadSingingProduct() async {
+        guard canPurchaseSinging else { singingProduct = nil; return }
+        await perform { singingProduct = try await singingPurchases.products().first }
+    }
+    func buySinging() async {
+        guard canPurchaseSinging, let singingProduct else { return }
+        await perform {
+            try await singingPurchases.purchase(singingProduct, accountToken: purchaseToken(), deliver: acknowledgeCourse)
+            try await fetchSnapshot()
+        }
+    }
+    func restoreSinging() async {
+        await perform {
+            try await singingPurchases.restoreCourse(accountToken: purchaseToken(), deliver: acknowledgeCourse)
+            try await fetchSnapshot()
+            message = snapshot?.singing?.access == true ? "Singing Academy purchase restored." : "No active Singing Academy purchase for this account."
+        }
+    }
     var canPurchase: Bool { CreditPurchases.released && snapshot?.purchasesReleased == true }
     func loadProducts() async {
         guard canPurchase else { creditProducts = []; return }
@@ -250,13 +273,21 @@ struct AccountTaste: Decodable { let profile: TasteProfile; let revision: Int }
     }
     private func deliverPurchase(_ result: VerificationResult<StoreKit.Transaction>) async throws {
         let token = try await purchaseToken()
-        try await purchases.deliverVerified(result, accountToken: token, deliver: acknowledgePurchase)
+        if case .verified(let transaction) = result, transaction.productID == CreditPurchases.singingProduct {
+            try await singingPurchases.deliverVerified(result, accountToken: token, deliver: acknowledgeCourse)
+        } else { try await purchases.deliverVerified(result, accountToken: token, deliver: acknowledgePurchase) }
         try await fetchSnapshot()
+    }
+    private func acknowledgeCourse(_ jws: String, _ token: UUID) async throws {
+        struct Receipt: Decodable { let delivered: Bool; let receipt: String }
+        let response: Receipt = try await transport.request("/api/payments/apple", method: "POST", body: JSONSerialization.data(withJSONObject: ["action": "verify-course", "signedTransaction": jws]))
+        guard response.delivered, response.receipt.hasPrefix("apple_sandbox:") || response.receipt.hasPrefix("apple_live:") else { throw URLError(.cannotParseResponse) }
     }
     func retryPurchases() async {
         await perform {
             let token = try await purchaseToken()
             try await purchases.reconcileUnfinished(accountToken: token, deliver: acknowledgePurchase)
+            try await singingPurchases.reconcileUnfinished(accountToken: token, deliver: acknowledgeCourse)
             try await fetchSnapshot()
             message = "Pending purchases checked against your account."
         }

@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { studioSiteShell } from './studio-site-shell.mjs';
+import { studioSiteShell, studioSingingCourse } from './studio-site-shell.mjs';
 import { cp, mkdir, rm, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
@@ -12,6 +12,9 @@ const target = new URL('../public/studio/', import.meta.url);
 await rm(target, { recursive: true, force: true });
 await mkdir(target, { recursive: true });
 await cp(new URL('../../../dist/web/', import.meta.url), target, { recursive: true });
+// Keep scores/lyrics out of public assets and the offline cache; authorized lessons load them separately.
+const course=await readFile(new URL('singing-course.js',target),'utf8');
+await writeFile(new URL('singing-course.js',target),studioSingingCourse(course));
 for (const name of ['index.html', 'dj.html']) {
   const page = new URL(name, target);
   await writeFile(page, studioSiteShell(await readFile(page, 'utf8')));

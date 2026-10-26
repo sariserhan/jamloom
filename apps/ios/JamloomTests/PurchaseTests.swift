@@ -4,6 +4,45 @@ import StoreKitTest
 @testable import Jamloom
 
 @MainActor final class PurchaseTests: XCTestCase {
+    func testSingingFreeLessonGateUsesPackagedCourseIds() throws {
+        let root = try XCTUnwrap(Bundle.main.url(forResource: "Studio", withExtension: nil))
+        let ids = Set(try JSONDecoder().decode([String].self, from: Data(contentsOf: root.appendingPathComponent("singing-free-lessons.json"))))
+        XCTAssertEqual(ids.count, 13); XCTAssertTrue(ids.contains("first-light")); XCTAssertTrue(ids.contains("first-note"))
+        for id in ["first-light", "first-note", "city-lights", "unknown", ""] {
+            let url = URL(string: "http://127.0.0.1/token/singing.html?lesson=\(id)")!
+            XCTAssertEqual(SingingModel.requiresPurchase(url, hasCourse: false, freeLessons: ids), !ids.contains(id))
+            XCTAssertFalse(SingingModel.requiresPurchase(url, hasCourse: true, freeLessons: ids))
+        }
+        XCTAssertFalse(SingingModel.requiresPurchase(URL(string: "http://127.0.0.1/token/singing-home.html"), hasCourse: false, freeLessons: ids))
+    }
+    private func deliveredTransaction(_ product: String) async throws -> VerificationResult<StoreKit.Transaction> {
+        for _ in 0..<50 {
+            if let result = await StoreKit.Transaction.latest(for: product) { return result }
+            try await Task.sleep(for: .milliseconds(100))
+        }
+        throw URLError(.timedOut)
+    }
+    func testSingingCourseRestoreDoesNotDeliverCreditsOrCrossAccounts() async throws {
+        let session = try SKTestSession(configurationFileNamed: "LocalCredits")
+        session.disableDialogs = true; session.clearTransactions()
+        defer { session.clearTransactions() }
+        let course = CreditPurchases(course: true), token = UUID()
+        let products = try await course.products()
+        XCTAssertEqual(products.count, 1); XCTAssertEqual(products.first?.type, .nonConsumable)
+        XCTAssertEqual(products.first?.price, Decimal(39))
+        _ = try await session.buyProduct(identifier: CreditPurchases.singingProduct, options: [.appAccountToken(token)])
+        let result = try await deliveredTransaction(CreditPurchases.singingProduct)
+        do { try await course.deliverVerified(result, accountToken: UUID()) { _, _ in XCTFail("Wrong account delivered") }; XCTFail("Account must match") }
+        catch CreditPurchases.PurchaseError.wrongAccount { }
+        var delivered = 0
+        try await CreditPurchases().reconcileUnfinished(accountToken: token) { _, _ in XCTFail("Course must never deliver credits") }
+        try await course.deliverVerified(result, accountToken: token) { _, _ in delivered += 1 }
+        for await entitlement in StoreKit.Transaction.currentEntitlements {
+            try await course.deliverVerified(entitlement, accountToken: token) { _, _ in delivered += 1 }
+        }
+        XCTAssertEqual(delivered, 2, "Finished non-consumable remains restorable; server deduplicates")
+        XCTAssertFalse(CreditPurchases.singingReleased)
+    }
     func testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding() async throws {
         let session = try SKTestSession(configurationFileNamed: "LocalCredits")
         session.disableDialogs = true; session.clearTransactions()
@@ -13,8 +52,7 @@ import StoreKitTest
         XCTAssertEqual(products.first?.id, product)
         XCTAssertFalse(try XCTUnwrap(products.first).displayPrice.isEmpty)
         let transaction = try await session.buyProduct(identifier: product, options: [.appAccountToken(token)])
-        let latest = await StoreKit.Transaction.latest(for: product)
-        let result = try XCTUnwrap(latest)
+        let result = try await deliveredTransaction(product)
         var delivered = 0
         do {
             try await purchases.deliverVerified(result, accountToken: UUID()) { _, _ in delivered += 1 }

@@ -1,0 +1,53 @@
+{
+  "database": "disposable loopback",
+  "human_learning": "NOT RUN",
+  "provider_transactions": "PASS: Stripe test mode; no funds moved",
+  "browser": "Chromium embedded Checkout on Jamloom; muted output",
+  "started_sessions": [
+    "cs_test_a161RQfULDIsiHHDu1rfM6HY3lLGFU45KdCW7ohQCQmgcU2u2Fi06si2S1",
+    "cs_test_a1PHOqecydrm1DlNnAWuvlaNLIuhdMx6fe2Vk2TtEKw0VnG2wJQ5WfR8OA",
+    "cs_test_a1umiH71jjlduaYDf13IzrpoKALDriyGH8ksipAxqN5o2dTlMPhalewcrC",
+    "cs_test_a1twdwkoCfEqpySH9PWcUhur4DP2WxpatXeBkc7SMk1VYmf7c2CeaaBdmb",
+    "cs_test_a1Ay9rnaWc9iwkCW0AfqgcE71lnzVy7XGpdlc7btTRXvaD85vgXcjKtjcv"
+  ],
+  "close_and_reopen": "PASS: same session",
+  "declined_payment": "PASS",
+  "refund_before_grant": {
+    "status": "PASS",
+    "session": "cs_test_a1umiH71jjlduaYDf13IzrpoKALDriyGH8ksipAxqN5o2dTlMPhalewcrC",
+    "refund": "re_3UUwCBDlEXWDEeHO3Y9KU9dY",
+    "ordering": "genuine signed provider grant delayed by test proxy until refund processed"
+  },
+  "dispute_cases": [
+    {
+      "session": "cs_test_a1twdwkoCfEqpySH9PWcUhur4DP2WxpatXeBkc7SMk1VYmf7c2CeaaBdmb",
+      "dispute": "du_1UUwCKDlEXWDEeHOubPIhR3N",
+      "outcome": "won",
+      "status": "PASS"
+    },
+    {
+      "session": "cs_test_a1Ay9rnaWc9iwkCW0AfqgcE71lnzVy7XGpdlc7btTRXvaD85vgXcjKtjcv",
+      "dispute": "du_1UUwCaDlEXWDEeHOnBkMSCkl",
+      "outcome": "lost",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS",
+  "account": "acct_1TxA3vDlEXWDEeHO",
+  "sessions": [
+    "cs_test_a161RQfULDIsiHHDu1rfM6HY3lLGFU45KdCW7ohQCQmgcU2u2Fi06si2S1",
+    "cs_test_a1PHOqecydrm1DlNnAWuvlaNLIuhdMx6fe2Vk2TtEKw0VnG2wJQ5WfR8OA"
+  ],
+  "refunds": [
+    "re_3UUwBrDlEXWDEeHO3JgL6TOe",
+    "re_3UUwC3DlEXWDEeHO2JQGFLmn"
+  ],
+  "signed_provider_delivery": "PASS via Stripe CLI to actual HTTP handler",
+  "duplicate_real_event_replay": "PASS (captured payload signed again locally)",
+  "invalid_signature": "PASS",
+  "wrong_owner": "PASS",
+  "repurchase": "PASS",
+  "generation_credits": 0,
+  "live_payments": "NOT RUN",
+  "disputes": "PASS: actual Stripe test-mode win and loss, real signed deliveries"
+}

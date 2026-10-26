@@ -1,0 +1,19 @@
+{
+  "gate": "PASS",
+  "bundle_identifier": "com.djayvo.app",
+  "version": "0.10.2",
+  "build": "26",
+  "minimum_os": "17.0",
+  "binary_sha256": "82370170c19e6c8e926b8a160cc5b5620bc903c0a48916bbc1447427df085cfa",
+  "bundle_bytes": 108413376,
+  "private_audio_and_debug_controls_absent": "PASS",
+  "license_notices": "PASS",
+  "privacy_manifest": "PASS",
+  "app_store_approval": "NOT RUN",
+  "scope": "Static bundle checks; signing, physical behavior and compliance require separate evidence.",
+  "ipaSha256": "0cf52f69bdcd13dc6cee38b221a4aeb6e6e9908d0ca6d84946efc2501b6b44c0",
+  "ipaBytes": 79336063,
+  "exportedSignature": "PASS",
+  "installed": "NOT RUN",
+  "uploaded": false
+}

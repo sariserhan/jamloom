@@ -1,0 +1,15 @@
+{
+  "database": "disposable loopback",
+  "human_learning": "NOT RUN",
+  "provider_transactions": "NOT RUN",
+  "browser": "Chromium embedded Checkout on Jamloom; muted output",
+  "started_sessions": [
+    "cs_test_a1xEyaTNyEhiOxjc3Edt7ozJCz695hZ9eORn5zi7CY5iWWJQHVsRuDSdFn",
+    "cs_test_a12n00tXCgFE8WuobuAgYdJL7SxgNlHI2XDgjm6panOdHV6PvlNmtd0uP4",
+    "cs_test_a1SJV0j61xdhhdDFUGYzHTF1FsFycM2xGjsy3c0T1suJ9cz1GnhB6TxTZu"
+  ],
+  "close_and_reopen": "PASS: same session",
+  "declined_payment": "PASS",
+  "status": "FAIL",
+  "error": "locator.waitFor: Timeout 90000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.checkout-confirmation') to be visible\u001b[22m\n"
+}

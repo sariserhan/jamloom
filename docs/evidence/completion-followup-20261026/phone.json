@@ -1,0 +1,20 @@
+{
+  "gate": "PASS",
+  "bundle_identifier": "com.djayvo.app",
+  "version": "0.10.2",
+  "build": "26",
+  "minimum_os": "17.0",
+  "binary_sha256": "f5eccfd20926af5d09cbdf38739ca461c005b44e7fa16d203756d24298085901",
+  "bundle_bytes": 108413713,
+  "private_audio_and_debug_controls_absent": "PASS",
+  "license_notices": "PASS",
+  "privacy_manifest": "PASS",
+  "app_store_approval": "NOT RUN",
+  "scope": "Static bundle checks; signing, physical behavior and compliance require separate evidence.",
+  "ipaPath": "build-ios-store/export-0.10.2-26-final/Jamloom.ipa",
+  "ipaSha256": "ad86de6b9863a612475ab96aa8057048dab1efcfcfc013c2f49c867f419c66c8",
+  "ipaBytes": 79336260,
+  "exportedSignature": "PASS",
+  "installed": "NOT RUN: device tunnel failed",
+  "uploaded": false
+}

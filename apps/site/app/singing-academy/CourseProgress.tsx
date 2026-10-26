@@ -1,10 +1,6 @@
-'use client';
-import {useEffect,useState} from 'react';
-import {readProgress,singingLessons,singingSongs,stages,songStages} from '../../../web/singing-course.js';
+import {singingLessons,singingSongs,stages,songStages} from '../../../web/singing-course.js';
+import CourseProgressClient from './CourseProgressClient';
 export default function CourseProgress({warmups=false}:{warmups?:boolean}){
- const collection=warmups?singingLessons:singingSongs;
- const [progress,setProgress]=useState<Record<string,{best:number;attempts:number;passed:boolean}>>({});
- useEffect(()=>{const refresh=()=>{try{setProgress(readProgress(localStorage));}catch{}};refresh();window.addEventListener('storage',refresh);window.addEventListener('pageshow',refresh);return()=>{window.removeEventListener('storage',refresh);window.removeEventListener('pageshow',refresh);};},[]);
- const completed=collection.filter(l=>progress[l.id]?.passed).length,next=collection.find(l=>!progress[l.id]?.passed)||collection[0];
- return <><section className="product-panel"><p className="eyebrow">{warmups?'Notes & warm-ups':'Your singing progress'}</p><h2>{completed===collection.length?'Section complete':`${completed} of ${collection.length} ${warmups?'warm-ups':'songs'} complete`}</h2><progress aria-label="Course completion" value={completed} max={collection.length}/><p className="muted">Progress stays in this browser. Every lesson stays open for unlimited practice.</p><a className="primary" href={'/singing-academy/lessons/'+next.id}>{completed===collection.length?'Practice again':'Continue learning'} →</a></section>{(warmups?stages:songStages).map((stage,index)=><section className="product-panel" key={stage}><p className="eyebrow">{warmups?`Warm-up group ${index+1}`:`Song stage ${index+1}`}</p><h2>{stage}</h2><div className="feature-list">{collection.filter(l=>warmups?l.stage===index:('level' in l&&l.level===index)).map(l=><article key={l.id}><div><p className="eyebrow" aria-hidden="true">{l.symbol}</p><h3>{l.title}</h3><p>{'style' in l?`${l.style} · ${'focus' in l?l.focus:''}`:l.instruction}</p></div><div><p>{progress[l.id]?.passed?'✓ Complete':progress[l.id]?`Best match: ${progress[l.id].best}%`:'Ready to try'}</p><a href={'/singing-academy/lessons/'+l.id}>{progress[l.id]?.passed?'Practice again':warmups?'Open warm-up':'Sing this song'} →</a></div></article>)}</div></section>)}</>;
+ const collection=(warmups?singingLessons:singingSongs).map(l=>({id:l.id,title:l.title,symbol:l.symbol,stage:l.stage,instruction:l.instruction,...('level' in l?{level:l.level,style:l.style,focus:l.focus}:{})}));
+ return <CourseProgressClient warmups={warmups} collection={collection} stages={warmups?stages:songStages}/>;
 }

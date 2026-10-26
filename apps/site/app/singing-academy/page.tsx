@@ -1,4 +1,4 @@
-import {singingOffer} from '../../../web/singing-course.js';
+import {singingOffer} from '../../../web/singing-offer.js';
 import {pageMetadata} from '../../lib/product';
 import CourseProgress from './CourseProgress';
 export const metadata=pageMetadata('Singing Academy: Sing Songs with Live Pitch Feedback','Sing original Jamloom practice songs with lyrics, a band arrangement and a moving live pitch display. Optional note warm-ups stay together in one section.','/singing-academy');

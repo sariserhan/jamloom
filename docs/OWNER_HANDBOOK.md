@@ -1,3 +1,9 @@
+## Current local course and deletion follow-up — 2026-10-26
+
+See [completion follow-up](COMPLETION_FOLLOWUP.md) for current evidence. Both http://localhost:3000 and http://127.0.0.1:3008 now run the current built preview with an isolated local database; old database contents are preserved. Singing is $39 once; purchases stay closed. Stripe test payments now unlock protected course content and refunds remove access. The phone uses a separate non-consumable course receipt, restore and course access; do not enable it before the matching server and real Apple sandbox qualification. Neither course purchase grants generation credits.
+
+Real disposable R2 cleanup and interrupted 1,000-track operator recovery pass. For customer deletion, continue to require the actual account-holder ticket, exact target, worker shutdown and upload-expiry wait; the tests do not authorize deleting a customer. Local preview progress/device files and external backups remain separate.
+
 ## Local candidate and $39 Singing Academy — 2026-10-26
 
 [Current readiness and release procedure](LOCAL_RELEASE_READINESS.md). Use http://127.0.0.1:3008 for the new isolated local preview; port 3000 remains the older stable preview. Singing Academy is planned at **$39 USD one-time before tax**, with the original-song preview still free. DJ Academy and Pro prices are unchanged. No public or paid capability was activated.

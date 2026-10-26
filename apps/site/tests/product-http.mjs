@@ -31,6 +31,7 @@ try{
  const accountResponse=await api('/api/account',{cookie:alice});assert.equal(accountResponse.status,200);
  assert.match(accountResponse.headers.get('cache-control'),/private.*no-store/);
  const snapshot=await accountResponse.json();assert.equal(snapshot.user.email,'alice@example.test');assert.deepEqual(snapshot.balance,{available:0,reserved:0});assert.equal(snapshot.purchasesReleased,false);
+ assert.deepEqual(snapshot.singing,{released:false,access:false});
  assert.equal((await (await api('/api/account',{cookie:bob})).json()).user.email,'bob@example.test');
  result.checks.push('native account balance endpoint authenticates, isolates users and never enables purchases');
  assert.equal((await api('/api/taste')).status,401);
@@ -62,6 +63,8 @@ try{
  assert.equal((await api(singing,{method:'POST',cookie:alice,body:{key:randomUUID()}})).status,503);
  const singer=(await pool.query('SELECT id FROM "user" WHERE email=$1',['alice@example.test'])).rows[0].id;
  await pool.query("INSERT INTO academy_purchases(receipt,owner_id,product_key,price_id,payment_intent,amount_cents,currency,sandbox) VALUES('cs_singing_http',$1,'singing-complete','price_singing_http','pi_singing_http',3900,'usd',true)",[singer]);
+ assert.deepEqual((await(await api('/api/account',{cookie:alice})).json()).singing,{released:false,access:true});
+ assert.deepEqual((await(await api('/api/account',{cookie:bob})).json()).singing,{released:false,access:false});
  assert.equal((await(await api(singing+'&session_id=cs_singing_http',{cookie:alice})).json()).status,'active');
  assert.equal((await(await api(singing+'&session_id=cs_singing_http',{cookie:bob})).json()).status,'pending');
  assert.equal((await(await api('/api/academy/checkout?session_id=cs_singing_http',{cookie:alice})).json()).status,'pending');

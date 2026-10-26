@@ -21,6 +21,14 @@ for(const [name,type] of [['chromium',chromium],['webkit',webkit]]){
  });
 
  await page.goto(base+'/singing-academy');assert.match(await page.title(),/Singing Academy/);await page.waitForFunction(()=>document.querySelectorAll('#course h3').length===8);assert.deepEqual((await new AxeBuilder({page}).analyze()).violations.map(v=>v.id),[]);await page.screenshot({path:output+'/'+name+'-course.png',fullPage:true});
+ await page.route('**/api/singing-course',async route=>{
+  const response=await route.fetch(),source=await response.text();
+  const songs=JSON.parse(source.match(/export const singingSongs=(.*);/)[1]);
+  await route.fulfill({response,body:source.replace(/export const singingSongs=(.*);/,`export const singingSongs=${JSON.stringify(songs.filter(s=>s.id==='first-light'))};`)});
+ });
+ await page.goto(base+'/singing-academy/lessons/first-light');
+ await page.evaluate(async()=>{const m=await import('/studio/singing-course.js');if(m.singingSongs.length!==1)throw Error('Expected restricted lesson content');localStorage.setItem(m.progressKey,JSON.stringify({'city-lights':{best:91,attempts:2,passed:true}}));m.saveAttempt(localStorage,'first-light',{score:70,passed:false});if(m.readProgress(localStorage)['city-lights']?.best!==91)throw Error('Paid progress lost');localStorage.removeItem(m.progressKey);});
+ await page.unroute('**/api/singing-course');
  const exercised=[];
  for(const id of (name==='chromium'?['first-note','step-up','pulse','final-performance']:['first-note','first-melody'])){
   console.log(name,id);await page.goto(base+'/singing-academy/lessons/'+id);await page.waitForSelector('#start');

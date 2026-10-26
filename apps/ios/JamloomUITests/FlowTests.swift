@@ -494,6 +494,10 @@ final class FlowTests: XCTestCase {
         let app = XCUIApplication(); app.launchArguments = ["--ui-testing"]
         app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
         app.launch(); app.buttons["Sing"].firstMatch.tap()
+        let course = app.buttons["Course"].firstMatch
+        XCTAssertTrue(course.waitForExistence(timeout: 10)); course.tap()
+        XCTAssertTrue(app.staticTexts["Free preview. Course sales are not open yet."].waitForExistence(timeout: 5))
+        app.buttons["Done"].tap()
         let song = app.webViews.links.matching(NSPredicate(format: "label CONTAINS %@", "First Light")).firstMatch
         XCTAssertTrue(song.waitForExistence(timeout: 20)); song.tap()
         let demo = app.webViews.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Hear song")).firstMatch

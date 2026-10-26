@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-26T22:11:00Z",
+  "access": "read only; no App Store mutations",
+  "app": {
+    "id": "6826480059",
+    "name": "Jamloom",
+    "bundleId": "com.djayvo.app"
+  },
+  "draft": {
+    "version": "0.10.2",
+    "state": "PREPARE_FOR_SUBMISSION"
+  },
+  "products": [
+    {
+      "id": "6826479674",
+      "productId": "com.jamloom.credits.starter",
+      "state": "MISSING_METADATA"
+    },
+    {
+      "id": "6826480115",
+      "productId": "com.jamloom.credits.creator",
+      "state": "MISSING_METADATA"
+    },
+    {
+      "id": "6826480267",
+      "productId": "com.jamloom.credits.studio",
+      "state": "MISSING_METADATA"
+    }
+  ],
+  "singingProductExists": false
+}

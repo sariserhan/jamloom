@@ -1,4 +1,4 @@
-import {singingOffer} from '../../web/singing-course.js';
+import {singingOffer} from '../../web/singing-offer.js';
 // Shared product descriptions for the homepage and the public coming-soon page.
 export const homeProducts = [
   {slug:'academy',href:'/academy',intent:'Learn to DJ',symbol:'◎',badge:'Free first lesson',previewWidth:1376,previewHeight:957,previewAlt:'Two practice decks with vinyl platters, EQ and a crossfader',name:'DJ Academy',headline:'Your first mix starts here.',description:'Follow a lesson. Blend two tracks. Hear your progress.',highlights:['Start with a guided beginner lesson','Practise transitions at your own pace','Record a set and hear your progress'],action:'Learn to DJ',availability:'Free beginner lesson. Full-course sales are not open yet.'},

@@ -2,6 +2,7 @@
 """Package the audited shared performance console for the native iOS app."""
 from pathlib import Path
 import shutil
+import subprocess
 from verify_web_bundle import verify
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,6 +27,10 @@ def prepare():
     for route in ['report-bug', 'licenses']:
         html = html.replace('href="/' + route + '"', 'href="https://jamloom.com/' + route + '"')
     singing.write_text(html)
+    # The native navigation gate reads the same free lesson IDs as the web course.
+    free_ids = subprocess.check_output(['node', '--input-type=module', '-e',
+        "import {singingLessons} from './apps/web/singing-course.js'; console.log(JSON.stringify([...singingLessons.map(l=>l.id),'first-light']))"], cwd=ROOT)
+    (target / 'singing-free-lessons.json').write_bytes(free_ids)
     print('Prepared audited native DJ studio and Singing Academy.')
 
 if __name__ == '__main__':

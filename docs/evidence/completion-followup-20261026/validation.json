@@ -1,0 +1,35 @@
+{
+  "status": "PASS scoped tests; PARTIAL overall readiness",
+  "websiteDeployment": false,
+  "appUpload": false,
+  "livePayments": false,
+  "newGPUCompute": false,
+  "siteTests": 160,
+  "integrationTests": 10,
+  "sharedSingingTests": 16,
+  "simulatorTests": 4,
+  "stripe": "stripe-final/provider.json",
+  "r2Deletion": "r2-deletion.log",
+  "largeAccountRecovery": "purge-scale.log",
+  "singingBrowser": "singing-preservation/browser.json",
+  "productBrowser": "products/browser.json",
+  "physicalPhone": "NOT RUN: device tunnel failed; reconnect requested",
+  "physicalMicLatency": "NOT RUN",
+  "popularSongs": "BLOCKED: no verified supplier rights/assets",
+  "sources": {
+    "apps/site/lib/apple-course.ts": "bbd1d49ce731bd9238daf0db0aafcd789e8fbf7ee7da732a3a83bfcc5050227e",
+    "apps/site/lib/singing-access.ts": "becaff077d2b3f18fe224ac3ee1436ee5b3e1826c6d5452483237887c451975a",
+    "apps/web/singing-progress.js": "10b6962335e730526fb17893024c1143b2bbe9bea368724a824f4ea0df10e4c5",
+    "apps/ios/Jamloom/CreditPurchases.swift": "5cd888f4b5cb39f748f737cc8b31f823ab039891f544ebd7a3a032be9ac7e243",
+    "apps/ios/Jamloom/SingingAcademy.swift": "c0cbfc7534b12fd91e0206ed4da0df87000d17141c816b09b14dc9cb3f9e1eb8"
+  },
+  "browserFallback": "Existing Playwright suites: Browser skill runtime (Node REPL) unavailable in this session",
+  "localPreview": [
+    "http://localhost:3000",
+    "http://127.0.0.1:3008"
+  ],
+  "pitchBenchmark": "pitch-benchmark.json",
+  "phonePackage": "phone.json",
+  "stripeCleanup": "stripe-cleanup.json",
+  "appStore": "apple-read-only.json"
+}

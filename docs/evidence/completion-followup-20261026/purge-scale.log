@@ -1,0 +1,17 @@
+TAP version 13
+# PASS 1,000 tracks / 2,000 files, interruption after 500 removals, operator resume and unrelated-file preservation
+# Subtest: large-account partial deletion resumes through the operator command without deleting another account
+ok 1 - large-account partial deletion resumes through the operator command without deleting another account
+  ---
+  duration_ms: 3316.444125
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4834.093583

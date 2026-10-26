@@ -2,6 +2,7 @@ import {accountsConfigured,services} from '../../../../lib/services';
 import {boundedAuthRequest} from '../../../../lib/bounded-request';
 import {Wallet} from '../../../../lib/wallet';
 import {appleVerifier,appleEnvironment,fulfillApple} from '../../../../lib/apple-payments';
+import {grantAppleCourse} from '../../../../lib/apple-course';
 export const runtime='nodejs';
 export async function POST(request:Request){
  if(!accountsConfigured())return Response.json({error:'Accounts unavailable'},{status:503});
@@ -13,7 +14,8 @@ export async function POST(request:Request){
  try{
   const body=await bounded.json(),wallet=new Wallet(pool,environment==='Production');
   if(body.action==='account-token'&&Object.keys(body).length===1)return Response.json({appAccountToken:await wallet.accountToken(session.user.id)});
-  if(body.action!=='verify'||typeof body.signedTransaction!=='string'||Object.keys(body).length!==2)throw new Error('Invalid request');
+  if(!['verify','verify-course'].includes(body.action)||typeof body.signedTransaction!=='string'||Object.keys(body).length!==2)throw new Error('Invalid request');
+  if(body.action==='verify-course')return Response.json({delivered:true,receipt:await grantAppleCourse(verifier,pool,session.user.id,body.signedTransaction,process.env.APPLE_BUNDLE_ID!,environment)});
   const id=await fulfillApple(verifier,wallet,session.user.id,body.signedTransaction,process.env.APPLE_BUNDLE_ID!,environment);
   return Response.json({delivered:true,lotId:id});
  }catch{return Response.json({error:'Transaction not delivered. Keep it unfinished and retry after checking the account and purchase configuration.'},{status:400});}

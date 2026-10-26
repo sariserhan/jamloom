@@ -21,7 +21,7 @@ struct JamloomApp: App {
             MusicDNAView(model: model, account: account, cloud: dnaCloud).safeAreaInset(edge: .bottom, spacing: 0) { PlaybackBar(model: model) }.tabItem { Label("Music DNA", systemImage: "music.note.list") }
             DJDeckView(decks: decks, model: model).tabItem { Label("DJ Deck", systemImage: "opticaldisc") }
             SongLibraryView(account: account, model: model).tabItem { Label("Community", systemImage: "music.note.house.fill") }
-            SingingAcademyView(singing: singing, model: model, decks: decks).tabItem { Label("Sing", systemImage: "mic.fill") }
+            SingingAcademyView(singing: singing, model: model, decks: decks, account: account).tabItem { Label("Sing", systemImage: "mic.fill") }
         }
             .onChange(of: scenePhase) { _, phase in
                 model.foreground = phase == .active

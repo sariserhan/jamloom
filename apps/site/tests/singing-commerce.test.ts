@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {randomUUID} from 'node:crypto';import type Stripe from 'stripe';
-import {singingOffer} from '../../web/singing-course.js';import {academyProductKey} from '../lib/academy-products';
+import {singingOffer} from '../../web/singing-offer.js';import {academyProductKey} from '../lib/academy-products';
 import {billingReadiness,billingEnvironment} from '../lib/billing-mode';import {AcademyStore} from '../lib/academy-store';
 import {verifiedAcademyPrice,academyCheckout,grantAcademy,academyWebhook} from '../lib/academy-payments';
 import {createPool} from '../lib/database';import {migrate} from '../lib/migrations';

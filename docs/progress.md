@@ -1,3 +1,16 @@
+## Completion follow-up — 2026-10-26
+
+**PARTIAL overall; no publication.** [Current follow-up](COMPLETION_FOLLOWUP.md) closes Singing test payments/access and deletion qualification while retaining external release gates.
+
+- [x] Qualify real Stripe test-mode $39 course purchase, signed receipt, access, refunds, delayed grant and win/loss disputes; archive disposable provider products.
+- [x] Keep paid lyrics/scores out of public client assets; authorize content and lesson routes while preserving the held-sales free preview.
+- [x] Add Apple course receipt/refund handling and native purchase/restore with course/credit/account isolation; pass local StoreKit tests.
+- [x] Qualify real disposable R2 deletion and 1,000-track operator recovery after a mid-delete interruption; preserve unrelated content.
+- [ ] Finish the new build's physical phone check after the device connection is restored.
+- [ ] Complete Apple metadata/reviewer setup and real sandbox/server delivery; keep paid flags closed.
+- [ ] Retain physical singing latency, broader musical quality/capacity and popular-song rights as unclosed evidence gates; no fresh GPU authorization is inferred.
+- [ ] Publish only after a later explicit instruction.
+
 ## Local release readiness and Singing Academy $39 — 2026-10-26
 
 **PARTIAL overall; publication explicitly held.** [Current readiness report](LOCAL_RELEASE_READINESS.md) distinguishes the tested local candidate from paid and licensed release gates.

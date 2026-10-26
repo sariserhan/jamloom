@@ -13,3 +13,9 @@ export function studioSiteShell(html) {
   return html.replace('</body>','<footer><a href="/report-bug">Report a bug</a></footer></body>').replace(original, `${header}<div class="studio-page-tools">${mode}<nav aria-label="Studio shortcuts">${back}${shortcuts}</nav></div>`)
     .replace('Save the app in local remixes → Privacy &amp; credits for offline preparation', 'Open <a href="/pro">your Pro account</a> → Use the web studio offline to prepare offline access');
 }
+
+export function studioSingingCourse(course){
+ const lessons=course.indexOf('export const singingLessons=['),helpers=course.indexOf('export const lessonById='),songs=course.indexOf('// Original practice songs with lyrics');
+ if(lessons<0||helpers<=lessons||songs<=helpers)throw Error('Singing course layout changed; review protected delivery');
+ return course.slice(0,lessons)+"import {singingLessons,singingSongs} from '/api/singing-course';\nexport {singingLessons,singingSongs};\n"+course.slice(helpers,songs);
+}

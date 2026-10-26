@@ -1,6 +1,8 @@
 import { Environment,SignedDataVerifier,Type, type JWSTransactionDecodedPayload } from '@apple/app-store-server-library';
 import {CREDIT_PACKS} from './economics';
 import {Wallet} from './wallet';
+import type {Pool} from 'pg';
+import {singingAppleProduct,revokeAppleCourse} from './apple-course';
 const products={
  'com.jamloom.credits.starter':CREDIT_PACKS.starter,
  'com.jamloom.credits.creator':CREDIT_PACKS.creator,
@@ -36,13 +38,18 @@ export async function fulfillApple(verifier:SignedDataVerifier,wallet:Wallet,own
 
 // Both notification and nested transaction must verify in the configured environment.
 export async function reconcileAppleNotification(verifier:Pick<SignedDataVerifier,'verifyAndDecodeNotification'|'verifyAndDecodeTransaction'>,
- wallet:Pick<Wallet,'freezePurchase'>,signedPayload:string,bundle:string,environment:AppleEnvironment=Environment.SANDBOX){
+ wallet:Pick<Wallet,'freezePurchase'>,signedPayload:string,bundle:string,environment:AppleEnvironment=Environment.SANDBOX,pool?:Pool){
  const notice=await verifier.verifyAndDecodeNotification(signedPayload);
  if(notice.version!=='2.0'||typeof notice.notificationUUID!=='string'||!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(notice.notificationUUID)||typeof notice.notificationType!=='string'||!notice.notificationType||
     notice.data?.environment!==environment||notice.data.bundleId!==bundle)throw new Error('Invalid Apple notification');
- if(notice.notificationType==='REFUND'){
+ if(notice.notificationType==='REFUND'||notice.notificationType==='REVOKE'){
   if(!notice.data.signedTransactionInfo)throw new Error('Missing refund transaction');
   const tx=await verifier.verifyAndDecodeTransaction(notice.data.signedTransactionInfo);
+  if(tx.productId===singingAppleProduct){
+   if(!pool)throw Error('Course storage unavailable');
+   await revokeAppleCourse(pool,tx,bundle,environment);
+   return {id:notice.notificationUUID,type:notice.notificationType,manualReview:false};
+  }
   if(tx.environment!==environment||tx.bundleId!==bundle||tx.type!==Type.CONSUMABLE||
      !products[tx.productId as keyof typeof products]||!tx.transactionId||tx.transactionId.length>255||
      !Number.isSafeInteger(tx.revocationDate)||(tx.revocationDate??0)<=0)throw new Error('Invalid refund transaction');

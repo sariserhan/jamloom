@@ -1,3 +1,5 @@
+Latest follow-up: [verified Singing test purchases/access, Apple restore preparation and real disposable deletion](COMPLETION_FOLLOWUP.md). This supersedes the dated preparation note below; publication remains held. Both local ports now serve the current built candidate with an isolated preview database.
+
 Latest local preparation: [Singing Academy $39, account deletion, lazy ratings and build 25](LOCAL_RELEASE_READINESS.md). Publication remains held; this does not close the open paid/licensed/quality gates below.
 
 # Release acceptance — current local candidate, 2026-10-26

@@ -1,4 +1,4 @@
-import {singingOffer} from '../../web/singing-course.js';
+import {singingOffer} from '../../web/singing-offer.js';
 export const guides={
  'how-to-become-a-dj':{title:'How to become a DJ: start learning on your laptop',description:'Learn how to start DJing: understand the decks, practise your first transition, choose tracks and record a short set. Begin with a free Jamloom lesson.',paragraphs:[
  'Start with music you enjoy and a simple goal: make two tracks flow together. Becoming a DJ takes listening and practice. You can begin learning the controls on a laptop before deciding whether you want a physical controller.',

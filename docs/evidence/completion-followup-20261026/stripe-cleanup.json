@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "product": "prod_VVy7sy2T2fvFsm",
+      "active": false,
+      "prices": [
+        {
+          "id": "price_1UUwBiDlEXWDEeHOljaHLOxS",
+          "active": false,
+          "cents": 3900,
+          "currency": "usd",
+          "live": false
+        }
+      ]
+    },
+    {
+      "product": "prod_VVy5NIGldBHsve",
+      "active": false,
+      "prices": [
+        {
+          "id": "price_1UUw8sDlEXWDEeHOZL1P11ue",
+          "active": false,
+          "cents": 3900,
+          "currency": "usd",
+          "live": false
+        }
+      ]
+    },
+    {
+      "product": "prod_VVy4lpvr5pT40E",
+      "active": false,
+      "prices": [
+        {
+          "id": "price_1UUw8TDlEXWDEeHOVeQfKOtM",
+          "active": false,
+          "cents": 3900,
+          "currency": "usd",
+          "live": false
+        }
+      ]
+    },
+    {
+      "product": "prod_VVy4fxQoYbZfl4",
+      "active": false,
+      "prices": [
+        {
+          "id": "price_1UUw8LDlEXWDEeHOaWDUr8cC",
+          "active": false,
+          "cents": 3900,
+          "currency": "usd",
+          "live": false
+        }
+      ]
+    },
+    {
+      "product": "prod_VVy3BEEFXhSf1G",
+      "active": false,
+      "prices": [
+        {
+          "id": "price_1UUw7nDlEXWDEeHO1hqxRsgt",
+          "active": false,
+          "cents": 3900,
+          "currency": "usd",
+          "live": false
+        }
+      ]
+    }
+  ],
+  "sessions": [
+    {
+      "id": "cs_test_a161RQfULDIsiHHDu1rfM6HY3lLGFU45KdCW7ohQCQmgcU2u2Fi06si2S1",
+      "status": "complete"
+    },
+    {
+      "id": "cs_test_a1PHOqecydrm1DlNnAWuvlaNLIuhdMx6fe2Vk2TtEKw0VnG2wJQ5WfR8OA",
+      "status": "complete"
+    },
+    {
+      "id": "cs_test_a1umiH71jjlduaYDf13IzrpoKALDriyGH8ksipAxqN5o2dTlMPhalewcrC",
+      "status": "complete"
+    },
+    {
+      "id": "cs_test_a1twdwkoCfEqpySH9PWcUhur4DP2WxpatXeBkc7SMk1VYmf7c2CeaaBdmb",
+      "status": "complete"
+    },
+    {
+      "id": "cs_test_a1Ay9rnaWc9iwkCW0AfqgcE71lnzVy7XGpdlc7btTRXvaD85vgXcjKtjcv",
+      "status": "complete"
+    },
+    {
+      "id": "cs_test_a1xEyaTNyEhiOxjc3Edt7ozJCz695hZ9eORn5zi7CY5iWWJQHVsRuDSdFn",
+      "status": "complete"
+    },
+    {
+      "id": "cs_test_a12n00tXCgFE8WuobuAgYdJL7SxgNlHI2XDgjm6panOdHV6PvlNmtd0uP4",
+      "status": "complete"
+    },
+    {
+      "id": "cs_test_a1SJV0j61xdhhdDFUGYzHTF1FsFycM2xGjsy3c0T1suJ9cz1GnhB6TxTZu",
+      "status": "expired"
+    }
+  ]
+}

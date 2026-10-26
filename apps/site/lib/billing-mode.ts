@@ -1,5 +1,5 @@
 import {academyProductKey,type AcademyProduct} from './academy-products';
-import {singingOffer} from '../../web/singing-course.js';
+import {singingOffer} from '../../web/singing-offer.js';
 import Stripe from 'stripe';
 import type {BillingMode} from './site-settings';
 import {paidGenerationReleased} from './product';

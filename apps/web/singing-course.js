@@ -1,4 +1,4 @@
-export const singingOffer=Object.freeze({priceCents:3900,currency:'USD',billing:'one-time',salesReleased:false});
+export {singingOffer} from './singing-offer.js';
 export const songStages=['Start singing','Build control','Rhythm & range','Independent performance'];
 export const stages=['Find your voice','Move between notes','Sing in time','Put it together'];
 // Original Jamloom exercises: semitone offsets and beat lengths, never imported songs.
@@ -29,10 +29,9 @@ export function weakestSection(lesson,details){
  for(let i=0;i<phrase.length;i++){const n=phrase[i],section=Math.floor((n.at-4)/16);if(n.note!==null&&section>=0&&section<4){totals[section]+=Math.max(0,Math.min(1,details[i]?.coverage||0));counts[section]++;}}
  return totals.map((value,i)=>value/Math.max(1,counts[i])).indexOf(Math.min(...totals.map((value,i)=>value/Math.max(1,counts[i]))));
 }
-export const progressKey='jamloom.singing.course.v1';
-export function readProgress(storage){
- try{const parsed=JSON.parse(storage.getItem(progressKey)||'{}'),clean={};for(const l of [...singingLessons,...singingSongs]){const row=parsed?.[l.id];if(row&&Number.isInteger(row.best)&&row.best>=0&&row.best<=100&&Number.isInteger(row.attempts)&&row.attempts>0&&row.attempts<=1000000&&typeof row.passed==='boolean')clean[l.id]={best:row.best,attempts:row.attempts,passed:row.passed};}if(storage.getItem('jamloom.singing.first-note.v1')==='passed'&&!clean['first-note'])clean['first-note']={best:100,attempts:1,passed:true};return clean;}catch{return {};}
-}
+export {progressKey} from './singing-progress.js';
+import {progressKey,readProgress as readSavedProgress} from './singing-progress.js';
+export const readProgress=storage=>readSavedProgress(storage);
 export function saveAttempt(storage,id,result){
  if(!lessonById(id)||!Number.isFinite(result.score)||result.score<0||result.score>100||typeof result.passed!=='boolean')throw Error('Invalid practice result');
  const progress=readProgress(storage),old=progress[id];progress[id]={best:Math.max(old?.best||0,Math.round(result.score)),attempts:Math.min(1000000,(old?.attempts||0)+1),passed:!!old?.passed||result.passed};storage.setItem(progressKey,JSON.stringify(progress));return progress;

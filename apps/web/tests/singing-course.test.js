@@ -42,3 +42,12 @@ test('all curriculum sections preserve the source lyric index and cannot include
  for(const song of singingSongs)for(let section=0;section<4;section++){const phrase=phraseFor(song,57,song.tempo,section),beat=60/song.tempo;assert.equal(phrase.filter(n=>n.lyric).length,12);assert(Math.abs(phrase.at(-1).at+phrase.at(-1).duration-24*beat)<1e-6);for(const n of phrase.filter(n=>n.lyric))assert.equal(n.lyric,song.lyrics[n.sourceIndex]);assert.doesNotThrow(()=>new SingingScore(rate,0,songScore(song,phrase,57,rate,1,true)));const g=new SingingPhrase(phrase,rate,0);for(let f=0;f<(24*beat+.1)*rate;f+=480){const n=phrase.find(n=>f/rate>=n.at&&f/rate<n.at+n.duration);g.observe(f,measured(n?.note??null));}assert(g.result().passed,song.id);}
  const song=singingSongs[0],phrase=phraseFor(song,57,60),details=phrase.map(n=>({coverage:n.at>=36&&n.at<52?0:1}));assert.equal(weakestSection(song,details),2);assert.throws(()=>phraseFor(song,57,80,4));assert.throws(()=>phraseFor(singingLessons[0],57,80,0));
 });
+
+ test('restricted lesson delivery preserves valid paid progress when a free lesson is saved',async()=>{
+ const {progressIds,readProgress:readStored}=await import('../singing-progress.js');
+ assert.deepEqual([...progressIds].sort(),[...singingLessons,...singingSongs].map(l=>l.id).sort());
+ const values=new Map([[progressKey,JSON.stringify({'city-lights':{best:91,attempts:2,passed:true},unknown:{best:99,attempts:1,passed:true}})]]),storage={getItem:k=>values.get(k),setItem:(k,v)=>values.set(k,v)};
+ assert.equal(readStored(storage,['first-light'])['city-lights'],undefined);
+ saveAttempt(storage,'first-light',{score:78,passed:false});
+ assert.equal(readStored(storage)['city-lights'].best,91);assert.equal(readStored(storage)['city-lights'].attempts,2);assert.equal(readStored(storage).unknown,undefined);
+ });

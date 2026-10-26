@@ -1,5 +1,5 @@
 import {ACADEMY_PRICE_CENTS} from './academy-content';
-import {singingOffer} from '../../web/singing-course.js';
+import {singingOffer} from '../../web/singing-offer.js';
 export type AcademyProduct='academy-complete'|'singing-complete';
 export function academyProductKey(value:unknown):AcademyProduct {
  if(value===undefined||value===null||value==='academy-complete')return 'academy-complete';

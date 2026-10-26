@@ -1,6 +1,6 @@
 # Local release readiness — 2026-10-26
 
-**PARTIAL overall. Publication HELD by the owner.** The instruction is to prepare everything locally and make Singing Academy $39. No push, website deployment, hosted migration, live payment activation, GPU rental, App Store upload or review submission is part of this pass.
+**PARTIAL overall. Publication HELD by the owner.** [The completion follow-up](COMPLETION_FOLLOWUP.md) supersedes the remaining Singing payment/access and deletion-test gaps listed in this dated snapshot. The instruction is to prepare everything locally and make Singing Academy $39. No push, website deployment, hosted migration, live payment activation, GPU rental, App Store upload or review submission is part of this pass.
 
 ## Price and course commerce
 
