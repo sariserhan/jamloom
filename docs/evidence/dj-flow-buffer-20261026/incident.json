@@ -1,0 +1,17 @@
+{
+  "status": "FAIL qualification; PASS cleanup",
+  "failure_stage": "First raw transfer using SCP",
+  "failure_type": "CalledProcessError",
+  "scp_returncode": 255,
+  "stderr_retained": false,
+  "precise_transport_cause": "Unknown; no retry or replacement attempted",
+  "verified_playable_tracks": 1,
+  "verified_raw_archives": 0,
+  "cold_compute_seconds": 83.064,
+  "playback_started": false,
+  "executed_worker_hashes": "PASS against approved plan",
+  "post_failure_change": "Use authenticated renderer HTTP connection for current raw archive; locally tested only",
+  "permit_consumed": true,
+  "new_paid_run_started": false,
+  "musical_listening": "NOT RUN"
+}

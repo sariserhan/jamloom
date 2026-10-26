@@ -252,17 +252,19 @@ def startup_probe(code, output):
     return 'pending'
 
 
-def retain_model_raw(scp, host, sequence, expected_hash, seconds_left):
-    if type(sequence) is not int or not 0 <= sequence < 12 or not re.fullmatch(r'[a-f0-9]{64}', expected_hash) or not re.fullmatch(r'[A-Za-z0-9.-]+', host):
+def retain_model_raw(request, sequence, expected_hash, seconds_left):
+    if type(sequence) is not int or not 0 <= sequence < 12 or not re.fullmatch(r'[a-f0-9]{64}', expected_hash):
         raise ValueError('Invalid raw archive reference')
     if not isinstance(seconds_left,(int,float)) or not math.isfinite(seconds_left) or seconds_left <= 0: raise RuntimeError('Raw archive exhausted request time allowance')
     folder=OUTPUT/'remote-results';folder.mkdir(exist_ok=True)
     target=folder/f'model-raw-{sequence}.wav';temporary=target.with_suffix('.part')
     if target.exists() or temporary.exists(): raise RuntimeError('Raw archive already exists; refusing overwrite')
     try:
-        subprocess.run([*scp,'root@'+host+':/workspace/results/'+target.name,str(temporary)],check=True,capture_output=True,timeout=min(30,seconds_left))
-        if not 44 < temporary.stat().st_size <= 32_000_000 or hashlib.sha256(temporary.read_bytes()).hexdigest()!=expected_hash:
+        with request(f'/model-raw/{sequence}/{expected_hash}',timeout=min(30,seconds_left)) as response:
+            data=response.read(32_000_001)
+        if not 44 < len(data) <= 32_000_000 or hashlib.sha256(data).hexdigest()!=expected_hash:
             raise RuntimeError('Raw model output integrity failed')
+        temporary.write_bytes(data)
         temporary.replace(target)
     finally:
         temporary.unlink(missing_ok=True)
@@ -403,7 +405,7 @@ def run():
             if MODEL_STUDY:
                 limit=120 if not FLOW or row['request']['sequence']==0 else plan['cadence_seconds']
                 available=min(limit-(time.monotonic()-call_started),state['deadline']-time.time()-10)
-                track['raw_archive']=retain_model_raw(scp,item['ssh_host'],row['request']['sequence'],receipt['model_comparison']['raw_sha256'],available)
+                track['raw_archive']=retain_model_raw(request,row['request']['sequence'],receipt['model_comparison']['raw_sha256'],available)
             elapsed=time.monotonic()-call_started; track['round_trip_seconds']=elapsed
             if FLOW:
                 if elapsed>(120 if row['request']['sequence']==0 else plan['cadence_seconds']): raise RuntimeError('Generation plus raw archive missed the bounded cadence')
@@ -434,6 +436,10 @@ def run():
                 raw=OUTPUT/'remote-results'/f"model-raw-{row['receipt']['request']['sequence']}.wav"
                 if hashlib.sha256(raw.read_bytes()).hexdigest()!=row['receipt']['model_comparison']['raw_sha256']:raise RuntimeError('Retained model output changed')
         report['status'] = 'PASS technical'; report['human_listening'] = 'NOT RUN'
+    except Exception as error:
+        report['failure_type']=type(error).__name__
+        report['failure_message']=str(error)[:1000]
+        raise
     finally:
         if ssh:
             try:

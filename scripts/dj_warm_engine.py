@@ -85,8 +85,30 @@ def handler(renderer, token):
             pass
 
         def do_GET(self):
-            if self.path != '/health' or not hmac.compare_digest(self.headers.get('Authorization', ''), 'Bearer '+token):
+            self.connection.settimeout(30)
+            if not hmac.compare_digest(self.headers.get('Authorization', ''), 'Bearer '+token):
                 self.send_error(403); return
+            if self.path != '/health':
+                receipt = renderer.cached[1] if renderer.cached else {}
+                proof = receipt.get('model_comparison', {})
+                sequence = receipt.get('request', {}).get('sequence')
+                digest = proof.get('raw_sha256')
+                if not digest or self.path != f'/model-raw/{sequence}/{digest}' or time.time() >= renderer.deadline:
+                    self.send_error(403); return
+                try:
+                    path = Path.cwd().parent / 'results' / f'model-raw-{sequence}.wav'
+                    with path.open('rb') as audio: data = audio.read(32_000_001)
+                    if not 44 < len(data) <= 32_000_000 or hashlib.sha256(data).hexdigest() != digest:
+                        raise ValueError('Raw archive integrity failed')
+                except (OSError, ValueError):
+                    self.send_error(503); return
+                self.send_response(200)
+                self.send_header('Content-Type', 'audio/wav')
+                self.send_header('Content-Length', str(len(data)))
+                self.send_header('Cache-Control', 'no-store')
+                self.end_headers()
+                self.wfile.write(data)
+                return
             ready = time.time()+max(90,renderer.render_seconds+30) < renderer.deadline and renderer.requests < renderer.limit
             data = json.dumps(dict(ready=ready, code_revision=CODE_REVISION, weights_revision=WEIGHTS_REVISION)).encode()
             self.send_response(200 if ready else 503)
@@ -157,7 +179,7 @@ def main():
     server.timeout = 1
     print('Jamloom renderer ready', flush=True)
     try:
-        while time.time()+renderer.render_seconds < renderer.deadline:
+        while time.time() < renderer.deadline:
             server.handle_request()
     finally:
         server.server_close()

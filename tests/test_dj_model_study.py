@@ -214,6 +214,9 @@ class FlowStudyTests(unittest.TestCase):
         plan=json.loads((ROOT/'docs/evidence/dj-flow-buffer-20261026/gpu-plan.json').read_text());plan['status']='PREPARED'
         with self.assertRaises(ValueError):validate_model_study(plan,flow=True)
         plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 two-track-buffer qualification')
+        with self.assertRaises(ValueError):validate_model_study(plan,flow=True)
+        plan['controller_sha256']=hashlib.sha256((ROOT/'scripts/dj_sample_trial.py').read_bytes()).hexdigest()
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         with self.assertRaisesRegex(ValueError,'playback changed'):validate_model_study({**plan,'playback_sha256':'0'*64},flow=True)
         validate_model_study(plan,flow=True)
         for change in [{'startup_tracks':6},{'incremental_raw_archive':False},{'mixer_sha256':{}},{'cadence_seconds':35},{'max_requests':13},{'max_minutes':41},{'replacements':True},{'owner_statement':'do all'}]:

@@ -1,14 +1,17 @@
 import json
 import contextlib
 import io
+import hashlib
 from pathlib import Path
 import sys
 import threading
+import tempfile
 import time
 import unittest
 import urllib.error
 import urllib.request
 import uuid
+from unittest.mock import patch
 from http.server import HTTPServer
 import numpy as np
 
@@ -17,6 +20,41 @@ from dj_warm_engine import Renderer, handler
 
 
 class WarmEngineTests(unittest.TestCase):
+    def test_raw_archive_uses_authenticated_renderer_and_exact_latest_receipt(self):
+        from dj_sample_trial import retain_model_raw
+        data=b'raw-model-output'*100
+        digest=hashlib.sha256(data).hexdigest()
+        renderer=Renderer(time.time()+100,1)
+        renderer.requests=1  # Archiving the last allowed output must still work.
+        renderer.cached=('fingerprint',{'request':{'sequence':0},'model_comparison':{'raw_sha256':digest}},b'master')
+        server=HTTPServer(('127.0.0.1',0),handler(renderer,'a'*64))
+        thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+        def get(path,timeout=5,token='a'*64):
+            return urllib.request.urlopen(urllib.request.Request(f'http://127.0.0.1:{server.server_port}'+path,headers={'Authorization':'Bearer '+token}),timeout=timeout)
+        try:
+            with tempfile.TemporaryDirectory() as directory:
+                root=Path(directory);(root/'results').mkdir();local=root/'local';local.mkdir()
+                raw=root/'results/model-raw-0.wav';raw.write_bytes(data)
+                with patch('dj_warm_engine.Path.cwd',return_value=root/'ace-step'),patch('dj_sample_trial.OUTPUT',local):
+                    for path,token in [(f'/model-raw/0/{digest}','b'*64),(f'/model-raw/1/{digest}','a'*64),('/model-raw/0/'+'0'*64,'a'*64),('/model-raw/../../secret','a'*64)]:
+                        with self.assertRaises(urllib.error.HTTPError) as denied:get(path,token=token)
+                        self.assertEqual(denied.exception.code,403);denied.exception.close()
+                    renderer.deadline=time.time()+10  # No rendering budget remains; permit final archive only.
+                    self.assertEqual(retain_model_raw(get,0,digest,5),'model-raw-0.wav')
+                    self.assertEqual((local/'remote-results/model-raw-0.wav').read_bytes(),data)
+                    self.assertEqual(renderer.requests,1)
+                    raw.write_bytes(b'corrupt')
+                    with self.assertRaises(urllib.error.HTTPError) as corrupt:get(f'/model-raw/0/{digest}')
+                    self.assertEqual(corrupt.exception.code,503);corrupt.exception.close()
+                    raw.unlink()
+                    with self.assertRaises(urllib.error.HTTPError) as missing:get(f'/model-raw/0/{digest}')
+                    self.assertEqual(missing.exception.code,503);missing.exception.close()
+                    renderer.deadline=time.time()-1
+                    with self.assertRaises(urllib.error.HTTPError) as expired:get(f'/model-raw/0/{digest}')
+                    self.assertEqual(expired.exception.code,403);expired.exception.close()
+        finally:
+            server.shutdown();server.server_close();thread.join()
+
     def test_render_failure_is_diagnosable_without_exposing_details_over_http(self):
         def rejected(*args):raise ValueError('Repaint drops accompaniment for at least 200 ms')
         renderer=Renderer(time.time()+100,1,generate=rejected)

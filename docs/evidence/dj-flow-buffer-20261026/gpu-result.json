@@ -1,0 +1,67 @@
+{
+  "status": "FAIL",
+  "scope": "Twelve preferred-turbo originals at a thirty-second request cadence, two distinct vocal opportunities; bounded one-listener capacity probe, not public activation",
+  "tracks": [
+    {
+      "file": "house-0.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "cf16116326f1c5c420c9fcc55aba87be",
+        "job": "d0136dce-7bdb-4c05-980d-5c46074d06db",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 0,
+          "seed": 901026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 83064,
+        "bytes": 11520044,
+        "sha256": "e038ee1deeb7a1cfb524562ecf0a1d6485a028bea80719a021c6bee41575280d",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 901026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "ad9874bf7252ae6400fa98836d78906e4f780c6e905e61ef42cb40160488bdc6",
+          "audio_codes_sha256": "16a79ff7b3cc80c820503f61acf0420f650607fb0411cfaefee47605e5a8de7b",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      }
+    }
+  ],
+  "cleanup_confirmed": true,
+  "observed_debit_usd": 0.0183962842000005,
+  "rental_seconds": 421.7163350582123
+}

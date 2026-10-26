@@ -1,0 +1,9 @@
+{
+  "status": "PASS local HTTP transfer",
+  "source": "renders/dj-flow-qualification-20261026/remote-results/model-raw-0.wav",
+  "bytes": 23040088,
+  "sha256": "4b3b162db2f8cb6462863d467c4e4136e137df836db0d2d2817a852fca7439a2",
+  "elapsed_seconds": 0.033923542010597885,
+  "gpu_used": false,
+  "scope": "Existing full-size raw file over local authenticated renderer, not remote SSH or generation capacity"
+}

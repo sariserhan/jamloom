@@ -1,11 +1,13 @@
 ## Incremental archives and two-track startup — 2026-10-26
 
-**PASS local checks and real-time retained-audio replay; fresh GPU run NOT AUTHORIZED.** Requested scope is archive repair and fresh-generation capacity verification only. Each raw output is now retained and verified within its request budget; exactly two ready tracks trigger automatic playback and a checked startup receipt before track three starts. There is no final bulk archive or implicit retry.
+**PASS local repair and retained-audio replay; FAIL fresh qualification; PASS cleanup.** The owner approved the $3 twelve-track run, which stopped on its first raw SCP transfer. One playable original is preserved; no fresh two-track startup occurred. The permit is consumed and no replacement was started. The follow-up local correction uses the authenticated renderer connection for raw audio. [Report and evidence](dj-flow-buffer.md).
 
-- [x] Verify atomic/raw hash publication, interrupted transfer retention, overwrite and budget guards, exact startup identity and failure detection: 66 Python checks pass.
+- [x] Verify atomic/raw hash publication, interrupted transfer retention, overwrite and budget guards, exact startup identity and failure detection. After the HTTP correction, all 67 Python checks pass.
 - [x] Inject a missing next track into the real browser mixer; it rejects the incomplete performance promptly.
 - [x] Complete the twelve-track retained-audio rehearsal: 507.12 seconds, exactly two initial tracks, later delivery delayed 28 seconds on a thirty-second cadence, no early stop/error/pause. Fresh generation remains a separate check.
-- [ ] Obtain a new capped approval and run twelve fresh outputs through incremental archives and the accepted mixer. The previous permit is consumed; the new plan remains PREPARED.
+- [x] Execute the single approved attempt; stop on SCP exit 255 and delete instance 57793043 after 421.72 seconds. Separate account verification confirms zero rentals and approximately $0.064502 observed debit.
+- [x] Remove the separate raw SCP connection. Verify current-output authentication/hash/expiry limits and a real local 23.04 MB HTTP transfer. Preserve the failed attempt's original hashes and results.
+- [ ] Qualify twelve fresh outputs through the corrected HTTP archive and accepted mixer. Local checks cannot establish hosted throughput; a new capped authorization is required. No replacement or public activation is authorized.
 
 ## Selective overlapping grooves and mobile rating completion — 2026-10-26
 
@@ -17,7 +19,7 @@
 - [x] Push and deploy code `ba305d0058f842ca6c31dc88096b34dbd68c8dd0` through Vercel; public routes and authenticated endpoint boundaries pass. Public AI DJ activation remains held.
 - [x] Obtain owner acceptance of the exact extended-blend comparison: “yes it is much better”. Preserve both sources and captures.
 - [ ] Qualify broader full-set arrangement continuity; the accepted pair does not establish universal professional quality.
-- [ ] Repair the research raw-archive transfer path and qualify the intended two-track startup buffer with the shorter usable sections under a new explicit permit. The twelve-track permit is consumed; zero rentals remain.
+- [ ] Qualify the intended two-track startup buffer with the shorter usable sections. Archive repair passes locally; the new paid attempt failed on its first SCP transfer, followed by a local HTTP correction. Both permits are consumed; zero rentals remain. See the current evidence above.
 
 ## Rating save correction and generation flow — 2026-10-26
 
@@ -42,7 +44,7 @@
 - [ ] Obtain owner listening acceptance for the representative set.
 - [x] Push/deploy `f5f251cc` and verify live routes; see current evidence above.
 - [ ] Physical guide works; rating save failed through 0.9.6 build20 and remains open above.
-- [ ] Fresh capped generation-flow approval received; bounded qualification in progress above. Public AI DJ activation stays held.
+- [ ] Fresh generation-flow attempt ended with an archive-transfer failure and confirmed cleanup; the local follow-up fix is recorded above. Public AI DJ activation stays held.
 
 ## Rejected DJ set: transition and vocal repetition — 2026-10-26
 

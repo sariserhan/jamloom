@@ -1,0 +1,17 @@
+{
+  "archive_tests": 4,
+  "controller_tests": 15,
+  "model_study_tests": 13,
+  "warm_engine_tests": 6,
+  "vast_cleanup_budget_tests": 29,
+  "total_python_checks": 67,
+  "local_http_full_size_archive": "PASS",
+  "remote_http_archive": "NOT RUN",
+  "fresh_two_track_playback": "NOT RUN; first raw transfer failed before startup",
+  "paid_attempt_status": "FAIL",
+  "permit": "CONSUMED; no replacement authorized",
+  "post_failure_code_sha256": {
+    "scripts/dj_sample_trial.py": "868478181a6cb086eba9910baf9b01c75dc5e9027c09b8aac08cffef17368069",
+    "scripts/dj_warm_engine.py": "a3c388a28e172432be77136852f68523c02094c98116f057137a6f50ebf5ce61"
+  }
+}

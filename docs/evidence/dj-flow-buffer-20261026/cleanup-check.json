@@ -1,0 +1,11 @@
+{
+  "instance_id": 57793043,
+  "instance_absent": true,
+  "active_instances": [],
+  "credit": 7.6985037,
+  "observed_debit_usd": 0.06450128820000067,
+  "checked_at": 1793007496.8815172,
+  "report_status": "FAIL",
+  "playable_outputs": 1,
+  "rental_seconds": 421.7163350582123
+}
