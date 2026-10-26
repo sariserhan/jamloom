@@ -1,6 +1,6 @@
 # Coherent performance and microphone follow-through
 
-2026-10-26. **PASS bounded local stem implementation; PARTIAL product qualification.** Website publication remains held. No GPU rental, new dependency, model training or popular-song acquisition occurred in this increment.
+2026-10-26. **PASS bounded local stem implementation; PARTIAL product qualification.** Website publication remains held. The local implementation used no GPU; the subsequently authorized fresh qualification failed during startup and its rental was deleted ($0.036 provisional provider charges). No new dependency, model training or popular-song acquisition occurred.
 
 ## Continuous arrangement with independently controlled parts
 

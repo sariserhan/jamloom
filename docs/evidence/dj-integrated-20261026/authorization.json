@@ -1,6 +1,6 @@
 {
   "campaign": "jamloom-dj-integrated-20261026",
-  "status": "AUTHORIZED",
+  "status": "CONSUMED",
   "owner_statement": "Approve the capped $6 integrated qualification",
   "budget_usd": 6,
   "instances_max": 1,
@@ -27,5 +27,6 @@
     "apps/site/lib/dj-remote-worker.ts": "678ab5ca29cbef35a8d04ddf0576024a9ed536521badbc2027e9b7c903a64fdc",
     "apps/site/lib/ai-dj-player.ts": "01a0ce19379acbd021d48ee5fdd58c84803388d4c461a2e790424fc4a38c57c8",
     "apps/site/lib/ai-dj-plan.ts": "19ac44591cb612d972307a7645996fb6aafa4b9384785884fe57812236a4a03d"
-  }
+  },
+  "outcome": "FAIL startup before renderer readiness; no audio generated; no replacement authorized"
 }

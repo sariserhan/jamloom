@@ -1,0 +1,8 @@
+{
+  "instance": 57849620,
+  "rentalSeconds": 406.92897486686707,
+  "observedProviderCostMicros": 36000,
+  "evidenceSha256": "b84c14ab88e31f24f229ab8005419f679ee7a8246c028969048142260d3a9239",
+  "final": false,
+  "customerBillingChanged": false
+}

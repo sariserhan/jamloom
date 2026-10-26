@@ -18,7 +18,7 @@ This ledger supersedes older completion summaries for release decisions. PASS ap
 | Complete recording in private R2 | PASS provider | Full retained 462.36-second and fresh 446.82-second mixes, identical multipart bytes, range playback, unsigned denial and cleanup |
 | Independent musical parts on one clock | PASS bounded prototype / PARTIAL product | [210-second live and rendered study](COHERENT_PERFORMANCE.md); positive owner response, retained original, not fresh endless composition |
 | Two listeners with current customer handlers | PASS retained-audio rehearsal | Twenty distinct retained tracks; mood, lost-response recovery, Stop/credits, complete R2 recording and cleanup. No fresh GPU generation |
-| Fresh generation + customer credits + complete R2 save in one new hosted session | NOT RUN | Do not combine separate passes into an integrated claim |
+| Fresh generation + customer credits + complete R2 save in one new hosted session | FAIL startup / integrated check NOT RUN | [Capped attempt](DJ_INTEGRATED_QUALIFICATION.md) generated no audio; rental deleted, permit consumed. Retained rehearsal passes separately |
 | Current candidate build/verification | PASS scoped TypeScript and real browser mixer | Main Next preview remains stable; no rebuild over the active preview output |
 | Third-party provenance and license notices | PASS adopted components / PARTIAL candidates | [Inventory](OPEN_SOURCE_LICENSES.md); no new copyleft code or unverified model copied |
 | Website publication, App Store submission, public paid AI DJ activation | HELD | Owner has not authorized publication of this candidate; purchases remain unchanged |

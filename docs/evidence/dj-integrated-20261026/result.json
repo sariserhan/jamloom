@@ -1,0 +1,18 @@
+{
+  "status": "FAIL startup",
+  "reason": "Readiness runner observed SSH-check failure or a nonempty run.exit; final remote failure log was not retained before automatic deletion, so the underlying setup cause is unconfirmed.",
+  "newTracks": 0,
+  "modelRequests": 0,
+  "instance": 57849620,
+  "startedAt": 1793037273.337665,
+  "destroyConfirmedAt": 1793037680.26664,
+  "rentalSeconds": 406.92897486686707,
+  "startingCredit": 7.4371562481,
+  "creditAfter": 7.4093297066999995,
+  "observedAccountDebitUsd": 0.027826541400000515,
+  "independentInventory": [],
+  "replacementStarted": false,
+  "publicActivation": false,
+  "costFinal": false,
+  "observedProviderCostUsd": 0.036
+}
