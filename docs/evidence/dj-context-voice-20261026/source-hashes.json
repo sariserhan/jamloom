@@ -1,0 +1,6 @@
+{
+  "scripts/singing_response.py": "5fc85fd1112816f7af63e728d38b414d9925162cdb80086f8917e43899f705df",
+  "assets/manifests/singing-model.json": "62d691b276501df2f38ce8233e820da10f7669ebf2a521dd4c271d6e6bd9f3bf",
+  "docs/evidence/dj-context-voice-20261026/plan.json": "d6d61b8ba3ea8337ad64d765b3df06734c464de6e0b1afa5944c751dd4edda50",
+  "docs/evidence/dj-context-voice-20261026/run_local.py": "c07de504aaff95492edef0951f85494a852b5061ca399978c20dc18fb9c8bb1e"
+}

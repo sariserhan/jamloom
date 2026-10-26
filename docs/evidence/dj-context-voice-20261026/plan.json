@@ -1,0 +1,20 @@
+{
+  "schema": "jamloom-sung-response-1",
+  "model_code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+  "weights": "19671f406d603126926c1b7e2adc169acbcade22",
+  "phrase": "Original short club vocal phrases; musical-context diagnostic, not a finished DJ track.",
+  "cases": [
+    {
+      "id": "house-male",
+      "genre": "house",
+      "voice": "male",
+      "vocal_profile": "male-tenor",
+      "seed": 501026,
+      "bpm": 124,
+      "duration": 30,
+      "source_repetitions": 1,
+      "vocal_language": "en",
+      "lyrics": "[Chorus]\nFeel alive\nWe rise\nStay close\nAll night"
+    }
+  ]
+}

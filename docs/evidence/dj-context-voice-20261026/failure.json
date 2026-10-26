@@ -1,0 +1,11 @@
+{
+  "status": "NOT RUN generation; local resource guard stopped model loading",
+  "error": "Memory floor reached",
+  "memory_floor_bytes": 536870912,
+  "elapsed_seconds": 12.367273709038273,
+  "source": "run_local.py parent raised RuntimeError at the available-memory check; original execution snapshot retained",
+  "audio_generated": false,
+  "retry": false,
+  "paid_compute": false,
+  "download_started": false
+}

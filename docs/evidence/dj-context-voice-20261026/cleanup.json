@@ -1,0 +1,8 @@
+{
+  "status": "PASS local process cleanup",
+  "active_model_processes": [],
+  "available_memory_bytes": 6549979136,
+  "available_disk_bytes": 16333524992,
+  "paid_rentals_started": 0,
+  "models_downloaded": 0
+}

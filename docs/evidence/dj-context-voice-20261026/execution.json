@@ -1,0 +1,24 @@
+{
+  "status": "FAIL",
+  "command": [
+    "/Users/serhansari/Documents/projects/jamloom/.venv-singer/bin/python",
+    "/Users/serhansari/Documents/projects/jamloom/scripts/singing_response.py",
+    "sing",
+    "--runtime",
+    "/Users/serhansari/Documents/projects/jamloom/build-style-training/upstream",
+    "--plan",
+    "/Users/serhansari/Documents/projects/jamloom/docs/evidence/dj-context-voice-20261026/plan.json",
+    "--output",
+    "/Users/serhansari/Documents/projects/jamloom/renders/dj-context-voice-20261026",
+    "--case",
+    "house-male"
+  ],
+  "initial_available_bytes": 5536546816,
+  "peak_process_group_rss_bytes": 440205312,
+  "memory_floor_bytes": 536870912,
+  "timeout_seconds": 300,
+  "paid_compute": false,
+  "attempts": 1,
+  "human_listening": "NOT RUN",
+  "seconds": 12.367273709038273
+}

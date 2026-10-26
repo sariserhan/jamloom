@@ -1,0 +1,6 @@
+{
+  "scripts/vocal_identity.py": "8b606ef8ec47a9712322466f2229d92be1724aaa66300c6f99a16613fd23409f",
+  "scripts/separate_singer.py": "845f19956bbb62956f503c73353df851e35b79c252d05487f21c0f13e428934e",
+  "docs/evidence/dj-identity-hooks-20261026/run_local.py": "41b2f2438f829ec69fd1202dc836f82f9ee1566b567a66385bc5da63c0ec568f",
+  "docs/evidence/dj-identity-hooks-20261026/check_audio.py": "73e4d05e244f920b118c8e5862f3b3fd0dbe80d35a467e9d4751ff9ce8146af2"
+}

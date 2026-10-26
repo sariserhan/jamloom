@@ -22,7 +22,8 @@ def separate(singer, output):
     if Path(singer).stat().st_size > MAX_SONG_BYTES:
         raise ValueError('Singer exceeds the supported audio limit')
     with wave.open(str(singer), 'rb') as audio:
-        if audio.getparams()[:3] != (2, 2, RATE) or not any(b['min']*RATE<=audio.getnframes()<=b['max']*RATE for b in LIMITS.values()) or audio.getcomptype() != 'NONE':
+        # Separation also serves ten-second DJ voices and sixty-second originals.
+        if audio.getparams()[:3] != (2, 2, RATE) or not 10*RATE<=audio.getnframes()<=max(b['max'] for b in LIMITS.values())*RATE or audio.getcomptype() != 'NONE':
             raise ValueError('Expected a supported-length stereo PCM singer')
         original = np.frombuffer(audio.readframes(audio.getnframes()), dtype='<i2').reshape(-1, 2).astype(np.float32)/32768
     manifest = json.loads((ROOT/'assets/manifests/singer-separation.json').read_text())

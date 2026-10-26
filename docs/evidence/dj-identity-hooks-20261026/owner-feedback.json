@@ -1,0 +1,10 @@
+{
+  "status": "FAIL owner quality improvement",
+  "owner_statement": "No meaningful improvement",
+  "source_sha256": "d00b88f70549bbe9dde11f98d5016939f5a463b5d873affc9b6ed0e37b6fd71f",
+  "output_sha256": "b719deb9fe20bd30b3c1ec42e70edd378c607db97ed3d645ba370db7bab1d0f2",
+  "listening_before_sha256": "e3900f515a7c7bf2666e1c2d4c2acf5e6cc1515f16b6b84e03c0f23670c6a9a2",
+  "listening_after_sha256": "0e8f4ac1e413885f68dd3bf95317cdbb4834fb99ef49e3b11d80fd396f7ef2f8",
+  "short_hook": "FAIL no complete quiet-bounded four-beat phrase",
+  "promotion": false
+}

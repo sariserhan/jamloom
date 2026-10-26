@@ -1,3 +1,16 @@
+## DJ voice completion follow-through — 2026-10-26
+
+**FAIL owner vocal improvement; PARTIAL implementation.** Tested the actual Music DNA voice-conversion stage on the retained DJ candidate using existing local models. Execution completed in 40.37 seconds; the owner reports “No meaningful improvement.” No complete four-beat phrase passed selection. A fresh thirty-second house vocal through the existing singer pipeline then stopped during model loading at the memory floor, before audio; no retry, download, rental or activation.
+
+- [x] Support ten-second voices and sixty-second originals in the shared separator while retaining byte/format/model checks; ten separation/identity checks pass.
+- [x] Execute offline conversion, independently verify mix PCM and produce a matched-level comparison; Chromium/WebKit desktop/mobile playback and seeking pass.
+- [x] Bind the owner rejection to both served files and mark the comparison rejected; keep it out of the product.
+- [x] Prepare the musical-context diagnostic, enforce memory/time bounds and retain the resource-stop evidence without claiming an audio result.
+- [ ] Qualify natural short singing and consistent original music. Neither conversion nor the held render closes this gate.
+- [ ] Qualify fresh complete sets, sustained hosted capacity/costs, physical venue use and release. No push or deployment.
+
+[Evidence and remaining limits](dj-voice-context.md).
+
 ## Separate singing completion work — 2026-10-26
 
 **PARTIAL implementation; FAIL natural singing.** The owner requested all remaining work. The approved $3 / one-GPU / 20-minute / four-call comparison stopped after the first ten-second candidate hit the level guard. One raw candidate was retained; no mixed hook was delivered and the remaining three calls were not run. GPU deletion is independently confirmed after 337.58 seconds. The account debit snapshot was $0.048793; later provider-specific charges are $0.072, not a settled invoice. The owner heard singing but rated it “unnatural or unclear”; no promotion.
