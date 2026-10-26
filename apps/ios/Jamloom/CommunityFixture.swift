@@ -29,7 +29,26 @@ final class CommunityFixture: URLProtocol {
             }
             let audio = query.contains { $0.name == "file" && $0.value == "audio" }
             let data: Data
-            if audio { data = try Self.playbackAudio() }
+            if ProcessInfo.processInfo.arguments.contains("--rating-fixture"), url.path == "/api/auth/sign-in/email" {
+                data = Data(#"{"user":{"id":"rating-listener","email":"listener@example.test"}}"#.utf8)
+            } else if ProcessInfo.processInfo.arguments.contains("--rating-fixture"), url.path == "/api/account" {
+                data = Data(#"{"user":{"id":"rating-listener","email":"listener@example.test"},"balance":{"available":0,"reserved":0},"purchasesReleased":false}"#.utf8)
+            } else if ProcessInfo.processInfo.arguments.contains("--rating-fixture"), url.path == "/api/creation-feedback" {
+                let key = "rating-fixture-" + (ProcessInfo.processInfo.environment["JAMLOOM_UI_TEST_LIBRARY"] ?? "") + url.absoluteString
+                if request.httpMethod == "POST" {
+                    var body = request.httpBody ?? Data()
+                    if let stream = request.httpBodyStream {
+                        stream.open(); defer { stream.close() }
+                        var bytes = [UInt8](repeating: 0, count: 4096)
+                        while stream.hasBytesAvailable { let n = stream.read(&bytes, maxLength: bytes.count); if n <= 0 { break }; body.append(contentsOf: bytes.prefix(n)) }
+                    }
+                    let feedback = try JSONDecoder().decode(MusicFeedbackValue.self, from: body)
+                    guard !feedback.trainingConsent else { throw URLError(.badServerResponse) }
+                    UserDefaults.standard.set(try JSONEncoder().encode(feedback), forKey: key)
+                }
+                let stored = UserDefaults.standard.data(forKey: key)
+                data = try JSONSerialization.data(withJSONObject: ["owner": "rating-listener", "feedback": try stored.map { try JSONSerialization.jsonObject(with: $0) } ?? NSNull(), "canTrain": false, "rightsConfirmed": false])
+            } else if audio { data = try Self.playbackAudio() }
             else if url.path == "/api/ai-dj/sets" { data = Data(#"{"sets":[{"id":"cccccccccccccccccccccccccccccccc","title":"Rooftop party","seconds":600}],"next":null}"#.utf8) }
             else if query.contains(where: { $0.name == "view" && $0.value == "mine" }) { data = Data(#"{"songs":[],"next":null,"signIn":true}"#.utf8) }
             else {

@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "route": "/improvise",
+      "launch_gate": "preserved"
+    },
+    {
+      "route": "/music-dna",
+      "launch_gate": "preserved"
+    },
+    {
+      "route": "/dj-studio",
+      "guide": "PASS"
+    },
+    {
+      "route": "/pro",
+      "guide": "PASS"
+    },
+    {
+      "route": "/live-dj",
+      "guide": "PASS"
+    },
+    {
+      "route": "/ai-dj",
+      "launch_gate": "preserved"
+    },
+    {
+      "route": "/academy",
+      "launch_gate": "preserved"
+    },
+    {
+      "route": "/community",
+      "guide": "PASS"
+    },
+    {
+      "route": "/studio/index.html",
+      "guide": "PASS"
+    },
+    {
+      "route": "/studio/dj.html",
+      "guide": "PASS"
+    }
+  ],
+  "bug_page": "PASS",
+  "admin_anonymous_access": "protected",
+  "production_writes": false
+}

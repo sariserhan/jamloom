@@ -1,0 +1,70 @@
+{
+  "checked_at": 1793004415.580321,
+  "instances": [],
+  "verified_playable_outputs": [
+    "house-0.wav",
+    "house-1.wav",
+    "house-2.wav",
+    "house-3.wav",
+    "house-4.wav",
+    "house-5.wav",
+    "house-6.wav",
+    "house-7.wav",
+    "house-8.wav",
+    "house-9.wav",
+    "house-10.wav",
+    "house-11.wav"
+  ],
+  "raw_archives": [
+    {
+      "file": "model-raw-0.wav",
+      "verified": true
+    },
+    {
+      "file": "model-raw-1.wav",
+      "verified": true
+    },
+    {
+      "file": "model-raw-2.wav",
+      "verified": true
+    },
+    {
+      "file": "model-raw-3.wav",
+      "verified": true
+    },
+    {
+      "file": "model-raw-4.wav",
+      "verified": true
+    },
+    {
+      "file": "model-raw-5.wav",
+      "verified": true
+    },
+    {
+      "file": "model-raw-6.wav",
+      "verified": true
+    },
+    {
+      "file": "model-raw-7.wav",
+      "verified": true
+    },
+    {
+      "file": "model-raw-8.wav",
+      "verified": true
+    },
+    {
+      "file": "model-raw-9.wav",
+      "verified": true
+    },
+    {
+      "file": "model-raw-10.wav",
+      "verified": false
+    },
+    {
+      "file": "model-raw-11.wav",
+      "verified": false
+    }
+  ],
+  "failure": "Final recursive raw-archive SCP exceeded its 60-second timeout. No replacement or retry.",
+  "initial_playback_buffer": "Harness started after six tracks were ready, rather than immediately after two; exact two-track startup remains unverified."
+}

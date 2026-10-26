@@ -8,12 +8,39 @@ final class FlowTests: XCTestCase {
         XCTAssertTrue(help.waitForExistence(timeout: 10)); help.tap()
         XCTAssertTrue(app.staticTexts["How to use it"].waitForExistence(timeout: 5)); let guide = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); guide.name = "Community product guide"; guide.lifetime = .keepAlways; add(guide); app.buttons["Close"].tap()
         let rate = app.buttons["Rate"].firstMatch
-        XCTAssertTrue(rate.waitForExistence(timeout: 15)); rate.tap()
+        XCTAssertTrue(rate.waitForExistence(timeout: 15)); XCTAssertTrue(rate.isHittable); rate.tap()
         XCTAssertTrue(app.navigationBars["Your feedback"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Sign in through Account to rate this music."].waitForExistence(timeout: 5))
-        XCTAssertFalse(app.buttons["Like"].isEnabled)
+        XCTAssertTrue(app.buttons["Like"].isEnabled); app.buttons["Like"].tap()
+        XCTAssertTrue(app.buttons["Sign in to save a rating"].exists)
+        XCTAssertTrue(app.buttons["Save rating"].isEnabled)
+        XCTAssertFalse(app.staticTexts["Help improve Jamloom"].exists)
+        app.buttons["Save rating"].tap()
+        XCTAssertTrue(app.navigationBars["Jamloom account"].waitForExistence(timeout: 5))
+        app.navigationBars["Jamloom account"].buttons["Done"].tap()
+        XCTAssertTrue(app.buttons["Like"].isSelected)
         let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); image.name = "Music feedback sign-in"; image.lifetime = .keepAlways; add(image)
-        app.buttons["Done"].tap(); XCTAssertTrue(rate.waitForExistence(timeout: 5))
+        app.buttons["Done"].tap(); XCTAssertTrue(rate.waitForExistence(timeout: 5)); rate.tap()
+        XCTAssertTrue(app.navigationBars["Your feedback"].waitForExistence(timeout: 5)); app.buttons["Done"].tap()
+    }
+
+    func testCommunityRatingSignsInSavesAndReopens() {
+        let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture", "--rating-fixture"]
+        app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
+        app.launch(); app.buttons["Community"].firstMatch.tap()
+        let rate = app.buttons["Rate"].firstMatch; XCTAssertTrue(rate.waitForExistence(timeout: 15)); rate.tap()
+        XCTAssertTrue(app.buttons["Like"].waitForExistence(timeout: 5)); app.buttons["Like"].tap(); app.buttons["Save rating"].tap()
+        XCTAssertTrue(app.textFields["Email"].waitForExistence(timeout: 5)); app.textFields["Email"].tap(); app.textFields["Email"].typeText("listener@example.test")
+        app.secureTextFields["Password"].tap(); app.secureTextFields["Password"].typeText("fixture-only")
+        app.buttons["Sign in"].tap()
+        XCTAssertTrue(app.buttons["Like"].waitForExistence(timeout: 10)); XCTAssertTrue(app.buttons["Like"].isSelected)
+        let save = app.buttons["Save rating"]; XCTAssertTrue(save.isEnabled); save.tap()
+        XCTAssertTrue(app.staticTexts["Rating saved."].waitForExistence(timeout: 10)); app.buttons["Done"].tap()
+        rate.tap(); XCTAssertTrue(app.buttons["Like"].waitForExistence(timeout: 5)); XCTAssertTrue(app.buttons["Like"].isSelected)
+        XCTAssertFalse(app.staticTexts["Help improve Jamloom"].exists)
+        let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); image.name = "Saved Community rating"; image.lifetime = .keepAlways; add(image)
+        app.buttons["Needs work"].tap(); save.tap(); XCTAssertTrue(app.staticTexts["Rating saved."].waitForExistence(timeout: 10))
+        app.buttons["Done"].tap(); rate.tap(); XCTAssertTrue(app.buttons["Needs work"].waitForExistence(timeout: 5)); XCTAssertTrue(app.buttons["Needs work"].isSelected)
     }
 
     func testCommunityBottomPlayerPausesSeeksAndKeepsPlayingWhileBrowsing() {

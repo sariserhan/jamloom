@@ -1,3 +1,9 @@
+## 0.9.6 build 21 rating correction — 2026-10-26
+
+**PASS build, signed bundle audit, installation and isolated Simulator save/reopen flow; PARTIAL physical save verification.** Save now opens sign-in when necessary instead of staying disabled, retains the chosen rating through sign-in, and allows retry after loading errors. “Help improve Jamloom” is removed from the phone rating screen as requested; this grants no training permission. The website endpoint is deployed. The owner confirms Save opens sign-in, clarifies they do not sign in and requests moving on. Authenticated saving was not exercised on their phone. No App Store submission or public release.
+
+[Owner/device evidence](evidence/product-release-20261026/ios-feedback.json), [bundle audit](evidence/product-release-20261026/ios-096-21-bundle.json), [saved Simulator rating](evidence/product-release-20261026/ios-rating-saved.png).
+
 # Jamloom 0.9.5 candidate addendum — build 18
 
 **PARTIAL release preparation.** Question-mark product guides, cross-product ratings and explicit training permission are implemented. Simulator account/API tests and help/landscape interaction checks pass; the signed device Release build and bundle privacy audit pass. This candidate is not installed on the physical phone, uploaded or submitted. Deploy the matching website feedback endpoint before installing it for customer use.

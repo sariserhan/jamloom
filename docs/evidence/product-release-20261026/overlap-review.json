@@ -1,0 +1,26 @@
+{
+  "status": "PASS technical; listening NOT RUN",
+  "scope": "Unchanged common mixer levels; no per-clip normalization",
+  "tracks": [
+    "4c9a91a3399363dc4454cedb88e3b10f3df3a059bd86b61ee77a7a88313eff09",
+    "f6c963a804c57802ba21d998b30b0686ea5a838c5d6a9be877d778530faf662d"
+  ],
+  "clips": [
+    {
+      "number": 1,
+      "name": "Before",
+      "source_sha256": "ea782f730231d77e1f070309860e55092619e9206dbcd623bcffbe650f26f0bf",
+      "start_seconds": 28.448,
+      "transition_complete_seconds": 10,
+      "sha256": "a4704d2a0b120b53297a2bc0b484e115f5f2d457c0c331c25eba1798b083b6ae"
+    },
+    {
+      "number": 1,
+      "name": "After",
+      "source_sha256": "90cd87e3bc760538fa58524447f98608ba9be363116f5e81f63b2c276c5874d7",
+      "start_seconds": 28.448,
+      "transition_complete_seconds": 10,
+      "sha256": "989bc7218265bd6e66a23b9a9981b8e6304c373a305de0ee5d72559c200e32a1"
+    }
+  ]
+}

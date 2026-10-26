@@ -1,0 +1,649 @@
+{
+  "scope": "Descriptive mono band and level measurements, not perceived-energy or musical-compatibility certification",
+  "tracks": [
+    {
+      "track": 1,
+      "source_sha256": "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+      "gain_db": 0.0,
+      "windows": [
+        {
+          "start": 0,
+          "end": 8,
+          "rms_db": -25.34,
+          "bands": [
+            0.054,
+            0.767,
+            0.179
+          ],
+          "rms_range_db": 8.21
+        },
+        {
+          "start": 4,
+          "end": 12,
+          "rms_db": -24.88,
+          "bands": [
+            0.034,
+            0.818,
+            0.149
+          ],
+          "rms_range_db": 8.21
+        },
+        {
+          "start": 8,
+          "end": 16,
+          "rms_db": -25.02,
+          "bands": [
+            0.036,
+            0.813,
+            0.151
+          ],
+          "rms_range_db": 7.93
+        },
+        {
+          "start": 12,
+          "end": 20,
+          "rms_db": -25.42,
+          "bands": [
+            0.042,
+            0.761,
+            0.197
+          ],
+          "rms_range_db": 8.71
+        },
+        {
+          "start": 16,
+          "end": 24,
+          "rms_db": -24.23,
+          "bands": [
+            0.148,
+            0.653,
+            0.199
+          ],
+          "rms_range_db": 13.95
+        },
+        {
+          "start": 20,
+          "end": 28,
+          "rms_db": -19.92,
+          "bands": [
+            0.561,
+            0.361,
+            0.078
+          ],
+          "rms_range_db": 13.95
+        },
+        {
+          "start": 24,
+          "end": 32,
+          "rms_db": -17.41,
+          "bands": [
+            0.875,
+            0.107,
+            0.019
+          ],
+          "rms_range_db": 2.33
+        },
+        {
+          "start": 28,
+          "end": 36,
+          "rms_db": -17.52,
+          "bands": [
+            0.851,
+            0.129,
+            0.02
+          ],
+          "rms_range_db": 2.46
+        },
+        {
+          "start": 32,
+          "end": 40,
+          "rms_db": -17.85,
+          "bands": [
+            0.809,
+            0.171,
+            0.021
+          ],
+          "rms_range_db": 4.13
+        },
+        {
+          "start": 36,
+          "end": 44,
+          "rms_db": -18.02,
+          "bands": [
+            0.814,
+            0.166,
+            0.02
+          ],
+          "rms_range_db": 4.13
+        },
+        {
+          "start": 40,
+          "end": 48,
+          "rms_db": -17.88,
+          "bands": [
+            0.845,
+            0.136,
+            0.019
+          ],
+          "rms_range_db": 2.84
+        },
+        {
+          "start": 44,
+          "end": 52,
+          "rms_db": -17.98,
+          "bands": [
+            0.833,
+            0.147,
+            0.02
+          ],
+          "rms_range_db": 2.97
+        },
+        {
+          "start": 48,
+          "end": 56,
+          "rms_db": -18.42,
+          "bands": [
+            0.82,
+            0.158,
+            0.021
+          ],
+          "rms_range_db": 3.14
+        },
+        {
+          "start": 52,
+          "end": 60,
+          "rms_db": -35.24,
+          "bands": [
+            0.883,
+            0.102,
+            0.015
+          ],
+          "rms_range_db": 45.72
+        }
+      ]
+    },
+    {
+      "track": 2,
+      "source_sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+      "gain_db": 0.0,
+      "windows": [
+        {
+          "start": 0,
+          "end": 8,
+          "rms_db": -22.61,
+          "bands": [
+            0.034,
+            0.921,
+            0.045
+          ],
+          "rms_range_db": 4.65
+        },
+        {
+          "start": 4,
+          "end": 12,
+          "rms_db": -22.21,
+          "bands": [
+            0.027,
+            0.936,
+            0.037
+          ],
+          "rms_range_db": 4.98
+        },
+        {
+          "start": 8,
+          "end": 16,
+          "rms_db": -22.24,
+          "bands": [
+            0.03,
+            0.938,
+            0.032
+          ],
+          "rms_range_db": 4.96
+        },
+        {
+          "start": 12,
+          "end": 20,
+          "rms_db": -22.35,
+          "bands": [
+            0.028,
+            0.938,
+            0.034
+          ],
+          "rms_range_db": 5.72
+        },
+        {
+          "start": 16,
+          "end": 24,
+          "rms_db": -21.34,
+          "bands": [
+            0.127,
+            0.834,
+            0.04
+          ],
+          "rms_range_db": 10.43
+        },
+        {
+          "start": 20,
+          "end": 28,
+          "rms_db": -17.98,
+          "bands": [
+            0.493,
+            0.486,
+            0.021
+          ],
+          "rms_range_db": 9.83
+        },
+        {
+          "start": 24,
+          "end": 32,
+          "rms_db": -15.28,
+          "bands": [
+            0.742,
+            0.246,
+            0.011
+          ],
+          "rms_range_db": 4.67
+        },
+        {
+          "start": 28,
+          "end": 36,
+          "rms_db": -15.09,
+          "bands": [
+            0.714,
+            0.268,
+            0.017
+          ],
+          "rms_range_db": 4.33
+        },
+        {
+          "start": 32,
+          "end": 40,
+          "rms_db": -15.63,
+          "bands": [
+            0.692,
+            0.291,
+            0.017
+          ],
+          "rms_range_db": 2.88
+        },
+        {
+          "start": 36,
+          "end": 44,
+          "rms_db": -15.52,
+          "bands": [
+            0.705,
+            0.28,
+            0.015
+          ],
+          "rms_range_db": 1.99
+        },
+        {
+          "start": 40,
+          "end": 48,
+          "rms_db": -15.79,
+          "bands": [
+            0.762,
+            0.221,
+            0.017
+          ],
+          "rms_range_db": 1.83
+        },
+        {
+          "start": 44,
+          "end": 52,
+          "rms_db": -16.47,
+          "bands": [
+            0.776,
+            0.201,
+            0.022
+          ],
+          "rms_range_db": 2.66
+        },
+        {
+          "start": 48,
+          "end": 56,
+          "rms_db": -16.77,
+          "bands": [
+            0.759,
+            0.218,
+            0.023
+          ],
+          "rms_range_db": 2.66
+        },
+        {
+          "start": 52,
+          "end": 60,
+          "rms_db": -33.58,
+          "bands": [
+            0.816,
+            0.168,
+            0.016
+          ],
+          "rms_range_db": 44.61
+        }
+      ]
+    },
+    {
+      "track": 3,
+      "source_sha256": "ba8df987ea9be0250c9946586c109c30bf08361c24eca94f5331065612bfbd97",
+      "gain_db": -1.23,
+      "windows": [
+        {
+          "start": 0,
+          "end": 8,
+          "rms_db": -19.32,
+          "bands": [
+            0.078,
+            0.907,
+            0.015
+          ],
+          "rms_range_db": 4.66
+        },
+        {
+          "start": 4,
+          "end": 12,
+          "rms_db": -17.22,
+          "bands": [
+            0.366,
+            0.622,
+            0.012
+          ],
+          "rms_range_db": 6.36
+        },
+        {
+          "start": 8,
+          "end": 16,
+          "rms_db": -15.21,
+          "bands": [
+            0.597,
+            0.393,
+            0.01
+          ],
+          "rms_range_db": 1.34
+        },
+        {
+          "start": 12,
+          "end": 20,
+          "rms_db": -15.25,
+          "bands": [
+            0.599,
+            0.39,
+            0.011
+          ],
+          "rms_range_db": 1.3
+        },
+        {
+          "start": 16,
+          "end": 24,
+          "rms_db": -15.11,
+          "bands": [
+            0.675,
+            0.316,
+            0.009
+          ],
+          "rms_range_db": 1.73
+        },
+        {
+          "start": 20,
+          "end": 28,
+          "rms_db": -14.98,
+          "bands": [
+            0.828,
+            0.164,
+            0.008
+          ],
+          "rms_range_db": 2.0
+        },
+        {
+          "start": 24,
+          "end": 32,
+          "rms_db": -14.48,
+          "bands": [
+            0.888,
+            0.106,
+            0.006
+          ],
+          "rms_range_db": 2.4
+        },
+        {
+          "start": 28,
+          "end": 36,
+          "rms_db": -14.3,
+          "bands": [
+            0.843,
+            0.15,
+            0.007
+          ],
+          "rms_range_db": 1.53
+        },
+        {
+          "start": 32,
+          "end": 40,
+          "rms_db": -16.09,
+          "bands": [
+            0.602,
+            0.368,
+            0.03
+          ],
+          "rms_range_db": 5.75
+        },
+        {
+          "start": 36,
+          "end": 44,
+          "rms_db": -17.02,
+          "bands": [
+            0.498,
+            0.463,
+            0.039
+          ],
+          "rms_range_db": 5.5
+        },
+        {
+          "start": 40,
+          "end": 48,
+          "rms_db": -15.59,
+          "bands": [
+            0.72,
+            0.259,
+            0.021
+          ],
+          "rms_range_db": 6.23
+        },
+        {
+          "start": 44,
+          "end": 52,
+          "rms_db": -14.89,
+          "bands": [
+            0.808,
+            0.176,
+            0.016
+          ],
+          "rms_range_db": 1.34
+        },
+        {
+          "start": 48,
+          "end": 56,
+          "rms_db": -15.36,
+          "bands": [
+            0.79,
+            0.192,
+            0.018
+          ],
+          "rms_range_db": 3.23
+        },
+        {
+          "start": 52,
+          "end": 60,
+          "rms_db": -30.53,
+          "bands": [
+            0.77,
+            0.213,
+            0.017
+          ],
+          "rms_range_db": 38.23
+        }
+      ]
+    },
+    {
+      "track": 4,
+      "source_sha256": "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675",
+      "gain_db": -2.79,
+      "windows": [
+        {
+          "start": 0,
+          "end": 8,
+          "rms_db": -24.5,
+          "bands": [
+            0.264,
+            0.732,
+            0.004
+          ],
+          "rms_range_db": 9.98
+        },
+        {
+          "start": 4,
+          "end": 12,
+          "rms_db": -18.9,
+          "bands": [
+            0.65,
+            0.347,
+            0.003
+          ],
+          "rms_range_db": 12.46
+        },
+        {
+          "start": 8,
+          "end": 16,
+          "rms_db": -14.62,
+          "bands": [
+            0.931,
+            0.068,
+            0.001
+          ],
+          "rms_range_db": 1.31
+        },
+        {
+          "start": 12,
+          "end": 20,
+          "rms_db": -14.69,
+          "bands": [
+            0.928,
+            0.071,
+            0.002
+          ],
+          "rms_range_db": 1.38
+        },
+        {
+          "start": 16,
+          "end": 24,
+          "rms_db": -14.56,
+          "bands": [
+            0.924,
+            0.075,
+            0.002
+          ],
+          "rms_range_db": 1.77
+        },
+        {
+          "start": 20,
+          "end": 28,
+          "rms_db": -14.29,
+          "bands": [
+            0.919,
+            0.079,
+            0.002
+          ],
+          "rms_range_db": 1.39
+        },
+        {
+          "start": 24,
+          "end": 32,
+          "rms_db": -14.37,
+          "bands": [
+            0.921,
+            0.077,
+            0.002
+          ],
+          "rms_range_db": 0.94
+        },
+        {
+          "start": 28,
+          "end": 36,
+          "rms_db": -14.93,
+          "bands": [
+            0.931,
+            0.067,
+            0.002
+          ],
+          "rms_range_db": 2.55
+        },
+        {
+          "start": 32,
+          "end": 40,
+          "rms_db": -14.79,
+          "bands": [
+            0.94,
+            0.058,
+            0.002
+          ],
+          "rms_range_db": 2.61
+        },
+        {
+          "start": 36,
+          "end": 44,
+          "rms_db": -14.22,
+          "bands": [
+            0.942,
+            0.056,
+            0.002
+          ],
+          "rms_range_db": 1.81
+        },
+        {
+          "start": 40,
+          "end": 48,
+          "rms_db": -14.64,
+          "bands": [
+            0.947,
+            0.05,
+            0.003
+          ],
+          "rms_range_db": 2.74
+        },
+        {
+          "start": 44,
+          "end": 52,
+          "rms_db": -15.89,
+          "bands": [
+            0.948,
+            0.047,
+            0.005
+          ],
+          "rms_range_db": 3.41
+        },
+        {
+          "start": 48,
+          "end": 56,
+          "rms_db": -17.5,
+          "bands": [
+            0.942,
+            0.05,
+            0.008
+          ],
+          "rms_range_db": 9.66
+        },
+        {
+          "start": 52,
+          "end": 60,
+          "rms_db": -41.05,
+          "bands": [
+            0.965,
+            0.029,
+            0.006
+          ],
+          "rms_range_db": 48.67
+        }
+      ]
+    }
+  ]
+}

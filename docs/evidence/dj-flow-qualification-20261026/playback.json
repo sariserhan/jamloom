@@ -1,0 +1,746 @@
+{
+  "status": "PASS technical",
+  "sourceTracks": [
+    "fe417194e14f6c7fb0d8d5b71cd5c25d5cbea0672a9f9ca01fd91b9f2882ee23",
+    "1165ac48dff782f8c59398f0f2ba9c73a64e0a9b66c4654712148bcf0b8df63b",
+    "9fe2257b3cbef74f84a98b91363f0bd10002a1d9ce2533447dab7f67e4a02734",
+    "f6c963a804c57802ba21d998b30b0686ea5a838c5d6a9be877d778530faf662d",
+    "4c9a91a3399363dc4454cedb88e3b10f3df3a059bd86b61ee77a7a88313eff09",
+    "fd2435c1b8cfb2a46bcad01c4d620613759b3ba2717893aaf3d37c1fe3dbc864",
+    "b397a1f6c4be1dfacad5427df3bc5c0aa6113776466f04507abc4ce40823884e",
+    "7d1271b8c806ededea912ce452731613d67dfb1be71444e331217338bf967383",
+    "3ed51007d40f494e5376643b27dbcc4685b4987baa6cee4a9aba50791bb39bf1",
+    "29167ca31fefac8d831f6661c3d4fc113fd89a9c19adf2f471fd5571cddeb901",
+    "b103dd13e3915f800375875c07ceffd373342dee7c544e978c6c97e15f3384a1",
+    "94f90dd65b49d4fb297a5a3fc29a4582780d2ec4124102383327bbc661e4a687"
+  ],
+  "currentAnalysisSha256": "d7db4ba7e5de535679cf6bafb3a965e64b3d8920bd96e6689fdc3f2fd067cc4d",
+  "currentPlanSha256": "e247863ca296ca5fca6b32786da3d5c05dd33d28154ba0cc6e2719ecf3d22de8",
+  "newGeneration": true,
+  "deliveries": [
+    {
+      "sequence": 0,
+      "waitSeconds": 0.008,
+      "at": 1793004161743
+    },
+    {
+      "sequence": 1,
+      "waitSeconds": 0.007,
+      "at": 1793004161750
+    },
+    {
+      "sequence": 0,
+      "waitSeconds": 0,
+      "at": 1793004162884
+    },
+    {
+      "sequence": 1,
+      "waitSeconds": 0,
+      "at": 1793004163185
+    },
+    {
+      "sequence": 2,
+      "waitSeconds": 0.013,
+      "at": 1793004219805
+    },
+    {
+      "sequence": 3,
+      "waitSeconds": 0.015,
+      "at": 1793004277774
+    },
+    {
+      "sequence": 4,
+      "waitSeconds": 0.012,
+      "at": 1793004325226
+    },
+    {
+      "sequence": 5,
+      "waitSeconds": 0.012,
+      "at": 1793004379601
+    },
+    {
+      "sequence": 6,
+      "waitSeconds": 0.009,
+      "at": 1793004416151
+    },
+    {
+      "sequence": 7,
+      "waitSeconds": 0.011,
+      "at": 1793004469643
+    },
+    {
+      "sequence": 8,
+      "waitSeconds": 0.01,
+      "at": 1793004514104
+    },
+    {
+      "sequence": 9,
+      "waitSeconds": 0.016,
+      "at": 1793004557401
+    },
+    {
+      "sequence": 10,
+      "waitSeconds": 0.009,
+      "at": 1793004593487
+    },
+    {
+      "sequence": 11,
+      "waitSeconds": 0.017,
+      "at": 1793004629608
+    }
+  ],
+  "learnedWeights": false,
+  "humanListening": "NOT RUN",
+  "performance": "AI performance actions verified.",
+  "results": [
+    {
+      "name": "after",
+      "revision": "working-tree",
+      "history": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "seconds": 568.08,
+      "peak": 0.34913718700408936,
+      "rms": 0.0621033642370163,
+      "events": [
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 63.873000000000005,
+          "until": 65.748,
+          "position": 8.213750000000001,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 74.65425,
+          "until": 75.59175,
+          "position": 18.995,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 172.56342936694023,
+          "until": 174.43916207502932,
+          "position": 14.59125000000001,
+          "by": "AI"
+        },
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 180.5352933763189,
+          "until": 182.41102608440798,
+          "position": 22.560000000000006,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 217.11208118405628,
+          "until": 218.04994753810084,
+          "position": 17.852499999999996,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 225.08394519343497,
+          "until": 226.95967790152406,
+          "position": 25.821250000000013,
+          "by": "AI"
+        },
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 259.31606711606094,
+          "until": 261.19179982415005,
+          "position": 8.47739929605003,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 267.2879311254396,
+          "until": 268.2257974794842,
+          "position": 16.45549863120845,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 307.30531926533797,
+          "until": 309.18031926533797,
+          "position": 12.108749999999986,
+          "by": "AI"
+        },
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 318.08656926533797,
+          "until": 319.96156926533797,
+          "position": 22.889999999999986,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 395.85406926533796,
+          "until": 396.79156926533796,
+          "position": 20.19625,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 407.57281926533796,
+          "until": 409.44781926533796,
+          "position": 31.915,
+          "by": "AI"
+        },
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 472.26031926533796,
+          "until": 474.13531926533796,
+          "position": 8.4525,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 480.69781926533796,
+          "until": 481.63531926533796,
+          "position": 16.89,
+          "by": "AI"
+        }
+      ],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 56.5,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 3,
+          "elapsed": 114.456,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 4,
+          "elapsed": 161.888,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 5,
+          "elapsed": 216.276,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 6,
+          "elapsed": 252.852,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 7,
+          "elapsed": 306.324,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 8,
+          "elapsed": 350.768,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 9,
+          "elapsed": 394.07599999999996,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 10,
+          "elapsed": 430.168,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 11,
+          "elapsed": 466.276,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 12,
+          "elapsed": 514.564,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "blends": [
+        {
+          "elapsed": 55.996,
+          "cross": 0.06199999999999761,
+          "levels": [
+            0.9342319842572202,
+            0.0761426995443153
+          ]
+        },
+        {
+          "elapsed": 110.444,
+          "cross": 0.9980624999999996,
+          "levels": [
+            0.004695926349711221,
+            0.7838110149337574
+          ]
+        },
+        {
+          "elapsed": 110.948,
+          "cross": 0.872062500000002,
+          "levels": [
+            0.15185563144195946,
+            0.7680614359256595
+          ]
+        },
+        {
+          "elapsed": 111.496,
+          "cross": 0.7350625000000015,
+          "levels": [
+            0.30755553732541685,
+            0.7169592758329983
+          ]
+        },
+        {
+          "elapsed": 112,
+          "cross": 0.6090625000000003,
+          "levels": [
+            0.4383865982544677,
+            0.6406607515222582
+          ]
+        },
+        {
+          "elapsed": 112.544,
+          "cross": 0.47306250000000105,
+          "levels": [
+            0.5602229929924007,
+            0.5303125446499557
+          ]
+        },
+        {
+          "elapsed": 113.048,
+          "cross": 0.34706249999999983,
+          "levels": [
+            0.650503105611584,
+            0.4064704654966569
+          ]
+        },
+        {
+          "elapsed": 113.596,
+          "cross": 0.21006249999999937,
+          "levels": [
+            0.7197282979441155,
+            0.2539722579361179
+          ]
+        },
+        {
+          "elapsed": 114.1,
+          "cross": 0.0840625000000017,
+          "levels": [
+            0.754150859404561,
+            0.10320778706128575
+          ]
+        },
+        {
+          "elapsed": 158.10000000000002,
+          "cross": 0.0033496093750004694,
+          "levels": [
+            0.7607798304563929,
+            0.004015048589623732
+          ]
+        },
+        {
+          "elapsed": 158.604,
+          "cross": 0.13769710937499757,
+          "levels": [
+            0.7430690765726311,
+            0.1641759292289482
+          ]
+        },
+        {
+          "elapsed": 159.144,
+          "cross": 0.281640859374995,
+          "levels": [
+            0.6870217401272072,
+            0.3286746278828012
+          ]
+        },
+        {
+          "elapsed": 159.64800000000002,
+          "cross": 0.41598835937499967,
+          "levels": [
+            0.6040624872382239,
+            0.46505793442236154
+          ]
+        },
+        {
+          "elapsed": 160.20000000000002,
+          "cross": 0.5631308593749972,
+          "levels": [
+            0.48208387824484333,
+            0.5918753091970572
+          ]
+        },
+        {
+          "elapsed": 160.752,
+          "cross": 0.7102733593749948,
+          "levels": [
+            0.3344089763192315,
+            0.6871435459488424
+          ]
+        },
+        {
+          "elapsed": 161.3,
+          "cross": 0.8563496093749948,
+          "levels": [
+            0.1702259628889724,
+            0.7456390059586688
+          ]
+        },
+        {
+          "elapsed": 214.39600000000002,
+          "cross": 0.9804957812500046,
+          "levels": [
+            0.025078732967829254,
+            0.7646696791304066
+          ]
+        },
+        {
+          "elapsed": 214.9,
+          "cross": 0.7118007812500085,
+          "levels": [
+            0.35838021128704156,
+            0.6879618243552414
+          ]
+        },
+        {
+          "elapsed": 215.448,
+          "cross": 0.4196482812500061,
+          "levels": [
+            0.6477348646787107,
+            0.4685821314689136
+          ]
+        },
+        {
+          "elapsed": 216,
+          "cross": 0.12536328125000873,
+          "levels": [
+            0.8036055316877366,
+            0.14970463639424736
+          ]
+        },
+        {
+          "elapsed": 250.948,
+          "cross": 0.0062892187499956195,
+          "levels": [
+            0.819353351028127,
+            0.008801090574599768
+          ]
+        },
+        {
+          "elapsed": 251.45200000000003,
+          "cross": 0.274984218750007,
+          "levels": [
+            0.7441436617548902,
+            0.3739360290145637
+          ]
+        },
+        {
+          "elapsed": 251.996,
+          "cross": 0.5650042187499991,
+          "levels": [
+            0.5173552524637159,
+            0.6927401658583854
+          ]
+        },
+        {
+          "elapsed": 252.544,
+          "cross": 0.8571567187500014,
+          "levels": [
+            0.18234191873955474,
+            0.8709064558183428
+          ]
+        },
+        {
+          "elapsed": 305.796,
+          "cross": 0.9851385306759539,
+          "levels": [
+            0.019672054301055564,
+            0.8930824689648986
+          ]
+        },
+        {
+          "elapsed": 346.74399999999997,
+          "cross": 0.001357683665503373,
+          "levels": [
+            0.8462959996404038,
+            0.003222164010330958
+          ]
+        },
+        {
+          "elapsed": 347.252,
+          "cross": 0.12835768366551292,
+          "levels": [
+            0.829149891278675,
+            0.17481308642035565
+          ]
+        },
+        {
+          "elapsed": 347.8,
+          "cross": 0.2653576836655134,
+          "levels": [
+            0.7738712543981592,
+            0.3534395317613459
+          ]
+        },
+        {
+          "elapsed": 348.34799999999996,
+          "cross": 0.4023576836654996,
+          "levels": [
+            0.682819322159375,
+            0.5157265543514811
+          ]
+        },
+        {
+          "elapsed": 348.852,
+          "cross": 0.5283576836655044,
+          "levels": [
+            0.5711880646062752,
+            0.644163053397584
+          ]
+        },
+        {
+          "elapsed": 349.39599999999996,
+          "cross": 0.6643576836655001,
+          "levels": [
+            0.424651123119979,
+            0.7544126156416198
+          ]
+        },
+        {
+          "elapsed": 349.9,
+          "cross": 0.7903576836655049,
+          "levels": [
+            0.27242514470863455,
+            0.8264982514466723
+          ]
+        },
+        {
+          "elapsed": 350.44399999999996,
+          "cross": 0.9263576836655005,
+          "levels": [
+            0.09636649361510319,
+            0.8671370820390933
+          ]
+        },
+        {
+          "elapsed": 390.304,
+          "cross": 0.9962184707567909,
+          "levels": [
+            0.005115628044111031,
+            0.8729627673609741
+          ]
+        },
+        {
+          "elapsed": 390.852,
+          "cross": 0.8500851374234571,
+          "levels": [
+            0.20137314172479392,
+            0.8488727150446351
+          ]
+        },
+        {
+          "elapsed": 391.39599999999996,
+          "cross": 0.705018470756795,
+          "levels": [
+            0.3857888465933499,
+            0.7809521783386231
+          ]
+        },
+        {
+          "elapsed": 391.94399999999996,
+          "cross": 0.5588851374234612,
+          "levels": [
+            0.5524589888965892,
+            0.6707324849994478
+          ]
+        },
+        {
+          "elapsed": 392.5,
+          "cross": 0.4106184707567839,
+          "levels": [
+            0.6897383655734046,
+            0.5248377151351846
+          ]
+        },
+        {
+          "elapsed": 393.048,
+          "cross": 0.26448513742345015,
+          "levels": [
+            0.7897537716072662,
+            0.3523601403092158
+          ]
+        },
+        {
+          "elapsed": 393.55199999999996,
+          "cross": 0.13008513742346017,
+          "levels": [
+            0.8451871834977567,
+            0.17715226658232552
+          ]
+        },
+        {
+          "elapsed": 428.3,
+          "cross": 0.022096391819771573,
+          "levels": [
+            0.862621647871407,
+            0.032288077027910145
+          ]
+        },
+        {
+          "elapsed": 428.852,
+          "cross": 0.3164963918197524,
+          "levels": [
+            0.7586759034828958,
+            0.4440702383815953
+          ]
+        },
+        {
+          "elapsed": 429.404,
+          "cross": 0.6108963918197635,
+          "levels": [
+            0.4953574341845979,
+            0.762590221774424
+          ]
+        },
+        {
+          "elapsed": 429.948,
+          "cross": 0.9010297251530877,
+          "levels": [
+            0.1336688059995339,
+            0.9199165170816457
+          ]
+        },
+        {
+          "elapsed": 464.4,
+          "cross": 0.9745702748469133,
+          "levels": [
+            0.024442581138389485,
+            0.9304049404690993
+          ]
+        },
+        {
+          "elapsed": 464.948,
+          "cross": 0.6823036081802456,
+          "levels": [
+            0.2931020169190539,
+            0.8176027559163224
+          ]
+        },
+        {
+          "elapsed": 465.496,
+          "cross": 0.39003694151357804,
+          "levels": [
+            0.5010915190117373,
+            0.5355104853677197
+          ]
+        },
+        {
+          "elapsed": 466.048,
+          "cross": 0.09563694151356683,
+          "levels": [
+            0.605591539397615,
+            0.13938629849399753
+          ]
+        },
+        {
+          "elapsed": 512.648,
+          "cross": 0.00769639181974829,
+          "levels": [
+            0.6124213051921572,
+            0.011167028439103888
+          ]
+        },
+        {
+          "elapsed": 513.196,
+          "cross": 0.2999630584864159,
+          "levels": [
+            0.5457497019885906,
+            0.4202133024481327
+          ]
+        },
+        {
+          "elapsed": 513.6999999999999,
+          "cross": 0.5687630584863654,
+          "levels": [
+            0.383881481658257,
+            0.7213265339624044
+          ]
+        },
+        {
+          "elapsed": 514.204,
+          "cross": 0.8375630584863757,
+          "levels": [
+            0.15459971291922514,
+            0.895752639899051
+          ]
+        }
+      ],
+      "statuses": [
+        {
+          "status": "idle",
+          "elapsed": 0,
+          "message": "Autopilot · beat-timed moves, smooth handoffs and space for the groove."
+        },
+        {
+          "status": "loading",
+          "elapsed": 0,
+          "message": "Preparing the first track…"
+        },
+        {
+          "status": "playing",
+          "elapsed": 0,
+          "message": "Set started. Preparing the next groove."
+        },
+        {
+          "status": "closing",
+          "elapsed": 514.572,
+          "message": "Winding down to a smooth finish."
+        },
+        {
+          "status": "stopped",
+          "elapsed": 567.96,
+          "message": "Prepared music finished. The set has stopped."
+        }
+      ],
+      "muted": true,
+      "sha256": "41e9b578388c98138e4af96cd5a61c7b455b8b57ecaf35e0a02039d9101777b1"
+    }
+  ]
+}

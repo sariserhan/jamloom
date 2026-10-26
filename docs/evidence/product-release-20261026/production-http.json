@@ -1,0 +1,37 @@
+[
+  {
+    "url": "https://www.jamloom.com/report-bug",
+    "status": 200,
+    "cache_control": "private, no-store",
+    "bytes": 16408,
+    "feedback_disclosure": null
+  },
+  {
+    "url": "https://www.jamloom.com/api/creation-feedback",
+    "status": 401,
+    "cache_control": "private, no-store",
+    "bytes": 34,
+    "feedback_disclosure": null
+  },
+  {
+    "url": "https://www.jamloom.com/api/ai-dj/supervisor",
+    "status": 401,
+    "cache_control": "private, no-store",
+    "bytes": 0,
+    "feedback_disclosure": null
+  },
+  {
+    "url": "https://www.jamloom.com/community",
+    "status": 200,
+    "cache_control": "public, max-age=0, must-revalidate",
+    "bytes": 17574,
+    "feedback_disclosure": null
+  },
+  {
+    "url": "https://www.jamloom.com/privacy",
+    "status": 200,
+    "cache_control": "public, max-age=0, must-revalidate",
+    "bytes": 37698,
+    "feedback_disclosure": true
+  }
+]

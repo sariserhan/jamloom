@@ -1,0 +1,283 @@
+{
+  "status": "PASS technical",
+  "sourceTracks": [
+    "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+    "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "ba8df987ea9be0250c9946586c109c30bf08361c24eca94f5331065612bfbd97",
+    "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675"
+  ],
+  "currentAnalysisSha256": "e6b843d41669367041aa913b9ec620af194f845b16ca55ea63ca04c41e5a7310",
+  "currentPlanSha256": "c34234211d3c014175b97880d42bd6df506e64b6ad5f119da73f07e70e5915ae",
+  "newGeneration": false,
+  "deliveries": [],
+  "learnedWeights": false,
+  "humanListening": "NOT RUN",
+  "performance": "AI performance actions verified.",
+  "results": [
+    {
+      "name": "after",
+      "revision": "working-tree",
+      "history": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "seconds": 114.3,
+      "peak": 0.39040666818618774,
+      "rms": 0.06331702814503944,
+      "events": [
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 4.695868544600939,
+          "until": 6.573802816901409,
+          "position": 26.38586854460094,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 16.902441314553986,
+          "until": 17.841408450704222,
+          "position": 38.59244131455399,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 30.517464788732394,
+          "until": 32.39539906103286,
+          "position": 33.92,
+          "by": "AI"
+        },
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 81.69117370892019,
+          "until": 83.56910798122065,
+          "position": 12.232500000000007,
+          "by": "AI"
+        }
+      ],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 29.504,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 3,
+          "elapsed": 42.652,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 4,
+          "elapsed": 80.704,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "blends": [
+        {
+          "elapsed": 27.648,
+          "cross": 0.020210000000000148,
+          "levels": [
+            0.9612228410151786,
+            0.031336506897726046
+          ]
+        },
+        {
+          "elapsed": 28.204,
+          "cross": 0.31628000000000084,
+          "levels": [
+            0.8455651796464956,
+            0.42601505733294154
+          ]
+        },
+        {
+          "elapsed": 28.752000000000002,
+          "cross": 0.608090000000002,
+          "levels": [
+            0.5554551116101223,
+            0.7297757242668332
+          ]
+        },
+        {
+          "elapsed": 29.304000000000002,
+          "cross": 0.902030000000002,
+          "levels": [
+            0.14745765166469127,
+            0.8832887112407519
+          ]
+        },
+        {
+          "elapsed": 38.9,
+          "cross": 0.9940499999999991,
+          "levels": [
+            0.008060872782268635,
+            0.8938065648656313
+          ]
+        },
+        {
+          "elapsed": 39.403999999999996,
+          "cross": 0.8598599999999996,
+          "levels": [
+            0.18859757779122344,
+            0.8723323006882353
+          ]
+        },
+        {
+          "elapsed": 39.952,
+          "cross": 0.713954999999999,
+          "levels": [
+            0.375144269879387,
+            0.8051361191149375
+          ]
+        },
+        {
+          "elapsed": 40.504,
+          "cross": 0.566984999999999,
+          "levels": [
+            0.5432081879743293,
+            0.6949432430511919
+          ]
+        },
+        {
+          "elapsed": 41.047999999999995,
+          "cross": 0.42214499999999966,
+          "levels": [
+            0.6807115408059339,
+            0.5502660779139639
+          ]
+        },
+        {
+          "elapsed": 41.552,
+          "cross": 0.2879549999999983,
+          "levels": [
+            0.7768409067241961,
+            0.3906664418738277
+          ]
+        },
+        {
+          "elapsed": 42.099999999999994,
+          "cross": 0.14204999999999957,
+          "levels": [
+            0.842329777667711,
+            0.19781462942117134
+          ]
+        },
+        {
+          "elapsed": 42.604,
+          "cross": 0.007859999999998202,
+          "levels": [
+            0.8636358209472412,
+            0.011047184104114482
+          ]
+        },
+        {
+          "elapsed": 76.948,
+          "cross": 0.01123000000000023,
+          "levels": [
+            0.8635800117316741,
+            0.012996567489183652
+          ]
+        },
+        {
+          "elapsed": 77.452,
+          "cross": 0.14542000000000138,
+          "levels": [
+            0.84127856681582,
+            0.166956207499533
+          ]
+        },
+        {
+          "elapsed": 78,
+          "cross": 0.29132500000000167,
+          "levels": [
+            0.7748453153915413,
+            0.32575121924799433
+          ]
+        },
+        {
+          "elapsed": 78.50399999999999,
+          "cross": 0.42551499999999903,
+          "levels": [
+            0.6778686173055632,
+            0.45694688225508173
+          ]
+        },
+        {
+          "elapsed": 79.05199999999999,
+          "cross": 0.5714199999999994,
+          "levels": [
+            0.5385279365441207,
+            0.5764564096673084
+          ]
+        },
+        {
+          "elapsed": 79.6,
+          "cross": 0.7173249999999997,
+          "levels": [
+            0.3710555497981254,
+            0.6658603255848448
+          ]
+        },
+        {
+          "elapsed": 80.148,
+          "cross": 0.8632299999999999,
+          "levels": [
+            0.18414649681377604,
+            0.7203912445186234
+          ]
+        },
+        {
+          "elapsed": 80.652,
+          "cross": 0.9974200000000011,
+          "levels": [
+            0.0035114853389084377,
+            0.7373486047045432
+          ]
+        }
+      ],
+      "statuses": [
+        {
+          "status": "idle",
+          "elapsed": 0,
+          "message": "Autopilot · beat-timed moves, smooth handoffs and space for the groove."
+        },
+        {
+          "status": "loading",
+          "elapsed": 0,
+          "message": "Preparing the first track…"
+        },
+        {
+          "status": "playing",
+          "elapsed": 0,
+          "message": "Set started. Preparing the next groove."
+        },
+        {
+          "status": "closing",
+          "elapsed": 80.704,
+          "message": "Winding down to a smooth finish."
+        },
+        {
+          "status": "stopped",
+          "elapsed": 114.204,
+          "message": "Prepared music finished. The set has stopped."
+        }
+      ],
+      "muted": true,
+      "sha256": "1bbc74cee1e9a1aebcc6ed9413e00e0ea0749744545a1e6b75fd5ed1b3768a24"
+    }
+  ]
+}

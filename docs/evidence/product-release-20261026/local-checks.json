@@ -1,13 +1,17 @@
 {
-  "site_tests": 152,
+  "site_tests": 154,
   "database_tests": 71,
-  "planner_analysis_tests": 16,
+  "planner_analysis_tests": 18,
   "website_build": "PASS",
   "bundle_audit": "PASS",
   "feedback_browser": "PASS Chromium and WebKit; ten help routes; actual disposable database flows",
-  "deck_browser": "PASS Chromium and WebKit; playback, controls, transitions, stop, accessibility",
-  "native_release": "PASS signed 0.9.5 build 18 and bundle audit",
-  "physical_device": "NOT RUN",
-  "deployment": "NOT RUN",
-  "musical_acceptance": "PARTIAL; revised set pending"
+  "deck_browser": "PASS Chromium current analysis v3: actual moves, controls, local recording, takeover, direction and stop for both fixtures. WebKit current entry review players pass; full v3 deck replay not rerun.",
+  "native_release": "PASS signed 0.9.6 build21 and bundle audit",
+  "physical_device": "Installed; owner reaches sign-in, does not sign in and asks to move on. Authenticated physical save NOT RUN.",
+  "deployment": "PASS f5f251cc; Vercel completed; six public guides and four preserved launch gates verified",
+  "musical_acceptance": "PARTIAL: owner confirms corrected entry is getting better and requests selective overlapping blends. New overlap listening pending.",
+  "native_interaction": "PASS Simulator: guest choice, sign-in, preserved selection, save/reopen and changed rating/reopen; training UI absent",
+  "energy_capture": "PASS technical 114.3-second four-track capture, peak .3904; short handoff comparison players pass Chromium/WebKit desktop/mobile.",
+  "generation_flow": "PARTIAL twelve masters and playback; FAIL final raw archive; cleanup confirmed, no active GPU, observed $0.095944.",
+  "overlap_capture": "PASS: two same-original before/after recordings; 7.5-second instrumental overlap; outgoing bass held early and incoming bass established late; 14 automation samples verified."
 }

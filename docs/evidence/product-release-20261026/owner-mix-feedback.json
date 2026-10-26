@@ -1,0 +1,10 @@
+{
+  "statement": "second 53 transition is weird also 2:26 too",
+  "status": "FAIL handoff acceptance",
+  "source_sha256": "1e55476ab420d324b3057fa4339981d196eda40dc278f5fb32a0671053fc37ce",
+  "listening_sha256": "4b99bc2a21bd8e33d30f9141531580b93cf44c1a5a39628c1ec8d3a79cb1ef69",
+  "timestamps_seconds": [
+    53,
+    146
+  ]
+}

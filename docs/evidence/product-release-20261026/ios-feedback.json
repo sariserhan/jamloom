@@ -1,0 +1,11 @@
+{
+  "candidate_095": "Guide works; Rate tap did not open",
+  "candidate_096_build19": "Rate opens; Like and Needs work disabled, no visible explanation",
+  "physical_rating_acceptance": "PARTIAL: owner accepts sign-in requirement and moves on; authenticated physical save not exercised.",
+  "next_candidate": null,
+  "candidate_096_build20": "Owner: Like and Needs work respond, but Save rating is faded and cannot save.",
+  "owner_requested_removal": "Help improve Jamloom on the phone rating screen",
+  "candidate_096_build21": "Installed. Owner confirms Save opens sign-in, then clarifies they do not sign in and asks to move on.",
+  "simulator_rating": "PASS: guest selection, sign-in, preserved selection, POST, reopening, changed rating, reopening. Isolated fixture; separate prior real-HTTP account tests remain evidence.",
+  "training_section": "Removed as explicitly requested; no implied training consent."
+}

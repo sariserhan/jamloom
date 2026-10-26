@@ -200,3 +200,26 @@ class ModelStudyTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+class FlowStudyTests(unittest.TestCase):
+    def test_sparse_distinct_musical_hooks_and_fresh_permission(self):
+        rows=cases(flow=True)
+        self.assertEqual(len(rows),12)
+        self.assertEqual([i for i,r in enumerate(rows) if not r['instrumental']],[2,7])
+        self.assertNotEqual(rows[2]['lyrics'],rows[7]['lyrics'])
+        self.assertTrue(all(r['model']=='acestep-v15-turbo' for r in rows))
+        self.assertTrue(all(r['seconds']==60 and not r['vocals'] for r in rows))
+        self.assertEqual(len({r['request']['seed'] for r in rows}),12)
+        self.assertNotIn('[Outro]',rows[2]['lyrics'])
+        plan=json.loads((ROOT/'docs/evidence/dj-flow-qualification-20261026/gpu-plan.json').read_text());plan['status']='PREPARED'
+        with self.assertRaises(ValueError):validate_model_study(plan,flow=True)
+        plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 generation-flow qualification')
+        with self.assertRaisesRegex(ValueError,'playback changed'):validate_model_study(plan,flow=True)
+        plan['playback_sha256']=hashlib.sha256((ROOT/'apps/site/tests/dj-mix-comparison.mjs').read_bytes()).hexdigest()
+        validate_model_study(plan,flow=True)
+        for change in [{'cadence_seconds':35},{'max_requests':13},{'max_minutes':41},{'replacements':True},{'owner_statement':'do all'}]:
+            with self.assertRaises(ValueError):validate_model_study({**plan,**change},flow=True)
+        with self.assertRaises(ValueError):validate_model_study(plan,consistency=True)
+        from vast_trial import dj_bootstrap_command
+        self.assertIn('12 --flow-study >',dj_bootstrap_command(1900000000,12,flow_study=True))
+        with self.assertRaises(ValueError):dj_bootstrap_command(1900000000,12,flow_study=True,model_study=True)

@@ -185,8 +185,10 @@ export class AIDJPlayer{
      incoming.gain!.gain.setValueCurveAtTime(into,plan.at,plan.fade);
      if(plan.technique!=='short-fade'){
       const low=this.mixer.strips[this.active].eq[0].gain,next=this.mixer.strips[to].eq[0].gain;
-      low.setValueAtTime(0,plan.at);low.linearRampToValueAtTime(-12,plan.at+plan.fade/2);
-      next.setValueAtTime(-12,plan.at);next.setValueAtTime(-12,plan.at+plan.fade/2);next.linearRampToValueAtTime(0,plan.at+plan.fade);
+      const middle=plan.at+plan.fade/2,halfBeat=Math.min(plan.fade/4,30/(deck.bpm*(deck.rate??1)));
+      // Keep the outgoing bass until the incoming bass takes over, instead of hollowing out both.
+      low.setValueAtTime(0,plan.at);low.setValueAtTime(0,middle-halfBeat);low.linearRampToValueAtTime(-12,middle+halfBeat);
+      next.setValueAtTime(-12,plan.at);next.setValueAtTime(-12,middle-halfBeat);next.linearRampToValueAtTime(0,middle+halfBeat);
      }
      this.blend={...plan,from:this.active,to,end:plan.at+plan.fade};this.message=plan.reason;
     }

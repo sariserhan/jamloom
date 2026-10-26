@@ -19,7 +19,7 @@ test('measured steady beats enable only short aligned handoffs and reject drift'
  const samples=new Float32Array(48*8000);
  for(let i=0;i<samples.length;i++){const t=i/8000;samples[i]=.2*Math.sin(2*Math.PI*80*t)*Math.exp(-((t+.25)%.5)*40);}
  const grid=measureBeatGrid(samples,8000,120);assert.ok(grid);assert.ok(Math.abs(grid.bpm-120)<.06);assert.ok(Math.abs(grid.offset-.25)<.02);
- const measured={...base,duration:48,grid};const p=planTransition(measured,measured,4,1,10);assert.equal(p.technique,'beat-bass');assert.ok(Math.abs((p.at-10+4-grid.offset)/(.5)-Math.round((p.at-10+4-grid.offset)/.5))<.01);assert.equal(p.offset,grid.entry);assert.ok(Math.abs(p.fade-2)<.01);
+ const measured={...base,duration:48,grid};const p=planTransition(measured,measured,4,1,10);assert.equal(p.technique,'beat-bass');assert.ok(Math.abs((p.at-10+4-grid.offset)/(.5)-Math.round((p.at-10+4-grid.offset)/.5))<.01);assert.equal(p.offset,grid.entry);assert.ok(Math.abs(p.fade-16)<.01);
  assert.equal(planTransition(measured,{...measured,grid:{...grid,bpm:130}},4,1,10).technique,'short-fade');
  assert.equal(planTransition(measured,measured,47.9,1,10).technique,'short-fade');
  for(let i=0;i<samples.length;i++){const t=i/8000,phase=t*2+t*t*.005;samples[i]=.2*Math.sin(2*Math.PI*80*t)*Math.exp(-(phase%1)*20);}
@@ -59,7 +59,7 @@ test('upgrading numerical analysis preserves existing human mix-point reviews',a
   Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:(key:string)=>storage.get(key),setItem:(key:string,value:string)=>storage.set(key,value)}});
   Object.defineProperty(globalThis,'Worker',{configurable:true,value:class{
    onmessage:(message:unknown)=>void=()=>{};terminate(){}
-   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:3,mixVersion:2,mixBounds:{start:0,end:128},audible:{start:0,end:128}}}}));}
+   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:3,mixVersion:3,mixBounds:{start:0,end:128},audible:{start:0,end:128}}}}));}
   }});
   const pcm=new Float32Array(128*8000).fill(.1),buffer={duration:128,numberOfChannels:1,length:pcm.length,sampleRate:8000,getChannelData:()=>pcm} as unknown as AudioBuffer;
   assert.deepEqual((await analyseBuffer(buffer,base.sha256)).review,reviewed.review);
@@ -131,12 +131,37 @@ test('vocal tracks cannot use an unreviewed one-bar bass exchange',()=>{
  const vocal={...base,duration:60,grid};
  assert.equal(planTransition(vocal,vocal,40,1,0,false,4,false).technique,'beat-bass');
  const p=planTransition(vocal,vocal,40,1,0,false,4,true);
- assert.equal(p.technique,'short-fade');assert.equal(p.rate,1);assert.equal(p.fade,4);assert.match(p.reason,/vocal edges/);
+ assert.equal(p.technique,'short-fade');assert.equal(p.rate,1);assert.equal(p.fade,8*60/grid.bpm);assert.match(p.reason,/vocal edges/);assert.match(p.reason,/beats aligned/);assert.ok(Math.abs((p.at+40-vocal.grid.offset)/(60/grid.bpm)-Math.round((p.at+40-vocal.grid.offset)/(60/grid.bpm)))<.001);
+ const shifted={...vocal,grid:{...vocal.grid,offset:.2,entry:.2,exit:59.2}};const aligned=planTransition(vocal,shifted,40,1,0,false,4,true);assert.equal(aligned.offset,.2);assert.equal(aligned.rate,1);
+ assert.doesNotMatch(planTransition(vocal,{...vocal,grid:{...vocal.grid,bpm:124}},40,1,0,false,4,true).reason,/beats aligned/);
  assert.equal(planTransition(reviewed,reviewed,4,1,10,false,4,true).technique,'phrase-bass');
 });
 
 test('mix entries ignore isolated intro hits and weak tails without deleting internal breaks',()=>{
  const pcm=new Float32Array(60*8000);
  for(let i=0;i<pcm.length;i++){const t=i/8000,level=t<8||t>=50?.025:.2;pcm[i]=level*Math.sin(2*Math.PI*110*t);if(t<.25||t>=58&&t<58.25)pcm[i]*=8;if(t>=25&&t<28)pcm[i]=0;}
- const a=analyzeTrack(pcm,8000,base.sha256);assert.equal(a.mixVersion,2);assert.ok(a.mixBounds!.start>=8);assert.ok(a.mixBounds!.start<9);assert.ok(a.mixBounds!.end<=50.25);assert.ok(a.mixBounds!.end>=49);assert.equal(a.duration,60);assert.ok(a.mixBounds!.start<25&&a.mixBounds!.end>28);
+ const a=analyzeTrack(pcm,8000,base.sha256);assert.equal(a.mixVersion,3);assert.ok(a.mixBounds!.start>=8);assert.ok(a.mixBounds!.start<9);assert.ok(a.mixBounds!.end<=50.25);assert.ok(a.mixBounds!.end>=49);assert.equal(a.duration,60);assert.ok(a.mixBounds!.start<25&&a.mixBounds!.end>28);
+});
+
+test('late sustained groove entries survive validation and reach the transition planner',()=>{
+ const pcm=new Float32Array(60*8000);
+ for(let i=0;i<pcm.length;i++){const t=i/8000;pcm[i]=(t<22?.025:.2)*Math.sin(2*Math.PI*110*t);}
+ const a=analyzeTrack(pcm,8000,base.sha256);assert.ok(validAnalysis(a,base.sha256));assert.ok(a.mixBounds!.start>=22&&a.mixBounds!.start<23);
+ const p=planTransition(base,a,10,1,20);assert.equal(p.offset,a.mixBounds!.start);assert.equal(p.fade,4);
+ assert.ok(validAnalysis({...base,duration:16,mixVersion:2,mixBounds:{start:4,end:14}},base.sha256),'Previously valid short tracks and reviews must remain readable');
+ const grid={bpm:120,offset:.25,maxError:.01,coverage:.95,entry:24.25,exit:58.25,hookSafe:false};
+ const late={...a,grid};assert.equal(planTransition(base,late,10,1,20).offset,24.25);
+ for(const mixBounds of [{start:40,end:60},{start:31,end:38},{start:22,end:61}])assert.equal(validAnalysis({...a,mixBounds},base.sha256),false);
+});
+
+test('extended instrumental overlap requires complete steady regions and leaves thirty seconds for preparation',()=>{
+ const grid={bpm:120,offset:.25,maxError:.01,coverage:.95,entry:.25,exit:59.25,hookSafe:true};
+ const a={...base,duration:60,grid};
+ const long=planTransition(a,a,5,1,10);assert.equal(long.fade,16);assert.equal(long.technique,'beat-bass');assert.match(long.reason,/gradual blend/);
+ const medium=planTransition(a,{...a,grid:{...grid,entry:24.25}},5,1,10);assert.equal(medium.fade,4,'Unqualified late entry stays conservative');
+ const late={...a,mixBounds:{start:22,end:56},grid:{...grid,entry:24.25}};
+ assert.equal(planTransition(a,late,5,1,10).fade,2,'Late body leaves no extended-overlap preparation reserve');
+ assert.equal(planTransition(a,{...a,duration:40,grid:{...grid,exit:39.25}},5,1,10).fade,8);
+ assert.equal(planTransition(a,a,5,1,10,false,4,true).fade,4,'Singing does not get the long instrumental overlap');
+ assert.equal(planTransition(a,a,5,1,10,true).fade,4,'Manual skip remains short');
 });

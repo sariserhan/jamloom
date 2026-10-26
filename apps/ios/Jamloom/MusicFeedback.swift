@@ -37,9 +37,10 @@ struct MusicFeedbackView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var reference = ""
     @State private var value: MusicFeedbackValue?
-    @State private var canTrain = false
     @State private var busy = true
     @State private var loaded = false
+    @State private var edited = false
+    @State private var showSignIn = false
     @State private var message = ""
     @State private var moment = ""
     private var owner: String? { account.snapshot?.user.id }
@@ -48,6 +49,12 @@ struct MusicFeedbackView: View {
     var body: some View {
         NavigationStack {
             Form {
+                if owner == nil && localAudio == nil {
+                    Section { Button("Sign in to save a rating", systemImage: "person.crop.circle") { showSignIn = true } }
+                }
+                if busy { Label(loaded ? "Saving rating…" : "Loading saved rating…", systemImage: "arrow.clockwise") }
+                if !message.isEmpty { Text(message).accessibilityIdentifier("ratingStatus") }
+                if !loaded && !busy && owner != nil { Button("Try again") { Task { await load() } } }
                 Section(title) {
                     HStack { rating("like", "Like", "hand.thumbsup.fill"); rating("dislike", "Needs work", "hand.thumbsdown.fill") }
                     if value != nil {
@@ -59,35 +66,37 @@ struct MusicFeedbackView: View {
                         TextField("Moment in seconds (optional)", text: $moment).keyboardType(.decimalPad)
                         if kind == "music-dna" { Toggle("Shape my future Music DNA songs", isOn: Binding(get: { value?.personalize ?? false }, set: { value?.personalize = $0 })) }
                     }
-                }.disabled(busy || !loaded)
+                }.disabled(busy && loaded)
                 if value != nil {
-                    Section("Help improve Jamloom") {
-                        Toggle("Allow this music and rating for training", isOn: Binding(get: { value?.trainingConsent ?? false }, set: { value?.trainingConsent = $0 }))
-                            .disabled(!canTrain || busy)
-                        Text(canTrain ? "Optional. By enabling this, you confirm training rights to all included music and voices and allow commercial training, retained models and commercial generated outputs. Uncheck or delete to stop future use; completed training may not be reversible." : "Only the owner of cloud-saved music can grant training permission. Local audio is not uploaded by a rating.").font(.footnote)
-                        if localAudio != nil { Link("Save an eligible mix to the cloud library", destination: URL(string: "https://www.jamloom.com/library")!) }
-                    }
                     Section {
-                        Button("Save rating") { Task { await save(remove: false) } }.disabled(busy || !loaded)
                         Button("Delete rating", role: .destructive) { Task { await save(remove: true) } }.disabled(busy || !loaded)
                     }
                 }
-                if busy { ProgressView() }
-                if !message.isEmpty { Text(message).accessibilityIdentifier("ratingStatus") }
-                if !loaded && !busy { Button("Try again") { Task { await load() } } }
             }
             .navigationTitle("Your feedback").navigationBarTitleDisplayMode(.inline)
-            .toolbar { Button("Done") { dismiss() } }
-            .task(id: (owner ?? "guest") + kind + id) { await load() }
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button("Done") { dismiss() } }
+                ToolbarItem(placement: .confirmationAction) { Button("Save rating") {
+                    if owner == nil && localAudio == nil { showSignIn = true }
+                    else { Task { await save(remove: false) } }
+                }.disabled(busy || value == nil) }
+            }
+            .sheet(isPresented: $showSignIn) { AccountView(account: account) }
+            .task(id: (owner ?? "guest") + kind + id) {
+                let keepSelection = showSignIn && owner != nil
+                if keepSelection { showSignIn = false }
+                await load(preservingDraft: keepSelection)
+            }
         }
     }
     private func rating(_ selected: String, _ text: String, _ icon: String) -> some View {
-        Button { if value?.rating != selected { value = MusicFeedbackValue(rating: selected) } } label: { Label(text, systemImage: icon).frame(minHeight: 44) }
+        Button { edited = true; if value?.rating != selected { let consent = value?.trainingConsent ?? false; value = MusicFeedbackValue(rating: selected, trainingConsent: consent) } } label: { Label(text, systemImage: icon).frame(minHeight: 44) }
             .buttonStyle(.bordered).tint(value?.rating == selected ? .mint : .gray)
             .accessibilityAddTraits(value?.rating == selected ? .isSelected : [])
     }
-    private func load() async {
-        let expected = owner; busy = true; loaded = false; value = nil; canTrain = false; message = ""; moment = ""
+    private func load(preservingDraft: Bool = false) async {
+        let draft = preservingDraft ? value : nil, draftMoment = moment
+        let expected = owner; busy = true; loaded = false; edited = false; value = nil; message = ""; moment = ""
         defer { if expected == owner { busy = false } }
         do {
             if let localAudio {
@@ -102,13 +111,23 @@ struct MusicFeedbackView: View {
                 guard let expected else { throw RemixError.message("Sign in through Account to rate this music.") }
                 let response: MusicFeedbackResponse = try await account.transport.request("/api/creation-feedback", query: ["kind": kind, "id": reference])
                 guard expected == owner, response.owner == expected, !Task.isCancelled else { return }
-                value = response.feedback; canTrain = response.canTrain
+                if !edited { value = response.feedback }
+                else { value?.trainingConsent = response.feedback?.trainingConsent ?? false }
             }
             guard expected == owner, !Task.isCancelled else { return }
-            if let seconds = value?.momentSeconds { moment = String(Int(seconds)) }; loaded = true
-        } catch { if expected == owner && !Task.isCancelled { message = error.localizedDescription } }
+            if var draft {
+                draft.trainingConsent = value?.trainingConsent ?? false
+                value = draft; moment = draftMoment; edited = true
+            }
+            if !edited, let seconds = value?.momentSeconds { moment = String(Int(seconds)) }; loaded = true
+        } catch { if expected == owner && !Task.isCancelled {
+            if let draft { value = draft; moment = draftMoment; edited = true }
+            message = error.localizedDescription
+        } }
     }
     private func save(remove: Bool) async {
+        guard !busy, value != nil else { return }
+        if !loaded { await load(preservingDraft: true) }
         guard loaded, !busy, var feedback = value else { return }; let expected = owner
         busy = true; defer { if expected == owner { busy = false } }
         do {
@@ -124,7 +143,7 @@ struct MusicFeedbackView: View {
                 _ = try await account.transport.requestData("/api/creation-feedback", method: remove ? "DELETE" : "POST", body: encoded, query: ["kind": kind, "id": reference])
             }
             guard expected == owner else { return }
-            if remove { value = nil }; message = remove ? "Rating and future training permission deleted." : "Rating saved. Training requires separate rights review."
+            if remove { value = nil }; message = remove ? "Rating and future training permission deleted." : "Rating saved."
         } catch { if expected == owner { message = error.localizedDescription } }
     }
 }

@@ -1,0 +1,45 @@
+{
+  "status": "FAIL owner listening",
+  "scope": "Unchanged common mixer levels; no per-clip normalization",
+  "tracks": [
+    "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+    "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "ba8df987ea9be0250c9946586c109c30bf08361c24eca94f5331065612bfbd97",
+    "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675"
+  ],
+  "clips": [
+    {
+      "number": 1,
+      "name": "Before",
+      "source_sha256": "1e55476ab420d324b3057fa4339981d196eda40dc278f5fb32a0671053fc37ce",
+      "start_seconds": 46.704,
+      "transition_complete_seconds": 10,
+      "sha256": "4db8b890f603ab5ecfff6895fec452bc95d621fd9a45459d107c2113d8e91c28"
+    },
+    {
+      "number": 2,
+      "name": "Before",
+      "source_sha256": "1e55476ab420d324b3057fa4339981d196eda40dc278f5fb32a0671053fc37ce",
+      "start_seconds": 137.152,
+      "transition_complete_seconds": 10,
+      "sha256": "df0ad86ea826a5f26e29875e6ed7b5236764b07e5207c1db9132ae9d98abb96c"
+    },
+    {
+      "number": 1,
+      "name": "After",
+      "source_sha256": "f8acaa315a4836382e5d2ec504d88593aeb2a0cce5f1ce962857ea0965720d0a",
+      "start_seconds": 46.623999999999995,
+      "transition_complete_seconds": 10,
+      "sha256": "2980dc900f98afbcb5058180d55d7970671ab3bc202b658928b6c84a3401a751"
+    },
+    {
+      "number": 2,
+      "name": "After",
+      "source_sha256": "f8acaa315a4836382e5d2ec504d88593aeb2a0cce5f1ce962857ea0965720d0a",
+      "start_seconds": 130.624,
+      "transition_complete_seconds": 10,
+      "sha256": "ca58e519546d1c99ce17b6c56a1ab616c67f4a98b9bde13a6b5c6cdfb79ad20e"
+    }
+  ],
+  "owner_feedback": "they are not good because the tracks that we are connecting are not in the same energy level and they feel like we finish one track and start the new one"
+}

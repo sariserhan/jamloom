@@ -13,7 +13,8 @@ BASE_REVISION = 'e432212fec32b8965a14ffa57ae653438d6abd14'
 MANIFEST = 'dj-base-model.json'
 
 
-def cases(consistency=False):
+def cases(consistency=False, flow=False):
+    if consistency and flow: raise ValueError("Choose one study")
     rows = []
     for model in ('acestep-v15-turbo', 'acestep-v15-base'):
         for i, style in enumerate(('house', 'bass', 'house')):
@@ -38,6 +39,21 @@ def cases(consistency=False):
                 row = copy.deepcopy(template)
                 row['request'].update(session='26102633333333333333333333333333', sequence=len(rows), seed=seed)
                 rows.append(row)
+    if flow:
+        from dj_vocal import hook_phrase
+        templates = [rows[0], rows[2]]
+        rows = []
+        for sequence in range(12):
+            vocal = sequence in (2, 7)
+            row = copy.deepcopy(templates[int(vocal)])
+            row['request'].update(session='26102644444444444444444444444444', sequence=sequence, seed=801026+sequence*1000)
+            if vocal:
+                phrase = hook_phrase(row['request'])
+                row['lyrics'] = '[Instrumental]\n[Chorus]\n'+phrase+'\n[Instrumental]'
+                row['caption'] = row['caption'].replace('a developing arrangement and a resolved ending',
+                    'a developing arrangement with a stable drum-and-bass groove through the final bars; no fade-out or resolved ending')
+            row['label'] = 'Flow track '+str(sequence+1)+(' with one musical hook' if vocal else ' instrumental')
+            rows.append(row)
     return rows
 
 
@@ -68,12 +84,12 @@ def verify_base(root, manifest):
 
 
 class ModelStudy:
-    def __init__(self, consistency=False):
-        self.consistency = consistency
+    def __init__(self, consistency=False, flow=False):
+        self.consistency, self.flow = consistency, flow
         self.engine, self.model, self.sequence = None, None, 0
 
     def __call__(self, value, directory, engine=None, hook=None):
-        prepared = cases(self.consistency)
+        prepared = cases(self.consistency, self.flow)
         if hook is not None or self.sequence >= len(prepared) or request(value) != prepared[self.sequence]['request']:
             raise ValueError('Exact ordered model-study request required')
         case = prepared[self.sequence]

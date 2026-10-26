@@ -1,0 +1,30 @@
+{
+  "status": "PARTIAL owner confirms improvement",
+  "scope": "Unchanged common mixer levels; no per-clip normalization",
+  "tracks": [
+    "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+    "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "ba8df987ea9be0250c9946586c109c30bf08361c24eca94f5331065612bfbd97",
+    "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675"
+  ],
+  "clips": [
+    {
+      "number": 1,
+      "name": "Before",
+      "source_sha256": "1e55476ab420d324b3057fa4339981d196eda40dc278f5fb32a0671053fc37ce",
+      "start_seconds": 46.704,
+      "transition_complete_seconds": 10,
+      "sha256": "4db8b890f603ab5ecfff6895fec452bc95d621fd9a45459d107c2113d8e91c28"
+    },
+    {
+      "number": 1,
+      "name": "After",
+      "source_sha256": "1bbc74cee1e9a1aebcc6ed9413e00e0ea0749744545a1e6b75fd5ed1b3768a24",
+      "start_seconds": 19.504,
+      "transition_complete_seconds": 10,
+      "sha256": "8ce54c48f63ba79b47a0ef2b574817117e04dbf52adb0ef1681cd28823426349"
+    }
+  ],
+  "owner_feedback": "yes it is getting better so usually when you switch over to the next track sometimes but not all the time you kind of continue the first track for awhile as you already start the second one and slowly you move away from the first one so this way it does not feel like finish one sone and start the new one but instead it feels like connected and continuation cohesion song",
+  "requested_next": "Selective overlapping blends: keep the outgoing groove audible while the incoming track enters and gradually recede."
+}

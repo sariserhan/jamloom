@@ -340,7 +340,10 @@ struct SongLibraryView: View {
                             Image(systemName: library.favorites.contains(where: { $0.key == song.key }) ? "heart.fill" : "heart").font(.title2).frame(minWidth: 44, minHeight: 44)
                         }.buttonStyle(.plain).disabled(library.syncingFavorites).foregroundStyle(accent).accessibilityLabel("\(library.favorites.contains(where: { $0.key == song.key }) ? "Unfavorite" : "Favorite") \(song.title)")
                         }.contextMenu { if song.listeningKind != "aurowall" { Button("Rate this music", systemImage: "hand.thumbsup") { ratingSong = song } } }
-                        if song.listeningKind != "aurowall" { Button("Rate", systemImage: "hand.thumbsup") { ratingSong = song }.font(.caption) }
+                        if song.listeningKind != "aurowall" {
+                            Button { ratingSong = song } label: { Label("Rate", systemImage: "hand.thumbsup").frame(maxWidth: .infinity, minHeight: 44, alignment: .leading) }
+                                .buttonStyle(.borderless).font(.caption).accessibilityIdentifier("rateMusic-\(song.key)")
+                        }
                     }
                     if !library.next.isEmpty { Button("Load more songs") { Task { await library.load(collection, account: account, more: true, language: language) } }.disabled(library.busy) }
                     if filtered.isEmpty && !library.busy && library.message.isEmpty {

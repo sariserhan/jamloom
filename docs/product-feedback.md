@@ -31,3 +31,7 @@ Website disclosure and native privacy manifest now cover optional model-improvem
 ## Authorized release follow-through — October 26
 
 The owner authorized deploying the completed website, updating Apple privacy answers and verifying the physical 0.9.5 candidate. **PASS:** 152 website tests, 71 isolated database tests, Chromium/WebKit feedback and deck checks, production build, bundle audit, signed native Release build and Apple privacy publication. Website deployment and physical acceptance are tracked separately in [release evidence](evidence/product-release-20261026/local-checks.json). New GPU use and public AI DJ activation are not included.
+
+## Physical rating follow-through — 2026-10-26
+
+The matching website is deployed at `f5f251cc`; Apple privacy answers are published. Jamloom 0.9.6 build 21 is installed. A rating choice now enables Save; signed-out cloud users reach sign-in and retain the choice. An isolated Simulator test completes sign-in, saves, reopens and changes the rating. The owner confirms reaching sign-in, says they do not sign in, and asks to move on. Actual authenticated saving on that phone remains untested. The requested “Help improve Jamloom” section is removed from native ratings; no implicit training permission is added, and separately granted existing permission is preserved when changing the rating.

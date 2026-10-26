@@ -1,3 +1,25 @@
+## Selective overlapping grooves and mobile rating completion — 2026-10-26
+
+**PASS implementation and technical checks; PARTIAL musical qualification.** The owner accepts moving on from phone ratings after reaching sign-in; authenticated physical saving is not claimed. Build 21 is installed and the unwanted training section is removed. The owner confirms the long-intro entry correction is improving the handoff and requests selective extended overlaps.
+
+- [x] Add measured sixteen-/thirty-two-beat instrumental blends with full region coverage and thirty seconds of incoming preparation reserve; keep conservative vocal/manual/uncertain transitions.
+- [x] Keep the outgoing bass until the incoming bass takes over, avoiding the old simultaneous bass attenuation.
+- [x] Verify 154 website tests, eighteen planner/analysis checks, thirteen model-study tests, build/bundle audits, and actual before/after mixer recordings with a 7.5-second overlap and measured bass automation.
+- [ ] Obtain listening acceptance for the extended blend and wider arrangement continuity; do not equate timing/energy measurements with professional quality.
+- [ ] Repair the research raw-archive transfer path and qualify the intended two-track startup buffer with the shorter usable sections under a new explicit permit. The twelve-track permit is consumed; zero rentals remain.
+
+## Rating save correction and generation flow — 2026-10-26
+
+**PARTIAL; physical rating save and musical acceptance remain open.** The owner reports that build 20 makes rating choices tappable but Save stays faded, and requests removal of the phone's “Help improve Jamloom” section. The shared rating screen now routes Save to sign-in when required, preserves the selection through sign-in, and allows retrying a failed initial load. Removing the training section does not grant consent or start training. Existing separately granted permission is retained when changing a rating.
+
+- [x] Deploy website revision `f5f251cc` through GitHub/Vercel; verify production routes, public guides, bug-report entry, authentication boundaries and privacy disclosure.
+- [x] Publish Apple privacy answers; no App Store submission or public AI DJ activation.
+- [x] Preserve owner rejection of the representative set at 0:53 and 2:26. Capture revised handoffs using the same originals: shorter uncertain instrumental overlap and measured-beat vocal fades without bass exchange.
+- [x] Verify 153 website tests, 17 planner/analysis checks, build/bundle audit and four focused comparison players in Chromium/WebKit desktop/mobile.
+- [x] Install 0.9.6 build21; verify sign-in/save/reopen in Simulator. Owner reaches sign-in and requests moving on without signing in. Physical authenticated save remains NOT RUN.
+- [ ] Owner rejects both revised handoffs: mismatched energy and separate-song feeling. Long-intro validator corrected and four-track capture/player checks pass; owner review pending. Wider arrangement matching and sustained capacity with shorter usable sections remain open.
+- [x] Execute the twelve-track permit and delete the GPU: all playable outputs verified, warm calls 21.49–24.11 seconds, 568.08-second playback, observed $0.095944. Overall FAIL because final raw archive timed out; only ten raw outputs retained. Six-track initial buffer means two-track startup remains unverified. No replacement authorized.
+
 ## Release follow-through and sustained transition energy — 2026-10-26
 
 **PASS local checks and Apple privacy publication; PARTIAL full release.** The owner authorized the website deployment, App Store privacy update and physical 0.9.5 verification. The new mix-edge detector requires two seconds of sustained body-level energy instead of accepting an isolated loud hit in a weak intro. Cached analysis is upgraded while preserving human mix-point reviews; internal rests and original files are retained. This remains an estimate, not verified musical phrasing.
@@ -7,9 +29,9 @@
 - [x] Publish matching Apple privacy answers for optional training and rating analysis; retain existing purposes and no tracking.
 - [x] Capture a representative 180.48-second set with instrumental spacing and one accepted vocal original; real mixer actions and quiet-scan checks pass.
 - [ ] Obtain owner listening acceptance for the representative set.
-- [ ] Push/deploy the completed website and verify live routes.
-- [ ] Install and verify 0.9.5 on the physical iPhone.
-- [ ] Qualify sustained preferred-generator capacity under a fresh capped compute approval; all previous permits remain consumed. Public AI DJ activation stays held.
+- [x] Push/deploy `f5f251cc` and verify live routes; see current evidence above.
+- [ ] Physical guide works; rating save failed through 0.9.6 build20 and remains open above.
+- [ ] Fresh capped generation-flow approval received; bounded qualification in progress above. Public AI DJ activation stays held.
 
 ## Rejected DJ set: transition and vocal repetition — 2026-10-26
 
