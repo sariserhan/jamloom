@@ -1,5 +1,5 @@
 {
-  "status": "PASS technical; listening NOT RUN",
+  "status": "PASS owner acceptance of this paired overlap comparison",
   "scope": "Unchanged common mixer levels; no per-clip normalization",
   "tracks": [
     "4c9a91a3399363dc4454cedb88e3b10f3df3a059bd86b61ee77a7a88313eff09",
@@ -22,5 +22,7 @@
       "transition_complete_seconds": 10,
       "sha256": "989bc7218265bd6e66a23b9a9981b8e6304c373a305de0ee5d72559c200e32a1"
     }
-  ]
+  ],
+  "owner_feedback": "yes it is much better",
+  "scope_limit": "Acceptance applies to these exact two originals and their transition; it does not qualify every arrangement, unlimited hosting or public release."
 }

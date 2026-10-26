@@ -5,7 +5,9 @@
 - [x] Add measured sixteen-/thirty-two-beat instrumental blends with full region coverage and thirty seconds of incoming preparation reserve; keep conservative vocal/manual/uncertain transitions.
 - [x] Keep the outgoing bass until the incoming bass takes over, avoiding the old simultaneous bass attenuation.
 - [x] Verify 154 website tests, eighteen planner/analysis checks, thirteen model-study tests, build/bundle audits, and actual before/after mixer recordings with a 7.5-second overlap and measured bass automation.
-- [ ] Obtain listening acceptance for the extended blend and wider arrangement continuity; do not equate timing/energy measurements with professional quality.
+- [x] Push and deploy code `ba305d0058f842ca6c31dc88096b34dbd68c8dd0` through Vercel; public routes and authenticated endpoint boundaries pass. Public AI DJ activation remains held.
+- [x] Obtain owner acceptance of the exact extended-blend comparison: “yes it is much better”. Preserve both sources and captures.
+- [ ] Qualify broader full-set arrangement continuity; the accepted pair does not establish universal professional quality.
 - [ ] Repair the research raw-archive transfer path and qualify the intended two-track startup buffer with the shorter usable sections under a new explicit permit. The twelve-track permit is consumed; zero rentals remain.
 
 ## Rating save correction and generation flow — 2026-10-26

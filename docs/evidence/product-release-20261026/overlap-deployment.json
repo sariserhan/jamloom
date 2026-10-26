@@ -1,0 +1,26 @@
+{
+  "code_commit": "ba305d0058f842ca6c31dc88096b34dbd68c8dd0",
+  "vercel": "SUCCESS",
+  "url": "https://vercel.com/ssari/jamloom/C6R5TNaH5CYPcmFNXqQeJPdSVvh7",
+  "checked_at": 1793005930.791967,
+  "http": [
+    {
+      "path": "/community",
+      "status": 200
+    },
+    {
+      "path": "/report-a-bug",
+      "status": 200
+    },
+    {
+      "path": "/api/creation-feedback?kind=improvise&id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": 401
+    },
+    {
+      "path": "/api/ai-dj/supervisor",
+      "status": 401
+    }
+  ],
+  "public_ai_dj_activation": false,
+  "authenticated_production_rating_write": "NOT RUN"
+}
