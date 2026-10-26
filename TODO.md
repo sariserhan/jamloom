@@ -2,6 +2,7 @@
 
 **PASS expanded local course and signed iPhone installation; PARTIAL qualification.** [Completion report](docs/SINGING_COMPLETION.md). Eight original songs now progress through four stages, with twelve optional warm-ups, full lyrics, live pitch feedback and targeted section practice. Existing scores and the original two songs are preserved.
 
+- [ ] Prepare the six owner-requested popular karaoke songs, including Lewis Capaldi’s Someone You Loved. [Requested catalogue](docs/SINGING_COMPLETION.md#requested-popular-song-catalogue--2026-10-26); permissions and lesson preparation pending, no playable tracks added.
 - [x] Implement eight-song curriculum and all 32 section practices. Partial sections do not unlock full-song completion; weak-section retry and unlimited practice are available.
 - [x] Verify 26 core/renderer checks, production build/typecheck and Chromium/WebKit song/section flows, including accessibility and microphone cleanup.
 - [x] Add the native Sing tab using the same bundled score, detector and engine; persist bounded local progress and stop microphone/audio on departure or interruption. Sign and install Jamloom 0.10.0 build 22 on the connected iPhone; bundle audit passes.

@@ -46,3 +46,18 @@ Reproduce with Node 22: `node scripts/benchmark_singing_voices.mjs`. Fetch the e
 The owner chose **“Keep local for now”** for the prepared website. No code is pushed or deployed, no release flags are changed, and no App Store submission is made. Localhost:3000 stays on the stable built preview. Public release is intentionally held, not a failed implementation test.
 
 The final lifecycle-only signed rebuild is installed. Automatic reopening was blocked because the phone had locked; open Jamloom manually. Owner microphone acceptance was obtained before this lifecycle-only fix, and the fix itself passed the same simulator flow.
+
+## Requested popular-song catalogue — 2026-10-26
+
+The owner requested these songs for karaoke-style lessons: instrumental backing with the learner supplying the vocal, synchronized full lyrics and live singing feedback. This is the requested catalogue, not a list of playable or licensed lessons. No recordings or lyrics have been acquired, no licenses purchased and no publication authorized.
+
+| Requested song | Artist named by owner | Status |
+|---|---|---|
+| Bad Romance | Lady Gaga | Requested; catalogue permissions and lesson preparation pending |
+| Do I Wanna Know? | Arctic Monkeys | Requested; catalogue permissions and lesson preparation pending |
+| Don't Stop Me Now | Queen | Requested; catalogue permissions and lesson preparation pending |
+| Eenie Meenie | Justin Bieber | Requested; catalogue permissions and lesson preparation pending |
+| lovely | Billie Eilish | Requested; catalogue permissions and lesson preparation pending |
+| Someone You Loved | Lewis Capaldi | Requested; catalogue permissions and lesson preparation pending |
+
+Keep existing original songs and features available while this catalogue is prepared.
