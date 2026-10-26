@@ -1,11 +1,12 @@
 ## Original composition-guided generation — 2026-10-25
 
-**PASS local implementation, approved GPU comparison and cleanup; PARTIAL musical improvement.** Added an experimental original-score path with distinct kick, drums, bass, chords and hook, recurring motifs, phrase development and stable handoff sections. The approved four-track comparison completed in 480 seconds with about $0.036 observed debit and zero remaining rentals. All four fresh originals are complete, distinct and unclipped; per-track generation took 1.97–3.72 seconds. 49 Python tests and Chromium/WebKit playback checks pass. Remote score hashes match; remote/local guide PCM hashes differ. Blinded musical acceptance and guide adherence remain pending; serving defaults are unchanged.
+**PASS local implementation, approved GPU comparison and cleanup; PARTIAL musical improvement.** Added an experimental original-score path with distinct kick, drums, bass, chords and hook, recurring motifs, phrase development and stable handoff sections. The approved four-track comparison completed in 480 seconds with about $0.036 observed debit and zero remaining rentals. All four fresh originals are complete, distinct and unclipped; per-track generation took 1.97–3.72 seconds. 49 Python tests and Chromium/WebKit playback checks pass. Remote score hashes match; remote/local guide PCM hashes differ. Owner selected clip 2, the composition-guided bass sample, as the preferred clip. Other clips have no explicit individual verdict; reference parity, consistency and guide adherence remain unestablished. Serving defaults are unchanged.
 
 - [x] Compose and render actual original house/bass guides with controlled layers and inspectable scores.
 - [x] Add opt-in source conditioning, guide receipts, worker provenance and a bounded four-output comparison.
 - [x] Verify audio integrity, local deterministic rendering, budgets, adapter transport and browser audition controls.
 - [x] Complete the approved $3/one-GPU/20-minute comparison, confirm cleanup and verify the four blinded listening copies.
+- [x] Record the owner’s blinded preference for clip 2 and verify its source/listening hashes against the condition key.
 - [ ] Review whole-package musical quality and guide adherence before any promotion; no reference parity claimed.
 
 [Report and evidence](docs/dj-composition-guides.md). [Composition sketches](http://localhost:8766/composition-guides/review/). [Four fresh originals](http://localhost:8766/composition-originals/review/).

@@ -1,0 +1,20 @@
+{
+  "status": "PARTIAL - preferred sample identified; broader musical acceptance unestablished",
+  "owner_statement": "2",
+  "preferred_clip": 2,
+  "style": "bass",
+  "condition": "guided",
+  "sequence": 3,
+  "file": "bass-3.wav",
+  "source_sha256": "fed1294652896ade10bc317001b6826572270cbc6ebaf7f4ba1d98e221f24a30",
+  "listening_sha256": "31c259908c30e6083d72c013ea5937242ea8705737e91e740e112d40b8a649ce",
+  "other_clips": "No explicit individual acceptance or rejection provided",
+  "quality_details": "Not provided",
+  "reference_parity": "NOT ESTABLISHED",
+  "promotion": "NOT APPROVED",
+  "next_target": "Assess guided bass consistency across unseen seeds and whole-package quality; retain this sample as the preferred comparison anchor",
+  "limits": [
+    "One preferred sample does not establish general superiority or party readiness.",
+    "No new compute, model training or public activation authorized by this rating."
+  ]
+}
