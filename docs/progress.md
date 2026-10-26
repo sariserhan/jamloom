@@ -1,6 +1,6 @@
 ## AI DJ model-quality completion work — 2026-10-26
 
-**PARTIAL; PASS bounded GPU run and cleanup; listening NOT RUN.** Prepared a different model/sampling comparison after rejected voice conversion and the Mac memory hold. Six matched planned outputs compare turbo/base house, bass and sparse singing in musical context. No new third-party audio or training. The owner approved the $3 / one-GPU / forty-minute / six-call plan; its single attempt produced all six outputs in 739.997 seconds and is consumed. Zero rentals remain; observed provider cost is $0.11. No replacement or public activation.
+**PARTIAL; PASS bounded GPU run, cleanup and owner acceptance of samples 5–6.** Prepared a different model/sampling comparison after rejected voice conversion and the Mac memory hold. Six matched planned outputs compare turbo/base house, bass and sparse singing in musical context. No new third-party audio or training. The owner approved the $3 / one-GPU / forty-minute / six-call plan; its single attempt produced all six outputs in 739.997 seconds and is consumed. Zero rentals remain; observed provider cost is $0.11. No replacement or public activation.
 
 - [x] Pin base-model code/weight hashes and publisher terms; import its code locally without model weights.
 - [x] Implement ordered model switching, raw-candidate retention and a research-only 120-second bound; live generation remains limited to thirty seconds.
@@ -10,7 +10,8 @@
 - [x] Complete the six-output comparison, retain raw audio and execution hashes, reconcile observed rental cost and verify zero rentals.
 - [x] Verify all six blinded players in Chromium/WebKit desktop/mobile; complete bounded local phrase analysis. No safe short hook qualified.
 - [x] Capture all six new originals through the actual mixer: 289.32 seconds, real filter/roll/echo actions and no detected 250 ms silence. Measure final-generator capacity constraints.
-- [ ] Obtain musical acceptance of the new paired tracks and full set; short vocal, sustained hosting/costs and venue/release gates remain open.
+- [x] Record hash-verified owner feedback: 1 over 2, 4 over 3; both 5 and 6 good, with 6 more energetic and closer to real DJ performance and 5 calmer. Preserve task-specific recipe preferences.
+- [ ] Establish fresh-seed consistency and full-set listening acceptance; separate short vocal, sustained hosting/costs and venue/release gates remain open.
 - [ ] Qualify short vocal selection, whole performances, sustained hosting/costs, venue use and release.
 
 [Completed technical comparison](dj-model-comparison.md).

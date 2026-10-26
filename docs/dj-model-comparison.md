@@ -1,6 +1,6 @@
 # Base-model quality comparison — 2026-10-26
 
-**PASS bounded GPU run, cleanup and technical checks; PARTIAL overall, listening NOT RUN.** The latest instruction is to
+**PASS bounded GPU run, technical checks and owner acceptance of samples 5–6; PARTIAL overall.** The latest instruction is to
 complete every remaining AI DJ gate. Rejected vocals and inconsistent originals
 remain rejected. This compares generation recipes before more prompt tuning.
 
@@ -93,7 +93,8 @@ These are snapshots, not a settled invoice. No further GPU work is authorized.
 [cost](evidence/dj-model-comparison-20261026/cost.json).
 
 The [six-clip listening page](http://localhost:8766/model-comparison/review/)
-uses matched integrated loudness, with conditions hidden until owner feedback.
+uses matched integrated loudness. Conditions were hidden during listening and
+are now linked to the owner feedback below.
 Chromium and WebKit desktop/mobile checks pass all six players, seeking, no
 autoplay, one player at a time and no horizontal overflow. The mobile screenshot
 was visually inspected. Waveform checks establish complete, unclipped PCM;
@@ -144,3 +145,35 @@ only 2.868 seconds of measured compute-only margin; the latter exceeds the
 interval by 12.33 seconds. Both need fresh sustained qualification and an
 appropriate admission limit. These tiny samples cannot justify two-listener
 production capacity. [Screening](evidence/dj-model-comparison-20261026/capacity-screen.json).
+
+## Owner listening result — 2026-10-26
+
+All six original WAV and served MP3 hashes were reverified before attaching the
+[exact owner feedback](evidence/dj-model-comparison-20261026/owner-feedback.json).
+
+| Comparison | Owner result | Generation recipe |
+| --- | --- | --- |
+| House instrumentals | 1 preferred over 2 | Turbo preferred over base |
+| Bass instrumentals | 4 preferred over 3 | Turbo preferred over base |
+| Singing in music | Both 5 and 6 good; 6 preferred | Base clip 6 has more energy and is closer to real DJ performance; turbo clip 5 is calmer |
+
+**PASS individual musical examples:** clips 5 and 6 are accepted as good. Use
+clip 6 as the lead party-quality reference and retain clip 5 as the calmer
+reference for further generation evaluation. These are references for original
+outputs, not a fixed playlist to recycle between listeners. The instrumental
+results establish relative preference; no absolute verdict was supplied for
+clips 1–4.
+
+Both versions in each pair used the same seed, caption, lyrics, requested energy,
+mood and tempo. Model weights and inference recipes differed together. Thus this
+supports different candidate recipes by task; it does not prove that base is
+universally better, that energy is independently controllable, or that the same
+quality will recur with new seeds. No production routing was changed.
+
+Voice naturalness and word clarity were not rated separately, and the existing
+short-phrase analysis still has no qualified four-beat hook. Full-set listening,
+fresh-seed consistency, sustained hosting and venue evidence remain open. This
+feedback authorizes neither additional paid renders nor public activation; the
+completed permit stays consumed. The next quality target is repeatability of
+these selected directions, preserving the accepted examples and avoiding a
+return to the rejected composition-guide and speech-synthesis approaches.
