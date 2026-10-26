@@ -22,5 +22,6 @@
       "sha256": "71d14154c47761331f6c783f82218dac91a41fa4a0d788a74ae1b78f6f06287b"
     }
   ],
-  "human_listening": "NOT RUN"
+  "human_listening": "PASS - owner accepted the repeat, echo and combined treatments on the existing phrase",
+  "owner_feedback": "owner-feedback.json"
 }

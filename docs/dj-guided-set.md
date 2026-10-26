@@ -1,6 +1,14 @@
 # Guided bass consistency and short vocal performance — 2026-10-25
 
-**PARTIAL overall. PASS local implementation, signal checks and browser effects; PASS fresh instrumental generation and cleanup; FAIL fresh vocal placement qualification.** The owner preferred composition-study clip 2, then requested all remaining AI DJ work with short, catchy vocal moments and occasional loops/echoes. This increment retains that guided-bass approach, adds original vocal candidates, and exercises actual deck effects. It does not establish reference-level musical quality or enable public generation.
+**FAIL fresh musical quality; PASS owner acceptance of the existing vocal effect treatments. PASS local implementation, signal checks, generation execution and cleanup; FAIL fresh vocal placement qualification.** The owner preferred composition-study clip 2, then requested all remaining AI DJ work with short, catchy vocal moments and occasional loops/echoes. This increment retains that guided-bass approach, adds original vocal candidates, and exercises actual deck effects. It does not establish reference-level musical quality or enable public generation.
+
+## Owner listening verdict — 2026-10-25
+
+**FAIL all six fresh originals.** The owner said: “all of them are bad, the quality got worse now.” All six numbered listening files and their source hashes are verified in [owner feedback](evidence/dj-guided-set-20261025/owner-feedback.json). This fails the guided-bass consistency study; no track from this batch is accepted or eligible for promotion. Successful rendering, timing and gap measurements do not offset that judgment. The exact cause is not yet established.
+
+**PASS the existing vocal effect treatments.** The owner said: “The treatments fit.” Keep the auditioned short repeat, brief echo and combined treatment strengths. This acceptance is limited to those effects on the existing phrase; it does not qualify newly generated voices or their placement in future tracks. No separate verdict was supplied for the full-set transitions.
+
+The earlier composition-study clip 2 remains the preferred comparison anchor, not proof of a consistently good generator. The next quality task is to compare this failed study with that exact earlier request, guide and output before changing more generation parameters. Retain the independently tested deck fixes and accepted effects; do not promote the rejected generation candidate. No new compute or release is authorized by these ratings.
 
 ## Music and voice
 

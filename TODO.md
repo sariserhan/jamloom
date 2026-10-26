@@ -1,6 +1,6 @@
 ## Guided bass and short vocal performance — 2026-10-25
 
-**PARTIAL overall; PASS local vocal/performance implementation.** The preferred guided-bass approach now supports separate original sung/chanted hook candidates. Short phrases can receive a repeat, echo or both with matching deck events. Real Chromium/WebKit PCM checks pass, including unchanged audio before the effect and bounded output. All nine reference files match prior full-file research; exact reference vocal/action annotations remain unverified. Six fresh guided instrumentals completed, with $0.058 observed debit and zero remaining rentals. The GPU run skipped all three vocal placements; fresh vocal qualification remains FAIL. The subsequent timing repair passes local worker/browser checks and produces a 4:55 instrumental mix with four real automatic gestures and no detected quiet gaps of 250 ms or more; musical acceptance remains open.
+**FAIL fresh musical quality; PASS owner acceptance of existing vocal effects and local vocal/performance implementation.** The preferred guided-bass approach now supports separate original sung/chanted hook candidates. Short phrases can receive a repeat, echo or both with matching deck events. Real Chromium/WebKit PCM checks pass, including unchanged audio before the effect and bounded output. All nine reference files match prior full-file research; exact reference vocal/action annotations remain unverified. Six fresh guided instrumentals completed, with $0.058 observed debit and zero remaining rentals. The GPU run skipped all three vocal placements; fresh vocal qualification remains FAIL. The subsequent timing repair passes local worker/browser checks and produces a 4:55 instrumental mix with four real automatic gestures and no detected quiet gaps of 250 ms or more; the owner subsequently rejected all six originals as worse and accepted the existing vocal treatments. Fresh voice quality and full-set transition acceptance remain open.
 
 - [x] Route guided instrumentals and separate original vocal candidates; keep guided generation opt-in.
 - [x] Add backward-compatible vocal echo receipts and bounded real deck treatments; verify playback and cancellation.
@@ -10,7 +10,9 @@
 - [x] Diagnose skipped vocals; verify relocated percussion-supported cues in the worker and browser without relaxing timing/error bounds.
 - [x] Capture the repaired full set and verify playback/seek in Chromium and WebKit; retain the earlier capture separately.
 - [ ] Qualify actual newly generated vocals with the repaired placement; the local model attempt was held for memory.
-- [ ] Obtain musical acceptance for consistency, vocal placement, direction changes and transitions.
+- [x] Record hash-verified owner verdicts: all six originals rejected; existing repeat/echo/combined treatments accepted.
+- [ ] Diagnose the failed consistency study against the exact earlier preferred clip 2; do not promote this batch.
+- [ ] Establish fresh musical quality, vocal placement, direction changes and full-set transition acceptance.
 - [ ] Qualify sustained production capacity, complete operating costs and physical venue use before activation.
 
 [Report and limits](docs/dj-guided-set.md). [Vocal effects](http://localhost:8766/vocal-effects/review/). [Six originals](http://localhost:8766/guided-originals/review/). [Revised set](http://localhost:8766/guided-performance/review/).
