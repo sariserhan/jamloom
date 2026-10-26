@@ -34,6 +34,16 @@ class SungHooksTests(unittest.TestCase):
         for bad in [original,np.ones_like(original),np.full_like(original,np.nan),candidate[:-1]]:
             with self.assertRaises(ValueError):splice(original,bad,8000,cue)
 
+    def test_rejects_nonzero_dropout_even_with_loud_audio_elsewhere(self):
+        original=np.full((480000,2),.1,dtype=np.float32)
+        candidate=original*2
+        candidate[162000:166000]=.001
+        with self.assertRaisesRegex(ValueError,'drops accompaniment'):
+            splice(original,candidate,8000,self.case['cue'])
+        # A source rest is not a newly introduced dropout.
+        original[162000:166000]=.001
+        splice(original,candidate,8000,self.case['cue'])
+
     def test_no_generation_without_hash_verified_supported_source(self):
         samples=np.ones((2880000,2),dtype=np.float32)*.1
         with patch('dj_sung_hooks.steady_grid',return_value=None):

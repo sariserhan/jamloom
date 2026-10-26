@@ -51,6 +51,13 @@ def splice(original, candidate, rate, cue):
     weight[:fade,0]=np.linspace(0,1,fade);weight[-fade:,0]=np.linspace(1,0,fade)
     output=original.copy()
     output[start:end]=original[start:end]*(1-weight)+candidate[start:end]*weight
+    # A changed waveform can be a dropout; reject lost accompaniment, not just clipping.
+    frame=max(1,round(.1*rate));step=max(1,round(.05*rate));quiet=0
+    for position in range(start,end-frame+1,step):
+        before=float(np.sqrt(np.mean(original[position:position+frame]**2)))
+        after=float(np.sqrt(np.mean(output[position:position+frame]**2)))
+        quiet=quiet+1 if before>=.01 and after<before*.25 else 0
+        if quiet>=3: raise ValueError('Repaint drops accompaniment for at least 200 ms')
     if np.sqrt(np.mean((output[start:end]-original[start:end])**2))<.001:
         raise ValueError('Repaint produced no meaningful change; vocal presence unverified')
     if np.max(np.abs(output))>=.95: raise ValueError('Repaint exceeds source headroom')

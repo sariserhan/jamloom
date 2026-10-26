@@ -1,0 +1,770 @@
+{
+  "status": "PASS regression: rejected clip 1 dropout",
+  "tracks": [
+    {
+      "number": 1,
+      "sha256": "145f13b75dcfdc3e2a4571d8227f6757383f2f6cb2927ad3530fcae92a69f0a5",
+      "raw_sha256": "fbf22697725ac05b62919901d4c20702e759591168a2c2407e8a0d0f841c64f5",
+      "source_sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+      "source_window_dbfs": -19.48381752434161,
+      "edited_window_dbfs": -28.649077446290843,
+      "frames": [
+        {
+          "excerpt_start": 4.0,
+          "source_dbfs": -15.451257905313966,
+          "edited_dbfs": -21.99210340015958
+        },
+        {
+          "excerpt_start": 4.05,
+          "source_dbfs": -20.079399296085217,
+          "edited_dbfs": -43.22268885539056
+        },
+        {
+          "excerpt_start": 4.1,
+          "source_dbfs": -23.827220762834575,
+          "edited_dbfs": -47.9080057948033
+        },
+        {
+          "excerpt_start": 4.15,
+          "source_dbfs": -20.863590541604747,
+          "edited_dbfs": -50.531082969592845
+        },
+        {
+          "excerpt_start": 4.2,
+          "source_dbfs": -17.09073446823847,
+          "edited_dbfs": -50.84322117267331
+        },
+        {
+          "excerpt_start": 4.25,
+          "source_dbfs": -17.93209443425004,
+          "edited_dbfs": -51.14484708303148
+        },
+        {
+          "excerpt_start": 4.3,
+          "source_dbfs": -16.843260479596733,
+          "edited_dbfs": -52.01346627287937
+        },
+        {
+          "excerpt_start": 4.35,
+          "source_dbfs": -16.083871640762133,
+          "edited_dbfs": -52.211919995003704
+        },
+        {
+          "excerpt_start": 4.4,
+          "source_dbfs": -16.944008422019486,
+          "edited_dbfs": -50.21461810343215
+        },
+        {
+          "excerpt_start": 4.45,
+          "source_dbfs": -16.57337043910095,
+          "edited_dbfs": -47.976281268267584
+        },
+        {
+          "excerpt_start": 4.5,
+          "source_dbfs": -17.949403240380647,
+          "edited_dbfs": -45.58224538549081
+        },
+        {
+          "excerpt_start": 4.55,
+          "source_dbfs": -20.91766724126449,
+          "edited_dbfs": -44.89316169391237
+        },
+        {
+          "excerpt_start": 4.6,
+          "source_dbfs": -22.418204667859463,
+          "edited_dbfs": -45.05179900164659
+        },
+        {
+          "excerpt_start": 4.65,
+          "source_dbfs": -19.31205173931344,
+          "edited_dbfs": -45.2299870509261
+        },
+        {
+          "excerpt_start": 4.7,
+          "source_dbfs": -20.75573008272847,
+          "edited_dbfs": -45.33930790142656
+        },
+        {
+          "excerpt_start": 4.75,
+          "source_dbfs": -31.186597188321578,
+          "edited_dbfs": -46.136064904673766
+        },
+        {
+          "excerpt_start": 4.8,
+          "source_dbfs": -35.615683510500105,
+          "edited_dbfs": -37.81175235551852
+        },
+        {
+          "excerpt_start": 4.85,
+          "source_dbfs": -19.491397733499205,
+          "edited_dbfs": -23.528888644383716
+        },
+        {
+          "excerpt_start": 4.9,
+          "source_dbfs": -15.314470864156217,
+          "edited_dbfs": -19.28211898135003
+        },
+        {
+          "excerpt_start": 4.95,
+          "source_dbfs": -15.96561883350116,
+          "edited_dbfs": -20.678356769152323
+        },
+        {
+          "excerpt_start": 5.0,
+          "source_dbfs": -20.252836229887773,
+          "edited_dbfs": -28.434804576393734
+        },
+        {
+          "excerpt_start": 5.05,
+          "source_dbfs": -25.291903869015513,
+          "edited_dbfs": -32.754861084430914
+        },
+        {
+          "excerpt_start": 5.1,
+          "source_dbfs": -28.092071415657784,
+          "edited_dbfs": -37.170336535221054
+        },
+        {
+          "excerpt_start": 5.15,
+          "source_dbfs": -28.55768013655336,
+          "edited_dbfs": -39.09662750022021
+        },
+        {
+          "excerpt_start": 5.2,
+          "source_dbfs": -31.763281047094164,
+          "edited_dbfs": -39.72626780213228
+        },
+        {
+          "excerpt_start": 5.25,
+          "source_dbfs": -34.715736569532886,
+          "edited_dbfs": -40.93911335090535
+        },
+        {
+          "excerpt_start": 5.3,
+          "source_dbfs": -26.93322155107673,
+          "edited_dbfs": -40.81635875330449
+        },
+        {
+          "excerpt_start": 5.35,
+          "source_dbfs": -17.744111551633,
+          "edited_dbfs": -32.695585221943034
+        },
+        {
+          "excerpt_start": 5.4,
+          "source_dbfs": -16.073430605449513,
+          "edited_dbfs": -30.91173289893581
+        },
+        {
+          "excerpt_start": 5.45,
+          "source_dbfs": -18.411073503713347,
+          "edited_dbfs": -32.60074099217418
+        },
+        {
+          "excerpt_start": 5.5,
+          "source_dbfs": -22.05603714631872,
+          "edited_dbfs": -35.57076952863222
+        },
+        {
+          "excerpt_start": 5.55,
+          "source_dbfs": -24.81166233725391,
+          "edited_dbfs": -41.24065341476665
+        },
+        {
+          "excerpt_start": 5.6,
+          "source_dbfs": -24.414475470698285,
+          "edited_dbfs": -42.09318227244008
+        },
+        {
+          "excerpt_start": 5.65,
+          "source_dbfs": -24.118734539003427,
+          "edited_dbfs": -40.69643227905854
+        },
+        {
+          "excerpt_start": 5.7,
+          "source_dbfs": -23.91270206022536,
+          "edited_dbfs": -37.776160700619684
+        },
+        {
+          "excerpt_start": 5.75,
+          "source_dbfs": -24.169230788409273,
+          "edited_dbfs": -30.692013657226575
+        }
+      ],
+      "guard": "Repaint drops accompaniment for at least 200 ms"
+    },
+    {
+      "number": 2,
+      "sha256": "2604f6309fe3bd93580f7f1b4a5fed34c583742e171ecb4bd2844b423f5846b8",
+      "raw_sha256": "9a03fe0f8167dd1dc42addf90f321ef9234e5da3f9ca12eddcaf13e564ee6abd",
+      "source_sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+      "source_window_dbfs": -19.48381752434161,
+      "edited_window_dbfs": -19.577360744077644,
+      "frames": [
+        {
+          "excerpt_start": 4.0,
+          "source_dbfs": -15.451257905313966,
+          "edited_dbfs": -17.42319526521071
+        },
+        {
+          "excerpt_start": 4.05,
+          "source_dbfs": -20.079399296085217,
+          "edited_dbfs": -20.514115246458534
+        },
+        {
+          "excerpt_start": 4.1,
+          "source_dbfs": -23.827220762834575,
+          "edited_dbfs": -24.047673245635043
+        },
+        {
+          "excerpt_start": 4.15,
+          "source_dbfs": -20.863590541604747,
+          "edited_dbfs": -22.001014453879115
+        },
+        {
+          "excerpt_start": 4.2,
+          "source_dbfs": -17.09073446823847,
+          "edited_dbfs": -16.379131244916508
+        },
+        {
+          "excerpt_start": 4.25,
+          "source_dbfs": -17.93209443425004,
+          "edited_dbfs": -16.68781857698884
+        },
+        {
+          "excerpt_start": 4.3,
+          "source_dbfs": -16.843260479596733,
+          "edited_dbfs": -18.80206715291961
+        },
+        {
+          "excerpt_start": 4.35,
+          "source_dbfs": -16.083871640762133,
+          "edited_dbfs": -18.065089433864586
+        },
+        {
+          "excerpt_start": 4.4,
+          "source_dbfs": -16.944008422019486,
+          "edited_dbfs": -17.896015385857737
+        },
+        {
+          "excerpt_start": 4.45,
+          "source_dbfs": -16.57337043910095,
+          "edited_dbfs": -17.14879966189546
+        },
+        {
+          "excerpt_start": 4.5,
+          "source_dbfs": -17.949403240380647,
+          "edited_dbfs": -17.65438062007854
+        },
+        {
+          "excerpt_start": 4.55,
+          "source_dbfs": -20.91766724126449,
+          "edited_dbfs": -19.070040386737777
+        },
+        {
+          "excerpt_start": 4.6,
+          "source_dbfs": -22.418204667859463,
+          "edited_dbfs": -19.764015448283597
+        },
+        {
+          "excerpt_start": 4.65,
+          "source_dbfs": -19.31205173931344,
+          "edited_dbfs": -18.579883950034773
+        },
+        {
+          "excerpt_start": 4.7,
+          "source_dbfs": -20.75573008272847,
+          "edited_dbfs": -20.723905096309014
+        },
+        {
+          "excerpt_start": 4.75,
+          "source_dbfs": -31.186597188321578,
+          "edited_dbfs": -30.719854115873368
+        },
+        {
+          "excerpt_start": 4.8,
+          "source_dbfs": -35.615683510500105,
+          "edited_dbfs": -37.673915537547714
+        },
+        {
+          "excerpt_start": 4.85,
+          "source_dbfs": -19.491397733499205,
+          "edited_dbfs": -18.235037360764494
+        },
+        {
+          "excerpt_start": 4.9,
+          "source_dbfs": -15.314470864156217,
+          "edited_dbfs": -14.273740284068044
+        },
+        {
+          "excerpt_start": 4.95,
+          "source_dbfs": -15.96561883350116,
+          "edited_dbfs": -15.645022039211627
+        },
+        {
+          "excerpt_start": 5.0,
+          "source_dbfs": -20.252836229887773,
+          "edited_dbfs": -21.758415966382486
+        },
+        {
+          "excerpt_start": 5.05,
+          "source_dbfs": -25.291903869015513,
+          "edited_dbfs": -25.67170747088522
+        },
+        {
+          "excerpt_start": 5.1,
+          "source_dbfs": -28.092071415657784,
+          "edited_dbfs": -27.938031504185904
+        },
+        {
+          "excerpt_start": 5.15,
+          "source_dbfs": -28.55768013655336,
+          "edited_dbfs": -28.320562439975568
+        },
+        {
+          "excerpt_start": 5.2,
+          "source_dbfs": -31.763281047094164,
+          "edited_dbfs": -29.65712118323548
+        },
+        {
+          "excerpt_start": 5.25,
+          "source_dbfs": -34.715736569532886,
+          "edited_dbfs": -32.792695076143794
+        },
+        {
+          "excerpt_start": 5.3,
+          "source_dbfs": -26.93322155107673,
+          "edited_dbfs": -28.853712789013557
+        },
+        {
+          "excerpt_start": 5.35,
+          "source_dbfs": -17.744111551633,
+          "edited_dbfs": -18.337303033299346
+        },
+        {
+          "excerpt_start": 5.4,
+          "source_dbfs": -16.073430605449513,
+          "edited_dbfs": -16.20478584552795
+        },
+        {
+          "excerpt_start": 5.45,
+          "source_dbfs": -18.411073503713347,
+          "edited_dbfs": -17.758248309130135
+        },
+        {
+          "excerpt_start": 5.5,
+          "source_dbfs": -22.05603714631872,
+          "edited_dbfs": -21.14248104152399
+        },
+        {
+          "excerpt_start": 5.55,
+          "source_dbfs": -24.81166233725391,
+          "edited_dbfs": -26.12074657888197
+        },
+        {
+          "excerpt_start": 5.6,
+          "source_dbfs": -24.414475470698285,
+          "edited_dbfs": -25.58935054126647
+        },
+        {
+          "excerpt_start": 5.65,
+          "source_dbfs": -24.118734539003427,
+          "edited_dbfs": -24.23762654477221
+        },
+        {
+          "excerpt_start": 5.7,
+          "source_dbfs": -23.91270206022536,
+          "edited_dbfs": -23.135115702682235
+        },
+        {
+          "excerpt_start": 5.75,
+          "source_dbfs": -24.169230788409273,
+          "edited_dbfs": -21.28464913521398
+        }
+      ],
+      "guard": "PASS continuity only; no vocal approval"
+    },
+    {
+      "number": 3,
+      "sha256": "c030723220c5fc112c1d8fa0f7b6320b5c2311941b5c0b580f46ce82201aefa9",
+      "raw_sha256": "52279aedc63f1d76f5bcadfee98c1d9f1a67d543c881f60382dc7e1d49e4586c",
+      "source_sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "source_window_dbfs": -16.67107159499476,
+      "edited_window_dbfs": -18.200683816761156,
+      "frames": [
+        {
+          "excerpt_start": 4.0,
+          "source_dbfs": -10.948949210342398,
+          "edited_dbfs": -12.623500931544049
+        },
+        {
+          "excerpt_start": 4.05,
+          "source_dbfs": -14.220956468508025,
+          "edited_dbfs": -15.896214341055785
+        },
+        {
+          "excerpt_start": 4.1,
+          "source_dbfs": -21.043618485186965,
+          "edited_dbfs": -21.136018231019847
+        },
+        {
+          "excerpt_start": 4.15,
+          "source_dbfs": -22.87827895863911,
+          "edited_dbfs": -24.099769928040974
+        },
+        {
+          "excerpt_start": 4.2,
+          "source_dbfs": -21.269075553155965,
+          "edited_dbfs": -24.62339907183912
+        },
+        {
+          "excerpt_start": 4.25,
+          "source_dbfs": -21.580492507099493,
+          "edited_dbfs": -24.24238662645482
+        },
+        {
+          "excerpt_start": 4.3,
+          "source_dbfs": -24.00598385096942,
+          "edited_dbfs": -25.47160458012622
+        },
+        {
+          "excerpt_start": 4.35,
+          "source_dbfs": -31.583458398643167,
+          "edited_dbfs": -30.891298643797874
+        },
+        {
+          "excerpt_start": 4.4,
+          "source_dbfs": -14.33754281880782,
+          "edited_dbfs": -15.748691728190536
+        },
+        {
+          "excerpt_start": 4.45,
+          "source_dbfs": -11.303932784857276,
+          "edited_dbfs": -13.396356753204813
+        },
+        {
+          "excerpt_start": 4.5,
+          "source_dbfs": -13.130531874837086,
+          "edited_dbfs": -15.781273282883346
+        },
+        {
+          "excerpt_start": 4.55,
+          "source_dbfs": -18.49807312786972,
+          "edited_dbfs": -19.844399673434104
+        },
+        {
+          "excerpt_start": 4.6,
+          "source_dbfs": -24.433076987286746,
+          "edited_dbfs": -24.263194144438774
+        },
+        {
+          "excerpt_start": 4.65,
+          "source_dbfs": -21.82287653280573,
+          "edited_dbfs": -25.693313725190563
+        },
+        {
+          "excerpt_start": 4.7,
+          "source_dbfs": -20.02051151987658,
+          "edited_dbfs": -23.536509624362438
+        },
+        {
+          "excerpt_start": 4.75,
+          "source_dbfs": -22.04103125782391,
+          "edited_dbfs": -23.815356379687177
+        },
+        {
+          "excerpt_start": 4.8,
+          "source_dbfs": -26.856791151236315,
+          "edited_dbfs": -27.397139865072692
+        },
+        {
+          "excerpt_start": 4.85,
+          "source_dbfs": -18.92953381587285,
+          "edited_dbfs": -20.755372865402983
+        },
+        {
+          "excerpt_start": 4.9,
+          "source_dbfs": -12.33335131550767,
+          "edited_dbfs": -13.301579074671038
+        },
+        {
+          "excerpt_start": 4.95,
+          "source_dbfs": -11.908278767730632,
+          "edited_dbfs": -12.610131409008956
+        },
+        {
+          "excerpt_start": 5.0,
+          "source_dbfs": -16.471648484995715,
+          "edited_dbfs": -16.95117718067877
+        },
+        {
+          "excerpt_start": 5.05,
+          "source_dbfs": -23.29716526599674,
+          "edited_dbfs": -23.10218930495653
+        },
+        {
+          "excerpt_start": 5.1,
+          "source_dbfs": -23.43071164113621,
+          "edited_dbfs": -25.613658253800907
+        },
+        {
+          "excerpt_start": 5.15,
+          "source_dbfs": -21.079850347955368,
+          "edited_dbfs": -22.713893604276322
+        },
+        {
+          "excerpt_start": 5.2,
+          "source_dbfs": -20.76955565004742,
+          "edited_dbfs": -20.784916879306664
+        },
+        {
+          "excerpt_start": 5.25,
+          "source_dbfs": -23.302531337798197,
+          "edited_dbfs": -22.89549655936641
+        },
+        {
+          "excerpt_start": 5.3,
+          "source_dbfs": -33.40534387334296,
+          "edited_dbfs": -32.728735430025615
+        },
+        {
+          "excerpt_start": 5.35,
+          "source_dbfs": -13.227585933487603,
+          "edited_dbfs": -14.872053603680797
+        },
+        {
+          "excerpt_start": 5.4,
+          "source_dbfs": -11.108401611899112,
+          "edited_dbfs": -13.167331792039128
+        },
+        {
+          "excerpt_start": 5.45,
+          "source_dbfs": -13.989502652108358,
+          "edited_dbfs": -16.309073627986656
+        },
+        {
+          "excerpt_start": 5.5,
+          "source_dbfs": -19.43526009136633,
+          "edited_dbfs": -20.115625338285884
+        },
+        {
+          "excerpt_start": 5.55,
+          "source_dbfs": -23.873199331498416,
+          "edited_dbfs": -24.726740334553817
+        },
+        {
+          "excerpt_start": 5.6,
+          "source_dbfs": -21.729520578309398,
+          "edited_dbfs": -23.86616803465985
+        },
+        {
+          "excerpt_start": 5.65,
+          "source_dbfs": -20.896919721653646,
+          "edited_dbfs": -22.124120197681872
+        },
+        {
+          "excerpt_start": 5.7,
+          "source_dbfs": -22.426715077815693,
+          "edited_dbfs": -23.202843292844463
+        },
+        {
+          "excerpt_start": 5.75,
+          "source_dbfs": -27.80406216152294,
+          "edited_dbfs": -28.41248370011992
+        }
+      ],
+      "guard": "PASS continuity only; no vocal approval"
+    },
+    {
+      "number": 4,
+      "sha256": "bc1c241a03166e848f1265ca38286585e9bdbdb7f93ac64af125ec4c95753f16",
+      "raw_sha256": "c96acdddc4fb815cbf04a270e1a89362c7daad0868b7826593412c156bfe4f63",
+      "source_sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "source_window_dbfs": -16.67107159499476,
+      "edited_window_dbfs": -16.89724229354961,
+      "frames": [
+        {
+          "excerpt_start": 4.0,
+          "source_dbfs": -10.948949210342398,
+          "edited_dbfs": -12.082404323726347
+        },
+        {
+          "excerpt_start": 4.05,
+          "source_dbfs": -14.220956468508025,
+          "edited_dbfs": -15.430483545650715
+        },
+        {
+          "excerpt_start": 4.1,
+          "source_dbfs": -21.043618485186965,
+          "edited_dbfs": -21.81687164877939
+        },
+        {
+          "excerpt_start": 4.15,
+          "source_dbfs": -22.87827895863911,
+          "edited_dbfs": -23.582235698689757
+        },
+        {
+          "excerpt_start": 4.2,
+          "source_dbfs": -21.269075553155965,
+          "edited_dbfs": -22.434645386357772
+        },
+        {
+          "excerpt_start": 4.25,
+          "source_dbfs": -21.580492507099493,
+          "edited_dbfs": -21.183244885067936
+        },
+        {
+          "excerpt_start": 4.3,
+          "source_dbfs": -24.00598385096942,
+          "edited_dbfs": -22.778368424980915
+        },
+        {
+          "excerpt_start": 4.35,
+          "source_dbfs": -31.583458398643167,
+          "edited_dbfs": -29.079544155297615
+        },
+        {
+          "excerpt_start": 4.4,
+          "source_dbfs": -14.33754281880782,
+          "edited_dbfs": -14.975974668570476
+        },
+        {
+          "excerpt_start": 4.45,
+          "source_dbfs": -11.303932784857276,
+          "edited_dbfs": -11.42757989474789
+        },
+        {
+          "excerpt_start": 4.5,
+          "source_dbfs": -13.130531874837086,
+          "edited_dbfs": -13.352226421048774
+        },
+        {
+          "excerpt_start": 4.55,
+          "source_dbfs": -18.49807312786972,
+          "edited_dbfs": -20.20002049674252
+        },
+        {
+          "excerpt_start": 4.6,
+          "source_dbfs": -24.433076987286746,
+          "edited_dbfs": -23.60717912522479
+        },
+        {
+          "excerpt_start": 4.65,
+          "source_dbfs": -21.82287653280573,
+          "edited_dbfs": -23.278539865198983
+        },
+        {
+          "excerpt_start": 4.7,
+          "source_dbfs": -20.02051151987658,
+          "edited_dbfs": -20.89517984421967
+        },
+        {
+          "excerpt_start": 4.75,
+          "source_dbfs": -22.04103125782391,
+          "edited_dbfs": -21.45252143743859
+        },
+        {
+          "excerpt_start": 4.8,
+          "source_dbfs": -26.856791151236315,
+          "edited_dbfs": -25.127008783093636
+        },
+        {
+          "excerpt_start": 4.85,
+          "source_dbfs": -18.92953381587285,
+          "edited_dbfs": -19.215444231683826
+        },
+        {
+          "excerpt_start": 4.9,
+          "source_dbfs": -12.33335131550767,
+          "edited_dbfs": -11.348069934598978
+        },
+        {
+          "excerpt_start": 4.95,
+          "source_dbfs": -11.908278767730632,
+          "edited_dbfs": -10.967802062817904
+        },
+        {
+          "excerpt_start": 5.0,
+          "source_dbfs": -16.471648484995715,
+          "edited_dbfs": -16.261873343750285
+        },
+        {
+          "excerpt_start": 5.05,
+          "source_dbfs": -23.29716526599674,
+          "edited_dbfs": -21.599177925218633
+        },
+        {
+          "excerpt_start": 5.1,
+          "source_dbfs": -23.43071164113621,
+          "edited_dbfs": -22.962941542887325
+        },
+        {
+          "excerpt_start": 5.15,
+          "source_dbfs": -21.079850347955368,
+          "edited_dbfs": -20.84589086420594
+        },
+        {
+          "excerpt_start": 5.2,
+          "source_dbfs": -20.76955565004742,
+          "edited_dbfs": -20.08726935402678
+        },
+        {
+          "excerpt_start": 5.25,
+          "source_dbfs": -23.302531337798197,
+          "edited_dbfs": -22.61914951682018
+        },
+        {
+          "excerpt_start": 5.3,
+          "source_dbfs": -33.40534387334296,
+          "edited_dbfs": -31.77570687950214
+        },
+        {
+          "excerpt_start": 5.35,
+          "source_dbfs": -13.227585933487603,
+          "edited_dbfs": -13.318918924195426
+        },
+        {
+          "excerpt_start": 5.4,
+          "source_dbfs": -11.108401611899112,
+          "edited_dbfs": -11.762819756321814
+        },
+        {
+          "excerpt_start": 5.45,
+          "source_dbfs": -13.989502652108358,
+          "edited_dbfs": -15.639938076994234
+        },
+        {
+          "excerpt_start": 5.5,
+          "source_dbfs": -19.43526009136633,
+          "edited_dbfs": -20.48694399819634
+        },
+        {
+          "excerpt_start": 5.55,
+          "source_dbfs": -23.873199331498416,
+          "edited_dbfs": -24.264927624651094
+        },
+        {
+          "excerpt_start": 5.6,
+          "source_dbfs": -21.729520578309398,
+          "edited_dbfs": -22.344499432535926
+        },
+        {
+          "excerpt_start": 5.65,
+          "source_dbfs": -20.896919721653646,
+          "edited_dbfs": -19.77970857914575
+        },
+        {
+          "excerpt_start": 5.7,
+          "source_dbfs": -22.426715077815693,
+          "edited_dbfs": -20.29029629133515
+        },
+        {
+          "excerpt_start": 5.75,
+          "source_dbfs": -27.80406216152294,
+          "edited_dbfs": -25.622221425124188
+        }
+      ],
+      "guard": "PASS continuity only; no vocal approval"
+    }
+  ],
+  "limits": "Relative RMS continuity is not voice detection or musical acceptance; all four clips were rejected by the owner."
+}

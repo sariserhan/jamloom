@@ -15,6 +15,8 @@ class SamplePermitTests(unittest.TestCase):
         plan=json.loads((ROOT/'docs/evidence/dj-sung-hooks-20261026/replacement-plan.json').read_text())
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve one replacement within the original cap'
         with patch.object(trial.vast,'LEASE_SECONDS',plan['remaining_rental_seconds']):
+            with self.assertRaisesRegex(ValueError,'worker changed'):validate_sung(plan,replacement=True)
+            plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
             validate_sung(plan,replacement=True)
             for key,value in [('budget_usd_total',4),('remaining_rental_seconds',1200),('original_permit_sha256','0'*64),('owner_statement','Approve the capped $3 musical-vocal comparison')]:
                 changed=copy.deepcopy(plan);changed[key]=value
