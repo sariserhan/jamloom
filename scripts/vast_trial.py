@@ -272,18 +272,31 @@ def dj_session_approval(approval, label, requests=8):
 
 DJ_INTEGRATED_FILES = ('scripts/vast_trial.py', 'scripts/cloud_dj_warm.sh', 'scripts/cloud_music_setup.sh', 'scripts/dj_track_worker.py', 'scripts/dj_warm_engine.py', 'scripts/dj_vocal.py', 'apps/site/tests/dj-warm-qualification.mjs', 'apps/site/tests/dj-qualification-process.mjs', 'apps/site/lib/dj-remote-worker.ts', 'apps/site/lib/ai-dj-player.ts', 'apps/site/lib/ai-dj-plan.ts')
 
-def dj_integrated_approval(approval, reliability=False):
-    dj_session_approval(approval, 'jamloom-dj-reliability-20261026' if reliability else 'jamloom-dj-integrated-20261026', 24)
+def dj_integrated_approval(approval, reliability=False, release_check=False, release_retry=False):
+    if release_retry and not release_check:
+        raise RuntimeError("Release retry requires release-check safeguards")
+    if release_check and not reliability:
+        raise RuntimeError('Release check requires reliability safeguards')
+    dj_session_approval(approval, 'jamloom-dj-release-check-20261026'+('-retry' if release_retry else '') if release_check else 'jamloom-dj-reliability-20261026' if reliability else 'jamloom-dj-integrated-20261026', 24)
     if (approval.get('status') != 'AUTHORIZED' or
-            approval.get('owner_statement') != ('Approve the capped $6 reliability qualification' if reliability else 'Approve the capped $6 integrated qualification') or
+            approval.get('owner_statement') != ('Approve one replacement within the original $6 cap' if release_retry else 'Approve the capped $6 release qualification' if release_check else 'Approve the capped $6 reliability qualification' if reliability else 'Approve the capped $6 integrated qualification') or
             approval.get('stop_on_failure') is not True or
             approval.get('automatic_cleanup') is not True or
             approval.get('replacement_rental_authorized') is not False):
         raise RuntimeError('New integrated qualification approval required')
     hashes = approval.get('code_sha256', {})
     files = (*DJ_INTEGRATED_FILES, 'scripts/dj_renderer_readiness.py') if reliability else DJ_INTEGRATED_FILES
+    if release_check:
+        files += ('apps/site/tests/silent-audio.mjs', 'apps/site/tests/dj-ui-preflight.mjs')
     if set(hashes) != set(files) or any(hashlib.sha256((ROOT/path).read_bytes()).hexdigest() != hashes[path] for path in files):
         raise RuntimeError('Integrated qualification source changed')
+
+
+def dj_ui_preflight():
+    node = shutil.which("node")
+    if not node:
+        raise RuntimeError("Node is required for the local DJ preflight")
+    subprocess.run([node, "tests/dj-ui-preflight.mjs", os.environ.get("JAMLOOM_QUALIFICATION_ORIGIN", "http://localhost:3009")], cwd=ROOT/"apps/site", check=True, timeout=120)
 
 
 def main():
@@ -307,7 +320,13 @@ def main():
     parser.add_argument('--dj-hosted', action='store_true', help='Fresh hosted-operation qualification with its own permit')
     parser.add_argument('--dj-integrated', action='store_true', help='Fresh current-code two-listener qualification; new exact permit required')
     parser.add_argument('--dj-reliability', action='store_true', help='New integrated attempt with retained startup diagnostics; separate approval required')
+    parser.add_argument('--dj-release-check', action='store_true', help='Fresh corrected-meter qualification; separate exact approval and isolated state')
+    parser.add_argument('--dj-release-retry', action='store_true', help='One explicitly renewed attempt sharing the original release-check time and budget')
     args = parser.parse_args()
+    if args.dj_release_retry and not args.dj_release_check:
+        parser.error('--dj-release-retry requires --dj-release-check')
+    if args.dj_release_check and not args.dj_reliability:
+        parser.error('--dj-release-check requires --dj-reliability')
     if args.dj_reliability and not args.dj_integrated:
         parser.error('--dj-reliability requires --dj-integrated')
     if args.dj_integrated and not args.dj_hosted:
@@ -355,6 +374,8 @@ def main():
         LABEL='jamloom-dj-integrated-20261026';WORK=ROOT/'build-dj-integrated-20261026';STATE=WORK/'trial-state.json'
     if args.dj_reliability:
         LABEL='jamloom-dj-reliability-20261026';WORK=ROOT/'build-dj-reliability-20261026';STATE=WORK/'trial-state.json'
+    if args.dj_release_check:
+        LABEL='jamloom-dj-release-check-20261026'+('-retry' if args.dj_release_retry else '');WORK=ROOT/('build-'+LABEL.removeprefix('jamloom-'));STATE=WORK/'trial-state.json'
     WORK.mkdir(exist_ok=True)
     if args.action == "status":
         account = api("v0/users/current")
@@ -369,8 +390,8 @@ def main():
     elif args.action == "rent":
         if args.club_benchmark or args.dj_qualification:
             if args.dj_integrated:
-                approval=json.loads((ROOT/('docs/evidence/dj-reliability-20261026/authorization.json' if args.dj_reliability else 'docs/evidence/dj-integrated-20261026/authorization.json')).read_text())
-                dj_integrated_approval(approval, reliability=args.dj_reliability)
+                approval=json.loads((ROOT/('docs/evidence/dj-release-check-20261026'+('-retry' if args.dj_release_retry else '')+'/authorization.json' if args.dj_release_check else 'docs/evidence/dj-reliability-20261026/authorization.json' if args.dj_reliability else 'docs/evidence/dj-integrated-20261026/authorization.json')).read_text())
+                dj_integrated_approval(approval, reliability=args.dj_reliability, release_check=args.dj_release_check, release_retry=args.dj_release_retry)
             elif args.dj_beta:
                 approval=json.loads((ROOT/('docs/evidence/ai-dj-hosted-20261025/authorization.json' if args.dj_hosted else 'docs/evidence/ai-dj-beta-20261025/authorization.json')).read_text())
             elif args.dj_finish:
@@ -383,6 +404,8 @@ def main():
                 raise RuntimeError('Missing current campaign budget receipt')
         if args.dj_sessions:
             dj_session_approval(approval, LABEL, 24 if args.dj_beta else 8)
+        if args.dj_release_check:
+            dj_ui_preflight()
         public_key = (WORK / "trial-key.pub").read_text().strip()
         if not public_key.startswith("ssh-ed25519 ") or not shutil.which("caffeinate"):
             raise RuntimeError("Trial SSH key or sleep inhibitor is missing")
@@ -397,6 +420,9 @@ def main():
         available = offers(proven_host)
         starting_credit = float(account["credit"])
         deadline = time.time() + LEASE_SECONDS
+        if args.dj_release_retry:
+            previous=json.loads((ROOT/'build-dj-release-check-20261026/trial-state.json').read_text())
+            starting_credit,deadline=dj_retry_limits(account,previous,time.time(),'jamloom-dj-release-check-20261026')
         if args.dj_sessions:
             # The earlier qualification documented this host's failed startup.
             previous=json.loads((ROOT/'build-dj-qualification-20261024/trial-state.json').read_text())
@@ -441,7 +467,7 @@ def main():
         write_state(state)  # Prevent duplicate rental if the create response is lost.
         with (WORK / "watchdog.log").open("a") as log:
             subprocess.Popen(["caffeinate", "-i", sys.executable, str(Path(__file__).resolve()), "watch"] +
-                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) + (['--dj-beta'] if args.dj_beta else []) + (['--dj-hosted'] if args.dj_hosted else []) + (['--dj-integrated'] if args.dj_integrated else []) + (['--dj-reliability'] if args.dj_reliability else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
+                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) + (['--dj-beta'] if args.dj_beta else []) + (['--dj-hosted'] if args.dj_hosted else []) + (['--dj-integrated'] if args.dj_integrated else []) + (['--dj-reliability'] if args.dj_reliability else []) + (['--dj-release-check'] if args.dj_release_check else []) + (['--dj-release-retry'] if args.dj_release_retry else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
                              stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
         # The watchdog also reconciles by unique label if this response is lost.
         result = api("v0/asks/" + str(offer["id"]), "PUT", {

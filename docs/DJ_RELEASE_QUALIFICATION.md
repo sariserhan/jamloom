@@ -1,0 +1,29 @@
+# Corrected-meter release qualification
+
+2026-10-26. **FAIL before generation; cleanup PASS; permission CONSUMED.** This new campaign preserves the consumed reliability receipt and the failed original assertion. It does not authorize public activation or certify musical quality.
+
+The concrete run reuses the existing customer-session pipeline: two listeners, twenty fresh sixty-second tracks, at most four ten-second vocal candidates, public Stop, private credit exhaustion, mood changes, lost completed-response recovery, third-listener refusal, complete R2 recording and privacy/cleanup. The only qualification change is binding and using the corrected source-identity meter already verified in the retained-audio rehearsal. Existing generation recipes remain unchanged.
+
+Bounds: **$6 total**, **one GPU**, **forty minutes maximum from rental creation**, stop on first failure, independent watchdog and automatic cleanup, **no replacement**, no public activation, no paid music acquisition. The existing proven-host and conservative price filters remain. Startup diagnostics retain bounded redacted evidence. Cost reconciliation is provisional until the provider invoice settles.
+
+[Authorization](evidence/dj-release-check-20261026/authorization.json) was explicitly approved, executed once and consumed. [Preparation](evidence/dj-release-check-20261026/preparation.json) binds private runner hashes without publishing their credentials. New state, keys, token, results and output paths use `build-dj-release-check-20261026` and `renders/dj-release-check-20261026`; the old attempt is unchanged. No rental exists as of the preparation's read-only provider check.
+
+Execution after exact authorization uses `scripts/vast_trial.py rent --dj-qualification --dj-sessions --dj-beta --dj-hosted --dj-integrated --dj-reliability --dj-release-check`, then the prepared private `pipeline.py`. The independent watchdog inherits the same release-check flag. Controller and browser harness both require the separate campaign, limits, exact statement, unconsumed authorization and code hashes. Changing the tested source meter invalidates authorization. The consumed reliability permission cannot authorize this run.
+
+Review after execution must retain the original result, counts, unique audio hashes, complete recordings, source-meter observations, privacy checks, rental deletion/inventory and actual provisional cost. A pass closes this bounded technical scenario only. Longer hosting, professional musical acceptance and real venue qualification remain separate.
+
+## Execution and correction
+
+The owner approved this exact run. Renderer readiness passed on one RTX 3090. The browser then received the intentional production 404 for `/ai-dj/session` on port 3008; no session began and no music request was submitted. The independent monitor deleted the rental after 366.705 seconds. Complete provider inventory returned zero instances; provisional debit was **$0.046007061**. Isolated customer/database cleanup passed. [Original failure](evidence/dj-release-check-20261026/failure.json), [execution/cost](evidence/dj-release-check-20261026/execution.json), [cleanup](evidence/dj-release-check-20261026/cleanup.json). No replacement is authorized.
+
+The fixture had incorrectly selected a built preview for a development-only route. The correction keeps the public gate unchanged: use a separate loopback development server on port 3009, with local coming-soon disabled and account configuration blank. Next's installed development server uses `.next-qualification/dev`, leaving the owner's production preview on 3008 intact.
+
+`tests/dj-ui-preflight.mjs` now loads the actual setup, mocks only API requests, advances through the quote to the real deck, and never presses Start. It rejects production 404s, redirects, external origins and JavaScript errors. The rental controller requires it before provider access; the customer harness also calls it before creating its isolated database. Both the preflight and source meter must be bound in any future authorization. Old consumed hashes remain unchanged. Thirty-three controller tests pass, including proof that failed preflight never calls the provider.
+
+Local command: `JAMLOOM_QUALIFICATION_BUILD=1 JAMLOOM_COMING_SOON=false DATABASE_URL='' BETTER_AUTH_SECRET='' node node_modules/next/dist/bin/next dev --hostname 127.0.0.1 --port 3009` from `apps/site`. Set `JAMLOOM_QUALIFICATION_ORIGIN=http://localhost:3009` for the harness. A new paid attempt still requires fresh explicit permission; passing local preflight does not revive this consumed permit.
+
+## Prepared one-replacement option — not authorized
+
+A separate [replacement permit](evidence/dj-release-check-20261026-retry/authorization.json) is PREPARED with an empty owner statement. It preserves the original failed attempt and shares its **$6 total cap and forty-minute cumulative rental limit**: **33 minutes 53 seconds remain** after rounding the first attempt upward. The exact requested statement is “Approve one replacement within the original $6 cap.” This is not permission to run.
+
+The replacement reuses `dj_retry_limits`, which anchors cost to the first account credit balance, requires confirmed prior deletion and subtracts elapsed rental time. It retains twenty fresh 60-second tracks, at most four 10-second vocal candidates, one GPU, stop on failure, automatic cleanup, no further replacements and no public activation. New state/key/token/output paths end `-retry`. `--dj-release-retry` requires the complete release-check chain, propagates to the watchdog, and requires a distinct exact authorization. [Prepared runner hashes and remaining time](evidence/dj-release-check-20261026-retry/preparation.json). Browser preflight must pass before any rental; a complete corrected retained rehearsal is also required before requesting execution.

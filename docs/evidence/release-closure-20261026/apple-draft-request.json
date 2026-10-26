@@ -1,0 +1,48 @@
+{
+  "scope": "Draft preparation only; no review submission, publication or purchases",
+  "changes": [
+    {
+      "path": "/v1/apps/6826480059",
+      "data": {
+        "type": "apps",
+        "id": "6826480059",
+        "attributes": {
+          "contentRightsDeclaration": "USES_THIRD_PARTY_CONTENT"
+        }
+      }
+    },
+    {
+      "path": "/v1/appStoreVersions/02c3b180-6e57-47bb-9963-fedfe1915fcf",
+      "data": {
+        "type": "appStoreVersions",
+        "id": "02c3b180-6e57-47bb-9963-fedfe1915fcf",
+        "attributes": {
+          "versionString": "0.10.2"
+        }
+      }
+    },
+    {
+      "path": "/v1/appStoreVersionLocalizations/0cc50fd7-1449-4761-ab42-24bc7af9746d",
+      "data": {
+        "type": "appStoreVersionLocalizations",
+        "id": "0cc50fd7-1449-4761-ab42-24bc7af9746d",
+        "attributes": {
+          "description": "Make music, practise singing and mix tracks with Jamloom.\n\nSING WITH ORIGINAL SONGS\nPractise eight original songs with instrumental backing, complete lyrics, section practice and a live pitch display. Choose a comfortable range and pace, revisit warm-ups and practise as often as you like. Microphone analysis stays on your device. Pitch feedback is practice guidance, not a professional voice assessment.\n\nMIX ON TWO DJ DECKS\nLoad music you have permission to use. Explore the crossfader, channel controls, cue points, loops, pads and effects in portrait or landscape.\n\nCREATE AND EXPLORE\nRecord or import a short phrase for a local musical preview. Build a Music DNA profile by searching for songs and artists without an Apple Music subscription. Review names from public YouTube Music playlists, or optionally import Apple Music favorites with your permission.\n\nCOMMUNITY AND FAVORITES\nBrowse public cloud creations, filter by language and listen with playback controls. Save favorites on your device; sign in to sync them and rate songs.\n\nLocal practice works without an account. Account and cloud features require an internet connection. Cloud song generation and credit purchases are not publicly available in this version. Popular commercial songs are not included. Use only recordings and music you have permission to process.",
+          "keywords": "singing,pitch,practice,music,remix,DJ,mixer,lyrics,voice,original,songs",
+          "supportUrl": "https://www.jamloom.com/support",
+          "marketingUrl": "https://www.jamloom.com"
+        }
+      }
+    },
+    {
+      "path": "/v1/appStoreReviewDetails/bbbb5199-13b9-49b9-8ae7-395398a44454",
+      "data": {
+        "type": "appStoreReviewDetails",
+        "id": "bbbb5199-13b9-49b9-8ae7-395398a44454",
+        "attributes": {
+          "notes": "Jamloom 0.10.2 (24). The public cloud-generation service and credit purchases remain disabled. Please assess the available local features; no purchase is required.\n\nSing tab: choose First Light, then Hear song for the original instrumental demonstration. Sing along requests microphone permission and shows measured pitch. Full lyrics and section practice are included. Playback/capture stop when leaving the tab. The app contains eight original practice songs, not licensed chart songs.\n\nDJ Deck: open Music, load permitted local audio or the included cleared practice track, then rotate to landscape. Try Play, crossfader, loops and Pads & FX. Improvise supports a microphone recording or imported phrase and local preview. The user explicitly starts capture.\n\nCommunity browsing is public. Favorites work locally; account sync and ratings require sign-in. Account deletion requests are available inside Account. A dedicated review account must be supplied before submission; none is embedded here. The historical bundle identifier com.djayvo.app is retained; the brand is Jamloom."
+        }
+      }
+    }
+  ]
+}

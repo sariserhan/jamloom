@@ -282,6 +282,46 @@ class PriceBounds(unittest.TestCase):
         for change in [dict(campaign='old'),dict(budget_usd=10),dict(instances_max=2),dict(max_elapsed_seconds=3600),dict(model_requests_max=9),dict(public_activation=True),dict(owner_statement='')]:
             with self.assertRaises(RuntimeError): trial.dj_session_approval({**approved,**change},label)
 
+    def test_release_check_requires_new_approval_and_binds_source_meter(self):
+        import hashlib
+        files=(*trial.DJ_INTEGRATED_FILES,'scripts/dj_renderer_readiness.py','apps/site/tests/silent-audio.mjs','apps/site/tests/dj-ui-preflight.mjs')
+        approved=dict(campaign='jamloom-dj-release-check-20261026',status='AUTHORIZED',budget_usd=6,
+            instances_max=1,max_elapsed_seconds=2400,model_requests_max=24,public_activation=False,
+            owner_statement='Approve the capped $6 release qualification',stop_on_failure=True,
+            automatic_cleanup=True,replacement_rental_authorized=False,
+            code_sha256={p:hashlib.sha256((trial.ROOT/p).read_bytes()).hexdigest() for p in files})
+        trial.dj_integrated_approval(approved,reliability=True,release_check=True)
+        retry={**approved,'campaign':approved['campaign']+'-retry','owner_statement':'Approve one replacement within the original $6 cap'}
+        trial.dj_integrated_approval(retry,reliability=True,release_check=True,release_retry=True)
+        with self.assertRaises(RuntimeError):trial.dj_integrated_approval(approved,reliability=True,release_check=True,release_retry=True)
+        with self.assertRaises(RuntimeError):trial.dj_integrated_approval(retry,reliability=True,release_retry=True)
+        with patch.object(trial.sys,'argv',['vast_trial.py','rent','--dj-release-retry']),patch.object(trial,'api') as api,contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit):trial.main()
+            api.assert_not_called()
+        for change in [dict(status='PREPARED'),dict(status='CONSUMED'),dict(budget_usd=7),
+                       dict(owner_statement='finish everything'),dict(campaign='jamloom-dj-reliability-20261026'),
+                       dict(code_sha256={p:h for p,h in approved['code_sha256'].items() if p!=files[-1]}),
+                       dict(code_sha256={**approved['code_sha256'],files[-1]:'0'*64})]:
+            with self.assertRaises(RuntimeError):trial.dj_integrated_approval({**approved,**change},reliability=True,release_check=True)
+        with self.assertRaises(RuntimeError):trial.dj_integrated_approval(approved,release_check=True)
+        flags=['vast_trial.py','rent','--dj-qualification','--dj-sessions','--dj-beta','--dj-hosted','--dj-integrated','--dj-reliability','--dj-release-check']
+        with patch.object(trial.sys,'argv',flags),patch.object(Path,'read_text',return_value=json.dumps(approved)),patch.object(trial,'dj_integrated_approval'),patch.object(trial,'dj_ui_preflight',side_effect=RuntimeError('Preview unavailable')),patch.object(trial,'api') as api:
+            with self.assertRaisesRegex(RuntimeError,'Preview unavailable'):trial.main()
+            api.assert_not_called()
+        with patch.object(trial.sys,'argv',['vast_trial.py','rent','--dj-release-check']),patch.object(trial,'api') as api,contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit):trial.main()
+            api.assert_not_called()
+
+    def test_ui_preflight_fails_closed_before_rental(self):
+        with patch.object(trial.shutil,'which',return_value='/test/node'),patch.object(trial.subprocess,'run') as run:
+            trial.dj_ui_preflight()
+            self.assertEqual(run.call_args.kwargs['check'],True)
+            self.assertEqual(run.call_args.kwargs['timeout'],120)
+            run.side_effect=subprocess.CalledProcessError(1,'node')
+            with self.assertRaises(subprocess.CalledProcessError):trial.dj_ui_preflight()
+        with patch.object(trial.shutil,'which',return_value=None):
+            with self.assertRaises(RuntimeError):trial.dj_ui_preflight()
+
     def test_integrated_qualification_requires_unconsumed_exact_permission(self):
         approved=dict(campaign='jamloom-dj-integrated-20261026',status='AUTHORIZED',budget_usd=6,
             instances_max=1,max_elapsed_seconds=2400,model_requests_max=24,public_activation=False,

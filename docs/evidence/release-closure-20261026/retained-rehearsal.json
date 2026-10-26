@@ -1,0 +1,55 @@
+{
+  "status": "PASS technical",
+  "newGeneration": false,
+  "origin": "http://localhost:3000",
+  "preview": "http://localhost:3009",
+  "tracks": 20,
+  "uniqueAudioHashes": 20,
+  "recoveredResponse": true,
+  "maximumSources": 4,
+  "duplicateEnds": 1,
+  "unstartedEnds": 0,
+  "recordings": {
+    "status": "PASS",
+    "recordings": [
+      {
+        "visibility": "public",
+        "seconds": 307.544,
+        "crossAccountDenied": true,
+        "anonymousPrivateDenied": false,
+        "ownerR2Read": true
+      },
+      {
+        "visibility": "private",
+        "seconds": 420.356,
+        "crossAccountDenied": true,
+        "anonymousPrivateDenied": true,
+        "ownerR2Read": true
+      }
+    ],
+    "temporaryR2ObjectsAbsent": true
+  },
+  "cleanup": {
+    "testOwnersPurged": 2,
+    "recordingObjectsPurged": true,
+    "isolatedDatabaseDropped": true
+  },
+  "customers": [
+    {
+      "visibility": "public",
+      "session": "37ac3df089184787be8a96cc7c71a21d",
+      "endReason": "stop",
+      "recording": "6d6201341060403584180fb522608559",
+      "performance": "LIVE MOVES\nAI1 roll\nAIEcho\nAIFilter sweep\nAI1 roll"
+    },
+    {
+      "visibility": "private",
+      "session": "8df034b4f47a4b0abfa235c2baf9f751",
+      "endReason": "credits",
+      "recording": "ae3bd1c14bf142a496750cd7e3499752",
+      "performance": "LIVE MOVES\nAIFilter sweep\nAI1 roll\nAIEcho\nAIFilter sweep"
+    }
+  ],
+  "source": "renders/dj-two-listener-rehearsal-20261026-e004d89a1576412990388f14d770bcda",
+  "humanListening": "NOT RUN for this execution; retained originals only"
+}

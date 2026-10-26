@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-26T19:51:48.036Z",
+  "rows": [
+    {
+      "id": "ff132539-3d7b-45c6-bd62-70dd859126e3",
+      "version": "12",
+      "processingState": "VALID",
+      "iconPresent": true,
+      "usesNonExemptEncryption": false
+    }
+  ],
+  "browserReadback": {
+    "source": "App Store Connect TestFlight Build Uploads, signed-in owner session",
+    "version": "0.10.2",
+    "build": "24",
+    "status": "PROCESSING",
+    "observedAt": "2026-10-26T19:56:54.892681+00:00"
+  }
+}

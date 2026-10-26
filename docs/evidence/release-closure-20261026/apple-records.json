@@ -1,0 +1,37 @@
+{
+  "status": "PARTIAL release preparation",
+  "checkedAt": "2026-10-26T19:49:23.028Z",
+  "app": {
+    "id": "6826480059",
+    "name": "Jamloom",
+    "bundleId": "com.djayvo.app"
+  },
+  "builds": [
+    {
+      "id": "ff132539-3d7b-45c6-bd62-70dd859126e3",
+      "version": "12",
+      "processingState": "VALID",
+      "iconPresent": true
+    }
+  ],
+  "products": [
+    {
+      "id": "6826479674",
+      "productId": "com.jamloom.credits.starter",
+      "state": "MISSING_METADATA",
+      "type": "CONSUMABLE"
+    },
+    {
+      "id": "6826480115",
+      "productId": "com.jamloom.credits.creator",
+      "state": "MISSING_METADATA",
+      "type": "CONSUMABLE"
+    },
+    {
+      "id": "6826480267",
+      "productId": "com.jamloom.credits.studio",
+      "state": "MISSING_METADATA",
+      "type": "CONSUMABLE"
+    }
+  ]
+}

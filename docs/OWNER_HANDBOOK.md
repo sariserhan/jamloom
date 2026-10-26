@@ -1,3 +1,9 @@
+## Release closure update — 2026-10-26
+
+See [the current closure report](RELEASE_CLOSURE.md). The exact live/recorded silent microphone check now passes, while singing validation remains pending. The capped GPU attempt failed before generation because a development-only page was pointed at the production preview; the rental is deleted and $0.046007 provisional cost is recorded. No replacement is authorized. Future rentals require a passing local browser preflight on the separate port-3009 development server. Do not enable public gates to make a fixture pass.
+
+App Store draft 0.10.2 now has current feature descriptions/reviewer notes and the third-party-content declaration. Three actual required-size screenshots for each iPhone/iPad report COMPLETE. Build 24 passes archive/audit/export/Apple validation and has uploaded without errors; processing and review are separate. No live purchases, public website release or App Review submission occurred. The public product flags remain unchanged.
+
 ## Current all-product candidate — 2026-10-26
 
 Use [Product completion](PRODUCT_COMPLETION.md) for the current status of every product and [Release acceptance](RELEASE_ACCEPTANCE.md) for release decisions. Older dated notes below retain history; they may describe superseded builds or blockers. The new built preview is http://localhost:3008; the older stable preview on port 3000 remains untouched.

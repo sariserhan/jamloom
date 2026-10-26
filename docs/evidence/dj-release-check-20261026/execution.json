@@ -1,0 +1,17 @@
+{
+  "status": "FAIL before generation",
+  "instance": 57860455,
+  "startedAt": 1793043415.847868,
+  "destroyConfirmedAt": 1793043782.5525582,
+  "elapsedSeconds": 366.7046902179718,
+  "generatedTracks": 0,
+  "rendererReadiness": "PASS",
+  "requests": "No generation jobs were submitted; UI failed before session start",
+  "failure": "Production preview on port 3008 intentionally returns 404 for the development-only /ai-dj/session route",
+  "rentalsRemaining": 0,
+  "creditBefore": 7.297616670399999,
+  "creditAfter": 7.251609609399999,
+  "provisionalCostUSD": 0.04600706100000007,
+  "replacementAuthorized": false,
+  "publicActivation": false
+}

@@ -1,0 +1,21 @@
+{
+  "status": "PREPARED, NOT RUN",
+  "private_runner_sha256": {
+    "run-qualification.py": "ccd599c1854975b53a54a2219116d57aad2d6f433d2a8f0acf3f714cc26fc5ce",
+    "monitor.py": "733848370950cf8dbadfa113241317a0763eb1c4646c51cd27da58f685d03233",
+    "boot.py": "f40e202d1e4e863efa2672e688428305194725be4a2e237b58c1ce787e53aaaf",
+    "pipeline.py": "fe8a8658962053af3b837cb7c4263df613bae4efae787d5725e7836e2c96c357",
+    "qualify-when-ready.py": "efb289e8e3227f7f0ee11270582fbd6eb79ed1e96a804fdb8fef938ef3fd924c"
+  },
+  "previous_permit": "CONSUMED; unchanged",
+  "new_tracks": 20,
+  "seconds_per_track": 60,
+  "optional_vocal_candidates_max": 4,
+  "seconds_per_vocal_candidate": 10,
+  "customer_count": 2,
+  "local_checks": "53 controller, worker and readiness regressions PASS; prepared Python runners compile and JS harness syntax passes",
+  "provider_read_only": {
+    "credit_usd": 7.297616670399999,
+    "running_rentals": 0
+  }
+}

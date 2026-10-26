@@ -1,0 +1,88 @@
+{
+  "status": "PASS screenshot UI tests on three Simulators",
+  "version": "0.10.2",
+  "build": 24,
+  "rows": [
+    {
+      "device": "iPhone 17 Pro Max",
+      "file": "iphone-store-04.png",
+      "capture": "Store 04 DJ deck landscape_0_ACDA80BE-EF5D-4F09-8FD9-539AE857B003.png",
+      "sha256": "12b72193231ff30019b0dafaaf03ecc52af08a8cbf5b43dcc6f37cfb29d0156d",
+      "scope": "Actual Simulator UI; cleared local practice tracks and original song lesson; no live singing claim"
+    },
+    {
+      "device": "iPhone 17 Pro Max",
+      "file": "iphone-store-03.png",
+      "capture": "Store 03 DJ deck portrait_0_A2F7445A-368C-42B2-A269-C30B4D2E0BB6.png",
+      "sha256": "7c95cad55a25b85e5e9847d61f380f88798765637e23f2a704fbd4f1ab509bcc",
+      "scope": "Actual Simulator UI; cleared local practice tracks and original song lesson; no live singing claim"
+    },
+    {
+      "device": "iPhone 17 Pro Max",
+      "file": "iphone-store-02.png",
+      "capture": "Store 02 Song and lyrics_0_1067DCD4-E36E-49FE-81D1-CC329D59761E.png",
+      "sha256": "3a4473b53eb1395f724db4aeac28cd7713d18d0fd92aad4ad9bea1a00233d6a7",
+      "scope": "Actual Simulator UI; cleared local practice tracks and original song lesson; no live singing claim"
+    },
+    {
+      "device": "iPhone 17 Pro Max",
+      "file": "iphone-store-01.png",
+      "capture": "Store 01 Original singing songs_0_797BB0C5-AABD-49FB-ADEE-81B8285B7406.png",
+      "sha256": "57e21a50da72a993749df1c43186fbe59982065c867aa70403fce71b0d509286",
+      "scope": "Actual Simulator UI; cleared local practice tracks and original song lesson; no live singing claim"
+    },
+    {
+      "device": "iPad Pro 13-inch (M5)",
+      "file": "ipad-store-04.png",
+      "capture": "Store 04 DJ deck landscape_0_966A940C-AEB6-4134-A1D6-FC6123059091.png",
+      "sha256": "374106aef0c459100a3940643d741c20dd609c99a88afbf91c9d478485c18306",
+      "scope": "Actual Simulator UI; cleared local practice tracks and original song lesson; no live singing claim"
+    },
+    {
+      "device": "iPad Pro 13-inch (M5)",
+      "file": "ipad-store-03.png",
+      "capture": "Store 03 DJ deck portrait_0_09293719-62CB-41AF-957D-6BB202602E31.png",
+      "sha256": "2d04210560bc22cb7755fbc2a5d2e661a69920b131e681248175fc9e3040d871",
+      "scope": "Actual Simulator UI; cleared local practice tracks and original song lesson; no live singing claim"
+    },
+    {
+      "device": "iPad Pro 13-inch (M5)",
+      "file": "ipad-store-02.png",
+      "capture": "Store 02 Song and lyrics_0_89388BC6-7CFC-4A33-8E15-A4E81181F559.png",
+      "sha256": "32e2b42fbdf5d757c699249219acc6a28659585afdb8e1ccf93b7fc6be228a4e",
+      "scope": "Actual Simulator UI; cleared local practice tracks and original song lesson; no live singing claim"
+    },
+    {
+      "device": "iPad Pro 13-inch (M5)",
+      "file": "ipad-store-01.png",
+      "capture": "Store 01 Original singing songs_0_847277CD-8417-4C68-A824-22F0F68798F0.png",
+      "sha256": "c84f7edc24dde89b51b17d83454762f701f5a62fca1eab6aaec015163f1c045c",
+      "scope": "Actual Simulator UI; cleared local practice tracks and original song lesson; no live singing claim"
+    },
+    {
+      "device": "iPhone 17",
+      "file": "iphone-medium-store-04.png",
+      "sha256": "2380028b07c62b18f0c8e3504b27293642fed0f40d0afd398d9da85a6b0dc14a",
+      "capture": "Store 04 DJ deck landscape_0_4A8B02F9-1124-434E-BB90-C9ED5BE6687C.png"
+    },
+    {
+      "device": "iPhone 17",
+      "file": "iphone-medium-store-03.png",
+      "sha256": "6f96d66de24de08ca732c6220ca7574a445212bc0612fb574522f57af1dd1c4f",
+      "capture": "Store 03 DJ deck portrait_0_28C56310-6B06-4111-B13E-B6E8AD15A7B0.png"
+    },
+    {
+      "device": "iPhone 17",
+      "file": "iphone-medium-store-02.png",
+      "sha256": "76bcfa6f4962eb5d40c36403402a25f29c73515fc1a7a9e38e30f89b3b4c1be7",
+      "capture": "Store 02 Song and lyrics_0_007500B6-BE02-4555-9239-9292F2B10004.png"
+    },
+    {
+      "device": "iPhone 17",
+      "file": "iphone-medium-store-01.png",
+      "sha256": "a2516b500e669ccfa7194a74ae5add806e2eaed324daf7b41d05e4b102bee6f2",
+      "capture": "Store 01 Original singing songs_0_07B75CFC-1314-4784-BA76-543086B3586C.png"
+    }
+  ],
+  "app_store_upload": "NOT RUN"
+}

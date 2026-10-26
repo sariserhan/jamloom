@@ -1,0 +1,41 @@
+{
+  "status": "PASS draft updates only",
+  "checks": [
+    {
+      "type": "apps",
+      "status": "PASS PATCH and subsequent GET readback after propagation delay",
+      "fields": [
+        "contentRightsDeclaration"
+      ],
+      "value": "USES_THIRD_PARTY_CONTENT",
+      "basis": "Bundled cleared practice music; existing provenance and license audit. Popular recordings remain excluded."
+    },
+    {
+      "type": "appStoreVersions",
+      "status": "PASS PATCH and independent GET readback",
+      "fields": [
+        "versionString"
+      ]
+    },
+    {
+      "type": "appStoreVersionLocalizations",
+      "status": "PASS PATCH and independent GET readback",
+      "fields": [
+        "description",
+        "keywords",
+        "supportUrl",
+        "marketingUrl"
+      ]
+    },
+    {
+      "type": "appStoreReviewDetails",
+      "status": "PASS PATCH and independent GET readback",
+      "fields": [
+        "notes"
+      ]
+    }
+  ],
+  "reviewSubmission": false,
+  "publicRelease": false,
+  "purchasesActivated": false
+}

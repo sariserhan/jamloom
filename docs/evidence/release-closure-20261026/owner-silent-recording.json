@@ -1,0 +1,13 @@
+{
+  "source": "Owner pasted exact local encoded recording measurements",
+  "result": {
+    "seconds": 4.92,
+    "codec": "audio/webm;codecs=opus",
+    "frames": 115,
+    "detectedPitchPercent": 0,
+    "medianAcRms": 0.0011017746683640978,
+    "medianDetectedHz": null
+  },
+  "status": "PASS silence rejection for this encoded recording only",
+  "limitation": "Separate from earlier live capture; does not establish why the earlier live input differed or singing accuracy. No audio retained."
+}

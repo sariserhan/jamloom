@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "85a2ff32-ce46-4919-8663-3de35d79a913",
+      "displayType": "APP_IPHONE_61",
+      "screenshots": [
+        {
+          "id": "e2e2b863-2c6c-44e5-8370-26b21118db29",
+          "fileName": "iphone-medium-store-01.png",
+          "state": "COMPLETE",
+          "image": {
+            "width": 1206,
+            "height": 2622
+          }
+        },
+        {
+          "id": "971fd6fe-7c8c-4355-9c91-8fbdc6d1af6e",
+          "fileName": "iphone-medium-store-02.png",
+          "state": "COMPLETE",
+          "image": {
+            "width": 1206,
+            "height": 2622
+          }
+        },
+        {
+          "id": "20b17541-edb6-49da-a38a-78a6481ebc1e",
+          "fileName": "iphone-medium-store-03.png",
+          "state": "COMPLETE",
+          "image": {
+            "width": 1206,
+            "height": 2622
+          }
+        }
+      ]
+    },
+    {
+      "id": "4f2a5308-f30d-443c-8745-60fee1d83f9e",
+      "displayType": "APP_IPAD_PRO_3GEN_129",
+      "screenshots": [
+        {
+          "id": "e3c43e69-325c-444d-9653-258b2949d0d0",
+          "fileName": "ipad-store-01.png",
+          "state": "COMPLETE",
+          "image": {
+            "width": 2064,
+            "height": 2752
+          }
+        },
+        {
+          "id": "0cb5c564-ec29-4767-95e3-2d5d28685608",
+          "fileName": "ipad-store-02.png",
+          "state": "COMPLETE",
+          "image": {
+            "width": 2064,
+            "height": 2752
+          }
+        },
+        {
+          "id": "4b6cf742-819b-41a6-b853-067d804eb120",
+          "fileName": "ipad-store-03.png",
+          "state": "COMPLETE",
+          "image": {
+            "width": 2064,
+            "height": 2752
+          }
+        }
+      ]
+    }
+  ]
+}

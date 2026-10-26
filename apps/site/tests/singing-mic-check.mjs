@@ -25,11 +25,16 @@ const rows=await Promise.all([['chromium',chromium],['webkit',webkit]].map(async
   await page.evaluate(async()=>{__deny=false;await __contexts[0].resume();});
   await page.locator('#input-record').click();await page.evaluate(()=>__contexts[0].resume());await page.waitForFunction(()=>document.querySelector('#input-status').textContent.startsWith('Microphone off'),undefined,{timeout:10000});
   assert(await page.evaluate(()=>__streams.every(s=>s.getTracks().every(t=>t.readyState==='ended'))));
-  await page.waitForFunction(()=>document.querySelector('#input-result').textContent.startsWith('{'));const inputSummary=JSON.parse(await page.locator('#input-result').textContent());assert(inputSummary.seconds>=4&&inputSummary.seconds<7);assert(inputSummary.frames>50);assert.equal(inputSummary.detectedPitchPercent,0);assert(await page.locator('#input-player').isVisible());assert(await page.locator('#input-player').evaluate(a=>a.paused));
+  await page.waitForFunction(()=>document.querySelector('#input-result').textContent.startsWith('{'));const inputSummary=JSON.parse(await page.locator('#input-result').textContent());assert(inputSummary.seconds>=4&&inputSummary.seconds<7);assert(inputSummary.frames>50);assert.equal(inputSummary.detectedPitchPercent,0);assert(inputSummary.simultaneousLive.frames>100);assert.equal(inputSummary.simultaneousLive.detectedPitchPercent,0);assert(inputSummary.simultaneousLive.medianAcRms<.003);assert.equal(inputSummary.input.reportedMacMicMode,'standard');assert(await page.locator('#input-player').isVisible());assert(await page.locator('#input-player').evaluate(a=>a.paused));
   await page.locator('#input-player').evaluate(a=>a.play());await page.waitForFunction(()=>document.querySelector('#input-player').currentTime>.1);
   await page.locator('#input-clear').click();assert.equal(await page.locator('#input-player').getAttribute('src'),null);assert(await page.locator('#input-player').isHidden());
   await page.locator('#input-record').click();await page.evaluate(()=>__contexts[0].resume());await page.waitForFunction(()=>document.querySelector('#input-status').textContent.startsWith('Recording five'));
   await page.locator('#input-clear').click();assert(await page.evaluate(()=>__streams.every(s=>s.getTracks().every(t=>t.readyState==='ended'))));assert(await page.locator('#input-player').isHidden());
+  // Recording first must still install interruption cleanup for a later live check.
+  await page.reload();await page.locator('#input-record').click();await page.waitForFunction(()=>document.querySelector('#input-result').textContent.startsWith('{'),undefined,{timeout:10000});
+  const firstRecording=JSON.parse(await page.locator('#input-result').textContent());assert(firstRecording.simultaneousLive.frames>100);assert.equal(firstRecording.simultaneousLive.detectedPitchPercent,0);
+  await page.locator('#start').click();await page.waitForTimeout(200);await page.evaluate(()=>__contexts[0].suspend());await page.waitForFunction(()=>!document.querySelector('#start').disabled);
+  assert(await page.evaluate(()=>__streams.every(s=>s.getTracks().every(t=>t.readyState==='ended'))));
   assert.deepEqual(errors,[]);
   return{browser:name,controlledPCM:true,humanMicrophone:false,denialStopAndReuse:true,inputRecordingExplicitAndLocal:true,inputRecordingStopsBeforePlayback:true,inputRecordingCleared:true,errors,...r};
  }finally{await browser.close();}

@@ -1,0 +1,15 @@
+{
+  "status": "PASS signed archive, strict signature check, bundle audit and App Store distribution export",
+  "version": "0.10.2",
+  "build": "24",
+  "bundle": "com.djayvo.app",
+  "ipa": "build-ios-store/export-0.10.2-24/Jamloom.ipa",
+  "bytes": 80294739,
+  "sha256": "23b0432581933c4af0e714c4ba02fc4b8da977f565f99b9483255deb2b96cd17",
+  "method": "app-store-connect",
+  "uploaded": true,
+  "submitted": false,
+  "appleValidation": "PASS altool VERIFY SUCCEEDED with no errors",
+  "deliveryId": "7c89605f-2c2d-4b1f-901e-294010516495",
+  "appleUpload": "PASS no errors"
+}

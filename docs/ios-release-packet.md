@@ -1,3 +1,13 @@
+# Current candidate: Jamloom 0.10.2 build 24 — 2026-10-26
+
+**PASS archive, distribution export, static privacy/license audit, Apple validation and upload; processing IN PROGRESS in App Store Connect; review NOT SUBMITTED.** [Closure report](RELEASE_CLOSURE.md). App Store draft metadata now describes the current original-song Singing Academy, Community, local favorites/sync, DJ Deck and existing creation flows, with cloud generation and purchases explicitly unavailable. Reviewer notes and content-rights declaration are saved. [Exact listing](evidence/release-closure-20261026/apple-draft-request.json).
+
+Six actual-UI screenshots in required iPhone/iPad sizes report COMPLETE. [Apple screenshot evidence](evidence/release-closure-20261026/apple-screenshots.json). This closes screenshot preparation, not actual iPad/Duo singing qualification. Current distribution package: `build-ios-store/export-0.10.2-24/Jamloom.ipa`; [hash and validation](evidence/release-closure-20261026/distribution-export.json). The historical build 12 is VALID and includes its icon. Current app record is Jamloom, ID 6826480059, bundle com.djayvo.app.
+
+Three consumable records still report MISSING_METADATA; availability, purchase-review screenshots and real Apple sandbox/server delivery remain open. Dedicated reviewer credentials and the account-deletion operating process must be ready before submission. No review submission, live purchase activation or public release is authorized by this draft preparation.
+
+Earlier candidate notes below are historical and must not be treated as current build or upload status.
+
 ## 0.9.6 build 21 rating correction — 2026-10-26
 
 **PASS build, signed bundle audit, installation and isolated Simulator save/reopen flow; PARTIAL physical save verification.** Save now opens sign-in when necessary instead of staying disabled, retains the chosen rating through sign-in, and allows retry after loading errors. “Help improve Jamloom” is removed from the phone rating screen as requested; this grants no training permission. The website endpoint is deployed. The owner confirms Save opens sign-in, clarifies they do not sign in and requests moving on. Authenticated saving was not exercised on their phone. No App Store submission or public release.
@@ -65,4 +75,4 @@ Apple references checked: [privacy details](https://developer.apple.com/app-stor
 
 ## App Store icon
 
-PASS: the signed app includes the iPhone/iPad AppIcon assets and the source asset has a 1024px App Store icon. App Store Connect currently reports zero uploaded builds. Its blank icon is expected until a build is uploaded and processed; no icon-only upload is needed. [Apple instructions](https://developer.apple.com/help/app-store-connect/manage-app-information/add-an-app-icon/). Upload/submission remain separate from local build and draft metadata preparation.
+PASS: the signed app includes the iPhone/iPad AppIcon assets and the source asset has a 1024px App Store icon. At the time of this historical note, App Store Connect reported zero uploaded builds. Current verification supersedes it: build 12 is VALID with an icon asset, and build 24 has uploaded. No icon-only upload is needed. [Apple instructions](https://developer.apple.com/help/app-store-connect/manage-app-information/add-an-app-icon/). Upload/submission remain separate from local build and draft metadata preparation.

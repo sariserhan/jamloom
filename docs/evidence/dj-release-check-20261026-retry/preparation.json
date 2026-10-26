@@ -1,0 +1,16 @@
+{
+  "status": "PREPARED; no rental",
+  "remaining_rental_seconds": 2033,
+  "shared_total_budget_usd": 6,
+  "prior_provisional_debit_usd": 0.046007061,
+  "code_tests": "33 controller checks PASS; current shared-time helper retained",
+  "private_runner_sha256": {
+    "run-qualification.py": "ff6cb737aa691216842132da74b23f46aa119daa3a7c128e8d234020fa096ae9",
+    "monitor.py": "e3e98e93030173c21c1f10521980585827cb5959f229c8b35613b8c8e418e2d0",
+    "boot.py": "f40e202d1e4e863efa2672e688428305194725be4a2e237b58c1ce787e53aaaf",
+    "pipeline.py": "fe8a8658962053af3b837cb7c4263df613bae4efae787d5725e7836e2c96c357",
+    "qualify-when-ready.py": "fe9cfea4d7556c176a0a1996f12ed80ad7da7bb6e59152fee4b4004b94e508b0"
+  },
+  "original_state_sha256": "44188f9579bfb946628677fc443ba7383d219d52486ba70cd9e4a65f296ed72f",
+  "retained_rehearsal": "PASS twenty tracks, two complete recordings, Stop/credits, privacy, cleanup; no new music"
+}

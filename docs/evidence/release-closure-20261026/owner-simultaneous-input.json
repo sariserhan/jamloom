@@ -1,0 +1,24 @@
+{
+  "source": "Owner supplied same-stream local microphone results",
+  "seconds": 4.92,
+  "codec": "audio/webm;codecs=opus",
+  "input": {
+    "reportedMacMicMode": "unknown",
+    "requestedProcessing": "raw",
+    "sampleRate": 48000,
+    "echoCancellation": false,
+    "noiseSuppression": false,
+    "autoGainControl": false
+  },
+  "simultaneousLive": {
+    "frames": 493,
+    "detectedPitchPercent": 0,
+    "medianAcRms": 0.0010308184423753342
+  },
+  "frames": 115,
+  "detectedPitchPercent": 0,
+  "medianAcRms": 0.0010384235051962983,
+  "medianDetectedHz": null,
+  "status": "PASS silence rejection in this live and encoded capture",
+  "limitation": "Owner did not select an OS mode in the diagnostic. Earlier live false detections and singing misses are not explained by this quiet capture. No audio retained."
+}

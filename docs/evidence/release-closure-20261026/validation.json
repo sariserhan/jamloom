@@ -1,0 +1,13 @@
+{
+  "status": "PASS scoped checks; Apple processing and external acceptance separate",
+  "python": "54 controller, worker, readiness checks PASS; includes 33 controller tests",
+  "iosScreenshots": "PASS iPhone 17, iPhone 17 Pro Max and iPad Pro 13-inch Simulator UI tests",
+  "iosArchive": "PASS archive, signature, static bundle audit, distribution export, Apple validation and upload",
+  "browserPreflight": "PASS real setup and deck on isolated development preview; production 404 and external origin rejected",
+  "retainedRehearsal": "PASS twenty retained tracks, 307.544/420.356-second complete R2 recordings, Stop/credits, privacy and cleanup",
+  "websitePublished": false,
+  "appleReviewSubmitted": false,
+  "customerApplicationCodeChanged": false,
+  "qualificationAndDiagnosticCodeChanged": true,
+  "microphoneBrowser": "PASS Chromium and WebKit controlled PCM, same-stream comparison and recording-first interruption cleanup"
+}

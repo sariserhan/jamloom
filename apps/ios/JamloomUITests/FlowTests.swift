@@ -467,6 +467,29 @@ final class FlowTests: XCTestCase {
             object: app.buttons.matching(identifier: "deleteSession"))
         XCTAssertEqual(XCTWaiter.wait(for: [removed], timeout: 10), .completed)
     }
+    func testStoreScreenshotsShowRealSongsAndDecks() {
+        let app = XCUIApplication(); app.launchArguments = ["--ui-testing"]
+        app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
+        XCUIDevice.shared.orientation = .portrait
+        defer { XCUIDevice.shared.orientation = .portrait }
+        func capture(_ name: String) {
+            let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+            image.name = "Store " + name; image.lifetime = .keepAlways; add(image)
+        }
+        app.launch(); app.buttons["Sing"].firstMatch.tap()
+        let song = app.webViews.links.matching(NSPredicate(format: "label CONTAINS %@", "First Light")).firstMatch
+        XCTAssertTrue(song.waitForExistence(timeout: 20)); capture("01 Original singing songs")
+        song.tap()
+        let demo = app.webViews.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Hear song")).firstMatch
+        XCTAssertTrue(demo.waitForExistence(timeout: 15)); capture("02 Song and lyrics")
+        app.buttons["DJ Deck"].firstMatch.tap(); loadPracticeDecks(app)
+        XCTAssertTrue(app.webViews.buttons["Play A"].isEnabled); capture("03 DJ deck portrait")
+        XCUIDevice.shared.orientation = .landscapeLeft
+        let fits = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in app.frame.width > app.frame.height && app.webViews.sliders["Crossfader"].isHittable }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [fits], timeout: 10), .completed)
+        capture("04 DJ deck landscape")
+    }
+
     func testSingingSongsDemoAndTabCleanup() {
         let app = XCUIApplication(); app.launchArguments = ["--ui-testing"]
         app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString

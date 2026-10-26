@@ -1,3 +1,17 @@
+## Current release closure — 2026-10-26
+
+**PARTIAL overall.** [Current report](docs/RELEASE_CLOSURE.md) records the new evidence without overwriting earlier failed attempts. Website remains local; App Store preparation is not public release.
+
+- [x] Record real same-stream microphone silence: 493 live and 115 encoded frames, zero false pitch in both; retain earlier contradictory evidence.
+- [x] Add simultaneous local live/encoded measurement; Chromium/WebKit capture, clear, denial and reuse pass. Singing accuracy still needs the pending owner result.
+- [x] Execute the approved $6 DJ attempt once; preserve the local-route failure before generation, $0.046007 provisional debit, zero rentals and complete test-data cleanup. Permission consumed; no replacement.
+- [x] Require actual setup → quote → deck preflight before any future rental; production 404 and external URL rejected. Controller regression proves no provider call when preflight fails.
+- [x] Pass the corrected twenty-track retained-audio two-listener rehearsal, complete recordings, Stop/credits and privacy/cleanup; this is separate from fresh generation.
+- [x] Archive/audit/export iOS 0.10.2 (24), pass Apple's validation and upload without errors.
+- [x] Update App Store draft metadata and content-rights declaration, capture actual UI on three Simulators, and verify six required iPhone/iPad screenshots COMPLETE.
+- [ ] Verify Apple's processing and attach the matching current build; review submission/public release remain separate.
+- [ ] Resolve normal/soft/vibrato singing, professional music quality, applicable hosted/payment qualification, reviewer access and popular-song permissions/assets.
+
 ## All-product completion pass — 2026-10-26
 
 **PARTIAL overall; current local regression PASS.** [Current product ledger](docs/PRODUCT_COMPLETION.md) supersedes older status summaries without erasing their evidence. The owner-unlocked iPhone has signed **0.10.2 (24)** installed and launched. Website remains local.
