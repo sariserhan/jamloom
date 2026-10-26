@@ -1,0 +1,80 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "1 · House · previous direction",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "2 · House · matched-seed candidate",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "3 · Bass · previous direction",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "4 · Bass · matched-seed candidate",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "5 · House · second-seed candidate",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "6 · Bass · second-seed candidate",
+          "seconds": 60,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "1 · House · previous direction",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "2 · House · matched-seed candidate",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "3 · Bass · previous direction",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "4 · Bass · matched-seed candidate",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "5 · House · second-seed candidate",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "6 · Bass · second-seed candidate",
+          "seconds": 60.024,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "speakerOutput": "Muted",
+  "humanListening": "NOT RUN"
+}

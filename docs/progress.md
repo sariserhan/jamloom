@@ -1,13 +1,14 @@
 ## DJ quality iteration and completed phone check — 2026-10-25
 
-**PARTIAL overall; PASS local implementation and checks.** Added a separately selectable arrangement candidate, sustained-energy beat handoffs and sparse vocals placed where the midrange is less busy. Existing generation remains the default. The owner confirmed the installed phone language filter and bottom player work. Fresh originals await explicit approval of the prepared $3 / one GPU / 20-minute comparison; no paid compute, promotion or public activation has occurred.
+**PARTIAL overall; PASS local implementation and checks.** Added a separately selectable arrangement candidate, sustained-energy beat handoffs and sparse vocals placed where the midrange is less busy. Existing generation remains the default. The owner confirmed the installed phone language filter and bottom player work. The approved comparison produced four fresh originals in 282 seconds, with about $0.028 observed debit. The GPU is deleted; vocals were skipped by timing guards. Musical acceptance remains NOT RUN; no promotion or public activation.
 
 - [x] Preserve style, mood, energy and beat direction in a coherent arrangement candidate.
 - [x] Keep beat handoffs inside strong audio and continuous measured regions.
 - [x] Place brief vocal hooks on supported beats with less midrange competition.
 - [x] Complete owner verification of the iPhone player and language filter.
 - [x] Capture both real mixers: complete, unclipped audio without measured long silence. The same handoff timings on this material do not establish an audible improvement.
-- [ ] Run the separately approved fresh comparison and obtain human musical acceptance.
+- [x] Run the approved fresh comparison, verify four distinct tracks and confirm zero remaining rentals.
+- [ ] Obtain human acceptance of the fresh arrangement candidates; vocal timing remains unqualified for this batch.
 
 [Report and evidence](dj-quality.md).
 

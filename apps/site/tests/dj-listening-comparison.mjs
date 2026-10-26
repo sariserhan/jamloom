@@ -5,7 +5,7 @@ import {chromium,webkit} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
 const quality=process.argv.includes('--quality'),originals=process.argv.includes('--originals');
 assert.ok(!originals||quality,'Originals belongs to the quality campaign');
-const folder=quality?'../../docs/evidence/dj-quality-20261025':'../../docs/evidence/dj-audible-comparison-20261025',results=[],count=quality?(originals?8:2):4;
+const folder=quality?'../../docs/evidence/dj-quality-20261025':'../../docs/evidence/dj-audible-comparison-20261025',results=[],count=quality?(originals?6:2):4;
 await mkdir(folder,{recursive:true});
 for(const [name,engine] of Object.entries({chromium,webkit})){
  const browser=await engine.launch();

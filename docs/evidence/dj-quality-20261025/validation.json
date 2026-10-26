@@ -4,7 +4,7 @@
   "site_tests": 23,
   "typecheck": "PASS",
   "shell_syntax": "PASS",
-  "fresh_generation": "NOT RUN - awaiting explicit capped approval",
+  "fresh_generation": "PASS technical - four distinct 60-second tracks",
   "music_model_fine_tuning": "NOT RUN",
   "downloaded_reference_audio_used": false,
   "public_activation": false,
@@ -12,5 +12,10 @@
   "mobile_human_check": "PASS",
   "real_mixer_capture": "PASS regression only; same handoff timing on retained tracks",
   "browser_playback": "PASS Chromium/WebKit desktop/mobile",
-  "paid_compute_started": false
+  "paid_compute_started": true,
+  "gpu_cleanup": "PASS - zero remaining instances",
+  "vocal_qualification": "NOT RUN - steady-grid placement checks rejected both optional tracks",
+  "musical_improvement": "NOT ESTABLISHED - listening required",
+  "fresh_listening_page": "PASS - all six clips play, seek and pause the previous clip in Chromium and WebKit; desktop/mobile screenshots inspected",
+  "observed_debit_usd": 0.0275171291999996
 }

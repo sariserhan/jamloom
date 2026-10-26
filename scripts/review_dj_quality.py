@@ -21,6 +21,7 @@ def main():
     generated = ROOT/'renders/dj-quality-20261025'
     fresh = (generated/'report.json').exists()
     if fresh:
+        rows = []
         result = json.loads((generated/'report.json').read_text())
         assert result['status']=='PASS technical' and result['cleanup_confirmed'] and len(result['tracks'])==4
         baseline = ROOT/'renders/dj-style-samples-20261025-replacement'
@@ -33,8 +34,11 @@ def main():
             label=request['style'].title()+' · '+('matched-seed candidate' if request['seed']==251025 else 'second-seed candidate')
             if row['receipt']['vocal']: label+=' · brief vocal'
             rows.append((generated/row['file'],row['receipt']['sha256'],name,label))
+        order=['baseline-house','house-0','baseline-bass','bass-1','house-2','bass-7']
+        rows.sort(key=lambda row: order.index(row[2]))
+        rows=[(source,digest,name,f'{i+1} · {label}') for i,(source,digest,name,label) in enumerate(rows)]
     review = ROOT/'renders/club-studies-20261024'/('quality-originals' if fresh else 'quality-comparison')/'review'
-    assert len(rows)==(8 if fresh else 2)
+    assert len(rows)==(6 if fresh else 2)
     for file,digest,_,_ in rows: assert hashlib.sha256(file.read_bytes()).hexdigest()==digest
     levels=[loudness(row[0]) for row in rows]
     target=min(-18,*(float(v['input_i'])-max(0,float(v['input_tp'])+2.5) for v in levels))
@@ -49,7 +53,7 @@ def main():
             listening_copy(matched,review/(name+'.mp3'))
         measured.append(dict(file=name+'.mp3',source_sha256=digest,source_level=level,gain_db=gain,matched_level=after,sha256=hashlib.sha256((review/(name+'.mp3')).read_bytes()).hexdigest()))
         cards.append(f'<article><h2>{html.escape(label)}</h2><audio controls preload="metadata" aria-label="{html.escape(label)}" src="{name}.mp3"></audio><a href="{name}.mp3" download>Download</a></article>')
-    note=('The first pair compares the same retained originals through two mixers. The other clips compare the previous and candidate generation directions; the matched-seed pairs use the same model and seed. Vocal candidates appear only when timing and duration checks pass.' if fresh else 'These are new captures of the same retained Jamloom originals. This set uses the same handoff timings in both engines: it is a regression check, not evidence of an audible improvement. Fresh generation is awaiting a separately approved GPU trial; these mixes do not demonstrate new compositions.')
+    note=('Compare House 1 → 2, then Bass Playground 3 → 4: each pair uses the same model and seed, with a different arrangement direction. Clips 5 and 6 are fresh variations using a second seed. Brief vocals are included only when timing and duration checks pass.' if fresh else 'These are new captures of the same retained Jamloom originals. This set uses the same handoff timings in both engines: it is a regression check, not evidence of an audible improvement. Fresh generation is awaiting a separately approved GPU trial; these mixes do not demonstrate new compositions.')
     page='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jamloom · Quality comparison</title><style>body{font:18px/1.5 system-ui;background:#111b20;color:#edf3ec;max-width:1000px;margin:40px auto;padding:0 20px}main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}article{padding:20px;border-radius:16px;background:#213039}h2{font-size:22px}audio{width:100%}a{color:#d7ff80}:focus-visible{outline:3px solid #d7ff80;outline-offset:4px}@media(max-width:650px){main{grid-template-columns:1fr}}</style><h1>Listen to the next step.</h1><p>'''+note+'''</p><p>Listen for a steady groove, a clear bass return, and continuity at track changes. All copies use matched loudness. Nothing plays automatically.</p><main>'''+''.join(cards)+'''</main><p>This is a listening test, not public activation or music-model fine-tuning.</p><script>document.addEventListener('play',e=>{if(e.target.tagName==='AUDIO')document.querySelectorAll('audio').forEach(a=>{if(a!==e.target)a.pause()})},true)</script></html>'''
     (review/'index.html').write_text(page)
     (EVIDENCE/('listening-originals.json' if fresh else 'listening.json')).write_text(json.dumps(dict(status='PASS technical',fresh_generation=fresh,target_lufs=target,tracks=measured,human_listening='NOT RUN'),indent=2)+'\n')

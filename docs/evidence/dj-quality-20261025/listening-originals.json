@@ -1,0 +1,116 @@
+{
+  "status": "PASS technical",
+  "fresh_generation": true,
+  "target_lufs": -20.830000000000002,
+  "tracks": [
+    {
+      "file": "baseline-house.mp3",
+      "source_sha256": "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+      "source_level": {
+        "input_i": "-19.12",
+        "input_tp": "-0.79",
+        "input_lra": "5.00",
+        "input_thresh": "-29.18"
+      },
+      "gain_db": -1.7100000000000009,
+      "matched_level": {
+        "input_i": "-20.83",
+        "input_tp": "-2.50",
+        "input_lra": "5.00",
+        "input_thresh": "-30.89"
+      },
+      "sha256": "6386cfa6a1a74630f1c223b1592ac5218782f7078c1c59b000bda2951160f34e"
+    },
+    {
+      "file": "house-0.mp3",
+      "source_sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+      "source_level": {
+        "input_i": "-17.45",
+        "input_tp": "-0.91",
+        "input_lra": "6.10",
+        "input_thresh": "-27.66"
+      },
+      "gain_db": -3.3800000000000026,
+      "matched_level": {
+        "input_i": "-20.83",
+        "input_tp": "-4.29",
+        "input_lra": "6.20",
+        "input_thresh": "-31.03"
+      },
+      "sha256": "4dab8cb6cbda3c252ac847a6e97cf4a433ee6d357bf7ef6ba99a9ffad6e7e64c"
+    },
+    {
+      "file": "baseline-bass.mp3",
+      "source_sha256": "938cc8392017b055f2f5820bd50dfa70ea8e58883083e39e086e675226007ae2",
+      "source_level": {
+        "input_i": "-18.32",
+        "input_tp": "-0.82",
+        "input_lra": "4.40",
+        "input_thresh": "-28.59"
+      },
+      "gain_db": -2.5100000000000016,
+      "matched_level": {
+        "input_i": "-20.83",
+        "input_tp": "-3.33",
+        "input_lra": "4.40",
+        "input_thresh": "-31.10"
+      },
+      "sha256": "71485e0e3a766709f17d971d8304ad5a742b514cd41d9304a6e39b7f73982111"
+    },
+    {
+      "file": "bass-1.mp3",
+      "source_sha256": "3f7abc2f169ca7d0ed7d73a6928ea6fa15afa888ebe80ed6dd79767eed7da6e6",
+      "source_level": {
+        "input_i": "-17.99",
+        "input_tp": "-0.93",
+        "input_lra": "7.50",
+        "input_thresh": "-28.27"
+      },
+      "gain_db": -2.8400000000000034,
+      "matched_level": {
+        "input_i": "-20.82",
+        "input_tp": "-3.77",
+        "input_lra": "7.40",
+        "input_thresh": "-31.11"
+      },
+      "sha256": "4f759b556d605ff7d263a1e09ffb519292ec74085fd6b6f11b0c3fcceea0f8a4"
+    },
+    {
+      "file": "house-2.mp3",
+      "source_sha256": "5d9411ebf1554eac6b7b44c65ada9ea83a8c90a7bb449df0e723844ab8efc10e",
+      "source_level": {
+        "input_i": "-16.24",
+        "input_tp": "-0.69",
+        "input_lra": "4.20",
+        "input_thresh": "-27.18"
+      },
+      "gain_db": -4.590000000000003,
+      "matched_level": {
+        "input_i": "-20.83",
+        "input_tp": "-5.28",
+        "input_lra": "4.20",
+        "input_thresh": "-31.77"
+      },
+      "sha256": "1c19ef61c205db25d9760733b49577a9000dde452a8a8b151dfd555c16ac2bdf"
+    },
+    {
+      "file": "bass-7.mp3",
+      "source_sha256": "a22b67f3d04e670c987cdd01b29ab080602a21aed0b526bf44c9a4d7e1e63024",
+      "source_level": {
+        "input_i": "-16.40",
+        "input_tp": "-1.00",
+        "input_lra": "4.50",
+        "input_thresh": "-26.93"
+      },
+      "gain_db": -4.430000000000003,
+      "matched_level": {
+        "input_i": "-20.83",
+        "input_tp": "-5.43",
+        "input_lra": "4.50",
+        "input_thresh": "-31.35"
+      },
+      "sha256": "0a5c4626e6dd6211847c89435d2dd769105af79f875eee498b76c83443437b11"
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

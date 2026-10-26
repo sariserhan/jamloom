@@ -1,0 +1,186 @@
+{
+  "status": "PASS technical",
+  "cleanup_confirmed": true,
+  "remaining_instances": 0,
+  "observed_debit_usd": 0.0275171291999996,
+  "rental_seconds": 282.3915469646454,
+  "tracks": [
+    {
+      "file": "house-0.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "1012a1b615b5eacb9495e96bb74fb75c",
+        "job": "d748c393-c921-4f97-9e4a-8b6a930552f4",
+        "request": {
+          "version": 1,
+          "session": "e491482fa99e4b05b374a51b89878d12",
+          "sequence": 0,
+          "seed": 251025,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 2512,
+        "bytes": 11520044,
+        "sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+        "vocal": null
+      }
+    },
+    {
+      "file": "bass-1.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "1012a1b615b5eacb9495e96bb74fb75c",
+        "job": "9cc4dafd-2323-4df2-bc8a-31e4121b2e41",
+        "request": {
+          "version": 1,
+          "session": "e491482fa99e4b05b374a51b89878d12",
+          "sequence": 1,
+          "seed": 251025,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1692,
+        "bytes": 11520044,
+        "sha256": "3f7abc2f169ca7d0ed7d73a6928ea6fa15afa888ebe80ed6dd79767eed7da6e6",
+        "vocal": null
+      }
+    },
+    {
+      "file": "house-2.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "1012a1b615b5eacb9495e96bb74fb75c",
+        "job": "32222471-ccad-49ea-8980-11c32a751ab5",
+        "request": {
+          "version": 1,
+          "session": "e491482fa99e4b05b374a51b89878d12",
+          "sequence": 2,
+          "seed": 261025,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1835,
+        "bytes": 11520044,
+        "sha256": "5d9411ebf1554eac6b7b44c65ada9ea83a8c90a7bb449df0e723844ab8efc10e",
+        "vocal": null
+      }
+    },
+    {
+      "file": "bass-7.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "1012a1b615b5eacb9495e96bb74fb75c",
+        "job": "37d4444f-053e-4e1d-8655-fb1655397094",
+        "request": {
+          "version": 1,
+          "session": "e491482fa99e4b05b374a51b89878d12",
+          "sequence": 7,
+          "seed": 261025,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1854,
+        "bytes": 11520044,
+        "sha256": "a22b67f3d04e670c987cdd01b29ab080602a21aed0b526bf44c9a4d7e1e63024",
+        "vocal": null
+      }
+    }
+  ],
+  "audio": [
+    {
+      "file": "/Users/serhansari/Documents/projects/jamloom/renders/dj-quality-20261025/house-0.wav",
+      "sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+      "format": "PCM16 stereo little-endian",
+      "sample_rate": 48000,
+      "frames": 2880000,
+      "duration_seconds": 60.0,
+      "peak_linear": 0.8912353515625,
+      "peak_dbfs": -1.000151903819357,
+      "rms_dbfs_left": -19.892223073125084,
+      "rms_dbfs_right": -20.23308691439071,
+      "dc_left": 0.0010080754597981772,
+      "dc_right": 0.0013154558605617947,
+      "full_scale_samples": 0,
+      "first_nonzero_frame": 8,
+      "last_nonzero_frame": 2879989,
+      "max_adjacent_sample_step": 0.550689697265625,
+      "last_100ms_peak": 0.002166748046875,
+      "loudness_method": "unweighted RMS; not integrated LUFS"
+    },
+    {
+      "file": "/Users/serhansari/Documents/projects/jamloom/renders/dj-quality-20261025/bass-1.wav",
+      "sha256": "3f7abc2f169ca7d0ed7d73a6928ea6fa15afa888ebe80ed6dd79767eed7da6e6",
+      "format": "PCM16 stereo little-endian",
+      "sample_rate": 48000,
+      "frames": 2880000,
+      "duration_seconds": 60.0,
+      "peak_linear": 0.8912353515625,
+      "peak_dbfs": -1.000151903819357,
+      "rms_dbfs_left": -19.964488757436794,
+      "rms_dbfs_right": -20.10549774377823,
+      "dc_left": 0.0009800223350524902,
+      "dc_right": 0.0011480800840589734,
+      "full_scale_samples": 0,
+      "first_nonzero_frame": 8,
+      "last_nonzero_frame": 2879987,
+      "max_adjacent_sample_step": 0.576263427734375,
+      "last_100ms_peak": 0.00164794921875,
+      "loudness_method": "unweighted RMS; not integrated LUFS"
+    },
+    {
+      "file": "/Users/serhansari/Documents/projects/jamloom/renders/dj-quality-20261025/house-2.wav",
+      "sha256": "5d9411ebf1554eac6b7b44c65ada9ea83a8c90a7bb449df0e723844ab8efc10e",
+      "format": "PCM16 stereo little-endian",
+      "sample_rate": 48000,
+      "frames": 2880000,
+      "duration_seconds": 60.0,
+      "peak_linear": 0.8912353515625,
+      "peak_dbfs": -1.000151903819357,
+      "rms_dbfs_left": -18.523408570987748,
+      "rms_dbfs_right": -18.640967897000085,
+      "dc_left": 0.001483196046617296,
+      "dc_right": 0.0015650529331631131,
+      "full_scale_samples": 0,
+      "first_nonzero_frame": 9,
+      "last_nonzero_frame": 2879987,
+      "max_adjacent_sample_step": 0.515625,
+      "last_100ms_peak": 0.001861572265625,
+      "loudness_method": "unweighted RMS; not integrated LUFS"
+    },
+    {
+      "file": "/Users/serhansari/Documents/projects/jamloom/renders/dj-quality-20261025/bass-7.wav",
+      "sha256": "a22b67f3d04e670c987cdd01b29ab080602a21aed0b526bf44c9a4d7e1e63024",
+      "format": "PCM16 stereo little-endian",
+      "sample_rate": 48000,
+      "frames": 2880000,
+      "duration_seconds": 60.0,
+      "peak_linear": 0.8912353515625,
+      "peak_dbfs": -1.000151903819357,
+      "rms_dbfs_left": -17.93262424153664,
+      "rms_dbfs_right": -18.122712105428366,
+      "dc_left": 0.000986820305718316,
+      "dc_right": 0.0011938692092895507,
+      "full_scale_samples": 0,
+      "first_nonzero_frame": 9,
+      "last_nonzero_frame": 2879987,
+      "max_adjacent_sample_step": 0.562225341796875,
+      "last_100ms_peak": 0.001953125,
+      "loudness_method": "unweighted RMS; not integrated LUFS"
+    }
+  ],
+  "human_listening": "NOT RUN",
+  "model_fine_tuning": false,
+  "source_audio_uploaded": false
+}

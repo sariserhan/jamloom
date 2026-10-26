@@ -1,0 +1,39 @@
+{
+  "status": "PASS descriptive measurements",
+  "rows": [
+    {
+      "file": "renders/dj-style-samples-20261025-replacement/house.wav",
+      "energy_range_p90_p10_db": 8.451,
+      "opening15_minus_last30_db": -5.312
+    },
+    {
+      "file": "renders/dj-style-samples-20261025-replacement/bass.wav",
+      "energy_range_p90_p10_db": 8.506,
+      "opening15_minus_last30_db": -1.9
+    },
+    {
+      "file": "renders/dj-quality-20261025/house-0.wav",
+      "energy_range_p90_p10_db": 8.789,
+      "opening15_minus_last30_db": -5.659
+    },
+    {
+      "file": "renders/dj-quality-20261025/bass-1.wav",
+      "energy_range_p90_p10_db": 12.021,
+      "opening15_minus_last30_db": -1.052
+    },
+    {
+      "file": "renders/dj-quality-20261025/house-2.wav",
+      "energy_range_p90_p10_db": 10.175,
+      "opening15_minus_last30_db": 1.704,
+      "vocal_grid_supported": false
+    },
+    {
+      "file": "renders/dj-quality-20261025/bass-7.wav",
+      "energy_range_p90_p10_db": 13.592,
+      "opening15_minus_last30_db": 3.484,
+      "vocal_grid_supported": false
+    }
+  ],
+  "limits": "Two seeds per style; energy measures do not establish groove, timbre, musical phrasing or quality.",
+  "method": "Stereo mean-square energy in one-second windows; P90 minus P10 of window dB; 10log10(mean power first15 / mean power last30). All baseline/candidate measurements use this same method."
+}
