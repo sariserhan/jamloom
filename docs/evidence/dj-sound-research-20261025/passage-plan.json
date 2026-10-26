@@ -1,0 +1,536 @@
+{
+  "captions": {
+    "style": {
+      "house": "House music with a steady four-on-the-floor electronic dance groove.",
+      "bass": "Dubstep music with half-time drums and heavy wobbling bass.",
+      "breakbeat": "Drum and bass music with rapid breakbeats.",
+      "techno": "Driving techno music with a repetitive electronic pulse.",
+      "hip-hop": "Hip-hop music with a swinging drum beat.",
+      "chill": "Mellow downtempo electronic music."
+    },
+    "sound": {
+      "modulated-bass": "Electronic music with gritty distorted growling and wobbling bass sounds.",
+      "smooth-bass": "Electronic music with smooth sustained low bass tones.",
+      "synth-hook": "Electronic music with a bright repeated lead synthesizer melody.",
+      "chord-stabs": "Electronic music with short rhythmic synthesizer chord stabs.",
+      "pads": "Electronic music with long atmospheric synthesizer pads.",
+      "percussion": "Electronic music dominated by drums and percussion.",
+      "acoustic": "Music with acoustic instruments and piano.",
+      "guitar": "Music with prominent electric guitar."
+    },
+    "voice": {
+      "instrumental": "Instrumental music without any voice.",
+      "singing": "Music with a person singing a melody.",
+      "rapping": "Music with rhythmic rap vocals.",
+      "speech": "Music with a person speaking over it.",
+      "crowd": "Music with a crowd cheering and shouting."
+    },
+    "section": {
+      "full-groove": "Dance music with a full energetic drum and bass groove.",
+      "breakdown": "A quiet atmospheric musical breakdown without a strong drum beat.",
+      "build": "Dance music building tension with a rising sound and a drum roll.",
+      "drop": "An explosive bass drop in electronic dance music."
+    }
+  },
+  "model_revision": "8fa0f1c6d0433df6e97c127f64b2a1d6c0dcda8a",
+  "files": [
+    {
+      "id": "ref-38b9a95f7a58",
+      "sha256": "38b9a95f7a58fa5730feb94c27b2f7d44cb78f86c5b3cad1db8c4646767f83f8",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 410,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 769.312,
+          "selection": "uniform"
+        },
+        {
+          "start": 1538.624,
+          "selection": "uniform"
+        },
+        {
+          "start": 2115,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 2307.936,
+          "selection": "uniform"
+        },
+        {
+          "start": 2885,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 3066.998,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "ref-7c431fa8ac07",
+      "sha256": "7c431fa8ac071a552a80f03978500b3731df5c3c8bfcfc8ac8e2f0dc70c29340",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 855.029,
+          "selection": "uniform"
+        },
+        {
+          "start": 1170,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 1710.059,
+          "selection": "uniform"
+        },
+        {
+          "start": 1890,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 2520,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 2565.088,
+          "selection": "uniform"
+        },
+        {
+          "start": 3409.867,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "ref-4ea6aeb253de",
+      "sha256": "4ea6aeb253de5c748a232c3c1705a0320a72f0d2b4c7f45d6bfb3f88afd0a4e1",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 160,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 315,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 614.449,
+          "selection": "uniform"
+        },
+        {
+          "start": 1228.899,
+          "selection": "uniform"
+        },
+        {
+          "start": 1405,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 1843.348,
+          "selection": "uniform"
+        },
+        {
+          "start": 2447.547,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "ref-40c00cfee0d2",
+      "sha256": "40c00cfee0d267b4961c4bcbe583760e70d73854a73bccc0cad7728ad945a35a",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 1143.685,
+          "selection": "uniform"
+        },
+        {
+          "start": 1805,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 1950,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 2287.371,
+          "selection": "uniform"
+        },
+        {
+          "start": 3431.056,
+          "selection": "uniform"
+        },
+        {
+          "start": 4440,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 4564.491,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "ref-9523c4cadaf0",
+      "sha256": "9523c4cadaf0084d6c3513d9eb7b84143812aff8797af189e9f595bf24e82420",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 791.952,
+          "selection": "uniform"
+        },
+        {
+          "start": 825,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 925,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 1495,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 1583.904,
+          "selection": "uniform"
+        },
+        {
+          "start": 2375.856,
+          "selection": "uniform"
+        },
+        {
+          "start": 3157.558,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "ref-7693d26f548c",
+      "sha256": "7693d26f548cffdaf8650a075c308265012892e6f425486a77a781b5f33a6064",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 55,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 340,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 573.121,
+          "selection": "uniform"
+        },
+        {
+          "start": 655,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 1146.241,
+          "selection": "uniform"
+        },
+        {
+          "start": 1719.362,
+          "selection": "uniform"
+        },
+        {
+          "start": 2282.233,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "ref-092e32866f1b",
+      "sha256": "092e32866f1b745ee90627d451c9e6eaef94e6a16f89eb4f94e3ed98cbeb944e",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 450,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 1549.755,
+          "selection": "uniform"
+        },
+        {
+          "start": 3099.509,
+          "selection": "uniform"
+        },
+        {
+          "start": 3155,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 4649.264,
+          "selection": "uniform"
+        },
+        {
+          "start": 4945,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 6188.769,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "ref-bf6a54e43d0b",
+      "sha256": "bf6a54e43d0b121b5c67e781cb6ccc8d590676618c47a6f2b13b3d2999de7374",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 240,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 945.847,
+          "selection": "uniform"
+        },
+        {
+          "start": 1891.695,
+          "selection": "uniform"
+        },
+        {
+          "start": 2720,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 2837.542,
+          "selection": "uniform"
+        },
+        {
+          "start": 3470,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 3773.14,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "ref-36ba23f9c325",
+      "sha256": "36ba23f9c325af5a8d27e277722a479db0c961f78a08adc12b9747ca9505c034",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 905,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 1720,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 1971.676,
+          "selection": "uniform"
+        },
+        {
+          "start": 3943.352,
+          "selection": "uniform"
+        },
+        {
+          "start": 5165,
+          "selection": "unreviewed_energy_texture_change"
+        },
+        {
+          "start": 5915.028,
+          "selection": "uniform"
+        },
+        {
+          "start": 7876.454,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "generated-1",
+      "sha256": "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 15,
+          "selection": "uniform"
+        },
+        {
+          "start": 30,
+          "selection": "uniform"
+        },
+        {
+          "start": 45,
+          "selection": "uniform"
+        },
+        {
+          "start": 50,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "generated-2",
+      "sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 15,
+          "selection": "uniform"
+        },
+        {
+          "start": 30,
+          "selection": "uniform"
+        },
+        {
+          "start": 45,
+          "selection": "uniform"
+        },
+        {
+          "start": 50,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "generated-3",
+      "sha256": "938cc8392017b055f2f5820bd50dfa70ea8e58883083e39e086e675226007ae2",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 15,
+          "selection": "uniform"
+        },
+        {
+          "start": 30,
+          "selection": "uniform"
+        },
+        {
+          "start": 45,
+          "selection": "uniform"
+        },
+        {
+          "start": 50,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "generated-4",
+      "sha256": "3f7abc2f169ca7d0ed7d73a6928ea6fa15afa888ebe80ed6dd79767eed7da6e6",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 15,
+          "selection": "uniform"
+        },
+        {
+          "start": 30,
+          "selection": "uniform"
+        },
+        {
+          "start": 45,
+          "selection": "uniform"
+        },
+        {
+          "start": 50,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "generated-5",
+      "sha256": "5d9411ebf1554eac6b7b44c65ada9ea83a8c90a7bb449df0e723844ab8efc10e",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 15,
+          "selection": "uniform"
+        },
+        {
+          "start": 30,
+          "selection": "uniform"
+        },
+        {
+          "start": 45,
+          "selection": "uniform"
+        },
+        {
+          "start": 50,
+          "selection": "uniform"
+        }
+      ]
+    },
+    {
+      "id": "generated-6",
+      "sha256": "a22b67f3d04e670c987cdd01b29ab080602a21aed0b526bf44c9a4d7e1e63024",
+      "passages": [
+        {
+          "start": 0,
+          "selection": "uniform"
+        },
+        {
+          "start": 15,
+          "selection": "uniform"
+        },
+        {
+          "start": 30,
+          "selection": "uniform"
+        },
+        {
+          "start": 45,
+          "selection": "uniform"
+        },
+        {
+          "start": 50,
+          "selection": "uniform"
+        }
+      ]
+    }
+  ]
+}

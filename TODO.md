@@ -1,3 +1,15 @@
+## Whole-performance reference research — 2026-10-25
+
+**PARTIAL musical research; PASS full-file measurements and sampled execution; FAIL semantic-label suitability.** The owner requires the complete experience to match the reference performances, not just rhythm. Reanalyzed all nine references (10 h 14 min) and six rated originals in stereo; compared 102 timestamped passages using the existing local audio/text model. Measured low-bass/stereo differences are recorded. Known synthetic controls exposed false voice/section rankings, so those labels are not admitted as musical truth. Reviewed primary artist/model sources and separated composition, timbre, groove, arrangement, voice, production, performance and set-development requirements. No paid compute, uploads, downloads, training or product changes.
+
+- [x] Complete bounded stereo analysis and retain hash-bound comparisons and a visual report.
+- [x] Sample all reference files and rated originals; sanity-check the semantic auditor and preserve its failure.
+- [x] Produce timestamped research locations, a whole-performance acceptance framework and a primary-source tool review.
+- [ ] Validate reliable composition, vocal, phrase and performance annotations; current top-ranked text labels are insufficient.
+- [ ] Demonstrate reference-comparable original music and continuous performances across unseen seeds; no quality parity established.
+
+[Research report and evidence](docs/dj-sound-research.md).
+
 ## House consistency study and accepted-track set — 2026-10-25
 
 **PARTIAL overall; PASS local study implementation, analysis and replay.** Compared the accepted house samples with the rejected seed and prepared a paired, blinded test of a clearer midrange hook. The owner approved six instrumental tracks across three seeds, $3 maximum, one GPU and 20 minutes with automatic cleanup. All six fresh tracks passed technical checks; the GPU is deleted, zero rentals remain, and observed charges are about $0.024 after 298 seconds. Human acceptance is pending. The accepted-track set plays in both browsers and performs a brief vocal repeat; two short quiet intervals inherited from its third track keep musical continuity PARTIAL.

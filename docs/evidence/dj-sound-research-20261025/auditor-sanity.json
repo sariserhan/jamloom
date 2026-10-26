@@ -1,0 +1,218 @@
+{
+  "status": "DIAGNOSTIC",
+  "results": [
+    {
+      "source": "known_instrumental_sine",
+      "known_voice": false,
+      "rankings": {
+        "style": [
+          {
+            "label": "bass",
+            "cosine": 0.1657305657863617
+          },
+          {
+            "label": "chill",
+            "cosine": 0.14351202547550201
+          },
+          {
+            "label": "hip-hop",
+            "cosine": 0.12152738124132156
+          },
+          {
+            "label": "house",
+            "cosine": 0.09899988025426865
+          },
+          {
+            "label": "breakbeat",
+            "cosine": 0.06754634529352188
+          },
+          {
+            "label": "techno",
+            "cosine": 0.04219789803028107
+          }
+        ],
+        "sound": [
+          {
+            "label": "smooth-bass",
+            "cosine": 0.3908314108848572
+          },
+          {
+            "label": "modulated-bass",
+            "cosine": 0.11763066053390503
+          },
+          {
+            "label": "pads",
+            "cosine": 0.09075455367565155
+          },
+          {
+            "label": "acoustic",
+            "cosine": 0.03765299171209335
+          },
+          {
+            "label": "percussion",
+            "cosine": 0.024263452738523483
+          },
+          {
+            "label": "chord-stabs",
+            "cosine": 0.0017780596390366554
+          },
+          {
+            "label": "synth-hook",
+            "cosine": -0.04424445331096649
+          },
+          {
+            "label": "guitar",
+            "cosine": -0.06862949579954147
+          }
+        ],
+        "voice": [
+          {
+            "label": "instrumental",
+            "cosine": 0.12968865036964417
+          },
+          {
+            "label": "singing",
+            "cosine": 0.04857897758483887
+          },
+          {
+            "label": "crowd",
+            "cosine": 0.014387632720172405
+          },
+          {
+            "label": "speech",
+            "cosine": 0.01372059527784586
+          },
+          {
+            "label": "rapping",
+            "cosine": -0.05544206500053406
+          }
+        ],
+        "section": [
+          {
+            "label": "drop",
+            "cosine": 0.3929586410522461
+          },
+          {
+            "label": "build",
+            "cosine": 0.10994812846183777
+          },
+          {
+            "label": "full-groove",
+            "cosine": 0.07609973847866058
+          },
+          {
+            "label": "breakdown",
+            "cosine": -0.04505624622106552
+          }
+        ]
+      }
+    },
+    {
+      "source": "known_instrumental_synthetic_beat",
+      "known_voice": false,
+      "rankings": {
+        "style": [
+          {
+            "label": "chill",
+            "cosine": 0.13618768751621246
+          },
+          {
+            "label": "hip-hop",
+            "cosine": 0.13428397476673126
+          },
+          {
+            "label": "house",
+            "cosine": 0.1071348562836647
+          },
+          {
+            "label": "breakbeat",
+            "cosine": 0.04526391625404358
+          },
+          {
+            "label": "techno",
+            "cosine": 0.01852782815694809
+          },
+          {
+            "label": "bass",
+            "cosine": 0.008368870243430138
+          }
+        ],
+        "sound": [
+          {
+            "label": "percussion",
+            "cosine": 0.1552385538816452
+          },
+          {
+            "label": "chord-stabs",
+            "cosine": 0.149954691529274
+          },
+          {
+            "label": "synth-hook",
+            "cosine": 0.11381736397743225
+          },
+          {
+            "label": "smooth-bass",
+            "cosine": 0.09518704563379288
+          },
+          {
+            "label": "guitar",
+            "cosine": 0.039353471249341965
+          },
+          {
+            "label": "pads",
+            "cosine": 0.01245027408003807
+          },
+          {
+            "label": "acoustic",
+            "cosine": -0.01603962481021881
+          },
+          {
+            "label": "modulated-bass",
+            "cosine": -0.05576353892683983
+          }
+        ],
+        "voice": [
+          {
+            "label": "crowd",
+            "cosine": 0.15002165734767914
+          },
+          {
+            "label": "instrumental",
+            "cosine": 0.07978078722953796
+          },
+          {
+            "label": "singing",
+            "cosine": 0.06244766712188721
+          },
+          {
+            "label": "rapping",
+            "cosine": 0.05930324271321297
+          },
+          {
+            "label": "speech",
+            "cosine": -0.023935023695230484
+          }
+        ],
+        "section": [
+          {
+            "label": "build",
+            "cosine": 0.13823720812797546
+          },
+          {
+            "label": "full-groove",
+            "cosine": 0.13002565503120422
+          },
+          {
+            "label": "drop",
+            "cosine": 0.07200946658849716
+          },
+          {
+            "label": "breakdown",
+            "cosine": 0.05356612801551819
+          }
+        ]
+      }
+    }
+  ],
+  "limits": "Synthetic controls test obvious false voice tags only; they are not a musical calibration set."
+}

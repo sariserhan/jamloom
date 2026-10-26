@@ -1,0 +1,25 @@
+{
+  "status": "PARTIAL whole-performance research",
+  "full_file_measurements": "PASS",
+  "sampled_model_execution": "PASS",
+  "model_suitability_for_verified_voice_and_section_labels": "FAIL diagnostic",
+  "human_listening": "NOT RUN",
+  "professional_quality_match": "NOT ESTABLISHED",
+  "reference_hours": 10.238696446759258,
+  "originals": 6,
+  "sampled_passages": 102,
+  "sampled_seconds_with_overlap": 1020,
+  "peak_model_memory_bytes": 1153122304,
+  "paid_compute_started": false,
+  "reference_audio_copies": 0,
+  "new_model_downloads": 0,
+  "training": false,
+  "script_sha256": {
+    "scripts/compare_dj_sound.py": "13a30aac2346927e192f4af0b1cb9bca623ded80a71fc04460f9ed48af9eaadd",
+    "scripts/research_dj_passages.py": "67c8fef9f8391794eaa4f3d7002a27244b832ddc2358c85a029beb245a92ad7c"
+  },
+  "owner_target": [
+    "I want out quality matching with theirs",
+    "it is not only the rhytm or something it is a full package so we need to make a thorogh research on those musics"
+  ]
+}
