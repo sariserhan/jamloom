@@ -1,3 +1,15 @@
+## Original composition-guided generation — 2026-10-25
+
+**PASS local implementation and technical checks; PARTIAL musical improvement.** Added an experimental original-score path with distinct kick, drums, bass, chords and hook, recurring motifs, phrase development and stable handoff sections. Two actual guides and ten stems are available locally. The existing model adapter can use these original guides as source conditioning in a paired trial; serving defaults are unchanged. 49 Python tests and Chromium/WebKit playback/stem/section checks pass. Fresh model generation and musical improvement remain NOT RUN.
+
+- [x] Compose and render actual original house/bass guides with controlled layers and inspectable scores.
+- [x] Add opt-in source conditioning, guide receipts, worker provenance and a bounded four-output comparison.
+- [x] Verify audio integrity, local deterministic rendering, budgets, adapter transport and browser audition controls.
+- [ ] Run the prepared $3/one-GPU/20-minute comparison after fresh explicit approval and confirm cleanup.
+- [ ] Review whole-package musical quality and guide adherence before any promotion; no reference parity claimed.
+
+[Report and evidence](dj-composition-guides.md). [Composition sketches](http://localhost:8766/composition-guides/review/).
+
 ## Whole-performance reference research — 2026-10-25
 
 **PARTIAL musical research; PASS full-file measurements and sampled execution; FAIL semantic-label suitability.** The owner requires the complete experience to match the reference performances, not just rhythm. Reanalyzed all nine references (10 h 14 min) and six rated originals in stereo; compared 102 timestamped passages using the existing local audio/text model. Measured low-bass/stereo differences are recorded. Known synthetic controls exposed false voice/section rankings, so those labels are not admitted as musical truth. Reviewed primary artist/model sources and separated composition, timbre, groove, arrangement, voice, production, performance and set-development requirements. No paid compute, uploads, downloads, training or product changes.

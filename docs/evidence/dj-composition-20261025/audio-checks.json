@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "threshold_db": -60,
+  "minimum_seconds": 0.25,
+  "checks": [
+    {
+      "style": "house",
+      "sha256": "caf02239a384872ae7ce6841a1e0562cf7fce28ce713bc63ebd1624c743b245d",
+      "silence_intervals": []
+    },
+    {
+      "style": "bass",
+      "sha256": "bf66bf367fc3a627defb094021f4bd5682f3c80b9b5f5443655f7b6a57fef236",
+      "silence_intervals": []
+    }
+  ]
+}

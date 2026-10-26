@@ -14,7 +14,7 @@ import time
 import uuid
 import wave
 
-from dj_track_worker import ace, house_study, canonical, load_ace, request, CODE_REVISION, WEIGHTS_REVISION
+from dj_track_worker import ace, house_study, composition_study, canonical, load_ace, request, CODE_REVISION, WEIGHTS_REVISION
 from dj_vocal import add_hook
 
 
@@ -49,6 +49,8 @@ class Renderer:
             if self.requests < self.limit and value['vocals'] and track['sequence'] % 5 == 2 and track['energy'] >= 3:
                 samples, vocal = add_hook(track, samples, rate, Path(directory), self.engine, generate)
             pcm = canonical(samples, rate)
+            guide_path=Path(directory)/'guide/receipt.json'
+            composition=json.loads(guide_path.read_text()) if guide_path.is_file() else None
         stream = io.BytesIO()
         with wave.open(stream, 'wb') as audio:
             audio.setparams((2, 2, 48000, 0, 'NONE', 'not compressed'))
@@ -60,6 +62,7 @@ class Renderer:
         receipt = dict(version=1, engine=self.identity, job=value['job'], request=track,
                        code_revision=CODE_REVISION, weights_revision=WEIGHTS_REVISION,
                        compute_ms=elapsed, bytes=len(data), sha256=hashlib.sha256(data).hexdigest(), vocal=vocal)
+        if composition is not None:receipt['composition']=composition
         self.cached = fingerprint, receipt, data
         return receipt, data
 
@@ -112,13 +115,14 @@ def main():
     modes=parser.add_mutually_exclusive_group()
     modes.add_argument('--arranged', action='store_true', help='Use the unqualified arrangement candidate for a bounded listening trial')
     modes.add_argument('--house-study', action='store_true', help='Paired house-only study; sequence selects the predeclared condition')
+    modes.add_argument('--composition-study',action='store_true',help='Paired original-score conditioning experiment')
     args = parser.parse_args()
     if args.token_file.stat().st_mode & 0o077:
         raise ValueError('Token file must be private')
     token = args.token_file.read_text().strip()
     if len(token) != 64 or any(c not in '0123456789abcdef' for c in token):
         raise ValueError('Invalid token')
-    renderer = Renderer(args.expires_unix, args.max_requests, generate=house_study if args.house_study else partial(ace, arranged=args.arranged))
+    renderer = Renderer(args.expires_unix, args.max_requests, generate=composition_study if args.composition_study else house_study if args.house_study else partial(ace, arranged=args.arranged))
     renderer.engine = load_ace()
     server = HTTPServer(('127.0.0.1', 8768), handler(renderer, token))
     server.timeout = 1

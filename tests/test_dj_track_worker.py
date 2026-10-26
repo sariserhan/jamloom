@@ -22,6 +22,16 @@ class WorkerContract(unittest.TestCase):
             with self.assertRaises(ValueError):house_study(value,Path('/tmp'),hook='One more')
         self.assertTrue(focused_house_brief(value)[0].startswith(arranged_brief(value)[0]))
         self.assertEqual(focused_house_brief(value)[1],128)
+    def test_composition_study_uses_audio_only_for_the_paired_candidate(self):
+        from dj_track_worker import composition_study
+        value=dict(version=1,session='a'*32,sequence=0,seed=291025,style='house',energy=4,mood='deep')
+        with patch('dj_track_worker.ace') as generate:
+            for seq in range(4):
+                composition_study({**value,'sequence':seq,'style':'house' if seq<2 else 'bass'},Path('/tmp'),('dit','lm'))
+                self.assertEqual(generate.call_args.kwargs,dict(arranged=True,guided=bool(seq%2)))
+            with self.assertRaises(ValueError):composition_study(value,Path('/tmp'),hook='One more')
+            with self.assertRaises(ValueError):composition_study({**value,'style':'chill'},Path('/tmp'))
+
     def test_arrangement_candidate_preserves_style_energy_and_beat_direction(self):
         for style,profile in STYLES.items():
             value=dict(version=1,session='a'*32,sequence=0,seed=17,style=style,energy=4,mood='deep')
@@ -94,6 +104,13 @@ class WorkerContract(unittest.TestCase):
         with patch.dict(sys.modules, modules): ace(value, Path('/tmp'), hook='Keep moving', arranged=True)
         self.assertEqual(generate.call_args.args[2].duration,10)
         self.assertNotIn('First eight bars',generate.call_args.args[2].caption)
+        with tempfile.TemporaryDirectory() as d,patch.dict(sys.modules,modules):
+            ace(value,Path(d),engine=('dit','lm'),arranged=True,guided=True)
+            params=generate.call_args.args[2]
+            self.assertEqual(params.task_type,'cover');self.assertEqual(params.audio_cover_strength,.5)
+            self.assertTrue(Path(params.src_audio).is_file());self.assertEqual(params.caption,arranged_brief(value)[0])
+            self.assertEqual((params.duration,params.seed,params.instrumental),(60,123456,True))
+        with self.assertRaises(ValueError):ace(value,Path('/tmp'),hook='One more',guided=True)
 
     def test_beat_direction_reaches_model_tempo_and_caption(self):
         value=dict(version=1,session='a'*32,sequence=1,seed=4,style='house',energy=4)

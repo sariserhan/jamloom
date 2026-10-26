@@ -22,6 +22,8 @@ class PriceBounds(unittest.TestCase):
             with self.assertRaises(ValueError):trial.dj_bootstrap_command(1792904659,count)
         self.assertIn('1792904659 24 >',trial.dj_bootstrap_command(1792904659,24))
         self.assertIn('1792904659 6 --arranged >',trial.dj_bootstrap_command(1792904659,6,arranged=True))
+        self.assertIn('1792904659 4 --composition-study >',trial.dj_bootstrap_command(1792904659,4,composition_study=True))
+        with self.assertRaises(ValueError):trial.dj_bootstrap_command(1792904659,4,composition_study=True,house_study=True)
         self.assertIn('1792904659 6 --house-study >',trial.dj_bootstrap_command(1792904659,6,house_study=True))
         with self.assertRaises(ValueError):trial.dj_bootstrap_command(1792904659,6,arranged=True,house_study=True)
         with self.assertRaises(ValueError):trial.dj_bootstrap_command(1792904659,6,arranged='--unsafe')

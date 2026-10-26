@@ -1,0 +1,31 @@
+{
+  "status": "PASS technical",
+  "target_lufs": -22.16,
+  "tracks": [
+    {
+      "file": "house.mp3",
+      "source_sha256": "caf02239a384872ae7ce6841a1e0562cf7fce28ce713bc63ebd1624c743b245d",
+      "sha256": "fc00665b7a865dbefab2dbc0d40067c79a284c71c12e8bf02cda7d553a15e414",
+      "gain_db": -0.5300000000000011,
+      "level": {
+        "input_i": "-22.18",
+        "input_tp": "-8.51",
+        "input_lra": "2.40",
+        "input_thresh": "-32.25"
+      }
+    },
+    {
+      "file": "bass.mp3",
+      "source_sha256": "bf66bf367fc3a627defb094021f4bd5682f3c80b9b5f5443655f7b6a57fef236",
+      "sha256": "014684bb7d36af5d91b4b2e98c240b434124db46db2e957adf51e5df6e033039",
+      "gain_db": 0.0,
+      "level": {
+        "input_i": "-22.16",
+        "input_tp": "-7.79",
+        "input_lra": "3.70",
+        "input_thresh": "-32.33"
+      }
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

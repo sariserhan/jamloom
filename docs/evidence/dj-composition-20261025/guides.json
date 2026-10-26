@@ -1,0 +1,41 @@
+{
+  "status": "PASS technical",
+  "elapsed_seconds": 0.3209364579524845,
+  "guides": [
+    {
+      "request": {
+        "version": 1,
+        "session": "06f0de80e4a54b5da5bf6069d9449932",
+        "sequence": 1,
+        "seed": 291025,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "bpm": 128,
+      "seconds": 60,
+      "origin": "original_authored_notes_and_synthesis",
+      "reference_audio_used": false,
+      "guide_sha256": "caf02239a384872ae7ce6841a1e0562cf7fce28ce713bc63ebd1624c743b245d",
+      "score_sha256": "f752acd617420599dae7f0c3beec7c3cc959cf648c5c87493da6bcacc8d871c9"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "06f0de80e4a54b5da5bf6069d9449932",
+        "sequence": 3,
+        "seed": 301025,
+        "style": "bass",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "bpm": 140,
+      "seconds": 60,
+      "origin": "original_authored_notes_and_synthesis",
+      "reference_audio_used": false,
+      "guide_sha256": "bf66bf367fc3a627defb094021f4bd5682f3c80b9b5f5443655f7b6a57fef236",
+      "score_sha256": "7cd099d97c437791afe560bc8ff90febd3213788bb1959cd0d5aa3c51dc88e49"
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

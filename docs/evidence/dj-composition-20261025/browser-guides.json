@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "House sketch",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "Bass sketch",
+          "seconds": 60,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "House sketch",
+          "seconds": 60.048,
+          "error": null
+        },
+        {
+          "label": "Bass sketch",
+          "seconds": 60.048,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "speakerOutput": "Muted",
+  "humanListening": "NOT RUN"
+}

@@ -34,6 +34,7 @@ class SamplePermitTests(unittest.TestCase):
 
     def test_house_study_keeps_pairs_blind_to_the_model_and_bounds_six_calls(self):
         plan=json.loads((ROOT/'docs/evidence/dj-house-consistency-20261025/gpu-plan.json').read_text())
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         pending=copy.deepcopy(plan);pending['status']='PREPARED'
         with self.assertRaises(ValueError):validate_quality(pending,house=True)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 house study'
@@ -48,6 +49,19 @@ class SamplePermitTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate_quality(changed,house=True)
         altered=copy.deepcopy(plan);altered['worker_sha256']['dj_vocal.py']='0'*64
         with self.assertRaises(ValueError):validate_quality(altered,house=True)
+    def test_composition_requires_approved_original_guides_and_four_requests(self):
+        plan=json.loads((ROOT/'docs/evidence/dj-composition-20261025/gpu-plan.json').read_text())
+        with self.assertRaises(ValueError):validate_quality(plan,composition=True)
+        plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 composition comparison'
+        validate_quality(plan,composition=True)
+        for key,value in [('max_requests',5),('source_audio_used',False),('reference_audio_used',True),('guide_strength',.8),('source_audio_origin','downloaded'),('max_workers',2),('max_minutes',30),('budget_usd',6)]:
+            changed=copy.deepcopy(plan);changed[key]=value
+            with self.assertRaises(ValueError):validate_quality(changed,composition=True)
+        changed=copy.deepcopy(plan);changed['tracks'][1]['guide_score_sha256']='0'*64
+        with self.assertRaises(ValueError):validate_quality(changed,composition=True)
+        changed=copy.deepcopy(plan);changed['worker_sha256']['dj_composition.py']='0'*64
+        with self.assertRaises(ValueError):validate_quality(changed,composition=True)
+
     def test_exact_pair_and_bounds(self):
         plan = json.loads((EVIDENCE/'gpu-plan.json').read_text()); validate(plan)
         for key, value in [('budget_usd', 6), ('max_minutes', 40), ('max_workers', 2),

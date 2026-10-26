@@ -28,6 +28,17 @@ class WarmEngineTests(unittest.TestCase):
         self.assertIsNone(receipt['vocal'])
         self.assertEqual(renderer.render(value), (receipt, audio))
 
+    def test_composition_receipt_survives_the_temporary_guide(self):
+        def generate(value,directory,engine):
+            guide=directory/'guide';guide.mkdir();(guide/'receipt.json').write_text(json.dumps({'request':value,'guide_sha256':'a'*64}))
+            signal=.1*np.sin(np.arange(480000)*2*np.pi*220/8000)
+            return np.column_stack((signal,signal)),8000
+        renderer=Renderer(time.time()+100,1,generate=generate)
+        value=dict(job=str(uuid.uuid4()),vocals=False,request=dict(version=1,session='b'*32,sequence=1,seed=1,style='house',energy=4))
+        receipt,audio=renderer.render(value)
+        self.assertEqual(receipt['composition']['request'],value['request']);self.assertEqual(receipt['composition']['guide_sha256'],'a'*64)
+        self.assertEqual(renderer.render(value),(receipt,audio));self.assertEqual(renderer.requests,1)
+
     def test_bounded_authenticated_idempotent_renderer(self):
         calls = []
         def generate(value, directory, engine):

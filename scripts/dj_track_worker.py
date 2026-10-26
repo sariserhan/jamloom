@@ -125,7 +125,13 @@ def house_study(value, directory, engine=None, hook=None):
     return ace(value, directory, engine, arranged=True, focused=bool(value['sequence'] % 2))
 
 
-def ace(value, directory, engine=None, hook=None, arranged=False, focused=False):
+def composition_study(value, directory, engine=None, hook=None):
+    if request(value)['style'] not in ('house','bass') or hook is not None: raise ValueError('Instrumental composition study only')
+    return ace(value,directory,engine,arranged=True,guided=bool(value['sequence']%2))
+
+
+def ace(value, directory, engine=None, hook=None, arranged=False, focused=False, guided=False):
+    if guided and (hook is not None or focused): raise ValueError('Original instrumental guide only')
     import random
     import soundfile as sf
     import torch
@@ -137,10 +143,17 @@ def ace(value, directory, engine=None, hook=None, arranged=False, focused=False)
     if hook is not None:
         if hook not in ('Feel alive', 'Keep moving', 'Stay together', 'One more'): raise ValueError('Original two-word phrase required')
         caption = 'Dry spoken rhythmic vocal, one original voice saying only '+hook+'. No backing music, no drums, no instruments, no imitation of any singer.'
-    params = GenerationParams(caption=caption, bpm=bpm, duration=10 if hook else 60, seed=value['seed'], instrumental=hook is None, lyrics=hook or '[Instrumental]', inference_steps=8, thinking=False, use_cot_metas=False, use_cot_caption=False, use_cot_language=False, use_cot_lyrics=False)
+    source={}
+    if guided:
+        from dj_composition import prepare
+        guide=prepare(value,directory/'guide')
+        if guide['bpm']!=bpm:raise ValueError('Guide tempo mismatch')
+        source=dict(task_type='cover',src_audio=str(directory/'guide/guide.wav'),audio_cover_strength=.5)
+    params = GenerationParams(**source,caption=caption, bpm=bpm, duration=10 if hook else 60, seed=value['seed'], instrumental=hook is None, lyrics=hook or '[Instrumental]', inference_steps=8, thinking=False, use_cot_metas=False, use_cot_caption=False, use_cot_language=False, use_cot_lyrics=False)
     config = GenerationConfig(batch_size=1, audio_format='wav', use_random_seed=False, seeds=[value['seed']])
     result = generate_music(dit, lm, params, config, save_dir=str(directory/'raw'))
     if not result.success or len(result.audios) != 1: raise RuntimeError('Generation failed')
+    if guided and hashlib.sha256((directory/'guide/guide.wav').read_bytes()).hexdigest()!=guide['guide_sha256']:raise ValueError('Original guide changed during generation')
     return sf.read(result.audios[0]['path'], always_2d=True, dtype='float32')
 
 

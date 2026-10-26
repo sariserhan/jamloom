@@ -1,0 +1,29 @@
+{
+  "scope": "Keep off listening server until owner ratings",
+  "clips": [
+    {
+      "clip": 1,
+      "sequence": 2,
+      "condition": "text control",
+      "style": "bass"
+    },
+    {
+      "clip": 2,
+      "sequence": 3,
+      "condition": "guided",
+      "style": "bass"
+    },
+    {
+      "clip": 3,
+      "sequence": 1,
+      "condition": "guided",
+      "style": "house"
+    },
+    {
+      "clip": 4,
+      "sequence": 0,
+      "condition": "text control",
+      "style": "house"
+    }
+  ]
+}
