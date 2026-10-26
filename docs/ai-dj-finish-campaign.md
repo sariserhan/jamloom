@@ -1,6 +1,6 @@
 # AI DJ completion campaign — 2026-10-25
 
-**PARTIAL.** The owner requested the remaining music, vocals, performance, hosting and release work together. This is not approval to declare failed music acceptable, reuse consumed rental permits, activate live billing or publish the product.
+**PARTIAL implementation; FAIL musical recovery after owner review on 2026-10-26.** The owner requested the remaining music, vocals, performance, hosting and release work together. This is not approval to declare failed music acceptable, reuse consumed rental permits, activate live billing or publish the product.
 
 ## Music recovery
 
@@ -10,11 +10,28 @@ Local diagnosis verifies that the first three rejected tracks have the exact sam
 
 The approved [recovery plan](evidence/dj-recovery-20261025/gpu-plan.json) isolates the two factors. Four instrumentals cross model seeds 301025/311025 with guide seeds 301025/311025; two further requests use new model seeds with the preferred guide and allow a brief original vocal. No reference audio, extracted stems or reference-derived model weights enter this study. This uses an already authored Jamloom score as a diagnostic fixture, not a proposal to repeat that composition for every customer.
 
-Bounds: six 60-second outputs, at most two 10-second voice candidates, eight model calls total, $3 total, one GPU, 20 minutes, stop on failure, independent cleanup, no public activation. The owner explicitly approved “Approve the capped $3 recovery study”. The guide request and score hash are separate from the model request. The first rental stopped during startup before rendering any tracks; it was deleted after 158.46 seconds with $0.00908 observed debit. An independent inventory confirms zero remaining rentals. The old probe did not retain enough information to distinguish renderer exit from SSH transport failure; no exact cause is claimed. The revised probe records classified outcomes, tolerates at most two consecutive transient SSH failures, and stops immediately on any renderer exit. The owner approved one replacement within the original $3 total cap and 1,041 seconds remaining; it completed six tracks and was deleted after 489.24 seconds. [Failure](evidence/dj-recovery-20261025/first-failure.json), [replacement bounds](evidence/dj-recovery-20261025/replacement-plan.json). [Verification](evidence/dj-recovery-20261025/audio-checks.json) confirms six unique, complete 60-second WAVs, pinned executed scripts, byte-identical guides within each composition group and different guides between groups. The preferred baseline is reproduced byte-for-byte. This is a reproducibility check, not an improvement claim; accepting only the replay would leave consistency unresolved. The new [blinded listening page](http://localhost:8766/recovery-originals/review/) passes muted Chromium/WebKit play/seek, one-at-a-time playback and mobile layout checks. Owner ratings remain NOT RUN.
+Bounds: six 60-second outputs, at most two 10-second voice candidates, eight model calls total, $3 total, one GPU, 20 minutes, stop on failure, independent cleanup, no public activation. The owner explicitly approved “Approve the capped $3 recovery study”. The guide request and score hash are separate from the model request. The first rental stopped during startup before rendering any tracks; it was deleted after 158.46 seconds with $0.00908 observed debit. An independent inventory confirms zero remaining rentals. The old probe did not retain enough information to distinguish renderer exit from SSH transport failure; no exact cause is claimed. The revised probe records classified outcomes, tolerates at most two consecutive transient SSH failures, and stops immediately on any renderer exit. The owner approved one replacement within the original $3 total cap and 1,041 seconds remaining; it completed six tracks and was deleted after 489.24 seconds. [Failure](evidence/dj-recovery-20261025/first-failure.json), [replacement bounds](evidence/dj-recovery-20261025/replacement-plan.json). [Verification](evidence/dj-recovery-20261025/audio-checks.json) confirms six unique, complete 60-second WAVs, pinned executed scripts, byte-identical guides within each composition group and different guides between groups. The preferred baseline is reproduced byte-for-byte. This is a reproducibility check, not an improvement claim; accepting only the replay would leave consistency unresolved. The new [blinded listening page](http://localhost:8766/recovery-originals/review/) passes muted Chromium/WebKit play/seek, one-at-a-time playback and mobile layout checks. Owner ratings are now recorded below.
 
 Neither vocal opportunity produced a placed hook. Both retained outputs also fail the unchanged local steady-grid check; the worker checks timing before generating a voice. The receipt does not record whether an unplaced candidate was rendered, so do not claim two fresh voices were generated or audited. [Vocal timing evidence](evidence/dj-recovery-20261025/vocal-grid-checks.json). Existing accepted effects remain unchanged; fresh vocal qualification remains FAIL.
 
 [Accounting](evidence/dj-recovery-20261025/costs.json): both attempts total 647.70 seconds, approximately **$0.05960 observed debit including the failed attempt**, and zero remaining rentals confirmed independently. The six render timings total 20.45 seconds; this excludes startup, guide preparation, analysis, transport and cleanup and must not be used alone to price the service. Observed debit is not a settled invoice. The authorization is consumed; no additional rental is permitted under it.
+
+## Owner review — 2026-10-26
+
+**FAIL musical recovery.** The owner said: “they are all bad but 2 is just okay”. All six raw and listening-copy hashes were verified before unblinding. [Owner feedback](evidence/dj-recovery-20261025/owner-feedback.json).
+
+| Listening clip | Model seed | Guide seed | Owner result |
+|---|---|---|---|
+| 1 | 301025 | 311025 | FAIL — bad |
+| 2 | 301025 | 301025 | PARTIAL — just okay |
+| 3 | 311025 | 311025 | FAIL — bad |
+| 4 | 311025 | 301025 | FAIL — bad |
+| 5 | 313025 | 301025 | FAIL — bad |
+| 6 | 312025 | 301025 | FAIL — bad |
+
+Clip 2 is the exact raw WAV previously preferred in the composition comparison. Its earlier preference is preserved as historical evidence; the current rating is only okay, not party-ready approval. Changing the model seed while retaining that guide failed for all three alternatives tested. Changing the guide with the preferred model seed also failed. This small study does not identify a universal failure cause, but it demonstrates no accepted improvement or reliable generation recipe.
+
+Do not promote the recovery batch or treat another seed sweep as a supported quality fix. Revise the composition/sound-generation approach and define an audible hypothesis before preparing another paid comparison. The existing accepted vocal effects remain accepted; fresh voices remain unqualified. This reply does not rate the full mix, so full-set listening remains NOT RUN. No additional compute or activation is authorized by this feedback.
 
 ## Operator implementation
 
@@ -40,7 +57,7 @@ The real browser DJ engine played all six study outputs into a retained **5:26.3
 
 | Gate | Current evidence | Exit requirement |
 |---|---|---|
-| Original music | Previous guided six rejected; recovery baseline reproduced, fresh ratings pending | Fresh seeds and directions accepted as a complete musical result; no promotion based on signal statistics |
+| Original music | Recovery clips 1 and 3–6 rejected; exact baseline replay 2 only okay; no party-ready acceptance | Fresh seeds and directions accepted as a complete musical result; no promotion based on signal statistics |
 | Vocals | Existing loop/echo treatments accepted; no fresh hook placed in recovery | Actual new, short, intelligible hooks accepted in music, with occasional restrained use |
 | Performance | Audio-clock moves and manual cancellation pass; bounded mixes captured | Fresh complete sets accepted for musical handoffs, energy direction and restraint |
 | Continuous service | Bounded two-user GPU/R2 and controller restart checks exist | Controller and independent supervisor on approved hosts; multi-hour GPU operation, model/host loss, recovery and complete recordings |

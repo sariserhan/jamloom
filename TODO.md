@@ -1,6 +1,6 @@
 ## AI DJ finish campaign — 2026-10-25
 
-**PARTIAL; fresh musical quality remains FAIL until a new listening result.** The owner requested all remaining targets together. A controlled recovery study separates guide composition from model randomness, preserving the previously accepted vocal treatments. The approved replacement completed six tracks and cleanup; both attempts total 647.70 seconds and about $0.05960 observed debit, within the $3 / one-GPU / 20-minute combined bounds. The preferred baseline is exactly reproducible, but new musical ratings are pending and neither vocal opportunity passed timing. No public activation or live purchases.
+**PARTIAL implementation; FAIL musical recovery (owner feedback 2026-10-26).** The owner requested all remaining targets together. A controlled recovery study separates guide composition from model randomness, preserving the previously accepted vocal treatments. The approved replacement completed six tracks and cleanup; both attempts total 647.70 seconds and about $0.05960 observed debit, within the $3 / one-GPU / 20-minute combined bounds. The owner rejected clips 1 and 3–6; clip 2 is only “just okay” and is byte-identical to the earlier preferred baseline. No party-ready result or quality improvement was accepted; neither vocal opportunity passed timing. No public activation or live purchases.
 
 - [x] Diagnose the rejected study against the exact preferred request and distinguish measured differences from an unproven cause.
 - [x] Prepare and test independent guide/model seed controls and two original vocal opportunities; obtain fresh capped approval.
@@ -8,7 +8,9 @@
 - [x] Add a separately gated hosted cleanup route, overlap lock and registered-rental reconciliation during launch/maintenance holds.
 - [x] Complete the approved replacement, verify worker/guide/audio hashes, cost bounds and zero remaining rentals; publish six blinded clips with Chromium/WebKit play/seek checks.
 - [x] Prepare a pinned DJ-only cached-image recipe and pass its static scope check; actual image build and cold startup remain NOT RUN.
-- [ ] Obtain new musical ratings and qualify actual fresh short vocals; two opportunities stayed instrumental.
+- [x] Record hash-verified owner ratings and unblind the conditions: five rejected alternatives and one only-okay baseline replay; no promotion.
+- [ ] Revise the generation approach and establish accepted quality on new compositions; seed changes and fixed-guide reuse failed this study.
+- [ ] Qualify actual fresh short vocals; two opportunities stayed instrumental.
 - [x] Capture all six tracks through the real mixer: 5:26, three automatic gestures, clean stop and no detected quiet gaps of 250 ms or more.
 - [ ] Qualify fresh complete-set musical performance and physical venue playback.
 - [ ] Qualify approved continuous hosting, full costs and deployment before activation.

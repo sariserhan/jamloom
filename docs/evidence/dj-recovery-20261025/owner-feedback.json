@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-26",
+  "owner_statement": "they are all bad but 2 is just okay",
+  "status": "FAIL musical recovery; no party-ready acceptance",
+  "clips": [
+    {
+      "clip": 1,
+      "sequence": 2,
+      "file": "bass-2.wav",
+      "source_sha256": "87fe2972b3b11ae05a2065735fcfb832ff01cc3d48b59899fc9762ea8bfae8f6",
+      "listening_sha256": "a36eb573cb2cc723bc8e1067e1111f1a7eafa6b9b0dce0957261ec3ab18f42c1",
+      "model_seed": 301025,
+      "guide_seed": 311025,
+      "status": "FAIL",
+      "verdict": "Bad; rejected",
+      "party_ready_accepted": false
+    },
+    {
+      "clip": 2,
+      "sequence": 0,
+      "file": "bass-0.wav",
+      "source_sha256": "fed1294652896ade10bc317001b6826572270cbc6ebaf7f4ba1d98e221f24a30",
+      "listening_sha256": "d3d89ea575a21043c62ede31eff7348fd791ecf0431f4b07699f6e87cc98b2e8",
+      "model_seed": 301025,
+      "guide_seed": 301025,
+      "status": "PARTIAL",
+      "verdict": "Just okay; not accepted as party-ready",
+      "party_ready_accepted": false
+    },
+    {
+      "clip": 3,
+      "sequence": 3,
+      "file": "bass-3.wav",
+      "source_sha256": "267ed439db72821d07c4392f93080e51505a8a89438d074c0be2f685c7a3ec41",
+      "listening_sha256": "3b6da3ced070382685231eb84b05a38b225ba0385b9b584fa21e09060b7b51b8",
+      "model_seed": 311025,
+      "guide_seed": 311025,
+      "status": "FAIL",
+      "verdict": "Bad; rejected",
+      "party_ready_accepted": false
+    },
+    {
+      "clip": 4,
+      "sequence": 1,
+      "file": "bass-1.wav",
+      "source_sha256": "df36015c317114397259db8450b9623169d23200e8ae3b20da7d2626d7a89d36",
+      "listening_sha256": "e1145419fd215c6a7d26d4a957c2350ad66cde6b382a690db605928a837534d7",
+      "model_seed": 311025,
+      "guide_seed": 301025,
+      "status": "FAIL",
+      "verdict": "Bad; rejected",
+      "party_ready_accepted": false
+    },
+    {
+      "clip": 5,
+      "sequence": 12,
+      "file": "bass-12.wav",
+      "source_sha256": "e209a15c19753aba57b0981352a103ead5e19c19080287b4a231e5c5a20714b0",
+      "listening_sha256": "ee534eb5a7245f3ce059254d5c2cf1ac2852cc714db225c6309b60fc4a0548cc",
+      "model_seed": 313025,
+      "guide_seed": 301025,
+      "status": "FAIL",
+      "verdict": "Bad; rejected",
+      "party_ready_accepted": false
+    },
+    {
+      "clip": 6,
+      "sequence": 7,
+      "file": "bass-7.wav",
+      "source_sha256": "e22ffbba3602341803a1285ab7592891ef5cba9fab4e5263fc2e4af7a2844f9f",
+      "listening_sha256": "2665fc8537f80b6e9e87d219f002dd41a57bd93ba8eddde6ff2f56a163e926ee",
+      "model_seed": 312025,
+      "guide_seed": 301025,
+      "status": "FAIL",
+      "verdict": "Bad; rejected",
+      "party_ready_accepted": false
+    }
+  ],
+  "baseline": {
+    "clip": 2,
+    "previous_file": "renders/dj-composition-20261025/bass-3.wav",
+    "sha256": "fed1294652896ade10bc317001b6826572270cbc6ebaf7f4ba1d98e221f24a30",
+    "identity": "Byte-identical raw WAV to the earlier preferred composition-study clip 2; listening copies are level matched separately."
+  },
+  "conclusions": [
+    "All five alternatives rejected; only the exact baseline replay rated just okay.",
+    "Changing the model seed with the preferred guide did not produce an accepted result in this sample.",
+    "Changing the guide with the preferred model seed also did not produce an accepted result.",
+    "No quality improvement or generalizable generation recipe demonstrated; exact musical failure cause remains unverified."
+  ],
+  "promotion": "REJECTED",
+  "fresh_vocals": "FAIL: none placed",
+  "full_mix_listening": "NOT RUN: this reply rates the six originals, not the full mix",
+  "limits": [
+    "No musical defects beyond the owner statement are inferred.",
+    "Earlier historical preference remains valid as historical evidence; the latest rating of the baseline is only okay.",
+    "No model training, new rendering, new paid compute or activation occurred when recording this feedback."
+  ]
+}
