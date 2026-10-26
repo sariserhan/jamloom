@@ -1,0 +1,23 @@
+{
+  "status": "PARTIAL musical continuity",
+  "source_alignment_seconds": 105.3745,
+  "source_waveform_correlation": 0.998617595854587,
+  "source_to_capture_gain": 0.5034003853797913,
+  "quiet_intervals": [
+    {
+      "mix_start": 110.45325,
+      "mix_end": 110.707229,
+      "source_start": 5.078749999999999,
+      "source_end": 5.3327290000000005
+    },
+    {
+      "mix_start": 112.298333,
+      "mix_end": 112.551146,
+      "source_start": 6.923833000000002,
+      "source_end": 7.176646000000005
+    }
+  ],
+  "threshold_db": -60,
+  "minimum_quiet_seconds": 0.25,
+  "interpretation": "Two brief quiet intervals occur after the third-track handoff. The aligned source contains the same quiet intervals; attenuation brings them under the capture threshold. No network or decoder dropout established. Human listening remains required."
+}

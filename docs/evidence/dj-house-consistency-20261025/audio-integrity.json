@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "tracks": [
+    {
+      "file": "house-0.wav",
+      "sha256": "5d9411ebf1554eac6b7b44c65ada9ea83a8c90a7bb449df0e723844ab8efc10e",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.1177363252312643
+    },
+    {
+      "file": "house-1.wav",
+      "sha256": "df6f7b31c5e334a15e819855198c10c695b897f6c3a300356b520aa3e3c07ef4",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.12333309054980202
+    },
+    {
+      "file": "house-2.wav",
+      "sha256": "ea406685eb13e77dbb4250fe8ce400d843f09ed7bd03e00b0452abd49a51149d",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.11076771041968146
+    },
+    {
+      "file": "house-3.wav",
+      "sha256": "b92f6f213fbcc6ca7d7a4404397879b6d9833387612ee3893b3c001685a7fd4d",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.13123793060476804
+    },
+    {
+      "file": "house-4.wav",
+      "sha256": "d6e4f5d437890e7e0edcbfc25140480bc96f1a990b5daadd02ebea627143736f",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.12414665249537533
+    },
+    {
+      "file": "house-5.wav",
+      "sha256": "219757f8c094dc636ab220d7482cbfabf7b0983f132fd49302fdf96f558012e8",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.12360077651575499
+    }
+  ]
+}

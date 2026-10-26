@@ -1,0 +1,19 @@
+{
+  "status": "PASS technical",
+  "target_lufs": -24.43,
+  "tracks": [
+    {
+      "file": "accepted-house-mix.mp3",
+      "source_sha256": "a0637e4cce6485b13663db2ee34d69931aa12e2cf794fc1d6078fc51b040964e",
+      "sha256": "00943d63dc979d88b3022fd4cf6e99afd0fe69c1cfcfd412684d7deb001041ee",
+      "gain_db": 0.0,
+      "level": {
+        "input_i": "-24.43",
+        "input_tp": "-7.01",
+        "input_lra": "5.60",
+        "input_thresh": "-34.51"
+      }
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

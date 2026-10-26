@@ -4,7 +4,7 @@ set -euo pipefail
 deadline=${1:?Absolute authorized deadline required}
 requests=${2:-8}
 mode=${3:-}
-[[ -z $mode || $mode == --arranged ]] || exit 2
+[[ -z $mode || $mode == --arranged || $mode == --house-study ]] || exit 2
 [[ $requests =~ ^[0-9]{1,3}$ ]] && ((requests >= 1 && requests <= 100)) || exit 2
 [[ $deadline =~ ^[0-9]{10}$ ]] || exit 2
 remaining=$((deadline - $(date +%s)))

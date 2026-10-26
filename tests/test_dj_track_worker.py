@@ -11,6 +11,17 @@ from dj_track_worker import request, brief, arranged_brief, canonical, ace, STYL
 import dj_gpu_qualification as qualification
 
 class WorkerContract(unittest.TestCase):
+    def test_house_study_changes_only_the_predeclared_caption_condition(self):
+        from dj_track_worker import house_study, focused_house_brief
+        value=dict(version=1,session='a'*32,sequence=0,seed=271025,style='house',energy=4,mood='deep')
+        with patch('dj_track_worker.ace') as generate:
+            for seq in range(6):
+                house_study({**value,'sequence':seq},Path('/tmp'),('dit','lm'))
+                self.assertEqual(generate.call_args.kwargs,dict(arranged=True,focused=bool(seq%2)))
+            with self.assertRaises(ValueError):house_study({**value,'style':'bass'},Path('/tmp'))
+            with self.assertRaises(ValueError):house_study(value,Path('/tmp'),hook='One more')
+        self.assertTrue(focused_house_brief(value)[0].startswith(arranged_brief(value)[0]))
+        self.assertEqual(focused_house_brief(value)[1],128)
     def test_arrangement_candidate_preserves_style_energy_and_beat_direction(self):
         for style,profile in STYLES.items():
             value=dict(version=1,session='a'*32,sequence=0,seed=17,style=style,energy=4,mood='deep')

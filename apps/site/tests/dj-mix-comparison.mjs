@@ -9,15 +9,26 @@ import {build} from 'esbuild';
 import {chromium} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
 const quality=process.argv.includes('--quality');
-const root=resolve('../..'),folder=resolve(root,quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
+const house=process.argv.includes('--house-study');assert.ok(!(quality&&house));
+const root=resolve('../..'),folder=resolve(root,house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
 await mkdir(folder);
 const source=resolve(root,'renders/ai-dj-hosted-20261025'),report=JSON.parse(await readFile(source+'/result.json','utf8'));
 const session=report.customers.find(c=>c.visibility==='public').session;
-const tracks=await Promise.all(report.tracks.filter(t=>t.session===session&&t.sequence<3).sort((a,b)=>a.sequence-b.sequence).map(async(row,index)=>{
+let tracks=await Promise.all(report.tracks.filter(t=>t.session===session&&t.sequence<3).sort((a,b)=>a.sequence-b.sequence).map(async(row,index)=>{
  const bytes=await readFile(`${source}/${session}-${index}.wav`);assert.equal(createHash('sha256').update(bytes).digest('hex'),row.sha256);
  return {bytes,track:{id:String(index),title:`Original ${index+1}`,artist:'Jamloom original',url:'/audio/'+index,sha256:row.sha256,energy:4,style:'house',mood:'deep',vocal:false,credit:''}};
 }));assert.equal(tracks.length,3);
-const revisions={before:execFileSync('git',['rev-parse',quality?'f0fde92':'35bbee7'],{encoding:'utf8'}).trim(),after:quality?'working-tree':execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
+if(house){
+ const feedback=JSON.parse(await readFile(root+'/docs/evidence/dj-quality-20261025/owner-feedback.json','utf8'));
+ const vocalRoot=root+'/renders/ai-dj-finish-20261024/gpu-launch-fix',previous=JSON.parse(await readFile(vocalRoot+'/result.json','utf8'));
+ const vocal=previous.tracks.find(t=>t.receipt.vocal);assert.ok(vocal);
+ const selected=[{path:root+'/renders/dj-style-samples-20261025-replacement/house.wav',hash:feedback.clips[0].source_sha256,title:'Accepted house 1'},
+  {path:root+'/renders/dj-quality-20261025/house-0.wav',hash:feedback.clips[1].source_sha256,title:'Accepted house 2'},
+  {path:`${vocalRoot}/${vocal.session}-${vocal.sequence}.wav`,hash:vocal.sha256,title:'Previously accepted vocal house',vocalCue:vocal.receipt.vocal}];
+ assert.equal(feedback.clips[0].status,'PASS');assert.equal(feedback.clips[1].status,'PASS');
+ tracks=await Promise.all(selected.map(async(row,index)=>{const bytes=await readFile(row.path);assert.equal(createHash('sha256').update(bytes).digest('hex'),row.hash);return{bytes,track:{id:String(index),title:row.title,artist:'Jamloom original',url:'/audio/'+index,sha256:row.hash,energy:4,style:'house',mood:'deep',vocal:!!row.vocalCue,vocalCue:row.vocalCue,credit:''}};}));
+}
+const revisions=house?{after:'working-tree'}:{before:execFileSync('git',['rev-parse',quality?'f0fde92':'35bbee7'],{encoding:'utf8'}).trim(),after:quality?'working-tree':execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
 for(const [name,ref] of Object.entries(revisions)){
  const plugins=ref==='working-tree'?[]:[{name:'historical-source',setup(b){b.onLoad({filter:/\.(ts|js|json)$/},args=>{
   const path=relative(root,args.path);assert.ok(!path.startsWith('..')&&!path.includes('node_modules'));
@@ -63,5 +74,6 @@ try{await Promise.all(Object.keys(revisions).map(async name=>{
  results.push({name,revision:revisions[name],...result,sha256:createHash('sha256').update(bytes).digest('hex')});await context.close();console.log(name+' capture PASS');
 }));
  assert.ok(results.find(r=>r.name==='after').events.some(e=>e.by==='AI'),'Current engine must perform real moves');
+ if(house)assert.ok(results[0].events.some(e=>e.label==='Vocal loop · 2 repeats'),'Accepted vocal must repeat only after the normal playback guards pass');
  await writeFile(folder+'/report.json',JSON.stringify({status:'PASS technical',sourceTracks:tracks.map(t=>t.track.sha256),currentPlanSha256:createHash('sha256').update(await readFile('lib/ai-dj-plan.ts')).digest('hex'),newGeneration:false,learnedWeights:false,humanListening:'NOT RUN',results},null,2)+'\n');
 }finally{await browser.close();await new Promise(ok=>server.close(ok));}

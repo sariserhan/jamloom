@@ -1,0 +1,41 @@
+{
+  "scope": "Keep off the listening server; reveal after owner ratings",
+  "clips": [
+    {
+      "clip": 1,
+      "sequence": 2,
+      "seed": 271025,
+      "condition": "control"
+    },
+    {
+      "clip": 2,
+      "sequence": 0,
+      "seed": 261025,
+      "condition": "control"
+    },
+    {
+      "clip": 3,
+      "sequence": 1,
+      "seed": 261025,
+      "condition": "hook"
+    },
+    {
+      "clip": 4,
+      "sequence": 5,
+      "seed": 281025,
+      "condition": "hook"
+    },
+    {
+      "clip": 5,
+      "sequence": 3,
+      "seed": 271025,
+      "condition": "hook"
+    },
+    {
+      "clip": 6,
+      "sequence": 4,
+      "seed": 281025,
+      "condition": "control"
+    }
+  ]
+}

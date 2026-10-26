@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Accepted house set",
+          "seconds": 163.8,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Accepted house set",
+          "seconds": 163.824,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "speakerOutput": "Muted",
+  "humanListening": "NOT RUN"
+}

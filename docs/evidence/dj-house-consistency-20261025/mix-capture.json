@@ -1,0 +1,76 @@
+{
+  "status": "PASS technical",
+  "sourceTracks": [
+    "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+    "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "8eed92ea4766b371bdc40792c8d37f80f36adf127b9e263b7cb912580f2307fb"
+  ],
+  "currentPlanSha256": "b6afe1fcc3a5a5579b6dce69ef41619b763fc9c0c2bc7b1d47aa0f7dc576cc56",
+  "newGeneration": false,
+  "learnedWeights": false,
+  "humanListening": "NOT RUN",
+  "results": [
+    {
+      "name": "after",
+      "revision": "working-tree",
+      "history": [
+        "0",
+        "1",
+        "2"
+      ],
+      "seconds": 163.8,
+      "peak": 0.43741658329963684,
+      "rms": 0.04989192408263065,
+      "events": [
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 86.48825,
+          "until": 88.36325,
+          "position": 33.451249999999995,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 94.457,
+          "until": 95.3945,
+          "position": 41.419999999999995,
+          "by": "AI"
+        },
+        {
+          "action": "loop-4",
+          "label": "Vocal loop · 2 repeats",
+          "at": 135.46944186046517,
+          "until": 139.19035852713182,
+          "position": 29.792441860465154,
+          "by": "AI"
+        }
+      ],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 56.652,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 3,
+          "elapsed": 109.30399999999999,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "muted": true,
+      "sha256": "a0637e4cce6485b13663db2ee34d69931aa12e2cf794fc1d6078fc51b040964e"
+    }
+  ]
+}

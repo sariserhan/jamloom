@@ -114,7 +114,18 @@ def load_ace():
     return dit, lm
 
 
-def ace(value, directory, engine=None, hook=None, arranged=False):
+def focused_house_brief(value):
+    if request(value)['style'] != 'house': raise ValueError('House study requires house')
+    caption,bpm=arranged_brief(value)
+    return caption+' A clear midrange chord-stab hook answers the bass in the first four bars. Repeat that short hook with a different answer every eight bars. Keep the hook audible above the sub bass; avoid a bass-only drone or continuous busy lead.',bpm
+
+
+def house_study(value, directory, engine=None, hook=None):
+    if request(value)['style'] != 'house' or hook is not None: raise ValueError('Instrumental house study only')
+    return ace(value, directory, engine, arranged=True, focused=bool(value['sequence'] % 2))
+
+
+def ace(value, directory, engine=None, hook=None, arranged=False, focused=False):
     import random
     import soundfile as sf
     import torch
@@ -122,7 +133,7 @@ def ace(value, directory, engine=None, hook=None, arranged=False):
     random.seed(value['seed']); np.random.seed(value['seed']); torch.manual_seed(value['seed'])
     torch.cuda.manual_seed_all(value['seed']); torch.set_num_threads(4)
     dit, lm = engine if engine is not None else load_ace()
-    caption, bpm = arranged_brief(value) if arranged else brief(value)
+    caption, bpm = focused_house_brief(value) if focused else arranged_brief(value) if arranged else brief(value)
     if hook is not None:
         if hook not in ('Feel alive', 'Keep moving', 'Stay together', 'One more'): raise ValueError('Original two-word phrase required')
         caption = 'Dry spoken rhythmic vocal, one original voice saying only '+hook+'. No backing music, no drums, no instruments, no imitation of any singer.'

@@ -1,0 +1,190 @@
+{
+  "status": "PASS descriptive analysis",
+  "tracks": [
+    {
+      "clip": 1,
+      "source": "renders/dj-style-samples-20261025-replacement/house.wav",
+      "sha256": "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+      "owner_status": "PASS",
+      "tempo_windows": [
+        {
+          "start": 0,
+          "tempo_candidates": [
+            {
+              "bpm": 63.56,
+              "periodicity": 0.475
+            },
+            {
+              "bpm": 85.23,
+              "periodicity": 0.295
+            },
+            {
+              "bpm": 129.31,
+              "periodicity": 0.161
+            }
+          ]
+        },
+        {
+          "start": 30,
+          "tempo_candidates": [
+            {
+              "bpm": 63.56,
+              "periodicity": 0.534
+            },
+            {
+              "bpm": 129.31,
+              "periodicity": 0.326
+            },
+            {
+              "bpm": 85.23,
+              "periodicity": 0.224
+            }
+          ]
+        }
+      ],
+      "median_band_fractions": [
+        0.7815000000000001,
+        0.20174999999999998,
+        0.0256
+      ],
+      "texture_step_mean": 0.22663118821505804,
+      "energy_range_db": 12.011000000000003,
+      "candidate_changes": [
+        {
+          "seconds": 25,
+          "energy_delta_db": 3.63,
+          "texture_delta": 0.679,
+          "kind": "energy rise",
+          "reviewed": false,
+          "dj_action": "unknown"
+        }
+      ]
+    },
+    {
+      "clip": 2,
+      "source": "renders/dj-quality-20261025/house-0.wav",
+      "sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+      "owner_status": "PASS",
+      "tempo_windows": [
+        {
+          "start": 0,
+          "tempo_candidates": [
+            {
+              "bpm": 63.56,
+              "periodicity": 0.779
+            },
+            {
+              "bpm": 85.23,
+              "periodicity": 0.119
+            },
+            {
+              "bpm": 120.97,
+              "periodicity": 0.093
+            }
+          ]
+        },
+        {
+          "start": 30,
+          "tempo_candidates": [
+            {
+              "bpm": 63.56,
+              "periodicity": 0.74
+            },
+            {
+              "bpm": 129.31,
+              "periodicity": 0.481
+            },
+            {
+              "bpm": 85.23,
+              "periodicity": 0.403
+            }
+          ]
+        }
+      ],
+      "median_band_fractions": [
+        0.6616500000000001,
+        0.3328,
+        0.0176
+      ],
+      "texture_step_mean": 0.16601489938374883,
+      "energy_range_db": 9.762,
+      "candidate_changes": [
+        {
+          "seconds": 25,
+          "energy_delta_db": 4.31,
+          "texture_delta": 0.619,
+          "kind": "energy rise",
+          "reviewed": false,
+          "dj_action": "unknown"
+        }
+      ]
+    },
+    {
+      "clip": 5,
+      "source": "renders/dj-quality-20261025/house-2.wav",
+      "sha256": "5d9411ebf1554eac6b7b44c65ada9ea83a8c90a7bb449df0e723844ab8efc10e",
+      "owner_status": "FAIL",
+      "tempo_windows": [
+        {
+          "start": 0,
+          "tempo_candidates": [
+            {
+              "bpm": 63.56,
+              "periodicity": 0.539
+            },
+            {
+              "bpm": 85.23,
+              "periodicity": 0.331
+            },
+            {
+              "bpm": 129.31,
+              "periodicity": 0.245
+            }
+          ]
+        },
+        {
+          "start": 30,
+          "tempo_candidates": [
+            {
+              "bpm": 63.56,
+              "periodicity": 0.492
+            },
+            {
+              "bpm": 85.23,
+              "periodicity": 0.257
+            },
+            {
+              "bpm": 129.31,
+              "periodicity": 0.165
+            }
+          ]
+        }
+      ],
+      "median_band_fractions": [
+        0.8967499999999999,
+        0.0984,
+        0.0026
+      ],
+      "texture_step_mean": 0.21881701090214217,
+      "energy_range_db": 10.456000000000001,
+      "candidate_changes": [
+        {
+          "seconds": 45,
+          "energy_delta_db": -3.28,
+          "texture_delta": 0.225,
+          "kind": "energy drop",
+          "reviewed": false,
+          "dj_action": "unknown"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Three judged tracks; no causal explanation or trained quality predictor.",
+    "Tempo candidates retain half/double-time ambiguity; spectral bands are not instrument labels.",
+    "Accepted clips have quieter openings than the rejected house clip in the prior stereo-power comparison, so energy alone cannot explain preference."
+  ],
+  "next_experiment": "Compare the unchanged arrangement caption with that same caption plus a focused midrange-hook instruction on one previously rejected seed and two unseen seeds, with conditions hidden and no vocals confounding the paired comparison.",
+  "method": "FFmpeg mono downmix at 8 kHz, existing analyze_dj_references.features in two 30-second windows; candidate energy/texture changes use existing changes().",
+  "analyzer_sha256": "9acd20b6a1b9ada591e2ba74d4519e69f59e631c15567e068f29c6c0590816ff"
+}

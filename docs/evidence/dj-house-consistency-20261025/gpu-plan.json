@@ -1,0 +1,125 @@
+{
+  "status": "AUTHORIZED",
+  "campaign": "jamloom-dj-house-consistency-20261025",
+  "owner_statement": "Approve the capped $3 house study",
+  "budget_usd": 3,
+  "max_workers": 1,
+  "max_minutes": 20,
+  "max_requests": 6,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "public_activation": false,
+  "source_audio_used": false,
+  "learned_reference_weights_used": false,
+  "model": {
+    "code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "weights": "19671f406d603126926c1b7e2adc169acbcade22"
+  },
+  "tracks": [
+    {
+      "label": "house condition 0 seed 261025",
+      "request": {
+        "version": 1,
+        "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+        "sequence": 0,
+        "seed": 261025,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 128,
+      "seconds": 60,
+      "vocals": false
+    },
+    {
+      "label": "house condition 1 seed 261025",
+      "request": {
+        "version": 1,
+        "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+        "sequence": 1,
+        "seed": 261025,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation. A clear midrange chord-stab hook answers the bass in the first four bars. Repeat that short hook with a different answer every eight bars. Keep the hook audible above the sub bass; avoid a bass-only drone or continuous busy lead.",
+      "bpm": 128,
+      "seconds": 60,
+      "vocals": false
+    },
+    {
+      "label": "house condition 0 seed 271025",
+      "request": {
+        "version": 1,
+        "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+        "sequence": 2,
+        "seed": 271025,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 128,
+      "seconds": 60,
+      "vocals": false
+    },
+    {
+      "label": "house condition 1 seed 271025",
+      "request": {
+        "version": 1,
+        "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+        "sequence": 3,
+        "seed": 271025,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation. A clear midrange chord-stab hook answers the bass in the first four bars. Repeat that short hook with a different answer every eight bars. Keep the hook audible above the sub bass; avoid a bass-only drone or continuous busy lead.",
+      "bpm": 128,
+      "seconds": 60,
+      "vocals": false
+    },
+    {
+      "label": "house condition 0 seed 281025",
+      "request": {
+        "version": 1,
+        "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+        "sequence": 4,
+        "seed": 281025,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 128,
+      "seconds": 60,
+      "vocals": false
+    },
+    {
+      "label": "house condition 1 seed 281025",
+      "request": {
+        "version": 1,
+        "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+        "sequence": 5,
+        "seed": 281025,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation. A clear midrange chord-stab hook answers the bass in the first four bars. Repeat that short hook with a different answer every eight bars. Keep the hook audible above the sub bass; avoid a bass-only drone or continuous busy lead.",
+      "bpm": 128,
+      "seconds": 60,
+      "vocals": false
+    }
+  ],
+  "manifest_sha256": "37920c432079b6a51be2321e46a0b5071cdca2ded8d3e50f6cb06f07abcfafe3",
+  "worker_sha256": {
+    "cloud_music_setup.sh": "6b3a092a6d1ce00e3cf6d71707c9283a6bae75451e05ca65f0648cad0e402c7b",
+    "cloud_dj_warm.sh": "07a7573700a15dca5420409372b2412f7834a834479e7fd91b6643a8f77ff651",
+    "dj_track_worker.py": "834dd7a02107ad6dfec4b3a4c9638e6611a0f17e64efc4b920afbe472c16f623",
+    "dj_warm_engine.py": "a33b9e3c2cf454c3918fe4193f3712543d17cbc006a95dbc387f2ae1babf4009",
+    "dj_vocal.py": "246ecb96aca09b4566ef7730c35a465d46b718f43d8080339d678ca95e2124ff",
+    "club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb"
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "status": "PASS technical",
+  "scope": "Six paired instrumental house tracks; no reference audio or research weights",
+  "tracks": [
+    {
+      "file": "house-0.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "337e7082f2094c793bfc4bf769c332ec",
+        "job": "ab1fb956-703d-4cff-bd3f-c2ec2d0e7472",
+        "request": {
+          "version": 1,
+          "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+          "sequence": 0,
+          "seed": 261025,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 3312,
+        "bytes": 11520044,
+        "sha256": "5d9411ebf1554eac6b7b44c65ada9ea83a8c90a7bb449df0e723844ab8efc10e",
+        "vocal": null
+      }
+    },
+    {
+      "file": "house-1.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "337e7082f2094c793bfc4bf769c332ec",
+        "job": "238e8574-b4ad-4529-a872-90c4b3b22104",
+        "request": {
+          "version": 1,
+          "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+          "sequence": 1,
+          "seed": 261025,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1978,
+        "bytes": 11520044,
+        "sha256": "df6f7b31c5e334a15e819855198c10c695b897f6c3a300356b520aa3e3c07ef4",
+        "vocal": null
+      }
+    },
+    {
+      "file": "house-2.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "337e7082f2094c793bfc4bf769c332ec",
+        "job": "9dbe1ba2-b9b6-4898-9d71-0b9c0b0c6bba",
+        "request": {
+          "version": 1,
+          "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+          "sequence": 2,
+          "seed": 271025,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1974,
+        "bytes": 11520044,
+        "sha256": "ea406685eb13e77dbb4250fe8ce400d843f09ed7bd03e00b0452abd49a51149d",
+        "vocal": null
+      }
+    },
+    {
+      "file": "house-3.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "337e7082f2094c793bfc4bf769c332ec",
+        "job": "710cb2cd-e726-4de4-bc06-18bd028cdc4f",
+        "request": {
+          "version": 1,
+          "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+          "sequence": 3,
+          "seed": 271025,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1977,
+        "bytes": 11520044,
+        "sha256": "b92f6f213fbcc6ca7d7a4404397879b6d9833387612ee3893b3c001685a7fd4d",
+        "vocal": null
+      }
+    },
+    {
+      "file": "house-4.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "337e7082f2094c793bfc4bf769c332ec",
+        "job": "c1fc3878-a2ea-441c-ac37-688d51ebb1c5",
+        "request": {
+          "version": 1,
+          "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+          "sequence": 4,
+          "seed": 281025,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1974,
+        "bytes": 11520044,
+        "sha256": "d6e4f5d437890e7e0edcbfc25140480bc96f1a990b5daadd02ebea627143736f",
+        "vocal": null
+      }
+    },
+    {
+      "file": "house-5.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "337e7082f2094c793bfc4bf769c332ec",
+        "job": "03e2b295-620c-4752-abe5-8083d69dd9b5",
+        "request": {
+          "version": 1,
+          "session": "cd71e9c5e6e6474da72b25ca5f2da146",
+          "sequence": 5,
+          "seed": 281025,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 1979,
+        "bytes": 11520044,
+        "sha256": "219757f8c094dc636ab220d7482cbfabf7b0983f132fd49302fdf96f558012e8",
+        "vocal": null
+      }
+    }
+  ],
+  "human_listening": "NOT RUN",
+  "cleanup_confirmed": true,
+  "observed_debit_usd": 0.023649366000000782,
+  "rental_seconds": 298.1092839241028,
+  "remaining_instances": 0
+}

@@ -1,3 +1,16 @@
+## House consistency study and accepted-track set — 2026-10-25
+
+**PARTIAL overall; PASS local study implementation, analysis and replay.** Compared the accepted house samples with the rejected seed and prepared a paired, blinded test of a clearer midrange hook. The owner approved six instrumental tracks across three seeds, $3 maximum, one GPU and 20 minutes with automatic cleanup. All six fresh tracks passed technical checks; the GPU is deleted, zero rentals remain, and observed charges are about $0.024 after 298 seconds. Human acceptance is pending. The accepted-track set plays in both browsers and performs a brief vocal repeat; two short quiet intervals inherited from its third track keep musical continuity PARTIAL.
+
+- [x] Analyze accepted/rejected house samples and predeclare one focused hypothesis.
+- [x] Add the bounded, hash-pinned six-track paired study without changing serving defaults.
+- [x] Render the accepted-track set with real DJ actions and the existing guarded vocal repeat.
+- [x] Verify authorization tests, capture, playback, seeking and mobile layout.
+- [x] Finish the authorized generation, independently confirm cleanup and serve the blinded clips.
+- [ ] Record human ratings before unblinding; qualify house consistency and the set's musical continuity.
+
+[Report and evidence](docs/dj-house-consistency.md).
+
 ## DJ quality iteration and completed phone check — 2026-10-25
 
 **PARTIAL overall; PASS local implementation and checks.** Added a separately selectable arrangement candidate, sustained-energy beat handoffs and sparse vocals placed where the midrange is less busy. Existing generation remains the default. The owner confirmed the installed phone language filter and bottom player work. The approved comparison produced four fresh originals in 282 seconds, with about $0.028 observed debit. The GPU is deleted; vocals were skipped by timing guards. Musical acceptance is PARTIAL: house 1/2 are good without a winner; bass 3/4 and fresh variations 5/6 are rejected. No promotion or public activation.
