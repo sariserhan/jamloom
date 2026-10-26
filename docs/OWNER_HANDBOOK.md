@@ -1,5 +1,15 @@
 ## Build costs and display polling — 2026-10-26
 
+## Reliability follow-through — 2026-10-26
+
+The approved GPU campaign is consumed. It produced twenty fresh originals and two complete R2 sets; final test source accounting failed, while recovery, capacity, privacy and cleanup passed within scope. Zero rentals remain; provisional usage is $0.104. [Result](DJ_RELIABILITY_QUALIFICATION.md). Startup now retains bounded private log snapshots and distinguishes connection failures from renderer exits. The failed integrated attempt remains consumed; its missing final error is not reconstructed or guessed.
+
+The local stem review prepares only the current and next section on the existing audio clock. A fresh sixty-second source was separated locally into a 192.863-second arrangement: http://localhost:8766/delivered-stems/review/. It develops two regions from one original; both R2 mixes are also available at http://localhost:8766/reliability-sessions/review/. Fresh independent-part production, model-weight clearance and musical acceptance are separate gates.
+
+The owner confirmed Voice Isolation, then tested Standard with raw browser input. Standard still produced 57.99% quiet-phase periodic detections; offset and clipping do not explain it. A verified DC-offset level-gate bug was fixed with no classification changes across the retained forty-recording benchmark. The optional five-second input recording at http://localhost:8767/mic-check.html is explicit, local to the tab, stopped before playback, cleared on leaving and never uploaded. The normal thirty-second test still discards audio.
+
+The owner confirms Tency has not replied. Popular songs remain unavailable pending exact permissions and assets; no follow-up message or purchase sent. The tested production candidate is at http://localhost:3008/singing-academy; stable port 3000 remains available. Website publication remains held under the owner's local-only instruction.
+
 The current Vercel bill is dominated by builds: about $3.00 build CPU versus $0.04 runtime CPU. The local candidate now skips verified docs/native-only deployments using the full change since the last successful deployment, and avoids overlapping/hidden-tab display refreshes. Missing Git history still builds safely. Chromium/WebKit, 159 site checks and the build pass. [Evidence and boundaries](VERCEL_COST_REVIEW.md). Nothing was pushed or deployed; savings are not yet measured.
 
 ## Independent musical parts and microphone comparison — 2026-10-26

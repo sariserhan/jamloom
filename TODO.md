@@ -1,3 +1,21 @@
+## Reliability follow-through — 2026-10-26
+
+**PARTIAL overall.** [Report](docs/RELIABILITY_FOLLOWTHROUGH.md). Current work remains local. Twenty fresh tracks and both R2 recordings completed; the final browser-meter assertion failed, cleanup passed, and the permit is consumed.
+
+- [x] Separate SSH/renderer/deadline failures and retain bounded private startup evidence before automatic cleanup; five fault checks and thirty-one controller checks pass.
+- [x] Fix DC-offset promotion of subthreshold periodic noise; the retained forty-recording benchmark has identical frame classifications before/after. This is not a fix for the owner's quiet-room issue.
+- [x] Record the owner's Standard/raw microphone result: 57.99% quiet periodic detections; negligible DC and no clipping. Add explicit optional local input playback; Chromium/WebKit stop, play, clear and permission checks pass.
+- [x] Add bounded consecutive stem scheduling on the existing transport/clock; exact boundaries, rhythm coverage, order, compatibility, capacity and late-arrival tests pass.
+- [x] Complete 210-second live stem playback and progressive offline equivalence; render a fresh-source 192.863-second arrangement with two-block delivery. This repeats/develops one original, not endless fresh composition.
+- [x] Execute the capped reliability run: twenty distinct originals, both complete R2 sets, crash recovery, privacy and cleanup evidence retained; $0.104 provisional usage, zero rentals. Final counter assertion FAIL is preserved.
+- [x] Fix test source accounting and concurrent deletion handling with focused regressions; do not alter the consumed authorization hashes.
+- [x] Pass corrected-meter retained rehearsal: twenty tracks, complete 307.412/420.348-second R2 sets, lost-response recovery, Stop/credits, privacy/cleanup; at most three sources, no duplicate/unstarted endings.
+- [x] Pass final isolated production build/bundle audit, TypeScript and Chromium/WebKit production smoke; 160 site, 188 shared-audio and 38 focused Python checks. Stable preview remains on port 3000; current built candidate is on port 3008.
+- [ ] Resolve actual microphone noise/missed singing, physical latency and professional musical acceptance; do not close these with synthetic tests.
+- [x] Prepare the tested local release candidate and current acceptance ledger.
+- [ ] Publish only when the owner authorizes the concrete tested release; production Vercel savings remain unmeasured.
+- [ ] Popular-song permissions/assets: owner confirms no Tency reply yet; no purchase or further enquiry.
+
 ## Coherent performance and input diagnosis — 2026-10-26
 
 **PARTIAL overall; bounded stem prototype PASS.** [Report](docs/COHERENT_PERFORMANCE.md). Website changes remain local. The separately approved GPU attempt was cleaned up after startup failure; no training or publication.

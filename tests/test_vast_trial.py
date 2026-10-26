@@ -289,6 +289,13 @@ class PriceBounds(unittest.TestCase):
             automatic_cleanup=True,replacement_rental_authorized=False,
             code_sha256={path:trial.hashlib.sha256((trial.ROOT/path).read_bytes()).hexdigest() for path in trial.DJ_INTEGRATED_FILES})
         trial.dj_integrated_approval(approved)
+        with self.assertRaises(RuntimeError):trial.dj_integrated_approval(approved,reliability=True)
+        renewed={**approved,'campaign':'jamloom-dj-reliability-20261026',
+            'owner_statement':'Approve the capped $6 reliability qualification',
+            'code_sha256':{**approved['code_sha256'],'scripts/dj_renderer_readiness.py':trial.hashlib.sha256((trial.ROOT/'scripts/dj_renderer_readiness.py').read_bytes()).hexdigest()}}
+        trial.dj_integrated_approval(renewed,reliability=True)
+        with self.assertRaises(RuntimeError):trial.dj_integrated_approval({**renewed,'status':'PREPARED'},reliability=True)
+        with self.assertRaises(RuntimeError):trial.dj_integrated_approval({**renewed,'status':'CONSUMED'},reliability=True)
         for change in [dict(status='PREPARED'),dict(status='CONSUMED'),dict(owner_statement='old approval'),
                        dict(stop_on_failure=False),dict(automatic_cleanup=False),dict(replacement_rental_authorized=True),dict(code_sha256={})]:
             with self.assertRaises(RuntimeError): trial.dj_integrated_approval({**approved,**change})
@@ -330,6 +337,21 @@ class PriceBounds(unittest.TestCase):
         with patch.object(trial, "instances", return_value=[{"id": 42, "label": trial.LABEL}, {"id": 99, "label": "other"}]), patch.object(trial, "api") as api, patch.object(trial, "write_state"):
             trial.destroy({})
             api.assert_called_once_with("v0/instances/42", "DELETE")
+
+    def test_concurrent_cleanup_requires_confirmed_absence(self):
+        rental={"id":42,"label":trial.LABEL}
+        for code,remaining,accepted in [(404,[],True),(404,[rental],False),(500,[],False)]:
+            error=trial.urllib.error.HTTPError('https://provider.test',code,'failure',{},None)
+            with patch.object(trial,'instances',side_effect=[[rental],remaining]),patch.object(trial,'api',side_effect=error),patch.object(trial,'write_state') as write:
+                state={"id":42}
+                if accepted:
+                    trial.destroy(state)
+                    self.assertIn('destroy_requested_at',state)
+                    write.assert_called_once()
+                else:
+                    with self.assertRaises(trial.urllib.error.HTTPError):trial.destroy(state)
+                    write.assert_not_called()
+            error.close()
 
 
 if __name__ == "__main__":

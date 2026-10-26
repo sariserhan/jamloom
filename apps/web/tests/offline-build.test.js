@@ -13,7 +13,7 @@ with tempfile.TemporaryDirectory() as folder:
     root=Path(folder)
     names=[p.name for pattern in ('*.html','*.css','*.js') for p in Path('apps/web').glob(pattern)]
     names += ['manifest.webmanifest','icon.svg','icon-180.png','icon-192.png','icon-512.png']
-    names += ['engine/jamloom_web.mjs','engine/jamloom_web.wasm', 'engine/jamloom_live.wasm','licenses/VSCO-2-CE-LICENSE.txt','licenses/VCSL-LICENSE.txt','licenses/BLACK-AND-GREEN-GUITARS-CC0.txt','licenses/EMSCRIPTEN-LICENSE.txt']
+    names += ['engine/jamloom_web.mjs','engine/jamloom_web.wasm', 'engine/jamloom_live.wasm','licenses/VSCO-2-CE-LICENSE.txt','licenses/VCSL-LICENSE.txt','licenses/BLACK-AND-GREEN-GUITARS-CC0.txt','licenses/PREDICT-VOICE-QUALITY-MIT.txt','licenses/EMSCRIPTEN-LICENSE.txt']
     names += sorted(PRACTICE_ASSETS)
     for name in names:
         file=root/name;file.parent.mkdir(parents=True,exist_ok=True);file.write_text('public fixture')

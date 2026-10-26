@@ -1,0 +1,41 @@
+{
+  "status": "FAIL final harness assertion; PARTIAL overall",
+  "newGeneration": true,
+  "tracks": 20,
+  "distinctAudioHashes": 20,
+  "scopePassed": [
+    "20 fresh tracks",
+    "Both full R2 recordings",
+    "Lost completed-response process recovery",
+    "Third-listener capacity denial without debit",
+    "Per-customer Stop and exhausted-credit end assertions",
+    "R2 access isolation and cleanup",
+    "GPU deletion"
+  ],
+  "failure": "Non-idempotent started-minus-ended test counter reached -1 after playback ended; exact event cause not captured",
+  "replacementRental": false,
+  "publicActivation": false,
+  "humanListening": "NOT RUN",
+  "recordings": [
+    {
+      "visibility": "private",
+      "seconds": 400.836,
+      "crossAccountDenied": true,
+      "anonymousPrivateDenied": true,
+      "ownerR2Read": true
+    },
+    {
+      "visibility": "public",
+      "seconds": 416.188,
+      "crossAccountDenied": true,
+      "anonymousPrivateDenied": false,
+      "ownerR2Read": true
+    }
+  ],
+  "sourceEvidence": {
+    "tracks.json": "eb5636a18ec5abe19e4ae271e3e57140cd90641db2442709e287f9278105620f",
+    "failure.json": "504b14812cbc6a2c34f656f76ded94f650208da91fb82ccfb2d65aab2be2d2f3",
+    "private-mixed.webm": "1cc64866e629dcfb505befe890191b0e2c11c22533f54b63bae9e1d3a753bfae",
+    "public-mixed.webm": "f3cae78545c11e5dd600aa9b5b6cb9868efe5c92a864eee91ca5c4e65c6aa6a5"
+  }
+}

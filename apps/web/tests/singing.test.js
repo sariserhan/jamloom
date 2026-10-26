@@ -1,5 +1,14 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';
 import {detectPitch,isSingingPitch} from '../singing-pitch.js';import {SingingHold,frequencyFor} from '../singing-lesson.js';
+test('DC offset cannot promote subthreshold periodic noise; audible notes remain measurable',()=>{
+ const signal=(amplitude,offset)=>Float32Array.from({length:2048},(_,i)=>offset+amplitude*Math.sin(2*Math.PI*220*i/48000));
+ assert.equal(detectPitch(signal(.001,.05),48000),null);
+ assert.equal(detectPitch(signal(0,.05),48000),null);
+ for(const offset of [0,.05,-.05]){
+  const pitch=detectPitch(signal(.006,offset),48000);
+  assert(isSingingPitch(pitch));assert(Math.abs(pitch.frequency-220)<1);assert(pitch.rms<.005);
+ }
+});
 const rate=48000;
 const tone=(hz,amplitude=.2)=>Float32Array.from({length:4096},(_,i)=>amplitude*Math.sin(2*Math.PI*hz*i/rate));
 test('MIT detector measures the three lesson registers and rejects silence/noise/invalid PCM',()=>{

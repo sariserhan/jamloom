@@ -21,3 +21,22 @@ export function silenceSpeakers() {
   return {gain:gain.gain.value,peak:Math.max(...samples.map(Math.abs))};
  });
 }
+
+// Count node lifetimes, not events: repeated ended notifications must not hide live sources.
+export function countAudioSources() {
+ const Native=AudioContext,active=new Set(),finished=new WeakSet();
+ const counts=globalThis.betaSources={started:0,ended:0,active:0,duplicateEnds:0,unstartedEnds:0};
+ globalThis.AudioContext=class extends Native {
+  createBufferSource(){
+   const source=super.createBufferSource(),start=source.start.bind(source);
+   source.start=(...args)=>{const result=start(...args);active.add(source);counts.started++;counts.active=active.size;return result;};
+   source.addEventListener('ended',()=>{
+    if(finished.has(source)){counts.duplicateEnds++;return;}
+    finished.add(source);
+    if(active.delete(source))counts.ended++;else counts.unstartedEnds++;
+    counts.active=active.size;
+   });
+   return source;
+  }
+ };
+}

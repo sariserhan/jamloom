@@ -1,0 +1,18 @@
+{
+  "technical": "PASS",
+  "source_sha256": "b84989f843402a7cda0c037634cd0048d8cfb8712015dc642c3aec86cca5b768",
+  "model_sha256": "a004b2790d73ffeaa535db458a1a79b539dfdbafbccc31f275d07e632ebd7816",
+  "stems": {
+    "drums": "74d93015918d770060653b3aa98e088420a177f03d83d45abb9fbe9bf7514417",
+    "bass": "be504783d8de6cd55793be0454189da67f94b3fda18eba20c337b362123eeaab",
+    "other": "a49c7ae2ec03db60ee4b709cf1659b346c8d20e24ca4f939c6f6c154249328f4",
+    "vocals": "91906ca0a111239bef2cf298f17c359f43f37d5c77f830d29ac5905825aa8f13"
+  },
+  "sample_rate": 48000,
+  "frames": 2880000,
+  "device": "cpu",
+  "seconds": 9.401611417066306,
+  "reconstruction_rms": 0.002235021907836199,
+  "all_stems": true,
+  "separation_quality": "NOT RUN: estimated stems can contain bleed"
+}

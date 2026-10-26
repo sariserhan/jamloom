@@ -1,0 +1,35 @@
+{
+  "status": "PASS technical",
+  "newGeneration": false,
+  "humanListening": "NOT RUN",
+  "rows": [
+    {
+      "browser": "chromium",
+      "controls": true,
+      "playSeekStop": true,
+      "overflow": false,
+      "errors": [],
+      "render": {
+        "seconds": 211,
+        "peak": 0.6496789455413818,
+        "rms": 0.10002269049049371,
+        "maxInternalQuietSeconds": 0,
+        "renderAndExportSeconds": 3.2625999999046327,
+        "sha256": "df66ec9e8edaf22d868d4a3910d7826b4a83b2964f931e4a0046ca135439979a"
+      },
+      "live": {
+        "seconds": 210.217,
+        "vocalAt": 123.748
+      }
+    },
+    {
+      "browser": "webkit",
+      "controls": true,
+      "playSeekStop": true,
+      "overflow": false,
+      "errors": [],
+      "render": null,
+      "live": null
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "seconds": 192.863,
+  "peak": 0.617919921875,
+  "rms": 0.09204700273017637,
+  "maxInternalQuietSeconds": 0.1,
+  "thresholdRms": 0.001,
+  "windowSeconds": 0.02
+}

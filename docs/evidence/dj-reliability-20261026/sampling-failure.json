@@ -1,0 +1,35 @@
+{
+  "errors": [
+    "AssertionError [ERR_ASSERTION]: Source count bound: {\"visibility\":\"public\",\"heap\":19960292,\"activeSources\":-1}\n    at Timeout._onTimeout (file:///Users/serhansari/Documents/projects/jamloom/apps/site/tests/dj-warm-qualification.mjs:74:412)"
+  ],
+  "samples": [
+    {
+      "at": 1793040460879,
+      "visibility": "public",
+      "heap": 51318785,
+      "activeSources": 0,
+      "nodeRss": 145408000
+    },
+    {
+      "at": 1793040460880,
+      "visibility": "private",
+      "heap": 15898851,
+      "activeSources": 0,
+      "nodeRss": 145408000
+    },
+    {
+      "at": 1793040465882,
+      "visibility": "public",
+      "heap": 60477613,
+      "activeSources": 0,
+      "nodeRss": 145440768
+    },
+    {
+      "at": 1793040465882,
+      "visibility": "private",
+      "heap": 15019158,
+      "activeSources": 0,
+      "nodeRss": 145440768
+    }
+  ]
+}

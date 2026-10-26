@@ -11,6 +11,7 @@ import shutil
 import sys
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -135,7 +136,8 @@ def dj_bootstrap_command(deadline, requests=8, arranged=False, house_study=False
     # Background only the fully redirected renderer, not an AND-list that retains SSH pipes.
     return ('chmod 600 /workspace/renderer-token || exit 1\n'
             f'nohup bash /workspace/cloud_dj_warm.sh {deadline} {requests}{" --arranged" if arranged else " --house-study" if house_study else " --composition-study" if composition_study else " --guided-set" if guided_set else " --recovery-study" if recovery_study else " --planner-study" if planner_study else " --sung-study" if sung_study else " --model-study" if model_study else " --consistency-study" if consistency_study else " --flow-study" if flow_study else ""} > /workspace/boot.log 2>&1 < /dev/null &\n'
-            'printf "%s\\n" "$!"\n')
+            'printf "%s\\n" "$!" > /workspace/renderer.pid\n'
+            'cat /workspace/renderer.pid\n')
 
 
 def retry_credit(account, previous, stop=7):
@@ -211,7 +213,12 @@ def destroy(state):
         if found.get("label") != LABEL:
             raise RuntimeError("Refusing to delete an instance with a different label")
         state["id"] = found["id"]
-        api("v0/instances/" + str(found["id"]), "DELETE")
+        try:
+            api("v0/instances/" + str(found["id"]), "DELETE")
+        except urllib.error.HTTPError as error:
+            # Watchdog and normal shutdown may delete the same rental concurrently.
+            if error.code != 404 or any(i["id"] == found["id"] for i in instances()):
+                raise
     state["destroy_requested_at"] = time.time()
     write_state(state)
 
@@ -265,16 +272,17 @@ def dj_session_approval(approval, label, requests=8):
 
 DJ_INTEGRATED_FILES = ('scripts/vast_trial.py', 'scripts/cloud_dj_warm.sh', 'scripts/cloud_music_setup.sh', 'scripts/dj_track_worker.py', 'scripts/dj_warm_engine.py', 'scripts/dj_vocal.py', 'apps/site/tests/dj-warm-qualification.mjs', 'apps/site/tests/dj-qualification-process.mjs', 'apps/site/lib/dj-remote-worker.ts', 'apps/site/lib/ai-dj-player.ts', 'apps/site/lib/ai-dj-plan.ts')
 
-def dj_integrated_approval(approval):
-    dj_session_approval(approval, 'jamloom-dj-integrated-20261026', 24)
+def dj_integrated_approval(approval, reliability=False):
+    dj_session_approval(approval, 'jamloom-dj-reliability-20261026' if reliability else 'jamloom-dj-integrated-20261026', 24)
     if (approval.get('status') != 'AUTHORIZED' or
-            approval.get('owner_statement') != 'Approve the capped $6 integrated qualification' or
+            approval.get('owner_statement') != ('Approve the capped $6 reliability qualification' if reliability else 'Approve the capped $6 integrated qualification') or
             approval.get('stop_on_failure') is not True or
             approval.get('automatic_cleanup') is not True or
             approval.get('replacement_rental_authorized') is not False):
         raise RuntimeError('New integrated qualification approval required')
     hashes = approval.get('code_sha256', {})
-    if set(hashes) != set(DJ_INTEGRATED_FILES) or any(hashlib.sha256((ROOT/path).read_bytes()).hexdigest() != hashes[path] for path in DJ_INTEGRATED_FILES):
+    files = (*DJ_INTEGRATED_FILES, 'scripts/dj_renderer_readiness.py') if reliability else DJ_INTEGRATED_FILES
+    if set(hashes) != set(files) or any(hashlib.sha256((ROOT/path).read_bytes()).hexdigest() != hashes[path] for path in files):
         raise RuntimeError('Integrated qualification source changed')
 
 
@@ -298,7 +306,10 @@ def main():
     parser.add_argument('--dj-beta', action='store_true', help='Fresh 24-request, two-listener qualification; requires its own approval')
     parser.add_argument('--dj-hosted', action='store_true', help='Fresh hosted-operation qualification with its own permit')
     parser.add_argument('--dj-integrated', action='store_true', help='Fresh current-code two-listener qualification; new exact permit required')
+    parser.add_argument('--dj-reliability', action='store_true', help='New integrated attempt with retained startup diagnostics; separate approval required')
     args = parser.parse_args()
+    if args.dj_reliability and not args.dj_integrated:
+        parser.error('--dj-reliability requires --dj-integrated')
     if args.dj_integrated and not args.dj_hosted:
         parser.error('--dj-integrated requires --dj-hosted')
     if args.dj_hosted and not args.dj_beta:
@@ -342,6 +353,8 @@ def main():
         LABEL='jamloom-dj-qualification-20261025-hosted';WORK=ROOT/'build-dj-qualification-20261025-hosted';STATE=WORK/'trial-state.json'
     if args.dj_integrated:
         LABEL='jamloom-dj-integrated-20261026';WORK=ROOT/'build-dj-integrated-20261026';STATE=WORK/'trial-state.json'
+    if args.dj_reliability:
+        LABEL='jamloom-dj-reliability-20261026';WORK=ROOT/'build-dj-reliability-20261026';STATE=WORK/'trial-state.json'
     WORK.mkdir(exist_ok=True)
     if args.action == "status":
         account = api("v0/users/current")
@@ -356,8 +369,8 @@ def main():
     elif args.action == "rent":
         if args.club_benchmark or args.dj_qualification:
             if args.dj_integrated:
-                approval=json.loads((ROOT/'docs/evidence/dj-integrated-20261026/authorization.json').read_text())
-                dj_integrated_approval(approval)
+                approval=json.loads((ROOT/('docs/evidence/dj-reliability-20261026/authorization.json' if args.dj_reliability else 'docs/evidence/dj-integrated-20261026/authorization.json')).read_text())
+                dj_integrated_approval(approval, reliability=args.dj_reliability)
             elif args.dj_beta:
                 approval=json.loads((ROOT/('docs/evidence/ai-dj-hosted-20261025/authorization.json' if args.dj_hosted else 'docs/evidence/ai-dj-beta-20261025/authorization.json')).read_text())
             elif args.dj_finish:
@@ -428,7 +441,7 @@ def main():
         write_state(state)  # Prevent duplicate rental if the create response is lost.
         with (WORK / "watchdog.log").open("a") as log:
             subprocess.Popen(["caffeinate", "-i", sys.executable, str(Path(__file__).resolve()), "watch"] +
-                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) + (['--dj-beta'] if args.dj_beta else []) + (['--dj-hosted'] if args.dj_hosted else []) + (['--dj-integrated'] if args.dj_integrated else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
+                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) + (['--dj-beta'] if args.dj_beta else []) + (['--dj-hosted'] if args.dj_hosted else []) + (['--dj-integrated'] if args.dj_integrated else []) + (['--dj-reliability'] if args.dj_reliability else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
                              stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
         # The watchdog also reconciles by unique label if this response is lost.
         result = api("v0/asks/" + str(offer["id"]), "PUT", {

@@ -1,0 +1,43 @@
+{
+  "status": "PASS technical",
+  "newGeneration": false,
+  "scope": "Retained audio and synthetic provider receipts; real UI, session handlers, isolated billing and private R2",
+  "tracks": 20,
+  "recoveredResponse": true,
+  "peakBrowserHeapBytes": 77598090,
+  "peakNodeRssBytes": 395739136,
+  "maxActiveSources": 3,
+  "duplicateEnds": 0,
+  "unstartedEnds": 0,
+  "endReasons": [
+    "stop",
+    "credits"
+  ],
+  "privacy": {
+    "status": "PASS",
+    "recordings": [
+      {
+        "visibility": "public",
+        "seconds": 307.412,
+        "crossAccountDenied": true,
+        "anonymousPrivateDenied": false,
+        "ownerR2Read": true
+      },
+      {
+        "visibility": "private",
+        "seconds": 420.348,
+        "crossAccountDenied": true,
+        "anonymousPrivateDenied": true,
+        "ownerR2Read": true
+      }
+    ],
+    "temporaryR2ObjectsAbsent": true
+  },
+  "cleanup": {
+    "testOwnersPurged": 2,
+    "recordingObjectsPurged": true,
+    "isolatedDatabaseDropped": true
+  },
+  "sourceResult": "renders/dj-two-listener-rehearsal-20261026-4e28786f23b4477cae883296a843540a/result.json",
+  "humanListening": "NOT RUN"
+}

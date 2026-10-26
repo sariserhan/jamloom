@@ -1,0 +1,141 @@
+{
+  "tracks": [
+    {
+      "sha256": "6198d4c5af207b15706f16cd9c116db528c5396454260832755ba5c95e906869",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "b84989f843402a7cda0c037634cd0048d8cfb8712015dc642c3aec86cca5b768",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "2787b7a95df4dcfe77f8530040c7e7e02c0bc1fc982e6c97320e4b0ec84ac6b9",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "05bdc2b5e4505836732d8ac39110998b25f06b6eca57818377b640d4a49063fd",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "0ae5a0153a98d51a17202532bd55ff6004e6f0e7d230af943888c522b6b32d43",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "14b2b1f5e2109134da0de2ff65639cd9fd37e636ebb190ce5781eaa0788683e0",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "e74f65169ccac3617da64b40ac15f7572f118e4df03377d0f5c5d60efb4ea8ac",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "cc91339f49baaf0a053e18e561518b1b8acbe9c5bf588c5bc79741cd6d7afafc",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "b674ef0d79d3b6b8a576a19591b1963416bbdc6a85ae79cfd537bb1d2042d07f",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "6aad63b5efe89b2293f27a04ab30183d90a58517a9286ad07c8c2db7d1cdf89f",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "5531595c86b25c8878acfd0d9d27e5d3441ca361d42a29cbfb17ea4e6f0745f5",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "d46010d8694f15c77e192bb484192a9193d7526fd6c778ec4a38a6c09ee72abc",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "86613c42551ee6b6bea5bb93e8398aa2d9fef800ea6a3f4f4a34a67c397624bc",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "6ed983f2961ee56e5dd0464ca0bf1d8667a503f0d84202881c7f43caa057912d",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "2de37a19ee07b9c0aa98d5109dfe474a9bcf841f4fd4a4c473e9d1a80cc2220e",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "b6d78ae98da6430c0d3d1d6a678ce2b8ac243360d11c8e710043f983f29699c2",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "5c1c78ca20d6df9a4180794541aa3381640335c9f542c6d2269ee7c8a8e2afe5",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "4a8ecd268d9768e9e452145c6439de76ef5e5b5d041a54884c6b12c0ab83c72f",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "e4e720d0e3fc91fd68570035325247484b8ee4247f2871c5122c552758b568c9",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    },
+    {
+      "sha256": "97136fa6780e15016765f6e35ef7eec12d4cb810b74cbcd0f2a0e294d77ebc5d",
+      "seconds": 60.0,
+      "peak": 0.8912353515625,
+      "fullScaleSamples": 0
+    }
+  ],
+  "mixes": [
+    {
+      "visibility": "public",
+      "seconds": 416.16,
+      "peak": 0.5586917400360107,
+      "rms": 0.080449178814888,
+      "sourceSha256": "f3cae78545c11e5dd600aa9b5b6cb9868efe5c92a864eee91ca5c4e65c6aa6a5"
+    },
+    {
+      "visibility": "private",
+      "seconds": 400.8,
+      "peak": 0.5093812346458435,
+      "rms": 0.08341823518276215,
+      "sourceSha256": "1cc64866e629dcfb505befe890191b0e2c11c22533f54b63bae9e1d3a753bfae"
+    }
+  ],
+  "humanListening": "NOT RUN"
+}

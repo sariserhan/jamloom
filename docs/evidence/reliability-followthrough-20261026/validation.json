@@ -1,0 +1,23 @@
+{
+  "status": "PASS local checks; PARTIAL product acceptance",
+  "siteTests": 160,
+  "sharedAudioTests": 188,
+  "pythonControllerTests": 31,
+  "pythonReadinessTests": 5,
+  "pythonStemPreparationTests": 2,
+  "typecheck": "PASS",
+  "productionBuild": "PASS isolated .next-qualification; active port 3000 untouched",
+  "productionSmoke": "PASS Chromium and WebKit",
+  "studioBundleAudit": "PASS",
+  "physicalMicrophoneAccuracy": "UNRESOLVED",
+  "physicalMicrophoneLatency": "NOT RUN",
+  "paidQualification": "FAIL final test counter assertion; scoped fresh session evidence passed",
+  "correctedMeterRetainedRehearsal": "PASS; no additional GPU rental",
+  "websitePushed": false,
+  "websiteDeployed": false,
+  "popularSongs": "BLOCKED supplier permissions and assets",
+  "logs": {
+    "buildSha256": "ef1f97fa8b84c7de7a3653ef7a7ad7377592e498a454da6c2862c5e5ac8d2a70",
+    "siteTestsSha256": "c5258f2585d8f4fbdaa212b145eead6cdb395f82fce8569b28570c73c13f876f"
+  }
+}

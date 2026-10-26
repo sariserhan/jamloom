@@ -1,0 +1,30 @@
+{
+  "status": "PASS controls only",
+  "results": [
+    {
+      "browser": "chromium",
+      "mix": 0,
+      "duration": 416.16,
+      "manualPlaybackAndSeek": true
+    },
+    {
+      "browser": "chromium",
+      "mix": 1,
+      "duration": 400.8,
+      "manualPlaybackAndSeek": true
+    },
+    {
+      "browser": "webkit",
+      "mix": 0,
+      "duration": 416.184,
+      "manualPlaybackAndSeek": true
+    },
+    {
+      "browser": "webkit",
+      "mix": 1,
+      "duration": 400.824,
+      "manualPlaybackAndSeek": true
+    }
+  ],
+  "humanListening": "NOT RUN"
+}

@@ -1,15 +1,17 @@
 // Adapted from predict-voice-quality, MIT, Copyright (c) 2026 Akhil Vydyula.
 // Pinned 78e30f766efde6c8c66d9e5a47441b44312d216c; notice: licenses/PREDICT-VOICE-QUALITY-MIT.txt.
-// Changes: bounded PCM/rate validation; quiet input requires stronger periodicity confidence.
+// Changes: bounded PCM/rate validation; AC level gate; quiet input requires stronger periodicity confidence.
 const MIN_FREQUENCY = 80;
 const MAX_FREQUENCY = 1e3;
 const YIN_THRESHOLD = 0.15;
 function computeRms(samples) {
-  let sum = 0;
+  let sum = 0, mean = 0;
   for (let i = 0; i < samples.length; i++) {
     sum += samples[i] * samples[i];
+    mean += samples[i];
   }
-  return Math.sqrt(sum / samples.length);
+  // A microphone's DC offset must not lift inaudible periodic noise over the level gate.
+  return Math.sqrt(Math.max(0, sum / samples.length - (mean / samples.length) ** 2));
 }
 function detectPitch(samples, sampleRate) {
   if (!(samples instanceof Float32Array) || samples.length < 512 || samples.length > 8192 || !Number.isFinite(sampleRate) || sampleRate < 8e3 || sampleRate > 192e3) {

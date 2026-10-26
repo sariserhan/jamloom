@@ -15,6 +15,7 @@ setup_mode=--club-benchmark
 [[ $mode != --model-study && $mode != --consistency-study ]] || setup_mode=--model-study
 [[ $mode != --flow-study ]] || setup_mode=
 timeout "$((remaining < 1500 ? remaining : 1500))" bash /workspace/cloud_music_setup.sh ${setup_mode:+"$setup_mode"}
+printf 'worker-files\n' > /workspace/setup.stage
 cp /workspace/dj_track_worker.py /workspace/dj_warm_engine.py /workspace/dj_vocal.py /workspace/club_benchmark_cases.py /workspace/dj-styles.json /workspace/ace-step/
 if [[ $mode == --model-study || $mode == --consistency-study || $mode == --flow-study ]]; then
   cp /workspace/dj_model_study.py /workspace/dj-base-model.json /workspace/ace-step/
@@ -45,4 +46,5 @@ fi
 find checkpoints -type f -name '*.safetensors' -exec sha256sum '{}' + > /workspace/results/weights.sha256
 remaining=$((deadline - $(date +%s)))
 ((remaining > 90)) || exit 2
+printf 'model-loading\n' > /workspace/setup.stage
 timeout "$remaining" .venv/bin/python dj_warm_engine.py --token-file /workspace/renderer-token --expires-unix "$deadline" --max-requests "$requests" ${mode:+"$mode"}

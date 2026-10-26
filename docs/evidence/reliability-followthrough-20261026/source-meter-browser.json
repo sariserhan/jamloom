@@ -1,0 +1,18 @@
+{
+  "browser": "Chromium",
+  "scenario": "natural end followed by two stop calls",
+  "before": {
+    "started": 1,
+    "ended": 1,
+    "active": 0,
+    "duplicateEnds": 0,
+    "unstartedEnds": 0
+  },
+  "after": {
+    "started": 1,
+    "ended": 1,
+    "active": 0,
+    "duplicateEnds": 0,
+    "unstartedEnds": 0
+  }
+}

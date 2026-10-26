@@ -1,0 +1,18 @@
+{
+  "status": "PASS build smoke only",
+  "origin": "http://localhost:3008",
+  "results": [
+    {
+      "browser": "chromium",
+      "eightSongs": true,
+      "lessonLoaded": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "eightSongs": true,
+      "lessonLoaded": true,
+      "errors": []
+    }
+  ]
+}

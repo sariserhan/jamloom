@@ -1,12 +1,17 @@
 import {createMixer,setMixerGain} from './mixer.js';
 import {waveformPeaks} from './pro-deck-tools.js';
-import {scheduleStemPerformance,stemParts} from './stem-performance.js';
+import {scheduleStemPerformance,createStemSequence,stemParts} from './stem-performance.js';
 const $=id=>document.getElementById(id),targets={drums:'a',bass:'b',other:'rack',vocals:'c'};
 let context,active,mixer,buffers,plan,raf=0,token=0;const peaks=new Map();
+export function blockFor(plan,sequence){
+ const seconds=plan.block_seconds??30,at=sequence*seconds;
+ return {seconds,bpm:plan.bpm,contextId:plan.source_sha256,sequence,final:at+seconds>=plan.seconds-.001,
+  events:plan.events.filter(e=>e.at>=at&&e.at<at+seconds-.001).map(e=>({...e,at:e.at-at}))};
+}
 const time=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
-async function assets(ctx){
- const response=await fetch('plan.json');if(!response.ok)throw Error('Cannot load performance plan');
- const p=await response.json(),b={};
+async function assets(ctx,prepared){
+ let p=prepared;const b={};
+ if(!p){const response=await fetch('plan.json');if(!response.ok)throw Error('Cannot load performance plan');p=await response.json();}
  for(const [key,clip] of Object.entries(p.clips)){
   if(!/^(drums|bass|other|vocals)-(a|b|voice)\.wav$/.test(clip.file))throw Error('Invalid local clip');
   const r=await fetch(clip.file);if(!r.ok)throw Error('Missing stem clip');const bytes=await r.arrayBuffer();
@@ -17,7 +22,10 @@ async function assets(ctx){
 }
 function stop(){token++;cancelAnimationFrame(raf);active?.stop();active=null;$('start').disabled=false;$('stop').disabled=true;$('status').textContent='Stopped';for(const part of stemParts)document.querySelector('#'+part+' span').textContent='Stopped';if(context?.state==='running')void context.suspend();}
 function draw(){
- if(!active)return;const state=active.snapshot(),seconds=Math.min(plan.seconds,state.seconds);
+ if(!active)return;let state=active.snapshot();
+ try{while(state.buffered<2&&state.sequence*(plan.block_seconds??30)<plan.seconds-.001){active.enqueue(blockFor(plan,state.sequence),buffers);state=active.snapshot();}}
+ catch(error){stop();$('status').textContent=error.message;return;}
+ const seconds=Math.min(plan.seconds,state.seconds);
  $('clock').textContent=time(seconds)+' / '+time(plan.seconds);$('progress').value=seconds;
  $('status').textContent=(plan.scenes.findLast(s=>s.at<=seconds)?.title??'Ready')+' · Beat '+(1+Math.floor(seconds*plan.bpm/60)%4);
  for(const part of stemParts){
@@ -35,9 +43,9 @@ $('start').onclick=async()=>{
  try{
   if(!context){context=new AudioContext({latencyHint:'interactive'});mixer=createMixer(context);context.addEventListener('statechange',()=>{if(active&&context.state!=='running')stop();});}
   await context.resume();if(!buffers){const a=await assets(context);plan=a.plan;buffers=a.buffers;}
-  if(attempt!==token)return;
+  if(attempt!==token)return;$('progress').max=plan.seconds;
   for(const part of stemParts)setMixerGain(context,mixer,targets[part],Number($(part+'-level').value));
-  active=scheduleStemPerformance(context,mixer,plan,buffers,Math.ceil((context.currentTime+.15)*context.sampleRate));draw();
+  active=createStemSequence(context,mixer,Math.ceil((context.currentTime+.15)*context.sampleRate));draw();
  }catch(error){if(attempt===token){stop();$('status').textContent=error.message;}}
 };
 $('stop').onclick=stop;
@@ -45,9 +53,27 @@ for(const part of stemParts)$(part+'-level').oninput=()=>{if(context&&mixer)setM
 for(const audio of document.querySelectorAll('audio'))audio.addEventListener('play',()=>{stop();for(const other of document.querySelectorAll('audio'))if(other!==audio)other.pause();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();for(const audio of document.querySelectorAll('audio'))audio.pause();}});window.addEventListener('pagehide',stop);
 // The test renders this exact scheduler silently; never invoked on page load.
+async function offlineAssets(){
+ const response=await fetch('plan.json');if(!response.ok)throw Error('Cannot load performance plan');
+ const plan=await response.json();if(!Number.isFinite(plan.seconds)||plan.seconds<180||plan.seconds>300)throw Error('Invalid offline duration');
+ const ctx=new OfflineAudioContext(2,Math.ceil((plan.seconds+1)*48000),48000);
+ return {ctx,...await assets(ctx,plan)};
+}
 export async function renderStudy(){
- const ctx=new OfflineAudioContext(2,211*48000,48000),a=await assets(ctx),mix=createMixer(ctx);
+ const a=await offlineAssets(),ctx=a.ctx,mix=createMixer(ctx);
  for(const target of Object.values(targets))mix.gainParams[target].value=.7;
  scheduleStemPerformance(ctx,mix,a.plan,a.buffers,24000);
  return ctx.startRendering();
+}
+
+export async function renderStreamStudy(){
+ const a=await offlineAssets(),ctx=a.ctx,mix=createMixer(ctx);
+ for(const target of Object.values(targets))mix.gainParams[target].value=.7;
+ const sequence=createStemSequence(ctx,mix,24000);
+ sequence.enqueue(blockFor(a.plan,0),a.buffers);sequence.enqueue(blockFor(a.plan,1),a.buffers);
+ const arrivals=[];
+ for(let i=2;i<7;i++)arrivals.push(ctx.suspend((i-1)*(a.plan.block_seconds??30)+1).then(()=>{
+  sequence.enqueue(blockFor(a.plan,i),a.buffers);return ctx.resume();
+ }));
+ const audio=await ctx.startRendering();await Promise.all(arrivals);return audio;
 }

@@ -4,7 +4,7 @@ import {mkdir,writeFile,appendFile,readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {silenceSpeakers} from './silent-audio.mjs';
-const root=new URL('../../../',import.meta.url),folder=new URL('docs/evidence/coherent-performance-20261026/',root),review=new URL('renders/club-studies-20261024/stem-performance/review/',root);
+const root=new URL('../../../',import.meta.url),folder=new URL('docs/evidence/reliability-followthrough-20261026/',root),review=new URL('renders/club-studies-20261024/stem-performance/review/',root);
 await mkdir(folder,{recursive:true});const rows=[];
 for(const [name,type] of [['chromium',chromium],['webkit',webkit]]){
  const browser=await type.launch();try{

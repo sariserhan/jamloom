@@ -1,0 +1,14 @@
+{
+  "status": "PASS progressively delivered source mix",
+  "peak": 0.6179331541061401,
+  "seconds": 192.863,
+  "frames": 9257424,
+  "maximumDifference": 0,
+  "nonfinite": 0,
+  "blocks": 7,
+  "maximumBufferedBlocks": 2,
+  "lateBlocksDeliveredDuringRendering": 5,
+  "newGeneration": false,
+  "sha256": "ff455ae3adb71c4a7b2079a5584303bd18401adc9f733338cf203a7cbe79f5eb",
+  "freshSource": true
+}
