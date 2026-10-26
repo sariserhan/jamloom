@@ -1,5 +1,5 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';
-import {detectPitch} from '../singing-pitch.js';import {SingingHold,frequencyFor} from '../singing-lesson.js';
+import {detectPitch,isSingingPitch} from '../singing-pitch.js';import {SingingHold,frequencyFor} from '../singing-lesson.js';
 const rate=48000;
 const tone=(hz,amplitude=.2)=>Float32Array.from({length:4096},(_,i)=>amplitude*Math.sin(2*Math.PI*hz*i/rate));
 test('MIT detector measures the three lesson registers and rejects silence/noise/invalid PCM',()=>{
@@ -30,4 +30,12 @@ test('practice after completion starts a new independent measurement',()=>{
  for(let i=0;i<=101;i++)first.observe(i*960,pitch);assert(first.passed);
  const next=new SingingHold(57,rate,0);assert.equal(next.observe(960,pitch).passed,false);
  assert.throws(()=>new SingingHold(300,rate,0));assert.throws(()=>new SingingHold(57,0,0));
+});
+
+test('quiet periodic singing qualifies without accepting faint noise or changing octave targets',()=>{
+ const quiet=detectPitch(tone(220,.006),rate);assert(isSingingPitch(quiet));
+ assert(!isSingingPitch({...quiet,confidence:.94}));assert(!isSingingPitch({...quiet,rms:.0029}));
+ const hold=new SingingHold(57,rate,0);for(let i=0;i<=101;i++)hold.observe(i*960,quiet);assert(hold.passed);
+ for(const hz of [110,440]){const wrong=new SingingHold(57,rate,0);for(let i=0;i<=101;i++)wrong.observe(i*960,detectPitch(tone(hz,.006),rate));assert(!wrong.passed);}
+ let seed=321;for(const level of [.006,.02,.2]){const noise=Float32Array.from({length:2048},()=>{seed=(seed*1664525+1013904223)>>>0;return (seed/2**32-.5)*level;});assert(!isSingingPitch(detectPitch(noise,rate)));}
 });

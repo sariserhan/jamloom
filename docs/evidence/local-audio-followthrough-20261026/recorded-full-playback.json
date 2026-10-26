@@ -1,0 +1,1590 @@
+{
+  "status": "PASS full 240-second recorded playback and quiet synthetic singing",
+  "browser": "Chromium",
+  "sections": 5,
+  "phrase_scores": [
+    96,
+    96,
+    96,
+    96,
+    96
+  ],
+  "result": {
+    "passed": true,
+    "sections": 5,
+    "results": [
+      [
+        0,
+        {
+          "done": true,
+          "passed": true,
+          "score": 96,
+          "details": [
+            {
+              "note": null,
+              "coverage": 0.9899453124999991,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9448749999999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9600312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9675,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9450624999999996,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449374999999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9749999999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9750312499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600624999999996,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749687499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9441875000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9450000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9750000000000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9599687500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9450000000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.975046875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9449062499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.94496875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9749843750000003,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9750000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9749687500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9675156250000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9299374999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9448749999999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9674843750000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9449687499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450312499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9824999999999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9750312499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450312500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9749843750000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9750312499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9825468750000006,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449687500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9449375000000003,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749531250000003,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600000000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9750156250000003,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9899999999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450312499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750156250000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9749999999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9750312500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9299999999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9450312499999995,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9675312500000003,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": null,
+              "coverage": 0.9975078124999995,
+              "onTime": true,
+              "passed": true
+            }
+          ],
+          "cents": null,
+          "index": 49,
+          "message": "Rest \u00b7 get ready",
+          "held": 50
+        }
+      ],
+      [
+        1,
+        {
+          "done": true,
+          "passed": true,
+          "score": 96,
+          "details": [
+            {
+              "note": null,
+              "coverage": 0.9972812499999993,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9449687500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9599062499999996,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9675312500000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9450312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450625000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750312499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9749687500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.960125,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749531250000003,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9448437499999996,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9450000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.975015625,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9599687500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9449999999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750468750000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9449999999999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449687500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750000000000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9750312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9751875000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9675156250000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9299687499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9450624999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9674999999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9450312499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449687500000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9825,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9749687499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750312499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.97515625,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449999999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9825000000000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450312499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9449375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749843750000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9599687499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450312500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9750156250000006,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9900312499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450000000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.97496875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.974984375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9299375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9450937500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9675156249999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": null,
+              "coverage": 0.9975234374999995,
+              "onTime": true,
+              "passed": true
+            }
+          ],
+          "cents": null,
+          "index": 49,
+          "message": "Rest \u00b7 get ready",
+          "held": 50
+        }
+      ],
+      [
+        2,
+        {
+          "done": true,
+          "passed": true,
+          "score": 96,
+          "details": [
+            {
+              "note": null,
+              "coverage": 0.9974375000000006,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9449062499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9599374999999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9674843749999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.94496875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449999999999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750781250000005,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9749687499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600000000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749375000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.94496875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9450624999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9750000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9599375000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9450000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750156250000006,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9450000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450000000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9750624999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9748437500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9675156249999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9300312499999995,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.94496875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9675312500000006,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9450312499999995,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449687499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.982421875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9749062499999996,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9448749999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750156249999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9749999999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9825781249999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9449375000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749843750000003,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600624999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9436562500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9749999999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9900312500000003,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449687500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750781250000005,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9750312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600624999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749375000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9299062499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9432187499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9674531249999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": null,
+              "coverage": 0.9975234375,
+              "onTime": true,
+              "passed": true
+            }
+          ],
+          "cents": null,
+          "index": 49,
+          "message": "Rest \u00b7 get ready",
+          "held": 50
+        }
+      ],
+      [
+        3,
+        {
+          "done": true,
+          "passed": true,
+          "score": 96,
+          "details": [
+            {
+              "note": null,
+              "coverage": 0.9974609374999994,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9447812500000005,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.960125,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9674687499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9450312500000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449999999999995,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750937500000005,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9746249999999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9599687499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749531249999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449687499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9449999999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749999999999994,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9599375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9449687499999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750156249999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9450000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9443125000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750156250000007,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9749687499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750000000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9672500000000003,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.92996875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9450000000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9674843750000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9450000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450000000000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9824531250000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9750312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.94496875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9749999999999995,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9750000000000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.94496875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9826406249999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449999999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9449375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.974953125,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600312499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9422499999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9750156250000003,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.990125,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450624999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750624999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.97565625,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600000000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749687500000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9297499999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9449999999999995,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9665312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": null,
+              "coverage": 0.9975312499999998,
+              "onTime": true,
+              "passed": true
+            }
+          ],
+          "cents": null,
+          "index": 49,
+          "message": "Rest \u00b7 get ready",
+          "held": 50
+        }
+      ],
+      [
+        4,
+        {
+          "done": true,
+          "passed": true,
+          "score": 96,
+          "details": [
+            {
+              "note": null,
+              "coverage": 0.9974687499999996,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.94321875,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9605625000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9667812499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9463124999999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.94215625,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9738749999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9750312500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9602812500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.97490625,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.94384375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9449375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9760625000000004,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9613437500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9420000000000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750781250000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9449375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449687500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9749531250000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9750000000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750937500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9681562500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9300312500000002,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9458124999999997,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9676406250000006,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9450624999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449374999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9827812499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9749999999999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.94628125,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750468749999994,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.97490625,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450000000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.9825624999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.945375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9448124999999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600312500000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9450312499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.975015625,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 66,
+              "coverage": 0.98903125,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9449375,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9750312499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 62,
+              "coverage": 0.9560625,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 61,
+              "coverage": 0.9600312499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9749375000000001,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 64,
+              "coverage": 0.9299687499999998,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 59,
+              "coverage": 0.9450312499999999,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": 57,
+              "coverage": 0.9678125000000006,
+              "onTime": true,
+              "passed": true
+            },
+            {
+              "note": null,
+              "coverage": 0.9898203124999991,
+              "onTime": true,
+              "passed": true
+            }
+          ],
+          "cents": null,
+          "index": 49,
+          "message": "Rest \u00b7 get ready",
+          "held": 50
+        }
+      ]
+    ]
+  },
+  "qualification_sequence": "Full playback and grading passed after end-event correction; subsequent seek check failed on the basic HTTP server. Final range-capable server controls separately pass in both browsers. Full four-minute playback was not repeated after server-only change.",
+  "browser_heap_metrics": "NOT RETAINED in this run; physical phone app metrics reported separately"
+}

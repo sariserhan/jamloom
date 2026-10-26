@@ -1,3 +1,9 @@
+## Local audio follow-through — 2026-10-26
+
+[Work and evidence](LOCAL_AUDIO_FOLLOWTHROUGH.md). Quiet-input detection now requires stronger confidence rather than discarding every quiet voice. Existing-course Chromium/WebKit checks and physical iPhone playback/interruption checks pass. Jamloom 0.10.1 build 23 is installed and launched. The four-minute original-backing rehearsal is at http://127.0.0.1:8767/; it is separate from the eight-song curriculum and the six requested licensed songs.
+
+The twelve-track delayed DJ replay completed, but the audio scan preserves a source-level quiet passage and four handoff energy flags for further review. No fresh generation or public activation is claimed. Cleanup reclaimed about 678 MiB from unused caches; models, recordings and release/test evidence remain. All changes are local; Tency's response is still pending.
+
 ## Popular-song karaoke request — 2026-10-26
 
 All six requested songs have matching Tency Music catalogue entries, including Lewis Capaldi’s Someone You Loved. [Exact versions and implementation requirements](SINGING_POPULAR_SONGS.md); [submitted supplier enquiry](SINGING_LICENSING_ENQUIRY.md). These are candidate licensed covers, not acquired audio or playable Jamloom lessons. The eight original songs remain available locally. The approved enquiry was submitted to Tency on 2026-10-26, with support@jamloom.com as the reply address. The form confirmed submission and stated a reply within 48 hours; a human response is still pending. No license purchased.

@@ -63,3 +63,7 @@ The owner requested these songs for karaoke-style lessons: instrumental backing 
 Keep existing original songs and features available while this catalogue is prepared.
 
 The six requested recordings now have verified supplier references and an integration review: [popular-song preparation](SINGING_POPULAR_SONGS.md). This does not make them playable; the owner-approved supplier enquiry was submitted on 2026-10-26 with confirmation captured. Provider terms and authorized assets remain pending.
+
+## Local follow-through — 2026-10-26
+
+[Full report](LOCAL_AUDIO_FOLLOWTHROUGH.md): guarded quiet-input handling raises matched reference-voiced frames to 86.76% on the same evaluated corpus, with false voicing rising to 4.84%; it is not an independent holdout. Existing course browser checks pass. Four-minute recorded-backing preparation and final seek/pause/cleanup controls pass using original fixtures, separate from the eight-song curriculum. Physical iPhone repeated playback and interruption checks pass; app-process metrics are recorded separately from WebKit and physical microphone latency. Signed Jamloom 0.10.1 build 23 is installed and launched. Supplier rights/assets and publication remain pending.

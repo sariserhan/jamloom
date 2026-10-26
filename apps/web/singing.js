@@ -1,5 +1,5 @@
 import {createRack,noteName} from './instrument-rack.js';
-import {detectPitch} from './singing-pitch.js';
+import {detectPitch,isSingingPitch} from './singing-pitch.js';
 import {SingingHold,SingingPhrase} from './singing-lesson.js';
 import {singingLessons,singingSongs,stages,lessonById,phraseFor,readProgress,saveAttempt,weakestSection} from './singing-course.js';
 import {drawSingingChart} from './singing-chart.js';
@@ -61,7 +61,7 @@ async function start(demoOnly=false){
     if(at>=listenAt&&!run.listening){run.listening=true;run.stream.getTracks().forEach(t=>t.enabled=true);$('mic-state').textContent='Microphone listening';$('mic-state').classList.add('live');phase('sing');}
     if(at-data.samples.length/data.rate<listenAt)return;
     const pitch=detectPitch(data.samples,data.rate),result=grader.observe(centerFrame,pitch);
-    if(lesson.song){run.trace.push({at:centerAt-listenAt,note:pitch&&pitch.confidence>=.9?69+12*Math.log2(pitch.frequency/440):null,good:result.cents!==null&&Math.abs(result.cents)<=50});if(run.trace.length>1200)run.trace.splice(0,600);}$('feedback').textContent=result.message;$('hold-progress').value=result.held;$('hold-label').textContent=lesson.hold?result.held.toFixed(1)+` / ${lesson.hold} seconds`:result.held+` / ${phrase.length} notes & rests`;
+    if(lesson.song){run.trace.push({at:centerAt-listenAt,note:isSingingPitch(pitch)?69+12*Math.log2(pitch.frequency/440):null,good:result.cents!==null&&Math.abs(result.cents)<=50});if(run.trace.length>1200)run.trace.splice(0,600);}$('feedback').textContent=result.message;$('hold-progress').value=result.held;$('hold-label').textContent=lesson.hold?result.held.toFixed(1)+` / ${lesson.hold} seconds`:result.held+` / ${phrase.length} notes & rests`;
     $('needle').hidden=result.cents===null;if(result.cents!==null){$('needle').style.left=(50+Math.max(-200,Math.min(200,result.cents))/4)+'%';$('measured').textContent=Math.round(pitch.frequency)+' Hz · '+(result.cents>0?'+':'')+Math.round(result.cents)+' cents';}else $('measured').textContent='Waiting for a clear note';
     if(lesson.hold?result.passed||centerAt>=endAt:result.done)finish(result);
    }finally{if(active===run)run.capture.port.postMessage('ack');}};

@@ -1,0 +1,107 @@
+JAMLOOM · LOCAL REHEARSAL
+
+City Lights
+
+Four minutes of original backing. This playback study repeats the same arrangement five times.
+
+Sing along
+Stop
+Retry this passage
+Practice passage
+1
+2
+3
+4
+5
+
+Microphone off
+
+♪ Instrumental
+
+Rest · get ready
+
+Full lyrics · current passage
+
+Wake
+with
+me
+
+Find
+the
+morning
+
+Take
+one
+breath
+
+Let
+it
+go
+
+Feet
+on
+pavement
+
+Sky
+turns
+gold
+
+Hear
+our
+rhythm
+
+Let
+it
+grow
+
+City
+lights
+shine
+
+We
+belong
+here
+
+Every
+small
+step
+
+Brings
+us
+near
+
+Lift
+your
+voice
+
+Into
+the
+night
+
+Stay
+with
+me
+
+We
+are
+light
+
+Use headphones. Singing stays on this device; no recording or upload. Seeking or pausing makes this a practice attempt, so it cannot earn full-song completion.
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Full rehearsal matched/. Input:
+
+''
+
+    at file:///Users/serhansari/Documents/projects/jamloom/apps/site/tests/singing-recording-browser.mjs:28:106 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '',
+  expected: /Full rehearsal matched/,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v22.23.1

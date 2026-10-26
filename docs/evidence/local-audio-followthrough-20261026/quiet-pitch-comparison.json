@@ -1,0 +1,1816 @@
+{
+  "dataset": "vocadito v3; 40 recordings, 29 singers; evaluation only",
+  "detectorSha256": "a47357dc11cd1746b7906e3d0d16e309c8febc8924ef6d12071d8f9be61b5b6f",
+  "windowSamples": 2048,
+  "rate": 44100,
+  "hop": 441,
+  "limitations": [
+    "Previously inspected corpus, not an independent holdout for this change",
+    "More quiet notes detected at the cost of extra false voicing",
+    "Controlled noise checks do not replace room and microphone acceptance",
+    "No model training or corpus redistribution"
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 3317,
+          "truth": 2118,
+          "predicted": 1766,
+          "hit": 1764,
+          "correct": 1762,
+          "false": 2,
+          "quietMiss": 217,
+          "confidenceMiss": 137,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 3317,
+          "truth": 2118,
+          "predicted": 1949,
+          "hit": 1942,
+          "correct": 1940,
+          "false": 7,
+          "quietMiss": 0,
+          "confidenceMiss": 176,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 3317,
+          "truth": 2118,
+          "predicted": 1910,
+          "hit": 1906,
+          "correct": 1904,
+          "false": 4,
+          "quietMiss": 0,
+          "confidenceMiss": 212,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 3517,
+          "truth": 2653,
+          "predicted": 2366,
+          "hit": 2363,
+          "correct": 2227,
+          "false": 3,
+          "quietMiss": 12,
+          "confidenceMiss": 278,
+          "octave": 135
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 3517,
+          "truth": 2653,
+          "predicted": 2376,
+          "hit": 2373,
+          "correct": 2237,
+          "false": 3,
+          "quietMiss": 0,
+          "confidenceMiss": 280,
+          "octave": 135
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 3517,
+          "truth": 2653,
+          "predicted": 2372,
+          "hit": 2369,
+          "correct": 2233,
+          "false": 3,
+          "quietMiss": 0,
+          "confidenceMiss": 284,
+          "octave": 135
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2169,
+          "truth": 1279,
+          "predicted": 977,
+          "hit": 977,
+          "correct": 976,
+          "false": 0,
+          "quietMiss": 230,
+          "confidenceMiss": 72,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2169,
+          "truth": 1279,
+          "predicted": 1177,
+          "hit": 1168,
+          "correct": 1165,
+          "false": 9,
+          "quietMiss": 0,
+          "confidenceMiss": 111,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2169,
+          "truth": 1279,
+          "predicted": 1137,
+          "hit": 1133,
+          "correct": 1132,
+          "false": 4,
+          "quietMiss": 0,
+          "confidenceMiss": 146,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1841,
+          "truth": 1434,
+          "predicted": 1108,
+          "hit": 1106,
+          "correct": 1103,
+          "false": 2,
+          "quietMiss": 0,
+          "confidenceMiss": 328,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1841,
+          "truth": 1434,
+          "predicted": 1108,
+          "hit": 1106,
+          "correct": 1103,
+          "false": 2,
+          "quietMiss": 0,
+          "confidenceMiss": 328,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1841,
+          "truth": 1434,
+          "predicted": 1108,
+          "hit": 1106,
+          "correct": 1103,
+          "false": 2,
+          "quietMiss": 0,
+          "confidenceMiss": 328,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2319,
+          "truth": 1680,
+          "predicted": 1579,
+          "hit": 1532,
+          "correct": 1525,
+          "false": 47,
+          "quietMiss": 4,
+          "confidenceMiss": 144,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2319,
+          "truth": 1680,
+          "predicted": 1579,
+          "hit": 1532,
+          "correct": 1525,
+          "false": 47,
+          "quietMiss": 0,
+          "confidenceMiss": 148,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2319,
+          "truth": 1680,
+          "predicted": 1579,
+          "hit": 1532,
+          "correct": 1525,
+          "false": 47,
+          "quietMiss": 0,
+          "confidenceMiss": 148,
+          "octave": 1
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2379,
+          "truth": 1637,
+          "predicted": 1473,
+          "hit": 1462,
+          "correct": 1460,
+          "false": 11,
+          "quietMiss": 0,
+          "confidenceMiss": 175,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2379,
+          "truth": 1637,
+          "predicted": 1473,
+          "hit": 1462,
+          "correct": 1460,
+          "false": 11,
+          "quietMiss": 0,
+          "confidenceMiss": 175,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2379,
+          "truth": 1637,
+          "predicted": 1473,
+          "hit": 1462,
+          "correct": 1460,
+          "false": 11,
+          "quietMiss": 0,
+          "confidenceMiss": 175,
+          "octave": 1
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1943,
+          "truth": 1155,
+          "predicted": 1131,
+          "hit": 1094,
+          "correct": 1090,
+          "false": 37,
+          "quietMiss": 26,
+          "confidenceMiss": 35,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1943,
+          "truth": 1155,
+          "predicted": 1166,
+          "hit": 1111,
+          "correct": 1106,
+          "false": 55,
+          "quietMiss": 0,
+          "confidenceMiss": 44,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1943,
+          "truth": 1155,
+          "predicted": 1150,
+          "hit": 1106,
+          "correct": 1102,
+          "false": 44,
+          "quietMiss": 0,
+          "confidenceMiss": 49,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1700,
+          "truth": 897,
+          "predicted": 685,
+          "hit": 685,
+          "correct": 685,
+          "false": 0,
+          "quietMiss": 142,
+          "confidenceMiss": 70,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1700,
+          "truth": 897,
+          "predicted": 803,
+          "hit": 802,
+          "correct": 801,
+          "false": 1,
+          "quietMiss": 0,
+          "confidenceMiss": 95,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1700,
+          "truth": 897,
+          "predicted": 777,
+          "hit": 777,
+          "correct": 777,
+          "false": 0,
+          "quietMiss": 0,
+          "confidenceMiss": 120,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2033,
+          "truth": 1204,
+          "predicted": 856,
+          "hit": 843,
+          "correct": 835,
+          "false": 13,
+          "quietMiss": 311,
+          "confidenceMiss": 50,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2033,
+          "truth": 1204,
+          "predicted": 1179,
+          "hit": 1126,
+          "correct": 1113,
+          "false": 53,
+          "quietMiss": 0,
+          "confidenceMiss": 78,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2033,
+          "truth": 1204,
+          "predicted": 1118,
+          "hit": 1095,
+          "correct": 1085,
+          "false": 23,
+          "quietMiss": 0,
+          "confidenceMiss": 109,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 906,
+          "truth": 688,
+          "predicted": 575,
+          "hit": 547,
+          "correct": 546,
+          "false": 28,
+          "quietMiss": 0,
+          "confidenceMiss": 141,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 906,
+          "truth": 688,
+          "predicted": 575,
+          "hit": 547,
+          "correct": 546,
+          "false": 28,
+          "quietMiss": 0,
+          "confidenceMiss": 141,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 906,
+          "truth": 688,
+          "predicted": 575,
+          "hit": 547,
+          "correct": 546,
+          "false": 28,
+          "quietMiss": 0,
+          "confidenceMiss": 141,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1294,
+          "truth": 993,
+          "predicted": 926,
+          "hit": 913,
+          "correct": 913,
+          "false": 13,
+          "quietMiss": 12,
+          "confidenceMiss": 68,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1294,
+          "truth": 993,
+          "predicted": 944,
+          "hit": 923,
+          "correct": 922,
+          "false": 21,
+          "quietMiss": 0,
+          "confidenceMiss": 70,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1294,
+          "truth": 993,
+          "predicted": 932,
+          "hit": 917,
+          "correct": 917,
+          "false": 15,
+          "quietMiss": 0,
+          "confidenceMiss": 76,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1511,
+          "truth": 1130,
+          "predicted": 1146,
+          "hit": 1115,
+          "correct": 1114,
+          "false": 31,
+          "quietMiss": 1,
+          "confidenceMiss": 14,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1511,
+          "truth": 1130,
+          "predicted": 1163,
+          "hit": 1116,
+          "correct": 1115,
+          "false": 47,
+          "quietMiss": 0,
+          "confidenceMiss": 14,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1511,
+          "truth": 1130,
+          "predicted": 1153,
+          "hit": 1116,
+          "correct": 1115,
+          "false": 37,
+          "quietMiss": 0,
+          "confidenceMiss": 14,
+          "octave": 1
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2232,
+          "truth": 1467,
+          "predicted": 1197,
+          "hit": 1167,
+          "correct": 1166,
+          "false": 30,
+          "quietMiss": 0,
+          "confidenceMiss": 300,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2232,
+          "truth": 1467,
+          "predicted": 1197,
+          "hit": 1167,
+          "correct": 1166,
+          "false": 30,
+          "quietMiss": 0,
+          "confidenceMiss": 300,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2232,
+          "truth": 1467,
+          "predicted": 1197,
+          "hit": 1167,
+          "correct": 1166,
+          "false": 30,
+          "quietMiss": 0,
+          "confidenceMiss": 300,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1216,
+          "truth": 830,
+          "predicted": 793,
+          "hit": 762,
+          "correct": 760,
+          "false": 31,
+          "quietMiss": 21,
+          "confidenceMiss": 47,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1216,
+          "truth": 830,
+          "predicted": 832,
+          "hit": 777,
+          "correct": 774,
+          "false": 55,
+          "quietMiss": 0,
+          "confidenceMiss": 53,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1216,
+          "truth": 830,
+          "predicted": 818,
+          "hit": 772,
+          "correct": 770,
+          "false": 46,
+          "quietMiss": 0,
+          "confidenceMiss": 58,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2024,
+          "truth": 1340,
+          "predicted": 989,
+          "hit": 976,
+          "correct": 961,
+          "false": 13,
+          "quietMiss": 240,
+          "confidenceMiss": 124,
+          "octave": 14
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2024,
+          "truth": 1340,
+          "predicted": 1271,
+          "hit": 1197,
+          "correct": 1180,
+          "false": 74,
+          "quietMiss": 0,
+          "confidenceMiss": 143,
+          "octave": 14
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2024,
+          "truth": 1340,
+          "predicted": 1224,
+          "hit": 1160,
+          "correct": 1145,
+          "false": 64,
+          "quietMiss": 0,
+          "confidenceMiss": 180,
+          "octave": 14
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1724,
+          "truth": 1088,
+          "predicted": 1019,
+          "hit": 998,
+          "correct": 994,
+          "false": 21,
+          "quietMiss": 47,
+          "confidenceMiss": 43,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1724,
+          "truth": 1088,
+          "predicted": 1087,
+          "hit": 1040,
+          "correct": 1033,
+          "false": 47,
+          "quietMiss": 0,
+          "confidenceMiss": 48,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1724,
+          "truth": 1088,
+          "predicted": 1061,
+          "hit": 1028,
+          "correct": 1024,
+          "false": 33,
+          "quietMiss": 0,
+          "confidenceMiss": 60,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2353,
+          "truth": 1917,
+          "predicted": 1401,
+          "hit": 1401,
+          "correct": 1394,
+          "false": 0,
+          "quietMiss": 328,
+          "confidenceMiss": 188,
+          "octave": 4
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2353,
+          "truth": 1917,
+          "predicted": 1721,
+          "hit": 1717,
+          "correct": 1710,
+          "false": 4,
+          "quietMiss": 0,
+          "confidenceMiss": 200,
+          "octave": 4
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2353,
+          "truth": 1917,
+          "predicted": 1676,
+          "hit": 1672,
+          "correct": 1665,
+          "false": 4,
+          "quietMiss": 0,
+          "confidenceMiss": 245,
+          "octave": 4
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2910,
+          "truth": 1299,
+          "predicted": 1257,
+          "hit": 1214,
+          "correct": 1207,
+          "false": 43,
+          "quietMiss": 0,
+          "confidenceMiss": 85,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2910,
+          "truth": 1299,
+          "predicted": 1257,
+          "hit": 1214,
+          "correct": 1207,
+          "false": 43,
+          "quietMiss": 0,
+          "confidenceMiss": 85,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2910,
+          "truth": 1299,
+          "predicted": 1257,
+          "hit": 1214,
+          "correct": 1207,
+          "false": 43,
+          "quietMiss": 0,
+          "confidenceMiss": 85,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 3045,
+          "truth": 1951,
+          "predicted": 1703,
+          "hit": 1650,
+          "correct": 1643,
+          "false": 53,
+          "quietMiss": 3,
+          "confidenceMiss": 298,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 3045,
+          "truth": 1951,
+          "predicted": 1707,
+          "hit": 1652,
+          "correct": 1645,
+          "false": 55,
+          "quietMiss": 0,
+          "confidenceMiss": 299,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 3045,
+          "truth": 1951,
+          "predicted": 1706,
+          "hit": 1652,
+          "correct": 1645,
+          "false": 54,
+          "quietMiss": 0,
+          "confidenceMiss": 299,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 867,
+          "truth": 545,
+          "predicted": 501,
+          "hit": 494,
+          "correct": 486,
+          "false": 7,
+          "quietMiss": 0,
+          "confidenceMiss": 51,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 867,
+          "truth": 545,
+          "predicted": 504,
+          "hit": 494,
+          "correct": 486,
+          "false": 10,
+          "quietMiss": 0,
+          "confidenceMiss": 51,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 867,
+          "truth": 545,
+          "predicted": 501,
+          "hit": 494,
+          "correct": 486,
+          "false": 7,
+          "quietMiss": 0,
+          "confidenceMiss": 51,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2196,
+          "truth": 1724,
+          "predicted": 1308,
+          "hit": 1273,
+          "correct": 1172,
+          "false": 35,
+          "quietMiss": 2,
+          "confidenceMiss": 449,
+          "octave": 35
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2196,
+          "truth": 1724,
+          "predicted": 1312,
+          "hit": 1273,
+          "correct": 1172,
+          "false": 39,
+          "quietMiss": 0,
+          "confidenceMiss": 451,
+          "octave": 35
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2196,
+          "truth": 1724,
+          "predicted": 1308,
+          "hit": 1273,
+          "correct": 1172,
+          "false": 35,
+          "quietMiss": 0,
+          "confidenceMiss": 451,
+          "octave": 35
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1829,
+          "truth": 1042,
+          "predicted": 950,
+          "hit": 935,
+          "correct": 931,
+          "false": 15,
+          "quietMiss": 9,
+          "confidenceMiss": 98,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1829,
+          "truth": 1042,
+          "predicted": 957,
+          "hit": 942,
+          "correct": 938,
+          "false": 15,
+          "quietMiss": 0,
+          "confidenceMiss": 100,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1829,
+          "truth": 1042,
+          "predicted": 952,
+          "hit": 937,
+          "correct": 933,
+          "false": 15,
+          "quietMiss": 0,
+          "confidenceMiss": 105,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1800,
+          "truth": 1141,
+          "predicted": 770,
+          "hit": 768,
+          "correct": 763,
+          "false": 2,
+          "quietMiss": 76,
+          "confidenceMiss": 297,
+          "octave": 5
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1800,
+          "truth": 1141,
+          "predicted": 804,
+          "hit": 800,
+          "correct": 795,
+          "false": 4,
+          "quietMiss": 0,
+          "confidenceMiss": 341,
+          "octave": 5
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1800,
+          "truth": 1141,
+          "predicted": 783,
+          "hit": 781,
+          "correct": 776,
+          "false": 2,
+          "quietMiss": 0,
+          "confidenceMiss": 360,
+          "octave": 5
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1472,
+          "truth": 957,
+          "predicted": 954,
+          "hit": 882,
+          "correct": 871,
+          "false": 72,
+          "quietMiss": 9,
+          "confidenceMiss": 66,
+          "octave": 4
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1472,
+          "truth": 957,
+          "predicted": 994,
+          "hit": 889,
+          "correct": 875,
+          "false": 105,
+          "quietMiss": 0,
+          "confidenceMiss": 68,
+          "octave": 7
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1472,
+          "truth": 957,
+          "predicted": 966,
+          "hit": 886,
+          "correct": 873,
+          "false": 80,
+          "quietMiss": 0,
+          "confidenceMiss": 71,
+          "octave": 6
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1462,
+          "truth": 991,
+          "predicted": 1008,
+          "hit": 940,
+          "correct": 936,
+          "false": 68,
+          "quietMiss": 6,
+          "confidenceMiss": 45,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1462,
+          "truth": 991,
+          "predicted": 1014,
+          "hit": 943,
+          "correct": 939,
+          "false": 71,
+          "quietMiss": 0,
+          "confidenceMiss": 48,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1462,
+          "truth": 991,
+          "predicted": 1009,
+          "hit": 940,
+          "correct": 936,
+          "false": 69,
+          "quietMiss": 0,
+          "confidenceMiss": 51,
+          "octave": 1
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1282,
+          "truth": 849,
+          "predicted": 714,
+          "hit": 673,
+          "correct": 623,
+          "false": 41,
+          "quietMiss": 3,
+          "confidenceMiss": 173,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1282,
+          "truth": 849,
+          "predicted": 716,
+          "hit": 673,
+          "correct": 623,
+          "false": 43,
+          "quietMiss": 0,
+          "confidenceMiss": 176,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1282,
+          "truth": 849,
+          "predicted": 714,
+          "hit": 673,
+          "correct": 623,
+          "false": 41,
+          "quietMiss": 0,
+          "confidenceMiss": 176,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1398,
+          "truth": 848,
+          "predicted": 820,
+          "hit": 801,
+          "correct": 788,
+          "false": 19,
+          "quietMiss": 8,
+          "confidenceMiss": 39,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1398,
+          "truth": 848,
+          "predicted": 826,
+          "hit": 803,
+          "correct": 790,
+          "false": 23,
+          "quietMiss": 0,
+          "confidenceMiss": 45,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1398,
+          "truth": 848,
+          "predicted": 820,
+          "hit": 801,
+          "correct": 788,
+          "false": 19,
+          "quietMiss": 0,
+          "confidenceMiss": 47,
+          "octave": 1
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1286,
+          "truth": 879,
+          "predicted": 770,
+          "hit": 760,
+          "correct": 753,
+          "false": 10,
+          "quietMiss": 24,
+          "confidenceMiss": 95,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1286,
+          "truth": 879,
+          "predicted": 794,
+          "hit": 782,
+          "correct": 774,
+          "false": 12,
+          "quietMiss": 0,
+          "confidenceMiss": 97,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1286,
+          "truth": 879,
+          "predicted": 780,
+          "hit": 770,
+          "correct": 763,
+          "false": 10,
+          "quietMiss": 0,
+          "confidenceMiss": 109,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1485,
+          "truth": 1053,
+          "predicted": 1052,
+          "hit": 1015,
+          "correct": 1015,
+          "false": 37,
+          "quietMiss": 0,
+          "confidenceMiss": 38,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1485,
+          "truth": 1053,
+          "predicted": 1094,
+          "hit": 1015,
+          "correct": 1015,
+          "false": 79,
+          "quietMiss": 0,
+          "confidenceMiss": 38,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1485,
+          "truth": 1053,
+          "predicted": 1075,
+          "hit": 1015,
+          "correct": 1015,
+          "false": 60,
+          "quietMiss": 0,
+          "confidenceMiss": 38,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1298,
+          "truth": 708,
+          "predicted": 583,
+          "hit": 523,
+          "correct": 496,
+          "false": 60,
+          "quietMiss": 0,
+          "confidenceMiss": 185,
+          "octave": 26
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1298,
+          "truth": 708,
+          "predicted": 589,
+          "hit": 523,
+          "correct": 496,
+          "false": 66,
+          "quietMiss": 0,
+          "confidenceMiss": 185,
+          "octave": 26
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1298,
+          "truth": 708,
+          "predicted": 584,
+          "hit": 523,
+          "correct": 496,
+          "false": 61,
+          "quietMiss": 0,
+          "confidenceMiss": 185,
+          "octave": 26
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1399,
+          "truth": 812,
+          "predicted": 747,
+          "hit": 707,
+          "correct": 707,
+          "false": 40,
+          "quietMiss": 9,
+          "confidenceMiss": 96,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1399,
+          "truth": 812,
+          "predicted": 748,
+          "hit": 707,
+          "correct": 707,
+          "false": 41,
+          "quietMiss": 0,
+          "confidenceMiss": 105,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1399,
+          "truth": 812,
+          "predicted": 747,
+          "hit": 707,
+          "correct": 707,
+          "false": 40,
+          "quietMiss": 0,
+          "confidenceMiss": 105,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2499,
+          "truth": 1539,
+          "predicted": 1622,
+          "hit": 1494,
+          "correct": 1493,
+          "false": 128,
+          "quietMiss": 6,
+          "confidenceMiss": 39,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2499,
+          "truth": 1539,
+          "predicted": 1635,
+          "hit": 1495,
+          "correct": 1494,
+          "false": 140,
+          "quietMiss": 0,
+          "confidenceMiss": 44,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2499,
+          "truth": 1539,
+          "predicted": 1625,
+          "hit": 1494,
+          "correct": 1493,
+          "false": 131,
+          "quietMiss": 0,
+          "confidenceMiss": 45,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2996,
+          "truth": 1961,
+          "predicted": 1651,
+          "hit": 1604,
+          "correct": 1583,
+          "false": 47,
+          "quietMiss": 6,
+          "confidenceMiss": 351,
+          "octave": 17
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2996,
+          "truth": 1961,
+          "predicted": 1653,
+          "hit": 1605,
+          "correct": 1584,
+          "false": 48,
+          "quietMiss": 0,
+          "confidenceMiss": 356,
+          "octave": 17
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2996,
+          "truth": 1961,
+          "predicted": 1651,
+          "hit": 1604,
+          "correct": 1583,
+          "false": 47,
+          "quietMiss": 0,
+          "confidenceMiss": 357,
+          "octave": 17
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2481,
+          "truth": 1819,
+          "predicted": 1167,
+          "hit": 1164,
+          "correct": 1050,
+          "false": 3,
+          "quietMiss": 0,
+          "confidenceMiss": 655,
+          "octave": 97
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2481,
+          "truth": 1819,
+          "predicted": 1167,
+          "hit": 1164,
+          "correct": 1050,
+          "false": 3,
+          "quietMiss": 0,
+          "confidenceMiss": 655,
+          "octave": 97
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2481,
+          "truth": 1819,
+          "predicted": 1167,
+          "hit": 1164,
+          "correct": 1050,
+          "false": 3,
+          "quietMiss": 0,
+          "confidenceMiss": 655,
+          "octave": 97
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1376,
+          "truth": 961,
+          "predicted": 820,
+          "hit": 813,
+          "correct": 813,
+          "false": 7,
+          "quietMiss": 0,
+          "confidenceMiss": 148,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1376,
+          "truth": 961,
+          "predicted": 820,
+          "hit": 813,
+          "correct": 813,
+          "false": 7,
+          "quietMiss": 0,
+          "confidenceMiss": 148,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1376,
+          "truth": 961,
+          "predicted": 820,
+          "hit": 813,
+          "correct": 813,
+          "false": 7,
+          "quietMiss": 0,
+          "confidenceMiss": 148,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2324,
+          "truth": 1514,
+          "predicted": 1301,
+          "hit": 1273,
+          "correct": 1272,
+          "false": 28,
+          "quietMiss": 0,
+          "confidenceMiss": 241,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2324,
+          "truth": 1514,
+          "predicted": 1301,
+          "hit": 1273,
+          "correct": 1272,
+          "false": 28,
+          "quietMiss": 0,
+          "confidenceMiss": 241,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2324,
+          "truth": 1514,
+          "predicted": 1301,
+          "hit": 1273,
+          "correct": 1272,
+          "false": 28,
+          "quietMiss": 0,
+          "confidenceMiss": 241,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 3869,
+          "truth": 2962,
+          "predicted": 2959,
+          "hit": 2922,
+          "correct": 2920,
+          "false": 37,
+          "quietMiss": 4,
+          "confidenceMiss": 36,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 3869,
+          "truth": 2962,
+          "predicted": 2962,
+          "hit": 2924,
+          "correct": 2922,
+          "false": 38,
+          "quietMiss": 0,
+          "confidenceMiss": 38,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 3869,
+          "truth": 2962,
+          "predicted": 2959,
+          "hit": 2922,
+          "correct": 2920,
+          "false": 37,
+          "quietMiss": 0,
+          "confidenceMiss": 40,
+          "octave": 1
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 2780,
+          "truth": 1433,
+          "predicted": 1378,
+          "hit": 1329,
+          "correct": 1321,
+          "false": 49,
+          "quietMiss": 2,
+          "confidenceMiss": 102,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 2780,
+          "truth": 1433,
+          "predicted": 1378,
+          "hit": 1329,
+          "correct": 1321,
+          "false": 49,
+          "quietMiss": 0,
+          "confidenceMiss": 104,
+          "octave": 0
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 2780,
+          "truth": 1433,
+          "predicted": 1378,
+          "hit": 1329,
+          "correct": 1321,
+          "false": 49,
+          "quietMiss": 0,
+          "confidenceMiss": 104,
+          "octave": 0
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 3164,
+          "truth": 2292,
+          "predicted": 2234,
+          "hit": 2182,
+          "correct": 2179,
+          "false": 52,
+          "quietMiss": 1,
+          "confidenceMiss": 109,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 3164,
+          "truth": 2292,
+          "predicted": 2234,
+          "hit": 2182,
+          "correct": 2179,
+          "false": 52,
+          "quietMiss": 0,
+          "confidenceMiss": 110,
+          "octave": 1
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 3164,
+          "truth": 2292,
+          "predicted": 2234,
+          "hit": 2182,
+          "correct": 2179,
+          "false": 52,
+          "quietMiss": 0,
+          "confidenceMiss": 110,
+          "octave": 1
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "counts": [
+        {
+          "rms": 0.01,
+          "guard": false,
+          "frames": 1854,
+          "truth": 1187,
+          "predicted": 1156,
+          "hit": 1118,
+          "correct": 1109,
+          "false": 38,
+          "quietMiss": 4,
+          "confidenceMiss": 65,
+          "octave": 8
+        },
+        {
+          "rms": 0.003,
+          "guard": false,
+          "frames": 1854,
+          "truth": 1187,
+          "predicted": 1202,
+          "hit": 1121,
+          "correct": 1112,
+          "false": 81,
+          "quietMiss": 0,
+          "confidenceMiss": 66,
+          "octave": 8
+        },
+        {
+          "rms": 0.003,
+          "guard": true,
+          "frames": 1854,
+          "truth": 1187,
+          "predicted": 1169,
+          "hit": 1119,
+          "correct": 1110,
+          "false": 50,
+          "quietMiss": 0,
+          "confidenceMiss": 68,
+          "octave": 8
+        }
+      ]
+    }
+  ],
+  "total": [
+    {
+      "rms": 0.01,
+      "guard": false,
+      "frames": 81550,
+      "truth": 53977,
+      "predicted": 47412,
+      "hit": 46239,
+      "correct": 45642,
+      "false": 1173,
+      "quietMiss": 1763,
+      "confidenceMiss": 5975,
+      "octave": 352
+    },
+    {
+      "rms": 0.003,
+      "guard": false,
+      "frames": 81550,
+      "truth": 53977,
+      "predicted": 49268,
+      "hit": 47722,
+      "correct": 47105,
+      "false": 1546,
+      "quietMiss": 0,
+      "confidenceMiss": 6255,
+      "octave": 356
+    },
+    {
+      "rms": 0.003,
+      "guard": true,
+      "frames": 81550,
+      "truth": 53977,
+      "predicted": 48766,
+      "hit": 47431,
+      "correct": 46830,
+      "false": 1335,
+      "quietMiss": 0,
+      "confidenceMiss": 6546,
+      "octave": 354
+    }
+  ]
+}

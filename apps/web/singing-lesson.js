@@ -1,3 +1,4 @@
+import {isSingingPitch} from './singing-pitch.js';
 export const singingNotes=[{midi:45,label:'Lower · A2'},{midi:57,label:'Middle · A3'},{midi:69,label:'Higher · A4'}];
 export const frequencyFor=note=>440*2**((note-69)/12);
 export class SingingHold {
@@ -9,7 +10,7 @@ export class SingingHold {
  observe(frame,pitch){
   if(!Number.isSafeInteger(frame)||frame<this.start||this.last!==null&&frame<=this.last)return this.result(null,'Waiting for a fresh microphone frame');
   const gap=this.last===null?0:(frame-this.last)/this.rate;this.last=frame;
-  const voiced=pitch&&Number.isFinite(pitch.frequency)&&pitch.frequency>=80&&pitch.frequency<=1000&&Number.isFinite(pitch.confidence)&&pitch.confidence>=.9&&pitch.confidence<=1&&Number.isFinite(pitch.rms)&&pitch.rms>=.01&&pitch.rms<=1;
+  const voiced=isSingingPitch(pitch);
   const cents=voiced?1200*Math.log2(pitch.frequency/this.target):null;
   const matching=cents!==null&&Math.abs(cents)<=50;
   if(matching&&this.matching&&gap<=.12)this.held+=gap;else this.held=0;
@@ -30,7 +31,7 @@ export class SingingPhrase {
   if(!Number.isSafeInteger(frame)||frame<this.start||this.last!==null&&frame<=this.last)return this.result();
   const gap=this.last===null?0:(frame-this.last)/this.rate;this.last=frame;this.time=(frame-this.start)/this.rate;
   const index=this.phrase.findIndex(n=>this.time>=n.at&&this.time<n.at+n.duration);if(index<0)return this.result();
-  const n=this.phrase[index],voiced=pitch&&Number.isFinite(pitch.frequency)&&pitch.frequency>=80&&pitch.frequency<=1000&&pitch.confidence>=.9&&pitch.confidence<=1&&pitch.rms>=.01&&pitch.rms<=1;
+  const n=this.phrase[index],voiced=isSingingPitch(pitch);
   const cents=voiced&&n.note!==null?1200*Math.log2(pitch.frequency/frequencyFor(n.note)):null;
   const good=n.note===null?!voiced:cents!==null&&Math.abs(cents)<=50;
   if(good&&this.rows[index].first===null)this.rows[index].first=this.time-n.at;

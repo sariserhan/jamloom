@@ -1,7 +1,7 @@
 import {chromium,webkit} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';import assert from 'node:assert/strict';import {writeFile,mkdir} from 'node:fs/promises';
 const base=process.env.SINGING_BASE_URL||'http://localhost:3000';
-const output='../../docs/evidence/singing-completion-20261026';await mkdir(output,{recursive:true});const results=[];
+const output=process.env.SINGING_EVIDENCE_DIR||'../../docs/evidence/singing-completion-20261026';await mkdir(output,{recursive:true});const results=[];
 for(const [name,type] of [['chromium',chromium],['webkit',webkit]]){
  const browser=await type.launch({headless:true,...(name==='chromium'?{args:['--mute-audio']}: {})});
  try{const context=await browser.newContext({viewport:{width:1280,height:900}}),page=await context.newPage();page.setDefaultTimeout(20000);const errors=[];page.on('pageerror',e=>errors.push(e.message));

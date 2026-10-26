@@ -484,4 +484,27 @@ final class FlowTests: XCTestCase {
         let screenshot = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); screenshot.name = "Singing Academy native course"; screenshot.lifetime = .keepAlways; add(screenshot)
     }
 
+    func testSingingLongPlaybackAndInterruptionMetrics() {
+        let app = XCUIApplication(); app.launchArguments = ["--ui-testing"]
+        app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
+        app.launch(); app.buttons["Sing"].firstMatch.tap()
+        let song = app.webViews.links.matching(NSPredicate(format: "label CONTAINS %@", "First Light")).firstMatch
+        XCTAssertTrue(song.waitForExistence(timeout: 20)); song.tap()
+        let demo = app.webViews.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Hear song")).firstMatch
+        let stop = app.webViews.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Stop")).firstMatch
+        XCTAssertTrue(demo.waitForExistence(timeout: 15))
+        let options = XCTMeasureOptions(); options.iterationCount = 3
+        measure(metrics: [XCTMemoryMetric(application: app), XCTCPUMetric(application: app)], options: options) {
+            demo.tap()
+            let finished = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isEnabled == true"), object: demo)
+            XCTAssertEqual(XCTWaiter.wait(for: [finished], timeout: 70), .completed)
+            XCTAssertFalse(stop.isEnabled)
+            XCTAssertTrue(app.webViews.staticTexts["Microphone off"].exists)
+        }
+        demo.tap(); XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertTrue(demo.waitForExistence(timeout: 10)); XCTAssertTrue(demo.isEnabled); XCTAssertFalse(stop.isEnabled)
+        demo.tap(); app.buttons["Community"].firstMatch.tap(); app.buttons["Sing"].firstMatch.tap()
+        XCTAssertTrue(demo.waitForExistence(timeout: 10)); XCTAssertTrue(demo.isEnabled); XCTAssertFalse(stop.isEnabled)
+    }
+
 }

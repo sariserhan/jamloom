@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "scope": "Actual streamed Jamloom backing with controlled quiet PCM through capture; no human singing or physical latency claim",
+  "results": [
+    {
+      "browser": "chromium",
+      "quietSyntheticVoiceFollowed": true,
+      "mobileOverflow": false,
+      "seekRetryPauseStopAndDenied": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "quietSyntheticVoiceFollowed": true,
+      "mobileOverflow": false,
+      "seekRetryPauseStopAndDenied": true,
+      "errors": []
+    }
+  ]
+}

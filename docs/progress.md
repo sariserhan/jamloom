@@ -1,3 +1,12 @@
+## Local singing, long playback and DJ continuity — 2026-10-26
+
+**PASS scoped local implementation and checks: singing feedback, recorded-backing rehearsal, DJ delivery, phone lifecycle and cleanup. DJ musical continuity remains PARTIAL.** [Report](LOCAL_AUDIO_FOLLOWTHROUGH.md). No publication or new paid compute.
+
+- [x] Reproduce quiet-voice misses on the 40-recording evaluation corpus and add guarded quiet-input detection shared by holds, phrases and live display. Controlled noise/octave regressions pass; broader room acceptance remains open.
+- [x] Prepare four-minute streamed original backing with bounded phrase scoring and live lyrics/pitch. Full Chromium singing run and final Chromium/WebKit seek/retry/pause/denial checks pass; range serving and end-event cleanup corrected. This is a local rehearsal; the six commercial lessons remain pending supplier rights/assets.
+- [x] Stress the actual DJ mixer with twelve retained tracks: 507.12 seconds, exactly two initially buffered, later delivery, no pause/error/early stop. Audio scan attributes a 2.4-second quiet stretch to a source track and flags four energy handoffs; musical continuity remains PARTIAL.
+- [x] Pass physical iPhone playback/interruption and app-process metrics; install and launch signed 0.10.1 build 23. Reclaim 678 MiB from audited unused caches, preserving originals, models and signed evidence.
+
 ## Popular karaoke catalogue preparation — 2026-10-26
 
 **PASS research/preparation and approved supplier enquiry submission; BLOCKED playable catalogue pending permissions and assets.** [Supplier and integration findings](SINGING_POPULAR_SONGS.md).

@@ -1,6 +1,6 @@
 // Adapted from predict-voice-quality, MIT, Copyright (c) 2026 Akhil Vydyula.
 // Pinned 78e30f766efde6c8c66d9e5a47441b44312d216c; notice: licenses/PREDICT-VOICE-QUALITY-MIT.txt.
-// Changes: bounded finite PCM/rate validation; removed unrelated conversion helper.
+// Changes: bounded PCM/rate validation; quiet input requires stronger periodicity confidence.
 const MIN_FREQUENCY = 80;
 const MAX_FREQUENCY = 1e3;
 const YIN_THRESHOLD = 0.15;
@@ -17,7 +17,7 @@ function detectPitch(samples, sampleRate) {
   }
   if (!samples.every((v) => Number.isFinite(v) && Math.abs(v) <= 1)) return null;
   const rms = computeRms(samples);
-  if (rms < 0.01) {
+  if (rms < 0.003) {
     return null;
   }
   const minTau = Math.floor(sampleRate / MAX_FREQUENCY);
@@ -76,3 +76,10 @@ function detectPitch(samples, sampleRate) {
 export {
   detectPitch
 };
+
+// Low-level input must be more periodic; never normalize room noise into a voice.
+export function isSingingPitch(pitch) {
+  return !!pitch && Number.isFinite(pitch.frequency) && pitch.frequency >= 80 && pitch.frequency <= 1000
+    && Number.isFinite(pitch.rms) && pitch.rms >= .003 && pitch.rms <= 1
+    && Number.isFinite(pitch.confidence) && pitch.confidence >= (pitch.rms < .01 ? .95 : .9) && pitch.confidence <= 1;
+}

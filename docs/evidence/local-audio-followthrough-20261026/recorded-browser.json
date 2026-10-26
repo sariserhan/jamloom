@@ -1,0 +1,23 @@
+{
+  "status": "PASS scoped checks across full-playback and final-control runs",
+  "fullPlayback": "recorded-full-playback.json",
+  "finalControls": "recorded-controls.json",
+  "httpRanges": "recorded-http-ranges.json",
+  "fallback": "Browser connection runtime unavailable; existing Playwright Chromium/WebKit harness",
+  "checks": {
+    "pageIdentity": "PASS",
+    "meaningfulContent": "PASS",
+    "frameworkErrorOverlay": "NONE",
+    "applicationErrors": [],
+    "screenshots": "/tmp/jamloom-recording-chromium.png and /tmp/jamloom-recording-webkit.png",
+    "quietMeasuredPitch": "PASS",
+    "fullLyricsHighlight": "PASS",
+    "full240SecondGrading": "PASS Chromium",
+    "seekRetryPauseStopDenied": "PASS Chromium and WebKit"
+  },
+  "limitations": [
+    "Controlled PCM is not real microphone or human singing",
+    "Full playback preceded range-server-only fix; final seek/retry and lifecycle checked separately",
+    "No whole-browser or physical WebKit-process memory measurement"
+  ]
+}

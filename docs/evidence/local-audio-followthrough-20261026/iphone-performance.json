@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "device": "Physical iPhone 14 Pro",
+  "test": "FlowTests/testSingingLongPlaybackAndInterruptionMetrics",
+  "test_seconds": 262.436,
+  "iterations": 3,
+  "metrics": [
+    {
+      "metric": "CPU Cycles (app), kC",
+      "average": 18099009.665,
+      "values": [
+        18118646.426,
+        18099930.456,
+        18078452.112
+      ]
+    },
+    {
+      "metric": "CPU Time (app), s",
+      "average": 6.558,
+      "values": [
+        6.568091,
+        6.545308,
+        6.559459
+      ]
+    },
+    {
+      "metric": "Absolute Memory Physical (app), kB",
+      "average": 35473.392,
+      "values": [
+        35506.16,
+        35457.008,
+        35457.008
+      ]
+    },
+    {
+      "metric": "Memory Physical (app), kB",
+      "average": -27.307,
+      "values": [
+        -32.768,
+        -49.152,
+        0.0
+      ]
+    },
+    {
+      "metric": "Memory Peak Physical (app), kB",
+      "average": 63380.853,
+      "values": [
+        63391.776,
+        63391.776,
+        63359.008
+      ]
+    },
+    {
+      "metric": "CPU Instructions Retired (app), kI",
+      "average": 49191445.545,
+      "values": [
+        49130073.806,
+        49232227.069,
+        49212035.759
+      ]
+    }
+  ],
+  "checks": [
+    "Complete original-song demo playback",
+    "No microphone requested for demo",
+    "Background/foreground stops audio",
+    "Community tab switch stops audio"
+  ],
+  "result_bundle": "build-ios-phone-release/singing-endurance-20261026.xcresult",
+  "limitations": [
+    "App process only; WebKit subprocess memory is excluded",
+    "No physical microphone-to-display or human grading accuracy measurement",
+    "No thermal or battery drain qualification"
+  ]
+}

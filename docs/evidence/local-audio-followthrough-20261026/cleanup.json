@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "before_free_bytes": 25471684608,
+  "after_free_bytes": 26203025408,
+  "removed_bytes": 711309680,
+  "targets": [
+    {
+      "path": "/tmp/jamloom-live-release/build-web-tools/emsdk/upstream/emscripten/cache",
+      "bytes": 606465465,
+      "tracked_files": 0,
+      "open_handles": 0,
+      "classification": "regenerable compiler cache/index/intermediates; retained products and evidence",
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios/Index.noindex",
+      "bytes": 25668804,
+      "tracked_files": 0,
+      "open_handles": 0,
+      "classification": "regenerable compiler cache/index/intermediates; retained products and evidence",
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios/ModuleCache.noindex",
+      "bytes": 16802877,
+      "tracked_files": 0,
+      "open_handles": 0,
+      "classification": "regenerable compiler cache/index/intermediates; retained products and evidence",
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios/Build/Intermediates.noindex",
+      "bytes": 62372534,
+      "tracked_files": 0,
+      "open_handles": 0,
+      "classification": "regenerable compiler cache/index/intermediates; retained products and evidence",
+      "removed": true
+    }
+  ],
+  "preserved": [
+    "model checkpoints",
+    "renders and recordings",
+    "signed apps and release products",
+    "test result bundles",
+    "active phone build and website preview"
+  ],
+  "limitation": "Caches regenerate; future builds in the old temporary checkout may take longer."
+}

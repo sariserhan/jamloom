@@ -1,0 +1,23 @@
+// Local, original-audio rehearsal only; no catalogue or learner progress changes.
+import {readFileSync,writeFileSync,mkdirSync,copyFileSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+import {singingSongs,phraseFor} from '../apps/web/singing-course.js';
+import {SingingScore,songScore} from '../apps/web/singing-score.js';
+import {executeCommand} from '../apps/web/live-take.js';
+const folder=new URL('../renders/singing-long-20261026/',import.meta.url),review=new URL('review/',folder);mkdirSync(review,{recursive:true});
+const song=singingSongs.find(s=>s.id==='city-lights'),phrase=phraseFor(song,57,song.tempo),rate=48000,frames=rate*48;
+const wasm=readFileSync(new URL('../dist/web/engine/jamloom_live.wasm',import.meta.url));
+const e=new WebAssembly.Instance(await WebAssembly.compile(wasm),{}).exports;e._initialize();assert(e.jamloom_live_init(rate));
+const samples=new Float32Array(e.memory.buffer,e.jamloom_live_buffer(),4096),pcm=new Float32Array(frames*2);let frame=0,peak=0;
+const score=new SingingScore(rate,0,songScore(song,phrase,57,rate,0,false));
+while(frame<frames)score.run(Math.min(128,frames-frame),n=>{assert(e.jamloom_live_render(n));for(let i=0;i<n*2;i++){const v=samples[i]*.3;assert(Number.isFinite(v));peak=Math.max(peak,Math.abs(v));pcm[frame*2+i]=v;}frame+=n;},c=>assert(executeCommand(e,c)));
+assert(peak>.01&&peak<1);writeFileSync(new URL('segment.f32le',folder),Buffer.from(pcm.buffer));
+execFileSync('ffmpeg',['-v','error','-y','-f','f32le','-ar',String(rate),'-ac','2','-i',new URL('segment.f32le',folder).pathname,'-af',`aloop=loop=4:size=${frames}`,'-t','240','-c:a','libmp3lame','-b:a','128k',new URL('backing.mp3',review).pathname]);
+const sections=Array.from({length:5},(_,i)=>({at:i*48,notes:phrase}));
+writeFileSync(new URL('song.json',review),JSON.stringify({title:'City Lights · four-minute rehearsal',scope:'Five repetitions of an original Jamloom arrangement; playback and grading fixture, not a newly composed song',sections,lines:song.lines}));
+for(const file of ['singing-recording.js','singing-pitch.js','singing-lesson.js','singing-chart.js','singing.css'])copyFileSync(new URL('../apps/web/'+file,import.meta.url),new URL(file,review));
+for(const [source,target] of [['singing-recording.html','index.html'],['singing-recording-review.js','review.js']])copyFileSync(new URL('fixtures/'+source,import.meta.url),new URL(target,review));
+copyFileSync(new URL('../apps/web/singing-capture-worklet.js',import.meta.url),new URL('singing-capture-worklet.js',review));
+const sha=b=>createHash('sha256').update(b).digest('hex');writeFileSync(new URL('provenance.json',review),JSON.stringify({seconds:240,sections:5,source:'Original Jamloom City Lights notes and lyrics',engineSha256:sha(wasm),backingSha256:sha(readFileSync(new URL('backing.mp3',review))),peak,training:false,publication:false},null,2)+'\n');console.log(review.pathname);

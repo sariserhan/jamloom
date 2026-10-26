@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "scope": "Synthetic microphone through actual capture, pitch detection, timed grading and WASM piano; not physical human singing",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "exercised": [
+        "first-note",
+        "step-up",
+        "pulse",
+        "final-performance",
+        "city-lights",
+        "after-hours-chorus"
+      ],
+      "progressSurvivesReload": true,
+      "demoWithoutMic": true,
+      "guide": true,
+      "sectionPracticeDoesNotCompleteSong": true,
+      "fullLyricsAndCurrentWord": true,
+      "lyricsScrollWithinPanel": true,
+      "desktopLyricsBesideChart": true,
+      "captureDeliveryP95Ms": 2.000000000000668,
+      "accessibilityViolations": 0,
+      "mobileOverflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "exercised": [
+        "first-note",
+        "first-melody",
+        "in-motion",
+        "after-hours-chorus"
+      ],
+      "progressSurvivesReload": true,
+      "demoWithoutMic": true,
+      "guide": true,
+      "sectionPracticeDoesNotCompleteSong": true,
+      "fullLyricsAndCurrentWord": true,
+      "lyricsScrollWithinPanel": true,
+      "desktopLyricsBesideChart": true,
+      "captureDeliveryP95Ms": 2.000000000000224,
+      "accessibilityViolations": 0,
+      "mobileOverflow": false,
+      "errors": []
+    }
+  ]
+}

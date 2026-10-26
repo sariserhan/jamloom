@@ -18,7 +18,7 @@ const consistency=process.argv.includes('--consistency-study')||boundary;
 const modelStudy=process.argv.includes('--model-study')||consistency;
 const quality=process.argv.includes('--quality'),timing=process.argv.includes('--timing-revision');
 const house=process.argv.includes('--house-study'),guided=process.argv.includes('--guided-set')||recovery;assert.ok([quality,house,guided,planner,modelStudy,representative,flow].filter(Boolean).length<=1);assert.ok(!timing||guided);
-const root=resolve('../..'),folder=resolve(root,flowFixture?'renders/dj-flow-buffer-replay-mix-20261026':httpFlow?'renders/dj-flow-http-mix-20261026':flow?'renders/dj-flow-buffer-mix-20261026':representative?'renders/dj-representative-mix-20261026':boundary?'renders/dj-vocal-boundary-20261026':consistency?'renders/dj-preferred-mix-20261026':modelStudy?'renders/dj-model-mix-20261026':planner?'renders/dj-planner-mix-20261026':recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
+const root=resolve('../..'),folder=resolve(root,process.env.JAMLOOM_FLOW_OUTPUT||(flowFixture?'renders/dj-flow-buffer-replay-mix-20261026':httpFlow?'renders/dj-flow-http-mix-20261026':flow?'renders/dj-flow-buffer-mix-20261026':representative?'renders/dj-representative-mix-20261026':boundary?'renders/dj-vocal-boundary-20261026':consistency?'renders/dj-preferred-mix-20261026':modelStudy?'renders/dj-model-mix-20261026':planner?'renders/dj-planner-mix-20261026':recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025'));
 await mkdir(folder);
 let tracks=[];
 if(!flow){
@@ -81,7 +81,7 @@ if(representative){
  tracks=await Promise.all(selected.map(async(row,index)=>{const bytes=await readFile(row.file);assert.equal(createHash('sha256').update(bytes).digest('hex'),row.hash);return{bytes,track:{id:String(index),title:row.vocal?'Preferred musical vocal':'Selected instrumental '+(index+1),artist:'Jamloom original',url:'/audio/'+index,sha256:row.hash,energy:4,style:'house',mood:'deep',vocal:!!row.vocal,credit:''}};}));
  assert.equal(new Set(tracks.map(t=>t.track.sha256)).size,4);assert.equal(tracks.filter(t=>t.track.vocal).length,1);
 }
-const flowSource=resolve(root,flowFixture?'renders/dj-flow-buffer-replay-20261026':httpFlow?'renders/dj-flow-http-20261026':'renders/dj-flow-buffer-20261026'),deliveries=[];
+const flowSource=resolve(root,process.env.JAMLOOM_FLOW_SOURCE||(flowFixture?'renders/dj-flow-buffer-replay-20261026':httpFlow?'renders/dj-flow-http-20261026':'renders/dj-flow-buffer-20261026')),deliveries=[];
 async function flowTrack(index){
  if(index>=12)return null;
  const began=Date.now();

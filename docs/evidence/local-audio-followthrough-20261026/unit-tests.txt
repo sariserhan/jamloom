@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: actual worklet acceptance frames and captured PCM replay exactly
+ok 1 - actual worklet acceptance frames and captured PCM replay exactly
+  ---
+  duration_ms: 46.306291
+  type: 'test'
+  ...
+# Subtest: rejected voices do not appear as accepted notes
+ok 2 - rejected voices do not appear as accepted notes
+  ---
+  duration_ms: 3.892709
+  type: 'test'
+  ...
+# Subtest: cancel and event overflow discard buffers without disabling live audio
+ok 3 - cancel and event overflow discard buffers without disabling live audio
+  ---
+  duration_ms: 9.521791
+  type: 'test'
+  ...
+# Subtest: capture has a hard 30-second audio and event boundary
+ok 4 - capture has a hard 30-second audio and event boundary
+  ---
+  duration_ms: 2.997333
+  type: 'test'
+  ...
+# Subtest: command limits and private take metadata cannot be silently relaxed
+ok 5 - command limits and private take metadata cannot be silently relaxed
+  ---
+  duration_ms: 16.986
+  type: 'test'
+  ...
+# Subtest: recording is off by default and stale stop cannot export another take
+ok 6 - recording is off by default and stale stop cannot export another take
+  ---
+  duration_ms: 5.162291
+  type: 'test'
+  ...
+# Subtest: real instrument engine sequences notes, stops on panic, and captures accepted sequence actions
+ok 7 - real instrument engine sequences notes, stops on panic, and captures accepted sequence actions
+  ---
+  duration_ms: 62.18475
+  type: 'test'
+  ...
+# Subtest: clocked instrument takes preserve old replay and reject invalid context origins
+ok 8 - clocked instrument takes preserve old replay and reject invalid context origins
+  ---
+  duration_ms: 17.377625
+  type: 'test'
+  ...
+# Subtest: capture writes fixed command buffers and snapshots values independently of caller mutation
+ok 9 - capture writes fixed command buffers and snapshots values independently of caller mutation
+  ---
+  duration_ms: 0.957084
+  type: 'test'
+  ...
+# Subtest: singing score uses the real shared instrument, rejects unsafe scores and leaves manual playing available
+ok 10 - singing score uses the real shared instrument, rejects unsafe scores and leaves manual playing available
+  ---
+  duration_ms: 16.497541
+  type: 'test'
+  ...
+# Subtest: both original song arrangements render finite unclipped band audio with no rejected voices
+ok 11 - both original song arrangements render finite unclipped band audio with no rejected voices
+  ---
+  duration_ms: 5043.161042
+  type: 'test'
+  ...
+# Subtest: all twelve exercises pass measured correct tones at every supported pace and register; silence never passes
+ok 12 - all twelve exercises pass measured correct tones at every supported pace and register; silence never passes
+  ---
+  duration_ms: 45.447625
+  type: 'test'
+  ...
+# Subtest: late notes, missing notes, repeated frames and dropped capture cannot earn completion
+ok 13 - late notes, missing notes, repeated frames and dropped capture cannot earn completion
+  ---
+  duration_ms: 1.032542
+  type: 'test'
+  ...
+# Subtest: progress preserves best/pass across retries, migrates first-note completion, ignores malformed storage
+ok 14 - progress preserves best/pass across retries, migrates first-note completion, ignores malformed storage
+  ---
+  duration_ms: 1.168333
+  type: 'test'
+  ...
+# Subtest: finite note score is sample accurate across callback sizes and ends every note
+ok 15 - finite note score is sample accurate across callback sizes and ends every note
+  ---
+  duration_ms: 2.54725
+  type: 'test'
+  ...
+# Subtest: original songs grade measured notes at every register and pace, reject silence and validate full band scores
+ok 16 - original songs grade measured notes at every register and pace, reject silence and validate full band scores
+  ---
+  duration_ms: 187.412917
+  type: 'test'
+  ...
+# Subtest: song score follows real audio clock after an unconnected worklet priming callback
+ok 17 - song score follows real audio clock after an unconnected worklet priming callback
+  ---
+  duration_ms: 0.236167
+  type: 'test'
+  ...
+# Subtest: all curriculum sections preserve the source lyric index and cannot include another section
+ok 18 - all curriculum sections preserve the source lyric index and cannot include another section
+  ---
+  duration_ms: 19.540583
+  type: 'test'
+  ...
+# Subtest: four-minute score uses bounded phrases and requires actual correct pitch for every section
+ok 19 - four-minute score uses bounded phrases and requires actual correct pitch for every section
+  ---
+  duration_ms: 38.099042
+  type: 'test'
+  ...
+# Subtest: seek, pause and delayed frames cannot bridge scores or earn full-song completion
+ok 20 - seek, pause and delayed frames cannot bridge scores or earn full-song completion
+  ---
+  duration_ms: 0.250834
+  type: 'test'
+  ...
+# Subtest: capture aligns to center of microphone window and rejects stale or interrupted input
+ok 21 - capture aligns to center of microphone window and rejects stale or interrupted input
+  ---
+  duration_ms: 0.084667
+  type: 'test'
+  ...
+# Subtest: MIT detector measures the three lesson registers and rejects silence/noise/invalid PCM
+ok 22 - MIT detector measures the three lesson registers and rejects silence/noise/invalid PCM
+  ---
+  duration_ms: 18.442042
+  type: 'test'
+  ...
+# Subtest: only sustained measured pitch passes; repeated/stale timestamps and a single good note cannot pass
+ok 23 - only sustained measured pitch passes; repeated/stale timestamps and a single good note cannot pass
+  ---
+  duration_ms: 2.410792
+  type: 'test'
+  ...
+# Subtest: flat/sharp/octave/noise/silence and gaps reset the continuous hold
+ok 24 - flat/sharp/octave/noise/silence and gaps reset the continuous hold
+  ---
+  duration_ms: 16.380041
+  type: 'test'
+  ...
+# Subtest: practice after completion starts a new independent measurement
+ok 25 - practice after completion starts a new independent measurement
+  ---
+  duration_ms: 1.9615
+  type: 'test'
+  ...
+# Subtest: quiet periodic singing qualifies without accepting faint noise or changing octave targets
+ok 26 - quiet periodic singing qualifies without accepting faint noise or changing octave targets
+  ---
+  duration_ms: 369.87375
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5275.141167

@@ -1,0 +1,145 @@
+{
+  "status": "PASS delivery continuity; PARTIAL musical continuity (source quiet stretch and energy flags)",
+  "quiet_sections": [
+    {
+      "at": 377.38,
+      "seconds": 0.4
+    },
+    {
+      "at": 377.83,
+      "seconds": 2.4
+    }
+  ],
+  "seconds": 507.12,
+  "peak": 0.3731558918952942,
+  "max_delivery_wait_seconds": 1.772,
+  "longest_internal_below_minus60db_seconds": 2.4,
+  "capture_sha256": "e06b8110f14f4558d670f9d1ffb648674aeaaf9ec8aec9a3ac319b6037272cdb",
+  "handoffs": [
+    {
+      "incoming_track": 2,
+      "handoff_complete_seconds": 56.5,
+      "before_rms": 0.09877844899892807,
+      "after_rms": 0.07213874906301498,
+      "after_vs_before_db": -2.7298719118602026,
+      "lowest_quarter_second_rms": 0.02670440450310707,
+      "lowest_vs_surroundings_db": -10.103457421696513
+    },
+    {
+      "incoming_track": 3,
+      "handoff_complete_seconds": 110.60000000000001,
+      "before_rms": 0.10013682395219803,
+      "after_rms": 0.10060852766036987,
+      "after_vs_before_db": 0.0408196140914771,
+      "lowest_quarter_second_rms": 0.01775534078478813,
+      "lowest_vs_surroundings_db": -15.04572979488707
+    },
+    {
+      "incoming_track": 4,
+      "handoff_complete_seconds": 140.148,
+      "before_rms": 0.1101551279425621,
+      "after_rms": 0.07624255120754242,
+      "after_vs_before_db": -3.196145982416102,
+      "lowest_quarter_second_rms": 0.025538120418787003,
+      "lowest_vs_surroundings_db": -11.244431490253447
+    },
+    {
+      "incoming_track": 5,
+      "handoff_complete_seconds": 194.552,
+      "before_rms": 0.09303651750087738,
+      "after_rms": 0.0911528691649437,
+      "after_vs_before_db": -0.1776620496278908,
+      "lowest_quarter_second_rms": 0.029924731701612473,
+      "lowest_vs_surroundings_db": -9.764086815087856
+    },
+    {
+      "incoming_track": 6,
+      "handoff_complete_seconds": 231.1,
+      "before_rms": 0.06205349043011665,
+      "after_rms": 0.08858614414930344,
+      "after_vs_before_db": 3.091991674259811,
+      "lowest_quarter_second_rms": 0.028453202918171883,
+      "lowest_vs_surroundings_db": -8.455561934467472
+    },
+    {
+      "incoming_track": 7,
+      "handoff_complete_seconds": 271.40000000000003,
+      "before_rms": 0.02446519024670124,
+      "after_rms": 0.08643785119056702,
+      "after_vs_before_db": 10.963107293693323,
+      "lowest_quarter_second_rms": 0.020287523046135902,
+      "lowest_vs_surroundings_db": -8.733688693681856
+    },
+    {
+      "incoming_track": 8,
+      "handoff_complete_seconds": 312.348,
+      "before_rms": 0.10234163701534271,
+      "after_rms": 0.11080623418092728,
+      "after_vs_before_db": 0.6902367173611257,
+      "lowest_quarter_second_rms": 0.046899277716875076,
+      "lowest_vs_surroundings_db": -7.1296969906387115
+    },
+    {
+      "incoming_track": 9,
+      "handoff_complete_seconds": 355.65200000000004,
+      "before_rms": 0.1035786047577858,
+      "after_rms": 0.07738346606492996,
+      "after_vs_before_db": -2.5324375681798634,
+      "lowest_quarter_second_rms": 0.052632566541433334,
+      "lowest_vs_surroundings_db": -4.706060271148854
+    },
+    {
+      "incoming_track": 10,
+      "handoff_complete_seconds": 391.856,
+      "before_rms": 0.08769556879997253,
+      "after_rms": 0.09506066143512726,
+      "after_vs_before_db": 0.7004636500259293,
+      "lowest_quarter_second_rms": 0.01063433289527893,
+      "lowest_vs_surroundings_db": -18.6826388845436
+    },
+    {
+      "incoming_track": 11,
+      "handoff_complete_seconds": 418.452,
+      "before_rms": 0.06169562041759491,
+      "after_rms": 0.09071376174688339,
+      "after_vs_before_db": 3.3483768176006965,
+      "lowest_quarter_second_rms": 0.022698065266013145,
+      "lowest_vs_surroundings_db": -10.51985732869461
+    },
+    {
+      "incoming_track": 12,
+      "handoff_complete_seconds": 466.752,
+      "before_rms": 0.06379309296607971,
+      "after_rms": 0.09859377145767212,
+      "after_vs_before_db": 3.7815164127231524,
+      "lowest_quarter_second_rms": 0.019442031159996986,
+      "lowest_vs_surroundings_db": -12.415585309242928
+    }
+  ],
+  "energy_flags": [
+    3,
+    7,
+    10,
+    12
+  ],
+  "limitations": [
+    "RMS is not perceived party energy or arrangement quality",
+    "Uses twelve retained originals, not fresh generation",
+    "Capture can contain authored rests; no human listening acceptance inferred"
+  ],
+  "source_attribution": {
+    "track": 9,
+    "source_file": "renders/dj-flow-qualification-20261026/house-8.wav",
+    "source_sha256": "3ed51007d40f494e5376643b27dbcc4685b4987baa6cee4a9aba50791bb39bf1",
+    "quiet_source_range_seconds": [
+      40.87,
+      43.28
+    ],
+    "source_range_rms": 0.0010122362291440368,
+    "capture_range_seconds": [
+      377.83,
+      380.23
+    ],
+    "interpretation": "Quiet stretch already present in retained original, away from handoff; not waiting for delivery"
+  }
+}

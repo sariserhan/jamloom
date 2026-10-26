@@ -67,6 +67,14 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=ROOT)
+    parser.add_argument('--port', type=int, default=8766)
+    args = parser.parse_args()
+    ROOT = args.root.resolve()
+    if not 1024 <= args.port <= 65535:
+        parser.error('Choose a local port between 1024 and 65535')
     if not ROOT.is_dir():
         raise SystemExit('Prepare the local listening copies first.')
-    ThreadingHTTPServer(('127.0.0.1', 8766), Handler).serve_forever()
+    ThreadingHTTPServer(('127.0.0.1', args.port), Handler).serve_forever()

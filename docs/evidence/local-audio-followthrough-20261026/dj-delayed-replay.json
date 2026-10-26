@@ -1,0 +1,2845 @@
+{
+  "status": "PASS technical",
+  "sourceTracks": [
+    "fe417194e14f6c7fb0d8d5b71cd5c25d5cbea0672a9f9ca01fd91b9f2882ee23",
+    "1165ac48dff782f8c59398f0f2ba9c73a64e0a9b66c4654712148bcf0b8df63b",
+    "9fe2257b3cbef74f84a98b91363f0bd10002a1d9ce2533447dab7f67e4a02734",
+    "f6c963a804c57802ba21d998b30b0686ea5a838c5d6a9be877d778530faf662d",
+    "4c9a91a3399363dc4454cedb88e3b10f3df3a059bd86b61ee77a7a88313eff09",
+    "fd2435c1b8cfb2a46bcad01c4d620613759b3ba2717893aaf3d37c1fe3dbc864",
+    "b397a1f6c4be1dfacad5427df3bc5c0aa6113776466f04507abc4ce40823884e",
+    "7d1271b8c806ededea912ce452731613d67dfb1be71444e331217338bf967383",
+    "3ed51007d40f494e5376643b27dbcc4685b4987baa6cee4a9aba50791bb39bf1",
+    "29167ca31fefac8d831f6661c3d4fc113fd89a9c19adf2f471fd5571cddeb901",
+    "b103dd13e3915f800375875c07ceffd373342dee7c544e978c6c97e15f3384a1",
+    "94f90dd65b49d4fb297a5a3fc29a4582780d2ec4124102383327bbc661e4a687"
+  ],
+  "currentAnalysisSha256": "1a202deeb7b10f8c01dfe91e62f08c44ce7e93686d7ecb26cab40e11779184c6",
+  "currentPlanSha256": "06169ad68fce9bc8d03680cd779eb5aabd87988bf634f83450bab59cbb69fbbd",
+  "newGeneration": false,
+  "retainedFixture": true,
+  "deliveries": [
+    {
+      "sequence": 0,
+      "waitSeconds": 0.007,
+      "at": 1793028681587,
+      "availableTracks": 2,
+      "readyAt": 1793028681285
+    },
+    {
+      "sequence": 1,
+      "waitSeconds": 0.006,
+      "at": 1793028681593,
+      "availableTracks": 2,
+      "readyAt": 1793028681291
+    },
+    {
+      "sequence": 0,
+      "waitSeconds": 0,
+      "at": 1793028683031,
+      "availableTracks": 2,
+      "readyAt": 1793028681285
+    },
+    {
+      "sequence": 1,
+      "waitSeconds": 0,
+      "at": 1793028683368,
+      "availableTracks": 2,
+      "readyAt": 1793028681291
+    },
+    {
+      "sequence": 2,
+      "waitSeconds": 1.772,
+      "at": 1793028741744,
+      "availableTracks": 3,
+      "readyAt": 1793028741494
+    },
+    {
+      "sequence": 3,
+      "waitSeconds": 0.01,
+      "at": 1793028794083,
+      "availableTracks": 4,
+      "readyAt": 1793028781493
+    },
+    {
+      "sequence": 4,
+      "waitSeconds": 0.01,
+      "at": 1793028823636,
+      "availableTracks": 5,
+      "readyAt": 1793028821492
+    },
+    {
+      "sequence": 5,
+      "waitSeconds": 0.015,
+      "at": 1793028878028,
+      "availableTracks": 6,
+      "readyAt": 1793028861487
+    },
+    {
+      "sequence": 6,
+      "waitSeconds": 0.013,
+      "at": 1793028914578,
+      "availableTracks": 7,
+      "readyAt": 1793028901482
+    },
+    {
+      "sequence": 7,
+      "waitSeconds": 0.014,
+      "at": 1793028954878,
+      "availableTracks": 8,
+      "readyAt": 1793028941483
+    },
+    {
+      "sequence": 8,
+      "waitSeconds": 0.016,
+      "at": 1793028995833,
+      "availableTracks": 9,
+      "readyAt": 1793028981485
+    },
+    {
+      "sequence": 9,
+      "waitSeconds": 0.007,
+      "at": 1793029039121,
+      "availableTracks": 10,
+      "readyAt": 1793029021488
+    },
+    {
+      "sequence": 10,
+      "waitSeconds": 0.012,
+      "at": 1793029075338,
+      "availableTracks": 11,
+      "readyAt": 1793029061491
+    },
+    {
+      "sequence": 11,
+      "waitSeconds": 0.005,
+      "at": 1793029101916,
+      "availableTracks": 12,
+      "readyAt": 1793029101482
+    }
+  ],
+  "learnedWeights": false,
+  "humanListening": "NOT RUN",
+  "performance": "AI performance actions verified.",
+  "results": [
+    {
+      "name": "after",
+      "revision": "working-tree",
+      "history": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "seconds": 507.12,
+      "peak": 0.3731558918952942,
+      "rms": 0.06257761041611937,
+      "events": [
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 60.437000000000005,
+          "until": 62.312000000000005,
+          "position": 8.213750000000001,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 71.21825000000001,
+          "until": 72.15575000000001,
+          "position": 18.995000000000008,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 150.90575,
+          "until": 152.78075,
+          "position": 14.59125,
+          "by": "AI"
+        },
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 158.8745,
+          "until": 160.7495,
+          "position": 22.56,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 195.437,
+          "until": 196.3745,
+          "position": 17.8525,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 203.40575,
+          "until": 205.28075,
+          "position": 25.82125,
+          "by": "AI"
+        },
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 231.9995,
+          "until": 233.8745,
+          "position": 15.986198670316778,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 239.96825,
+          "until": 240.90575,
+          "position": 23.964298005475168,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 272.251474609375,
+          "until": 274.126474609375,
+          "position": 15.389999999999986,
+          "by": "AI"
+        },
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 280.220224609375,
+          "until": 282.095224609375,
+          "position": 23.358749999999986,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 357.518974609375,
+          "until": 358.456474609375,
+          "position": 20.19625,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 369.237724609375,
+          "until": 371.112724609375,
+          "position": 31.915,
+          "by": "AI"
+        },
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 424.5015053831147,
+          "until": 426.3772380912038,
+          "position": 8.452500000000024,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 432.9423025695156,
+          "until": 433.8801689235602,
+          "position": 16.89,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Echo",
+          "at": 467.6433576691639,
+          "until": 469.519090377253,
+          "position": 15.972499999999995,
+          "by": "AI"
+        }
+      ],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 56.5,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 3,
+          "elapsed": 110.60000000000001,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 4,
+          "elapsed": 140.148,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 5,
+          "elapsed": 194.552,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 6,
+          "elapsed": 231.1,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 7,
+          "elapsed": 271.40000000000003,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 8,
+          "elapsed": 312.348,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 9,
+          "elapsed": 355.65200000000004,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 10,
+          "elapsed": 391.856,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 11,
+          "elapsed": 418.452,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 12,
+          "elapsed": 466.752,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "blends": [
+        {
+          "elapsed": 52.496,
+          "cross": 0.007749999999999702,
+          "levels": [
+            0.9385407294754771,
+            0.009532004525500903
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 53,
+          "cross": 0.13374999999999915,
+          "levels": [
+            0.9179746690935566,
+            0.16345613265897363
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 53.548,
+          "cross": 0.2707499999999996,
+          "levels": [
+            0.8550092263982307,
+            0.3233850107423386
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 54.1,
+          "cross": 0.4087499999999995,
+          "levels": [
+            0.7517304873442683,
+            0.46939313809834005
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 54.604,
+          "cross": 0.534749999999999,
+          "levels": [
+            0.6265221928106861,
+            0.5836579366111643
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 55.144,
+          "cross": 0.6697499999999987,
+          "levels": [
+            0.464117142159731,
+            0.681333088861944
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 55.699999999999996,
+          "cross": 0.8087499999999981,
+          "levels": [
+            0.27776661104494593,
+            0.7487198452110313
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 56.248,
+          "cross": 0.9457499999999985,
+          "levels": [
+            0.07989901533986776,
+            0.7809665602941429
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 106.84400000000001,
+          "cross": 0.9989333333333358,
+          "levels": [
+            0.0025393478971688643,
+            0.7838383007666998
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 107.352,
+          "cross": 0.8634666666666704,
+          "levels": [
+            0.1619049664421901,
+            0.7658695518831458
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 107.9,
+          "cross": 0.7173333333333365,
+          "levels": [
+            0.32680876715868834,
+            0.7078498724717797
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 108.44800000000001,
+          "cross": 0.5712000000000027,
+          "levels": [
+            0.47453944827250183,
+            0.6126399298161047
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 109.004,
+          "cross": 0.4229333333333367,
+          "levels": [
+            0.599000140442989,
+            0.4832871870217197
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 109.548,
+          "cross": 0.2778666666666709,
+          "levels": [
+            0.6894607871664249,
+            0.3313696911352242
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 110.096,
+          "cross": 0.13173333333333703,
+          "levels": [
+            0.7445410576050193,
+            0.16104635909261233
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 136.4,
+          "cross": 0.007666666666667273,
+          "levels": [
+            0.7607165233452307,
+            0.009202636604823455
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 136.944,
+          "cross": 0.15273333333332934,
+          "levels": [
+            0.7390011411911246,
+            0.181775572826945
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 137.44799999999998,
+          "cross": 0.28713333333332686,
+          "levels": [
+            0.6847015979916193,
+            0.33345483485732075
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 137.99599999999998,
+          "cross": 0.43326666666666064,
+          "levels": [
+            0.5912961275736706,
+            0.4813761678988797
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 138.5,
+          "cross": 0.5676666666666658,
+          "levels": [
+            0.47785177972407666,
+            0.5952813520220879
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 139.048,
+          "cross": 0.7137999999999995,
+          "levels": [
+            0.33062143339353867,
+            0.6890024114570927
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 139.552,
+          "cross": 0.8481999999999971,
+          "levels": [
+            0.1797018379506632,
+            0.7433760630452078
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 140.096,
+          "cross": 0.9932666666666667,
+          "levels": [
+            0.008056205441245856,
+            0.7649715629383849
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 192.648,
+          "cross": 0.9857333333333372,
+          "levels": [
+            0.018340655941073702,
+            0.7648608418076037
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+        },
+        {
+          "elapsed": 193.152,
+          "cross": 0.7169333333333422,
+          "levels": [
+            0.3524431775037229,
+            0.6906671957739903
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+        },
+        {
+          "elapsed": 193.7,
+          "cross": 0.4246666666666745,
+          "levels": [
+            0.643753657932038,
+            0.47333073640734113
+          ],
+          "eq": [
+            [
+              -2.384799003601074,
+              0,
+              0
+            ],
+            [
+              -9.615200996398926,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+        },
+        {
+          "elapsed": 194.25199999999998,
+          "cross": 0.13026666666667852,
+          "levels": [
+            0.8022983907853387,
+            0.1554694656815938
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+        },
+        {
+          "elapsed": 216.1,
+          "cross": 0.0027499999999993936,
+          "levels": [
+            0.8194089833981977,
+            0.0038556295067511404
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 216.648,
+          "cross": 0.03928333333333285,
+          "levels": [
+            0.8178313978662288,
+            0.05508235577175813
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 217.20399999999998,
+          "cross": 0.07634999999999839,
+          "levels": [
+            0.8135418930336158,
+            0.10687558783333051
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 217.75199999999998,
+          "cross": 0.11288333333333185,
+          "levels": [
+            0.8065620575812815,
+            0.15756354086454216
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 218.304,
+          "cross": 0.14968333333333325,
+          "levels": [
+            0.796848030343007,
+            0.20809531363345535
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 218.84799999999998,
+          "cross": 0.18594999999999876,
+          "levels": [
+            0.7847234950031279,
+            0.2572303895789396
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 219.4,
+          "cross": 0.22275000000000014,
+          "levels": [
+            0.7697576059634059,
+            0.30621469649388544
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 219.94799999999998,
+          "cross": 0.2592833333333317,
+          "levels": [
+            0.752368509598007,
+            0.353835559369994
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 220.5,
+          "cross": 0.2960833333333331,
+          "levels": [
+            0.7324029360410123,
+            0.40065364305171336
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 221.048,
+          "cross": 0.33261666666666656,
+          "levels": [
+            0.710085026597298,
+            0.4457672619437272
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 221.552,
+          "cross": 0.3662166666666659,
+          "levels": [
+            0.6875164540076639,
+            0.485978131808249
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 222.096,
+          "cross": 0.40248333333333336,
+          "levels": [
+            0.6610320268321601,
+            0.5278744040175063
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 222.6,
+          "cross": 0.4360833333333327,
+          "levels": [
+            0.6345863322900769,
+            0.5651728996952663
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 223.148,
+          "cross": 0.4726166666666662,
+          "levels": [
+            0.6037886625015787,
+            0.6039017709574708
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 223.652,
+          "cross": 0.5062166666666655,
+          "levels": [
+            0.5737150927010504,
+            0.6377749902105521
+          ],
+          "eq": [
+            [
+              -8.38640022277832,
+              0,
+              0
+            ],
+            [
+              -3.6135997772216797,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 224.20399999999998,
+          "cross": 0.543016666666665,
+          "levels": [
+            0.538966498930975,
+            0.672854574696153
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 224.748,
+          "cross": 0.5792833333333325,
+          "levels": [
+            0.5029685457280308,
+            0.7052416687003102
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 225.29999999999998,
+          "cross": 0.616083333333332,
+          "levels": [
+            0.46472952137850854,
+            0.7357027103037481
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 225.84799999999998,
+          "cross": 0.6526166666666654,
+          "levels": [
+            0.425266536044262,
+            0.7635648697448971
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 226.352,
+          "cross": 0.6862166666666667,
+          "levels": [
+            0.3877366900944246,
+            0.7869834561200051
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 226.9,
+          "cross": 0.7227500000000001,
+          "levels": [
+            0.3456825013529752,
+            0.8099035435850297
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 227.44799999999998,
+          "cross": 0.7592833333333318,
+          "levels": [
+            0.30249849683603003,
+            0.8301719278112003
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 227.99599999999998,
+          "cross": 0.7958166666666652,
+          "levels": [
+            0.25833794640950813,
+            0.8477648606128838
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 228.5,
+          "cross": 0.8294166666666665,
+          "levels": [
+            0.21695332425727187,
+            0.8614382778440444
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 229.048,
+          "cross": 0.8659499999999999,
+          "levels": [
+            0.17126608288140943,
+            0.8735413329884523
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 229.552,
+          "cross": 0.8995499999999993,
+          "levels": [
+            0.12875574777991616,
+            0.8821743309366177
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 230.096,
+          "cross": 0.9358166666666666,
+          "levels": [
+            0.08247656382198265,
+            0.8887749421192446
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 230.6,
+          "cross": 0.969416666666666,
+          "levels": [
+            0.03935377811262075,
+            0.8922955840158266
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 267.40000000000003,
+          "cross": 0.9973686523437522,
+          "levels": [
+            0.0034874269024482984,
+            0.8932921558595694
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 267.904,
+          "cross": 0.8713686523437616,
+          "levels": [
+            0.16982426724353594,
+            0.8751189899214644
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 268.44800000000004,
+          "cross": 0.7353686523437517,
+          "levels": [
+            0.34174598094543285,
+            0.8172513706622517
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 269,
+          "cross": 0.5973686523437607,
+          "levels": [
+            0.5002535790721225,
+            0.7205162248148511
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 269.548,
+          "cross": 0.46036865234376023,
+          "levels": [
+            0.6344661403694118,
+            0.5911264185220233
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 270.052,
+          "cross": 0.33436865234375546,
+          "levels": [
+            0.732199775247679,
+            0.44790324085085587
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 270.55600000000004,
+          "cross": 0.20836865234375068,
+          "levels": [
+            0.8013472304467442,
+            0.2871917342136019
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 271.1,
+          "cross": 0.072368652343755,
+          "levels": [
+            0.8408118217186242,
+            0.10133673619906824
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 308.35200000000003,
+          "cross": 0.0031313476562502274,
+          "levels": [
+            0.8462833882760066,
+            0.004283018910843095
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Unreviewed vocal edges · conservative fade; no bass exchange"
+        },
+        {
+          "elapsed": 308.90000000000003,
+          "cross": 0.14013134765625068,
+          "levels": [
+            0.8259082661740109,
+            0.19060837734037328
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Unreviewed vocal edges · conservative fade; no bass exchange"
+        },
+        {
+          "elapsed": 309.44800000000004,
+          "cross": 0.27713134765625114,
+          "levels": [
+            0.7673615707690544,
+            0.3681221279206781
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Unreviewed vocal edges · conservative fade; no bass exchange"
+        },
+        {
+          "elapsed": 309.99600000000004,
+          "cross": 0.4141313476562516,
+          "levels": [
+            0.6734442356483044,
+            0.5286538580042688
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Unreviewed vocal edges · conservative fade; no bass exchange"
+        },
+        {
+          "elapsed": 310.5,
+          "cross": 0.5401313476562422,
+          "levels": [
+            0.5595263359481564,
+            0.6549303252720406
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Unreviewed vocal edges · conservative fade; no bass exchange"
+        },
+        {
+          "elapsed": 311.048,
+          "cross": 0.6771313476562426,
+          "levels": [
+            0.41104404105812975,
+            0.7630792292925292
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Unreviewed vocal edges · conservative fade; no bass exchange"
+        },
+        {
+          "elapsed": 311.552,
+          "cross": 0.8031313476562474,
+          "levels": [
+            0.25756078528456783,
+            0.8315508316822928
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Unreviewed vocal edges · conservative fade; no bass exchange"
+        },
+        {
+          "elapsed": 312.096,
+          "cross": 0.9391313476562431,
+          "levels": [
+            0.08080492752169999,
+            0.8690134112576686
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Unreviewed vocal edges · conservative fade; no bass exchange"
+        },
+        {
+          "elapsed": 351.904,
+          "cross": 0.9964598958333378,
+          "levels": [
+            0.004788308331442281,
+            0.8729668262017043
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 352.452,
+          "cross": 0.850326562500004,
+          "levels": [
+            0.20105466032126884,
+            0.8489492085814732
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 352.956,
+          "cross": 0.7159265624999989,
+          "levels": [
+            0.37249736736607275,
+            0.7875131903061217
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 353.49600000000004,
+          "cross": 0.5719265624999934,
+          "levels": [
+            0.5387521461199327,
+            0.6820289672614166
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 354.052,
+          "cross": 0.4236598958333313,
+          "levels": [
+            0.678984293030723,
+            0.5390331983704755
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 354.596,
+          "cross": 0.2785932291666692,
+          "levels": [
+            0.7824246347008454,
+            0.36863499887243023
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 355.10400000000004,
+          "cross": 0.14312656249999234,
+          "levels": [
+            0.8414434063012948,
+            0.194629842912164
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured beats aligned across vocal edges · no bass exchange; phrases unreviewed"
+        },
+        {
+          "elapsed": 387.848,
+          "cross": 0.011818847656257958,
+          "levels": [
+            0.8630072213185827,
+            0.01727479867804882
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 388.35200000000003,
+          "cross": 0.13781884765626273,
+          "levels": [
+            0.8430199664251745,
+            0.20000301929789366
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 388.896,
+          "cross": 0.2738188476562584,
+          "levels": [
+            0.7845272293755556,
+            0.3882518887143931
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 389.40000000000003,
+          "cross": 0.3998188476562632,
+          "levels": [
+            0.6984460793337917,
+            0.5470894072829076
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 389.94800000000004,
+          "cross": 0.5368188476562636,
+          "levels": [
+            0.5740436415501335,
+            0.6953710643965181
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 390.5,
+          "cross": 0.6748188476562547,
+          "levels": [
+            0.42198400084920706,
+            0.8123065086767234
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 391.004,
+          "cross": 0.8008188476562594,
+          "levels": [
+            0.26568364391531674,
+            0.8859510985158003
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 391.548,
+          "cross": 0.9368188476562551,
+          "levels": [
+            0.08553722985314671,
+            0.9266172522708445
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Short handoff into measured steady entry · no tempo change or FX"
+        },
+        {
+          "elapsed": 416.54400000000004,
+          "cross": 0.9907100573730041,
+          "levels": [
+            0.008921222528707418,
+            0.9310459073850801
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+        },
+        {
+          "elapsed": 417.048,
+          "cross": 0.7220150573730271,
+          "levels": [
+            0.25901203974462916,
+            0.8438049705792778
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+        },
+        {
+          "elapsed": 417.552,
+          "cross": 0.4533200573730197,
+          "levels": [
+            0.4636645499522274,
+            0.6084746445328264
+          ],
+          "eq": [
+            [
+              -3.760162353515625,
+              0,
+              0
+            ],
+            [
+              -8.239837646484375,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+        },
+        {
+          "elapsed": 418.1,
+          "cross": 0.1611675573730219,
+          "levels": [
+            0.5929458505122582,
+            0.23324512989997004
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+        },
+        {
+          "elapsed": 451.752,
+          "cross": 0.003694367828374044,
+          "levels": [
+            0.6124684012342101,
+            0.005368923447804319
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 452.296,
+          "cross": 0.039946867828372916,
+          "levels": [
+            0.6112612091981475,
+            0.05804687661493935
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 452.85200000000003,
+          "cross": 0.07699905532837562,
+          "levels": [
+            0.6080252730063975,
+            0.11169702686592275
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 453.40000000000003,
+          "cross": 0.11351811782837576,
+          "levels": [
+            0.6027651197203667,
+            0.16419613326565585
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 453.904,
+          "cross": 0.14710499282837328,
+          "levels": [
+            0.5961891979416336,
+            0.21200850540511684
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 454.444,
+          "cross": 0.18309093032837465,
+          "levels": [
+            0.5872480326121732,
+            0.26258373319194384
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 455,
+          "cross": 0.22014311782837356,
+          "levels": [
+            0.5762407383618608,
+            0.31378766090545795
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 455.548,
+          "cross": 0.25666218032837373,
+          "levels": [
+            0.5633627090023765,
+            0.36318882713696254
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 456.1,
+          "cross": 0.2934478053283751,
+          "levels": [
+            0.5485577213517345,
+            0.41176717770069615
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 456.60400000000004,
+          "cross": 0.3270346803283764,
+          "levels": [
+            0.5334454776623971,
+            0.45493186359389526
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 457.148,
+          "cross": 0.3632871803283753,
+          "levels": [
+            0.5154314606285268,
+            0.5000653253837299
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 457.696,
+          "cross": 0.39980624282837546,
+          "levels": [
+            0.4956071301518392,
+            0.5438996422962035
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 458.20000000000005,
+          "cross": 0.43339311782837675,
+          "levels": [
+            0.47594840250209103,
+            0.5826541443664581
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 458.752,
+          "cross": 0.47017874282837435,
+          "levels": [
+            0.4529072663189524,
+            0.6232471381276206
+          ],
+          "eq": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              -12,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 459.3,
+          "cross": 0.5066978053283745,
+          "levels": [
+            0.42850063698475793,
+            0.6614372408517575
+          ],
+          "eq": [
+            [
+              -8.571157455444336,
+              0,
+              0
+            ],
+            [
+              -3.428842544555664,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 459.844,
+          "cross": 0.5429503053283734,
+          "levels": [
+            0.4029064207110764,
+            0.6972389101677976
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 460.348,
+          "cross": 0.5765371803283746,
+          "levels": [
+            0.3780309849613772,
+            0.7284038744137469
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 460.85200000000003,
+          "cross": 0.610124055328376,
+          "levels": [
+            0.3520968009794814,
+            0.7575319132526523
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 461.40000000000003,
+          "cross": 0.6466431178283761,
+          "levels": [
+            0.3227647653434289,
+            0.7867521056805309
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 461.904,
+          "cross": 0.6802299928283736,
+          "levels": [
+            0.29486561765969554,
+            0.8113807317423785
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 462.444,
+          "cross": 0.716215930328375,
+          "levels": [
+            0.2638449516104089,
+            0.8354627821762151
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 463,
+          "cross": 0.7532681178283739,
+          "levels": [
+            0.2314805697659459,
+            0.8570882496915466
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 463.548,
+          "cross": 0.7897871803283741,
+          "levels": [
+            0.19858405740912488,
+            0.8757161320211324
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 464.1,
+          "cross": 0.8265728053283755,
+          "levels": [
+            0.16480097118779824,
+            0.8916312775639419
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 464.648,
+          "cross": 0.8630918678283757,
+          "levels": [
+            0.13070560900081318,
+            0.9044207058050802
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 465.15200000000004,
+          "cross": 0.8966787428283769,
+          "levels": [
+            0.09896779618559215,
+            0.9135648801935403
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 465.696,
+          "cross": 0.9329312428283758,
+          "levels": [
+            0.06440752030828367,
+            0.9206061869361406
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        },
+        {
+          "elapsed": 466.20000000000005,
+          "cross": 0.9665181178283772,
+          "levels": [
+            0.03219981038433595,
+            0.9244824317609392
+          ],
+          "eq": [
+            [
+              -12,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "plan": "Measured steady instrumental overlap · gradual blend and bass handoff; phrases unreviewed"
+        }
+      ],
+      "statuses": [
+        {
+          "status": "idle",
+          "elapsed": 0,
+          "message": "Autopilot · beat-timed moves, smooth handoffs and space for the groove."
+        },
+        {
+          "status": "loading",
+          "elapsed": 0,
+          "message": "Preparing the first track…"
+        },
+        {
+          "status": "playing",
+          "elapsed": 0,
+          "message": "Set started. Preparing the next groove."
+        },
+        {
+          "status": "closing",
+          "elapsed": 466.752,
+          "message": "Winding down to a smooth finish."
+        },
+        {
+          "status": "stopped",
+          "elapsed": 507.048,
+          "message": "Prepared music finished. The set has stopped."
+        }
+      ],
+      "muted": true,
+      "sha256": "e06b8110f14f4558d670f9d1ffb648674aeaaf9ec8aec9a3ac319b6037272cdb"
+    }
+  ]
+}
