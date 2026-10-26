@@ -1,0 +1,24 @@
+[
+  {
+    "folder": "endurance-2f852ba1b27b47deaf9708936ccd4235",
+    "status": "FAIL",
+    "failure": "TimeoutError: locator.waitFor: Timeout 90000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Recording private set') to be visible\u001b[22m\n",
+    "cleanup": "PASS: own R2 objects, user, database and source cache removed",
+    "jobs": [
+      {
+        "session": "c169c1f4957a444cb6c133a654a41840",
+        "sequence": 0,
+        "state": "failed",
+        "externalSpendMicros": 0,
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "folder": "endurance-742252529097473cb86cd2c6f2010040",
+    "status": "FAIL",
+    "failure": "TimeoutError: locator.check: Timeout 90000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('radio', { name: /^House/ })\u001b[22m\n",
+    "cleanup": "PASS: own R2 objects, user, database and source cache removed",
+    "jobs": []
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "status": "FAIL provider SSH tunnel before audio",
+  "tunnel_log_sha256": "f99821d5fdf6f3bdf438501fa360f0f4fa70e159d431b2d61477cc0af5793ac4",
+  "observed_messages": [
+    "Connection refused",
+    "Connection to ssh3.vast.ai closed by remote host."
+  ],
+  "boot_tail_empty": true,
+  "cause": "Remote transport closed; no retained renderer log establishes why the host closed it.",
+  "audio_outputs": 0,
+  "remaining_seconds": 1137,
+  "observed_debit_usd": 0.0033247860000003016,
+  "automatic_retry": false
+}

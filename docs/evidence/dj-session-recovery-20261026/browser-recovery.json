@@ -1,0 +1,313 @@
+{
+  "status": "PASS technical",
+  "folder": "/Users/serhansari/Documents/projects/jamloom/renders/ai-dj-finish-20261024/endurance-55c93fb03be74638801293d2652c1ebf",
+  "requestedSeconds": 120,
+  "source": "Fresh procedural originals; no GPU or musical acceptance claim",
+  "samples": [
+    {
+      "elapsed": 0.001,
+      "started": 1,
+      "ended": 0,
+      "rms": 0.02031572081396352,
+      "heap": 52269419,
+      "stopped": false,
+      "nodeRss": 248905728
+    },
+    {
+      "elapsed": 5.005,
+      "started": 2,
+      "ended": 0,
+      "rms": 0.042075992676964574,
+      "heap": 53837229,
+      "stopped": false,
+      "nodeRss": 278167552
+    },
+    {
+      "elapsed": 10.008,
+      "started": 2,
+      "ended": 0,
+      "rms": 0.02062342484125192,
+      "heap": 54904390,
+      "stopped": false,
+      "nodeRss": 234602496
+    },
+    {
+      "elapsed": 15.01,
+      "started": 2,
+      "ended": 0,
+      "rms": 0.0294269576871273,
+      "heap": 68104725,
+      "stopped": false,
+      "nodeRss": 234913792
+    },
+    {
+      "elapsed": 20.014,
+      "started": 2,
+      "ended": 0,
+      "rms": 0,
+      "heap": 70597819,
+      "stopped": false,
+      "nodeRss": 235585536
+    },
+    {
+      "elapsed": 25.018,
+      "started": 2,
+      "ended": 0,
+      "rms": 0.04394771586591513,
+      "heap": 70669452,
+      "stopped": false,
+      "nodeRss": 235864064
+    },
+    {
+      "elapsed": 30.021,
+      "started": 4,
+      "ended": 2,
+      "rms": 0.04821437240076275,
+      "heap": 52388044,
+      "stopped": false,
+      "nodeRss": 195805184
+    },
+    {
+      "elapsed": 35.026,
+      "started": 4,
+      "ended": 2,
+      "rms": 0.03975875913576295,
+      "heap": 54554531,
+      "stopped": false,
+      "nodeRss": 195805184
+    },
+    {
+      "elapsed": 40.03,
+      "started": 4,
+      "ended": 2,
+      "rms": 0.03417505905862352,
+      "heap": 69232115,
+      "stopped": false,
+      "nodeRss": 196050944
+    },
+    {
+      "elapsed": 45.035,
+      "started": 4,
+      "ended": 2,
+      "rms": 0.05940563905111736,
+      "heap": 70835782,
+      "stopped": false,
+      "nodeRss": 130891776
+    },
+    {
+      "elapsed": 50.039,
+      "started": 4,
+      "ended": 2,
+      "rms": 0,
+      "heap": 68595739,
+      "stopped": false,
+      "nodeRss": 136413184
+    },
+    {
+      "elapsed": 55.051,
+      "started": 4,
+      "ended": 2,
+      "rms": 0.018173942138167615,
+      "heap": 72405978,
+      "stopped": false,
+      "nodeRss": 122830848
+    },
+    {
+      "elapsed": 60.058,
+      "started": 4,
+      "ended": 3,
+      "rms": 0.06683236056613297,
+      "heap": 62686482,
+      "stopped": false,
+      "nodeRss": 120258560
+    },
+    {
+      "elapsed": 65.117,
+      "started": 5,
+      "ended": 3,
+      "rms": 0.021785631842094973,
+      "heap": 74944865,
+      "stopped": false,
+      "nodeRss": 212992000
+    },
+    {
+      "elapsed": 70.123,
+      "started": 5,
+      "ended": 3,
+      "rms": 0.00879180645605201,
+      "heap": 53547000,
+      "stopped": false,
+      "nodeRss": 192987136
+    },
+    {
+      "elapsed": 75.126,
+      "started": 5,
+      "ended": 3,
+      "rms": 0.005599168016841856,
+      "heap": 63689217,
+      "stopped": false,
+      "nodeRss": 193314816
+    },
+    {
+      "elapsed": 80.13,
+      "started": 5,
+      "ended": 3,
+      "rms": 0.031929207630558024,
+      "heap": 65631523,
+      "stopped": false,
+      "nodeRss": 192118784
+    },
+    {
+      "elapsed": 85.134,
+      "started": 5,
+      "ended": 3,
+      "rms": 0.0021161088924941144,
+      "heap": 67058016,
+      "stopped": false,
+      "nodeRss": 172310528
+    },
+    {
+      "elapsed": 90.146,
+      "started": 5,
+      "ended": 3,
+      "rms": 0.054924567920910404,
+      "heap": 65949020,
+      "stopped": false,
+      "nodeRss": 172605440
+    },
+    {
+      "elapsed": 95.153,
+      "started": 5,
+      "ended": 3,
+      "rms": 0.04227892009609095,
+      "heap": 62517447,
+      "stopped": false,
+      "nodeRss": 172736512
+    },
+    {
+      "elapsed": 100.157,
+      "started": 5,
+      "ended": 3,
+      "rms": 0.03318401853693477,
+      "heap": 56493032,
+      "stopped": false,
+      "nodeRss": 173293568
+    },
+    {
+      "elapsed": 105.161,
+      "started": 5,
+      "ended": 3,
+      "rms": 0.03891888484573282,
+      "heap": 55749645,
+      "stopped": false,
+      "nodeRss": 173293568
+    },
+    {
+      "elapsed": 110.165,
+      "started": 5,
+      "ended": 3,
+      "rms": 0.040504455268037594,
+      "heap": 58542032,
+      "stopped": false,
+      "nodeRss": 173359104
+    },
+    {
+      "elapsed": 115.167,
+      "started": 5,
+      "ended": 4,
+      "rms": 0.002688089199637092,
+      "heap": 55888450,
+      "stopped": false,
+      "nodeRss": 172507136
+    }
+  ],
+  "recordedSeconds": 121.748,
+  "tracks": 4,
+  "jobs": [
+    {
+      "session": "9727d1eea56b497cac7671647b33cf19",
+      "sequence": 0,
+      "state": "completed",
+      "externalSpendMicros": 0,
+      "sha256": "6dd29878a655f9c3407d35561a99102847c79c34943b3c7d94767f887bd2bfc1"
+    },
+    {
+      "session": "9727d1eea56b497cac7671647b33cf19",
+      "sequence": 1,
+      "state": "completed",
+      "externalSpendMicros": 0,
+      "sha256": "afe51ea3107bfe1fe3b73dcd7854381916d00672f579130f28a45a28a0562a1c"
+    },
+    {
+      "session": "9727d1eea56b497cac7671647b33cf19",
+      "sequence": 2,
+      "state": "completed",
+      "externalSpendMicros": 0,
+      "sha256": "e52a716e63d252be0d613b5f5cdbc420ab1fc95eb376cc335d65d969cce683f8"
+    },
+    {
+      "session": "9727d1eea56b497cac7671647b33cf19",
+      "sequence": 3,
+      "state": "completed",
+      "externalSpendMicros": 0,
+      "sha256": "69cbf13f114f24711e660e95350b357a5e3e7d5511d377dde5db5bcff285fecf"
+    }
+  ],
+  "longestQuietSeconds": 0.994271,
+  "lostReplies": [
+    "start",
+    "played",
+    "next"
+  ],
+  "actualSeconds": 122.062,
+  "batches": [
+    {
+      "sequence": 0,
+      "seed": 1481576634,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 4
+      },
+      "audio_sha256": "6dd29878a655f9c3407d35561a99102847c79c34943b3c7d94767f887bd2bfc1"
+    },
+    {
+      "sequence": 1,
+      "seed": 2502483661,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 4,
+        "vocals": true
+      },
+      "audio_sha256": "afe51ea3107bfe1fe3b73dcd7854381916d00672f579130f28a45a28a0562a1c"
+    },
+    {
+      "sequence": 2,
+      "seed": 58341301,
+      "render_settings": {
+        "mood": "warm",
+        "style": "house",
+        "energy": 4,
+        "vocals": true
+      },
+      "audio_sha256": "e52a716e63d252be0d613b5f5cdbc420ab1fc95eb376cc335d65d969cce683f8"
+    },
+    {
+      "sequence": 3,
+      "seed": 3175860055,
+      "render_settings": {
+        "mood": "bright",
+        "style": "house",
+        "energy": 3,
+        "vocals": true
+      },
+      "audio_sha256": "69cbf13f114f24711e660e95350b357a5e3e7d5511d377dde5db5bcff285fecf"
+    }
+  ],
+  "errors": [],
+  "humanListening": "NOT RUN",
+  "hostedAuthentication": "Injected test context",
+  "sampledContinuity": "5-second screening, not sample-accurate glitch proof",
+  "cleanup": "PASS: own R2 objects, user, database and source cache removed"
+}

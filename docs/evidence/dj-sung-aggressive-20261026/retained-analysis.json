@@ -1,0 +1,35 @@
+{
+  "status": "FAIL candidate continuity; ASR screening only",
+  "raw_sha256": "df78f15b1d35619a9b42531e190ac39e28c176f33dc3d7d765b719b3abff8493",
+  "clipped_frames": 1,
+  "clipped_seconds": [
+    35.422125
+  ],
+  "clipped_frames_inside_edit": 0,
+  "source_safe_outside_edit_still_fails": "Repaint drops accompaniment for at least 200 ms",
+  "asr": [
+    {
+      "name": "candidate",
+      "source_sha256": "df78f15b1d35619a9b42531e190ac39e28c176f33dc3d7d765b719b3abff8493",
+      "excerpt_sha256": "8771004cd217b9d17cfc534e74d895c4c4f0f64f80ef377c651072b0dd5a98ad",
+      "transcript": "",
+      "phrases": []
+    },
+    {
+      "name": "positive-control",
+      "source_sha256": "8eed92ea4766b371bdc40792c8d37f80f36adf127b9e263b7cb912580f2307fb",
+      "excerpt_sha256": "9ce9a611b8267e7f3a88be008120e4c759abee1fcf432b30b6888a1f5ce556bc",
+      "transcript": "",
+      "phrases": []
+    },
+    {
+      "name": "instrumental-control",
+      "source_sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+      "excerpt_sha256": "1eecc865774ed5b8950aa9646d61f0d8ed12d080c5e5f8a3cba447751e2ed25b",
+      "transcript": "",
+      "phrases": []
+    }
+  ],
+  "human_listening": "NOT RUN for new candidate",
+  "limits": "The temporary array substitutes the original outside the edit only to diagnose validation; no repaired audio is saved or approved. Transcription does not prove naturalness."
+}

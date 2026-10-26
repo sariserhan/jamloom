@@ -10,6 +10,28 @@ from dj_sample_trial import validate, validate_quality, validate_sung, EVIDENCE,
 
 
 class SamplePermitTests(unittest.TestCase):
+    def test_vocal_mode_replacement_preserves_first_attempt_cost_and_time(self):
+        import dj_sample_trial as trial
+        plan=json.loads((ROOT/'docs/evidence/dj-sung-aggressive-20261026/replacement-plan.json').read_text())
+        plan['status']='AUTHORIZED';plan['owner_statement']='Approve one replacement within the original cap'
+        with patch.object(trial.vast,'LEASE_SECONDS',plan['remaining_rental_seconds']):
+            validate_sung(plan,replacement=True,aggressive=True)
+            for key,value in [('budget_usd_total',4),('remaining_rental_seconds',1200),('original_permit_sha256','0'*64)]:
+                changed=copy.deepcopy(plan);changed[key]=value
+                with self.assertRaises(ValueError):validate_sung(changed,replacement=True,aggressive=True)
+
+    def test_vocal_mode_study_requires_new_specific_approval(self):
+        plan=json.loads((ROOT/'docs/evidence/dj-sung-aggressive-20261026/gpu-plan.json').read_text())
+        plan['status']='PREPARED'
+        with self.assertRaises(ValueError):validate_sung(plan,aggressive=True)
+        plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 vocal-mode comparison'
+        validate_sung(plan,aggressive=True)
+        with self.assertRaises(ValueError):validate_sung(plan,aggressive=True,replacement=True)
+        with self.assertRaises(ValueError):validate_sung(plan)
+        for key,value in [('budget_usd',4),('max_requests',5),('max_minutes',21),('max_workers',2),('owner_statement','finish all'),('public_activation',True)]:
+            changed=copy.deepcopy(plan);changed[key]=value
+            with self.assertRaises(ValueError):validate_sung(changed,aggressive=True)
+
     def test_sung_replacement_cannot_extend_original_total_allowance(self):
         import dj_sample_trial as trial
         plan=json.loads((ROOT/'docs/evidence/dj-sung-hooks-20261026/replacement-plan.json').read_text())

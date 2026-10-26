@@ -1,0 +1,9 @@
+{
+  "status": "PASS pinned mode resolution; musical outcome NOT RUN",
+  "source": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/acestep/core/generation/handler/generate_music.py",
+  "sha256": "0da6727cb5dc834697b6ff5774af79ace977b259205755e526bf1841f1ad913d",
+  "balanced_injection": 0.5,
+  "aggressive_injection": 0,
+  "related_issue": "https://github.com/ace-step/ACE-Step-1.5/issues/1151",
+  "limits": "Upstream advice and local parameter proof do not establish an audible improvement."
+}

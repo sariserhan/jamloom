@@ -1,0 +1,103 @@
+{
+  "status": "FAIL local retained-candidate validation",
+  "reason": "Invalid repainted audio",
+  "source_sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+  "raw_sha256": "df78f15b1d35619a9b42531e190ac39e28c176f33dc3d7d765b719b3abff8493",
+  "source_dbfs": -19.48381752434161,
+  "candidate_dbfs": -25.961182910820206,
+  "candidate_peak": 1.0,
+  "frames": [
+    {
+      "start": 39.88875,
+      "source_dbfs": -15.451257905313966,
+      "candidate_dbfs": -28.916235565061832
+    },
+    {
+      "start": 39.98875,
+      "source_dbfs": -23.827220762834575,
+      "candidate_dbfs": -46.604635950585795
+    },
+    {
+      "start": 40.088750000000005,
+      "source_dbfs": -17.09073446823847,
+      "candidate_dbfs": -50.74137919604248
+    },
+    {
+      "start": 40.18875,
+      "source_dbfs": -16.843260479596733,
+      "candidate_dbfs": -51.22136569692492
+    },
+    {
+      "start": 40.28875,
+      "source_dbfs": -16.944008422019486,
+      "candidate_dbfs": -47.24200531631805
+    },
+    {
+      "start": 40.38875,
+      "source_dbfs": -17.949403240380647,
+      "candidate_dbfs": -40.54590658604763
+    },
+    {
+      "start": 40.48875,
+      "source_dbfs": -22.418204667859463,
+      "candidate_dbfs": -35.46968701615722
+    },
+    {
+      "start": 40.588750000000005,
+      "source_dbfs": -20.75573008272847,
+      "candidate_dbfs": -34.82861844594511
+    },
+    {
+      "start": 40.68875,
+      "source_dbfs": -35.615683510500105,
+      "candidate_dbfs": -34.26281211515001
+    },
+    {
+      "start": 40.78875,
+      "source_dbfs": -15.314470864156217,
+      "candidate_dbfs": -15.188960239579162
+    },
+    {
+      "start": 40.88875,
+      "source_dbfs": -20.252836229887773,
+      "candidate_dbfs": -22.721022081421502
+    },
+    {
+      "start": 40.98875,
+      "source_dbfs": -28.092071415657784,
+      "candidate_dbfs": -31.880834633719097
+    },
+    {
+      "start": 41.088750000000005,
+      "source_dbfs": -31.763281047094164,
+      "candidate_dbfs": -35.68906283324446
+    },
+    {
+      "start": 41.18875,
+      "source_dbfs": -26.93322155107673,
+      "candidate_dbfs": -35.64729871747003
+    },
+    {
+      "start": 41.28875,
+      "source_dbfs": -16.073430605449513,
+      "candidate_dbfs": -25.494300468149298
+    },
+    {
+      "start": 41.38875,
+      "source_dbfs": -22.05603714631872,
+      "candidate_dbfs": -31.82111977404869
+    },
+    {
+      "start": 41.48875,
+      "source_dbfs": -24.414475470698285,
+      "candidate_dbfs": -40.03603855385046
+    },
+    {
+      "start": 41.588750000000005,
+      "source_dbfs": -23.91270206022536,
+      "candidate_dbfs": -35.94186346183292
+    }
+  ],
+  "remote_error": "HTTP 422; response body not retained",
+  "human_listening": "NOT RUN"
+}

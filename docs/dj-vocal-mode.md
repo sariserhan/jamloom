@@ -1,0 +1,31 @@
+# Vocal mode comparison — 2026-10-26
+
+**FAIL candidate qualification; PASS bounded execution/cleanup.** The owner requested completion after rejecting all four short sung edits. Do not promote those edits or use a consumed permit.
+
+The pinned upstream implementation resolves the prior default `balanced` mode to 50% source-latent injection; `aggressive` resolves to zero. The upstream [missing-vocal report and maintainer response](https://github.com/ace-step/ACE-Step-1.5/issues/1151) recommends removing injection when regenerating lyrics. This is a plausible explanation, not a proven cause of our failed samples. The pinned code already contains direct lyric conditioning; no missing-lyrics patch is assumed. Context7 tools are unavailable; primary upstream sources were checked. [Exact code/hash and resolver check](evidence/dj-sung-aggressive-20261026/mode-research.json).
+
+The prepared study changes only repaint mode for the same four source/seed/lyric/singer/window combinations. Previous raw candidates provide the baseline. The new continuity rejection applies before an output can be accepted, and the source remains unchanged outside each short edit. This does not add a voice detector, extend phrases, retry failed vocals or train on references. It does not address the upstream warning about short musical context; if the intervention fails, that failure remains recorded.
+
+[Prepared permit](evidence/dj-sung-aggressive-20261026/gpu-plan.json): **four edits, $3 total maximum, one GPU, 20 minutes maximum, stop on failure, independent cleanup, no extra attempts, no public activation**. The prior $3 study is complete. No rental can start while this permit is PREPARED. A failure ends the run; no automatic replacement is authorized.
+
+68 Python checks pass, including explicit mode delivery to the model, isolated shipped-package imports, original-source binding, refusal of generic or consumed approval and protection against dropout. The renderer receives the same mode through the hashed fixture, and its receipt must agree. [Tests](evidence/dj-sung-aggressive-20261026/python-tests.txt).
+
+After exact owner approval, the bounded controller is `scripts/dj_sample_trial.py --sung-aggressive`; its watchdog selects the same campaign and deadline. On successful cleanup, `scripts/review_dj_sung_hooks.py --aggressive` creates the separate `/vocal-mode/review/` page. It never overwrites the rejected study. No fresh quality, capacity, hosting or release gate is closed by preparation alone.
+
+
+## First attempt and bounded replacement
+
+The owner approved the exact $3 study. The provider closed the SSH transport before the renderer became ready: 62.47 seconds, approximately $0.003325 observed debit, no audio. The controller deleted the rental and an independent inventory confirmed zero rentals. The empty renderer log does not establish the underlying host failure. [Failure](evidence/dj-sung-aggressive-20261026/first-failure.json), [transport evidence](evidence/dj-sung-aggressive-20261026/transport-failure.json).
+
+The prepared replacement retains the original **$3 combined cap**, **1,137 seconds (18:57)** remaining and the same four edits. Preflight now first checks the host used by the successful previous sung-edit rental; availability and reliability are not guaranteed. There are no automatic replacement rentals or extra model retries. The separate [replacement permit](evidence/dj-sung-aggressive-20261026/replacement-plan.json) records the separately approved replacement and binds the original authorization hash. **69 checks PASS**, including unchanged combined cost/time bounds. [Replacement checks](evidence/dj-sung-aggressive-20261026/replacement-tests.txt). The owner approved “Approve one replacement within the original cap”; this command completed and the permit is consumed: `scripts/dj_sample_trial.py --sung-aggressive --replacement`.
+
+
+## Replacement result
+
+The model rendered **one raw candidate**; validation rejected it with HTTP 422 and the stop-on-failure rule ended the run. No edited track was delivered and the other three model calls were **NOT RUN**. The GPU was deleted; an independent inventory confirms zero rentals. The replacement lasted **361.56 seconds**; both attempts total **424.03 seconds (7:04)** and **$0.039556 observed combined debit**, not a settled invoice. [Run](evidence/dj-sung-aggressive-20261026/replacement-failure.json), [cost/cleanup](evidence/dj-sung-aggressive-20261026/costs.json), [inventory](evidence/dj-sung-aggressive-20261026/final-inventory.json).
+
+Local revalidation of the retained raw output finds one clipped frame at 35.422125 seconds, outside the intended 39.88875–41.76375-second edit. Substituting the untouched source outside that window in a temporary array still fails the new **200 ms accompaniment-dropout guard**. No repaired or normalized output was saved, and no guard was weakened. The short edit averages −25.96 dBFS against −19.48 dBFS in the original. The remote HTTP body was not retained; these are independently reproduced local rejection reasons, not a claimed remote exception trace. [Initial analysis](evidence/dj-sung-aggressive-20261026/candidate-failure.json), [reproducible checks](evidence/dj-sung-aggressive-20261026/check_retained.py), [retained-output evidence](evidence/dj-sung-aggressive-20261026/retained-analysis.json).
+
+Tiny-Whisper returned no words for the new candidate, the unchanged instrumental, **and the previously heard vocal positive control**. This screening therefore fails sensitivity on this material and cannot establish absence of singing. Do not use empty transcripts to accept/reject a vocal or as a musical score. No human singing verdict is claimed for this new candidate; its audio continuity already fails.
+
+There is **no new listening page or accepted voice**. The review script/browser option was prepared but not run because four valid outputs do not exist. The baseline comparison remains rejected. This intervention has not demonstrated a usable vocal improvement; do not spend the unused budget on another attempt without a new, concrete authorization. Both permits are consumed. Full-song Music DNA generation and short local repaint are different paths; shared singer text is insufficient to claim equivalent results. A different vocal-generation/phrase-selection approach remains necessary.

@@ -57,6 +57,7 @@ class SungHooksTests(unittest.TestCase):
                 sung_study(self.value,root,engine=('dit','lm'),fixture_file=root/'sung-fixtures.json')
 
     def test_model_receives_musical_context_and_retains_raw_candidate(self):
+        self.case['repaint_mode']='aggressive'
         samples=np.ones((2880000,2),dtype=np.float32)*.1
         candidate=np.ones_like(samples)*.2
         with tempfile.TemporaryDirectory() as directory:
@@ -68,6 +69,7 @@ class SungHooksTests(unittest.TestCase):
                 output,rate=sung_study(self.value,root,engine=('dit','lm'),fixture_file=root/'sung-fixtures.json')
             params=generate.call_args.args[2]
             self.assertEqual(params.task_type,'repaint');self.assertEqual(params.chunk_mask_mode,'explicit');self.assertEqual(params.src_audio,str(root/'sung-house-1.wav'))
+            self.assertEqual(params.repaint_mode,'aggressive')
             self.assertFalse(params.thinking);self.assertFalse(params.instrumental);self.assertFalse(params.enable_normalization)
             self.assertEqual(params.lyrics,'[Chorus]\nWe rise\n[Instrumental]');self.assertEqual((params.repainting_start,params.repainting_end),(20,21.875))
             self.assertTrue((root/'sung-candidates/raw-0.wav').exists());self.assertEqual(rate,48000)

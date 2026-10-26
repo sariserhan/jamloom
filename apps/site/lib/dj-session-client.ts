@@ -15,8 +15,21 @@ export function sessionRate(q:SessionQuote){
 }
 export type SessionConfig={owner:string;input:DJSessionInput;quote:SessionQuote};
 export async function sessionAPI(path='',body?:unknown,signal?:AbortSignal,keepalive=false){
- const response=await fetch('/api/ai-dj/sessions'+path,{method:body===undefined?'GET':'POST',credentials:'same-origin',cache:'no-store',signal:signal?AbortSignal.any([signal,AbortSignal.timeout(10000)]):AbortSignal.timeout(10000),keepalive,headers:body===undefined?{}:{'Content-Type':'application/json'},...(body===undefined?{}:{body:JSON.stringify(body)})});
- const value=await response.json();if(!response.ok)throw Error(value.error||'Session unavailable.');return value;
+ // Replay only reads and operations already deduplicated by session/sequence on the server.
+ const replayable=body===undefined||path==='/start'||/^\/[a-f0-9]{32}\/(next|played|heartbeat|stop)$/.test(path);
+ const encoded=body===undefined?undefined:JSON.stringify(body);
+ for(let attempt=0;;attempt++){
+  let retryable=false;
+  try{
+   signal?.throwIfAborted();
+   const response=await fetch('/api/ai-dj/sessions'+path,{method:body===undefined?'GET':'POST',credentials:'same-origin',cache:'no-store',signal:signal?AbortSignal.any([signal,AbortSignal.timeout(10000)]):AbortSignal.timeout(10000),keepalive,headers:body===undefined?{}:{'Content-Type':'application/json'},...(encoded===undefined?{}:{body:encoded})});
+   retryable=[502,503,504].includes(response.status);
+   const value=await response.json();if(!response.ok)throw Error(value.error||'Session unavailable.');return value;
+  }catch(error){
+   if(attempt||!replayable||signal?.aborted||!(retryable||error instanceof TypeError||error instanceof DOMException&&error.name==='TimeoutError'))throw error;
+   await waitForSession(signal??new AbortController().signal,250);
+  }
+ }
 }
 export const waitForSession=(signal:AbortSignal,ms=1000)=>new Promise<void>((resolve,reject)=>{const abort=()=>{clearTimeout(timer);reject(Error('Cancelled'));};const timer=setTimeout(()=>{signal.removeEventListener('abort',abort);resolve();},ms);if(signal.aborted)abort();else signal.addEventListener('abort',abort,{once:true});});
 export class DJSessionClient{

@@ -2,6 +2,45 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DJSessionClient,sessionPrice,sessionRate} from '../lib/dj-session-client';
 
+test('lost Start and Next replies replay identical operations and deliver each track once',async()=>{
+ const original=globalThis.fetch,calls:{url:string;body:string|undefined}[]=[],lost=new Set<string>(),reservations=new Set<string>();let sequence=0;
+ const client=new DJSessionClient({owner:'test',input:{id:'a'.repeat(32),title:'Party',style:'house',energy:4,mood:'deep',visibility:'public'},quote:{credits:2,privacyCredits:0,token:'original',expiresAt:Date.now()+100000}},()=>assert.fail('A recovered reply must not stop playback'));
+ globalThis.fetch=async(input,options)=>{
+  const url=String(input),body=options?.body?String(options.body):undefined;calls.push({url,body});
+  if(url.endsWith('/start')||url.endsWith('/next')){
+   sequence=url.endsWith('/start')?0:JSON.parse(body!).sequence;reservations.add(String(sequence));
+   if(!lost.has(url)){lost.add(url);throw new TypeError('Response lost after commit');}
+  }
+  return Response.json(options?.method==='POST'?{}:{state:'active',batches:[{sequence,state:'completed',ready:true,audio_sha256:String(sequence).repeat(64)}]});
+ };
+ try{
+  const direction={energy:4,mood:'deep' as const,vocals:true};
+  assert.equal((await client.source(direction,new AbortController().signal))?.sequence,0);
+  assert.equal((await client.source(direction,new AbortController().signal))?.sequence,1);
+  assert.equal(reservations.size,2);
+  for(const suffix of ['/start','/next']){const replay=calls.filter(c=>c.url.endsWith(suffix));assert.equal(replay.length,2);assert.equal(replay[0].body,replay[1].body);}
+ }finally{await client.stop();globalThis.fetch=original;}
+});
+
+test('session transport retries transient responses once, but not permissions, credits, unknown writes or cancellation',async()=>{
+ const {sessionAPI}=await import('../lib/dj-session-client'),original=globalThis.fetch;
+ try{
+  for(const status of [401,402,409,429,502,503,504]){
+   let calls=0;globalThis.fetch=async()=>{calls++;return Response.json({error:'Unavailable'},{status});};
+   await assert.rejects(sessionAPI('/'+'a'.repeat(32)),/Unavailable/);assert.equal(calls,status>=502?2:1);
+  }
+  let calls=0;globalThis.fetch=async()=>{calls++;throw new TypeError('Disconnected');};
+  await assert.rejects(sessionAPI('/unrecognized-write',{value:1}));assert.equal(calls,1);
+  const abort=new AbortController();calls=0;
+  globalThis.fetch=async()=>{calls++;abort.abort();throw new TypeError('Disconnected');};
+  await assert.rejects(sessionAPI('/start',{},abort.signal));assert.equal(calls,1);
+  calls=0;await assert.rejects(sessionAPI('/start',{},abort.signal));assert.equal(calls,0);
+  const duringWait=new AbortController();
+  globalThis.fetch=async()=>{calls++;setTimeout(()=>duringWait.abort(),10);return new Response('Proxy unavailable',{status:502});};
+  await assert.rejects(sessionAPI('/'+'a'.repeat(32),undefined,duringWait.signal));assert.equal(calls,1);
+ }finally{globalThis.fetch=original;}
+});
+
 test('starting direction is requoted without accepting a higher price',async()=>{
  const original=globalThis.fetch;
  try{for(const [credits,energy,mood] of [[2,5,'warm'],[3,5,'warm'],[2,4,'deep']] as const){

@@ -16,6 +16,7 @@ import {djSessionRequest} from '../lib/dj-sessions-http.ts';
 import {djRecordingRequest} from '../lib/dj-recordings-http.ts';
 import {silenceSpeakers} from './silent-audio.mjs';
 assert.ok(process.argv.includes('--apply'));
+const lostReplies=process.argv.includes('--lost-replies'),dropped=new Set();
 const seconds=Number(process.env.JAMLOOM_ENDURANCE_SECONDS??3605);assert.ok(Number.isSafeInteger(seconds)&&seconds>=120&&seconds<=7200);
 const origin=process.env.JAMLOOM_ENDURANCE_ORIGIN??'http://localhost:3008';assert.ok(['http://localhost:3000','http://localhost:3008'].includes(origin));
 const id=()=>randomUUID().replaceAll('-',''),name='jamloom_dj_pipeline_'+id(),owner='endurance-'+id(),folder=resolve('../../renders/ai-dj-finish-20261024/endurance-'+id());await mkdir(folder,{recursive:true});
@@ -33,10 +34,13 @@ try{
  const page=await context.newPage();page.setDefaultTimeout(90000);page.on('pageerror',e=>errors.push(e.message));
  for(const resource of ['sessions','recordings'])await page.route('**/api/ai-dj/'+resource+'**',async route=>{
   const r=route.request(),request=new Request(r.url(),{method:r.method(),headers:r.headers(),...(r.postDataBuffer()?{body:r.postDataBuffer()}:{})}),parts=new URL(r.url()).pathname.split('/').slice(4).filter(Boolean);
-  const response=await(resource==='sessions'?djSessionRequest(request,async()=>({owner,origin,sessions,enabled:true}),parts):djRecordingRequest(request,async()=>({owner,origin,recordings}),parts));await route.fulfill({status:response.status,headers:Object.fromEntries(response.headers),body:Buffer.from(await response.arrayBuffer())});
+  const response=await(resource==='sessions'?djSessionRequest(request,async()=>({owner,origin,sessions,enabled:true}),parts):djRecordingRequest(request,async()=>({owner,origin,recordings}),parts));const body=Buffer.from(await response.arrayBuffer());
   if(resource==='sessions'&&r.method()==='POST'&&(parts[0]==='start'||parts[1]==='next'))dispatch();
+  const operation=parts[0]==='start'?'start':parts[1];
+  if(lostReplies&&resource==='sessions'&&r.method()==='POST'&&response.ok&&['start','next','played'].includes(operation)&&!dropped.has(operation)){dropped.add(operation);await route.abort('connectionreset');return;}
+  await route.fulfill({status:response.status,headers:Object.fromEntries(response.headers),body});
  });
- await page.goto(origin+'/ai-dj/session');await page.getByLabel('Party or venue name',{exact:true}).fill('Continuous endurance');await page.getByRole('radio',{name:/Private/}).check();await page.getByRole('button',{name:'Check credits →'}).click();await page.getByRole('button',{name:'Continue to the deck →'}).click();await page.getByRole('button',{name:/^warm$/i}).filter({has:page.locator('span')}).click();await page.getByRole('button',{name:'Start set'}).click();await page.getByText('Recording private set',{exact:false}).waitFor();
+ await page.goto(origin+'/ai-dj/session');await page.getByLabel('Party or venue name',{exact:true}).fill('Continuous endurance');await page.getByRole('radio',{name:/Club Flow/}).check();await page.getByRole('radio',{name:/Private/}).check();await page.getByRole('button',{name:'Check credits →'}).click();await page.getByRole('button',{name:'Continue to the deck →'}).click();await page.getByRole('button',{name:/^warm$/i}).filter({has:page.locator('span')}).click();await page.getByRole('button',{name:'Start set'}).click();await page.getByText('Recording private set',{exact:false}).waitFor();
  await page.waitForFunction(()=>{const m=window.endurance.meter;if(!m)return false;const pcm=new Float32Array(m.fftSize);m.getFloatTimeDomainData(pcm);return pcm.some(v=>Math.abs(v)>.001);},null,{timeout:10000});
  sessionId=(await pool.query('SELECT id FROM dj_sessions WHERE owner_id=$1',[owner])).rows[0].id;const began=Date.now();let direction=0;
  while(Date.now()-began<seconds*1000){
@@ -54,7 +58,8 @@ try{
  const scan=spawnSync('ffmpeg',['-nostdin','-hide_banner','-i',resolve(folder,'complete-set.'+(record.mime==='audio/mp4'?'m4a':'webm')),'-af','silencedetect=noise=-60dB:d=0.25','-f','null','-'],{encoding:'utf8',timeout:120000,maxBuffer:8*1024**2});
  assert.equal(scan.status,0,'Decode the complete saved recording');const gaps=[...scan.stderr.matchAll(/silence_duration: ([\d.]+)/g)].map(m=>Number(m[1]));report.longestQuietSeconds=Math.max(0,...gaps);assert.ok(report.longestQuietSeconds<=1.25,'No silence beyond the authored fixture rests plus 250 ms tolerance');
  const batches=(await pool.query('SELECT sequence,seed,render_settings,audio_sha256 FROM dj_session_batches WHERE session_id=$1 ORDER BY sequence',[sessionId])).rows;assert.ok(batches.some(b=>b.render_settings.mood==='warm'));assert.ok(batches.some(b=>b.render_settings.mood==='bright'));
- report={...report,status:'PASS technical',actualSeconds:(Date.now()-began)/1000,recordedSeconds:record.seconds,tracks:completed.length,samples,batches:batches.map(b=>({...b,seed:Number(b.seed)})),errors,humanListening:'NOT RUN',hostedAuthentication:'Injected test context',sampledContinuity:'5-second screening, not sample-accurate glitch proof'};
+ if(lostReplies)assert.deepEqual([...dropped].sort(),['next','played','start']);
+ report={...report,status:'PASS technical',lostReplies:[...dropped],actualSeconds:(Date.now()-began)/1000,recordedSeconds:record.seconds,tracks:completed.length,samples,batches:batches.map(b=>({...b,seed:Number(b.seed)})),errors,humanListening:'NOT RUN',hostedAuthentication:'Injected test context',sampledContinuity:'5-second screening, not sample-accurate glitch proof'};
 }catch(error){report.status='FAIL';report.failure=String(error);throw error;}finally{
  abort.abort();await browser?.close();await current;await pool.query('UPDATE "user" SET suspended=true WHERE id=$1',[owner]);await recordings.purgeOwner(owner);await sessions.purgeOwner(owner);await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();report.cleanup='PASS: own R2 objects, user, database and source cache removed';report.errors=errors;report.jobs=jobs;await writeFile(resolve(folder,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:report.status,folder}));
 }

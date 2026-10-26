@@ -28,6 +28,7 @@ def validate_case(case, value, samples, rate):
         raise ValueError('Prepared original lyric or singer changed')
     if rate != 48000 or samples.shape != (2880000,2) or not np.isfinite(samples).all() or not .001 < np.max(np.abs(samples)) < .95:
         raise ValueError('Invalid source original')
+    if case.get('repaint_mode','balanced') not in ('balanced','aggressive'): raise ValueError('Unsupported repaint experiment')
     cue=case['cue']
     if set(cue) != {'start','seconds','bpm'} or not all(type(v) in (int,float) and math.isfinite(v) for v in cue.values()):
         raise ValueError('Invalid sung window')
@@ -84,6 +85,7 @@ def sung_study(value, directory, engine=None, hook=None, fixture_file=None):
         lyrics='[Chorus]\n'+case['phrase']+'\n[Instrumental]',instrumental=False,vocal_language='en',
         bpm=round(cue['bpm']),duration=60,seed=value['seed'],inference_steps=8,
         repainting_start=cue['start'],repainting_end=cue['start']+cue['seconds'],chunk_mask_mode='explicit',
+        repaint_mode=case.get('repaint_mode','balanced'),
         repaint_latent_crossfade_frames=1,repaint_wav_crossfade_sec=.03,enable_normalization=False,
         thinking=False,use_cot_metas=False,use_cot_caption=False,use_cot_language=False,use_cot_lyrics=False)
     result=generate_music(dit,lm,params,GenerationConfig(batch_size=1,audio_format='wav',use_random_seed=False,seeds=[value['seed']]),save_dir=str(directory/'raw'))
@@ -100,5 +102,5 @@ def sung_study(value, directory, engine=None, hook=None, fixture_file=None):
     (directory/'musical-hook.json').write_text(json.dumps(dict(status='CANDIDATE: voice and complete words require listening',
         source_sha256=case['source_sha256'],raw_sha256=hashlib.sha256(raw.read_bytes()).hexdigest(),
         cue=cue,phrase=case['phrase'],vocal_profile=case['vocal_profile'],caption=description,
-        task_type='repaint',text_to_speech=False,reference_audio_used=False,unchanged_outside_window_before_finalization=True))+'\n')
+        task_type='repaint',repaint_mode=case.get('repaint_mode','balanced'),text_to_speech=False,reference_audio_used=False,unchanged_outside_window_before_finalization=True))+'\n')
     return output,rate

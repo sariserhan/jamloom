@@ -21,9 +21,11 @@ def read(path):
 
 
 def main():
-    evidence=ROOT/'docs/evidence/dj-sung-hooks-20261026'
-    replacement=sys.argv[1:]==['--replacement'];assert not sys.argv[1:] or replacement
-    source=ROOT/('renders/dj-sung-hooks-20261026-replacement' if replacement else 'renders/dj-sung-hooks-20261026')
+    flags=set(sys.argv[1:]);assert len(flags)==len(sys.argv[1:]) and flags<={'--aggressive','--replacement'}
+    aggressive='--aggressive' in flags;replacement='--replacement' in flags
+    campaign='dj-sung-aggressive-20261026' if aggressive else 'dj-sung-hooks-20261026'
+    evidence=ROOT/'docs/evidence'/campaign
+    source=ROOT/'renders'/(campaign+('-replacement' if replacement else ''))
     run=json.loads((source/'report.json').read_text());plan=json.loads((evidence/('replacement-plan.json' if replacement else 'gpu-plan.json')).read_text())
     assert run['status']=='PASS technical' and run['cleanup_confirmed'] and len(run['tracks'])==4
     assert run['rental_seconds']<=plan.get('remaining_rental_seconds',1200) and run['observed_debit_usd']<=3
@@ -33,7 +35,7 @@ def main():
     assert all(executed[name]==digest for name,digest in plan['source_sha256'].items())
     assert executed['sung-fixtures.json']==plan['fixture_sha256']
     assert all(executed[name]==digest for name,digest in plan['dna_manifest_sha256'].items())
-    review=ROOT/'renders/club-studies-20261024/sung-hooks/review';review.mkdir(parents=True,exist_ok=False)
+    review=ROOT/'renders/club-studies-20261024'/('vocal-mode' if aggressive else 'sung-hooks')/'review';review.mkdir(parents=True,exist_ok=False)
     cards=[];rows=[]
     for i,(row,case) in enumerate(zip(run['tracks'],plan['cases']),1):
         receipt=row['receipt'];proof=receipt['musical_hook'];assert receipt['request']==case['request']
@@ -64,11 +66,14 @@ def main():
         cards.append(f'<article><h2>{i} · {html.escape(case["phrase"])}</h2>'+''.join(players)+'</article>')
         rows.append(dict(number=i,source_sha256=case['source_sha256'],sha256=receipt['sha256'],raw_sha256=proof['raw_sha256'],cue=cue,compute_ms=receipt['compute_ms'],unchanged_outside_window_relative_to_finalized_source=True,listening=copies))
     page='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jamloom · Musical vocal hooks</title><style>body{font:18px/1.5 system-ui;background:#111b20;color:#edf3ec;max-width:1050px;margin:40px auto;padding:0 20px}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,390px),1fr));gap:20px}article{min-width:0;padding:20px;border-radius:16px;background:#213039}h2{font-size:24px}label{display:block;margin:18px 0}audio{display:block;width:100%;margin-top:6px}summary{cursor:pointer}p{color:#cbd8d3}:focus-visible{outline:3px solid #d7ff80;outline-offset:4px}</style><h1>Musical vocal hooks</h1><p role="status"><strong>Rejected experiment.</strong> No audible singing in any candidate; clip 1 loses accompaniment during the edit at 4–6 seconds. These files are retained for diagnosis and are not approved product audio.</p><p>Compare each original groove with its short sung edit. The edit begins at 4 seconds. Listen for natural singing, a fitting melody and complete words. These candidates use Music DNA’s singer descriptions and the original accompaniment, with no speech synthesis.</p><main>'''+''.join(cards)+'''</main><p>Four vocal edits of two existing Jamloom originals. No new songs or public activation. Nothing plays automatically.</p><script>document.addEventListener('play',e=>{if(e.target.tagName==='AUDIO')document.querySelectorAll('audio').forEach(a=>{if(a!==e.target)a.pause()})},true)</script></html>'''
+    if aggressive:
+        begin=page.index('<p role="status">');end=page.index('</p>',begin)+4
+        page=page[:begin]+'<p role="status">New mode comparison: vocal presence and quality are not yet verified. Compare with the original groove; silence or no singing means this candidate failed.</p>'+page[end:]
     (review/'index.html').write_text(page)
     (evidence/'audio-checks.json').write_text(json.dumps(dict(status='PASS technical',tracks=rows,human_listening='NOT RUN',vocal_presence='NOT VERIFIED by waveform checks'),indent=2)+'\n')
     (evidence/'fresh-samples.json').write_text(json.dumps(run,indent=2)+'\n')
     (evidence/'executed-scripts.sha256').write_bytes((source/'executed-scripts.sha256').read_bytes())
-    print('http://localhost:8766/sung-hooks/review/')
+    print('http://localhost:8766/'+('vocal-mode' if aggressive else 'sung-hooks')+'/review/')
 
 
 if __name__=='__main__':main()

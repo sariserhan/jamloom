@@ -1,3 +1,14 @@
+## AI DJ completion continuation — 2026-10-26
+
+**PARTIAL; no public activation.** The owner requested all remaining work after the failed singing study. The next vocal comparison isolates source-latent injection using the pinned upstream implementation. Its first approved attempt lost the provider SSH connection before audio and was deleted (62.47 seconds, about $0.003325 observed debit, independently zero rentals). The separately approved replacement rendered one raw candidate that fails clipping/continuity validation, then stopped. Both attempts total 424.03 seconds and $0.039556 observed combined debit, with independently zero rentals. The other three edits were not rendered; no new vocal passed. [Vocal-mode report](dj-vocal-mode.md).
+
+- [x] Bind the four-edit experiment to unchanged source hashes, seeds and lyrics; verify the upstream mode calculation and strict permits. 69 Python checks pass.
+- [x] Recover one transient session API failure with identical Start/Next payloads; retain cancellation, credit and authorization failures. Six focused client tests, 150 website tests, 36 isolated session/accounting/process tests, typecheck, optimized build and bundle audit pass.
+- [x] Complete the actual browser lost-response check: Start/Next/Played recover, four unique procedural tracks, 121.748-second complete private R2 recording, settled credits and cleanup. Preliminary fixture/selector failures retained. [Recovery report](dj-session-recovery.md).
+- [x] Complete the approved replacement and verify cleanup; retain its failed candidate and reproduce rejection locally. A known-vocal positive control also defeats tiny-Whisper screening, so empty transcripts are not used as voice evidence.
+- [ ] Produce and qualify actual natural short singing; the current repaint attempt failed audio validation and has no listening approval.
+- [ ] Qualify fresh musical consistency, whole sets, sustained hosted capacity, full costs and venue/release gates. Historical bounded tests do not establish these.
+
 ## AI DJ completion follow-through — 2026-10-26
 
 **PARTIAL; paired listening favors planning, release-quality gate remains open.** The owner requested all remaining work. The next comparison tests the existing model's semantic music planner, which was disabled in prior DJ renders; it does not reuse synthetic cover guides or train on reference audio. Six tracks and at most two short vocal candidates are explicitly approved under a new $3 / one-GPU / 20-minute cap, stop on failure and no public activation. The run completed in 522 seconds with about $0.075 observed debit and zero remaining rentals; its authorization is consumed. All six originals pass technical checks; both fresh voice candidates were too long and correctly rejected. Owner prefers planned clips in both matched pairs and fresh house over fresh bass; this establishes preference, not party-ready consistency.
