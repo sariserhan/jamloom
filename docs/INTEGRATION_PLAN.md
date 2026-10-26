@@ -59,3 +59,7 @@ The [expanded course and native implementation](SINGING_COMPLETION.md) supersede
 ## Continuity follow-through — 2026-10-26
 
 [Current results](CONTINUITY_FOLLOWTHROUGH.md): reuse the adopted MIT detector and ACE-Step, preserve the single mixer clock, and re-run the pinned DJKado benchmark. Its visualization modules remain STUDY; no independently labeled real beat advantage or accepted Automix replacement is demonstrated. The current measurable fix belongs in Jamloom's existing energy analysis/planner. No dependency or license changes.
+
+## Four-part performance follow-through — 2026-10-26
+
+[Bounded stem arrangement](COHERENT_PERFORMANCE.md) reuses the existing local separator, SessionTransport, mixer and waveform helper. Seven buffers serve 85 events on one clock. The existing stereo AI DJ remains intact; no second production engine or copied upstream app was introduced. The owner gave a positive first response, but fresh context-conditioned composition and production model-weight clearance remain open. The microphone diagnostic preserves real processed-input failures and tests fresh capture after interruption rather than claiming hardware accuracy from oscillator tests.

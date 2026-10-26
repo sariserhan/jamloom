@@ -1,0 +1,163 @@
+{
+  "status": "PASS controlled PCM",
+  "rows": [
+    {
+      "browser": "chromium",
+      "controlledPCM": true,
+      "humanMicrophone": false,
+      "denialStopAndReuse": true,
+      "errors": [],
+      "completed": true,
+      "sampleRate": 48000,
+      "input": {
+        "requestedProcessing": "raw",
+        "label": "MediaStreamAudioDestinationNode",
+        "sampleRate": 48000,
+        "channelCount": 2,
+        "echoCancellation": null,
+        "noiseSuppression": null,
+        "autoGainControl": null
+      },
+      "pitchDetectionMeaning": "Periodic sound detected; not identification of a human voice",
+      "frames": 2994,
+      "phases": [
+        {
+          "phase": "Stay quiet · room noise",
+          "frames": 745,
+          "detectedVoicePercent": 0,
+          "medianRms": 0,
+          "medianConfidence": null,
+          "medianDetectedHz": null,
+          "rejected": {
+            "quiet": 744,
+            "noStablePitch": 1,
+            "lowConfidence": 0
+          }
+        },
+        {
+          "phase": "Sing a comfortable sustained note",
+          "frames": 749,
+          "detectedVoicePercent": 99.73297730307075,
+          "medianRms": 0.08496548663073593,
+          "medianConfidence": 0.9999871280715524,
+          "medianDetectedHz": 220.0017936734138,
+          "rejected": {
+            "quiet": 0,
+            "noStablePitch": 0,
+            "lowConfidence": 2
+          }
+        },
+        {
+          "phase": "Sing the same note more softly",
+          "frames": 749,
+          "detectedVoicePercent": 99.46595460614152,
+          "medianRms": 0.004248256397993948,
+          "medianConfidence": 0.999987127886925,
+          "medianDetectedHz": 220.00179383091424,
+          "rejected": {
+            "quiet": 0,
+            "noStablePitch": 2,
+            "lowConfidence": 2
+          }
+        },
+        {
+          "phase": "Add gentle vibrato",
+          "frames": 751,
+          "detectedVoicePercent": 99.86684420772303,
+          "medianRms": 0.08484843543181798,
+          "medianConfidence": 0.9997281510441098,
+          "medianDetectedHz": 219.97481945019203,
+          "rejected": {
+            "quiet": 0,
+            "noStablePitch": 0,
+            "lowConfidence": 1
+          }
+        }
+      ],
+      "softwareWindowCenterToAnimationMs": {
+        "median": 29.09999990463257,
+        "p95": 34.36666671434796
+      },
+      "limitation": "Not physical microphone-to-display latency or independently labelled singing accuracy"
+    },
+    {
+      "browser": "webkit",
+      "controlledPCM": true,
+      "humanMicrophone": false,
+      "denialStopAndReuse": true,
+      "errors": [],
+      "completed": true,
+      "sampleRate": 48000,
+      "input": {
+        "requestedProcessing": "raw",
+        "label": "MediaStreamAudioDestinationNode",
+        "sampleRate": null,
+        "channelCount": null,
+        "echoCancellation": null,
+        "noiseSuppression": null,
+        "autoGainControl": null
+      },
+      "pitchDetectionMeaning": "Periodic sound detected; not identification of a human voice",
+      "frames": 2995,
+      "phases": [
+        {
+          "phase": "Stay quiet · room noise",
+          "frames": 745,
+          "detectedVoicePercent": 0,
+          "medianRms": 0,
+          "medianConfidence": null,
+          "medianDetectedHz": null,
+          "rejected": {
+            "quiet": 745,
+            "noStablePitch": 0,
+            "lowConfidence": 0
+          }
+        },
+        {
+          "phase": "Sing a comfortable sustained note",
+          "frames": 749,
+          "detectedVoicePercent": 98.93190921228305,
+          "medianRms": 0.08473165596459045,
+          "medianConfidence": 0.9999870111823839,
+          "medianDetectedHz": 220.00188930648235,
+          "rejected": {
+            "quiet": 6,
+            "noStablePitch": 0,
+            "lowConfidence": 2
+          }
+        },
+        {
+          "phase": "Sing the same note more softly",
+          "frames": 750,
+          "detectedVoicePercent": 99.73333333333333,
+          "medianRms": 0.004236565638431197,
+          "medianConfidence": 0.9999870109995754,
+          "medianDetectedHz": 220.0018894696748,
+          "rejected": {
+            "quiet": 0,
+            "noStablePitch": 1,
+            "lowConfidence": 1
+          }
+        },
+        {
+          "phase": "Add gentle vibrato",
+          "frames": 751,
+          "detectedVoicePercent": 99.73368841544607,
+          "medianRms": 0.08484909168799289,
+          "medianConfidence": 0.9997791848727502,
+          "medianDetectedHz": 220.001689057073,
+          "rejected": {
+            "quiet": 0,
+            "noStablePitch": 0,
+            "lowConfidence": 2
+          }
+        }
+      ],
+      "softwareWindowCenterToAnimationMs": {
+        "median": 27.33333333333212,
+        "p95": 32.66666666666606
+      },
+      "limitation": "Not physical microphone-to-display latency or independently labelled singing accuracy"
+    }
+  ]
+}

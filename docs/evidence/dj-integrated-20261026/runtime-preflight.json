@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "accountCreditBefore": 7.4371562481,
+  "instancesBefore": 0,
+  "privateSSHKeyGenerated": true,
+  "privateTokenGenerated": true,
+  "manifestIncludedInUpload": true,
+  "browserAssetOrigin": "http://localhost:3008",
+  "browserAndR2Origin": "http://localhost:3000",
+  "freshRequestsMaximum": 24,
+  "vocalEligibility": "sequence 2 and 7 only per ten-track session; at most four candidates total",
+  "noPublicActivation": true
+}

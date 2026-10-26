@@ -1,3 +1,16 @@
+## Coherent performance and input diagnosis — 2026-10-26
+
+**PARTIAL overall; bounded stem prototype PASS.** [Report](COHERENT_PERFORMANCE.md). Local-only; no new GPU rental, training or publication.
+
+- [x] Reuse the existing separator's four outputs, shared SessionTransport/mixer clock and waveform helper for a 210-second arrangement from one preferred original. Independent real faders, seven sections and one brief vocal passage; owner gives a positive first response. No new-generation or professional-quality claim.
+- [x] Render and test the complete score in Chromium; verify Chromium/WebKit controls, play/seek/stop, headroom and no internal 250 ms quiet stretch. Preserve source/stem/clip hashes and listening evidence.
+- [x] Add actual microphone selection and processing comparison; preserve the owner's processed result. Noise suppression did not resolve detection; keep lesson thresholds/processing unchanged. Guard fresh capture windows after input interruption.
+- [ ] Resolve actual quiet-room detections and singing misses; physical microphone-to-display latency remains NOT RUN.
+- [x] Finish current-code two-listener retained-audio rehearsal: twenty distinct retained tracks, recovered lost response, mood changes, Public Stop and Private exhausted credits; complete 307.392/420.340-second R2 recordings, cross-account/private denial and cleanup pass. Browser heap peaked at 82 MiB with at most three sources. This is not fresh GPU generation.
+- [x] Prepare a new capped integrated GPU campaign with a separate permit and source checks. [Plan](DJ_INTEGRATED_QUALIFICATION.md); owner approved the capped $6 integrated run; one GPU is running, with final result and cleanup pending.
+- [ ] Qualify fresh context-conditioned music and independent-part performance across longer unique sessions after musical and compute gates; retained loops do not satisfy nonstop fresh generation.
+- [ ] Obtain supplier terms and exact backing/lyrics/score for the first popular-song lesson. No mailbox status inferred and no purchase authorized.
+
 ## DJ continuity and microphone follow-through — 2026-10-26
 
 **PARTIAL overall; local implementation and scoped checks PASS.** [Current report](CONTINUITY_FOLLOWTHROUGH.md), [release acceptance](RELEASE_ACCEPTANCE.md). Publication remains held.

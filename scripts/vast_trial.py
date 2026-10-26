@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Control one explicitly authorized bounded research rental; never upload the key."""
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -262,6 +263,21 @@ def dj_session_approval(approval, label, requests=8):
         raise RuntimeError('Fresh capped customer-session approval required')
 
 
+DJ_INTEGRATED_FILES = ('scripts/vast_trial.py', 'scripts/cloud_dj_warm.sh', 'scripts/cloud_music_setup.sh', 'scripts/dj_track_worker.py', 'scripts/dj_warm_engine.py', 'scripts/dj_vocal.py', 'apps/site/tests/dj-warm-qualification.mjs', 'apps/site/tests/dj-qualification-process.mjs', 'apps/site/lib/dj-remote-worker.ts', 'apps/site/lib/ai-dj-player.ts', 'apps/site/lib/ai-dj-plan.ts')
+
+def dj_integrated_approval(approval):
+    dj_session_approval(approval, 'jamloom-dj-integrated-20261026', 24)
+    if (approval.get('status') != 'AUTHORIZED' or
+            approval.get('owner_statement') != 'Approve the capped $6 integrated qualification' or
+            approval.get('stop_on_failure') is not True or
+            approval.get('automatic_cleanup') is not True or
+            approval.get('replacement_rental_authorized') is not False):
+        raise RuntimeError('New integrated qualification approval required')
+    hashes = approval.get('code_sha256', {})
+    if set(hashes) != set(DJ_INTEGRATED_FILES) or any(hashlib.sha256((ROOT/path).read_bytes()).hexdigest() != hashes[path] for path in DJ_INTEGRATED_FILES):
+        raise RuntimeError('Integrated qualification source changed')
+
+
 def main():
     global WORK, STATE, LABEL, LEASE_SECONDS, HOURLY_CEILING, QUOTE_CEILING
     parser = argparse.ArgumentParser(description=__doc__)
@@ -281,7 +297,10 @@ def main():
     parser.add_argument('--dj-resume', action='store_true', help='Owner-requested completion resumption; retains both earlier attempts in the original cap')
     parser.add_argument('--dj-beta', action='store_true', help='Fresh 24-request, two-listener qualification; requires its own approval')
     parser.add_argument('--dj-hosted', action='store_true', help='Fresh hosted-operation qualification with its own permit')
+    parser.add_argument('--dj-integrated', action='store_true', help='Fresh current-code two-listener qualification; new exact permit required')
     args = parser.parse_args()
+    if args.dj_integrated and not args.dj_hosted:
+        parser.error('--dj-integrated requires --dj-hosted')
     if args.dj_hosted and not args.dj_beta:
         parser.error('--dj-hosted requires --dj-beta')
     if args.dj_beta and (not args.dj_qualification or not args.dj_sessions or args.dj_finish or args.dj_retry or args.dj_resume):
@@ -321,6 +340,8 @@ def main():
             LABEL='jamloom-dj-qualification-20261025-beta';WORK=ROOT/'build-dj-qualification-20261025-beta';STATE=WORK/'trial-state.json'
     if args.dj_hosted:
         LABEL='jamloom-dj-qualification-20261025-hosted';WORK=ROOT/'build-dj-qualification-20261025-hosted';STATE=WORK/'trial-state.json'
+    if args.dj_integrated:
+        LABEL='jamloom-dj-integrated-20261026';WORK=ROOT/'build-dj-integrated-20261026';STATE=WORK/'trial-state.json'
     WORK.mkdir(exist_ok=True)
     if args.action == "status":
         account = api("v0/users/current")
@@ -334,7 +355,10 @@ def main():
         print(json.dumps(result[:8], indent=2))
     elif args.action == "rent":
         if args.club_benchmark or args.dj_qualification:
-            if args.dj_beta:
+            if args.dj_integrated:
+                approval=json.loads((ROOT/'docs/evidence/dj-integrated-20261026/authorization.json').read_text())
+                dj_integrated_approval(approval)
+            elif args.dj_beta:
                 approval=json.loads((ROOT/('docs/evidence/ai-dj-hosted-20261025/authorization.json' if args.dj_hosted else 'docs/evidence/ai-dj-beta-20261025/authorization.json')).read_text())
             elif args.dj_finish:
                 approval = json.loads((ROOT/('docs/evidence/ai-dj-finish-20261024/launch-fix-authorization.json' if args.dj_resume and args.dj_retry else 'docs/evidence/ai-dj-finish-20261024/resume-authorization.json' if args.dj_resume else 'docs/evidence/ai-dj-finish-20261024/retry-authorization.json' if args.dj_retry else 'docs/evidence/ai-dj-finish-20261024/authorization.json')).read_text())
@@ -404,7 +428,7 @@ def main():
         write_state(state)  # Prevent duplicate rental if the create response is lost.
         with (WORK / "watchdog.log").open("a") as log:
             subprocess.Popen(["caffeinate", "-i", sys.executable, str(Path(__file__).resolve()), "watch"] +
-                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) + (['--dj-beta'] if args.dj_beta else []) + (['--dj-hosted'] if args.dj_hosted else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
+                             (["--dj-qualification"] + (['--dj-sessions'] if args.dj_sessions else []) + (["--dj-retry"] if args.dj_retry else []) + (['--dj-finish'] if args.dj_finish else []) + (['--dj-resume'] if args.dj_resume else []) + (['--dj-beta'] if args.dj_beta else []) + (['--dj-hosted'] if args.dj_hosted else []) + (['--dj-integrated'] if args.dj_integrated else []) if args.dj_qualification else ["--club-benchmark"] + (["--revision"] if args.revision else []) if args.club_benchmark else ["--musician-training"] if args.musician_training else ["--blood-training"] if args.blood_training else ["--training-retry"] if args.training_retry else ["--training"] if args.training else []),
                              stdout=log, stderr=log, stdin=subprocess.DEVNULL, start_new_session=True)
         # The watchdog also reconciles by unique label if this response is lost.
         result = api("v0/asks/" + str(offer["id"]), "PUT", {

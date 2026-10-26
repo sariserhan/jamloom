@@ -1,0 +1,604 @@
+{
+  "version": 1,
+  "title": "One groove, independent parts",
+  "seconds": 210,
+  "bpm": 128,
+  "events": [
+    {
+      "part": "drums",
+      "clip": "drums-a",
+      "at": 0.0,
+      "gain": 0.85
+    },
+    {
+      "part": "bass",
+      "clip": "bass-a",
+      "at": 0.0,
+      "gain": 0.85
+    },
+    {
+      "part": "other",
+      "clip": "other-a",
+      "at": 0.0,
+      "gain": 0.45
+    },
+    {
+      "part": "drums",
+      "clip": "drums-a",
+      "at": 7.5,
+      "gain": 0.85
+    },
+    {
+      "part": "bass",
+      "clip": "bass-a",
+      "at": 7.5,
+      "gain": 0.85
+    },
+    {
+      "part": "other",
+      "clip": "other-a",
+      "at": 7.5,
+      "gain": 0.45
+    },
+    {
+      "part": "drums",
+      "clip": "drums-a",
+      "at": 15.0,
+      "gain": 0.85
+    },
+    {
+      "part": "bass",
+      "clip": "bass-a",
+      "at": 15.0,
+      "gain": 0.85
+    },
+    {
+      "part": "other",
+      "clip": "other-a",
+      "at": 15.0,
+      "gain": 0.45
+    },
+    {
+      "part": "drums",
+      "clip": "drums-a",
+      "at": 22.5,
+      "gain": 0.85
+    },
+    {
+      "part": "bass",
+      "clip": "bass-a",
+      "at": 22.5,
+      "gain": 0.85
+    },
+    {
+      "part": "other",
+      "clip": "other-a",
+      "at": 22.5,
+      "gain": 0.45
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 30.0,
+      "gain": 0.9
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 30.0,
+      "gain": 0.9
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 30.0,
+      "gain": 0.65
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 37.5,
+      "gain": 0.9
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 37.5,
+      "gain": 0.9
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 37.5,
+      "gain": 0.65
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 45.0,
+      "gain": 0.9
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 45.0,
+      "gain": 0.9
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 45.0,
+      "gain": 0.65
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 52.5,
+      "gain": 0.9
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 52.5,
+      "gain": 0.9
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 52.5,
+      "gain": 0.65
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 60.0,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 60.0,
+      "gain": 1
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 60.0,
+      "gain": 0.9
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 67.5,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 67.5,
+      "gain": 1
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 67.5,
+      "gain": 0.9
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 75.0,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 75.0,
+      "gain": 1
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 75.0,
+      "gain": 0.9
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 82.5,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 82.5,
+      "gain": 1
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 82.5,
+      "gain": 0.9
+    },
+    {
+      "part": "drums",
+      "clip": "drums-a",
+      "at": 90.0,
+      "gain": 0.85
+    },
+    {
+      "part": "bass",
+      "clip": "bass-a",
+      "at": 90.0,
+      "gain": 0.8
+    },
+    {
+      "part": "other",
+      "clip": "other-a",
+      "at": 90.0,
+      "gain": 0.55
+    },
+    {
+      "part": "drums",
+      "clip": "drums-a",
+      "at": 97.5,
+      "gain": 0.85
+    },
+    {
+      "part": "bass",
+      "clip": "bass-a",
+      "at": 97.5,
+      "gain": 0.8
+    },
+    {
+      "part": "other",
+      "clip": "other-a",
+      "at": 97.5,
+      "gain": 0.55
+    },
+    {
+      "part": "drums",
+      "clip": "drums-a",
+      "at": 105.0,
+      "gain": 0.85
+    },
+    {
+      "part": "bass",
+      "clip": "bass-a",
+      "at": 105.0,
+      "gain": 0.8
+    },
+    {
+      "part": "other",
+      "clip": "other-a",
+      "at": 105.0,
+      "gain": 0.55
+    },
+    {
+      "part": "drums",
+      "clip": "drums-a",
+      "at": 112.5,
+      "gain": 0.85
+    },
+    {
+      "part": "bass",
+      "clip": "bass-a",
+      "at": 112.5,
+      "gain": 0.8
+    },
+    {
+      "part": "other",
+      "clip": "other-a",
+      "at": 112.5,
+      "gain": 0.55
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 120.0,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 120.0,
+      "gain": 1
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 120.0,
+      "gain": 1
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 127.5,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 127.5,
+      "gain": 1
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 127.5,
+      "gain": 1
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 135.0,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 135.0,
+      "gain": 1
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 135.0,
+      "gain": 1
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 142.5,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 142.5,
+      "gain": 1
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 142.5,
+      "gain": 1
+    },
+    {
+      "part": "drums",
+      "clip": "drums-a",
+      "at": 150.0,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-a",
+      "at": 150.0,
+      "gain": 0.95
+    },
+    {
+      "part": "other",
+      "clip": "other-a",
+      "at": 150.0,
+      "gain": 0.8
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 157.5,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 157.5,
+      "gain": 0.95
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 157.5,
+      "gain": 0.8
+    },
+    {
+      "part": "drums",
+      "clip": "drums-a",
+      "at": 165.0,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-a",
+      "at": 165.0,
+      "gain": 0.95
+    },
+    {
+      "part": "other",
+      "clip": "other-a",
+      "at": 165.0,
+      "gain": 0.8
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 172.5,
+      "gain": 1
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 172.5,
+      "gain": 0.95
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 172.5,
+      "gain": 0.8
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 180.0,
+      "gain": 0.95
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 180.0,
+      "gain": 0.95
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 180.0,
+      "gain": 1
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 187.5,
+      "gain": 0.95
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 187.5,
+      "gain": 0.95
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 187.5,
+      "gain": 1
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 195.0,
+      "gain": 0.95
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 195.0,
+      "gain": 0.95
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 195.0,
+      "gain": 1
+    },
+    {
+      "part": "drums",
+      "clip": "drums-b",
+      "at": 202.5,
+      "gain": 0.95
+    },
+    {
+      "part": "bass",
+      "clip": "bass-b",
+      "at": 202.5,
+      "gain": 0.95
+    },
+    {
+      "part": "other",
+      "clip": "other-b",
+      "at": 202.5,
+      "gain": 1
+    },
+    {
+      "part": "vocals",
+      "clip": "vocals-voice",
+      "at": 123.525,
+      "gain": 0.8
+    }
+  ],
+  "scenes": [
+    {
+      "at": 0,
+      "title": "Groove"
+    },
+    {
+      "at": 30,
+      "title": "Develop"
+    },
+    {
+      "at": 60,
+      "title": "Lift"
+    },
+    {
+      "at": 90,
+      "title": "Make space"
+    },
+    {
+      "at": 120,
+      "title": "Return"
+    },
+    {
+      "at": 150,
+      "title": "Variation"
+    },
+    {
+      "at": 180,
+      "title": "Finish"
+    }
+  ],
+  "clips": {
+    "drums-a": {
+      "file": "drums-a.wav",
+      "sha256": "68611c4cc19e0aa7ba200b731b315770f694b1eb111b62805a47d87b478630c5",
+      "source_seconds": 41.265,
+      "seconds": 7.5,
+      "part": "drums"
+    },
+    "drums-b": {
+      "file": "drums-b.wav",
+      "sha256": "fa27ff833f40bee4fd898a34095e66d38a01ae13fe3027415ae8089bcdf2f193",
+      "source_seconds": 46.89,
+      "seconds": 7.5,
+      "part": "drums"
+    },
+    "bass-a": {
+      "file": "bass-a.wav",
+      "sha256": "7d43bd8a712d2ab068376c7b2475a3e090471849442c8bb6bb76b4e85b537940",
+      "source_seconds": 41.265,
+      "seconds": 7.5,
+      "part": "bass"
+    },
+    "bass-b": {
+      "file": "bass-b.wav",
+      "sha256": "58824a21db200e2f0c9f74464e7ccab187b8486d8cf8c198475b648882cb1729",
+      "source_seconds": 46.89,
+      "seconds": 7.5,
+      "part": "bass"
+    },
+    "other-a": {
+      "file": "other-a.wav",
+      "sha256": "c0472d2d2f3166821aa4e56e025e4c5680f9bd6ce6055bc5ff06360ab09b0bcc",
+      "source_seconds": 41.265,
+      "seconds": 7.5,
+      "part": "other"
+    },
+    "other-b": {
+      "file": "other-b.wav",
+      "sha256": "43d9240ba372ab7f3a71da08763a681771bfe66bba55985768bc1cca73daa48a",
+      "source_seconds": 46.89,
+      "seconds": 7.5,
+      "part": "other"
+    },
+    "vocals-voice": {
+      "file": "vocals-voice.wav",
+      "sha256": "6068c64449dd65c78762ccfb383543c4220e1425e95380e17135e41fc77fc5a9",
+      "source_seconds": 37.29,
+      "seconds": 4.34,
+      "part": "vocals"
+    }
+  },
+  "source_sha256": "ba8df987ea9be0250c9946586c109c30bf08361c24eca94f5331065612bfbd97",
+  "model_sha256": "a004b2790d73ffeaa535db458a1a79b539dfdbafbccc31f275d07e632ebd7816",
+  "reconstruction_rms": 0.0031112113501876593,
+  "new_generation": false,
+  "limitation": "Retained-source arrangement study; estimated stems have bleed. Human musical quality and phrase boundaries unreviewed."
+}

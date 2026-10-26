@@ -1,0 +1,218 @@
+{
+  "status": "PASS technical",
+  "newGeneration": false,
+  "origin": "http://localhost:3000",
+  "preview": "http://localhost:3008",
+  "scope": "Retained audio and synthetic provider receipts; real UI, session handlers, isolated billing and private R2",
+  "recoveredResponse": true,
+  "customers": [
+    {
+      "visibility": "public",
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "endReason": "stop",
+      "recording": "e2a2434588a94ff0a04238502930123b",
+      "performance": "LIVE MOVES\nAI1 roll\nAIEcho\nAIFilter sweep\nAI1 roll"
+    },
+    {
+      "visibility": "private",
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "endReason": "credits",
+      "recording": "9bf11c7f518d491db85c3831771e9fa2",
+      "performance": "LIVE MOVES\nAIFilter sweep\nAI1 roll\nAIEcho\nAIFilter sweep"
+    }
+  ],
+  "humanListening": "NOT RUN",
+  "sources": [
+    {
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "sequence": 0,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-0.wav",
+      "sha256": "d369511ffb7575d8f6c79002ae0fc2d8b8c3c1321b2b0c3950d44a09485eca7a",
+      "newGeneration": false
+    },
+    {
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "sequence": 0,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-1.wav",
+      "sha256": "925ac1ff4507fa9d84979f421ead4844caca9b8511a4d98d645ab298aec9bd32",
+      "newGeneration": false
+    },
+    {
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "sequence": 1,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-2.wav",
+      "sha256": "c8e7b86847cf7d894b789ff088b00e3064ed019a8c62e0565e912df54bdf7124",
+      "newGeneration": false
+    },
+    {
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "sequence": 1,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-3.wav",
+      "sha256": "3774251cb11a0b32b9ee72bb488c3ea7cf587e2c05fe05e23535850a74ed5bf7",
+      "newGeneration": false
+    },
+    {
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "sequence": 2,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-4.wav",
+      "sha256": "c8f00f17688acdb9d1ad4c0d86851d7b42c91151f1ddb161d86853c592c4da92",
+      "newGeneration": false
+    },
+    {
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "sequence": 2,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-5.wav",
+      "sha256": "32fca5ee3c9f945ad764d386749e1ab92ac60a10a1175327b2af5a11fa2c33e5",
+      "newGeneration": false
+    },
+    {
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "sequence": 3,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-6.wav",
+      "sha256": "dc0b96b87c786a47b80f9e848682a9dd1d04a465c3164abe1b1e61692cf3c136",
+      "newGeneration": false
+    },
+    {
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "sequence": 3,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-7.wav",
+      "sha256": "05dac2b489c4a31e8a8b2ab51cd17e120e0359b2345f10d7bc74b7702b2dd7be",
+      "newGeneration": false
+    },
+    {
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "sequence": 4,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-8.wav",
+      "sha256": "8511854aff19e2cdb7cdd068a41239a30b1b2abfbdb4d0b66a74617c00ed4cbb",
+      "newGeneration": false
+    },
+    {
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "sequence": 4,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-9.wav",
+      "sha256": "994540cb3a7eeef13403af65cecdddf10b28be5e1f4bbd3b569c7b5ca19881be",
+      "newGeneration": false
+    },
+    {
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "sequence": 5,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-10.wav",
+      "sha256": "a8791f4b44b9de57cd053cf99b4be1286b552271bf007f609ae8fb41f0bc6d2a",
+      "newGeneration": false
+    },
+    {
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "sequence": 6,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-continuity-flow-20261026/house-11.wav",
+      "sha256": "d52de1c74a474ff86ed1facac9bea456f0e2eee38c19cec74aa2bf093ac1be81",
+      "newGeneration": false
+    },
+    {
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "sequence": 5,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-flow-qualification-20261026/house-0.wav",
+      "sha256": "fe417194e14f6c7fb0d8d5b71cd5c25d5cbea0672a9f9ca01fd91b9f2882ee23",
+      "newGeneration": false
+    },
+    {
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "sequence": 7,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-flow-qualification-20261026/house-1.wav",
+      "sha256": "1165ac48dff782f8c59398f0f2ba9c73a64e0a9b66c4654712148bcf0b8df63b",
+      "newGeneration": false
+    },
+    {
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "sequence": 6,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-flow-qualification-20261026/house-2.wav",
+      "sha256": "9fe2257b3cbef74f84a98b91363f0bd10002a1d9ce2533447dab7f67e4a02734",
+      "newGeneration": false
+    },
+    {
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "sequence": 8,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-flow-qualification-20261026/house-3.wav",
+      "sha256": "f6c963a804c57802ba21d998b30b0686ea5a838c5d6a9be877d778530faf662d",
+      "newGeneration": false
+    },
+    {
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "sequence": 7,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-flow-qualification-20261026/house-4.wav",
+      "sha256": "4c9a91a3399363dc4454cedb88e3b10f3df3a059bd86b61ee77a7a88313eff09",
+      "newGeneration": false
+    },
+    {
+      "session": "cc69ac964e5c43f5ac87df3f2918744c",
+      "sequence": 9,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-flow-qualification-20261026/house-5.wav",
+      "sha256": "fd2435c1b8cfb2a46bcad01c4d620613759b3ba2717893aaf3d37c1fe3dbc864",
+      "newGeneration": false
+    },
+    {
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "sequence": 8,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-flow-qualification-20261026/house-6.wav",
+      "sha256": "b397a1f6c4be1dfacad5427df3bc5c0aa6113776466f04507abc4ce40823884e",
+      "newGeneration": false
+    },
+    {
+      "session": "8e277dc9beec421992ef385ac53a117f",
+      "sequence": 9,
+      "source": "/Users/serhansari/Documents/projects/jamloom/renders/dj-flow-qualification-20261026/house-7.wav",
+      "sha256": "7d1271b8c806ededea912ce452731613d67dfb1be71444e331217338bf967383",
+      "newGeneration": false
+    }
+  ],
+  "sampledPeaks": {
+    "heap": 85975694,
+    "activeSources": 3,
+    "nodeRss": 343883776
+  },
+  "cleanup": {
+    "testOwnersPurged": 2,
+    "recordingObjectsPurged": true,
+    "isolatedDatabaseDropped": true
+  },
+  "privacy": {
+    "status": "PASS",
+    "recordings": [
+      {
+        "visibility": "public",
+        "seconds": 307.392,
+        "crossAccountDenied": true,
+        "anonymousPrivateDenied": false,
+        "ownerR2Read": true
+      },
+      {
+        "visibility": "private",
+        "seconds": 420.34,
+        "crossAccountDenied": true,
+        "anonymousPrivateDenied": true,
+        "ownerR2Read": true
+      }
+    ],
+    "temporaryR2ObjectsAbsent": true
+  },
+  "shutdown": [
+    {
+      "id": "9e18346a-92ee-4966-9a1a-5e8b0bd5ac01",
+      "status": "shutdown_confirmed"
+    }
+  ],
+  "shutdownMeaning": "Synthetic provider only; no GPU was rented.",
+  "recordings": [
+    {
+      "name": "public",
+      "sha256": "651aa74beda42a5f1b8db16ef690cde1fda175cfceb2f3ba1779106de101fa55",
+      "bytes": 4951482,
+      "fullDecode": "PASS"
+    },
+    {
+      "name": "private",
+      "sha256": "781b1b2b6534e58179113d05504f21d34dc8e07e21aa7592a0f6a7a417e9ef71",
+      "bytes": 6772347,
+      "fullDecode": "PASS"
+    }
+  ]
+}

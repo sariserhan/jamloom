@@ -1,0 +1,22 @@
+{
+  "status": "PASS scoped technical",
+  "siteTests": 156,
+  "sharedAudioTests": 25,
+  "separatorTests": 3,
+  "rentalControllerTests": 30,
+  "retainedRendererTests": 1,
+  "typecheck": "PASS",
+  "isolatedProductionBuild": "PASS",
+  "buildDirectory": "apps/site/.next-qualification",
+  "stablePreviewRebuilt": false,
+  "browserChecks": [
+    "Chromium and WebKit microphone paired diagnostics",
+    "Chromium and WebKit stem controls",
+    "Chromium 210-second live stem performance",
+    "Complete 211-second offline stem render",
+    "Two-listener retained customer rehearsal and R2 cleanup"
+  ],
+  "freshGeneration": "NOT RUN; approval pending",
+  "realMicrophoneAccuracy": "PARTIAL; unresolved",
+  "physicalMicrophoneLatency": "NOT RUN"
+}

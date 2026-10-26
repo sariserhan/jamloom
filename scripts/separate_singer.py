@@ -14,7 +14,9 @@ from singing_response import digest as model_digest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def separate(singer, output):
+def separate(singer, output, all_stems=False):
+    if type(all_stems) is not bool:
+        raise ValueError('Invalid stem selection')
     output = Path(output)
     if output.exists():
         raise FileExistsError('Preserving existing separation')
@@ -61,7 +63,7 @@ def separate(singer, output):
         stems = torchaudio.functional.resample(stems, 44100, RATE)[..., :len(original)]
     output.mkdir(parents=True); (output/'.partial').touch()
     hashes = {}
-    for name, index in [('vocals',3), ('drums',0)]:
+    for name, index in ([('drums',0),('bass',1),('other',2),('vocals',3)] if all_stems else [('vocals',3), ('drums',0)]):
         pcm = stems[index].T.numpy()
         assert pcm.shape == original.shape and np.isfinite(pcm).all() and np.max(np.abs(pcm)) < 4
         np.save(output/f'{name}.npy', pcm, allow_pickle=False)
@@ -70,12 +72,13 @@ def separate(singer, output):
         raise ValueError('Singer changed during analysis; retaining incomplete output')
     report = {'technical':'PASS','source_sha256':source_hash,'model_sha256':manifest['sha256'],
               'stems':hashes,'sample_rate':RATE,'frames':len(original),'device':'cpu',
-              'seconds':time.monotonic()-started,'separation_quality':'NOT RUN: estimated stems can contain bleed'}
+              'seconds':time.monotonic()-started,'reconstruction_rms':float(np.sqrt(np.mean((stems.sum(0).T.numpy()-original)**2))),'all_stems':all_stems,'separation_quality':'NOT RUN: estimated stems can contain bleed'}
     (output/'complete.json').write_text(json.dumps(report,indent=2)+'\n'); (output/'.partial').unlink()
-    print('PASS: local singer/drum estimates saved',flush=True)
+    print('PASS: local stem estimates saved',flush=True)
 
 
 if __name__ == '__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--input',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
-    a=p.parse_args();separate(a.input,a.output)
+    p.add_argument('--all-stems',action='store_true')
+    a=p.parse_args();separate(a.input,a.output,a.all_stems)

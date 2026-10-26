@@ -1,3 +1,11 @@
+## Independent musical parts and microphone comparison — 2026-10-26
+
+[Try the 3½-minute stem arrangement](http://localhost:8766/stem-performance/review/): Perform set shows actual separate parts and faders; the complete rendered version supports seeking. The owner gave a positive first response. It rearranges one preferred original and is a research reference, not newly generated nonstop music. [Details and remaining gates](COHERENT_PERFORMANCE.md).
+
+The [microphone diagnostic](http://localhost:8767/mic-check.html) now lets you choose the input and compare browser processing. The returned processed run still has quiet-phase detections and poor singing detection; keep raw lesson settings. The capture interruption guard is tested but is not a demonstrated fix for the room issue. No audio or persistent device IDs are saved.
+
+The isolated two-listener rehearsal passed with twenty retained tracks, Stop/credit exhaustion, complete R2 recordings, access checks and cleanup. No GPU was rented. A separate [fresh integrated qualification](DJ_INTEGRATED_QUALIFICATION.md) is now owner-authorized and running within $6/one GPU/forty minutes, without replacements or public activation. Popular-song lessons still need supplier terms/assets; publication remains held.
+
 ## Current continuity and microphone checks — 2026-10-26
 
 [Compare the four handoffs and full sets](http://localhost:8766/continuity/review/). The same originals are used in each version; completion is near 20 seconds in each excerpt. The revised mixer avoids late instrumental collapses when the next track is ready and uses sustained body level for attenuation. The owner confirms improvement but still considers it below professional DJ performance. Next musical work targets a coherent arrangement and independent musical parts, not a completed professional-quality claim.

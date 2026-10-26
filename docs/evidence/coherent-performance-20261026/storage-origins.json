@@ -1,0 +1,16 @@
+{
+  "readOnly": true,
+  "noObjectsCreated": true,
+  "rows": [
+    {
+      "origin": "http://localhost:3000",
+      "status": 204,
+      "allowOrigin": "http://localhost:3000"
+    },
+    {
+      "origin": "http://localhost:3008",
+      "status": 403,
+      "allowOrigin": null
+    }
+  ]
+}

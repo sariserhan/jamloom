@@ -32,3 +32,6 @@ apps/site/public/academy-offline/
 # Native Live Source build output
 apps/desktop-companion/.build/
 apps/desktop-companion/.swiftpm/
+
+# Isolated local qualification build; keep the stable preview intact.
+/apps/site/.next-qualification/

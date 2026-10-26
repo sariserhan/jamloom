@@ -282,6 +282,17 @@ class PriceBounds(unittest.TestCase):
         for change in [dict(campaign='old'),dict(budget_usd=10),dict(instances_max=2),dict(max_elapsed_seconds=3600),dict(model_requests_max=9),dict(public_activation=True),dict(owner_statement='')]:
             with self.assertRaises(RuntimeError): trial.dj_session_approval({**approved,**change},label)
 
+    def test_integrated_qualification_requires_unconsumed_exact_permission(self):
+        approved=dict(campaign='jamloom-dj-integrated-20261026',status='AUTHORIZED',budget_usd=6,
+            instances_max=1,max_elapsed_seconds=2400,model_requests_max=24,public_activation=False,
+            owner_statement='Approve the capped $6 integrated qualification',stop_on_failure=True,
+            automatic_cleanup=True,replacement_rental_authorized=False,
+            code_sha256={path:trial.hashlib.sha256((trial.ROOT/path).read_bytes()).hexdigest() for path in trial.DJ_INTEGRATED_FILES})
+        trial.dj_integrated_approval(approved)
+        for change in [dict(status='PREPARED'),dict(status='CONSUMED'),dict(owner_statement='old approval'),
+                       dict(stop_on_failure=False),dict(automatic_cleanup=False),dict(replacement_rental_authorized=True),dict(code_sha256={})]:
+            with self.assertRaises(RuntimeError): trial.dj_integrated_approval({**approved,**change})
+
     def test_training_lease_and_stricter_hourly_ceiling(self):
         with patch.object(trial, "LEASE_SECONDS", 7200), patch.object(trial, "HOURLY_CEILING", .5):
             self.assertAlmostEqual(trial.quote(self.offer)["reserved_lease_plus_transfer"], 2 * (.2 + 60 * .2 / 720) + 1.2)

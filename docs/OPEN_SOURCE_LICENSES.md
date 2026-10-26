@@ -61,3 +61,7 @@ Course extension: City Lights and In Motion use original Jamloom lyrics and note
 ## Held-out singing evaluation corpus
 
 [vocadito v3](https://zenodo.org/records/5578807), by Rachel M. Bittner, Katherine Pasalo, Juan José Bosch, Gabriel Meseguer-Brocal and David Rubinstein (2021), is released under **CC BY 4.0**. The [publisher paper, section 2.1](https://arxiv.org/html/2110.05580v1) says volunteers recorded original/public-domain songs and agreed to public dataset release. These are publisher assertions; individual contracts are not supplied. We use unchanged files for offline pitch evaluation, decode PCM and retain aggregate measurements/hashes. No recordings, lyrics or voices are bundled or redistributed. It is **excluded from training**; no model-retention or commercial generated-output permission is inferred from this evaluation. [Exact license and provenance record](evidence/singing-completion-20261026/vocadito-license.json).
+
+## Four-part local research follow-through — 2026-10-26
+
+The existing TorchAudio checkpoint now supplies drums, bass, instruments and vocals to a retained-source local arrangement study. No new weights or dependencies were downloaded. The exact source/model/output hashes are retained in [the report](COHERENT_PERFORMANCE.md). Production checkpoint clearance remains separate; this does not change the inventory's decision to withhold production adoption. Existing SessionTransport, mixer and stereo waveform helper are reused.

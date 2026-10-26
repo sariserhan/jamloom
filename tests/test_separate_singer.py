@@ -10,6 +10,11 @@ from separate_singer import separate
 
 
 class SeparationBoundsTests(unittest.TestCase):
+    def test_stem_selection_is_explicit_and_typed(self):
+        for value in [1, 'yes', None]:
+            with self.assertRaisesRegex(ValueError, 'stem selection'):
+                separate('missing.wav', 'unused', value)
+
     def test_short_voices_dj_tracks_and_existing_songs_keep_checkpoint_validation(self):
         with tempfile.TemporaryDirectory() as folder:
             source = Path(folder) / 'source.wav'

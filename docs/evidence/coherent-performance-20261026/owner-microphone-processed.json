@@ -1,0 +1,78 @@
+{
+  "status": "PARTIAL",
+  "result": {
+    "completed": true,
+    "sampleRate": 48000,
+    "input": {
+      "requestedProcessing": "browser",
+      "label": "Default - MacBook Air Microphone (Built-in)",
+      "sampleRate": 48000,
+      "channelCount": 1,
+      "echoCancellation": true,
+      "noiseSuppression": true,
+      "autoGainControl": false
+    },
+    "pitchDetectionMeaning": "Periodic sound detected; not identification of a human voice",
+    "frames": 2621,
+    "phases": [
+      {
+        "phase": "Stay quiet \u00b7 room noise",
+        "frames": 652,
+        "detectedVoicePercent": 30.368098159509202,
+        "medianRms": 0.00254096290779744,
+        "medianConfidence": 0.9505137205123901,
+        "medianDetectedHz": 205.30266679600172,
+        "rejected": {
+          "quiet": 328,
+          "noStablePitch": 6,
+          "lowConfidence": 120
+        }
+      },
+      {
+        "phase": "Sing a comfortable sustained note",
+        "frames": 656,
+        "detectedVoicePercent": 37.5,
+        "medianRms": 0.00384662491257808,
+        "medianConfidence": 0.9800970088690519,
+        "medianDetectedHz": 369.26449539506683,
+        "rejected": {
+          "quiet": 317,
+          "noStablePitch": 9,
+          "lowConfidence": 84
+        }
+      },
+      {
+        "phase": "Sing the same note more softly",
+        "frames": 656,
+        "detectedVoicePercent": 27.4390243902439,
+        "medianRms": 0.0031918561985056736,
+        "medianConfidence": 0.9373795688152313,
+        "medianDetectedHz": 144.74743510194781,
+        "rejected": {
+          "quiet": 323,
+          "noStablePitch": 54,
+          "lowConfidence": 99
+        }
+      },
+      {
+        "phase": "Add gentle vibrato",
+        "frames": 657,
+        "detectedVoicePercent": 6.544901065449011,
+        "medianRms": 0.00018529555414064326,
+        "medianConfidence": 0.9574169740080833,
+        "medianDetectedHz": 122.24752332847713,
+        "rejected": {
+          "quiet": 592,
+          "noStablePitch": 0,
+          "lowConfidence": 22
+        }
+      }
+    ],
+    "softwareWindowCenterToAnimationMs": {
+      "median": 30.366666595142306,
+      "p95": 39.60000002384186
+    },
+    "limitation": "Not physical microphone-to-display latency or independently labelled singing accuracy"
+  },
+  "interpretation": "Browser processing applied but does not resolve quiet-phase detections or voice misses. No paired raw result received in this reply; causal accuracy comparison is not established. Keep lesson processing unchanged."
+}
