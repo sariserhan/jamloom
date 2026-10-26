@@ -1,0 +1,9 @@
+{
+  "status": "CONSUMED",
+  "plan_sha256": "8f626ae7c2cc235d36121a1c90698018b9edf8906aa62f15d4c3106aefd1a092",
+  "failure_report_sha256": "3bd2359cdd9b486edb1ed01f204fb911bdf9458eb130c2f980664dc8bc95953a",
+  "model_candidates_rendered": 1,
+  "remaining_candidates": "NOT RUN",
+  "replacement_authorized": false,
+  "public_activation": false
+}

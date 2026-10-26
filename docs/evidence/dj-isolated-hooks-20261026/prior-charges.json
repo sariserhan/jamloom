@@ -1,0 +1,14 @@
+[
+  {
+    "campaign": "jamloom-dj-sung-aggressive-20261026",
+    "observedCostMicros": 4000,
+    "evidenceSha256": "9905457043a8fad832e1c9d128f8840bd53a7661e0ed350dc64655eebec50698",
+    "final": false
+  },
+  {
+    "campaign": "jamloom-dj-sung-aggressive-20261026-replacement",
+    "observedCostMicros": 40000,
+    "evidenceSha256": "d1610f4d4c7dbd811e6cc46e9291e2d953a3c2d8e250397c025735aa51bf4226",
+    "final": false
+  }
+]

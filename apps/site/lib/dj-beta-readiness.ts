@@ -9,7 +9,8 @@ export async function djBetaReadiness(pool:Pool,live=false){
  percentile_cont(.95) WITHIN GROUP (ORDER BY b.compute_ms) FILTER (WHERE b.compute_ms IS NOT NULL) AS p95_compute_ms
  FROM dj_session_batches b JOIN dj_sessions s ON s.id=b.session_id WHERE s.billing_live=$1 AND b.created_at>now()-interval '7 days' GROUP BY b.state`,[live])).rows;
  const fresh=workers.filter(w=>w.state==='ready').reduce((n,w)=>n+w.fresh,0),stopping=workers.filter(w=>w.state==='stopping').reduce((n,w)=>n+w.count,0),expired=jobs.reduce((n,j)=>n+j.expired,0);
- return {checkedAt:new Date().toISOString(),billing:live?'live':'test',runtime:fresh===1&&!stopping&&!expired?'Worker heartbeat healthy':'Held',activeListeners:sessions,listenerLimit:2,freeListenerSlots:Math.max(0,2-sessions),workers,jobs,
+ const healthy=fresh===1&&!stopping&&!expired;
+ return {checkedAt:new Date().toISOString(),billing:live?'live':'test',runtime:healthy?'Worker heartbeat healthy':'Held',activeListeners:sessions,listenerLimit:2,freeListenerSlots:healthy?Math.max(0,2-sessions):0,workers,jobs,
  qualification:'Runtime health only. Continuous hosting, provider invoice reconciliation, musical and venue acceptance remain separate release gates.',
  costBoundary:'Observed rental charges include idle time; allocated costs cover metered jobs. Neither is a final invoice or complete operating cost.'};
 }

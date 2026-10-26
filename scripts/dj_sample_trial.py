@@ -31,19 +31,21 @@ RECOVERY = False
 PLANNER = False
 SUNG = False
 SUNG_AGGRESSIVE = False
+ISOLATED = False
 
 
-def configure_quality(house=False, composition=False, guided_set=False, recovery=False, planner=False, sung=False, sung_aggressive=False):
-    global EVIDENCE, WORK, OUTPUT, LABEL, QUALITY, HOUSE, COMPOSITION, GUIDED_SET, RECOVERY, PLANNER, SUNG, SUNG_AGGRESSIVE
+def configure_quality(house=False, composition=False, guided_set=False, recovery=False, planner=False, sung=False, sung_aggressive=False, isolated=False):
+    global EVIDENCE, WORK, OUTPUT, LABEL, QUALITY, HOUSE, COMPOSITION, GUIDED_SET, RECOVERY, PLANNER, SUNG, SUNG_AGGRESSIVE, ISOLATED
     QUALITY = True
     HOUSE = house
     COMPOSITION = composition or guided_set or recovery
     GUIDED_SET = guided_set
     RECOVERY = recovery
     PLANNER = planner
-    SUNG = sung or sung_aggressive
+    SUNG = sung or sung_aggressive or isolated
+    ISOLATED = isolated
     SUNG_AGGRESSIVE = sung_aggressive
-    campaign='dj-sung-aggressive-20261026' if sung_aggressive else 'dj-sung-hooks-20261026' if sung else 'dj-planner-20261026' if planner else 'dj-recovery-20261025' if recovery else 'dj-guided-set-20261025' if guided_set else 'dj-composition-20261025' if composition else 'dj-house-consistency-20261025' if house else 'dj-quality-20261025'
+    campaign='dj-isolated-hooks-20261026' if isolated else 'dj-sung-aggressive-20261026' if sung_aggressive else 'dj-sung-hooks-20261026' if sung else 'dj-planner-20261026' if planner else 'dj-recovery-20261025' if recovery else 'dj-guided-set-20261025' if guided_set else 'dj-composition-20261025' if composition else 'dj-house-consistency-20261025' if house else 'dj-quality-20261025'
     EVIDENCE = ROOT/'docs/evidence'/campaign
     WORK = ROOT/('build-'+campaign)
     OUTPUT = ROOT/'renders'/campaign
@@ -90,18 +92,19 @@ def validate_quality(plan,house=False,composition=False,guided_set=False,recover
         raise ValueError('Prepared worker manifest changed')
 
 
-def validate_sung(plan,replacement=False,aggressive=False):
+def validate_sung(plan,replacement=False,aggressive=False,isolated=False):
     from dj_track_worker import CODE_REVISION, WEIGHTS_REVISION
     from dj_sung_hooks import caption
-    if (plan['status']!='AUTHORIZED' or plan['campaign']!=('jamloom-dj-sung-aggressive-20261026' if aggressive else 'jamloom-dj-sung-hooks-20261026')
-        or plan['owner_statement']!=('Approve one replacement within the original cap' if replacement else 'Approve the capped $3 vocal-mode comparison' if aggressive else 'Approve the capped $3 musical-vocal comparison')
+    if isolated and (replacement or aggressive): raise ValueError('Isolated comparison has no replacement authorization')
+    if (plan['status']!='AUTHORIZED' or plan['campaign']!=('jamloom-dj-isolated-hooks-20261026' if isolated else 'jamloom-dj-sung-aggressive-20261026' if aggressive else 'jamloom-dj-sung-hooks-20261026')
+        or plan['owner_statement']!=('Approve one replacement within the original cap' if replacement else 'Approve the capped $3 isolated-singing comparison' if isolated else 'Approve the capped $3 vocal-mode comparison' if aggressive else 'Approve the capped $3 musical-vocal comparison')
         or plan['budget_usd']!=3 or plan['max_workers']!=1 or plan['max_minutes']!=20 or plan['max_requests']!=4
         or plan['stop_on_failure'] is not True or plan['automatic_cleanup'] is not True
         or plan['source_audio_used'] is not True or plan['source_audio_origin']!='jamloom_generated_originals'
         or any(plan[k] is not False for k in ['public_activation','reference_audio_used','learned_reference_weights_used'])
         or plan['model']!=dict(code=CODE_REVISION,weights=WEIGHTS_REVISION)):
         raise ValueError('Fresh bounded musical-vocal authorization required')
-    evidence=ROOT/'docs/evidence'/('dj-sung-aggressive-20261026' if aggressive else 'dj-sung-hooks-20261026')
+    evidence=ROOT/'docs/evidence'/('dj-isolated-hooks-20261026' if isolated else 'dj-sung-aggressive-20261026' if aggressive else 'dj-sung-hooks-20261026')
     fixture=evidence/'sung-fixtures.json'
     if hashlib.sha256(fixture.read_bytes()).hexdigest()!=plan['fixture_sha256'] or json.loads(fixture.read_text())['cases']!=plan['cases']:
         raise ValueError('Prepared sung fixture changed')
@@ -114,6 +117,7 @@ def validate_sung(plan,replacement=False,aggressive=False):
         if (case['request']!=expected or row['request']!=expected or case['source_file']!=source
             or case['source_sha256']!=expected_sources[source] or case['vocal_profile']!=('male-tenor' if i%2==0 else 'female-mezzo')
             or case.get('repaint_mode','balanced')!=('aggressive' if aggressive else 'balanced')
+            or case.get('method','repaint')!=('isolated' if isolated else 'repaint')
             or case['phrase']!=('Feel alive' if i<2 else 'We rise') or row['vocals'] is not False or row['seconds']!=60
             or row['caption']!=caption(case) or not 0<case['cue']['seconds']<=2):raise ValueError('Prepared sung case changed')
         if hashlib.sha256((ROOT/'renders/dj-planner-20261026'/source.removeprefix('sung-')).read_bytes()).hexdigest()!=expected_sources[source]:raise ValueError('Original source changed')
@@ -143,7 +147,7 @@ def configure_replacement():
 
 
 def validate(plan):
-    if SUNG: return validate_sung(plan,replacement=REPLACEMENT,aggressive=SUNG_AGGRESSIVE)
+    if SUNG: return validate_sung(plan,replacement=REPLACEMENT,aggressive=SUNG_AGGRESSIVE,isolated=ISOLATED)
     if QUALITY: return validate_quality(plan,house=HOUSE,composition=COMPOSITION,guided_set=GUIDED_SET,recovery=RECOVERY,planner=PLANNER)
     if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != 'jamloom-dj-style-samples-20261025' or plan['budget_usd'] != 3
         or plan['max_workers'] != 1 or plan['max_minutes'] != 20
@@ -219,9 +223,9 @@ def run():
                  confirm_absence=True, disk_gb=60)
     vast.write_state(state)
     with (WORK/'watchdog.log').open('a') as log:
-        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--sung-aggressive'] if SUNG_AGGRESSIVE else ['--sung-study'] if SUNG else ['--planner-study'] if PLANNER else ['--recovery-study'] if RECOVERY else ['--guided-set'] if GUIDED_SET else ['--composition-study'] if COMPOSITION else ['--house-study'] if HOUSE else ['--quality'] if QUALITY else [])],
+        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--isolated-hooks'] if ISOLATED else ['--sung-aggressive'] if SUNG_AGGRESSIVE else ['--sung-study'] if SUNG else ['--planner-study'] if PLANNER else ['--recovery-study'] if RECOVERY else ['--guided-set'] if GUIDED_SET else ['--composition-study'] if COMPOSITION else ['--house-study'] if HOUSE else ['--quality'] if QUALITY else [])],
                          stdin=subprocess.DEVNULL, stdout=log, stderr=log, start_new_session=True)
-    report = dict(status='FAIL', scope='Four short sung edits on two retained Jamloom originals; no TTS or external references' if SUNG else 'Paired unconditioned generation with or without semantic music planning; no reference material' if PLANNER else 'Four guide/model seed controls plus two original vocal opportunities; no reference material' if RECOVERY else 'Six guided bass originals with at most three short vocal candidates; direction and consistency study' if GUIDED_SET else 'Four paired originals; same captions/model/seeds, with and without newly authored audio guides' if COMPOSITION else 'Six paired instrumental house tracks; no reference audio or research weights' if HOUSE else 'Four arrangement candidates with at most two brief vocal candidates; no reference audio or research weights' if QUALITY else 'Two original style prompts; same seed and base model; no reference audio or research weights', tracks=[])
+    report = dict(status='FAIL', scope='Four isolated sung candidates, mixed locally into two retained originals; no TTS or repaint' if ISOLATED else 'Four short sung edits on two retained Jamloom originals; no TTS or external references' if SUNG else 'Paired unconditioned generation with or without semantic music planning; no reference material' if PLANNER else 'Four guide/model seed controls plus two original vocal opportunities; no reference material' if RECOVERY else 'Six guided bass originals with at most three short vocal candidates; direction and consistency study' if GUIDED_SET else 'Four paired originals; same captions/model/seeds, with and without newly authored audio guides' if COMPOSITION else 'Six paired instrumental house tracks; no reference audio or research weights' if HOUSE else 'Four arrangement candidates with at most two brief vocal candidates; no reference audio or research weights' if QUALITY else 'Two original style prompts; same seed and base model; no reference audio or research weights', tracks=[])
     tunnel = None; ssh = None; scp = None
     try:
         result = vast.api('v0/asks/'+str(offer['id']), 'PUT', dict(
@@ -280,8 +284,8 @@ def run():
             if SUNG:
                 proof=receipt.get('musical_hook',{})
                 case=plan['cases'][row['request']['sequence']]
-                if (receipt.get('vocal') is not None or proof.get('task_type')!='repaint' or proof.get('text_to_speech') is not False
-                    or proof.get('repaint_mode','balanced')!=case.get('repaint_mode','balanced')
+                if (receipt.get('vocal') is not None or proof.get('task_type')!=('isolated' if ISOLATED else 'repaint') or proof.get('text_to_speech') is not False
+                    or proof.get('repaint_mode','balanced')!=(None if ISOLATED else case.get('repaint_mode','balanced'))
                     or proof.get('source_sha256')!=case['source_sha256'] or proof.get('cue')!=case['cue']
                     or proof.get('phrase')!=case['phrase'] or proof.get('vocal_profile')!=case['vocal_profile']
                     or len(proof.get('raw_sha256',''))!=64):raise RuntimeError('Musical candidate proof mismatch')
@@ -322,6 +326,8 @@ def run():
             try:
                 log = subprocess.run([*ssh, 'tail -160 /workspace/boot.log'], capture_output=True, timeout=15)
                 (WORK/'boot-tail.log').write_bytes(log.stdout)
+                if scp and not (OUTPUT/'executed-scripts.sha256').exists():
+                    subprocess.run([*scp,'root@'+item['ssh_host']+':/workspace/results/executed-scripts.sha256',str(OUTPUT)],capture_output=True,timeout=15)
                 if SUNG and scp and not (OUTPUT/'sung-candidates').exists():
                     subprocess.run([*scp,'-r','root@'+item['ssh_host']+':/workspace/ace-step/sung-candidates',str(OUTPUT)],capture_output=True,timeout=30)
             except (OSError,subprocess.TimeoutExpired): pass
@@ -348,9 +354,10 @@ if __name__ == '__main__':
     parser.add_argument('--planner-study',action='store_true')
     parser.add_argument('--sung-study',action='store_true')
     parser.add_argument('--sung-aggressive',action='store_true')
+    parser.add_argument('--isolated-hooks',action='store_true')
     args = parser.parse_args()
-    if sum([args.quality,args.replacement,args.house_study,args.composition_study,args.guided_set,args.recovery_study,args.planner_study,args.sung_study,args.sung_aggressive])>(2 if args.replacement and (args.recovery_study or args.sung_study or args.sung_aggressive) else 1): parser.error('Choose one campaign; replacements require a new prepared permit')
-    if args.quality or args.house_study or args.composition_study or args.guided_set or args.recovery_study or args.planner_study or args.sung_study or args.sung_aggressive: configure_quality(house=args.house_study,composition=args.composition_study,guided_set=args.guided_set,recovery=args.recovery_study,planner=args.planner_study,sung=args.sung_study,sung_aggressive=args.sung_aggressive)
+    if sum([args.quality,args.replacement,args.house_study,args.composition_study,args.guided_set,args.recovery_study,args.planner_study,args.sung_study,args.sung_aggressive,args.isolated_hooks])>(2 if args.replacement and (args.recovery_study or args.sung_study or args.sung_aggressive) else 1): parser.error('Choose one campaign; replacements require a new prepared permit')
+    if args.quality or args.house_study or args.composition_study or args.guided_set or args.recovery_study or args.planner_study or args.sung_study or args.sung_aggressive or args.isolated_hooks: configure_quality(house=args.house_study,composition=args.composition_study,guided_set=args.guided_set,recovery=args.recovery_study,planner=args.planner_study,sung=args.sung_study,sung_aggressive=args.sung_aggressive,isolated=args.isolated_hooks)
     if args.replacement: configure_replacement()
     if args.watch: vast.watch()
     elif args.preflight:

@@ -1,0 +1,21 @@
+{
+  "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/acestep/inference.py",
+      "sha256": "f43827def02a1122e2de483961b04f16544e4da9108eed9e42fd529175c15df5"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/acestep/core/generation/handler/generate_music_decode.py",
+      "sha256": "5ebe4dfd65635a687a5692d37ab377ab959170e764fbedf54d6e35711cc40416"
+    }
+  ],
+  "findings": [
+    "The decoder divides by the peak when it exceeds 1, so normalized output can reach exactly full scale.",
+    "The inference API defaults to enabled peak normalization at -1 dBFS.",
+    "The attempted isolated worker inherited disabled normalization from repaint and exported PCM16.",
+    "A full-scale sample alone does not establish audible clipping. The pre-export tensor is not retained.",
+    "The local correction requests -1 dBFS normalization before float WAV export. No post-failure GPU run validates it."
+  ],
+  "owner_feedback": "Singing, but unnatural or unclear"
+}

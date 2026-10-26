@@ -128,7 +128,7 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
      assert.deepEqual(await warm.sweep(),[],'An active bounded render may drain after a client disconnect');
      await pool.query("UPDATE dj_session_batches SET lease_until=now()-interval '1 second' WHERE session_id=$1",[started.v.id]);
     }
-    if(condition!=='disconnect'){assert.equal(await sessions.available(),false);assert.equal((await djBetaReadiness(pool)).runtime,'Held');}
+    if(condition!=='disconnect'){assert.equal(await sessions.available(),false);const readiness=await djBetaReadiness(pool);assert.equal(readiness.runtime,'Held');assert.equal(readiness.freeListenerSlots,0);}
     assert.equal((await warm.sweep())[0].status,'destroy_requested');assert.equal(await sessions.claim(worker),null);assert.ok((await sessions.wallet.balance('warm-fail')).reserved>0);
     assert.equal((await warm.sweep())[0].status,'shutdown_confirmed');assert.equal((await sessions.status('warm-fail',started.v.id)).state,'ended');assert.equal((await sessions.wallet.balance('warm-fail')).reserved,0);
    }

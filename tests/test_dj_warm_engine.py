@@ -1,4 +1,6 @@
 import json
+import contextlib
+import io
 from pathlib import Path
 import sys
 import threading
@@ -15,6 +17,24 @@ from dj_warm_engine import Renderer, handler
 
 
 class WarmEngineTests(unittest.TestCase):
+    def test_render_failure_is_diagnosable_without_exposing_details_over_http(self):
+        def rejected(*args):raise ValueError('Repaint drops accompaniment for at least 200 ms')
+        renderer=Renderer(time.time()+100,1,generate=rejected)
+        server=HTTPServer(('127.0.0.1',0),handler(renderer,'a'*64))
+        thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+        value=dict(job=str(uuid.uuid4()),vocals=False,request=dict(version=1,session='b'*32,sequence=0,seed=1,style='house',energy=4))
+        log=io.StringIO()
+        try:
+            req=urllib.request.Request(f'http://127.0.0.1:{server.server_port}/render',data=json.dumps(value).encode(),headers={'Authorization':'Bearer '+'a'*64})
+            with contextlib.redirect_stderr(log):
+                with self.assertRaises(urllib.error.HTTPError) as failed:urllib.request.urlopen(req,timeout=5)
+                with failed.exception as response:
+                    self.assertEqual(response.code,422)
+                    self.assertNotIn(b'drops accompaniment',response.read())
+            self.assertIn('drops accompaniment',log.getvalue());self.assertNotIn('a'*64,log.getvalue())
+        finally:
+            server.shutdown();server.server_close();thread.join()
+
     def test_last_request_keeps_instrumental_instead_of_exceeding_vocal_budget(self):
         calls = []
         def generate(value, directory, engine):
@@ -58,7 +78,8 @@ class WarmEngineTests(unittest.TestCase):
             self.assertEqual(renderer.render(value),(receipt,audio));self.assertEqual(renderer.requests,2)
         self.assertEqual(calls[0],(None,True));self.assertFalse(calls[1][1]);self.assertIsNotNone(calls[1][0])
         self.assertTrue(receipt['vocal']['repeat']);self.assertTrue(receipt['vocal']['echo'])
-        self.assertEqual(receipt['vocal_check'],{'status':'placed','generated':True})
+        self.assertEqual(receipt['vocal_check']['status'],'placed');self.assertTrue(receipt['vocal_check']['generated'])
+        self.assertEqual(receipt['vocal_check']['source_phrase']['end'],1)
         self.assertEqual(receipt['composition']['request'],value['request'])
 
     def test_bounded_authenticated_idempotent_renderer(self):

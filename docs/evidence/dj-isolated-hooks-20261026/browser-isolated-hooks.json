@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Uncut singing candidate",
+          "seconds": 10,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Uncut singing candidate",
+          "seconds": 10,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "speakerOutput": "Muted",
+  "humanListening": "NOT RUN"
+}

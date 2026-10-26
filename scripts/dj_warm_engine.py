@@ -11,6 +11,7 @@ from pathlib import Path
 import secrets
 import tempfile
 import time
+import traceback
 import uuid
 import wave
 
@@ -101,8 +102,10 @@ def handler(renderer, token):
                     raise ValueError('Invalid body')
                 receipt, data = renderer.render(json.loads(self.rfile.read(length)))
             except (ValueError, TypeError, KeyError):
+                traceback.print_exc()  # Private worker log; HTTP responses remain generic.
                 self.send_error(422); return
             except Exception:
+                traceback.print_exc()
                 self.send_error(503); return
             self.send_response(200)
             self.send_header('Content-Type', 'audio/wav')

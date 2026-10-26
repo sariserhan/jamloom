@@ -3,10 +3,42 @@ from pathlib import Path
 import unittest
 import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts'))
-from dj_vocal import add_hook, steady_grid
+from dj_vocal import add_hook, steady_grid, short_phrase, mix_phrase
 
 
 class VocalTests(unittest.TestCase):
+    def test_separate_complete_phrases_do_not_become_one_long_vocal(self):
+        rate=8000; voice=np.zeros((10*rate,2))
+        for start in (1,5):
+            voice[start*rate:(start+1)*rate]=.2*np.sin(np.arange(rate)[:,None]*2*np.pi*220/rate)
+        clip,bounds=short_phrase(voice,rate,2*rate)
+        self.assertEqual(len(clip),2*rate); self.assertLess(bounds['start'],1)
+        self.assertEqual(bounds['end'],2); self.assertLess(bounds['end']-bounds['start'],2)
+        # A sub-word pause must not split a longer connected performance.
+        voice[2*rate:3*rate]=voice[rate:2*rate]
+        voice[round(1.8*rate):round(2.1*rate)]=0
+        clip,bounds=short_phrase(voice,rate,2*rate)
+        self.assertGreater(bounds['start'],4);self.assertEqual(bounds['end'],6)
+
+    def test_selection_rejects_long_tails_truncated_ends_and_invalid_audio(self):
+        rate=8000; voice=np.zeros((10*rate,2))
+        voice[rate:2*rate]=.2
+        voice[2*rate:4*rate]=.01  # A quiet sustained word/tail is still part of the phrase.
+        self.assertEqual(short_phrase(voice,rate,2*rate),(None,None))
+        voice[:]=0;voice[9*rate:]=.2
+        self.assertEqual(short_phrase(voice,rate,2*rate),(None,None))
+        for bad in [np.zeros_like(voice),np.ones_like(voice),np.full_like(voice,np.nan),voice[:rate]]:
+            with self.assertRaises(ValueError):short_phrase(bad,rate,2*rate)
+        with self.assertRaises(ValueError):short_phrase(voice,0,2*rate)
+
+    def test_overlay_keeps_accompaniment_and_does_not_normalize_other_music(self):
+        original=np.full((10*8000,2),.1);clip=np.full((8000,2),.18)
+        output=mix_phrase(original,clip,8000,3)
+        np.testing.assert_array_equal(output[:24000],original[:24000])
+        np.testing.assert_array_equal(output[32000:],original[32000:])
+        self.assertGreaterEqual(float(output[24000:32000].min()),.26)
+        with self.assertRaises(ValueError):mix_phrase(original,clip,8000,10)
+
     def test_hook_chooses_quieter_midrange_without_leaving_supported_beats(self):
         rate=8000;t=np.arange(60*rate)/rate
         bass=.2*np.sin(2*np.pi*80*t)*np.exp(-(t%(.5))*40)

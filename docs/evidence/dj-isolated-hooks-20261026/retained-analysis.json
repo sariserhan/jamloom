@@ -1,0 +1,13 @@
+{
+  "status": "FAIL short-hook qualification",
+  "raw_sha256": "d00b88f70549bbe9dde11f98d5016939f5a463b5d873affc9b6ed0e37b6fd71f",
+  "seconds": 10,
+  "full_scale_samples": 1,
+  "full_scale_time": 0.8119583333333333,
+  "phrase_after_temporary_headroom": null,
+  "asr_transcript": "",
+  "asr_limit": "Empty transcript does not establish absence of singing; previous positive control also failed.",
+  "human_listening": "NOT RUN",
+  "remaining_model_calls": "NOT RUN; stop on failure",
+  "repaired_audio_saved": false
+}

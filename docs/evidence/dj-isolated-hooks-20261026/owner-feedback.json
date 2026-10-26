@@ -1,0 +1,10 @@
+{
+  "status": "FAIL natural singing qualification",
+  "owner_statement": "Singing, but unnatural or unclear",
+  "raw_sha256": "d00b88f70549bbe9dde11f98d5016939f5a463b5d873affc9b6ed0e37b6fd71f",
+  "served_sha256": "d00b88f70549bbe9dde11f98d5016939f5a463b5d873affc9b6ed0e37b6fd71f",
+  "vocal_presence": "PASS owner heard singing",
+  "naturalness_or_clarity": "FAIL; owner did not distinguish the two",
+  "short_hook_placement": "FAIL no complete short phrase placed",
+  "product_promotion": false
+}

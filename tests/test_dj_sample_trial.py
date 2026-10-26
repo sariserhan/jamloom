@@ -3,17 +3,60 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import tempfile
+import subprocess
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
+from contextlib import ExitStack
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts'))
 from dj_sample_trial import validate, validate_quality, validate_sung, EVIDENCE, ROOT
 
 
 class SamplePermitTests(unittest.TestCase):
+    def test_failed_startup_retains_execution_hashes_and_still_deletes_rental(self):
+        import dj_sample_trial as trial
+        with tempfile.TemporaryDirectory() as directory,ExitStack() as stack:
+            work=Path(directory)/'work';output=Path(directory)/'output';deleted=[]
+            for owner,name,value in [(trial,'WORK',work),(trial,'OUTPUT',output),(trial,'SUNG',False),
+                                     (trial,'REPLACEMENT',False),(trial.vast,'WORK',work),(trial.vast,'STATE',work/'trial-state.json')]:
+                stack.enter_context(patch.object(owner,name,value))
+            stack.enter_context(patch.object(trial,'preflight',return_value=({'tracks':[]},{'credit':10},{'id':5,'reserved_lease_plus_transfer':.5})))
+            stack.enter_context(patch.object(trial.vast,'api',side_effect=lambda path,*a: {'new_contract':9} if 'asks/' in path else {'credit':9.99}))
+            stack.enter_context(patch.object(trial.vast,'attach_key'))
+            stack.enter_context(patch.object(trial.vast,'instances',side_effect=lambda: [] if deleted else [{'id':9,'ssh_port':22,'ssh_host':'example.invalid'}]))
+            stack.enter_context(patch.object(trial.vast,'destroy',side_effect=lambda state:deleted.append(state['id'])))
+            process=MagicMock();process.poll.return_value=None
+            stack.enter_context(patch.object(trial.subprocess,'Popen',return_value=process))
+            def command(args,**kwargs):
+                stdout=b''
+                if args[0]=='ssh-keygen':Path(args[-1]+'.pub').write_text('test public key')
+                if args[-1].startswith('if test -f'):stdout=b'1\n'
+                if args[0]=='scp' and any('/workspace/results/executed-scripts.sha256' in str(a) for a in args):
+                    (output/'executed-scripts.sha256').write_text('test-hash worker.py\n')
+                return subprocess.CompletedProcess(args,0,stdout,b'')
+            stack.enter_context(patch.object(trial.subprocess,'run',side_effect=command))
+            with self.assertRaisesRegex(RuntimeError,'Renderer process exited'):trial.run()
+            self.assertEqual(deleted,[9]);self.assertTrue(json.loads((output/'report.json').read_text())['cleanup_confirmed'])
+            self.assertEqual((output/'executed-scripts.sha256').read_text(),'test-hash worker.py\n')
+
+    def test_isolated_singing_has_new_approval_and_no_implicit_replacement(self):
+        plan=json.loads((ROOT/'docs/evidence/dj-isolated-hooks-20261026/gpu-plan.json').read_text())
+        with self.assertRaises(ValueError):validate_sung({**plan,"status":"PREPARED"},isolated=True)
+        plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 isolated-singing comparison')
+        with self.assertRaisesRegex(ValueError,'worker changed'):validate_sung(plan,isolated=True)
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
+        validate_sung(plan,isolated=True)
+        for key,value in [('max_requests',5),('budget_usd',4),('owner_statement','finish everything'),('public_activation',True)]:
+            with self.assertRaises(ValueError):validate_sung({**plan,key:value},isolated=True)
+        for options in [dict(replacement=True),dict(aggressive=True)]:
+            with self.assertRaises(ValueError):validate_sung(plan,isolated=True,**options)
+        with self.assertRaises(ValueError):validate_sung(plan)
+
     def test_vocal_mode_replacement_preserves_first_attempt_cost_and_time(self):
         import dj_sample_trial as trial
         plan=json.loads((ROOT/'docs/evidence/dj-sung-aggressive-20261026/replacement-plan.json').read_text())
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve one replacement within the original cap'
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         with patch.object(trial.vast,'LEASE_SECONDS',plan['remaining_rental_seconds']):
             validate_sung(plan,replacement=True,aggressive=True)
             for key,value in [('budget_usd_total',4),('remaining_rental_seconds',1200),('original_permit_sha256','0'*64)]:
@@ -25,6 +68,7 @@ class SamplePermitTests(unittest.TestCase):
         plan['status']='PREPARED'
         with self.assertRaises(ValueError):validate_sung(plan,aggressive=True)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 vocal-mode comparison'
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         validate_sung(plan,aggressive=True)
         with self.assertRaises(ValueError):validate_sung(plan,aggressive=True,replacement=True)
         with self.assertRaises(ValueError):validate_sung(plan)

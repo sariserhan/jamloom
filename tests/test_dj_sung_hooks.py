@@ -76,5 +76,37 @@ class SungHooksTests(unittest.TestCase):
             receipt=json.loads((root/'musical-hook.json').read_text());self.assertFalse(receipt['text_to_speech']);self.assertIn('require listening',receipt['status'])
             np.testing.assert_array_equal(output[:20*rate],samples[:20*rate])
 
+    def test_isolated_singing_never_sends_instrumental_to_model_or_forces_long_phrase(self):
+        self.case['method']='isolated'
+        samples=np.ones((2880000,2),dtype=np.float32)*.1
+        for separated in (True,False):
+            candidate=np.full((480000,2),.2,dtype=np.float32)
+            if separated:
+                candidate[:]=0
+                candidate[48000:96000]=.2;candidate[240000:288000]=.2
+            with tempfile.TemporaryDirectory() as directory:
+                root=Path(directory);(root/'sung-fixtures.json').write_text(json.dumps({'cases':[self.case]}))
+                (root/'sung-house-1.wav').write_bytes(b'original');(root/'raw.wav').write_bytes(b'isolated singing candidate')
+                sf=MagicMock();sf.read.side_effect=[(samples,48000),(candidate,48000)]
+                generate=MagicMock(return_value=SimpleNamespace(success=True,audios=[{'path':str(root/'raw.wav')}]))
+                modules={'torch':MagicMock(),'soundfile':sf,'acestep':MagicMock(),'acestep.inference':SimpleNamespace(GenerationParams=SimpleNamespace,GenerationConfig=SimpleNamespace,generate_music=generate)}
+                with patch.dict(sys.modules,modules),patch('dj_sung_hooks.steady_grid',return_value=(128,.3125,[(12,44)])):
+                    output,rate=sung_study(self.value,root,engine=('dit','lm'),fixture_file=root/'sung-fixtures.json')
+                params=generate.call_args.args[2]
+                self.assertEqual(generate.call_count,1);self.assertEqual(params.duration,10)
+                self.assertFalse(hasattr(params,'src_audio'));self.assertFalse(hasattr(params,'repainting_start'))
+                self.assertFalse(params.instrumental);self.assertEqual(params.lyrics,'[Chorus]\nWe rise')
+                self.assertTrue(params.enable_normalization);self.assertEqual(params.normalization_db,-1)
+                self.assertEqual(generate.call_args.args[3].audio_format,'wav32')
+                self.assertIn(vocal_description(dict(voice='female',vocal_profile='female-mezzo')),params.caption)
+                self.assertLessEqual(len(params.caption),511)
+                proof=json.loads((root/'musical-hook.json').read_text())
+                self.assertFalse(proof['model_source_audio_used']);self.assertEqual(proof['task_type'],'isolated')
+                self.assertEqual(proof['placement'],'placed' if separated else 'no_short_phrase')
+                self.assertEqual((root/'sung-candidates/raw-0.wav').read_bytes(),b'isolated singing candidate')
+                np.testing.assert_array_equal(output[:20*rate],samples[:20*rate])
+                np.testing.assert_array_equal(output[21*rate+42000:],samples[21*rate+42000:])
+                if not separated:np.testing.assert_array_equal(output,samples)
+
 
 if __name__=='__main__':unittest.main()

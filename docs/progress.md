@@ -1,3 +1,18 @@
+## Separate singing completion work — 2026-10-26
+
+**PARTIAL implementation; FAIL natural singing.** The owner requested all remaining work. The approved $3 / one-GPU / 20-minute / four-call comparison stopped after the first ten-second candidate hit the level guard. One raw candidate was retained; no mixed hook was delivered and the remaining three calls were not run. GPU deletion is independently confirmed after 337.58 seconds. The account debit snapshot was $0.048793; later provider-specific charges are $0.072, not a settled invoice. The owner heard singing but rated it “unnatural or unclear”; no promotion.
+
+- [x] Implement shared quiet-bounded phrase selection and sparse mixing; retain the two-second limit and unchanged surrounding audio.
+- [x] Complete the authorized single attempt, retain the failed candidate, verify cleanup and record the hash-bound owner rejection. No replacement is authorized.
+- [x] Correct the separate voice's inherited export setting to normalize before float WAV export; keep repaint behavior and rejection guards. Local parameter checks pass; GPU execution of this correction is NOT RUN.
+- [x] Retain private worker error details without exposing them in HTTP responses; test execution-hash collection during failed startup and cleanup.
+- [x] Report zero available listener slots while service capacity is held. 81 final Python checks, 150 site tests, 38 isolated database/session/process checks and TypeScript pass.
+- [x] Verify the single rejected raw diagnostic in Chromium/WebKit at desktop/mobile sizes: play, seek, no autoplay or page errors. This is not the uncompleted four-candidate comparison.
+- [ ] Qualify natural short singing, fresh musical consistency and full-set performance; the owner rejects this voice.
+- [ ] Qualify sustained hosted capacity/costs and physical venue/release gates. No image build, deployment or activation occurred.
+
+[Implementation, failure evidence and remaining limits](dj-isolated-singing.md).
+
 ## AI DJ completion continuation — 2026-10-26
 
 **PARTIAL; no public activation.** The owner requested all remaining work after the failed singing study. The next vocal comparison isolates source-latent injection using the pinned upstream implementation. Its first approved attempt lost the provider SSH connection before audio and was deleted (62.47 seconds, about $0.003325 observed debit, independently zero rentals). The separately approved replacement rendered one raw candidate that fails clipping/continuity validation, then stopped. Both attempts total 424.03 seconds and $0.039556 observed combined debit, with independently zero rentals. The other three edits were not rendered; no new vocal passed. [Vocal-mode report](dj-vocal-mode.md).
