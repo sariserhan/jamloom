@@ -1,0 +1,12 @@
+{
+  "observed": [
+    "Initial isolated audio test refused a non-loopback configuration; rerun with explicit loopback environment passed",
+    "Initial test fixture required an explicit partial-event type assertion; final build/typecheck passed",
+    "First phone build omitted the existing development team; subsequent signed build/archive/export passed",
+    "A concurrent native bundle preparation was rejected during web-bundle regeneration; sequential signed build/audit passed",
+    "Admin test encountered hidden cached heading/input copies; visible role selectors pass in both browsers",
+    "Product WebKit sweep reported navigation-time access-control errors. Explicit SPA response waits isolate the navigation; collapsed per-card rating reads were separately removed in the shared component. Final product and feedback sweeps pass in both browsers."
+  ],
+  "preserved_product_failure": "browser-navigation-failure.log",
+  "final": "PASS all listed local checks; original failure retained"
+}

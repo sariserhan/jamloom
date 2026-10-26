@@ -1,3 +1,4 @@
+import {singingOffer} from '../../web/singing-course.js';
 export const guides={
  'how-to-become-a-dj':{title:'How to become a DJ: start learning on your laptop',description:'Learn how to start DJing: understand the decks, practise your first transition, choose tracks and record a short set. Begin with a free Jamloom lesson.',paragraphs:[
  'Start with music you enjoy and a simple goal: make two tracks flow together. Becoming a DJ takes listening and practice. You can begin learning the controls on a laptop before deciding whether you want a physical controller.',
@@ -24,6 +25,7 @@ export const guides={
 } as const;
 export const information={
  pricing:{title:'Basic is free. Pro is $49 once.',description:'Free Basic for live Mac audio; Pro v1 costs $49 once for the full web and Mac DJ studio. Paid cloud generation remains closed.',paragraphs:[
+  `Singing Academy is planned at $${singingOffer.priceCents/100} USD once, before applicable tax. The current original-song preview is free; course sales are not open.`,
  'Jamloom Basic is free. Jamloom Pro v1 costs $49 USD once, plus applicable tax, for the complete DJ studio on your own compatible Macs and the web. Pro v1 updates are included. No subscription or generation credits are required to mix your local music.',
  'Proposed US launch packs are Starter: $9.99 for 10 credits, Creator: $24.99 for 25, and Studio: $49.99 for 50, before applicable tax. These are proposals, not active offers. Credits would not expire.',
  'One credit is not a promise of one song. A future job will show an exact credit quote before you confirm. Duration, model, retries and a conservative cost ceiling determine the quote. Changes require a new quote and confirmation.',

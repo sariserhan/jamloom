@@ -1,3 +1,18 @@
+## Local release readiness and Singing Academy $39 — 2026-10-26
+
+**PARTIAL overall; publication explicitly held.** [Current readiness report](LOCAL_RELEASE_READINESS.md) distinguishes the tested local candidate from paid and licensed release gates.
+
+- [x] Set Singing Academy to $39 USD one-time across web pricing and the phone course screen; retain the free preview and unchanged DJ Academy/Pro prices.
+- [x] Extend existing course checkout/receipts with product and amount isolation, signed webhook/replay handling, refunds and disputes; no live sales activation.
+- [x] Implement account-deletion fulfillment with recent admin sign-in, worker/upload waits, resumable storage cleanup, financial tombstones and deletion audit; test only isolated accounts.
+- [x] Add reviewed local-only migrations, guard suspended audio writes and remove password-reset records during deletion.
+- [x] Prepare signed iPhone build 25 locally; preserve build 24's separate physical and Apple evidence.
+- [x] Pass 246 unique automated checks, final isolated build/bundle audit and Chromium/WebKit product, admin, feedback and HTTP checks; export and independently audit the local IPA.
+- [x] Load collapsed rating panels only on first opening; verify zero hidden reads, one opening read and preserved drafts/save/reload/delete.
+- [ ] Qualify new Singing provider payments, complete paid course enforcement/native purchase restore, and real Apple receipt/reviewer/product gates before sales.
+- [ ] Close substantive music quality/capacity, labelled singing accuracy/physical latency and popular-song permissions/assets. No new GPU spending or licensing purchase authorized.
+- [ ] Publish only after a later explicit instruction. No push, deployment, hosted migration, live activation or App Store upload/submission in this pass.
+
 ## Current release closure — 2026-10-26
 
 **PARTIAL overall.** [Current report](RELEASE_CLOSURE.md) records the new evidence without overwriting earlier failed attempts. Website remains local; App Store preparation is not public release.

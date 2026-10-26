@@ -1,3 +1,5 @@
+Latest local preparation: [Singing Academy $39, account deletion, lazy ratings and build 25](LOCAL_RELEASE_READINESS.md). Publication remains held; this does not close the open paid/licensed/quality gates below.
+
 # Release acceptance — current local candidate, 2026-10-26
 
 This ledger supersedes older completion summaries for release decisions. [Every-product completion and current regression evidence](PRODUCT_COMPLETION.md) covers the wider catalogue. PASS applies only to the stated scope. The owner's latest publication instruction is **“Keep local for now.”**

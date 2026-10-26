@@ -16,15 +16,22 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   for(const path of routes){
    console.log(name,path);
-   const response=await page.goto(base+path);assert.equal(response.status(),200,path);await page.locator('h1').waitFor();
+   const response=await page.goto(base+path);assert.equal(response.status(),200,path);await page.getByRole('heading',{level:1}).waitFor();
    assert.equal(await page.locator('h1').count(),1,path);
    assert.equal(new URL(await page.locator('link[rel=canonical]').getAttribute('href')).href,new URL('https://www.jamloom.com'+path).href);
    assert.equal(await page.locator('meta[name=robots]').getAttribute('content'),'index, follow');
    for(const width of [1440,390,320]){await page.setViewportSize({width,height:900});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),path+' overflow '+width);}
   }
+  await page.goto(base+'/singing-academy/checkout');
+  await page.getByRole('heading',{name:/\$39 USD/}).waitFor();
+  assert.equal(await page.getByRole('button',{name:/Pay securely/}).count(),0);
+  for(const width of [1440,390,320]){await page.setViewportSize({width,height:900});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Singing price overflow');}
+  await page.screenshot({path:new URL(name+'-singing-price.png',evidence).pathname,fullPage:true});
   await page.goto(base+'/');await page.setViewportSize({width:1280,height:1000});
   if(name==='chromium')await page.screenshot({path:new URL('home-desktop.png',evidence).pathname,fullPage:true});
-  await page.getByRole('link',{name:'Create an AI song',exact:true}).first().click();await page.waitForURL(base+'/improvise');
+  // SPA navigation keeps the document load state; wait for actual Improvise reads before leaving it.
+  const reads=Promise.all(['/api/improvise/song','/api/improvise/song?view=validation','/api/improvise/song?view=public','/api/improvise/song?view=mine','/api/catalogue?sort=latest','/api/favorites'].map(path=>page.waitForResponse(r=>r.url()===base+path).then(r=>r.status()===401?null:r.finished())));
+  await page.getByRole('link',{name:'Create an AI song',exact:true}).first().click();await page.waitForURL(base+'/improvise');await reads;
   await page.goto(base+'/dj-studio');const structured=JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());assert.equal(structured['@type'],'WebApplication');assert.deepEqual(structured.offers.map(({name,price})=>({name,price})),[{name:'Basic',price:0},{name:'Pro',price:49}]);assert.equal(structured.aggregateRating,undefined);
   await page.goto(base+'/');await page.setViewportSize({width:390,height:844});await page.screenshot({path:new URL(name+'-home-mobile.png',evidence).pathname,fullPage:true});
   const offlineJS=await browser.newContext({javaScriptEnabled:false});const ssr=await offlineJS.newPage();await ssr.goto(base+'/');assert.equal(await ssr.locator('.product-chapters > article').count(),homeProducts.length);await offlineJS.close();

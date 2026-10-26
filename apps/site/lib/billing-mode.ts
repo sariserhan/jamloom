@@ -1,3 +1,5 @@
+import {academyProductKey,type AcademyProduct} from './academy-products';
+import {singingOffer} from '../../web/singing-course.js';
 import Stripe from 'stripe';
 import type {BillingMode} from './site-settings';
 import {paidGenerationReleased} from './product';
@@ -7,15 +9,16 @@ export function billingPublishableKey(mode:BillingMode,env:Record<string,string|
  const key=mode==='test'?env.STRIPE_PUBLISHABLE_KEY:env.STRIPE_LIVE_PUBLISHABLE_KEY;
  return key?.startsWith(mode==='test'?'pk_test_':'pk_live_')?key:null;
 }
-export function billingEnvironment(mode:BillingMode,env:Record<string,string|undefined>=process.env){
+export function billingEnvironment(mode:BillingMode,env:Record<string,string|undefined>=process.env,course:AcademyProduct='academy-complete'){
+ if(academyProductKey(course)==='singing-complete'){const prefix=mode==='test'?'SINGING_STRIPE_':'SINGING_STRIPE_LIVE_';return {key:mode==='test'?env.STRIPE_SECRET_KEY:env.STRIPE_LIVE_SECRET_KEY,webhook:env[prefix+'WEBHOOK_SECRET'],price:env[prefix+'PRICE_ID'],product:env[prefix+'PRODUCT_ID']};}
  return mode==='test'?{key:env.STRIPE_SECRET_KEY,webhook:env.ACADEMY_STRIPE_WEBHOOK_SECRET,price:env.ACADEMY_STRIPE_PRICE_ID,product:env.ACADEMY_STRIPE_PRODUCT_ID}:
   {key:env.STRIPE_LIVE_SECRET_KEY,webhook:env.ACADEMY_STRIPE_LIVE_WEBHOOK_SECRET,price:env.ACADEMY_STRIPE_LIVE_PRICE_ID,product:env.ACADEMY_STRIPE_LIVE_PRODUCT_ID};
 }
-export function billingReadiness(mode:BillingMode,env:Record<string,string|undefined>=process.env){
- const c=billingEnvironment(mode,env),configured=!!c.key?.startsWith(mode==='live'?'sk_live_':'sk_test_')&&!!c.webhook?.startsWith('whsec_')&&/^price_[A-Za-z0-9_]+$/.test(c.price??'')&&/^prod_[A-Za-z0-9_]+$/.test(c.product??'');
- return {mode,configured,academyCheckoutEnabled:configured&&!!billingPublishableKey(mode,env)&&(mode==='test'?env.ACADEMY_STRIPE_SANDBOX_ENABLED==='true':academySalesReleased),generationCheckoutEnabled:paidGenerationReleased};
+export function billingReadiness(mode:BillingMode,env:Record<string,string|undefined>=process.env,course:AcademyProduct='academy-complete'){
+ const c=billingEnvironment(mode,env,course),configured=!!c.key?.startsWith(mode==='live'?'sk_live_':'sk_test_')&&!!c.webhook?.startsWith('whsec_')&&/^price_[A-Za-z0-9_]+$/.test(c.price??'')&&/^prod_[A-Za-z0-9_]+$/.test(c.product??'');
+ return {mode,configured,academyCheckoutEnabled:configured&&!!billingPublishableKey(mode,env)&&(mode==='test'?env[course==='singing-complete'?'SINGING_STRIPE_SANDBOX_ENABLED':'ACADEMY_STRIPE_SANDBOX_ENABLED']==='true':course==='singing-complete'?singingOffer.salesReleased:academySalesReleased),generationCheckoutEnabled:paidGenerationReleased};
 }
-export function academyStripe(mode:BillingMode,env:Record<string,string|undefined>=process.env){
- if(!billingReadiness(mode,env).configured)throw new Error('Selected Stripe environment is incomplete');
- const c=billingEnvironment(mode,env);return {stripe:new Stripe(c.key!,{maxNetworkRetries:1,timeout:10000}),secret:c.webhook!,config:{price:c.price!,product:c.product!,live:mode==='live'}};
+export function academyStripe(mode:BillingMode,env:Record<string,string|undefined>=process.env,course:AcademyProduct='academy-complete'){
+ if(!billingReadiness(mode,env,course).configured)throw new Error('Selected Stripe environment is incomplete');
+ const c=billingEnvironment(mode,env,course);return {stripe:new Stripe(c.key!,{maxNetworkRetries:1,timeout:10000}),secret:c.webhook!,config:{price:c.price!,product:c.product!,live:mode==='live',course}};
 }

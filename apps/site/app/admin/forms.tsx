@@ -6,7 +6,7 @@ function useAdminAction(){
  const [status,setStatus]=useState(''),[busy,setBusy]=useState(false),router=useRouter();
  async function send(path:string,body:unknown){setBusy(true);setStatus('Saving…');try{
   const response=await fetch('/api/admin/'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}),data=await response.json();
-  if(!response.ok)throw new Error(data.error??'Update failed.');setStatus('Saved.');router.refresh();return true;
+  if(!response.ok)throw new Error(data.error??'Update failed.');setStatus(data.status==='pending'?data.reason+' Check again after '+new Date(data.retryAt).toLocaleTimeString()+'.':data.status==='complete'?'Account deletion completed.':'Saved.');router.refresh();return true;
  }catch(e){setStatus(e instanceof Error?e.message:'Update failed. Try again.');return false;}finally{setBusy(false);}}
  return {send,status,busy};
 }
@@ -26,3 +26,8 @@ export function TicketForm({id,revision,status:ticketStatus}:{id:string;revision
  <label>Reply by email<textarea name="body" rows={6} maxLength={5000} placeholder="Leave blank to change status only."/></label><label>Ticket status<select name="status" defaultValue={ticketStatus}><option value="open">Open</option><option value="closed">Closed</option></select></label><button disabled={busy}>Save / send reply</button><p role="status">{status}</p><p>Replies are queued through the Jamloom email template. Delivery status appears in Site controls.</p></form>;
 }
 export function RetryNotifications(){const {send,status,busy}=useAdminAction();return <div><button disabled={busy} onClick={()=>send('notifications',{})}>Retry pending email</button><p role="status">{status}</p></div>;}
+
+export function DeletionAction({ticket,owner}:{ticket:string;owner:string}){
+ const {send,status,busy}=useAdminAction(),[confirmation,setConfirmation]=useState('');
+ return <section className="product-panel"><h2>Fulfill account deletion</h2><p>This suspends access, stops work, removes personal content and sign-in credentials, and keeps inaccessible financial records. Existing upload permissions must expire first. This cannot be undone.</p><label>Type DELETE to confirm this account-holder request<input value={confirmation} onChange={e=>setConfirmation(e.target.value)} autoComplete="off"/></label><button disabled={busy||confirmation!=='DELETE'} onClick={()=>send('deletions/'+ticket,{confirmOwner:owner})}>Delete requested account / check completion</button><p role="status">{status}</p></section>;
+}

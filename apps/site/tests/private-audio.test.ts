@@ -101,6 +101,13 @@ test('real isolated Postgres and disk: private audio lifecycle and recovery',asy
       assert.equal((await audio.reserve('quota',input(wav))).ready,false);
       await assert.rejects(pool.query('DELETE FROM "user" WHERE id=$1',['bob']),/foreign key/);
     });
+    await t.test('suspension rejects already-authorized writes and pending finalization',async()=>{
+      const intent=await audio.reserve('bob',input(wav));await audio.localUpload('bob',intent.id,wav);
+      await pool.query('UPDATE "user" SET suspended=true WHERE id=\'bob\'');
+      await assert.rejects(audio.reserve('bob',input(wav)),/Account unavailable/);
+      await assert.rejects(audio.generatedUpload('bob',intent.id,wav),/Account unavailable/);
+      await assert.rejects(audio.finalize('bob',intent.id),/Account unavailable/);
+    });
     await t.test('daily attempt budgets include deleted reservations',async()=>{
       const owner=storageLimits.ownerDaily,global=storageLimits.totalDaily;
       try {

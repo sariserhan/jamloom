@@ -1,3 +1,6 @@
+import {fulfillDeletion} from '../../../../lib/account-purge';
+import {DJRecordings} from '../../../../lib/dj-recordings';
+import {djSessionStore} from '../../../../lib/dj-session-store';
 import {after} from 'next/server';
 import {accountsConfigured,services} from '../../../../lib/services';
 import {isAdmin} from '../../../../lib/admin-access';
@@ -17,6 +20,11 @@ export async function POST(request:Request,{params}:{params:Promise<{path:string
   if(path.length===1&&path[0]==='training')result=await store.training(session!.user.id,v);
   else if(path.length===1&&path[0]==='settings')result=await store.settings(session!.user.id,v);
   else if(path.length===2&&path[0]==='users'&&Object.keys(v).join(',')==='suspended')result=await store.user(session!.user.id,path[1],v.suspended);
+  else if(path.length===2&&path[0]==='deletions'&&Object.keys(v).join(',')==='confirmOwner'&&typeof v.confirmOwner==='string'){
+   if(Date.now()-new Date(session!.session.createdAt).getTime()>5*60_000)throw new AudioError('Sign in again before fulfilling account deletion.',403);
+   const {audio}=services();if(!audio)throw new AudioError('Audio storage is not configured.',503);
+   result=await fulfillDeletion(pool,audio.store,new DJRecordings(pool,djSessionStore()),session!.user.id,path[1],v.confirmOwner);
+  }
   else if(path.length===2&&path[0]==='tickets')result=await store.ticket(session!.user.id,path[1],v);
   else if(path.length===1&&path[0]==='notifications'&&Object.keys(v).length===0)result=await store.retry(session!.user.id);
   else throw new AudioError('Unknown admin action.',404);

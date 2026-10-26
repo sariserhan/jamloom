@@ -33,6 +33,7 @@ export class PrivateAudio {
   async reserve(owner:string,input:unknown,recoverGenerated=false) {
     const v=saveInput(input);
     return this.locked(owner,async db => {
+      if((await db.query('SELECT suspended FROM "user" WHERE id=$1',[owner])).rows[0]?.suspended)throw new AudioError('Account unavailable.',403);
       const existing=(await db.query<Asset & {title:string;strategy:string}>(`SELECT a.*,t.title,t.strategy FROM track_assets a JOIN tracks t ON t.id=a.track_id
         WHERE a.owner_id=$1 AND a.request_id=$2`,[owner,v.requestId])).rows[0];
       let row=existing;
@@ -68,6 +69,7 @@ export class PrivateAudio {
   // Server-only workers use the same owner, state and checksum checks as direct uploads.
   async generatedUpload(owner:string,id:string,data:Buffer) {
     await this.locked(owner,async db => {
+      if((await db.query('SELECT suspended FROM "user" WHERE id=$1',[owner])).rows[0]?.suspended)throw new AudioError('Account unavailable.',403);
       const row=await this.asset(db,owner,id); this.uploading(row);
       validateWav(data,row.bytes,row.sha256);
       await this.store.put(key(id),data);
@@ -75,6 +77,7 @@ export class PrivateAudio {
   }
   async finalize(owner:string,id:string) {
     return this.locked(owner,async db => {
+      if((await db.query('SELECT suspended FROM "user" WHERE id=$1',[owner])).rows[0]?.suspended)throw new AudioError('Account unavailable.',403);
       const row=await this.asset(db,owner,id);
       if (row.state==='ready') return {id,ready:true};
       this.uploading(row);

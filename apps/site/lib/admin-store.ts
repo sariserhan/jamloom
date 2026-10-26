@@ -40,6 +40,7 @@ export class AdminStore{
    const user=(await db.query('SELECT email FROM "user" WHERE id=$1 FOR UPDATE',[id])).rows[0];
    if(!user)throw new AudioError('User not found.',404);
    if(user.email.toLowerCase()===OWNER_EMAIL)throw new AudioError('The owner cannot be suspended.');
+   if(!suspended&&(await db.query('SELECT 1 FROM account_deletions WHERE owner_id=$1',[id])).rowCount)throw new AudioError('An account being deleted cannot be restored.',409);
    await db.query('UPDATE "user" SET suspended=$2 WHERE id=$1',[id,suspended]);
    if(suspended){await db.query('DELETE FROM "session" WHERE "userId"=$1',[id]);
     await db.query("UPDATE generation_jobs SET cancel_requested=true WHERE owner_id=$1 AND state IN ('queued','running','stopping')",[id]);}

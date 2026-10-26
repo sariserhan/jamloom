@@ -57,6 +57,19 @@ try{
  for(const path of ['/account/credits','/account/purchases','/account/generations'])assert.equal((await api(path,{cookie:alice})).status,200);
  assert.equal((await api('/api/payments/checkout',{method:'POST',cookie:alice,body:{pack:'starter'}})).status,503);
  assert.equal((await api('/api/payments/stripe',{method:'POST',body:{id:'forged'}})).status,400);
+ const singing='/api/academy/checkout?course=singing-complete';
+ assert.equal((await api(singing,{method:'POST',body:{key:randomUUID()}})).status,401);
+ assert.equal((await api(singing,{method:'POST',cookie:alice,body:{key:randomUUID()}})).status,503);
+ const singer=(await pool.query('SELECT id FROM "user" WHERE email=$1',['alice@example.test'])).rows[0].id;
+ await pool.query("INSERT INTO academy_purchases(receipt,owner_id,product_key,price_id,payment_intent,amount_cents,currency,sandbox) VALUES('cs_singing_http',$1,'singing-complete','price_singing_http','pi_singing_http',3900,'usd',true)",[singer]);
+ assert.equal((await(await api(singing+'&session_id=cs_singing_http',{cookie:alice})).json()).status,'active');
+ assert.equal((await(await api(singing+'&session_id=cs_singing_http',{cookie:bob})).json()).status,'pending');
+ assert.equal((await(await api('/api/academy/checkout?session_id=cs_singing_http',{cookie:alice})).json()).status,'pending');
+ assert.equal((await api('/api/academy/checkout?course=invalid&session_id=cs_singing_http',{cookie:alice})).status,400);
+ assert.match(await(await api('/academy/success?session_id=cs_singing_http',{cookie:alice})).text(),/Waiting for verified payment/);
+ const courseHistory=await(await api('/account/purchases',{cookie:alice})).text();assert.match(courseHistory,/Singing Academy/);assert.match(courseHistory,/39\.00/);
+ assert.match(await(await api('/account/purchases',{cookie:bob})).text(),/No course purchases yet/);
+ result.checks.push('Singing checkout stays closed; stored test receipt status is course-specific and owner-isolated');
  const stripe=new Stripe('sk_test_local_fixture');
  async function webhook(event){const payload=JSON.stringify(event);return fetch(base+'/api/payments/stripe',{method:'POST',headers:{'Content-Type':'application/json','stripe-signature':stripe.webhooks.generateTestHeaderString({payload,secret:'whsec_local_fixture'})},body:payload});}
  const fixture={id:'evt_local_fixture',livemode:false,type:'fixture.ignored',data:{object:{}}};

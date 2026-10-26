@@ -1,13 +1,14 @@
 import type {Pool,PoolClient} from 'pg';import {createHash} from 'node:crypto';
+import {academyProductKey,type AcademyProduct} from './academy-products';
 import {siteSettings} from './site-settings';
 import {adminAccount} from './admin-access';
 import {academyLesson,ACADEMY_VERSION} from './academy-content';
 import {evaluateTask,EVALUATOR_VERSION} from '../../web/academy-evaluator.js';
 export class AcademyStore {
  constructor(private pool:Pool){}
- async access(owner:string,db:Pool|PoolClient=this.pool,live?:boolean){
+ async access(owner:string,db:Pool|PoolClient=this.pool,live?:boolean,course:AcademyProduct='academy-complete'){
   live??=(await siteSettings(db)).billing_mode==='live';
-  return !!(await db.query('SELECT 1 FROM academy_purchases WHERE owner_id=$1 AND sandbox=$2 AND NOT refund_hold AND NOT dispute_hold LIMIT 1',[owner,!live])).rowCount;
+  return !!(await db.query('SELECT 1 FROM academy_purchases WHERE owner_id=$1 AND sandbox=$2 AND product_key=$3 AND NOT refund_hold AND NOT dispute_hold LIMIT 1',[owner,!live,academyProductKey(course)])).rowCount;
  }
  async progress(owner:string){return (await this.pool.query(`SELECT a.id,a.lesson_id,a.version,a.started_at,a.completed_at,
   COALESCE(jsonb_agg(jsonb_build_object('taskId',r.task_id,'metrics',r.metrics)) FILTER(WHERE r.task_id IS NOT NULL),'[]') AS checks

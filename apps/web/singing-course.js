@@ -1,3 +1,4 @@
+export const singingOffer=Object.freeze({priceCents:3900,currency:'USD',billing:'one-time',salesReleased:false});
 export const songStages=['Start singing','Build control','Rhythm & range','Independent performance'];
 export const stages=['Find your voice','Move between notes','Sing in time','Put it together'];
 // Original Jamloom exercises: semitone offsets and beat lengths, never imported songs.

@@ -1,3 +1,5 @@
+import {singingOffer} from './singing-course.js';
+document.getElementById('offer').textContent=`Singing Academy · $${singingOffer.priceCents/100} USD once when sales open. Free preview for now.`;
 import {singingSongs,singingLessons,songStages,readProgress} from './singing-course.js';
 const progress=readProgress(localStorage);
 document.getElementById('progress').textContent=singingSongs.filter(s=>progress[s.id]?.passed).length+' / '+singingSongs.length+' songs complete';

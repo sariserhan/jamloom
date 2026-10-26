@@ -1,3 +1,9 @@
+## Local candidate and $39 Singing Academy — 2026-10-26
+
+[Current readiness and release procedure](LOCAL_RELEASE_READINESS.md). Use http://127.0.0.1:3008 for the new isolated local preview; port 3000 remains the older stable preview. Singing Academy is planned at **$39 USD one-time before tax**, with the original-song preview still free. DJ Academy and Pro prices are unchanged. No public or paid capability was activated.
+
+Account deletion requests now have a fulfillment control in the admin inbox: sign in recently, inspect the account-holder request, type DELETE, and follow pending/completed status. A pending result is not deletion completion. Large-account operator use, retained financial records and external retention limits are documented in the readiness report. Never treat an automatic storage error as successful deletion.
+
 ## Release closure update — 2026-10-26
 
 See [the current closure report](RELEASE_CLOSURE.md). The latest Standard/raw singing check rejects all quiet frames and detects pitch in normal/soft/vibrato phases (58.4%/58.4%/69.11%). The earlier paired 30-second capture was intentionally silent and also rejected all frames. Input operation is confirmed on this setup; labelled singing accuracy and physical latency remain unqualified. Earlier contradictory readings are preserved. The capped GPU attempt failed before generation because a development-only page was pointed at the production preview; the rental is deleted and $0.046007 provisional cost is recorded. The explicitly approved replacement now passes twenty fresh tracks, complete Stop/credit-ended recordings, recovery, capacity and privacy/cleanup. Zero rentals remain; cumulative time is 21.03 minutes and debit is provisionally $0.143507. Both permissions are consumed; no further replacement is authorized. Future rentals require a passing local browser preflight on the separate port-3009 development server. Do not enable public gates to make a fixture pass.
