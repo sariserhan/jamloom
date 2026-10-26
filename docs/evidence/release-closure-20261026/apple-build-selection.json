@@ -1,0 +1,12 @@
+{
+  "status": "PASS processing and draft build selection",
+  "version": "0.10.2",
+  "build": "24",
+  "buildId": "7c89605f-2c2d-4b1f-901e-294010516495",
+  "processingState": "VALID",
+  "iconPresent": true,
+  "appStoreState": "PREPARE_FOR_SUBMISSION",
+  "releaseType": "MANUAL",
+  "submitted": false,
+  "publicRelease": false
+}

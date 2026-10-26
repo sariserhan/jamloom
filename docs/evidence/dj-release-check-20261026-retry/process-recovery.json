@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "processKilled": "SIGKILL after completed renderer response",
+  "sameJob": true,
+  "sameReceipt": true,
+  "sameEngine": true,
+  "deadlineUnchanged": true
+}

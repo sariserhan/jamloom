@@ -3,14 +3,16 @@
 **PARTIAL overall.** [Current report](docs/RELEASE_CLOSURE.md) records the new evidence without overwriting earlier failed attempts. Website remains local; App Store preparation is not public release.
 
 - [x] Record real same-stream microphone silence: 493 live and 115 encoded frames, zero false pitch in both; retain earlier contradictory evidence.
-- [x] Add simultaneous local live/encoded measurement; Chromium/WebKit capture, clear, denial and reuse pass. Singing accuracy still needs the pending owner result.
-- [x] Execute the approved $6 DJ attempt once; preserve the local-route failure before generation, $0.046007 provisional debit, zero rentals and complete test-data cleanup. Permission consumed; no replacement.
+- [x] Add simultaneous local live/encoded measurement; Chromium/WebKit capture, clear, denial and reuse pass. The subsequent four-phase owner check fails (48.32% declared-quiet detections, 34.93% sustained-note detections); paired 30-second diagnostic now passes Chromium/WebKit controlled checks. The owner stayed quiet throughout the paired recording: silence passes both paths; singing was not performed in that capture.
+- [x] Execute the approved $6 DJ attempt once; preserve the local-route failure before generation, $0.046007 provisional debit, zero rentals and complete test-data cleanup. Original permission consumed; one separate replacement subsequently approved and completed within the original total bounds.
 - [x] Require actual setup → quote → deck preflight before any future rental; production 404 and external URL rejected. Controller regression proves no provider call when preflight fails.
 - [x] Pass the corrected twenty-track retained-audio two-listener rehearsal, complete recordings, Stop/credits and privacy/cleanup; this is separate from fresh generation.
+- [x] Pass the approved corrected fresh-GPU replacement: twenty unique originals, two complete R2 recordings, recovery, Stop/credits, capacity and privacy/cleanup. Zero rentals; cumulative 21.03 minutes and $0.143507 provisional debit within the original cap. No vocal candidate qualified; all 22 review players pass Chromium/WebKit play/seek/layout; musical acceptance stays open.
 - [x] Archive/audit/export iOS 0.10.2 (24), pass Apple's validation and upload without errors.
 - [x] Update App Store draft metadata and content-rights declaration, capture actual UI on three Simulators, and verify six required iPhone/iPad screenshots COMPLETE.
-- [ ] Verify Apple's processing and attach the matching current build; review submission/public release remain separate.
-- [ ] Resolve normal/soft/vibrato singing, professional music quality, applicable hosted/payment qualification, reviewer access and popular-song permissions/assets.
+- [x] Verify build 24 VALID with icon and attach it to draft 0.10.2; manual release retained, no review submission/public release.
+- [x] Record the subsequent real singing check: zero quiet detections; pitched input in normal/soft/vibrato phases (58.4%/58.4%/69.11%). This confirms input operation, not labelled accuracy or physical latency.
+- [ ] Qualify singing accuracy/physical latency, professional music quality, applicable hosted/payment qualification, reviewer access and popular-song permissions/assets.
 
 ## All-product completion pass — 2026-10-26
 

@@ -1,7 +1,7 @@
 import {chromium,webkit} from 'playwright';
 import assert from 'node:assert/strict';
 import {writeFile,mkdir} from 'node:fs/promises';
-const folder=new URL('../../../docs/evidence/reliability-followthrough-20261026/',import.meta.url);await mkdir(folder,{recursive:true});
+const folder=new URL('../../../docs/evidence/mic-paired-20261026/',import.meta.url);await mkdir(folder,{recursive:true});
 const rows=await Promise.all([['chromium',chromium],['webkit',webkit]].map(async([name,type])=>{
  const browser=await type.launch();try{
   const page=await browser.newPage({viewport:{width:name==='webkit'?390:1280,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -35,8 +35,15 @@ const rows=await Promise.all([['chromium',chromium],['webkit',webkit]].map(async
   const firstRecording=JSON.parse(await page.locator('#input-result').textContent());assert(firstRecording.simultaneousLive.frames>100);assert.equal(firstRecording.simultaneousLive.detectedPitchPercent,0);
   await page.locator('#start').click();await page.waitForTimeout(200);await page.evaluate(()=>__contexts[0].suspend());await page.waitForFunction(()=>!document.querySelector('#start').disabled);
   assert(await page.evaluate(()=>__streams.every(s=>s.getTracks().every(t=>t.readyState==='ended'))));
+  await page.locator('#input-long').click();assert(await page.locator('#input-record').isDisabled());
+  await page.waitForFunction(()=>document.querySelector('#input-result').textContent.startsWith('{'),undefined,{timeout:40000});
+  const fullRecording=JSON.parse(await page.locator('#input-result').textContent());assert(fullRecording.seconds>29&&fullRecording.seconds<32);
+  for(const path of ['live','recorded']){const phases=fullRecording.phases[path];assert.equal(phases.length,4);assert(phases.every(p=>p.frames>100));assert(phases[0].detectedPitchPercent<2);assert(phases.slice(1).every(p=>p.detectedPitchPercent>90));}
+  assert(await page.locator('#input-player').evaluate(a=>a.paused));assert(await page.evaluate(()=>__streams.every(s=>s.getTracks().every(t=>t.readyState==='ended'))));
+  await page.locator('#input-clear').click();assert.equal(await page.locator('#input-result').textContent(),'');
+  await page.locator('#input-long').click();await page.waitForTimeout(150);await page.evaluate(()=>__contexts[0].suspend());await page.waitForFunction(()=>!document.querySelector('#input-long').disabled);assert(await page.locator('#input-player').isHidden());
   assert.deepEqual(errors,[]);
-  return{browser:name,controlledPCM:true,humanMicrophone:false,denialStopAndReuse:true,inputRecordingExplicitAndLocal:true,inputRecordingStopsBeforePlayback:true,inputRecordingCleared:true,errors,...r};
+  return{browser:name,controlledPCM:true,humanMicrophone:false,denialStopAndReuse:true,inputRecordingExplicitAndLocal:true,inputRecordingStopsBeforePlayback:true,inputRecordingCleared:true,fullRecording,errors,...r};
  }finally{await browser.close();}
 }));
 await writeFile(new URL('microphone-browser.json',folder),JSON.stringify({status:'PASS controlled PCM',rows},null,2)+'\n');console.log(JSON.stringify(rows));

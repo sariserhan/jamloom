@@ -1,0 +1,7 @@
+{
+  "ownerStatement": "I stayed quiet during this recording",
+  "appliesTo": "owner-paired-four-phase.json",
+  "quietRejection": "PASS for this 29.94-second capture in both live and encoded paths",
+  "singing": "NOT RUN in this capture; phase labels do not establish owner activity",
+  "earlierFourPhaseResult": "Preserved; no retrospective inference about owner activity"
+}

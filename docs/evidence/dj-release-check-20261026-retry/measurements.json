@@ -1,0 +1,926 @@
+{
+  "target_lufs": -24.58,
+  "clips": [
+    {
+      "number": 1,
+      "track": {
+        "session": "2ea30f92396a440c8bb2e44da37152dc",
+        "sequence": 0,
+        "sha256": "9d31dcd6c69b9cc91573a89f2f848f54974deaf635d98702298ca1e1a3537a31",
+        "computeMs": 4076,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "8362a8c1-cbfd-44d8-ae2f-a62d28716ac2",
+          "request": {
+            "version": 1,
+            "session": "2ea30f92396a440c8bb2e44da37152dc",
+            "sequence": 0,
+            "seed": 974925921,
+            "style": "bass",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 4076,
+          "bytes": 11520044,
+          "sha256": "9d31dcd6c69b9cc91573a89f2f848f54974deaf635d98702298ca1e1a3537a31",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-15.85",
+        "input_tp": "-1.00",
+        "input_lra": "4.20",
+        "input_thresh": "-25.98"
+      },
+      "gain_db": -8.729999999999999,
+      "review": {
+        "input_i": "-24.57",
+        "input_tp": "-9.73",
+        "input_lra": "4.20",
+        "input_thresh": "-34.71"
+      }
+    },
+    {
+      "number": 2,
+      "track": {
+        "session": "2ea30f92396a440c8bb2e44da37152dc",
+        "sequence": 1,
+        "sha256": "03aa8d87032a3ef8a2730be98827e7e7dc65bde9d6de51eb8bc82f1ca1542cc5",
+        "computeMs": 1897,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "be556ebc-2f45-407f-9ff7-10a5c1ef0579",
+          "request": {
+            "version": 1,
+            "session": "2ea30f92396a440c8bb2e44da37152dc",
+            "sequence": 1,
+            "seed": 1059978173,
+            "style": "bass",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1897,
+          "bytes": 11520044,
+          "sha256": "03aa8d87032a3ef8a2730be98827e7e7dc65bde9d6de51eb8bc82f1ca1542cc5",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-15.99",
+        "input_tp": "-1.00",
+        "input_lra": "4.70",
+        "input_thresh": "-26.29"
+      },
+      "gain_db": -8.589999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.59",
+        "input_lra": "4.70",
+        "input_thresh": "-34.87"
+      }
+    },
+    {
+      "number": 3,
+      "track": {
+        "session": "2ea30f92396a440c8bb2e44da37152dc",
+        "sequence": 2,
+        "sha256": "0623e9d0b0e89102d786c998706038b7bfcf08cf4c45b9fd5517a6f8310181be",
+        "computeMs": 2530,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "1e907ed1-e2a2-459b-a85f-86687256397e",
+          "request": {
+            "version": 1,
+            "session": "2ea30f92396a440c8bb2e44da37152dc",
+            "sequence": 2,
+            "seed": 2808175942,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2530,
+          "bytes": 11520044,
+          "sha256": "0623e9d0b0e89102d786c998706038b7bfcf08cf4c45b9fd5517a6f8310181be",
+          "vocal": null,
+          "vocal_check": {
+            "status": "no_supported_grid",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-15.75",
+        "input_tp": "-1.00",
+        "input_lra": "6.00",
+        "input_thresh": "-26.14"
+      },
+      "gain_db": -8.829999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.83",
+        "input_lra": "6.00",
+        "input_thresh": "-34.96"
+      }
+    },
+    {
+      "number": 4,
+      "track": {
+        "session": "2ea30f92396a440c8bb2e44da37152dc",
+        "sequence": 3,
+        "sha256": "93aef0b42ffb705a5160abd136967d1210a4fe027c564682a89f8c6c4f6c807c",
+        "computeMs": 1910,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "f74a3575-a22b-4e8e-8588-9a4ef050b406",
+          "request": {
+            "version": 1,
+            "session": "2ea30f92396a440c8bb2e44da37152dc",
+            "sequence": 3,
+            "seed": 3019430648,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1910,
+          "bytes": 11520044,
+          "sha256": "93aef0b42ffb705a5160abd136967d1210a4fe027c564682a89f8c6c4f6c807c",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-17.58",
+        "input_tp": "-0.79",
+        "input_lra": "3.50",
+        "input_thresh": "-27.87"
+      },
+      "gain_db": -7.0,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.79",
+        "input_lra": "3.50",
+        "input_thresh": "-34.86"
+      }
+    },
+    {
+      "number": 5,
+      "track": {
+        "session": "2ea30f92396a440c8bb2e44da37152dc",
+        "sequence": 4,
+        "sha256": "2f475807395fa4094ae994e4105dd04f80beb407750fb9c1aa681127f6de9b47",
+        "computeMs": 1906,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "2b30690c-b236-440a-b0af-ce2469ce786d",
+          "request": {
+            "version": 1,
+            "session": "2ea30f92396a440c8bb2e44da37152dc",
+            "sequence": 4,
+            "seed": 883103246,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1906,
+          "bytes": 11520044,
+          "sha256": "2f475807395fa4094ae994e4105dd04f80beb407750fb9c1aa681127f6de9b47",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-17.81",
+        "input_tp": "-0.90",
+        "input_lra": "5.90",
+        "input_thresh": "-28.35"
+      },
+      "gain_db": -6.77,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-7.67",
+        "input_lra": "5.80",
+        "input_thresh": "-35.02"
+      }
+    },
+    {
+      "number": 6,
+      "track": {
+        "session": "2ea30f92396a440c8bb2e44da37152dc",
+        "sequence": 5,
+        "sha256": "bb5354ae8a6dd9e28b0ce5ab27bd8a8f7c90cf1e0346410025492804a2194f33",
+        "computeMs": 2008,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "53a77f48-9a3f-4c84-8b63-85a308ef3df8",
+          "request": {
+            "version": 1,
+            "session": "2ea30f92396a440c8bb2e44da37152dc",
+            "sequence": 5,
+            "seed": 1301652393,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2008,
+          "bytes": 11520044,
+          "sha256": "bb5354ae8a6dd9e28b0ce5ab27bd8a8f7c90cf1e0346410025492804a2194f33",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-16.12",
+        "input_tp": "-1.00",
+        "input_lra": "4.30",
+        "input_thresh": "-26.16"
+      },
+      "gain_db": -8.459999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.46",
+        "input_lra": "4.40",
+        "input_thresh": "-34.61"
+      }
+    },
+    {
+      "number": 7,
+      "track": {
+        "session": "2ea30f92396a440c8bb2e44da37152dc",
+        "sequence": 6,
+        "sha256": "1a839b135ca617e8bf823094c19d98af573e969317a35996be529bc0f024de1d",
+        "computeMs": 2004,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "85610737-516f-442e-9060-7ab6b5fe340a",
+          "request": {
+            "version": 1,
+            "session": "2ea30f92396a440c8bb2e44da37152dc",
+            "sequence": 6,
+            "seed": 3024504909,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2004,
+          "bytes": 11520044,
+          "sha256": "1a839b135ca617e8bf823094c19d98af573e969317a35996be529bc0f024de1d",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-16.44",
+        "input_tp": "-1.00",
+        "input_lra": "3.60",
+        "input_thresh": "-26.61"
+      },
+      "gain_db": -8.139999999999997,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.14",
+        "input_lra": "3.60",
+        "input_thresh": "-34.74"
+      }
+    },
+    {
+      "number": 8,
+      "track": {
+        "session": "2ea30f92396a440c8bb2e44da37152dc",
+        "sequence": 7,
+        "sha256": "b0422ff4cb17189ac7e68c4a69462a4b9295cb8eadf07ba4f186132d54b73f01",
+        "computeMs": 2532,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "e6bc5051-5129-4d81-8802-946cace024e3",
+          "request": {
+            "version": 1,
+            "session": "2ea30f92396a440c8bb2e44da37152dc",
+            "sequence": 7,
+            "seed": 2299430026,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2532,
+          "bytes": 11520044,
+          "sha256": "b0422ff4cb17189ac7e68c4a69462a4b9295cb8eadf07ba4f186132d54b73f01",
+          "vocal": null,
+          "vocal_check": {
+            "status": "no_supported_grid",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-15.33",
+        "input_tp": "-0.95",
+        "input_lra": "6.20",
+        "input_thresh": "-25.80"
+      },
+      "gain_db": -9.249999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-10.20",
+        "input_lra": "6.10",
+        "input_thresh": "-35.03"
+      }
+    },
+    {
+      "number": 9,
+      "track": {
+        "session": "2ea30f92396a440c8bb2e44da37152dc",
+        "sequence": 8,
+        "sha256": "f1f93d8308578540f8a6d9e0462dff19465cf939aeeb1df5305da357464ce762",
+        "computeMs": 2041,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "e80da2fe-4085-4646-bd3d-f1ffdcd651d6",
+          "request": {
+            "version": 1,
+            "session": "2ea30f92396a440c8bb2e44da37152dc",
+            "sequence": 8,
+            "seed": 4043589443,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2041,
+          "bytes": 11520044,
+          "sha256": "f1f93d8308578540f8a6d9e0462dff19465cf939aeeb1df5305da357464ce762",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-15.64",
+        "input_tp": "-0.79",
+        "input_lra": "4.50",
+        "input_thresh": "-25.94"
+      },
+      "gain_db": -8.939999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.73",
+        "input_lra": "4.50",
+        "input_thresh": "-34.87"
+      }
+    },
+    {
+      "number": 10,
+      "track": {
+        "session": "2ea30f92396a440c8bb2e44da37152dc",
+        "sequence": 9,
+        "sha256": "b4a738d25ef80f09662ad8a774ef280aafed8744154e3f48d12623af09193ea2",
+        "computeMs": 2039,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "58122fcb-4218-4a93-bdb7-e5b5b5195300",
+          "request": {
+            "version": 1,
+            "session": "2ea30f92396a440c8bb2e44da37152dc",
+            "sequence": 9,
+            "seed": 4589409,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2039,
+          "bytes": 11520044,
+          "sha256": "b4a738d25ef80f09662ad8a774ef280aafed8744154e3f48d12623af09193ea2",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-15.40",
+        "input_tp": "-0.96",
+        "input_lra": "6.50",
+        "input_thresh": "-25.74"
+      },
+      "gain_db": -9.179999999999998,
+      "review": {
+        "input_i": "-24.59",
+        "input_tp": "-10.14",
+        "input_lra": "6.60",
+        "input_thresh": "-34.88"
+      }
+    },
+    {
+      "number": 11,
+      "track": {
+        "session": "5ec6ca6507f94dc396851beecdb4d16f",
+        "sequence": 0,
+        "sha256": "92f3528c43003c4529f261011f60bb6b822a78ead989a255bbeb73d1c459772f",
+        "computeMs": 1984,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "f631e69a-7d1a-4ab5-930b-f453adc0e826",
+          "request": {
+            "version": 1,
+            "session": "5ec6ca6507f94dc396851beecdb4d16f",
+            "sequence": 0,
+            "seed": 3253481875,
+            "style": "bass",
+            "energy": 4,
+            "mood": "bright"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1984,
+          "bytes": 11520044,
+          "sha256": "92f3528c43003c4529f261011f60bb6b822a78ead989a255bbeb73d1c459772f",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-15.19",
+        "input_tp": "-1.00",
+        "input_lra": "3.50",
+        "input_thresh": "-25.47"
+      },
+      "gain_db": -9.389999999999999,
+      "review": {
+        "input_i": "-24.57",
+        "input_tp": "-10.39",
+        "input_lra": "3.50",
+        "input_thresh": "-34.85"
+      }
+    },
+    {
+      "number": 12,
+      "track": {
+        "session": "5ec6ca6507f94dc396851beecdb4d16f",
+        "sequence": 1,
+        "sha256": "822bd7b6c167adb8b08173e5d6eb9b9df7fea50c8d4093cedd57e355c2a173be",
+        "computeMs": 2526,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "99e416a1-67b9-44ce-88cb-e31897eafab8",
+          "request": {
+            "version": 1,
+            "session": "5ec6ca6507f94dc396851beecdb4d16f",
+            "sequence": 1,
+            "seed": 2484508893,
+            "style": "bass",
+            "energy": 4,
+            "mood": "bright"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2526,
+          "bytes": 11520044,
+          "sha256": "822bd7b6c167adb8b08173e5d6eb9b9df7fea50c8d4093cedd57e355c2a173be",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-16.25",
+        "input_tp": "-0.94",
+        "input_lra": "4.40",
+        "input_thresh": "-26.49"
+      },
+      "gain_db": -8.329999999999998,
+      "review": {
+        "input_i": "-24.57",
+        "input_tp": "-9.27",
+        "input_lra": "4.50",
+        "input_thresh": "-34.74"
+      }
+    },
+    {
+      "number": 13,
+      "track": {
+        "session": "5ec6ca6507f94dc396851beecdb4d16f",
+        "sequence": 2,
+        "sha256": "bc2f05636018311f19b223612f73e74264581729b03c5baa72b93aa381db46cf",
+        "computeMs": 2377,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "6f687b28-391a-49dd-97ff-d180de837bd4",
+          "request": {
+            "version": 1,
+            "session": "5ec6ca6507f94dc396851beecdb4d16f",
+            "sequence": 2,
+            "seed": 4280567040,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2377,
+          "bytes": 11520044,
+          "sha256": "bc2f05636018311f19b223612f73e74264581729b03c5baa72b93aa381db46cf",
+          "vocal": null,
+          "vocal_check": {
+            "status": "no_supported_grid",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-15.32",
+        "input_tp": "-0.96",
+        "input_lra": "4.80",
+        "input_thresh": "-25.72"
+      },
+      "gain_db": -9.259999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-10.22",
+        "input_lra": "4.70",
+        "input_thresh": "-34.98"
+      }
+    },
+    {
+      "number": 14,
+      "track": {
+        "session": "5ec6ca6507f94dc396851beecdb4d16f",
+        "sequence": 3,
+        "sha256": "929daf325cd20b9ae0b420d95905ae349e4eb4b05bbd560747a4ad1877c05ddf",
+        "computeMs": 1921,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "89eefffd-d04a-4e6a-8124-81adbb4c48b9",
+          "request": {
+            "version": 1,
+            "session": "5ec6ca6507f94dc396851beecdb4d16f",
+            "sequence": 3,
+            "seed": 2519242956,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 1921,
+          "bytes": 11520044,
+          "sha256": "929daf325cd20b9ae0b420d95905ae349e4eb4b05bbd560747a4ad1877c05ddf",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-16.88",
+        "input_tp": "-1.00",
+        "input_lra": "2.80",
+        "input_thresh": "-26.96"
+      },
+      "gain_db": -7.699999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.70",
+        "input_lra": "2.80",
+        "input_thresh": "-34.66"
+      }
+    },
+    {
+      "number": 15,
+      "track": {
+        "session": "5ec6ca6507f94dc396851beecdb4d16f",
+        "sequence": 4,
+        "sha256": "fdc2ee682c3565493311b788baaaad1a2e427587ff518c6fb3bfb8303350c5ba",
+        "computeMs": 2006,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "c6704b18-ba85-477f-95c7-81696c722265",
+          "request": {
+            "version": 1,
+            "session": "5ec6ca6507f94dc396851beecdb4d16f",
+            "sequence": 4,
+            "seed": 665865033,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2006,
+          "bytes": 11520044,
+          "sha256": "fdc2ee682c3565493311b788baaaad1a2e427587ff518c6fb3bfb8303350c5ba",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-17.36",
+        "input_tp": "-0.93",
+        "input_lra": "4.80",
+        "input_thresh": "-27.54"
+      },
+      "gain_db": -7.219999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.15",
+        "input_lra": "4.80",
+        "input_thresh": "-34.76"
+      }
+    },
+    {
+      "number": 16,
+      "track": {
+        "session": "5ec6ca6507f94dc396851beecdb4d16f",
+        "sequence": 5,
+        "sha256": "61e27c84a638745cee46fe76c754446d6978e3c69f7ec1bcc2c0dee84c227a6d",
+        "computeMs": 2013,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "400acfe7-343f-449c-bac1-711172adab3a",
+          "request": {
+            "version": 1,
+            "session": "5ec6ca6507f94dc396851beecdb4d16f",
+            "sequence": 5,
+            "seed": 4277396071,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2013,
+          "bytes": 11520044,
+          "sha256": "61e27c84a638745cee46fe76c754446d6978e3c69f7ec1bcc2c0dee84c227a6d",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-15.02",
+        "input_tp": "-0.90",
+        "input_lra": "3.50",
+        "input_thresh": "-25.12"
+      },
+      "gain_db": -9.559999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-10.46",
+        "input_lra": "3.50",
+        "input_thresh": "-34.65"
+      }
+    },
+    {
+      "number": 17,
+      "track": {
+        "session": "5ec6ca6507f94dc396851beecdb4d16f",
+        "sequence": 6,
+        "sha256": "8f61e69f2298d7270abe844323e5eeeabbd8b0484460394a4b832bebd28edf6b",
+        "computeMs": 2073,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "1befa280-2074-406d-bfc0-1069c3a34795",
+          "request": {
+            "version": 1,
+            "session": "5ec6ca6507f94dc396851beecdb4d16f",
+            "sequence": 6,
+            "seed": 1715987081,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2073,
+          "bytes": 11520044,
+          "sha256": "8f61e69f2298d7270abe844323e5eeeabbd8b0484460394a4b832bebd28edf6b",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-16.79",
+        "input_tp": "-0.93",
+        "input_lra": "4.30",
+        "input_thresh": "-27.07"
+      },
+      "gain_db": -7.789999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.72",
+        "input_lra": "4.20",
+        "input_thresh": "-34.86"
+      }
+    },
+    {
+      "number": 18,
+      "track": {
+        "session": "5ec6ca6507f94dc396851beecdb4d16f",
+        "sequence": 7,
+        "sha256": "4fdca17d4d01c2fac28a800cec6a92f3ab48ba15cd625828765716af20b47466",
+        "computeMs": 2553,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "fb443b91-bb96-4767-9d25-01021b37ed57",
+          "request": {
+            "version": 1,
+            "session": "5ec6ca6507f94dc396851beecdb4d16f",
+            "sequence": 7,
+            "seed": 528895466,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2553,
+          "bytes": 11520044,
+          "sha256": "4fdca17d4d01c2fac28a800cec6a92f3ab48ba15cd625828765716af20b47466",
+          "vocal": null,
+          "vocal_check": {
+            "status": "no_supported_grid",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-16.07",
+        "input_tp": "-0.97",
+        "input_lra": "2.70",
+        "input_thresh": "-26.52"
+      },
+      "gain_db": -8.509999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-9.48",
+        "input_lra": "2.70",
+        "input_thresh": "-35.03"
+      }
+    },
+    {
+      "number": 19,
+      "track": {
+        "session": "5ec6ca6507f94dc396851beecdb4d16f",
+        "sequence": 8,
+        "sha256": "76710c66f3847bd2bf9fe3f9c35c938929c699e574796167f590916b6aa32e74",
+        "computeMs": 2075,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "b13870c0-9c30-4ce1-86e6-eaa2e74f46d4",
+          "request": {
+            "version": 1,
+            "session": "5ec6ca6507f94dc396851beecdb4d16f",
+            "sequence": 8,
+            "seed": 4047496073,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2075,
+          "bytes": 11520044,
+          "sha256": "76710c66f3847bd2bf9fe3f9c35c938929c699e574796167f590916b6aa32e74",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-16.00",
+        "input_tp": "-0.26",
+        "input_lra": "1.60",
+        "input_thresh": "-26.08"
+      },
+      "gain_db": -8.579999999999998,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.84",
+        "input_lra": "1.60",
+        "input_thresh": "-34.66"
+      }
+    },
+    {
+      "number": 20,
+      "track": {
+        "session": "5ec6ca6507f94dc396851beecdb4d16f",
+        "sequence": 9,
+        "sha256": "30d26191743e5c001676061da8d9af7f62ab6cfea2a3ab65d303195ebb95fdd6",
+        "computeMs": 2081,
+        "receipt": {
+          "version": 1,
+          "engine": "fb7e64a941371d12b3bf24bd8fccbe26",
+          "job": "8d606cf1-ed4c-474d-84b0-773d163404b5",
+          "request": {
+            "version": 1,
+            "session": "5ec6ca6507f94dc396851beecdb4d16f",
+            "sequence": 9,
+            "seed": 179010605,
+            "style": "bass",
+            "energy": 5,
+            "mood": "warm"
+          },
+          "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "compute_ms": 2081,
+          "bytes": 11520044,
+          "sha256": "30d26191743e5c001676061da8d9af7f62ab6cfea2a3ab65d303195ebb95fdd6",
+          "vocal": null,
+          "vocal_check": {
+            "status": "ineligible",
+            "generated": false
+          }
+        }
+      },
+      "original": {
+        "input_i": "-18.95",
+        "input_tp": "-1.00",
+        "input_lra": "9.40",
+        "input_thresh": "-29.63"
+      },
+      "gain_db": -5.629999999999999,
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-6.63",
+        "input_lra": "9.30",
+        "input_thresh": "-35.22"
+      }
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

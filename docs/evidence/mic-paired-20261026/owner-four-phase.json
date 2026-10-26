@@ -1,0 +1,88 @@
+{
+  "source": "Owner pasted four-phase physical microphone check",
+  "status": "FAIL owner-declared quiet and sustained-singing phases; exact cause unresolved",
+  "completed": true,
+  "sampleRate": 48000,
+  "input": {
+    "reportedMacMicMode": "standard",
+    "requestedProcessing": "raw",
+    "label": "Default - MacBook Air Microphone (Built-in)",
+    "sampleRate": 48000,
+    "channelCount": 1,
+    "echoCancellation": false,
+    "noiseSuppression": false,
+    "autoGainControl": false
+  },
+  "frames": 2996,
+  "phases": [
+    {
+      "phase": "Stay quiet \u00b7 room noise",
+      "frames": 745,
+      "detectedVoicePercent": 48.32214765100671,
+      "medianRms": 0.018563071532718054,
+      "medianAcRms": 0.01854858480820328,
+      "medianDcOffset": -7.183245382092292e-07,
+      "clippedFrames": 0,
+      "medianConfidence": 0.9694863371551037,
+      "medianDetectedHz": 158.87801149934486,
+      "rejected": {
+        "quiet": 267,
+        "noStablePitch": 23,
+        "lowConfidence": 95
+      }
+    },
+    {
+      "phase": "Sing a comfortable sustained note",
+      "frames": 750,
+      "detectedVoicePercent": 34.93333333333333,
+      "medianRms": 0.024158086704986412,
+      "medianAcRms": 0.02415321850726582,
+      "medianDcOffset": -1.951834967123256e-06,
+      "clippedFrames": 0,
+      "medianConfidence": 0.8947554603219032,
+      "medianDetectedHz": 194.431359499038,
+      "rejected": {
+        "quiet": 99,
+        "noStablePitch": 54,
+        "lowConfidence": 335
+      }
+    },
+    {
+      "phase": "Sing the same note more softly",
+      "frames": 750,
+      "detectedVoicePercent": 46.4,
+      "medianRms": 0.034382107057366336,
+      "medianAcRms": 0.03438193930035921,
+      "medianDcOffset": 3.3405094854055406e-05,
+      "clippedFrames": 0,
+      "medianConfidence": 0.9249707162380219,
+      "medianDetectedHz": 211.41528832210335,
+      "rejected": {
+        "quiet": 45,
+        "noStablePitch": 66,
+        "lowConfidence": 291
+      }
+    },
+    {
+      "phase": "Add gentle vibrato",
+      "frames": 751,
+      "detectedVoicePercent": 62.71637816245007,
+      "medianRms": 0.03640897419306089,
+      "medianAcRms": 0.03640736379592584,
+      "medianDcOffset": 1.343582619264122e-05,
+      "clippedFrames": 0,
+      "medianConfidence": 0.9645451381802559,
+      "medianDetectedHz": 301.6996382538011,
+      "rejected": {
+        "quiet": 125,
+        "noStablePitch": 5,
+        "lowConfidence": 150
+      }
+    }
+  ],
+  "softwareWindowCenterToAnimationMs": {
+    "median": 29.266666571300448,
+    "p95": 33.63333340486133
+  },
+  "limitation": "Not physical microphone-to-display latency or independently labelled singing accuracy; raw audio not supplied"
+}

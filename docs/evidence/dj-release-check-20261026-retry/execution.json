@@ -1,0 +1,40 @@
+{
+  "status": "PASS technical; cleanup PASS",
+  "instance": 57869284,
+  "authorizedPermitSha256": "1daaf156e737647b561c8e313abb1fb3ffebc16cd105cae29511912b925d7d21",
+  "startedAt": 1793047762.774452,
+  "destroyConfirmedAt": 1793048657.615255,
+  "replacementElapsedSeconds": 894.8408031463623,
+  "priorElapsedSeconds": 366.7046902179718,
+  "totalElapsedSeconds": 1261.545493364334,
+  "rentalLimitSeconds": 2400,
+  "rentalsRemaining": 0,
+  "creditBeforeOriginal": 7.297616670399999,
+  "creditBeforeReplacement": 7.239906413399999,
+  "creditAfter": 7.154110013399999,
+  "provisionalTotalCostUSD": 0.14350665700000054,
+  "provisionalReplacementCostUSD": 0.08579640000000044,
+  "budgetUSD": 6,
+  "billingLimitation": "Provider balance debit is provisional; final invoice settlement can lag deletion.",
+  "tracks": 20,
+  "uniqueAudioHashes": 20,
+  "generatedVocalCandidates": 0,
+  "insertedVocals": 0,
+  "codeRevisions": [
+    "ca1e85fe9430179831e6bc6be790c332190a3866"
+  ],
+  "weightRevisions": [
+    "19671f406d603126926c1b7e2adc169acbcade22"
+  ],
+  "reportedRendererComputeSeconds": {
+    "median": 2.04,
+    "max": 4.076,
+    "scope": "Worker-reported compute only; excludes startup, queueing, transfer and browser playback."
+  },
+  "maxActiveSources": 3,
+  "maxBrowserHeapBytes": 80104318,
+  "maxNodeRssBytes": 311279616,
+  "publicActivation": false,
+  "humanListening": "NOT RUN",
+  "verifiedAt": 1793048703.92192
+}

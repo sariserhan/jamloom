@@ -1,0 +1,85 @@
+{
+  "seconds": 29.94,
+  "codec": "audio/webm;codecs=opus",
+  "input": {
+    "reportedMacMicMode": "standard",
+    "requestedProcessing": "raw",
+    "label": "Default - MacBook Air Microphone (Built-in)",
+    "sampleRate": 48000,
+    "echoCancellation": false,
+    "noiseSuppression": false,
+    "autoGainControl": false
+  },
+  "simultaneousLive": {
+    "frames": 2977,
+    "detectedPitchPercent": 0,
+    "medianAcRms": 0.000623501206599694
+  },
+  "frames": 701,
+  "detectedPitchPercent": 0,
+  "medianAcRms": 0.0006229103673400648,
+  "medianDetectedHz": null,
+  "limitation": "Same microphone stream measured live and after encoding; codec and window spacing can differ. Periodic sound is not confirmed singing.",
+  "phases": {
+    "live": [
+      {
+        "phase": "Stay quiet \u00b7 room noise",
+        "frames": 748,
+        "detectedPitchPercent": 0,
+        "medianAcRms": 0.0006700050372886933,
+        "medianDetectedHz": null
+      },
+      {
+        "phase": "Sing a comfortable sustained note",
+        "frames": 750,
+        "detectedPitchPercent": 0,
+        "medianAcRms": 0.0006711305462889617,
+        "medianDetectedHz": null
+      },
+      {
+        "phase": "Sing the same note more softly",
+        "frames": 750,
+        "detectedPitchPercent": 0,
+        "medianAcRms": 0.0006322570443814675,
+        "medianDetectedHz": null
+      },
+      {
+        "phase": "Add gentle vibrato",
+        "frames": 729,
+        "detectedPitchPercent": 0,
+        "medianAcRms": 0.0005307531241023902,
+        "medianDetectedHz": null
+      }
+    ],
+    "recorded": [
+      {
+        "phase": "Stay quiet \u00b7 room noise",
+        "frames": 176,
+        "detectedPitchPercent": 0,
+        "medianAcRms": 0.0006728279535129234,
+        "medianDetectedHz": null
+      },
+      {
+        "phase": "Sing a comfortable sustained note",
+        "frames": 176,
+        "detectedPitchPercent": 0,
+        "medianAcRms": 0.0006701498743726599,
+        "medianDetectedHz": null
+      },
+      {
+        "phase": "Sing the same note more softly",
+        "frames": 175,
+        "detectedPitchPercent": 0,
+        "medianAcRms": 0.0006282606991458682,
+        "medianDetectedHz": null
+      },
+      {
+        "phase": "Add gentle vibrato",
+        "frames": 174,
+        "detectedPitchPercent": 0,
+        "medianAcRms": 0.0005289684119291501,
+        "medianDetectedHz": null
+      }
+    ]
+  }
+}
