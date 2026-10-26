@@ -1,0 +1,50 @@
+{
+  "status": "PASS technical",
+  "tracks": [
+    {
+      "file": "house-0.wav",
+      "seconds": 60.0,
+      "rate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "peak": 0.8912353515625,
+      "rms": 0.1386853016610922,
+      "compute_ms": 3717
+    },
+    {
+      "file": "house-1.wav",
+      "seconds": 60.0,
+      "rate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "peak": 0.8912353515625,
+      "rms": 0.16179991959400924,
+      "compute_ms": 3224,
+      "guide_score_matches_local": true,
+      "guide_pcm_matches_local": false
+    },
+    {
+      "file": "bass-2.wav",
+      "seconds": 60.0,
+      "rate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "peak": 0.8912353515625,
+      "rms": 0.08843333953333914,
+      "compute_ms": 1966
+    },
+    {
+      "file": "bass-3.wav",
+      "seconds": 60.0,
+      "rate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "peak": 0.8912353515625,
+      "rms": 0.12394854751362987,
+      "compute_ms": 3023,
+      "guide_score_matches_local": true,
+      "guide_pcm_matches_local": false
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

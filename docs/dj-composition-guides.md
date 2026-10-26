@@ -1,6 +1,6 @@
 # Original composition-guided generation — 2026-10-25
 
-**PASS local composition, stems, adapter and listening-page checks; PARTIAL musical improvement.** This experiment adds actual musical structure as audio input to the existing model. It does not promote another text prompt as a demonstrated quality improvement. The serving default remains unchanged.
+**PASS local implementation, fresh GPU generation, cleanup and listening-page checks; PARTIAL musical improvement.** This experiment adds actual musical structure as audio input to the existing model. It does not promote another text prompt as a demonstrated quality improvement. The serving default remains unchanged.
 
 ## Concrete change
 
@@ -16,11 +16,15 @@ The opt-in `--composition-study` warm renderer pairs the existing arrangement ca
 
 Each guide is generated in the temporary request directory, hashed, checked again after inference and deleted with that directory. Its score/audio hashes and exact request survive in the renderer receipt. The controller requires the predeclared score hash for guided cases and rejects unexpected guides in controls. Worker/bootstrap hashes include both composition and synthesis code; staged files are copied only for this opt-in mode. The existing 30-second generation-ahead limit still covers guide construction and inference together.
 
-## Prepared paid comparison — NOT RUN
+## Approved paid comparison — PASS technical, listening pending
 
-[Prepared plan](evidence/dj-composition-20261025/gpu-plan.json): four instrumental 60-second outputs, one house pair and one bass pair. Each pair shares model, caption, seed, mood and energy; the candidate adds the original audio guide. No new vocal candidates confound the comparison. The plan permits at most **$3 total, one GPU and 20 minutes**, with stop on failure, independent watchdog, automatic destruction, request limits and no public activation. Prior campaign approvals remain immutable and cannot authorize this trial. The condition key stays outside the listening server.
+[Approved plan](evidence/dj-composition-20261025/gpu-plan.json): four instrumental 60-second outputs, one house pair and one bass pair. Each pair shares model, caption, seed, mood and energy; the candidate adds the original audio guide. No new vocal candidates confound the comparison. The plan permits at most **$3 total, one GPU and 20 minutes**, with stop on failure, independent watchdog, automatic destruction, request limits and no public activation. Prior campaign approvals remain immutable and cannot authorize this trial. The condition key stays outside the listening server.
 
-The controller, bootstrap, provenance checks and post-run listening preparation are implemented and tested. No rental has started. The final GPU step requires the owner's explicit capped approval under AGENTS.md. A successful technical run would still need whole-package listening: hook/identity, sound quality, development, groove and mix. Guide adherence and real-time latency remain unmeasured on GPU; the synthetic input may degrade rather than improve timbre.
+The owner approved the exact capped comparison. All four fresh outputs passed integrity, format and executed-worker checks. The rental lasted 480 seconds; the observed account debit was $0.03582. Destruction was confirmed and a separate complete inventory check found zero rentals. Each output is a distinct, complete 60-second stereo 48 kHz PCM16 file, with no sample clipping. Generation took 1.97–3.72 seconds per track, including guide creation where applicable, within the existing 30-second generation-ahead limit. [Run and cleanup receipt](evidence/dj-composition-20261025/fresh-samples.json), [audio checks](evidence/dj-composition-20261025/generated-audio-checks.json).
+
+Both remote guide score hashes match the prepared scores exactly. Their audio hashes differ from the Mac-rendered sketches; cross-platform PCM identity is not established, and the remote temporary guide WAVs were not retained for a numerical comparison. Each remote guide was independently hashed before inference and verified unchanged afterward. This passes the predeclared score/provenance contract, not a claim of byte-identical local/remote audio.
+
+[Listen to the four blinded originals](http://localhost:8766/composition-originals/review/). Listening copies use constant gain to match −20.49 LUFS, preserving internal dynamics. The condition key remains outside the listening server. Whole-package listening is pending: hook/identity, sound quality, development, groove and mix. Guide adherence is not yet established; the synthetic input may degrade rather than improve timbre. No candidate is promoted on technical checks alone.
 
 ## Verification
 
@@ -28,6 +32,7 @@ The controller, bootstrap, provenance checks and post-run listening preparation 
 - **PASS:** both local guides are complete and unclipped, with no detected silence at −60 dB lasting 250 ms. Their generation took about 0.32 seconds combined on this Mac; this does not predict GPU inference time. [Audio checks](evidence/dj-composition-20261025/audio-checks.json).
 - **PASS:** both guides play/seek in Chromium and WebKit; all five stems load, switching pauses and retains position, section controls seek correctly, one player runs at a time and mobile rendering has no horizontal overflow. Speakers were muted. [Browser checks](evidence/dj-composition-20261025/browser-guides.json). Browser plugin Node runtime is unavailable; the previously authorized Playwright fallback was reused.
 - **PASS:** shell syntax and diff checks. [Python output](evidence/dj-composition-20261025/tests.txt).
-- **NOT RUN:** owner audition, fresh model generation, blinded musical comparison, professional/reference parity, production enablement and deployment. No training or downloaded-reference reuse.
+- **PASS:** all four generated listening copies play and seek in Chromium/WebKit, one at a time, without browser errors or mobile overflow; mobile screenshot inspected. Speakers were muted. [Browser checks](evidence/dj-composition-20261025/browser-originals.json), [listening receipts](evidence/dj-composition-20261025/generated-listening.json).
+- **NOT RUN:** owner audition of this batch, blinded musical acceptance, professional/reference parity, production enablement and deployment. No training or downloaded-reference reuse.
 
 Reproduce locally with `.venv-analysis/bin/python -m unittest tests.test_dj_composition tests.test_dj_track_worker tests.test_dj_warm_engine tests.test_dj_sample_trial tests.test_vast_trial`. Generate a guide with `scripts/dj_composition.py --request <request.json> --output <new-folder>` using the analysis environment. The listening publisher refuses to overwrite earlier evidence. After an explicitly approved successful run, use `scripts/review_dj_composition.py --generated`, then from `apps/site` run `node tests/dj-listening-comparison.mjs --composition --blind`.

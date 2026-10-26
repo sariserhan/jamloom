@@ -51,7 +51,8 @@ class SamplePermitTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate_quality(altered,house=True)
     def test_composition_requires_approved_original_guides_and_four_requests(self):
         plan=json.loads((ROOT/'docs/evidence/dj-composition-20261025/gpu-plan.json').read_text())
-        with self.assertRaises(ValueError):validate_quality(plan,composition=True)
+        pending=copy.deepcopy(plan);pending['status']='PREPARED'
+        with self.assertRaises(ValueError):validate_quality(pending,composition=True)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 composition comparison'
         validate_quality(plan,composition=True)
         for key,value in [('max_requests',5),('source_audio_used',False),('reference_audio_used',True),('guide_strength',.8),('source_audio_origin','downloaded'),('max_workers',2),('max_minutes',30),('budget_usd',6)]:

@@ -8,6 +8,6 @@ FAIL buffer deadline
   _warnings.warn(self.warn_message, ResourceWarning)
 .....................................
 ----------------------------------------------------------------------
-Ran 49 tests in 1.830s
+Ran 49 tests in 1.295s
 
 OK

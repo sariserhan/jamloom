@@ -1,7 +1,7 @@
 {
-  "status": "PREPARED",
+  "status": "AUTHORIZED",
   "campaign": "jamloom-dj-composition-20261025",
-  "owner_statement": null,
+  "owner_statement": "Approve the capped $3 composition comparison",
   "budget_usd": 3,
   "max_workers": 1,
   "max_minutes": 20,
