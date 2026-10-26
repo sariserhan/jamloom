@@ -1,0 +1,83 @@
+{
+  "version": "0.10.2",
+  "pitch": [
+    {
+      "name": "piano_48_v55_take0",
+      "seconds": 0.5923177920049056,
+      "median_cents_error": 1.5142797220875286,
+      "has_voicing_gate": false,
+      "frames": 63
+    },
+    {
+      "name": "piano_60_v55_take0",
+      "seconds": 0.001504290965385735,
+      "median_cents_error": 3.040835256879223,
+      "has_voicing_gate": false,
+      "frames": 63
+    },
+    {
+      "name": "piano_72_v55_take0",
+      "seconds": 0.0013470830162987113,
+      "median_cents_error": 4.320002355918245,
+      "has_voicing_gate": false,
+      "frames": 63
+    },
+    {
+      "name": "tone-110",
+      "seconds": 0.000872582895681262,
+      "median_cents_error": 0.016088625895937063,
+      "has_voicing_gate": false,
+      "frames": 44
+    },
+    {
+      "name": "tone-220",
+      "seconds": 0.0008410000009462237,
+      "median_cents_error": 0.12146976843611337,
+      "has_voicing_gate": false,
+      "frames": 44
+    },
+    {
+      "name": "tone-440",
+      "seconds": 0.0008412499446421862,
+      "median_cents_error": 0.4409553975800689,
+      "has_voicing_gate": false,
+      "frames": 44
+    },
+    {
+      "name": "tone-523.251",
+      "seconds": 0.0009029590291902423,
+      "median_cents_error": 0.3683683034002232,
+      "has_voicing_gate": false,
+      "frames": 44
+    },
+    {
+      "name": "tone-880",
+      "seconds": 0.000847041024826467,
+      "median_cents_error": 2.6424231647994443,
+      "has_voicing_gate": false,
+      "frames": 44
+    },
+    {
+      "name": "noise",
+      "seconds": 0.0008729590335860848,
+      "median_cents_error": null,
+      "has_voicing_gate": false,
+      "frames": 44
+    },
+    {
+      "name": "silence",
+      "seconds": 0.001117750070989132,
+      "median_cents_error": null,
+      "has_voicing_gate": false,
+      "frames": 44
+    }
+  ],
+  "time_stretch": {
+    "speed": 1.08,
+    "seconds": 0.3227451670682058,
+    "audio_seconds": 7.407375,
+    "peak": 0.4950486719608307,
+    "file": "build-open-source-audit/librosa-stretch.wav"
+  },
+  "scope": "Offline candidate, not real-time callback or perceptual quality proof"
+}

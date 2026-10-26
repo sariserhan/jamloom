@@ -1,3 +1,9 @@
+## Open-source reuse and Singing Academy preview — 2026-10-26
+
+Try [the first singing lesson](http://localhost:3000/singing-academy/lessons/first-note). Choose a comfortable note, press Start, allow the microphone, listen to the piano and hum back. Hold the center for two seconds. Stop or leaving the page closes the microphone; practice remains unlimited. Audio stays on this device and only a completion marker is stored locally. This first lesson measures pitch, not overall voice quality or vocal health. Physical microphone and real-singer qualification remain open.
+
+The [audit](OPEN_SOURCE_AUDIT.md) covers 21 pinned repositories. ACE-Step 1.5 is already in use. A small MIT pitch module is adopted; GPL/AGPL/unlicensed apps are not copied. [Licenses](OPEN_SOURCE_LICENSES.md) and [integration plan](INTEGRATION_PLAN.md) record exact scope and remaining experiments. No new rental, publication or payment change occurred. Fresh model and two-track GPU checks still require a new capped authorization.
+
 ## Native Music DNA and Apple privacy — 2026-10-24
 
 **PASS:** manual musical-direction controls removed; favorites-based web flow, automatic saving and removable rows verified on the physical iPhone. App Store Data Collection answers completed, published and verified after reload; native manifest matches. 0.8.0 (12) signed/exported/installed; upload passed; Apple processing is pending. Simulator test cases pass but report finalization stalled (**PARTIAL artifact**). [Current release ledger](release-completion-20261024.md).

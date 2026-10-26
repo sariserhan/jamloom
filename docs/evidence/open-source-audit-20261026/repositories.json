@@ -1,0 +1,486 @@
+[
+  {
+    "repository": "Dream-High/RMVPE",
+    "commit": "a6db1cd7d26014aa739383367afd9bab57fc624c",
+    "commit_date": "2024-01-25T03:24:32Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2024-01-25T03:24:32Z",
+    "license_metadata": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    },
+    "tree_truncated": false,
+    "test_file_count": 0,
+    "ci_files": [],
+    "file_count": 15,
+    "url": "https://github.com/Dream-High/RMVPE/tree/a6db1cd7d26014aa739383367afd9bab57fc624c"
+  },
+  {
+    "repository": "MTG/essentia.js",
+    "commit": "819c00e8f034dc709e3d330ed8ac9ed37dfdb767",
+    "commit_date": "2022-07-19T18:23:42Z",
+    "archived": false,
+    "default_branch": "master",
+    "pushed_at": "2025-12-10T15:49:01Z",
+    "license_metadata": {
+      "key": "agpl-3.0",
+      "name": "GNU Affero General Public License v3.0",
+      "spdx_id": "AGPL-3.0",
+      "url": "https://api.github.com/licenses/agpl-3.0",
+      "node_id": "MDc6TGljZW5zZTE="
+    },
+    "tree_truncated": false,
+    "test_file_count": 0,
+    "ci_files": [
+      ".github/workflows/deploy.yml",
+      ".github/workflows/integration.yml"
+    ],
+    "file_count": 382,
+    "url": "https://github.com/MTG/essentia.js/tree/819c00e8f034dc709e3d330ed8ac9ed37dfdb767"
+  },
+  {
+    "repository": "NVIDIA/BigVGAN",
+    "commit": "7d2b454564a6c7d014227f635b7423881f14bdac",
+    "commit_date": "2024-09-05T03:44:13Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2024-09-05T03:50:02Z",
+    "license_metadata": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "tree_truncated": false,
+    "test_file_count": 3,
+    "ci_files": [],
+    "file_count": 81,
+    "url": "https://github.com/NVIDIA/BigVGAN/tree/7d2b454564a6c7d014227f635b7423881f14bdac"
+  },
+  {
+    "repository": "Plachtaa/seed-vc",
+    "commit": "51383efd921027683c89e5348211d93ff12ac2a8",
+    "commit_date": "2025-04-20T05:27:04Z",
+    "archived": true,
+    "default_branch": "main",
+    "pushed_at": "2025-04-20T05:27:10Z",
+    "license_metadata": {
+      "key": "gpl-3.0",
+      "name": "GNU General Public License v3.0",
+      "spdx_id": "GPL-3.0",
+      "url": "https://api.github.com/licenses/gpl-3.0",
+      "node_id": "MDc6TGljZW5zZTk="
+    },
+    "tree_truncated": false,
+    "test_file_count": 0,
+    "ci_files": [],
+    "file_count": 135,
+    "url": "https://github.com/Plachtaa/seed-vc/tree/51383efd921027683c89e5348211d93ff12ac2a8"
+  },
+  {
+    "repository": "SmashingGoodTime/vocal-trainer",
+    "commit": "13ac75122aa2d687c7f4da0fdcc68617ac3313bf",
+    "commit_date": "2026-08-09T00:08:49Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2026-10-21T02:05:38Z",
+    "license_metadata": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "tree_truncated": false,
+    "test_file_count": 10,
+    "ci_files": [
+      ".github/workflows/python-tests.yml"
+    ],
+    "file_count": 106,
+    "url": "https://github.com/SmashingGoodTime/vocal-trainer/tree/13ac75122aa2d687c7f4da0fdcc68617ac3313bf"
+  },
+  {
+    "repository": "Tonejs/Tone.js",
+    "commit": "445b94d4c0ade2d5c2f60c60f3e48749eb5322d9",
+    "commit_date": "2026-10-25T14:02:08Z",
+    "archived": false,
+    "default_branch": "dev",
+    "pushed_at": "2026-10-25T14:03:29Z",
+    "license_metadata": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "tree_truncated": false,
+    "test_file_count": 145,
+    "ci_files": [
+      ".github/workflows/release.yml",
+      ".github/workflows/stale.yml",
+      ".github/workflows/test.yml"
+    ],
+    "file_count": 549,
+    "url": "https://github.com/Tonejs/Tone.js/tree/445b94d4c0ade2d5c2f60c60f3e48749eb5322d9"
+  },
+  {
+    "repository": "VadymYem/OpenVox",
+    "commit": "ce7f85eb8279d910ee01cd16aa97707bb2bccaf0",
+    "commit_date": "2026-10-21T23:23:43+02:00",
+    "archived": null,
+    "default_branch": "main",
+    "license_metadata": null,
+    "tree_truncated": false,
+    "source": "git shallow sparse; API rate limit",
+    "test_file_count": 18,
+    "ci_files": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/codeql.yml",
+      ".github/workflows/dependency-review.yml",
+      ".github/workflows/jekyll-gh-pages.yml",
+      ".github/workflows/static.yml"
+    ],
+    "file_count": 195,
+    "url": "https://github.com/VadymYem/OpenVox/tree/ce7f85eb8279d910ee01cd16aa97707bb2bccaf0"
+  },
+  {
+    "repository": "ace-step/ACE-Step-1.5",
+    "commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "commit_date": "2026-08-29T08:25:18Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2026-10-11T14:11:22Z",
+    "license_metadata": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "tree_truncated": false,
+    "test_file_count": 0,
+    "ci_files": [
+      ".github/workflows/close-inactive-issues.yml",
+      ".github/workflows/codeql.yml",
+      ".github/workflows/container.yml",
+      ".github/workflows/docs.yml"
+    ],
+    "file_count": 1309,
+    "url": "https://github.com/ace-step/ACE-Step-1.5/tree/ca1e85fe9430179831e6bc6be790c332190a3866"
+  },
+  {
+    "repository": "akhilvydyula/predict-voice-quality",
+    "commit": "78e30f766efde6c8c66d9e5a47441b44312d216c",
+    "commit_date": "2026-06-25T21:28:05Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2026-06-25T21:28:07Z",
+    "license_metadata": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "tree_truncated": false,
+    "test_file_count": 0,
+    "ci_files": [
+      ".github/workflows/deploy-cloudflare.yml"
+    ],
+    "file_count": 188,
+    "url": "https://github.com/akhilvydyula/predict-voice-quality/tree/78e30f766efde6c8c66d9e5a47441b44312d216c"
+  },
+  {
+    "repository": "breakfastquay/rubberband",
+    "commit": "e4296ac80b1170018a110bc326fd0d45a0eb27d6",
+    "commit_date": "2025-02-27T11:04:40Z",
+    "archived": false,
+    "default_branch": "default",
+    "pushed_at": "2025-03-03T15:56:58Z",
+    "license_metadata": {
+      "key": "gpl-2.0",
+      "name": "GNU General Public License v2.0",
+      "spdx_id": "GPL-2.0",
+      "url": "https://api.github.com/licenses/gpl-2.0",
+      "node_id": "MDc6TGljZW5zZTg="
+    },
+    "tree_truncated": false,
+    "test_file_count": 0,
+    "ci_files": [
+      ".github/workflows/macos-ios.yml",
+      ".github/workflows/windows.yml"
+    ],
+    "file_count": 200,
+    "url": "https://github.com/breakfastquay/rubberband/tree/e4296ac80b1170018a110bc326fd0d45a0eb27d6"
+  },
+  {
+    "repository": "dtomkatsu/singing-trainer",
+    "commit": "54f65ef22227e13cebfc8296a936e2d22748f447",
+    "commit_date": "2026-10-24T02:30:56Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2026-10-24T02:30:55Z",
+    "license_metadata": null,
+    "tree_truncated": false,
+    "test_file_count": 7,
+    "ci_files": [],
+    "file_count": 32,
+    "url": "https://github.com/dtomkatsu/singing-trainer/tree/54f65ef22227e13cebfc8296a936e2d22748f447"
+  },
+  {
+    "repository": "facebookresearch/demucs",
+    "commit": "e976d93ecc3865e5757426930257e200846a520a",
+    "commit_date": "2023-11-16T12:32:35Z",
+    "archived": true,
+    "default_branch": "main",
+    "pushed_at": "2024-04-24T20:25:19Z",
+    "license_metadata": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "tree_truncated": false,
+    "test_file_count": 0,
+    "ci_files": [
+      ".github/workflows/linter.yml",
+      ".github/workflows/tests.yml"
+    ],
+    "file_count": 113,
+    "url": "https://github.com/facebookresearch/demucs/tree/e976d93ecc3865e5757426930257e200846a520a"
+  },
+  {
+    "repository": "katspaugh/wavesurfer.js",
+    "commit": "cdef4ac6c2744b3e376cae4e5a727e375137fb9d",
+    "commit_date": "2026-10-23T14:18:12Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2026-10-23T14:18:13Z",
+    "license_metadata": {
+      "key": "bsd-3-clause",
+      "name": "BSD 3-Clause \"New\" or \"Revised\" License",
+      "spdx_id": "BSD-3-Clause",
+      "url": "https://api.github.com/licenses/bsd-3-clause",
+      "node_id": "MDc6TGljZW5zZTU="
+    },
+    "tree_truncated": false,
+    "test_file_count": 51,
+    "ci_files": [
+      ".github/workflows/build",
+      ".github/workflows/build/action.yml",
+      ".github/workflows/e2e.yml",
+      ".github/workflows/label-sponsors.yml",
+      ".github/workflows/lint.yml",
+      ".github/workflows/release.yml",
+      ".github/workflows/unit-tests.yml",
+      ".github/workflows/yarn",
+      ".github/workflows/yarn/action.yml"
+    ],
+    "file_count": 264,
+    "url": "https://github.com/katspaugh/wavesurfer.js/tree/cdef4ac6c2744b3e376cae4e5a727e375137fb9d"
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "commit_date": "2026-08-19T13:07:55Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2026-08-19T13:08:03Z",
+    "license_metadata": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "tree_truncated": false,
+    "test_file_count": 11,
+    "ci_files": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/docker.yml",
+      ".github/workflows/release.yml"
+    ],
+    "file_count": 388,
+    "url": "https://github.com/koneb71/djkado/tree/a0483796f94d799c297de15fb64f8f39cb051cc2"
+  },
+  {
+    "repository": "librosa/librosa",
+    "commit": "4ffed287f9044654cc4a1a7393f895cd716a0a5d",
+    "commit_date": "2026-10-22T18:07:50Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2026-10-06T15:53:10Z",
+    "license_metadata": {
+      "key": "isc",
+      "name": "ISC License",
+      "spdx_id": "ISC",
+      "url": "https://api.github.com/licenses/isc",
+      "node_id": "MDc6TGljZW5zZTEw"
+    },
+    "tree_truncated": false,
+    "test_file_count": 102,
+    "ci_files": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/docs-ci-linkcheck.yml",
+      ".github/workflows/docs-ci.yml",
+      ".github/workflows/docs.yml",
+      ".github/workflows/lint_python.yml",
+      ".github/workflows/publish-doc-asset.yml",
+      ".github/workflows/publish.yml"
+    ],
+    "file_count": 306,
+    "url": "https://github.com/librosa/librosa/tree/4ffed287f9044654cc4a1a7393f895cd716a0a5d"
+  },
+  {
+    "repository": "mercurypitch/mercurypitch",
+    "commit": "a6f839e1478ae599d107a5049e53c19643ca2b87",
+    "commit_date": "2026-10-26T08:16:20+01:00",
+    "archived": null,
+    "default_branch": "main",
+    "license_metadata": null,
+    "tree_truncated": false,
+    "source": "git shallow sparse; API rate limit",
+    "test_file_count": 2930,
+    "ci_files": [
+      ".github/workflows/beside-cue-games-native.yml",
+      ".github/workflows/beside-cue-mobile.yml",
+      ".github/workflows/build.yml",
+      ".github/workflows/capacitor-app.yml",
+      ".github/workflows/cleanup-merged-branch.yml",
+      ".github/workflows/deploy-db.yml",
+      ".github/workflows/deploy-jam.yml",
+      ".github/workflows/mercurypitch-mobile.yml",
+      ".github/workflows/pr-deployment-table.md",
+      ".github/workflows/pr-gate.yml",
+      ".github/workflows/release-tours.yml"
+    ],
+    "file_count": 12955,
+    "url": "https://github.com/mercurypitch/mercurypitch/tree/a6f839e1478ae599d107a5049e53c19643ca2b87"
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "commit_date": "2026-10-25T21:56:58Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2026-10-25T21:56:59Z",
+    "license_metadata": {
+      "key": "other",
+      "name": "Other",
+      "spdx_id": "NOASSERTION",
+      "url": null,
+      "node_id": "MDc6TGljZW5zZTA="
+    },
+    "tree_truncated": false,
+    "test_file_count": 3,
+    "ci_files": [
+      ".github/workflows/appimage.yml",
+      ".github/workflows/benchmark.yml",
+      ".github/workflows/build.yml",
+      ".github/workflows/changelog.yml",
+      ".github/workflows/checks.yml",
+      ".github/workflows/develop.yml",
+      ".github/workflows/download_cleanup.yml",
+      ".github/workflows/flatpak.yml",
+      ".github/workflows/git.yml",
+      ".github/workflows/labeler.yml",
+      ".github/workflows/pr-command.yml",
+      ".github/workflows/pre-commit.yml",
+      ".github/workflows/release.yml",
+      ".github/workflows/stale.yml",
+      ".github/workflows/sync_branches.yml"
+    ],
+    "file_count": 6396,
+    "url": "https://github.com/mixxxdj/mixxx/tree/ee17a272664ee9ad0aa978fd499c49802af90a99"
+  },
+  {
+    "repository": "openai/whisper",
+    "commit": "86098128c0b4f24f0e2aa2994de830614b474227",
+    "commit_date": "2026-08-31T17:19:19Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2026-08-31T17:19:19Z",
+    "license_metadata": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "tree_truncated": false,
+    "test_file_count": 7,
+    "ci_files": [
+      ".github/workflows/python-publish.yml",
+      ".github/workflows/test.yml"
+    ],
+    "file_count": 53,
+    "url": "https://github.com/openai/whisper/tree/86098128c0b4f24f0e2aa2994de830614b474227"
+  },
+  {
+    "repository": "pawelgawliczek/intonavio",
+    "commit": "f3fc917a6f989e707817b9d06743b330c194a70a",
+    "commit_date": "2026-05-19T08:05:08Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2026-05-19T08:05:29Z",
+    "license_metadata": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "tree_truncated": false,
+    "test_file_count": 38,
+    "ci_files": [
+      ".github/workflows/backup.yml",
+      ".github/workflows/ci.yml",
+      ".github/workflows/deploy.yml"
+    ],
+    "file_count": 580,
+    "url": "https://github.com/pawelgawliczek/intonavio/tree/f3fc917a6f989e707817b9d06743b330c194a70a"
+  },
+  {
+    "repository": "spotify/basic-pitch",
+    "commit": "fa5997af0a8210982619003269994a1be25eddf3",
+    "commit_date": "2025-11-13T14:40:45Z",
+    "archived": false,
+    "default_branch": "main",
+    "pushed_at": "2025-11-13T14:40:46Z",
+    "license_metadata": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    },
+    "tree_truncated": false,
+    "test_file_count": 30,
+    "ci_files": [
+      ".github/workflows/publish.yml",
+      ".github/workflows/tox.yml"
+    ],
+    "file_count": 118,
+    "url": "https://github.com/spotify/basic-pitch/tree/fa5997af0a8210982619003269994a1be25eddf3"
+  },
+  {
+    "repository": "vocalous/app",
+    "commit": "10b843fb0555c499b17e8279d2063961e8bc784d",
+    "commit_date": "2022-05-09T13:12:34+03:00",
+    "archived": null,
+    "default_branch": "master",
+    "license_metadata": null,
+    "tree_truncated": false,
+    "source": "git shallow sparse; API rate limit",
+    "test_file_count": 2,
+    "ci_files": [],
+    "file_count": 74,
+    "url": "https://github.com/vocalous/app/tree/10b843fb0555c499b17e8279d2063961e8bc784d"
+  }
+]

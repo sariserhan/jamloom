@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-26",
+  "overall": "PARTIAL: local implementation passed; physical and musical qualification open",
+  "checks": {
+    "singing_unit": {
+      "status": "PASS",
+      "tests": 4,
+      "command": "node --test apps/web/tests/singing.test.js"
+    },
+    "academy_isolated_postgres": {
+      "status": "PASS",
+      "tests": 13,
+      "command": "JAMLOOM_TEST_DATABASE_URL=postgresql://serhansari@127.0.0.1:5432/postgres npm run test:academy"
+    },
+    "navigation_config": {
+      "status": "PASS",
+      "tests": 11,
+      "command": "node --import tsx --test tests/site-navigation.test.ts tests/config.test.ts"
+    },
+    "production_build": {
+      "status": "PASS",
+      "command": "npm run build"
+    },
+    "typecheck": {
+      "status": "PASS",
+      "command": "npm run typecheck"
+    },
+    "bundle": {
+      "status": "PASS",
+      "command": "npm run audit:bundle"
+    },
+    "source_verification": {
+      "status": "PASS",
+      "records": 148,
+      "command": "python3 scripts/fetch_open_source_audit.py"
+    },
+    "physical_microphone": {
+      "status": "NOT RUN"
+    },
+    "human_singing_accuracy": {
+      "status": "NOT RUN"
+    },
+    "fresh_gpu_matrix": {
+      "status": "NOT RUN",
+      "reason": "Prior capped permits consumed; no new compute authorization"
+    },
+    "publication": {
+      "status": "NOT RUN"
+    }
+  },
+  "browser_report": "singing-browser.json",
+  "source_sha256": {
+    "apps/web/singing.js": "bbbc78617d01deb58fa2b555ab76825c84e822876c96540df5bc30f2f9d6c01f",
+    "apps/web/singing-pitch.js": "e7f1fd201ee4c554b5f48119d0cfb377e5229d14c303666358432b9595e771dd",
+    "apps/web/singing-lesson.js": "237566facc8e27da18ba76fbd0b390c4733febd0e4c73ac8cd32af20edaf2c8c",
+    "apps/web/singing-capture-worklet.js": "1aea1a2640444c740760b6f55edd6be99ee2765a21313d6cac9b678f2aa6261b",
+    "apps/site/tests/singing-browser.mjs": "da2de7db3bfd2e82d9e8236b8a1a830efed0e5c5e06da81effaa0bf26a19b16e"
+  },
+  "initial_failures": "First Academy invocation lacked the isolated DB URL; raw Node invocation lacked tsx. Corrected commands passed. WebKit microphone mock assignment did not stick; defining the mock navigator property fixed the harness. No physical microphone pass claimed."
+}

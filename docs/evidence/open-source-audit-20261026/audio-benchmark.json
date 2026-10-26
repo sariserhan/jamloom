@@ -1,0 +1,530 @@
+{
+  "status": "PASS measurement; musical acceptance NOT RUN",
+  "node": "v22.23.1",
+  "fixtures": [
+    {
+      "name": "piano_48_v55_take0",
+      "file": "build-open-source-audit/piano_48_v55_take0.f32",
+      "rate": 16000,
+      "frames": 22080,
+      "pcm_sha256": "ffab6fd12329265f5333371d0fa024d94eda77bb69fc1c73c25079a1492a638c",
+      "kind": "real_cc0_note",
+      "expected_hz": 130.8127826502993,
+      "source_sha256": "2fbe80d44b96c24980762eb805594cff6b84a5b4ed06ddfed70a8f8c692b856f",
+      "source": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Nr1/UR1_C3_pp_RR1.wav",
+      "license": "CC0-1.0",
+      "gain": 22.484460716442563
+    },
+    {
+      "name": "piano_60_v55_take0",
+      "file": "build-open-source-audit/piano_60_v55_take0.f32",
+      "rate": 16000,
+      "frames": 22080,
+      "pcm_sha256": "d4b20d8289b7cafe24d67055bf81880dfd264f9bd640de9e1613e0a8865f00ec",
+      "kind": "real_cc0_note",
+      "expected_hz": 261.6255653005986,
+      "source_sha256": "0354bf405b644eb16b0d1223e304de93b4abef4e2191c552665563784d40f1ea",
+      "source": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Nr1/UR1_C4_pp_RR1.wav",
+      "license": "CC0-1.0",
+      "gain": 25.14333446591404
+    },
+    {
+      "name": "piano_72_v55_take0",
+      "file": "build-open-source-audit/piano_72_v55_take0.f32",
+      "rate": 16000,
+      "frames": 22080,
+      "pcm_sha256": "819ebb0dd8ebba1f967c9266749c4ac3bf1cd3e0c351484de652d0cbf253d66f",
+      "kind": "real_cc0_note",
+      "expected_hz": 523.2511306011972,
+      "source_sha256": "e0d5353f67afe55e4d6d49253651f2a8aa0c456603f538175e103769e1e1e73c",
+      "source": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Nr1/UR1_C5_pp_RR1.wav",
+      "license": "CC0-1.0",
+      "gain": 39.47943339641716
+    },
+    {
+      "name": "tone-110",
+      "file": "build-open-source-audit/tone-110.f32",
+      "rate": 16000,
+      "frames": 16000,
+      "pcm_sha256": "b5010cd9e4ba84f23ab2975bbc17e81994ea7a6339b7e0f1ffbf49a563dabacf",
+      "kind": "synthetic_control",
+      "expected_hz": 110
+    },
+    {
+      "name": "tone-220",
+      "file": "build-open-source-audit/tone-220.f32",
+      "rate": 16000,
+      "frames": 16000,
+      "pcm_sha256": "ea6ebb857a54cdbc5ec336e9a46dc8da6be6f900c3ce9ba8ba6df96a7810f93e",
+      "kind": "synthetic_control",
+      "expected_hz": 220
+    },
+    {
+      "name": "tone-440",
+      "file": "build-open-source-audit/tone-440.f32",
+      "rate": 16000,
+      "frames": 16000,
+      "pcm_sha256": "5a17eb476b328f70ee70f6ac89a1e43c1e9c362326e4bdff3e43dcc2ac450365",
+      "kind": "synthetic_control",
+      "expected_hz": 440
+    },
+    {
+      "name": "tone-523.251",
+      "file": "build-open-source-audit/tone-523.251.f32",
+      "rate": 16000,
+      "frames": 16000,
+      "pcm_sha256": "fca9a601707e0845d1ecf8eea76cbabbece815edd44dc4521028587122338d08",
+      "kind": "synthetic_control",
+      "expected_hz": 523.251
+    },
+    {
+      "name": "tone-880",
+      "file": "build-open-source-audit/tone-880.f32",
+      "rate": 16000,
+      "frames": 16000,
+      "pcm_sha256": "7e159b6a65f37bc24660266095bc8c1bf684ffcfb387dce603ce9d94d3f37dad",
+      "kind": "synthetic_control",
+      "expected_hz": 880
+    },
+    {
+      "name": "noise",
+      "file": "build-open-source-audit/noise.f32",
+      "rate": 16000,
+      "frames": 16000,
+      "pcm_sha256": "fe84297e1f7855d508e537b0e6afec7786edad20c49537412d792f835923462c",
+      "kind": "unvoiced_control"
+    },
+    {
+      "name": "silence",
+      "file": "build-open-source-audit/silence.f32",
+      "rate": 16000,
+      "frames": 16000,
+      "pcm_sha256": "4f7988030a00d082fe445e00a2ac5dab502300ff1b80e8592dd569867b60ef74",
+      "kind": "unvoiced_control"
+    },
+    {
+      "name": "original-0",
+      "file": "build-open-source-audit/original-0.f32",
+      "rate": 8000,
+      "frames": 480000,
+      "pcm_sha256": "3d6f71461de1303dd71b3d1a0c05e41411913985bc96e1f748185875f3373eda",
+      "kind": "real_generated_music",
+      "source": "renders/dj-flow-qualification-20261026/house-0.wav",
+      "source_sha256": "fe417194e14f6c7fb0d8d5b71cd5c25d5cbea0672a9f9ca01fd91b9f2882ee23",
+      "expected_hz": null
+    },
+    {
+      "name": "original-1",
+      "file": "build-open-source-audit/original-1.f32",
+      "rate": 8000,
+      "frames": 480000,
+      "pcm_sha256": "68961f6bf9665001453c0e85894ae587b409f78e2f499f4fe20c8cfd3fa540d6",
+      "kind": "real_generated_music",
+      "source": "renders/dj-flow-qualification-20261026/house-1.wav",
+      "source_sha256": "1165ac48dff782f8c59398f0f2ba9c73a64e0a9b66c4654712148bcf0b8df63b",
+      "expected_hz": null
+    },
+    {
+      "name": "original-2",
+      "file": "build-open-source-audit/original-2.f32",
+      "rate": 8000,
+      "frames": 480000,
+      "pcm_sha256": "02985b37caa9b87d92145bf8fb3e8e5c77c15a03e3afcef5f65f8beae3e9f3a5",
+      "kind": "real_generated_music",
+      "source": "renders/dj-flow-qualification-20261026/house-2.wav",
+      "source_sha256": "9fe2257b3cbef74f84a98b91363f0bd10002a1d9ce2533447dab7f67e4a02734",
+      "expected_hz": null
+    },
+    {
+      "name": "beat-120",
+      "file": "build-open-source-audit/beat-120.f32",
+      "rate": 8000,
+      "frames": 240000,
+      "pcm_sha256": "9891fa40cbd55d131c18a997fc2457c1d757e0e19318cea62397223ed354c37d",
+      "kind": "synthetic_beat_control",
+      "expected_bpm": 120
+    },
+    {
+      "name": "beat-128",
+      "file": "build-open-source-audit/beat-128.f32",
+      "rate": 8000,
+      "frames": 240000,
+      "pcm_sha256": "990eab38da7a0f2008eb56740718efad813d1c931aa32a67719778468e7dbae1",
+      "kind": "synthetic_beat_control",
+      "expected_bpm": 128
+    },
+    {
+      "name": "beat-140",
+      "file": "build-open-source-audit/beat-140.f32",
+      "rate": 8000,
+      "frames": 240000,
+      "pcm_sha256": "1a3ca1ee0fc09af78a9326a4adfb848cccfae629cb01a639687843ddb3e0a9d1",
+      "kind": "synthetic_beat_control",
+      "expected_bpm": 140
+    }
+  ],
+  "results": [
+    {
+      "name": "piano_48_v55_take0",
+      "kind": "real_cc0_note",
+      "yin": {
+        "voiced": 43,
+        "frames": 63,
+        "medianCents": 0.9045542064585292,
+        "within50Cents": 0.6825396825396826,
+        "medianFrameMs": 0.26624999999999943,
+        "p95FrameMs": 0.33395800000000975
+      },
+      "shippedYin": {
+        "identicalFrequencies": true,
+        "medianFrameMs": 0.26737500000000125,
+        "p95FrameMs": 0.3433330000000012
+      },
+      "jamloomCore": {
+        "voiced": 63,
+        "frames": 63,
+        "medianCents": 1.6299452080347943,
+        "within50Cents": 0.8888888888888888,
+        "totalMs": 4.976
+      }
+    },
+    {
+      "name": "piano_60_v55_take0",
+      "kind": "real_cc0_note",
+      "yin": {
+        "voiced": 63,
+        "frames": 63,
+        "medianCents": 3.0806342763840258,
+        "within50Cents": 1,
+        "medianFrameMs": 0.24187499999999318,
+        "p95FrameMs": 0.2757090000000062
+      },
+      "shippedYin": {
+        "identicalFrequencies": true,
+        "medianFrameMs": 0.2542079999999771,
+        "p95FrameMs": 0.2966250000000059
+      },
+      "jamloomCore": {
+        "voiced": 63,
+        "frames": 63,
+        "medianCents": 3.627157349503925,
+        "within50Cents": 1,
+        "totalMs": 4.89971
+      }
+    },
+    {
+      "name": "piano_72_v55_take0",
+      "kind": "real_cc0_note",
+      "yin": {
+        "voiced": 43,
+        "frames": 63,
+        "medianCents": 3.1741719128227506,
+        "within50Cents": 0.6825396825396826,
+        "medianFrameMs": 0.24041700000000787,
+        "p95FrameMs": 0.2624590000000069
+      },
+      "shippedYin": {
+        "identicalFrequencies": true,
+        "medianFrameMs": 0.24887499999999818,
+        "p95FrameMs": 0.2771250000000123
+      },
+      "jamloomCore": {
+        "voiced": 63,
+        "frames": 63,
+        "medianCents": 1198.9386935965224,
+        "within50Cents": 0,
+        "totalMs": 4.887790000000001
+      }
+    },
+    {
+      "name": "tone-110",
+      "kind": "synthetic_control",
+      "yin": {
+        "voiced": 44,
+        "frames": 44,
+        "medianCents": 0.015376576724438555,
+        "within50Cents": 1,
+        "medianFrameMs": 0.24324999999998909,
+        "p95FrameMs": 0.2720830000000092
+      },
+      "shippedYin": {
+        "identicalFrequencies": true,
+        "medianFrameMs": 0.2562080000000151,
+        "p95FrameMs": 0.2848329999999919
+      },
+      "jamloomCore": {
+        "voiced": 44,
+        "frames": 44,
+        "medianCents": 0,
+        "within50Cents": 1,
+        "totalMs": 3.48292
+      }
+    },
+    {
+      "name": "tone-220",
+      "kind": "synthetic_control",
+      "yin": {
+        "voiced": 44,
+        "frames": 44,
+        "medianCents": 0.11807446794325506,
+        "within50Cents": 1,
+        "medianFrameMs": 0.24658300000001532,
+        "p95FrameMs": 0.25987499999999386
+      },
+      "shippedYin": {
+        "identicalFrequencies": true,
+        "medianFrameMs": 0.25633300000001213,
+        "p95FrameMs": 0.2817499999999882
+      },
+      "jamloomCore": {
+        "voiced": 44,
+        "frames": 44,
+        "medianCents": 0.047214830229854135,
+        "within50Cents": 1,
+        "totalMs": 3.40487
+      }
+    },
+    {
+      "name": "tone-440",
+      "kind": "synthetic_control",
+      "yin": {
+        "voiced": 44,
+        "frames": 44,
+        "medianCents": 0.4360480896481215,
+        "within50Cents": 1,
+        "medianFrameMs": 0.24458300000000577,
+        "p95FrameMs": 0.26174999999997794
+      },
+      "shippedYin": {
+        "identicalFrequencies": true,
+        "medianFrameMs": 0.2543749999999818,
+        "p95FrameMs": 0.28129100000001017
+      },
+      "jamloomCore": {
+        "voiced": 44,
+        "frames": 44,
+        "medianCents": 0.2557315957206726,
+        "within50Cents": 1,
+        "totalMs": 3.40008
+      }
+    },
+    {
+      "name": "tone-523.251",
+      "kind": "synthetic_control",
+      "yin": {
+        "voiced": 44,
+        "frames": 44,
+        "medianCents": 0.3643218827310179,
+        "within50Cents": 1,
+        "medianFrameMs": 0.24670900000000984,
+        "p95FrameMs": 0.27087499999998954
+      },
+      "shippedYin": {
+        "identicalFrequencies": true,
+        "medianFrameMs": 0.25791699999996354,
+        "p95FrameMs": 0.2892500000000382
+      },
+      "jamloomCore": {
+        "voiced": 44,
+        "frames": 44,
+        "medianCents": 1200.1687473882146,
+        "within50Cents": 0,
+        "totalMs": 3.59113
+      }
+    },
+    {
+      "name": "tone-880",
+      "kind": "synthetic_control",
+      "yin": {
+        "voiced": 44,
+        "frames": 44,
+        "medianCents": 2.6302010667849194,
+        "within50Cents": 1,
+        "medianFrameMs": 0.24395800000002055,
+        "p95FrameMs": 0.2635829999999828
+      },
+      "shippedYin": {
+        "identicalFrequencies": true,
+        "medianFrameMs": 0.2545830000000251,
+        "p95FrameMs": 0.26829200000003084
+      },
+      "jamloomCore": {
+        "voiced": 44,
+        "frames": 44,
+        "medianCents": 1198.9497743178458,
+        "within50Cents": 0,
+        "totalMs": 3.38996
+      }
+    },
+    {
+      "name": "noise",
+      "kind": "unvoiced_control",
+      "yin": {
+        "voiced": 0,
+        "frames": 44,
+        "medianCents": null,
+        "within50Cents": null,
+        "medianFrameMs": 0.24712500000003956,
+        "p95FrameMs": 0.2612079999999537
+      },
+      "shippedYin": {
+        "identicalFrequencies": true,
+        "medianFrameMs": 0.25537499999995816,
+        "p95FrameMs": 0.2697079999999801
+      },
+      "jamloomCore": {
+        "voiced": 0,
+        "frames": 44,
+        "medianCents": null,
+        "within50Cents": null,
+        "totalMs": 3.40413
+      }
+    },
+    {
+      "name": "silence",
+      "kind": "unvoiced_control",
+      "yin": {
+        "voiced": 0,
+        "frames": 44,
+        "medianCents": null,
+        "within50Cents": null,
+        "medianFrameMs": 0.0012919999999780885,
+        "p95FrameMs": 0.0013749999999959073
+      },
+      "shippedYin": {
+        "identicalFrequencies": true,
+        "medianFrameMs": 0.009666999999978998,
+        "p95FrameMs": 0.009999999999990905
+      },
+      "jamloomCore": {
+        "voiced": 0,
+        "frames": 44,
+        "medianCents": null,
+        "within50Cents": null,
+        "totalMs": 0.236916
+      }
+    },
+    {
+      "name": "original-0",
+      "kind": "real_generated_music",
+      "expectedBpm": null,
+      "jamloom": {
+        "bpm": 114.3,
+        "confidence": 0.10414405638252416,
+        "ms": 214.16720799999996,
+        "waveBins": 96
+      },
+      "djkado": {
+        "bpm": 127.99,
+        "confidence": 0.44309434050248675,
+        "ms": 120.68162500000005,
+        "waveformMs": 6.973458000000051,
+        "waveBins": 6000,
+        "waveBytes": 24000
+      }
+    },
+    {
+      "name": "original-1",
+      "kind": "real_generated_music",
+      "expectedBpm": null,
+      "jamloom": {
+        "bpm": 127.7,
+        "confidence": 0.5210913180355031,
+        "ms": 126.27804200000003,
+        "waveBins": 96
+      },
+      "djkado": {
+        "bpm": 128,
+        "confidence": 0.6396806257258424,
+        "ms": 109.72008399999993,
+        "waveformMs": 3.460790999999972,
+        "waveBins": 6000,
+        "waveBytes": 24000
+      }
+    },
+    {
+      "name": "original-2",
+      "kind": "real_generated_music",
+      "expectedBpm": null,
+      "jamloom": {
+        "bpm": 127.7,
+        "confidence": 0.5206909725473072,
+        "ms": 92.16104200000007,
+        "waveBins": 96
+      },
+      "djkado": {
+        "bpm": 128,
+        "confidence": 0.5921822532150021,
+        "ms": 113.58875000000012,
+        "waveformMs": 3.2200000000000273,
+        "waveBins": 6000,
+        "waveBytes": 24000
+      }
+    },
+    {
+      "name": "beat-120",
+      "kind": "synthetic_beat_control",
+      "expectedBpm": 120,
+      "jamloom": {
+        "bpm": 120,
+        "confidence": 0.9914892069294687,
+        "ms": 27.187832999999955,
+        "waveBins": 96
+      },
+      "djkado": {
+        "bpm": 120,
+        "confidence": 0.6763775902946382,
+        "ms": 38.74912500000005,
+        "waveformMs": 1.2700419999998758,
+        "waveBins": 3000,
+        "waveBytes": 12000
+      }
+    },
+    {
+      "name": "beat-128",
+      "kind": "synthetic_beat_control",
+      "expectedBpm": 128,
+      "jamloom": {
+        "bpm": 127.7,
+        "confidence": 0.8743883481230086,
+        "ms": 26.75033399999984,
+        "waveBins": 96
+      },
+      "djkado": {
+        "bpm": 128,
+        "confidence": 0.6428027002820917,
+        "ms": 34.97108299999991,
+        "waveformMs": 1.2480000000000473,
+        "waveBins": 3000,
+        "waveBytes": 12000
+      }
+    },
+    {
+      "name": "beat-140",
+      "kind": "synthetic_beat_control",
+      "expectedBpm": 140,
+      "jamloom": {
+        "bpm": 139.5,
+        "confidence": 0.838735471788047,
+        "ms": 26.18337500000007,
+        "waveBins": 96
+      },
+      "djkado": {
+        "bpm": 140,
+        "confidence": 0.5862041668961764,
+        "ms": 35.50529099999994,
+        "waveformMs": 1.1235830000000533,
+        "waveBins": 3000,
+        "waveBytes": 12000
+      }
+    }
+  ],
+  "stretch": {
+    "ms": 6.47504200000003,
+    "seconds": 7.4075,
+    "rate": 8000,
+    "speed": 1.08,
+    "peak": 0.484704852104187,
+    "scope": "Same 8 kHz fixture as offline librosa; no perceptual quality ranking"
+  }
+}

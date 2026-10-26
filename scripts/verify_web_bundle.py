@@ -12,7 +12,7 @@ def verify():
     expected = {p.name for pattern in ('*.html', '*.css', '*.js') for p in (ROOT / 'apps/web').glob(pattern)}
     expected |= INSTALL_ASSETS | PRACTICE_ASSETS
     expected |= {'service-worker.js', 'engine/jamloom_web.mjs', 'engine/jamloom_web.wasm', 'engine/jamloom_live.wasm',
-                 'licenses/VSCO-2-CE-LICENSE.txt', 'licenses/VCSL-LICENSE.txt', 'licenses/BLACK-AND-GREEN-GUITARS-CC0.txt', 'licenses/EMSCRIPTEN-LICENSE.txt'}
+                 'licenses/VSCO-2-CE-LICENSE.txt', 'licenses/VCSL-LICENSE.txt', 'licenses/BLACK-AND-GREEN-GUITARS-CC0.txt', 'licenses/PREDICT-VOICE-QUALITY-MIT.txt', 'licenses/EMSCRIPTEN-LICENSE.txt'}
     actual = {str(p.relative_to(bundle)) for p in bundle.rglob('*') if p.is_file()}
     assert actual == expected, f'Unexpected or missing public files: {actual ^ expected}'
     assert not any(p.is_symlink() for p in bundle.rglob('*')), 'Bundle must not link outside itself'

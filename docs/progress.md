@@ -1,3 +1,15 @@
+## Open-source audit and first singing lesson — 2026-10-26
+
+**PASS scoped implementation and local benchmarks; PARTIAL qualification.** [Audit](OPEN_SOURCE_AUDIT.md), [license inventory](OPEN_SOURCE_LICENSES.md), [integration plan](INTEGRATION_PLAN.md). Pinned 21 repositories and six model cards; inspected 148 source records. Reused one dependency-free MIT YIN module, existing piano/WASM and Academy route patterns. No duplicate DJ engine, billing changes, paid compute or publication.
+
+- [x] Compare existing engine and upstream components; measure real CC0 piano pitch, generated-track tempo/waveform preparation and offline stretch. Preserve exact inputs and limitations.
+- [x] Build one original singing lesson: real piano, explicit mic, measured pitch, two-second hold, cleanup, guide and unlimited practice; include exact MIT notice in browser/offline bundles.
+- [x] Verify four singing unit tests, thirteen isolated Academy tests, eleven navigation/config tests, production build/typecheck/bundle audits and Chromium/WebKit controlled audio checks.
+- [x] Preserve existing ACE-Step integration and paid-run evidence; document code/weight/sample grants separately, blocked copyleft/unlicensed reuse and remaining benchmark scope.
+- [ ] Qualify real singers and physical microphone latency/room noise. Controlled browser PCM is not real singing evidence.
+- [ ] Run fresh house/tech-house/techno model comparison and corrected two-track hosted qualification after a new capped compute authorization; previous permits are consumed.
+- [ ] Obtain deployment approval and physical acceptance for Singing Academy; no native mobile lesson is released.
+
 ## Incremental archives and two-track startup — 2026-10-26
 
 **PASS local repair and retained-audio replay; FAIL fresh qualification; PASS cleanup.** The owner approved the $3 twelve-track run, which stopped on its first raw SCP transfer. One playable original is preserved; no fresh two-track startup occurred. The permit is consumed and no replacement was started. The follow-up local correction uses the authenticated renderer connection for raw audio. [Report and evidence](dj-flow-buffer.md).

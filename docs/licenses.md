@@ -1,5 +1,7 @@
 # Dependencies, licenses, and asset provenance
 
+Singing Academy (2026-10-26): one MIT YIN module adapted from predict-voice-quality, copyright 2026 Akhil Vydyula, with the exact notice in `assets/licenses/PREDICT-VOICE-QUALITY-MIT.txt` and browser/offline bundles. No new runtime package, model or recording. [Full audit inventory](OPEN_SOURCE_LICENSES.md).
+
 AI DJ base-model research (2026-10-26): `ACE-Step/acestep-v15-base` is pinned
 by [file hashes](../assets/manifests/dj-base-model.json). Its model card declares
 MIT and commercial-output permission; the configuration and model Python files

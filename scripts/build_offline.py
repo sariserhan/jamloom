@@ -15,7 +15,7 @@ def worker_source(bundle):
     names |= INSTALL_ASSETS | PRACTICE_ASSETS
     names |= {'engine/jamloom_web.mjs', 'engine/jamloom_web.wasm', 'engine/jamloom_live.wasm',
               'licenses/VSCO-2-CE-LICENSE.txt', 'licenses/VCSL-LICENSE.txt',
-              'licenses/BLACK-AND-GREEN-GUITARS-CC0.txt', 'licenses/EMSCRIPTEN-LICENSE.txt'}
+              'licenses/BLACK-AND-GREEN-GUITARS-CC0.txt', 'licenses/PREDICT-VOICE-QUALITY-MIT.txt', 'licenses/EMSCRIPTEN-LICENSE.txt'}
     actual = {p.relative_to(bundle).as_posix() for p in bundle.rglob('*') if p.is_file()}
     if actual - {'service-worker.js'} != names or any(p.is_symlink() for p in bundle.rglob('*')):
         raise ValueError('Offline bundle must contain only audited public assets, without symlinks')

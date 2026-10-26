@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "scope": "Synthetic microphone PCM through actual AudioWorklet and detector, not a physical microphone or human singing assessment",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "correct_measured_hz": "220 Hz · +0 cents",
+      "pianoRms": 0.0009190377665289135,
+      "delivery": {
+        "frames": 4096,
+        "observations": 1023,
+        "p95DeliveryMs": 3.9999999999995595,
+        "scope": "Audio-clock delivery estimate, not physical input latency"
+      },
+      "accessibilityViolations": 0,
+      "success": true,
+      "repeat_and_stop": true,
+      "mobile_overflow": false,
+      "errors": [],
+      "negative_cases": "PASS wrong pitch, silence, denial, late permission cancellation"
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "correct_measured_hz": "220 Hz · +0 cents",
+      "pianoRms": 0.04116177872882543,
+      "delivery": {
+        "frames": 4096,
+        "observations": 211,
+        "p95DeliveryMs": 1.3333333333336306,
+        "scope": "Audio-clock delivery estimate, not physical input latency"
+      },
+      "accessibilityViolations": 0,
+      "success": true,
+      "repeat_and_stop": true,
+      "mobile_overflow": false,
+      "errors": [],
+      "negative_cases": "NOT RUN"
+    }
+  ]
+}

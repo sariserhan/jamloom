@@ -1,0 +1,1186 @@
+[
+  {
+    "repository": "openai/whisper",
+    "commit": "86098128c0b4f24f0e2aa2994de830614b474227",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/openai/whisper/86098128c0b4f24f0e2aa2994de830614b474227/LICENSE",
+    "sha256": "b5d65a59060e68c4ff940e1eddfa6f94b2d68fdf58ed7f4dd57721c997e35e9d",
+    "bytes": 1063
+  },
+  {
+    "repository": "openai/whisper",
+    "commit": "86098128c0b4f24f0e2aa2994de830614b474227",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/openai/whisper/86098128c0b4f24f0e2aa2994de830614b474227/README.md",
+    "sha256": "38c180c2a8d8ba628a3e131ad42bf06c8a51bb681efb30fbe28d5a0f4b65f288",
+    "bytes": 8246
+  },
+  {
+    "repository": "openai/whisper",
+    "commit": "86098128c0b4f24f0e2aa2994de830614b474227",
+    "path": "pyproject.toml",
+    "url": "https://raw.githubusercontent.com/openai/whisper/86098128c0b4f24f0e2aa2994de830614b474227/pyproject.toml",
+    "sha256": "9c8111da3701070095304ea5e12b6301eddcca3bb65e491a982b102d6042b1c4",
+    "bytes": 1418
+  },
+  {
+    "repository": "openai/whisper",
+    "commit": "86098128c0b4f24f0e2aa2994de830614b474227",
+    "path": "requirements.txt",
+    "url": "https://raw.githubusercontent.com/openai/whisper/86098128c0b4f24f0e2aa2994de830614b474227/requirements.txt",
+    "sha256": "70063b7cde70331c8d9187bb459c27fbe87bf3335cebc3ee55675b9d91262599",
+    "bytes": 140
+  },
+  {
+    "repository": "openai/whisper",
+    "commit": "86098128c0b4f24f0e2aa2994de830614b474227",
+    "path": "whisper/transcribe.py",
+    "url": "https://raw.githubusercontent.com/openai/whisper/86098128c0b4f24f0e2aa2994de830614b474227/whisper/transcribe.py",
+    "sha256": "176f5ab30e961bec2a7872f5701a1f5bf3cbfc77946e50512f0f0cf00a1ceacf",
+    "bytes": 30375
+  },
+  {
+    "repository": "MTG/essentia.js",
+    "commit": "819c00e8f034dc709e3d330ed8ac9ed37dfdb767",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/MTG/essentia.js/819c00e8f034dc709e3d330ed8ac9ed37dfdb767/LICENSE",
+    "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+    "bytes": 34523
+  },
+  {
+    "repository": "MTG/essentia.js",
+    "commit": "819c00e8f034dc709e3d330ed8ac9ed37dfdb767",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/MTG/essentia.js/819c00e8f034dc709e3d330ed8ac9ed37dfdb767/README.md",
+    "sha256": "47f5e69992f7d1cc49a41847c0184ea7d5bf041426d74fac357c14ef741c3dd4",
+    "bytes": 3561
+  },
+  {
+    "repository": "MTG/essentia.js",
+    "commit": "819c00e8f034dc709e3d330ed8ac9ed37dfdb767",
+    "path": "package.json",
+    "url": "https://raw.githubusercontent.com/MTG/essentia.js/819c00e8f034dc709e3d330ed8ac9ed37dfdb767/package.json",
+    "sha256": "160521afa3b0d2a6be620b2cd9f77087bc16c86b6637b72333934865d2bf3363",
+    "bytes": 1487
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/LICENSE",
+    "sha256": "406db490d86bc8d2fe280caae665570780ee81d3595a0c4783905cd9fde306ce",
+    "bytes": 1088
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/README.md",
+    "sha256": "e079e6c2481f11d958aad338160b57c3d77fde0ac15217cfeccfc49b2a2d2a1a",
+    "bytes": 21280
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "package.json",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/package.json",
+    "sha256": "3093c4915b0c24ebcee4893cb119c6967a2f4861c539927259fe0456f88c4f1e",
+    "bytes": 3778
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/dsp/__tests__/bpm.test.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/dsp/__tests__/bpm.test.ts",
+    "sha256": "d10aa93f3af8543cd490f40f5b28f721831530b87017b24b183a0d52dc0a710c",
+    "bytes": 1605
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/dsp/beatgrid.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/dsp/beatgrid.ts",
+    "sha256": "ce77b7f053851c42e5ffe1407ce678405b925ea7098ba01f90a8803062f705fe",
+    "bytes": 3054
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/dsp/bpm.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/dsp/bpm.ts",
+    "sha256": "089c869eba05584511ef6b80a16a3c0c47812606b9d3b2ecc3389823b27bb466",
+    "bytes": 10101
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/dsp/key.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/dsp/key.ts",
+    "sha256": "dde427d7b21f9f77706733384bdc3016c8fa649dddef1bda66127c5efcc15550",
+    "bytes": 6374
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/dsp/waveform.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/dsp/waveform.ts",
+    "sha256": "4350d30ef8614431128674e610311b0de0ce97ac946bb5b1a8ed06dafa5f0274",
+    "bytes": 2130
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/engine/AudioEngine.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/engine/AudioEngine.ts",
+    "sha256": "d4ccec0a98619577685135f8081e0e1215b3b3fc4e7859d16215db8214267def",
+    "bytes": 8653
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/engine/Automix.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/engine/Automix.ts",
+    "sha256": "e8cdc142712490d3ac87935b9839dac9c303d291e7980a4a18d0007953251dfe",
+    "bytes": 12042
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/engine/ChannelStrip.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/engine/ChannelStrip.ts",
+    "sha256": "b5a8285002f4b4c8ab1e5530d3400775422b12feb4e2b0c14fff93c5caad541a",
+    "bytes": 5422
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/engine/Crossfader.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/engine/Crossfader.ts",
+    "sha256": "693340262dd52f5e7d9415ca5782a5c238ab24cc3b6633992b71d43a596011a0",
+    "bytes": 1206
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/engine/Deck.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/engine/Deck.ts",
+    "sha256": "f584a7a14f15eb26df482069fcf8d59c82a2efdbf40cd764f330d6734f846e00",
+    "bytes": 33587
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/worklets/deck-player-core.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/worklets/deck-player-core.ts",
+    "sha256": "f8ffdfdc1d2791d605861a979e3c786ac8c31dc879c16b4a95a2a9cbf6593041",
+    "bytes": 6297
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/components/waveform/waveformRenderer.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/components/waveform/waveformRenderer.ts",
+    "sha256": "3c63d06d06569428695853f5c21bae25d6356032c14a3db98a7d5ec0781ce43d",
+    "bytes": 5893
+  },
+  {
+    "repository": "Dream-High/RMVPE",
+    "commit": "a6db1cd7d26014aa739383367afd9bab57fc624c",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/Dream-High/RMVPE/a6db1cd7d26014aa739383367afd9bab57fc624c/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "bytes": 11357
+  },
+  {
+    "repository": "Dream-High/RMVPE",
+    "commit": "a6db1cd7d26014aa739383367afd9bab57fc624c",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/Dream-High/RMVPE/a6db1cd7d26014aa739383367afd9bab57fc624c/README.md",
+    "sha256": "c6f851959d2afd3f58c9a468eff12d380482882837acacfd9f7ddf2617d856b4",
+    "bytes": 163
+  },
+  {
+    "repository": "facebookresearch/demucs",
+    "commit": "e976d93ecc3865e5757426930257e200846a520a",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/facebookresearch/demucs/e976d93ecc3865e5757426930257e200846a520a/LICENSE",
+    "sha256": "cf9b17822d1fcd4ff32ccbe14183386fb3adf6f2ff92dc184130823f7fc28173",
+    "bytes": 1087
+  },
+  {
+    "repository": "facebookresearch/demucs",
+    "commit": "e976d93ecc3865e5757426930257e200846a520a",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/facebookresearch/demucs/e976d93ecc3865e5757426930257e200846a520a/README.md",
+    "sha256": "b2156a62247dae102c6ca3b000022d67f512743bd919523df320780120a329be",
+    "bytes": 18462
+  },
+  {
+    "repository": "facebookresearch/demucs",
+    "commit": "e976d93ecc3865e5757426930257e200846a520a",
+    "path": "demucs/pretrained.py",
+    "url": "https://raw.githubusercontent.com/facebookresearch/demucs/e976d93ecc3865e5757426930257e200846a520a/demucs/pretrained.py",
+    "sha256": "d8e67706c5723496230f4eda350742babc6adca829a444b16593771ffce17316",
+    "bytes": 3280
+  },
+  {
+    "repository": "facebookresearch/demucs",
+    "commit": "e976d93ecc3865e5757426930257e200846a520a",
+    "path": "demucs/separate.py",
+    "url": "https://raw.githubusercontent.com/facebookresearch/demucs/e976d93ecc3865e5757426930257e200846a520a/demucs/separate.py",
+    "sha256": "e47b1768eb3718367039f083c7cc7f428782be9a7e27c64f99f72651cbaa5436",
+    "bytes": 10050
+  },
+  {
+    "repository": "facebookresearch/demucs",
+    "commit": "e976d93ecc3865e5757426930257e200846a520a",
+    "path": "requirements.txt",
+    "url": "https://raw.githubusercontent.com/facebookresearch/demucs/e976d93ecc3865e5757426930257e200846a520a/requirements.txt",
+    "sha256": "01fac39875a4a2de0aff4c8820c85c24b43d85751e05e5cb3ca54419260b5744",
+    "bytes": 314
+  },
+  {
+    "repository": "facebookresearch/demucs",
+    "commit": "e976d93ecc3865e5757426930257e200846a520a",
+    "path": "setup.py",
+    "url": "https://raw.githubusercontent.com/facebookresearch/demucs/e976d93ecc3865e5757426930257e200846a520a/setup.py",
+    "sha256": "75220fdb2e85eac2e9e27c8c04ccee6bd0b9e5f5093075fbec1d5394f7a250ff",
+    "bytes": 2077
+  },
+  {
+    "repository": "katspaugh/wavesurfer.js",
+    "commit": "cdef4ac6c2744b3e376cae4e5a727e375137fb9d",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/katspaugh/wavesurfer.js/cdef4ac6c2744b3e376cae4e5a727e375137fb9d/LICENSE",
+    "sha256": "0fc992dc27cc34dde78bfeb024b4cadff6320f0dcbee2f1228efaeb533ca1364",
+    "bytes": 1531
+  },
+  {
+    "repository": "katspaugh/wavesurfer.js",
+    "commit": "cdef4ac6c2744b3e376cae4e5a727e375137fb9d",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/katspaugh/wavesurfer.js/cdef4ac6c2744b3e376cae4e5a727e375137fb9d/README.md",
+    "sha256": "00a51b40c28bb7f24b7787c10695e5ea26bd23930762f49ebf2c8f712f2fc872",
+    "bytes": 10524
+  },
+  {
+    "repository": "katspaugh/wavesurfer.js",
+    "commit": "cdef4ac6c2744b3e376cae4e5a727e375137fb9d",
+    "path": "package.json",
+    "url": "https://raw.githubusercontent.com/katspaugh/wavesurfer.js/cdef4ac6c2744b3e376cae4e5a727e375137fb9d/package.json",
+    "sha256": "4e65dc2a9cfa1c9b59945af29cf541bcdc0bf197def7110dadb5289afc603167",
+    "bytes": 3243
+  },
+  {
+    "repository": "katspaugh/wavesurfer.js",
+    "commit": "cdef4ac6c2744b3e376cae4e5a727e375137fb9d",
+    "path": "src/decoder.ts",
+    "url": "https://raw.githubusercontent.com/katspaugh/wavesurfer.js/cdef4ac6c2744b3e376cae4e5a727e375137fb9d/src/decoder.ts",
+    "sha256": "739fb8a88be4b0136161328133fe7b552dacc0365917d0fd8748b8a2dc0b057c",
+    "bytes": 3727
+  },
+  {
+    "repository": "katspaugh/wavesurfer.js",
+    "commit": "cdef4ac6c2744b3e376cae4e5a727e375137fb9d",
+    "path": "src/player.ts",
+    "url": "https://raw.githubusercontent.com/katspaugh/wavesurfer.js/cdef4ac6c2744b3e376cae4e5a727e375137fb9d/src/player.ts",
+    "sha256": "908566bd16a817df87e072a285706b713d8cacac1061326bfddf10fb373284cd",
+    "bytes": 12233
+  },
+  {
+    "repository": "katspaugh/wavesurfer.js",
+    "commit": "cdef4ac6c2744b3e376cae4e5a727e375137fb9d",
+    "path": "src/renderer.ts",
+    "url": "https://raw.githubusercontent.com/katspaugh/wavesurfer.js/cdef4ac6c2744b3e376cae4e5a727e375137fb9d/src/renderer.ts",
+    "sha256": "ca4c724a3e95dacaf8a3a818e9cbb828d98141973268ee7bc15fac11a16d8f07",
+    "bytes": 37662
+  },
+  {
+    "repository": "katspaugh/wavesurfer.js",
+    "commit": "cdef4ac6c2744b3e376cae4e5a727e375137fb9d",
+    "path": "src/wavesurfer.ts",
+    "url": "https://raw.githubusercontent.com/katspaugh/wavesurfer.js/cdef4ac6c2744b3e376cae4e5a727e375137fb9d/src/wavesurfer.ts",
+    "sha256": "067e0c49e8e0bce46e0020c63392c3befdcca229a6f46b4f1d77b35150d9e343",
+    "bytes": 44709
+  },
+  {
+    "repository": "Tonejs/Tone.js",
+    "commit": "445b94d4c0ade2d5c2f60c60f3e48749eb5322d9",
+    "path": "LICENSE.md",
+    "url": "https://raw.githubusercontent.com/Tonejs/Tone.js/445b94d4c0ade2d5c2f60c60f3e48749eb5322d9/LICENSE.md",
+    "sha256": "c2f9e2f9fd21639e8f8976e56b7df01d6efcc3b003dfd43ca59d4b10616efce7",
+    "bytes": 1072
+  },
+  {
+    "repository": "Tonejs/Tone.js",
+    "commit": "445b94d4c0ade2d5c2f60c60f3e48749eb5322d9",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/Tonejs/Tone.js/445b94d4c0ade2d5c2f60c60f3e48749eb5322d9/README.md",
+    "sha256": "e5d6ca90282d44617b8411a312243566d82ef0fba2e8f7fb3d5f23fe3ae708f4",
+    "bytes": 11321
+  },
+  {
+    "repository": "Tonejs/Tone.js",
+    "commit": "445b94d4c0ade2d5c2f60c60f3e48749eb5322d9",
+    "path": "Tone/component/filter/Filter.ts",
+    "url": "https://raw.githubusercontent.com/Tonejs/Tone.js/445b94d4c0ade2d5c2f60c60f3e48749eb5322d9/Tone/component/filter/Filter.ts",
+    "sha256": "dee187d1cf32ab734e35438e3444fe124119f26527856e4a663b25910e399375",
+    "bytes": 6057
+  },
+  {
+    "repository": "Tonejs/Tone.js",
+    "commit": "445b94d4c0ade2d5c2f60c60f3e48749eb5322d9",
+    "path": "Tone/core/clock/Transport.ts",
+    "url": "https://raw.githubusercontent.com/Tonejs/Tone.js/445b94d4c0ade2d5c2f60c60f3e48749eb5322d9/Tone/core/clock/Transport.ts",
+    "sha256": "89e118fc1331f33b5acbd8863f79b853610596d997f2f418addb3da172107d53",
+    "bytes": 23107
+  },
+  {
+    "repository": "Tonejs/Tone.js",
+    "commit": "445b94d4c0ade2d5c2f60c60f3e48749eb5322d9",
+    "path": "Tone/core/context/Context.ts",
+    "url": "https://raw.githubusercontent.com/Tonejs/Tone.js/445b94d4c0ade2d5c2f60c60f3e48749eb5322d9/Tone/core/context/Context.ts",
+    "sha256": "f37341f73eaf5ec23d344d580fe266dfbda79b79150e931a17e4cd95a883eea3",
+    "bytes": 17722
+  },
+  {
+    "repository": "Tonejs/Tone.js",
+    "commit": "445b94d4c0ade2d5c2f60c60f3e48749eb5322d9",
+    "path": "Tone/source/buffer/Player.ts",
+    "url": "https://raw.githubusercontent.com/Tonejs/Tone.js/445b94d4c0ade2d5c2f60c60f3e48749eb5322d9/Tone/source/buffer/Player.ts",
+    "sha256": "aca93b5cbd23b86f3a0aacc0e33cd097cfec3cc4150aa62828733626974854fd",
+    "bytes": 15930
+  },
+  {
+    "repository": "Tonejs/Tone.js",
+    "commit": "445b94d4c0ade2d5c2f60c60f3e48749eb5322d9",
+    "path": "package.json",
+    "url": "https://raw.githubusercontent.com/Tonejs/Tone.js/445b94d4c0ade2d5c2f60c60f3e48749eb5322d9/package.json",
+    "sha256": "413367109b2b25c9c151a148fa251a17259aa3783d5c90acaee5967e77a264ed",
+    "bytes": 4026
+  },
+  {
+    "repository": "NVIDIA/BigVGAN",
+    "commit": "7d2b454564a6c7d014227f635b7423881f14bdac",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/NVIDIA/BigVGAN/7d2b454564a6c7d014227f635b7423881f14bdac/LICENSE",
+    "sha256": "5c7f573db5f807a9adc2a755c4901e203ea067f73c7a20fa6b703da7e77d7b35",
+    "bytes": 1076
+  },
+  {
+    "repository": "NVIDIA/BigVGAN",
+    "commit": "7d2b454564a6c7d014227f635b7423881f14bdac",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/NVIDIA/BigVGAN/7d2b454564a6c7d014227f635b7423881f14bdac/README.md",
+    "sha256": "4af6c6b58d3c11a383aea5020689694d7668fdc76c6d2d6b07dde8dc068c3eff",
+    "bytes": 17400
+  },
+  {
+    "repository": "NVIDIA/BigVGAN",
+    "commit": "7d2b454564a6c7d014227f635b7423881f14bdac",
+    "path": "bigvgan.py",
+    "url": "https://raw.githubusercontent.com/NVIDIA/BigVGAN/7d2b454564a6c7d014227f635b7423881f14bdac/bigvgan.py",
+    "sha256": "dc0a39917d3a6f720afd888afe585ecbb72211e808d692deb4e5d85608062acb",
+    "bytes": 17500
+  },
+  {
+    "repository": "NVIDIA/BigVGAN",
+    "commit": "7d2b454564a6c7d014227f635b7423881f14bdac",
+    "path": "requirements.txt",
+    "url": "https://raw.githubusercontent.com/NVIDIA/BigVGAN/7d2b454564a6c7d014227f635b7423881f14bdac/requirements.txt",
+    "sha256": "4ac9706d934618107ab267c6d4a049bdc8a57c058757d8d7eab9af83189fe56e",
+    "bytes": 122
+  },
+  {
+    "repository": "breakfastquay/rubberband",
+    "commit": "e4296ac80b1170018a110bc326fd0d45a0eb27d6",
+    "path": "COPYING",
+    "url": "https://raw.githubusercontent.com/breakfastquay/rubberband/e4296ac80b1170018a110bc326fd0d45a0eb27d6/COPYING",
+    "sha256": "cedd4c1885d75991bf1077cc6e33359103cf04fbc996f20d30ab043d5fc5fcc5",
+    "bytes": 30260
+  },
+  {
+    "repository": "breakfastquay/rubberband",
+    "commit": "e4296ac80b1170018a110bc326fd0d45a0eb27d6",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/breakfastquay/rubberband/e4296ac80b1170018a110bc326fd0d45a0eb27d6/README.md",
+    "sha256": "e7a6fc0fd3177e3a166a67e1cb834f6bfdec74c8d8928c71543367558d104ad6",
+    "bytes": 8288
+  },
+  {
+    "repository": "breakfastquay/rubberband",
+    "commit": "e4296ac80b1170018a110bc326fd0d45a0eb27d6",
+    "path": "meson.build",
+    "url": "https://raw.githubusercontent.com/breakfastquay/rubberband/e4296ac80b1170018a110bc326fd0d45a0eb27d6/meson.build",
+    "sha256": "f032ad75a1b989a119ff582239b1319ad8ac1914cf60523f21c77b9d02af7b5b",
+    "bytes": 28372
+  },
+  {
+    "repository": "breakfastquay/rubberband",
+    "commit": "e4296ac80b1170018a110bc326fd0d45a0eb27d6",
+    "path": "rubberband/RubberBandStretcher.h",
+    "url": "https://raw.githubusercontent.com/breakfastquay/rubberband/e4296ac80b1170018a110bc326fd0d45a0eb27d6/rubberband/RubberBandStretcher.h",
+    "sha256": "deaf2147bd57a72aeec876f8dd76a6e282282d8dd1f52d8aa01f93fa70b5ed44",
+    "bytes": 48566
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "path": "CMakeLists.txt",
+    "url": "https://raw.githubusercontent.com/mixxxdj/mixxx/ee17a272664ee9ad0aa978fd499c49802af90a99/CMakeLists.txt",
+    "sha256": "c27d58791319d2e8f0894ab7400b3ab6a47cb5d144e90a1584602fd675282ccd",
+    "bytes": 192285
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "path": "COPYING",
+    "url": "https://raw.githubusercontent.com/mixxxdj/mixxx/ee17a272664ee9ad0aa978fd499c49802af90a99/COPYING",
+    "sha256": "98adb836b75addd92719b0b90ae3200c4b2e2074508135d9057ee0ca4ca9faa5",
+    "bytes": 210
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/mixxxdj/mixxx/ee17a272664ee9ad0aa978fd499c49802af90a99/LICENSE",
+    "sha256": "c10911954286426c2335e8ccddb5496b75a89e797cfe4ada9f3e64d744759a0c",
+    "bytes": 177985
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/mixxxdj/mixxx/ee17a272664ee9ad0aa978fd499c49802af90a99/README.md",
+    "sha256": "9f5a87b9316c5e25c284c8629354525977b1e9342efb15133f453c3e0d162ee3",
+    "bytes": 3443
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "path": "pyproject.toml",
+    "url": "https://raw.githubusercontent.com/mixxxdj/mixxx/ee17a272664ee9ad0aa978fd499c49802af90a99/pyproject.toml",
+    "sha256": "203686876adff9826775a99d62fc344af1679dac98b347765e0e2074a93adc43",
+    "bytes": 30
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "path": "src/analyzer/analyzerbeats.cpp",
+    "url": "https://raw.githubusercontent.com/mixxxdj/mixxx/ee17a272664ee9ad0aa978fd499c49802af90a99/src/analyzer/analyzerbeats.cpp",
+    "sha256": "37d3a31e1a4bb8a7fce3af61841151bafea2ccde1f3e9f0957ea1f1ea4fd1e96",
+    "bytes": 10907
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "path": "src/engine/enginebuffer.cpp",
+    "url": "https://raw.githubusercontent.com/mixxxdj/mixxx/ee17a272664ee9ad0aa978fd499c49802af90a99/src/engine/enginebuffer.cpp",
+    "sha256": "c6edbf81a0e178f2a0f84b51edcefc15667b48be84f7a12bfca1d85b4a6c7d4e",
+    "bytes": 62720
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "path": "src/engine/sync/enginesync.cpp",
+    "url": "https://raw.githubusercontent.com/mixxxdj/mixxx/ee17a272664ee9ad0aa978fd499c49802af90a99/src/engine/sync/enginesync.cpp",
+    "sha256": "1682246dc826df69685a6365d750a3eb2bbe560d516a740166315010577dec89",
+    "bytes": 27127
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "path": "src/library/autodj/autodjprocessor.cpp",
+    "url": "https://raw.githubusercontent.com/mixxxdj/mixxx/ee17a272664ee9ad0aa978fd499c49802af90a99/src/library/autodj/autodjprocessor.cpp",
+    "sha256": "6987430fa5dc2120adc83cda08f1d783dd0d056f71db6f7999e64f53b8cb6370",
+    "bytes": 78893
+  },
+  {
+    "repository": "mixxxdj/mixxx",
+    "commit": "ee17a272664ee9ad0aa978fd499c49802af90a99",
+    "path": "src/test/enginesynctest.cpp",
+    "url": "https://raw.githubusercontent.com/mixxxdj/mixxx/ee17a272664ee9ad0aa978fd499c49802af90a99/src/test/enginesynctest.cpp",
+    "sha256": "7969669d6ab5bbe82fb7595c931b4ab0daaf0c494d2fee8516f425be54101179",
+    "bytes": 136773
+  },
+  {
+    "repository": "akhilvydyula/predict-voice-quality",
+    "commit": "78e30f766efde6c8c66d9e5a47441b44312d216c",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/akhilvydyula/predict-voice-quality/78e30f766efde6c8c66d9e5a47441b44312d216c/LICENSE",
+    "sha256": "62d5392547bcbd41e9864b0b5def2d4f28168c3cd34306a4f26188576057b5ad",
+    "bytes": 1070
+  },
+  {
+    "repository": "akhilvydyula/predict-voice-quality",
+    "commit": "78e30f766efde6c8c66d9e5a47441b44312d216c",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/akhilvydyula/predict-voice-quality/78e30f766efde6c8c66d9e5a47441b44312d216c/README.md",
+    "sha256": "2030af4a4aa4cd92b9b87855fb028f993df2e2e5cdaf7c29d17b4087e5e425c9",
+    "bytes": 6635
+  },
+  {
+    "repository": "akhilvydyula/predict-voice-quality",
+    "commit": "78e30f766efde6c8c66d9e5a47441b44312d216c",
+    "path": "THIRD_PARTY_NOTICES.md",
+    "url": "https://raw.githubusercontent.com/akhilvydyula/predict-voice-quality/78e30f766efde6c8c66d9e5a47441b44312d216c/THIRD_PARTY_NOTICES.md",
+    "sha256": "f7b0f1c6eeae137379f510d7b51837127ce6ab68cc6164676c1e5b42ddd8d476",
+    "bytes": 2357
+  },
+  {
+    "repository": "akhilvydyula/predict-voice-quality",
+    "commit": "78e30f766efde6c8c66d9e5a47441b44312d216c",
+    "path": "docs/OPEN_SOURCE_INVENTORY.md",
+    "url": "https://raw.githubusercontent.com/akhilvydyula/predict-voice-quality/78e30f766efde6c8c66d9e5a47441b44312d216c/docs/OPEN_SOURCE_INVENTORY.md",
+    "sha256": "16bc7c080be2b2ea0fcc4520200c5ab6477a268c73be7618ed105c7717515432",
+    "bytes": 6550
+  },
+  {
+    "repository": "akhilvydyula/predict-voice-quality",
+    "commit": "78e30f766efde6c8c66d9e5a47441b44312d216c",
+    "path": "package.json",
+    "url": "https://raw.githubusercontent.com/akhilvydyula/predict-voice-quality/78e30f766efde6c8c66d9e5a47441b44312d216c/package.json",
+    "sha256": "deb52d26c7c944fb3b103c0415108c7deee424a3bffc0e36e9ca02d03f2ce2e1",
+    "bytes": 2506
+  },
+  {
+    "repository": "akhilvydyula/predict-voice-quality",
+    "commit": "78e30f766efde6c8c66d9e5a47441b44312d216c",
+    "path": "src/audio/voiceQuality.ts",
+    "url": "https://raw.githubusercontent.com/akhilvydyula/predict-voice-quality/78e30f766efde6c8c66d9e5a47441b44312d216c/src/audio/voiceQuality.ts",
+    "sha256": "67799b5e8518acab3582688e7dfe11561557c7c492e5a7f4c5480953e8bc0f02",
+    "bytes": 15942
+  },
+  {
+    "repository": "akhilvydyula/predict-voice-quality",
+    "commit": "78e30f766efde6c8c66d9e5a47441b44312d216c",
+    "path": "src/audio/webMicrophoneStream.ts",
+    "url": "https://raw.githubusercontent.com/akhilvydyula/predict-voice-quality/78e30f766efde6c8c66d9e5a47441b44312d216c/src/audio/webMicrophoneStream.ts",
+    "sha256": "141b06f46472cc4042f505234ee91585b62897c93f4bde4e255f7c0abc748073",
+    "bytes": 2032
+  },
+  {
+    "repository": "akhilvydyula/predict-voice-quality",
+    "commit": "78e30f766efde6c8c66d9e5a47441b44312d216c",
+    "path": "src/audio/yinPitch.ts",
+    "url": "https://raw.githubusercontent.com/akhilvydyula/predict-voice-quality/78e30f766efde6c8c66d9e5a47441b44312d216c/src/audio/yinPitch.ts",
+    "sha256": "e33f6bd852ee5832337508596b14c1323581485325bc5d11a480a2a0a693870c",
+    "bytes": 2837
+  },
+  {
+    "repository": "pawelgawliczek/intonavio",
+    "commit": "f3fc917a6f989e707817b9d06743b330c194a70a",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/pawelgawliczek/intonavio/f3fc917a6f989e707817b9d06743b330c194a70a/LICENSE",
+    "sha256": "8c5ae30c43ea012c6d5d91a72fb430654624c303bd9002fe61fc1329996bec7f",
+    "bytes": 1072
+  },
+  {
+    "repository": "pawelgawliczek/intonavio",
+    "commit": "f3fc917a6f989e707817b9d06743b330c194a70a",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/pawelgawliczek/intonavio/f3fc917a6f989e707817b9d06743b330c194a70a/README.md",
+    "sha256": "cfd37a0cf589f6569782e16a7bbfcc55613c2ecb65570383872c03eec9bc4fdc",
+    "bytes": 8603
+  },
+  {
+    "repository": "pawelgawliczek/intonavio",
+    "commit": "f3fc917a6f989e707817b9d06743b330c194a70a",
+    "path": "apps/ios/Intonavio/Audio/Pitch/ScoringEngine.swift",
+    "url": "https://raw.githubusercontent.com/pawelgawliczek/intonavio/f3fc917a6f989e707817b9d06743b330c194a70a/apps/ios/Intonavio/Audio/Pitch/ScoringEngine.swift",
+    "sha256": "ff53bfb4ebb2ad0b29dd66920a0c1949f141ddb9adc56e1110b4bc452be6f3ce",
+    "bytes": 4773
+  },
+  {
+    "repository": "pawelgawliczek/intonavio",
+    "commit": "f3fc917a6f989e707817b9d06743b330c194a70a",
+    "path": "apps/ios/Intonavio/Audio/Pitch/YINDetector.swift",
+    "url": "https://raw.githubusercontent.com/pawelgawliczek/intonavio/f3fc917a6f989e707817b9d06743b330c194a70a/apps/ios/Intonavio/Audio/Pitch/YINDetector.swift",
+    "sha256": "cb6fdbb0990a13b5928cdbc76204cd8e0d563211bfb877e3a0ade423398c4312",
+    "bytes": 4340
+  },
+  {
+    "repository": "pawelgawliczek/intonavio",
+    "commit": "f3fc917a6f989e707817b9d06743b330c194a70a",
+    "path": "apps/web/package.json",
+    "url": "https://raw.githubusercontent.com/pawelgawliczek/intonavio/f3fc917a6f989e707817b9d06743b330c194a70a/apps/web/package.json",
+    "sha256": "472298eb1255a6821400b636c67321c5009d0c4b532313afb1fdbe75ffda90cb",
+    "bytes": 816
+  },
+  {
+    "repository": "pawelgawliczek/intonavio",
+    "commit": "f3fc917a6f989e707817b9d06743b330c194a70a",
+    "path": "docs/06-realtime-pitch.md",
+    "url": "https://raw.githubusercontent.com/pawelgawliczek/intonavio/f3fc917a6f989e707817b9d06743b330c194a70a/docs/06-realtime-pitch.md",
+    "sha256": "808e1007c5ee6c99ce9660bfcb70eb396dfe549e44345c80765658e43faa5f6a",
+    "bytes": 23381
+  },
+  {
+    "repository": "pawelgawliczek/intonavio",
+    "commit": "f3fc917a6f989e707817b9d06743b330c194a70a",
+    "path": "docs/yin-comparison-results.md",
+    "url": "https://raw.githubusercontent.com/pawelgawliczek/intonavio/f3fc917a6f989e707817b9d06743b330c194a70a/docs/yin-comparison-results.md",
+    "sha256": "8a1aaf87d4fd5e034d39c873fbf92654901f017fa4ba2dc5684afc64cbe27cb5",
+    "bytes": 16171
+  },
+  {
+    "repository": "pawelgawliczek/intonavio",
+    "commit": "f3fc917a6f989e707817b9d06743b330c194a70a",
+    "path": "package.json",
+    "url": "https://raw.githubusercontent.com/pawelgawliczek/intonavio/f3fc917a6f989e707817b9d06743b330c194a70a/package.json",
+    "sha256": "883b4bc502292223d1d04aed406c096e5bdb2c8d88a28486d2b57551ff15da88",
+    "bytes": 961
+  },
+  {
+    "repository": "pawelgawliczek/intonavio",
+    "commit": "f3fc917a6f989e707817b9d06743b330c194a70a",
+    "path": "workers/pitch-analyzer/requirements.txt",
+    "url": "https://raw.githubusercontent.com/pawelgawliczek/intonavio/f3fc917a6f989e707817b9d06743b330c194a70a/workers/pitch-analyzer/requirements.txt",
+    "sha256": "492957c8a114a41cc3326572da9242b72b0ba5967b42daa60dfbb58b4d677d3d",
+    "bytes": 318
+  },
+  {
+    "repository": "librosa/librosa",
+    "commit": "4ffed287f9044654cc4a1a7393f895cd716a0a5d",
+    "path": "LICENSE.md",
+    "url": "https://raw.githubusercontent.com/librosa/librosa/4ffed287f9044654cc4a1a7393f895cd716a0a5d/LICENSE.md",
+    "sha256": "79aa4a8086d51ac89f9a7322f546670cdef73e758c67f04587b7af8afafd6df8",
+    "bytes": 766
+  },
+  {
+    "repository": "librosa/librosa",
+    "commit": "4ffed287f9044654cc4a1a7393f895cd716a0a5d",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/librosa/librosa/4ffed287f9044654cc4a1a7393f895cd716a0a5d/README.md",
+    "sha256": "5887811bcf8720e315cebfcc7ebe62637cc284bf005077dc1a0340a8b97e3b36",
+    "bytes": 3905
+  },
+  {
+    "repository": "librosa/librosa",
+    "commit": "4ffed287f9044654cc4a1a7393f895cd716a0a5d",
+    "path": "librosa/beat.py",
+    "url": "https://raw.githubusercontent.com/librosa/librosa/4ffed287f9044654cc4a1a7393f895cd716a0a5d/librosa/beat.py",
+    "sha256": "f1f972e87b187d4c02598c28975c7e724528e23011202567ac38f3edf6de088b",
+    "bytes": 26983
+  },
+  {
+    "repository": "librosa/librosa",
+    "commit": "4ffed287f9044654cc4a1a7393f895cd716a0a5d",
+    "path": "librosa/core/pitch.py",
+    "url": "https://raw.githubusercontent.com/librosa/librosa/4ffed287f9044654cc4a1a7393f895cd716a0a5d/librosa/core/pitch.py",
+    "sha256": "63fbe3b6a45198731a4be7ef4fa5876770fbf7a3c5815853462d340e69caf593",
+    "bytes": 33979
+  },
+  {
+    "repository": "librosa/librosa",
+    "commit": "4ffed287f9044654cc4a1a7393f895cd716a0a5d",
+    "path": "librosa/effects.py",
+    "url": "https://raw.githubusercontent.com/librosa/librosa/4ffed287f9044654cc4a1a7393f895cd716a0a5d/librosa/effects.py",
+    "sha256": "d8b7b8146c3405f73cf0c519fe6e916f2b6096eb0b7c2699922466b6aa86f0ac",
+    "bytes": 34798
+  },
+  {
+    "repository": "librosa/librosa",
+    "commit": "4ffed287f9044654cc4a1a7393f895cd716a0a5d",
+    "path": "pyproject.toml",
+    "url": "https://raw.githubusercontent.com/librosa/librosa/4ffed287f9044654cc4a1a7393f895cd716a0a5d/pyproject.toml",
+    "sha256": "ecfe5644689ee6af2d79b4f207ec1214397342aa8c30907082eadcc6dd8b760d",
+    "bytes": 3274
+  },
+  {
+    "repository": "librosa/librosa",
+    "commit": "4ffed287f9044654cc4a1a7393f895cd716a0a5d",
+    "path": "setup.py",
+    "url": "https://raw.githubusercontent.com/librosa/librosa/4ffed287f9044654cc4a1a7393f895cd716a0a5d/setup.py",
+    "sha256": "4e349cc20a81ab315f25a3c3ea771ef9c4cd60167894852ab059a31c12858718",
+    "bytes": 69
+  },
+  {
+    "repository": "dtomkatsu/singing-trainer",
+    "commit": "54f65ef22227e13cebfc8296a936e2d22748f447",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/dtomkatsu/singing-trainer/54f65ef22227e13cebfc8296a936e2d22748f447/README.md",
+    "sha256": "adc6021dddb0bb464689f8f1a60f1c16b2f34919b06f2e0887211051fba1f0a2",
+    "bytes": 11082
+  },
+  {
+    "repository": "dtomkatsu/singing-trainer",
+    "commit": "54f65ef22227e13cebfc8296a936e2d22748f447",
+    "path": "js/dsp.js",
+    "url": "https://raw.githubusercontent.com/dtomkatsu/singing-trainer/54f65ef22227e13cebfc8296a936e2d22748f447/js/dsp.js",
+    "sha256": "f0f14d92bdd92885af0613689641b7a3574f984ba5e6838bb5ac4d0880ac2451",
+    "bytes": 60327
+  },
+  {
+    "repository": "dtomkatsu/singing-trainer",
+    "commit": "54f65ef22227e13cebfc8296a936e2d22748f447",
+    "path": "js/mic.js",
+    "url": "https://raw.githubusercontent.com/dtomkatsu/singing-trainer/54f65ef22227e13cebfc8296a936e2d22748f447/js/mic.js",
+    "sha256": "ac7508ab15979032fb8f7f4a254ad571a5f008758edb1c4f295353038669d907",
+    "bytes": 22283
+  },
+  {
+    "repository": "dtomkatsu/singing-trainer",
+    "commit": "54f65ef22227e13cebfc8296a936e2d22748f447",
+    "path": "js/practice.js",
+    "url": "https://raw.githubusercontent.com/dtomkatsu/singing-trainer/54f65ef22227e13cebfc8296a936e2d22748f447/js/practice.js",
+    "sha256": "222da3ca1d5b9d9adf4bba6f557d324e794c48f44805100ae63682d451818cb6",
+    "bytes": 12733
+  },
+  {
+    "repository": "dtomkatsu/singing-trainer",
+    "commit": "54f65ef22227e13cebfc8296a936e2d22748f447",
+    "path": "tests/dsp.test.js",
+    "url": "https://raw.githubusercontent.com/dtomkatsu/singing-trainer/54f65ef22227e13cebfc8296a936e2d22748f447/tests/dsp.test.js",
+    "sha256": "72e9461696dda23fa7d2a8750b5dd662585a1b698359676f064efa7f00db03b9",
+    "bytes": 24381
+  },
+  {
+    "repository": "Plachtaa/seed-vc",
+    "commit": "51383efd921027683c89e5348211d93ff12ac2a8",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/Plachtaa/seed-vc/51383efd921027683c89e5348211d93ff12ac2a8/LICENSE",
+    "sha256": "8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b",
+    "bytes": 35148
+  },
+  {
+    "repository": "Plachtaa/seed-vc",
+    "commit": "51383efd921027683c89e5348211d93ff12ac2a8",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/Plachtaa/seed-vc/51383efd921027683c89e5348211d93ff12ac2a8/README.md",
+    "sha256": "293507df928d542341a69b9c93e3b7344f7cc7abe73ac4b2c6395d86527a1ce4",
+    "bytes": 21038
+  },
+  {
+    "repository": "Plachtaa/seed-vc",
+    "commit": "51383efd921027683c89e5348211d93ff12ac2a8",
+    "path": "inference.py",
+    "url": "https://raw.githubusercontent.com/Plachtaa/seed-vc/51383efd921027683c89e5348211d93ff12ac2a8/inference.py",
+    "sha256": "58f97976804a8eb8bb4d33e73beeab792f86a5ab2ca83c1319a23da1e71e80a6",
+    "bytes": 19553
+  },
+  {
+    "repository": "Plachtaa/seed-vc",
+    "commit": "51383efd921027683c89e5348211d93ff12ac2a8",
+    "path": "requirements.txt",
+    "url": "https://raw.githubusercontent.com/Plachtaa/seed-vc/51383efd921027683c89e5348211d93ff12ac2a8/requirements.txt",
+    "sha256": "2669266b0c07841b283f1d837e0b8628e7902972de25169f8d821cbee1829ed2",
+    "bytes": 613
+  },
+  {
+    "repository": "SmashingGoodTime/vocal-trainer",
+    "commit": "13ac75122aa2d687c7f4da0fdcc68617ac3313bf",
+    "path": "CMakeLists.txt",
+    "url": "https://raw.githubusercontent.com/SmashingGoodTime/vocal-trainer/13ac75122aa2d687c7f4da0fdcc68617ac3313bf/CMakeLists.txt",
+    "sha256": "b5297f49b2a7a33168a1985b92718406182311004205fa53013d628ba4ab7443",
+    "bytes": 12469
+  },
+  {
+    "repository": "SmashingGoodTime/vocal-trainer",
+    "commit": "13ac75122aa2d687c7f4da0fdcc68617ac3313bf",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/SmashingGoodTime/vocal-trainer/13ac75122aa2d687c7f4da0fdcc68617ac3313bf/LICENSE",
+    "sha256": "d594755d4ebd52eb3029709537e604dcf9bb8d86b5648cf270e390f1c41527b6",
+    "bytes": 1073
+  },
+  {
+    "repository": "SmashingGoodTime/vocal-trainer",
+    "commit": "13ac75122aa2d687c7f4da0fdcc68617ac3313bf",
+    "path": "LICENSING.md",
+    "url": "https://raw.githubusercontent.com/SmashingGoodTime/vocal-trainer/13ac75122aa2d687c7f4da0fdcc68617ac3313bf/LICENSING.md",
+    "sha256": "5c0bb841a81501396db6ecb7efab936e16f0bb904f7a9e06072a298aedec28b9",
+    "bytes": 7467
+  },
+  {
+    "repository": "SmashingGoodTime/vocal-trainer",
+    "commit": "13ac75122aa2d687c7f4da0fdcc68617ac3313bf",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/SmashingGoodTime/vocal-trainer/13ac75122aa2d687c7f4da0fdcc68617ac3313bf/README.md",
+    "sha256": "b03ad78c4aeec9d3604b714f7e27c2fc1a7b90f5897209a478f37596a99b6573",
+    "bytes": 31507
+  },
+  {
+    "repository": "SmashingGoodTime/vocal-trainer",
+    "commit": "13ac75122aa2d687c7f4da0fdcc68617ac3313bf",
+    "path": "THIRD-PARTY.md",
+    "url": "https://raw.githubusercontent.com/SmashingGoodTime/vocal-trainer/13ac75122aa2d687c7f4da0fdcc68617ac3313bf/THIRD-PARTY.md",
+    "sha256": "ce530a6946f6606be1d2f37e8ae47cbd7e37106ebfea2b84ca1c623ce4ff72e9",
+    "bytes": 4350
+  },
+  {
+    "repository": "SmashingGoodTime/vocal-trainer",
+    "commit": "13ac75122aa2d687c7f4da0fdcc68617ac3313bf",
+    "path": "python/pyproject.toml",
+    "url": "https://raw.githubusercontent.com/SmashingGoodTime/vocal-trainer/13ac75122aa2d687c7f4da0fdcc68617ac3313bf/python/pyproject.toml",
+    "sha256": "0ae669a156936a816e0f3467ae4768e0563d7055fe34906f15ce983b204e2d74",
+    "bytes": 2144
+  },
+  {
+    "repository": "SmashingGoodTime/vocal-trainer",
+    "commit": "13ac75122aa2d687c7f4da0fdcc68617ac3313bf",
+    "path": "src/dsp/PitchDetectorMPM.h",
+    "url": "https://raw.githubusercontent.com/SmashingGoodTime/vocal-trainer/13ac75122aa2d687c7f4da0fdcc68617ac3313bf/src/dsp/PitchDetectorMPM.h",
+    "sha256": "0b40174e0cc70ef177de667a14421893f73f13923bd1369519372c931b24996a",
+    "bytes": 13426
+  },
+  {
+    "repository": "SmashingGoodTime/vocal-trainer",
+    "commit": "13ac75122aa2d687c7f4da0fdcc68617ac3313bf",
+    "path": "src/score/TakeScorer.cpp",
+    "url": "https://raw.githubusercontent.com/SmashingGoodTime/vocal-trainer/13ac75122aa2d687c7f4da0fdcc68617ac3313bf/src/score/TakeScorer.cpp",
+    "sha256": "90ffc95ea4bc873e3d81df6faf45ae44bb0f9197c3a1971258cda0bb5bdca186",
+    "bytes": 26564
+  },
+  {
+    "repository": "SmashingGoodTime/vocal-trainer",
+    "commit": "13ac75122aa2d687c7f4da0fdcc68617ac3313bf",
+    "path": "tests/test_pitch.cpp",
+    "url": "https://raw.githubusercontent.com/SmashingGoodTime/vocal-trainer/13ac75122aa2d687c7f4da0fdcc68617ac3313bf/tests/test_pitch.cpp",
+    "sha256": "1b653f47df87885e2d2baff0842e397849c83e5094cdf8b30ef4577b64e3ddb9",
+    "bytes": 19249
+  },
+  {
+    "repository": "spotify/basic-pitch",
+    "commit": "fa5997af0a8210982619003269994a1be25eddf3",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/spotify/basic-pitch/fa5997af0a8210982619003269994a1be25eddf3/LICENSE",
+    "sha256": "929c910bae2152fa87199a5d0660e09263419b7eee6d4b301d05ee2aaf211c37",
+    "bytes": 11384
+  },
+  {
+    "repository": "spotify/basic-pitch",
+    "commit": "fa5997af0a8210982619003269994a1be25eddf3",
+    "path": "NOTICE",
+    "url": "https://raw.githubusercontent.com/spotify/basic-pitch/fa5997af0a8210982619003269994a1be25eddf3/NOTICE",
+    "sha256": "b810e55c0e3b520fabb45fc2ccc74880187bf84e309971968541cc812dcde905",
+    "bytes": 1034
+  },
+  {
+    "repository": "spotify/basic-pitch",
+    "commit": "fa5997af0a8210982619003269994a1be25eddf3",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/spotify/basic-pitch/fa5997af0a8210982619003269994a1be25eddf3/README.md",
+    "sha256": "308eca019d334104487822197d8fdc81574e9f07a80436d860e044248f26f520",
+    "bytes": 10297
+  },
+  {
+    "repository": "spotify/basic-pitch",
+    "commit": "fa5997af0a8210982619003269994a1be25eddf3",
+    "path": "basic_pitch/constants.py",
+    "url": "https://raw.githubusercontent.com/spotify/basic-pitch/fa5997af0a8210982619003269994a1be25eddf3/basic_pitch/constants.py",
+    "sha256": "4dab8b61240dbf3320bc4983b9a215d93254df84caf19adef3859d1390189181",
+    "bytes": 2415
+  },
+  {
+    "repository": "spotify/basic-pitch",
+    "commit": "fa5997af0a8210982619003269994a1be25eddf3",
+    "path": "basic_pitch/inference.py",
+    "url": "https://raw.githubusercontent.com/spotify/basic-pitch/fa5997af0a8210982619003269994a1be25eddf3/basic_pitch/inference.py",
+    "sha256": "b85aeaa13d421861378d8bd5e841d9087cecd3dc4bfd15abc1f40c1ea2b8abc9",
+    "bytes": 23346
+  },
+  {
+    "repository": "spotify/basic-pitch",
+    "commit": "fa5997af0a8210982619003269994a1be25eddf3",
+    "path": "basic_pitch/note_creation.py",
+    "url": "https://raw.githubusercontent.com/spotify/basic-pitch/fa5997af0a8210982619003269994a1be25eddf3/basic_pitch/note_creation.py",
+    "sha256": "83346193f834edfc37aeadbed91a4092b574727dd2b4535e03e5ad89d2e89506",
+    "bytes": 19121
+  },
+  {
+    "repository": "spotify/basic-pitch",
+    "commit": "fa5997af0a8210982619003269994a1be25eddf3",
+    "path": "pyproject.toml",
+    "url": "https://raw.githubusercontent.com/spotify/basic-pitch/fa5997af0a8210982619003269994a1be25eddf3/pyproject.toml",
+    "sha256": "a568f4933a6922d329f5aee3d0e2966038c70956b3d5dd46a95c5e79985986fe",
+    "bytes": 2508
+  },
+  {
+    "repository": "spotify/basic-pitch",
+    "commit": "fa5997af0a8210982619003269994a1be25eddf3",
+    "path": "setup.py",
+    "url": "https://raw.githubusercontent.com/spotify/basic-pitch/fa5997af0a8210982619003269994a1be25eddf3/setup.py",
+    "sha256": "c65c03f74c7dcab53df50231ebc7382164aa34794c1db25fb98a28294f48ada2",
+    "bytes": 686
+  },
+  {
+    "repository": "ace-step/ACE-Step-1.5",
+    "commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/LICENSE",
+    "sha256": "05a6bce42a62636d2cfb24139cc008b6b899754e244175814bb5dd2f4a485357",
+    "bytes": 1064
+  },
+  {
+    "repository": "ace-step/ACE-Step-1.5",
+    "commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/README.md",
+    "sha256": "650c6ef98b70289886669895c4fd68aab3cc45bba74b3525d728a45a85cbcd66",
+    "bytes": 20439
+  },
+  {
+    "repository": "ace-step/ACE-Step-1.5",
+    "commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "path": "acestep/core/generation/handler/generate_music_decode.py",
+    "url": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/acestep/core/generation/handler/generate_music_decode.py",
+    "sha256": "5ebe4dfd65635a687a5692d37ab377ab959170e764fbedf54d6e35711cc40416",
+    "bytes": 10402
+  },
+  {
+    "repository": "ace-step/ACE-Step-1.5",
+    "commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "path": "acestep/inference.py",
+    "url": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/acestep/inference.py",
+    "sha256": "f43827def02a1122e2de483961b04f16544e4da9108eed9e42fd529175c15df5",
+    "bytes": 71074
+  },
+  {
+    "repository": "ace-step/ACE-Step-1.5",
+    "commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "path": "docs/en/INSTALL.md",
+    "url": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/docs/en/INSTALL.md",
+    "sha256": "e1e3a5189da4d3e677405fd3576b8387c051a3115f7445974127724ae2e1a09c",
+    "bytes": 23702
+  },
+  {
+    "repository": "ace-step/ACE-Step-1.5",
+    "commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "path": "package.json",
+    "url": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/package.json",
+    "sha256": "67a7e58d3ad12986e842d99e6d1d00eef96f6c307ad1faf76a422a673471d762",
+    "bytes": 317
+  },
+  {
+    "repository": "ace-step/ACE-Step-1.5",
+    "commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "path": "pyproject.toml",
+    "url": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/pyproject.toml",
+    "sha256": "b9288eabb1e8eea6334c70b8cd33c9ba07da20c24f7ff5ffb8ff4bb43cd9355b",
+    "bytes": 4548
+  },
+  {
+    "repository": "ace-step/ACE-Step-1.5",
+    "commit": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "path": "requirements.txt",
+    "url": "https://raw.githubusercontent.com/ace-step/ACE-Step-1.5/ca1e85fe9430179831e6bc6be790c332190a3866/requirements.txt",
+    "sha256": "402d438f5fda5239bd305cd05c940d79fa132cebb5a7240747e3c4813a3d233a",
+    "bytes": 2870
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/dsp/math.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/dsp/math.ts",
+    "sha256": "7274829475188c0c564e3c4586146bf8e82d3cf5f0f44215bbb2fe2493f0fa5d",
+    "bytes": 2877
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/dsp/onset.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/dsp/onset.ts",
+    "sha256": "e2616cfaff37e20268f8eb1358a20d47a03895aff09183fb8a9aa5a2039df7ba",
+    "bytes": 2715
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/dsp/fft.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/dsp/fft.ts",
+    "sha256": "87fcfec22b30f9579b44956b040db0b7038ec3d41e87def64ec236648f48e90f",
+    "bytes": 2834
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/dsp/beatgrid.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/dsp/beatgrid.ts",
+    "sha256": "ce77b7f053851c42e5ffe1407ce678405b925ea7098ba01f90a8803062f705fe",
+    "bytes": 3054
+  },
+  {
+    "repository": "VadymYem/OpenVox",
+    "commit": "ce7f85eb8279d910ee01cd16aa97707bb2bccaf0",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/VadymYem/OpenVox/ce7f85eb8279d910ee01cd16aa97707bb2bccaf0/LICENSE",
+    "sha256": "64b824ee1a649b6f3bfb8621a1812f11893a18151b348d310c42fe0ce7d718db",
+    "bytes": 33992
+  },
+  {
+    "repository": "VadymYem/OpenVox",
+    "commit": "ce7f85eb8279d910ee01cd16aa97707bb2bccaf0",
+    "path": "NOTICE",
+    "url": "https://raw.githubusercontent.com/VadymYem/OpenVox/ce7f85eb8279d910ee01cd16aa97707bb2bccaf0/NOTICE",
+    "sha256": "0d0125c329fb57ad8ce03a3a2ce16940bf1544566b3f5eb25d09ac49e548e6f7",
+    "bytes": 419
+  },
+  {
+    "repository": "VadymYem/OpenVox",
+    "commit": "ce7f85eb8279d910ee01cd16aa97707bb2bccaf0",
+    "path": "THIRD_PARTY_NOTICES.md",
+    "url": "https://raw.githubusercontent.com/VadymYem/OpenVox/ce7f85eb8279d910ee01cd16aa97707bb2bccaf0/THIRD_PARTY_NOTICES.md",
+    "sha256": "f9b694edac7b87fc0d778684eb6c09998d5aa90b2c0260b1cacb062209784812",
+    "bytes": 907
+  },
+  {
+    "repository": "VadymYem/OpenVox",
+    "commit": "ce7f85eb8279d910ee01cd16aa97707bb2bccaf0",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/VadymYem/OpenVox/ce7f85eb8279d910ee01cd16aa97707bb2bccaf0/README.md",
+    "sha256": "e8a5e11a980d2b51f7fea090d239f251f112738a74b010d5343e54ae6a873ad7",
+    "bytes": 12361
+  },
+  {
+    "repository": "VadymYem/OpenVox",
+    "commit": "ce7f85eb8279d910ee01cd16aa97707bb2bccaf0",
+    "path": "package.json",
+    "url": "https://raw.githubusercontent.com/VadymYem/OpenVox/ce7f85eb8279d910ee01cd16aa97707bb2bccaf0/package.json",
+    "sha256": "103f465b19ea07befc2692eb67265396353e83d7c8d8167e4abf4562af9c2159",
+    "bytes": 2529
+  },
+  {
+    "repository": "VadymYem/OpenVox",
+    "commit": "ce7f85eb8279d910ee01cd16aa97707bb2bccaf0",
+    "path": "src/core/audio/pitchDetector.ts",
+    "url": "https://raw.githubusercontent.com/VadymYem/OpenVox/ce7f85eb8279d910ee01cd16aa97707bb2bccaf0/src/core/audio/pitchDetector.ts",
+    "sha256": "fd6f9d1fc44ef90ce53d351fb556110c5e47a8d043d0b75f480642fa359505ec",
+    "bytes": 2135
+  },
+  {
+    "repository": "VadymYem/OpenVox",
+    "commit": "ce7f85eb8279d910ee01cd16aa97707bb2bccaf0",
+    "path": "packages/dsp/openvox_dsp.c",
+    "url": "https://raw.githubusercontent.com/VadymYem/OpenVox/ce7f85eb8279d910ee01cd16aa97707bb2bccaf0/packages/dsp/openvox_dsp.c",
+    "sha256": "d8581eeea8c1722691d836fad0ea7b22cbac0384f5d6db1ab36581d5562d6873",
+    "bytes": 3487
+  },
+  {
+    "repository": "VadymYem/OpenVox",
+    "commit": "ce7f85eb8279d910ee01cd16aa97707bb2bccaf0",
+    "path": "tests/training.test.ts",
+    "url": "https://raw.githubusercontent.com/VadymYem/OpenVox/ce7f85eb8279d910ee01cd16aa97707bb2bccaf0/tests/training.test.ts",
+    "sha256": "53dec5fb0af87fdf99649ce90f7ad23a7260693fcf064443589eb06f267b5cca",
+    "bytes": 1883
+  },
+  {
+    "repository": "mercurypitch/mercurypitch",
+    "commit": "a6f839e1478ae599d107a5049e53c19643ca2b87",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/mercurypitch/mercurypitch/a6f839e1478ae599d107a5049e53c19643ca2b87/LICENSE",
+    "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+    "bytes": 34523
+  },
+  {
+    "repository": "mercurypitch/mercurypitch",
+    "commit": "a6f839e1478ae599d107a5049e53c19643ca2b87",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/mercurypitch/mercurypitch/a6f839e1478ae599d107a5049e53c19643ca2b87/README.md",
+    "sha256": "2bdd4017f5700ea3d5cc55ef666dcd547e0bbcfe896b2e2ae9741139820091a3",
+    "bytes": 6889
+  },
+  {
+    "repository": "mercurypitch/mercurypitch",
+    "commit": "a6f839e1478ae599d107a5049e53c19643ca2b87",
+    "path": "package.json",
+    "url": "https://raw.githubusercontent.com/mercurypitch/mercurypitch/a6f839e1478ae599d107a5049e53c19643ca2b87/package.json",
+    "sha256": "f302f45ea010f52a334bd5e445d371ec6f42bed250b9d8458d8c91d814491085",
+    "bytes": 11469
+  },
+  {
+    "repository": "mercurypitch/mercurypitch",
+    "commit": "a6f839e1478ae599d107a5049e53c19643ca2b87",
+    "path": "packages/pitch-engine/src/pitch-detector.ts",
+    "url": "https://raw.githubusercontent.com/mercurypitch/mercurypitch/a6f839e1478ae599d107a5049e53c19643ca2b87/packages/pitch-engine/src/pitch-detector.ts",
+    "sha256": "84fdab8549544100355b71823afd29e9e9e4ac7f587a83591f2b9c4c1c5ad543",
+    "bytes": 28076
+  },
+  {
+    "repository": "mercurypitch/mercurypitch",
+    "commit": "a6f839e1478ae599d107a5049e53c19643ca2b87",
+    "path": "packages/pitch-engine/src/pitch-detector-internals.ts",
+    "url": "https://raw.githubusercontent.com/mercurypitch/mercurypitch/a6f839e1478ae599d107a5049e53c19643ca2b87/packages/pitch-engine/src/pitch-detector-internals.ts",
+    "sha256": "b7a435c217e72cf7b23f532281b26ed8c29fb4f0e95b14c530e03e68d94f8912",
+    "bytes": 1784
+  },
+  {
+    "repository": "mercurypitch/mercurypitch",
+    "commit": "a6f839e1478ae599d107a5049e53c19643ca2b87",
+    "path": "packages/pitch-engine/package.json",
+    "url": "https://raw.githubusercontent.com/mercurypitch/mercurypitch/a6f839e1478ae599d107a5049e53c19643ca2b87/packages/pitch-engine/package.json",
+    "sha256": "03e70bee539fb46aab30cf3c58a42c510af26daa6fab748d20c2e77503dbc051",
+    "bytes": 1531
+  },
+  {
+    "repository": "mercurypitch/mercurypitch",
+    "commit": "a6f839e1478ae599d107a5049e53c19643ca2b87",
+    "path": "src/tests/pitch-detector.test.ts",
+    "url": "https://raw.githubusercontent.com/mercurypitch/mercurypitch/a6f839e1478ae599d107a5049e53c19643ca2b87/src/tests/pitch-detector.test.ts",
+    "sha256": "cfa01c32e69867fc02549bace06d53796ae9e0c09b259dc7d798c8799f50023e",
+    "bytes": 29122
+  },
+  {
+    "repository": "vocalous/app",
+    "commit": "10b843fb0555c499b17e8279d2063961e8bc784d",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/vocalous/app/10b843fb0555c499b17e8279d2063961e8bc784d/LICENSE",
+    "sha256": "03944b261411c9261b66f494d41f5e07d602fa1c6785e7996cfac1124e4a7725",
+    "bytes": 1074
+  },
+  {
+    "repository": "vocalous/app",
+    "commit": "10b843fb0555c499b17e8279d2063961e8bc784d",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/vocalous/app/10b843fb0555c499b17e8279d2063961e8bc784d/README.md",
+    "sha256": "f0e3dcb4da60b9cb1f16ecf392e0b185ca71ac0b5e2f087b1f663b42369933c8",
+    "bytes": 479
+  },
+  {
+    "repository": "vocalous/app",
+    "commit": "10b843fb0555c499b17e8279d2063961e8bc784d",
+    "path": "client/package.json",
+    "url": "https://raw.githubusercontent.com/vocalous/app/10b843fb0555c499b17e8279d2063961e8bc784d/client/package.json",
+    "sha256": "6532ae50ffb47c73ef366d682aa2b02160372d40789cf96ade425532c7d25a5d",
+    "bytes": 2968
+  },
+  {
+    "repository": "vocalous/app",
+    "commit": "10b843fb0555c499b17e8279d2063961e8bc784d",
+    "path": "wasm/Cargo.toml",
+    "url": "https://raw.githubusercontent.com/vocalous/app/10b843fb0555c499b17e8279d2063961e8bc784d/wasm/Cargo.toml",
+    "sha256": "5111b54ba274afff3195f22f7ff78d187e5a6a8c37d388b2771621074d1a56c9",
+    "bytes": 1051
+  },
+  {
+    "repository": "vocalous/app",
+    "commit": "10b843fb0555c499b17e8279d2063961e8bc784d",
+    "path": "wasm/src/lib.rs",
+    "url": "https://raw.githubusercontent.com/vocalous/app/10b843fb0555c499b17e8279d2063961e8bc784d/wasm/src/lib.rs",
+    "sha256": "d6fc68be459768310af553f48042f5dd25fdffbef5a454739f3a71aaa69c14d9",
+    "bytes": 2101
+  },
+  {
+    "repository": "vocalous/app",
+    "commit": "10b843fb0555c499b17e8279d2063961e8bc784d",
+    "path": "wasm/LICENSE_MIT",
+    "url": "https://raw.githubusercontent.com/vocalous/app/10b843fb0555c499b17e8279d2063961e8bc784d/wasm/LICENSE_MIT",
+    "sha256": "4b4bd50130ed5a971880e648a5624f87a93fa921b5e9c2f1f534e218f6a4a6f2",
+    "bytes": 1085
+  },
+  {
+    "repository": "vocalous/app",
+    "commit": "10b843fb0555c499b17e8279d2063961e8bc784d",
+    "path": "client/src/components/pitch/pitch-monitor.tsx",
+    "url": "https://raw.githubusercontent.com/vocalous/app/10b843fb0555c499b17e8279d2063961e8bc784d/client/src/components/pitch/pitch-monitor.tsx",
+    "sha256": "7d6e9d773d9ef7b211d10099da3b88ff7381615960f091e70a265f3b8d6211ec",
+    "bytes": 5315
+  },
+  {
+    "repository": "koneb71/djkado",
+    "commit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+    "path": "src/audio/dsp/biquad.ts",
+    "url": "https://raw.githubusercontent.com/koneb71/djkado/a0483796f94d799c297de15fb64f8f39cb051cc2/src/audio/dsp/biquad.ts",
+    "sha256": "f8f4b2849065c4de86968a3bd3836f39b85719b3741472c876e80252f729db03",
+    "bytes": 3371
+  }
+]
