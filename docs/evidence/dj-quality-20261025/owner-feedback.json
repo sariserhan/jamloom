@@ -1,0 +1,82 @@
+{
+  "status": "PARTIAL - individual house samples accepted; candidate consistency failed",
+  "owner_statement": "house 1 and 2 are totally different so both of them are good in different ways, both bass are bad and boring but 4 is slitely better than 3.  5 is bad and boring 6 is also boring and bad",
+  "clips": [
+    {
+      "clip": 1,
+      "style": "house",
+      "condition": "baseline",
+      "status": "PASS",
+      "owner_assessment": "Good in a different way; no preference over clip 2",
+      "file": "baseline-house.mp3",
+      "source_sha256": "4463b016f1fd0fef846e8a35a09118aa046cb65bf5ce1185ace146fa490e1feb",
+      "listening_sha256": "6386cfa6a1a74630f1c223b1592ac5218782f7078c1c59b000bda2951160f34e"
+    },
+    {
+      "clip": 2,
+      "style": "house",
+      "condition": "arrangement candidate",
+      "status": "PASS",
+      "owner_assessment": "Good in a different way; no preference over clip 1",
+      "file": "house-0.mp3",
+      "source_sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+      "listening_sha256": "4dab8cb6cbda3c252ac847a6e97cf4a433ee6d357bf7ef6ba99a9ffad6e7e64c"
+    },
+    {
+      "clip": 3,
+      "style": "bass",
+      "condition": "baseline",
+      "status": "FAIL",
+      "owner_assessment": "Bad and boring",
+      "file": "baseline-bass.mp3",
+      "source_sha256": "938cc8392017b055f2f5820bd50dfa70ea8e58883083e39e086e675226007ae2",
+      "listening_sha256": "71485e0e3a766709f17d971d8304ad5a742b514cd41d9304a6e39b7f73982111"
+    },
+    {
+      "clip": 4,
+      "style": "bass",
+      "condition": "arrangement candidate",
+      "status": "FAIL",
+      "owner_assessment": "Slightly better than clip 3, but still bad and boring",
+      "file": "bass-1.mp3",
+      "source_sha256": "3f7abc2f169ca7d0ed7d73a6928ea6fa15afa888ebe80ed6dd79767eed7da6e6",
+      "listening_sha256": "4f759b556d605ff7d263a1e09ffb519292ec74085fd6b6f11b0c3fcceea0f8a4"
+    },
+    {
+      "clip": 5,
+      "style": "house",
+      "condition": "second-seed candidate",
+      "status": "FAIL",
+      "owner_assessment": "Bad and boring",
+      "file": "house-2.mp3",
+      "source_sha256": "5d9411ebf1554eac6b7b44c65ada9ea83a8c90a7bb449df0e723844ab8efc10e",
+      "listening_sha256": "1c19ef61c205db25d9760733b49577a9000dde452a8a8b151dfd555c16ac2bdf"
+    },
+    {
+      "clip": 6,
+      "style": "bass",
+      "condition": "second-seed candidate",
+      "status": "FAIL",
+      "owner_assessment": "Bad and boring",
+      "file": "bass-7.mp3",
+      "source_sha256": "a22b67f3d04e670c987cdd01b29ab080602a21aed0b526bf44c9a4d7e1e63024",
+      "listening_sha256": "0a5c4626e6dd6211847c89435d2dd769105af79f875eee498b76c83443437b11"
+    }
+  ],
+  "fresh_candidates_accepted": [
+    2
+  ],
+  "fresh_candidates_rejected": [
+    4,
+    5,
+    6
+  ],
+  "house_pair_preference": "No winner established; both good in different ways",
+  "promotion": "NOT APPROVED",
+  "next_target": "House consistency across seeds before expanding Bass Playground; investigate boring groove, timbre and development rather than treating prompt changes as proven gains",
+  "limits": [
+    "One listener and two seeds; not a population quality rate.",
+    "No claim that bass clip 4 is acceptable merely because it beats clip 3.",
+    "No new compute or public activation."
+  ]
+}

@@ -1,6 +1,6 @@
 ## DJ quality iteration and completed phone check — 2026-10-25
 
-**PARTIAL overall; PASS local implementation and checks.** Added a separately selectable arrangement candidate, sustained-energy beat handoffs and sparse vocals placed where the midrange is less busy. Existing generation remains the default. The owner confirmed the installed phone language filter and bottom player work. The approved comparison produced four fresh originals in 282 seconds, with about $0.028 observed debit. The GPU is deleted; vocals were skipped by timing guards. Musical acceptance remains NOT RUN; no promotion or public activation.
+**PARTIAL overall; PASS local implementation and checks.** Added a separately selectable arrangement candidate, sustained-energy beat handoffs and sparse vocals placed where the midrange is less busy. Existing generation remains the default. The owner confirmed the installed phone language filter and bottom player work. The approved comparison produced four fresh originals in 282 seconds, with about $0.028 observed debit. The GPU is deleted; vocals were skipped by timing guards. Musical acceptance is PARTIAL: house 1/2 are good without a winner; bass 3/4 and fresh variations 5/6 are rejected. No promotion or public activation.
 
 - [x] Preserve style, mood, energy and beat direction in a coherent arrangement candidate.
 - [x] Keep beat handoffs inside strong audio and continuous measured regions.
@@ -8,7 +8,8 @@
 - [x] Complete owner verification of the iPhone player and language filter.
 - [x] Capture both real mixers: complete, unclipped audio without measured long silence. The same handoff timings on this material do not establish an audible improvement.
 - [x] Run the approved fresh comparison, verify four distinct tracks and confirm zero remaining rentals.
-- [ ] Obtain human acceptance of the fresh arrangement candidates; vocal timing remains unqualified for this batch.
+- [x] Record owner listening: house 1/2 accepted, bass 3/4 rejected (4 slightly better), second-seed 5/6 rejected.
+- [ ] Improve house consistency across seeds and obtain broader musical acceptance; Bass Playground and vocal timing remain unqualified.
 
 [Report and evidence](docs/dj-quality.md).
 
