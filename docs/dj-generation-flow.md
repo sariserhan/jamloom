@@ -6,7 +6,7 @@ The [exact plan](evidence/dj-flow-qualification-20261026/gpu-plan.json) caps the
 
 The first cold call is allowed at most 120 seconds before playback. Subsequent requests start on a thirty-second cadence; any warm generation plus transfer exceeding thirty seconds stops the campaign. The real browser mixer starts after two outputs are ready and requests subsequent verified files as they arrive. Its local recording and delivery log expose pauses, missing tracks and handoff timings. The producer stops after twelve only because this is a bounded qualification; the product still runs until Stop or exhausted credits.
 
-Authorized execution command: `.venv-analysis/bin/python scripts/dj_sample_trial.py --flow-study`. Once `ready.json` contains two verified tracks, run `node tests/dj-mix-comparison.mjs --flow-study` from `apps/site` with Node 22. Capture speakers stay muted. Do not start a second rental if the attempt fails. Validate costs, absence of rentals, exact output hashes, the full capture and owner listening separately.
+Historical command for the consumed campaign (do not rerun): `.venv-analysis/bin/python scripts/dj_sample_trial.py --flow-study`. Once `ready.json` contains two verified tracks, run `node tests/dj-mix-comparison.mjs --flow-study` from `apps/site` with Node 22. Capture speakers stay muted. Do not start a second rental if the attempt fails. Validate costs, absence of rentals, exact output hashes, the full capture and owner listening separately.
 
 **PASS local:** 62 Python checks across model study, trial controller, warm renderer and Vast cleanup; shell and browser-harness syntax checks. Fresh-scope validation rejects generic approval, changed cadence/count/time/worker/controller/playback and old campaign permits. The browser's established capture path passed the four-track representative mix; the new incremental-delivery path still needs the actual bounded run.
 
@@ -21,3 +21,5 @@ The actual muted browser mixer played all twelve unique masters for 568.08 secon
 [Execution](evidence/dj-flow-qualification-20261026/result.json), [independent cleanup and archive audit](evidence/dj-flow-qualification-20261026/cleanup.json), [actual playback](evidence/dj-flow-qualification-20261026/playback.json).
 
 Before another authorized campaign: retain raw files incrementally within the measured cadence, verify playback starts with the intended two-track buffer, and qualify arrangement/energy continuity. No additional rental is authorized by this consumed permit.
+
+The archive/startup correction and separate new prepared qualification are documented in [two-track-buffer verification](dj-flow-buffer.md). The `--flow-study` controller now targets that new campaign; no old approval carries forward.

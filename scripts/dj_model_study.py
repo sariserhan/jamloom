@@ -46,7 +46,7 @@ def cases(consistency=False, flow=False):
         for sequence in range(12):
             vocal = sequence in (2, 7)
             row = copy.deepcopy(templates[int(vocal)])
-            row['request'].update(session='26102644444444444444444444444444', sequence=sequence, seed=801026+sequence*1000)
+            row['request'].update(session='26102655555555555555555555555555', sequence=sequence, seed=901026+sequence*1000)
             if vocal:
                 phrase = hook_phrase(row['request'])
                 row['lyrics'] = '[Instrumental]\n[Chorus]\n'+phrase+'\n[Instrumental]'

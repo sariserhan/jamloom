@@ -211,13 +211,12 @@ class FlowStudyTests(unittest.TestCase):
         self.assertTrue(all(r['seconds']==60 and not r['vocals'] for r in rows))
         self.assertEqual(len({r['request']['seed'] for r in rows}),12)
         self.assertNotIn('[Outro]',rows[2]['lyrics'])
-        plan=json.loads((ROOT/'docs/evidence/dj-flow-qualification-20261026/gpu-plan.json').read_text());plan['status']='PREPARED'
+        plan=json.loads((ROOT/'docs/evidence/dj-flow-buffer-20261026/gpu-plan.json').read_text());plan['status']='PREPARED'
         with self.assertRaises(ValueError):validate_model_study(plan,flow=True)
-        plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 generation-flow qualification')
-        with self.assertRaisesRegex(ValueError,'playback changed'):validate_model_study(plan,flow=True)
-        plan['playback_sha256']=hashlib.sha256((ROOT/'apps/site/tests/dj-mix-comparison.mjs').read_bytes()).hexdigest()
+        plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 two-track-buffer qualification')
+        with self.assertRaisesRegex(ValueError,'playback changed'):validate_model_study({**plan,'playback_sha256':'0'*64},flow=True)
         validate_model_study(plan,flow=True)
-        for change in [{'cadence_seconds':35},{'max_requests':13},{'max_minutes':41},{'replacements':True},{'owner_statement':'do all'}]:
+        for change in [{'startup_tracks':6},{'incremental_raw_archive':False},{'mixer_sha256':{}},{'cadence_seconds':35},{'max_requests':13},{'max_minutes':41},{'replacements':True},{'owner_statement':'do all'}]:
             with self.assertRaises(ValueError):validate_model_study({**plan,**change},flow=True)
         with self.assertRaises(ValueError):validate_model_study(plan,consistency=True)
         from vast_trial import dj_bootstrap_command

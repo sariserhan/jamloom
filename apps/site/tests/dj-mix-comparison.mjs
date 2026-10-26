@@ -8,7 +8,7 @@ import {createServer} from 'node:http';
 import {build} from 'esbuild';
 import {chromium} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
-const flow=process.argv.includes('--flow-study');
+const flowFixture=process.argv.includes('--flow-fixture'),flow=process.argv.includes('--flow-study')||flowFixture;
 const representative=process.argv.includes('--representative-set');
 const recovery=process.argv.includes('--recovery-study');
 const planner=process.argv.includes('--planner-study');
@@ -17,14 +17,17 @@ const consistency=process.argv.includes('--consistency-study')||boundary;
 const modelStudy=process.argv.includes('--model-study')||consistency;
 const quality=process.argv.includes('--quality'),timing=process.argv.includes('--timing-revision');
 const house=process.argv.includes('--house-study'),guided=process.argv.includes('--guided-set')||recovery;assert.ok([quality,house,guided,planner,modelStudy,representative,flow].filter(Boolean).length<=1);assert.ok(!timing||guided);
-const root=resolve('../..'),folder=resolve(root,flow?'renders/dj-flow-mix-20261026':representative?'renders/dj-representative-mix-20261026':boundary?'renders/dj-vocal-boundary-20261026':consistency?'renders/dj-preferred-mix-20261026':modelStudy?'renders/dj-model-mix-20261026':planner?'renders/dj-planner-mix-20261026':recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
+const root=resolve('../..'),folder=resolve(root,flowFixture?'renders/dj-flow-buffer-replay-mix-20261026':flow?'renders/dj-flow-buffer-mix-20261026':representative?'renders/dj-representative-mix-20261026':boundary?'renders/dj-vocal-boundary-20261026':consistency?'renders/dj-preferred-mix-20261026':modelStudy?'renders/dj-model-mix-20261026':planner?'renders/dj-planner-mix-20261026':recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
 await mkdir(folder);
+let tracks=[];
+if(!flow){
 const source=resolve(root,'renders/ai-dj-hosted-20261025'),report=JSON.parse(await readFile(source+'/result.json','utf8'));
 const session=report.customers.find(c=>c.visibility==='public').session;
-let tracks=await Promise.all(report.tracks.filter(t=>t.session===session&&t.sequence<3).sort((a,b)=>a.sequence-b.sequence).map(async(row,index)=>{
+tracks=await Promise.all(report.tracks.filter(t=>t.session===session&&t.sequence<3).sort((a,b)=>a.sequence-b.sequence).map(async(row,index)=>{
  const bytes=await readFile(`${source}/${session}-${index}.wav`);assert.equal(createHash('sha256').update(bytes).digest('hex'),row.sha256);
  return {bytes,track:{id:String(index),title:`Original ${index+1}`,artist:'Jamloom original',url:'/audio/'+index,sha256:row.sha256,energy:4,style:'house',mood:'deep',vocal:false,credit:''}};
 }));assert.equal(tracks.length,3);
+}
 if(house){
  const feedback=JSON.parse(await readFile(root+'/docs/evidence/dj-quality-20261025/owner-feedback.json','utf8'));
  const vocalRoot=root+'/renders/ai-dj-finish-20261024/gpu-launch-fix',previous=JSON.parse(await readFile(vocalRoot+'/result.json','utf8'));
@@ -77,7 +80,7 @@ if(representative){
  tracks=await Promise.all(selected.map(async(row,index)=>{const bytes=await readFile(row.file);assert.equal(createHash('sha256').update(bytes).digest('hex'),row.hash);return{bytes,track:{id:String(index),title:row.vocal?'Preferred musical vocal':'Selected instrumental '+(index+1),artist:'Jamloom original',url:'/audio/'+index,sha256:row.hash,energy:4,style:'house',mood:'deep',vocal:!!row.vocal,credit:''}};}));
  assert.equal(new Set(tracks.map(t=>t.track.sha256)).size,4);assert.equal(tracks.filter(t=>t.track.vocal).length,1);
 }
-const flowSource=resolve(root,'renders/dj-flow-qualification-20261026'),deliveries=[];
+const flowSource=resolve(root,flowFixture?'renders/dj-flow-buffer-replay-20261026':'renders/dj-flow-buffer-20261026'),deliveries=[];
 async function flowTrack(index){
  if(index>=12)return null;
  const began=Date.now();
@@ -90,13 +93,14 @@ async function flowTrack(index){
     const bytes=await readFile(flowSource+'/'+row.file),r=row.receipt;assert.equal(createHash('sha256').update(bytes).digest('hex'),r.sha256);
     tracks[index]={bytes,track:{id:String(index),title:'Fresh original '+(index+1),artist:'Jamloom original',url:'/audio/'+index,sha256:r.sha256,energy:r.request.energy,style:r.request.style,mood:r.request.mood,vocal:!r.model_comparison.parameters.instrumental,credit:''}};
    }
-   deliveries.push({sequence:index,waitSeconds:(Date.now()-began)/1000,at:Date.now()});return{sequence:index,track:tracks[index].track};
+   deliveries.push({sequence:index,waitSeconds:(Date.now()-began)/1000,at:Date.now(),availableTracks:run.tracks.length,readyAt:row.ready_at_ms});return{sequence:index,track:tracks[index].track};
   }
   await new Promise(ok=>setTimeout(ok,250));
  }
  throw Error('Fresh track missed the forty-second delivery bound');
 }
-if(flow){tracks=[];await flowTrack(0);await flowTrack(1);}
+let startup;
+if(flow){tracks=[];await flowTrack(0);await flowTrack(1);startup=JSON.parse(await readFile(flowSource+'/ready.json','utf8'));assert.equal(startup.tracks.length,2,'Start with exactly two ready tracks');}
 const revisions=boundary?{before:execFileSync('git',['rev-parse','5cb9ba8'],{encoding:'utf8'}).trim(),after:'working-tree'}:(house||guided||planner||modelStudy||representative||flow)?{after:'working-tree'}:{before:execFileSync('git',['rev-parse',quality?'f0fde92':'35bbee7'],{encoding:'utf8'}).trim(),after:quality?'working-tree':execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
 for(const [name,ref] of Object.entries(revisions)){
  const plugins=ref==='working-tree'?[]:[{name:'historical-source',setup(b){b.onLoad({filter:/\.(ts|js|json)$/},args=>{
@@ -121,13 +125,14 @@ const server=createServer(async(req,res)=>{
  }else res.writeHead(404).end();
  }catch(error){res.writeHead(503).end(String(error));}
 });
-await new Promise(ok=>server.listen(0,'127.0.0.1',ok));const browser=await chromium.launch(),results=[];
+await new Promise(ok=>server.listen(0,'127.0.0.1',ok));const browser=await chromium.launch(),results=[];process.once('SIGTERM',()=>void browser.close());
 try{await Promise.all(Object.keys(revisions).map(async name=>{
  const context=await browser.newContext();await context.addInitScript(silenceSpeakers);const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(`http://127.0.0.1:${server.address().port}/${name}`);await page.waitForFunction(()=>window.AIDJPlayer);
  await page.evaluate(({fixtures,finishLast,flow,count})=>{
-  let index=0;window.events=[];window.changes=[];window.blends=[];window.statuses=[];
+  let index=0;window.events=[];window.changes=[];window.blends=[];window.statuses=[];window.flowFailure=null;
   window.player=new AIDJPlayer(s=>{
+   if(flow&&(['error','paused'].includes(s.status)||s.status==='stopped'&&s.history.length<count))window.flowFailure={status:s.status,tracks:s.history.length,message:s.message};
    if(statuses.at(-1)?.status!==s.status)statuses.push({status:s.status,elapsed:s.elapsed,message:s.message});
    if(s.mixing&&(!blends.length||s.elapsed-blends.at(-1).elapsed>.5))blends.push({elapsed:s.elapsed,cross:s.cross,levels:s.decks.map(d=>d?.level??0),eq:s.decks.map(d=>d?.eq??[]),plan:s.plan});
    for(const e of s.performance)if(!events.some(old=>old.at===e.at&&old.deck===e.deck&&old.action===e.action))events.push(e);
@@ -136,22 +141,30 @@ try{await Promise.all(Object.keys(revisions).map(async name=>{
   player.setMode('auto');const tap=player.context.createMediaStreamDestination();player.mixer.meter.connect(tap);window.chunks=[];window.recorder=new MediaRecorder(tap.stream);
   recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};document.querySelector('#start').onclick=()=>player.start(async()=>{recorder.start();return true;});
  },{fixtures:tracks.map(t=>t.track),finishLast:guided||planner||modelStudy||representative||flow,flow,count:flow?12:tracks.length});
- await page.click('#start');await page.waitForFunction(count=>player.snapshot().history.length===count&&player.snapshot().status==='stopped',flow?12:tracks.length,{timeout:((flow?12:tracks.length)+1)*65000});
+ await page.click('#start');
+ if(flow){
+  await page.waitForFunction(()=>player.snapshot().status==='playing'&&player.snapshot().history.length===1);
+  const ready=JSON.parse(await readFile(flowSource+'/ready.json','utf8'));assert.equal(ready.tracks.length,2,'Producer advanced before actual playback started');
+  const proof={available_tracks:2,history:['0'],session:ready.tracks[0].receipt.request.session,source_hashes:ready.tracks.map(t=>t.receipt.sha256),started_at_ms:Date.now()};
+  await writeFile(flowSource+'/playback-started.tmp',JSON.stringify(proof));await (await import('node:fs/promises')).rename(flowSource+'/playback-started.tmp',flowSource+'/playback-started.json');
+ }
+ await page.waitForFunction(count=>window.flowFailure||player.snapshot().history.length===count&&player.snapshot().status==='stopped',flow?12:tracks.length,{timeout:((flow?12:tracks.length)+1)*65000});
+ if(flow)assert.equal(await page.evaluate(()=>window.flowFailure),null,'Fresh playback stopped before all tracks');
  const result=await page.evaluate(async()=>{
   await new Promise(ok=>{recorder.onstop=ok;recorder.stop();});const blob=new Blob(chunks,{type:recorder.mimeType}),audio=await player.context.decodeAudioData(await blob.arrayBuffer());let peak=0,power=0;
   for(const v of audio.getChannelData(0)){peak=Math.max(peak,Math.abs(v));power+=v*v;}
   const data=await new Promise(ok=>{const r=new FileReader();r.onload=()=>ok(r.result);r.readAsDataURL(blob);});
   return {history:player.snapshot().history,seconds:audio.duration,peak,rms:Math.sqrt(power/audio.length),data,events,changes,blends,statuses,muted:__jamloomSilentOutput().every(o=>o.peak===0)};
  });
- assert.deepEqual(result.history,tracks.map(t=>t.track.id));assert.ok(result.seconds>tracks.length*30&&result.seconds<tracks.length*65);assert.ok(result.peak<1&&result.rms>.001);assert.ok(result.muted);assert.deepEqual(errors,[]);
+ assert.deepEqual(result.history,tracks.map(t=>t.track.id));assert.ok(result.seconds>tracks.length*(flow?8:30)&&result.seconds<tracks.length*65);assert.ok(result.peak<1&&result.rms>.001);assert.ok(result.muted);assert.deepEqual(errors,[]);
  const bytes=Buffer.from(result.data.split(',')[1],'base64');delete result.data;await writeFile(`${folder}/${name}.webm`,bytes);
  results.push({name,revision:revisions[name],...result,sha256:createHash('sha256').update(bytes).digest('hex')});await context.close();console.log(name+' capture PASS');
 }));
  const current=results.find(r=>r.name==='after');
- if(flow){assert.equal(tracks.length,12);assert.deepEqual(current.statuses.filter(s=>['error','paused'].includes(s.status)),[]);assert.equal(current.statuses.filter(s=>s.status==='stopped').length,1);}
+ if(flow){assert.equal(startup.tracks.length,2);assert.equal(tracks.length,12);assert.deepEqual(current.statuses.filter(s=>['error','paused'].includes(s.status)),[]);assert.equal(current.statuses.filter(s=>s.status==='stopped').length,1);}
  if(consistency){assert.ok(tracks.every(t=>t.track.vocal&&!t.track.vocalCue));assert.equal(current.events.filter(e=>e.by==='AI').length,0,'Protect unqualified vocal phrases from extra effects');assert.ok(current.blends.length>=5);assert.ok(Math.max(...current.blends.map(b=>b.cross))-Math.min(...current.blends.map(b=>b.cross))>.5);assert.ok(current.blends.every(b=>b.levels.some(v=>v>0)));}
  else assert.ok(current.events.some(e=>e.by==='AI'),'Current engine must perform real moves');
  if(house)assert.ok(results[0].events.some(e=>e.label==='Vocal loop · 2 repeats'),'Accepted vocal must repeat only after the normal playback guards pass');
  if(planner)assert.ok(results[0].events.some(e=>e.label==='Vocal echo'),'New spoken hook must pass normal playback guards');
- await writeFile(folder+'/report.json',JSON.stringify({status:'PASS technical',sourceTracks:tracks.map(t=>t.track.sha256),currentAnalysisSha256:createHash('sha256').update(await readFile('lib/ai-dj-analysis.ts')).digest('hex'),currentPlanSha256:createHash('sha256').update(await readFile('lib/ai-dj-plan.ts')).digest('hex'),newGeneration:flow,deliveries,learnedWeights:false,humanListening:'NOT RUN',performance:consistency?'Transitions verified; optional effects held on vocal tracks without qualified cues.':'AI performance actions verified.',results},null,2)+'\n');
+ await writeFile(folder+'/report.json',JSON.stringify({status:'PASS technical',sourceTracks:tracks.map(t=>t.track.sha256),currentAnalysisSha256:createHash('sha256').update(await readFile('lib/ai-dj-analysis.ts')).digest('hex'),currentPlanSha256:createHash('sha256').update(await readFile('lib/ai-dj-plan.ts')).digest('hex'),newGeneration:flow&&!flowFixture,retainedFixture:flowFixture,deliveries,learnedWeights:false,humanListening:'NOT RUN',performance:consistency?'Transitions verified; optional effects held on vocal tracks without qualified cues.':'AI performance actions verified.',results},null,2)+'\n');
 }finally{await browser.close();await new Promise(ok=>server.close(ok));}

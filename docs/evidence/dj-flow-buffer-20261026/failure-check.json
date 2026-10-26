@@ -1,0 +1,7 @@
+{
+  "status": "PASS fail-fast injection",
+  "seconds": 13.469733249978162,
+  "failure": "Missing third delivery detected and mixer capture rejected",
+  "paid_compute": false,
+  "reused_truncated_audio": true
+}

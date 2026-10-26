@@ -4,8 +4,11 @@ import argparse
 import hashlib
 import io
 import json
+import math
 from pathlib import Path
 import secrets
+import shutil
+import re
 import socket
 import subprocess
 import sys
@@ -40,7 +43,7 @@ FLOW = False
 def configure_model_study(consistency=False, flow=False):
     global EVIDENCE, WORK, OUTPUT, LABEL, MODEL_STUDY, QUALITY, CONSISTENCY, FLOW
     MODEL_STUDY, QUALITY, CONSISTENCY, FLOW = True, True, consistency, flow
-    campaign='dj-flow-qualification-20261026' if flow else 'dj-preferred-consistency-20261026' if consistency else 'dj-model-comparison-20261026'
+    campaign='dj-flow-buffer-20261026' if flow else 'dj-preferred-consistency-20261026' if consistency else 'dj-model-comparison-20261026'
     EVIDENCE=ROOT/'docs/evidence'/campaign
     WORK=ROOT/('build-'+campaign)
     OUTPUT=ROOT/'renders'/campaign
@@ -51,18 +54,22 @@ def configure_model_study(consistency=False, flow=False):
 def validate_model_study(plan, consistency=False, flow=False):
     from dj_model_study import cases, BASE_REVISION
     from dj_track_worker import CODE_REVISION, WEIGHTS_REVISION
-    if (plan.get('status')!='AUTHORIZED' or plan.get('owner_statement')!=('Approve the capped $3 generation-flow qualification' if flow else 'Approve the capped $3 preferred-music consistency study' if consistency else 'Approve the capped $3 base-model comparison')
-        or plan.get('campaign')!=('jamloom-dj-flow-qualification-20261026' if flow else 'jamloom-dj-preferred-consistency-20261026' if consistency else 'jamloom-dj-model-comparison-20261026')
+    if (plan.get('status')!='AUTHORIZED' or plan.get('owner_statement')!=('Approve the capped $3 two-track-buffer qualification' if flow else 'Approve the capped $3 preferred-music consistency study' if consistency else 'Approve the capped $3 base-model comparison')
+        or plan.get('campaign')!=('jamloom-dj-flow-buffer-20261026' if flow else 'jamloom-dj-preferred-consistency-20261026' if consistency else 'jamloom-dj-model-comparison-20261026')
         or any(plan.get(k)!=v for k,v in dict(budget_usd=3,max_workers=1,max_minutes=40,max_requests=12 if flow else 6).items())
         or plan.get('research_render_limit_seconds')!=120 or plan.get('production_render_limit_seconds')!=30
         or plan.get('stop_on_failure') is not True or plan.get('automatic_cleanup') is not True
         or any(plan.get(k) is not False for k in ('public_activation','replacements','source_audio_used','learned_reference_weights_used'))
         or plan.get('model')!=dict(code=CODE_REVISION,weights=WEIGHTS_REVISION,base=BASE_REVISION)
         or plan.get('tracks')!=cases(consistency,flow)
-        or flow and plan.get('cadence_seconds')!=30):
+        or flow and (plan.get('cadence_seconds')!=30 or plan.get('startup_tracks')!=2 or plan.get('incremental_raw_archive') is not True)):
         raise ValueError('Fresh bounded base-model comparison authorization required')
     if flow and (hashlib.sha256(Path(__file__).read_bytes()).hexdigest()!=plan.get('controller_sha256') or hashlib.sha256((ROOT/'apps/site/tests/dj-mix-comparison.mjs').read_bytes()).hexdigest()!=plan.get('playback_sha256')):
         raise ValueError('Prepared flow controller or playback changed')
+    if flow:
+        expected_mixer={'ai-dj-analysis.ts','ai-dj-library.ts','ai-dj-plan.ts','ai-dj-player.ts'}
+        if set(plan.get('mixer_sha256',{}))!=expected_mixer or any(hashlib.sha256((ROOT/'apps/site/lib'/name).read_bytes()).hexdigest()!=sha for name,sha in plan['mixer_sha256'].items()):
+            raise ValueError('Prepared mixer changed')
     expected={'cloud_music_setup.sh','cloud_dj_warm.sh','dj_track_worker.py','dj_warm_engine.py','dj_vocal.py','club_benchmark_cases.py','dj_model_study.py'}
     if set(plan.get('worker_sha256',{}))!=expected or any(hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest()!=sha for name,sha in plan['worker_sha256'].items()):
         raise ValueError('Prepared model-study worker changed')
@@ -245,9 +252,40 @@ def startup_probe(code, output):
     return 'pending'
 
 
+def retain_model_raw(scp, host, sequence, expected_hash, seconds_left):
+    if type(sequence) is not int or not 0 <= sequence < 12 or not re.fullmatch(r'[a-f0-9]{64}', expected_hash) or not re.fullmatch(r'[A-Za-z0-9.-]+', host):
+        raise ValueError('Invalid raw archive reference')
+    if not isinstance(seconds_left,(int,float)) or not math.isfinite(seconds_left) or seconds_left <= 0: raise RuntimeError('Raw archive exhausted request time allowance')
+    folder=OUTPUT/'remote-results';folder.mkdir(exist_ok=True)
+    target=folder/f'model-raw-{sequence}.wav';temporary=target.with_suffix('.part')
+    if target.exists() or temporary.exists(): raise RuntimeError('Raw archive already exists; refusing overwrite')
+    try:
+        subprocess.run([*scp,'root@'+host+':/workspace/results/'+target.name,str(temporary)],check=True,capture_output=True,timeout=min(30,seconds_left))
+        if not 44 < temporary.stat().st_size <= 32_000_000 or hashlib.sha256(temporary.read_bytes()).hexdigest()!=expected_hash:
+            raise RuntimeError('Raw model output integrity failed')
+        temporary.replace(target)
+    finally:
+        temporary.unlink(missing_ok=True)
+    return target.name
+
+
+def wait_for_playback(playback, ready_tracks, deadline):
+    path=OUTPUT/'playback-started.json'
+    while time.monotonic()<deadline:
+        if playback.poll() is not None: raise RuntimeError('Playback exited before startup acknowledgement')
+        if path.exists():
+            receipt=json.loads(path.read_text())
+            if receipt.get('available_tracks')!=2 or receipt.get('history')!=['0'] or receipt.get('source_hashes')!=[t['receipt']['sha256'] for t in ready_tracks] or receipt.get('session')!=ready_tracks[0]['receipt']['request']['session']:
+                raise RuntimeError('Playback did not start from exactly two verified tracks')
+            return receipt
+        time.sleep(.1)
+    raise RuntimeError('Playback startup acknowledgement timed out')
+
+
 def run():
     plan, account, offer = preflight()
     if vast.STATE.exists(): raise RuntimeError('Trial already attempted; no replacement authorized')
+    if FLOW and (not shutil.which('node') or not subprocess.check_output(['node','--version'],text=True).startswith('v22.')): raise RuntimeError('Use Node 22 before renting for playback')
     WORK.mkdir(exist_ok=True); OUTPUT.mkdir()
     key = WORK/'trial-key'
     subprocess.run(['ssh-keygen', '-q', '-t', 'ed25519', '-N', '', '-f', str(key)], check=True)
@@ -266,7 +304,7 @@ def run():
     if FLOW:report['scope']='Twelve preferred-turbo originals at a thirty-second request cadence, two distinct vocal opportunities; bounded one-listener capacity probe, not public activation'
     elif CONSISTENCY:report['scope']='Six fresh vocal-house originals: the two owner-preferred recipes across three matched seeds; offline consistency benchmark'
     elif MODEL_STUDY:report['scope']='Six matched base/turbo outputs: house, bass and sparse singing in musical context; offline quality benchmark, not live capacity'
-    tunnel = None; ssh = None; scp = None
+    tunnel = None; ssh = None; scp = None; playback = None; playback_started = None
     try:
         result = vast.api('v0/asks/'+str(offer['id']), 'PUT', dict(
             image='pytorch/pytorch@sha256:b85566342b86d13a67712e9315d40cdc2dad7f8d86df1aff3831f80835edbcca',
@@ -317,9 +355,12 @@ def run():
         else: raise RuntimeError('Renderer startup exhausted time allowance')
         cadence_start = None
         for row in plan['tracks']:
-            if FLOW and cadence_start is not None:
-                scheduled = cadence_start + (row['request']['sequence']-1)*plan['cadence_seconds']
-                time.sleep(max(0,scheduled-time.monotonic()))
+            if FLOW and playback is not None:
+                scheduled = cadence_start + (row['request']['sequence']-2)*plan['cadence_seconds']
+                while time.monotonic()<scheduled:
+                    if playback.poll() is not None: raise RuntimeError('Playback exited during generation')
+                    time.sleep(min(.25,max(0,scheduled-time.monotonic())))
+                if playback.poll() is not None: raise RuntimeError('Playback exited during generation')
             call_started = time.monotonic()
             if time.time() >= state['deadline']-(160 if MODEL_STUDY else 80): raise RuntimeError('Insufficient bounded rendering time')
             body = dict(job=str(uuid.uuid4()), request=row['request'], vocals=row.get('vocals',False))
@@ -358,12 +399,21 @@ def run():
                 if (audio.getnchannels(), audio.getframerate(), audio.getnframes(), audio.getsampwidth()) != (2, 48000, 2880000, 2):
                     raise RuntimeError('Generated audio format failed')
             filename = row['request']['style']+(('-'+str(row['request']['sequence'])) if QUALITY else '')+'.wav'; (OUTPUT/filename).write_bytes(data)
-            elapsed = time.monotonic()-call_started
-            report['tracks'].append(dict(file=filename, receipt=receipt, round_trip_seconds=elapsed))
+            track=dict(file=filename, receipt=receipt); report['tracks'].append(track)
+            if MODEL_STUDY:
+                limit=120 if not FLOW or row['request']['sequence']==0 else plan['cadence_seconds']
+                available=min(limit-(time.monotonic()-call_started),state['deadline']-time.time()-10)
+                track['raw_archive']=retain_model_raw(scp,item['ssh_host'],row['request']['sequence'],receipt['model_comparison']['raw_sha256'],available)
+            elapsed=time.monotonic()-call_started; track['round_trip_seconds']=elapsed
             if FLOW:
-                if cadence_start is None: cadence_start=time.monotonic()
-                elif elapsed>plan['cadence_seconds']: raise RuntimeError('Warm generation and transfer missed the thirty-second cadence')
+                if elapsed>(120 if row['request']['sequence']==0 else plan['cadence_seconds']): raise RuntimeError('Generation plus raw archive missed the bounded cadence')
+                track['ready_at_ms']=int(time.time()*1000)
                 ready=OUTPUT/'ready.tmp';ready.write_text(json.dumps(report));ready.replace(OUTPUT/'ready.json')
+                if len(report['tracks'])==2:
+                    with (WORK/'playback.log').open('wb') as log:
+                        playback=subprocess.Popen(['node','tests/dj-mix-comparison.mjs','--flow-study'],cwd=ROOT/'apps/site',stdout=log,stderr=subprocess.STDOUT)
+                    report['playback_start']=wait_for_playback(playback,report['tracks'],time.monotonic()+45)
+                    playback_started=time.monotonic();cadence_start=playback_started
             print(row['label']+' rendered and verified.', flush=True)
         subprocess.run([*scp, 'root@'+item['ssh_host']+':/workspace/results/executed-scripts.sha256', str(OUTPUT)], check=True, capture_output=True, timeout=30)
         executed = {Path(name).name: digest for digest,name in (line.split(maxsplit=1) for line in (OUTPUT/'executed-scripts.sha256').read_text().splitlines())}
@@ -380,7 +430,6 @@ def run():
             if executed.get('sung-fixtures.json')!=plan['fixture_sha256']:raise RuntimeError('Sung fixture execution proof mismatch')
             if any(executed.get(name)!=digest for name,digest in plan['dna_manifest_sha256'].items()):raise RuntimeError('Music DNA manifest execution proof mismatch')
         if MODEL_STUDY:
-            subprocess.run([*scp,'-r','root@'+item['ssh_host']+':/workspace/results',str(OUTPUT/'remote-results')],check=True,capture_output=True,timeout=60)
             for row in report['tracks']:
                 raw=OUTPUT/'remote-results'/f"model-raw-{row['receipt']['request']['sequence']}.wav"
                 if hashlib.sha256(raw.read_bytes()).hexdigest()!=row['receipt']['model_comparison']['raw_sha256']:raise RuntimeError('Retained model output changed')
@@ -392,11 +441,13 @@ def run():
                 (WORK/'boot-tail.log').write_bytes(log.stdout)
                 if scp and not (OUTPUT/'executed-scripts.sha256').exists():
                     subprocess.run([*scp,'root@'+item['ssh_host']+':/workspace/results/executed-scripts.sha256',str(OUTPUT)],capture_output=True,timeout=15)
-                if MODEL_STUDY and scp and not (OUTPUT/'remote-results').exists():
-                    subprocess.run([*scp,'-r','root@'+item['ssh_host']+':/workspace/results',str(OUTPUT/'remote-results')],capture_output=True,timeout=45)
                 if SUNG and scp and not (OUTPUT/'sung-candidates').exists():
                     subprocess.run([*scp,'-r','root@'+item['ssh_host']+':/workspace/ace-step/sung-candidates',str(OUTPUT)],capture_output=True,timeout=30)
             except (OSError,subprocess.TimeoutExpired): pass
+        if playback is not None and report['status']!='PASS technical' and playback.poll() is None:
+            playback.terminate()
+            try: playback.wait(timeout=5)
+            except subprocess.TimeoutExpired: playback.kill(); playback.wait()
         if tunnel: tunnel.terminate()
         try:
             state = json.loads(vast.STATE.read_text()); vast.destroy(state)
@@ -408,6 +459,23 @@ def run():
         finally:
             (OUTPUT/'report.json').write_text(json.dumps(report, indent=2)+'\n')
         print('Cleanup confirmed: '+str(report.get('cleanup_confirmed', False)), flush=True)
+    if FLOW:
+        try:
+            if not report.get('cleanup_confirmed'): raise RuntimeError('Cleanup must pass before playback qualification')
+            if playback.wait(timeout=max(1,850-(time.monotonic()-playback_started)))!=0: raise RuntimeError('Actual playback qualification failed')
+            capture=json.loads((ROOT/'renders/dj-flow-buffer-mix-20261026/report.json').read_text())
+            if capture.get('status')!='PASS technical' or capture.get('sourceTracks')!=[t['receipt']['sha256'] for t in report['tracks']]: raise RuntimeError('Playback output provenance failed')
+            report['playback_status']='PASS technical'
+        except Exception:
+            report['status']='FAIL';report['playback_status']='FAIL'
+            if playback.poll() is None:
+                playback.terminate()
+                try: playback.wait(timeout=5)
+                except subprocess.TimeoutExpired: playback.kill();playback.wait()
+            raise
+        finally:
+            (OUTPUT/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+
 
 
 if __name__ == '__main__':

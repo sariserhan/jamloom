@@ -1,3 +1,12 @@
+## Incremental archives and two-track startup — 2026-10-26
+
+**PASS local checks and real-time retained-audio replay; fresh GPU run NOT AUTHORIZED.** Requested scope is archive repair and fresh-generation capacity verification only. Each raw output is now retained and verified within its request budget; exactly two ready tracks trigger automatic playback and a checked startup receipt before track three starts. There is no final bulk archive or implicit retry.
+
+- [x] Verify atomic/raw hash publication, interrupted transfer retention, overwrite and budget guards, exact startup identity and failure detection: 66 Python checks pass.
+- [x] Inject a missing next track into the real browser mixer; it rejects the incomplete performance promptly.
+- [x] Complete the twelve-track retained-audio rehearsal: 507.12 seconds, exactly two initial tracks, later delivery delayed 28 seconds on a thirty-second cadence, no early stop/error/pause. Fresh generation remains a separate check.
+- [ ] Obtain a new capped approval and run twelve fresh outputs through incremental archives and the accepted mixer. The previous permit is consumed; the new plan remains PREPARED.
+
 ## Selective overlapping grooves and mobile rating completion — 2026-10-26
 
 **PASS implementation and technical checks; PARTIAL musical qualification.** The owner accepts moving on from phone ratings after reaching sign-in; authenticated physical saving is not claimed. Build 21 is installed and the unwanted training section is removed. The owner confirms the long-intro entry correction is improving the handoff and requests selective extended overlaps.

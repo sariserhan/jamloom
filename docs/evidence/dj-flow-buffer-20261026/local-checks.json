@@ -1,0 +1,13 @@
+{
+  "archive_tests": 4,
+  "controller_tests": 15,
+  "model_study_tests": 13,
+  "warm_engine_tests": 5,
+  "vast_cleanup_budget_tests": 29,
+  "total_python_checks": 66,
+  "syntax": "PASS",
+  "local_replay": "PASS retained originals; fresh generation NOT RUN",
+  "failure_injection": "PASS missing third delivery rejects capture promptly",
+  "gpu_approval": "NOT RECEIVED",
+  "no_new_paid_compute": true
+}
