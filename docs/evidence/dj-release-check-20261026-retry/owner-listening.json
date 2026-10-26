@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-26",
+  "status": "PASS scoped owner listening acceptance",
+  "ownerStatement": "they are fine",
+  "question": "Do the music and transitions keep the energy flowing, and are there any awkward moments?",
+  "reviewURL": "http://localhost:8766/release-qualification/review/",
+  "scope": "The two complete fresh instrumental sets in this qualification and their transitions",
+  "resultSha256": "1d3cab137ce8908f09db252b7de0b34a4c285e74279b9baf4763c77625ba9078",
+  "sessions": [
+    "5ec6ca6507f94dc396851beecdb4d16f",
+    "2ea30f92396a440c8bb2e44da37152dc"
+  ],
+  "limitations": [
+    "No individual clip ratings or numeric quality scores supplied",
+    "No vocal acceptance: this batch had no added vocals",
+    "Does not establish reference-level professional quality, indefinite capacity or venue qualification"
+  ],
+  "publicationAuthorized": false
+}
