@@ -1,0 +1,25 @@
+{
+  "status": "PARTIAL owner listening",
+  "owner_statement": "yes it is better but still needs some work",
+  "preferred": "after",
+  "improvement_confirmed": true,
+  "finished_transition_accepted": false,
+  "scope": "The single clip 4 to 5 boundary comparison, not full-set approval or a vocal-quality judgment.",
+  "clips": [
+    {
+      "name": "before",
+      "source_sha256": "ea8dc7c6ad5746bbf783c7d3c463e31b77e33722388f40c6b97e92cf6867f07c",
+      "start_seconds": 42.096000000000004,
+      "transition_complete_seconds": 10,
+      "sha256": "75969391e7088255e049652e35efd6b7514b8285c9fbd0f7ddeebad14de90019"
+    },
+    {
+      "name": "after",
+      "source_sha256": "2ce8b396d753810aeb40fe74d6e659318d6b17639a7803b7d973e2118567af4b",
+      "start_seconds": 42.496,
+      "transition_complete_seconds": 10,
+      "sha256": "c399bafcf7e60e4b06c9329725f665ce1c11a97d02f36dc04044e8f166ec5762"
+    }
+  ],
+  "implementation_commit": "1001fe4"
+}

@@ -1,11 +1,12 @@
 ## Rejected DJ set: transition and vocal repetition — 2026-10-26
 
-**FAIL full-set listening; PARTIAL local correction.** The owner reports awkward transitions, especially around 3:10, and too much “Feel alive”. The exact recording switches clip 4 → 5 at 189.904 seconds; no extra vocal loop was applied. All six controlled benchmark inputs reused the same lyrics. Previous clip rankings still stand.
+**FAIL original full-set listening; PARTIAL corrected boundary, owner confirms improvement.** The owner reports awkward transitions, especially around 3:10, and too much “Feel alive”. The exact recording switches clip 4 → 5 at 189.904 seconds; no extra vocal loop was applied. All six controlled benchmark inputs reused the same lyrics. Previous clip rankings still stand.
 
 - [x] Preserve hash-bound rejection and the exact timestamp; reproduce the historical handoff within 24 ms.
 - [x] Protect unreviewed vocal edges from one-bar bass exchanges; rotate future sparse hook requests across the session.
 - [x] Verify 15 planner/analysis and 52 Python checks plus TypeScript; preserve consumed compute approvals. Capture a real-mixer before/after boundary comparison using the same two originals, without paid compute.
-- [ ] Audition the corrected boundary, qualify musical handoffs and sparse distinct vocals, then close performance/release gates. No new paid compute or publication.
+- [x] Bind owner feedback to both exact comparison clips: “yes it is better but still needs some work”. Keep the vocal-edge guard; this is partial improvement, not final acceptance.
+- [ ] Refine musical handoffs and sparse distinct vocals, then qualify full performances and close release gates. No new paid compute or publication.
 
 [Diagnosis and evidence](docs/dj-transition-feedback.md).
 
