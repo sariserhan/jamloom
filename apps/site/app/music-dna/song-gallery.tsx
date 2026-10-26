@@ -5,6 +5,8 @@ import {songTrack} from '../../lib/listening';
 import Link from 'next/link';
 import {SongFeedback} from './song-feedback';
 import languages from '../../../../assets/manifests/dna-languages.json';
+import {visibleRefresh} from '../../lib/visible-refresh';
+import {galleryRead} from '../../lib/gallery-read';
 type Entry={id:string;title:string;language:string;direction?:string;historical?:boolean;visibility?:string;withdrawn_at?:string;check?:'owner-reviewed'|'passed'|'style-mismatch'|'not-checked';product?:string};
 export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'examples'|'mine'|'public'|'validation'|'showcase';title:string;product?:'music-dna'|'improvise';rows?:3|6;id?:string}){
  const curated=scope==='validation'||scope==='showcase';
@@ -29,33 +31,33 @@ export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'
  const [options,setOptions]=useState<{languages:string[];genres:string[]}>({languages:[],genres:[]});
  const requestId=useRef(0),filterable=scope!=='mine';
  const publicLanguage=scope==='public'?language:'',publicGenre=scope==='public'?genre:'';
- async function load(after=''){
+ async function load(after='',fresh=false){
   const current=++requestId.current;setBusy(true);
   try{
-   const query=new URLSearchParams({view:scope==='showcase'?(after?'public':'validation'):scope,after,language:publicLanguage,genre:publicGenre});
-   const response=await fetch(`${endpoint}?${query}`,{signal:AbortSignal.timeout(10000)}),result=await response.json();
+   const query=new URLSearchParams({view:scope==='showcase'?(after?'public':'validation'):scope});
+   if(after)query.set('after',after);if(publicLanguage)query.set('language',publicLanguage);if(publicGenre)query.set('genre',publicGenre);
+   const [response,shared]=await Promise.all([galleryRead(`${endpoint}?${query}`,fresh),scope==='showcase'&&!after?galleryRead(`${endpoint}?view=public`,fresh):null]),result=await response.json();
    if(current!==requestId.current)return;
    if(!response.ok)throw Error(result.error??'Songs could not load.');
    if(!Array.isArray(result.songs))throw Error('Invalid song collection');
    if(result.filters)setOptions(result.filters);
    let collection:Entry[]=scope==='showcase'?result.songs.filter((song:Entry)=>!song.product||song.product===product):result.songs;
    if(scope==='showcase'&&!after){
-    const shared=await fetch(`${endpoint}?view=public`,{signal:AbortSignal.timeout(10000)}),feed=await shared.json();
+    const feed=await shared!.json();
     if(current!==requestId.current)return;
-    if(!shared.ok||!Array.isArray(feed.songs))throw Error('Public songs could not load.');
+    if(!shared!.ok||!Array.isArray(feed.songs))throw Error('Public songs could not load.');
     collection=[...feed.songs,...collection.toReversed()];result.next=feed.next;
    }
    setSongs(old=>Array.from(new Map((after?[...old,...collection]:collection).map(song=>[song.id,song])).values()));setNext(result.next);setFeedbackAvailable(result.feedbackAvailable!==false);setAccountFeedback(result.accountFeedback===true);
    setMessage(result.signIn?'Sign in to see all your songs.':result.available===false?'Song collections are not enabled on this server yet.':collection.length?'':(publicLanguage||publicGenre)?'No songs match these filters.':scope==='public'?'Public songs will appear here after successful generation.':'No songs yet. Make your first song above.');
   }catch{if(current===requestId.current)setMessage('Songs could not load. Please try again.');}finally{if(current===requestId.current)setBusy(false);}
  }
- useEffect(()=>{void load();const refresh=()=>{if(!document.hidden)void load();};
-  window.addEventListener('jamloom-dna-completed',refresh);window.addEventListener('focus',refresh);document.addEventListener('visibilitychange',refresh);
-  const timer=scope==='public'||curated?setInterval(refresh,60000):undefined;
-  return()=>{requestId.current++;clearInterval(timer);window.removeEventListener('jamloom-dna-completed',refresh);window.removeEventListener('focus',refresh);document.removeEventListener('visibilitychange',refresh);};
+ useEffect(()=>{const stop=visibleRefresh(()=>load(),scope==='public'||curated?60000:0),refresh=()=>{if(!document.hidden)void load('',true);};
+  window.addEventListener('jamloom-dna-completed',refresh);
+  return()=>{requestId.current++;stop();window.removeEventListener('jamloom-dna-completed',refresh);};
  },[scope,product,publicLanguage,publicGenre]);
  async function withdraw(id:string){
-  setBusy(true);try{const response=await fetch(endpoint+'?id='+id,{method:'DELETE',headers:{'X-Jamloom-DNA':'1'}});if(!response.ok)throw Error();await load();window.dispatchEvent(new Event('jamloom-dna-completed'));}catch{setMessage('Could not remove this song from the public page. Try again.');}finally{setBusy(false);}
+  setBusy(true);try{const response=await fetch(endpoint+'?id='+id,{method:'DELETE',headers:{'X-Jamloom-DNA':'1'}});if(!response.ok)throw Error();window.dispatchEvent(new Event('jamloom-dna-completed'));}catch{setMessage('Could not remove this song from the public page. Try again.');}finally{setBusy(false);}
  }
  const filtered=songs.filter(song=>(!language||song.language===language)&&(!genre||song.direction===genre));
  const ordered=filtered;

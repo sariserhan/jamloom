@@ -1,5 +1,6 @@
 'use client';
 import {useEffect,useState} from 'react';
+import {visibleRefresh} from '../lib/visible-refresh';
 type SharedSet={id:string;title:string;seconds:number};
 export function CommunitySets(){
  const [sets,setSets]=useState<SharedSet[]>([]),[message,setMessage]=useState('Loading DJ sets…');
@@ -10,8 +11,8 @@ export function CommunitySets(){
    if(!response.ok||!Array.isArray(data.sets))throw Error();
    if(!controller.signal.aborted){setSets(data.sets.slice(0,3));setMessage(data.sets.length?'':'Your next party could be here.');}
   }catch{if(!controller.signal.aborted)setMessage('DJ sets are temporarily unavailable.');}finally{busy=false;}}
-  void refresh();window.addEventListener('focus',refresh);document.addEventListener('visibilitychange',refresh);const timer=setInterval(refresh,60000);
-  return()=>{controller.abort();clearInterval(timer);window.removeEventListener('focus',refresh);document.removeEventListener('visibilitychange',refresh);};
+  const stop=visibleRefresh(refresh);
+  return()=>{controller.abort();stop();};
  },[]);
  return <section className="product-panel" aria-label="Community DJ sets"><p className="eyebrow">The whole party, on replay</p><h2>Community DJ sets</h2><div className="dna-song-grid">{sets.map(set=><article key={set.id}><h3>{set.title}</h3><p>{Math.max(1,Math.round(set.seconds/60))} min · Full performance</p><audio controls preload="none" aria-label={'Listen to '+set.title} src={'/api/ai-dj/sets/'+set.id+'/audio'} onPlay={event=>document.querySelectorAll('audio').forEach(audio=>{if(audio!==event.currentTarget)audio.pause();})}/></article>)}</div>{message&&<p role="status">{message}</p>}<a className="text-button" href="/ai-dj/sets">Explore all DJ sets →</a></section>;
 }

@@ -1,0 +1,95 @@
+{
+  "period": {
+    "from": "2026-10-01T07:00:00.000Z",
+    "to": "2026-10-26T17:58:25.043Z"
+  },
+  "pricingUnit": "USD",
+  "project": {
+    "name": "jamloom",
+    "services": [
+      {
+        "name": "Build CPU Minutes",
+        "pricingQuantity": 2.9960000000000004,
+        "pricingUnit": "USD",
+        "effectiveCost": 2.9960000000000004,
+        "billedCost": 2.9960000000000004
+      },
+      {
+        "name": "Fluid Provisioned Memory",
+        "pricingQuantity": 0.21228351829761158,
+        "pricingUnit": "USD",
+        "effectiveCost": 0.21228351829761158,
+        "billedCost": 0.21107766348231102
+      },
+      {
+        "name": "Fluid Active CPU",
+        "pricingQuantity": 0.04396847568002712,
+        "pricingUnit": "USD",
+        "effectiveCost": 0.04396847568002712,
+        "billedCost": 0.0422231577777778
+      },
+      {
+        "name": "Observability Events",
+        "pricingQuantity": 0.03777064847598409,
+        "pricingUnit": "USD",
+        "effectiveCost": 0.03777064847598409,
+        "billedCost": 0.03777064847598409
+      },
+      {
+        "name": "Function Invocations",
+        "pricingQuantity": 0.010311534718981974,
+        "pricingUnit": "USD",
+        "effectiveCost": 0.010311534718981974,
+        "billedCost": 0.0100038
+      },
+      {
+        "name": "Fast Origin Transfer",
+        "pricingQuantity": 0.00446235504,
+        "pricingUnit": "USD",
+        "effectiveCost": 0.00446235504,
+        "billedCost": 0.00446235504
+      },
+      {
+        "name": "CDN Requests - Additional CPU Duration",
+        "pricingQuantity": 0.0009050000000000002,
+        "pricingUnit": "USD",
+        "effectiveCost": 0.0009050000000000002,
+        "billedCost": 0.0008301666666666667
+      },
+      {
+        "name": "ISR Reads",
+        "pricingQuantity": 0.00038960000000000004,
+        "pricingUnit": "USD",
+        "effectiveCost": 0.00038960000000000004,
+        "billedCost": 0.00038960000000000004
+      },
+      {
+        "name": "Fast Data Transfer",
+        "pricingQuantity": 0,
+        "pricingUnit": "USD",
+        "effectiveCost": 0,
+        "billedCost": 0
+      },
+      {
+        "name": "CDN Requests",
+        "pricingQuantity": 0,
+        "pricingUnit": "USD",
+        "effectiveCost": 0,
+        "billedCost": 0
+      },
+      {
+        "name": "Function Duration",
+        "pricingQuantity": 0,
+        "pricingUnit": "USD",
+        "effectiveCost": 0,
+        "billedCost": 0
+      }
+    ],
+    "totals": {
+      "pricingQuantity": 3.306091132212606,
+      "effectiveCost": 3.306091132212606,
+      "billedCost": 3.3027573914427415
+    }
+  },
+  "notInvoiceAudit": true
+}

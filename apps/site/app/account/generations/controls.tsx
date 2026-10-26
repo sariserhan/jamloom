@@ -1,5 +1,6 @@
 'use client';
 import {useEffect,useState} from 'react';
+import {visibleRefresh} from '../../../lib/visible-refresh';
 type Quote={credits:number;privacyCredits:number;expiresAt:number;token:string};
 export function GenerationRehearsal(){
  const [ready,setReady]=useState(false);useEffect(()=>setReady(true),[]);
@@ -12,8 +13,8 @@ export function GenerationRehearsal(){
  const pending=jobs.some(job=>['queued','running','stopping'].includes(job.state));
  useEffect(()=>{
   if(!pending)return;
-  let active=true;const timer=setInterval(()=>{void call().then(data=>{if(active){setJobs(data.jobs);if(!data.jobs.some((job:{state:string})=>['queued','running','stopping'].includes(job.state)))setMessage('Work finished. Check each result below; completed audio is saved privately.');}}).catch(()=>{if(active)setMessage('Job updates are unavailable. Your reservation is unchanged; retry history.');});},3000);
-  return ()=>{active=false;clearInterval(timer);};
+  let active=true;const stop=visibleRefresh(async()=>{try{const data=await call();if(active){setJobs(data.jobs);if(!data.jobs.some((job:{state:string})=>['queued','running','stopping'].includes(job.state)))setMessage('Work finished. Check each result below; completed audio is saved privately.');}}catch{if(active)setMessage('Job updates are unavailable. Your reservation is unchanged; retry history.');}},3000);
+  return ()=>{active=false;stop();};
  },[pending]);
  function changed(){setQuote(null);setInput(null);setRequestId('');}
  return <section className="product-panel product-controls" style={{overflowWrap:"anywhere"}}><h2>Local generation rehearsal</h2><p>This isolated development flow uses sandbox credits and local CPU rendering. It makes no purchase or GPU rental. Upload only a source and its exported Jamloom score that you have permission to process.</p>

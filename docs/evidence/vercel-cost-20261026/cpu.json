@@ -1,0 +1,138 @@
+{
+  "query": {
+    "metric": "vercel.function_invocation.function_cpu_time_ms",
+    "aggregation": "sum",
+    "groupBy": [
+      "route"
+    ],
+    "startTime": "2026-10-19T17:58:42.318Z",
+    "endTime": "2026-10-26T17:58:42.318Z",
+    "granularity": {
+      "hours": 4
+    },
+    "orderBy": "count",
+    "orderDirection": "desc"
+  },
+  "summary": [
+    {
+      "route": "/api/song-jobs",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 72160
+    },
+    {
+      "route": "/api/notifications",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 266270
+    },
+    {
+      "route": "/api/site-status",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 148831.9556277056
+    },
+    {
+      "route": "/api/ai-dj/supervisor",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 8060
+    },
+    {
+      "route": "/api/taste/song",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 16409.173076923078
+    },
+    {
+      "route": "/api/improvise/song",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 22405.798701298703
+    },
+    {
+      "route": "/api/creation-feedback",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 23439.5
+    },
+    {
+      "route": "/api/catalogue/[[...path]]",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 5320
+    },
+    {
+      "route": "/account/[action]",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 19450
+    },
+    {
+      "route": "/listen/[kind]/[id]",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 7610
+    },
+    {
+      "route": "/api/ai-dj/sets/[[...path]]",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 8094.341991341991
+    },
+    {
+      "route": "/api/aurowall",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 8934.285714285714
+    },
+    {
+      "route": "/account",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 7885.5
+    },
+    {
+      "route": "/api/maintenance",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 15400
+    },
+    {
+      "route": "/catalogue",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 3610
+    },
+    {
+      "route": "/playlists",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 3670
+    },
+    {
+      "route": "/library",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 2906.666666666667
+    },
+    {
+      "route": "/api/favorites",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 4042.333333333333
+    },
+    {
+      "route": "/robots.txt",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 4010
+    },
+    {
+      "route": "/api/academy/stripe",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 8484.423076923078
+    },
+    {
+      "route": "/api/auth/[...all]",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 9610
+    },
+    {
+      "route": "/contact",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 3680
+    },
+    {
+      "route": "/api/music-search",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 1320
+    },
+    {
+      "route": "/api/pro/stripe",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 2170
+    },
+    {
+      "route": "/pro",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 5498.75
+    },
+    {
+      "route": "/api/pro/refresh",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 878.3333333333334
+    },
+    {
+      "route": "/api/aurowall/[id]",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 1250
+    },
+    {
+      "route": "/api/playlist-import",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 250
+    },
+    {
+      "route": "/support",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 840
+    },
+    {
+      "route": "/api/academy/[...path]",
+      "vercel_function_invocation_function_cpu_time_ms_sum": 220
+    }
+  ]
+}

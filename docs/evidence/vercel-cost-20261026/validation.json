@@ -1,0 +1,18 @@
+{
+  "unitTests": 159,
+  "typecheck": "PASS production build",
+  "productionBuild": "PASS isolated output",
+  "publicWebsiteDeployed": false,
+  "systemEnvironmentExposure": true,
+  "buildGuardTests": "PASS full range, docs/native-only skip, unknown history, same-commit rebuild, asset change, source rename",
+  "browsers": [
+    "Chromium",
+    "WebKit"
+  ],
+  "productionSavings": "NOT MEASURED",
+  "buildId": "KphKUuMNlQTtiHgZ0g8nD",
+  "buildCacheBytesRemoved": 282431226,
+  "finalBuildId": "xgZeHhdMAlD3Kcl1YmhDF",
+  "finalBuildIncludesGenerationDashboard": true,
+  "additionalBuildCacheBytesRemoved": 178204804
+}

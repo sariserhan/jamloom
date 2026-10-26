@@ -1,0 +1,24 @@
+{
+  "status": "PASS controlled browser requests",
+  "productionBillingSavings": "NOT MEASURED; local only",
+  "results": [
+    {
+      "browser": "chromium",
+      "sharedPublicRead": true,
+      "hiddenPollingStopped": true,
+      "focusVisibilityCoalesced": true,
+      "favoritesIntervalSeconds": 60,
+      "privateListNoTimer": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "sharedPublicRead": true,
+      "hiddenPollingStopped": true,
+      "focusVisibilityCoalesced": true,
+      "favoritesIntervalSeconds": 60,
+      "privateListNoTimer": true,
+      "errors": []
+    }
+  ]
+}

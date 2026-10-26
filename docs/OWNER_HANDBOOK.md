@@ -1,10 +1,14 @@
+## Build costs and display polling — 2026-10-26
+
+The current Vercel bill is dominated by builds: about $3.00 build CPU versus $0.04 runtime CPU. The local candidate now skips verified docs/native-only deployments using the full change since the last successful deployment, and avoids overlapping/hidden-tab display refreshes. Missing Git history still builds safely. Chromium/WebKit, 159 site checks and the build pass. [Evidence and boundaries](VERCEL_COST_REVIEW.md). Nothing was pushed or deployed; savings are not yet measured.
+
 ## Independent musical parts and microphone comparison — 2026-10-26
 
 [Try the 3½-minute stem arrangement](http://localhost:8766/stem-performance/review/): Perform set shows actual separate parts and faders; the complete rendered version supports seeking. The owner gave a positive first response. It rearranges one preferred original and is a research reference, not newly generated nonstop music. [Details and remaining gates](COHERENT_PERFORMANCE.md).
 
 The [microphone diagnostic](http://localhost:8767/mic-check.html) now lets you choose the input and compare browser processing. The returned processed run still has quiet-phase detections and poor singing detection; keep raw lesson settings. The capture interruption guard is tested but is not a demonstrated fix for the room issue. No audio or persistent device IDs are saved.
 
-The isolated two-listener rehearsal passed with twenty retained tracks, Stop/credit exhaustion, complete R2 recordings, access checks and cleanup. No GPU was rented. A separate [fresh integrated qualification](DJ_INTEGRATED_QUALIFICATION.md) is now owner-authorized and running within $6/one GPU/forty minutes, without replacements or public activation. Popular-song lessons still need supplier terms/assets; publication remains held.
+The isolated two-listener rehearsal passed with twenty retained tracks, Stop/credit exhaustion, complete R2 recordings, access checks and cleanup. No GPU was rented. A separate [fresh integrated qualification](DJ_INTEGRATED_QUALIFICATION.md) failed during startup before generating audio; the GPU is deleted, provisional provider charges are $0.036, and the permit is consumed. No replacement or public activation occurred. Popular-song lessons still need supplier terms/assets; publication remains held.
 
 ## Current continuity and microphone checks — 2026-10-26
 
