@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-26T19:51:48.036Z",
+  "checkedAt": "2026-10-26T19:59:39.697Z",
   "rows": [
     {
       "id": "ff132539-3d7b-45c6-bd62-70dd859126e3",
@@ -15,5 +15,19 @@
     "build": "24",
     "status": "PROCESSING",
     "observedAt": "2026-10-26T19:56:54.892681+00:00"
+  },
+  "uploadStatus": {
+    "id": "7c89605f-2c2d-4b1f-901e-294010516495",
+    "cfBundleShortVersionString": "0.10.2",
+    "cfBundleVersion": "24",
+    "createdDate": "2026-10-26T12:40:38-07:00",
+    "state": {
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "state": "PROCESSING"
+    },
+    "platform": "IOS",
+    "uploadedDate": "2026-10-26T12:49:39-07:00"
   }
 }
