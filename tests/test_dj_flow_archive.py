@@ -59,10 +59,19 @@ class FlowArchiveTests(unittest.TestCase):
         root=Path(__file__).resolve().parents[1]
         plan=json.loads((root/'docs/evidence/dj-flow-http-20261026/gpu-plan.json').read_text())
         with self.assertRaises(ValueError):trial.validate_model_study({**plan,'status':'PREPARED'},flow=True,http_flow=True)
-        allowed={**plan,'status':'AUTHORIZED'}
+        allowed={**plan,'status':'AUTHORIZED','controller_sha256':hashlib.sha256(Path(trial.__file__).read_bytes()).hexdigest(),'playback_sha256':hashlib.sha256((root/'apps/site/tests/dj-mix-comparison.mjs').read_bytes()).hexdigest(),'mixer_sha256':{name:hashlib.sha256((root/'apps/site/lib'/name).read_bytes()).hexdigest() for name in plan['mixer_sha256']}}
         trial.validate_model_study(allowed,flow=True,http_flow=True)
         with self.assertRaises(ValueError):trial.validate_model_study(allowed,flow=True)
         for key,value in [('owner_statement','finish everything'),('budget_usd',4),('max_workers',2),('max_minutes',41),('max_requests',13),('replacements',True),('public_activation',True),('controller_sha256','0'*64)]:
             with self.subTest(key=key),self.assertRaises(ValueError):trial.validate_model_study({**allowed,key:value},flow=True,http_flow=True)
+
+    def test_continuity_flow_cannot_reuse_a_consumed_or_previous_permit(self):
+        root=Path(__file__).resolve().parents[1]
+        plan=json.loads((root/'docs/evidence/dj-continuity-flow-20261026/gpu-plan.json').read_text())
+        with self.assertRaises(ValueError):trial.validate_model_study({**plan,'status':'PREPARED'},flow=True,http_flow=True,continuity=True)
+        allowed={**plan,'status':'AUTHORIZED','owner_statement':'Approve the capped $3 continuity-flow qualification','controller_sha256':hashlib.sha256(Path(trial.__file__).read_bytes()).hexdigest(),'playback_sha256':hashlib.sha256((root/'apps/site/tests/dj-mix-comparison.mjs').read_bytes()).hexdigest(),'mixer_sha256':{name:hashlib.sha256((root/'apps/site/lib'/name).read_bytes()).hexdigest() for name in plan['mixer_sha256']}}
+        trial.validate_model_study(allowed,flow=True,http_flow=True,continuity=True)
+        for change in [{'status':'CONSUMED'},{'budget_usd':4},{'max_requests':13},{'owner_statement':'do all'},{'campaign':'jamloom-dj-flow-http-20261026'}]:
+            with self.assertRaises(ValueError):trial.validate_model_study({**allowed,**change},flow=True,http_flow=True,continuity=True)
 
 if __name__=='__main__':unittest.main()

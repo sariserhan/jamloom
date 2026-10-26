@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {analyzeTrack,validAnalysis,validReview,type TrackAnalysis} from '../lib/ai-dj-analysis';
+import {analyzeTrack,validAnalysis,validReview,trackLevel,type TrackAnalysis} from '../lib/ai-dj-analysis';
 import {planTransition} from '../lib/ai-dj-plan';
 import {measureBeatGrid,validBeatGrid} from '../lib/ai-dj-beat-grid';
 const base:TrackAnalysis={version:1,sha256:'a'.repeat(64),duration:128,bpm:120,confidence:.8,beatOffset:0,rms:.1,peak:.6,wave:Array(96).fill(.5),changes:[],keyEstimate:null};
@@ -59,7 +59,7 @@ test('upgrading numerical analysis preserves existing human mix-point reviews',a
   Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:(key:string)=>storage.get(key),setItem:(key:string,value:string)=>storage.set(key,value)}});
   Object.defineProperty(globalThis,'Worker',{configurable:true,value:class{
    onmessage:(message:unknown)=>void=()=>{};terminate(){}
-   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:3,mixVersion:3,mixBounds:{start:0,end:128},audible:{start:0,end:128}}}}));}
+   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:3,mixVersion:4,energy:Array(128).fill(.1),mixBounds:{start:0,end:128},audible:{start:0,end:128}}}}));}
   }});
   const pcm=new Float32Array(128*8000).fill(.1),buffer={duration:128,numberOfChannels:1,length:pcm.length,sampleRate:8000,getChannelData:()=>pcm} as unknown as AudioBuffer;
   assert.deepEqual((await analyseBuffer(buffer,base.sha256)).review,reviewed.review);
@@ -140,7 +140,7 @@ test('vocal tracks cannot use an unreviewed one-bar bass exchange',()=>{
 test('mix entries ignore isolated intro hits and weak tails without deleting internal breaks',()=>{
  const pcm=new Float32Array(60*8000);
  for(let i=0;i<pcm.length;i++){const t=i/8000,level=t<8||t>=50?.025:.2;pcm[i]=level*Math.sin(2*Math.PI*110*t);if(t<.25||t>=58&&t<58.25)pcm[i]*=8;if(t>=25&&t<28)pcm[i]=0;}
- const a=analyzeTrack(pcm,8000,base.sha256);assert.equal(a.mixVersion,3);assert.ok(a.mixBounds!.start>=8);assert.ok(a.mixBounds!.start<9);assert.ok(a.mixBounds!.end<=50.25);assert.ok(a.mixBounds!.end>=49);assert.equal(a.duration,60);assert.ok(a.mixBounds!.start<25&&a.mixBounds!.end>28);
+ const a=analyzeTrack(pcm,8000,base.sha256);assert.equal(a.mixVersion,4);assert.ok(a.mixBounds!.start>=8);assert.ok(a.mixBounds!.start<9);assert.ok(a.mixBounds!.end<=50.25);assert.ok(a.mixBounds!.end>=49);assert.equal(a.duration,60);assert.ok(a.mixBounds!.start<25&&a.mixBounds!.end>28);
 });
 
 test('late sustained groove entries survive validation and reach the transition planner',()=>{
@@ -164,4 +164,25 @@ test('extended instrumental overlap requires complete steady regions and leaves 
  assert.equal(planTransition(a,{...a,duration:40,grid:{...grid,exit:39.25}},5,1,10).fade,8);
  assert.equal(planTransition(a,a,5,1,10,false,4,true).fade,4,'Singing does not get the long instrumental overlap');
  assert.equal(planTransition(a,a,5,1,10,true).fade,4,'Manual skip remains short');
+});
+
+test('prepared instrumental handoff avoids a late sustained collapse without removing earlier rests',()=>{
+ const a={...base,duration:60,mixBounds:{start:0,end:58},energy:Array(60).fill(.2)};
+ for(let t=12;t<17;t++)a.energy[t]=.001;
+ for(let t=40;t<44;t++)a.energy[t]=.001;
+ const p=planTransition(a,a,5,1,10);assert.ok(p.at+p.fade<=45);assert.ok(p.at+p.fade>44);
+ assert.ok(planTransition(a,a,5,1,10,false,4,true).at>55,'Do not cut unreviewed singing');
+ assert.ok(planTransition(a,a,39,1,10).at>20,'Already-too-late delivery keeps the remaining track');
+ assert.equal(planTransition(a,a,5,1,10,true).fade,4);
+ assert.ok(planTransition(a,a,5,1,10,false,8).at>50,'Chill keeps its quiet development and longer fade');
+ const brief={...a,energy:Array(60).fill(.2)};brief.energy[40]=.001;
+ assert.ok(planTransition(brief,brief,5,1,10).at>55,'Single beats are not breakdowns');
+});
+test('body loudness is bounded and energy metadata cannot bypass validation',()=>{
+ const a={...base,duration:60,energy:Array(60).fill(.2)};
+ assert.equal(trackLevel(a),.6);assert.equal(trackLevel(base),1);
+ assert.ok(trackLevel({...a,peak:2})<=.4);
+ for(const energy of [null,false,0,'',[],Array(60).fill(NaN),Array(60).fill(-1),Array(60).fill(9)])assert.equal(validAnalysis({...a,energy} as any,a.sha256),false);
+ assert.equal(validAnalysis({...a,mixVersion:4,energy:undefined},a.sha256),false);
+ const partial=analyzeTrack(new Float32Array(8000*9-1).fill(.1),8000,base.sha256);assert.equal(partial.energy!.length,8);assert.ok(validAnalysis(partial,base.sha256));
 });

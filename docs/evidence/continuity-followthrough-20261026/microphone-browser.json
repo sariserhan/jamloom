@@ -1,0 +1,143 @@
+{
+  "status": "PASS controlled PCM",
+  "rows": [
+    {
+      "browser": "chromium",
+      "controlledPCM": true,
+      "humanMicrophone": false,
+      "denialStopAndReuse": true,
+      "errors": [],
+      "completed": true,
+      "sampleRate": 48000,
+      "frames": 2996,
+      "phases": [
+        {
+          "phase": "Stay quiet · room noise",
+          "frames": 745,
+          "detectedVoicePercent": 0,
+          "medianRms": 0,
+          "medianConfidence": null,
+          "medianDetectedHz": null,
+          "rejected": {
+            "quiet": 745,
+            "noStablePitch": 0,
+            "lowConfidence": 0
+          }
+        },
+        {
+          "phase": "Sing a comfortable sustained note",
+          "frames": 750,
+          "detectedVoicePercent": 99.33333333333333,
+          "medianRms": 0.08495463374402598,
+          "medianConfidence": 0.9999871226536925,
+          "medianDetectedHz": 220.0017981377507,
+          "rejected": {
+            "quiet": 3,
+            "noStablePitch": 0,
+            "lowConfidence": 2
+          }
+        },
+        {
+          "phase": "Sing the same note more softly",
+          "frames": 750,
+          "detectedVoicePercent": 99.73333333333333,
+          "medianRms": 0.0042477513600508296,
+          "medianConfidence": 0.9999871228410484,
+          "medianDetectedHz": 220.001797978085,
+          "rejected": {
+            "quiet": 0,
+            "noStablePitch": 1,
+            "lowConfidence": 1
+          }
+        },
+        {
+          "phase": "Add gentle vibrato",
+          "frames": 751,
+          "detectedVoicePercent": 99.73368841544607,
+          "medianRms": 0.0848460514375522,
+          "medianConfidence": 0.9997852040105499,
+          "medianDetectedHz": 219.85199063031678,
+          "rejected": {
+            "quiet": 0,
+            "noStablePitch": 0,
+            "lowConfidence": 2
+          }
+        }
+      ],
+      "softwareWindowCenterToAnimationMs": {
+        "median": 29,
+        "p95": 32.60000002384004
+      },
+      "limitation": "Not physical microphone-to-display latency or independently labelled singing accuracy"
+    },
+    {
+      "browser": "webkit",
+      "controlledPCM": true,
+      "humanMicrophone": false,
+      "denialStopAndReuse": true,
+      "errors": [],
+      "completed": true,
+      "sampleRate": 48000,
+      "frames": 2995,
+      "phases": [
+        {
+          "phase": "Stay quiet · room noise",
+          "frames": 744,
+          "detectedVoicePercent": 0,
+          "medianRms": 0,
+          "medianConfidence": null,
+          "medianDetectedHz": null,
+          "rejected": {
+            "quiet": 744,
+            "noStablePitch": 0,
+            "lowConfidence": 0
+          }
+        },
+        {
+          "phase": "Sing a comfortable sustained note",
+          "frames": 750,
+          "detectedVoicePercent": 98.93333333333334,
+          "medianRms": 0.08473165596459045,
+          "medianConfidence": 0.9999870111823839,
+          "medianDetectedHz": 220.0018893070958,
+          "rejected": {
+            "quiet": 6,
+            "noStablePitch": 0,
+            "lowConfidence": 2
+          }
+        },
+        {
+          "phase": "Sing the same note more softly",
+          "frames": 750,
+          "detectedVoicePercent": 99.73333333333333,
+          "medianRms": 0.004236565638431197,
+          "medianConfidence": 0.9999870109995754,
+          "medianDetectedHz": 220.0018894696748,
+          "rejected": {
+            "quiet": 0,
+            "noStablePitch": 1,
+            "lowConfidence": 1
+          }
+        },
+        {
+          "phase": "Add gentle vibrato",
+          "frames": 751,
+          "detectedVoicePercent": 99.73368841544607,
+          "medianRms": 0.08484909168799289,
+          "medianConfidence": 0.9997791848727502,
+          "medianDetectedHz": 220.001689057073,
+          "rejected": {
+            "quiet": 0,
+            "noStablePitch": 0,
+            "lowConfidence": 2
+          }
+        }
+      ],
+      "softwareWindowCenterToAnimationMs": {
+        "median": 27.33333333333212,
+        "p95": 31.66666666666424
+      },
+      "limitation": "Not physical microphone-to-display latency or independently labelled singing accuracy"
+    }
+  ]
+}

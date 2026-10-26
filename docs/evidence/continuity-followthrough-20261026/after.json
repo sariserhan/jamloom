@@ -1,0 +1,120 @@
+{
+  "status": "PASS technical continuity; musical energy findings remain subject to listening",
+  "quiet_sections": [],
+  "seconds": 462.36,
+  "peak": 0.3269177973270416,
+  "max_delivery_wait_seconds": 0,
+  "longest_internal_below_minus60db_seconds": 0.17,
+  "capture_sha256": "9b5a04e62c9883722e0021b25b68f5d552a72b9b05bfcb5246d7d5715484566e",
+  "handoffs": [
+    {
+      "incoming_track": 2,
+      "handoff_complete_seconds": 56.508,
+      "before_rms": 0.09853550046682358,
+      "after_rms": 0.07084964215755463,
+      "after_vs_before_db": -2.8651013129634713,
+      "lowest_quarter_second_rms": 0.032539136707782745,
+      "lowest_vs_surroundings_db": -8.308785838931975
+    },
+    {
+      "incoming_track": 3,
+      "handoff_complete_seconds": 110.604,
+      "before_rms": 0.09809787571430206,
+      "after_rms": 0.08552578836679459,
+      "after_vs_before_db": -1.1912503357687614,
+      "lowest_quarter_second_rms": 0.0135544054210186,
+      "lowest_vs_surroundings_db": -16.616363639851688
+    },
+    {
+      "incoming_track": 4,
+      "handoff_complete_seconds": 140.15200000000002,
+      "before_rms": 0.09296665340662003,
+      "after_rms": 0.07487311959266663,
+      "after_vs_before_db": -1.8800253838673653,
+      "lowest_quarter_second_rms": 0.024402758106589317,
+      "lowest_vs_surroundings_db": -10.728519456642566
+    },
+    {
+      "incoming_track": 5,
+      "handoff_complete_seconds": 194.504,
+      "before_rms": 0.09129653126001358,
+      "after_rms": 0.08358900249004364,
+      "after_vs_before_db": -0.7661026912877965,
+      "lowest_quarter_second_rms": 0.02679901197552681,
+      "lowest_vs_surroundings_db": -10.272102167607922
+    },
+    {
+      "incoming_track": 6,
+      "handoff_complete_seconds": 231.104,
+      "before_rms": 0.061071764677762985,
+      "after_rms": 0.0877995565533638,
+      "after_vs_before_db": 3.1530370650436956,
+      "lowest_quarter_second_rms": 0.02798713743686676,
+      "lowest_vs_surroundings_db": -8.496451331660928
+    },
+    {
+      "incoming_track": 7,
+      "handoff_complete_seconds": 249.504,
+      "before_rms": 0.08811372518539429,
+      "after_rms": 0.0775873214006424,
+      "after_vs_before_db": -1.1050560723901646,
+      "lowest_quarter_second_rms": 0.01990342140197754,
+      "lowest_vs_surroundings_db": -12.387350353669348
+    },
+    {
+      "incoming_track": 8,
+      "handoff_complete_seconds": 290.452,
+      "before_rms": 0.09161451458930969,
+      "after_rms": 0.09441184997558594,
+      "after_vs_before_db": 0.26124445454641126,
+      "lowest_quarter_second_rms": 0.03662089258432388,
+      "lowest_vs_surroundings_db": -8.096311556408178
+    },
+    {
+      "incoming_track": 9,
+      "handoff_complete_seconds": 333.75600000000003,
+      "before_rms": 0.08897556364536285,
+      "after_rms": 0.07737115770578384,
+      "after_vs_before_db": -1.2138330521345762,
+      "lowest_quarter_second_rms": 0.04090138524770737,
+      "lowest_vs_surroundings_db": -6.164924657218456
+    },
+    {
+      "incoming_track": 10,
+      "handoff_complete_seconds": 354.908,
+      "before_rms": 0.0967455804347992,
+      "after_rms": 0.0948193371295929,
+      "after_vs_before_db": -0.17468439317801593,
+      "lowest_quarter_second_rms": 0.008490195497870445,
+      "lowest_vs_surroundings_db": -21.047365816829533
+    },
+    {
+      "incoming_track": 11,
+      "handoff_complete_seconds": 375.352,
+      "before_rms": 0.09621523320674896,
+      "after_rms": 0.08837911486625671,
+      "after_vs_before_db": -0.7378837826691078,
+      "lowest_quarter_second_rms": 0.030323026701807976,
+      "lowest_vs_surroundings_db": -9.668317112113845
+    },
+    {
+      "incoming_track": 12,
+      "handoff_complete_seconds": 421.956,
+      "before_rms": 0.057881224900484085,
+      "after_rms": 0.08865310251712799,
+      "after_vs_before_db": 3.7031245123571095,
+      "lowest_quarter_second_rms": 0.021394897252321243,
+      "lowest_vs_surroundings_db": -10.691983489310598
+    }
+  ],
+  "energy_flags": [
+    3,
+    7,
+    10
+  ],
+  "limitations": [
+    "RMS is not perceived party energy or arrangement quality",
+    "Uses twelve retained originals, not fresh generation",
+    "Capture can contain authored rests; no human listening acceptance inferred"
+  ]
+}

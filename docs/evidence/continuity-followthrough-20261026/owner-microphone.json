@@ -1,0 +1,21 @@
+{
+  "status": "PARTIAL: owner completed test; detection needs investigation",
+  "sampleRate": 48000,
+  "frames": 2996,
+  "detectedVoicePercent": [
+    15.704697986577182,
+    30.133333333333333,
+    60,
+    68.57523302263648
+  ],
+  "softwareWindowCenterToAnimationMs": {
+    "median": 28.83333333333212,
+    "p95": 34.5666667620344
+  },
+  "source": "Owner pasted local test result",
+  "limitations": [
+    "No independent voicing/pitch labels or audio captured",
+    "Timing excludes microphone hardware, OS buffering and physical display response",
+    "Unknown whether sustained singing covered each entire phase"
+  ]
+}

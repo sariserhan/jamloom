@@ -1,3 +1,16 @@
+## DJ continuity and microphone follow-through — 2026-10-26
+
+**PARTIAL overall; local implementation and scoped checks PASS.** [Current report](docs/CONTINUITY_FOLLOWTHROUGH.md), [release acceptance](docs/RELEASE_ACCEPTANCE.md). Publication remains held.
+
+- [x] Compare twelve identical originals through old/current actual mixers; remove the 2.4-second internal quiet stretch through prepared instrumental handoffs and reduce the track 6 → 7 level jump from +10.87 to -1.11 dB. Short handoff dips and listening acceptance remain open.
+- [x] Verify 63 isolated planner/session/credit/recording checks, TypeScript and 54 Python archive/worker/controller checks; transfer the complete 462.36-second recording through private R2, verify identical bytes/ranges/denial and delete the test object.
+- [x] Re-run pinned DJKado pitch/tempo/waveform benchmarks; retain the existing ACE-Step integration, MIT singing detector and one mixer clock. No new dependency or copyleft module copied.
+- [x] Provide a local real-microphone diagnostic and preserve the owner's numerical result. Software response is fast, but normal-voice misses and quiet-phase detections remain PARTIAL; refined signal diagnostics are ready.
+- [x] Pass the capped fresh continuity-flow qualification: twelve new sources, exactly two initially buffered, 446.82-second playback, full R2 round-trip, observed $0.23665 and independently confirmed zero rentals. One bounded listener run; musical acceptance and longer/multi-user capacity remain open.
+- [ ] Resolve actual microphone findings and measure physical latency; controlled browser PCM is not hardware qualification.
+- [ ] Receive supplier terms/assets for popular songs and implement the first authorized lesson; no mailbox reply can be inferred from the workspace.
+- [x] Consolidate the release acceptance ledger; preserve the owner's local-only publication decision.
+
 ## Local singing, long playback and DJ continuity — 2026-10-26
 
 **PASS scoped local implementation and checks: singing feedback, recorded-backing rehearsal, DJ delivery, phone lifecycle and cleanup. DJ musical continuity remains PARTIAL.** [Report](docs/LOCAL_AUDIO_FOLLOWTHROUGH.md). No publication or new paid compute.

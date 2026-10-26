@@ -1,0 +1,123 @@
+{
+  "status": "PASS technical continuity; musical energy findings remain subject to listening",
+  "quiet_sections": [],
+  "seconds": 446.82,
+  "peak": 0.38862717151641846,
+  "max_delivery_wait_seconds": 0.015,
+  "longest_internal_below_minus60db_seconds": 0.17,
+  "capture_sha256": "fa2440a65f3ef1fc18d84e66399380fc2d7da6e435041a39c2b1ff75365cd7c2",
+  "handoffs": [
+    {
+      "incoming_track": 2,
+      "handoff_complete_seconds": 43.751999999999995,
+      "before_rms": 0.0916220098733902,
+      "after_rms": 0.04922465980052948,
+      "after_vs_before_db": -5.396341822746348,
+      "lowest_quarter_second_rms": 0.01831771805882454,
+      "lowest_vs_surroundings_db": -11.696904333418885
+    },
+    {
+      "incoming_track": 3,
+      "handoff_complete_seconds": 62.8,
+      "before_rms": 0.08549048006534576,
+      "after_rms": 0.08737311512231827,
+      "after_vs_before_db": 0.18920128191820845,
+      "lowest_quarter_second_rms": 0.054495930671691895,
+      "lowest_vs_surroundings_db": -4.006189433842184
+    },
+    {
+      "incoming_track": 4,
+      "handoff_complete_seconds": 102.648,
+      "before_rms": 0.08808354288339615,
+      "after_rms": 0.08904009312391281,
+      "after_vs_before_db": 0.09381662192090572,
+      "lowest_quarter_second_rms": 0.04277563840150833,
+      "lowest_vs_surroundings_db": -6.32100046676073
+    },
+    {
+      "incoming_track": 5,
+      "handoff_complete_seconds": 124.1,
+      "before_rms": 0.09165860712528229,
+      "after_rms": 0.09758005291223526,
+      "after_vs_before_db": 0.5437559198942936,
+      "lowest_quarter_second_rms": 0.0036110414657741785,
+      "lowest_vs_surroundings_db": -28.36694786173308
+    },
+    {
+      "incoming_track": 6,
+      "handoff_complete_seconds": 167.044,
+      "before_rms": 0.09948664903640747,
+      "after_rms": 0.09648849070072174,
+      "after_vs_before_db": -0.26578579731127844,
+      "lowest_quarter_second_rms": 0.01761562004685402,
+      "lowest_vs_surroundings_db": -14.905461054731743
+    },
+    {
+      "incoming_track": 7,
+      "handoff_complete_seconds": 187.89600000000002,
+      "before_rms": 0.09475681930780411,
+      "after_rms": 0.08286216855049133,
+      "after_vs_before_db": -1.1650835906279005,
+      "lowest_quarter_second_rms": 0.005789320915937424,
+      "lowest_vs_surroundings_db": -23.716635421440266
+    },
+    {
+      "incoming_track": 8,
+      "handoff_complete_seconds": 240.852,
+      "before_rms": 0.08861952275037766,
+      "after_rms": 0.0870264396071434,
+      "after_vs_before_db": -0.15756381336317318,
+      "lowest_quarter_second_rms": 0.012045182287693024,
+      "lowest_vs_surroundings_db": -17.255895968649405
+    },
+    {
+      "incoming_track": 9,
+      "handoff_complete_seconds": 294.3,
+      "before_rms": 0.08626073598861694,
+      "after_rms": 0.08750622719526291,
+      "after_vs_before_db": 0.12451600963906478,
+      "lowest_quarter_second_rms": 0.016636598855257034,
+      "lowest_vs_surroundings_db": -14.357453413560716
+    },
+    {
+      "incoming_track": 10,
+      "handoff_complete_seconds": 316.352,
+      "before_rms": 0.08946789056062698,
+      "after_rms": 0.08571019023656845,
+      "after_vs_before_db": -0.3726947760432245,
+      "lowest_quarter_second_rms": 0.03743777424097061,
+      "lowest_vs_surroundings_db": -7.382794945962172
+    },
+    {
+      "incoming_track": 11,
+      "handoff_complete_seconds": 362.3,
+      "before_rms": 0.0812099426984787,
+      "after_rms": 0.08102907240390778,
+      "after_vs_before_db": -0.019366735767118688,
+      "lowest_quarter_second_rms": 0.02382819354534149,
+      "lowest_vs_surroundings_db": -10.640683730610537
+    },
+    {
+      "incoming_track": 12,
+      "handoff_complete_seconds": 413.59999999999997,
+      "before_rms": 0.09436547756195068,
+      "after_rms": 0.08876723051071167,
+      "after_vs_before_db": -0.5312094354091011,
+      "lowest_quarter_second_rms": 0.014863856136798859,
+      "lowest_vs_surroundings_db": -15.79208857323206
+    }
+  ],
+  "energy_flags": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    12
+  ],
+  "limitations": [
+    "RMS is not perceived party energy or arrangement quality",
+    "Fresh generated outputs delivered during playback",
+    "Capture can contain authored rests; no human listening acceptance inferred"
+  ]
+}

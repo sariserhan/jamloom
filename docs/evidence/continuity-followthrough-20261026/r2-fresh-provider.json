@@ -1,0 +1,23 @@
+{
+  "bucket": "jamloom-ai-dj-sessions",
+  "status": "PASS",
+  "bytes": 7192987,
+  "parts": 2,
+  "freshGeneration": true,
+  "sha256": "fa2440a65f3ef1fc18d84e66399380fc2d7da6e435041a39c2b1ff75365cd7c2",
+  "checks": [
+    "two signed parts finalized as one identical audio object",
+    "incorrect signed length rejected",
+    "production-origin CORS preflight",
+    "range playback",
+    "download filename",
+    "unsigned access denied"
+  ],
+  "object": {
+    "bytes": 7192987,
+    "mime": "audio/webm;codecs=opus",
+    "etag": "\"6512c2bda96205bc44f55a33a3aaa76d-2\"",
+    "parts": 2
+  },
+  "cleanup": "PASS: own test object absent"
+}

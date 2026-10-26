@@ -5,6 +5,7 @@ import hashlib
 import io
 import json
 import math
+import os
 from pathlib import Path
 import secrets
 import shutil
@@ -39,14 +40,17 @@ MODEL_STUDY = False
 CONSISTENCY = False
 FLOW = False
 HTTP_FLOW = False
+CONTINUITY_FLOW = False
 
 
-def configure_model_study(consistency=False, flow=False, http_flow=False):
-    global EVIDENCE, WORK, OUTPUT, LABEL, MODEL_STUDY, QUALITY, CONSISTENCY, FLOW, HTTP_FLOW
+def configure_model_study(consistency=False, flow=False, http_flow=False, continuity=False):
+    global EVIDENCE, WORK, OUTPUT, LABEL, MODEL_STUDY, QUALITY, CONSISTENCY, FLOW, HTTP_FLOW, CONTINUITY_FLOW
+    CONTINUITY_FLOW = continuity
+    http_flow = http_flow or continuity
     HTTP_FLOW = http_flow
     flow = flow or http_flow
     MODEL_STUDY, QUALITY, CONSISTENCY, FLOW = True, True, consistency, flow
-    campaign='dj-flow-http-20261026' if http_flow else 'dj-flow-buffer-20261026' if flow else 'dj-preferred-consistency-20261026' if consistency else 'dj-model-comparison-20261026'
+    campaign='dj-continuity-flow-20261026' if continuity else 'dj-flow-http-20261026' if http_flow else 'dj-flow-buffer-20261026' if flow else 'dj-preferred-consistency-20261026' if consistency else 'dj-model-comparison-20261026'
     EVIDENCE=ROOT/'docs/evidence'/campaign
     WORK=ROOT/('build-'+campaign)
     OUTPUT=ROOT/'renders'/campaign
@@ -54,11 +58,11 @@ def configure_model_study(consistency=False, flow=False, http_flow=False):
     vast.WORK, vast.STATE, vast.LABEL, vast.LEASE_SECONDS=WORK, WORK/'trial-state.json', LABEL, 2400
 
 
-def validate_model_study(plan, consistency=False, flow=False, http_flow=False):
+def validate_model_study(plan, consistency=False, flow=False, http_flow=False, continuity=False):
     from dj_model_study import cases, BASE_REVISION
     from dj_track_worker import CODE_REVISION, WEIGHTS_REVISION
-    if (plan.get('status')!='AUTHORIZED' or plan.get('owner_statement')!=('Approve the capped $3 HTTP two-track qualification' if http_flow else 'Approve the capped $3 two-track-buffer qualification' if flow else 'Approve the capped $3 preferred-music consistency study' if consistency else 'Approve the capped $3 base-model comparison')
-        or plan.get('campaign')!=('jamloom-dj-flow-http-20261026' if http_flow else 'jamloom-dj-flow-buffer-20261026' if flow else 'jamloom-dj-preferred-consistency-20261026' if consistency else 'jamloom-dj-model-comparison-20261026')
+    if (plan.get('status')!='AUTHORIZED' or plan.get('owner_statement')!=('Approve the capped $3 continuity-flow qualification' if continuity else 'Approve the capped $3 HTTP two-track qualification' if http_flow else 'Approve the capped $3 two-track-buffer qualification' if flow else 'Approve the capped $3 preferred-music consistency study' if consistency else 'Approve the capped $3 base-model comparison')
+        or plan.get('campaign')!=('jamloom-dj-continuity-flow-20261026' if continuity else 'jamloom-dj-flow-http-20261026' if http_flow else 'jamloom-dj-flow-buffer-20261026' if flow else 'jamloom-dj-preferred-consistency-20261026' if consistency else 'jamloom-dj-model-comparison-20261026')
         or any(plan.get(k)!=v for k,v in dict(budget_usd=3,max_workers=1,max_minutes=40,max_requests=12 if flow else 6).items())
         or plan.get('research_render_limit_seconds')!=120 or plan.get('production_render_limit_seconds')!=30
         or plan.get('stop_on_failure') is not True or plan.get('automatic_cleanup') is not True
@@ -193,7 +197,7 @@ def configure_replacement():
 
 
 def validate(plan):
-    if MODEL_STUDY: return validate_model_study(plan, CONSISTENCY, FLOW, HTTP_FLOW)
+    if MODEL_STUDY: return validate_model_study(plan, CONSISTENCY, FLOW, HTTP_FLOW, CONTINUITY_FLOW)
     if SUNG: return validate_sung(plan,replacement=REPLACEMENT,aggressive=SUNG_AGGRESSIVE,isolated=ISOLATED)
     if QUALITY: return validate_quality(plan,house=HOUSE,composition=COMPOSITION,guided_set=GUIDED_SET,recovery=RECOVERY,planner=PLANNER)
     if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != 'jamloom-dj-style-samples-20261025' or plan['budget_usd'] != 3
@@ -303,7 +307,7 @@ def run():
                  confirm_absence=True, disk_gb=60)
     vast.write_state(state)
     with (WORK/'watchdog.log').open('a') as log:
-        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--http-flow-study'] if HTTP_FLOW else ['--flow-study'] if FLOW else ['--consistency-study'] if CONSISTENCY else ['--model-study'] if MODEL_STUDY else ['--isolated-hooks'] if ISOLATED else ['--sung-aggressive'] if SUNG_AGGRESSIVE else ['--sung-study'] if SUNG else ['--planner-study'] if PLANNER else ['--recovery-study'] if RECOVERY else ['--guided-set'] if GUIDED_SET else ['--composition-study'] if COMPOSITION else ['--house-study'] if HOUSE else ['--quality'] if QUALITY else [])],
+        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--continuity-flow-study'] if CONTINUITY_FLOW else ['--http-flow-study'] if HTTP_FLOW else ['--flow-study'] if FLOW else ['--consistency-study'] if CONSISTENCY else ['--model-study'] if MODEL_STUDY else ['--isolated-hooks'] if ISOLATED else ['--sung-aggressive'] if SUNG_AGGRESSIVE else ['--sung-study'] if SUNG else ['--planner-study'] if PLANNER else ['--recovery-study'] if RECOVERY else ['--guided-set'] if GUIDED_SET else ['--composition-study'] if COMPOSITION else ['--house-study'] if HOUSE else ['--quality'] if QUALITY else [])],
                          stdin=subprocess.DEVNULL, stdout=log, stderr=log, start_new_session=True)
     report = dict(status='FAIL', scope='Four isolated sung candidates, mixed locally into two retained originals; no TTS or repaint' if ISOLATED else 'Four short sung edits on two retained Jamloom originals; no TTS or external references' if SUNG else 'Paired unconditioned generation with or without semantic music planning; no reference material' if PLANNER else 'Four guide/model seed controls plus two original vocal opportunities; no reference material' if RECOVERY else 'Six guided bass originals with at most three short vocal candidates; direction and consistency study' if GUIDED_SET else 'Four paired originals; same captions/model/seeds, with and without newly authored audio guides' if COMPOSITION else 'Six paired instrumental house tracks; no reference audio or research weights' if HOUSE else 'Four arrangement candidates with at most two brief vocal candidates; no reference audio or research weights' if QUALITY else 'Two original style prompts; same seed and base model; no reference audio or research weights', tracks=[])
     if FLOW:report['scope']='Twelve preferred-turbo originals at a thirty-second request cadence, two distinct vocal opportunities; bounded one-listener capacity probe, not public activation'
@@ -416,7 +420,7 @@ def run():
                 ready=OUTPUT/'ready.tmp';ready.write_text(json.dumps(report));ready.replace(OUTPUT/'ready.json')
                 if len(report['tracks'])==2:
                     with (WORK/'playback.log').open('wb') as log:
-                        playback=subprocess.Popen(['node','tests/dj-mix-comparison.mjs','--http-flow-study' if HTTP_FLOW else '--flow-study'],cwd=ROOT/'apps/site',stdout=log,stderr=subprocess.STDOUT)
+                        playback=subprocess.Popen(['node','tests/dj-mix-comparison.mjs','--http-flow-study' if HTTP_FLOW else '--flow-study'],cwd=ROOT/'apps/site',stdout=log,stderr=subprocess.STDOUT,env={**os.environ,'JAMLOOM_FLOW_SOURCE':str(OUTPUT),'JAMLOOM_FLOW_OUTPUT':str(ROOT/'renders'/('dj-continuity-flow-mix-20261026' if CONTINUITY_FLOW else 'dj-flow-http-mix-20261026' if HTTP_FLOW else 'dj-flow-buffer-mix-20261026'))})
                     report['playback_start']=wait_for_playback(playback,report['tracks'],time.monotonic()+45)
                     playback_started=time.monotonic();cadence_start=playback_started
             print(row['label']+' rendered and verified.', flush=True)
@@ -472,7 +476,7 @@ def run():
         try:
             if not report.get('cleanup_confirmed'): raise RuntimeError('Cleanup must pass before playback qualification')
             if playback.wait(timeout=max(1,850-(time.monotonic()-playback_started)))!=0: raise RuntimeError('Actual playback qualification failed')
-            capture=json.loads((ROOT/('renders/dj-flow-http-mix-20261026/report.json' if HTTP_FLOW else 'renders/dj-flow-buffer-mix-20261026/report.json')).read_text())
+            capture=json.loads((ROOT/('renders/dj-continuity-flow-mix-20261026/report.json' if CONTINUITY_FLOW else 'renders/dj-flow-http-mix-20261026/report.json' if HTTP_FLOW else 'renders/dj-flow-buffer-mix-20261026/report.json')).read_text())
             if capture.get('status')!='PASS technical' or capture.get('sourceTracks')!=[t['receipt']['sha256'] for t in report['tracks']]: raise RuntimeError('Playback output provenance failed')
             report['playback_status']='PASS technical'
         except Exception:
@@ -502,11 +506,12 @@ if __name__ == '__main__':
     parser.add_argument('--consistency-study',action='store_true')
     parser.add_argument('--flow-study',action='store_true')
     parser.add_argument('--http-flow-study',action='store_true')
+    parser.add_argument('--continuity-flow-study',action='store_true')
     args = parser.parse_args()
-    if sum([args.quality,args.replacement,args.house_study,args.composition_study,args.guided_set,args.recovery_study,args.planner_study,args.sung_study,args.sung_aggressive,args.isolated_hooks,args.model_study,args.consistency_study,args.flow_study,args.http_flow_study])>(2 if args.replacement and (args.recovery_study or args.sung_study or args.sung_aggressive) else 1): parser.error('Choose one campaign; replacements require a new prepared permit')
+    if sum([args.quality,args.replacement,args.house_study,args.composition_study,args.guided_set,args.recovery_study,args.planner_study,args.sung_study,args.sung_aggressive,args.isolated_hooks,args.model_study,args.consistency_study,args.flow_study,args.http_flow_study,args.continuity_flow_study])>(2 if args.replacement and (args.recovery_study or args.sung_study or args.sung_aggressive) else 1): parser.error('Choose one campaign; replacements require a new prepared permit')
     if args.quality or args.house_study or args.composition_study or args.guided_set or args.recovery_study or args.planner_study or args.sung_study or args.sung_aggressive or args.isolated_hooks: configure_quality(house=args.house_study,composition=args.composition_study,guided_set=args.guided_set,recovery=args.recovery_study,planner=args.planner_study,sung=args.sung_study,sung_aggressive=args.sung_aggressive,isolated=args.isolated_hooks)
     if args.replacement: configure_replacement()
-    if args.model_study or args.consistency_study or args.flow_study or args.http_flow_study: configure_model_study(args.consistency_study,args.flow_study,args.http_flow_study)
+    if args.model_study or args.consistency_study or args.flow_study or args.http_flow_study or args.continuity_flow_study: configure_model_study(args.consistency_study,args.flow_study,args.http_flow_study,args.continuity_flow_study)
     if args.watch: vast.watch()
     elif args.preflight:
         _, account, offer = preflight()

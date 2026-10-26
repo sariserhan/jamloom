@@ -5,7 +5,7 @@ import {performance} from 'node:perf_hooks';
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {detectPitch} from '../apps/web/singing-pitch.js';
-const root=resolve(import.meta.dirname,'..'),cache=process.argv[2]||'/tmp/jamloom-oss-audit-20261026',out=root+'/docs/evidence/singing-completion-20261026';mkdirSync(out,{recursive:true});
+const root=resolve(import.meta.dirname,'..'),cache=process.argv[2]||'/tmp/jamloom-oss-audit-20261026',out=process.argv[3]?resolve(process.argv[3]):root+'/docs/evidence/singing-completion-20261026';mkdirSync(out,{recursive:true});
 const sha=b=>createHash('sha256').update(b).digest('hex'),records=JSON.parse(readFileSync(root+'/docs/evidence/open-source-audit-20261026/sources.json'));
 for(const row of records.filter(r=>r.repository==='koneb71/djkado'))assert.equal(sha(readFileSync(cache+'/koneb71__djkado/source/'+row.path)),row.sha256,'Pinned upstream changed');
 const {detectTempo}=await import(pathToFileURL(cache+'/koneb71__djkado/source/src/audio/dsp/bpm.ts'));

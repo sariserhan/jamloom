@@ -256,3 +256,7 @@ See [license inventory](OPEN_SOURCE_LICENSES.md), [implementation and remaining 
 ## Completion follow-through — 2026-10-26
 
 The [expanded course and native implementation](SINGING_COMPLETION.md) supersede the initial single-lesson scope above. Eight original songs, twelve warm-ups, section practice and the native Sing tab share the same engine. New [DJKado/analysis measurements](evidence/singing-completion-20261026/audio-benchmarks.json) preserve the pinned source hashes: three labeled tempo controls, three real generated tracks and a five-minute waveform workload. Current DJ runtime remains unchanged because real-track beat accuracy and visual readability are not yet independently established. No additional source module was adopted. Real-singing evaluation uses the separately licensed vocadito corpus only for offline assessment; see the completion report for actual results and limits.
+
+## Follow-through measurements — 2026-10-26
+
+The [continuity follow-through](CONTINUITY_FOLLOWTHROUGH.md) reuses the audited ACE-Step and MIT YIN integrations, rechecks pinned DJKado DSP on 18 pitch/six tempo/four waveform workloads, and preserves the existing audio clock. Twelve fresh ACE-Step outputs plus actual continuous playback and R2 transfer pass in the new bounded run. No new runtime dependency, copyleft code or model checkpoint was adopted. Owner real-microphone findings remain PARTIAL despite the controlled pitch results.

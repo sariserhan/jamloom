@@ -18,6 +18,6 @@ execFileSync('ffmpeg',['-v','error','-y','-f','f32le','-ar',String(rate),'-ac','
 const sections=Array.from({length:5},(_,i)=>({at:i*48,notes:phrase}));
 writeFileSync(new URL('song.json',review),JSON.stringify({title:'City Lights · four-minute rehearsal',scope:'Five repetitions of an original Jamloom arrangement; playback and grading fixture, not a newly composed song',sections,lines:song.lines}));
 for(const file of ['singing-recording.js','singing-pitch.js','singing-lesson.js','singing-chart.js','singing.css'])copyFileSync(new URL('../apps/web/'+file,import.meta.url),new URL(file,review));
-for(const [source,target] of [['singing-recording.html','index.html'],['singing-recording-review.js','review.js']])copyFileSync(new URL('fixtures/'+source,import.meta.url),new URL(target,review));
+for(const [source,target] of [['singing-recording.html','index.html'],['singing-recording-review.js','review.js'],['singing-mic-check.html','mic-check.html'],['singing-mic-check.js','mic-check.js']])copyFileSync(new URL('fixtures/'+source,import.meta.url),new URL(target,review));
 copyFileSync(new URL('../apps/web/singing-capture-worklet.js',import.meta.url),new URL('singing-capture-worklet.js',review));
 const sha=b=>createHash('sha256').update(b).digest('hex');writeFileSync(new URL('provenance.json',review),JSON.stringify({seconds:240,sections:5,source:'Original Jamloom City Lights notes and lyrics',engineSha256:sha(wasm),backingSha256:sha(readFileSync(new URL('backing.mp3',review))),peak,training:false,publication:false},null,2)+'\n');console.log(review.pathname);

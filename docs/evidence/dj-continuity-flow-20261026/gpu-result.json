@@ -1,0 +1,755 @@
+{
+  "status": "PASS technical",
+  "scope": "Twelve preferred-turbo originals at a thirty-second request cadence, two distinct vocal opportunities; bounded one-listener capacity probe, not public activation",
+  "tracks": [
+    {
+      "file": "house-0.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "b6804996-eb34-468e-9d35-bd3e0660df15",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 0,
+          "seed": 901026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 41205,
+        "bytes": 11520044,
+        "sha256": "d369511ffb7575d8f6c79002ae0fc2d8b8c3c1321b2b0c3950d44a09485eca7a",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 901026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "cd286e314aac2d7ec5f14aaccbed4bf10117eb3db8d1efc0048c2975b6bedc53",
+          "audio_codes_sha256": "16a79ff7b3cc80c820503f61acf0420f650607fb0411cfaefee47605e5a8de7b",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-0.wav",
+      "round_trip_seconds": 43.799721125047654,
+      "ready_at_ms": 1793031088221
+    },
+    {
+      "file": "house-1.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "5ad6f50a-bad6-453c-9a70-774d8fa7ca6f",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 1,
+          "seed": 902026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 8813,
+        "bytes": 11520044,
+        "sha256": "925ac1ff4507fa9d84979f421ead4844caca9b8511a4d98d645ab298aec9bd32",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 902026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "3a429c0e1b523ca30cfcd4a0231ddec6adfc0ad29053e802891b443bbfe0bf5f",
+          "audio_codes_sha256": "779bc8081b973ef5268735b42506164b591caf9d72e79fe2d5be50e0861699ac",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-1.wav",
+      "round_trip_seconds": 11.151768833049573,
+      "ready_at_ms": 1793031099373
+    },
+    {
+      "file": "house-2.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "be7b5108-055e-4405-b5c0-c4b6f88b4fd6",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 2,
+          "seed": 903026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 8847,
+        "bytes": 11520044,
+        "sha256": "c8e7b86847cf7d894b789ff088b00e3064ed019a8c62e0565e912df54bdf7124",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement with a stable drum-and-bass groove through the final bars; no fade-out or resolved ending. No speech narration or robotic voice effects.",
+            "lyrics": "[Instrumental]\n[Chorus]\nFeel this\n[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": false,
+            "vocal_language": "en",
+            "seed": 903026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "f5f3708a4aad8fa03581326b765095650f4f861669770b9dbc32e21c018878be",
+          "audio_codes_sha256": "29542abe037f8112231d4181df55b5feac6bd13c9f86c4033e15ff9d1ff67f71",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-2.wav",
+      "round_trip_seconds": 11.12880204198882,
+      "ready_at_ms": 1793031111961
+    },
+    {
+      "file": "house-3.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "e71d96b5-a732-4cd6-9e1f-30731ebf0f77",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 3,
+          "seed": 904026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 8868,
+        "bytes": 11520044,
+        "sha256": "3774251cb11a0b32b9ee72bb488c3ea7cf587e2c05fe05e23535850a74ed5bf7",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 904026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "73d89c91201504c9356abf23f6cabc34433a061b1ceeb8f4304d25a59e8e3a88",
+          "audio_codes_sha256": "198ec9b68fbe5028d7d52cea398409eaea02cf0cc2efc811011d265e3eb9b3ca",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-3.wav",
+      "round_trip_seconds": 11.006623875000514,
+      "ready_at_ms": 1793031141839
+    },
+    {
+      "file": "house-4.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "c1e1a381-3109-4c1e-920b-bf220781523c",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 4,
+          "seed": 905026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 9001,
+        "bytes": 11520044,
+        "sha256": "c8f00f17688acdb9d1ad4c0d86851d7b42c91151f1ddb161d86853c592c4da92",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 905026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "6a7ffbd22316763a2103cba76327fc51676f39d374d179fb88d8fb7cc95f0190",
+          "audio_codes_sha256": "30701b48d12f3b166b2080b0deafddad40e9128d95b0d29406afaf5ec65541f5",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-4.wav",
+      "round_trip_seconds": 11.117690582992509,
+      "ready_at_ms": 1793031171955
+    },
+    {
+      "file": "house-5.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "07d334f1-b185-45c4-b771-e09edd3392c6",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 5,
+          "seed": 906026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 8834,
+        "bytes": 11520044,
+        "sha256": "32fca5ee3c9f945ad764d386749e1ab92ac60a10a1175327b2af5a11fa2c33e5",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 906026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "5f5268cbba1924a453521798c168dbdef9b9b3a898f866a62d0baf1ea27419ae",
+          "audio_codes_sha256": "032e59a4efbeaddb65450c6f24ed331ec8129f1d8528966f67b27ff1a8a33a5e",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-5.wav",
+      "round_trip_seconds": 11.312557041994296,
+      "ready_at_ms": 1793031202146
+    },
+    {
+      "file": "house-6.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "cb0a7def-be39-4a45-9849-dc6fe9b3e40d",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 6,
+          "seed": 907026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 8845,
+        "bytes": 11520044,
+        "sha256": "dc0b96b87c786a47b80f9e848682a9dd1d04a465c3164abe1b1e61692cf3c136",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 907026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "87572bc83c83ed38eecd80be09b1f66c814b38789d34b64fabdca678c9191f4e",
+          "audio_codes_sha256": "a7916de5e4a81769cdfdca7fdad35fd58957922ce93db1d198e45bc47bc39fb1",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-6.wav",
+      "round_trip_seconds": 11.228102041990496,
+      "ready_at_ms": 1793031232066
+    },
+    {
+      "file": "house-7.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "6ae49b38-488c-4d5d-9e2e-e50d4a1bf5e2",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 7,
+          "seed": 908026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 8866,
+        "bytes": 11520044,
+        "sha256": "05dac2b489c4a31e8a8b2ab51cd17e120e0359b2345f10d7bc74b7702b2dd7be",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement with a stable drum-and-bass groove through the final bars; no fade-out or resolved ending. No speech narration or robotic voice effects.",
+            "lyrics": "[Instrumental]\n[Chorus]\nLights up\n[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": false,
+            "vocal_language": "en",
+            "seed": 908026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "5bbfa2b46b275cbc11a6f1fc7d0ea461c1517f70d2088b3c20c77302d7d7183e",
+          "audio_codes_sha256": "a0ffba7040e8db33f707efc1ca63e70a5d67d6a4d2403a1bbe670ff8ca36ea02",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-7.wav",
+      "round_trip_seconds": 10.994802666013129,
+      "ready_at_ms": 1793031261829
+    },
+    {
+      "file": "house-8.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "dec2b27f-c97a-4a07-9077-b9390588b54e",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 8,
+          "seed": 909026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 8854,
+        "bytes": 11520044,
+        "sha256": "8511854aff19e2cdb7cdd068a41239a30b1b2abfbdb4d0b66a74617c00ed4cbb",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 909026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "16fbaf03c122a67322d898dabf55330ef5486a7693402e9bfd5b0974d6723a7b",
+          "audio_codes_sha256": "b52b716035128e96f2c440a425e8e6b6f1c058102990dfbdc681fc081bc6aa81",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-8.wav",
+      "round_trip_seconds": 11.009223916917108,
+      "ready_at_ms": 1793031291849
+    },
+    {
+      "file": "house-9.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "4cd971ec-7226-446c-85d2-93fe09b3a812",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 9,
+          "seed": 910026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 8844,
+        "bytes": 11520044,
+        "sha256": "994540cb3a7eeef13403af65cecdddf10b28be5e1f4bbd3b569c7b5ca19881be",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 910026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "065976cf83d027595d4fffce58bc16c596f294a6020a78ae9d248b784ef91bc5",
+          "audio_codes_sha256": "08f3f9282abdd73fba6d677845d07524fe2816743667cc7aff0e4ef146be70db",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-9.wav",
+      "round_trip_seconds": 11.137167416047305,
+      "ready_at_ms": 1793031321979
+    },
+    {
+      "file": "house-10.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "3e8b226d-1c8b-445c-b9d3-e02a160752e4",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 10,
+          "seed": 911026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 8895,
+        "bytes": 11520044,
+        "sha256": "a8791f4b44b9de57cd053cf99b4be1286b552271bf007f609ae8fb41f0bc6d2a",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 911026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "1b34a26e8eb2ba9255a51d07a7ec58e0f0f762502ef105081e69ee7de09142b3",
+          "audio_codes_sha256": "3b35fe9c9911ed56007e9a079cfab6cb68dc586971c254c16ef5933546fcaa4b",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-10.wav",
+      "round_trip_seconds": 11.346209166920744,
+      "ready_at_ms": 1793031352186
+    },
+    {
+      "file": "house-11.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "933f95bcdca8f457fca988c032e8cc8f",
+        "job": "3e22a857-0066-4c23-91c9-8b6263827801",
+        "request": {
+          "version": 1,
+          "session": "26102655555555555555555555555555",
+          "sequence": 11,
+          "seed": 912026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 8865,
+        "bytes": 11520044,
+        "sha256": "d52de1c74a474ff86ed1facac9bea456f0e2eee38c19cec74aa2bf093ac1be81",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "model_comparison": {
+          "model": "acestep-v15-turbo",
+          "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+          "parameters": {
+            "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+            "lyrics": "[Instrumental]",
+            "bpm": 128,
+            "duration": 60,
+            "instrumental": true,
+            "vocal_language": "en",
+            "seed": 912026,
+            "inference_steps": 8,
+            "guidance_scale": 7.0,
+            "use_adg": false,
+            "shift": 1.0,
+            "thinking": true,
+            "use_cot_metas": false,
+            "use_cot_caption": false,
+            "use_cot_language": false,
+            "use_cot_lyrics": false,
+            "enable_normalization": true,
+            "normalization_db": -1
+          },
+          "raw_sha256": "5d238e4b6709fe0edba6b145cf9f0cc4a6c987ba419aa3842f75179b89c3a9eb",
+          "audio_codes_sha256": "3c898383d07f2f873c674b9a4a350ef3e66ce2c325fa1e9ae86931c018e67ee5",
+          "code_tokens": 300,
+          "source_audio_used": false,
+          "trained_adapter": false,
+          "voice_quality": "NOT RUN",
+          "short_hook_qualification": false
+        }
+      },
+      "raw_archive": "model-raw-11.wav",
+      "round_trip_seconds": 11.112377166980878,
+      "ready_at_ms": 1793031381946
+    }
+  ],
+  "playback_start": {
+    "available_tracks": 2,
+    "history": [
+      "0"
+    ],
+    "session": "26102655555555555555555555555555",
+    "source_hashes": [
+      "d369511ffb7575d8f6c79002ae0fc2d8b8c3c1321b2b0c3950d44a09485eca7a",
+      "925ac1ff4507fa9d84979f421ead4844caca9b8511a4d98d645ab298aec9bd32"
+    ],
+    "started_at_ms": 1793031100757
+  },
+  "human_listening": "NOT RUN",
+  "cleanup_confirmed": true,
+  "observed_debit_usd": 0.23665154750000017,
+  "rental_seconds": 557.3407409191132,
+  "playback_status": "PASS technical"
+}

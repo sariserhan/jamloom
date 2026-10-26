@@ -8,6 +8,7 @@ import {createServer} from 'node:http';
 import {build} from 'esbuild';
 import {chromium} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
+const continuity=process.argv.includes('--continuity-study');
 const httpFlow=process.argv.includes('--http-flow-study');
 const flowFixture=process.argv.includes('--flow-fixture'),flow=process.argv.includes('--flow-study')||flowFixture||httpFlow;
 const representative=process.argv.includes('--representative-set');
@@ -17,8 +18,8 @@ const boundary=process.argv.includes('--vocal-boundary');
 const consistency=process.argv.includes('--consistency-study')||boundary;
 const modelStudy=process.argv.includes('--model-study')||consistency;
 const quality=process.argv.includes('--quality'),timing=process.argv.includes('--timing-revision');
-const house=process.argv.includes('--house-study'),guided=process.argv.includes('--guided-set')||recovery;assert.ok([quality,house,guided,planner,modelStudy,representative,flow].filter(Boolean).length<=1);assert.ok(!timing||guided);
-const root=resolve('../..'),folder=resolve(root,process.env.JAMLOOM_FLOW_OUTPUT||(flowFixture?'renders/dj-flow-buffer-replay-mix-20261026':httpFlow?'renders/dj-flow-http-mix-20261026':flow?'renders/dj-flow-buffer-mix-20261026':representative?'renders/dj-representative-mix-20261026':boundary?'renders/dj-vocal-boundary-20261026':consistency?'renders/dj-preferred-mix-20261026':modelStudy?'renders/dj-model-mix-20261026':planner?'renders/dj-planner-mix-20261026':recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025'));
+const house=process.argv.includes('--house-study'),guided=process.argv.includes('--guided-set')||recovery;assert.ok([quality,house,guided,planner,modelStudy,representative,flow,continuity].filter(Boolean).length<=1);assert.ok(!timing||guided);
+const root=resolve('../..'),folder=resolve(root,process.env.JAMLOOM_FLOW_OUTPUT||(continuity?'renders/dj-continuity-mix-20261026':flowFixture?'renders/dj-flow-buffer-replay-mix-20261026':httpFlow?'renders/dj-flow-http-mix-20261026':flow?'renders/dj-flow-buffer-mix-20261026':representative?'renders/dj-representative-mix-20261026':boundary?'renders/dj-vocal-boundary-20261026':consistency?'renders/dj-preferred-mix-20261026':modelStudy?'renders/dj-model-mix-20261026':planner?'renders/dj-planner-mix-20261026':recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025'));
 await mkdir(folder);
 let tracks=[];
 if(!flow){
@@ -59,6 +60,14 @@ if(planner){
   return{bytes,track:{id:String(index),title:hook?'Preferred house with new spoken hook':'Preferred planned '+r.request.style,artist:'Jamloom original',url:'/audio/'+index,sha256:hash,energy:r.request.energy,style:r.request.style,mood:r.request.mood,vocal:!!hook,vocalCue:hook?.cue,credit:''}};
  }));
  assert.equal(new Set(tracks.map(t=>t.track.sha256)).size,3);
+}
+if(continuity){
+ const source=root+'/renders/dj-flow-qualification-20261026',run=JSON.parse(await readFile(source+'/report.json','utf8'));
+ assert.equal(run.tracks.length,12);
+ tracks=await Promise.all(run.tracks.map(async(row,index)=>{
+  const r=row.receipt,bytes=await readFile(source+'/'+row.file);assert.equal(createHash('sha256').update(bytes).digest('hex'),r.sha256);
+  return{bytes,track:{id:String(index),title:'Retained original '+(index+1),artist:'Jamloom original',url:'/audio/'+index,sha256:r.sha256,energy:r.request.energy,style:r.request.style,mood:r.request.mood,vocal:!r.model_comparison.parameters.instrumental,credit:''}};
+ }));
 }
 if(modelStudy){
  const source=root+(consistency?'/renders/dj-preferred-consistency-20261026':'/renders/dj-model-comparison-20261026'),run=JSON.parse(await readFile(source+'/report.json','utf8'));
@@ -102,7 +111,7 @@ async function flowTrack(index){
 }
 let startup;
 if(flow){tracks=[];await flowTrack(0);await flowTrack(1);startup=JSON.parse(await readFile(flowSource+'/ready.json','utf8'));assert.equal(startup.tracks.length,2,'Start with exactly two ready tracks');}
-const revisions=boundary?{before:execFileSync('git',['rev-parse','5cb9ba8'],{encoding:'utf8'}).trim(),after:'working-tree'}:(house||guided||planner||modelStudy||representative||flow)?{after:'working-tree'}:{before:execFileSync('git',['rev-parse',quality?'f0fde92':'35bbee7'],{encoding:'utf8'}).trim(),after:quality?'working-tree':execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
+const revisions=continuity?{before:execFileSync('git',['rev-parse','c171d9e'],{encoding:'utf8'}).trim(),after:'working-tree'}:boundary?{before:execFileSync('git',['rev-parse','5cb9ba8'],{encoding:'utf8'}).trim(),after:'working-tree'}:(house||guided||planner||modelStudy||representative||flow)?{after:'working-tree'}:{before:execFileSync('git',['rev-parse',quality?'f0fde92':'35bbee7'],{encoding:'utf8'}).trim(),after:quality?'working-tree':execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
 for(const [name,ref] of Object.entries(revisions)){
  const plugins=ref==='working-tree'?[]:[{name:'historical-source',setup(b){b.onLoad({filter:/\.(ts|js|json)$/},args=>{
   const path=relative(root,args.path);assert.ok(!path.startsWith('..')&&!path.includes('node_modules'));
@@ -141,7 +150,7 @@ try{await Promise.all(Object.keys(revisions).map(async name=>{
   },[],async()=>{if(flow){const r=await fetch('/next/'+index);if(!r.ok)throw Error('Fresh-track delivery failed');const item=await r.json();if(item)index++;return item;}return index<fixtures.length?{sequence:index,track:fixtures[index++]}:null;});
   player.setMode('auto');const tap=player.context.createMediaStreamDestination();player.mixer.meter.connect(tap);window.chunks=[];window.recorder=new MediaRecorder(tap.stream);
   recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};document.querySelector('#start').onclick=()=>player.start(async()=>{recorder.start();return true;});
- },{fixtures:tracks.map(t=>t.track),finishLast:guided||planner||modelStudy||representative||flow,flow,count:flow?12:tracks.length});
+ },{fixtures:tracks.map(t=>t.track),finishLast:guided||planner||modelStudy||representative||flow||continuity,flow,count:flow?12:tracks.length});
  await page.click('#start');
  if(flow){
   await page.waitForFunction(()=>player.snapshot().status==='playing'&&player.snapshot().history.length===1);

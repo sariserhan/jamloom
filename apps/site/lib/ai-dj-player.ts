@@ -1,3 +1,4 @@
+import {trackLevel} from './ai-dj-analysis';
 import {analyseBuffer,audioDuration} from './ai-dj-library';
 import {planTransition,type TransitionPlan} from './ai-dj-plan';
 import type {TrackAnalysis} from './ai-dj-analysis';
@@ -133,7 +134,7 @@ export class AIDJPlayer{
   clearEcho(this.context,strip.fx);strip.fx.wet.gain.cancelScheduledValues(this.context.currentTime);strip.fx.wet.gain.setValueAtTime(0,this.context.currentTime);strip.fx.dry.gain.cancelScheduledValues(this.context.currentTime);strip.fx.dry.gain.setValueAtTime(1,this.context.currentTime);
   strip.eq.forEach(n=>{n.gain.cancelScheduledValues(at);n.gain.setValueAtTime(0,at);});
   deck.performance=new PerformanceDeck(this.context,deck.buffer,deck.bpm,strip.input,strip.fx,rate,deck.analysis.review?deck.analysis.review.phraseStart%(60/deck.bpm):deck.analysis.grid?.offset??deck.analysis.beatOffset);deck.gain=deck.performance.gain;
-  deck.gain.gain.setValueAtTime(gainValue,at);deck.start=at;deck.offset=offset;deck.rate=rate;deck.performance.level.gain.setValueAtTime(Math.min(1,.12/deck.analysis.rms,.8/deck.analysis.peak),at);deck.performance.play(at,offset,rate);
+  deck.gain.gain.setValueAtTime(gainValue,at);deck.start=at;deck.offset=offset;deck.rate=rate;deck.performance.level.gain.setValueAtTime(trackLevel(deck.analysis),at);deck.performance.play(at,offset,rate);
  }
  private perform(index:number,action:PerformanceAction,at:number,by:'AI'|'You'){
   const deck=this.decks[index];if(!deck?.performance||!this.running||this.blend&&this.context.currentTime>=this.blend.at)return false;

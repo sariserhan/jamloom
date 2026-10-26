@@ -1,0 +1,18 @@
+{
+  "status": "PASS scoped local checks",
+  "site_tests": 156,
+  "planner_session_credit_recording_tests": 63,
+  "python_tests": 54,
+  "typescript": "PASS",
+  "browser": [
+    "Chromium and WebKit 30-second controlled microphone, denial, stop and context reuse",
+    "Chromium and WebKit all ten comparison players, seeking and exclusive playback",
+    "Chromium and WebKit full fresh set plus all twelve individual tracks, playback/seek and layout"
+  ],
+  "production_build_this_increment": "NOT RUN: stable built preview preserved",
+  "physical_microphone": "PARTIAL: owner numerical findings retained",
+  "public_release": "HELD",
+  "fresh_generation": "PASS: twelve newly generated and archived sources, exactly two initially buffered, full 446.82-second capture",
+  "r2": "PASS: full retained and fresh mix, exact bytes, signed ranges, denial and cleanup",
+  "post_qualification_hardening": "Malformed cache/fractional duration checks and chill-style guard; qualified 60-second house behavior unchanged, no extra paid run"
+}

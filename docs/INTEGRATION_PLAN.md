@@ -55,3 +55,7 @@ No integration of GPL/AGPL/unlicensed app code, new paid APIs, model purchases o
 ## Completion follow-through — 2026-10-26
 
 The [expanded course and native implementation](SINGING_COMPLETION.md) supersede the initial single-lesson scope above. Eight original songs, twelve warm-ups, section practice and the native Sing tab share the same engine. New [DJKado/analysis measurements](evidence/singing-completion-20261026/audio-benchmarks.json) preserve the pinned source hashes: three labeled tempo controls, three real generated tracks and a five-minute waveform workload. Current DJ runtime remains unchanged because real-track beat accuracy and visual readability are not yet independently established. No additional source module was adopted. Real-singing evaluation uses the separately licensed vocadito corpus only for offline assessment; see the completion report for actual results and limits.
+
+## Continuity follow-through — 2026-10-26
+
+[Current results](CONTINUITY_FOLLOWTHROUGH.md): reuse the adopted MIT detector and ACE-Step, preserve the single mixer clock, and re-run the pinned DJKado benchmark. Its visualization modules remain STUDY; no independently labeled real beat advantage or accepted Automix replacement is demonstrated. The current measurable fix belongs in Jamloom's existing energy analysis/planner. No dependency or license changes.

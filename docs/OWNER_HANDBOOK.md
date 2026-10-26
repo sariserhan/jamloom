@@ -1,3 +1,11 @@
+## Current continuity and microphone checks — 2026-10-26
+
+[Compare the four handoffs and full sets](http://localhost:8766/continuity/review/). The same originals are used in each version; completion is near 20 seconds in each excerpt. The revised mixer avoids late instrumental collapses when the next track is ready and uses sustained body level for attenuation. Technical gaps improved; professional musical continuity is not yet accepted.
+
+[Run the 30-second microphone check](http://localhost:8767/mic-check.html). Stay quiet first, then hold a comfortable note, soften it and add gentle vibrato. The result contains only numeric observations; no audio is saved. The first physical result needs investigation, despite fast software response. [Current evidence and limits](CONTINUITY_FOLLOWTHROUGH.md); [release checklist](RELEASE_ACCEPTANCE.md).
+
+The fresh-generation test passed with twelve new tracks, exactly two initially buffered, a 446.82-second complete mix and verified R2 save/read/delete. [Hear the fresh set](http://localhost:8766/fresh-flow/review/). The GPU is deleted; observed cost was about $0.24. Musical acceptance and longer/multi-user capacity remain open. Website publication remains held. Tency's enquiry was sent; supplier reply status cannot be checked from this workspace. Keep all source audio, model files and signed phone evidence.
+
 ## Local audio follow-through — 2026-10-26
 
 [Work and evidence](LOCAL_AUDIO_FOLLOWTHROUGH.md). Quiet-input detection now requires stronger confidence rather than discarding every quiet voice. Existing-course Chromium/WebKit checks and physical iPhone playback/interruption checks pass. Jamloom 0.10.1 build 23 is installed and launched. The four-minute original-backing rehearsal is at http://127.0.0.1:8767/; it is separate from the eight-song curriculum and the six requested licensed songs.

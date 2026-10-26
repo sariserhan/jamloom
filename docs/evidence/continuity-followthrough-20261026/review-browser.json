@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "browser": "chromium",
+      "players": 10,
+      "playSeekAndExclusivePlayback": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "players": 10,
+      "playSeekAndExclusivePlayback": true,
+      "overflow": false,
+      "errors": []
+    }
+  ]
+}

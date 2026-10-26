@@ -1,0 +1,637 @@
+{
+  "status": "PASS measurements; human singing accuracy and physical latency NOT RUN",
+  "upstreamCommit": "a0483796f94d799c297de15fb64f8f39cb051cc2",
+  "node": "v22.23.1",
+  "pitch": [
+    {
+      "name": "piano_48_v55_take0",
+      "kind": "real_cc0_note",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 2048,
+          "actualWindowMs": 128,
+          "frames": 126,
+          "voiced": 86,
+          "medianCents": 0.9976166360079394,
+          "p95Cents": 2.7357010041610508,
+          "within50Cents": 0.6825396825396826,
+          "p95CpuMs": 0.37554099999999835
+        },
+        {
+          "windowMs": 40,
+          "samples": 1024,
+          "actualWindowMs": 64,
+          "frames": 132,
+          "voiced": 90,
+          "medianCents": 1.65923333419376,
+          "p95Cents": 5.091418654120342,
+          "within50Cents": 0.6818181818181818,
+          "p95CpuMs": 0.14074999999999704
+        }
+      ]
+    },
+    {
+      "name": "piano_60_v55_take0",
+      "kind": "real_cc0_note",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 2048,
+          "actualWindowMs": 128,
+          "frames": 126,
+          "voiced": 126,
+          "medianCents": 3.10951018938248,
+          "p95Cents": 3.402819438368265,
+          "within50Cents": 1,
+          "p95CpuMs": 0.3050410000000028
+        },
+        {
+          "windowMs": 40,
+          "samples": 1024,
+          "actualWindowMs": 64,
+          "frames": 132,
+          "voiced": 132,
+          "medianCents": 3.090990530727431,
+          "p95Cents": 3.499060742971921,
+          "within50Cents": 1,
+          "p95CpuMs": 0.13695899999999028
+        }
+      ]
+    },
+    {
+      "name": "piano_72_v55_take0",
+      "kind": "real_cc0_note",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 2048,
+          "actualWindowMs": 128,
+          "frames": 126,
+          "voiced": 88,
+          "medianCents": 3.3978668156007608,
+          "p95Cents": 5.45838879064919,
+          "within50Cents": 0.6904761904761905,
+          "p95CpuMs": 0.2837079999999901
+        },
+        {
+          "windowMs": 40,
+          "samples": 1024,
+          "actualWindowMs": 64,
+          "frames": 132,
+          "voiced": 95,
+          "medianCents": 3.1441865444116686,
+          "p95Cents": 5.376233537800172,
+          "within50Cents": 0.7121212121212122,
+          "p95CpuMs": 0.1448750000000132
+        }
+      ]
+    },
+    {
+      "name": "tone-110",
+      "kind": "synthetic_control",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 2048,
+          "actualWindowMs": 128,
+          "frames": 88,
+          "voiced": 88,
+          "medianCents": 0.015293400838383167,
+          "p95Cents": 0.015496522614877778,
+          "within50Cents": 1,
+          "p95CpuMs": 0.2909999999999968
+        },
+        {
+          "windowMs": 40,
+          "samples": 1024,
+          "actualWindowMs": 64,
+          "frames": 94,
+          "voiced": 94,
+          "medianCents": 0.013979766778866419,
+          "p95Cents": 0.015744722455347256,
+          "within50Cents": 1,
+          "p95CpuMs": 0.15254099999998516
+        }
+      ]
+    },
+    {
+      "name": "tone-220",
+      "kind": "synthetic_control",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 2048,
+          "actualWindowMs": 128,
+          "frames": 88,
+          "voiced": 88,
+          "medianCents": 0.11807446794325506,
+          "p95Cents": 0.11843597636362808,
+          "within50Cents": 1,
+          "p95CpuMs": 0.3278749999999775
+        },
+        {
+          "windowMs": 40,
+          "samples": 1024,
+          "actualWindowMs": 64,
+          "frames": 94,
+          "voiced": 94,
+          "medianCents": 0.11587059659466899,
+          "p95Cents": 0.11711451880220326,
+          "within50Cents": 1,
+          "p95CpuMs": 0.19120799999996052
+        }
+      ]
+    },
+    {
+      "name": "tone-440",
+      "kind": "synthetic_control",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 2048,
+          "actualWindowMs": 128,
+          "frames": 88,
+          "voiced": 88,
+          "medianCents": 0.4360480896481215,
+          "p95Cents": 0.4408114031361547,
+          "within50Cents": 1,
+          "p95CpuMs": 0.3876250000000141
+        },
+        {
+          "windowMs": 40,
+          "samples": 1024,
+          "actualWindowMs": 64,
+          "frames": 94,
+          "voiced": 94,
+          "medianCents": 0.43337938703341955,
+          "p95Cents": 0.4353273225227847,
+          "within50Cents": 1,
+          "p95CpuMs": 0.2242909999999938
+        }
+      ]
+    },
+    {
+      "name": "tone-523.251",
+      "kind": "synthetic_control",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 2048,
+          "actualWindowMs": 128,
+          "frames": 88,
+          "voiced": 88,
+          "medianCents": 0.36443121328446326,
+          "p95Cents": 0.3680975151809388,
+          "within50Cents": 1,
+          "p95CpuMs": 0.513499999999965
+        },
+        {
+          "windowMs": 40,
+          "samples": 1024,
+          "actualWindowMs": 64,
+          "frames": 94,
+          "voiced": 94,
+          "medianCents": 0.35905992890929134,
+          "p95Cents": 0.36370411102211453,
+          "within50Cents": 1,
+          "p95CpuMs": 0.27108399999997346
+        }
+      ]
+    },
+    {
+      "name": "tone-880",
+      "kind": "synthetic_control",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 2048,
+          "actualWindowMs": 128,
+          "frames": 88,
+          "voiced": 88,
+          "medianCents": 2.6302010667849194,
+          "p95Cents": 2.6381625017067503,
+          "within50Cents": 1,
+          "p95CpuMs": 0.3183750000000032
+        },
+        {
+          "windowMs": 40,
+          "samples": 1024,
+          "actualWindowMs": 64,
+          "frames": 94,
+          "voiced": 94,
+          "medianCents": 2.5987104211148977,
+          "p95Cents": 2.630827961657384,
+          "within50Cents": 1,
+          "p95CpuMs": 0.139583000000016
+        }
+      ]
+    },
+    {
+      "name": "noise",
+      "kind": "unvoiced_control",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 2048,
+          "actualWindowMs": 128,
+          "frames": 88,
+          "voiced": 0,
+          "medianCents": null,
+          "p95Cents": null,
+          "within50Cents": null,
+          "p95CpuMs": 0.29312500000003183
+        },
+        {
+          "windowMs": 40,
+          "samples": 1024,
+          "actualWindowMs": 64,
+          "frames": 94,
+          "voiced": 0,
+          "medianCents": null,
+          "p95Cents": null,
+          "within50Cents": null,
+          "p95CpuMs": 0.128750000000025
+        }
+      ]
+    },
+    {
+      "name": "silence",
+      "kind": "unvoiced_control",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 2048,
+          "actualWindowMs": 128,
+          "frames": 88,
+          "voiced": 0,
+          "medianCents": null,
+          "p95Cents": null,
+          "within50Cents": null,
+          "p95CpuMs": 0.010041000000001077
+        },
+        {
+          "windowMs": 40,
+          "samples": 1024,
+          "actualWindowMs": 64,
+          "frames": 94,
+          "voiced": 0,
+          "medianCents": null,
+          "p95Cents": null,
+          "within50Cents": null,
+          "p95CpuMs": 0.005583000000001448
+        }
+      ]
+    },
+    {
+      "name": "vibrato-110-noise-0",
+      "kind": "synthetic_harmonic_vibrato_not_human_voice",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "actualWindowMs": 85.33333333333333,
+          "frames": 192,
+          "voiced": 192,
+          "medianCents": 4.146637113496224,
+          "p95Cents": 5.49274489340099,
+          "within50Cents": 1,
+          "p95CpuMs": 1.5206660000001193
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "actualWindowMs": 42.666666666666664,
+          "frames": 196,
+          "voiced": 196,
+          "medianCents": 1.0375681341612333,
+          "p95Cents": 1.5182975321118943,
+          "within50Cents": 1,
+          "p95CpuMs": 0.7175830000001042
+        }
+      ]
+    },
+    {
+      "name": "vibrato-110-noise-0.025",
+      "kind": "synthetic_harmonic_vibrato_not_human_voice",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "actualWindowMs": 85.33333333333333,
+          "frames": 192,
+          "voiced": 192,
+          "medianCents": 4.076878301598668,
+          "p95Cents": 5.915807109336545,
+          "within50Cents": 1,
+          "p95CpuMs": 1.5089159999999993
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "actualWindowMs": 42.666666666666664,
+          "frames": 196,
+          "voiced": 196,
+          "medianCents": 1.0144201712285794,
+          "p95Cents": 2.5802694611561434,
+          "within50Cents": 1,
+          "p95CpuMs": 0.7024590000000899
+        }
+      ]
+    },
+    {
+      "name": "vibrato-220-noise-0",
+      "kind": "synthetic_harmonic_vibrato_not_human_voice",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "actualWindowMs": 85.33333333333333,
+          "frames": 192,
+          "voiced": 192,
+          "medianCents": 4.406135796413276,
+          "p95Cents": 6.176400802436169,
+          "within50Cents": 1,
+          "p95CpuMs": 1.524083000000246
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "actualWindowMs": 42.666666666666664,
+          "frames": 196,
+          "voiced": 196,
+          "medianCents": 1.1180237678609548,
+          "p95Cents": 1.5658184784023748,
+          "within50Cents": 1,
+          "p95CpuMs": 0.7285000000001673
+        }
+      ]
+    },
+    {
+      "name": "vibrato-220-noise-0.025",
+      "kind": "synthetic_harmonic_vibrato_not_human_voice",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "actualWindowMs": 85.33333333333333,
+          "frames": 192,
+          "voiced": 192,
+          "medianCents": 4.60284026872397,
+          "p95Cents": 6.321693678738632,
+          "within50Cents": 1,
+          "p95CpuMs": 1.5376659999997173
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "actualWindowMs": 42.666666666666664,
+          "frames": 196,
+          "voiced": 196,
+          "medianCents": 0.9589263401050391,
+          "p95Cents": 2.1343586339991463,
+          "within50Cents": 1,
+          "p95CpuMs": 0.7095419999996011
+        }
+      ]
+    },
+    {
+      "name": "vibrato-440-noise-0",
+      "kind": "synthetic_harmonic_vibrato_not_human_voice",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "actualWindowMs": 85.33333333333333,
+          "frames": 192,
+          "voiced": 192,
+          "medianCents": 4.8403461522849955,
+          "p95Cents": 6.573008340481428,
+          "within50Cents": 1,
+          "p95CpuMs": 1.556583000000046
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "actualWindowMs": 42.666666666666664,
+          "frames": 196,
+          "voiced": 196,
+          "medianCents": 1.2100410612340402,
+          "p95Cents": 1.7084695127292022,
+          "within50Cents": 1,
+          "p95CpuMs": 0.7111250000002656
+        }
+      ]
+    },
+    {
+      "name": "vibrato-440-noise-0.025",
+      "kind": "synthetic_harmonic_vibrato_not_human_voice",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "actualWindowMs": 85.33333333333333,
+          "frames": 192,
+          "voiced": 192,
+          "medianCents": 4.718423602353368,
+          "p95Cents": 6.583647869019812,
+          "within50Cents": 1,
+          "p95CpuMs": 1.5482500000002801
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "actualWindowMs": 42.666666666666664,
+          "frames": 196,
+          "voiced": 196,
+          "medianCents": 1.1566600506947178,
+          "p95Cents": 1.856543344164648,
+          "within50Cents": 1,
+          "p95CpuMs": 0.6961249999999382
+        }
+      ]
+    },
+    {
+      "name": "vibrato-880-noise-0",
+      "kind": "synthetic_harmonic_vibrato_not_human_voice",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "actualWindowMs": 85.33333333333333,
+          "frames": 192,
+          "voiced": 192,
+          "medianCents": 4.766997541780014,
+          "p95Cents": 6.94339348089514,
+          "within50Cents": 1,
+          "p95CpuMs": 1.603041000000303
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "actualWindowMs": 42.666666666666664,
+          "frames": 196,
+          "voiced": 196,
+          "medianCents": 1.3287298944686505,
+          "p95Cents": 1.968229468540213,
+          "within50Cents": 1,
+          "p95CpuMs": 0.7147910000003321
+        }
+      ]
+    },
+    {
+      "name": "vibrato-880-noise-0.025",
+      "kind": "synthetic_harmonic_vibrato_not_human_voice",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "actualWindowMs": 85.33333333333333,
+          "frames": 192,
+          "voiced": 192,
+          "medianCents": 4.843250928907001,
+          "p95Cents": 6.9923810835185405,
+          "within50Cents": 1,
+          "p95CpuMs": 1.596958000000086
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "actualWindowMs": 42.666666666666664,
+          "frames": 196,
+          "voiced": 196,
+          "medianCents": 1.1500663410345606,
+          "p95Cents": 2.0751984319003727,
+          "within50Cents": 1,
+          "p95CpuMs": 0.7424590000000535
+        }
+      ]
+    }
+  ],
+  "tempo": [
+    {
+      "name": "original-0",
+      "kind": "real_generated_music",
+      "expected": null,
+      "jamloom": {
+        "bpm": 114.3,
+        "ms": 221.95004200000005
+      },
+      "djkado": {
+        "bpm": 127.99,
+        "ms": 125.311958
+      },
+      "note": "Jamloom also performs key/energy/grid analysis; elapsed scopes differ"
+    },
+    {
+      "name": "original-1",
+      "kind": "real_generated_music",
+      "expected": null,
+      "jamloom": {
+        "bpm": 127.7,
+        "ms": 148.06608299999994
+      },
+      "djkado": {
+        "bpm": 128,
+        "ms": 115.19229099999995
+      },
+      "note": "Jamloom also performs key/energy/grid analysis; elapsed scopes differ"
+    },
+    {
+      "name": "original-2",
+      "kind": "real_generated_music",
+      "expected": null,
+      "jamloom": {
+        "bpm": 127.7,
+        "ms": 97.08995900000014
+      },
+      "djkado": {
+        "bpm": 128,
+        "ms": 113.99466699999994
+      },
+      "note": "Jamloom also performs key/energy/grid analysis; elapsed scopes differ"
+    },
+    {
+      "name": "beat-120",
+      "kind": "synthetic_beat_control",
+      "expected": 120,
+      "jamloom": {
+        "bpm": 120,
+        "ms": 26.0775000000001
+      },
+      "djkado": {
+        "bpm": 120,
+        "ms": 35.44137500000011
+      },
+      "note": "Jamloom also performs key/energy/grid analysis; elapsed scopes differ"
+    },
+    {
+      "name": "beat-128",
+      "kind": "synthetic_beat_control",
+      "expected": 128,
+      "jamloom": {
+        "bpm": 127.7,
+        "ms": 26.510500000000093
+      },
+      "djkado": {
+        "bpm": 128,
+        "ms": 35.405083000000104
+      },
+      "note": "Jamloom also performs key/energy/grid analysis; elapsed scopes differ"
+    },
+    {
+      "name": "beat-140",
+      "kind": "synthetic_beat_control",
+      "expected": 140,
+      "jamloom": {
+        "bpm": 139.5,
+        "ms": 26.3404579999999
+      },
+      "djkado": {
+        "bpm": 140,
+        "ms": 35.65058399999998
+      },
+      "note": "Jamloom also performs key/energy/grid analysis; elapsed scopes differ"
+    }
+  ],
+  "waveforms": [
+    {
+      "name": "original-0",
+      "seconds": 60,
+      "ms": 7.524540999999999,
+      "bins": 6000,
+      "typedBytes": 24000,
+      "jamloomOverviewBins": 96
+    },
+    {
+      "name": "original-1",
+      "seconds": 60,
+      "ms": 6.431166999999959,
+      "bins": 6000,
+      "typedBytes": 24000,
+      "jamloomOverviewBins": 96
+    },
+    {
+      "name": "original-2",
+      "seconds": 60,
+      "ms": 3.322791999999936,
+      "bins": 6000,
+      "typedBytes": 24000,
+      "jamloomOverviewBins": 96
+    },
+    {
+      "name": "five-minute-tiled-original-performance-only",
+      "seconds": 300,
+      "ms": 12.76654199999939,
+      "bins": 30000,
+      "typedBytes": 120000
+    }
+  ],
+  "decision": "Retain current live detector and DJ engine. Rich multiband waveform has extra detail and extra storage; real-song beat labels and rendered readability are required before adoption. No upstream runtime copied.",
+  "limitations": [
+    "Instrument recordings and controlled vibrato are not a labeled human singer corpus",
+    "Real generated-track BPM has no independent beat annotations",
+    "CPU measurements exclude microphone, OS and display latency",
+    "Tiled long audio measures preparation only, not musical transitions"
+  ]
+}

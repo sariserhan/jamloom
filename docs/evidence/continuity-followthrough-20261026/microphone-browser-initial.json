@@ -1,0 +1,79 @@
+{
+  "status": "PASS controlled PCM",
+  "rows": [
+    {
+      "browser": "chromium",
+      "controlledPCM": true,
+      "humanMicrophone": false,
+      "denialStopAndReuse": true,
+      "errors": [],
+      "completed": true,
+      "sampleRate": 48000,
+      "frames": 2996,
+      "phases": [
+        {
+          "phase": "Stay quiet · room noise",
+          "frames": 745,
+          "detectedVoicePercent": 0
+        },
+        {
+          "phase": "Sing a comfortable sustained note",
+          "frames": 750,
+          "detectedVoicePercent": 99.86666666666666
+        },
+        {
+          "phase": "Sing the same note more softly",
+          "frames": 750,
+          "detectedVoicePercent": 99.6
+        },
+        {
+          "phase": "Add gentle vibrato",
+          "frames": 751,
+          "detectedVoicePercent": 99.86684420772303
+        }
+      ],
+      "softwareWindowCenterToAnimationMs": {
+        "median": 29.033333381015836,
+        "p95": 33.60000002384186
+      },
+      "limitation": "Not physical microphone-to-display latency or independently labelled singing accuracy"
+    },
+    {
+      "browser": "webkit",
+      "controlledPCM": true,
+      "humanMicrophone": false,
+      "denialStopAndReuse": true,
+      "errors": [],
+      "completed": true,
+      "sampleRate": 48000,
+      "frames": 2994,
+      "phases": [
+        {
+          "phase": "Stay quiet · room noise",
+          "frames": 745,
+          "detectedVoicePercent": 0
+        },
+        {
+          "phase": "Sing a comfortable sustained note",
+          "frames": 750,
+          "detectedVoicePercent": 98.93333333333334
+        },
+        {
+          "phase": "Sing the same note more softly",
+          "frames": 748,
+          "detectedVoicePercent": 99.73262032085562
+        },
+        {
+          "phase": "Add gentle vibrato",
+          "frames": 751,
+          "detectedVoicePercent": 99.73368841544607
+        }
+      ],
+      "softwareWindowCenterToAnimationMs": {
+        "median": 27,
+        "p95": 32.66666666666788
+      },
+      "limitation": "Not physical microphone-to-display latency or independently labelled singing accuracy"
+    }
+  ]
+}
