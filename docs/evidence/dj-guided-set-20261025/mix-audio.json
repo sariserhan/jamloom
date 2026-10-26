@@ -1,0 +1,22 @@
+{
+  "status": "PASS technical",
+  "sha256": "f632b60051f0f5ffa8a83d408367c5b0a40bfba10db0d38a1107493166a432dd",
+  "seconds": 332.7,
+  "peak": 0.44320914149284363,
+  "rms": 0.06243599980271222,
+  "silence_threshold_db": -60,
+  "min_silence_seconds": 0.25,
+  "detected_silent_intervals": 0,
+  "automatic_actions": [
+    {
+      "action": "filter",
+      "label": "Filter sweep",
+      "at": 8.788857142857143,
+      "until": 10.503142857142857,
+      "position": 8.392857142857142,
+      "by": "AI"
+    }
+  ],
+  "human_listening": "NOT RUN",
+  "scope": "No measured quiet gaps; this does not establish musical phrasing or perfect transitions"
+}

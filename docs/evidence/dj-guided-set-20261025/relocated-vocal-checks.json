@@ -1,0 +1,49 @@
+{
+  "status": "PASS measured placement; musical qualification pending",
+  "tracks": [
+    {
+      "sequence": 2,
+      "source_sha256": "adb70f4940a560acfe0181f4b18641f32c793e17d70ec8523ded53b51909e7fa",
+      "synthetic_probe_calls": 1,
+      "cue": {
+        "start": 14.362857142857143,
+        "seconds": 1.7142916666666668,
+        "bpm": 140.0,
+        "repeat": true,
+        "echo": false
+      }
+    },
+    {
+      "sequence": 7,
+      "source_sha256": "532375c9a1e1020ba19b0272ad05517280e0aa9e965d4d379df7945a4e07ef9c",
+      "synthetic_probe_calls": 1,
+      "cue": {
+        "start": 22.500714285714285,
+        "seconds": 1.7142916666666668,
+        "bpm": 140.0,
+        "repeat": false,
+        "echo": true
+      }
+    },
+    {
+      "sequence": 12,
+      "source_sha256": "6a456fa8c873616644b4b33c996962087cc315592a6fee898976f34e7d16b9f0",
+      "synthetic_probe_calls": 1,
+      "cue": {
+        "start": 18.433571428571426,
+        "seconds": 1.7142916666666668,
+        "bpm": 140.0,
+        "repeat": true,
+        "echo": true
+      }
+    }
+  ],
+  "worker_sha256": "d4cd028adc2e3faf3885812474c63bd1d7446080b03096cdc2a78dc48d25991d",
+  "new_model_calls": 0,
+  "human_listening": "NOT RUN",
+  "limits": [
+    "The GPU run used the previous placement code.",
+    "Synthetic voice probe only; no listening copy published.",
+    "No downbeat or phrase labels inferred."
+  ]
+}

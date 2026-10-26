@@ -1,0 +1,18 @@
+{
+  "status": "FAIL vocal placement qualification",
+  "checks": [
+    {
+      "sequence": 2,
+      "grid": null
+    },
+    {
+      "sequence": 7,
+      "grid": null
+    },
+    {
+      "sequence": 12,
+      "grid": null
+    }
+  ],
+  "reason": "All eligible generated bass tracks lack the required stable hook-region grid; no relaxed timing guard applied"
+}

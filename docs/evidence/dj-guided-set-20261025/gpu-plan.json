@@ -1,0 +1,160 @@
+{
+  "status": "AUTHORIZED",
+  "campaign": "jamloom-dj-guided-set-20261025",
+  "owner_statement": "Approve the capped $3 guided set",
+  "budget_usd": 3,
+  "max_workers": 1,
+  "max_minutes": 20,
+  "max_requests": 9,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "public_activation": false,
+  "source_audio_used": true,
+  "source_audio_origin": "original_authored_notes_and_synthesis",
+  "reference_audio_used": false,
+  "learned_reference_weights_used": false,
+  "guide_strength": 0.5,
+  "model": {
+    "code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "weights": "19671f406d603126926c1b7e2adc169acbcade22"
+  },
+  "worker_sha256": {
+    "cloud_music_setup.sh": "6b3a092a6d1ce00e3cf6d71707c9283a6bae75451e05ca65f0648cad0e402c7b",
+    "cloud_dj_warm.sh": "9b9128cb4c113a7be2337fcbbbe9084797fac4dccad6f8c98206fe0f11e0a64f",
+    "dj_track_worker.py": "4112ee916ece424f404d7203d5f5240ddc1a601612ed7f2292a43667809874fc",
+    "dj_warm_engine.py": "2669882b768119d70a61e227056f77fd8261e998a917067429dce529c8330431",
+    "dj_vocal.py": "acfb44e794cf43c225c0fe60fbf5ed018b4baf6976214cf61c5b37a545ecf263",
+    "club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb",
+    "dj_composition.py": "38a834bed486e8e34a4e4f58124ecbc02448cf464af1391e4b0674ad1d9527d5",
+    "prepare_electronic_bank.py": "9eae4d896dec423bb11ca80d2a1e0bbd814c6441b1b262624d7f1eaa66dbdf70"
+  },
+  "manifest_sha256": "37920c432079b6a51be2321e46a0b5071cdca2ded8d3e50f6cb06f07abcfafe3",
+  "tracks": [
+    {
+      "label": "Consistency A",
+      "request": {
+        "version": 1,
+        "session": "20003f25ac894d478a5be087c57402cf",
+        "sequence": 0,
+        "seed": 311025,
+        "style": "bass",
+        "energy": 4,
+        "mood": "deep",
+        "beat": {
+          "bpm": 140,
+          "groove": "syncopated"
+        }
+      },
+      "vocals": false,
+      "seconds": 60,
+      "caption": "Original instrumental bass music with half-time and broken-beat sections, 140 BPM, syncopated groove, hypnotic minor-key color. Use a punchy half-time snare pocket, syncopated kick and short bass call-and-response. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 140,
+      "guide_score_sha256": "84206247af879ca7a6b4f440f5cb930b7628e0926a9197a2903c92d1729131e5"
+    },
+    {
+      "label": "Consistency B",
+      "request": {
+        "version": 1,
+        "session": "20003f25ac894d478a5be087c57402cf",
+        "sequence": 1,
+        "seed": 312025,
+        "style": "bass",
+        "energy": 4,
+        "mood": "deep",
+        "beat": {
+          "bpm": 140,
+          "groove": "syncopated"
+        }
+      },
+      "vocals": false,
+      "seconds": 60,
+      "caption": "Original instrumental bass music with half-time and broken-beat sections, 140 BPM, syncopated groove, hypnotic minor-key color. Use a punchy half-time snare pocket, syncopated kick and short bass call-and-response. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 140,
+      "guide_score_sha256": "ecd6eb6e09ceff332ea1b287bbc3cfdc7e287dbadf602fd38e3cf1e99d724b06"
+    },
+    {
+      "label": "Consistency C with short loop candidate",
+      "request": {
+        "version": 1,
+        "session": "20003f25ac894d478a5be087c57402cf",
+        "sequence": 2,
+        "seed": 313025,
+        "style": "bass",
+        "energy": 4,
+        "mood": "deep",
+        "beat": {
+          "bpm": 140,
+          "groove": "syncopated"
+        }
+      },
+      "vocals": true,
+      "seconds": 60,
+      "caption": "Original instrumental bass music with half-time and broken-beat sections, 140 BPM, syncopated groove, hypnotic minor-key color. Use a punchy half-time snare pocket, syncopated kick and short bass call-and-response. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 140,
+      "guide_score_sha256": "03b4cc5faad65ab87ce5eda744c713f510e84870a9b39d7563410b5697c1c44b"
+    },
+    {
+      "label": "Bright rolling lift with echo candidate",
+      "request": {
+        "version": 1,
+        "session": "20003f25ac894d478a5be087c57402cf",
+        "sequence": 7,
+        "seed": 314025,
+        "style": "bass",
+        "energy": 5,
+        "mood": "bright",
+        "beat": {
+          "bpm": 140,
+          "groove": "rolling"
+        }
+      },
+      "vocals": true,
+      "seconds": 60,
+      "caption": "Original instrumental bass music with half-time and broken-beat sections, 140 BPM, rolling groove, bright uplifting accents. Use a punchy half-time snare pocket, syncopated kick and short bass call-and-response. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 5 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 140,
+      "guide_score_sha256": "eae2aa5668259c69f791d1f0963cda0735c3a2bd35d8812812f6ebce3edbdf14"
+    },
+    {
+      "label": "Warm steady groove with loop/echo candidate",
+      "request": {
+        "version": 1,
+        "session": "20003f25ac894d478a5be087c57402cf",
+        "sequence": 12,
+        "seed": 315025,
+        "style": "bass",
+        "energy": 4,
+        "mood": "warm",
+        "beat": {
+          "bpm": 140,
+          "groove": "steady"
+        }
+      },
+      "vocals": true,
+      "seconds": 60,
+      "caption": "Original instrumental bass music with half-time and broken-beat sections, 140 BPM, steady groove, warm rounded chords. Use a punchy half-time snare pocket, syncopated kick and short bass call-and-response. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 140,
+      "guide_score_sha256": "9180e90db4c8cb43661f469fffe2987e93f4eb7c0e51c1ce27c24ae25817532e"
+    },
+    {
+      "label": "Restrained ending",
+      "request": {
+        "version": 1,
+        "session": "20003f25ac894d478a5be087c57402cf",
+        "sequence": 13,
+        "seed": 316025,
+        "style": "bass",
+        "energy": 2,
+        "mood": "warm",
+        "beat": {
+          "bpm": 140,
+          "groove": "steady"
+        }
+      },
+      "vocals": false,
+      "seconds": 60,
+      "caption": "Original instrumental bass music with half-time and broken-beat sections, 140 BPM, steady groove, warm rounded chords. Use a punchy half-time snare pocket, syncopated kick and short bass call-and-response. Start with a gentle complete groove. Develop one motif in eight-bar phrases, with subtle percussion variation and a relaxed final four bars. No festival build or drop. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 2 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 140,
+      "guide_score_sha256": "d400814f0cbc322104b8ab890cfe91631871fa4071bf15f2849aff1f19dbedcf"
+    }
+  ]
+}

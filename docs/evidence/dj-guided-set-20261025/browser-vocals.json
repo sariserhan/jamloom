@@ -1,0 +1,60 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Original phrase",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Short repeat",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Brief echo",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Repeat + echo",
+          "seconds": 12,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Original phrase",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Short repeat",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Brief echo",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Repeat + echo",
+          "seconds": 12.024,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "speakerOutput": "Muted",
+  "humanListening": "NOT RUN"
+}

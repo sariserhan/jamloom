@@ -28,6 +28,22 @@ class CompositionTests(unittest.TestCase):
             import hashlib
             self.assertEqual(run.stdout.strip(),hashlib.sha256((json.dumps(score(self.value()),indent=2)+'\n').encode()).hexdigest())
 
+    def test_guided_set_routes_hooks_without_source_conditioning(self):
+        from unittest.mock import patch
+        from dj_track_worker import composition_set
+        with patch('dj_track_worker.ace',return_value='audio')as generate:
+            self.assertEqual(composition_set(self.value(sequence=2),Path('/tmp')), 'audio')
+            self.assertTrue(generate.call_args.kwargs['guided'])
+            composition_set(self.value(sequence=2),Path('/tmp'),hook='We rise')
+            self.assertFalse(generate.call_args.kwargs['guided']);self.assertEqual(generate.call_args.kwargs['hook'],'We rise')
+    def test_direction_changes_score_and_closing_removes_build_rolls(self):
+        base=self.value(style='bass',beat={'bpm':140,'groove':'syncopated'})
+        kept=score(base);changed=score(base|{'beat':{'bpm':140,'groove':'rolling'}})
+        self.assertNotEqual([e for e in kept['events']if e['bus']=='kick'],[e for e in changed['events']if e['bus']=='kick'])
+        closing=score(base|{'energy':2})
+        self.assertLess(sum(e['velocity']for e in closing['events']),sum(e['velocity']for e in kept['events']))
+        self.assertLess(len([e for e in closing['events']if 88<=e['beat']<96]),len([e for e in kept['events']if 88<=e['beat']<96]))
+
     def test_render_stems_silence_and_determinism(self):
         a=render(score(self.value()));b=render(score(self.value()));mix=sum(a.values())
         self.assertEqual(mix.shape,(60*RATE,2));self.assertLess(np.max(np.abs(mix)),.851)

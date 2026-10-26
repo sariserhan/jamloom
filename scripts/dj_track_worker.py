@@ -15,6 +15,7 @@ from scipy.signal import resample_poly
 ROOT = Path(__file__).resolve().parents[1]
 CODE_REVISION = 'ca1e85fe9430179831e6bc6be790c332190a3866'
 WEIGHTS_REVISION = '19671f406d603126926c1b7e2adc169acbcade22'
+HOOK_PHRASES = ('Feel alive', 'Keep moving', 'Stay together', 'One more', 'Lights up', 'Come closer', 'Feel this', 'We rise')
 STYLE_MANIFEST = Path(__file__).with_name('dj-styles.json')
 if not STYLE_MANIFEST.exists(): STYLE_MANIFEST = ROOT/'assets/manifests/dj-styles.json'
 STYLES = json.loads(STYLE_MANIFEST.read_text())['styles']
@@ -130,6 +131,11 @@ def composition_study(value, directory, engine=None, hook=None):
     return ace(value,directory,engine,arranged=True,guided=bool(value['sequence']%2))
 
 
+def composition_set(value, directory, engine=None, hook=None):
+    if request(value)['style'] not in ('house','bass'): raise ValueError('Composition set supports house and bass only')
+    return ace(value,directory,engine,hook=hook,arranged=True,guided=hook is None)
+
+
 def ace(value, directory, engine=None, hook=None, arranged=False, focused=False, guided=False):
     if guided and (hook is not None or focused): raise ValueError('Original instrumental guide only')
     import random
@@ -141,8 +147,8 @@ def ace(value, directory, engine=None, hook=None, arranged=False, focused=False,
     dit, lm = engine if engine is not None else load_ace()
     caption, bpm = focused_house_brief(value) if focused else arranged_brief(value) if arranged else brief(value)
     if hook is not None:
-        if hook not in ('Feel alive', 'Keep moving', 'Stay together', 'One more'): raise ValueError('Original two-word phrase required')
-        caption = 'Dry spoken rhythmic vocal, one original voice saying only '+hook+'. No backing music, no drums, no instruments, no imitation of any singer.'
+        if hook not in HOOK_PHRASES: raise ValueError('Original two-word phrase required')
+        caption = 'One expressive original voice, a short rhythmic sung or chanted hook: '+hook+'. Deliver the complete two-word phrase once in under two seconds, with a confident attack and a brief rising finish, then silence. Dry isolated vocal, no reverb or echo, no verse, no backing music, no drums, no instruments, no imitation of any singer.'
     source={}
     if guided:
         from dj_composition import prepare

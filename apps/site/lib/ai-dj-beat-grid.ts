@@ -5,12 +5,15 @@ export function validBeatGrid(grid:BeatGrid){
  const regions=grid.regions,period=60/grid.bpm;
  return Array.isArray(regions)&&regions.length>0&&regions.length<=40&&grid.coverage>=.25&&regions.every((r,i)=>r&&[r.start,r.end].every(Number.isFinite)&&Number.isSafeInteger(r.beats)&&r.beats>=8&&r.start>=0&&Math.abs(r.end-r.start-(r.beats-1)*period)<.001&&(!i||r.start>regions[i-1].end))&&regions.reduce((sum,r)=>sum+r.beats,0)>=32&&grid.entry===regions[0].start&&grid.exit===regions.at(-1)!.end;
 }
-// Stable low-frequency attacks establish a beat lattice, never a downbeat or musical phrase.
+// Stable bass or percussion attacks establish a beat lattice, never a downbeat or musical phrase.
 export function measureBeatGrid(samples:Float32Array,rate:number,estimate:number):BeatGrid|undefined{
+ return measureBand(samples,rate,estimate,false)??measureBand(samples,rate,estimate,true);
+}
+function measureBand(samples:Float32Array,rate:number,estimate:number,percussion:boolean):BeatGrid|undefined{
  if(estimate>=45&&estimate<=80)estimate*=2;
  if(rate!==8000||samples.length<24*rate||!Number.isFinite(estimate))return;
  const hop=40,envelope:number[]=[];let low=0,prior=0,smoothedPower=0;
- for(let i=0;i<samples.length;i+=hop){for(let j=i;j<Math.min(i+hop,samples.length);j++){low+=.1*(samples[j]-low);smoothedPower+=.01*(low*low-smoothedPower);}const value=Math.sqrt(smoothedPower);envelope.push(Math.max(0,value-prior));prior=value;}
+ for(let i=0;i<samples.length;i+=hop){for(let j=i;j<Math.min(i+hop,samples.length);j++){low+=(percussion?.5:.1)*(samples[j]-low);const value=percussion?samples[j]-low:low;smoothedPower+=.01*(value*value-smoothedPower);}const value=Math.sqrt(smoothedPower);envelope.push(Math.max(0,value-prior));prior=value;}
  const peaks:{time:number;strength:number}[]=[];
  for(let i=1;i<envelope.length-1;i++){
   if(envelope[i]<=envelope[i-1]||envelope[i]<envelope[i+1])continue;

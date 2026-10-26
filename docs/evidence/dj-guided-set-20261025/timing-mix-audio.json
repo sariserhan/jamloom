@@ -1,0 +1,46 @@
+{
+  "status": "PASS technical",
+  "sha256": "1826cd623d9d231d6062316ebeeb983c10660a21101f3505a20ca40da3f97db2",
+  "seconds": 295.26,
+  "peak": 0.42846038937568665,
+  "rms": 0.062402356888461824,
+  "silence_threshold_db": -60,
+  "min_silence_seconds": 0.25,
+  "detected_silent_intervals": 0,
+  "automatic_actions": [
+    {
+      "action": "filter",
+      "label": "Filter sweep",
+      "at": 8.776857142857143,
+      "until": 10.491142857142856,
+      "position": 8.392857142857142,
+      "by": "AI"
+    },
+    {
+      "action": "roll-one",
+      "label": "1 roll",
+      "at": 153.45042857142857,
+      "until": 154.30757142857144,
+      "position": 15.64357142857144,
+      "by": "AI"
+    },
+    {
+      "action": "echo",
+      "label": "Echo",
+      "at": 164.1647142857143,
+      "until": 165.87900000000002,
+      "position": 26.357857142857156,
+      "by": "AI"
+    },
+    {
+      "action": "filter",
+      "label": "Filter sweep",
+      "at": 174.879,
+      "until": 176.5932857142857,
+      "position": 37.07214285714285,
+      "by": "AI"
+    }
+  ],
+  "human_listening": "NOT RUN",
+  "scope": "No measured quiet gaps; this does not establish musical phrasing or perfect transitions"
+}

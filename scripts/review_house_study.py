@@ -12,7 +12,10 @@ ROOT=Path(__file__).resolve().parents[1]
 EVIDENCE=ROOT/'docs/evidence/dj-house-consistency-20261025'
 
 
-def main(blind=False):
+def main(blind=False,guided=False,timing=False):
+    if timing and not guided:raise ValueError('Timing revision requires guided set')
+    global EVIDENCE
+    if guided:EVIDENCE=ROOT/'docs/evidence/dj-guided-set-20261025'
     if blind:
         source=ROOT/'renders/dj-house-consistency-20261025'
         result=json.loads((source/'report.json').read_text())
@@ -29,12 +32,12 @@ def main(blind=False):
         title='Which house tracks belong at a party?'
         intro='Six one-minute clips, with their generation conditions hidden and loudness matched. For each number, tell us: party-ready or boring? What works or fails in the groove, sound and musical development? Judge each clip before comparing favorites.'
     else:
-        source=ROOT/'renders/dj-house-mix-20261025'
+        source=ROOT/('renders/dj-guided-mix-timing-20261025' if timing else 'renders/dj-guided-mix-20261025' if guided else 'renders/dj-house-mix-20261025')
         result=json.loads((source/'report.json').read_text());assert result['status']=='PASS technical' and len(result['results'])==1
-        row=result['results'][0];rows=[(source/'after.webm',row['sha256'],'accepted-house-mix','Accepted house set')]
-        title='Hear the accepted tracks as a set.'
-        intro='House clips 1 and 2 from the last review, followed by a previously accepted house track with a brief original vocal. This is a new recording of the real DJ engine playing existing music. Listen for smooth handoffs and the short vocal repeat. It does not test new generation consistency.'
-    review=ROOT/'renders/club-studies-20261024'/('house-blind' if blind else 'house-mix')/'review'
+        row=result['results'][0];rows=[(source/'after.webm',row['sha256'],'guided-mix' if guided else 'accepted-house-mix','Guided bass set' if guided else 'Accepted house set')]
+        title='Hear the fresh guided set.' if guided else 'Hear the accepted tracks as a set.'
+        intro='Six fresh guided originals through the real DJ mixer. The final track requests a calmer groove. This batch is instrumental; its vocal candidates were skipped by the generation timing checks. Listen for continuity, musical development and appropriately placed effects.' if guided else 'House clips 1 and 2 from the last review, followed by a previously accepted house track with a brief original vocal. This is a new recording of the real DJ engine playing existing music. Listen for smooth handoffs and the short vocal repeat. It does not test new generation consistency.'
+    review=ROOT/'renders/club-studies-20261024'/('guided-performance' if timing else 'guided-mix' if guided else 'house-blind' if blind else 'house-mix')/'review'
     for source,digest,_,_ in rows:assert hashlib.sha256(source.read_bytes()).hexdigest()==digest
     levels=[loudness(row[0]) for row in rows]
     target=min(-18,*(float(v['input_i'])-max(0,float(v['input_tp'])+2.5) for v in levels))
@@ -50,9 +53,9 @@ def main(blind=False):
     (review/'index.html').write_text(page)
     assert not list(review.glob('*.json'))
     if blind:assert all('house-'+str(i) not in page for i in range(6)) and all(str(seed) not in page for seed in [261025,271025,281025])
-    (EVIDENCE/('blind-listening.json' if blind else 'mix-listening.json')).write_text(json.dumps(dict(status='PASS technical',target_lufs=target,tracks=receipts,human_listening='NOT RUN'),indent=2)+'\n')
-    print('http://localhost:8766/'+('house-blind' if blind else 'house-mix')+'/review/')
+    (EVIDENCE/('timing-mix-listening.json' if timing else 'blind-listening.json' if blind else 'mix-listening.json')).write_text(json.dumps(dict(status='PASS technical',target_lufs=target,tracks=receipts,human_listening='NOT RUN'),indent=2)+'\n')
+    print('http://localhost:8766/'+('guided-performance' if timing else 'guided-mix' if guided else 'house-blind' if blind else 'house-mix')+'/review/')
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--blind',action='store_true');main(p.parse_args().blind)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--blind',action='store_true');p.add_argument('--guided-set',action='store_true');p.add_argument('--timing-revision',action='store_true');a=p.parse_args();main(a.blind,a.guided_set,a.timing_revision)

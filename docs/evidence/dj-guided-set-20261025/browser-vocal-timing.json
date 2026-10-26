@@ -1,0 +1,118 @@
+{
+  "status": "PASS measured timing",
+  "rows": [
+    {
+      "sequence": 2,
+      "cue": {
+        "start": 14.362857142857143,
+        "seconds": 1.7142916666666668,
+        "bpm": 140,
+        "repeat": true,
+        "echo": false
+      },
+      "grid": {
+        "bpm": 140,
+        "offset": 0.2200000000000001,
+        "maxError": 0.005714285714290668,
+        "coverage": 0.7246376811594203,
+        "entry": 13.077142857142862,
+        "exit": 55.07714285714292,
+        "hookSafe": false,
+        "regions": [
+          {
+            "start": 13.077142857142862,
+            "end": 17.362857142857145,
+            "beats": 11
+          },
+          {
+            "start": 40.50571428571428,
+            "end": 44.79142857142858,
+            "beats": 11
+          },
+          {
+            "start": 45.648571428571444,
+            "end": 48.64857142857146,
+            "beats": 8
+          },
+          {
+            "start": 49.50571428571432,
+            "end": 55.07714285714292,
+            "beats": 14
+          }
+        ]
+      },
+      "ready": true
+    },
+    {
+      "sequence": 7,
+      "cue": {
+        "start": 22.500714285714285,
+        "seconds": 1.7142916666666668,
+        "bpm": 140,
+        "repeat": false,
+        "echo": true
+      },
+      "grid": {
+        "bpm": 140,
+        "offset": 0.2150000000000001,
+        "maxError": 0.007857142857147892,
+        "coverage": 0.855072463768116,
+        "entry": 13.072142857142861,
+        "exit": 54.643571428571484,
+        "hookSafe": true,
+        "regions": [
+          {
+            "start": 13.072142857142861,
+            "end": 54.643571428571484,
+            "beats": 98
+          }
+        ]
+      },
+      "ready": true
+    },
+    {
+      "sequence": 12,
+      "cue": {
+        "start": 18.433571428571426,
+        "seconds": 1.7142916666666668,
+        "bpm": 140,
+        "repeat": true,
+        "echo": true
+      },
+      "grid": {
+        "bpm": 140,
+        "offset": 0.005,
+        "maxError": 0.0050000000000451905,
+        "coverage": 0.8333333333333334,
+        "entry": 11.147857142857145,
+        "exit": 59.14785714285722,
+        "hookSafe": false,
+        "regions": [
+          {
+            "start": 11.147857142857145,
+            "end": 16.29071428571429,
+            "beats": 13
+          },
+          {
+            "start": 17.147857142857145,
+            "end": 20.57642857142856,
+            "beats": 9
+          },
+          {
+            "start": 44.57642857142858,
+            "end": 54.00500000000005,
+            "beats": 23
+          },
+          {
+            "start": 54.86214285714291,
+            "end": 59.14785714285722,
+            "beats": 11
+          }
+        ]
+      },
+      "ready": true
+    }
+  ],
+  "voiceAudio": "Synthetic probe only; no new vocal model output",
+  "humanListening": "NOT RUN"
+}

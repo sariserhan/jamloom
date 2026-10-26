@@ -1,0 +1,26 @@
+{
+  "status": "PASS technical",
+  "tracks": [
+    {
+      "mode": "dry",
+      "source_sha256": "5b54de35c44d4624d7920f9ebbc06869c9053a3cff0ec9a3b0ff55e5256d943f",
+      "sha256": "9820786d091f9fee764b5b80120625a2ea9b1c4e8191650ca9aaf48e8da0bae7"
+    },
+    {
+      "mode": "loop",
+      "source_sha256": "03a3c8356f7c7aba1cd095a1e616e59c37721582ec0c1122bacc232e0dfcd96a",
+      "sha256": "393b2cb8fcf0c3149fdae3822c82998a49f5dac50fd2f04144327b4ec98d7f5b"
+    },
+    {
+      "mode": "echo",
+      "source_sha256": "83ec1acadbd733b585ae0dd0f8657e9ae915d4c6a543bf176e6b51ce8ee5f8f1",
+      "sha256": "2786d542a8ef6178b2a84d770245c24eac9ce7c4c68cba9176464a3ff18e0e73"
+    },
+    {
+      "mode": "both",
+      "source_sha256": "263efb29c38630a65a592975a2d56ff7c7da0a7460de9485685287db07e482c0",
+      "sha256": "71d14154c47761331f6c783f82218dac91a41fa4a0d788a74ae1b78f6f06287b"
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

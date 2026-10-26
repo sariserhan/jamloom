@@ -1,0 +1,73 @@
+{
+  "status": "PASS inventory verification",
+  "owner_scope": "all the one under downloads folder",
+  "files": [
+    {
+      "source_id": "ref-38b9a95f7a58",
+      "style": "bass",
+      "sha256": "38b9a95f7a58fa5730feb94c27b2f7d44cb78f86c5b3cad1db8c4646767f83f8",
+      "previous_full_file_analysis": true,
+      "duration_seconds": 3077.247729
+    },
+    {
+      "source_id": "ref-7c431fa8ac07",
+      "style": "bass",
+      "sha256": "7c431fa8ac071a552a80f03978500b3731df5c3c8bfcfc8ac8e2f0dc70c29340",
+      "previous_full_file_analysis": true,
+      "duration_seconds": 3420.117333
+    },
+    {
+      "source_id": "ref-4ea6aeb253de",
+      "style": "bass",
+      "sha256": "4ea6aeb253de5c748a232c3c1705a0320a72f0d2b4c7f45d6bfb3f88afd0a4e1",
+      "previous_full_file_analysis": true,
+      "duration_seconds": 2457.797375
+    },
+    {
+      "source_id": "ref-40c00cfee0d2",
+      "style": "bass",
+      "sha256": "40c00cfee0d267b4961c4bcbe583760e70d73854a73bccc0cad7728ad945a35a",
+      "previous_full_file_analysis": true,
+      "duration_seconds": 4574.741333
+    },
+    {
+      "source_id": "ref-9523c4cadaf0",
+      "style": "bass",
+      "sha256": "9523c4cadaf0084d6c3513d9eb7b84143812aff8797af189e9f595bf24e82420",
+      "previous_full_file_analysis": true,
+      "duration_seconds": 3167.808
+    },
+    {
+      "source_id": "ref-7693d26f548c",
+      "style": "house",
+      "sha256": "7693d26f548cffdaf8650a075c308265012892e6f425486a77a781b5f33a6064",
+      "previous_full_file_analysis": true,
+      "duration_seconds": 2292.482917
+    },
+    {
+      "source_id": "ref-092e32866f1b",
+      "style": "techno",
+      "sha256": "092e32866f1b745ee90627d451c9e6eaef94e6a16f89eb4f94e3ed98cbeb944e",
+      "previous_full_file_analysis": true,
+      "duration_seconds": 6199.018667
+    },
+    {
+      "source_id": "ref-bf6a54e43d0b",
+      "style": "hip-hop",
+      "sha256": "bf6a54e43d0b121b5c67e781cb6ccc8d590676618c47a6f2b13b3d2999de7374",
+      "previous_full_file_analysis": true,
+      "duration_seconds": 3783.389771
+    },
+    {
+      "source_id": "ref-36ba23f9c325",
+      "style": "chill",
+      "sha256": "36ba23f9c325af5a8d27e277722a479db0c961f78a08adc12b9747ca9505c034",
+      "previous_full_file_analysis": true,
+      "duration_seconds": 7886.704042
+    }
+  ],
+  "vocal_observation": "Owner reports vocals in all supplied performances; exact vocal/effect timestamps remain unverified",
+  "semantic_auditor": "Previously failed; not reused as ground truth",
+  "training_audio_used": false,
+  "uploads": false
+}

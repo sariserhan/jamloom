@@ -1,0 +1,45 @@
+✔ renderer startup requires authenticated readiness and the pinned model (29.390375ms)
+✔ remote worker binds receipts to claimed jobs and rejects corrupt or late output (735.80275ms)
+✔ starting direction is requoted without accepting a higher price (26.359458ms)
+✔ carried DJ allowance may top up within the accepted maximum, but a higher tariff or maximum needs approval (1.379208ms)
+✔ DJ price labels distinguish generated time, carried allowance and a whole-credit top-up (27.284083ms)
+✔ beat instructions travel with the next request and playback uses delivered batch metadata (1.565541ms)
+✔ session storage separates owners, sessions and codecs; rejects unbound configuration (1.108583ms)
+✔ multipart finalization requires all contiguous equally sized parts and exact total (0.243083ms)
+✔ invalid multipart requests fail before provider access (3.473791ms)
+✔ signed session downloads use the party name without changing private object identity (11.518458ms)
+✔ DJ session input defaults Public and rejects unsafe fields (1.149125ms)
+▶ isolated DJ session ledger, fresh batches and public set policy
+  ✔ bounded supervisor exits on empty inventory and rejects unsafe watch options (4819.898417ms)
+  ✔ warm rental delivers distinct customer tracks before shutdown and recovers failed work safely (303.979375ms)
+  ✔ one listener stopping drains and refunds only their render while the other continues (219.790375ms)
+  ✔ concurrent Starts cannot overbook a warm worker or consume rejected credits (30.5675ms)
+  ✔ warm deadline, budget and lost heartbeat stop capacity and refund unacknowledged jobs (40.1675ms)
+  ✔ quotes bind owner and sharing, private premium, atomic idempotent Start (4.819083ms)
+  ✔ bounded preparation, fresh seeds, verified output and immutable settlement retries (345.813459ms)
+  ✔ private, local and unplayed recordings never enter public listing or playback (178.147333ms)
+  ✔ credit exhaustion stops new reservations without changing visibility (77.211709ms)
+  ✔ Stop race refunds queued work; running work waits for its shutdown receipt (130.340292ms)
+  ✔ lost settlement response retries once; disconnected sessions cannot dispatch (109.695167ms)
+  ✔ abandoned queued work expires even while its customer keeps heartbeating (8.773375ms)
+  ✔ rising per-track price preserves Private and requires a fresh decision (80.5995ms)
+  ✔ DJ and existing generation queues share one worker capacity (16.746625ms)
+  ✔ frozen accounts cannot complete new public music (53.433ms)
+  ✔ durable deadlines hold capacity and receipts recover a settlement crash (146.2375ms)
+  ✔ remote shutdown, complete inventory and immutable cost evidence precede delivery (234.650375ms)
+  ✔ customer HTTP protects quotes, account identity, audio and paused launch gates (92.445542ms)
+  ✔ account purge keeps running work and saved recordings protected (13.68175ms)
+✔ isolated DJ session ledger, fresh batches and public set policy (7177.331458ms)
+✔ tax, Apple fee tier, fixed fees, refunds, FX and overhead reduce spendable proceeds (0.685833ms)
+✔ Stripe signatures require exact body, timestamp and sandbox credentials (2.170167ms)
+✔ Checkout fulfillment rereads paid state, rejects unpaid, wrong totals and live payments (0.404042ms)
+✔ private credits are 25 percent of the base rounded up, bounded and integer (0.084625ms)
+✔ credit checkout binds product, taxes, pack and billing mode (0.60225ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7491.6235

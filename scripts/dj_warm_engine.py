@@ -14,7 +14,7 @@ import time
 import uuid
 import wave
 
-from dj_track_worker import ace, house_study, composition_study, canonical, load_ace, request, CODE_REVISION, WEIGHTS_REVISION
+from dj_track_worker import ace, house_study, composition_study, composition_set, canonical, load_ace, request, CODE_REVISION, WEIGHTS_REVISION
 from dj_vocal import add_hook
 
 
@@ -116,13 +116,14 @@ def main():
     modes.add_argument('--arranged', action='store_true', help='Use the unqualified arrangement candidate for a bounded listening trial')
     modes.add_argument('--house-study', action='store_true', help='Paired house-only study; sequence selects the predeclared condition')
     modes.add_argument('--composition-study',action='store_true',help='Paired original-score conditioning experiment')
+    modes.add_argument('--guided-set',action='store_true',help='Original-score set with sparse original vocal candidates')
     args = parser.parse_args()
     if args.token_file.stat().st_mode & 0o077:
         raise ValueError('Token file must be private')
     token = args.token_file.read_text().strip()
     if len(token) != 64 or any(c not in '0123456789abcdef' for c in token):
         raise ValueError('Invalid token')
-    renderer = Renderer(args.expires_unix, args.max_requests, generate=composition_study if args.composition_study else house_study if args.house_study else partial(ace, arranged=args.arranged))
+    renderer = Renderer(args.expires_unix, args.max_requests, generate=composition_set if args.guided_set else composition_study if args.composition_study else house_study if args.house_study else partial(ace, arranged=args.arranged))
     renderer.engine = load_ace()
     server = HTTPServer(('127.0.0.1', 8768), handler(renderer, token))
     server.timeout = 1

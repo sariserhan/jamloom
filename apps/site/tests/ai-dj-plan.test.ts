@@ -59,7 +59,7 @@ test('upgrading numerical analysis preserves existing human mix-point reviews',a
   Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:(key:string)=>storage.get(key),setItem:(key:string,value:string)=>storage.set(key,value)}});
   Object.defineProperty(globalThis,'Worker',{configurable:true,value:class{
    onmessage:(message:unknown)=>void=()=>{};terminate(){}
-   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:2,mixVersion:1,mixBounds:{start:0,end:128},audible:{start:0,end:128}}}}));}
+   postMessage(){analyses++;queueMicrotask(()=>this.onmessage({data:{analysis:{...base,gridVersion:3,mixVersion:1,mixBounds:{start:0,end:128},audible:{start:0,end:128}}}}));}
   }});
   const pcm=new Float32Array(128*8000).fill(.1),buffer={duration:128,numberOfChannels:1,length:pcm.length,sampleRate:8000,getChannelData:()=>pcm} as unknown as AudioBuffer;
   assert.deepEqual((await analyseBuffer(buffer,base.sha256)).review,reviewed.review);
@@ -72,12 +72,14 @@ test('analysis measures actual audio and exposes uncertainty without inventing a
 });
 
 test('vocal loop requires matching measured beat timing and a brief approved cue',async()=>{
- const {validVocalCue,vocalLoopReady}=await import('../lib/dj-vocal');
+ const {validVocalCue,vocalPerformanceReady}=await import('../lib/dj-vocal');
  const cue={start:30.25,seconds:2,bpm:120,repeat:true},grid={bpm:120,offset:.25,maxError:.01,coverage:.95,entry:.25,exit:47.25,hookSafe:true};
- assert.ok(validVocalCue(cue));assert.ok(vocalLoopReady(cue,grid,30.15));
- for(const position of [29,30.26,NaN])assert.equal(vocalLoopReady(cue,grid,position),false);
- assert.equal(vocalLoopReady(cue,undefined,30.15),false);assert.equal(vocalLoopReady({...cue,start:30.1},grid,30),false);
- assert.equal(validVocalCue({...cue,seconds:5}),false);assert.equal(vocalLoopReady({...cue,repeat:false},grid,30.15),false);
+ assert.ok(validVocalCue(cue));assert.ok(vocalPerformanceReady(cue,grid,30.15));
+ for(const position of [29,30.26,NaN])assert.equal(vocalPerformanceReady(cue,grid,position),false);
+ assert.equal(vocalPerformanceReady(cue,undefined,30.15),false);assert.equal(vocalPerformanceReady({...cue,start:30.1},grid,30),false);
+ const regional={...grid,hookSafe:false,regions:[{start:.25,end:49.75,beats:100}],entry:.25,exit:49.75};
+ assert.ok(vocalPerformanceReady({...cue,start:20.25,echo:true},regional,20.15));assert.equal(vocalPerformanceReady({...cue,start:44.25},regional,44.15),false);
+ assert.equal(validVocalCue({...cue,seconds:5}),false);assert.ok(vocalPerformanceReady({...cue,repeat:false,echo:true},grid,30.15));assert.equal(validVocalCue({...cue,echo:'yes'}as never),false);assert.equal(vocalPerformanceReady({...cue,repeat:false},grid,30.15),false);
 });
 
 

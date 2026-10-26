@@ -1,0 +1,38 @@
+{
+  "scope": "Actual local deck automatic move and manual cancellation; no new generation or cloud writes",
+  "humanListening": "NOT RUN",
+  "reports": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "sha256": "267ed439db72821d07c4392f93080e51505a8a89438d074c0be2f685c7a3ec41",
+      "event": {
+        "history": "LIVE MOVES\nAIFilter sweep",
+        "filter": [
+          0.11,
+          0
+        ],
+        "peak": 0.08000195026397705
+      },
+      "manualTakeoverResets": true,
+      "speakersMuted": true,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "sha256": "267ed439db72821d07c4392f93080e51505a8a89438d074c0be2f685c7a3ec41",
+      "event": {
+        "history": "LIVE MOVES\nAIFilter sweep",
+        "filter": [
+          0.13,
+          0
+        ],
+        "peak": 0.06431791186332703
+      },
+      "manualTakeoverResets": true,
+      "speakersMuted": true,
+      "errors": []
+    }
+  ]
+}

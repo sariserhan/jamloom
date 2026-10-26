@@ -1,0 +1,11 @@
+{
+  "status": "NOT RUN - memory preflight held",
+  "required_available_gib": 4,
+  "observed_available_gib": 3.53,
+  "total_memory_gib": 16,
+  "model_loaded": false,
+  "new_audio": false,
+  "new_dependencies": false,
+  "cloud_compute": false,
+  "action": "No user applications stopped; unexecuted local experiment script removed"
+}

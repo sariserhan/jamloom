@@ -1,0 +1,54 @@
+{
+  "status": "PASS technical",
+  "tracks": [
+    {
+      "file": "bass-0.wav",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.14634357648867194,
+      "compute_ms": 4785,
+      "vocal": null
+    },
+    {
+      "file": "bass-1.wav",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.13280681623597385,
+      "compute_ms": 2881,
+      "vocal": null
+    },
+    {
+      "file": "bass-2.wav",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.16215356070804676,
+      "compute_ms": 3113,
+      "vocal": null
+    },
+    {
+      "file": "bass-7.wav",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.15298708699925323,
+      "compute_ms": 3134,
+      "vocal": null
+    },
+    {
+      "file": "bass-12.wav",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.11260356611069884,
+      "compute_ms": 3108,
+      "vocal": null
+    },
+    {
+      "file": "bass-13.wav",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.12359231132564648,
+      "compute_ms": 2776,
+      "vocal": null
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

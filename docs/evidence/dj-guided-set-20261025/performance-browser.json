@@ -1,0 +1,207 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "rendered": [
+        {
+          "action": "vocal-repeat",
+          "meanDifference": 0.1015170219266165,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "vocal-echo",
+          "meanDifference": 0.008234996974793149,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "vocal-both",
+          "meanDifference": 0.10526072476618432,
+          "peak": 0.24192778766155243,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "loop-2",
+          "meanDifference": 0.15125243951338735,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "loop-4",
+          "meanDifference": 0.1015170219266165,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "roll-half",
+          "meanDifference": 0.03326557688520324,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "roll-one",
+          "meanDifference": 0.023768164788003105,
+          "peak": 0.25,
+          "minimumLevelRatio": 0.9465023935703193
+        },
+        {
+          "action": "cue-1",
+          "meanDifference": 0.20296792027855395,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "cue-2",
+          "meanDifference": 0.20263498755319256,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "jog-back",
+          "meanDifference": 0.19373726128821842,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "jog-forward",
+          "meanDifference": 0.1962863006073674,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "backspin",
+          "meanDifference": 0.025263769483238774,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "filter",
+          "meanDifference": 0.004548430796765217,
+          "peak": 0.25299739837646484,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "echo",
+          "meanDifference": 0.019619127861422156,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        }
+      ],
+      "checks": [
+        "automatic moves disabled",
+        "manual roll and real short buffer",
+        "backspin reverse buffer",
+        "cue seek and correct after-track ending",
+        "echo automation",
+        "pointer jog",
+        "loop release",
+        "stop cancels future return",
+        "silent speakers"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "rendered": [
+        {
+          "action": "vocal-repeat",
+          "meanDifference": 0.10151702190800461,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "vocal-echo",
+          "meanDifference": 0.008234996999562327,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "vocal-both",
+          "meanDifference": 0.10526072473588095,
+          "peak": 0.24192778766155243,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "loop-2",
+          "meanDifference": 0.15125243949477543,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "loop-4",
+          "meanDifference": 0.10151702190800461,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "roll-half",
+          "meanDifference": 0.03326557687050581,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "roll-one",
+          "meanDifference": 0.02376816477330567,
+          "peak": 0.25,
+          "minimumLevelRatio": 0.9465023935703193
+        },
+        {
+          "action": "cue-1",
+          "meanDifference": 0.20296792025724994,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "cue-2",
+          "meanDifference": 0.20263498752781403,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "jog-back",
+          "meanDifference": 0.1937372612900789,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "jog-forward",
+          "meanDifference": 0.19628630061671334,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "backspin",
+          "meanDifference": 0.025263769477548978,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "filter",
+          "meanDifference": 0.0045484171925740495,
+          "peak": 0.25299739837646484,
+          "minimumLevelRatio": 1
+        },
+        {
+          "action": "echo",
+          "meanDifference": 0.019619121351079002,
+          "peak": 0.25,
+          "minimumLevelRatio": 1
+        }
+      ],
+      "checks": [
+        "automatic moves disabled",
+        "manual roll and real short buffer",
+        "backspin reverse buffer",
+        "cue seek and correct after-track ending",
+        "echo automation",
+        "pointer jog",
+        "loop release",
+        "stop cancels future return",
+        "silent speakers"
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import {analyseBuffer,audioDuration} from './ai-dj-library';
 import {planTransition,type TransitionPlan} from './ai-dj-plan';
 import type {TrackAnalysis} from './ai-dj-analysis';
 import {PerformanceDeck,type PerformanceAction,type PerformanceEvent} from './ai-dj-performance';
-import {vocalLoopReady} from './dj-vocal';
+import {vocalPerformanceReady} from './dj-vocal';
 import {performanceMove} from './ai-dj-moves';
 import {djStyles} from './dj-styles';
 import {beatTempo,validBeatDirection} from './dj-beat';
@@ -158,9 +158,9 @@ export class AIDJPlayer{
   if(this.endAt!==null&&now>=this.endAt){this.stop('Set finished. Thanks for the music.');return;}
   const current=this.decks[this.active];
   const cue=current?.track.vocalCue,position=current?.performance?.position(now)??0;
-  if(this.source&&this.mode==='auto'&&this.direction.vocals&&this.endAt===null&&current&&!current.vocalPlayed&&cue&&vocalLoopReady(cue,current.analysis.grid,position)&&this.cancelFuture()){
+  if(this.source&&this.mode==='auto'&&this.direction.vocals&&this.endAt===null&&current&&!current.vocalPlayed&&cue&&vocalPerformanceReady(cue,current.analysis.grid,position)&&this.cancelFuture()){
    const at=now+(cue.start-position)/(current.rate??1);current.vocalPlayed=true;
-   if(current.performance?.repeatPhrase(at,cue.start,cue.seconds)){this.performed=[...this.performed,current.performance.event!].slice(-6);this.message='AI · brief vocal loop';}
+   if(current.performance?.repeatPhrase(at,cue.start,cue.seconds,cue.repeat,cue.echo??false)){this.performed=[...this.performed,current.performance.event!].slice(-6);this.message='AI · '+current.performance.event!.label;}
   }
   if(current&&!this.blend&&(current.performance?.position(now)??0)>=(this.mode==='auto'?current.analysis.mixBounds?.end??current.analysis.audible?.end??current.buffer.duration:current.buffer.duration)-.001){this.stop(this.source?'Prepared music finished. The set has stopped.':'Library finished. Add more tracks to continue.');return;}
   if(this.blend&&now>=this.blend.end){

@@ -1,0 +1,15 @@
+Input #0, matroska,webm, from 'renders/dj-guided-mix-20261025/after.webm':
+  Metadata:
+    encoder         : Chrome
+  Duration: 00:05:32.64, start: 0.000000, bitrate: 128 kb/s
+  Stream #0:0(eng): Audio: opus, 48000 Hz, stereo, fltp (default)
+Stream mapping:
+  Stream #0:0 -> #0:0 (opus (native) -> pcm_s16le (native))
+Output #0, null, to 'pipe:':
+  Metadata:
+    encoder         : Lavf63.1.102
+  Stream #0:0(eng): Audio: pcm_s16le, 48000 Hz, stereo, s16, 1536 kb/s (default)
+    Metadata:
+      encoder         : Lavc63.1.102 pcm_s16le
+[out#0/null @ 0xb39018180] video:0KiB audio:62381KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=00:05:32.69 bitrate=N/A speed= 760x elapsed=0:00:00.43

@@ -90,12 +90,16 @@ export class PerformanceDeck{
   }
   this.event={action,label:actionLabel(action),at,until:at+duration,position,by};return true;
  }
- repeatPhrase(at:number,start:number,seconds:number){
-  if(![at,start,seconds].every(Number.isFinite)||at<this.context.currentTime||start<0||seconds<=0||seconds>2||start+seconds>=this.buffer.duration||!this.voice(at)||this.event&&this.event.until>at)return false;
-  const duration=2*seconds/this.baseRate;
-  this.play(at,start,this.baseRate,{start,end:start+seconds});
-  this.play(at+duration,start+seconds,this.baseRate);
-  this.event={action:'loop-4',label:'Vocal loop · 2 repeats',at,until:at+duration,position:start,by:'AI'};return true;
+ repeatPhrase(at:number,start:number,seconds:number,repeat=true,echo=false){
+  if(![at,start,seconds].every(Number.isFinite)||typeof repeat!=='boolean'||typeof echo!=='boolean'||(!repeat&&!echo)||at<this.context.currentTime||start<0||seconds<=0||seconds>2||start+seconds>=this.buffer.duration||!this.voice(at)||this.event&&this.event.until>at)return false;
+  const duration=(repeat?2:1)*seconds/this.baseRate,beat=60/this.bpm/this.baseRate;
+  if(repeat){this.play(at,start,this.baseRate,{start,end:start+seconds});this.play(at+duration,start+seconds,this.baseRate);}
+  if(echo){
+   // This is the deck's mix send, not an isolated vocal stem; keep it brief and quiet.
+   this.echo.delays.forEach((delay,i)=>delay.delayTime.setValueAtTime(beat*(i+1)/2,at));
+   for(const [param,from,to]of [[this.echo.wet.gain,0,.18],[this.echo.dry.gain,1,.90]]as const){param.cancelScheduledValues(at);param.setValueAtTime(from,at);param.linearRampToValueAtTime(to,at+.03);param.setValueAtTime(to,at+duration-.06);param.linearRampToValueAtTime(from,at+duration);}
+  }
+  this.event={action:repeat?'loop-4':'echo',label:repeat?(echo?'Vocal loop + echo':'Vocal loop · 2 repeats'):'Vocal echo',at,until:at+duration,position:start,by:'AI'};return true;
  }
  cancel(){
   const now=this.context.currentTime,position=this.position(now);

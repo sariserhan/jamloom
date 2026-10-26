@@ -39,6 +39,26 @@ class WarmEngineTests(unittest.TestCase):
         self.assertEqual(receipt['composition']['request'],value['request']);self.assertEqual(receipt['composition']['guide_sha256'],'a'*64)
         self.assertEqual(renderer.render(value),(receipt,audio));self.assertEqual(renderer.requests,1)
 
+    def test_guided_vocal_receipt_budget_and_replay(self):
+        from unittest.mock import patch
+        from dj_track_worker import composition_set
+        calls=[];rate=8000
+        def generate(value,directory,engine,hook=None,**kwargs):
+            calls.append((hook,kwargs['guided']))
+            signal=.1*np.sin(np.arange((10 if hook else 60)*rate)*2*np.pi*220/rate)
+            if hook:signal[rate:]=0
+            else:
+                guide=directory/'guide';guide.mkdir();(guide/'receipt.json').write_text(json.dumps({'request':value,'guide_sha256':'a'*64}))
+            return np.column_stack((signal,signal)),rate
+        renderer=Renderer(time.time()+100,2,generate=composition_set)
+        value=dict(job=str(uuid.uuid4()),vocals=True,request=dict(version=1,session='b'*32,sequence=12,seed=1,style='bass',energy=4))
+        with patch('dj_track_worker.ace',side_effect=generate),patch('dj_vocal.steady_grid',return_value=(140.,0.,[(10.,46.)])):
+            receipt,audio=renderer.render(value)
+            self.assertEqual(renderer.render(value),(receipt,audio));self.assertEqual(renderer.requests,2)
+        self.assertEqual(calls[0],(None,True));self.assertFalse(calls[1][1]);self.assertIsNotNone(calls[1][0])
+        self.assertTrue(receipt['vocal']['repeat']);self.assertTrue(receipt['vocal']['echo'])
+        self.assertEqual(receipt['composition']['request'],value['request'])
+
     def test_bounded_authenticated_idempotent_renderer(self):
         calls = []
         def generate(value, directory, engine):

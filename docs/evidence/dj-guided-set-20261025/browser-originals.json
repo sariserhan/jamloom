@@ -1,0 +1,80 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Clip 1",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "Clip 2",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "Clip 3",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "Clip 4",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "Clip 5",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "Clip 6",
+          "seconds": 60,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Clip 1",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "Clip 2",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "Clip 3",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "Clip 4",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "Clip 5",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "Clip 6",
+          "seconds": 60.024,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "speakerOutput": "Muted",
+  "humanListening": "NOT RUN"
+}

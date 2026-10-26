@@ -51,6 +51,7 @@ class SamplePermitTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate_quality(altered,house=True)
     def test_composition_requires_approved_original_guides_and_four_requests(self):
         plan=json.loads((ROOT/'docs/evidence/dj-composition-20261025/gpu-plan.json').read_text())
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         pending=copy.deepcopy(plan);pending['status']='PREPARED'
         with self.assertRaises(ValueError):validate_quality(pending,composition=True)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 composition comparison'
@@ -62,6 +63,24 @@ class SamplePermitTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate_quality(changed,composition=True)
         changed=copy.deepcopy(plan);changed['worker_sha256']['dj_composition.py']='0'*64
         with self.assertRaises(ValueError):validate_quality(changed,composition=True)
+
+    def test_guided_set_requires_new_approval_and_exact_direction_matrix(self):
+        plan=json.loads((ROOT/'docs/evidence/dj-guided-set-20261025/gpu-plan.json').read_text())
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
+        pending=copy.deepcopy(plan);pending['status']='PREPARED'
+        with self.assertRaises(ValueError):validate_quality(pending,composition=True,guided_set=True)
+        plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 guided set'
+        validate_quality(plan,composition=True,guided_set=True)
+        for field,value in [('max_requests',10),('budget_usd',6),('max_minutes',40),('source_audio_origin','reference'),('owner_statement','do all those')]:
+            changed=copy.deepcopy(plan);changed[field]=value
+            with self.assertRaises(ValueError):validate_quality(changed,composition=True,guided_set=True)
+        for field,value in [('energy',4),('beat',{'bpm':140,'groove':'syncopated'}),('seed',1)]:
+            changed=copy.deepcopy(plan);changed['tracks'][3]['request'][field]=value
+            with self.assertRaises(ValueError):validate_quality(changed,composition=True,guided_set=True)
+        with self.assertRaises(ValueError):validate_quality(plan,guided_set=True)
+        from vast_trial import dj_bootstrap_command
+        self.assertIn('--guided-set',dj_bootstrap_command(1999999999,9,guided_set=True))
+        with self.assertRaises(ValueError):dj_bootstrap_command(1999999999,9,guided_set=True,composition_study=True)
 
     def test_exact_pair_and_bounds(self):
         plan = json.loads((EVIDENCE/'gpu-plan.json').read_text()); validate(plan)
