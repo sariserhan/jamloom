@@ -1,7 +1,7 @@
 import {chromium,webkit} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';import assert from 'node:assert/strict';import {writeFile,mkdir} from 'node:fs/promises';
 const base=process.env.SINGING_BASE_URL||'http://localhost:3000';
-const output='../../docs/evidence/singing-course-20261026';await mkdir(output,{recursive:true});const results=[];
+const output='../../docs/evidence/singing-completion-20261026';await mkdir(output,{recursive:true});const results=[];
 for(const [name,type] of [['chromium',chromium],['webkit',webkit]]){
  const browser=await type.launch({headless:true,...(name==='chromium'?{args:['--mute-audio']}: {})});
  try{const context=await browser.newContext({viewport:{width:1280,height:900}}),page=await context.newPage();page.setDefaultTimeout(20000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -20,7 +20,7 @@ for(const [name,type] of [['chromium',chromium],['webkit',webkit]]){
   }}});
  });
 
- await page.goto(base+'/singing-academy');assert.match(await page.title(),/Singing Academy/);await page.waitForFunction(()=>document.querySelectorAll('#course h3').length===2);assert.deepEqual((await new AxeBuilder({page}).analyze()).violations.map(v=>v.id),[]);await page.screenshot({path:output+'/'+name+'-course.png',fullPage:true});
+ await page.goto(base+'/singing-academy');assert.match(await page.title(),/Singing Academy/);await page.waitForFunction(()=>document.querySelectorAll('#course h3').length===8);assert.deepEqual((await new AxeBuilder({page}).analyze()).violations.map(v=>v.id),[]);await page.screenshot({path:output+'/'+name+'-course.png',fullPage:true});
  const exercised=[];
  for(const id of (name==='chromium'?['first-note','step-up','pulse','final-performance']:['first-note','first-melody'])){
   console.log(name,id);await page.goto(base+'/singing-academy/lessons/'+id);await page.waitForSelector('#start');
@@ -43,8 +43,14 @@ for(const [name,type] of [['chromium',chromium],['webkit',webkit]]){
  const delays=await page.evaluate(()=>window.__delivery.map(d=>d.delayMs).sort((a,b)=>a-b));
  await page.waitForFunction(()=>document.querySelector('#result').textContent.includes('Lesson complete'),undefined,{timeout:60000});
  assert(await page.evaluate(()=>window.__streams.every(s=>s.getTracks().every(t=>t.readyState==='ended'))));assert(await page.locator('#full-lyrics-list').evaluate(el=>el.scrollTop>0));
- await page.goto(base+'/singing-academy');await page.waitForFunction(()=>document.body.innerText.includes('1 of 2 songs complete'));assert.equal(await page.locator('text=✓ Complete').count(),1);
- exercised.push(song);assert.deepEqual(errors,[]);results.push({browser:name,status:'PASS',exercised,progressSurvivesReload:true,demoWithoutMic:true,guide:true,fullLyricsAndCurrentWord:true,lyricsScrollWithinPanel:true,desktopLyricsBesideChart:true,captureDeliveryP95Ms:delays[Math.floor(delays.length*.95)],accessibilityViolations:0,mobileOverflow:false,errors});
+ await page.goto(base+'/singing-academy');await page.waitForFunction(()=>document.body.innerText.includes('1 of 8 songs complete'));assert.equal(await page.locator('text=✓ Complete').count(),1);
+ exercised.push(song);
+ await page.goto(base+'/singing-academy/lessons/after-hours');await page.selectOption('#section','2');
+ await page.evaluate(async()=>{const m=await import('/studio/singing-course.js'),l=m.lessonById('after-hours'),phrase=m.phraseFor(l,57,l.tempo,2);window.__exercise={song:true,phrase,duration:phrase.at(-1).at+phrase.at(-1).duration,tempo:l.tempo};});
+ await page.locator('#start').click();await page.waitForFunction(()=>document.querySelector('#result').textContent.includes('Section complete'),undefined,{timeout:35000});
+ assert(await page.locator('#continue').isHidden());assert(await page.evaluate(()=>!JSON.parse(localStorage.getItem('jamloom.singing.course.v1'))['after-hours']));
+ await page.selectOption('#section','all');assert.equal(await page.locator('#full-lyrics-list span').count(),48);exercised.push('after-hours-chorus');
+assert.deepEqual(errors,[]);results.push({browser:name,status:'PASS',exercised,progressSurvivesReload:true,demoWithoutMic:true,guide:true,sectionPracticeDoesNotCompleteSong:true,fullLyricsAndCurrentWord:true,lyricsScrollWithinPanel:true,desktopLyricsBesideChart:true,captureDeliveryP95Ms:delays[Math.floor(delays.length*.95)],accessibilityViolations:0,mobileOverflow:false,errors});
  }catch(e){for(const c of browser.contexts())for(const p of c.pages())console.error(await p.locator('body').innerText());throw e;}finally{await browser.close();}
 }
 await writeFile(output+'/browser.json',JSON.stringify({status:'PASS',scope:'Synthetic microphone through actual capture, pitch detection, timed grading and WASM piano; not physical human singing',results},null,2)+'\n');console.log(JSON.stringify(results));

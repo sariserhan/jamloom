@@ -51,3 +51,7 @@ PATH=/opt/homebrew/opt/node@22/bin:$PATH node tests/singing-browser.mjs
 4. **Release:** preserve MIT notice through deployment and offline packs, finish physical/listening gates, then publish only under explicit current release authorization. Full course, mobile lesson and professional vocal-quality claims are not included in this first-lesson increment.
 
 No integration of GPL/AGPL/unlicensed app code, new paid APIs, model purchases or reference DJ training is planned. No runtime replacement is justified by an attractive upstream README alone.
+
+## Completion follow-through — 2026-10-26
+
+The [expanded course and native implementation](SINGING_COMPLETION.md) supersede the initial single-lesson scope above. Eight original songs, twelve warm-ups, section practice and the native Sing tab share the same engine. New [DJKado/analysis measurements](evidence/singing-completion-20261026/audio-benchmarks.json) preserve the pinned source hashes: three labeled tempo controls, three real generated tracks and a five-minute waveform workload. Current DJ runtime remains unchanged because real-track beat accuracy and visual readability are not yet independently established. No additional source module was adopted. Real-singing evaluation uses the separately licensed vocadito corpus only for offline assessment; see the completion report for actual results and limits.

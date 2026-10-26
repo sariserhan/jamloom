@@ -26,4 +26,18 @@ final class StudioServerTests: XCTestCase {
         XCTAssertTrue(response("/token/dj.html", host: "attacker.invalid:1234").hasPrefix("HTTP/1.1 403"))
         XCTAssertTrue(response("/token/dj.html", extra: "Host: localhost\r\n").hasPrefix("HTTP/1.1 400"))
     }
+    func testOnlyAuthorizedSingingDocumentAllowsMicrophone() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: root) }
+        for file in ["singing.html", "singing-home.html", "dj.html"] { try Data("page".utf8).write(to: root.appendingPathComponent(file)) }
+        for file in ["singing.html", "singing-home.html", "dj.html"] {
+            let request = Data("GET /token/\(file) HTTP/1.1\r\nHost: 127.0.0.1:1234\r\n\r\n".utf8)
+            for singing in [false, true] {
+                let response = String(decoding: StudioServer.response(request, root: root, prefix: "/token/", authority: "127.0.0.1:1234", singing: singing), as: UTF8.self)
+                XCTAssertTrue(response.contains(singing && file == "singing.html" ? "microphone=(self)" : "microphone=()"))
+            }
+        }
+    }
+
 }

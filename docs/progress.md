@@ -1,3 +1,15 @@
+## Singing Academy completion and fresh DJ qualification — 2026-10-26
+
+**PASS expanded local course and signed iPhone installation; PARTIAL qualification.** [Completion report](SINGING_COMPLETION.md). Eight original songs now progress through four stages, with twelve optional warm-ups, full lyrics, live pitch feedback and targeted section practice. Existing scores and the original two songs are preserved.
+
+- [x] Implement eight-song curriculum and all 32 section practices. Partial sections do not unlock full-song completion; weak-section retry and unlimited practice are available.
+- [x] Verify 26 core/renderer checks, production build/typecheck and Chromium/WebKit song/section flows, including accessibility and microphone cleanup.
+- [x] Add the native Sing tab using the same bundled score, detector and engine; persist bounded local progress and stop microphone/audio on departure or interruption. Sign and install Jamloom 0.10.0 build 22 on the connected iPhone; bundle audit passes.
+- [x] Benchmark 18 controlled/instrument pitch cases, six tempo cases and four waveform workloads against pinned DJKado modules. Retain the current DJ engine: real-track beat labels do not yet justify replacement.
+- [x] Evaluate all 40 vocadito recordings / 29 singers without fitting: current windows match 84.56% of reference voiced frames within 50 cents, including misses; previous windows 76.71%. Owner confirms phone music/microphone/stopping work; three native tests pass. Hardware latency and learning outcomes remain open.
+- [x] Attempt the owner-authorized HTTP two-track qualification: twelve fresh tracks, $3/one GPU/forty minutes, stop on failure, no replacements or public activation. [Exact plan](dj-http-flow.md). The host failed SSH startup before any audio; instance deleted, zero rentals independently verified, observed debit $0.001336. Permit consumed, no replacement.
+- [ ] Public release HELD by owner: “Keep local for now”. No push/deployment/App Store submission. Fresh DJ qualification remains incomplete after host startup failure; broader physical latency/learning evidence remains open.
+
 ## Singing Academy course, stable preview and cleanup — 2026-10-26
 
 **PASS local implementation and controlled audio; PARTIAL human/release qualification.** [Course report](SINGING_ACADEMY.md). Song practice is now the main path: two original pop/dance arrangements with lyrics and live pitch animation. All twelve note drills are grouped under optional Warm-ups. Reuses the audited MIT detector and existing piano/WASM clock; keeps billing and cloud infrastructure unchanged.

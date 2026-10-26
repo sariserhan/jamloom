@@ -1,0 +1,10 @@
+{
+  "status": "FAIL",
+  "scope": "Twelve preferred-turbo originals at a thirty-second request cadence, two distinct vocal opportunities; bounded one-listener capacity probe, not public activation",
+  "tracks": [],
+  "failure_type": "RuntimeError",
+  "failure_message": "SSH startup deadline failed",
+  "cleanup_confirmed": true,
+  "observed_debit_usd": 0.0013363127000012298,
+  "rental_seconds": 303.0646550655365
+}

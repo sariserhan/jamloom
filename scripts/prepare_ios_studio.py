@@ -21,7 +21,12 @@ def prepare():
     assert html.count(needle) == 1
     html = html.replace(needle, '<link rel="stylesheet" href="./mobile-studio.css"><script src="./mobile-boot.js"></script>' + needle)
     page.write_text(html)
-    print('Prepared audited native DJ studio.')
+    singing = target / 'singing.html'
+    html = singing.read_text().replace('href="/"', 'href="./singing-home.html"').replace('href="/singing-academy"', 'href="./singing-home.html"').replace('href="/singing-academy/warmups"', 'href="./singing-home.html#warmups"')
+    for route in ['report-bug', 'licenses']:
+        html = html.replace('href="/' + route + '"', 'href="https://jamloom.com/' + route + '"')
+    singing.write_text(html)
+    print('Prepared audited native DJ studio and Singing Academy.')
 
 if __name__ == '__main__':
     prepare()

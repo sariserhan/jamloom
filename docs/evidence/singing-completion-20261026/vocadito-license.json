@@ -1,0 +1,16 @@
+{
+  "dataset": "vocadito v3",
+  "record": "https://zenodo.org/records/5578807",
+  "paper": "https://arxiv.org/html/2110.05580v1",
+  "license": "cc-by-4.0",
+  "attribution": "Rachel M. Bittner, Katherine Pasalo, Juan José Bosch, Gabriel Meseguer-Brocal, David Rubinstein (2021). vocadito: A dataset of solo vocals with f0, note, and lyric annotations. DOI 10.5281/zenodo.5578807. CC BY 4.0.",
+  "archive_md5": "dea40fd18f14d899643c4ba221b33a46",
+  "archive_sha256": "e0d6b99d3f9c594afe5ae5c4d7bdacebe569e53b809e90b89d1c771c4f9990e3",
+  "recording_rights": "Publisher releases dataset under CC BY 4.0; paper states volunteers agreed to public dataset release.",
+  "composition_rights": "Paper section 2.1 specifies original or public-domain songs. Publisher assertion; no individual contributor contracts supplied.",
+  "approved_use": "Local held-out pitch evaluation only. Raw recordings and lyrics are not redistributed or bundled.",
+  "training": "EXCLUDED from training registry and all model pipelines; no model fitting performed.",
+  "model_retention": "NOT APPLICABLE: no weights trained or retained.",
+  "commercial_outputs": "NOT APPLICABLE: no music generated from this corpus. No blanket grant inferred for future generative use.",
+  "modifications": "Decode mono PCM for detector analysis; original files unchanged; derived aggregate metrics and hashes only."
+}

@@ -23,7 +23,7 @@ export class SingingHold {
 export class SingingPhrase {
  constructor(phrase,rate,startFrame){
   if(!Array.isArray(phrase)||!phrase.length||phrase.length>96||!Number.isInteger(rate)||rate<8000||rate>192000||!Number.isSafeInteger(startFrame)||startFrame<0)throw Error('Invalid phrase');
-  let end=0;for(const n of phrase){if(!Number.isFinite(n.at)||Math.abs(n.at-end)>1e-6||!Number.isFinite(n.duration)||n.duration<.3||n.duration>6||n.note!==null&&(!Number.isInteger(n.note)||n.note<45||n.note>81))throw Error('Invalid phrase note');end+=n.duration;}
+  let end=0;for(const n of phrase){if(!Number.isFinite(n.at)||Math.abs(n.at-end)>1e-6||!Number.isFinite(n.duration)||n.duration<.2||n.duration>6||n.note!==null&&(!Number.isInteger(n.note)||n.note<45||n.note>81))throw Error('Invalid phrase note');end+=n.duration;}
   this.phrase=phrase;this.rate=rate;this.start=startFrame;this.duration=end;this.last=null;this.previous=-1;this.good=false;this.time=0;this.rows=phrase.map(()=>({matched:0,first:null}));
  }
  observe(frame,pitch){

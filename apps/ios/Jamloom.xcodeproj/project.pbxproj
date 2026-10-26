@@ -17,6 +17,7 @@
 		21AA43411FB50CE5B8EC6684 /* CloudImprovise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F047FEAC97E68B7223E5F6 /* CloudImprovise.swift */; };
 		233A512B1D3A82BB05E7A9E6 /* AudioSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02DDB4842983D2C220FE180 /* AudioSession.swift */; };
 		255FE25581AE80A34A5DDC0A /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 017B27BE3D48223E7D7E6471 /* renderer.cpp */; };
+		272FA9C46F68D3062DC1740D /* SingingAcademy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E953502821A91B21D7FE632B /* SingingAcademy.swift */; };
 		311802DFDCD8BEE11C9F86E8 /* JamloomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3D83B51DF8B7F58A197A3 /* JamloomApp.swift */; };
 		35E9023246CF950B0E50A8C5 /* PurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696D52DCA58CAE4E76EB9A2 /* PurchaseTests.swift */; };
 		37DA10713F6BFBEBC0D27BD2 /* taste.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051D4A855C4E9FEC22F210C7 /* taste.cpp */; };
@@ -148,6 +149,7 @@
 		E46E6D6A00B2BC919A9FE502 /* performance_voices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = performance_voices.h; sourceTree = "<group>"; };
 		E6759756AEC3E73B056A85E2 /* RemixEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemixEngine.swift; sourceTree = "<group>"; };
 		E91A07EFBBC67C9C69D9FDFF /* MusicFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFeedback.swift; sourceTree = "<group>"; };
+		E953502821A91B21D7FE632B /* SingingAcademy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingingAcademy.swift; sourceTree = "<group>"; };
 		E9E7D80A812646BF27A24CEC /* plan.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = plan.cpp; sourceTree = "<group>"; };
 		EA3023065583600FBCEF3071 /* LocalCredits.storekit */ = {isa = PBXFileReference; path = LocalCredits.storekit; sourceTree = "<group>"; };
 		ECADB888A44B343A9F98AFC7 /* input.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = input.cpp; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				7B95B54DEB78D0ABE3BEFF43 /* PrivacyInfo.xcprivacy */,
 				309D7EE9D2C1A8464A1EBF65 /* ProductHelp.swift */,
 				E6759756AEC3E73B056A85E2 /* RemixEngine.swift */,
+				E953502821A91B21D7FE632B /* SingingAcademy.swift */,
 				0D9B09A91A6463FF980E49DF /* SongLibrary.swift */,
 				AFC0A3578A8991E5DEF6503A /* StudioServer.swift */,
 				83B30E6BC18016D1AD3A2426 /* TasteCatalogue.swift */,
@@ -524,6 +527,7 @@
 				936E99EDB7BC48223B951033 /* MusicFeedback.swift in Sources */,
 				5FB2D69760974EE1997A8014 /* ProductHelp.swift in Sources */,
 				FDBB60E7CEA0BAFCB273A8ED /* RemixEngine.swift in Sources */,
+				272FA9C46F68D3062DC1740D /* SingingAcademy.swift in Sources */,
 				0419AA3338DC6523DE80DF90 /* SongLibrary.swift in Sources */,
 				F2E6D213AB1C32C13D2EEF23 /* StudioServer.swift in Sources */,
 				BD48F2F523EE0F3B3FB96539 /* TasteCatalogue.swift in Sources */,
@@ -640,7 +644,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -656,7 +660,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../core/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.9.6;
+				MARKETING_VERSION = 0.10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -724,7 +728,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -746,7 +750,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../core/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.9.6;
+				MARKETING_VERSION = 0.10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

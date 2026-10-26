@@ -252,3 +252,7 @@ PATH=/opt/homebrew/opt/node@22/bin:$PATH node --import tsx ../../scripts/benchma
 Original generated audio remains in ignored evidence/render directories named by fixture manifests. Reproduction needs those retained files; the public source alone does not contain generated recordings. No Downloads DJ sets, lyrics or third-party performances were used as training or bundled lesson material.
 
 See [license inventory](OPEN_SOURCE_LICENSES.md), [implementation and remaining qualification](INTEGRATION_PLAN.md).
+
+## Completion follow-through — 2026-10-26
+
+The [expanded course and native implementation](SINGING_COMPLETION.md) supersede the initial single-lesson scope above. Eight original songs, twelve warm-ups, section practice and the native Sing tab share the same engine. New [DJKado/analysis measurements](evidence/singing-completion-20261026/audio-benchmarks.json) preserve the pinned source hashes: three labeled tempo controls, three real generated tracks and a five-minute waveform workload. Current DJ runtime remains unchanged because real-track beat accuracy and visual readability are not yet independently established. No additional source module was adopted. Real-singing evaluation uses the separately licensed vocadito corpus only for offline assessment; see the completion report for actual results and limits.

@@ -1,0 +1,10 @@
+{
+  "app": "Jamloom 0.10.0 build 22",
+  "device": "connected owner iPhone",
+  "question": "In Sing, open First Light, try Hear song then Sing along and allow microphone. Does pitch follow voice and audio stop on switching to Community?",
+  "answer": "Music, microphone and stopping work",
+  "gate": "PASS owner functional acceptance",
+  "limitations": "No calibrated latency, quantitative accuracy, prolonged room-noise or learning-outcome claim.",
+  "publication_answer": "Keep local for now",
+  "publication": "HELD by owner; no push, deployment or App Store submission"
+}

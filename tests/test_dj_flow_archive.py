@@ -55,4 +55,14 @@ class FlowArchiveTests(unittest.TestCase):
             process.poll.return_value=None
             with self.assertRaisesRegex(RuntimeError,'timed out'):trial.wait_for_playback(process,rows,time.monotonic()-1)
 
+    def test_new_http_qualification_requires_its_own_exact_capped_permit(self):
+        root=Path(__file__).resolve().parents[1]
+        plan=json.loads((root/'docs/evidence/dj-flow-http-20261026/gpu-plan.json').read_text())
+        with self.assertRaises(ValueError):trial.validate_model_study({**plan,'status':'PREPARED'},flow=True,http_flow=True)
+        allowed={**plan,'status':'AUTHORIZED'}
+        trial.validate_model_study(allowed,flow=True,http_flow=True)
+        with self.assertRaises(ValueError):trial.validate_model_study(allowed,flow=True)
+        for key,value in [('owner_statement','finish everything'),('budget_usd',4),('max_workers',2),('max_minutes',41),('max_requests',13),('replacements',True),('public_activation',True),('controller_sha256','0'*64)]:
+            with self.subTest(key=key),self.assertRaises(ValueError):trial.validate_model_study({**allowed,key:value},flow=True,http_flow=True)
+
 if __name__=='__main__':unittest.main()

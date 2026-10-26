@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {singingSongs,singingLessons,phraseFor,readProgress,saveAttempt,progressKey} from '../singing-course.js';
+import {singingSongs,singingLessons,phraseFor,weakestSection,readProgress,saveAttempt,progressKey} from '../singing-course.js';
 import {SingingHold,SingingPhrase,frequencyFor} from '../singing-lesson.js';
 import {SingingScore,courseScore,songScore} from '../singing-score.js';
 import {detectPitch} from '../singing-pitch.js';
@@ -28,11 +28,17 @@ test('finite note score is sample accurate across callback sizes and ends every 
 });
 
 test('original songs grade measured notes at every register and pace, reject silence and validate full band scores',()=>{
- for(const song of singingSongs){assert.equal(song.notes.length,song.lyrics.length);assert.deepEqual(song.lines.flatMap(line=>line.split(' ')),song.lyrics.slice(1,-1));for(const root of [45,57,69])for(const tempo of [song.tempo-16,song.tempo,Math.min(128,song.tempo+16)]){assert.equal(perform(song,'correct',root,tempo).passed,true,song.id);const phrase=phraseFor(song,root,tempo);for(const guide of [false,true]){const events=songScore(song,phrase,root,rate,1,guide);assert.doesNotThrow(()=>new SingingScore(rate,0,events));assert.equal(events.some(e=>e.command.patch===0),guide);}}assert.equal(perform(song,'silence').passed,false);assert.equal(perform(song,'constant').passed,false);}
+ for(const song of singingSongs){assert.equal(song.notes.length,song.lyrics.length);assert.deepEqual(song.lines.flatMap(line=>line.split(' ')),song.lyrics.filter(Boolean));for(const root of [45,57,69])for(const tempo of [song.tempo-16,song.tempo,Math.min(128,song.tempo+16)]){assert.equal(perform(song,'correct',root,tempo).passed,true,song.id);const phrase=phraseFor(song,root,tempo);for(const guide of [false,true]){const events=songScore(song,phrase,root,rate,1,guide);assert.doesNotThrow(()=>new SingingScore(rate,0,events));assert.equal(events.some(e=>e.command.patch===0),guide);}}assert.equal(perform(song,'silence').passed,false);assert.equal(perform(song,'constant').passed,false);}
 });
 test('song score follows real audio clock after an unconnected worklet priming callback',()=>{
  const events=[{frame:40000,command:{type:'note',id:1,patch:0,pitch:57,velocity:72}},{frame:42000,command:{type:'off',id:1}}],score=new SingingScore(rate,0,events),out=[];
  score.run(128,()=>{},()=>assert.fail('early event'),0);
  for(let frame=32000;frame<43000;frame+=128){let cursor=frame;score.run(128,n=>cursor+=n,command=>out.push({frame:cursor,command}),frame);}
  assert.deepEqual(out,events);
+});
+
+test('all curriculum sections preserve the source lyric index and cannot include another section',()=>{
+ assert.equal(singingSongs.length,8);assert.deepEqual([...new Set(singingSongs.map(s=>s.level))],[0,1,2,3]);
+ for(const song of singingSongs)for(let section=0;section<4;section++){const phrase=phraseFor(song,57,song.tempo,section),beat=60/song.tempo;assert.equal(phrase.filter(n=>n.lyric).length,12);assert(Math.abs(phrase.at(-1).at+phrase.at(-1).duration-24*beat)<1e-6);for(const n of phrase.filter(n=>n.lyric))assert.equal(n.lyric,song.lyrics[n.sourceIndex]);assert.doesNotThrow(()=>new SingingScore(rate,0,songScore(song,phrase,57,rate,1,true)));const g=new SingingPhrase(phrase,rate,0);for(let f=0;f<(24*beat+.1)*rate;f+=480){const n=phrase.find(n=>f/rate>=n.at&&f/rate<n.at+n.duration);g.observe(f,measured(n?.note??null));}assert(g.result().passed,song.id);}
+ const song=singingSongs[0],phrase=phraseFor(song,57,60),details=phrase.map(n=>({coverage:n.at>=36&&n.at<52?0:1}));assert.equal(weakestSection(song,details),2);assert.throws(()=>phraseFor(song,57,80,4));assert.throws(()=>phraseFor(singingLessons[0],57,80,0));
 });

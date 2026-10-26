@@ -4,11 +4,12 @@ import Network
 // Serves only audited application resources, never imported tracks or the user's library.
 final class StudioServer {
     private let root: URL
+    private let singing: Bool
     private let token = UUID().uuidString
     private let queue = DispatchQueue(label: "com.jamloom.studio-assets")
     private var listener: NWListener?
     private var connections: [UUID: NWConnection] = [:]
-    init(root: URL) { self.root = root.resolvingSymlinksInPath() }
+    init(root: URL, singing: Bool = false) { self.root = root.resolvingSymlinksInPath(); self.singing = singing }
 
     func start(ready: @escaping (Result<URL, Error>) -> Void) throws {
         let parameters = NWParameters.tcp
@@ -19,7 +20,7 @@ final class StudioServer {
             guard let self else { return }
             switch state {
             case .ready:
-                if let port = listener?.port { ready(.success(URL(string: "http://127.0.0.1:\(port.rawValue)/\(self.token)/dj.html")!)) }
+                if let port = listener?.port { ready(.success(URL(string: "http://127.0.0.1:\(port.rawValue)/\(self.token)/\(self.singing ? "singing-home.html" : "dj.html")")!)) }
             case .failed(let error): ready(.failure(error))
             default: break
             }
@@ -41,16 +42,16 @@ final class StudioServer {
             if next.count > 8192 { self.finish(id); return }
             if next.range(of: Data("\r\n\r\n".utf8)) != nil {
                 let port = self.listener?.port?.rawValue ?? 0
-                let response = Self.response(next, root: self.root, prefix: "/\(self.token)/", authority: "127.0.0.1:\(port)")
+                let response = Self.response(next, root: self.root, prefix: "/\(self.token)/", authority: "127.0.0.1:\(port)", singing: self.singing)
                 connection.send(content: response, completion: .contentProcessed { [weak self] _ in self?.finish(id) })
             } else if complete || error != nil { self.finish(id) }
             else { self.receive(connection, id: id, data: next) }
         }
     }
-    static func response(_ request: Data, root: URL, prefix: String, authority: String) -> Data {
-        func reply(_ status: Int, _ body: Data = Data(), mime: String = "text/plain", head: Bool = false) -> Data {
+    static func response(_ request: Data, root: URL, prefix: String, authority: String, singing: Bool = false) -> Data {
+        func reply(_ status: Int, _ body: Data = Data(), mime: String = "text/plain", head: Bool = false, microphone: Bool = false) -> Data {
             let csp = "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' blob:; worker-src 'self' blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
-            let headers = "HTTP/1.1 \(status) Result\r\nConnection: close\r\nContent-Type: \(mime)\r\nContent-Length: \(body.count)\r\nCache-Control: no-store\r\nX-Content-Type-Options: nosniff\r\nContent-Security-Policy: \(csp)\r\nCross-Origin-Resource-Policy: same-origin\r\nPermissions-Policy: camera=(), microphone=(), geolocation=()\r\n\r\n"
+            let headers = "HTTP/1.1 \(status) Result\r\nConnection: close\r\nContent-Type: \(mime)\r\nContent-Length: \(body.count)\r\nCache-Control: no-store\r\nX-Content-Type-Options: nosniff\r\nContent-Security-Policy: \(csp)\r\nCross-Origin-Resource-Policy: same-origin\r\nPermissions-Policy: camera=(), microphone=\(microphone ? "(self)" : "()"), geolocation=()\r\n\r\n"
             return Data(headers.utf8) + (head ? Data() : body)
         }
         guard request.count <= 8192, let end = request.range(of: Data("\r\n\r\n".utf8)), end.upperBound == request.count,
@@ -77,7 +78,7 @@ final class StudioServer {
         guard file.path.hasPrefix(root.path + "/"), let mime = types[file.pathExtension],
               let size = try? file.resourceValues(forKeys: [.fileSizeKey, .isRegularFileKey]), size.isRegularFile == true,
               let count = size.fileSize, count <= 32 * 1024 * 1024, let body = try? Data(contentsOf: file, options: .mappedIfSafe) else { return reply(404) }
-        return reply(200, body, mime: mime, head: first[0] == "HEAD")
+        return reply(200, body, mime: mime, head: first[0] == "HEAD", microphone: singing && relative == "singing.html")
     }
     deinit { listener?.cancel(); connections.values.forEach { $0.cancel() } }
 }

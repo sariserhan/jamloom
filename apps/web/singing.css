@@ -6,3 +6,5 @@
 .song-lesson #live-chart{scroll-margin-top:150px}
 
 .song-lesson main{max-width:1100px}.song-lesson .song-display{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,.65fr);gap:24px;align-items:start}.live-stage{min-width:0}.full-lyrics{text-align:left;margin-top:22px;padding:18px;background:#15111f;border:1px solid #635078;border-radius:14px}.full-lyrics[hidden]{display:none}.full-lyrics h2{font-size:18px;margin:0 0 14px}.lyrics-list{max-height:420px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}.lyrics-list:focus-visible{outline:3px solid #f4d6ff;outline-offset:4px}.lyrics-list p{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 12px;color:#c7c1d4;line-height:1.7}.lyrics-list span{padding:0 4px;border-radius:5px}.lyrics-list .current-line{color:#fff}.lyrics-list .current-word{background:#c8adff;color:#21122e;font-weight:700}@media(max-width:760px){.song-lesson .song-display{grid-template-columns:minmax(0,1fr);gap:4px}.full-lyrics{margin-top:12px}}
+
+#section-settings{text-align:left;margin-top:16px}#section-settings[hidden],#practice-weakest[hidden]{display:none}#song-goal{text-align:left}#practice-weakest{margin-top:14px}

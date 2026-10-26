@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: instrument map covers full piano and respects guitar bank limits
+ok 1 - instrument map covers full piano and respects guitar bank limits
+  ---
+  duration_ms: 1.301708
+  type: 'test'
+  ...
+# Subtest: tempo match uses other deck effective tempo and rejects impossible matches
+ok 2 - tempo match uses other deck effective tempo and rejects impossible matches
+  ---
+  duration_ms: 0.206083
+  type: 'test'
+  ...
+# Subtest: actual worklet acceptance frames and captured PCM replay exactly
+ok 3 - actual worklet acceptance frames and captured PCM replay exactly
+  ---
+  duration_ms: 58.386125
+  type: 'test'
+  ...
+# Subtest: rejected voices do not appear as accepted notes
+ok 4 - rejected voices do not appear as accepted notes
+  ---
+  duration_ms: 3.413875
+  type: 'test'
+  ...
+# Subtest: cancel and event overflow discard buffers without disabling live audio
+ok 5 - cancel and event overflow discard buffers without disabling live audio
+  ---
+  duration_ms: 9.692667
+  type: 'test'
+  ...
+# Subtest: capture has a hard 30-second audio and event boundary
+ok 6 - capture has a hard 30-second audio and event boundary
+  ---
+  duration_ms: 2.372583
+  type: 'test'
+  ...
+# Subtest: command limits and private take metadata cannot be silently relaxed
+ok 7 - command limits and private take metadata cannot be silently relaxed
+  ---
+  duration_ms: 13.389583
+  type: 'test'
+  ...
+# Subtest: recording is off by default and stale stop cannot export another take
+ok 8 - recording is off by default and stale stop cannot export another take
+  ---
+  duration_ms: 5.251041
+  type: 'test'
+  ...
+# Subtest: real instrument engine sequences notes, stops on panic, and captures accepted sequence actions
+ok 9 - real instrument engine sequences notes, stops on panic, and captures accepted sequence actions
+  ---
+  duration_ms: 58.886875
+  type: 'test'
+  ...
+# Subtest: clocked instrument takes preserve old replay and reject invalid context origins
+ok 10 - clocked instrument takes preserve old replay and reject invalid context origins
+  ---
+  duration_ms: 17.016583
+  type: 'test'
+  ...
+# Subtest: capture writes fixed command buffers and snapshots values independently of caller mutation
+ok 11 - capture writes fixed command buffers and snapshots values independently of caller mutation
+  ---
+  duration_ms: 1.013458
+  type: 'test'
+  ...
+# Subtest: singing score uses the real shared instrument, rejects unsafe scores and leaves manual playing available
+ok 12 - singing score uses the real shared instrument, rejects unsafe scores and leaves manual playing available
+  ---
+  duration_ms: 15.944792
+  type: 'test'
+  ...
+# Subtest: both original song arrangements render finite unclipped band audio with no rejected voices
+ok 13 - both original song arrangements render finite unclipped band audio with no rejected voices
+  ---
+  duration_ms: 6222.127791
+  type: 'test'
+  ...
+# Subtest: all twelve exercises pass measured correct tones at every supported pace and register; silence never passes
+ok 14 - all twelve exercises pass measured correct tones at every supported pace and register; silence never passes
+  ---
+  duration_ms: 64.714416
+  type: 'test'
+  ...
+# Subtest: late notes, missing notes, repeated frames and dropped capture cannot earn completion
+ok 15 - late notes, missing notes, repeated frames and dropped capture cannot earn completion
+  ---
+  duration_ms: 0.485666
+  type: 'test'
+  ...
+# Subtest: progress preserves best/pass across retries, migrates first-note completion, ignores malformed storage
+ok 16 - progress preserves best/pass across retries, migrates first-note completion, ignores malformed storage
+  ---
+  duration_ms: 1.054083
+  type: 'test'
+  ...
+# Subtest: finite note score is sample accurate across callback sizes and ends every note
+ok 17 - finite note score is sample accurate across callback sizes and ends every note
+  ---
+  duration_ms: 1.80575
+  type: 'test'
+  ...
+# Subtest: original songs grade measured notes at every register and pace, reject silence and validate full band scores
+ok 18 - original songs grade measured notes at every register and pace, reject silence and validate full band scores
+  ---
+  duration_ms: 180.925625
+  type: 'test'
+  ...
+# Subtest: song score follows real audio clock after an unconnected worklet priming callback
+ok 19 - song score follows real audio clock after an unconnected worklet priming callback
+  ---
+  duration_ms: 0.20625
+  type: 'test'
+  ...
+# Subtest: all curriculum sections preserve the source lyric index and cannot include another section
+ok 20 - all curriculum sections preserve the source lyric index and cannot include another section
+  ---
+  duration_ms: 20.190625
+  type: 'test'
+  ...
+# Subtest: MIT detector measures the three lesson registers and rejects silence/noise/invalid PCM
+ok 21 - MIT detector measures the three lesson registers and rejects silence/noise/invalid PCM
+  ---
+  duration_ms: 19.274458
+  type: 'test'
+  ...
+# Subtest: only sustained measured pitch passes; repeated/stale timestamps and a single good note cannot pass
+ok 22 - only sustained measured pitch passes; repeated/stale timestamps and a single good note cannot pass
+  ---
+  duration_ms: 2.734208
+  type: 'test'
+  ...
+# Subtest: flat/sharp/octave/noise/silence and gaps reset the continuous hold
+ok 23 - flat/sharp/octave/noise/silence and gaps reset the continuous hold
+  ---
+  duration_ms: 26.827042
+  type: 'test'
+  ...
+# Subtest: practice after completion starts a new independent measurement
+ok 24 - practice after completion starts a new independent measurement
+  ---
+  duration_ms: 5.818292
+  type: 'test'
+  ...
+# Subtest: sixteenth-note scheduling is sample accurate and independent of callback sizes
+ok 25 - sixteenth-note scheduling is sample accurate and independent of callback sizes
+  ---
+  duration_ms: 5.012
+  type: 'test'
+  ...
+# Subtest: sequence rejects unsafe tempo, unplayable notes and empty starts
+ok 26 - sequence rejects unsafe tempo, unplayable notes and empty starts
+  ---
+  duration_ms: 0.191125
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6484.890416

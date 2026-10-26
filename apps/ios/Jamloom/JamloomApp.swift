@@ -11,6 +11,7 @@ struct JamloomApp: App {
     @StateObject private var account = AccountModel()
     #endif
     @StateObject private var decks = DJModel()
+    @StateObject private var singing = SingingModel()
     @StateObject private var dnaCloud = CloudSongModel(product: .musicDNA)
     @State private var showError = false
     @Environment(\.scenePhase) private var scenePhase
@@ -20,25 +21,26 @@ struct JamloomApp: App {
             MusicDNAView(model: model, account: account, cloud: dnaCloud).safeAreaInset(edge: .bottom, spacing: 0) { PlaybackBar(model: model) }.tabItem { Label("Music DNA", systemImage: "music.note.list") }
             DJDeckView(decks: decks, model: model).tabItem { Label("DJ Deck", systemImage: "opticaldisc") }
             SongLibraryView(account: account, model: model).tabItem { Label("Community", systemImage: "music.note.house.fill") }
+            SingingAcademyView(singing: singing, model: model, decks: decks).tabItem { Label("Sing", systemImage: "mic.fill") }
         }
             .onChange(of: scenePhase) { _, phase in
                 model.foreground = phase == .active
-                if phase == .background { model.suspendAudio(cancelRender: true); decks.stop() }
+                if phase == .background { model.suspendAudio(cancelRender: true); decks.stop(); singing.stop() }
             }
             .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in
                 model.suspendAudio(cancelRender: false)
-                decks.stop()
+                decks.stop(); singing.stop()
             }
             .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.routeChangeNotification)) { note in
                 let reason = (note.userInfo?[AVAudioSessionRouteChangeReasonKey] as? NSNumber)?.uintValue
                 if reason == AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue || reason == AVAudioSession.RouteChangeReason.noSuitableRouteForCategory.rawValue {
                     model.suspendAudio(cancelRender: false)
-                    decks.stop()
+                    decks.stop(); singing.stop()
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.mediaServicesWereResetNotification)) { _ in
                 model.suspendAudio(cancelRender: true)
-                decks.stop()
+                decks.stop(); singing.stop()
             }
             .onChange(of: model.error, initial: true) { _, error in if error != nil { showError = true } }
             .alert("Jamloom", isPresented: $showError) {

@@ -1,3 +1,5 @@
+**Follow-through:** the course now has eight songs, section practice and an installed native Sing tab. See [completion results](SINGING_COMPLETION.md) for current code, real-singer measurements and remaining gates. The two-song record below is historical.
+
 # Singing Academy course — 2026-10-26
 
 **PASS local course implementation and controlled audio checks; PARTIAL learning/release qualification.** Song practice replaces the note-drill landing page; twelve optional warm-ups preserve the earlier exercises and progress. No public deployment, native app release, new payment product, GPU rental, model download or training occurred.

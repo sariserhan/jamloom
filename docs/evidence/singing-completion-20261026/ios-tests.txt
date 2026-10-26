@@ -1,0 +1,30 @@
+Selected lines from final lifecycle run; full xcresult retained in build-ios/singing-lifecycle-tests.xcresult.
+Full log SHA256: 4f6dcc3c52b0f74c6e88f1d8013d0ff014da8f6b3e9da0584c56abca18dab7d6
+
+2026-10-26 11:07:12.616 appintentsmetadataprocessor[86882:20019341] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+2026-10-26 11:07:13.248 appintentsmetadataprocessor[86890:20019401] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+Test Suite 'Selected tests' started at 2026-10-26 11:07:31.586.
+Test Suite 'JamloomTests.xctest' started at 2026-10-26 11:07:31.586.
+Test Suite 'StudioServerTests' started at 2026-10-26 11:07:31.586.
+Test Case '-[JamloomTests.StudioServerTests testOnlyAuthorizedSingingDocumentAllowsMicrophone]' started.
+Test Case '-[JamloomTests.StudioServerTests testOnlyAuthorizedSingingDocumentAllowsMicrophone]' passed (0.005 seconds).
+Test Case '-[JamloomTests.StudioServerTests testOnlyBundledAssetsCanBeReadThroughExactLoopbackAuthority]' started.
+Test Case '-[JamloomTests.StudioServerTests testOnlyBundledAssetsCanBeReadThroughExactLoopbackAuthority]' passed (0.007 seconds).
+Test Suite 'StudioServerTests' passed at 2026-10-26 11:07:31.600.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.012 (0.013) seconds
+Test Suite 'JamloomTests.xctest' passed at 2026-10-26 11:07:31.600.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.012 (0.014) seconds
+Test Suite 'Selected tests' passed at 2026-10-26 11:07:31.600.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.012 (0.014) seconds
+Test Suite 'Selected tests' started at 2026-10-26 11:07:37.440.
+Test Suite 'JamloomUITests.xctest' started at 2026-10-26 11:07:37.442.
+Test Suite 'FlowTests' started at 2026-10-26 11:07:37.442.
+Test Case '-[JamloomUITests.FlowTests testSingingSongsDemoAndTabCleanup]' started.
+Test Case '-[JamloomUITests.FlowTests testSingingSongsDemoAndTabCleanup]' passed (21.740 seconds).
+Test Suite 'FlowTests' passed at 2026-10-26 11:07:59.186.
+	 Executed 1 test, with 0 failures (0 unexpected) in 21.740 (21.744) seconds
+Test Suite 'JamloomUITests.xctest' passed at 2026-10-26 11:07:59.186.
+	 Executed 1 test, with 0 failures (0 unexpected) in 21.740 (21.744) seconds
+Test Suite 'Selected tests' passed at 2026-10-26 11:07:59.186.
+	 Executed 1 test, with 0 failures (0 unexpected) in 21.740 (21.746) seconds
+** TEST SUCCEEDED **

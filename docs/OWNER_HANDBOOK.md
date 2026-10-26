@@ -1,3 +1,7 @@
+## Expanded Singing Academy and phone — 2026-10-26
+
+[Open the course](http://localhost:3000/singing-academy). Eight original songs now span four stages. Choose a comfortable register, use headphones and start with Hear song. Practice a section when needed, then choose Full song to save course progress. The live view, current/upcoming words and full highlighted lyrics remain together. Warm-ups contains the twelve optional note drills. On Jamloom 0.10.0, use the new Sing tab; progress stays on that device. The owner confirms music, microphone tracking and stopping on tab changes work. [Checks and remaining evidence](SINGING_COMPLETION.md).
+
 ## Singing Academy: songs and live feedback — 2026-10-26
 
 [Open the local course](http://localhost:3000/singing-academy). Choose City Lights or In Motion, a comfortable register and headphones. Hear song plays the original band with a piano melody guide; Sing along leaves the melody to your voice. Lyrics, target notes and a measured pitch trace move live with playback. Full lyrics appear beside the live view (below on phones), with the current word highlighted; the large current word and upcoming-word display remain. These practice compositions do not include a recorded lead singer. All twelve note/rhythm drills are together in [optional Warm-ups](http://localhost:3000/singing-academy/warmups). Scores stay in this browser; repeats are unlimited. [Implementation, tests and physical limits](SINGING_ACADEMY.md).
