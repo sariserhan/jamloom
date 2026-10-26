@@ -1,4 +1,5 @@
 import './env';
+import {djBillingLive} from '../lib/dj-beta-access';
 import {readFile,writeFile,stat} from 'node:fs/promises';
 import {setTimeout as delay} from 'node:timers/promises';
 import {createPool} from '../lib/database';
@@ -9,7 +10,7 @@ import {DJWarmWorker,type WarmIdentity,type WarmPermit} from '../lib/dj-warm-wor
 import {checkDJRenderer,runRemoteDJBatch} from '../lib/dj-remote-worker';
 import {VastProvider} from '../lib/vast-provider';
 
-const config=readConfig(),url=new URL(config.databaseURL),target=url.host+url.pathname;
+const live=djBillingLive(),config=readConfig(),url=new URL(config.databaseURL),target=url.host+url.pathname;
 if(process.env.JAMLOOM_WATCHDOG_TARGET!==target)throw Error('Worker target confirmation does not match');
 const store=audioStore(config),permitFile=process.env.JAMLOOM_DJ_WARM_PERMIT,identityFile=process.env.JAMLOOM_DJ_WARM_IDENTITY,tokenFile=process.env.JAMLOOM_DJ_RENDER_TOKEN_FILE;
 if(!store||!permitFile||!identityFile||!tokenFile||!process.env.JAMLOOM_AI_DJ_BUDGET)throw Error('Warm worker configuration missing');
@@ -17,7 +18,7 @@ async function privateFile(file:string){const meta=await stat(file);if(meta.size
 const permit:WarmPermit=JSON.parse(await privateFile(permitFile)),token=(await privateFile(tokenFile)).trim();
 const pool=createPool(config.databaseURL),abort=new AbortController();
 process.once('SIGINT',()=>abort.abort());process.once('SIGTERM',()=>abort.abort());
-const warm=new DJWarmWorker(new DJSessions(pool,config.secret,store,JSON.parse(process.env.JAMLOOM_AI_DJ_BUDGET),false,true),new VastProvider(process.env.VASTAI_KEY??''));
+const warm=new DJWarmWorker(new DJSessions(pool,config.secret,store,JSON.parse(process.env.JAMLOOM_AI_DJ_BUDGET),live,true),new VastProvider(process.env.VASTAI_KEY??''));
 let worker:WarmIdentity|undefined,timer:ReturnType<typeof setInterval>|undefined,checking=false;
 try{
  if(!process.argv.includes('--register'))worker=JSON.parse(await privateFile(identityFile));
@@ -29,7 +30,7 @@ try{
  }
  if(!worker)throw Error('Worker identity missing');
  const saved=(await pool.query('SELECT * FROM dj_warm_workers WHERE id=$1 AND lease=$2 AND permit_sha256=$3',[worker.id,worker.lease,permit.permitSha256])).rows[0];
- if(!saved||Number(saved.hourly_micros)!==permit.hourlyMicros||new Date(saved.created_at).getTime()!==permit.startedAt||new Date(saved.deadline).getTime()!==permit.deadline)throw Error('Permit does not match the recorded worker');
+ if(!saved||saved.billing_live!==live||(permit.billingLive??false)!==live||Number(saved.hourly_micros)!==permit.hourlyMicros||new Date(saved.created_at).getTime()!==permit.startedAt||new Date(saved.deadline).getTime()!==permit.deadline)throw Error('Permit does not match the recorded worker');
  const pulse=async()=>{if(checking)return;checking=true;try{
   const ceiling=Math.ceil(Math.max(0,Date.now()-permit.startedAt)*permit.hourlyMicros/3600000);
   if(!await warm.heartbeat(worker!,ceiling))abort.abort();
@@ -37,7 +38,7 @@ try{
  await pulse();timer=setInterval(()=>{void pulse();},3000);
  while(!abort.signal.aborted){
   if(!await warm.pending(worker)){
-   const queued=await pool.query("SELECT 1 FROM dj_session_batches b JOIN dj_sessions s ON s.id=b.session_id WHERE b.state='queued' AND s.state='active' AND NOT s.billing_live LIMIT 1");
+   const queued=await pool.query("SELECT 1 FROM dj_session_batches b JOIN dj_sessions s ON s.id=b.session_id WHERE b.state='queued' AND s.state='active' AND s.billing_live=$1 LIMIT 1",[live]);
    if(!queued.rowCount){await delay(500);continue;}
    await checkDJRenderer(token);
   }

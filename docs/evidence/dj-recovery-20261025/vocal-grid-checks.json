@@ -1,0 +1,20 @@
+{
+  "results": [
+    {
+      "file": "bass-7.wav",
+      "sha256": "e22ffbba3602341803a1285ab7592891ef5cba9fab4e5263fc2e4af7a2844f9f",
+      "retained_pcm_grid": null,
+      "voice_placed": false
+    },
+    {
+      "file": "bass-12.wav",
+      "sha256": "e209a15c19753aba57b0981352a103ead5e19c19080287b4a231e5c5a20714b0",
+      "retained_pcm_grid": null,
+      "voice_placed": false
+    }
+  ],
+  "limits": [
+    "Retained canonical PCM is checked locally; this is not raw model audio or proof that a vocal candidate was rendered.",
+    "No timing thresholds were relaxed."
+  ]
+}

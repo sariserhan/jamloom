@@ -6,6 +6,7 @@ import {djSessionRequest} from '../lib/dj-sessions-http';
 import {GenerationQueue} from '../lib/generation-queue';
 import {djBetaReadiness} from '../lib/dj-beta-readiness';
 import {DJWarmWorker} from '../lib/dj-warm-worker';
+import {djSupervisor} from '../lib/dj-supervisor';
 import {createPool} from '../lib/database';import {migrate} from '../lib/migrations';import {DJSessions} from '../lib/dj-sessions';import {djSessionInput} from '../lib/dj-session-input';import {DJRecordings} from '../lib/dj-recordings';import {djPublicRequest} from '../lib/dj-public-http';
 const id=()=>randomUUID().replaceAll('-',''),hash=(b:Buffer)=>createHash('sha256').update(b).digest('hex');
 const budget={costCapMicros:50000,maxRuntimeMs:60000,hourlyMicros:600000,fixedCostMicros:40000};
@@ -40,6 +41,21 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
    const wrong=run(['--apply','--warm','--watch'],{JAMLOOM_WATCHDOG_TARGET:'wrong'});assert.notEqual(wrong.status,0);assert.match(wrong.stderr,/target confirmation/);
   });
   for(const owner of ['alice','bob','tiny','pending','race','queue','retry','capacity','legacy','price','frozen','watch','http','recover','warm-a','warm-b','warm-fail']){await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.com']);await sessions.wallet.grant(owner,{provider:'stripe_test',receipt:'fixture-'+owner,credits:owner==='tiny'?2:100,netMicros:owner==='tiny'?100000:5000000});}
+  await t.test('hosted supervisor closes a lost controller rental and refunds only after provider absence',async()=>{
+   let inventory=[{id:998,label:'jamloom-hosted-supervisor-fixture'}],destroyed=0;
+   const warm=new DJWarmWorker(sessions,{inventory:async()=>inventory,destroy:async()=>{destroyed++;inventory=[];}});
+   const identity=await warm.register({account:123,instance:998,label:inventory[0].label,permitSha256:'8'.repeat(64),hourlyMicros:600000,budgetMicros:1000000,startedAt:Date.now()-1000,deadline:Date.now()+180000});
+   const before=await sessions.wallet.balance('warm-a'),started=await begin('warm-a');assert.ok(await sessions.claim(identity));
+   await pool.query("UPDATE dj_warm_workers SET heartbeat_at=now()-interval '20 seconds' WHERE id=$1",[identity.id]);
+   const env={CRON_SECRET:'s'.repeat(32),JAMLOOM_DJ_SUPERVISOR_ENABLED:'true',JAMLOOM_WATCHDOG_TARGET:target.host+target.pathname};
+   const request=()=>new Request('https://fixture.test/api/ai-dj/supervisor',{headers:{Authorization:'Bearer '+env.CRON_SECRET}});
+   const context=()=>({pool,databaseURL:target.toString(),sweep:()=>warm.sweep()});
+   assert.equal((await djSupervisor(request(),context,env)).status,503);assert.equal(destroyed,1);
+   assert.ok((await sessions.wallet.balance('warm-a')).reserved>0,'No refund before confirmed absence');
+   assert.equal((await djSupervisor(request(),context,env)).status,200);
+   assert.deepEqual(await sessions.wallet.balance('warm-a'),before);assert.equal((await sessions.status('warm-a',started.v.id)).state,'ended');
+   assert.equal((await djSupervisor(request(),context,env)).status,200);assert.equal(destroyed,1);
+  });
   await t.test('warm rental delivers distinct customer tracks before shutdown and recovers failed work safely',async()=>{
    assert.equal(await sessions.available(),false);
    let inventory=[{id:654,label:'jamloom-warm-fixture'}],destroyed=0;

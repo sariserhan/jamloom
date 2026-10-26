@@ -136,8 +136,26 @@ def composition_set(value, directory, engine=None, hook=None):
     return ace(value,directory,engine,hook=hook,arranged=True,guided=hook is None)
 
 
-def ace(value, directory, engine=None, hook=None, arranged=False, focused=False, guided=False):
+# Fixed factorial study: isolate composition randomness from model randomness.
+RECOVERY_CASES = {0:(301025,301025),1:(311025,301025),2:(301025,311025),3:(311025,311025),7:(312025,301025),12:(313025,301025)}
+
+
+def recovery_guide(value):
+    request(value)
+    pair=RECOVERY_CASES.get(value['sequence'])
+    if not pair or value['seed']!=pair[0] or value['style']!='bass' or value['energy']!=4 or value.get('mood')!='deep' or 'beat' in value:
+        raise ValueError('Exact recovery study request required')
+    return {**value,'seed':pair[1]}
+
+
+def composition_recovery(value, directory, engine=None, hook=None):
+    guide=None if hook else recovery_guide(value)
+    return ace(value,directory,engine,hook=hook,arranged=True,guided=hook is None,guide_value=guide)
+
+
+def ace(value, directory, engine=None, hook=None, arranged=False, focused=False, guided=False, guide_value=None):
     if guided and (hook is not None or focused): raise ValueError('Original instrumental guide only')
+    if guide_value is not None and (not guided or {**request(guide_value),'seed':value['seed']}!=value):raise ValueError('Only guide seed may differ')
     import random
     import soundfile as sf
     import torch
@@ -152,7 +170,7 @@ def ace(value, directory, engine=None, hook=None, arranged=False, focused=False,
     source={}
     if guided:
         from dj_composition import prepare
-        guide=prepare(value,directory/'guide')
+        guide=prepare(guide_value if guide_value is not None else value,directory/'guide')
         if guide['bpm']!=bpm:raise ValueError('Guide tempo mismatch')
         source=dict(task_type='cover',src_audio=str(directory/'guide/guide.wav'),audio_cover_strength=.5)
     params = GenerationParams(**source,caption=caption, bpm=bpm, duration=10 if hook else 60, seed=value['seed'], instrumental=hook is None, lyrics=hook or '[Instrumental]', inference_steps=8, thinking=False, use_cot_metas=False, use_cot_caption=False, use_cot_language=False, use_cot_lyrics=False)

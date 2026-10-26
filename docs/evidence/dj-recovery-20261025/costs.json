@@ -1,0 +1,23 @@
+{
+  "status": "PASS bounded trial",
+  "original_cap_usd": 3,
+  "combined_rental_seconds": 647.7022030353546,
+  "combined_observed_debit_usd": 0.05959749693000127,
+  "accounting": "Replacement starting_credit is anchored to the original attempt; do not add first debit again.",
+  "all_rentals_absent": true,
+  "render_seconds": [
+    4.448,
+    2.965,
+    2.976,
+    2.967,
+    3.576,
+    3.517
+  ],
+  "total_render_seconds": 20.449,
+  "output_audio_minutes": 6,
+  "limits": [
+    "Observed account debit is not a settled provider invoice.",
+    "Startup, transport, guide synthesis, analysis and cleanup are included in rental time; render timings alone are not operating cost.",
+    "This diagnostic batch is not evidence of continuous service, utilization or a sustainable customer tariff."
+  ]
+}

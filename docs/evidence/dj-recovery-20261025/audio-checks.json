@@ -1,0 +1,79 @@
+{
+  "status": "PASS technical",
+  "tracks": [
+    {
+      "file": "bass-0.wav",
+      "sha256": "fed1294652896ade10bc317001b6826572270cbc6ebaf7f4ba1d98e221f24a30",
+      "sequence": 0,
+      "peak": 0.8912353515625,
+      "rms": 0.12394854426383972,
+      "seconds": 60,
+      "vocal": null,
+      "compute_ms": 4448,
+      "guide_sha256": "0f326c8f5c70f9e20674708c93fadfaf546e756d2406f198129ddf2997ceb075"
+    },
+    {
+      "file": "bass-1.wav",
+      "sha256": "df36015c317114397259db8450b9623169d23200e8ae3b20da7d2626d7a89d36",
+      "sequence": 1,
+      "peak": 0.8912353515625,
+      "rms": 0.14584039151668549,
+      "seconds": 60,
+      "vocal": null,
+      "compute_ms": 2965,
+      "guide_sha256": "0f326c8f5c70f9e20674708c93fadfaf546e756d2406f198129ddf2997ceb075"
+    },
+    {
+      "file": "bass-2.wav",
+      "sha256": "87fe2972b3b11ae05a2065735fcfb832ff01cc3d48b59899fc9762ea8bfae8f6",
+      "sequence": 2,
+      "peak": 0.8912353515625,
+      "rms": 0.1262124627828598,
+      "seconds": 60,
+      "vocal": null,
+      "compute_ms": 2976,
+      "guide_sha256": "d7af3d741200d0280d53c4c9083eab0115fc510758b36d7357fddea8ea01b12e"
+    },
+    {
+      "file": "bass-3.wav",
+      "sha256": "267ed439db72821d07c4392f93080e51505a8a89438d074c0be2f685c7a3ec41",
+      "sequence": 3,
+      "peak": 0.8912353515625,
+      "rms": 0.14634357392787933,
+      "seconds": 60,
+      "vocal": null,
+      "compute_ms": 2967,
+      "guide_sha256": "d7af3d741200d0280d53c4c9083eab0115fc510758b36d7357fddea8ea01b12e"
+    },
+    {
+      "file": "bass-7.wav",
+      "sha256": "e22ffbba3602341803a1285ab7592891ef5cba9fab4e5263fc2e4af7a2844f9f",
+      "sequence": 7,
+      "peak": 0.8912353515625,
+      "rms": 0.12399570643901825,
+      "seconds": 60,
+      "vocal": null,
+      "compute_ms": 3576,
+      "guide_sha256": "0f326c8f5c70f9e20674708c93fadfaf546e756d2406f198129ddf2997ceb075"
+    },
+    {
+      "file": "bass-12.wav",
+      "sha256": "e209a15c19753aba57b0981352a103ead5e19c19080287b4a231e5c5a20714b0",
+      "sequence": 12,
+      "peak": 0.8912353515625,
+      "rms": 0.15740877389907837,
+      "seconds": 60,
+      "vocal": null,
+      "compute_ms": 3517,
+      "guide_sha256": "0f326c8f5c70f9e20674708c93fadfaf546e756d2406f198129ddf2997ceb075"
+    }
+  ],
+  "guide_seed_isolation": "PASS byte-identical remote guides within each group; different guides across groups",
+  "human_listening": "NOT RUN",
+  "fresh_vocals": 0,
+  "limits": [
+    "No musical quality score inferred.",
+    "The first four tracks are factorial controls, not four independent fresh composition seeds.",
+    "Fixed guide reuse is diagnostic only and is not a production diversity policy."
+  ]
+}

@@ -1,0 +1,15 @@
+**
+!scripts/
+!scripts/dj_track_worker.py
+!scripts/dj_warm_engine.py
+!scripts/dj_vocal.py
+!scripts/dj_composition.py
+!scripts/prepare_electronic_bank.py
+!scripts/club_benchmark_cases.py
+!assets/
+!assets/manifests/
+!assets/manifests/dj-styles.json
+!services/
+!services/ai-dj/
+!services/ai-dj/Dockerfile
+!services/ai-dj/Dockerfile.dockerignore

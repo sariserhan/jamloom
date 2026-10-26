@@ -1,3 +1,20 @@
+## AI DJ finish campaign — 2026-10-25
+
+**PARTIAL; fresh musical quality remains FAIL until a new listening result.** The owner requested all remaining targets together. A controlled recovery study separates guide composition from model randomness, preserving the previously accepted vocal treatments. The approved replacement completed six tracks and cleanup; both attempts total 647.70 seconds and about $0.05960 observed debit, within the $3 / one-GPU / 20-minute combined bounds. The preferred baseline is exactly reproducible, but new musical ratings are pending and neither vocal opportunity passed timing. No public activation or live purchases.
+
+- [x] Diagnose the rejected study against the exact preferred request and distinguish measured differences from an unproven cause.
+- [x] Prepare and test independent guide/model seed controls and two original vocal opportunities; obtain fresh capped approval.
+- [x] Align explicit DJ test/live mode across session API, dispatcher, watchdog and readiness; bind live permits to that mode.
+- [x] Add a separately gated hosted cleanup route, overlap lock and registered-rental reconciliation during launch/maintenance holds.
+- [x] Complete the approved replacement, verify worker/guide/audio hashes, cost bounds and zero remaining rentals; publish six blinded clips with Chromium/WebKit play/seek checks.
+- [x] Prepare a pinned DJ-only cached-image recipe and pass its static scope check; actual image build and cold startup remain NOT RUN.
+- [ ] Obtain new musical ratings and qualify actual fresh short vocals; two opportunities stayed instrumental.
+- [x] Capture all six tracks through the real mixer: 5:26, three automatic gestures, clean stop and no detected quiet gaps of 250 ms or more.
+- [ ] Qualify fresh complete-set musical performance and physical venue playback.
+- [ ] Qualify approved continuous hosting, full costs and deployment before activation.
+
+[Campaign and release gates](docs/ai-dj-finish-campaign.md).
+
 ## Guided bass and short vocal performance — 2026-10-25
 
 **FAIL fresh musical quality; PASS owner acceptance of existing vocal effects and local vocal/performance implementation.** The preferred guided-bass approach now supports separate original sung/chanted hook candidates. Short phrases can receive a repeat, echo or both with matching deck events. Real Chromium/WebKit PCM checks pass, including unchanged audio before the effect and bounded output. All nine reference files match prior full-file research; exact reference vocal/action annotations remain unverified. Six fresh guided instrumentals completed, with $0.058 observed debit and zero remaining rentals. The GPU run skipped all three vocal placements; fresh vocal qualification remains FAIL. The subsequent timing repair passes local worker/browser checks and produces a 4:55 instrumental mix with four real automatic gestures and no detected quiet gaps of 250 ms or more; the owner subsequently rejected all six originals as worse and accepted the existing vocal treatments. Fresh voice quality and full-set transition acceptance remain open.
@@ -11,7 +28,7 @@
 - [x] Capture the repaired full set and verify playback/seek in Chromium and WebKit; retain the earlier capture separately.
 - [ ] Qualify actual newly generated vocals with the repaired placement; the local model attempt was held for memory.
 - [x] Record hash-verified owner verdicts: all six originals rejected; existing repeat/echo/combined treatments accepted.
-- [ ] Diagnose the failed consistency study against the exact earlier preferred clip 2; do not promote this batch.
+- [x] Diagnose the failed consistency study against the exact earlier preferred clip 2; isolate guide/model seeds in the recovery campaign without promoting the rejected batch.
 - [ ] Establish fresh musical quality, vocal placement, direction changes and full-set transition acceptance.
 - [ ] Qualify sustained production capacity, complete operating costs and physical venue use before activation.
 

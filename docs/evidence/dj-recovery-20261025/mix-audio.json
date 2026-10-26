@@ -1,0 +1,41 @@
+{
+  "status": "PASS technical",
+  "seconds": 326.34,
+  "peak": 0.4063097834587097,
+  "rms": 0.06299687007599003,
+  "ai_moves": 3,
+  "ai_actions": [
+    {
+      "action": "filter",
+      "label": "Filter sweep",
+      "at": 66.34928571428571,
+      "until": 68.06357142857142,
+      "position": 15.219999999999994,
+      "by": "AI"
+    },
+    {
+      "action": "roll-one",
+      "label": "1 roll",
+      "at": 93.34928571428571,
+      "until": 94.20642857142857,
+      "position": 42.21999999999999,
+      "by": "AI"
+    },
+    {
+      "action": "echo",
+      "label": "Echo",
+      "at": 164.42357142857145,
+      "until": 166.13785714285717,
+      "position": 8.392857142857151,
+      "by": "AI"
+    }
+  ],
+  "silence_starts": [],
+  "noise_threshold_db": -60,
+  "min_silence_seconds": 0.25,
+  "human_listening": "NOT RUN",
+  "limits": [
+    "No silence above this threshold does not establish musical handoff quality.",
+    "This plays retained study outputs; it does not qualify nonstop generation."
+  ]
+}

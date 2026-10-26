@@ -82,6 +82,29 @@ class SamplePermitTests(unittest.TestCase):
         self.assertIn('--guided-set',dj_bootstrap_command(1999999999,9,guided_set=True))
         with self.assertRaises(ValueError):dj_bootstrap_command(1999999999,9,guided_set=True,composition_study=True)
 
+    def test_recovery_requires_separate_approval_and_exact_guide_seeds(self):
+        plan=json.loads((ROOT/'docs/evidence/dj-recovery-20261025/gpu-plan.json').read_text());plan['status']='PREPARED'
+        with self.assertRaises(ValueError):validate_quality(plan,composition=True,recovery=True)
+        plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 recovery study'
+        validate_quality(plan,composition=True,recovery=True)
+        for field,value in [('max_requests',9),('budget_usd',6),('max_minutes',40),('owner_statement','do all in one go')]:
+            altered=copy.deepcopy(plan);altered[field]=value
+            with self.assertRaises(ValueError):validate_quality(altered,composition=True,recovery=True)
+        altered=copy.deepcopy(plan);altered['tracks'][1]['guide_request']['seed']=311025
+        with self.assertRaises(ValueError):validate_quality(altered,composition=True,recovery=True)
+        with self.assertRaises(ValueError):validate_quality(plan,composition=True,recovery=True,guided_set=True)
+        from vast_trial import dj_bootstrap_command
+        self.assertIn('--recovery-study',dj_bootstrap_command(1999999999,8,recovery_study=True))
+
+    def test_startup_probe_separates_transport_from_renderer_exit(self):
+        from dj_sample_trial import startup_probe
+        self.assertEqual(startup_probe(0,b''),'pending')
+        self.assertEqual(startup_probe(255,b''),'transport_unavailable')
+        for code in [b'0',b'1',b'124']:
+            self.assertEqual(startup_probe(0,code),'renderer_exited')
+        with self.assertRaises(RuntimeError):startup_probe(1,b'')
+        with self.assertRaises(RuntimeError):startup_probe(0,b'not-an-exit-code')
+
     def test_exact_pair_and_bounds(self):
         plan = json.loads((EVIDENCE/'gpu-plan.json').read_text()); validate(plan)
         for key, value in [('budget_usd', 6), ('max_minutes', 40), ('max_workers', 2),

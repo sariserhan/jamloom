@@ -6,7 +6,8 @@
     {
       "path": "/api/notifications",
       "schedule": "*/5 * * * *"
-    }
+    },
+    {"path":"/api/ai-dj/supervisor","schedule":"* * * * *"}
   ],
   "git": {
     "deploymentEnabled": {

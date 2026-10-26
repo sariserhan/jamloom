@@ -27,15 +27,17 @@ QUALITY = False
 HOUSE = False
 COMPOSITION = False
 GUIDED_SET = False
+RECOVERY = False
 
 
-def configure_quality(house=False, composition=False, guided_set=False):
-    global EVIDENCE, WORK, OUTPUT, LABEL, QUALITY, HOUSE, COMPOSITION, GUIDED_SET
+def configure_quality(house=False, composition=False, guided_set=False, recovery=False):
+    global EVIDENCE, WORK, OUTPUT, LABEL, QUALITY, HOUSE, COMPOSITION, GUIDED_SET, RECOVERY
     QUALITY = True
     HOUSE = house
-    COMPOSITION = composition or guided_set
+    COMPOSITION = composition or guided_set or recovery
     GUIDED_SET = guided_set
-    campaign='dj-guided-set-20261025' if guided_set else 'dj-composition-20261025' if composition else 'dj-house-consistency-20261025' if house else 'dj-quality-20261025'
+    RECOVERY = recovery
+    campaign='dj-recovery-20261025' if recovery else 'dj-guided-set-20261025' if guided_set else 'dj-composition-20261025' if composition else 'dj-house-consistency-20261025' if house else 'dj-quality-20261025'
     EVIDENCE = ROOT/'docs/evidence'/campaign
     WORK = ROOT/('build-'+campaign)
     OUTPUT = ROOT/'renders'/campaign
@@ -43,19 +45,20 @@ def configure_quality(house=False, composition=False, guided_set=False):
     vast.WORK, vast.STATE, vast.LABEL = WORK, WORK/'trial-state.json', LABEL
 
 
-def validate_quality(plan,house=False,composition=False,guided_set=False):
-    from dj_track_worker import request, arranged_brief, focused_house_brief, CODE_REVISION, WEIGHTS_REVISION
+def validate_quality(plan,house=False,composition=False,guided_set=False,recovery=False):
+    from dj_track_worker import request, arranged_brief, focused_house_brief, CODE_REVISION, WEIGHTS_REVISION, RECOVERY_CASES, recovery_guide
+    if recovery and (not composition or house or guided_set):raise ValueError('Recovery requires its own composition study')
     if guided_set and (not composition or house):raise ValueError('Guided set requires composition mode')
-    if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != ('jamloom-dj-guided-set-20261025' if guided_set else 'jamloom-dj-composition-20261025' if composition else 'jamloom-dj-house-consistency-20261025' if house else 'jamloom-dj-quality-20261025')
-        or plan['owner_statement'] != ('Approve the capped $3 guided set' if guided_set else 'Approve the capped $3 composition comparison' if composition else 'Approve the capped $3 house study' if house else 'Approve the capped $3 quality comparison')
+    if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != ('jamloom-dj-recovery-20261025' if recovery else 'jamloom-dj-guided-set-20261025' if guided_set else 'jamloom-dj-composition-20261025' if composition else 'jamloom-dj-house-consistency-20261025' if house else 'jamloom-dj-quality-20261025')
+        or plan['owner_statement'] != ('Approve the capped $3 recovery study' if recovery else 'Approve the capped $3 guided set' if guided_set else 'Approve the capped $3 composition comparison' if composition else 'Approve the capped $3 house study' if house else 'Approve the capped $3 quality comparison')
         or plan['budget_usd'] != 3 or plan['max_workers'] != 1 or plan['max_minutes'] != 20
-        or plan['max_requests'] != (9 if guided_set else 4 if composition else 6) or plan['stop_on_failure'] is not True or plan['automatic_cleanup'] is not True
+        or plan['max_requests'] != (8 if recovery else 9 if guided_set else 4 if composition else 6) or plan['stop_on_failure'] is not True or plan['automatic_cleanup'] is not True
         or plan['source_audio_used'] is not composition
         or any(plan[key] is not False for key in ['public_activation','learned_reference_weights_used'])
         or plan['model'] != dict(code=CODE_REVISION,weights=WEIGHTS_REVISION)):
         raise ValueError('Fresh bounded quality-comparison authorization required')
     if composition and (house or plan.get('source_audio_origin')!='original_authored_notes_and_synthesis' or plan.get('reference_audio_used') is not False or plan.get('guide_strength')!=.5):raise ValueError('Original composition guides required')
-    expected = [('bass',seq,311025+i*1000,seq in (2,7,12)) for i,seq in enumerate([0,1,2,7,12,13])] if guided_set else [('house',0,291025,False),('house',1,291025,False),('bass',2,301025,False),('bass',3,301025,False)] if composition else [('house',i,seed,False) for i,seed in enumerate([261025,261025,271025,271025,281025,281025])] if house else [('house',0,251025,False),('bass',1,251025,False),('house',2,261025,True),('bass',7,261025,True)]
+    expected = [('bass',seq,pair[0],seq in (7,12)) for seq,pair in RECOVERY_CASES.items()] if recovery else [('bass',seq,311025+i*1000,seq in (2,7,12)) for i,seq in enumerate([0,1,2,7,12,13])] if guided_set else [('house',0,291025,False),('house',1,291025,False),('bass',2,301025,False),('bass',3,301025,False)] if composition else [('house',i,seed,False) for i,seed in enumerate([261025,261025,271025,271025,281025,281025])] if house else [('house',0,251025,False),('bass',1,251025,False),('house',2,261025,True),('bass',7,261025,True)]
     if len(plan['tracks']) != len(expected): raise ValueError('Exact prepared track count required')
     for i,(row,(style,sequence,seed,vocals)) in enumerate(zip(plan['tracks'],expected)):
         value=request(row['request'])
@@ -68,7 +71,9 @@ def validate_quality(plan,house=False,composition=False,guided_set=False):
     if composition:
         from dj_composition import score
         for row in plan['tracks']:
-            expected_score=hashlib.sha256((json.dumps(score(row['request']),indent=2)+'\n').encode()).hexdigest() if guided_set or row['request']['sequence']%2 else None
+            guide_request=recovery_guide(row['request']) if recovery else row['request']
+            if recovery and row.get('guide_request')!=guide_request:raise ValueError('Prepared guide seed changed')
+            expected_score=hashlib.sha256((json.dumps(score(guide_request),indent=2)+'\n').encode()).hexdigest() if recovery or guided_set or row['request']['sequence']%2 else None
             if row.get('guide_score_sha256')!=expected_score:raise ValueError('Prepared composition changed')
     for filename,digest in plan['worker_sha256'].items():
         if filename not in ['cloud_music_setup.sh','cloud_dj_warm.sh','dj_track_worker.py','dj_warm_engine.py','dj_vocal.py','club_benchmark_cases.py',*(['dj_composition.py','prepare_electronic_bank.py'] if composition else [])] or hashlib.sha256((ROOT/'scripts'/filename).read_bytes()).hexdigest()!=digest:
@@ -86,14 +91,14 @@ def configure_replacement():
     remaining = int(1200-(previous['destroy_confirmed_at']-previous['started_at']))
     if remaining < 300: raise ValueError('Insufficient original rental allowance')
     REPLACEMENT = True
-    WORK = ROOT/'build-dj-style-samples-20261025-replacement'
-    OUTPUT = ROOT/'renders/dj-style-samples-20261025-replacement'
+    WORK = WORK.with_name(WORK.name+'-replacement')
+    OUTPUT = OUTPUT.with_name(OUTPUT.name+'-replacement')
     LABEL += '-replacement'
     vast.WORK, vast.STATE, vast.LABEL, vast.LEASE_SECONDS = WORK, WORK/'trial-state.json', LABEL, remaining
 
 
 def validate(plan):
-    if QUALITY: return validate_quality(plan,house=HOUSE,composition=COMPOSITION,guided_set=GUIDED_SET)
+    if QUALITY: return validate_quality(plan,house=HOUSE,composition=COMPOSITION,guided_set=GUIDED_SET,recovery=RECOVERY)
     if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != 'jamloom-dj-style-samples-20261025' or plan['budget_usd'] != 3
         or plan['max_workers'] != 1 or plan['max_minutes'] != 20
         or plan['stop_on_failure'] is not True or plan['automatic_cleanup'] is not True
@@ -144,6 +149,15 @@ def preflight():
     return plan, account, offers[0]
 
 
+def startup_probe(code, output):
+    if code==255:return 'transport_unavailable'
+    if code!=0:raise RuntimeError('Unexpected startup probe exit code '+str(code))
+    if output.strip():
+        if not output.strip().isdigit():raise RuntimeError('Invalid renderer exit receipt')
+        return 'renderer_exited'
+    return 'pending'
+
+
 def run():
     plan, account, offer = preflight()
     if vast.STATE.exists(): raise RuntimeError('Trial already attempted; no replacement authorized')
@@ -151,7 +165,7 @@ def run():
     key = WORK/'trial-key'
     subprocess.run(['ssh-keygen', '-q', '-t', 'ed25519', '-N', '', '-f', str(key)], check=True)
     token = secrets.token_hex(32); (WORK/'renderer-token').write_text(token); (WORK/'renderer-token').chmod(0o600)
-    anchor = json.loads((ROOT/'build-dj-style-samples-20261025/trial-state.json').read_text())['starting_credit'] if REPLACEMENT else float(account['credit'])
+    anchor = json.loads((ROOT/('build-dj-recovery-20261025' if RECOVERY else 'build-dj-style-samples-20261025')/'trial-state.json').read_text())['starting_credit'] if REPLACEMENT else float(account['credit'])
     if max(0, anchor-float(account['credit']))+offer['reserved_lease_plus_transfer'] > 3:
         raise RuntimeError('Original budget unavailable')
     state = dict(label=LABEL, offer=offer, starting_credit=anchor, started_at=time.time(),
@@ -159,9 +173,9 @@ def run():
                  confirm_absence=True, disk_gb=60)
     vast.write_state(state)
     with (WORK/'watchdog.log').open('a') as log:
-        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--guided-set'] if GUIDED_SET else ['--composition-study'] if COMPOSITION else ['--house-study'] if HOUSE else ['--quality'] if QUALITY else [])],
+        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--recovery-study'] if RECOVERY else ['--guided-set'] if GUIDED_SET else ['--composition-study'] if COMPOSITION else ['--house-study'] if HOUSE else ['--quality'] if QUALITY else [])],
                          stdin=subprocess.DEVNULL, stdout=log, stderr=log, start_new_session=True)
-    report = dict(status='FAIL', scope='Six guided bass originals with at most three short vocal candidates; direction and consistency study' if GUIDED_SET else 'Four paired originals; same captions/model/seeds, with and without newly authored audio guides' if COMPOSITION else 'Six paired instrumental house tracks; no reference audio or research weights' if HOUSE else 'Four arrangement candidates with at most two brief vocal candidates; no reference audio or research weights' if QUALITY else 'Two original style prompts; same seed and base model; no reference audio or research weights', tracks=[])
+    report = dict(status='FAIL', scope='Four guide/model seed controls plus two original vocal opportunities; no reference material' if RECOVERY else 'Six guided bass originals with at most three short vocal candidates; direction and consistency study' if GUIDED_SET else 'Four paired originals; same captions/model/seeds, with and without newly authored audio guides' if COMPOSITION else 'Six paired instrumental house tracks; no reference audio or research weights' if HOUSE else 'Four arrangement candidates with at most two brief vocal candidates; no reference audio or research weights' if QUALITY else 'Two original style prompts; same seed and base model; no reference audio or research weights', tracks=[])
     tunnel = None; ssh = None
     try:
         result = vast.api('v0/asks/'+str(offer['id']), 'PUT', dict(
@@ -182,7 +196,7 @@ def run():
         files = [ROOT/'scripts'/name for name in ['cloud_music_setup.sh', 'cloud_dj_warm.sh', 'dj_track_worker.py', 'dj_warm_engine.py', 'dj_vocal.py', 'club_benchmark_cases.py',*(['dj_composition.py','prepare_electronic_bank.py'] if COMPOSITION else [])]]
         files += [ROOT/'assets/manifests/dj-styles.json', WORK/'renderer-token']
         subprocess.run([*scp, *map(str, files), 'root@'+item['ssh_host']+':/workspace/'], check=True, capture_output=True, timeout=60)
-        subprocess.run([*ssh, vast.dj_bootstrap_command(state['deadline'], plan.get('max_requests', 2), arranged=QUALITY and not HOUSE and not COMPOSITION, house_study=HOUSE, composition_study=COMPOSITION and not GUIDED_SET, guided_set=GUIDED_SET)], check=True, capture_output=True, timeout=20)
+        subprocess.run([*ssh, vast.dj_bootstrap_command(state['deadline'], plan.get('max_requests', 2), arranged=QUALITY and not HOUSE and not COMPOSITION, house_study=HOUSE, composition_study=COMPOSITION and not GUIDED_SET and not RECOVERY, guided_set=GUIDED_SET, recovery_study=RECOVERY)], check=True, capture_output=True, timeout=20)
         with socket.socket() as sock:
             sock.bind(('127.0.0.1', 0)); port = sock.getsockname()[1]
         with (WORK/'tunnel.log').open('a') as log:
@@ -191,10 +205,17 @@ def run():
             return urllib.request.urlopen(urllib.request.Request(f'http://127.0.0.1:{port}'+path,
                 data=None if body is None else json.dumps(body).encode(), headers={'Authorization':'Bearer '+token, 'Content-Type':'application/json'}), timeout=timeout)
         print('Installing pinned model and waiting for renderer.', flush=True)
+        transport_failures=0
         while time.time() < state['deadline']-100:
             if tunnel.poll() is not None: raise RuntimeError('SSH tunnel failed')
-            check = subprocess.run([*ssh, 'if test -f /workspace/run.exit; then cat /workspace/run.exit; fi'], capture_output=True, timeout=15)
-            if check.returncode or check.stdout.strip(): raise RuntimeError('Renderer startup failed')
+            try:
+                check = subprocess.run([*ssh, 'if test -f /workspace/run.exit; then cat /workspace/run.exit; fi'], capture_output=True, timeout=15)
+                outcome=startup_probe(check.returncode,check.stdout)
+            except subprocess.TimeoutExpired:outcome='transport_unavailable'
+            with (WORK/'startup-probes.jsonl').open('a') as log:log.write(json.dumps(dict(at=time.time(),outcome=outcome))+'\n')
+            if outcome=='renderer_exited':raise RuntimeError('Renderer process exited during startup')
+            transport_failures=transport_failures+1 if outcome=='transport_unavailable' else 0
+            if transport_failures>=3:raise RuntimeError('Three consecutive startup transport probes failed')
             try:
                 with request('/health') as response: ready = json.load(response)
                 if ready['ready']: break
@@ -210,8 +231,8 @@ def run():
                 raise RuntimeError('Generated track integrity failed')
             if COMPOSITION:
                 guide=receipt.get('composition')
-                if GUIDED_SET or row['request']['sequence']%2:
-                    if not isinstance(guide,dict) or guide.get('request')!=row['request'] or guide.get('origin')!='original_authored_notes_and_synthesis' or guide.get('reference_audio_used') is not False or guide.get('bpm')!=row['bpm'] or guide.get('seconds')!=60 or guide.get('score_sha256')!=row['guide_score_sha256'] or len(guide.get('guide_sha256',''))!=64:raise RuntimeError('Original guide provenance mismatch')
+                if RECOVERY or GUIDED_SET or row['request']['sequence']%2:
+                    if not isinstance(guide,dict) or guide.get('request')!=(row['guide_request'] if RECOVERY else row['request']) or guide.get('origin')!='original_authored_notes_and_synthesis' or guide.get('reference_audio_used') is not False or guide.get('bpm')!=row['bpm'] or guide.get('seconds')!=60 or guide.get('score_sha256')!=row['guide_score_sha256'] or len(guide.get('guide_sha256',''))!=64:raise RuntimeError('Original guide provenance mismatch')
                 elif guide is not None:raise RuntimeError('Control unexpectedly used a guide')
             with wave.open(io.BytesIO(data)) as audio:
                 if (audio.getnchannels(), audio.getframerate(), audio.getnframes(), audio.getsampwidth()) != (2, 48000, 2880000, 2):
@@ -250,9 +271,10 @@ if __name__ == '__main__':
     parser.add_argument('--house-study',action='store_true')
     parser.add_argument('--composition-study',action='store_true')
     parser.add_argument('--guided-set',action='store_true')
+    parser.add_argument('--recovery-study',action='store_true')
     args = parser.parse_args()
-    if sum([args.quality,args.replacement,args.house_study,args.composition_study,args.guided_set])>1: parser.error('Choose one campaign; replacements require a new prepared permit')
-    if args.quality or args.house_study or args.composition_study or args.guided_set: configure_quality(house=args.house_study,composition=args.composition_study,guided_set=args.guided_set)
+    if sum([args.quality,args.replacement,args.house_study,args.composition_study,args.guided_set,args.recovery_study])>(2 if args.replacement and args.recovery_study else 1): parser.error('Choose one campaign; replacements require a new prepared permit')
+    if args.quality or args.house_study or args.composition_study or args.guided_set or args.recovery_study: configure_quality(house=args.house_study,composition=args.composition_study,guided_set=args.guided_set,recovery=args.recovery_study)
     if args.replacement: configure_replacement()
     if args.watch: vast.watch()
     elif args.preflight:

@@ -1,0 +1,79 @@
+{
+  "status": "PASS technical",
+  "target_lufs": -18.55,
+  "tracks": [
+    {
+      "file": "clip-1.mp3",
+      "source_sha256": "87fe2972b3b11ae05a2065735fcfb832ff01cc3d48b59899fc9762ea8bfae8f6",
+      "sha256": "a36eb573cb2cc723bc8e1067e1111f1a7eafa6b9b0dce0957261ec3ab18f42c1",
+      "gain_db": -2.4400000000000013,
+      "level": {
+        "input_i": "-18.55",
+        "input_tp": "-3.24",
+        "input_lra": "2.10",
+        "input_thresh": "-28.75"
+      }
+    },
+    {
+      "file": "clip-2.mp3",
+      "source_sha256": "fed1294652896ade10bc317001b6826572270cbc6ebaf7f4ba1d98e221f24a30",
+      "sha256": "d3d89ea575a21043c62ede31eff7348fd791ecf0431f4b07699f6e87cc98b2e8",
+      "gain_db": -1.5,
+      "level": {
+        "input_i": "-18.55",
+        "input_tp": "-2.50",
+        "input_lra": "4.70",
+        "input_thresh": "-28.59"
+      }
+    },
+    {
+      "file": "clip-3.mp3",
+      "source_sha256": "267ed439db72821d07c4392f93080e51505a8a89438d074c0be2f685c7a3ec41",
+      "sha256": "3b6da3ced070382685231eb84b05a38b225ba0385b9b584fa21e09060b7b51b8",
+      "gain_db": -2.6900000000000013,
+      "level": {
+        "input_i": "-18.55",
+        "input_tp": "-3.45",
+        "input_lra": "1.80",
+        "input_thresh": "-28.62"
+      }
+    },
+    {
+      "file": "clip-4.mp3",
+      "source_sha256": "df36015c317114397259db8450b9623169d23200e8ae3b20da7d2626d7a89d36",
+      "sha256": "e1145419fd215c6a7d26d4a957c2350ad66cde6b382a690db605928a837534d7",
+      "gain_db": -2.8000000000000007,
+      "level": {
+        "input_i": "-18.55",
+        "input_tp": "-3.80",
+        "input_lra": "3.80",
+        "input_thresh": "-28.73"
+      }
+    },
+    {
+      "file": "clip-5.mp3",
+      "source_sha256": "e209a15c19753aba57b0981352a103ead5e19c19080287b4a231e5c5a20714b0",
+      "sha256": "ee534eb5a7245f3ce059254d5c2cf1ac2852cc714db225c6309b60fc4a0548cc",
+      "gain_db": -3.2600000000000016,
+      "level": {
+        "input_i": "-18.54",
+        "input_tp": "-4.18",
+        "input_lra": "1.80",
+        "input_thresh": "-28.64"
+      }
+    },
+    {
+      "file": "clip-6.mp3",
+      "source_sha256": "e22ffbba3602341803a1285ab7592891ef5cba9fab4e5263fc2e4af7a2844f9f",
+      "sha256": "2665fc8537f80b6e9e87d219f002dd41a57bd93ba8eddde6ff2f56a163e926ee",
+      "gain_db": -1.8100000000000023,
+      "level": {
+        "input_i": "-18.55",
+        "input_tp": "-2.78",
+        "input_lra": "6.20",
+        "input_thresh": "-28.69"
+      }
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

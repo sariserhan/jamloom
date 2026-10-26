@@ -82,3 +82,10 @@ test('free Local Remixes opens directly while cloud creation remains gated',asyn
  assert.ok(html.includes('href="/studio/index.html">Try Local Remixes free'));
  assert.match(html,/id="local-remixes"/);
 });
+
+test('DJ cleanup reaches its own auth during a launch hold without opening session APIs',async()=>{
+ assert.equal(comingSoonRecovery('/api/ai-dj/supervisor'),true);
+ assert.equal(comingSoonRecovery('/api/ai-dj/supervisor/fake'),false);
+ const response=await proxy(new NextRequest('https://www.jamloom.com/api/ai-dj/supervisor'));
+ assert.equal(response.headers.get('x-middleware-next'),'1');
+});

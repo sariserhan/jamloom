@@ -36,6 +36,25 @@ class CompositionTests(unittest.TestCase):
             self.assertTrue(generate.call_args.kwargs['guided'])
             composition_set(self.value(sequence=2),Path('/tmp'),hook='We rise')
             self.assertFalse(generate.call_args.kwargs['guided']);self.assertEqual(generate.call_args.kwargs['hook'],'We rise')
+    def test_recovery_isolates_guide_notes_from_model_seed(self):
+        from unittest.mock import patch
+        from dj_track_worker import recovery_guide,composition_recovery,RECOVERY_CASES
+        plans=[]
+        for seq,(seed,guide_seed) in RECOVERY_CASES.items():
+            v=self.value(style='bass',sequence=seq,seed=seed)
+            guide=recovery_guide(v);self.assertEqual(guide['seed'],guide_seed)
+            plans.append(score(guide))
+            with patch('dj_track_worker.ace') as call:
+                composition_recovery(v,Path('/tmp'));self.assertEqual(call.call_args.args[0]['seed'],seed)
+                self.assertEqual(call.call_args.kwargs['guide_value'],guide)
+                composition_recovery(v,Path('/tmp'),hook='Feel alive');self.assertIsNone(call.call_args.kwargs['guide_value'])
+                self.assertFalse(call.call_args.kwargs['guided'])
+        self.assertEqual(plans[0]['events'],plans[1]['events'])
+        self.assertEqual(plans[2]['events'],plans[3]['events'])
+        self.assertNotEqual(plans[0]['events'],plans[2]['events'])
+        for v in [self.value(style='house',sequence=0,seed=301025),self.value(style='bass',sequence=0,seed=4)]:
+            with self.assertRaises(ValueError):recovery_guide(v)
+
     def test_direction_changes_score_and_closing_removes_build_rolls(self):
         base=self.value(style='bass',beat={'bpm':140,'groove':'syncopated'})
         kept=score(base);changed=score(base|{'beat':{'bpm':140,'groove':'rolling'}})

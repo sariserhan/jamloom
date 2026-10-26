@@ -8,9 +8,10 @@ import {createServer} from 'node:http';
 import {build} from 'esbuild';
 import {chromium} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
+const recovery=process.argv.includes('--recovery-study');
 const quality=process.argv.includes('--quality'),timing=process.argv.includes('--timing-revision');
-const house=process.argv.includes('--house-study'),guided=process.argv.includes('--guided-set');assert.ok([quality,house,guided].filter(Boolean).length<=1);assert.ok(!timing||guided);
-const root=resolve('../..'),folder=resolve(root,timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
+const house=process.argv.includes('--house-study'),guided=process.argv.includes('--guided-set')||recovery;assert.ok([quality,house,guided].filter(Boolean).length<=1);assert.ok(!timing||guided);
+const root=resolve('../..'),folder=resolve(root,recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
 await mkdir(folder);
 const source=resolve(root,'renders/ai-dj-hosted-20261025'),report=JSON.parse(await readFile(source+'/result.json','utf8'));
 const session=report.customers.find(c=>c.visibility==='public').session;
@@ -29,7 +30,7 @@ if(house){
  tracks=await Promise.all(selected.map(async(row,index)=>{const bytes=await readFile(row.path);assert.equal(createHash('sha256').update(bytes).digest('hex'),row.hash);return{bytes,track:{id:String(index),title:row.title,artist:'Jamloom original',url:'/audio/'+index,sha256:row.hash,energy:4,style:'house',mood:'deep',vocal:!!row.vocalCue,vocalCue:row.vocalCue,credit:''}};}));
 }
 if(guided){
- const source=root+'/renders/dj-guided-set-20261025',run=JSON.parse(await readFile(source+'/report.json','utf8'));
+ const source=root+(recovery?'/renders/dj-recovery-20261025-replacement':'/renders/dj-guided-set-20261025'),run=JSON.parse(await readFile(source+'/report.json','utf8'));
  assert.equal(run.status,'PASS technical');assert.equal(run.cleanup_confirmed,true);assert.equal(run.tracks.length,6);
  tracks=await Promise.all(run.tracks.map(async(row,index)=>{const bytes=await readFile(source+'/'+row.file),r=row.receipt;assert.equal(createHash('sha256').update(bytes).digest('hex'),r.sha256);return{bytes,track:{id:String(index),title:'Guided original '+(index+1),artist:'Jamloom original',url:'/audio/'+index,sha256:r.sha256,energy:r.request.energy,style:r.request.style,mood:r.request.mood,beat:r.request.beat,vocal:!!r.vocal,vocalCue:r.vocal??undefined,credit:''}};}));
  assert.equal(new Set(tracks.map(t=>t.track.sha256)).size,6);

@@ -1,0 +1,250 @@
+{
+  "status": "PASS technical",
+  "scope": "Four guide/model seed controls plus two original vocal opportunities; no reference material",
+  "tracks": [
+    {
+      "file": "bass-0.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6d224955960d6064e0371b6a2c71cd54",
+        "job": "8dadf534-b3fd-48a8-8611-9107bf9365e0",
+        "request": {
+          "version": 1,
+          "session": "88b75e9d405e4f44a491e4c9b205640a",
+          "sequence": 0,
+          "seed": 301025,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 4448,
+        "bytes": 11520044,
+        "sha256": "fed1294652896ade10bc317001b6826572270cbc6ebaf7f4ba1d98e221f24a30",
+        "vocal": null,
+        "composition": {
+          "request": {
+            "version": 1,
+            "session": "88b75e9d405e4f44a491e4c9b205640a",
+            "sequence": 0,
+            "seed": 301025,
+            "style": "bass",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "bpm": 140,
+          "seconds": 60,
+          "origin": "original_authored_notes_and_synthesis",
+          "reference_audio_used": false,
+          "guide_sha256": "0f326c8f5c70f9e20674708c93fadfaf546e756d2406f198129ddf2997ceb075",
+          "score_sha256": "ad801c7d7bcb257ec0ce4f1ce10aa545fe2e251b400eb89b40f7aaf21a448b18"
+        }
+      }
+    },
+    {
+      "file": "bass-1.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6d224955960d6064e0371b6a2c71cd54",
+        "job": "6714a4da-0a99-418d-849d-faa571db4e8a",
+        "request": {
+          "version": 1,
+          "session": "88b75e9d405e4f44a491e4c9b205640a",
+          "sequence": 1,
+          "seed": 311025,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 2965,
+        "bytes": 11520044,
+        "sha256": "df36015c317114397259db8450b9623169d23200e8ae3b20da7d2626d7a89d36",
+        "vocal": null,
+        "composition": {
+          "request": {
+            "version": 1,
+            "session": "88b75e9d405e4f44a491e4c9b205640a",
+            "sequence": 1,
+            "seed": 301025,
+            "style": "bass",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "bpm": 140,
+          "seconds": 60,
+          "origin": "original_authored_notes_and_synthesis",
+          "reference_audio_used": false,
+          "guide_sha256": "0f326c8f5c70f9e20674708c93fadfaf546e756d2406f198129ddf2997ceb075",
+          "score_sha256": "e212e0bf7b97094543543b8f522ebf698393c4db0311c5da4609b98ab8ae2ab5"
+        }
+      }
+    },
+    {
+      "file": "bass-2.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6d224955960d6064e0371b6a2c71cd54",
+        "job": "bdc2487d-33a0-4cbc-adac-fce9a419c5c0",
+        "request": {
+          "version": 1,
+          "session": "88b75e9d405e4f44a491e4c9b205640a",
+          "sequence": 2,
+          "seed": 301025,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 2976,
+        "bytes": 11520044,
+        "sha256": "87fe2972b3b11ae05a2065735fcfb832ff01cc3d48b59899fc9762ea8bfae8f6",
+        "vocal": null,
+        "composition": {
+          "request": {
+            "version": 1,
+            "session": "88b75e9d405e4f44a491e4c9b205640a",
+            "sequence": 2,
+            "seed": 311025,
+            "style": "bass",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "bpm": 140,
+          "seconds": 60,
+          "origin": "original_authored_notes_and_synthesis",
+          "reference_audio_used": false,
+          "guide_sha256": "d7af3d741200d0280d53c4c9083eab0115fc510758b36d7357fddea8ea01b12e",
+          "score_sha256": "436b9dc876326da9df1d6acffac8f0d2e8130ea3c8352723893f9f6701714437"
+        }
+      }
+    },
+    {
+      "file": "bass-3.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6d224955960d6064e0371b6a2c71cd54",
+        "job": "26b184f3-7106-4d2e-9ca4-a951402bd017",
+        "request": {
+          "version": 1,
+          "session": "88b75e9d405e4f44a491e4c9b205640a",
+          "sequence": 3,
+          "seed": 311025,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 2967,
+        "bytes": 11520044,
+        "sha256": "267ed439db72821d07c4392f93080e51505a8a89438d074c0be2f685c7a3ec41",
+        "vocal": null,
+        "composition": {
+          "request": {
+            "version": 1,
+            "session": "88b75e9d405e4f44a491e4c9b205640a",
+            "sequence": 3,
+            "seed": 311025,
+            "style": "bass",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "bpm": 140,
+          "seconds": 60,
+          "origin": "original_authored_notes_and_synthesis",
+          "reference_audio_used": false,
+          "guide_sha256": "d7af3d741200d0280d53c4c9083eab0115fc510758b36d7357fddea8ea01b12e",
+          "score_sha256": "2aefe7946e7d44f168e71fd0e11425ee6f74e78e89b99777cb765f615923c813"
+        }
+      }
+    },
+    {
+      "file": "bass-7.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6d224955960d6064e0371b6a2c71cd54",
+        "job": "6a3b451e-91f2-4bb4-bca6-aaf5365e2e5d",
+        "request": {
+          "version": 1,
+          "session": "88b75e9d405e4f44a491e4c9b205640a",
+          "sequence": 7,
+          "seed": 312025,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 3576,
+        "bytes": 11520044,
+        "sha256": "e22ffbba3602341803a1285ab7592891ef5cba9fab4e5263fc2e4af7a2844f9f",
+        "vocal": null,
+        "composition": {
+          "request": {
+            "version": 1,
+            "session": "88b75e9d405e4f44a491e4c9b205640a",
+            "sequence": 7,
+            "seed": 301025,
+            "style": "bass",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "bpm": 140,
+          "seconds": 60,
+          "origin": "original_authored_notes_and_synthesis",
+          "reference_audio_used": false,
+          "guide_sha256": "0f326c8f5c70f9e20674708c93fadfaf546e756d2406f198129ddf2997ceb075",
+          "score_sha256": "957636db428fb3c6ba378120bb8c1bd028f8edb35bf35181d427a4c6201ad04c"
+        }
+      }
+    },
+    {
+      "file": "bass-12.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6d224955960d6064e0371b6a2c71cd54",
+        "job": "531e818a-13f4-42d5-8dd6-8b369ee68d54",
+        "request": {
+          "version": 1,
+          "session": "88b75e9d405e4f44a491e4c9b205640a",
+          "sequence": 12,
+          "seed": 313025,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 3517,
+        "bytes": 11520044,
+        "sha256": "e209a15c19753aba57b0981352a103ead5e19c19080287b4a231e5c5a20714b0",
+        "vocal": null,
+        "composition": {
+          "request": {
+            "version": 1,
+            "session": "88b75e9d405e4f44a491e4c9b205640a",
+            "sequence": 12,
+            "seed": 301025,
+            "style": "bass",
+            "energy": 4,
+            "mood": "deep"
+          },
+          "bpm": 140,
+          "seconds": 60,
+          "origin": "original_authored_notes_and_synthesis",
+          "reference_audio_used": false,
+          "guide_sha256": "0f326c8f5c70f9e20674708c93fadfaf546e756d2406f198129ddf2997ceb075",
+          "score_sha256": "72e9453d43f68d315b0a464497069b731dfd6b77d2f9e82f9fcd6a293ccabfcc"
+        }
+      }
+    }
+  ],
+  "human_listening": "NOT RUN",
+  "cleanup_confirmed": true,
+  "observed_debit_usd": 0.05959749693000127,
+  "rental_seconds": 489.24447989463806
+}

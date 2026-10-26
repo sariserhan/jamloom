@@ -110,6 +110,12 @@ class WorkerContract(unittest.TestCase):
             self.assertEqual(params.task_type,'cover');self.assertEqual(params.audio_cover_strength,.5)
             self.assertTrue(Path(params.src_audio).is_file());self.assertEqual(params.caption,arranged_brief(value)[0])
             self.assertEqual((params.duration,params.seed,params.instrumental),(60,123456,True))
+        with tempfile.TemporaryDirectory() as d,patch.dict(sys.modules,modules):
+            ace(value,Path(d),engine=('dit','lm'),arranged=True,guided=True,guide_value={**value,'seed':999})
+            params,config=generate.call_args.args[2:]
+            self.assertEqual(params.seed,value['seed']);self.assertEqual(config.seeds,[value['seed']])
+            self.assertEqual(json.loads((Path(d)/'guide/receipt.json').read_text())['request']['seed'],999)
+        with self.assertRaises(ValueError):ace(value,Path('/tmp'),guided=True,guide_value={**value,'energy':2})
         with self.assertRaises(ValueError):ace(value,Path('/tmp'),hook='One more',guided=True)
 
     def test_beat_direction_reaches_model_tempo_and_caption(self):

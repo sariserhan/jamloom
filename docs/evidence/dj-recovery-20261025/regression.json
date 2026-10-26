@@ -1,0 +1,201 @@
+{
+  "status": "PARTIAL diagnosis; cause not proven",
+  "preferred": {
+    "request": {
+      "version": 1,
+      "session": "06f0de80e4a54b5da5bf6069d9449932",
+      "sequence": 3,
+      "seed": 301025,
+      "style": "bass",
+      "energy": 4,
+      "mood": "deep"
+    },
+    "root_midi": 40,
+    "motif": [
+      0,
+      10,
+      5,
+      3,
+      7,
+      3,
+      0
+    ],
+    "rhythm": [
+      0,
+      0.5,
+      1.75,
+      3,
+      4,
+      5.5,
+      6.75
+    ]
+  },
+  "controls": [
+    {
+      "sequence": 0,
+      "caption_identical_to_preferred": true,
+      "explicit_beat_changes_events": false,
+      "root_midi": 38,
+      "motif": [
+        0,
+        5,
+        3,
+        10,
+        7,
+        3,
+        0
+      ],
+      "rhythm": [
+        0,
+        0.5,
+        1.75,
+        3,
+        4,
+        5.5,
+        6.75
+      ]
+    },
+    {
+      "sequence": 1,
+      "caption_identical_to_preferred": true,
+      "explicit_beat_changes_events": false,
+      "root_midi": 43,
+      "motif": [
+        0,
+        10,
+        3,
+        5,
+        7,
+        3,
+        0
+      ],
+      "rhythm": [
+        0,
+        0.5,
+        1.75,
+        3,
+        4,
+        5.5,
+        6.75
+      ]
+    },
+    {
+      "sequence": 2,
+      "caption_identical_to_preferred": true,
+      "explicit_beat_changes_events": false,
+      "root_midi": 38,
+      "motif": [
+        0,
+        3,
+        10,
+        7,
+        7,
+        3,
+        0
+      ],
+      "rhythm": [
+        0,
+        0.75,
+        1.5,
+        2.5,
+        3.25,
+        4.5,
+        6
+      ]
+    }
+  ],
+  "measurements": [
+    {
+      "id": "fresh-0",
+      "sha256": "267ed439db72821d07c4392f93080e51505a8a89438d074c0be2f685c7a3ec41",
+      "medians": {
+        "side_fraction": 0.0366269509110754,
+        "band_sub": 0.5820516049861908,
+        "band_bass": 0.27986404299736023,
+        "band_body": 0.09350099600851536,
+        "band_presence": 0.021417716052383184,
+        "band_brightness": 0.023165693506598473
+      }
+    },
+    {
+      "id": "fresh-1",
+      "sha256": "e09db6e2187bf49fd644174ebcd94f20a37991f5c111d0cfce095395e7777676",
+      "medians": {
+        "side_fraction": 0.019828530942221943,
+        "band_sub": 0.4768903851509094,
+        "band_bass": 0.3841889947652817,
+        "band_body": 0.0834515281021595,
+        "band_presence": 0.025360284373164177,
+        "band_brightness": 0.03010878525674343
+      }
+    },
+    {
+      "id": "fresh-2",
+      "sha256": "adb70f4940a560acfe0181f4b18641f32c793e17d70ec8523ded53b51909e7fa",
+      "medians": {
+        "side_fraction": 0.011231676274975698,
+        "band_sub": 0.5031344294548035,
+        "band_bass": 0.39320895075798035,
+        "band_body": 0.05633864924311638,
+        "band_presence": 0.01562211150303483,
+        "band_brightness": 0.03169591352343559
+      }
+    },
+    {
+      "id": "fresh-7",
+      "sha256": "532375c9a1e1020ba19b0272ad05517280e0aa9e965d4d379df7945a4e07ef9c",
+      "medians": {
+        "side_fraction": 0.01769310049997512,
+        "band_sub": 0.4513373374938965,
+        "band_bass": 0.39897486567497253,
+        "band_body": 0.09807388111948967,
+        "band_presence": 0.029460317455232143,
+        "band_brightness": 0.02215368114411831
+      }
+    },
+    {
+      "id": "fresh-12",
+      "sha256": "6a456fa8c873616644b4b33c996962087cc315592a6fee898976f34e7d16b9f0",
+      "medians": {
+        "side_fraction": 0.024775907889874375,
+        "band_sub": 0.4110828638076782,
+        "band_bass": 0.43404971063137054,
+        "band_body": 0.1087925098836422,
+        "band_presence": 0.024745886214077473,
+        "band_brightness": 0.02132903505116701
+      }
+    },
+    {
+      "id": "fresh-13",
+      "sha256": "24e11d1e28d0d5c38164e3a64a74a8e639278620662c1b2a2aa30242ff50a80d",
+      "medians": {
+        "side_fraction": 0.021336212208599548,
+        "band_sub": 0.44329217076301575,
+        "band_bass": 0.4165230989456177,
+        "band_body": 0.08125020563602448,
+        "band_presence": 0.03709365427494049,
+        "band_brightness": 0.02184093650430441
+      }
+    },
+    {
+      "id": "preferred-previous-clip-2",
+      "sha256": "fed1294652896ade10bc317001b6826572270cbc6ebaf7f4ba1d98e221f24a30",
+      "medians": {
+        "side_fraction": 0.05211796920741951,
+        "band_sub": 0.561416357755661,
+        "band_bass": 0.2201816886663437,
+        "band_body": 0.14037124440073967,
+        "band_presence": 0.03735833428800106,
+        "band_brightness": 0.04067245218902826
+      }
+    }
+  ],
+  "findings": [
+    "First three rejected tracks retain the preferred caption, tempo, mood and energy.",
+    "Explicit default beat does not change their guide event streams.",
+    "The same seed drives both guide notes and model noise; prior study confounds both.",
+    "Rejected outputs have lower measured midrange/presence and stereo side energy than the preferred output.",
+    "No measured feature is promoted as a musical-quality predictor."
+  ],
+  "next": "Four factorial controls, then two separate vocal opportunities; no reference audio or trained weights."
+}

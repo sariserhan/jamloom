@@ -1,0 +1,17 @@
+{
+  "status": "AUTHORIZED",
+  "owner_statement": "Approve one replacement within the original cap",
+  "budget_usd_total": 3,
+  "remaining_rental_seconds": 1041,
+  "max_workers": 1,
+  "max_instrumentals": 6,
+  "max_vocal_candidates": 2,
+  "max_requests": 8,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "public_activation": false,
+  "prior_observed_debit_usd": 0.009075440930001122,
+  "controller_sha256": "ffb244e2ee10eb5646706555f3d1a08a95cba1020a476eb189ff10a9c02ed2db",
+  "first_failure": "Startup probe failed; old probe did not retain return code/transport details",
+  "change": "Record classified startup probe outcomes; at most three consecutive SSH transport failures before stopping; any renderer exit still stops immediately"
+}

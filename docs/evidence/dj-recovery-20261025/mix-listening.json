@@ -1,0 +1,19 @@
+{
+  "status": "PASS technical",
+  "target_lufs": -23.06,
+  "tracks": [
+    {
+      "file": "guided-mix.mp3",
+      "source_sha256": "1b0594c7fa516754e3f1fc3c3b42f0c76051649790ea98053f0c722a161d1c95",
+      "sha256": "855210e7d6ab8ca2a5d79cba6b453b27922cad18f85373c65cc00cb9dc898c85",
+      "gain_db": 0.0,
+      "level": {
+        "input_i": "-23.06",
+        "input_tp": "-7.15",
+        "input_lra": "3.20",
+        "input_thresh": "-33.18"
+      }
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

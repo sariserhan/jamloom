@@ -5,12 +5,13 @@ import {integer} from './economics';
 import {validVocalCue,type VocalCue} from './dj-vocal';
 import {AudioError} from './audio-validation';
 const digest=(v:unknown)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
-export type WarmPermit={account:number;instance:number;label:string;permitSha256:string;hourlyMicros:number;budgetMicros:number;startedAt:number;deadline:number};
+export type WarmPermit={billingLive?:boolean;account:number;instance:number;label:string;permitSha256:string;hourlyMicros:number;budgetMicros:number;startedAt:number;deadline:number};
 export type WarmIdentity={id:string;lease:string};
 // Rental lifetime belongs to the operator; only a completed, metered job slice reaches a customer wallet.
 export class DJWarmWorker{
  constructor(readonly sessions:DJSessions,private provider:RentalProvider){}
  async register(p:WarmPermit):Promise<WarmIdentity>{
+  if((p.billingLive??false)!==this.sessions.live)throw Error('Rental permit billing mode mismatch');
   for(const n of [p.account,p.instance,p.hourlyMicros,p.budgetMicros])integer(n,1);
   for(const n of [p.startedAt,p.deadline])integer(n,1,Number.MAX_SAFE_INTEGER);
   if(!/^jamloom-[a-z0-9-]{1,100}$/.test(p.label)||!/^[a-f0-9]{64}$/.test(p.permitSha256)||p.hourlyMicros>5000000||p.budgetMicros>6000000||p.startedAt>Date.now()||Date.now()-p.startedAt>2400000||p.deadline<=Date.now()+90000||p.deadline-p.startedAt>2400000||Math.ceil((p.deadline-p.startedAt)*p.hourlyMicros/3600000)>p.budgetMicros)throw Error('Invalid warm rental permit');

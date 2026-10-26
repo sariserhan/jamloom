@@ -3,19 +3,20 @@ import assert from 'node:assert/strict';
 import {mkdir,writeFile} from 'node:fs/promises';
 import {chromium,webkit} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
+const recovery=process.argv.includes('--recovery-study');
 const vocalEffects=process.argv.includes('--vocal-effects'),guided=process.argv.includes('--guided-set'),timing=process.argv.includes('--timing-revision');assert.ok(!timing||guided);
 const quality=process.argv.includes('--quality'),originals=process.argv.includes('--originals'),house=process.argv.includes('--house-study'),blind=process.argv.includes('--blind'),composition=process.argv.includes('--composition');
-assert.ok([house,quality,composition,vocalEffects,guided].filter(Boolean).length<=1,'Choose one campaign');assert.ok(!blind||house||composition||guided,'Blind requires a paired study');
+assert.ok([house,quality,composition,vocalEffects,guided,recovery].filter(Boolean).length<=1,'Choose one campaign');assert.ok(!blind||house||composition||guided||recovery,'Blind requires a paired study');
 assert.ok(!originals||quality,'Originals belongs to the quality campaign');
-const folder=(vocalEffects||guided)?'../../docs/evidence/dj-guided-set-20261025':composition?'../../docs/evidence/dj-composition-20261025':house?'../../docs/evidence/dj-house-consistency-20261025':quality?'../../docs/evidence/dj-quality-20261025':'../../docs/evidence/dj-audible-comparison-20261025',results=[],count=guided?(blind?6:1):composition?(blind?4:2):house?(blind?6:1):quality?(originals?6:2):4;
-const suffix=guided?(blind?'-originals':timing?'-timing-mix':'-mix'):vocalEffects?'-vocals':composition?(blind?'-originals':'-guides'):house?(blind?'-blind':'-mix'):originals?'-originals':'';
+const folder=recovery?'../../docs/evidence/dj-recovery-20261025':(vocalEffects||guided)?'../../docs/evidence/dj-guided-set-20261025':composition?'../../docs/evidence/dj-composition-20261025':house?'../../docs/evidence/dj-house-consistency-20261025':quality?'../../docs/evidence/dj-quality-20261025':'../../docs/evidence/dj-audible-comparison-20261025',results=[],count=recovery?(blind?6:1):guided?(blind?6:1):composition?(blind?4:2):house?(blind?6:1):quality?(originals?6:2):4;
+const suffix=recovery?(blind?'-originals':'-mix'):guided?(blind?'-originals':timing?'-timing-mix':'-mix'):vocalEffects?'-vocals':composition?(blind?'-originals':'-guides'):house?(blind?'-blind':'-mix'):originals?'-originals':'';
 await mkdir(folder,{recursive:true});
 for(const [name,engine] of Object.entries({chromium,webkit})){
  const browser=await engine.launch();
  try{
   const context=await browser.newContext({viewport:{width:1440,height:1000}});await context.addInitScript(silenceSpeakers);
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto('http://localhost:8766/'+(guided?(blind?'guided-originals':timing?'guided-performance':'guided-mix'):vocalEffects?'vocal-effects':composition?(blind?'composition-originals':'composition-guides'):house?(blind?'house-blind':'house-mix'):quality?(originals?'quality-originals':'quality-comparison'):'audible-comparison')+'/review/');assert.equal(await page.locator('audio').count(),count);
+  await page.goto('http://localhost:8766/'+(recovery?(blind?'recovery-originals':'recovery-performance'):guided?(blind?'guided-originals':timing?'guided-performance':'guided-mix'):vocalEffects?'vocal-effects':composition?(blind?'composition-originals':'composition-guides'):house?(blind?'house-blind':'house-mix'):quality?(originals?'quality-originals':'quality-comparison'):'audible-comparison')+'/review/');assert.equal(await page.locator('audio').count(),count);
   assert.match(await page.title(),/Jamloom/);assert.ok(await page.locator('h1').innerText());
   await page.waitForFunction(min=>[...document.querySelectorAll('audio')].every(a=>Number.isFinite(a.duration)&&a.duration>min),vocalEffects?10:50);
   assert.ok(await page.locator('audio').evaluateAll(nodes=>nodes.every(a=>a.paused&&!a.autoplay)));

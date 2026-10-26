@@ -12,26 +12,31 @@ ROOT=Path(__file__).resolve().parents[1]
 EVIDENCE=ROOT/'docs/evidence/dj-composition-20261025'
 
 
-def main(generated=False,guided=False):
+def main(generated=False,guided=False,recovery=False,replacement=False):
     global EVIDENCE
+    if recovery and guided:raise ValueError('Choose one study')
+    if replacement and not recovery:raise ValueError('Replacement is scoped to the recovery study')
+    if recovery:EVIDENCE=ROOT/'docs/evidence/dj-recovery-20261025';generated=True
     if guided:EVIDENCE=ROOT/'docs/evidence/dj-guided-set-20261025';generated=True
     plan=json.loads((EVIDENCE/'gpu-plan.json').read_text());rows=[]
     if generated:
-        source=ROOT/('renders/dj-guided-set-20261025' if guided else 'renders/dj-composition-20261025');report=json.loads((source/'report.json').read_text());key=json.loads((EVIDENCE/'blind-key.json').read_text())['clips']
-        assert plan['status']=='AUTHORIZED' and report['status']=='PASS technical' and report['cleanup_confirmed'] and len(report['tracks'])==(6 if guided else 4)
-        assert sorted(k['clip']for k in key)==list(range(1,(7 if guided else 5))) and sorted(k['sequence']for k in key)==sorted(r['request']['sequence']for r in plan['tracks'])
+        source=ROOT/('renders/dj-recovery-20261025' if recovery else 'renders/dj-guided-set-20261025' if guided else 'renders/dj-composition-20261025')
+        if replacement:source=source.with_name(source.name+'-replacement')
+        report=json.loads((source/'report.json').read_text());key=json.loads((EVIDENCE/'blind-key.json').read_text())['clips']
+        assert plan['status']=='AUTHORIZED' and report['status']=='PASS technical' and report['cleanup_confirmed'] and len(report['tracks'])==(6 if recovery or guided else 4)
+        assert sorted(k['clip']for k in key)==list(range(1,(7 if recovery or guided else 5))) and sorted(k['sequence']for k in key)==sorted(r['request']['sequence']for r in plan['tracks'])
         for k in key:
             row=next(r for r in report['tracks']if r['receipt']['request']['sequence']==k['sequence']);prepared=next(r for r in plan['tracks']if r['request']['sequence']==k['sequence']);assert row['receipt']['request']==prepared['request'] and (prepared['vocals'] or row['receipt']['vocal'] is None)
             rows.append((source/row['file'],row['receipt']['sha256'],f"clip-{k['clip']}",f"Clip {k['clip']}",None))
-        title='Six fresh guided originals' if guided else 'Four fresh originals';intro='Fresh bass originals with composition guides, including groove, mood and energy changes. Listen for sound, hook, groove and development.' if guided else 'Same model and paired seeds. Conditions are hidden and loudness is matched. Compare the whole musical result: hook, sound, groove and development.'
-        if guided and all(t['receipt']['vocal'] is None for t in report['tracks']):intro+=' This batch stayed instrumental because the timing checks skipped the vocal candidates.'
+        title='Six fresh comparisons' if recovery else 'Six fresh guided originals' if guided else 'Four fresh originals';intro='Six one-minute clips at matched loudness. Rate the sound, hook, groove and development of each number. Clips 5 and 6 also attempt short original vocals; effects are checked separately from the underlying song.' if recovery else 'Fresh bass originals with composition guides, including groove, mood and energy changes. Listen for sound, hook, groove and development.' if guided else 'Same model and paired seeds. Conditions are hidden and loudness is matched. Compare the whole musical result: hook, sound, groove and development.'
+        if (guided or recovery) and all(t['receipt']['vocal'] is None for t in report['tracks']):intro+=' This batch stayed instrumental because the timing checks skipped the vocal candidates.'
     else:
         for style,label in [('house','House sketch'),('bass','Bass sketch')]:
             folder=ROOT/'renders/dj-composition-guides-20261025'/style;r=json.loads((folder/'receipt.json').read_text());score=json.loads((folder/'score.json').read_text())
             assert hashlib.sha256((folder/'score.json').read_bytes()).hexdigest()==r['score_sha256']
             rows.append((folder/'guide.wav',r['guide_sha256'],style,label,score))
         title='Original composition sketches';intro='Synthetic guides for the next generation experiment. Hear the musical layers and section changes. These are not finished AI tracks or a claim of professional sound quality.'
-    slug='guided-originals' if guided else 'composition-originals' if generated else 'composition-guides';review=ROOT/'renders/club-studies-20261024'/slug/'review'
+    slug='recovery-originals' if recovery else 'guided-originals' if guided else 'composition-originals' if generated else 'composition-guides';review=ROOT/'renders/club-studies-20261024'/slug/'review'
     for source,digest,*_ in rows:assert hashlib.sha256(source.read_bytes()).hexdigest()==digest
     levels=[loudness(r[0])for r in rows];target=min(-18,*(float(v['input_i'])-max(0,float(v['input_tp'])+2.5)for v in levels))
     review.mkdir(parents=True,exist_ok=False);cards=[];receipts=[]
@@ -54,4 +59,4 @@ def main(generated=False,guided=False):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--generated',action='store_true');p.add_argument('--guided-set',action='store_true');a=p.parse_args();main(a.generated,a.guided_set)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--generated',action='store_true');p.add_argument('--guided-set',action='store_true');p.add_argument('--recovery-study',action='store_true');p.add_argument('--replacement',action='store_true');a=p.parse_args();main(a.generated,a.guided_set,a.recovery_study,a.replacement)
