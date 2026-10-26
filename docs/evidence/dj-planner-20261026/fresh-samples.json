@@ -1,0 +1,228 @@
+{
+  "status": "PASS technical",
+  "scope": "Paired unconditioned generation with or without semantic music planning; no reference material",
+  "tracks": [
+    {
+      "file": "house-0.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6a1eab417e911309f832d527dfdf581e",
+        "job": "1af738b3-9187-4b67-8b62-d7c55bdfc835",
+        "request": {
+          "version": 1,
+          "session": "26102600000000000000000000000000",
+          "sequence": 0,
+          "seed": 401026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 4210,
+        "bytes": 11520044,
+        "sha256": "28ed091343dd74fb2951c77aeaca79dad9736bbad073ccf967166985ef81e469",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        }
+      }
+    },
+    {
+      "file": "house-1.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6a1eab417e911309f832d527dfdf581e",
+        "job": "3bb20a80-409c-433c-a9f0-d21484f98867",
+        "request": {
+          "version": 1,
+          "session": "26102600000000000000000000000000",
+          "sequence": 1,
+          "seed": 401026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 19207,
+        "bytes": 11520044,
+        "sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "planning": {
+          "track": {
+            "model": "acestep-5Hz-lm-1.7B",
+            "backend": "pt",
+            "audio_codes_sha256": "4715d2e5355b1adfbdd8e6f42c959bb4e405d93ad6792aac10a9d2fc88702b50",
+            "code_tokens": 300,
+            "caption_rewritten": false,
+            "source_audio_used": false
+          }
+        }
+      }
+    },
+    {
+      "file": "bass-2.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6a1eab417e911309f832d527dfdf581e",
+        "job": "8e0902a5-3040-47c4-a3dd-64775904ef3b",
+        "request": {
+          "version": 1,
+          "session": "26102600000000000000000000000000",
+          "sequence": 2,
+          "seed": 411026,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 2781,
+        "bytes": 11520044,
+        "sha256": "dcbc0cba91c89169e008bff1c8e9963a0154244c653813927b838d8a94cedadb",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        }
+      }
+    },
+    {
+      "file": "bass-3.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6a1eab417e911309f832d527dfdf581e",
+        "job": "ae6265ed-90fd-409f-b3f6-3640c99e23fc",
+        "request": {
+          "version": 1,
+          "session": "26102600000000000000000000000000",
+          "sequence": 3,
+          "seed": 411026,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 18487,
+        "bytes": 11520044,
+        "sha256": "489cd0c0a530c706a5875133e0733b6234c59deef17ac00abebe8b6899b3e50d",
+        "vocal": null,
+        "vocal_check": {
+          "status": "disabled",
+          "generated": false
+        },
+        "planning": {
+          "track": {
+            "model": "acestep-5Hz-lm-1.7B",
+            "backend": "pt",
+            "audio_codes_sha256": "8ed43ddfa027a00abe862500d9c2cdbf333084ea7b1e96f5e8a4d0f3d992c86b",
+            "code_tokens": 300,
+            "caption_rewritten": false,
+            "source_audio_used": false
+          }
+        }
+      }
+    },
+    {
+      "file": "house-7.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6a1eab417e911309f832d527dfdf581e",
+        "job": "e79ab423-2881-444e-9a97-9e59d4e11de8",
+        "request": {
+          "version": 1,
+          "session": "26102600000000000000000000000000",
+          "sequence": 7,
+          "seed": 421026,
+          "style": "house",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 24554,
+        "bytes": 11520044,
+        "sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+        "vocal": null,
+        "vocal_check": {
+          "status": "phrase_too_long",
+          "generated": true
+        },
+        "planning": {
+          "track": {
+            "model": "acestep-5Hz-lm-1.7B",
+            "backend": "pt",
+            "audio_codes_sha256": "7a5c8bb1fce9cbe60cc5652a727421d8020921bf5ec52d015100c920d6cc4aa4",
+            "code_tokens": 300,
+            "caption_rewritten": false,
+            "source_audio_used": false
+          },
+          "vocal": {
+            "model": "acestep-5Hz-lm-1.7B",
+            "backend": "pt",
+            "audio_codes_sha256": "77ef984b42d5d687cdc4d768cb09235611eb1f6d6d5f7ad463e5cf5d79de96b8",
+            "code_tokens": 50,
+            "caption_rewritten": false,
+            "source_audio_used": false
+          }
+        }
+      }
+    },
+    {
+      "file": "bass-17.wav",
+      "receipt": {
+        "version": 1,
+        "engine": "6a1eab417e911309f832d527dfdf581e",
+        "job": "be581293-3664-46a6-aeb2-866f731de8e4",
+        "request": {
+          "version": 1,
+          "session": "26102600000000000000000000000000",
+          "sequence": 17,
+          "seed": 431026,
+          "style": "bass",
+          "energy": 4,
+          "mood": "deep"
+        },
+        "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+        "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+        "compute_ms": 23529,
+        "bytes": 11520044,
+        "sha256": "70660c5c4f670596e91e5a4cc15255ac5a5fb343147a8918aefe2a5e0237751c",
+        "vocal": null,
+        "vocal_check": {
+          "status": "phrase_too_long",
+          "generated": true
+        },
+        "planning": {
+          "track": {
+            "model": "acestep-5Hz-lm-1.7B",
+            "backend": "pt",
+            "audio_codes_sha256": "bae0c76a587ad98e735aa7699c61575edae804d519e20cc89f9bb1e3207a9f85",
+            "code_tokens": 300,
+            "caption_rewritten": false,
+            "source_audio_used": false
+          },
+          "vocal": {
+            "model": "acestep-5Hz-lm-1.7B",
+            "backend": "pt",
+            "audio_codes_sha256": "f6dcba5479e93bacbbd41a8bae8abe014924da8f8c50e9aa1825087d4912e071",
+            "code_tokens": 50,
+            "caption_rewritten": false,
+            "source_audio_used": false
+          }
+        }
+      }
+    }
+  ],
+  "human_listening": "NOT RUN",
+  "cleanup_confirmed": true,
+  "observed_debit_usd": 0.07534905862999963,
+  "rental_seconds": 522.2010450363159
+}

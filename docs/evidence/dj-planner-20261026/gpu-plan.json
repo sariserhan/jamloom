@@ -1,0 +1,138 @@
+{
+  "status": "AUTHORIZED",
+  "campaign": "jamloom-dj-planner-20261026",
+  "owner_statement": "Approve the capped $3 music-planner comparison",
+  "budget_usd": 3,
+  "max_workers": 1,
+  "max_minutes": 20,
+  "max_requests": 8,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "public_activation": false,
+  "source_audio_used": false,
+  "learned_reference_weights_used": false,
+  "model": {
+    "code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "weights": "19671f406d603126926c1b7e2adc169acbcade22"
+  },
+  "planner": {
+    "model": "acestep-5Hz-lm-1.7B",
+    "backend": "pt",
+    "caption_rewritten": false
+  },
+  "tracks": [
+    {
+      "label": "house 0",
+      "request": {
+        "version": 1,
+        "session": "26102600000000000000000000000000",
+        "sequence": 0,
+        "seed": 401026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 128,
+      "seconds": 60,
+      "vocals": false
+    },
+    {
+      "label": "house 1",
+      "request": {
+        "version": 1,
+        "session": "26102600000000000000000000000000",
+        "sequence": 1,
+        "seed": 401026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 128,
+      "seconds": 60,
+      "vocals": false
+    },
+    {
+      "label": "bass 2",
+      "request": {
+        "version": 1,
+        "session": "26102600000000000000000000000000",
+        "sequence": 2,
+        "seed": 411026,
+        "style": "bass",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental bass music with half-time and broken-beat sections, 140 BPM, syncopated groove, hypnotic minor-key color. Use a punchy half-time snare pocket, syncopated kick and short bass call-and-response. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 140,
+      "seconds": 60,
+      "vocals": false
+    },
+    {
+      "label": "bass 3",
+      "request": {
+        "version": 1,
+        "session": "26102600000000000000000000000000",
+        "sequence": 3,
+        "seed": 411026,
+        "style": "bass",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental bass music with half-time and broken-beat sections, 140 BPM, syncopated groove, hypnotic minor-key color. Use a punchy half-time snare pocket, syncopated kick and short bass call-and-response. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 140,
+      "seconds": 60,
+      "vocals": false
+    },
+    {
+      "label": "house 7",
+      "request": {
+        "version": 1,
+        "session": "26102600000000000000000000000000",
+        "sequence": 7,
+        "seed": 421026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 128,
+      "seconds": 60,
+      "vocals": true
+    },
+    {
+      "label": "bass 17",
+      "request": {
+        "version": 1,
+        "session": "26102600000000000000000000000000",
+        "sequence": 17,
+        "seed": 431026,
+        "style": "bass",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "caption": "Original instrumental bass music with half-time and broken-beat sections, 140 BPM, syncopated groove, hypnotic minor-key color. Use a punchy half-time snare pocket, syncopated kick and short bass call-and-response. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 140,
+      "seconds": 60,
+      "vocals": true
+    }
+  ],
+  "worker_sha256": {
+    "cloud_music_setup.sh": "6b3a092a6d1ce00e3cf6d71707c9283a6bae75451e05ca65f0648cad0e402c7b",
+    "cloud_dj_warm.sh": "820e678a7a5a3433df0e3be8d006ad65e25937b044b10f7ac4067e298c5cbb73",
+    "dj_track_worker.py": "4c8c9968e835d16a33963c4d8bc0a2259c093c1d5662d36a6c2558583fc6cbdb",
+    "dj_warm_engine.py": "dfe559194e92f4e6d2ded0b6db5b3284c863af3bbb0912da7b0c248f11830258",
+    "dj_vocal.py": "16ddef5af7774d53477263b064245fbbe0106429c98c8399b146975a19f3322e",
+    "club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb"
+  },
+  "manifest_sha256": "37920c432079b6a51be2321e46a0b5071cdca2ded8d3e50f6cb06f07abcfafe3",
+  "hypothesis": "Semantic music codes may improve coherence over DiT-only generation at the same captions and seeds; no synthetic cover guide. Unproven until blinded listening.",
+  "bounds": [
+    "Six 60-second tracks, at most two 10-second voice candidates.",
+    "At most eight audio renders, each with at most one semantic-planner pass.",
+    "Existing 30-second per-track generation-ahead deadline remains.",
+    "No retry after failure, no reference audio, no model fine-tuning or public activation."
+  ],
+  "approved_date": "2026-10-26"
+}

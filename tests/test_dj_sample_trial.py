@@ -84,6 +84,7 @@ class SamplePermitTests(unittest.TestCase):
 
     def test_recovery_requires_separate_approval_and_exact_guide_seeds(self):
         plan=json.loads((ROOT/'docs/evidence/dj-recovery-20261025/gpu-plan.json').read_text());plan['status']='PREPARED'
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         with self.assertRaises(ValueError):validate_quality(plan,composition=True,recovery=True)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 recovery study'
         validate_quality(plan,composition=True,recovery=True)
@@ -95,6 +96,24 @@ class SamplePermitTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate_quality(plan,composition=True,recovery=True,guided_set=True)
         from vast_trial import dj_bootstrap_command
         self.assertIn('--recovery-study',dj_bootstrap_command(1999999999,8,recovery_study=True))
+
+    def test_planner_comparison_is_paired_bounded_and_requires_new_authorization(self):
+        plan=json.loads((ROOT/'docs/evidence/dj-planner-20261026/gpu-plan.json').read_text())
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
+        with self.assertRaises(ValueError):validate_quality({**plan,'status':'PREPARED'},planner=True)
+        plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 music-planner comparison')
+        validate_quality(plan,planner=True)
+        for field,value in [('max_requests',9),('budget_usd',6),('max_minutes',40),('source_audio_used',True),('owner_statement','finish everything')]:
+            altered=copy.deepcopy(plan);altered[field]=value
+            with self.assertRaises(ValueError):validate_quality(altered,planner=True)
+        altered=copy.deepcopy(plan);altered['tracks'][1]['request']['seed']+=1
+        with self.assertRaises(ValueError):validate_quality(altered,planner=True)
+        altered=copy.deepcopy(plan);altered['planner']['model']='other'
+        with self.assertRaises(ValueError):validate_quality(altered,planner=True)
+        with self.assertRaises(ValueError):validate_quality(plan,planner=True,composition=True)
+        from vast_trial import dj_bootstrap_command
+        self.assertIn('--planner-study',dj_bootstrap_command(1999999999,8,planner_study=True))
+        with self.assertRaises(ValueError):dj_bootstrap_command(1999999999,8,planner_study=True,arranged=True)
 
     def test_startup_probe_separates_transport_from_renderer_exit(self):
         from dj_sample_trial import startup_probe

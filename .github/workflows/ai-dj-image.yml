@@ -1,0 +1,60 @@
+name: Build AI DJ worker
+on:
+  workflow_dispatch:
+    inputs:
+      music_planner:
+        description: Include the experimental semantic music planner
+        type: boolean
+        default: false
+      publish:
+        description: Publish the image to GHCR after an approved release decision
+        type: boolean
+        default: false
+permissions:
+  contents: read
+  packages: write
+concurrency:
+  group: ai-dj-image
+  cancel-in-progress: false
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Free preinstalled SDK space on the disposable runner
+        run: sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+      - name: Prepare image name
+        env:
+          PLANNER: ${{ inputs.music_planner }}
+        run: |
+          if [[ "$PLANNER" == true ]]; then mode=planner; else mode=baseline; fi
+          echo "WORKER_IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}/ai-dj-worker:${GITHUB_SHA}-${mode}" >> "$GITHUB_ENV"
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9
+        if: inputs.publish
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
+        with:
+          context: .
+          file: services/ai-dj/Dockerfile
+          platforms: linux/amd64
+          build-args: MUSIC_PLANNER=${{ inputs.music_planner && '1' || '0' }}
+          load: true
+          push: false
+          tags: ${{ env.WORKER_IMAGE }}
+      - name: Verify packaged worker without starting a server
+        run: |
+          docker run --rm --network none "$WORKER_IMAGE" sh -c 'sha256sum --check worker.sha256 && python dj_warm_engine.py --help'
+          docker image inspect "$WORKER_IMAGE" --format 'Image bytes: {{.Size}}' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Package import only; GPU startup and music quality are not qualified.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Publish approved immutable candidate
+        if: inputs.publish
+        run: |
+          docker push "$WORKER_IMAGE"
+          docker image inspect "$WORKER_IMAGE" --format '{{range .RepoDigests}}{{println .}}{{end}}' >> "$GITHUB_STEP_SUMMARY"

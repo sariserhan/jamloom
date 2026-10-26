@@ -14,7 +14,7 @@ import time
 import uuid
 import wave
 
-from dj_track_worker import ace, house_study, composition_study, composition_set, composition_recovery, canonical, load_ace, request, CODE_REVISION, WEIGHTS_REVISION
+from dj_track_worker import ace, house_study, composition_study, composition_set, composition_recovery, planner_study, canonical, load_ace, request, CODE_REVISION, WEIGHTS_REVISION
 from dj_vocal import add_hook
 
 
@@ -46,11 +46,14 @@ class Renderer:
         with tempfile.TemporaryDirectory(prefix='jamloom-dj-') as directory:
             samples, rate = generate(track, Path(directory), self.engine)
             vocal = None
+            vocal_check={'status':'disabled' if not value['vocals'] else 'ineligible', 'generated':False}
+            if value['vocals'] and self.requests >= self.limit: vocal_check['status']='request_limit'
             if self.requests < self.limit and value['vocals'] and track['sequence'] % 5 == 2 and track['energy'] >= 3:
-                samples, vocal = add_hook(track, samples, rate, Path(directory), self.engine, generate)
+                samples, vocal = add_hook(track, samples, rate, Path(directory), self.engine, generate,diagnostic=vocal_check)
             pcm = canonical(samples, rate)
             guide_path=Path(directory)/'guide/receipt.json'
             composition=json.loads(guide_path.read_text()) if guide_path.is_file() else None
+            planning={name:json.loads(path.read_text()) for name,path in [('track',Path(directory)/'planning.json'),('vocal',Path(directory)/'hook/planning.json')] if path.is_file()}
         stream = io.BytesIO()
         with wave.open(stream, 'wb') as audio:
             audio.setparams((2, 2, 48000, 0, 'NONE', 'not compressed'))
@@ -61,8 +64,9 @@ class Renderer:
             raise ValueError('Generation-ahead deadline failed')
         receipt = dict(version=1, engine=self.identity, job=value['job'], request=track,
                        code_revision=CODE_REVISION, weights_revision=WEIGHTS_REVISION,
-                       compute_ms=elapsed, bytes=len(data), sha256=hashlib.sha256(data).hexdigest(), vocal=vocal)
+                       compute_ms=elapsed, bytes=len(data), sha256=hashlib.sha256(data).hexdigest(), vocal=vocal,vocal_check=vocal_check)
         if composition is not None:receipt['composition']=composition
+        if planning:receipt['planning']=planning
         self.cached = fingerprint, receipt, data
         return receipt, data
 
@@ -118,14 +122,15 @@ def main():
     modes.add_argument('--composition-study',action='store_true',help='Paired original-score conditioning experiment')
     modes.add_argument('--guided-set',action='store_true',help='Original-score set with sparse original vocal candidates')
     modes.add_argument('--recovery-study',action='store_true',help='Isolate guide and model seeds; original material only')
+    modes.add_argument('--planner-study',action='store_true',help='Paired semantic music planning; unqualified experiment')
     args = parser.parse_args()
     if args.token_file.stat().st_mode & 0o077:
         raise ValueError('Token file must be private')
     token = args.token_file.read_text().strip()
     if len(token) != 64 or any(c not in '0123456789abcdef' for c in token):
         raise ValueError('Invalid token')
-    renderer = Renderer(args.expires_unix, args.max_requests, generate=composition_recovery if args.recovery_study else composition_set if args.guided_set else composition_study if args.composition_study else house_study if args.house_study else partial(ace, arranged=args.arranged))
-    renderer.engine = load_ace()
+    renderer = Renderer(args.expires_unix, args.max_requests, generate=planner_study if args.planner_study else composition_recovery if args.recovery_study else composition_set if args.guided_set else composition_study if args.composition_study else house_study if args.house_study else partial(ace, arranged=args.arranged))
+    renderer.engine = load_ace(planned=True) if args.planner_study else load_ace()
     server = HTTPServer(('127.0.0.1', 8768), handler(renderer, token))
     server.timeout = 1
     print('Jamloom renderer ready', flush=True)

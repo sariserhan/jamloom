@@ -26,6 +26,7 @@ class WarmEngineTests(unittest.TestCase):
         receipt, audio = renderer.render(value)
         self.assertEqual(len(calls), 1)
         self.assertIsNone(receipt['vocal'])
+        self.assertEqual(receipt['vocal_check'],{'status':'request_limit','generated':False})
         self.assertEqual(renderer.render(value), (receipt, audio))
 
     def test_composition_receipt_survives_the_temporary_guide(self):
@@ -57,6 +58,7 @@ class WarmEngineTests(unittest.TestCase):
             self.assertEqual(renderer.render(value),(receipt,audio));self.assertEqual(renderer.requests,2)
         self.assertEqual(calls[0],(None,True));self.assertFalse(calls[1][1]);self.assertIsNotNone(calls[1][0])
         self.assertTrue(receipt['vocal']['repeat']);self.assertTrue(receipt['vocal']['echo'])
+        self.assertEqual(receipt['vocal_check'],{'status':'placed','generated':True})
         self.assertEqual(receipt['composition']['request'],value['request'])
 
     def test_bounded_authenticated_idempotent_renderer(self):

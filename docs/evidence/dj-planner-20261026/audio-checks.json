@@ -1,0 +1,125 @@
+{
+  "status": "PASS technical",
+  "tracks": [
+    {
+      "file": "house-0.wav",
+      "sha256": "28ed091343dd74fb2951c77aeaca79dad9736bbad073ccf967166985ef81e469",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.10993444919586182,
+      "compute_ms": 4210,
+      "planning": null,
+      "vocal": null,
+      "vocal_check": {
+        "status": "disabled",
+        "generated": false
+      }
+    },
+    {
+      "file": "house-1.wav",
+      "sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.09214291721582413,
+      "compute_ms": 19207,
+      "planning": {
+        "model": "acestep-5Hz-lm-1.7B",
+        "backend": "pt",
+        "audio_codes_sha256": "4715d2e5355b1adfbdd8e6f42c959bb4e405d93ad6792aac10a9d2fc88702b50",
+        "code_tokens": 300,
+        "caption_rewritten": false,
+        "source_audio_used": false
+      },
+      "vocal": null,
+      "vocal_check": {
+        "status": "disabled",
+        "generated": false
+      }
+    },
+    {
+      "file": "bass-2.wav",
+      "sha256": "dcbc0cba91c89169e008bff1c8e9963a0154244c653813927b838d8a94cedadb",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.13701292872428894,
+      "compute_ms": 2781,
+      "planning": null,
+      "vocal": null,
+      "vocal_check": {
+        "status": "disabled",
+        "generated": false
+      }
+    },
+    {
+      "file": "bass-3.wav",
+      "sha256": "489cd0c0a530c706a5875133e0733b6234c59deef17ac00abebe8b6899b3e50d",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.13701191544532776,
+      "compute_ms": 18487,
+      "planning": {
+        "model": "acestep-5Hz-lm-1.7B",
+        "backend": "pt",
+        "audio_codes_sha256": "8ed43ddfa027a00abe862500d9c2cdbf333084ea7b1e96f5e8a4d0f3d992c86b",
+        "code_tokens": 300,
+        "caption_rewritten": false,
+        "source_audio_used": false
+      },
+      "vocal": null,
+      "vocal_check": {
+        "status": "disabled",
+        "generated": false
+      }
+    },
+    {
+      "file": "house-7.wav",
+      "sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.11628933995962143,
+      "compute_ms": 24554,
+      "planning": {
+        "model": "acestep-5Hz-lm-1.7B",
+        "backend": "pt",
+        "audio_codes_sha256": "7a5c8bb1fce9cbe60cc5652a727421d8020921bf5ec52d015100c920d6cc4aa4",
+        "code_tokens": 300,
+        "caption_rewritten": false,
+        "source_audio_used": false
+      },
+      "vocal": null,
+      "vocal_check": {
+        "status": "phrase_too_long",
+        "generated": true
+      }
+    },
+    {
+      "file": "bass-17.wav",
+      "sha256": "70660c5c4f670596e91e5a4cc15255ac5a5fb343147a8918aefe2a5e0237751c",
+      "seconds": 60,
+      "peak": 0.8912353515625,
+      "rms": 0.1048133373260498,
+      "compute_ms": 23529,
+      "planning": {
+        "model": "acestep-5Hz-lm-1.7B",
+        "backend": "pt",
+        "audio_codes_sha256": "bae0c76a587ad98e735aa7699c61575edae804d519e20cc89f9bb1e3207a9f85",
+        "code_tokens": 300,
+        "caption_rewritten": false,
+        "source_audio_used": false
+      },
+      "vocal": null,
+      "vocal_check": {
+        "status": "phrase_too_long",
+        "generated": true
+      }
+    }
+  ],
+  "audio_renders": 8,
+  "semantic_planning_passes": 6,
+  "fresh_vocals": 0,
+  "human_listening": "NOT RUN",
+  "limits": [
+    "Semantic-code receipts prove the requested stage ran, not musical quality.",
+    "No training, reference audio, publication or qualified production image."
+  ]
+}

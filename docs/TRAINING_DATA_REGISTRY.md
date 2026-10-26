@@ -1,6 +1,6 @@
 # Training data registry
 
-Updated 2026-10-25. Applies to the new original-club-music and AI DJ campaign.
+Updated 2026-10-26. Applies to the new original-club-music and AI DJ campaign.
 The owner's GPU correction supersedes the attached directive's CPU-only / no-GPU
 restrictions. Existing Vast.ai controls remain required; no paid data, licenses,
 musicians, music APIs, new infrastructure or public deployment are authorized.
@@ -90,3 +90,14 @@ acceptance does not admit them as training data.
 Nine recordings in the five owner-named Downloads folders were fully analyzed locally. Blood Club was excluded, including its exact hash. The owner initially chose reference-only use, then explicitly requested training; that subsequent instruction authorizes the **private numeric experiment** documented in [the study](dj-reference-styles.md). Source and model admission to the commercial pipeline remains **NOT APPROVED**: recording, composition, training, retention and commercial-output permissions are unverified. Public availability has not been recorded as a license grant.
 
 The private experiment fits relative energy/structure measurements, not audio samples, voices or song-generation weights. Its model is not distributed or loaded by the player. Candidate action labels remain unknown; measured energy changes are not expert DJ intent. [Exact source hashes and exclusions](evidence/dj-reference-styles-20261025/analysis.json), [model experiment and limitations](evidence/dj-reference-styles-20261025/training-calibrated.json). No audio copies, uploads, purchases or GPU rental. Source filenames and detailed measurements remain under ignored `renders/dj-reference-analysis-20261025/`; weights explicitly forbid serving.
+
+## Semantic-planner experiment — 2026-10-26
+
+The new DJ comparison optionally uses `acestep-5Hz-lm-1.7B` from the already
+pinned ACE-Step weight revision `19671f406d603126926c1b7e2adc169acbcade22`.
+It remains within the existing publisher-declared MIT inference-model scope
+above; preserve upstream notices/model card. This is pretrained inference,
+not training-data admission, new reference-audio use or independent verification
+of the publisher's underlying corpus. The model's generated semantic codes are
+provenance-hashed; generated audio still requires content and quality review.
+See [comparison](dj-planner-comparison.md).

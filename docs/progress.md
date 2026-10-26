@@ -1,3 +1,18 @@
+## AI DJ completion follow-through — 2026-10-26
+
+**PARTIAL; musical quality remains FAIL pending new evidence.** The owner requested all remaining work. The next comparison tests the existing model's semantic music planner, which was disabled in prior DJ renders; it does not reuse synthetic cover guides or train on reference audio. Six tracks and at most two short vocal candidates are explicitly approved under a new $3 / one-GPU / 20-minute cap, stop on failure and no public activation. The run completed in 522 seconds with about $0.075 observed debit and zero remaining rentals; its authorization is consumed. All six originals pass technical checks; both fresh voice candidates were too long and correctly rejected. Blinded listening is pending.
+
+- [x] Add opt-in semantic planning with initialized-model and actual-code receipts; preserve the baseline and reject silent fallback.
+- [x] Add vocal skip reasons and whether a candidate was generated, without weakening timing or duration checks.
+- [x] Prepare and validate the exact paired comparison; 58 local checks pass.
+- [x] Prepare the manually triggered cached-image build, nonpublishing by default, with offline package checks; build/GPU startup remain NOT RUN.
+- [x] Complete the approved eight-render run, verify source/audio hashes and cleanup, and check six-clip playback/seek in Chromium and WebKit.
+- [ ] Obtain blinded musical acceptance; qualify actual short vocals without relaxing the two-second duration or supported-beat checks.
+- [ ] Build and qualify a cached image on approved infrastructure; the local Docker engine is stopped and the Mac has about 20 GB free.
+- [ ] Qualify sustained hosting, full operating costs, whole-set musical performance and venue playback before deployment/activation.
+
+[Planner comparison and current evidence](dj-planner-comparison.md).
+
 ## AI DJ finish campaign — 2026-10-25
 
 **PARTIAL implementation; FAIL musical recovery (owner feedback 2026-10-26).** The owner requested all remaining targets together. A controlled recovery study separates guide composition from model randomness, preserving the previously accepted vocal treatments. The approved replacement completed six tracks and cleanup; both attempts total 647.70 seconds and about $0.05960 observed debit, within the $3 / one-GPU / 20-minute combined bounds. The owner rejected clips 1 and 3–6; clip 2 is only “just okay” and is byte-identical to the earlier preferred baseline. No party-ready result or quality improvement was accepted; neither vocal opportunity passed timing. No public activation or live purchases.

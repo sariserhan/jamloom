@@ -11,6 +11,30 @@ from dj_track_worker import request, brief, arranged_brief, canonical, ace, STYL
 import dj_gpu_qualification as qualification
 
 class WorkerContract(unittest.TestCase):
+    def test_planning_is_opt_in_proven_and_cannot_silently_fall_back(self):
+        from dj_track_worker import planner_study, load_ace
+        value=dict(version=1,session='a'*32,sequence=1,seed=401026,style='house',energy=4,mood='deep')
+        with patch('dj_track_worker.ace') as render:
+            planner_study(value,Path('/tmp'));self.assertTrue(render.call_args.kwargs['planned'])
+            planner_study({**value,'sequence':0},Path('/tmp'));self.assertFalse(render.call_args.kwargs['planned'])
+        dit=MagicMock();dit.initialize_service.return_value=('ready',True)
+        lm=SimpleNamespace(llm_initialized=True,initialize=MagicMock(return_value=('ready',True)))
+        generate=MagicMock(return_value=SimpleNamespace(success=True,audios=[{'path':'track.wav','params':{'audio_codes':'<|audio_code_1|><|audio_code_2|>'}}]))
+        modules={'torch':MagicMock(),'soundfile':MagicMock(),'acestep':MagicMock(),
+                 'acestep.handler':SimpleNamespace(AceStepHandler=lambda:dit),'acestep.llm_inference':SimpleNamespace(LLMHandler=lambda:lm),
+                 'acestep.inference':SimpleNamespace(GenerationParams=SimpleNamespace,GenerationConfig=SimpleNamespace,generate_music=generate)}
+        with tempfile.TemporaryDirectory() as d,patch.dict(sys.modules,modules):
+            self.assertEqual(load_ace(planned=True),(dit,lm));self.assertEqual(lm.initialize.call_args.kwargs['backend'],'pt')
+            ace(value,Path(d),engine=(dit,lm),planned=True,arranged=True)
+            params=generate.call_args.args[2];self.assertTrue(params.thinking);self.assertFalse(params.use_cot_caption);self.assertFalse(hasattr(params,'src_audio'))
+            proof=json.loads((Path(d)/'planning.json').read_text());self.assertEqual(proof['code_tokens'],2);self.assertEqual(len(proof['audio_codes_sha256']),64)
+            generate.return_value.audios[0]['params']['audio_codes']=''
+            with self.assertRaisesRegex(RuntimeError,'semantic codes'):ace(value,Path(d),engine=(dit,lm),planned=True)
+            lm.llm_initialized=False
+            with self.assertRaisesRegex(ValueError,'no silent fallback'):ace(value,Path(d),engine=(dit,lm),planned=True)
+            with self.assertRaisesRegex(RuntimeError,'initialization failed'):load_ace(planned=True)
+        with self.assertRaises(ValueError):ace(value,Path('/tmp'),planned=True,guided=True)
+
     def test_house_study_changes_only_the_predeclared_caption_condition(self):
         from dj_track_worker import house_study, focused_house_brief
         value=dict(version=1,session='a'*32,sequence=0,seed=271025,style='house',energy=4,mood='deep')

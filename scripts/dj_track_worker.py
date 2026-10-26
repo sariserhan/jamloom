@@ -104,7 +104,7 @@ def procedural(value, directory):
     return np.column_stack((mono, mono)), RATE
 
 
-def load_ace():
+def load_ace(planned=False):
     os.environ['HF_HUB_OFFLINE'] = '1'
     os.environ['ACESTEP_DISABLE_TQDM'] = '1'
     from acestep.handler import AceStepHandler
@@ -112,6 +112,9 @@ def load_ace():
     dit, lm = AceStepHandler(), LLMHandler()
     status, ok = dit.initialize_service(project_root=str(Path.cwd()), config_path='acestep-v15-turbo', device='cuda', compile_model=False, use_mlx_dit=False)
     if not ok: raise RuntimeError(status)
+    if planned:
+        status, ok = lm.initialize(checkpoint_dir=str(Path.cwd()/'checkpoints'), lm_model_path='acestep-5Hz-lm-1.7B', backend='pt', device='cuda', offload_to_cpu=False)
+        if not ok or not lm.llm_initialized: raise RuntimeError('Music planner initialization failed: '+status)
     return dit, lm
 
 
@@ -153,8 +156,14 @@ def composition_recovery(value, directory, engine=None, hook=None):
     return ace(value,directory,engine,hook=hook,arranged=True,guided=hook is None,guide_value=guide)
 
 
-def ace(value, directory, engine=None, hook=None, arranged=False, focused=False, guided=False, guide_value=None):
+def planner_study(value, directory, engine=None, hook=None):
+    if request(value)['style'] not in ('house','bass'): raise ValueError('Planner comparison supports house and bass')
+    return ace(value,directory,engine,hook=hook,arranged=True,planned=hook is not None or value['sequence']%2==1)
+
+
+def ace(value, directory, engine=None, hook=None, arranged=False, focused=False, guided=False, guide_value=None, planned=False):
     if guided and (hook is not None or focused): raise ValueError('Original instrumental guide only')
+    if planned and guided: raise ValueError('Source-conditioned cover bypasses the music planner')
     if guide_value is not None and (not guided or {**request(guide_value),'seed':value['seed']}!=value):raise ValueError('Only guide seed may differ')
     import random
     import soundfile as sf
@@ -162,7 +171,8 @@ def ace(value, directory, engine=None, hook=None, arranged=False, focused=False,
     from acestep.inference import GenerationParams, GenerationConfig, generate_music
     random.seed(value['seed']); np.random.seed(value['seed']); torch.manual_seed(value['seed'])
     torch.cuda.manual_seed_all(value['seed']); torch.set_num_threads(4)
-    dit, lm = engine if engine is not None else load_ace()
+    dit, lm = engine if engine is not None else load_ace(planned=True) if planned else load_ace()
+    if planned and not getattr(lm,'llm_initialized',False): raise ValueError('Initialized music planner required; no silent fallback')
     caption, bpm = focused_house_brief(value) if focused else arranged_brief(value) if arranged else brief(value)
     if hook is not None:
         if hook not in HOOK_PHRASES: raise ValueError('Original two-word phrase required')
@@ -173,10 +183,15 @@ def ace(value, directory, engine=None, hook=None, arranged=False, focused=False,
         guide=prepare(guide_value if guide_value is not None else value,directory/'guide')
         if guide['bpm']!=bpm:raise ValueError('Guide tempo mismatch')
         source=dict(task_type='cover',src_audio=str(directory/'guide/guide.wav'),audio_cover_strength=.5)
-    params = GenerationParams(**source,caption=caption, bpm=bpm, duration=10 if hook else 60, seed=value['seed'], instrumental=hook is None, lyrics=hook or '[Instrumental]', inference_steps=8, thinking=False, use_cot_metas=False, use_cot_caption=False, use_cot_language=False, use_cot_lyrics=False)
+    params = GenerationParams(**source,caption=caption, bpm=bpm, duration=10 if hook else 60, seed=value['seed'], instrumental=hook is None, lyrics=hook or '[Instrumental]', inference_steps=8, thinking=planned, use_cot_metas=False, use_cot_caption=False, use_cot_language=False, use_cot_lyrics=False)
     config = GenerationConfig(batch_size=1, audio_format='wav', use_random_seed=False, seeds=[value['seed']])
     result = generate_music(dit, lm, params, config, save_dir=str(directory/'raw'))
     if not result.success or len(result.audios) != 1: raise RuntimeError('Generation failed')
+    if planned:
+        import re
+        codes=result.audios[0].get('params',{}).get('audio_codes','')
+        if not isinstance(codes,str) or not re.fullmatch(r'(?:<\|audio_code_\d+\|>)+',codes.strip()): raise RuntimeError('Music planner returned no valid semantic codes')
+        (directory/'planning.json').write_text(json.dumps(dict(model='acestep-5Hz-lm-1.7B',backend='pt',audio_codes_sha256=hashlib.sha256(codes.encode()).hexdigest(),code_tokens=codes.count('<|audio_code_'),caption_rewritten=False,source_audio_used=False))+'\n')
     if guided and hashlib.sha256((directory/'guide/guide.wav').read_bytes()).hexdigest()!=guide['guide_sha256']:raise ValueError('Original guide changed during generation')
     return sf.read(result.audios[0]['path'], always_2d=True, dtype='float32')
 

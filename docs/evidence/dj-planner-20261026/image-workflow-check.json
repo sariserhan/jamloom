@@ -1,0 +1,8 @@
+{
+  "status": "PASS static",
+  "trigger": "manual only",
+  "publication_default": false,
+  "actions": "immutable revisions",
+  "image_build": "NOT RUN",
+  "gpu_startup": "NOT RUN"
+}

@@ -4,13 +4,15 @@ set -euo pipefail
 deadline=${1:?Absolute authorized deadline required}
 requests=${2:-8}
 mode=${3:-}
-[[ -z $mode || $mode == --arranged || $mode == --house-study || $mode == --composition-study || $mode == --guided-set || $mode == --recovery-study ]] || exit 2
+[[ -z $mode || $mode == --arranged || $mode == --house-study || $mode == --composition-study || $mode == --guided-set || $mode == --recovery-study || $mode == --planner-study ]] || exit 2
 [[ $requests =~ ^[0-9]{1,3}$ ]] && ((requests >= 1 && requests <= 100)) || exit 2
 [[ $deadline =~ ^[0-9]{10}$ ]] || exit 2
 remaining=$((deadline - $(date +%s)))
 ((remaining > 120 && remaining <= 2400)) || exit 2
 trap 'result=$?; printf "%s\n" "$result" > /workspace/run.exit' EXIT
-timeout "$((remaining < 1500 ? remaining : 1500))" bash /workspace/cloud_music_setup.sh --club-benchmark
+setup_mode=--club-benchmark
+[[ $mode != --planner-study ]] || setup_mode=
+timeout "$((remaining < 1500 ? remaining : 1500))" bash /workspace/cloud_music_setup.sh ${setup_mode:+"$setup_mode"}
 cp /workspace/dj_track_worker.py /workspace/dj_warm_engine.py /workspace/dj_vocal.py /workspace/club_benchmark_cases.py /workspace/dj-styles.json /workspace/ace-step/
 if [[ $mode == --composition-study || $mode == --guided-set || $mode == --recovery-study ]]; then
   cp /workspace/dj_composition.py /workspace/prepare_electronic_bank.py /workspace/ace-step/

@@ -1,0 +1,17 @@
+{
+  "status": "PASS metadata only",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:7c0c3145912c38001c5a780237d46f5f9ee5d923ee2113ba6a5c4db483a00a71",
+  "architecture": "amd64",
+  "compressed_layer_bytes": 19965259447,
+  "layers": 15,
+  "working_directory": "/opt/jamloom",
+  "entrypoint": null,
+  "command": [
+    "/usr/local/bin/python",
+    "services/runpod/handler.py"
+  ],
+  "limits": [
+    "Image was not pulled or executed.",
+    "An existing published runtime may be reused after source/lock verification; provider startup still requires qualification."
+  ]
+}

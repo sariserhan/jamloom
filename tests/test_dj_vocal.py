@@ -79,13 +79,16 @@ class VocalTests(unittest.TestCase):
         phase=t*2+t*t*.005
         drift=.2*np.sin(2*np.pi*80*t)*np.exp(-(phase%1)*20)
         self.assertIsNone(steady_grid(np.column_stack((drift,drift)),rate,128))
-        _,silent=add_hook(value,np.zeros_like(samples),rate,Path('/tmp'),None,generate)
+        diagnostic={}
+        _,silent=add_hook(value,np.zeros_like(samples),rate,Path('/tmp'),None,generate,diagnostic=diagnostic)
         self.assertIsNone(silent); self.assertEqual(len(calls),1)
+        self.assertEqual(diagnostic,{'status':'no_supported_grid','generated':False})
         def long_voice(*args, **kwargs):
             voice=.2*np.sin(np.arange(10*rate)/rate*1000)
             return np.column_stack((voice,voice)),rate
-        rejected,cue=add_hook(value,samples,rate,Path('/tmp'),None,long_voice)
+        rejected,cue=add_hook(value,samples,rate,Path('/tmp'),None,long_voice,diagnostic=diagnostic)
         self.assertIsNone(cue);np.testing.assert_array_equal(rejected,samples)
+        self.assertEqual(diagnostic,{'status':'phrase_too_long','generated':True})
 
 
 if __name__=='__main__': unittest.main()

@@ -1,0 +1,29 @@
+{
+  "scope": "Keep off listening server until ratings",
+  "clips": [
+    {
+      "clip": 1,
+      "sequence": 1
+    },
+    {
+      "clip": 2,
+      "sequence": 0
+    },
+    {
+      "clip": 3,
+      "sequence": 2
+    },
+    {
+      "clip": 4,
+      "sequence": 3
+    },
+    {
+      "clip": 5,
+      "sequence": 17
+    },
+    {
+      "clip": 6,
+      "sequence": 7
+    }
+  ]
+}

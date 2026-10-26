@@ -28,16 +28,18 @@ HOUSE = False
 COMPOSITION = False
 GUIDED_SET = False
 RECOVERY = False
+PLANNER = False
 
 
-def configure_quality(house=False, composition=False, guided_set=False, recovery=False):
-    global EVIDENCE, WORK, OUTPUT, LABEL, QUALITY, HOUSE, COMPOSITION, GUIDED_SET, RECOVERY
+def configure_quality(house=False, composition=False, guided_set=False, recovery=False, planner=False):
+    global EVIDENCE, WORK, OUTPUT, LABEL, QUALITY, HOUSE, COMPOSITION, GUIDED_SET, RECOVERY, PLANNER
     QUALITY = True
     HOUSE = house
     COMPOSITION = composition or guided_set or recovery
     GUIDED_SET = guided_set
     RECOVERY = recovery
-    campaign='dj-recovery-20261025' if recovery else 'dj-guided-set-20261025' if guided_set else 'dj-composition-20261025' if composition else 'dj-house-consistency-20261025' if house else 'dj-quality-20261025'
+    PLANNER = planner
+    campaign='dj-planner-20261026' if planner else 'dj-recovery-20261025' if recovery else 'dj-guided-set-20261025' if guided_set else 'dj-composition-20261025' if composition else 'dj-house-consistency-20261025' if house else 'dj-quality-20261025'
     EVIDENCE = ROOT/'docs/evidence'/campaign
     WORK = ROOT/('build-'+campaign)
     OUTPUT = ROOT/'renders'/campaign
@@ -45,20 +47,22 @@ def configure_quality(house=False, composition=False, guided_set=False, recovery
     vast.WORK, vast.STATE, vast.LABEL = WORK, WORK/'trial-state.json', LABEL
 
 
-def validate_quality(plan,house=False,composition=False,guided_set=False,recovery=False):
+def validate_quality(plan,house=False,composition=False,guided_set=False,recovery=False,planner=False):
     from dj_track_worker import request, arranged_brief, focused_house_brief, CODE_REVISION, WEIGHTS_REVISION, RECOVERY_CASES, recovery_guide
+    if planner and (composition or house or guided_set or recovery):raise ValueError('Planner requires its own paired study')
     if recovery and (not composition or house or guided_set):raise ValueError('Recovery requires its own composition study')
     if guided_set and (not composition or house):raise ValueError('Guided set requires composition mode')
-    if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != ('jamloom-dj-recovery-20261025' if recovery else 'jamloom-dj-guided-set-20261025' if guided_set else 'jamloom-dj-composition-20261025' if composition else 'jamloom-dj-house-consistency-20261025' if house else 'jamloom-dj-quality-20261025')
-        or plan['owner_statement'] != ('Approve the capped $3 recovery study' if recovery else 'Approve the capped $3 guided set' if guided_set else 'Approve the capped $3 composition comparison' if composition else 'Approve the capped $3 house study' if house else 'Approve the capped $3 quality comparison')
+    if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != ('jamloom-dj-planner-20261026' if planner else 'jamloom-dj-recovery-20261025' if recovery else 'jamloom-dj-guided-set-20261025' if guided_set else 'jamloom-dj-composition-20261025' if composition else 'jamloom-dj-house-consistency-20261025' if house else 'jamloom-dj-quality-20261025')
+        or plan['owner_statement'] != ('Approve the capped $3 music-planner comparison' if planner else 'Approve the capped $3 recovery study' if recovery else 'Approve the capped $3 guided set' if guided_set else 'Approve the capped $3 composition comparison' if composition else 'Approve the capped $3 house study' if house else 'Approve the capped $3 quality comparison')
         or plan['budget_usd'] != 3 or plan['max_workers'] != 1 or plan['max_minutes'] != 20
-        or plan['max_requests'] != (8 if recovery else 9 if guided_set else 4 if composition else 6) or plan['stop_on_failure'] is not True or plan['automatic_cleanup'] is not True
+        or plan['max_requests'] != (8 if recovery or planner else 9 if guided_set else 4 if composition else 6) or plan['stop_on_failure'] is not True or plan['automatic_cleanup'] is not True
         or plan['source_audio_used'] is not composition
         or any(plan[key] is not False for key in ['public_activation','learned_reference_weights_used'])
         or plan['model'] != dict(code=CODE_REVISION,weights=WEIGHTS_REVISION)):
         raise ValueError('Fresh bounded quality-comparison authorization required')
     if composition and (house or plan.get('source_audio_origin')!='original_authored_notes_and_synthesis' or plan.get('reference_audio_used') is not False or plan.get('guide_strength')!=.5):raise ValueError('Original composition guides required')
-    expected = [('bass',seq,pair[0],seq in (7,12)) for seq,pair in RECOVERY_CASES.items()] if recovery else [('bass',seq,311025+i*1000,seq in (2,7,12)) for i,seq in enumerate([0,1,2,7,12,13])] if guided_set else [('house',0,291025,False),('house',1,291025,False),('bass',2,301025,False),('bass',3,301025,False)] if composition else [('house',i,seed,False) for i,seed in enumerate([261025,261025,271025,271025,281025,281025])] if house else [('house',0,251025,False),('bass',1,251025,False),('house',2,261025,True),('bass',7,261025,True)]
+    if planner and plan.get('planner')!={'model':'acestep-5Hz-lm-1.7B','backend':'pt','caption_rewritten':False}:raise ValueError('Pinned semantic planner required')
+    expected = [('house',0,401026,False),('house',1,401026,False),('bass',2,411026,False),('bass',3,411026,False),('house',7,421026,True),('bass',17,431026,True)] if planner else [('bass',seq,pair[0],seq in (7,12)) for seq,pair in RECOVERY_CASES.items()] if recovery else [('bass',seq,311025+i*1000,seq in (2,7,12)) for i,seq in enumerate([0,1,2,7,12,13])] if guided_set else [('house',0,291025,False),('house',1,291025,False),('bass',2,301025,False),('bass',3,301025,False)] if composition else [('house',i,seed,False) for i,seed in enumerate([261025,261025,271025,271025,281025,281025])] if house else [('house',0,251025,False),('bass',1,251025,False),('house',2,261025,True),('bass',7,261025,True)]
     if len(plan['tracks']) != len(expected): raise ValueError('Exact prepared track count required')
     for i,(row,(style,sequence,seed,vocals)) in enumerate(zip(plan['tracks'],expected)):
         value=request(row['request'])
@@ -98,7 +102,7 @@ def configure_replacement():
 
 
 def validate(plan):
-    if QUALITY: return validate_quality(plan,house=HOUSE,composition=COMPOSITION,guided_set=GUIDED_SET,recovery=RECOVERY)
+    if QUALITY: return validate_quality(plan,house=HOUSE,composition=COMPOSITION,guided_set=GUIDED_SET,recovery=RECOVERY,planner=PLANNER)
     if (plan['status'] != 'AUTHORIZED' or plan['campaign'] != 'jamloom-dj-style-samples-20261025' or plan['budget_usd'] != 3
         or plan['max_workers'] != 1 or plan['max_minutes'] != 20
         or plan['stop_on_failure'] is not True or plan['automatic_cleanup'] is not True
@@ -173,9 +177,9 @@ def run():
                  confirm_absence=True, disk_gb=60)
     vast.write_state(state)
     with (WORK/'watchdog.log').open('a') as log:
-        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--recovery-study'] if RECOVERY else ['--guided-set'] if GUIDED_SET else ['--composition-study'] if COMPOSITION else ['--house-study'] if HOUSE else ['--quality'] if QUALITY else [])],
+        subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch', *(['--replacement'] if REPLACEMENT else []), *(['--planner-study'] if PLANNER else ['--recovery-study'] if RECOVERY else ['--guided-set'] if GUIDED_SET else ['--composition-study'] if COMPOSITION else ['--house-study'] if HOUSE else ['--quality'] if QUALITY else [])],
                          stdin=subprocess.DEVNULL, stdout=log, stderr=log, start_new_session=True)
-    report = dict(status='FAIL', scope='Four guide/model seed controls plus two original vocal opportunities; no reference material' if RECOVERY else 'Six guided bass originals with at most three short vocal candidates; direction and consistency study' if GUIDED_SET else 'Four paired originals; same captions/model/seeds, with and without newly authored audio guides' if COMPOSITION else 'Six paired instrumental house tracks; no reference audio or research weights' if HOUSE else 'Four arrangement candidates with at most two brief vocal candidates; no reference audio or research weights' if QUALITY else 'Two original style prompts; same seed and base model; no reference audio or research weights', tracks=[])
+    report = dict(status='FAIL', scope='Paired unconditioned generation with or without semantic music planning; no reference material' if PLANNER else 'Four guide/model seed controls plus two original vocal opportunities; no reference material' if RECOVERY else 'Six guided bass originals with at most three short vocal candidates; direction and consistency study' if GUIDED_SET else 'Four paired originals; same captions/model/seeds, with and without newly authored audio guides' if COMPOSITION else 'Six paired instrumental house tracks; no reference audio or research weights' if HOUSE else 'Four arrangement candidates with at most two brief vocal candidates; no reference audio or research weights' if QUALITY else 'Two original style prompts; same seed and base model; no reference audio or research weights', tracks=[])
     tunnel = None; ssh = None
     try:
         result = vast.api('v0/asks/'+str(offer['id']), 'PUT', dict(
@@ -196,7 +200,7 @@ def run():
         files = [ROOT/'scripts'/name for name in ['cloud_music_setup.sh', 'cloud_dj_warm.sh', 'dj_track_worker.py', 'dj_warm_engine.py', 'dj_vocal.py', 'club_benchmark_cases.py',*(['dj_composition.py','prepare_electronic_bank.py'] if COMPOSITION else [])]]
         files += [ROOT/'assets/manifests/dj-styles.json', WORK/'renderer-token']
         subprocess.run([*scp, *map(str, files), 'root@'+item['ssh_host']+':/workspace/'], check=True, capture_output=True, timeout=60)
-        subprocess.run([*ssh, vast.dj_bootstrap_command(state['deadline'], plan.get('max_requests', 2), arranged=QUALITY and not HOUSE and not COMPOSITION, house_study=HOUSE, composition_study=COMPOSITION and not GUIDED_SET and not RECOVERY, guided_set=GUIDED_SET, recovery_study=RECOVERY)], check=True, capture_output=True, timeout=20)
+        subprocess.run([*ssh, vast.dj_bootstrap_command(state['deadline'], plan.get('max_requests', 2), arranged=QUALITY and not HOUSE and not COMPOSITION and not PLANNER, house_study=HOUSE, composition_study=COMPOSITION and not GUIDED_SET and not RECOVERY, guided_set=GUIDED_SET, recovery_study=RECOVERY, planner_study=PLANNER)], check=True, capture_output=True, timeout=20)
         with socket.socket() as sock:
             sock.bind(('127.0.0.1', 0)); port = sock.getsockname()[1]
         with (WORK/'tunnel.log').open('a') as log:
@@ -229,6 +233,12 @@ def run():
                 receipt = json.loads(response.headers['X-Jamloom-Receipt']); data = response.read(12_000_001)
             if receipt['request'] != row['request'] or receipt['sha256'] != hashlib.sha256(data).hexdigest() or len(data) != 11_520_044:
                 raise RuntimeError('Generated track integrity failed')
+            if PLANNER:
+                planning=receipt.get('planning',{}).get('track')
+                if row['request']['sequence']%2:
+                    if not planning or planning.get('model')!='acestep-5Hz-lm-1.7B' or planning.get('backend')!='pt' or planning.get('caption_rewritten') is not False or planning.get('source_audio_used') is not False or not 1<=planning.get('code_tokens',0)<=4096 or len(planning.get('audio_codes_sha256',''))!=64:raise RuntimeError('Semantic planning proof missing')
+                elif planning:raise RuntimeError('Control unexpectedly used semantic planning')
+                if receipt.get('composition'):raise RuntimeError('Planner comparison unexpectedly used a source guide')
             if COMPOSITION:
                 guide=receipt.get('composition')
                 if RECOVERY or GUIDED_SET or row['request']['sequence']%2:
@@ -272,9 +282,10 @@ if __name__ == '__main__':
     parser.add_argument('--composition-study',action='store_true')
     parser.add_argument('--guided-set',action='store_true')
     parser.add_argument('--recovery-study',action='store_true')
+    parser.add_argument('--planner-study',action='store_true')
     args = parser.parse_args()
-    if sum([args.quality,args.replacement,args.house_study,args.composition_study,args.guided_set,args.recovery_study])>(2 if args.replacement and args.recovery_study else 1): parser.error('Choose one campaign; replacements require a new prepared permit')
-    if args.quality or args.house_study or args.composition_study or args.guided_set or args.recovery_study: configure_quality(house=args.house_study,composition=args.composition_study,guided_set=args.guided_set,recovery=args.recovery_study)
+    if sum([args.quality,args.replacement,args.house_study,args.composition_study,args.guided_set,args.recovery_study,args.planner_study])>(2 if args.replacement and args.recovery_study else 1): parser.error('Choose one campaign; replacements require a new prepared permit')
+    if args.quality or args.house_study or args.composition_study or args.guided_set or args.recovery_study or args.planner_study: configure_quality(house=args.house_study,composition=args.composition_study,guided_set=args.guided_set,recovery=args.recovery_study,planner=args.planner_study)
     if args.replacement: configure_replacement()
     if args.watch: vast.watch()
     elif args.preflight:
