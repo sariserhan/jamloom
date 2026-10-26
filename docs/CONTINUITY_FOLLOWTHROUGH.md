@@ -54,3 +54,26 @@ ACE-Step 1.5 and the MIT singing detector are retained. Re-ran the existing benc
 The approved Tency enquiry was already sent. No supplier reply or assets are available in this workspace; no mailbox connector is available to verify the inbox. This is not a claim that the supplier has not replied. [Exact recordings, permissions and delivery requirements](SINGING_POPULAR_SONGS.md). The four-minute original rehearsal already exercises streaming, lyric timing, phrase grading, seek/retry and stop; the first popular lesson must use the actual authorized recording and melody data once supplied.
 
 [Release acceptance checklist](RELEASE_ACCEPTANCE.md) separates implemented features, listening, hardware, hosted and publication gates. The owner still holds publication. No paid license, App Store submission or public AI DJ activation occurred.
+
+## Owner review and next musical target — 2026-10-26
+
+**PARTIAL improvement; professional-quality target not accepted.** The owner says the four handoffs are better but still below real DJ performance, and wants AI to use coordinated musical control to exceed that benchmark. This is feedback on the retained before/after set, not a rating of the fresh twelve-track qualification. [Exact feedback](evidence/continuity-followthrough-20261026/owner-continuity-feedback.json).
+
+The present capacity result proves reliable delivery, not the requested musical result. `AIDJPlayer` has two stereo decks; the flow study generates each source independently from recipe/seed inputs. The planner can align measured beats, choose overlap, exchange bass and avoid quiet sections. It cannot independently continue the outgoing drums while replacing its bass or write the incoming melody to answer an existing motif.
+
+The next creative experiment should therefore compare one coherent 3–5-minute original performance against the accepted overlap baseline:
+
+1. Plan shared tempo, tonal center, groove, motif and phrase-level energy before generating the next section. Define which musical idea continues and which changes. A shared caption or BPM alone is not evidence of coherent harmony/arrangement.
+2. Test separate control of drums, bass, musical parts and brief vocals on original Jamloom material. Reuse existing mixer/recording timing and original stem utilities. Existing `separate_singer.py` is a research tool; check its precise checkpoint terms and separation bleed before any runtime adoption. Native original stems are preferable when available. Do not add another audio clock or assume the two-deck player already supports independent stems.
+3. Coordinate phrase-aligned percussion handoffs, complementary bass entries, restrained vocal answers and purposeful build/drop/release. Keep deliberate no-action periods; avoid simultaneous clashing basslines, overlapping hooks and effects added only to animate the deck.
+4. Drive the deck display from those actual scheduled audio actions. Compare continuous groove, musical development, vocal spacing and artifacts by listening; retain peak, gap, drift and delivery checks as supporting evidence.
+
+This is the next experiment specification, not an implemented stem-performance engine or a promise to outperform professional DJs. Existing ACE-Step, the audited analysis modules and compatible source utilities should be reused where their measured outputs help. No new GPU run, learned model, copied reference material or production activation is authorized by the consumed permit.
+
+## Refined owner microphone result — 2026-10-26
+
+The owner reports no audible background sound. The refined check nevertheless detects periodic pitch in 42.15% of the quiet phase (median detected frequency 180.53 Hz), 65.2% of normal singing (181.80 Hz), 51.47% of soft singing and 52.33% of vibrato. Software timing remains about 34.53 ms p95. [Exact numerical result](evidence/continuity-followthrough-20261026/owner-microphone-followup.json).
+
+The normal/quiet median RMS ratio is about 5.6 dB, and soft/quiet about 2.6 dB. These phase medians are not source-separated SNR. No audio exists to identify the quiet-phase source. The detector measures periodicity, not human voice identity, so neither confidence nor pitch alone establishes singing. Filtering out approximately 180 Hz or raising a fixed floor would also suppress the owner's singing; no such change was made.
+
+A read-only system check identifies the MacBook Air Microphone as the OS default. This does not establish the browser's selected input. The local diagnostic now displays the actual track label and includes applied sample rate/channel/processing settings, omitting persistent device/group identifiers. It also explicitly labels the percentages as periodic sound, not verified human voice. No additional audio recording, automatic microphone start or capture upload was introduced. Input/capture behavior and real-room detection remain unresolved; physical end-to-end latency remains NOT RUN.

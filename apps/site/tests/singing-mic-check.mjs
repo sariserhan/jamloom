@@ -15,7 +15,7 @@ const rows=await Promise.all([['chromium',chromium],['webkit',webkit]].map(async
    }}});
   });
   await page.goto('http://127.0.0.1:8767/mic-check.html');await page.locator('#start').click();await page.waitForFunction(()=>window.jamloomMicCheckResult?.completed,undefined,{timeout:45000});
-  const r=await page.evaluate(()=>jamloomMicCheckResult);assert(r.frames>1000);assert(r.phases[0].detectedVoicePercent<2);assert(r.phases.slice(1).every(p=>p.detectedVoicePercent>90));assert(r.softwareWindowCenterToAnimationMs.p95<1000);
+  const r=await page.evaluate(()=>jamloomMicCheckResult);assert(r.frames>1000);assert.equal(typeof r.input.label,'string');assert.match(r.pitchDetectionMeaning,/not identification/);assert(!('deviceId' in r.input));assert.match(await page.locator('#input').textContent(),/^Input:/);assert(r.phases[0].detectedVoicePercent<2);assert(r.phases.slice(1).every(p=>p.detectedVoicePercent>90));assert(r.softwareWindowCenterToAnimationMs.p95<1000);
   assert(await page.evaluate(()=>__streams.every(s=>s.getTracks().every(t=>t.readyState==='ended'))));assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.screenshot({path:new URL('mic-'+name+'.png',folder).pathname,fullPage:true});
   await page.locator('#start').click();await page.waitForTimeout(300);await page.locator('#stop').click();assert.equal(await page.evaluate(()=>jamloomMicCheckResult.completed),false);

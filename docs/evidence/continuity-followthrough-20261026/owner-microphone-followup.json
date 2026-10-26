@@ -1,0 +1,85 @@
+{
+  "status": "PARTIAL: quiet-phase periodic input remains unexplained",
+  "source": "Owner pasted refined real-microphone diagnostic",
+  "result": {
+    "completed": true,
+    "sampleRate": 48000,
+    "frames": 2996,
+    "phases": [
+      {
+        "phase": "Stay quiet \u00b7 room noise",
+        "frames": 745,
+        "detectedVoicePercent": 42.147651006711406,
+        "medianRms": 0.02826674684015902,
+        "medianConfidence": 0.9464370980858803,
+        "medianDetectedHz": 180.53240639324056,
+        "rejected": {
+          "quiet": 170,
+          "noStablePitch": 89,
+          "lowConfidence": 172
+        }
+      },
+      {
+        "phase": "Sing a comfortable sustained note",
+        "frames": 750,
+        "detectedVoicePercent": 65.2,
+        "medianRms": 0.05407613470465581,
+        "medianConfidence": 0.9692101869732141,
+        "medianDetectedHz": 181.7954187768459,
+        "rejected": {
+          "quiet": 29,
+          "noStablePitch": 51,
+          "lowConfidence": 181
+        }
+      },
+      {
+        "phase": "Sing the same note more softly",
+        "frames": 750,
+        "detectedVoicePercent": 51.46666666666667,
+        "medianRms": 0.03823062699631761,
+        "medianConfidence": 0.95095394551754,
+        "medianDetectedHz": 187.8204137486304,
+        "rejected": {
+          "quiet": 75,
+          "noStablePitch": 106,
+          "lowConfidence": 183
+        }
+      },
+      {
+        "phase": "Add gentle vibrato",
+        "frames": 751,
+        "detectedVoicePercent": 52.33022636484687,
+        "medianRms": 0.07733334755118888,
+        "medianConfidence": 0.9491162672638893,
+        "medianDetectedHz": 194.61671323938057,
+        "rejected": {
+          "quiet": 69,
+          "noStablePitch": 125,
+          "lowConfidence": 164
+        }
+      }
+    ],
+    "softwareWindowCenterToAnimationMs": {
+      "median": 28.83333333333394,
+      "p95": 34.533333381019474
+    },
+    "limitation": "Not physical microphone-to-display latency or independently labelled singing accuracy"
+  },
+  "observations": {
+    "normal_vs_quiet_median_level_db": 5.634596237468168,
+    "soft_vs_quiet_median_level_db": 2.6227118266034437
+  },
+  "limitations": [
+    "Level ratios are comparisons of phase medians, not source-separated SNR",
+    "YIN detects periodic sound, not human voice identity",
+    "No audio recorded; source of quiet-phase signal is unknown",
+    "Do not suppress the 180 Hz band: it overlaps the singing register"
+  ],
+  "owner_background_sound_reply": "no",
+  "system_default_input": {
+    "name": "MacBook Air Microphone",
+    "manufacturer": "Apple Inc.",
+    "source": "system_profiler SPAudioDataType read-only check",
+    "limitation": "OS default does not prove the browser selected this input"
+  }
+}
