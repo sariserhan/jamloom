@@ -1,0 +1,275 @@
+{
+  "date": "2026-10-26",
+  "status": "PASS deletion; validation follows with course checks",
+  "removed_allocated_bytes": 3635908608,
+  "free_before": 16354590720,
+  "free_after": 19885101056,
+  "git_status_unchanged": true,
+  "targets": [
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-jamloom/CMakeFiles",
+      "bytes": 18956288
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-phone-release/Build/Intermediates.noindex",
+      "bytes": 47071232
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-phone-release/ModuleCache.noindex",
+      "bytes": 5890048
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-phone-release/SDKStatCaches.noindex",
+      "bytes": 1585152
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-phone-release/SDKExplicitPrecompiledModules",
+      "bytes": 66027520
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-product-ios/Build/Intermediates.noindex",
+      "bytes": 106569728
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-product-ios/Index.noindex",
+      "bytes": 49324032
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-product-ios/ModuleCache.noindex",
+      "bytes": 33239040
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-product-ios/SDKStatCaches.noindex",
+      "bytes": 1617920
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-product-ios/SDKExplicitPrecompiledModules",
+      "bytes": 129605632
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-live-source/CMakeFiles",
+      "bytes": 17649664
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-release-completion/Build/Intermediates.noindex",
+      "bytes": 44339200
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-release-completion/ModuleCache.noindex",
+      "bytes": 5865472
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-release-completion/SDKStatCaches.noindex",
+      "bytes": 1585152
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-release-completion/SDKExplicitPrecompiledModules",
+      "bytes": 65998848
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-finish-asan/CMakeFiles",
+      "bytes": 31285248
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-duration-sanitize/CMakeFiles",
+      "bytes": 60260352
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-device/Build/Intermediates.noindex",
+      "bytes": 43343872
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-device/ModuleCache.noindex",
+      "bytes": 5877760
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-device/SDKStatCaches.noindex",
+      "bytes": 1585152
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-device/SDKExplicitPrecompiledModules",
+      "bytes": 66019328
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-mac/CMakeFiles",
+      "bytes": 47812608
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-product/CMakeFiles",
+      "bytes": 18956288
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-visual/Build/Intermediates.noindex",
+      "bytes": 140943360
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-visual/Index.noindex",
+      "bytes": 51945472
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-visual/ModuleCache.noindex",
+      "bytes": 22810624
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-visual/SDKStatCaches.noindex",
+      "bytes": 1617920
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-visual/SDKExplicitPrecompiledModules",
+      "bytes": 130953216
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-visual-device/Build/Intermediates.noindex",
+      "bytes": 142303232
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-visual-device/Index.noindex",
+      "bytes": 37646336
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-visual-device/ModuleCache.noindex",
+      "bytes": 28909568
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-visual-device/SDKStatCaches.noindex",
+      "bytes": 1585152
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-visual-device/SDKExplicitPrecompiledModules",
+      "bytes": 132083712
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-completion/Build/Intermediates.noindex",
+      "bytes": 46084096
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-completion/Index.noindex",
+      "bytes": 35074048
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-completion/ModuleCache.noindex",
+      "bytes": 16998400
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-completion/SDKStatCaches.noindex",
+      "bytes": 1585152
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-completion/SDKExplicitPrecompiledModules",
+      "bytes": 65081344
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-mac-sanitize/CMakeFiles",
+      "bytes": 55242752
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-parity/Build/Intermediates.noindex",
+      "bytes": 69140480
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-parity/Index.noindex",
+      "bytes": 39636992
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-parity/ModuleCache.noindex",
+      "bytes": 17256448
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-parity/SDKStatCaches.noindex",
+      "bytes": 1617920
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-parity/SDKExplicitPrecompiledModules",
+      "bytes": 65761280
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-web-before-relocation-20261021/CMakeFiles",
+      "bytes": 39927808
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-transients/CMakeFiles",
+      "bytes": 18210816
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-storekit/Build/Intermediates.noindex",
+      "bytes": 40443904
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-storekit/Index.noindex",
+      "bytes": 34697216
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-storekit/ModuleCache.noindex",
+      "bytes": 17117184
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-storekit/SDKStatCaches.noindex",
+      "bytes": 1617920
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-storekit/SDKExplicitPrecompiledModules",
+      "bytes": 64790528
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-parity-release/Build/Intermediates.noindex",
+      "bytes": 31223808
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-parity-release/ModuleCache.noindex",
+      "bytes": 5820416
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-parity-release/SDKStatCaches.noindex",
+      "bytes": 1585152
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios-parity-release/SDKExplicitPrecompiledModules",
+      "bytes": 65052672
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-finish/CMakeFiles",
+      "bytes": 25976832
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios/Build/Intermediates.noindex",
+      "bytes": 183099392
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios/Index.noindex",
+      "bytes": 52957184
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios/ModuleCache.noindex",
+      "bytes": 33628160
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios/SDKStatCaches.noindex",
+      "bytes": 1617920
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-ios/SDKExplicitPrecompiledModules",
+      "bytes": 132165632
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-web/CMakeFiles",
+      "bytes": 21323776
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-jamloom-legacy-options/CMakeFiles",
+      "bytes": 565248
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/apps/site/.next/dev",
+      "bytes": 889344000
+    }
+  ],
+  "preserved": [
+    "renders",
+    "model weights",
+    "build products and signed releases",
+    "source and credentials",
+    "active production preview build"
+  ],
+  "rebuild_note": "CMake configure and Xcode compilation/index caches regenerate; subsequent builds can be slower.",
+  "additional_note": "After stopping the development server to eliminate reloads, removed its inactive .next/dev cache; active preview uses .next/server."
+}

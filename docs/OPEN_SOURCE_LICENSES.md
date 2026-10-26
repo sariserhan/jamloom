@@ -55,3 +55,5 @@ Pinned model-card URLs and content hashes are in [model-cards.json](evidence/ope
 ## Audio, samples and lesson content
 
 Existing [acoustic-v1 manifest](../assets/manifests/acoustic-v1.json) pins VSCO/VCSL CC0 recordings and prepared bytes. The first lesson reuses this existing piano engine; original note choices and text were authored for Jamloom. Benchmarks hash three real notes and Jamloom's already generated originals. No upstream demo songs, artwork, branded interface, lyrics, YouTube recordings, Downloads reference DJ sets or Blood Club derivatives are copied, shipped or trained on. CC0 inventory and existing recording provenance are retained separately from code licenses. A future training corpus still needs the project's rights registry and consent gates.
+
+Course extension: City Lights and In Motion use original Jamloom lyrics and note arrangements played through the existing licensed instrument bank. No new third-party recordings, model weights or song catalogue assets were added. Current implementation and evidence are in [Singing Academy](SINGING_ACADEMY.md).

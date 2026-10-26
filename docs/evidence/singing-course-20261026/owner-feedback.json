@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-26",
+  "status": "PASS owner functional check; PARTIAL broader qualification",
+  "preview_stability": "Yes, it is stable now",
+  "song_check": {
+    "page": "http://localhost:3000/singing-academy",
+    "requested_flow": "City Lights: Hear song then Sing along; music playback and live pitch follow",
+    "answer": "Music and live feedback work well"
+  },
+  "not_established": [
+    "Quantified pitch accuracy on a labeled human voice corpus",
+    "Physical microphone-to-display latency",
+    "Speaker leakage across equipment",
+    "Long-term learning outcomes",
+    "Native mobile integration"
+  ]
+}

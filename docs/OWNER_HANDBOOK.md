@@ -1,3 +1,13 @@
+## Singing Academy: songs and live feedback — 2026-10-26
+
+[Open the local course](http://localhost:3000/singing-academy). Choose City Lights or In Motion, a comfortable register and headphones. Hear song plays the original band with a piano melody guide; Sing along leaves the melody to your voice. Lyrics, target notes and a measured pitch trace move live with playback. Full lyrics appear beside the live view (below on phones), with the current word highlighted; the large current word and upcoming-word display remain. These practice compositions do not include a recorded lead singer. All twelve note/rhythm drills are together in [optional Warm-ups](http://localhost:3000/singing-academy/warmups). Scores stay in this browser; repeats are unlimited. [Implementation, tests and physical limits](SINGING_ACADEMY.md).
+
+The owner confirms “Music and live feedback work well” for the song flow. Quantified accuracy and latency across different singers/microphones remain unverified.
+
+The owner-reported twitching was a development reload loop. Localhost:3000 now serves the built preview; the owner confirms stability. Keep it running while testing. To update it deliberately, stop the preview, build, then run `JAMLOOM_COMING_SOON=false npm --prefix apps/site start`. Do not run a production rebuild against the same served output while someone tests. These are local settings, not a public launch.
+
+Cleanup reclaimed 3.39 GiB of compiler/Xcode/development caches. Source, credentials, models, unique renders and signed releases are preserved. Do not delete the 44 GB renders or 19 GB training directory as if they were ordinary caches; they contain retained audio and checkpoints.
+
 ## Open-source reuse and Singing Academy preview — 2026-10-26
 
 Try [the first singing lesson](http://localhost:3000/singing-academy/lessons/first-note). Choose a comfortable note, press Start, allow the microphone, listen to the piano and hum back. Hold the center for two seconds. Stop or leaving the page closes the microphone; practice remains unlimited. Audio stays on this device and only a completion marker is stored locally. This first lesson measures pitch, not overall voice quality or vocal health. Physical microphone and real-singer qualification remain open.

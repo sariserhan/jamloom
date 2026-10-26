@@ -1,0 +1,77 @@
+{
+  "status": "PASS local implementation; PARTIAL physical and musical qualification",
+  "date": "2026-10-26",
+  "source_sha256": {
+    "apps/web/singing.js": "e083e5b290dc95583d92b2c908f50024bb0e1cf81ddac731e90794099b2c0947",
+    "apps/web/singing-course.js": "3715644a1611b7366a5492204f9de603189044b0243740bf7155024aafc7dbd9",
+    "apps/web/singing-chart.js": "2a6f01bcfb8042c17967052a2c66b67f53b281ccc4eaeeec47cabe28210d1fe5",
+    "apps/web/singing-score.js": "19e5f89e85ae5567e92ddb4ac7187eba59f0883cc3fadcacb780a6165721fbb5",
+    "apps/web/singing-lesson.js": "3b32ba9bc3909856bcf4f67b971494d90fe2e5e536bbadde10b93bfc6067dfbb",
+    "apps/web/singing-capture-worklet.js": "e055d8c643665239a08665a28ece7378bee6db3652837692c5a3d7657e330541",
+    "apps/web/instrument-worklet.js": "bbfac0c3039070904d6fde35db0e74baed9778912a0ec63689b06a9e6fdb1b2c",
+    "apps/web/singing.html": "d7e25783f59bb92198f648aeae0a6e3e1994a0c904474521f608d927489dff6e",
+    "apps/web/singing.css": "ae1900c1eb9ffc2172015e83ca1b0bac6d297e8cb835018fedd31a513eb93f7f"
+  },
+  "served_assets_match_sources": true,
+  "http": {
+    "/singing-academy": 200,
+    "/singing-academy/warmups": 200,
+    "/singing-academy/lessons/city-lights": 200,
+    "/singing-academy/lessons/in-motion": 200,
+    "/singing-academy/lessons/not-a-lesson": 404
+  },
+  "tests": {
+    "core_and_renderer": {
+      "passed": 25,
+      "scope": "Original songs and 12 warmups, negative controls, progress, exact audio clock including WebKit prime jump, actual WASM band render, instrument/take regressions"
+    },
+    "academy_isolated_postgres": {
+      "passed": 13,
+      "scope": "Existing accounts and payment boundaries, earlier in same increment; song changes do not touch backend"
+    },
+    "site_navigation_config_metadata": {
+      "passed": 12
+    },
+    "production_build": "PASS",
+    "typescript": "PASS",
+    "public_bundle_and_notices": "PASS",
+    "browser": "See browser.json and singing-browser.json",
+    "human_singing": "PASS owner functional music and live-feedback check; quantified accuracy NOT RUN",
+    "physical_latency": "NOT RUN",
+    "public_deployment": "NOT RUN",
+    "new_gpu_rental": "NOT RUN",
+    "full_lyrics": "PASS Chromium and WebKit: 16 complete lines / 48 words, current-word match, internal scrolling, desktop side-by-side and mobile layout; previous large-word/upcoming-word display retained"
+  },
+  "preview": "Built Next preview on 127.0.0.1:3000; owner confirmed stability before song extension",
+  "audio_clock_fix": {
+    "observed_webkit_frames": [
+      [
+        0,
+        0
+      ],
+      [
+        32000,
+        128
+      ],
+      [
+        32128,
+        256
+      ],
+      [
+        32256,
+        384
+      ],
+      [
+        32384,
+        512
+      ]
+    ],
+    "columns": [
+      "currentFrame",
+      "oldSequenceFrame"
+    ],
+    "before": "Cold-start piano PCM test failed",
+    "after": "Clock-jump unit regression and Chromium/WebKit piano PCM checks pass"
+  },
+  "owner_evidence": "owner-feedback.json"
+}

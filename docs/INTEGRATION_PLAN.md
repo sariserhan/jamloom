@@ -1,5 +1,7 @@
 # Integration plan and first Singing Academy lesson — 2026-10-26
 
+**Follow-through:** the owner subsequently authorized completing the course. [Song-first implementation, optional warm-ups and current evidence](SINGING_ACADEMY.md) supersede the first-lesson-only scope below; historical audit findings and licensing limits still apply.
+
 **PASS local implementation; PARTIAL product qualification.** Scope is one complete free lesson and a source/license/benchmark audit, not a new full paid curriculum or replacement DJ engine. [Audit](OPEN_SOURCE_AUDIT.md) and [license inventory](OPEN_SOURCE_LICENSES.md) contain decisions for every candidate.
 
 ## Delivered architecture

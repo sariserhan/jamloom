@@ -1,3 +1,16 @@
+## Singing Academy course, stable preview and cleanup — 2026-10-26
+
+**PASS local implementation and controlled audio; PARTIAL human/release qualification.** [Course report](SINGING_ACADEMY.md). Song practice is now the main path: two original pop/dance arrangements with lyrics and live pitch animation. All twelve note drills are grouped under optional Warm-ups. Reuses the audited MIT detector and existing piano/WASM clock; keeps billing and cloud infrastructure unchanged.
+
+- [x] Add two original songs, optional four-stage warm-ups, full-band scores, measured phrase grading, live pitch trace, full lyrics with word highlighting alongside the retained current/upcoming words, local progress migration, per-note advice and unlimited practice.
+- [x] Add course navigation, shared product guide, bounded input/progress checks and sample-accurate instrument scheduling; preserve manual notes and take replay.
+- [x] Verify 25 core/renderer tests, 13 isolated Academy tests, 12 site tests, build/typecheck/bundle checks and Chromium/WebKit synthetic-microphone course flows; fix cold WebKit piano timing using the actual audio clock.
+- [x] Reproduce development reload loop; switch localhost:3000 to built preview. Owner confirms the website is stable after refresh. Root framework trigger remains unproven.
+- [x] Reclaim 3.39 GiB of audited inactive caches; preserve recordings, model weights and releases. [Cleanup receipt](evidence/singing-course-20261026/cleanup.json).
+- [x] Obtain owner song-flow acceptance: “Music and live feedback work well”. Preserve the exact response in the course evidence.
+- [ ] Qualify measured accuracy across singers/microphones, physical latency and learning outcomes; functional owner acceptance does not establish these.
+- [ ] Public deployment/native course release remain NOT RUN; no new GPU work or monetization authorized in this increment.
+
 ## Open-source audit and first singing lesson — 2026-10-26
 
 **PASS scoped implementation and local benchmarks; PARTIAL qualification.** [Audit](OPEN_SOURCE_AUDIT.md), [license inventory](OPEN_SOURCE_LICENSES.md), [integration plan](INTEGRATION_PLAN.md). Pinned 21 repositories and six model cards; inspected 148 source records. Reused one dependency-free MIT YIN module, existing piano/WASM and Academy route patterns. No duplicate DJ engine, billing changes, paid compute or publication.

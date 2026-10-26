@@ -1,5 +1,5 @@
 class SingingCapture extends AudioWorkletProcessor {
- constructor(){super();this.size=Math.min(8192,2**Math.ceil(Math.log2(sampleRate*.08)));this.ring=new Float32Array(this.size);this.position=0;this.total=0;this.hop=Math.round(sampleRate*.02);this.pending=false;this.running=true;this.port.onmessage=({data})=>{if(data==='stop')this.running=false;else if(data==='ack')this.pending=false;};}
+ constructor(){super();this.size=Math.min(8192,2**Math.ceil(Math.log2(sampleRate*.04)));this.ring=new Float32Array(this.size);this.position=0;this.total=0;this.hop=Math.round(sampleRate*.01);this.pending=false;this.running=true;this.port.onmessage=({data})=>{if(data==='stop')this.running=false;else if(data==='ack')this.pending=false;};}
  process(inputs){
   if(!this.running)return false;
   const mono=inputs[0]?.[0];if(!mono)return true;

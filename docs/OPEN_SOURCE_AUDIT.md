@@ -2,6 +2,8 @@
 
 **PARTIAL overall; PASS source audit and feasible local measurements.** One narrowly reusable MIT pitch detector is integrated into an original first Singing Academy lesson. Existing DJ engines, instruments, authentication, database, payment routes and model workers remain intact. No paid compute, licenses or model downloads were started for this audit. No public deployment or learned-model training occurred.
 
+The adopted pitch module now supports the [song-first Singing Academy and optional warm-ups](SINGING_ACADEMY.md). No additional upstream engine was imported.
+
 ## Existing implementation first
 
 Jamloom already has equal-power mixing/EQ/echo/metering (`apps/web/mixer.js`), transport/cues/loops and bounded stereo time stretching (`deck-controls.js`, `deck-dsp.js`). AI DJ uses one AudioContext through `apps/site/lib/ai-dj-player.ts`, cached tempo/chroma/grid/energy analysis, and selective instrumental overlap in `ai-dj-plan.ts`. The owner accepted that extended overlap, not every possible transition. Offline C++ phrase analysis is not a continuous singing assessment and searches only 70–450 Hz. Existing WASM instruments and microphone lifecycle code provide the first lesson's audio foundation.

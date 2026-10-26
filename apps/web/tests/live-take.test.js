@@ -1,7 +1,9 @@
+import {singingSongs,phraseFor} from '../singing-course.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
+import {SingingScore,songScore} from '../singing-score.js';
 import {StepSequence} from '../step-sequence.js';
 import { TakeBuffer, executeCommand, validCommand, validateTake, stereoWav, sha256, replayTake, TAKE_EVENTS } from '../live-take.js';
 const wasm = fs.readFileSync(new URL('../../../dist/web/engine/jamloom_live.wasm', import.meta.url));
@@ -10,7 +12,7 @@ function harness() {
   let Processor;
   const messages = [];
   vm.runInNewContext(fs.readFileSync(new URL('../instrument-worklet.js', import.meta.url), 'utf8').replace(/^import .*;\n/gm, ''), {
-    StepSequence, TakeBuffer, executeCommand, validCommand, WebAssembly, sampleRate: 48000, currentFrame: 1024,
+    SingingScore, StepSequence, TakeBuffer, executeCommand, validCommand, WebAssembly, sampleRate: 48000, currentFrame: 1024,
     AudioWorkletProcessor: class { constructor() { this.port = { postMessage: (data, transfer = []) =>
       messages.push(structuredClone(data, { transfer })) }; } },
     registerProcessor: (_, cls) => { Processor = cls; },
@@ -112,4 +114,15 @@ test('capture writes fixed command buffers and snapshots values independently of
   for (let i = 1; i < TAKE_EVENTS; i++) assert.equal(take.accepted(command), true);
   assert.equal(take.accepted(command), false); assert.equal(take.commandData, storage);
   assert.equal(take.count, TAKE_EVENTS);
+});
+
+test('singing score uses the real shared instrument, rejects unsafe scores and leaves manual playing available',()=>{
+ const h=harness();h.send({type:'singing-score',events:[{frame:1024,command:note},{frame:4800,command:{type:'off',id:note.id}}]});assert.equal(h.messages.at(-1).type,'score-started');
+ let peak=0;for(let i=0;i<45;i++){h.block();for(const value of h.output[0][0])peak=Math.max(peak,Math.abs(value));}assert(peak>.001);
+ h.send({type:'singing-score',events:[{frame:1024,command:note}]});assert.equal(h.messages.at(-1).type,'score-failed');assert.equal(h.processor.sequence,null);
+ h.send(note);h.block();assert(h.output[0][0].some(v=>v!==0));h.send({type:'panic'});for(let i=0;i<400;i++)h.block();assert(h.output[0][0].every(v=>Math.abs(v)<1e-5));
+});
+
+test('both original song arrangements render finite unclipped band audio with no rejected voices',()=>{
+ for(const song of singingSongs){const h=harness(),phrase=phraseFor(song,57,song.tempo),events=songScore(song,phrase,57,48000,1024/48000,true);h.send({type:'singing-score',events});assert.equal(h.messages.at(-1).type,'score-started');let peak=0,power=0,samples=0;for(let i=0;i<Math.ceil((events.at(-1).frame+48000)/128);i++){h.block();for(const x of h.output[0][0]){assert(Number.isFinite(x));peak=Math.max(peak,Math.abs(x));power+=x*x;samples++;}}assert(peak<1&&peak>.01);assert(Math.sqrt(power/samples)>.01);assert(!h.messages.some(m=>m.type==='rejected'));}
 });

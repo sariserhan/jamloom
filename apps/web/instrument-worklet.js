@@ -1,3 +1,4 @@
+import {SingingScore} from './singing-score.js';
 import {StepSequence} from './step-sequence.js';
 import { TakeBuffer, executeCommand, validCommand } from './live-take.js';
 class JamloomInstruments extends AudioWorkletProcessor {
@@ -15,6 +16,10 @@ class JamloomInstruments extends AudioWorkletProcessor {
     };
     this.port.onmessage = ({ data }) => {
       if (!data || typeof data !== 'object') return;
+      if(data.type==='singing-score'){
+        this.sequence=null;this.accept({type:'panic'});
+        try{this.sequence=new SingingScore(sampleRate,currentFrame,data.events);this.port.postMessage({type:'score-started'});}catch(error){this.port.postMessage({type:'score-failed',message:error.message});}return;
+      }
       if(data.type==='sequence-start'){
         this.sequence=null;this.accept({type:'panic'});
         try{this.sequence=new StepSequence(sampleRate,data.pattern,data.patch,data.velocity);this.port.postMessage({type:'sequence-started'});}
@@ -57,7 +62,7 @@ class JamloomInstruments extends AudioWorkletProcessor {
   }
   process(inputs, outputs) {
     this.output=outputs[0];this.offset=0;const frames=this.output[0]?.length??0;
-    if(frames&&frames<=2048){if(this.sequence)this.sequence.run(frames,this.renderSequence,this.emitSequence);else this.render(frames);}
+    if(frames&&frames<=2048){if(this.sequence)this.sequence.run(frames,this.renderSequence,this.emitSequence,currentFrame);else this.render(frames);}
     return true;
   }
 }
