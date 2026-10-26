@@ -1,0 +1,15 @@
+{
+  "status": "FAIL owner listening",
+  "statements": [
+    "transition is still bad and there are some awkard moments also saying the same feel alive too much times makes another awkardness",
+    "3:10 transition is the worst for example it is almost make it feel like the end"
+  ],
+  "moment_seconds": 190,
+  "from_clip": 4,
+  "to_clip": 5,
+  "transition_completed_seconds": 189.904,
+  "listening_sha256": "4417c37f4e9a92921582d0e1e0c81d1cdeec3e9dfe12d408e9891e3734e91e27",
+  "capture_sha256": "4bcd86d248eeb70c05b2bf6c3510b2051c26fc0a60b6a3e1da50e1ffb036c6fd",
+  "no_extra_vocal_loops_in_capture": true,
+  "interpretation": "No detected silence is not musical continuity. Controlled comparison reused identical lyrics in every generated track. Owner rejects the full set; per-clip preferences remain unchanged."
+}

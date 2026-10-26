@@ -1,0 +1,24 @@
+{
+  "status": "PASS technical capture; human listening NOT RUN",
+  "scope": "26-second excerpts with unchanged common mixer levels; no per-clip normalization",
+  "tracks": [
+    "d40bd09eae2ec38cff072d78999e3c0d44d7f07a744f638395d95def6558d08c",
+    "74d655edbb6c4c20532e848e109228e214643c0e7a46ce8409fa345344768bd8"
+  ],
+  "clips": [
+    {
+      "name": "before",
+      "source_sha256": "ea8dc7c6ad5746bbf783c7d3c463e31b77e33722388f40c6b97e92cf6867f07c",
+      "start_seconds": 42.096000000000004,
+      "transition_complete_seconds": 10,
+      "sha256": "75969391e7088255e049652e35efd6b7514b8285c9fbd0f7ddeebad14de90019"
+    },
+    {
+      "name": "after",
+      "source_sha256": "2ce8b396d753810aeb40fe74d6e659318d6b17639a7803b7d973e2118567af4b",
+      "start_seconds": 42.496,
+      "transition_complete_seconds": 10,
+      "sha256": "c399bafcf7e60e4b06c9329725f665ce1c11a97d02f36dc04044e8f166ec5762"
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+**Full-set update:** owner listening is **FAIL** for awkward transitions (especially 3:10) and repetitive “Feel alive”. Individual clip rankings below remain valid. [Diagnosis and local corrections](dj-transition-feedback.md).
+
 # Preferred music consistency study
 
 **PARTIAL quality; PASS bounded GPU execution, cleanup and individual player checks.** The owner accepted both musical vocal samples from the prior model comparison, preferring clip 6 for energy and describing clip 5 as calmer. This study retains those exact captions, lyrics, planner and sampling recipes, with three new matched seeds. It does not label either recipe universally energetic or calm based on one sample.

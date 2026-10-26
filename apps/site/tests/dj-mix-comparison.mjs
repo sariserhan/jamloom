@@ -10,11 +10,12 @@ import {chromium} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
 const recovery=process.argv.includes('--recovery-study');
 const planner=process.argv.includes('--planner-study');
-const consistency=process.argv.includes('--consistency-study');
+const boundary=process.argv.includes('--vocal-boundary');
+const consistency=process.argv.includes('--consistency-study')||boundary;
 const modelStudy=process.argv.includes('--model-study')||consistency;
 const quality=process.argv.includes('--quality'),timing=process.argv.includes('--timing-revision');
 const house=process.argv.includes('--house-study'),guided=process.argv.includes('--guided-set')||recovery;assert.ok([quality,house,guided,planner,modelStudy].filter(Boolean).length<=1);assert.ok(!timing||guided);
-const root=resolve('../..'),folder=resolve(root,consistency?'renders/dj-preferred-mix-20261026':modelStudy?'renders/dj-model-mix-20261026':planner?'renders/dj-planner-mix-20261026':recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
+const root=resolve('../..'),folder=resolve(root,boundary?'renders/dj-vocal-boundary-20261026':consistency?'renders/dj-preferred-mix-20261026':modelStudy?'renders/dj-model-mix-20261026':planner?'renders/dj-planner-mix-20261026':recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
 await mkdir(folder);
 const source=resolve(root,'renders/ai-dj-hosted-20261025'),report=JSON.parse(await readFile(source+'/result.json','utf8'));
 const session=report.customers.find(c=>c.visibility==='public').session;
@@ -56,14 +57,14 @@ if(planner){
 if(modelStudy){
  const source=root+(consistency?'/renders/dj-preferred-consistency-20261026':'/renders/dj-model-comparison-20261026'),run=JSON.parse(await readFile(source+'/report.json','utf8'));
  assert.equal(run.status,'PASS technical');assert.equal(run.cleanup_confirmed,true);assert.equal(run.tracks.length,6);
- tracks=await Promise.all([0,3,4,1,2,5].map(async(sequence,index)=>{
+ tracks=await Promise.all((boundary?[1,2]:[0,3,4,1,2,5]).map(async(sequence,index)=>{
   const row=run.tracks.find(t=>t.receipt.request.sequence===sequence),r=row.receipt,bytes=await readFile(source+'/'+row.file);
   assert.equal(createHash('sha256').update(bytes).digest('hex'),r.sha256);
   return{bytes,track:{id:String(index),title:'Comparison clip '+(index+1),artist:'Jamloom original',url:'/audio/'+index,sha256:r.sha256,energy:r.request.energy,style:r.request.style,mood:r.request.mood,vocal:!r.model_comparison.parameters.instrumental,credit:''}};
  }));
- assert.equal(new Set(tracks.map(t=>t.track.sha256)).size,6);
+ assert.equal(new Set(tracks.map(t=>t.track.sha256)).size,boundary?2:6);
 }
-const revisions=(house||guided||planner||modelStudy)?{after:'working-tree'}:{before:execFileSync('git',['rev-parse',quality?'f0fde92':'35bbee7'],{encoding:'utf8'}).trim(),after:quality?'working-tree':execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
+const revisions=boundary?{before:execFileSync('git',['rev-parse','5cb9ba8'],{encoding:'utf8'}).trim(),after:'working-tree'}:(house||guided||planner||modelStudy)?{after:'working-tree'}:{before:execFileSync('git',['rev-parse',quality?'f0fde92':'35bbee7'],{encoding:'utf8'}).trim(),after:quality?'working-tree':execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
 for(const [name,ref] of Object.entries(revisions)){
  const plugins=ref==='working-tree'?[]:[{name:'historical-source',setup(b){b.onLoad({filter:/\.(ts|js|json)$/},args=>{
   const path=relative(root,args.path);assert.ok(!path.startsWith('..')&&!path.includes('node_modules'));

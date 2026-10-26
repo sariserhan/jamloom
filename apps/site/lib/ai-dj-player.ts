@@ -177,7 +177,7 @@ export class AIDJPlayer{
    const deck=this.decks[this.active]!,to=1-this.active,incoming=this.decks[to]!;
    const position=deck.performance?.position(now)??0;
    if(position<deck.buffer.duration){
-    const plan=planTransition(deck.analysis,incoming.analysis,position,deck.rate??1,now,this.early,djStyles[deck.track.style??'house'].fadeSeconds);
+    const plan=planTransition(deck.analysis,incoming.analysis,position,deck.rate??1,now,this.early,djStyles[deck.track.style??'house'].fadeSeconds,deck.track.vocal||incoming.track.vocal);
     if(this.endAt===null||plan.at+plan.fade+2<this.endAt){
      deck.performance?.cancel();this.beginDeck(to,plan.at,0,plan.offset,plan.rate);
      const out=Float32Array.from({length:65},(_,i)=>Math.cos(i/64*Math.PI/2)),into=Float32Array.from({length:65},(_,i)=>Math.sin(i/64*Math.PI/2));

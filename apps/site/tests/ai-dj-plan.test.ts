@@ -125,3 +125,12 @@ test('chill holds the track and uses a longer blend; style cooldowns retain beat
  const plan=planTransition(a,a,10,1,10,false,8);assert.equal(plan.technique,'short-fade');assert.equal(plan.fade,8);
  assert.throws(()=>planTransition(a,a,10,1,10,false,Infinity));
 });
+
+test('vocal tracks cannot use an unreviewed one-bar bass exchange',()=>{
+ const grid={bpm:128,offset:0,maxError:.01,coverage:.95,entry:0,exit:59.0625,hookSafe:true};
+ const vocal={...base,duration:60,grid};
+ assert.equal(planTransition(vocal,vocal,40,1,0,false,4,false).technique,'beat-bass');
+ const p=planTransition(vocal,vocal,40,1,0,false,4,true);
+ assert.equal(p.technique,'short-fade');assert.equal(p.rate,1);assert.equal(p.fade,4);assert.match(p.reason,/vocal edges/);
+ assert.equal(planTransition(reviewed,reviewed,4,1,10,false,4,true).technique,'phrase-bass');
+});

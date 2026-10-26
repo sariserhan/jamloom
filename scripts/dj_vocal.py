@@ -2,7 +2,14 @@
 import numpy as np
 from scipy.signal import lfilter, find_peaks, resample_poly
 import math
+import random
 from dj_track_worker import ace, brief, HOOK_PHRASES
+
+
+def hook_phrase(value):
+    # One candidate every five tracks; rotate all phrases before reusing one.
+    phrases = random.Random(value['session']).sample(HOOK_PHRASES, len(HOOK_PHRASES))
+    return phrases[(value['sequence'] // 5) % len(phrases)]
 
 
 def steady_grid(samples, rate, estimate):
@@ -100,7 +107,7 @@ def add_hook(value, samples, rate, directory, engine, generate=ace, diagnostic=N
         return samples, None
     bpm, offset, regions = grid
     if bpm < 120: return samples, None
-    phrase = HOOK_PHRASES[value['seed'] % len(HOOK_PHRASES)]
+    phrase = hook_phrase(value)
     voice, voice_rate = generate({**value, 'seed': value['seed'] ^ 0xa51c39ef}, directory/'hook', engine, hook=phrase)
     diagnostic.update(status='candidate_rendered',generated=True)
     if type(voice_rate) is not int or not 8000<=voice_rate<=192000 or voice.ndim!=2 or voice.shape[1]!=2 or not np.isfinite(voice).all() or not 9<=len(voice)/voice_rate<=11:

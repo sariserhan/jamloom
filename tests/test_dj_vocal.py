@@ -3,10 +3,20 @@ from pathlib import Path
 import unittest
 import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts'))
-from dj_vocal import add_hook, steady_grid, short_phrase, mix_phrase
+from dj_vocal import add_hook, steady_grid, short_phrase, mix_phrase, hook_phrase, HOOK_PHRASES
 
 
 class VocalTests(unittest.TestCase):
+    def test_session_hook_rotation_does_not_repeat_with_constant_seeds_or_retries(self):
+        def phrases(session, seed):
+            return [hook_phrase(dict(session=session,sequence=i*5+2,seed=seed)) for i in range(16)]
+        a=phrases('a'*32,17)
+        self.assertEqual(set(a[:8]),set(HOOK_PHRASES))
+        self.assertTrue(all(x!=y for x,y in zip(a,a[1:])))
+        self.assertEqual(a,phrases('a'*32,17))
+        self.assertEqual(a,phrases('a'*32,99))
+        self.assertNotEqual(a,phrases('b'*32,17))
+
     def test_separate_complete_phrases_do_not_become_one_long_vocal(self):
         rate=8000; voice=np.zeros((10*rate,2))
         for start in (1,5):

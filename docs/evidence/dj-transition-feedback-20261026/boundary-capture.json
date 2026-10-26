@@ -1,0 +1,176 @@
+{
+  "status": "PASS technical",
+  "sourceTracks": [
+    "d40bd09eae2ec38cff072d78999e3c0d44d7f07a744f638395d95def6558d08c",
+    "74d655edbb6c4c20532e848e109228e214643c0e7a46ce8409fa345344768bd8"
+  ],
+  "currentPlanSha256": "f15d800c8abb9d8b87acf3cf75519b5e33aad8eaf32bb830064fdd1a39dd2e3f",
+  "newGeneration": false,
+  "learnedWeights": false,
+  "humanListening": "NOT RUN",
+  "performance": "Transitions verified; optional effects held on vocal tracks without qualified cues.",
+  "results": [
+    {
+      "name": "after",
+      "revision": "working-tree",
+      "history": [
+        "0",
+        "1"
+      ],
+      "seconds": 103.2,
+      "peak": 0.36770182847976685,
+      "rms": 0.06680590012690711,
+      "events": [],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 52.496,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "blends": [
+        {
+          "elapsed": 48.5,
+          "cross": 0.008749999999999147,
+          "levels": [
+            0.8038188350906772,
+            0.010322480757727237
+          ]
+        },
+        {
+          "elapsed": 49.004,
+          "cross": 0.1347499999999986,
+          "levels": [
+            0.7859585040264783,
+            0.15791863859720223
+          ]
+        },
+        {
+          "elapsed": 49.548,
+          "cross": 0.2707499999999996,
+          "levels": [
+            0.732291878847029,
+            0.3101439467824818
+          ]
+        },
+        {
+          "elapsed": 50.096000000000004,
+          "cross": 0.40775000000000006,
+          "levels": [
+            0.6446011303542498,
+            0.44923395750056017
+          ]
+        },
+        {
+          "elapsed": 50.6,
+          "cross": 0.5337499999999995,
+          "levels": [
+            0.5375450458666187,
+            0.558977710344422
+          ]
+        },
+        {
+          "elapsed": 51.104,
+          "cross": 0.659749999999999,
+          "levels": [
+            0.40950500353080344,
+            0.6468950956761006
+          ]
+        },
+        {
+          "elapsed": 51.652,
+          "cross": 0.7967499999999994,
+          "levels": [
+            0.252344383255263,
+            0.7137801784288911
+          ]
+        },
+        {
+          "elapsed": 52.196,
+          "cross": 0.9327499999999986,
+          "levels": [
+            0.08477294156751247,
+            0.7475353988360709
+          ]
+        }
+      ],
+      "muted": true,
+      "sha256": "2ce8b396d753810aeb40fe74d6e659318d6b17639a7803b7d973e2118567af4b"
+    },
+    {
+      "name": "before",
+      "revision": "5cb9ba8dc434193fda9f5b3ef86732168c251fe6",
+      "history": [
+        "0",
+        "1"
+      ],
+      "seconds": 104.94,
+      "peak": 0.36770182847976685,
+      "rms": 0.06643917045984632,
+      "events": [],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 52.096000000000004,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "blends": [
+        {
+          "elapsed": 50.2,
+          "cross": 0.010000000000002274,
+          "levels": [
+            0.8037995714875912,
+            0.011787983777336919
+          ]
+        },
+        {
+          "elapsed": 50.748,
+          "cross": 0.30226666666666613,
+          "levels": [
+            0.7149855440894903,
+            0.34364034889189554
+          ]
+        },
+        {
+          "elapsed": 51.252,
+          "cross": 0.5710666666666687,
+          "levels": [
+            0.5015935080176526,
+            0.5874384475814409
+          ]
+        },
+        {
+          "elapsed": 51.804,
+          "cross": 0.8654666666666685,
+          "levels": [
+            0.16864211107009197,
+            0.7349938689006734
+          ]
+        }
+      ],
+      "muted": true,
+      "sha256": "ea8dc7c6ad5746bbf783c7d3c463e31b77e33722388f40c6b97e92cf6867f07c"
+    }
+  ]
+}

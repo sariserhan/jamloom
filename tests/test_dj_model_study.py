@@ -33,6 +33,8 @@ class ModelStudyTests(unittest.TestCase):
         plan['status']='PREPARED'
         with self.assertRaises(ValueError):validate_model_study(plan,True)
         plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 preferred-music consistency study')
+        with self.assertRaises(ValueError):validate_model_study(plan,True)
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         validate_model_study(plan,True)
         with self.assertRaises(ValueError):validate_model_study(plan,False)
         with self.assertRaises(ValueError):validate_model_study({**plan,'max_requests':7},True)
@@ -41,7 +43,7 @@ class ModelStudyTests(unittest.TestCase):
         import dj_sample_trial as trial
         offer=dict(host_id=999999,gpu_name='RTX 4090',geolocation='Michigan, US',cpu_ram=128000)
         evidence=ROOT/'docs/evidence/dj-preferred-consistency-20261026'
-        with patch.object(trial,'CONSISTENCY',True),patch.object(trial,'MODEL_STUDY',True),patch.object(trial,'EVIDENCE',evidence),patch.object(trial.vast,'instances',return_value=[]),patch.object(trial.vast,'api',return_value={'credit':3}):
+        with patch.object(trial,'validate',return_value=None),patch.object(trial,'CONSISTENCY',True),patch.object(trial,'MODEL_STUDY',True),patch.object(trial,'EVIDENCE',evidence),patch.object(trial.vast,'instances',return_value=[]),patch.object(trial.vast,'api',return_value={'credit':3}):
             with patch.object(trial.vast,'offers',side_effect=lambda host=None,**kwargs: [] if host else [offer]):
                 self.assertEqual(trial.preflight()[2],offer)
             for change in [dict(cpu_ram=32000),dict(geolocation='Sweden, SE'),dict(gpu_name='RTX A5000')]:
