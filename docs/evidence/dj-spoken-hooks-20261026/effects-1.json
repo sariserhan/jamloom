@@ -1,0 +1,139 @@
+{
+  "status": "PASS technical",
+  "source_sha256": "e988c92d391131f9c46d80cf132ea2fbf8d42aedd50b618d5ecb3ce9e006a5ed",
+  "cue": {
+    "start": 12.197262602579134,
+    "seconds": 1.8757291666666667,
+    "bpm": 127.95,
+    "repeat": false,
+    "echo": true
+  },
+  "newGeneration": true,
+  "speakerOutput": "OfflineAudioContext only; no speakers",
+  "scope": "Deck mix echo and bounded phrase repeat on a new synthetic spoken hook; listening pending",
+  "humanListening": "NOT RUN",
+  "results": [
+    {
+      "engine": "chromium",
+      "mode": "dry",
+      "peak": 0.9429388642311096,
+      "rms": 0.14362957412023317,
+      "seconds": 12,
+      "event": null,
+      "file": "chromium-dry.wav",
+      "sha256": "3fbfbc342bd226e202cacb903b285b6868453e05713452e21e67b6acc6950cf8"
+    },
+    {
+      "engine": "chromium",
+      "mode": "loop",
+      "peak": 0.9429388642311096,
+      "rms": 0.13983368981166655,
+      "seconds": 12,
+      "event": {
+        "action": "loop-4",
+        "label": "Vocal loop · 2 repeats",
+        "at": 4,
+        "until": 7.751458333333334,
+        "position": 12.197262602579134,
+        "by": "AI"
+      },
+      "file": "chromium-loop.wav",
+      "sha256": "d6b539dd7724c151bc2c5533f5818168ee0bcc0e999939f7d4ebbf5bb62117ae"
+    },
+    {
+      "engine": "chromium",
+      "mode": "echo",
+      "peak": 0.9429388642311096,
+      "rms": 0.1424108600971279,
+      "seconds": 12,
+      "event": {
+        "action": "echo",
+        "label": "Vocal echo",
+        "at": 4,
+        "until": 5.875729166666667,
+        "position": 12.197262602579134,
+        "by": "AI"
+      },
+      "file": "chromium-echo.wav",
+      "sha256": "8c4a6193b0642b673629e73f9c0eb0ff8453632d0e56a9ecb41f636576f985cd"
+    },
+    {
+      "engine": "chromium",
+      "mode": "both",
+      "peak": 0.9429388642311096,
+      "rms": 0.13721067622088062,
+      "seconds": 12,
+      "event": {
+        "action": "loop-4",
+        "label": "Vocal loop + echo",
+        "at": 4,
+        "until": 7.751458333333334,
+        "position": 12.197262602579134,
+        "by": "AI"
+      },
+      "file": "chromium-both.wav",
+      "sha256": "9fb38ecc083d2c1b8c1b7a8650b2ec460c6279a83afa021514e5901dd1cda537"
+    },
+    {
+      "engine": "webkit",
+      "mode": "dry",
+      "peak": 0.942940354347229,
+      "rms": 0.14362737187815897,
+      "seconds": 12,
+      "event": null,
+      "file": "webkit-dry.wav",
+      "sha256": "81b1424b37fc8a77e563a5acca4c5f72b134dab2eda37f11e7a0386397ac4ce2"
+    },
+    {
+      "engine": "webkit",
+      "mode": "loop",
+      "peak": 0.942940354347229,
+      "rms": 0.13983154717288673,
+      "seconds": 12,
+      "event": {
+        "action": "loop-4",
+        "label": "Vocal loop · 2 repeats",
+        "at": 4,
+        "until": 7.751458333333334,
+        "position": 12.197262602579134,
+        "by": "AI"
+      },
+      "file": "webkit-loop.wav",
+      "sha256": "3a9c3038d4a4958b74ed1fd3e041763677a732807d077dcebcdeba7c2bb82b38"
+    },
+    {
+      "engine": "webkit",
+      "mode": "echo",
+      "peak": 0.942940354347229,
+      "rms": 0.1424086738106252,
+      "seconds": 12,
+      "event": {
+        "action": "echo",
+        "label": "Vocal echo",
+        "at": 4,
+        "until": 5.875729166666667,
+        "position": 12.197262602579134,
+        "by": "AI"
+      },
+      "file": "webkit-echo.wav",
+      "sha256": "b2afafc952a2b4f8265bac0868564ea396e46c90108a3a48ea3e1294fd0a8daf"
+    },
+    {
+      "engine": "webkit",
+      "mode": "both",
+      "peak": 0.942940354347229,
+      "rms": 0.13720857311408394,
+      "seconds": 12,
+      "event": {
+        "action": "loop-4",
+        "label": "Vocal loop + echo",
+        "at": 4,
+        "until": 7.751458333333334,
+        "position": 12.197262602579134,
+        "by": "AI"
+      },
+      "file": "webkit-both.wav",
+      "sha256": "b97c090f5622146925f40a378db5927888d5ea7d40e023a44b9a2bb04c2c3d7b"
+    }
+  ]
+}

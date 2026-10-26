@@ -1,0 +1,187 @@
+{
+  "status": "AUTHORIZED",
+  "campaign": "jamloom-dj-sung-hooks-20261026",
+  "owner_statement": "Approve the capped $3 musical-vocal comparison",
+  "budget_usd": 3,
+  "max_workers": 1,
+  "max_minutes": 20,
+  "max_requests": 4,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "public_activation": false,
+  "source_audio_used": true,
+  "source_audio_origin": "jamloom_generated_originals",
+  "reference_audio_used": false,
+  "learned_reference_weights_used": false,
+  "model": {
+    "code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "weights": "19671f406d603126926c1b7e2adc169acbcade22"
+  },
+  "source_sha256": {
+    "sung-house-1.wav": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+    "sung-house-7.wav": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68"
+  },
+  "fixture_sha256": "8bed9843360d12ca9d5d5698993ca269d9123d0d27b471361bbfa4968de1fdb6",
+  "manifest_sha256": "37920c432079b6a51be2321e46a0b5071cdca2ded8d3e50f6cb06f07abcfafe3",
+  "worker_sha256": {
+    "cloud_music_setup.sh": "6b3a092a6d1ce00e3cf6d71707c9283a6bae75451e05ca65f0648cad0e402c7b",
+    "cloud_dj_warm.sh": "b3235ed28dce8bc3ec34ccc2ee9ba680711f89e13c0a954b099c9030be351df8",
+    "dj_track_worker.py": "4c8c9968e835d16a33963c4d8bc0a2259c093c1d5662d36a6c2558583fc6cbdb",
+    "dj_warm_engine.py": "0ba0990c4600cc536f5b05fc7bb009f4c3b6d17331a72375328b2b9c0c36ccc8",
+    "dj_vocal.py": "16ddef5af7774d53477263b064245fbbe0106429c98c8399b146975a19f3322e",
+    "club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb",
+    "dj_sung_hooks.py": "4ad98d4e905cd68b20ca30374003b8d4d0ca2709a8b92d8603c3b1cc8e717f04",
+    "singing_response.py": "5fc85fd1112816f7af63e728d38b414d9925162cdb80086f8917e43899f705df",
+    "song_duration.py": "a843f99bfa304f201f7d54b11fa290843f23c485cb34a83f8a9fcc72175968dd",
+    "dna_language.py": "60d716238c29d7723089f46e101733bc115ae246e5ab0cf54cf31c94a78192f4"
+  },
+  "cases": [
+    {
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 0,
+        "seed": 501026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "source_file": "sung-house-1.wav",
+      "source_sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+      "cue": {
+        "start": 39.88875,
+        "seconds": 1.875,
+        "bpm": 128.0
+      },
+      "phrase": "Feel alive",
+      "vocal_profile": "male-tenor"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 1,
+        "seed": 501027,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "source_file": "sung-house-1.wav",
+      "source_sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+      "cue": {
+        "start": 39.88875,
+        "seconds": 1.875,
+        "bpm": 128.0
+      },
+      "phrase": "Feel alive",
+      "vocal_profile": "female-mezzo"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 2,
+        "seed": 501028,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "source_file": "sung-house-7.wav",
+      "source_sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "cue": {
+        "start": 12.197262602579134,
+        "seconds": 1.8757291666666667,
+        "bpm": 127.95
+      },
+      "phrase": "We rise",
+      "vocal_profile": "male-tenor"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 3,
+        "seed": 501029,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "source_file": "sung-house-7.wav",
+      "source_sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "cue": {
+        "start": 12.197262602579134,
+        "seconds": 1.8757291666666667,
+        "bpm": 127.95
+      },
+      "phrase": "We rise",
+      "vocal_profile": "female-mezzo"
+    }
+  ],
+  "tracks": [
+    {
+      "label": "Musical hook 1",
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 0,
+        "seed": 501026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "vocals": false,
+      "seconds": 60,
+      "caption": "Vocal house; 128 BPM. Natural expressive male lead singing in English. adult male singer, bright ringing tenor, clear upper register. Sing 'Feel alive' once as a short melodic hook within four beats. Connected syllables, natural breath, a rising melody and resolved ending. Match the existing harmony and groove; keep drums and bass. No speech narration, robotic effects or long verse.",
+      "bpm": 128
+    },
+    {
+      "label": "Musical hook 2",
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 1,
+        "seed": 501027,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "vocals": false,
+      "seconds": 60,
+      "caption": "Vocal house; 128 BPM. Natural expressive female lead singing in English. adult female singer, clear mellow mezzo-soprano, smooth rounded tone. Sing 'Feel alive' once as a short melodic hook within four beats. Connected syllables, natural breath, a rising melody and resolved ending. Match the existing harmony and groove; keep drums and bass. No speech narration, robotic effects or long verse.",
+      "bpm": 128
+    },
+    {
+      "label": "Musical hook 3",
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 2,
+        "seed": 501028,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "vocals": false,
+      "seconds": 60,
+      "caption": "Vocal house; 128 BPM. Natural expressive male lead singing in English. adult male singer, bright ringing tenor, clear upper register. Sing 'We rise' once as a short melodic hook within four beats. Connected syllables, natural breath, a rising melody and resolved ending. Match the existing harmony and groove; keep drums and bass. No speech narration, robotic effects or long verse.",
+      "bpm": 128
+    },
+    {
+      "label": "Musical hook 4",
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 3,
+        "seed": 501029,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "vocals": false,
+      "seconds": 60,
+      "caption": "Vocal house; 128 BPM. Natural expressive female lead singing in English. adult female singer, clear mellow mezzo-soprano, smooth rounded tone. Sing 'We rise' once as a short melodic hook within four beats. Connected syllables, natural breath, a rising melody and resolved ending. Match the existing harmony and groove; keep drums and bass. No speech narration, robotic effects or long verse.",
+      "bpm": 128
+    }
+  ],
+  "scope": "Four short musical-vocal edits on two retained preferred Jamloom house originals; not four newly composed tracks. Retain full raw candidates for word-boundary review. No TTS or reference recordings."
+}

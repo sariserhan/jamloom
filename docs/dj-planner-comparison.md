@@ -1,6 +1,6 @@
 # Semantic music-planning comparison — 2026-10-26
 
-**PASS technical run and cleanup; PARTIAL overall, musical acceptance NOT RUN.** Previous bass recovery remains rejected; the exact replay was only okay.
+**PASS technical run and cleanup; PARTIAL overall, PARTIAL listening preference; release acceptance NOT RUN.** Previous bass recovery remains rejected; the exact replay was only okay.
 
 ## Hypothesis and boundaries
 
@@ -38,4 +38,16 @@ The approved run completed in **522.201 seconds**, with **$0.075349 observed deb
 
 Both fresh vocal candidates were generated but rejected as `phrase_too_long`; no new vocal was placed. The raw rejected candidates were temporary worker files and were not retained, so their intelligibility and exact phrase boundaries cannot be audited retrospectively. Their skip receipts do not prove vocal quality. No duration or timing guard was relaxed.
 
-[Audio verification](evidence/dj-planner-20261026/audio-checks.json), [receipts and cost](evidence/dj-planner-20261026/fresh-samples.json), [independent cleanup](evidence/dj-planner-20261026/final-inventory.json), [browser checks](evidence/dj-planner-20261026/browser-originals.json). The six loudness-matched copies play, seek and pause each other in Chromium and WebKit; mobile layout was visually inspected. [Blinded audition](http://localhost:8766/planner-originals/review/). No owner rating has been received for this batch; previous rejected studies remain rejected.
+[Audio verification](evidence/dj-planner-20261026/audio-checks.json), [receipts and cost](evidence/dj-planner-20261026/fresh-samples.json), [independent cleanup](evidence/dj-planner-20261026/final-inventory.json), [browser checks](evidence/dj-planner-20261026/browser-originals.json). The six loudness-matched copies play, seek and pause each other in Chromium and WebKit; mobile layout was visually inspected. [Blinded audition](http://localhost:8766/planner-originals/review/). Owner ratings are recorded below; previous rejected studies remain rejected.
+
+## Owner preference — 2026-10-26
+
+“1 is better than 2. 4 is better than 3. 6 is better than 5.” The source and listening files were hash-verified before unblinding. Both matched pairs favor **semantic planning enabled**: house clip 1 over 2, bass clip 4 over 3. Fresh clip 6 is planned house and clip 5 planned bass; their comparison changes both style and seed. No explicit party-ready or consistency verdict was supplied, and neither fresh track contains a vocal. The next candidate should retain planning instead of returning to the rejected fixed-guide approach, subject to sustained timing and quality checks. [Exact feedback](evidence/dj-planner-20261026/owner-feedback.json).
+
+## Session capacity and current hosting
+
+Read-only readiness shows the runtime held, no registered worker, no active listener and test billing. The dedicated cached image remains unbuilt and no deployment has occurred. [Current readiness](evidence/dj-planner-20261026/readiness.json).
+
+A real-player capture of preferred clips 1, 6 and 4 completed in 142.86 seconds with filter, roll and vocal echo events; PCM was finite/unclipped and no quiet gap of at least 250 ms at −60 dB was detected. The capture includes spoken hook 1, subsequently rejected as robotic, and is engineering evidence only. The last track was closed by the normal finish flow. [Capture checks](evidence/dj-planner-20261026/mix-checks.json).
+
+The shortest interval between completed handoffs was 41.452 seconds. Two serialized worst observed planned renders would take 49.108 seconds **before** transport/storage/analysis overhead. This is a capacity-screening concern, not a measured live dropout: the capture used already available tracks. Do not carry the older fast-generator two-listener qualification over to this slower candidate. Sustained testing, appropriate buffering or reduced admission is required before activation. [Calculation and limits](evidence/dj-planner-20261026/capacity-screen.json).

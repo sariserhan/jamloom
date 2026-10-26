@@ -1,0 +1,220 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Hook 1: Voice alone",
+          "seconds": 1.65,
+          "error": null
+        },
+        {
+          "label": "Hook 1: In the music",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 1: Repeat",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 1: Echo",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 1: Repeat + echo",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Voice alone",
+          "seconds": 1.65,
+          "error": null
+        },
+        {
+          "label": "Hook 2: In the music",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Repeat",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Echo",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Repeat + echo",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Voice alone",
+          "seconds": 1.25,
+          "error": null
+        },
+        {
+          "label": "Hook 3: In the music",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Repeat",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Echo",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Repeat + echo",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Voice alone",
+          "seconds": 1.7,
+          "error": null
+        },
+        {
+          "label": "Hook 4: In the music",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Repeat",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Echo",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Repeat + echo",
+          "seconds": 12,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Hook 1: Voice alone",
+          "seconds": 1.704,
+          "error": null
+        },
+        {
+          "label": "Hook 1: In the music",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 1: Repeat",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 1: Echo",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 1: Repeat + echo",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Voice alone",
+          "seconds": 1.704,
+          "error": null
+        },
+        {
+          "label": "Hook 2: In the music",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Repeat",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Echo",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Repeat + echo",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Voice alone",
+          "seconds": 1.32,
+          "error": null
+        },
+        {
+          "label": "Hook 3: In the music",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Repeat",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Echo",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Repeat + echo",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Voice alone",
+          "seconds": 1.752,
+          "error": null
+        },
+        {
+          "label": "Hook 4: In the music",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Repeat",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Echo",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Repeat + echo",
+          "seconds": 12.024,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "speakerOutput": "Muted",
+  "humanListening": "NOT RUN"
+}

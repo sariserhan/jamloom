@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-26",
+  "owner_statement": "4 is okay and the rest are all too robotic, add the vocal musical way like how we use in music dna",
+  "status": "FAIL natural musical vocal qualification",
+  "tracks": [
+    {
+      "number": 1,
+      "phrase": "Keep moving",
+      "voice": "am_michael",
+      "voice_sha256": "466783eae35aebf2f952e5aa970f370914098e581230971fc7d93bb5c0bbd6a0",
+      "sha256": "e988c92d391131f9c46d80cf132ea2fbf8d42aedd50b618d5ecb3ce9e006a5ed",
+      "status": "FAIL",
+      "verdict": "Too robotic; rejected"
+    },
+    {
+      "number": 2,
+      "phrase": "Feel alive",
+      "voice": "af_bella",
+      "voice_sha256": "8c821499a96f1f9978018d9cd144449fb0c2d1779b4d00efc8624084ec522f9e",
+      "sha256": "5b70321c78d8527caeaea432cf2ab288cd64465495d7ccb31a5c7ddaa202b793",
+      "status": "FAIL",
+      "verdict": "Too robotic; rejected"
+    },
+    {
+      "number": 3,
+      "phrase": "Lights up",
+      "voice": "am_fenrir",
+      "voice_sha256": "f1f6899a66ff1a21380932ec3b92618d10adef83c87adf6e8ec8a5be6e00390d",
+      "sha256": "c410d41717d398a8ef39e39b4f3d4d3704a773ccc43a70253c2ea8bb65c66769",
+      "status": "FAIL",
+      "verdict": "Too robotic; rejected"
+    },
+    {
+      "number": 4,
+      "phrase": "We rise",
+      "voice": "af_nicole",
+      "voice_sha256": "d238a7c9021e649001fc4e977d0f851c86b112de36d216a2f63477b426dd899e",
+      "sha256": "7c0515fc52306ebc4871607fb4bfdf38969c82d8aaa19947755986161f83cf82",
+      "status": "PARTIAL",
+      "verdict": "Okay"
+    }
+  ],
+  "direction": "Reuse the Music DNA singing approach; do not promote spoken synthesis.",
+  "effects": "No separate approval of these new effect treatments inferred; previous accepted effects remain historical evidence.",
+  "production_enabled": false
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS bounded costs and cleanup",
+  "first_rental_seconds": 281.1869249343872,
+  "replacement_rental_seconds": 418.0695071220398,
+  "total_rental_seconds": 699.256432056427,
+  "observed_total_debit_usd": 0.11258028900000028,
+  "settled_invoice": false,
+  "remaining_rentals": 0
+}

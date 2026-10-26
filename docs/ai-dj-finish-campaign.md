@@ -2,6 +2,10 @@
 
 **PARTIAL implementation; FAIL musical recovery after owner review on 2026-10-26.** The owner requested the remaining music, vocals, performance, hosting and release work together. This is not approval to declare failed music acceptable, reuse consumed rental permits, activate live billing or publish the product.
 
+## Latest follow-through — 2026-10-26
+
+The subsequent [planner comparison](dj-planner-comparison.md) favors semantic planning in both matched house/bass pairs, with fresh house preferred to fresh bass. This is relative preference, not consistency or release acceptance. The [spoken-hook audition](dj-spoken-hooks.md) failed the natural musical-vocal target; the owner requested Music DNA-style singing. A [bounded sung-edit comparison](dj-sung-hooks.md) completed technically after an independently verified package repair and separately approved replacement: four edits, $0.112580 total observed debit and zero rentals. Vocal presence and natural singing remain unverified; recognition found no words, and owner listening is pending. Serving, live billing and publication remain held.
+
 ## Music recovery
 
 The six guided-set tracks are rejected. Keep the accepted short vocal repeat, echo and combined treatment unchanged. The earlier composition-study clip 2 remains the comparison anchor, not a qualified general generator.
@@ -57,10 +61,10 @@ The real browser DJ engine played all six study outputs into a retained **5:26.3
 
 | Gate | Current evidence | Exit requirement |
 |---|---|---|
-| Original music | Recovery clips 1 and 3–6 rejected; exact baseline replay 2 only okay; no party-ready acceptance | Fresh seeds and directions accepted as a complete musical result; no promotion based on signal statistics |
-| Vocals | Existing loop/echo treatments accepted; no fresh hook placed in recovery | Actual new, short, intelligible hooks accepted in music, with occasional restrained use |
+| Original music | Recovery rejected; later matched pairs favor semantic planning; no consistency acceptance | Fresh seeds and directions accepted as a complete musical result; no promotion based on signal statistics |
+| Vocals | Existing treatments accepted; new spoken hooks rejected/only okay; Music DNA-style sung edits under qualification | Actual new, short, intelligible hooks accepted in music, with occasional restrained use |
 | Performance | Audio-clock moves and manual cancellation pass; bounded mixes captured | Fresh complete sets accepted for musical handoffs, energy direction and restraint |
-| Continuous service | Bounded two-user GPU/R2 and controller restart checks exist | Controller and independent supervisor on approved hosts; multi-hour GPU operation, model/host loss, recovery and complete recordings |
+| Continuous service | Earlier bounded two-user checks exist; slower planned generator needs separate capacity qualification | Controller and independent supervisor on approved hosts; multi-hour GPU operation, model/host loss, recovery and complete recordings |
 | Costs | Full-rental accounting and conservative utilization/retention scenarios exist | Actual startup/idle/failure costs and realistic utilization/retention policy support the customer tariff |
 | Venue and release | Browser/device evidence is distinct from venue acceptance | Physical sound-system review, approved release and enablement, post-deployment authenticated/anonymous/privacy checks |
 

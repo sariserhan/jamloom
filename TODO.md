@@ -1,13 +1,16 @@
 ## AI DJ completion follow-through — 2026-10-26
 
-**PARTIAL; musical quality remains FAIL pending new evidence.** The owner requested all remaining work. The next comparison tests the existing model's semantic music planner, which was disabled in prior DJ renders; it does not reuse synthetic cover guides or train on reference audio. Six tracks and at most two short vocal candidates are explicitly approved under a new $3 / one-GPU / 20-minute cap, stop on failure and no public activation. The run completed in 522 seconds with about $0.075 observed debit and zero remaining rentals; its authorization is consumed. All six originals pass technical checks; both fresh voice candidates were too long and correctly rejected. Blinded listening is pending.
+**PARTIAL; paired listening favors planning, release-quality gate remains open.** The owner requested all remaining work. The next comparison tests the existing model's semantic music planner, which was disabled in prior DJ renders; it does not reuse synthetic cover guides or train on reference audio. Six tracks and at most two short vocal candidates are explicitly approved under a new $3 / one-GPU / 20-minute cap, stop on failure and no public activation. The run completed in 522 seconds with about $0.075 observed debit and zero remaining rentals; its authorization is consumed. All six originals pass technical checks; both fresh voice candidates were too long and correctly rejected. Owner prefers planned clips in both matched pairs and fresh house over fresh bass; this establishes preference, not party-ready consistency.
 
 - [x] Add opt-in semantic planning with initialized-model and actual-code receipts; preserve the baseline and reject silent fallback.
 - [x] Add vocal skip reasons and whether a candidate was generated, without weakening timing or duration checks.
 - [x] Prepare and validate the exact paired comparison; 58 local checks pass.
 - [x] Prepare the manually triggered cached-image build, nonpublishing by default, with offline package checks; build/GPU startup remain NOT RUN.
 - [x] Complete the approved eight-render run, verify source/audio hashes and cleanup, and check six-clip playback/seek in Chromium and WebKit.
-- [ ] Obtain blinded musical acceptance; qualify actual short vocals without relaxing the two-second duration or supported-beat checks.
+- [x] Record hash-verified blinded preferences: planned house and bass win their matched pairs; fresh house preferred to fresh bass.
+- [x] Generate and audition four local short spoken hooks; record rejection of 1–3 and only-okay hook 4. Follow the owner’s correction toward Music DNA-style singing; do not promote TTS.
+- [x] Prepare and test Music DNA-style sung edits with original accompaniment, strict short windows, retained raw candidates and a separate capped permit; the approved first run failed before audio on a missing package manifest, was deleted (~$0.033), and the isolated-package repair passes. The separately approved replacement completed four edits; both attempts total 699.26 seconds and $0.112580 observed debit, with zero rentals. Audio integrity and all 12 browser players pass. Vocal presence and musical quality remain unverified: secondary recognition found no words; owner listening is pending. [Plan](docs/dj-sung-hooks.md).
+- [ ] Establish party-ready consistency and qualify actual short vocals without relaxing the two-second duration or supported-beat checks.
 - [ ] Build and qualify a cached image on approved infrastructure; the local Docker engine is stopped and the Mac has about 20 GB free.
 - [ ] Qualify sustained hosting, full operating costs, whole-set musical performance and venue playback before deployment/activation.
 

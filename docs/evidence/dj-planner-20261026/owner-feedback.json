@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-26",
+  "owner_statement": "1 is better than 2. 4 is better than 3. 6 is better than 5.",
+  "status": "PARTIAL: paired preference favors semantic planning; release quality unestablished",
+  "clips": [
+    {
+      "clip": 1,
+      "sequence": 1,
+      "file": "house-1.wav",
+      "source_sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+      "listening_sha256": "fd83316d1913d822ffbfb91506d78a72bc28a750f246ea1d1e22e6778e73cbb9",
+      "planning": true,
+      "style": "house",
+      "preferred_within_comparison": true,
+      "party_ready_accepted": false
+    },
+    {
+      "clip": 2,
+      "sequence": 0,
+      "file": "house-0.wav",
+      "source_sha256": "28ed091343dd74fb2951c77aeaca79dad9736bbad073ccf967166985ef81e469",
+      "listening_sha256": "171d47302a2ba9469f31971901b65a0dfdd0704f2d2063d78141dd47e076cfcc",
+      "planning": false,
+      "style": "house",
+      "preferred_within_comparison": false,
+      "party_ready_accepted": false
+    },
+    {
+      "clip": 3,
+      "sequence": 2,
+      "file": "bass-2.wav",
+      "source_sha256": "dcbc0cba91c89169e008bff1c8e9963a0154244c653813927b838d8a94cedadb",
+      "listening_sha256": "cdc6500b7d1bf2a331e38a3a890b0a5339e098765230f0230a4fed9a0ba3b74e",
+      "planning": false,
+      "style": "bass",
+      "preferred_within_comparison": false,
+      "party_ready_accepted": false
+    },
+    {
+      "clip": 4,
+      "sequence": 3,
+      "file": "bass-3.wav",
+      "source_sha256": "489cd0c0a530c706a5875133e0733b6234c59deef17ac00abebe8b6899b3e50d",
+      "listening_sha256": "fef7170d6831339584e710a88d6047772b2b54cead1104276bbc43dab39f63a5",
+      "planning": true,
+      "style": "bass",
+      "preferred_within_comparison": true,
+      "party_ready_accepted": false
+    },
+    {
+      "clip": 5,
+      "sequence": 17,
+      "file": "bass-17.wav",
+      "source_sha256": "70660c5c4f670596e91e5a4cc15255ac5a5fb343147a8918aefe2a5e0237751c",
+      "listening_sha256": "c7547ba07ef2d7ab6d675003e416416e73a01075df83d2a38e8d08d3444d4512",
+      "planning": true,
+      "style": "bass",
+      "preferred_within_comparison": false,
+      "party_ready_accepted": false
+    },
+    {
+      "clip": 6,
+      "sequence": 7,
+      "file": "house-7.wav",
+      "source_sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "listening_sha256": "80bd656aad5f817260054ee518b53c43d94210671bdec2cfac0b13cf02506f8f",
+      "planning": true,
+      "style": "house",
+      "preferred_within_comparison": true,
+      "party_ready_accepted": false
+    }
+  ],
+  "conclusions": [
+    "Planning enabled preferred in both same-seed house and bass pairs.",
+    "Fresh planned house clip 6 preferred to fresh planned bass clip 5; different styles and seeds, not an isolated planning comparison.",
+    "No explicit party-ready verdict, consistency acceptance, reference parity or vocal acceptance was given."
+  ],
+  "promotion": "NOT AUTHORIZED by relative preference",
+  "training": "None"
+}

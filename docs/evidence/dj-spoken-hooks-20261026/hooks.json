@@ -1,0 +1,140 @@
+{
+  "status": "PASS technical",
+  "model": "hexgrad/Kokoro-82M",
+  "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+  "files": {
+    "config.json": {
+      "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+      "bytes": 2351
+    },
+    "kokoro-v1_0.pth": {
+      "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+      "bytes": 327212226
+    },
+    "README.md": {
+      "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+      "bytes": 6348
+    },
+    "VOICES.md": {
+      "sha256": "ec7e4941ad7e194af61e3455928528a9ff5360c7c505e412efab27d6a69ea106",
+      "bytes": 7625
+    },
+    "voices/am_michael.pt": {
+      "sha256": "9a443b79a4b22489a5b0ab7c651a0bcd1a30bef675c28333f06971abbd47bd37",
+      "bytes": 523435
+    },
+    "voices/af_bella.pt": {
+      "sha256": "8cb64e02fcc8de0327a8e13817e49c76c945ecf0052ceac97d3081480e8e48d6",
+      "bytes": 523425
+    },
+    "voices/am_fenrir.pt": {
+      "sha256": "98e507eca1db08230ae3b6232d59c10aec9630022d19accac4f5d12fcec3c37a",
+      "bytes": 523430
+    },
+    "voices/af_nicole.pt": {
+      "sha256": "c5561808bcf5250fe8c5f5de32caf2d94f27e57e95befdb098c5c85991d4c5da",
+      "bytes": 523430
+    }
+  },
+  "scope": "New stock synthetic spoken phrases; no singing, voice cloning, training or reference audio",
+  "serving_enabled": false,
+  "human_listening": "NOT RUN",
+  "tracks": [
+    {
+      "number": 1,
+      "phrase": "Keep moving",
+      "voice": "am_michael",
+      "seconds": 1.65,
+      "compute_seconds": 0.2432162918848917,
+      "voice_file": "1-voice.wav",
+      "voice_sha256": "466783eae35aebf2f952e5aa970f370914098e581230971fc7d93bb5c0bbd6a0",
+      "file": "1-mixed.wav",
+      "sha256": "e988c92d391131f9c46d80cf132ea2fbf8d42aedd50b618d5ecb3ce9e006a5ed",
+      "source_file": "house-7.wav",
+      "source_sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "cue": {
+        "start": 12.197262602579134,
+        "seconds": 1.8757291666666667,
+        "bpm": 127.95,
+        "repeat": false,
+        "echo": true
+      },
+      "diagnostic": {
+        "status": "placed",
+        "generated": true
+      }
+    },
+    {
+      "number": 2,
+      "phrase": "Feel alive",
+      "voice": "af_bella",
+      "seconds": 1.65,
+      "compute_seconds": 0.1893454169621691,
+      "voice_file": "2-voice.wav",
+      "voice_sha256": "8c821499a96f1f9978018d9cd144449fb0c2d1779b4d00efc8624084ec522f9e",
+      "file": "2-mixed.wav",
+      "sha256": "5b70321c78d8527caeaea432cf2ab288cd64465495d7ccb31a5c7ddaa202b793",
+      "source_file": "house-7.wav",
+      "source_sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "cue": {
+        "start": 12.197262602579134,
+        "seconds": 1.8757291666666667,
+        "bpm": 127.95,
+        "repeat": false,
+        "echo": true
+      },
+      "diagnostic": {
+        "status": "placed",
+        "generated": true
+      }
+    },
+    {
+      "number": 3,
+      "phrase": "Lights up",
+      "voice": "am_fenrir",
+      "seconds": 1.25,
+      "compute_seconds": 0.15158470801543444,
+      "voice_file": "3-voice.wav",
+      "voice_sha256": "f1f6899a66ff1a21380932ec3b92618d10adef83c87adf6e8ec8a5be6e00390d",
+      "file": "3-mixed.wav",
+      "sha256": "c410d41717d398a8ef39e39b4f3d4d3704a773ccc43a70253c2ea8bb65c66769",
+      "source_file": "bass-17.wav",
+      "source_sha256": "70660c5c4f670596e91e5a4cc15255ac5a5fb343147a8918aefe2a5e0237751c",
+      "cue": {
+        "start": 36.68357142857143,
+        "seconds": 1.7142916666666668,
+        "bpm": 140.0,
+        "repeat": false,
+        "echo": false
+      },
+      "diagnostic": {
+        "status": "placed",
+        "generated": true
+      }
+    },
+    {
+      "number": 4,
+      "phrase": "We rise",
+      "voice": "af_nicole",
+      "seconds": 1.7,
+      "compute_seconds": 0.20078075001947582,
+      "voice_file": "4-voice.wav",
+      "voice_sha256": "d238a7c9021e649001fc4e977d0f851c86b112de36d216a2f63477b426dd899e",
+      "file": "4-mixed.wav",
+      "sha256": "7c0515fc52306ebc4871607fb4bfdf38969c82d8aaa19947755986161f83cf82",
+      "source_file": "bass-17.wav",
+      "source_sha256": "70660c5c4f670596e91e5a4cc15255ac5a5fb343147a8918aefe2a5e0237751c",
+      "cue": {
+        "start": 36.68357142857143,
+        "seconds": 1.7142916666666668,
+        "bpm": 140.0,
+        "repeat": false,
+        "echo": false
+      },
+      "diagnostic": {
+        "status": "placed",
+        "generated": true
+      }
+    }
+  ]
+}

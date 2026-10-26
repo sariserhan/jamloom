@@ -9,9 +9,10 @@ import {build} from 'esbuild';
 import {chromium} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
 const recovery=process.argv.includes('--recovery-study');
+const planner=process.argv.includes('--planner-study');
 const quality=process.argv.includes('--quality'),timing=process.argv.includes('--timing-revision');
-const house=process.argv.includes('--house-study'),guided=process.argv.includes('--guided-set')||recovery;assert.ok([quality,house,guided].filter(Boolean).length<=1);assert.ok(!timing||guided);
-const root=resolve('../..'),folder=resolve(root,recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
+const house=process.argv.includes('--house-study'),guided=process.argv.includes('--guided-set')||recovery;assert.ok([quality,house,guided,planner].filter(Boolean).length<=1);assert.ok(!timing||guided);
+const root=resolve('../..'),folder=resolve(root,planner?'renders/dj-planner-mix-20261026':recovery?'renders/dj-recovery-mix-20261025':timing?'renders/dj-guided-mix-timing-20261025':guided?'renders/dj-guided-mix-20261025':house?'renders/dj-house-mix-20261025':quality?'renders/dj-quality-mix-20261025':'renders/dj-audible-comparison-20261025');
 await mkdir(folder);
 const source=resolve(root,'renders/ai-dj-hosted-20261025'),report=JSON.parse(await readFile(source+'/result.json','utf8'));
 const session=report.customers.find(c=>c.visibility==='public').session;
@@ -35,7 +36,22 @@ if(guided){
  tracks=await Promise.all(run.tracks.map(async(row,index)=>{const bytes=await readFile(source+'/'+row.file),r=row.receipt;assert.equal(createHash('sha256').update(bytes).digest('hex'),r.sha256);return{bytes,track:{id:String(index),title:'Guided original '+(index+1),artist:'Jamloom original',url:'/audio/'+index,sha256:r.sha256,energy:r.request.energy,style:r.request.style,mood:r.request.mood,beat:r.request.beat,vocal:!!r.vocal,vocalCue:r.vocal??undefined,credit:''}};}));
  assert.equal(new Set(tracks.map(t=>t.track.sha256)).size,6);
 }
-const revisions=(house||guided)?{after:'working-tree'}:{before:execFileSync('git',['rev-parse',quality?'f0fde92':'35bbee7'],{encoding:'utf8'}).trim(),after:quality?'working-tree':execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
+if(planner){
+ const source=root+'/renders/dj-planner-20261026',run=JSON.parse(await readFile(source+'/report.json','utf8'));
+ const feedback=JSON.parse(await readFile(root+'/docs/evidence/dj-planner-20261026/owner-feedback.json','utf8'));
+ const spoken=JSON.parse(await readFile(root+'/docs/evidence/dj-spoken-hooks-20261026/hooks.json','utf8')).tracks.find(t=>t.number===1);assert.ok(spoken);
+ tracks=await Promise.all([1,7,3].map(async(sequence,index)=>{
+  const row=run.tracks.find(t=>t.receipt.request.sequence===sequence),r=row.receipt;
+  assert.ok(feedback.clips.find(t=>t.sequence===sequence)?.preferred_within_comparison);
+  const hook=sequence===7?spoken:null;
+  if(hook)assert.equal(hook.source_sha256,r.sha256);
+  const bytes=await readFile(hook?root+'/renders/dj-spoken-hooks-20261026/'+hook.file:source+'/'+row.file),hash=hook?.sha256??r.sha256;
+  assert.equal(createHash('sha256').update(bytes).digest('hex'),hash);
+  return{bytes,track:{id:String(index),title:hook?'Preferred house with new spoken hook':'Preferred planned '+r.request.style,artist:'Jamloom original',url:'/audio/'+index,sha256:hash,energy:r.request.energy,style:r.request.style,mood:r.request.mood,vocal:!!hook,vocalCue:hook?.cue,credit:''}};
+ }));
+ assert.equal(new Set(tracks.map(t=>t.track.sha256)).size,3);
+}
+const revisions=(house||guided||planner)?{after:'working-tree'}:{before:execFileSync('git',['rev-parse',quality?'f0fde92':'35bbee7'],{encoding:'utf8'}).trim(),after:quality?'working-tree':execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim()},bundles={};
 for(const [name,ref] of Object.entries(revisions)){
  const plugins=ref==='working-tree'?[]:[{name:'historical-source',setup(b){b.onLoad({filter:/\.(ts|js|json)$/},args=>{
   const path=relative(root,args.path);assert.ok(!path.startsWith('..')&&!path.includes('node_modules'));
@@ -68,7 +84,7 @@ try{await Promise.all(Object.keys(revisions).map(async name=>{
   },[],async()=>index<fixtures.length?{sequence:index,track:fixtures[index++]}:null);
   player.setMode('auto');const tap=player.context.createMediaStreamDestination();player.mixer.meter.connect(tap);window.chunks=[];window.recorder=new MediaRecorder(tap.stream);
   recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};document.querySelector('#start').onclick=()=>player.start(async()=>{recorder.start();return true;});
- },{fixtures:tracks.map(t=>t.track),finishLast:guided});
+ },{fixtures:tracks.map(t=>t.track),finishLast:guided||planner});
  await page.click('#start');await page.waitForFunction(count=>player.snapshot().history.length===count&&player.snapshot().status==='stopped',tracks.length,{timeout:(tracks.length+1)*65000});
  const result=await page.evaluate(async()=>{
   await new Promise(ok=>{recorder.onstop=ok;recorder.stop();});const blob=new Blob(chunks,{type:recorder.mimeType}),audio=await player.context.decodeAudioData(await blob.arrayBuffer());let peak=0,power=0;
@@ -82,5 +98,6 @@ try{await Promise.all(Object.keys(revisions).map(async name=>{
 }));
  assert.ok(results.find(r=>r.name==='after').events.some(e=>e.by==='AI'),'Current engine must perform real moves');
  if(house)assert.ok(results[0].events.some(e=>e.label==='Vocal loop · 2 repeats'),'Accepted vocal must repeat only after the normal playback guards pass');
+ if(planner)assert.ok(results[0].events.some(e=>e.label==='Vocal echo'),'New spoken hook must pass normal playback guards');
  await writeFile(folder+'/report.json',JSON.stringify({status:'PASS technical',sourceTracks:tracks.map(t=>t.track.sha256),currentPlanSha256:createHash('sha256').update(await readFile('lib/ai-dj-plan.ts')).digest('hex'),newGeneration:false,learnedWeights:false,humanListening:'NOT RUN',results},null,2)+'\n');
 }finally{await browser.close();await new Promise(ok=>server.close(ok));}

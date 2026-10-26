@@ -101,3 +101,9 @@ not training-data admission, new reference-audio use or independent verification
 of the publisher's underlying corpus. The model's generated semantic codes are
 provenance-hashed; generated audio still requires content and quality review.
 See [comparison](dj-planner-comparison.md).
+
+## Short vocal experiments — 2026-10-26
+
+The local Kokoro stock-voice test uses the already retained Apache-2.0 inference release `f3ff3571791e39611d31c381e3a41a3af07b4987`, original two-word text and hash-checked model/voice files. No training or cloning is performed. The publisher card and its training-data attribution remain attached to the existing model provenance; no underlying recordings or synthetic outputs are admitted as training data by this test. Three voices were rejected as robotic and one was only okay, so **no production promotion**. [Evidence](evidence/dj-spoken-hooks-20261026/hooks.json), [owner correction](evidence/dj-spoken-hooks-20261026/owner-feedback.json).
+
+The completed musical-vocal inference study reuses only the two hash-verified Jamloom originals from the licensed-model planner experiment as transient inference context. It shares Music DNA's singer descriptions and original lyrics, without a singer recording, voice conversion, external reference or retained learned adapter. This is source-conditioned inference within the existing ACE-Step experiment scope; it does not authorize training on these outputs. [Exact sources and consumed initial permit](evidence/dj-sung-hooks-20261026/gpu-plan.json). The separately approved replacement rendered four edits; vocal presence and musical acceptance remain unverified. No output is admitted for training or production by these technical results. [Run and limits](dj-sung-hooks.md).

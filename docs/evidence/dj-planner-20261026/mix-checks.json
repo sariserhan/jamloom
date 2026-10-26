@@ -1,0 +1,82 @@
+{
+  "status": "PASS technical",
+  "sourceTracks": [
+    "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+    "e988c92d391131f9c46d80cf132ea2fbf8d42aedd50b618d5ecb3ce9e006a5ed",
+    "489cd0c0a530c706a5875133e0733b6234c59deef17ac00abebe8b6899b3e50d"
+  ],
+  "currentPlanSha256": "b6afe1fcc3a5a5579b6dce69ef41619b763fc9c0c2bc7b1d47aa0f7dc576cc56",
+  "newGeneration": false,
+  "learnedWeights": false,
+  "humanListening": "NOT RUN",
+  "results": [
+    {
+      "name": "after",
+      "revision": "working-tree",
+      "history": [
+        "0",
+        "1",
+        "2"
+      ],
+      "seconds": 142.86,
+      "peak": 0.402009516954422,
+      "rms": 0.0609219082159982,
+      "events": [
+        {
+          "action": "filter",
+          "label": "Filter sweep",
+          "at": 8.9265,
+          "until": 10.8015,
+          "position": 8.482500000000002,
+          "by": "AI"
+        },
+        {
+          "action": "roll-one",
+          "label": "1 roll",
+          "at": 16.89525,
+          "until": 17.83275,
+          "position": 16.45125,
+          "by": "AI"
+        },
+        {
+          "action": "echo",
+          "label": "Vocal echo",
+          "at": 55.332750000000004,
+          "until": 57.207746459960944,
+          "position": 12.197262602579134,
+          "by": "AI"
+        }
+      ],
+      "changes": [
+        {
+          "tracks": 0,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 1,
+          "elapsed": 0,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 2,
+          "elapsed": 52.096,
+          "plan": "Preparing a conservative transition"
+        },
+        {
+          "tracks": 3,
+          "elapsed": 93.548,
+          "plan": "Preparing a conservative transition"
+        }
+      ],
+      "muted": true,
+      "sha256": "b707dc51587e6361da471aef98fbecc8c61ab37d43ebb75edf8171337ff1daef"
+    }
+  ],
+  "quiet_scan": {
+    "threshold_db": -60,
+    "min_seconds": 0.25,
+    "detected_gaps": []
+  },
+  "acceptance": "Engineering only: contained spoken hook 1, subsequently rejected as robotic. No full-performance musical acceptance."
+}

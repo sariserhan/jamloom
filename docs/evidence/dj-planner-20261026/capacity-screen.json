@@ -1,0 +1,27 @@
+{
+  "status": "PARTIAL: local capacity screening, not a sustained provider test",
+  "planned_render_seconds": [
+    19.207,
+    18.487,
+    24.554,
+    23.529
+  ],
+  "measured_playback_intervals_seconds": [
+    52.096,
+    41.452000000000005
+  ],
+  "shortest_interval_seconds": 41.452000000000005,
+  "slowest_render_seconds": 24.554,
+  "one_listener_worst_render_margin_seconds": 16.898000000000007,
+  "two_serial_slowest_renders_margin_seconds": -7.655999999999992,
+  "observed_rental_debit_usd": 0.07534905862999963,
+  "rental_seconds": 522.2010450363159,
+  "limits": [
+    "Playback intervals come from a retained three-track capture, not a fresh live-generation session.",
+    "The capture contains rejected spoken hook 1; only timing is used.",
+    "Queue, polling, transfer, storage, decoding and scheduling delays are additional.",
+    "The four planned renders include two rejected isolated-vocal attempts. The new musical repaint path is not represented.",
+    "Do not inherit the earlier faster generator two-listener qualification for this candidate.",
+    "No final invoice or complete production unit cost established."
+  ]
+}

@@ -53,6 +53,8 @@ class Renderer:
             pcm = canonical(samples, rate)
             guide_path=Path(directory)/'guide/receipt.json'
             composition=json.loads(guide_path.read_text()) if guide_path.is_file() else None
+            sung_path=Path(directory)/'musical-hook.json'
+            sung=json.loads(sung_path.read_text()) if sung_path.is_file() else None
             planning={name:json.loads(path.read_text()) for name,path in [('track',Path(directory)/'planning.json'),('vocal',Path(directory)/'hook/planning.json')] if path.is_file()}
         stream = io.BytesIO()
         with wave.open(stream, 'wb') as audio:
@@ -67,6 +69,7 @@ class Renderer:
                        compute_ms=elapsed, bytes=len(data), sha256=hashlib.sha256(data).hexdigest(), vocal=vocal,vocal_check=vocal_check)
         if composition is not None:receipt['composition']=composition
         if planning:receipt['planning']=planning
+        if sung is not None:receipt['musical_hook']=sung
         self.cached = fingerprint, receipt, data
         return receipt, data
 
@@ -123,6 +126,7 @@ def main():
     modes.add_argument('--guided-set',action='store_true',help='Original-score set with sparse original vocal candidates')
     modes.add_argument('--recovery-study',action='store_true',help='Isolate guide and model seeds; original material only')
     modes.add_argument('--planner-study',action='store_true',help='Paired semantic music planning; unqualified experiment')
+    modes.add_argument('--sung-study',action='store_true',help='Short musical repaint on prepared Jamloom originals; unqualified experiment')
     args = parser.parse_args()
     if args.token_file.stat().st_mode & 0o077:
         raise ValueError('Token file must be private')
@@ -130,6 +134,9 @@ def main():
     if len(token) != 64 or any(c not in '0123456789abcdef' for c in token):
         raise ValueError('Invalid token')
     renderer = Renderer(args.expires_unix, args.max_requests, generate=planner_study if args.planner_study else composition_recovery if args.recovery_study else composition_set if args.guided_set else composition_study if args.composition_study else house_study if args.house_study else partial(ace, arranged=args.arranged))
+    if args.sung_study:
+        from dj_sung_hooks import sung_study
+        renderer.generate=sung_study
     renderer.engine = load_ace(planned=True) if args.planner_study else load_ace()
     server = HTTPServer(('127.0.0.1', 8768), handler(renderer, token))
     server.timeout = 1

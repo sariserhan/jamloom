@@ -1,0 +1,72 @@
+{
+  "status": "PASS execution only",
+  "controls_transcribed_any_words": false,
+  "rows": [
+    {
+      "name": "candidate-0",
+      "source_sha256": "fbf22697725ac05b62919901d4c20702e759591168a2c2407e8a0d0f841c64f5",
+      "excerpt_start": 37.88875,
+      "expected_phrase": "Feel alive",
+      "transcript": "",
+      "phrases": [],
+      "model_manifest_sha256": "58eb63835716a76ae48b18fd5ace527ad4895aea4277109841d9afa93727b8f3",
+      "human_verified": false
+    },
+    {
+      "name": "candidate-1",
+      "source_sha256": "9a03fe0f8167dd1dc42addf90f321ef9234e5da3f9ca12eddcaf13e564ee6abd",
+      "excerpt_start": 37.88875,
+      "expected_phrase": "Feel alive",
+      "transcript": "",
+      "phrases": [],
+      "model_manifest_sha256": "58eb63835716a76ae48b18fd5ace527ad4895aea4277109841d9afa93727b8f3",
+      "human_verified": false
+    },
+    {
+      "name": "candidate-2",
+      "source_sha256": "52279aedc63f1d76f5bcadfee98c1d9f1a67d543c881f60382dc7e1d49e4586c",
+      "excerpt_start": 10.197262602579134,
+      "expected_phrase": "We rise",
+      "transcript": "",
+      "phrases": [],
+      "model_manifest_sha256": "58eb63835716a76ae48b18fd5ace527ad4895aea4277109841d9afa93727b8f3",
+      "human_verified": false
+    },
+    {
+      "name": "candidate-3",
+      "source_sha256": "c96acdddc4fb815cbf04a270e1a89362c7daad0868b7826593412c156bfe4f63",
+      "excerpt_start": 10.197262602579134,
+      "expected_phrase": "We rise",
+      "transcript": "",
+      "phrases": [],
+      "model_manifest_sha256": "58eb63835716a76ae48b18fd5ace527ad4895aea4277109841d9afa93727b8f3",
+      "human_verified": false
+    },
+    {
+      "name": "control-0",
+      "source_sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+      "excerpt_start": 37.88875,
+      "expected_phrase": "Feel alive",
+      "transcript": "",
+      "phrases": [],
+      "model_manifest_sha256": "58eb63835716a76ae48b18fd5ace527ad4895aea4277109841d9afa93727b8f3",
+      "human_verified": false
+    },
+    {
+      "name": "control-2",
+      "source_sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "excerpt_start": 10.197262602579134,
+      "expected_phrase": "We rise",
+      "transcript": "",
+      "phrases": [],
+      "model_manifest_sha256": "58eb63835716a76ae48b18fd5ace527ad4895aea4277109841d9afa93727b8f3",
+      "human_verified": false
+    }
+  ],
+  "limits": [
+    "Tiny speech recognition is not a singing or naturalness evaluator.",
+    "No expected lyric was supplied to the recognizer.",
+    "A nonempty instrumental control invalidates voice-presence inference from this screening.",
+    "Word and musical acceptance still require listening."
+  ]
+}

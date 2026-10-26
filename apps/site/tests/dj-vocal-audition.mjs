@@ -1,4 +1,4 @@
-// Existing original house audio demonstrates effects only; no fresh generation or reference sampling.
+// Real deck effects on hash-verified originals; no reference sampling.
 import assert from 'node:assert/strict';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -6,10 +6,16 @@ import {createHash} from 'node:crypto';
 import {createServer} from 'node:http';
 import {build} from 'esbuild';
 import {chromium,webkit} from 'playwright';
-const root=resolve('../..'),folder=resolve(root,'renders/dj-vocal-effects-20261025'),evidence=resolve(root,'docs/evidence/dj-guided-set-20261025');
+const root=resolve('../..'),args=process.argv.slice(2),spoken=args[0]==='--spoken-hook';
+assert.ok(args.length===0||(spoken&&args.length===2&&/^[1-4]$/.test(args[1])), 'Use --spoken-hook 1–4 or no arguments');
+const number=spoken?Number(args[1]):null;
+const folder=resolve(root,spoken?`renders/dj-spoken-hooks-20261026/effects-${number}`:'renders/dj-vocal-effects-20261025'),evidence=resolve(root,spoken?'docs/evidence/dj-spoken-hooks-20261026':'docs/evidence/dj-guided-set-20261025');
 await mkdir(folder);await mkdir(evidence,{recursive:true});
-const source=root+'/renders/ai-dj-finish-20261024/gpu-launch-fix',previous=JSON.parse(await readFile(source+'/result.json','utf8')),row=previous.tracks.find(t=>t.receipt.vocal);assert.ok(row);
-const audio=await readFile(`${source}/${row.session}-${row.sequence}.wav`);assert.equal(createHash('sha256').update(audio).digest('hex'),row.sha256);
+const source=root+(spoken?'/renders/dj-spoken-hooks-20261026':'/renders/ai-dj-finish-20261024/gpu-launch-fix');
+const previous=JSON.parse(await readFile(spoken?evidence+'/hooks.json':source+'/result.json','utf8'));
+const row=previous.tracks.find(t=>spoken?t.number===number:t.receipt.vocal);assert.ok(row);
+const cue=spoken?row.cue:row.receipt.vocal;
+const audio=await readFile(spoken?`${source}/${row.file}`:`${source}/${row.session}-${row.sequence}.wav`);assert.equal(createHash('sha256').update(audio).digest('hex'),row.sha256);
 const bundle=await build({stdin:{contents:"import {PerformanceDeck} from './lib/ai-dj-performance';window.PerformanceDeck=PerformanceDeck;",resolveDir:process.cwd()},bundle:true,format:'esm',write:false});
 const server=createServer((req,res)=>{if(req.url==='/audio.wav'){res.setHeader('Content-Type','audio/wav');res.end(audio);}else if(req.url==='/deck.js'){res.setHeader('Content-Type','text/javascript');res.end(bundle.outputFiles[0].contents);}else res.end('<title>Jamloom vocal effects</title><script type="module" src="/deck.js"></script>');});
 await new Promise(ok=>server.listen(0,'127.0.0.1',ok));const results=[];
@@ -28,7 +34,7 @@ try{for(const [name,engine]of Object.entries({chromium,webkit})){
     let binary='';for(let i=0;i<pcm.length;i+=8192)binary+=String.fromCharCode(...pcm.subarray(i,i+8192));
     rows.push({mode,peak,rms:Math.sqrt(power/(output.length*2)),seconds:output.duration,event:deck.event,data:btoa(binary)});
    }return rows;
-  },row.receipt.vocal);
+  },cue);
   let baseline;
   for(const r of rendered){assert.ok(r.peak<1&&r.rms>.001);const pcm=Buffer.from(r.data,'base64');delete r.data;
    if(r.mode==='dry')baseline=pcm;else{assert.ok(!pcm.equals(baseline));assert.ok(pcm.subarray(0,3*48000*4).equals(baseline.subarray(0,3*48000*4)));assert.ok(r.event.label.includes(r.mode==='both'?'loop + echo':r.mode));}
@@ -37,5 +43,5 @@ try{for(const [name,engine]of Object.entries({chromium,webkit})){
   }
  }finally{await browser.close();}
 }}finally{await new Promise(ok=>server.close(ok));}
-await writeFile(evidence+'/vocal-effects.json',JSON.stringify({status:'PASS technical',source_sha256:row.sha256,cue:row.receipt.vocal,newGeneration:false,speakerOutput:'OfflineAudioContext only; no speakers',scope:'Deck mix echo and bounded phrase repeat on a previously accepted original house recording; not an isolated vocal stem',humanListening:'NOT RUN',results},null,2)+'\n');
+await writeFile(evidence+(spoken?`/effects-${number}.json`:'/vocal-effects.json'),JSON.stringify({status:'PASS technical',source_sha256:row.sha256,cue,newGeneration:spoken,speakerOutput:'OfflineAudioContext only; no speakers',scope:spoken?'Deck mix echo and bounded phrase repeat on a new synthetic spoken hook; listening pending':'Deck mix echo and bounded phrase repeat on a previously accepted original house recording; not an isolated vocal stem',humanListening:'NOT RUN',results},null,2)+'\n');
 console.log('PASS: dry, loop, echo and combined audio in Chromium/WebKit; preserved pre-effect audio; bounded output.');

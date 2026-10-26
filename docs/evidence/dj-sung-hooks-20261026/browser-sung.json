@@ -1,0 +1,140 @@
+{
+  "results": [
+    {
+      "engine": "chromium",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Hook 1: Original groove",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 1: Sung edit",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 1: Uncut model candidate",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Original groove",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Sung edit",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Uncut model candidate",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Original groove",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Sung edit",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Uncut model candidate",
+          "seconds": 60,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Original groove",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Sung edit",
+          "seconds": 12,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Uncut model candidate",
+          "seconds": 60,
+          "error": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "status": "PASS",
+      "clips": [
+        {
+          "label": "Hook 1: Original groove",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 1: Sung edit",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 1: Uncut model candidate",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Original groove",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Sung edit",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 2: Uncut model candidate",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Original groove",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Sung edit",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 3: Uncut model candidate",
+          "seconds": 60.024,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Original groove",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Sung edit",
+          "seconds": 12.024,
+          "error": null
+        },
+        {
+          "label": "Hook 4: Uncut model candidate",
+          "seconds": 60.024,
+          "error": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "speakerOutput": "Muted",
+  "humanListening": "NOT RUN"
+}

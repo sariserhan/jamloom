@@ -124,15 +124,15 @@ def write_state(state):
     temporary.replace(STATE)
 
 
-def dj_bootstrap_command(deadline, requests=8, arranged=False, house_study=False, composition_study=False, guided_set=False, recovery_study=False, planner_study=False):
+def dj_bootstrap_command(deadline, requests=8, arranged=False, house_study=False, composition_study=False, guided_set=False, recovery_study=False, planner_study=False, sung_study=False):
     if type(deadline) is not int or not 1000000000 <= deadline <= 9999999999:
         raise ValueError('Absolute renderer deadline required')
     if type(requests) is not int or not 1 <= requests <= 100:
         raise ValueError('Bounded model request allowance required')
-    if any(type(v) is not bool for v in (arranged,house_study,composition_study,guided_set,recovery_study,planner_study)) or sum((arranged,house_study,composition_study,guided_set,recovery_study,planner_study))>1: raise ValueError('Invalid arrangement mode')
+    if any(type(v) is not bool for v in (arranged,house_study,composition_study,guided_set,recovery_study,planner_study,sung_study)) or sum((arranged,house_study,composition_study,guided_set,recovery_study,planner_study,sung_study))>1: raise ValueError('Invalid arrangement mode')
     # Background only the fully redirected renderer, not an AND-list that retains SSH pipes.
     return ('chmod 600 /workspace/renderer-token || exit 1\n'
-            f'nohup bash /workspace/cloud_dj_warm.sh {deadline} {requests}{" --arranged" if arranged else " --house-study" if house_study else " --composition-study" if composition_study else " --guided-set" if guided_set else " --recovery-study" if recovery_study else " --planner-study" if planner_study else ""} > /workspace/boot.log 2>&1 < /dev/null &\n'
+            f'nohup bash /workspace/cloud_dj_warm.sh {deadline} {requests}{" --arranged" if arranged else " --house-study" if house_study else " --composition-study" if composition_study else " --guided-set" if guided_set else " --recovery-study" if recovery_study else " --planner-study" if planner_study else " --sung-study" if sung_study else ""} > /workspace/boot.log 2>&1 < /dev/null &\n'
             'printf "%s\\n" "$!"\n')
 
 

@@ -1,0 +1,86 @@
+{
+  "origin": "jamloom_generated_originals",
+  "reference_audio_used": false,
+  "cases": [
+    {
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 0,
+        "seed": 501026,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "source_file": "sung-house-1.wav",
+      "source_sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+      "cue": {
+        "start": 39.88875,
+        "seconds": 1.875,
+        "bpm": 128.0
+      },
+      "phrase": "Feel alive",
+      "vocal_profile": "male-tenor"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 1,
+        "seed": 501027,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "source_file": "sung-house-1.wav",
+      "source_sha256": "909a45b9da691b9f440506b268a9ced1bb364e713166bbdbdac7981b5f61daf1",
+      "cue": {
+        "start": 39.88875,
+        "seconds": 1.875,
+        "bpm": 128.0
+      },
+      "phrase": "Feel alive",
+      "vocal_profile": "female-mezzo"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 2,
+        "seed": 501028,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "source_file": "sung-house-7.wav",
+      "source_sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "cue": {
+        "start": 12.197262602579134,
+        "seconds": 1.8757291666666667,
+        "bpm": 127.95
+      },
+      "phrase": "We rise",
+      "vocal_profile": "male-tenor"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102611111111111111111111111111",
+        "sequence": 3,
+        "seed": 501029,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "source_file": "sung-house-7.wav",
+      "source_sha256": "99f7bb05427656f9eebf4c185d3a17a7c418d6bc35568d05e0b0905acb46fb68",
+      "cue": {
+        "start": 12.197262602579134,
+        "seconds": 1.8757291666666667,
+        "bpm": 127.95
+      },
+      "phrase": "We rise",
+      "vocal_profile": "female-mezzo"
+    }
+  ]
+}

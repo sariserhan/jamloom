@@ -6,10 +6,41 @@ import sys
 import unittest
 from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts'))
-from dj_sample_trial import validate, validate_quality, EVIDENCE, ROOT
+from dj_sample_trial import validate, validate_quality, validate_sung, EVIDENCE, ROOT
 
 
 class SamplePermitTests(unittest.TestCase):
+    def test_sung_replacement_cannot_extend_original_total_allowance(self):
+        import dj_sample_trial as trial
+        plan=json.loads((ROOT/'docs/evidence/dj-sung-hooks-20261026/replacement-plan.json').read_text())
+        plan['status']='AUTHORIZED';plan['owner_statement']='Approve one replacement within the original cap'
+        with patch.object(trial.vast,'LEASE_SECONDS',plan['remaining_rental_seconds']):
+            validate_sung(plan,replacement=True)
+            for key,value in [('budget_usd_total',4),('remaining_rental_seconds',1200),('original_permit_sha256','0'*64),('owner_statement','Approve the capped $3 musical-vocal comparison')]:
+                changed=copy.deepcopy(plan);changed[key]=value
+                with self.assertRaises(ValueError):validate_sung(changed,replacement=True)
+
+    def test_sung_study_requires_fresh_four_edit_approval_and_original_sources(self):
+        plan=json.loads((ROOT/'docs/evidence/dj-sung-hooks-20261026/gpu-plan.json').read_text())
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
+        plan['dna_manifest_sha256']={name:hashlib.sha256((ROOT/'assets/manifests'/name).read_bytes()).hexdigest()for name in ['song-durations.json','dna-languages.json']}
+        pending=copy.deepcopy(plan);pending['status']='PREPARED'
+        with self.assertRaises(ValueError):validate_sung(pending)
+        plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 musical-vocal comparison'
+        validate_sung(plan)
+        for key,value in [('budget_usd',4),('max_minutes',21),('max_workers',2),('max_requests',5),('source_audio_origin','downloaded'),('reference_audio_used',True),('public_activation',True),('owner_statement','do all')]:
+            changed=copy.deepcopy(plan);changed[key]=value
+            with self.assertRaises(ValueError):validate_sung(changed)
+        for key in ['fixture_sha256','manifest_sha256']:
+            changed=copy.deepcopy(plan);changed[key]='0'*64
+            with self.assertRaises(ValueError):validate_sung(changed)
+        changed=copy.deepcopy(plan);changed['tracks'][0]['vocals']=True
+        with self.assertRaises(ValueError):validate_sung(changed)
+        changed=copy.deepcopy(plan);changed['source_sha256']['sung-house-1.wav']='0'*64
+        with self.assertRaises(ValueError):validate_sung(changed)
+        changed=copy.deepcopy(plan);changed['dna_manifest_sha256']={}
+        with self.assertRaises(ValueError):validate_sung(changed)
+
     def test_house_preflight_checks_other_proven_hosts_before_general_offers(self):
         import dj_sample_trial as trial
         offer={'id':123}

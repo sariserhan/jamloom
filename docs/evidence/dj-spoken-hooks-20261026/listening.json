@@ -1,0 +1,106 @@
+{
+  "status": "PASS technical",
+  "tracks": [
+    {
+      "file": "1-0.mp3",
+      "source_sha256": "466783eae35aebf2f952e5aa970f370914098e581230971fc7d93bb5c0bbd6a0",
+      "sha256": "05a9aafe257dacdfbdde3f0d9b5521c08268af8cd2141be6b25cfa07fb9984a1"
+    },
+    {
+      "file": "1-1.mp3",
+      "source_sha256": "3fbfbc342bd226e202cacb903b285b6868453e05713452e21e67b6acc6950cf8",
+      "sha256": "90cc1a06b1c0830cda1f29334717bfdd176504be52ad13e2b2a4339efd4ad4b2"
+    },
+    {
+      "file": "1-2.mp3",
+      "source_sha256": "d6b539dd7724c151bc2c5533f5818168ee0bcc0e999939f7d4ebbf5bb62117ae",
+      "sha256": "d6175986ab6459808a6e7efddb1103a0c48233813479f853178051747c91c80f"
+    },
+    {
+      "file": "1-3.mp3",
+      "source_sha256": "8c4a6193b0642b673629e73f9c0eb0ff8453632d0e56a9ecb41f636576f985cd",
+      "sha256": "21b1632fea40deadff0fc9d912e3eabb3600fb57caa0543549cb0b9f19759549"
+    },
+    {
+      "file": "1-4.mp3",
+      "source_sha256": "9fb38ecc083d2c1b8c1b7a8650b2ec460c6279a83afa021514e5901dd1cda537",
+      "sha256": "709b21a6202387e48f4c0ddfb81bcf9fa64e6daa3db8531282c9ba0f9167f69f"
+    },
+    {
+      "file": "2-0.mp3",
+      "source_sha256": "8c821499a96f1f9978018d9cd144449fb0c2d1779b4d00efc8624084ec522f9e",
+      "sha256": "94773cd0fe48ae0cba209eb316cc07b05798c9e00658f1f15bd5fb05a6d7e930"
+    },
+    {
+      "file": "2-1.mp3",
+      "source_sha256": "6524e2851f85a48bf0dbe3dd88f50c94167b1558741b9bb3c77b0f1658823e83",
+      "sha256": "ea1cd3ce47e6c14254dce218e8a10dc5a68a0f932b275b995aceaaf57cdc7024"
+    },
+    {
+      "file": "2-2.mp3",
+      "source_sha256": "7cb11ee7e5830220493108e4d09dee2d1a9918cc2d99ed2cdd7a462af8d2db3b",
+      "sha256": "24adc24cf219600a61100dd3141997040f901a57791cc4d200fc9e010e54436d"
+    },
+    {
+      "file": "2-3.mp3",
+      "source_sha256": "1feacdbd7ec8aa69d134c9edf7c64c6c452ce861911614af17a23dc1642d076c",
+      "sha256": "ce921ef7975f193141e09de2bcfd6354e4a779095b4b24ce38e4254ac85791f4"
+    },
+    {
+      "file": "2-4.mp3",
+      "source_sha256": "8ee821e8e59433b5d19b14840e9b77ed4ec08b047546f53b804674191f215a76",
+      "sha256": "10eff7b51fcafe89decd133e6c88b947b20b2568eb65b3c22422168d7d81ba42"
+    },
+    {
+      "file": "3-0.mp3",
+      "source_sha256": "f1f6899a66ff1a21380932ec3b92618d10adef83c87adf6e8ec8a5be6e00390d",
+      "sha256": "6b1aa2ce8812a600cea042a149c62a1c8202b03539ecae511e1096296d8b6f14"
+    },
+    {
+      "file": "3-1.mp3",
+      "source_sha256": "2a8a1399161f33b335199ebc884e892d3bb08ec92ebaab844436860a27d9fc91",
+      "sha256": "8b7de44e556495ae4c16ceb677dc28df3262a6c3b5456fad47b43a94dcd69209"
+    },
+    {
+      "file": "3-2.mp3",
+      "source_sha256": "fd0f291ce7e353a1c1e8edaad1f26cc21c43b29ea849831fbde48b648940f3e5",
+      "sha256": "14e58207b8c4615406b170b627d9f3e420dbd1bf69f3866bc4953465e775a6f6"
+    },
+    {
+      "file": "3-3.mp3",
+      "source_sha256": "ad1f789cb52363e16d16a0ec6f7b13fa406d92e756de23d757c7d745e6884fdb",
+      "sha256": "b1a967627b44f61347818dd332e3673b50e66df8bb5bcebcbafaa293dee7de9a"
+    },
+    {
+      "file": "3-4.mp3",
+      "source_sha256": "068010b8ad466caded312f57f2e77999f94ff663308a8261dafa64640ed8b275",
+      "sha256": "97e4151b07f145918e871da285690701f5f5d73dc906dedb74689dfedec1cb48"
+    },
+    {
+      "file": "4-0.mp3",
+      "source_sha256": "d238a7c9021e649001fc4e977d0f851c86b112de36d216a2f63477b426dd899e",
+      "sha256": "9c33acf069236cfb273d76164583e436cf173eb44ed1d4b16aa409786c2e548b"
+    },
+    {
+      "file": "4-1.mp3",
+      "source_sha256": "187763c530082ef82d390a375a36bc848ac32b5236f859d5ba9aa2a5125f3126",
+      "sha256": "86cd45e8caed6cfee213d108660ee689042fb9c6456ab020096db642eafe926c"
+    },
+    {
+      "file": "4-2.mp3",
+      "source_sha256": "81fe9cd1a0f5bf031f28eb5938d9952fbadc1bdafaac80996562f2427dbc0adb",
+      "sha256": "bc376ec7ce3f2e98a05b78919eddcee3ee0ff839be6362747a04d18bf7b66d40"
+    },
+    {
+      "file": "4-3.mp3",
+      "source_sha256": "07a5edecb51193587084fb6caa9745eb2c882c8f9377b4c5ccf74f525f52dac4",
+      "sha256": "3165430dc1ce42279b039e4861b94b90734f2643785889760956968920de1956"
+    },
+    {
+      "file": "4-4.mp3",
+      "source_sha256": "b59c389ceaae26f7675925a5b0430371515d1bd20aface3c1138a9530042fc1e",
+      "sha256": "0700f15b5fe2aae8fe29dd8aca28141c28e318541af9bad72cf82d045568ff0e"
+    }
+  ],
+  "human_listening": "NOT RUN"
+}
