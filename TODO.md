@@ -1,3 +1,14 @@
+## New singing evaluation and Apple catalogue isolation — 2026-10-27
+
+**PASS scoped checks; PARTIAL overall completion.** [Singing results](docs/SINGING_HOLDOUT.md), [Apple diagnostic](docs/APPLE_CATALOGUE_DIAGNOSTIC.md). Physical iPad work is excluded from this pass at the owner's request; its evidence remains NOT RUN.
+
+- [x] Freeze and evaluate 37 new vowel-scale recordings from 19 singers with the actual app detector/gate; two fail timeline integrity. The 35 eligible recordings/18 singers score 73.71% within 50 cents including misses. Preserve every result and licensing/hash evidence; do not label this complete singing accuracy.
+- [x] Bound dataset acquisition to selected archive ranges; two downloader regressions pass. Correct the older benchmark to use the production quiet-signal gate.
+- [x] Remove ordinary-launch local StoreKit configuration; three explicit local purchase tests still pass. Distinguish catalogue checks from provider receipt validation; Release audit excludes the debug probe.
+- [ ] Real Apple catalogue still returns a local fixture, including outside XCTest. Resolve device test state before sandbox purchase/server/restore/refund qualification; no purchases attempted.
+- [ ] Retain broader musical quality, live singing/physical latency, independent listeners and supplier permissions as open evidence gates. No new GPU permit is inferred from earlier consumed trials.
+- [ ] Keep push, deployment, app submission and sales activation held.
+
 ## Specification closure and build 27 — 2026-10-27
 
 **PASS scoped local work; PARTIAL complete specification.** [Closure report](docs/SPEC_CLOSURE.md), [current requirement map](docs/spec-coverage.md), [all-product ledger](docs/PRODUCT_COMPLETION.md). Earlier dated checkboxes retain history and are not an additive backlog.

@@ -1,3 +1,9 @@
+## Latest qualification boundaries — 2026-10-27
+
+[New singing evaluation](SINGING_HOLDOUT.md) measures 73.71% within 50 cents including misses on 35 eligible recordings/18 singers; two of the 37 selected files fail timeline integrity. Keep that result separate from prior inspected-corpus and owner microphone checks. No thresholds changed and no evaluation audio ships.
+
+[Apple catalogue isolation](APPLE_CATALOGUE_DIAGNOSTIC.md): ordinary launches no longer select local StoreKit by default; local tests explicitly create their session. Three pass. The physical phone still returns local fixture metadata; do not call that Apple sandbox success or attempt purchases using it. Real receipt delivery and credit review metadata remain open. Physical iPad is excluded from this pass because the owner has none. Publication remains held.
+
 ## Current specification closure — 2026-10-27
 
 [Current map](spec-coverage.md), [closure evidence](SPEC_CLOSURE.md), [product ledger](PRODUCT_COMPLETION.md). Build **0.10.2 (27)** is signed/exported locally and restored on the iPhone after three passing physical checks. Native sign-in, wallet/profile/rating persistence and logout also pass against disposable local Postgres. Local StoreKit passes; it is not a real Apple sandbox receipt. Singing remains **$39 once**. No upload, push, deployment or paid activation.

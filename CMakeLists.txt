@@ -95,6 +95,8 @@ if(BUILD_TESTING)
   add_test(NAME c_abi COMMAND jamloom_c_smoke "${CMAKE_CURRENT_BINARY_DIR}/c-api-input.wav" "${CMAKE_CURRENT_BINARY_DIR}/c-api-safe-render")
   find_package(Python3 3.9 COMPONENTS Interpreter)
   if(Python3_Interpreter_FOUND)
+    add_test(NAME singing_holdout_download COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_singing_holdout.py")
     if(UNIX)
       add_test(NAME studio_packaging COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_studio_packaging.py")

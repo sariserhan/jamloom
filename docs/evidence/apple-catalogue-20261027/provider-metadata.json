@@ -1,0 +1,54 @@
+{
+  "observed": "2026-10-27T05:32:18.979Z",
+  "readOnly": true,
+  "products": [
+    {
+      "id": "6826479674",
+      "productId": "com.jamloom.credits.starter",
+      "state": "MISSING_METADATA",
+      "localizations": [
+        {
+          "name": "10 Jamloom credits",
+          "description": "10 credits for original Jamloom songs.",
+          "locale": "en-US"
+        }
+      ]
+    },
+    {
+      "id": "6826480115",
+      "productId": "com.jamloom.credits.creator",
+      "state": "MISSING_METADATA",
+      "localizations": [
+        {
+          "name": "25 Jamloom credits",
+          "description": "25 credits for original Jamloom songs.",
+          "locale": "en-US"
+        }
+      ]
+    },
+    {
+      "id": "6826480267",
+      "productId": "com.jamloom.credits.studio",
+      "state": "MISSING_METADATA",
+      "localizations": [
+        {
+          "name": "50 Jamloom credits",
+          "description": "50 credits for original Jamloom songs.",
+          "locale": "en-US"
+        }
+      ]
+    },
+    {
+      "id": "6827398987",
+      "productId": "com.jamloom.singing.complete",
+      "state": "READY_TO_SUBMIT",
+      "localizations": [
+        {
+          "name": "Jamloom Singing Academy",
+          "description": "Original songs, lyrics and live pitch lessons.",
+          "locale": "en-US"
+        }
+      ]
+    }
+  ]
+}

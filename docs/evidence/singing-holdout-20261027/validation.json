@@ -1,0 +1,20 @@
+{
+  "status": "PARTIAL singing quality; evaluation and acquisition checks PASS",
+  "tests": {
+    "downloader": "2 PASS via unittest and CTest",
+    "benchmarkSelfChecks": "PASS including incomplete timeline refusal",
+    "newSubset": "35 scored, 2 quarantined for timeline mismatch",
+    "referenceCorpus": "40 scored, previously inspected"
+  },
+  "files": {
+    "scripts/benchmark_singing_holdout.mjs": "3b65e26f962df6a0a9a7e9a42d7bb09a0d7dc18ff874d251742564705acde5d4",
+    "scripts/prepare_singing_holdout.py": "6ed65ce2e1458f5a1bbad2af4c70e692b255b2c9299cee5bf7915e3efd366b84",
+    "tests/test_singing_holdout.py": "b7601c9179927049adc776332f2b343bc1bbf4345264b6d9dae1941a3aefe46c",
+    "scripts/benchmark_singing_voices.mjs": "af43d7561649173a7a480f328096b01093b8e572a9686045e18e1ff3054885ca",
+    "docs/evidence/singing-holdout-20261027/timeline-validated-results.json": "2cb3c9145966afd47c3e3b4da23bed5cd4cceb7173c1b8a5b197a449038051cf",
+    "docs/evidence/singing-holdout-20261027/vocadito-current-gate/human-voice-benchmark.json": "1db604d21b72890685b5ec74935a1f5b1a1aa72ae0af3023cd92a44829caa04b"
+  },
+  "productionDetectorChanged": false,
+  "audioRedistributed": false,
+  "paidCompute": false
+}

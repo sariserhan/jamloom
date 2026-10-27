@@ -102,7 +102,6 @@ schemes:
   Jamloom:
     run:
       config: Debug
-      storeKitConfiguration: JamloomTests/LocalCredits.storekit
     build:
       targets:
         Jamloom: all

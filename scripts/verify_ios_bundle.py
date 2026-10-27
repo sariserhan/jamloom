@@ -66,6 +66,7 @@ def verify(bundle):
     executable = bundle / info['CFBundleExecutable']
     binary = executable.read_bytes()
     assert b'--ui-testing' not in binary and b'JAMLOOM_UI_TEST_LIBRARY' not in binary, 'Debug control found in Release'
+    assert b'--apple-catalogue-check' not in binary, 'Apple diagnostic found in Release'
     assert b'synthetic-speech' not in binary, 'Fixture reference found in Release'
     repo = Path(__file__).resolve().parents[1]
     for notice in (repo / 'assets/licenses').glob('*.txt'):

@@ -1,5 +1,21 @@
 #if DEBUG
 import Foundation
+import StoreKit
+
+// Launch directly without XCTest to distinguish Apple responses from test-session injection.
+@MainActor enum AppleCatalogueProbe {
+    static func run() async {
+        guard ProcessInfo.processInfo.arguments.contains("--apple-catalogue-check") else { return }
+        var result: [String: Any] = ["receiptQualification": "NOT RUN", "purchaseAttempted": false]
+        do {
+            let products = try await Product.products(for: CreditPurchases().productIDs + [CreditPurchases.singingProduct])
+            result["products"] = products.map { ["id": $0.id, "name": $0.displayName, "description": $0.description, "price": NSDecimalNumber(decimal: $0.price).stringValue, "currency": $0.priceFormatStyle.currencyCode] }
+        } catch { result["error"] = error.localizedDescription }
+        let file = URL.cachesDirectory.appendingPathComponent("apple-catalogue-check.json")
+        do { try JSONSerialization.data(withJSONObject: result, options: .sortedKeys).write(to: file, options: .atomic) }
+        catch { NSLog("Apple catalogue diagnostic could not be saved") }
+    }
+}
 
 // Isolated UI-test responses; never installed by a release build or an ordinary launch.
 final class CommunityFixture: URLProtocol {

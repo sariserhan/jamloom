@@ -1,0 +1,48 @@
+{
+  "status": "PARTIAL; real Apple catalogue FAIL, receipt chain NOT RUN",
+  "directLaunchResult": "Only Starter / Local test credits only returned; not the App Store Connect product descriptions",
+  "localPurchaseTests": "3 PASS, 1 live-Apple SKIP",
+  "releaseAudit": "PASS",
+  "purchaseAttempted": false,
+  "productionFlagsChanged": false,
+  "appUninstalled": false,
+  "logs": [
+    {
+      "path": "/tmp/jamloom-apple-catalogue-20261027.log",
+      "sha256": "c2ec38a92462f92247ef6c80c32500eb5780866c5e8d786f16017d63f311aeb6"
+    },
+    {
+      "path": "/tmp/jamloom-apple-catalogue-details-20261027.log",
+      "sha256": "90262ead9272e102082b2879e1b2294a4b948dbb2bdab32521cd929960f61425"
+    },
+    {
+      "path": "/tmp/jamloom-apple-no-default-fixture-20261027.log",
+      "sha256": "702572647e9915738cf365a93b9d14e19bdfc8b721586f6f34369178b0e9a0e7"
+    },
+    {
+      "path": "/tmp/jamloom-direct-catalogue-build.log",
+      "sha256": "d6925105e1df6fa49e4db5f9d48954f1d858f608179a8af57329fe6367c18ca9"
+    },
+    {
+      "path": "/tmp/jamloom-direct-catalogue-install.log",
+      "sha256": "20a8196a10dd67c8741efce476dd34ea4c2ff742904a26c86b78bdd760cdf102"
+    },
+    {
+      "path": "/tmp/jamloom-direct-catalogue-launch-retry.log",
+      "sha256": "8a5f6358ab61c4e82b3f3bc459e636f70a74655023d6fc9ff1fb0cb8d672b05c"
+    },
+    {
+      "path": "/tmp/jamloom-direct-catalogue-last-launch.log",
+      "sha256": "31b09b13e4c7e49951e253faf0888a4a38b0d0f1b948ab0aa636b546698df16f"
+    },
+    {
+      "path": "/tmp/jamloom-storekit-explicit-config-20261027.log",
+      "sha256": "8f8e45a9032a63e6521bb8c8143edc301e724a301e579b313487a9228015ab67"
+    },
+    {
+      "path": "/tmp/jamloom-release27-restore-after-catalogue.log",
+      "sha256": "fb50069ac0257110b11c2e1fbd607e6d5ae892efcc6ab9acb4ca19f16863eb83"
+    }
+  ],
+  "restoredRelease": "PASS installed exact previously audited 0.10.2 build 27; no new launch claimed"
+}

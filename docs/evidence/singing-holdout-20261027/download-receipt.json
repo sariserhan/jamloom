@@ -1,0 +1,377 @@
+{
+  "manifestSha256": "a0d018041fd3c2a7f513d46abcb479d042e733553c27835a4406e92484e08ef3",
+  "files": [
+    {
+      "name": "f1_scales_c_slow_forte_a.wav",
+      "bytes": 1072036,
+      "sha256": "b712125f2180d09d762df44cde78f8146a95410a7f7443eefc4578d0f5d61a5f"
+    },
+    {
+      "name": "f1_scales_c_slow_forte_a.csv",
+      "bytes": 80683,
+      "sha256": "3aa13ee4f00a22bf112ed5904dc2863f124378f3a663239e5a2741b41bfe03dc"
+    },
+    {
+      "name": "f1_scales_c_fast_piano_a.wav",
+      "bytes": 374724,
+      "sha256": "c9af28eea7aedb61d7c078f9f5563eeecf951ac0107cde58338e56ee50d8d0f7"
+    },
+    {
+      "name": "f1_scales_c_fast_piano_a.csv",
+      "bytes": 28246,
+      "sha256": "47b296dc27f914d691ab02ed5663fcbc54403b4c917ba887e92ecfffaf836012"
+    },
+    {
+      "name": "f2_scales_f_slow_forte_i.wav",
+      "bytes": 1170780,
+      "sha256": "7a206506703aa463585937b64fc41d755192540b1b1f90d9947054c7ef6dbb17"
+    },
+    {
+      "name": "f2_scales_f_slow_forte_i.csv",
+      "bytes": 88152,
+      "sha256": "3a4423ac9841613902b0f7074caf12842932f961a3ade311c9d37943491cae7c"
+    },
+    {
+      "name": "f2_scales_c_fast_piano_a.wav",
+      "bytes": 342050,
+      "sha256": "3d0f70f94a31615a3c5debd738d2290dfff9b554ea0a0e2f3dc380518b5edbcb"
+    },
+    {
+      "name": "f2_scales_c_fast_piano_a.csv",
+      "bytes": 25782,
+      "sha256": "0968defca2bd3d88c3d6f29335bd315c7b371f316f4be50c3c7c560494c44b98"
+    },
+    {
+      "name": "f3_scales_f_slow_forte_a.wav",
+      "bytes": 1034830,
+      "sha256": "9fed659c646bbd2241de7ad2d9ffac4281f243ee19186b5e0ad52cc40f61a5b8"
+    },
+    {
+      "name": "f3_scales_f_slow_forte_a.csv",
+      "bytes": 77911,
+      "sha256": "546d4cc104ead4a1bad5143b3b2f8a484fb052162a521cf006e88c0993f9ddd0"
+    },
+    {
+      "name": "f3_scales_c_fast_piano_a.wav",
+      "bytes": 343982,
+      "sha256": "896df3a7e5fc5975e18018386e4ff9fc33222098aeadc5e4a26e606c720ece9b"
+    },
+    {
+      "name": "f3_scales_c_fast_piano_a.csv",
+      "bytes": 25936,
+      "sha256": "3e8296a50d906cda1b225753c283716102db92ec03d5c16197e26c7c648b492d"
+    },
+    {
+      "name": "f4_scales_c_slow_forte_u.wav",
+      "bytes": 1107342,
+      "sha256": "075ac835afeb9d466e4d7e7b6df4c88b8f050f96bfd6e5ba073046647554c505"
+    },
+    {
+      "name": "f4_scales_c_slow_forte_u.csv",
+      "bytes": 83378,
+      "sha256": "5da8ab7c76a59496cf064338b7153c32a68a251d32d5098dee984c9d28c35e06"
+    },
+    {
+      "name": "f4_scales_c_fast_piano_a.wav",
+      "bytes": 324794,
+      "sha256": "1f39ba1bbbb7b3761b5b678c7236bb37a65e002974331b107141733762800cca"
+    },
+    {
+      "name": "f4_scales_c_fast_piano_a.csv",
+      "bytes": 24550,
+      "sha256": "0e38d8ea018a3ecf5410ad4d6278150635b874467f2d50cf9723632d5b2d1c73"
+    },
+    {
+      "name": "f5_scales_c_slow_forte_o.wav",
+      "bytes": 863344,
+      "sha256": "72f1049d03f4ea14090f05dd0c36a85dece25ea5f989d0483c5ce0e2fe976ec8"
+    },
+    {
+      "name": "f5_scales_c_slow_forte_o.csv",
+      "bytes": 65052,
+      "sha256": "bcc21eae560f3077479424abeef6aa876e520e7cfae0dd66f230a01b399f8cbd"
+    },
+    {
+      "name": "f5_scales_c_fast_piano_a.wav",
+      "bytes": 304074,
+      "sha256": "576811d03b7a7746868fbfef8aca6b20ee766984a537e84ae0d9403862fdca19"
+    },
+    {
+      "name": "f5_scales_c_fast_piano_a.csv",
+      "bytes": 22933,
+      "sha256": "a3d2f56a66af85f434004385871d0d9694a089162011259d046df8ea5fa3c39b"
+    },
+    {
+      "name": "f6_scales_c_slow_forte_a.wav",
+      "bytes": 887994,
+      "sha256": "7a3c0d21111edb3491fd2123a400f534ea14e40b4316bd3f85bc262e3cf240a6"
+    },
+    {
+      "name": "f6_scales_c_slow_forte_a.csv",
+      "bytes": 66900,
+      "sha256": "910c0a3de4a14dc992543f65c5cb1c6353421e6192455ed8998196989b669a59"
+    },
+    {
+      "name": "f6_scales_c_fast_piano_a.wav",
+      "bytes": 345894,
+      "sha256": "0045348aba28f99e324dc7f9ed597562892e087013f81e77ec13bd816b86f913"
+    },
+    {
+      "name": "f6_scales_c_fast_piano_a.csv",
+      "bytes": 26090,
+      "sha256": "0af599ccdc5a1ccc3228db6916258709429ddeeb860abfdf56707bdf6a50c3ee"
+    },
+    {
+      "name": "f7_scales_c_slow_forte_i.wav",
+      "bytes": 1021668,
+      "sha256": "389fbb578d0ba213d9f5240e15d6025426a6433295b4dc9a16549040ba364836"
+    },
+    {
+      "name": "f7_scales_c_slow_forte_i.csv",
+      "bytes": 76910,
+      "sha256": "1ca8d2946c181807b3d71dd2995eedf9db026b33106bc5dc953abe6b0ab846fc"
+    },
+    {
+      "name": "f7_scales_c_fast_piano_a.wav",
+      "bytes": 319824,
+      "sha256": "523d30cc857e673ccdd76680fc5fac7a22ed39543ef0c3114a3874d241092d47"
+    },
+    {
+      "name": "f7_scales_c_fast_piano_a.csv",
+      "bytes": 24165,
+      "sha256": "61644060f68620dc585d281bba142f7ab61cc315b589e3824a16e0b64400094e"
+    },
+    {
+      "name": "f8_scales_c_slow_forte_i.wav",
+      "bytes": 1137394,
+      "sha256": "879c93f962b9aaa828986aa9e0ea30256684a7ddddd36c81d879b3787bfcb9e1"
+    },
+    {
+      "name": "f8_scales_c_slow_forte_i.csv",
+      "bytes": 85611,
+      "sha256": "e7fcbbbb1a3e5b39de185b136d6e0937ca3cfe83b7f86fc8e1dd7c7963df5ea4"
+    },
+    {
+      "name": "f8_scales_c_fast_piano_a.wav",
+      "bytes": 451750,
+      "sha256": "4c694d6ff7fedce514ea96b7ffaa592392c7ac6a01c53320af4735d91119183c"
+    },
+    {
+      "name": "f8_scales_c_fast_piano_a.csv",
+      "bytes": 34098,
+      "sha256": "118df138324534ad65bf84bf85f365571f642ae2ae4a1754f5f707da53e2dc96"
+    },
+    {
+      "name": "f9_scales_c_slow_forte_a.wav",
+      "bytes": 977272,
+      "sha256": "b34c190369d4426aa0ae18ecdee398be9bd7ed4b556a4b425ec3bd29e5764b4c"
+    },
+    {
+      "name": "f9_scales_c_slow_forte_a.csv",
+      "bytes": 73599,
+      "sha256": "0aa796bce8d0a4f3a81a445ac65a802ebb7a25c0eb6115ad64b5d68dbce2a28e"
+    },
+    {
+      "name": "f9_scales_c_fast_piano_a.wav",
+      "bytes": 327238,
+      "sha256": "2b595a45b32ba29b4c02112c26973978b739bf9e5458a41946a783d89f39572d"
+    },
+    {
+      "name": "f9_scales_c_fast_piano_a.csv",
+      "bytes": 24704,
+      "sha256": "19dd2fe7527a3179ed86068957c2b6028dfda2d7a99ba0da629edb1dd91bccb6"
+    },
+    {
+      "name": "m1_scales_c_fast_piano_a.wav",
+      "bytes": 343878,
+      "sha256": "16029b9ede080f342a5b7719b2cbbdf5f68adf97a4cc40ec11025a549124074e"
+    },
+    {
+      "name": "m1_scales_c_fast_piano_a.csv",
+      "bytes": 13000,
+      "sha256": "b9e5341c8dd32d6aabca12a4906ebed5c943c81be2db1677eaee1941da47661c"
+    },
+    {
+      "name": "m2_scales_c_slow_forte_o.wav",
+      "bytes": 1006028,
+      "sha256": "aee09588bfcacbd850f06dc107c1641c61ffd666cfd3d89c9ec935ad740dc781"
+    },
+    {
+      "name": "m2_scales_c_slow_forte_o.csv",
+      "bytes": 37948,
+      "sha256": "b851f1204767070951f3b326e123d46d945916a1ac0ab916da7c8054af283d6d"
+    },
+    {
+      "name": "m2_scales_c_fast_piano_a.wav",
+      "bytes": 296698,
+      "sha256": "b6d54e52e4cb1d9331b25f102cc7e962b1e731dc3917f009cab138e41c39818c"
+    },
+    {
+      "name": "m2_scales_c_fast_piano_a.csv",
+      "bytes": 11229,
+      "sha256": "6a3c43d578e48ec885a357d6966f4a46a79bde620b037ce6c7063ed75f5dd581"
+    },
+    {
+      "name": "m3_scales_c_slow_forte_u.wav",
+      "bytes": 1205132,
+      "sha256": "09f6555cd0ced6efba5adc2e51bf43984be2fecf5b901827bbb7f92a48023c10"
+    },
+    {
+      "name": "m3_scales_c_slow_forte_u.csv",
+      "bytes": 45417,
+      "sha256": "8c6bbc029e5415e75836e23afa63d9303631f05feef49b8166061801f1ac2f99"
+    },
+    {
+      "name": "m3_scales_c_fast_piano_a.wav",
+      "bytes": 351702,
+      "sha256": "837090abd82c34c997e0df64e8ad7b119f1e7d62395e7dee62cdd78e1a1decb6"
+    },
+    {
+      "name": "m3_scales_c_fast_piano_a.csv",
+      "bytes": 13308,
+      "sha256": "f5425c230eba8eb28d275392665821526568b94eddc035a6030f58a78a6a9fa3"
+    },
+    {
+      "name": "m4_scales_f_slow_forte_a.wav",
+      "bytes": 1375248,
+      "sha256": "db41e8b09b1e045f8c83bf045b96583d63afd640cfb341f6b202084ebd17a60f"
+    },
+    {
+      "name": "m4_scales_f_slow_forte_a.csv",
+      "bytes": 51808,
+      "sha256": "ec65dbf37f752382929397f6679a02e6287be8722b261b8cc34875e2d42cd2e0"
+    },
+    {
+      "name": "m4_scales_c_fast_piano_a.wav",
+      "bytes": 403290,
+      "sha256": "a5d3dfacd0a7be71f791f1807e3e522765dc8309af5a45dc6d1a8c846ef9ba1c"
+    },
+    {
+      "name": "m4_scales_c_fast_piano_a.csv",
+      "bytes": 15233,
+      "sha256": "825ca9416c2902675b8511c3f9554679a9460120379b7d16482495da4d4fc06e"
+    },
+    {
+      "name": "m5_scales_f_slow_forte_i.wav",
+      "bytes": 1071326,
+      "sha256": "a36f51d4f63ba1822671ebaa2b9decba2ed5613e6dd25b25abdf75e4e19365d7"
+    },
+    {
+      "name": "m5_scales_f_slow_forte_i.csv",
+      "bytes": 40412,
+      "sha256": "102fc6c4e416aa40057e7b1044aae86b6f22ad112abce0c4a3daddf36667b376"
+    },
+    {
+      "name": "m5_scales_c_fast_piano_a.wav",
+      "bytes": 544994,
+      "sha256": "663ecb12fb9f5d0dff91121624bb8abbb8bfdef6f14f691532e13a766641fcb3"
+    },
+    {
+      "name": "m5_scales_c_fast_piano_a.csv",
+      "bytes": 20623,
+      "sha256": "08c10a96e0130a9edc5687bfb0329fe2c307158bc07b4f13023be7113b02a931"
+    },
+    {
+      "name": "m6_scales_c_slow_forte_a.wav",
+      "bytes": 1690712,
+      "sha256": "f469291f9adb85a3462f28631e1a635006dd6b11ac1b7cd98f5885376d3c49e7"
+    },
+    {
+      "name": "m6_scales_c_slow_forte_a.csv",
+      "bytes": 63666,
+      "sha256": "39c6551bb57121c769b73ac7e332a2e1f0965f1cfff1f3cc6f03ef7283679a69"
+    },
+    {
+      "name": "m6_scales_c_fast_piano_e.wav",
+      "bytes": 346138,
+      "sha256": "5f5db24860e407d889e68236d2c768bac91791aeea7001284688f885a0b206ab"
+    },
+    {
+      "name": "m6_scales_c_fast_piano_e.csv",
+      "bytes": 13077,
+      "sha256": "247f2f38c67ac7fae9bb63f91d522487ded146cb66c357738944f276f3962ab3"
+    },
+    {
+      "name": "m7_scales_c_slow_forte_i.wav",
+      "bytes": 829878,
+      "sha256": "7e97aa2d6f6ddea14537335bc36c4969014e212dd6b0a0af51113f57d60e94c7"
+    },
+    {
+      "name": "m7_scales_c_slow_forte_i.csv",
+      "bytes": 31326,
+      "sha256": "9ecfe8017d24307038e55da202c9365b92119f5718b70edd488ded6d9ca41982"
+    },
+    {
+      "name": "m7_scales_c_fast_piano_a.wav",
+      "bytes": 258472,
+      "sha256": "26abeda5087e7f409399cf34003eda9a30a845cb236be354dd341a2113310f80"
+    },
+    {
+      "name": "m7_scales_c_fast_piano_a.csv",
+      "bytes": 9843,
+      "sha256": "2b52f5e262f60cc4993ad1ccd9660eef03cdec047256c19ca4b9a219b5c39fc7"
+    },
+    {
+      "name": "m8_scales_c_slow_forte_a.wav",
+      "bytes": 696126,
+      "sha256": "418a2d606bfc4e238fa2c9f438dc37d1ebffaf1dbf26dc613e958568701c491b"
+    },
+    {
+      "name": "m8_scales_c_slow_forte_a.csv",
+      "bytes": 26244,
+      "sha256": "287d1cd3a239b72cc54b7911454a1906cc8fc4e0241f0b96b01c0824d88b9eea"
+    },
+    {
+      "name": "m8_scales_c_fast_piano_a.wav",
+      "bytes": 329236,
+      "sha256": "14ed455fa467d0f0bea8cd9f321ac39b53c1d244377df448fbde156d0a30f195"
+    },
+    {
+      "name": "m8_scales_c_fast_piano_a.csv",
+      "bytes": 12461,
+      "sha256": "6314c3ca79b17ff6d8f9e5b382386625990538fd2be47d571e9f1133ea8bf3f1"
+    },
+    {
+      "name": "m9_scales_c_slow_forte_a.wav",
+      "bytes": 980646,
+      "sha256": "ee7a2999e0e17b47f3d9b1564f41fcfc53f75c905bd17b014bc2e37a04cf92e7"
+    },
+    {
+      "name": "m9_scales_c_slow_forte_a.csv",
+      "bytes": 73830,
+      "sha256": "a9a00dd4ce08bb7e80c18b4c51b604580c5173e81f017d84e39f1e548f4465d3"
+    },
+    {
+      "name": "m9_scales_c_fast_piano_a.wav",
+      "bytes": 327566,
+      "sha256": "ee9da0b06ddcae9002aac7ebc5b7a6d3d49ef48e71dcb9c75bcaa71ce8ac0b8e"
+    },
+    {
+      "name": "m9_scales_c_fast_piano_a.csv",
+      "bytes": 24704,
+      "sha256": "5c33e29f153b645e699c690a372f86c1c94aac9a5643e7ab4c4cbd002246e43c"
+    },
+    {
+      "name": "m11_scales_c_slow_forte_i.wav",
+      "bytes": 862412,
+      "sha256": "d0cb008764ccfeddf4eb54ab43a53f6e66c0ebc13b80a754c0e4ff2d013c8f5a"
+    },
+    {
+      "name": "m11_scales_c_slow_forte_i.csv",
+      "bytes": 32558,
+      "sha256": "11fab657c94ae1ae72d782bf00929da7a4be63979c55379439c3323ecfcf4d61"
+    },
+    {
+      "name": "m11_scales_c_fast_piano_e.wav",
+      "bytes": 349664,
+      "sha256": "809f53a29d67afe29771a8d9db1f7d70e52d8ee9fe92a44f224e3a3625ff6213"
+    },
+    {
+      "name": "m11_scales_c_fast_piano_e.csv",
+      "bytes": 13231,
+      "sha256": "5166117f185022db271b6c94c6ac513ee503e82559325be250dae3149bdea2f5"
+    }
+  ],
+  "downloadedBytes": 27821343,
+  "scope": "Selected member CRCs and hashes; entire multi-gigabyte archive MD5 not verified"
+}

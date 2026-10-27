@@ -1,0 +1,692 @@
+{
+  "status": "FROZEN before detector evaluation",
+  "record": "https://zenodo.org/records/10200775",
+  "archiveURL": "https://zenodo.org/records/10200775/files/VocalSet.zip",
+  "archiveBytes": 2488206010,
+  "archiveMD5": "8d39344bbc775aa040840783ae73cfa4",
+  "license": "CC-BY-4.0",
+  "attribution": "Wilkins, Seetharaman, Wahl and Pardo (2018), VocalSet; Faghih and Timoney (2022), Annotated-VocalSet; Santiago Donaher (2023), corrected combined deposit DOI 10.5281/zenodo.10200775.",
+  "selection": "First lexicographic matching C/F scale and vowel per singer for slow_forte and fast_piano; annotations/raw 4/csv, matched by basename; selected without loading audio or pitch values.",
+  "missing": [
+    "m1/slow_forte",
+    "m10/slow_forte",
+    "m10/fast_piano"
+  ],
+  "scope": "Offline evaluation of fixed detector only; no training, model retention, generation, public audio or lyric distribution. Scales only, no song excerpts.",
+  "detectorSha256": "06853d19354302baa2984c6a09a7261bbc1e5bd692cfb0ee8bc498b11cc2fccd",
+  "sampleRate": 48000,
+  "windowSamples": 2048,
+  "hopSamples": 480,
+  "centTolerance": 50,
+  "annotationMaxDistanceSeconds": 0.01,
+  "normalization": false,
+  "thresholdTuning": false,
+  "tracks": [
+    {
+      "singer": "f1",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/female1/scales/slow_forte/f1_scales_c_slow_forte_a.wav",
+        "bytes": 1072036,
+        "compressed": 847185,
+        "offset": 222579576,
+        "crc": 423483862
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/f1_scales_c_slow_forte_a.csv",
+        "bytes": 80683,
+        "compressed": 12272,
+        "offset": 2195800055,
+        "crc": 2011822632
+      }
+    },
+    {
+      "singer": "f1",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/female1/scales/fast_piano/f1_scales_c_fast_piano_a.wav",
+        "bytes": 374724,
+        "compressed": 253038,
+        "offset": 247663339,
+        "crc": 1364062841
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/f1_scales_c_fast_piano_a.csv",
+        "bytes": 28246,
+        "compressed": 4499,
+        "offset": 2209832251,
+        "crc": 3427084880
+      }
+    },
+    {
+      "singer": "f2",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/female2/scales/slow_forte/f2_scales_f_slow_forte_i.wav",
+        "bytes": 1170780,
+        "compressed": 1019257,
+        "offset": 1462664359,
+        "crc": 1694320908
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/f2_scales_f_slow_forte_i.csv",
+        "bytes": 88152,
+        "compressed": 13374,
+        "offset": 2195845305,
+        "crc": 1992225292
+      }
+    },
+    {
+      "singer": "f2",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/female2/scales/fast_piano/f2_scales_c_fast_piano_a.wav",
+        "bytes": 342050,
+        "compressed": 255371,
+        "offset": 1490025230,
+        "crc": 52957824
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/f2_scales_c_fast_piano_a.csv",
+        "bytes": 25782,
+        "compressed": 4208,
+        "offset": 2209407966,
+        "crc": 4160884284
+      }
+    },
+    {
+      "singer": "f3",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/female3/scales/slow_forte/f3_scales_f_slow_forte_a.wav",
+        "bytes": 1034830,
+        "compressed": 873864,
+        "offset": 1164679504,
+        "crc": 2777578940
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/f3_scales_f_slow_forte_a.csv",
+        "bytes": 77911,
+        "compressed": 11772,
+        "offset": 2196070112,
+        "crc": 2484551628
+      }
+    },
+    {
+      "singer": "f3",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/female3/scales/fast_piano/f3_scales_c_fast_piano_a.wav",
+        "bytes": 343982,
+        "compressed": 251127,
+        "offset": 1192144059,
+        "crc": 306621990
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/f3_scales_c_fast_piano_a.csv",
+        "bytes": 25936,
+        "compressed": 4157,
+        "offset": 2210103684,
+        "crc": 2078321638
+      }
+    },
+    {
+      "singer": "f4",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/female4/scales/slow_forte/f4_scales_c_slow_forte_u.wav",
+        "bytes": 1107342,
+        "compressed": 782587,
+        "offset": 1273425991,
+        "crc": 1489460517
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/f4_scales_c_slow_forte_u.csv",
+        "bytes": 83378,
+        "compressed": 12262,
+        "offset": 2195603600,
+        "crc": 1561920842
+      }
+    },
+    {
+      "singer": "f4",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/female4/scales/fast_piano/f4_scales_c_fast_piano_a.wav",
+        "bytes": 324794,
+        "compressed": 185632,
+        "offset": 1286879683,
+        "crc": 794700602
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/f4_scales_c_fast_piano_a.csv",
+        "bytes": 24550,
+        "compressed": 3903,
+        "offset": 2210211265,
+        "crc": 784880079
+      }
+    },
+    {
+      "singer": "f5",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/female5/scales/slow_forte/f5_scales_c_slow_forte_o.wav",
+        "bytes": 863344,
+        "compressed": 690312,
+        "offset": 1347641945,
+        "crc": 3872227627
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/f5_scales_c_slow_forte_o.csv",
+        "bytes": 65052,
+        "compressed": 9409,
+        "offset": 2195579576,
+        "crc": 658662960
+      }
+    },
+    {
+      "singer": "f5",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/female5/scales/fast_piano/f5_scales_c_fast_piano_a.wav",
+        "bytes": 304074,
+        "compressed": 211043,
+        "offset": 1370396503,
+        "crc": 1096864191
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/f5_scales_c_fast_piano_a.csv",
+        "bytes": 22933,
+        "compressed": 3716,
+        "offset": 2209300660,
+        "crc": 437157808
+      }
+    },
+    {
+      "singer": "f6",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/female6/scales/slow_forte/f6_scales_c_slow_forte_a.wav",
+        "bytes": 887994,
+        "compressed": 762721,
+        "offset": 325905670,
+        "crc": 4034792431
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/f6_scales_c_slow_forte_a.csv",
+        "bytes": 66900,
+        "compressed": 10043,
+        "offset": 2196135945,
+        "crc": 4168009432
+      }
+    },
+    {
+      "singer": "f6",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/female6/scales/fast_piano/f6_scales_c_fast_piano_a.wav",
+        "bytes": 345894,
+        "compressed": 274664,
+        "offset": 344146189,
+        "crc": 775900523
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/f6_scales_c_fast_piano_a.csv",
+        "bytes": 26090,
+        "compressed": 4141,
+        "offset": 2209955414,
+        "crc": 3543598117
+      }
+    },
+    {
+      "singer": "f7",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/female7/scales/slow_forte/f7_scales_c_slow_forte_i.wav",
+        "bytes": 1021668,
+        "compressed": 846545,
+        "offset": 122068780,
+        "crc": 3778550073
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/f7_scales_c_slow_forte_i.csv",
+        "bytes": 76910,
+        "compressed": 11825,
+        "offset": 2195911437,
+        "crc": 2879368183
+      }
+    },
+    {
+      "singer": "f7",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/female7/scales/fast_piano/f7_scales_c_fast_piano_a.wav",
+        "bytes": 319824,
+        "compressed": 248432,
+        "offset": 154604433,
+        "crc": 6758697
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/f7_scales_c_fast_piano_a.csv",
+        "bytes": 24165,
+        "compressed": 4095,
+        "offset": 2209576498,
+        "crc": 636575343
+      }
+    },
+    {
+      "singer": "f8",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/female8/scales/slow_forte/f8_scales_c_slow_forte_i.wav",
+        "bytes": 1137394,
+        "compressed": 897347,
+        "offset": 429193584,
+        "crc": 3361545952
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/f8_scales_c_slow_forte_i.csv",
+        "bytes": 85611,
+        "compressed": 12678,
+        "offset": 2196123119,
+        "crc": 2853034718
+      }
+    },
+    {
+      "singer": "f8",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/female8/scales/fast_piano/f8_scales_c_fast_piano_a.wav",
+        "bytes": 451750,
+        "compressed": 318766,
+        "offset": 454749871,
+        "crc": 3939225368
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/f8_scales_c_fast_piano_a.csv",
+        "bytes": 34098,
+        "compressed": 5203,
+        "offset": 2209661252,
+        "crc": 590050615
+      }
+    },
+    {
+      "singer": "f9",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/female9/scales/slow_forte/f9_scales_c_slow_forte_a.wav",
+        "bytes": 977272,
+        "compressed": 787030,
+        "offset": 31358465,
+        "crc": 4060416457
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/f9_scales_c_slow_forte_a.csv",
+        "bytes": 73599,
+        "compressed": 11328,
+        "offset": 2195958062,
+        "crc": 4153291427
+      }
+    },
+    {
+      "singer": "f9",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/female9/scales/fast_piano/f9_scales_c_fast_piano_a.wav",
+        "bytes": 327238,
+        "compressed": 238537,
+        "offset": 51174486,
+        "crc": 740746623
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/f9_scales_c_fast_piano_a.csv",
+        "bytes": 24704,
+        "compressed": 4025,
+        "offset": 2209866974,
+        "crc": 1988708973
+      }
+    },
+    {
+      "singer": "m1",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/male1/scales/fast_piano/m1_scales_c_fast_piano_a.wav",
+        "bytes": 343878,
+        "compressed": 230867,
+        "offset": 2022627909,
+        "crc": 1687413740
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/m1_scales_c_fast_piano_a.csv",
+        "bytes": 13000,
+        "compressed": 2217,
+        "offset": 2209953049,
+        "crc": 2280355349
+      }
+    },
+    {
+      "singer": "m2",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/male2/scales/slow_forte/m2_scales_c_slow_forte_o.wav",
+        "bytes": 1006028,
+        "compressed": 853788,
+        "offset": 763990858,
+        "crc": 4027036962
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/m2_scales_c_slow_forte_o.csv",
+        "bytes": 37948,
+        "compressed": 6106,
+        "offset": 2195589133,
+        "crc": 1767202724
+      }
+    },
+    {
+      "singer": "m2",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/male2/scales/fast_piano/m2_scales_c_fast_piano_a.wav",
+        "bytes": 296698,
+        "compressed": 212818,
+        "offset": 789771076,
+        "crc": 2873465143
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/m2_scales_c_fast_piano_a.csv",
+        "bytes": 11229,
+        "compressed": 1966,
+        "offset": 2209298546,
+        "crc": 1889321821
+      }
+    },
+    {
+      "singer": "m3",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/male3/scales/slow_forte/m3_scales_c_slow_forte_u.wav",
+        "bytes": 1205132,
+        "compressed": 1010816,
+        "offset": 638746566,
+        "crc": 2118214473
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/m3_scales_c_slow_forte_u.csv",
+        "bytes": 45417,
+        "compressed": 6967,
+        "offset": 2195616010,
+        "crc": 1865594994
+      }
+    },
+    {
+      "singer": "m3",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/male3/scales/fast_piano/m3_scales_c_fast_piano_a.wav",
+        "bytes": 351702,
+        "compressed": 275589,
+        "offset": 677040811,
+        "crc": 3596815045
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/m3_scales_c_fast_piano_a.csv",
+        "bytes": 13308,
+        "compressed": 2333,
+        "offset": 2210208784,
+        "crc": 2137186876
+      }
+    },
+    {
+      "singer": "m4",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/male4/scales/slow_forte/m4_scales_f_slow_forte_a.wav",
+        "bytes": 1375248,
+        "compressed": 1128411,
+        "offset": 540216237,
+        "crc": 707777149
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/m4_scales_f_slow_forte_a.csv",
+        "bytes": 51808,
+        "compressed": 7971,
+        "offset": 2196054299,
+        "crc": 1967471315
+      }
+    },
+    {
+      "singer": "m4",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/male4/scales/fast_piano/m4_scales_c_fast_piano_a.wav",
+        "bytes": 403290,
+        "compressed": 235516,
+        "offset": 560995510,
+        "crc": 1289796026
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/m4_scales_c_fast_piano_a.csv",
+        "bytes": 15233,
+        "compressed": 2502,
+        "offset": 2210107989,
+        "crc": 3807263458
+      }
+    },
+    {
+      "singer": "m5",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/male5/scales/slow_forte/m5_scales_f_slow_forte_i.wav",
+        "bytes": 1071326,
+        "compressed": 878718,
+        "offset": 880472905,
+        "crc": 2249562053
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/m5_scales_f_slow_forte_i.csv",
+        "bytes": 40412,
+        "compressed": 6417,
+        "offset": 2195867828,
+        "crc": 2903853810
+      }
+    },
+    {
+      "singer": "m5",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/male5/scales/fast_piano/m5_scales_c_fast_piano_a.wav",
+        "bytes": 544994,
+        "compressed": 336145,
+        "offset": 899788811,
+        "crc": 2420115832
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/m5_scales_c_fast_piano_a.csv",
+        "bytes": 20623,
+        "compressed": 3407,
+        "offset": 2209412322,
+        "crc": 3663392090
+      }
+    },
+    {
+      "singer": "m6",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/male6/scales/slow_forte/m6_scales_c_slow_forte_a.wav",
+        "bytes": 1690712,
+        "compressed": 1415483,
+        "offset": 1882727528,
+        "crc": 3245193016
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/m6_scales_c_slow_forte_a.csv",
+        "bytes": 63666,
+        "compressed": 9776,
+        "offset": 2195812475,
+        "crc": 1321415408
+      }
+    },
+    {
+      "singer": "m6",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/male6/scales/fast_piano/m6_scales_c_fast_piano_e.wav",
+        "bytes": 346138,
+        "compressed": 244604,
+        "offset": 1914266815,
+        "crc": 3434687469
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/m6_scales_c_fast_piano_e.csv",
+        "bytes": 13077,
+        "compressed": 2271,
+        "offset": 2209939792,
+        "crc": 4114189997
+      }
+    },
+    {
+      "singer": "m7",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/male7/scales/slow_forte/m7_scales_c_slow_forte_i.wav",
+        "bytes": 829878,
+        "compressed": 665184,
+        "offset": 1578190049,
+        "crc": 3510444615
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/m7_scales_c_slow_forte_i.csv",
+        "bytes": 31326,
+        "compressed": 5252,
+        "offset": 2196048899,
+        "crc": 3446827931
+      }
+    },
+    {
+      "singer": "m7",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/male7/scales/fast_piano/m7_scales_c_fast_piano_a.wav",
+        "bytes": 258472,
+        "compressed": 199294,
+        "offset": 1602871975,
+        "crc": 2263464966
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/m7_scales_c_fast_piano_a.csv",
+        "bytes": 9843,
+        "compressed": 1845,
+        "offset": 2209674255,
+        "crc": 4241810043
+      }
+    },
+    {
+      "singer": "m8",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/male8/scales/slow_forte/m8_scales_c_slow_forte_a.wav",
+        "bytes": 696126,
+        "compressed": 593296,
+        "offset": 1781546870,
+        "crc": 1879703505
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/m8_scales_c_slow_forte_a.csv",
+        "bytes": 26244,
+        "compressed": 4034,
+        "offset": 2196328917,
+        "crc": 16701543
+      }
+    },
+    {
+      "singer": "m8",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/male8/scales/fast_piano/m8_scales_c_fast_piano_a.wav",
+        "bytes": 329236,
+        "compressed": 245360,
+        "offset": 1806157990,
+        "crc": 569585111
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/m8_scales_c_fast_piano_a.csv",
+        "bytes": 12461,
+        "compressed": 2196,
+        "offset": 2209606021,
+        "crc": 3653022430
+      }
+    },
+    {
+      "singer": "m9",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/male9/scales/slow_forte/m9_scales_c_slow_forte_a.wav",
+        "bytes": 980646,
+        "compressed": 822486,
+        "offset": 1683290613,
+        "crc": 3113569684
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/m9_scales_c_slow_forte_a.csv",
+        "bytes": 73830,
+        "compressed": 11272,
+        "offset": 2196018270,
+        "crc": 2948290334
+      }
+    },
+    {
+      "singer": "m9",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/male9/scales/fast_piano/m9_scales_c_fast_piano_a.wav",
+        "bytes": 327566,
+        "compressed": 228669,
+        "offset": 1708019260,
+        "crc": 3019443214
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/m9_scales_c_fast_piano_a.csv",
+        "bytes": 24704,
+        "compressed": 4183,
+        "offset": 2209895565,
+        "crc": 3566611673
+      }
+    },
+    {
+      "singer": "m11",
+      "condition": "slow_forte",
+      "audio": {
+        "name": "VocalSet/FULL/male11/scales/slow_forte/m11_scales_c_slow_forte_i.wav",
+        "bytes": 862412,
+        "compressed": 681423,
+        "offset": 1073059728,
+        "crc": 1404218903
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/slow_forte/m11_scales_c_slow_forte_i.csv",
+        "bytes": 32558,
+        "compressed": 5251,
+        "offset": 2195710348,
+        "crc": 2028203327
+      }
+    },
+    {
+      "singer": "m11",
+      "condition": "fast_piano",
+      "audio": {
+        "name": "VocalSet/FULL/male11/scales/fast_piano/m11_scales_c_fast_piano_e.wav",
+        "bytes": 349664,
+        "compressed": 280041,
+        "offset": 1094300674,
+        "crc": 664911954
+      },
+      "annotation": {
+        "name": "VocalSet/annotations/raw 4/csv/fast_piano/m11_scales_c_fast_piano_e.csv",
+        "bytes": 13231,
+        "compressed": 2407,
+        "offset": 2209732411,
+        "crc": 1747809371
+      }
+    }
+  ]
+}

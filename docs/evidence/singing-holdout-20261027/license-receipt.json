@@ -1,0 +1,23 @@
+{
+  "record": "https://zenodo.org/records/10200775",
+  "title": "VocalSet & Annotated VocalSet",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "creators": [
+    {
+      "name": "Donaher, Santiago",
+      "affiliation": null,
+      "orcid": "0000-0002-8863-7211"
+    }
+  ],
+  "publicationDate": "2023-11-23",
+  "files": [
+    {
+      "key": "VocalSet.zip",
+      "size": 2488206010,
+      "checksum": "md5:8d39344bbc775aa040840783ae73cfa4"
+    }
+  ],
+  "scope": "37 selected vowel scales and annotations for evaluation only; no training or audio redistribution"
+}

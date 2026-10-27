@@ -46,6 +46,9 @@ struct JamloomApp: App {
             .alert("Jamloom", isPresented: $showError) {
                 Button("OK") { model.error = nil }
             } message: { Text(model.error ?? "") }
+            #if DEBUG
+            .task { await AppleCatalogueProbe.run() }
+            #endif
     } }
 }
 

@@ -5,9 +5,9 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {performance} from 'node:perf_hooks';
 import assert from 'node:assert/strict';
-import {detectPitch} from '../apps/web/singing-pitch.js';
+import {detectPitch,isSingingPitch} from '../apps/web/singing-pitch.js';
 
-const root=resolve(import.meta.dirname,'..'),base=resolve(process.argv[2]||root+'/build-singing-benchmark'),out=root+'/docs/evidence/singing-completion-20261026';
+const root=resolve(import.meta.dirname,'..'),base=resolve(process.argv[2]||root+'/build-singing-benchmark'),out=resolve(process.argv[3]||root+'/docs/evidence/singing-completion-20261026');
 const hash=(b,algorithm='sha256')=>createHash(algorithm).update(b).digest('hex');
 assert.equal(hash(readFileSync(base+'/vocadito.zip'),'md5'),'dea40fd18f14d899643c4ba221b33a46','Dataset version mismatch');
 const percentile=(a,p)=>a.length?[...a].sort((a,b)=>a-b)[Math.min(a.length-1,Math.floor(a.length*p))]:null;
@@ -29,7 +29,7 @@ for(const [id,singer,averageMidi,language] of metadata){
    while(cursor+1<reference.length&&Math.abs(reference[cursor+1][0]-center)<Math.abs(reference[cursor][0]-center))cursor++;
    if(Math.abs(reference[cursor][0]-center)>.01)continue;
    const truth=reference[cursor][1],started=performance.now(),pitch=detectPitch(audio.subarray(offset,offset+size),44100);times.push(performance.now()-started);
-   const voiced=!!pitch&&pitch.confidence>=.9&&pitch.rms>=.01;
+   const voiced=isSingingPitch(pitch);
    c.frames++;if(truth>0)c.referenceVoiced++;if(truth>0&&(truth<80||truth>1000))c.outOfRange++;if(voiced)c.predictedVoiced++;
    if(truth>0&&voiced){c.hit++;const error=Math.abs(1200*Math.log2(pitch.frequency/truth));errors.push(error);if(error<=50)c.correct++;}
    else if(voiced)c.falseVoiced++;else if(truth===0)c.correctUnvoiced++;
@@ -41,4 +41,4 @@ for(const [id,singer,averageMidi,language] of metadata){
  console.log('Evaluated vocadito '+id);
 }
 const aggregate=[80,40].map(windowMs=>{const rows=tracks.map(t=>t.results.find(r=>r.windowMs===windowMs)),counts=Object.fromEntries(Object.keys(rows[0].counts).map(key=>[key,rows.reduce((sum,r)=>sum+r.counts[key],0)]));return {windowMs,counts,...metrics(counts),trackMedianWithin50Cents:percentile(rows.map(r=>r.within50CentsOfReference),.5),worstTrackWithin50Cents:Math.min(...rows.map(r=>r.within50CentsOfReference)),worstP95CpuMs:Math.max(...rows.map(r=>r.p95CpuMs))};});
-mkdirSync(out,{recursive:true});writeFileSync(out+'/human-voice-benchmark.json',JSON.stringify({status:'PASS evaluation executed; see measured limitations',dataset:'vocadito v3 DOI 10.5281/zenodo.5578807',datasetLicense:'CC-BY-4.0',use:'Offline held-out pitch evaluation only; no training or audio redistribution',detectorSha256:hash(readFileSync(root+'/apps/web/singing-pitch.js')),node:process.version,ffmpeg:execFileSync('ffmpeg',['-version'],{encoding:'utf8'}).split('\n')[0],tracks:tracks.length,singers:new Set(tracks.map(t=>t.singer)).size,seconds:tracks.reduce((s,t)=>s+t.seconds,0),aggregate,results:tracks,limitations:['Human-corrected pYIN annotations are imperfect and related to the YIN family being tested','Nearest annotated pitch sampled at each analysis window center; 10 ms hop; no gain normalization','Errors and missed voiced frames are retained, including reference pitch outside the supported 80–1000 Hz range','Offline recordings from varied devices do not measure live microphone-to-display latency','Pitch tracking is not note-event, lyric, vocal-health or teaching-effectiveness validation']},null,2)+'\n');console.log(JSON.stringify(aggregate,null,2));
+mkdirSync(out,{recursive:true});writeFileSync(out+'/human-voice-benchmark.json',JSON.stringify({status:'PASS evaluation executed; see measured limitations',dataset:'vocadito v3 DOI 10.5281/zenodo.5578807',datasetLicense:'CC-BY-4.0',use:'Previously inspected reference corpus; offline evaluation only, no training or audio redistribution',detectorSha256:hash(readFileSync(root+'/apps/web/singing-pitch.js')),node:process.version,ffmpeg:execFileSync('ffmpeg',['-version'],{encoding:'utf8'}).split('\n')[0],tracks:tracks.length,singers:new Set(tracks.map(t=>t.singer)).size,seconds:tracks.reduce((s,t)=>s+t.seconds,0),aggregate,results:tracks,limitations:['Human-corrected pYIN annotations are imperfect and related to the YIN family being tested','Nearest annotated pitch sampled at each analysis window center; 10 ms hop; no gain normalization','Errors and missed voiced frames are retained, including reference pitch outside the supported 80–1000 Hz range','Offline recordings from varied devices do not measure live microphone-to-display latency','Pitch tracking is not note-event, lyric, vocal-health or teaching-effectiveness validation']},null,2)+'\n');console.log(JSON.stringify(aggregate,null,2));

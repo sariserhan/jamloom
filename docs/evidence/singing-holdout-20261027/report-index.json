@@ -1,0 +1,11 @@
+{
+  "current": "timeline-validated-results.json",
+  "initialReport": "results.json",
+  "initialReportStatus": "SUPERSEDED: contains two mismatched audio/annotation timelines; not a valid aggregate accuracy estimate",
+  "change": "Added duration coverage guard after initial inspection; detector, gate and labels unchanged",
+  "quarantined": [
+    "m9_scales_c_slow_forte_a.wav",
+    "m9_scales_c_fast_piano_a.wav"
+  ],
+  "heldoutStatus": "Selection frozen before evaluation; data now inspected, not reusable as an unseen set after tuning"
+}
