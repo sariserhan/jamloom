@@ -11,6 +11,13 @@ and stop on Community. The local archive and its audit pass; no upload.
 current unfinished requirements from the dated work log. Produced-song targets,
 fresh hosted qualification and formal independent/learned-model evidence remain
 open. Publication and live sales stay held; no new paid compute or provider mutation.
+Hosted follow-through: 14 worker-boundary tests pass on isolated refresh commit
+[`0c46bc2`](https://github.com/sariserhan/jamloom/commit/0c46bc21ac1eee18aaa2b6ae14fee0ca30acd6ac).
+GitHub image build [40573167871](https://github.com/sariserhan/jamloom/actions/runs/40573167871)
+was cancelled before digest publication after review found the Docker build embeds
+a Demucs checkpoint without established commercial permission. No RunPod endpoint
+change or GPU job occurred; the newly authorized $1 cap remains unused. Rights-safe
+image publication and full hosted qualification remain open.
 
 ## Accepted karaoke and local DJ review — 2026-10-27
 

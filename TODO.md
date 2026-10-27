@@ -9,7 +9,7 @@ retain the requirements that have not passed. No master requirement is waived.
 - [x] Build, sign, audit, install and launch iPhone 0.10.4 build 34 with the exact accepted files. Run 168 website tests and isolated account/billing HTTP checks; verify 32 matching production migrations read-only. [Current evidence](docs/evidence/completion-candidate-20261027/validation.json).
 - [x] Finish the current phone check: two native server tests pass; UI automation cannot initialize. Restore the signed Release; the owner confirms both karaoke backings play and stop on Community. Archive/audit build 34 locally; no upload. [Evidence](docs/COMPLETION_CANDIDATE.md).
 - [ ] **Produced-song scoring:** verify/correct actual sung words, note identities and timing; then use those targets in the existing recorded-song grader. Automatic transcript/pitch candidates still contain errors and are not approved targets. [Candidate review](http://localhost:8766/sung-targets/review/).
-- [ ] **Fresh hosted qualification:** validate the updated worker, jazz balance, maximum-library Music DNA, broader genre/language quality and sustained AI DJ capacity. Prior paid permits are consumed; current Runpod selection is an older image with zero worker limits. A local test cannot close this item. [Exact boundaries](docs/LOCAL_AUDIO_COMPLETION.md).
+- [ ] **Fresh hosted qualification:** validate the updated worker, jazz balance, maximum-library Music DNA, broader genre/language quality and sustained AI DJ capacity. The $1 cap now authorized covers only one startup smoke test, not this full qualification. A worker refresh passed 14 boundary tests, but its GitHub image build was cancelled before producing a digest: the Docker build downloads the Demucs checkpoint whose commercial permission is unestablished. No RunPod endpoint mutation or GPU spend occurred; the existing endpoint still uses the older image with zero worker limits. Resolve checkpoint rights or prepare a rights-cleared worker before spending the unused $1. [Exact boundaries](docs/LOCAL_AUDIO_COMPLETION.md), [worker build](https://github.com/sariserhan/jamloom/actions/runs/40573167871).
 - [ ] **Formal quality / learned-model evidence:** independent listeners and novice learning outcomes, cleared expert demonstration/decision labels and demonstrated benefit over the deterministic baseline remain unavailable/unqualified. Owner listening acceptance is retained but does not replace the master M1 study. [Specification map](docs/spec-coverage.md).
 
 **Held by the owner:** website/phone publication, live-sales activation and their
@@ -18,6 +18,10 @@ iPad and unavailable hardware; optional chart-song catalogue requires permission
 and usable assets under the no-purchase rule. None is silently marked PASS.
 
 ## Historical work log
+
+## Hosted worker refresh halted at rights review — 2026-10-27
+
+**PASS** 14 worker-boundary tests on isolated commit [`0c46bc2`](https://github.com/sariserhan/jamloom/commit/0c46bc21ac1eee18aaa2b6ae14fee0ca30acd6ac). **PARTIAL** hosted readiness: workflow [40573167871](https://github.com/sariserhan/jamloom/actions/runs/40573167871) was cancelled during Docker image build before the immutable-digest step after review found `prepare_models.finish()` downloads the HDEMUCS checkpoint whose commercial permission is unestablished. The $1 RunPod cap is unused; no endpoint or worker settings changed, no hosted job ran, and the old image remains unqualified. Do not retry image publication until the restricted checkpoint is removed/replaced or its applicable rights are established.
 
 ## Accepted karaoke and local DJ review — 2026-10-27
 
