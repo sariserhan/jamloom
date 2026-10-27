@@ -13,7 +13,7 @@
   "largeAccountRecovery": "purge-scale.log",
   "singingBrowser": "singing-preservation/browser.json",
   "productBrowser": "products/browser.json",
-  "physicalPhone": "PARTIAL: Release build 26 installed/launched; physical Singing demo/lifecycle and Community player pass; language-filter retry remains open",
+  "physicalPhone": "PASS scoped: Release build 26 installed/launched; physical Singing demo/course panel/tab cleanup, Community player and language/favorites filters pass. Fixtures do not verify live catalogue delivery.",
   "physicalMicLatency": "NOT RUN",
   "popularSongs": "BLOCKED: no verified supplier rights/assets",
   "sources": {

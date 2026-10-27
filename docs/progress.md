@@ -7,7 +7,7 @@
 - [x] Add Apple course receipt/refund handling and native purchase/restore with course/credit/account isolation; pass local StoreKit tests.
 - [x] Qualify real disposable R2 deletion and 1,000-track operator recovery after a mid-delete interruption; preserve unrelated content.
 - [x] Reconnect iPhone 14 Pro, pass physical Singing demo/tab cleanup and Community playback controls, then install/launch the exact prepared Release build 26.
-- [ ] Finish the current-device language/favorites filter check with the phone uninterrupted; retain failed attempts and separate fixture playback from live catalogue evidence.
+- [x] Pass the uninterrupted physical language/favorites filter check; restore and launch Release build 26. Retain failed attempts and separate fixture playback from live catalogue evidence.
 - [ ] Complete Apple metadata/reviewer setup and real sandbox/server delivery; keep paid flags closed.
 - [ ] Retain physical singing latency, broader musical quality/capacity and popular-song rights as unclosed evidence gates; no fresh GPU authorization is inferred.
 - [ ] Publish only after a later explicit instruction.

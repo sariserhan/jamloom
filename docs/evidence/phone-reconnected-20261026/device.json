@@ -1,11 +1,41 @@
 {
-  "status": "PARTIAL",
+  "status": "PASS scoped physical device checks",
   "device": "iPhone 14 Pro",
   "os": "27.0.1",
   "version": "0.10.2",
   "build": "26",
   "configuration": "Debug",
   "tests": [
+    {
+      "test": "testCommunityBottomPlayerPausesSeeksAndKeepsPlayingWhileBrowsing()",
+      "status": "Passed",
+      "durationSeconds": 33.74635601043701
+    },
+    {
+      "test": "testSingingSongsDemoAndTabCleanup()",
+      "status": "Passed",
+      "durationSeconds": 24.81339192390442
+    },
+    {
+      "test": "testCommunityLanguageFilterAndFavorites()",
+      "status": "Passed",
+      "durationSeconds": 30.817332983016968
+    }
+  ],
+  "releaseInstall": "PASS: exact prepared Release archive restored after final UI test",
+  "websiteDeployed": false,
+  "appUploaded": false,
+  "limitations": [
+    "Community uses isolated fixture songs, not live catalogue delivery.",
+    "Demo and lifecycle checks do not measure microphone accuracy, physical latency or listening quality.",
+    "Initial runs had invalid accessibility hit points and external-app interruptions; raw diagnostics retained locally."
+  ],
+  "resultBundle": "renders/ios-validation/phone-reconnected-touch-20261026.xcresult",
+  "rawLogs": "renders/ios-validation/phone-reconnected-logs-20261026",
+  "releaseLaunch": "PASS: normal com.djayvo.app launched without test arguments after final test",
+  "archive": "build-ios-store/Jamloom-0.10.2-26-final.xcarchive",
+  "languageFilter": "PASS: Turkish/English/all-language filters, favorite isolation and Clear filters",
+  "priorTouchAttempt": [
     {
       "test": "testCommunityBottomPlayerPausesSeeksAndKeepsPlayingWhileBrowsing()",
       "status": "Passed",
@@ -22,17 +52,5 @@
       "durationSeconds": 24.81339192390442
     }
   ],
-  "releaseInstall": "PASS: exact prepared development-signed Release archive installed",
-  "websiteDeployed": false,
-  "appUploaded": false,
-  "limitations": [
-    "Community uses isolated fixture songs, not live catalogue delivery.",
-    "Demo and lifecycle checks do not measure microphone accuracy, physical latency or listening quality.",
-    "Initial runs had invalid accessibility hit points and external-app interruptions; raw diagnostics retained locally."
-  ],
-  "resultBundle": "renders/ios-validation/phone-reconnected-touch-20261026.xcresult",
-  "rawLogs": "renders/ios-validation/phone-reconnected-logs-20261026",
-  "releaseLaunch": "PASS: com.djayvo.app launched without test arguments",
-  "archive": "build-ios-store/Jamloom-0.10.2-26-final.xcarchive",
-  "languageFilter": "PARTIAL: latest retry interrupted before reaching filter; full current-device check remains open"
+  "languageResultBundle": "renders/ios-validation/phone-language-uninterrupted-20261026.xcresult"
 }
