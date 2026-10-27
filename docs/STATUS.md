@@ -1,3 +1,17 @@
+## Current completion checkpoint — 2026-10-27
+
+Build **0.10.4 (34)** is signed/audited/installed/launched with accepted karaoke.
+168 website tests and isolated real-HTTP account/billing checks pass; a read-only
+production check finds 32 matching migrations and no pending changes. Two native server tests pass on the phone; UI automation fails before initialization.
+The signed Release is restored and the owner confirms both karaoke backings play
+and stop on Community. The local archive and its audit pass; no upload.
+[Current evidence and limits](COMPLETION_CANDIDATE.md).
+
+[Active targets](../TODO.md#current-completion-targets--2026-10-27) now distinguish
+current unfinished requirements from the dated work log. Produced-song targets,
+fresh hosted qualification and formal independent/learned-model evidence remain
+open. Publication and live sales stay held; no new paid compute or provider mutation.
+
 ## Accepted karaoke and local DJ review — 2026-10-27
 
 **PASS owner karaoke acceptance and overall DJ review; PASS local replacement/checks.** [Report](KARAOKE_ADOPTION.md).

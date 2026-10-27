@@ -1,3 +1,9 @@
+## Current installed candidate — 0.10.4 build 34
+
+Both accepted karaoke backings are now on your iPhone. You confirmed that Long Way Home and Leave It All Outside play and stop when switching to Community. The signed Release was restored after tests and opened successfully. A signed, audited archive is kept locally at `renders/completion-candidate-20261027/Jamloom-0.10.4-34.xcarchive`; nothing was uploaded.
+
+Two native server tests pass. Xcode could not initialize UI automation, so the current playback acceptance comes from your direct check. The website remains at http://127.0.0.1:3010. [The current completion report](COMPLETION_CANDIDATE.md) and [active TODO list](../TODO.md#current-completion-targets--2026-10-27) distinguish genuine unfinished requirements from the historical work log. Verified sung targets, fresh hosted qualification and formal independent/learned-model evidence remain open; deployment/sales are held and iPad remains excluded.
+
 ## Accepted backings now in the local course — 2026-10-27
 
 You approved both replacement karaoke backings. They are now the exact files used by Long Way Home and Leave It All Outside at http://127.0.0.1:3010/singing-academy; open a song and use Sing karaoke. Original singer recordings and lyric sheets remain unchanged. Both files are also prepared for the next iPhone build; the currently installed app has not been replaced this turn.

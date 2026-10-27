@@ -1,0 +1,58 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "process",
+      "launch",
+      "--device",
+      "1786A9A3-6848-5F6D-A089-D6453798AE6F",
+      "com.djayvo.app",
+      "--timeout",
+      "30",
+      "--json-output",
+      "/tmp/jamloom-build34-release-launch.json"
+    ],
+    "commandType" : "devicectl.device.process.launch",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.13.5"
+  },
+  "result" : {
+    "deviceIdentifier" : "1786A9A3-6848-5F6D-A089-D6453798AE6F",
+    "launchOptions" : {
+      "activatedWhenStarted" : true,
+      "arguments" : [
+
+      ],
+      "environmentVariables" : {
+        "TERM" : "dumb"
+      },
+      "platformSpecificOptions" : {
+
+      },
+      "startStopped" : false,
+      "terminateExistingInstances" : false,
+      "user" : {
+        "active" : true
+      }
+    },
+    "process" : {
+      "auditToken" : [
+        4294967295,
+        501,
+        501,
+        501,
+        501,
+        27671,
+        0,
+        73764
+      ],
+      "executable" : "file:///private/var/containers/Bundle/Application/1234AE00-34B6-4318-884A-F0D008336778/Jamloom.app/Jamloom",
+      "processIdentifier" : 27671
+    }
+  }
+}

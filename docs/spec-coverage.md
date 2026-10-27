@@ -1,3 +1,5 @@
+**Current native follow-through:** [Build 34](COMPLETION_CANDIDATE.md) is signed, audited, installed and locally archived; two physical server tests pass and the owner confirms both accepted karaoke backings play/stop on Community. UI automation fails before initialization. This closes the current asset-delivery check, not M1, verified scored-song targets, hosted/provider gates or public release.
+
 **Latest continuation:** [produced-song practice](SINGING_PRODUCED_PRACTICE.md) integrates the two accepted originals into web/native playback. Existing scores remain intact; new exact-song transcription/note targets and broad quality/provider gates remain open. Build 32 is signed, audited and installed; owner-observed Long Way Home playback/microphone/tab cleanup passes separately from the retained UI-runner timeout.
 
 # Specification coverage — 2026-10-27

@@ -1,0 +1,9 @@
+{
+  "build": "0.10.4 (34)",
+  "owner_response": "Both play and stop correctly",
+  "scope": "Sing karaoke for Long Way Home and Leave It All Outside, then switch to Community",
+  "status": "PASS owner-observed playback and tab cleanup for both accepted karaoke backings",
+  "microphone_pitch_accuracy": "NOT RUN",
+  "scored_target_accuracy": "NOT RUN",
+  "manifest_sha256": "cbf73b525dc2e4589e560d5a1c1338af29b1f2e1645908e117b8dfffa701ab29"
+}

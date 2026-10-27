@@ -1,3 +1,24 @@
+# Current completion targets — 2026-10-27
+
+This is the active list. The dated work log below preserves earlier observations;
+its historical unchecked items are not a second independent backlog. The current
+[product ledger](docs/PRODUCT_COMPLETION.md) and [specification map](docs/spec-coverage.md)
+retain the requirements that have not passed. No master requirement is waived.
+
+- [x] Adopt both owner-accepted karaoke backings in the local website and native package; record overall acceptance of the fresh four-track DJ set. [Evidence](docs/KARAOKE_ADOPTION.md).
+- [x] Build, sign, audit, install and launch iPhone 0.10.4 build 34 with the exact accepted files. Run 168 website tests and isolated account/billing HTTP checks; verify 32 matching production migrations read-only. [Current evidence](docs/evidence/completion-candidate-20261027/validation.json).
+- [x] Finish the current phone check: two native server tests pass; UI automation cannot initialize. Restore the signed Release; the owner confirms both karaoke backings play and stop on Community. Archive/audit build 34 locally; no upload. [Evidence](docs/COMPLETION_CANDIDATE.md).
+- [ ] **Produced-song scoring:** verify/correct actual sung words, note identities and timing; then use those targets in the existing recorded-song grader. Automatic transcript/pitch candidates still contain errors and are not approved targets. [Candidate review](http://localhost:8766/sung-targets/review/).
+- [ ] **Fresh hosted qualification:** validate the updated worker, jazz balance, maximum-library Music DNA, broader genre/language quality and sustained AI DJ capacity. Prior paid permits are consumed; current Runpod selection is an older image with zero worker limits. A local test cannot close this item. [Exact boundaries](docs/LOCAL_AUDIO_COMPLETION.md).
+- [ ] **Formal quality / learned-model evidence:** independent listeners and novice learning outcomes, cleared expert demonstration/decision labels and demonstrated benefit over the deterministic baseline remain unavailable/unqualified. Owner listening acceptance is retained but does not replace the master M1 study. [Specification map](docs/spec-coverage.md).
+
+**Held by the owner:** website/phone publication, live-sales activation and their
+production-dependent payment/provider evidence. **Excluded/deferred:** physical
+iPad and unavailable hardware; optional chart-song catalogue requires permissions
+and usable assets under the no-purchase rule. None is silently marked PASS.
+
+## Historical work log
+
 ## Accepted karaoke and local DJ review — 2026-10-27
 
 **PASS owner karaoke acceptance and overall DJ review; PASS local replacement/checks.** [Report](docs/KARAOKE_ADOPTION.md).

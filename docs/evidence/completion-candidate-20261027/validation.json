@@ -1,0 +1,23 @@
+{
+  "base_commit": "629390d8",
+  "version": "0.10.4",
+  "build": "34",
+  "signature": "PASS codesign --verify --deep --strict",
+  "bundle_audit": "PASS",
+  "recordings_manifest_sha256": "cbf73b525dc2e4589e560d5a1c1338af29b1f2e1645908e117b8dfffa701ab29",
+  "release_installed": "PASS",
+  "release_launched": "PASS",
+  "site_tests": 168,
+  "isolated_http": "PASS",
+  "production_schema": "PASS read-only: 32 matching migrations; no pending/changed/unknown",
+  "new_ui_tests": "FAIL before UI tests: Xcode timed out enabling automation",
+  "singing_price_usd": 39,
+  "paid_compute": false,
+  "publication": "HELD",
+  "native_server_tests": "PASS 2 tests on physical iPhone",
+  "owner_phone_check": "PASS both accepted karaoke backings play and stop on Community",
+  "release_reinstalled": "PASS after debug test attempt",
+  "release_relaunched": "PASS",
+  "archive": "PASS local signed and audited 0.10.4 (34); no export or upload",
+  "overall": "PARTIAL: verified singing targets, fresh hosted/provider and independent quality gates remain"
+}
