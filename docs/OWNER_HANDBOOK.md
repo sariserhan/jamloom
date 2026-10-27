@@ -1,3 +1,7 @@
+## Short-vocal review — 2026-10-27
+
+The retained sung-phrase audition was rejected by the owner (“Voice or timing needs work”). Do not promote it, count its rendering checks as musical acceptance, or present it as fresh generation. [Review and measurements](evidence/final-gates-20261026/retained-vocal-owner-review.json). No deployment or paid run followed this feedback.
+
 ## Latest release gates — 2026-10-26
 
 [Final-gate report](FINAL_GATES.md) is the current status. Singing Academy's Apple non-consumable draft now exists at exactly USD39, USA only, with a processed course screenshot. Sales remain closed; build26 remains local and older build24 remains selected in Apple. The real-purchase preflight currently returns Xcode rather than Sandbox: do not treat local StoreKit results as provider qualification. Credit review screenshots, reviewer credentials and real receipt/notification delivery remain open. The live public catalogue passes delivery checks for 222 songs. Local DJ pressure checks are not GPU/customer-scale capacity proof. Tency has not replied. No push or deployment occurred.

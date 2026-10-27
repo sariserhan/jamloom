@@ -1,5 +1,5 @@
 {
-  "status": "PASS technical; human listening NOT RUN",
+  "status": "PASS technical; FAIL human acceptance",
   "sourceHashes": [
     "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675",
     "caff479be92b0f0502d5e4904dabb3cdeb93f817bea7ff3430c7d12894192f19"
@@ -50,5 +50,6 @@
       "seconds": 12.0
     }
   ],
-  "limitation": "Manual retained-source selection does not qualify fresh vocal generation or automatic phrase selection. Earlier long repeated transcript segments were rejected as unreliable."
+  "limitation": "Manual retained-source selection does not qualify fresh vocal generation or automatic phrase selection. Earlier long repeated transcript segments were rejected as unreliable.",
+  "ownerReview": "retained-vocal-owner-review.json"
 }

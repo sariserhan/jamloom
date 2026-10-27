@@ -1,3 +1,9 @@
+## Retained vocal review — 2026-10-27
+
+- [x] Record owner rejection: “Voice or timing needs work.” Preserve the reviewed audio; rendering checks do not establish musical acceptance.
+- [x] Measure the original crop boundary: source is nonquiet at the start. Crop-start beat alignment does not verify syllable timing, tempo or harmonic compatibility. [Evidence](docs/evidence/final-gates-20261026/retained-vocal-owner-review.json).
+- [ ] Qualify natural, complete short singing and musical placement; this candidate remains rejected and outside production. No new paid compute or deployment.
+
 ## Final-gate follow-through — 2026-10-26
 
 **PARTIAL overall; publication held.** [Current report](docs/FINAL_GATES.md) records completed draft/provider work and the remaining external gates.

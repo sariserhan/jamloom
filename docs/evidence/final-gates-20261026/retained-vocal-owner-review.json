@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-27",
+  "status": "FAIL human acceptance",
+  "ownerFeedback": "Voice or timing needs work",
+  "sourceSha256": "caff479be92b0f0502d5e4904dabb3cdeb93f817bea7ff3430c7d12894192f19",
+  "boundaryMeasurements": {
+    "before_crop": {
+      "startSeconds": 40.38,
+      "endSeconds": 40.48,
+      "rms": 0.07578305155038834,
+      "peak": 0.40660232305526733
+    },
+    "opening": {
+      "startSeconds": 40.48,
+      "endSeconds": 40.58,
+      "rms": 0.07754391431808472,
+      "peak": 0.33928364515304565
+    },
+    "whole_phrase": {
+      "startSeconds": 40.48,
+      "endSeconds": 41.55,
+      "rms": 0.0798453688621521,
+      "peak": 0.43511056900024414
+    },
+    "ending": {
+      "startSeconds": 41.45,
+      "endSeconds": 41.55,
+      "rms": 0.014006523415446281,
+      "peak": 0.08922001719474792
+    },
+    "after_crop": {
+      "startSeconds": 41.55,
+      "endSeconds": 41.65,
+      "rms": 0.004549124278128147,
+      "peak": 0.022168848663568497
+    }
+  },
+  "method": "Unmodified stereo stem; 48000 Hz; RMS=sqrt(mean(samples*samples)) across both channels; windows are absolute source seconds.",
+  "findings": [
+    "Crop starts in nonquiet source audio; a 30 ms fade does not establish complete-word boundaries.",
+    "Existing placement aligns crop start to a detected beat; sung syllable attack, source-to-target tempo and harmonic compatibility were not qualified."
+  ],
+  "limitations": "Signal energy may include separation bleed; it does not identify a syllable or establish the cause of the owner rejection. No new audio, paid generation or production change.",
+  "nextAcceptance": "Require complete phrase boundaries, natural singing and musical fit before effects or production admission."
+}
