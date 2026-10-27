@@ -1,0 +1,1024 @@
+{
+  "source_sha256": "2c3e792ee83ba30493731fd24f7295dcf5db66f6199816c686ddf490c46c0979",
+  "seconds": 1.4633453339338303,
+  "segments": [
+    {
+      "at": 7.840000000000003,
+      "end": 8.0,
+      "text": " Hmmmmmmmmmmmmm",
+      "no_speech": 0.6487507224082947,
+      "log_probability": -0.7198786842823028,
+      "words": [
+        {
+          "text": " Hmmmmmmmmmmmmm",
+          "at": 7.840000000000003,
+          "end": 8.430000000000001,
+          "probability": 0.262476759031415
+        }
+      ]
+    },
+    {
+      "at": 9.02,
+      "end": 12.42,
+      "text": " Keys and coins are clung at table",
+      "no_speech": 0.6487507224082947,
+      "log_probability": -0.7198786842823028,
+      "words": [
+        {
+          "text": " Keys",
+          "at": 9.02,
+          "end": 9.58,
+          "probability": 0.0007881742203608155
+        },
+        {
+          "text": " and",
+          "at": 9.58,
+          "end": 9.9,
+          "probability": 0.9560210704803467
+        },
+        {
+          "text": " coins",
+          "at": 9.9,
+          "end": 10.24,
+          "probability": 0.6276063323020935
+        },
+        {
+          "text": " are",
+          "at": 10.24,
+          "end": 10.76,
+          "probability": 0.6458433866500854
+        },
+        {
+          "text": " clung",
+          "at": 10.76,
+          "end": 10.98,
+          "probability": 0.1600586213171482
+        },
+        {
+          "text": " at",
+          "at": 10.98,
+          "end": 11.44,
+          "probability": 0.2801355719566345
+        },
+        {
+          "text": " table",
+          "at": 11.44,
+          "end": 12.42,
+          "probability": 0.9150797128677368
+        }
+      ]
+    },
+    {
+      "at": 12.42,
+      "end": 15.9,
+      "text": " One message left in red",
+      "no_speech": 0.6487507224082947,
+      "log_probability": -0.7198786842823028,
+      "words": [
+        {
+          "text": " One",
+          "at": 12.42,
+          "end": 13.28,
+          "probability": 0.7379794716835022
+        },
+        {
+          "text": " message",
+          "at": 13.28,
+          "end": 13.96,
+          "probability": 0.5609182119369507
+        },
+        {
+          "text": " left",
+          "at": 13.96,
+          "end": 14.64,
+          "probability": 0.9988375306129456
+        },
+        {
+          "text": " in",
+          "at": 14.64,
+          "end": 15.1,
+          "probability": 0.25869226455688477
+        },
+        {
+          "text": " red",
+          "at": 15.1,
+          "end": 15.9,
+          "probability": 0.9230309724807739
+        }
+      ]
+    },
+    {
+      "at": 15.9,
+      "end": 19.0,
+      "text": " I spent the week on standby",
+      "no_speech": 0.6487507224082947,
+      "log_probability": -0.7198786842823028,
+      "words": [
+        {
+          "text": " I",
+          "at": 15.9,
+          "end": 16.98,
+          "probability": 0.6249668598175049
+        },
+        {
+          "text": " spent",
+          "at": 16.98,
+          "end": 17.48,
+          "probability": 0.8214240074157715
+        },
+        {
+          "text": " the",
+          "at": 17.48,
+          "end": 17.9,
+          "probability": 0.5875495672225952
+        },
+        {
+          "text": " week",
+          "at": 17.9,
+          "end": 18.22,
+          "probability": 0.9496799111366272
+        },
+        {
+          "text": " on",
+          "at": 18.22,
+          "end": 18.68,
+          "probability": 0.9858718514442444
+        },
+        {
+          "text": " standby",
+          "at": 18.68,
+          "end": 19.269999999999996,
+          "probability": 0.8962361216545105
+        }
+      ]
+    },
+    {
+      "at": 19.76,
+      "end": 23.5,
+      "text": " Now the room is turning red",
+      "no_speech": 0.6487507224082947,
+      "log_probability": -0.7198786842823028,
+      "words": [
+        {
+          "text": " Now",
+          "at": 19.76,
+          "end": 20.5,
+          "probability": 0.7489518523216248
+        },
+        {
+          "text": " the",
+          "at": 20.5,
+          "end": 20.76,
+          "probability": 0.9748882055282593
+        },
+        {
+          "text": " room",
+          "at": 20.76,
+          "end": 21.34,
+          "probability": 0.8512424826622009
+        },
+        {
+          "text": " is",
+          "at": 21.34,
+          "end": 22.14,
+          "probability": 0.73533695936203
+        },
+        {
+          "text": " turning",
+          "at": 22.14,
+          "end": 22.74,
+          "probability": 0.4056612253189087
+        },
+        {
+          "text": " red",
+          "at": 22.74,
+          "end": 23.5,
+          "probability": 0.9972991347312927
+        }
+      ]
+    },
+    {
+      "at": 23.5,
+      "end": 26.0,
+      "text": " Someone opened up not answering",
+      "no_speech": 0.6487507224082947,
+      "log_probability": -0.7198786842823028,
+      "words": [
+        {
+          "text": " Someone",
+          "at": 23.5,
+          "end": 24.3,
+          "probability": 0.7752309441566467
+        },
+        {
+          "text": " opened",
+          "at": 24.3,
+          "end": 24.98,
+          "probability": 0.21468763053417206
+        },
+        {
+          "text": " up",
+          "at": 24.98,
+          "end": 25.56,
+          "probability": 0.9367835521697998
+        },
+        {
+          "text": " not",
+          "at": 25.56,
+          "end": 25.96,
+          "probability": 0.2463124394416809
+        },
+        {
+          "text": " answering",
+          "at": 25.96,
+          "end": 26.549999999999997,
+          "probability": 0.46354925632476807
+        }
+      ]
+    },
+    {
+      "at": 26.55,
+      "end": 31.25,
+      "text": " For behind my movie",
+      "no_speech": 0.6981937289237976,
+      "log_probability": -0.2774498072537509,
+      "words": [
+        {
+          "text": " For",
+          "at": 26.55,
+          "end": 27.73,
+          "probability": 0.10568241029977798
+        },
+        {
+          "text": " behind",
+          "at": 27.73,
+          "end": 28.43,
+          "probability": 0.8331257104873657
+        },
+        {
+          "text": " my",
+          "at": 28.43,
+          "end": 29.53,
+          "probability": 0.9770811200141907
+        },
+        {
+          "text": " movie",
+          "at": 29.53,
+          "end": 31.25,
+          "probability": 0.9457142949104309
+        }
+      ]
+    },
+    {
+      "at": 31.25,
+      "end": 35.57,
+      "text": " Let the pavement shake below",
+      "no_speech": 0.6981937289237976,
+      "log_probability": -0.2774498072537509,
+      "words": [
+        {
+          "text": " Let",
+          "at": 31.25,
+          "end": 32.71,
+          "probability": 0.42696917057037354
+        },
+        {
+          "text": " the",
+          "at": 32.71,
+          "end": 33.05,
+          "probability": 0.9785812497138977
+        },
+        {
+          "text": " pavement",
+          "at": 33.05,
+          "end": 33.77,
+          "probability": 0.9571107029914856
+        },
+        {
+          "text": " shake",
+          "at": 33.77,
+          "end": 34.51,
+          "probability": 0.9481331706047058
+        },
+        {
+          "text": " below",
+          "at": 34.51,
+          "end": 35.57,
+          "probability": 0.9198476672172546
+        }
+      ]
+    },
+    {
+      "at": 35.57,
+      "end": 39.65,
+      "text": " Take a breath and let it go",
+      "no_speech": 0.6981937289237976,
+      "log_probability": -0.2774498072537509,
+      "words": [
+        {
+          "text": " Take",
+          "at": 35.57,
+          "end": 36.37,
+          "probability": 0.67292320728302
+        },
+        {
+          "text": " a",
+          "at": 36.37,
+          "end": 36.73,
+          "probability": 0.9908440709114075
+        },
+        {
+          "text": " breath",
+          "at": 36.73,
+          "end": 37.07,
+          "probability": 0.9928629994392395
+        },
+        {
+          "text": " and",
+          "at": 37.07,
+          "end": 37.73,
+          "probability": 0.9518172144889832
+        },
+        {
+          "text": " let",
+          "at": 37.73,
+          "end": 38.29,
+          "probability": 0.9852578043937683
+        },
+        {
+          "text": " it",
+          "at": 38.29,
+          "end": 38.75,
+          "probability": 0.9913488030433655
+        },
+        {
+          "text": " go",
+          "at": 38.75,
+          "end": 39.65,
+          "probability": 0.9950360655784607
+        }
+      ]
+    },
+    {
+      "at": 39.65,
+      "end": 43.29,
+      "text": " Leave it all outside",
+      "no_speech": 0.6981937289237976,
+      "log_probability": -0.2774498072537509,
+      "words": [
+        {
+          "text": " Leave",
+          "at": 39.65,
+          "end": 40.59,
+          "probability": 0.8777625560760498
+        },
+        {
+          "text": " it",
+          "at": 40.59,
+          "end": 41.19,
+          "probability": 0.9975570440292358
+        },
+        {
+          "text": " all",
+          "at": 41.19,
+          "end": 41.97,
+          "probability": 0.9835294485092163
+        },
+        {
+          "text": " outside",
+          "at": 41.97,
+          "end": 43.29,
+          "probability": 0.9629194736480713
+        }
+      ]
+    },
+    {
+      "at": 43.29,
+      "end": 46.55,
+      "text": " Come and find the loudest sound",
+      "no_speech": 0.6981937289237976,
+      "log_probability": -0.2774498072537509,
+      "words": [
+        {
+          "text": " Come",
+          "at": 43.29,
+          "end": 44.25,
+          "probability": 0.6219028830528259
+        },
+        {
+          "text": " and",
+          "at": 44.25,
+          "end": 44.55,
+          "probability": 0.9950228929519653
+        },
+        {
+          "text": " find",
+          "at": 44.55,
+          "end": 45.23,
+          "probability": 0.9915310144424438
+        },
+        {
+          "text": " the",
+          "at": 45.23,
+          "end": 45.77,
+          "probability": 0.9190618991851807
+        },
+        {
+          "text": " loudest",
+          "at": 45.77,
+          "end": 46.49,
+          "probability": 0.6632466912269592
+        },
+        {
+          "text": " sound",
+          "at": 46.49,
+          "end": 47.17,
+          "probability": 0.9010281562805176
+        }
+      ]
+    },
+    {
+      "at": 47.33,
+      "end": 50.83,
+      "text": " Every step is ours to choose",
+      "no_speech": 0.6981937289237976,
+      "log_probability": -0.2774498072537509,
+      "words": [
+        {
+          "text": " Every",
+          "at": 47.33,
+          "end": 48.05,
+          "probability": 0.777559757232666
+        },
+        {
+          "text": " step",
+          "at": 48.05,
+          "end": 48.61,
+          "probability": 0.9861372709274292
+        },
+        {
+          "text": " is",
+          "at": 48.61,
+          "end": 49.21,
+          "probability": 0.709652841091156
+        },
+        {
+          "text": " ours",
+          "at": 49.21,
+          "end": 49.55,
+          "probability": 0.44851431250572205
+        },
+        {
+          "text": " to",
+          "at": 49.55,
+          "end": 50.09,
+          "probability": 0.8218870162963867
+        },
+        {
+          "text": " choose",
+          "at": 50.09,
+          "end": 50.83,
+          "probability": 0.9511627554893494
+        }
+      ]
+    },
+    {
+      "at": 50.83,
+      "end": 54.69,
+      "text": " Tonight we have a world to lose",
+      "no_speech": 0.6981937289237976,
+      "log_probability": -0.2774498072537509,
+      "words": [
+        {
+          "text": " Tonight",
+          "at": 50.83,
+          "end": 51.39,
+          "probability": 0.8852285146713257
+        },
+        {
+          "text": " we",
+          "at": 51.39,
+          "end": 51.89,
+          "probability": 0.9830111265182495
+        },
+        {
+          "text": " have",
+          "at": 51.89,
+          "end": 52.51,
+          "probability": 0.44306322932243347
+        },
+        {
+          "text": " a",
+          "at": 52.51,
+          "end": 52.85,
+          "probability": 0.7735130190849304
+        },
+        {
+          "text": " world",
+          "at": 52.85,
+          "end": 53.27,
+          "probability": 0.7812314033508301
+        },
+        {
+          "text": " to",
+          "at": 53.27,
+          "end": 53.67,
+          "probability": 0.9913498163223267
+        },
+        {
+          "text": " lose",
+          "at": 53.67,
+          "end": 54.69,
+          "probability": 0.4396468698978424
+        }
+      ]
+    },
+    {
+      "at": 57.470000000000006,
+      "end": 61.85,
+      "text": " Tomorrow, there were strangers at the doorway",
+      "no_speech": 0.4898681938648224,
+      "log_probability": -0.44493577049838173,
+      "words": [
+        {
+          "text": " Tomorrow,",
+          "at": 57.470000000000006,
+          "end": 58.550000000000004,
+          "probability": 0.008214816451072693
+        },
+        {
+          "text": " there",
+          "at": 58.550000000000004,
+          "end": 59.63,
+          "probability": 0.9035512804985046
+        },
+        {
+          "text": " were",
+          "at": 59.63,
+          "end": 59.77,
+          "probability": 0.5506918430328369
+        },
+        {
+          "text": " strangers",
+          "at": 59.77,
+          "end": 60.21,
+          "probability": 0.8397893309593201
+        },
+        {
+          "text": " at",
+          "at": 60.21,
+          "end": 60.69,
+          "probability": 0.9204391241073608
+        },
+        {
+          "text": " the",
+          "at": 60.69,
+          "end": 60.99,
+          "probability": 0.9858109951019287
+        },
+        {
+          "text": " doorway",
+          "at": 60.99,
+          "end": 61.85,
+          "probability": 0.820401132106781
+        }
+      ]
+    },
+    {
+      "at": 62.550000000000004,
+      "end": 66.47,
+      "text": " There were friends I never knew",
+      "no_speech": 0.4898681938648224,
+      "log_probability": -0.44493577049838173,
+      "words": [
+        {
+          "text": " There",
+          "at": 62.550000000000004,
+          "end": 63.23,
+          "probability": 0.3068256080150604
+        },
+        {
+          "text": " were",
+          "at": 63.23,
+          "end": 63.47,
+          "probability": 0.9141572713851929
+        },
+        {
+          "text": " friends",
+          "at": 63.47,
+          "end": 63.75,
+          "probability": 0.9788157939910889
+        },
+        {
+          "text": " I",
+          "at": 63.75,
+          "end": 63.95,
+          "probability": 0.9109963178634644
+        },
+        {
+          "text": " never",
+          "at": 63.95,
+          "end": 64.41,
+          "probability": 0.9711260199546814
+        },
+        {
+          "text": " knew",
+          "at": 64.41,
+          "end": 66.47,
+          "probability": 0.9845817685127258
+        }
+      ]
+    },
+    {
+      "at": 66.47,
+      "end": 69.07,
+      "text": " When the reaches higher",
+      "no_speech": 0.4898681938648224,
+      "log_probability": -0.44493577049838173,
+      "words": [
+        {
+          "text": " When",
+          "at": 66.47,
+          "end": 66.83,
+          "probability": 0.7862778902053833
+        },
+        {
+          "text": " the",
+          "at": 66.83,
+          "end": 67.15,
+          "probability": 0.8083386421203613
+        },
+        {
+          "text": " reaches",
+          "at": 67.15,
+          "end": 67.85,
+          "probability": 0.11849579215049744
+        },
+        {
+          "text": " higher",
+          "at": 67.85,
+          "end": 69.07,
+          "probability": 0.851415753364563
+        }
+      ]
+    },
+    {
+      "at": 70.55000000000001,
+      "end": 73.43,
+      "text": " Give this moment everything",
+      "no_speech": 0.4898681938648224,
+      "log_probability": -0.44493577049838173,
+      "words": [
+        {
+          "text": " Give",
+          "at": 70.16999999999999,
+          "end": 70.71,
+          "probability": 0.32085099816322327
+        },
+        {
+          "text": " this",
+          "at": 70.71,
+          "end": 71.17,
+          "probability": 0.9018051028251648
+        },
+        {
+          "text": " moment",
+          "at": 71.17,
+          "end": 71.71,
+          "probability": 0.7421684265136719
+        },
+        {
+          "text": " everything",
+          "at": 71.71,
+          "end": 73.43,
+          "probability": 0.7140012383460999
+        }
+      ]
+    },
+    {
+      "at": 74.55000000000001,
+      "end": 77.87,
+      "text": " Leave it all outside",
+      "no_speech": 0.4898681938648224,
+      "log_probability": -0.44493577049838173,
+      "words": [
+        {
+          "text": " Leave",
+          "at": 74.55000000000001,
+          "end": 75.19,
+          "probability": 0.40461379289627075
+        },
+        {
+          "text": " it",
+          "at": 75.19,
+          "end": 75.95,
+          "probability": 0.9978200197219849
+        },
+        {
+          "text": " all",
+          "at": 75.95,
+          "end": 76.47,
+          "probability": 0.9966938495635986
+        },
+        {
+          "text": " outside",
+          "at": 76.47,
+          "end": 77.87,
+          "probability": 0.9524228572845459
+        }
+      ]
+    },
+    {
+      "at": 78.55000000000001,
+      "end": 81.83,
+      "text": " Come and find the outer side",
+      "no_speech": 0.4898681938648224,
+      "log_probability": -0.44493577049838173,
+      "words": [
+        {
+          "text": " Come",
+          "at": 78.25,
+          "end": 78.79,
+          "probability": 0.4395592212677002
+        },
+        {
+          "text": " and",
+          "at": 78.79,
+          "end": 79.17,
+          "probability": 0.9314830899238586
+        },
+        {
+          "text": " find",
+          "at": 79.17,
+          "end": 79.69,
+          "probability": 0.7301471829414368
+        },
+        {
+          "text": " the",
+          "at": 79.69,
+          "end": 80.23,
+          "probability": 0.9523172974586487
+        },
+        {
+          "text": " outer",
+          "at": 80.23,
+          "end": 80.65,
+          "probability": 0.3696628510951996
+        },
+        {
+          "text": " side",
+          "at": 80.65,
+          "end": 81.83,
+          "probability": 0.7463420629501343
+        }
+      ]
+    },
+    {
+      "at": 81.83,
+      "end": 85.23,
+      "text": " Every step is always to choose",
+      "no_speech": 0.4898681938648224,
+      "log_probability": -0.44493577049838173,
+      "words": [
+        {
+          "text": " Every",
+          "at": 81.83,
+          "end": 82.55,
+          "probability": 0.6793609857559204
+        },
+        {
+          "text": " step",
+          "at": 82.55,
+          "end": 83.17,
+          "probability": 0.9982469081878662
+        },
+        {
+          "text": " is",
+          "at": 83.17,
+          "end": 83.77,
+          "probability": 0.9297709465026855
+        },
+        {
+          "text": " always",
+          "at": 83.77,
+          "end": 84.13,
+          "probability": 0.19234156608581543
+        },
+        {
+          "text": " to",
+          "at": 84.13,
+          "end": 84.55,
+          "probability": 0.6137815713882446
+        },
+        {
+          "text": " choose",
+          "at": 84.55,
+          "end": 85.23,
+          "probability": 0.957543671131134
+        }
+      ]
+    },
+    {
+      "at": 85.23,
+      "end": 88.71,
+      "text": " So that we have the world to choose",
+      "no_speech": 0.08084855228662491,
+      "log_probability": -0.6520989999175072,
+      "words": [
+        {
+          "text": " So",
+          "at": 85.23,
+          "end": 85.79,
+          "probability": 0.12450947612524033
+        },
+        {
+          "text": " that",
+          "at": 85.79,
+          "end": 85.99,
+          "probability": 0.5166877508163452
+        },
+        {
+          "text": " we",
+          "at": 85.99,
+          "end": 86.41,
+          "probability": 0.9911214113235474
+        },
+        {
+          "text": " have",
+          "at": 86.41,
+          "end": 87.13,
+          "probability": 0.4796680808067322
+        },
+        {
+          "text": " the",
+          "at": 87.13,
+          "end": 87.67,
+          "probability": 0.07662864774465561
+        },
+        {
+          "text": " world",
+          "at": 87.67,
+          "end": 87.71,
+          "probability": 0.560775876045227
+        },
+        {
+          "text": " to",
+          "at": 87.71,
+          "end": 88.03,
+          "probability": 0.9902815818786621
+        },
+        {
+          "text": " choose",
+          "at": 88.03,
+          "end": 88.71,
+          "probability": 0.9522441029548645
+        }
+      ]
+    },
+    {
+      "at": 91.23,
+      "end": 93.15,
+      "text": " To light and light",
+      "no_speech": 0.08084855228662491,
+      "log_probability": -0.6520989999175072,
+      "words": [
+        {
+          "text": " To",
+          "at": 91.23,
+          "end": 91.85,
+          "probability": 0.015621148981153965
+        },
+        {
+          "text": " light",
+          "at": 91.85,
+          "end": 92.37,
+          "probability": 0.3266049921512604
+        },
+        {
+          "text": " and",
+          "at": 92.37,
+          "end": 92.71,
+          "probability": 0.2634337842464447
+        },
+        {
+          "text": " light",
+          "at": 92.71,
+          "end": 93.15,
+          "probability": 0.7490965723991394
+        }
+      ]
+    },
+    {
+      "at": 93.15,
+      "end": 97.23,
+      "text": " We have a world to learn",
+      "no_speech": 0.08084855228662491,
+      "log_probability": -0.6520989999175072,
+      "words": [
+        {
+          "text": " We",
+          "at": 93.15,
+          "end": 93.71,
+          "probability": 0.5941178798675537
+        },
+        {
+          "text": " have",
+          "at": 93.71,
+          "end": 94.39,
+          "probability": 0.9899800419807434
+        },
+        {
+          "text": " a",
+          "at": 94.39,
+          "end": 94.75,
+          "probability": 0.31247156858444214
+        },
+        {
+          "text": " world",
+          "at": 94.75,
+          "end": 95.07,
+          "probability": 0.9854652285575867
+        },
+        {
+          "text": " to",
+          "at": 95.07,
+          "end": 95.51,
+          "probability": 0.9883147478103638
+        },
+        {
+          "text": " learn",
+          "at": 95.51,
+          "end": 97.23,
+          "probability": 0.20617321133613586
+        }
+      ]
+    },
+    {
+      "at": 98.05,
+      "end": 101.67,
+      "text": " To learn",
+      "no_speech": 0.08084855228662491,
+      "log_probability": -0.6520989999175072,
+      "words": [
+        {
+          "text": " To",
+          "at": 98.05,
+          "end": 98.87,
+          "probability": 0.36706212162971497
+        },
+        {
+          "text": " learn",
+          "at": 98.87,
+          "end": 101.67,
+          "probability": 0.3182063102722168
+        }
+      ]
+    },
+    {
+      "at": 101.67,
+      "end": 107.23,
+      "text": " Left, left, right, find us here",
+      "no_speech": 0.08084855228662491,
+      "log_probability": -0.6520989999175072,
+      "words": [
+        {
+          "text": " Left,",
+          "at": 101.67,
+          "end": 102.51,
+          "probability": 0.19583430886268616
+        },
+        {
+          "text": " left,",
+          "at": 103.51,
+          "end": 103.63,
+          "probability": 0.5736745595932007
+        },
+        {
+          "text": " right,",
+          "at": 104.33,
+          "end": 104.33,
+          "probability": 0.591966986656189
+        },
+        {
+          "text": " find",
+          "at": 104.33,
+          "end": 105.03,
+          "probability": 0.8476923108100891
+        },
+        {
+          "text": " us",
+          "at": 105.03,
+          "end": 105.65,
+          "probability": 0.7435252666473389
+        },
+        {
+          "text": " here",
+          "at": 105.65,
+          "end": 107.23,
+          "probability": 0.9706547260284424
+        }
+      ]
+    }
+  ],
+  "qualification": "Automatic candidate only"
+}

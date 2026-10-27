@@ -1,0 +1,31 @@
+{
+  "status": "PASS startup recovery; PARTIAL product completion",
+  "base_commit": "c620cb717a49ff699d45667aa12d5edf16ee6fb7",
+  "shared_tests": 4,
+  "python_tests": 15,
+  "browser": "PASS Chromium and WebKit, two songs, desktop/mobile, synthetic microphone, delayed playback and permission, retry, existing First Light regression",
+  "browser_timeout_scope": "Invokes captured real startup callback; pending playback promise is controlled, not a physical network fault",
+  "native": "PASS signed and audited 0.10.4 build 33; installed and launched on connected iPhone",
+  "new_physical_flow": "NOT RUN: build-32 owner functional acceptance retained separately",
+  "changes": "One startup deadline covers context, permission, worklet and media.play; Stop and successful playback clear it; fresh attempt clears old pitch trace",
+  "audio_changed": false,
+  "dependencies_installed": false,
+  "paid_compute": false,
+  "publication": "HELD: no push, deployment, upload or live activation",
+  "source_sha256": {
+    "apps/web/singing-produced.js": "c762760ca1b0207e167b093d323b50eb0c37812ee33f029e934ae2df58a6fe6b",
+    "apps/site/tests/singing-produced-browser.mjs": "3e85e1fed441714ef744676f477d1e572425e42a121ad9a1e5558d2b4f29e081",
+    "apps/ios/project.yml": "780a983872e6dab01446271f1dbd9e53e5bee7ee85ba7f9ea0373d786ba58545",
+    "apps/ios/Jamloom.xcodeproj/project.pbxproj": "c75aa7bf4268b905c630d16f5d0edda41a84746fda629cc568be1fd5e7101317",
+    "assets/manifests/singer-separation.json": "63cf998e4f20214b2d3ddbc96d7c220051457c1b966d37dfec36ff56f7f74559"
+  },
+  "packaged_player_identity": true,
+  "evidence_sha256": {
+    "python-system-environment-failure.log": "ec44fda6b1f2c2f209072d84cd572510b1ecdc01fe143a3a0cac04276d7b91a3",
+    "unit.log": "326f28f206e7af61e9907c33179accc1c31d8a6b05066da51cdf846e03b331de",
+    "spleeter-resolution.log": "ce398bd5f53d6d538acb31a4243ffe2c46afb5af65bb1cb65320b6436ca6e4fd",
+    "browser.json": "1692872a7eedfff7ff6e576f2af9d4ab8d368fa0b27ab6980a7fe23b3c7a5424",
+    "python.log": "f41c117044c3e158b299745f39b00904d27b1cfce372dda8f8ad9cf7c9f6c1e7",
+    "ios-bundle.json": "9705e645b97a5b2c0d43cd48aecbbaf53e202eb2e3377d2e78e5c7eb1d36d5fe"
+  }
+}

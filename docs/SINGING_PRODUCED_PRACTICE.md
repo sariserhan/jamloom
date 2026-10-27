@@ -1,3 +1,5 @@
+**Follow-through:** [build-33 startup recovery and checkpoint-rights correction](SINGING_STARTUP_FOLLOWUP.md) supersedes startup-deadline and current-native-build status below. Build-32 physical evidence remains historical; exact-song scoring and commercial separator adoption remain open/blocked.
+
 # Produced-song practice — 2026-10-27
 
 **PASS local implementation and browser checks; PARTIAL scored-song completion.**

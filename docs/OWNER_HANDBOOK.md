@@ -1,3 +1,9 @@
+## Latest local candidate — 2026-10-27
+
+Build **0.10.4 (33)** is signed, audited, installed and launched. On both web and phone, a song that cannot start within thirty seconds now stops its microphone and lets you retry. Successful playback cancels that deadline. Your build-32 playback/microphone/Community-stop acceptance is retained; the updated failure path has browser evidence, not a new physical singing test.
+
+The accepted originals stay available locally. Exact-word/note grading is still unqualified. The separator's commercial checkpoint permission has not been established; its source-code MIT license does not settle this. Spleeter is a possible free replacement, but its supported package does not resolve on this Mac and no replacement is installed. [Actual checks, source links and remaining gates](SINGING_STARTUP_FOLLOWUP.md). No push, deployment, upload, paid rental or live-sales change.
+
 ## Produced Singing songs — local candidate, 2026-10-27
 
 **Physical check PASS:** on build 32, the owner confirms Long Way Home playback, microphone pitch and stopping when switching to Community. This is functional acceptance, not verified lyric/note scoring.

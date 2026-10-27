@@ -1,3 +1,5 @@
+**2026-10-27 follow-through:** [startup reliability, exact-checkpoint licensing and Spleeter comparison](SINGING_STARTUP_FOLLOWUP.md). The shared recorded-song player is hardened without a new dependency. Current Demucs/TorchAudio weights remain blocked for commercial adoption; Spleeter is STUDY with a pinned source and actual failed Mac dependency resolution, not an adopted replacement. No audio-quality benchmark is inferred from a license review.
+
 **Produced-song integration:** [current implementation](SINGING_PRODUCED_PRACTICE.md) reuses the shared pitch/capture/chart and recorded-media alignment with one media timeline. No new engine/dependency. The original recordings are open practice until real word/note targets are verified; no score is inferred from ASR or authored lyrics.
 
 ## Non-release follow-through — 2026-10-27

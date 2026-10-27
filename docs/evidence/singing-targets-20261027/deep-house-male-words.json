@@ -1,0 +1,1099 @@
+{
+  "source_sha256": "2ca345eded937b1e15f95cdc17bb7e5089cf757932228341a473d3834f4b3fee",
+  "seconds": 1.5802897919202223,
+  "segments": [
+    {
+      "at": 0.0,
+      "end": 5.0,
+      "text": " The same roles beneath our feet",
+      "no_speech": 0.1972324550151825,
+      "log_probability": -0.5456856814297762,
+      "words": [
+        {
+          "text": " The",
+          "at": 0.0,
+          "end": 0.98,
+          "probability": 0.10059177875518799
+        },
+        {
+          "text": " same",
+          "at": 0.98,
+          "end": 1.84,
+          "probability": 0.6527044177055359
+        },
+        {
+          "text": " roles",
+          "at": 1.84,
+          "end": 2.72,
+          "probability": 0.3976519703865051
+        },
+        {
+          "text": " beneath",
+          "at": 2.72,
+          "end": 3.5,
+          "probability": 0.9955487251281738
+        },
+        {
+          "text": " our",
+          "at": 3.5,
+          "end": 4.06,
+          "probability": 0.7717829346656799
+        },
+        {
+          "text": " feet",
+          "at": 4.06,
+          "end": 5.0,
+          "probability": 0.9675484299659729
+        }
+      ]
+    },
+    {
+      "at": 9.0,
+      "end": 13.0,
+      "text": " Your blue jacket brushes me",
+      "no_speech": 0.1972324550151825,
+      "log_probability": -0.5456856814297762,
+      "words": [
+        {
+          "text": " Your",
+          "at": 8.84,
+          "end": 9.54,
+          "probability": 0.10414987057447433
+        },
+        {
+          "text": " blue",
+          "at": 9.54,
+          "end": 10.0,
+          "probability": 0.9725353121757507
+        },
+        {
+          "text": " jacket",
+          "at": 10.0,
+          "end": 10.64,
+          "probability": 0.9846758246421814
+        },
+        {
+          "text": " brushes",
+          "at": 10.64,
+          "end": 11.74,
+          "probability": 0.5025107264518738
+        },
+        {
+          "text": " me",
+          "at": 11.74,
+          "end": 13.0,
+          "probability": 0.9988676309585571
+        }
+      ]
+    },
+    {
+      "at": 16.040000000000003,
+      "end": 21.0,
+      "text": " When run silver down the glass",
+      "no_speech": 0.1972324550151825,
+      "log_probability": -0.5456856814297762,
+      "words": [
+        {
+          "text": " When",
+          "at": 16.040000000000003,
+          "end": 17.44,
+          "probability": 0.17232416570186615
+        },
+        {
+          "text": " run",
+          "at": 17.44,
+          "end": 17.96,
+          "probability": 0.505709707736969
+        },
+        {
+          "text": " silver",
+          "at": 17.96,
+          "end": 18.56,
+          "probability": 0.7634556293487549
+        },
+        {
+          "text": " down",
+          "at": 18.56,
+          "end": 19.5,
+          "probability": 0.9615190029144287
+        },
+        {
+          "text": " the",
+          "at": 19.5,
+          "end": 20.08,
+          "probability": 0.9372433423995972
+        },
+        {
+          "text": " glass",
+          "at": 20.08,
+          "end": 21.0,
+          "probability": 0.8620838522911072
+        }
+      ]
+    },
+    {
+      "at": 23.0,
+      "end": 26.12,
+      "text": " Then run silver down to glass",
+      "no_speech": 0.1972324550151825,
+      "log_probability": -0.5456856814297762,
+      "words": [
+        {
+          "text": " Then",
+          "at": 22.84,
+          "end": 23.54,
+          "probability": 0.0915219634771347
+        },
+        {
+          "text": " run",
+          "at": 23.54,
+          "end": 23.94,
+          "probability": 0.9965270161628723
+        },
+        {
+          "text": " silver",
+          "at": 23.94,
+          "end": 24.44,
+          "probability": 0.9968175888061523
+        },
+        {
+          "text": " down",
+          "at": 24.44,
+          "end": 24.98,
+          "probability": 0.9987157583236694
+        },
+        {
+          "text": " to",
+          "at": 24.98,
+          "end": 25.2,
+          "probability": 0.0005911553744226694
+        },
+        {
+          "text": " glass",
+          "at": 25.2,
+          "end": 26.12,
+          "probability": 0.8974475264549255
+        }
+      ]
+    },
+    {
+      "at": 26.12,
+      "end": 32.3,
+      "text": " For one side of that moment, that is every street",
+      "no_speech": 0.1891469955444336,
+      "log_probability": -0.4879135225088366,
+      "words": [
+        {
+          "text": " For",
+          "at": 26.12,
+          "end": 26.62,
+          "probability": 0.13553595542907715
+        },
+        {
+          "text": " one",
+          "at": 26.62,
+          "end": 26.92,
+          "probability": 0.47006553411483765
+        },
+        {
+          "text": " side",
+          "at": 26.92,
+          "end": 27.28,
+          "probability": 0.6262664794921875
+        },
+        {
+          "text": " of",
+          "at": 27.28,
+          "end": 27.56,
+          "probability": 0.36973094940185547
+        },
+        {
+          "text": " that",
+          "at": 27.56,
+          "end": 27.78,
+          "probability": 0.9436078667640686
+        },
+        {
+          "text": " moment,",
+          "at": 27.78,
+          "end": 28.64,
+          "probability": 0.8782132863998413
+        },
+        {
+          "text": " that",
+          "at": 29.0,
+          "end": 29.24,
+          "probability": 0.47630298137664795
+        },
+        {
+          "text": " is",
+          "at": 29.24,
+          "end": 30.54,
+          "probability": 0.5660943984985352
+        },
+        {
+          "text": " every",
+          "at": 30.54,
+          "end": 31.56,
+          "probability": 0.168249249458313
+        },
+        {
+          "text": " street",
+          "at": 31.56,
+          "end": 32.3,
+          "probability": 0.9897311329841614
+        }
+      ]
+    },
+    {
+      "at": 32.3,
+      "end": 38.120000000000005,
+      "text": " Me comes a rhythm Every window holds the spot",
+      "no_speech": 0.1891469955444336,
+      "log_probability": -0.4879135225088366,
+      "words": [
+        {
+          "text": " Me",
+          "at": 32.3,
+          "end": 32.92,
+          "probability": 0.02791687659919262
+        },
+        {
+          "text": " comes",
+          "at": 32.92,
+          "end": 33.7,
+          "probability": 0.9549745321273804
+        },
+        {
+          "text": " a",
+          "at": 33.7,
+          "end": 34.06,
+          "probability": 0.3122479319572449
+        },
+        {
+          "text": " rhythm",
+          "at": 34.06,
+          "end": 34.7,
+          "probability": 0.7427537441253662
+        },
+        {
+          "text": " Every",
+          "at": 34.7,
+          "end": 35.66,
+          "probability": 0.6022215485572815
+        },
+        {
+          "text": " window",
+          "at": 35.66,
+          "end": 36.54,
+          "probability": 0.8845059871673584
+        },
+        {
+          "text": " holds",
+          "at": 36.54,
+          "end": 37.46,
+          "probability": 0.8839403390884399
+        },
+        {
+          "text": " the",
+          "at": 37.46,
+          "end": 37.88,
+          "probability": 0.2469194084405899
+        },
+        {
+          "text": " spot",
+          "at": 37.88,
+          "end": 38.42,
+          "probability": 0.26443228125572205
+        }
+      ]
+    },
+    {
+      "at": 38.66,
+      "end": 42.120000000000005,
+      "text": " You draw a serene end to throw",
+      "no_speech": 0.1891469955444336,
+      "log_probability": -0.4879135225088366,
+      "words": [
+        {
+          "text": " You",
+          "at": 38.66,
+          "end": 39.36,
+          "probability": 0.7080520987510681
+        },
+        {
+          "text": " draw",
+          "at": 39.36,
+          "end": 39.84,
+          "probability": 0.9655072689056396
+        },
+        {
+          "text": " a",
+          "at": 39.84,
+          "end": 40.02,
+          "probability": 0.8237763047218323
+        },
+        {
+          "text": " serene",
+          "at": 40.02,
+          "end": 40.74,
+          "probability": 0.5425733923912048
+        },
+        {
+          "text": " end",
+          "at": 40.74,
+          "end": 41.46,
+          "probability": 0.3305964171886444
+        },
+        {
+          "text": " to",
+          "at": 41.46,
+          "end": 41.76,
+          "probability": 0.5638390183448792
+        },
+        {
+          "text": " throw",
+          "at": 41.76,
+          "end": 42.3,
+          "probability": 0.1313316375017166
+        }
+      ]
+    },
+    {
+      "at": 42.78,
+      "end": 46.120000000000005,
+      "text": " I can hear you through it all",
+      "no_speech": 0.1891469955444336,
+      "log_probability": -0.4879135225088366,
+      "words": [
+        {
+          "text": " I",
+          "at": 42.78,
+          "end": 43.4,
+          "probability": 0.8342269062995911
+        },
+        {
+          "text": " can",
+          "at": 43.4,
+          "end": 43.76,
+          "probability": 0.9956284761428833
+        },
+        {
+          "text": " hear",
+          "at": 43.76,
+          "end": 44.38,
+          "probability": 0.9933608770370483
+        },
+        {
+          "text": " you",
+          "at": 44.38,
+          "end": 44.9,
+          "probability": 0.9050174951553345
+        },
+        {
+          "text": " through",
+          "at": 44.9,
+          "end": 45.38,
+          "probability": 0.9555290937423706
+        },
+        {
+          "text": " it",
+          "at": 45.38,
+          "end": 45.92,
+          "probability": 0.9842666983604431
+        },
+        {
+          "text": " all",
+          "at": 45.92,
+          "end": 46.46,
+          "probability": 0.9580116868019104
+        }
+      ]
+    },
+    {
+      "at": 46.94,
+      "end": 50.120000000000005,
+      "text": " I can hear your through it all",
+      "no_speech": 0.1891469955444336,
+      "log_probability": -0.4879135225088366,
+      "words": [
+        {
+          "text": " I",
+          "at": 46.94,
+          "end": 47.4,
+          "probability": 0.8974665999412537
+        },
+        {
+          "text": " can",
+          "at": 47.4,
+          "end": 47.7,
+          "probability": 0.9964686632156372
+        },
+        {
+          "text": " hear",
+          "at": 47.7,
+          "end": 48.44,
+          "probability": 0.997657060623169
+        },
+        {
+          "text": " your",
+          "at": 48.44,
+          "end": 48.62,
+          "probability": 0.003382569644600153
+        },
+        {
+          "text": " through",
+          "at": 48.62,
+          "end": 48.9,
+          "probability": 0.9508509039878845
+        },
+        {
+          "text": " it",
+          "at": 48.9,
+          "end": 49.28,
+          "probability": 0.9917920827865601
+        },
+        {
+          "text": " all",
+          "at": 49.28,
+          "end": 50.120000000000005,
+          "probability": 0.9972327351570129
+        }
+      ]
+    },
+    {
+      "at": 50.76,
+      "end": 54.24,
+      "text": " Take a long way on me",
+      "no_speech": 0.1891469955444336,
+      "log_probability": -0.4879135225088366,
+      "words": [
+        {
+          "text": " Take",
+          "at": 50.76,
+          "end": 51.42,
+          "probability": 0.9499950408935547
+        },
+        {
+          "text": " a",
+          "at": 51.42,
+          "end": 51.98,
+          "probability": 0.2991267442703247
+        },
+        {
+          "text": " long",
+          "at": 51.98,
+          "end": 52.32,
+          "probability": 0.8703996539115906
+        },
+        {
+          "text": " way",
+          "at": 52.32,
+          "end": 52.72,
+          "probability": 0.9837873578071594
+        },
+        {
+          "text": " on",
+          "at": 52.72,
+          "end": 53.24,
+          "probability": 0.6398533582687378
+        },
+        {
+          "text": " me",
+          "at": 53.24,
+          "end": 54.24,
+          "probability": 0.8982706069946289
+        }
+      ]
+    },
+    {
+      "at": 54.24,
+      "end": 58.24,
+      "text": " That's the places we were meant to be.",
+      "no_speech": 0.49574124813079834,
+      "log_probability": -0.47159629587143187,
+      "words": [
+        {
+          "text": " That's",
+          "at": 54.24,
+          "end": 55.6,
+          "probability": 0.4189272280782461
+        },
+        {
+          "text": " the",
+          "at": 55.6,
+          "end": 55.62,
+          "probability": 0.4296819865703583
+        },
+        {
+          "text": " places",
+          "at": 55.62,
+          "end": 56.38,
+          "probability": 0.5612446665763855
+        },
+        {
+          "text": " we",
+          "at": 56.38,
+          "end": 56.88,
+          "probability": 0.7006641626358032
+        },
+        {
+          "text": " were",
+          "at": 56.88,
+          "end": 57.08,
+          "probability": 0.6434606909751892
+        },
+        {
+          "text": " meant",
+          "at": 57.08,
+          "end": 57.18,
+          "probability": 0.6103107929229736
+        },
+        {
+          "text": " to",
+          "at": 57.18,
+          "end": 57.58,
+          "probability": 0.9976733326911926
+        },
+        {
+          "text": " be.",
+          "at": 57.58,
+          "end": 58.24,
+          "probability": 0.9911099672317505
+        }
+      ]
+    },
+    {
+      "at": 59.3,
+      "end": 62.16,
+      "text": " Let the morning wait outside,",
+      "no_speech": 0.49574124813079834,
+      "log_probability": -0.47159629587143187,
+      "words": [
+        {
+          "text": " Let",
+          "at": 59.3,
+          "end": 59.34,
+          "probability": 0.28307047486305237
+        },
+        {
+          "text": " the",
+          "at": 59.34,
+          "end": 59.64,
+          "probability": 0.6244987845420837
+        },
+        {
+          "text": " morning",
+          "at": 59.64,
+          "end": 60.42,
+          "probability": 0.9901241660118103
+        },
+        {
+          "text": " wait",
+          "at": 60.42,
+          "end": 60.96,
+          "probability": 0.7470852136611938
+        },
+        {
+          "text": " outside,",
+          "at": 60.96,
+          "end": 62.16,
+          "probability": 0.9400102496147156
+        }
+      ]
+    },
+    {
+      "at": 63.16,
+      "end": 66.58,
+      "text": " There is nothing new hereby",
+      "no_speech": 0.49574124813079834,
+      "log_probability": -0.47159629587143187,
+      "words": [
+        {
+          "text": " There",
+          "at": 63.16,
+          "end": 63.36,
+          "probability": 0.20230114459991455
+        },
+        {
+          "text": " is",
+          "at": 63.36,
+          "end": 63.64,
+          "probability": 0.9481635689735413
+        },
+        {
+          "text": " nothing",
+          "at": 63.64,
+          "end": 64.1,
+          "probability": 0.945708155632019
+        },
+        {
+          "text": " new",
+          "at": 64.1,
+          "end": 65.06,
+          "probability": 0.25688010454177856
+        },
+        {
+          "text": " hereby",
+          "at": 65.06,
+          "end": 66.58,
+          "probability": 0.09857064858078957
+        }
+      ]
+    },
+    {
+      "at": 66.58,
+      "end": 70.46,
+      "text": " But there is somewhere else to be",
+      "no_speech": 0.49574124813079834,
+      "log_probability": -0.47159629587143187,
+      "words": [
+        {
+          "text": " But",
+          "at": 66.58,
+          "end": 67.04,
+          "probability": 0.07424402981996536
+        },
+        {
+          "text": " there",
+          "at": 67.04,
+          "end": 67.38,
+          "probability": 0.9847230911254883
+        },
+        {
+          "text": " is",
+          "at": 67.38,
+          "end": 67.68,
+          "probability": 0.9906546473503113
+        },
+        {
+          "text": " somewhere",
+          "at": 67.68,
+          "end": 68.5,
+          "probability": 0.973158061504364
+        },
+        {
+          "text": " else",
+          "at": 68.5,
+          "end": 69.1,
+          "probability": 0.9983199238777161
+        },
+        {
+          "text": " to",
+          "at": 69.1,
+          "end": 69.4,
+          "probability": 0.9951003193855286
+        },
+        {
+          "text": " be",
+          "at": 69.4,
+          "end": 70.46,
+          "probability": 0.9855361580848694
+        }
+      ]
+    },
+    {
+      "at": 70.46,
+      "end": 72.24,
+      "text": " No grand promise",
+      "no_speech": 0.49574124813079834,
+      "log_probability": -0.47159629587143187,
+      "words": [
+        {
+          "text": " No",
+          "at": 70.46,
+          "end": 71.06,
+          "probability": 0.44596463441848755
+        },
+        {
+          "text": " grand",
+          "at": 71.06,
+          "end": 71.46,
+          "probability": 0.7173649668693542
+        },
+        {
+          "text": " promise",
+          "at": 71.46,
+          "end": 72.24,
+          "probability": 0.6222600340843201
+        }
+      ]
+    },
+    {
+      "at": 72.24,
+      "end": 74.2,
+      "text": " No forever",
+      "no_speech": 0.49574124813079834,
+      "log_probability": -0.47159629587143187,
+      "words": [
+        {
+          "text": " No",
+          "at": 72.24,
+          "end": 73.34,
+          "probability": 0.047623470425605774
+        },
+        {
+          "text": " forever",
+          "at": 73.34,
+          "end": 74.2,
+          "probability": 0.9940119385719299
+        }
+      ]
+    },
+    {
+      "at": 74.2,
+      "end": 75.92,
+      "text": " Just this pain",
+      "no_speech": 0.49574124813079834,
+      "log_probability": -0.47159629587143187,
+      "words": [
+        {
+          "text": " Just",
+          "at": 74.2,
+          "end": 74.96,
+          "probability": 0.6364620327949524
+        },
+        {
+          "text": " this",
+          "at": 74.96,
+          "end": 75.34,
+          "probability": 0.8785589933395386
+        },
+        {
+          "text": " pain",
+          "at": 75.34,
+          "end": 75.92,
+          "probability": 0.7508248090744019
+        }
+      ]
+    },
+    {
+      "at": 75.92,
+      "end": 78.24000000000001,
+      "text": " Just this with it",
+      "no_speech": 0.49574124813079834,
+      "log_probability": -0.47159629587143187,
+      "words": [
+        {
+          "text": " Just",
+          "at": 75.92,
+          "end": 77.3,
+          "probability": 0.37226352095603943
+        },
+        {
+          "text": " this",
+          "at": 77.3,
+          "end": 77.68,
+          "probability": 0.9867721199989319
+        },
+        {
+          "text": " with",
+          "at": 77.68,
+          "end": 78.06,
+          "probability": 0.4490441381931305
+        },
+        {
+          "text": " it",
+          "at": 78.06,
+          "end": 78.60000000000001,
+          "probability": 0.9583843350410461
+        }
+      ]
+    },
+    {
+      "at": 78.88,
+      "end": 79.98,
+      "text": " Every shortcut",
+      "no_speech": 0.49574124813079834,
+      "log_probability": -0.47159629587143187,
+      "words": [
+        {
+          "text": " Every",
+          "at": 78.88,
+          "end": 79.28,
+          "probability": 0.8200466632843018
+        },
+        {
+          "text": " shortcut",
+          "at": 79.28,
+          "end": 79.98,
+          "probability": 0.056755173951387405
+        }
+      ]
+    },
+    {
+      "at": 81.5,
+      "end": 89.22,
+      "text": " When you're laughing, reaches here. Take good all the way on the meetings.",
+      "no_speech": 0.7411280870437622,
+      "log_probability": -0.7560895712752091,
+      "words": [
+        {
+          "text": " When",
+          "at": 81.5,
+          "end": 82.46,
+          "probability": 0.17484404146671295
+        },
+        {
+          "text": " you're",
+          "at": 82.46,
+          "end": 82.86,
+          "probability": 0.7201206386089325
+        },
+        {
+          "text": " laughing,",
+          "at": 82.86,
+          "end": 83.34,
+          "probability": 0.48156067728996277
+        },
+        {
+          "text": " reaches",
+          "at": 83.54,
+          "end": 84.16,
+          "probability": 0.6577180624008179
+        },
+        {
+          "text": " here.",
+          "at": 84.16,
+          "end": 85.9,
+          "probability": 0.17546072602272034
+        },
+        {
+          "text": " Take",
+          "at": 86.24,
+          "end": 86.3,
+          "probability": 0.92974454164505
+        },
+        {
+          "text": " good",
+          "at": 86.3,
+          "end": 86.82,
+          "probability": 0.22903341054916382
+        },
+        {
+          "text": " all",
+          "at": 86.82,
+          "end": 87.14,
+          "probability": 0.37068983912467957
+        },
+        {
+          "text": " the",
+          "at": 87.14,
+          "end": 87.42,
+          "probability": 0.4670334458351135
+        },
+        {
+          "text": " way",
+          "at": 87.42,
+          "end": 87.58,
+          "probability": 0.979878306388855
+        },
+        {
+          "text": " on",
+          "at": 87.58,
+          "end": 88.32,
+          "probability": 0.538668692111969
+        },
+        {
+          "text": " the",
+          "at": 88.32,
+          "end": 88.72,
+          "probability": 0.21342146396636963
+        },
+        {
+          "text": " meetings.",
+          "at": 88.72,
+          "end": 89.22,
+          "probability": 0.4369964897632599
+        }
+      ]
+    },
+    {
+      "at": 90.24,
+      "end": 99.38,
+      "text": " Class of places we will meditate that the morning will wait outside there is nothing",
+      "no_speech": 0.7411280870437622,
+      "log_probability": -0.7560895712752091,
+      "words": [
+        {
+          "text": " Class",
+          "at": 90.24,
+          "end": 90.3,
+          "probability": 0.30521252751350403
+        },
+        {
+          "text": " of",
+          "at": 90.3,
+          "end": 90.5,
+          "probability": 0.9543598294258118
+        },
+        {
+          "text": " places",
+          "at": 90.5,
+          "end": 91.08,
+          "probability": 0.44840794801712036
+        },
+        {
+          "text": " we",
+          "at": 91.08,
+          "end": 91.72,
+          "probability": 0.27040427923202515
+        },
+        {
+          "text": " will",
+          "at": 91.72,
+          "end": 91.88,
+          "probability": 0.7281842231750488
+        },
+        {
+          "text": " meditate",
+          "at": 91.88,
+          "end": 92.7,
+          "probability": 0.11494182795286179
+        },
+        {
+          "text": " that",
+          "at": 92.7,
+          "end": 94.28,
+          "probability": 0.09089357405900955
+        },
+        {
+          "text": " the",
+          "at": 94.28,
+          "end": 94.68,
+          "probability": 0.9309630393981934
+        },
+        {
+          "text": " morning",
+          "at": 94.68,
+          "end": 95.28,
+          "probability": 0.967624306678772
+        },
+        {
+          "text": " will",
+          "at": 95.28,
+          "end": 95.68,
+          "probability": 0.4034423530101776
+        },
+        {
+          "text": " wait",
+          "at": 95.68,
+          "end": 95.86,
+          "probability": 0.704995334148407
+        },
+        {
+          "text": " outside",
+          "at": 95.86,
+          "end": 96.76,
+          "probability": 0.9958244562149048
+        },
+        {
+          "text": " there",
+          "at": 96.76,
+          "end": 98.24,
+          "probability": 0.1282772719860077
+        },
+        {
+          "text": " is",
+          "at": 98.24,
+          "end": 98.5,
+          "probability": 0.9881060123443604
+        },
+        {
+          "text": " nothing",
+          "at": 98.5,
+          "end": 99.38,
+          "probability": 0.9963822364807129
+        }
+      ]
+    },
+    {
+      "at": 100.82,
+      "end": 115.16,
+      "text": " There is nothing, as the station I ever hold when you are there.",
+      "no_speech": 0.39107632637023926,
+      "log_probability": -0.6707245277033912,
+      "words": [
+        {
+          "text": " There",
+          "at": 100.82,
+          "end": 102.22,
+          "probability": 0.19197280704975128
+        },
+        {
+          "text": " is",
+          "at": 102.22,
+          "end": 102.44,
+          "probability": 0.9880225658416748
+        },
+        {
+          "text": " nothing,",
+          "at": 102.44,
+          "end": 103.5,
+          "probability": 0.9772927761077881
+        },
+        {
+          "text": " as",
+          "at": 105.5,
+          "end": 105.9,
+          "probability": 0.23451516032218933
+        },
+        {
+          "text": " the",
+          "at": 105.9,
+          "end": 106.18,
+          "probability": 0.43339651823043823
+        },
+        {
+          "text": " station",
+          "at": 106.18,
+          "end": 106.96,
+          "probability": 0.8295971751213074
+        },
+        {
+          "text": " I",
+          "at": 106.96,
+          "end": 109.74,
+          "probability": 0.52147376537323
+        },
+        {
+          "text": " ever",
+          "at": 109.74,
+          "end": 110.24,
+          "probability": 0.4450680613517761
+        },
+        {
+          "text": " hold",
+          "at": 110.24,
+          "end": 111.1,
+          "probability": 0.46260449290275574
+        },
+        {
+          "text": " when",
+          "at": 111.1,
+          "end": 113.32,
+          "probability": 0.5421936511993408
+        },
+        {
+          "text": " you",
+          "at": 113.32,
+          "end": 113.94,
+          "probability": 0.9818772077560425
+        },
+        {
+          "text": " are",
+          "at": 113.94,
+          "end": 114.36,
+          "probability": 0.874019205570221
+        },
+        {
+          "text": " there.",
+          "at": 114.36,
+          "end": 115.16,
+          "probability": 0.995795726776123
+        }
+      ]
+    }
+  ],
+  "qualification": "Automatic candidate only"
+}

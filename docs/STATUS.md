@@ -1,3 +1,12 @@
+## Produced-song startup and rights follow-through — 2026-10-27
+
+**PASS recovery/build/install; PARTIAL overall completion; commercial separator adoption BLOCKED.** [Current evidence and limitations](SINGING_STARTUP_FOLLOWUP.md).
+
+- [x] Extend the shared singer/karaoke startup deadline through media playback; close capture and restore retry on timeout, reject late completion, and clear the previous pitch trace.
+- [x] Pass both-browser playback/accessibility/synthetic-input and stalled-start recovery checks, four shared recording tests, fifteen Python tests, native packaging and signed build 33 audit/install/launch. Build-32 owner acceptance remains separate from new-build physical evidence.
+- [x] Retain timestamped vocal-transcription candidates without promoting misheard words to grades/highlights. Record the Demucs weight restriction and the free Spleeter candidate's actual dependency-resolution failure; no new package/model installed.
+- [ ] Verify sung word/note targets, establish applicable commercial separator permission or qualify a replacement, and close the remaining musical/hosted/independent/provider gates. Preserve unavailable-iPad exclusion and no-publication/no-new-spend boundaries.
+
 ## Recorded singer and karaoke practice — 2026-10-27
 
 **PASS local implementation/checks; PARTIAL exact-song scoring and overall completion.** [Report and remaining gates](SINGING_PRODUCED_PRACTICE.md).

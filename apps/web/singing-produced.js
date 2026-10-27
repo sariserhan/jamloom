@@ -25,9 +25,9 @@ $('lesson-tip').textContent='Use headphones. Match the singer by ear, or sing in
 $('feedback').textContent='Listen first, then sing when you are ready.';
 const explanation=document.createElement('p');explanation.className='tip';explanation.textContent='The recorded performance includes variations. Follow the singer by ear; these words are not synchronized.';$('full-lyrics-title').after(explanation);
 fetch(recordingAsset(id,'lyrics',mobile)).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{if(typeof data.text!=='string'||data.text.length>16000)throw Error();for(const line of data.text.split('\n')){const p=document.createElement('p');p.textContent=line;$('full-lyrics-list').append(p);}}).catch(()=>{$('full-lyrics-list').textContent='The lyric sheet could not load. Reopen this song to try again.';});
-let run=null,token=0,raf=0,trace=[],root=57,starting=false,mode='song',ignorePause=false;
+let run=null,token=0,raf=0,trace=[],root=57,starting=false,mode='song',ignorePause=false,startupTimer=0;
 const bounds=()=>$('section').value==='all'?[0,song.seconds]:[Number($('section').value),Number($('section').value)+30];
-function stopMic(){token++;const old=run;run=null;if(old){clearTimeout(old.watchdog);old.stream?.getTracks().forEach(t=>t.stop());old.input?.disconnect();old.capture?.port.postMessage('stop');old.capture?.port.close();old.capture?.disconnect();old.mute?.disconnect();void old.context.close().catch(()=>{});}$('mic-state').textContent='Microphone off';$('mic-state').classList.remove('live');}
+function stopMic(){clearTimeout(startupTimer);startupTimer=0;token++;const old=run;run=null;if(old){old.stream?.getTracks().forEach(t=>t.stop());old.input?.disconnect();old.capture?.port.postMessage('stop');old.capture?.port.close();old.capture?.disconnect();old.mute?.disconnect();void old.context.close().catch(()=>{});}$('mic-state').textContent='Microphone off';$('mic-state').classList.remove('live');}
 function stop(message='Stopped. Your microphone is off.') {stopMic();if(!media.paused)ignorePause=true;media.pause();cancelAnimationFrame(raf);starting=false;$('demo').disabled=false;$('start').disabled=false;$('stop').disabled=true;$('feedback').textContent=message;}
 function draw(){cancelAnimationFrame(raf);const [from,to]=bounds();
  if(!media.paused&&media.currentTime>=to-.025){if(repeat.checked){media.currentTime=from;trace=[];}else{stop('Passage finished. Listen or sing again whenever you like.');return;}}
@@ -41,7 +41,8 @@ media.addEventListener('ended',()=>{if(repeat.checked){media.currentTime=bounds(
 media.addEventListener('error',()=>stop('The recording could not load. Reopen this song and try again.'));
 $('section').onchange=()=>{stop();trace=[];media.currentTime=bounds()[0];draw();};
 async function start(sing){
- stop();starting=true;const attempt=token;$('demo').disabled=true;$('start').disabled=true;$('stop').disabled=false;$('feedback').textContent=sing?'Preparing your microphone…':'Loading the singer…';
+ stop();starting=true;trace=[];const attempt=token;$('demo').disabled=true;$('start').disabled=true;$('stop').disabled=false;$('feedback').textContent=sing?'Preparing your microphone…':'Loading the singer…';
+ startupTimer=setTimeout(()=>{if(attempt===token)stop('Starting this song timed out. Your microphone is off. Check your connection and try again.');},30000);
  let stream;try{
   const next=sing?'karaoke':'song',position=mode===next?media.currentTime:bounds()[0];
   if(mode!==next||!media.getAttribute('src')){mode=next;media.src=recordingAsset(id,next,mobile);media.load();}
@@ -49,7 +50,6 @@ async function start(sing){
   media.setAttribute('aria-label',song.title+(sing?' karaoke':' sung recording'));
   if(sing){
    const context=new AudioContext({latencyHint:'interactive'}),current={context};run=current;
-   current.watchdog=setTimeout(()=>{if(run===current)stop('Microphone preparation timed out. Allow access and try again.');},30000);
    await context.resume();if(attempt!==token)return;stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
    if(attempt!==token){stream.getTracks().forEach(t=>t.stop());return;}current.stream=stream;
    await context.audioWorklet.addModule(new URL('./singing-capture-worklet.js',import.meta.url));if(run!==current)return;
@@ -62,10 +62,10 @@ async function start(sing){
     trace.push({at,note,good:false});if(trace.length>1200)trace.splice(0,600);
    }finally{if(run===current)current.capture.port.postMessage('ack');}};
    current.capture.onprocessorerror=()=>{if(run===current)stop('Microphone analysis was interrupted. Try again.');};stream.getTracks().forEach(t=>t.addEventListener('ended',()=>{if(run===current)stop('Microphone disconnected. Reconnect and try again.');},{once:true}));
-   context.addEventListener('statechange',()=>{if(run===current&&context.state!=='running')stop('Audio paused. Start again when ready.');});clearTimeout(current.watchdog);
+   context.addEventListener('statechange',()=>{if(run===current&&context.state!=='running')stop('Audio paused. Start again when ready.');});
    $('mic-state').textContent='Microphone listening';$('mic-state').classList.add('live');
   }
-  if(attempt!==token)return;starting=false;await media.play();if(attempt!==token)return;$('demo').disabled=false;$('start').disabled=false;$('feedback').textContent=sing?'Sing with the backing · your pitch appears below':'Listen to the recorded singer';
+  if(attempt!==token)return;await media.play();if(attempt!==token)return;clearTimeout(startupTimer);startupTimer=0;starting=false;$('demo').disabled=false;$('start').disabled=false;$('feedback').textContent=sing?'Sing with the backing · your pitch appears below':'Listen to the recorded singer';
  }catch(error){stream?.getTracks().forEach(t=>t.stop());if(attempt===token)stop(error.name==='NotAllowedError'?'Allow microphone and playback access, then try again.':error.message||'Could not start this song.');}
 }
 $('demo').onclick=()=>start(false);$('start').onclick=()=>start(true);$('stop').onclick=()=>stop();

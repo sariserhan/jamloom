@@ -1,3 +1,5 @@
+**2026-10-27 follow-through:** [startup reliability, exact-checkpoint licensing and Spleeter comparison](SINGING_STARTUP_FOLLOWUP.md). The shared recorded-song player is hardened without a new dependency. Current Demucs/TorchAudio weights remain blocked for commercial adoption; Spleeter is STUDY with a pinned source and actual failed Mac dependency resolution, not an adopted replacement. No audio-quality benchmark is inferred from a license review.
+
 # Open-source reuse audit — 2026-10-26
 
 **PARTIAL overall; PASS source audit and feasible local measurements.** One narrowly reusable MIT pitch detector is integrated into an original first Singing Academy lesson. Existing DJ engines, instruments, authentication, database, payment routes and model workers remain intact. No paid compute, licenses or model downloads were started for this audit. No public deployment or learned-model training occurred.
