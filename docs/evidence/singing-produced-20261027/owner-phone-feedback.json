@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-27",
+  "status": "PASS owner-observed iPhone playback, microphone pitch and tab cleanup",
+  "version": "0.10.4",
+  "build": "32",
+  "song": "Long Way Home",
+  "question": "The signed Jamloom 0.10.4 build 32 is open. In Sing, open Long Way Home under Produced songs, try Hear singer, then Sing karaoke with headphones. Does audio play, does the pitch line follow your voice, and does switching to Community stop it? Xcode\u2019s UI automation timed out, so this direct check is still needed.",
+  "answer": "Playback, microphone and stopping work",
+  "release_binary_sha256": "3a4c67a6bc05679d9963de171f19a8d775da72d459ced9b0683d30488b3e5dee",
+  "limits": [
+    "Owner-observed functional check; not independent pitch accuracy or lyric alignment",
+    "Other recorded song and additional devices not separately confirmed by this response",
+    "Earlier UI automation timeout retained; no automated UI pass inferred",
+    "No publication authorization"
+  ]
+}

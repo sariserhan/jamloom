@@ -73,14 +73,14 @@ approve a public release or any popular-song rights.
   completion. Browser automation is muted; this is not listening acceptance.
 - **PASS:** native server assertions run against actual Swift code on macOS;
   signed Release **0.10.4 build 32**, bundle audit and iPhone installation.
-  Two native server tests also pass on the actual iPhone. The UI runner failed before initialization (automation-mode timeout); its two playback flows did not run. The signed Release was reinstalled and launched successfully, and a direct owner playback/microphone/tab check is pending.
+  Two native server tests also pass on the actual iPhone. The UI runner failed before initialization (automation-mode timeout); its two playback flows did not run. The signed Release was reinstalled and launched successfully, and the owner confirms the direct Long Way Home check: **“Playback, microphone and stopping work.”** [Exact feedback](evidence/singing-produced-20261027/owner-phone-feedback.json). This closes the scoped functional check, not independent pitch accuracy or exact-song grading.
 - **NOT RUN:** independently verified sung transcript/note targets, human
   accuracy of these new practice pages, additional-device acoustic calibration,
   new App Store archive/upload/submission or website publication.
 
 Evidence: [browser results](evidence/singing-produced-20261027/browser.json),
 [validation manifest](evidence/singing-produced-20261027/validation.json).
-The earlier locked-phone launch and later UI-runner failure are retained. Later release launch succeeds; it does not establish successful physical playback.
+The earlier locked-phone launch and later UI-runner failure are retained. Later release launch succeeds. The separate owner response establishes the scoped physical playback/microphone/tab check; the automated UI failure remains retained.
 
 Context7 tools were unavailable after discovery; the installed Next.js route
 and output-tracing documentation was inspected. Existing installed Playwright

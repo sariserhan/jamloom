@@ -1,5 +1,7 @@
 ## Produced Singing songs — local candidate, 2026-10-27
 
+**Physical check PASS:** on build 32, the owner confirms Long Way Home playback, microphone pitch and stopping when switching to Community. This is functional acceptance, not verified lyric/note scoring.
+
 Open http://127.0.0.1:3010/singing-academy and choose **Long Way Home** or **Leave It All Outside** under “Take the lead.” On iPhone build 32, use Sing → Produced songs. Hear singer plays the approved recording; Sing karaoke opens the microphone over its matching backing. Use headphones. Choose a thirty-second passage and Repeat to rehearse it, or seek with the player. Pause turns the microphone off; tap Sing karaoke to resume capture. Stop/tab switching/help also stop capture.
 
 These songs are open practice, without scores or synchronized lyric targets; their lyric sheets may differ from the recorded performance. The twelve graded songs and twelve warm-ups remain available and progress is preserved. Price stays $39 once. [Validation and current unfinished scope](SINGING_PRODUCED_PRACTICE.md). Nothing is deployed, uploaded or activated for sale.

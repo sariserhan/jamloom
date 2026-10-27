@@ -11,7 +11,7 @@
   "server_trace_private_assets": 6,
   "browser": "PASS two engines, two songs, desktop/mobile, synthetic PCM and cleanup; existing First Light demo regression also passes",
   "native": "PASS signed Release 0.10.4 build 32, bundle audit, install, reinstall and launch; two native server tests pass on actual iPhone",
-  "physical_ui": "NOT RUN: UI runner failed to enable automation; direct owner check pending",
+  "physical_ui": "PASS owner-observed Long Way Home playback, microphone pitch and stopping on Community; automated UI runner remains failed to initialize",
   "song_scoring": "NOT QUALIFIED: original lyric sheet and live pitch only; no fabricated targets, highlights or completion",
   "new_transcription": "Whisper-small on MPS, existing pinned checkpoint, automatic diagnostic with hallucinated repetitions; not adopted",
   "source_sha256": {
@@ -59,7 +59,8 @@
     "browser.json": "3ca658b7fdae32e42fc8c4d70bc4de1708cebf34b407ed591fd621a68304e73c",
     "ios-release-reinstall.json": "c7213514745541b25900bc723c83d60f55d8c88b1c98582a77dd893b840a4d5c",
     "site-tests.log": "49edc3e8df0bbe0a5566b9ccc665d2cf0277ea2e8cf47fee8f4d5aaa31006f6d",
-    "ios-bundle.json": "e3facf5266ecc870b9450c7ac3136626827c08b4ce10c83a5c7dde2b9ab1f3fc"
+    "ios-bundle.json": "e3facf5266ecc870b9450c7ac3136626827c08b4ce10c83a5c7dde2b9ab1f3fc",
+    "owner-phone-feedback.json": "6b2d894701141ba2744c884e5e9d80f725115a474fab34cf389f345abf16d71a"
   },
   "build_log_sha256": "d7fe0e11f46e3a4d54f32a585a7fe6ad5b3fc9b55cc9c963580cbb6a9bdc4b79",
   "phone_build_log_sha256": "65831bed7d33a9f0949e8e6554a867a0bfedb2699b7923b37ea6d2eb3628ca7b",
