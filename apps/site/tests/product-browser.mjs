@@ -7,7 +7,7 @@ const base=process.env.JAMLOOM_TEST_URL??'http://127.0.0.1:4220';
 assert.equal(new URL(base).hostname,'127.0.0.1');
 const evidence=new URL(process.env.JAMLOOM_EVIDENCE_DIR??'../../../docs/evidence/full-product/',import.meta.url),results=[];
 await mkdir(evidence,{recursive:true});
-const routes=['/','/improvise','/dj-studio','/live-dj','/music-dna','/singing-academy','/pricing','/examples','/learn','/learn/voice-remix','/learn/laptop-dj','/learn/live-source','/help','/privacy','/terms','/licenses','/status','/download'];
+const routes=['/ai-dj','/','/improvise','/dj-studio','/live-dj','/music-dna','/singing-academy','/pricing','/examples','/learn','/learn/voice-remix','/learn/laptop-dj','/learn/live-source','/help','/privacy','/terms','/licenses','/status','/download'];
 for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  const browser=await engine.launch(name==='chromium'?{args:['--mute-audio']}:{});
  try{

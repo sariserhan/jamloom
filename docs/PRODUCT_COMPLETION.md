@@ -4,6 +4,8 @@
 
 ## Latest completion evidence
 
+[AI DJ public discovery](AI_DJ_MARKETING.md) is complete locally: homepage hero/chapter, shared navigation, Start/Tour, real deck artwork and anonymous overview. All 165 site tests and eight Chromium/WebKit viewport/accessibility checks pass. Beta, generation, recording and payment restrictions remain. This does not close AI DJ musical-quality or release gates.
+
 [Release preparation](RELEASE_PREPARATION.md) supersedes older pending-schema and real-sandbox blockers below: migrations 0031/0032 now pass with 32 matching hashes, and real Apple sandbox credits/course purchases, server/HTTP verification and course Restore pass. No real refund notification or deployed/native HTTP delivery is inferred. The USD39 Stripe Singing product/price are prepared but inactive. Three physical build-29 Community/Singing checks pass. Publication, live sales, musical/singing quality and external rights/reviewer gates remain held/open.
 
 ## Current maintenance and retained completion evidence

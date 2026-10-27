@@ -1,0 +1,12 @@
+{
+  "source": "Actual Jamloom AIDJ React component and mixer",
+  "capture": "1440 x 764 CSS-pixel console screenshot",
+  "tracks": [
+    "Party Sector",
+    "Black Diamond"
+  ],
+  "provenance": "Existing cleared local practice bank; silent browser playback; no generated artwork or paid generation",
+  "sha256": "67d1022267ac004ac08135bb87b8d53279fd4a6a599209eb252fed1bfd056bfa",
+  "bytes": 371330,
+  "limitations": "Prepared practice audio demonstrates the interface, not fresh AI music quality."
+}

@@ -1,3 +1,7 @@
+## AI DJ public overview — 2026-10-27
+
+[Local marketing evidence](AI_DJ_MARKETING.md). Preview at http://127.0.0.1:3010: choose **Let AI DJ** in the homepage hero, or open `/ai-dj`. AI DJ is also in navigation, Start and Tour. The image is the actual deck; public visitors see the overview and public-set links, while authorized beta/development access retains the workspace. Public generation stays closed. No deployment or sales activation occurred. The marketing browser check is `node tests/ai-dj-marketing-browser.mjs` from `apps/site` against the running production preview.
+
 ## Latest release preparation — 2026-10-27
 
 [Current evidence](RELEASE_PREPARATION.md): production migrations 0031/0032 are applied after backup/restore rehearsal; all 32 hashes match. Keep private dumps in `build-release-followthrough-20261027*` out of generic cache cleanup. Actual Apple sandbox credit/course purchases, independent server verification, authenticated local HTTP replay and physical course Restore pass; refund notifications and deployed/native HTTP delivery remain separate.

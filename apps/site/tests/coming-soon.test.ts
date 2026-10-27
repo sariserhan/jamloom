@@ -92,3 +92,13 @@ test('DJ cleanup reaches its own auth during a launch hold without opening sessi
  const response=await proxy(new NextRequest('https://www.jamloom.com/api/ai-dj/supervisor'));
  assert.equal(response.headers.get('x-middleware-next'),'1');
 });
+
+// Advertising the product must not open generation, recordings, or payment access.
+test('AI DJ public overview passes the launch hold while paid and private APIs remain closed',async()=>{
+ assert.equal(comingSoonRecovery('/ai-dj', {NODE_ENV:'production'}),true);
+ for(const path of ['/ai-dj/session','/ai-dj/fake','/api/ai-dj/sessions','/api/ai-dj/recordings','/api/payments/checkout'])assert.equal(comingSoonRecovery(path,{NODE_ENV:'production'}),false,path);
+ assert.equal((await proxy(new NextRequest('https://www.jamloom.com/ai-dj'))).headers.get('x-middleware-next'),'1');
+ const html=await comingSoonResponse(new Request('https://www.jamloom.com/')).text();
+ assert.match(html,/href="\/ai-dj">AI DJ<\/a>/);assert.match(html,/product-previews\/ai-dj.png/);
+ assert.match(html,/Explore AI DJ/);
+});

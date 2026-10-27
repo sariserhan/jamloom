@@ -1,5 +1,6 @@
 // Real Next.js, PostgreSQL, audio graph and upload/review routes; no hosted writes.
 import assert from 'node:assert/strict';
+import {homeProducts} from '../lib/home-products.ts';
 import {randomUUID} from 'node:crypto';
 import {mkdtemp,rm,writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import {join} from 'node:path';import {spawn} from 'node:child_process';import {once} from 'node:events';import {setTimeout as delay} from 'node:timers/promises';
@@ -22,7 +23,7 @@ try{
    const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});await context.route('**/*',r=>new URL(r.request().url()).origin===base?r.continue():r.abort());
    await context.addInitScript(()=>{const Native=window.AudioContext;window.audioGraphs=[];window.AudioContext=class extends Native{constructor(...args){super(...args);this.probeGains=[];this.probeAnalysers=[];window.audioGraphs.push(this);}createGain(){const n=super.createGain();this.probeGains.push(n);return n;}createAnalyser(){const n=super.createAnalyser();this.probeAnalysers.push(n);return n;}};});
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
-   await page.goto(base);await page.getByRole('heading',{name:'Make a song. Make a mix. Make it yours.'}).waitFor();assert.equal(await page.locator('h1').count(),1);assert.equal(new URL(await page.locator('link[rel=canonical]').getAttribute('href')).href,'https://www.jamloom.com/');assert.equal(await page.locator('.feature-list article').count(),6);assert.equal(await page.locator('.mini-deck audio').evaluateAll(as=>as.every(a=>a.paused)),true);
+   await page.goto(base);await page.getByRole('heading',{name:'Make a song. Make a mix. Make it yours.'}).waitFor();assert.equal(await page.locator('h1').count(),1);assert.equal(new URL(await page.locator('link[rel=canonical]').getAttribute('href')).href,'https://www.jamloom.com/');assert.equal(await page.locator('.feature-list article').count(),homeProducts.length);assert.equal(await page.locator('.mini-deck audio').evaluateAll(as=>as.every(a=>a.paused)),true);
    for(const width of [1440,390,320]){await page.setViewportSize({width,height:1000});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'home overflow '+width);await page.screenshot({path:join(folder,`${name}-home-${width}.png`),fullPage:true});}
    const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();assert.deepEqual(audit.violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)})),[]);
    await page.setViewportSize({width:1440,height:1000});await page.getByRole('button',{name:'Play Deck A',exact:true}).click();await page.waitForFunction(()=>document.querySelector('.mini-deck audio').currentTime>.2);

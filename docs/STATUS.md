@@ -1,3 +1,12 @@
+## AI DJ public discovery — 2026-10-27
+
+**PASS local marketing; PARTIAL overall product readiness; publication HELD.** [Report](AI_DJ_MARKETING.md).
+
+- [x] Add AI DJ to the shared homepage hero/product chapter, desktop/mobile navigation, Start, Tour and coming-soon catalogue, with a captured image of the actual deck.
+- [x] Provide an anonymous public overview, clear development status, public-set links, privacy/credit explanations and search/social metadata; preserve beta/private/paid-generation restrictions.
+- [x] Pass 165 site tests, TypeScript/build, eight Chromium/WebKit viewport checks and automated overview accessibility scans. Retain reproducible evidence and local preview at http://127.0.0.1:3010.
+- [ ] Keep deployment and sales held; broader musical quality, capacity, physical and external permission/reviewer gates remain open. This marketing pass does not close them.
+
 ## Release preparation and real Apple sandbox — 2026-10-27
 
 **PASS scoped completion; PARTIAL all-product readiness; publication HELD.** [Current report](RELEASE_PREPARATION.md).

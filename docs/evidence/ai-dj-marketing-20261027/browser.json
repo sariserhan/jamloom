@@ -1,0 +1,111 @@
+{
+  "status": "PASS",
+  "base": "http://127.0.0.1:3010",
+  "method": "Production preview; analytics blocked; Playwright Chromium and WebKit. Manual screen reader and physical phone NOT RUN.",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "149.0.7827.55",
+      "width": 1440,
+      "accessibility": "PASS automated scan",
+      "homeHero": "PASS",
+      "navigation": "PASS",
+      "overview": "PASS",
+      "image": "PASS",
+      "faq": "PASS",
+      "publicSets": "PASS",
+      "overflow": false
+    },
+    {
+      "browser": "chromium",
+      "version": "149.0.7827.55",
+      "width": 1280,
+      "accessibility": "PASS automated scan",
+      "homeHero": "PASS",
+      "navigation": "PASS",
+      "overview": "PASS",
+      "image": "PASS",
+      "faq": "PASS",
+      "publicSets": "PASS",
+      "overflow": false
+    },
+    {
+      "browser": "chromium",
+      "version": "149.0.7827.55",
+      "width": 390,
+      "accessibility": "PASS automated scan",
+      "homeHero": "PASS",
+      "navigation": "PASS",
+      "overview": "PASS",
+      "image": "PASS",
+      "faq": "PASS",
+      "publicSets": "PASS",
+      "overflow": false
+    },
+    {
+      "browser": "chromium",
+      "version": "149.0.7827.55",
+      "width": 320,
+      "accessibility": "PASS automated scan",
+      "homeHero": "PASS",
+      "navigation": "PASS",
+      "overview": "PASS",
+      "image": "PASS",
+      "faq": "PASS",
+      "publicSets": "PASS",
+      "overflow": false
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "width": 1440,
+      "accessibility": "PASS automated scan",
+      "homeHero": "PASS",
+      "navigation": "PASS",
+      "overview": "PASS",
+      "image": "PASS",
+      "faq": "PASS",
+      "publicSets": "PASS",
+      "overflow": false
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "width": 1280,
+      "accessibility": "PASS automated scan",
+      "homeHero": "PASS",
+      "navigation": "PASS",
+      "overview": "PASS",
+      "image": "PASS",
+      "faq": "PASS",
+      "publicSets": "PASS",
+      "overflow": false
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "width": 390,
+      "accessibility": "PASS automated scan",
+      "homeHero": "PASS",
+      "navigation": "PASS",
+      "overview": "PASS",
+      "image": "PASS",
+      "faq": "PASS",
+      "publicSets": "PASS",
+      "overflow": false
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "width": 320,
+      "accessibility": "PASS automated scan",
+      "homeHero": "PASS",
+      "navigation": "PASS",
+      "overview": "PASS",
+      "image": "PASS",
+      "faq": "PASS",
+      "publicSets": "PASS",
+      "overflow": false
+    }
+  ]
+}

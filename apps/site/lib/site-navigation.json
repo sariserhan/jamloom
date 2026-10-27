@@ -20,6 +20,10 @@
     "label": "DJ Studio"
   },
   {
+    "href": "/ai-dj",
+    "label": "AI DJ"
+  },
+  {
     "href": "/live-dj",
     "label": "Live DJ"
   },
