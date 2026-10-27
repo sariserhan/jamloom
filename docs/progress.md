@@ -16,7 +16,9 @@ Hosted follow-through: 14 worker-boundary tests pass on isolated refresh commit
 GitHub image build [40573167871](https://github.com/sariserhan/jamloom/actions/runs/40573167871)
 was cancelled before digest publication after review found the Docker build embeds
 a Demucs checkpoint without established commercial permission. No RunPod endpoint
-change or GPU job occurred; the newly authorized $1 cap remains unused. Rights-safe
+change or GPU job occurred; the newly authorized $1 cap remains unused. A current
+read-only preflight confirms the old digest, zero workers, and no active jobs
+([snapshot](evidence/hosted-worker-rights-20261027/provider-preflight.json)). Rights-safe
 image publication and full hosted qualification remain open.
 
 ## Accepted karaoke and local DJ review — 2026-10-27
