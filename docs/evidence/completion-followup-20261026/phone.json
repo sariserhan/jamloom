@@ -15,6 +15,6 @@
   "ipaSha256": "ad86de6b9863a612475ab96aa8057048dab1efcfcfc013c2f49c867f419c66c8",
   "ipaBytes": 79336260,
   "exportedSignature": "PASS",
-  "installed": "NOT RUN: device tunnel failed",
+  "installed": "PASS: development-signed Release archive installed and launched on iPhone 14 Pro; see ../phone-reconnected-20261026/device.json",
   "uploaded": false
 }

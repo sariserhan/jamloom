@@ -1,0 +1,38 @@
+{
+  "status": "PARTIAL",
+  "device": "iPhone 14 Pro",
+  "os": "27.0.1",
+  "version": "0.10.2",
+  "build": "26",
+  "configuration": "Debug",
+  "tests": [
+    {
+      "test": "testCommunityBottomPlayerPausesSeeksAndKeepsPlayingWhileBrowsing()",
+      "status": "Passed",
+      "durationSeconds": 33.74635601043701
+    },
+    {
+      "test": "testCommunityLanguageFilterAndFavorites()",
+      "status": "Failed",
+      "durationSeconds": 12.820953011512756
+    },
+    {
+      "test": "testSingingSongsDemoAndTabCleanup()",
+      "status": "Passed",
+      "durationSeconds": 24.81339192390442
+    }
+  ],
+  "releaseInstall": "PASS: exact prepared development-signed Release archive installed",
+  "websiteDeployed": false,
+  "appUploaded": false,
+  "limitations": [
+    "Community uses isolated fixture songs, not live catalogue delivery.",
+    "Demo and lifecycle checks do not measure microphone accuracy, physical latency or listening quality.",
+    "Initial runs had invalid accessibility hit points and external-app interruptions; raw diagnostics retained locally."
+  ],
+  "resultBundle": "renders/ios-validation/phone-reconnected-touch-20261026.xcresult",
+  "rawLogs": "renders/ios-validation/phone-reconnected-logs-20261026",
+  "releaseLaunch": "PASS: com.djayvo.app launched without test arguments",
+  "archive": "build-ios-store/Jamloom-0.10.2-26-final.xcarchive",
+  "languageFilter": "PARTIAL: latest retry interrupted before reaching filter; full current-device check remains open"
+}

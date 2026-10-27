@@ -46,7 +46,7 @@ final class FlowTests: XCTestCase {
     func testCommunityBottomPlayerPausesSeeksAndKeepsPlayingWhileBrowsing() {
         let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture", "--community-player"]
         app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
-        app.launch(); app.buttons["Community"].firstMatch.tap()
+        app.launch(); tapVisible(app.tabBars.buttons["Community"], in: app)
         let song = app.buttons["Play Night lights"]; XCTAssertTrue(song.waitForExistence(timeout: 15)); song.tap()
         let toggle = app.buttons["playbackToggle"], found = app.buttons["playbackToggle"].waitForExistence(timeout: 10)
         if !found { let tree = XCTAttachment(string: app.debugDescription); tree.name = "Missing playback control"; tree.lifetime = .keepAlways; add(tree) }
@@ -75,10 +75,10 @@ final class FlowTests: XCTestCase {
     func testCommunityLanguageFilterAndFavorites() {
         let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture", "--community-languages"]
         app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
-        app.launch(); app.buttons["Community"].firstMatch.tap()
+        app.launch(); tapVisible(app.tabBars.buttons["Community"], in: app)
         XCTAssertTrue(app.buttons["Play Night lights"].waitForExistence(timeout: 15))
         let language = app.buttons["communityLanguage"]
-        XCTAssertTrue(language.isHittable); language.tap(); app.buttons["Turkish"].tap()
+        language.tap(); app.buttons["Turkish"].tap()
         XCTAssertTrue(app.buttons["Play Gece ritmi"].waitForExistence(timeout: 15))
         XCTAssertFalse(app.buttons["Play Night lights"].exists)
         app.buttons["Favorite Gece ritmi"].tap(); app.buttons["collection-Favorites"].tap()
@@ -118,6 +118,20 @@ final class FlowTests: XCTestCase {
         let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); image.name = "Community public service unavailable"; image.lifetime = .keepAlways; add(image)
     }
     override func setUpWithError() throws { continueAfterFailure = false }
+    override func tearDownWithError() throws {
+        if let run = testRun, run.failureCount > 0 {
+            let app = XCUIApplication()
+            let tree = XCTAttachment(string: app.debugDescription); tree.name = "Failed app hierarchy"; tree.lifetime = .keepAlways; add(tree)
+            let screenshot = XCTAttachment(screenshot: app.screenshot()); screenshot.name = "Failed app screen"; screenshot.lifetime = .keepAlways; add(screenshot)
+        }
+    }
+    // Use visible tab bounds when the accessibility snapshot has no valid hit point.
+    private func tapVisible(_ element: XCUIElement, in app: XCUIApplication) {
+        XCTAssertTrue(element.waitForExistence(timeout: 10))
+        XCTAssertFalse(element.frame.isEmpty)
+        XCTAssertTrue(app.frame.contains(element.frame))
+        element.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+    }
     private func waitUntilEnabled(_ element: XCUIElement) {
         let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: element)
         XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 30), .completed)
@@ -493,7 +507,7 @@ final class FlowTests: XCTestCase {
     func testSingingSongsDemoAndTabCleanup() {
         let app = XCUIApplication(); app.launchArguments = ["--ui-testing"]
         app.launchEnvironment["JAMLOOM_UI_TEST_LIBRARY"] = UUID().uuidString
-        app.launch(); app.buttons["Sing"].firstMatch.tap()
+        app.launch(); tapVisible(app.tabBars.buttons["Sing"], in: app)
         let course = app.buttons["Course"].firstMatch
         XCTAssertTrue(course.waitForExistence(timeout: 10)); course.tap()
         XCTAssertTrue(app.staticTexts["Free preview. Course sales are not open yet."].waitForExistence(timeout: 5))
@@ -505,7 +519,7 @@ final class FlowTests: XCTestCase {
         let stop = app.webViews.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Stop")).firstMatch
         XCTAssertTrue(stop.waitForExistence(timeout: 5)); XCTAssertTrue(stop.isEnabled)
         XCTAssertTrue(app.webViews.staticTexts["Microphone off"].exists)
-        app.buttons["Community"].firstMatch.tap(); app.buttons["Sing"].firstMatch.tap()
+        tapVisible(app.tabBars.buttons["Community"], in: app); tapVisible(app.tabBars.buttons["Sing"], in: app)
         XCTAssertTrue(demo.waitForExistence(timeout: 10)); XCTAssertTrue(demo.isEnabled); XCTAssertFalse(stop.isEnabled)
         app.buttons["Songs"].firstMatch.tap(); XCTAssertTrue(song.waitForExistence(timeout: 10))
         let screenshot = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); screenshot.name = "Singing Academy native course"; screenshot.lifetime = .keepAlways; add(screenshot)

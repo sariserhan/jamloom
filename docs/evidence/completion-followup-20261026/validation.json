@@ -13,7 +13,7 @@
   "largeAccountRecovery": "purge-scale.log",
   "singingBrowser": "singing-preservation/browser.json",
   "productBrowser": "products/browser.json",
-  "physicalPhone": "NOT RUN: device tunnel failed; reconnect requested",
+  "physicalPhone": "PARTIAL: Release build 26 installed/launched; physical Singing demo/lifecycle and Community player pass; language-filter retry remains open",
   "physicalMicLatency": "NOT RUN",
   "popularSongs": "BLOCKED: no verified supplier rights/assets",
   "sources": {
