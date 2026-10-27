@@ -70,7 +70,7 @@ export function TasteNotebook(){
     if(!response.ok){if(response.status===404&&Date.now()<checkingUntil)throw Error();if(response.status===404||response.status===409){setRendering(false);setJob(null);setProgress({state:'failed'});setMessage(song.error??'This song is unavailable. Your favorites are safe.');return;}throw Error(song.error);}
     let cancelPending=cancelWanted.current;try{cancelPending ||= localStorage.getItem(pendingKey+'-cancel')===job;}catch{}
     if(cancelPending&&['queued','running'].includes(song.state)){const cancelled=await fetch(songUrl(job),{method:'DELETE',headers:{'X-Jamloom-DNA':'1'},signal:AbortSignal.timeout(10000)});if(!cancelled.ok)throw Error();}
-    setProgress({state:song.cancelling?'cancelling':song.state,phase:song.phase});setMessage('');if(song.plan)setDraft(song.plan);
+    setProgress({state:song.cancelling?'cancelling':song.state,phase:song.phase,credits:song.credits});setMessage('');if(song.plan)setDraft(song.plan);
     if(!['queued','running'].includes(song.state)){
      setRendering(false);setJob(null);requestId.current=null;setQuote(null);
      cancelWanted.current=false;try{if(localStorage.getItem(pendingKey)===job)localStorage.removeItem(pendingKey);if(localStorage.getItem(pendingKey+'-cancel')===job)localStorage.removeItem(pendingKey+'-cancel');}catch{}

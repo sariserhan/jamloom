@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-27",
+  "baseCommit": "709b17ca9a0a281cc5351be352a8f18c61fc9f8d",
+  "status": "PASS scoped implementation; PARTIAL product readiness",
+  "checks": {
+    "site": {
+      "passed": 166,
+      "failed": 0
+    },
+    "sharedAudio": {
+      "passed": 44,
+      "failed": 0
+    },
+    "isolatedDatabase": {
+      "passed": 26,
+      "failed": 0
+    },
+    "coreCTest": {
+      "passed": 20,
+      "failed": 0
+    },
+    "browser": "PASS: Chromium/WebKit",
+    "physicalIPhone": {
+      "passed": 3,
+      "failed": 0
+    },
+    "typescript": "PASS",
+    "productionBuild": "PASS",
+    "nativeReleaseBuild": "PASS",
+    "releaseBundleSigning": "PASS",
+    "releaseInstall": "PASS",
+    "releaseAutomaticLaunch": "BLOCKED: phone locked"
+  },
+  "sourceHashes": {
+    "apps/ios/Jamloom.xcodeproj/project.pbxproj": "eb124f9bc68f87dbcc18e2ef0d0af7d0d828d54921cf97b8d41f48ef37a777ac",
+    "apps/site/app/academy/page.tsx": "c2e57a0c56ab38e86226fa25e8c8d7358d128546651a4829461e241546e99c28",
+    "apps/site/app/ai-dj/overview.tsx": "7051219496a818e709d711634acc2c65df6462cd114e23b4a84d9427dcc9e399",
+    "apps/site/app/api/creation-feedback/route.ts": "dfd141e7cac814221dd004c3081af7a912d384cb07d2bccf14d9c35ca7fad550",
+    "apps/site/app/community/browser.tsx": "fd08af356f395ec876fe4c74102fffe709e5263428f9aa8ae008daef2d019e6f",
+    "apps/site/app/dj-studio/page.tsx": "35fadce0f42cf8378c13fc165239c1c5315f84995d5e2a4b56617c70889a2ceb",
+    "apps/site/app/generation-progress.tsx": "83ae379067ff0be21c4d6d3365af80d42eb0348217b7b132c4267aa6efc5385a",
+    "apps/site/app/improvise/create.tsx": "7ad53ccb4335872e9ca72e8104d9eb851b6f500bcfe47bfc087da4f4c2ce3226",
+    "apps/site/app/music-dna/controls.tsx": "289ed02a0ddac44edfba5c76e5781504d4e92f585ce55483ac0c83a546c91ee3",
+    "apps/site/app/page.tsx": "0a647e2d74a13f72cf7830d93bfdbbed034781ed3a9b652b377850620ae1dc6f",
+    "apps/site/app/product-showcase.tsx": "c17b5f25b9c6de311b6aa5b808740a058cc823c4df00fb8ec1f6b782ec1fb54d",
+    "apps/site/app/start/page.tsx": "2c514ea36160955cf7a2f0425da7d110c8829dddc355d4cca0446897978f787d",
+    "apps/site/app/tour/page.tsx": "5d1dbea8f080265a6edfa92c242d1b102b29096b5eddaf58ab8afa26b3cd9110",
+    "apps/site/lib/cloud-songs.ts": "427d10e0ebce479e3dba9d58e3434a3487b3da73c599d680152283d36f5ad9a8",
+    "apps/site/lib/coming-soon.ts": "45e19ef184eb60e981c9ff29a9a36b3ab683231a24c6f4ae00f71578f3ca1c5e",
+    "apps/site/lib/creation-feedback.ts": "5879906763b8fb36dc0e10b6e69546fcee43bb09ab6bfe1f0a623823e778a8e2",
+    "apps/site/lib/listening.ts": "b45ad5b4e3bf729a2382035ab868e4850e94baa866202c7ca4fefefc4b804c8a",
+    "apps/site/tests/cloud-songs.test.ts": "32b66927517ca824260833cf2fffc5151239c64f8ab44bc8db896b5fbd52b3be",
+    "apps/site/tests/coming-soon.test.ts": "65937317588a7f356397ae5c09ff35063a67bebd65b9649f228f26fbe364cd21",
+    "apps/site/tests/creation-feedback.test.ts": "9cde20d1ca867521189ef233e50dc7524f50f5d489977c5711b52f2121e9bde7",
+    "apps/site/tests/listening.test.ts": "aea95361b96f234640001fdcc1195f6e8001049b40f26da0a343c7019215939e",
+    "apps/web/academy-coach.js": "047c3ce81995dee0b66d2dcfbbfde93680958455d6e923e9bf648ac5d156203e",
+    "apps/web/academy-evaluator.js": "bf22e7896d83a49f7188d63153352f6c577eb7cbe4044e1a12f4cd3ad1efe871",
+    "apps/web/generation-progress.js": "8ffe7019bd60f1f4410731e9455fee18c09c6841913a95f08e6799c7d82684a7",
+    "apps/web/singing-lesson.js": "4fc8ccfcf5abda94dfa1e64cf36ae1df29f47ae9d778c460d8bd65e2eec8ce02",
+    "apps/web/singing.html": "ef4e2e4d62bc6839dc7776fc8183063570a01eff4d4428fd38c3522c4145ab4f",
+    "apps/web/singing.js": "38feb4b5131f1710bc9b2e78ba2ecbdec53a21f852acce67d76ba13ed4a58558",
+    "core/arrangement/remix.cpp": "eb70f5ee78196a57214057fda8c0f804339170a6da043c0ab2ca98193c17cd97",
+    "core/tests/remix_tests.cpp": "6086a98e56cffc293514b367fffa2144dd0199659e8cfee519db165ac3c4f39e",
+    "apps/site/public/product-previews/academy.webp": "dbcea46271068b74d52424280f60ea605646ce247db3d985d9e8145b9c69eb5b",
+    "apps/site/public/product-previews/ai-dj.webp": "aa67d3aabaffa5777d15a9c6c430c3b2ab6b9d0df9c846eab07d2f0b94d5fbf3",
+    "apps/site/public/product-previews/dj-studio.webp": "e368c2000ee5eae744363b5091d1d91f6067d65ca97c56900fbc0a7d41d4e5fd",
+    "apps/site/public/product-previews/improvise.webp": "dabadf121fce3586ace2656ebc8700b9d79ec1fe8c24958aba049bcec29a6fd6",
+    "apps/site/public/product-previews/live-dj.webp": "78f98953c5d6b0e70c55ba95a4fb3c0c226e13e6aab2c7ee5c915783751c5cc0",
+    "apps/site/public/product-previews/local-remixes.webp": "53315e31916580dd824be89021e6fe6f4526df528ea095b935b670302e053321",
+    "apps/site/public/product-previews/music-dna.webp": "f6b0009dec5715f24fec79ac8fdd2359ecae629e62e8c37326bf203b4a319688",
+    "apps/site/public/product-previews/singing-academy.webp": "ab2ab7992bc1f71b6722b0fdbfafaa4768a5a491961d8f3e359373941a15bd67",
+    "apps/site/tests/dj-compatibility-audit.mjs": "def83f19330a4ea8d1f4906475e407ec4aa5410b21c52058eccaa6beb098ef00",
+    "apps/site/tests/product-improvements-browser.mjs": "0ecc67123397e5b2daa4a3705f82fb7cb44c5dff6939c003dfd6c1f974b80b7d",
+    "apps/web/singing-register.js": "bf0f40830767f34315ac48c9b13af463a9199fbe7a1f901401f5914b12e46e39",
+    "apps/web/tests/product-improvements.test.js": "162bdf3f1f98ed812a4ff4ede7d5b62f76adaf5cd1c321623461cdac66177176"
+  },
+  "retainedLogHashes": {
+    "/tmp/jamloom-improvements-types.log": {
+      "bytes": 48,
+      "sha256": "76d575f32c96b28d06783b82331bc5d133a4feed0a9804f0aa5139880abaa7c6"
+    },
+    "/tmp/jamloom-improvements-build.log": {
+      "bytes": 17660,
+      "sha256": "bbd6a0f655de60cb2f3d94c89d72e5c1b7a548c2901e0691e42b03b990e15ee5"
+    },
+    "/tmp/jamloom-improvements-release-build.log": {
+      "bytes": 106122,
+      "sha256": "76c00f25951df07d6c4f09df1152c55b065668c9c1348bc3afd46f73f13c07a1"
+    },
+    "/tmp/jamloom-improvements-physical.log": {
+      "bytes": 417218,
+      "sha256": "0de08cfe4494329834dd59146f38606a841cf16e6940168298c199bf22add6a4"
+    },
+    "/tmp/jamloom-improvements-core-build.log": {
+      "bytes": 4201,
+      "sha256": "68b0fccfd7e09057ac279885c3d9352c65f41a65bb7403f6d6ba2db5167f8408"
+    },
+    "/tmp/jamloom-improvements-browser.log": {
+      "bytes": 1233,
+      "sha256": "75c92f1b15d161c835f25a032f6a4bb35b1e1c03430217c33c6b2c40bf493aac"
+    }
+  },
+  "evidence": {
+    "audio-tests.log": "4a9818ce51d909cfe00e94264996b8a3c2728d009da1083c7ebddd52c923f2b3",
+    "browser.json": "2c3956af290ced7ca222d963dca0b420c9ef79a2041e0c8ef6ef01b9c0b41903",
+    "chromium-discovery-390.png": "8e216092962c9f4915712bc2634d6f32b7292895ccb4818a54611d8bb5535e29",
+    "core-tests.log": "fcfaada48d513dcc395ba939a07b972817b0a7a3f378e68bf4e166642d7875a8",
+    "database-tests.log": "a94a6ab64590c7c13c8f6be63caffd393fac3aa4a05a5950a1a3aeabca26287c",
+    "dj-compatibility.json": "ddbea14e8c15fd51b241fce2e6d669b1651f752ad8d58778359369c967faf8c0",
+    "image-identity.json": "6df57f42a373869d1db992edf7e08937674b23445b8994bd91bb23b1748b6b70",
+    "images.json": "8ae85e2ad2c0be98534dc8d1da94708e825f2c6afd324d055ad293c35bf8fb98",
+    "ios-bundle.json": "816c6aa2ac5df93e170dd7f48b2990edb73b2389d9afacd4e5aed72904a50a1b",
+    "ios-install.json": "1196fdd07a772d7366991e333c984a5be69454e7752571a7fdefaab87404dc08",
+    "ios-tests.json": "8cdac6008301115e9b2159eb8b055629da95230d7f449742690093823b62152c",
+    "release-preflight.json": "86f5499ce5607a02d4b0e9a92a0070ef5bb2519885ed111a83339eddf4972ed3",
+    "remix-pickup.json": "5ed7802f1cc33ab91460b7a3edb902e4b2288075685584c35feee09a8ede2067",
+    "review-playback.json": "9a0ae10dfeb81ad9eb020fc9fc5d164355b0a8f7699b0d28247dce8f7ba850b5",
+    "site-tests.log": "1d76322a74a7fc6d0e005c33238a3b98103c5dd55c9cc5491ff725d999733043",
+    "stripe-readonly.json": "a2abb3d62451d416d5217389c930c9748d48474deaea33ebb12dc69311f99439",
+    "webkit-academy-advice.png": "da9fa5579534ebada2da97263a56bb11f8d4b5796378a0a3f946e10f6edfa27e",
+    "webkit-register-390.png": "dde56ef704f8dc70a039d03bd8f1dbf48e0de684392d7536f3e692f31b258129"
+  },
+  "boundaries": {
+    "deployment": "HELD",
+    "appStoreSubmission": "HELD",
+    "paidCompute": "NOT RUN; previous permits consumed",
+    "livePurchases": "HELD",
+    "physicalIPad": "Excluded by owner",
+    "naturalSungGuides": "NOT RUN",
+    "broaderCreativeQuality": "PARTIAL",
+    "freshHostedCapacity": "NOT RUN",
+    "realProviderRefundDelivery": "NOT RUN",
+    "fieldVercelSavings": "NOT RUN"
+  }
+}

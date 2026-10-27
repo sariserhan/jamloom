@@ -92,7 +92,7 @@ export class CloudSongs{
  async status(owner:string,id:string){
   const row=await this.commerce.row(id);if(!row||row.owner_id!==owner)throw new AudioError('Song not found.',404);
   const run=(await this.commerce.pool.query('SELECT phase,cancel_requested FROM cloud_song_runs WHERE id=$1',[id])).rows[0];
-  return {id,state:row.state,phase:run?.phase,cancelling:!!run?.cancel_requested&&!terminal(row.state)};
+  return {id,state:row.state,credits:['failed','cancelled'].includes(row.state)?'released':row.state==='completed'?'settled':'reserved',phase:run?.phase,cancelling:!!run?.cancel_requested&&!terminal(row.state)};
  }
  async tick(id:string){
   const {pool,store}=this.commerce,token=randomUUID();

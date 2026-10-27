@@ -95,13 +95,15 @@ export function evaluateTask(task, evidence) {
 }
 
 export class LessonRun {
-  constructor(lesson){this.lesson=lesson;this.index=0;this.state='available';this.results=[];this.samples=[];this.actions=[];this.recording=null;}
+  constructor(lesson){this.lesson=lesson;this.index=0;this.state='available';this.results=[];this.samples=[];this.actions=[];this.recording=null;this.practice=new Map();}
   begin(){if(!['available','free_jam','failed_attempt','paused'].includes(this.state))return;this.samples=[];this.actions=[];this.recording=null;this.state='guided_attempt';}
   observe(sample){if(this.state!=='guided_attempt'||sample.t<=0||sample.t<=(this.samples.at(-1)?.t??-1))return;this.samples.push(sample);if(this.samples.length>(this.lesson.tasks[this.index].kind==='recording'?3602:180))this.samples.shift();}
   action(event){if(this.state==='guided_attempt'){this.actions.push(event);if(this.actions.length>(this.lesson.tasks[this.index].kind==='recording'?2048:100))this.actions.shift();}}
   verify(){if(this.state!=='guided_attempt')return null;this.state='verify';const evidence={samples:this.samples,actions:this.actions,...(this.recording?{recording:this.recording}:{})};
     const result=evaluateTask(this.lesson.tasks[this.index],evidence);this.state=result.pass?'free_jam':'failed_attempt';
+    if(!result.pass){const task=this.lesson.tasks[this.index],prior=this.practice.get(task.id);this.practice.set(task.id,{taskId:task.id,objective:task.objective,advice:result.feedback,practice:task.practice,attempts:(prior?.attempts??0)+1});}
     if(result.pass)this.results[this.index]={taskId:this.lesson.tasks[this.index].id,evidence,result};return result;}
+  recommendations(){return [...this.practice.values()].sort((a,b)=>b.attempts-a.attempts).slice(0,3);}
   next(){if(this.state!=='free_jam')return false;if(++this.index===this.lesson.tasks.length){this.state='completed';return true;}this.begin();return false;}
   pause(){if(['guided_attempt','failed_attempt'].includes(this.state)){this.samples=[];this.actions=[];this.state='paused';}}
 }

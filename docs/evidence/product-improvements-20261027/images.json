@@ -1,0 +1,42 @@
+[
+  {
+    "name": "singing-academy",
+    "pngBytes": 45800,
+    "webpBytes": 17450
+  },
+  {
+    "name": "academy",
+    "pngBytes": 622138,
+    "webpBytes": 434964
+  },
+  {
+    "name": "ai-dj",
+    "pngBytes": 371330,
+    "webpBytes": 190828
+  },
+  {
+    "name": "improvise",
+    "pngBytes": 75905,
+    "webpBytes": 31824
+  },
+  {
+    "name": "dj-studio",
+    "pngBytes": 289937,
+    "webpBytes": 166192
+  },
+  {
+    "name": "music-dna",
+    "pngBytes": 27957,
+    "webpBytes": 11852
+  },
+  {
+    "name": "live-dj",
+    "pngBytes": 115233,
+    "webpBytes": 84222
+  },
+  {
+    "name": "local-remixes",
+    "pngBytes": 47350,
+    "webpBytes": 17626
+  }
+]

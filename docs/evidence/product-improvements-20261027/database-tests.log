@@ -1,0 +1,168 @@
+TAP version 13
+# Subtest: decoded Apple refund fixture reconciles the real local ledger without replay or ordering grants
+ok 1 - decoded Apple refund fixture reconciles the real local ledger without replay or ordering grants
+  ---
+  duration_ms: 209.829542
+  type: 'test'
+  ...
+# Subtest: cloud song configuration is opt-in and requires a bounded rate
+ok 2 - cloud song configuration is opt-in and requires a bounded rate
+  ---
+  duration_ms: 0.50275
+  type: 'test'
+  ...
+# Subtest: Improvise receipts require a bounded audible use of this recording and this output
+ok 3 - Improvise receipts require a bounded audible use of this recording and this output
+  ---
+  duration_ms: 0.15375
+  type: 'test'
+  ...
+# Subtest: real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+    # Subtest: Improvise omission or mismatched recording refunds; valid loops settle once
+    ok 1 - Improvise omission or mismatched recording refunds; valid loops settle once
+      ---
+      duration_ms: 315.0325
+      type: 'test'
+      ...
+    # Subtest: one request is reserved and dispatched once under duplicate concurrent calls
+    ok 2 - one request is reserved and dispatched once under duplicate concurrent calls
+      ---
+      duration_ms: 19.173458
+      type: 'test'
+      ...
+    # Subtest: several users queue independently; cancellation refunds while other songs continue
+    ok 3 - several users queue independently; cancellation refunds while other songs continue
+      ---
+      duration_ms: 615.484125
+      type: 'test'
+      ...
+    # Subtest: duration boundaries settle once and a mismatched saved length refunds
+    ok 4 - duration boundaries settle once and a mismatched saved length refunds
+      ---
+      duration_ms: 883.390375
+      type: 'test'
+      ...
+    # Subtest: restart after output storage failure uses persisted receipt and charges only once
+    ok 5 - restart after output storage failure uses persisted receipt and charges only once
+      ---
+      duration_ms: 330.027167
+      type: 'test'
+      ...
+    # Subtest: saved descriptions reach the next worker only for their owner
+    ok 6 - saved descriptions reach the next worker only for their owner
+      ---
+      duration_ms: 264.287292
+      type: 'test'
+      ...
+    # Subtest: failed jobs refund all credits and invalid completed output cannot become public
+    ok 7 - failed jobs refund all credits and invalid completed output cannot become public
+      ---
+      duration_ms: 249.971667
+      type: 'test'
+      ...
+    # Subtest: website input, feedback ownership, personalization and consent withdrawal
+    ok 8 - website input, feedback ownership, personalization and consent withdrawal
+      ---
+      duration_ms: 350.8565
+      type: 'test'
+      ...
+    # Subtest: disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+    ok 9 - disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+      ---
+      duration_ms: 22.049583
+      type: 'test'
+      ...
+    # Subtest: lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+    ok 10 - lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+      ---
+      duration_ms: 8.313417
+      type: 'test'
+      ...
+    # Subtest: missing provider receipt refunds only after the full provider TTL and a quiet queue
+    ok 11 - missing provider receipt refunds only after the full provider TTL and a quiet queue
+      ---
+      duration_ms: 8.839959
+      type: 'test'
+      ...
+    # Subtest: test credit lots cannot fund live requests or inflate live balances
+    ok 12 - test credit lots cannot fund live requests or inflate live balances
+      ---
+      duration_ms: 2.049709
+      type: 'test'
+      ...
+    # Subtest: recovery rotates ambiguous jobs and releases credits after persistent storage failure
+    ok 13 - recovery rotates ambiguous jobs and releases credits after persistent storage failure
+      ---
+      duration_ms: 294.612541
+      type: 'test'
+      ...
+    1..13
+ok 4 - real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+  ---
+  duration_ms: 3577.793042
+  type: 'test'
+  ...
+# Subtest: references reject traversal and malformed IDs
+ok 5 - references reject traversal and malformed IDs
+  ---
+  duration_ms: 0.377417
+  type: 'test'
+  ...
+# Subtest: isolated database: cross-product ratings, ownership, rights review, withdrawal and bug inbox
+    # Subtest: local ratings never grant training; suspended and absent accounts fail
+    ok 1 - local ratings never grant training; suspended and absent accounts fail
+      ---
+      duration_ms: 2.514875
+      type: 'test'
+      ...
+    # Subtest: private library and sets are owner-only with bounded timestamps and tags
+    ok 2 - private library and sets are owner-only with bounded timestamps and tags
+      ---
+      duration_ms: 11.351292
+      type: 'test'
+      ...
+    # Subtest: training requires permission, reviewed unchanged audio; withdrawal and deletion exclude it
+    ok 3 - training requires permission, reviewed unchanged audio; withdrawal and deletion exclude it
+      ---
+      duration_ms: 10.480458
+      type: 'test'
+      ...
+    # Subtest: public DNA and Improvise listeners may rate but cannot authorize training
+    ok 4 - public DNA and Improvise listeners may rate but cannot authorize training
+      ---
+      duration_ms: 21.137
+      type: 'test'
+      ...
+    # Subtest: published Jamloom samples accept ratings without granting ownership
+    ok 5 - published Jamloom samples accept ratings without granting ownership
+      ---
+      duration_ms: 1.860042
+      type: 'test'
+      ...
+    # Subtest: discovery ratings are owner scoped and require personalization permission
+    ok 6 - discovery ratings are owner scoped and require personalization permission
+      ---
+      duration_ms: 3.053334
+      type: 'test'
+      ...
+    # Subtest: anonymous bug reaches private inbox with durable notification and admin-only updates
+    ok 7 - anonymous bug reaches private inbox with durable notification and admin-only updates
+      ---
+      duration_ms: 2.685833
+      type: 'test'
+      ...
+    1..7
+ok 6 - isolated database: cross-product ratings, ownership, rights review, withdrawal and bug inbox
+  ---
+  duration_ms: 213.868166
+  type: 'test'
+  ...
+1..6
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4586.271125

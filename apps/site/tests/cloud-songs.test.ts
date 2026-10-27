@@ -78,10 +78,10 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    const key=id(),quote=await commerce.quote('user0',profile,'public');
    await Promise.all(Array.from({length:8},()=>songs.submit('user0',key,profile,'public',quote.token)));
    const duration=(await pool.query('SELECT payload FROM cloud_song_runs WHERE id=$1',[key])).rows[0].payload.duration_seconds;assert(duration>=100&&duration<=140);
-   const before=submits;await Promise.all(Array.from({length:8},()=>songs.tick(key)));assert.equal(submits-before,1);assert.equal(jobs.get(key)!.payload.duration_seconds,duration);assert.equal((await songs.status('user0',key)).state,'queued');
+   const before=submits;await Promise.all(Array.from({length:8},()=>songs.tick(key)));assert.equal(submits-before,1);assert.equal(jobs.get(key)!.payload.duration_seconds,duration);assert.equal((await songs.status('user0',key)).state,'queued');assert.equal((await songs.status('user0',key)).credits,'reserved');
    await assert.rejects(songs.status('user1',key),/not found/);
    await assert.rejects(songs.submit('user0',key,{...profile,vocalLanguage:'tr'},'public',quote.token),/different/);
-   await songs.cancel('user0',key);assert.deepEqual(await commerce.wallet.balance('user0'),{available:50,reserved:0});
+   await songs.cancel('user0',key);assert.equal((await songs.status('user0',key)).credits,'released');assert.deepEqual(await commerce.wallet.balance('user0'),{available:50,reserved:0});
   });
   await t.test('several users queue independently; cancellation refunds while other songs continue',async()=>{
    const keys=await Promise.all([1,2,3].map(n=>submit('user'+n)));await Promise.all(keys.map(key=>songs.tick(key)));
@@ -98,7 +98,7 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    }
    const key=await submit('user8');await songs.tick(key);await complete(key);
    results.get('provider-'+key)!.output!.seconds=1;await songs.tick(key);
-   assert.equal((await commerce.row(key)).state,'failed');assert.equal((await commerce.wallet.balance('user8')).reserved,0);
+   assert.equal((await commerce.row(key)).state,'failed');assert.equal((await songs.status('user8',key)).credits,'released');assert.equal((await commerce.wallet.balance('user8')).reserved,0);
   });
   await t.test('restart after output storage failure uses persisted receipt and charges only once',async()=>{
    const key=await submit('user0','private');await songs.tick(key);await complete(key);failStorage=true;await assert.rejects(songs.tick(key),/Storage/);failStorage=false;

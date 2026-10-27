@@ -1,0 +1,14 @@
+[
+  {
+    "version": "before",
+    "sha256": "6270c6493cefc53a933610c325077f629dd8050a88ee77b0ccc4bef94bc00ebf",
+    "openingLongestQuietSeconds": 4.0,
+    "peak": 0.7635498046875
+  },
+  {
+    "version": "after",
+    "sha256": "1fdd671e044a9bd51584bd29aa4f5b1d3d230ab89edc0e9e1a660e5499a6778d",
+    "openingLongestQuietSeconds": 0.48,
+    "peak": 0.772735595703125
+  }
+]

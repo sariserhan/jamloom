@@ -1,0 +1,45 @@
+Test project /Users/serhansari/Documents/projects/jamloom/build-finish
+      Start  1: taste_composition
+ 1/20 Test  #1: taste_composition ................   Passed    1.72 sec
+      Start  2: live_sample
+ 2/20 Test  #2: live_sample ......................   Passed    0.17 sec
+      Start  3: live_source
+ 3/20 Test  #3: live_source ......................   Passed    0.20 sec
+      Start  4: live_instruments
+ 4/20 Test  #4: live_instruments .................   Passed    0.44 sec
+      Start  5: core
+ 5/20 Test  #5: core .............................   Passed    0.73 sec
+      Start  6: remix_core
+ 6/20 Test  #6: remix_core .......................   Passed    5.27 sec
+      Start  7: c_abi
+ 7/20 Test  #7: c_abi ............................   Passed    0.76 sec
+      Start  8: singing_holdout_download
+ 8/20 Test  #8: singing_holdout_download .........   Passed    0.14 sec
+      Start  9: studio_packaging
+ 9/20 Test  #9: studio_packaging .................   Passed    0.07 sec
+      Start 10: acoustic_assets
+10/20 Test #10: acoustic_assets ..................   Passed    0.50 sec
+      Start 11: sustained_assets
+11/20 Test #11: sustained_assets .................   Passed    0.02 sec
+      Start 12: guitar_assets
+12/20 Test #12: guitar_assets ....................   Passed    0.37 sec
+      Start 13: electronic_assets
+13/20 Test #13: electronic_assets ................   Passed    0.08 sec
+      Start 14: wav_integration
+14/20 Test #14: wav_integration ..................   Passed    0.94 sec
+      Start 15: remix_integration
+15/20 Test #15: remix_integration ................   Passed    4.09 sec
+      Start 16: word_timing
+16/20 Test #16: word_timing ......................   Passed    0.11 sec
+      Start 17: tooling
+17/20 Test #17: tooling ..........................   Passed    1.06 sec
+      Start 18: listening_review
+18/20 Test #18: listening_review .................   Passed    0.04 sec
+      Start 19: evaluation_preparation
+19/20 Test #19: evaluation_preparation ...........   Passed   12.20 sec
+      Start 20: plan_import
+20/20 Test #20: plan_import ......................   Passed    4.70 sec
+
+100% tests passed out of 20
+
+Total Test time (real) =  33.61 sec

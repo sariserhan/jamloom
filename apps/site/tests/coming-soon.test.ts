@@ -99,6 +99,6 @@ test('AI DJ public overview passes the launch hold while paid and private APIs r
  for(const path of ['/ai-dj/session','/ai-dj/fake','/api/ai-dj/sessions','/api/ai-dj/recordings','/api/payments/checkout'])assert.equal(comingSoonRecovery(path,{NODE_ENV:'production'}),false,path);
  assert.equal((await proxy(new NextRequest('https://www.jamloom.com/ai-dj'))).headers.get('x-middleware-next'),'1');
  const html=await comingSoonResponse(new Request('https://www.jamloom.com/')).text();
- assert.match(html,/href="\/ai-dj">AI DJ<\/a>/);assert.match(html,/product-previews\/ai-dj.png/);
+ assert.match(html,/href="\/ai-dj">AI DJ<\/a>/);assert.match(html,/product-previews\/ai-dj.webp/);
  assert.match(html,/Explore AI DJ/);
 });

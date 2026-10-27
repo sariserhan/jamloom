@@ -1,0 +1,26 @@
+[
+  {
+    "browser": "chromium",
+    "clip": 1,
+    "duration": 29.5,
+    "time": 0.266437
+  },
+  {
+    "browser": "chromium",
+    "clip": 2,
+    "duration": 29.5,
+    "time": 0.267263
+  },
+  {
+    "browser": "webkit",
+    "clip": 1,
+    "duration": 29.544,
+    "time": 0.12518970831297338
+  },
+  {
+    "browser": "webkit",
+    "clip": 2,
+    "duration": 29.544,
+    "time": 0.15235591668169945
+  }
+]

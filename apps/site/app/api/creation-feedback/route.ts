@@ -8,6 +8,7 @@ async function handle(request:Request){try{
  const {auth,pool,config}=services();if(request.method!=='GET'&&(request.headers.get('origin')!==config.baseURL||request.headers.get('sec-fetch-site')==='cross-site'))throw new AudioError('Same-origin request required.',403);
  const session=await auth.api.getSession({headers:request.headers});if(!session?.user.emailVerified)throw new AudioError('Sign in to rate music.',401);
  const owner=session.user.id,store=new CreationFeedback(pool,process.env.CREDIT_BILLING_MODE==='live'),q=new URL(request.url).searchParams;
+ if(request.method==='GET'&&q.size===1&&q.get('view')==='preferences')return Response.json({owner,ratings:await store.preferences(owner)},{headers});
  if([...q.keys()].some(k=>!['kind','id'].includes(k)||q.getAll(k).length!==1))throw new AudioError('Invalid feedback request.');
  let input;
  if(request.method!=='GET'){

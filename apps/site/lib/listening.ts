@@ -16,3 +16,19 @@ export function publicCredit(segment:string){try{const credit=decodeURIComponent
 
 export function trackKind(track:ListeningTrack){return track.kind??(/^[a-f0-9]{24}$/.test(track.id)?'aurowall':track.url?.startsWith('/api/improvise/')?'improvise':track.url?.startsWith('/api/taste/')?'music-dna':track.url?.startsWith('/api/ai-dj/')?'sets':track.url?.startsWith('/api/aurowall/')?'aurowall':'catalogue');}
 export function trackKey(track:ListeningTrack){return trackKind(track)+':'+track.id;}
+
+export type ListeningPreference={kind:string;id:string;rating:'like'|'dislike'};
+// Rank only music already returned by the public feeds; preferences never add private tracks.
+export function discoverTracks(tracks:ListeningTrack[],favorites:ListeningTrack[],ratings:ListeningPreference[]=[]){
+ const saved=new Set(favorites.map(trackKey)),rated=new Map(ratings.map(r=>[r.kind+':'+r.id,r.rating]));
+ const tokens=(t:ListeningTrack)=>new Set((typeof t.mood==='string'?t.mood:'').toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(w=>w.length>2));
+ const liked=[...favorites,...tracks.filter(t=>rated.get(trackKey(t))==='like')];
+ const moods=new Set(liked.flatMap(t=>[...tokens(t)])),languages=new Set(liked.map(t=>typeof t.language==='string'?t.language.toLowerCase():undefined).filter(Boolean));
+ const score=(t:ListeningTrack)=>[...tokens(t)].filter(w=>moods.has(w)).length*3+(typeof t.language==='string'&&languages.has(t.language.toLowerCase())?1:0);
+ const candidates=tracks.filter(t=>!saved.has(trackKey(t))&&rated.get(trackKey(t))!=='dislike');
+ candidates.sort((a,b)=>score(b)-score(a)||(b.created??'').localeCompare(a.created??'')||trackKey(a).localeCompare(trackKey(b)));
+ // Alternate familiar styles with new discoveries instead of keeping all exposure on one style.
+ const familiar=candidates.filter(t=>score(t)>0),fresh=candidates.filter(t=>score(t)===0),result:ListeningTrack[]=[];
+ let a=0,b=0;while(a<familiar.length||b<fresh.length){for(let i=0;i<2&&a<familiar.length;i++)result.push(familiar[a++]);if(b<fresh.length)result.push(fresh[b++]);}
+ return result;
+}

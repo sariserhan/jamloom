@@ -1,0 +1,274 @@
+TAP version 13
+# Subtest: gradual eight-beat crossfade requires actual signal, timing, progression and learner provenance
+ok 1 - gradual eight-beat crossfade requires actual signal, timing, progression and learner provenance
+  ---
+  duration_ms: 3.363167
+  type: 'test'
+  ...
+# Subtest: checks lead to ungraded free play, never automatic next task; pauses discard stale attempts
+ok 2 - checks lead to ungraded free play, never automatic next task; pauses discard stale attempts
+  ---
+  duration_ms: 0.368791
+  type: 'test'
+  ...
+# Subtest: native decoder startup may settle, but a sustained audible interval is required
+ok 3 - native decoder startup may settle, but a sustained audible interval is required
+  ---
+  duration_ms: 0.247041
+  type: 'test'
+  ...
+# Subtest: coach commands run the same control handler with distinct provenance and bounds
+ok 4 - coach commands run the same control handler with distinct provenance and bounds
+  ---
+  duration_ms: 1.354333
+  type: 'test'
+  ...
+# Subtest: level check needs a sustained actual mixer value, not a brief slider event
+ok 5 - level check needs a sustained actual mixer value, not a brief slider event
+  ---
+  duration_ms: 0.173209
+  type: 'test'
+  ...
+# Subtest: tempo holds and declared phase are measured for the entire interval; assisted manual checks fail
+ok 6 - tempo holds and declared phase are measured for the entire interval; assisted manual checks fail
+  ---
+  duration_ms: 0.293709
+  type: 'test'
+  ...
+# Subtest: loop and jump checks require observed transport changes, not button presses
+ok 7 - loop and jump checks require observed transport changes, not button presses
+  ---
+  duration_ms: 0.839125
+  type: 'test'
+  ...
+# Subtest: set assessment requires bounded recording, full duration, actual audio continuity and transitions
+ok 8 - set assessment requires bounded recording, full duration, actual audio continuity and transitions
+  ---
+  duration_ms: 0.813291
+  type: 'test'
+  ...
+# Subtest: knowledge questions are explicit decisions, never mislabeled audio competency
+ok 9 - knowledge questions are explicit decisions, never mislabeled audio competency
+  ---
+  duration_ms: 0.226583
+  type: 'test'
+  ...
+# Subtest: instrument-layer check requires the separate audible instrument signal with the outgoing deck
+ok 10 - instrument-layer check requires the separate audible instrument signal with the outgoing deck
+  ---
+  duration_ms: 0.664
+  type: 'test'
+  ...
+# Subtest: long-set grading rejects abrupt endpoint jumps and sustained silence
+ok 11 - long-set grading rejects abrupt endpoint jumps and sustained silence
+  ---
+  duration_ms: 0.274583
+  type: 'test'
+  ...
+# Subtest: five-minute and performance rubrics accept full bounded traces, not shortened recordings
+ok 12 - five-minute and performance rubrics accept full bounded traces, not shortened recordings
+  ---
+  duration_ms: 6.93975
+  type: 'test'
+  ...
+# Subtest: fade grading starts when the fader moves, not while the learner is still starting the decks
+ok 13 - fade grading starts when the fader moves, not while the learner is still starting the decks
+  ---
+  duration_ms: 0.27725
+  type: 'test'
+  ...
+# Subtest: set recovery must happen inside the recording, in order, with A supplying the music
+ok 14 - set recovery must happen inside the recording, in order, with A supplying the music
+  ---
+  duration_ms: 0.441833
+  type: 'test'
+  ...
+# Subtest: failed tasks can pause into ungraded practice and resume with fresh evidence
+ok 15 - failed tasks can pause into ungraded practice and resume with fresh evidence
+  ---
+  duration_ms: 0.062292
+  type: 'test'
+  ...
+# Subtest: queue and terminal states override stale phases; errors never masquerade as ready
+ok 16 - queue and terminal states override stale phases; errors never masquerade as ready
+  ---
+  duration_ms: 0.457125
+  type: 'test'
+  ...
+# Subtest: offline build is deterministic, binds every public byte and rejects extra files, symlinks and oversized assets
+ok 17 - offline build is deterministic, binds every public byte and rejects extra files, symlinks and oversized assets
+  ---
+  duration_ms: 126.614666
+  type: 'test'
+  ...
+# Subtest: register check ignores silence, duplicate frames and outliers without saving audio
+ok 18 - register check ignores silence, duplicate frames and outliers without saving audio
+  ---
+  duration_ms: 1.558042
+  type: 'test'
+  ...
+# Subtest: octave advice changes guidance, never grading or acceptance
+ok 19 - octave advice changes guidance, never grading or acceptance
+  ---
+  duration_ms: 1.420542
+  type: 'test'
+  ...
+# Subtest: credit release is stated only for settled failures and reconnection discourages duplicates
+ok 20 - credit release is stated only for settled failures and reconnection discourages duplicates
+  ---
+  duration_ms: 0.260125
+  type: 'test'
+  ...
+# Subtest: DJ practice suggestions come from actual failed checks without changing completion
+ok 21 - DJ practice suggestions come from actual failed checks without changing completion
+  ---
+  duration_ms: 0.631
+  type: 'test'
+  ...
+# Subtest: capture timestamps the actual last sample and drops queued work without replaying old voice
+ok 22 - capture timestamps the actual last sample and drops queued work without replaying old voice
+  ---
+  duration_ms: 3.608333
+  type: 'test'
+  ...
+# Subtest: an input interruption requires a fresh complete window before emitting
+ok 23 - an input interruption requires a fresh complete window before emitting
+  ---
+  duration_ms: 1.113458
+  type: 'test'
+  ...
+# Subtest: all twelve exercises pass measured correct tones at every supported pace and register; silence never passes
+ok 24 - all twelve exercises pass measured correct tones at every supported pace and register; silence never passes
+  ---
+  duration_ms: 50.325834
+  type: 'test'
+  ...
+# Subtest: late notes, missing notes, repeated frames and dropped capture cannot earn completion
+ok 25 - late notes, missing notes, repeated frames and dropped capture cannot earn completion
+  ---
+  duration_ms: 0.971083
+  type: 'test'
+  ...
+# Subtest: progress preserves best/pass across retries, migrates first-note completion, ignores malformed storage
+ok 26 - progress preserves best/pass across retries, migrates first-note completion, ignores malformed storage
+  ---
+  duration_ms: 0.998792
+  type: 'test'
+  ...
+# Subtest: finite note score is sample accurate across callback sizes and ends every note
+ok 27 - finite note score is sample accurate across callback sizes and ends every note
+  ---
+  duration_ms: 2.666417
+  type: 'test'
+  ...
+# Subtest: all catalogue songs grade measured notes at every register and pace, reject silence and validate full band scores
+ok 28 - all catalogue songs grade measured notes at every register and pace, reject silence and validate full band scores
+  ---
+  duration_ms: 229.221792
+  type: 'test'
+  ...
+# Subtest: song score follows real audio clock after an unconnected worklet priming callback
+ok 29 - song score follows real audio clock after an unconnected worklet priming callback
+  ---
+  duration_ms: 0.142208
+  type: 'test'
+  ...
+# Subtest: all curriculum sections preserve the source lyric index and cannot include another section
+ok 30 - all curriculum sections preserve the source lyric index and cannot include another section
+  ---
+  duration_ms: 27.72925
+  type: 'test'
+  ...
+# Subtest: restricted lesson delivery preserves valid paid progress when a free lesson is saved
+ok 31 - restricted lesson delivery preserves valid paid progress when a free lesson is saved
+  ---
+  duration_ms: 0.35575
+  type: 'test'
+  ...
+# Subtest: phrase feedback separates measured pitch, missing input and timing without awarding wrong notes
+ok 32 - phrase feedback separates measured pitch, missing input and timing without awarding wrong notes
+  ---
+  duration_ms: 0.569458
+  type: 'test'
+  ...
+# Subtest: familiar melodies keep whole words highlighted over multiple notes and section harmony matches its source
+ok 33 - familiar melodies keep whole words highlighted over multiple notes and section harmony matches its source
+  ---
+  duration_ms: 0.296125
+  type: 'test'
+  ...
+# Subtest: every shipped song has a reviewed repertoire record and pinned third-party scores
+ok 34 - every shipped song has a reviewed repertoire record and pinned third-party scores
+  ---
+  duration_ms: 8.71425
+  type: 'test'
+  ...
+# Subtest: four-minute score uses bounded phrases and requires actual correct pitch for every section
+ok 35 - four-minute score uses bounded phrases and requires actual correct pitch for every section
+  ---
+  duration_ms: 40.671083
+  type: 'test'
+  ...
+# Subtest: seek, pause and delayed frames cannot bridge scores or earn full-song completion
+ok 36 - seek, pause and delayed frames cannot bridge scores or earn full-song completion
+  ---
+  duration_ms: 0.230625
+  type: 'test'
+  ...
+# Subtest: capture aligns to center of microphone window and rejects stale or interrupted input
+ok 37 - capture aligns to center of microphone window and rejects stale or interrupted input
+  ---
+  duration_ms: 0.082083
+  type: 'test'
+  ...
+# Subtest: DC offset cannot promote subthreshold periodic noise; audible notes remain measurable
+ok 38 - DC offset cannot promote subthreshold periodic noise; audible notes remain measurable
+  ---
+  duration_ms: 9.939
+  type: 'test'
+  ...
+# Subtest: MIT detector measures the three lesson registers and rejects silence/noise/invalid PCM
+ok 39 - MIT detector measures the three lesson registers and rejects silence/noise/invalid PCM
+  ---
+  duration_ms: 10.055
+  type: 'test'
+  ...
+# Subtest: only sustained measured pitch passes; repeated/stale timestamps and a single good note cannot pass
+ok 40 - only sustained measured pitch passes; repeated/stale timestamps and a single good note cannot pass
+  ---
+  duration_ms: 3.05125
+  type: 'test'
+  ...
+# Subtest: flat/sharp/octave/noise/silence and gaps reset the continuous hold
+ok 41 - flat/sharp/octave/noise/silence and gaps reset the continuous hold
+  ---
+  duration_ms: 17.001792
+  type: 'test'
+  ...
+# Subtest: practice after completion starts a new independent measurement
+ok 42 - practice after completion starts a new independent measurement
+  ---
+  duration_ms: 2.905209
+  type: 'test'
+  ...
+# Subtest: quiet periodic singing qualifies without accepting faint noise or changing octave targets
+ok 43 - quiet periodic singing qualifies without accepting faint noise or changing octave targets
+  ---
+  duration_ms: 325.069917
+  type: 'test'
+  ...
+# Subtest: changing harmonic singing is measured at the window center across capture rates
+ok 44 - changing harmonic singing is measured at the window center across capture rates
+  ---
+  duration_ms: 8.26125
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 44
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 424.983875

@@ -15,17 +15,18 @@ const stages = {
 };
 
 /** Public-facing copy is allowlisted: never display raw provider diagnostics. */
-export function generationProgress(state, phase) {
+export function generationProgress(state, phase, credits) {
   const terminal = ['completed', 'failed', 'rejected', 'cancelled'].includes(state);
   const key = terminal ? state : (state === 'queued' ? 'queued' : state === 'cancelling' ? 'cancelling' : state === 'reconnecting' ? 'reconnecting' :
     ['preparing', 'writing', 'composing', 'retrying', 'checking', 'saving'].includes(phase) ? phase : 'composing');
-  const [title, detail, step] = stages[key];
+  const [title, originalDetail, step] = stages[key];
+  const detail=originalDetail+(credits==='released'&&['failed','cancelled'].includes(state)?' Credit reservation released. Check Your credits for the available balance; then retry when ready.':key==='reconnecting'?' Keep this request open rather than starting another paid request.':'');
   const active = !terminal;
   return {key, title, detail, step, active, steps: [key === 'queued' ? 'Waiting' : 'Preparing', 'Creating', 'Finishing', 'Ready']};
 }
 
-export function showGenerationProgress(root, state, phase) {
-  const view = generationProgress(state, phase);
+export function showGenerationProgress(root, state, phase, credits) {
+  const view = generationProgress(state, phase, credits);
   root.hidden = false;
   root.className = 'generation-progress';
   root.dataset.state = view.key;

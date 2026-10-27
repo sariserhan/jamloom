@@ -339,6 +339,22 @@ void varied_openings() {
         check(clean_first && instrument_first && chop_first,"seeds do not vary the opening treatment");
     }
 }
+void short_call_pickup() {
+    auto a=source();a.mono.resize(a.sample_rate);a.original_frames=a.mono.size();
+    const auto analysis=jamloom::analyze(a);
+    for (auto style:{jamloom::Strategy::hiphop,jamloom::Strategy::reggae,jamloom::Strategy::funk}) {
+        const auto seed=4125U-static_cast<unsigned>(style)%3U;
+        const auto p=jamloom::make_remix(a,analysis,style,seed,true,false,nullptr,30);
+        const auto body=jamloom::ticks_per_bar(p.music)*p.music.sections[0].bars;
+        bool pickup=false;
+        for(const auto& track:p.music.tracks)for(const auto& note:track.notes)if(note.start<body){
+            pickup=true;check(jamloom::tick_to_frame(note.start,p.music)>=a.mono.size()+a.sample_rate*80ULL/1000,"pickup masks the clean source");
+        }
+        check(pickup,"short clean call leaves an empty introduction");
+        check(p.clips[0].begin==0&&p.clips[0].end==a.mono.size(),"pickup changed the source bounds");
+        check(render(p,a,512)==render(p,a,113),"pickup depends on audio block size");
+    }
+}
 void hiphop_composition() {
     const auto a=source();const auto features=jamloom::analyze(a);
     using Shape=std::vector<std::tuple<int,jamloom::Tick,jamloom::Tick,int>>;
@@ -1076,6 +1092,7 @@ int main() {
         {"consent, crop, transform, polyphony and duration rejection",validation},
         {"quantized chop spacing and both clean hooks at 2/3/5 seconds",vocal_spacing},
         {"seeded clean, instrumental and fragment openings",varied_openings},
+        {"short clean call pickup preserves source and sample clock",short_call_pickup},
         {"hiphop harmonic/rhythmic seed diversity, recurring motifs and developed returns",hiphop_composition},
         {"reggae/experimental/club harmony, rhythm and form variety across 192 seeds",remaining_style_diversity},
         {"call-response turn taking, hybrid transitions and 128 seed structures",dialogue_hybrid_composition},

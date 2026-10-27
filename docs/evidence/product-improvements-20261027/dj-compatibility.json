@@ -1,0 +1,553 @@
+{
+  "status": "PASS analysis; musical improvement NOT RUN",
+  "source": "Retained release-qualification originals; hashes verified",
+  "before": {
+    "handoffs": 18,
+    "measuredBeatHandoffs": 4,
+    "meanAbsoluteEnergyDifferenceDb": 1.3617997301368032
+  },
+  "candidate": {
+    "handoffs": 18,
+    "measuredBeatHandoffs": 5,
+    "meanAbsoluteEnergyDifferenceDb": 1.066284737041559
+  },
+  "original": [
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:0",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:1",
+      "plan": {
+        "at": 55.57142857142857,
+        "fade": 1.7142857142857142,
+        "offset": 27.468571428571426,
+        "rate": 1,
+        "technique": "beat-bass",
+        "reason": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+      },
+      "energyDifferenceDb": 1.1248505494407153,
+      "score": 1.1248505494407153
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:1",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:2",
+      "plan": {
+        "at": 53.45,
+        "fade": 4,
+        "offset": 15.25,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -0.42695748734886413,
+      "score": 10.426957487348863
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:2",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:3",
+      "plan": {
+        "at": 56.7,
+        "fade": 4,
+        "offset": 0,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+      },
+      "energyDifferenceDb": -3.3127038704744587,
+      "score": 13.312703870474458
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:3",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:4",
+      "plan": {
+        "at": 55.765,
+        "fade": 4,
+        "offset": 0,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+      },
+      "energyDifferenceDb": -1.3176002201925052,
+      "score": 11.317600220192505
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:4",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:5",
+      "plan": {
+        "at": 57.835,
+        "fade": 4,
+        "offset": 12.458571428571432,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff into measured steady entry · no tempo change or FX"
+      },
+      "energyDifferenceDb": 2.752371678947381,
+      "score": 12.75237167894738
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:5",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:6",
+      "plan": {
+        "at": 59.029999999999994,
+        "fade": 1.7142857142857142,
+        "offset": 4.1171428571428565,
+        "rate": 1,
+        "technique": "beat-bass",
+        "reason": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+      },
+      "energyDifferenceDb": -1.3224155206775112,
+      "score": 1.3224155206775112
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:6",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:7",
+      "plan": {
+        "at": 55.45,
+        "fade": 4,
+        "offset": 5.25,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -1.6621431631588655,
+      "score": 11.662143163158866
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:7",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:8",
+      "plan": {
+        "at": 56.2,
+        "fade": 4,
+        "offset": 5.5,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -3.4991579604507144,
+      "score": 13.499157960450715
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:8",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:9",
+      "plan": {
+        "at": 56.45,
+        "fade": 4,
+        "offset": 13.25,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -2.1904528913447474,
+      "score": 12.190452891344748
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:0",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:1",
+      "plan": {
+        "at": 56.7,
+        "fade": 4,
+        "offset": 9.75,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -0.7694227541242754,
+      "score": 10.769422754124275
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:1",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:2",
+      "plan": {
+        "at": 54.2,
+        "fade": 4,
+        "offset": 5.75,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -0.15272432689069967,
+      "score": 10.1527243268907
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:2",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:3",
+      "plan": {
+        "at": 45.45,
+        "fade": 4,
+        "offset": 0,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+      },
+      "energyDifferenceDb": -0.4831120754806176,
+      "score": 10.483112075480618
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:3",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:4",
+      "plan": {
+        "at": 58.07,
+        "fade": 4,
+        "offset": 17.99642857142857,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff into measured steady entry · no tempo change or FX"
+      },
+      "energyDifferenceDb": 0.8552938526650687,
+      "score": 10.855293852665069
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:4",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:5",
+      "plan": {
+        "at": 58.567857142857136,
+        "fade": 1.7142857142857142,
+        "offset": 11.517857142857142,
+        "rate": 1,
+        "technique": "beat-bass",
+        "reason": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+      },
+      "energyDifferenceDb": 1.144948183083314,
+      "score": 1.144948183083314
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:5",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:6",
+      "plan": {
+        "at": 58.51785714285714,
+        "fade": 1.7142857142857142,
+        "offset": 11.207857142857142,
+        "rate": 1,
+        "technique": "beat-bass",
+        "reason": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+      },
+      "energyDifferenceDb": 2.2117196363782297,
+      "score": 2.2117196363782297
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:6",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:7",
+      "plan": {
+        "at": 54.2,
+        "fade": 4,
+        "offset": 17,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": 0.8809484754135901,
+      "score": 10.88094847541359
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:7",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:8",
+      "plan": {
+        "at": 51.2,
+        "fade": 4,
+        "offset": 6,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": 0.29161075846848084,
+      "score": 10.291610758468481
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:8",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:9",
+      "plan": {
+        "at": 52.95,
+        "fade": 4,
+        "offset": 18,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -0.11396173792242265,
+      "score": 10.113961737922423
+    }
+  ],
+  "selected": [
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:0",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:5",
+      "plan": {
+        "at": 55.57142857142857,
+        "fade": 1.7142857142857142,
+        "offset": 12.458571428571426,
+        "rate": 1,
+        "technique": "beat-bass",
+        "reason": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+      },
+      "energyDifferenceDb": -0.1586024189911177,
+      "score": 0.1586024189911177
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:5",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:1",
+      "plan": {
+        "at": 59.029999999999994,
+        "fade": 1.7142857142857142,
+        "offset": 27.468571428571426,
+        "rate": 1,
+        "technique": "beat-bass",
+        "reason": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+      },
+      "energyDifferenceDb": 0.5301609291835102,
+      "score": 0.5301609291835102
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:1",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:6",
+      "plan": {
+        "at": 55.61142857142857,
+        "fade": 1.7142857142857142,
+        "offset": 4.1171428571428565,
+        "rate": 1,
+        "technique": "beat-bass",
+        "reason": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+      },
+      "energyDifferenceDb": 0.20850411140512767,
+      "score": 0.20850411140512767
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:6",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:2",
+      "plan": {
+        "at": 55.45,
+        "fade": 4,
+        "offset": 15.25,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -1.1946590636766732,
+      "score": 11.194659063676673
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:2",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:9",
+      "plan": {
+        "at": 56.7,
+        "fade": 4,
+        "offset": 13.25,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -1.5473256937936926,
+      "score": 11.547325693793692
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:9",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:7",
+      "plan": {
+        "at": 57.2,
+        "fade": 4,
+        "offset": 5.25,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -1.012266450441867,
+      "score": 11.012266450441867
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:7",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:8",
+      "plan": {
+        "at": 56.2,
+        "fade": 4,
+        "offset": 5.5,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -3.4991579604507144,
+      "score": 13.499157960450715
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:8",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:3",
+      "plan": {
+        "at": 56.45,
+        "fade": 4,
+        "offset": 0,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+      },
+      "energyDifferenceDb": -3.955831068025513,
+      "score": 13.955831068025514
+    },
+    {
+      "from": "2ea30f92396a440c8bb2e44da37152dc:3",
+      "to": "2ea30f92396a440c8bb2e44da37152dc:4",
+      "plan": {
+        "at": 55.765,
+        "fade": 4,
+        "offset": 0,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+      },
+      "energyDifferenceDb": -1.3176002201925052,
+      "score": 11.317600220192505
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:0",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:5",
+      "plan": {
+        "at": 56.7,
+        "fade": 4,
+        "offset": 11.517857142857146,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff into measured steady entry · no tempo change or FX"
+      },
+      "energyDifferenceDb": 0.0753605936550387,
+      "score": 10.075360593655038
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:5",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:4",
+      "plan": {
+        "at": 58.51785714285714,
+        "fade": 1.7142857142857142,
+        "offset": 17.99642857142857,
+        "rate": 1,
+        "technique": "beat-bass",
+        "reason": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+      },
+      "energyDifferenceDb": -0.1981694617694094,
+      "score": 0.1981694617694094
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:4",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:6",
+      "plan": {
+        "at": 58.567857142857136,
+        "fade": 1.7142857142857142,
+        "offset": 11.207857142857142,
+        "rate": 1,
+        "technique": "beat-bass",
+        "reason": "Measured steady beats within sustained energy · short bass handoff; phrase boundaries unreviewed"
+      },
+      "energyDifferenceDb": 2.276363064662602,
+      "score": 2.276363064662602
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:6",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:7",
+      "plan": {
+        "at": 54.2,
+        "fade": 4,
+        "offset": 17,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": 0.8809484754135901,
+      "score": 10.88094847541359
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:7",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:8",
+      "plan": {
+        "at": 51.2,
+        "fade": 4,
+        "offset": 6,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": 0.29161075846848084,
+      "score": 10.291610758468481
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:8",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:1",
+      "plan": {
+        "at": 52.95,
+        "fade": 4,
+        "offset": 9.75,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": 0.0011311240533815857,
+      "score": 10.001131124053382
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:1",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:2",
+      "plan": {
+        "at": 54.2,
+        "fade": 4,
+        "offset": 5.75,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -0.15272432689069967,
+      "score": 10.1527243268907
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:2",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:9",
+      "plan": {
+        "at": 45.45,
+        "fade": 4,
+        "offset": 18,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Short handoff past quiet opening · no tempo change or FX"
+      },
+      "energyDifferenceDb": -0.37265391153282035,
+      "score": 10.37265391153282
+    },
+    {
+      "from": "5ec6ca6507f94dc396851beecdb4d16f:9",
+      "to": "5ec6ca6507f94dc396851beecdb4d16f:3",
+      "plan": {
+        "at": 48.2,
+        "fade": 4,
+        "offset": 0,
+        "rate": 1,
+        "technique": "short-fade",
+        "reason": "Timing or mix sections unverified/incompatible · short handoff, no FX"
+      },
+      "energyDifferenceDb": -1.5200556341413236,
+      "score": 11.520055634141324
+    }
+  ],
+  "sequences": [
+    [
+      "2ea30f92396a440c8bb2e44da37152dc:0",
+      "2ea30f92396a440c8bb2e44da37152dc:5",
+      "2ea30f92396a440c8bb2e44da37152dc:1",
+      "2ea30f92396a440c8bb2e44da37152dc:6",
+      "2ea30f92396a440c8bb2e44da37152dc:2",
+      "2ea30f92396a440c8bb2e44da37152dc:9",
+      "2ea30f92396a440c8bb2e44da37152dc:7",
+      "2ea30f92396a440c8bb2e44da37152dc:8",
+      "2ea30f92396a440c8bb2e44da37152dc:3",
+      "2ea30f92396a440c8bb2e44da37152dc:4"
+    ],
+    [
+      "5ec6ca6507f94dc396851beecdb4d16f:0",
+      "5ec6ca6507f94dc396851beecdb4d16f:5",
+      "5ec6ca6507f94dc396851beecdb4d16f:4",
+      "5ec6ca6507f94dc396851beecdb4d16f:6",
+      "5ec6ca6507f94dc396851beecdb4d16f:7",
+      "5ec6ca6507f94dc396851beecdb4d16f:8",
+      "5ec6ca6507f94dc396851beecdb4d16f:1",
+      "5ec6ca6507f94dc396851beecdb4d16f:2",
+      "5ec6ca6507f94dc396851beecdb4d16f:9",
+      "5ec6ca6507f94dc396851beecdb4d16f:3"
+    ]
+  ],
+  "limitations": [
+    "Energy is not perceived intensity, harmonic compatibility or arrangement quality",
+    "Uses future knowledge of a finite library; not an endless live-generation improvement",
+    "No forced grid, relaxed thresholds, paid generation, customer reorder or runtime change"
+  ]
+}

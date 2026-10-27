@@ -1,3 +1,15 @@
+# Local candidate: Jamloom 0.10.3 build 31 — 2026-10-27
+
+**PASS signing, bundle audit, installation and three physical Community/Singing checks; no new archive/export/upload or submission.** [Current pass](PRODUCT_IMPROVEMENTS.md). Release build 31 is reinstalled after testing; automatic relaunch was denied after the phone relocked. The latest retained archive/export is build 30, not this source candidate. Do not upload an older archive as build 31.
+
+Prepared release description: Practice singing with twelve songs, full highlighted lyrics, section practice and live pitch feedback. Find a comfortable starting register, repeat lessons without limits, and use clearer octave guidance. Browse Community, filter by language, save favorites and control playback while browsing. Local Remixes preserves short clean calls and adds a gentle rhythmic pickup afterward. Singing Academy remains USD39 once when sales are activated; current preview/sales restrictions remain.
+
+Prepared reviewer notes: Microphone access starts only after a user action and stops when leaving the singing screen. Register checks retain bounded note measurements in memory, not recordings. The repertoire is ten Jamloom originals and two newly arranged public-domain melodies; no chart-hit recordings or lyrics are bundled. Existing local music tools remain available. New paid cloud generation and purchase activation remain closed. The static bundle audit checks privacy, notices, resources and absence of debug controls; it is not Apple acceptance.
+
+Real Apple sandbox credits/course purchases, authenticated local server verification and course Restore passed in [release preparation](RELEASE_PREPARATION.md). Real refund notifications, deployed/native receipt delivery, credit-product review metadata and dedicated reviewer access remain separate prerequisites. Do not put reviewer credentials in Git. Apple draft build 24 and its old screenshots are historical; no current App Store edit is made by this pass.
+
+Earlier candidate entries below retain their historical evidence and are not current release instructions.
+
 # Local candidate: Jamloom 0.10.2 build 26 — 2026-10-26
 
 **Local only; no upload or submission.** [Completion follow-up](COMPLETION_FOLLOWUP.md). Singing Academy has the shared $39 offer, a native Course panel, guarded purchase/restore, shared free-lesson navigation rules and server-verified course receipts. Preview practice remains free while sales are held. The final local archive is `build-ios-store/Jamloom-0.10.2-26-final.xcarchive`; the final local export is `build-ios-store/export-0.10.2-26-final/Jamloom.ipa`. Do not submit the older selected build 24 as though it contains these changes.

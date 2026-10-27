@@ -1,0 +1,93 @@
+{
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "149.0.7827.55",
+      "registerTone": "PASS",
+      "silence": "PASS",
+      "permissionDenial": "PASS",
+      "latePermissionCleanup": "PASS",
+      "noScoresOrAudioSaved": "PASS",
+      "publicDiscovery": "PASS",
+      "academyPracticeAdvice": "PASS",
+      "viewports": [
+        1280,
+        390
+      ],
+      "images": [
+        {
+          "src": "/product-previews/academy.webp",
+          "loaded": true
+        },
+        {
+          "src": "/product-previews/ai-dj.webp",
+          "loaded": true
+        },
+        {
+          "src": "/product-previews/improvise.webp",
+          "loaded": true
+        },
+        {
+          "src": "/product-previews/local-remixes.webp",
+          "loaded": true
+        },
+        {
+          "src": "/product-previews/live-dj.webp",
+          "loaded": true
+        },
+        {
+          "src": "/product-previews/singing-academy.webp",
+          "loaded": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "registerTone": "PASS",
+      "silence": "PASS",
+      "permissionDenial": "PASS",
+      "latePermissionCleanup": "PASS",
+      "noScoresOrAudioSaved": "PASS",
+      "publicDiscovery": "PASS",
+      "academyPracticeAdvice": "PASS",
+      "viewports": [
+        1280,
+        390
+      ],
+      "images": [
+        {
+          "src": "/product-previews/academy.webp",
+          "loaded": true
+        },
+        {
+          "src": "/product-previews/ai-dj.webp",
+          "loaded": true
+        },
+        {
+          "src": "/product-previews/improvise.webp",
+          "loaded": true
+        },
+        {
+          "src": "/product-previews/local-remixes.webp",
+          "loaded": true
+        },
+        {
+          "src": "/product-previews/live-dj.webp",
+          "loaded": true
+        },
+        {
+          "src": "/product-previews/singing-academy.webp",
+          "loaded": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "limitations": [
+    "Synthetic microphone; no physical accuracy or vocal range claim",
+    "Discovery feeds are fixtures; database isolation tested separately",
+    "Browser plugin runtime unavailable; existing Playwright harness used"
+  ]
+}

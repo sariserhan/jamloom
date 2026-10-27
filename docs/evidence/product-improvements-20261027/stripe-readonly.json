@@ -1,0 +1,14 @@
+{
+  "method": "Read-only provider API; no checkout or writes",
+  "course": "Singing Academy",
+  "priceUSD": 39,
+  "oneTime": true,
+  "priceInactive": true,
+  "productInactive": true,
+  "productMatches": true,
+  "singingNotificationEndpointPresent": false,
+  "limitations": [
+    "No real purchase or notification sent",
+    "Deployed environment not changed or qualified"
+  ]
+}

@@ -1,5 +1,6 @@
 import {createRack,noteName} from './instrument-rack.js';
 import {detectPitch,isSingingPitch} from './singing-pitch.js';
+import {SingingRegister} from './singing-register.js';
 import {SingingHold,SingingPhrase} from './singing-lesson.js';
 import {singingLessons,singingSongs,stages,lessonById,phraseFor,readProgress,saveAttempt,weakestSection} from './singing-course.js';
 import {drawSingingChart} from './singing-chart.js';
@@ -26,7 +27,7 @@ function showProgress(){let progress={};try{progress=readProgress(localStorage);
 function stop(message='Stopped. Your microphone is off.'){
  const run=active;active=null;
  if(run){clearTimeout(run.watchdog);cancelAnimationFrame(run.raf);run.stream?.getTracks().forEach(t=>t.stop());run.source?.disconnect();run.capture?.port.postMessage('stop');run.capture?.port.close();run.capture?.disconnect();run.rack?.port.postMessage({type:'panic'});run.rack?.disconnect();run.rack?.port.close();run.gain?.disconnect();run.muted?.disconnect();void run.context.close().catch(()=>{});}
- $('mic-state').textContent='Microphone off';$('mic-state').classList.remove('live');for(const id of ['start','demo','register','tempo','backing','lesson-picker','section'])$(id).disabled=false;$('stop').disabled=true;$('start').textContent=lesson.song?'↻ Sing again':'↻ Practice again';$('feedback').textContent=message;phase(null);
+ $('mic-state').textContent='Microphone off';$('mic-state').classList.remove('live');for(const id of ['start','demo','find-register','register','tempo','backing','lesson-picker','section'])$(id).disabled=false;$('stop').disabled=true;$('start').textContent=lesson.song?'↻ Sing again':'↻ Practice again';$('feedback').textContent=message;phase(null);
 }
 function finish(result){
  const score=lesson.hold?(result.passed?100:Math.round(result.held/lesson.hold*100)):result.score;
@@ -36,16 +37,34 @@ function finish(result){
  if(saved&&!partial&&mobile)window.webkit?.messageHandlers.singingProgress?.postMessage(readProgress(localStorage));
  if(!saved)$('result').textContent+=' · Browser storage unavailable; progress was not saved.';
  $('review').replaceChildren();if(result.details)for(const [i,row] of result.details.entries()){const item=document.createElement('li');item.textContent=`${i+1}. ${row.note===null?'Rest':noteName(row.note)} · ${row.advice}`;$('review').append(item);}
- $('continue').hidden=!result.passed||partial;$('practice-weakest').hidden=!lesson.song||partial||result.passed;if(lesson.song&&!partial){const section=weakestSection(lesson,result.details);$('practice-weakest').textContent='Practice '+['first verse','second verse','chorus','finale'][section];$('practice-weakest').onclick=()=>{$('section').value=String(section);renderNotes();start();};}showProgress();stop(result.passed?'Matched! Repeat or continue to your next lesson.':'Listen again, then try once more.');
+ $('continue').hidden=!result.passed||partial;$('practice-weakest').hidden=!lesson.song||partial||result.passed;if(lesson.song&&!partial){const section=weakestSection(lesson,result.details);$('practice-weakest').textContent='Practice '+(lesson.sections||['first verse','second verse','chorus','finale'])[section];$('practice-weakest').onclick=()=>{$('section').value=String(section);renderNotes();start();};}showProgress();stop(result.passed?'Matched! Repeat or continue to your next lesson.':'Listen again, then try once more.');
 }
-async function start(demoOnly=false){
- if(active)return;$('practice-weakest').hidden=true;resetMeter();if(lesson.song){highlightLyric(-1);$('full-lyrics-list').scrollTop=0;}$('result').textContent='';$('review').replaceChildren();$('continue').hidden=true;for(const id of ['start','demo','register','tempo','backing','lesson-picker','section'])$(id).disabled=true;$('stop').disabled=false;$('feedback').textContent='Preparing the piano'+(demoOnly?'…':' and microphone…');
+async function start(demoOnly=false,registerOnly=false){
+ if(active)return;$('practice-weakest').hidden=true;resetMeter();if(lesson.song){highlightLyric(-1);$('full-lyrics-list').scrollTop=0;}$('result').textContent='';$('review').replaceChildren();$('continue').hidden=true;for(const id of ['start','demo','find-register','register','tempo','backing','lesson-picker','section'])$(id).disabled=true;$('stop').disabled=false;$('feedback').textContent='Preparing the piano'+(demoOnly?'…':' and microphone…');
  let run;
  try{
   if(!window.AudioWorkletNode||!demoOnly&&!navigator.mediaDevices?.getUserMedia)throw Error('This lesson needs audio support on HTTPS or localhost.');
   const context=new AudioContext({latencyHint:'interactive'});run={context,demoOnly,trace:[]};active=run;run.watchdog=setTimeout(()=>{if(active===run)stop('Preparation timed out. Allow microphone access and try again.');},30000);
   run.gain=context.createGain();run.gain.gain.value=window.jamloomMobileMuted?0:.3;run.gain.connect(context.destination);if(context.state!=='running')await context.resume();if(active!==run)return;
   if(!demoOnly){run.stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:false,noiseSuppression:false,autoGainControl:false}});if(active!==run){run.stream.getTracks().forEach(t=>t.stop());return;}run.stream.getTracks().forEach(t=>{t.enabled=false;t.addEventListener('ended',()=>{if(active===run)stop('Microphone disconnected. Reconnect and try again.');},{once:true});});}
+  if(registerOnly){
+   await context.audioWorklet.addModule(new URL('./singing-capture-worklet.js',import.meta.url));if(active!==run)return;
+   const assessment=new SingingRegister(),began=context.currentTime;
+   run.capture=new AudioWorkletNode(context,'jamloom-singing-capture',{numberOfInputs:1,numberOfOutputs:1,outputChannelCount:[1]});run.muted=context.createGain();run.muted.gain.value=0;run.source=context.createMediaStreamSource(run.stream);run.source.connect(run.capture);run.capture.connect(run.muted);run.muted.connect(context.destination);
+   run.stream.getTracks().forEach(t=>t.enabled=true);$('mic-state').textContent='Microphone listening';$('mic-state').classList.add('live');
+   run.capture.onprocessorerror=()=>{if(active===run)stop('Audio analysis was interrupted. Try again.');};
+   run.capture.port.onmessage=({data})=>{if(active!==run)return;try{
+    const elapsed=data.frame/data.rate-began,pitch=detectPitch(data.samples,data.rate);assessment.observe(elapsed,pitch);
+    $('measured').textContent=isSingingPitch(pitch)?noteName(Math.round(69+12*Math.log2(pitch.frequency/440))):'Waiting for a clear note';
+    $('feedback').textContent=`Sing gently across comfortable notes · ${Math.max(0,Math.ceil(12-elapsed))} seconds left`;
+    if(elapsed>=12){const result=assessment.result(lesson.notes.map(n=>n[0]));stop();
+     if(result){$('register').value=String(result.root);renderNotes();$('register-result').textContent=`Heard ${noteName(result.low)}–${noteName(result.high)}. Starting register: ${$('register').selectedOptions[0].textContent}. Try the song and change it if needed; this is not your full vocal range.`;}
+     else $('register-result').textContent='Not enough clear singing to suggest a register. Check the microphone, then try again or choose a register yourself.';
+    }
+   }finally{if(active===run)run.capture.port.postMessage('ack');}};
+   clearTimeout(run.watchdog);run.watchdog=setTimeout(()=>{if(active===run)stop('Register check timed out. Try again.');},15000);
+   context.addEventListener('statechange',()=>{if(active===run&&context.state!=='running')stop('Audio paused. Restart when ready.');});return;
+  }
   run.rack=await createRack(context,run.gain);if(active!==run){run.rack.port.postMessage({type:'panic'});run.rack.disconnect();run.rack.port.close();return;}
   if(!demoOnly){await context.audioWorklet.addModule(new URL('./singing-capture-worklet.js',import.meta.url));if(active!==run)return;}
   const {root,tempo,section}=settings(),phrase=phraseFor(lesson,root,tempo,section),now=context.currentTime,startAt=now+.15;
@@ -77,7 +96,7 @@ async function start(demoOnly=false){
   clearTimeout(run.watchdog);run.watchdog=setTimeout(()=>{if(active===run)stop('Practice timed out. Restart when ready.');},Math.ceil(((demoOnly?demoEnd:endAt)-now+3)*1000));context.addEventListener('statechange',()=>{if(active===run&&context.state!=='running')stop('Audio paused. Restart when ready.');});
  }catch(error){if(!run||active===run)stop(error.name==='NotAllowedError'?'Microphone access was denied. Allow access in your browser, then try again.':error.message||'Could not start the lesson.');}
 }
-$('start').onclick=()=>start();$('demo').onclick=()=>start(true);$('stop').onclick=()=>stop();$('register').onchange=renderNotes;$('tempo').onchange=renderNotes;$('section').onchange=()=>{renderNotes();$('result').textContent='';$('review').replaceChildren();$('practice-weakest').hidden=true;};
+$('find-register').onclick=()=>start(false,true);$('start').onclick=()=>start();$('demo').onclick=()=>start(true);$('stop').onclick=()=>stop();$('register').onchange=renderNotes;$('tempo').onchange=renderNotes;$('section').onchange=()=>{renderNotes();$('result').textContent='';$('review').replaceChildren();$('practice-weakest').hidden=true;};
 $('help').onclick=()=>{if(active)stop();$('guide').showModal();};$('close-help').onclick=()=>$('guide').close();document.addEventListener('visibilitychange',()=>{if(document.hidden&&active)stop('Practice paused while this page was hidden.');});window.addEventListener('pagehide',()=>{if(active)stop();});
 renderNotes();const progress=showProgress();if(progress[lesson.id]?.passed)$('result').textContent='✓ Previously completed · practice as often as you like';
 

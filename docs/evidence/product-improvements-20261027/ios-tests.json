@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "version": "0.10.3",
+  "build": "31",
+  "device": "physical iPhone",
+  "tests": [
+    "Test Case '-[JamloomUITests.FlowTests testCommunityBottomPlayerPausesSeeksAndKeepsPlayingWhileBrowsing]' passed (34.364 seconds).",
+    "Test Case '-[JamloomUITests.FlowTests testCommunityLanguageFilterAndFavorites]' passed (27.494 seconds).",
+    "Test Case '-[JamloomUITests.FlowTests testSingingSongsDemoAndTabCleanup]' passed (24.754 seconds)."
+  ],
+  "logSha256": "c9a6a3a7c31fd90dec66191e4e9d1a4980ea5ca314ae9c17997c3755dd93190d",
+  "xcresult": "build-ios-physical/Logs/Test/Test-Jamloom-2026.10.27_11-45-27--0400.xcresult",
+  "limitations": [
+    "UI test uses controlled Community fixtures",
+    "No physical pitch accuracy or new paid purchase evidence",
+    "Release installation and launch are checked separately"
+  ]
+}

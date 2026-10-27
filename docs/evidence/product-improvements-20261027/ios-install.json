@@ -1,0 +1,11 @@
+{
+  "install": "PASS",
+  "version": "0.10.3",
+  "build": "31",
+  "bundle": "com.djayvo.app",
+  "releaseReinstalledAfterTests": true,
+  "automaticReleaseLaunch": "NOT RUN: blocked by locked phone",
+  "releaseSigning": "PASS: codesign --verify --deep --strict",
+  "archiveExport": "NOT RUN for build 31; retained build-30 artifacts preserved",
+  "appStoreUploadSubmission": "NOT RUN"
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "image": "singing-academy",
+    "decodedPixelsIdentical": true,
+    "rgbaSha256": "64bf7647d88c9db66b7f5f308d3333dc1169d6f404d6ffda05dc2f81da35d2e2"
+  },
+  {
+    "image": "academy",
+    "decodedPixelsIdentical": true,
+    "rgbaSha256": "a802d831e443eef0cdb42d1f0bf004a89c46f221fc5de642d0636dace801177b"
+  },
+  {
+    "image": "ai-dj",
+    "decodedPixelsIdentical": true,
+    "rgbaSha256": "f79b25cb57112a9bf0648930e8034b5a43218b0caf134208c19a913754c7a329"
+  },
+  {
+    "image": "improvise",
+    "decodedPixelsIdentical": true,
+    "rgbaSha256": "fba9a2fc177545b4c5a5c67e95cf38f47a11f2dab2dcae004304664b4f8f03c1"
+  },
+  {
+    "image": "dj-studio",
+    "decodedPixelsIdentical": true,
+    "rgbaSha256": "3938555ee44b8cc81dfa5856c323c93759480443b447be0ba7c7314fbfca0e4e"
+  },
+  {
+    "image": "music-dna",
+    "decodedPixelsIdentical": true,
+    "rgbaSha256": "f9700c462e3488a5b35fd0986e1e05bd7abce867be1632b1ee0e3ff4dc7cec68"
+  },
+  {
+    "image": "live-dj",
+    "decodedPixelsIdentical": true,
+    "rgbaSha256": "ed2db6a141e5ff73c0a9354abfab3d50148af1edd5744e0b1fe4cb67ae8df600"
+  },
+  {
+    "image": "local-remixes",
+    "decodedPixelsIdentical": true,
+    "rgbaSha256": "eef6bd2c0c6c2849478edcc71763feffd10643451a82e6aca69a7a0d6ce10b96"
+  }
+]

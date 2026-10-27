@@ -29,7 +29,7 @@ export function ImproviseCreate(){
    try{const r=await fetch(endpoint+'?id='+job,{signal:AbortSignal.timeout(10000)}),data=await r.json();if(stopped)return;
     if(r.status===404&&Date.now()>checkingUntil){setJob(null);setBusy(false);setProgress(null);setMessage('This request did not start. You can try again.');localStorage.removeItem(historyKey);return;}if(!r.ok)throw Error();
     if(data.state==='queued'||data.state==='running'){if(cancelWanted.current||localStorage.getItem(historyKey+'-cancel')===job)await fetch(endpoint+'?id='+job,{method:'DELETE',headers:{'X-Jamloom-DNA':'1'},signal:AbortSignal.timeout(10000)});}
-    setProgress({state:data.cancelling?'cancelling':data.state,phase:data.phase});
+    setProgress({state:data.cancelling?'cancelling':data.state,phase:data.phase,credits:data.credits});
     if(['completed','failed','cancelled'].includes(data.state)){
      setJob(null);setBusy(false);cancelWanted.current=false;localStorage.removeItem(historyKey+'-cancel');requestId.current=null;sourceId.current=null;setQuote(null);
      if(data.state==='completed'){setReady(job);window.dispatchEvent(new Event('jamloom-dna-completed'));}return;

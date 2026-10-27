@@ -429,6 +429,17 @@ RemixPlan make_remix(const AudioBuffer& source, const InputAnalysis& a, Strategy
             }
         }
     }
+    // A short clean call must not leave the rest of its introduction empty.
+    // Begin the pickup after the entire source and its breathing space; keep the body unchanged.
+    if (opening==0 && !club) {
+        const auto clear_frame=hook_end-hook_begin+source.sample_rate*80ULL/1000;
+        const auto beat_frames=tick_to_frame(q,p);
+        const auto first=static_cast<Tick>((clear_frame+beat_frames-1)/beat_frames)*q;
+        for (Tick tick=first;tick<intro_bars*bar_ticks;tick+=q) {
+            drums.notes.push_back({tick,q/8,42,static_cast<int>(tick/q%2?48:60)});
+            if (tick==first) bass.notes.push_back({tick,intro_bars*bar_ticks-tick,r.tonic_midi-24,68});
+        }
+    }
     // Quantization can collapse several source onsets onto the same offbeat.
     // Keep the first call there, and reserve the complete clean-hook intervals
     // before choosing chops (long inputs can extend beyond their starting bar).

@@ -28,3 +28,13 @@ test('published discovery does not open generation, private collections or revie
 });
 
 test('public credits decode once and reject malformed or unsafe route text',()=>{assert.equal(publicCredit('Chosen%20credit'),'Chosen credit');assert.equal(publicCredit('100%25%20Original'),'100% Original');assert.equal(publicCredit('%2520'),'%20');for(const value of ['%xx','%00','%20','a'.repeat(81)])assert.equal(publicCredit(value),null);});
+
+test('discovery stays inside public candidates, respects dislikes, and introduces new styles',async()=>{
+ const {discoverTracks}=await import('../lib/listening');
+ const make=(id:string,mood:string,created='2026-10-27')=>({id,title:id,artist:'Creator',kind:'music-dna',mood,created});
+ const saved=make('saved','house'),privateFavorite=make('private','house'),a=make('a','house'),b=make('b','house'),c=make('c','house'),fresh=make('fresh','jazz'),bad=make('bad','house');
+ const publicTracks=[saved,a,b,c,fresh,bad],before=JSON.stringify(publicTracks);
+ assert.deepEqual(discoverTracks(publicTracks,[saved,privateFavorite],[{kind:'music-dna',id:'bad',rating:'dislike'}]).map(t=>t.id),['a','b','fresh','c']);assert.equal(JSON.stringify(publicTracks),before);
+ assert.equal(discoverTracks([a,fresh],[],[{kind:'music-dna',id:'fresh',rating:'like'}])[0].id,'fresh');
+ assert.deepEqual(discoverTracks([], [privateFavorite]),[]);
+});

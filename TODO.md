@@ -1,3 +1,17 @@
+## Cross-product improvement pass — 2026-10-27
+
+**PASS scoped local implementation and checks; PARTIAL overall readiness; publication HELD.** [Report](docs/PRODUCT_IMPROVEMENTS.md).
+
+- [x] Add an optional singing starting-register check, explicit octave advice and correct weakest-section names without changing pitch gates or grades; retain twelve songs, twelve warm-ups and $39 once.
+- [x] Add current-session DJ Academy practice suggestions and public-only Community discovery using favorites and explicitly permitted rating preferences. No private-track exposure or new polling.
+- [x] Show server-confirmed released credit reservations and safer reconnect guidance in Improvise/Music DNA.
+- [x] Fix the empty Local Remixes introduction after short clean calls; actual fixture rendering reduces longest opening silence from 4.00 to 0.48 seconds while retaining source/body events.
+- [x] Deliver eight lossless product previews with 40.15% fewer bytes and identical decoded pixels.
+- [x] Pass 166 site tests, 44 shared audio checks, 26 isolated database tests, 20 CTest suites, TypeScript/build and scoped Chromium/WebKit checks.
+- [x] Sign/audit/install iPhone 0.10.3 build 31; all three physical Community/Singing checks pass. Release reinstalled after testing; automatic relaunch blocked by the phone relocking. No upload or new archive/export.
+- [x] Verify 32 matching migration hashes and inactive USD39 Stripe price read-only. AI DJ ordering study gives only 4→5 of 18 measured-beat handoffs; no runtime adoption or quality claim.
+- [ ] Complete fresh music/vocal/capacity and hosted genre/language/5,000-favorite qualification, broader singing/listening evidence, natural sung guides and provider/reviewer gates. No new GPU permit; physical iPad excluded. Preserve deployment/sales hold.
+
 ## No-license-fee singing catalogue — 2026-10-27
 
 **PASS local catalogue and controlled checks; human quality/physical install NOT RUN; publication HELD.** [Report](docs/SINGING_FREE_CATALOGUE.md).

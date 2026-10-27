@@ -1,8 +1,8 @@
 import {generationProgress} from '../../web/generation-progress';
 
-export type SongProgress={state:string;phase?:string};
-export function GenerationProgress({state,phase}:SongProgress){
- const view=generationProgress(state,phase);
+export type SongProgress={state:string;phase?:string;credits?:string};
+export function GenerationProgress({state,phase,credits}:SongProgress){
+ const view=generationProgress(state,phase,credits);
  return <div className="generation-progress" data-state={view.key}>
   <div className="generation-progress-art" aria-hidden="true">{[0,1,2,3,4].map(i=><i key={i}/>)}</div>
   <div className="generation-progress-copy" role="status" aria-atomic="true"><strong>{view.title}</strong><p>{view.detail}</p></div>

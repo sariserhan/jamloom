@@ -36,6 +36,7 @@ export class CreationFeedback {
   }
   if(!row)throw new AudioError('This creation is not available for feedback.',404);return row;
  }
+ async preferences(owner:string){await this.account(owner);return (await this.pool.query(`SELECT kind,creation_id AS id,feedback->>'rating' AS rating FROM creation_feedback WHERE owner_id=$1 AND feedback->>'personalize'='true' AND feedback->>'rating' IN ('like','dislike') ORDER BY updated_at DESC,kind,creation_id LIMIT 500`,[owner])).rows;}
  async read(owner:string,kind:string,id:string){await this.account(owner);const source=await this.source(owner,kind,id);
   const row=(await this.pool.query('SELECT feedback,rights_confirmed FROM creation_feedback WHERE owner_id=$1 AND kind=$2 AND creation_id=$3',[owner,kind,id])).rows[0];
   const legacy=!row&&kind==='music-dna'?(await this.pool.query('SELECT feedback FROM song_feedback WHERE owner_id=$1 AND song_id=$2',[owner,id])).rows[0]:null;

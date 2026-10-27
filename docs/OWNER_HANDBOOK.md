@@ -1,3 +1,13 @@
+## Current local improvements and phone — 2026-10-27
+
+[Implementation, checks and remaining gates](PRODUCT_IMPROVEMENTS.md). Preview at http://127.0.0.1:3010. In Singing Academy choose **Find my starting register** for a twelve-second comfortable-note check; it saves no audio and is not your full vocal range. The course remains $39 once. Community → Explore → **Discover for you** ranks public songs from favorites and ratings explicitly allowed for personalization. DJ Academy shows practice suggestions after failed checks. Improvise/Music DNA explain confirmed credit release and reconnect behavior. Product images are 40.15% smaller losslessly.
+
+Local Remixes now fills empty space after a short clean introduction. Compare the retained fixture at http://localhost:8766/product-improvements/review/; its musical quality is not owner-qualified. The AI DJ candidate ordering did not establish enough improvement, so mixing and generation remain unchanged.
+
+**0.10.3 build 31** is signed, audited and installed with the twelve-song catalogue and current shared changes. All three physical Community/Singing tests pass. Release was restored afterward; the phone relocked before automatic launch, so open Jamloom normally when ready. No new export/archive/upload. Public cloud behavior, payment activation and publication stay held. Read-only checks confirm 32 matching migrations and inactive USD39 Stripe Singing price; its dedicated Stripe notification endpoint is still missing. No GPU rental, licence purchase, outreach, push or deployment occurred.
+
+Earlier dated entries retain historical evidence; their eight-song/build-30 or pending-install statements are superseded by this pass. Musical quality, natural sung demonstrations, independent human testing and live provider/reviewer gates remain open.
+
 ## Singing catalogue and Tency reply — 2026-10-27
 
 [Current free-catalogue report](SINGING_FREE_CATALOGUE.md). Open http://127.0.0.1:3010/singing-academy for twelve songs: the existing eight, Paper Kites, Neon Tide, Frère Jacques and Ode to Joy (new English practice lyrics). Full words stay highlighted over multiple notes. Price remains $39 once; no license fees, paid compute or new sales activation. Native sources/assets are ready, but these additions are not yet installed on the iPhone. Automated/synthetic checks are not listening acceptance.
