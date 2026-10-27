@@ -1,3 +1,7 @@
+## Local vocal processing follow-through — 2026-10-27
+
+[Boundary/backing report](DJ_VOCAL_BOUNDARIES.md): the selector now requires at least 50 ms observed leading quiet, and the mixer no longer lowers the music through silent padding. A skip reports `no_complete_short_phrase` rather than assuming every rejection is excessive length. These local changes may reduce vocal admission; they do not authorize extra GPU retries. The previously rejected voice remains rejected. No deployment.
+
 ## Short-vocal review — 2026-10-27
 
 The retained sung-phrase audition was rejected by the owner (“Voice or timing needs work”). Do not promote it, count its rendering checks as musical acceptance, or present it as fresh generation. [Review and measurements](evidence/final-gates-20261026/retained-vocal-owner-review.json). No deployment or paid run followed this feedback.

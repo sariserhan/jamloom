@@ -1,3 +1,13 @@
+## Vocal boundary and backing preservation — 2026-10-27
+
+**PASS technical; musical acceptance remains FAIL for the retained candidate.** [Report](docs/DJ_VOCAL_BOUNDARIES.md).
+
+- [x] Require observed leading quiet before selecting a generated phrase; reject clipped file starts without extra generation or retries.
+- [x] Preserve backing level in silent vocal padding, with bounded smooth duck/release around active sound.
+- [x] Pass 34 selector/mixer/study/worker checks and render a six-second before/after on retained Jamloom audio. Keep the rejected voice out of production.
+- [ ] Qualify natural complete singing and syllable/tempo/harmonic fit on fresh outputs; signal checks and this diagnostic are not listener approval.
+- [ ] Keep publication and new paid compute held.
+
 ## Retained vocal review — 2026-10-27
 
 - [x] Record owner rejection: “Voice or timing needs work.” Preserve the reviewed audio; rendering checks do not establish musical acceptance.

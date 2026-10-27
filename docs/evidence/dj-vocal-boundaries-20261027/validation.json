@@ -1,0 +1,21 @@
+{
+  "status": "PASS technical; vocal musical acceptance remains FAIL",
+  "tests": 34,
+  "command": ".venv-singer/bin/python -m unittest tests.test_dj_vocal tests.test_dj_sung_hooks tests.test_dj_warm_engine tests.test_dj_track_worker",
+  "before": "Two regression cases failed against prior code; neither quiet-start rejection nor unchanged silent-padding backing held.",
+  "coverage": [
+    "Reject an active file edge; allow a later quiet-bounded phrase",
+    "Preserve accompaniment in silent padding; smooth duck/release; silent overlay unchanged",
+    "Reject an incomplete generated hook without modifying the instrumental",
+    "Preserve request bounds, idempotent worker replay and effect cue contracts",
+    "Original-song render and hash comparison; no new model generation"
+  ],
+  "fixtures": "Positive hook fixtures now contain observed leading quiet; separately retained edge-negative cases still reject.",
+  "limits": [
+    "Quiet bounds do not establish complete words, naturalness, tempo or harmonic compatibility.",
+    "The previously rejected real stem fails automatic selection in both versions; this change does not rescue it.",
+    "A stricter selector may admit fewer vocals; no new requests or retries added."
+  ],
+  "deployed": false,
+  "paidCompute": false
+}

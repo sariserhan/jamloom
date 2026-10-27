@@ -1,0 +1,29 @@
+{
+  "status": "PASS technical; vocal quality remains rejected",
+  "baselineCommit": "2a9e2d0",
+  "sourceSha256": "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675",
+  "stemSha256": "caff479be92b0f0502d5e4904dabb3cdeb93f817bea7ff3430c7d12894192f19",
+  "phraseSha256": "d687953a76b9f2b60d8bf98ab6d2ecb0996423ad1daefd45170e072a7bb484b8",
+  "comparison": "Same rejected retained voice with 250 ms leading padding; only mixer changes",
+  "quietIntervalSeconds": [
+    21.6,
+    21.9
+  ],
+  "quietBackingGainBefore": 0.8,
+  "quietBackingGainAfter": 1,
+  "unchangedOutsideCue": true,
+  "realRejectedStemAcceptedBefore": false,
+  "realRejectedStemAcceptedAfter": false,
+  "outputs": [
+    {
+      "path": "renders/dj-vocal-boundaries-20261027/before.wav",
+      "sha256": "d14b88a063dccb254847c109ad33d14d8800c7145a7d20cc7d7cc93e43e5e946"
+    },
+    {
+      "path": "renders/dj-vocal-boundaries-20261027/after.wav",
+      "sha256": "b07acafde4a5efdac12ebfbd589d685c92b37c54ff5b1f6ab38c7805d7cb254c"
+    }
+  ],
+  "newGeneration": false,
+  "listening": "NOT RUN; no naturalness or timing acceptance claimed"
+}

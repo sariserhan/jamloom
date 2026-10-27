@@ -49,6 +49,26 @@ class VocalTests(unittest.TestCase):
         self.assertGreaterEqual(float(output[24000:32000].min()),.26)
         with self.assertRaises(ValueError):mix_phrase(original,clip,8000,10)
 
+    def test_phrase_start_requires_observed_quiet_not_a_truncated_file_edge(self):
+        rate=8000; voice=np.zeros((10*rate,2))
+        voice[:rate]=.2
+        self.assertIsNone(short_phrase(voice,rate,2*rate)[0])
+        voice[4*rate:5*rate]=.2
+        clip,bounds=short_phrase(voice,rate,2*rate)
+        self.assertIsNotNone(clip);self.assertGreater(bounds['start'],3.9)
+
+    def test_vocal_padding_does_not_lower_music_and_release_is_smooth(self):
+        rate=8000; original=np.full((5*rate,2),.1);clip=np.zeros((2*rate,2))
+        clip[rate//4:3*rate//4]=.18
+        output=mix_phrase(original,clip,rate,1)
+        np.testing.assert_array_equal(output[rate:rate+rate//8],original[rate:rate+rate//8])
+        np.testing.assert_array_equal(output[2*rate:3*rate],original[2*rate:3*rate])
+        self.assertAlmostEqual(output[rate+rate//2,0],.26)
+        # Recover the accompaniment envelope independently of the added voice.
+        accompaniment=output[rate:3*rate]-clip
+        self.assertLess(np.max(np.abs(np.diff(accompaniment[:,0]))),.0002)
+        np.testing.assert_array_equal(mix_phrase(original,np.zeros_like(clip),rate,1),original)
+
     def test_hook_chooses_quieter_midrange_without_leaving_supported_beats(self):
         rate=8000;t=np.arange(60*rate)/rate
         bass=.2*np.sin(2*np.pi*80*t)*np.exp(-(t%(.5))*40)
@@ -56,6 +76,7 @@ class VocalTests(unittest.TestCase):
         samples=np.column_stack((bass+lead,bass+lead))
         def generate(*args,**kwargs):
             voice=.2*np.sin(np.arange(10*rate)/rate*1000);voice[rate:]=0
+            voice[:rate//10]=0
             return np.column_stack((voice,voice)),rate
         from unittest.mock import patch
         value=dict(version=1,session='a'*32,sequence=2,seed=17,style='house',energy=4)
@@ -68,7 +89,7 @@ class VocalTests(unittest.TestCase):
         from unittest.mock import patch
         rate=8000;t=np.arange(60*rate)/rate;samples=np.column_stack((.05*np.sin(2*np.pi*80*t),)*2)
         def generate(*args,**kwargs):
-            voice=np.zeros((10*rate,2));voice[:rate]=.1*np.sin(2*np.pi*800*t[:rate,None]);return voice,rate
+            voice=np.zeros((10*rate,2));voice[:rate]=.1*np.sin(2*np.pi*800*t[:rate,None]);voice[:rate//10]=0;return voice,rate
         with patch('dj_vocal.steady_grid',return_value=(140.,0.,[(10.,46.)])):
             for sequence,repeat,echo in [(2,True,False),(7,False,True),(12,True,True)]:
                 _,cue=add_hook(dict(version=1,session='a'*32,sequence=sequence,seed=17,style='bass',energy=4),samples,rate,Path('/tmp'),None,generate)
@@ -109,6 +130,7 @@ class VocalTests(unittest.TestCase):
         def generate(value, path, engine, hook):
             calls.append((value, hook))
             voice=.2*np.sin(np.arange(10*rate)/rate*1000)
+            voice[:rate//10]=0
             voice[round(1.2*rate):]=0
             return np.column_stack((voice, voice)), rate
         value=dict(version=1,session='a'*32,sequence=2,seed=17,style='house',energy=4)
@@ -130,7 +152,13 @@ class VocalTests(unittest.TestCase):
             return np.column_stack((voice,voice)),rate
         rejected,cue=add_hook(value,samples,rate,Path('/tmp'),None,long_voice,diagnostic=diagnostic)
         self.assertIsNone(cue);np.testing.assert_array_equal(rejected,samples)
-        self.assertEqual(diagnostic,{'status':'phrase_too_long','generated':True})
+        self.assertEqual(diagnostic,{'status':'no_complete_short_phrase','generated':True})
+        def truncated_voice(*args, **kwargs):
+            voice=np.zeros((10*rate,2));voice[:rate]=.2
+            return voice,rate
+        rejected,cue=add_hook(value,samples,rate,Path('/tmp'),None,truncated_voice,diagnostic=diagnostic)
+        self.assertIsNone(cue);np.testing.assert_array_equal(rejected,samples)
+        self.assertEqual(diagnostic,{'status':'no_complete_short_phrase','generated':True})
 
 
 if __name__=='__main__': unittest.main()

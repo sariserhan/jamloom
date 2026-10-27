@@ -105,7 +105,7 @@ class WarmEngineTests(unittest.TestCase):
         def generate(value,directory,engine,hook=None,**kwargs):
             calls.append((hook,kwargs['guided']))
             signal=.1*np.sin(np.arange((10 if hook else 60)*rate)*2*np.pi*220/rate)
-            if hook:signal[rate:]=0
+            if hook:signal[:rate//10]=0;signal[rate:]=0
             else:
                 guide=directory/'guide';guide.mkdir();(guide/'receipt.json').write_text(json.dumps({'request':value,'guide_sha256':'a'*64}))
             return np.column_stack((signal,signal)),rate

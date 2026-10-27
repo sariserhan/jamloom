@@ -1,0 +1,28 @@
+..................Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/dj_warm_engine.py", line 129, in do_POST
+    receipt, data = renderer.render(json.loads(self.rfile.read(length)))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/dj_warm_engine.py", line 41, in render
+    raise ValueError('Job already consumed or request allowance exhausted')
+ValueError: Job already consumed or request allowance exhausted
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/dj_warm_engine.py", line 129, in do_POST
+    receipt, data = renderer.render(json.loads(self.rfile.read(length)))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/dj_warm_engine.py", line 41, in render
+    raise ValueError('Job already consumed or request allowance exhausted')
+ValueError: Job already consumed or request allowance exhausted
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/dj_warm_engine.py", line 129, in do_POST
+    receipt, data = renderer.render(json.loads(self.rfile.read(length)))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/dj_warm_engine.py", line 37, in render
+    raise ValueError('Renderer expired')
+ValueError: Renderer expired
+..............PASS technical
+FAIL buffer deadline
+..
+----------------------------------------------------------------------
+Ran 34 tests in 2.518s
+
+OK

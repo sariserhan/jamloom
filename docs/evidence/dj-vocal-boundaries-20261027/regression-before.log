@@ -1,0 +1,43 @@
+EF
+======================================================================
+ERROR: test_phrase_start_requires_observed_quiet_not_a_truncated_file_edge (tests.test_dj_vocal.VocalTests.test_phrase_start_requires_observed_quiet_not_a_truncated_file_edge)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/tests/test_dj_vocal.py", line 55, in test_phrase_start_requires_observed_quiet_not_a_truncated_file_edge
+    self.assertEqual(short_phrase(voice,rate,2*rate),(None,None))
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 885, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 1102, in assertTupleEqual
+    self.assertSequenceEqual(tuple1, tuple2, msg, seq_type=tuple)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py", line 1016, in assertSequenceEqual
+    if seq1 == seq2:
+       ^^^^^^^^^^^^
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+
+======================================================================
+FAIL: test_vocal_padding_does_not_lower_music_and_release_is_smooth (tests.test_dj_vocal.VocalTests.test_vocal_padding_does_not_lower_music_and_release_is_smooth)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/tests/test_dj_vocal.py", line 64, in test_vocal_padding_does_not_lower_music_and_release_is_smooth
+    np.testing.assert_array_equal(output[rate:rate+rate//8],original[rate:rate+rate//8])
+  File "/Users/serhansari/Documents/projects/jamloom/.venv-singer/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 1054, in assert_array_equal
+    assert_array_compare(operator.__eq__, actual, desired, err_msg=err_msg,
+  File "/Users/serhansari/Documents/projects/jamloom/.venv-singer/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 919, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError:
+Arrays are not equal
+
+Mismatched elements: 1998 / 2000 (99.9%)
+Max absolute difference among violations: 0.02
+Max relative difference among violations: 0.2
+ ACTUAL: array([[0.1     , 0.1     ],
+       [0.099916, 0.099916],
+       [0.099833, 0.099833],...
+ DESIRED: array([[0.1, 0.1],
+       [0.1, 0.1],
+       [0.1, 0.1],...
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.004s
+
+FAILED (failures=1, errors=1)

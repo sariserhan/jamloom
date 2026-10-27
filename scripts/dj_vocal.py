@@ -70,6 +70,8 @@ def short_phrase(voice, rate, length):
     groups = np.split(active, np.flatnonzero(np.diff(active) > 50)+1)
     for group in groups:
         if not len(group): continue
+        # A file edge cannot prove a complete phrase, even if a fade would hide the cut.
+        if int(group[0])*frame < round(.05*rate): continue
         start = max(0, int(group[0])*frame-round(.015*rate))
         end = min(len(voice), (int(group[-1])+1)*frame)
         if end-start < round(.2*rate) or end-start > length-round(.06*rate): continue
@@ -88,8 +90,16 @@ def short_phrase(voice, rate, length):
 def mix_phrase(samples, clip, rate, start):
     index = round(start*rate); length = len(clip); fade = min(round(.03*rate), length//4)
     if not 0 <= index < index+length <= len(samples): raise ValueError('Invalid vocal placement')
-    duck = np.ones(length)*.8
-    duck[:fade] = np.linspace(1, .8, fade); duck[-fade:] = np.linspace(.8, 1, fade)
+    duck = np.ones(length)
+    active = np.flatnonzero(np.max(np.abs(clip), axis=1) > max(.0001, float(np.max(np.abs(clip)))*.01))
+    if len(active):
+        first, last = int(active[0]), int(active[-1])+1
+        attack, release = max(0, first-fade), min(length, last+round(.1*rate))
+        duck[first:last] = .8
+        duck[attack:first] = np.linspace(1, .8, first-attack, endpoint=False)
+        duck[last:release] = np.linspace(.8, 1, release-last)
+        duck[:fade] = np.maximum(duck[:fade], np.linspace(1, .8, fade))
+        duck[-fade:] = np.maximum(duck[-fade:], np.linspace(.8, 1, fade))
     output = samples.copy()
     output[index:index+length] = output[index:index+length]*duck[:, None]+clip
     if not np.isfinite(output).all() or np.max(np.abs(output)) >= 1: raise ValueError('Vocal mix exceeds headroom')
@@ -117,7 +127,7 @@ def add_hook(value, samples, rate, directory, engine, generate=ace, diagnostic=N
     length = round(4*60/bpm*rate)
     clip, bounds = short_phrase(voice, rate, length)
     if clip is None:
-        diagnostic['status']='phrase_too_long'
+        diagnostic['status']='no_complete_short_phrase'
         return samples, None
     # Choose space in the midrange on a supported beat, not a guessed musical downbeat.
     mono = samples.mean(axis=1)
