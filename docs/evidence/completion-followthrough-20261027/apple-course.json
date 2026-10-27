@@ -1,0 +1,16 @@
+{
+  "status": "PASS signed sandbox verification and isolated ledger delivery",
+  "product": "com.jamloom.singing.complete",
+  "receiptSha256": "181dc0159edbbeaed74ba0af1492b3eae992bd5dba732e1c28776043eeeba462",
+  "checks": [
+    "Apple certificate/signature and online checks",
+    "Sandbox environment",
+    "exact product and USD price",
+    "account binding and wrong-account rejection",
+    "idempotent replay"
+  ],
+  "limits": [
+    "Test account inserted in disposable local database",
+    "Receipt transferred unchanged from phone; native HTTP delivery and refund notifications not qualified"
+  ]
+}

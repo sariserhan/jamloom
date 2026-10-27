@@ -1,0 +1,59 @@
+{
+  "targetVerified": true,
+  "authorization": "Standing migration authorization plus owner do all on 2026-10-27",
+  "status": "PASS",
+  "publication": false,
+  "before": {
+    "academy_purchases": {
+      "count": 2,
+      "checksum": "ca42bf45bacf96e75fb2761f22a36e16"
+    },
+    "credit_lots": {
+      "count": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "wallet_ledger_entries": {
+      "count": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tracks": {
+      "count": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "migrationHashes": {
+    "0031_singing_price.sql": "f681e6788cbb4316af042ea3f9dfcb7a1c1f01c39fd2f75e50eaacb3714da641",
+    "0032_account_deletion.sql": "cc24fc7aa06b55096602ecf7c2f33ce9c12ef832f0b51376251eb90e0a3455ea"
+  },
+  "backup": {
+    "path": "build-release-followthrough-20261027-pg18-verified/before-0031-0032.dump",
+    "bytes": 144524,
+    "sha256": "cb9b8da7d0ab6ee82e0c65d874124ea8717e564558b361330ab2a2029f2cbd47",
+    "mode": "0600"
+  },
+  "restore": "PASS data restore and migration rehearsal; original roles/ACL not restored",
+  "after": {
+    "academy_purchases": {
+      "count": 2,
+      "checksum": "ca42bf45bacf96e75fb2761f22a36e16"
+    },
+    "credit_lots": {
+      "count": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "wallet_ledger_entries": {
+      "count": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tracks": {
+      "count": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "applied": [
+    "0031_singing_price.sql",
+    "0032_account_deletion.sql"
+  ],
+  "rehearsalDatabaseRemoved": true,
+  "privatePostgresStoppedAndRemoved": true
+}

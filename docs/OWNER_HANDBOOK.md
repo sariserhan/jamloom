@@ -1,3 +1,11 @@
+## Latest release preparation — 2026-10-27
+
+[Current evidence](RELEASE_PREPARATION.md): production migrations 0031/0032 are applied after backup/restore rehearsal; all 32 hashes match. Keep private dumps in `build-release-followthrough-20261027*` out of generic cache cleanup. Actual Apple sandbox credit/course purchases, independent server verification, authenticated local HTTP replay and physical course Restore pass; refund notifications and deployed/native HTTP delivery remain separate.
+
+Singing remains **$39 once**. Its new live Stripe product and price are both inactive; see the report for exact IDs. Do not enable sales, create a live checkout, deploy, upload or submit. The existing DJ Academy product/webhook already exists and was preserved. Prior local readiness reports reflect missing environment values, not absence of that provider product.
+
+No new GPU permit is available; broader creative quality, capacity, singing accuracy, missing popular-song permissions and independent reviewers remain open. Earlier dated notes below are retained history, superseded by this current report where stated.
+
 ## Latest website candidate — 2026-10-27
 
 [Website follow-through](WEB_FOLLOWUP.md) adds bounded Music DNA preparation/quote reuse, truthful per-note singing advice, coalesced settings reads and idle waveform suspension. Preview: http://127.0.0.1:3010; earlier previews remain untouched. USD39 once is unchanged. The new shared singing advice is not yet packaged into the installed phone build.

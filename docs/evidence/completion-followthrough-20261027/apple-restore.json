@@ -1,0 +1,10 @@
+{
+  "status": "PASS physical AppStore.sync and course restore",
+  "serverReplay": "PASS one existing course grant",
+  "receiptSha256": "12bf2be3742d36637037b490400567f028607fe1db08c7e98d67964a844799c2",
+  "sameReceiptAsPurchase": false,
+  "limits": [
+    "No real refund notification",
+    "No deployed delivery"
+  ]
+}

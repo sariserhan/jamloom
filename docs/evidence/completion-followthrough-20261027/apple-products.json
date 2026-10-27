@@ -1,0 +1,34 @@
+{
+  "status": 200,
+  "rows": [
+    {
+      "id": "6826479674",
+      "productId": "com.jamloom.credits.starter",
+      "name": "Jamloom 10 credits",
+      "state": "MISSING_METADATA",
+      "reviewNote": "Prepared for sandbox verification. Native purchase UI and public generation remain disabled pending musical quality and billing qualification."
+    },
+    {
+      "id": "6826480115",
+      "productId": "com.jamloom.credits.creator",
+      "name": "Jamloom 25 credits",
+      "state": "MISSING_METADATA",
+      "reviewNote": "Prepared for sandbox verification. Native purchase UI and public generation remain disabled pending musical quality and billing qualification."
+    },
+    {
+      "id": "6826480267",
+      "productId": "com.jamloom.credits.studio",
+      "name": "Jamloom 50 credits",
+      "state": "MISSING_METADATA",
+      "reviewNote": "Prepared for sandbox verification. Native purchase UI and public generation remain disabled pending musical quality and billing qualification."
+    },
+    {
+      "id": "6827398987",
+      "productId": "com.jamloom.singing.complete",
+      "name": "Jamloom Singing Academy",
+      "state": "READY_TO_SUBMIT",
+      "reviewNote": "Draft only. USD 39 one-time original-song course. Sales remain disabled; no submission is requested. Current local build 26 contains Course and Restore; selected older build 24 does not contain this purchase. Actual sandbox-to-server qualification must precede activation."
+    }
+  ],
+  "readOnly": true
+}

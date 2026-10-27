@@ -1,0 +1,36 @@
+{
+  "targetVerified": true,
+  "authorization": "Standing migration authorization plus owner do all on 2026-10-27",
+  "status": "FAIL",
+  "publication": false,
+  "before": {
+    "academy_purchases": {
+      "count": 2,
+      "checksum": "ca42bf45bacf96e75fb2761f22a36e16"
+    },
+    "credit_lots": {
+      "count": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "wallet_ledger_entries": {
+      "count": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tracks": {
+      "count": 0,
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  },
+  "migrationHashes": {
+    "0031_singing_price.sql": "f681e6788cbb4316af042ea3f9dfcb7a1c1f01c39fd2f75e50eaacb3714da641",
+    "0032_account_deletion.sql": "cc24fc7aa06b55096602ecf7c2f33ce9c12ef832f0b51376251eb90e0a3455ea"
+  },
+  "backup": {
+    "path": "build-release-followthrough-20261027/before-0031-0032.dump",
+    "bytes": 144524,
+    "sha256": "af6bca82f8c10974dd0b0348d1734a3b8b2f36571e6c26edea90d74b389169f0",
+    "mode": "0600"
+  },
+  "error": "pg_restore failed; production mutation not inferred",
+  "rehearsalDatabaseRemoved": true
+}

@@ -1,0 +1,16 @@
+{
+  "status": "PARTIAL diagnosis; no new music or runtime change",
+  "source": "docs/evidence/web-followup-20261027/dj-overlap-study.json",
+  "sourceSHA256": "a645a1a98431ae08ee5ade8974619b489663927e2e5b1cb95ed99346b18ffdee",
+  "tracks": 20,
+  "handoffs": 18,
+  "conservativeFades": 14,
+  "beatBassHandoffs": 4,
+  "missingGridOnOneOrBothTracks": 14,
+  "decision": "Do not adopt the eight-beat candidate after owner reported no perceived improvement. Establish timing and arrangement compatibility rather than relaxing timing safeguards.",
+  "limitations": [
+    "No independently labelled beat accuracy",
+    "No fresh short-vocal acceptance",
+    "No sustained production capacity evidence"
+  ]
+}

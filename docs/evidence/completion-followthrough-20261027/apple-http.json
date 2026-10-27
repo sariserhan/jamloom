@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "product": "starter",
+      "status": "PASS",
+      "checks": [
+        "authenticated real HTTP delivery",
+        "duplicate delivery",
+        "wrong account",
+        "unsigned receipt",
+        "missing session",
+        "wrong origin"
+      ]
+    },
+    {
+      "product": "course",
+      "status": "PASS",
+      "checks": [
+        "authenticated real HTTP delivery",
+        "duplicate delivery",
+        "wrong account",
+        "unsigned receipt",
+        "missing session",
+        "wrong origin"
+      ]
+    }
+  ],
+  "duplicateGrants": 0,
+  "productionWrites": false,
+  "limitations": [
+    "Node HTTP client, not the native phone transport",
+    "Real refund notification and deployed delivery not qualified"
+  ]
+}

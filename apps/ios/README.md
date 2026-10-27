@@ -19,7 +19,7 @@ xcodebuild build -project apps/ios/Jamloom.xcodeproj -scheme Jamloom \
 For development/device use, select your own signing team in Xcode or pass
 `DEVELOPMENT_TEAM=YOUR_TEAM` on the command line. Do not commit signing files or
 credentials. An unsigned build is not an installable release or a device test.
-No App Store app has been registered/submitted by this implementation. The Debug scheme uses the local `LocalCredits.storekit` fixture; it is excluded from Release and is not evidence of real Apple sandbox delivery.
+An App Store record and unsubmitted draft exist; no release is authorized. Ordinary Debug launches and the Apple sandbox scheme have no local StoreKit configuration. Explicit purchase unit tests load `LocalCredits.storekit`, which is excluded from Release and is not evidence of real Apple sandbox delivery.
 
 Debug tests require the **existing** transferred fixture at
 `renders/fixtures/synthetic-speech.wav`; a build step verifies its exact hash

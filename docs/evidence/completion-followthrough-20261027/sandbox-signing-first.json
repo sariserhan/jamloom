@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "developmentSigned": true,
+  "hostSHA256": "873268b35fa365a54c9180c18a347e7917c32e5250721345d003d59373a761a2",
+  "bundle": "com.djayvo.app",
+  "version": "0.10.2",
+  "build": "29",
+  "actualPurchase": "NOT RUN",
+  "publication": false
+}

@@ -1,0 +1,13 @@
+{
+  "status": "PASS inactive price preparation",
+  "product": "prod_VWDtZNO7YM75Us",
+  "price": "price_1UVBRGDlEXWDEeHOXlnM9zis",
+  "currency": "usd",
+  "amount": 3900,
+  "type": "one_time",
+  "productActive": false,
+  "priceActive": false,
+  "paidTransactionsCreated": 0,
+  "webhook": "NOT CREATED while publication held",
+  "existingProductsUnchanged": true
+}

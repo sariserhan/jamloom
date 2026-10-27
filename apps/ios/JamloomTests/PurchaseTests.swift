@@ -1,12 +1,13 @@
 import XCTest
 import StoreKit
 import StoreKitTest
+import CryptoKit
 @testable import Jamloom
 
 @MainActor final class PurchaseTests: XCTestCase {
     func testLiveSandboxReceiptWhenExplicitlyRequested() async throws {
         let env = ProcessInfo.processInfo.environment
-        try XCTSkipUnless(env["JAMLOOM_APPLE_SANDBOX"] == "purchase" || env["JAMLOOM_APPLE_SANDBOX"] == "acknowledge", "Explicit Apple sandbox qualification only")
+        try XCTSkipUnless(env["JAMLOOM_APPLE_SANDBOX"] == "purchase" || env["JAMLOOM_APPLE_SANDBOX"] == "acknowledge" || env["JAMLOOM_APPLE_SANDBOX"] == "restore", "Explicit Apple sandbox qualification only")
         #if targetEnvironment(simulator)
         throw XCTSkip("Physical sandbox device required")
         #else
@@ -23,8 +24,22 @@ import StoreKitTest
             }
             XCTFail("Expected unfinished sandbox transaction"); return
         }
-        // Conservative pre-purchase check; the individual transaction is verified separately below.
-        guard case .verified(let app) = try await AppTransaction.refresh(), app.environment == .sandbox else { XCTFail("Sandbox app receipt required before a test purchase"); return }
+        // The runner verifies development signing and binds this exact binary; app-download receipts are a different transaction.
+        let expectedHash = try XCTUnwrap(env["JAMLOOM_APPLE_DEVELOPMENT_BUILD_SHA256"])
+        let executable = try XCTUnwrap(Bundle.main.executableURL)
+        let actualHash = SHA256.hash(data: try Data(contentsOf: executable)).map { String(format: "%02x", $0) }.joined()
+        guard expectedHash.count == 64, actualHash == expectedHash else { XCTFail("Development-signing preflight required for this exact test host"); return }
+        if env["JAMLOOM_APPLE_SANDBOX"] == "restore" {
+            guard id == CreditPurchases.singingProduct else { XCTFail("Only the course is restorable"); return }
+            var delivered = 0
+            try await CreditPurchases(course: true).restoreCourse(accountToken: token) { jws, restoredToken in
+                XCTAssertEqual(restoredToken, token)
+                let proof = XCTAttachment(string: jws)
+                proof.name = "Private Apple restored JWS - do not publish"; proof.lifetime = .keepAlways; self.add(proof)
+                delivered += 1
+            }
+            XCTAssertEqual(delivered, 1); return
+        }
         let products = try await Product.products(for: [id])
         let product = try XCTUnwrap(products.first)
         guard product.id == id, product.priceFormatStyle.currencyCode == "USD",

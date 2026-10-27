@@ -20,7 +20,7 @@ the native deck, set Singing Academy to $39 once, and hold publication.
 | 6: models/compute | PARTIAL | ACE-Step and other studies, versions, bounded GPU runs/costs/cleanup exist. [Audit](OPEN_SOURCE_AUDIT.md), [trial](DJ_RELEASE_QUALIFICATION.md). Prior permits are consumed |
 | 7: iOS | PARTIAL | Build 27 archive/export/install and three targeted physical checks PASS. Apple real payment chain, broader hardware and physical latency remain open |
 | 8: trust/privacy | PARTIAL | Auth, consent, cloud public/private rules, export/deletion and feedback implemented/tested. [Follow-up](COMPLETION_FOLLOWUP.md). Local recordings are not automatically published; release review remains |
-| 9: economics | PARTIAL | Quotes, reservations, ledger, refunds, budgets and measured GPU trials exist. Live merchant acceptance, Apple sandbox chain and sustained customer margins remain open |
+| 9: economics | PARTIAL | Quotes, reservations, ledger, refunds, budgets and measured GPU trials exist. Real Apple sandbox credit/course purchases, restore and local server/HTTP verification now pass; live acceptance, provider refund notifications and sustained margins remain open |
 | 10: evaluation | PARTIAL | [Frozen cohort](licensed-evaluation.md): 23 recorded sources, 3 seeds, 69 blocks. Independent reviews, category verification and recorded quiet coverage remain open. Historical renders do not qualify current models |
 | 11: build/repo | PASS scoped implementation | Native/WASM architecture, tests and CI exist. Shared studio writer lock and verified build 27 package added; platform receipts retain their own versions |
 | 12: milestones | PARTIAL | M0 technical PASS, musical PARTIAL; M1 formal NOT RUN; M2/M3/M4/M5 PARTIAL. Production approval remains HELD |
@@ -34,13 +34,13 @@ the native deck, set Singing Academy to $39 once, and hold publication.
 | 6: DJ Studio | PARTIAL | Decks, effects, loops, cues, recording and takeover implemented; owner accepted native landscape. Separate cue, MIDI and venue/hardware matrix require evidence |
 | 7: Live Source | PARTIAL | Native two-source capture/control/sampler and real one-hour endurance pass. [Live qualification](live-dj-finish.md). Calibrated latency, deferred cable/device tests and broader accompaniment remain open; Windows/Linux adapters are later scope |
 | 8: Music DNA | PARTIAL | Search/import, bounded 5,000-item planning, native/server sync and original generation exist. [DNA](music-dna-completion.md). Broader genre/voice acceptance remains open; Spotify stays excluded under the documented provider boundary |
-| 9–11: billing/data/workers | PARTIAL | Durable wallet/jobs, R2, budgets and real capped trials exist; $39 Stripe course test purchase/refund/dispute and local StoreKit PASS. Apple credit metadata, provider receipt chain and sustained capacity remain open |
+| 9–11: billing/data/workers | PARTIAL | Durable wallet/jobs, R2, budgets and real capped trials exist; $39 Stripe course test purchase/refund/dispute and local StoreKit PASS. Genuine Apple sandbox purchases/restore and local server/HTTP verification PASS; credit metadata, deployed/native receipt delivery, real refund notifications and sustained capacity remain open |
 | 12: reliability/security/rights | PARTIAL | Isolation, deletion, failure recovery and build/polling guards tested. Physical routes, final rights review and production savings remain unqualified |
-| 13A–B: automated/end-to-end | PARTIAL | Scoped suites and native HTTP PASS. Apple sandbox and full three-account GPU scenario are not replaced by fixtures |
+| 13A–B: automated/end-to-end | PARTIAL | Scoped suites and native HTTP PASS. Real Apple sandbox purchase/restore and local HTTP receipt checks now pass; deployed native payments and the full three-account GPU scenario remain separate |
 | 13C: human evaluation | NOT RUN formal gate | At least 10 initial listeners and independent blinded judgments required; owner cannot arrange listeners yet. No synthetic or owner-only substitute |
 | 13D: UX/SEO | PARTIAL | Local route, accessibility, metadata and viewport checks pass within reports. Post-publication indexing, field Core Web Vitals and release-specific public validation remain separate |
 | 13E–F: live/economics | PARTIAL | Mac one-hour evidence and adversarial cost/wallet tests retained. Physical routing/latency, commercial configuration and sustained provider economics remain open |
-| 14–17: execution/tracking/release | PARTIAL | TODO/progress/STATUS/handbook reconciled; no deployment, app upload, new purchase or public activation |
+| 14–17: execution/tracking/release | PARTIAL | TODO/progress/STATUS/handbook reconciled; no deployment, app upload, real-money purchase or public activation; approved sandbox purchases only |
 
 Additional owner-requested products are in [Product completion](PRODUCT_COMPLETION.md).
 No overall completion percentage is assigned. Older dated tracker checkboxes are

@@ -1,3 +1,16 @@
+## Release preparation and real Apple sandbox — 2026-10-27
+
+**PASS scoped completion; PARTIAL all-product readiness; publication HELD.** [Current report](RELEASE_PREPARATION.md).
+
+- [x] Back up and restore the authorized database in an isolated PostgreSQL 18 rehearsal, then apply migrations 0031/0032. All 32 hashes match and checked customer data is unchanged.
+- [x] Archive/export build 29 and pass three actual iPhone Community/Singing checks. Correct the obsolete sandbox app-receipt prerequisite with verified development-signing and exact-host safeguards.
+- [x] Complete genuine Apple sandbox credit and USD39 course purchases, independent server verification, authenticated local HTTP delivery, wrong-account/forgery rejection and duplicate protection. Course Restore and restored-receipt replay pass.
+- [x] Correct native privacy copy to match public/private cloud behavior; archive, sign, export and install final build 30. Retain build-29 physical evidence separately.
+- [x] Prepare an inactive USD39 one-time Stripe Singing product/price; preserve existing DJ Academy/Pro/provider settings and keep checkout closed.
+- [ ] Retain genuine refund notifications, deployed/native receipt delivery, credit review metadata and reviewer access as separate open gates. No app upload/submission.
+- [ ] Finish broader music/vocal quality, fresh capacity and hosted style/language/5,000-favorite qualification under a new concrete compute approval. Existing permits are consumed; the eight-beat overlap experiment remains unadopted.
+- [ ] Keep broader singing/physical latency, unavailable independent listeners and popular-song permissions/assets open. Physical iPad is excluded by owner.
+
 ## Website follow-through — 2026-10-27
 
 **PASS scoped local fixes; PARTIAL overall readiness; publication HELD.** [Report](WEB_FOLLOWUP.md), [evidence](evidence/web-followup-20261027/validation.json).

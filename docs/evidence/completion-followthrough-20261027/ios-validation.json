@@ -1,0 +1,83 @@
+{
+  "archive": "PASS",
+  "export": "PASS local only",
+  "version": "0.10.2",
+  "build": 29,
+  "physicalTests": {
+    "passed": 3,
+    "failed": 0,
+    "checks": [
+      "Community playback",
+      "Community language and favorites",
+      "Singing demo and tab cleanup"
+    ]
+  },
+  "logs": {
+    "archive": {
+      "path": "/tmp/jamloom-completion-archive.log",
+      "sha256": "63fd73ceaf081457254a96c7b76935bd925dcca0532621e3a5536c55e530b037"
+    },
+    "export": {
+      "path": "/tmp/jamloom-completion-export.log",
+      "sha256": "0ac455472765bacdc988f1ad821c763820b4cfbaae50bdb8f07453d367eb3996"
+    },
+    "device-tests": {
+      "path": "/tmp/jamloom-completion-device-tests.log",
+      "sha256": "b4e82bc24a62c9fec9fd5e5950c1b5429644687838a9acfe12dce071fd5ca433"
+    },
+    "sandbox-test": {
+      "path": "/tmp/jamloom-completion-sandbox-test.log",
+      "sha256": "2835ad5a6649058638bafbdf370b766ade64d427a177d28dbd803b29d8341801"
+    },
+    "sandbox-ack": {
+      "path": "/tmp/jamloom-completion-sandbox-ack.log",
+      "sha256": "b7c636ce6edfed141aa3143041a21ec78f11d634301039093c1da60f8eac9056"
+    },
+    "sandbox-course": {
+      "path": "/tmp/jamloom-completion-sandbox-course.log",
+      "sha256": "cd03876621952c1eaf15e4d61380f6a720435c0ff8ce69340385ae03d0d7e2fa"
+    },
+    "archive30": {
+      "path": "/tmp/jamloom-completion-archive30.log",
+      "sha256": "7337b961e0d0995912ced9b4a147698d623462bbb286541893704404b1236307"
+    },
+    "export30": {
+      "path": "/tmp/jamloom-completion-export30.log",
+      "sha256": "81fd287234cb889a78010b468235e83c833d82aa595dc06660d9da5d7c4d1f34"
+    },
+    "install30": {
+      "path": "/tmp/jamloom-completion-install30.log",
+      "sha256": "188e1800acbf27f8c8d3fee79558d60b798605d91ed3c721d305345f1591dfbf"
+    },
+    "launch30": {
+      "path": "/tmp/jamloom-completion-launch30.log",
+      "sha256": "8a5f6358ab61c4e82b3f3bc459e636f70a74655023d6fc9ff1fb0cb8d672b05c"
+    },
+    "sandbox-restore": {
+      "path": "/tmp/jamloom-completion-sandbox-restore.log",
+      "sha256": "8806b79b924daa97f3a919c8f341711706606b5f1cd9caaa2fdb70a5d6a23819"
+    },
+    "sandbox-restore-reset": {
+      "path": "/tmp/jamloom-completion-sandbox-restore-reset.log",
+      "sha256": "2e3495b69bd7a24b5e801258695069c38270e97b350f52031afc3c2b1fcfe857"
+    },
+    "sandbox-http": {
+      "path": "/tmp/jamloom-completion-sandbox-http.log",
+      "sha256": "dd4042bed5f3c9afb35e167fd9b340216cff82e5ac94a48ad2e46ae7fc043b3f"
+    }
+  },
+  "releaseReinstall": "PASS build 30 installed after purchase checks",
+  "publication": false,
+  "latestRelease": {
+    "version": "0.10.2",
+    "build": 30,
+    "changeFrom29": "Privacy copy now states cloud results are public unless private saving is selected",
+    "archive": "PASS",
+    "export": "PASS local only",
+    "signature": "PASS",
+    "install": "PASS preserves app data",
+    "physicalFunctionalTests": "Build 29 PASS; not repeated for text-only build 30",
+    "launch": "PASS"
+  },
+  "sandboxRestoreAfterPasswordReset": "PASS 11.070 seconds"
+}
