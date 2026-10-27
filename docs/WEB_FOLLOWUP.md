@@ -18,7 +18,7 @@
 
 [Six short renders](evidence/web-followup-20261027/dj-overlap-renders.json) use the real `AIDJPlayer`, `PerformanceDeck` and shared mixer, scheduled with an offline audio clock. The test seeds the prepared decks directly and suppresses unrelated performance moves to isolate the handoff. Both versions preserve the same original audio, levels and bass-handoff implementation. Every clip is sixteen seconds, finite and below clipping; the handoff finishes at eight seconds. This tests scheduling and rendering, not sustained live capacity.
 
-Listen at http://localhost:8766/overlap-options/review/. Chromium and WebKit verify all six players, seeking, exclusive playback and narrow layout. **STUDY / listening pending**: a longer overlap is not automatically better music. The shipping transition planner is unchanged; no rejected vocal is promoted, no new audio is generated and no downloaded reference is used for training.
+Listen at http://localhost:8766/overlap-options/review/. Chromium and WebKit verify all six players, seeking, exclusive playback and narrow layout. **NOT ADOPTED / demonstrated improvement FAIL**: the owner reports “both are same to me, I dont understand the differences.” [Exact feedback and scope](evidence/web-followup-20261027/overlap-owner-listening.json). No preference or audible improvement is established; this is not a rejection of the original music. A longer overlap is not automatically better music. The shipping transition planner is unchanged; no rejected vocal is promoted, no new audio is generated and no downloaded reference is used for training.
 
 ## Validation
 
@@ -42,7 +42,7 @@ Before publication: attach the final commit and build, verify the deployed envir
 
 For a failed website release, return to the previously verified application revision through the authorized GitHub deployment path; do not roll back financial records, delete customer assets, edit applied SQL or drop the migration ledger. Preserve additive schema and reconcile any price-constraint compatibility before reverting application code. The local changes here introduce no schema or data migration. Local preview can be rebuilt at the prior commit independently; current owner previews on ports 3000/3008 were not replaced.
 
-Still open: audible overlap selection, fresh natural short-vocal consistency, hosted jazz/language and maximum-library quality, sustained fresh customer capacity/cost, broader live singing accuracy/physical latency, independent listeners, popular-song permissions and provider/release evidence. Earlier consumed GPU permits remain consumed. No claim that every product is finished.
+Still open: track energy/arrangement continuity beyond this unconvincing overlap-only candidate, fresh natural short-vocal consistency, hosted jazz/language and maximum-library quality, sustained fresh customer capacity/cost, broader live singing accuracy/physical latency, independent listeners, popular-song permissions and provider/release evidence. Earlier consumed GPU permits remain consumed. No claim that every product is finished.
 
 ## Reproduce
 
@@ -60,3 +60,5 @@ npm run release:preflight -- --database
 ```
 
 The last command deliberately fails while the two migrations are pending. It does not apply them. Listening checks require the existing loopback review server on 8766. The DJ experiment uses the retained, hash-verified release-qualification WAVs, not a new rental. Use a new `JAMLOOM_EVIDENCE_DIR` for browser reports when preserving this snapshot.
+
+The original validation/render manifests retain their pre-review listening status and source hashes. The later owner-listening record above supersedes that status for this comparison only.

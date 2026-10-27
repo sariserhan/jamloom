@@ -4,7 +4,7 @@
 
 Use `npm run release:preflight -- --database` from `apps/site` for a read-only, credential-redacted configuration/schema report. The current report fails because migrations 0031/0032 are pending; live course Stripe settings are incomplete. No production SQL or deployment occurred. Follow the report's backup/constraint review and rollback sequence during an authorized release; preserve financial data and applied migration history.
 
-A candidate eight-beat fallback changes three of eighteen retained DJ pairings. Six short actual-mixer clips are at http://localhost:8766/overlap-options/review/; listening is pending and the shipping planner is unchanged. No GPU rental or training occurred. Local/browser checks do not close professional music, sustained capacity, physical singing or provider payment gates.
+A candidate eight-beat fallback changes three of eighteen retained DJ pairings. Six short actual-mixer clips are at http://localhost:8766/overlap-options/review/; the owner reports no perceived difference, so this candidate is not adopted and the shipping planner is unchanged. [Feedback](evidence/web-followup-20261027/overlap-owner-listening.json). No GPU rental or training occurred. Local/browser checks do not close professional music, sustained capacity, physical singing or provider payment gates.
 
 ## Current candidate and storage — 2026-10-27
 
