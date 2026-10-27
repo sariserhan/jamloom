@@ -1,3 +1,14 @@
+## Centered singing analysis and real Apple catalogue — 2026-10-27
+
+**PASS scoped checks; PARTIAL overall readiness.** [Results and reproducible evidence](docs/SINGING_DIFFERENCE.md). New scale recordings improve from 77.48% to 79.88% within 50 cents including misses, with about 19.5% less detector CPU; inspected vocadito falls 0.23 percentage points, and some missed/false detections remain. Twenty singing checks, three bounded-downloader checks and Chromium/WebKit pass. This is not independent-singer or physical-latency qualification.
+
+- [x] Center equal-length pitch comparisons without changing the gate or adding an engine; freeze and measure 38 new recordings, quarantining two invalid timelines.
+- [x] Complete required Xcode first launch and retrieve all four real Apple products at correct prices. Optional SDK/runtime downloads are deselected due to disk limits.
+- [x] Archive, sign, audit and locally export 0.10.2 build 28; preserve release artifacts and keep publication held. Install and launch successfully after unlock; remove 6.65 GiB of inactive regenerable caches (15.53 GiB now free).
+- [x] Prepare opt-in physical sandbox receipt and disposable local-ledger checks; reject a forged receipt in rehearsal and remove both temporary databases.
+- [ ] Actual sandbox receipt attempt timed out after three minutes without verified receipt evidence. Purchase/server/restore/refund and credit metadata remain unqualified.
+- [ ] Complete physical build-28 lifecycle evidence; earlier build-27 passes do not qualify this build. Singing accuracy, broad musical quality, independent listeners and supplier rights remain open. Physical iPad excluded by owner.
+
 ## New singing evaluation and Apple catalogue isolation — 2026-10-27
 
 **PASS scoped checks; PARTIAL overall completion.** [Singing results](docs/SINGING_HOLDOUT.md), [Apple diagnostic](docs/APPLE_CATALOGUE_DIAGNOSTIC.md). Physical iPad work is excluded from this pass at the owner's request; its evidence remains NOT RUN.
@@ -5,7 +16,7 @@
 - [x] Freeze and evaluate 37 new vowel-scale recordings from 19 singers with the actual app detector/gate; two fail timeline integrity. The 35 eligible recordings/18 singers score 73.71% within 50 cents including misses. Preserve every result and licensing/hash evidence; do not label this complete singing accuracy.
 - [x] Bound dataset acquisition to selected archive ranges; two downloader regressions pass. Correct the older benchmark to use the production quiet-signal gate.
 - [x] Remove ordinary-launch local StoreKit configuration; three explicit local purchase tests still pass. Distinguish catalogue checks from provider receipt validation; Release audit excludes the debug probe.
-- [ ] Real Apple catalogue still returns a local fixture, including outside XCTest. Resolve device test state before sandbox purchase/server/restore/refund qualification; no purchases attempted.
+- [x] Superseded catalogue blocker: normal Xcode IDE launch now returns all four real products; see the newer evidence above. Provider receipt/restore/refund qualification remains open.
 - [ ] Retain broader musical quality, live singing/physical latency, independent listeners and supplier permissions as open evidence gates. No new GPU permit is inferred from earlier consumed trials.
 - [ ] Keep push, deployment, app submission and sales activation held.
 

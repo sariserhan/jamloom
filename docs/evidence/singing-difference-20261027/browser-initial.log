@@ -1,0 +1,90 @@
+Testing chromium
+chromium {
+  body: 'jamloom\n' +
+    'Singing Academy\n' +
+    'Warm-ups\n' +
+    '\n' +
+    'WARM-UPS / FIND YOUR VOICE / 1 OF 12\n' +
+    '\n' +
+    'Find your note\n' +
+    '?\n' +
+    '\n' +
+    'Hear the piano. Hum it back and hold the center for two seconds.\n' +
+    '\n' +
+    'Your course\n' +
+    '1. Find your note\n' +
+    '2. Keep it steady\n' +
+    '3. Carry the phrase\n' +
+    '4. Step upward\n' +
+    '5. Come back down\n' +
+    '6. Make a small leap\n' +
+    '7. Catch the pulse\n' +
+    '8. Long and short\n' +
+    '9. Give music space\n' +
+    '10. Your first melody\n' +
+    '11. Find the groove\n' +
+    '12. Make it yours\n' +
+    '\n' +
+    '0 / 12 warm-ups complete · saved on this device\n' +
+    '\n' +
+    '1 Listen\n' +
+    '2 Match\n' +
+    '3 Complete\n' +
+    'Choose a comfortable note\n' +
+    'Lower · A2\n' +
+    'Middle · A3\n' +
+    'Higher · A4\n' +
+    'Microphone ready\n' +
+    'A3\n' +
+    '2 sec\n' +
+    'YOUR TARGET\n' +
+    '…\n' +
+    'Ready when you are\n' +
+    'Lower\n' +
+    'Higher\n' +
+    '\n' +
+    'Listen to the piano\n' +
+    '\n' +
+    '0.0 / 2 seconds\n' +
+    '\n' +
+    'Start with a gentle hum. Choose a note that feels easy.\n' +
+    '\n' +
+    '♪ Hear it first\n' +
+    '▶ Start lesson\n' +
+    '■ Stop\n' +
+    '\n' +
+    'Your microphone stays on this device. Nothing is recorded or uploaded.\n' +
+    '\n' +
+    'Use a comfortable voice and low speaker volume. Headphones help avoid picking up room sound.\n' +
+    '\n' +
+    'Pitch detector credits\n' +
+    'Report a bug\n' +
+    '·\n' +
+    'Licenses',
+  mock: 'async()=>{\n' +
+    "   if(window.__mode==='denied')throw new DOMException('Denied','NotAllowedError');\n" +
+    "   const c=window.__contexts.at(-1),osc=c.createOscillator(),gain=c.createGain(),dest=c.createMediaStreamDestination();osc.frequency.value=window.__hz;gain.gain.value=window.__mode==='silence'?0:.2;osc.connect(gain);gain.connect(dest);osc.start();\n" +
+    '   const stream=dest.stream;window.__streams.push(stream);\n' +
+    '   for(const t of stream.getTracks()){const original=t.stop.bind(t);t.stop=()=>{original();osc.stop();};}\n' +
+    "   if(window.__mode==='pending')await new Promise(resolve=>{window.__resolveMic=resolve;});\n" +
+    '   return stream;\n' +
+    '  }',
+  mode: 'tone',
+  contexts: [ { state: 'running', time: 0 } ],
+  tracks: [ [ 'live' ] ]
+}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: WASM piano must produce real audio
+    at file:///Users/serhansari/Documents/projects/jamloom/apps/site/tests/singing-browser.mjs:32:304 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v22.23.1

@@ -1,0 +1,836 @@
+{
+  "scope": "Previously inspected development data; no threshold tuning, model training or shipping change implied",
+  "baselineSha256": "06853d19354302baa2984c6a09a7261bbc1e5bd692cfb0ee8bc498b11cc2fccd",
+  "candidateSha256": "77b63712de483c7db80f4ee00e3685fbbe61556ec32bddb87f9cd516219815b3",
+  "checks": "Tones at 44.1/48k and 80 noise frames PASS",
+  "totals": [
+    {
+      "frames": 25630,
+      "reference": 23077,
+      "predicted": 18408,
+      "correct": 17011,
+      "falseVoiced": 2,
+      "cpuMs": 15358.511636000014
+    },
+    {
+      "frames": 25630,
+      "reference": 23077,
+      "predicted": 19471,
+      "correct": 18483,
+      "falseVoiced": 2,
+      "cpuMs": 12341.497523999826
+    }
+  ],
+  "results": [
+    {
+      "audio": "f1_scales_c_slow_forte_a.wav",
+      "singer": "f1",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1212,
+          "reference": 1056,
+          "predicted": 730,
+          "correct": 692,
+          "falseVoiced": 0,
+          "cpuMs": 712.327994000001
+        },
+        {
+          "frames": 1212,
+          "reference": 1056,
+          "predicted": 859,
+          "correct": 848,
+          "falseVoiced": 0,
+          "cpuMs": 571.0818729999984
+        }
+      ]
+    },
+    {
+      "audio": "f1_scales_c_fast_piano_a.wav",
+      "singer": "f1",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 421,
+          "reference": 336,
+          "predicted": 276,
+          "correct": 267,
+          "falseVoiced": 0,
+          "cpuMs": 237.81028900000183
+        },
+        {
+          "frames": 421,
+          "reference": 336,
+          "predicted": 298,
+          "correct": 295,
+          "falseVoiced": 0,
+          "cpuMs": 195.69000200000028
+        }
+      ]
+    },
+    {
+      "audio": "f2_scales_f_slow_forte_i.wav",
+      "singer": "f2",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1324,
+          "reference": 1186,
+          "predicted": 1150,
+          "correct": 1137,
+          "falseVoiced": 0,
+          "cpuMs": 803.8413320000002
+        },
+        {
+          "frames": 1324,
+          "reference": 1186,
+          "predicted": 1150,
+          "correct": 1147,
+          "falseVoiced": 0,
+          "cpuMs": 644.0081799999996
+        }
+      ]
+    },
+    {
+      "audio": "f2_scales_c_fast_piano_a.wav",
+      "singer": "f2",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 384,
+          "reference": 292,
+          "predicted": 278,
+          "correct": 267,
+          "falseVoiced": 0,
+          "cpuMs": 197.65491600000087
+        },
+        {
+          "frames": 384,
+          "reference": 292,
+          "predicted": 283,
+          "correct": 279,
+          "falseVoiced": 0,
+          "cpuMs": 158.8284610000037
+        }
+      ]
+    },
+    {
+      "audio": "f3_scales_f_slow_forte_a.wav",
+      "singer": "f3",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1169,
+          "reference": 1023,
+          "predicted": 917,
+          "correct": 845,
+          "falseVoiced": 0,
+          "cpuMs": 697.1813090000023
+        },
+        {
+          "frames": 1169,
+          "reference": 1023,
+          "predicted": 977,
+          "correct": 970,
+          "falseVoiced": 0,
+          "cpuMs": 560.1849459999999
+        }
+      ]
+    },
+    {
+      "audio": "f3_scales_c_fast_piano_a.wav",
+      "singer": "f3",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 386,
+          "reference": 321,
+          "predicted": 273,
+          "correct": 261,
+          "falseVoiced": 0,
+          "cpuMs": 210.95592500000294
+        },
+        {
+          "frames": 386,
+          "reference": 321,
+          "predicted": 287,
+          "correct": 282,
+          "falseVoiced": 0,
+          "cpuMs": 169.21992200000477
+        }
+      ]
+    },
+    {
+      "audio": "f4_scales_c_slow_forte_u.wav",
+      "singer": "f4",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1252,
+          "reference": 1087,
+          "predicted": 1073,
+          "correct": 1041,
+          "falseVoiced": 0,
+          "cpuMs": 732.534225000004
+        },
+        {
+          "frames": 1252,
+          "reference": 1087,
+          "predicted": 1077,
+          "correct": 1076,
+          "falseVoiced": 0,
+          "cpuMs": 587.9939520000216
+        }
+      ]
+    },
+    {
+      "audio": "f4_scales_c_fast_piano_a.wav",
+      "singer": "f4",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 364,
+          "reference": 298,
+          "predicted": 216,
+          "correct": 206,
+          "falseVoiced": 0,
+          "cpuMs": 173.87916300000052
+        },
+        {
+          "frames": 364,
+          "reference": 298,
+          "predicted": 233,
+          "correct": 227,
+          "falseVoiced": 0,
+          "cpuMs": 139.1175400000011
+        }
+      ]
+    },
+    {
+      "audio": "f5_scales_c_slow_forte_o.wav",
+      "singer": "f5",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 975,
+          "reference": 823,
+          "predicted": 794,
+          "correct": 786,
+          "falseVoiced": 0,
+          "cpuMs": 562.6157849999909
+        },
+        {
+          "frames": 975,
+          "reference": 823,
+          "predicted": 793,
+          "correct": 793,
+          "falseVoiced": 0,
+          "cpuMs": 451.17526600000383
+        }
+      ]
+    },
+    {
+      "audio": "f5_scales_c_fast_piano_a.wav",
+      "singer": "f5",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 341,
+          "reference": 266,
+          "predicted": 211,
+          "correct": 185,
+          "falseVoiced": 0,
+          "cpuMs": 174.1547079999873
+        },
+        {
+          "frames": 341,
+          "reference": 266,
+          "predicted": 233,
+          "correct": 232,
+          "falseVoiced": 0,
+          "cpuMs": 140.02433200001542
+        }
+      ]
+    },
+    {
+      "audio": "f6_scales_c_slow_forte_a.wav",
+      "singer": "f6",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1003,
+          "reference": 939,
+          "predicted": 849,
+          "correct": 824,
+          "falseVoiced": 0,
+          "cpuMs": 631.5057749999705
+        },
+        {
+          "frames": 1003,
+          "reference": 939,
+          "predicted": 901,
+          "correct": 897,
+          "falseVoiced": 0,
+          "cpuMs": 507.50963000005686
+        }
+      ]
+    },
+    {
+      "audio": "f6_scales_c_fast_piano_a.wav",
+      "singer": "f6",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 388,
+          "reference": 349,
+          "predicted": 328,
+          "correct": 323,
+          "falseVoiced": 0,
+          "cpuMs": 232.0550809999695
+        },
+        {
+          "frames": 388,
+          "reference": 349,
+          "predicted": 333,
+          "correct": 333,
+          "falseVoiced": 0,
+          "cpuMs": 186.29611800003113
+        }
+      ]
+    },
+    {
+      "audio": "f7_scales_c_slow_forte_i.wav",
+      "singer": "f7",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1155,
+          "reference": 1066,
+          "predicted": 979,
+          "correct": 930,
+          "falseVoiced": 0,
+          "cpuMs": 714.1994130000166
+        },
+        {
+          "frames": 1155,
+          "reference": 1066,
+          "predicted": 1038,
+          "correct": 1031,
+          "falseVoiced": 0,
+          "cpuMs": 573.6340819999987
+        }
+      ]
+    },
+    {
+      "audio": "f7_scales_c_fast_piano_a.wav",
+      "singer": "f7",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 359,
+          "reference": 320,
+          "predicted": 273,
+          "correct": 262,
+          "falseVoiced": 0,
+          "cpuMs": 214.2771519999842
+        },
+        {
+          "frames": 359,
+          "reference": 320,
+          "predicted": 287,
+          "correct": 284,
+          "falseVoiced": 0,
+          "cpuMs": 172.6413800000173
+        }
+      ]
+    },
+    {
+      "audio": "f8_scales_c_slow_forte_i.wav",
+      "singer": "f8",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1286,
+          "reference": 1153,
+          "predicted": 852,
+          "correct": 846,
+          "falseVoiced": 0,
+          "cpuMs": 775.8885079999782
+        },
+        {
+          "frames": 1286,
+          "reference": 1153,
+          "predicted": 966,
+          "correct": 966,
+          "falseVoiced": 0,
+          "cpuMs": 622.9870419999424
+        }
+      ]
+    },
+    {
+      "audio": "f8_scales_c_fast_piano_a.wav",
+      "singer": "f8",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 508,
+          "reference": 413,
+          "predicted": 390,
+          "correct": 386,
+          "falseVoiced": 0,
+          "cpuMs": 275.85084899999674
+        },
+        {
+          "frames": 508,
+          "reference": 413,
+          "predicted": 398,
+          "correct": 397,
+          "falseVoiced": 0,
+          "cpuMs": 221.3083560000032
+        }
+      ]
+    },
+    {
+      "audio": "f9_scales_c_slow_forte_a.wav",
+      "singer": "f9",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1104,
+          "reference": 1005,
+          "predicted": 800,
+          "correct": 772,
+          "falseVoiced": 0,
+          "cpuMs": 686.8895499999908
+        },
+        {
+          "frames": 1104,
+          "reference": 1005,
+          "predicted": 871,
+          "correct": 857,
+          "falseVoiced": 0,
+          "cpuMs": 552.3013079999728
+        }
+      ]
+    },
+    {
+      "audio": "f9_scales_c_fast_piano_a.wav",
+      "singer": "f9",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 367,
+          "reference": 365,
+          "predicted": 286,
+          "correct": 274,
+          "falseVoiced": 0,
+          "cpuMs": 226.0127080000093
+        },
+        {
+          "frames": 367,
+          "reference": 365,
+          "predicted": 300,
+          "correct": 296,
+          "falseVoiced": 0,
+          "cpuMs": 181.5252979999732
+        }
+      ]
+    },
+    {
+      "audio": "m1_scales_c_fast_piano_a.wav",
+      "singer": "m1",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 333,
+          "reference": 296,
+          "predicted": 155,
+          "correct": 127,
+          "falseVoiced": 0,
+          "cpuMs": 193.23562700000912
+        },
+        {
+          "frames": 333,
+          "reference": 296,
+          "predicted": 175,
+          "correct": 145,
+          "falseVoiced": 0,
+          "cpuMs": 155.08307299999797
+        }
+      ]
+    },
+    {
+      "audio": "m2_scales_c_slow_forte_o.wav",
+      "singer": "m2",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 980,
+          "reference": 920,
+          "predicted": 673,
+          "correct": 646,
+          "falseVoiced": 0,
+          "cpuMs": 634.7768800000104
+        },
+        {
+          "frames": 980,
+          "reference": 920,
+          "predicted": 729,
+          "correct": 710,
+          "falseVoiced": 0,
+          "cpuMs": 510.8922879999991
+        }
+      ]
+    },
+    {
+      "audio": "m2_scales_c_fast_piano_a.wav",
+      "singer": "m2",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 287,
+          "reference": 258,
+          "predicted": 208,
+          "correct": 178,
+          "falseVoiced": 0,
+          "cpuMs": 168.58204200002365
+        },
+        {
+          "frames": 287,
+          "reference": 258,
+          "predicted": 217,
+          "correct": 193,
+          "falseVoiced": 0,
+          "cpuMs": 135.7313259999828
+        }
+      ]
+    },
+    {
+      "audio": "m3_scales_c_slow_forte_u.wav",
+      "singer": "m3",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1174,
+          "reference": 1110,
+          "predicted": 1021,
+          "correct": 841,
+          "falseVoiced": 0,
+          "cpuMs": 746.9363299999532
+        },
+        {
+          "frames": 1174,
+          "reference": 1110,
+          "predicted": 1029,
+          "correct": 874,
+          "falseVoiced": 0,
+          "cpuMs": 599.8056909999868
+        }
+      ]
+    },
+    {
+      "audio": "m3_scales_c_fast_piano_a.wav",
+      "singer": "m3",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 341,
+          "reference": 318,
+          "predicted": 278,
+          "correct": 238,
+          "falseVoiced": 0,
+          "cpuMs": 209.30679100001362
+        },
+        {
+          "frames": 341,
+          "reference": 318,
+          "predicted": 283,
+          "correct": 256,
+          "falseVoiced": 0,
+          "cpuMs": 168.7550429999901
+        }
+      ]
+    },
+    {
+      "audio": "m4_scales_f_slow_forte_a.wav",
+      "singer": "m4",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1340,
+          "reference": 1230,
+          "predicted": 911,
+          "correct": 683,
+          "falseVoiced": 0,
+          "cpuMs": 832.4911989999746
+        },
+        {
+          "frames": 1340,
+          "reference": 1230,
+          "predicted": 994,
+          "correct": 777,
+          "falseVoiced": 0,
+          "cpuMs": 668.4504570000136
+        }
+      ]
+    },
+    {
+      "audio": "m4_scales_c_fast_piano_a.wav",
+      "singer": "m4",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 391,
+          "reference": 345,
+          "predicted": 197,
+          "correct": 180,
+          "falseVoiced": 0,
+          "cpuMs": 174.19108300001972
+        },
+        {
+          "frames": 391,
+          "reference": 345,
+          "predicted": 206,
+          "correct": 194,
+          "falseVoiced": 0,
+          "cpuMs": 140.63195799999448
+        }
+      ]
+    },
+    {
+      "audio": "m5_scales_f_slow_forte_i.wav",
+      "singer": "m5",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1044,
+          "reference": 970,
+          "predicted": 814,
+          "correct": 781,
+          "falseVoiced": 1,
+          "cpuMs": 667.4731380000885
+        },
+        {
+          "frames": 1044,
+          "reference": 970,
+          "predicted": 845,
+          "correct": 815,
+          "falseVoiced": 1,
+          "cpuMs": 537.6371249999575
+        }
+      ]
+    },
+    {
+      "audio": "m5_scales_c_fast_piano_a.wav",
+      "singer": "m5",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 529,
+          "reference": 496,
+          "predicted": 215,
+          "correct": 211,
+          "falseVoiced": 0,
+          "cpuMs": 217.8674940000019
+        },
+        {
+          "frames": 529,
+          "reference": 496,
+          "predicted": 216,
+          "correct": 216,
+          "falseVoiced": 0,
+          "cpuMs": 175.19966699995348
+        }
+      ]
+    },
+    {
+      "audio": "m6_scales_c_slow_forte_a.wav",
+      "singer": "m6",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 1648,
+          "reference": 1484,
+          "predicted": 1087,
+          "correct": 900,
+          "falseVoiced": 0,
+          "cpuMs": 1007.0541879998491
+        },
+        {
+          "frames": 1648,
+          "reference": 1484,
+          "predicted": 1189,
+          "correct": 1018,
+          "falseVoiced": 0,
+          "cpuMs": 808.866317
+        }
+      ]
+    },
+    {
+      "audio": "m6_scales_c_fast_piano_e.wav",
+      "singer": "m6",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 336,
+          "reference": 308,
+          "predicted": 240,
+          "correct": 213,
+          "falseVoiced": 0,
+          "cpuMs": 204.4744510000237
+        },
+        {
+          "frames": 336,
+          "reference": 308,
+          "predicted": 241,
+          "correct": 221,
+          "falseVoiced": 0,
+          "cpuMs": 164.2480379999506
+        }
+      ]
+    },
+    {
+      "audio": "m7_scales_c_slow_forte_i.wav",
+      "singer": "m7",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 808,
+          "reference": 778,
+          "predicted": 440,
+          "correct": 310,
+          "falseVoiced": 0,
+          "cpuMs": 521.4703680000566
+        },
+        {
+          "frames": 808,
+          "reference": 778,
+          "predicted": 477,
+          "correct": 361,
+          "falseVoiced": 0,
+          "cpuMs": 419.312935000009
+        }
+      ]
+    },
+    {
+      "audio": "m7_scales_c_fast_piano_a.wav",
+      "singer": "m7",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 249,
+          "reference": 230,
+          "predicted": 156,
+          "correct": 119,
+          "falseVoiced": 0,
+          "cpuMs": 154.57179799998994
+        },
+        {
+          "frames": 249,
+          "reference": 230,
+          "predicted": 170,
+          "correct": 132,
+          "falseVoiced": 0,
+          "cpuMs": 124.11316200004148
+        }
+      ]
+    },
+    {
+      "audio": "m8_scales_c_slow_forte_a.wav",
+      "singer": "m8",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 676,
+          "reference": 646,
+          "predicted": 565,
+          "correct": 556,
+          "falseVoiced": 0,
+          "cpuMs": 433.2473250000221
+        },
+        {
+          "frames": 676,
+          "reference": 646,
+          "predicted": 576,
+          "correct": 567,
+          "falseVoiced": 0,
+          "cpuMs": 348.4454109999897
+        }
+      ]
+    },
+    {
+      "audio": "m8_scales_c_fast_piano_a.wav",
+      "singer": "m8",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 318,
+          "reference": 290,
+          "predicted": 224,
+          "correct": 198,
+          "falseVoiced": 0,
+          "cpuMs": 190.84454100002768
+        },
+        {
+          "frames": 318,
+          "reference": 290,
+          "predicted": 230,
+          "correct": 206,
+          "falseVoiced": 0,
+          "cpuMs": 153.69370699995488
+        }
+      ]
+    },
+    {
+      "audio": "m11_scales_c_slow_forte_i.wav",
+      "singer": "m11",
+      "condition": "slow_forte",
+      "counts": [
+        {
+          "frames": 839,
+          "reference": 776,
+          "predicted": 423,
+          "correct": 414,
+          "falseVoiced": 1,
+          "cpuMs": 532.5518310000261
+        },
+        {
+          "frames": 839,
+          "reference": 776,
+          "predicted": 463,
+          "correct": 454,
+          "falseVoiced": 1,
+          "cpuMs": 426.37587399997574
+        }
+      ]
+    },
+    {
+      "audio": "m11_scales_c_fast_piano_e.wav",
+      "singer": "m11",
+      "condition": "fast_piano",
+      "counts": [
+        {
+          "frames": 339,
+          "reference": 324,
+          "predicted": 126,
+          "correct": 112,
+          "falseVoiced": 0,
+          "cpuMs": 209.80186800001684
+        },
+        {
+          "frames": 339,
+          "reference": 324,
+          "predicted": 147,
+          "correct": 134,
+          "falseVoiced": 0,
+          "cpuMs": 168.72776399998475
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Two timeline-invalid files remain quarantined",
+    "CPU measured locally, not physical latency",
+    "No new-singer or real microphone acceptance"
+  ]
+}

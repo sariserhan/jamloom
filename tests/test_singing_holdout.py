@@ -3,12 +3,26 @@ import sys
 import unittest
 from unittest.mock import patch
 import io
+import json
+import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from prepare_singing_holdout import RangeReader
+from prepare_singing_holdout import RangeReader, prepare
 
 
 class RangeTests(unittest.TestCase):
+    def test_new_manifest_cannot_expand_download_scope_before_network_access(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for count in (0, 41):
+                manifest = root / 'manifest.json'
+                manifest.write_text(json.dumps({'archiveURL': 'https://zenodo.org/records/10200775/files/VocalSet.zip',
+                                                'archiveBytes': 2488206010, 'tracks': [{}] * count}))
+                with patch('urllib.request.urlopen') as fetch:
+                    with self.assertRaises(AssertionError): prepare(root / 'output', manifest)
+                    fetch.assert_not_called()
+                self.assertFalse((root / 'output').exists())
+
     def test_exact_ranges_and_seek_bounds(self):
         response = io.BytesIO(b'abcd')
         response.status = 206

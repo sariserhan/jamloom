@@ -48,3 +48,16 @@ test('quiet periodic singing qualifies without accepting faint noise or changing
  for(const hz of [110,440]){const wrong=new SingingHold(57,rate,0);for(let i=0;i<=101;i++)wrong.observe(i*960,detectPitch(tone(hz,.006),rate));assert(!wrong.passed);}
  let seed=321;for(const level of [.006,.02,.2]){const noise=Float32Array.from({length:2048},()=>{seed=(seed*1664525+1013904223)>>>0;return (seed/2**32-.5)*level;});assert(!isSingingPitch(detectPitch(noise,rate)));}
 });
+
+test('changing harmonic singing is measured at the window center across capture rates',()=>{
+ for(const sampleRate of [44100,48000,96000])for(const hz of [110,220,440]){
+  let phase=0;const samples=Float32Array.from({length:2048},(_,i)=>{
+   const at=(i-1024)/sampleRate;
+   phase+=2*Math.PI*hz*2**(600*at/1200)/sampleRate;
+   return .1*(1+.3*Math.sin(2*Math.PI*i/2048))*(Math.sin(phase)+.5*Math.sin(2*phase)+.25*Math.sin(3*phase));
+  });
+  const measured=detectPitch(samples,sampleRate);
+  assert(isSingingPitch(measured));
+  assert(Math.abs(1200*Math.log2(measured.frequency/hz))<20);
+ }
+});

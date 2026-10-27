@@ -1,3 +1,7 @@
+# Apple catalogue current update — 2026-10-27
+
+**Catalogue PASS; provider receipt chain remains unqualified.** Required Xcode components and normal IDE launch now return all four real products at USD9.99/24.99/49.99/39. No optional SDK/runtime downloads were selected. [Evidence and current details](SINGING_DIFFERENCE.md). The subsequent opt-in sandbox receipt attempt timed out at three minutes with no verified receipt evidence; the disposable ledger was removed. Historical failures below are preserved rather than treated as current catalogue state.
+
 # Apple catalogue isolation — 2026-10-27
 
 **PARTIAL; real catalogue FAIL, provider receipt chain NOT RUN.** No purchase, app uninstall, submission, deployment or sales activation occurred. [Evidence](evidence/apple-catalogue-20261027/validation.json).

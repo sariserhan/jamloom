@@ -4,6 +4,46 @@ import StoreKitTest
 @testable import Jamloom
 
 @MainActor final class PurchaseTests: XCTestCase {
+    func testLiveSandboxReceiptWhenExplicitlyRequested() async throws {
+        let env = ProcessInfo.processInfo.environment
+        try XCTSkipUnless(env["JAMLOOM_APPLE_SANDBOX"] == "purchase" || env["JAMLOOM_APPLE_SANDBOX"] == "acknowledge", "Explicit Apple sandbox qualification only")
+        #if targetEnvironment(simulator)
+        throw XCTSkip("Physical sandbox device required")
+        #else
+        let token = try XCTUnwrap(UUID(uuidString: env["JAMLOOM_APPLE_ACCOUNT_TOKEN"] ?? ""))
+        let id = env["JAMLOOM_APPLE_PRODUCT"] ?? ""
+        guard ["com.jamloom.credits.starter", CreditPurchases.singingProduct].contains(id) else { XCTFail("Unsupported sandbox test product"); return }
+        if env["JAMLOOM_APPLE_SANDBOX"] == "acknowledge" {
+            let expected = try XCTUnwrap(UInt64(env["JAMLOOM_APPLE_ACK_TRANSACTION"] ?? ""))
+            for await value in Transaction.unfinished {
+                if case .verified(let transaction) = value, transaction.id == expected {
+                    guard transaction.environment == .sandbox, transaction.appAccountToken == token, transaction.productID == id else { XCTFail("Sandbox acknowledgement mismatch"); return }
+                    await transaction.finish(); return
+                }
+            }
+            XCTFail("Expected unfinished sandbox transaction"); return
+        }
+        // Conservative pre-purchase check; the individual transaction is verified separately below.
+        guard case .verified(let app) = try await AppTransaction.refresh(), app.environment == .sandbox else { XCTFail("Sandbox app receipt required before a test purchase"); return }
+        let products = try await Product.products(for: [id])
+        let product = try XCTUnwrap(products.first)
+        guard product.id == id, product.priceFormatStyle.currencyCode == "USD",
+              product.price == (id == CreditPurchases.singingProduct ? Decimal(39) : Decimal(string: "9.99")!),
+              !product.description.contains("Local test") else { XCTFail("Real Apple sandbox product required"); return }
+        switch try await product.purchase(options: [.appAccountToken(token)]) {
+        case .success(let result):
+            guard case .verified(let transaction) = result, transaction.environment == .sandbox,
+                  transaction.appAccountToken == token, transaction.productID == id else { XCTFail("Sandbox transaction verification failed"); return }
+            let proof = XCTAttachment(string: result.jwsRepresentation)
+            proof.name = "Private Apple sandbox JWS - do not publish"; proof.lifetime = .keepAlways; add(proof)
+            // Remains unfinished until the isolated server confirms delivery, then explicit acknowledgement.
+        case .pending: XCTFail("Sandbox purchase pending")
+        case .userCancelled: XCTFail("Sandbox purchase cancelled")
+        @unknown default: XCTFail("Unknown sandbox result")
+        }
+        XCTAssertFalse(CreditPurchases.released); XCTAssertFalse(CreditPurchases.singingReleased)
+        #endif
+    }
     func testLiveAppleCatalogueWhenExplicitlyRequested() async throws {
         try XCTSkipUnless(ProcessInfo.processInfo.environment["JAMLOOM_APPLE_CATALOGUE"] == "1", "Explicit real Apple catalogue check only")
         #if targetEnvironment(simulator)

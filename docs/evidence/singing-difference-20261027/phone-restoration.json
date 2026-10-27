@@ -1,0 +1,7 @@
+{
+  "install": "PASS 0.10.2 build 28; app data preserved",
+  "firstLaunch": "FAIL security preflight while locked",
+  "unlockedLaunch": "PASS",
+  "lifecycleAttempt": "FAIL background assertion; interrupted after failure",
+  "noUpload": true
+}

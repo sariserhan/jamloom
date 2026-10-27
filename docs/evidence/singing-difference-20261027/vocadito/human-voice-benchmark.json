@@ -1,0 +1,2265 @@
+{
+  "status": "PASS evaluation executed; see measured limitations",
+  "dataset": "vocadito v3 DOI 10.5281/zenodo.5578807",
+  "datasetLicense": "CC-BY-4.0",
+  "use": "Previously inspected reference corpus; offline evaluation only, no training or audio redistribution",
+  "detectorSha256": "f47b9e3816b9cc89dc16a55098bbf50535cc9d2e47aee99ab02d91ed50970deb",
+  "node": "v22.23.1",
+  "ffmpeg": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "tracks": 40,
+  "singers": 29,
+  "seconds": 817.1285260770975,
+  "aggregate": [
+    {
+      "windowMs": 80,
+      "counts": {
+        "frames": 81363,
+        "referenceVoiced": 53951,
+        "predictedVoiced": 45714,
+        "hit": 43868,
+        "falseVoiced": 1846,
+        "correct": 42691,
+        "correctUnvoiced": 25566,
+        "outOfRange": 88
+      },
+      "voicedRecall": 0.8131081907656948,
+      "voicedPrecision": 0.9596184976156101,
+      "falseVoicedRate": 0.0673427695899606,
+      "within50CentsOfReference": 0.7912920983855721,
+      "overallAccuracy": 0.8389194105428758,
+      "trackMedianWithin50Cents": 0.8216510903426791,
+      "worstTrackWithin50Cents": 0.4728171334431631,
+      "worstP95CpuMs": 2.7883750000037253
+    },
+    {
+      "windowMs": 40,
+      "counts": {
+        "frames": 81550,
+        "referenceVoiced": 53977,
+        "predictedVoiced": 48458,
+        "hit": 47243,
+        "falseVoiced": 1215,
+        "correct": 46705,
+        "correctUnvoiced": 26358,
+        "outOfRange": 87
+      },
+      "voicedRecall": 0.8752431591233303,
+      "voicedPrecision": 0.9749267406826531,
+      "falseVoicedRate": 0.044064846045044063,
+      "within50CentsOfReference": 0.8652759508679623,
+      "overallAccuracy": 0.8959288779889638,
+      "trackMedianWithin50Cents": 0.9009174311926605,
+      "worstTrackWithin50Cents": 0.5684442001099506,
+      "worstP95CpuMs": 1.0747499999997672
+    }
+  ],
+  "results": [
+    {
+      "id": "1",
+      "singer": "S1",
+      "averageMidi": 50,
+      "language": "Tagalog",
+      "seconds": 33.21224489795918,
+      "audioSha256": "b509768315efad8120183b48e01d6090f1649d5bcc691241940dc7a100274ab8",
+      "annotationsSha256": "dd10beba57b94d37b1d3263f5deca3b780adc7ec90f1d43bb00099b02c2878e5",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 3312,
+            "referenceVoiced": 2114,
+            "predictedVoiced": 1826,
+            "hit": 1813,
+            "falseVoiced": 13,
+            "correct": 1794,
+            "correctUnvoiced": 1185,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8576158940397351,
+          "voicedPrecision": 0.9928806133625411,
+          "falseVoicedRate": 0.010851419031719533,
+          "within50CentsOfReference": 0.8486281929990539,
+          "overallAccuracy": 0.8994565217391305,
+          "medianCentsOnJointVoiced": 4.154983063930774,
+          "p95CentsOnJointVoiced": 24.746477852802037,
+          "p95CpuMs": 1.297541999999794
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 3317,
+            "referenceVoiced": 2118,
+            "predictedVoiced": 1918,
+            "hit": 1913,
+            "falseVoiced": 5,
+            "correct": 1912,
+            "correctUnvoiced": 1194,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9032105760151086,
+          "voicedPrecision": 0.997393117831074,
+          "falseVoicedRate": 0.004170141784820684,
+          "within50CentsOfReference": 0.902738432483475,
+          "overallAccuracy": 0.9363883026831474,
+          "medianCentsOnJointVoiced": 2.0000406459465374,
+          "p95CentsOnJointVoiced": 11.496319451763412,
+          "p95CpuMs": 0.5491250000000036
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "singer": "S2",
+      "averageMidi": 65,
+      "language": "Spanish",
+      "seconds": 35.208004535147396,
+      "audioSha256": "8dcc99c3b08a9a5800b793e3d65cccfb4464961f15cf8ccde25bd4c8b853d519",
+      "annotationsSha256": "4d515029c036312e8d04545470c3d5dc5db3132dec54813624faee7d84cd6363",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 3512,
+            "referenceVoiced": 2652,
+            "predictedVoiced": 2331,
+            "hit": 2322,
+            "falseVoiced": 9,
+            "correct": 2194,
+            "correctUnvoiced": 851,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8755656108597285,
+          "voicedPrecision": 0.9961389961389961,
+          "falseVoicedRate": 0.010465116279069767,
+          "within50CentsOfReference": 0.8273001508295625,
+          "overallAccuracy": 0.8670273348519362,
+          "medianCentsOnJointVoiced": 3.3392657442180687,
+          "p95CentsOnJointVoiced": 1199.2239988731744,
+          "p95CpuMs": 1.2770419999997102
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 3517,
+            "referenceVoiced": 2653,
+            "predictedVoiced": 2357,
+            "hit": 2354,
+            "falseVoiced": 3,
+            "correct": 2211,
+            "correctUnvoiced": 861,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8872973991707501,
+          "voicedPrecision": 0.9987271955876114,
+          "falseVoicedRate": 0.003472222222222222,
+          "within50CentsOfReference": 0.8333961552958914,
+          "overallAccuracy": 0.8734717088427637,
+          "medianCentsOnJointVoiced": 1.1653687580324712,
+          "p95CentsOnJointVoiced": 1201.06024520912,
+          "p95CpuMs": 0.5417500000003201
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "singer": "S1",
+      "averageMidi": 52,
+      "language": "Tagalog",
+      "seconds": 21.736326530612246,
+      "audioSha256": "73b6fe13bc3435ae9173ee1bdec247e2943526c70cd9b69ab2b35002fa4cb04d",
+      "annotationsSha256": "18f48fc77df7dd43c1e4bc588a79482b1d330768d63b76b90e82998573582b6a",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2165,
+            "referenceVoiced": 1284,
+            "predictedVoiced": 1079,
+            "hit": 1075,
+            "falseVoiced": 4,
+            "correct": 1055,
+            "correctUnvoiced": 877,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8372274143302181,
+          "voicedPrecision": 0.9962928637627433,
+          "falseVoicedRate": 0.004540295119182747,
+          "within50CentsOfReference": 0.8216510903426791,
+          "overallAccuracy": 0.892378752886836,
+          "medianCentsOnJointVoiced": 4.453600809283567,
+          "p95CentsOnJointVoiced": 29.280876360188262,
+          "p95CpuMs": 1.2640830000000278
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2169,
+            "referenceVoiced": 1279,
+            "predictedVoiced": 1134,
+            "hit": 1131,
+            "falseVoiced": 3,
+            "correct": 1131,
+            "correctUnvoiced": 887,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8842845973416732,
+          "voicedPrecision": 0.9973544973544973,
+          "falseVoicedRate": 0.0033707865168539327,
+          "within50CentsOfReference": 0.8842845973416732,
+          "overallAccuracy": 0.9303826648224989,
+          "medianCentsOnJointVoiced": 1.9583324461534208,
+          "p95CentsOnJointVoiced": 11.117476653368064,
+          "p95CpuMs": 0.5519580000000133
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "singer": "S3",
+      "averageMidi": 47,
+      "language": "Catalan/Valencian",
+      "seconds": 18.456009070294783,
+      "audioSha256": "fc07b202eb609c975d1549be5320db116a49be1bd1fc6904e70e31cd7e44ec23",
+      "annotationsSha256": "fb0a5b73a66edc0bac5aaec64f82eccd95d5a54781b354ab9020056803cf3d08",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1837,
+            "referenceVoiced": 1429,
+            "predictedVoiced": 986,
+            "hit": 984,
+            "falseVoiced": 2,
+            "correct": 970,
+            "correctUnvoiced": 406,
+            "outOfRange": 41
+          },
+          "voicedRecall": 0.688593421973408,
+          "voicedPrecision": 0.9979716024340771,
+          "falseVoicedRate": 0.004901960784313725,
+          "within50CentsOfReference": 0.6787963610916725,
+          "overallAccuracy": 0.749047359825803,
+          "medianCentsOnJointVoiced": 5.739233612355071,
+          "p95CentsOnJointVoiced": 29.19402580990508,
+          "p95CpuMs": 1.3980410000003758
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1841,
+            "referenceVoiced": 1434,
+            "predictedVoiced": 1087,
+            "hit": 1086,
+            "falseVoiced": 1,
+            "correct": 1086,
+            "correctUnvoiced": 406,
+            "outOfRange": 41
+          },
+          "voicedRecall": 0.7573221757322176,
+          "voicedPrecision": 0.9990800367985281,
+          "falseVoicedRate": 0.002457002457002457,
+          "within50CentsOfReference": 0.7573221757322176,
+          "overallAccuracy": 0.8104291146116241,
+          "medianCentsOnJointVoiced": 2.4880361772614332,
+          "p95CentsOnJointVoiced": 13.99305719949505,
+          "p95CpuMs": 0.5628749999996217
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "singer": "S4",
+      "averageMidi": 57,
+      "language": "Catalan/Valencian",
+      "seconds": 23.23199546485261,
+      "audioSha256": "7cecfd126a9437f88db0a297cdab3075bb38faeef10f1a98f22ba22a2a939220",
+      "annotationsSha256": "561eb6ac03530a3219cf1a8eab9f0c14b1c4571185f0e059b61643325e4642ca",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2314,
+            "referenceVoiced": 1681,
+            "predictedVoiced": 1474,
+            "hit": 1393,
+            "falseVoiced": 81,
+            "correct": 1367,
+            "correctUnvoiced": 552,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8286734086853064,
+          "voicedPrecision": 0.9450474898236092,
+          "falseVoicedRate": 0.12796208530805686,
+          "within50CentsOfReference": 0.8132064247471743,
+          "overallAccuracy": 0.8292999135695764,
+          "medianCentsOnJointVoiced": 5.6231803352416145,
+          "p95CentsOnJointVoiced": 34.2986800907496,
+          "p95CpuMs": 1.338499999998021
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2319,
+            "referenceVoiced": 1680,
+            "predictedVoiced": 1572,
+            "hit": 1532,
+            "falseVoiced": 40,
+            "correct": 1525,
+            "correctUnvoiced": 599,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9119047619047619,
+          "voicedPrecision": 0.9745547073791349,
+          "falseVoicedRate": 0.06259780907668232,
+          "within50CentsOfReference": 0.9077380952380952,
+          "overallAccuracy": 0.9159120310478654,
+          "medianCentsOnJointVoiced": 2.110576598172649,
+          "p95CentsOnJointVoiced": 14.061427458126232,
+          "p95CpuMs": 0.5804580000003625
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "singer": "S5",
+      "averageMidi": 61,
+      "language": "English",
+      "seconds": 23.831995464852607,
+      "audioSha256": "13816752a6366f2d66f21e71a70d55e22b6a44f0d1712d97abff5390bc0c1f3b",
+      "annotationsSha256": "443e7f37172ef683f687fba39ab87710f22af2227e8fdb9031b2faa3002eb002",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2374,
+            "referenceVoiced": 1632,
+            "predictedVoiced": 1303,
+            "hit": 1289,
+            "falseVoiced": 14,
+            "correct": 1252,
+            "correctUnvoiced": 728,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.789828431372549,
+          "voicedPrecision": 0.9892555640828856,
+          "falseVoicedRate": 0.018867924528301886,
+          "within50CentsOfReference": 0.7671568627450981,
+          "overallAccuracy": 0.8340353833192923,
+          "medianCentsOnJointVoiced": 5.604062722674859,
+          "p95CentsOnJointVoiced": 41.69127951104106,
+          "p95CpuMs": 1.3492089999999735
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2379,
+            "referenceVoiced": 1637,
+            "predictedVoiced": 1494,
+            "hit": 1479,
+            "falseVoiced": 15,
+            "correct": 1477,
+            "correctUnvoiced": 727,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9034819792302994,
+          "voicedPrecision": 0.9899598393574297,
+          "falseVoicedRate": 0.02021563342318059,
+          "within50CentsOfReference": 0.9022602321319487,
+          "overallAccuracy": 0.9264396805380412,
+          "medianCentsOnJointVoiced": 1.9560777376725664,
+          "p95CentsOnJointVoiced": 15.07960544510333,
+          "p95CpuMs": 0.5686669999995502
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "singer": "S6",
+      "averageMidi": 63,
+      "language": "Tagalog",
+      "seconds": 19.46734693877551,
+      "audioSha256": "db9542f0626f4c43ab1e4f26ae9e40834bcfe5f061b07c75a3925d95aaa79676",
+      "annotationsSha256": "9dfd339c44bd32a8891288ea3625fcda703932fe76c4ce8f073c005874f63393",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1938,
+            "referenceVoiced": 1155,
+            "predictedVoiced": 1179,
+            "hit": 1085,
+            "falseVoiced": 94,
+            "correct": 1061,
+            "correctUnvoiced": 689,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9393939393939394,
+          "voicedPrecision": 0.9202714164546225,
+          "falseVoicedRate": 0.12005108556832694,
+          "within50CentsOfReference": 0.9186147186147187,
+          "overallAccuracy": 0.9029927760577915,
+          "medianCentsOnJointVoiced": 6.397709184549782,
+          "p95CentsOnJointVoiced": 32.87623389371608,
+          "p95CpuMs": 1.306457999999111
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1943,
+            "referenceVoiced": 1155,
+            "predictedVoiced": 1130,
+            "hit": 1096,
+            "falseVoiced": 34,
+            "correct": 1096,
+            "correctUnvoiced": 754,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9489177489177489,
+          "voicedPrecision": 0.9699115044247788,
+          "falseVoicedRate": 0.04314720812182741,
+          "within50CentsOfReference": 0.9489177489177489,
+          "overallAccuracy": 0.9521358723623263,
+          "medianCentsOnJointVoiced": 1.6309710361367067,
+          "p95CentsOnJointVoiced": 8.855347592797852,
+          "p95CpuMs": 0.5489589999997406
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "singer": "S1",
+      "averageMidi": 49,
+      "language": "Tagalog",
+      "seconds": 17.041632653061225,
+      "audioSha256": "05ce2b3f1991035d08db269df1c39b198d9ddc22130ce88f9a8d97e46cd7a310",
+      "annotationsSha256": "d4865ca325062a0985f8c8cf099844d9430ad445668bbd8d6bc3f786a346b457",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1695,
+            "referenceVoiced": 899,
+            "predictedVoiced": 713,
+            "hit": 713,
+            "falseVoiced": 0,
+            "correct": 712,
+            "correctUnvoiced": 796,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.7931034482758621,
+          "voicedPrecision": 1,
+          "falseVoicedRate": 0,
+          "within50CentsOfReference": 0.7919911012235817,
+          "overallAccuracy": 0.8896755162241888,
+          "medianCentsOnJointVoiced": 3.7139643800743714,
+          "p95CentsOnJointVoiced": 19.69259859515053,
+          "p95CpuMs": 1.2722500000018044
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1700,
+            "referenceVoiced": 897,
+            "predictedVoiced": 775,
+            "hit": 775,
+            "falseVoiced": 0,
+            "correct": 775,
+            "correctUnvoiced": 803,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8639910813823858,
+          "voicedPrecision": 1,
+          "falseVoicedRate": 0,
+          "within50CentsOfReference": 0.8639910813823858,
+          "overallAccuracy": 0.928235294117647,
+          "medianCentsOnJointVoiced": 2.0689133242912123,
+          "p95CentsOnJointVoiced": 11.075161667858309,
+          "p95CpuMs": 0.539667000000918
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "singer": "S6",
+      "averageMidi": 62,
+      "language": "Tagalog",
+      "seconds": 20.375011337868482,
+      "audioSha256": "f980cc7df935c0c9e839b25759de72fadad6763c069be96645be46f8dd3ffd32",
+      "annotationsSha256": "b5936116058e717ec4fda99ddc323d471059debd9fb599809c59a41888c48126",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2029,
+            "referenceVoiced": 1204,
+            "predictedVoiced": 1089,
+            "hit": 1050,
+            "falseVoiced": 39,
+            "correct": 1005,
+            "correctUnvoiced": 786,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.872093023255814,
+          "voicedPrecision": 0.9641873278236914,
+          "falseVoicedRate": 0.04727272727272727,
+          "within50CentsOfReference": 0.834717607973422,
+          "overallAccuracy": 0.8827008378511582,
+          "medianCentsOnJointVoiced": 7.16779609360478,
+          "p95CentsOnJointVoiced": 47.32689054205892,
+          "p95CpuMs": 1.2777920000007725
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2033,
+            "referenceVoiced": 1204,
+            "predictedVoiced": 1120,
+            "hit": 1092,
+            "falseVoiced": 28,
+            "correct": 1087,
+            "correctUnvoiced": 801,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9069767441860465,
+          "voicedPrecision": 0.975,
+          "falseVoicedRate": 0.033775633293124246,
+          "within50CentsOfReference": 0.9028239202657807,
+          "overallAccuracy": 0.9286768322675848,
+          "medianCentsOnJointVoiced": 1.9832114983410178,
+          "p95CentsOnJointVoiced": 18.071456666856577,
+          "p95CpuMs": 0.5713749999995343
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "singer": "S7",
+      "averageMidi": 49,
+      "language": "English",
+      "seconds": 9.097823129251701,
+      "audioSha256": "0978bde1c130ae26a9cfcd90012f12fdaf9877bbe45cf21c5237ba7ac9b8703b",
+      "annotationsSha256": "b62573c234fe091acdc7f7ac75259df12d5a8b2bd89f5b803bfc0f433c085e96",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 901,
+            "referenceVoiced": 685,
+            "predictedVoiced": 459,
+            "hit": 437,
+            "falseVoiced": 22,
+            "correct": 426,
+            "correctUnvoiced": 194,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.637956204379562,
+          "voicedPrecision": 0.9520697167755992,
+          "falseVoicedRate": 0.10185185185185185,
+          "within50CentsOfReference": 0.621897810218978,
+          "overallAccuracy": 0.6881243063263041,
+          "medianCentsOnJointVoiced": 8.177521611834054,
+          "p95CentsOnJointVoiced": 40.22072708060944,
+          "p95CpuMs": 1.306124999999156
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 906,
+            "referenceVoiced": 688,
+            "predictedVoiced": 570,
+            "hit": 541,
+            "falseVoiced": 29,
+            "correct": 541,
+            "correctUnvoiced": 189,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.7863372093023255,
+          "voicedPrecision": 0.9491228070175438,
+          "falseVoicedRate": 0.13302752293577982,
+          "within50CentsOfReference": 0.7863372093023255,
+          "overallAccuracy": 0.8057395143487859,
+          "medianCentsOnJointVoiced": 4.07303988332355,
+          "p95CentsOnJointVoiced": 18.094565240902913,
+          "p95CpuMs": 0.5614159999968251
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "singer": "S8",
+      "averageMidi": 59,
+      "language": "English",
+      "seconds": 12.983990929705216,
+      "audioSha256": "c4d669eca7e25c5037b191805b54b2c990d5e31bc77c9c77188b140100297197",
+      "annotationsSha256": "3649b1c134df2c7630e37f614adf05b67b186f3f494a8cc6551a12b3d8a593d1",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1290,
+            "referenceVoiced": 990,
+            "predictedVoiced": 866,
+            "hit": 842,
+            "falseVoiced": 24,
+            "correct": 821,
+            "correctUnvoiced": 276,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8505050505050505,
+          "voicedPrecision": 0.9722863741339491,
+          "falseVoicedRate": 0.08,
+          "within50CentsOfReference": 0.8292929292929293,
+          "overallAccuracy": 0.8503875968992248,
+          "medianCentsOnJointVoiced": 5.237779857380411,
+          "p95CentsOnJointVoiced": 31.710787899341142,
+          "p95CpuMs": 1.2719169999982114
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1294,
+            "referenceVoiced": 993,
+            "predictedVoiced": 929,
+            "hit": 909,
+            "falseVoiced": 20,
+            "correct": 909,
+            "correctUnvoiced": 281,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9154078549848943,
+          "voicedPrecision": 0.9784714747039828,
+          "falseVoicedRate": 0.0664451827242525,
+          "within50CentsOfReference": 0.9154078549848943,
+          "overallAccuracy": 0.919629057187017,
+          "medianCentsOnJointVoiced": 1.676077464046977,
+          "p95CentsOnJointVoiced": 10.061881847058665,
+          "p95CpuMs": 0.5387919999993755
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "singer": "S9",
+      "averageMidi": 59,
+      "language": "English",
+      "seconds": 15.153492063492063,
+      "audioSha256": "5a342e32b20b3764a9ab9784abbf7bac6db69583ec529fc9027f96c69df04e00",
+      "annotationsSha256": "c58207b659b08a3ba35baeda01d3ac31231a4c8e5c3b3906ccdc37799e6d0b34",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1507,
+            "referenceVoiced": 1126,
+            "predictedVoiced": 1168,
+            "hit": 1100,
+            "falseVoiced": 68,
+            "correct": 1089,
+            "correctUnvoiced": 313,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9769094138543517,
+          "voicedPrecision": 0.9417808219178082,
+          "falseVoicedRate": 0.1784776902887139,
+          "within50CentsOfReference": 0.9671403197158082,
+          "overallAccuracy": 0.9303251493032515,
+          "medianCentsOnJointVoiced": 3.364958754134118,
+          "p95CentsOnJointVoiced": 24.452166249484662,
+          "p95CpuMs": 1.2660409999953117
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1511,
+            "referenceVoiced": 1130,
+            "predictedVoiced": 1147,
+            "hit": 1113,
+            "falseVoiced": 34,
+            "correct": 1112,
+            "correctUnvoiced": 347,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9849557522123894,
+          "voicedPrecision": 0.970357454228422,
+          "falseVoicedRate": 0.08923884514435695,
+          "within50CentsOfReference": 0.984070796460177,
+          "overallAccuracy": 0.9655857048312376,
+          "medianCentsOnJointVoiced": 1.1439959688817702,
+          "p95CentsOnJointVoiced": 8.890571506826058,
+          "p95CpuMs": 0.5363329999963753
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "singer": "S10",
+      "averageMidi": 51,
+      "language": "French",
+      "seconds": 22.36,
+      "audioSha256": "5a26861f99c4d02a3efe2355215de2774fb51257cc2d2bf6021827b64e25ec94",
+      "annotationsSha256": "db131bc7ac4413649c4c20a9938fc7af66a731367c769fcc91480a9f27d95847",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2227,
+            "referenceVoiced": 1467,
+            "predictedVoiced": 971,
+            "hit": 961,
+            "falseVoiced": 10,
+            "correct": 941,
+            "correctUnvoiced": 750,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.6550783912747103,
+          "voicedPrecision": 0.9897013388259527,
+          "falseVoicedRate": 0.013157894736842105,
+          "within50CentsOfReference": 0.6414451261077028,
+          "overallAccuracy": 0.7593174674449933,
+          "medianCentsOnJointVoiced": 9.179751758765189,
+          "p95CentsOnJointVoiced": 36.08377522054586,
+          "p95CpuMs": 1.2723749999931897
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2232,
+            "referenceVoiced": 1467,
+            "predictedVoiced": 1179,
+            "hit": 1156,
+            "falseVoiced": 23,
+            "correct": 1156,
+            "correctUnvoiced": 742,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.7880027266530334,
+          "voicedPrecision": 0.9804919423240034,
+          "falseVoicedRate": 0.030065359477124184,
+          "within50CentsOfReference": 0.7880027266530334,
+          "overallAccuracy": 0.850358422939068,
+          "medianCentsOnJointVoiced": 3.461984285978986,
+          "p95CentsOnJointVoiced": 14.354043069099804,
+          "p95CpuMs": 0.5396249999976135
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "singer": "S11",
+      "averageMidi": 59,
+      "language": "English",
+      "seconds": 12.1978231292517,
+      "audioSha256": "a41e814df6ee5840f0beaea5da2ab3ad6b38be62b169da08962a722bcc06cdd1",
+      "annotationsSha256": "4d765f594d38e18ab514ab1afba93147ac6564be4cfc62f9c268de0e9949f88c",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1211,
+            "referenceVoiced": 828,
+            "predictedVoiced": 815,
+            "hit": 759,
+            "falseVoiced": 56,
+            "correct": 733,
+            "correctUnvoiced": 327,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9166666666666666,
+          "voicedPrecision": 0.9312883435582822,
+          "falseVoicedRate": 0.1462140992167102,
+          "within50CentsOfReference": 0.8852657004830918,
+          "overallAccuracy": 0.8753096614368291,
+          "medianCentsOnJointVoiced": 7.225530172417267,
+          "p95CentsOnJointVoiced": 45.73582263138261,
+          "p95CpuMs": 1.2637499999982538
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1216,
+            "referenceVoiced": 830,
+            "predictedVoiced": 811,
+            "hit": 771,
+            "falseVoiced": 40,
+            "correct": 771,
+            "correctUnvoiced": 346,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9289156626506024,
+          "voicedPrecision": 0.9506781750924784,
+          "falseVoicedRate": 0.10362694300518134,
+          "within50CentsOfReference": 0.9289156626506024,
+          "overallAccuracy": 0.9185855263157895,
+          "medianCentsOnJointVoiced": 2.4353701952084705,
+          "p95CentsOnJointVoiced": 16.304276584507956,
+          "p95CpuMs": 0.5478750000038417
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "singer": "S12",
+      "averageMidi": 61,
+      "language": "English",
+      "seconds": 20.28,
+      "audioSha256": "0bc39b00e14881b20756f48530a4688e1bb7aa1c24ee09d4351a327e3acce28d",
+      "annotationsSha256": "740a77c865d6dcdae2af05328230d88c97cc2d95a54a4ef44d1cde49a53afafa",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2019,
+            "referenceVoiced": 1344,
+            "predictedVoiced": 1105,
+            "hit": 1051,
+            "falseVoiced": 54,
+            "correct": 1024,
+            "correctUnvoiced": 621,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.7819940476190477,
+          "voicedPrecision": 0.951131221719457,
+          "falseVoicedRate": 0.08,
+          "within50CentsOfReference": 0.7619047619047619,
+          "overallAccuracy": 0.8147597820703318,
+          "medianCentsOnJointVoiced": 5.392606371592619,
+          "p95CentsOnJointVoiced": 35.95840357962605,
+          "p95CpuMs": 1.3550000000032014
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2024,
+            "referenceVoiced": 1340,
+            "predictedVoiced": 1239,
+            "hit": 1177,
+            "falseVoiced": 62,
+            "correct": 1161,
+            "correctUnvoiced": 622,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8783582089552239,
+          "voicedPrecision": 0.9499596448748991,
+          "falseVoicedRate": 0.09064327485380116,
+          "within50CentsOfReference": 0.8664179104477612,
+          "overallAccuracy": 0.8809288537549407,
+          "medianCentsOnJointVoiced": 1.872420896748384,
+          "p95CentsOnJointVoiced": 15.091707403478718,
+          "p95CpuMs": 0.5782919999983278
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "singer": "S6",
+      "averageMidi": 59,
+      "language": "Tagalog",
+      "seconds": 17.277142857142856,
+      "audioSha256": "595e80b5382812702e64d5b6a8f453d9744391166d47c7020cc1d6e71e310e25",
+      "annotationsSha256": "fb06556c007943d6d2793af5dd6ba0ac43a1ab5e1180777bfc795564028ea8cf",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1719,
+            "referenceVoiced": 1091,
+            "predictedVoiced": 1068,
+            "hit": 996,
+            "falseVoiced": 72,
+            "correct": 956,
+            "correctUnvoiced": 556,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9129239230064161,
+          "voicedPrecision": 0.9325842696629213,
+          "falseVoicedRate": 0.11464968152866242,
+          "within50CentsOfReference": 0.8762603116406966,
+          "overallAccuracy": 0.8795811518324608,
+          "medianCentsOnJointVoiced": 5.355812652308814,
+          "p95CentsOnJointVoiced": 41.4095722965608,
+          "p95CpuMs": 1.5828340000007302
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1724,
+            "referenceVoiced": 1088,
+            "predictedVoiced": 1053,
+            "hit": 1023,
+            "falseVoiced": 30,
+            "correct": 1022,
+            "correctUnvoiced": 606,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9402573529411765,
+          "voicedPrecision": 0.9715099715099715,
+          "falseVoicedRate": 0.04716981132075472,
+          "within50CentsOfReference": 0.9393382352941176,
+          "overallAccuracy": 0.9443155452436195,
+          "medianCentsOnJointVoiced": 1.6350470830038235,
+          "p95CentsOnJointVoiced": 11.803342169117613,
+          "p95CpuMs": 1.0747499999997672
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "singer": "S12",
+      "averageMidi": 60,
+      "language": "none",
+      "seconds": 23.56800453514739,
+      "audioSha256": "4b144cdbbcdb318f19c0aa5ac1e2675dbe8d6cb8941286d251959f25e4c96998",
+      "annotationsSha256": "d865f0cd526a030f19ba674ebf6c8956fdd8d8b4a0732a539fdb5a35ee86dc29",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2348,
+            "referenceVoiced": 1918,
+            "predictedVoiced": 1548,
+            "hit": 1539,
+            "falseVoiced": 9,
+            "correct": 1525,
+            "correctUnvoiced": 421,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8023983315954119,
+          "voicedPrecision": 0.9941860465116279,
+          "falseVoicedRate": 0.020930232558139535,
+          "within50CentsOfReference": 0.7950990615224192,
+          "overallAccuracy": 0.8287904599659285,
+          "medianCentsOnJointVoiced": 5.071775048343451,
+          "p95CentsOnJointVoiced": 27.58273110058851,
+          "p95CpuMs": 2.7883750000037253
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2353,
+            "referenceVoiced": 1917,
+            "predictedVoiced": 1712,
+            "hit": 1708,
+            "falseVoiced": 4,
+            "correct": 1697,
+            "correctUnvoiced": 432,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8909754825247783,
+          "voicedPrecision": 0.9976635514018691,
+          "falseVoicedRate": 0.009174311926605505,
+          "within50CentsOfReference": 0.8852373500260824,
+          "overallAccuracy": 0.9048023799405015,
+          "medianCentsOnJointVoiced": 1.5483056963161153,
+          "p95CentsOnJointVoiced": 12.110852321871828,
+          "p95CpuMs": 0.5996249999952852
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "singer": "S13",
+      "averageMidi": 52,
+      "language": "English",
+      "seconds": 29.138820861678006,
+      "audioSha256": "4f2a3712dd912b235990f3505593200172da3f386c80db91dfaeb04fc641c929",
+      "annotationsSha256": "83ad770e3afd14cad289bf4f7b2ec3a745c12d0fd047d031da70d8de24fda34b",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2905,
+            "referenceVoiced": 1303,
+            "predictedVoiced": 1185,
+            "hit": 1144,
+            "falseVoiced": 41,
+            "correct": 1113,
+            "correctUnvoiced": 1561,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8779739063699156,
+          "voicedPrecision": 0.9654008438818565,
+          "falseVoicedRate": 0.025593008739076155,
+          "within50CentsOfReference": 0.8541826554105909,
+          "overallAccuracy": 0.9204819277108434,
+          "medianCentsOnJointVoiced": 4.925705369305365,
+          "p95CentsOnJointVoiced": 36.284391513780776,
+          "p95CpuMs": 1.3485409999993863
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2910,
+            "referenceVoiced": 1299,
+            "predictedVoiced": 1249,
+            "hit": 1212,
+            "falseVoiced": 37,
+            "correct": 1205,
+            "correctUnvoiced": 1574,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9330254041570438,
+          "voicedPrecision": 0.9703763010408326,
+          "falseVoicedRate": 0.022967101179391682,
+          "within50CentsOfReference": 0.9276366435719784,
+          "overallAccuracy": 0.9549828178694159,
+          "medianCentsOnJointVoiced": 2.0626396839463297,
+          "p95CentsOnJointVoiced": 14.597883459843628,
+          "p95CpuMs": 0.5598329999993439
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "singer": "S14",
+      "averageMidi": 55,
+      "language": "English",
+      "seconds": 30.493492063492063,
+      "audioSha256": "8f6d828d65f723ca602abaf8b28a5e8bdc510d37951556b86ff8b6d07889af28",
+      "annotationsSha256": "12b8692cdc1d08d9813ce6c5d93105a43321155f78eeb331afd4a04df3cd58ce",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 3041,
+            "referenceVoiced": 1943,
+            "predictedVoiced": 1490,
+            "hit": 1414,
+            "falseVoiced": 76,
+            "correct": 1380,
+            "correctUnvoiced": 1022,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.7277406073082862,
+          "voicedPrecision": 0.9489932885906041,
+          "falseVoicedRate": 0.0692167577413479,
+          "within50CentsOfReference": 0.7102418939783839,
+          "overallAccuracy": 0.7898717527129234,
+          "medianCentsOnJointVoiced": 7.058109876480679,
+          "p95CentsOnJointVoiced": 37.914472952626774,
+          "p95CpuMs": 1.751124999995227
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 3045,
+            "referenceVoiced": 1951,
+            "predictedVoiced": 1706,
+            "hit": 1657,
+            "falseVoiced": 49,
+            "correct": 1656,
+            "correctUnvoiced": 1045,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.849308047155305,
+          "voicedPrecision": 0.9712778429073857,
+          "falseVoicedRate": 0.044789762340036565,
+          "within50CentsOfReference": 0.8487954894925679,
+          "overallAccuracy": 0.8870279146141216,
+          "medianCentsOnJointVoiced": 2.39872286804289,
+          "p95CentsOnJointVoiced": 12.315346614777788,
+          "p95CpuMs": 0.9335409999985131
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "singer": "S15",
+      "averageMidi": 58,
+      "language": "English",
+      "seconds": 8.713492063492064,
+      "audioSha256": "feb3c31e77b7779bdfb302c7819644535804f22a90a8e21f63c393d667ec5181",
+      "annotationsSha256": "e09cff1461c2d3ebedcd46093297c44bb00bc705d630d11a6b6e0b8323a047d9",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 863,
+            "referenceVoiced": 544,
+            "predictedVoiced": 479,
+            "hit": 458,
+            "falseVoiced": 21,
+            "correct": 421,
+            "correctUnvoiced": 298,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8419117647058824,
+          "voicedPrecision": 0.9561586638830898,
+          "falseVoicedRate": 0.06583072100313479,
+          "within50CentsOfReference": 0.7738970588235294,
+          "overallAccuracy": 0.8331402085747392,
+          "medianCentsOnJointVoiced": 8.181837480564473,
+          "p95CentsOnJointVoiced": 64.92228155528048,
+          "p95CpuMs": 1.4568339999968885
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 867,
+            "referenceVoiced": 545,
+            "predictedVoiced": 500,
+            "hit": 494,
+            "falseVoiced": 6,
+            "correct": 491,
+            "correctUnvoiced": 316,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9064220183486239,
+          "voicedPrecision": 0.988,
+          "falseVoicedRate": 0.018633540372670808,
+          "within50CentsOfReference": 0.9009174311926605,
+          "overallAccuracy": 0.9307958477508651,
+          "medianCentsOnJointVoiced": 3.232393768421376,
+          "p95CentsOnJointVoiced": 18.635235740332316,
+          "p95CpuMs": 0.5862919999999576
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "singer": "S16",
+      "averageMidi": 50,
+      "language": "English",
+      "seconds": 22,
+      "audioSha256": "d9d3c20794fd3b42e8f7693b91e8194844a6b80b3932ae4fc06d8e0e277687a7",
+      "annotationsSha256": "683af807f48f0a04718e02a45128fc2ee848307cd9b7eb0ac06de2218645791c",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2191,
+            "referenceVoiced": 1725,
+            "predictedVoiced": 1100,
+            "hit": 1078,
+            "falseVoiced": 22,
+            "correct": 979,
+            "correctUnvoiced": 444,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.624927536231884,
+          "voicedPrecision": 0.98,
+          "falseVoicedRate": 0.04721030042918455,
+          "within50CentsOfReference": 0.567536231884058,
+          "overallAccuracy": 0.6494751255134642,
+          "medianCentsOnJointVoiced": 7.674114800689885,
+          "p95CentsOnJointVoiced": 1895.4900356071971,
+          "p95CpuMs": 1.4755000000004657
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2196,
+            "referenceVoiced": 1724,
+            "predictedVoiced": 1300,
+            "hit": 1267,
+            "falseVoiced": 33,
+            "correct": 1165,
+            "correctUnvoiced": 439,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.7349187935034803,
+          "voicedPrecision": 0.9746153846153847,
+          "falseVoicedRate": 0.06991525423728813,
+          "within50CentsOfReference": 0.675754060324826,
+          "overallAccuracy": 0.7304189435336976,
+          "medianCentsOnJointVoiced": 3.094850223811555,
+          "p95CentsOnJointVoiced": 1895.0723989630303,
+          "p95CpuMs": 0.6004590000084136
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "singer": "S17",
+      "averageMidi": 59,
+      "language": "English",
+      "seconds": 18.333492063492063,
+      "audioSha256": "6629d0ecd7acddd1ce2877d00bc7ef80dc01fdd20f3225b9c2ed907da12f989e",
+      "annotationsSha256": "f6fbca9e262fe338f3ca8f99be5d08d8a4080a5b09337f4ba7f8366b0b159464",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1825,
+            "referenceVoiced": 1046,
+            "predictedVoiced": 897,
+            "hit": 874,
+            "falseVoiced": 23,
+            "correct": 859,
+            "correctUnvoiced": 756,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8355640535372849,
+          "voicedPrecision": 0.9743589743589743,
+          "falseVoicedRate": 0.029525032092426188,
+          "within50CentsOfReference": 0.8212237093690249,
+          "overallAccuracy": 0.8849315068493151,
+          "medianCentsOnJointVoiced": 5.101792604912993,
+          "p95CentsOnJointVoiced": 31.15498666265516,
+          "p95CpuMs": 1.40975000000617
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1829,
+            "referenceVoiced": 1042,
+            "predictedVoiced": 947,
+            "hit": 936,
+            "falseVoiced": 11,
+            "correct": 936,
+            "correctUnvoiced": 776,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8982725527831094,
+          "voicedPrecision": 0.9883843717001056,
+          "falseVoicedRate": 0.01397712833545108,
+          "within50CentsOfReference": 0.8982725527831094,
+          "overallAccuracy": 0.9360306178239475,
+          "medianCentsOnJointVoiced": 1.9262967387440557,
+          "p95CentsOnJointVoiced": 13.210513841367074,
+          "p95CpuMs": 0.6303330000082497
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "singer": "S18",
+      "averageMidi": 48,
+      "language": "French",
+      "seconds": 18.037823129251702,
+      "audioSha256": "3cade4af7d869e3175e3684075782a23f6af936942a8684bfbb4fdbe3a4f10e7",
+      "annotationsSha256": "1bbb29db223ac10d5bf7219145deefe4336c3f46692bf8f5d3963077543f6930",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1795,
+            "referenceVoiced": 1140,
+            "predictedVoiced": 650,
+            "hit": 645,
+            "falseVoiced": 5,
+            "correct": 636,
+            "correctUnvoiced": 650,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.5657894736842105,
+          "voicedPrecision": 0.9923076923076923,
+          "falseVoicedRate": 0.007633587786259542,
+          "within50CentsOfReference": 0.5578947368421052,
+          "overallAccuracy": 0.7164345403899721,
+          "medianCentsOnJointVoiced": 5.644941702442862,
+          "p95CentsOnJointVoiced": 33.28731093442583,
+          "p95CpuMs": 1.623208999997587
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1800,
+            "referenceVoiced": 1141,
+            "predictedVoiced": 773,
+            "hit": 772,
+            "falseVoiced": 1,
+            "correct": 766,
+            "correctUnvoiced": 658,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.6765994741454864,
+          "voicedPrecision": 0.9987063389391979,
+          "falseVoicedRate": 0.0015174506828528073,
+          "within50CentsOfReference": 0.6713409290096407,
+          "overallAccuracy": 0.7911111111111111,
+          "medianCentsOnJointVoiced": 2.923508713524496,
+          "p95CentsOnJointVoiced": 13.982963283046077,
+          "p95CpuMs": 0.5981670000037411
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "singer": "S19",
+      "averageMidi": 59,
+      "language": "French",
+      "seconds": 14.757823129251701,
+      "audioSha256": "22fb2df57dc7b68987cda67b30171c626a7818b9ab7db02185e8ea0a0a6db7ee",
+      "annotationsSha256": "e0b877b9679fcf7ee5eae7e41c8b1fd44328f681d2c9f2e2008f76559e0f54d4",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1467,
+            "referenceVoiced": 951,
+            "predictedVoiced": 989,
+            "hit": 879,
+            "falseVoiced": 110,
+            "correct": 863,
+            "correctUnvoiced": 406,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9242902208201893,
+          "voicedPrecision": 0.8887765419615774,
+          "falseVoicedRate": 0.2131782945736434,
+          "within50CentsOfReference": 0.907465825446898,
+          "overallAccuracy": 0.8650306748466258,
+          "medianCentsOnJointVoiced": 4.180280059580301,
+          "p95CentsOnJointVoiced": 33.05256501975816,
+          "p95CpuMs": 1.4402079999999842
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1472,
+            "referenceVoiced": 957,
+            "predictedVoiced": 952,
+            "hit": 876,
+            "falseVoiced": 76,
+            "correct": 865,
+            "correctUnvoiced": 439,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9153605015673981,
+          "voicedPrecision": 0.9201680672268907,
+          "falseVoicedRate": 0.14757281553398058,
+          "within50CentsOfReference": 0.9038662486938349,
+          "overallAccuracy": 0.8858695652173914,
+          "medianCentsOnJointVoiced": 1.370471670720998,
+          "p95CentsOnJointVoiced": 12.726768707008251,
+          "p95CpuMs": 0.7727079999895068
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "singer": "S20",
+      "averageMidi": 60,
+      "language": "French",
+      "seconds": 14.657823129251701,
+      "audioSha256": "cf155e4fd681331d34f316e421803255c449acb0393fa55cd23079ed103b37af",
+      "annotationsSha256": "bde7f5aca8cb7baacaed37d2e74178ba93b3c838280504dd488e47e2ab958e20",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1457,
+            "referenceVoiced": 991,
+            "predictedVoiced": 965,
+            "hit": 895,
+            "falseVoiced": 70,
+            "correct": 891,
+            "correctUnvoiced": 396,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9031281533804238,
+          "voicedPrecision": 0.927461139896373,
+          "falseVoicedRate": 0.15021459227467812,
+          "within50CentsOfReference": 0.8990918264379415,
+          "overallAccuracy": 0.883321894303363,
+          "medianCentsOnJointVoiced": 5.239037199538754,
+          "p95CentsOnJointVoiced": 23.356137448188196,
+          "p95CpuMs": 1.5689169999968726
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1462,
+            "referenceVoiced": 991,
+            "predictedVoiced": 1001,
+            "hit": 937,
+            "falseVoiced": 64,
+            "correct": 936,
+            "correctUnvoiced": 407,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9455095862764884,
+          "voicedPrecision": 0.936063936063936,
+          "falseVoicedRate": 0.13588110403397027,
+          "within50CentsOfReference": 0.9445005045408678,
+          "overallAccuracy": 0.9186046511627907,
+          "medianCentsOnJointVoiced": 2.0644361452371514,
+          "p95CentsOnJointVoiced": 11.665656206857568,
+          "p95CpuMs": 0.574417000010726
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "singer": "S21",
+      "averageMidi": 48,
+      "language": "French",
+      "seconds": 12.8578231292517,
+      "audioSha256": "27fcfb7c6150b412be3f22199202dfc2aab46e59e16cddd675b71c8325b3f66d",
+      "annotationsSha256": "4ab0aef2a982eb729e24bca42941e5e453376c1aa5c802f0136c07ea45397d6b",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1277,
+            "referenceVoiced": 851,
+            "predictedVoiced": 627,
+            "hit": 579,
+            "falseVoiced": 48,
+            "correct": 500,
+            "correctUnvoiced": 378,
+            "outOfRange": 33
+          },
+          "voicedRecall": 0.6803760282021152,
+          "voicedPrecision": 0.9234449760765551,
+          "falseVoicedRate": 0.11267605633802817,
+          "within50CentsOfReference": 0.5875440658049353,
+          "overallAccuracy": 0.687548942834769,
+          "medianCentsOnJointVoiced": 11.550354309897527,
+          "p95CentsOnJointVoiced": 78.51296306521601,
+          "p95CpuMs": 1.564541999992798
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1282,
+            "referenceVoiced": 849,
+            "predictedVoiced": 668,
+            "hit": 635,
+            "falseVoiced": 33,
+            "correct": 596,
+            "correctUnvoiced": 400,
+            "outOfRange": 33
+          },
+          "voicedRecall": 0.7479387514723204,
+          "voicedPrecision": 0.9505988023952096,
+          "falseVoicedRate": 0.07621247113163972,
+          "within50CentsOfReference": 0.702002355712603,
+          "overallAccuracy": 0.7769110764430577,
+          "medianCentsOnJointVoiced": 4.258783052710656,
+          "p95CentsOnJointVoiced": 70.25138211815704,
+          "p95CpuMs": 0.8036250000004657
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "singer": "S22",
+      "averageMidi": 56,
+      "language": "French",
+      "seconds": 14.0178231292517,
+      "audioSha256": "6300e1fc5981ea458074a24a1c32a1011a095df4162fbc8911d6b0240d182419",
+      "annotationsSha256": "71d3640f13e4360837c9e77dfa611fcd599dd76c47aeb454cc51699c6261fc01",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1393,
+            "referenceVoiced": 840,
+            "predictedVoiced": 832,
+            "hit": 780,
+            "falseVoiced": 52,
+            "correct": 749,
+            "correctUnvoiced": 501,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9285714285714286,
+          "voicedPrecision": 0.9375,
+          "falseVoicedRate": 0.09403254972875226,
+          "within50CentsOfReference": 0.8916666666666667,
+          "overallAccuracy": 0.8973438621679828,
+          "medianCentsOnJointVoiced": 6.085455833390718,
+          "p95CentsOnJointVoiced": 44.756626423539444,
+          "p95CpuMs": 1.7122500000114087
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1398,
+            "referenceVoiced": 848,
+            "predictedVoiced": 799,
+            "hit": 782,
+            "falseVoiced": 17,
+            "correct": 773,
+            "correctUnvoiced": 533,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9221698113207547,
+          "voicedPrecision": 0.9787234042553191,
+          "falseVoicedRate": 0.03090909090909091,
+          "within50CentsOfReference": 0.9115566037735849,
+          "overallAccuracy": 0.9341917024320457,
+          "medianCentsOnJointVoiced": 2.2423447738256668,
+          "p95CentsOnJointVoiced": 14.578145463692021,
+          "p95CpuMs": 0.6076670000038575
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "singer": "S21",
+      "averageMidi": 47,
+      "language": "French",
+      "seconds": 12.8978231292517,
+      "audioSha256": "f50830862faff98314bb7b28de452754ef2d939e187a6d89e5fb1ad56749aeb6",
+      "annotationsSha256": "9bc2f3a1ececf51f4cde93010cfa75d2362ce971b27e91c2ca04d9161abbe346",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1281,
+            "referenceVoiced": 879,
+            "predictedVoiced": 745,
+            "hit": 719,
+            "falseVoiced": 26,
+            "correct": 699,
+            "correctUnvoiced": 376,
+            "outOfRange": 14
+          },
+          "voicedRecall": 0.8179749715585893,
+          "voicedPrecision": 0.9651006711409396,
+          "falseVoicedRate": 0.06467661691542288,
+          "within50CentsOfReference": 0.7952218430034129,
+          "overallAccuracy": 0.8391881342701015,
+          "medianCentsOnJointVoiced": 7.768722098535515,
+          "p95CentsOnJointVoiced": 38.27383600360852,
+          "p95CpuMs": 1.413249999997788
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1286,
+            "referenceVoiced": 879,
+            "predictedVoiced": 759,
+            "hit": 751,
+            "falseVoiced": 8,
+            "correct": 743,
+            "correctUnvoiced": 399,
+            "outOfRange": 13
+          },
+          "voicedRecall": 0.8543799772468714,
+          "voicedPrecision": 0.9894598155467721,
+          "falseVoicedRate": 0.019656019656019656,
+          "within50CentsOfReference": 0.8452787258248009,
+          "overallAccuracy": 0.8880248833592534,
+          "medianCentsOnJointVoiced": 3.6992688910837455,
+          "p95CentsOnJointVoiced": 20.80565612087792,
+          "p95CpuMs": 0.5932920000050217
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "singer": "S23",
+      "averageMidi": 58,
+      "language": "French",
+      "seconds": 14.893492063492063,
+      "audioSha256": "46a831ed09f60728c6bfb051e27582d2d47021805ea8c4500bf4b2d6396a71cb",
+      "annotationsSha256": "f6c3f413e03265fdfbeb9b370ee4d2cabb1edfb0eec4eba7e41f6faaaf1b73fc",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1481,
+            "referenceVoiced": 1053,
+            "predictedVoiced": 1077,
+            "hit": 1011,
+            "falseVoiced": 66,
+            "correct": 996,
+            "correctUnvoiced": 362,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9601139601139601,
+          "voicedPrecision": 0.9387186629526463,
+          "falseVoicedRate": 0.1542056074766355,
+          "within50CentsOfReference": 0.9458689458689459,
+          "overallAccuracy": 0.9169480081026333,
+          "medianCentsOnJointVoiced": 3.3545753706317654,
+          "p95CentsOnJointVoiced": 23.37685508045217,
+          "p95CpuMs": 1.4004580000037095
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1485,
+            "referenceVoiced": 1053,
+            "predictedVoiced": 1055,
+            "hit": 1003,
+            "falseVoiced": 52,
+            "correct": 1003,
+            "correctUnvoiced": 380,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9525166191832859,
+          "voicedPrecision": 0.9507109004739337,
+          "falseVoicedRate": 0.12037037037037036,
+          "within50CentsOfReference": 0.9525166191832859,
+          "overallAccuracy": 0.9313131313131313,
+          "medianCentsOnJointVoiced": 1.8753155018866676,
+          "p95CentsOnJointVoiced": 9.662641160419447,
+          "p95CpuMs": 0.6564159999979893
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "singer": "S24",
+      "averageMidi": 56,
+      "language": "French+English",
+      "seconds": 13.0178231292517,
+      "audioSha256": "ce2128d9bfcd434a9c1507d1f2fcd504677e0b1e0fb5fe8bbe07406158df144f",
+      "annotationsSha256": "6f584e8d0aaf514efbb7986a049c01b0887491bf40bc43ec03a566c3a24f0924",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1293,
+            "referenceVoiced": 707,
+            "predictedVoiced": 521,
+            "hit": 449,
+            "falseVoiced": 72,
+            "correct": 412,
+            "correctUnvoiced": 514,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.635077793493635,
+          "voicedPrecision": 0.8618042226487524,
+          "falseVoicedRate": 0.12286689419795221,
+          "within50CentsOfReference": 0.5827439886845828,
+          "overallAccuracy": 0.7161639597834494,
+          "medianCentsOnJointVoiced": 9.872494773311667,
+          "p95CentsOnJointVoiced": 93.16977122467448,
+          "p95CpuMs": 1.789374999993015
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1298,
+            "referenceVoiced": 708,
+            "predictedVoiced": 587,
+            "hit": 531,
+            "falseVoiced": 56,
+            "correct": 505,
+            "correctUnvoiced": 534,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.75,
+          "voicedPrecision": 0.9045996592844975,
+          "falseVoicedRate": 0.09491525423728814,
+          "within50CentsOfReference": 0.713276836158192,
+          "overallAccuracy": 0.800462249614792,
+          "medianCentsOnJointVoiced": 2.8276881432259726,
+          "p95CentsOnJointVoiced": 42.98009284515532,
+          "p95CpuMs": 0.6195000000006985
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "singer": "S23",
+      "averageMidi": 59,
+      "language": "French",
+      "seconds": 14.033492063492064,
+      "audioSha256": "c3e68dddd4d6a6d34d135042f76ed74cf4b85208c2483a2d4a331d717af99356",
+      "annotationsSha256": "33b5787525e86b1ef7851d8f4df257ece0c709315dd3ae18b83e7e05a42f3934",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1395,
+            "referenceVoiced": 809,
+            "predictedVoiced": 743,
+            "hit": 682,
+            "falseVoiced": 61,
+            "correct": 669,
+            "correctUnvoiced": 525,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8430160692212608,
+          "voicedPrecision": 0.917900403768506,
+          "falseVoicedRate": 0.10409556313993173,
+          "within50CentsOfReference": 0.826946847960445,
+          "overallAccuracy": 0.8559139784946237,
+          "medianCentsOnJointVoiced": 6.982219415325215,
+          "p95CentsOnJointVoiced": 36.797590376957366,
+          "p95CpuMs": 1.5126250000030268
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1399,
+            "referenceVoiced": 812,
+            "predictedVoiced": 733,
+            "hit": 695,
+            "falseVoiced": 38,
+            "correct": 695,
+            "correctUnvoiced": 549,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8559113300492611,
+          "voicedPrecision": 0.9481582537517054,
+          "falseVoicedRate": 0.06473594548551959,
+          "within50CentsOfReference": 0.8559113300492611,
+          "overallAccuracy": 0.8892065761258041,
+          "medianCentsOnJointVoiced": 2.7168042678613173,
+          "p95CentsOnJointVoiced": 12.801743764350741,
+          "p95CpuMs": 0.7192079999949783
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "singer": "S25",
+      "averageMidi": 59,
+      "language": "English",
+      "seconds": 25.033492063492062,
+      "audioSha256": "1776573e0a80e0618258501c1fa877a75c36c3368ab24014aaebb522f92768b7",
+      "annotationsSha256": "63ea4ef4788a54dc3ec9e3abb3a1b68bd5f47392d2d3359f36e5b131dc42f2fe",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2495,
+            "referenceVoiced": 1544,
+            "predictedVoiced": 1667,
+            "hit": 1500,
+            "falseVoiced": 167,
+            "correct": 1470,
+            "correctUnvoiced": 784,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9715025906735751,
+          "voicedPrecision": 0.8998200359928015,
+          "falseVoicedRate": 0.17560462670872765,
+          "within50CentsOfReference": 0.9520725388601037,
+          "overallAccuracy": 0.9034068136272545,
+          "medianCentsOnJointVoiced": 6.52825724129396,
+          "p95CentsOnJointVoiced": 33.429554044739376,
+          "p95CpuMs": 1.463499999998021
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2499,
+            "referenceVoiced": 1539,
+            "predictedVoiced": 1605,
+            "hit": 1482,
+            "falseVoiced": 123,
+            "correct": 1481,
+            "correctUnvoiced": 837,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9629629629629629,
+          "voicedPrecision": 0.9233644859813084,
+          "falseVoicedRate": 0.128125,
+          "within50CentsOfReference": 0.9623131903833658,
+          "overallAccuracy": 0.9275710284113645,
+          "medianCentsOnJointVoiced": 2.1392873643356896,
+          "p95CentsOnJointVoiced": 11.443821226508254,
+          "p95CpuMs": 0.628208000009181
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "singer": "S26",
+      "averageMidi": 53,
+      "language": "English",
+      "seconds": 30,
+      "audioSha256": "896ae8828bfdc7eefc46a4781c328b979f519fea310c04c32cf5859c54ba4c7a",
+      "annotationsSha256": "cf553bfb06c17445e36d24c9a1c13c6501d0ac0687aebc19c0e242b45d809dd4",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2991,
+            "referenceVoiced": 1953,
+            "predictedVoiced": 1438,
+            "hit": 1384,
+            "falseVoiced": 54,
+            "correct": 1338,
+            "correctUnvoiced": 984,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.7086533538146441,
+          "voicedPrecision": 0.9624478442280946,
+          "falseVoicedRate": 0.05202312138728324,
+          "within50CentsOfReference": 0.685099846390169,
+          "overallAccuracy": 0.7763289869608826,
+          "medianCentsOnJointVoiced": 9.545174664704302,
+          "p95CentsOnJointVoiced": 43.14145724792134,
+          "p95CpuMs": 1.7357500000071013
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2996,
+            "referenceVoiced": 1961,
+            "predictedVoiced": 1659,
+            "hit": 1608,
+            "falseVoiced": 51,
+            "correct": 1592,
+            "correctUnvoiced": 984,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8199898011218766,
+          "voicedPrecision": 0.969258589511754,
+          "falseVoicedRate": 0.04927536231884058,
+          "within50CentsOfReference": 0.8118306986231515,
+          "overallAccuracy": 0.8598130841121495,
+          "medianCentsOnJointVoiced": 3.620829183553989,
+          "p95CentsOnJointVoiced": 18.842560562340317,
+          "p95CpuMs": 0.6047079999989364
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "singer": "S27",
+      "averageMidi": 58,
+      "language": "English",
+      "seconds": 24.853492063492062,
+      "audioSha256": "60cefc716230c7783889b1b46f8dcfba48669cf5be6cddb522c04e810c8d38d8",
+      "annotationsSha256": "74e80a72860ff758162a015a213026939723ec4190635b17c9261d6b079d2740",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2477,
+            "referenceVoiced": 1821,
+            "predictedVoiced": 927,
+            "hit": 925,
+            "falseVoiced": 2,
+            "correct": 861,
+            "correctUnvoiced": 654,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.5079626578802856,
+          "voicedPrecision": 0.9978425026968716,
+          "falseVoicedRate": 0.003048780487804878,
+          "within50CentsOfReference": 0.4728171334431631,
+          "overallAccuracy": 0.6116269681065806,
+          "medianCentsOnJointVoiced": 5.503363086305897,
+          "p95CentsOnJointVoiced": 1195.5453475504717,
+          "p95CpuMs": 1.5428329999995185
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2481,
+            "referenceVoiced": 1819,
+            "predictedVoiced": 1147,
+            "hit": 1144,
+            "falseVoiced": 3,
+            "correct": 1034,
+            "correctUnvoiced": 659,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.6289169873556899,
+          "voicedPrecision": 0.997384481255449,
+          "falseVoicedRate": 0.004531722054380665,
+          "within50CentsOfReference": 0.5684442001099506,
+          "overallAccuracy": 0.6823861346231358,
+          "medianCentsOnJointVoiced": 2.5887370648532992,
+          "p95CentsOnJointVoiced": 1201.8973020189255,
+          "p95CpuMs": 0.5896249999932479
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "singer": "S28",
+      "averageMidi": 47,
+      "language": "Mandarin",
+      "seconds": 13.8,
+      "audioSha256": "85c1c4268527cc53240e9f4f0d557d92f3bf9856d6d42ca50e80c7cbb02bea72",
+      "annotationsSha256": "a2327fff128c5355ea4e6e9ca6f6fca04a8d04f5b4085cf082bd86952cebc1dc",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1371,
+            "referenceVoiced": 961,
+            "predictedVoiced": 674,
+            "hit": 672,
+            "falseVoiced": 2,
+            "correct": 668,
+            "correctUnvoiced": 408,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.6992715920915713,
+          "voicedPrecision": 0.9970326409495549,
+          "falseVoicedRate": 0.004878048780487805,
+          "within50CentsOfReference": 0.6951092611862643,
+          "overallAccuracy": 0.7848285922684172,
+          "medianCentsOnJointVoiced": 6.979031603964197,
+          "p95CentsOnJointVoiced": 27.495630881776076,
+          "p95CpuMs": 1.4540000000124564
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1376,
+            "referenceVoiced": 961,
+            "predictedVoiced": 811,
+            "hit": 804,
+            "falseVoiced": 7,
+            "correct": 804,
+            "correctUnvoiced": 408,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8366285119667014,
+          "voicedPrecision": 0.9913686806411838,
+          "falseVoicedRate": 0.016867469879518072,
+          "within50CentsOfReference": 0.8366285119667014,
+          "overallAccuracy": 0.8808139534883721,
+          "medianCentsOnJointVoiced": 3.551361940862829,
+          "p95CentsOnJointVoiced": 14.73344258347936,
+          "p95CpuMs": 0.6437080000032438
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "singer": "S28",
+      "averageMidi": 48,
+      "language": "Mandarin",
+      "seconds": 23.2778231292517,
+      "audioSha256": "2e4eacabc71019752feb17da9e1b0228b9b5ba0ae97ec41107f80dac65750dbb",
+      "annotationsSha256": "b9e8b5721a596f4f6272337072b976e0d8d92f9b5501f876a8f5afb6f46e8296",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2319,
+            "referenceVoiced": 1516,
+            "predictedVoiced": 1100,
+            "hit": 1076,
+            "falseVoiced": 24,
+            "correct": 1064,
+            "correctUnvoiced": 779,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.7097625329815304,
+          "voicedPrecision": 0.9781818181818182,
+          "falseVoicedRate": 0.029887920298879204,
+          "within50CentsOfReference": 0.7018469656992085,
+          "overallAccuracy": 0.7947391116860716,
+          "medianCentsOnJointVoiced": 7.412850816003199,
+          "p95CentsOnJointVoiced": 27.66355064413903,
+          "p95CpuMs": 1.427125000001979
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2324,
+            "referenceVoiced": 1514,
+            "predictedVoiced": 1278,
+            "hit": 1256,
+            "falseVoiced": 22,
+            "correct": 1256,
+            "correctUnvoiced": 788,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8295904887714664,
+          "voicedPrecision": 0.9827856025039123,
+          "falseVoicedRate": 0.027160493827160494,
+          "within50CentsOfReference": 0.8295904887714664,
+          "overallAccuracy": 0.8795180722891566,
+          "medianCentsOnJointVoiced": 3.0864863530846556,
+          "p95CentsOnJointVoiced": 13.537013326957169,
+          "p95CpuMs": 0.606207999997423
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "singer": "S29",
+      "averageMidi": 62,
+      "language": "Hawaiian+English",
+      "seconds": 38.736009070294784,
+      "audioSha256": "53cb202ddabf1cb7591be49da9160f508cb81c6078c50c7e41a13efe109a0622",
+      "annotationsSha256": "9d28fa1df8baf180fd35f5049c4cdd7a675b0a2c81857fa7893a04a39cbdfeb7",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 3865,
+            "referenceVoiced": 2968,
+            "predictedVoiced": 2975,
+            "hit": 2912,
+            "falseVoiced": 63,
+            "correct": 2901,
+            "correctUnvoiced": 834,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9811320754716981,
+          "voicedPrecision": 0.9788235294117648,
+          "falseVoicedRate": 0.07023411371237458,
+          "within50CentsOfReference": 0.9774258760107817,
+          "overallAccuracy": 0.9663648124191462,
+          "medianCentsOnJointVoiced": 3.30528098963643,
+          "p95CentsOnJointVoiced": 16.945419082415437,
+          "p95CpuMs": 1.9255419999972219
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 3869,
+            "referenceVoiced": 2962,
+            "predictedVoiced": 2950,
+            "hit": 2920,
+            "falseVoiced": 30,
+            "correct": 2920,
+            "correctUnvoiced": 877,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9858203916272789,
+          "voicedPrecision": 0.9898305084745763,
+          "falseVoicedRate": 0.03307607497243661,
+          "within50CentsOfReference": 0.9858203916272789,
+          "overallAccuracy": 0.9813905401912639,
+          "medianCentsOnJointVoiced": 1.0578527446871482,
+          "p95CentsOnJointVoiced": 6.075845153819644,
+          "p95CpuMs": 0.9056249999994179
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "singer": "S29",
+      "averageMidi": 60,
+      "language": "English",
+      "seconds": 27.84,
+      "audioSha256": "2113abf18ddfb0e789021b8e2a2e42743b80d82c51aaca5fe9d228636883a239",
+      "annotationsSha256": "59d2f8a9c8772e76021eeb61d69bee7f368f653ea323e7f6a4117cdd527463b0",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 2775,
+            "referenceVoiced": 1427,
+            "predictedVoiced": 1368,
+            "hit": 1258,
+            "falseVoiced": 110,
+            "correct": 1217,
+            "correctUnvoiced": 1238,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8815697266993693,
+          "voicedPrecision": 0.9195906432748538,
+          "falseVoicedRate": 0.08160237388724036,
+          "within50CentsOfReference": 0.8528381219341276,
+          "overallAccuracy": 0.8846846846846846,
+          "medianCentsOnJointVoiced": 8.51163114806486,
+          "p95CentsOnJointVoiced": 43.226873372340314,
+          "p95CpuMs": 1.5558750000054715
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 2780,
+            "referenceVoiced": 1433,
+            "predictedVoiced": 1341,
+            "hit": 1306,
+            "falseVoiced": 35,
+            "correct": 1305,
+            "correctUnvoiced": 1312,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9113747383112352,
+          "voicedPrecision": 0.9739000745712155,
+          "falseVoicedRate": 0.025983667409057165,
+          "within50CentsOfReference": 0.9106769016050245,
+          "overallAccuracy": 0.9413669064748201,
+          "medianCentsOnJointVoiced": 2.2746288064522955,
+          "p95CentsOnJointVoiced": 14.00955214247723,
+          "p95CpuMs": 0.5990840000013122
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "singer": "S29",
+      "averageMidi": 61,
+      "language": "English",
+      "seconds": 31.68,
+      "audioSha256": "23badef22642b2e00b676cf3b998d2f2d2d1ee9949888dcd6f038b0b6621b9db",
+      "annotationsSha256": "96c7462f7edcd3af715647b609a24559c60efabf0d6a77d6273062479991a6a6",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 3159,
+            "referenceVoiced": 2295,
+            "predictedVoiced": 2155,
+            "hit": 2074,
+            "falseVoiced": 81,
+            "correct": 2049,
+            "correctUnvoiced": 783,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9037037037037037,
+          "voicedPrecision": 0.9624129930394432,
+          "falseVoicedRate": 0.09375,
+          "within50CentsOfReference": 0.8928104575163399,
+          "overallAccuracy": 0.8964862298195632,
+          "medianCentsOnJointVoiced": 5.876159819649502,
+          "p95CentsOnJointVoiced": 30.53620055487137,
+          "p95CpuMs": 1.580459000004339
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 3164,
+            "referenceVoiced": 2292,
+            "predictedVoiced": 2246,
+            "hit": 2198,
+            "falseVoiced": 48,
+            "correct": 2197,
+            "correctUnvoiced": 824,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9589877835951134,
+          "voicedPrecision": 0.9786286731967943,
+          "falseVoicedRate": 0.05504587155963303,
+          "within50CentsOfReference": 0.9585514834205934,
+          "overallAccuracy": 0.9548040455120101,
+          "medianCentsOnJointVoiced": 1.6110729796786867,
+          "p95CentsOnJointVoiced": 9.144552314686374,
+          "p95CpuMs": 0.6490409999969415
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "singer": "S9",
+      "averageMidi": 60,
+      "language": "English",
+      "seconds": 18.5778231292517,
+      "audioSha256": "add1fc90659541163158bf025eeb0c09b7f738bdfcc812a835654ca1e8544b04",
+      "annotationsSha256": "4ba1a1c1a8e8b068cee17affee35df893270900964b4974b8457fefc4ce93e8e",
+      "results": [
+        {
+          "windowMs": 80,
+          "samples": 4096,
+          "counts": {
+            "frames": 1849,
+            "referenceVoiced": 1185,
+            "predictedVoiced": 1130,
+            "hit": 1051,
+            "falseVoiced": 79,
+            "correct": 1031,
+            "correctUnvoiced": 585,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.8869198312236287,
+          "voicedPrecision": 0.9300884955752212,
+          "falseVoicedRate": 0.11897590361445783,
+          "within50CentsOfReference": 0.870042194092827,
+          "overallAccuracy": 0.8739859383450513,
+          "medianCentsOnJointVoiced": 5.669337106703704,
+          "p95CentsOnJointVoiced": 31.88816291956087,
+          "p95CpuMs": 1.488666999997804
+        },
+        {
+          "windowMs": 40,
+          "samples": 2048,
+          "counts": {
+            "frames": 1854,
+            "referenceVoiced": 1187,
+            "predictedVoiced": 1165,
+            "hit": 1121,
+            "falseVoiced": 44,
+            "correct": 1112,
+            "correctUnvoiced": 623,
+            "outOfRange": 0
+          },
+          "voicedRecall": 0.9443976411120472,
+          "voicedPrecision": 0.9622317596566523,
+          "falseVoicedRate": 0.06596701649175413,
+          "within50CentsOfReference": 0.93681550126369,
+          "overallAccuracy": 0.935814455231931,
+          "medianCentsOnJointVoiced": 1.6252718568287112,
+          "p95CentsOnJointVoiced": 10.604496498950063,
+          "p95CpuMs": 0.5977909999783151
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Human-corrected pYIN annotations are imperfect and related to the YIN family being tested",
+    "Nearest annotated pitch sampled at each analysis window center; 10 ms hop; no gain normalization",
+    "Errors and missed voiced frames are retained, including reference pitch outside the supported 80–1000 Hz range",
+    "Offline recordings from varied devices do not measure live microphone-to-display latency",
+    "Pitch tracking is not note-event, lyric, vocal-health or teaching-effectiveness validation"
+  ]
+}

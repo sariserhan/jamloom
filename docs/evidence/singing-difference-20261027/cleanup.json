@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "beforeFreeBytes": 9646583808,
+  "afterFreeBytes": 16678322176,
+  "removed": [
+    {
+      "path": "/Users/serhansari/Library/Developer/Xcode/iOS DeviceSupport/iPhone15,2 27.0.1 (24A446)",
+      "allocatedBytesBefore": 6859427840,
+      "classification": "regenerable device symbols, temporary debug copy or index",
+      "activeHandles": false
+    },
+    {
+      "path": "/tmp/jamloom-catalogue-without-fixture.app",
+      "allocatedBytesBefore": 126853120,
+      "classification": "regenerable device symbols, temporary debug copy or index",
+      "activeHandles": false
+    },
+    {
+      "path": "/Users/serhansari/Library/Developer/Xcode/DerivedData/Jamloom-chzdzqhhoivhckfmmiccwznveggy/Index.noindex",
+      "allocatedBytesBefore": 156266496,
+      "classification": "regenerable device symbols, temporary debug copy or index",
+      "activeHandles": false
+    }
+  ],
+  "preserved": "source, recordings, datasets, credentials, release archives and test reports",
+  "limitation": "Xcode can regenerate device symbols and indexes on next debug session"
+}

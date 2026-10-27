@@ -2,7 +2,8 @@ import {chromium,webkit} from 'playwright';
 import assert from 'node:assert/strict';
 import AxeBuilder from '@axe-core/playwright';
 import {writeFile,mkdir} from 'node:fs/promises';
-const output='../../docs/evidence/singing-course-20261026';await mkdir(output,{recursive:true});
+const output=process.env.SINGING_EVIDENCE_DIR||'../../docs/evidence/singing-course-20261026';await mkdir(output,{recursive:true});
+const base=process.env.SINGING_BASE_URL||'http://localhost:3000';
 const results=[];
 for(const [name,type] of [['chromium',chromium],['webkit',webkit]].filter(([name])=>!process.env.SINGING_BROWSER||name===process.env.SINGING_BROWSER)){
  console.log('Testing',name);
@@ -23,11 +24,12 @@ for(const [name,type] of [['chromium',chromium],['webkit',webkit]].filter(([name
    return stream;
   }}});
  });
- await page.goto('http://localhost:3000/singing-academy/lessons/first-note');await page.waitForSelector('#start');assert.match(await page.title(),/Find your note/);
+ await page.goto(base+'/singing-academy/lessons/first-note');await page.waitForSelector('#start');assert.match(await page.title(),/Find your note/);
  await page.locator('#help').click();assert(await page.locator('#guide').isVisible());await page.locator('#close-help').click();
  const accessibility=await new AxeBuilder({page}).analyze();assert.deepEqual(accessibility.violations.map(v=>({id:v.id,impact:v.impact})),[]);
  await page.screenshot({path:output+'/'+name+'-lesson.png',fullPage:true});
  await page.locator('#start').click();await page.waitForFunction(()=>document.querySelector('#mic-state').textContent.includes('ready'));
+ await page.waitForFunction(()=>window.__contexts.at(-1)?.currentTime>.05);
  const pianoRms=await page.evaluate(async()=>{let peak=0;for(let i=0;i<12;i++){await new Promise(r=>setTimeout(r,50));const a=new Float32Array(window.__pianoMeter.fftSize);window.__pianoMeter.getFloatTimeDomainData(a);peak=Math.max(peak,Math.sqrt(a.reduce((sum,v)=>sum+v*v,0)/a.length));}return peak;});assert(pianoRms>.0001,'WASM piano must produce real audio');
  await page.waitForFunction(()=>document.querySelector('#result').textContent.includes('Lesson complete'),undefined,{timeout:15000}).catch(async error=>{console.log(await page.evaluate(()=>({body:document.body.innerText,contexts:window.__contexts.map(c=>({state:c.state,time:c.currentTime,rate:c.sampleRate})),tracks:window.__streams.map(s=>s.getTracks().map(t=>({enabled:t.enabled,state:t.readyState})))})));await browser.close();throw error;});
  assert.equal(await page.locator('#mic-state').textContent(),'Microphone off');assert(await page.locator('#start').isEnabled());

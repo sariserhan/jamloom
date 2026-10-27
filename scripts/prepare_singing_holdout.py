@@ -43,14 +43,14 @@ class RangeReader(io.RawIOBase):
         return data
 
 
-def prepare(destination):
-    manifest = json.loads(MANIFEST.read_text())
+def prepare(destination, manifest_path=MANIFEST):
+    manifest = json.loads(manifest_path.read_text())
     if destination.exists(): raise ValueError('Use a new output directory')
     assert manifest['archiveURL'] == 'https://zenodo.org/records/10200775/files/VocalSet.zip'
-    assert manifest['archiveBytes'] == 2488206010 and len(manifest['tracks']) == 37
+    assert manifest['archiveBytes'] == 2488206010 and 0 < len(manifest['tracks']) <= 40
     destination.mkdir(parents=True)
     reader = RangeReader(manifest['archiveURL'], manifest['archiveBytes'])
-    receipt = {'manifestSha256': hashlib.sha256(MANIFEST.read_bytes()).hexdigest(), 'files': []}
+    receipt = {'manifestSha256': hashlib.sha256(manifest_path.read_bytes()).hexdigest(), 'files': []}
     with zipfile.ZipFile(reader) as archive:
         for row in manifest['tracks']:
             for kind in ('audio', 'annotation'):
@@ -71,5 +71,5 @@ def prepare(destination):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2: raise SystemExit('Usage: prepare_singing_holdout.py NEW_OUTPUT_DIRECTORY')
-    prepare(Path(sys.argv[1]))
+    if len(sys.argv) not in (2, 3): raise SystemExit('Usage: prepare_singing_holdout.py NEW_OUTPUT_DIRECTORY [FROZEN_MANIFEST]')
+    prepare(Path(sys.argv[1]), Path(sys.argv[2]) if len(sys.argv) == 3 else MANIFEST)

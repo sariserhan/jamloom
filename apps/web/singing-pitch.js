@@ -23,7 +23,7 @@ function detectPitch(samples, sampleRate) {
     return null;
   }
   const minTau = Math.floor(sampleRate / MAX_FREQUENCY);
-  const maxTau = Math.min(Math.floor(sampleRate / MIN_FREQUENCY), samples.length - 1);
+  const maxTau = Math.min(Math.floor(sampleRate / MIN_FREQUENCY), Math.floor(samples.length / 2));
   if (maxTau <= minTau) {
     return null;
   }
@@ -31,8 +31,9 @@ function detectPitch(samples, sampleRate) {
   yinBuffer[0] = 1;
   for (let tau = 1; tau <= maxTau; tau++) {
     let sum = 0;
-    for (let i = 0; i < samples.length - tau; i++) {
-      const delta = samples[i] - samples[i + tau];
+    const start = Math.floor((maxTau - tau) / 2);
+    for (let i = 0; i < samples.length - maxTau; i++) {
+      const delta = samples[start + i] - samples[start + i + tau];
       sum += delta * delta;
     }
     yinBuffer[tau] = sum;

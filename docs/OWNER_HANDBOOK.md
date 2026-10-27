@@ -1,3 +1,9 @@
+## Current candidate and storage — 2026-10-27
+
+[Current results](SINGING_DIFFERENCE.md). Build **0.10.2 (28)** is signed, audited and exported at `build-ios-store/Jamloom-0.10.2-28.xcarchive` and `build-ios-store/export-0.10.2-28/Jamloom.ipa`. It is installed and launches after unlock; the new physical lifecycle attempt failed, so that qualification remains open. Removed 6.65 GiB of inactive debug caches; 15.53 GiB free afterward. Xcode may regenerate them. No publication or sales activation. The real Apple catalogue now passes after Xcode first launch and normal IDE launch; a provider receipt test timed out, so payments remain unqualified. The isolated test databases were removed. Optional SDK/runtime downloads are deselected; preserve archives, evidence and recordings during cache cleanup.
+
+The shared singing detector has centered equal-length lag spans, unchanged gates and mixed measured results: improvements on new scale recordings, a small vocadito regression, and reduced CPU. See the report before describing accuracy to users. Remaining independent listening, natural vocals, provider payment and popular-song rights gates are not closed by this change.
+
 ## Latest qualification boundaries — 2026-10-27
 
 [New singing evaluation](SINGING_HOLDOUT.md) measures 73.71% within 50 cents including misses on 35 eligible recordings/18 singers; two of the 37 selected files fail timeline integrity. Keep that result separate from prior inspected-corpus and owner microphone checks. No thresholds changed and no evaluation audio ships.

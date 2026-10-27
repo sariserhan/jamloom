@@ -5,7 +5,7 @@
 ## Current maintenance and retained completion evidence
 
 - Community loading races, stale player errors, cross-product discovery IDs and stalled support submissions are fixed locally. The direct bug-report page now hydrates under its actual CSP; forms prevent pre-hydration GET submission. [Tests and limitations](PRODUCT_MAINTENANCE.md).
-- The current signed Release candidate is **0.10.2 build 27**, with the Community fix and three passing scoped physical checks. Apple still has build 24 selected in the unsubmitted draft. The latest [Apple catalogue diagnostic](APPLE_CATALOGUE_DIAGNOSTIC.md) remains unqualified; the default local StoreKit launch configuration is removed and three explicit local purchase tests pass.
+- The current signed/exported Release candidate is **0.10.2 build 28**, with centered singing analysis. Prior build 27 passed three scoped physical checks; build-28 physical qualification is separate. Apple still has build 24 selected in the unsubmitted draft. The [real catalogue now passes](SINGING_DIFFERENCE.md), but the sandbox receipt attempt timed out and provider payment remains unqualified. Three prior explicit local purchase tests pass.
 
 - Singing Academy now appears in the existing homepage choices and product chapters, Start, Tour and coming-soon catalogue. Its image is a capture of the actual original-song interface. Access flags are unchanged.
 - The coming-soon footer now exposes the existing public Report a bug flow. Eleven product guides, rating persistence and bug delivery to the private admin inbox pass in Chromium and WebKit against disposable local accounts.
@@ -13,6 +13,8 @@
 - Product regressions now follow the shared catalogue and current four-MiB Music DNA request limit. Invalid profiles, oversized requests, authentication, account isolation and disabled credit purchases are separately checked.
 - Earlier signed **iPhone 0.10.2 (24)** passed bundle/signature audits and was installed/launched. Five physical tests passed: two local-server tests, Community language/favorites, player pause/seek/browsing, and Singing playback/tab cleanup. That build carried the then-current shared audio implementation; it does not establish real singing accuracy or an authenticated owner rating save.
 - The old temporary R2 probe returns authenticated HEAD 404 after its expiry deadline. This establishes current absence, not the exact deletion time or independently proven deletion cause.
+
+New singing evidence: [centered analysis](SINGING_DIFFERENCE.md) improves new-recording within-50-cent accuracy from 77.48% to 79.88% with lower CPU, with a small vocadito regression. Analysis remains PARTIAL.
 
 ## Every product
 

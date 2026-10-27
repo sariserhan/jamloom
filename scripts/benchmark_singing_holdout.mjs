@@ -5,7 +5,6 @@ import {resolve,basename} from 'node:path';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {performance} from 'node:perf_hooks';
-import {detectPitch,isSingingPitch} from '../apps/web/singing-pitch.js';
 
 const root=resolve(import.meta.dirname,'..'),base=resolve(process.argv[2]??'build-singing-holdout-20261027');
 const out=process.argv[3];assert(out,'Provide a new report filename');
@@ -13,7 +12,9 @@ const manifestBytes=readFileSync(root+'/docs/evidence/singing-holdout-20261027/s
 const manifest=JSON.parse(manifestBytes),receipt=JSON.parse(readFileSync(base+'/receipt.json'));
 const sha=b=>createHash('sha256').update(b).digest('hex');
 assert.equal(sha(manifestBytes),receipt.manifestSha256);
-assert.equal(sha(readFileSync(root+'/apps/web/singing-pitch.js')),manifest.detectorSha256,'Detector changed after freezing the study');
+const detectorSource=execFileSync('git',['show','67c7cb1:apps/web/singing-pitch.js'],{cwd:root});
+assert.equal(sha(detectorSource),manifest.detectorSha256,'Frozen baseline detector mismatch');
+const {detectPitch,isSingingPitch}=await import('data:text/javascript;base64,'+detectorSource.toString('base64'));
 const metrics=c=>({within50CentsIncludingMisses:c.correct/Math.max(1,c.referenceVoiced),voicedRecall:c.hit/Math.max(1,c.referenceVoiced),voicedPrecision:c.hit/Math.max(1,c.predictedVoiced),falseVoicedRate:c.falseVoiced/Math.max(1,c.frames-c.referenceVoiced),overallAccuracy:(c.correct+c.correctUnvoiced)/Math.max(1,c.frames)});
 assert.equal(metrics({correct:1,referenceVoiced:2}).within50CentsIncludingMisses,.5);
 assert.equal(isSingingPitch({frequency:220,confidence:.96,rms:.005}),true);
