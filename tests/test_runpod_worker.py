@@ -110,11 +110,8 @@ class WorkerTests(unittest.TestCase):
         self.assertFalse(paths[-1].exists())
 
     def test_variable_lengths_and_invalid_requests(self):
-        for product,seconds in [('music-dna',100),('music-dna',140),('improvise',30),('improvise',45)]:
+        for product,seconds in [('music-dna',100),('music-dna',140)]:
             job=copy.deepcopy(self.job);job['product']=product
-            if product=='improvise':
-                job['payload']={'voice':'male','genre':'jazz','consent':True}
-                job['source']={'url':URL.replace('11111111-1111','22222222-1111'),'bytes':44,'sha256':'a'*64}
             job['payload']['duration_seconds']=seconds
             def execute(work,timeout):
                 with wave.open(str(work/'audio.wav'),'wb') as wav:
@@ -129,9 +126,25 @@ class WorkerTests(unittest.TestCase):
             with patch.object(worker,'download'),patch.object(worker,'execute',side_effect=execute),patch('urllib.request.build_opener',return_value=Opener()):
                 result=worker.handler({'input':job})
                 self.assertEqual(result['seconds'],seconds);self.assertEqual(result['audio_bytes'],seconds*192000+44)
-            for invalid in (True,0,141,46 if product=='improvise' else 99):
+            for invalid in (True,0,141,99):
                 job['payload']['duration_seconds']=invalid
                 with self.assertRaises(ValueError):worker.validate(job)
+
+    def test_dna_only_worker_rejects_improvise_before_recording_transfer(self):
+        job=copy.deepcopy(self.job)
+        job['product']='improvise'
+        job['payload']={'voice':'male','genre':'jazz','consent':True}
+        job['source']={'url':URL.replace('11111111-1111','22222222-1111'),'bytes':44,'sha256':'a'*64}
+        with patch.object(worker,'download') as download,patch.object(worker,'execute') as execute:
+            with self.assertRaisesRegex(RuntimeError,r'^Jamloom generation failed; no completed song was accepted\.$'):
+                worker.handler({'input':job})
+        download.assert_not_called();execute.assert_not_called()
+
+    def test_public_worker_build_does_not_include_research_separator(self):
+        dockerfile=(ROOT/'services/runpod/Dockerfile').read_text()
+        prepare=(ROOT/'services/runpod/prepare_models.py').read_text()
+        self.assertNotIn('singer-separation.json',dockerfile)
+        self.assertNotIn('singer-separation.json',prepare)
 
     def test_source_receipt_is_verified(self):
         class Response(io.BytesIO):pass

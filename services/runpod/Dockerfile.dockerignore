@@ -5,13 +5,8 @@
 !scripts/dna_direction.py
 !scripts/dna_language.py
 !scripts/check_dna_audio.py
-!scripts/singer_studio.py
 !scripts/analyze_words.py
 !scripts/arrange_voice_research.py
-!scripts/assemble_sung_response.py
-!scripts/local_call_edit.py
-!scripts/source_led_response.py
-!scripts/separate_singer.py
 !assets/
 !assets/manifests/
 !assets/manifests/singing-model.json
@@ -19,7 +14,6 @@
 !assets/manifests/dna-auditor.json
 !assets/manifests/dna-directions.json
 !assets/manifests/dna-languages.json
-!assets/manifests/singer-separation.json
 !assets/manifests/word-timing-tiny.json
 !services/
 !services/runpod/

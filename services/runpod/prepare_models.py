@@ -2,7 +2,6 @@
 import json
 from pathlib import Path
 import sys
-import urllib.request
 from huggingface_hub import snapshot_download
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -53,16 +52,8 @@ def finish():
     for name, receipt in speech['files'].items():
         if digest(target/name) != receipt['sha256']:
             raise ValueError('Speech model checksum mismatch')
-    separator = json.loads((ROOT/'assets/manifests/singer-separation.json').read_text())
-    target = ROOT/'build-style-training/separator/hdemucs_high_trained.pt'
-    target.parent.mkdir(parents=True, exist_ok=True)
-    with urllib.request.urlopen(separator['url'], timeout=120) as response, target.open('wb') as output:
-        while chunk := response.read(1024*1024):
-            output.write(chunk)
-    if digest(target) != separator['sha256']:
-        raise ValueError('Separator checksum mismatch')
     runtime(ROOT/'build-style-training/upstream')
-    print('PASS: pinned public models verified')
+    print('PASS: pinned DNA worker models verified')
 
 
 if __name__ == '__main__':
