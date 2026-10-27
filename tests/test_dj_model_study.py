@@ -21,6 +21,37 @@ from dj_warm_engine import Renderer
 
 
 class ModelStudyTests(unittest.TestCase):
+    def test_genre_matrix_and_new_permit_preserve_existing_studies(self):
+        rows=cases(genres=True)
+        self.assertEqual([r['request']['style'] for r in rows],['house','tech-house','techno']*2)
+        self.assertTrue(all(r['instrumental'] and not r['vocals'] and r['seconds']==60 for r in rows))
+        for a,b in zip(rows[:3],rows[3:]):
+            self.assertEqual(a['caption'],b['caption'])
+            self.assertEqual(a['request']['seed'],b['request']['seed'])
+            self.assertEqual(a['bpm'],b['bpm'])
+        self.assertTrue(all(r['request']['session']!=cases()[0]['request']['session'] for r in rows))
+        with self.assertRaises(ValueError):cases(consistency=True,genres=True)
+        plan=json.loads((ROOT/'docs/evidence/dj-genre-models-20261027/gpu-plan.json').read_text())
+        plan['status']='PREPARED'
+        with self.assertRaises(ValueError):validate_model_study(plan,genres=True)
+        plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 genre-model comparison')
+        with self.assertRaises(ValueError):validate_model_study(plan,genres=True)
+        plan['controller_sha256']=hashlib.sha256((ROOT/'scripts/dj_sample_trial.py').read_bytes()).hexdigest()
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
+        validate_model_study(plan,genres=True)
+        for change in ({'owner_statement':'do all'},{'max_requests':7},{'max_workers':2},{'max_minutes':41},{'budget_usd':4},{'replacements':True},{'public_activation':True},{'controller_sha256':'0'*64}):
+            with self.assertRaises(ValueError):validate_model_study({**plan,**change},genres=True)
+        with self.assertRaises(ValueError):validate_model_study(plan)
+        import dj_sample_trial as trial
+        with tempfile.TemporaryDirectory() as folder:
+            evidence=Path(folder);(evidence/'gpu-plan.json').write_text(json.dumps({**plan,'status':'PREPARED'}))
+            with patch.object(trial,'MODEL_STUDY',True),patch.object(trial,'GENRES',True),patch.object(trial,'EVIDENCE',evidence),patch.object(trial.vast,'instances') as provider:
+                with self.assertRaises(ValueError):trial.preflight()
+                provider.assert_not_called()
+        from vast_trial import dj_bootstrap_command
+        self.assertIn(' 6 --genre-study >',dj_bootstrap_command(1900000000,6,genres_study=True))
+        with self.assertRaises(ValueError):dj_bootstrap_command(1900000000,6,genres_study=True,model_study=True)
+
     def test_fresh_consistency_preserves_preferred_recipes_and_needs_its_own_permit(self):
         rows=cases(True); originals=cases()
         self.assertEqual(len(rows),6)
@@ -191,7 +222,7 @@ class ModelStudyTests(unittest.TestCase):
             for name in ('dj_model_study.py','dj_track_worker.py','club_benchmark_cases.py'):
                 shutil.copyfile(ROOT/'scripts'/name,package/name)
             shutil.copyfile(ROOT/'assets/manifests/dj-styles.json',package/'dj-styles.json')
-            code='import sys;sys.path.insert(0,sys.argv[1]);from dj_model_study import cases;assert len(cases())==6'
+            code='import sys;sys.path.insert(0,sys.argv[1]);from dj_model_study import cases;assert len(cases())==6;assert len(cases(genres=True))==6'
             result=subprocess.run([sys.executable,'-I','-c',code,str(package)],cwd=folder,capture_output=True,text=True)
             self.assertEqual(result.returncode,0,result.stderr)
         from vast_trial import dj_bootstrap_command

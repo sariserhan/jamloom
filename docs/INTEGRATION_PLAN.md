@@ -1,3 +1,7 @@
+## Non-release follow-through — 2026-10-27
+
+The current engine remains in place: the separate-entry/exit DJ grid study found no additional usable beat transitions, and the independent MPM singing candidate regressed accuracy and CPU. Neither is adopted. The exact existing ACE-Step base/turbo genre comparison is separately approved, but its single attempt failed before generation; cleanup confirmed and the $3 permit consumed. The owner measured 54.5 ms on the built-in Mac acoustic route; this does not qualify native Live Source or screen latency. [Results and boundaries](NONRELEASE_COMPLETION.md).
+
 # Integration plan and first Singing Academy lesson — 2026-10-26
 
 **Follow-through:** the owner subsequently authorized completing the course. [Song-first implementation, optional warm-ups and current evidence](SINGING_ACADEMY.md) supersede the first-lesson-only scope below; historical audit findings and licensing limits still apply.

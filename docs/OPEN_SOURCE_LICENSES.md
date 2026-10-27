@@ -2,6 +2,10 @@
 
 The two [new original-song previews](SINGING_ORIGINAL_PRODUCTION.md) reuse the pinned local ACE-Step turbo model, authored Jamloom lyrics and broad genre captions. No hit-song recording, lyric text, melody reference, cloned artist voice, training material or new checkpoint is used. Matching karaoke uses the existing research-only TorchAudio separator; this does not resolve or expand its production-checkpoint clearance. No weights/audio are added to Git or public distribution. Existing publisher model declarations and their limits below remain unchanged.
 
+## Current non-release experiments — 2026-10-27
+
+The independent MPM/normalized-autocorrelation study uses mathematical ideas from the already-audited MIT vocal-trainer implementation; it imports no JUCE or third-party source/runtime. It is unadopted after a measured regression. The genre-model study uses the same pinned ACE-Step source, turbo/base model manifests and notices already recorded below; no new checkpoint, training data, external recording or paid license is introduced. [Exact scope](NONRELEASE_COMPLETION.md).
+
 # Open-source licenses and model provenance — 2026-10-26
 
 **PASS for the single newly shipped MIT module; PARTIAL for broader candidate adoption.** This is an engineering inventory of actual inspected grants, not a blanket legal clearance. Full repository pins and primary links are in [the audit](OPEN_SOURCE_AUDIT.md). No software/music licenses were purchased.

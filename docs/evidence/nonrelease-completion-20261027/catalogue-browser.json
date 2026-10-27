@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "browser": "chromium",
+      "clips": 4,
+      "playSeekPause": "PASS",
+      "onePlayer": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "clips": 4,
+      "playSeekPause": "PASS",
+      "onePlayer": "PASS",
+      "overflow": false,
+      "errors": []
+    }
+  ],
+  "scope": "Muted playback and seek; not musical acceptance"
+}

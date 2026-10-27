@@ -1,0 +1,169 @@
+{
+  "results": [
+    {
+      "browser": "chromium",
+      "mode": "zero",
+      "result": {
+        "status": "MEASURED",
+        "roundTripMs": 20.66666666666661,
+        "spreadMs": 5.551115123125783e-13,
+        "detectedProbes": 5,
+        "delaysMs": [
+          20.66666666666672,
+          20.66666666666661,
+          20.66666666666661,
+          20.666666666666167,
+          20.66666666666661
+        ],
+        "input": {
+          "label": "MediaStreamAudioDestinationNode",
+          "sampleRate": 48000
+        },
+        "limitation": "Combined speaker-room-microphone path; no screen latency, singing accuracy or automatic lesson adjustment. No audio retained."
+      },
+      "cleanup": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "mode": "loopback",
+      "result": {
+        "status": "MEASURED",
+        "roundTripMs": 80.66666666666666,
+        "spreadMs": 4.440892098500626e-13,
+        "detectedProbes": 5,
+        "delaysMs": [
+          80.66666666666666,
+          80.66666666666666,
+          80.66666666666622,
+          80.66666666666666,
+          80.66666666666666
+        ],
+        "input": {
+          "label": "MediaStreamAudioDestinationNode",
+          "sampleRate": 48000
+        },
+        "limitation": "Combined speaker-room-microphone path; no screen latency, singing accuracy or automatic lesson adjustment. No audio retained."
+      },
+      "cleanup": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "mode": "silence",
+      "result": {
+        "status": "INCONCLUSIVE",
+        "delaysMs": [],
+        "input": {
+          "label": "MediaStreamAudioDestinationNode",
+          "sampleRate": 48000
+        },
+        "limitation": "Combined speaker-room-microphone path; no screen latency, singing accuracy or automatic lesson adjustment. No audio retained."
+      },
+      "cleanup": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "mode": "denied",
+      "result": null,
+      "cleanup": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "mode": "cancel",
+      "result": null,
+      "cleanup": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "mode": "zero",
+      "result": {
+        "status": "MEASURED",
+        "roundTripMs": 49.99999999999982,
+        "spreadMs": 4.440892098500626e-13,
+        "detectedProbes": 5,
+        "delaysMs": [
+          50.00000000000004,
+          49.99999999999982,
+          50.00000000000027,
+          49.99999999999982,
+          49.99999999999982
+        ],
+        "input": {
+          "label": "MediaStreamAudioDestinationNode",
+          "sampleRate": 48000
+        },
+        "limitation": "Combined speaker-room-microphone path; no screen latency, singing accuracy or automatic lesson adjustment. No audio retained."
+      },
+      "cleanup": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "mode": "loopback",
+      "result": {
+        "status": "MEASURED",
+        "roundTripMs": 109.99999999999987,
+        "spreadMs": 2.220446049250313e-13,
+        "detectedProbes": 5,
+        "delaysMs": [
+          110.0000000000001,
+          109.99999999999987,
+          109.99999999999987,
+          109.99999999999987,
+          109.99999999999987
+        ],
+        "input": {
+          "label": "MediaStreamAudioDestinationNode",
+          "sampleRate": 48000
+        },
+        "limitation": "Combined speaker-room-microphone path; no screen latency, singing accuracy or automatic lesson adjustment. No audio retained."
+      },
+      "cleanup": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "mode": "silence",
+      "result": {
+        "status": "INCONCLUSIVE",
+        "delaysMs": [],
+        "input": {
+          "label": "MediaStreamAudioDestinationNode",
+          "sampleRate": 48000
+        },
+        "limitation": "Combined speaker-room-microphone path; no screen latency, singing accuracy or automatic lesson adjustment. No audio retained."
+      },
+      "cleanup": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "mode": "denied",
+      "result": null,
+      "cleanup": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "mode": "cancel",
+      "result": null,
+      "cleanup": "PASS",
+      "overflow": false,
+      "errors": []
+    }
+  ],
+  "limitation": "Synthetic delayed PCM and permission failures, not physical speaker/microphone latency."
+}

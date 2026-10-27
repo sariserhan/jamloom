@@ -1,0 +1,26 @@
+TAP version 13
+# (node:8026) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/serhansari/Documents/projects/jamloom/scripts/fixtures/audio-timing.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/serhansari/Documents/projects/jamloom/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: probe correlation measures delayed attenuated and inverted audio across capture rates
+ok 1 - probe correlation measures delayed attenuated and inverted audio across capture rates
+  ---
+  duration_ms: 8.995667
+  type: 'test'
+  ...
+# Subtest: silence, noise, arbitrary tones and unstable or incomplete timings cannot pass
+ok 2 - silence, noise, arbitrary tones and unstable or incomplete timings cannot pass
+  ---
+  duration_ms: 3.443958
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 49.663042

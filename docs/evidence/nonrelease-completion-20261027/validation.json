@@ -1,0 +1,81 @@
+{
+  "scope": "Non-release completion and explicit bounded genre study",
+  "checks": {
+    "model-tests": {
+      "status": "PASS",
+      "tests": 14,
+      "log_sha256": "d922d5f77dd25582a9ab6be73281dc4a32c749f8665fe03cd0ad3ac77b3aa313"
+    },
+    "controller-tests": {
+      "status": "PASS",
+      "tests": 33,
+      "log_sha256": "3ad08afd90de27b5ab8f2b98f4511ce4dcbf2764dcc5942eb597a9bdc5c8588f"
+    },
+    "renderer-tests": {
+      "status": "PASS",
+      "tests": 6,
+      "log_sha256": "a0854734988dfd7f01b31d13ecc2de08f5a6a958da8cc8f783aa23f9bc6e87e6"
+    },
+    "sample-tests": {
+      "status": "PASS",
+      "tests": 15,
+      "log_sha256": "68b3a5fd2e24b87a2a03932d705afa37d15bd5ad0dca11676db85fe957e7db75"
+    },
+    "track-tests": {
+      "status": "PASS",
+      "tests": 10,
+      "log_sha256": "4592a81496c1a04a09e9b2721da5b450aa775635b2c946ff9164db76129a51e3"
+    },
+    "timing-tests": {
+      "status": "PASS",
+      "tests": 2,
+      "log_sha256": "cfc881346162289ed5914e0183ffb294a41bb2b2d7bde966713ba9d872d7819f"
+    },
+    "arrangement-tests": {
+      "status": "PASS",
+      "tests": 1,
+      "log_sha256": "6ffb18af7dbe3b2c62c57905a9cdd6e9fb5801601cd9ac1af259b23bceb3b248"
+    }
+  },
+  "physical_audio_timing": {
+    "status": "PASS scoped owner measurement",
+    "round_trip_ms": 54.5,
+    "probes": 5,
+    "route": "MacBook Air built-in speaker/microphone",
+    "display_latency": "NOT RUN"
+  },
+  "timing_browser_cases": 10,
+  "pitch_candidate": "REJECT: MPM accuracy and CPU regress",
+  "longer_window_candidate": "REJECT: accuracy and CPU regress",
+  "edge_grid_candidate": "NO ADOPTION: 4/18 to 4/18 beat handoffs",
+  "catalogue_owner_acceptance": "FAIL: all four arrangements rejected as basic/boring",
+  "revised_originals": "FAIL: owner rejects both revised drafts; piano guide remains too boring",
+  "gpu_trial": {
+    "status": "FAIL before generation",
+    "outputs": 0,
+    "cleanup_confirmed": true,
+    "observed_debit_usd": 0.02379141470000068,
+    "rental_seconds": 364.9462389945984,
+    "permit": "CONSUMED; no replacements"
+  },
+  "web_phone_publication": "EXCLUDED; no push or deployment",
+  "limitations": [
+    "No independent listener cohort",
+    "No popular-song permission or new sung guide",
+    "No new production capacity or hosted 5000-reference generation qualification",
+    "No physical display-latency or additional-route claim"
+  ],
+  "source_sha256": {
+    "scripts/experiments/singing-arrangements.mjs": "59c602f4c61c88ce89ebdbd24bd238df7b4098776e27a38cc7583625e581a07a",
+    "scripts/render_singing_catalogue.mjs": "9946ebfa7fad4c1d7733c69576bec3bc5befcd06e32d8a9c5a881b7816dcd94d",
+    "scripts/review_singing_arrangements.py": "969d15b4b7c27b44e029079938e9d213ab3289893fc76a67a80a56c208390aaa",
+    "scripts/fixtures/audio-timing.js": "a90bc6234ad6ac198f3e087c9424e73a6d00dd8cd22e4246aa2ab53abf9dfde2",
+    "scripts/fixtures/singing-timing.js": "fb196ff69050db900e53c3499a411b6d4ae03eca73220522a9be7a947da54e10",
+    "scripts/fixtures/singing-timing.html": "fe68e2d8aaf368e3203610485f1d813d22e17e56133f988ad7be633d5ae1dfb7",
+    "apps/web/singing-pitch.js": "f47b9e3816b9cc89dc16a55098bbf50535cc9d2e47aee99ab02d91ed50970deb",
+    "apps/web/singing-capture-worklet.js": "ad808b23fd97936dad2d90738138a94603be312d9cf614ad40e7d063658fe250",
+    "scripts/benchmark_singing_difference.mjs": "47c100c3275975f28239aaa272252a4e95804dfaf2d4deb24cf20fab8e11c4fd",
+    "scripts/experiments/singing-mpm.mjs": "fc9e51aa6ca6577bd96370b4a3d78792bf462b44a9d3285b3addb5f470600012",
+    "apps/site/tests/dj-edge-audit.mjs": "1924c6c4e12f3199ecde7034a3b1170a8baf6867b3e09a81d10998ebbb57fce0"
+  }
+}

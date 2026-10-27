@@ -1,0 +1,152 @@
+{
+  "status": "CONSUMED",
+  "campaign": "jamloom-dj-genre-models-20261027",
+  "owner_statement": "Approve the capped $3 genre-model comparison",
+  "budget_usd": 3,
+  "max_workers": 1,
+  "max_minutes": 40,
+  "max_requests": 6,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "replacements": false,
+  "public_activation": false,
+  "source_audio_used": false,
+  "learned_reference_weights_used": false,
+  "model": {
+    "code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "weights": "19671f406d603126926c1b7e2adc169acbcade22",
+    "base": "e432212fec32b8965a14ffa57ae653438d6abd14"
+  },
+  "tracks": [
+    {
+      "request": {
+        "version": 1,
+        "session": "26102777777777777777777777777777",
+        "sequence": 0,
+        "seed": 271027,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-turbo",
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 128,
+      "lyrics": "[Instrumental]",
+      "instrumental": true,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-turbo: house instrumental"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102777777777777777777777777777",
+        "sequence": 1,
+        "seed": 271028,
+        "style": "tech-house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-turbo",
+      "caption": "Original instrumental tech house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 128,
+      "lyrics": "[Instrumental]",
+      "instrumental": true,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-turbo: tech-house instrumental"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102777777777777777777777777777",
+        "sequence": 2,
+        "seed": 271029,
+        "style": "techno",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-turbo",
+      "caption": "Original instrumental techno, 136 BPM, steady groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 136,
+      "lyrics": "[Instrumental]",
+      "instrumental": true,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-turbo: techno instrumental"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102777777777777777777777777777",
+        "sequence": 3,
+        "seed": 271027,
+        "style": "house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-base",
+      "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 128,
+      "lyrics": "[Instrumental]",
+      "instrumental": true,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-base: house instrumental"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102777777777777777777777777777",
+        "sequence": 4,
+        "seed": 271028,
+        "style": "tech-house",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-base",
+      "caption": "Original instrumental tech house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 128,
+      "lyrics": "[Instrumental]",
+      "instrumental": true,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-base: tech-house instrumental"
+    },
+    {
+      "request": {
+        "version": 1,
+        "session": "26102777777777777777777777777777",
+        "sequence": 5,
+        "seed": 271029,
+        "style": "techno",
+        "energy": 4,
+        "mood": "deep"
+      },
+      "model": "acestep-v15-base",
+      "caption": "Original instrumental techno, 136 BPM, steady groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+      "bpm": 136,
+      "lyrics": "[Instrumental]",
+      "instrumental": true,
+      "seconds": 60,
+      "vocals": false,
+      "label": "acestep-v15-base: techno instrumental"
+    }
+  ],
+  "worker_sha256": {
+    "cloud_music_setup.sh": "0a7917c362cce91b876e2fcca875cb097b2c7577614ea6d4f0c4c3f7eaf90bee",
+    "cloud_dj_warm.sh": "fa859d18dca63b131765b49fb848aec2a57bd6abf9c59ce9b180367a2ee10a0e",
+    "dj_track_worker.py": "d6cd4b54f1f7b30677198e5ab45357763e72b073cdbb455156938354f97d2ad2",
+    "dj_warm_engine.py": "32ee2a1323d453eb62b89319716faf387124f7580f6a8109b17ed977234041cf",
+    "dj_vocal.py": "902e327bdf2a8a319b3b049cc368415d4c211659a114307b45d9125ff6a88f96",
+    "club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb",
+    "dj_model_study.py": "d8862590e5e3b61ab53e4dffad603b1da7587e48f214305ee6a16cb419546678"
+  },
+  "manifest_sha256": "37920c432079b6a51be2321e46a0b5071cdca2ded8d3e50f6cb06f07abcfafe3",
+  "base_manifest_sha256": "608b720e0c042d128ada91dcc18ffc0f8719721eecd1fae011a228376161aff0",
+  "purpose": "Paired house, tech-house and techno base/turbo recipe comparison; latency, memory, cost and blinded musical review. No vocals or public activation.",
+  "research_render_limit_seconds": 120,
+  "production_render_limit_seconds": 30,
+  "controller_sha256": "e8f26adcc15a5ec2f45cbbe1a263f8fd905242f5df66b3db6930e13b79eb030c",
+  "consumed_reason": "Single authorized attempt failed during system-package startup; zero outputs; no replacements authorized"
+}

@@ -1,0 +1,54 @@
+{
+  "target_lufs": -38.99,
+  "clips": [
+    {
+      "label": "Paper Kites \u00b7 Before",
+      "source_sha256": "d4945f2f5cc01381965c65925b7083c2ff44acf66edc37c761114e7dba950c41",
+      "listening_sha256": "fcb24884852c2d0cd2a726dd08866e64bb76fbbac3ffde15b9ea4765c0efacc4",
+      "gain_db": 0.0,
+      "matched": {
+        "input_i": "-38.99",
+        "input_tp": "-25.28",
+        "input_lra": "2.90",
+        "input_thresh": "-49.05"
+      }
+    },
+    {
+      "label": "Paper Kites \u00b7 Revised",
+      "source_sha256": "849cc1c1630bda425415b30e4946c2804781e9df9a0a13c08ec995206a367039",
+      "listening_sha256": "f53c6d3f358ce4a95a1162ddde4df90c75d3298051909b3eccc8ca4a983026e9",
+      "gain_db": -2.289999999999999,
+      "matched": {
+        "input_i": "-38.99",
+        "input_tp": "-26.07",
+        "input_lra": "3.60",
+        "input_thresh": "-49.20"
+      }
+    },
+    {
+      "label": "Neon Tide \u00b7 Before",
+      "source_sha256": "c51b1477a883a5b88a460e833dcda9e6021f88710c5bd3d9a2440633b4e79edb",
+      "listening_sha256": "f0a9bab0db016ab07dad843c0886fcc5b4a5c9e59294f2c00a4bb2cc23d5a116",
+      "gain_db": -0.5800000000000054,
+      "matched": {
+        "input_i": "-38.99",
+        "input_tp": "-24.77",
+        "input_lra": "2.80",
+        "input_thresh": "-49.03"
+      }
+    },
+    {
+      "label": "Neon Tide \u00b7 Revised",
+      "source_sha256": "09af70ba3cd89777ec81c8f7c9407dec81f350380781be4ee6d7f01cb25fdcf0",
+      "listening_sha256": "7561a84159794fbf8f4dfd431891a5c7ef6d376005822642ed91dcc43e52e272",
+      "gain_db": -2.219999999999999,
+      "matched": {
+        "input_i": "-38.99",
+        "input_tp": "-25.10",
+        "input_lra": "3.70",
+        "input_thresh": "-49.05"
+      }
+    }
+  ],
+  "human_listening": "NOT RUN"
+}

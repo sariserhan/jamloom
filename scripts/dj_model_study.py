@@ -13,24 +13,24 @@ BASE_REVISION = 'e432212fec32b8965a14ffa57ae653438d6abd14'
 MANIFEST = 'dj-base-model.json'
 
 
-def cases(consistency=False, flow=False):
-    if consistency and flow: raise ValueError("Choose one study")
+def cases(consistency=False, flow=False, genres=False):
+    if sum((consistency, flow, genres)) > 1: raise ValueError("Choose one study")
     rows = []
     for model in ('acestep-v15-turbo', 'acestep-v15-base'):
-        for i, style in enumerate(('house', 'bass', 'house')):
-            value = dict(version=1, session='26102622222222222222222222222222', sequence=len(rows),
-                         seed=601026+i, style=style, energy=4, mood='deep')
+        for i, style in enumerate(('house', 'tech-house', 'techno') if genres else ('house', 'bass', 'house')):
+            value = dict(version=1, session='26102777777777777777777777777777' if genres else '26102622222222222222222222222222', sequence=len(rows),
+                         seed=(271027 if genres else 601026)+i, style=style, energy=4, mood='deep')
             caption, bpm = arranged_brief(value)
             lyrics = '[Instrumental]'
-            if i == 2:
+            if i == 2 and not genres:
                 caption = ('Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, '
                            'rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. '
                            'Occasional short two-word hooks with long instrumental answers. Strong groove throughout, '
                            'a developing arrangement and a resolved ending. No speech narration or robotic voice effects.')
                 bpm, lyrics = 128, '[Instrumental]\n[Chorus]\nFeel alive\nWe rise\n[Instrumental]\n[Outro]'
             rows.append(dict(request=value, model=model, caption=caption, bpm=bpm, lyrics=lyrics,
-                             instrumental=i != 2, seconds=60, vocals=False,
-                             label=f'{model}: {style}' + (' musical vocal' if i == 2 else ' instrumental')))
+                             instrumental=genres or i != 2, seconds=60, vocals=False,
+                             label=f'{model}: {style}' + (' musical vocal' if i == 2 and not genres else ' instrumental')))
     if consistency:
         preferred = [rows[2], rows[5]]
         rows = []
@@ -84,12 +84,13 @@ def verify_base(root, manifest):
 
 
 class ModelStudy:
-    def __init__(self, consistency=False, flow=False):
-        self.consistency, self.flow = consistency, flow
+    def __init__(self, consistency=False, flow=False, genres=False):
+        cases(consistency, flow, genres)
+        self.consistency, self.flow, self.genres = consistency, flow, genres
         self.engine, self.model, self.sequence = None, None, 0
 
     def __call__(self, value, directory, engine=None, hook=None):
-        prepared = cases(self.consistency, self.flow)
+        prepared = cases(self.consistency, self.flow, self.genres)
         if hook is not None or self.sequence >= len(prepared) or request(value) != prepared[self.sequence]['request']:
             raise ValueError('Exact ordered model-study request required')
         case = prepared[self.sequence]
@@ -108,6 +109,7 @@ class ModelStudy:
         seed = value['seed']
         random.seed(seed); np.random.seed(seed); torch.manual_seed(seed); torch.cuda.manual_seed_all(seed)
         settings = parameters(case)
+        if self.genres: torch.cuda.reset_peak_memory_stats()
         result = generate_music(*self.engine, GenerationParams(**settings),
             GenerationConfig(batch_size=1, audio_format='wav32', use_random_seed=False, seeds=[seed]),
             save_dir=str(directory / 'raw'))
@@ -126,5 +128,8 @@ class ModelStudy:
                      audio_codes_sha256=hashlib.sha256(codes.encode()).hexdigest(), code_tokens=codes.count('<|audio_code_'),
                      source_audio_used=False, trained_adapter=False, voice_quality='NOT RUN',
                      short_hook_qualification=False)
+        if self.genres:
+            proof['peak_cuda_allocated_bytes'] = torch.cuda.max_memory_allocated()
+            proof['peak_cuda_reserved_bytes'] = torch.cuda.max_memory_reserved()
         (directory / 'model-study.json').write_text(json.dumps(proof) + '\n')
         return samples, rate

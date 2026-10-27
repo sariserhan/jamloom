@@ -60,7 +60,7 @@ Pinned source: [13ac75122aa2d687c7f4da0fdcc68617ac3313bf](https://github.com/Sma
 
 - Reuse / Jamloom equivalent: MPM/note scoring ideas; existing MIT YIN first lesson meets narrower need.
 - Dependencies and build restrictions: C++/CMake and JUCE9 AGPL/commercial choices; MPM header includes JUCE DSP. Own MIT does not make JUCE permissive.
-- Benchmark evidence: Source/build/test layout reviewed; compiled pitch benchmark NOT RUN.
+- Benchmark evidence: Compiled JUCE benchmark remains NOT RUN. The later independent dependency-free MPM candidate scores 73.65% versus current YIN 76.86% on 35 already inspected labelled recordings, with about 67% more CPU; do not adopt that candidate. [Measurements](NONRELEASE_COMPLETION.md#singing-detector-alternative-do-not-adopt).
 - Effort / technical risk: 2–4 days isolated algorithm alternative; high whole-app licensing cost.
 
 ### Tonejs/Tone.js — STUDY
@@ -87,7 +87,7 @@ Pinned source: [ca1e85fe9430179831e6bc6be790c332190a3866](https://github.com/ace
 
 - Reuse / Jamloom equivalent: Existing original music worker already uses this exact code revision. Compare pinned base/turbo checkpoints, not a duplicate worker.
 - Dependencies and build restrictions: PyTorch/CUDA, transformers, audio tooling; retain locked worker and individual model manifests.
-- Benchmark evidence: B: existing real paired GPU evidence reused; fresh house/tech-house/techno matrix NOT RUN.
+- Benchmark evidence: B: existing real paired GPU evidence reused; fresh house/tech-house/techno matrix is now executable and separately authorized; [current trial](DJ_GENRE_MODELS.md).
 - Effort / technical risk: No replacement; 1–2 days to prepare a new controlled matrix, plus approved compute/listening; high musical-variance risk.
 
 ### akhilvydyula/predict-voice-quality — ADOPT (one module)

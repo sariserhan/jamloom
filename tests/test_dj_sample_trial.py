@@ -35,9 +35,10 @@ class SamplePermitTests(unittest.TestCase):
                     (output/'executed-scripts.sha256').write_text('test-hash worker.py\n')
                 return subprocess.CompletedProcess(args,0,stdout,b'')
             stack.enter_context(patch.object(trial.subprocess,'run',side_effect=command))
-            with self.assertRaisesRegex(RuntimeError,'Renderer process exited'):trial.run()
+            with self.assertRaisesRegex(RuntimeError,'Renderer process exited during startup \\(exit 1\\)'):trial.run()
             self.assertEqual(deleted,[9]);self.assertTrue(json.loads((output/'report.json').read_text())['cleanup_confirmed'])
             self.assertEqual((output/'executed-scripts.sha256').read_text(),'test-hash worker.py\n')
+            self.assertEqual(json.loads((work/'startup-probes.jsonl').read_text())['exit_code'],1)
 
     def test_isolated_singing_has_new_approval_and_no_implicit_replacement(self):
         plan=json.loads((ROOT/'docs/evidence/dj-isolated-hooks-20261026/gpu-plan.json').read_text())

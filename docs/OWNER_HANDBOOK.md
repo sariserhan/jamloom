@@ -4,6 +4,16 @@ Try **http://localhost:8766/singing-originals/review/**: **Long Way Home** (melo
 
 Playback is checked on Chromium/WebKit at desktop/phone widths. You approved both song/karaoke previews: “yes these are good.” Exact lyric/timing fidelity and scored lesson integration remain open; this overall approval is not a separate artefact or word-by-word evaluation. The lyrics shown are authored words, not a verified transcription. These are listening candidates, not installed scored lessons; existing course and $39 once stay unchanged. [Evidence and next integration gates](SINGING_ORIGINAL_PRODUCTION.md).
 
+## Latest non-release work — 2026-10-27
+
+Website and phone release remain excluded. Your built-in Mac audio path measured **54.5 ms** across five matching chirps; this is not screen or Bluetooth latency. The alternative pitch algorithms regressed and are not installed.
+
+The $3 AI DJ genre study failed during package setup before generating music. The GPU is deleted and an independent inventory confirms zero rentals; observed debit was **$0.02671**, provisional. Its no-replacements permit is consumed. Package-overhead and exit-diagnostic corrections are local, with no fresh provider retest. Do not rerun an old permit.
+
+Your rejection of all four new singing arrangements is retained. You also rejected both revised drafts at **http://localhost:8766/singing-arrangements/review/**; they are retained as failed comparisons, not accepted replacements. They change melody, lyrics, rhythm, harmony and backing at matched loudness, but still have a piano guide rather than natural singing. They have not replaced the existing course or been published. The next candidate must be a fully produced original song with natural singing and a matching karaoke backing; another piano-led rewrite is not the target. The course stays **$39 once**.
+
+[Current evidence and remaining requirements](NONRELEASE_COMPLETION.md). Independent listeners, usable popular-song permissions/assets, natural sung guides and broader musical/hosted qualification remain substantive gaps. Earlier completed Apple sandbox/Stripe test-provider and Mac companion distribution evidence is not reopened. No supplier message, license purchase, push, deployment or phone upload occurred.
+
 ## Current local improvements and phone — 2026-10-27
 
 [Implementation, checks and remaining gates](PRODUCT_IMPROVEMENTS.md). Preview at http://127.0.0.1:3010. In Singing Academy choose **Find my starting register** for a twelve-second comfortable-note check; it saves no audio and is not your full vocal range. The course remains $39 once. Community → Explore → **Discover for you** ranks public songs from favorites and ratings explicitly allowed for personalization. DJ Academy shows practice suggestions after failed checks. Improvise/Music DNA explain confirmed credit release and reconnect behavior. Product images are 40.15% smaller losslessly.

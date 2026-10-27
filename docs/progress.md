@@ -8,6 +8,18 @@
 - [x] Record the owner’s acceptance of both new song/karaoke previews: “yes these are good”; reverify both source and all four listening-file hashes.
 - [ ] Verify actual words and note/timing targets before integration into scored lessons. Automatic tiny-ASR results recover only portions and do not qualify fidelity. Existing course, progress and $39 price remain unchanged; no publication.
 
+## Non-release completion and musical review — 2026-10-27
+
+**PARTIAL overall; website/phone releases excluded.** [Current work and exact limits](NONRELEASE_COMPLETION.md).
+
+- [x] Measure the owner's built-in Mac speaker/microphone route: five matching probes at **54.5 ms**; retain the exact scalar result. Ten Chromium/WebKit diagnostic cases and two correlation checks pass. Display latency, other routes and singing accuracy are separate.
+- [x] Compare independent MPM pitch detection and a longer YIN window against real labelled recordings without changing acceptance thresholds. Both regress; keep the current detector. Entry/exit DJ-grid analysis also gives no adoption benefit (4/18 beat handoffs before and after).
+- [x] Implement and test the pinned house/tech-house/techno base/turbo matrix. Execute the explicitly approved $3 attempt: **FAIL during package setup, zero audio outputs**, deletion independently confirmed, zero rentals, latest observed debit $0.02671 (not final invoice). Permit consumed; no replacements. Reduce future package overhead and retain numeric startup exits; fresh provider retest remains NOT RUN.
+- [x] Record the owner's rejection of all four added singing arrangements as childlike/basic/boring. Prepare two original melody/lyrics/rhythm/backing revisions with the existing instrument engine; preserve the shared course and earlier rejected audio. Full lyrics, all registers/sections, grading, render/decode and two-browser review checks pass.
+- [x] Record rejection of both revised drafts: the piano-led production remains boring. Do not promote either candidate.
+- [ ] Produce and qualify one fully produced original song with natural sung demonstration, matching instrumental, full lyric/pitch timing and audible section development before expanding the catalogue. Use the supplied deep-house reference for direction only; recording/composition reuse rights are unverified. Natural sung guides and broad musical/analysis quality remain open.
+- [ ] Keep independent listener/novice studies, no-cost popular-song permissions/assets, hosted genre/language/5,000-favorite generation, fresh sustained capacity and deployment-dependent payment checks open. Physical iPad and deferred hardware remain excluded/deferred. Do not reopen already-passed local Stripe/Apple sandbox or published Mac companion distribution checks.
+
 ## Cross-product improvement pass — 2026-10-27
 
 **PASS scoped local implementation and checks; PARTIAL overall readiness; publication HELD.** [Report](PRODUCT_IMPROVEMENTS.md).

@@ -1,0 +1,25 @@
+{
+  "source": "Owner pasted result from local timing diagnostic on 2026-10-27",
+  "result": {
+    "status": "MEASURED",
+    "roundTripMs": 54.49999999999999,
+    "spreadMs": 0,
+    "detectedProbes": 5,
+    "delaysMs": [
+      54.49999999999999,
+      54.49999999999999,
+      54.49999999999999,
+      54.49999999999999,
+      54.49999999999999
+    ],
+    "input": {
+      "label": "Default - MacBook Air Microphone (Built-in)",
+      "sampleRate": 48000,
+      "echoCancellation": false,
+      "noiseSuppression": false,
+      "autoGainControl": false
+    },
+    "limitation": "Combined speaker-room-microphone path; no screen latency, singing accuracy or automatic lesson adjustment. No audio retained."
+  },
+  "scope": "One Mac built-in audio route; no independent acoustic capture or other-device inference"
+}

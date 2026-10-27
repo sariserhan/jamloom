@@ -15,12 +15,12 @@ ROOT=Path(__file__).resolve().parents[1]
 CAMPAIGN='dj-model-comparison-20261026'
 
 
-def validate_result(report, consistency=False):
+def validate_result(report, consistency=False, genres=False):
     if (report.get('status')!='PASS technical' or report.get('cleanup_confirmed') is not True
         or type(report.get('rental_seconds')) not in (int,float) or not 0<report['rental_seconds']<=2400
         or type(report.get('observed_debit_usd')) not in (int,float) or not 0<=report['observed_debit_usd']<=3
         or len(report.get('tracks',[]))!=6):raise ValueError('Complete bounded comparison and cleanup required')
-    for row,case in zip(report['tracks'],cases(consistency)):
+    for row,case in zip(report['tracks'],cases(consistency,genres=genres)):
         receipt=row['receipt'];proof=receipt.get('model_comparison',{})
         if (receipt.get('request')!=case['request'] or receipt.get('code_revision')!=CODE_REVISION
             or receipt.get('weights_revision')!=WEIGHTS_REVISION or proof.get('model')!=case['model']
@@ -28,12 +28,16 @@ def validate_result(report, consistency=False):
             or proof.get('weights_revision')!=(BASE_REVISION if case['model'].endswith('base') else WEIGHTS_REVISION)
             or proof.get('source_audio_used') is not False or proof.get('trained_adapter') is not False
             or not 1<=receipt.get('compute_ms',0)<=120000):raise ValueError('Model comparison receipt changed')
+        if genres and not (type(proof.get('peak_cuda_allocated_bytes')) is int and
+                           type(proof.get('peak_cuda_reserved_bytes')) is int and
+                           0 < proof['peak_cuda_allocated_bytes'] <= proof['peak_cuda_reserved_bytes'] <= 128*1024**3):
+            raise ValueError('Measured CUDA memory missing')
 
 
-def main(consistency=False):
-    campaign='dj-preferred-consistency-20261026' if consistency else CAMPAIGN
+def main(consistency=False, genres=False):
+    campaign='dj-genre-models-20261027' if genres else 'dj-preferred-consistency-20261026' if consistency else CAMPAIGN
     source=ROOT/'renders'/campaign;evidence=ROOT/'docs/evidence'/campaign
-    report=json.loads((source/'report.json').read_text());validate_result(report,consistency)
+    report=json.loads((source/'report.json').read_text());validate_result(report,consistency,genres)
     plan=json.loads((evidence/'gpu-plan.json').read_text())
     executed={Path(name).name:sha for sha,name in (line.split(maxsplit=1) for line in (source/'executed-scripts.sha256').read_text().splitlines())}
     expected={**plan['worker_sha256'],'dj-styles.json':plan['manifest_sha256'],'dj-base-model.json':plan['base_manifest_sha256']}
@@ -50,7 +54,7 @@ def main(consistency=False):
         assert measured['duration_seconds']==60 and measured['full_scale_samples']==0
         files.append(path);levels.append(loudness(path))
     target=min(-24.58,*(float(v['input_i'])-max(0,float(v['input_tp'])+2.5) for v in levels))
-    slug='preferred-consistency' if consistency else 'model-comparison'
+    slug='genre-models' if genres else 'preferred-consistency' if consistency else 'model-comparison'
     review=ROOT/'renders/club-studies-20261024'/slug/'review';review.mkdir(parents=True,exist_ok=False)
     rows=[];cards=[]
     for number,index in enumerate((0,3,4,1,2,5),1):
@@ -59,12 +63,13 @@ def main(consistency=False):
             gain,level=level_match(files[index],matched,target,levels[index])
             assert float(level['input_tp'])<=-1.8 and abs(float(level['input_i'])-target)<=.2
             playable=review/f'clip-{number}.mp3';listening_copy(matched,playable)
-        rows.append(dict(number=number,sequence=index,model=cases(consistency)[index]['model'],source_sha256=digest(files[index]),
+        rows.append(dict(number=number,sequence=index,model=cases(consistency,genres=genres)[index]['model'],source_sha256=digest(files[index]),
                          listening_sha256=digest(playable),gain_db=gain,matched=level))
         cards.append(f'<article><h3>Clip {number}</h3><audio controls preload="metadata" aria-label="Clip {number}" src="clip-{number}.mp3"></audio></article>')
     groups=''.join(f'<section><h2>{title}</h2><div class="pair">'+''.join(cards[i:i+2])+'</div></section>'
-                   for i,title in ([(0,'Fresh pair · 1 vs 2'),(2,'Fresh pair · 3 vs 4'),(4,'Fresh pair · 5 vs 6')] if consistency else [(0,'House · 1 vs 2'),(2,'Bass · 3 vs 4'),(4,'Singing in music · 5 vs 6')]))
+                   for i,title in ([(0,'Fresh pair · 1 vs 2'),(2,'Fresh pair · 3 vs 4'),(4,'Fresh pair · 5 vs 6')] if consistency else [(0,'House · 1 vs 2'),(2,'Tech house · 3 vs 4'),(4,'Techno · 5 vs 6')] if genres else [(0,'House · 1 vs 2'),(2,'Bass · 3 vs 4'),(4,'Singing in music · 5 vs 6')]))
     page='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jamloom · Fresh music comparison</title><style>body{font:18px/1.5 system-ui;background:#111b20;color:#edf3ec;max-width:960px;margin:36px auto;padding:0 20px}.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,350px),1fr));gap:18px}article{min-width:0;padding:20px;border-radius:16px;background:#213039}audio{display:block;width:100%}h1{font-size:32px}h2{margin-top:32px}h3{font-size:24px}p{color:#cbd8d3}:focus-visible{outline:3px solid #d7ff80;outline-offset:4px}</style><h1>Which sounds better?</h1><p>Three pairs of new music at matched loudness. Choose the better clip in each pair, or say neither is good enough. In 5 and 6, listen for natural singing and clear words: “Feel alive” and “We rise”.</p>'''+groups+'''<p role="status">Research recordings awaiting your review. These are not approved product tracks or qualified short vocal hooks. Nothing plays automatically.</p><script>document.addEventListener('play',e=>{if(e.target.tagName==='AUDIO')document.querySelectorAll('audio').forEach(a=>{if(a!==e.target)a.pause()})},true)</script></html>'''
+    if genres:page=page.replace('In 5 and 6, listen for natural singing and clear words: “Feel alive” and “We rise”.', 'Listen for groove, arrangement, timbre and a sustained mixable beginning and ending. All six are instrumental.')
     if consistency:page=page.replace('In 5 and 6, listen for natural singing and clear words:', 'In each pair, listen for natural singing and clear words:')
     (review/'index.html').write_text(page)
     (evidence/'listening-key.json').write_text(json.dumps(dict(target_lufs=target,clips=rows,human_listening='NOT RUN'),indent=2)+'\n')
@@ -121,5 +126,6 @@ if __name__=='__main__':
     elif sys.argv[1:]==['--mix']:review_mix()
     elif sys.argv[1:]==['--consistency','--mix']:review_mix(True)
     elif sys.argv[1:]==['--consistency']:main(True)
+    elif sys.argv[1:]==['--genres']:main(genres=True)
     elif not sys.argv[1:]:main()
-    else:raise SystemExit('Use no arguments, --consistency, --mix, --consistency --mix or --representative')
+    else:raise SystemExit('Use no arguments, --consistency, --mix, --consistency --mix or --representative or --genres')

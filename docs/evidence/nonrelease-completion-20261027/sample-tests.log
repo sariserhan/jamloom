@@ -1,0 +1,8 @@
+..One GPU rented; independent 1200-second/$3 total watchdog active.
+Installing pinned model and waiting for renderer.
+Cleanup confirmed: True
+.............
+----------------------------------------------------------------------
+Ran 15 tests in 0.802s
+
+OK

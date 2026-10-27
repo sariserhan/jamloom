@@ -1,0 +1,13 @@
+{
+  "last_retained_stage": "system-packages",
+  "last_retained_activity": "apt unpacking system dependencies, including recommended desktop-related packages",
+  "raw_private_log": "build-dj-genre-models-20261027/boot-tail.log",
+  "raw_log_sha256": "ad2971e3dd28479eb4213c0c0c71a7d5ddb28a19a6394db1cde145eb3f5ae6a2",
+  "exit_code": "NOT RETAINED by old probe",
+  "cause": "Unconfirmed; bounded package-install timeout is plausible, not proven",
+  "local_followup": [
+    "Install without recommended packages",
+    "Retain renderer exit code in startup probe and error"
+  ],
+  "fresh_provider_retest": "NOT RUN; no replacement authorization"
+}

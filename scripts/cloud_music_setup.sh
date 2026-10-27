@@ -13,7 +13,7 @@ stage() { printf '%s\n' "$1" > /workspace/setup.stage; }
 export DEBIAN_FRONTEND=noninteractive
 stage system-packages
 timeout 300 apt-get update
-timeout 300 apt-get install -y python3-venv ffmpeg
+timeout 300 apt-get install -y --no-install-recommends python3-venv ffmpeg
 stage python-bootstrap
 python -m venv /workspace/bootstrap
 /workspace/bootstrap/bin/pip install --no-cache-dir uv==0.13.1

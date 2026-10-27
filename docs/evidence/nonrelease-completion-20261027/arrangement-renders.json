@@ -1,0 +1,24 @@
+{
+  "engineSha256": "10a29570a9d5bffa6098b602a14d8b18cc11e3660492a8cdddf8684f7873c0e8",
+  "method": "Real shipping WASM notes and instruments; MP3 decoded and checked; no human listening qualification",
+  "results": [
+    {
+      "id": "paper-kites",
+      "status": "PASS",
+      "seconds": 47.956541666666666,
+      "peak": 0.06805449575185775,
+      "rms": 0.012024399892630728,
+      "decodedPeak": 0.09148089587688446,
+      "sha256": "849cc1c1630bda425415b30e4946c2804781e9df9a0a13c08ec995206a367039"
+    },
+    {
+      "id": "neon-tide",
+      "status": "PASS",
+      "seconds": 37,
+      "peak": 0.07523512244224548,
+      "rms": 0.012751080232701203,
+      "decodedPeak": 0.10157034546136856,
+      "sha256": "09af70ba3cd89777ec81c8f7c9407dec81f350380781be4ee6d7f01cb25fdcf0"
+    }
+  ]
+}

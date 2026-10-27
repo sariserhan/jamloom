@@ -18,11 +18,11 @@ the native deck, set Singing Academy to $39 once, and hold publication.
 | 4: musical quality | PARTIAL | Owner approvals/rejections retained, including fresh instrumental DJ sets. Formal blinded multi-listener acceptance remains NOT RUN |
 | 5: rights | PARTIAL | Separate source/weight/audio inventories and exclusions. [Licenses](OPEN_SOURCE_LICENSES.md). Final distribution review and popular-song permissions/assets remain open |
 | 6: models/compute | PARTIAL | ACE-Step and other studies, versions, bounded GPU runs/costs/cleanup exist. [Audit](OPEN_SOURCE_AUDIT.md), [trial](DJ_RELEASE_QUALIFICATION.md). Prior permits are consumed |
-| 7: iOS | PARTIAL | Build 27 archive/export/install and three targeted physical checks PASS. Apple real payment chain, broader hardware and physical latency remain open |
+| 7: iOS | PARTIAL | Build 31 signing/install and three targeted physical checks PASS; build-30 archive/export retained. Genuine Apple sandbox purchases/Restore and local HTTP verification PASS. Deployed/native payment delivery and broader hardware remain open |
 | 8: trust/privacy | PARTIAL | Auth, consent, cloud public/private rules, export/deletion and feedback implemented/tested. [Follow-up](COMPLETION_FOLLOWUP.md). Local recordings are not automatically published; release review remains |
 | 9: economics | PARTIAL | Quotes, reservations, ledger, refunds, budgets and measured GPU trials exist. Real Apple sandbox credit/course purchases, restore and local server/HTTP verification now pass; live acceptance, provider refund notifications and sustained margins remain open |
 | 10: evaluation | PARTIAL | [Frozen cohort](licensed-evaluation.md): 23 recorded sources, 3 seeds, 69 blocks. Independent reviews, category verification and recorded quiet coverage remain open. Historical renders do not qualify current models |
-| 11: build/repo | PASS scoped implementation | Native/WASM architecture, tests and CI exist. Shared studio writer lock and verified build 27 package added; platform receipts retain their own versions |
+| 11: build/repo | PASS scoped implementation | Native/WASM architecture, tests and CI exist. Shared studio writer lock and signed/audited build 31 package added; platform receipts retain their own versions |
 | 12: milestones | PARTIAL | M0 technical PASS, musical PARTIAL; M1 formal NOT RUN; M2/M3/M4/M5 PARTIAL. Production approval remains HELD |
 | 13: handoff | PASS scoped implementation | Fixtures, deterministic artifacts, reports and instructions retained; immutable source unchanged |
 | 14: completion | PARTIAL | Independent quality, physical/provider evidence and release authorization remain substantive requirements |
@@ -41,6 +41,8 @@ the native deck, set Singing Academy to $39 once, and hold publication.
 | 13D: UX/SEO | PARTIAL | Local route, accessibility, metadata and viewport checks pass within reports. Post-publication indexing, field Core Web Vitals and release-specific public validation remain separate |
 | 13E–F: live/economics | PARTIAL | Mac one-hour evidence and adversarial cost/wallet tests retained. Physical routing/latency, commercial configuration and sustained provider economics remain open |
 | 14–17: execution/tracking/release | PARTIAL | TODO/progress/STATUS/handbook reconciled; no deployment, app upload, real-money purchase or public activation; approved sandbox purchases only |
+
+The [latest non-release pass](NONRELEASE_COMPLETION.md) records 54.5 ms on the built-in Mac acoustic route, rejected singing arrangements and analysis candidates, and a failed-but-cleaned GPU startup. None closes professional musical quality, native Live Source/display latency or formal independent review. Website and phone releases remain excluded.
 
 Additional owner-requested products are in [Product completion](PRODUCT_COMPLETION.md).
 No overall completion percentage is assigned. Older dated tracker checkboxes are

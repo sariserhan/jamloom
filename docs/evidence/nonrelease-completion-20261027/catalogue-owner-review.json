@@ -1,0 +1,12 @@
+{
+  "status": "FAIL owner musical acceptance",
+  "source": "Owner response to four-song listening page",
+  "feedback": "these are like child music, not good. so simple and basic and boring",
+  "applies_to": [
+    "paper-kites",
+    "neon-tide",
+    "frere-jacques",
+    "ode-to-joy"
+  ],
+  "technical_checks_remain_scoped": true
+}

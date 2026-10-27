@@ -1,0 +1,19 @@
+{
+  "status": "FAIL owner musical acceptance",
+  "source": "Owner response to revised original-song audition",
+  "feedback": "no these are bad, piano sounds is too boring to sing with",
+  "applies_to": [
+    "paper-kites revised",
+    "neon-tide revised"
+  ],
+  "reference": {
+    "url": "https://www.youtube.com/watch?v=lQRHrIRGPVs",
+    "title": "EENIE MEENIE 🔥 | Deep House Vibes & Smooth Beats | DADE RMX",
+    "uploader": "DADE RMX",
+    "description_credit": "Remixed by: Labelle Remix",
+    "duration_seconds": 310,
+    "verification": "YouTube oEmbed and watch-page player metadata; audio not auditioned or analysed",
+    "reuse_permission": "No commercial reuse grant found in the retrieved description; composition and recording rights unverified"
+  },
+  "decision": "Do not promote either draft. Next candidate must be a fully produced original song with matching sung demonstration and instrumental, not another piano-led arrangement. Preserve current course until a replacement is accepted."
+}

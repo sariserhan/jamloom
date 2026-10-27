@@ -156,6 +156,7 @@ def main():
     modes.add_argument('--recovery-study',action='store_true',help='Isolate guide and model seeds; original material only')
     modes.add_argument('--planner-study',action='store_true',help='Paired semantic music planning; unqualified experiment')
     modes.add_argument('--sung-study',action='store_true',help='Short musical repaint on prepared Jamloom originals; unqualified experiment')
+    modes.add_argument('--genre-study',action='store_true',help='Bounded house/tech-house/techno base/turbo comparison; offline only')
     modes.add_argument('--model-study',action='store_true',help='Offline base/turbo benchmark; not production latency qualification')
     modes.add_argument('--consistency-study',action='store_true',help='Fresh seeds for two owner-preferred vocal-house recipes; offline only')
     modes.add_argument('--flow-study',action='store_true',help='Bounded preferred-generator cadence study; no public service')
@@ -169,9 +170,9 @@ def main():
     if args.sung_study:
         from dj_sung_hooks import sung_study
         renderer.generate=sung_study
-    if args.model_study or args.consistency_study or args.flow_study:
+    if args.model_study or args.consistency_study or args.flow_study or args.genre_study:
         from dj_model_study import ModelStudy
-        renderer.generate=ModelStudy(consistency=args.consistency_study,flow=args.flow_study)
+        renderer.generate=ModelStudy(consistency=args.consistency_study,flow=args.flow_study,genres=args.genre_study)
         renderer.render_seconds=120
     else:
         renderer.engine = load_ace(planned=True) if args.planner_study else load_ace()

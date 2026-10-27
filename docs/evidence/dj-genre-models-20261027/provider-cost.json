@@ -1,0 +1,9 @@
+{
+  "checked_at_unix": 1793118811.040828,
+  "rental_seconds": 364.79838013648987,
+  "observed_account_debit_usd": 0.026710729700001323,
+  "inventory_count": 0,
+  "cost_per_successful_generation_usd": null,
+  "generated_outputs": 0,
+  "limitation": "Observed account debit after cleanup, not final invoice or a successful-output cost"
+}

@@ -1,0 +1,10 @@
+{
+  "status": "FAIL",
+  "scope": "Six paired house, tech-house and techno instrumentals; pinned base/turbo checkpoints, no source material or public activation",
+  "tracks": [],
+  "failure_type": "RuntimeError",
+  "failure_message": "Renderer process exited during startup",
+  "cleanup_confirmed": true,
+  "observed_debit_usd": 0.02379141470000068,
+  "rental_seconds": 364.9462389945984
+}
