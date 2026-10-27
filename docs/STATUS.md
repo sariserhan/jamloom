@@ -1,11 +1,12 @@
 ## Original sung songs on the Mac GPU — 2026-10-27
 
-**PASS local generation and review playback; PARTIAL musical/Academy acceptance.** [Exact results and limits](SINGING_ORIGINAL_PRODUCTION.md).
+**PASS local generation, playback and owner musical acceptance; PARTIAL Academy integration.** [Exact results and limits](SINGING_ORIGINAL_PRODUCTION.md).
 
 - [x] Author two original full-length songs in melodic deep-house and Eurodance directions, without hit-song lyrics, melody, recordings or artist voices. Preserve the rejected piano drafts and existing course.
 - [x] Generate both 120-second performances on the M5 Metal GPU using the installed pinned Music DNA singer. No rental, model download or paid licence. Retain two memory-stopped attempts; opt-in smaller PyTorch Metal decode succeeds in 54.44/48.42 seconds without lowering the memory floor.
 - [x] Derive matching karaoke backings from each same performance; preserve source/stem hashes and shared gain. Forty-one Python checks and Chromium/WebKit desktop/mobile playback, seeking, lyrics and one-player checks pass. [Local audition](http://localhost:8766/singing-originals/review/).
-- [ ] Obtain owner singing/production and karaoke acceptance; verify actual words and note/timing targets before integration into scored lessons. Automatic tiny-ASR results recover only portions and do not qualify fidelity. Existing course, progress and $39 price remain unchanged; no publication.
+- [x] Record the owner’s acceptance of both new song/karaoke previews: “yes these are good”; reverify both source and all four listening-file hashes.
+- [ ] Verify actual words and note/timing targets before integration into scored lessons. Automatic tiny-ASR results recover only portions and do not qualify fidelity. Existing course, progress and $39 price remain unchanged; no publication.
 
 ## Cross-product improvement pass — 2026-10-27
 

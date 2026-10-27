@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-27",
+  "status": "PASS owner acceptance of these two song/karaoke previews",
+  "owner_statement": "yes these are good",
+  "question": "The two NEW originals are ready at http://localhost:8766/singing-originals/review/: Long Way Home (deep house) and Leave It All Outside (Eurodance). Both were generated on your Mac. Try each song and its karaoke backing: is the production engaging, is the singing clear and natural, and is either suitable for the Academy? These are new performances, separate from the rejected piano drafts.",
+  "clips": [
+    {
+      "id": "deep-house-male",
+      "source_sha256": "39ee94bd5d92ba87cf507166d4f516feb798277e18650eee8e933e8fdab73297",
+      "listening_files": [
+        {
+          "kind": "song",
+          "sha256": "ddf9f188f41196859c7200e8e3d7534e92dbb65b5aa30a58f9daaa1a11b66ef7",
+          "frames": 5760000,
+          "peak": 0.80841064453125
+        },
+        {
+          "kind": "karaoke",
+          "sha256": "a5cb9b0fef189580dd1b2d990675c0e6d695d8a5552a5e7994e8a114b7256253",
+          "frames": 5760000,
+          "peak": 0.778045654296875
+        }
+      ]
+    },
+    {
+      "id": "eurodance-female",
+      "source_sha256": "0d109ac8720b65811ccb08b93630267a3587959c0151e27421c07d48c290f26c",
+      "listening_files": [
+        {
+          "kind": "song",
+          "sha256": "fbda0c46fef760e7c6611872130d58b407bcc44ca3284d3cdea54e0b431bc2cb",
+          "frames": 5760000,
+          "peak": 0.811187744140625
+        },
+        {
+          "kind": "karaoke",
+          "sha256": "c4c9f57c48a3f74fbac2d2d52df882120a25fc1685732f29c4bfdbf3de9fc6e3",
+          "frames": 5760000,
+          "peak": 0.752105712890625
+        }
+      ]
+    }
+  ],
+  "scope": "Overall positive verdict on this audition; no separate quantitative word-fidelity, pitch-target, timing, singing-accuracy or broader generator-consistency claim.",
+  "scored_lesson_integration": "NOT COMPLETE",
+  "publication_authorized": false
+}

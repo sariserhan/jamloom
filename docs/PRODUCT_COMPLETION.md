@@ -1,4 +1,4 @@
-**Latest local song work:** two new original 120-second sung performances and matching karaoke previews now exist, generated on the M5 GPU with no rental/download. Technical playback passes; human musical acceptance and actual word/note alignment remain open. The course is unchanged. [Report](SINGING_ORIGINAL_PRODUCTION.md).
+**Latest local song work:** two new original 120-second sung performances and matching karaoke previews now exist, generated on the M5 GPU with no rental/download. Technical playback and owner musical acceptance pass (“yes these are good”); actual word/note alignment and scored lesson integration remain open. The course is unchanged. [Report](SINGING_ORIGINAL_PRODUCTION.md).
 
 # Product completion — 2026-10-27
 

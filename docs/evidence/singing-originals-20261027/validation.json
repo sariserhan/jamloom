@@ -10,9 +10,10 @@
     "assets/manifests/singing-model.json": "62d691b276501df2f38ce8233e820da10f7669ebf2a521dd4c271d6e6bd9f3bf",
     "assets/manifests/singer-separation.json": "35b4f8b152232146227a106c9685031ab4aa8aaaebe67c3455d371f296e7750a"
   },
-  "human_listening": "PENDING",
+  "human_listening": "PASS owner: yes these are good; two song/karaoke previews",
   "lyric_fidelity": "NOT QUALIFIED: tiny ASR recovered only portions; no verified transcript or scored note alignment",
   "paid_compute": false,
   "model_downloads": false,
-  "web_or_phone_release": false
+  "web_or_phone_release": false,
+  "owner_feedback": "owner-feedback.json"
 }

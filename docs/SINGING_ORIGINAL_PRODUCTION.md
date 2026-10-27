@@ -1,6 +1,6 @@
 # Original produced Singing Academy songs — 2026-10-27
 
-**PASS local Metal generation; PARTIAL song/lesson acceptance.** The owner rejected
+**PASS local Metal generation and owner song/karaoke acceptance; PARTIAL lesson integration.** The owner rejected
 both piano-led rewrites and requested full production in melodic deep-house and
 Eurodance directions, then explicitly requested this Mac's GPU. No cloud rental,
 new model download, licence purchase, training, deployment or phone release.
@@ -17,8 +17,10 @@ Both use the existing Music DNA singing pipeline and already-pinned ACE-Step tur
 checkpoint, with PyTorch Metal diffusion and decoding on this 16 GB M5 MacBook Air.
 The additional semantic planner and voice conversion are off; these are direct
 text-to-music generations, not replicas of the earlier CUDA comparison recipes.
-The human listening verdict remains open: generated audio and requested vocal
-character do not prove natural singing, correct words or professional quality.
+The owner accepted both new song/karaoke previews with **“yes these are good.”**
+[Hash-verified feedback](evidence/singing-originals-20261027/owner-feedback.json).
+This overall verdict does not establish exact word fidelity, note timing or
+reliable quality across future generations.
 
 No audio, melody, lyric text or artist voice from the supplied hits is fed into
 the model. These are newly authored songs in broad genre directions, not covers
@@ -55,7 +57,8 @@ from the same source and its estimated vocal stem. Both versions use the same
 gain and full-length sample alignment; no separate accompaniment generation or
 piano-guide replacement is used. The existing CPU separator is reused only for
 this local research preview; its separate production-checkpoint review remains
-open. Instrument bleed, vocal residue and musical quality require listening.
+open. The owner accepts the two audition pairs overall; instrumental bleed and
+vocal residue were not separately quantified.
 
 Full authored lyrics are shown as a reference. They are not claimed to be a
 verified transcript or word-aligned score. The page opens no microphone, plays
@@ -105,8 +108,8 @@ Context7 documentation tools were unavailable. The installed pinned source and
 [official inference documentation](https://github.com/ace-step/ACE-Step-1.5/blob/ca1e85fe9430179831e6bc6be790c332190a3866/docs/en/INFERENCE.md)
 were inspected. No installed dependency was upgraded.
 
-Remaining: listening acceptance of both full songs and karaoke; verify sung
-words, note targets and timing against the actual voice, then integrate with
+Remaining: verify sung words, note targets and timing against the actual voice,
+then integrate with
 existing lesson sections, practice, register/tempo controls and grading. No
 production-grade vocal fidelity, exact similarity to the references, public
 licence clearance for hit songs, or completed Academy integration is claimed.

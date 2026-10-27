@@ -2,7 +2,7 @@
 
 Try **http://localhost:8766/singing-originals/review/**: **Long Way Home** (melodic deep house) and **Leave It All Outside** (Eurodance), each two minutes with a sung version and matching karaoke backing. These are new originals, not the earlier rejected piano arrangements or covers of the supplied hits. Generation used this Mac's Metal GPU and installed model; no paid compute or download. Both completed after a local decoding-memory correction; failures are preserved.
 
-Playback is checked on Chromium/WebKit at desktop/phone widths. Musical acceptance, vocal residue and actual lyric/timing fidelity remain open. The lyrics shown are authored words, not a verified transcription. These are listening candidates, not installed scored lessons; existing course and $39 once stay unchanged. [Evidence and next integration gates](SINGING_ORIGINAL_PRODUCTION.md).
+Playback is checked on Chromium/WebKit at desktop/phone widths. You approved both song/karaoke previews: “yes these are good.” Exact lyric/timing fidelity and scored lesson integration remain open; this overall approval is not a separate artefact or word-by-word evaluation. The lyrics shown are authored words, not a verified transcription. These are listening candidates, not installed scored lessons; existing course and $39 once stay unchanged. [Evidence and next integration gates](SINGING_ORIGINAL_PRODUCTION.md).
 
 ## Current local improvements and phone — 2026-10-27
 
