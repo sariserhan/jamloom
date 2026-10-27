@@ -20,8 +20,9 @@ export function courseScore(phrase,rate,start,demoOnly,listenAt,endAt,percussion
 export function songScore(song,phrase,root,rate,start,guide){
  const events=[];let id=20000;const beat=phrase[0].duration/4,total=phrase.at(-1).at+phrase.at(-1).duration;
  const note=(at,duration,pitch,patch,velocity)=>{const voice=++id;events.push({frame:Math.round((start+at)*rate),command:{type:'note',id:voice,patch,pitch,velocity}},{frame:Math.round((start+at+duration)*rate),command:{type:'off',id:voice}});};
- const chords=song.minor?[[0,3,7],[8,12,15],[5,8,12],[7,10,14]]:[[0,4,7],[9,12,16],[5,9,12],[7,11,14]];
- for(let i=0;i<Math.round(total/beat);i++){const at=i*beat;note(at,.08,i%2===0?36:38,9,52);note(at+beat/2,.045,42,9,35);if(i%2===0)note(at,beat*1.5,root-24+chords[Math.max(0,Math.floor(i/4)-1)%4][0],2,53);if(i%4===0)for(const n of chords[Math.max(0,Math.floor(i/4)-1)%4])note(at,beat*3.4,root-12+n,1,38);}
+ const chords=song.chords||(song.minor?[[0,3,7],[8,12,15],[5,8,12],[7,10,14]]:[[0,4,7],[9,12,16],[5,9,12],[7,11,14]]);
+ const first=phrase.find(n=>n.sourceIndex>0),barOffset=first?Math.max(0,(song.notes.slice(0,first.sourceIndex).reduce((sum,n)=>sum+n[1],0)-4)/4):0;
+ for(let i=0;i<Math.round(total/beat);i++){const at=i*beat;note(at,.08,i%2===0?36:38,9,52);note(at+beat/2,.045,42,9,35);if(i%2===0)note(at,beat*1.5,root-24+chords[(Math.max(0,Math.floor(i/4)-1)+barOffset)%chords.length][0],2,53);if(i%4===0)for(const n of chords[(Math.max(0,Math.floor(i/4)-1)+barOffset)%chords.length])note(at,beat*3.4,root-12+n,1,38);}
  if(guide)for(const n of phrase)if(n.note!==null)note(n.at,n.duration*.85,n.note,0,85);
  return events.sort((a,b)=>a.frame-b.frame);
 }

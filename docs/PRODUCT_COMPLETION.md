@@ -4,6 +4,8 @@
 
 ## Latest completion evidence
 
+[No-license-fee singing catalogue](SINGING_FREE_CATALOGUE.md): twelve playable local practice songs, including two new originals and two public-domain melody arrangements; source rights/notices, full-word timing and section harmony are implemented. Browser/audio checks PASS; new listening and native-install acceptance remain NOT RUN. Tency’s paid master quote is received; the six chart hits still lack composition clearance/assets. Independent artist enquiries are prepared but unsent. $39 course price and publication hold are unchanged.
+
 [AI DJ public discovery](AI_DJ_MARKETING.md) is complete locally: homepage hero/chapter, shared navigation, Start/Tour, real deck artwork and anonymous overview. All 165 site tests and eight Chromium/WebKit viewport/accessibility checks pass. Beta, generation, recording and payment restrictions remain. This does not close AI DJ musical-quality or release gates.
 
 [Release preparation](RELEASE_PREPARATION.md) supersedes older pending-schema and real-sandbox blockers below: migrations 0031/0032 now pass with 32 matching hashes, and real Apple sandbox credits/course purchases, server/HTTP verification and course Restore pass. No real refund notification or deployed/native HTTP delivery is inferred. The USD39 Stripe Singing product/price are prepared but inactive. Three physical build-29 Community/Singing checks pass. Publication, live sales, musical/singing quality and external rights/reviewer gates remain held/open.

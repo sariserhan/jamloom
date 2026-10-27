@@ -1,5 +1,7 @@
 # Dependencies, licenses, and asset provenance
 
+Singing repertoire (2026-10-27): ten Jamloom originals plus two public-domain melody arrangements. Separate recording/composition/lyric records are in [the catalogue manifest](../assets/manifests/singing-catalogue.json); pinned score sources are in `assets/licenses/singing/`. Ode to Joy uses a public-domain Mutopia score with new English Jamloom lyrics; Frère Jacques uses traditional French words and a CC0 Noctave score. New accompaniment uses existing cleared instruments. `SINGING-REPERTOIRE.txt` ships with web/offline/native assets. No outside vocal recording, model training or paid license is added. [Scope](SINGING_FREE_CATALOGUE.md).
+
 Singing Academy (2026-10-26): one MIT YIN module adapted from predict-voice-quality, copyright 2026 Akhil Vydyula, with the exact notice in `assets/licenses/PREDICT-VOICE-QUALITY-MIT.txt` and browser/offline bundles. No new runtime package, model or recording. [Full audit inventory](OPEN_SOURCE_LICENSES.md).
 
 AI DJ base-model research (2026-10-26): `ACE-Step/acestep-v15-base` is pinned

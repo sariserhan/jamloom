@@ -1,3 +1,9 @@
+## Supplier reply received — 2026-10-27
+
+The owner supplied Tency licensing manager Vasilissa’s reply: **€30 per track / one year / US only**, or **€70 per track / one year / worldwide**. Stems, metadata and LRCs are included, with lead/backing-vocal variants. For six tracks, the quoted master component is **€180 or €420 annually**, before any unquoted taxes or other charges. **Composition clearance is separate**; no total all-rights price, lead-vocal MIDI, word-level timing, app caching or training permission is established. Volume discounts were offered without a figure.
+
+Status: **RESPONSE RECEIVED (owner-provided email); PURCHASE HELD; no license executed, assets delivered or payment made.** Earlier “no reply” notes below are historical. The owner chose the no-license-fee alternative; see [free catalogue](SINGING_FREE_CATALOGUE.md), [rights inventory](../assets/manifests/singing-catalogue.json) and [unsent follow-ups](SINGING_ARTIST_OUTREACH.md). These six titles remain outside playable lessons and training.
+
 # Popular-song karaoke preparation
 
 2026-10-26. **PASS supplier/catalogue research; BLOCKED playable lessons pending permissions and assets.** The owner asked to proceed with six recognizable songs. Work remains local; no audio/lyrics downloaded, no purchases and no new paid compute. The owner-approved enquiry was submitted to Tency on 2026-10-26; [confirmation](evidence/singing-popular-20261026/submission.json) captured.
@@ -23,7 +29,7 @@ Tency advertises app licensing, instrumental/cover/stem delivery and metadata in
 
 Tency states that its license covers the supplied master; composition and lyric-display permissions may need separate clearance. Its publishing guidance names Easy Song Licensing (USA) and Blokur (Europe) as possible partners. No all-rights agreement is established. [Rights scope](https://www.tencymusic.com/help/licensing_52.html), [publishing guidance](https://www.tencymusic.com/help/licensing_55.html).
 
-For this use, pricing is an unknown custom quote, not the price of a consumer download or karaoke subscription. The supplier requests exact tracks, versions, use, audience and term. Prepared scope is in [the submitted enquiry](SINGING_LICENSING_ENQUIRY.md). No price, availability by country or royalty obligation is invented. [Quote requirements](https://www.tencymusic.com/help/pricingdelivery_57.html).
+The original enquiry sought a custom quote rather than a consumer download or subscription. The master quote is now recorded above; composition and other unquoted costs remain unknown. The supplier requests exact tracks, versions, use, audience and term. Prepared scope is in [the submitted enquiry](SINGING_LICENSING_ENQUIRY.md). No price, availability by country or royalty obligation is invented. [Quote requirements](https://www.tencymusic.com/help/pricingdelivery_57.html).
 
 ## Existing-code compatibility review
 
@@ -43,5 +49,5 @@ Current original lessons remain usable. No misleading playable cards, extracted 
 ## Completion gates
 
 - **PASS:** six exact catalogue listings and recording identifiers; metadata-only shortlist; existing engine compatibility audit; concrete supplier enquiry submitted with owner approval; official form confirmation captured.
-- **NOT RUN:** provider response, price/territory/term negotiation, execution of licenses, delivery of backing/cues/score, playback integration and listening/accuracy acceptance for these songs.
+- **NOT RUN:** execution of any price/territory/term agreement, execution of licenses, delivery of backing/cues/score, playback integration and listening/accuracy acceptance for these songs.
 - **HELD:** publication by the owner's “Keep local for now” instruction. Existing prohibition on buying music/licenses remains; this research creates no purchase commitment.

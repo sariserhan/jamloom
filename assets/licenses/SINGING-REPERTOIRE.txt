@@ -1,0 +1,26 @@
+Jamloom Singing Academy repertoire
+
+Original songs, English practice lyrics for Ode to Joy, and new accompaniment:
+prepared for Jamloom. No outside vocal recordings are included.
+
+Ode to Joy: L. van Beethoven (1770–1827).
+Melody source: Mutopia-2009/08/05-528, typeset by Peter Chubb.
+https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=528
+The source score is dedicated to the public domain by its contributor.
+https://www.mutopiaproject.org/legal.html
+Jamloom transposes the melody, lifts the bridge cadence one octave, supplies
+new English practice lyrics and renders a new accompaniment.
+
+Frère Jacques: traditional French melody and lyrics.
+Melody checked against Noctave's CC0 1.0 edition:
+https://noctavepiano.com/en/sheet-music/trad-frere-jacques/
+https://creativecommons.org/publicdomain/zero/1.0/
+Jamloom transposes the melody, raises the closing bell one octave and adds
+its own backing. Two complete passes are used for practice.
+No Noctave audio, branding, artwork or application code is included.
+
+Source files/hashes and independent rights records:
+assets/licenses/singing/sources.json
+assets/manifests/singing-catalogue.json
+Existing instrument-bank notices continue to apply. No new model training,
+commercial-song recording, artist voice imitation or paid catalogue purchase.

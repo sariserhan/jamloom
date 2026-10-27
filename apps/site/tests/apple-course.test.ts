@@ -4,7 +4,7 @@ import {createPool} from '../lib/database';import {migrate} from '../lib/migrati
 import {grantAppleCourse,singingAppleProduct} from '../lib/apple-course';import {reconcileAppleNotification} from '../lib/apple-payments';
 import {singingContent} from '../lib/singing-access';
 test('free singing content contains warm-ups and First Light, never paid scores or lyrics',()=>{
- const free=singingContent(false);assert.equal(free.singingLessons.length,12);assert.deepEqual(free.singingSongs.map(l=>l.id),['first-light']);assert.equal(singingContent(true).singingSongs.length,8);
+ const free=singingContent(false);assert.equal(free.singingLessons.length,12);assert.deepEqual(free.singingSongs.map(l=>l.id),['first-light']);assert.equal(singingContent(true).singingSongs.length,12);
 });
 test('Apple course purchase and restore are account-bound, idempotent, refund-safe and isolated from credits and DJ Academy',async()=>{
  const url=new URL(process.env.JAMLOOM_TEST_DATABASE_URL??'');assert.equal(url.hostname,'127.0.0.1');const admin=createPool(url.href),name='jamloom_apple_course_'+randomUUID().replaceAll('-','');await admin.query(`CREATE DATABASE "${name}"`);url.pathname='/'+name;const pool=createPool(url.href),store=new AcademyStore(pool),wallet=new Wallet(pool);

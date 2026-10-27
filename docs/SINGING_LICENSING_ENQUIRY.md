@@ -1,3 +1,7 @@
+## Reply update — 2026-10-27
+
+Owner-provided Tency email received: €30/track/year US or €70/track/year worldwide for masters, stems, metadata and LRCs; composition clearance separately required. Both with/without lead and backing vocals are offered. No purchase or agreement accepted. [Current scope and held titles](SINGING_POPULAR_SONGS.md). Original submission and earlier no-reply history follow unchanged.
+
 # Submitted enquiry — Jamloom Singing Academy
 
 Status: **SENT — submission confirmed on 2026-10-26** through Tency Music's [official contact form](https://www.tencymusic.com/contact.php), after the owner explicitly replied “Send the enquiry.” Reply address: support@jamloom.com. The form displayed “Thanks for reaching out to us!” and an expected reply within 48 hours. [Submission record](evidence/singing-popular-20261026/submission.json), [confirmation screenshot](evidence/singing-popular-20261026/submission-confirmation.png), [exact submitted project description](evidence/singing-popular-20261026/submitted-message.txt). Owner update on 2026-10-26: Tency has not replied yet. No provider response or email receipt has been independently verified; no order, payment or contractual acceptance occurred. Audience figures below are quote scenarios, not claims about current users.

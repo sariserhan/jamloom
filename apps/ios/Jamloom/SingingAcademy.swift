@@ -117,7 +117,7 @@ struct SingingAcademyView: View {
             NavigationStack {
                 Form {
                     Section("Singing Academy") {
-                        Text("Eight original songs, twelve warm-ups and unlimited practice.")
+                        Text("Original songs and familiar melodies, twelve warm-ups and unlimited practice.")
                         if account.snapshot?.singing?.access == true { Label("Course purchased", systemImage: "checkmark.seal.fill") }
                         else if account.canPurchaseSinging, let product = account.singingProduct {
                             Button("Unlock course · \(product.displayPrice)") { Task { await account.buySinging() } }.disabled(account.busy)

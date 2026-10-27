@@ -1,3 +1,4 @@
+import {singingSongs} from '../../web/singing-course.js';
 import {chromium,webkit} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';import assert from 'node:assert/strict';import {writeFile,mkdir} from 'node:fs/promises';
 const base=process.env.SINGING_BASE_URL||'http://localhost:3000';
@@ -20,7 +21,7 @@ for(const [name,type] of [['chromium',chromium],['webkit',webkit]]){
   }}});
  });
 
- await page.goto(base+'/singing-academy');assert.match(await page.title(),/Singing Academy/);await page.waitForFunction(()=>document.querySelectorAll('#course h3').length===8);assert.deepEqual((await new AxeBuilder({page}).analyze()).violations.map(v=>v.id),[]);await page.screenshot({path:output+'/'+name+'-course.png',fullPage:true});
+ await page.goto(base+'/singing-academy');assert.match(await page.title(),/Singing Academy/);await page.waitForFunction(count=>document.querySelectorAll('#course h3').length===count,singingSongs.length);assert.deepEqual((await new AxeBuilder({page}).analyze()).violations.map(v=>v.id),[]);await page.screenshot({path:output+'/'+name+'-course.png',fullPage:true});
  await page.route('**/api/singing-course',async route=>{
   const response=await route.fetch(),source=await response.text();
   const songs=JSON.parse(source.match(/export const singingSongs=(.*);/)[1]);
@@ -51,7 +52,7 @@ for(const [name,type] of [['chromium',chromium],['webkit',webkit]]){
  const delays=await page.evaluate(()=>window.__delivery.map(d=>d.delayMs).sort((a,b)=>a-b));
  await page.waitForFunction(()=>document.querySelector('#result').textContent.includes('Lesson complete'),undefined,{timeout:60000});
  assert(await page.evaluate(()=>window.__streams.every(s=>s.getTracks().every(t=>t.readyState==='ended'))));assert(await page.locator('#full-lyrics-list').evaluate(el=>el.scrollTop>0));
- await page.goto(base+'/singing-academy');await page.waitForFunction(()=>document.body.innerText.includes('1 of 8 songs complete'));assert.equal(await page.locator('text=✓ Complete').count(),1);
+ await page.goto(base+'/singing-academy');await page.waitForFunction(count=>document.body.innerText.includes('1 of '+count+' songs complete'),singingSongs.length);assert.equal(await page.locator('text=✓ Complete').count(),1);
  exercised.push(song);
  await page.goto(base+'/singing-academy/lessons/after-hours');await page.selectOption('#section','2');
  await page.evaluate(async()=>{const m=await import('/studio/singing-course.js'),l=m.lessonById('after-hours'),phrase=m.phraseFor(l,57,l.tempo,2);window.__exercise={song:true,phrase,duration:phrase.at(-1).at+phrase.at(-1).duration,tempo:l.tempo};});

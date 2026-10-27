@@ -1,0 +1,177 @@
+{
+  "reviewed": "2026-10-27",
+  "scope": "Local Singing Academy repertoire, not a grant of rights to every recording of these works",
+  "instruments": "Existing audited banks; see docs/licenses.md",
+  "items": [
+    {
+      "id": "first-light",
+      "kind": "jamloom-original",
+      "composition": "Authored as Jamloom practice material; no outside score or lyrics imported",
+      "recording": "Rendered locally by the existing Jamloom instrument engine",
+      "commercial_lesson_use": true,
+      "training": "No model training in this change",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "city-lights",
+      "kind": "jamloom-original",
+      "composition": "Authored as Jamloom practice material; no outside score or lyrics imported",
+      "recording": "Rendered locally by the existing Jamloom instrument engine",
+      "commercial_lesson_use": true,
+      "training": "No model training in this change",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "in-motion",
+      "kind": "jamloom-original",
+      "composition": "Authored as Jamloom practice material; no outside score or lyrics imported",
+      "recording": "Rendered locally by the existing Jamloom instrument engine",
+      "commercial_lesson_use": true,
+      "training": "No model training in this change",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "open-road",
+      "kind": "jamloom-original",
+      "composition": "Authored as Jamloom practice material; no outside score or lyrics imported",
+      "recording": "Rendered locally by the existing Jamloom instrument engine",
+      "commercial_lesson_use": true,
+      "training": "No model training in this change",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "after-hours",
+      "kind": "jamloom-original",
+      "composition": "Authored as Jamloom practice material; no outside score or lyrics imported",
+      "recording": "Rendered locally by the existing Jamloom instrument engine",
+      "commercial_lesson_use": true,
+      "training": "No model training in this change",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "river-flow",
+      "kind": "jamloom-original",
+      "composition": "Authored as Jamloom practice material; no outside score or lyrics imported",
+      "recording": "Rendered locally by the existing Jamloom instrument engine",
+      "commercial_lesson_use": true,
+      "training": "No model training in this change",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "skyline",
+      "kind": "jamloom-original",
+      "composition": "Authored as Jamloom practice material; no outside score or lyrics imported",
+      "recording": "Rendered locally by the existing Jamloom instrument engine",
+      "commercial_lesson_use": true,
+      "training": "No model training in this change",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "own-the-night",
+      "kind": "jamloom-original",
+      "composition": "Authored as Jamloom practice material; no outside score or lyrics imported",
+      "recording": "Rendered locally by the existing Jamloom instrument engine",
+      "commercial_lesson_use": true,
+      "training": "No model training in this change",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "paper-kites",
+      "kind": "jamloom-original",
+      "composition": "Authored as Jamloom practice material; no outside score or lyrics imported",
+      "recording": "Rendered locally by the existing Jamloom instrument engine",
+      "commercial_lesson_use": true,
+      "training": "No model training in this change",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "neon-tide",
+      "kind": "jamloom-original",
+      "composition": "Authored as Jamloom practice material; no outside score or lyrics imported",
+      "recording": "Rendered locally by the existing Jamloom instrument engine",
+      "commercial_lesson_use": true,
+      "training": "No model training in this change",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "ode-to-joy",
+      "kind": "public-domain-arrangement",
+      "composition": "Beethoven (1770–1827), public-domain melody; Mutopia score dedicated to the public domain by Peter Chubb",
+      "source": "https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=528",
+      "score": "assets/licenses/singing/ode.ly",
+      "lyrics": "New English practice lyrics authored for Jamloom; not Schiller or a translated published lyric",
+      "modifications": "Transposed melody; bridge cadence raised one octave to fit supported registers; Jamloom chord backing and practice timing",
+      "recording": "New local Jamloom instrument rendering; no third-party recording",
+      "commercial_lesson_use": true,
+      "training": "No model training; source is a score, not a singer or voice model",
+      "license_fee_usd": 0
+    },
+    {
+      "id": "frere-jacques",
+      "kind": "public-domain-arrangement",
+      "composition": "Traditional French melody and words; eighteenth-century basis. Modern Noctave score explicitly CC0 1.0",
+      "source": "https://noctavepiano.com/en/sheet-music/trad-frere-jacques/",
+      "historical_source": "https://imslp.org/wiki/Frère_Jacques_(Rameau,_Jean-Philippe)",
+      "score": "assets/licenses/singing/frere-jacques.mxl",
+      "lyrics": "Traditional French round; no modern translation",
+      "modifications": "Two complete passes, transposed; closing low G raised one octave; Jamloom accompaniment",
+      "recording": "New local Jamloom instrument rendering; no third-party recording",
+      "commercial_lesson_use": true,
+      "training": "No model training; no outside recording",
+      "license_fee_usd": 0
+    }
+  ],
+  "external_candidates": [
+    {
+      "name": "Josh Woodward — vocal and instrumental catalogue",
+      "source": "https://www.joshwoodward.com/faq",
+      "status": "BLOCKED pending first-party permission evidence and aligned lyric/lead score",
+      "evidence": "Artist site returned HTTP 403 in research. FMA I Wanna Know instrumental lists Attribution; this is not proof of all required song/lyric rights.",
+      "secondary_catalogue": "https://freemusicarchive.org/music/Josh_Woodward/The_Simple_Life_Part_2_1667/JoshWoodward-TSL-NoVox-210-IWannaKnow/",
+      "downloaded": false
+    },
+    {
+      "name": "Scott Buckley library",
+      "source": "https://www.scottbuckley.com.au/library/using-this-music/",
+      "status": "STUDY only; no lesson admitted",
+      "evidence": "First-party CC BY 4.0 offer accompanied by isolation/redistribution restrictions; obtain clarification for karaoke lessons. Mostly instrumental, not aligned singing lessons. Orchestral remixes excluded.",
+      "downloaded": false
+    },
+    {
+      "name": "Jamendo commercial catalogue",
+      "source": "https://support-licensing.jamendo.com/getting-started",
+      "status": "EXCLUDED from zero-license-fee procurement",
+      "evidence": "Commercial licensing is a paid offering; free access and royalty-free do not establish free commercial lesson rights.",
+      "downloaded": false
+    }
+  ],
+  "popular_songs": {
+    "status": "HELD — paid master offer; separate composition rights unresolved",
+    "titles": [
+      "Bad Romance",
+      "Do I Wanna Know?",
+      "Don’t Stop Me Now",
+      "Eenie Meenie",
+      "lovely",
+      "Someone You Loved"
+    ],
+    "tency_offer": {
+      "source": "Owner-pasted email on 2026-10-27; no independent mailbox access",
+      "term_years": 1,
+      "us_eur_per_track": 30,
+      "worldwide_eur_per_track": 70,
+      "six_us_eur": 180,
+      "six_worldwide_eur": 420,
+      "includes": [
+        "stems",
+        "metadata",
+        "LRCs",
+        "versions with/without lead and backing vocals"
+      ],
+      "composition_included": false,
+      "accepted": false,
+      "paid": false
+    },
+    "training_permission": "Not requested or granted; never infer from lesson licensing"
+  }
+}

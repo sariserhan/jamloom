@@ -19,7 +19,7 @@ export const singingLessons=[
 export const lessonById=id=>[...singingLessons,...singingSongs].find(l=>l.id===id);
 export function phraseFor(lesson,root=57,tempo=80,section='all'){
  if(![...singingLessons,...singingSongs].includes(lesson)||![45,57,69].includes(root)||(!Number.isInteger(tempo)||tempo<60||tempo>128)||section!=='all'&&(!lesson.song||!Number.isInteger(section)||section<0||section>3))throw Error('Invalid course settings');
- let at=0;const full=lesson.notes.map(([offset,beats],index)=>{const duration=beats*60/tempo;const note={note:offset===null?null:root+offset,at,duration,lyric:lesson.lyrics?.[index]||'',sourceIndex:index};at+=duration;return note;});
+ let at=0,lyricIndex=-1;const full=lesson.notes.map(([offset,beats],index)=>{const duration=beats*60/tempo;if(lesson.lyrics?.[index])lyricIndex=index;else if(offset===null)lyricIndex=-1;const note={note:offset===null?null:root+offset,at,duration,lyric:lesson.lyrics?.[lyricIndex]||'',lyricIndex,sourceIndex:index};at+=duration;return note;});
  if(section==='all')return full;
  const beat=60/tempo,start=(4+16*section)*beat,end=start+16*beat;
  return [{note:null,at:0,duration:4*beat,lyric:'',sourceIndex:0},...full.filter(n=>n.at>=start-1e-6&&n.at<end-1e-6).map(n=>({...n,at:n.at-start+4*beat})),{note:null,at:20*beat,duration:4*beat,lyric:'',sourceIndex:full.length-1}];
@@ -43,7 +43,7 @@ const motionWords=['Feel the motion','Under our feet','Take one moment','Follow 
 function song(id,title,tempo,minor,words,shapes,options={}){
  const notes=[[null,4]],lyrics=[''],beats=options.beats||[1,1,2];
  for(const [i,shape] of shapes.entries()){for(const [j,n] of shape.entries()){notes.push([n,beats[j]]);lyrics.push(words[i].split(' ')[j]);}const rest=4-beats.reduce((a,b)=>a+b,0);if(rest>0){notes.push([null,rest]);lyrics.push('');}}
- notes.push([null,4]);lyrics.push('');return {id,title,tempo,minor,song:true,lines:words,stage:3,level:options.level||0,focus:options.focus||'Pitch and phrasing',coach:options.coach||'Hear the complete phrase, then keep the long vowels steady.',symbol:'♫',style:options.style||(minor?'Dance / house':'Bright pop'),notes,lyrics,instruction:'Sing an original song with the band. Follow the lyrics and the moving melody line.',tip:'Use headphones. Hear song plays the piano vocal guide; Sing along leaves the melody to your voice.'};
+ notes.push([null,4]);lyrics.push('');return {id,title,tempo,minor,song:true,credit:'Original Jamloom practice song',lines:words,stage:3,level:options.level||0,focus:options.focus||'Pitch and phrasing',coach:options.coach||'Hear the complete phrase, then keep the long vowels steady.',symbol:'♫',chords:options.chords,style:options.style||(minor?'Dance / house':'Bright pop'),notes,lyrics,instruction:'Sing an original song with the band. Follow the lyrics and the moving melody line.',tip:'Use headphones. Hear song plays the piano vocal guide; Sing along leaves the melody to your voice.'};
 }
 export const singingSongs=[
  song('first-light','First Light',76,false,['Morning comes softly','Open the window','Take your time','Here we begin','One small sound','Floats through silence','Breathe then sing','Let daylight in','Keep it gentle','Keep it simple','Hold this moment','Let it ring','Morning comes softly','We are ready','One small sound','Starts everything now'],[[0,2,4],[4,2,0],[0,2,4],[4,2,0],[0,2,4],[4,2,0],[2,4,2],[2,0,0],[0,2,4],[4,2,0],[0,2,4],[4,2,0],[0,2,4],[4,2,0],[2,4,2],[2,0,0]],{focus:'Gentle entries and steady pitch',coach:'Use the quiet beat after each line to breathe. Aim for a comfortable sound, not more volume.',style:'Gentle pop',beats:[1,1,1]}),
@@ -57,5 +57,46 @@ export const singingSongs=[
  song('own-the-night','Own the Night',120,true,['Here we stand','Ready for motion','Find our rhythm','Make it bright','Cross the silence','Answer the moment','Carry the chorus','Through the night','We move freely','We keep listening','Every new phrase','Finds its place','Here we stand','Ready for motion','Carry the chorus','Through the night'],[[0,7,12],[8,3,7],[5,12,8],[7,3,0],[0,3,10],[8,7,3],[5,8,12],[7,10,7],[3,12,7],[8,3,10],[5,12,8],[7,3,0],[3,7,12],[8,7,3],[5,8,12],[7,3,0]],{level:3,focus:'Independent full-song performance',coach:'Use Hear song to learn the shape, then perform without the piano guide. Recover at the next phrase if you miss a note.',style:'Dance finale',beats:[.5,1.5,2]}),
 
 ];
+
+// Reviewed score sources and separate lyric/recording provenance: assets/manifests/singing-catalogue.json.
+function scoredSong(id,title,tempo,bars,options){
+ const notes=[[null,4]],lyrics=[''];
+ for(const bar of bars)for(const [pitch,beats,word] of bar){notes.push([pitch,beats]);lyrics.push(word||'');}
+ notes.push([null,4]);lyrics.push('');
+ return {...song(id,title,tempo,false,[],[],options),notes,lyrics,lines:bars.map(bar=>bar.map(n=>n[2]).filter(Boolean).join(' ')),credit:options.credit,sections:options.sections,instruction:options.instruction};
+}
+const bells=[
+ [[0,1,'Frère'],[2,1,''],[4,1,'Jacques'],[0,1,'']],
+ [[0,1,'Frère'],[2,1,''],[4,1,'Jacques'],[0,1,'']],
+ [[4,1,'Dormez-vous?'],[5,1,''],[7,2,'']],
+ [[4,1,'Dormez-vous?'],[5,1,''],[7,2,'']],
+ [[7,.5,'Sonnez'],[9,.5,''],[7,.5,'les'],[5,.5,'matines'],[4,1,''],[0,1,'']],
+ [[7,.5,'Sonnez'],[9,.5,''],[7,.5,'les'],[5,.5,'matines'],[4,1,''],[0,1,'']],
+ [[0,1,'Ding,'],[7,1,'dang,'],[0,2,'dong.']],
+ [[0,1,'Ding,'],[7,1,'dang,'],[0,2,'dong.']],
+];
+singingSongs.push(
+ song('paper-kites','Paper Kites',88,false,['Paper kites rise','Over our street','Hands catch sunlight','Feet find beats','Let the wind','Carry this tune','Past every rooftop','Into the blue','We rise slowly','We land softly','Keep one promise','Stay close by','Paper kites rise','Over our street','Sing this together','Come fly free'],[[0,2,7],[7,4,2],[5,9,7],[4,2,0],[0,4,7],[9,7,4],[5,4,2],[2,7,0],[4,7,9],[9,7,4],[5,9,7],[7,4,2],[0,2,7],[7,4,2],[5,4,2],[2,7,0]],{level:1,style:'Acoustic soul',focus:'Smooth leaps and a relaxed pulse',coach:'Hear the destination note before each leap. Use the long final word to settle.',chords:[[0,4,7],[5,9,12],[9,12,16],[7,11,14]]}),
+ song('neon-tide','Neon Tide',116,true,['Neon tides turn','Under our feet','Small sparks gather','Out in streets','Send one signal','Across the room','Find that feeling','Make it bloom','Hold this rhythm','Let hearts move','Keep us turning','Into the groove','Neon tides turn','We come alive','Send one signal','Ride this tide'],[[0,3,5],[7,5,3],[8,7,5],[3,0,3],[0,5,7],[10,7,5],[8,5,3],[7,3,0],[3,7,10],[12,10,7],[8,7,5],[7,5,3],[0,3,5],[7,5,3],[8,5,7],[3,7,0]],{level:2,style:'Electronic pop',focus:'Short pickups and long vowels',coach:'Place the short first word on the beat, then let the phrase open up.',beats:[.5,1.5,2],chords:[[0,3,7],[5,8,12],[8,12,15],[7,10,14]]}),
+ scoredSong('frere-jacques','Frère Jacques',96,[...bells,...bells],{sections:['First call','First answer','Repeat the call','Repeat the answer'],level:0,style:'French round · warm groove',focus:'Connected syllables and repeated phrases',coach:'Sing each phrase twice. One word can travel across several notes. The closing bell uses an upper-octave G in this arrangement.',credit:'Traditional French melody and lyrics · Jamloom arrangement',instruction:'Sing the complete French round twice with the band. Keep each highlighted word connected across its notes.',chords:[[0,4,7],[0,4,7],[0,4,7],[0,4,7]]}),
+ scoredSong('ode-to-joy','Ode to Joy',100,[
+ [[4,1,'Sing'],[4,1,'with'],[5,1,'me'],[7,1,'now']],
+ [[7,1,'Let'],[5,1,'the'],[4,1,'light'],[2,1,'in']],
+ [[0,1,'Lift'],[0,1,'your'],[2,1,'voice'],[4,1,'and']],
+ [[4,1.5,'Let'],[2,.5,'it'],[2,2,'ring']],
+ [[4,1,'Step'],[4,1,'by'],[5,1,'step'],[7,1,'we']],
+ [[7,1,'Find'],[5,1,'our'],[4,1,'way'],[2,1,'home']],
+ [[0,1,'Hear'],[0,1,'the'],[2,1,'joy'],[4,1,'that']],
+ [[2,1.5,'We'],[0,.5,'can'],[0,2,'bring']],
+ [[2,1,'Through'],[2,1,'the'],[4,1,'rain'],[0,1,'we']],
+ [[2,1,'Let'],[4,.5,'each'],[5,.5,'new'],[4,1,'day'],[0,1,'shine']],
+ [[2,1,'Let'],[4,.5,'each'],[5,.5,'new'],[4,1,'voice'],[2,1,'rise']],
+ [[0,1,'Join'],[2,1,'and'],[7,2,'sing']],
+ [[4,1,'Sing'],[4,1,'with'],[5,1,'me'],[7,1,'now']],
+ [[7,1,'Let'],[5,1,'the'],[4,1,'light'],[2,1,'in']],
+ [[0,1,'Lift'],[0,1,'your'],[2,1,'voice'],[4,1,'and']],
+ [[2,1.5,'Let'],[0,.5,'it'],[0,2,'ring']],
+ ],{sections:['Opening theme','Theme repeated','Bridge','Final theme'],level:1,style:'Classical theme · pop arrangement',focus:'Stepwise melody and dotted rhythm',coach:'Keep the pulse steady through the shorter notes. These English practice lyrics were written for Jamloom.',credit:'L. van Beethoven · original English practice lyrics and arrangement by Jamloom',instruction:'Sing Beethoven’s familiar melody with new English practice lyrics. Follow the full verse and the moving pitch line.',chords:[[0,4,7],[0,4,7],[0,4,7],[7,11,14],[0,4,7],[0,4,7],[7,11,14],[0,4,7],[7,11,14],[7,11,14],[7,11,14],[7,11,14],[0,4,7],[0,4,7],[7,11,14],[0,4,7]]})
+);
 
 singingSongs.sort((a,b)=>a.level-b.level);

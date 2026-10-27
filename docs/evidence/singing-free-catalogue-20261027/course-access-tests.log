@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: free singing content contains warm-ups and First Light, never paid scores or lyrics
+ok 1 - free singing content contains warm-ups and First Light, never paid scores or lyrics
+  ---
+  duration_ms: 0.466875
+  type: 'test'
+  ...
+# Subtest: Apple course purchase and restore are account-bound, idempotent, refund-safe and isolated from credits and DJ Academy
+ok 2 - Apple course purchase and restore are account-bound, idempotent, refund-safe and isolated from credits and DJ Academy
+  ---
+  duration_ms: 213.627708
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 410.159959

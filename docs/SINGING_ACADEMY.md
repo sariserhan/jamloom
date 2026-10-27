@@ -1,3 +1,5 @@
+**2026-10-27 update:** the local catalogue now has twelve songs: ten originals and two familiar public-domain melody arrangements. Whole-word lyric highlights support multiple notes, and section backing keeps its source harmony. [Current evidence and licensing boundaries](SINGING_FREE_CATALOGUE.md). Native assets are prepared but the new catalogue is not yet installed on the phone. Older counts below are historical.
+
 **Follow-through:** the course now has eight songs, section practice and an installed native Sing tab. See [completion results](SINGING_COMPLETION.md) for current code, real-singer measurements and remaining gates. The two-song record below is historical.
 
 # Singing Academy course — 2026-10-26

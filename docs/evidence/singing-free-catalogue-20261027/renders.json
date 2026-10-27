@@ -1,0 +1,42 @@
+{
+  "engineSha256": "10a29570a9d5bffa6098b602a14d8b18cc11e3660492a8cdddf8684f7873c0e8",
+  "method": "Real shipping WASM notes and instruments; MP3 decoded and checked; no human listening qualification",
+  "results": [
+    {
+      "id": "paper-kites",
+      "status": "PASS",
+      "seconds": 50.090916666666665,
+      "peak": 0.05748928338289261,
+      "rms": 0.00923242690171954,
+      "decodedPeak": 0.07703003287315369,
+      "sha256": "d4945f2f5cc01381965c65925b7083c2ff44acf66edc37c761114e7dba950c41"
+    },
+    {
+      "id": "neon-tide",
+      "status": "PASS",
+      "seconds": 38.241395833333335,
+      "peak": 0.06492272168397903,
+      "rms": 0.009969934102326402,
+      "decodedPeak": 0.08727864921092987,
+      "sha256": "c51b1477a883a5b88a460e833dcda9e6021f88710c5bd3d9a2440633b4e79edb"
+    },
+    {
+      "id": "frere-jacques",
+      "status": "PASS",
+      "seconds": 46,
+      "peak": 0.0598193809390068,
+      "rms": 0.010468838374075685,
+      "decodedPeak": 0.08045460283756256,
+      "sha256": "7548f2cc782c234e78b4ca6a9e4004ceeaf905e72daa1cf32e383def7a902871"
+    },
+    {
+      "id": "ode-to-joy",
+      "status": "PASS",
+      "seconds": 44.20002083333333,
+      "peak": 0.06139225959777832,
+      "rms": 0.010944055567554834,
+      "decodedPeak": 0.08237878978252411,
+      "sha256": "f0c1939bc5d1ee016e3d8f0d2e9ef9d0d17c71754d0ea54f67a1f5480e6e7244"
+    }
+  ]
+}

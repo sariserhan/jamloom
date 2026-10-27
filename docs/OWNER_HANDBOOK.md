@@ -1,3 +1,9 @@
+## Singing catalogue and Tency reply — 2026-10-27
+
+[Current free-catalogue report](SINGING_FREE_CATALOGUE.md). Open http://127.0.0.1:3010/singing-academy for twelve songs: the existing eight, Paper Kites, Neon Tide, Frère Jacques and Ode to Joy (new English practice lyrics). Full words stay highlighted over multiple notes. Price remains $39 once; no license fees, paid compute or new sales activation. Native sources/assets are ready, but these additions are not yet installed on the iPhone. Automated/synthetic checks are not listening acceptance.
+
+Tency has replied: the owner supplied a €30/track/year US or €70 worldwide master offer, with composition clearance separate. No purchase accepted. The six chart hits remain unavailable; [artist and Tency drafts](SINGING_ARTIST_OUTREACH.md) are ready but unsent. Do not treat the research shortlist as permission to import or train. Older no-reply/eight-song notes below are historical.
+
 ## AI DJ public overview — 2026-10-27
 
 [Local marketing evidence](AI_DJ_MARKETING.md). Preview at http://127.0.0.1:3010: choose **Let AI DJ** in the homepage hero, or open `/ai-dj`. AI DJ is also in navigation, Start and Tour. The image is the actual deck; public visitors see the overview and public-set links, while authorized beta/development access retains the workspace. Public generation stays closed. No deployment or sales activation occurred. The marketing browser check is `node tests/ai-dj-marketing-browser.mjs` from `apps/site` against the running production preview.

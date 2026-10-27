@@ -27,7 +27,7 @@ test('finite note score is sample accurate across callback sizes and ends every 
  for(const tempo of [60,80,100]){const p=phraseFor(singingLessons[11],57,tempo),e=courseScore(p,rate,1,false,20,35,true,60/tempo);assert(e.every(e=>e.command.patch!==0||e.frame<20*rate));}
 });
 
-test('original songs grade measured notes at every register and pace, reject silence and validate full band scores',()=>{
+test('all catalogue songs grade measured notes at every register and pace, reject silence and validate full band scores',()=>{
  for(const song of singingSongs){assert.equal(song.notes.length,song.lyrics.length);assert.deepEqual(song.lines.flatMap(line=>line.split(' ')),song.lyrics.filter(Boolean));for(const root of [45,57,69])for(const tempo of [song.tempo-16,song.tempo,Math.min(128,song.tempo+16)]){assert.equal(perform(song,'correct',root,tempo).passed,true,song.id);const phrase=phraseFor(song,root,tempo);for(const guide of [false,true]){const events=songScore(song,phrase,root,rate,1,guide);assert.doesNotThrow(()=>new SingingScore(rate,0,events));assert.equal(events.some(e=>e.command.patch===0),guide);}}assert.equal(perform(song,'silence').passed,false);assert.equal(perform(song,'constant').passed,false);}
 });
 test('song score follows real audio clock after an unconnected worklet priming callback',()=>{
@@ -38,8 +38,8 @@ test('song score follows real audio clock after an unconnected worklet priming c
 });
 
 test('all curriculum sections preserve the source lyric index and cannot include another section',()=>{
- assert.equal(singingSongs.length,8);assert.deepEqual([...new Set(singingSongs.map(s=>s.level))],[0,1,2,3]);
- for(const song of singingSongs)for(let section=0;section<4;section++){const phrase=phraseFor(song,57,song.tempo,section),beat=60/song.tempo;assert.equal(phrase.filter(n=>n.lyric).length,12);assert(Math.abs(phrase.at(-1).at+phrase.at(-1).duration-24*beat)<1e-6);for(const n of phrase.filter(n=>n.lyric))assert.equal(n.lyric,song.lyrics[n.sourceIndex]);assert.doesNotThrow(()=>new SingingScore(rate,0,songScore(song,phrase,57,rate,1,true)));const g=new SingingPhrase(phrase,rate,0);for(let f=0;f<(24*beat+.1)*rate;f+=480){const n=phrase.find(n=>f/rate>=n.at&&f/rate<n.at+n.duration);g.observe(f,measured(n?.note??null));}assert(g.result().passed,song.id);}
+ assert.equal(singingSongs.length,12);assert.deepEqual([...new Set(singingSongs.map(s=>s.level))],[0,1,2,3]);
+ for(const song of singingSongs)for(let section=0;section<4;section++){const phrase=phraseFor(song,57,song.tempo,section),beat=60/song.tempo;assert(phrase.filter(n=>n.lyric).length>=12);assert(phrase.filter(n=>n.note!==null).every(n=>n.at>=4*beat-1e-6&&n.at+n.duration<=20*beat+1e-6));assert(Math.abs(phrase.at(-1).at+phrase.at(-1).duration-24*beat)<1e-6);for(const n of phrase.filter(n=>n.lyric))assert.equal(n.lyric,song.lyrics[n.lyricIndex]);assert.doesNotThrow(()=>new SingingScore(rate,0,songScore(song,phrase,57,rate,1,true)));const g=new SingingPhrase(phrase,rate,0);for(let f=0;f<(24*beat+.1)*rate;f+=480){const n=phrase.find(n=>f/rate>=n.at&&f/rate<n.at+n.duration);g.observe(f,measured(n?.note??null));}assert(g.result().passed,song.id);}
  const song=singingSongs[0],phrase=phraseFor(song,57,60),details=phrase.map(n=>({coverage:n.at>=36&&n.at<52?0:1}));assert.equal(weakestSection(song,details),2);assert.throws(()=>phraseFor(song,57,80,4));assert.throws(()=>phraseFor(singingLessons[0],57,80,0));
 });
 
@@ -59,4 +59,25 @@ test('all curriculum sections preserve the source lyric index and cannot include
    const result=grader.result();assert(result.details[0].advice.startsWith(advice),mode);assert.equal(result.passed,mode==='correct',mode);
    if(['flat','sharp','quiet','rest'].includes(mode))assert.equal(result.score,0,mode);
   }
+ });
+
+ test('familiar melodies keep whole words highlighted over multiple notes and section harmony matches its source',()=>{
+  const bells=singingSongs.find(s=>s.id==='frere-jacques'),phrase=phraseFor(bells,57,96);
+  assert.deepEqual(phrase.slice(1,5).map(n=>n.note),[57,59,61,57]);
+  assert.deepEqual(phrase.slice(1,5).map(n=>n.lyric),['Frère','Frère','Jacques','Jacques']);
+  assert.deepEqual(phrase.slice(1,5).map(n=>n.lyricIndex),[1,1,3,3]);
+  assert.equal(phrase[0].lyric,'');assert.equal(phrase.at(-1).lyric,'');
+  const ode=singingSongs.find(s=>s.id==='ode-to-joy'),section=phraseFor(ode,57,100,2),events=songScore(ode,section,57,rate,0,false);
+  assert.deepEqual(events.filter(e=>e.frame===0&&e.command.patch===1).map(e=>e.command.pitch),[52,56,59]);
+  assert.equal(ode.notes.reduce((n,x)=>n+x[1],0),72);
+ });
+
+ test('every shipped song has a reviewed repertoire record and pinned third-party scores',async()=>{
+  const {readFile}=await import('node:fs/promises'),{createHash}=await import('node:crypto');
+  const root=new URL('../../../',import.meta.url),registry=JSON.parse(await readFile(new URL('assets/manifests/singing-catalogue.json',root),'utf8'));
+  assert.deepEqual(registry.items.map(s=>s.id).sort(),singingSongs.map(s=>s.id).sort());
+  assert(registry.items.every(s=>s.commercial_lesson_use&&s.license_fee_usd===0));
+  assert(registry.external_candidates.every(c=>c.downloaded===false));assert.equal(registry.popular_songs.tency_offer.accepted,false);
+  const sources=JSON.parse(await readFile(new URL('assets/licenses/singing/sources.json',root),'utf8'));
+  for(const source of sources.sources)assert.equal(createHash('sha256').update(await readFile(new URL(source.file,root))).digest('hex'),source.sha256);
  });

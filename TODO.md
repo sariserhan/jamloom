@@ -1,3 +1,13 @@
+## No-license-fee singing catalogue — 2026-10-27
+
+**PASS local catalogue and controlled checks; human quality/physical install NOT RUN; publication HELD.** [Report](docs/SINGING_FREE_CATALOGUE.md).
+
+- [x] Grow Singing Academy to twelve songs: two new originals, Frère Jacques and Ode to Joy with new English practice lyrics; preserve twelve warm-ups and $39 once.
+- [x] Keep whole words highlighted across multiple notes and correct section harmony; preserve all eight existing songs exactly across 80 event comparisons.
+- [x] Retain source hashes, separate rights records and bundled notices. Record Tency’s paid master offer; composition clearance and the six chart hits remain held. Prepare artist/Tency enquiries without sending or purchasing.
+- [x] Pass 24 audio/offline tests, 165 site tests, two local course-access/payment-fixture checks, TypeScript/build, four real WASM/MP3 renders and Chromium/WebKit playback, lyrics, grading, progress and accessibility checks. Prepare shared native assets.
+- [ ] Listen to the new arrangements and qualify them with a real singer; install/test the updated native catalogue. Independent artist agreements and modern-song composition permissions are not yet obtained. No publication or live-sales change.
+
 ## AI DJ public discovery — 2026-10-27
 
 **PASS local marketing; PARTIAL overall product readiness; publication HELD.** [Report](docs/AI_DJ_MARKETING.md).

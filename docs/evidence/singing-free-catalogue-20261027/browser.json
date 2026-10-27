@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "method": "Built local site, actual WASM playback and synthetic singing through microphone worklet; no physical singer or phone qualification",
+  "results": [
+    {
+      "browser": "chromium",
+      "version": "149.0.7827.55",
+      "catalogueCount": 12,
+      "viewports": [
+        1280,
+        390
+      ],
+      "automatedAccessibility": "PASS",
+      "newSongs": [
+        {
+          "id": "frere-jacques",
+          "heardRealWasm": true,
+          "wholeWords": true,
+          "syntheticSectionPassed": true,
+          "micStopped": true
+        },
+        {
+          "id": "ode-to-joy",
+          "heardRealWasm": true,
+          "wholeWords": true,
+          "syntheticSectionPassed": true,
+          "micStopped": true
+        },
+        {
+          "id": "paper-kites",
+          "heardRealWasm": true,
+          "wholeWords": true,
+          "syntheticSectionPassed": true,
+          "micStopped": true
+        },
+        {
+          "id": "neon-tide",
+          "heardRealWasm": true,
+          "wholeWords": true,
+          "syntheticSectionPassed": true,
+          "micStopped": true
+        }
+      ],
+      "fullSongCompleted": "ode-to-joy",
+      "progressReloadAndOldScores": "PASS",
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "catalogueCount": 12,
+      "viewports": [
+        1280,
+        390
+      ],
+      "automatedAccessibility": "PASS",
+      "newSongs": [
+        {
+          "id": "frere-jacques",
+          "heardRealWasm": true,
+          "wholeWords": true,
+          "syntheticSectionPassed": true,
+          "micStopped": true
+        },
+        {
+          "id": "ode-to-joy",
+          "heardRealWasm": true,
+          "wholeWords": true,
+          "syntheticSectionPassed": true,
+          "micStopped": true
+        },
+        {
+          "id": "paper-kites",
+          "heardRealWasm": true,
+          "wholeWords": true,
+          "syntheticSectionPassed": true,
+          "micStopped": true
+        },
+        {
+          "id": "neon-tide",
+          "heardRealWasm": true,
+          "wholeWords": true,
+          "syntheticSectionPassed": true,
+          "micStopped": true
+        }
+      ],
+      "fullSongCompleted": "frere-jacques",
+      "progressReloadAndOldScores": "PASS",
+      "errors": []
+    }
+  ]
+}

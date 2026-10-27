@@ -1,0 +1,17 @@
+{
+  "checked": "2026-10-27",
+  "sources": [
+    {
+      "file": "assets/licenses/singing/ode.ly",
+      "url": "https://www.mutopiaproject.org/ftp/BeethovenLv/ode/ode.ly",
+      "sha256": "a0c865aa9f71221605362622d281405071e0734540e86ce131131757cc803a71",
+      "bytes": 2907
+    },
+    {
+      "file": "assets/licenses/singing/frere-jacques.mxl",
+      "url": "https://noctavepiano.com/partitions/trad-frere-jacques/trad-frere-jacques.mxl",
+      "sha256": "a1a1a6fd039a6c34c3c9579d8c1024d87098bfe142bdf644c3dad57261dc3d9e",
+      "bytes": 1719
+    }
+  ]
+}
