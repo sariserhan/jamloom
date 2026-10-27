@@ -10,16 +10,18 @@ and stop on Community. The local archive and its audit pass; no upload.
 [Active targets](../TODO.md#current-completion-targets--2026-10-27) now distinguish
 current unfinished requirements from the dated work log. Produced-song targets,
 fresh hosted qualification and formal independent/learned-model evidence remain
-open. Publication and live sales stay held; no new paid compute or provider mutation.
-Hosted follow-through: 14 worker-boundary tests pass on isolated refresh commit
-[`0c46bc2`](https://github.com/sariserhan/jamloom/commit/0c46bc21ac1eee18aaa2b6ae14fee0ca30acd6ac).
-GitHub image build [40573167871](https://github.com/sariserhan/jamloom/actions/runs/40573167871)
-was cancelled before digest publication after review found the Docker build embeds
-a Demucs checkpoint without established commercial permission. No RunPod endpoint
-change or GPU job occurred; the newly authorized $1 cap remains unused. A current
-read-only preflight confirms the old digest, zero workers, and no active jobs
-([snapshot](evidence/hosted-worker-rights-20261027/provider-preflight.json)). Rights-safe
-image publication and full hosted qualification remain open.
+open. Publication and live sales stay held. The DNA-only worker passed 16 boundary
+tests, built successfully, and was installed as the disabled endpoint template
+image. The authorized one-request startup smoke failed at `composing-exit-1` after
+59 seconds of execution; worker initialization took 314 seconds. Shutdown and
+cleanup passed, and live verification confirms 0/0 workers and no active/queued
+jobs. Billing API records were empty before and after; configured runtime implies
+about $0.372 but final charges remain unconfirmed. The RunPod status API did not
+expose a traceback and the job logs endpoint returned 404, so cause is unknown.
+Do not retry before diagnosing the failure. Improvise stays disabled until a
+commercially cleared separator or written permission is available. [Smoke report](evidence/hosted-worker-rights-20261027/startup-smoke.md),
+[trial receipt](evidence/song-finish/startup/2026-10-27T20-19-50.236Z/trial-result.json),
+[image build](https://github.com/sariserhan/jamloom/actions/runs/40574921962).
 
 ## Accepted karaoke and local DJ review — 2026-10-27
 

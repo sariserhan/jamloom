@@ -10,16 +10,17 @@ and stop on Community. The local archive and its audit pass; no upload.
 [Active targets](../TODO.md#current-completion-targets--2026-10-27) now distinguish
 current unfinished requirements from the dated work log. Produced-song targets,
 fresh hosted qualification and formal independent/learned-model evidence remain
-open. Publication and live sales stay held; no new paid compute or provider mutation.
-Hosted follow-through: 14 worker-boundary tests pass on isolated refresh commit
-[`0c46bc2`](https://github.com/sariserhan/jamloom/commit/0c46bc21ac1eee18aaa2b6ae14fee0ca30acd6ac).
-GitHub image build [40573167871](https://github.com/sariserhan/jamloom/actions/runs/40573167871)
-was cancelled before digest publication after review found the Docker build embeds
-a Demucs checkpoint without established commercial permission. No RunPod endpoint
-change or GPU job occurred; the newly authorized $1 cap remains unused. A current
-read-only preflight confirms the old digest, zero workers, and no active jobs
-([snapshot](evidence/hosted-worker-rights-20261027/provider-preflight.json)). Rights-safe
-image publication and full hosted qualification remain open.
+open. Publication and live sales stay held. A rights-cleared DNA-only worker passed
+16 boundary tests and its image build [40574921962](https://github.com/sariserhan/jamloom/actions/runs/40574921962)
+passed. The authorized $1 one-request startup smoke failed at `composing-exit-1`;
+no song completed. Cleanup passed, and the endpoint is verified disabled at 0/0
+workers with no active/queued jobs. Billing API records were empty before and after;
+about $0.372 is the configured timing estimate, not a reconciled charge. The provider
+status response exposed no traceback and the logs endpoint returned 404; cause is
+unknown, so no retry is scheduled. Improvise remains blocked pending commercial
+separator rights. [Report](evidence/hosted-worker-rights-20261027/startup-smoke.md),
+[trial evidence](evidence/song-finish/startup/2026-10-27T20-19-50.236Z/trial-result.json),
+[template update](evidence/hosted-worker-rights-20261027/worker-update.json).
 
 ## Accepted karaoke and local DJ review — 2026-10-27
 

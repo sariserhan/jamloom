@@ -1,5 +1,16 @@
 # Runpod setup — 2026-10-22
 
+**Current status — 2026-10-27:** The new worker image is DNA-only pending a
+commercially cleared source separator or written permission. It rejects cloud
+Improvise requests and does not include the restricted Demucs checkpoint. Build
+[40574921962](https://github.com/sariserhan/jamloom/actions/runs/40574921962)
+passed and the disabled template now references its immutable digest. A fresh
+single-request Music DNA startup smoke failed at `composing-exit-1`; shutdown and
+cleanup passed, but the cause and final provider charge remain unknown. Do not
+retry until diagnosed. [Smoke report](evidence/hosted-worker-rights-20261027/startup-smoke.md).
+The successful 2026-10-23 Improvise trial below is historical evidence from an
+older worker image and does not describe the currently deployed template.
+
 **Update 2026-10-23:** Website dispatch/credits implementation and the bounded
 eight-request trial are documented in [Hosted songs](hosted-songs.md). Six songs
 completed, two DNA requests failed. Endpoint remains disabled; final cost, quality
