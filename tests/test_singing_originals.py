@@ -7,7 +7,7 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from render_singing_originals import resource_problem, render, EVIDENCE
-from singing_response import load_plan, validate_plan, sing
+from singing_response import load_plan, validate_plan, sing, load_singer_engine
 from review_singing_originals import karaoke_mix
 import numpy as np
 
@@ -46,7 +46,9 @@ class SingingOriginalTests(unittest.TestCase):
     def test_small_decode_cannot_change_cloud_or_invalid_requests(self):
         with patch('singing_response.inference_device',return_value='cuda'):
             with self.assertRaisesRegex(ValueError,'Metal'):sing(None,None,None,None,mac_small_decode=True)
+            with self.assertRaisesRegex(ValueError,'Metal'):load_singer_engine(None,mac_small_decode=True)
         with self.assertRaises(ValueError):sing(None,None,None,None,mac_small_decode='true')
+        with self.assertRaises(ValueError):load_singer_engine(None,mac_small_decode='true')
 
 
 if __name__=='__main__':unittest.main()

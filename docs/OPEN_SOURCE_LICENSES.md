@@ -1,3 +1,9 @@
+## Executed Spleeter comparison — 2026-10-27
+
+**STUDY, actual local execution.** The publisher's [pinned paper](https://github.com/deezer/spleeter/blob/c8854001ac8acad34a9bc2bd15f28475541828b1/paper.md) explicitly covers source and pretrained models under MIT. The exact official `2stems` v1.4.0 archive and extracted files are hash-pinned in [the manifest](../assets/manifests/spleeter-separation.json), separately from the executed PyPI 2.4.2 wheel. [MIT notice](../assets/licenses/SPLEETER-MIT.txt) retained. No third-party example music or training data imported; inputs are the two Jamloom originals.
+
+Both local separations and sample-alignment checks pass. Mac TensorFlow/filesystem overrides, declared dependency incompatibilities and listening limitations remain explicit in [the report](LOCAL_AUDIO_COMPLETION.md). This local preparation experiment distributes no TensorFlow/Spleeter runtime or weights in the products. Model licensing evidence is not an independent rights audit of its training corpus; source/input audio rights remain separate. Earlier “no weight downloaded” and failed resolution below describe the previous increment, not current state.
+
 ## Separator checkpoint correction — 2026-10-27
 
 **BLOCKED for commercial adoption of the current TorchAudio checkpoint.** The [Demucs maintainer](https://github.com/facebookresearch/demucs/issues/327) explicitly distinguishes research-only pretrained weights from MIT source code. No applicable commercial grant was established for the exact pinned `hdemucs_high_trained.pt`; its manifest now records that boundary. This does not independently determine legal rights in every derived output. Original recordings and local research evidence are preserved. [Checkpoint provenance, alternative investigation and actual dependency test](SINGING_STARTUP_FOLLOWUP.md).

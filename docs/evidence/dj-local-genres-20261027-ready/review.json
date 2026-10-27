@@ -1,0 +1,149 @@
+{
+  "status": "PASS technical; listening NOT RUN",
+  "target_lufs": -24.58,
+  "tracks": [
+    {
+      "number": 1,
+      "source_sha256": "0a6530ab9846ceaaf4f9b1b53ef361c9fb88673af90884b2fa21dbf7484690e7",
+      "original": {
+        "input_i": "-16.66",
+        "input_tp": "-0.61",
+        "input_lra": "3.50",
+        "input_thresh": "-26.82"
+      },
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-8.53",
+        "input_lra": "3.60",
+        "input_thresh": "-34.73"
+      },
+      "gain_db": -7.919999999999998,
+      "review_sha256": "702cbbae1be155a53dbc649f3cddd71723fe07878cab11f8934122034712e9ad",
+      "duration": 60,
+      "style": "house",
+      "vocal_requested": false
+    },
+    {
+      "number": 2,
+      "source_sha256": "913f926a7cfcc858fb4299c08482c4548d99ce3d194e06a166a7a9469626641d",
+      "original": {
+        "input_i": "-16.45",
+        "input_tp": "-0.99",
+        "input_lra": "6.20",
+        "input_thresh": "-26.65"
+      },
+      "review": {
+        "input_i": "-24.60",
+        "input_tp": "-9.12",
+        "input_lra": "6.20",
+        "input_thresh": "-34.78"
+      },
+      "gain_db": -8.129999999999999,
+      "review_sha256": "9623c9d56534c72d081dc4b36fc59fe1bbeb272849ff89adb76b2ecef4c9b8c0",
+      "duration": 60,
+      "style": "tech-house",
+      "vocal_requested": false
+    },
+    {
+      "number": 3,
+      "source_sha256": "73ad6c604f7067095f6a6bbd2a4c905c4e59da6b990f986edde3408ae4fc6e57",
+      "original": {
+        "input_i": "-19.23",
+        "input_tp": "-0.91",
+        "input_lra": "2.00",
+        "input_thresh": "-29.25"
+      },
+      "review": {
+        "input_i": "-24.58",
+        "input_tp": "-6.26",
+        "input_lra": "1.90",
+        "input_thresh": "-34.60"
+      },
+      "gain_db": -5.349999999999998,
+      "review_sha256": "ad154564df6af0ea59e4566dc17a3bde1cb5e2e15962a1a80aacb095cd685b94",
+      "duration": 60,
+      "style": "techno",
+      "vocal_requested": false
+    },
+    {
+      "number": 4,
+      "source_sha256": "8afcb02c0b73e35a5b5c0bf8c20a1811e712543138be46f203893d4d171b880e",
+      "original": {
+        "input_i": "-13.60",
+        "input_tp": "-1.00",
+        "input_lra": "4.30",
+        "input_thresh": "-23.87"
+      },
+      "review": {
+        "input_i": "-24.57",
+        "input_tp": "-11.98",
+        "input_lra": "4.20",
+        "input_thresh": "-34.85"
+      },
+      "gain_db": -10.979999999999999,
+      "review_sha256": "c48da0245bbbfd1b582503bdc4b12048c9ce72075947900846de154a86330f5c",
+      "duration": 60,
+      "style": "house",
+      "vocal_requested": true
+    }
+  ],
+  "mix": {
+    "seconds": 166.38,
+    "sha256": "141cc0092006649edb37c8aefbb63875a3c0f2978ec8a2531e4723e8010f25c8",
+    "changes": [
+      {
+        "tracks": 0,
+        "elapsed": 0,
+        "plan": "Preparing a conservative transition"
+      },
+      {
+        "tracks": 1,
+        "elapsed": 0,
+        "plan": "Preparing a conservative transition"
+      },
+      {
+        "tracks": 2,
+        "elapsed": 52.348,
+        "plan": "Preparing a conservative transition"
+      },
+      {
+        "tracks": 3,
+        "elapsed": 88.248,
+        "plan": "Preparing a conservative transition"
+      },
+      {
+        "tracks": 4,
+        "elapsed": 140.548,
+        "plan": "Preparing a conservative transition"
+      }
+    ],
+    "actions": [
+      {
+        "action": "filter",
+        "label": "Filter sweep",
+        "at": 32.525000000000006,
+        "until": 34.400000000000006,
+        "position": 32.145,
+        "by": "AI"
+      },
+      {
+        "action": "roll-one",
+        "label": "1 roll",
+        "at": 53.618750000000006,
+        "until": 54.556250000000006,
+        "position": 23.34272567409144,
+        "by": "AI"
+      },
+      {
+        "action": "echo",
+        "label": "Echo",
+        "at": 61.587500000000006,
+        "until": 63.462500000000006,
+        "position": 31.314589683470103,
+        "by": "AI"
+      }
+    ],
+    "peak": 0.3956156373023987,
+    "rms": 0.05692582689444445
+  }
+}

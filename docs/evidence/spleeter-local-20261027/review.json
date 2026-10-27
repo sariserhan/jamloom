@@ -1,0 +1,71 @@
+{
+  "status": "PASS files/finite/sample alignment; listening NOT RUN",
+  "rows": [
+    {
+      "case": "deep-house-male",
+      "source_sha256": "39ee94bd5d92ba87cf507166d4f516feb798277e18650eee8e933e8fdab73297",
+      "shared_gain": 0.9425119846596356,
+      "duration": 120,
+      "files": {
+        "song": {
+          "file": "deep-house-male-song.mp3",
+          "sha256": "d91983a2850effd5ae293333cfb8697cb3dbe4078f967d4a4411265ae46ecc35",
+          "peak": 0.8399999737739563,
+          "rms": 0.1548766791820526
+        },
+        "before": {
+          "file": "deep-house-male-before.mp3",
+          "sha256": "b2650f12b7729aff6cc732cb2cc37a891baa13b7fc90393f0d4235460f57a873",
+          "peak": 0.8221585154533386,
+          "rms": 0.13164274394512177
+        },
+        "candidate": {
+          "file": "deep-house-male-candidate.mp3",
+          "sha256": "86da4419f57c41a438910c82cacabad7d4b0be7862cfad355030b8535f2a40ef",
+          "peak": 0.8333426713943481,
+          "rms": 0.13304029405117035
+        },
+        "voice": {
+          "file": "deep-house-male-voice.mp3",
+          "sha256": "08e7584beca1708c22f179782176b8d87181031f46be0967c828da0fdd2e8dc2",
+          "peak": 0.5508252382278442,
+          "rms": 0.07454092800617218
+        }
+      },
+      "quality": "NOT RUN: no clean reference vocals"
+    },
+    {
+      "case": "eurodance-female",
+      "source_sha256": "0d109ac8720b65811ccb08b93630267a3587959c0151e27421c07d48c290f26c",
+      "shared_gain": 0.9424797123780174,
+      "duration": 120,
+      "files": {
+        "song": {
+          "file": "eurodance-female-song.mp3",
+          "sha256": "e6a367ae516034030503e733f868164fede0f788d9ac5b1f96245efbf797a558",
+          "peak": 0.8400000333786011,
+          "rms": 0.17567171156406403
+        },
+        "before": {
+          "file": "eurodance-female-before.mp3",
+          "sha256": "a824b1cdd7194942b063bd0cbfde4f2b72fe14027672e83824b0baba014ea0c0",
+          "peak": 0.7549178600311279,
+          "rms": 0.15437175333499908
+        },
+        "candidate": {
+          "file": "eurodance-female-candidate.mp3",
+          "sha256": "e31b9691412a4d2a11c539a7451aad921d9d4b9c4fe1cf008eb482cbcb6e25d6",
+          "peak": 0.7557867765426636,
+          "rms": 0.155759796500206
+        },
+        "voice": {
+          "file": "eurodance-female-voice.mp3",
+          "sha256": "2740b1171116a47cf267f2d13b5d9a1f0c36514594845b61b51ccfdd279117de",
+          "peak": 0.6036668419837952,
+          "rms": 0.07511401176452637
+        }
+      },
+      "quality": "NOT RUN: no clean reference vocals"
+    }
+  ]
+}

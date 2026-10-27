@@ -1,0 +1,12 @@
+{
+  "technical": "PASS separation and sample alignment",
+  "source_sha256": "0d109ac8720b65811ccb08b93630267a3587959c0151e27421c07d48c290f26c",
+  "vocal_sha256": "db741dd94a8dd00616261263dc185c448e09fe79e60b8441b9f9cb448cb3a63e",
+  "frames": 5760000,
+  "sample_rate": 48000,
+  "model_archive_sha256": "f3a90b39dd2874269e8b05a48a86745df897b848c61f3958efc80a39152bd692",
+  "seconds": 14.090149875031784,
+  "device": "cpu",
+  "quality": "NOT RUN: no clean reference stems; requires listening",
+  "production_adoption": false
+}

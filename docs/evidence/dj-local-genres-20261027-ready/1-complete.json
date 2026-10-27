@@ -1,0 +1,52 @@
+{
+  "status": "PASS technical; listening NOT RUN",
+  "case": {
+    "request": {
+      "version": 1,
+      "session": "27102788888888888888888888888888",
+      "sequence": 0,
+      "seed": 281127,
+      "style": "house",
+      "energy": 4,
+      "mood": "deep"
+    },
+    "model": "acestep-v15-turbo",
+    "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+    "bpm": 128,
+    "lyrics": "[Instrumental]",
+    "instrumental": true,
+    "seconds": 60,
+    "vocals": false,
+    "label": "acestep-v15-turbo: house instrumental"
+  },
+  "parameters": {
+    "caption": "Original instrumental club house, 128 BPM, rolling groove, hypnotic minor-key color. Use a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove. Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; next eight bars vary its answer while keeping the same bass sound and pulse. Then a two-bar percussion rise, followed by a strong full-bass return with one new counter-rhythm. Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out. Keep the kick transient clear, the sub bass controlled and separate from the kick, consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. Energy 4 of 5. No vocals, borrowed melodies or artist imitation.",
+    "lyrics": "[Instrumental]",
+    "bpm": 128,
+    "duration": 60,
+    "instrumental": true,
+    "vocal_language": "en",
+    "seed": 281127,
+    "inference_steps": 8,
+    "guidance_scale": 7.0,
+    "use_adg": false,
+    "shift": 1.0,
+    "thinking": false,
+    "use_cot_metas": false,
+    "use_cot_caption": false,
+    "use_cot_language": false,
+    "use_cot_lyrics": false,
+    "enable_normalization": true,
+    "normalization_db": -1
+  },
+  "raw_sha256": "fada174cc8c3898169bf82a606b9bf4ef101233ca2f05cdbe98f74cb7039ddfb",
+  "audio_sha256": "0a6530ab9846ceaaf4f9b1b53ef361c9fb88673af90884b2fa21dbf7484690e7",
+  "seconds": 34.95559050003067,
+  "device": "mps",
+  "dtype": "torch.bfloat16",
+  "mlx_vae": false,
+  "source_audio_used": false,
+  "trained_adapter": false,
+  "semantic_planner": false,
+  "comparison_limit": "Local turbo-only generation; not the base/turbo hosted study or customer latency qualification"
+}

@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sung target review · Jamloom</title>
+<style>body{font:18px/1.5 system-ui;color:#f3f2ec;background:#101723;max-width:1000px;margin:32px auto;padding:20px}article{padding:24px;background:#202b39;border-radius:20px;margin:24px 0;min-width:0}audio,canvas{display:block;width:100%;margin:16px 0}canvas{height:180px;background:#111b25}button{display:block;text-align:left;color:inherit;background:#182330;border:1px solid #546074;border-radius:8px;padding:12px;margin:6px 0;width:100%;font:inherit}button[aria-current=true]{background:#30554c;border-color:#b8edc9}pre{white-space:pre-wrap;font:inherit}:focus-visible{outline:3px solid #b8edc9}p{max-width:75ch}</style>
+<h1>Follow the recorded performance</h1><p>Review only: these words and pitch measurements are automatic estimates and may be wrong. They do not award scores or change course progress. Select a phrase to seek, then use Play to hear the words. The line shows measured pitch, not verified notes.</p><main></main><p id="status" role="status">Loading both songs…</p>
+<script type="module">
+const main=document.querySelector('main');
+try{
+ for(const id of ['deep-house-male','eurodance-female']){
+  const response=await fetch(id+'.json');if(!response.ok)throw Error('Unable to load review');const data=await response.json();
+  if(data.verified!==false||data.scoringEnabled!==false)throw Error('Expected unverified review candidates');
+  const article=document.createElement('article');article.innerHTML='<h2></h2><audio controls preload="metadata"></audio><canvas width="900" height="180" role="img" aria-label="Estimated sung pitch"></canvas><p class="position"></p><details><summary>Authored lyric sheet · may differ from recording</summary><pre></pre></details><h3>Automatic transcript · select to seek</h3><div class="phrases"></div>';
+  article.querySelector('h2').textContent=data.title;article.querySelector('pre').textContent=data.authored;
+  const audio=article.querySelector('audio');audio.src=id+'.mp3';audio.setAttribute('aria-label',data.title);
+  const buttons=data.segments.map(s=>{const b=document.createElement('button');b.type='button';b.textContent=`${s.at.toFixed(1)}s · ${s.text.trim()}`;b.onclick=()=>{audio.currentTime=s.at;draw();};article.querySelector('.phrases').append(b);return b;});
+  const canvas=article.querySelector('canvas'),ctx=canvas.getContext('2d');
+  function draw(){
+   const now=audio.currentTime,start=Math.max(0,now-2);ctx.clearRect(0,0,900,180);ctx.strokeStyle='#3e4e60';
+   for(let note=36;note<=84;note+=12){const y=180-(note-36)/48*180;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(900,y);ctx.stroke();}
+   ctx.strokeStyle='#a6e5c7';ctx.lineWidth=2;ctx.beginPath();let connected=false;
+   for(const [at,note] of data.trace){if(at<start||at>start+8)continue;if(note===null){connected=false;continue;}const x=(at-start)/8*900,y=180-(note-36)/48*180;if(connected)ctx.lineTo(x,y);else ctx.moveTo(x,y);connected=true;}ctx.stroke();
+   ctx.strokeStyle='#fff';ctx.beginPath();ctx.moveTo((now-start)/8*900,0);ctx.lineTo((now-start)/8*900,180);ctx.stroke();
+   buttons.forEach((b,i)=>b.setAttribute('aria-current',String(now>=data.segments[i].at&&now<data.segments[i].end)));
+   article.querySelector('.position').textContent=`${now.toFixed(1)} seconds · estimated pitch only`;
+  }
+  audio.addEventListener('timeupdate',draw);audio.addEventListener('seeked',draw);main.append(article);draw();
+ }
+ document.querySelector('#status').textContent='Both reviews ready. No microphone access or scoring.';
+}catch(error){document.querySelector('#status').textContent=error.message;}
+function stop(){document.querySelectorAll('audio').forEach(a=>a.pause());}
+document.addEventListener('play',e=>{if(e.target.tagName==='AUDIO')document.querySelectorAll('audio').forEach(a=>{if(a!==e.target)a.pause();});},true);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});window.addEventListener('pagehide',stop);
+</script></html>

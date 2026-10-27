@@ -1,0 +1,28 @@
+[
+  {
+    "browser": "chromium",
+    "status": "PASS",
+    "checks": [
+      "muted playback clock",
+      "phrase seek and highlight",
+      "measured pitch canvas",
+      "phone width",
+      "exclusive playback",
+      "no microphone or score"
+    ],
+    "lyricNoteAccuracy": "NOT RUN"
+  },
+  {
+    "browser": "webkit",
+    "status": "PASS",
+    "checks": [
+      "muted playback clock",
+      "phrase seek and highlight",
+      "measured pitch canvas",
+      "phone width",
+      "exclusive playback",
+      "no microphone or score"
+    ],
+    "lyricNoteAccuracy": "NOT RUN"
+  }
+]

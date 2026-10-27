@@ -1,3 +1,9 @@
+## Current local audio candidates — 2026-10-27
+
+Compare the same accepted songs with a new free-model karaoke backing at http://localhost:8766/separator/review/. The course still uses the accepted versions. Automatic lyric/pitch candidates are inspectable at http://localhost:8766/sung-targets/review/; they are unverified and do not grade your singing. Four fresh Mac-generated DJ tracks and the 166-second current-player mix are ready at http://localhost:8766/local-dj/review/. Playback/seek checks pass in both browsers; music, vocal and transition quality still need your review. [Results and open gates](LOCAL_AUDIO_COMPLETION.md).
+
+The Spleeter research runtime now works locally using explicit Mac dependency overrides; this supersedes the earlier installation-failure status below. Its publisher explicitly licenses pretrained models as MIT. No new model/runtime is included in the website or app. Hosted work remains unqualified: workers are disabled and the selected image is older than current source. No push, deployment, paid run or live-sales activation.
+
 ## Latest local candidate — 2026-10-27
 
 Build **0.10.4 (33)** is signed, audited, installed and launched. On both web and phone, a song that cannot start within thirty seconds now stops its microphone and lets you retry. Successful playback cancels that deadline. Your build-32 playback/microphone/Community-stop acceptance is retained; the updated failure path has browser evidence, not a new physical singing test.

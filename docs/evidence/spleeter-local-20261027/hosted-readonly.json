@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-27T18:53:36.412Z",
+  "name": "jamloom-music-v1",
+  "workersMin": 0,
+  "workersMax": 0,
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:83a00c568cb48f24e27811c901ac941643aee3352f2a0239c5b071120af58780",
+  "operation": "GET only",
+  "latestCodeQualified": false
+}

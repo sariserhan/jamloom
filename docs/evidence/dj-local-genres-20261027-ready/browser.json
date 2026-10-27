@@ -1,0 +1,28 @@
+[
+  {
+    "browser": "chromium",
+    "status": "PASS",
+    "players": 5,
+    "checks": [
+      "muted actual playback clock",
+      "seek",
+      "durations",
+      "exclusive playback",
+      "mobile/desktop width"
+    ],
+    "humanQuality": "NOT RUN"
+  },
+  {
+    "browser": "webkit",
+    "status": "PASS",
+    "players": 5,
+    "checks": [
+      "muted actual playback clock",
+      "seek",
+      "durations",
+      "exclusive playback",
+      "mobile/desktop width"
+    ],
+    "humanQuality": "NOT RUN"
+  }
+]

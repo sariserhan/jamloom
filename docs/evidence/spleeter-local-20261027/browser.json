@@ -1,0 +1,19 @@
+{
+  "status": "PASS muted browser playback; listening NOT RUN",
+  "results": [
+    {
+      "browser": "chromium",
+      "players": 8,
+      "playSeekExclusive": "PASS",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "players": 8,
+      "playSeekExclusive": "PASS",
+      "overflow": false,
+      "errors": []
+    }
+  ]
+}

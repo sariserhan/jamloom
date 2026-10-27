@@ -1,0 +1,38 @@
+{
+  "repository": "deezer/spleeter",
+  "code_revision": "c8854001ac8acad34a9bc2bd15f28475541828b1",
+  "package": "spleeter==2.4.2",
+  "weights_release": "v1.4.0",
+  "model": "2stems",
+  "archive_url": "https://github.com/deezer/spleeter/releases/download/v1.4.0/2stems.tar.gz",
+  "archive_sha256": "f3a90b39dd2874269e8b05a48a86745df897b848c61f3958efc80a39152bd692",
+  "files": {
+    "checkpoint": {
+      "bytes": 67,
+      "sha256": "011c96b970c1f56137037924fe1a0f0851369b0ee6692e120aea798615326f48"
+    },
+    "model.index": {
+      "bytes": 5244,
+      "sha256": "55661a09f79c86071fc7077b44b4cf1f01b6d82bbbb83ed94cb68a2f9944e378"
+    },
+    "model.data-00000-of-00001": {
+      "bytes": 78614080,
+      "sha256": "7747f9fd2c782306dbec1504360fbb645a097a48446f23486c3ff9c89bc11788"
+    },
+    "model.meta": {
+      "bytes": 805575,
+      "sha256": "6e1f6d86a22bb452a58cb20e3de87b416f8a79e626ca223e20f763ab2d21ec95"
+    }
+  },
+  "license": "Publisher paper explicitly describes Spleeter source and pretrained models as MIT. Preserve MIT notice. Does not grant rights in third-party input audio or establish training-data ownership independently.",
+  "license_source": "https://github.com/deezer/spleeter/blob/c8854001ac8acad34a9bc2bd15f28475541828b1/paper.md",
+  "runtime_override": {
+    "tensorflow-macos": "2.12.0",
+    "tensorflow-io-gcs-filesystem": "0.34.0",
+    "reason": "Upstream exact tensorflow 2.12.1 and filesystem 0.32.0 have no Mac arm64 wheels; isolated compatibility experiment only"
+  },
+  "adoption": "STUDY: local comparison; no production replacement yet",
+  "package_wheel_sha256": "11b6aad050f89752e3752e08d8f69c69b699929157424e47c00e3e4db21073f9",
+  "package_wheel_url": "https://files.pythonhosted.org/packages/04/ff/6a9c2348de86b8a0e2ce8e72d3235d91f05a6dbc1a2eb809b51749023b7d/spleeter-2.4.2-py3-none-any.whl",
+  "revision_meaning": "Pinned repository audit and license evidence; executed PyPI wheel is separately hash-pinned."
+}

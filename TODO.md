@@ -1,3 +1,14 @@
+## Karaoke replacement and local DJ completion — 2026-10-27
+
+**PASS local separation/generation and scoped checks; PARTIAL overall, listening/target/hosted gates open.** [Evidence and exact limitations](docs/LOCAL_AUDIO_COMPLETION.md).
+
+- [x] Run the checksum-pinned MIT-published Spleeter model on both accepted originals in an isolated Mac runtime; retain dependency overrides/pip-check failures, exact stems, memory/time measurements and eight-player comparison. Existing accepted course backings remain unchanged pending listening.
+- [x] Prepare source-bound word/pitch candidates with a seekable local review, explicitly unverified and unscored; pass both-browser playback/seek/highlight and no-microphone checks.
+- [x] Generate four fresh local sixty-second DJ originals through the shared pinned singer engine, using new seeds and one requested short musical-vocal opportunity. Preserve the memory-stopped attempt; no lowered guard or paid compute.
+- [x] Capture all four tracks through the actual player: 166.38 seconds, three AI moves, three handoffs, no playback pause/error and no silence >=250 ms at -50 dB. Pass both-browser five-player seek/playback/layout checks; listening pending.
+- [x] Limit cloud trial dispatch to worker bounds and require verified audio before advancing; stop on failed/cancelled requests or repeated polling errors. Pass 168 site tests, TypeScript, 19 Python checks and two dry runs. Read-only endpoint snapshot confirms zero worker limits and older restored image.
+- [ ] Accept or reject replacement karaoke/new DJ candidates; verify actual sung words/notes before scoring; complete fresh hosted musical/capacity and independent/provider gates. No old paid permit reuse, push, deployment, iPad claim or live-sales activation.
+
 ## Produced-song startup and rights follow-through — 2026-10-27
 
 **PASS recovery/build/install; PARTIAL overall completion; commercial separator adoption BLOCKED.** [Current evidence and limitations](docs/SINGING_STARTUP_FOLLOWUP.md).

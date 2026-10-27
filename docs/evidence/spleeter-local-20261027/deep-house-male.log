@@ -1,0 +1,25 @@
+WARNING:tensorflow:From /Users/serhansari/Documents/projects/jamloom/build-spleeter/venv/lib/python3.11/site-packages/spleeter/separator.py:65: RunConfig.__init__ (from tensorflow_estimator.python.estimator.run_config) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.keras instead.
+WARNING:tensorflow:From /Users/serhansari/Documents/projects/jamloom/build-spleeter/venv/lib/python3.11/site-packages/spleeter/separator.py:67: Estimator.__init__ (from tensorflow_estimator.python.estimator.estimator) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.keras instead.
+WARNING:tensorflow:From /Users/serhansari/Documents/projects/jamloom/build-spleeter/venv/lib/python3.11/site-packages/keras/layers/normalization/batch_normalization.py:581: _colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /Users/serhansari/Documents/projects/jamloom/build-spleeter/venv/lib/python3.11/site-packages/spleeter/model/__init__.py:524: EstimatorSpec.__new__ (from tensorflow_estimator.python.estimator.model_fn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.keras instead.
+WARNING:tensorflow:From /Users/serhansari/Documents/projects/jamloom/build-spleeter/venv/lib/python3.11/site-packages/tensorflow/python/saved_model/model_utils/export_utils.py:366: PredictOutput.__init__ (from tensorflow.python.saved_model.model_utils.export_output) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.keras instead.
+WARNING:tensorflow:From /Users/serhansari/Documents/projects/jamloom/build-spleeter/venv/lib/python3.11/site-packages/tensorflow/python/training/monitored_session.py:1455: SessionRunArgs.__new__ (from tensorflow.python.training.session_run_hook) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.keras instead.
+WARNING:tensorflow:From /Users/serhansari/Documents/projects/jamloom/build-spleeter/venv/lib/python3.11/site-packages/tensorflow/python/training/monitored_session.py:1454: SessionRunContext.__init__ (from tensorflow.python.training.session_run_hook) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.keras instead.
+WARNING:tensorflow:From /Users/serhansari/Documents/projects/jamloom/build-spleeter/venv/lib/python3.11/site-packages/tensorflow/python/training/monitored_session.py:1474: SessionRunValues.__new__ (from tensorflow.python.training.session_run_hook) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.keras instead.
+{"technical": "PASS separation and sample alignment", "source_sha256": "39ee94bd5d92ba87cf507166d4f516feb798277e18650eee8e933e8fdab73297", "vocal_sha256": "42cca85ef89d60b0aebb8de4e02ad392102d0bc0d72096d8d8f7a31713f4fc8d", "frames": 5760000, "sample_rate": 48000, "model_archive_sha256": "f3a90b39dd2874269e8b05a48a86745df897b848c61f3958efc80a39152bd692", "seconds": 14.137729916954413, "device": "cpu", "quality": "NOT RUN: no clean reference stems; requires listening", "production_adoption": false}

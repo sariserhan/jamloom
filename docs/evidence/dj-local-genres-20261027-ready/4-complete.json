@@ -1,0 +1,52 @@
+{
+  "status": "PASS technical; listening NOT RUN",
+  "case": {
+    "request": {
+      "version": 1,
+      "session": "27102788888888888888888888888888",
+      "sequence": 3,
+      "seed": 281130,
+      "style": "house",
+      "energy": 4,
+      "mood": "deep"
+    },
+    "model": "acestep-v15-turbo",
+    "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a steady drum-and-bass exit for mixing, without a fade-out. No speech narration or robotic voice effects.",
+    "bpm": 128,
+    "lyrics": "[Instrumental]\n[Chorus]\nCatch the light\nLet it move\n[Instrumental]",
+    "instrumental": false,
+    "seconds": 60,
+    "vocals": false,
+    "label": "acestep-v15-turbo: house musical vocal"
+  },
+  "parameters": {
+    "caption": "Driving vocal house, 128 BPM, punchy four-on-the-floor drums, warm piano chords, rounded dance bass. Natural expressive male tenor singing, clear words and melodic phrasing. Occasional short two-word hooks with long instrumental answers. Strong groove throughout, a developing arrangement and a steady drum-and-bass exit for mixing, without a fade-out. No speech narration or robotic voice effects.",
+    "lyrics": "[Instrumental]\n[Chorus]\nCatch the light\nLet it move\n[Instrumental]",
+    "bpm": 128,
+    "duration": 60,
+    "instrumental": false,
+    "vocal_language": "en",
+    "seed": 281130,
+    "inference_steps": 8,
+    "guidance_scale": 7.0,
+    "use_adg": false,
+    "shift": 1.0,
+    "thinking": false,
+    "use_cot_metas": false,
+    "use_cot_caption": false,
+    "use_cot_language": false,
+    "use_cot_lyrics": false,
+    "enable_normalization": true,
+    "normalization_db": -1
+  },
+  "raw_sha256": "9eb40b4c2ddd820cd1aef072ecff2f6aee18ef76a802bf5b9faf448d264ccebe",
+  "audio_sha256": "8afcb02c0b73e35a5b5c0bf8c20a1811e712543138be46f203893d4d171b880e",
+  "seconds": 44.45896304200869,
+  "device": "mps",
+  "dtype": "torch.bfloat16",
+  "mlx_vae": false,
+  "source_audio_used": false,
+  "trained_adapter": false,
+  "semantic_planner": false,
+  "comparison_limit": "Local turbo-only generation; not the base/turbo hosted study or customer latency qualification"
+}

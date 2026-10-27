@@ -1,3 +1,5 @@
+**Current local follow-through:** [karaoke replacement, sung-target candidates, fresh local DJ originals and hosted-run safeguards](LOCAL_AUDIO_COMPLETION.md). Actual local work/checks pass; new candidate listening, verified targets and hosted qualification remain open. No release or paid run.
+
 **Latest follow-through:** [startup recovery and rights audit](SINGING_STARTUP_FOLLOWUP.md) fixes stalled singer/karaoke startup, with both-browser recovery checks and signed/audited/installed/launched iPhone build 33. New physical interaction acceptance is NOT RUN; build-32 owner evidence remains separate. Produced-song scoring and commercial separator adoption remain blocked/unqualified; no release is approved.
 
 **Latest local integration:** both accepted produced originals now appear on the web Academy and native Sing catalogue with singer/karaoke playback, live pitch, seeking and passage repeats. Technical checks pass; exact-song scoring/lyric highlighting remains open. Build 32 is signed/audited/installed; the owner confirms Long Way Home playback, microphone pitch and stopping on Community. [Current integration and unfinished gates](SINGING_PRODUCED_PRACTICE.md).

@@ -1,3 +1,5 @@
+**Latest actual experiment:** [Spleeter local benchmark](LOCAL_AUDIO_COMPLETION.md) now separates both accepted originals with exact model/wheel hashes and retained MIT notice. Approximately 18–24 seconds per two-minute song, 1.4 GB peak process RSS. Mac dependency overrides remain unsupported by pip metadata; no production runtime adoption. Listening pending; decision **STUDY**. No duplicate playback engine. The earlier failed-resolution evidence below is historical.
+
 **2026-10-27 follow-through:** [startup reliability, exact-checkpoint licensing and Spleeter comparison](SINGING_STARTUP_FOLLOWUP.md). The shared recorded-song player is hardened without a new dependency. Current Demucs/TorchAudio weights remain blocked for commercial adoption; Spleeter is STUDY with a pinned source and actual failed Mac dependency resolution, not an adopted replacement. No audio-quality benchmark is inferred from a license review.
 
 # Open-source reuse audit — 2026-10-26

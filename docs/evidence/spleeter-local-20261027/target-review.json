@@ -1,0 +1,20 @@
+[
+  {
+    "id": "deep-house-male",
+    "source_sha256": "42cca85ef89d60b0aebb8de4e02ad392102d0bc0d72096d8d8f7a31713f4fc8d",
+    "frames": 5996,
+    "pitched": 2498,
+    "verified": false,
+    "scoringEnabled": false,
+    "target_sha256": "0d2819b37e33f358a321ea6ad4f0b177c45b9417afde4ad4bceaffb57af98547"
+  },
+  {
+    "id": "eurodance-female",
+    "source_sha256": "db741dd94a8dd00616261263dc185c448e09fe79e60b8441b9f9cb448cb3a63e",
+    "frames": 5996,
+    "pitched": 2711,
+    "verified": false,
+    "scoringEnabled": false,
+    "target_sha256": "ad32ef0301d2f2281cfd1be80fc4dd3bb8fa1deb35d1d2a0215ec5c305af2932"
+  }
+]

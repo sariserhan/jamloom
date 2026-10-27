@@ -419,6 +419,35 @@ def isolated_vocal_reference(reference, output):
             'separation_quality':'NOT RUN: estimated vocal stem may contain bleed'}
 
 
+def load_singer_engine(root, mac_small_decode=False):
+    if type(mac_small_decode) is not bool or mac_small_decode and inference_device() != 'mps':
+        raise ValueError('Small local decode requires Metal')
+    import torch
+    from acestep.handler import AceStepHandler
+    from acestep.llm_inference import LLMHandler
+    class MacSingerHandler(AceStepHandler):
+        def _load_main_model_from_checkpoint(self, **kwargs):
+            # Avoid simultaneous float32 CPU/GPU copies exceeding the 16 GiB Mac.
+            self.dtype = torch.bfloat16
+            return super()._load_main_model_from_checkpoint(**kwargs)
+
+        def _init_mlx_vae(self):
+            # Native MLX decode exhausted this Mac even at 192 frames; use upstream MPS tiles.
+            if mac_small_decode:
+                return False
+            return super()._init_mlx_vae()
+
+    device = inference_device()
+    if device == 'cuda' and not torch.cuda.is_available():
+        raise RuntimeError('CUDA is required for the hosted singer')
+    dit, lm = (MacSingerHandler() if device == 'mps' else AceStepHandler()), LLMHandler()
+    status, ok = dit.initialize_service(project_root=str(root), config_path='acestep-v15-turbo', device=device,
+                                       compile_model=False, use_mlx_dit=False, offload_to_cpu=device == 'mps', offload_dit_to_cpu=False)
+    if not ok:
+        raise RuntimeError(status)
+    return dit, lm
+
+
 def sing(root, plan_path, output, case_id, conditioning_path=None, reference_singer=None, reference_vocals=False, mac_small_decode=False):
     if type(mac_small_decode) is not bool or mac_small_decode and inference_device() != 'mps':
         raise ValueError('Small local decode requires Metal')
@@ -451,32 +480,11 @@ def sing(root, plan_path, output, case_id, conditioning_path=None, reference_sin
     import numpy as np
     import soundfile as sf
     import torch
-    from acestep.handler import AceStepHandler
-    from acestep.llm_inference import LLMHandler
     from acestep.inference import GenerationParams, GenerationConfig, generate_music
     started = time.monotonic()
     torch.set_num_threads(4)
     random.seed(c['seed']); np.random.seed(c['seed']); torch.manual_seed(c['seed'])
-    class MacSingerHandler(AceStepHandler):
-        def _load_main_model_from_checkpoint(self, **kwargs):
-            # Avoid simultaneous float32 CPU/GPU copies exceeding the 16 GiB Mac.
-            self.dtype = torch.bfloat16
-            return super()._load_main_model_from_checkpoint(**kwargs)
-
-        def _init_mlx_vae(self):
-            # Native MLX decode exhausted this Mac even at 192 frames; use upstream MPS tiles.
-            if mac_small_decode:
-                return False
-            return super()._init_mlx_vae()
-
-    device = inference_device()
-    if device == 'cuda' and not torch.cuda.is_available():
-        raise RuntimeError('CUDA is required for the hosted singer')
-    dit, lm = (MacSingerHandler() if device == 'mps' else AceStepHandler()), LLMHandler()
-    status, ok = dit.initialize_service(project_root=str(root), config_path='acestep-v15-turbo', device=device,
-                                       compile_model=False, use_mlx_dit=False, offload_to_cpu=device == 'mps', offload_dit_to_cpu=False)
-    if not ok:
-        raise RuntimeError(status)
+    dit, lm = load_singer_engine(root, mac_small_decode)
     instrumental = bool(conditioning and conditioning['instrumental'])
     source_params = ({'task_type': 'cover', 'src_audio': conditioning['audio'],
                       'audio_cover_strength': conditioning['strength']} if conditioning else {})
