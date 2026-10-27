@@ -1,8 +1,16 @@
+## Current specification closure — 2026-10-27
+
+[Current map](spec-coverage.md), [closure evidence](SPEC_CLOSURE.md), [product ledger](PRODUCT_COMPLETION.md). Build **0.10.2 (27)** is signed/exported locally and restored on the iPhone after three passing physical checks. Native sign-in, wallet/profile/rating persistence and logout also pass against disposable local Postgres. Local StoreKit passes; it is not a real Apple sandbox receipt. Singing remains **$39 once**. No upload, push, deployment or paid activation.
+
+Run studio/native builds sequentially. Competing writers now fail with “Another studio build is running”; retry after the active build finishes. Keep source unchanged through archiving. Use `build-ios-store/Jamloom-0.10.2-27-final.xcarchive` and `export-0.10.2-27-final/Jamloom.ipa`; the initial non-final build-27 archive failed its bundle audit and is retained only as failure evidence.
+
+The owner cannot arrange independent listeners yet. Prepared review forms remain blank, and M1 stays NOT RUN. Tency's permissions/assets are still unavailable. Apple credit products still need genuine purchase-flow screenshots/reviewer access, and the real provider receipt chain remains unqualified. Do not enable purchases to hide these gates. Current software/quality/provider boundaries are in the closure report; older entries below may describe superseded builds or blockers.
+
 ## Cross-product maintenance — 2026-10-27
 
 [Current product ledger](PRODUCT_COMPLETION.md) and [maintenance report](PRODUCT_MAINTENANCE.md). The latest local source fixes Community request races, discovery identity, stale player errors, and support-form recovery. Direct `/report-bug` now renders with its request's CSP nonce; the form disables submission until ready and retains failed drafts. A timeout means delivery is unconfirmed, so do not automatically resend or mark it delivered. Real local admin-inbox delivery and rating persistence pass in both browser engines.
 
-Build 26 remains the latest archived/previously installed phone release; the new native fix is simulator-tested, not installed while the phone is disconnected. Apple build 24 remains selected but unsubmitted. Singing stays $39 once, with test-mode Stripe/access qualification complete and real Apple sandbox qualification open. The retained vocal remains rejected. Publication and new paid compute remain held; see the ledger for remaining quality, device and rights evidence.
+Build 27 now contains the native fix, passes scoped physical tests, and is archived/exported/installed. See the newer closure entry above. Apple build 24 remains selected but unsubmitted. Singing stays $39 once, with test-mode Stripe/access qualification complete and real Apple sandbox qualification open. The retained vocal remains rejected. Publication and new paid compute remain held; see the ledger for remaining quality, device and rights evidence.
 
 ## Local vocal timing follow-through — 2026-10-27
 

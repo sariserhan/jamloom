@@ -1,0 +1,12 @@
+{
+  "status": "PASS local archive/export/signature/install/launch",
+  "version": "0.10.2",
+  "build": "27",
+  "archive": "build-ios-store/Jamloom-0.10.2-27-final.xcarchive",
+  "ipa": "build-ios-store/export-0.10.2-27-final/Jamloom.ipa",
+  "ipaSha256": "3c5847cff4f8df34a0c9521c8f2d977db3d1221c4ffe2b442d59644060b662da",
+  "ipaBytes": 80331770,
+  "restoredAfterTests": true,
+  "upload": "NOT RUN",
+  "submission": "NOT RUN"
+}

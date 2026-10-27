@@ -1,6 +1,9 @@
 #!/bin/sh
 set -eu
 cd "$(dirname "$0")/.."
+if [ "${JAMLOOM_STUDIO_BUILD_LOCKED:-}" != 1 ]; then
+  exec python3 scripts/studio_build_lock.py
+fi
 EMSDK_PATH="${JAMLOOM_EMSDK:-${DJAYVO_EMSDK:-$PWD/build-web-tools/emsdk}}"
 if [ -x "$PWD/.venv-build/bin/cmake" ]; then PATH="$PWD/.venv-build/bin:$PATH"; export PATH; fi
 PATH="$PWD/build-web-tools/python-env/bin:$PWD/build-web-tools/cmake-env/bin:$PATH"; export PATH

@@ -1,3 +1,15 @@
+## Specification closure and build 27 — 2026-10-27
+
+**PASS scoped local work; PARTIAL complete specification.** [Closure report](SPEC_CLOSURE.md), [current requirement map](spec-coverage.md), [all-product ledger](PRODUCT_COMPLETION.md). Earlier dated checkboxes retain history and are not an additive backlog.
+
+- [x] Fix competing studio build writes and preserve unchanged native resource paths; two regressions pass in CTest. Final package audit passes after retaining the failed initial archive.
+- [x] Archive, sign, export, install and restore iPhone 0.10.2 build 27; three actual iPhone checks pass for Community request ordering, language/Favorites and Singing lifecycle.
+- [x] Pass three local StoreKit checks (one real-Apple test skipped) and actual native HTTP account/profile/rating save-read-delete against disposable local Postgres.
+- [x] Verify existing blind packet hashes/blank forms and refresh Apple draft product inventory read-only; reconcile obsolete spec/status descriptions.
+- [ ] Independent blinded quality review: owner cannot arrange listeners yet. Retain M1, current-model quality and cleared expert-label requirements.
+- [ ] Complete Apple credit metadata/reviewer access and provider-signed sandbox payment chain; physical latency/iPad/cue/MIDI, broader DJ/voice quality/capacity and popular-song rights remain open.
+- [ ] Publish only after the owner lifts the hold. No new paid compute, app upload/submission or live-sales change.
+
 ## Native Music DNA and Apple privacy — 2026-10-24
 
 **PASS:** manual musical-direction controls removed; favorites-based web flow, automatic saving and removable rows verified on the physical iPhone. App Store Data Collection answers completed, published and verified after reload; native manifest matches. 0.8.0 (12) signed/exported/installed; upload passed; Apple processing is pending. Simulator test cases pass but report finalization stalled (**PARTIAL artifact**). [Current release ledger](release-completion-20261024.md).

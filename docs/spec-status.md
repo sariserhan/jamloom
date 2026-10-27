@@ -1,5 +1,13 @@
 # Specification completion ledger
 
+**Current status, 2026-10-27: PARTIAL.** Use the reconciled
+[specification map](spec-coverage.md), [product ledger](PRODUCT_COMPLETION.md) and
+[closure report](SPEC_CLOSURE.md). Build 27 is verified/exported/installed locally;
+three physical checks, three local StoreKit checks and actual native account HTTP
+pass. Independent reviewers are unavailable. Quality, physical latency, rights,
+Apple provider transactions and release gates remain open. Entries below are
+historical and do not override the current map.
+
 Current non-iOS continuation: [2026-10-21 private action reconstruction](mix-action-replay.md).
 Overall remains **PARTIAL**. The entries below preserve earlier checkpoints and are
 superseded where the current report records newer implementation or evidence.

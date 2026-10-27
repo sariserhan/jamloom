@@ -1,3 +1,15 @@
+## Specification closure and build 27 — 2026-10-27
+
+**PASS scoped local work; PARTIAL complete specification.** [Closure report](SPEC_CLOSURE.md), [current requirement map](spec-coverage.md), [all-product ledger](PRODUCT_COMPLETION.md). Earlier dated checkboxes retain history and are not an additive backlog.
+
+- [x] Fix competing studio build writes and preserve unchanged native resource paths; two regressions pass in CTest. Final package audit passes after retaining the failed initial archive.
+- [x] Archive, sign, export, install and restore iPhone 0.10.2 build 27; three actual iPhone checks pass for Community request ordering, language/Favorites and Singing lifecycle.
+- [x] Pass three local StoreKit checks (one real-Apple test skipped) and actual native HTTP account/profile/rating save-read-delete against disposable local Postgres.
+- [x] Verify existing blind packet hashes/blank forms and refresh Apple draft product inventory read-only; reconcile obsolete spec/status descriptions.
+- [ ] Independent blinded quality review: owner cannot arrange listeners yet. Retain M1, current-model quality and cleared expert-label requirements.
+- [ ] Complete Apple credit metadata/reviewer access and provider-signed sandbox payment chain; physical latency/iPad/cue/MIDI, broader DJ/voice quality/capacity and popular-song rights remain open.
+- [ ] Publish only after the owner lifts the hold. No new paid compute, app upload/submission or live-sales change.
+
 ## Cross-product maintenance — 2026-10-27
 
 **PASS scoped fixes; PARTIAL overall readiness.** [Current report](PRODUCT_MAINTENANCE.md); [all-product ledger](PRODUCT_COMPLETION.md).
@@ -7,7 +19,7 @@
 - [x] Fix direct Report a bug hydration under strict CSP; prevent pre-hydration GET submission, bound stalled requests and retain drafts through failures.
 - [x] Pass 160 website tests, production build/TypeScript, Chromium/WebKit recovery and real local bug-to-admin/ratings tests; 19 native tests pass, two live-HTTP tests explicitly skipped.
 - [x] Reconcile build-26, $39 course-payment/access and Apple draft evidence in the current product ledger.
-- [ ] Package/install the new native source fix when the phone reconnects; retain physical/payment/music/licensing gates and the owner's publication hold. No new GPU rental or live sales.
+- [x] Package/install the new native source fix in build 27 and pass three scoped physical checks; separate payment/music/licensing gates and publication hold remain open.
 
 ## Vocal onset follow-through — 2026-10-27
 

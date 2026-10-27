@@ -1,0 +1,82 @@
+{
+  "baseCommit": "e6e214cf7c227353ea3bdfddae2d85f8bd7fba86",
+  "status": "PASS scoped implementation and checks; PARTIAL complete specification",
+  "date": "2026-10-27",
+  "physicalTests": {
+    "passed": 3,
+    "failed": 0,
+    "device": "iPhone 14 Pro",
+    "scope": [
+      "stale Community response rejection",
+      "language filter and Favorites",
+      "Singing demo and tab audio cleanup"
+    ]
+  },
+  "localStoreKit": {
+    "passed": 3,
+    "skipped": 1,
+    "failed": 0,
+    "limitation": "Xcode receipts, not Apple sandbox server transactions"
+  },
+  "nativeHTTP": {
+    "passed": 1,
+    "failed": 0,
+    "database": "disposable local Postgres; removed after test",
+    "scope": "actual URLSession sign-in, wallet, Music DNA profile, ratings, permission withdrawal, logout"
+  },
+  "packagingTests": {
+    "passed": 2,
+    "cmakeSuites": 1
+  },
+  "logs": {
+    "archive": {
+      "path": "/tmp/jamloom-closure-27-final-archive.log",
+      "sha256": "b27bc453b9e6f8cc200e3ee46b29cda780f5423f44f8315db7aa7a1f0c3d682d"
+    },
+    "physical": {
+      "path": "/tmp/jamloom-closure-physical-27.log",
+      "sha256": "3071213ebb893938100248d10d59e84bb4e93668d462b664aa31d533550db945"
+    },
+    "storekit": {
+      "path": "/tmp/jamloom-closure-purchases-27-retry.log",
+      "sha256": "4b5f438827fce8a855a9a9b981d0efdd64d48d8228968eb6701ce23955ed2088"
+    },
+    "nativeHTTP": {
+      "path": "/tmp/jamloom-closure-native-http-27.log",
+      "sha256": "a4b14b8875b27bcfa8e772c16a5481ed04194462d1c9dcbfe8fad8c15566489a"
+    },
+    "export": {
+      "path": "/tmp/jamloom-closure-export-27.log",
+      "sha256": "a4b3f8cc790a57bc069104bc6a116f809cfaa57d87c7ecfc5e77b4aaa9318cea"
+    },
+    "initialStoreKitFailure": {
+      "path": "/tmp/jamloom-closure-purchases-27.log",
+      "sha256": "df98486a77faff03ba87beed0cbc2c9b131437f3caff6948229485d9cfd30bb7"
+    },
+    "initialArchive": {
+      "path": "/tmp/jamloom-closure-27-archive.log",
+      "sha256": "e98ed92523d5e046bc8bf2eb67b86358b6881883e2e955a87ae8aaf67c9564ef"
+    },
+    "cmakeStaleCache": {
+      "path": "/tmp/jamloom-closure-cmake.log",
+      "sha256": "e9bf123370d966cbbcc31e8605d79b3a01fc38b0ddb7660dc0897bb9c65995ee"
+    },
+    "cmakeRetryStaleCache": {
+      "path": "/tmp/jamloom-closure-cmake-retry.log",
+      "sha256": "03274dcc9be563cc18f84ebdd980e74e15f998ff8f46377cafeb8b511f455298"
+    }
+  },
+  "retainedFailures": [
+    "Concurrent builds mutated shared generated resources: first simulator build failed during deletion; first archive had duplicated license notices. Rebuilt sequentially with fail-fast writer lock and stable resource paths; final archive and post-test audit pass.",
+    "Two old CMake caches referenced the historical djayvo path; a new isolated configuration passed."
+  ],
+  "notRun": [
+    "Independent blinded listening; owner cannot arrange listeners",
+    "Apple sandbox receipt/restore/refund server chain",
+    "Physical iPad and calibrated input-to-output latency",
+    "Natural short-vocal acceptance and broader sustained GPU capacity",
+    "Popular-song permissions/assets pending supplier"
+  ],
+  "publication": "HELD; no push/deployment/app upload/submission/live sales change",
+  "newPaidCompute": 0
+}
