@@ -1,3 +1,17 @@
+## Website follow-through — 2026-10-27
+
+**PASS scoped local fixes; PARTIAL overall readiness; publication HELD.** [Report](docs/WEB_FOLLOWUP.md), [evidence](docs/evidence/web-followup-20261027/validation.json).
+
+- [x] Coalesce concurrent site-settings reads without extending the five-second cache; protect newer admin invalidations from older responses.
+- [x] Stop homepage waveform rendering while idle/offscreen without stopping audio; Chromium/WebKit verify play, pause, cue and mixer controls.
+- [x] Bound legacy Music DNA catalogue enrichment to twelve searches/eight seconds; retain all 5,000 favorites and preserve confirmed quote/retry identity. Private visibility requires a new quote.
+- [x] Give measured pitch/timing/missing-input singing feedback without loosening grades; retain USD39 once.
+- [x] Audit twenty retained AI DJ originals/eighteen pairings and render three isolated before/after overlap candidates through the actual mixer. Shipping planner unchanged pending listening.
+- [x] Pass 164 site tests, 21 singing tests, 44 Python checks, TypeScript/build and scoped Chromium/WebKit checks; keep field performance, physical singing and hosted quality separate.
+- [x] Prepare a read-only configuration/migration preflight and rollback notes. Thirty applied hashes match; migrations 0031/0032 and live Stripe configuration remain release gates.
+- [ ] Qualify the overlap candidate by listening, fresh short singing, hosted style/language/5,000-favorite generation, sustained capacity/cost and broader real singing accuracy. Previous GPU permits remain consumed.
+- [ ] Keep deployment, production schema changes, live sales and Apple publication held in this pass. Local preview: http://127.0.0.1:3010. No phone rebuild; physical iPad remains excluded by owner.
+
 ## Centered singing analysis and real Apple catalogue — 2026-10-27
 
 **PASS scoped checks; PARTIAL overall readiness.** [Results and reproducible evidence](docs/SINGING_DIFFERENCE.md). New scale recordings improve from 77.48% to 79.88% within 50 cents including misses, with about 19.5% less detector CPU; inspected vocadito falls 0.23 percentage points, and some missed/false detections remain. Twenty singing checks, three bounded-downloader checks and Chromium/WebKit pass. This is not independent-singer or physical-latency qualification.

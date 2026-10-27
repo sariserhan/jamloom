@@ -65,10 +65,13 @@ export function automaticTaste(value:Taste){
 
 export async function resolveFavoriteMetadata(value:Taste,signal:AbortSignal,request:typeof fetch=fetch):Promise<Taste>{
  const p=favoriteList(value),metadata=[...(p.referenceMetadata??[])],known=new Set(metadata.map(m=>m.reference));
+ const lookupSignal=AbortSignal.any([signal,AbortSignal.timeout(8000)]);let lookups=0;
  for(const reference of p.references){
   signal.throwIfAborted();if(known.has(reference))continue;
+  // Legacy lists keep every favorite; enrichment must not delay creation for thousands of searches.
+  if(lookupSignal.aborted||lookups>=12)break;lookups++;
   try{
-   const response=await request('/api/music-search',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:reference.replace(/\s+[—–]\s+/g,' ')}),signal:AbortSignal.any([signal,AbortSignal.timeout(8000)])});
+   const response=await request('/api/music-search',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:reference.replace(/\s+[—–]\s+/g,' ')}),signal:lookupSignal});
    if(!response.ok)break;
    const data=await response.json();if(!Array.isArray(data.suggestions))continue;
    // Only an exact artist or title-and-artist match can label an unlisted/legacy favorite.

@@ -1,0 +1,61 @@
+{
+  "status": "PASS technical render",
+  "shippingEngine": "UNCHANGED",
+  "humanListening": "NOT RUN",
+  "results": [
+    {
+      "pair": 1,
+      "version": "before",
+      "file": "1-before.wav",
+      "seconds": 16,
+      "peak": 0.26385581493377686,
+      "fade": 1.7142857142857142,
+      "sha256": "7e22a55fd73f376b6d9fc39bf7aaa496d21617e95172c06cb1232afe8c211a91"
+    },
+    {
+      "pair": 1,
+      "version": "after",
+      "file": "1-after.wav",
+      "seconds": 16,
+      "peak": 0.2617669105529785,
+      "fade": 3.4285714285714284,
+      "sha256": "4f426d28fe6d63e055d533421364e29529caf946fa71cdbdafa3e210c280d2a0"
+    },
+    {
+      "pair": 2,
+      "version": "before",
+      "file": "2-before.wav",
+      "seconds": 16,
+      "peak": 0.27495622634887695,
+      "fade": 1.7142857142857142,
+      "sha256": "72b3113c47fbaa135ea1ddf9625127a40e0046dae62d8d7de606111a272b683e"
+    },
+    {
+      "pair": 2,
+      "version": "after",
+      "file": "2-after.wav",
+      "seconds": 16,
+      "peak": 0.26953405141830444,
+      "fade": 3.4285714285714284,
+      "sha256": "3f872d5fa217d9dfb3fe16ad7a38bb8c7c10d02d345e9d445df1f6bd5d32f7ed"
+    },
+    {
+      "pair": 3,
+      "version": "before",
+      "file": "3-before.wav",
+      "seconds": 16,
+      "peak": 0.23993784189224243,
+      "fade": 1.7142857142857142,
+      "sha256": "c07c4e9848d3d7539099e5c87d81dc69db7008a7894e0542c5c346c9ca0d1586"
+    },
+    {
+      "pair": 3,
+      "version": "after",
+      "file": "3-after.wav",
+      "seconds": 16,
+      "peak": 0.27167195081710815,
+      "fade": 3.4285714285714284,
+      "sha256": "e19b93192c993e66776e1133c7464478336bf1cdd0a38b42559bcc965dac0c23"
+    }
+  ]
+}

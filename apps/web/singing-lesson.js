@@ -25,7 +25,7 @@ export class SingingPhrase {
  constructor(phrase,rate,startFrame){
   if(!Array.isArray(phrase)||!phrase.length||phrase.length>96||!Number.isInteger(rate)||rate<8000||rate>192000||!Number.isSafeInteger(startFrame)||startFrame<0)throw Error('Invalid phrase');
   let end=0;for(const n of phrase){if(!Number.isFinite(n.at)||Math.abs(n.at-end)>1e-6||!Number.isFinite(n.duration)||n.duration<.2||n.duration>6||n.note!==null&&(!Number.isInteger(n.note)||n.note<45||n.note>81))throw Error('Invalid phrase note');end+=n.duration;}
-  this.phrase=phrase;this.rate=rate;this.start=startFrame;this.duration=end;this.last=null;this.previous=-1;this.good=false;this.time=0;this.rows=phrase.map(()=>({matched:0,first:null}));
+  this.phrase=phrase;this.rate=rate;this.start=startFrame;this.duration=end;this.last=null;this.previous=-1;this.good=false;this.time=0;this.rows=phrase.map(()=>({matched:0,first:null,heard:0,flat:0,sharp:0}));
  }
  observe(frame,pitch){
   if(!Number.isSafeInteger(frame)||frame<this.start||this.last!==null&&frame<=this.last)return this.result();
@@ -34,13 +34,16 @@ export class SingingPhrase {
   const n=this.phrase[index],voiced=isSingingPitch(pitch);
   const cents=voiced&&n.note!==null?1200*Math.log2(pitch.frequency/frequencyFor(n.note)):null;
   const good=n.note===null?!voiced:cents!==null&&Math.abs(cents)<=50;
+  if(cents!==null){this.rows[index].heard++;if(cents< -50)this.rows[index].flat++;if(cents>50)this.rows[index].sharp++;}
   if(good&&this.rows[index].first===null)this.rows[index].first=this.time-n.at;
   if(good&&this.good&&index===this.previous&&gap<=.12)this.rows[index].matched+=gap;
   this.good=good;this.previous=index;this.cents=cents;
   this.message=n.note===null?(voiced?'Leave this beat quiet':'Rest · get ready'):!voiced?'Sing the highlighted note':cents< -50?'A little higher':cents>50?'A little lower':'On target';return this.result();
  }
  result(){
-  const details=this.phrase.map((n,i)=>{const row=this.rows[i],coverage=Math.min(1,row.matched/n.duration),onTime=n.note===null||row.first!==null&&row.first<=.35;return {note:n.note,coverage,onTime,passed:coverage>=.55&&onTime};});
+  const details=this.phrase.map((n,i)=>{const row=this.rows[i],coverage=Math.min(1,row.matched/n.duration),onTime=n.note===null||row.first!==null&&row.first<=.35;const passed=coverage>=.55&&onTime;
+   const advice=passed?'✓ Matched':n.note===null?'Leave more silence':!row.heard?'No clear pitch detected · check the microphone and sing again':row.flat>row.heard/2?'Aim a little higher':row.sharp>row.heard/2?'Aim a little lower':row.first===null?'Listen to the note and match its pitch':!onTime?'Enter earlier':'Hold the correct pitch longer';
+   return {note:n.note,coverage,onTime,passed,advice};});
   const done=this.time>=this.duration,passed=done&&details.every(n=>n.passed),score=Math.round(100*details.reduce((sum,n)=>sum+n.coverage*(n.onTime?1:.5),0)/details.length);
   return {done,passed,score,details,cents:this.cents??null,index:this.previous,message:this.message||'Follow the notes',held:details.filter(n=>n.passed).length};
  }

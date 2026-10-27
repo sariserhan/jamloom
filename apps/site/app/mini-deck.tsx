@@ -14,13 +14,18 @@ export function MiniDeck({tracks}:{tracks:Track[]}) {
   const pauseOthers=(event:Event)=>{if(!media.includes(event.target as HTMLAudioElement))media.forEach(a=>a?.pause());};
   const pause=()=>media.forEach(a=>a?.pause());
   document.addEventListener('play',pauseOthers,true);window.addEventListener('pagehide',pause);
-  let frame=0;const samples=new Uint8Array(256);
-  function draw(){const element=canvas.current,ctx=element?.getContext('2d');if(ctx&&element){
+  let frame=0,visible=false;const samples=new Uint8Array(256);
+  function draw(){frame=0;if(!visible||document.hidden)return;const element=canvas.current,ctx=element?.getContext('2d');if(ctx&&element){
    const {width,height}=element;ctx.clearRect(0,0,width,height);ctx.strokeStyle='#c9fa78';ctx.lineWidth=2;ctx.beginPath();
    if(graph.current)graph.current.mixer.meter.getByteTimeDomainData(samples);else samples.fill(128);
    samples.forEach((v,i)=>{const x=i/(samples.length-1)*width,y=v/256*height;i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.stroke();
-  }frame=requestAnimationFrame(draw);}draw();
-  return()=>{alive.current=false;cancelAnimationFrame(frame);pause();document.removeEventListener('play',pauseOthers,true);window.removeEventListener('pagehide',pause);void graph.current?.context.close();graph.current=null;};
+  }if(media.some(a=>a&&!a.paused&&!a.ended))frame=requestAnimationFrame(draw);}
+  const refresh=()=>{cancelAnimationFrame(frame);draw();};
+  const observer=new IntersectionObserver(entries=>{visible=entries.some(e=>e.isIntersecting);refresh();});
+  if(canvas.current)observer.observe(canvas.current);
+  for(const a of media)for(const event of ['play','pause','ended'])a?.addEventListener(event,refresh);
+  document.addEventListener('visibilitychange',refresh);
+  return()=>{alive.current=false;observer.disconnect();document.removeEventListener('visibilitychange',refresh);for(const a of media)for(const event of ['play','pause','ended'])a?.removeEventListener(event,refresh);cancelAnimationFrame(frame);pause();document.removeEventListener('play',pauseOthers,true);window.removeEventListener('pagehide',pause);void graph.current?.context.close();graph.current=null;};
  },[]);
  function mix(value:number,field:'cross'|'master') {
   levels.current={...levels.current,[field]:value};field==='cross'?setCross(value):setMaster(value);

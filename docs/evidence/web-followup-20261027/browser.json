@@ -1,0 +1,28 @@
+[
+  {
+    "browser": "chromium",
+    "idlePaintsInTwoSeconds": 0,
+    "activePaintsInTwoSeconds": 120,
+    "offscreenPaintsInTwoSeconds": 0,
+    "offscreenAudioContinues": "PASS",
+    "pauseCueMixer": "PASS",
+    "favorites": 5000,
+    "metadataLookups": 12,
+    "privateQuoteInvalidation": "PASS",
+    "quoteConfirmationAndRetry": "PASS",
+    "realGeneration": "NOT RUN: intercepted API, no credits or provider used"
+  },
+  {
+    "browser": "webkit",
+    "idlePaintsInTwoSeconds": 0,
+    "activePaintsInTwoSeconds": 120,
+    "offscreenPaintsInTwoSeconds": 0,
+    "offscreenAudioContinues": "PASS",
+    "pauseCueMixer": "PASS",
+    "favorites": 5000,
+    "metadataLookups": 12,
+    "privateQuoteInvalidation": "PASS",
+    "quoteConfirmationAndRetry": "PASS",
+    "realGeneration": "NOT RUN: intercepted API, no credits or provider used"
+  }
+]

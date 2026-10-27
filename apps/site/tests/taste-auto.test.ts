@@ -45,3 +45,14 @@ test('lookup failure preserves favorites, cancellation aborts, malformed metadat
  controller.abort();await assert.rejects(resolveFavoriteMetadata(p,controller.signal),{name:'AbortError'});
  const malformed=await resolveFavoriteMetadata(p,new AbortController().signal,async()=>Response.json({suggestions:[{reference:'One',metadata:{reference:'One',genre:'Pop',source:'wrong'}}]}));assert.deepEqual(malformed.referenceMetadata,[]);
 });
+
+test('5,000-name enrichment has one shared deadline and twelve searches without losing favorites',async()=>{
+ const references=Array.from({length:5000},(_,i)=>`Unlisted favorite ${i}`),signals:AbortSignal[]=[];
+ const result=await resolveFavoriteMetadata({...emptyTaste,references},new AbortController().signal,async(_,init)=>{
+  signals.push(init!.signal!);const reference=references[signals.length-1];
+  return Response.json({suggestions:[{reference,metadata:{reference,genre:'Jazz',source:'itunes',id:signals.length}}]});
+ });
+ assert.equal(signals.length,12);assert.equal(new Set(signals).size,1);assert.deepEqual(result.references,references);assert.equal(result.referenceMetadata?.length,12);
+ const partial=await resolveFavoriteMetadata(result,new AbortController().signal,async()=>{throw new DOMException('Deadline reached','TimeoutError');});
+ assert.deepEqual(partial,result);
+});

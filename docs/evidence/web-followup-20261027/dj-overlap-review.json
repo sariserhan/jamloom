@@ -1,0 +1,16 @@
+[
+  {
+    "browser": "chromium",
+    "players": 6,
+    "playSeekExclusive": "PASS",
+    "mobileOverflow": false,
+    "physicalListening": "NOT RUN"
+  },
+  {
+    "browser": "webkit",
+    "players": 6,
+    "playSeekExclusive": "PASS",
+    "mobileOverflow": false,
+    "physicalListening": "NOT RUN"
+  }
+]

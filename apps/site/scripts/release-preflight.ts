@@ -1,0 +1,50 @@
+import './env';
+import {readFile,readdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+import {readConfig} from '../lib/config';
+import {createPool} from '../lib/database';
+import {audioStore} from '../lib/audio-store';
+import {djSessionStore} from '../lib/dj-session-store';
+import {cloudSongConfig} from '../lib/cloud-song-config';
+import {djBillingLive} from '../lib/dj-beta-access';
+import {billingReadiness} from '../lib/billing-mode';
+import {singingOffer} from '../../web/singing-offer.js';
+
+// Configuration only: constructors do not contact providers, rent GPUs or enable sales.
+export function releaseConfiguration(env:Record<string,string|undefined>){
+ const valid=(check:()=>unknown)=>{try{return Boolean(check());}catch{return false;}};
+ return {
+  accountConfigured:valid(()=>readConfig(env)),libraryStorageConfigured:valid(()=>audioStore(readConfig(env),env)),
+  djRecordingStorageConfigured:valid(()=>djSessionStore(env)),
+  cloudSongsEnabled:env.JAMLOOM_CLOUD_SONGS_ENABLED==='true',cloudSongConfigValid:valid(()=>!env.JAMLOOM_CLOUD_SONGS_ENABLED||env.JAMLOOM_CLOUD_SONGS_ENABLED==='false'||cloudSongConfig(env)),
+  djBillingModeValid:valid(()=>{djBillingLive(env);return true;}),djInvitationsEnabled:env.JAMLOOM_AI_DJ_BETA_ENABLED==='true',
+  academy:billingReadiness('live',env),singing:billingReadiness('live',env,'singing-complete'),
+  singingPriceUSD:singingOffer.priceCents/100,
+ };
+}
+export function compareMigrations(expected:Map<string,string>,applied:Map<string,string>){
+ return {pending:[...expected.keys()].filter(n=>!applied.has(n)),changed:[...expected].filter(([n,h])=>applied.has(n)&&applied.get(n)!==h).map(([n])=>n),unknown:[...applied.keys()].filter(n=>!expected.has(n))};
+}
+async function main(){
+ if(process.argv.slice(2).some(a=>a!=='--database'))throw Error('Use release-preflight.ts [--database]');
+ const report:{configuration:ReturnType<typeof releaseConfiguration>;database:unknown;limitations:string[]}={configuration:releaseConfiguration(process.env),database:'NOT RUN',limitations:['Reads this process environment, not deployed configuration','Configured credentials are not provider delivery evidence','No quality, payment, publication or sales approval is inferred']};
+ if(process.argv.includes('--database')){
+  const pool=createPool(readConfig().databaseURL);
+  try{
+   const directory=new URL('../migrations/',import.meta.url),expected=new Map<string,string>();
+   for(const name of (await readdir(directory)).filter(n=>/^\d+_[a-z_]+\.sql$/.test(n)).sort())expected.set(name,createHash('sha256').update(await readFile(new URL(name,directory))).digest('hex'));
+   const client=await pool.connect();
+   try{
+    await client.query('BEGIN READ ONLY');await client.query("SET LOCAL statement_timeout='5s'");
+    const rows=(await client.query('SELECT name,sha256 FROM djayvo_migrations')).rows;
+    const schema=compareMigrations(expected,new Map(rows.map(r=>[r.name,r.sha256])));
+    const settings=(await client.query('SELECT maintenance,billing_mode FROM site_settings WHERE id=1')).rows[0];
+    report.database={status:Object.values(schema).every(v=>!v.length)&&settings?'PASS':'FAIL',applied:rows.length,...schema,settings:settings??null};
+   }finally{await client.query('ROLLBACK');client.release();}
+  }finally{await pool.end();}
+ }
+ console.log(JSON.stringify(report,null,2));
+ if(typeof report.database==='object'&&report.database!==null&&'status' in report.database&&report.database.status==='FAIL')process.exitCode=1;
+}
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)main().catch(()=>{console.error('Release preflight failed; no changes were made. Check configuration and database access.');process.exitCode=1;});

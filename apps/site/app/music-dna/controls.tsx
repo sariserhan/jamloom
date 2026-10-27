@@ -37,7 +37,7 @@ export function TasteNotebook(){
  const publicConsent=visibility==='public';
  const selectionKey=favoriteKey(snapshot)+':'+visibility;
  const generationPrice=quote?.key===selectionKey?quote.credits:visibility==='public'?1:2;
- useEffect(()=>{setQuote(null);requestId.current=null;},[selectionKey]);
+ useEffect(()=>{setQuote(current=>current?.key===selectionKey?current:null);requestId.current=null;},[selectionKey]);
  const analysis=useRef<AbortController|null>(null),writable=useRef(false),mounted=useRef(true);
  useEffect(()=>{try{const old=localStorage.getItem('jamloom-taste-v1');if(old)setProfile(favoriteList(validateTaste(JSON.parse(old))));writable.current=true;}catch{setMessage('Saved favorites could not be read. You can start a new list.');}finally{setLoaded(true);}},[]);
  useEffect(()=>{if(!loaded||!writable.current)return;try{if(profile.references.length)localStorage.setItem('jamloom-taste-v1',JSON.stringify(profile));else localStorage.removeItem('jamloom-taste-v1');}catch{setMessage('Your list is available for this session, but this browser could not save it.');}},[profile,loaded]);
@@ -126,7 +126,7 @@ export function TasteNotebook(){
    if(readiness.creditsEnabled===false)throw Error('Credit-backed generation is not enabled here yet. Listen to the examples below.');
    if(readiness.signedIn===false)throw Error('Sign in with a verified account to use your credits.');
    if(readiness.active||readiness.busy)throw Error('Your other song is still being made. Your favorites are saved; try again when it finishes.');
-   const resolved=await resolveFavoriteMetadata(profile,controller.signal);controller.signal.throwIfAborted();setProfile(resolved);
+   const resolved=quote?.key===selectionKey&&quote.expiresAt>Date.now()?profile:await resolveFavoriteMetadata(profile,controller.signal);controller.signal.throwIfAborted();setProfile(resolved);
    const key=favoriteKey({...resolved,referenceMetadata:resolved.referenceMetadata??[]})+':'+visibility;
    let accepted=quote?.key===key&&quote.expiresAt>Date.now()?quote:null;
    if(!accepted){

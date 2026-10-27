@@ -51,3 +51,12 @@ test('all curriculum sections preserve the source lyric index and cannot include
  saveAttempt(storage,'first-light',{score:78,passed:false});
  assert.equal(readStored(storage)['city-lights'].best,91);assert.equal(readStored(storage)['city-lights'].attempts,2);assert.equal(readStored(storage).unknown,undefined);
  });
+
+ test('phrase feedback separates measured pitch, missing input and timing without awarding wrong notes',()=>{
+  for(const [mode,advice] of [['flat','Aim a little higher'],['sharp','Aim a little lower'],['quiet','No clear pitch detected'],['late','Enter earlier'],['correct','✓ Matched'],['rest','Leave more silence']]){
+   const grader=new SingingPhrase([{at:0,duration:2,note:mode==='rest'?null:57}],rate,0);
+   for(let frame=0;frame<=2*rate;frame+=960){const note=mode==='quiet'||mode==='late'&&frame<rate*.5?null:mode==='flat'?55:mode==='sharp'?59:57;grader.observe(frame,measured(note));}
+   const result=grader.result();assert(result.details[0].advice.startsWith(advice),mode);assert.equal(result.passed,mode==='correct',mode);
+   if(['flat','sharp','quiet','rest'].includes(mode))assert.equal(result.score,0,mode);
+  }
+ });

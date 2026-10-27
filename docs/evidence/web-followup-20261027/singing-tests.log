@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: capture timestamps the actual last sample and drops queued work without replaying old voice
+ok 1 - capture timestamps the actual last sample and drops queued work without replaying old voice
+  ---
+  duration_ms: 2.575209
+  type: 'test'
+  ...
+# Subtest: an input interruption requires a fresh complete window before emitting
+ok 2 - an input interruption requires a fresh complete window before emitting
+  ---
+  duration_ms: 0.640917
+  type: 'test'
+  ...
+# Subtest: all twelve exercises pass measured correct tones at every supported pace and register; silence never passes
+ok 3 - all twelve exercises pass measured correct tones at every supported pace and register; silence never passes
+  ---
+  duration_ms: 42.994375
+  type: 'test'
+  ...
+# Subtest: late notes, missing notes, repeated frames and dropped capture cannot earn completion
+ok 4 - late notes, missing notes, repeated frames and dropped capture cannot earn completion
+  ---
+  duration_ms: 0.429292
+  type: 'test'
+  ...
+# Subtest: progress preserves best/pass across retries, migrates first-note completion, ignores malformed storage
+ok 5 - progress preserves best/pass across retries, migrates first-note completion, ignores malformed storage
+  ---
+  duration_ms: 0.539584
+  type: 'test'
+  ...
+# Subtest: finite note score is sample accurate across callback sizes and ends every note
+ok 6 - finite note score is sample accurate across callback sizes and ends every note
+  ---
+  duration_ms: 1.872625
+  type: 'test'
+  ...
+# Subtest: original songs grade measured notes at every register and pace, reject silence and validate full band scores
+ok 7 - original songs grade measured notes at every register and pace, reject silence and validate full band scores
+  ---
+  duration_ms: 152.354875
+  type: 'test'
+  ...
+# Subtest: song score follows real audio clock after an unconnected worklet priming callback
+ok 8 - song score follows real audio clock after an unconnected worklet priming callback
+  ---
+  duration_ms: 0.19475
+  type: 'test'
+  ...
+# Subtest: all curriculum sections preserve the source lyric index and cannot include another section
+ok 9 - all curriculum sections preserve the source lyric index and cannot include another section
+  ---
+  duration_ms: 18.485
+  type: 'test'
+  ...
+# Subtest: restricted lesson delivery preserves valid paid progress when a free lesson is saved
+ok 10 - restricted lesson delivery preserves valid paid progress when a free lesson is saved
+  ---
+  duration_ms: 0.282625
+  type: 'test'
+  ...
+# Subtest: phrase feedback separates measured pitch, missing input and timing without awarding wrong notes
+ok 11 - phrase feedback separates measured pitch, missing input and timing without awarding wrong notes
+  ---
+  duration_ms: 0.559167
+  type: 'test'
+  ...
+# Subtest: four-minute score uses bounded phrases and requires actual correct pitch for every section
+ok 12 - four-minute score uses bounded phrases and requires actual correct pitch for every section
+  ---
+  duration_ms: 35.845334
+  type: 'test'
+  ...
+# Subtest: seek, pause and delayed frames cannot bridge scores or earn full-song completion
+ok 13 - seek, pause and delayed frames cannot bridge scores or earn full-song completion
+  ---
+  duration_ms: 0.22675
+  type: 'test'
+  ...
+# Subtest: capture aligns to center of microphone window and rejects stale or interrupted input
+ok 14 - capture aligns to center of microphone window and rejects stale or interrupted input
+  ---
+  duration_ms: 0.079791
+  type: 'test'
+  ...
+# Subtest: DC offset cannot promote subthreshold periodic noise; audible notes remain measurable
+ok 15 - DC offset cannot promote subthreshold periodic noise; audible notes remain measurable
+  ---
+  duration_ms: 10.035958
+  type: 'test'
+  ...
+# Subtest: MIT detector measures the three lesson registers and rejects silence/noise/invalid PCM
+ok 16 - MIT detector measures the three lesson registers and rejects silence/noise/invalid PCM
+  ---
+  duration_ms: 8.430625
+  type: 'test'
+  ...
+# Subtest: only sustained measured pitch passes; repeated/stale timestamps and a single good note cannot pass
+ok 17 - only sustained measured pitch passes; repeated/stale timestamps and a single good note cannot pass
+  ---
+  duration_ms: 3.01225
+  type: 'test'
+  ...
+# Subtest: flat/sharp/octave/noise/silence and gaps reset the continuous hold
+ok 18 - flat/sharp/octave/noise/silence and gaps reset the continuous hold
+  ---
+  duration_ms: 14.0695
+  type: 'test'
+  ...
+# Subtest: practice after completion starts a new independent measurement
+ok 19 - practice after completion starts a new independent measurement
+  ---
+  duration_ms: 3.074375
+  type: 'test'
+  ...
+# Subtest: quiet periodic singing qualifies without accepting faint noise or changing octave targets
+ok 20 - quiet periodic singing qualifies without accepting faint noise or changing octave targets
+  ---
+  duration_ms: 309.943125
+  type: 'test'
+  ...
+# Subtest: changing harmonic singing is measured at the window center across capture rates
+ok 21 - changing harmonic singing is measured at the window center across capture rates
+  ---
+  duration_ms: 8.229458
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 396.575959

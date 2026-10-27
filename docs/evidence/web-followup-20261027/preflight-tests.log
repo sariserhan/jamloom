@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: release preflight reports missing configuration and preserves sales holds without exposing secrets
+ok 1 - release preflight reports missing configuration and preserves sales holds without exposing secrets
+  ---
+  duration_ms: 0.626542
+  type: 'test'
+  ...
+# Subtest: read-only migration comparison distinguishes missing, changed and unexpected SQL
+ok 2 - read-only migration comparison distinguishes missing, changed and unexpected SQL
+  ---
+  duration_ms: 0.274291
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 308.746791

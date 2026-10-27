@@ -34,7 +34,7 @@ function finish(result){
  if(partial)$('result').textContent=(result.passed?'✓ Section complete':'Keep practicing')+' · '+score+'% matched. Choose Full song to save course progress.';
  if(saved&&!partial&&mobile)window.webkit?.messageHandlers.singingProgress?.postMessage(readProgress(localStorage));
  if(!saved)$('result').textContent+=' · Browser storage unavailable; progress was not saved.';
- $('review').replaceChildren();if(result.details)for(const [i,row] of result.details.entries()){const item=document.createElement('li');item.textContent=`${i+1}. ${row.note===null?'Rest':noteName(row.note)} · ${row.passed?'✓ Matched':!row.onTime?'Enter earlier':row.note===null?'Leave more silence':'Hold the correct pitch longer'}`;$('review').append(item);}
+ $('review').replaceChildren();if(result.details)for(const [i,row] of result.details.entries()){const item=document.createElement('li');item.textContent=`${i+1}. ${row.note===null?'Rest':noteName(row.note)} · ${row.advice}`;$('review').append(item);}
  $('continue').hidden=!result.passed||partial;$('practice-weakest').hidden=!lesson.song||partial||result.passed;if(lesson.song&&!partial){const section=weakestSection(lesson,result.details);$('practice-weakest').textContent='Practice '+['first verse','second verse','chorus','finale'][section];$('practice-weakest').onclick=()=>{$('section').value=String(section);renderNotes();start();};}showProgress();stop(result.passed?'Matched! Repeat or continue to your next lesson.':'Listen again, then try once more.');
 }
 async function start(demoOnly=false){

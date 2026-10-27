@@ -1,3 +1,11 @@
+## Latest website candidate — 2026-10-27
+
+[Website follow-through](WEB_FOLLOWUP.md) adds bounded Music DNA preparation/quote reuse, truthful per-note singing advice, coalesced settings reads and idle waveform suspension. Preview: http://127.0.0.1:3010; earlier previews remain untouched. USD39 once is unchanged. The new shared singing advice is not yet packaged into the installed phone build.
+
+Use `npm run release:preflight -- --database` from `apps/site` for a read-only, credential-redacted configuration/schema report. The current report fails because migrations 0031/0032 are pending; live course Stripe settings are incomplete. No production SQL or deployment occurred. Follow the report's backup/constraint review and rollback sequence during an authorized release; preserve financial data and applied migration history.
+
+A candidate eight-beat fallback changes three of eighteen retained DJ pairings. Six short actual-mixer clips are at http://localhost:8766/overlap-options/review/; listening is pending and the shipping planner is unchanged. No GPU rental or training occurred. Local/browser checks do not close professional music, sustained capacity, physical singing or provider payment gates.
+
 ## Current candidate and storage — 2026-10-27
 
 [Current results](SINGING_DIFFERENCE.md). Build **0.10.2 (28)** is signed, audited and exported at `build-ios-store/Jamloom-0.10.2-28.xcarchive` and `build-ios-store/export-0.10.2-28/Jamloom.ipa`. It is installed and launches after unlock; the new physical lifecycle attempt failed, so that qualification remains open. Removed 6.65 GiB of inactive debug caches; 15.53 GiB free afterward. Xcode may regenerate them. No publication or sales activation. The real Apple catalogue now passes after Xcode first launch and normal IDE launch; a provider receipt test timed out, so payments remain unqualified. The isolated test databases were removed. Optional SDK/runtime downloads are deselected; preserve archives, evidence and recordings during cache cleanup.
