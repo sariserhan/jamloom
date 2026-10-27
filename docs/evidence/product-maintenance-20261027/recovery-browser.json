@@ -1,0 +1,18 @@
+[
+  {
+    "browser": "chromium",
+    "result": "PASS",
+    "community": "same ID in different products retained; duplicate curated entries merged",
+    "playback": "superseded failure ignored; active failure visible; native Play clears error",
+    "contact": "direct navigation under CSP; no-JS submit disabled; 15-second timeout; malformed response; draft retained; manual retry; no duplicate automatic sends",
+    "limitation": "Controlled media and fetch; not audible playback or provider delivery"
+  },
+  {
+    "browser": "webkit",
+    "result": "PASS",
+    "community": "same ID in different products retained; duplicate curated entries merged",
+    "playback": "superseded failure ignored; active failure visible; native Play clears error",
+    "contact": "direct navigation under CSP; no-JS submit disabled; 15-second timeout; malformed response; draft retained; manual retry; no duplicate automatic sends",
+    "limitation": "Controlled media and fetch; not audible playback or provider delivery"
+  }
+]

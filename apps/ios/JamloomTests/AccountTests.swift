@@ -4,20 +4,60 @@ import CryptoKit
 
 private final class AccountProtocol: URLProtocol {
     static var handle: ((URLRequest) throws -> (Int, Data))!
+    static var hold: ((AccountProtocol) -> Bool)?
     static var headers = ["Content-Type": "application/json"]
     override class func canInit(with request: URLRequest) -> Bool { true }
     override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
     override func startLoading() {
+        if Self.hold?(self) == true { return }
         do {
             let (status, data) = try Self.handle(request)
-            let response = HTTPURLResponse(url: request.url!, statusCode: status, httpVersion: nil, headerFields: Self.headers)!
-            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-            client?.urlProtocol(self, didLoad: data); client?.urlProtocolDidFinishLoading(self)
+            complete(status: status, data: data)
         } catch { client?.urlProtocol(self, didFailWithError: error) }
+    }
+    func complete(status: Int, data: Data) {
+        let response = HTTPURLResponse(url: request.url!, statusCode: status, httpVersion: nil, headerFields: Self.headers)!
+        client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+        client?.urlProtocol(self, didLoad: data); client?.urlProtocolDidFinishLoading(self)
     }
     override func stopLoading() {}
 }
 @MainActor final class AccountTests: XCTestCase {
+    func testCollectionChangeRejectsOlderFavoritesResponse() async throws {
+        let transport = transport(), account = AccountModel(transport: transport), library = SongLibraryModel()
+        defer { AccountProtocol.hold = nil; transport.session.invalidateAndCancel() }
+        var songRequests = 0
+        AccountProtocol.headers = ["Content-Type": "application/json"]
+        AccountProtocol.handle = { request in
+            switch request.url?.path {
+            case "/api/auth/sign-in/email": return (200, Data(#"{"user":{"id":"owner","email":"test@example.test"}}"#.utf8))
+            case "/api/account": return (200, Data(#"{"user":{"id":"owner","email":"test@example.test","emailVerified":true},"balance":{"available":10,"reserved":0},"purchasesReleased":false}"#.utf8))
+            case "/api/favorites": return (200, Data(#"{"owner":"owner","tracks":[],"unavailable":[]}"#.utf8))
+            default: songRequests += 1; return (200, Data(#"{"songs":[],"sets":[],"next":null}"#.utf8))
+            }
+        }
+        await account.signIn(email: "test@example.test", password: "test-password-1234")
+        XCTAssertNotNil(account.snapshot)
+        for status in [200, 503] {
+            let pending = expectation(description: "Older favorites request held")
+            var held: AccountProtocol?
+            AccountProtocol.hold = { request in
+                guard request.request.url?.path == "/api/favorites", held == nil else { return false }
+                held = request; pending.fulfill(); return true
+            }
+            let older = Task { await library.load(.community, account: account) }
+            await fulfillment(of: [pending], timeout: 3)
+            XCTAssertTrue(library.busy)
+            AccountProtocol.hold = nil
+            await library.load(.favorites, account: account)
+            held?.complete(status: status, data: Data(#"{"owner":"owner","tracks":[],"unavailable":[]}"#.utf8))
+            await older.value
+            XCTAssertEqual(songRequests, 0, "Superseded collection must not request songs")
+            XCTAssertEqual(library.favoriteSync, "Synced with your account.")
+            XCTAssertFalse(library.busy)
+            XCTAssertTrue(library.message.isEmpty)
+        }
+    }
     func testMusicRatingUsesSharedAccountEndpointAndDecodesOwnerPermission() async throws {
         let transport = transport(); defer { transport.session.invalidateAndCancel() }
         AccountProtocol.headers = ["Content-Type": "application/json"]

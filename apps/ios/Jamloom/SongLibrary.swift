@@ -129,7 +129,7 @@ struct PublicSetPage: Decodable {
             guard result.tracks.count + result.unavailable.count <= 500 else { throw URLError(.cannotParseResponse) }
             favorites = try result.tracks.map { try $0.song() }; unavailableFavorites = result.unavailable
             favoriteSync = "Synced with your account."
-        } catch { if owner == account.snapshot?.user.id { favoriteSync = "Favorites could not sync. Pull to refresh and retry." } }
+        } catch { if epoch == favoriteEpoch, owner == account.snapshot?.user.id { favoriteSync = "Favorites could not sync. Pull to refresh and retry." } }
     }
     func toggleFavorite(_ song: LibrarySong, account: AccountModel) async {
         guard let owner = account.snapshot?.user.id else { toggleFavorite(song); return }
@@ -164,16 +164,17 @@ struct PublicSetPage: Decodable {
     func load(_ collection: SongCollection, account: AccountModel, more: Bool = false, language: String = "") async {
         if more && busy { return }
         if !more { reset(clearPlayback: false) }
-        loadFavorites(owner: account.snapshot?.user.id)
-        deviceFavorites = favorites; importKey = favoriteKey
-        if account.snapshot != nil && deviceFavorites.isEmpty { let guest = SongLibraryModel(defaults: defaults); guest.loadFavorites(owner: nil); deviceFavorites = guest.favorites; importKey = guest.favoriteKey }
-        await syncFavorites(account: account)
-        if collection == .favorites { return }
-        guard collection != .device else { return }
-        guard collection != .mine || account.snapshot != nil else { message = "Sign in to see your songs."; needsSignIn = true; return }
         let current = revision, owner = account.snapshot?.user.id
         busy = true; message = ""
         defer { if current == revision { busy = false } }
+        loadFavorites(owner: owner)
+        deviceFavorites = favorites; importKey = favoriteKey
+        if account.snapshot != nil && deviceFavorites.isEmpty { let guest = SongLibraryModel(defaults: defaults); guest.loadFavorites(owner: nil); deviceFavorites = guest.favorites; importKey = guest.favoriteKey }
+        await syncFavorites(account: account)
+        guard current == revision, owner == account.snapshot?.user.id, !Task.isCancelled else { return }
+        if collection == .favorites { return }
+        guard collection != .device else { return }
+        guard collection != .mine || account.snapshot != nil else { message = "Sign in to see your songs."; needsSignIn = true; return }
         let products: [CloudSongProduct] = [.improvise, .musicDNA]
         let curated: [(CloudSongProduct, String)] = [(.improvise, "validation"), (.musicDNA, "validation"), (.musicDNA, "examples")]
         let publicSources = (products + [.aiDJ]).map { ($0, "public") }

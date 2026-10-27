@@ -1,0 +1,78 @@
+{
+  "baseCommit": "8eeb4f747306c866ffe7d20b14da23b7daffd2e4",
+  "gate": "PASS scoped local regressions; PARTIAL product release",
+  "node": "22.23.1",
+  "websiteUnits": {
+    "passed": 160,
+    "failed": 0
+  },
+  "native": {
+    "passed": 19,
+    "skipped": 2,
+    "failed": 0,
+    "device": "iPhone 18 Pro simulator, iOS 27.0",
+    "notRun": [
+      "live local-account HTTP harness",
+      "live public website HTTP harness",
+      "physical device with this change"
+    ]
+  },
+  "before": {
+    "native": "Two superseded collection loads still fetched 3 public sources each; old favorites error overwrote success. Regression failed before fix.",
+    "webPlayback": "Old play rejection marked the newly selected song as failed. Regression failed before fix.",
+    "bugReport": "Direct /report-bug had nonce CSP on prerendered HTML, blocked hydration and submitted a native GET containing test fields. Only disposable fixture text was used."
+  },
+  "logs": {
+    "websiteUnits": {
+      "path": "/tmp/jamloom-maintenance-unit.log",
+      "sha256": "a1869804c1d213fd5b88b5f47fb5d572eb2a6e6243b43e32576a1475e161150f"
+    },
+    "productionBuild": {
+      "path": "/tmp/jamloom-recovery-build.log",
+      "sha256": "0f29ac501feeb40276088426d2622683b3eea098439d85296217dc5ded429c1b"
+    },
+    "nativeBefore": {
+      "path": "/tmp/jamloom-community-race-before.log",
+      "sha256": "f4a795aa4d28ad16f2115d97c969c07d05cac37de04e3c3f25643fdfd347795a"
+    },
+    "nativeAfter": {
+      "path": "/tmp/jamloom-community-final.log",
+      "sha256": "4e203c5c1c9244c76090d5331306cf0fe8bb9aa1bdfb923f56e9aabe4eabab24"
+    },
+    "browserBefore": {
+      "path": "/tmp/jamloom-recovery-before.log",
+      "sha256": "22b41bfe03cbad3835013a2f9457b8d16523a234c677fecbe2658927248eee0c"
+    },
+    "browserAfter": {
+      "path": "/tmp/jamloom-recovery-after.log",
+      "sha256": "4c589865f5feccd18b85188f502a92b888ec03edaea1e7ae30a546b02cf3efdd"
+    },
+    "productBrowser": {
+      "path": "/tmp/jamloom-maintenance-final-products-retry.log",
+      "sha256": "40ceb5e13602fb663bf67831d52642002f01c5a216dd34b13c5201a92a25d84c"
+    }
+  },
+  "publication": "HELD; no push, deployment, app upload/submission, live payment change or GPU rental",
+  "productBrowser": {
+    "engines": [
+      "Chromium 149.0.7827.55",
+      "WebKit 26.5"
+    ],
+    "routes": 18,
+    "widths": [
+      1440,
+      390,
+      320
+    ],
+    "syntheticCapture": "PASS both engines",
+    "realCapturePermission": "NOT RUN",
+    "humanListening": "NOT RUN"
+  },
+  "preview": {
+    "origin": "http://127.0.0.1:3010",
+    "database": "loopback jamloom_readiness_preview",
+    "mail": "local outbox",
+    "generation": "disabled",
+    "initialRun": "Stopped after using accounts-disabled diagnostic server; full sweep passed on configured isolated preview."
+  }
+}

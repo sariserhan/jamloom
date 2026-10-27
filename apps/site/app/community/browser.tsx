@@ -1,7 +1,7 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
 import Link from 'next/link';
-import {songTrack,type ListeningTrack} from '../../lib/listening';
+import {songTrack,trackKey,type ListeningTrack} from '../../lib/listening';
 import {PlayTrack,FavoriteTrack,QueueTrack,FavoriteLibrary} from '../player';
 import {AddToPlaylist} from '../catalogue/controls';
 import {Cover} from '../cover';
@@ -15,9 +15,9 @@ export function CommunityBrowser(){
    if(kind==='sets')found.push(...data.sets.map((s:any)=>({id:s.id,title:s.title,artist:'Jamloom Community',kind:'sets',mood:'DJ set',created:s.completed_at,url:`/api/ai-dj/sets/${s.id}/audio`,href:`/listen/sets/${s.id}`})));
    else if(kind==='catalogue')found.push(...data.tracks.map((s:any)=>({...s,kind:'catalogue',href:`/catalogue/${s.id}`})));
    else found.push(...data.songs.map((s:any)=>({...songTrack(s,kind==='collection'?s.product??'music-dna':kind==='examples'?'music-dna':kind),...((kind==='collection'||kind==='examples')?{artist:'Jamloom',created:s.createdAt}:{} )})));
-   if(run===epoch.current)setTracks(old=>Array.from(new Map([...old,...found].map(t=>[t.id,t])).values()));
+   if(run===epoch.current)setTracks(old=>Array.from(new Map([...old,...found].map(t=>[trackKey(t),t])).values()));
   }catch{failures.push(kind);if(more&&next[kind])cursors[kind]=next[kind];}}));
-  if(run!==epoch.current)return;setTracks(old=>Array.from(new Map((more?[...old,...found]:found).map(t=>[t.id,t])).values()));setNext(cursors);setErrors(failures);setBusy(false);
+  if(run!==epoch.current)return;setTracks(old=>Array.from(new Map((more?[...old,...found]:found).map(t=>[trackKey(t),t])).values()));setNext(cursors);setErrors(failures);setBusy(false);
  }
  useEffect(()=>{void load();return()=>{epoch.current++;};},[]);
  const filtered=tracks.filter(t=>(tab==='all'||t.kind===tab)&&(!query||`${t.title} ${t.artist} ${t.mood??''}`.toLowerCase().includes(query.toLowerCase()))&&(!mood||t.mood===mood)).sort((a,b)=>sort==='newest'?(b.created??'').localeCompare(a.created??''):sort==='az'?a.title.localeCompare(b.title):(a.artist==='Jamloom'?-1:1)-(b.artist==='Jamloom'?-1:1)||a.id.localeCompare(b.id));
@@ -26,7 +26,7 @@ export function CommunityBrowser(){
  {tab==='favorites'?<FavoriteLibrary/>:<><div className="discovery-filters"><label>Search music<input value={query} maxLength={100} placeholder="Song, style or artist" onChange={e=>{setQuery(e.target.value);setPage(1);}}/></label><label>Style / mood<select value={mood} onChange={e=>{setMood(e.target.value);setPage(1);}}><option value="">All moods</option>{[...new Set(tracks.flatMap(t=>t.mood?[t.mood]:[]))].sort().map(m=><option key={m}>{m}</option>)}</select></label><label>Explore<select value={sort} onChange={e=>{setSort(e.target.value);setPage(1);}}><option value="featured">Jamloom collection first</option><option value="newest">Newest first</option><option value="az">A–Z</option></select></label></div>
  <div className="product-actions" aria-label="Quick listening searches">{['house','techno','chill','reggae'].map(q=><button className="text-button" key={q} onClick={()=>{setQuery(q);setMood('');setPage(1);}}>{q==='house'?'Party · house':q==='chill'?'Unwind · chill':q}</button>)}<button className="text-button" onClick={()=>{setQuery('');setMood('');setPage(1);}}>Clear filters</button></div>
  <p role="status">{busy?'Loading music…':`${filtered.length} songs loaded${Object.keys(next).length?' · more available':''}`}</p>{errors.length>0&&<p role="alert">Some collections could not load. <button className="secondary" disabled={busy} onClick={()=>load()}>Retry collections</button></p>}
- <div ref={grid} className="discovery-grid">{filtered.slice((current-1)*pageSize,current*pageSize).map(t=><article key={t.id}><Link prefetch={false} href={t.href!} aria-label={`Open ${t.title}`}><Cover id={t.id} title={t.title}/></Link><h2><Link prefetch={false} href={t.href!}>{t.title}</Link></h2><p>{t.kind==='catalogue'?<Link prefetch={false} href={'/creators/'+encodeURIComponent(t.artist)}>{t.artist}</Link>:t.artist} · {t.mood??t.kind}</p><div className="product-actions"><PlayTrack track={t} queue={filtered}/><FavoriteTrack track={t}/><QueueTrack track={t}/><AddToPlaylist track={t}/></div></article>)}</div>
+ <div ref={grid} className="discovery-grid">{filtered.slice((current-1)*pageSize,current*pageSize).map(t=><article key={trackKey(t)}><Link prefetch={false} href={t.href!} aria-label={`Open ${t.title}`}><Cover id={t.id} title={t.title}/></Link><h2><Link prefetch={false} href={t.href!}>{t.title}</Link></h2><p>{t.kind==='catalogue'?<Link prefetch={false} href={'/creators/'+encodeURIComponent(t.artist)}>{t.artist}</Link>:t.artist} · {t.mood??t.kind}</p><div className="product-actions"><PlayTrack track={t} queue={filtered}/><FavoriteTrack track={t}/><QueueTrack track={t}/><AddToPlaylist track={t}/></div></article>)}</div>
  {!busy&&!filtered.length&&<div className="empty"><h2>No matches yet.</h2><p>Try a different style or make the next song.</p><Link prefetch={false} href="/start">Find your starting point →</Link></div>}
  <nav className="song-pagination" aria-label="Community pages"><button className="secondary" disabled={current===1} onClick={()=>setPage(current-1)}>Previous page</button><span>Page {current} of {pages}</span><button className="secondary" disabled={current===pages} onClick={()=>setPage(current+1)}>Next page</button></nav>{Object.keys(next).length>0&&<button className="secondary" disabled={busy} onClick={()=>load(true)}>Load more music</button>}</>}
  <div className="sharing-panel"><h2>Your music belongs here.</h2><Link prefetch={false} className="primary" href="/start">Make something yours ↗</Link></div></section>;

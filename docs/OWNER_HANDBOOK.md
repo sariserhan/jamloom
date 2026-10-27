@@ -1,3 +1,9 @@
+## Cross-product maintenance — 2026-10-27
+
+[Current product ledger](PRODUCT_COMPLETION.md) and [maintenance report](PRODUCT_MAINTENANCE.md). The latest local source fixes Community request races, discovery identity, stale player errors, and support-form recovery. Direct `/report-bug` now renders with its request's CSP nonce; the form disables submission until ready and retains failed drafts. A timeout means delivery is unconfirmed, so do not automatically resend or mark it delivered. Real local admin-inbox delivery and rating persistence pass in both browser engines.
+
+Build 26 remains the latest archived/previously installed phone release; the new native fix is simulator-tested, not installed while the phone is disconnected. Apple build 24 remains selected but unsubmitted. Singing stays $39 once, with test-mode Stripe/access qualification complete and real Apple sandbox qualification open. The retained vocal remains rejected. Publication and new paid compute remain held; see the ledger for remaining quality, device and rights evidence.
+
 ## Local vocal timing follow-through — 2026-10-27
 
 The automatic worker now places detected sound onset on the beat while preserving quiet pre-roll and the existing cue bounds. Its fade no longer extends into the first active frame. [Evidence and reproduction](DJ_VOCAL_BOUNDARIES.md). The 18.02 ms → zero grid-error result uses a synthetic timing probe on retained music, not natural singing. The rejected vocal remains excluded; no extra requests, public activation or deployment.

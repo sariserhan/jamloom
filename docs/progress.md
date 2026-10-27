@@ -1,3 +1,14 @@
+## Cross-product maintenance — 2026-10-27
+
+**PASS scoped fixes; PARTIAL overall readiness.** [Current report](PRODUCT_MAINTENANCE.md); [all-product ledger](PRODUCT_COMPLETION.md).
+
+- [x] Prevent older iPhone Community/Favorites responses from overwriting the current collection or newer sync status; delayed-response regression reproduced before the fix.
+- [x] Keep stale website playback failures out of the current song; clear errors after successful native Play and keep cross-product song identities distinct.
+- [x] Fix direct Report a bug hydration under strict CSP; prevent pre-hydration GET submission, bound stalled requests and retain drafts through failures.
+- [x] Pass 160 website tests, production build/TypeScript, Chromium/WebKit recovery and real local bug-to-admin/ratings tests; 19 native tests pass, two live-HTTP tests explicitly skipped.
+- [x] Reconcile build-26, $39 course-payment/access and Apple draft evidence in the current product ledger.
+- [ ] Package/install the new native source fix when the phone reconnects; retain physical/payment/music/licensing gates and the owner's publication hold. No new GPU rental or live sales.
+
 ## Vocal onset follow-through — 2026-10-27
 
 **PASS technical; vocal quality remains unqualified.** [Report](DJ_VOCAL_BOUNDARIES.md).
