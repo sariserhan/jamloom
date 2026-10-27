@@ -1,3 +1,5 @@
+**Produced-song integration:** [current implementation](SINGING_PRODUCED_PRACTICE.md) reuses the shared pitch/capture/chart and recorded-media alignment with one media timeline. No new engine/dependency. The original recordings are open practice until real word/note targets are verified; no score is inferred from ASR or authored lyrics.
+
 ## Non-release follow-through — 2026-10-27
 
 The current engine remains in place: the separate-entry/exit DJ grid study found no additional usable beat transitions, and the independent MPM singing candidate regressed accuracy and CPU. Neither is adopted. The exact existing ACE-Step base/turbo genre comparison is separately approved, but its single attempt failed before generation; cleanup confirmed and the $3 permit consumed. The owner measured 54.5 ms on the built-in Mac acoustic route; this does not qualify native Live Source or screen latency. [Results and boundaries](NONRELEASE_COMPLETION.md).

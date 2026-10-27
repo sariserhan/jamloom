@@ -1,0 +1,51 @@
+{
+  "scope": "Original Jamloom produced-song practice; owner accepted song and karaoke, exact sung lyric and note alignment unqualified",
+  "songs": [
+    {
+      "id": "long-way-home",
+      "source_case": "deep-house-male",
+      "title": "Long Way Home",
+      "seconds": 120,
+      "files": {
+        "song": {
+          "file": "long-way-home-song.mp3",
+          "sha256": "ddf9f188f41196859c7200e8e3d7534e92dbb65b5aa30a58f9daaa1a11b66ef7",
+          "bytes": 2881196
+        },
+        "karaoke": {
+          "file": "long-way-home-karaoke.mp3",
+          "sha256": "a5cb9b0fef189580dd1b2d990675c0e6d695d8a5552a5e7994e8a114b7256253",
+          "bytes": 2881196
+        },
+        "lyrics": {
+          "file": "long-way-home-lyrics.json",
+          "sha256": "5f3f87b2f75dce27d5cf44b9779c6c707e2983d49c768db76c062f7df3616dfc",
+          "bytes": 1118
+        }
+      }
+    },
+    {
+      "id": "leave-it-all-outside",
+      "source_case": "eurodance-female",
+      "title": "Leave It All Outside",
+      "seconds": 120,
+      "files": {
+        "song": {
+          "file": "leave-it-all-outside-song.mp3",
+          "sha256": "fbda0c46fef760e7c6611872130d58b407bcc44ca3284d3cdea54e0b431bc2cb",
+          "bytes": 2881196
+        },
+        "karaoke": {
+          "file": "leave-it-all-outside-karaoke.mp3",
+          "sha256": "c4c9f57c48a3f74fbac2d2d52df882120a25fc1685732f29c4bfdbf3de9fc6e3",
+          "bytes": 2881196
+        },
+        "lyrics": {
+          "file": "leave-it-all-outside-lyrics.json",
+          "sha256": "dee1bd9d3d5df4d813f8cadc49ab384f317932ec178964e0ece6e901980449b6",
+          "bytes": 1096
+        }
+      }
+    }
+  ]
+}

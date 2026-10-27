@@ -1,3 +1,14 @@
+## Recorded singer and karaoke practice — 2026-10-27
+
+**PASS local implementation/checks; PARTIAL exact-song scoring and overall completion.** [Report and remaining gates](docs/SINGING_PRODUCED_PRACTICE.md).
+
+- [x] Integrate both owner-accepted two-minute originals into the website Academy and native Sing catalogue, with the exact singer/karaoke recordings, live microphone pitch, seek/pause, repeatable passages and original lyric sheets. Preserve all existing graded lessons/progress and $39 once.
+- [x] Protect server audio/lyrics with existing course access, verify packaged hashes, exclude recordings from public/offline assets, and add bounded native byte ranges for seeking. No new engine or dependency.
+- [x] Pass 166 site tests, 25 singing tests, 43 Python checks, protected-media checks, TypeScript/build/bundle audit and both-browser desktop/mobile playback, synthetic-microphone, accessibility and cancellation checks.
+- [x] Sign, audit and install iPhone 0.10.4 build 32. Keep physical UI results separate from installation and browser evidence.
+- [ ] Verify actual sung words, note targets and timing before awarding scores or highlighting lyrics for these recordings. The stronger local ASR still hallucinates repeats; open practice does not change completion records.
+- [ ] Retain broader fresh musical/capacity/hosted qualification, independent participants, rights/provider evidence and deferred hardware as open gates. No push, deployment, paid compute or live-sales activation.
+
 ## Original sung songs on the Mac GPU — 2026-10-27
 
 **PASS local generation, playback and owner musical acceptance; PARTIAL Academy integration.** [Exact results and limits](docs/SINGING_ORIGINAL_PRODUCTION.md).

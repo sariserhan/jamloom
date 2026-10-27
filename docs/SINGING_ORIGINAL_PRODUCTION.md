@@ -1,3 +1,5 @@
+**Follow-through:** the accepted recordings are now integrated as [produced-song open practice](SINGING_PRODUCED_PRACTICE.md), with microphone pitch, passage repeats and protected/bundled playback. Exact-song grades and synchronized lyrics remain unqualified. The original generation evidence below is preserved.
+
 # Original produced Singing Academy songs — 2026-10-27
 
 **PASS local Metal generation and owner song/karaoke acceptance; PARTIAL lesson integration.** The owner rejected

@@ -25,6 +25,15 @@ final class StudioServerTests: XCTestCase {
         }
         XCTAssertTrue(response("/token/dj.html", host: "attacker.invalid:1234").hasPrefix("HTTP/1.1 403"))
         XCTAssertTrue(response("/token/dj.html", extra: "Host: localhost\r\n").hasPrefix("HTTP/1.1 400"))
+        for (range, body) in [("bytes=0-1", "co"), ("bytes=3-", "sole"), ("bytes=-2", "le"), ("bytes=4-999", "ole")] {
+            let result = response("/token/dj.html", extra: "Range: \(range)\r\n")
+            XCTAssertTrue(result.hasPrefix("HTTP/1.1 206")); XCTAssertTrue(result.hasSuffix(body))
+            XCTAssertTrue(result.contains("Content-Range: bytes "))
+        }
+        for range in ["bytes=", "bytes=-0", "bytes=8-", "bytes=3-2", "bytes=0-1,3-4", "bytes=+1-2", "items=1-2", "bytes=9999999999999999999999999-"] {
+            XCTAssertTrue(response("/token/dj.html", extra: "Range: \(range)\r\n").hasPrefix("HTTP/1.1 416"), range)
+        }
+        XCTAssertTrue(response("/token/dj.html", method: "HEAD", extra: "Range: bytes=0-1\r\n").hasPrefix("HTTP/1.1 200"))
     }
     func testOnlyAuthorizedSingingDocumentAllowsMicrophone() throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)

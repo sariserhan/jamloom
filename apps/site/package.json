@@ -33,6 +33,7 @@
     "test:product-a11y": "node tests/product-a11y.mjs",
     "test:product-http": "node --import tsx tests/product-http.mjs",
     "test:generation-render": "tsx tests/generation-render-smoke.ts",
+    "test:singing-recordings": "node --conditions=react-server --import tsx --test tests/singing-recordings.test.ts",
     "test:academy": "node --import tsx --test tests/academy.test.ts tests/singing-commerce.test.ts",
     "test:academy-browser": "node --import tsx tests/academy-browser.mjs",
     "test:academy-endurance": "node --import tsx tests/academy-endurance.mjs",

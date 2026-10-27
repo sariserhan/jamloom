@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import {prepareSingingRecordings} from './prepare-singing-recordings.mjs';
 import { studioSiteShell, studioSingingCourse } from './studio-site-shell.mjs';
 import { cp, mkdir, rm, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -20,4 +21,5 @@ for (const name of ['index.html', 'dj.html']) {
   await writeFile(page, studioSiteShell(await readFile(page, 'utf8')));
 }
 execFileSync('python3', ['scripts/build_offline.py', fileURLToPath(target)], { cwd: root, stdio: 'pipe' });
+await prepareSingingRecordings();
 console.log('Prepared the audited browser studio and engine.');

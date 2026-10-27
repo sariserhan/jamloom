@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Package the audited shared performance console for the native iOS app."""
 from pathlib import Path
+import hashlib
+import json
 import os
 import shutil
 import subprocess
@@ -35,6 +37,18 @@ def prepare():
     free_ids = subprocess.check_output(['node', '--input-type=module', '-e',
         "import {singingLessons} from './apps/web/singing-course.js'; console.log(JSON.stringify([...singingLessons.map(l=>l.id),'first-light']))"], cwd=ROOT)
     (target / 'singing-free-lessons.json').write_bytes(free_ids)
+    recordings = ROOT / 'assets/singing-recordings'
+    manifest = json.loads((recordings / 'manifest.json').read_text())
+    (target / 'singing-audio').mkdir()
+    for song in manifest['songs']:
+        assert song['id'] in ('long-way-home', 'leave-it-all-outside')
+        for kind in ('song', 'karaoke', 'lyrics'):
+            item = song['files'][kind]
+            name = song['id'] + '-' + kind + ('.json' if kind == 'lyrics' else '.mp3')
+            assert item['file'] == name
+            data = (recordings / name).read_bytes()
+            assert len(data) == item['bytes'] and hashlib.sha256(data).hexdigest() == item['sha256'], 'Singing recording changed'
+            (target / 'singing-audio' / name).write_bytes(data)
     destination = ROOT / 'build-ios-studio/Studio'
     destination.mkdir(parents=True, exist_ok=True)
     prepared_files = {p.relative_to(target).as_posix() for p in target.rglob('*') if p.is_file()}

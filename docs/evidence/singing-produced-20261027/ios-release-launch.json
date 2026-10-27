@@ -1,0 +1,56 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "process",
+      "launch",
+      "--device",
+      "00008120-001E28663CE3C01E",
+      "com.djayvo.app",
+      "--json-output",
+      "docs/evidence/singing-produced-20261027/ios-release-launch.json"
+    ],
+    "commandType" : "devicectl.device.process.launch",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.13.5"
+  },
+  "result" : {
+    "deviceIdentifier" : "1786A9A3-6848-5F6D-A089-D6453798AE6F",
+    "launchOptions" : {
+      "activatedWhenStarted" : true,
+      "arguments" : [
+
+      ],
+      "environmentVariables" : {
+        "TERM" : "dumb"
+      },
+      "platformSpecificOptions" : {
+
+      },
+      "startStopped" : false,
+      "terminateExistingInstances" : false,
+      "user" : {
+        "active" : true
+      }
+    },
+    "process" : {
+      "auditToken" : [
+        4294967295,
+        501,
+        501,
+        501,
+        501,
+        27443,
+        0,
+        73139
+      ],
+      "executable" : "file:///private/var/containers/Bundle/Application/B855E0E5-3492-40AF-855B-2786B9FCE88A/Jamloom.app/Jamloom",
+      "processIdentifier" : 27443
+    }
+  }
+}

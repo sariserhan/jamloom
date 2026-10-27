@@ -52,6 +52,7 @@ jobs:
           npm ci
           npm run build
           npm test
+          npm run test:singing-recordings
           npm run audit:bundle
   academy:
     runs-on: ubuntu-24.04

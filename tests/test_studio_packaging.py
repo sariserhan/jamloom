@@ -1,5 +1,7 @@
 from pathlib import Path
 import sys
+import hashlib
+import json
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -35,6 +37,13 @@ class StudioPackagingTests(unittest.TestCase):
             (source / 'singing.html').write_text('<a href="/singing-academy">Songs</a>')
             (source / 'engine.wasm').write_bytes(b'unchanged engine fixture')
             (native / 'mobile-studio.css').write_text('body{}')
+            recordings = root / 'assets/singing-recordings'; recordings.mkdir(parents=True)
+            files = {}
+            for kind in ('song', 'karaoke', 'lyrics'):
+                name = 'long-way-home-' + kind + ('.json' if kind == 'lyrics' else '.mp3')
+                data = b'packaging fixture'; (recordings / name).write_bytes(data)
+                files[kind] = dict(file=name, bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+            (recordings / 'manifest.json').write_text(json.dumps({'songs': [dict(id='long-way-home', files=files)]}))
             with patch.object(prepare_ios_studio, 'ROOT', root), patch.object(prepare_ios_studio, 'verify'), patch.object(prepare_ios_studio.subprocess, 'check_output', return_value=b'["first-light"]'):
                 prepare_ios_studio.prepare()
                 target = root / 'build-ios-studio/Studio'
@@ -48,6 +57,10 @@ class StudioPackagingTests(unittest.TestCase):
                 prepare_ios_studio.prepare()
                 self.assertEqual((target / 'mobile-studio.css').read_text(), 'body{color:white}')
                 self.assertEqual((target / 'engine.wasm').stat().st_ino, before['engine.wasm'][0])
+                (recordings / files['song']['file']).write_bytes(b'changed')
+                with self.assertRaisesRegex(AssertionError, 'Singing recording changed'):
+                    prepare_ios_studio.prepare()
+                self.assertEqual((target / 'singing-audio' / files['song']['file']).read_bytes(), b'packaging fixture')
 
 
 if __name__ == '__main__':

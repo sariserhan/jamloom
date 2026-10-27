@@ -49,9 +49,10 @@ final class StudioServer {
         }
     }
     static func response(_ request: Data, root: URL, prefix: String, authority: String, singing: Bool = false) -> Data {
-        func reply(_ status: Int, _ body: Data = Data(), mime: String = "text/plain", head: Bool = false, microphone: Bool = false) -> Data {
+        func reply(_ status: Int, _ body: Data = Data(), mime: String = "text/plain", head: Bool = false, microphone: Bool = false, range: String? = nil) -> Data {
             let csp = "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' blob:; worker-src 'self' blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
-            let headers = "HTTP/1.1 \(status) Result\r\nConnection: close\r\nContent-Type: \(mime)\r\nContent-Length: \(body.count)\r\nCache-Control: no-store\r\nX-Content-Type-Options: nosniff\r\nContent-Security-Policy: \(csp)\r\nCross-Origin-Resource-Policy: same-origin\r\nPermissions-Policy: camera=(), microphone=\(microphone ? "(self)" : "()"), geolocation=()\r\n\r\n"
+            let rangeHeader = range.map { "Content-Range: \($0)\r\n" } ?? ""
+            let headers = "HTTP/1.1 \(status) Result\r\nConnection: close\r\nContent-Type: \(mime)\r\nContent-Length: \(body.count)\r\nAccept-Ranges: bytes\r\n\(rangeHeader)Cache-Control: no-store\r\nX-Content-Type-Options: nosniff\r\nContent-Security-Policy: \(csp)\r\nCross-Origin-Resource-Policy: same-origin\r\nPermissions-Policy: camera=(), microphone=\(microphone ? "(self)" : "()"), geolocation=()\r\n\r\n"
             return Data(headers.utf8) + (head ? Data() : body)
         }
         guard request.count <= 8192, let end = request.range(of: Data("\r\n\r\n".utf8)), end.upperBound == request.count,
@@ -78,6 +79,20 @@ final class StudioServer {
         guard file.path.hasPrefix(root.path + "/"), let mime = types[file.pathExtension],
               let size = try? file.resourceValues(forKeys: [.fileSizeKey, .isRegularFileKey]), size.isRegularFile == true,
               let count = size.fileSize, count <= 32 * 1024 * 1024, let body = try? Data(contentsOf: file, options: .mappedIfSafe) else { return reply(404) }
+        if first[0] == "GET", let range = headers["range"] {
+            guard range.hasPrefix("bytes=") else { return reply(416, range: "bytes */\(count)") }
+            let parts = range.dropFirst(6).split(separator: "-", omittingEmptySubsequences: false)
+            guard parts.count == 2, parts.allSatisfy({ $0.allSatisfy({ $0.isASCII && $0.isNumber }) }), count > 0 else { return reply(416, range: "bytes */\(count)") }
+            let start: Int, end: Int
+            if parts[0].isEmpty {
+                guard let suffix = Int(parts[1]), suffix > 0 else { return reply(416, range: "bytes */\(count)") }
+                start = max(0, count - suffix); end = count - 1
+            } else {
+                guard let from = Int(parts[0]), let to = parts[1].isEmpty ? count - 1 : Int(parts[1]), from <= to, from < count else { return reply(416, range: "bytes */\(count)") }
+                start = from; end = min(to, count - 1)
+            }
+            return reply(206, body.subdata(in: start..<(end + 1)), mime: mime, microphone: singing && relative == "singing.html", range: "bytes \(start)-\(end)/\(count)")
+        }
         return reply(200, body, mime: mime, head: first[0] == "HEAD", microphone: singing && relative == "singing.html")
     }
     deinit { listener?.cancel(); connections.values.forEach { $0.cancel() } }

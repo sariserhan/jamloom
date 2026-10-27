@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 
 const config: NextConfig = {
   poweredByHeader: false,
+  outputFileTracingIncludes: {'/api/singing-recordings/**': ['./private/singing-recordings/*']},
   // Keep qualification builds from replacing the owner's running local preview.
   distDir: process.env.JAMLOOM_QUALIFICATION_BUILD === '1' ? '.next-qualification' : '.next',
   turbopack: { root: resolve(process.cwd(), '../..') },

@@ -1,0 +1,10 @@
+./opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/tempfile.py:940: ResourceWarning: Implicitly cleaning up <TemporaryDirectory '/var/folders/fq/152jbfw16276cgngg15zvh780000gn/T/tmpf75v04ca/build-ios-studio/studio-x4x8bnhc'>
+  _warnings.warn(warn_message, ResourceWarning)
+..........................................
+----------------------------------------------------------------------
+Ran 43 tests in 0.339s
+
+OK
+Prepared audited native DJ studio and Singing Academy.
+Prepared audited native DJ studio and Singing Academy.
+Prepared audited native DJ studio and Singing Academy.

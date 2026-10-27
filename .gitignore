@@ -35,3 +35,6 @@ apps/desktop-companion/.swiftpm/
 
 # Isolated local qualification build; keep the stable preview intact.
 /apps/site/.next-qualification/
+
+# Prepared, hash-checked private singing recordings
+/apps/site/private/singing-recordings/

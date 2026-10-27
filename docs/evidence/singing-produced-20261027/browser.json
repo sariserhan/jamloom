@@ -1,0 +1,101 @@
+{
+  "results": [
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "id": "long-way-home",
+      "playback": "PASS",
+      "seek": "PASS",
+      "repeat": "PASS",
+      "lyrics": "PASS",
+      "accessibility": "PASS"
+    },
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "id": "leave-it-all-outside",
+      "playback": "PASS",
+      "seek": "PASS",
+      "repeat": "PASS",
+      "lyrics": "PASS",
+      "accessibility": "PASS"
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "id": "long-way-home",
+      "playback": "PASS",
+      "seek": "PASS",
+      "repeat": "PASS",
+      "lyrics": "PASS",
+      "accessibility": "PASS"
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "id": "leave-it-all-outside",
+      "playback": "PASS",
+      "seek": "PASS",
+      "repeat": "PASS",
+      "lyrics": "PASS",
+      "accessibility": "PASS"
+    },
+    {
+      "browser": "chromium",
+      "microphone": "PASS synthetic PCM, not real singing",
+      "pauseCleanup": "PASS",
+      "denial": "PASS",
+      "permissionCancellation": "PASS",
+      "noFabricatedCompletion": "PASS"
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "id": "long-way-home",
+      "playback": "PASS",
+      "seek": "PASS",
+      "repeat": "PASS",
+      "lyrics": "PASS",
+      "accessibility": "PASS"
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "id": "leave-it-all-outside",
+      "playback": "PASS",
+      "seek": "PASS",
+      "repeat": "PASS",
+      "lyrics": "PASS",
+      "accessibility": "PASS"
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "id": "long-way-home",
+      "playback": "PASS",
+      "seek": "PASS",
+      "repeat": "PASS",
+      "lyrics": "PASS",
+      "accessibility": "PASS"
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "id": "leave-it-all-outside",
+      "playback": "PASS",
+      "seek": "PASS",
+      "repeat": "PASS",
+      "lyrics": "PASS",
+      "accessibility": "PASS"
+    },
+    {
+      "browser": "webkit",
+      "microphone": "PASS synthetic PCM, not real singing",
+      "pauseCleanup": "PASS",
+      "denial": "PASS",
+      "permissionCancellation": "PASS",
+      "noFabricatedCompletion": "PASS"
+    }
+  ],
+  "scope": "Muted browser playback and synthetic input; not musical listening or physical iPhone"
+}

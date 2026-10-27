@@ -50,6 +50,11 @@ def verify(bundle):
     repo = Path(__file__).resolve().parents[1]
     tracks = json.loads((repo / 'apps/web/practice-audio/manifest.json').read_text())['tracks']
     expected_audio = {bundle / 'Studio' / row['url'].removeprefix('./'): row['sha256'] for row in tracks}
+    recordings = json.loads((repo / 'assets/singing-recordings/manifest.json').read_text())
+    for song in recordings['songs']:
+        for kind in ('song', 'karaoke'):
+            item = song['files'][kind]
+            expected_audio[bundle / 'Studio/singing-audio' / item['file']] = item['sha256']
     assert set(bundle.rglob('*.mp3')) == set(expected_audio), 'Unexpected or missing practice audio'
     for audio, digest in expected_audio.items():
         assert hashlib.sha256(audio.read_bytes()).hexdigest() == digest, 'Practice audio mismatch'
