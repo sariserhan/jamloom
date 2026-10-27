@@ -1,0 +1,108 @@
+W1027 12:47:07.131000 13185 torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+2026-10-27 12:47:07.898 | WARNING  | acestep.training.trainer:<module>:40 - bitsandbytes not installed. Using standard AdamW.
+2026-10-27 12:47:07.954 | INFO     | acestep.gpu_config:get_gpu_config:846 - macOS MPS detected (11.8 GB unified memory, tier=tier4). Applying Apple Silicon optimizations: no compile, no quantization, mlx backend, no CPU offload.
+2026-10-27 12:47:07.956 | INFO     | acestep.core.generation.handler.init_service_loader:_load_main_model_from_checkpoint:174 - [initialize_service] Attempting to load model with attention implementation: sdpa
+2026-10-27 12:47:08.122 | INFO     | acestep.core.generation.handler.init_service_loader:_load_main_model_from_checkpoint:200 - [initialize_service] Keeping main model on mps (persistent)
+2026-10-27 12:47:13.070 | INFO     | acestep.inference:generate_music:662 - [generate_music] LLM usage decision: thinking=False, use_cot_caption=False, use_cot_language=False, use_cot_metas=False, need_lm_for_cot=False, llm_initialized=False, use_lm=False
+2026-10-27 12:47:13.071 | INFO     | acestep.core.generation.handler.generate_music:generate_music:313 - [generate_music] Turbo model detected: overriding guidance_scale 7.0 -> 1.0 (turbo does not use CFG).
+2026-10-27 12:47:13.071 | INFO     | acestep.core.generation.handler.generate_music:generate_music:329 - [generate_music] Starting generation...
+2026-10-27 12:47:13.071 | INFO     | acestep.core.generation.handler.generate_music:generate_music:332 - [generate_music] Preparing inputs...
+2026-10-27 12:47:13.139 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:41 - [_load_model_context] Loading vae to mps (RSS: 3671 MB)
+2026-10-27 12:47:13.513 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:58 - [_load_model_context] Loaded vae to mps in 0.1878s (RSS: 3671 -> 3671 MB, delta: +0 MB)
+2026-10-27 12:47:13.626 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:67 - [_load_model_context] Offloading vae to CPU (RSS: 3671 MB)
+2026-10-27 12:47:13.870 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:83 - [_load_model_context] Offloaded vae to CPU in 0.1931s (RSS: 3671 -> 3671 MB, delta: +0 MB)
+2026-10-27 12:47:13.911 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:119 - 
+======================================================================
+2026-10-27 12:47:13.912 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:120 - 🔍 [DEBUG] DiT TEXT ENCODER INPUT (Inference)
+2026-10-27 12:47:13.912 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:121 - ======================================================================
+2026-10-27 12:47:13.912 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:122 - text_prompt:
+# Instruction
+Fill the audio semantic mask based on the given conditions:
+
+# Caption
+Original uplifting Eurodance song, 132 BPM. Driving four-on-the-floor drums, springy syncopated synth bass, bright chord stabs and a distinctive original synth hook. Expressive adult female alto sings clear English with confident rhythmic phrasing and a melodic sing-along chorus. Full energetic record production, open space for the singer, controlled sub bass. Brief intro, developing verses, rising pre-chorus, wide chorus, contrasting bridge and resolved ending. No existing-song quotation, artist imitation, piano melody guide or speech synthesis.
+
+# Metas
+- bpm: 132
+- timesignature: N/A
+- keyscale: N/A
+- duration: 120 seconds
+<|endoftext|>
+
+2026-10-27 12:47:13.912 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:123 - ======================================================================
+2026-10-27 12:47:13.912 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:124 - lyrics_text:
+# Languages
+en
+
+# Lyric
+[Verse 1]
+Keys and coins upon the table
+One last message left unread
+I have spent the week on standby
+Now the room is turning red
+Someone opens up the shutters
+Someone finds a different beat
+All the things I could not answer
+Fall behind my moving feet
+[Pre-Chorus]
+Let the pavement shake below
+Take a breath and let it go
+[Chorus]
+Leave it all outside
+Come and find the louder side
+Every step is ours to choose
+Tonight we have a world to move
+[Verse 2]
+There are strangers at the doorway
+There are friends I never knew
+When the rhythm reaches higher
+Every face comes into view
+[Bridge]
+We are more than all the waiting
+More than numbers on a screen
+Put your shoulder next to mine
+Give this moment everything
+[Chorus]
+Leave it all outside
+Come and find the louder side
+Every step is ours to choose
+Tonight we have a world to move
+[Outro]
+Let the last light find us here
+Moving closer, standing clear<|endoftext|>
+2026-10-27 12:47:13.912 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:125 - ======================================================================
+
+2026-10-27 12:47:13.924 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:41 - [_load_model_context] Loading vae to mps (RSS: 3671 MB)
+2026-10-27 12:47:14.085 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:58 - [_load_model_context] Loaded vae to mps in 0.1091s (RSS: 3671 -> 3671 MB, delta: +0 MB)
+2026-10-27 12:47:14.092 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:67 - [_load_model_context] Offloading vae to CPU (RSS: 3671 MB)
+2026-10-27 12:47:14.319 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:83 - [_load_model_context] Offloaded vae to CPU in 0.1753s (RSS: 3671 -> 3671 MB, delta: +0 MB)
+2026-10-27 12:47:14.326 | INFO     | acestep.core.generation.handler.conditioning_embed:preprocess_batch:110 - [preprocess_batch] Inferring prompt embeddings...
+2026-10-27 12:47:14.326 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:41 - [_load_model_context] Loading text_encoder to mps (RSS: 3671 MB)
+2026-10-27 12:47:14.897 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:58 - [_load_model_context] Loaded text_encoder to mps in 0.5193s (RSS: 3671 -> 3671 MB, delta: +0 MB)
+2026-10-27 12:47:14.979 | INFO     | acestep.core.generation.handler.conditioning_embed:preprocess_batch:113 - [preprocess_batch] Inferring lyric embeddings...
+2026-10-27 12:47:14.980 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:67 - [_load_model_context] Offloading text_encoder to CPU (RSS: 3671 MB)
+2026-10-27 12:47:15.195 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:83 - [_load_model_context] Offloaded text_encoder to CPU in 0.1248s (RSS: 3671 -> 3671 MB, delta: +0 MB)
+2026-10-27 12:47:15.195 | INFO     | acestep.core.generation.handler.service_generate_execute:_execute_service_generate_diffusion:173 - [service_generate] Generating audio... (DiT backend: PyTorch (mps))
+2026-10-27 12:47:15.551 | INFO     | acestep.core.generation.handler.service_generate_execute:_execute_service_generate_diffusion:276 - [service_generate] DiT diffusion via PyTorch (mps)...
+2026-10-27 12:47:16.066 | INFO     | acestep.models.common.dcw_correction:__init__:98 - [DCW] Active — mode=double, scaler=0.0500, high_scaler=0.0200, wavelet='haar'
+2026-10-27 12:47:17.810 | INFO     | acestep.models.common.dcw_loader:get:84 - [DCW] Built DWT1D for wavelet='haar' (low-pass filter taps=2, device=mps:0, dtype=torch.bfloat16).
+2026-10-27 12:47:26.966 | INFO     | acestep.core.generation.handler.generate_music_decode:_prepare_generate_music_decode_state:42 - [generate_music] Model generation completed. Decoding latents...
+2026-10-27 12:47:26.967 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_prepare_generate_music_decode_state:64 - [generate_music] pred_latents: torch.Size([1, 3000, 64]), dtype=torch.bfloat16
+2026-10-27 12:47:26.967 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_prepare_generate_music_decode_state:65 - [generate_music] time_costs: {'encoder_time_cost': 0.2794771194458008, 'diffusion_time_cost': 11.134632110595703, 'diffusion_per_step_time_cost': 1.391829013824463, 'total_time_cost': 11.414109230041504, 'offload_time_cost': 1.3094103336334229}
+2026-10-27 12:47:27.338 | INFO     | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:127 - [generate_music] Decoding latents with VAE...
+2026-10-27 12:47:27.338 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:41 - [_load_model_context] Loading vae to mps (RSS: 3671 MB)
+2026-10-27 12:47:27.495 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:58 - [_load_model_context] Loaded vae to mps in 0.1057s (RSS: 3671 -> 3671 MB, delta: +0 MB)
+2026-10-27 12:47:27.498 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:136 - [generate_music] Before VAE decode: allocated=0.00GB, max=0.00GB
+2026-10-27 12:47:27.498 | INFO     | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:148 - [generate_music] MPS device: skipping VRAM check (unified memory), keeping VAE on MPS
+2026-10-27 12:47:27.498 | INFO     | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:172 - [generate_music] Using tiled VAE decode to reduce VRAM usage...
+2026-10-27 12:47:27.499 | INFO     | acestep.core.generation.handler.vae_decode:tiled_decode:56 - [tiled_decode] chunk_size=512, offload_wav_to_cpu=True, latents_shape=torch.Size([1, 64, 3000])
+2026-10-27 12:47:27.499 | INFO     | acestep.core.generation.handler.vae_decode:tiled_decode:68 - [tiled_decode] VAE decode via PyTorch MPS; reducing chunk_size from 512 to 32 and overlap from 64 to 8 to avoid MPS conv output limit.
+2026-10-27 12:47:47.010 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:193 - [generate_music] After VAE decode: allocated=0.00GB, max=0.00GB
+2026-10-27 12:47:47.018 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:67 - [_load_model_context] Offloading vae to CPU (RSS: 3671 MB)
+2026-10-27 12:47:47.430 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:83 - [_load_model_context] Offloaded vae to CPU in 0.3200s (RSS: 3671 -> 3671 MB, delta: +0 MB)
+2026-10-27 12:47:47.485 | INFO     | acestep.core.generation.handler.generate_music_payload:_build_generate_music_success_payload:38 - [generate_music] VAE decode completed. Preparing audio tensors...
+2026-10-27 12:47:47.485 | INFO     | acestep.core.generation.handler.generate_music_payload:_build_generate_music_success_payload:50 - [generate_music] Done! Generated 1 audio tensors.
+2026-10-27 12:47:47.547 | INFO     | acestep.inference:generate_music:1002 - [Normalization] Audio 0 BEFORE: Peak=1.0000, Target=-1.0dB
+2026-10-27 12:47:47.554 | INFO     | acestep.inference:generate_music:1007 - [Normalization] Audio 0 AFTER: Peak=0.8913
+2026-10-27 12:47:47.639 | DEBUG    | acestep.audio_utils:save_audio:339 - [AudioSaver] Fallback soundfile Saved audio to /Users/serhansari/Documents/projects/jamloom/renders/singing-originals-20261027/eurodance-female/raw/8b8cdd66-78fe-11d3-811c-c6721a1b6365.wav (wav, 48000Hz)
+PASS: actual local singing-model output; naturalness and voice identity await listening

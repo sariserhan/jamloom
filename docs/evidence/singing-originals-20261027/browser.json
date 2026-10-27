@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "automatedAudioMuted": true,
+  "results": [
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "players": 4,
+      "playSeekPause": true,
+      "onePlayer": true,
+      "lyrics": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "players": 4,
+      "playSeekPause": true,
+      "onePlayer": true,
+      "lyrics": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "players": 4,
+      "playSeekPause": true,
+      "onePlayer": true,
+      "lyrics": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "players": 4,
+      "playSeekPause": true,
+      "onePlayer": true,
+      "lyrics": true,
+      "overflow": false,
+      "errors": []
+    }
+  ]
+}

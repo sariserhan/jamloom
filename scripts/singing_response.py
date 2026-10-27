@@ -419,7 +419,9 @@ def isolated_vocal_reference(reference, output):
             'separation_quality':'NOT RUN: estimated vocal stem may contain bleed'}
 
 
-def sing(root, plan_path, output, case_id, conditioning_path=None, reference_singer=None, reference_vocals=False):
+def sing(root, plan_path, output, case_id, conditioning_path=None, reference_singer=None, reference_vocals=False, mac_small_decode=False):
+    if type(mac_small_decode) is not bool or mac_small_decode and inference_device() != 'mps':
+        raise ValueError('Small local decode requires Metal')
     plan = load_plan(plan_path)
     cases = [c for c in plan['cases'] if c['id'] == case_id]
     if len(cases) != 1:
@@ -460,6 +462,12 @@ def sing(root, plan_path, output, case_id, conditioning_path=None, reference_sin
             # Avoid simultaneous float32 CPU/GPU copies exceeding the 16 GiB Mac.
             self.dtype = torch.bfloat16
             return super()._load_main_model_from_checkpoint(**kwargs)
+
+        def _init_mlx_vae(self):
+            # Native MLX decode exhausted this Mac even at 192 frames; use upstream MPS tiles.
+            if mac_small_decode:
+                return False
+            return super()._init_mlx_vae()
 
     device = inference_device()
     if device == 'cuda' and not torch.cuda.is_available():
@@ -503,6 +511,8 @@ def sing(root, plan_path, output, case_id, conditioning_path=None, reference_sin
               'plan_sha256': digest(plan_path), 'audio_sha256': digest(dest), 'seconds': time.monotonic()-started,
               'peak': peak, 'rms': float(np.sqrt(np.mean(pcm**2))), 'peak_process_rss_bytes': resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
               'device': str(dit.device), 'dtype': str(dit.dtype), 'torch': torch.__version__, 'mlx_vae': dit.use_mlx_vae,
+              'mlx_vae_chunk_frames': getattr(dit, 'mlx_vae_chunk_size', 512) if dit.use_mlx_vae else None,
+              'mac_small_decode': mac_small_decode,
               'inference_shift':params.shift,
               'voice_and_lyric_fidelity': 'NOT RUN: requires listening', 'naturalness': 'NOT RUN',
               'trained_adapter': False, 'source_audio_uploaded': False,
@@ -528,13 +538,14 @@ if __name__ == '__main__':
     p.add_argument('--conditioning', type=Path, help='Private source-led research guide; optional')
     p.add_argument('--reference-singer',type=Path,help='Local research only: receipt-bound generated 30-second singer directory')
     p.add_argument('--reference-vocals',action='store_true',help='Research only: use the pinned separated vocal stem from the reference singer')
+    p.add_argument('--mac-small-decode',action='store_true',help='Local research: bounded PyTorch MPS decode tiles')
     a = p.parse_args()
     if a.phase == 'draft':
         draft(runtime(a.runtime), a.phrase, a.seed, a.output, a.voice, a.genre, a.duration)
     else:
         if a.plan is None or a.case is None:
             p.error('sing requires --plan and --case')
-        sing(runtime(a.runtime), a.plan, a.output, a.case, a.conditioning,a.reference_singer,a.reference_vocals)
+        sing(runtime(a.runtime), a.plan, a.output, a.case, a.conditioning,a.reference_singer,a.reference_vocals,a.mac_small_decode)
         import gc
         gc.collect()
         import torch

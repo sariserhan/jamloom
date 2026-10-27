@@ -1,0 +1,34 @@
+{
+  "schema": "jamloom-dna-song-1",
+  "model_code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+  "weights": "19671f406d603126926c1b7e2adc169acbcade22",
+  "phrase": "Two original songs for Singing Academy; broad deep-house and Eurodance directions, newly authored lyrics, no reference audio or hit-song adaptation.",
+  "cases": [
+    {
+      "id": "deep-house-male",
+      "genre": "deep-house",
+      "title": "Long Way Home",
+      "voice": "male",
+      "vocal_profile": "male-tenor",
+      "seed": 281027,
+      "bpm": 120,
+      "duration": 120,
+      "vocal_language": "en",
+      "lyrics": "[Verse 1]\nLast train rolls beneath our feet\nYour blue jacket brushes me\nRain runs silver down the glass\nFor once I let the moment last\nEvery street becomes a river\nEvery window holds a spark\nYou draw circles on the ticket\nI forget to watch the dark\n[Pre-Chorus]\nLeave the hurry at the door\nI can hear you through it all\n[Chorus]\nTake the long way home with me\nPast the places we were meant to be\nLet the morning wait outside\nThere is nothing left to hide\n[Verse 2]\nAt the corner by the station\nYou pull gently at my sleeve\nWe could follow all the others\nBut there is somewhere else to be\n[Bridge]\nNo grand promise, no forever\nJust this pavement, just this weather\nEvery shortcut disappears\nWhen your laughter reaches here\n[Chorus]\nTake the long way home with me\nPast the places we were meant to be\nLet the morning wait outside\nThere is nothing left to hide\n[Outro]\nPast the station, past the square\nI am home when you are there",
+      "song_caption": "Original melodic deep-house pop song, 120 BPM. Warm expressive adult male tenor sings clear English and a memorable original chorus, with natural breath spaces. Full record production: punchy drums, syncopated rounded bass, muted guitar accents, warm synth chords and atmospheric textures. Brief groove intro, intimate verse, rising pre-chorus, fuller chorus, contrasting bridge and resolved ending. Keep the groove under the voice and leave space for the singer. No piano melody guide, spoken narration, nursery rhyme, repeated chant, borrowed tune or artist imitation."
+    },
+    {
+      "id": "eurodance-female",
+      "genre": "eurodance",
+      "title": "Leave It All Outside",
+      "voice": "female",
+      "vocal_profile": "female-alto",
+      "seed": 281028,
+      "bpm": 132,
+      "duration": 120,
+      "vocal_language": "en",
+      "lyrics": "[Verse 1]\nKeys and coins upon the table\nOne last message left unread\nI have spent the week on standby\nNow the room is turning red\nSomeone opens up the shutters\nSomeone finds a different beat\nAll the things I could not answer\nFall behind my moving feet\n[Pre-Chorus]\nLet the pavement shake below\nTake a breath and let it go\n[Chorus]\nLeave it all outside\nCome and find the louder side\nEvery step is ours to choose\nTonight we have a world to move\n[Verse 2]\nThere are strangers at the doorway\nThere are friends I never knew\nWhen the rhythm reaches higher\nEvery face comes into view\n[Bridge]\nWe are more than all the waiting\nMore than numbers on a screen\nPut your shoulder next to mine\nGive this moment everything\n[Chorus]\nLeave it all outside\nCome and find the louder side\nEvery step is ours to choose\nTonight we have a world to move\n[Outro]\nLet the last light find us here\nMoving closer, standing clear",
+      "song_caption": "Original uplifting Eurodance song, 132 BPM. Driving four-on-the-floor drums, springy syncopated synth bass, bright chord stabs and a distinctive original synth hook. Expressive adult female alto sings clear English with confident rhythmic phrasing and a melodic sing-along chorus. Full energetic record production, open space for the singer, controlled sub bass. Brief intro, developing verses, rising pre-chorus, wide chorus, contrasting bridge and resolved ending. No existing-song quotation, artist imitation, piano melody guide or speech synthesis."
+    }
+  ]
+}

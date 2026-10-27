@@ -1,0 +1,15 @@
+{
+  "status": "PASS local generation; listening NOT RUN",
+  "case": "deep-house-male",
+  "device_requested": "mps",
+  "paid_compute": false,
+  "plan_sha256": "63745f4c6b6c773ed5a3ad9af37593fcdeb4126bd04961990bc34feaf37f5491",
+  "initial_available_bytes": 9919332352,
+  "peak_process_group_rss_bytes": 1925595136,
+  "timeout_seconds": 1200,
+  "attempts": 1,
+  "listening": "NOT RUN",
+  "exit_code": 0,
+  "audio_sha256": "39ee94bd5d92ba87cf507166d4f516feb798277e18650eee8e933e8fdab73297",
+  "seconds": 54.44166508305352
+}

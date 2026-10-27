@@ -1,3 +1,5 @@
+**Latest local song work:** two new original 120-second sung performances and matching karaoke previews now exist, generated on the M5 GPU with no rental/download. Technical playback passes; human musical acceptance and actual word/note alignment remain open. The course is unchanged. [Report](SINGING_ORIGINAL_PRODUCTION.md).
+
 # Product completion — 2026-10-27
 
 **PARTIAL overall; publication HELD.** This is the current all-product ledger, refreshed against [final-gate evidence](FINAL_GATES.md), [completed payment/access work](COMPLETION_FOLLOWUP.md), the [cross-product maintenance pass](PRODUCT_MAINTENANCE.md) and [specification closure](SPEC_CLOSURE.md). Older dated reports retain their evidence, not a second backlog to reopen. Existing accepted products keep their scoped acceptance. Singing Academy is **$39 USD once**. No push, deployment, live purchase activation or App Store submission is authorized by this local continuation.

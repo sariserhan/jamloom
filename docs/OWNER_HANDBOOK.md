@@ -1,3 +1,9 @@
+## New original songs — local Mac GPU, 2026-10-27
+
+Try **http://localhost:8766/singing-originals/review/**: **Long Way Home** (melodic deep house) and **Leave It All Outside** (Eurodance), each two minutes with a sung version and matching karaoke backing. These are new originals, not the earlier rejected piano arrangements or covers of the supplied hits. Generation used this Mac's Metal GPU and installed model; no paid compute or download. Both completed after a local decoding-memory correction; failures are preserved.
+
+Playback is checked on Chromium/WebKit at desktop/phone widths. Musical acceptance, vocal residue and actual lyric/timing fidelity remain open. The lyrics shown are authored words, not a verified transcription. These are listening candidates, not installed scored lessons; existing course and $39 once stay unchanged. [Evidence and next integration gates](SINGING_ORIGINAL_PRODUCTION.md).
+
 ## Current local improvements and phone — 2026-10-27
 
 [Implementation, checks and remaining gates](PRODUCT_IMPROVEMENTS.md). Preview at http://127.0.0.1:3010. In Singing Academy choose **Find my starting register** for a twelve-second comfortable-note check; it saves no audio and is not your full vocal range. The course remains $39 once. Community → Explore → **Discover for you** ranks public songs from favorites and ratings explicitly allowed for personalization. DJ Academy shows practice suggestions after failed checks. Improvise/Music DNA explain confirmed credit release and reconnect behavior. Product images are 40.15% smaller losslessly.

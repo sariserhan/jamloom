@@ -1,0 +1,14 @@
+{
+  "status": "FAIL",
+  "case": "deep-house-male",
+  "device_requested": "mps",
+  "paid_compute": false,
+  "plan_sha256": "63745f4c6b6c773ed5a3ad9af37593fcdeb4126bd04961990bc34feaf37f5491",
+  "initial_available_bytes": 6395035648,
+  "peak_process_group_rss_bytes": 2474852352,
+  "timeout_seconds": 1200,
+  "attempts": 1,
+  "listening": "NOT RUN",
+  "error": "Available memory floor reached",
+  "seconds": 32.79026870895177
+}

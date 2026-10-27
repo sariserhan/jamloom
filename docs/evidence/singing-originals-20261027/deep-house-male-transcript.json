@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0-recording-meaning",
+  "source_sha256": "9930452499ed234c5b6655f5bd856a86611def55f5910de23f35ad94ac6220f4",
+  "source_rate": 16000,
+  "source_frames": 1920000,
+  "model_manifest_sha256": "58eb63835716a76ae48b18fd5ace527ad4895aea4277109841d9afa93727b8f3",
+  "words": [
+    {
+      "start_frame": 0,
+      "end_frame": 15360,
+      "confidence": 0.13531211018562317
+    },
+    {
+      "start_frame": 15360,
+      "end_frame": 18240,
+      "confidence": 0.8362060189247131
+    },
+    {
+      "start_frame": 18240,
+      "end_frame": 29440,
+      "confidence": 0.5253798961639404
+    },
+    {
+      "start_frame": 29440,
+      "end_frame": 41920,
+      "confidence": 0.3129466474056244
+    },
+    {
+      "start_frame": 41920,
+      "end_frame": 55360,
+      "confidence": 0.9975652694702148
+    },
+    {
+      "start_frame": 55360,
+      "end_frame": 64640,
+      "confidence": 0.8920860290527344
+    },
+    {
+      "start_frame": 64640,
+      "end_frame": 80000,
+      "confidence": 0.9442360401153564
+    },
+    {
+      "start_frame": 141120,
+      "end_frame": 152320,
+      "confidence": 0.2830808758735657
+    },
+    {
+      "start_frame": 152320,
+      "end_frame": 159680,
+      "confidence": 0.9740005731582642
+    },
+    {
+      "start_frame": 159680,
+      "end_frame": 170880,
+      "confidence": 0.9840580821037292
+    },
+    {
+      "start_frame": 170880,
+      "end_frame": 185600,
+      "confidence": 0.4467497766017914
+    },
+    {
+      "start_frame": 185600,
+      "end_frame": 192320,
+      "confidence": 0.1539905071258545
+    },
+    {
+      "start_frame": 192320,
+      "end_frame": 208000,
+      "confidence": 0.9641619324684143
+    },
+    {
+      "start_frame": 268800,
+      "end_frame": 280000,
+      "confidence": 0.04794264957308769
+    },
+    {
+      "start_frame": 280000,
+      "end_frame": 287680,
+      "confidence": 0.812769889831543
+    },
+    {
+      "start_frame": 287680,
+      "end_frame": 297920,
+      "confidence": 0.8040620684623718
+    },
+    {
+      "start_frame": 297920,
+      "end_frame": 312320,
+      "confidence": 0.9838413596153259
+    },
+    {
+      "start_frame": 312320,
+      "end_frame": 320000,
+      "confidence": 0.9092332720756531
+    },
+    {
+      "start_frame": 320000,
+      "end_frame": 336000,
+      "confidence": 0.8489199876785278
+    },
+    {
+      "start_frame": 364800,
+      "end_frame": 376000,
+      "confidence": 0.9263186454772949
+    },
+    {
+      "start_frame": 376000,
+      "end_frame": 383360,
+      "confidence": 0.9561802744865417
+    },
+    {
+      "start_frame": 383360,
+      "end_frame": 394240,
+      "confidence": 0.9988985061645508
+    },
+    {
+      "start_frame": 394240,
+      "end_frame": 399360,
+      "confidence": 0.9983441829681396
+    },
+    {
+      "start_frame": 399360,
+      "end_frame": 478400,
+      "confidence": 0.9979760050773621
+    },
+    {
+      "start_frame": 1709920,
+      "end_frame": 1754720,
+      "confidence": 0.5354338884353638
+    },
+    {
+      "start_frame": 1754720,
+      "end_frame": 1760480,
+      "confidence": 0.45076143741607666
+    },
+    {
+      "start_frame": 1760480,
+      "end_frame": 1767520,
+      "confidence": 0.6918096542358398
+    },
+    {
+      "start_frame": 1767520,
+      "end_frame": 1798880,
+      "confidence": 0.44720223546028137
+    },
+    {
+      "start_frame": 1798880,
+      "end_frame": 1813920,
+      "confidence": 0.24067148566246033
+    },
+    {
+      "start_frame": 1813920,
+      "end_frame": 1822880,
+      "confidence": 0.991305410861969
+    },
+    {
+      "start_frame": 1822880,
+      "end_frame": 1830240,
+      "confidence": 0.8306540250778198
+    },
+    {
+      "start_frame": 1830240,
+      "end_frame": 1845280,
+      "confidence": 0.972987949848175
+    }
+  ],
+  "language": "en",
+  "language_probability": 0.8990257382392883,
+  "device": "cpu",
+  "compute_type": "int8",
+  "threads": 4,
+  "model_load_seconds": 0.08375066600274295,
+  "inference_seconds": 1.3508195839822292,
+  "peak_rss_bytes": 513376256,
+  "transcript_saved": true,
+  "network_policy": "offline local model; Python socket connections denied",
+  "timing_accuracy": "NOT RUN",
+  "musical_quality": "NOT RUN",
+  "transcript": "The last rain rolls beneath our feet Your blue jacket brush is me Rain runs silver down the glass Rain runs silver down the glass I have no home when you are there",
+  "phrases": [
+    {
+      "text": "The last rain rolls beneath our feet",
+      "start_seconds": 0.0,
+      "end_seconds": 5.0
+    },
+    {
+      "text": "Your blue jacket brush is me",
+      "start_seconds": 9.0,
+      "end_seconds": 13.0
+    },
+    {
+      "text": "Rain runs silver down the glass",
+      "start_seconds": 17.0,
+      "end_seconds": 21.0
+    },
+    {
+      "text": "Rain runs silver down the glass",
+      "start_seconds": 23.0,
+      "end_seconds": 29.9
+    },
+    {
+      "text": "I have no home when you are there",
+      "start_seconds": 106.87,
+      "end_seconds": 115.33
+    }
+  ],
+  "source_kind": "synthetic",
+  "consent_confirmed": false
+}

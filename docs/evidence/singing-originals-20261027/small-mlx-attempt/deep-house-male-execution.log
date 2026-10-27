@@ -1,0 +1,98 @@
+W1027 12:45:02.850000 12561 torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+2026-10-27 12:45:03.703 | WARNING  | acestep.training.trainer:<module>:40 - bitsandbytes not installed. Using standard AdamW.
+2026-10-27 12:45:03.782 | INFO     | acestep.gpu_config:get_gpu_config:846 - macOS MPS detected (11.8 GB unified memory, tier=tier4). Applying Apple Silicon optimizations: no compile, no quantization, mlx backend, no CPU offload.
+2026-10-27 12:45:03.784 | INFO     | acestep.core.generation.handler.init_service_loader:_load_main_model_from_checkpoint:174 - [initialize_service] Attempting to load model with attention implementation: sdpa
+2026-10-27 12:45:03.947 | INFO     | acestep.core.generation.handler.init_service_loader:_load_main_model_from_checkpoint:200 - [initialize_service] Keeping main model on mps (persistent)
+2026-10-27 12:45:09.622 | INFO     | acestep.core.generation.handler.mlx_vae_init:_init_mlx_vae:75 - [MLX-VAE] Decode/encode compiled with mx.compile().
+2026-10-27 12:45:09.625 | INFO     | acestep.core.generation.handler.mlx_vae_init:_init_mlx_vae:85 - [MLX-VAE] Native MLX VAE initialized (dtype=mlx.core.float32, compiled=True).
+2026-10-27 12:45:09.626 | INFO     | acestep.inference:generate_music:662 - [generate_music] LLM usage decision: thinking=False, use_cot_caption=False, use_cot_language=False, use_cot_metas=False, need_lm_for_cot=False, llm_initialized=False, use_lm=False
+2026-10-27 12:45:09.627 | INFO     | acestep.core.generation.handler.generate_music:generate_music:313 - [generate_music] Turbo model detected: overriding guidance_scale 7.0 -> 1.0 (turbo does not use CFG).
+2026-10-27 12:45:09.627 | INFO     | acestep.core.generation.handler.generate_music:generate_music:329 - [generate_music] Starting generation...
+2026-10-27 12:45:09.627 | INFO     | acestep.core.generation.handler.generate_music:generate_music:332 - [generate_music] Preparing inputs...
+2026-10-27 12:45:09.735 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:41 - [_load_model_context] Loading vae to mps (RSS: 3750 MB)
+2026-10-27 12:45:10.099 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:58 - [_load_model_context] Loaded vae to mps in 0.1107s (RSS: 3750 -> 3750 MB, delta: +0 MB)
+2026-10-27 12:45:10.215 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:67 - [_load_model_context] Offloading vae to CPU (RSS: 3750 MB)
+2026-10-27 12:45:10.493 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:83 - [_load_model_context] Offloaded vae to CPU in 0.2207s (RSS: 3750 -> 3750 MB, delta: +0 MB)
+2026-10-27 12:45:10.665 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:119 - 
+======================================================================
+2026-10-27 12:45:10.666 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:120 - 🔍 [DEBUG] DiT TEXT ENCODER INPUT (Inference)
+2026-10-27 12:45:10.666 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:121 - ======================================================================
+2026-10-27 12:45:10.666 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:122 - text_prompt:
+# Instruction
+Fill the audio semantic mask based on the given conditions:
+
+# Caption
+Original melodic deep-house pop song, 120 BPM. Warm expressive adult male tenor sings clear English and a memorable original chorus, with natural breath spaces. Full record production: punchy drums, syncopated rounded bass, muted guitar accents, warm synth chords and atmospheric textures. Brief groove intro, intimate verse, rising pre-chorus, fuller chorus, contrasting bridge and resolved ending. Keep the groove under the voice and leave space for the singer. No piano melody guide, spoken narration, nursery rhyme, repeated chant, borrowed tune or artist imitation.
+
+# Metas
+- bpm: 120
+- timesignature: N/A
+- keyscale: N/A
+- duration: 120 seconds
+<|endoftext|>
+
+2026-10-27 12:45:10.666 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:123 - ======================================================================
+2026-10-27 12:45:10.666 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:124 - lyrics_text:
+# Languages
+en
+
+# Lyric
+[Verse 1]
+Last train rolls beneath our feet
+Your blue jacket brushes me
+Rain runs silver down the glass
+For once I let the moment last
+Every street becomes a river
+Every window holds a spark
+You draw circles on the ticket
+I forget to watch the dark
+[Pre-Chorus]
+Leave the hurry at the door
+I can hear you through it all
+[Chorus]
+Take the long way home with me
+Past the places we were meant to be
+Let the morning wait outside
+There is nothing left to hide
+[Verse 2]
+At the corner by the station
+You pull gently at my sleeve
+We could follow all the others
+But there is somewhere else to be
+[Bridge]
+No grand promise, no forever
+Just this pavement, just this weather
+Every shortcut disappears
+When your laughter reaches here
+[Chorus]
+Take the long way home with me
+Past the places we were meant to be
+Let the morning wait outside
+There is nothing left to hide
+[Outro]
+Past the station, past the square
+I am home when you are there<|endoftext|>
+2026-10-27 12:45:10.666 | INFO     | acestep.core.generation.handler.conditioning_text:_prepare_text_conditioning_inputs:125 - ======================================================================
+
+2026-10-27 12:45:10.688 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:41 - [_load_model_context] Loading vae to mps (RSS: 3750 MB)
+2026-10-27 12:45:10.860 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:58 - [_load_model_context] Loaded vae to mps in 0.1182s (RSS: 3750 -> 3750 MB, delta: +0 MB)
+2026-10-27 12:45:10.867 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:67 - [_load_model_context] Offloading vae to CPU (RSS: 3750 MB)
+2026-10-27 12:45:11.106 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:83 - [_load_model_context] Offloaded vae to CPU in 0.1837s (RSS: 3750 -> 3750 MB, delta: +0 MB)
+2026-10-27 12:45:11.111 | INFO     | acestep.core.generation.handler.conditioning_embed:preprocess_batch:110 - [preprocess_batch] Inferring prompt embeddings...
+2026-10-27 12:45:11.111 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:41 - [_load_model_context] Loading text_encoder to mps (RSS: 3750 MB)
+2026-10-27 12:45:11.647 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:58 - [_load_model_context] Loaded text_encoder to mps in 0.4837s (RSS: 3750 -> 3750 MB, delta: +0 MB)
+2026-10-27 12:45:11.729 | INFO     | acestep.core.generation.handler.conditioning_embed:preprocess_batch:113 - [preprocess_batch] Inferring lyric embeddings...
+2026-10-27 12:45:11.731 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:67 - [_load_model_context] Offloading text_encoder to CPU (RSS: 3750 MB)
+2026-10-27 12:45:11.915 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:83 - [_load_model_context] Offloaded text_encoder to CPU in 0.1263s (RSS: 3750 -> 3750 MB, delta: +0 MB)
+2026-10-27 12:45:11.915 | INFO     | acestep.core.generation.handler.service_generate_execute:_execute_service_generate_diffusion:173 - [service_generate] Generating audio... (DiT backend: PyTorch (mps))
+2026-10-27 12:45:12.255 | INFO     | acestep.core.generation.handler.service_generate_execute:_execute_service_generate_diffusion:276 - [service_generate] DiT diffusion via PyTorch (mps)...
+2026-10-27 12:45:12.783 | INFO     | acestep.models.common.dcw_correction:__init__:98 - [DCW] Active — mode=double, scaler=0.0500, high_scaler=0.0200, wavelet='haar'
+2026-10-27 12:45:15.644 | INFO     | acestep.models.common.dcw_loader:get:84 - [DCW] Built DWT1D for wavelet='haar' (low-pass filter taps=2, device=mps:0, dtype=torch.bfloat16).
+2026-10-27 12:45:24.861 | INFO     | acestep.core.generation.handler.generate_music_decode:_prepare_generate_music_decode_state:42 - [generate_music] Model generation completed. Decoding latents...
+2026-10-27 12:45:24.864 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_prepare_generate_music_decode_state:64 - [generate_music] pred_latents: torch.Size([1, 3000, 64]), dtype=torch.bfloat16
+2026-10-27 12:45:24.864 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_prepare_generate_music_decode_state:65 - [generate_music] time_costs: {'encoder_time_cost': 0.2899899482727051, 'diffusion_time_cost': 12.314815998077393, 'diffusion_per_step_time_cost': 1.539351999759674, 'total_time_cost': 12.604805946350098, 'offload_time_cost': 1.2431659698486328}
+2026-10-27 12:45:25.230 | INFO     | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:127 - [generate_music] Decoding latents with VAE...
+2026-10-27 12:45:25.231 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:41 - [_load_model_context] Loading vae to mps (RSS: 3750 MB)
+2026-10-27 12:45:25.471 | INFO     | acestep.core.generation.handler.init_service_offload_context:_load_model_context:58 - [_load_model_context] Loaded vae to mps in 0.1779s (RSS: 3750 -> 3750 MB, delta: +0 MB)
+2026-10-27 12:45:25.477 | DEBUG    | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:136 - [generate_music] Before VAE decode: allocated=0.00GB, max=0.00GB
+2026-10-27 12:45:25.477 | INFO     | acestep.core.generation.handler.generate_music_decode:_decode_generate_music_pred_latents:172 - [generate_music] Using tiled VAE decode to reduce VRAM usage...

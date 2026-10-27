@@ -1,3 +1,7 @@
+## Local original-song candidates — 2026-10-27
+
+The two [new original-song previews](SINGING_ORIGINAL_PRODUCTION.md) reuse the pinned local ACE-Step turbo model, authored Jamloom lyrics and broad genre captions. No hit-song recording, lyric text, melody reference, cloned artist voice, training material or new checkpoint is used. Matching karaoke uses the existing research-only TorchAudio separator; this does not resolve or expand its production-checkpoint clearance. No weights/audio are added to Git or public distribution. Existing publisher model declarations and their limits below remain unchanged.
+
 # Open-source licenses and model provenance — 2026-10-26
 
 **PASS for the single newly shipped MIT module; PARTIAL for broader candidate adoption.** This is an engineering inventory of actual inspected grants, not a blanket legal clearance. Full repository pins and primary links are in [the audit](OPEN_SOURCE_AUDIT.md). No software/music licenses were purchased.

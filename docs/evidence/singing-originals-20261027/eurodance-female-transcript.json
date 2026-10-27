@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0-recording-meaning",
+  "source_sha256": "2de2ea26a2d7d6fc0ae6ee83948d71466c7c307b8f9508349364cc2dbda150aa",
+  "source_rate": 16000,
+  "source_frames": 1920000,
+  "model_manifest_sha256": "58eb63835716a76ae48b18fd5ace527ad4895aea4277109841d9afa93727b8f3",
+  "words": [
+    {
+      "start_frame": 1364160,
+      "end_frame": 1374400,
+      "confidence": 0.7662603855133057
+    },
+    {
+      "start_frame": 1374400,
+      "end_frame": 1382400,
+      "confidence": 0.9238530397415161
+    },
+    {
+      "start_frame": 1382400,
+      "end_frame": 1393920,
+      "confidence": 0.8653368353843689
+    },
+    {
+      "start_frame": 1393920,
+      "end_frame": 1397440,
+      "confidence": 0.1719081848859787
+    },
+    {
+      "start_frame": 1397440,
+      "end_frame": 1403520,
+      "confidence": 0.7879461050033569
+    },
+    {
+      "start_frame": 1403520,
+      "end_frame": 1407680,
+      "confidence": 0.9579334855079651
+    },
+    {
+      "start_frame": 1407680,
+      "end_frame": 1434240,
+      "confidence": 0.9797184467315674
+    },
+    {
+      "start_frame": 1456320,
+      "end_frame": 1476480,
+      "confidence": 0.8908193707466125
+    },
+    {
+      "start_frame": 1476480,
+      "end_frame": 1496640,
+      "confidence": 0.7477726936340332
+    },
+    {
+      "start_frame": 1496640,
+      "end_frame": 1510400,
+      "confidence": 0.9979962706565857
+    },
+    {
+      "start_frame": 1510400,
+      "end_frame": 1513920,
+      "confidence": 0.9964626431465149
+    },
+    {
+      "start_frame": 1513920,
+      "end_frame": 1520960,
+      "confidence": 0.9939672946929932
+    },
+    {
+      "start_frame": 1520960,
+      "end_frame": 1527680,
+      "confidence": 0.9830666780471802
+    },
+    {
+      "start_frame": 1527680,
+      "end_frame": 1569920,
+      "confidence": 0.5865676403045654
+    },
+    {
+      "start_frame": 1569920,
+      "end_frame": 1604160,
+      "confidence": 0.27578991651535034
+    },
+    {
+      "start_frame": 1629120,
+      "end_frame": 1638080,
+      "confidence": 0.49058133363723755
+    },
+    {
+      "start_frame": 1638080,
+      "end_frame": 1648000,
+      "confidence": 0.757568359375
+    },
+    {
+      "start_frame": 1648000,
+      "end_frame": 1659520,
+      "confidence": 0.4665779769420624
+    },
+    {
+      "start_frame": 1659520,
+      "end_frame": 1669440,
+      "confidence": 0.8971311450004578
+    },
+    {
+      "start_frame": 1669440,
+      "end_frame": 1680960,
+      "confidence": 0.9973268508911133
+    },
+    {
+      "start_frame": 1680960,
+      "end_frame": 1689920,
+      "confidence": 0.7833304405212402
+    },
+    {
+      "start_frame": 1689920,
+      "end_frame": 1716160,
+      "confidence": 0.8735684752464294
+    }
+  ],
+  "language": "en",
+  "language_probability": 0.8233702182769775,
+  "device": "cpu",
+  "compute_type": "int8",
+  "threads": 4,
+  "model_load_seconds": 0.06731729093007743,
+  "inference_seconds": 0.9135754170129076,
+  "peak_rss_bytes": 500776960,
+  "transcript_saved": true,
+  "network_policy": "offline local model; Python socket connections denied",
+  "timing_accuracy": "NOT RUN",
+  "musical_quality": "NOT RUN",
+  "transcript": "Tonight we have a world to choose Tonight we have a world to lose you Let the last light find us here",
+  "phrases": [
+    {
+      "text": "Tonight we have a world to choose",
+      "start_seconds": 85.26,
+      "end_seconds": 89.64
+    },
+    {
+      "text": "Tonight we have a world to lose you",
+      "start_seconds": 91.02000000000002,
+      "end_seconds": 100.26
+    },
+    {
+      "text": "Let the last light find us here",
+      "start_seconds": 101.82,
+      "end_seconds": 107.26
+    }
+  ],
+  "source_kind": "synthetic",
+  "consent_confirmed": false
+}

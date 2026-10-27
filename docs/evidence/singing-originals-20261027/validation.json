@@ -1,0 +1,18 @@
+{
+  "status": "PASS technical local renders and audition; PARTIAL Academy readiness",
+  "python_checks": 41,
+  "browser": "Chromium and WebKit, 1280 and 390 px, four players each; muted automation",
+  "source_sha256": {
+    "scripts/singing_response.py": "0561b04ec44635e69533088a3897a3002c671238592cc49c773e620ec823c5c0",
+    "scripts/render_singing_originals.py": "b2acd7feb5434182456956427443f164f7b0a8dd5cdcf246cd76b5c626ca5c45",
+    "scripts/review_singing_originals.py": "d0dcb8d2bd19ea68d3a2b0374edebfe4cea5a2fdff7335a37b479f8f334724c6",
+    "tests/test_singing_originals.py": "94fdc6732ac99e5c1930803751b19b6b6dec0c56784d63a0978d40fdd477fb8a",
+    "assets/manifests/singing-model.json": "62d691b276501df2f38ce8233e820da10f7669ebf2a521dd4c271d6e6bd9f3bf",
+    "assets/manifests/singer-separation.json": "35b4f8b152232146227a106c9685031ab4aa8aaaebe67c3455d371f296e7750a"
+  },
+  "human_listening": "PENDING",
+  "lyric_fidelity": "NOT QUALIFIED: tiny ASR recovered only portions; no verified transcript or scored note alignment",
+  "paid_compute": false,
+  "model_downloads": false,
+  "web_or_phone_release": false
+}
