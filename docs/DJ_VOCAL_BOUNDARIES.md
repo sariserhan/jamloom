@@ -1,3 +1,15 @@
+# Vocal onset follow-through — 2026-10-27
+
+**PASS technical; natural singing remains unqualified.** The automatic worker now aligns the measured start of sound rather than the padded clip's start. Leading fades end before the first detected active frame, so they no longer weaken the opening attack. Quiet pre-roll is preserved; the entire four-beat cue must remain within a supported region and 12–44-second start bounds. Offsets of 25 ms or more are skipped to respect the existing browser timing contract. There is no new audio clock, cue-schema change, time stretching or extra paid retry. Receipts retain the measured `onset_offset_seconds` diagnostic.
+
+The two new regressions fail against the prior implementation. **37 Python checks pass** for selection, mixer, study and worker paths, including unsupported-onset skipping without a second request. On an existing 60-second Jamloom instrumental, a known synthetic tone probe's measured attack moves from **18.02 ms late to zero sample-offset error against the worker grid**. Both versions pass the browser's independent analysis and cue/FX checks run in Node; this is not a rendered browser test. Six-second WAV excerpts, input hashes and measurements are retained in [audio evidence](evidence/dj-vocal-onsets-20261027/audio.json), [consumer evidence](evidence/dj-vocal-onsets-20261027/consumer.json) and [validation](evidence/dj-vocal-onsets-20261027/validation.json).
+
+Reproduce with `.venv-singer/bin/python scripts/check_dj_vocal_onsets.py`, then from `apps/site` run `node --import tsx ../../scripts/check_dj_vocal_onsets.mjs`. The audio script pins the prior implementation at `1829ade` and refuses to overwrite its output directory. The excerpts are timing probes, not replacement singing auditions. The prepared repaint/isolated studies keep their exact authorized windows; they receive the shared fade fix but no automatic cue relocation.
+
+**Limits:** a threshold crossing is not a verified syllable or musical downbeat. This corrects a measurable placement error; it does not establish natural singing, source/target tempo compatibility, harmony or listener acceptance. The rejected retained audition stays rejected. No new model generation, GPU rental, deployment or public activation.
+
+---
+
 # Vocal boundary and backing preservation — 2026-10-27
 
 **PASS technical; human musical acceptance remains FAIL for the retained audition.** This is a local selector/mixer fix, not new singing generation, model training, public activation or deployment.

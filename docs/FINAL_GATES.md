@@ -28,7 +28,7 @@ Apple's [purchase metadata](https://developer.apple.com/help/app-store-connect/r
 
 ## Short singing — FAIL owner acceptance of retained audition; capability remains PARTIAL
 
-The 2026-10-27 [boundary/backing follow-through](DJ_VOCAL_BOUNDARIES.md) fixes clipped-start acceptance and unnecessary backing attenuation in silent padding, with 34 checks and retained-audio renders. It does not overturn the owner rejection or qualify fresh singing.
+The 2026-10-27 [boundary/backing follow-through](DJ_VOCAL_BOUNDARIES.md) fixes clipped-start acceptance and unnecessary backing attenuation in silent padding, with 34 checks and retained-audio renders. A subsequent onset correction passes 37 Python checks and the browser cue contract: the known probe moves from 18.02 ms late to zero sample-offset error against the worker grid. These checks do not overturn the owner rejection or qualify fresh singing.
 
 Existing offline Whisper word timing was run on two retained Jamloom vocal stems. Repeated long transcripts were unreliable and rejected. One possible short phrase near 40.5 seconds in the other source was selected manually for a local audition, with bounded fades and the existing `mix_phrase` function on a verified groove. Assertions check source hashes, sample format, finite samples, headroom, output encoding and bit-identical backing outside the inserted phrase.
 

@@ -1,0 +1,56 @@
+{
+  "status": "PASS cue contract",
+  "rows": [
+    {
+      "name": "before",
+      "cue": {
+        "start": 12.2325,
+        "seconds": 1.875,
+        "bpm": 128,
+        "repeat": true,
+        "echo": false
+      },
+      "contract": "PASS",
+      "independentGridAllowsEffects": true
+    },
+    {
+      "name": "after",
+      "cue": {
+        "start": 12.214479166666667,
+        "seconds": 1.875,
+        "bpm": 128,
+        "repeat": true,
+        "echo": false
+      },
+      "contract": "PASS",
+      "independentGridAllowsEffects": true
+    }
+  ],
+  "independentGrid": {
+    "bpm": 128,
+    "offset": 0.045,
+    "maxError": 0.0087500000000027,
+    "coverage": 0.7698412698412699,
+    "entry": 7.545,
+    "exit": 55.3575,
+    "hookSafe": false,
+    "regions": [
+      {
+        "start": 7.545,
+        "end": 30.045,
+        "beats": 49
+      },
+      {
+        "start": 36.6075,
+        "end": 42.2325,
+        "beats": 13
+      },
+      {
+        "start": 43.17,
+        "end": 55.3575,
+        "beats": 27
+      }
+    ]
+  },
+  "scope": "Browser analysis and cue functions executed in Node; no browser UI or human timing acceptance."
+}

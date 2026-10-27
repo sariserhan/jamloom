@@ -69,6 +69,33 @@ class VocalTests(unittest.TestCase):
         self.assertLess(np.max(np.abs(np.diff(accompaniment[:,0]))),.0002)
         np.testing.assert_array_equal(mix_phrase(original,np.zeros_like(clip),rate,1),original)
 
+    def test_phrase_fade_does_not_weaken_the_first_audible_attack(self):
+        rate=8000;voice=np.zeros((10*rate,2));voice[rate:2*rate]=.2
+        clip,bounds=short_phrase(voice,rate,2*rate)
+        attack=rate-round(bounds['start']*rate)
+        np.testing.assert_allclose(clip[attack:attack+80],.18)
+
+    def test_actual_hook_attack_is_on_grid_and_preroll_stays_inside_supported_region(self):
+        from unittest.mock import patch
+        rate=8000;samples=np.zeros((60*rate,2));voice=np.zeros((10*rate,2));voice[rate:2*rate]=.2
+        value=dict(version=1,session='a'*32,sequence=2,seed=17,style='house',energy=4);diagnostic={}
+        with patch('dj_vocal.steady_grid',return_value=(120.,0.,[(12.,44.)])):
+            output,cue=add_hook(value,samples,rate,Path('/tmp'),None,lambda *a,**k:(voice,rate),diagnostic)
+        attack=int(np.flatnonzero(output[:,0]>.0018)[0])
+        self.assertLessEqual(abs(attack/rate*2-round(attack/rate*2))/2,1/rate)
+        self.assertGreaterEqual(cue['start'],12);self.assertLessEqual(cue['start']+cue['seconds'],44)
+        self.assertAlmostEqual(cue['start']+diagnostic['onset_offset_seconds'],attack/rate,delta=1/rate)
+
+    def test_onset_outside_browser_tolerance_skips_without_an_extra_request(self):
+        from unittest.mock import patch
+        rate=8000;samples=np.ones((60*rate,2))*.1;voice=np.ones((10*rate,2))*.2
+        clip=np.zeros((2*rate,2));clip[rate//10:rate]=.18;diagnostic={};calls=[]
+        def generate(*a,**k):calls.append(1);return voice,rate
+        with patch('dj_vocal.steady_grid',return_value=(120.,0.,[(12.,44.)])),patch('dj_vocal.short_phrase',return_value=(clip,{})):
+            output,cue=add_hook(dict(version=1,session='a'*32,sequence=2,seed=17,style='house',energy=4),samples,rate,Path('/tmp'),None,generate,diagnostic)
+        self.assertIsNone(cue);self.assertIs(output,samples);self.assertEqual(len(calls),1)
+        self.assertEqual(diagnostic,{'status':'unsupported_onset','generated':True})
+
     def test_hook_chooses_quieter_midrange_without_leaving_supported_beats(self):
         rate=8000;t=np.arange(60*rate)/rate
         bass=.2*np.sin(2*np.pi*80*t)*np.exp(-(t%(.5))*40)
@@ -82,9 +109,10 @@ class VocalTests(unittest.TestCase):
         value=dict(version=1,session='a'*32,sequence=2,seed=17,style='house',energy=4)
         with patch('dj_vocal.steady_grid',return_value=(120.,0.,[(28.,34.)])):
             output,cue=add_hook(value,samples,rate,Path('/tmp'),None,generate)
-        self.assertEqual(cue['start'],28);self.assertEqual(cue['seconds'],2)
-        np.testing.assert_array_equal(output[:28*rate],samples[:28*rate])
-        np.testing.assert_array_equal(output[30*rate:],samples[30*rate:])
+        self.assertAlmostEqual(cue['start'],28.485,delta=1/rate);self.assertEqual(cue['seconds'],2)
+        np.testing.assert_array_equal(output[:round(cue['start']*rate)],samples[:round(cue['start']*rate)])
+        end=round(cue['start']*rate)+round(cue['seconds']*rate)
+        np.testing.assert_array_equal(output[end:],samples[end:])
     def test_sparse_vocal_effect_modes_are_explicit(self):
         from unittest.mock import patch
         rate=8000;t=np.arange(60*rate)/rate;samples=np.column_stack((.05*np.sin(2*np.pi*80*t),)*2)

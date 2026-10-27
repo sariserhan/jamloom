@@ -1,0 +1,22 @@
+{
+  "status": "PASS technical onset placement; musical acceptance not established",
+  "pythonTests": 37,
+  "pythonCommand": ".venv-singer/bin/python -m unittest tests.test_dj_vocal tests.test_dj_sung_hooks tests.test_dj_warm_engine tests.test_dj_track_worker",
+  "renderCommand": ".venv-singer/bin/python scripts/check_dj_vocal_onsets.py",
+  "consumerCommand": "cd apps/site && node --import tsx ../../scripts/check_dj_vocal_onsets.mjs",
+  "evidence": [
+    "Two new regression cases fail against the previous code",
+    "First detected active frame is no longer weakened by the leading fade",
+    "Measured sound onset aligns to the worker beat grid; full pre-roll/cue stays in a supported region",
+    "Unsupported onset skips without extra generation or retries",
+    "Real backing with synthetic probe: worker-grid offset 18.020833 ms before, 0 ms after",
+    "Both cue versions pass independent browser analysis and effect checks executed in Node"
+  ],
+  "limitations": [
+    "Threshold onset does not identify a sung syllable, naturalness, source/target tempo or harmonic fit",
+    "No human listening acceptance or fresh vocal model output",
+    "Repaint and prepared isolated-vocal studies retain their exact pre-authorized windows; automatic add_hook placement alone compensates onset"
+  ],
+  "paidCompute": false,
+  "deployed": false
+}

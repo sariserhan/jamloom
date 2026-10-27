@@ -1,0 +1,74 @@
+{
+  "status": "PASS technical timing probe",
+  "baselineCommit": "1829ade",
+  "sourceSha256": "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675",
+  "sourceFile": "renders/dj-model-comparison-20261026/house-0.wav",
+  "workerGrid": [
+    128.0,
+    0.045,
+    [
+      [
+        7.545000000000007,
+        30.04500000000003
+      ],
+      [
+        36.60750000000004,
+        55.35750000000005
+      ]
+    ]
+  ],
+  "rows": [
+    {
+      "name": "before",
+      "cue": {
+        "start": 12.2325,
+        "seconds": 1.875,
+        "bpm": 128.0,
+        "repeat": true,
+        "echo": false
+      },
+      "onsetOffsetSeconds": 0.018020833333333333,
+      "audibleStartSeconds": 12.250520833333333,
+      "errorToWorkerGridMs": 18.02083333333315,
+      "diagnostic": {
+        "status": "placed",
+        "generated": true,
+        "source_phrase": {
+          "start": 0.985,
+          "end": 1.61,
+          "padded_seconds": 1.875
+        }
+      },
+      "file": "renders/dj-vocal-onsets-20261027/before.wav",
+      "sha256": "19485265aea7137d999e89a068ea439375baa6427b3e57d6112844424754fbe3"
+    },
+    {
+      "name": "after",
+      "cue": {
+        "start": 12.214479166666667,
+        "seconds": 1.875,
+        "bpm": 128.0,
+        "repeat": true,
+        "echo": false
+      },
+      "onsetOffsetSeconds": 0.018020833333333333,
+      "audibleStartSeconds": 12.2325,
+      "errorToWorkerGridMs": 0.0,
+      "diagnostic": {
+        "status": "placed",
+        "generated": true,
+        "source_phrase": {
+          "start": 0.985,
+          "end": 1.61,
+          "padded_seconds": 1.875
+        },
+        "onset_offset_seconds": 0.018020833333333333
+      },
+      "file": "renders/dj-vocal-onsets-20261027/after.wav",
+      "sha256": "2761ee4a04521dc45c1e2c8333306de143070d506632827b5a80b44f63ab3cdc"
+    }
+  ],
+  "limitation": "Synthetic tone on retained real backing. Threshold onset is not a sung syllable or a labelled musical beat; no vocal quality acceptance.",
+  "paidCompute": false,
+  "newMusicGeneration": false
+}

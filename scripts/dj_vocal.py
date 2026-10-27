@@ -80,7 +80,8 @@ def short_phrase(voice, rate, length):
         if np.max(np.abs(voice[end:start+length])) > max(.0001, peak*.01): continue
         clip = voice[start:start+length].copy()
         fade = min(round(.03*rate), length//4)
-        clip[:fade] *= np.linspace(0, 1, fade)[:, None]
+        attack_fade = min(fade, int(group[0])*frame-start)
+        clip[:attack_fade] *= np.linspace(0, 1, attack_fade)[:, None]
         clip[-fade:] *= np.linspace(1, 0, fade)[:, None]
         clip *= .18/max(float(np.max(np.abs(clip))), 1e-9)
         return clip, dict(start=start/rate, end=end/rate, padded_seconds=length/rate)
@@ -129,6 +130,11 @@ def add_hook(value, samples, rate, directory, engine, generate=ace, diagnostic=N
     if clip is None:
         diagnostic['status']='no_complete_short_phrase'
         return samples, None
+    # Align measured sound onset, preserving quiet pre-roll and the browser's 25 ms cue tolerance.
+    onset = int(np.flatnonzero(np.max(np.abs(clip), axis=1) > max(.0001, float(np.max(np.abs(clip)))*.01))[0])/rate
+    if onset >= .025:
+        diagnostic['status']='unsupported_onset'
+        return samples, None
     # Choose space in the midrange on a supported beat, not a guessed musical downbeat.
     mono = samples.mean(axis=1)
     def lowpass(hz):
@@ -136,7 +142,7 @@ def add_hook(value, samples, rate, directory, engine, generate=ace, diagnostic=N
         return lfilter([alpha], [1, alpha-1], mono)
     mids = lowpass(3000)-lowpass(300)
     candidates = offset+np.arange(math.ceil((12-offset)*bpm/60), math.floor((44-offset)*bpm/60)+1)*60/bpm
-    candidates = [t for t in candidates if any(a-.001<=t and t+length/rate<=b+.001 for a,b in regions)]
+    candidates = [float(t-onset) for t in candidates if 12<=t-onset<=44 and any(a-.001<=t-onset and t-onset+length/rate<=b+.001 for a,b in regions)]
     if not candidates:
         diagnostic['status']='no_supported_placement'
         return samples, None
@@ -145,4 +151,5 @@ def add_hook(value, samples, rate, directory, engine, generate=ace, diagnostic=N
     output *= min(1, .95/max(float(np.max(np.abs(output))), 1e-9))
     diagnostic['status']='placed'
     diagnostic['source_phrase']=bounds
+    diagnostic['onset_offset_seconds']=onset
     return output, dict(start=start, seconds=length/rate, bpm=bpm, repeat=value['sequence'] % 10 == 2, echo=value['sequence'] % 15 in (7,12))

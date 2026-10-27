@@ -1,3 +1,7 @@
+## Local vocal timing follow-through — 2026-10-27
+
+The automatic worker now places detected sound onset on the beat while preserving quiet pre-roll and the existing cue bounds. Its fade no longer extends into the first active frame. [Evidence and reproduction](DJ_VOCAL_BOUNDARIES.md). The 18.02 ms → zero grid-error result uses a synthetic timing probe on retained music, not natural singing. The rejected vocal remains excluded; no extra requests, public activation or deployment.
+
 ## Local vocal processing follow-through — 2026-10-27
 
 [Boundary/backing report](DJ_VOCAL_BOUNDARIES.md): the selector now requires at least 50 ms observed leading quiet, and the mixer no longer lowers the music through silent padding. A skip reports `no_complete_short_phrase` rather than assuming every rejection is excessive length. These local changes may reduce vocal admission; they do not authorize extra GPU retries. The previously rejected voice remains rejected. No deployment.

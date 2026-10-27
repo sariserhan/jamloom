@@ -1,3 +1,12 @@
+## Vocal onset follow-through — 2026-10-27
+
+**PASS technical; vocal quality remains unqualified.** [Report](docs/DJ_VOCAL_BOUNDARIES.md).
+
+- [x] Preserve the opening attack and align measured sound onset to the worker beat grid; keep pre-roll and the whole cue inside supported bounds.
+- [x] Reject unsupported onset offsets without another paid request; preserve existing browser cue format and timing tolerance.
+- [x] Pass 37 Python checks plus independent browser-analysis/FX contract checks in Node. A synthetic probe on retained backing improves from 18.02 ms grid error to zero sample-offset error.
+- [ ] Qualify natural sung phrases, source/target tempo and harmonic fit with fresh outputs and listening. No new GPU spending or deployment.
+
 ## Vocal boundary and backing preservation — 2026-10-27
 
 **PASS technical; musical acceptance remains FAIL for the retained candidate.** [Report](docs/DJ_VOCAL_BOUNDARIES.md).
