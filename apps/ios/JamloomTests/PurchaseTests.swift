@@ -4,6 +4,27 @@ import StoreKitTest
 @testable import Jamloom
 
 @MainActor final class PurchaseTests: XCTestCase {
+    func testLiveAppleCatalogueWhenExplicitlyRequested() async throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["JAMLOOM_APPLE_CATALOGUE"] == "1", "Explicit real Apple catalogue check only")
+        #if targetEnvironment(simulator)
+        throw XCTSkip("Use a physical device without a StoreKit configuration")
+        #else
+        let appTransaction = try await AppTransaction.refresh()
+        guard case .verified(let app) = appTransaction else { XCTFail("Apple app transaction was not verified"); return }
+        guard app.environment == .sandbox else { XCTFail("Expected Apple sandbox; received " + app.environment.rawValue); return }
+        let expected: [String: Decimal] = ["com.jamloom.credits.starter": Decimal(string: "9.99")!, "com.jamloom.credits.creator": Decimal(string: "24.99")!, "com.jamloom.credits.studio": Decimal(string: "49.99")!, CreditPurchases.singingProduct: 39]
+        let products = try await Product.products(for: Array(expected.keys))
+        let rows = products.map { ["id": $0.id, "price": NSDecimalNumber(decimal: $0.price).stringValue, "currency": $0.priceFormatStyle.currencyCode, "type": $0.type.rawValue] }
+        let proof = XCTAttachment(data: try JSONSerialization.data(withJSONObject: rows, options: .sortedKeys), uniformTypeIdentifier: "public.json")
+        proof.name = "Real Apple product catalogue"; proof.lifetime = .keepAlways; add(proof)
+        XCTAssertEqual(Set(products.map(\.id)), Set(expected.keys))
+        for product in products {
+            XCTAssertEqual(product.price, expected[product.id]); XCTAssertEqual(product.priceFormatStyle.currencyCode, "USD")
+            XCTAssertEqual(product.type, product.id == CreditPurchases.singingProduct ? .nonConsumable : .consumable)
+        }
+        XCTAssertFalse(CreditPurchases.released); XCTAssertFalse(CreditPurchases.singingReleased)
+        #endif
+    }
     func testSingingFreeLessonGateUsesPackagedCourseIds() throws {
         let root = try XCTUnwrap(Bundle.main.url(forResource: "Studio", withExtension: nil))
         let ids = Set(try JSONDecoder().decode([String].self, from: Data(contentsOf: root.appendingPathComponent("singing-free-lessons.json"))))

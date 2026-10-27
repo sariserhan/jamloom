@@ -1,0 +1,78 @@
+{
+  "type": "inAppPurchases",
+  "id": "6827398987",
+  "attributes": {
+    "name": "Jamloom Singing Academy",
+    "productId": "com.jamloom.singing.complete",
+    "inAppPurchaseType": "NON_CONSUMABLE",
+    "state": "MISSING_METADATA",
+    "reviewNote": "Draft only. USD 39 one-time original-song course. Sales remain disabled; no submission is requested. Current local build 26 contains Course and Restore; selected older build 24 does not contain this purchase. Actual sandbox-to-server qualification must precede activation.",
+    "familySharable": false,
+    "contentHosting": null
+  },
+  "relationships": {
+    "inAppPurchaseLocalizations": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/relationships/inAppPurchaseLocalizations",
+        "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/inAppPurchaseLocalizations"
+      }
+    },
+    "pricePoints": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/relationships/pricePoints",
+        "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/pricePoints"
+      }
+    },
+    "content": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/relationships/content",
+        "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/content"
+      }
+    },
+    "appStoreReviewScreenshot": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/relationships/appStoreReviewScreenshot",
+        "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/appStoreReviewScreenshot"
+      }
+    },
+    "promotedPurchase": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/relationships/promotedPurchase",
+        "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/promotedPurchase"
+      }
+    },
+    "iapPriceSchedule": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/relationships/iapPriceSchedule",
+        "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/iapPriceSchedule"
+      }
+    },
+    "inAppPurchaseAvailability": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/relationships/inAppPurchaseAvailability",
+        "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/inAppPurchaseAvailability"
+      }
+    },
+    "images": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/relationships/images",
+        "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/images"
+      }
+    },
+    "offerCodes": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/relationships/offerCodes",
+        "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/offerCodes"
+      }
+    },
+    "versions": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/relationships/versions",
+        "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987/versions"
+      }
+    }
+  },
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6827398987"
+  }
+}

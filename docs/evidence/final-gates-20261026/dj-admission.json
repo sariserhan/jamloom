@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "scope": "Local database admission/ledger pressure with a fake provider; not fresh audio, GPU throughput or production capacity",
+  "requests": 400,
+  "concurrentRequests": 40,
+  "rounds": [
+    {
+      "round": 1,
+      "admitted": 2,
+      "rejected": 38,
+      "rejectedBalancesUnchanged": true,
+      "unstartedWorkRefunded": true
+    },
+    {
+      "round": 2,
+      "admitted": 2,
+      "rejected": 38,
+      "rejectedBalancesUnchanged": true,
+      "unstartedWorkRefunded": true
+    },
+    {
+      "round": 3,
+      "admitted": 2,
+      "rejected": 38,
+      "rejectedBalancesUnchanged": true,
+      "unstartedWorkRefunded": true
+    },
+    {
+      "round": 4,
+      "admitted": 2,
+      "rejected": 38,
+      "rejectedBalancesUnchanged": true,
+      "unstartedWorkRefunded": true
+    },
+    {
+      "round": 5,
+      "admitted": 2,
+      "rejected": 38,
+      "rejectedBalancesUnchanged": true,
+      "unstartedWorkRefunded": true
+    },
+    {
+      "round": 6,
+      "admitted": 2,
+      "rejected": 38,
+      "rejectedBalancesUnchanged": true,
+      "unstartedWorkRefunded": true
+    },
+    {
+      "round": 7,
+      "admitted": 2,
+      "rejected": 38,
+      "rejectedBalancesUnchanged": true,
+      "unstartedWorkRefunded": true
+    },
+    {
+      "round": 8,
+      "admitted": 2,
+      "rejected": 38,
+      "rejectedBalancesUnchanged": true,
+      "unstartedWorkRefunded": true
+    },
+    {
+      "round": 9,
+      "admitted": 2,
+      "rejected": 38,
+      "rejectedBalancesUnchanged": true,
+      "unstartedWorkRefunded": true
+    },
+    {
+      "round": 10,
+      "admitted": 2,
+      "rejected": 38,
+      "rejectedBalancesUnchanged": true,
+      "unstartedWorkRefunded": true
+    }
+  ],
+  "latencyMs": {
+    "median": 12.640416999999957,
+    "p95": 21.962208999999973,
+    "max": 28.53637500000002
+  },
+  "rssBytes": 123535360,
+  "providerCalls": "in-memory fixture only",
+  "publicCapacityChanged": false
+}

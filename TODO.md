@@ -1,3 +1,18 @@
+## Final-gate follow-through — 2026-10-26
+
+**PARTIAL overall; publication held.** [Current report](docs/FINAL_GATES.md) records completed draft/provider work and the remaining external gates.
+
+- [x] Verify all 222 live public song audio headers and one full hash per product; no production writes.
+- [x] Exercise 400 local DJ starts in forty-request rounds: two slots, intact rejected balances, idempotent retries and refunds; fake provider only.
+- [x] Create the exact USD39 Singing non-consumable draft, English metadata and USA-only product availability; process a genuine course review screenshot successfully. No submission or live activation.
+- [x] Add a real-Apple catalogue preflight that refuses Xcode receipts; retain the observed Xcode environment failure instead of claiming sandbox success.
+- [x] Prepare one bounded retained-vocal audition using the existing mixer and timing checks; fresh vocal consistency remains open.
+- [x] Restore and launch the exact prepared Release build26 on the physical phone.
+- [ ] Complete credit review screenshots, reviewer access and real Apple sandbox purchase/restore/refund delivery against the matching server.
+- [ ] Measure physical singing latency and broader rooms/devices; qualify sustained fresh DJ generation and reliable brief singing.
+- [ ] Obtain Tency permissions/assets; owner confirms no reply. No license purchase authorized.
+- [ ] Publish only after the owner lifts the release hold.
+
 ## Completion follow-up — 2026-10-26
 
 **PARTIAL overall; no publication.** [Current follow-up](docs/COMPLETION_FOLLOWUP.md) closes Singing test payments/access and deletion qualification while retaining external release gates.

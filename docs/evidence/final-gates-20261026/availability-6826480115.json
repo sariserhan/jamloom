@@ -1,0 +1,50 @@
+{
+  "scope": "USA-only draft availability; no approval, submission, app release or live sales",
+  "request": {
+    "data": {
+      "type": "inAppPurchaseAvailabilities",
+      "attributes": {
+        "availableInNewTerritories": false
+      },
+      "relationships": {
+        "inAppPurchase": {
+          "data": {
+            "type": "inAppPurchases",
+            "id": "6826480115"
+          }
+        },
+        "availableTerritories": {
+          "data": [
+            {
+              "type": "territories",
+              "id": "USA"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "result": {
+    "data": {
+      "type": "inAppPurchaseAvailabilities",
+      "id": "6826480115",
+      "attributes": {
+        "availableInNewTerritories": false
+      },
+      "relationships": {
+        "availableTerritories": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseAvailabilities/6826480115/relationships/availableTerritories",
+            "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseAvailabilities/6826480115/availableTerritories"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseAvailabilities/6826480115"
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseAvailabilities"
+    }
+  }
+}

@@ -511,6 +511,7 @@ final class FlowTests: XCTestCase {
         let course = app.buttons["Course"].firstMatch
         XCTAssertTrue(course.waitForExistence(timeout: 10)); course.tap()
         XCTAssertTrue(app.staticTexts["Free preview. Course sales are not open yet."].waitForExistence(timeout: 5))
+        let offer = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); offer.name = "Singing Academy course offer"; offer.lifetime = .keepAlways; add(offer)
         app.buttons["Done"].tap()
         let song = app.webViews.links.matching(NSPredicate(format: "label CONTAINS %@", "First Light")).firstMatch
         XCTAssertTrue(song.waitForExistence(timeout: 20)); song.tap()

@@ -1,0 +1,19 @@
+{
+  "type": "inAppPurchasePricePoints",
+  "id": "eyJzIjoiNjgyNzM5ODk4NyIsInQiOiJVU0EiLCJwIjoiMTAyNzMifQ",
+  "attributes": {
+    "customerPrice": "39.0",
+    "proceeds": "27.3"
+  },
+  "relationships": {
+    "equalizations": {
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/eyJzIjoiNjgyNzM5ODk4NyIsInQiOiJVU0EiLCJwIjoiMTAyNzMifQ/relationships/equalizations",
+        "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/eyJzIjoiNjgyNzM5ODk4NyIsInQiOiJVU0EiLCJwIjoiMTAyNzMifQ/equalizations"
+      }
+    }
+  },
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/eyJzIjoiNjgyNzM5ODk4NyIsInQiOiJVU0EiLCJwIjoiMTAyNzMifQ"
+  }
+}

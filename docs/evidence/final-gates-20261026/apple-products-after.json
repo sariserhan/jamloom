@@ -1,0 +1,93 @@
+{
+  "scope": "Draft only; not submitted or activated",
+  "products": [
+    {
+      "id": "6826479674",
+      "product": {
+        "name": "Jamloom 10 credits",
+        "productId": "com.jamloom.credits.starter",
+        "inAppPurchaseType": "CONSUMABLE",
+        "state": "MISSING_METADATA",
+        "reviewNote": "Prepared for sandbox verification. Native purchase UI and public generation remain disabled pending musical quality and billing qualification.",
+        "familySharable": false,
+        "contentHosting": null
+      },
+      "versions": [
+        {
+          "id": "23665230-1f57-41d0-8fb3-5552b3556d89",
+          "version": 1,
+          "state": "PREPARE_FOR_SUBMISSION"
+        }
+      ],
+      "territories": [
+        "USA"
+      ]
+    },
+    {
+      "id": "6826480115",
+      "product": {
+        "name": "Jamloom 25 credits",
+        "productId": "com.jamloom.credits.creator",
+        "inAppPurchaseType": "CONSUMABLE",
+        "state": "MISSING_METADATA",
+        "reviewNote": "Prepared for sandbox verification. Native purchase UI and public generation remain disabled pending musical quality and billing qualification.",
+        "familySharable": false,
+        "contentHosting": null
+      },
+      "versions": [
+        {
+          "id": "72eaa430-19d3-4bc4-822e-5afe91123965",
+          "version": 1,
+          "state": "PREPARE_FOR_SUBMISSION"
+        }
+      ],
+      "territories": [
+        "USA"
+      ]
+    },
+    {
+      "id": "6826480267",
+      "product": {
+        "name": "Jamloom 50 credits",
+        "productId": "com.jamloom.credits.studio",
+        "inAppPurchaseType": "CONSUMABLE",
+        "state": "MISSING_METADATA",
+        "reviewNote": "Prepared for sandbox verification. Native purchase UI and public generation remain disabled pending musical quality and billing qualification.",
+        "familySharable": false,
+        "contentHosting": null
+      },
+      "versions": [
+        {
+          "id": "610248fb-986b-4128-bf28-50e8715c933d",
+          "version": 1,
+          "state": "PREPARE_FOR_SUBMISSION"
+        }
+      ],
+      "territories": [
+        "USA"
+      ]
+    },
+    {
+      "id": "6827398987",
+      "product": {
+        "name": "Jamloom Singing Academy",
+        "productId": "com.jamloom.singing.complete",
+        "inAppPurchaseType": "NON_CONSUMABLE",
+        "state": "READY_TO_SUBMIT",
+        "reviewNote": "Draft only. USD 39 one-time original-song course. Sales remain disabled; no submission is requested. Current local build 26 contains Course and Restore; selected older build 24 does not contain this purchase. Actual sandbox-to-server qualification must precede activation.",
+        "familySharable": false,
+        "contentHosting": false
+      },
+      "versions": [
+        {
+          "id": "05772c46-b8dc-410f-b66e-3eba8cbc3b8d",
+          "version": 1,
+          "state": "PREPARE_FOR_SUBMISSION"
+        }
+      ],
+      "territories": [
+        "USA"
+      ]
+    }
+  ]
+}

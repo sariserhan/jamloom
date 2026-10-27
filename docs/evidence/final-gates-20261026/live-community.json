@@ -1,0 +1,1382 @@
+{
+  "status": "PASS scoped public catalogue and audio delivery",
+  "checkedAt": "2026-10-27T03:35:13.210Z",
+  "collections": [
+    {
+      "product": "taste",
+      "view": "validation",
+      "count": 157,
+      "pages": 1
+    },
+    {
+      "product": "taste",
+      "view": "examples",
+      "count": 9,
+      "pages": 1
+    },
+    {
+      "product": "improvise",
+      "view": "validation",
+      "count": 56,
+      "pages": 1
+    },
+    {
+      "product": "taste",
+      "view": "public",
+      "count": 0,
+      "pages": 1
+    },
+    {
+      "product": "improvise",
+      "view": "public",
+      "count": 0,
+      "pages": 1
+    }
+  ],
+  "uniqueSongs": 222,
+  "publicDJSetCount": 0,
+  "audioChecks": [
+    {
+      "product": "taste",
+      "id": "2c4705adcf7d2ba21d2c41eda6f9bee6",
+      "header": "PASS",
+      "fullHash": "PASS"
+    },
+    {
+      "product": "taste",
+      "id": "43aa6516f6e7a9f471d6a7086b6fcab0",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "e813a06aedee01724520682f628425a5",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "39e11f68e808611c9b1b76334d0b337d",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "7e23e6c67581cf368d5b4376dc8a16a6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "4f138dd36c6d18ba6266d683f541f2b1",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "37eaa4232d22fbbc6ad02d499e18560b",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "0883557afd5a692ca089fe95638777f3",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "9f7e78acb5c6ad84e9ef5ad0b7edbcb5",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "6e31619fbf5a1ef60bda1adcaf256bc8",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "6b888472c267ab1c6c018e32a3914aee",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "425e1ecb1d2f96ffa9d45a205fa0b089",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "a41c92e49c5064de0b21971a772d86aa",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "da441eb5bca94b2c943666afbeef85e1",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "d90710b1e3a13775e3b1b99d41a19556",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "7ca174d99fe5daf87d680640544cb806",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "38b12521330fe5dac4f524b02d5e5a4b",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "51ec7a190d436aa94fab597f1cfed145",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "8f749d2d6ccc65ca190dc92d1885c688",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "4a8ad018ae3c62be071feaea913dae58",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "0dd9ada6c7b4e05d4d0db14230b04789",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "59de52336cf4f9a08e6c29963772e72f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "31cd9e08caa1b31cb3e1b0e8d129299a",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "50784fb3b1e15d825234a6d9c8e39d19",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "e4537b42dfeb003679ae7886e4e66c10",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "532464c5aeb504daf682f48a316350b2",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "89924491a498ab8561f8dde398af7e28",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "9edc4b31e3008038f5ca81052a60a87a",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "53e8e441b97ee6f73f7f2c30e70b405d",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "c1197dbbd973df4fe315b64b3eb6cac9",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "bc308809fd715c3f4bb2562d7ea8539d",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "698d09fa1f5b9cd557c9700adbb699be",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "b0c6f1084fd3c53dacc05e256c2b2722",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "737634fbea7370ea529190799369f31d",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "d1179e4c9aa77b5986f064eead3d9b41",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "fb292110a11423833ab9f35c43b02159",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "2cedd300f925daecaa6481d526ce6829",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "d207f1a9c41aa0f4215802cd11318aa4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "7497376906e6a2f56bec0e2794d90672",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "5e86e800d3f95e1a0f838c43b0b01713",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "1ffdc74ec7e1609c18d05eeee572a190",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "4842482ceb40d81376ca88fd81df7311",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "db62b21abc98f304b7ae575153698655",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "25aa4ef5576a81bd57c3f0a5083827a5",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "ed6bfc9124155a7627c433dc02952ad5",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "553361193ee36af4a51fb1f97d669a6f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "0a729f6910fe589599d42500604cf6e4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "4fb860533ab7b49256ebfd9861fabc0b",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "5d4a08bf3948152705f9051238afcc28",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "291bf904a051c1f6060e6794cab3a125",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "2b1ba400b385a9f1993cd69c1737e966",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "c420afd8d1bde720f8ee0b6a6485d1ee",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "b3e6b7468211bfff398fa675683907da",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "5234fb927cccaa44315f9af7a31f195c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "845ae3e5687063f315982e60c115fb4d",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "bc380081004f1dd60d919a8600ba7e8c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "649c17b3337446b01c81e3dc44e657c4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "b7d66a42bc84ae8ae6d2464b8a9aa4b2",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "5bdbeb34d41b18268921d8fb3a8b9e4c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "14e9e38e0eaeba906137cec36eb58551",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "b981b848b802429f7092f47185883e91",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "f61e7431b87a3020410bed838f60d95f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "2a55a03f6ad74dc732163049e30f837d",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "7c5613cf2617bcf2d7b5f5ae46a7e412",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "bf5011a0293f8a023b630e3e6a0548b7",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "9bf8be5a46445fc9a5e5ad4ad22e5545",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "cb0c661b12626c0f97ddd4f3f910e9e1",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "5c60f72819be4db9f37cf580365e61cc",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "b1a6a390c42b89654062a017b1827660",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "89abc5774cafa41ab32c6efaae74c8c7",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "2d324e30851afaaa730acdc15f4208d3",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "8af8b1efab24c7a27f7062fee3644ed7",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "38d415896f15473da39d434f49965f38",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "31f9d6df3b1e01ccade17759208f12d9",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "0e63b54d5de92f975184592b398fe601",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "d6bd6c1720cb210c2b5297d679596ec6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "3a1caf2456366b6011ff502c4e16cce4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "326b3d1c88049c15342f8abfbbb079f1",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "feac6c51921d73d7e4d76a8c6f563ac0",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "53cd3b66de2fd4857b9ca0dd605dc686",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "34661e062e49997c19ad4faebce375b4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "92faa55aabd4119fd9c9b7f4f4fc9e0f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "ea17c8d32111ebad8d3c901c084db413",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "9547b2b976f83213a4ccb264da6b0cb7",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "96d9852f53f9744d3a460355311e3ab0",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "773f67fa5acf1cf08d6a5b7fa72368a1",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "43ada021fbb65d868672a642d46b6005",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "dd12511e7a3ef77754409cc9780fb04c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "f91e653f56e4e7f7bac1d5d2f11e0698",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "49a8f936954dfa06475009f74ce339ec",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "f2ddb82841e5016ff3a31b3735e9ffe2",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "8dd3736b8fc11ad36d734fe837816645",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "06d40ffee52f63ed87e086e707aef568",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "88171b7dad216a1bce12a3392abafb6b",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "f374aa992e0cd623b91886145207fc7e",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "4bd2248b63484966eb41a28340f09d8f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "45f62f3b07b4afcc538285445f5ac992",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "e574c6616a746f2b163d059e5f581fb1",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "9c6fc4db027c9f0203ef13a0572c817b",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "e29cbc4ac18f220b5a8c6c175bdb8e66",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "5acd9fdab6957f0be9d1bfca4f3dea35",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "8730659191b97c6a8ca4cd718f4b9bbe",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "4a64eea7f60c001ebbd90440176526a4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "340e25cf157e163cf5a5921d94ca8ff6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "9819ef1f0dcc81867d9d5cbc32093cb6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "9837808f3eaaf80e974449769d72f7b3",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "ce645d5c03d1968deadc3d4e9f939ab4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "e7d4b1a1892c8cfd57e45a1e2f378abf",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "84558170976904965a34eb83545bb3a2",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "328fa93ee3e26ddd2effd6fc037893b3",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "4c8061a6b86607037f439e9d7d533c08",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "19d27aca5e2137eefd4e95d3928c55e6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "ee448f8b03eb972470a96088345c3cd8",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "62acba05948c7e2f064849d01f9b9ed7",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "0176f89775cf3c8f9e57ebaf51bb7a4f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "e6bc0cb7e4b0c460c5d678d3ac33bec8",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "9f28055973cba7e754d713b0dd14d6cf",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "ecaf6cabeb4f91beca956a8fdcbd09a7",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "d191cbc52dbfd3cb8fc34d150cc76977",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "9fe7c994444feb5025d636b70210bb0c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "7c8ea1cc458c969d85bca6588b1753ca",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "82cf8d73f043f1425a3f3e89fbb15f6b",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "20c422baacbdde8a85d3de3d935eec7e",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "23d246863ff1a44fa03f2c0789f64cb6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "66a7ba24da233d998af3fdb2106dcfb0",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "bac107061bec4c81161c17a91b5ffdc6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "3872d7537b01a3091d40b8abb28bce2c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "601a41a2db84c309e006f28f2abe9bb3",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "e8dea607e9bdc66ae0fe970b3a823b12",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "2d0fe5801119f143f976bab04d550c35",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "9cd152a3d3b09942fa6f8d9d0fd0ba0e",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "d444433b7b8c9f30568be82e72292dfe",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "d9a1e6f54d6a8b6da37dbaaf495fc00c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "e05f91e6bd685333bb8dd13f1313c341",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "efb79ba16767a3ab28bf97ba05f27155",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "052598761d9f6f6805bc088688c90eca",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "66d23c5d5ed00dc1620341ca1da7354e",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "3bca718947f956a098ae99f5628142c9",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "f54c0860b3fb523c2a0ef9f610d420c6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "c14928e6787163d290926a992be43c96",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "8ea1f58677a556e28a0194b31d65bdcb",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "3441ed886898ce9003eb70b8d835a1e2",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "228b4457c06db489e2d7e64107b94684",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "6adaf1bb0e96e919abc8ec86042d289e",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "6bf17bb871613e69ba844b343f61f6fd",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "c0dbbabab04353d94c16714767553bbd",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "d9974a1a20cecd1918dd4b87bc67fad9",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "25b1d333e52757cc66790fd28dd8934f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "51d592e8a10f66b8527207d47904ccca",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "73883c75dcbbc37221126cac75902fc1",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "be1c4d1eb52707d45ce75cfdef40b4fa",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "b4dfb7d689f3a41af8c65f2066cb896d",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "ed46376bd5c995e4c239308fa8d6929c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "10771c09d01a07df980bb8cdae581cf8",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "d91e8ad681b0b831f9ba8a4873203bac",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "35e3efd6199f68f59679008eebe64a11",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "05ec601f2b9c9eeebc37ff7f4053c0d9",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "06d89abd7d194ddf81bbc54af3e9b67f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "0f7c7e87a20645ce8f52e6de86988fe4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "3f868ec96fdd4f8089ce5225befefc8c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "4a81d32f68b14b09956d9d82cdabba53",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "4caf5b05203048a3b61bb22cd4d2ce9c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "b11454224b724e708a68b80faf60d5e2",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "c7944cb9bef241a3857be663ee5c8e53",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "d0a71022000000000000000000000001",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "taste",
+      "id": "e46c2b419c054cd79311bd9deecf1258",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "326b3d1c88049c15342f8abfbbb079f1",
+      "header": "PASS",
+      "fullHash": "PASS"
+    },
+    {
+      "product": "improvise",
+      "id": "feac6c51921d73d7e4d76a8c6f563ac0",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "53cd3b66de2fd4857b9ca0dd605dc686",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "34661e062e49997c19ad4faebce375b4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "92faa55aabd4119fd9c9b7f4f4fc9e0f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "ea17c8d32111ebad8d3c901c084db413",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "9547b2b976f83213a4ccb264da6b0cb7",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "96d9852f53f9744d3a460355311e3ab0",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "773f67fa5acf1cf08d6a5b7fa72368a1",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "43ada021fbb65d868672a642d46b6005",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "dd12511e7a3ef77754409cc9780fb04c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "f91e653f56e4e7f7bac1d5d2f11e0698",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "49a8f936954dfa06475009f74ce339ec",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "f2ddb82841e5016ff3a31b3735e9ffe2",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "8dd3736b8fc11ad36d734fe837816645",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "06d40ffee52f63ed87e086e707aef568",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "88171b7dad216a1bce12a3392abafb6b",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "f374aa992e0cd623b91886145207fc7e",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "4bd2248b63484966eb41a28340f09d8f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "45f62f3b07b4afcc538285445f5ac992",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "e574c6616a746f2b163d059e5f581fb1",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "9c6fc4db027c9f0203ef13a0572c817b",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "e29cbc4ac18f220b5a8c6c175bdb8e66",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "5acd9fdab6957f0be9d1bfca4f3dea35",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "8730659191b97c6a8ca4cd718f4b9bbe",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "4a64eea7f60c001ebbd90440176526a4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "340e25cf157e163cf5a5921d94ca8ff6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "9819ef1f0dcc81867d9d5cbc32093cb6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "9837808f3eaaf80e974449769d72f7b3",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "ce645d5c03d1968deadc3d4e9f939ab4",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "e7d4b1a1892c8cfd57e45a1e2f378abf",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "84558170976904965a34eb83545bb3a2",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "328fa93ee3e26ddd2effd6fc037893b3",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "4c8061a6b86607037f439e9d7d533c08",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "19d27aca5e2137eefd4e95d3928c55e6",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "ee448f8b03eb972470a96088345c3cd8",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "62acba05948c7e2f064849d01f9b9ed7",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "0176f89775cf3c8f9e57ebaf51bb7a4f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "e6bc0cb7e4b0c460c5d678d3ac33bec8",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "9f28055973cba7e754d713b0dd14d6cf",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "ecaf6cabeb4f91beca956a8fdcbd09a7",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "d191cbc52dbfd3cb8fc34d150cc76977",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "9fe7c994444feb5025d636b70210bb0c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "7c8ea1cc458c969d85bca6588b1753ca",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "82cf8d73f043f1425a3f3e89fbb15f6b",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "20c422baacbdde8a85d3de3d935eec7e",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "e8dea607e9bdc66ae0fe970b3a823b12",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "2d0fe5801119f143f976bab04d550c35",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "d9a1e6f54d6a8b6da37dbaaf495fc00c",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "e05f91e6bd685333bb8dd13f1313c341",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "efb79ba16767a3ab28bf97ba05f27155",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "25b1d333e52757cc66790fd28dd8934f",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "51d592e8a10f66b8527207d47904ccca",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "be1c4d1eb52707d45ce75cfdef40b4fa",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "b4dfb7d689f3a41af8c65f2066cb896d",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    },
+    {
+      "product": "improvise",
+      "id": "10771c09d01a07df980bb8cdae581cf8",
+      "header": "PASS",
+      "fullHash": "NOT RUN"
+    }
+  ],
+  "fullHashProducts": [
+    "taste",
+    "improvise"
+  ],
+  "mutations": false,
+  "limitations": [
+    "Headers checked for every listed song; complete hashes checked for one song per product.",
+    "No human listening, authenticated private access, purchase or unpublished endpoint qualification.",
+    "An empty public DJ collection does not exercise a real public set stream."
+  ]
+}

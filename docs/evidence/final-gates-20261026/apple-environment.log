@@ -1,0 +1,3 @@
+Test Case '-[JamloomTests.PurchaseTests testLiveAppleCatalogueWhenExplicitlyRequested]' started.
+/Users/serhansari/Documents/projects/jamloom/apps/ios/JamloomTests/PurchaseTests.swift:14: error: -[JamloomTests.PurchaseTests testLiveAppleCatalogueWhenExplicitlyRequested] : failed - Expected Apple sandbox; received Xcode
+Test Case '-[JamloomTests.PurchaseTests testLiveAppleCatalogueWhenExplicitlyRequested]' failed (0.036 seconds).

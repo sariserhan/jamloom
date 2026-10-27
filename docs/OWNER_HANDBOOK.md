@@ -1,3 +1,7 @@
+## Latest release gates — 2026-10-26
+
+[Final-gate report](FINAL_GATES.md) is the current status. Singing Academy's Apple non-consumable draft now exists at exactly USD39, USA only, with a processed course screenshot. Sales remain closed; build26 remains local and older build24 remains selected in Apple. The real-purchase preflight currently returns Xcode rather than Sandbox: do not treat local StoreKit results as provider qualification. Credit review screenshots, reviewer credentials and real receipt/notification delivery remain open. The live public catalogue passes delivery checks for 222 songs. Local DJ pressure checks are not GPU/customer-scale capacity proof. Tency has not replied. No push or deployment occurred.
+
 ## Current local course and deletion follow-up — 2026-10-26
 
 See [completion follow-up](COMPLETION_FOLLOWUP.md) for current evidence. Both http://localhost:3000 and http://127.0.0.1:3008 now run the current built preview with an isolated local database; old database contents are preserved. Singing is $39 once; purchases stay closed. Stripe test payments now unlock protected course content and refunds remove access. The phone uses a separate non-consumable course receipt, restore and course access; do not enable it before the matching server and real Apple sandbox qualification. Neither course purchase grants generation credits.

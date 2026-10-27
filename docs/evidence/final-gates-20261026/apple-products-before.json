@@ -1,0 +1,247 @@
+{
+  "data": [
+    {
+      "type": "inAppPurchases",
+      "id": "6826479674",
+      "attributes": {
+        "name": "Jamloom 10 credits",
+        "productId": "com.jamloom.credits.starter",
+        "inAppPurchaseType": "CONSUMABLE",
+        "state": "MISSING_METADATA",
+        "reviewNote": "Prepared for sandbox verification. Native purchase UI and public generation remain disabled pending musical quality and billing qualification.",
+        "familySharable": false,
+        "contentHosting": null
+      },
+      "relationships": {
+        "inAppPurchaseLocalizations": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/relationships/inAppPurchaseLocalizations",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/inAppPurchaseLocalizations"
+          }
+        },
+        "pricePoints": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/relationships/pricePoints",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/pricePoints"
+          }
+        },
+        "content": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/relationships/content",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/content"
+          }
+        },
+        "appStoreReviewScreenshot": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/relationships/appStoreReviewScreenshot",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/appStoreReviewScreenshot"
+          }
+        },
+        "promotedPurchase": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/relationships/promotedPurchase",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/promotedPurchase"
+          }
+        },
+        "iapPriceSchedule": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/relationships/iapPriceSchedule",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/iapPriceSchedule"
+          }
+        },
+        "inAppPurchaseAvailability": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/relationships/inAppPurchaseAvailability",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/inAppPurchaseAvailability"
+          }
+        },
+        "images": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/relationships/images",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/images"
+          }
+        },
+        "offerCodes": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/relationships/offerCodes",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/offerCodes"
+          }
+        },
+        "versions": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/relationships/versions",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674/versions"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826479674"
+      }
+    },
+    {
+      "type": "inAppPurchases",
+      "id": "6826480115",
+      "attributes": {
+        "name": "Jamloom 25 credits",
+        "productId": "com.jamloom.credits.creator",
+        "inAppPurchaseType": "CONSUMABLE",
+        "state": "MISSING_METADATA",
+        "reviewNote": "Prepared for sandbox verification. Native purchase UI and public generation remain disabled pending musical quality and billing qualification.",
+        "familySharable": false,
+        "contentHosting": null
+      },
+      "relationships": {
+        "inAppPurchaseLocalizations": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/relationships/inAppPurchaseLocalizations",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/inAppPurchaseLocalizations"
+          }
+        },
+        "pricePoints": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/relationships/pricePoints",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/pricePoints"
+          }
+        },
+        "content": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/relationships/content",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/content"
+          }
+        },
+        "appStoreReviewScreenshot": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/relationships/appStoreReviewScreenshot",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/appStoreReviewScreenshot"
+          }
+        },
+        "promotedPurchase": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/relationships/promotedPurchase",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/promotedPurchase"
+          }
+        },
+        "iapPriceSchedule": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/relationships/iapPriceSchedule",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/iapPriceSchedule"
+          }
+        },
+        "inAppPurchaseAvailability": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/relationships/inAppPurchaseAvailability",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/inAppPurchaseAvailability"
+          }
+        },
+        "images": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/relationships/images",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/images"
+          }
+        },
+        "offerCodes": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/relationships/offerCodes",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/offerCodes"
+          }
+        },
+        "versions": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/relationships/versions",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115/versions"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480115"
+      }
+    },
+    {
+      "type": "inAppPurchases",
+      "id": "6826480267",
+      "attributes": {
+        "name": "Jamloom 50 credits",
+        "productId": "com.jamloom.credits.studio",
+        "inAppPurchaseType": "CONSUMABLE",
+        "state": "MISSING_METADATA",
+        "reviewNote": "Prepared for sandbox verification. Native purchase UI and public generation remain disabled pending musical quality and billing qualification.",
+        "familySharable": false,
+        "contentHosting": null
+      },
+      "relationships": {
+        "inAppPurchaseLocalizations": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/relationships/inAppPurchaseLocalizations",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/inAppPurchaseLocalizations"
+          }
+        },
+        "pricePoints": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/relationships/pricePoints",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/pricePoints"
+          }
+        },
+        "content": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/relationships/content",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/content"
+          }
+        },
+        "appStoreReviewScreenshot": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/relationships/appStoreReviewScreenshot",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/appStoreReviewScreenshot"
+          }
+        },
+        "promotedPurchase": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/relationships/promotedPurchase",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/promotedPurchase"
+          }
+        },
+        "iapPriceSchedule": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/relationships/iapPriceSchedule",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/iapPriceSchedule"
+          }
+        },
+        "inAppPurchaseAvailability": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/relationships/inAppPurchaseAvailability",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/inAppPurchaseAvailability"
+          }
+        },
+        "images": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/relationships/images",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/images"
+          }
+        },
+        "offerCodes": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/relationships/offerCodes",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/offerCodes"
+          }
+        },
+        "versions": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/relationships/versions",
+            "related": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267/versions"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchases/6826480267"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/apps/6826480059/inAppPurchasesV2?limit=50"
+  },
+  "meta": {
+    "paging": {
+      "total": 3,
+      "limit": 50
+    }
+  }
+}

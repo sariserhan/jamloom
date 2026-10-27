@@ -1,0 +1,27 @@
+{
+  "overall": "PARTIAL; release held",
+  "siteTypecheck": "PASS",
+  "localDJAdmission": "PASS; 400 requests; fake provider; disposable database removed",
+  "publicCatalogue": "PASS scoped; 222 headers; two full hashes",
+  "retainedVocal": "PASS technical; human listening NOT RUN; not fresh generation",
+  "appleDraft": "Singing READY_TO_SUBMIT at exact USD39; processed course image; credits MISSING_METADATA; no submission",
+  "appleCatalogueEnvironment": "FAIL qualification: verified AppTransaction environment Xcode, expected Sandbox; no purchase attempted",
+  "simulator": {
+    "runtime": "iOS26.5",
+    "courseDemoTabCleanup": "PASS test body",
+    "freeLessonGate": "PASS",
+    "liveAppleOptIn": "SKIP",
+    "localStoreKitTransactions": "FAIL environment: Unable to Complete Request",
+    "resultBundle": "PARTIAL; finalization stalled; process stopped"
+  },
+  "phoneReleaseRestore": {
+    "version": "0.10.2",
+    "build": 26,
+    "install": "PASS",
+    "launch": "PASS",
+    "dataErased": false
+  },
+  "popularSongSupplier": "Owner confirms no reply from Tency Music",
+  "publication": "HELD; no push, deployment, binary upload, submission or live sales",
+  "newGPUCompute": false
+}

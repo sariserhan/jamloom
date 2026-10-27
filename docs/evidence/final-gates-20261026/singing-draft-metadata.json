@@ -1,0 +1,84 @@
+{
+  "version": {
+    "type": "inAppPurchaseVersions",
+    "id": "05772c46-b8dc-410f-b66e-3eba8cbc3b8d",
+    "attributes": {
+      "version": 1,
+      "state": "PREPARE_FOR_SUBMISSION"
+    },
+    "relationships": {
+      "image": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseVersions/05772c46-b8dc-410f-b66e-3eba8cbc3b8d/relationships/image",
+          "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseVersions/05772c46-b8dc-410f-b66e-3eba8cbc3b8d/image"
+        }
+      },
+      "images": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseVersions/05772c46-b8dc-410f-b66e-3eba8cbc3b8d/relationships/images",
+          "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseVersions/05772c46-b8dc-410f-b66e-3eba8cbc3b8d/images"
+        }
+      },
+      "localizations": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseVersions/05772c46-b8dc-410f-b66e-3eba8cbc3b8d/relationships/localizations",
+          "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseVersions/05772c46-b8dc-410f-b66e-3eba8cbc3b8d/localizations"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchaseVersions/05772c46-b8dc-410f-b66e-3eba8cbc3b8d"
+    }
+  },
+  "localization": {
+    "type": "inAppPurchaseLocalizations",
+    "id": "73957a11-4348-481a-96e1-6149d31e683c",
+    "attributes": {
+      "name": "Jamloom Singing Academy",
+      "locale": "en-US",
+      "description": "Original songs, lyrics and live pitch lessons."
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v2/inAppPurchaseLocalizations/73957a11-4348-481a-96e1-6149d31e683c"
+    }
+  },
+  "priceSchedule": {
+    "type": "inAppPurchasePriceSchedules",
+    "id": "6827398987",
+    "relationships": {
+      "baseTerritory": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6827398987/relationships/baseTerritory",
+          "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6827398987/baseTerritory"
+        }
+      },
+      "manualPrices": {
+        "meta": {
+          "paging": {
+            "total": 1,
+            "limit": 10
+          }
+        },
+        "data": [
+          {
+            "type": "inAppPurchasePrices",
+            "id": "eyJzIjoiNjgyNzM5ODk4NyIsInQiOiJVU0EiLCJwIjoiMTAyNzMiLCJzZCI6MC4wLCJlZCI6MC4wfQ"
+          }
+        ],
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6827398987/relationships/manualPrices",
+          "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6827398987/manualPrices"
+        }
+      },
+      "automaticPrices": {
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6827398987/relationships/automaticPrices",
+          "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6827398987/automaticPrices"
+        }
+      }
+    },
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6827398987"
+    }
+  }
+}

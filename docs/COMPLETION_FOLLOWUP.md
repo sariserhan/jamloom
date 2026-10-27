@@ -2,6 +2,8 @@
 
 **PARTIAL overall; publication remains HELD by the owner.** This pass closes more implementation and provider-test gaps. It does not enable live sales, rent GPUs, upload an app, submit review or deploy the website.
 
+Current open-state details are superseded by [final-gate follow-through](FINAL_GATES.md); earlier test evidence below is retained.
+
 ## Completed and verified
 
 - Singing Academy remains **$39 USD once**. The existing Stripe integration now passes a real test-mode purchase, decline, signed webhook, duplicate delivery, wrong-owner denial, refund, repurchase, refund-before-delayed-grant, and both won/lost disputes. Paid lesson HTML and scores/lyrics follow the verified course entitlement. The test product and price are archived after use; no funds move. See [provider evidence](evidence/completion-followup-20261026/stripe-final/provider.json).
@@ -16,7 +18,7 @@
 | Scope | Current boundary |
 |---|---|
 | Website and phone release | Intentionally not deployed, uploaded or submitted. New server access/receipt endpoints must be released with the compatible app before sales activation. |
-| Apple real purchases | Read-only API recheck confirms draft 0.10.2 remains PREPARE_FOR_SUBMISSION; three credit products remain MISSING_METADATA and no Singing product exists. Complete the prepared product/reviewer setup and real sandbox receipt/notification chain before enabling sales. Local StoreKit success does not close this. |
+| Apple real purchases | Singing now has a USD39 non-consumable draft, English metadata, USA availability and processed review image. Credit reviewer metadata and real sandbox receipt/notification delivery remain open; the physical diagnostic returns Xcode, not Sandbox. See the final-gate report. Local StoreKit success does not close this. |
 | Physical phone | Build 26 is installed and launched on iPhone 14 Pro. Physical Debug checks pass for Singing demo/course panel/tab cleanup and Community player controls. The uninterrupted language/favorites filter retry also passes. [Device evidence](evidence/phone-reconnected-20261026/device.json); fixture songs do not prove live catalogue delivery. |
 | Singing analysis | The exact current-source rerun covers 40 recordings/29 singers: 86.76% of reference voiced frames match within 50 cents including misses, 87.87% voiced recall and 97.26% voiced precision. [Measured report](evidence/completion-followup-20261026/pitch-benchmark.json). This previously inspected corpus is not an independent holdout for the quiet-input change or evidence of universal live accuracy. The owner's instructed capture confirms quiet rejection and pitched singing. Physical microphone-to-display latency and broader rooms/devices remain unmeasured. |
 | AI DJ | Preserve the accepted bounded twenty-track/two-listener qualification and owner listening approval. Reliable brief singing, fresh independent stems and sustained customer-scale operation remain separate quality/capacity work. No unused paid permit exists; this pass starts no rental. |

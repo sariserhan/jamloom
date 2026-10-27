@@ -1,0 +1,54 @@
+{
+  "status": "PASS technical; human listening NOT RUN",
+  "sourceHashes": [
+    "351561619ef7e40cc215c6024dbe034932489e48979d0a850ccac1b450f00675",
+    "caff479be92b0f0502d5e4904dabb3cdeb93f817bea7ff3430c7d12894192f19"
+  ],
+  "cropSeconds": [
+    40.48,
+    41.55
+  ],
+  "fadeSeconds": 0.03,
+  "grid": [
+    128.0,
+    0.045,
+    [
+      [
+        7.545000000000007,
+        30.04500000000003
+      ],
+      [
+        36.60750000000004,
+        55.35750000000005
+      ]
+    ]
+  ],
+  "placementSeconds": 20.67,
+  "candidateWords": "we rise (unverified transcript)",
+  "productionChanged": false,
+  "newGeneration": false,
+  "unchangedOutsidePhrase": true,
+  "outputs": [
+    {
+      "file": "context.mp3",
+      "sha256": "ee54aa114dd6477dd6f8fc915c5f1f2b86f63fd32006f38da345801072b876b4",
+      "seconds": 2.2
+    },
+    {
+      "file": "phrase.mp3",
+      "sha256": "a91a90024183327da26fd2f564fa2e4a698a94c7dd8388c8461bb9a7bcc253e7",
+      "seconds": 1.07
+    },
+    {
+      "file": "before.mp3",
+      "sha256": "7477f117af4b9f161a081732fe4b9b7d9f9d595798f48b518f571f718b9f85a0",
+      "seconds": 12.0
+    },
+    {
+      "file": "after.mp3",
+      "sha256": "075b3784df27dc618e9d562fc0b9c7ccaa5f1b4f79ee51ef6926bb1c59677816",
+      "seconds": 12.0
+    }
+  ],
+  "limitation": "Manual retained-source selection does not qualify fresh vocal generation or automatic phrase selection. Earlier long repeated transcript segments were rejected as unreliable."
+}

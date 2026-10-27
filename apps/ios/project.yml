@@ -88,6 +88,17 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.djayvo.app.uitests
         GENERATE_INFOPLIST_FILE: YES
 schemes:
+  JamloomAppleSandbox:
+    run:
+      config: Debug
+    build:
+      targets:
+        Jamloom: all
+    test:
+      targets:
+        - JamloomTests
+        - JamloomUITests
+      gatherCoverageData: true
   Jamloom:
     run:
       config: Debug

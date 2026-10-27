@@ -1,0 +1,14 @@
+Test Case '-[JamloomTests.PurchaseTests testLiveAppleCatalogueWhenExplicitlyRequested]' started.
+/Users/serhansari/Documents/projects/jamloom/apps/ios/JamloomTests/PurchaseTests.swift:8: -[JamloomTests.PurchaseTests testLiveAppleCatalogueWhenExplicitlyRequested] : Test skipped - Explicit real Apple catalogue check only
+Test Case '-[JamloomTests.PurchaseTests testLiveAppleCatalogueWhenExplicitlyRequested]' skipped (0.007 seconds).
+Test Case '-[JamloomTests.PurchaseTests testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding]' started.
+2026-10-26 23:41:37.543897-0400 Jamloom[10055:21179660] Failed to purchase com.jamloom.credits.starter in off-device buy mode: Unable to Complete Request
+Test Case '-[JamloomTests.PurchaseTests testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding]' failed (1.331 seconds).
+Test Case '-[JamloomTests.PurchaseTests testSingingCourseRestoreDoesNotDeliverCreditsOrCrossAccounts]' started.
+2026-10-26 23:41:37.808819-0400 Jamloom[10055:21179660] Failed to purchase com.jamloom.singing.complete in off-device buy mode: Unable to Complete Request
+Test Case '-[JamloomTests.PurchaseTests testSingingCourseRestoreDoesNotDeliverCreditsOrCrossAccounts]' failed (0.260 seconds).
+Test Case '-[JamloomTests.PurchaseTests testSingingFreeLessonGateUsesPackagedCourseIds]' started.
+Test Case '-[JamloomTests.PurchaseTests testSingingFreeLessonGateUsesPackagedCourseIds]' passed (0.001 seconds).
+Test Case '-[JamloomUITests.FlowTests testSingingSongsDemoAndTabCleanup]' started.
+Test Case '-[JamloomUITests.FlowTests testSingingSongsDemoAndTabCleanup]' passed (26.867 seconds).
+Result-bundle finalization stalled; process stopped. Test-body pass is not complete-suite pass.

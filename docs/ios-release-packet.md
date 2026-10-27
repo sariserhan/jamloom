@@ -2,16 +2,16 @@
 
 **Local only; no upload or submission.** [Completion follow-up](COMPLETION_FOLLOWUP.md). Singing Academy has the shared $39 offer, a native Course panel, guarded purchase/restore, shared free-lesson navigation rules and server-verified course receipts. Preview practice remains free while sales are held. The final local archive is `build-ios-store/Jamloom-0.10.2-26-final.xcarchive`; the final local export is `build-ios-store/export-0.10.2-26-final/Jamloom.ipa`. Do not submit the older selected build 24 as though it contains these changes.
 
-## Prepared Singing purchase configuration (not applied)
+## Singing purchase draft configuration (applied; sales held)
 
 - Product ID: `com.jamloom.singing.complete`; non-consumable, not family-shareable.
-- Reference/localized name: **Jamloom Singing Academy**. Description: **Original-song singing course with live pitch feedback, full lyrics, section practice and warm-ups.**
+- Reference/localized name: **Jamloom Singing Academy**. Description: **Original songs, lyrics and live pitch lessons.**
 - Intended base price: **USD 39.00 once**. Select and verify that exact App Store price point; do not silently substitute $39.99. Current server validation accepts USD list price only, with no promotional offer or shared-family entitlement. Availability must match the qualified storefront before activation.
 - Bind purchases to the verified Jamloom account token. Deliver the verified JWS to `/api/payments/apple` using `action: verify-course`; finish only after acknowledgment. Restore reuses current non-consumable entitlements and the same original-transaction receipt, never a credit grant.
 - The existing V2 notification endpoint also verifies course refunds/revocations and persists holds before late grants. Refund reversal remains a reviewed operation.
 - Before paid activation: create/complete the product draft, exact price/availability and purchase-review screenshot; provide a working reviewer account through Apple's private fields; qualify actual Apple sandbox purchase, restore and refund notification delivery against the matching server. Never place reviewer passwords in Git.
 
-Read-only App Store Connect recheck: app 6826480059 is Jamloom; draft 0.10.2 remains PREPARE_FOR_SUBMISSION, all three credit products remain MISSING_METADATA, and no Singing purchase product exists. No App Store record was changed in this pass. Local StoreKit tests are distinct from real Apple sandbox verification. The device tunnel failed; the final physical build check awaits reconnection.
+Current draft follow-through: Singing product 6827398987 exists with the exact USD39 price, English localization, USA-only availability and a processed review screenshot of the original-song course. The screenshot shows the service from build24, not a completed purchase or build26's offer. All three credit products also have USA-only availability; no automatic new territories. [Current report and evidence](FINAL_GATES.md). No submission or live sales activation. The opt-in physical Apple catalogue diagnostic returns Xcode rather than Sandbox and correctly fails; real purchase/restore/refund delivery remains open. Physical Singing and Community checks passed in the preceding follow-up; Release build26 is reinstalled and launched after this diagnostic.
 
 Earlier candidates below retain their historical upload and device evidence.
 

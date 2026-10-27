@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "id": "60939ae7-37f2-4b00-ad92-f01afc1740b1",
+  "source": "docs/evidence/release-closure-20261026/iphone-store-01.png",
+  "sha256": "57e21a50da72a993749df1c43186fbe59982065c867aa70403fce71b0d509286",
+  "deliveryState": {
+    "errors": null,
+    "warnings": null,
+    "state": "COMPLETE"
+  },
+  "scope": "Actual original-song course from previously captured build 24 at 1320x2868; shows service, not completed purchase or build26 offer; draft only"
+}

@@ -1,0 +1,19 @@
+{
+  "data": {
+    "type": "inAppPurchases",
+    "attributes": {
+      "name": "Jamloom Singing Academy",
+      "productId": "com.jamloom.singing.complete",
+      "inAppPurchaseType": "NON_CONSUMABLE",
+      "reviewNote": "Draft only. USD 39 one-time original-song course. Sales remain disabled; no submission is requested. Current local build 26 contains Course and Restore; selected older build 24 does not contain this purchase. Actual sandbox-to-server qualification must precede activation."
+    },
+    "relationships": {
+      "app": {
+        "data": {
+          "type": "apps",
+          "id": "6826480059"
+        }
+      }
+    }
+  }
+}
