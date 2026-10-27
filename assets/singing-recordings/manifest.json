@@ -1,5 +1,5 @@
 {
-  "scope": "Original Jamloom produced-song practice; owner accepted song and karaoke, exact sung lyric and note alignment unqualified",
+  "scope": "Original Jamloom produced-song practice; owner accepted both Spleeter karaoke replacements; exact sung lyric and note alignment unqualified",
   "songs": [
     {
       "id": "long-way-home",
@@ -14,7 +14,7 @@
         },
         "karaoke": {
           "file": "long-way-home-karaoke.mp3",
-          "sha256": "a5cb9b0fef189580dd1b2d990675c0e6d695d8a5552a5e7994e8a114b7256253",
+          "sha256": "86da4419f57c41a438910c82cacabad7d4b0be7862cfad355030b8535f2a40ef",
           "bytes": 2881196
         },
         "lyrics": {
@@ -37,7 +37,7 @@
         },
         "karaoke": {
           "file": "leave-it-all-outside-karaoke.mp3",
-          "sha256": "c4c9f57c48a3f74fbac2d2d52df882120a25fc1685732f29c4bfdbf3de9fc6e3",
+          "sha256": "e31b9691412a4d2a11c539a7451aad921d9d4b9c4fe1cf008eb482cbcb6e25d6",
           "bytes": 2881196
         },
         "lyrics": {

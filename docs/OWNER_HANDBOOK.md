@@ -1,3 +1,9 @@
+## Accepted backings now in the local course — 2026-10-27
+
+You approved both replacement karaoke backings. They are now the exact files used by Long Way Home and Leave It All Outside at http://127.0.0.1:3010/singing-academy; open a song and use Sing karaoke. Original singer recordings and lyric sheets remain unchanged. Both files are also prepared for the next iPhone build; the currently installed app has not been replaced this turn.
+
+Your “yes” is recorded as positive overall feedback on the four new DJ clips/set. No individual ranking or separate vocal verdict is inferred. [Validation and remaining gates](KARAOKE_ADOPTION.md). Nothing was published, rented or activated for sale; verified sung targets and hosted qualification remain open.
+
 ## Current local audio candidates — 2026-10-27
 
 Compare the same accepted songs with a new free-model karaoke backing at http://localhost:8766/separator/review/. The course still uses the accepted versions. Automatic lyric/pitch candidates are inspectable at http://localhost:8766/sung-targets/review/; they are unverified and do not grade your singing. Four fresh Mac-generated DJ tracks and the 166-second current-player mix are ready at http://localhost:8766/local-dj/review/. Playback/seek checks pass in both browsers; music, vocal and transition quality still need your review. [Results and open gates](LOCAL_AUDIO_COMPLETION.md).

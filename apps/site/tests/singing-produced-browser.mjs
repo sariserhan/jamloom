@@ -40,7 +40,7 @@ for(const [name,type] of [['chromium',chromium],['webkit',webkit]]){
   await page.locator('#section').selectOption('all');await page.locator('#repeat-passage').uncheck();await page.locator('#start').click();
   await page.waitForFunction(()=>document.querySelector('#mic-state').textContent==='Microphone listening');
   const tracks=await page.evaluate(()=>window.__streams.at(-1).getAudioTracks().length);
-  if(tracks){await page.waitForFunction(()=>/220 Hz/.test(document.querySelector('#feedback').textContent));assert(await page.evaluate(()=>window.__frames>3));}
+  if(tracks){await page.waitForFunction(()=>/220 Hz/.test(document.querySelector('#feedback').textContent));await page.waitForFunction(()=>window.__frames>3);}
   await page.locator('#recording-player').evaluate(a=>a.pause());await page.waitForFunction(()=>document.querySelector('#mic-state').textContent==='Microphone off');
   assert(await page.evaluate(()=>window.__streams.every(s=>s.getTracks().every(t=>t.readyState==='ended'))));
   await page.evaluate(()=>window.__mode='denied');await page.locator('#start').click();await page.waitForFunction(()=>document.querySelector('#feedback').textContent.includes('Allow microphone'));assert(await page.locator('#start').isEnabled());

@@ -1,3 +1,13 @@
+## Accepted karaoke and local DJ review — 2026-10-27
+
+**PASS owner karaoke acceptance and overall DJ review; PASS local replacement/checks.** [Report](KARAOKE_ADOPTION.md).
+
+- [x] Record “Both new backings sound good”; replace both local course karaoke MP3s with the exact accepted Spleeter candidates. Original singer recordings, lyrics, progress and $39 once remain unchanged.
+- [x] Record “yes” as overall acceptance of the four fresh DJ clips/set, without inventing individual rankings or a separately confirmed natural-vocal assessment.
+- [x] Verify all six file hashes through localhost HTTP and prepared iPhone assets; pass protected recording/range/access tests, shared bundle audit and both-browser playback/seek/repeat/synthetic-microphone/cancellation checks. Fix the test's immediate-frame assertion race without relaxing its threshold.
+- [x] Move the research-only Spleeter license notice into its own provenance folder so it does not break the public-bundle allowlist; preserve initial failed packaging/test evidence.
+- [ ] Verify actual sung words/notes before scoring; complete broader independent musical and fresh hosted/provider gates. Updated assets are prepared for iPhone but not installed in a new signed build. No push, deployment, paid compute or live-sales activation.
+
 ## Karaoke replacement and local DJ completion — 2026-10-27
 
 **PASS local separation/generation and scoped checks; PARTIAL overall, listening/target/hosted gates open.** [Evidence and exact limitations](LOCAL_AUDIO_COMPLETION.md).

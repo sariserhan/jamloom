@@ -31,7 +31,7 @@
     "tensorflow-io-gcs-filesystem": "0.34.0",
     "reason": "Upstream exact tensorflow 2.12.1 and filesystem 0.32.0 have no Mac arm64 wheels; isolated compatibility experiment only"
   },
-  "adoption": "STUDY: local comparison; no production replacement yet",
+  "adoption": "ADOPT accepted offline-prepared karaoke outputs in the local course; isolated Mac runtime remains research-only, with no hosted activation or bundled model",
   "package_wheel_sha256": "11b6aad050f89752e3752e08d8f69c69b699929157424e47c00e3e4db21073f9",
   "package_wheel_url": "https://files.pythonhosted.org/packages/04/ff/6a9c2348de86b8a0e2ce8e72d3235d91f05a6dbc1a2eb809b51749023b7d/spleeter-2.4.2-py3-none-any.whl",
   "revision_meaning": "Pinned repository audit and license evidence; executed PyPI wheel is separately hash-pinned."

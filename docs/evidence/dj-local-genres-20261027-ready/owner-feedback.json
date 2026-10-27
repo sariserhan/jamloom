@@ -1,0 +1,33 @@
+{
+  "owner_response": "yes",
+  "question": "Which clips 1\u20134 work for a party, does clip 4 have a natural short vocal, and does the full set keep the energy connected?",
+  "url": "http://localhost:8766/local-dj/review/",
+  "status": "PASS overall owner listening acceptance",
+  "interpretation": "Positive overall response to this four-track set; no clip ranking or separate vocal assessment supplied.",
+  "tracks": [
+    {
+      "number": 1,
+      "source_sha256": "0a6530ab9846ceaaf4f9b1b53ef361c9fb88673af90884b2fa21dbf7484690e7",
+      "review_sha256": "702cbbae1be155a53dbc649f3cddd71723fe07878cab11f8934122034712e9ad"
+    },
+    {
+      "number": 2,
+      "source_sha256": "913f926a7cfcc858fb4299c08482c4548d99ce3d194e06a166a7a9469626641d",
+      "review_sha256": "9623c9d56534c72d081dc4b36fc59fe1bbeb272849ff89adb76b2ecef4c9b8c0"
+    },
+    {
+      "number": 3,
+      "source_sha256": "73ad6c604f7067095f6a6bbd2a4c905c4e59da6b990f986edde3408ae4fc6e57",
+      "review_sha256": "ad154564df6af0ea59e4566dc17a3bde1cb5e2e15962a1a80aacb095cd685b94"
+    },
+    {
+      "number": 4,
+      "source_sha256": "8afcb02c0b73e35a5b5c0bf8c20a1811e712543138be46f203893d4d171b880e",
+      "review_sha256": "c48da0245bbbfd1b582503bdc4b12048c9ce72075947900846de154a86330f5c"
+    }
+  ],
+  "mix_sha256": "141cc0092006649edb37c8aefbb63875a3c0f2978ec8a2531e4723e8010f25c8",
+  "independent_review": false,
+  "individual_ratings": null,
+  "production_qualification": false
+}

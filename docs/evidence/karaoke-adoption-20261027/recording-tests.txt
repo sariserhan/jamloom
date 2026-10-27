@@ -1,0 +1,20 @@
+
+> jamloom-site@0.1.0 test:singing-recordings
+> node --conditions=react-server --import tsx --test tests/singing-recordings.test.ts
+
+TAP version 13
+# Subtest: recordings use exact retained assets and protect audio and lyrics with course access
+ok 1 - recordings use exact retained assets and protect audio and lyrics with course access
+  ---
+  duration_ms: 393.310583
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 469.37825
