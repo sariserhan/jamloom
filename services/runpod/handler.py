@@ -38,7 +38,16 @@ def failure_location(work):
         if failure.get('stage') in ('writing','composing','retrying','checking') and failure.get('reason')=='timeout':
             return f"{failure['stage']}-timeout"
         if failure.get('stage') in ('writing','composing','retrying','checking') and type(failure.get('returncode')) is int:
-            return f"{failure['stage']}-exit-{failure['returncode']}"
+            stage=failure['stage'];result=f'{stage}-exit-{failure["returncode"]}'
+            name={'writing':'planner','composing':'singer','retrying':'singer'}.get(stage)
+            path=work/(('fit-retry.log' if (work/'fit-retry.log').exists() else 'fit.log') if stage=='checking' else f'{name}.log')
+            if path.exists():
+                with path.open('rb') as log:
+                    log.seek(max(0,path.stat().st_size-32768))
+                    tail=log.read().decode(errors='replace')
+                locations=re.findall(r'File "[^"\n]*/([A-Za-z_][A-Za-z0-9_]*\.py)", line ([0-9]+)',tail)
+                if locations:return f'{result}@{locations[-1][0]}:{locations[-1][1]}'
+            return result
     except (OSError,ValueError,TypeError):
         pass
     logs = [(stage,work/(stage+'.log')) for stage in ('fit-retry', 'fit', 'singer', 'planner', 'private')]
