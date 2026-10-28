@@ -53,6 +53,17 @@ Reproduce the fixed study with `.venv-singer/bin/python scripts/render_dj_local_
 
 ## Hosted Improvise / Music DNA / AI DJ
 
+The worker source now accepts the existing consented Improvise request contract
+and selects an isolated Python 3.11 environment for Spleeter 2.4.2 / TensorFlow
+2.12.1. The four-stem checkpoint is pinned by archive and file hashes and is
+downloaded only while building the worker image. Its vocals/drums outputs retain
+the existing alignment/receipt contract. The 30-second CPU synthetic inference
+passes in the local Python 3.11 environment; Linux amd64 package resolution and
+imports pass. Linux inference under this Mac's x86 emulator exceeded the local
+time bound during model startup, so exact hosted-runtime inference is still
+**PARTIAL**. No clean-reference or owner listening-quality result exists. The
+worker image was not published and the live endpoint was not changed.
+
 The cloud-song trial runner could tick all pending requests together, which can submit paid provider jobs. It now dispatches only the bounded active batch, waits for downloaded/hash-verified completion before advancing, and stops on failed/cancelled requests or three polling errors. This is a qualification-controller correction; existing product billing/storage/authentication are unchanged.
 
 Two focused dispatch tests, **168 site tests**, TypeScript and **19 scoped Python tests** pass. Jazz diagnostic and maximum-DNA dry runs pass, each showing the existing one-worker, twenty-minute, $3 bounds. These are **not approvals** and have not executed. [Logs](evidence/spleeter-local-20261027/).

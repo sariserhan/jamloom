@@ -7,6 +7,10 @@
 !scripts/check_dna_audio.py
 !scripts/analyze_words.py
 !scripts/arrange_voice_research.py
+!scripts/singer_studio.py
+!scripts/local_call_edit.py
+!scripts/source_led_response.py
+!scripts/assemble_sung_response.py
 !assets/
 !assets/manifests/
 !assets/manifests/singing-model.json
@@ -15,6 +19,7 @@
 !assets/manifests/dna-directions.json
 !assets/manifests/dna-languages.json
 !assets/manifests/word-timing-tiny.json
+!assets/manifests/spleeter-hosted.json
 !services/
 !services/runpod/
 !services/runpod/handler.py
@@ -22,6 +27,9 @@
 !services/runpod/prepare_models.py
 !services/runpod/Dockerfile
 !services/runpod/Dockerfile.dockerignore
+!services/runpod/spleeter-requirements.txt
+!services/runpod/prepare_spleeter_model.py
+!services/runpod/separate_spleeter.py
 
 !scripts/vocal_identity.py
 

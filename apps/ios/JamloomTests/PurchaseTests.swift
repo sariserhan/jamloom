@@ -99,7 +99,7 @@ import CryptoKit
     }
     func testSingingCourseRestoreDoesNotDeliverCreditsOrCrossAccounts() async throws {
         let session = try SKTestSession(configurationFileNamed: "LocalCredits")
-        session.disableDialogs = true; session.clearTransactions()
+        session.resetToDefaultState(); session.disableDialogs = true; session.clearTransactions()
         defer { session.clearTransactions() }
         let course = CreditPurchases(course: true), token = UUID()
         let products = try await course.products()
@@ -120,12 +120,12 @@ import CryptoKit
     }
     func testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding() async throws {
         let session = try SKTestSession(configurationFileNamed: "LocalCredits")
-        session.disableDialogs = true; session.clearTransactions()
+        session.resetToDefaultState(); session.disableDialogs = true; session.clearTransactions()
         defer { session.clearTransactions() }
         let product = "com.jamloom.credits.starter", token = UUID(), purchases = CreditPurchases()
         let products = try await purchases.products()
-        XCTAssertEqual(products.first?.id, product)
-        XCTAssertFalse(try XCTUnwrap(products.first).displayPrice.isEmpty)
+        let starter = try XCTUnwrap(products.first { $0.id == product })
+        XCTAssertFalse(starter.displayPrice.isEmpty)
         let transaction = try await session.buyProduct(identifier: product, options: [.appAccountToken(token)])
         let result = try await deliveredTransaction(product)
         var delivered = 0

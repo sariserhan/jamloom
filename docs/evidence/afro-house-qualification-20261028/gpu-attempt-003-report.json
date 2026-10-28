@@ -1,0 +1,28 @@
+{
+  "status": "FAIL",
+  "campaign": "jamloom-afro-house-quality-20261028-followup-003",
+  "tracks": [],
+  "reference_audio_used": false,
+  "human_listening": "NOT RUN",
+  "cleanup_confirmed": true,
+  "quote": {
+    "id": 55676201,
+    "machine_id": 84216,
+    "host_id": 443829,
+    "gpu_name": "RTX 3090",
+    "gpu_ram": 24576,
+    "num_gpus": 1,
+    "cpu_ram": 36841,
+    "geolocation": "California, US",
+    "reliability": 0.9925944,
+    "dph_total": 0.18296296296296297,
+    "storage_cost": 0.8666666666666666,
+    "inet_down_cost": 0.015625,
+    "inet_up_cost": 0.016927083333333332,
+    "hourly_with_60gb_disk": 0.2551851851851852,
+    "reserved_lease_plus_transfer": 2.1232484567901233
+  },
+  "failure_type": "RuntimeError",
+  "failure": "Remote qualification exited with code 124",
+  "observed_debit_usd": 0.03502609919999955
+}

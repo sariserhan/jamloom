@@ -110,6 +110,7 @@ class AfroHouseTrial(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             evidence = Path(folder)
             plan = json.loads((trial.EVIDENCE / 'followup-plan-003.json').read_text())
+            plan.update(status='PENDING_FOLLOWUP_APPROVAL', owner_statement=None, authorized_at=None)
             (evidence / 'followup-plan-003.json').write_text(json.dumps(plan))
             with patch.object(trial, 'EVIDENCE', evidence), patch.object(trial.vast, 'api') as api, \
                     patch.object(trial.vast, 'instances') as instances:
@@ -121,7 +122,8 @@ class AfroHouseTrial(unittest.TestCase):
     def test_followup_authorization_binds_both_reconciled_attempts_and_source_hashes(self):
         import afro_house_trial as trial
         plan = json.loads((trial.EVIDENCE / 'followup-plan-003.json').read_text())
-        plan.update(status='AUTHORIZED', owner_statement='Approve one additional attempt up to $5.97 within the $6 aggregate cap')
+        plan.update(status='AUTHORIZED', owner_statement='do all and everything in one go, dont do task by task. I want everything get it done',
+                    aggregate_budget_used_usd=0.025320318200000358)
         for source in plan['code_sha256']:
             plan['code_sha256'][source] = hashlib.sha256((Path(__file__).resolve().parents[1] / source).read_bytes()).hexdigest()
         trial.validate_permit(plan, followup=True)

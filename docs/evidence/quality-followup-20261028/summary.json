@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-28",
+  "worker_diagnostics": {
+    "status": "PASS",
+    "checks": "Sanitized stage exit locations preserve static Python filename and line number without exposing private log content.",
+    "tests": "16 worker boundary tests passed.",
+    "bootstrap_mock": "PASS: exact source archive extraction, exit receipts, accepted clock skew and rejected deadline; model setup/inference intercepted."
+  },
+  "spleeter_hosted_candidate": {
+    "status": "PARTIAL",
+    "license_basis": "Pinned publisher paper identifies source and pretrained models as MIT; no independent training-data or user-input rights audit.",
+    "model_archive_sha256": "3adb4a50ad4eb18c7c4d65fcf4cf2367a07d48408a5eb7d03cd20067429dfaa8",
+    "local_runtime": "PASS: Spleeter 2.4.2, TensorFlow macOS 2.12.0, four-stem synthetic 30-second CPU input; vocals/drums outputs are finite, aligned and hashed.",
+    "linux_amd64_runtime": "PASS dependency installation and TensorFlow 2.12.1/Spleeter import. Inference started but did not finish under this Mac's x86 emulator; the run was stopped with an incomplete output marker.",
+    "worker_source": "Improvise request contract now accepts consented jobs, validates source receipt, and uses a dedicated Python 3.11 separator environment. Image not built or published; live endpoint unchanged.",
+    "unit_tests": "2 separator archive/overlap-add tests passed; 16 worker boundary tests passed.",
+    "audio_quality": "NOT RUN: no clean reference stems or owner listening review."
+  },
+  "afro_house_qualification": {
+    "status": "FAIL",
+    "attempt": 3,
+    "failure": "Remote system-package installation exceeded its 300-second timeout; exit 124 before model setup, with zero model calls.",
+    "cleanup": "PASS: watchdog destroyed the GPU; current matching provider instances 0.",
+    "provider_debit_usd": 0.0350260992,
+    "post_cleanup_balance_implied_attempt_debit_usd": 0.0406850742,
+    "aggregate_campaign_debit_usd": 0.0660053924,
+    "authorized_cap_usd": 6.0,
+    "permit": "CONSUMED; no retries authorized."
+  },
+  "ios_automation": {
+    "simulators": ["iPhone 18 Pro, iOS 27.0", "iPhone 17, iOS 27.0"],
+    "full_run": {
+      "status": "FAIL",
+      "passed": 66,
+      "failed": 3,
+      "skipped": 4,
+      "notes": "Cloud consent and produced-singer playback failed; a later singing test was canceled."
+    },
+    "focused_followup": {
+      "status": "PARTIAL",
+      "cloud_consent_flow": "PASS after replacing an immediate switch-value read with a predicate wait.",
+      "produced_singer_playback": "FAIL on both simulators: the media control remained at 0 seconds and playback never reached its success state."
+    },
+    "storekit": "PASS: two isolated purchase tests on iOS 27.0.",
+    "release_build": "NOT RUN because the full test run failed.",
+    "physical_device_automation": "NOT RUN."
+  },
+  "sung_targets": {
+    "manual_word_pitch_verification": "NOT RUN; candidates remain unverified and scoring disabled.",
+    "review_url": "http://127.0.0.1:8766/sung-targets/review/"
+  },
+  "repository_organization": {
+    "readme_entry": "PASS: points to current product ledger and active TODO tracker.",
+    "daily_reports": "No standalone dated daily reports were found at docs root; dated items are linked topical records/evidence.",
+    "scripts_and_docs_reorganization": "NOT RUN: a reference scan found all 154 top-level Python scripts referenced by code or documentation; map callers and invocation paths before moving."
+  },
+  "release_and_provider_boundaries": {
+    "worker_image_publication": "NOT RUN",
+    "live_endpoint_mutation": "NOT RUN",
+    "website_publication": "NOT RUN",
+    "live_sales": "NOT RUN"
+  }
+}

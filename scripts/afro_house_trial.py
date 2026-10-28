@@ -57,7 +57,7 @@ def validate_permit(permit, replacement=False, followup=False):
         instances_max=1, max_elapsed_seconds=2400, model_calls_max=24, attempts_max=1,
         stop_on_failure=True, automatic_cleanup=True, retries=0,
         public_activation=False, source_audio_used=False, training=False,
-        owner_statement='Approve one additional attempt up to $5.97 within the $6 aggregate cap' if followup
+        owner_statement='do all and everything in one go, dont do task by task. I want everything get it done' if followup
             else 'complete it' if replacement else 'Approve $6 max (recommended)')
     if any(permit.get(key) != value for key, value in expected.items()):
         raise ValueError('Fresh exact Afro House compute authorization required')

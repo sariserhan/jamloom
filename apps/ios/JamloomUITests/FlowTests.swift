@@ -203,7 +203,8 @@ final class FlowTests: XCTestCase {
         app.launch()
         let consent = app.switches["consentToggle"]
         XCTAssertTrue(consent.waitForExistence(timeout: 10)); waitUntilEnabled(consent); consent.tap()
-        XCTAssertEqual(consent.value as? String, "1")
+        let consented = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == '1'"), object: consent)
+        XCTAssertEqual(XCTWaiter.wait(for: [consented], timeout: 5), .completed)
         app.buttons["Load test clip"].tap()
         let cloud = app.buttons["Create a full song"]
         for _ in 0..<6 { if cloud.isHittable { break }; app.swipeUp() }
