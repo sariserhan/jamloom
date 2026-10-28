@@ -11,6 +11,11 @@ def verify(bundle):
     info = plistlib.loads((bundle / 'Info.plist').read_bytes())
     privacy = plistlib.loads((bundle / 'PrivacyInfo.xcprivacy').read_bytes())
     assert info['CFBundleName'] == 'Jamloom'
+    assert info.get('UILaunchScreen') == {
+        'UIColorName': 'LaunchBackground',
+        'UIImageName': 'LaunchIcon',
+        'UIImageRespectsSafeAreaInsets': True,
+    }, 'Splash screen icon/background missing'
     assert info['NSMicrophoneUsageDescription']
     assert info['NSAppleMusicUsageDescription']
     assert not info.get('UIBackgroundModes'), 'Unexpected background capture entitlement'
