@@ -39,7 +39,7 @@
     "focused_followup": {
       "status": "PARTIAL",
       "cloud_consent_flow": "PASS after replacing an immediate switch-value read with a predicate wait.",
-      "produced_singer_playback": "FAIL on both simulators: the media control remained at 0 seconds and playback never reached its success state. On iPhone 17 iOS 27, the bundled 120-second MP3 was requested as bytes=0-1 and bytes=0-2881195; the server returned 206 with matching Content-Range totals (2881196 bytes). This rules out the observed route/range-header mismatch but does not identify why WebKit ends at 0 seconds."
+      "produced_singer_playback": "FAIL on both simulators: the media control remained at 0 seconds and playback never reached its success state. On iPhone 17 iOS 27, the bundled 120-second MP3 was requested as bytes=0-1 and bytes=0-2881195; the server returned matching 206/Content-Range totals (2881196 bytes), and source/package hashes match. WebKit reports duration=currentTime=0.000237 seconds, readyState 4, networkState 1, and no media error. Returning 200 for a full-file range and skipping the initial zero seek were temporary experiments; neither fixed playback and both were removed. Root cause remains unknown."
     },
     "storekit": "PASS: two isolated purchase tests on iOS 27.0.",
     "release_build": "NOT RUN because the full test run failed.",
