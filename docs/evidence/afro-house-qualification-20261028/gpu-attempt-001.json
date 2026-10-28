@@ -42,5 +42,7 @@
   "training_or_fine_tuning": false,
   "retries_authorized": false,
   "cleanup_confirmed": true,
-  "post_cleanup_matching_instances": 0
+  "post_cleanup_matching_instances": 0,
+  "provider_report": "renders/afro-house-qualification-20261028/report.json",
+  "provider_report_sha256": "61cb608516061a2085e605327da9cf474ef08ba073f232c2186ecf8c5f1698b5"
 }
