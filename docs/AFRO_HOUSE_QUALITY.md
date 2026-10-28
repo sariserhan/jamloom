@@ -33,6 +33,6 @@ The pinned [ACE-Step 1.5 Turbo model card](https://huggingface.co/ACE-Step/Ace-S
 
 1. Run the prepared four-mix and 20-stem qualification within an explicitly approved cap; stop at first failure, deadline or budget and do not retry.
 2. Compare the three target originals with both the pinned previous Jamloom output and matched generic-house control, then turn detected phrase changes into reviewed section timelines.
-3. Have the owner listen and record track-specific feedback; retain rejected candidates and evidence without promoting them.
+3. Have the owner listen and record track-specific feedback in the [review sheet](evidence/afro-house-qualification-20261028/listening-review-template.md); retain rejected candidates and evidence without promoting them.
 
 Overall status: **PARTIAL**. The local style direction is in place; the three-track quality objective remains open.
