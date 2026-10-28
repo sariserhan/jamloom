@@ -66,6 +66,10 @@ class WorkerContract(unittest.TestCase):
             changed,tempo=arranged_brief({**value,'beat':dict(bpm=126,groove='rolling')})
             self.assertEqual(tempo,126);self.assertIn('126 BPM, rolling groove',changed)
             if style in ('bass','hip-hop','chill'):self.assertNotIn('four-on-the-floor',caption)
+        afro,bpm=arranged_brief(dict(version=1,session='a'*32,sequence=0,seed=17,style='afro-house',energy=4,mood='warm'))
+        self.assertEqual(bpm,122)
+        for phrase in ('syncopated organic hand percussion','shakers, rims, claps and toms','bassline that answers the kick','No artist imitation or borrowed melodies'):
+            self.assertIn(phrase,afro)
 
     def test_qualification_reuses_model_and_stops_on_deadline_failure(self):
         for slow in (False, True):

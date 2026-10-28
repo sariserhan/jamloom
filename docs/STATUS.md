@@ -1,3 +1,7 @@
+## Organic Afro House target — 2026-10-28
+
+The owner listened to the reference and supplied the production brief, so reference playback is not needed for implementation. Added a local manifest-driven Organic Afro House preset at 122 BPM and a prompt specifying organic syncopated percussion plus kick-responsive bass. The other presets and 60-second generation contract are unchanged. **PASS** 10 focused Python and 9 AI DJ site tests. **PARTIAL** full-length three-track generation, stems and human listening acceptance remain open. The reference audio was not used for training. [Implementation report](AFRO_HOUSE_QUALITY.md).
+
 ## Current completion checkpoint — 2026-10-27
 
 Build **0.10.4 (34)** is signed/audited/installed/launched with accepted karaoke.
@@ -7,7 +11,7 @@ The signed Release is restored and the owner confirms both karaoke backings play
 and stop on Community. The local archive and its audit pass; no upload.
 [Current evidence and limits](COMPLETION_CANDIDATE.md).
 
-[Active targets](../TODO.md#current-completion-targets--2026-10-27) now distinguish
+[Active targets](../TODO.md#current-completion-targets--2026-10-28) now distinguish
 current unfinished requirements from the dated work log. Produced-song targets,
 fresh hosted qualification and formal independent/learned-model evidence remain
 open. Publication and live sales stay held. A rights-cleared DNA-only worker passed

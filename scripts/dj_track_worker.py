@@ -68,7 +68,8 @@ def arranged_brief(value):
     bpm = value.get('beat', {}).get('bpm', profile['bpm'])
     groove = value.get('beat', {}).get('groove', profile['groove'])
     color = {'warm': 'warm rounded chords', 'bright': 'bright uplifting accents', 'deep': 'hypnotic minor-key color'}[value.get('mood', profile['mood'])]
-    drums = ('a punchy half-time snare pocket, syncopated kick and short bass call-and-response'
+    drums = ('syncopated organic hand percussion including shakers, rims, claps and toms around a steady four-on-the-floor kick; a deep rounded bassline that answers the kick'
+             if value['style'] == 'afro-house' else 'a punchy half-time snare pocket, syncopated kick and short bass call-and-response'
              if value['style'] == 'bass' else 'swung kick and snare with a relaxed bass pocket'
              if value['style'] in ('hip-hop', 'chill') else 'a firm four-on-the-floor kick, crisp offbeat hats and a tight bass groove')
     arc = ('Start with the complete drum and bass groove on beat one. First eight bars establish one memorable rhythmic hook; '
@@ -77,7 +78,8 @@ def arranged_brief(value):
            'Keep the final four bars rhythmically stable for the next DJ blend. No ambient intro, drumless breakdown or fade-out.'
            if value['energy'] >= 3 else
            'Start with a gentle complete groove. Develop one motif in eight-bar phrases, with subtle percussion variation and a relaxed final four bars. No festival build or drop.')
-    return (f"Original instrumental {profile['genre']}, {bpm} BPM, {groove} groove, {color}. "
+    character = profile['character']+' ' if value['style'] == 'afro-house' else ''
+    return (f"Original instrumental {profile['genre']}, {bpm} BPM, {groove} groove, {color}. {character}"
             f"Use {drums}. {arc} Keep the kick transient clear, the sub bass controlled and separate from the kick, "
             'consistent drum timbres, uncluttered mids and restrained highs. Short fills only at phrase ends. '
             f"Energy {value['energy']} of 5. No vocals, borrowed melodies or artist imitation."), bpm

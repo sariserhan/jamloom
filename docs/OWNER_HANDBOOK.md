@@ -1,8 +1,12 @@
+## Organic Afro House development — 2026-10-28
+
+Your listening analysis is now the production brief; Jamloom does not need to ingest the reference track. The local AI DJ has an Organic Afro House option set to 122 BPM with moving bass and syncopated organic percussion in its generation prompt. This change has focused code tests, but it does not yet produce the brief's three full-length tracks or stems. Those need a separate full-length qualification run and your listening review. No reference recording was used for training. [Implementation report and remaining work](AFRO_HOUSE_QUALITY.md).
+
 ## Current installed candidate — 0.10.4 build 34
 
 Both accepted karaoke backings are now on your iPhone. You confirmed that Long Way Home and Leave It All Outside play and stop when switching to Community. The signed Release was restored after tests and opened successfully. A signed, audited archive is kept locally at `renders/completion-candidate-20261027/Jamloom-0.10.4-34.xcarchive`; nothing was uploaded.
 
-Two native server tests pass. Xcode could not initialize UI automation, so the current playback acceptance comes from your direct check. The website remains at http://127.0.0.1:3010. [The current completion report](COMPLETION_CANDIDATE.md) and [active TODO list](../TODO.md#current-completion-targets--2026-10-27) distinguish genuine unfinished requirements from the historical work log. Verified sung targets, fresh hosted qualification and formal independent/learned-model evidence remain open; deployment/sales are held and iPad remains excluded.
+Two native server tests pass. Xcode could not initialize UI automation, so the current playback acceptance comes from your direct check. The website remains at http://127.0.0.1:3010. [The current completion report](COMPLETION_CANDIDATE.md) and [active TODO list](../TODO.md#current-completion-targets--2026-10-28) distinguish genuine unfinished requirements from the historical work log. Verified sung targets, fresh hosted qualification and formal independent/learned-model evidence remain open; deployment/sales are held and iPad remains excluded.
 
 ## Accepted backings now in the local course — 2026-10-27
 
