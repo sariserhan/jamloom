@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "status": "PENDING_OWNER_CAP",
+  "campaign": "jamloom-afro-house-quality-20261028",
+  "scope": "Four five-minute generations: one tempo-matched generic house control and three original Afro House targets; 20 named stem extractions; opening-minute measurements against a pinned previous Jamloom house output.",
+  "output_seconds": 300,
+  "generation_calls": 4,
+  "stem_extraction_calls": 20,
+  "model": {
+    "generation": "ACE-Step v1.5 Turbo + 1.7B semantic planner",
+    "generation_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+    "extraction": "ACE-Step v1.5 Base",
+    "extraction_revision": "e432212fec32b8965a14ffa57ae653438d6abd14",
+    "publisher_declared_license": "MIT; model card permits commercial outputs; underlying training rights not independently audited"
+  },
+  "stems_per_track": [
+    "vocals",
+    "bass",
+    "drums",
+    "percussion",
+    "keyboard or synth"
+  ],
+  "generation_profiles": [
+    {
+      "id": "matched-house-baseline",
+      "style": "generic club house",
+      "bpm": 122,
+      "seed": 281028,
+      "instrumental": true
+    },
+    {
+      "id": "vocal-led-organic-afro-house",
+      "style": "organic Afro House",
+      "bpm": 122,
+      "seed": 281029,
+      "instrumental": false
+    },
+    {
+      "id": "bass-driven-organic-afro-house",
+      "style": "organic Afro House",
+      "bpm": 121,
+      "seed": 281030,
+      "instrumental": true
+    },
+    {
+      "id": "percussive-driving-organic-afro-house",
+      "style": "organic Afro House",
+      "bpm": 124,
+      "seed": 281031,
+      "instrumental": true
+    }
+  ],
+  "constraints": {
+    "provider": "Vast.ai",
+    "max_instances": 1,
+    "max_minutes": 40,
+    "proposed_spend_cap_usd": 6,
+    "available_credit_observed_usd": 7.1119716367,
+    "stop_on_first_failure": true,
+    "automatic_destroy": true,
+    "retries": 0,
+    "purchase_datasets_or_licenses": false,
+    "train_or_finetune": false,
+    "use_reference_audio": false,
+    "public_activation": false,
+    "publish_or_sell": false
+  },
+  "deliverables": [
+    "four 48 kHz stereo WAV mixes",
+    "20 extracted WAV stems",
+    "BPM/key estimates and phrase-aligned section-change candidates",
+    "generation settings, model revisions, hashes, logs and technical audio checks",
+    "numeric opening-minute comparison against the pinned previous Jamloom house output plus full-length comparison against the generated matched house control"
+  ],
+  "human_listening": "Owner review required before quality acceptance; no automated score can substitute.",
+  "authorization_note": "Cap and exact source-bound permit are pending. No Vast rental or paid generation has started. The earlier $1 DNA-only smoke permit was consumed by that separate run.",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_calls_max": 24,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "retries": 0,
+  "public_activation": false,
+  "source_audio_used": false,
+  "training": false,
+  "owner_statement": null,
+  "previous_jamloom_baseline": {
+    "path": "renders/dj-quality-20261025/house-0.wav",
+    "sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "source": "prior Jamloom house worker output",
+    "seconds": 60,
+    "bpm_prompt": 128
+  },
+  "code_sha256": {
+    "scripts/afro_house_qualification.py": "4b1e1d8f3433851ba803795e692173bbee9ec30cafdc2e05f2b03267bd6752e7",
+    "scripts/afro_house_trial.py": "ac9afd9935b927edcce37cdf41acd246ed743d7189ed2875ee04fb87a1e53087",
+    "scripts/cloud_music_setup.sh": "a0d7f76c16c3f2b2ab896e06bb091f08e079acd7c4f01e2dfc5e40a9001bff2c",
+    "scripts/cloud_dj_warm.sh": "cc0812c92d822a6a57867f181c372df830aafbc1d60b8a16de07e03b1cf189dc",
+    "scripts/dj_track_worker.py": "3c2de702ce18c8dee8fa9964c4e076fe349e444124b1d80d7fd73866cd8cddae",
+    "scripts/dj_warm_engine.py": "32ee2a1323d453eb62b89319716faf387124f7580f6a8109b17ed977234041cf",
+    "scripts/dj_vocal.py": "902e327bdf2a8a319b3b049cc368415d4c211659a114307b45d9125ff6a88f96",
+    "scripts/dj_model_study.py": "d8862590e5e3b61ab53e4dffad603b1da7587e48f214305ee6a16cb419546678",
+    "scripts/club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb",
+    "scripts/vast_trial.py": "4fd4c1e8234f5fb3261f97fa77d3f9851886fda7b9281c2c7e91d987320e0dc0",
+    "assets/manifests/dj-styles.json": "8bb095500301f5bd155afb5a260faa7342330d54f3e9724e27ac84ec8d6fc1c2",
+    "assets/manifests/dj-base-model.json": "608b720e0c042d128ada91dcc18ffc0f8719721eecd1fae011a228376161aff0",
+    "renders/dj-quality-20261025/house-0.wav": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "renders/dj-quality-20261025/report.json": "a918ed12bbddb74848356dd1f044e888ea8bebe6b2237ce8b0f72bebb35daae5"
+  }
+}

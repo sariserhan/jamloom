@@ -4,6 +4,7 @@ set -euo pipefail
 case "${1-}" in
   --club-benchmark) export JAMLOOM_CLUB_BENCHMARK=1 ;;
   --model-study) export JAMLOOM_MODEL_STUDY=1 ;;
+  --afro-house) export JAMLOOM_MODEL_STUDY=1 ;;
   "") ;;
   *) exit 2 ;;
 esac

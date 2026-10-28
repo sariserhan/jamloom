@@ -127,16 +127,16 @@ def write_state(state):
     temporary.replace(STATE)
 
 
-def dj_bootstrap_command(deadline, requests=8, arranged=False, house_study=False, composition_study=False, guided_set=False, recovery_study=False, planner_study=False, sung_study=False, model_study=False, consistency_study=False, flow_study=False, genres_study=False):
+def dj_bootstrap_command(deadline, requests=8, arranged=False, house_study=False, composition_study=False, guided_set=False, recovery_study=False, planner_study=False, sung_study=False, model_study=False, consistency_study=False, flow_study=False, genres_study=False, afro_house=False):
     if type(deadline) is not int or not 1000000000 <= deadline <= 9999999999:
         raise ValueError('Absolute renderer deadline required')
     if type(requests) is not int or not 1 <= requests <= 100:
         raise ValueError('Bounded model request allowance required')
-    if any(type(v) is not bool for v in (arranged,house_study,composition_study,guided_set,recovery_study,planner_study,sung_study,model_study,consistency_study,flow_study,genres_study)) or sum((arranged,house_study,composition_study,guided_set,recovery_study,planner_study,sung_study,model_study,consistency_study,flow_study,genres_study))>1: raise ValueError('Invalid arrangement mode')
+    if any(type(v) is not bool for v in (arranged,house_study,composition_study,guided_set,recovery_study,planner_study,sung_study,model_study,consistency_study,flow_study,genres_study,afro_house)) or sum((arranged,house_study,composition_study,guided_set,recovery_study,planner_study,sung_study,model_study,consistency_study,flow_study,genres_study,afro_house))>1: raise ValueError('Invalid arrangement mode')
     # Background only the fully redirected renderer, not an AND-list that retains SSH pipes.
-    return ('chmod 600 /workspace/renderer-token || exit 1\n'
-            f'nohup bash /workspace/cloud_dj_warm.sh {deadline} {requests}{" --arranged" if arranged else " --house-study" if house_study else " --composition-study" if composition_study else " --guided-set" if guided_set else " --recovery-study" if recovery_study else " --planner-study" if planner_study else " --sung-study" if sung_study else " --model-study" if model_study else " --consistency-study" if consistency_study else " --flow-study" if flow_study else " --genre-study" if genres_study else ""} > /workspace/boot.log 2>&1 < /dev/null &\n'
-            'printf "%s\\n" "$!" > /workspace/renderer.pid\n'
+    return (('' if afro_house else 'chmod 600 /workspace/renderer-token || exit 1\n') +
+            f'nohup bash /workspace/cloud_dj_warm.sh {deadline} {requests}{" --arranged" if arranged else " --house-study" if house_study else " --composition-study" if composition_study else " --guided-set" if guided_set else " --recovery-study" if recovery_study else " --planner-study" if planner_study else " --sung-study" if sung_study else " --model-study" if model_study else " --consistency-study" if consistency_study else " --flow-study" if flow_study else " --genre-study" if genres_study else " --afro-house" if afro_house else ""} > /workspace/boot.log 2>&1 < /dev/null &\n' +
+            'printf "%s\\n" "$!" > /workspace/renderer.pid\n' +
             'cat /workspace/renderer.pid\n')
 
 

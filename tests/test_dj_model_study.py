@@ -20,6 +20,11 @@ from dj_sample_trial import validate_model_study
 from dj_warm_engine import Renderer
 
 
+def refresh_model_manifests(plan):
+    plan['manifest_sha256'] = hashlib.sha256((ROOT/'assets/manifests/dj-styles.json').read_bytes()).hexdigest()
+    plan['base_manifest_sha256'] = hashlib.sha256((ROOT/'assets/manifests/dj-base-model.json').read_bytes()).hexdigest()
+
+
 class ModelStudyTests(unittest.TestCase):
     def test_genre_matrix_and_new_permit_preserve_existing_studies(self):
         rows=cases(genres=True)
@@ -32,6 +37,7 @@ class ModelStudyTests(unittest.TestCase):
         self.assertTrue(all(r['request']['session']!=cases()[0]['request']['session'] for r in rows))
         with self.assertRaises(ValueError):cases(consistency=True,genres=True)
         plan=json.loads((ROOT/'docs/evidence/dj-genre-models-20261027/gpu-plan.json').read_text())
+        refresh_model_manifests(plan)
         plan['status']='PREPARED'
         with self.assertRaises(ValueError):validate_model_study(plan,genres=True)
         plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 genre-model comparison')
@@ -61,6 +67,7 @@ class ModelStudyTests(unittest.TestCase):
             self.assertEqual({k:v for k,v in row.items() if k!='request'}, {k:v for k,v in original.items() if k!='request'})
             self.assertEqual(row['request']['sequence'],index)
         plan=json.loads((ROOT/'docs/evidence/dj-preferred-consistency-20261026/gpu-plan.json').read_text())
+        refresh_model_manifests(plan)
         plan['status']='PREPARED'
         with self.assertRaises(ValueError):validate_model_study(plan,True)
         plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 preferred-music consistency study')
@@ -101,6 +108,7 @@ class ModelStudyTests(unittest.TestCase):
 
     def test_permit_rejects_generic_approval_changed_scope_and_expired_worker_hashes(self):
         plan=json.loads((ROOT/'docs/evidence/dj-model-comparison-20261026/gpu-plan.json').read_text())
+        refresh_model_manifests(plan)
         with self.assertRaises(ValueError):validate_model_study({**plan,'status':'PREPARED'})
         # The consumed permit must not authorize the later retention repair.
         with self.assertRaises(ValueError):validate_model_study(plan)
@@ -121,6 +129,7 @@ class ModelStudyTests(unittest.TestCase):
     def test_unapproved_plan_stops_before_provider_access(self):
         import dj_sample_trial as trial
         plan=json.loads((ROOT/'docs/evidence/dj-model-comparison-20261026/gpu-plan.json').read_text())
+        refresh_model_manifests(plan)
         plan['status']='PREPARED'
         with tempfile.TemporaryDirectory() as folder:
             evidence=Path(folder);(evidence/'gpu-plan.json').write_text(json.dumps(plan))
@@ -242,7 +251,7 @@ class FlowStudyTests(unittest.TestCase):
         self.assertTrue(all(r['seconds']==60 and not r['vocals'] for r in rows))
         self.assertEqual(len({r['request']['seed'] for r in rows}),12)
         self.assertNotIn('[Outro]',rows[2]['lyrics'])
-        plan=json.loads((ROOT/'docs/evidence/dj-flow-buffer-20261026/gpu-plan.json').read_text());plan['status']='PREPARED'
+        plan=json.loads((ROOT/'docs/evidence/dj-flow-buffer-20261026/gpu-plan.json').read_text());refresh_model_manifests(plan);plan['status']='PREPARED'
         with self.assertRaises(ValueError):validate_model_study(plan,flow=True)
         plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 two-track-buffer qualification')
         with self.assertRaises(ValueError):validate_model_study(plan,flow=True)

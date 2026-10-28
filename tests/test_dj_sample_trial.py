@@ -12,6 +12,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts'))
 from dj_sample_trial import validate, validate_quality, validate_sung, EVIDENCE, ROOT
 
 
+def refresh_style_manifest(plan):
+    plan['manifest_sha256'] = hashlib.sha256((ROOT/'assets/manifests/dj-styles.json').read_bytes()).hexdigest()
+
+
 class SamplePermitTests(unittest.TestCase):
     def test_failed_startup_retains_execution_hashes_and_still_deletes_rental(self):
         import dj_sample_trial as trial
@@ -42,6 +46,7 @@ class SamplePermitTests(unittest.TestCase):
 
     def test_isolated_singing_has_new_approval_and_no_implicit_replacement(self):
         plan=json.loads((ROOT/'docs/evidence/dj-isolated-hooks-20261026/gpu-plan.json').read_text())
+        refresh_style_manifest(plan)
         with self.assertRaises(ValueError):validate_sung({**plan,"status":"PREPARED"},isolated=True)
         plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 isolated-singing comparison')
         with self.assertRaisesRegex(ValueError,'worker changed'):validate_sung(plan,isolated=True)
@@ -56,6 +61,7 @@ class SamplePermitTests(unittest.TestCase):
     def test_vocal_mode_replacement_preserves_first_attempt_cost_and_time(self):
         import dj_sample_trial as trial
         plan=json.loads((ROOT/'docs/evidence/dj-sung-aggressive-20261026/replacement-plan.json').read_text())
+        refresh_style_manifest(plan)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve one replacement within the original cap'
         plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         with patch.object(trial.vast,'LEASE_SECONDS',plan['remaining_rental_seconds']):
@@ -66,6 +72,7 @@ class SamplePermitTests(unittest.TestCase):
 
     def test_vocal_mode_study_requires_new_specific_approval(self):
         plan=json.loads((ROOT/'docs/evidence/dj-sung-aggressive-20261026/gpu-plan.json').read_text())
+        refresh_style_manifest(plan)
         plan['status']='PREPARED'
         with self.assertRaises(ValueError):validate_sung(plan,aggressive=True)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 vocal-mode comparison'
@@ -80,6 +87,7 @@ class SamplePermitTests(unittest.TestCase):
     def test_sung_replacement_cannot_extend_original_total_allowance(self):
         import dj_sample_trial as trial
         plan=json.loads((ROOT/'docs/evidence/dj-sung-hooks-20261026/replacement-plan.json').read_text())
+        refresh_style_manifest(plan)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve one replacement within the original cap'
         with patch.object(trial.vast,'LEASE_SECONDS',plan['remaining_rental_seconds']):
             with self.assertRaisesRegex(ValueError,'worker changed'):validate_sung(plan,replacement=True)
@@ -91,6 +99,7 @@ class SamplePermitTests(unittest.TestCase):
 
     def test_sung_study_requires_fresh_four_edit_approval_and_original_sources(self):
         plan=json.loads((ROOT/'docs/evidence/dj-sung-hooks-20261026/gpu-plan.json').read_text())
+        refresh_style_manifest(plan)
         plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         plan['dna_manifest_sha256']={name:hashlib.sha256((ROOT/'assets/manifests'/name).read_bytes()).hexdigest()for name in ['song-durations.json','dna-languages.json']}
         pending=copy.deepcopy(plan);pending['status']='PREPARED'
@@ -118,6 +127,7 @@ class SamplePermitTests(unittest.TestCase):
             self.assertEqual(search.call_count,3);self.assertTrue(all(call.args[0] is not None for call in search.call_args_list))
     def test_quality_requires_fresh_approval_and_exact_request_and_worker_bounds(self):
         plan=json.loads((ROOT/'docs/evidence/dj-quality-20261025/gpu-plan.json').read_text())
+        refresh_style_manifest(plan)
         # Historical approvals remain immutable; this contract fixture pins today's worker.
         plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         pending=copy.deepcopy(plan);pending['status']='PREPARED'
@@ -134,6 +144,7 @@ class SamplePermitTests(unittest.TestCase):
 
     def test_house_study_keeps_pairs_blind_to_the_model_and_bounds_six_calls(self):
         plan=json.loads((ROOT/'docs/evidence/dj-house-consistency-20261025/gpu-plan.json').read_text())
+        refresh_style_manifest(plan)
         plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         pending=copy.deepcopy(plan);pending['status']='PREPARED'
         with self.assertRaises(ValueError):validate_quality(pending,house=True)
@@ -151,6 +162,7 @@ class SamplePermitTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate_quality(altered,house=True)
     def test_composition_requires_approved_original_guides_and_four_requests(self):
         plan=json.loads((ROOT/'docs/evidence/dj-composition-20261025/gpu-plan.json').read_text())
+        refresh_style_manifest(plan)
         plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         pending=copy.deepcopy(plan);pending['status']='PREPARED'
         with self.assertRaises(ValueError):validate_quality(pending,composition=True)
@@ -166,6 +178,7 @@ class SamplePermitTests(unittest.TestCase):
 
     def test_guided_set_requires_new_approval_and_exact_direction_matrix(self):
         plan=json.loads((ROOT/'docs/evidence/dj-guided-set-20261025/gpu-plan.json').read_text())
+        refresh_style_manifest(plan)
         plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         pending=copy.deepcopy(plan);pending['status']='PREPARED'
         with self.assertRaises(ValueError):validate_quality(pending,composition=True,guided_set=True)
@@ -184,6 +197,7 @@ class SamplePermitTests(unittest.TestCase):
 
     def test_recovery_requires_separate_approval_and_exact_guide_seeds(self):
         plan=json.loads((ROOT/'docs/evidence/dj-recovery-20261025/gpu-plan.json').read_text());plan['status']='PREPARED'
+        refresh_style_manifest(plan)
         plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         with self.assertRaises(ValueError):validate_quality(plan,composition=True,recovery=True)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 recovery study'
@@ -199,6 +213,7 @@ class SamplePermitTests(unittest.TestCase):
 
     def test_planner_comparison_is_paired_bounded_and_requires_new_authorization(self):
         plan=json.loads((ROOT/'docs/evidence/dj-planner-20261026/gpu-plan.json').read_text())
+        refresh_style_manifest(plan)
         plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
         with self.assertRaises(ValueError):validate_quality({**plan,'status':'PREPARED'},planner=True)
         plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 music-planner comparison')
@@ -225,7 +240,7 @@ class SamplePermitTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):startup_probe(0,b'not-an-exit-code')
 
     def test_exact_pair_and_bounds(self):
-        plan = json.loads((EVIDENCE/'gpu-plan.json').read_text()); validate(plan)
+        plan = json.loads((EVIDENCE/'gpu-plan.json').read_text()); refresh_style_manifest(plan); validate(plan)
         for key, value in [('budget_usd', 6), ('max_minutes', 40), ('max_workers', 2),
                            ('status', 'PREPARED'), ('public_activation', True),
                            ('source_audio_used', True), ('learned_reference_weights_used', True)]:

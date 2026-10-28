@@ -1,6 +1,6 @@
 ## Organic Afro House development — 2026-10-28
 
-Your listening analysis is now the production brief; Jamloom does not need to ingest the reference track. The local AI DJ has an Organic Afro House option set to 122 BPM with moving bass and syncopated organic percussion in its generation prompt. This change has focused code tests, but it does not yet produce the brief's three full-length tracks or stems. Those need a separate full-length qualification run and your listening review. No reference recording was used for training. [Implementation report and remaining work](AFRO_HOUSE_QUALITY.md).
+Your listening analysis is now the production brief; Jamloom does not need to ingest the reference track. The local AI DJ has an Organic Afro House option at 122 BPM. A separate runner is prepared for three five-minute target tracks, a generated tempo-matched house control and 20 stems. It also measures the opening minute against a retained 60-second Jamloom house output. Focused code tests pass. Local MPS generation stalled, so model outputs need the prepared Vast run. Its proposed $6/40-minute cap awaits approval; no rental has started. The reference was not used for training. [Run plan](evidence/afro-house-qualification-20261028/gpu-plan.json), [implementation report](AFRO_HOUSE_QUALITY.md).
 
 ## Current installed candidate — 0.10.4 build 34
 

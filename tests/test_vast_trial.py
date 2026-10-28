@@ -27,6 +27,10 @@ class PriceBounds(unittest.TestCase):
         self.assertIn('1792904659 6 --house-study >',trial.dj_bootstrap_command(1792904659,6,house_study=True))
         with self.assertRaises(ValueError):trial.dj_bootstrap_command(1792904659,6,arranged=True,house_study=True)
         with self.assertRaises(ValueError):trial.dj_bootstrap_command(1792904659,6,arranged='--unsafe')
+        afro=trial.dj_bootstrap_command(1792904659,24,afro_house=True)
+        self.assertIn('1792904659 24 --afro-house >',afro)
+        self.assertNotIn('renderer-token',afro)
+        with self.assertRaises(ValueError):trial.dj_bootstrap_command(1792904659,24,afro_house=True,model_study=True)
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);(root/'renderer-token').write_text('test-only')
             (root/'cloud_dj_warm.sh').write_text('sleep 5\n')
