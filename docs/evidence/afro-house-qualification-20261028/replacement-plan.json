@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "PENDING_REPLACEMENT_APPROVAL",
+  "status": "CONSUMED_NO_MODEL_RUN",
   "campaign": "jamloom-afro-house-quality-20261028-replacement",
   "scope": "One replacement attempt of the original four five-minute mix and 20-stem Afro House qualification, after the first attempt failed during source upload before model setup.",
   "budget_usd": 5.99,
@@ -17,8 +17,8 @@
   "public_activation": false,
   "source_audio_used": false,
   "training": false,
-  "owner_statement": null,
-  "authorized_at": null,
+  "owner_statement": "complete it",
+  "authorized_at": "2026-10-28T05:36:04Z",
   "prior_attempt": {
     "receipt": "gpu-attempt-001.json",
     "sha256": "32ce2864c1fac88942930f9d750916cbd613676e2cc41edeaa4582dd7c40d617",
@@ -39,7 +39,7 @@
   },
   "code_sha256": {
     "scripts/afro_house_qualification.py": "f53a04523776e8e6ad274f64511ad5e0a2eeef80665de62bdccf48cdbff56dc0",
-    "scripts/afro_house_trial.py": "d9f572dc061c689adca4ae4a278e4453bc98d38a2408de90c302a56c935b9d74",
+    "scripts/afro_house_trial.py": "7d89a9d6ba1bbbd4d4df4063395013e805f6c208c9bc124416069c7937adbb7a",
     "scripts/cloud_music_setup.sh": "a0d7f76c16c3f2b2ab896e06bb091f08e079acd7c4f01e2dfc5e40a9001bff2c",
     "scripts/cloud_dj_warm.sh": "cc0812c92d822a6a57867f181c372df830aafbc1d60b8a16de07e03b1cf189dc",
     "scripts/dj_track_worker.py": "3c2de702ce18c8dee8fa9964c4e076fe349e444124b1d80d7fd73866cd8cddae",
@@ -53,5 +53,29 @@
     "renders/dj-quality-20261025/house-0.wav": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
     "renders/dj-quality-20261025/report.json": "a918ed12bbddb74848356dd1f044e888ea8bebe6b2237ce8b0f72bebb35daae5"
   },
-  "authorization_note": "Pending a fresh owner permit. The prior one-rental $6 permit is consumed; this replacement is capped at $5.99 so aggregate observed campaign spend cannot exceed $6."
+  "authorization_note": "The owner replied \"complete it\" to authorize this one replacement attempt. The permit is consumed after remote bootstrap failed before model setup; cleanup was confirmed, no retries were authorized, and aggregate observed campaign spend is recorded in gpu-attempt-002.json.",
+  "authorization_source": "User reply after the one-rental $5.99 replacement approval request",
+  "authorization_context": "The owner replied \"complete it\" to the request to authorize this exact replacement plan, capped at $5.99 with aggregate campaign spend capped at $6, one GPU, 40 minutes, automatic cleanup and no retries.",
+  "live_preflight": {
+    "checked_at": "2026-10-28T05:36:38Z",
+    "credit_usd": 7.088078184399999,
+    "reserved_quote_usd": 2.141026234567901,
+    "offer": {
+      "id": 41028909,
+      "machine_id": 138174,
+      "host_id": 410852,
+      "gpu_name": "RTX 3090",
+      "gpu_ram": 24576,
+      "cpu_ram": 48321,
+      "geolocation": "United States, US",
+      "reliability": 0.994545,
+      "hourly_with_60gb_disk": 0.2818518518518518
+    },
+    "host_machine_excluded": true,
+    "aggregate_cap_check_usd": 2.1467427228679004
+  },
+  "permit_consumed_at": "2026-10-28T05:41:33.095552Z",
+  "attempt_receipt": "gpu-attempt-002.json",
+  "replacement_observed_debit_usd": 0.019603829900001202,
+  "aggregate_observed_debit_usd": 0.025320318200000358
 }

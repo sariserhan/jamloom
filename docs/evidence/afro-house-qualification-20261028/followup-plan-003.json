@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "status": "PENDING_FOLLOWUP_APPROVAL",
+  "campaign": "jamloom-afro-house-quality-20261028-followup-003",
+  "scope": "One further manually authorized attempt of the original four five-minute mix and 20-stem qualification after the two documented pre-model bootstrap failures.",
+  "budget_usd": 5.97,
+  "aggregate_budget_cap_usd": 6,
+  "aggregate_budget_used_usd": 0.025320318200000358,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_calls_max": 24,
+  "attempts_max": 1,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "retries": 0,
+  "exclude_failed_hosts_and_machines": true,
+  "public_activation": false,
+  "source_audio_used": false,
+  "training": false,
+  "owner_statement": null,
+  "proposed_owner_statement": "Approve one additional attempt up to $5.97 within the $6 aggregate cap",
+  "authorized_at": null,
+  "prior_attempts": [
+    {
+      "receipt": "gpu-attempt-001.json",
+      "sha256": "32ce2864c1fac88942930f9d750916cbd613676e2cc41edeaa4582dd7c40d617"
+    },
+    {
+      "receipt": "gpu-attempt-002.json",
+      "sha256": "5434a3f00453c5c43213338bd2086baa0f8e9a958b8da3cca934b2752caa0daf"
+    }
+  ],
+  "model_calls": {
+    "text_to_audio": 4,
+    "stem_extraction": 20
+  },
+  "model_revisions": {
+    "generation": "19671f406d603126926c1b7e2adc169acbcade22",
+    "base": "e432212fec32b8965a14ffa57ae653438d6abd14"
+  },
+  "launch_corrections": [
+    "single compressed source archive",
+    "two consecutive SSH readiness probes and keepalives",
+    "exclude both failed provider hosts and machines",
+    "write bootstrap stage and exit receipt before argument/deadline validation",
+    "allow 15 seconds of container-clock skew while the independent watchdog enforces the 40-minute lease"
+  ],
+  "code_sha256": {
+    "scripts/afro_house_qualification.py": "f53a04523776e8e6ad274f64511ad5e0a2eeef80665de62bdccf48cdbff56dc0",
+    "scripts/afro_house_trial.py": "1fe4f6aadd8684ea07db93f2e56528e671eef462bec7336fd12e138cd53fbdca",
+    "scripts/cloud_music_setup.sh": "a0d7f76c16c3f2b2ab896e06bb091f08e079acd7c4f01e2dfc5e40a9001bff2c",
+    "scripts/cloud_dj_warm.sh": "fa1cbbce93573489963dc5008879fda3bec233e670d1f68c9c63f0868b3568c3",
+    "scripts/dj_track_worker.py": "3c2de702ce18c8dee8fa9964c4e076fe349e444124b1d80d7fd73866cd8cddae",
+    "scripts/dj_warm_engine.py": "32ee2a1323d453eb62b89319716faf387124f7580f6a8109b17ed977234041cf",
+    "scripts/dj_vocal.py": "902e327bdf2a8a319b3b049cc368415d4c211659a114307b45d9125ff6a88f96",
+    "scripts/dj_model_study.py": "d8862590e5e3b61ab53e4dffad603b1da7587e48f214305ee6a16cb419546678",
+    "scripts/club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb",
+    "scripts/vast_trial.py": "4fd4c1e8234f5fb3261f97fa77d3f9851886fda7b9281c2c7e91d987320e0dc0",
+    "assets/manifests/dj-styles.json": "8bb095500301f5bd155afb5a260faa7342330d54f3e9724e27ac84ec8d6fc1c2",
+    "assets/manifests/dj-base-model.json": "608b720e0c042d128ada91dcc18ffc0f8719721eecd1fae011a228376161aff0",
+    "renders/dj-quality-20261025/house-0.wav": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "renders/dj-quality-20261025/report.json": "a918ed12bbddb74848356dd1f044e888ea8bebe6b2237ce8b0f72bebb35daae5"
+  },
+  "authorization_note": "Pending fresh explicit owner approval. The initial and replacement one-attempt permits are both consumed; this plan allows one further attempt only and keeps observed aggregate campaign spend at or below $6."
+}

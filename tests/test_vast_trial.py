@@ -15,6 +15,12 @@ spec.loader.exec_module(trial)
 
 
 class PriceBounds(unittest.TestCase):
+    def test_cloud_worker_records_early_exit_and_tolerates_clock_skew(self):
+        script = (Path(__file__).resolve().parents[1] / 'scripts/cloud_dj_warm.sh').read_text()
+        self.assertLess(script.index("trap 'result=$?"), script.index('deadline=${1:?'))
+        self.assertLess(script.index("bootstrap-validation"), script.index('remaining=$((deadline'))
+        self.assertIn('remaining <= 2415', script)
+
     def test_remote_bootstrap_releases_ssh_pipes_before_worker_exits(self):
         for value in [True,0,'1234567890; unsafe']:
             with self.assertRaises(ValueError):trial.dj_bootstrap_command(value)

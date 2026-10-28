@@ -1,6 +1,8 @@
 #!/bin/bash
 # GPU-only bootstrap; the independent Vast watchdog owns rental cleanup.
 set -euo pipefail
+trap 'result=$?; printf "%s\n" "$result" > /workspace/run.exit' EXIT
+printf 'bootstrap-validation\n' > /workspace/setup.stage
 deadline=${1:?Absolute authorized deadline required}
 requests=${2:-8}
 mode=${3:-}
@@ -8,8 +10,8 @@ mode=${3:-}
 [[ $requests =~ ^[0-9]{1,3}$ ]] && ((requests >= 1 && requests <= 100)) || exit 2
 [[ $deadline =~ ^[0-9]{10}$ ]] || exit 2
 remaining=$((deadline - $(date +%s)))
-((remaining > 120 && remaining <= 2400)) || exit 2
-trap 'result=$?; printf "%s\n" "$result" > /workspace/run.exit' EXIT
+# Permit modest client/container clock skew; the owner watchdog still enforces the lease deadline.
+((remaining > 120 && remaining <= 2415)) || exit 2
 setup_mode=--club-benchmark
 [[ $mode != --planner-study ]] || setup_mode=
 [[ $mode != --genre-study && $mode != --model-study && $mode != --consistency-study ]] || setup_mode=--model-study

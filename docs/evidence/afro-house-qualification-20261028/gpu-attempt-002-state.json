@@ -1,0 +1,33 @@
+{
+  "label": "jamloom-afro-house-quality-20261028-replacement",
+  "offer": {
+    "id": 41028909,
+    "machine_id": 138174,
+    "host_id": 410852,
+    "gpu_name": "RTX 3090",
+    "gpu_ram": 24576,
+    "num_gpus": 1,
+    "cpu_ram": 48321,
+    "geolocation": "United States, US",
+    "reliability": 0.994545,
+    "dph_total": 0.2096296296296296,
+    "storage_cost": 0.8666666666666665,
+    "inet_down_cost": 0.015625,
+    "inet_up_cost": 0.016927083333333332,
+    "hourly_with_60gb_disk": 0.2818518518518518,
+    "reserved_lease_plus_transfer": 2.141026234567901
+  },
+  "starting_credit": 7.088078184399999,
+  "started_at": 1793165802.837493,
+  "deadline": 1793168202,
+  "budget_usd": 5.99,
+  "observed_debit_stop_usd": 5.99,
+  "disk_gb": 60,
+  "payload_sha256": "1ed5f4b84f5b42704733c155f95431600130b10c88c325602d34fade359e4167",
+  "confirm_absence": true,
+  "status": "rented",
+  "id": 58054485,
+  "payload_uploaded_at": 1793165864.135253,
+  "destroy_requested_at": 1793166092.9554691,
+  "destroy_confirmed_at": 1793166093.095552
+}

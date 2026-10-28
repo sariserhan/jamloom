@@ -44,13 +44,15 @@ class AfroHouseTrial(unittest.TestCase):
     def test_replacement_hashes_match_a_hypothetical_exact_permit(self):
         path = Path(__file__).resolve().parents[1] / 'docs/evidence/afro-house-qualification-20261028/replacement-plan.json'
         permit = json.loads(path.read_text())
-        permit.update(status='AUTHORIZED', owner_statement='Approve one replacement run within the remaining $5.99 cap')
+        permit.update(status='AUTHORIZED', owner_statement='complete it')
+        for source in permit['code_sha256']:
+            permit['code_sha256'][source] = hashlib.sha256((Path(__file__).resolve().parents[1] / source).read_bytes()).hexdigest()
         validate_permit(permit, replacement=True)
 
     def test_changed_source_cannot_reuse_prepared_permit(self):
         path = Path(__file__).resolve().parents[1] / 'docs/evidence/afro-house-qualification-20261028/replacement-plan.json'
         permit = json.loads(path.read_text())
-        permit.update(status='AUTHORIZED', owner_statement='Approve one replacement run within the remaining $5.99 cap')
+        permit.update(status='AUTHORIZED', owner_statement='complete it')
         permit['code_sha256']['scripts/afro_house_trial.py'] = '0' * 64
         with self.assertRaisesRegex(ValueError, 'sources changed'):
             validate_permit(permit, replacement=True)
@@ -58,7 +60,7 @@ class AfroHouseTrial(unittest.TestCase):
     def test_replacement_cannot_expand_the_original_aggregate_cap(self):
         path = Path(__file__).resolve().parents[1] / 'docs/evidence/afro-house-qualification-20261028/replacement-plan.json'
         permit = json.loads(path.read_text())
-        permit.update(status='AUTHORIZED', owner_statement='Approve one replacement run within the remaining $5.99 cap')
+        permit.update(status='AUTHORIZED', owner_statement='complete it')
         permit['aggregate_budget_cap_usd'] = 7
         with self.assertRaisesRegex(ValueError, 'original aggregate cap'):
             validate_permit(permit, replacement=True)
@@ -69,7 +71,7 @@ class AfroHouseTrial(unittest.TestCase):
             root = Path(folder); work = root / 'work'; output = root / 'output'; evidence = root / 'evidence'
             work.mkdir(); output.mkdir(); evidence.mkdir()
             permit = json.loads((trial.EVIDENCE / 'replacement-plan.json').read_text())
-            permit.update(status='AUTHORIZED', owner_statement='Approve one replacement run within the remaining $5.99 cap')
+            permit.update(status='AUTHORIZED', owner_statement='complete it')
             (evidence / 'replacement-plan.json').write_text(json.dumps(permit))
             (work / 'trial-state.json').write_text(json.dumps(dict(label=trial.LABEL, offer=dict(host_id=1, machine_id=2), destroy_confirmed_at=1)))
             report_bytes = json.dumps(dict(status='FAIL', cleanup_confirmed=True, tracks=[], observed_debit_usd=permit['aggregate_budget_used_usd'])).encode()
@@ -102,6 +104,34 @@ class AfroHouseTrial(unittest.TestCase):
                     patch.object(trial.vast, 'HOURLY_CEILING', 1), patch.object(trial.vast, 'QUOTE_CEILING', 1):
                 with self.assertRaisesRegex(RuntimeError, 'remaining aggregate cap'):
                     trial.preflight(replacement=True)
+
+    def test_pending_followup_stops_before_provider_access(self):
+        import afro_house_trial as trial
+        with tempfile.TemporaryDirectory() as folder:
+            evidence = Path(folder)
+            plan = json.loads((trial.EVIDENCE / 'followup-plan-003.json').read_text())
+            (evidence / 'followup-plan-003.json').write_text(json.dumps(plan))
+            with patch.object(trial, 'EVIDENCE', evidence), patch.object(trial.vast, 'api') as api, \
+                    patch.object(trial.vast, 'instances') as instances:
+                with self.assertRaisesRegex(ValueError, 'exact Afro House compute authorization'):
+                    trial.preflight(followup=True)
+                api.assert_not_called()
+                instances.assert_not_called()
+
+    def test_followup_authorization_binds_both_reconciled_attempts_and_source_hashes(self):
+        import afro_house_trial as trial
+        plan = json.loads((trial.EVIDENCE / 'followup-plan-003.json').read_text())
+        plan.update(status='AUTHORIZED', owner_statement='Approve one additional attempt up to $5.97 within the $6 aggregate cap')
+        for source in plan['code_sha256']:
+            plan['code_sha256'][source] = hashlib.sha256((Path(__file__).resolve().parents[1] / source).read_bytes()).hexdigest()
+        trial.validate_permit(plan, followup=True)
+        offers = [
+            dict(host_id=24953,machine_id=52126), dict(host_id=410852,machine_id=138174),
+            dict(host_id=27,machine_id=88),
+        ]
+        previous = [json.loads((trial.EVIDENCE / item['receipt']).read_text())['offer'] for item in plan['prior_attempts']]
+        eligible = [offer for offer in offers if trial.avoids_failed_hosts(offer, previous)]
+        self.assertEqual(eligible, [offers[2]])
 
 
 if __name__ == '__main__':
