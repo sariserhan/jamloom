@@ -5,7 +5,7 @@ import unittest
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from afro_house_qualification import CASES, audio_metrics, musical_analysis, plan, validate_plan
+from afro_house_qualification import CASES, audio_metrics, mix_comparison, musical_analysis, plan, validate_plan
 
 
 class AfroHouseQualification(unittest.TestCase):
@@ -71,6 +71,22 @@ class AfroHouseQualification(unittest.TestCase):
         self.assertLess(abs(result['bpm_estimate']-bpm), 4)
         self.assertTrue(result['section_change_candidates'])
         self.assertTrue(all(0 < row['seconds'] < seconds for row in result['section_change_candidates']))
+
+    def test_full_length_mix_comparison_reports_metrics_and_deltas_against_control(self):
+        control = dict(audio=dict(clipped_samples=0, stereo_correlation=.8, mono_fold_down_rms_loss_db=-1),
+            loudness=dict(integrated_lufs=-14, loudness_range_lu=5, true_peak_dbfs=-1),
+            musical=dict(bpm_estimate=122, key_estimate=dict(tonic='A', mode='minor'),
+                onset_strength_variation=.2, mean_low_band_fraction=.25, section_change_candidates=[1, 2]))
+        target = dict(audio=dict(clipped_samples=3, stereo_correlation=.6, mono_fold_down_rms_loss_db=-2),
+            loudness=dict(integrated_lufs=-16, loudness_range_lu=7, true_peak_dbfs=-2),
+            musical=dict(bpm_estimate=121, key_estimate=dict(tonic='D', mode='minor'),
+                onset_strength_variation=.3, mean_low_band_fraction=.2, section_change_candidates=[1]))
+        result = mix_comparison(target, control)
+        self.assertEqual(result['target_full_length']['key_estimate']['tonic'], 'D')
+        self.assertEqual(result['matched_house_control_full_length']['key_estimate']['tonic'], 'A')
+        self.assertEqual(result['delta_vs_matched_house_control']['bpm_estimate'], -1)
+        self.assertEqual(result['delta_vs_matched_house_control']['integrated_lufs'], -2)
+        self.assertEqual(result['delta_vs_matched_house_control']['section_change_candidates'], -1)
 
 
 if __name__ == '__main__':

@@ -38,7 +38,7 @@
     "base": "e432212fec32b8965a14ffa57ae653438d6abd14"
   },
   "code_sha256": {
-    "scripts/afro_house_qualification.py": "4b1e1d8f3433851ba803795e692173bbee9ec30cafdc2e05f2b03267bd6752e7",
+    "scripts/afro_house_qualification.py": "f53a04523776e8e6ad274f64511ad5e0a2eeef80665de62bdccf48cdbff56dc0",
     "scripts/afro_house_trial.py": "d9f572dc061c689adca4ae4a278e4453bc98d38a2408de90c302a56c935b9d74",
     "scripts/cloud_music_setup.sh": "a0d7f76c16c3f2b2ab896e06bb091f08e079acd7c4f01e2dfc5e40a9001bff2c",
     "scripts/cloud_dj_warm.sh": "cc0812c92d822a6a57867f181c372df830aafbc1d60b8a16de07e03b1cf189dc",

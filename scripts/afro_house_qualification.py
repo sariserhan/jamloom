@@ -175,6 +175,26 @@ def segment_metrics(samples, rate, seconds, bpm_hint):
             loudness=loudness_metrics(path), musical=musical_analysis(segment, rate, bpm_hint))
 
 
+def mix_comparison(receipt, control):
+    def metrics(value):
+        return dict(bpm_estimate=value['musical']['bpm_estimate'],
+            key_estimate=value['musical']['key_estimate'],
+            integrated_lufs=value['loudness']['integrated_lufs'],
+            loudness_range_lu=value['loudness']['loudness_range_lu'],
+            true_peak_dbfs=value['loudness']['true_peak_dbfs'],
+            clipped_samples=value['audio']['clipped_samples'],
+            stereo_correlation=value['audio']['stereo_correlation'],
+            mono_fold_down_rms_loss_db=value['audio']['mono_fold_down_rms_loss_db'],
+            onset_strength_variation=value['musical']['onset_strength_variation'],
+            mean_low_band_fraction=value['musical']['mean_low_band_fraction'],
+            section_change_candidates=len(value['musical']['section_change_candidates']))
+
+    target, reference = metrics(receipt), metrics(control)
+    return dict(target_full_length=target, matched_house_control_full_length=reference,
+        delta_vs_matched_house_control={key: round(target[key] - reference[key], 4)
+            for key in target if key != 'key_estimate'})
+
+
 def _render(case, engine, directory, model):
     import soundfile as sf
     import torch
@@ -263,21 +283,23 @@ def execute(output, baseline_path):
                 entry = dict(name=stem, file=str(final.relative_to(output)), sha256=hashlib.sha256(final.read_bytes()).hexdigest(), audio=metrics)
                 track['stems'].append(entry)
         report['status'] = 'PASS technical'
-        baseline = tracks[0]['receipt']
+        matched_control = tracks[0]['receipt']
         report['section_timeline'] = 'PARTIAL; phrase-aligned change candidates are in each mix receipt; owner must label and confirm section roles.'
-        report['comparison'] = {track['id']: dict(
-            bpm_estimate=track['receipt']['musical']['bpm_estimate'],
-            bpm_prompt=track['receipt']['bpm_prompt'],
-            full_mix_loudness=track['receipt']['loudness'],
-            opening_60s=segment_metrics(sf.read(output / track['mix'], always_2d=True, dtype='float32')[0], RATE, 60, track['receipt']['bpm_prompt']),
-            previous_jamloom_baseline_60s=dict(
-                bpm_estimate=baseline_receipt['musical']['bpm_estimate'],
-                integrated_lufs=baseline_receipt['loudness']['integrated_lufs'],
-                loudness_range_lu=baseline_receipt['loudness']['loudness_range_lu'],
-                true_peak_dbfs=baseline_receipt['loudness']['true_peak_dbfs'],
-                stereo_correlation=baseline_audio['stereo_correlation'],
-                mono_fold_down_rms_loss_db=baseline_audio['mono_fold_down_rms_loss_db'])) for track in tracks[1:]}
-        report['comparison_note'] = 'Numeric comparison is technical only. The previous serving-engine output is 60 seconds at its original 128 BPM prompt; candidates are full-length originals at 121–124 BPM. Owner should compare the opening minute and full-track progression by listening.'
+        report['comparison'] = {}
+        for track in tracks[1:]:
+            opening = segment_metrics(sf.read(output / track['mix'], always_2d=True, dtype='float32')[0], RATE, 60,
+                track['receipt']['bpm_prompt'])
+            report['comparison'][track['id']] = {
+                **mix_comparison(track['receipt'], matched_control),
+                'target_opening_60s': opening,
+                'previous_jamloom_baseline_60s': {
+                    'bpm_estimate': baseline_receipt['musical']['bpm_estimate'],
+                    'integrated_lufs': baseline_receipt['loudness']['integrated_lufs'],
+                    'loudness_range_lu': baseline_receipt['loudness']['loudness_range_lu'],
+                    'true_peak_dbfs': baseline_receipt['loudness']['true_peak_dbfs'],
+                    'stereo_correlation': baseline_audio['stereo_correlation'],
+                    'mono_fold_down_rms_loss_db': baseline_audio['mono_fold_down_rms_loss_db']}}
+        report['comparison_note'] = 'Full-length target/control differences and opening-minute Jamloom-baseline measurements are technical only. The previous serving-engine output is 60 seconds at its original 128 BPM prompt; candidates are full-length originals at 121–124 BPM. Owner must compare the opening minute and full-track progression by listening.'
     except Exception as exc:
         report.update(status='FAIL', failed_stage=stage, failure_type=type(exc).__name__, failure=str(exc)[:500])
         raise
