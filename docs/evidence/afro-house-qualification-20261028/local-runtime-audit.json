@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-28T05:30:45Z",
+  "platform": "macOS 26.7.1 arm64",
+  "system_memory_bytes": 17179869184,
+  "torch": {
+    "version": "2.10.0",
+    "mps_built": true,
+    "mps_available": true,
+    "cuda_available": false
+  },
+  "cached_checkpoints": {
+    "acestep-v15-turbo": "build-style-training/upstream/checkpoints/acestep-v15-turbo/model.safetensors",
+    "acestep-5Hz-lm-1.7B": "build-style-training/upstream/checkpoints/acestep-5Hz-lm-1.7B/model.safetensors",
+    "acestep-v15-base": null
+  },
+  "shared_loader": "scripts/dj_track_worker.py::load_ace initializes both models with device=cuda",
+  "prior_local_probe": "documented in docs/AFRO_HOUSE_QUALITY.md: MPS/MLX 10-second generation probe stalled without output; prior report says do not repeat on this device",
+  "inference_attempted_this_audit": false,
+  "paid_replacement_attempted": false,
+  "next_required_action": "Fresh owner authorization for the prepared one-rental replacement plan; no retry is covered by the consumed first permit."
+}
