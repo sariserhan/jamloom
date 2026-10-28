@@ -2,6 +2,7 @@ import sys
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from afro_house_trial import validate_permit
@@ -12,6 +13,13 @@ class AfroHouseTrial(unittest.TestCase):
         permit = dict(status='PENDING_OWNER_CAP', campaign='jamloom-afro-house-quality-20261028')
         with self.assertRaisesRegex(ValueError, 'exact Afro House compute authorization'):
             validate_permit(permit)
+
+    def test_pending_plan_stops_preflight_before_provider_access(self):
+        import afro_house_trial as trial
+        with patch.object(trial.vast, 'api') as provider:
+            with self.assertRaisesRegex(ValueError, 'exact Afro House compute authorization'):
+                trial.preflight()
+            provider.assert_not_called()
 
     def test_wrong_cap_cannot_start_paid_compute(self):
         permit = dict(status='AUTHORIZED', campaign='jamloom-afro-house-quality-20261028', budget_usd=1)
