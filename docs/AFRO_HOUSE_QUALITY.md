@@ -16,6 +16,8 @@ Added `scripts/afro_house_qualification.py`, a separate no-retry full-length qua
 
 The pinned [ACE-Step 1.5 Turbo model card](https://huggingface.co/ACE-Step/Ace-Step1.5/blob/19671f406d603126926c1b7e2adc169acbcade22/README.md) and [ACE-Step Base model card](https://huggingface.co/ACE-Step/acestep-v15-base/blob/e432212fec32b8965a14ffa57ae653438d6abd14/README.md) identify MIT licensing and state that generated music may be used commercially. Their training-data clearance statements are publisher claims; Jamloom has not independently audited the underlying catalog. The qualification therefore uses no reference audio, training or fine-tuning, and retains that rights caveat with its evidence.
 
+Measured the pinned prior Jamloom house output locally as a baseline before the GPU run: 60 seconds, 48 kHz stereo PCM; -17.4 LUFS integrated, -0.9 dBFS true peak, no clipped samples, 129.2 BPM estimate against a 128 BPM prompt, and an A-minor key estimate. The source receipt and artifact hashes are retained in [baseline metrics](evidence/afro-house-qualification-20261028/jamloom-baseline-metrics.json). These signal measurements do not establish musical quality; listening remains NOT RUN.
+
 ## Evidence
 
 - **PASS — prompt contract:** `tests/test_dj_track_worker.py` checks the 122 BPM target and required Afro House prompt characteristics.

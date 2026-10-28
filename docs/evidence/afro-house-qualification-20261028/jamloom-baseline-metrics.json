@@ -1,0 +1,64 @@
+{
+  "status": "PASS technical",
+  "artifact": "renders/dj-quality-20261025/house-0.wav",
+  "sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+  "source_report": "renders/dj-quality-20261025/report.json",
+  "source_report_sha256": "a918ed12bbddb74848356dd1f044e888ea8bebe6b2237ce8b0f72bebb35daae5",
+  "generation_receipt": {
+    "version": 1,
+    "engine": "1012a1b615b5eacb9495e96bb74fb75c",
+    "job": "d748c393-c921-4f97-9e4a-8b6a930552f4",
+    "request": {
+      "version": 1,
+      "session": "e491482fa99e4b05b374a51b89878d12",
+      "sequence": 0,
+      "seed": 251025,
+      "style": "house",
+      "energy": 4,
+      "mood": "deep"
+    },
+    "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+    "compute_ms": 2512,
+    "bytes": 11520044,
+    "sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "vocal": null
+  },
+  "audio": {
+    "seconds": 60.0,
+    "sample_rate": 48000,
+    "channels": 2,
+    "peak_dbfs": -1.0,
+    "rms_dbfs": -20.06,
+    "clipped_samples": 0,
+    "stereo_correlation": 0.9339,
+    "mono_fold_down_rms_loss_db": -0.15,
+    "status": "PASS technical"
+  },
+  "musical": {
+    "bpm_estimate": 129.2,
+    "requested_bpm": 128,
+    "onset_strength_variation": 0.2672,
+    "mean_low_band_fraction": 0.44205,
+    "key_estimate": {
+      "tonic": "A",
+      "mode": "minor",
+      "confidence": 0.2227
+    },
+    "section_change_candidates": [
+      {
+        "seconds": 15.0,
+        "score": 1.4406
+      }
+    ],
+    "phrase_window_bars": 8,
+    "note": "Tempo/key are signal estimates. Change points are phrase-aligned candidates; section roles require listening review."
+  },
+  "loudness": {
+    "integrated_lufs": -17.4,
+    "loudness_range_lu": 6.0,
+    "true_peak_dbfs": -0.9
+  },
+  "comparison_role": "Prior Jamloom house-worker output; 60 seconds, prompt BPM 128. Numeric comparison to five-minute 121-124 BPM candidates is diagnostic; owner listening decides quality.",
+  "human_listening": "NOT RUN"
+}
