@@ -1,6 +1,10 @@
 # Question phrase: revised bass-led direction — 2026-10-30
 
-**PARTIAL.** The owner rejected all four A–D arrangements at port 8774 as too
+**PASS — owner accepts this pilot’s musical direction and exact user crop.**
+[Hash-bound verdict](evidence/question-bass-response-20261030/owner-acceptance.json):
+“Musical direction works; crop is correct.” Broader quality remains **PARTIAL**.
+
+The owner rejected all four A–D arrangements at port 8774 as too
 piano-heavy. That is a **FAIL** musical verdict, regardless of their passing
 technical checks. The earlier three Afro House acceptances are unchanged.
 [Exact feedback and candidate hashes](evidence/finish-local-20261030/owner-rejection.json).
@@ -10,9 +14,10 @@ electronic percussion, sub bass and moving bass coloured by the permitted input'
 spectrum, with a call, rise, drop, break, changed return and ending. There is no
 piano. Source stresses determine bass attack positions. Three calls preserve the
 chosen crop at its original rate, with fades and gain; other events use signal
-fragments and echoes. This is authored local synthesis, not a trained model or
-accepted musical result. Exact crop boundaries and the new pilot's quality are
-**NOT RUN** until the owner reviews them.
+fragments and echoes. This is authored local synthesis. The owner confirms that
+the original crop contains the complete user phrase without Mr Wobble’s voice,
+and accepts the musical direction of this exact pilot. This does not establish
+a trained model or acceptance across other sources and arrangements.
 
 ## What the reference supports
 
@@ -52,9 +57,9 @@ tool, so it does not claim to have heard or musically evaluated the reference.
   correct page content, no overflow or JavaScript errors. Screenshots inspected.
   Existing repository Playwright workflow used because the browser plugin's
   required execution tool was unavailable. **NOT RUN:** physical-device playback
-  of this new audition and owner listening.
-- **NOT RUN:** verified source crop, musical acceptance, diverse source/seed
-  coverage, expert decision labels, M1 qualification and learned-model benefit.
+  of this new audition. **PASS:** owner listening for this pilot’s direction and crop.
+- **NOT RUN:** diverse source/seed coverage, expert decision labels, M1
+  qualification and learned-model benefit.
 
 [Audio receipt](evidence/question-bass-response-20261030/audio-validation.json),
 [arrangement plan](evidence/question-bass-response-20261030/arrangement-plan.json),

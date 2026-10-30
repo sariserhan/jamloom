@@ -1,0 +1,19 @@
+{
+  "recorded_utc": "2026-10-30T19:19:12.315421+00:00",
+  "listener": "owner; sole required listener",
+  "owner_statement": "Musical direction works; crop is correct",
+  "review_url": "http://127.0.0.1:8775",
+  "musical_direction": "PASS owner acceptance for this exact pilot",
+  "source_crop": "PASS owner confirms complete user phrase without Mr Wobble voice",
+  "audition_sha256": "de873b404c2965bcd2f4c31cd149e4bf5a9869501c4efc81608e6c342ccb4f58",
+  "source_crop_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "raw_performance_sha256": "ce64948dcbb719c71ddf2fb3071f6320b53918757bbda4d8a6f40d22f2483043",
+  "crop_seconds_in_reference": [
+    1.78,
+    3.0
+  ],
+  "scope": "Accepted direction and exact crop for this one pilot; not universal musical quality, broader source coverage, expert transformation labels, learned-model benefit, or release acceptance.",
+  "previous_A_D_verdict": "FAIL unchanged",
+  "previous_Afro_House_verdict": "PASS unchanged",
+  "paid_or_publication_authorization_added": false
+}
