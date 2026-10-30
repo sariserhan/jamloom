@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-30T23:28:14.561337+00:00",
+  "hosted": "FAIL",
+  "cause": "5000-reference song plan rejected by the 262144-byte limit at singing_response.py:201 before audio generation",
+  "reproduction": "New test_maximum_playlist_plan_survives_singer_file_boundary failed at the identical loader line before the fix; it constructs a genuine song_plan with 5000 favorites, influences and track profiles",
+  "local_fix": "PASS; Music DNA bounded to 12 MiB and 5000 entries per reference list; short-reply 256 KiB cap unchanged; bounded binary read; no references discarded",
+  "checks": 36,
+  "test_command": ".venv-singer/bin/python -m unittest tests.test_music_dna_song tests.test_singing_response",
+  "hosted_retest": "NOT RUN; maximum-test permit consumed; new code is local only and is excluded from approved image ea0fdba0",
+  "source_sha256": {
+    "scripts/singing_response.py": "2227f592a0f2918d8817b274ab16164cf5c47142980981ba14554799bd809821",
+    "tests/test_music_dna_song.py": "e18ea601ff6bbadf1b7d5cee72754c12453615b887ae4df6ee57d2c04c790c10",
+    "tests/test_singing_response.py": "42705b2a91854ca79967e62bc01aaa1a8fa362f8a3d50d53515f892f80c2cd35"
+  }
+}

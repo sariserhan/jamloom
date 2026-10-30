@@ -1,12 +1,15 @@
 {
-  "status": "PARTIAL; trial running, no ready worker observed yet",
+  "status": "Completed FAIL after successful prewarm; cleanup PASS",
   "states_observed": [
     "INITIALIZING",
     "THROTTLED"
   ],
-  "provider_requests_dispatched": 0,
+  "provider_requests_dispatched": 1,
   "limits": "One worker, $3, 40-minute deadline unchanged",
   "interpretation": "Provider state documentation identifies throttled workers as host GPUs occupied; no model inference failure is established before dispatch",
   "source": "https://raw.githubusercontent.com/runpod/docs/main/serverless/workers/overview.mdx",
-  "no_configuration_expansion": true
+  "no_configuration_expansion": true,
+  "prewarm_seconds": 1158,
+  "final_failure": "composing-exit-1@singing_response.py:201",
+  "result": "maximum-postcheck.json"
 }

@@ -1,0 +1,7 @@
+{
+  "at": "2026-10-30T23:28:14.561337+00:00",
+  "status": "PASS",
+  "postgres": "Stopped after independent maximum postcheck; pg_ctl status reports no server running",
+  "remote": "maximum-postcheck.json: 0/0, zero workers/jobs, temporary database and object removed, test credits refunded",
+  "scope": "Maximum trial cleanup snapshot; local PostgreSQL may be restarted for the separately approved sample audition"
+}

@@ -10,7 +10,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts'))
 from music_dna_song import favorites, song_plan, parse_draft, run, draft, retry_direction, performance_caption, check_render
-from singing_response import caption, digest, text_field, VOCAL_PROFILES
+from singing_response import caption, digest, text_field, VOCAL_PROFILES, load_plan
 from dna_direction import direction_for
 from dna_direction import POLICY
 from dna_sound import unknown, sound_guidance
@@ -61,6 +61,34 @@ class MusicDnaSong(unittest.TestCase):
         self.assertIn(self.data['sound'], caption(case))
         self.assertNotIn('Artist One', caption(case))
         self.assertNotIn('source_audio', plan)
+
+    def test_maximum_playlist_plan_survives_singer_file_boundary(self):
+        refs = [{'reference': f'Track {i} — Singer {i}', 'catalogue_genre': 'Soul'} for i in range(5000)]
+        tracks = [unknown(ref) for ref in refs]
+        data = copy.deepcopy(self.data)
+        data.update(direction_id=direction_for(refs)['id'], energy=direction_for(refs)['energy'],
+                    instruments=direction_for(refs)['instruments'])
+        plan = song_plan(data, refs[:2], 123, all_refs=refs, track_profiles=tracks)
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / 'plan.json'
+            path.write_text(json.dumps(plan, ensure_ascii=False, indent=2))
+            self.assertGreater(path.stat().st_size, 262144)
+            loaded = load_plan(path)
+        self.assertEqual(loaded, plan)
+        for field in ('favorites', 'influences', 'track_profiles'):
+            self.assertEqual(len(loaded[field]), 5000)
+            self.assertEqual(loaded[field][-1]['reference'], refs[-1]['reference'])
+
+    def test_dna_plan_file_remains_bounded(self):
+        plan = song_plan(self.data, self.refs, 123)
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / 'plan.json'
+            path.write_text(json.dumps(plan) + ' ' * (12 * 1024 * 1024))
+            with self.assertRaisesRegex(ValueError, 'size budget'): load_plan(path)
+            for field in ('favorites', 'influences', 'track_profiles'):
+                for invalid in ([self.refs[0]] * 5001, 'not a list'):
+                    path.write_text(json.dumps({**plan, field: invalid}))
+                    with self.assertRaisesRegex(ValueError, 'reference count'): load_plan(path)
 
     def test_duration_boundaries_and_retry_preserve_the_arrangement(self):
         from music_dna_song import retry_direction

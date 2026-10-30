@@ -202,6 +202,11 @@ class SingingPlans(unittest.TestCase):
             with self.assertRaises(ValueError): validate_plan(value)
             p.write_text(' ' * 262145)
             with self.assertRaises(ValueError): load_plan(p)
+            # Valid JSON must not bypass the original short-reply budget.
+            p.write_text(json.dumps(self.plan()) + ' ' * 262144)
+            with self.assertRaisesRegex(ValueError, 'size budget'): load_plan(p)
+            p.write_bytes(b' ' * (12 * 1024 * 1024 + 1))
+            with self.assertRaisesRegex(ValueError, 'size budget'): load_plan(p)
 
 
 if __name__ == '__main__':

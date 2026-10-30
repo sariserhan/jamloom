@@ -1,0 +1,2285 @@
+{
+  "startedAt": "2026-10-30T23:03:24.645Z",
+  "maxUSD": 3,
+  "maxWorkers": 1,
+  "maxSeconds": 2400,
+  "scope": "qualification",
+  "requests": [
+    {
+      "id": "a61714bb214d4098a57b37cd63b39f8f",
+      "owner": "trial-0",
+      "label": "maximum-dna",
+      "product": "music-dna",
+      "quotedCredits": 4,
+      "transitions": [
+        {
+          "seconds": 1159,
+          "state": "queued",
+          "provider": "IN_QUEUE"
+        },
+        {
+          "seconds": 1179,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 1223,
+          "state": "failed",
+          "provider": "FAILED"
+        }
+      ],
+      "provider_id": "f0b470e0-c041-422e-9995-cea7b8c37499-u2",
+      "provider_status": "FAILED",
+      "execution_ms": "46474",
+      "delay_ms": "11254",
+      "estimated_cost_micros": "78000",
+      "failure": "composing-exit-1@singing_response.py:201",
+      "state": "failed",
+      "finalState": "failed",
+      "finalBalance": {
+        "available": 50,
+        "reserved": 0
+      }
+    }
+  ],
+  "health": [
+    {
+      "seconds": 6,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 16,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 26,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 36,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 46,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 56,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 66,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 76,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 86,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 97,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 107,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 117,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 127,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 137,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 147,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 157,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 167,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 177,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 187,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 197,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 208,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 218,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 228,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 238,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 248,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 258,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 268,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 278,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 288,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 298,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 308,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 318,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 329,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 339,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 349,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 359,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 369,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 379,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 390,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 400,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 410,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 420,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 430,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 440,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 450,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 460,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 470,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 480,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 490,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 500,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 511,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 521,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 531,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 541,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 551,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 561,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 571,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 582,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 592,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 602,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 612,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 622,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 632,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 642,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 652,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 662,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 672,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 682,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 692,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 702,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 713,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 723,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 733,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 743,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 753,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 763,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 773,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 783,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 793,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 803,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 813,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 823,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 834,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 844,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 854,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 864,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 874,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 884,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 894,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 904,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 914,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 924,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 934,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 946,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 956,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 967,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 977,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 987,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 997,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1007,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1017,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1027,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1037,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1048,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1058,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1068,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1078,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1088,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1098,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1108,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1118,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1128,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1138,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1148,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1158,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 1,
+        "initializing": 0,
+        "ready": 1,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1169,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 0,
+        "inQueue": 1,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 1,
+        "initializing": 0,
+        "ready": 1,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1179,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 1,
+        "initializing": 0,
+        "ready": 1,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1192,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1203,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1213,
+      "jobs": {
+        "completed": 30,
+        "failed": 13,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1223,
+      "jobs": {
+        "completed": 30,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    }
+  ],
+  "cleanup": true,
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fa5cc3eb457db0eb0657ea3936ea1cf200064e3328a2c04ba86ce8b63a2148cd",
+  "disabled": true,
+  "templateId": "jbpcd0xgbf",
+  "endpoint": "jl77hn92npt65k",
+  "billingBefore": [
+    {
+      "amount": 0.028195693623274565,
+      "timeBilledMs": 56574,
+      "diskSpaceBilledGB": 120,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 18:00:00"
+    },
+    {
+      "amount": 0.5447215219028294,
+      "timeBilledMs": 1230991,
+      "diskSpaceBilledGB": 480,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 20:00:00"
+    }
+  ],
+  "prewarmSeconds": 1158,
+  "error": "Trial stopped after request failure or repeated polling errors",
+  "finalHealth": {
+    "jobs": {
+      "completed": 30,
+      "failed": 14,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "stopped": true,
+  "removedObjects": 1,
+  "qualification": "FAIL",
+  "billingAfter": [
+    {
+      "amount": 0.028195693623274565,
+      "timeBilledMs": 56574,
+      "diskSpaceBilledGB": 120,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 18:00:00"
+    },
+    {
+      "amount": 0.5447215219028294,
+      "timeBilledMs": 1230991,
+      "diskSpaceBilledGB": 480,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 20:00:00"
+    }
+  ],
+  "finishedAt": "2026-10-30T23:24:15.857Z"
+}

@@ -61,9 +61,15 @@
   "authorized_utc": "2026-10-30T23:03:19.082186+00:00",
   "execution": {
     "trial_invocations": 1,
-    "provider_requests_started": 0,
+    "provider_requests_started": 1,
     "retries": 0,
-    "status": "MAXIMUM_RUNNING",
-    "trial_started_at": "2026-10-30T23:03:24.464606+00:00"
+    "status": "COMPLETE",
+    "trial_started_at": "2026-10-30T23:03:24.464606+00:00",
+    "receipt": "docs/evidence/dna-completion/cloud/2026-10-30T23-03-24.644Z/trial-result.json",
+    "prewarm_seconds": 1158,
+    "trial_exit": 1,
+    "trial_finished_at": "2026-10-30T23:24:15.917904+00:00",
+    "qualification": "FAIL",
+    "cleanup": "PASS"
   }
 }
