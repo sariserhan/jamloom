@@ -9,6 +9,7 @@ type Quote={token:string;credits:number;expiresAt:number};
 export function ImproviseCreate(){
  const [file,setFile]=useState<Blob|null>(null),[name,setName]=useState(''),[preview,setPreview]=useState(''),[genre,setGenre]=useState('surprise'),[voice,setVoice]=useState('surprise');
  const [visibility,setVisibility]=useState<'public'|'private'>('public'),[open,setOpen]=useState(false);
+ const [canCreate,setCanCreate]=useState<boolean|null>(null);
  const sharing=visibility==='public';
  const [busy,setBusy]=useState(false),[recording,setRecording]=useState(false),[message,setMessage]=useState(''),[job,setJob]=useState<string|null>(null),[progress,setProgress]=useState<SongProgress|null>(null),[ready,setReady]=useState<string|null>(null),[quote,setQuote]=useState<Quote|null>(null);
  const recorder=useRef<MediaRecorder|null>(null),stream=useRef<MediaStream|null>(null),recordTimer=useRef<ReturnType<typeof setTimeout>|undefined>(undefined),dialog=useRef<HTMLDialogElement>(null),alive=useRef(true),sourceId=useRef<string|null>(null),requestId=useRef<string|null>(null),upload=useRef<AbortController|null>(null),submitting=useRef(false),cancelWanted=useRef(false);
@@ -20,7 +21,7 @@ export function ImproviseCreate(){
  useEffect(()=>{if(open)dialog.current?.showModal();else dialog.current?.close();},[open]);
  useEffect(()=>{
   try{const id=localStorage.getItem(historyKey);if(id&&/^[a-f0-9]{32}$/.test(id))setJob(id);}catch{}
-  void fetch(endpoint,{signal:AbortSignal.timeout(10000)}).then(r=>r.json()).then(data=>{if(alive.current&&data.active)setJob(data.active);}).catch(()=>{});
+  void fetch(endpoint,{signal:AbortSignal.timeout(10000)}).then(r=>r.ok?r.json():null).then(data=>{if(alive.current){setCanCreate(data?.creditsEnabled===true);if(data?.active)setJob(data.active);}}).catch(()=>{if(alive.current)setCanCreate(false);});
  },[]);
  useEffect(()=>{
   if(!job)return;let stopped=false,timer:ReturnType<typeof setTimeout>;const checkingUntil=Date.now()+60000;
@@ -80,6 +81,7 @@ export function ImproviseCreate(){
   try{const r=await fetch(endpoint+'?id='+job,{method:'DELETE',headers:{'X-Jamloom-DNA':'1'}});if(!r.ok)throw Error();setProgress({state:'cancelling'});}catch{setMessage('Could not confirm cancellation. We’re still checking your song.');}
  }
  return <section id="improvise-create" className="improvise-create" aria-label="Create with Improvise">
+  {canCreate!==true&&<p role="status">{canCreate===null?'Checking song availability…':'Song creation is currently unavailable. Listen to examples below, or try free Local Remixes. Your recording stays on your device.'}</p>}
   <div className="studio-grid">
    <section className="capture-panel" aria-labelledby="improvise-sound-title">
     <div className="panel-heading"><h2 id="improvise-sound-title">Your sound</h2><span className="step-label">01 / Capture</span></div>
@@ -103,7 +105,7 @@ export function ImproviseCreate(){
     <div className="improvise-selects"><div><label htmlFor="improvise-genre">All styles</label><select id="improvise-genre" value={genre} disabled={locked} onChange={e=>setGenre(e.target.value)}><option value="surprise">Surprise me</option>{Object.entries(styles).map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></div><div><label htmlFor="improvise-singer">Singer</label><select id="improvise-singer" value={voice} disabled={locked} onChange={e=>setVoice(e.target.value)}><option value="surprise">Surprise me</option><option value="female">Female</option><option value="male">Male</option></select></div></div>
     <p className="muted improvise-song-note">We create the music and AI singing, then blend in a phrase, a loop or your whole short recording—whichever fits the song.</p>
     <p className="muted improvise-song-note">30–45 seconds · Inspired by your words or sound</p>
-    <button className="primary generate" disabled={!file||locked} onClick={()=>{previewPlayer.current?.pause();setMessage('');setOpen(true);}}>Make my song <span aria-hidden="true">↗</span></button>
+    <button className="primary generate" disabled={!file||locked||canCreate!==true} onClick={()=>{previewPlayer.current?.pause();setMessage('');setOpen(true);}}>Make my song <span aria-hidden="true">↗</span></button>
     <p className="muted improvise-song-note">Choose public or private and review credits next.</p>
     {progress&&!open&&<GenerationProgress {...progress}/>} {!!job&&<button className="secondary" onClick={cancel}>Cancel song</button>}
     <p role="status">{!open?message:''}</p>

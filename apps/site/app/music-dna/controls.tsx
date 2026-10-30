@@ -22,6 +22,7 @@ export function TasteNotebook(){
  const [playlistQuery,setPlaylistQuery]=useState<{text:string}|null>(null);
  const [progress,setProgress]=useState<SongProgress|null>(null);
  const [cloud,setCloud]=useState(false);
+ const [canCreate,setCanCreate]=useState<boolean|null>(null);
  const [visibility,setVisibility]=useState<'public'|'private'>('public');
  const [quote,setQuote]=useState<{credits:number;token:string;expiresAt:number;key:string}|null>(null);
  const requestId=useRef<string|null>(null),prompt=useRef<HTMLDialogElement>(null),generationButton=useRef<HTMLButtonElement>(null);
@@ -42,7 +43,7 @@ export function TasteNotebook(){
  useEffect(()=>{try{const old=localStorage.getItem('jamloom-taste-v1');if(old)setProfile(favoriteList(validateTaste(JSON.parse(old))));writable.current=true;}catch{setMessage('Saved favorites could not be read. You can start a new list.');}finally{setLoaded(true);}},[]);
  useEffect(()=>{if(!loaded||!writable.current)return;try{if(profile.references.length)localStorage.setItem('jamloom-taste-v1',JSON.stringify(profile));else localStorage.removeItem('jamloom-taste-v1');}catch{setMessage('Your list is available for this session, but this browser could not save it.');}},[profile,loaded]);
  useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;analysis.current?.abort();};},[]);
- useEffect(()=>{void fetch('/api/taste/song',{signal:AbortSignal.timeout(10000)}).then(r=>r.json()).then(data=>{if(mounted.current&&data.mode==='cloud'){setCloud(true);if(data.active){setJob(data.active);setRendering(true);}}}).catch(()=>{});},[]);
+ useEffect(()=>{void fetch('/api/taste/song',{signal:AbortSignal.timeout(10000)}).then(r=>r.ok?r.json():null).then(data=>{if(mounted.current){setCanCreate(data?.creditsEnabled===true);if(data?.mode==='cloud'){setCloud(true);if(data.active){setJob(data.active);setRendering(true);}}}}).catch(()=>{if(mounted.current)setCanCreate(false);});},[]);
  useEffect(()=>{
   let stopped=false;
   void (async()=>{
@@ -186,10 +187,11 @@ export function TasteNotebook(){
  <div className="dna-summary"><h3>{profile.references.length?'Your music DNA':'Your next favorite?'}</h3>
  {taste.genres.length?<div className="dna-genre-tags">{taste.genres.map(g=><span key={g.name}>{g.name}</span>)}</div>:<p>{profile.references.length?'We’ll find your sound from your list.':'An original song with AI vocals, inspired by your favorites.'}</p>}
  {profile.references.length>0&&<details><summary>How we choose your sound</summary>{direction&&<p><strong>Song direction: {direction.label}</strong> · {direction.energy}. Based on {direction.coverage} of {direction.total} favorites with recognized catalogue genres.</p>}<p>We consider your whole list to choose a groove, instruments, mood and vocal delivery, then write original lyrics and music.</p><p>Catalogue genres and the model’s knowledge guide this interpretation. We don’t listen to or sample the original recordings, and unfamiliar names may not provide enough information.</p></details>}</div>
- <button ref={generationButton} className="primary" disabled={locked||!loaded||!profile.references.length} onClick={openPrompt}>{rendering?'Making your music…':takes.length?'Make another song':'Make my music'}</button>
+ <button ref={generationButton} className="primary" disabled={locked||!loaded||!profile.references.length||canCreate!==true} onClick={openPrompt}>{rendering?'Making your music…':takes.length?'Make another song':'Make my music'}</button>
+ {canCreate!==true&&<p role="status">{canCreate===null?'Checking song availability…':'Song creation is currently unavailable. Build your favorites list and listen to examples below.'}</p>}
  {progress&&!promptOpen&&<GenerationProgress {...progress}/>}
  {rendering&&!promptOpen&&<button className="secondary" onClick={cancel}>Cancel composition</button>}
- <small>One song each time · Ready in a few minutes</small>
+ {canCreate===true&&<small>One song each time · Ready in a few minutes</small>}
  <details className="dna-language"><summary>Song language <span>{(languages.languages as Record<string,string>)[profile.vocalLanguage??'auto']??'Automatic'}</span></summary>
  <label>Singing language<select disabled={locked||!loaded} value={profile.vocalLanguage??'auto'} onChange={e=>{writable.current=true;setProfile({...profile,vocalLanguage:e.target.value});}}><option value="auto">Choose from my favorites</option>{Object.entries(languages.languages).map(([code,label])=><option key={code} value={code}>{label}</option>)}</select></label>
  <details><summary>How language is chosen</summary><p>Automatic language follows your favorites, with a small boost for matching languages in your approximate country. English-only favorites stay English wherever you are. Choose a language above to keep it fixed.</p></details></details>
