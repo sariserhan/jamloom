@@ -1,3 +1,5 @@
+**Current listener policy — 2026-10-30:** Only the owner is required. Use reviewer code `owner`; no independent participants need to be recruited. Complete actual judgments for the assigned samples. Earlier packet/evidence descriptions below remain historical. [Amendment](LISTENING_OWNER_AMENDMENT.md).
+
 # Local blinded listening form
 
 2026-10-18. **Form and packaging: PASS. Actual listening / M1: NOT RUN.**

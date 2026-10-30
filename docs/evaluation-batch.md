@@ -1,3 +1,5 @@
+**Current listener policy — 2026-10-30:** The owner is the sole required listener. Earlier dated results below preserve their original scope. Current summaries use `--owner-listener-id owner`; additional reviewers are not a prerequisite.
+
 # Reproducible local evaluation preparation
 
 Recorded 2026-10-17. **Batch preparation: PASS. Dataset/preregistration: PARTIAL.
@@ -123,7 +125,7 @@ specification, supplied speech fixture or `~/mlx-env` was changed.
 
 The [protocol](evaluation-protocol.md) still requires 20–50 cleared sources,
 including at least ten speech clips across speakers/sessions, coverage of other
-sound categories, and at least three independent reviewers per block. The
+sound categories, and one complete owner judgment set per block. The
 tool reports missing prerequisites but cannot authenticate consent, establish
 reviewer independence, supply observations or approve production quality.
 
@@ -136,11 +138,11 @@ candidate/baseline ratings. Input CSVs are never edited. Notes may contain quote
 newlines. Files are bounded to 1 MiB and total parsed rows to 60,000.
 
 ```sh
-python3 scripts/summarize_listening.py --batch renders/licensed-evaluation-validated-20261018 --ratings /path/to/completed/responses.csv --pairs /path/to/completed/pairs.csv --output /fresh/listening-summary.json
+python3 scripts/summarize_listening.py --batch renders/licensed-evaluation-validated-20261018 --owner-listener-id owner --ratings /path/to/completed/responses.csv --pairs /path/to/completed/pairs.csv --output /fresh/listening-summary.json
 ```
 
 Repeat `--ratings` and `--pairs` for more submitted files. Use consistent opaque
-listener IDs; three distinct IDs alone do not prove reviewer independence.
+listener code `owner` (or pass its assigned opaque code with `--owner-listener-id`). Only that owner’s rows contribute to the current summary; other IDs cannot substitute for missing owner judgments.
 An omitted or wholly blank form supplies no observations and produces **NOT RUN**,
 not a zero score. Partially completed individual rows are rejected rather than
 filled in. The current real cohort has no submitted ratings.
@@ -155,7 +157,7 @@ percentile bootstrap intervals use 2,000 deterministic source-clip resamples;
 a single clip gets no interval. Sample sizes and complete-reviewer-ID coverage
 remain visible. Raw judgments remain in the hashed source CSVs.
 
-The tool does not infer audible variety, genuine independence, representative
+The tool does not infer audible variety, owner identity, representative
 sampling or release acceptance. Even populated results remain **PARTIAL** pending
 human evidence review, and it never automatically passes M1. The unit checks use
 temporary, explicitly labelled algorithm fixtures, not study observations.

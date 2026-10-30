@@ -48,7 +48,7 @@ passed. Original logs/hashes are retained in the validation manifest.
 
 | Gate | Status / owner | Required next evidence |
 | --- | --- | --- |
-| Independent M1 | NOT RUN / owner + reviewers | At least 10 initial listeners, at least three independent judgments per assigned comparison, verified diverse cohort and preregistered rubric. Owner cannot arrange listeners yet; [materials ready](listening-review.md) |
+| Owner M1 | NOT RUN / owner | One listener: the owner, per the 2026-10-30 amendment. One complete owner judgment set per assigned comparison, verified diverse cohort and preregistered rubric; [materials ready](listening-review.md) |
 | Original music/DJ quality | PARTIAL / engineering + listeners | Broader voice/style coverage, cohesive fresh material, natural short singing and sustained capacity/cost. Rejected vocal stays excluded; permits consumed. Prepare a targeted experiment before requesting new capped compute |
 | Singing accuracy/latency | PARTIAL / engineering + physical setup | Independent labelled holdout and calibrated microphone-to-output/display measurement across rooms/devices. Current 40-recording/29-singer corpus was previously inspected; software timestamps are not physical latency |
 | Apple credit metadata | PARTIAL / release preparation | Genuine credit-purchase review screenshots and reviewer access, then product readiness verification. Do not substitute unrelated course screenshots or activate public purchases |

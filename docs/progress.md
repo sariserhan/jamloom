@@ -1,3 +1,5 @@
+**Listening amendment — 2026-10-30:** The owner is the sole required listener. Additional/independent listener recruitment is no longer a completion gate. Actual owner judgments, coverage and the remaining technical/release requirements still apply. [Specification amendment](LISTENING_OWNER_AMENDMENT.md).
+
 ## Current follow-through — 2026-10-30
 
 **PARTIAL overall.** [Current work and evidence](COMPLETION_CURRENT.md): simulator MP3 playback is fixed for Debug automation; all 22 UI flows, two isolated StoreKit fixtures and 51 other native tests pass (four opt-in checks skipped). Both unsigned iOS Release and website production builds/audits pass. Bootstrap prerequisites, repository mapping and editable unverified target drafts pass locally. Initial failures and two undiagnosed SwiftUI runtime warnings are retained. Read-only provider/schema checks pass; verified musical targets, independent participants, fresh hosted compute, physical-device work and release gates remain open.

@@ -19,7 +19,9 @@ def estimate(values):
     return {'source_clips':len(values),'mean':mean,'bootstrap_95_percent':interval}
 
 
-def summarize(batch,ratings_files=(),pairs_files=()):
+def summarize(batch,ratings_files=(),pairs_files=(),owner_listener_id=None):
+    if owner_listener_id is not None and not re.fullmatch('[a-zA-Z0-9_-]{1,64}',owner_listener_id):
+        raise ValueError('use an opaque owner listener ID')
     batch=Path(batch);freeze_bytes=(batch/'freeze.json').read_bytes();freeze=json.loads(freeze_bytes)
     report=json.loads((batch/'report.json').read_text())
     if hashlib.sha256(freeze_bytes).hexdigest()!=report['freeze_sha256']:raise ValueError('freeze hash mismatch')
@@ -73,6 +75,12 @@ def summarize(batch,ratings_files=(),pairs_files=()):
                     candidate=next(c for c in submitted if codes[c]['strategy']!='baseline');identity+=(candidate,)
                     if identity in pairs:raise ValueError('duplicate listener/block/candidate comparison')
                     pairs[identity]='tie' if preferred=='tie' else ('win' if preferred==candidate else 'loss')
+    excluded_ratings=excluded_pairs=0
+    if owner_listener_id is not None:
+        excluded_ratings=sum(key[0]!=owner_listener_id for key in ratings)
+        excluded_pairs=sum(key[0]!=owner_listener_id for key in pairs)
+        ratings={key:value for key,value in ratings.items() if key[0]==owner_listener_id}
+        pairs={key:value for key,value in pairs.items() if key[0]==owner_listener_id}
     for listener,block,code in pairs:
         control=next(c for c,v in blocks[block]['key']['codes'].items() if v['strategy']=='baseline')
         if (listener,block,code) not in ratings or (listener,block,control) not in ratings:raise ValueError('comparison lacks corresponding candidate/baseline ratings')
@@ -82,6 +90,7 @@ def summarize(batch,ratings_files=(),pairs_files=()):
         for listener in {key[0] for key in ratings if key[1]==block}:
             if all((listener,block,c) in ratings for c in info['key']['codes']) and all((listener,block,c) in pairs for c,v in info['key']['codes'].items() if v['strategy']!='baseline'):complete.append(listener)
         coverage[block]={'complete_reviewer_ids':len(complete),'three_ids_present':len(complete)>=3}
+        if owner_listener_id is not None:coverage[block]['owner_complete']=owner_listener_id in complete
     results={}
     for style in STYLES:
         by_clip={};votes={}
@@ -101,21 +110,25 @@ def summarize(batch,ratings_files=(),pairs_files=()):
             'paired_clip_win_fraction':estimate([value=='win' for value in decisions.values()]),
             'rated_source_clips':len(by_clip),'individual_ratings':sum(1 for (_,b,c) in ratings if blocks[b]['key']['codes'][c]['strategy']==style)}
     return {'status':'PARTIAL' if ratings else 'NOT RUN','scope':'descriptive human-response summary; M1 requires human evidence review',
-        'formal_quality':'NOT RUN','reviewer_independence':'NOT RUN','audible_variety':'NOT RUN',
+        'formal_quality':'NOT RUN','reviewer_independence':'NOT REQUIRED' if owner_listener_id is not None else 'NOT RUN','audible_variety':'NOT RUN',
+        'listener_policy':'one owner' if owner_listener_id is not None else 'historical multi-listener summary',
+        'owner_listener_id':owner_listener_id,'excluded_nonowner_ratings':excluded_ratings,'excluded_nonowner_pairs':excluded_pairs,
+        'all_blocks_have_owner_judgments':bool(coverage) and all(c.get('owner_complete',False) for c in coverage.values()),
         'freeze_sha256':report['freeze_sha256'],'inputs':inputs,'blank_rows_ignored':blank,
         'individual_ratings':len(ratings),'individual_pairs':len(pairs),'coverage':coverage,
         'all_blocks_have_three_complete_ids':bool(coverage) and all(c['three_ids_present'] for c in coverage.values()),
         'technical_attempts':report['per_style_technical_counts'],'dataset_readiness':report['dataset_readiness'],
-        'styles':results,'uncertainty':'2000 deterministic percentile bootstrap resamples of source-clip means; no interval for one clip. Descriptive only; reviewer independence and representativeness unverified.'}
+        'styles':results,'uncertainty':'2000 deterministic percentile bootstrap resamples of source-clip means; no interval for one clip. Descriptive only; one owner does not establish population-level listener preference.' if owner_listener_id is not None else '2000 deterministic percentile bootstrap resamples of source-clip means; no interval for one clip. Descriptive only; reviewer independence and representativeness unverified.'}
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--batch',type=Path,required=True);parser.add_argument('--ratings',type=Path,action='append',default=[])
     parser.add_argument('--pairs',type=Path,action='append',default=[]);parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--owner-listener-id',default='owner',help='Opaque owner code; current specification requires only this listener.')
     args=parser.parse_args()
     if args.output.exists():raise ValueError('output exists; preserve previous evidence')
-    report=summarize(args.batch,args.ratings,args.pairs)
+    report=summarize(args.batch,args.ratings,args.pairs,owner_listener_id=args.owner_listener_id)
     with args.output.open('x') as out:json.dump(report,out,indent=2,allow_nan=False);out.write('\n')
     print(report['status']+': listening summary; '+str(report['individual_ratings'])+' submitted ratings; formal quality NOT RUN')
 

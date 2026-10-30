@@ -9,29 +9,29 @@
 **PARTIAL overall.** This current map supersedes the historical snapshot below.
 The [master](../ai_improvisational_musician_master_spec_v1.md) and
 [full-product specification](../apps/site/jamloom_full_product_implementation_spec_v1.md)
-are unchanged. Later owner instructions add AI DJ, both academies, Community and
+were amended on 2026-10-30 only to require one listener, the owner. Other requirements remain unchanged. Later owner instructions add AI DJ, both academies, Community and
 the native deck, set Singing Academy to $39 once, and hold publication.
 [Product ledger](PRODUCT_COMPLETION.md); [new closure evidence](SPEC_CLOSURE.md).
 
 | Master area | Current status | Evidence / remaining acceptance |
 | --- | --- | --- |
-| 0–1: scope and Instant Remix | PARTIAL | Source-driven render, variations, save/share and cloud Improvise exist. Independent enjoyment/recognizability/variety gates remain open |
+| 0–1: scope and Instant Remix | PARTIAL | Source-driven render, variations, save/share and cloud Improvise exist. Owner-rated enjoyment/recognizability/variety gates remain open |
 | 2: hardware | PARTIAL | Actual M5 and Linux arm64 execution; not qualification of the originally specified physical Intel machine or all devices |
 | 3.1: engine | PASS scoped implementation | Portable C++17 instruments, deterministic expression and effects. [Articulation](instrument-articulation.md), [effects](instrument-effects.md). Musical realism remains a listening gate |
 | 3.2: analysis | PARTIAL | Source bounds, pitch/onsets, optional timing and crops exist; general semantic selection and alignment accuracy are not qualified |
-| 3.3: director | PARTIAL | Rule grammars, arrangements and model studies exist. A production learned DJ policy with demonstrated independent benefit remains unqualified |
+| 3.3: director | PARTIAL | Rule grammars, arrangements and model studies exist. A production learned DJ policy with demonstrated owner-reviewed benefit remains unqualified |
 | 3.4: plan contract | PASS scoped implementation | Bounded external JSON import, validation and fallback implemented. [Plan import](plan-import.md) |
-| 4: musical quality | PARTIAL | Owner approvals/rejections retained, including fresh instrumental DJ sets. Formal blinded multi-listener acceptance remains NOT RUN |
+| 4: musical quality | PARTIAL | Owner approvals/rejections retained, including fresh instrumental DJ sets. Formal blinded owner acceptance remains NOT RUN |
 | 5: rights | PARTIAL | Separate source/weight/audio inventories and exclusions. [Licenses](OPEN_SOURCE_LICENSES.md). Final distribution review and popular-song permissions/assets remain open |
 | 6: models/compute | PARTIAL | ACE-Step and other studies, versions, bounded GPU runs/costs/cleanup exist. [Audit](OPEN_SOURCE_AUDIT.md), [trial](DJ_RELEASE_QUALIFICATION.md). Prior permits are consumed |
 | 7: iOS | PARTIAL | Build 32 signing/install/launch and two native server tests PASS; playback UI runner could not initialize; owner confirms Long Way Home playback/microphone/tab cleanup. Build-31 three targeted flows and build-30 archive/export remain historical. Genuine Apple sandbox purchases/Restore and local HTTP verification PASS. Deployed/native payment delivery and broader hardware remain open |
 | 8: trust/privacy | PARTIAL | Auth, consent, cloud public/private rules, export/deletion and feedback implemented/tested. [Follow-up](COMPLETION_FOLLOWUP.md). Local recordings are not automatically published; release review remains |
 | 9: economics | PARTIAL | Quotes, reservations, ledger, refunds, budgets and measured GPU trials exist. Real Apple sandbox credit/course purchases, restore and local server/HTTP verification now pass; live acceptance, provider refund notifications and sustained margins remain open |
-| 10: evaluation | PARTIAL | [Frozen cohort](licensed-evaluation.md): 23 recorded sources, 3 seeds, 69 blocks. Independent reviews, category verification and recorded quiet coverage remain open. Historical renders do not qualify current models |
+| 10: evaluation | PARTIAL | [Frozen cohort](licensed-evaluation.md): 23 recorded sources, 3 seeds, 69 blocks. Owner reviews, category verification and recorded quiet coverage remain open. Historical renders do not qualify current models |
 | 11: build/repo | PASS scoped implementation | Native/WASM architecture, tests and CI exist. Shared studio writer lock and signed/audited build 31 package added; platform receipts retain their own versions |
 | 12: milestones | PARTIAL | M0 technical PASS, musical PARTIAL; M1 formal NOT RUN; M2/M3/M4/M5 PARTIAL. Production approval remains HELD |
 | 13: handoff | PASS scoped implementation | Fixtures, deterministic artifacts, reports and instructions retained; immutable source unchanged |
-| 14: completion | PARTIAL | Independent quality, physical/provider evidence and release authorization remain substantive requirements |
+| 14: completion | PARTIAL | Owner quality evaluation, physical/provider evidence and release authorization remain substantive requirements |
 
 | Full-product sections | Current status | Evidence / open work |
 | --- | --- | --- |
@@ -43,7 +43,7 @@ the native deck, set Singing Academy to $39 once, and hold publication.
 | 9–11: billing/data/workers | PARTIAL | Durable wallet/jobs, R2, budgets and real capped trials exist; $39 Stripe course test purchase/refund/dispute and local StoreKit PASS. Genuine Apple sandbox purchases/restore and local server/HTTP verification PASS; credit metadata, deployed/native receipt delivery, real refund notifications and sustained capacity remain open |
 | 12: reliability/security/rights | PARTIAL | Isolation, deletion, failure recovery and build/polling guards tested. Physical routes, final rights review and production savings remain unqualified |
 | 13A–B: automated/end-to-end | PARTIAL | Scoped suites and native HTTP PASS. Real Apple sandbox purchase/restore and local HTTP receipt checks now pass; deployed native payments and the full three-account GPU scenario remain separate |
-| 13C: human evaluation | NOT RUN formal gate | At least 10 initial listeners and independent blinded judgments required; owner cannot arrange listeners yet. No synthetic or owner-only substitute |
+| 13C: human evaluation | NOT RUN formal gate | One listener required: the owner. Actual blinded judgments and source coverage remain required; synthetic ratings cannot substitute |
 | 13D: UX/SEO | PARTIAL | Local route, accessibility, metadata and viewport checks pass within reports. Post-publication indexing, field Core Web Vitals and release-specific public validation remain separate |
 | 13E–F: live/economics | PARTIAL | Mac one-hour evidence and adversarial cost/wallet tests retained. Physical routing/latency, commercial configuration and sustained provider economics remain open |
 | 14–17: execution/tracking/release | PARTIAL | TODO/progress/STATUS/handbook reconciled; no deployment, app upload, real-money purchase or public activation; approved sandbox purchases only |

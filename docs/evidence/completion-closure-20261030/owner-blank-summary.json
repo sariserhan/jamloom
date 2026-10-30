@@ -1,0 +1,599 @@
+{
+  "status": "NOT RUN",
+  "scope": "descriptive human-response summary; M1 requires human evidence review",
+  "formal_quality": "NOT RUN",
+  "reviewer_independence": "NOT REQUIRED",
+  "audible_variety": "NOT RUN",
+  "listener_policy": "one owner",
+  "owner_listener_id": "owner",
+  "excluded_nonowner_ratings": 0,
+  "excluded_nonowner_pairs": 0,
+  "all_blocks_have_owner_judgments": false,
+  "freeze_sha256": "5b3e202d3c8c87c822cd97a1f1a1166bfabc22f0983191fef5b02295aeefd6be",
+  "inputs": [],
+  "blank_rows_ignored": 0,
+  "individual_ratings": 0,
+  "individual_pairs": 0,
+  "coverage": {
+    "a062955e01693a0b36b9129c": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "d4dab2a44d61369710d4da81": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "b61d4f2ae96c242789907c04": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "20ffa81d93e30f62d7bc0897": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "2b3f6a5056f171cf34fb7553": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "7480b4d3e3f38bcc4157cb6f": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "b3e24cd48d89e2612efbf666": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "ac08e08dd415f3df2a8c44b1": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "7a06891e394d78a55c637ebf": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "a2323456a81fea23ff4589ec": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "95f3cafbec4b6b17657f5cc2": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "4fedc0426c753d328f3cdf67": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "9da7f0e73870124a0adf004e": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "74e6deaf0b2858100c4b2263": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "2ea6f7623a3b23872240d763": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "e93c0d87fc7d0e173aee660d": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "057aaf58df61591fd5356a57": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "307a5785ec598fc085631f99": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "c21596b207f1b18ef7efb1d3": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "04cc913997fad0ac707150ac": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "45a0c581fa442c130958aa9a": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "69e900dc52c81a42a14dd8e1": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "a204c9f684242f149a505766": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "a2d378a1edd1a35ef9713d5c": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "119c5c1981d69aaf0eb91e77": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "a9b1dca09a8d994448cf75b1": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "b1f2eeabb7f669dded7137d7": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "d5944a4fb848a77fc9aba916": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "b9dec4567643e41d855baaa8": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "5b9fcd7de4b5fd248167c30b": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "69094dffec875e1a06529cbf": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "50000ad5eca4b93edce97e24": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "b0d236c0627c3ac8978ca38d": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "ecf199b40f0695743b6d831d": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "0ab6af0b67b0c12b6710d5dc": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "6d98d964d45a3dd4f5a89708": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "d2e8bdf11c6148f4baecd03c": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "8ecbd249c039a509e2cf39e4": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "a357c0ca0ec22e5d6971f3e3": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "595087d002cf31183dc7b2a4": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "47e0ea99bb1bb441253fd2b8": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "40083fe23fadc76c4b508a5d": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "069c8e8326c311dcceaa1076": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "f7a4010fd5a1788ea400f467": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "dcaa620c0c4ba804d3e39e20": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "0d2f17e5bbfb59ce13a16b27": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "ef90b0a7bdf9f2d12f95be1b": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "a2591bcb5fbce2213f7c4493": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "bcf0be8c4d6e3b8537e20ef3": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "9330332b918d52edc2d73687": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "51f83e1e763a8f3fb342183a": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "55038ab5f7abad9009e3e695": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "8960c0f7a08e52e8f4f9b2c4": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "d27a479752af64ced5bd3949": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "20c7d4510110489ef6e5ec54": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "8b86533c6fc1043f7aa82d7b": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "1e1748fbbbe0af466c82575a": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "7f08251aec02c255e2cb4899": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "64e6429b35c99d1518117a61": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "102efd232ed053607da5130a": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "a6d29bf089adfe77700611cb": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "492a4e4f2c6ccc12d865592b": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "66e31b280a41b19c427bd76c": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "66e11263df4b41ccca60bf41": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "3a759c7263828a2a167cb6c6": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "bbcaa9d6c2abc53db1678e80": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "83fe791bd8acec221ecbf2d8": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "feb229b906f193009c714014": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    },
+    "519a4a5c707f4c71f4847605": {
+      "complete_reviewer_ids": 0,
+      "three_ids_present": false,
+      "owner_complete": false
+    }
+  },
+  "all_blocks_have_three_complete_ids": false,
+  "technical_attempts": {
+    "hiphop": {
+      "accepted": 69,
+      "attempted": 69
+    },
+    "reggae": {
+      "accepted": 69,
+      "attempted": 69
+    },
+    "experimental": {
+      "accepted": 69,
+      "attempted": 69
+    }
+  },
+  "dataset_readiness": {
+    "status": "PARTIAL",
+    "real_clips": 23,
+    "speech_clips": 20,
+    "missing": [
+      "silence coverage"
+    ],
+    "note": "Ledger declarations only; consent authenticity and reviewer independence require human verification."
+  },
+  "styles": {
+    "hiphop": {
+      "metrics": {
+        "recognizable": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "groove_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "coherence_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "originality_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "enjoyment_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "would_share": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "technical_failure": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "enjoyment_at_least_4": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        }
+      },
+      "paired_clip_decisions": {},
+      "paired_clip_win_fraction": {
+        "source_clips": 0,
+        "mean": null,
+        "bootstrap_95_percent": null
+      },
+      "rated_source_clips": 0,
+      "individual_ratings": 0
+    },
+    "reggae": {
+      "metrics": {
+        "recognizable": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "groove_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "coherence_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "originality_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "enjoyment_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "would_share": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "technical_failure": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "enjoyment_at_least_4": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        }
+      },
+      "paired_clip_decisions": {},
+      "paired_clip_win_fraction": {
+        "source_clips": 0,
+        "mean": null,
+        "bootstrap_95_percent": null
+      },
+      "rated_source_clips": 0,
+      "individual_ratings": 0
+    },
+    "experimental": {
+      "metrics": {
+        "recognizable": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "groove_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "coherence_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "originality_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "enjoyment_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "would_share": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "technical_failure": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "enjoyment_at_least_4": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        }
+      },
+      "paired_clip_decisions": {},
+      "paired_clip_win_fraction": {
+        "source_clips": 0,
+        "mean": null,
+        "bootstrap_95_percent": null
+      },
+      "rated_source_clips": 0,
+      "individual_ratings": 0
+    },
+    "baseline": {
+      "metrics": {
+        "recognizable": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "groove_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "coherence_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "originality_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "enjoyment_1_5": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "would_share": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "technical_failure": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        },
+        "enjoyment_at_least_4": {
+          "source_clips": 0,
+          "mean": null,
+          "bootstrap_95_percent": null
+        }
+      },
+      "paired_clip_decisions": {},
+      "paired_clip_win_fraction": {
+        "source_clips": 0,
+        "mean": null,
+        "bootstrap_95_percent": null
+      },
+      "rated_source_clips": 0,
+      "individual_ratings": 0
+    }
+  },
+  "uncertainty": "2000 deterministic percentile bootstrap resamples of source-clip means; no interval for one clip. Descriptive only; one owner does not establish population-level listener preference."
+}

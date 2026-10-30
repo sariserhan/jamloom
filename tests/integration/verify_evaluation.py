@@ -84,6 +84,13 @@ def main():
         assert all(v == {'accepted': 0, 'attempted': 3} for v in failed['per_style_technical_counts'].values())
         assert all(r['packet'] == 'NOT RUN' for r in failed['records'])
         assert readiness([])['status'] == 'PARTIAL'
+        # Metadata fixtures only: owner-only review no longer needs outsider permission.
+        cohort=[dict(source_kind='recorded',kind='speech',speaker_id=str(i%2),session_id=str(i%2),
+                     consent={'review_scope':'owner_only'}) for i in range(16)]
+        cohort += [dict(source_kind='recorded',kind=kind,consent={'review_scope':'owner_only'})
+                   for kind in ('laughter','claps','noise','silence')]
+        assert readiness(cohort)['status']=='PASS'
+        assert readiness(cohort[:-1])['status']=='PARTIAL', 'Listener amendment must not waive source coverage'
     print('PASS: frozen batch, three seeds, unique blocks, consent/hash/path/duplicate rejection, no overwrite, silence controls, retained failures and honest gates')
     print('NOT RUN: human listening; fixtures are original procedural test data')
 

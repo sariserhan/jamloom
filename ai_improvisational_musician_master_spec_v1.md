@@ -5,6 +5,8 @@
 **Working name:** AI Improvisational Musician (brand TBD)  
 **Product:** iPhone-first, future Android/desktop, short recorded-input improvisation first; live improvisation later.
 
+**Owner amendment — 2026-10-30:** Musical evaluation requires exactly one listener: the product owner. No additional or independent listeners are required. This changes listener eligibility/count only; retain actual recorded judgments, blinded comparisons, source coverage, musical thresholds and other technical/release requirements.
+
 ## 0. Operating instructions for the coding agent
 
 Read this document completely before making changes. Treat it as the source of truth unless the product owner explicitly changes a requirement. Do not claim an unrun test passed, invent listening results, fabricate model benchmark numbers, or declare musical quality based only on unit tests. Work incrementally; each milestone must produce executable code, committed artifacts, reproducible commands, and a concise PASS / PARTIAL / FAIL / NOT RUN report. Do not silently proceed past a milestone marked **HOLD**. Ask questions only for decisions genuinely blocking safe implementation; otherwise apply defaults below, document assumptions, and proceed.
@@ -173,7 +175,7 @@ Privacy-preserving metrics (opt-in where applicable): generation duration, rende
 
 Automated checks: sample-frame timing correctness; input bounds; deterministic seed re-render hashes; channel balance; finite output; no NaN/Inf; peak below configured ceiling; silence/truncated input; note-off correctness; polyphony caps; seam clicks; sample rate conversion; performance schema validator; failure fallback.
 
-Human tests (blinded): 20–50 diverse consented source clips including short speech, syllabic speech, laughter, claps, noise and silence/control; at least 3 seeds/strategies per clip. Judge recognizability, groove, coherence, originality/variety, enjoyment, share-worthiness. Track per-style failures. Have reviewers compare with the “voice over stock beat” baseline. Never label human-evaluation gates PASS unless real blinded observations are collected.
+Human tests (blinded, one listener: the product owner): 20–50 diverse consented source clips including short speech, syllabic speech, laughter, claps, noise and silence/control; at least 3 seeds/strategies per clip. Judge recognizability, groove, coherence, originality/variety, enjoyment, share-worthiness. Track per-style failures. Have the owner compare with the “voice over stock beat” baseline. Never label human-evaluation gates PASS unless real blinded observations are collected.
 
 **Provisional targets, not facts:** >=85% technically usable outputs; >=90% recognizable input where speech is supplied; >=70% listener-rated enjoyable; >=30% declared willingness to share; three distinctly arranged outputs from a common phrase; zero critical glitch/clipping failures in accepted renders. These need a preregistered rubric before M1.
 
@@ -230,11 +232,11 @@ Never check private recordings, unlicensed sample libraries, model weights with 
 
 **M0d:** Portability smoke test on Apple M5: compile shared C++ core, render at least one identical plan, compare numerical/event results and note intended nondeterministic differences; do not require byte-identical audio across all compiler DSP backends unless designed for that.
 
-**M0 gate:** Provide WAV paths, instructions to audition, source/asset license inventory, test summary, peak/loudness metrics, known failures, and actual listening-assessment requests. M0 can only claim a *technical* PASS if tests passed; musical-quality gate remains PENDING until evaluated by humans.
+**M0 gate:** Provide WAV paths, instructions to audition, source/asset license inventory, test summary, peak/loudness metrics, known failures, and actual listening-assessment requests. M0 can only claim a *technical* PASS if tests passed; musical-quality gate remains PENDING until evaluated by the owner.
 
 ### M1 — Musical quality baseline (**HOLD**)
 
-Refine instrument realism, groove grammar, phrase hook selection, structure, clean transitions. Run blinded evaluation against stock-beat baseline. Ship three musically distinct remixes for diverse voices. Failed style(s) recorded with actionable defects. Advance only if improvements justified.
+Refine instrument realism, groove grammar, phrase hook selection, structure, clean transitions. Run blinded evaluation by the owner against the stock-beat baseline. Ship three musically distinct remixes for diverse voices. Failed style(s) recorded with actionable defects. Advance only if improvements justified.
 
 ### M2 — Mac inference benchmark / AI director (**HOLD**)
 

@@ -50,6 +50,17 @@ def main():
             assert m['recognizable']['source_clips']==1 and m['recognizable']['mean']==1, 'non-speech counted in recognition'
         assert result['styles']['hiphop']['paired_clip_win_fraction']['mean']==.5
         assert result['technical_attempts']['hiphop']['attempted']==4
+        owner=summarize(root,[a],[b],owner_listener_id='unit-only-1')
+        assert owner['all_blocks_have_owner_judgments'] and owner['individual_ratings']==12
+        assert owner['individual_pairs']==9 and owner['excluded_nonowner_ratings']==24
+        assert owner['reviewer_independence']=='NOT REQUIRED' and owner['formal_quality']=='NOT RUN'
+        assert not owner['all_blocks_have_three_complete_ids'], 'One owner must not be reported as three reviewers'
+        absent=summarize(root,[a],[b],owner_listener_id='absent-owner')
+        assert absent['status']=='NOT RUN' and not absent['all_blocks_have_owner_judgments']
+        reject(lambda:summarize(root,[a],[b],owner_listener_id='../invalid'))
+        write(b,PAIR_COLUMNS,[row for row in pairs if row!=pairs[0]])
+        assert not summarize(root,[a],[b],owner_listener_id='unit-only-1')['all_blocks_have_owner_judgments']
+        write(b,PAIR_COLUMNS,pairs)
         empty=summarize(root);assert empty['status']=='NOT RUN' and empty['individual_ratings']==0
         blank=copy.deepcopy(ratings)
         for row in blank:

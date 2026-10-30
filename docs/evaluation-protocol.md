@@ -1,3 +1,5 @@
+**Owner amendment — 2026-10-30:** One listener is required: the product owner. No independent-listener recruitment is required. Existing frozen packets and responses retain their original provenance; the revised requirement does not invent ratings or waive source coverage/comparisons.
+
 # M0a listening review
 
 The foundation rubric below remains useful. The continuation now also supplies
@@ -60,7 +62,7 @@ source is included for recognition judgments. Files remain local by default.
 For multiple clips/seeds, use the [batch preparation workflow](evaluation-batch.md).
 It freezes source/permission and engine/rubric hashes, records failed attempts,
 and emits distinct `block_id` values plus blank forms. Readiness checks are not
-listening results. An owner-only pilot cannot authorize independent review.
+listening results. Owner-only permission is sufficient for the owner’s review; it does not authorize distribution to others.
 
 Before collecting scores, freeze this rubric, engine commit, fixture hashes,
 seed schedule, and technical acceptance criteria. Collect 20–50 diverse clips
@@ -72,12 +74,12 @@ and three fixed seeds (4123, 4124, 4125); balance review blocks to avoid fatigue
 Keep non-speech results separate from speech recognition. Silence should reject
 with a clear error and is an expected input-validation control, not music.
 
-Seek at least three independent reviewers per eligible block. Randomize coded
+The owner provides one complete set of judgments per eligible block, using the opaque listener code `owner`. Randomize coded
 candidate order and control side in paired comparisons. Record 1–5 ratings for
 groove, coherence, originality and enjoyment; yes/no for recognizability,
 share-worthiness and technical failure. Then compare each candidate with the
 control in `pairs.csv`, selecting a preferred code or tie. Do not substitute
-synthetic ratings, an AI judge, or a developer's signal inspection for listeners.
+synthetic ratings, an AI judge, or a developer's signal inspection for the owner’s listening.
 
 Predeclared provisional gates from the master specification:
 
@@ -87,7 +89,7 @@ Predeclared provisional gates from the master specification:
 | Recognizability | >=90% yes on speech-containing accepted outputs | NOT RUN |
 | Enjoyment | >=70% ratings >=4/5 | NOT RUN |
 | Share intention | >=30% yes | NOT RUN |
-| Variety | Three independently arranged outputs; real reviewers confirm audible differences | PARTIAL — structures tested, listening missing |
+| Variety | Three independently arranged outputs; the owner confirms audible differences | PARTIAL — structures tested, listening missing |
 | Critical glitches/clipping | Zero in accepted outputs | PARTIAL — synthetic technical checks only |
 | Improvement over control | More than half of paired per-clip majority judgments prefer a custom candidate; report ties and each style separately | NOT RUN |
 

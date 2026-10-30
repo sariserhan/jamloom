@@ -1,3 +1,5 @@
+**Current listener policy — 2026-10-30:** The owner is the only required listener. The historical cohort/blank forms below are preserved. Owner-only review permission satisfies the listener eligibility requirement; actual owner judgments and source-coverage requirements remain. [Amendment](LISTENING_OWNER_AMENDMENT.md).
+
 # Licensed multi-source evaluation
 
 2026-10-18. A local evaluation cohort now replaces the earlier one-source-only

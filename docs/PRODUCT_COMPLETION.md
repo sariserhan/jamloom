@@ -1,3 +1,5 @@
+**Listening amendment — 2026-10-30:** The owner is the sole required listener. Additional/independent listener recruitment is no longer a completion gate. Actual owner judgments, coverage and the remaining technical/release requirements still apply. [Specification amendment](LISTENING_OWNER_AMENDMENT.md).
+
 **Latest follow-through — 2026-10-30:** [Current evidence](COMPLETION_CURRENT.md) records simulator MP3-muting isolation/fix, source-bound target editing, bootstrap hardening, repository ownership and read-only provider billing. Overall remains **PARTIAL**; actual scoring targets, independent studies and fresh hosted/release gates remain open.
 
 **Current candidate:** [0.10.4 build 34 completion checkpoint](COMPLETION_CANDIDATE.md): signed, audited, installed, owner-confirmed karaoke playback/tab cleanup and locally archived. Website/account/billing tests and read-only schema checks pass. Full-spec completion remains **PARTIAL**: verified produced-song scoring, current hosted qualification and independent/learned-model evidence are still open. No publication or live activation.

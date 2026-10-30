@@ -1,5 +1,12 @@
 # Jamloom
 
+**Listening requirement amendment — 2026-10-30:** The owner instructed: “change
+the specification requires only 1 listener and that is me.” The owner is the sole
+required musical-evaluation listener. This explicitly authorizes the matching
+master/full-product specification edits and supersedes earlier independent or
+multiple-listener requirements. Preserve actual judgments, sample coverage,
+blinded comparisons and technical gates; do not infer acceptance of unreviewed audio.
+
 **Brand authorization — 2026-10-19:** The owner renamed Djayvo to Jamloom.
 Use Jamloom for all current product surfaces and new code. Preserve historical
 evidence, fixture provenance, storage identities and the immutable master;
@@ -29,7 +36,7 @@ new paid compute, publication and monetization still need explicit authorization
 
 
 Read the complete master specification before implementation. Jamloom is the
-official product name. Do not modify the master specification.
+official product name. Do not modify the master specification except for the explicit owner-authorized listening amendment above.
 
 Historical permissions below are interpreted under the latest authorization above.
 

@@ -3,7 +3,7 @@
 [Current evidence](COMPLETION_CURRENT.md) supersedes older pending work only where a new result is recorded. The current local website preview is http://127.0.0.1:3010 (loopback only; sales remain closed). Local target review is at http://127.0.0.1:8769 while its server is running; restart with `python3 -m http.server 8769 --bind 127.0.0.1 --directory renders/produced-target-review-20261030`.
 
 - Actual scoring requires reviewed sung words, note identities and intervals from both accepted recordings. The editor can save/reload corrections bound to the recording hash. Exports remain unverified drafts; automatic candidates and synthetic editor tests cannot grant scores.
-- Independent M1 listening and novice outcomes need real participants. Existing owner acceptance remains separate; no new judgments were fabricated.
+- You are the only required listener, per your October 30 specification amendment. Existing approvals count for the exact audio you reviewed; remaining blinded comparisons still need your judgments. No additional listeners are required. Novice learning outcomes remain a separate requirement.
 - Hosted Improvise/Music DNA capacity and the Organic Afro House study need a fresh bounded compute authorization and the reviewed current worker. Earlier one-attempt permits are consumed. Bootstrap tests do not prove a successful model run.
 - The physical iPhone is disconnected. Earlier build-34 owner playback acceptance is retained; no new physical qualification is claimed. Physical iPad/unavailable hardware remain deferred.
 - Website/App Store publication and live sales remain held. Genuine sandbox purchases/restore already pass historically; deployed native delivery, real refund notifications and reviewer metadata remain separate.

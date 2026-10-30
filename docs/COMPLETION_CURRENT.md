@@ -1,3 +1,5 @@
+**Listening amendment — 2026-10-30:** The owner is the sole required listener. Additional/independent listener recruitment is no longer a completion gate. Actual owner judgments, coverage and the remaining technical/release requirements still apply. [Specification amendment](LISTENING_OWNER_AMENDMENT.md).
+
 # Current completion follow-through
 
 Updated 2026-10-30. **PARTIAL overall.** This report supersedes older pending-work descriptions only for checks listed here.
@@ -11,7 +13,7 @@ Updated 2026-10-30. **PARTIAL overall.** This report supersedes older pending-wo
 - **PASS** unsigned iOS Release compilation and bundle audit; accepted audio hashes, privacy manifest, licence notices and absence of native Debug controls checked. This is not a new signed/archive/device release. [Bundle audit](evidence/completion-20261030/release-bundle.json).
 - **PASS** current read-only database preflight: all 32 migrations match, none pending/changed/unknown; billing mode remains test. No migration was necessary. [Preflight](evidence/completion-20261030/release-preflight.json).
 - **PASS** fresh isolated website production build and bundle audit: 50 browser files checked, paid lyrics/server secrets absent, all shared assets match their source or explicit protected-course/site transform. The older default `.next` artifact failed the paid-lyrics assertion; that failure is retained, and the current source build uses `.next-qualification` and is served only on loopback at http://127.0.0.1:3010. [Audit](evidence/completion-20261030/site-bundle.json).
-- **NOT RUN** actual word/note manual verification, independent listeners/novice study, fresh hosted/Organic Afro House generation, publication and live sales. Prior compute permits remain consumed; a read-only Vast check finds zero active rentals.
+- **NOT RUN** actual word/note manual verification, remaining owner comparisons/novice study, fresh hosted/Organic Afro House generation, publication and live sales. Prior compute permits remain consumed; a read-only Vast check finds zero active rentals.
 
 Evidence: [bootstrap regression](evidence/completion-20261030/bootstrap-tests.log), [script caller map](evidence/completion-20261030/script-callers-final.json), [target browser checks](evidence/completion-20261030/target-review/results.json). Native result bundles are retained under `renders/completion-20261030-*.xcresult` and `renders/completion-20261030-full-ios/tests.xcresult`; diagnostic/build logs are retained under `renders/completion-20261030-diagnostics/`. [Validation manifest](evidence/completion-20261030/validation.json).
 

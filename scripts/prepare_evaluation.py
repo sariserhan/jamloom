@@ -90,11 +90,9 @@ def readiness(clips):
     if len({c['session_id'] for c in speech}) < 2: missing.append('multiple speech sessions')
     for kind in ('laughter', 'claps', 'noise', 'silence'):
         if not any(c['kind'] == kind for c in real): missing.append(kind+' coverage')
-    if any(c['consent']['review_scope'] != 'independent_reviewers' for c in real):
-        missing.append('permission for independent listening review')
     return {'status': 'PARTIAL' if missing else 'PASS', 'real_clips': len(real),
             'speech_clips': len(speech), 'missing': missing,
-            'note': 'Ledger declarations only; consent authenticity and reviewer independence require human verification.'}
+            'note': 'One required listener: the owner (2026-10-30 amendment). Ledger declarations only; source consent authenticity and actual owner judgments still require verification.'}
 
 
 def run_batch(manifest_path, output, renderer):
