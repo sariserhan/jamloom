@@ -1,0 +1,77 @@
+{
+  "at": "2026-10-30T20:58:47.502Z",
+  "operation": "Independent GET and SELECT only",
+  "stage": 2,
+  "receipt": "docs/evidence/dna-completion/cloud/2026-10-30T20-44-17.142Z/trial-result.json",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "health": {
+    "jobs": {
+      "completed": 29,
+      "failed": 13,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "endpointVersion": 17,
+    "summary": {
+      "idle": 0,
+      "initializing": 0,
+      "running": 0,
+      "throttled": 0,
+      "total": 0,
+      "unhealthy": 0
+    },
+    "workers": []
+  },
+  "billing": [
+    {
+      "amount": 0.028195693623274565,
+      "timeBilledMs": 56574,
+      "diskSpaceBilledGB": 120,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 18:00:00"
+    }
+  ],
+  "billingLimit": "Observed daily billing may lag; not a finalized invoice or exact stage attribution",
+  "temporaryDatabases": [],
+  "cleanup": "PASS",
+  "qualification": "FAIL",
+  "requests": [
+    {
+      "label": "metal",
+      "provider_id": "c263bcc3-82f1-4134-bbce-bd5305d6121c-u1",
+      "finalState": "completed",
+      "audioSha256": "7f43fe6446441e223b16b49d619a1dc83fa846b18335bb414ac40f6d17f5a62d",
+      "seconds": 140,
+      "identity": "am_fenrir",
+      "balance": {
+        "available": 49,
+        "reserved": 0
+      }
+    },
+    {
+      "label": "jazz",
+      "provider_id": "b40ef1aa-bb2c-477b-ace6-91c3377018fe-u2",
+      "finalState": "failed",
+      "balance": {
+        "available": 50,
+        "reserved": 0
+      }
+    }
+  ],
+  "removedObjects": 3,
+  "retries": 0
+}

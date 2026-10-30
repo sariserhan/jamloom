@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-10-30T21:00:33.497427+00:00",
+  "owner_statement": "they are getting better but we are not obligated to use the full user input, we can use part of it only if it matches the music",
+  "policy": "Choose a musically fitting part of the user input when useful; complete-input replay is not required. Preserve the original recording and source offsets.",
+  "musical_feedback": "Improving; not blanket acceptance of the new outputs",
+  "existing_accepted_pilot": "Preserved unchanged",
+  "scope": "Local composition/source-selection revision; no new paid compute or publication"
+}

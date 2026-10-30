@@ -7,6 +7,8 @@ approval. The owner is the sole required musical listener.
 
 ## Completed local work
 
+- **PASS local excerpt revision:** the owner clarified that only the musically useful part of an input is needed. The new selector chooses a bounded hook, retains original source offsets, and keeps fitting short inputs whole. Six new sketches pass audio/browser checks; 69 selection cases and 19 source-response tests pass. [Audition](http://127.0.0.1:8777/excerpts/), [evidence](evidence/source-excerpt-policy-20261030/report.md). “Getting better” is directional feedback, not acceptance of these new outputs. The frozen full-input study and accepted pilot remain unchanged.
+
 - **PASS:** three original source-responsive strategies across 23 licensed
   recorded inputs and three seeds: 207 complete renders, protected full source
   calls, reconstructed stems, valid durations/peaks/tails, expected synthetic
@@ -25,7 +27,7 @@ approval. The owner is the sole required musical listener.
 [Full report and reproducible evidence](evidence/pre-release-completion-20261030/report.md).
 The older 23-block comparison at port 8776 and accepted pilot at 8775 remain intact.
 
-## Approved hosted campaign in progress
+## Approved hosted campaign finished
 
 The owner approved **up to $9** for seven requests over three sequential stages:
 Improvise reggae/jazz/EDM/acoustic pop, Music DNA Metal/English and Jazz/German,
@@ -34,15 +36,15 @@ Maximum one GPU, $3 and 40 minutes plus shutdown per stage; no retries; stop on
 any failure. Each later stage requires prior PASS and independently verified
 zero workers/jobs, removed temporary objects/database and settled test credits.
 
-**Stage 1 PASS with independent cleanup; stage 2 is running.** [Exact authorization and live receipts](evidence/pre-release-completion-20261030/hosted-campaign-plan.json).
+**Campaign qualification FAIL; cleanup PASS.** Stage 1 passed all four Improvise requests. Stage 2 passed the 140-second Metal/English case, but German Jazz failed `style-rejected:matched-1-of-4`. Five of six started requests passed. Stage 3 (5,000 references) is NOT RUN under the stop-on-failure rule. All temporary objects/databases were removed, credits settled/refunded, worker limits restored to 0/0 with zero jobs/workers, and local test PostgreSQL stopped. This permit is consumed; no further attempts are authorized. Final provider billing is not yet attributable. [Exact authorization and live receipts](evidence/pre-release-completion-20261030/hosted-campaign-plan.json).
 This does not authorize AI DJ rentals, website/app release or live purchases.
 
 ## Requirements still needing evidence
 
 | Requirement | Status | What closes it |
 |---|---|---|
-| Current-image Improvise and Music DNA cases | PARTIAL; approved campaign running | Seven successful scoped requests and independently verified cleanup; technical results do not prove musical acceptance |
-| Formal M1 / source-response musical quality | PARTIAL; exact pilot accepted, full study technically ready | Owner judgments in the [69-block study](http://127.0.0.1:8777/music/) and a real [quiet recording](http://127.0.0.1:8777/), followed by threshold/coverage review |
+| Current-image Improvise and Music DNA cases | PARTIAL; five PASS, German Jazz FAIL, maximum case NOT RUN | Resolve the Jazz style failure and prepare a fresh bounded authorization for outstanding hosted cases; cleanup is already PASS; technical results do not prove musical acceptance |
+| Formal M1 / source-response musical quality | PARTIAL; exact pilot accepted, full study technically ready | Owner feedback on the [excerpt revision](http://127.0.0.1:8777/excerpts/), then a frozen full-coverage evaluation of the selected policy and a real [quiet recording](http://127.0.0.1:8777/), followed by threshold/coverage review. The preserved full-input study does not qualify this changed policy |
 | Learned improvisation | NOT RUN | Verified user-source/action labels, leakage-safe independent source/session/speaker/phrase/performer groups, M1 completion and held-out benefit over the baseline. The seven supplied references from one maker cannot alone establish performer-held-out validation |
 | Produced-song scoring | PARTIAL | Actual sung words, notes and timing verified against the [source audio](http://127.0.0.1:8769/). `verified:false` and `scoringEnabled:false` remain until then |
 | Afro House section/control details | PARTIAL; all three target mixes accepted | Heard section names/timing corrections and control preferences in the [existing review](http://127.0.0.1:8771/) |

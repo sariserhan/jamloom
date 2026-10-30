@@ -1,0 +1,26 @@
+{
+  "url": "http://127.0.0.1:8777/excerpts/",
+  "browser": "Installed Chrome with isolated profiles via existing Playwright fallback",
+  "ownerSubmissions": 0,
+  "viewports": [
+    {
+      "name": "desktop",
+      "playbackAndSeek": 14,
+      "exclusivePlayback": true,
+      "overflow": false,
+      "errors": [],
+      "screenshot": "/tmp/jamloom-excerpt-desktop.png"
+    },
+    {
+      "name": "mobile",
+      "playbackAndSeek": 14,
+      "exclusivePlayback": true,
+      "overflow": false,
+      "errors": [],
+      "screenshot": "/tmp/jamloom-excerpt-mobile.png"
+    }
+  ],
+  "servedHashesVerified": 14,
+  "audioRangeRequests": true,
+  "status": "PASS"
+}

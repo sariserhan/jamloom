@@ -1,0 +1,20 @@
+{
+  "status": "PASS for completed outputs only",
+  "qualification": "FAIL",
+  "rejected": [
+    "jazz"
+  ],
+  "scope": "Independent retained PCM/hash/duration and provenance audit; language and voice identity are metadata, not perceptual verification",
+  "requests": [
+    {
+      "label": "metal",
+      "sha256": "7f43fe6446441e223b16b49d619a1dc83fa846b18335bb414ac40f6d17f5a62d",
+      "seconds": 140.0,
+      "peak": 0.91033935546875,
+      "rms": 0.1307899578283901,
+      "identity": "am_fenrir",
+      "requested_language": "en",
+      "favorites": 1
+    }
+  ]
+}

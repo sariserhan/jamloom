@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-30T20:58:47.646Z",
+  "delayTime": 27,
+  "error": "{\"error_type\": \"<class 'RuntimeError'>\", \"error_message\": \"Jamloom generation failed at style-rejected:matched-1-of-4; no completed song was accepted.\", \"error_traceback\": \"Traceback (most recent call last):\\n  File \\\"/usr/local/lib/python3.12/site-packages/runpod/serverless/modules/rp_job.py\\\", line 257, in run_job\\n    handler_return = handler(job)\\n                     ^^^^^^^^^^^^\\n  File \\\"/opt/jamloom/services/runpod/handler.py\\\", line 222, in handler\\n    raise RuntimeError(f'Jamloom generation failed at {error}; no completed song was accepted.') from None\\nRuntimeError: Jamloom generation failed at style-rejected:matched-1-of-4; no completed song was accepted.\\n\", \"hostname\": \"rw3h18cyvgzjyz-64411a7f\", \"worker_id\": \"rw3h18cyvgzjyz\", \"runpod_version\": \"1.12.0\"}",
+  "executionTime": 264643,
+  "id": "b40ef1aa-bb2c-477b-ace6-91c3377018fe-u2",
+  "status": "FAILED",
+  "workerId": "rw3h18cyvgzjyz"
+}

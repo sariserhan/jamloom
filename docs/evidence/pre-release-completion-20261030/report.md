@@ -2,6 +2,10 @@
 
 **PARTIAL overall.** The owner asked to finish the remaining work before release and payments. Website/app publication and live sales are HELD. This pass does not reopen the accepted question bass pilot/crop, three Afro House mixes or accepted karaoke backings.
 
+## Excerpt revision after owner feedback
+
+The owner clarified: “we are not obligated to use the full user input, we can use part of it only if it matches the music”. Whole-input replay is now optional in the new local composition wrapper. Six sketches, 69 selection cases and 19 regressions pass; original source ranges and accepted/frozen recordings remain intact. [Report](../source-excerpt-policy-20261030/report.md), [new audition](http://127.0.0.1:8777/excerpts/). Signal-based selection does not prove musical fit or word boundaries. The owner’s “getting better” feedback is preserved without inferring blanket acceptance.
+
 ## Three-strategy evaluation
 
 **PASS technical:** 23 licensed recorded inputs × three original source-responsive strategies × three seeds = 207 complete renders. The accepted half-time implementation remains the first branch; broken-pulse and offbeat-dub change rhythm, timbre, arrangement and source-driven response. No piano or external backing samples were introduced. Full source calls are protected from overlapping fragments. All outputs pass duration, finite PCM, peak, stem reconstruction, clean-call and tail checks. Four strategy regressions pass. Batch/review preparation keeps a 15 GiB disk reserve.
@@ -26,7 +30,9 @@ Quiet recording uses explicit microphone permission and a separate save action. 
 
 ## Hosted campaign
 
-The owner explicitly approved “Approve this campaign up to $9”. The [exact plan](hosted-campaign-plan.json) permits seven requests over three sequential stages, one GPU at a time, maximum $3 and 40 minutes plus shutdown per stage, no retries, stop on any failure. It uses the already-published immutable worker image. Stage 1 passed all four requests with exact 30/35/40/45-second audio, matching source use/hashes, settled test credits and independent cleanup. Twelve temporary objects and the isolated database were removed; limits are 0/0 with no jobs/workers before stage 2. Stage 2 is now running. Later stages may start only after PASS and independently verified cleanup. No AI DJ rental is included.
+The owner explicitly approved “Approve this campaign up to $9”. The [exact plan](hosted-campaign-plan.json) permits seven requests over three sequential stages, one GPU at a time, maximum $3 and 40 minutes plus shutdown per stage, no retries, stop on any failure. It uses the already-published immutable worker image. Stage 1 passed all four requests with exact 30/35/40/45-second audio, matching source use/hashes, settled test credits and independent cleanup. Twelve temporary objects and the isolated database were removed; limits are 0/0 with no jobs/workers before stage 2. Stage 2 passed the Metal/English 140-second case; German Jazz failed `style-rejected:matched-1-of-4`. **Qualification FAIL overall: five passed requests, one failed request, 5,000-reference stage NOT RUN.** The campaign stopped without an external retry. The existing worker has up to two internal generation takes per request; the terminal style rejection does not provide the rejected audio or detailed fit vectors, so no definitive musical root cause is claimed and the style gate has not been weakened.
+
+**Cleanup PASS:** three stage-2 objects and its temporary database were removed, the failed request fully refunded its reserved test credit, limits returned to 0/0, and independent provider/database reads confirmed no running/queued jobs, workers or temporary databases. Local PostgreSQL was then stopped. [Independent postcheck](stage-2-postcheck.json), [completed Metal PCM audit](stage-2-audio.json), [sanitized failure status](german-jazz-provider-status.json). The postcheck log exits nonzero after cleanup because qualification failed, deliberately blocking stage 3. The permit is consumed. Final billing remains pending; the observed 18:00 billing entry predates this campaign and is not its actual cost. No AI DJ rental is included.
 
 ## Remaining boundaries
 

@@ -1,0 +1,19 @@
+{"stage":2,"cleanup":"PASS","qualification":"FAIL","provider_requests_started":6,"removedObjects":3}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Campaign stops on failure; do not start later stages
+
+'FAIL' !== 'PASS'
+
+    at <anonymous> (/private/tmp/jamloom-campaign-postcheck.mts:11:322) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'FAIL',
+  expected: 'PASS',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.3.0

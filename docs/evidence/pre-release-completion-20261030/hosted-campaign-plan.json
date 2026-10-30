@@ -1,5 +1,5 @@
 {
-  "status": "AUTHORIZED",
+  "status": "CONSUMED",
   "scope": "Remaining current-image Improvise and Music DNA hosted qualification; no website/app release or purchases",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
   "max_usd": 9,
@@ -83,13 +83,18 @@
   "execution": {
     "stage": 2,
     "stages_started": 2,
-    "provider_requests_started": 4,
+    "provider_requests_started": 6,
     "retries": 0,
-    "status": "STAGE_2_RUNNING",
+    "status": "STOPPED_ON_STAGE_2_FAILURE",
     "stage_receipts": [
       "docs/evidence/improvise-finish/cloud/2026-10-30T20-27-32.535Z/trial-result.json",
       "docs/evidence/dna-completion/cloud/2026-10-30T20-44-17.142Z/trial-result.json"
     ],
-    "last_independent_cleanup": "PASS"
+    "last_independent_cleanup": "PASS",
+    "finished_at": "2026-10-30T20:59:23.509031+00:00",
+    "stage_3": "NOT RUN; stop-on-failure rule",
+    "successful_provider_requests": 5,
+    "failed_provider_requests": 1,
+    "additional_attempts_authorized": false
   }
 }
