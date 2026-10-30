@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "scope": "Owner musical acceptance of the three specific five-minute Organic Afro House target mixes from attempt 004",
+  "date": "2026-10-30",
+  "listener_id": "owner",
+  "required_listeners": 1,
+  "question": "Your new mixes are ready at http://127.0.0.1:8770. After listening, how do you rate the vocal-led, bass-driven, and percussive Afro House tracks: accept, revise, or reject? Please include any problems or section-timing corrections. You are the only required listener; I\u2019m finishing the stems and local checks meanwhile.",
+  "owner_response": "they are all good",
+  "review_url": "http://127.0.0.1:8770",
+  "review_manifest": "docs/evidence/completion-closure-20261030/afro-mixes-review.json",
+  "review_manifest_sha256": "823c348b1c0efd0e05220e8f5a08aa1d2a8cb5f45c13f58a266db3c7c81d6e2a",
+  "tracks": [
+    {
+      "id": "vocal-led-organic-afro-house",
+      "decision": "accept",
+      "mix_sha256": "49218bc483735786b98fc3edd13dddecd754014a648f9224057edc42b14e2f82",
+      "listening_copy_sha256": "118abb3e85591553a9b5e89bba29456a3139e3617bbc0c397346d830fe97ae18"
+    },
+    {
+      "id": "bass-driven-organic-afro-house",
+      "decision": "accept",
+      "mix_sha256": "e86c748cd17990d7fa67a92755335a266068c0650add9e3abf1f9a3376574522",
+      "listening_copy_sha256": "959f9fb76666f0e97c00002e2f9632fd98a3b0a651c7868f4b10c8537d917d30"
+    },
+    {
+      "id": "percussive-driving-organic-afro-house",
+      "decision": "accept",
+      "mix_sha256": "4dc2b6b5c1f2f66f1ff857b286b2dab5c1efd36f87f2d2d8ebb537064000afb5",
+      "listening_copy_sha256": "4a44b8899de38217f3efa66c01e5253a4e7a38f19b25787c600061e3c425d9f0"
+    }
+  ],
+  "section_role_labels": "NOT RUN - no labels or timestamp corrections supplied",
+  "baseline_preference": "NOT PROVIDED - no explicit comparison ranking supplied",
+  "individual_stem_review": "NOT CLAIMED - the question concerned target mixes",
+  "scope_note": "No numerical rubric ratings, control-track acceptance, universal generation quality, publication or additional compute approval is inferred."
+}

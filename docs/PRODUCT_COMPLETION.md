@@ -1,6 +1,6 @@
 **Listening amendment — 2026-10-30:** The owner is the sole required listener. Additional/independent listener recruitment is no longer a completion gate. Actual owner judgments, coverage and the remaining technical/release requirements still apply. [Specification amendment](LISTENING_OWNER_AMENDMENT.md).
 
-**Organic Afro House — 2026-10-30:** four five-minute mixes and 20 stems now pass technical qualification, independent local decoding and cleanup. [Run and review](CLOSURE_FOLLOWTHROUGH.md). Owner musical judgments and section labels remain open.
+**Organic Afro House — 2026-10-30:** four five-minute mixes and 20 stems now pass technical qualification, independent local decoding and cleanup. [Run and review](CLOSURE_FOLLOWTHROUGH.md). The owner accepts all three target mixes (“they are all good”); section-role labels remain open. [Exact feedback](evidence/afro-house-qualification-20261028/owner-acceptance-20261030.json).
 
 **Latest follow-through — 2026-10-30:** [Current evidence](COMPLETION_CURRENT.md) records simulator MP3-muting isolation/fix, source-bound target editing, bootstrap hardening, repository ownership and read-only provider billing. Overall remains **PARTIAL**; actual scoring targets, remaining owner comparisons, novice outcomes and fresh hosted/release gates remain open.
 

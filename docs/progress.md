@@ -1,4 +1,4 @@
-**Latest closure — 2026-10-30:** [Current follow-through](CLOSURE_FOLLOWTHROUGH.md): one-owner listening amendment complete; the authorized GPU attempt passed technical qualification with four five-minute mixes and 20 stems. Cleanup is confirmed. Owner listening and section labels remain pending.
+**Latest closure — 2026-10-30:** [Current follow-through](CLOSURE_FOLLOWTHROUGH.md): one-owner listening amendment complete; the authorized GPU attempt passed technical qualification with four five-minute mixes and 20 stems. Cleanup is confirmed. The owner accepts all three target mixes (“they are all good”); section-role labels remain pending. [Acceptance](evidence/afro-house-qualification-20261028/owner-acceptance-20261030.json).
 
 **Listening amendment — 2026-10-30:** The owner is the sole required listener. Additional/independent listener recruitment is no longer a completion gate. Actual owner judgments, coverage and the remaining technical/release requirements still apply. [Specification amendment](LISTENING_OWNER_AMENDMENT.md).
 
