@@ -16,6 +16,16 @@ from singing_response import CODE_REVISION, WEIGHT_REVISION, variants
 
 
 class StudioFlow(unittest.TestCase):
+    def test_short_phrase_is_not_randomly_cut_before_trying_the_whole_input(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);source=root/'input.wav'
+            write_pcm(source,np.repeat((.1*np.sin(np.arange(2*RATE)*.1))[:,None],2,axis=1))
+            for seed in (0,1,8,42):
+                work=root/str(seed);work.mkdir();studio.prepare_source(source,work)
+                speech={'transcript':'A complete thought','phrases':[{'text':'thought','start_seconds':1.1,'end_seconds':1.9}]}
+                _,score=studio.sample_candidate(work,speech,'drumandbass',2,seed)
+                self.assertEqual(json.loads(score.read_text())['original_seconds'],[0,2])
+
     def test_only_a_confident_complete_final_word_can_be_repeated(self):
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);source=root/'input.wav'

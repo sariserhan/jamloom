@@ -39,7 +39,8 @@ class LocalCallEdit(unittest.TestCase):
         hook=faded(np.repeat((.1*np.sin(2*np.pi*180*t))[:,None],2,axis=1));saved=hook.copy()
         for ratio in (.8,1.,1.25):
             pcm=fit_call_rhythm(hook,{'duration_ratio':ratio})
-            self.assertEqual(len(pcm),round(len(hook)*ratio))
+            self.assertGreaterEqual(len(pcm),round(len(hook)*ratio))
+            self.assertLessEqual(len(pcm),round(len(hook)*ratio)+.08*RATE)
             hz=np.fft.rfftfreq(len(pcm),1/RATE)[np.argmax(abs(np.fft.rfft(pcm[:,0])))]
             self.assertLess(abs(hz-180),2)
         repeat=round(2.5*RATE);word=[round(1.5*RATE),2*RATE]
@@ -52,7 +53,15 @@ class LocalCallEdit(unittest.TestCase):
                        {'duration_ratio':1,'word_frames':word,'repeat_offset_frames':RATE}):
             with self.assertRaises(ValueError):fit_call_rhythm(hook,recipe)
         with patch('local_call_edit.subprocess.run',return_value=subprocess.CompletedProcess([],0,stdout=b'broken')):
-            with self.assertRaises(ValueError):fit_call_rhythm(hook,{'duration_ratio':1})
+            with self.assertRaises(ValueError):fit_call_rhythm(hook,{'duration_ratio':1.1})
+
+    def test_tempo_render_tail_is_not_cut_to_nominal_grid_length(self):
+        hook=np.full((RATE,2),.1);target=round(RATE*1.1)
+        rendered=np.full((target+round(.04*RATE),2),.1,dtype='<f4')
+        with patch('local_call_edit.subprocess.run',return_value=subprocess.CompletedProcess([],0,stdout=rendered.tobytes())):
+            actual=fit_call_rhythm(hook,{'duration_ratio':1.1})
+        self.assertEqual(len(actual),len(rendered))
+        self.assertGreater(np.sqrt(np.mean(actual[target:target+round(.02*RATE)]**2)),.09)
 
     def test_automatic_rhythm_is_source_bound_and_unavailable_transform_falls_back(self):
         score=self.root/'source.json'
