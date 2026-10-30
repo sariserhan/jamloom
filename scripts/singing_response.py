@@ -15,6 +15,10 @@ import unicodedata
 from dna_language import language, lyric_units, validate_script
 
 MAX_PHRASE_CHARS = 32000
+REPLY_PLAN_MAX_BYTES = 256 * 1024
+# Music DNA retains all 5,000 favorites and their provenance, including profiles.
+# Match the hosted worker's bounded result budget; short replies keep their cap.
+DNA_PLAN_MAX_BYTES = 12 * 1024 * 1024
 CODE_REVISION = 'ca1e85fe9430179831e6bc6be790c332190a3866'
 WEIGHT_REVISION = '19671f406d603126926c1b7e2adc169acbcade22'
 ROOT = Path(__file__).resolve().parents[1]
@@ -154,6 +158,10 @@ def validate_plan(plan):
     if not isinstance(plan, dict) or plan.get('schema') not in ('jamloom-sung-response-1', 'jamloom-dna-song-1') or plan.get('model_code') != CODE_REVISION or plan.get('weights') != WEIGHT_REVISION:
         raise ValueError('Unsupported singing plan or model revisions')
     song = plan['schema'] == 'jamloom-dna-song-1'
+    if song:
+        for field in ('favorites', 'influences', 'track_profiles'):
+            if field in plan and (not isinstance(plan[field], list) or len(plan[field]) > 5000):
+                raise ValueError('Invalid Music DNA reference count')
     text_field(plan.get('phrase'), MAX_PHRASE_CHARS, 'source phrase')
     cases = plan.get('cases')
     if not isinstance(cases, list) or not 1 <= len(cases) <= 12:
@@ -197,9 +205,14 @@ def validate_plan(plan):
 
 
 def load_plan(path):
-    if Path(path).stat().st_size > 262144:
+    with Path(path).open('rb') as source:
+        raw = source.read(DNA_PLAN_MAX_BYTES + 1)
+    if len(raw) > DNA_PLAN_MAX_BYTES:
         raise ValueError('Plan exceeds size budget')
-    return validate_plan(json.loads(Path(path).read_text()))
+    plan = json.loads(raw)
+    if (not isinstance(plan, dict) or plan.get('schema') != 'jamloom-dna-song-1') and len(raw) > REPLY_PLAN_MAX_BYTES:
+        raise ValueError('Plan exceeds size budget')
+    return validate_plan(plan)
 
 
 def runtime(path):
