@@ -1,0 +1,28 @@
+[
+  {
+    "path": "/pro",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "payment_testing_notice": false
+  },
+  {
+    "path": "/api/site-status",
+    "status": 200,
+    "content_type": "application/json",
+    "data": {
+      "banner": ""
+    }
+  },
+  {
+    "path": "/api/taste/song",
+    "status": 503
+  },
+  {
+    "path": "/api/improvise/song",
+    "status": 503
+  },
+  {
+    "path": "/api/ai-dj/sessions",
+    "status": 503
+  }
+]

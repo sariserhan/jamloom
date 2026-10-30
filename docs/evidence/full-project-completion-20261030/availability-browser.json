@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "scope": "Synthetic availability responses only; no generation requests or owner judgments",
+  "results": [
+    {
+      "state": "closed",
+      "bothProducts": "PASS",
+      "writes": 0
+    },
+    {
+      "state": "failed",
+      "bothProducts": "PASS",
+      "writes": 0
+    },
+    {
+      "state": "ready",
+      "bothProducts": "PASS",
+      "writes": 0
+    }
+  ]
+}

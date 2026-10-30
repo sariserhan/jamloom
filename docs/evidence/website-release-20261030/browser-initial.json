@@ -1,0 +1,4 @@
+{
+  "status": "INCOMPLETE",
+  "reason": "First uninstrumented multi-route browser audit did not complete within three minutes; stopped only its isolated test process and browser. No app failure inferred. Re-running with per-route progress and bounded audits."
+}

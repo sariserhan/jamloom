@@ -1,0 +1,32 @@
+{
+  "status": "PASS technical only",
+  "composition_policy": "selected_excerpt_prompt_response",
+  "sources": 23,
+  "seeds": [
+    4123,
+    4124,
+    4125
+  ],
+  "strategies": [
+    "half_time",
+    "broken_pulse",
+    "offbeat_dub"
+  ],
+  "renders": 207,
+  "clean_selected_hooks_verified": 621,
+  "shortened_inputs": 207,
+  "opening_wait_seconds": {
+    "min": 0.0,
+    "max": 0.2635625
+  },
+  "silence_control": "Synthetic rejection PASS; real room recording remains NOT RUN",
+  "owner_listening": "NOT RUN",
+  "source_hashes": {
+    "source_excerpt_response.py": "80685adb5d20082006f8df5ad3ad13bb9b5942295eabbc48c249541e10ef4e4d",
+    "source_strategy_response.py": "2b437dd47e295a4f7da7673f3e4cff330bdd217b162c36ee33cd516fff477de0",
+    "source_bass_response.py": "0d576f86bdb63f332c31ac2b651c39506136e648e532b98446d391d5f7058497",
+    "source_phrase_response.py": "046e2207b2b8974a238814ddd008ad9aba7ae05ba3971ebd738a59938a9072a6",
+    "render_strategy_study.py": "a4756c1c6799276d77a359c94f690094d4227462fd2336bbd2df09a9e8f3baf5"
+  },
+  "render_report_sha256": "8b9f3835d58f037f3970c35e5c6590340e454ffc72bbc0fe57261625b2f455ca"
+}

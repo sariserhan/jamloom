@@ -3,12 +3,29 @@ import argparse
 import base64
 import hashlib
 import json
+import re
 from pathlib import Path
 import secrets
 import subprocess
 import time
 from http.server import ThreadingHTTPServer
 import review_serve
+
+
+def music_study(root,freeze):
+    registry=root/'music-studies.json'
+    folders=['music']
+    if registry.is_file():
+        mapping=json.loads(registry.read_text())
+        folder=mapping.get(freeze)
+        if folder is None:raise ValueError('Unknown study freeze')
+        if not isinstance(folder,str) or not re.fullmatch(r'music(?:-[a-z0-9]+)*',folder):raise ValueError('Invalid study folder')
+        folders=[folder]
+    path=root/folders[0]/'study.json'
+    if not path.resolve().is_relative_to(root.resolve()) or not path.is_file():raise ValueError('Study unavailable')
+    study=json.loads(path.read_text())
+    if study.get('freeze')!=freeze:raise ValueError('Study identity changed')
+    return study
 
 
 def validate_music(payload,study):
@@ -58,7 +75,7 @@ class Handler(review_serve.Handler):
             if not 1<=length<=2*1024**2:raise ValueError('Observation exceeds limit')
             value=json.loads(self.rfile.read(length));kind=value.get('kind');payload=value.get('payload')
             if not isinstance(payload,dict):raise ValueError('Expected observation object')
-            if kind=='music':validate_music(payload,json.loads((review_serve.ROOT/'music/study.json').read_text()))
+            if kind=='music':validate_music(payload,music_study(review_serve.ROOT,payload.get('freeze')))
             elif kind=='novice':
                 if payload.get('schema')!='jamloom-dj-novice-1' or payload.get('attested') is not True or payload.get('beginner') is not True:raise ValueError('Actual beginner observation required')
                 if any(len(payload.get(p,[]))!=6 or any(x not in ('0','1','2') for x in payload[p]) for p in ('before','after')):raise ValueError('Complete both assessments')

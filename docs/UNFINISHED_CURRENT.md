@@ -1,9 +1,19 @@
 # Current unfinished work — 2026-10-30
 
-**PARTIAL overall. Release and live payments are HELD at the owner's request.**
+**PARTIAL overall. The owner chose “Finish the full project before publishing.”**
+The limited public preview was declined. Finish the full project first; the public website remains the first release target. Website/app publication and live payments stay HELD. The separately approved diagnostic image and one $3 request do not authorize a website launch.
 The accepted question bass pilot and its exact crop, three Afro House mixes and
 previously accepted karaoke/backings remain accepted. They do not need repeat
 approval. The owner is the sole required musical listener.
+
+## Current full-completion increment
+
+- **PASS:** all 207 revised excerpt arrangements across 23 sources and three seeds; 621 exact selected-hook appearances; opening musical response within 0.264 seconds.
+- **PASS technical preparation:** a new 69-block, 276-candidate blinded study, 345 verified audio files, and registered thresholds. [Revised study](http://127.0.0.1:8777/music-excerpts/). The old study and its drafts remain separate; no old judgment is applied to revised audio.
+- **PASS:** current website build, availability controls, and desktop/mobile browser checks. Disabled or failed capability responses disable generation before the confirmation flow. The declined preview banner was removed; nothing was deployed.
+- **PARTIAL:** German Jazz diagnosis. Valid five-tag guidance preserves the Jazz retry instructions across eight singer profiles; there is no evidence to lower the style threshold. A new opt-in private rejected-take diagnostic passes local tests. The owner approved image `6abdacc2` and one $3, 20-minute request; [execution plan](evidence/full-project-completion-20261030/hosted-diagnostic-plan.json) records its live status.
+
+[Increment evidence](evidence/full-project-completion-20261030/report.md).
 
 ## Completed local work
 
@@ -38,7 +48,7 @@ Maximum one GPU, $3 and 40 minutes plus shutdown per stage; no retries; stop on
 any failure. Each later stage requires prior PASS and independently verified
 zero workers/jobs, removed temporary objects/database and settled test credits.
 
-**Campaign qualification FAIL; cleanup PASS.** Stage 1 passed all four Improvise requests. Stage 2 passed the 140-second Metal/English case, but German Jazz failed `style-rejected:matched-1-of-4`. Five of six started requests passed. Stage 3 (5,000 references) is NOT RUN under the stop-on-failure rule. All temporary objects/databases were removed, credits settled/refunded, worker limits restored to 0/0 with zero jobs/workers, and local test PostgreSQL stopped. This permit is consumed; no further attempts are authorized. Final provider billing is not yet attributable. [Exact authorization and live receipts](evidence/pre-release-completion-20261030/hosted-campaign-plan.json).
+**Campaign qualification FAIL; cleanup PASS.** Stage 1 passed all four Improvise requests. Stage 2 passed the 140-second Metal/English case, but German Jazz failed `style-rejected:matched-1-of-4`. Five of six started requests passed. Stage 3 (5,000 references) is NOT RUN under the stop-on-failure rule. All temporary objects/databases were removed, credits settled/refunded, worker limits restored to 0/0 with zero jobs/workers, and local test PostgreSQL stopped. This $9 permit is consumed. The later, separate one-request diagnostic authorization is recorded above; it does not reopen the campaign. Final provider billing is not yet attributable. [Exact authorization and live receipts](evidence/pre-release-completion-20261030/hosted-campaign-plan.json).
 This does not authorize AI DJ rentals, website/app release or live purchases.
 
 ## Requirements still needing evidence
@@ -46,7 +56,7 @@ This does not authorize AI DJ rentals, website/app release or live purchases.
 | Requirement | Status | What closes it |
 |---|---|---|
 | Current-image Improvise and Music DNA cases | PARTIAL; five PASS, German Jazz FAIL, maximum case NOT RUN | Resolve the Jazz style failure and prepare a fresh bounded authorization for outstanding hosted cases; cleanup is already PASS; technical results do not prove musical acceptance |
-| Formal M1 / source-response musical quality | PARTIAL; exact pilot accepted, full study technically ready | Owner feedback on the [excerpt revision](http://127.0.0.1:8777/excerpts-flow/), then a frozen full-coverage evaluation of the selected policy and a real [quiet recording](http://127.0.0.1:8777/), followed by threshold/coverage review. The preserved full-input study does not qualify this changed policy |
+| Formal M1 / source-response musical quality | PARTIAL; exact pilot accepted, full study technically ready | Actual ratings in the [new frozen excerpt study](http://127.0.0.1:8777/music-excerpts/) and a real [quiet recording](http://127.0.0.1:8777/), followed by threshold/coverage review. The preserved full-input study does not qualify this changed policy |
 | Learned improvisation | NOT RUN | Verified user-source/action labels, leakage-safe independent source/session/speaker/phrase/performer groups, M1 completion and held-out benefit over the baseline. The seven supplied references from one maker cannot alone establish performer-held-out validation |
 | Produced-song scoring | PARTIAL | Actual sung words, notes and timing verified against the [source audio](http://127.0.0.1:8769/). `verified:false` and `scoringEnabled:false` remain until then |
 | Afro House section/control details | PARTIAL; all three target mixes accepted | Heard section names/timing corrections and control preferences in the [existing review](http://127.0.0.1:8771/) |
@@ -55,7 +65,7 @@ This does not authorize AI DJ rentals, website/app release or live purchases.
 | Release and live sales | HELD by owner | Final release/payment phase, including deployed/native receipt delivery and real refund notification evidence |
 | Excluded hardware | DEFERRED | Physical iPad and unavailable MIDI/cue routes; prior scoped iPhone playback/flow/microphone/Release-install checks remain passed |
 
-The [owner observation report](evidence/pre-release-completion-20261030/owner-observations.json)
+The [owner observation report](evidence/full-project-completion-20261030/owner-observations.json)
 contains only actual submitted receipts. No response, structural audio check,
 synthetic browser fixture or automated answer is treated as listening or learning
 approval. Source, recordings, models, accepted audio and unrelated work remain

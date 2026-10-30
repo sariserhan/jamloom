@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: longer qualification keeps every stage under its existing three-dollar conservative budget
+ok 1 - longer qualification keeps every stage under its existing three-dollar conservative budget
+  ---
+  duration_ms: 0.391209
+  type: 'test'
+  ...
+# Subtest: diagnostics and historical modes cannot silently acquire a longer window
+ok 2 - diagnostics and historical modes cannot silently acquire a longer window
+  ---
+  duration_ms: 0.089667
+  type: 'test'
+  ...
+# Subtest: private diagnostic capture precedes failed-job cleanup without accepting or resubmitting
+ok 3 - private diagnostic capture precedes failed-job cleanup without accepting or resubmitting
+  ---
+  duration_ms: 1.710375
+  type: 'test'
+  ...
+# Subtest: Runpod submission is bounded, asynchronous, and never retried after uncertain acceptance
+ok 4 - Runpod submission is bounded, asynchronous, and never retried after uncertain acceptance
+  ---
+  duration_ms: 23.506292
+  type: 'test'
+  ...
+# Subtest: Runpod status validates identity, states, timing and receipts without exposing provider errors
+ok 5 - Runpod status validates identity, states, timing and receipts without exposing provider errors
+  ---
+  duration_ms: 2.285208
+  type: 'test'
+  ...
+# Subtest: dispatch checks disabled capacity without requiring a warm worker or submitting work
+ok 6 - dispatch checks disabled capacity without requiring a warm worker or submitting work
+  ---
+  duration_ms: 0.264917
+  type: 'test'
+  ...
+# Subtest: only status 404 is an expired-receipt candidate; a submit 404 remains unconfirmed
+ok 7 - only status 404 is an expired-receipt candidate; a submit 404 remains unconfirmed
+  ---
+  duration_ms: 0.139459
+  type: 'test'
+  ...
+# Subtest: whole playlists and cached descriptions pass a bounded provider request
+ok 8 - whole playlists and cached descriptions pass a bounded provider request
+  ---
+  duration_ms: 26.078958
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 235.763709

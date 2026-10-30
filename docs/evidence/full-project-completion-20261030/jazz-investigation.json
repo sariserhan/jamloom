@@ -1,0 +1,56 @@
+{
+  "checked_at": "2026-10-30T22:27:45.214025+00:00",
+  "status": "PARTIAL; root cause remains unknown",
+  "hypothesis": "Supported five-tag sound guidance does not truncate the Jazz retry essentials in any of eight vocal profiles",
+  "caption_checks": [
+    {
+      "profile": "female-alto",
+      "characters": 502,
+      "retry_clause_present": true
+    },
+    {
+      "profile": "female-mezzo",
+      "characters": 510,
+      "retry_clause_present": true
+    },
+    {
+      "profile": "female-soprano",
+      "characters": 507,
+      "retry_clause_present": true
+    },
+    {
+      "profile": "female-textured",
+      "characters": 509,
+      "retry_clause_present": true
+    },
+    {
+      "profile": "male-bass",
+      "characters": 509,
+      "retry_clause_present": true
+    },
+    {
+      "profile": "male-baritone",
+      "characters": 503,
+      "retry_clause_present": true
+    },
+    {
+      "profile": "male-tenor",
+      "characters": 501,
+      "retry_clause_present": true
+    },
+    {
+      "profile": "male-textured",
+      "characters": 501,
+      "retry_clause_present": true
+    }
+  ],
+  "style_threshold_changed": false,
+  "failed_audio_available": false,
+  "local_memory_available_gib": 4.0,
+  "disk_free_gib": 25.1,
+  "local_generation_guard": "Available memory floor reached",
+  "local_model_started": false,
+  "seed": 9102402,
+  "seed_provenance": "cloud-song-trial.ts completion fixture sets 9102401 + index 1; exact prior model nondeterminism cannot be replayed",
+  "next": "Opt-in private rejected-take retention; one bounded hosted diagnostic requires fresh approval"
+}

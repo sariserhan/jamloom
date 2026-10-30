@@ -1,0 +1,476 @@
+{
+  "project": {
+    "id": "prj_5YKnovNWcvnyr3cBeVW4jNmRdRQP",
+    "name": "jamloom",
+    "rootDirectory": "apps/site",
+    "framework": "nextjs",
+    "buildCommand": null,
+    "installCommand": null,
+    "nodeVersion": "24.x",
+    "link": {
+      "type": "github",
+      "repo": "jamloom",
+      "org": "sariserhan",
+      "productionBranch": "main"
+    }
+  },
+  "environment": [
+    {
+      "key": "R2_AI_DJ_BUCKET",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "0dTj8LgEqLiNHu1H"
+    },
+    {
+      "key": "YOUTUBE_API_KEY",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "xyoLQNgF2j91Y9fB"
+    },
+    {
+      "key": "JAMLOOM_CLEANUP_TARGET",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "JnWKK07l77RVXVGF"
+    },
+    {
+      "key": "CREDIT_STRIPE_LIVE_WEBHOOK_SECRET",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "IArFgPXbCu4fNvZs"
+    },
+    {
+      "key": "JAMLOOM_CREDIT_PURCHASES_ENABLED",
+      "target": [
+        "production"
+      ],
+      "value": "[SENSITIVE]",
+      "id": "lJxvR6vrffYz1o5K"
+    },
+    {
+      "key": "JAMLOOM_CLOUD_SONGS_ENABLED",
+      "target": [
+        "production"
+      ],
+      "value": "[SENSITIVE]",
+      "id": "DI2i4qdRlmhZ3ZMl"
+    },
+    {
+      "key": "CREDIT_STRIPE_TAX_CODE",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "qUf7GQ1YYHi6HlEa"
+    },
+    {
+      "key": "CREDIT_BILLING_MODE",
+      "target": [
+        "production"
+      ],
+      "value": "[SENSITIVE]",
+      "id": "JzhD0t9byALc1V6Y"
+    },
+    {
+      "key": "JAMLOOM_CLOUD_DAILY_CAP_MICROS",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "JLsywEaU01iiFwnQ"
+    },
+    {
+      "key": "JAMLOOM_CLOUD_RATE_MICROS_PER_SECOND",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "EiGiMny45oSaQDpG"
+    },
+    {
+      "key": "RUNPOD_ENDPOINT_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "AcYbkeVKSFEccgBC"
+    },
+    {
+      "key": "RUNPOD_GHCR_TOKEN",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "slB9FopcMAikQGVT"
+    },
+    {
+      "key": "RUNPOD_API_KEY",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "iuC8g2LgirXqpdr7"
+    },
+    {
+      "key": "PRO_SALES_ENABLED",
+      "target": [
+        "production"
+      ],
+      "value": "[SENSITIVE]",
+      "id": "7124GpN8TGbUBqbV"
+    },
+    {
+      "key": "PRO_BILLING_MODE",
+      "target": [
+        "production"
+      ],
+      "value": "[SENSITIVE]",
+      "id": "AWXyrxvpmacda1dx"
+    },
+    {
+      "key": "PRO_STRIPE_WEBHOOK_SECRET",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "WULPz2v2uShy1yS5"
+    },
+    {
+      "key": "PRO_STRIPE_PRODUCT_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "fol7dhxU3uzvDTTN"
+    },
+    {
+      "key": "PRO_STRIPE_PRICE_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "2bQ4Hp5ecvUM5I4C"
+    },
+    {
+      "key": "PRO_STRIPE_LIVE_WEBHOOK_SECRET",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "pykNSildrsUSvQcm"
+    },
+    {
+      "key": "PRO_STRIPE_LIVE_PRODUCT_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "jQifE1Rejtq5a6lM"
+    },
+    {
+      "key": "PRO_STRIPE_LIVE_PRICE_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "I0NpLnMXgH4CDca7"
+    },
+    {
+      "key": "PRO_LICENSE_PRIVATE_KEY",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "5m6wZeqrHge0WAma"
+    },
+    {
+      "key": "CRON_SECRET",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "0VPRqMu1CDIyYw0W"
+    },
+    {
+      "key": "R2_AUROWALL_ACCESS_KEY_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "6vCvclCOJADjYwwp"
+    },
+    {
+      "key": "R2_AUROWALL_SECRET_ACCESS_KEY",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "KoiEyRQMFFqvh2S3"
+    },
+    {
+      "key": "R2_AUROWALL_BUCKET",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "PCylpgqLDBJkd67l"
+    },
+    {
+      "key": "R2_AUROWALL_ACCOUNT_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "ZubCG9AtJWiQlvhw"
+    },
+    {
+      "key": "R2_AUROWALL_CDN_URL",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "qRwhqUiVzun1j3iH"
+    },
+    {
+      "key": "ACADEMY_STRIPE_SANDBOX_ENABLED",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "rvYwgPsASiRxfQzM"
+    },
+    {
+      "key": "ACADEMY_STRIPE_LIVE_WEBHOOK_SECRET",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "vFC8NslG6MC6O1bE"
+    },
+    {
+      "key": "ACADEMY_STRIPE_LIVE_PRICE_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "IYUR0ySTWhvxPCz1"
+    },
+    {
+      "key": "ACADEMY_STRIPE_LIVE_PRODUCT_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "YgQT4NOB2OrKWc7Z"
+    },
+    {
+      "key": "ACADEMY_STRIPE_WEBHOOK_SECRET",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "lJOV7NtkiDd7nf51"
+    },
+    {
+      "key": "ACADEMY_STRIPE_PRICE_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "M1cUselIsaUKyS9J"
+    },
+    {
+      "key": "ACADEMY_STRIPE_PRODUCT_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "Mq9b6pRD9jAxTn9X"
+    },
+    {
+      "key": "STRIPE_LIVE_PUBLISHABLE_KEY",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "BszmTEsinZ1x58La"
+    },
+    {
+      "key": "STRIPE_LIVE_SECRET_KEY",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "jYh1yNlgFlN6xYAj"
+    },
+    {
+      "key": "STRIPE_SECRET_KEY",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "Df3EkmG8mkfzw4SH"
+    },
+    {
+      "key": "STRIPE_PUBLISHABLE_KEY",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "TMBlfAFLTMnzH1Fc"
+    },
+    {
+      "key": "BETTER_AUTH_URL",
+      "target": [
+        "production"
+      ],
+      "value": "https://www.jamloom.com",
+      "id": "2LrtWN6G2DhXAAuR"
+    },
+    {
+      "key": "EMAIL_FROM",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "6V4TmOMfj62PB2oE"
+    },
+    {
+      "key": "EMAIL_REPLY_TO",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "bYWoy4ZaRvLVZyp2"
+    },
+    {
+      "key": "RESEND_API_KEY",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "JFPeYIsKsfkaYBib"
+    },
+    {
+      "key": "R2_ACCOUNT_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "rAkplQwiup8m3viy"
+    },
+    {
+      "key": "R2_BUCKET",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "BCuSXruNi6buj6wU"
+    },
+    {
+      "key": "R2_ACCESS_KEY_ID",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "9TbZn57PA6MCJIdW"
+    },
+    {
+      "key": "R2_SECRET_ACCESS_KEY",
+      "target": [
+        "production"
+      ],
+      "value": "[configured]",
+      "id": "XNIoDi6y2wDhTWkZ"
+    },
+    {
+      "key": "DATABASE_URL",
+      "target": [
+        "production",
+        "preview"
+      ],
+      "value": "[configured]",
+      "id": "kvC5O707cK87ntCz"
+    },
+    {
+      "key": "DATABASE_URL_UNPOOLED",
+      "target": [
+        "production",
+        "preview"
+      ],
+      "value": "[configured]",
+      "id": "iC5qNNy6nA05IvJe"
+    },
+    {
+      "key": "NEON_BRANCH",
+      "target": [
+        "production",
+        "preview"
+      ],
+      "value": "[configured]",
+      "id": "kGEZN7nicC5u9voK"
+    },
+    {
+      "key": "BETTER_AUTH_SECRET",
+      "target": [
+        "production",
+        "preview"
+      ],
+      "value": "[configured]",
+      "id": "8ZrRFF2SWLxumFy5"
+    }
+  ],
+  "production": {
+    "id": "dpl_Gu9EACnpnaqrqwmyUH5E5y5dXuSq",
+    "url": "jamloom-7bajr8vq0-ssari.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "createdAt": 1793213690899,
+    "meta": {
+      "githubCommitAuthorName": "Serhan Sari",
+      "githubCommitAuthorEmail": "serhan.sari@yahoo.com",
+      "githubCommitMessage": "Record WebKit produced audio diagnostics",
+      "githubCommitOrg": "sariserhan",
+      "githubCommitRef": "main",
+      "githubCommitRepo": "jamloom",
+      "githubCommitSha": "9133b1298418af01151cfee7032c9ed12dfe6c82",
+      "githubDeployment": "1",
+      "githubOrg": "sariserhan",
+      "githubRepo": "jamloom",
+      "githubRepoOwnerType": "User",
+      "githubCommitRepoId": "1423909724",
+      "githubRepoId": "1423909724",
+      "githubRepoVisibility": "public",
+      "githubHost": "github.com",
+      "githubCommitAuthorLogin": "sariserhan",
+      "githubCommitVerification": "unverified",
+      "repoPushedAt": "1793213684000",
+      "branchAlias": "jamloom-git-main-ssari.vercel.app",
+      "lambdaRuntimeStats": "{\"nodejs\":5}",
+      "bundler": "turbopack"
+    },
+    "alias": [
+      "www.jamloom.com",
+      "site-kappa-sable-52.vercel.app",
+      "jamloom.com",
+      "jamloom-ssari.vercel.app",
+      "jamloom-git-main-ssari.vercel.app"
+    ],
+    "gitSource": {
+      "ref": "main",
+      "repoId": 1423909724,
+      "sha": "9133b1298418af01151cfee7032c9ed12dfe6c82",
+      "type": "github",
+      "prId": null
+    }
+  },
+  "read_only": true
+}

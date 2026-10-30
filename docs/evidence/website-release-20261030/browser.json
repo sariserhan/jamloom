@@ -1,0 +1,97 @@
+{
+  "base": "http://127.0.0.1:3011",
+  "browser": "Isolated Chrome via existing Playwright fallback",
+  "writesToProduction": 0,
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/dj-studio",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/academy",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/singing-academy",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/improvise",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/music-dna",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/ai-dj",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/community",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/account/sign-in",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/privacy",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/terms",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/support",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    }
+  ],
+  "interactions": [
+    "Actual free mini-deck playback and cue PASS",
+    "Real disabled-service responses visibly disable both generation actions"
+  ],
+  "pageErrors": [],
+  "status": "PASS"
+}

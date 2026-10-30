@@ -1,0 +1,36 @@
+{
+  "registered_at": "2026-10-30T22:32:33.515688+00:00",
+  "owner_music_submissions_at_registration": 0,
+  "freeze": "3b24c8e953115fe6a66cd8e57a5134600b571d843cb4a9a56e9916296fbbb48e",
+  "listeners": [
+    "owner"
+  ],
+  "sources": 23,
+  "seeds": 3,
+  "strategies": [
+    "half_time",
+    "broken_pulse",
+    "offbeat_dub"
+  ],
+  "rubric": {
+    "enjoyable": "enjoyment >= 4/5",
+    "recognizable": "yes for speech or syllabic speech only",
+    "share": "yes",
+    "technical_failure": "any reported glitch; conservatively count every yes",
+    "variety": "All three generated candidates differ pairwise, using the private organizer map; the control cannot count as a generated strategy"
+  },
+  "provisional_thresholds": {
+    "technical_usable_fraction": 0.85,
+    "recognizable_fraction": 0.9,
+    "enjoyable_fraction": 0.7,
+    "share_fraction": 0.3,
+    "critical_glitches_in_accepted_outputs": 0
+  },
+  "aggregation": "Equal-weight source clip means over three seeds; report each strategy separately; 2000 deterministic source bootstrap samples; no population-wide listener claim",
+  "baseline": "All six preferences collected while blinded; summarize each generated strategy against the fixed original backing control",
+  "final_M1": "Complete coverage, recorded silence control, actual variety and actionable per-style failure review required; no automatic approval",
+  "variety_form_clarification": "Before any owner study access or submission, replaced the ambiguous three-of-four question with all six pairwise composition judgments; the hidden control cannot satisfy generated-output variety.",
+  "composition_policy": "selected_excerpt_prompt_response",
+  "public_folder_not_yet_installed": true,
+  "baseline_length_policy": "Preserve fixed original control calls at 0, 14 and 26 seconds, plus full source and 0.5 second tail; pad every candidate to the same block length"
+}

@@ -1,0 +1,74 @@
+{
+  "status": "APPROVED",
+  "source_commit": "6abdacc221d0cde89b76a5b35c30d7116243d746",
+  "source_base": "1e80c647ae5800c010539cee86a5a4ef125f0c68",
+  "source_checkout": "/tmp/jamloom-jazz-diagnostic-20261030",
+  "source_tests": "21 isolated worker/identity/diagnostic tests PASS",
+  "publication": {
+    "branch": "codex/runpod-setup",
+    "expected_remote_head": "1e80c647ae5800c010539cee86a5a4ef125f0c68",
+    "method": "One fast-forward GitHub push and one existing image workflow; no rerun",
+    "workflow_timeout_minutes": 60,
+    "website_deployment_disabled_by": "apps/site/vercel.json git.deploymentEnabled.codex/runpod-setup=false"
+  },
+  "diagnostic": {
+    "mode": "--german-jazz-diagnostic",
+    "max_usd": 3,
+    "max_workers": 1,
+    "max_requests": 1,
+    "runtime_seconds": 1200,
+    "shutdown_allowance_seconds": 130,
+    "retries": 0,
+    "fixture": {
+      "reference": "Take Five \u2014 Dave Brubeck",
+      "genre": "Jazz",
+      "language": "de",
+      "seconds": 100,
+      "seed": 9102402
+    },
+    "retention": "Only final rejected take, opt-in, private local WAV before temporary staging cleanup; job remains FAILED and cannot enter the listening library",
+    "generation_attempts_inside_one_request": "Existing maximum two takes; unchanged",
+    "endpoint": "jl77hn92npt65k",
+    "before_after_worker_limits": [
+      0,
+      0
+    ],
+    "independent_watchdog": true,
+    "temporary_database_and_test_credits": true,
+    "stop_on_failure": true,
+    "cleanup": "Cancel outstanding request, restore 0/0, verify no active jobs/workers, refund failed request, remove staged objects and isolated database",
+    "success": "A passing style/identity/technical receipt still requires owner musical review; failure preserves a private diagnostic when available"
+  },
+  "preflight": [
+    "Confirm exact source image digest",
+    "Verify disabled empty endpoint",
+    "Check live rate and conservative total under cap",
+    "Check source and harness hashes",
+    "Verify fresh isolated database and voice identity setting"
+  ],
+  "excludes": [
+    "Website/app publication",
+    "Live purchases or payment activation",
+    "Maximum-reference or sustained AI DJ campaign",
+    "Additional paid requests or retries"
+  ],
+  "file_sha256": {
+    "apps/site/scripts/cloud-song-trial.ts": "b76f1284a107b7e873028c2b6aab6fe3bd3407b12394d36b3b6dd50c83e0346a",
+    "apps/site/scripts/rejected-audio-diagnostic.ts": "4732379df794affc49ea712659594a47feebd58d4a2da53b6e3a1a477ee8cafc",
+    "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4",
+    "apps/site/scripts/cloud-trial-limits.ts": "5c9c4651bfbc73170e43655c41c511ce55feed8b029b1d69aa91e7c7fdbbfef7",
+    "services/runpod/handler.py": "ad142959759e5dcd53745ae6a05adc81443b402700418a8b4c8e64579b52bb6e",
+    "tests/test_rejected_audio_diagnostic.py": "1cd81bfc51501ba26f1844657f7ee06298267673c0ef4ed065e4d930521c031c",
+    ".github/workflows/runpod-image.yml": "186129807009cc7c7d6867fa4ba337d0e06f3ea3446087ff24b15badf536a658"
+  },
+  "owner_statement": "Approve image and one $3 diagnostic",
+  "authorized_utc": "2026-10-30T22:28:13.288570+00:00",
+  "execution": {
+    "image_build_attempts": 1,
+    "provider_requests_started": 0,
+    "retries": 0,
+    "workflow_run": 41138331531,
+    "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41138331531",
+    "status": "IMAGE_BUILD_RUNNING"
+  }
+}

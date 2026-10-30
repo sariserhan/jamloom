@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/prepare_strategy_review.py", line 74, in <module>
+    a=p.parse_args();prepare(a.batch,a.output)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/prepare_strategy_review.py", line 47, in prepare
+    if start+len(original)>length-RATE//2:raise ValueError('Control call outside audio')
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Control call outside audio

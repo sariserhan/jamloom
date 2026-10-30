@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "freeze": "3b24c8e953115fe6a66cd8e57a5134600b571d843cb4a9a56e9916296fbbb48e",
+  "blocks": 69,
+  "verified_audio": 345,
+  "public_folder": "music-excerpts",
+  "private_key_served": false,
+  "audio_storage": "Hard links to frozen immutable review audio"
+}

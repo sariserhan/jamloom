@@ -20,7 +20,7 @@ def prepare(batch,output):
     # Four padded working WAVs and four listening WAVs per block; keep the Mac reserve.
     lengths={}
     for row in report['records']:
-        group=(row['id'],row['seed']);lengths[group]=max(lengths.get(group,0),row['seconds'])
+        group=(row['id'],row['seed']);lengths[group]=max(lengths.get(group,0),row['seconds'],31.5)
     required=sum(lengths.values())*RATE*2*2*8+len(lengths)*5*RATE*2*2
     if shutil.disk_usage(output.parent).free<required+15*1024**3:raise RuntimeError('Review needs its estimated WAV space plus 15 GiB reserve')
     output.mkdir();review=output/'review';review.mkdir();raw=output/'working';raw.mkdir()
@@ -34,7 +34,9 @@ def prepare(batch,output):
         if shutil.disk_usage(output).free<15*1024**3:raise RuntimeError('Disk reserve reached; preserve this partial review')
         assert len(rows)==3 and len({r['strategy'] for r in rows})==3
         source=batch/'inputs'/(source_id+'.wav');original=read_pcm(source,(.5,5))
-        choices=[];length=max(round(r['seconds']*RATE) for r in rows)
+        # Preserve the complete-input baseline's final call at 26 s, including
+        # its tail. Shorter excerpt arrangements receive identical end padding.
+        choices=[];length=max(max(round(r['seconds']*RATE) for r in rows),round(26.5*RATE)+len(original))
         folder=review/f'block-{len(blocks)+1:03d}';folder.mkdir();shutil.copyfile(source,folder/'source.wav')
         for row in rows:
             path=batch/row['folder']/'performance.wav';assert digest(path)==row['audio_sha256']

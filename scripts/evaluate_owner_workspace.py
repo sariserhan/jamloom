@@ -76,7 +76,10 @@ def evaluate(workspace,review):
     report=dict(evaluated_at=datetime.now(timezone.utc).isoformat(),owner_submissions=len(observations),automated_answers_used=False,release='HELD by owner',live_payments='HELD by owner')
     if (review/'review/study.json').is_file():
         study=json.loads((review/'review/study.json').read_text());key=json.loads((review/'organizer-key.json').read_text())
-        report['music']=music_summary(study,key,[r['payload'] for r in observations if r['kind']=='music'])
+        music=[r['payload'] for r in observations if r['kind']=='music']
+        report['music']=music_summary(study,key,[p for p in music if p.get('freeze')==study['freeze']])
+        report['music']['freeze']=study['freeze']
+        report['music']['other_study_receipts_preserved']=sum(p.get('freeze')!=study['freeze'] for p in music)
     else:report['music']={'status':'PREPARING'}
     novice=[r for r in observations if r['kind']=='novice']
     report['novice']=novice_result(novice[0]['payload']) if novice else {'status':'NOT RUN; awaiting owner beginner exercise'}

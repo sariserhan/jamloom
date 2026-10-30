@@ -1,0 +1,62 @@
+{
+  "status": "HELD_FULL_COMPLETION_REQUIRED",
+  "owner_request": "continue complete this project I wanna release it today",
+  "owner_destination": "Public website first",
+  "target": "https://www.jamloom.com",
+  "project": "prj_5YKnovNWcvnyr3cBeVW4jNmRdRQP",
+  "git_repository": "sariserhan/jamloom",
+  "production_branch": "main",
+  "publication_method": "GitHub push; no direct CLI deployment",
+  "proposed_scope": "Historical unapproved preview proposal; not the release scope",
+  "open": [
+    "DJ Studio Basic and Pro sample demo",
+    "Free DJ and singing lesson previews",
+    "Community listening",
+    "Account/library and favorites",
+    "Experimental local remix and Live DJ previews"
+  ],
+  "remain_unavailable": [
+    "Paid cloud song generation",
+    "Continuous AI DJ generation",
+    "New credit purchases",
+    "Full-course sales"
+  ],
+  "preserve": [
+    "Existing Pro configuration and customer entitlements",
+    "All recordings, accepted audio and owner observations",
+    "Worker capacity 0/0",
+    "Unrelated local/native changes"
+  ],
+  "unchanged_environment": [
+    "Billing modes",
+    "Stripe product/price/webhook credentials",
+    "Pro sales flag",
+    "Account/database/storage credentials"
+  ],
+  "rollback_deployment": "dpl_Gu9EACnpnaqrqwmyUH5E5y5dXuSq",
+  "rollback_source": "9133b1298418af01151cfee7032c9ed12dfe6c82",
+  "full_project_open_gates": [
+    "Owner musical coverage of revised Improvise",
+    "German Jazz style rejection and maximum-reference qualification",
+    "Sustained AI DJ qualification",
+    "Verified produced-song scoring",
+    "Learned model benefit",
+    "Hands-on beginner outcomes",
+    "Live payment/provider delivery evidence"
+  ],
+  "new_paid_compute_authorized": false,
+  "new_paid_compute_used": false,
+  "app_submission": false,
+  "scope_decision": "Owner rejected the limited public preview. Complete full project first; website before app when ready.",
+  "owner_latest_instruction": "Finish the full project before publishing",
+  "production_mutations_this_turn": 0,
+  "published": false,
+  "historical_proposed_production_environment": {
+    "JAMLOOM_COMING_SOON": "false",
+    "JAMLOOM_CLOUD_SONGS_ENABLED": "false",
+    "JAMLOOM_AI_DJ_ENABLED": "false",
+    "JAMLOOM_DJ_SUPERVISOR_ENABLED": "false",
+    "JAMLOOM_AI_DJ_BETA_ENABLED": "false",
+    "JAMLOOM_CREDIT_PURCHASES_ENABLED": "false"
+  }
+}

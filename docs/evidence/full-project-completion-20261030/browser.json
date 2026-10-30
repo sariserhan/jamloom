@@ -1,0 +1,34 @@
+{
+  "base": "http://127.0.0.1:3011",
+  "browser": "Isolated Chrome via existing Playwright fallback",
+  "writesToProduction": 0,
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/improvise",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "path": "/music-dna",
+      "status": 200,
+      "meaningfulContent": true,
+      "axeViolations": 0,
+      "overflow": false
+    }
+  ],
+  "interactions": [
+    "Actual free mini-deck playback and cue PASS",
+    "Real disabled-service responses visibly disable both generation actions"
+  ],
+  "pageErrors": [],
+  "status": "PASS"
+}

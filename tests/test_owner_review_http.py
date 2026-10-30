@@ -42,6 +42,21 @@ class LocalSaveBoundary(unittest.TestCase):
             self.assertEqual(json.loads(path.read_text())['status'],'OWNER_SUBMITTED_REQUIRES_EVALUATION')
             conn=http.client.HTTPConnection('127.0.0.1',self.server.server_port);conn.request('GET','/../private/'+path.name);r=conn.getresponse();r.read();conn.close();self.assertEqual(r.status,404)
 
+    def test_registered_studies_preserve_old_saves_and_reject_unknown_freezes(self):
+        registry={'old':'music','new':'music-excerpts'}
+        (self.public/'music-studies.json').write_text(json.dumps(registry))
+        row={'attested':True,'pairs':{p:'tie' for p in ('AB','AC','AD','BC','BD','CD')},'distinct_pairs':{p:'yes' for p in ('AB','AC','AD','BC','BD','CD')}}
+        for code in 'ABCD':row[code]=dict(recognizable='yes',share='no',technical_failure='no',groove='3',coherence='3',originality='3',enjoyment='3')
+        for freeze,folder in registry.items():
+            path=self.public/folder;path.mkdir();study=dict(freeze=freeze,blocks=[{'id':'b'}]);(path/'study.json').write_text(json.dumps(study))
+            payload=dict(version=2,listener='owner',freeze=freeze,audio=study['blocks'],ratings={'b':row})
+            self.assertEqual(self.post(dict(kind='music',payload=payload))[0],200)
+        payload['freeze']='unknown'
+        self.assertEqual(self.post(dict(kind='music',payload=payload))[0],400)
+        registry['unknown']='../private';(self.public/'music-studies.json').write_text(json.dumps(registry))
+        self.assertEqual(self.post(dict(kind='music',payload=payload))[0],400)
+        self.assertEqual(len(list(self.results.glob('*.json'))),2)
+
     def test_hands_on_failed_attempt_is_preserved_and_reversed_order_rejected(self):
         payload=dict(schema='jamloom-dj-hands-on-1',attested=True,
             before=dict(recordedAt='1',outcome='incomplete',attempts='2',notes='QA fixture'),

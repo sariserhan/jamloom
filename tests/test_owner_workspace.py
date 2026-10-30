@@ -7,11 +7,23 @@ from unittest.mock import patch
 from types import SimpleNamespace
 import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from evaluate_owner_workspace import reference_groups,novice_result,music_summary
+from evaluate_owner_workspace import reference_groups,novice_result,music_summary,evaluate
 from owner_review_server import validate_music
 
 
 class OwnerWorkspace(unittest.TestCase):
+    def test_prior_study_receipts_are_preserved_but_do_not_rate_current_audio(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);(root/'results').mkdir();(root/'review').mkdir()
+            study=dict(freeze='current',blocks=[])
+            (root/'review/study.json').write_text(json.dumps(study));(root/'organizer-key.json').write_text(json.dumps(dict(freeze='current',blocks=[])))
+            receipt=dict(status='OWNER_SUBMITTED_REQUIRES_EVALUATION',kind='music',payload=dict(freeze='previous'))
+            path=root/'results/old.json';path.write_text(json.dumps(receipt));before=path.read_bytes()
+            result=evaluate(root,root)
+            self.assertEqual(result['music']['status'],'NOT RUN')
+            self.assertEqual(result['music']['other_study_receipts_preserved'],1)
+            self.assertEqual(path.read_bytes(),before)
+
     def test_low_disk_stops_review_before_creating_output(self):
         from prepare_strategy_review import prepare
         with tempfile.TemporaryDirectory() as directory:

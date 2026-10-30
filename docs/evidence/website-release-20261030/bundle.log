@@ -1,0 +1,11 @@
+
+> jamloom-site@0.1.0 audit:bundle
+> node scripts/audit-bundle.mjs
+
+{
+  "status": "PASS",
+  "client_files_checked": 50,
+  "server_secrets_absent": "PASS",
+  "studio_assets_verified_with_protected_singing_content": "PASS",
+  "wasm_sha256": "178a60fff00dd50893402e6d213e4d9a85ba51f3c6fc698248a59dc4508e4f36"
+}
