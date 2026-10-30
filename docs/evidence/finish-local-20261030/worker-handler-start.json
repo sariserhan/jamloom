@@ -1,0 +1,103 @@
+{
+  "checkedAt": "2026-10-30T18:08:51.917Z",
+  "worker": {
+    "dataCenterId": "US-PA-1",
+    "gpuCount": 1,
+    "gpuTypeId": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb",
+    "id": "8v3v3fwfl8btpk",
+    "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+    "isStale": false,
+    "startedAt": "2026-10-30T18:08:51.224Z",
+    "status": "INITIALIZING",
+    "version": 16
+  },
+  "lines": [
+    {
+      "source": "system",
+      "line": "worker is ready",
+      "ts": "2026-10-30T18:09:02Z"
+    },
+    {
+      "source": "system",
+      "line": "create container ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+      "ts": "2026-10-30T18:09:12Z"
+    },
+    {
+      "source": "system",
+      "line": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea Pulling from sariserhan/jamloom/music-worker",
+      "ts": "2026-10-30T18:09:12Z"
+    },
+    {
+      "source": "system",
+      "line": "Digest: sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+      "ts": "2026-10-30T18:09:12Z"
+    },
+    {
+      "source": "system",
+      "line": "Status: Image is up to date for ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+      "ts": "2026-10-30T18:09:12Z"
+    },
+    {
+      "source": "system",
+      "line": "start container for ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea: begin",
+      "ts": "2026-10-30T18:09:12Z"
+    },
+    {
+      "source": "container",
+      "line": "--- Starting Serverless Worker |  Version 1.12.0 ---",
+      "ts": "2026-10-30T18:09:14.835248593Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Running 7 fitness check(s)...\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.122834197Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"GPU binary test passed: 1 GPU(s) healthy (CUDA 13.2)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.446210177Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Memory check passed: 1326.19GB available (of 1511.38GB total)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.475303492Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Disk space check passed: 59.98GB free (100.0% available)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.475343622Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Network connectivity passed: Connected to 8.8.8.8 (4ms)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.479909971Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"CUDA version check passed: 13.2 (minimum: 11.8)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.622449781Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"All fitness checks passed. (785.51ms)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.908439315Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Jobs in queue: 1\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:22.855545669Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Jobs in progress: 1\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:22.925930107Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": \"b5ac8563-4546-4694-86f8-cf17154c8e45-u2\", \"message\": \"Started.\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:22.926130708Z"
+    }
+  ],
+  "http": 200,
+  "stream": "bounded stream ended"
+}

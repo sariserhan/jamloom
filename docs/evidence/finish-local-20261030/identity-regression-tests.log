@@ -1,0 +1,13 @@
+test_cast_is_stable_diverse_and_gender_bound (test_vocal_identity.IdentityTests.test_cast_is_stable_diverse_and_gender_bound) ... ok
+test_failed_conversion_preserves_base_without_publishing_completion (test_vocal_identity.IdentityTests.test_failed_conversion_preserves_base_without_publishing_completion) ... ok
+test_female_casting_matches_the_owner_accepted_conversion_recipe (test_vocal_identity.IdentityTests.test_female_casting_matches_the_owner_accepted_conversion_recipe) ... ok
+test_hard_parent_timeout_stops_conversion_child (test_vocal_identity.IdentityTests.test_hard_parent_timeout_stops_conversion_child) ... ok
+test_mix_preserves_backing_and_rejects_broken_conversion (test_vocal_identity.IdentityTests.test_mix_preserves_backing_and_rejects_broken_conversion) ... ok
+test_normal_casting_requires_explicit_opt_in (test_vocal_identity.IdentityTests.test_normal_casting_requires_explicit_opt_in) ... ok
+test_packaged_references_match_approved_excerpts_and_original_sources (test_vocal_identity.IdentityTests.test_packaged_references_match_approved_excerpts_and_original_sources) ... ok
+test_quiet_source_allows_safe_attenuation_but_not_excessive_boost (test_vocal_identity.IdentityTests.test_quiet_source_allows_safe_attenuation_but_not_excessive_boost) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.046s
+
+OK

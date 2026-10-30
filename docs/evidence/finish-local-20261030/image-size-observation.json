@@ -1,0 +1,41 @@
+{
+  "operation": "GET only; manifests, no image layers downloaded",
+  "compressed_bytes": 27194880328,
+  "layer_count": 23,
+  "largest_compressed_layers": [
+    {
+      "digest": "sha256:e67144eb28687182f1588ea5a1325a45d13b6e1653b783522385a7e9037a09fa",
+      "bytes": 6323501695
+    },
+    {
+      "digest": "sha256:43bef537aa5abfe5c6e3511dc2236fbe1119728d95286fe60ee64790e4cad0dc",
+      "bytes": 4532221646
+    },
+    {
+      "digest": "sha256:950c03e69ab3f8267af769882480f1f84c39ef1cd24f48f53829ff842168dacb",
+      "bytes": 4354269175
+    },
+    {
+      "digest": "sha256:8dd957485ff0612595e9b56db3d9e352b8d69be07b8ceeac8bc2d5e6796f1bd2",
+      "bytes": 3755642141
+    },
+    {
+      "digest": "sha256:7ed3fe4104ef777514de0cbd5708b632d9ff1492b2de70d8d6522b2f9231a392",
+      "bytes": 2914619380
+    },
+    {
+      "digest": "sha256:73a6255f08e84828c3026e47e6b8f482c034b5677e22b112e8e12633ee50549c",
+      "bytes": 1984637842
+    },
+    {
+      "digest": "sha256:7c6d572a2ff12b65f95b91a8494ceb21e0216f3365ac663b319ffe2ea6ebb5c0",
+      "bytes": 1205339197
+    },
+    {
+      "digest": "sha256:c046f268a3d584de548079f4cbac0ead7b6cec9eaeaced170a75bb1c796a2ea0",
+      "bytes": 965359777
+    }
+  ],
+  "uncompressed_size": "NOT MEASURED",
+  "root_cause": "NOT ESTABLISHED"
+}

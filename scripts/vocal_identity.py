@@ -135,8 +135,17 @@ def finish_identity(output,identity=None):
     if identity is None:return
     if receipt.get('source_conditioning') is not None:raise ValueError('Identity conversion requires original singing')
     (output/'.partial').touch();(output/'complete.json').rename(output/'base.complete.json');(output/'singer.wav').rename(output/'base.wav')
-    from separate_singer import separate
-    separate(output/'base.wav',output/'identity-stems')
+    separator_python=os.environ.get('JAMLOOM_SEPARATOR_PYTHON')
+    if separator_python:
+        # The hosted image deliberately excludes the research-only Demucs model.
+        # Use the same isolated, pinned separator as the hosted arrangement stage.
+        subprocess.run([separator_python,str(ROOT/'services/runpod/separate_spleeter.py'),
+                        '--input',str((output/'base.wav').resolve()),
+                        '--output',str((output/'identity-stems').resolve())],
+                       check=True,timeout=600)
+    else:
+        from separate_singer import separate
+        separate(output/'base.wav',output/'identity-stems')
     python=ROOT/'.venv-vocal-identity/bin/python'
     if not python.is_file():raise ValueError('Singer identity runtime is unavailable')
     args=[str(python),str(Path(__file__).resolve()),'--output',str(output.resolve()),'--identity',identity,'--parent-pid',str(os.getpid())]

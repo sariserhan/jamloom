@@ -1,0 +1,130 @@
+{
+  "checked_utc": "2026-10-30T18:03:01Z",
+  "worker_status": {
+    "endpointVersion": 16,
+    "summary": {
+      "idle": 0,
+      "initializing": 1,
+      "running": 0,
+      "throttled": 0,
+      "total": 1,
+      "unhealthy": 0
+    },
+    "workers": [
+      {
+        "dataCenterId": "US-NE-1",
+        "gpuCount": 1,
+        "gpuTypeId": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb",
+        "id": "kr8xl366keue60",
+        "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+        "isStale": false,
+        "startedAt": "2026-10-30T18:01:49.052Z",
+        "status": "INITIALIZING",
+        "version": 16
+      }
+    ]
+  },
+  "log_observation": "Bounded read-only system log stream; repeated identical download messages deduplicated. No handler-start or inference evidence.",
+  "log_rows_observed": 857,
+  "unique_log_rows": [
+    {
+      "source": "system",
+      "line": "7ed3fe4104ef Downloading",
+      "ts": "2026-10-30T18:02:49Z"
+    },
+    {
+      "source": "system",
+      "line": "43bef537aa5a Downloading",
+      "ts": "2026-10-30T18:02:49Z"
+    },
+    {
+      "source": "system",
+      "line": "73a6255f08e8 Downloading",
+      "ts": "2026-10-30T18:02:49Z"
+    },
+    {
+      "source": "system",
+      "line": "950c03e69ab3 Downloading",
+      "ts": "2026-10-30T18:02:49Z"
+    },
+    {
+      "source": "system",
+      "line": "c046f268a3d5 Downloading",
+      "ts": "2026-10-30T18:02:49Z"
+    },
+    {
+      "source": "system",
+      "line": "8dd957485ff0 Downloading",
+      "ts": "2026-10-30T18:02:49Z"
+    },
+    {
+      "source": "system",
+      "line": "7c6d572a2ff1 Downloading",
+      "ts": "2026-10-30T18:02:49Z"
+    },
+    {
+      "source": "system",
+      "line": "e67144eb2868 Downloading",
+      "ts": "2026-10-30T18:02:49Z"
+    },
+    {
+      "source": "system",
+      "line": "c046f268a3d5 Verifying Checksum",
+      "ts": "2026-10-30T18:03:00Z"
+    },
+    {
+      "source": "system",
+      "line": "c046f268a3d5 Download complete",
+      "ts": "2026-10-30T18:03:00Z"
+    }
+  ],
+  "observed_gpu_pricing": {
+    "source": "https://www.runpod.io/pricing",
+    "observed_type": "RTX PRO 6000 Blackwell MIG 48GB",
+    "serverless_usd_per_hour": 1.75,
+    "within_conservative_0_001_usd_per_second": true,
+    "note": "Provider selected a 48GB MIG worker within the L40/L40S/6000 Ada/MIG 48GB serverless price class; no endpoint setting change was made."
+  },
+  "later_worker_snapshot": {
+    "endpointVersion": 16,
+    "summary": {
+      "idle": 0,
+      "initializing": 1,
+      "running": 0,
+      "throttled": 0,
+      "total": 1,
+      "unhealthy": 0
+    },
+    "workers": [
+      {
+        "dataCenterId": "US-NC-1",
+        "gpuCount": 1,
+        "gpuTypeId": "NVIDIA GeForce RTX 4090",
+        "id": "jyr248m2np150j",
+        "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+        "isStale": false,
+        "startedAt": "2026-10-30T18:04:29.842Z",
+        "status": "INITIALIZING",
+        "version": 16
+      }
+    ]
+  },
+  "prior_worker_log_after_replacement_http": 404,
+  "third_worker_snapshot": {
+    "checkedAt": "2026-10-30T18:06:41.147Z",
+    "worker": {
+      "dataCenterId": "US-NC-1",
+      "gpuCount": 1,
+      "gpuTypeId": "NVIDIA GeForce RTX 4090",
+      "id": "vyxyrd12czu1gp",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+      "isStale": false,
+      "startedAt": "2026-10-30T18:06:30.47Z",
+      "status": "INITIALIZING",
+      "version": 16
+    },
+    "lines": [],
+    "http": 200,
+    "stream": "bounded stream ended"
+  }
+}

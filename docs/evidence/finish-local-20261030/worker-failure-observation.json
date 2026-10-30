@@ -1,0 +1,134 @@
+{
+  "checkedAt": "2026-10-30T18:09:53.891Z",
+  "worker": {
+    "dataCenterId": "US-PA-1",
+    "gpuCount": 1,
+    "gpuTypeId": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb",
+    "id": "8v3v3fwfl8btpk",
+    "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+    "isStale": false,
+    "startedAt": "2026-10-30T18:09:21.458Z",
+    "status": "RUNNING",
+    "uptimeSeconds": 8,
+    "version": 16
+  },
+  "lines": [
+    {
+      "source": "system",
+      "line": "worker is ready",
+      "ts": "2026-10-30T18:09:02Z"
+    },
+    {
+      "source": "system",
+      "line": "create container ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+      "ts": "2026-10-30T18:09:12Z"
+    },
+    {
+      "source": "system",
+      "line": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea Pulling from sariserhan/jamloom/music-worker",
+      "ts": "2026-10-30T18:09:12Z"
+    },
+    {
+      "source": "system",
+      "line": "Digest: sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+      "ts": "2026-10-30T18:09:12Z"
+    },
+    {
+      "source": "system",
+      "line": "Status: Image is up to date for ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+      "ts": "2026-10-30T18:09:12Z"
+    },
+    {
+      "source": "system",
+      "line": "start container for ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea: begin",
+      "ts": "2026-10-30T18:09:12Z"
+    },
+    {
+      "source": "container",
+      "line": "--- Starting Serverless Worker |  Version 1.12.0 ---",
+      "ts": "2026-10-30T18:09:14.835248593Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Running 7 fitness check(s)...\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.122834197Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"GPU binary test passed: 1 GPU(s) healthy (CUDA 13.2)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.446210177Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Memory check passed: 1326.19GB available (of 1511.38GB total)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.475303492Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Disk space check passed: 59.98GB free (100.0% available)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.475343622Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Network connectivity passed: Connected to 8.8.8.8 (4ms)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.479909971Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"CUDA version check passed: 13.2 (minimum: 11.8)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.622449781Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"All fitness checks passed. (785.51ms)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:15.908439315Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Jobs in queue: 1\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:22.855545669Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Jobs in progress: 1\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:22.925930107Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": \"b5ac8563-4546-4694-86f8-cf17154c8e45-u2\", \"message\": \"Started.\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:09:22.926130708Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": \"b5ac8563-4546-4694-86f8-cf17154c8e45-u2\", \"message\": \"Captured Handler Exception\", \"level\": \"ERROR\"}",
+      "ts": "2026-10-30T18:10:05.268057856Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"{\\n    \\\"error_type\\\": \\\"<class 'RuntimeError'>\\\",\\n    \\\"error_message\\\": \\\"Jamloom generation failed at improvise-singing@vocal_identity.py:138; no completed song was accepted.\\\",\\n    \\\"error_traceback\\\": \\\"Traceback (most recent call last):\\\\n  File \\\\\\\"/usr/local/lib/python3.12/site-packages/runpod/serverless/modules/rp_job.py\\\\\\\", line 257, in run_job\\\\n    handler_return = handler(job)\\\\n                     ^^^^^^^^^^^^\\\\n  File \\\\\\\"/opt/jamloom/services/runpod/handler.py\\\\\\\", line 222, in handler\\\\n    raise RuntimeError(f'Jamloom generation failed at {error}; no completed song was accepted.') from None\\\\nRuntimeError: Jamloom generation failed at improvise-singing@vocal_identity.py:138; no completed song was accepted.\\\\n\\\",\\n    \\\"hostname\\\": \\\"8v3v3fwfl8btpk-644120b0\\\",\\n    \\\"worker_id\\\": \\\"8v3v3fwfl8btpk\\\",\\n    \\\"runpod_version\\\": \\\"1.12.0\\\"\\n}\", \"level\": \"ERROR\"}",
+      "ts": "2026-10-30T18:10:05.268104596Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": \"b5ac8563-4546-4694-86f8-cf17154c8e45-u2\", \"message\": \"Finished.\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T18:10:05.323808527Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Failed to get job. | Error Type: ClientResponseError | Error Message: 410, message='Gone', url='https://api.runpod.ai/v2/jl77hn92npt65k/job-take/8v3v3fwfl8btpk?gpu=NVIDIA+RTX+PRO+6000+Blackwell+Server+Edition+MIG+2g.48gb&job_in_progress=0'\", \"level\": \"ERROR\"}",
+      "ts": "2026-10-30T18:10:22.362840126Z"
+    },
+    {
+      "source": "system",
+      "line": "stop container 056b2c75fb41395d83eef8c58b7ac65757074ffdea6eb8c2c60d1d48d0bd4c83",
+      "ts": "2026-10-30T18:10:25Z"
+    },
+    {
+      "source": "system",
+      "line": "remove container",
+      "ts": "2026-10-30T18:10:38Z"
+    }
+  ],
+  "http": 200,
+  "stream": "bounded stream ended"
+}

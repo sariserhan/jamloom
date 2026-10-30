@@ -1,5 +1,5 @@
 {
-  "status": "AWAITING_EXPLICIT_PAID_AUTHORIZATION",
+  "status": "CONSUMED",
   "purpose": "One warm-worker reggae diagnostic on the already published current image, including exact Linux amd64 Spleeter inference.",
   "endpoint": "jl77hn92npt65k",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
@@ -60,5 +60,26 @@
     "apps/site/scripts/cloud-song-trial.ts": "7f66576dd0547243b9de7d9d9ec80e48d99dc4b02b1e1dc74f7922a5b0e83e4d",
     "apps/site/scripts/cloud-trial-progress.ts": "bc3f428d484f3b7f6fd7689fc7e04ea2281c4211d2fbb53bbb98339bb0d9d6c1",
     "apps/site/lib/runpod-provider.ts": "247b26da1d90f2718e1724e420485d04bb679733e9c604014f3837326a31fd6c"
+  },
+  "owner_statement": "Approve the one diagnostic, up to $3",
+  "authorized_utc": "2026-10-30T17:54:13.372046+00:00",
+  "execution": {
+    "attempts_used": 1,
+    "status": "FAIL",
+    "retries": 0,
+    "receipt": "docs/evidence/improvise-finish/cloud/2026-10-30T17-54-27.986Z/trial-result.json",
+    "temporary_database": "jamloom_trial_7b972459d75f40859857aed7826a28a2",
+    "provider_requests": 1,
+    "finished_utc": "2026-10-30T18:10:39.112Z",
+    "failure": "improvise-singing@vocal_identity.py:138",
+    "cleanup": "PASS independently verified",
+    "local_postgresql": "stopped after verification",
+    "local_correction": {
+      "file": "scripts/vocal_identity.py",
+      "sha256": "f00bf48f0b17212479970782b3ae6b67a6207e249bfbbbac58098de0df42e8c6",
+      "tests": "29 PASS",
+      "published": false,
+      "hosted_retest": "NOT RUN"
+    }
   }
 }

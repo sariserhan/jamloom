@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-10-30T18:05:27.321Z",
+  "worker": {
+    "dataCenterId": "US-NC-1",
+    "gpuCount": 1,
+    "gpuTypeId": "NVIDIA GeForce RTX 4090",
+    "id": "jyr248m2np150j",
+    "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+    "isStale": false,
+    "startedAt": "2026-10-30T18:04:29.842Z",
+    "status": "THROTTLED",
+    "version": 16
+  },
+  "lines": [
+    {
+      "source": "system",
+      "line": "950c03e69ab3 Downloading",
+      "ts": "2026-10-30T18:05:21Z"
+    },
+    {
+      "source": "system",
+      "line": "e67144eb2868 Downloading",
+      "ts": "2026-10-30T18:05:21Z"
+    },
+    {
+      "source": "system",
+      "line": "43bef537aa5a Extracting",
+      "ts": "2026-10-30T18:05:21Z"
+    },
+    {
+      "source": "system",
+      "line": "950c03e69ab3 Verifying Checksum",
+      "ts": "2026-10-30T18:05:27Z"
+    },
+    {
+      "source": "system",
+      "line": "950c03e69ab3 Download complete",
+      "ts": "2026-10-30T18:05:27Z"
+    },
+    {
+      "source": "system",
+      "line": "e67144eb2868 Verifying Checksum",
+      "ts": "2026-10-30T18:06:03Z"
+    },
+    {
+      "source": "system",
+      "line": "e67144eb2868 Download complete",
+      "ts": "2026-10-30T18:06:03Z"
+    }
+  ],
+  "http": 200,
+  "stream": "bounded stream ended"
+}

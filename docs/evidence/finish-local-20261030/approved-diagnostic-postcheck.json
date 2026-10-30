@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-30T18:10:48.681Z",
+  "operation": "GET and SELECT only",
+  "endpoint": "jl77hn92npt65k",
+  "workersMin": 0,
+  "workersMax": 0,
+  "health": {
+    "jobs": {
+      "completed": 23,
+      "failed": 12,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "endpointVersion": 16,
+    "summary": {
+      "idle": 0,
+      "initializing": 0,
+      "running": 0,
+      "throttled": 0,
+      "total": 0,
+      "unhealthy": 0
+    },
+    "workers": []
+  },
+  "billing": [],
+  "billingLimit": "Observed daily endpoint billing; may lag and is not a finalized invoice or job attribution",
+  "temporaryDatabases": [],
+  "receiptCleanup": true,
+  "creditSettlement": true,
+  "removedObjects": 2,
+  "qualification": "FAIL",
+  "oneAttempt": true,
+  "retries": 0
+}

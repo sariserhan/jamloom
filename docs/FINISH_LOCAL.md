@@ -1,4 +1,4 @@
-**Superseded musical result — 2026-10-30:** The owner rejected all A–D below as too piano-heavy. [Revised bass-led pilot and reference analysis](QUESTION_BASS_RESPONSE.md) are now ready at <http://127.0.0.1:8775>; quality and exact crop remain unreviewed. The owner approved the one-request/$3 hosted diagnostic; it is currently running within its fixed deadline. The earlier technical results below remain historical evidence, not musical acceptance.
+**Latest outcome — 2026-10-30:** The owner rejected all A–D below as too piano-heavy. [New bass-led pilot](QUESTION_BASS_RESPONSE.md) is ready at <http://127.0.0.1:8775>; quality and exact crop remain unreviewed. The [approved hosted diagnostic](HOSTED_DIAGNOSTIC_20261030.md) failed at the identity separator import. Local correction: 29 tests PASS. Independent shutdown/cleanup: PASS. Permit consumed, no retry. The earlier report below is historical technical evidence, not musical acceptance or current authorization.
 
 # Local completion follow-through — 2026-10-30
 
