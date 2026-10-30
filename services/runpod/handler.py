@@ -115,6 +115,8 @@ def validate(value):
     if type(value.get('timeout_seconds')) is not int or not 1 <= value['timeout_seconds'] <= MAX_SECONDS:
         raise ValueError('Invalid execution limit')
     storage_url(value.get('output_url'))
+    if 'retain_rejected_audio' in value and (type(value['retain_rejected_audio']) is not bool or value['product']!='music-dna'):
+        raise ValueError('Invalid diagnostic retention request')
     payload = value.get('payload')
     if not isinstance(payload, dict):
         raise ValueError('Missing music input')
@@ -196,7 +198,12 @@ def handler(job):
             (work/'product.txt').write_text(value['product'])
             if value['product'] == 'improvise':
                 download(value['source'], work/'source')
-            execute(work, value['timeout_seconds'])
+            try:
+                execute(work, value['timeout_seconds'])
+            except GenerationFailure as error:
+                if value.get('retain_rejected_audio') is True and str(error).startswith('style-rejected'):
+                    retain_rejected_audio(work,value)
+                raise
             audio = work/'audio.wav'
             from song_duration import LIMITS
             seconds = value['payload'].get('duration_seconds',LIMITS[value['product']]['legacy'])
@@ -223,6 +230,25 @@ def handler(job):
     except Exception:
         # Provider logs/errors must not contain transcripts, signed URLs or model drafts.
         raise RuntimeError('Jamloom generation failed; no completed song was accepted.') from None
+
+
+def retain_rejected_audio(work,value):
+    """Opt-in diagnostic staging only. The request still fails and is refunded."""
+    from song_duration import LIMITS
+    seconds=value['payload'].get('duration_seconds',LIMITS['music-dna']['legacy'])
+    audio=work/'singer/singer.wav';fit_path=work/'fit.json'
+    if audio.is_symlink() or fit_path.is_symlink() or fit_path.stat().st_size>1024*1024:
+        raise ValueError('Invalid diagnostic artifact')
+    if audio.stat().st_size!=seconds*48000*4+44:raise ValueError('Unexpected diagnostic WAV size')
+    with wave.open(str(audio)) as wav:
+        if (wav.getframerate(),wav.getnchannels(),wav.getsampwidth(),wav.getnframes())!=(48000,2,2,seconds*48000):
+            raise ValueError('Unexpected diagnostic WAV format')
+    data=audio.read_bytes();fit=json.loads(fit_path.read_text())
+    if fit.get('accepted') is not False or fit.get('audio_sha256')!=hashlib.sha256(data).hexdigest():
+        raise ValueError('Diagnostic rejection receipt mismatch')
+    request=urllib.request.Request(value['output_url'],data=data,method='PUT',headers={'Content-Type':'audio/wav','Content-Length':str(len(data))})
+    with urllib.request.build_opener(NoRedirect).open(request,timeout=120) as response:
+        if response.status not in (200,201,204):raise ValueError('Diagnostic staging failed')
 
 
 if __name__ == '__main__':
