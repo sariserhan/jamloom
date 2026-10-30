@@ -1,5 +1,6 @@
 import './env';
 import {trialBatch} from './cloud-trial-progress';
+import {completionWindowSeconds} from './cloud-trial-limits';
 import assert from 'node:assert/strict';
 import {randomUUID,createHash} from 'node:crypto';
 import {mkdir,readFile,writeFile} from 'node:fs/promises';
@@ -16,7 +17,9 @@ import {allocateCredits} from '../lib/economics';
 
 const jazzDiagnostic=process.argv.includes('--jazz-diagnostic'),diagnostic=jazzDiagnostic||process.argv.includes('--reggae-diagnostic'),maximumDNA=process.argv.includes('--maximum-dna');
 const improvise=diagnostic||process.argv.includes('--improvise-completion');
-const repair=process.argv.includes('--repair'),startup=process.argv.includes('--startup'),completion=maximumDNA||process.argv.includes('--dna-completion'),maxUSD=completion?3:startup?1:repair?2:3,maxWorkers=repair||startup||completion||improvise?1:2,maxSeconds=completion||improvise?1200:startup?720:repair?900:780;
+const repair=process.argv.includes('--repair'),startup=process.argv.includes('--startup'),completion=maximumDNA||process.argv.includes('--dna-completion'),maxUSD=completion?3:startup?1:repair?2:3,maxWorkers=repair||startup||completion||improvise?1:2;
+const mode=diagnostic?'diagnostic':maximumDNA?'maximum-dna':completion?'dna-completion':improvise?'improvise-completion':startup?'startup':repair?'repair':'legacy';
+const maxSeconds=completionWindowSeconds(process.argv.includes('--qualification-window'),mode,completion||improvise?1200:startup?720:repair?900:780);
 assert([repair,startup,completion,improvise].filter(Boolean).length<=1,'Choose one trial');
 const stamp=new Date().toISOString().replaceAll(':','-');
 const root=resolve('../..'),directory=resolve(root,improvise?'build-improvise-completion/cloud/'+stamp:completion?'build-dna-completion/cloud/'+stamp:startup?'build-song-finish/startup/'+stamp:repair?'build-song-repair/cloud':'build-hosted-song-trial/final'),evidence=resolve(root,improvise?'docs/evidence/improvise-finish/cloud/'+stamp:completion?'docs/evidence/dna-completion/cloud/'+stamp:startup?'docs/evidence/song-finish/startup/'+stamp:repair?'docs/evidence/song-generation-repair':'docs/evidence/hosted-songs');

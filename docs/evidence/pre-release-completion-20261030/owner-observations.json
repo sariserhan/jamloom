@@ -1,0 +1,33 @@
+{
+  "owner_submissions": 0,
+  "automated_answers_used": false,
+  "release": "HELD by owner",
+  "live_payments": "HELD by owner",
+  "music": {
+    "status": "NOT RUN",
+    "complete_blocks": 0,
+    "required_blocks": 69,
+    "all_blocks_complete": false,
+    "owner_reports_three_distinct": 0,
+    "results": {},
+    "formal_M1": "NOT RUN until complete judgments, recorded control and human evidence review",
+    "listener_policy": "owner only"
+  },
+  "novice": {
+    "status": "NOT RUN; awaiting owner beginner exercise"
+  },
+  "hands_on": {
+    "status": "NOT RUN; awaiting actual deck attempts"
+  },
+  "learned_data": {
+    "status": "NOT RUN",
+    "verified_action_records": 0,
+    "independent_origin_components": 0,
+    "split_ready": false,
+    "training": "NOT RUN",
+    "reason": "Preserve source, session, phrase, user speaker and performer groups. One maker cannot be split across train/dev/test; reference labels alone do not waive M1 or prove model benefit."
+  },
+  "recorded_silence": {
+    "status": "NOT RUN; awaiting owner quiet capture"
+  }
+}

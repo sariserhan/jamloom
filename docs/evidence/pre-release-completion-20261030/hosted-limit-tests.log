@@ -1,0 +1,12 @@
+✔ longer qualification keeps every stage under its existing three-dollar conservative budget (0.53625ms)
+✔ diagnostics and historical modes cannot silently acquire a longer window (0.101958ms)
+✔ one-worker trial cannot dispatch later requests while a prior result is running or unverified (1.119375ms)
+✔ failed/cancelled or repeatedly unreadable results stop additional dispatch; worker bounds hold (0.100417ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 89.729125

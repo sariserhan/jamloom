@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "strategy": "half_time",
+  "seed": 103031,
+  "source_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "output_sha256": "ce64948dcbb719c71ddf2fb3071f6320b53918757bbda4d8a6f40d22f2483043",
+  "byte_identical_to_accepted_pilot": true,
+  "new_acceptance_inferred": false
+}

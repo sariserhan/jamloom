@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-30T20:27:15.940Z",
+  "endpoint": "jl77hn92npt65k",
+  "control": {
+    "id": "jl77hn92npt65k",
+    "name": "jamloom-music-v1",
+    "templateId": "jbpcd0xgbf",
+    "workersMin": 0,
+    "workersMax": 0,
+    "gpuCount": 1,
+    "gpuTypeIds": [
+      "NVIDIA GeForce RTX 4090",
+      "NVIDIA L40S"
+    ],
+    "idleTimeout": 5,
+    "executionTimeoutMs": 900000,
+    "scalerType": "REQUEST_COUNT",
+    "scalerValue": 1
+  },
+  "health": {
+    "jobs": {
+      "completed": 24,
+      "failed": 12,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "endpointVersion": 17,
+    "summary": {
+      "idle": 0,
+      "initializing": 0,
+      "running": 0,
+      "throttled": 0,
+      "total": 0,
+      "unhealthy": 0
+    },
+    "workers": []
+  },
+  "before": {
+    "category": "NVIDIA",
+    "config": {
+      "templateId": "jbpcd0xgbf"
+    },
+    "containerDiskInGb": 60,
+    "containerRegistryAuthId": "cmvkf3d8k00a67r5g2ytnkkkc",
+    "id": "jbpcd0xgbf",
+    "imageName": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+    "isServerless": true,
+    "name": "jamloom-music-v1-template",
+    "ports": [
+      "8888/http",
+      "22/tcp"
+    ],
+    "readme": "",
+    "startJupyter": true,
+    "startSsh": true,
+    "volumeMountPath": "/workspace",
+    "envKeys": [
+      "JAMLOOM_R2_BUCKET",
+      "JAMLOOM_R2_ORIGIN",
+      "JAMLOOM_VOCAL_IDENTITY_ENABLED"
+    ],
+    "envSha256": "2cde46ea1fe8ba1c1a2c163af7c4811b486347268dac51aab558680bce236e8c"
+  },
+  "operation": "GET only"
+}

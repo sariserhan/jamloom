@@ -1,0 +1,93 @@
+{
+  "status": "AUTHORIZED",
+  "scope": "Remaining current-image Improvise and Music DNA hosted qualification; no website/app release or purchases",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+  "max_usd": 9,
+  "max_concurrent_gpu_workers": 1,
+  "max_provider_requests": 7,
+  "stages": [
+    {
+      "mode": "--improvise-completion",
+      "requests": 4,
+      "durations_seconds": [
+        30,
+        35,
+        40,
+        45
+      ],
+      "genres": [
+        "reggae",
+        "jazz",
+        "edm",
+        "acousticpop"
+      ],
+      "max_usd": 3,
+      "runtime_seconds": 2400
+    },
+    {
+      "mode": "--dna-completion",
+      "requests": 2,
+      "durations_seconds": [
+        140,
+        100
+      ],
+      "genres": [
+        "Metal",
+        "Jazz"
+      ],
+      "languages": [
+        "en",
+        "de"
+      ],
+      "max_usd": 3,
+      "runtime_seconds": 2400
+    },
+    {
+      "mode": "--maximum-dna",
+      "requests": 1,
+      "references": 5000,
+      "duration_seconds": 100,
+      "max_usd": 3,
+      "runtime_seconds": 2400
+    }
+  ],
+  "per_stage_shutdown_allowance_seconds": 130,
+  "retries": 0,
+  "stop_campaign_on_any_failure": true,
+  "sequential_stages_only": true,
+  "before_after_worker_limits": [
+    0,
+    0
+  ],
+  "source": "Original procedural audio or textual style references; no human audio",
+  "synthetic_sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+  "temporary_test_database_and_storage": true,
+  "test_credits_only": true,
+  "watchdog": "Independent existing per-stage endpoint shutdown; verify zero workers/jobs and delete temporary objects/database after every stage",
+  "new_image_publication": false,
+  "website_app_release": false,
+  "live_payments": false,
+  "limitation": "This closes only these seven scoped request cases; continuous AI DJ hosting, cold-start performance and musical acceptance remain separately evaluated",
+  "code_sha256": {
+    "apps/site/scripts/cloud-song-trial.ts": "6f8fcb54eea108cc23be1de2eee4d6268ef13f6d4f47db945592ed640feb59d9",
+    "apps/site/scripts/cloud-trial-limits.ts": "5c9c4651bfbc73170e43655c41c511ce55feed8b029b1d69aa91e7c7fdbbfef7",
+    "apps/site/scripts/cloud-trial-progress.ts": "bc3f428d484f3b7f6fd7689fc7e04ea2281c4211d2fbb53bbb98339bb0d9d6c1",
+    "apps/site/lib/runpod-provider.ts": "247b26da1d90f2718e1724e420485d04bb679733e9c604014f3837326a31fd6c"
+  },
+  "conservative_bound_usd": 7.7299999999999995,
+  "price_source": "https://www.runpod.io/pricing",
+  "validation": "Four limit/dispatch tests PASS; all three completion dry runs PASS; existing watchdog and cleanup retained",
+  "approval_reason": "AGENTS.md: new paid compute, publication and monetization still need explicit authorization. Prior one-request permit consumed.",
+  "owner_statement": "Approve this campaign up to $9",
+  "authorized_utc": "2026-10-30T20:27:14.384943+00:00",
+  "execution": {
+    "stage": 1,
+    "stages_started": 1,
+    "provider_requests_started": 2,
+    "retries": 0,
+    "status": "STAGE_1_RUNNING",
+    "stage_receipts": [
+      "docs/evidence/improvise-finish/cloud/2026-10-30T20-27-32.535Z/trial-result.json"
+    ]
+  }
+}

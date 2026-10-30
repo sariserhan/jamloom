@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "blocks": 69,
+  "candidates": 276,
+  "hashes_verified": 345,
+  "freeze": "498396f62f5b2ac68c505111f337e5e819d34f5a197156cb4b0e0111accff2f7",
+  "all_candidates_lufs": -23,
+  "true_peak_below_db": -1,
+  "organizer_key_outside_served_root": true,
+  "human_listening": "NOT RUN"
+}

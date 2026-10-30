@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:3010/academy/lessons/first-crossfade",
+  "buildId": "t-BB2sk5I3U8XSiVnLwH_",
+  "lesson": "first-crossfade",
+  "version": "2026.10.2",
+  "currentCurriculumMatches": true,
+  "tracks": [
+    {
+      "id": "extended",
+      "sha256": "6d68a252436e16cf4b86d745e43f9564198d68ee6fe10f1a4368b235864a3c78"
+    },
+    {
+      "id": "theories",
+      "sha256": "661938922885b5114d78cc5a6070010924f1ae832e6b6ad2a0ad6d28f9198203"
+    }
+  ],
+  "accounts": false,
+  "publication": false,
+  "humanLearning": "NOT RUN"
+}

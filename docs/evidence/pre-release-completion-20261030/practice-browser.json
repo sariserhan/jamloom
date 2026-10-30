@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "owner_results_used": false,
+  "fixture_results": "/tmp/jamloom-owner-qa-results-20261030",
+  "viewports": [
+    {
+      "name": "desktop",
+      "noOverflow": true,
+      "failedAndAssistedOutcomesRetained": true,
+      "draftReload": true,
+      "save": true,
+      "pageErrors": []
+    },
+    {
+      "name": "mobile",
+      "noOverflow": true,
+      "failedAndAssistedOutcomesRetained": true,
+      "draftReload": true,
+      "save": true,
+      "pageErrors": []
+    }
+  ],
+  "actual_lesson": {
+    "url": "http://127.0.0.1:3010/academy/lessons/first-crossfade",
+    "realCurriculum": true,
+    "practiceTrackLoad": true,
+    "pageErrors": [],
+    "humanLearning": "NOT RUN",
+    "accountAccess": "disabled; free lesson only"
+  }
+}
