@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import sys
 import tempfile
+import tarfile
 import unittest
 from unittest.mock import patch
 import wave
@@ -21,6 +22,30 @@ URL = ORIGIN+'/jamloom-audio/uploads/11111111-1111-4111-8111-111111111111.wav?X-
 
 
 class WorkerTests(unittest.TestCase):
+    def test_pinned_spleeter_archive_metadata_is_verified_but_not_installed(self):
+        spec = importlib.util.spec_from_file_location('prepare_spleeter', ROOT/'services/runpod/prepare_spleeter_model.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        def receipt(data): return {'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+        model, metadata = b'model-fixture', b'publisher-metadata-fixture'
+        manifest = {'files': {'checkpoint': receipt(model)}, 'ignored_archive_files': {'./._checkpoint': receipt(metadata)}}
+        for variant in ['valid', 'changed-metadata', 'unknown', 'duplicate', 'symlink']:
+            with self.subTest(variant=variant), tempfile.TemporaryDirectory() as folder:
+                root = Path(folder); archive = root/'model.tar.gz'; target = root/'model'; target.mkdir()
+                members = [('checkpoint', model), ('./._checkpoint', metadata if variant!='changed-metadata' else b'x'*len(metadata))]
+                if variant=='unknown': members.append(('../escape', b'bad'))
+                if variant=='duplicate': members.append(('checkpoint', model))
+                with tarfile.open(archive, 'w:gz') as output:
+                    for name, data in members:
+                        member = tarfile.TarInfo(name); member.size = len(data)
+                        if variant=='symlink' and name=='checkpoint': member.type=tarfile.SYMTYPE; member.linkname='../escape'
+                        output.addfile(member, io.BytesIO(data))
+                if variant=='valid':
+                    module.extract_verified(archive,target,manifest)
+                    self.assertEqual([p.name for p in target.iterdir()], ['checkpoint'])
+                    self.assertEqual((target/'checkpoint').read_bytes(), model)
+                else:
+                    with self.assertRaises(ValueError): module.extract_verified(archive,target,manifest)
+
     def setUp(self):
         self.env = patch.dict(os.environ, {'JAMLOOM_R2_ORIGIN': ORIGIN, 'JAMLOOM_R2_BUCKET': 'jamloom-audio'})
         self.env.start();self.addCleanup(self.env.stop)

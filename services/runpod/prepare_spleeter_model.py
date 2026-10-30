@@ -10,6 +10,31 @@ ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / 'assets/manifests/spleeter-hosted.json'
 
 
+def extract_verified(archive_path, target, manifest):
+    ignored = manifest.get('ignored_archive_files', {})
+    expected_files = {**manifest['files'], **ignored}
+    with tarfile.open(archive_path, 'r:gz') as archive:
+        members = archive.getmembers()
+        if len(members) != len(expected_files) or {item.name for item in members} != set(expected_files):
+            raise ValueError('Unexpected Spleeter archive contents')
+        for item in members:
+            if not item.isfile():
+                raise ValueError('Invalid Spleeter archive member')
+            expected = expected_files[item.name]
+            if item.size != expected['bytes']:
+                raise ValueError('Spleeter model file size mismatch')
+            with archive.extractfile(item) as source:
+                data = source.read(expected['bytes'] + 1)
+            if len(data) != expected['bytes'] or hashlib.sha256(data).hexdigest() != expected['sha256']:
+                raise ValueError('Spleeter model file checksum mismatch')
+            if item.name in ignored:
+                continue  # Exact checksum-pinned publisher metadata; never installed.
+            if Path(item.name).name != item.name:
+                raise ValueError('Invalid Spleeter model path')
+            with (target / item.name).open('xb') as output:
+                output.write(data)
+
+
 def prepare():
     manifest = json.loads(MANIFEST.read_text())
     target = ROOT / manifest['model_dir']
@@ -27,20 +52,7 @@ def prepare():
                 output.write(chunk)
         if archive_path.stat().st_size != manifest['archive_bytes'] or digest.hexdigest() != manifest['archive_sha256']:
             raise ValueError('Spleeter archive checksum mismatch')
-        with tarfile.open(archive_path, 'r:gz') as archive:
-            if {item.name for item in archive.getmembers()} != set(manifest['files']):
-                raise ValueError('Unexpected Spleeter archive contents')
-            for item in archive.getmembers():
-                if not item.isfile():
-                    raise ValueError('Invalid Spleeter archive member')
-                source = archive.extractfile(item)
-                target_path = target / item.name
-                data = source.read()
-                expected = manifest['files'][item.name]
-                if len(data) != expected['bytes'] or hashlib.sha256(data).hexdigest() != expected['sha256']:
-                    raise ValueError('Spleeter model file checksum mismatch')
-                with target_path.open('xb') as output:
-                    output.write(data)
+        extract_verified(archive_path, target, manifest)
 
 
 if __name__ == '__main__':
