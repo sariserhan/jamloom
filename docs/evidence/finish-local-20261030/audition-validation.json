@@ -1,0 +1,245 @@
+{
+  "technical": "PASS",
+  "source_pcm_preserved": true,
+  "tail_padding_is_recorded_silence_evidence": false,
+  "clean_source_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "cases": [
+    {
+      "style": "baseline",
+      "artifacts": 8,
+      "audio": {
+        "file": "renders/question-instrument-response-20261030/audition/baseline.baseline.wav",
+        "sha256": "179f0c992977506fed0f5fc21e03ad5ea6b09fe24b5816b28d45247a5d182023",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 1536000,
+        "duration_seconds": 32.0,
+        "peak_linear": 0.39892578125,
+        "peak_dbfs": -7.982157915427553,
+        "rms_dbfs_left": -25.587305574899023,
+        "rms_dbfs_right": -25.836152472171605,
+        "dc_left": 3.4354527791341144e-06,
+        "dc_right": 3.0805269877115887e-06,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 7,
+        "last_nonzero_frame": 1453202,
+        "max_adjacent_sample_step": 0.223602294921875,
+        "last_100ms_peak": 0.0,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      }
+    },
+    {
+      "style": "reggae",
+      "artifacts": 9,
+      "audio": {
+        "file": "renders/question-instrument-response-20261030/audition/reggae.reggae.wav",
+        "sha256": "344e49fba3d41b0f1b146b169ccbe14c306f648b1aaf3683bbdce6c00ffa4e8e",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 1491429,
+        "duration_seconds": 31.0714375,
+        "peak_linear": 0.357635498046875,
+        "peak_dbfs": -8.93118761403565,
+        "rms_dbfs_left": -29.463503080856217,
+        "rms_dbfs_right": -29.402864496553622,
+        "dc_left": 5.035486637836095e-06,
+        "dc_right": 5.264374254280626e-06,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 18,
+        "last_nonzero_frame": 1306582,
+        "max_adjacent_sample_step": 0.199127197265625,
+        "last_100ms_peak": 0.0,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      }
+    },
+    {
+      "style": "hiphop",
+      "artifacts": 9,
+      "audio": {
+        "file": "renders/question-instrument-response-20261030/audition/hiphop.hiphop.wav",
+        "sha256": "6b4d68862650efdd5b45dac1f60f5b6099c0b2da674a78c780b9961cd72e7fb7",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 1429091,
+        "duration_seconds": 29.772729166666668,
+        "peak_linear": 0.35943603515625,
+        "peak_dbfs": -8.887567699521362,
+        "rms_dbfs_left": -29.07400612532896,
+        "rms_dbfs_right": -29.193653359136064,
+        "dc_left": 6.774492293910517e-06,
+        "dc_right": 6.752518474265285e-06,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 19,
+        "last_nonzero_frame": 1249097,
+        "max_adjacent_sample_step": 0.19915771484375,
+        "last_100ms_peak": 0.0,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      }
+    },
+    {
+      "style": "funk",
+      "artifacts": 9,
+      "audio": {
+        "file": "renders/question-instrument-response-20261030/audition/funk.funk.wav",
+        "sha256": "0b90cc5dcb6e71aa3b5af63dc19c55fee72a2008814b497b7d0eb1fc44c1a780",
+        "format": "PCM16 stereo little-endian",
+        "sample_rate": 48000,
+        "frames": 1400000,
+        "duration_seconds": 29.166666666666668,
+        "peak_linear": 0.360870361328125,
+        "peak_dbfs": -8.852975710997375,
+        "rms_dbfs_left": -29.01542576253786,
+        "rms_dbfs_right": -28.997548532814474,
+        "dc_left": 1.2655966622488839e-05,
+        "dc_right": 1.2192535400390626e-05,
+        "full_scale_samples": 0,
+        "first_nonzero_frame": 14,
+        "last_nonzero_frame": 1235313,
+        "max_adjacent_sample_step": 0.199127197265625,
+        "last_100ms_peak": 0.0,
+        "loudness_method": "unweighted RMS; not integrated LUFS"
+      }
+    }
+  ],
+  "http": [
+    {
+      "file": "A.wav",
+      "status": 206,
+      "range_matches": true
+    },
+    {
+      "file": "B.wav",
+      "status": 206,
+      "range_matches": true
+    },
+    {
+      "file": "C.wav",
+      "status": 206,
+      "range_matches": true
+    },
+    {
+      "file": "D.wav",
+      "status": 206,
+      "range_matches": true
+    },
+    {
+      "file": "source.wav",
+      "status": 206,
+      "range_matches": true
+    }
+  ],
+  "organizer_key_accessible": false,
+  "browser_rendered": "PASS installed Chrome desktop/mobile; WebKit and physical device NOT RUN",
+  "listening": "NOT RUN",
+  "training": "NOT RUN",
+  "free_disk_bytes": 51911716864,
+  "browser_checks": {
+    "url": "http://127.0.0.1:8774",
+    "browser": "Installed Chrome, temporary Playwright profile",
+    "browserPlugin": "Required execution tool unavailable after discovery; existing repository test workflow used",
+    "viewports": [
+      {
+        "name": "desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "identity": true,
+        "meaningfulContent": true,
+        "overflow": false,
+        "consoleErrors": [],
+        "media": [
+          {
+            "index": 0,
+            "duration": 2,
+            "playback": true,
+            "seek": true,
+            "exclusive": true
+          },
+          {
+            "index": 1,
+            "duration": 29.166667,
+            "playback": true,
+            "seek": true,
+            "exclusive": true
+          },
+          {
+            "index": 2,
+            "duration": 31.071438,
+            "playback": true,
+            "seek": true,
+            "exclusive": true
+          },
+          {
+            "index": 3,
+            "duration": 32,
+            "playback": true,
+            "seek": true,
+            "exclusive": true
+          },
+          {
+            "index": 4,
+            "duration": 29.772729,
+            "playback": true,
+            "seek": true,
+            "exclusive": true
+          }
+        ],
+        "screenshot": "/tmp/jamloom-phrase-review-desktop.png"
+      },
+      {
+        "name": "mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "identity": true,
+        "meaningfulContent": true,
+        "overflow": false,
+        "consoleErrors": [],
+        "media": [
+          {
+            "index": 0,
+            "duration": 2,
+            "playback": true,
+            "seek": true,
+            "exclusive": true
+          },
+          {
+            "index": 1,
+            "duration": 29.166667,
+            "playback": true,
+            "seek": true,
+            "exclusive": true
+          },
+          {
+            "index": 2,
+            "duration": 31.071438,
+            "playback": true,
+            "seek": true,
+            "exclusive": true
+          },
+          {
+            "index": 3,
+            "duration": 32,
+            "playback": true,
+            "seek": true,
+            "exclusive": true
+          },
+          {
+            "index": 4,
+            "duration": 29.772729,
+            "playback": true,
+            "seek": true,
+            "exclusive": true
+          }
+        ],
+        "screenshot": "/tmp/jamloom-phrase-review-mobile.png"
+      }
+    ],
+    "status": "PASS"
+  },
+  "final_script_sha256": "046e2207b2b8974a238814ddd008ad9aba7ae05ba3971ebd738a59938a9072a6",
+  "final_plans_match_exported": true,
+  "exact_speaker_boundary_review": "NOT RUN"
+}

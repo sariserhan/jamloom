@@ -1,0 +1,64 @@
+{
+  "status": "AWAITING_EXPLICIT_PAID_AUTHORIZATION",
+  "purpose": "One warm-worker reggae diagnostic on the already published current image, including exact Linux amd64 Spleeter inference.",
+  "endpoint": "jl77hn92npt65k",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+  "max_usd": 3,
+  "maximum_workers": 1,
+  "maximum_requests": 1,
+  "runtime_seconds": 1200,
+  "shutdown_allowance_seconds": 130,
+  "retries": 0,
+  "source": "Prepared original procedural signal only; no human audio upload",
+  "source_path": "renders/question-instrument-response-20261030/hosted-synthetic.wav",
+  "before_and_after_worker_limits": [
+    0,
+    0
+  ],
+  "during_worker_limits": [
+    1,
+    1
+  ],
+  "expected_output_seconds": 30,
+  "command": "JAMLOOM_TEST_DATABASE_URL=<isolated-local-database> JAMLOOM_TRIAL_IMAGE=ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea ./node_modules/.bin/tsx scripts/cloud-song-trial.ts --reggae-diagnostic --source ../../renders/question-instrument-response-20261030/hosted-synthetic.wav --apply",
+  "preflight": [
+    "Exact current image and endpoint settings",
+    "No jobs/workers already active",
+    "Live provider quote fits the total cap including storage and shutdown",
+    "Only local temporary test database and test credits"
+  ],
+  "cleanup": [
+    "Independent shutdown watchdog",
+    "Cancel unfinished jobs",
+    "Restore worker limits 0/0",
+    "Remove staged audio objects and disposable database",
+    "Verify zero workers and queued/running jobs; retain billing receipt"
+  ],
+  "website_publication": false,
+  "image_publication": false,
+  "sales_activation": false,
+  "dry_run": {
+    "status": "PASS",
+    "maxUSD": 3,
+    "maxWorkers": 1,
+    "maxSeconds": 1200,
+    "requests": 1,
+    "durations": [
+      30
+    ]
+  },
+  "remaining_after_success": [
+    "Four-genre Improvise coverage",
+    "Music DNA genre/language and maximum-library qualification",
+    "Sustained AI DJ capacity/cost/restart",
+    "Owner quality judgments and release gates"
+  ],
+  "authorization_basis": "AGENTS.md: new paid compute, publication and monetization still need explicit authorization.",
+  "synthetic_source_sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+  "provider_preflight": "provider-preflight.json",
+  "reviewed_script_sha256": {
+    "apps/site/scripts/cloud-song-trial.ts": "7f66576dd0547243b9de7d9d9ec80e48d99dc4b02b1e1dc74f7922a5b0e83e4d",
+    "apps/site/scripts/cloud-trial-progress.ts": "bc3f428d484f3b7f6fd7689fc7e04ea2281c4211d2fbb53bbb98339bb0d9d6c1",
+    "apps/site/lib/runpod-provider.ts": "247b26da1d90f2718e1724e420485d04bb679733e9c604014f3837326a31fd6c"
+  }
+}

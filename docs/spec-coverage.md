@@ -1,3 +1,5 @@
+**Latest local continuation — 2026-10-30:** [Current work and remaining gates](FINISH_LOCAL.md): three new source-responsive instrument auditions and a separate baseline are rendered and verified; 15 focused tests and desktop/mobile Chrome playback checks pass. Owner listening, verified scoring targets, expert labels/learned benefit and hosted qualification remain open. The prepared one-request/$3 hosted diagnostic awaits explicit approval; endpoint remains disabled. Scoped iPhone checks and Release installation are already complete.
+
 **Latest follow-through — 2026-10-30:** [Current evidence](COMPLETION_CURRENT.md). Simulator playback checks and local target-review tooling do not close verified singing targets, M1, hosted quality, physical-device or release gates.
 
 **Current native follow-through:** [Build 34](COMPLETION_CANDIDATE.md) is signed, audited, installed and locally archived; two physical server tests pass and the owner confirms both accepted karaoke backings play/stop on Community. UI automation fails before initialization. This closes the current asset-delivery check, not M1, verified scored-song targets, hosted/provider gates or public release.

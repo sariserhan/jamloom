@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-30T17:25:32.128Z",
+  "operation": "GET only",
+  "endpoint": "jl77hn92npt65k",
+  "workersMin": 0,
+  "workersMax": 0,
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+  "health": {
+    "jobs": {
+      "completed": 23,
+      "failed": 11,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  }
+}

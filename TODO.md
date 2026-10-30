@@ -1,3 +1,5 @@
+**Latest continuation:** [Local completion report](docs/FINISH_LOCAL.md). Three new source-responsive auditions and their baseline are complete; 15 focused tests and desktop/mobile playback checks pass. Owner review and the prepared $3 hosted diagnostic approval remain pending.
+
 # Current completion targets — 2026-10-30
 
 <a id="current-completion-targets--2026-10-28"></a>
