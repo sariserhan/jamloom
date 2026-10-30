@@ -1,0 +1,34 @@
+{
+  "registered_at": "2026-10-30T20:42:58.832326+00:00",
+  "owner_music_submissions_at_registration": 0,
+  "freeze": "498396f62f5b2ac68c505111f337e5e819d34f5a197156cb4b0e0111accff2f7",
+  "listeners": [
+    "owner"
+  ],
+  "sources": 23,
+  "seeds": 3,
+  "strategies": [
+    "half_time",
+    "broken_pulse",
+    "offbeat_dub"
+  ],
+  "rubric": {
+    "enjoyable": "enjoyment >= 4/5",
+    "recognizable": "yes for speech or syllabic speech only",
+    "share": "yes",
+    "technical_failure": "any reported glitch; conservatively count every yes",
+    "variety": "All three generated candidates differ pairwise, using the private organizer map; the control cannot count as a generated strategy"
+  },
+  "provisional_thresholds": {
+    "technical_usable_fraction": 0.85,
+    "recognizable_fraction": 0.9,
+    "enjoyable_fraction": 0.7,
+    "share_fraction": 0.3,
+    "critical_glitches_in_accepted_outputs": 0
+  },
+  "aggregation": "Equal-weight source clip means over three seeds; report each strategy separately; 2000 deterministic source bootstrap samples; no population-wide listener claim",
+  "baseline": "All six preferences collected while blinded; summarize each generated strategy against the fixed original backing control",
+  "final_M1": "Complete coverage, recorded silence control, actual variety and actionable per-style failure review required; no automatic approval",
+  "owner_music_page_requests_before_registration": 0,
+  "variety_form_clarification": "Before any owner study access or submission, replaced the ambiguous three-of-four question with all six pairwise composition judgments; the hidden control cannot satisfy generated-output variety."
+}

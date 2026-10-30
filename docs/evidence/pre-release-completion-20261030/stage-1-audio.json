@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "scope": "Retained PCM bytes, exact durations, peaks and source provenance; not musical listening acceptance",
+  "requests": [
+    {
+      "label": "reggae",
+      "sha256": "bd2776fa7ed1605109d2ce6c5101a83e4d29102c6bfa662b233d81e00a557d7d",
+      "seconds": 30,
+      "peak": 0.8912353515625,
+      "rms": 0.11176570553532066,
+      "source_provenance_matches": true,
+      "source_sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+      "source_events": 2
+    },
+    {
+      "label": "jazz",
+      "sha256": "8475d0ec9cda8d4f553f302e425d8bf55222caa597b97393226ce0a5ade0be74",
+      "seconds": 35,
+      "peak": 0.896881103515625,
+      "rms": 0.11359134513929067,
+      "source_provenance_matches": true,
+      "source_sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+      "source_events": 1
+    },
+    {
+      "label": "edm",
+      "sha256": "d61a8d396f97e3d5791777d32199f4eeda328b6714fa23a60a8a31767350f675",
+      "seconds": 40,
+      "peak": 0.88397216796875,
+      "rms": 0.15823764668252746,
+      "source_provenance_matches": true,
+      "source_sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+      "source_events": 2
+    },
+    {
+      "label": "acousticpop",
+      "sha256": "1552982002a32138c7d275ad9ec1d5b33f89899f3111ba066db638e7453fe3bf",
+      "seconds": 45,
+      "peak": 0.95001220703125,
+      "rms": 0.10928733088138269,
+      "source_provenance_matches": true,
+      "source_sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+      "source_events": 1
+    }
+  ]
+}

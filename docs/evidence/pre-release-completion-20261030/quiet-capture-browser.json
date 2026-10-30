@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "scope": "Synthetic fake microphone only; not owner recorded-silence evidence",
+  "device": "Chrome fake audio WAV",
+  "physicalMicrophoneUsed": false,
+  "localCaptureAndDecode": true,
+  "privateReceipt": true,
+  "ownerResultsUnchanged": true
+}

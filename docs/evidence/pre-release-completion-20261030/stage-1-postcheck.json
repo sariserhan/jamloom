@@ -1,0 +1,104 @@
+{
+  "at": "2026-10-30T20:43:57.350Z",
+  "operation": "Independent GET and SELECT only",
+  "stage": 1,
+  "receipt": "docs/evidence/improvise-finish/cloud/2026-10-30T20-27-32.535Z/trial-result.json",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "health": {
+    "jobs": {
+      "completed": 28,
+      "failed": 12,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "endpointVersion": 17,
+    "summary": {
+      "idle": 0,
+      "initializing": 0,
+      "running": 0,
+      "throttled": 0,
+      "total": 0,
+      "unhealthy": 0
+    },
+    "workers": []
+  },
+  "billing": [
+    {
+      "amount": 0.028195693623274565,
+      "timeBilledMs": 56574,
+      "diskSpaceBilledGB": 120,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 18:00:00"
+    }
+  ],
+  "billingLimit": "Observed daily billing may lag; not a finalized invoice or exact stage attribution",
+  "temporaryDatabases": [],
+  "cleanup": "PASS",
+  "qualification": "PASS",
+  "requests": [
+    {
+      "label": "reggae",
+      "provider_id": "3230d498-c89f-4e1e-adba-9c85753e3938-u2",
+      "finalState": "completed",
+      "audioSha256": "bd2776fa7ed1605109d2ce6c5101a83e4d29102c6bfa662b233d81e00a557d7d",
+      "seconds": 30,
+      "expectedCredits": 1,
+      "balance": {
+        "available": 49,
+        "reserved": 0
+      }
+    },
+    {
+      "label": "jazz",
+      "provider_id": "f0128489-f1e2-4f35-8102-2864dd42b156-u2",
+      "finalState": "completed",
+      "audioSha256": "8475d0ec9cda8d4f553f302e425d8bf55222caa597b97393226ce0a5ade0be74",
+      "seconds": 35,
+      "expectedCredits": 2,
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      }
+    },
+    {
+      "label": "edm",
+      "provider_id": "40d25e7d-1c76-494f-942d-1b57f46d2e37-u1",
+      "finalState": "completed",
+      "audioSha256": "d61a8d396f97e3d5791777d32199f4eeda328b6714fa23a60a8a31767350f675",
+      "seconds": 40,
+      "expectedCredits": 1,
+      "balance": {
+        "available": 49,
+        "reserved": 0
+      }
+    },
+    {
+      "label": "acousticpop",
+      "provider_id": "a772924c-8d27-4723-b06d-a841c09d380c-u2",
+      "finalState": "completed",
+      "audioSha256": "1552982002a32138c7d275ad9ec1d5b33f89899f3111ba066db638e7453fe3bf",
+      "seconds": 45,
+      "expectedCredits": 2,
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      }
+    }
+  ],
+  "removedObjects": 12,
+  "retries": 0
+}

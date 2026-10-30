@@ -1,0 +1,37 @@
+{
+  "flow": "Workspace -> beginner baseline -> lesson -> follow-up -> local observation; reference annotations",
+  "qaOnly": true,
+  "ownerResults": "untouched",
+  "fallback": "Browser execution tool absent after two discovery attempts; existing Playwright workflow",
+  "viewports": [
+    {
+      "name": "desktop",
+      "identity": true,
+      "content": true,
+      "overflow": false,
+      "consoleErrors": [],
+      "noviceSequenceAndSave": true,
+      "savedConfirmation": true,
+      "repeatedSaveDisabled": true,
+      "savedReceiptRecoveredAfterReload": true,
+      "draftReload": true,
+      "questionBoundaryPreserved": true,
+      "referenceSave": true
+    },
+    {
+      "name": "mobile",
+      "identity": true,
+      "content": true,
+      "overflow": false,
+      "consoleErrors": [],
+      "noviceSequenceAndSave": true,
+      "savedConfirmation": true,
+      "repeatedSaveDisabled": true,
+      "savedReceiptRecoveredAfterReload": true,
+      "draftReload": true,
+      "questionBoundaryPreserved": true,
+      "referenceSave": true
+    }
+  ],
+  "status": "PASS"
+}

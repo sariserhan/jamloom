@@ -43,7 +43,11 @@ class OwnerWorkspace(unittest.TestCase):
         payload={'version':2,'listener':'owner','freeze':'f','audio':study['blocks'],'ratings':{'b':{'attested':True,'distinct':'yes'}}}
         with self.assertRaises(ValueError):validate_music(payload,study)
         for c in 'ABCD':payload['ratings']['b'][c]=dict(recognizable='yes',share='yes',technical_failure='no',groove='4',coherence='4',originality='4',enjoyment='4')
-        payload['ratings']['b']['pairs']={p:'tie' for p in ('AB','AC','AD','BC','BD','CD')};validate_music(payload,study)
+        payload['ratings']['b']['pairs']={p:'tie' for p in ('AB','AC','AD','BC','BD','CD')}
+        with self.assertRaises(ValueError):validate_music(payload,study)
+        payload['ratings']['b']['distinct_pairs']={p:'yes' for p in ('AB','AC','AD','BC','BD','CD')};validate_music(payload,study)
+        payload['ratings']['b']['distinct_pairs']['BC']='no'
+        result=music_summary(study,key,[payload]);self.assertEqual(result['owner_reports_three_generated_compositions_distinct'],0)
         changed=copy.deepcopy(payload);changed['audio'][0]['audio_sha256']['A']='changed'
         with self.assertRaises(ValueError):validate_music(changed,study)
 

@@ -18,7 +18,7 @@ def validate_music(payload,study):
     if not isinstance(ratings,dict) or not ratings or not set(ratings)<=blocks:raise ValueError('Invalid rated blocks')
     for row in ratings.values():
         if not isinstance(row,dict):raise ValueError('Invalid rating object')
-        if row.get('attested') is not True or row.get('distinct') not in ('yes','no'):raise ValueError('Listening attestation and variety judgment required')
+        if row.get('attested') is not True:raise ValueError('Listening attestation required')
         for code in 'ABCD':
             values=row.get(code,{})
             for field in ('recognizable','share','technical_failure'):
@@ -27,7 +27,7 @@ def validate_music(payload,study):
                 if values.get(field) not in ('1','2','3','4','5'):raise ValueError('Complete all ratings')
             if not isinstance(values.get('notes',''),str) or len(values.get('notes',''))>2000:raise ValueError('Notes too long')
         for a,b in ('AB','AC','AD','BC','BD','CD'):
-            if row.get('pairs',{}).get(a+b) not in (a,b,'tie'):raise ValueError('Complete pairwise comparisons')
+            if row.get('pairs',{}).get(a+b) not in (a,b,'tie') or row.get('distinct_pairs',{}).get(a+b) not in ('yes','no'):raise ValueError('Complete preference and composition-variety comparisons')
 
 
 class Handler(review_serve.Handler):
@@ -36,7 +36,13 @@ class Handler(review_serve.Handler):
             self.send_response(204);self.end_headers();return
         if self.path=='/api/session':
             if self.headers.get('Host')!=f'127.0.0.1:{self.server.server_port}':self.send_error(403);return
-            self.json_response({'token':self.server.review_token});return
+            session={'token':self.server.review_token}
+            files=sorted(self.server.results.glob('*-novice.json'))
+            if files:
+                saved=json.loads(files[-1].read_text())['payload']
+                assessment=[saved[k] for k in ('before','after','beforeAt','lessonAt','afterAt','reflection')]
+                session['noviceReceipt']={'receipt':files[-1].name,'assessmentSha256':hashlib.sha256(json.dumps(assessment,separators=(',',':')).encode()).hexdigest()}
+            self.json_response(session);return
         super().do_GET()
 
     def json_response(self,value,code=200):

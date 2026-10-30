@@ -81,13 +81,15 @@
   "owner_statement": "Approve this campaign up to $9",
   "authorized_utc": "2026-10-30T20:27:14.384943+00:00",
   "execution": {
-    "stage": 1,
-    "stages_started": 1,
-    "provider_requests_started": 2,
+    "stage": 2,
+    "stages_started": 2,
+    "provider_requests_started": 4,
     "retries": 0,
-    "status": "STAGE_1_RUNNING",
+    "status": "STAGE_2_RUNNING",
     "stage_receipts": [
-      "docs/evidence/improvise-finish/cloud/2026-10-30T20-27-32.535Z/trial-result.json"
-    ]
+      "docs/evidence/improvise-finish/cloud/2026-10-30T20-27-32.535Z/trial-result.json",
+      "docs/evidence/dna-completion/cloud/2026-10-30T20-44-17.142Z/trial-result.json"
+    ],
+    "last_independent_cleanup": "PASS"
   }
 }

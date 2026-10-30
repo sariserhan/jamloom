@@ -1,5 +1,6 @@
 {
-  "owner_submissions": 0,
+  "evaluated_at": "2026-10-30T20:45:16.723576+00:00",
+  "owner_submissions": 9,
   "automated_answers_used": false,
   "release": "HELD by owner",
   "live_payments": "HELD by owner",
@@ -8,14 +9,22 @@
     "complete_blocks": 0,
     "required_blocks": 69,
     "all_blocks_complete": false,
-    "owner_reports_three_distinct": 0,
+    "owner_reports_three_generated_compositions_distinct": 0,
     "results": {},
     "formal_M1": "NOT RUN until complete judgments, recorded control and human evidence review",
     "listener_policy": "owner only"
   },
   "novice": {
-    "status": "NOT RUN; awaiting owner beginner exercise"
+    "observation": "PASS recorded beginner before/after",
+    "before_correct": 1,
+    "after_correct": 3,
+    "questions": 6,
+    "change": 2,
+    "observed_improvement": true,
+    "scope": "One owner beginner concept pilot; not hands-on mixing skill, retention, causal effect or general course effectiveness"
   },
+  "novice_receipts": 9,
+  "distinct_novice_assessments": 1,
   "hands_on": {
     "status": "NOT RUN; awaiting actual deck attempts"
   },

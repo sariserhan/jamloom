@@ -34,7 +34,7 @@ Maximum one GPU, $3 and 40 minutes plus shutdown per stage; no retries; stop on
 any failure. Each later stage requires prior PASS and independently verified
 zero workers/jobs, removed temporary objects/database and settled test credits.
 
-**Stage 1 is running.** [Exact authorization and live receipts](evidence/pre-release-completion-20261030/hosted-campaign-plan.json).
+**Stage 1 PASS with independent cleanup; stage 2 is running.** [Exact authorization and live receipts](evidence/pre-release-completion-20261030/hosted-campaign-plan.json).
 This does not authorize AI DJ rentals, website/app release or live purchases.
 
 ## Requirements still needing evidence
@@ -46,7 +46,7 @@ This does not authorize AI DJ rentals, website/app release or live purchases.
 | Learned improvisation | NOT RUN | Verified user-source/action labels, leakage-safe independent source/session/speaker/phrase/performer groups, M1 completion and held-out benefit over the baseline. The seven supplied references from one maker cannot alone establish performer-held-out validation |
 | Produced-song scoring | PARTIAL | Actual sung words, notes and timing verified against the [source audio](http://127.0.0.1:8769/). `verified:false` and `scoringEnabled:false` remain until then |
 | Afro House section/control details | PARTIAL; all three target mixes accepted | Heard section names/timing corrections and control preferences in the [existing review](http://127.0.0.1:8771/) |
-| Beginner learning outcomes | NOT RUN for new observations | The owner agreed to the DJ exercise. Complete the [concept pilot](http://127.0.0.1:8777/novice.html) and [actual free-deck attempts](http://127.0.0.1:8777/practice-observation.html). General effectiveness and the beginner mini-set remain distinct from this first-crossfade pilot |
+| Beginner learning outcomes | PARTIAL; actual concept pilot PASS | Owner scores improved from 1/6 to 3/6. Nine saved receipts are one assessment sequence, not nine learners. Complete the [actual free-deck attempts](http://127.0.0.1:8777/practice-observation.html); general effectiveness and the beginner mini-set remain distinct |
 | Sustained AI DJ operation | PARTIAL; earlier bounded tests pass | Fresh multi-hour capacity/cost evidence, controller/GPU loss and recovery under a separately prepared approved budget; current $9 campaign excludes this |
 | Release and live sales | HELD by owner | Final release/payment phase, including deployed/native receipt delivery and real refund notification evidence |
 | Excluded hardware | DEFERRED | Physical iPad and unavailable MIDI/cue routes; prior scoped iPhone playback/flow/microphone/Release-install checks remain passed |
