@@ -15,16 +15,41 @@ if [ -e "$OUTPUT" ]; then
     exit 1
 fi
 mkdir -p "$OUTPUT"
-xcodebuild test -project apps/ios/Jamloom.xcodeproj -scheme Jamloom \
-    -destination "platform=iOS Simulator,id=$JAMLOOM_SIMULATOR_ID" \
-    -derivedDataPath build-ios -parallel-testing-enabled NO \
+# StoreKitTest changes a shared environment. Keep its two fixture flows in a
+# fresh test host, separate from the account tests that precede them alphabetically.
+run_simulator_tests() {
+    lane=$1
+    shift
+    result=0
+    xcodebuild test -project apps/ios/Jamloom.xcodeproj -scheme Jamloom \
+        -destination "platform=iOS Simulator,id=$JAMLOOM_SIMULATOR_ID" \
+        -derivedDataPath build-ios -parallel-testing-enabled NO \
+        -resultBundlePath "$OUTPUT/$lane.xcresult" "$@" \
+        CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- > "$OUTPUT/$lane.log" 2>&1 || result=$?
+    if [ ! -d "$OUTPUT/$lane.xcresult" ]; then
+        echo "FAIL: no result bundle for $lane; preserve its log." >&2
+        return 1
+    fi
+    xcrun xcresulttool get test-results summary --path "$OUTPUT/$lane.xcresult" > "$OUTPUT/$lane.json" || {
+        echo "FAIL: could not summarize $lane; preserve the log and result bundle." >&2
+        return 1
+    }
+    return "$result"
+}
+run_simulator_tests storekit \
+    -only-testing:JamloomTests/PurchaseTests/testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding \
+    -only-testing:JamloomTests/PurchaseTests/testSingingCourseRestoreDoesNotDeliverCreditsOrCrossAccounts
+run_simulator_tests tests \
+    -only-testing:JamloomTests \
+    -skip-testing:JamloomTests/PurchaseTests/testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding \
+    -skip-testing:JamloomTests/PurchaseTests/testSingingCourseRestoreDoesNotDeliverCreditsOrCrossAccounts
+run_simulator_tests ui \
+    -only-testing:JamloomUITests \
     -skip-testing:JamloomUITests/FlowTests/testLiveFavoriteAutocompleteWithoutAnAccount \
-    -skip-testing:JamloomUITests/FlowTests/testLiveYouTubePlaylistImportWithoutAnAccount \
-    -resultBundlePath "$OUTPUT/tests.xcresult" CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- > "$OUTPUT/tests.log" 2>&1
+    -skip-testing:JamloomUITests/FlowTests/testLiveYouTubePlaylistImportWithoutAnAccount
 xcodebuild build -project apps/ios/Jamloom.xcodeproj -scheme Jamloom \
     -configuration Release -destination 'generic/platform=iOS' \
     -derivedDataPath build-ios-device CODE_SIGNING_ALLOWED=NO > "$OUTPUT/release.log" 2>&1
 python3 scripts/verify_ios_bundle.py build-ios-device/Build/Products/Release-iphoneos/Jamloom.app > "$OUTPUT/bundle.json"
-xcrun xcresulttool get test-results summary --path "$OUTPUT/tests.xcresult" > "$OUTPUT/tests.json"
-echo "PASS: simulator tests and unsigned device compilation; evidence: $OUTPUT"
+echo "PASS: isolated local StoreKit, simulator tests and unsigned device compilation; evidence: $OUTPUT"
 echo 'Physical microphone/routes/battery, listening and production release are separate gates.'

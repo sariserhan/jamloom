@@ -1,0 +1,8 @@
+{
+  "checkedAt": "2026-10-30T14:43:03.923918+00:00",
+  "operation": "GET-only instance/account audit; no new rental",
+  "activeInstances": 0,
+  "matchingAfroInstances": 0,
+  "creditUSD": 7.022262056299997,
+  "limitations": "Current balance is not a per-attempt invoice and is not used to infer spending across unrelated activity."
+}

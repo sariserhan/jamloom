@@ -1,0 +1,40 @@
+{
+  "configuration": {
+    "accountConfigured": true,
+    "libraryStorageConfigured": true,
+    "djRecordingStorageConfigured": true,
+    "cloudSongsEnabled": false,
+    "cloudSongConfigValid": true,
+    "djBillingModeValid": true,
+    "djInvitationsEnabled": false,
+    "academy": {
+      "mode": "live",
+      "configured": false,
+      "academyCheckoutEnabled": false,
+      "generationCheckoutEnabled": false
+    },
+    "singing": {
+      "mode": "live",
+      "configured": false,
+      "academyCheckoutEnabled": false,
+      "generationCheckoutEnabled": false
+    },
+    "singingPriceUSD": 39
+  },
+  "database": {
+    "status": "PASS",
+    "applied": 32,
+    "pending": [],
+    "changed": [],
+    "unknown": [],
+    "settings": {
+      "maintenance": false,
+      "billing_mode": "test"
+    }
+  },
+  "limitations": [
+    "Reads this process environment, not deployed configuration",
+    "Configured credentials are not provider delivery evidence",
+    "No quality, payment, publication or sales approval is inferred"
+  ]
+}

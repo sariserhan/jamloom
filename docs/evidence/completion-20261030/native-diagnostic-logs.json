@@ -1,0 +1,59 @@
+{
+  "logs": {
+    "jamloom-completion-20261030-media-visible.log": {
+      "sha256": "1c21e29b66b564364a71f278d5a51843367cbb0b3d6115e268fbebce44f19bf7",
+      "bytes": 146020,
+      "path": "/tmp/jamloom-completion-20261030-media-visible.log",
+      "retained_path": "renders/completion-20261030-diagnostics/jamloom-completion-20261030-media-visible.log"
+    },
+    "jamloom-completion-20261030-song-page.log": {
+      "sha256": "31bb09f1c0b137da6c37aedfc76face2ed1dbac83beb98b245f99b526ecb7b1a",
+      "bytes": 147111,
+      "path": "/tmp/jamloom-completion-20261030-song-page.log",
+      "retained_path": "renders/completion-20261030-diagnostics/jamloom-completion-20261030-song-page.log"
+    },
+    "jamloom-completion-20261030-mute-isolation.log": {
+      "sha256": "490dbdb8306f9ba53aa2d466e408913452ad9eb59418d7f33383278cfdb9968e",
+      "bytes": 151991,
+      "path": "/tmp/jamloom-completion-20261030-mute-isolation.log",
+      "retained_path": "renders/completion-20261030-diagnostics/jamloom-completion-20261030-mute-isolation.log"
+    },
+    "jamloom-completion-20261030-release.log": {
+      "sha256": "5a590da0c0f80f73438a55f747f460f41e6e37dd4ac2cad9144d99ec7e2b1d85",
+      "bytes": 152053,
+      "path": "/tmp/jamloom-completion-20261030-release.log",
+      "retained_path": "renders/completion-20261030-diagnostics/jamloom-completion-20261030-release.log"
+    },
+    "jamloom-completion-20261030-media.log": {
+      "sha256": "03a5802079983fb9acfc8780ac4f51196a1bc0a2b77a2fa55fb8e8aad8eccc6c",
+      "bytes": 144868,
+      "path": "/tmp/jamloom-completion-20261030-media.log",
+      "retained_path": "renders/completion-20261030-diagnostics/jamloom-completion-20261030-media.log"
+    },
+    "jamloom-completion-20261030-ios-baseline.log": {
+      "sha256": "98ed793b2c74d416593e941cbc579bd6f27acb934640aad17abf033239adbc05",
+      "bytes": 199594,
+      "path": "/tmp/jamloom-completion-20261030-ios-baseline.log",
+      "retained_path": "renders/completion-20261030-diagnostics/jamloom-completion-20261030-ios-baseline.log"
+    },
+    "jamloom-completion-20261030-decoder.log": {
+      "sha256": "e47805cbc83c3de0d5d92fe7bf8a601db403a83c428f460d34dc8fd1349d9707",
+      "bytes": 154638,
+      "path": "/tmp/jamloom-completion-20261030-decoder.log",
+      "retained_path": "renders/completion-20261030-diagnostics/jamloom-completion-20261030-decoder.log"
+    },
+    "jamloom-completion-20261030-start-order.log": {
+      "sha256": "48572df6a5b7eaeb37760b59ea1c290ef89b66c44032ea163df72f0ebfd227bd",
+      "bytes": 128779,
+      "path": "/tmp/jamloom-completion-20261030-start-order.log",
+      "retained_path": "renders/completion-20261030-diagnostics/jamloom-completion-20261030-start-order.log"
+    },
+    "jamloom-completion-20261030-site-build.log": {
+      "path": "/tmp/jamloom-completion-20261030-site-build.log",
+      "retained_path": "renders/completion-20261030-diagnostics/jamloom-completion-20261030-site-build.log",
+      "bytes": 18520,
+      "sha256": "428fc56e5f7d07d27b9ea16ab97a139d670d4e6af9c567ed728856879196a94c"
+    }
+  },
+  "note": "Pre-fix failed decoder probe xcodebuild hung after its final failed test summary; exact owned PID 7411 terminated after preserving its log. Result bundle may be incomplete; do not label it passed."
+}

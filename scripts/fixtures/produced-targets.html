@@ -2,6 +2,7 @@
 <style>body{font:18px/1.5 system-ui;color:#f3f2ec;background:#101723;max-width:1000px;margin:32px auto;padding:20px}article{padding:24px;background:#202b39;border-radius:20px;margin:24px 0;min-width:0}audio,canvas{display:block;width:100%;margin:16px 0}canvas{height:180px;background:#111b25}button{display:block;text-align:left;color:inherit;background:#182330;border:1px solid #546074;border-radius:8px;padding:12px;margin:6px 0;width:100%;font:inherit}button[aria-current=true]{background:#30554c;border-color:#b8edc9}pre{white-space:pre-wrap;font:inherit}:focus-visible{outline:3px solid #b8edc9}p{max-width:75ch}</style>
 <h1>Follow the recorded performance</h1><p>Review only: these words and pitch measurements are automatic estimates and may be wrong. They do not award scores or change course progress. Select a phrase to seek, then use Play to hear the words. The line shows measured pitch, not verified notes.</p><main></main><p id="status" role="status">Loading both songs…</p>
 <script type="module">
+import {targetDraft} from './produced-target-draft.js';
 const main=document.querySelector('main');
 try{
  for(const id of ['deep-house-male','eurodance-female']){
@@ -10,6 +11,23 @@ try{
   const article=document.createElement('article');article.innerHTML='<h2></h2><audio controls preload="metadata"></audio><canvas width="900" height="180" role="img" aria-label="Estimated sung pitch"></canvas><p class="position"></p><details><summary>Authored lyric sheet · may differ from recording</summary><pre></pre></details><h3>Automatic transcript · select to seek</h3><div class="phrases"></div>';
   article.querySelector('h2').textContent=data.title;article.querySelector('pre').textContent=data.authored;
   const audio=article.querySelector('audio');audio.src=id+'.mp3';audio.setAttribute('aria-label',data.title);
+  const source={id:data.recording_id,sha256:data.recording_sha256,seconds:120};
+  if(source.id&&source.sha256){
+   const editor=document.createElement('details'),title=document.createElement('summary');title.textContent='Correct word and note timings';editor.append(title);
+   const help=document.createElement('p');help.textContent='Listen to each phrase and enter actual word and note intervals in seconds. Notes use MIDI numbers; null marks a rest. Export saves an unverified draft for review, never a grade. Keep uncertain passages empty.';editor.append(help);
+   const label=document.createElement('label');label.textContent='Word and note draft for '+data.title;
+   const input=document.createElement('textarea');input.rows=12;input.style.cssText='display:block;width:100%;box-sizing:border-box;font:14px/1.5 monospace';
+   input.value=JSON.stringify(targetDraft({recordingId:source.id,recordingSha256:source.sha256,words:[],notes:[]},source),null,2);label.append(input);editor.append(label);
+   const status=document.createElement('p');status.setAttribute('role','status');
+   const check=document.createElement('button');check.type='button';check.textContent='Check draft timing';
+   const exportButton=document.createElement('button');exportButton.type='button';exportButton.textContent='Export unverified draft';
+   const validate=()=>{const result=targetDraft(JSON.parse(input.value),source);status.textContent=`Timing structure valid: ${result.words.length} words, ${result.notes.length} notes. Musical verification still required.`;return result;};
+   check.onclick=()=>{try{validate();}catch(error){status.textContent=error.message;}};
+   exportButton.onclick=()=>{try{const result=validate(),url=URL.createObjectURL(new Blob([JSON.stringify(result,null,2)+'\n'],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download=source.id+'-targets-draft.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}catch(error){status.textContent=error.message;}};
+   const importLabel=document.createElement('label');importLabel.textContent='Load a saved draft';const file=document.createElement('input');file.type='file';file.accept='.json,application/json';importLabel.append(file);
+   file.onchange=async()=>{try{const chosen=file.files[0];if(!chosen)return;if(chosen.size>1024*1024)throw Error('Draft must be smaller than 1 MiB.');const value=targetDraft(JSON.parse(await chosen.text()),source);input.value=JSON.stringify(value,null,2);validate();}catch(error){status.textContent=error.message;}};
+   editor.append(importLabel,check,exportButton,status);article.append(editor);
+  }
   const buttons=data.segments.map(s=>{const b=document.createElement('button');b.type='button';b.textContent=`${s.at.toFixed(1)}s · ${s.text.trim()}`;b.onclick=()=>{audio.currentTime=s.at;draw();};article.querySelector('.phrases').append(b);return b;});
   const canvas=article.querySelector('canvas'),ctx=canvas.getContext('2d');
   function draw(){

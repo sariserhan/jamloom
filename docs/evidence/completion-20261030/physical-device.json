@@ -1,0 +1,11 @@
+{
+  "operation": "Read-only physical iPhone inventory; simulated entries excluded; no test or installation",
+  "devices": [
+    {
+      "model": "iPhone 14 Pro",
+      "reality": "physical",
+      "connection": "disconnected",
+      "pairing": "paired"
+    }
+  ]
+}

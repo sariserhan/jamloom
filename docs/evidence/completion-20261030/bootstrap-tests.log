@@ -1,0 +1,11 @@
+test_failed_package_index_stops_before_model_setup (test_cloud_music_batch.CloudBatchTests.test_failed_package_index_stops_before_model_setup) ... ok
+test_missing_prerequisite_installs_only_missing_package (test_cloud_music_batch.CloudBatchTests.test_missing_prerequisite_installs_only_missing_package) ... ok
+test_prepared_image_skips_package_manager (test_cloud_music_batch.CloudBatchTests.test_prepared_image_skips_package_manager) ... ok
+test_setup_rejects_unknown_mode_before_starting (test_cloud_music_batch.CloudBatchTests.test_setup_rejects_unknown_mode_before_starting) ... ok
+test_stop_after_first_failure_and_preserve_results (test_cloud_music_batch.CloudBatchTests.test_stop_after_first_failure_and_preserve_results) ... {"name": "first", "status": "FAIL", "generation_seconds": 2.0083971321582794e-05, "error": "provider failure"}
+ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.500s
+
+OK

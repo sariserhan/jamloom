@@ -1,7 +1,94 @@
 import XCTest
+import WebKit
+import AVFoundation
 @testable import Jamloom
 
 final class StudioServerTests: XCTestCase {
+    @MainActor
+    func testProducedSongPagePlaysAndStops() async throws {
+        let model = SingingModel()
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.first as? UIWindowScene)
+        let window = UIWindow(windowScene: scene), controller = UIViewController()
+        window.rootViewController = controller; window.makeKeyAndVisible()
+        model.webView.frame = controller.view.bounds; controller.view.addSubview(model.webView)
+        defer { model.stop(); model.webView.removeFromSuperview(); window.isHidden = true }
+        model.start()
+        for _ in 0..<100 {
+            if let ready = try? await model.webView.evaluateJavaScript("!!document.querySelector('a[href*=\"long-way-home\"]')") as? Bool, ready { break }
+            try await Task.sleep(for: .milliseconds(100))
+        }
+        _ = try await model.webView.evaluateJavaScript("document.querySelector('a[href*=\"long-way-home\"]').click()")
+        for _ in 0..<100 {
+            if let ready = try? await model.webView.evaluateJavaScript("!!document.querySelector('#recording-player')") as? Bool, ready { break }
+            try await Task.sleep(for: .milliseconds(100))
+        }
+        _ = try await model.webView.evaluateJavaScript("document.querySelector('#recording-player').volume=0; document.querySelector('#demo').click()")
+        var playing = false
+        for _ in 0..<100 {
+            if let ready = try? await model.webView.evaluateJavaScript("(()=>{const a=document.querySelector('#recording-player');return a.currentTime>.2&&!a.paused&&a.duration>119})()") as? Bool, ready { playing = true; break }
+            try await Task.sleep(for: .milliseconds(100))
+        }
+        let diagnostic = try await model.webView.evaluateJavaScript("(()=>{const a=document.querySelector('#recording-player');return JSON.stringify({duration:a.duration,time:a.currentTime,paused:a.paused,ready:a.readyState,error:a.error?.message,feedback:document.querySelector('#feedback').textContent})})()")
+        XCTAssertTrue(playing, "Actual song page: \(String(describing: diagnostic))")
+        model.stop()
+        try await Task.sleep(for: .milliseconds(200))
+        let stopped = try await model.webView.evaluateJavaScript("document.querySelector('#recording-player').paused") as? Bool
+        XCTAssertEqual(stopped, true)
+    }
+    @MainActor
+    func testProducedRecordingsKeepTheirDurationOverLoopbackHTTP() async throws {
+        let root = try XCTUnwrap(Bundle.main.url(forResource: "Studio", withExtension: nil))
+        let server = StudioServer(root: root, singing: true)
+        let home: URL = try await withCheckedThrowingContinuation { continuation in
+            do { try server.start { continuation.resume(with: $0) } }
+            catch { continuation.resume(throwing: error) }
+        }
+        let config = WKWebViewConfiguration()
+        config.mediaTypesRequiringUserActionForPlayback = []
+        let webView = WKWebView(frame: .zero, configuration: config)
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.first as? UIWindowScene)
+        let window = UIWindow(windowScene: scene)
+        let controller = UIViewController()
+        window.rootViewController = controller
+        window.makeKeyAndVisible()
+        webView.frame = controller.view.bounds
+        controller.view.addSubview(webView)
+        defer { webView.stopLoading(); webView.removeFromSuperview(); window.isHidden = true }
+        webView.loadHTMLString("<!doctype html><title>Recording transport check</title>", baseURL: home)
+        for _ in 0..<100 {
+            if !webView.isLoading { break }
+            try await Task.sleep(nanoseconds: 100_000_000)
+        }
+        for song in ["long-way-home", "leave-it-all-outside"] {
+            for kind in ["song", "karaoke"] {
+                let path = "singing-audio/\(song)-\(kind).mp3"
+                let native = try await AVURLAsset(url: root.appendingPathComponent(path)).load(.duration)
+                XCTAssertEqual(native.seconds, 120, accuracy: 0.1, path)
+                let result = try await webView.callAsyncJavaScript("""
+                    const audio = document.createElement('audio');
+                    audio.preload = 'metadata'; audio.volume = 0; document.body.append(audio);
+                    try {
+                        return await new Promise((resolve, reject) => {
+                            const timer = setTimeout(() => reject('Metadata timeout'), 15000);
+                            audio.onloadedmetadata = async () => {
+                                const metadataDuration = audio.duration;
+                                try { await audio.play(); }
+                                catch (error) { clearTimeout(timer); reject(String(error)); return; }
+                                setTimeout(() => { clearTimeout(timer); resolve({metadataDuration, duration:audio.duration, time:audio.currentTime, paused:audio.paused, readyState:audio.readyState}); }, 400);
+                            };
+                            audio.onerror = () => { clearTimeout(timer); reject('Media error '+audio.error?.code); };
+                            audio.src = url;
+                        });
+                    } finally { audio.pause(); audio.removeAttribute('src'); audio.load(); audio.remove(); }
+                    """, arguments: ["url": home.deletingLastPathComponent().appendingPathComponent(path).absoluteString], in: nil, contentWorld: .page)
+                let values = try XCTUnwrap(result as? [String: Any])
+                let duration = try XCTUnwrap(values["duration"] as? Double)
+                XCTAssertEqual(duration, 120, accuracy: 0.1, "\(path): \(values)")
+                XCTAssertGreaterThan(try XCTUnwrap(values["time"] as? Double), 0.1, "\(path): \(values)")
+            }
+        }
+        withExtendedLifetime(server) {}
+    }
     func testOnlyBundledAssetsCanBeReadThroughExactLoopbackAuthority() throws {
         let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)

@@ -1,3 +1,5 @@
+**Latest follow-through — 2026-10-30:** [Current evidence](COMPLETION_CURRENT.md) records simulator MP3-muting isolation/fix, source-bound target editing, bootstrap hardening, repository ownership and read-only provider billing. Overall remains **PARTIAL**; actual scoring targets, independent studies and fresh hosted/release gates remain open.
+
 **Current candidate:** [0.10.4 build 34 completion checkpoint](COMPLETION_CANDIDATE.md): signed, audited, installed, owner-confirmed karaoke playback/tab cleanup and locally archived. Website/account/billing tests and read-only schema checks pass. Full-spec completion remains **PARTIAL**: verified produced-song scoring, current hosted qualification and independent/learned-model evidence are still open. No publication or live activation.
 
 **Latest acceptance:** [Karaoke adoption and DJ review](KARAOKE_ADOPTION.md): both accepted Spleeter backings now serve locally and are prepared for native packaging; four-track/set review is positive overall. Exact-song scoring, independent/hosted qualification and a new physical build remain open.

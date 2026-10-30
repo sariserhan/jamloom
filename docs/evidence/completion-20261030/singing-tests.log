@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: original-song drafts preserve full lyrics, valid section practice and exact grading at every supported register
+ok 1 - original-song drafts preserve full lyrics, valid section practice and exact grading at every supported register
+  ---
+  duration_ms: 281.639459
+  type: 'test'
+  ...
+# Subtest: capture timestamps the actual last sample and drops queued work without replaying old voice
+ok 2 - capture timestamps the actual last sample and drops queued work without replaying old voice
+  ---
+  duration_ms: 3.516125
+  type: 'test'
+  ...
+# Subtest: an input interruption requires a fresh complete window before emitting
+ok 3 - an input interruption requires a fresh complete window before emitting
+  ---
+  duration_ms: 1.208875
+  type: 'test'
+  ...
+# Subtest: all twelve exercises pass measured correct tones at every supported pace and register; silence never passes
+ok 4 - all twelve exercises pass measured correct tones at every supported pace and register; silence never passes
+  ---
+  duration_ms: 43.475167
+  type: 'test'
+  ...
+# Subtest: late notes, missing notes, repeated frames and dropped capture cannot earn completion
+ok 5 - late notes, missing notes, repeated frames and dropped capture cannot earn completion
+  ---
+  duration_ms: 0.590583
+  type: 'test'
+  ...
+# Subtest: progress preserves best/pass across retries, migrates first-note completion, ignores malformed storage
+ok 6 - progress preserves best/pass across retries, migrates first-note completion, ignores malformed storage
+  ---
+  duration_ms: 0.495459
+  type: 'test'
+  ...
+# Subtest: finite note score is sample accurate across callback sizes and ends every note
+ok 7 - finite note score is sample accurate across callback sizes and ends every note
+  ---
+  duration_ms: 1.833916
+  type: 'test'
+  ...
+# Subtest: all catalogue songs grade measured notes at every register and pace, reject silence and validate full band scores
+ok 8 - all catalogue songs grade measured notes at every register and pace, reject silence and validate full band scores
+  ---
+  duration_ms: 274.651208
+  type: 'test'
+  ...
+# Subtest: song score follows real audio clock after an unconnected worklet priming callback
+ok 9 - song score follows real audio clock after an unconnected worklet priming callback
+  ---
+  duration_ms: 0.189208
+  type: 'test'
+  ...
+# Subtest: all curriculum sections preserve the source lyric index and cannot include another section
+ok 10 - all curriculum sections preserve the source lyric index and cannot include another section
+  ---
+  duration_ms: 31.02325
+  type: 'test'
+  ...
+# Subtest: restricted lesson delivery preserves valid paid progress when a free lesson is saved
+ok 11 - restricted lesson delivery preserves valid paid progress when a free lesson is saved
+  ---
+  duration_ms: 0.394084
+  type: 'test'
+  ...
+# Subtest: phrase feedback separates measured pitch, missing input and timing without awarding wrong notes
+ok 12 - phrase feedback separates measured pitch, missing input and timing without awarding wrong notes
+  ---
+  duration_ms: 1.153875
+  type: 'test'
+  ...
+# Subtest: familiar melodies keep whole words highlighted over multiple notes and section harmony matches its source
+ok 13 - familiar melodies keep whole words highlighted over multiple notes and section harmony matches its source
+  ---
+  duration_ms: 0.363625
+  type: 'test'
+  ...
+# Subtest: every shipped song has a reviewed repertoire record and pinned third-party scores
+ok 14 - every shipped song has a reviewed repertoire record and pinned third-party scores
+  ---
+  duration_ms: 9.146291
+  type: 'test'
+  ...
+# Subtest: four-minute score uses bounded phrases and requires actual correct pitch for every section
+ok 15 - four-minute score uses bounded phrases and requires actual correct pitch for every section
+  ---
+  duration_ms: 39.212542
+  type: 'test'
+  ...
+# Subtest: seek, pause and delayed frames cannot bridge scores or earn full-song completion
+ok 16 - seek, pause and delayed frames cannot bridge scores or earn full-song completion
+  ---
+  duration_ms: 0.296875
+  type: 'test'
+  ...
+# Subtest: capture aligns to center of microphone window and rejects stale or interrupted input
+ok 17 - capture aligns to center of microphone window and rejects stale or interrupted input
+  ---
+  duration_ms: 0.350833
+  type: 'test'
+  ...
+# Subtest: produced songs preserve the graded course and cannot become fabricated passing scores
+ok 18 - produced songs preserve the graded course and cannot become fabricated passing scores
+  ---
+  duration_ms: 1.723417
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 430.353666

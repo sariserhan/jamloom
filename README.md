@@ -2,7 +2,7 @@
 
 Formerly Djayvo. [Rename scope and compatibility](docs/jamloom-rename.md).
 
-**Current status — 2026-10-28:** Jamloom remains **PARTIAL**. Start with the
+**Current status — 2026-10-30:** Jamloom remains **PARTIAL**. Start with the
 [product completion ledger](docs/PRODUCT_COMPLETION.md) for current product and
 release gates, then [TODO](TODO.md) for active work. The latest quality brief
 work is tracked in [Organic Afro House](docs/AFRO_HOUSE_QUALITY.md); generated
@@ -10,6 +10,8 @@ tracks, stems and owner listening acceptance remain open. The implementation
 and evidence history below is retained for provenance, not as a second active
 task list. Paid compute, publication and live purchases remain gated by their
 existing authorizations.
+
+Find implementation ownership in the [repository map](docs/REPOSITORY_LAYOUT.md) and commands in the [script directory](scripts/README.md).
 
 **Say anything. Make music.**
 

@@ -1,0 +1,41 @@
+{
+  "results": [
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "playback": "PASS",
+      "seek": "PASS",
+      "invalidTiming": "PASS",
+      "exportImport": "PASS",
+      "unverifiedPreserved": "PASS"
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "playback": "PASS",
+      "seek": "PASS",
+      "invalidTiming": "PASS",
+      "exportImport": "PASS",
+      "unverifiedPreserved": "PASS"
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "playback": "PASS",
+      "seek": "PASS",
+      "invalidTiming": "PASS",
+      "exportImport": "PASS",
+      "unverifiedPreserved": "PASS"
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "playback": "PASS",
+      "seek": "PASS",
+      "invalidTiming": "PASS",
+      "exportImport": "PASS",
+      "unverifiedPreserved": "PASS"
+    }
+  ],
+  "groundTruth": "NOT RUN; editor round-trip uses synthetic annotations only"
+}

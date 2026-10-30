@@ -13,8 +13,21 @@ test ! -e ace-step
 stage() { printf '%s\n' "$1" > /workspace/setup.stage; }
 export DEBIAN_FRONTEND=noninteractive
 stage system-packages
-timeout 300 apt-get update
-timeout 300 apt-get install -y --no-install-recommends python3-venv ffmpeg
+# CUDA images often already include both. Avoid spending the rental deadline on
+# an unnecessary package-index refresh; install only prerequisites actually absent.
+packages=()
+python -c 'import venv, ensurepip' >/dev/null 2>&1 || packages+=(python3-venv)
+ffmpeg -version >/dev/null 2>&1 || packages+=(ffmpeg)
+if ((${#packages[@]})); then
+  apt_options=(-o Acquire::Retries=0 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 -o DPkg::Lock::Timeout=30)
+  stage system-package-index
+  timeout 180 apt-get "${apt_options[@]}" update
+  stage system-package-install
+  timeout 180 apt-get "${apt_options[@]}" install -y --no-install-recommends "${packages[@]}"
+fi
+# A successful apt command is insufficient if `python` names a different runtime.
+python -c 'import venv, ensurepip'
+ffmpeg -version >/dev/null
 stage python-bootstrap
 python -m venv /workspace/bootstrap
 /workspace/bootstrap/bin/pip install --no-cache-dir uv==0.13.1

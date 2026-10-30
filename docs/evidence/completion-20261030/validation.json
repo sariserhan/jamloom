@@ -1,0 +1,171 @@
+{
+  "updatedAt": "2026-10-30T14:54:18.582972+00:00",
+  "baseCommit": "9133b1298418af01151cfee7032c9ed12dfe6c82",
+  "overall": "PARTIAL",
+  "scope": "Local completion follow-through; no push, publication, paid provider mutation, live sales or master-spec edit.",
+  "checks": {
+    "ios": {
+      "status": "PASS across separate invocations",
+      "distinctPassingTests": 75,
+      "ui": 22,
+      "native": 51,
+      "storeKit": 2,
+      "optInSkipped": 4,
+      "excludedLiveYouTubeUIFlows": 2,
+      "initialMixedRun": {
+        "status": "FAIL",
+        "passed": 73,
+        "failed": 2,
+        "skipped": 4
+      },
+      "runtimeWarnings": [
+        {
+          "issueType": "Runtime Warning",
+          "message": "Invalid frame dimension (negative or non-finite)."
+        },
+        {
+          "issueType": "Runtime Warning",
+          "message": "Invalid frame dimension (negative or non-finite)."
+        }
+      ],
+      "smokeScript": "Three serial invocations now encoded. Shell syntax passes; whole revised script not rerun end-to-end. Unchanged UI results reused; isolated StoreKit and remaining native invocations rerun.",
+      "physical": "NOT RUN: paired physical iPhone disconnected"
+    },
+    "bootstrap": {
+      "status": "PASS",
+      "tests": 5,
+      "command": "python3 -m unittest discover -s tests -p test_cloud_music_batch.py -v"
+    },
+    "workerBoundaries": {
+      "status": "PASS",
+      "tests": 16,
+      "command": ".venv-singer/bin/python -m unittest discover -s tests -p test_runpod_worker.py -v"
+    },
+    "afroHouseLocal": {
+      "status": "PASS",
+      "tests": 18,
+      "command": ".venv-singer/bin/python -m unittest discover -s tests -p 'test_afro_house*.py' -v"
+    },
+    "singing": {
+      "status": "PASS",
+      "tests": 18,
+      "command": "node --test apps/web/tests/singing-*.test.js"
+    },
+    "targetDraft": {
+      "status": "PASS",
+      "tests": 2,
+      "command": "node --test tests/produced-target-draft.test.mjs",
+      "note": "Combined recording/draft run has five cases; three recording cases overlap the eighteen singing checks."
+    },
+    "targetBrowser": {
+      "status": "PASS",
+      "browserViewportCases": 4,
+      "command": "cd apps/site && node tests/produced-target-review-browser.mjs",
+      "groundTruth": "NOT RUN; test annotations are synthetic, exports remain unverified"
+    },
+    "websiteBuild": {
+      "status": "PASS",
+      "command": "cd apps/site && JAMLOOM_QUALIFICATION_BUILD=1 npm run build",
+      "auditCommand": "cd apps/site && JAMLOOM_QUALIFICATION_BUILD=1 node scripts/audit-bundle.mjs",
+      "oldDefaultArtifact": "FAIL paid-lyrics assertion; retained separately; fresh qualification build passes"
+    },
+    "iosRelease": {
+      "status": "PASS",
+      "scope": "Unsigned device compilation and bundle audit, not signed archive/install",
+      "command": "xcodebuild build -project apps/ios/Jamloom.xcodeproj -scheme Jamloom -configuration Release -destination generic/platform=iOS -derivedDataPath build-ios-device CODE_SIGNING_ALLOWED=NO"
+    },
+    "database": {
+      "status": "PASS",
+      "scope": "Read-only: 32 matching migrations; none pending/changed/unknown; billing mode test"
+    },
+    "providers": {
+      "status": "PASS read-only",
+      "runpod": "Limits 0/0, no queued/running jobs or workers; historical endpoint billing bucket reconciled, not final per-job invoice",
+      "vast": "Zero active rentals; current balance is not attempt-specific spending"
+    },
+    "repository": {
+      "status": "PASS",
+      "scripts": 181,
+      "pythonScripts": 155,
+      "physicalRelocation": "Deferred; stable import/CLI/archive paths retained",
+      "command": "python3 scripts/audit_repository.py --index --output docs/evidence/completion-20261030/script-callers-final.json"
+    },
+    "diffAndShellSyntax": "PASS"
+  },
+  "remaining": [
+    "Actual sung words, notes and timing review before scoring",
+    "Independent listeners/novice outcomes and cleared expert/model benefit evidence",
+    "Fresh bounded hosted/Organic Afro House qualification; prior paid attempts consumed",
+    "Physical iPhone automation/routes and deferred hardware",
+    "Owner-held publication, live sales and production-dependent provider evidence",
+    "Two retained SwiftUI invalid-frame warnings in passing UI cases are undiagnosed"
+  ],
+  "localPreviews": {
+    "website": "http://127.0.0.1:3010",
+    "targetReview": "http://127.0.0.1:8769",
+    "scope": "Loopback-only; website launch preview enabled locally, sales closed"
+  },
+  "sourceSha256": {
+    "README.md": "5af14aec347164b0a482b9dd09b75b7d7c34288e8f8b165a4e0ebfe07f989659",
+    "TODO.md": "b5be74158579f3a98870de335eb2fb30f4940b5d60f2e3b9fc7b614fd2ba37ce",
+    "apps/ios/Jamloom/SingingAcademy.swift": "a67b4c2efbd0bd614e8183661445c42cbfe2edc7d0b567107b82de50f7fb3b5e",
+    "apps/ios/JamloomTests/StudioServerTests.swift": "1a1122cf7504c5f11d63b7c366130e230aec04d559c10169c15e6e2dc6111e5d",
+    "apps/site/tests/produced-target-review-browser.mjs": "538eb3e5c1697e9527b9c96c0c5c5df1b5746504afa95dc9854e258f0a9e47a9",
+    "apps/web/singing-produced.js": "fce187b5a117c3b14ea2695a44effeca52ad91001121125b5a321e0fcae7ee97",
+    "docs/COMPLETION_CURRENT.md": "5b48e1cf1d2d70ad5b808ae3a45580568afba658152cb14c501e276a9be1b56a",
+    "docs/OWNER_HANDBOOK.md": "6ae2de7f655da9c8466c7be8a5c016e8c47b385cd89b64f1014568271a9e479b",
+    "docs/PRODUCT_COMPLETION.md": "7b6f86d0900db9d45251e722734bbbf76e6f40d0e3aa81023ff6e85a8cf69352",
+    "docs/REPOSITORY_LAYOUT.md": "d2caf67d077e90c271a3936e78b849f10f6382c9aefa253c5a8c01a9329df62a",
+    "docs/STATUS.md": "59c62e92075512fec97d875e0c07853a7b076822c3b5db9580fb8d25b70bed7c",
+    "docs/progress.md": "3702b8e8739fd8a9aad7cecc9f841a6a2760684b769136a511185a8c9836aa05",
+    "docs/spec-coverage.md": "e6cd096223205fe3386c0d385c624c407c81358a6d2087ff04601250ee81881f",
+    "docs/spec-status.md": "ee86350a4f5737e21aeb7bf3c993b1546c582a10396a85277099295b620de867",
+    "scripts/README.md": "11cd5311eb23d504c52872e4903b1c797e3959b483935403740e05f943c4f161",
+    "scripts/audit_repository.py": "b714d68e14a895aa576198fe2e030a50a9ddc4d8d7559efd8ce979bab0d49466",
+    "scripts/cloud_music_setup.sh": "842f15e133910fa31c62d687c81203c441b41d013e60a991a133a47b51daa6b0",
+    "scripts/fixtures/produced-target-draft.js": "eb01431f078d41a42df6e7b31bf5d513dfa18d8d653ee76652ef365d7ca16f1c",
+    "scripts/fixtures/produced-targets.html": "4f4493a892366a3dd35f52085d366e39581201d0b5d5f310561462d44172de84",
+    "scripts/ios_smoke.sh": "416f12d603a17a2df5e5a89d8a8d1c7a6f608af2373f0a54074de7561e5ea6a6",
+    "scripts/prepare_produced_targets.mjs": "362cce5aae94c07734b2bfb5cd0215f5510ccfef7f6ab071daf38b250b60f8f9",
+    "tests/produced-target-draft.test.mjs": "06c2510ea55144c75fc000598132868bfcc3c81f127cd89f2f6c66a6b4eb3306",
+    "tests/test_cloud_music_batch.py": "927e6d62c39f7f3b63361650373ce3a9c0bd4992021f533b5e8e0f6cb6329b76"
+  },
+  "evidenceSha256": {
+    "afro-house-tests.log": "aeb2643808521750c0c9b56b438d69dd699a2d2f086e70b7a93680cb85d3166b",
+    "bootstrap-tests.log": "aef9cb6571540c5e1a9e6ad7627f2d4e51f5e890f18ad0aecf7b2d0cad86aa6a",
+    "initial-site-audit.json": "4e3303401833ec056e824d04a03d372f7b332beff8110d59ee683faeb31326ad",
+    "ios-mixed-summary.json": "6205bc509236e22094863431acae12173e5a8e9706cdc81f3887db65213a73fd",
+    "ios-native-summary.json": "18861db6a7b5b832c05e32e61651f045e14cb660d58f56c615230c7e13a690cd",
+    "ios-storekit-summary.json": "b11435f89547e97de2cfdb5c1c16f2e22773221fb0def5f24252391d51c48da3",
+    "native-diagnostic-logs.json": "71be2f08b4ac0c1907e2901ec6686ed89a1f14f22f2ca055bcc2cc82d725db70",
+    "physical-device.json": "974932f45ece1b8a9627cacf48fa141461faef93b6d53075e6a01e6a6cca6449",
+    "provider-readonly.json": "7be7dbf7e669e44a598e4b1bc9b5556924fcab88089f1b0ce1d0da54e2c39e57",
+    "release-bundle.json": "ac050fd44abe2d02e83590e038abd35f0f2684981b7e94ac0ecfed8691a4a4d9",
+    "release-preflight.json": "86f5499ce5607a02d4b0e9a92a0070ef5bb2519885ed111a83339eddf4972ed3",
+    "scoring-tests.log": "9d28e55cc158d94ff86927195d4e3854dce1e74e740b0878f33afb1d61db6b6a",
+    "script-callers-final.json": "f5d9c510998cb5149634a064d027ef14d08a5b0a0be65603fc9ea1a10a322f6c",
+    "singing-tests.log": "2357ea0b8b0ec004522de8cfdb8953896ca47dbb8f2b1f94c039041aac892b41",
+    "site-bundle.json": "85e7de6cddae2232639ddf2baa68233ea4fa3d37d9b36705d0faf421cb9cdba2",
+    "site-http.json": "b371c75887aa3aca7bc2aa42612aa58adca37635eddea4056a0f70bd96d68053",
+    "target-draft-tests.log": "b39c820e26ca52dde6abb0b8cc5a45549a7f3d4629b05e547d88415b501b8285",
+    "target-review/chromium-1280.png": "44005f2234f2cee95ad2e5b3da7b29a8dbc458507db648778f7a6cc4d8a794eb",
+    "target-review/chromium-390.png": "56eb7ac8ae854cdb9394ff414ef891e9d191e18426c9aaa86085cb48c97f1951",
+    "target-review/results.json": "456bcb84909d35cce0f8e2a7e39f1c20e1e1d71553ab3cb28611156166a49ade",
+    "target-review/webkit-1280.png": "267c6751ecd5cfbd3cdad90ebc5b345d11cdc426be3156870363dddb3566c2b4",
+    "target-review/webkit-390.png": "17dd99a8390ae737a5ba6dd333d6b1fc22c38edaf829888f11476729bc0d422c",
+    "vast-readonly.json": "c7178156035ecaed76969b66249aaa9b8c1b2deee29de0483dfaa43ad7aa1433",
+    "worker-tests.log": "cb4ad37dd2f5757f59f1fa6243c089501b41fecf362be6aff6e89d103af04dff"
+  },
+  "retainedLogs": {
+    "renders/completion-20261030-full-ios/tests.log": "2dedaac9bdef923838be35241edbaff83d7032ed0b2bafe29c7eda739aca55af",
+    "renders/completion-20261030-diagnostics/isolated-storekit.log": "c491141afcb1d4ebfa9410c3f9a0673f231e52539fb5eb993fd3d820a23f3be9",
+    "renders/completion-20261030-diagnostics/isolated-native.log": "6654ce32a265ac15c06f784bca33431cd7c55eab0e5a1bdfeaa7a171b3117002"
+  },
+  "preexistingUntrackedPreserved": [
+    "apps/site/AGENTS.md"
+  ],
+  "retainedIntermediateMaps": {
+    "renders/completion-20261030-diagnostics/script-callers.json": "7f563fc7f22d3113a08dc6d0a3de5aedee8fd3d1d3f4c8fec4621e0723af985a",
+    "renders/completion-20261030-diagnostics/script-callers-current.json": "18e882097764bf9a12423aec6179371a1f712644eb8e3edec12d80c5e64faccb"
+  }
+}

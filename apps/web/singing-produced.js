@@ -19,7 +19,7 @@ $('instruction').after(document.querySelector('.actions'));
 $('section-settings').hidden=false;$('section').replaceChildren();
 for(const [value,label] of [['all','Full recording'],['0','0:00 – 0:30'],['30','0:30 – 1:00'],['60','1:00 – 1:30'],['90','1:30 – 2:00']]){const option=document.createElement('option');option.value=value;option.textContent=label;$('section').append(option);}
 const repeatLabel=document.createElement('label'),repeat=document.createElement('input');repeat.type='checkbox';repeat.id='repeat-passage';repeatLabel.append(repeat,document.createTextNode('Repeat selected passage'));$('section-settings').after(repeatLabel);
-const media=document.createElement('audio');media.id='recording-player';media.controls=true;media.preload='metadata';media.setAttribute('aria-label',song.title+' player');media.muted=!!window.jamloomMobileMuted;$('section-settings').before(media);
+const media=document.createElement('audio');media.id='recording-player';media.controls=true;media.preload='metadata';media.setAttribute('aria-label',song.title+' player');media.muted=!!window.jamloomMobileMuted&&window.jamloomMobileMuteMode!=='volume';if(window.jamloomMobileMuted)media.volume=0;$('section-settings').before(media);
 $('live-chart').hidden=false;$('full-lyrics').hidden=false;$('full-lyrics-title').textContent='Original lyric sheet';
 $('lesson-tip').textContent='Use headphones. Match the singer by ear, or sing in a comfortable octave. These recordings have live pitch feedback, without a verified note-by-note grade.';
 $('feedback').textContent='Listen first, then sing when you are ready.';

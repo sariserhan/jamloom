@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-30T14:32:34.486Z",
+  "operation": "GET only; no jobs, worker activation or image changes",
+  "endpoint": {
+    "id": "jl77hn92npt65k",
+    "name": "jamloom-music-v1",
+    "workersMin": 0,
+    "workersMax": 0
+  },
+  "health": {
+    "jobs": {
+      "completed": 23,
+      "failed": 11,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "billingWindow": {
+    "start": "2026-10-27T00:00:00Z",
+    "end": "2026-10-28T00:00:00Z"
+  },
+  "billing": [
+    {
+      "amount": 0.021188138518482447,
+      "timeBilledMs": 69343,
+      "diskSpaceBilledGB": 60,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-27 20:00:00"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "4CC8AEAE-22B5-4FA4-BA57-929EC53E5DAE",
+        "deviceName" : "iPhone 17",
+        "modelName" : "iPhone 17",
+        "osBuildNumber" : "24A434",
+        "osVersion" : "27.0",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 2,
+      "passedTests" : 73,
+      "skippedTests" : 4,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "Jamloom · Built with macOS 26.7.1",
+  "expectedFailures" : 0,
+  "failedTests" : 2,
+  "finishTime" : 1793371821.042,
+  "passedTests" : 73,
+  "result" : "Failed",
+  "runtimeWarnings" : [
+    {
+      "issueType" : "Runtime Warning",
+      "message" : "Invalid frame dimension (negative or non-finite)."
+    },
+    {
+      "issueType" : "Runtime Warning",
+      "message" : "Invalid frame dimension (negative or non-finite)."
+    }
+  ],
+  "skippedTests" : 4,
+  "startTime" : 1793370881.178,
+  "statistics" : [
+    {
+      "subtitle" : "2 test runs",
+      "title" : "2 tests collected performance metrics"
+    }
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "failed: caught error: \"Error Domain=NSURLErrorDomain Code=-1001 \"(null)\"\"",
+      "targetName" : "JamloomTests",
+      "testIdentifier" : 31,
+      "testIdentifierString" : "PurchaseTests/testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding()",
+      "testIdentifierURL" : "test://com.apple.xcode/Jamloom/JamloomTests/PurchaseTests/testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding",
+      "testName" : "testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding()"
+    },
+    {
+      "failureText" : "failed: caught error: \"Error Domain=NSURLErrorDomain Code=-1001 \"(null)\"\"",
+      "targetName" : "JamloomTests",
+      "testIdentifier" : 32,
+      "testIdentifierString" : "PurchaseTests/testSingingCourseRestoreDoesNotDeliverCreditsOrCrossAccounts()",
+      "testIdentifierURL" : "test://com.apple.xcode/Jamloom/JamloomTests/PurchaseTests/testSingingCourseRestoreDoesNotDeliverCreditsOrCrossAccounts",
+      "testName" : "testSingingCourseRestoreDoesNotDeliverCreditsOrCrossAccounts()"
+    }
+  ],
+  "title" : "Test - Jamloom",
+  "topInsights" : [
+    {
+      "category" : "Common Failures",
+      "impact" : "100% of failures",
+      "text" : "2 runs of 2 tests failed with failed: caught error: \"Error Domain=NSURLErrorDomain Code=-1001 \"(null)\"\""
+    },
+    {
+      "category" : "Longest Test Runs",
+      "impact" : "31% of duration",
+      "text" : "1 longest test run with outlier durations exceeding 185.67s (three standard deviations)"
+    },
+    {
+      "category" : "Longest Test Runs",
+      "impact" : "52% of duration",
+      "text" : "2 longest test runs with outlier durations exceeding 17.09s (three standard deviations)"
+    }
+  ],
+  "totalTestCount" : 79
+}

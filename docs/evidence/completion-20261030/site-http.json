@@ -1,0 +1,30 @@
+{
+  "base": "http://127.0.0.1:3010",
+  "operations": "Read-only anonymous GETs; loopback-only preview with JAMLOOM_COMING_SOON=false. Sales remain closed.",
+  "initialProbes": [
+    "Default coming-soon gate redirected Academy to tour and returned 503 for course API; initial full-preview assertion failed until using local preview environment.",
+    "Initial API paid-content assertion was inapplicable: singingAccess intentionally grants course preview while salesReleased=false and sandbox commerce is disabled. Public static bundle still excludes the lyrics."
+  ],
+  "results": [
+    {
+      "path": "/singing-academy",
+      "status": 200,
+      "assertions": "PASS"
+    },
+    {
+      "path": "/api/singing-course",
+      "status": 200,
+      "assertions": "PASS"
+    },
+    {
+      "path": "/studio/singing-course.js",
+      "status": 200,
+      "assertions": "PASS"
+    },
+    {
+      "path": "/studio/singing-produced.js",
+      "status": 200,
+      "assertions": "PASS"
+    }
+  ]
+}

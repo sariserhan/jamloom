@@ -1,0 +1,26 @@
+TAP version 13
+# (node:9266) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/serhansari/Documents/projects/jamloom/scripts/fixtures/produced-target-draft.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/serhansari/Documents/projects/jamloom/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: exports source-bound edits without promoting claimed verification or scores
+ok 1 - exports source-bound edits without promoting claimed verification or scores
+  ---
+  duration_ms: 0.769667
+  type: 'test'
+  ...
+# Subtest: rejects wrong source, out-of-bounds, overlapping and invalid word/note edits
+ok 2 - rejects wrong source, out-of-bounds, overlapping and invalid word/note edits
+  ---
+  duration_ms: 0.158458
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 45.584416

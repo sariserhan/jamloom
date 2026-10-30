@@ -6,10 +6,65 @@ import tempfile
 import subprocess
 import types
 import unittest
+import os
 from unittest.mock import MagicMock, patch
 
 
 class CloudBatchTests(unittest.TestCase):
+    def run_setup_prerequisites(self, missing='', fail_apt=False):
+        """Execute the real shell branch with isolated command stubs; never rent or install."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            commands = root / 'bin'; commands.mkdir()
+            stub = '''#!/bin/bash
+name=${0##*/}
+printf '%s %s\\n' "$name" "$*" >> "$PROBE_LOG"
+case "$name" in
+ python)
+  if [[ $1 == -m ]]; then exit 73; fi
+  [[ $MISSING != python || -e $INSTALLED ]] ;;
+ ffmpeg) [[ $MISSING != ffmpeg || -e $INSTALLED ]] ;;
+ apt-get)
+  [[ $FAIL_APT != 1 ]] || exit 42
+  [[ " $* " != *' install '* ]] || touch "$INSTALLED" ;;
+ timeout) shift; exec "$@" ;;
+esac
+'''
+            for name in ('python', 'ffmpeg', 'apt-get', 'timeout'):
+                file = commands / name; file.write_text(stub); file.chmod(0o755)
+            source = Path(__file__).resolve().parents[1] / 'scripts/cloud_music_setup.sh'
+            script = root / 'setup.sh'
+            script.write_text(source.read_text().replace('/workspace', str(root)))
+            log = root / 'commands.log'
+            env = {**os.environ, 'PATH': str(commands) + os.pathsep + os.environ['PATH'],
+                   'PROBE_LOG': str(log), 'INSTALLED': str(root/'installed'),
+                   'MISSING': missing, 'FAIL_APT': str(int(fail_apt))}
+            result = subprocess.run(['bash', str(script), '--afro-house'], env=env, capture_output=True, timeout=10)
+            return result.returncode, log.read_text(), (root/'setup.stage').read_text().strip()
+
+    def test_prepared_image_skips_package_manager(self):
+        code, log, stage = self.run_setup_prerequisites()
+        self.assertEqual(code, 73)  # Intercepted before any Python/model installation.
+        self.assertNotIn('apt-get ', log)
+        self.assertEqual(stage, 'python-bootstrap')
+
+    def test_missing_prerequisite_installs_only_missing_package(self):
+        for missing, package in [('python', 'python3-venv'), ('ffmpeg', 'ffmpeg')]:
+            with self.subTest(missing=missing):
+                code, log, stage = self.run_setup_prerequisites(missing)
+                self.assertEqual(code, 73)
+                install = next(line for line in log.splitlines() if line.startswith('apt-get ') and ' install ' in line)
+                self.assertTrue(install.endswith('--no-install-recommends ' + package))
+                self.assertIn('Acquire::Retries=0', install)
+                self.assertIn('DPkg::Lock::Timeout=30', install)
+                self.assertEqual(stage, 'python-bootstrap')
+
+    def test_failed_package_index_stops_before_model_setup(self):
+        code, log, stage = self.run_setup_prerequisites('ffmpeg', True)
+        self.assertEqual(code, 42)
+        self.assertNotIn('python -m', log)
+        self.assertEqual(stage, 'system-package-index')
+
     def test_setup_rejects_unknown_mode_before_starting(self):
         script = Path(__file__).resolve().parents[1] / 'scripts/cloud_music_setup.sh'
         with tempfile.TemporaryDirectory() as directory:

@@ -4,9 +4,11 @@ import {readFile,writeFile,mkdir,copyFile} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {resolve,sep} from 'node:path';
 import {detectPitch,isSingingPitch} from '../apps/web/singing-pitch.js';
-const root=fileURLToPath(new URL('../',import.meta.url)),out=root+'renders/club-studies-20261024/sung-targets/review/';
-await mkdir(root+'renders/club-studies-20261024/sung-targets',{recursive:true});
+const root=fileURLToPath(new URL('../',import.meta.url)),out=resolve(root,process.argv[2]||'renders/club-studies-20261024/sung-targets/review')+sep;
+assert.ok(out.startsWith(root+'renders/'),'Reviews must stay inside local renders');
+await mkdir(resolve(out,'..'),{recursive:true});
 await mkdir(out,{recursive:false});
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex'),report=[];
 for(const [id,slug] of [['deep-house-male','long-way-home'],['eurodance-female','leave-it-all-outside']]){
@@ -22,11 +24,13 @@ for(const [id,slug] of [['deep-house-male','long-way-home'],['eurodance-female',
  assert.ok(trace.length>5900&&trace.some(p=>p[1]!==null));
  for(const s of words.segments)assert.ok(Number.isFinite(s.at)&&Number.isFinite(s.end)&&s.at>=0&&s.end>s.at&&s.end<=120&&typeof s.text==='string');
  const lyrics=JSON.parse(await readFile(root+`assets/singing-recordings/${slug}-lyrics.json`,'utf8'));
- const data={title:lyrics.title,verified:false,scoringEnabled:false,source_sha256:words.source_sha256,detector_sha256:hash(await readFile(root+'apps/web/singing-pitch.js')),trace,segments:words.segments,authored:lyrics.text};
+ const recording=await readFile(root+`assets/singing-recordings/${slug}-song.mp3`);
+ const data={title:lyrics.title,recording_id:slug,recording_sha256:hash(recording),verified:false,scoringEnabled:false,source_sha256:words.source_sha256,detector_sha256:hash(await readFile(root+'apps/web/singing-pitch.js')),trace,segments:words.segments,authored:lyrics.text};
  await writeFile(out+id+'.json',JSON.stringify(data),{flag:'wx'});
- await copyFile(root+`renders/club-studies-20261024/separator/review/${id}-song.mp3`,out+id+'.mp3');
+ await writeFile(out+id+'.mp3',recording,{flag:'wx'});
  report.push({id,source_sha256:data.source_sha256,frames:trace.length,pitched:trace.filter(p=>p[1]!==null).length,verified:false,scoringEnabled:false,target_sha256:hash(await readFile(out+id+'.json'))});
 }
 await copyFile(root+'scripts/fixtures/produced-targets.html',out+'index.html');
-await writeFile(root+'docs/evidence/spleeter-local-20261027/target-review.json',JSON.stringify(report,null,2)+'\n',{flag:'wx'});
+await copyFile(root+'scripts/fixtures/produced-target-draft.js',out+'produced-target-draft.js');
+await writeFile(out+'provenance.json',JSON.stringify(report,null,2)+'\n',{flag:'wx'});
 console.log('PASS: source-bound pitch/transcript candidates; no verified notes or grades');

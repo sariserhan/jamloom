@@ -1,5 +1,7 @@
 # Specification completion ledger
 
+**Latest execution — 2026-10-30:** [Current evidence](COMPLETION_CURRENT.md). The older build/provider snapshots below are historical; full-spec status remains **PARTIAL**.
+
 **Current status, 2026-10-27: PARTIAL.** Use the reconciled
 [specification map](spec-coverage.md), [product ledger](PRODUCT_COMPLETION.md) and
 [closure report](SPEC_CLOSURE.md). Build 27 is verified/exported/installed locally;

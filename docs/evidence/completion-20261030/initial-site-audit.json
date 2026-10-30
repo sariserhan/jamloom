@@ -1,0 +1,7 @@
+{
+  "status": "FAIL",
+  "scope": "Existing default .next build; age/source not yet established",
+  "assertion": "Paid Singing lyrics found in public client bundle",
+  "path": "apps/site/.next/static/chunks/04b9um590w0ia.js",
+  "sha256": "a54ae59806b8d5d2322f4c9a9a7095d4b832c30a2996126ad07046c1422784a7"
+}
