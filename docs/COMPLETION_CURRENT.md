@@ -1,3 +1,5 @@
+**Active closure — 2026-10-30:** [Current follow-through](CLOSURE_FOLLOWTHROUGH.md): one-owner listening amendment complete; one newly authorized $5.90 GPU attempt is active. Previous provider snapshots below predate this rental.
+
 **Listening amendment — 2026-10-30:** The owner is the sole required listener. Additional/independent listener recruitment is no longer a completion gate. Actual owner judgments, coverage and the remaining technical/release requirements still apply. [Specification amendment](LISTENING_OWNER_AMENDMENT.md).
 
 # Current completion follow-through

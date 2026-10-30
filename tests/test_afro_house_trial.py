@@ -11,6 +11,46 @@ from afro_house_trial import validate_permit
 
 
 class AfroHouseTrial(unittest.TestCase):
+    def completion_plan(self):
+        import afro_house_trial as trial
+        plan = json.loads((trial.EVIDENCE / 'followup-plan-004.json').read_text())
+        plan.update(status='AUTHORIZED', owner_statement='Approve one attempt, $5.90 max')
+        return plan
+
+    def test_pending_completion_cannot_touch_provider(self):
+        import afro_house_trial as trial
+        with tempfile.TemporaryDirectory() as folder:
+            evidence = Path(folder); plan = self.completion_plan()
+            plan.update(status='PENDING_OWNER_APPROVAL', owner_statement=None)
+            (evidence / 'followup-plan-004.json').write_text(json.dumps(plan))
+            with patch.object(trial, 'EVIDENCE', evidence), patch.object(trial.vast, 'api') as api, \
+                    patch.object(trial.vast, 'instances') as instances:
+                with self.assertRaisesRegex(ValueError, 'exact Afro House compute authorization'):
+                    trial.preflight(completion=True)
+                api.assert_not_called(); instances.assert_not_called()
+
+    def test_completion_binds_all_failures_and_current_sources(self):
+        import afro_house_trial as trial
+        plan = self.completion_plan()
+        trial.validate_permit(plan, completion=True)
+        previous = [json.loads((trial.EVIDENCE / item['receipt']).read_text())['offer'] for item in plan['prior_attempts']]
+        for old in previous:
+            self.assertFalse(trial.avoids_failed_hosts(dict(host_id=old['host_id'], machine_id=-1), previous))
+            self.assertFalse(trial.avoids_failed_hosts(dict(host_id=-1, machine_id=old['machine_id']), previous))
+        plan['prior_attempts'][2]['sha256'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'receipt changed'):
+            trial.validate_permit(plan, completion=True)
+
+    def test_completion_rejects_consumed_permit_or_expanded_cap(self):
+        import afro_house_trial as trial
+        for field, value in [('status', 'CONSUMED'), ('budget_usd', 6), ('retries', 1),
+                             ('aggregate_budget_cap_usd', 7), ('aggregate_budget_used_usd', 0)]:
+            plan = self.completion_plan(); plan[field] = value
+            with self.assertRaises(ValueError): trial.validate_permit(plan, completion=True)
+        plan = self.completion_plan(); plan['code_sha256']['scripts/cloud_music_setup.sh'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'sources changed'):
+            trial.validate_permit(plan, completion=True)
+
     def test_pending_plan_cannot_start_paid_compute(self):
         permit = dict(status='PENDING_OWNER_CAP', campaign='jamloom-afro-house-quality-20261028')
         with self.assertRaisesRegex(ValueError, 'exact Afro House compute authorization'):

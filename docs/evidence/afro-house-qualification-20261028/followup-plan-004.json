@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "status": "AUTHORIZED",
+  "campaign": "jamloom-afro-house-quality-20261028-followup-004",
+  "scope": "One new attempt to generate three five-minute Organic Afro House targets, one matched house control and twenty extracted stems using the corrected prerequisite bootstrap.",
+  "budget_usd": 5.9,
+  "aggregate_budget_cap_usd": 6,
+  "aggregate_budget_used_usd": 0.06600539240000103,
+  "instances_max": 1,
+  "max_elapsed_seconds": 2400,
+  "model_calls_max": 24,
+  "attempts_max": 1,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "retries": 0,
+  "exclude_failed_hosts_and_machines": true,
+  "public_activation": false,
+  "source_audio_used": false,
+  "training": false,
+  "owner_statement": "Approve one attempt, $5.90 max",
+  "proposed_owner_statement": "Approve one attempt, $5.90 max",
+  "authorized_at": "2026-10-30T15:01:46.275538+00:00",
+  "prior_attempts": [
+    {
+      "receipt": "gpu-attempt-001.json",
+      "sha256": "32ce2864c1fac88942930f9d750916cbd613676e2cc41edeaa4582dd7c40d617"
+    },
+    {
+      "receipt": "gpu-attempt-002.json",
+      "sha256": "5434a3f00453c5c43213338bd2086baa0f8e9a958b8da3cca934b2752caa0daf"
+    },
+    {
+      "receipt": "gpu-attempt-003.json",
+      "sha256": "906a114544e3455c6eba3b9b33b55ce979c21e40fc7e3b5fbe3584c89f130c39"
+    }
+  ],
+  "model_calls": {
+    "text_to_audio": 4,
+    "stem_extraction": 20
+  },
+  "model_revisions": {
+    "generation": "19671f406d603126926c1b7e2adc169acbcade22",
+    "base": "e432212fec32b8965a14ffa57ae653438d6abd14"
+  },
+  "launch_corrections": [
+    "single compressed source archive",
+    "two consecutive SSH readiness probes and keepalives",
+    "exclude both failed provider hosts and machines",
+    "write bootstrap stage and exit receipt before argument/deadline validation",
+    "allow 15 seconds of container-clock skew while the independent watchdog enforces the 40-minute lease",
+    "skip apt entirely when venv/ensurepip and ffmpeg exist",
+    "install only missing prerequisites with bounded network/lock waits",
+    "exclude all three failed hosts and machines"
+  ],
+  "code_sha256": {
+    "scripts/afro_house_qualification.py": "f53a04523776e8e6ad274f64511ad5e0a2eeef80665de62bdccf48cdbff56dc0",
+    "scripts/afro_house_trial.py": "a2332f1e0087486ae3b1d2ff7ed756341c54367a00106bd834d5378afa027219",
+    "scripts/cloud_music_setup.sh": "842f15e133910fa31c62d687c81203c441b41d013e60a991a133a47b51daa6b0",
+    "scripts/cloud_dj_warm.sh": "fa1cbbce93573489963dc5008879fda3bec233e670d1f68c9c63f0868b3568c3",
+    "scripts/dj_track_worker.py": "3c2de702ce18c8dee8fa9964c4e076fe349e444124b1d80d7fd73866cd8cddae",
+    "scripts/dj_warm_engine.py": "32ee2a1323d453eb62b89319716faf387124f7580f6a8109b17ed977234041cf",
+    "scripts/dj_vocal.py": "902e327bdf2a8a319b3b049cc368415d4c211659a114307b45d9125ff6a88f96",
+    "scripts/dj_model_study.py": "d8862590e5e3b61ab53e4dffad603b1da7587e48f214305ee6a16cb419546678",
+    "scripts/club_benchmark_cases.py": "060adaee44a4af784261b0af94a8364ebf02ce924d03c699d8b7418522b2a6cb",
+    "scripts/vast_trial.py": "4fd4c1e8234f5fb3261f97fa77d3f9851886fda7b9281c2c7e91d987320e0dc0",
+    "assets/manifests/dj-styles.json": "8bb095500301f5bd155afb5a260faa7342330d54f3e9724e27ac84ec8d6fc1c2",
+    "assets/manifests/dj-base-model.json": "608b720e0c042d128ada91dcc18ffc0f8719721eecd1fae011a228376161aff0",
+    "renders/dj-quality-20261025/house-0.wav": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "renders/dj-quality-20261025/report.json": "a918ed12bbddb74848356dd1f044e888ea8bebe6b2237ce8b0f72bebb35daae5"
+  },
+  "authorization_note": "Owner explicitly selected \u201cApprove one attempt, $5.90 max\u201d for the prepared fourth attempt. One GPU, at most 40 minutes, 24 model calls, automatic cleanup, zero retries, within the original $6 aggregate campaign cap. No publication, RunPod activation or live sales authorized.",
+  "prepared_at": "2026-10-30T14:59:35.716530+00:00"
+}

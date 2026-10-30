@@ -1,0 +1,34 @@
+test_afro_house_qualification (unittest.loader._FailedTest.test_afro_house_qualification) ... ERROR
+test_changed_source_cannot_reuse_prepared_permit (test_afro_house_trial.AfroHouseTrial.test_changed_source_cannot_reuse_prepared_permit) ... ok
+test_completion_binds_all_failures_and_current_sources (test_afro_house_trial.AfroHouseTrial.test_completion_binds_all_failures_and_current_sources) ... ok
+test_completion_rejects_consumed_permit_or_expanded_cap (test_afro_house_trial.AfroHouseTrial.test_completion_rejects_consumed_permit_or_expanded_cap) ... ok
+test_consumed_initial_permit_cannot_be_reused (test_afro_house_trial.AfroHouseTrial.test_consumed_initial_permit_cannot_be_reused) ... ok
+test_followup_authorization_binds_both_reconciled_attempts_and_source_hashes (test_afro_house_trial.AfroHouseTrial.test_followup_authorization_binds_both_reconciled_attempts_and_source_hashes) ... ok
+test_pending_completion_cannot_touch_provider (test_afro_house_trial.AfroHouseTrial.test_pending_completion_cannot_touch_provider) ... ok
+test_pending_followup_stops_before_provider_access (test_afro_house_trial.AfroHouseTrial.test_pending_followup_stops_before_provider_access) ... ok
+test_pending_plan_cannot_start_paid_compute (test_afro_house_trial.AfroHouseTrial.test_pending_plan_cannot_start_paid_compute) ... ok
+test_pending_replacement_stops_preflight_before_provider_access (test_afro_house_trial.AfroHouseTrial.test_pending_replacement_stops_preflight_before_provider_access) ... ok
+test_replacement_cannot_expand_the_original_aggregate_cap (test_afro_house_trial.AfroHouseTrial.test_replacement_cannot_expand_the_original_aggregate_cap) ... ok
+test_replacement_hashes_match_a_hypothetical_exact_permit (test_afro_house_trial.AfroHouseTrial.test_replacement_hashes_match_a_hypothetical_exact_permit) ... ok
+test_replacement_preflight_excludes_failed_machine_and_checks_aggregate_quote (test_afro_house_trial.AfroHouseTrial.test_replacement_preflight_excludes_failed_machine_and_checks_aggregate_quote) ... ok
+test_wrong_cap_cannot_start_paid_compute (test_afro_house_trial.AfroHouseTrial.test_wrong_cap_cannot_start_paid_compute) ... ok
+
+======================================================================
+ERROR: test_afro_house_qualification (unittest.loader._FailedTest.test_afro_house_qualification)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_afro_house_qualification
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/unittest/loader.py", line 433, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/unittest/loader.py", line 374, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/tests/test_afro_house_qualification.py", line 5, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'. Did you mean: 'runpy'?
+
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.033s
+
+FAILED (errors=1)

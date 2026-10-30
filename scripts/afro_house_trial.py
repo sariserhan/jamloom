@@ -19,6 +19,7 @@ OUTPUT = ROOT / 'renders/afro-house-qualification-20261028'
 LABEL = 'jamloom-afro-house-quality-20261028'
 REPLACEMENT_LABEL = LABEL + '-replacement'
 FOLLOWUP_LABEL = LABEL + '-followup-003'
+COMPLETION_LABEL = LABEL + '-followup-004'
 SOURCES = (
     'scripts/afro_house_qualification.py', 'scripts/afro_house_trial.py',
     'scripts/cloud_music_setup.sh', 'scripts/cloud_dj_warm.sh',
@@ -38,26 +39,26 @@ REMOTE_SOURCES = (
 )
 
 
-def configure_vast(replacement=False, followup=False):
-    if replacement and followup:
+def configure_vast(replacement=False, followup=False, completion=False):
+    if sum((replacement, followup, completion)) > 1:
         raise ValueError('Choose one Afro House campaign attempt')
-    suffix, label = ('-followup-003', FOLLOWUP_LABEL) if followup else ('-replacement', REPLACEMENT_LABEL) if replacement else ('', LABEL)
+    suffix, label = ('-followup-004', COMPLETION_LABEL) if completion else ('-followup-003', FOLLOWUP_LABEL) if followup else ('-replacement', REPLACEMENT_LABEL) if replacement else ('', LABEL)
     work = WORK.with_name(WORK.name + suffix) if suffix else WORK
     vast.WORK, vast.STATE, vast.LABEL = work, work / 'trial-state.json', label
     vast.LEASE_SECONDS, vast.HOURLY_CEILING, vast.QUOTE_CEILING = 2400, .75, 6
 
 
-def validate_permit(permit, replacement=False, followup=False):
-    if replacement and followup:
+def validate_permit(permit, replacement=False, followup=False, completion=False):
+    if sum((replacement, followup, completion)) > 1:
         raise ValueError('Choose one Afro House campaign attempt')
-    label = FOLLOWUP_LABEL if followup else REPLACEMENT_LABEL if replacement else LABEL
-    budget = 5.97 if followup else 5.99 if replacement else 6
+    label = COMPLETION_LABEL if completion else FOLLOWUP_LABEL if followup else REPLACEMENT_LABEL if replacement else LABEL
+    budget = 5.90 if completion else 5.97 if followup else 5.99 if replacement else 6
     expected = dict(status='AUTHORIZED', campaign=label,
         budget_usd=budget,
         instances_max=1, max_elapsed_seconds=2400, model_calls_max=24, attempts_max=1,
         stop_on_failure=True, automatic_cleanup=True, retries=0,
         public_activation=False, source_audio_used=False, training=False,
-        owner_statement='do all and everything in one go, dont do task by task. I want everything get it done' if followup
+        owner_statement='Approve one attempt, $5.90 max' if completion else 'do all and everything in one go, dont do task by task. I want everything get it done' if followup
             else 'complete it' if replacement else 'Approve $6 max (recommended)')
     if any(permit.get(key) != value for key, value in expected.items()):
         raise ValueError('Fresh exact Afro House compute authorization required')
@@ -94,6 +95,35 @@ def validate_permit(permit, replacement=False, followup=False):
                 raise ValueError('A prior paid attempt is not reconciled for a follow-up')
         if prior_debit != permit['aggregate_budget_used_usd']:
             raise ValueError('Follow-up aggregate debit does not match prior receipts')
+    if completion:
+        if (permit.get('aggregate_budget_cap_usd') != 6 or
+                permit.get('aggregate_budget_used_usd') != 0.06600539240000103 or
+                permit.get('exclude_failed_hosts_and_machines') is not True or
+                [item.get('receipt') for item in permit.get('prior_attempts', [])] !=
+                ['gpu-attempt-001.json', 'gpu-attempt-002.json', 'gpu-attempt-003.json']):
+            raise ValueError('Completion attempt must bind all three failures within the aggregate cap')
+        debit = 0.0
+        for number, item in enumerate(permit['prior_attempts'], start=1):
+            receipt_bytes = (EVIDENCE / item['receipt']).read_bytes()
+            if hashlib.sha256(receipt_bytes).hexdigest() != item.get('sha256'):
+                raise ValueError('Prior completion attempt receipt changed')
+            receipt = json.loads(receipt_bytes)
+            report_bytes = (ROOT / receipt['provider_report']).read_bytes()
+            report = json.loads(report_bytes)
+            if (receipt.get('attempt') != number or
+                    receipt.get('campaign') != [LABEL, REPLACEMENT_LABEL, FOLLOWUP_LABEL][number - 1] or
+                    not receipt.get('cleanup_confirmed') or receipt.get('model_setup_reached') or
+                    receipt.get('generation_calls_completed') or receipt.get('stem_extraction_calls_completed') or
+                    hashlib.sha256(report_bytes).hexdigest() != receipt.get('provider_report_sha256') or
+                    report.get('status') != 'FAIL' or report.get('tracks') or not report.get('cleanup_confirmed')):
+                raise ValueError('Prior completion attempt is not reconciled')
+            # Attempt 003 includes a later, larger observed debit after delayed billing.
+            amount = receipt['latest_observed_debit_usd'] if number == 3 else receipt['observed_debit_usd']
+            if not 0 <= report['observed_debit_usd'] <= amount <= 6:
+                raise ValueError('Invalid reconciled prior debit')
+            debit += amount
+        if debit != permit['aggregate_budget_used_usd'] or debit + permit['budget_usd'] > 6:
+            raise ValueError('Completion attempt exceeds reconciled aggregate budget')
     hashes = permit.get('code_sha256', {})
     if set(hashes) != set(SOURCES) or any(
         hashlib.sha256((ROOT / path).read_bytes()).hexdigest() != hashes[path]
@@ -106,12 +136,12 @@ def avoids_failed_hosts(offer, previous):
     return all(offer['host_id'] != old['host_id'] and offer['machine_id'] != old['machine_id'] for old in previous)
 
 
-def preflight(replacement=False, followup=False):
-    configure_vast(replacement, followup)
-    plan_file = 'followup-plan-003.json' if followup else 'replacement-plan.json' if replacement else 'gpu-plan.json'
+def preflight(replacement=False, followup=False, completion=False):
+    configure_vast(replacement, followup, completion)
+    plan_file = 'followup-plan-004.json' if completion else 'followup-plan-003.json' if followup else 'replacement-plan.json' if replacement else 'gpu-plan.json'
     permit = json.loads((EVIDENCE / plan_file).read_text())
-    validate_permit(permit, replacement, followup)
-    suffix = '-followup-003' if followup else '-replacement' if replacement else ''
+    validate_permit(permit, replacement, followup, completion)
+    suffix = '-followup-004' if completion else '-followup-003' if followup else '-replacement' if replacement else ''
     target_output = OUTPUT.with_name(OUTPUT.name + suffix) if suffix else OUTPUT
     if vast.STATE.exists() or target_output.exists():
         raise RuntimeError('Prior output exists; refusing to overwrite qualification evidence')
@@ -129,7 +159,7 @@ def preflight(replacement=False, followup=False):
                 attempt.get('cleanup_confirmed') is not True or not attempt.get('failure', '').startswith("Command '['scp'")):
             raise RuntimeError('The first failed attempt is not reconciled for a replacement')
         previous = previous_state['offer']
-    if followup:
+    if followup or completion:
         previous = [json.loads((EVIDENCE / item['receipt']).read_text())['offer'] for item in permit['prior_attempts']]
     if vast.instances():
         raise RuntimeError('Existing trial state or rental prevents a new one-GPU run')
@@ -137,13 +167,13 @@ def preflight(replacement=False, followup=False):
     offers = [offer for offer in vast.offers() if offer['gpu_name'] == 'RTX 3090'
         and offer['geolocation'].endswith(', US') and
         (not replacement or offer['host_id'] != previous['host_id'] and offer['machine_id'] != previous['machine_id']) and
-        (not followup or avoids_failed_hosts(offer, previous))]
+        (not (followup or completion) or avoids_failed_hosts(offer, previous))]
     if not offers:
         raise RuntimeError('No compatible US RTX 3090 offer within prepared price limits')
     offer = offers[0]
     if float(account['credit']) < offer['reserved_lease_plus_transfer']:
         raise RuntimeError('Prepaid balance is below the reserved quote')
-    if (replacement or followup) and (offer['reserved_lease_plus_transfer'] > permit['budget_usd'] or
+    if (replacement or followup or completion) and (offer['reserved_lease_plus_transfer'] > permit['budget_usd'] or
             permit['aggregate_budget_used_usd'] + offer['reserved_lease_plus_transfer'] > permit['aggregate_budget_cap_usd']):
         raise RuntimeError('Afro House quote exceeds the remaining aggregate cap')
     for command in ('caffeinate', 'ssh', 'scp', 'ssh-keygen', 'tar'):
@@ -152,9 +182,9 @@ def preflight(replacement=False, followup=False):
     return permit, account, offer
 
 
-def run(replacement=False, followup=False):
-    permit, account, offer = preflight(replacement, followup)
-    suffix, label = ('-followup-003', FOLLOWUP_LABEL) if followup else ('-replacement', REPLACEMENT_LABEL) if replacement else ('', LABEL)
+def run(replacement=False, followup=False, completion=False):
+    permit, account, offer = preflight(replacement, followup, completion)
+    suffix, label = ('-followup-004', COMPLETION_LABEL) if completion else ('-followup-003', FOLLOWUP_LABEL) if followup else ('-replacement', REPLACEMENT_LABEL) if replacement else ('', LABEL)
     work = WORK.with_name(WORK.name + suffix) if suffix else WORK
     output = OUTPUT.with_name(OUTPUT.name + suffix) if suffix else OUTPUT
     if output.exists():
@@ -170,13 +200,13 @@ def run(replacement=False, followup=False):
     subprocess.run(['ssh-keygen', '-q', '-t', 'ed25519', '-N', '', '-f', str(key)], check=True)
     state = dict(label=label, offer=offer, starting_credit=float(account['credit']),
         started_at=time.time(), deadline=int(time.time()) + vast.LEASE_SECONDS,
-        budget_usd=permit['budget_usd'], observed_debit_stop_usd=5.5 if not replacement and not followup else permit['budget_usd'],
+        budget_usd=permit['budget_usd'], observed_debit_stop_usd=5.5 if not replacement and not followup and not completion else permit['budget_usd'],
         disk_gb=60, payload_sha256=payload_sha256,
         confirm_absence=True, status='starting')
     vast.write_state(state)
     with (work / 'watchdog.log').open('a') as log:
         subprocess.Popen(['caffeinate', '-i', sys.executable, str(Path(__file__).resolve()), '--watch'] +
-            (['--followup'] if followup else ['--replacement'] if replacement else []),
+            (['--completion'] if completion else ['--followup'] if followup else ['--replacement'] if replacement else []),
             stdin=subprocess.DEVNULL, stdout=log, stderr=log, start_new_session=True)
     report = dict(status='FAIL', campaign=label, tracks=[], reference_audio_used=False,
         human_listening='NOT RUN', cleanup_confirmed=False, quote=offer)
@@ -284,15 +314,16 @@ def main():
     parser.add_argument('--watch', action='store_true')
     parser.add_argument('--replacement', action='store_true')
     parser.add_argument('--followup', action='store_true')
+    parser.add_argument('--completion', action='store_true')
     args = parser.parse_args()
-    configure_vast(args.replacement, args.followup)
+    configure_vast(args.replacement, args.followup, args.completion)
     if args.watch:
         vast.watch()
     elif args.preflight:
-        _, account, offer = preflight(args.replacement, args.followup)
+        _, account, offer = preflight(args.replacement, args.followup, args.completion)
         print(json.dumps(dict(credit=account['credit'], offer=offer), indent=2))
     else:
-        print(json.dumps(run(args.replacement, args.followup), indent=2))
+        print(json.dumps(run(args.replacement, args.followup, args.completion), indent=2))
 
 
 if __name__ == '__main__':
