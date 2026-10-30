@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "source_commit": "6abdacc221d0cde89b76a5b35c30d7116243d746",
   "source_base": "1e80c647ae5800c010539cee86a5a4ef125f0c68",
   "source_checkout": "/tmp/jamloom-jazz-diagnostic-20261030",
@@ -20,7 +20,7 @@
     "shutdown_allowance_seconds": 130,
     "retries": 0,
     "fixture": {
-      "reference": "Take Five \u2014 Dave Brubeck",
+      "reference": "Take Five — Dave Brubeck",
       "genre": "Jazz",
       "language": "de",
       "seconds": 100,
@@ -65,10 +65,18 @@
   "authorized_utc": "2026-10-30T22:28:13.288570+00:00",
   "execution": {
     "image_build_attempts": 1,
-    "provider_requests_started": 0,
+    "provider_requests_started": 1,
     "retries": 0,
     "workflow_run": 41138331531,
     "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41138331531",
-    "status": "IMAGE_BUILD_RUNNING"
+    "status": "COMPLETE",
+    "trial_invocations": 1,
+    "trial_started_at": "2026-10-30T22:47:07.276480+00:00",
+    "receipt": "docs/evidence/dna-completion/cloud/2026-10-30T22-47-07.503Z/trial-result.json",
+    "prewarm_seconds": 278,
+    "trial_exit": 0,
+    "trial_finished_at": "2026-10-30T22:54:39.677741+00:00",
+    "qualification": "PASS",
+    "cleanup": "PASS"
   }
 }

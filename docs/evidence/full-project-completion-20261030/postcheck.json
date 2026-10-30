@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-30T22:54:40.985Z",
+  "operation": "Independent GET and SELECT only",
+  "receipt": "docs/evidence/dna-completion/cloud/2026-10-30T22-47-07.503Z/trial-result.json",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "health": {
+    "jobs": {
+      "completed": 30,
+      "failed": 13,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "endpointVersion": 18,
+    "summary": {
+      "idle": 0,
+      "initializing": 0,
+      "running": 0,
+      "throttled": 0,
+      "total": 0,
+      "unhealthy": 0
+    },
+    "workers": []
+  },
+  "billing": [
+    {
+      "amount": 0.028195693623274565,
+      "timeBilledMs": 56574,
+      "diskSpaceBilledGB": 120,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 18:00:00"
+    },
+    {
+      "amount": 0.5447215219028294,
+      "timeBilledMs": 1230991,
+      "diskSpaceBilledGB": 480,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 20:00:00"
+    }
+  ],
+  "billingLimit": "Observed daily billing may lag; not a finalized invoice or exact diagnostic attribution",
+  "temporaryDatabases": [],
+  "cleanup": "PASS",
+  "qualification": "PASS",
+  "rejectedAudio": null,
+  "requests": [
+    {
+      "label": "german-jazz",
+      "provider_id": "ffcdcb7b-51f4-426c-9673-1080bffc8740-u2",
+      "finalState": "completed",
+      "failure": null,
+      "audioSha256": "c335f98e0639ab46fad8c48486258ad8763429385c3ab686e2649770f8b69bd4",
+      "seconds": 100,
+      "identity": "af_bella",
+      "balance": {
+        "available": 49,
+        "reserved": 0
+      }
+    }
+  ],
+  "removedObjects": 2,
+  "retries": 0
+}

@@ -1,0 +1,60 @@
+{
+  "status": "AWAITING_EXPLICIT_APPROVAL",
+  "scope": "One maximum-reference Music DNA qualification; no publication or live purchases",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fa5cc3eb457db0eb0657ea3936ea1cf200064e3328a2c04ba86ce8b63a2148cd",
+  "image_source_commit": "6abdacc221d0cde89b76a5b35c30d7116243d746",
+  "harness_source_commit": "9c8f0e9b",
+  "mode": "--maximum-dna --qualification-window",
+  "max_usd": 3,
+  "max_workers": 1,
+  "max_provider_requests": 1,
+  "runtime_seconds": 2400,
+  "shutdown_allowance_seconds": 130,
+  "retries": 0,
+  "conservative_rate_usd_per_second": 0.001,
+  "conservative_total_usd": 2.55,
+  "fixture": {
+    "references": 5000,
+    "reference_prefix": "Jamloom scale fixture",
+    "genre": "Jazz",
+    "language": "en",
+    "duration_seconds": 100,
+    "seed": 9102401
+  },
+  "before_after_worker_limits": [
+    0,
+    0
+  ],
+  "endpoint": "jl77hn92npt65k",
+  "voice_identity_required": true,
+  "retention": false,
+  "checks": [
+    "All 5000 favorite entries survive into completed plan",
+    "PCM duration/hash/style gate and voice identity receipt",
+    "One request, stop on any failure, no automatic retry",
+    "Temporary database/R2 cleanup, test credit settlement, independent zero-worker confirmation"
+  ],
+  "excludes": [
+    "Image publication",
+    "Website/app release",
+    "Live purchases",
+    "Sustained AI DJ rentals",
+    "Any additional requests"
+  ],
+  "preflight": [
+    "Recheck disabled empty endpoint and current template digest",
+    "Read-only production pending count must be zero",
+    "Verify current pricing remains under conservative rate",
+    "Match reviewed source hashes before any spend"
+  ],
+  "file_sha256": {
+    "apps/site/scripts/cloud-song-trial.ts": "b76f1284a107b7e873028c2b6aab6fe3bd3407b12394d36b3b6dd50c83e0346a",
+    "apps/site/scripts/rejected-audio-diagnostic.ts": "4732379df794affc49ea712659594a47feebd58d4a2da53b6e3a1a477ee8cafc",
+    "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4",
+    "apps/site/scripts/cloud-trial-limits.ts": "5c9c4651bfbc73170e43655c41c511ce55feed8b029b1d69aa91e7c7fdbbfef7",
+    "services/runpod/handler.py": "ad142959759e5dcd53745ae6a05adc81443b402700418a8b4c8e64579b52bb6e",
+    "tests/test_rejected_audio_diagnostic.py": "1cd81bfc51501ba26f1844657f7ee06298267673c0ef4ed065e4d930521c031c",
+    ".github/workflows/runpod-image.yml": "186129807009cc7c7d6867fa4ba337d0e06f3ea3446087ff24b15badf536a658"
+  },
+  "previous_diagnostic": "PASS; permit consumed; not reused"
+}

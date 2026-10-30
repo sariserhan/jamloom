@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-30T22:56:14.772522+00:00",
+  "postgres": "STOPPED; pg_ctl status confirms no server running",
+  "owner_workspace": "Kept running at 127.0.0.1:8777",
+  "website_candidate": "Kept running locally at 127.0.0.1:3011",
+  "qa_server": "Stopped; synthetic receipts remain separate from owner data",
+  "publication": "Website and app HELD"
+}

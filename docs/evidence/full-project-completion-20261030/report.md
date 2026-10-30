@@ -13,7 +13,7 @@
 
 ## German Jazz
 
-**FAIL prior qualification; diagnosis PARTIAL.** Valid five-tag sound guidance preserves the complete Jazz retry instructions across eight supported vocal profiles. The rejected cloud WAV was discarded, so this does not identify the cause. The style threshold remains unchanged. Local model generation was not started because available memory was below the existing 8 GiB start floor. [Investigation](jazz-investigation.json).
+**PASS new hosted technical/style qualification; prior failure cause remains unresolved.** Valid five-tag sound guidance preserves the complete Jazz retry instructions across eight supported vocal profiles. The earlier rejected cloud WAV was discarded, so this does not identify the cause. The style threshold remains unchanged. Local model generation was not started because available memory was below the existing 8 GiB start floor. [Investigation](jazz-investigation.json).
 
 The owner approved image commit `6abdacc221d0cde89b76a5b35c30d7116243d746` and one German Jazz request: maximum $3, one GPU, 20 minutes plus shutdown, no repeat requests. Twenty-one isolated worker/identity/diagnostic checks pass. The diagnostic opt-in preserves only a hash-verified final rejected WAV privately before normal staging cleanup; the provider request still fails and cannot become a completed library song. Ordinary jobs do not retain failures. [Tests](isolated-image-tests.log), [adapter tests](diagnostic-tests.log), [dry run](diagnostic-dryrun.log), [authorization and current execution](hosted-diagnostic-plan.json).
 
@@ -24,3 +24,11 @@ Owner ratings for the revised music, a genuine quiet recording, actual hands-on 
 ## Owner save correction
 
 The owner reported saving, but no new receipt reached the server. They confirmed the page said “Complete one block from your own listening first.” The draft was still in browser storage. The save action now persists partial work as a distinct `music-draft`, lists the unanswered fields and requires the unchanged complete, attested rubric before a `music` judgment can count. Browser draft keys, audio and the listening freeze are unchanged. Desktop/mobile partial-save, reload and complete-save checks pass; synthetic QA remains separate. [Browser check](study-save-browser.json), [eleven checks](owner-save-tests.log). Actual owner receipts are re-evaluated separately.
+
+## Approved diagnostic result
+
+**PASS:** one 100-second German Jazz request on verified image `sha256:fa5cc3eb457db0eb0657ea3936ea1cf200064e3328a2c04ba86ce8b63a2148cd`. Three of four style windows matched under the unchanged screen; the voice-identity receipt passes. PCM hash/duration/format and no clipped samples pass. The generator was not changed, so the earlier failure is not claimed fixed; it did not recur. Failed-take retention was not exercised on this successful request. [Image proof](publication.json), [audio audit](hosted-audio.json), [local audition](http://127.0.0.1:8777/hosted-diagnostic/).
+
+**PASS independent cleanup:** worker limits 0/0, no workers or queued/running jobs, two temporary storage keys removed, isolated database dropped, one test credit settled with none reserved, and local PostgreSQL stopped. Exactly one provider request; no repeat request. Final provider billing is still lagged and cannot yet be attributed to this diagnostic. [Postcheck](postcheck.json), [local cleanup](local-cleanup.json). The one-request permit is consumed.
+
+The remaining 5,000-reference qualification is prepared on the same verified image, with a fresh one-request/$3/40-minute plan awaiting explicit approval. No new image publication is needed. [Plan](maximum-qualification-plan.json), [dry run](maximum-dryrun.log).

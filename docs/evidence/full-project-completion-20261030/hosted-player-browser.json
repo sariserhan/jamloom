@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "views": [
+    {
+      "width": 1280,
+      "seconds": 100,
+      "playback": true,
+      "seek": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "seconds": 100,
+      "playback": true,
+      "seek": true,
+      "overflow": false,
+      "errors": []
+    }
+  ],
+  "ownerListening": "NOT RUN; automated playback only"
+}

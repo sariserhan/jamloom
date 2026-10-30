@@ -11,7 +11,7 @@ approval. The owner is the sole required musical listener.
 - **PASS:** all 207 revised excerpt arrangements across 23 sources and three seeds; 621 exact selected-hook appearances; opening musical response within 0.264 seconds.
 - **PASS technical preparation:** a new 69-block, 276-candidate blinded study, 345 verified audio files, and registered thresholds. [Revised study](http://127.0.0.1:8777/music-excerpts/). The old study and its drafts remain separate; no old judgment is applied to revised audio.
 - **PASS:** current website build, availability controls, and desktop/mobile browser checks. Disabled or failed capability responses disable generation before the confirmation flow. The declined preview banner was removed; nothing was deployed.
-- **PARTIAL:** German Jazz diagnosis. Valid five-tag guidance preserves the Jazz retry instructions across eight singer profiles; there is no evidence to lower the style threshold. A new opt-in private rejected-take diagnostic passes local tests. The owner approved image `6abdacc2` and one $3, 20-minute request; [execution plan](evidence/full-project-completion-20261030/hosted-diagnostic-plan.json) records its live status.
+- **PASS new hosted German Jazz technical/style case:** one 100-second request, three of four style windows matched and voice identity verified. Generator and thresholds unchanged; prior failure cause remains unresolved and musical acceptance is pending. Image `6abdacc2` is published; independent cleanup confirms 0/0, no workers/jobs, temporary data removed and local PostgreSQL stopped. The $3 permit is consumed. [Result](evidence/full-project-completion-20261030/postcheck.json), [audio](evidence/full-project-completion-20261030/hosted-audio.json).
 
 [Increment evidence](evidence/full-project-completion-20261030/report.md).
 
@@ -39,6 +39,8 @@ approval. The owner is the sole required musical listener.
 [Full report and reproducible evidence](evidence/pre-release-completion-20261030/report.md).
 The older 23-block comparison at port 8776 and accepted pilot at 8775 remain intact.
 
+The owner save action now stores unfinished ratings separately and identifies missing answers. Drafts never count as completed judgments; existing browser answers are preserved after refresh.
+
 ## Approved hosted campaign finished
 
 The owner approved **up to $9** for seven requests over three sequential stages:
@@ -55,7 +57,7 @@ This does not authorize AI DJ rentals, website/app release or live purchases.
 
 | Requirement | Status | What closes it |
 |---|---|---|
-| Current-image Improvise and Music DNA cases | PARTIAL; five PASS, German Jazz FAIL, maximum case NOT RUN | Resolve the Jazz style failure and prepare a fresh bounded authorization for outstanding hosted cases; cleanup is already PASS; technical results do not prove musical acceptance |
+| Current-image Improvise and Music DNA cases | PARTIAL; prior five PASS plus new German Jazz PASS, maximum case NOT RUN | Run the prepared 5,000-reference case under fresh approval and obtain actual musical acceptance. The earlier Jazz failure remains historical; one successful retest does not establish its cause |
 | Formal M1 / source-response musical quality | PARTIAL; exact pilot accepted, full study technically ready | Actual ratings in the [new frozen excerpt study](http://127.0.0.1:8777/music-excerpts/) and a real [quiet recording](http://127.0.0.1:8777/), followed by threshold/coverage review. The preserved full-input study does not qualify this changed policy |
 | Learned improvisation | NOT RUN | Verified user-source/action labels, leakage-safe independent source/session/speaker/phrase/performer groups, M1 completion and held-out benefit over the baseline. The seven supplied references from one maker cannot alone establish performer-held-out validation |
 | Produced-song scoring | PARTIAL | Actual sung words, notes and timing verified against the [source audio](http://127.0.0.1:8769/). `verified:false` and `scoringEnabled:false` remain until then |
