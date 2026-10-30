@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "scope": "Publish reviewed phrase-preserving worker image, then one private Improvise audition on the same neural generator as Music DNA",
   "image_source_commit": "ea0fdba03d288f00a0bf9f5461b49b58c31d6cef",
   "image_base": "6abdacc221d0cde89b76a5b35c30d7116243d746",
@@ -22,7 +22,16 @@
     "seconds": 1.22,
     "identity": "Owner-confirmed user sample; maker voice excluded",
     "transfer": "Temporary private R2 staging and one Runpod worker; delete remote source and output objects at cleanup",
-    "full_source_required_for_this_audition": true
+    "full_source_required_for_this_audition": true,
+    "upload": {
+      "path": "renders/neural-question-input-20261030/source-16k-mono.wav",
+      "sha256": "fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1",
+      "frames": 19520,
+      "rate": 16000,
+      "channels": 1,
+      "seconds": 1.22
+    },
+    "normalization_evidence": "source-normalization.json"
   },
   "fixture": {
     "product": "improvise",
@@ -58,7 +67,7 @@
     "scripts/local_call_edit.py": "37fef21660e6b9f56c551744f51c2341f86cdbc3ffcf52d9afbb031a27fee84f",
     "tests/test_singer_studio.py": "64933618bb724a2c067126d8263c373763c6c1d4eed44c8eba99e0dd3b808c8b",
     "tests/test_local_call_edit.py": "d73c74f2581d8e0d46adde5b34bf327b205db1b527d96442d85af91f6ca66f3f",
-    "apps/site/scripts/cloud-song-trial.ts": "392f1723fa6d95ccc60210955e8f0e14ea7b493ff92bf0e58c22dfff25a0526f",
+    "apps/site/scripts/cloud-song-trial.ts": "2b004c8c2b66198997f1d3088aeba09dafb9550a9b582180960f7c4eca638539",
     "apps/site/scripts/cloud-trial-limits.ts": "7ad9aed7ba2d6c38d6c957b780cdd7aacb6b1ee554e5ad79d4527afecb9aa946",
     "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4"
   },
@@ -71,12 +80,39 @@
   },
   "execution": {
     "image_build_attempts": 1,
-    "trial_invocations": 0,
+    "trial_invocations": 2,
     "provider_requests_started": 0,
-    "status": "IMAGE_BUILD_RUNNING",
+    "status": "QUALITY_RUNNING",
     "workflow_run": 41143569622,
-    "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41143569622"
+    "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41143569622",
+    "local_preflights": [
+      {
+        "image_build_attempts": 1,
+        "trial_invocations": 1,
+        "provider_requests_started": 0,
+        "status": "QUALITY_RUNNING",
+        "workflow_run": 41143569622,
+        "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41143569622",
+        "trial_started_at": "2026-10-30T23:36:58.958395+00:00",
+        "trial_exit": 1,
+        "trial_finished_at": "2026-10-30T23:37:01.005628+00:00",
+        "receipt": "docs/evidence/improvise-finish/cloud/2026-10-30T23-36-59.160Z/trial-result.json",
+        "cleanup": "PASS",
+        "failure": "Source upload format rejected locally before upload or GPU activation",
+        "remote_objects_created": 0
+      }
+    ],
+    "trial_started_at": "2026-10-30T23:38:33.672310+00:00"
   },
   "owner_statement": "Approve image and one $3 sample audition",
-  "authorized_utc": "2026-10-30T23:17:23.524281+00:00"
+  "authorized_utc": "2026-10-30T23:17:23.524281+00:00",
+  "harness_pre_normalization_sha256": "392f1723fa6d95ccc60210955e8f0e14ea7b493ff92bf0e58c22dfff25a0526f",
+  "local_preflight_correction": {
+    "at": "2026-10-30T23:38:28.576122+00:00",
+    "reason": "Approved crop requires the existing product upload format; only local conversion and earlier dry-run validation changed",
+    "authorization": "Existing one-request authorization remains unspent; no GPU activation, source upload or provider request occurred. No additional request or budget is added.",
+    "checks": "Three source format/hash/dry-run checks PASS; typecheck PASS; independent zero-worker/job/database/object cleanup PASS",
+    "worker_image_unchanged": true,
+    "original_source_unchanged": true
+  }
 }

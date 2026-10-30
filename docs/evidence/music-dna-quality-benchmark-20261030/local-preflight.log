@@ -1,0 +1,13 @@
+{"disabled":true,"stopped":true,"cleanup":true,"qualification":"FAIL","results":[]}
+/Users/serhansari/Documents/projects/jamloom/apps/site/lib/cloud-songs.ts:26
+ if(audio.length!==bytes||hash(audio)!==sha||audio.toString('ascii',0,4)!=='RIFF'||audio.readUInt32LE(4)!==bytes-8||audio.toString('ascii',8,16)!=='WAVEfmt '||audio.readUInt32LE(16)!==16||audio.readUInt16LE(20)!==1||audio.readUInt16LE(22)!==1||audio.readUInt32LE(24)!==16000||audio.readUInt32LE(28)!==32000||audio.readUInt16LE(32)!==2||audio.readUInt16LE(34)!==16||audio.toString('ascii',36,40)!=='data'||audio.readUInt32LE(40)!==bytes-44||(bytes-44)%2||bytes<=44||bytes>9600044)throw new AudioError('The recording could not be verified. Upload it again.');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+
+AudioError: The recording could not be verified. Upload it again.
+    at checkSource (/Users/serhansari/Documents/projects/jamloom/apps/site/lib/cloud-songs.ts:26:486)
+    at <anonymous> (/Users/serhansari/Documents/projects/jamloom/apps/site/scripts/cloud-song-trial.ts:60:15) {
+  status: 400,
+  [Symbol(jamloom.audio.error)]: true
+}
+
+Node.js v22.23.1

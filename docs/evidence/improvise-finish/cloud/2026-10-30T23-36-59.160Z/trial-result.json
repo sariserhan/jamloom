@@ -1,0 +1,69 @@
+{
+  "startedAt": "2026-10-30T23:36:59.162Z",
+  "maxUSD": 3,
+  "maxWorkers": 1,
+  "maxSeconds": 2400,
+  "scope": "single-owner-source-quality",
+  "requests": [],
+  "health": [],
+  "cleanup": true,
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:85b4afb0821ba571460bbeab6c56c10f7640844cdf92ade0b3ce549782e16dce",
+  "disabled": true,
+  "templateId": "jbpcd0xgbf",
+  "endpoint": "jl77hn92npt65k",
+  "billingBefore": [
+    {
+      "amount": 0.028195693623274565,
+      "timeBilledMs": 56574,
+      "diskSpaceBilledGB": 120,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 18:00:00"
+    },
+    {
+      "amount": 0.5447215219028294,
+      "timeBilledMs": 1230991,
+      "diskSpaceBilledGB": 480,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 20:00:00"
+    }
+  ],
+  "error": "The recording could not be verified. Upload it again.",
+  "finalHealth": {
+    "jobs": {
+      "completed": 30,
+      "failed": 14,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "stopped": true,
+  "removedObjects": 0,
+  "creditSettlement": true,
+  "qualification": "FAIL",
+  "billingAfter": [
+    {
+      "amount": 0.028195693623274565,
+      "timeBilledMs": 56574,
+      "diskSpaceBilledGB": 120,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 18:00:00"
+    },
+    {
+      "amount": 0.5447215219028294,
+      "timeBilledMs": 1230991,
+      "diskSpaceBilledGB": 480,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 20:00:00"
+    }
+  ],
+  "finishedAt": "2026-10-30T23:37:00.951Z"
+}

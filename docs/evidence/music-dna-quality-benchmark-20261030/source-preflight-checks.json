@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "case": "Original 48 kHz stereo rejected before hosted work",
+      "status": "PASS"
+    },
+    {
+      "case": "Valid-format but changed source hash rejected before hosted work",
+      "status": "PASS"
+    },
+    {
+      "case": "Approved normalized source dry run passes with one request, one GPU, 2400 seconds and $3 cap",
+      "status": "PASS"
+    }
+  ],
+  "new_trial_directories": 0,
+  "new_provider_requests": 0
+}

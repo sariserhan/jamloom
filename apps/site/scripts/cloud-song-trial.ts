@@ -33,6 +33,16 @@ const config=cloudSongConfig({...process.env,CREDIT_BILLING_MODE:'test',JAMLOOM_
 assert.equal(config.endpoint,'jl77hn92npt65k');
 const fixtures=improviseQuality?[['drumandbass']]:dnaDiagnostic?[['german-jazz','Take Five — Dave Brubeck','Jazz','de']]:maximumDNA?[['maximum-dna','Jamloom scale fixture','Jazz','en']]:diagnostic?[[jazzDiagnostic?'jazz':'reggae']]:improvise?[['reggae'],['jazz'],['edm'],['acousticpop']]:completion?[['metal','Enter Sandman — Metallica','Metal','en'],['jazz','Take Five — Dave Brubeck','Jazz','de']]:startup?[['startup','Enter Sandman — Metallica','Metal','en']]:repair?[['jazz-1','Feeling Good — Nina Simone','Jazz','en'],['spanish-1','La Bicicleta — Carlos Vives','Latin','es'],['jazz-2','Feeling Good — Nina Simone','Jazz','en'],['spanish-2','La Bicicleta — Carlos Vives','Latin','es']]:[['jazz','Feeling Good — Nina Simone','Jazz','en'],['rock','Enter Sandman — Metallica','Metal','en'],['spanish','La Bicicleta — Carlos Vives','Latin','es'],['turkish','Şımarık — Tarkan','Turkish Pop','tr'],['russian','Группа крови — Кино','Rock','ru'],['funk'],['reggae'],['jazz-phrase']];
 assert(maxWorkers*(maxSeconds+130)*config.rate/1e6+fixtures.length*.02<maxUSD,'Trial exceeds conservative budget including shutdown retries');
+// Validate the real upload fixture during dry runs, before any hosted or DB work.
+// This is the complete approved crop converted to the product's 16 kHz mono WAV.
+let qualitySource:Buffer<ArrayBuffer>|undefined;
+if(improviseQuality){
+ const sourceIndex=process.argv.indexOf('--source');assert(sourceIndex>=0&&process.argv[sourceIndex+1],'Provide the approved normalized --source');
+ qualitySource=await readFile(resolve(process.argv[sourceIndex+1]));
+ const sha=createHash('sha256').update(qualitySource).digest('hex');
+ checkSource(qualitySource,qualitySource.length,sha);
+ assert.equal(sha,'fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1','Use only the complete approved question crop in product upload format');
+}
 if(!process.argv.includes('--apply')){console.log({mode:'dry-run',maxUSD,maxWorkers,maxSeconds,requests:fixtures.length,...(startup?{directory,evidence,minWorkers:0,scaling:'REQUEST_COUNT / 1',activationDelaySeconds:30,manualReconciliation:false}:{}),...(repair||startup||completion||improvise?{requires:'Approved paid trial and JAMLOOM_TRIAL_IMAGE digest'}:{}),...(improvise?{durations:fixtures.map((_,i)=>improviseQuality?45:jazzDiagnostic?35:30+5*i),source:improviseQuality?'Owner-approved 1.22-second question WAV; hash pinned':'--source synthetic WAV required',websiteDeployment:false}:{}),...(completion?{durations:maximumDNA||dnaDiagnostic?[100]:[140,100],retainRejectedAudio:dnaDiagnostic,references:maximumDNA?5000:1,identityConversion:true,websiteDeployment:false}:{}),...(repair?{seeds:fixtures.map((_,i)=>6302301+i)}:{})});process.exit(0);}
 const db=new URL(process.env.JAMLOOM_TEST_DATABASE_URL??'');assert.equal(db.hostname,'127.0.0.1');
 await mkdir(directory,{recursive:true});await mkdir(evidence,{recursive:true});
@@ -55,10 +65,9 @@ try{
  await migrate(pool);const initial=await services[0].provider.health();assert.equal(initial.jobs?.inQueue,0);assert.equal(initial.jobs?.inProgress,0);
  if(startup)assert(Object.values(initial.workers??{}).every(value=>value===0),'Startup requires zero existing workers');
  if(improvise)assert(process.argv.includes('--source')&&process.argv[process.argv.indexOf('--source')+1],'Provide --source before starting a trial');
- const source=improvise?await readFile(resolve(process.argv[process.argv.indexOf('--source')+1])):repair||startup||completion?Buffer.alloc(0):await readFile(resolve(directory,'source.wav'));
+ const source=qualitySource??(improvise?await readFile(resolve(process.argv[process.argv.indexOf('--source')+1])):repair||startup||completion?Buffer.alloc(0):await readFile(resolve(directory,'source.wav')));
  if(improvise)assert(process.argv.includes('--source')&&source.length>=44&&source.length<=24000000&&source.toString('ascii',0,4)==='RIFF','Use an explicitly permitted bounded WAV');
  if(improvise)checkSource(source,source.length,createHash('sha256').update(source).digest('hex'));
- if(improviseQuality)assert.equal(createHash('sha256').update(source).digest('hex'),'4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a','Use only the owner-confirmed question crop');
  for(let i=0;i<fixtures.length;i++){
   const [label,reference,genre,language]=fixtures[i],songs=services[improvise?1:i<5?0:1],owner='trial-'+i,id=randomUUID().replaceAll('-','');
   await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.test']);await songs.commerce.wallet.grant(owner,{provider:'stripe_test',receipt:owner,credits:50,netMicros:30000000});

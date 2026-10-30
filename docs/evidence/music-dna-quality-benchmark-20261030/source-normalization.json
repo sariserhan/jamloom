@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-30T23:37:48.708270+00:00",
+  "status": "PASS",
+  "operation": "Resample complete source from 48 kHz stereo to product upload format 16 kHz mono; canonical PCM WAV header; no trim, stretch or content substitution",
+  "original": {
+    "path": "renders/question-bass-response-20261030/source.wav",
+    "sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+    "frames": 58560,
+    "rate": 48000,
+    "channels": 2,
+    "seconds": 1.22
+  },
+  "upload": {
+    "path": "renders/neural-question-input-20261030/source-16k-mono.wav",
+    "sha256": "fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1",
+    "frames": 19520,
+    "rate": 16000,
+    "channels": 1,
+    "seconds": 1.22
+  },
+  "pcm_sha256": "5e7d638757dab785783a012ddf04c672db977bbdfa64e7ac1121102043c93254",
+  "command": [
+    "/opt/homebrew/bin/ffmpeg",
+    "-v",
+    "error",
+    "-i",
+    "/Users/serhansari/Documents/projects/jamloom/renders/question-bass-response-20261030/source.wav",
+    "-map",
+    "0:a:0",
+    "-ac",
+    "1",
+    "-ar",
+    "16000",
+    "-f",
+    "s16le",
+    "pipe:1"
+  ],
+  "original_unchanged": true,
+  "authorization": "Same complete owner-approved sample; only required upload-format conversion. Zero provider requests or uploads occurred in failed local preflight."
+}
