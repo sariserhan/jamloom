@@ -130,21 +130,27 @@ class WorkerTests(unittest.TestCase):
                 job['payload']['duration_seconds']=invalid
                 with self.assertRaises(ValueError):worker.validate(job)
 
-    def test_dna_only_worker_rejects_improvise_before_recording_transfer(self):
+    def test_improvise_requires_consent_and_a_valid_source_receipt(self):
         job=copy.deepcopy(self.job)
         job['product']='improvise'
         job['payload']={'voice':'male','genre':'jazz','consent':True}
         job['source']={'url':URL.replace('11111111-1111','22222222-1111'),'bytes':44,'sha256':'a'*64}
-        with patch.object(worker,'download') as download,patch.object(worker,'execute') as execute:
-            with self.assertRaisesRegex(RuntimeError,r'^Jamloom generation failed; no completed song was accepted\.$'):
-                worker.handler({'input':job})
-        download.assert_not_called();execute.assert_not_called()
+        self.assertEqual(worker.validate(job),job)
+        job['payload']['consent']=False
+        with self.assertRaisesRegex(ValueError,'Recording permission required'):
+            worker.validate(job)
+        job['payload']['consent']=True
+        job['source']['url']=URL
+        with self.assertRaisesRegex(ValueError,'Invalid recording receipt'):
+            worker.validate(job)
 
     def test_public_worker_build_does_not_include_research_separator(self):
         dockerfile=(ROOT/'services/runpod/Dockerfile').read_text()
         prepare=(ROOT/'services/runpod/prepare_models.py').read_text()
         self.assertNotIn('singer-separation.json',dockerfile)
         self.assertNotIn('singer-separation.json',prepare)
+        self.assertIn('JAMLOOM_SEPARATOR_PYTHON',dockerfile)
+        self.assertIn('spleeter-requirements.txt',dockerfile)
 
     def test_source_receipt_is_verified(self):
         class Response(io.BytesIO):pass
@@ -161,7 +167,14 @@ class WorkerTests(unittest.TestCase):
             (work/'singer.log').write_text('private transcript without a traceback')
             self.assertEqual(worker.failure_location(work),'singer@unavailable')
             (work/'failure.json').write_text(json.dumps({'stage':'checking','returncode':-9}))
+            (work/'fit.log').write_text('File "/private/customer/scripts/check_dna_audio.py", line 47\nprivate lyrics https://secret.invalid\n')
+            self.assertEqual(worker.failure_location(work),'checking-exit--9@check_dna_audio.py:47')
+            self.assertNotIn('private',worker.failure_location(work))
+            (work/'fit.log').unlink()
             self.assertEqual(worker.failure_location(work),'checking-exit--9')
+            (work/'failure.json').write_text(json.dumps({'stage':'composing','returncode':1}))
+            (work/'singer.log').write_text('File "/private/customer/scripts/music_dna_song.py", line 393\nPRIVATE transcript https://secret.invalid\n')
+            self.assertEqual(worker.failure_location(work),'composing-exit-1@music_dna_song.py:393')
             (work/'status.json').write_text(json.dumps({'state':'rejected'}))
             self.assertEqual(worker.failure_location(work),'style-rejected')
             (work/'fit.json').write_text(json.dumps({'matching_windows':2,'private':'lyrics must not leak'}))

@@ -1,0 +1,8 @@
+# Keep TensorFlow's legacy estimator stack in its own Python 3.11 environment.
+spleeter==2.4.2
+tensorflow==2.12.1
+tensorflow-io-gcs-filesystem==0.32.0
+numpy==1.23.5
+scipy==1.10.1
+jax==0.4.30
+jaxlib==0.4.30

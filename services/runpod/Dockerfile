@@ -3,8 +3,7 @@ ENV PYTHONUNBUFFERED=1 HF_HUB_DISABLE_TELEMETRY=1 TOKENIZERS_PARALLELISM=false \
     JAMLOOM_INFERENCE_DEVICE=cuda GRADIO_ANALYTICS_ENABLED=False
 LABEL org.opencontainers.image.source="https://github.com/sariserhan/jamloom"
 WORKDIR /opt/jamloom
-# shortcut: DNA-only worker until a commercially cleared source separator is qualified.
-RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg libsndfile1 git ca-certificates build-essential \
+RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg libsndfile1 git ca-certificates build-essential python3.11 python3.11-venv \
     && rm -rf /var/lib/apt/lists/* && pip install --no-cache-dir uv==0.13.1 \
     && uv pip install --system runpod==1.12.0 && uv cache clean
 RUN git init build-style-training/upstream \
@@ -16,8 +15,8 @@ RUN git init build-style-training/upstream \
     && uv pip install --constraint /tmp/ace-constraints.txt faster-whisper==1.2.1 && uv cache clean \
     && rm -rf acestep/third_parts/nano-vllm/build
 # Explicit copies exclude credentials, recordings, research datasets and generated songs.
-COPY scripts/song_duration.py scripts/vocal_identity.py scripts/singing_response.py scripts/music_dna_song.py scripts/dna_direction.py scripts/dna_sound.py scripts/dna_language.py scripts/check_dna_audio.py scripts/analyze_words.py scripts/arrange_voice_research.py ./scripts/
-COPY assets/manifests/dna-style-reviews.json assets/manifests/song-durations.json assets/manifests/singing-model.json assets/manifests/lyric-planner-cuda.json assets/manifests/dna-auditor.json assets/manifests/dna-directions.json assets/manifests/dna-languages.json assets/manifests/word-timing-tiny.json ./assets/manifests/
+COPY scripts/song_duration.py scripts/vocal_identity.py scripts/singing_response.py scripts/music_dna_song.py scripts/dna_direction.py scripts/dna_sound.py scripts/dna_language.py scripts/check_dna_audio.py scripts/analyze_words.py scripts/arrange_voice_research.py scripts/singer_studio.py scripts/local_call_edit.py scripts/source_led_response.py scripts/assemble_sung_response.py ./scripts/
+COPY assets/manifests/dna-style-reviews.json assets/manifests/song-durations.json assets/manifests/singing-model.json assets/manifests/lyric-planner-cuda.json assets/manifests/dna-auditor.json assets/manifests/dna-directions.json assets/manifests/dna-languages.json assets/manifests/word-timing-tiny.json assets/manifests/spleeter-hosted.json ./assets/manifests/
 COPY services/runpod/handler.py services/runpod/pipeline.py services/runpod/prepare_models.py ./services/runpod/
 ENV PATH="/opt/jamloom/build-style-training/upstream/.venv/bin:$PATH"
 # GHCR limits individual layers to 10 GB; keep each model download separate.
@@ -42,4 +41,11 @@ RUN uv venv .venv-vocal-identity --python 3.12 \
     && uv cache clean
 RUN python -c "from services.runpod.prepare_models import identities; identities()"
 ENV HF_HUB_OFFLINE=1 LOG_LEVEL=ERROR
+COPY services/runpod/spleeter-requirements.txt services/runpod/prepare_spleeter_model.py services/runpod/separate_spleeter.py ./services/runpod/
+RUN uv venv .venv-spleeter --python /usr/bin/python3.11 \
+    && uv pip install --python .venv-spleeter/bin/python -r services/runpod/spleeter-requirements.txt \
+    && python services/runpod/prepare_spleeter_model.py \
+    && .venv-spleeter/bin/python -c "import tensorflow as tf, spleeter; assert tf.__version__ == '2.12.1'" \
+    && uv cache clean
+ENV JAMLOOM_SEPARATOR_PYTHON=/opt/jamloom/.venv-spleeter/bin/python
 CMD ["/usr/local/bin/python", "services/runpod/handler.py"]

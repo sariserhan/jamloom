@@ -1,0 +1,15 @@
+{
+  "revision": "deezer/spleeter 4stems v1.4.0",
+  "archive_url": "https://github.com/deezer/spleeter/releases/download/v1.4.0/4stems.tar.gz",
+  "archive_bytes": 146308147,
+  "archive_sha256": "3adb4a50ad4eb18c7c4d65fcf4cf2367a07d48408a5eb7d03cd20067429dfaa8",
+  "model_dir": "build-spleeter/models/4stems",
+  "files": {
+    "checkpoint": {"bytes": 67, "sha256": "011c96b970c1f56137037924fe1a0f0851369b0ee6692e120aea798615326f48"},
+    "model.data-00000-of-00001": {"bytes": 157228152, "sha256": "3823e0ef50835cca3907c386dc9667a6a9af77b40a20c3ab845a8d6c9592255d"},
+    "model.index": {"bytes": 10368, "sha256": "99ea41b3ef9bfbc6a34520409427af5ba7a883173e57ea25d6c487584b891b18"},
+    "model.meta": {"bytes": 1588447, "sha256": "f2c2843e3c8c84c737d0ba642fef798d24056f8dbb0b2e2d58a19de55b20034e"}
+  },
+  "license": "MIT according to the Spleeter paper for source and pretrained models. This does not grant rights in uploaded audio or independently audit training-data ownership.",
+  "license_source": "https://github.com/deezer/spleeter/blob/c8854001ac8acad34a9bc2bd15f28475541828b1/paper.md"
+}

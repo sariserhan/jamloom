@@ -197,7 +197,9 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None):
                             '--output', str(singer)], stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
         stage = 'Finding room for your sound'
         with (work / 'separate-private.log').open('w') as log:
-            subprocess.run([sys.executable, str(ROOT/'scripts/separate_singer.py'), '--input', str(singer/'singer.wav'),
+            separator_python=os.environ.get('JAMLOOM_SEPARATOR_PYTHON')
+            separator_script=ROOT/'services/runpod/separate_spleeter.py' if separator_python else ROOT/'scripts/separate_singer.py'
+            subprocess.run([separator_python or sys.executable, str(separator_script), '--input', str(singer/'singer.wav'),
                             '--output', str(singer/'stems')], stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
         report=None
         for attempt,candidate in enumerate(candidates):
