@@ -12,11 +12,17 @@ acceptances. Historical reports do not reopen those decisions.
   Music DNA 100–140 seconds). Truncated PCM is rejected before model loading.
   The maximum-length overlap-add check preserves all 140 seconds. The image
   workflow now runs the missing-research-module regression before building.
-- **PASS — isolated candidate:** source commit `1e80c647ae5800c010539cee86a5a4ef125f0c68`
-  is based on the published source `85b2ce7b`; 22 checks pass in its isolated
-  checkout. No image build/publication or paid retry has run. The existing
-  publication branch still points to the expected base, and its Vercel website
-  deployment is disabled in the checked-in configuration.
+- **PASS — approved publication and diagnostic:** exact source `1e80c647` was
+  published by [build 41116754823](https://github.com/sariserhan/jamloom/actions/runs/41116754823).
+  Registry digest and Linux architecture passed verification; the disabled
+  endpoint's template was switched without changing its environment or disk.
+  The one approved 30-second synthetic reggae request completed in 83.157 seconds
+  after 890 seconds of cold initialization. Source-use, output hash/audio and test
+  credit checks pass. Cleanup finished within 16m46s total; independent checks
+  confirm limits 0/0, no workers/jobs or temporary database. Three objects were
+  removed and local PostgreSQL stopped. One test credit settled; zero reserved.
+  The permit is consumed, with no request/build retry. Final provider charges have
+  not posted. [Full evidence and limits](evidence/hosted-identity-diagnostic-20261030/report.md).
 - **PASS — bass input coverage:** full inputs up to five seconds are preserved;
   fragments cannot overlap the three clean source calls. Four focused tests and
   a new technical batch pass: 20 speech recordings, laughter, claps, noise, and
@@ -26,10 +32,10 @@ acceptances. Historical reports do not reopen those decisions.
 - **PASS — acceptance preserved:** the newly rendered question pilot has the
   exact same WAV SHA-256 as the owner-accepted original. No new acceptance is
   inferred for the other 23 recordings.
-- **PASS — provider state:** fresh read-only checks show worker limits 0/0,
-  zero workers and zero queued/running jobs. Observed endpoint billing is now
-  $0.0281956936 for the last diagnostic's hour; this is not a finalized invoice
-  or per-job attribution. The previous permit remains consumed.
+- **PASS — provider state:** independent post-trial checks confirm zero active
+  resources. The new image remains installed on the disabled endpoint. Provider
+  billing still shows only the earlier diagnostic's $0.0281956936 entry; this is
+  not the new run's final charge or a finalized invoice.
 
 [Duration checks](evidence/closure-next-20261030/hosted-duration-tests.log),
 [isolated worker checks](evidence/closure-next-20261030/prepared-worker-tests.log),
@@ -38,7 +44,7 @@ acceptances. Historical reports do not reopen those decisions.
 [bass checks](evidence/closure-next-20261030/bass-source-tests.log),
 [source coverage](evidence/closure-next-20261030/bass-source-coverage.json),
 [unchanged accepted audio](evidence/closure-next-20261030/accepted-pilot-regression.json),
-[provider observation](evidence/closure-next-20261030/provider-readonly.json).
+[current provider observation](evidence/hosted-identity-diagnostic-20261030/postcheck.json).
 
 ## Prepared owner comparison
 
@@ -69,8 +75,8 @@ of this new review are **NOT RUN**.
 
 | Requirement | Current status | Evidence needed to close it |
 |---|---|---|
-| Corrected hosted worker | FAIL previous diagnostic; PASS local correction | Authorize publication of the prepared exact source and one bounded $3 diagnostic; obtain a passing Linux separator/identity/arrangement result and cleanup receipt. [Concrete approval plan](evidence/closure-next-20261030/hosted-approval-plan.json) |
-| Broader Improvise, Music DNA and AI DJ hosted behavior | NOT RUN for current corrected image | After that diagnostic succeeds: four Improvise genres, DNA genre/language and 5,000-reference/maximum-duration cases, sustained fresh AI DJ capacity/cost/restart evidence, under separately reviewed budgets |
+| Corrected hosted worker | PASS for the approved single diagnostic | [Published exact source, completed request and verified cleanup](evidence/hosted-identity-diagnostic-20261030/report.md). No repeat of this diagnostic is pending; slow cold startup and broader qualification remain below. |
+| Broader Improvise, Music DNA and AI DJ hosted behavior | NOT RUN for current corrected image | The single corrected-image diagnostic passed. Still required: four-genre Improvise coverage, DNA genre/language and 5,000-reference/maximum-duration cases, sustained fresh AI DJ capacity/cost/restart evidence, under separately reviewed budgets |
 | Bass direction across sources / formal M1 | PARTIAL; one exact pilot accepted | Complete the prepared [blinded comparison](http://127.0.0.1:8776) and full rubric ratings, three musically distinct strategies per input and recorded-silence coverage; technical batches do not supply listening verdicts |
 | Learned improvisation | NOT RUN | Verified reference speaker roles, musical decisions and transformations, leakage-safe source/session/phrase splits, M1 completion and held-out improvement over the rule baseline; no training is started just from the reference MP3s |
 | Produced-song scoring | PARTIAL | Verify actual sung words, notes and timing in the source-bound [target review](http://127.0.0.1:8769); retain `verified:false` / `scoringEnabled:false` until genuine verification. No new matching review exports were found in Downloads in this continuation |
@@ -83,16 +89,13 @@ The owner is the only required musical listener. Additional listeners are not a
 gate. The machine retains its disk/memory guards, Dia stays open, and source,
 recordings, models, accepted audio and unrelated changes remain preserved.
 
-## Next execution, already prepared
+## Latest approved execution completed
 
-The proposed publication is a fast-forward of `codex/runpod-setup` from the
-verified base to the reviewed candidate, triggering one existing worker-image
-workflow. Website/app publication and live sales are excluded. After a successful
-build, verify the immutable digest, disabled/empty endpoint, live price, source
-hash and trial harness before spending. Then run exactly one 30-second synthetic
-reggae diagnostic, maximum one GPU worker, $3, 20 minutes plus 130 seconds for
-shutdown, no retries, with the independent watchdog and disposable test storage,
-database and credits. Any failed build or request ends the attempt.
+The owner-approved publication and one $3 diagnostic are complete. The corrected
+image is installed with worker limits 0/0; the one request passed and cleanup was
+independently verified. The permit is consumed. No website/app publication or live
+sales occurred. Further paid qualification requires its own concrete scope and
+budget; the approved diagnostic is not an open-ended spending authorization.
 
-This publication/paid step awaits the pending explicit approval; generic local
-completion authorization does not replace the specific restriction in AGENTS.md.
+[Consumed plan](evidence/closure-next-20261030/hosted-approval-plan.json),
+[completed execution report](evidence/hosted-identity-diagnostic-20261030/report.md).

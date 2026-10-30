@@ -1,0 +1,248 @@
+[
+  {
+    "at": "2026-10-30T19:54:20.057Z",
+    "worker": {
+      "dataCenterId": "US-NC-1",
+      "gpuCount": 1,
+      "gpuTypeId": "NVIDIA GeForce RTX 4090",
+      "id": "bxe8sadkweqcqk",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "isStale": false,
+      "startedAt": "2026-10-30T19:54:06.195Z",
+      "status": "INITIALIZING",
+      "version": 17
+    },
+    "lastSystemLines": [
+      {
+        "source": "system",
+        "line": "6f585d45c2f8 Verifying Checksum",
+        "ts": "2026-10-30T19:54:28Z"
+      },
+      {
+        "source": "system",
+        "line": "6f585d45c2f8 Download complete",
+        "ts": "2026-10-30T19:54:28Z"
+      },
+      {
+        "source": "system",
+        "line": "ed62a8ef63a5 Verifying Checksum",
+        "ts": "2026-10-30T19:54:40Z"
+      },
+      {
+        "source": "system",
+        "line": "18335e1349a6 Verifying Checksum",
+        "ts": "2026-10-30T19:55:03Z"
+      },
+      {
+        "source": "system",
+        "line": "18335e1349a6 Download complete",
+        "ts": "2026-10-30T19:55:03Z"
+      }
+    ]
+  },
+  {
+    "endpointVersion": 17,
+    "summary": {
+      "idle": 0,
+      "initializing": 1,
+      "running": 0,
+      "throttled": 0,
+      "total": 1,
+      "unhealthy": 0
+    },
+    "workers": [
+      {
+        "dataCenterId": "EUR-NO-1",
+        "gpuCount": 1,
+        "gpuTypeId": "NVIDIA GeForce RTX 4090",
+        "id": "2b23bbtgjbkh0f",
+        "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+        "isStale": false,
+        "startedAt": "2026-10-30T19:55:21.601Z",
+        "status": "INITIALIZING",
+        "version": 17
+      }
+    ]
+  },
+  {
+    "at": "2026-10-30T19:55:38.504Z",
+    "worker": {
+      "dataCenterId": "EUR-NO-1",
+      "gpuCount": 1,
+      "gpuTypeId": "NVIDIA GeForce RTX 4090",
+      "id": "2b23bbtgjbkh0f",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "isStale": false,
+      "startedAt": "2026-10-30T19:55:21.601Z",
+      "status": "INITIALIZING",
+      "version": 17
+    },
+    "lastSystemLines": [
+      {
+        "source": "system",
+        "line": "e4a054d08596 Downloading",
+        "ts": "2026-10-30T19:55:37Z"
+      },
+      {
+        "source": "system",
+        "line": "89f79004feb5 Pull complete",
+        "ts": "2026-10-30T19:55:46Z"
+      },
+      {
+        "source": "system",
+        "line": "00c9fb54f12c Verifying Checksum",
+        "ts": "2026-10-30T19:55:50Z"
+      },
+      {
+        "source": "system",
+        "line": "00c9fb54f12c Download complete",
+        "ts": "2026-10-30T19:55:50Z"
+      },
+      {
+        "source": "system",
+        "line": "3c8988a11584 Download complete",
+        "ts": "2026-10-30T19:56:04Z"
+      }
+    ]
+  },
+  {
+    "at": "2026-10-30T19:58:20.885Z",
+    "worker": {
+      "dataCenterId": "US-NC-1",
+      "gpuCount": 1,
+      "gpuTypeId": "NVIDIA GeForce RTX 4090",
+      "id": "j1xlal18q7xxy7",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "isStale": false,
+      "startedAt": "2026-10-30T19:58:02.402Z",
+      "status": "INITIALIZING",
+      "version": 17
+    },
+    "lastSystemLines": [
+      {
+        "source": "system",
+        "line": "ec9fb28cdb4a Retrying in 3 seconds",
+        "ts": "2026-10-30T19:58:46Z"
+      },
+      {
+        "source": "system",
+        "line": "ec9fb28cdb4a Retrying in 2 seconds",
+        "ts": "2026-10-30T19:58:47Z"
+      },
+      {
+        "source": "system",
+        "line": "ec9fb28cdb4a Retrying in 1 second",
+        "ts": "2026-10-30T19:58:48Z"
+      },
+      {
+        "source": "system",
+        "line": "ec9fb28cdb4a Verifying Checksum",
+        "ts": "2026-10-30T19:58:57Z"
+      },
+      {
+        "source": "system",
+        "line": "ec9fb28cdb4a Download complete",
+        "ts": "2026-10-30T19:58:57Z"
+      }
+    ]
+  },
+  {
+    "at": "2026-10-30T20:00:08.143Z",
+    "worker": {
+      "dataCenterId": "US-NC-1",
+      "gpuCount": 1,
+      "gpuTypeId": "NVIDIA GeForce RTX 4090",
+      "id": "h02h8wd6akmqmk",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "isStale": false,
+      "startedAt": "2026-10-30T19:59:02.733Z",
+      "status": "INITIALIZING",
+      "version": 17
+    },
+    "logsHttp": 200,
+    "lastSystemLines": []
+  },
+  {
+    "at": "2026-10-30T20:03:52.422Z",
+    "worker": {
+      "dataCenterId": "US-WA-1",
+      "gpuCount": 1,
+      "gpuTypeId": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb",
+      "id": "yqbdfwalrak6j0",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "isStale": false,
+      "startedAt": "2026-10-30T20:03:44.016Z",
+      "status": "INITIALIZING",
+      "version": 17
+    },
+    "logsHttp": 200,
+    "lastSystemLines": [
+      {
+        "source": "system",
+        "line": "00c9fb54f12c Download complete",
+        "ts": "2026-10-30T20:04:11Z"
+      },
+      {
+        "source": "system",
+        "line": "3c8988a11584 Verifying Checksum",
+        "ts": "2026-10-30T20:04:26Z"
+      },
+      {
+        "source": "system",
+        "line": "3c8988a11584 Download complete",
+        "ts": "2026-10-30T20:04:26Z"
+      },
+      {
+        "source": "system",
+        "line": "6f585d45c2f8 Verifying Checksum",
+        "ts": "2026-10-30T20:04:32Z"
+      },
+      {
+        "source": "system",
+        "line": "6f585d45c2f8 Download complete",
+        "ts": "2026-10-30T20:04:32Z"
+      }
+    ]
+  },
+  {
+    "at": "2026-10-30T20:07:28.153Z",
+    "worker": {
+      "dataCenterId": "US-WA-1",
+      "gpuCount": 1,
+      "gpuTypeId": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb",
+      "id": "yqbdfwalrak6j0",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "isStale": false,
+      "startedAt": "2026-10-30T20:03:44.016Z",
+      "status": "INITIALIZING",
+      "version": 17
+    },
+    "lastSystemLines": [
+      {
+        "source": "system",
+        "line": "3efce0e2d8b8 Extracting",
+        "ts": "2026-10-30T20:07:54Z"
+      },
+      {
+        "source": "system",
+        "line": "3efce0e2d8b8 Pull complete",
+        "ts": "2026-10-30T20:07:54Z"
+      },
+      {
+        "source": "system",
+        "line": "5e76bed3a7eb Extracting",
+        "ts": "2026-10-30T20:07:54Z"
+      },
+      {
+        "source": "system",
+        "line": "5e76bed3a7eb Pull complete",
+        "ts": "2026-10-30T20:07:54Z"
+      },
+      {
+        "source": "system",
+        "line": "e4a054d08596 Extracting",
+        "ts": "2026-10-30T20:07:54Z"
+      }
+    ]
+  }
+]

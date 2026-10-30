@@ -1,0 +1,166 @@
+{
+  "at": "2026-10-30T20:10:56.040Z",
+  "delayTime": 13751,
+  "executionTime": 83157,
+  "id": "91c2bc55-aaf7-47e6-8a54-eeba338586c1-u2",
+  "output": {
+    "arrangement": {
+      "arrangement_fingerprint": "existing-gap:5:original",
+      "artifacts": {
+        "music": "c03497bcadbb3f8b3673c941cdd6474a02626f870c706b27496b2a4f242a6bd3",
+        "original": "c03497bcadbb3f8b3673c941cdd6474a02626f870c706b27496b2a4f242a6bd3",
+        "performance": "01d0418f00d1e359bbff6687aaa553cdc9a3afd184b2d199a2fec11278f7365b",
+        "user": "1d087ae78b4b0982e076739731c80e57891955f2c1b21d796948af3e3d59f76f"
+      },
+      "event": {
+        "band_rms": 0.09838859728219917,
+        "end_frame": 1140343,
+        "estimated_vocal_max_rms": 4.4709548774335417e-7,
+        "gain": 0.6507798851605558,
+        "processed_active_rms": 0.04919429864109959,
+        "processing": {
+          "eq_crossovers_hz": [
+            160,
+            400,
+            1000,
+            2500,
+            6000
+          ],
+          "eq_db": [
+            -6,
+            -6,
+            -3.203060919034667,
+            6,
+            6,
+            6
+          ],
+          "formant_shift_semitones": 0,
+          "highpass_hz": 80,
+          "max_compression_db": 3.4405428856233584,
+          "pitch_shift_semitones": 0,
+          "reference_rms": 0.0013232181081548333,
+          "room_wet": 0.06,
+          "speaker_identity_listening": "NOT RUN",
+          "time_scale": 1,
+          "version": 2
+        },
+        "rate": 1,
+        "start_frame": 1116343,
+        "target_lead_rms": 0.04919429864109959,
+        "transpose_semitones": 0,
+        "vocal_threshold_rms": 0.0003
+      },
+      "events": [
+        {
+          "band_rms": 0.09838859728219917,
+          "end_frame": 1140343,
+          "estimated_vocal_max_rms": 4.4709548774335417e-7,
+          "gain": 0.6507798851605558,
+          "processed_active_rms": 0.04919429864109959,
+          "processing": {
+            "eq_crossovers_hz": [
+              160,
+              400,
+              1000,
+              2500,
+              6000
+            ],
+            "eq_db": [
+              -6,
+              -6,
+              -3.203060919034667,
+              6,
+              6,
+              6
+            ],
+            "formant_shift_semitones": 0,
+            "highpass_hz": 80,
+            "max_compression_db": 3.4405428856233584,
+            "pitch_shift_semitones": 0,
+            "reference_rms": 0.0013232181081548333,
+            "room_wet": 0.06,
+            "speaker_identity_listening": "NOT RUN",
+            "time_scale": 1,
+            "version": 2
+          },
+          "rate": 1,
+          "start_frame": 1116343,
+          "target_lead_rms": 0.04919429864109959,
+          "transpose_semitones": 0,
+          "vocal_threshold_rms": 0.0003
+        }
+      ],
+      "grid": {
+        "bpm": 84,
+        "confidence": 0.9371260268698911,
+        "method": "drum-stem onset grid; tempo searched within 10 percent; bar phase unverified",
+        "offset_frames": 19200
+      },
+      "history_saved": true,
+      "listening": "NOT RUN",
+      "master_gain": 1,
+      "meaning_origin": "a wordless sound; add an idea if you want a specific meaning",
+      "mode": "existing-gap",
+      "note": "Automatic quiet-boundary selection; estimated vocal subtraction and musical fit still need listening.",
+      "options_considered": 143,
+      "original_recording_sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+      "outside_region_max_pcm_error": 0,
+      "pattern": "single-call",
+      "peak": 0.891265869140625,
+      "processed_source_max_pcm_error": 0.00001525841816147483,
+      "region_frames": [
+        1116343,
+        1140343
+      ],
+      "regions_frames": [
+        [
+          1116343,
+          1140343
+        ]
+      ],
+      "rejected_candidates": 0,
+      "repair_gain": 1,
+      "repair_sha256": null,
+      "rhythm_fallback": null,
+      "sample_used": true,
+      "selection_seed": 1399456546,
+      "singer_moved": false,
+      "song_sha256": "c03497bcadbb3f8b3673c941cdd6474a02626f870c706b27496b2a4f242a6bd3",
+      "source_excerpt": {
+        "original_seconds": [
+          1.29,
+          1.79
+        ],
+        "rhythm_word_frames": null,
+        "sample_rate": 48000,
+        "selection": "excerpt",
+        "source": {
+          "consent_confirmed": true,
+          "kind": "recorded",
+          "processed_frames": 24000,
+          "sha256": "ff14e7034909a88a635c56b058adc7cfe3967c3e2a6b3da4559c2308f601ad8d"
+        },
+        "voice_clips": [
+          {
+            "end_frame": 24000,
+            "id": 0,
+            "start_frame": 0
+          }
+        ]
+      },
+      "source_sha256": "ff14e7034909a88a635c56b058adc7cfe3967c3e2a6b3da4559c2308f601ad8d",
+      "speaker_identity_listening": "NOT RUN",
+      "technical": "PASS",
+      "unchanged_seconds": 29.5,
+      "vocal_subtraction": false
+    },
+    "audio_bytes": 5760044,
+    "audio_sha256": "01d0418f00d1e359bbff6687aaa553cdc9a3afd184b2d199a2fec11278f7365b",
+    "id": "cbc6760afb3142fdb08fc4c509c59a6d",
+    "product": "improvise",
+    "schema": "jamloom-runpod-1",
+    "seconds": 30
+  },
+  "status": "COMPLETED",
+  "workerId": "yqbdfwalrak6j0"
+}

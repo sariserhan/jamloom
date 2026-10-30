@@ -1,5 +1,5 @@
 {
-  "status": "AWAITING_EXPLICIT_AUTHORIZATION",
+  "status": "CONSUMED",
   "source_commit": "1e80c647ae5800c010539cee86a5a4ef125f0c68",
   "source_base": "85b2ce7ba542af67963376f6ae89c04e8201401e",
   "source_checkout": "/tmp/jamloom-worker-ready-20261030",
@@ -49,5 +49,24 @@
     "Live sales",
     "Additional retries",
     "Broader genre/DNA/AI DJ qualification beyond this one diagnostic"
-  ]
+  ],
+  "owner_statement": "Approve image publication and one $3 diagnostic",
+  "authorized_utc": "2026-10-30T19:37:20.392542+00:00",
+  "execution": {
+    "image_build_attempts": 1,
+    "provider_requests_started": 1,
+    "retries": 0,
+    "status": "COMPLETE",
+    "workflow_run": 41116754823,
+    "url": "https://github.com/sariserhan/jamloom/actions/runs/41116754823",
+    "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+    "diagnostic_attempts": 1,
+    "receipt": "docs/evidence/improvise-finish/cloud/2026-10-30T19-54-03.275Z/trial-result.json",
+    "startedAt": "2026-10-30T19:54:03.277Z",
+    "finishedAt": "2026-10-30T20:10:49.656Z",
+    "qualification": "PASS",
+    "cleanup": "PASS",
+    "independentPostcheck": "docs/evidence/hosted-identity-diagnostic-20261030/postcheck.json",
+    "localPostgres": "STOPPED"
+  }
 }

@@ -1,0 +1,134 @@
+{
+  "checkedAt": "2026-10-30T20:10:20.800Z",
+  "worker": {
+    "dataCenterId": "US-WA-1",
+    "gpuCount": 1,
+    "gpuTypeId": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb",
+    "id": "yqbdfwalrak6j0",
+    "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+    "isStale": false,
+    "startedAt": "2026-10-30T20:08:55.389Z",
+    "status": "RUNNING",
+    "uptimeSeconds": 45,
+    "version": 17
+  },
+  "lines": [
+    {
+      "source": "system",
+      "line": "3c8988a11584 Extracting",
+      "ts": "2026-10-30T20:08:36Z"
+    },
+    {
+      "source": "system",
+      "line": "3c8988a11584 Pull complete",
+      "ts": "2026-10-30T20:08:47Z"
+    },
+    {
+      "source": "system",
+      "line": "Digest: sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "ts": "2026-10-30T20:08:47Z"
+    },
+    {
+      "source": "system",
+      "line": "Status: Downloaded newer image for ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "ts": "2026-10-30T20:08:47Z"
+    },
+    {
+      "source": "system",
+      "line": "worker is ready",
+      "ts": "2026-10-30T20:08:47Z"
+    },
+    {
+      "source": "system",
+      "line": "create container ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "ts": "2026-10-30T20:09:04Z"
+    },
+    {
+      "source": "system",
+      "line": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751 Pulling from sariserhan/jamloom/music-worker",
+      "ts": "2026-10-30T20:09:04Z"
+    },
+    {
+      "source": "system",
+      "line": "Status: Image is up to date for ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "ts": "2026-10-30T20:09:04Z"
+    },
+    {
+      "source": "system",
+      "line": "start container for ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751: begin",
+      "ts": "2026-10-30T20:09:06Z"
+    },
+    {
+      "source": "container",
+      "line": "--- Starting Serverless Worker |  Version 1.12.0 ---",
+      "ts": "2026-10-30T20:09:07.663367974Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Running 7 fitness check(s)...\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:09:07.947634041Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"GPU binary test passed: 1 GPU(s) healthy (CUDA 13.2)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:09:08.269721359Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Memory check passed: 1173.40GB available (of 1511.43GB total)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:09:08.294549218Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Disk space check passed: 59.98GB free (100.0% available)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:09:08.294573615Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Network connectivity passed: Connected to 8.8.8.8 (1ms)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:09:08.295722642Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"CUDA version check passed: 13.2 (minimum: 11.8)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:09:08.439009991Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"All fitness checks passed. (756.75ms)\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:09:08.704448178Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Jobs in queue: 1\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:09:08.939919481Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": null, \"message\": \"Jobs in progress: 1\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:09:09.017158741Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": \"91c2bc55-aaf7-47e6-8a54-eeba338586c1-u2\", \"message\": \"Started.\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:09:09.017317740Z"
+    },
+    {
+      "source": "container",
+      "line": "{\"requestId\": \"91c2bc55-aaf7-47e6-8a54-eeba338586c1-u2\", \"message\": \"Finished.\", \"level\": \"INFO\"}",
+      "ts": "2026-10-30T20:10:32.093564441Z"
+    },
+    {
+      "source": "system",
+      "line": "stop container 51b8729d68d2b736e62e8e823f40464e24ea1a0f202bdf5721170d5a304101cc",
+      "ts": "2026-10-30T20:10:40Z"
+    },
+    {
+      "source": "system",
+      "line": "remove container",
+      "ts": "2026-10-30T20:10:56Z"
+    }
+  ],
+  "http": 200,
+  "stream": "bounded stream ended"
+}

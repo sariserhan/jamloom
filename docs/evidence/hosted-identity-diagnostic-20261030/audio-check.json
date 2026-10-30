@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-30T20:11:21.753744+00:00",
+  "status": "PASS",
+  "file": "build-improvise-completion/cloud/2026-10-30T19-54-03.275Z/reggae.wav",
+  "sha256": "01d0418f00d1e359bbff6687aaa553cdc9a3afd184b2d199a2fec11278f7365b",
+  "bytes": 5760044,
+  "channels": 2,
+  "sampleRate": 48000,
+  "frames": 1440000,
+  "seconds": 30.0,
+  "peak": 0.891265869140625,
+  "rms": 0.11827116038274206,
+  "truncated": false,
+  "clippedSamples": 0,
+  "listening": "NOT RUN; original procedural test input, not owner-reviewed musical output"
+}

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "sha256": {
+    "apps/site/scripts/cloud-song-trial.ts": "7f66576dd0547243b9de7d9d9ec80e48d99dc4b02b1e1dc74f7922a5b0e83e4d",
+    "apps/site/scripts/cloud-trial-progress.ts": "bc3f428d484f3b7f6fd7689fc7e04ea2281c4211d2fbb53bbb98339bb0d9d6c1",
+    "apps/site/lib/runpod-provider.ts": "247b26da1d90f2718e1724e420485d04bb679733e9c604014f3837326a31fd6c",
+    "renders/question-instrument-response-20261030/hosted-synthetic.wav": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36"
+  },
+  "checkedAt": "2026-10-30T19:54:00.655190+00:00"
+}

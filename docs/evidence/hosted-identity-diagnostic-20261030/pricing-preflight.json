@@ -1,0 +1,15 @@
+{
+  "checked_date": "2026-10-30",
+  "source": "https://www.runpod.io/pricing",
+  "billing_source": "https://docs.runpod.io/serverless/pricing",
+  "serverless_usd_per_hour": {
+    "RTX4090": 1.34,
+    "L40S_or_48GB_MIG": 1.75
+  },
+  "conservative_usd_per_second": 0.001,
+  "bounded_seconds": 1330,
+  "fixed_storage_margin_usd": 0.02,
+  "conservative_total_usd": 1.35,
+  "authorized_total_usd": 3,
+  "limitation": "Application/watchdog deadline, not provider-enforced dollar cap; billing can lag"
+}

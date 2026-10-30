@@ -1,0 +1,15 @@
+image	Verify worker boundary contracts	2026-10-30T19:37:47.1520777Z ##[group]Run python3 -m unittest discover -s tests -p 'test_runpod_worker.py'
+image	Verify worker boundary contracts	2026-10-30T19:37:47.1521197Z ^[[36;1mpython3 -m unittest discover -s tests -p 'test_runpod_worker.py'^[[0m
+image	Verify worker boundary contracts	2026-10-30T19:37:47.1521502Z ^[[36;1mpython3 -m unittest discover -s tests -p 'test_hosted_identity_separator.py'^[[0m
+image	Verify worker boundary contracts	2026-10-30T19:37:47.1542413Z shell: /usr/bin/bash -e {0}
+image	Verify worker boundary contracts	2026-10-30T19:37:47.1542614Z ##[endgroup]
+image	Verify worker boundary contracts	2026-10-30T19:37:47.6239856Z .................
+image	Verify worker boundary contracts	2026-10-30T19:37:47.6240230Z ----------------------------------------------------------------------
+image	Verify worker boundary contracts	2026-10-30T19:37:47.6240470Z Ran 17 tests in 0.291s
+image	Verify worker boundary contracts	2026-10-30T19:37:47.6240552Z
+image	Verify worker boundary contracts	2026-10-30T19:37:47.6240608Z OK
+image	Verify worker boundary contracts	2026-10-30T19:37:47.6984191Z ..
+image	Verify worker boundary contracts	2026-10-30T19:37:47.6984543Z ----------------------------------------------------------------------
+image	Verify worker boundary contracts	2026-10-30T19:37:47.6984854Z Ran 2 tests in 0.003s
+image	Verify worker boundary contracts	2026-10-30T19:37:47.6984936Z
+image	Verify worker boundary contracts	2026-10-30T19:37:47.6984985Z OK

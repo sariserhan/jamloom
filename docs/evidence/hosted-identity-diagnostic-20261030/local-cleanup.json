@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-30T20:11:53.097373+00:00",
+  "status": "PASS",
+  "postgres": "pg_ctl stop -m fast succeeded; subsequent pg_ctl status confirms no server running",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "temporaryDatabaseCount": 0,
+  "removedObjects": 3,
+  "testCredits": {
+    "initial": 50,
+    "charged": 1,
+    "available": 49,
+    "reserved": 0
+  },
+  "noAutomaticRetry": true
+}
