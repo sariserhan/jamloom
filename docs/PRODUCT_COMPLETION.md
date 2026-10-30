@@ -1,8 +1,10 @@
 **Listening amendment — 2026-10-30:** The owner is the sole required listener. Additional/independent listener recruitment is no longer a completion gate. Actual owner judgments, coverage and the remaining technical/release requirements still apply. [Specification amendment](LISTENING_OWNER_AMENDMENT.md).
 
-**Latest follow-through — 2026-10-30:** [Current evidence](COMPLETION_CURRENT.md) records simulator MP3-muting isolation/fix, source-bound target editing, bootstrap hardening, repository ownership and read-only provider billing. Overall remains **PARTIAL**; actual scoring targets, independent studies and fresh hosted/release gates remain open.
+**Organic Afro House — 2026-10-30:** four five-minute mixes and 20 stems now pass technical qualification, independent local decoding and cleanup. [Run and review](CLOSURE_FOLLOWTHROUGH.md). Owner musical judgments and section labels remain open.
 
-**Current candidate:** [0.10.4 build 34 completion checkpoint](COMPLETION_CANDIDATE.md): signed, audited, installed, owner-confirmed karaoke playback/tab cleanup and locally archived. Website/account/billing tests and read-only schema checks pass. Full-spec completion remains **PARTIAL**: verified produced-song scoring, current hosted qualification and independent/learned-model evidence are still open. No publication or live activation.
+**Latest follow-through — 2026-10-30:** [Current evidence](COMPLETION_CURRENT.md) records simulator MP3-muting isolation/fix, source-bound target editing, bootstrap hardening, repository ownership and read-only provider billing. Overall remains **PARTIAL**; actual scoring targets, remaining owner comparisons, novice outcomes and fresh hosted/release gates remain open.
+
+**Current candidate:** [0.10.4 build 34 completion checkpoint](COMPLETION_CANDIDATE.md): signed, audited, installed, owner-confirmed karaoke playback/tab cleanup and locally archived. Website/account/billing tests and read-only schema checks pass. Full-spec completion remains **PARTIAL**: verified produced-song scoring, current hosted qualification and owner/learned-model evidence are still open. No publication or live activation.
 
 **Latest acceptance:** [Karaoke adoption and DJ review](KARAOKE_ADOPTION.md): both accepted Spleeter backings now serve locally and are prepared for native packaging; four-track/set review is positive overall. Exact-song scoring, independent/hosted qualification and a new physical build remain open.
 
@@ -61,7 +63,7 @@ New singing evidence: [centered analysis](SINGING_DIFFERENCE.md) improves new-re
 
 ## Reproducible evidence
 
-[Current spec-closure manifest](evidence/spec-closure-20261027/validation.json) adds build 27, three physical checks, three local StoreKit checks, native HTTP account/rating persistence, two packaging regressions and a read-only Apple product inventory. Independent listeners remain unavailable; the [requirement map](spec-coverage.md) retains open formal gates.
+[Current spec-closure manifest](evidence/spec-closure-20261027/validation.json) adds build 27, three physical checks, three local StoreKit checks, native HTTP account/rating persistence, two packaging regressions and a read-only Apple product inventory. The October 30 amendment removes additional-listener recruitment; the [requirement map](spec-coverage.md) retains actual owner judgments and the other formal gates.
 
 
 [Latest maintenance manifest](evidence/product-maintenance-20261027/validation.json) records current regression checks. The [earlier product-closure manifest](evidence/product-closure-20261026/validation.json) retains its base commit, log hashes and screenshot provenance. Earlier database and physical checks below were not all repeated during this maintenance pass.

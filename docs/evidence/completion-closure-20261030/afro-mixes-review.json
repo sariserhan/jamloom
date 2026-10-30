@@ -1,0 +1,201 @@
+{
+  "status": "PASS technical",
+  "human_listening": "NOT RUN",
+  "listener_id": "owner",
+  "report_sha256": "48f0b6f46d6f46df02f0fed26c1338b8304d3a544ed25fa380b8ddd24f88733f",
+  "source_status": "PARTIAL - all mixes generated; stem extraction still running",
+  "target_lufs": -19.04,
+  "tracks": [
+    {
+      "id": "previous-house",
+      "file": "clip-0.mp3",
+      "source_sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+      "sha256": "d390b7180621ed19fd8e4a3116b9205169a1eef90c2bfc00242d1848c7b0b7d8",
+      "gain_db": -1.5899999999999999,
+      "level": {
+        "input_i": "-19.04",
+        "input_tp": "-2.50",
+        "input_lra": "6.20",
+        "input_thresh": "-29.24"
+      },
+      "section_change_candidates": [],
+      "stems": []
+    },
+    {
+      "id": "matched-house-baseline",
+      "file": "clip-1.mp3",
+      "source_sha256": "bb7e174b572f0fb8d78a747b7b522a2ca31c40075c86a13830298571bd97f958",
+      "sha256": "ca802df19831f5662e07d5128eaf8ef34b3e0523ccaedc9bb6bd043c7f64ae36",
+      "gain_db": -4.799999999999999,
+      "level": {
+        "input_i": "-19.04",
+        "input_tp": "-5.60",
+        "input_lra": "2.90",
+        "input_thresh": "-29.05"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 31.48,
+          "score": 0.0883
+        },
+        {
+          "seconds": 47.21,
+          "score": 0.1477
+        },
+        {
+          "seconds": 141.64,
+          "score": 1.0661
+        },
+        {
+          "seconds": 157.38,
+          "score": 1.0647
+        },
+        {
+          "seconds": 236.07,
+          "score": 0.4917
+        },
+        {
+          "seconds": 251.8,
+          "score": 0.5037
+        },
+        {
+          "seconds": 267.54,
+          "score": 0.2464
+        },
+        {
+          "seconds": 283.28,
+          "score": 0.1249
+        }
+      ],
+      "stems": []
+    },
+    {
+      "id": "vocal-led-organic-afro-house",
+      "file": "clip-2.mp3",
+      "source_sha256": "49218bc483735786b98fc3edd13dddecd754014a648f9224057edc42b14e2f82",
+      "sha256": "118abb3e85591553a9b5e89bba29456a3139e3617bbc0c397346d830fe97ae18",
+      "gain_db": -5.989999999999998,
+      "level": {
+        "input_i": "-19.03",
+        "input_tp": "-6.28",
+        "input_lra": "3.70",
+        "input_thresh": "-29.15"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 94.43,
+          "score": 0.6612
+        },
+        {
+          "seconds": 110.16,
+          "score": 1.0046
+        },
+        {
+          "seconds": 173.11,
+          "score": 0.7994
+        },
+        {
+          "seconds": 188.85,
+          "score": 0.647
+        },
+        {
+          "seconds": 204.59,
+          "score": 1.9537
+        },
+        {
+          "seconds": 236.07,
+          "score": 1.3575
+        },
+        {
+          "seconds": 251.8,
+          "score": 1.4071
+        },
+        {
+          "seconds": 283.28,
+          "score": 1.2707
+        }
+      ],
+      "stems": []
+    },
+    {
+      "id": "bass-driven-organic-afro-house",
+      "file": "clip-3.mp3",
+      "source_sha256": "e86c748cd17990d7fa67a92755335a266068c0650add9e3abf1f9a3376574522",
+      "sha256": "959f9fb76666f0e97c00002e2f9632fd98a3b0a651c7868f4b10c8537d917d30",
+      "gain_db": -5.0,
+      "level": {
+        "input_i": "-19.04",
+        "input_tp": "-5.53",
+        "input_lra": "2.50",
+        "input_thresh": "-29.12"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 31.74,
+          "score": 0.2022
+        },
+        {
+          "seconds": 126.94,
+          "score": 1.2101
+        },
+        {
+          "seconds": 142.81,
+          "score": 0.3614
+        },
+        {
+          "seconds": 158.68,
+          "score": 0.6882
+        },
+        {
+          "seconds": 174.55,
+          "score": 0.1941
+        },
+        {
+          "seconds": 269.75,
+          "score": 0.1659
+        },
+        {
+          "seconds": 285.62,
+          "score": 0.243
+        }
+      ],
+      "stems": []
+    },
+    {
+      "id": "percussive-driving-organic-afro-house",
+      "file": "clip-4.mp3",
+      "source_sha256": "4dc2b6b5c1f2f66f1ff857b286b2dab5c1efd36f87f2d2d8ebb537064000afb5",
+      "sha256": "4a44b8899de38217f3efa66c01e5253a4e7a38f19b25787c600061e3c425d9f0",
+      "gain_db": -2.8200000000000003,
+      "level": {
+        "input_i": "-19.04",
+        "input_tp": "-3.42",
+        "input_lra": "2.40",
+        "input_thresh": "-29.19"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 92.9,
+          "score": 0.1957
+        },
+        {
+          "seconds": 154.84,
+          "score": 2.8234
+        },
+        {
+          "seconds": 170.32,
+          "score": 2.7638
+        },
+        {
+          "seconds": 278.71,
+          "score": 0.3337
+        },
+        {
+          "seconds": 294.19,
+          "score": 4.8296
+        }
+      ],
+      "stems": []
+    }
+  ]
+}

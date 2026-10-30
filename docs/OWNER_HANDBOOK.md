@@ -4,7 +4,7 @@
 
 - Actual scoring requires reviewed sung words, note identities and intervals from both accepted recordings. The editor can save/reload corrections bound to the recording hash. Exports remain unverified drafts; automatic candidates and synthetic editor tests cannot grant scores.
 - You are the only required listener, per your October 30 specification amendment. Existing approvals count for the exact audio you reviewed; remaining blinded comparisons still need your judgments. No additional listeners are required. Novice learning outcomes remain a separate requirement.
-- Hosted Improvise/Music DNA capacity and the Organic Afro House study need a fresh bounded compute authorization and the reviewed current worker. Earlier one-attempt permits are consumed. Bootstrap tests do not prove a successful model run.
+- Your approved Organic Afro House run is complete: three five-minute candidates, a matched house control and 20 stems, with cleanup confirmed. Listen at http://127.0.0.1:8771; the earlier mixes-only page at http://127.0.0.1:8770 has the same source audio. Download your notes before closing or reloading. [Results and restart commands](CLOSURE_FOLLOWTHROUGH.md). Hosted Improvise/Music DNA capacity remains separate and needs its own reviewed worker and compute approval; all completed permits are consumed.
 - The physical iPhone is disconnected. Earlier build-34 owner playback acceptance is retained; no new physical qualification is claimed. Physical iPad/unavailable hardware remain deferred.
 - Website/App Store publication and live sales remain held. Genuine sandbox purchases/restore already pass historically; deployed native delivery, real refund notifications and reviewer metadata remain separate.
 

@@ -1,0 +1,307 @@
+{
+  "status": "PASS technical",
+  "scope": "Complete retrieved archive, including 24 final and 24 raw WAVs; four raw mix hashes and 24 final hashes match remote receipts",
+  "root": "renders/afro-house-qualification-20261028-followup-004",
+  "files": [
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/mix.wav",
+      "bytes": 86400044,
+      "sha256": "e86c748cd17990d7fa67a92755335a266068c0650add9e3abf1f9a3376574522"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/raw/840a87ff-7184-301b-32ac-b48edab625de.wav",
+      "bytes": 115200088,
+      "sha256": "2c1fee50f0b52ee966ffe997fa1a4349fdb3e17e7675dcb4e06c2e692fb3b760"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/receipt.json",
+      "bytes": 4168,
+      "sha256": "4c9d10ffbf9e955d014d125f0d05dc2e5b3b6e4e5e126a10422e8783ab61c3de"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/stems/bass/raw/9848faa3-acdc-d001-4fe5-d0c2eb42be83.wav",
+      "bytes": 115200088,
+      "sha256": "f7e10767e95b5871be1c3f11b70dd528106a147b6762465c5100e54a74546f32"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/stems/bass/stem.wav",
+      "bytes": 86400044,
+      "sha256": "7ba10fd253327e3681c7846488369309976988fec43ce0a6043461de220d2ec8"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/stems/drums/raw/9f476f7e-4e28-f7da-cce6-fb146a1a59e8.wav",
+      "bytes": 115200088,
+      "sha256": "9995478eaf7f288ec653f6690fb0090cdc3eb935bc5afb3cd0e804287b0da351"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/stems/drums/stem.wav",
+      "bytes": 86400044,
+      "sha256": "4e6e9b56073da6d8f7af588404e3cb9c89d3aec20dcfeeb8b722478d0837a92b"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/stems/keyboard/raw/cfd77c68-ad02-1136-eff7-b651f0b2693e.wav",
+      "bytes": 115200088,
+      "sha256": "6098f42635b24ca281c8e7669c1830376f40903bed294b497f0d550ab77ab191"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/stems/keyboard/stem.wav",
+      "bytes": 86400044,
+      "sha256": "3274c100c96b964d060df17d258b2648d86182a247f6f6eb01c64211b7109e2a"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/stems/percussion/raw/06d6bbeb-55e6-478b-08f0-7fe1a573f57c.wav",
+      "bytes": 115200088,
+      "sha256": "230d18b9b0de5fbf641af0d977309d2bfcb336483b90f9eb2323c996ff1679fa"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/stems/percussion/stem.wav",
+      "bytes": 86400044,
+      "sha256": "c3c98e970c37e224d7199efbfdf1aef2b1f589e48219690ca542b080a36856cb"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/stems/synth/raw/2b6e1372-cd8d-94f2-fba1-55facce0bb56.wav",
+      "bytes": 115200088,
+      "sha256": "a17e98a7f753930014bcf63028a7a39c65800f6ece34e6377eff980f4e14ed12"
+    },
+    {
+      "file": "afro-house-qualification/bass-driven-organic-afro-house/stems/synth/stem.wav",
+      "bytes": 86400044,
+      "sha256": "8b6e1cc430ba8f37603d3f533fad2868114758eea8d94ef0df9e2632cb5b9e0f"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/mix.wav",
+      "bytes": 86400044,
+      "sha256": "bb7e174b572f0fb8d78a747b7b522a2ca31c40075c86a13830298571bd97f958"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/raw/5639b85a-2fba-f9d6-ef33-abe8c23c104b.wav",
+      "bytes": 115200088,
+      "sha256": "bb68ff0e418a8c42d72938f3a1cee70fca21db8ff6f29598470328679195171e"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/receipt.json",
+      "bytes": 4081,
+      "sha256": "4611b1899270a3dcb782a407bca252bd5ed0a898a945d36fcfdda53792c0e1b4"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/stems/bass/raw/8d0afe44-b821-e259-5cd9-9668b31e3df5.wav",
+      "bytes": 115200088,
+      "sha256": "c1fed9039100133fb17422b0126f32020f9836b03d7a65faac18ae33ac03591f"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/stems/bass/stem.wav",
+      "bytes": 86400044,
+      "sha256": "cc3c72a9562e5c7e4109570ef319d2464c7b100b257c8b70525a7e256d8d1409"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/stems/drums/raw/2713d41d-82f5-79e2-0711-7d1beee5cde6.wav",
+      "bytes": 115200088,
+      "sha256": "301e3ff6a0083574d71291169102dcbae22b1082a278d39de744678ca926f94a"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/stems/drums/stem.wav",
+      "bytes": 86400044,
+      "sha256": "b060afdc635a85d941255cb13eeea728656fa155e76cd3b9dd0c83b36fa92006"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/stems/keyboard/raw/edfed555-5863-c043-edce-69ed478f4226.wav",
+      "bytes": 115200088,
+      "sha256": "90e504fb81daa35e72448c7f0dd343dbc6a0f4c980f35f3d43d716bef4797b37"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/stems/keyboard/stem.wav",
+      "bytes": 86400044,
+      "sha256": "bdbecef7ec6c40b75f018db12438c8856740dd3d64c99816925394cee8bcea7c"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/stems/percussion/raw/7252ec8b-30e3-f216-ea1b-db139fd21629.wav",
+      "bytes": 115200088,
+      "sha256": "193d9148e640457676ea5d9da1e05a1937488219509be6a3f1ba27523d8313d1"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/stems/percussion/stem.wav",
+      "bytes": 86400044,
+      "sha256": "473203d007fc380b9920389a554f603650e6e90af59059fb718f11c02bca4419"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/stems/synth/raw/92b98c65-913f-36d8-56cd-3da6f4f24575.wav",
+      "bytes": 115200088,
+      "sha256": "4f8023d8f419a10231f148647f9f2c13697e2dc5d5a56f1390a45e59981ebdb7"
+    },
+    {
+      "file": "afro-house-qualification/matched-house-baseline/stems/synth/stem.wav",
+      "bytes": 86400044,
+      "sha256": "39a22e8468d6675b5da94351a65cfd9c507a526067e839f2d11f5aa216851482"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/mix.wav",
+      "bytes": 86400044,
+      "sha256": "4dc2b6b5c1f2f66f1ff857b286b2dab5c1efd36f87f2d2d8ebb537064000afb5"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/raw/ba0cc23a-154e-7a9e-fcb0-c36e198193f8.wav",
+      "bytes": 115200088,
+      "sha256": "3e6b1d421038ffc580a4ae99ad1e6493bacac93053cca78e748f712c93f08a07"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/receipt.json",
+      "bytes": 4067,
+      "sha256": "5000fe7cbf47ec30547a64c2c9c3858cf9f47a924254486a5a5d22ec25b0e6ab"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/stems/bass/raw/dad11b32-46c0-fccb-7966-daa83d11daba.wav",
+      "bytes": 115200088,
+      "sha256": "e2cdc203ccbcb2d76e05ce71d02c618c6b8fc75a4a8ea860b294b8ff4ba5e8aa"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/stems/bass/stem.wav",
+      "bytes": 86400044,
+      "sha256": "fc9a5720ffd3ff14b2c559bcaab3c0e42c28a016b01eb4e31403797bc7acbe72"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/stems/drums/raw/8b0ecbfc-0c80-9fc8-6bae-626f71419a5e.wav",
+      "bytes": 115200088,
+      "sha256": "3cdd669f42e865eb0d8ec9e22ee90c6f5fb6298eface179a330ce6bb8d4eae9f"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/stems/drums/stem.wav",
+      "bytes": 86400044,
+      "sha256": "728652033715b16aed58a3badee672acc66fc123885b59036c08baa1a35cd087"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/stems/keyboard/raw/57ddd18c-54a3-d970-4fcf-0a2e23e40589.wav",
+      "bytes": 115200088,
+      "sha256": "d34f66720b919b3b79aa75b9604f03134759466dae95c0de73894799117b3140"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/stems/keyboard/stem.wav",
+      "bytes": 86400044,
+      "sha256": "7d8823b1d4b4c86dfec2052ecb21ac3b9b6c4c825f5b134e4f824de98bff082b"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/stems/percussion/raw/f7e0eaa2-ec6d-0ee2-81b3-b28125d3ce7e.wav",
+      "bytes": 115200088,
+      "sha256": "22f9c3c5ae09b1b8bd2e746a425340ee5927c41947c7a27b24ca1b44e543c08b"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/stems/percussion/stem.wav",
+      "bytes": 86400044,
+      "sha256": "1549ace2f9a8619b60f9f62b1caab7e419f922f18dae263f44aa7fae589251e7"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/stems/synth/raw/64bf9a0e-7658-125f-4f3c-0af6db0cfc42.wav",
+      "bytes": 115200088,
+      "sha256": "43c6a686802f1ea077c152c9a38b7ab5717d172a6a91ef54ebe5f889313b3f45"
+    },
+    {
+      "file": "afro-house-qualification/percussive-driving-organic-afro-house/stems/synth/stem.wav",
+      "bytes": 86400044,
+      "sha256": "dda03e4ee0454f9d296406b16b2646fff44e81b7989184c8d7f01e38902111b0"
+    },
+    {
+      "file": "afro-house-qualification/plan.json",
+      "bytes": 4636,
+      "sha256": "9f90528b4a30059ca0a448ef93e95e17c8e2c3797293db635e58d61e3437285e"
+    },
+    {
+      "file": "afro-house-qualification/report.json",
+      "bytes": 43433,
+      "sha256": "5598472bcdee5070228c5b6d4cab9f1c154ae85920736a928e2ee599d2dcb1b6"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/mix.wav",
+      "bytes": 86400044,
+      "sha256": "49218bc483735786b98fc3edd13dddecd754014a648f9224057edc42b14e2f82"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/raw/0e418a16-dbfa-6727-9378-f8efd088c5f9.wav",
+      "bytes": 115200088,
+      "sha256": "a9baccb4859e57bb1f93c7f78caa283790ca5c822d5a0587cf43b478b9693bcf"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/receipt.json",
+      "bytes": 4912,
+      "sha256": "584618b95b83870c1fe271d2a5ac68a54a950b2428cd3e9fb98fe3c83a5ec5ed"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/stems/bass/raw/46283236-6c71-78f3-6bff-37f80aa29f8d.wav",
+      "bytes": 115200088,
+      "sha256": "ac4ee4e6c49e5f50327a4bf78afe511e6983f4c7d7ca05c3c269be548575d9db"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/stems/bass/stem.wav",
+      "bytes": 86400044,
+      "sha256": "067f28ff503fe27f90262b9022b162ba0aaa551d3adc3df950432a191ebd7944"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/stems/drums/raw/387668e2-fea4-3f11-c915-c9f045996ca8.wav",
+      "bytes": 115200088,
+      "sha256": "f4d5502fd013df3cd1efa4d00beffe6306015bdd695e9fdff625b6038db726b5"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/stems/drums/stem.wav",
+      "bytes": 86400044,
+      "sha256": "631aa8ad0ce5c270a95dbc1d2f262ee573b403424267fd678aadb5b13dc74503"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/stems/keyboard/raw/593faf54-6342-d435-07c0-f0bb91e12b56.wav",
+      "bytes": 115200088,
+      "sha256": "fd655b9cbbd5d602006e3867005ca6ad598b96b6936f758f7db962e8ab08ef7a"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/stems/keyboard/stem.wav",
+      "bytes": 86400044,
+      "sha256": "f03c06d0d64adcc90d31f77d901a853855e556d3c70f966af554d9d9c2a79805"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/stems/percussion/raw/ea7c6706-70ae-2f4f-159f-f72e94aa0ba3.wav",
+      "bytes": 115200088,
+      "sha256": "d6daac51c6bbc0e501b52f9ef49d884437be22cbb7b501b2285efa8770bf4724"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/stems/percussion/stem.wav",
+      "bytes": 86400044,
+      "sha256": "4e1fee4c10dca28c748d2832568876a19f230062465e8b7d0284f92a0ad9cb55"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/stems/vocals/raw/fb34fd5b-aa2f-baf1-7957-df2b1079c1c5.wav",
+      "bytes": 115200088,
+      "sha256": "5945cfb92792af5b597febfd1636381c501f4fa0878cbe960a86c9efcef70c8a"
+    },
+    {
+      "file": "afro-house-qualification/vocal-led-organic-afro-house/stems/vocals/stem.wav",
+      "bytes": 86400044,
+      "sha256": "c50b23c72459988a8860606821f9406892fde7b9ddad7abfe6ea182a9d082f49"
+    },
+    {
+      "file": "boot.log",
+      "bytes": 512852,
+      "sha256": "859ce43e918fde1fc37b125817e7d144676f808d277de0990549060294e6738b"
+    },
+    {
+      "file": "executed-scripts.sha256",
+      "bytes": 947,
+      "sha256": "5666d6a77a6ce2d4291c72fc10d59411059749ced5f78360e748a4fa492de34e"
+    },
+    {
+      "file": "report.json",
+      "bytes": 44075,
+      "sha256": "0234e64c4eeccfbb7385f2b1730ecebe1fde94e2b86de895aac4e4b54147ac5a"
+    },
+    {
+      "file": "run.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "setup.stage",
+      "bytes": 14,
+      "sha256": "dd7ae8e1a61c2219d28b75734bf88cf626bd4c27e15b6c0d2b9a28d5f906ccf7"
+    },
+    {
+      "file": "weights.sha256",
+      "bytes": 578,
+      "sha256": "b11ffc47859ca9c5a6fd7bc4f0a3c8bbf1cd9afab3f9bb0c75b2ff948913268b"
+    }
+  ]
+}

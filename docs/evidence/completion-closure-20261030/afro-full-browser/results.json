@@ -1,0 +1,142 @@
+{
+  "status": "PASS technical",
+  "human_listening": "NOT RUN",
+  "results": [
+    {
+      "browser": "chromium",
+      "width": 1280,
+      "status": "PASS",
+      "media": [
+        {
+          "duration": 60,
+          "advanced": 10.660021,
+          "error": null
+        },
+        {
+          "duration": 300,
+          "advanced": 10.660028,
+          "error": null
+        },
+        {
+          "duration": 300,
+          "advanced": 10.657312,
+          "error": null
+        },
+        {
+          "duration": 300,
+          "advanced": 10.657508,
+          "error": null
+        },
+        {
+          "duration": 300,
+          "advanced": 10.657696,
+          "error": null
+        }
+      ],
+      "download": "PASS synthetic UI fixture only",
+      "errors": []
+    },
+    {
+      "browser": "chromium",
+      "width": 390,
+      "status": "PASS",
+      "media": [
+        {
+          "duration": 60,
+          "advanced": 10.656112,
+          "error": null
+        },
+        {
+          "duration": 300,
+          "advanced": 10.659688,
+          "error": null
+        },
+        {
+          "duration": 300,
+          "advanced": 10.660367,
+          "error": null
+        },
+        {
+          "duration": 300,
+          "advanced": 10.659822,
+          "error": null
+        },
+        {
+          "duration": 300,
+          "advanced": 10.65793,
+          "error": null
+        }
+      ],
+      "download": "PASS synthetic UI fixture only",
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 1280,
+      "status": "PASS",
+      "media": [
+        {
+          "duration": 60.024,
+          "advanced": 10.419849791667179,
+          "error": null
+        },
+        {
+          "duration": 300.024,
+          "advanced": 10.43730775953408,
+          "error": null
+        },
+        {
+          "duration": 300.024,
+          "advanced": 10.440452462492493,
+          "error": null
+        },
+        {
+          "duration": 300.024,
+          "advanced": 10.43929584945443,
+          "error": null
+        },
+        {
+          "duration": 300.024,
+          "advanced": 10.440476085301842,
+          "error": null
+        }
+      ],
+      "download": "PASS synthetic UI fixture only",
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "width": 390,
+      "status": "PASS",
+      "media": [
+        {
+          "duration": 60.024,
+          "advanced": 10.442407877395198,
+          "error": null
+        },
+        {
+          "duration": 300.024,
+          "advanced": 10.437804290730256,
+          "error": null
+        },
+        {
+          "duration": 300.024,
+          "advanced": 10.438741955684955,
+          "error": null
+        },
+        {
+          "duration": 300.024,
+          "advanced": 10.437330123440006,
+          "error": null
+        },
+        {
+          "duration": 300.024,
+          "advanced": 10.436644709170816,
+          "error": null
+        }
+      ],
+      "download": "PASS synthetic UI fixture only",
+      "errors": []
+    }
+  ]
+}

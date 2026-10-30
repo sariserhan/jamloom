@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "AUTHORIZED",
+  "status": "CONSUMED",
   "campaign": "jamloom-afro-house-quality-20261028-followup-004",
   "scope": "One new attempt to generate three five-minute Organic Afro House targets, one matched house control and twenty extracted stems using the corrected prerequisite bootstrap.",
   "budget_usd": 5.9,
@@ -69,5 +69,8 @@
     "renders/dj-quality-20261025/report.json": "a918ed12bbddb74848356dd1f044e888ea8bebe6b2237ce8b0f72bebb35daae5"
   },
   "authorization_note": "Owner explicitly selected \u201cApprove one attempt, $5.90 max\u201d for the prepared fourth attempt. One GPU, at most 40 minutes, 24 model calls, automatic cleanup, zero retries, within the original $6 aggregate campaign cap. No publication, RunPod activation or live sales authorized.",
-  "prepared_at": "2026-10-30T14:59:35.716530+00:00"
+  "prepared_at": "2026-10-30T14:59:35.716530+00:00",
+  "completed_at": "2026-10-30T15:31:38.870978+00:00",
+  "result": "PASS technical; four full-length mixes and twenty stems retained; owner listening pending",
+  "attempt_receipt": "gpu-attempt-004.json"
 }

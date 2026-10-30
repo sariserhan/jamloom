@@ -1,0 +1,1 @@
+2026-10-30 11:35:28.753 xcodebuild[47037:28547393]  IDETestOperationsObserverDebug: Failure collecting diagnostics from simulator: Timed out after 600.0 seconds while waiting for a response from the invoked process

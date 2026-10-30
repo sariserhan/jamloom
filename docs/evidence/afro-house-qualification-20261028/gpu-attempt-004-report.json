@@ -1,0 +1,1263 @@
+{
+  "status": "PASS technical",
+  "campaign": "jamloom-afro-house-quality-20261028-followup-004",
+  "tracks": [
+    {
+      "id": "matched-house-baseline",
+      "mix": "matched-house-baseline/mix.wav",
+      "receipt": {
+        "model": "acestep-v15-turbo",
+        "seed": 281028,
+        "bpm_prompt": 122,
+        "settings": {
+          "task_type": "text2music",
+          "instruction": "Fill the audio semantic mask based on the given conditions:",
+          "reference_audio": null,
+          "src_audio": null,
+          "audio_codes": "",
+          "caption": "Original instrumental club house, 122 BPM, 4/4. Tight steady kick and bass, crisp offbeat hats, warm chord stabs, restrained melodic variation, clean kick/bass separation, smooth club groove. No vocals, borrowed melodies or artist imitation.",
+          "global_caption": "",
+          "lyrics": "[Intro]\n[Instrumental]\n[Verse]\n[Instrumental]\n[Chorus]\n[Instrumental]\n[Bridge]\n[Instrumental Break]\n[Chorus]\n[Instrumental]\n[Outro]",
+          "instrumental": true,
+          "vocal_language": "en",
+          "bpm": 122,
+          "keyscale": "",
+          "timesignature": "4/4",
+          "duration": 300,
+          "enable_normalization": true,
+          "normalization_db": -1,
+          "fade_in_duration": 0.0,
+          "fade_out_duration": 0.0,
+          "latent_shift": 0.0,
+          "latent_rescale": 1.0,
+          "inference_steps": 8,
+          "seed": 281028,
+          "guidance_scale": 7.0,
+          "use_adg": false,
+          "cfg_interval_start": 0.0,
+          "cfg_interval_end": 1.0,
+          "shift": 1.0,
+          "infer_method": "ode",
+          "sampler_mode": "euler",
+          "velocity_norm_threshold": 0.0,
+          "velocity_ema_factor": 0.0,
+          "dcw_enabled": null,
+          "dcw_mode": "double",
+          "dcw_scaler": 0.05,
+          "dcw_high_scaler": 0.02,
+          "dcw_wavelet": "haar",
+          "timesteps": null,
+          "repainting_start": 0.0,
+          "repainting_end": -1,
+          "chunk_mask_mode": "auto",
+          "repaint_latent_crossfade_frames": 10,
+          "repaint_wav_crossfade_sec": 0.0,
+          "repaint_mode": "balanced",
+          "repaint_strength": 0.5,
+          "retake_seed": null,
+          "retake_variance": 0.0,
+          "flow_edit_morph": false,
+          "flow_edit_source_caption": "",
+          "flow_edit_source_lyrics": "",
+          "flow_edit_n_min": 0.0,
+          "flow_edit_n_max": 1.0,
+          "flow_edit_n_avg": 1,
+          "audio_cover_strength": 1.0,
+          "cover_noise_strength": 0.0,
+          "thinking": true,
+          "lm_temperature": 0.85,
+          "lm_cfg_scale": 2.0,
+          "lm_top_k": 0,
+          "lm_top_p": 0.9,
+          "lm_negative_prompt": "NO USER INPUT",
+          "use_cot_metas": false,
+          "use_cot_caption": false,
+          "use_cot_lyrics": false,
+          "use_cot_language": false,
+          "use_constrained_decoding": true,
+          "cot_bpm": null,
+          "cot_keyscale": "",
+          "cot_timesignature": "",
+          "cot_duration": null,
+          "cot_vocal_language": "unknown",
+          "cot_caption": "",
+          "cot_lyrics": ""
+        },
+        "raw_sha256": "bb68ff0e418a8c42d72938f3a1cee70fca21db8ff6f29598470328679195171e",
+        "mix_sha256": "bb7e174b572f0fb8d78a747b7b522a2ca31c40075c86a13830298571bd97f958",
+        "audio": {
+          "seconds": 300.0,
+          "sample_rate": 48000,
+          "channels": 2,
+          "peak_dbfs": -1.0,
+          "rms_dbfs": -14.51,
+          "clipped_samples": 0,
+          "stereo_correlation": 0.955,
+          "mono_fold_down_rms_loss_db": -0.1,
+          "status": "PASS technical"
+        },
+        "musical": {
+          "bpm_estimate": 123.05,
+          "requested_bpm": 122,
+          "onset_strength_variation": 0.1697,
+          "mean_low_band_fraction": 0.90486,
+          "key_estimate": {
+            "tonic": "E",
+            "mode": "minor",
+            "confidence": 0.0664
+          },
+          "section_change_candidates": [
+            {
+              "seconds": 31.48,
+              "score": 0.0883
+            },
+            {
+              "seconds": 47.21,
+              "score": 0.1477
+            },
+            {
+              "seconds": 141.64,
+              "score": 1.0661
+            },
+            {
+              "seconds": 157.38,
+              "score": 1.0647
+            },
+            {
+              "seconds": 236.07,
+              "score": 0.4917
+            },
+            {
+              "seconds": 251.8,
+              "score": 0.5037
+            },
+            {
+              "seconds": 267.54,
+              "score": 0.2464
+            },
+            {
+              "seconds": 283.28,
+              "score": 0.1249
+            }
+          ],
+          "phrase_window_bars": 8,
+          "note": "Tempo/key are signal estimates. Change points are phrase-aligned candidates; section roles require listening review."
+        },
+        "loudness": {
+          "integrated_lufs": -14.2,
+          "loudness_range_lu": 2.9,
+          "true_peak_dbfs": -0.8
+        },
+        "reference_audio_used": false
+      },
+      "stems": [
+        {
+          "name": "bass",
+          "file": "matched-house-baseline/stems/bass/stem.wav",
+          "sha256": "cc3c72a9562e5c7e4109570ef319d2464c7b100b257c8b70525a7e256d8d1409",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -21.15,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9749,
+            "mono_fold_down_rms_loss_db": -0.05,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "drums",
+          "file": "matched-house-baseline/stems/drums/stem.wav",
+          "sha256": "b060afdc635a85d941255cb13eeea728656fa155e76cd3b9dd0c83b36fa92006",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -21.16,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.98,
+            "mono_fold_down_rms_loss_db": -0.04,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "percussion",
+          "file": "matched-house-baseline/stems/percussion/stem.wav",
+          "sha256": "473203d007fc380b9920389a554f603650e6e90af59059fb718f11c02bca4419",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -24.1,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9516,
+            "mono_fold_down_rms_loss_db": -0.11,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "keyboard",
+          "file": "matched-house-baseline/stems/keyboard/stem.wav",
+          "sha256": "bdbecef7ec6c40b75f018db12438c8856740dd3d64c99816925394cee8bcea7c",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -22.65,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9518,
+            "mono_fold_down_rms_loss_db": -0.11,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "synth",
+          "file": "matched-house-baseline/stems/synth/stem.wav",
+          "sha256": "39a22e8468d6675b5da94351a65cfd9c507a526067e839f2d11f5aa216851482",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -23.07,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9523,
+            "mono_fold_down_rms_loss_db": -0.1,
+            "status": "PASS technical"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vocal-led-organic-afro-house",
+      "mix": "vocal-led-organic-afro-house/mix.wav",
+      "receipt": {
+        "model": "acestep-v15-turbo",
+        "seed": 281029,
+        "bpm_prompt": 122,
+        "settings": {
+          "task_type": "text2music",
+          "instruction": "Fill the audio semantic mask based on the given conditions:",
+          "reference_audio": null,
+          "src_audio": null,
+          "audio_codes": "",
+          "caption": "Original vocal-led organic Afro House, 122 BPM, 4/4. Soulful expressive original lead vocal, memorable short hook, deep rounded bass answers the steady four-on-the-floor kick, syncopated hand drums, shakers, rims, claps and toms, warm restrained pads. Evolve through lyric sections and instrumental breathing space; create tension through musical subtraction and a satisfying groove return. No artist imitation, borrowed melody or reference recording.",
+          "global_caption": "",
+          "lyrics": "[Verse 1]\nRiver light is moving slow\nBare feet find the earth below\nEvery heartbeat joins the sound\nWe lift the night without a crown\n[Pre-Chorus]\nLet the quiet turn to motion\nLet the rhythm cross the room\n[Chorus]\nWe move beneath the amber sky\nOne pulse, one circle, passing by\nKeep this moment close and clear\nThe whole wide world is dancing here\n[Instrumental]\n[Verse 2]\nDust and moonlight on our hands\nNew horizons, shifting sands\nEvery voice can find its place\nEvery step can change the pace\n[Pre-Chorus]\nLet the quiet turn to motion\nLet the rhythm cross the room\n[Chorus]\nWe move beneath the amber sky\nOne pulse, one circle, passing by\nKeep this moment close and clear\nThe whole wide world is dancing here\n[Instrumental Outro]",
+          "instrumental": false,
+          "vocal_language": "en",
+          "bpm": 122,
+          "keyscale": "",
+          "timesignature": "4/4",
+          "duration": 300,
+          "enable_normalization": true,
+          "normalization_db": -1,
+          "fade_in_duration": 0.0,
+          "fade_out_duration": 0.0,
+          "latent_shift": 0.0,
+          "latent_rescale": 1.0,
+          "inference_steps": 8,
+          "seed": 281029,
+          "guidance_scale": 7.0,
+          "use_adg": false,
+          "cfg_interval_start": 0.0,
+          "cfg_interval_end": 1.0,
+          "shift": 1.0,
+          "infer_method": "ode",
+          "sampler_mode": "euler",
+          "velocity_norm_threshold": 0.0,
+          "velocity_ema_factor": 0.0,
+          "dcw_enabled": null,
+          "dcw_mode": "double",
+          "dcw_scaler": 0.05,
+          "dcw_high_scaler": 0.02,
+          "dcw_wavelet": "haar",
+          "timesteps": null,
+          "repainting_start": 0.0,
+          "repainting_end": -1,
+          "chunk_mask_mode": "auto",
+          "repaint_latent_crossfade_frames": 10,
+          "repaint_wav_crossfade_sec": 0.0,
+          "repaint_mode": "balanced",
+          "repaint_strength": 0.5,
+          "retake_seed": null,
+          "retake_variance": 0.0,
+          "flow_edit_morph": false,
+          "flow_edit_source_caption": "",
+          "flow_edit_source_lyrics": "",
+          "flow_edit_n_min": 0.0,
+          "flow_edit_n_max": 1.0,
+          "flow_edit_n_avg": 1,
+          "audio_cover_strength": 1.0,
+          "cover_noise_strength": 0.0,
+          "thinking": true,
+          "lm_temperature": 0.85,
+          "lm_cfg_scale": 2.0,
+          "lm_top_k": 0,
+          "lm_top_p": 0.9,
+          "lm_negative_prompt": "NO USER INPUT",
+          "use_cot_metas": false,
+          "use_cot_caption": false,
+          "use_cot_lyrics": false,
+          "use_cot_language": false,
+          "use_constrained_decoding": true,
+          "cot_bpm": null,
+          "cot_keyscale": "",
+          "cot_timesignature": "",
+          "cot_duration": null,
+          "cot_vocal_language": "unknown",
+          "cot_caption": "",
+          "cot_lyrics": ""
+        },
+        "raw_sha256": "a9baccb4859e57bb1f93c7f78caa283790ca5c822d5a0587cf43b478b9693bcf",
+        "mix_sha256": "49218bc483735786b98fc3edd13dddecd754014a648f9224057edc42b14e2f82",
+        "audio": {
+          "seconds": 300.0,
+          "sample_rate": 48000,
+          "channels": 2,
+          "peak_dbfs": -1.0,
+          "rms_dbfs": -14.14,
+          "clipped_samples": 0,
+          "stereo_correlation": 0.9206,
+          "mono_fold_down_rms_loss_db": -0.18,
+          "status": "PASS technical"
+        },
+        "musical": {
+          "bpm_estimate": 123.05,
+          "requested_bpm": 122,
+          "onset_strength_variation": 0.3157,
+          "mean_low_band_fraction": 0.70029,
+          "key_estimate": {
+            "tonic": "A",
+            "mode": "major",
+            "confidence": 0.0701
+          },
+          "section_change_candidates": [
+            {
+              "seconds": 94.43,
+              "score": 0.6612
+            },
+            {
+              "seconds": 110.16,
+              "score": 1.0046
+            },
+            {
+              "seconds": 173.11,
+              "score": 0.7994
+            },
+            {
+              "seconds": 188.85,
+              "score": 0.647
+            },
+            {
+              "seconds": 204.59,
+              "score": 1.9537
+            },
+            {
+              "seconds": 236.07,
+              "score": 1.3575
+            },
+            {
+              "seconds": 251.8,
+              "score": 1.4071
+            },
+            {
+              "seconds": 283.28,
+              "score": 1.2707
+            }
+          ],
+          "phrase_window_bars": 8,
+          "note": "Tempo/key are signal estimates. Change points are phrase-aligned candidates; section roles require listening review."
+        },
+        "loudness": {
+          "integrated_lufs": -13.0,
+          "loudness_range_lu": 3.7,
+          "true_peak_dbfs": -0.3
+        },
+        "reference_audio_used": false
+      },
+      "stems": [
+        {
+          "name": "vocals",
+          "file": "vocal-led-organic-afro-house/stems/vocals/stem.wav",
+          "sha256": "c50b23c72459988a8860606821f9406892fde7b9ddad7abfe6ea182a9d082f49",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -22.33,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.8958,
+            "mono_fold_down_rms_loss_db": -0.23,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "bass",
+          "file": "vocal-led-organic-afro-house/stems/bass/stem.wav",
+          "sha256": "067f28ff503fe27f90262b9022b162ba0aaa551d3adc3df950432a191ebd7944",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -20.22,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9343,
+            "mono_fold_down_rms_loss_db": -0.14,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "drums",
+          "file": "vocal-led-organic-afro-house/stems/drums/stem.wav",
+          "sha256": "631aa8ad0ce5c270a95dbc1d2f262ee573b403424267fd678aadb5b13dc74503",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -21.61,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9278,
+            "mono_fold_down_rms_loss_db": -0.16,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "percussion",
+          "file": "vocal-led-organic-afro-house/stems/percussion/stem.wav",
+          "sha256": "4e1fee4c10dca28c748d2832568876a19f230062465e8b7d0284f92a0ad9cb55",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -22.66,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.8988,
+            "mono_fold_down_rms_loss_db": -0.22,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "keyboard",
+          "file": "vocal-led-organic-afro-house/stems/keyboard/stem.wav",
+          "sha256": "f03c06d0d64adcc90d31f77d901a853855e556d3c70f966af554d9d9c2a79805",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -22.23,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.923,
+            "mono_fold_down_rms_loss_db": -0.17,
+            "status": "PASS technical"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bass-driven-organic-afro-house",
+      "mix": "bass-driven-organic-afro-house/mix.wav",
+      "receipt": {
+        "model": "acestep-v15-turbo",
+        "seed": 281030,
+        "bpm_prompt": 121,
+        "settings": {
+          "task_type": "text2music",
+          "instruction": "Fill the audio semantic mask based on the given conditions:",
+          "reference_audio": null,
+          "src_audio": null,
+          "audio_codes": "",
+          "caption": "Original bass-driven organic Afro House, 121 BPM, 4/4. Deep rounded syncopated bass with a recognizable motif that answers rather than doubles the steady kick, layered hand drums, shakers, rims and toms, restrained warm chord color. Vary bass articulation and percussion answers across phrases; keep the sub controlled and leave breathing space. No vocals, borrowed melodies or artist imitation.",
+          "global_caption": "",
+          "lyrics": "[Intro]\n[Instrumental]\n[Verse]\n[Instrumental]\n[Chorus]\n[Instrumental]\n[Bridge]\n[Instrumental Break]\n[Chorus]\n[Instrumental]\n[Outro]",
+          "instrumental": true,
+          "vocal_language": "en",
+          "bpm": 121,
+          "keyscale": "",
+          "timesignature": "4/4",
+          "duration": 300,
+          "enable_normalization": true,
+          "normalization_db": -1,
+          "fade_in_duration": 0.0,
+          "fade_out_duration": 0.0,
+          "latent_shift": 0.0,
+          "latent_rescale": 1.0,
+          "inference_steps": 8,
+          "seed": 281030,
+          "guidance_scale": 7.0,
+          "use_adg": false,
+          "cfg_interval_start": 0.0,
+          "cfg_interval_end": 1.0,
+          "shift": 1.0,
+          "infer_method": "ode",
+          "sampler_mode": "euler",
+          "velocity_norm_threshold": 0.0,
+          "velocity_ema_factor": 0.0,
+          "dcw_enabled": null,
+          "dcw_mode": "double",
+          "dcw_scaler": 0.05,
+          "dcw_high_scaler": 0.02,
+          "dcw_wavelet": "haar",
+          "timesteps": null,
+          "repainting_start": 0.0,
+          "repainting_end": -1,
+          "chunk_mask_mode": "auto",
+          "repaint_latent_crossfade_frames": 10,
+          "repaint_wav_crossfade_sec": 0.0,
+          "repaint_mode": "balanced",
+          "repaint_strength": 0.5,
+          "retake_seed": null,
+          "retake_variance": 0.0,
+          "flow_edit_morph": false,
+          "flow_edit_source_caption": "",
+          "flow_edit_source_lyrics": "",
+          "flow_edit_n_min": 0.0,
+          "flow_edit_n_max": 1.0,
+          "flow_edit_n_avg": 1,
+          "audio_cover_strength": 1.0,
+          "cover_noise_strength": 0.0,
+          "thinking": true,
+          "lm_temperature": 0.85,
+          "lm_cfg_scale": 2.0,
+          "lm_top_k": 0,
+          "lm_top_p": 0.9,
+          "lm_negative_prompt": "NO USER INPUT",
+          "use_cot_metas": false,
+          "use_cot_caption": false,
+          "use_cot_lyrics": false,
+          "use_cot_language": false,
+          "use_constrained_decoding": true,
+          "cot_bpm": null,
+          "cot_keyscale": "",
+          "cot_timesignature": "",
+          "cot_duration": null,
+          "cot_vocal_language": "unknown",
+          "cot_caption": "",
+          "cot_lyrics": ""
+        },
+        "raw_sha256": "2c1fee50f0b52ee966ffe997fa1a4349fdb3e17e7675dcb4e06c2e692fb3b760",
+        "mix_sha256": "e86c748cd17990d7fa67a92755335a266068c0650add9e3abf1f9a3376574522",
+        "audio": {
+          "seconds": 300.0,
+          "sample_rate": 48000,
+          "channels": 2,
+          "peak_dbfs": -1.0,
+          "rms_dbfs": -13.71,
+          "clipped_samples": 0,
+          "stereo_correlation": 0.9764,
+          "mono_fold_down_rms_loss_db": -0.05,
+          "status": "PASS technical"
+        },
+        "musical": {
+          "bpm_estimate": 123.05,
+          "requested_bpm": 121,
+          "onset_strength_variation": 0.2124,
+          "mean_low_band_fraction": 0.9115,
+          "key_estimate": {
+            "tonic": "A",
+            "mode": "minor",
+            "confidence": 0.009
+          },
+          "section_change_candidates": [
+            {
+              "seconds": 31.74,
+              "score": 0.2022
+            },
+            {
+              "seconds": 126.94,
+              "score": 1.2101
+            },
+            {
+              "seconds": 142.81,
+              "score": 0.3614
+            },
+            {
+              "seconds": 158.68,
+              "score": 0.6882
+            },
+            {
+              "seconds": 174.55,
+              "score": 0.1941
+            },
+            {
+              "seconds": 269.75,
+              "score": 0.1659
+            },
+            {
+              "seconds": 285.62,
+              "score": 0.243
+            }
+          ],
+          "phrase_window_bars": 8,
+          "note": "Tempo/key are signal estimates. Change points are phrase-aligned candidates; section roles require listening review."
+        },
+        "loudness": {
+          "integrated_lufs": -14.0,
+          "loudness_range_lu": 2.6,
+          "true_peak_dbfs": -0.5
+        },
+        "reference_audio_used": false
+      },
+      "stems": [
+        {
+          "name": "bass",
+          "file": "bass-driven-organic-afro-house/stems/bass/stem.wav",
+          "sha256": "7ba10fd253327e3681c7846488369309976988fec43ce0a6043461de220d2ec8",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -18.57,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9934,
+            "mono_fold_down_rms_loss_db": -0.01,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "drums",
+          "file": "bass-driven-organic-afro-house/stems/drums/stem.wav",
+          "sha256": "4e6e9b56073da6d8f7af588404e3cb9c89d3aec20dcfeeb8b722478d0837a92b",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -17.52,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9926,
+            "mono_fold_down_rms_loss_db": -0.02,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "percussion",
+          "file": "bass-driven-organic-afro-house/stems/percussion/stem.wav",
+          "sha256": "c3c98e970c37e224d7199efbfdf1aef2b1f589e48219690ca542b080a36856cb",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -20.95,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9891,
+            "mono_fold_down_rms_loss_db": -0.02,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "keyboard",
+          "file": "bass-driven-organic-afro-house/stems/keyboard/stem.wav",
+          "sha256": "3274c100c96b964d060df17d258b2648d86182a247f6f6eb01c64211b7109e2a",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -20.98,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9891,
+            "mono_fold_down_rms_loss_db": -0.02,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "synth",
+          "file": "bass-driven-organic-afro-house/stems/synth/stem.wav",
+          "sha256": "8b6e1cc430ba8f37603d3f533fad2868114758eea8d94ef0df9e2632cb5b9e0f",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -21.13,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9882,
+            "mono_fold_down_rms_loss_db": -0.03,
+            "status": "PASS technical"
+          }
+        }
+      ]
+    },
+    {
+      "id": "percussive-driving-organic-afro-house",
+      "mix": "percussive-driving-organic-afro-house/mix.wav",
+      "receipt": {
+        "model": "acestep-v15-turbo",
+        "seed": 281031,
+        "bpm_prompt": 124,
+        "settings": {
+          "task_type": "text2music",
+          "instruction": "Fill the audio semantic mask based on the given conditions:",
+          "reference_audio": null,
+          "src_audio": null,
+          "audio_codes": "",
+          "caption": "Original percussive driving organic Afro House, 124 BPM, 4/4. Stable four-on-the-floor kick with interlocking syncopated hand drums, shakers, claps, rims and toms; rounded bass stays distinct and answers the rhythm. Develop layered percussion over musical phrases, use short motivated fills, a reduced-density breakdown and a strong groove return. Warm clear mix, no festival drop, no vocals, borrowed melody or artist imitation.",
+          "global_caption": "",
+          "lyrics": "[Intro]\n[Instrumental]\n[Verse]\n[Instrumental]\n[Chorus]\n[Instrumental]\n[Bridge]\n[Instrumental Break]\n[Chorus]\n[Instrumental]\n[Outro]",
+          "instrumental": true,
+          "vocal_language": "en",
+          "bpm": 124,
+          "keyscale": "",
+          "timesignature": "4/4",
+          "duration": 300,
+          "enable_normalization": true,
+          "normalization_db": -1,
+          "fade_in_duration": 0.0,
+          "fade_out_duration": 0.0,
+          "latent_shift": 0.0,
+          "latent_rescale": 1.0,
+          "inference_steps": 8,
+          "seed": 281031,
+          "guidance_scale": 7.0,
+          "use_adg": false,
+          "cfg_interval_start": 0.0,
+          "cfg_interval_end": 1.0,
+          "shift": 1.0,
+          "infer_method": "ode",
+          "sampler_mode": "euler",
+          "velocity_norm_threshold": 0.0,
+          "velocity_ema_factor": 0.0,
+          "dcw_enabled": null,
+          "dcw_mode": "double",
+          "dcw_scaler": 0.05,
+          "dcw_high_scaler": 0.02,
+          "dcw_wavelet": "haar",
+          "timesteps": null,
+          "repainting_start": 0.0,
+          "repainting_end": -1,
+          "chunk_mask_mode": "auto",
+          "repaint_latent_crossfade_frames": 10,
+          "repaint_wav_crossfade_sec": 0.0,
+          "repaint_mode": "balanced",
+          "repaint_strength": 0.5,
+          "retake_seed": null,
+          "retake_variance": 0.0,
+          "flow_edit_morph": false,
+          "flow_edit_source_caption": "",
+          "flow_edit_source_lyrics": "",
+          "flow_edit_n_min": 0.0,
+          "flow_edit_n_max": 1.0,
+          "flow_edit_n_avg": 1,
+          "audio_cover_strength": 1.0,
+          "cover_noise_strength": 0.0,
+          "thinking": true,
+          "lm_temperature": 0.85,
+          "lm_cfg_scale": 2.0,
+          "lm_top_k": 0,
+          "lm_top_p": 0.9,
+          "lm_negative_prompt": "NO USER INPUT",
+          "use_cot_metas": false,
+          "use_cot_caption": false,
+          "use_cot_lyrics": false,
+          "use_cot_language": false,
+          "use_constrained_decoding": true,
+          "cot_bpm": null,
+          "cot_keyscale": "",
+          "cot_timesignature": "",
+          "cot_duration": null,
+          "cot_vocal_language": "unknown",
+          "cot_caption": "",
+          "cot_lyrics": ""
+        },
+        "raw_sha256": "3e6b1d421038ffc580a4ae99ad1e6493bacac93053cca78e748f712c93f08a07",
+        "mix_sha256": "4dc2b6b5c1f2f66f1ff857b286b2dab5c1efd36f87f2d2d8ebb537064000afb5",
+        "audio": {
+          "seconds": 300.0,
+          "sample_rate": 48000,
+          "channels": 2,
+          "peak_dbfs": -1.0,
+          "rms_dbfs": -16.09,
+          "clipped_samples": 0,
+          "stereo_correlation": 0.9554,
+          "mono_fold_down_rms_loss_db": -0.1,
+          "status": "PASS technical"
+        },
+        "musical": {
+          "bpm_estimate": 123.05,
+          "requested_bpm": 124,
+          "onset_strength_variation": 0.2949,
+          "mean_low_band_fraction": 0.84952,
+          "key_estimate": {
+            "tonic": "A",
+            "mode": "minor",
+            "confidence": 0.0604
+          },
+          "section_change_candidates": [
+            {
+              "seconds": 92.9,
+              "score": 0.1957
+            },
+            {
+              "seconds": 154.84,
+              "score": 2.8234
+            },
+            {
+              "seconds": 170.32,
+              "score": 2.7638
+            },
+            {
+              "seconds": 278.71,
+              "score": 0.3337
+            },
+            {
+              "seconds": 294.19,
+              "score": 4.8296
+            }
+          ],
+          "phrase_window_bars": 8,
+          "note": "Tempo/key are signal estimates. Change points are phrase-aligned candidates; section roles require listening review."
+        },
+        "loudness": {
+          "integrated_lufs": -16.2,
+          "loudness_range_lu": 2.4,
+          "true_peak_dbfs": -0.6
+        },
+        "reference_audio_used": false
+      },
+      "stems": [
+        {
+          "name": "drums",
+          "file": "percussive-driving-organic-afro-house/stems/drums/stem.wav",
+          "sha256": "728652033715b16aed58a3badee672acc66fc123885b59036c08baa1a35cd087",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -23.97,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9641,
+            "mono_fold_down_rms_loss_db": -0.08,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "percussion",
+          "file": "percussive-driving-organic-afro-house/stems/percussion/stem.wav",
+          "sha256": "1549ace2f9a8619b60f9f62b1caab7e419f922f18dae263f44aa7fae589251e7",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -27.66,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9225,
+            "mono_fold_down_rms_loss_db": -0.17,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "bass",
+          "file": "percussive-driving-organic-afro-house/stems/bass/stem.wav",
+          "sha256": "fc9a5720ffd3ff14b2c559bcaab3c0e42c28a016b01eb4e31403797bc7acbe72",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -25.63,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.9515,
+            "mono_fold_down_rms_loss_db": -0.11,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "keyboard",
+          "file": "percussive-driving-organic-afro-house/stems/keyboard/stem.wav",
+          "sha256": "7d8823b1d4b4c86dfec2052ecb21ac3b9b6c4c825f5b134e4f824de98bff082b",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -27.17,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.927,
+            "mono_fold_down_rms_loss_db": -0.16,
+            "status": "PASS technical"
+          }
+        },
+        {
+          "name": "synth",
+          "file": "percussive-driving-organic-afro-house/stems/synth/stem.wav",
+          "sha256": "dda03e4ee0454f9d296406b16b2646fff44e81b7989184c8d7f01e38902111b0",
+          "audio": {
+            "seconds": 300.0,
+            "sample_rate": 48000,
+            "channels": 2,
+            "peak_dbfs": -1.0,
+            "rms_dbfs": -28.73,
+            "clipped_samples": 0,
+            "stereo_correlation": 0.8956,
+            "mono_fold_down_rms_loss_db": -0.23,
+            "status": "PASS technical"
+          }
+        }
+      ]
+    }
+  ],
+  "reference_audio_used": false,
+  "human_listening": "NOT RUN",
+  "cleanup_confirmed": true,
+  "quote": {
+    "id": 54335451,
+    "machine_id": 144855,
+    "host_id": 608696,
+    "gpu_name": "RTX 3090",
+    "gpu_ram": 24576,
+    "num_gpus": 1,
+    "cpu_ram": 32168,
+    "geolocation": "New York, US",
+    "reliability": 0.9968657,
+    "dph_total": 0.3022222222222222,
+    "storage_cost": 0.19999999999999998,
+    "inet_down_cost": 0.0026041666666666665,
+    "inet_up_cost": 0.00390625,
+    "hourly_with_60gb_disk": 0.3188888888888889,
+    "reserved_lease_plus_transfer": 0.6032175925925926
+  },
+  "elapsed_seconds": 1362.58,
+  "model": {
+    "generation": "acestep-v15-turbo",
+    "revision": "19671f406d603126926c1b7e2adc169acbcade22",
+    "planner": "acestep-5Hz-lm-1.7B",
+    "extraction": "acestep-v15-base",
+    "extraction_revision": "e432212fec32b8965a14ffa57ae653438d6abd14",
+    "publisher_declared_license": "MIT; commercial use permitted by publisher; underlying training rights not independently audited"
+  },
+  "quality_acceptance": "NOT RUN",
+  "section_timeline": "PARTIAL; phrase-aligned change candidates are in each mix receipt; owner must label and confirm section roles.",
+  "comparison": {
+    "vocal-led-organic-afro-house": {
+      "target_full_length": {
+        "bpm_estimate": 123.05,
+        "key_estimate": {
+          "tonic": "A",
+          "mode": "major",
+          "confidence": 0.0701
+        },
+        "integrated_lufs": -13.0,
+        "loudness_range_lu": 3.7,
+        "true_peak_dbfs": -0.3,
+        "clipped_samples": 0,
+        "stereo_correlation": 0.9206,
+        "mono_fold_down_rms_loss_db": -0.18,
+        "onset_strength_variation": 0.3157,
+        "mean_low_band_fraction": 0.70029,
+        "section_change_candidates": 8
+      },
+      "matched_house_control_full_length": {
+        "bpm_estimate": 123.05,
+        "key_estimate": {
+          "tonic": "E",
+          "mode": "minor",
+          "confidence": 0.0664
+        },
+        "integrated_lufs": -14.2,
+        "loudness_range_lu": 2.9,
+        "true_peak_dbfs": -0.8,
+        "clipped_samples": 0,
+        "stereo_correlation": 0.955,
+        "mono_fold_down_rms_loss_db": -0.1,
+        "onset_strength_variation": 0.1697,
+        "mean_low_band_fraction": 0.90486,
+        "section_change_candidates": 8
+      },
+      "delta_vs_matched_house_control": {
+        "bpm_estimate": 0.0,
+        "integrated_lufs": 1.2,
+        "loudness_range_lu": 0.8,
+        "true_peak_dbfs": 0.5,
+        "clipped_samples": 0,
+        "stereo_correlation": -0.0344,
+        "mono_fold_down_rms_loss_db": -0.08,
+        "onset_strength_variation": 0.146,
+        "mean_low_band_fraction": -0.2046,
+        "section_change_candidates": 0
+      },
+      "target_opening_60s": {
+        "audio": {
+          "seconds": 60.0,
+          "sample_rate": 48000,
+          "channels": 2,
+          "peak_dbfs": -1.05,
+          "rms_dbfs": -14.88,
+          "clipped_samples": 0,
+          "stereo_correlation": 0.9742,
+          "mono_fold_down_rms_loss_db": -0.06,
+          "status": "PASS technical"
+        },
+        "loudness": {
+          "integrated_lufs": -14.0,
+          "loudness_range_lu": 2.2,
+          "true_peak_dbfs": -1.1
+        },
+        "musical": {
+          "bpm_estimate": 123.05,
+          "requested_bpm": 122,
+          "onset_strength_variation": 0.0866,
+          "mean_low_band_fraction": 0.79064,
+          "key_estimate": {
+            "tonic": "A",
+            "mode": "major",
+            "confidence": 0.0136
+          },
+          "section_change_candidates": [
+            {
+              "seconds": 31.48,
+              "score": 0.2039
+            }
+          ],
+          "phrase_window_bars": 8,
+          "note": "Tempo/key are signal estimates. Change points are phrase-aligned candidates; section roles require listening review."
+        }
+      },
+      "previous_jamloom_baseline_60s": {
+        "bpm_estimate": 129.2,
+        "integrated_lufs": -17.4,
+        "loudness_range_lu": 6.0,
+        "true_peak_dbfs": -0.9,
+        "stereo_correlation": 0.9339,
+        "mono_fold_down_rms_loss_db": -0.15
+      }
+    },
+    "bass-driven-organic-afro-house": {
+      "target_full_length": {
+        "bpm_estimate": 123.05,
+        "key_estimate": {
+          "tonic": "A",
+          "mode": "minor",
+          "confidence": 0.009
+        },
+        "integrated_lufs": -14.0,
+        "loudness_range_lu": 2.6,
+        "true_peak_dbfs": -0.5,
+        "clipped_samples": 0,
+        "stereo_correlation": 0.9764,
+        "mono_fold_down_rms_loss_db": -0.05,
+        "onset_strength_variation": 0.2124,
+        "mean_low_band_fraction": 0.9115,
+        "section_change_candidates": 7
+      },
+      "matched_house_control_full_length": {
+        "bpm_estimate": 123.05,
+        "key_estimate": {
+          "tonic": "E",
+          "mode": "minor",
+          "confidence": 0.0664
+        },
+        "integrated_lufs": -14.2,
+        "loudness_range_lu": 2.9,
+        "true_peak_dbfs": -0.8,
+        "clipped_samples": 0,
+        "stereo_correlation": 0.955,
+        "mono_fold_down_rms_loss_db": -0.1,
+        "onset_strength_variation": 0.1697,
+        "mean_low_band_fraction": 0.90486,
+        "section_change_candidates": 8
+      },
+      "delta_vs_matched_house_control": {
+        "bpm_estimate": 0.0,
+        "integrated_lufs": 0.2,
+        "loudness_range_lu": -0.3,
+        "true_peak_dbfs": 0.3,
+        "clipped_samples": 0,
+        "stereo_correlation": 0.0214,
+        "mono_fold_down_rms_loss_db": 0.05,
+        "onset_strength_variation": 0.0427,
+        "mean_low_band_fraction": 0.0066,
+        "section_change_candidates": -1
+      },
+      "target_opening_60s": {
+        "audio": {
+          "seconds": 60.0,
+          "sample_rate": 48000,
+          "channels": 2,
+          "peak_dbfs": -1.54,
+          "rms_dbfs": -14.03,
+          "clipped_samples": 0,
+          "stereo_correlation": 0.99,
+          "mono_fold_down_rms_loss_db": -0.02,
+          "status": "PASS technical"
+        },
+        "loudness": {
+          "integrated_lufs": -14.5,
+          "loudness_range_lu": 1.6,
+          "true_peak_dbfs": -1.5
+        },
+        "musical": {
+          "bpm_estimate": 123.05,
+          "requested_bpm": 121,
+          "onset_strength_variation": 0.0612,
+          "mean_low_band_fraction": 0.93268,
+          "key_estimate": {
+            "tonic": "A",
+            "mode": "minor",
+            "confidence": 0.074
+          },
+          "section_change_candidates": [
+            {
+              "seconds": 31.74,
+              "score": 0.2022
+            }
+          ],
+          "phrase_window_bars": 8,
+          "note": "Tempo/key are signal estimates. Change points are phrase-aligned candidates; section roles require listening review."
+        }
+      },
+      "previous_jamloom_baseline_60s": {
+        "bpm_estimate": 129.2,
+        "integrated_lufs": -17.4,
+        "loudness_range_lu": 6.0,
+        "true_peak_dbfs": -0.9,
+        "stereo_correlation": 0.9339,
+        "mono_fold_down_rms_loss_db": -0.15
+      }
+    },
+    "percussive-driving-organic-afro-house": {
+      "target_full_length": {
+        "bpm_estimate": 123.05,
+        "key_estimate": {
+          "tonic": "A",
+          "mode": "minor",
+          "confidence": 0.0604
+        },
+        "integrated_lufs": -16.2,
+        "loudness_range_lu": 2.4,
+        "true_peak_dbfs": -0.6,
+        "clipped_samples": 0,
+        "stereo_correlation": 0.9554,
+        "mono_fold_down_rms_loss_db": -0.1,
+        "onset_strength_variation": 0.2949,
+        "mean_low_band_fraction": 0.84952,
+        "section_change_candidates": 5
+      },
+      "matched_house_control_full_length": {
+        "bpm_estimate": 123.05,
+        "key_estimate": {
+          "tonic": "E",
+          "mode": "minor",
+          "confidence": 0.0664
+        },
+        "integrated_lufs": -14.2,
+        "loudness_range_lu": 2.9,
+        "true_peak_dbfs": -0.8,
+        "clipped_samples": 0,
+        "stereo_correlation": 0.955,
+        "mono_fold_down_rms_loss_db": -0.1,
+        "onset_strength_variation": 0.1697,
+        "mean_low_band_fraction": 0.90486,
+        "section_change_candidates": 8
+      },
+      "delta_vs_matched_house_control": {
+        "bpm_estimate": 0.0,
+        "integrated_lufs": -2.0,
+        "loudness_range_lu": -0.5,
+        "true_peak_dbfs": 0.2,
+        "clipped_samples": 0,
+        "stereo_correlation": 0.0004,
+        "mono_fold_down_rms_loss_db": 0.0,
+        "onset_strength_variation": 0.1252,
+        "mean_low_band_fraction": -0.0553,
+        "section_change_candidates": -3
+      },
+      "target_opening_60s": {
+        "audio": {
+          "seconds": 60.0,
+          "sample_rate": 48000,
+          "channels": 2,
+          "peak_dbfs": -2.7,
+          "rms_dbfs": -16.67,
+          "clipped_samples": 0,
+          "stereo_correlation": 0.9747,
+          "mono_fold_down_rms_loss_db": -0.06,
+          "status": "PASS technical"
+        },
+        "loudness": {
+          "integrated_lufs": -17.2,
+          "loudness_range_lu": 1.0,
+          "true_peak_dbfs": -1.7
+        },
+        "musical": {
+          "bpm_estimate": 123.05,
+          "requested_bpm": 124,
+          "onset_strength_variation": 0.1132,
+          "mean_low_band_fraction": 0.92863,
+          "key_estimate": {
+            "tonic": "A",
+            "mode": "minor",
+            "confidence": 0.071
+          },
+          "section_change_candidates": [],
+          "phrase_window_bars": 8,
+          "note": "Tempo/key are signal estimates. Change points are phrase-aligned candidates; section roles require listening review."
+        }
+      },
+      "previous_jamloom_baseline_60s": {
+        "bpm_estimate": 129.2,
+        "integrated_lufs": -17.4,
+        "loudness_range_lu": 6.0,
+        "true_peak_dbfs": -0.9,
+        "stereo_correlation": 0.9339,
+        "mono_fold_down_rms_loss_db": -0.15
+      }
+    }
+  },
+  "previous_jamloom_baseline": {
+    "path": "renders/dj-quality-20261025/house-0.wav",
+    "sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+    "audio": {
+      "seconds": 60.0,
+      "sample_rate": 48000,
+      "channels": 2,
+      "peak_dbfs": -1.0,
+      "rms_dbfs": -20.06,
+      "clipped_samples": 0,
+      "stereo_correlation": 0.9339,
+      "mono_fold_down_rms_loss_db": -0.15,
+      "status": "PASS technical"
+    },
+    "loudness": {
+      "integrated_lufs": -17.4,
+      "loudness_range_lu": 6.0,
+      "true_peak_dbfs": -0.9
+    },
+    "musical": {
+      "bpm_estimate": 129.2,
+      "requested_bpm": 128,
+      "onset_strength_variation": 0.2672,
+      "mean_low_band_fraction": 0.44205,
+      "key_estimate": {
+        "tonic": "A",
+        "mode": "minor",
+        "confidence": 0.2227
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 15.0,
+          "score": 1.4406
+        }
+      ],
+      "phrase_window_bars": 8,
+      "note": "Tempo/key are signal estimates. Change points are phrase-aligned candidates; section roles require listening review."
+    },
+    "original_report": "renders/dj-quality-20261025/report.json"
+  },
+  "comparison_note": "Full-length target/control differences and opening-minute Jamloom-baseline measurements are technical only. The previous serving-engine output is 60 seconds at its original 128 BPM prompt; candidates are full-length originals at 121\u2013124 BPM. Owner must compare the opening minute and full-track progression by listening.",
+  "observed_debit_usd": 0.22384956939999956
+}

@@ -11,7 +11,7 @@ remote archive flattening and working-directory assumptions still need review be
 | Script | Purpose | Code references | Documentation references |
 | --- | --- | ---: | ---: |
 | [build_offline.py](build_offline.py) | Generate the bounded public-asset list for a standalone or /studio/ build. | 7 | 6 |
-| [ios_smoke.sh](ios_smoke.sh) | See script and its caller map. | 0 | 3 |
+| [ios_smoke.sh](ios_smoke.sh) | See script and its caller map. | 0 | 4 |
 | [prepare_ios_studio.py](prepare_ios_studio.py) | Package the audited shared performance console for the native iOS app. | 3 | 3 |
 | [studio_build_lock.py](studio_build_lock.py) | Fail closed when two jobs try to mutate the shared generated studio. | 3 | 0 |
 | [verify_ios_bundle.py](verify_ios_bundle.py) | Check the built iOS Release bundle, not App Store acceptance. | 2 | 4 |
@@ -23,13 +23,13 @@ remote archive flattening and working-directory assumptions still need review be
 
 | Script | Purpose | Code references | Documentation references |
 | --- | --- | ---: | ---: |
-| [afro_house_trial.py](afro_house_trial.py) | Run the prepared, one-rental Afro House qualification after exact owner approval. | 6 | 1 |
+| [afro_house_trial.py](afro_house_trial.py) | Run the prepared, one-rental Afro House qualification after exact owner approval. | 10 | 1 |
 | [cloud_blood_run.sh](cloud_blood_run.sh) | See script and its caller map. | 0 | 0 |
 | [cloud_blood_trial.py](cloud_blood_trial.py) | Approved Blood Club research only; execute in the pinned GPU checkout. | 4 | 0 |
 | [cloud_club_benchmark.sh](cloud_club_benchmark.sh) | See script and its caller map. | 0 | 0 |
 | [cloud_dj_warm.sh](cloud_dj_warm.sh) | See script and its caller map. | 11 | 3 |
 | [cloud_music_batch.py](cloud_music_batch.py) | Pinned-model research batch, run from the ACE-Step checkout; no input audio. | 4 | 1 |
-| [cloud_music_setup.sh](cloud_music_setup.sh) | See script and its caller map. | 13 | 2 |
+| [cloud_music_setup.sh](cloud_music_setup.sh) | See script and its caller map. | 14 | 2 |
 | [cloud_musician_trial.py](cloud_musician_trial.py) | Execute the bounded, authorized musician-reference trial in the pinned checkout. | 1 | 0 |
 | [cloud_style_trial.py](cloud_style_trial.py) | Approved isolated adapter research. Run from the pinned ACE-Step checkout. | 3 | 1 |
 | [dj_sample_trial.py](dj_sample_trial.py) | Owner-approved two-track listening trial; reuses the bounded Vast controller. | 14 | 14 |
@@ -88,7 +88,7 @@ remote archive flattening and working-directory assumptions still need review be
 | [prepare_voice_research.py](prepare_voice_research.py) | Render the local owner-only research comparison; never uploads recordings. | 0 | 1 |
 | [prepare_voice_transforms.py](prepare_voice_transforms.py) | Prepare private voice-transform controls from an existing consented score. | 4 | 3 |
 | [product_audio_baseline.py](product_audio_baseline.py) | Expand the preserved Q0 baseline to ten authorized inputs, without training. | 0 | 2 |
-| [q0_audit.py](q0_audit.py) | Freeze five authorized local inputs and audit the unchanged renderer for Q0. | 37 | 5 |
+| [q0_audit.py](q0_audit.py) | Freeze five authorized local inputs and audit the unchanged renderer for Q0. | 38 | 5 |
 | [q0_authored_evidence.py](q0_authored_evidence.py) | Decode and measure the authored-score study using the existing analysis environment. | 0 | 1 |
 | [q0_authored_score.py](q0_authored_score.py) | Original Q0 performance study; no reference audio, training or engine edits. | 5 | 2 |
 | [q0_composition.py](q0_composition.py) | Q0 copied-plan hypothesis: intact calls, a recurring source-rhythm answer, space. | 2 | 3 |
@@ -113,7 +113,7 @@ remote archive flattening and working-directory assumptions still need review be
 | [replay_mix.mjs](replay_mix.mjs) | See script and its caller map. | 2 | 3 |
 | [review_academy_grid.py](review_academy_grid.py) | Prepare candidate beat-grid evidence for owner listening, not verified downbeats/keys. | 0 | 2 |
 | [review_house_study.py](review_house_study.py) | Publish audio-only listening copies; keep study condition keys outside the server. | 0 | 1 |
-| [review_serve.py](review_serve.py) | Serve the local listening copies, including byte ranges for native audio controls. | 1 | 4 |
+| [review_serve.py](review_serve.py) | Serve the local listening copies, including byte ranges for native audio controls. | 1 | 5 |
 | [song_duration.py](song_duration.py) | Shared product length bounds; a saved duration survives retries. | 13 | 0 |
 | [source_led_response.py](source_led_response.py) | One private source-led reggae study: guide, band, singer, timed exchange. | 3 | 5 |
 | [summarize_listening.py](summarize_listening.py) | Validate real submitted forms and summarize by source; never invent ratings or pass M1. | 4 | 3 |
@@ -158,6 +158,7 @@ remote archive flattening and working-directory assumptions still need review be
 | [replay_dj_flow.py](replay_dj_flow.py) | Free real-time rehearsal: reuse twelve verified masters, start at two, release later ones on a 30s cadence. | 0 | 1 |
 | [replay_dj_padding.py](replay_dj_padding.py) | Offline timing comparison for retained tracks; not a new generated or R2 session. | 0 | 2 |
 | [research_dj_passages.py](research_dj_passages.py) | Use the existing pinned CLAP auditor on declared passages; scores are uncalibrated research evidence. | 1 | 1 |
+| [review_afro_house.py](review_afro_house.py) | Prepare hash-checked local listening copies and blank owner review notes. | 0 | 1 |
 | [review_dj_comparison.py](review_dj_comparison.py) | Make a local, hash-verified listening comparison without copying source recordings. | 0 | 1 |
 | [review_dj_composition.py](review_dj_composition.py) | Prepare local guide/stem audition, or blinded fresh comparison after an approved run. | 0 | 3 |
 | [review_dj_economics.py](review_dj_economics.py) | Offline scenario review, not billing configuration or a final provider invoice. | 1 | 0 |
@@ -169,7 +170,7 @@ remote archive flattening and working-directory assumptions still need review be
 | [review_dj_retained_phrase.py](review_dj_retained_phrase.py) | Review one bounded phrase from retained Jamloom audio; never a production selector. | 0 | 1 |
 | [review_dj_spoken_hooks.py](review_dj_spoken_hooks.py) | Publish the retained spoken-hook audition locally, preserving source hashes. | 0 | 0 |
 | [review_dj_vocal_effects.py](review_dj_vocal_effects.py) | Audition real deck effects on an existing original; no generation or reference audio. | 0 | 1 |
-| [review_dj_warm.py](review_dj_warm.py) | Verify the two-user qualification and publish only audio to the local review server. | 11 | 3 |
+| [review_dj_warm.py](review_dj_warm.py) | Verify the two-user qualification and publish only audio to the local review server. | 12 | 3 |
 | [train_dj_structure.py](train_dj_structure.py) | Private numeric research: forecast energy changes, not expert deck actions or audio. | 1 | 1 |
 | [verify_electronic_assets.py](verify_electronic_assets.py) | Verify the original electronic palette and generator provenance offline. | 1 | 1 |
 

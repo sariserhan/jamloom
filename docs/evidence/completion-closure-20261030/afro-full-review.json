@@ -1,0 +1,325 @@
+{
+  "status": "PASS technical",
+  "human_listening": "NOT RUN",
+  "listener_id": "owner",
+  "report_sha256": "5598472bcdee5070228c5b6d4cab9f1c154ae85920736a928e2ee599d2dcb1b6",
+  "source_status": "PASS technical",
+  "target_lufs": -19.04,
+  "tracks": [
+    {
+      "id": "previous-house",
+      "file": "clip-0.mp3",
+      "source_sha256": "a6648d1112ff0ea639999a091d9ff07c6f943d3af5c6001fbdf31851f596ca23",
+      "sha256": "d390b7180621ed19fd8e4a3116b9205169a1eef90c2bfc00242d1848c7b0b7d8",
+      "gain_db": -1.5899999999999999,
+      "level": {
+        "input_i": "-19.04",
+        "input_tp": "-2.50",
+        "input_lra": "6.20",
+        "input_thresh": "-29.24"
+      },
+      "section_change_candidates": [],
+      "stems": []
+    },
+    {
+      "id": "matched-house-baseline",
+      "file": "clip-1.mp3",
+      "source_sha256": "bb7e174b572f0fb8d78a747b7b522a2ca31c40075c86a13830298571bd97f958",
+      "sha256": "ca802df19831f5662e07d5128eaf8ef34b3e0523ccaedc9bb6bd043c7f64ae36",
+      "gain_db": -4.799999999999999,
+      "level": {
+        "input_i": "-19.04",
+        "input_tp": "-5.60",
+        "input_lra": "2.90",
+        "input_thresh": "-29.05"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 31.48,
+          "score": 0.0883
+        },
+        {
+          "seconds": 47.21,
+          "score": 0.1477
+        },
+        {
+          "seconds": 141.64,
+          "score": 1.0661
+        },
+        {
+          "seconds": 157.38,
+          "score": 1.0647
+        },
+        {
+          "seconds": 236.07,
+          "score": 0.4917
+        },
+        {
+          "seconds": 251.8,
+          "score": 0.5037
+        },
+        {
+          "seconds": 267.54,
+          "score": 0.2464
+        },
+        {
+          "seconds": 283.28,
+          "score": 0.1249
+        }
+      ],
+      "stems": [
+        {
+          "name": "bass",
+          "file": "stem-1-0.mp3",
+          "source_sha256": "cc3c72a9562e5c7e4109570ef319d2464c7b100b257c8b70525a7e256d8d1409",
+          "sha256": "2bf523665941ef4239774975a7b6f8beb2701b4ce20e85c2b594ecd8fa4e5ced"
+        },
+        {
+          "name": "drums",
+          "file": "stem-1-1.mp3",
+          "source_sha256": "b060afdc635a85d941255cb13eeea728656fa155e76cd3b9dd0c83b36fa92006",
+          "sha256": "c3a75cc8cc70b3becbc878d88098b7e6a86ba581e586efeaeb294cb2c1509f49"
+        },
+        {
+          "name": "percussion",
+          "file": "stem-1-2.mp3",
+          "source_sha256": "473203d007fc380b9920389a554f603650e6e90af59059fb718f11c02bca4419",
+          "sha256": "1580d2b01363023e5826b9ee5514448a4cded0c8e8557d6058227281a0bc95e5"
+        },
+        {
+          "name": "keyboard",
+          "file": "stem-1-3.mp3",
+          "source_sha256": "bdbecef7ec6c40b75f018db12438c8856740dd3d64c99816925394cee8bcea7c",
+          "sha256": "42f984891ea5c8f8b7f1ccb1ce7f482b1805de3100cb52dec9f86d143adb228f"
+        },
+        {
+          "name": "synth",
+          "file": "stem-1-4.mp3",
+          "source_sha256": "39a22e8468d6675b5da94351a65cfd9c507a526067e839f2d11f5aa216851482",
+          "sha256": "d06a2b2ab7bf214724d8e7973a19d9426c8813f8399b1bfb90c6c7c7dad3c740"
+        }
+      ]
+    },
+    {
+      "id": "vocal-led-organic-afro-house",
+      "file": "clip-2.mp3",
+      "source_sha256": "49218bc483735786b98fc3edd13dddecd754014a648f9224057edc42b14e2f82",
+      "sha256": "118abb3e85591553a9b5e89bba29456a3139e3617bbc0c397346d830fe97ae18",
+      "gain_db": -5.989999999999998,
+      "level": {
+        "input_i": "-19.03",
+        "input_tp": "-6.28",
+        "input_lra": "3.70",
+        "input_thresh": "-29.15"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 94.43,
+          "score": 0.6612
+        },
+        {
+          "seconds": 110.16,
+          "score": 1.0046
+        },
+        {
+          "seconds": 173.11,
+          "score": 0.7994
+        },
+        {
+          "seconds": 188.85,
+          "score": 0.647
+        },
+        {
+          "seconds": 204.59,
+          "score": 1.9537
+        },
+        {
+          "seconds": 236.07,
+          "score": 1.3575
+        },
+        {
+          "seconds": 251.8,
+          "score": 1.4071
+        },
+        {
+          "seconds": 283.28,
+          "score": 1.2707
+        }
+      ],
+      "stems": [
+        {
+          "name": "vocals",
+          "file": "stem-2-0.mp3",
+          "source_sha256": "c50b23c72459988a8860606821f9406892fde7b9ddad7abfe6ea182a9d082f49",
+          "sha256": "5d184c77a4735f06a396434461dc9debba0f06528c4cdc42f9694b3f951dfb1c"
+        },
+        {
+          "name": "bass",
+          "file": "stem-2-1.mp3",
+          "source_sha256": "067f28ff503fe27f90262b9022b162ba0aaa551d3adc3df950432a191ebd7944",
+          "sha256": "0dc21d8efe72f0947172b020f5e106e2f3e9c4c95f43f65147e86d36dd999358"
+        },
+        {
+          "name": "drums",
+          "file": "stem-2-2.mp3",
+          "source_sha256": "631aa8ad0ce5c270a95dbc1d2f262ee573b403424267fd678aadb5b13dc74503",
+          "sha256": "1e7e368048a8294265becc7f5ef32e65506a1dda704f6b513d2f69239fa2075e"
+        },
+        {
+          "name": "percussion",
+          "file": "stem-2-3.mp3",
+          "source_sha256": "4e1fee4c10dca28c748d2832568876a19f230062465e8b7d0284f92a0ad9cb55",
+          "sha256": "d84592f4d69954e6fafcc7fc8ee464e5e05f27ddc5f2a79add135bbe0715a810"
+        },
+        {
+          "name": "keyboard",
+          "file": "stem-2-4.mp3",
+          "source_sha256": "f03c06d0d64adcc90d31f77d901a853855e556d3c70f966af554d9d9c2a79805",
+          "sha256": "29b64f7613e01c93e49e95a24c7eac8f683361eeff2a53d2799fd3df2144a512"
+        }
+      ]
+    },
+    {
+      "id": "bass-driven-organic-afro-house",
+      "file": "clip-3.mp3",
+      "source_sha256": "e86c748cd17990d7fa67a92755335a266068c0650add9e3abf1f9a3376574522",
+      "sha256": "959f9fb76666f0e97c00002e2f9632fd98a3b0a651c7868f4b10c8537d917d30",
+      "gain_db": -5.0,
+      "level": {
+        "input_i": "-19.04",
+        "input_tp": "-5.53",
+        "input_lra": "2.50",
+        "input_thresh": "-29.12"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 31.74,
+          "score": 0.2022
+        },
+        {
+          "seconds": 126.94,
+          "score": 1.2101
+        },
+        {
+          "seconds": 142.81,
+          "score": 0.3614
+        },
+        {
+          "seconds": 158.68,
+          "score": 0.6882
+        },
+        {
+          "seconds": 174.55,
+          "score": 0.1941
+        },
+        {
+          "seconds": 269.75,
+          "score": 0.1659
+        },
+        {
+          "seconds": 285.62,
+          "score": 0.243
+        }
+      ],
+      "stems": [
+        {
+          "name": "bass",
+          "file": "stem-3-0.mp3",
+          "source_sha256": "7ba10fd253327e3681c7846488369309976988fec43ce0a6043461de220d2ec8",
+          "sha256": "86790ba4b5fc739ec983294beb7d9d47233d1ec65bd9f33aafe397e106c3c34c"
+        },
+        {
+          "name": "drums",
+          "file": "stem-3-1.mp3",
+          "source_sha256": "4e6e9b56073da6d8f7af588404e3cb9c89d3aec20dcfeeb8b722478d0837a92b",
+          "sha256": "4ab4afaff96a9f1535900d27a47208234a8cbddae1d9107d5b86e2dc6fa964ed"
+        },
+        {
+          "name": "percussion",
+          "file": "stem-3-2.mp3",
+          "source_sha256": "c3c98e970c37e224d7199efbfdf1aef2b1f589e48219690ca542b080a36856cb",
+          "sha256": "c6fcef5dc0b0c12f5f96a407aeb371b8e3aa1635a7de5afd65a1a35d4bba0724"
+        },
+        {
+          "name": "keyboard",
+          "file": "stem-3-3.mp3",
+          "source_sha256": "3274c100c96b964d060df17d258b2648d86182a247f6f6eb01c64211b7109e2a",
+          "sha256": "99ff24d803aebc9f080f6f6eb7fbee64b595c237118c526bdc3d01b1c2dbfe5f"
+        },
+        {
+          "name": "synth",
+          "file": "stem-3-4.mp3",
+          "source_sha256": "8b6e1cc430ba8f37603d3f533fad2868114758eea8d94ef0df9e2632cb5b9e0f",
+          "sha256": "b445c0a56e425112a9843654d1171e86d4fd862f679cf8826fe6f41df49d3303"
+        }
+      ]
+    },
+    {
+      "id": "percussive-driving-organic-afro-house",
+      "file": "clip-4.mp3",
+      "source_sha256": "4dc2b6b5c1f2f66f1ff857b286b2dab5c1efd36f87f2d2d8ebb537064000afb5",
+      "sha256": "4a44b8899de38217f3efa66c01e5253a4e7a38f19b25787c600061e3c425d9f0",
+      "gain_db": -2.8200000000000003,
+      "level": {
+        "input_i": "-19.04",
+        "input_tp": "-3.42",
+        "input_lra": "2.40",
+        "input_thresh": "-29.19"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 92.9,
+          "score": 0.1957
+        },
+        {
+          "seconds": 154.84,
+          "score": 2.8234
+        },
+        {
+          "seconds": 170.32,
+          "score": 2.7638
+        },
+        {
+          "seconds": 278.71,
+          "score": 0.3337
+        },
+        {
+          "seconds": 294.19,
+          "score": 4.8296
+        }
+      ],
+      "stems": [
+        {
+          "name": "drums",
+          "file": "stem-4-0.mp3",
+          "source_sha256": "728652033715b16aed58a3badee672acc66fc123885b59036c08baa1a35cd087",
+          "sha256": "8a358aa18c173c2629f46d4d2460a68b8efccd4e0095ed9d255fa85318eabffc"
+        },
+        {
+          "name": "percussion",
+          "file": "stem-4-1.mp3",
+          "source_sha256": "1549ace2f9a8619b60f9f62b1caab7e419f922f18dae263f44aa7fae589251e7",
+          "sha256": "ddffa926a193b230f16e71e48bcd0a1ada59e8a9a53fe319e58dc46f016b865d"
+        },
+        {
+          "name": "bass",
+          "file": "stem-4-2.mp3",
+          "source_sha256": "fc9a5720ffd3ff14b2c559bcaab3c0e42c28a016b01eb4e31403797bc7acbe72",
+          "sha256": "1060a74aff9ec45dbf9c96b455261cbbb0f90ba22c24ab645dd23e9e77a4b4ec"
+        },
+        {
+          "name": "keyboard",
+          "file": "stem-4-3.mp3",
+          "source_sha256": "7d8823b1d4b4c86dfec2052ecb21ac3b9b6c4c825f5b134e4f824de98bff082b",
+          "sha256": "5a7160bca6bfb38e91be3bd1280f9d45161fcba8b4199319edcefd5549401ba9"
+        },
+        {
+          "name": "synth",
+          "file": "stem-4-4.mp3",
+          "source_sha256": "dda03e4ee0454f9d296406b16b2646fff44e81b7989184c8d7f01e38902111b0",
+          "sha256": "797a2317d2611ed38ddc0f6ea6cc455808023b8369caaab96c718084b7d0497a"
+        }
+      ]
+    }
+  ]
+}

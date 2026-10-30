@@ -1,10 +1,10 @@
-**Active closure — 2026-10-30:** [Current follow-through](CLOSURE_FOLLOWTHROUGH.md): one-owner listening amendment complete; one newly authorized $5.90 GPU attempt is active. Previous provider snapshots below predate this rental.
+**Latest closure — 2026-10-30:** [Current follow-through](CLOSURE_FOLLOWTHROUGH.md): one-owner listening amendment complete; the authorized GPU attempt passed technical qualification with four five-minute mixes and 20 stems. Cleanup is confirmed. Owner listening and section labels remain pending.
 
 **Listening amendment — 2026-10-30:** The owner is the sole required listener. Additional/independent listener recruitment is no longer a completion gate. Actual owner judgments, coverage and the remaining technical/release requirements still apply. [Specification amendment](LISTENING_OWNER_AMENDMENT.md).
 
 ## Current follow-through — 2026-10-30
 
-**PARTIAL overall.** [Current work and evidence](COMPLETION_CURRENT.md): simulator MP3 playback is fixed for Debug automation; all 22 UI flows, two isolated StoreKit fixtures and 51 other native tests pass (four opt-in checks skipped). Both unsigned iOS Release and website production builds/audits pass. Bootstrap prerequisites, repository mapping and editable unverified target drafts pass locally. Initial failures and two undiagnosed SwiftUI runtime warnings are retained. Read-only provider/schema checks pass; verified musical targets, independent participants, fresh hosted compute, physical-device work and release gates remain open.
+**PARTIAL overall.** [Current work and evidence](COMPLETION_CURRENT.md): simulator MP3 playback is fixed for Debug automation; all 22 UI flows, two isolated StoreKit fixtures and 51 other native tests pass (four opt-in checks skipped). Both unsigned iOS Release and website production builds/audits pass. Bootstrap prerequisites, repository mapping and editable unverified target drafts pass locally. Initial failures and two undiagnosed SwiftUI runtime warnings are retained. Read-only provider/schema checks pass; verified musical targets, remaining owner judgments, fresh hosted compute, physical-device work and release gates remain open.
 
 ## Organic Afro House target — 2026-10-28
 

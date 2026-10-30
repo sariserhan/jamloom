@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "scope": "Complete serial ios_smoke.sh execution: StoreKit, other native tests, UI tests, unsigned Release build and bundle audit",
+  "exit_code": 0,
+  "passed": 75,
+  "skipped": 4,
+  "failed": 0,
+  "lanes": [
+    {
+      "lane": "storekit",
+      "passed": 2,
+      "skipped": 0,
+      "failed": 0,
+      "runtime_warnings": [],
+      "summary_sha256": "afea5077224e0b7616db1a6cec5bc7df3f86d53f1aa8008e240019519d5f67e3"
+    },
+    {
+      "lane": "tests",
+      "passed": 51,
+      "skipped": 4,
+      "failed": 0,
+      "runtime_warnings": [],
+      "summary_sha256": "3ba5de8cf73b2f84930d058ae87de84c40382103e4711fe9f89ab1f9cf6e59a7"
+    },
+    {
+      "lane": "ui",
+      "passed": 22,
+      "skipped": 0,
+      "failed": 0,
+      "runtime_warnings": [
+        {
+          "issueType": "Runtime Warning",
+          "message": "Invalid frame dimension (negative or non-finite)."
+        },
+        {
+          "issueType": "Runtime Warning",
+          "message": "Invalid frame dimension (negative or non-finite)."
+        }
+      ],
+      "summary_sha256": "ac0cca6ba579b9771e9614b80801f1aa2f35512b533542110b3e62679dacaadf"
+    }
+  ],
+  "release_bundle": {
+    "gate": "PASS",
+    "bundle_identifier": "com.djayvo.app",
+    "version": "0.10.4",
+    "build": "34",
+    "minimum_os": "17.0",
+    "binary_sha256": "6b621832900a918aa370ae81ff810a3a1f459104b9d0ff030d361e68eb8da833",
+    "bundle_bytes": 127260867,
+    "private_audio_and_debug_controls_absent": "PASS",
+    "license_notices": "PASS",
+    "privacy_manifest": "PASS",
+    "app_store_approval": "NOT RUN",
+    "scope": "Static bundle checks; signing, physical behavior and compliance require separate evidence."
+  },
+  "verbose_simulator_diagnostics": "PARTIAL: optional collection timed out after 600 seconds; XCTest results finalized successfully without interruption",
+  "physical_device": "NOT RUN: disconnected",
+  "evidence_root": "renders/completion-closure-20261030/full-smoke"
+}

@@ -1,5 +1,13 @@
 # Organic Afro House quality target — 2026-10-28
 
+## Current result — 2026-10-30
+
+**PASS technical:** authorized attempt 004 generated all three five-minute targets, the matched house control and 20 stems. The full raw/archive output is retained. Independent local decoding verifies all 24 WAV hashes, 300-second duration, 48 kHz stereo PCM24, finite samples and zero clipping. The owner review includes 25 MP3s: the four mixes, previous one-minute Jamloom baseline and 20 stems. Mixes are matched to -19.04 LUFS; stems retain their original relative levels.
+
+Cleanup is independently confirmed with zero active rentals. Observed attempt debit is $0.230203, and aggregate campaign debit is $0.296209; these account-credit deltas are not a final invoice. The $5.90 one-attempt permit is consumed. No retry, training or public activation occurred. [Receipt](evidence/afro-house-qualification-20261028/gpu-attempt-004.json), [audio audit](evidence/completion-closure-20261030/afro-audio-audit.json), [full report](CLOSURE_FOLLOWTHROUGH.md), [listen locally](http://127.0.0.1:8771).
+
+**NOT RUN:** actual owner judgments and section-role labels. The owner is the sole required listener under the October 30 amendment. Phrase-change timestamps are diagnostic candidates; they do not identify heard musical sections.
+
 ## Source and intent
 
 The owner supplied `Jamloom — Music Quality Reference: Organic, Vocal-Led Afro House` after listening to the reference track and writing a production brief. Use its high-level musical characteristics as the target. The brief explicitly prohibits copying the reference's melody, lyrics, recording, vocal identity or distinctive arrangement, and prohibits using the reference as training data without verified rights. No reference audio was used in the implementation or model training.
@@ -18,7 +26,7 @@ The pinned [ACE-Step 1.5 Turbo model card](https://huggingface.co/ACE-Step/Ace-S
 
 Measured the pinned prior Jamloom house output locally as a baseline before the GPU run: 60 seconds, 48 kHz stereo PCM; -17.4 LUFS integrated, -0.9 dBFS true peak, no clipped samples, 129.2 BPM estimate against a 128 BPM prompt, and an A-minor key estimate. The source receipt and artifact hashes are retained in [baseline metrics](evidence/afro-house-qualification-20261028/jamloom-baseline-metrics.json). These signal measurements do not establish musical quality; listening remains NOT RUN.
 
-## Evidence
+## Earlier evidence — 2026-10-28
 
 - **PASS — prompt contract:** `tests/test_dj_track_worker.py` checks the 122 BPM target and required Afro House prompt characteristics.
 - **PASS — style contract:** `apps/site/tests/ai-dj.test.ts` checks that the new style is accepted and its default beat direction validates.
@@ -34,10 +42,10 @@ Measured the pinned prior Jamloom house output locally as a baseline before the 
 - **PASS — bootstrap diagnostics correction:** the launcher now writes its first stage and exit trap before argument/deadline validation and allows 15 seconds of container-clock skew; its independent watchdog still bounds the rental. In a CPU-only Podman container, the exact source archive extraction and launcher passed with an in-range deadline and produced `run.exit=0`; an out-of-range deadline was rejected with `run.exit=2`. Model setup and inference were intercepted. **NOT RUN — provider execution:** this local mock does not establish GPU, provider or generation behavior.
 - **FAIL — third authorized attempt:** the owner’s latest instruction authorized the prepared single run, capped at $5.97 within the $6 aggregate ceiling. Preflight reserved $2.123 on a new RTX 3090 host. The source archive uploaded, but system-package installation exceeded its 300-second bound and exited 124 before model setup. Automatic cleanup is confirmed with zero matching rentals. The provider reported $0.035026 debit at cleanup; the latest credit check implies $0.040685 for this attempt and $0.066005 aggregate campaign debit, reflecting delayed billing. No inference or stems ran. [Attempt receipt](evidence/afro-house-qualification-20261028/gpu-attempt-003.json), [provider report](evidence/afro-house-qualification-20261028/gpu-attempt-003-report.json), [state](evidence/afro-house-qualification-20261028/gpu-attempt-003-state.json). The one-attempt plan is consumed; no retries are authorized.
 
-## Remaining implementation
+## Remaining owner review
 
-1. A new explicitly scoped permit is required before any further provider attempt; diagnose and correct the 300-second package-install timeout first.
-2. Generate the three target originals and 20 stems, compare them with the pinned previous Jamloom output and matched generic-house control, then review section timelines.
-3. Have the owner listen and record track-specific feedback in the [review sheet](evidence/afro-house-qualification-20261028/listening-review-template.md); retain rejected candidates and evidence without promoting them.
+1. Compare each complete target with the matched house control and its opening minute with the previous Jamloom house output.
+2. Label the sections actually heard, correcting the detected phrase-change candidates where needed.
+3. Record track-specific accept / revise / reject judgments in the [review sheet](evidence/afro-house-qualification-20261028/listening-review-template.md) or local review page; retain rejected candidates and evidence.
 
-Overall status: **PARTIAL**. The local style direction is in place; the three-track quality objective remains open.
+Overall status: **PARTIAL quality acceptance; PASS technical deliverables**. The owner review remains open.
