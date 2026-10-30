@@ -1,3 +1,5 @@
+`audit_bass_sources.py` checks the bass strategy against a frozen licensed source ledger. `prepare_bass_comparison.py` prepares anonymous level-matched comparisons and a resumable owner-only review; it never supplies ratings. [Current evidence](../docs/UNFINISHED_CURRENT.md).
+
 `source_bass_response.py` renders a private source-coloured bass pilot without a model or piano. `question_reference_structure.py` measures the permitted reference without admitting training labels. [Evidence and reproduction](../docs/QUESTION_BASS_RESPONSE.md). The earlier `source_phrase_response.py` auditions were rejected by the owner.
 
 # Script directory

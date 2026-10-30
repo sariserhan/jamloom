@@ -1,0 +1,53 @@
+{
+  "status": "AWAITING_EXPLICIT_AUTHORIZATION",
+  "source_commit": "1e80c647ae5800c010539cee86a5a4ef125f0c68",
+  "source_base": "85b2ce7ba542af67963376f6ae89c04e8201401e",
+  "source_checkout": "/tmp/jamloom-worker-ready-20261030",
+  "source_tests": "22 PASS in isolated source checkout",
+  "changes": [
+    "Route hosted identity separation through packaged Spleeter",
+    "Accept both Improvise 30\u201345s and Music DNA 100\u2013140s bounds; reject truncated PCM",
+    "Run missing-research-module routing regression before image build"
+  ],
+  "publication": {
+    "branch": "codex/runpod-setup",
+    "expected_remote_head": "85b2ce7ba542af67963376f6ae89c04e8201401e",
+    "method": "Fast-forward only; one existing GitHub Actions image build, no rerun",
+    "workflow_timeout_minutes": 60,
+    "website_deployment_disabled_by": "apps/site/vercel.json git.deploymentEnabled.codex/runpod-setup=false"
+  },
+  "paid_diagnostic": {
+    "max_usd": 3,
+    "max_workers": 1,
+    "max_provider_requests": 1,
+    "runtime_seconds": 1200,
+    "shutdown_allowance_seconds": 130,
+    "retries": 0,
+    "source": "Original procedural WAV only; no human audio",
+    "source_sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+    "mode": "--reggae-diagnostic",
+    "input_duration_seconds": 3,
+    "output_duration_seconds": 30,
+    "endpoint": "jl77hn92npt65k",
+    "before_after_limits": [
+      0,
+      0
+    ],
+    "independent_watchdog": true,
+    "temporary_test_database_and_credits": true,
+    "cleanup": "Cancel outstanding job, restore 0/0, remove temporary storage/database, verify zero active jobs/workers and credit settlement",
+    "stop_on_any_failure": true
+  },
+  "preflight_before_spend": [
+    "Confirm successful single build and immutable digest tied to exact source commit",
+    "Verify endpoint disabled and empty",
+    "Recheck live pricing against total cap",
+    "Verify synthetic input hash and trial harness hashes"
+  ],
+  "excludes": [
+    "Website/app publication",
+    "Live sales",
+    "Additional retries",
+    "Broader genre/DNA/AI DJ qualification beyond this one diagnostic"
+  ]
+}

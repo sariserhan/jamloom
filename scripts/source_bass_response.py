@@ -73,10 +73,10 @@ def percussion(seed):
 
 def compose(pcm, seed=103031):
     signal = features(pcm)
-    if len(pcm) > 2.5*RATE:
-        raise ValueError('This audition expects one short call, at most 2.5 seconds')
     colour = source_spectrum(pcm)
-    frames = round((BARS*4*BEAT+1)*RATE)
+    calls = (0, 40, 74)
+    clean_ranges = [(round(beat*BEAT*RATE), round(beat*BEAT*RATE)+len(pcm)) for beat in calls]
+    frames = max(round((BARS*4*BEAT+1)*RATE), clean_ranges[-1][1]+RATE)
     stems = {name: np.zeros((frames, 2), np.float64) for name in ('drums', 'sub', 'bass', 'voice', 'air')}
     events = []
     drums = percussion(seed)
@@ -87,13 +87,16 @@ def compose(pcm, seed=103031):
         start = round(at*BEAT*RATE)
         if start < 0 or start+len(audio) > frames:
             raise ValueError('Event outside arrangement')
+        if stem == 'voice' and kind != 'clean_call' and any(
+                start < end and start+len(audio) > begin for begin, end in clean_ranges):
+            return  # Never lay a voice fragment over a complete source call.
         stems[stem][start:start+len(audio)] += audio*gain
         events.append({'stem': stem, 'beat': at, 'start_frame': start,
                        'frames': len(audio), 'gain': gain, 'kind': kind, **extra})
 
     # The complete source call is preserved. Later fragments are signal regions, not verified words.
     voice_gain = min(.38/max(np.max(np.abs(pcm)), 1e-9), .13/max(np.sqrt(np.mean(pcm**2)), 1e-9))
-    for beat in (0, 40, 74):
+    for beat in calls:
         put('voice', beat, faded(pcm, .01), voice_gain, 'clean_call', source_frames=[0, len(pcm)], rate=1)
     stresses = [r['stress_frame']/RATE/BEAT for r in signal['regions']]
     scale = min(1., 2.5/max(stresses[-1], .01))
@@ -166,7 +169,7 @@ def render(source, output, consent=False):
     if shutil.disk_usage(output.parent).free < 15*1024**3:
         raise RuntimeError('Free disk reserve reached')
     original_hash = digest(source)
-    pcm = read_pcm(source, (.5, 2.5))
+    pcm = read_pcm(source, (.5, 5.))
     mixed, stems, plan = compose(pcm)
     if digest(source) != original_hash:
         raise ValueError('Source changed during composition')

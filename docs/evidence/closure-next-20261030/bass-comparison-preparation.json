@@ -1,0 +1,9 @@
+{
+  "technical": "PASS",
+  "human_listening": "NOT RUN",
+  "blocks": 23,
+  "freeze": "dd285a1bec665c06fdded7142b8222d54f4ab82dde290fa249abaa65b3cc3512",
+  "source_batch_sha256": "be9c72f1195011d34e54fb3b0878418cc59c174dd47b36d127ead36e6e52c88f",
+  "script_sha256": "31de86bbf144188055e710179d8fb3e942f0dcbc61b27333face90249591d1a1",
+  "scope": "One strategy against one fixed bed; not the complete three-strategy M1 study."
+}

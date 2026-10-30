@@ -40,9 +40,19 @@ class BassResponse(unittest.TestCase):
                          ['call','rise','first_drop','break_and_call','second_drop','ending'])
 
     def test_long_or_silent_input_is_not_composed(self):
-        for pcm in (np.zeros((RATE, 2)), np.tile(voice(), (3, 1))):
+        for pcm in (np.zeros((RATE, 2)), np.tile(voice(), (5, 1))):
             with self.assertRaises(ValueError):
                 compose(pcm)
+
+    def test_five_second_input_preserves_complete_calls_without_fragment_overlap(self):
+        source = np.tile(voice(), (5, 1))[:5*RATE]
+        mix, stems, plan = compose(source)
+        self.assertLess(len(mix)/RATE, 40)
+        for event in [e for e in plan['events'] if e['kind'] == 'clean_call']:
+            start = event['start_frame']
+            np.testing.assert_allclose(stems['voice'][start:start+len(source)],
+                faded(source, .01)*event['gain']*plan['master_gain'], atol=1e-14)
+        self.assertTrue(np.all(mix[-RATE//10:] == 0))
 
 
 if __name__ == '__main__':

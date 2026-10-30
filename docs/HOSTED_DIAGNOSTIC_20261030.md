@@ -1,3 +1,5 @@
+**Current follow-through:** [Exact remaining gates](UNFINISHED_CURRENT.md) now includes broader input checks, an anonymous owner comparison and the prepared corrected worker source. The dated evidence below remains historical.
+
 # Approved hosted diagnostic — 2026-10-30
 
 **FAIL qualification; PASS shutdown and test-credit settlement.** The owner

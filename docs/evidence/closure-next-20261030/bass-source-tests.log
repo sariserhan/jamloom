@@ -1,0 +1,9 @@
+test_actual_stems_sum_and_clean_calls_retain_source (test_source_bass_response.BassResponse.test_actual_stems_sum_and_clean_calls_retain_source) ... ok
+test_five_second_input_preserves_complete_calls_without_fragment_overlap (test_source_bass_response.BassResponse.test_five_second_input_preserves_complete_calls_without_fragment_overlap) ... ok
+test_long_or_silent_input_is_not_composed (test_source_bass_response.BassResponse.test_long_or_silent_input_is_not_composed) ... ok
+test_source_spectrum_changes_the_bass_sound_at_same_note (test_source_bass_response.BassResponse.test_source_spectrum_changes_the_bass_sound_at_same_note) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.327s
+
+OK

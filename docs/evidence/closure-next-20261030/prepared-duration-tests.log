@@ -1,0 +1,8 @@
+test_both_product_endpoints_preserve_all_frames_and_samples (test_hosted_separator_contract.HostedSeparatorContract.test_both_product_endpoints_preserve_all_frames_and_samples) ... ok
+test_invalid_lengths_formats_and_truncation_fail_before_model_loading (test_hosted_separator_contract.HostedSeparatorContract.test_invalid_lengths_formats_and_truncation_fail_before_model_loading) ... ok
+test_maximum_length_overlap_add_keeps_last_frame (test_hosted_separator_contract.HostedSeparatorContract.test_maximum_length_overlap_add_keeps_last_frame) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.221s
+
+OK

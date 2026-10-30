@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "raw_performance_sha256": "ce64948dcbb719c71ddf2fb3071f6320b53918757bbda4d8a6f40d22f2483043",
+  "owner_accepted_original": "docs/evidence/question-bass-response-20261030/owner-acceptance.json",
+  "regression_output": "renders/question-bass-regression-20261030/performance.wav",
+  "audio_changed": false,
+  "meaning": "Longer-input support preserves the exact accepted pilot; new-source musical quality is not inferred"
+}
