@@ -5,6 +5,7 @@ export type RunpodState=typeof states[number];
 export type RunpodJob={
  id:string;product:'music-dna'|'improvise';payload:Record<string,unknown>;output_url:string;timeout_seconds:number;
  source?:{url:string;bytes:number;sha256:string};ttl_seconds?:number;
+ retain_rejected_audio?:boolean;
 };
 export type RunpodResult={id:string;status:RunpodState;output?:Record<string,unknown>;delayTime?:number;executionTime?:number;failure?:string};
 
