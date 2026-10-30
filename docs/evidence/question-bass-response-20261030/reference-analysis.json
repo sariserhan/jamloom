@@ -1,0 +1,376 @@
+{
+  "status": "PASS signal analysis; listening NOT RUN",
+  "source_sha256": "e830e315e59e111ef09f6436483f094c9b2e6ed8c86273ebc13021fdea98b9e8",
+  "permission_sha256": "eee31e0e79608dfeb520770be9292b9e2556503a40f4ba7bbaa4b0e825ce775b",
+  "script_sha256": "c1788df03d77d0db8d059ea1bc70233281df267941d41253bbca9f91d62deac0",
+  "seconds": 155.3165,
+  "windows": [
+    {
+      "start_seconds": 0.0,
+      "end_seconds": 15.0,
+      "pulse_candidates": [
+        {
+          "bpm": 156.25,
+          "periodicity": 0.408
+        },
+        {
+          "bpm": 79.79,
+          "periodicity": 0.376
+        },
+        {
+          "bpm": 107.14,
+          "periodicity": 0.137
+        }
+      ]
+    },
+    {
+      "start_seconds": 15.0,
+      "end_seconds": 30.0,
+      "pulse_candidates": [
+        {
+          "bpm": 156.25,
+          "periodicity": 0.421
+        },
+        {
+          "bpm": 79.79,
+          "periodicity": 0.353
+        },
+        {
+          "bpm": 101.35,
+          "periodicity": 0.073
+        }
+      ]
+    },
+    {
+      "start_seconds": 30.0,
+      "end_seconds": 45.0,
+      "pulse_candidates": [
+        {
+          "bpm": 156.25,
+          "periodicity": 0.564
+        },
+        {
+          "bpm": 79.79,
+          "periodicity": 0.449
+        },
+        {
+          "bpm": 101.35,
+          "periodicity": 0.199
+        }
+      ]
+    },
+    {
+      "start_seconds": 45.0,
+      "end_seconds": 60.0,
+      "pulse_candidates": [
+        {
+          "bpm": 79.79,
+          "periodicity": 0.618
+        },
+        {
+          "bpm": 156.25,
+          "periodicity": 0.558
+        },
+        {
+          "bpm": 104.17,
+          "periodicity": 0.239
+        }
+      ]
+    },
+    {
+      "start_seconds": 60.0,
+      "end_seconds": 75.0,
+      "pulse_candidates": [
+        {
+          "bpm": 156.25,
+          "periodicity": 0.589
+        },
+        {
+          "bpm": 79.79,
+          "periodicity": 0.532
+        },
+        {
+          "bpm": 117.19,
+          "periodicity": 0.14
+        }
+      ]
+    },
+    {
+      "start_seconds": 75.0,
+      "end_seconds": 90.0,
+      "pulse_candidates": [
+        {
+          "bpm": 156.25,
+          "periodicity": 0.566
+        },
+        {
+          "bpm": 78.12,
+          "periodicity": 0.531
+        },
+        {
+          "bpm": 104.17,
+          "periodicity": 0.291
+        }
+      ]
+    },
+    {
+      "start_seconds": 90.0,
+      "end_seconds": 105.0,
+      "pulse_candidates": [
+        {
+          "bpm": 156.25,
+          "periodicity": 0.587
+        },
+        {
+          "bpm": 79.79,
+          "periodicity": 0.577
+        },
+        {
+          "bpm": 104.17,
+          "periodicity": 0.104
+        }
+      ]
+    },
+    {
+      "start_seconds": 105.0,
+      "end_seconds": 120.0,
+      "pulse_candidates": [
+        {
+          "bpm": 156.25,
+          "periodicity": 0.503
+        },
+        {
+          "bpm": 79.79,
+          "periodicity": 0.449
+        },
+        {
+          "bpm": 104.17,
+          "periodicity": 0.327
+        }
+      ]
+    },
+    {
+      "start_seconds": 120.0,
+      "end_seconds": 135.0,
+      "pulse_candidates": [
+        {
+          "bpm": 156.25,
+          "periodicity": 0.499
+        },
+        {
+          "bpm": 78.12,
+          "periodicity": 0.407
+        },
+        {
+          "bpm": 104.17,
+          "periodicity": 0.324
+        }
+      ]
+    },
+    {
+      "start_seconds": 135.0,
+      "end_seconds": 150.0,
+      "pulse_candidates": [
+        {
+          "bpm": 156.25,
+          "periodicity": 0.591
+        },
+        {
+          "bpm": 78.12,
+          "periodicity": 0.479
+        },
+        {
+          "bpm": 104.17,
+          "periodicity": 0.07
+        }
+      ]
+    },
+    {
+      "start_seconds": 150.0,
+      "end_seconds": 155.3165,
+      "pulse_candidates": [
+        {
+          "bpm": 138.89,
+          "periodicity": 0.343
+        },
+        {
+          "bpm": 150.0,
+          "periodicity": 0.338
+        },
+        {
+          "bpm": 163.04,
+          "periodicity": 0.305
+        }
+      ]
+    }
+  ],
+  "change_candidates": [
+    {
+      "seconds": 10,
+      "energy_delta_db": 5.67,
+      "texture_delta": 0.607,
+      "kind": "energy rise",
+      "reviewed": false,
+      "dj_action": "unknown"
+    },
+    {
+      "seconds": 40,
+      "energy_delta_db": 0.31,
+      "texture_delta": 0.449,
+      "kind": "texture change",
+      "reviewed": false,
+      "dj_action": "unknown"
+    },
+    {
+      "seconds": 60,
+      "energy_delta_db": 4.47,
+      "texture_delta": 0.649,
+      "kind": "energy rise",
+      "reviewed": false,
+      "dj_action": "unknown"
+    },
+    {
+      "seconds": 80,
+      "energy_delta_db": -8.4,
+      "texture_delta": 0.274,
+      "kind": "energy drop",
+      "reviewed": false,
+      "dj_action": "unknown"
+    },
+    {
+      "seconds": 135,
+      "energy_delta_db": -1.42,
+      "texture_delta": 0.223,
+      "kind": "texture change",
+      "reviewed": false,
+      "dj_action": "unknown"
+    }
+  ],
+  "crop_seconds": [
+    1.78,
+    3.0
+  ],
+  "exact_crop_reviewed": false,
+  "spectral_self_match": {
+    "seconds": 1.792,
+    "score": 1.0,
+    "shift_bins": 0
+  },
+  "later_match_candidates": [
+    {
+      "seconds": 8.72,
+      "score": 0.49465060234069824,
+      "duration_ratio": 0.75,
+      "log_frequency_shift_bins": 1,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 149.152,
+      "score": 0.4678756594657898,
+      "duration_ratio": 1.25,
+      "log_frequency_shift_bins": -5,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 147.12,
+      "score": 0.45594075322151184,
+      "duration_ratio": 0.75,
+      "log_frequency_shift_bins": -5,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 4.64,
+      "score": 0.4535544812679291,
+      "duration_ratio": 0.75,
+      "log_frequency_shift_bins": 0,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 57.136,
+      "score": 0.45335349440574646,
+      "duration_ratio": 0.875,
+      "log_frequency_shift_bins": 5,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 136.848,
+      "score": 0.4526546597480774,
+      "duration_ratio": 0.75,
+      "log_frequency_shift_bins": -5,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 12.768,
+      "score": 0.44185763597488403,
+      "duration_ratio": 0.75,
+      "log_frequency_shift_bins": -5,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 153.056,
+      "score": 0.4390159547328949,
+      "duration_ratio": 0.875,
+      "log_frequency_shift_bins": -5,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 139.648,
+      "score": 0.43255800008773804,
+      "duration_ratio": 0.75,
+      "log_frequency_shift_bins": -2,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 142.576,
+      "score": 0.4302774667739868,
+      "duration_ratio": 0.875,
+      "log_frequency_shift_bins": -5,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 21.44,
+      "score": 0.42388400435447693,
+      "duration_ratio": 0.75,
+      "log_frequency_shift_bins": -5,
+      "reviewed": false,
+      "reuse_verified": false
+    },
+    {
+      "seconds": 61.856,
+      "score": 0.4238806366920471,
+      "duration_ratio": 0.75,
+      "log_frequency_shift_bins": -5,
+      "reviewed": false,
+      "reuse_verified": false
+    }
+  ],
+  "scrambled_order_global_maxima": [
+    0.4637746512889862,
+    0.45606425404548645,
+    0.4488578736782074,
+    0.4671904146671295,
+    0.45237869024276733,
+    0.459882915019989,
+    0.4537121653556824,
+    0.455618679523468
+  ],
+  "training_admitted": false,
+  "audio_uploaded": false,
+  "maker_voice_sampled": false,
+  "limits": [
+    "No listening judgment, instrument identification, genre label or expert action annotation.",
+    "Pulse candidates retain half/double-time ambiguity; they are not a verified beat grid.",
+    "Spectral similarity is not proof of sample reuse; compare the scrambled-order controls.",
+    "Global log-frequency shifts do not model formant-preserving pitch transformations."
+  ]
+}

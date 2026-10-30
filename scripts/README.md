@@ -1,4 +1,4 @@
-`source_phrase_response.py` prepares three private CPU instrument auditions plus a baseline from a consented phrase, preserving the clean calls and deriving instrumental timing/register from the source. `--review` creates level-matched anonymous listening copies; it never grants musical acceptance or trains a model. [Current evidence and commands](../docs/FINISH_LOCAL.md).
+`source_bass_response.py` renders a private source-coloured bass pilot without a model or piano. `question_reference_structure.py` measures the permitted reference without admitting training labels. [Evidence and reproduction](../docs/QUESTION_BASS_RESPONSE.md). The earlier `source_phrase_response.py` auditions were rejected by the owner.
 
 # Script directory
 

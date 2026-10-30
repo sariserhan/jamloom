@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "listening": "NOT RUN",
+  "source_boundary": "NOT RUN",
+  "all_7_hashes_verified": true,
+  "all_7_files_decode": true,
+  "stem_sum_max_error": 6.103515625e-05,
+  "pcm16_tolerance": 0.00018310546875,
+  "raw_loudness": {
+    "input_i": "-16.05",
+    "input_tp": "-2.06",
+    "input_lra": "8.10",
+    "input_thresh": "-27.01"
+  },
+  "audition_loudness": {
+    "input_i": "-23.00",
+    "input_tp": "-9.01",
+    "input_lra": "8.20",
+    "input_thresh": "-33.94"
+  },
+  "audition_gain_db": -6.949999999999999,
+  "audition_sha256": "de873b404c2965bcd2f4c31cd149e4bf5a9869501c4efc81608e6c342ccb4f58",
+  "receipt": {
+    "technical": "PASS",
+    "listening": "NOT RUN",
+    "training": "NOT RUN",
+    "source_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+    "source_audio_uploaded": false,
+    "reference_backing_sampled": false,
+    "maker_voice_intentionally_used": false,
+    "source_boundary_review": "NOT RUN",
+    "source_synthesis": "Magnitude spectrum from the permitted input colours an original harmonic bass carrier; not a trained voice model.",
+    "seconds": 31.37975,
+    "peak": 0.7861924798844991,
+    "artifacts": {
+      "drums.wav": "ecb98f7ba6e594226b18f891526b732d888bc2ab63dc7dba40f4821eca0bde57",
+      "sub.wav": "14cf15d17d54c0b1da7c6fb96129d0db13df1f92d43681d18bc047fba8b54eb3",
+      "air.wav": "7ab66a72206b425c97f7bee999e7fdbfbda9ea5959ffe574966efb3898efd30b",
+      "voice.wav": "9ed5fa6ac696df60fcd5109a29a19367a7bd88a7641fdef0f5e555d52ee4904b",
+      "source.wav": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+      "performance.wav": "ce64948dcbb719c71ddf2fb3071f6320b53918757bbda4d8a6f40d22f2483043",
+      "bass.wav": "4d138cda7e5fb181eb330d14d8342c27fc1ca635b14aed58dd3f44189c747e00"
+    },
+    "script_sha256": "03e955980e8bda753d10c7800cf7db7d1194d4cf61938319a3245a9793141e58",
+    "limitations": "Authored bass-music hypothesis informed by reference tempo/category and owner feedback. No claim of reference-action reconstruction or musical acceptance."
+  },
+  "http_range": {
+    "status": 206,
+    "range": "bytes 10-29/6024990",
+    "exact_bytes": true
+  }
+}

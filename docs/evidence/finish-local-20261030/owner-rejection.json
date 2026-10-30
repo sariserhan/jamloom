@@ -1,0 +1,15 @@
+{
+  "status": "FAIL owner musical review",
+  "owner_statement": "still none of these, you are using too much piano, look how mr wobbles is making for example listen the question song which is a version of mr wobbles improvise",
+  "scope": "All A\u2013D at localhost:8774; prior Afro House acceptance is unchanged",
+  "review_key_sha256": "5d75e246fcbc37f4b0a8994312dccdc2a8c26d6f64b1eb4c83131ee3a9558e2d",
+  "candidate_sha256": {
+    "A": "fd20f8c6dff6ec0513fb34f7257074cfd7f2b857bcf531208a5de3edee2e7222",
+    "B": "df8ec6e84a2b32708c8e6a899ad32d16dace08aad8598fb03c3c452c78239a37",
+    "C": "c1162aa8fba686320149a6d5d601af3ef50f2fde2aad097255ab79633fcb53d0",
+    "D": "121ea93b34f4f5d527fbdcd42e6055dd43d45b141aac560bd27e3d930a14a22c"
+  },
+  "exact_crop_confirmation": "NOT GIVEN",
+  "requested_direction": "Study question.mp3 composition and source treatment before another candidate; reduce excessive piano",
+  "training_admitted": false
+}

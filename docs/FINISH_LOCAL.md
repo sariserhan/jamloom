@@ -1,3 +1,5 @@
+**Superseded musical result — 2026-10-30:** The owner rejected all A–D below as too piano-heavy. [Revised bass-led pilot and reference analysis](QUESTION_BASS_RESPONSE.md) are now ready at <http://127.0.0.1:8775>; quality and exact crop remain unreviewed. The owner approved the one-request/$3 hosted diagnostic; it is currently running within its fixed deadline. The earlier technical results below remain historical evidence, not musical acceptance.
+
 # Local completion follow-through — 2026-10-30
 
 **PARTIAL overall.** Three new source-responsive instrumental auditions are

@@ -1,0 +1,64 @@
+{
+  "url": "http://127.0.0.1:8775",
+  "browser": "Installed Chrome, temporary Playwright profile",
+  "browserPlugin": "Required execution tool unavailable after discovery; existing repository test workflow used",
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "identity": true,
+      "meaningfulContent": true,
+      "overflow": false,
+      "consoleErrors": [],
+      "media": [
+        {
+          "index": 0,
+          "duration": 1.22,
+          "playback": true,
+          "seek": true,
+          "exclusive": true
+        },
+        {
+          "index": 1,
+          "duration": 31.37975,
+          "playback": true,
+          "seek": true,
+          "exclusive": true
+        }
+      ],
+      "screenshot": "/tmp/jamloom-bass-review-desktop.png"
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "identity": true,
+      "meaningfulContent": true,
+      "overflow": false,
+      "consoleErrors": [],
+      "media": [
+        {
+          "index": 0,
+          "duration": 1.22,
+          "playback": true,
+          "seek": true,
+          "exclusive": true
+        },
+        {
+          "index": 1,
+          "duration": 31.37975,
+          "playback": true,
+          "seek": true,
+          "exclusive": true
+        }
+      ],
+      "screenshot": "/tmp/jamloom-bass-review-mobile.png"
+    }
+  ],
+  "status": "PASS"
+}

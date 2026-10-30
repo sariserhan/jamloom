@@ -1,0 +1,2189 @@
+{
+  "bpm": 158,
+  "half_time_bpm": 79.0,
+  "bars": 20,
+  "source_features": {
+    "tonic": 58,
+    "anchor": {
+      "midi": 58,
+      "reliable_windows": 7,
+      "spread_semitones": 2.4409019548432482,
+      "basis": "Median voiced-register estimate; speech intonation is preserved"
+    },
+    "regions": [
+      {
+        "start_frame": 4800,
+        "end_frame": 22080,
+        "stress_frame": 10560,
+        "estimated_midi": null,
+        "target_midi": 58,
+        "shift": 0,
+        "strength": 0.5584591954705908
+      },
+      {
+        "start_frame": 20160,
+        "end_frame": 37440,
+        "stress_frame": 25920,
+        "estimated_midi": null,
+        "target_midi": 58,
+        "shift": 0,
+        "strength": 0.9648579617233946
+      },
+      {
+        "start_frame": 41280,
+        "end_frame": 58560,
+        "stress_frame": 53280,
+        "estimated_midi": 59,
+        "target_midi": 58,
+        "shift": -1,
+        "strength": 1.0
+      }
+    ],
+    "source_frames": 58560,
+    "word_boundaries_verified": false
+  },
+  "bass_motif_beats": [
+    0.5,
+    1.0,
+    2.5
+  ],
+  "master_gain": 1.0,
+  "events": [
+    {
+      "stem": "voice",
+      "beat": 0,
+      "start_frame": 0,
+      "frames": 58560,
+      "gain": 0.3800115970336009,
+      "kind": "clean_call",
+      "source_frames": [
+        0,
+        58560
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "voice",
+      "beat": 40,
+      "start_frame": 729114,
+      "frames": 58560,
+      "gain": 0.3800115970336009,
+      "kind": "clean_call",
+      "source_frames": [
+        0,
+        58560
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "voice",
+      "beat": 74,
+      "start_frame": 1348861,
+      "frames": 58560,
+      "gain": 0.3800115970336009,
+      "kind": "clean_call",
+      "source_frames": [
+        0,
+        58560
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "drums",
+      "beat": 8.0,
+      "start_frame": 145823,
+      "frames": 21600,
+      "gain": 0.035,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 8.5,
+      "start_frame": 154937,
+      "frames": 21600,
+      "gain": 0.038125000000000006,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 9.0,
+      "start_frame": 164051,
+      "frames": 21600,
+      "gain": 0.04125,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 9.5,
+      "start_frame": 173165,
+      "frames": 21600,
+      "gain": 0.044375000000000005,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 10.0,
+      "start_frame": 182278,
+      "frames": 21600,
+      "gain": 0.0475,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 10.5,
+      "start_frame": 191392,
+      "frames": 21600,
+      "gain": 0.050625,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 11.0,
+      "start_frame": 200506,
+      "frames": 21600,
+      "gain": 0.053750000000000006,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 11.5,
+      "start_frame": 209620,
+      "frames": 21600,
+      "gain": 0.05687500000000001,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 12.0,
+      "start_frame": 218734,
+      "frames": 21600,
+      "gain": 0.035,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 12.5,
+      "start_frame": 227848,
+      "frames": 21600,
+      "gain": 0.038125000000000006,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 13.0,
+      "start_frame": 236962,
+      "frames": 21600,
+      "gain": 0.04125,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 13.5,
+      "start_frame": 246076,
+      "frames": 21600,
+      "gain": 0.044375000000000005,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 14.0,
+      "start_frame": 255190,
+      "frames": 21600,
+      "gain": 0.0475,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 14.5,
+      "start_frame": 264304,
+      "frames": 21600,
+      "gain": 0.050625,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 15.0,
+      "start_frame": 273418,
+      "frames": 21600,
+      "gain": 0.053750000000000006,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 15.5,
+      "start_frame": 282532,
+      "frames": 21600,
+      "gain": 0.05687500000000001,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 16,
+      "start_frame": 291646,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 19,
+      "start_frame": 346329,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 18,
+      "start_frame": 328101,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 16.0,
+      "start_frame": 291646,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 16.5,
+      "start_frame": 300759,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 17.0,
+      "start_frame": 309873,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 17.5,
+      "start_frame": 318987,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 18.0,
+      "start_frame": 328101,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 18.5,
+      "start_frame": 337215,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 19.0,
+      "start_frame": 346329,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 19.5,
+      "start_frame": 355443,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 16.5,
+      "start_frame": 300759,
+      "frames": 7291,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 16.5,
+      "start_frame": 300759,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 17.0,
+      "start_frame": 309873,
+      "frames": 15494,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 17.0,
+      "start_frame": 309873,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 18.5,
+      "start_frame": 337215,
+      "frames": 13671,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 18.5,
+      "start_frame": 337215,
+      "frames": 13671,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "voice",
+      "beat": 19.4,
+      "start_frame": 353620,
+      "frames": 17280,
+      "gain": 0.30400927762688074,
+      "kind": "source_fragment",
+      "source_frames": [
+        41280,
+        58560
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "drums",
+      "beat": 20,
+      "start_frame": 364557,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 23,
+      "start_frame": 419241,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 22,
+      "start_frame": 401013,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 20.0,
+      "start_frame": 364557,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 20.5,
+      "start_frame": 373671,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 21.0,
+      "start_frame": 382785,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 21.5,
+      "start_frame": 391899,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 22.0,
+      "start_frame": 401013,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 22.5,
+      "start_frame": 410127,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 23.0,
+      "start_frame": 419241,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 23.5,
+      "start_frame": 428354,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 20.5,
+      "start_frame": 373671,
+      "frames": 7291,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 20.5,
+      "start_frame": 373671,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 21.0,
+      "start_frame": 382785,
+      "frames": 15494,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 21.0,
+      "start_frame": 382785,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 22.5,
+      "start_frame": 410127,
+      "frames": 13671,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 22.5,
+      "start_frame": 410127,
+      "frames": 13671,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "drums",
+      "beat": 24,
+      "start_frame": 437468,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 27,
+      "start_frame": 492152,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 26,
+      "start_frame": 473924,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 24.0,
+      "start_frame": 437468,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 24.5,
+      "start_frame": 446582,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 25.0,
+      "start_frame": 455696,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 25.5,
+      "start_frame": 464810,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 26.0,
+      "start_frame": 473924,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 26.5,
+      "start_frame": 483038,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 27.0,
+      "start_frame": 492152,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 27.5,
+      "start_frame": 501266,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 24.5,
+      "start_frame": 446582,
+      "frames": 7291,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 24.5,
+      "start_frame": 446582,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 25.0,
+      "start_frame": 455696,
+      "frames": 15494,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 25.0,
+      "start_frame": 455696,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 26.5,
+      "start_frame": 483038,
+      "frames": 13671,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 26.5,
+      "start_frame": 483038,
+      "frames": 13671,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "drums",
+      "beat": 28,
+      "start_frame": 510380,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 31,
+      "start_frame": 565063,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 30,
+      "start_frame": 546835,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 28.0,
+      "start_frame": 510380,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 28.5,
+      "start_frame": 519494,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 29.0,
+      "start_frame": 528608,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 29.5,
+      "start_frame": 537722,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 30.0,
+      "start_frame": 546835,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 30.5,
+      "start_frame": 555949,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 31.0,
+      "start_frame": 565063,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 31.5,
+      "start_frame": 574177,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 28.5,
+      "start_frame": 519494,
+      "frames": 7291,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 28.5,
+      "start_frame": 519494,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 29.0,
+      "start_frame": 528608,
+      "frames": 15494,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 29.0,
+      "start_frame": 528608,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 30.5,
+      "start_frame": 555949,
+      "frames": 13671,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 30.5,
+      "start_frame": 555949,
+      "frames": 13671,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "voice",
+      "beat": 31.0,
+      "start_frame": 565063,
+      "frames": 17280,
+      "gain": 0.1710052186651204,
+      "kind": "fragment_echo",
+      "source_frames": [
+        4800,
+        22080
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "voice",
+      "beat": 31.5,
+      "start_frame": 574177,
+      "frames": 17280,
+      "gain": 0.0855026093325602,
+      "kind": "fragment_echo",
+      "source_frames": [
+        4800,
+        22080
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "voice",
+      "beat": 32.0,
+      "start_frame": 583291,
+      "frames": 17280,
+      "gain": 0.0427513046662801,
+      "kind": "fragment_echo",
+      "source_frames": [
+        4800,
+        22080
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "drums",
+      "beat": 32,
+      "start_frame": 583291,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 35,
+      "start_frame": 637975,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 34,
+      "start_frame": 619747,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 32.0,
+      "start_frame": 583291,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 32.5,
+      "start_frame": 592405,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 33.0,
+      "start_frame": 601519,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 33.5,
+      "start_frame": 610633,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 34.0,
+      "start_frame": 619747,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 34.5,
+      "start_frame": 628861,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 35.0,
+      "start_frame": 637975,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 35.5,
+      "start_frame": 647089,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 32.5,
+      "start_frame": 592405,
+      "frames": 7291,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 32.5,
+      "start_frame": 592405,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 33.0,
+      "start_frame": 601519,
+      "frames": 15494,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 33.0,
+      "start_frame": 601519,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 34.5,
+      "start_frame": 628861,
+      "frames": 13671,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 34.5,
+      "start_frame": 628861,
+      "frames": 13671,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "voice",
+      "beat": 35.4,
+      "start_frame": 645266,
+      "frames": 17280,
+      "gain": 0.30400927762688074,
+      "kind": "source_fragment",
+      "source_frames": [
+        41280,
+        58560
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "drums",
+      "beat": 36,
+      "start_frame": 656203,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 39,
+      "start_frame": 710886,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 38,
+      "start_frame": 692658,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 36.0,
+      "start_frame": 656203,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 36.5,
+      "start_frame": 665316,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 37.0,
+      "start_frame": 674430,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 37.5,
+      "start_frame": 683544,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 38.0,
+      "start_frame": 692658,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 38.5,
+      "start_frame": 701772,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 39.0,
+      "start_frame": 710886,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 39.5,
+      "start_frame": 720000,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 36.5,
+      "start_frame": 665316,
+      "frames": 7291,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 36.5,
+      "start_frame": 665316,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 37.0,
+      "start_frame": 674430,
+      "frames": 15494,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 37.0,
+      "start_frame": 674430,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 38.5,
+      "start_frame": 701772,
+      "frames": 13671,
+      "gain": 0.2,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 38.5,
+      "start_frame": 701772,
+      "frames": 13671,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "drums",
+      "beat": 44.0,
+      "start_frame": 802025,
+      "frames": 21600,
+      "gain": 0.035,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 44.5,
+      "start_frame": 811139,
+      "frames": 21600,
+      "gain": 0.038125000000000006,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 45.0,
+      "start_frame": 820253,
+      "frames": 21600,
+      "gain": 0.04125,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 45.5,
+      "start_frame": 829367,
+      "frames": 21600,
+      "gain": 0.044375000000000005,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 46.0,
+      "start_frame": 838481,
+      "frames": 21600,
+      "gain": 0.0475,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 46.5,
+      "start_frame": 847595,
+      "frames": 21600,
+      "gain": 0.050625,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 47.0,
+      "start_frame": 856709,
+      "frames": 21600,
+      "gain": 0.053750000000000006,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 47.5,
+      "start_frame": 865823,
+      "frames": 21600,
+      "gain": 0.05687500000000001,
+      "kind": "build_hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 48,
+      "start_frame": 874937,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 50.75,
+      "start_frame": 925063,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 50,
+      "start_frame": 911392,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 48.0,
+      "start_frame": 874937,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 48.5,
+      "start_frame": 884051,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 49.0,
+      "start_frame": 893165,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 49.5,
+      "start_frame": 902278,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 50.0,
+      "start_frame": 911392,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 50.5,
+      "start_frame": 920506,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 51.0,
+      "start_frame": 929620,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 51.5,
+      "start_frame": 938734,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 48.5,
+      "start_frame": 884051,
+      "frames": 7291,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 48.5,
+      "start_frame": 884051,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 49.0,
+      "start_frame": 893165,
+      "frames": 15494,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 49.0,
+      "start_frame": 893165,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 50.5,
+      "start_frame": 920506,
+      "frames": 13671,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 50.5,
+      "start_frame": 920506,
+      "frames": 13671,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "voice",
+      "beat": 51.4,
+      "start_frame": 936911,
+      "frames": 17280,
+      "gain": 0.30400927762688074,
+      "kind": "source_fragment",
+      "source_frames": [
+        41280,
+        58560
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "drums",
+      "beat": 52,
+      "start_frame": 947848,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 54.75,
+      "start_frame": 997975,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 54,
+      "start_frame": 984304,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 52.0,
+      "start_frame": 947848,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 52.5,
+      "start_frame": 956962,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 53.0,
+      "start_frame": 966076,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 53.5,
+      "start_frame": 975190,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 54.0,
+      "start_frame": 984304,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 54.5,
+      "start_frame": 993418,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 55.0,
+      "start_frame": 1002532,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 55.5,
+      "start_frame": 1011646,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 52.0,
+      "start_frame": 947848,
+      "frames": 15494,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 52.0,
+      "start_frame": 947848,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 53.5,
+      "start_frame": 975190,
+      "frames": 7291,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 53.5,
+      "start_frame": 975190,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "bass",
+      "beat": 54.0,
+      "start_frame": 984304,
+      "frames": 15494,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 56
+    },
+    {
+      "stem": "sub",
+      "beat": 54.0,
+      "start_frame": 984304,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 44
+    },
+    {
+      "stem": "drums",
+      "beat": 56,
+      "start_frame": 1020759,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 58.75,
+      "start_frame": 1070886,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 58,
+      "start_frame": 1057215,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 56.0,
+      "start_frame": 1020759,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 56.5,
+      "start_frame": 1029873,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 57.0,
+      "start_frame": 1038987,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 57.5,
+      "start_frame": 1048101,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 58.0,
+      "start_frame": 1057215,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 58.5,
+      "start_frame": 1066329,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 59.0,
+      "start_frame": 1075443,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 59.5,
+      "start_frame": 1084557,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 56.5,
+      "start_frame": 1029873,
+      "frames": 7291,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 56.5,
+      "start_frame": 1029873,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 57.0,
+      "start_frame": 1038987,
+      "frames": 15494,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 57.0,
+      "start_frame": 1038987,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 58.5,
+      "start_frame": 1066329,
+      "frames": 13671,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 58.5,
+      "start_frame": 1066329,
+      "frames": 13671,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "drums",
+      "beat": 60,
+      "start_frame": 1093671,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 62.75,
+      "start_frame": 1143797,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 62,
+      "start_frame": 1130127,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 60.0,
+      "start_frame": 1093671,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 60.5,
+      "start_frame": 1102785,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 61.0,
+      "start_frame": 1111899,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 61.5,
+      "start_frame": 1121013,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 62.0,
+      "start_frame": 1130127,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 62.5,
+      "start_frame": 1139241,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 63.0,
+      "start_frame": 1148354,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 63.5,
+      "start_frame": 1157468,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 60.0,
+      "start_frame": 1093671,
+      "frames": 15494,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 60.0,
+      "start_frame": 1093671,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 61.5,
+      "start_frame": 1121013,
+      "frames": 7291,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 61.5,
+      "start_frame": 1121013,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "bass",
+      "beat": 62.0,
+      "start_frame": 1130127,
+      "frames": 15494,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 56
+    },
+    {
+      "stem": "sub",
+      "beat": 62.0,
+      "start_frame": 1130127,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 44
+    },
+    {
+      "stem": "voice",
+      "beat": 63.0,
+      "start_frame": 1148354,
+      "frames": 17280,
+      "gain": 0.1710052186651204,
+      "kind": "fragment_echo",
+      "source_frames": [
+        4800,
+        22080
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "voice",
+      "beat": 63.5,
+      "start_frame": 1157468,
+      "frames": 17280,
+      "gain": 0.0855026093325602,
+      "kind": "fragment_echo",
+      "source_frames": [
+        4800,
+        22080
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "voice",
+      "beat": 64.0,
+      "start_frame": 1166582,
+      "frames": 17280,
+      "gain": 0.0427513046662801,
+      "kind": "fragment_echo",
+      "source_frames": [
+        4800,
+        22080
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "drums",
+      "beat": 64,
+      "start_frame": 1166582,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 66.75,
+      "start_frame": 1216709,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 66,
+      "start_frame": 1203038,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 64.0,
+      "start_frame": 1166582,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 64.5,
+      "start_frame": 1175696,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 65.0,
+      "start_frame": 1184810,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 65.5,
+      "start_frame": 1193924,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 66.0,
+      "start_frame": 1203038,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 66.5,
+      "start_frame": 1212152,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 67.0,
+      "start_frame": 1221266,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 67.5,
+      "start_frame": 1230380,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 64.5,
+      "start_frame": 1175696,
+      "frames": 7291,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 64.5,
+      "start_frame": 1175696,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 65.0,
+      "start_frame": 1184810,
+      "frames": 15494,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 65.0,
+      "start_frame": 1184810,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 66.5,
+      "start_frame": 1212152,
+      "frames": 13671,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 66.5,
+      "start_frame": 1212152,
+      "frames": 13671,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "voice",
+      "beat": 67.4,
+      "start_frame": 1228557,
+      "frames": 17280,
+      "gain": 0.30400927762688074,
+      "kind": "source_fragment",
+      "source_frames": [
+        41280,
+        58560
+      ],
+      "rate": 1
+    },
+    {
+      "stem": "drums",
+      "beat": 68,
+      "start_frame": 1239494,
+      "frames": 21600,
+      "gain": 0.55,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 70.75,
+      "start_frame": 1289620,
+      "frames": 21600,
+      "gain": 0.38,
+      "kind": "kick"
+    },
+    {
+      "stem": "drums",
+      "beat": 70,
+      "start_frame": 1275949,
+      "frames": 21600,
+      "gain": 0.45,
+      "kind": "half_time_snare"
+    },
+    {
+      "stem": "drums",
+      "beat": 68.0,
+      "start_frame": 1239494,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 68.5,
+      "start_frame": 1248608,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 69.0,
+      "start_frame": 1257722,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 69.5,
+      "start_frame": 1266835,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 70.0,
+      "start_frame": 1275949,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 70.5,
+      "start_frame": 1285063,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 71.0,
+      "start_frame": 1294177,
+      "frames": 21600,
+      "gain": 0.09,
+      "kind": "hat"
+    },
+    {
+      "stem": "drums",
+      "beat": 71.5,
+      "start_frame": 1303291,
+      "frames": 21600,
+      "gain": 0.06,
+      "kind": "hat"
+    },
+    {
+      "stem": "bass",
+      "beat": 68.0,
+      "start_frame": 1239494,
+      "frames": 15494,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 46
+    },
+    {
+      "stem": "sub",
+      "beat": 68.0,
+      "start_frame": 1239494,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 34
+    },
+    {
+      "stem": "bass",
+      "beat": 69.5,
+      "start_frame": 1266835,
+      "frames": 7291,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 53
+    },
+    {
+      "stem": "sub",
+      "beat": 69.5,
+      "start_frame": 1266835,
+      "frames": 7291,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 41
+    },
+    {
+      "stem": "bass",
+      "beat": 70.0,
+      "start_frame": 1275949,
+      "frames": 15494,
+      "gain": 0.22,
+      "kind": "source_coloured_bass",
+      "midi": 56
+    },
+    {
+      "stem": "sub",
+      "beat": 70.0,
+      "start_frame": 1275949,
+      "frames": 15494,
+      "gain": 0.21,
+      "kind": "sub",
+      "midi": 44
+    },
+    {
+      "stem": "air",
+      "beat": 8,
+      "start_frame": 145823,
+      "frames": 136709,
+      "gain": 0.035,
+      "kind": "rise"
+    },
+    {
+      "stem": "air",
+      "beat": 38,
+      "start_frame": 692658,
+      "frames": 36456,
+      "gain": 0.035,
+      "kind": "fall"
+    },
+    {
+      "stem": "air",
+      "beat": 44,
+      "start_frame": 802025,
+      "frames": 63797,
+      "gain": 0.035,
+      "kind": "rise"
+    },
+    {
+      "stem": "air",
+      "beat": 71,
+      "start_frame": 1294177,
+      "frames": 45570,
+      "gain": 0.035,
+      "kind": "fall"
+    }
+  ],
+  "sections": [
+    {
+      "name": "call",
+      "start_seconds": 0.0,
+      "end_seconds": 3.037974683544304
+    },
+    {
+      "name": "rise",
+      "start_seconds": 3.037974683544304,
+      "end_seconds": 6.075949367088608
+    },
+    {
+      "name": "first_drop",
+      "start_seconds": 6.075949367088608,
+      "end_seconds": 15.18987341772152
+    },
+    {
+      "name": "break_and_call",
+      "start_seconds": 15.18987341772152,
+      "end_seconds": 18.227848101265824
+    },
+    {
+      "name": "second_drop",
+      "start_seconds": 18.227848101265824,
+      "end_seconds": 27.341772151898738
+    },
+    {
+      "name": "ending",
+      "start_seconds": 27.341772151898738,
+      "end_seconds": 30.37974683544304
+    }
+  ],
+  "palette": [
+    "original electronic percussion",
+    "sub bass",
+    "source-coloured moving bass",
+    "source calls/fragments",
+    "filtered noise"
+  ]
+}
