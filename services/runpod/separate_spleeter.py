@@ -1,4 +1,4 @@
-"""Isolated four-stem Spleeter runner for hosted Improvise."""
+"""Isolated four-stem Spleeter runner for hosted Improvise and Music DNA."""
 import argparse
 import hashlib
 import importlib.resources
@@ -15,6 +15,22 @@ from scipy.signal import resample_poly
 ROOT = Path(__file__).resolve().parents[2]
 RATE = 48000
 MODEL = ROOT / 'build-spleeter/models/4stems'
+
+
+def read_source(source):
+    """Reject unsupported or truncated PCM before loading the model."""
+    limits=json.loads((ROOT/'assets/manifests/song-durations.json').read_text())
+    if source.stat().st_size > max(b['max'] for b in limits.values())*RATE*4+65536:
+        raise ValueError('Singer input exceeds product audio bounds')
+    with wave.open(str(source),'rb') as audio_file:
+        frames=audio_file.getnframes()
+        supported=any(b['min']*RATE<=frames<=b['max']*RATE for b in limits.values())
+        if audio_file.getparams()[:3]!=(2,2,RATE) or audio_file.getcomptype()!='NONE' or not supported:
+            raise ValueError('Expected a supported product duration of stereo 48 kHz PCM singer audio')
+        pcm=audio_file.readframes(frames)
+        if len(pcm)!=frames*4:
+            raise ValueError('Truncated singer audio')
+    return np.frombuffer(pcm,dtype='<i2').reshape(-1,2).astype(np.float32)/32768
 
 
 def overlap_add(audio, predict, size=12*44100, overlap=44100):
@@ -49,11 +65,8 @@ def separate(source, output):
     source,output=Path(source),Path(output)
     if not source.is_file() or source.stat().st_size>100*1024**2 or output.exists():
         raise ValueError('Invalid or already processed singer input')
+    original=read_source(source)
     source_sha=hashlib.sha256(source.read_bytes()).hexdigest()
-    with wave.open(str(source),'rb') as audio_file:
-        if audio_file.getparams()[:3]!=(2,2,RATE) or audio_file.getcomptype()!='NONE' or not 30*RATE<=audio_file.getnframes()<=45*RATE:
-            raise ValueError('Expected 30–45 seconds of stereo 48 kHz PCM singer audio')
-        original=np.frombuffer(audio_file.readframes(audio_file.getnframes()),dtype='<i2').reshape(-1,2).astype(np.float32)/32768
     manifest=json.loads((ROOT/'assets/manifests/spleeter-hosted.json').read_text())
     for name,item in manifest['files'].items():
         path=MODEL/name
