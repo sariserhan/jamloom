@@ -1,0 +1,28 @@
+{
+  "url": "http://127.0.0.1:8777/band-listen/",
+  "browser": "Installed Chrome with isolated profiles via existing Playwright fallback",
+  "ownerSubmissions": 0,
+  "viewports": [
+    {
+      "name": "desktop",
+      "playbackAndSeek": 6,
+      "exclusivePlayback": true,
+      "overflow": false,
+      "errors": [],
+      "screenshot": "/tmp/jamloom-band-desktop.png"
+    },
+    {
+      "name": "mobile",
+      "playbackAndSeek": 6,
+      "exclusivePlayback": true,
+      "overflow": false,
+      "errors": [],
+      "screenshot": "/tmp/jamloom-band-mobile.png"
+    }
+  ],
+  "servedHashesVerified": 6,
+  "audioRangeRequests": true,
+  "status": "PASS",
+  "browser_runtime": "Unavailable: no browser runtime or node_repl tool exposed; continuing declared isolated Playwright fallback",
+  "visual_inspection": "PASS desktop/mobile screenshots reviewed; readable controls and no overlap"
+}

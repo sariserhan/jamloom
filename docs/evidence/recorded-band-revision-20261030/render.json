@@ -1,0 +1,605 @@
+{
+  "technical": "PASS",
+  "listening": "NOT RUN",
+  "records": [
+    {
+      "id": "question",
+      "source_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+      "source_selection": {
+        "start_frame": 0,
+        "end_frame": 58560,
+        "full_input_used": true,
+        "boundary_policy": "sustained_quiet_or_complete_input",
+        "quiet_gaps": [],
+        "minimum_quiet_seconds": 0.18,
+        "word_boundaries_verified": false,
+        "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+      },
+      "source_crop_previously_accepted": true,
+      "natural_phrase_events": 3,
+      "technical": "PASS",
+      "listening": "NOT RUN",
+      "seconds": 42.0,
+      "peak": 0.5387437108310563,
+      "audition_gain_db": 1.0199999999999996,
+      "selected_preview_gain": 0.9500289925840022,
+      "served_hashes": {
+        "question-original.wav": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+        "question-selected.wav": "338982762dbca384cfd64e1e9b539aa329d4a0ac435fd0bfab4136658dd0425e",
+        "question-audition.wav": "2f811e6b3e2f4c8096076202e5802af29ea01264e5c32d2c3d0a535b9ed1b5c5"
+      },
+      "sample_count": 39,
+      "plan_sha256": "d326ac8149bfd1adf00dbb263d6db83bf11d7ee00bb320d62411de88edf4b538"
+    },
+    {
+      "id": "ls-2277-149896-0026",
+      "source_sha256": "0d7c823766b73606ae0a2cee70c47deb80155fe873316802865165f807865906",
+      "source_selection": {
+        "start_frame": 0,
+        "end_frame": 236160,
+        "full_input_used": true,
+        "boundary_policy": "sustained_quiet_or_complete_input",
+        "quiet_gaps": [
+          [
+            220320,
+            230880
+          ]
+        ],
+        "minimum_quiet_seconds": 0.18,
+        "word_boundaries_verified": false,
+        "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+      },
+      "source_crop_previously_accepted": false,
+      "natural_phrase_events": 3,
+      "technical": "PASS",
+      "listening": "NOT RUN",
+      "seconds": 42.0,
+      "peak": 0.5938613575306315,
+      "audition_gain_db": 1.3000000000000007,
+      "selected_preview_gain": 1,
+      "served_hashes": {
+        "ls-2277-149896-0026-original.wav": "0d7c823766b73606ae0a2cee70c47deb80155fe873316802865165f807865906",
+        "ls-2277-149896-0026-selected.wav": "3b9b2593afaf28a0c0f8954ee325aa728ed190be55335e91eb16d038ac6c303e",
+        "ls-2277-149896-0026-audition.wav": "c59705781a1ca3b4d631a4e6a3d07186ef2f4d46ad7bdc6ab867620e6630327c"
+      },
+      "sample_count": 44,
+      "plan_sha256": "e674a3557e3edeb688879741c57e77ded5d390993a4c13d85c9acbd9a819c90e"
+    }
+  ],
+  "selection_coverage": [
+    {
+      "source": "ls-2277-149896-0026",
+      "start_frame": 0,
+      "end_frame": 236160,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [
+        [
+          220320,
+          230880
+        ]
+      ],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-2035-147960-0013",
+      "start_frame": 0,
+      "end_frame": 128400,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-2086-149220-0047",
+      "start_frame": 0,
+      "end_frame": 100800,
+      "full_input_used": false,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [
+        [
+          89280,
+          112320
+        ]
+      ],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-7976-110124-0019",
+      "start_frame": 0,
+      "end_frame": 131760,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-1988-147956-0018",
+      "start_frame": 0,
+      "end_frame": 169680,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-777-126732-0074",
+      "start_frame": 0,
+      "end_frame": 167040,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [
+        [
+          53280,
+          70560
+        ]
+      ],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-84-121123-0012",
+      "start_frame": 0,
+      "end_frame": 122880,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-1673-143397-0009",
+      "start_frame": 0,
+      "end_frame": 172800,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-8297-275156-0004",
+      "start_frame": 0,
+      "end_frame": 157440,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [
+        [
+          480,
+          19200
+        ],
+        [
+          98400,
+          113760
+        ]
+      ],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-5536-43358-0016",
+      "start_frame": 0,
+      "end_frame": 116400,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-6345-93302-0019",
+      "start_frame": 0,
+      "end_frame": 183120,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-6295-244435-0035",
+      "start_frame": 0,
+      "end_frame": 153360,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-6313-66125-0024",
+      "start_frame": 0,
+      "end_frame": 158160,
+      "full_input_used": false,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [
+        [
+          150720,
+          165600
+        ]
+      ],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-5338-284437-0012",
+      "start_frame": 0,
+      "end_frame": 145200,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-6319-57405-0007",
+      "start_frame": 0,
+      "end_frame": 168240,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-1993-147965-0001",
+      "start_frame": 0,
+      "end_frame": 128880,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-2078-142845-0042",
+      "start_frame": 0,
+      "end_frame": 203040,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-1272-128104-0001",
+      "start_frame": 0,
+      "end_frame": 231120,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [
+        [
+          15840,
+          25440
+        ]
+      ],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-174-50561-0018",
+      "start_frame": 0,
+      "end_frame": 101760,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "ls-2803-161169-0002",
+      "start_frame": 0,
+      "end_frame": 120480,
+      "full_input_used": false,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [
+        [
+          116160,
+          124800
+        ]
+      ],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "commons-laughter",
+      "start_frame": 0,
+      "end_frame": 144000,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "commons-claps",
+      "start_frame": 0,
+      "end_frame": 143781,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    },
+    {
+      "source": "commons-noise",
+      "start_frame": 0,
+      "end_frame": 111387,
+      "full_input_used": true,
+      "boundary_policy": "sustained_quiet_or_complete_input",
+      "quiet_gaps": [
+        [
+          10080,
+          19200
+        ],
+        [
+          44640,
+          60480
+        ]
+      ],
+      "minimum_quiet_seconds": 0.18,
+      "word_boundaries_verified": false,
+      "reason": "Keep the complete input unless sustained quiet separates a usable phrase; no forced two-beat cut"
+    }
+  ],
+  "source_uploaded": false,
+  "training": false,
+  "shipping_default_changed": false,
+  "frozen_study_changed": false,
+  "implementation": {
+    "source_band_response.py": "9344049e8c6ab0223a45a40ee074f2febc0e3f3548d5d7d2bcaa8b6d9fe2166f",
+    "source_natural_phrase.py": "2448017423387aa063a5f3b7953b5f4b0e8fc06da3ba7e946cd446c2d29d9100",
+    "render_band_audition.py": "1f5041cb357cee68fbfb47304a1af0c32efc8aa6f9df5bfcab9cd85c84fd3b16"
+  },
+  "samples": {
+    "kick": {
+      "sha256": "642aaf3375eaff1307973f7de3ccbf74d18e71fb3cf9412e021b08fc3bf1981c",
+      "instrument": "drums",
+      "license": "CC0-1.0"
+    },
+    "snare": {
+      "sha256": "3d71765aa0d1e13260abeb003720aef0841432df601883177bf70e97d9af6c99",
+      "instrument": "drums",
+      "license": "CC0-1.0"
+    },
+    "hat_closed": {
+      "sha256": "b65ca06ea4f8b5209fc8d98912094be1212911f21e01bd949cc9960db049d37c",
+      "instrument": "drums",
+      "license": "CC0-1.0"
+    },
+    "hat_closed_v127_take1": {
+      "sha256": "fac6cf410239603afff803ea97aa78fc38ccae185b5f60217c3c8cd632c265bd",
+      "instrument": "drums",
+      "license": "CC0-1.0"
+    },
+    "kick_v127_take1": {
+      "sha256": "a83943f8125ae39469ef5dab1d0be2fe3145c6842c0621b27be5d86aa44b325d",
+      "instrument": "drums",
+      "license": "CC0-1.0"
+    },
+    "snare_v127_take1": {
+      "sha256": "770a0b6bfe95583c11014d5f9af9c94c425a15bd05234c86213aec356a2ffe29",
+      "instrument": "drums",
+      "license": "CC0-1.0"
+    },
+    "bass_45": {
+      "sha256": "c88e632ac4f716d4e85112d6ea5bbe2d27d67019296787c25d27178a9e5f18ac",
+      "instrument": "bass",
+      "license": "CC0-1.0"
+    },
+    "guitar_61_stac_127_1": {
+      "sha256": "122d56c553a4bd62ea5e38e588f74534473ae53967285aa9f7275b465c518d8b",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_64_stac_127_0": {
+      "sha256": "467e90bded08588d3d25880312f64aab6d569274656460981d934f6851abf426",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_67_stac_127_1": {
+      "sha256": "951236fc4cc35dbb601eb40bcbd0987a7ec900134ecd8e2a5aaace70ba6cebc4",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_73_stac_127_0": {
+      "sha256": "a20caa0f5b0c7a90692a77abcfa54c4502356aa67d5728efae9b782a42c56ae4",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "bass_52": {
+      "sha256": "b5c3dd4943ea9a3f1aa23ed07c827ec8851e28a7254bab7811b706c09fceb231",
+      "instrument": "bass",
+      "license": "CC0-1.0"
+    },
+    "bass_36": {
+      "sha256": "5591160a867b21ba193d601390c9e1f35ec8d5deb0de686a410d25a98a103b06",
+      "instrument": "bass",
+      "license": "CC0-1.0"
+    },
+    "guitar_58_stac_127_0": {
+      "sha256": "f54c6f568cc02f203773f4e3fd923b1e7dd42481ebd3a9cc5d591bba2601f587",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_70_ord_84_0": {
+      "sha256": "3ce26f90c14ac69ad9eb67994a64a9359badc34b583a4772ebb738b239e462f1",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_73_ord_84_1": {
+      "sha256": "d6324df176dace7d14ecce84960c52ca391f392d52f6cc48df72109f0ec23148",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_76_ord_84_0": {
+      "sha256": "207dfb884c01c9c6fdc4f8beabf95962ebf98554471f49fa53d6a495c4c1c56f",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "hat_open": {
+      "sha256": "fa492ec14cc6924b43ad5fcf9e9a0f406d926998835bde2eb5847cd15ad25be7",
+      "instrument": "drums",
+      "license": "CC0-1.0"
+    },
+    "guitar_52_stac_127_1": {
+      "sha256": "5cbc35a669aea07ab1954c4d4f5ce916b85604242e74e21f01dd933ab027e1f2",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_64_stac_127_1": {
+      "sha256": "571f9e2e5a895942678c167d4fc32d927bbe7826e619e581a839c21d6ef5eaba",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_67_stac_127_0": {
+      "sha256": "3a782c71019a9e58469d32af5ef85d626f89cf324010a1544186ea8f255183d6",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_61_stac_127_0": {
+      "sha256": "0d91385365c2f1aad64d50149f3c7ec7a5f512f2997ef26936c1a28625dc484c",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_73_stac_127_1": {
+      "sha256": "a3d7d84f4c4758126ae4e664c5f5d1f5c26aa214801e2ee67301b3f9e2380992",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_76_ord_84_1": {
+      "sha256": "80ff30d564a721dfbcb04085eb09580a90cb958222f2af712e414210b9fe5941",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_58_stac_127_1": {
+      "sha256": "8113697383a715a3f9029bb2df901de75a003ec90e78faac840ad4abd43446d2",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_55_ord_84_0": {
+      "sha256": "922ffabb48b463ac56780f9d14c8f9b0ee132e5f906e8d6c69832d2b944a13d1",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_58_ord_84_1": {
+      "sha256": "99f63108bdf4a05c91fdd8a66dd07b61f876ba8258762ff46cd1757b1898f7e9",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_61_ord_84_0": {
+      "sha256": "c1628db6280e4a67b949fdbd44d126079cb6ffbbd4d912747d8b8ef136fecb8e",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_64_ord_84_1": {
+      "sha256": "1340d05ca5085fc08244a10b06e4c9b9ed9c8b82e6b924a3dc03626d388ecca3",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_67_ord_84_0": {
+      "sha256": "9622d7e6ed203cff5fbaa1c3a639fb62d0dbab2b5c8130ea0f12c4b893bedefe",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_55_stac_127_0": {
+      "sha256": "56bdacb6dd7170da100c27bba3658c22347c0c9237f6c126625c334fad579d29",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_73_ord_84_0": {
+      "sha256": "846a3d2be5e665eccf404dd50fdf99930c50adae5932bf5b9eaf8f5e99ef874b",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_70_ord_84_1": {
+      "sha256": "2428e63c4fd1323e0632bee7754b3e254685b456423fad962777b79d8160e88a",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_70_stac_127_0": {
+      "sha256": "8066ca2ef99d61ffb0ab17a8479599cd90f8bb1239cc3d58eabcca5c8b3ea6db",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_52_stac_127_0": {
+      "sha256": "10f38740b779ebad35ba40bee4e209f2c800bab9402e46526b7240194e60ab99",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_55_stac_127_1": {
+      "sha256": "41f251a048fa7c81799a24a85523d6f21893e3fa72fa60a29b270afa1bfd404f",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_67_ord_84_1": {
+      "sha256": "31d56b5ce71207e330ad662d929990dee3fc26b5918ae115caeb1f033840a4f2",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_64_ord_84_0": {
+      "sha256": "372036c52fd3911fcf8deebbb36d04b937cb2ad532b5a24a6c7b46e8d1e5188f",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_61_ord_84_1": {
+      "sha256": "85daf76251c5e69078b3140234255b05db018f7a7ab4fd6361851d673529d3d0",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_49_stac_127_1": {
+      "sha256": "5f4689dbf208e7e7d30d3ad2e11018d6c5c72368bde5a3145bd819159d5873fe",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_52_ord_84_1": {
+      "sha256": "167540ce9d9cc2642d556e95759f257865a3927fdfaf95d67732d0a0e1427876",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_70_stac_127_1": {
+      "sha256": "8def9cbdbf2a087d431825ab307e9f303da46c0e05312bfef31d01b67eba688e",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_58_ord_84_0": {
+      "sha256": "1d4a3437b006b9cd7a92810a53d91dd15c07a1737716a5b9feef44cadcfe39c4",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    },
+    "guitar_49_stac_127_0": {
+      "sha256": "53588a366e2f56cc03874f800ed2c060f2cb0005585b1247764b8ba9bc90ec1a",
+      "instrument": "guitar",
+      "license": "CC0-1.0"
+    }
+  },
+  "free_gib": 22.18148422241211,
+  "limitation": "Recorded instrument timbre and conservative phrase boundaries do not establish musical quality or word-level correctness. Owner listening required."
+}

@@ -8,6 +8,8 @@ approval. The owner is the sole required musical listener.
 
 ## Current full-completion increment
 
+- **FAIL musical quality of reviewed excerpts:** owner says C is bad and the others only okay, simple/childish, with abrupt cuts. A new recorded-band candidate uses natural-phrase fallback, recorded instruments and harmonic development. Six boundary regressions, 23-input checks and two 42-second audio/browser auditions PASS technically; owner acceptance is NOT RUN. [Audition](http://127.0.0.1:8777/band-listen/), [evidence](evidence/recorded-band-revision-20261030/report.md).
+
 - **PASS:** all 207 revised excerpt arrangements across 23 sources and three seeds; 621 exact selected-hook appearances; opening musical response within 0.264 seconds.
 - **PASS technical preparation:** a new 69-block, 276-candidate blinded study, 345 verified audio files, and registered thresholds. [Revised study](http://127.0.0.1:8777/music-excerpts/). The old study and its drafts remain separate; no old judgment is applied to revised audio.
 - **PASS:** current website build, availability controls, and desktop/mobile browser checks. Disabled or failed capability responses disable generation before the confirmation flow. The declined preview banner was removed; nothing was deployed.
@@ -57,8 +59,8 @@ This does not authorize AI DJ rentals, website/app release or live purchases.
 
 | Requirement | Status | What closes it |
 |---|---|---|
-| Current-image Improvise and Music DNA cases | PARTIAL; prior five PASS plus new German Jazz PASS, maximum case NOT RUN | Run the prepared 5,000-reference case under fresh approval and obtain actual musical acceptance. The earlier Jazz failure remains historical; one successful retest does not establish its cause |
-| Formal M1 / source-response musical quality | PARTIAL; exact pilot accepted, full study technically ready | Actual ratings in the [new frozen excerpt study](http://127.0.0.1:8777/music-excerpts/) and a real [quiet recording](http://127.0.0.1:8777/), followed by threshold/coverage review. The preserved full-input study does not qualify this changed policy |
+| Current-image Improvise and Music DNA cases | PARTIAL; prior five PASS plus new German Jazz PASS, maximum case RUNNING under new one-request $3 approval | Complete the approved 5,000-reference case and verify cleanup and obtain actual musical acceptance. The earlier Jazz failure remains historical; one successful retest does not establish its cause |
+| Formal M1 / source-response musical quality | FAIL current reviewed music; exact earlier pilot remains accepted | Improve composition and phrase boundaries, obtain owner acceptance of the [new direction](http://127.0.0.1:8777/band-listen/), then freeze and qualify the accepted policy across sources/seeds with actual judgments and a real quiet recording. Existing study judgments cannot qualify changed audio |
 | Learned improvisation | NOT RUN | Verified user-source/action labels, leakage-safe independent source/session/speaker/phrase/performer groups, M1 completion and held-out benefit over the baseline. The seven supplied references from one maker cannot alone establish performer-held-out validation |
 | Produced-song scoring | PARTIAL | Actual sung words, notes and timing verified against the [source audio](http://127.0.0.1:8769/). `verified:false` and `scoringEnabled:false` remain until then |
 | Afro House section/control details | PARTIAL; all three target mixes accepted | Heard section names/timing corrections and control preferences in the [existing review](http://127.0.0.1:8771/) |
