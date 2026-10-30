@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:8777/neural-question/",
+  "audio_sha256": "5cca42db2fbf53c70399952069f426ad6114dc40f88a8b61cec49e3d62bb2e70",
+  "source_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "whole_source_bounds": [
+    0,
+    1.22
+  ],
+  "musical_acceptance": "NOT RUN",
+  "audio_files_hardlinked": true
+}

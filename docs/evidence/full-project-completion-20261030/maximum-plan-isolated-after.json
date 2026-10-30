@@ -1,0 +1,1 @@
+{"status": "PASS", "source_root": "/private/tmp/jamloom-maximum-plan-fix-20261030", "fixture_bytes": 3525285, "references_retained_per_list": 5000, "oversized_reference_lists_rejected": 3, "dna_file_budget_enforced": true, "reply_original_budget_enforced": true, "source_sha256": "2227f592a0f2918d8817b274ab16164cf5c47142980981ba14554799bd809821", "hosted_calls": 0}

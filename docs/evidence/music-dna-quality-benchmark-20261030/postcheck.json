@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-30T23:45:19.486Z",
+  "operation": "Independent GET and SELECT only",
+  "receipt": "docs/evidence/improvise-finish/cloud/2026-10-30T23-38-33.870Z/trial-result.json",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "health": {
+    "jobs": {
+      "completed": 31,
+      "failed": 14,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "endpointVersion": 19,
+    "summary": {
+      "idle": 0,
+      "initializing": 0,
+      "running": 0,
+      "throttled": 0,
+      "total": 0,
+      "unhealthy": 0
+    },
+    "workers": []
+  },
+  "billing": [
+    {
+      "amount": 0.028195693623274565,
+      "timeBilledMs": 56574,
+      "diskSpaceBilledGB": 120,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 18:00:00"
+    },
+    {
+      "amount": 0.5447215219028294,
+      "timeBilledMs": 1230991,
+      "diskSpaceBilledGB": 480,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 20:00:00"
+    }
+  ],
+  "billingLimit": "Observed daily billing may lag; not a finalized invoice or exact diagnostic attribution",
+  "temporaryDatabases": [],
+  "cleanup": "PASS",
+  "qualification": "PASS",
+  "rejectedAudio": null,
+  "requests": [
+    {
+      "label": "drumandbass",
+      "provider_id": "70194dff-5cbf-42b8-992e-86f8379a1b7a-u2",
+      "finalState": "completed",
+      "failure": null,
+      "audioSha256": "5cca42db2fbf53c70399952069f426ad6114dc40f88a8b61cec49e3d62bb2e70",
+      "seconds": 45,
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      }
+    }
+  ],
+  "removedObjects": 3,
+  "retries": 0
+}

@@ -1,0 +1,68 @@
+{
+  "status": "AWAITING_AUTHORIZATION",
+  "prepared_at": "2026-10-30T23:48:00.938847+00:00",
+  "scope": "Publish only the bounded Music DNA plan-loader fix, then one 5000-reference qualification request",
+  "image_source_commit": "2ef31d6954f823aad6e170493783cd25dd0d9af3",
+  "image_base": "ea0fdba03d288f00a0bf9f5461b49b58c31d6cef",
+  "image_checkout": "/tmp/jamloom-maximum-plan-fix-20261030",
+  "image_diff": "scripts/singing_response.py only: 15 insertions, 2 deletions",
+  "publication_branch": "codex/runpod-setup",
+  "website_deployment_enabled_on_branch": false,
+  "mode": "--maximum-dna --qualification-window",
+  "max_usd": 3,
+  "max_workers": 1,
+  "max_provider_requests": 1,
+  "runtime_seconds": 2400,
+  "shutdown_allowance_seconds": 130,
+  "retries": 0,
+  "conservative_rate_usd_per_second": 0.001,
+  "conservative_total_usd": 2.55,
+  "fixture": {
+    "references": 5000,
+    "genre": "Jazz",
+    "vocal_language": "en",
+    "duration_seconds": 100,
+    "seed": 9102401,
+    "real_user_recording": false
+  },
+  "preconditions": [
+    "Explicit fresh image-publication and paid-request authorization",
+    "Successful exact-commit image publication and registry verification",
+    "Independent prior-trial cleanup PASS, limits 0/0, zero workers/jobs and no production pending jobs",
+    "Reviewed file hashes match; isolated local test database; no real billing or production writes"
+  ],
+  "checks": [
+    "All 5000 references and profiles survive the singer plan-file boundary",
+    "One completed 100-second output, style and voice-identity checks, PCM/hash validation",
+    "Temporary source/output data and database cleanup; test credit settlement; independently confirmed zero workers"
+  ],
+  "validation": {
+    "root_plan_checks": 36,
+    "isolated_worker_checks": 21,
+    "isolated_5000_reference_fixture_bytes": 3525285,
+    "isolated_before": "FAIL at original 256 KiB loader",
+    "isolated_after": "PASS complete 5000-entry lists and bounded file/count checks",
+    "typecheck": "PASS with current harness",
+    "dry_run": "PASS one request, one worker, $3, 2400 seconds",
+    "maximum_receipt_checks": "Prepared exact ordered equality for favorites, influences and track_profiles; hosted execution NOT RUN"
+  },
+  "excludes": [
+    "Website/app publication",
+    "Live purchases",
+    "AI DJ rentals",
+    "Additional requests or automatic retry"
+  ],
+  "prior_maximum_permit": "Consumed; previous hosted request failed before audio at the plan-size limit and cleanup passed",
+  "execution": {
+    "image_build_attempts": 0,
+    "trial_invocations": 0,
+    "provider_requests_started": 0
+  },
+  "file_sha256": {
+    "scripts/singing_response.py": "2227f592a0f2918d8817b274ab16164cf5c47142980981ba14554799bd809821",
+    "apps/site/scripts/cloud-song-trial.ts": "3568b42ba58cb15c761df3a64ec7736c25486b0c2bc41e5c4674db0a060635a0",
+    "apps/site/scripts/cloud-trial-limits.ts": "7ad9aed7ba2d6c38d6c957b780cdd7aacb6b1ee554e5ad79d4527afecb9aa946",
+    "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4",
+    "docs/evidence/full-project-completion-20261030/maximum-plan-isolated-check.py": "a1f379e9f19c6ff54e5f4ca684d57e3d3db7afe669c5cc873ccf0efd70a8f3fc"
+  }
+}

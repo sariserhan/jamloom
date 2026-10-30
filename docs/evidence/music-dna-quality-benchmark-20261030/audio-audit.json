@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-30T23:46:00.687652+00:00",
+  "technical": "PASS",
+  "musical_acceptance": "NOT RUN",
+  "receipt": "docs/evidence/improvise-finish/cloud/2026-10-30T23-38-33.870Z/trial-result.json",
+  "audio_sha256": "5cca42db2fbf53c70399952069f426ad6114dc40f88a8b61cec49e3d62bb2e70",
+  "plan_sha256": "960df1b2c2c80aae05702fc9dc6d5e745e85aa8cf5f14f31665390137a32f2fb",
+  "seconds": 45,
+  "rate": 48000,
+  "channels": 2,
+  "bits": 16,
+  "peak": 0.91680908203125,
+  "clipped_samples": 0,
+  "source_original_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "source_uploaded_sha256": "fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1",
+  "source_original_seconds": [
+    0,
+    1.22
+  ],
+  "pattern": "beat-fitted",
+  "source_rhythm": {
+    "word_gain": 0,
+    "input_sha256": "8d67cc03525f802c7473227c95412aab723c4697a2d5592c709e5433d33e4a7c",
+    "output_sha256": "cf6406d4fcc6492a0d85595b5a99cfc2801f5d40bcd0ecdaa088713124eac9d0",
+    "duration_ratio": 0.8730752328928184,
+    "pitch_shift_semitones": 0
+  },
+  "calls": [
+    {
+      "start_seconds": 34.16733333333333,
+      "end_seconds": 35.23416666666667,
+      "after_call_seconds_checked": 1.0,
+      "after_call_min_20ms_rms": 0.0242724043540689,
+      "after_call_silent_20ms_windows": 0
+    }
+  ],
+  "outside_region_max_pcm_error": 0,
+  "processed_source_max_pcm_error": 1.5258114962876657e-05,
+  "limits": "Source crop is whole; tempo fitting changes delivery duration. Natural word ending, speaker identity and musical fit require owner listening. No claim of source-first composition; this audition places the phrase around 34 seconds."
+}

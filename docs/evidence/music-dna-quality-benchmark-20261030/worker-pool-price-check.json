@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-30T23:39:27.355724+00:00",
+  "status": "PASS",
+  "observed_worker": "f1vrgy3tcjxi1o",
+  "observed_gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 2g.48gb",
+  "workers": 1,
+  "image_digest": "sha256:85b4afb0821ba571460bbeab6c56c10f7640844cdf92ade0b3ce549782e16dce",
+  "provider_pool": "L40, L40S, 6000 Ada, MIG 48GB",
+  "published_hourly_usd": 1.75,
+  "approved_conservative_hourly_usd": 3.6,
+  "source": "https://www.runpod.io/product/serverless",
+  "interpretation": "Provider assigned a 48GB MIG worker from the documented shared pool. Published pool rate remains below the existing conservative bound; no configuration or budget expansion."
+}

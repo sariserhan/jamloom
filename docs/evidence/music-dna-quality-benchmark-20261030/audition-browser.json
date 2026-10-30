@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "views": [
+    {
+      "width": 1280,
+      "durations": [
+        1.22,
+        45
+      ],
+      "playback": true,
+      "seek": true,
+      "exclusivePlayback": true,
+      "phraseJump": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "durations": [
+        1.22,
+        45
+      ],
+      "playback": true,
+      "seek": true,
+      "exclusivePlayback": true,
+      "phraseJump": true,
+      "overflow": false,
+      "errors": []
+    }
+  ],
+  "ownerListening": "NOT RUN; automated playback only"
+}

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/docs/evidence/full-project-completion-20261030/maximum-plan-isolated-check.py", line 30, in <module>
+    assert load_plan(path) == plan
+           ^^^^^^^^^^^^^^^
+  File "/private/tmp/jamloom-maximum-plan-fix-20261030/scripts/singing_response.py", line 201, in load_plan
+    raise ValueError('Plan exceeds size budget')
+ValueError: Plan exceeds size budget

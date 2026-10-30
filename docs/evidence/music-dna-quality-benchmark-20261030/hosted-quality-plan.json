@@ -4,7 +4,7 @@
   "image_source_commit": "ea0fdba03d288f00a0bf9f5461b49b58c31d6cef",
   "image_base": "6abdacc221d0cde89b76a5b35c30d7116243d746",
   "image_checkout": "/tmp/jamloom-improvise-quality-20261030",
-  "harness_source_commit": "ec5f1d16e624194655bd5b34c2a87a19955d99c4",
+  "harness_source_commit": "3eca86bafbfcb7517e0dd39e15478ad1d55d5925",
   "publication_branch": "codex/runpod-setup",
   "website_deployment_enabled_on_branch": false,
   "mode": "--improvise-quality --qualification-window",
@@ -81,8 +81,8 @@
   "execution": {
     "image_build_attempts": 1,
     "trial_invocations": 2,
-    "provider_requests_started": 0,
-    "status": "QUALITY_RUNNING",
+    "provider_requests_started": 1,
+    "status": "COMPLETE",
     "workflow_run": 41143569622,
     "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41143569622",
     "local_preflights": [
@@ -102,7 +102,13 @@
         "remote_objects_created": 0
       }
     ],
-    "trial_started_at": "2026-10-30T23:38:33.672310+00:00"
+    "trial_started_at": "2026-10-30T23:38:33.672310+00:00",
+    "receipt": "docs/evidence/improvise-finish/cloud/2026-10-30T23-38-33.870Z/trial-result.json",
+    "prewarm_seconds": 238,
+    "trial_exit": 0,
+    "trial_finished_at": "2026-10-30T23:45:15.269485+00:00",
+    "qualification": "PASS",
+    "cleanup": "PASS"
   },
   "owner_statement": "Approve image and one $3 sample audition",
   "authorized_utc": "2026-10-30T23:17:23.524281+00:00",
@@ -114,5 +120,6 @@
     "checks": "Three source format/hash/dry-run checks PASS; typecheck PASS; independent zero-worker/job/database/object cleanup PASS",
     "worker_image_unchanged": true,
     "original_source_unchanged": true
-  }
+  },
+  "initial_harness_source_commit": "ec5f1d16e624194655bd5b34c2a87a19955d99c4"
 }
