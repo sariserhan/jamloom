@@ -40,7 +40,7 @@ def render(output, public):
           '<title>Jamloom · use the part that fits</title><link rel="stylesheet" href="../owner-review.css">',
           '<style>audio{display:block;width:100%;max-width:36rem;margin:.7rem 0 1.3rem}article{border-top:1px solid #555;margin-top:1.5rem;padding-top:1rem}</style>',
           '<a href="../">Owner workspace</a><h1>Use the part that fits</h1>',
-          '<p>Six new sketches built around a short piece of the input. Listen to the selected sound, then how the music answers it. The complete recording is here for comparison.</p>',
+          '<p>The music now answers the selected sound on the next half-beat, without the long empty opening. Compare the original, the selected sound and the arrangement.</p>',
           '<p>These are new auditions. Your accepted bass pilot remains unchanged. Tell me which examples feel musical and which cuts feel awkward.</p>']
     for source in sources:
         pcm=read_pcm(source['path'],(.5,5));shutil.copyfile(source['path'],output/(source['id']+'-original.wav'))
@@ -62,7 +62,7 @@ def render(output, public):
             for kind in ('performance','selected'):shutil.copyfile(folder/(kind+'.wav'),public/(name+'-'+kind+'.wav'))
             recorded=read_pcm(folder/'performance.wav',(20,40));assert len(recorded)==len(mix) and np.max(np.abs(recorded))<=.851 and np.all(recorded[-RATE//10:]==0)
             report['records'].append(dict(source=source['id'],strategy=strategy,source_sha256=source['sha256'],selection=selection,
-                seconds=len(mix)/RATE,peak=float(np.max(np.abs(mix))),clean_selected_hooks=3,technical='PASS',listening='NOT RUN',
+                seconds=len(mix)/RATE,peak=float(np.max(np.abs(mix))),opening_response=plan['opening_response'],clean_selected_hooks=3,technical='PASS',listening='NOT RUN',
                 artifacts={p.name:digest(p) for p in folder.glob('*.wav')}))
             label=('A','B','C')[i]
             page.append(f'<article><h3>{label} · {strategy.replace("_"," ").title()}</h3><p>Selected sound · {a/RATE:.2f}–{b/RATE:.2f} seconds of the original</p><audio controls preload="metadata" aria-label="{source["id"]} {label} selected sound" src="{name}-selected.wav"></audio><p>Arrangement</p><audio controls preload="metadata" aria-label="{source["id"]} {label} arrangement" src="{name}-performance.wav"></audio></article>')

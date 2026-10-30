@@ -20,8 +20,24 @@ class SourceExcerpts(unittest.TestCase):
         source=self.source(.55)
         for strategy in TEMPOS:
             actual=compose(source,4123,strategy)
-            np.testing.assert_array_equal(actual[0],legacy(source,4123,strategy)[0])
+            np.testing.assert_array_equal(actual[1]['voice'],legacy(source,4123,strategy)[1]['voice'])
             self.assertTrue(actual[2]['source_selection']['full_input_used'])
+
+    def test_instruments_answer_without_the_fixed_two_bar_gap(self):
+        for seconds in (.55,1.22,5):
+            for strategy,bpm in TEMPOS.items():
+                source=self.source(seconds);mix,stems,plan=compose(source,4123,strategy)
+                response=plan['opening_response'];end=response['hook_end_frame']
+                instruments=sum(audio for name,audio in stems.items() if name!='voice')
+                audible=np.flatnonzero(np.max(np.abs(instruments),axis=1)>.001)[0]
+                self.assertGreaterEqual(audible,end)
+                self.assertLessEqual((audible-end)/RATE,30/bpm+.02)
+                self.assertGreater(np.sqrt(np.mean(instruments[audible:audible+RATE//4]**2)),.005)
+                self.assertTrue(np.all(instruments[:end]==0))
+                # The rest of the composition and its voice provenance stay intact.
+                selected=plan['source_selection'];original=legacy(source[selected['start_frame']:selected['end_frame']],4123,strategy)
+                limit=round(8*60/bpm*RATE)
+                np.testing.assert_array_equal(mix[limit:],original[0][limit:])
 
     def test_long_inputs_use_only_bounded_selected_hooks_and_preserve_original(self):
         source=self.source(5);original=source.copy()

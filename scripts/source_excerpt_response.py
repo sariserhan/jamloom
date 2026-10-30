@@ -4,8 +4,38 @@ import numpy as np
 from arrange_voice_research import RATE
 from source_phrase_response import features
 from source_strategy_response import compose as arrange, STRATEGIES
+from source_led_response import faded
 
 TEMPOS={'half_time':158,'broken_pulse':128,'offbeat_dub':112}
+
+
+def add_opening_response(stems,plan,hook_frames):
+    """Answer the hook on the next half beat instead of waiting two empty bars."""
+    beat=60/plan['bpm'];grid=beat*RATE/2
+    entry=round(np.ceil(hook_frames/grid)*grid)
+    if entry<hook_frames:entry+=round(grid)
+    limit=round(8*beat*RATE)
+    donor_beat=16 if plan['strategy']=='half_time' else 8
+    donor=round(donor_beat*beat*RATE);bar=round(4*beat*RATE)
+    events=[]
+    for name,audio in stems.items():
+        if name=='voice':continue
+        assert not np.any(audio[:limit]), 'Opening response requires an empty instrumental opening'
+        # The donor contains this input's own instrumental motif. No voice is copied.
+        phrase=audio[donor:donor+bar].copy()
+        if not np.any(phrase):continue
+        for at in range(entry,limit,bar):
+            count=min(bar,limit-at)
+            audio[at:at+count]+=faded(phrase[:count],.008)*.65
+            events.append(dict(stem=name,beat=at/(beat*RATE),start_frame=at,frames=count,
+                               gain=.65,kind='opening_instrumental_response',
+                               arrangement_source_frames=[donor,donor+count]))
+    plan['events'].extend(events);plan['events'].sort(key=lambda event:event['start_frame'])
+    plan['opening_response']=dict(hook_end_frame=hook_frames,entry_frame=entry,
+        wait_seconds=(entry-hook_frames)/RATE,grid='next half beat',
+        reason='Replace the fixed two-bar empty opening with a quiet statement of the source-derived groove')
+    first=plan['sections'][0];first['name']='hook_and_response'
+    first['response_start_seconds']=entry/RATE
 
 
 def select_excerpt(pcm,bpm):
@@ -67,4 +97,5 @@ def compose(pcm,seed=4123,strategy='half_time'):
     plan.update(source_selection=selected,original_input_frames=len(pcm),
                 source_policy='Use the part that fits the music; whole-input replay is optional',
                 musical_fit='Signal-based candidate; owner listening required')
-    return mix,stems,plan
+    add_opening_response(stems,plan,end-start)
+    return sum(stems.values()),stems,plan

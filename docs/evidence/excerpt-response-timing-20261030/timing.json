@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "measurement": "First decoded PCM sample above 0.001 amplitude after the clean hook ends",
+  "records": [
+    {
+      "source": "question",
+      "strategy": "half_time",
+      "previous_post_hook_silence_seconds": 2.5182291666666665,
+      "new_post_hook_silence_seconds": 0.050125,
+      "voice_identical": true,
+      "after_opening_identical": true,
+      "source_selection_identical": true
+    },
+    {
+      "source": "question",
+      "strategy": "broken_pulse",
+      "previous_post_hook_silence_seconds": 3.210125,
+      "new_post_hook_silence_seconds": 0.16370833333333334,
+      "voice_identical": true,
+      "after_opening_identical": true,
+      "source_selection_identical": true
+    },
+    {
+      "source": "question",
+      "strategy": "offbeat_dub",
+      "previous_post_hook_silence_seconds": 3.745833333333333,
+      "new_post_hook_silence_seconds": 0.26414583333333336,
+      "voice_identical": true,
+      "after_opening_identical": true,
+      "source_selection_identical": true
+    },
+    {
+      "source": "ls-2277-149896-0026",
+      "strategy": "half_time",
+      "previous_post_hook_silence_seconds": 2.4282291666666667,
+      "new_post_hook_silence_seconds": 0.15,
+      "voice_identical": true,
+      "after_opening_identical": true,
+      "source_selection_identical": true
+    },
+    {
+      "source": "ls-2277-149896-0026",
+      "strategy": "broken_pulse",
+      "previous_post_hook_silence_seconds": 3.000125,
+      "new_post_hook_silence_seconds": 0.18808333333333332,
+      "voice_identical": true,
+      "after_opening_identical": true,
+      "source_selection_identical": true
+    },
+    {
+      "source": "ls-2277-149896-0026",
+      "strategy": "offbeat_dub",
+      "previous_post_hook_silence_seconds": 3.4758333333333336,
+      "new_post_hook_silence_seconds": 0.2620208333333333,
+      "voice_identical": true,
+      "after_opening_identical": true,
+      "source_selection_identical": true
+    }
+  ],
+  "previous_audition_preserved": true,
+  "accepted_pilot_preserved": true
+}

@@ -7,7 +7,9 @@ approval. The owner is the sole required musical listener.
 
 ## Completed local work
 
-- **PASS local excerpt revision:** the owner clarified that only the musically useful part of an input is needed. The new selector chooses a bounded hook, retains original source offsets, and keeps fitting short inputs whole. Six new sketches pass audio/browser checks; 69 selection cases and 19 source-response tests pass. [Audition](http://127.0.0.1:8777/excerpts/), [evidence](evidence/source-excerpt-policy-20261030/report.md). “Getting better” is directional feedback, not acceptance of these new outputs. The frozen full-input study and accepted pilot remain unchanged.
+- **PASS opening timing correction:** the owner-reported empty opening was caused by fixed two-bar call space. Instruments now answer on the next half-beat; the question pause is 0.05–0.26 seconds instead of 2.52–3.75. [Timing evidence](evidence/excerpt-response-timing-20261030/report.md). Voice clips and the rest of each composition remain byte-identical; new musical acceptance is pending.
+
+- **PASS local excerpt revision:** the owner clarified that only the musically useful part of an input is needed. The new selector chooses a bounded hook, retains original source offsets, and keeps fitting short inputs whole. Six new sketches pass audio/browser checks; 69 selection cases and 20 source-response tests pass. [Audition](http://127.0.0.1:8777/excerpts-flow/), [evidence](evidence/source-excerpt-policy-20261030/report.md). “Getting better” is directional feedback, not acceptance of these new outputs. The frozen full-input study and accepted pilot remain unchanged.
 
 - **PASS:** three original source-responsive strategies across 23 licensed
   recorded inputs and three seeds: 207 complete renders, protected full source
@@ -44,7 +46,7 @@ This does not authorize AI DJ rentals, website/app release or live purchases.
 | Requirement | Status | What closes it |
 |---|---|---|
 | Current-image Improvise and Music DNA cases | PARTIAL; five PASS, German Jazz FAIL, maximum case NOT RUN | Resolve the Jazz style failure and prepare a fresh bounded authorization for outstanding hosted cases; cleanup is already PASS; technical results do not prove musical acceptance |
-| Formal M1 / source-response musical quality | PARTIAL; exact pilot accepted, full study technically ready | Owner feedback on the [excerpt revision](http://127.0.0.1:8777/excerpts/), then a frozen full-coverage evaluation of the selected policy and a real [quiet recording](http://127.0.0.1:8777/), followed by threshold/coverage review. The preserved full-input study does not qualify this changed policy |
+| Formal M1 / source-response musical quality | PARTIAL; exact pilot accepted, full study technically ready | Owner feedback on the [excerpt revision](http://127.0.0.1:8777/excerpts-flow/), then a frozen full-coverage evaluation of the selected policy and a real [quiet recording](http://127.0.0.1:8777/), followed by threshold/coverage review. The preserved full-input study does not qualify this changed policy |
 | Learned improvisation | NOT RUN | Verified user-source/action labels, leakage-safe independent source/session/speaker/phrase/performer groups, M1 completion and held-out benefit over the baseline. The seven supplied references from one maker cannot alone establish performer-held-out validation |
 | Produced-song scoring | PARTIAL | Actual sung words, notes and timing verified against the [source audio](http://127.0.0.1:8769/). `verified:false` and `scoringEnabled:false` remain until then |
 | Afro House section/control details | PARTIAL; all three target mixes accepted | Heard section names/timing corrections and control preferences in the [existing review](http://127.0.0.1:8771/) |
