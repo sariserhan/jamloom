@@ -117,6 +117,11 @@ def sample_candidate(work, speech, genre, seconds, seed=0, attempt=0):
     if .35<=seconds<=5:candidates.append((0,seconds))
     candidates=sorted({(max(0,a-.04),min(seconds,b+.04)) for a,b in candidates})
     random.Random(seed).shuffle(candidates)
+    # Try an already-short complete recording before an ASR subspan. Excerpts
+    # remain alternatives when the whole phrase cannot fit the generated song.
+    # Random variety must not be a reason to discard a word from a usable call.
+    if (0,seconds) in candidates:
+        candidates.remove((0,seconds));candidates.insert(0,(0,seconds))
     if attempt>=len(candidates):return None
     a,b=candidates[attempt]
     source=work/('source.wav' if attempt==0 else f'source-{attempt}.wav')

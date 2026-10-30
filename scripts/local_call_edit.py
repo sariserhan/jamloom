@@ -29,17 +29,23 @@ def fit_call_rhythm(hook, recipe):
                 or type(repeat) is not int or repeat<frames+.12*RATE or repeat+word[1]-word[0]>5*RATE):
             raise ValueError('Invalid repeated word bounds')
     elif repeat is not None:raise ValueError('Repeat requires a source word')
-    result=subprocess.run(['ffmpeg','-v','error','-nostdin','-f','f32le','-ar',str(RATE),'-ac','2',
-        '-i','pipe:0','-af',f'atempo={1/ratio:.12f}','-f','f32le','pipe:1'],
-        input=hook.astype('<f4').tobytes(),capture_output=True,check=True,timeout=30)
-    if len(result.stdout)%8:raise ValueError('Invalid tempo output framing')
-    pcm=np.frombuffer(result.stdout,dtype='<f4').reshape(-1,2).astype(np.float64)
+    if ratio==1:
+        pcm=hook.copy()
+    else:
+        result=subprocess.run(['ffmpeg','-v','error','-nostdin','-f','f32le','-ar',str(RATE),'-ac','2',
+            '-i','pipe:0','-af',f'atempo={1/ratio:.12f}','-f','f32le','pipe:1'],
+            input=hook.astype('<f4').tobytes(),capture_output=True,check=True,timeout=30)
+        if len(result.stdout)%8:raise ValueError('Invalid tempo output framing')
+        pcm=np.frombuffer(result.stdout,dtype='<f4').reshape(-1,2).astype(np.float64)
     if not np.isfinite(pcm).all() or abs(len(pcm)-frames)>.08*RATE:
         raise ValueError('Tempo transform failed finite/duration checks')
-    # shortcut: short endpoint error is padded/faded; upgrade if listening exposes lost consonants.
-    pcm=faded(np.pad(pcm,((0,max(0,frames-len(pcm))),(0,0)))[:frames])
+    # Keep every returned frame: a tempo renderer's small duration excess may
+    # contain the final consonant. Placement uses this actual length.
+    pcm=faded(np.pad(pcm,((0,max(0,frames-len(pcm))),(0,0))))
+    if len(pcm)>5*RATE:raise ValueError('Complete transformed phrase exceeds duration budget')
     if word is not None:
-        pcm=np.pad(pcm,((0,repeat+word[1]-word[0]-frames),(0,0)))
+        if repeat<len(pcm)+.12*RATE:raise ValueError('Repeat crowds the complete transformed phrase')
+        pcm=np.pad(pcm,((0,repeat+word[1]-word[0]-len(pcm)),(0,0)))
         pcm[repeat:]+=faded(hook[word[0]:word[1]])*.72
     if np.max(np.abs(pcm))>=1:raise ValueError('Unsafe transformed source peak')
     return pcm

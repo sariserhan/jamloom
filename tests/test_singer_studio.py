@@ -16,6 +16,47 @@ from singing_response import CODE_REVISION, WEIGHT_REVISION, variants
 
 
 class StudioFlow(unittest.TestCase):
+    def test_short_phrase_is_not_randomly_cut_before_trying_the_whole_input(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);source=root/'input.wav'
+            write_pcm(source,np.repeat((.1*np.sin(np.arange(2*RATE)*.1))[:,None],2,axis=1))
+            for seed in (0,1,8,42):
+                work=root/str(seed);work.mkdir();studio.prepare_source(source,work)
+                speech={'transcript':'A complete thought','phrases':[{'text':'thought','start_seconds':1.1,'end_seconds':1.9}]}
+                _,score=studio.sample_candidate(work,speech,'drumandbass',2,seed)
+                self.assertEqual(json.loads(score.read_text())['original_seconds'],[0,2])
+
+    def test_only_a_confident_complete_final_word_can_be_repeated(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);source=root/'input.wav'
+            write_pcm(source,np.repeat((.1*np.sin(np.arange(2*RATE)*.1))[:,None],2,axis=1))
+            for i,confidence in enumerate((.9,.4,float('nan'))):
+                work=root/str(i);work.mkdir();studio.prepare_source(source,work)
+                speech={'source_rate':16000,'transcript':'A short phrase','phrases':[{'text':'A short phrase','start_seconds':0,'end_seconds':2}],
+                        'words':[{'start_frame':22400,'end_frame':31360,'confidence':confidence}]}
+                _,score=studio.sample_candidate(work,speech,'reggae',2)
+                metadata=json.loads(score.read_text())
+                if confidence==.9:self.assertEqual(metadata['rhythm_word_frames'],[65280,96000])
+                else:self.assertIsNone(metadata['rhythm_word_frames'])
+
+    def test_short_percussive_sound_can_be_selected_without_whole_recording(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);source=root/'claps.wav'
+            pcm=np.zeros((3*RATE,2));rng=np.random.default_rng(8)
+            for start in (RATE//2,2*RATE):
+                pcm[start:start+2400]=rng.normal(0,.1,(2400,2))
+            write_pcm(source,pcm);studio.prepare_source(source,root)
+            durations=[]
+            for attempt in range(4):
+                result=studio.sample_candidate(root,{},'dj',3,11,attempt)
+                if result is None:break
+                metadata=json.loads(result[1].read_text());a,b=metadata['original_seconds']
+                self.assertTrue(0<=a<b<=3)
+                durations.append(b-a)
+                self.assertGreater(np.max(np.abs(read_pcm(result[0],(.35,5)))),.05)
+            self.assertTrue(any(.35<=duration<.6 for duration in durations))
+            self.assertIn(3,durations)
+
     def test_short_long_and_quiet_recordings_are_preserved(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d)
@@ -37,13 +78,14 @@ class StudioFlow(unittest.TestCase):
             work=root/'limit';work.mkdir()
             with self.assertRaisesRegex(studio.StudioError,'up to 5 minutes'):studio.prepare_source(source,work)
 
-    def test_sample_choice_is_optional_and_preserves_selected_phrase(self):
+    def test_sample_choice_supports_sounds_and_preserves_selected_phrase(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d);source=root/'input.wav'
             samples=np.repeat((.1*np.sin(np.arange(12*RATE)*.1))[:,None],2,axis=1)
             write_pcm(source,samples);studio.prepare_source(source,root)
             speech={'phrases':[{'start_seconds':6.,'end_seconds':7.,'text':'A question?'}]}
-            self.assertIsNone(studio.sample_candidate(root,{'phrases':[]},'reggae',12))
+            self.assertIsNotNone(studio.sample_candidate(root,{'phrases':[]},'reggae',12))
+            (root/'source.wav').unlink()
             result=studio.sample_candidate(root,speech,'acousticpop',12)
             self.assertIsNotNone(result)
             pcm=read_pcm(result[0],(.35,5))
@@ -61,7 +103,23 @@ class StudioFlow(unittest.TestCase):
                 work=root/str(seed);work.mkdir();studio.prepare_source(source,work)
                 _,score=studio.sample_candidate(work,speech,'country',6,seed)
                 crops.add(tuple(json.loads(score.read_text())['original_seconds']))
-            self.assertEqual(crops,{(.96,2.04),(2.96,5.04)})
+            self.assertTrue({(.96,2.04),(2.96,5.04)}.issubset(crops))
+            self.assertTrue(crops.issubset({(.96,2.04),(2.96,5.04),(.96,5.04)}))
+
+    def test_whole_recording_and_silent_input(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);source=root/'short.wav'
+            write_pcm(source,np.repeat((.1*np.sin(np.arange(RATE)*.1))[:,None],2,axis=1))
+            studio.prepare_source(source,root)
+            _,score=studio.sample_candidate(root,{},'jazz',1)
+            self.assertEqual(json.loads(score.read_text())['selection'],'whole-recording')
+            silent=root/'silent';silent.mkdir();write_pcm(source,np.zeros((RATE,2)))
+            studio.prepare_source(source,silent)
+            self.assertIsNone(studio.sample_candidate(silent,{},'jazz',1))
+            with patch.object(studio,'OUTPUT',root/'jobs'),patch.object(studio,'understand',return_value={'transcript':''}):
+                with self.assertRaisesRegex(studio.StudioError,'No clear sound'):
+                    studio.make_reply(str(source),'a sound','male','jazz',True)
+            self.assertFalse(list((root/'jobs').glob('*/reply.json')))
 
     def test_model_failure_does_not_blame_recording_duration(self):
         with tempfile.TemporaryDirectory() as d,patch.object(studio,'OUTPUT',Path(d)/'jobs'):
@@ -101,20 +159,24 @@ class StudioFlow(unittest.TestCase):
                     dest.mkdir()
                     hashes={}
                     for name in ('vocals','drums'):
-                        np.save(dest/f'{name}.npy',np.tile(samples*.2,(10,1)).astype('float32'),allow_pickle=False)
+                        pcm=read_pcm(Path(args[args.index('--input')+1]),(30,45))
+                        stem=np.zeros_like(pcm,dtype='float32')
+                        if name=='vocals':stem[8*RATE:10*RATE]=pcm[8*RATE:10*RATE]*.2
+                        np.save(dest/f'{name}.npy',stem,allow_pickle=False)
                         hashes[name]=digest(dest/f'{name}.npy')
                     (dest/'complete.json').write_text(json.dumps({'technical':'PASS',
                         'source_sha256':digest(Path(args[args.index('--input')+1])),'stems':hashes}))
                 elif args[2] == 'draft':
                     seed = int(args[args.index('--seed')+1])
                     c = next(c for c in variants(seed) if c['id'] == 'reggae-female')
+                    c['duration']=int(args[args.index('--duration')+1])
                     c['lyrics'] = '[Verse]\nYou have a question and I want to know\nLet your question flow'
                     dest.write_text(json.dumps({'schema': 'jamloom-sung-response-1', 'model_code': CODE_REVISION,
                         'weights': WEIGHT_REVISION, 'phrase': 'I have a question', 'cases': [c]}))
                 else:
                     plan = Path(args[args.index('--plan')+1]); dest.mkdir()
                     c = json.loads(plan.read_text())['cases'][0]
-                    write_pcm(dest/'singer.wav', np.tile(samples, (10, 1)))
+                    write_pcm(dest/'singer.wav', np.tile(samples, (15, 1))[:c['duration']*RATE])
                     (dest/'complete.json').write_text(json.dumps({'technical': 'PASS', 'case': c,
                         'audio_sha256': digest(dest/'singer.wav'), 'plan_sha256': digest(plan)}))
             with patch.object(studio.subprocess, 'run', side_effect=run), patch.object(studio,'understand',return_value={}):
@@ -123,21 +185,35 @@ class StudioFlow(unittest.TestCase):
             self.assertNotEqual(singer, exchange)
             self.assertTrue(Path(singer).is_file() and Path(exchange).is_file())
             self.assertIn('Female · Reggae', status)
-            self.assertIn('without replaying your recording', status)
-            self.assertEqual(digest(Path(singer)),digest(Path(exchange)))
+            self.assertIn('Your sound', status)
+            self.assertNotEqual(digest(Path(singer)),digest(Path(exchange)))
+            receipt=json.loads(Path(exchange).with_name('complete.json').read_text())
+            self.assertTrue(receipt['sample_used'])
+            self.assertTrue(receipt['events'])
+            self.assertEqual(receipt['original_recording_sha256'],original_hash)
             self.assertIn('question', lyrics)
             self.assertEqual(digest(source), original_hash)
-            self.assertEqual(len(calls), 2)
+            self.assertEqual(len(calls), 3)
             self.assertTrue(all(kw['timeout'] == 600 for _, kw in calls))
             self.assertFalse(list(studio.OUTPUT.rglob('.partial')))
+            actual_arrange=studio.arrange;attempts=[]
+            def retry(*args,**kwargs):
+                attempts.append(args[0])
+                if len(attempts)==1:raise ValueError('First crop cannot fit')
+                return actual_arrange(*args,**kwargs)
+            with patch.object(studio.subprocess,'run',side_effect=run),patch.object(studio,'arrange',side_effect=retry),patch.object(studio,'understand',return_value={'transcript':'A question','phrases':[{'text':'A question','start_seconds':0.,'end_seconds':1.}]}):
+                _,retried,_,_,_=studio.make_reply(str(source),'A question','female','reggae',True)
+            self.assertGreaterEqual(len(attempts),2)
+            self.assertTrue(Path(retried).is_file())
+            self.assertNotEqual(attempts[0],attempts[1])
             with patch.object(studio.subprocess,'run',side_effect=run), \
                  patch.object(studio,'sample_candidate',return_value=(source,source)), \
                  patch.object(studio,'arrange',side_effect=ValueError('Invalid optional sample')), \
                  patch.object(studio,'understand',return_value={}):
-                singer,exchange,_,status,_=studio.make_reply(str(source),'I have a question','female','reggae',True)
-            self.assertEqual(digest(Path(singer)),digest(Path(exchange)))
-            self.assertIn('without replaying your recording',status)
-            self.assertTrue(list(studio.OUTPUT.glob('*/sample-skipped.json')))
+                with self.assertRaisesRegex(studio.StudioError,'Could not blend your recording'):
+                    studio.make_reply(str(source),'I have a question','female','reggae',True)
+            self.assertTrue(list(studio.OUTPUT.glob('*/arrangement-rejected-3.json')))
+            self.assertTrue(list(studio.OUTPUT.glob('*/failure.json')))
 
 
 if __name__ == '__main__':

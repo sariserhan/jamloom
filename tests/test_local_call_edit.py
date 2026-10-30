@@ -2,13 +2,15 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+import subprocess
 import unittest
 from unittest.mock import patch
 
 import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from arrange_voice_research import RATE, digest, read_pcm, write_pcm
-from local_call_edit import add_call, blend_patch, edit, replace_vocal, arrange, rank_options, read_history, arrangement_options
+from local_call_edit import add_call, blend_patch, edit, replace_vocal, arrange, rank_options, read_history, arrangement_options, mix_calls, performance_options, match_call_tone, fit_call_rhythm
+from source_led_response import faded
 from singing_response import source_conditioning
 
 
@@ -31,6 +33,73 @@ class LocalCallEdit(unittest.TestCase):
         self.hook=self.root/'hook.wav';write_pcm(self.hook,self.song[:2*RATE])
 
     def tearDown(self):self.temp.cleanup()
+
+    def test_rhythm_preserves_pitch_and_repeats_only_the_original_word(self):
+        t=np.arange(2*RATE)/RATE
+        hook=faded(np.repeat((.1*np.sin(2*np.pi*180*t))[:,None],2,axis=1));saved=hook.copy()
+        for ratio in (.8,1.,1.25):
+            pcm=fit_call_rhythm(hook,{'duration_ratio':ratio})
+            self.assertGreaterEqual(len(pcm),round(len(hook)*ratio))
+            self.assertLessEqual(len(pcm),round(len(hook)*ratio)+.08*RATE)
+            hz=np.fft.rfftfreq(len(pcm),1/RATE)[np.argmax(abs(np.fft.rfft(pcm[:,0])))]
+            self.assertLess(abs(hz-180),2)
+        repeat=round(2.5*RATE);word=[round(1.5*RATE),2*RATE]
+        pcm=fit_call_rhythm(hook,{'duration_ratio':1.1,'word_frames':word,'repeat_offset_frames':repeat})
+        np.testing.assert_array_equal(pcm[repeat:],faded(hook[word[0]:word[1]])*.72)
+        np.testing.assert_array_equal(hook,saved)
+        for recipe in ({'duration_ratio':float('nan')},{'duration_ratio':.79},
+                       {'duration_ratio':True},{'duration_ratio':1,'repeat_offset_frames':repeat},
+                       {'duration_ratio':1,'word_frames':[-1,RATE],'repeat_offset_frames':repeat},
+                       {'duration_ratio':1,'word_frames':word,'repeat_offset_frames':RATE}):
+            with self.assertRaises(ValueError):fit_call_rhythm(hook,recipe)
+        with patch('local_call_edit.subprocess.run',return_value=subprocess.CompletedProcess([],0,stdout=b'broken')):
+            with self.assertRaises(ValueError):fit_call_rhythm(hook,{'duration_ratio':1.1})
+
+    def test_tempo_render_tail_is_not_cut_to_nominal_grid_length(self):
+        hook=np.full((RATE,2),.1);target=round(RATE*1.1)
+        rendered=np.full((target+round(.04*RATE),2),.1,dtype='<f4')
+        with patch('local_call_edit.subprocess.run',return_value=subprocess.CompletedProcess([],0,stdout=rendered.tobytes())):
+            actual=fit_call_rhythm(hook,{'duration_ratio':1.1})
+        self.assertEqual(len(actual),len(rendered))
+        self.assertGreater(np.sqrt(np.mean(actual[target:target+round(.02*RATE)]**2)),.09)
+
+    def test_automatic_rhythm_is_source_bound_and_unavailable_transform_falls_back(self):
+        score=self.root/'source.json'
+        metadata={'sample_rate':RATE,'source':{'sha256':digest(self.hook),'processed_frames':2*RATE},
+                  'rhythm_word_frames':[round(1.5*RATE),2*RATE]}
+        score.write_text(json.dumps(metadata))
+        grid={'bpm':120.,'offset_frames':0,'confidence':1.}
+        prefer=lambda options,history,seed:sorted(options,key=lambda c:c.get('treatment')!='word-reply')
+        with patch('local_call_edit.beat_grid',return_value=grid),patch('local_call_edit.rank_options',side_effect=prefer):
+            result=arrange(self.hook,self.song_dir,self.root/'rhythm',self.root/'history',42,True,score)
+        self.assertEqual(result['pattern'],'word-reply')
+        self.assertEqual(result['source_rhythm']['input_sha256'],digest(self.hook))
+        self.assertEqual(result['source_sha256'],digest(self.hook))
+        self.assertEqual(result['outside_region_max_pcm_error'],0)
+        self.assertLess(result['peak'],.98)
+        with patch('local_call_edit.beat_grid',return_value=grid),\
+                patch('local_call_edit.fit_call_rhythm',side_effect=subprocess.CalledProcessError(1,'ffmpeg')):
+            fallback=arrange(self.hook,self.song_dir,self.root/'plain',self.root/'history',43,True,score)
+        self.assertNotIn('source_rhythm',fallback);self.assertEqual(fallback['rhythm_fallback'],'CalledProcessError')
+        for change in ({'source':{'sha256':'wrong','processed_frames':2*RATE}}, {'rhythm_word_frames':[0,3*RATE]}):
+            score.write_text(json.dumps({**metadata,**change}))
+            with self.assertRaises(ValueError):arrange(self.hook,self.song_dir,self.root/'invalid',self.root/'history',44,True,score)
+        self.assertFalse((self.root/'invalid').exists())
+
+    def test_longest_improvise_preserves_music_outside_the_call(self):
+        song=np.tile(self.song,(2,1))[:45*RATE]
+        write_pcm(self.song_dir/'singer.wav',song)
+        sha=digest(self.song_dir/'singer.wav')
+        (self.song_dir/'complete.json').write_text(json.dumps({'technical':'PASS','audio_sha256':sha,'case':{'bpm':90,'duration':45}}))
+        vocals=np.zeros_like(song,dtype=np.float32)
+        np.save(self.song_dir/'stems/vocals.npy',vocals)
+        (self.song_dir/'stems/complete.json').write_text(json.dumps({'technical':'PASS','source_sha256':sha,'stems':{'vocals':digest(self.song_dir/'stems/vocals.npy')}}))
+        output=self.root/'long-edit'
+        edit(self.song_dir,self.hook,output,38,True)
+        actual=read_pcm(output/'performance.wav',(45,45))
+        original=read_pcm(self.song_dir/'singer.wav',(45,45))
+        np.testing.assert_array_equal(actual[:38*RATE],original[:38*RATE])
+        np.testing.assert_array_equal(actual[40*RATE:],original[40*RATE:])
 
     def test_repair_cannot_touch_outside_the_window_or_create_edge_steps(self):
         a,b=RATE,4*RATE
@@ -55,6 +124,57 @@ class LocalCallEdit(unittest.TestCase):
         self.assertLess(np.max(np.abs(mixed)),.98)
         np.testing.assert_array_equal(mixed[:10*RATE],self.song[:10*RATE])
         self.assertGreater(np.max(np.abs(voice)),0)
+
+    def test_tone_processing_keeps_pitch_length_and_source_while_reducing_rumble(self):
+        time=np.arange(2*RATE)/RATE
+        signal=.05*np.sin(2*np.pi*180*time)+.03*np.sin(2*np.pi*25*time)
+        source=np.repeat(signal[:,None],2,axis=1);before=source.copy()
+        reference=np.repeat((.08*np.sin(2*np.pi*180*time))[:,None],2,axis=1)
+        processed,report=match_call_tone(source,reference)
+        np.testing.assert_array_equal(source,before);self.assertEqual(processed.shape,source.shape)
+        spectrum=np.abs(np.fft.rfft(processed[:,0]));frequencies=np.fft.rfftfreq(len(processed),1/RATE)
+        self.assertEqual(frequencies[np.argmax(spectrum)],180)
+        self.assertLess(spectrum[np.argmin(abs(frequencies-25))]/spectrum[np.argmin(abs(frequencies-180))],.2)
+        self.assertTrue(all(abs(db)<=6 for db in report['eq_db']))
+        self.assertEqual(report['pitch_shift_semitones'],0);self.assertEqual(report['formant_shift_semitones'],0)
+        self.assertLessEqual(report['max_compression_db'],9);self.assertLessEqual(report['room_wet'],.06)
+        self.assertFalse(np.array_equal(processed,source));self.assertTrue(np.isfinite(processed).all())
+        for scale in (.001,.005,.01):
+            try:
+                quiet,_=match_call_tone(source*scale,reference)
+                self.assertTrue(np.isfinite(quiet).all())
+            except ValueError:pass
+        for bad in (source*np.nan,np.zeros_like(source),source[:,0],source[:1]):
+            with self.assertRaises(ValueError):match_call_tone(bad,reference)
+
+    def test_level_tracks_local_music_and_compression_smooths_loud_syllables(self):
+        hook=read_pcm(self.hook,(2,2));hook[len(hook)//2:]*=.15
+        processed,report=match_call_tone(hook,np.zeros_like(hook))
+        def contrast(pcm):
+            return np.sqrt(np.mean(pcm[RATE//4:RATE*3//4]**2))/np.sqrt(np.mean(pcm[RATE*5//4:RATE*7//4]**2))
+        self.assertLess(contrast(processed),contrast(hook));self.assertGreater(report['max_compression_db'],0)
+        events=[]
+        for volume in (.5,1):
+            mixed,voice,event=add_call(self.song*volume,hook,10*RATE,np.zeros_like(self.song))
+            events.append(event);self.assertLess(np.max(np.abs(mixed)),.98)
+            self.assertAlmostEqual(event['processed_active_rms'],event['target_lead_rms'],places=6)
+        self.assertAlmostEqual(events[1]['target_lead_rms']/events[0]['target_lead_rms'],2)
+
+    def test_tone_matching_reduces_a_nasal_recording_without_changing_its_pitch(self):
+        t=np.arange(2*RATE)/RATE
+        low=np.sin(2*np.pi*200*t);nasal=np.sin(2*np.pi*1600*t)
+        source=np.repeat((.04*low+.12*nasal)[:,None],2,axis=1)
+        reference=np.repeat((.08*low+.02*nasal)[:,None],2,axis=1)
+        processed,report=match_call_tone(source,reference)
+        def ratio(pcm):
+            spectrum=np.abs(np.fft.rfft(pcm[:,0]))
+            return spectrum[3200]/spectrum[400]
+        self.assertLess(ratio(processed),ratio(source)*.6)
+        self.assertGreater(ratio(processed),ratio(reference))
+        self.assertEqual(processed.shape,source.shape)
+        self.assertEqual(report['version'],2)
+        _,silent_reference=match_call_tone(source,np.zeros_like(reference))
+        self.assertEqual(silent_reference['eq_db'],[0.]*6)
 
     def test_gap_edit_preserves_pcm_original_and_consent(self):
         out=self.root/'out'
@@ -107,7 +227,7 @@ class LocalCallEdit(unittest.TestCase):
         self.assertEqual(result['mode'],'vocal-replacement')
         self.assertEqual(result['outside_region_max_pcm_error'],0)
         self.assertAlmostEqual(result['unchanged_seconds'],27.6)
-        self.assertLessEqual(result['source_identity_max_pcm_error'],.5/32768+1e-12)
+        self.assertLessEqual(result['processed_source_max_pcm_error'],.5/32768+1e-12)
         with self.assertRaises(ValueError):replace_vocal(self.song,self.vocals,0,30*RATE)
         with self.assertRaises(ValueError):edit(self.song_dir,self.hook,self.root/'outside',8,True,replace_region=[4.8,7.2])
 
@@ -132,15 +252,41 @@ class LocalCallEdit(unittest.TestCase):
         self.assertEqual(read_history(history),[first['arrangement_fingerprint']])
         before=history.read_bytes()
         with patch('local_call_edit.add_call',side_effect=ValueError('clash')):
-            fallback=arrange(self.hook,self.song_dir,self.root/'fallback',history,43,True)
-        self.assertFalse(fallback['sample_used'])
-        self.assertEqual(fallback['arrangement_status'],'NO_SAFE_PLACEMENT')
+            with self.assertRaisesRegex(ValueError,'No safe source-inclusive'):
+                arrange(self.hook,self.song_dir,self.root/'fallback',history,43,True)
+        self.assertFalse((self.root/'fallback').exists())
         self.assertEqual(history.read_bytes(),before)
-        self.assertEqual(digest(self.root/'fallback/performance.wav'),digest(self.song_dir/'singer.wav'))
         with self.assertRaises(ValueError):arrange(self.hook,self.song_dir,self.root/'no-consent',history,44)
         self.assertFalse((self.root/'no-consent').exists())
         for content in ('broken','{}','"string"','[]'*9000):
             history.write_text(content);self.assertEqual(read_history(history),[])
+
+    def test_repeated_calls_preserve_music_and_reject_clashes(self):
+        result=edit(self.song_dir,self.hook,self.root/'repeats',10,True,repeat_at=[13,16])
+        self.assertEqual(len(result['events']),3)
+        self.assertEqual(result['outside_region_max_pcm_error'],0)
+        self.assertEqual(result['unchanged_seconds'],24)
+        self.assertLessEqual(result['processed_source_max_pcm_error'],.5/32768+1e-12)
+        hook=read_pcm(self.hook,(2,2))
+        for repeats in ([10.5],[5],[29],[13,16,19],[float('nan')]):
+            with self.assertRaises(ValueError):mix_calls(self.song,hook,10*RATE,self.vocals,repeats)
+        with self.assertRaises(ValueError):mix_calls(self.song,hook,RATE,self.vocals,[5])
+
+    def test_loops_fit_before_the_singer_and_keep_single_options(self):
+        hook=read_pcm(self.hook,(2,2));grid={'bpm':120,'offset_frames':0,'confidence':1}
+        vocals=np.zeros_like(self.song);vocals[15*RATE:17*RATE]=self.song[15*RATE:17*RATE]
+        base=arrangement_options(self.song,vocals,hook,grid)
+        choices=performance_options(base,hook,grid,len(self.song))
+        self.assertEqual(sum(c['pattern']=='single-call' for c in choices),len(base))
+        accepted=[]
+        for choice in choices:
+            if choice['pattern']!='rhythmic-loop' or choice['replace_region']:continue
+            try:mix_calls(self.song,hook,round(choice['call_at']*RATE),vocals,choice['repeat_at'])
+            except ValueError:continue
+            accepted.append(choice)
+            starts=[choice['call_at'],*choice['repeat_at']]
+            self.assertTrue(all(abs((b-a)*2-round((b-a)*2))<1e-5 for a,b in zip(starts,starts[1:])))
+        self.assertTrue(accepted,'At least one actual loop must fit, not just an unplayable option')
 
     def test_replacement_uses_isolated_phrases_and_leaves_a_reply(self):
         vocals=self.vocals.copy()
