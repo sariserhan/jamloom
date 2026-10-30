@@ -1,5 +1,5 @@
 {
-  "evaluated_at": "2026-10-30T22:32:41.023298+00:00",
+  "evaluated_at": "2026-10-30T22:42:42.192828+00:00",
   "owner_submissions": 9,
   "automated_answers_used": false,
   "release": "HELD by owner",
@@ -14,6 +14,7 @@
     "formal_M1": "NOT RUN until complete judgments, recorded control and human evidence review",
     "listener_policy": "owner only",
     "freeze": "3b24c8e953115fe6a66cd8e57a5134600b571d843cb4a9a56e9916296fbbb48e",
+    "composition_policy": "selected_excerpt_prompt_response",
     "other_study_receipts_preserved": 0
   },
   "novice": {

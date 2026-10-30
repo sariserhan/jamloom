@@ -65,6 +65,7 @@ def prepare(batch,output):
               source_report_sha256=digest(batch/'report.json'))
     (review/'study.json').write_text(json.dumps(data,indent=2)+'\n')
     (output/'organizer-key.json').write_text(json.dumps(dict(freeze=freeze,blocks=keys),indent=2)+'\n')
+    (output/'evaluation-policy.json').write_text(json.dumps(dict(freeze=freeze,source_report_sha256=data['source_report_sha256'],composition_policy=report.get('composition_policy','complete_input')),indent=2)+'\n')
     for name in ('strategy-review.html','strategy-review.js','owner-review.css'):
         shutil.copyfile(ROOT/'apps/listening'/name,review/('index.html' if name.endswith('.html') else name))
     shutil.copyfile(batch/'ATTRIBUTION.txt',review/'ATTRIBUTION.txt')

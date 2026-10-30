@@ -74,11 +74,18 @@ def evaluate(workspace,review):
         if row.get('status')!='OWNER_SUBMITTED_REQUIRES_EVALUATION':raise ValueError('Unexpected observation provenance')
         observations.append(row)
     report=dict(evaluated_at=datetime.now(timezone.utc).isoformat(),owner_submissions=len(observations),automated_answers_used=False,release='HELD by owner',live_payments='HELD by owner')
+    composition_policy='complete_input'
     if (review/'review/study.json').is_file():
         study=json.loads((review/'review/study.json').read_text());key=json.loads((review/'organizer-key.json').read_text())
+        if (review/'evaluation-policy.json').is_file():
+            policy=json.loads((review/'evaluation-policy.json').read_text())
+            if policy.get('freeze')!=study['freeze'] or policy.get('source_report_sha256')!=study['source_report_sha256']:raise ValueError('Evaluation policy identity changed')
+            composition_policy=policy.get('composition_policy')
+            if composition_policy not in ('complete_input','selected_excerpt_prompt_response'):raise ValueError('Unknown composition policy')
         music=[r['payload'] for r in observations if r['kind']=='music']
         report['music']=music_summary(study,key,[p for p in music if p.get('freeze')==study['freeze']])
         report['music']['freeze']=study['freeze']
+        report['music']['composition_policy']=composition_policy
         report['music']['other_study_receipts_preserved']=sum(p.get('freeze')!=study['freeze'] for p in music)
     else:report['music']={'status':'PREPARING'}
     novice=[r for r in observations if r['kind']=='novice']
@@ -101,6 +108,8 @@ def evaluate(workspace,review):
         if row['kind']!='silence':continue
         from arrange_voice_research import read_pcm,digest
         from source_strategy_response import compose,STRATEGIES
+        if composition_policy=='selected_excerpt_prompt_response':
+            from source_excerpt_response import compose
         payload=row['payload'];path=(workspace/'results'/payload['file']).resolve()
         if not path.is_relative_to((workspace/'results').resolve()) or digest(path)!=payload['sha256']:raise ValueError('Quiet control source changed')
         rejected=[]

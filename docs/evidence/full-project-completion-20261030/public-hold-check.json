@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-30T22:37:38.246155+00:00",
+  "operation": "GET only",
+  "website_publication": false,
+  "routes": {
+    "/api/taste/song": {
+      "status": 503,
+      "body": {
+        "error": "Jamloom is coming soon. Public access is not open yet."
+      }
+    },
+    "/api/improvise/song": {
+      "status": 503,
+      "body": {
+        "error": "Jamloom is coming soon. Public access is not open yet."
+      }
+    },
+    "/api/ai-dj/sessions": {
+      "status": 503,
+      "body": {
+        "error": "Jamloom is coming soon. Public access is not open yet."
+      }
+    }
+  }
+}

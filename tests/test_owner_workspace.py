@@ -1,4 +1,5 @@
 import copy
+import hashlib
 from pathlib import Path
 import sys
 import json
@@ -12,6 +13,22 @@ from owner_review_server import validate_music
 
 
 class OwnerWorkspace(unittest.TestCase):
+    def test_recorded_quiet_control_uses_the_frozen_composition_policy(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);(root/'results').mkdir();(root/'review').mkdir()
+            study=dict(freeze='current',source_report_sha256='report',blocks=[])
+            (root/'review/study.json').write_text(json.dumps(study));(root/'organizer-key.json').write_text(json.dumps(dict(freeze='current',blocks=[])))
+            policy=dict(freeze='current',source_report_sha256='report',composition_policy='selected_excerpt_prompt_response')
+            (root/'evaluation-policy.json').write_text(json.dumps(policy))
+            audio=root/'results/quiet.wav';audio.write_bytes(b'isolated QA fixture')
+            payload=dict(file=audio.name,sha256=hashlib.sha256(audio.read_bytes()).hexdigest())
+            (root/'results/quiet.json').write_text(json.dumps(dict(status='OWNER_SUBMITTED_REQUIRES_EVALUATION',kind='silence',payload=payload)))
+            with patch('arrange_voice_research.read_pcm',return_value=None),patch('source_excerpt_response.compose',side_effect=ValueError('silence')) as revised,patch('source_strategy_response.compose') as old:
+                result=evaluate(root,root)
+                self.assertEqual(result['recorded_silence'][0]['status'],'PASS');self.assertEqual(revised.call_count,3);old.assert_not_called()
+            policy['freeze']='other';(root/'evaluation-policy.json').write_text(json.dumps(policy))
+            with self.assertRaisesRegex(ValueError,'policy identity'):evaluate(root,root)
+
     def test_prior_study_receipts_are_preserved_but_do_not_rate_current_audio(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);(root/'results').mkdir();(root/'review').mkdir()
