@@ -1,0 +1,44 @@
+{
+  "status": "PASS scoped physical checks",
+  "recovered_after_restart": true,
+  "physical_device": "iPhone 14 Pro, iOS 27.0.1",
+  "physical_remaining_tests_passed": 21,
+  "focused_playback_tests_passed": 3,
+  "microphone": {
+    "audioSaved": false,
+    "audioUploaded": false,
+    "buffers": 50,
+    "channels": 1,
+    "frames": 240000,
+    "inputLatencySeconds": 0.0013749999925494194,
+    "inputs": [
+      "MicrophoneBuiltIn"
+    ],
+    "ioBufferDurationSeconds": 0.010666666666666666,
+    "nonfiniteSamples": 0,
+    "outputLatencySeconds": 0.007958333007991314,
+    "outputs": [
+      "Speaker"
+    ],
+    "sampleRate": 48000,
+    "scope": "Real input buffers and driver-reported timing; not acoustic round-trip latency"
+  },
+  "release": {
+    "version": "0.10.4",
+    "build": "34",
+    "bundle_audit": "phone-release-bundle.json",
+    "installed": true,
+    "launched": true,
+    "website_or_appstore_publication": false
+  },
+  "limitations": [
+    "Built-in microphone/speaker only; Bluetooth/wired routes and acoustic round-trip latency unmeasured.",
+    "Earlier microphone runtime warnings retained; final nonisolated retest has none."
+  ],
+  "evidence": [
+    "phone-initial-summary.json",
+    "phone-playback-fix-summary.json",
+    "phone-remaining-summary.json",
+    "phone-microphone-final-summary.json"
+  ]
+}

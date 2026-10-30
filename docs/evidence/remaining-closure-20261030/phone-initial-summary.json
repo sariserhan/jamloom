@@ -1,0 +1,60 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "00008120-001E28663CE3C01E",
+        "deviceName" : "Ssari phone",
+        "modelName" : "iPhone 14 Pro",
+        "osBuildNumber" : "24A446",
+        "osVersion" : "27.0.1",
+        "platform" : "iOS"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 2,
+      "passedTests" : 5,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "Jamloom · Built with macOS 26.7.1",
+  "expectedFailures" : 0,
+  "failedTests" : 2,
+  "finishTime" : 1793377366.448,
+  "passedTests" : 5,
+  "result" : "Failed",
+  "runtimeWarnings" : [
+
+  ],
+  "skippedTests" : 0,
+  "startTime" : 1793377265.076,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "XCTAssertGreaterThan failed: (\"0.06076954133357476\") is not greater than (\"0.1\") - singing-audio/long-way-home-song.mp3: [\"paused\": 0, \"time\": 0.06076954133357476, \"duration\": 120.024, \"metadataDuration\": 120, \"readyState\": 4]",
+      "targetName" : "JamloomTests",
+      "testIdentifier" : 3,
+      "testIdentifierString" : "StudioServerTests/testProducedRecordingsKeepTheirDurationOverLoopbackHTTP()",
+      "testIdentifierURL" : "test://com.apple.xcode/Jamloom/JamloomTests/StudioServerTests/testProducedRecordingsKeepTheirDurationOverLoopbackHTTP",
+      "testName" : "testProducedRecordingsKeepTheirDurationOverLoopbackHTTP()"
+    },
+    {
+      "failureText" : "XCTAssertTrue failed",
+      "targetName" : "JamloomUITests",
+      "testIdentifier" : 7,
+      "testIdentifierString" : "FlowTests/testProducedSingingRecordingAndTabCleanup()",
+      "testIdentifierURL" : "test://com.apple.xcode/Jamloom/JamloomUITests/FlowTests/testProducedSingingRecordingAndTabCleanup",
+      "testName" : "testProducedSingingRecordingAndTabCleanup()"
+    }
+  ],
+  "title" : "Test - Jamloom",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 7
+}

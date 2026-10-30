@@ -1,0 +1,17 @@
+{
+  "status": "NOT RUN",
+  "attempts": 1,
+  "paid_compute": false,
+  "listening": "NOT RUN",
+  "plan_sha256": "a90d285179bbbb4e1b56ffce78728b39b48d1bf5d40db8c21feefdcc4aaf7710",
+  "conditioning_sha256": "275e8232a965fe72b7f9af3087455cffd2acbffe055fc81bb9eccda031dabd9d",
+  "disk_floor_bytes": 16106127360,
+  "running_memory_floor_bytes": 1073741824,
+  "starting_memory_floor_bytes": 8589934592,
+  "rss_limit_bytes": 8589934592,
+  "swap_growth_limit_bytes": 2147483648,
+  "timeout_seconds": 600,
+  "peak_process_group_rss_bytes": 0,
+  "error": "Available memory floor reached",
+  "seconds": 4.587499995523103e-05
+}

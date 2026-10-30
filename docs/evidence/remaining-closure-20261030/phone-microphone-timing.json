@@ -1,0 +1,19 @@
+{
+  "audioSaved" : false,
+  "audioUploaded" : false,
+  "buffers" : 50,
+  "channels" : 1,
+  "frames" : 240000,
+  "inputLatencySeconds" : 0.0013749999925494194,
+  "inputs" : [
+    "MicrophoneBuiltIn"
+  ],
+  "ioBufferDurationSeconds" : 0.010666666666666666,
+  "nonfiniteSamples" : 0,
+  "outputLatencySeconds" : 0.0079583330079913139,
+  "outputs" : [
+    "Speaker"
+  ],
+  "sampleRate" : 48000,
+  "scope" : "Real input buffers and driver-reported timing; not acoustic round-trip latency"
+}

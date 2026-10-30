@@ -1,0 +1,67 @@
+{
+  "schema": "jamloom-improvise-reference-study-1",
+  "files": [
+    {
+      "file": "down.mp3",
+      "sha256": "f10a3fa3cf773a85b04458747d7a46de7d7f621bf7ab732785ad3038212a2d12",
+      "seconds": 143.798875,
+      "phrases": 21,
+      "repeat_candidates": 16
+    },
+    {
+      "file": "f.mp3",
+      "sha256": "dcc26654d96138cd7aafecfc1298ea159884cdcd54a221422e35c77ace7a45f6",
+      "seconds": 114.410667,
+      "phrases": 33,
+      "repeat_candidates": 0
+    },
+    {
+      "file": "pipe.mp3",
+      "sha256": "e57756d665c676e876bc7b25abf6d97bd88d137c889eebd633ade0d353919bc8",
+      "seconds": 79.656979,
+      "phrases": 6,
+      "repeat_candidates": 3
+    },
+    {
+      "file": "question.mp3",
+      "sha256": "e830e315e59e111ef09f6436483f094c9b2e6ed8c86273ebc13021fdea98b9e8",
+      "seconds": 155.316479,
+      "phrases": 4,
+      "repeat_candidates": 0
+    },
+    {
+      "file": "x.mp3",
+      "sha256": "af8a99b1fe4c2c2d578f6ae22724da773343200a94dd10a24f6c1c66611ffef7",
+      "seconds": 764.650667,
+      "phrases": 241,
+      "repeat_candidates": 57
+    },
+    {
+      "file": "y.mp3",
+      "sha256": "f53c66f0f1707b1a3fe9f1e5da447cdb7aafe92c056ffe9420a50e5c6084632f",
+      "seconds": 667.178688,
+      "phrases": 155,
+      "repeat_candidates": 18
+    },
+    {
+      "file": "z.mp3",
+      "sha256": "badb35377a94ff6e51ae3fcadb9d0fa327632d1f5a6bbe0c86383eb57edc4b63",
+      "seconds": 625.408,
+      "phrases": 125,
+      "repeat_candidates": 30
+    }
+  ],
+  "permission_sha256": "eee31e0e79608dfeb520770be9292b9e2556503a40f4ba7bbaa4b0e825ce775b",
+  "script_sha256": "49cbacbc1bfa01a2ae6ac5f7a2b459133c195328bfb688f5d284bf6403b12abc",
+  "model_manifest_sha256": "58eb63835716a76ae48b18fd5ace527ad4895aea4277109841d9afa93727b8f3",
+  "network": "disabled",
+  "speaker_roles": "UNVERIFIED; maker is not user input",
+  "voice_reuse": false,
+  "training": "NOT RUN; role/action labels required",
+  "limits": [
+    "ASR words, repetitions and times are estimates, especially over music.",
+    "Repeated words do not establish audio sampling or speaker identity.",
+    "File separation does not prove independent source sessions."
+  ],
+  "elapsed_seconds": 43.36003612517379
+}

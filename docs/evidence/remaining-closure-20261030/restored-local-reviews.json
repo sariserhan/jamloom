@@ -1,0 +1,26 @@
+{
+  "status": "PASS HTTP/range; rendered UI not rerun",
+  "checks": [
+    {
+      "port": 8769,
+      "file": "deep-house-male.mp3",
+      "range_status": 206,
+      "range_bytes": 1024,
+      "source_bytes_match": true
+    },
+    {
+      "port": 8771,
+      "file": "clip-0.mp3",
+      "range_status": 206,
+      "range_bytes": 1024,
+      "source_bytes_match": true
+    },
+    {
+      "port": 8773,
+      "file": "question.mp3",
+      "range_status": 206,
+      "range_bytes": 1024,
+      "source_bytes_match": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "checked_utc": "2026-10-30T17:05:13.397Z",
+  "endpoint": "jl77hn92npt65k",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+  "previous_image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:790e6950bf22f11a107f9c5c49bd76f5bf6c25d20463d086cc82411337e74343",
+  "workersMin": 0,
+  "workersMax": 0,
+  "environment_preserved": true,
+  "gpu_disk_registry_scaling_preserved": true,
+  "source_commit": "85b2ce7ba542af67963376f6ae89c04e8201401e",
+  "gpu_request_started": false
+}

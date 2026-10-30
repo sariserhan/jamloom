@@ -1,0 +1,13 @@
+{
+  "status": "FAIL owner musical review",
+  "scope": "Overall current local Improvise listening study; no fabricated per-block rubric scores",
+  "freeze_sha256": "6248872221697e9174f6214ef6c09a15e0ce03a77a59d11752f4961389ac60b5",
+  "owner_statement": "none of these are good, I dont think we are doing improvise good. these are not afro house also this is improvise and they are bad made. we cannot just play the user sound plainly without a harmony with the music we make",
+  "requirements": [
+    "Integrate the user sound musically with the generated arrangement",
+    "Harmonically and rhythmically shape source material instead of plain voice over backing"
+  ],
+  "per_block_scores": null,
+  "afro_house_acceptance": "Unchanged; the accepted three Afro House targets are a separate pipeline and review",
+  "recorded_utc": "2026-10-30T16:41:09.183117+00:00"
+}

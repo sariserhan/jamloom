@@ -1,0 +1,30 @@
+{
+  "status": "PASS cleanup; FAIL startup qualification",
+  "checked_utc": "2026-10-30T17:16:24.723Z",
+  "endpoint": "jl77hn92npt65k",
+  "workersMin": 0,
+  "workersMax": 0,
+  "health": {
+    "jobs": {
+      "completed": 23,
+      "failed": 11,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "worker_count": 0,
+  "job_status": "CANCELLED",
+  "retries": 0,
+  "permit_consumed": true,
+  "completed_audio": false,
+  "billing": "No records returned yet; final charge unconfirmed"
+}

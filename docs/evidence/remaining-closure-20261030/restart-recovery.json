@@ -1,0 +1,40 @@
+{
+  "status": "PARTIAL",
+  "recovered_utc": "2026-10-30T17:09:28.671346+00:00",
+  "interrupted_local_render": "renders/source-first-improvise-20261030/band/.partial",
+  "interrupted_log": "renders/remaining-closure-20261030/source-first-render.log",
+  "render_recovery": "Stopped by swap guard; later preflight refused to start below 8 GiB available memory",
+  "source_first_guard_tests": 5,
+  "short_phrase_tests": 2,
+  "existing_source_led_tests": 4,
+  "worker_boundary_tests": 17,
+  "physical_completion": "phone-completion.json",
+  "hosted_image": "image-rebuild-recovered.json",
+  "hosted_trial": "../song-finish/startup/2026-10-30T17-05-56.937Z/trial-result.json",
+  "source_study": "../improvise-reference-study-20261030/question-role-confirmation.json",
+  "training": "NOT RUN; expert action/timing labels and held-out evaluation remain incomplete",
+  "new_audition_audio": "NOT RUN; guide is conditioning only",
+  "publication": "Website and App Store NOT RUN",
+  "provider_parser_tests": 5,
+  "restored_reviews": "restored-local-reviews.json",
+  "reference_hashes": "PASS all seven originals match permission ledger",
+  "source_sha256": {
+    "scripts/render_source_first.py": "7acda05a6951d5ba77ba4ad06ef2568dbcfcb39dacf587e4789f2ea5fb6c06ad",
+    "scripts/source_first_improvise.py": "6e5d594e280accfe914b3560bad05b1d588f4c10b7a9de9ef1b5923e9054a334",
+    "tests/test_render_source_first.py": "044c40c197036e660d43d34992b57c3922cffa557e07393ef32cb74507838294",
+    "tests/test_source_first_improvise.py": "16aa1c49f3967377e7ede9261a6647bc41ad26651f4d00ba9a1b7466f6fd40c4"
+  },
+  "local_generation_guards": {
+    "disk_reserve_gib": 15,
+    "starting_memory_gib": 8,
+    "running_memory_gib": 1,
+    "swap_growth_gib": 2,
+    "process_rss_gib": 8,
+    "deadline_seconds": 600
+  },
+  "hosted_result": "FAIL: request remained queued; no worker/audio",
+  "hosted_cleanup": "PASS independently verified; recovered-startup-cleanup.json",
+  "temporary_database_removed": true,
+  "owned_local_postgres_stopped": true,
+  "permit_consumed": true
+}

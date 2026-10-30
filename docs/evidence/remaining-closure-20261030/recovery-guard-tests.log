@@ -1,0 +1,11 @@
+test_existing_attempt_is_preserved (test_render_source_first.ResourceLimits.test_existing_attempt_is_preserved) ... ok
+test_low_disk_stops_before_exhaustion (test_render_source_first.ResourceLimits.test_low_disk_stops_before_exhaustion) ... ok
+test_memory_swap_and_timeout_are_independent (test_render_source_first.ResourceLimits.test_memory_swap_and_timeout_are_independent) ... ok
+test_running_child_is_stopped_and_failure_is_durable (test_render_source_first.ResourceLimits.test_running_child_is_stopped_and_failure_is_durable) ... {"status": "FAIL", "attempts": 1, "paid_compute": false, "listening": "NOT RUN", "plan_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a", "conditioning_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a", "disk_floor_bytes": 16106127360, "running_memory_floor_bytes": 1073741824, "starting_memory_floor_bytes": 8589934592, "rss_limit_bytes": 8589934592, "swap_growth_limit_bytes": 2147483648, "timeout_seconds": 600, "peak_process_group_rss_bytes": 0, "seconds": 0.0018486669998765137, "available_memory_bytes": 7300988928, "free_disk_bytes": 52095426560, "swap_growth_bytes": 0, "error": "Free disk reserve reached"}
+ok
+test_start_requires_headroom (test_render_source_first.ResourceLimits.test_start_requires_headroom) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.004s
+
+OK

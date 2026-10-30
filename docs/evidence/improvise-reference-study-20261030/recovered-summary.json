@@ -1,0 +1,74 @@
+{
+  "status": "PARTIAL",
+  "files": [
+    {
+      "file": "down.mp3",
+      "sha256": "f10a3fa3cf773a85b04458747d7a46de7d7f621bf7ab732785ad3038212a2d12",
+      "seconds": 143.798875,
+      "phrases": 21,
+      "repeat_candidates": 16
+    },
+    {
+      "file": "f.mp3",
+      "sha256": "dcc26654d96138cd7aafecfc1298ea159884cdcd54a221422e35c77ace7a45f6",
+      "seconds": 114.410667,
+      "phrases": 33,
+      "repeat_candidates": 0
+    },
+    {
+      "file": "pipe.mp3",
+      "sha256": "e57756d665c676e876bc7b25abf6d97bd88d137c889eebd633ade0d353919bc8",
+      "seconds": 79.656979,
+      "phrases": 6,
+      "repeat_candidates": 3
+    },
+    {
+      "file": "question.mp3",
+      "sha256": "e830e315e59e111ef09f6436483f094c9b2e6ed8c86273ebc13021fdea98b9e8",
+      "seconds": 155.316479,
+      "phrases": 4,
+      "repeat_candidates": 0
+    },
+    {
+      "file": "x.mp3",
+      "sha256": "af8a99b1fe4c2c2d578f6ae22724da773343200a94dd10a24f6c1c66611ffef7",
+      "seconds": 764.650667,
+      "phrases": 241,
+      "repeat_candidates": 57
+    },
+    {
+      "file": "y.mp3",
+      "sha256": "f53c66f0f1707b1a3fe9f1e5da447cdb7aafe92c056ffe9420a50e5c6084632f",
+      "seconds": 667.178688,
+      "phrases": 155,
+      "repeat_candidates": 18
+    },
+    {
+      "file": "z.mp3",
+      "sha256": "badb35377a94ff6e51ae3fcadb9d0fa327632d1f5a6bbe0c86383eb57edc4b63",
+      "seconds": 625.408,
+      "phrases": 125,
+      "repeat_candidates": 30
+    }
+  ],
+  "total_seconds": 2550.420355,
+  "network": "No audio uploaded",
+  "recording_permission": "Owner-confirmed; permission.json",
+  "speaker_roles": {
+    "question.mp3": {
+      "utterance": "Bro, I have a question",
+      "role": "user_input",
+      "evidence": "question-role-confirmation.json"
+    },
+    "others": "NOT RUN"
+  },
+  "asr": "Candidate text/times only. The down/pipe examples contain obvious hallucinations; no transcript used as a training label.",
+  "waveform_recurrence": "No high-correlation match for the question candidate in later audio; transformed reuse and musical response still need annotation.",
+  "prepared_guide": "renders/question-source-first-20261030; source-derived stress rhythm, register suggestion, and tail rest",
+  "training": "NOT RUN; no performer voice reuse, automatic action labels or claimed learned benefit",
+  "next_required_labels": [
+    "Verify exact user phrase crop boundaries",
+    "Mark how and when the selected phrase is transformed or answered",
+    "Group shared sessions and edits before held-out evaluation"
+  ]
+}

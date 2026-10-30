@@ -1,0 +1,13 @@
+{
+  "checked_utc": "2026-10-30T17:10:55.214Z",
+  "endpointVersion": 16,
+  "summary": {
+    "idle": 0,
+    "initializing": 0,
+    "running": 0,
+    "throttled": 0,
+    "total": 0,
+    "unhealthy": 0
+  },
+  "workers": []
+}

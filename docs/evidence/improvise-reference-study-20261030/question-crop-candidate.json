@@ -1,0 +1,15 @@
+{
+  "source_sha256": "e830e315e59e111ef09f6436483f094c9b2e6ed8c86273ebc13021fdea98b9e8",
+  "source_file": "question.mp3",
+  "crop_seconds": [
+    1.78,
+    3.0
+  ],
+  "crop_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "speaker_role": "user_input",
+  "role_evidence": "question-role-confirmation.json",
+  "crop_basis": "ASR-assisted candidate around the owner-confirmed utterance; next reported maker turn begins at 3.06 seconds",
+  "exact_boundaries_reviewed": false,
+  "performer_voice_reuse": false,
+  "training_admitted": false
+}

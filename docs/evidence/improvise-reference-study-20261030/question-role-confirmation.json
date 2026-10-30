@@ -1,0 +1,17 @@
+{
+  "status": "PASS owner speaker-role confirmation",
+  "source": {
+    "file": "question.mp3",
+    "sha256": "e830e315e59e111ef09f6436483f094c9b2e6ed8c86273ebc13021fdea98b9e8",
+    "bytes": 3085124
+  },
+  "utterance": "Bro, I have a question",
+  "speaker_role": "user_input",
+  "owner_confirmation": "Yes, that is the user\u2019s sample",
+  "question_context": "Phrase near the beginning of question.mp3, spoken by the other person and used as the musical sample.",
+  "recorded_utc": "2026-10-30T17:07:53.958919+00:00",
+  "maker_voice_reuse": false,
+  "exact_crop_boundaries": "NOT RUN; automatic word times remain candidates",
+  "expert_action_labels": "NOT RUN",
+  "training_executed": false
+}

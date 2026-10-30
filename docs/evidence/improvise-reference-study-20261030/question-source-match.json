@@ -1,0 +1,44 @@
+{
+  "status": "PASS technical comparison; speaker roles NOT RUN",
+  "prior_hook_sha256": "67255acd184e4c6c9b915f7bd21e4025cd5739c490397763b7b27f7bfdfb0b63",
+  "prior_hook_in_question": {
+    "correlation": 0.0944367719732061,
+    "target_seconds": 17.20575
+  },
+  "later_recurrence_candidates": [
+    {
+      "candidate_seconds": [
+        1.8,
+        2.98
+      ],
+      "speaker_role": "unverified",
+      "best_later_waveform_match": {
+        "correlation": 0.09184597094225393,
+        "target_seconds": 18.687
+      }
+    },
+    {
+      "candidate_seconds": [
+        2.08,
+        2.98
+      ],
+      "speaker_role": "unverified",
+      "best_later_waveform_match": {
+        "correlation": 0.10431874913643185,
+        "target_seconds": 18.967
+      }
+    },
+    {
+      "candidate_seconds": [
+        2.34,
+        2.98
+      ],
+      "speaker_role": "unverified",
+      "best_later_waveform_match": {
+        "correlation": 0.13050634889800533,
+        "target_seconds": 19.227
+      }
+    }
+  ],
+  "limits": "Automatic transcript boundaries are not verified speakers or words. Correlation does not detect all time/pitch transformations and does not establish a musical decision. No training labels or weights produced."
+}

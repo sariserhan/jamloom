@@ -1,0 +1,48 @@
+{
+  "schema": "jamloom-reference-permission-1",
+  "recording_training": "owner_confirmed",
+  "owner_permission_statement": "I have permission for training and his voice",
+  "clarification": "I did not say use his voice I said his voice is not the user input for you to let you know that he is the maker",
+  "performer_voice_reuse": false,
+  "purpose": "Study and train the conversation-to-music decision process. Maker speech is context, never the target user sample.",
+  "source": "/Users/serhansari/Downloads/improvise",
+  "files": [
+    {
+      "file": "down.mp3",
+      "sha256": "f10a3fa3cf773a85b04458747d7a46de7d7f621bf7ab732785ad3038212a2d12",
+      "bytes": 2551916
+    },
+    {
+      "file": "f.mp3",
+      "sha256": "dcc26654d96138cd7aafecfc1298ea159884cdcd54a221422e35c77ace7a45f6",
+      "bytes": 1887596
+    },
+    {
+      "file": "pipe.mp3",
+      "sha256": "e57756d665c676e876bc7b25abf6d97bd88d137c889eebd633ade0d353919bc8",
+      "bytes": 1440908
+    },
+    {
+      "file": "question.mp3",
+      "sha256": "e830e315e59e111ef09f6436483f094c9b2e6ed8c86273ebc13021fdea98b9e8",
+      "bytes": 3085124
+    },
+    {
+      "file": "x.mp3",
+      "sha256": "af8a99b1fe4c2c2d578f6ae22724da773343200a94dd10a24f6c1c66611ffef7",
+      "bytes": 13550300
+    },
+    {
+      "file": "y.mp3",
+      "sha256": "f53c66f0f1707b1a3fe9f1e5da447cdb7aafe92c056ffe9420a50e5c6084632f",
+      "bytes": 11250236
+    },
+    {
+      "file": "z.mp3",
+      "sha256": "badb35377a94ff6e51ae3fcadb9d0fa327632d1f5a6bbe0c86383eb57edc4b63",
+      "bytes": 10158308
+    }
+  ],
+  "paid_compute_authorized": false,
+  "publication_authorized": false
+}
