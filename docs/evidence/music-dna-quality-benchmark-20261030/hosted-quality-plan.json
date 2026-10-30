@@ -1,0 +1,82 @@
+{
+  "status": "APPROVED",
+  "scope": "Publish reviewed phrase-preserving worker image, then one private Improvise audition on the same neural generator as Music DNA",
+  "image_source_commit": "ea0fdba03d288f00a0bf9f5461b49b58c31d6cef",
+  "image_base": "6abdacc221d0cde89b76a5b35c30d7116243d746",
+  "image_checkout": "/tmp/jamloom-improvise-quality-20261030",
+  "harness_source_commit": "ec5f1d16e624194655bd5b34c2a87a19955d99c4",
+  "publication_branch": "codex/runpod-setup",
+  "website_deployment_enabled_on_branch": false,
+  "mode": "--improvise-quality --qualification-window",
+  "max_usd": 3,
+  "max_workers": 1,
+  "max_provider_requests": 1,
+  "runtime_seconds": 2400,
+  "shutdown_allowance_seconds": 130,
+  "retries": 0,
+  "conservative_rate_usd_per_second": 0.001,
+  "conservative_total_usd": 2.55,
+  "source": {
+    "path": "renders/question-bass-response-20261030/source.wav",
+    "sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+    "seconds": 1.22,
+    "identity": "Owner-confirmed user sample; maker voice excluded",
+    "transfer": "Temporary private R2 staging and one Runpod worker; delete remote source and output objects at cleanup",
+    "full_source_required_for_this_audition": true
+  },
+  "fixture": {
+    "product": "improvise",
+    "genre": "drumandbass",
+    "voice": "male",
+    "duration_seconds": 45,
+    "visibility": "private",
+    "source_idea": "Local ASR from the confirmed sample; no invented supplied transcript"
+  },
+  "preconditions": [
+    "Current maximum-reference trial must finish and independent cleanup must PASS before any template update or new GPU run",
+    "Verify successful GitHub image publication at reviewed commit and immutable digest",
+    "Verify worker limits 0/0, zero live workers/queued/running jobs and production pending count zero",
+    "Match reviewed harness and source hashes; test database only",
+    "Keep Dia open and local neural generation held below the existing 8 GiB available-memory floor"
+  ],
+  "checks": [
+    "One source-bound generation through the actual Improvise neural pipeline",
+    "Complete 1.22-second input crop remains selected; no sample-free delivery",
+    "PCM duration/hash and unchanged-music/source integration receipts",
+    "Source placement and musical quality require owner listening; no musical PASS from automation",
+    "Temporary database and object cleanup, test credit settlement and independently confirmed zero workers"
+  ],
+  "excludes": [
+    "Website/app release",
+    "Live purchases",
+    "AI DJ rentals",
+    "Model training",
+    "Additional requests or automatic retry"
+  ],
+  "file_sha256": {
+    "scripts/singer_studio.py": "17774364d5d34a5fa59c58b14a771075e2a7e4a074e06f1ff009b506e4056acc",
+    "scripts/local_call_edit.py": "37fef21660e6b9f56c551744f51c2341f86cdbc3ffcf52d9afbb031a27fee84f",
+    "tests/test_singer_studio.py": "64933618bb724a2c067126d8263c373763c6c1d4eed44c8eba99e0dd3b808c8b",
+    "tests/test_local_call_edit.py": "d73c74f2581d8e0d46adde5b34bf327b205db1b527d96442d85af91f6ca66f3f",
+    "apps/site/scripts/cloud-song-trial.ts": "392f1723fa6d95ccc60210955e8f0e14ea7b493ff92bf0e58c22dfff25a0526f",
+    "apps/site/scripts/cloud-trial-limits.ts": "7ad9aed7ba2d6c38d6c957b780cdd7aacb6b1ee554e5ad79d4527afecb9aa946",
+    "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4"
+  },
+  "validation": {
+    "isolated_worker_checks": 49,
+    "root_source_and_edit_checks": 28,
+    "budget_checks": 2,
+    "site_typecheck": "PASS",
+    "dry_run": "PASS; one request, 45-second output, one worker, $3, 2400 seconds"
+  },
+  "execution": {
+    "image_build_attempts": 1,
+    "trial_invocations": 0,
+    "provider_requests_started": 0,
+    "status": "IMAGE_BUILD_RUNNING",
+    "workflow_run": 41143569622,
+    "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41143569622"
+  },
+  "owner_statement": "Approve image and one $3 sample audition",
+  "authorized_utc": "2026-10-30T23:17:23.524281+00:00"
+}

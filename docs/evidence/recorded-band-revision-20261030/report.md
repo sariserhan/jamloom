@@ -1,6 +1,6 @@
 # Recorded band and natural phrase revision — 2026-10-30
 
-**Musical quality FAIL for the reviewed excerpt study; new audition NOT RUN by owner.** The owner described C as bad and the others as only okay, with simple/childish music and abrupt cuts. This is preserved verbatim in [owner feedback](owner-feedback.json); it is not converted to numerical rubric answers or generalized across shuffled C labels. Existing exact-pilot acceptance remains historical and specific.
+**Musical quality FAIL for both the reviewed excerpt study and the new recorded-band question audition.** The owner described C as bad and the others as only okay, with simple/childish music and abrupt cuts. This is preserved verbatim in [owner feedback](owner-feedback.json); it is not converted to numerical rubric answers or generalized across shuffled C labels. Existing exact-pilot acceptance remains historical and specific.
 
 ## Change
 
@@ -15,3 +15,7 @@ The selector removes the two-beat crop restriction. It only proposes internal cu
 **PASS browser:** [localhost player](http://127.0.0.1:8777/band-listen/) → play each original/selected/arranged example → pause and seek. Desktop 1280×900 and mobile 390×844 show the intended page, readable controls, no horizontal overflow, no browser errors, one player at a time, working seeking and HTTP range playback. The Browser runtime tool remains unavailable; the existing isolated installed-Chrome/Playwright fallback was used. No owner submissions were generated. [Browser evidence](browser.json); screenshots `/tmp/jamloom-band-desktop.png` and `/tmp/jamloom-band-mobile.png` were visually inspected.
 
 **NOT RUN:** owner judgment of the new music or semantic boundary correctness, broader arrangement coverage, updated blinded musical qualification, product integration and learned-model benefit. The next decision is whether this direction is worth carrying into the full study. A passing player or PCM audit does not close the musical-quality gap. Website/app publication and live purchases remain HELD.
+
+## Owner rejection and revised direction
+
+The owner rejected the recorded-band music and explicitly set existing Music DNA output as the required quality benchmark. [Verbatim rejection](owner-rejection.json). No further acceptance is requested for this direction. A follow-up instrumental stress-contour fix preserves late stresses for the longer input; the question audio remains byte-identical, so that fix does not address or supersede the rejection. Seven regressions and both player checks pass technically, but musical acceptance remains FAIL. The old and revised recordings are preserved. [Phrasing render](phrasing-render.json), [player](phrasing-browser.json). Next work returns to the existing neural music pipeline.

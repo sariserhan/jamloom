@@ -31,4 +31,8 @@ The owner reported saving, but no new receipt reached the server. They confirmed
 
 **PASS independent cleanup:** worker limits 0/0, no workers or queued/running jobs, two temporary storage keys removed, isolated database dropped, one test credit settled with none reserved, and local PostgreSQL stopped. Exactly one provider request; no repeat request. Final provider billing is still lagged and cannot yet be attributed to this diagnostic. [Postcheck](postcheck.json), [local cleanup](local-cleanup.json). The one-request permit is consumed.
 
-The remaining 5,000-reference qualification is prepared on the same verified image, with a fresh one-request/$3/40-minute plan awaiting explicit approval. No new image publication is needed. [Plan](maximum-qualification-plan.json), [dry run](maximum-dryrun.log).
+The remaining 5,000-reference qualification is prepared on the same verified image, with a fresh owner-approved one-request/$3/40-minute plan now executing. No new image publication is needed. [Plan](maximum-qualification-plan.json), [dry run](maximum-dryrun.log).
+
+## Music quality correction
+
+The owner rejected the excerpt study and the subsequent recorded-band audition, requiring the existing Music DNA quality. Work returns to the actual neural Improvise pipeline; phrase-preservation fixes pass 49 isolated checks. The owner separately approved image ea0fdba0 and one additional $3 real-source audition, with its GPU run conditional on maximum-test cleanup. [Benchmark, fixes and permit](../music-dna-quality-benchmark-20261030/report.md). No musical acceptance is inferred from these technical checks.

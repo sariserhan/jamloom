@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-30T23:16:56.300708+00:00",
+  "title": "Concrete Roots",
+  "job": "06d89abd7d194ddf81bbc54af3e9b67f",
+  "audio_sha256": "b0d3384d389644c57db4bb6c706225cb6404e7e2b1b5eaeea4a591df2b0619d4",
+  "duration_seconds": 120,
+  "model_code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+  "weights": "19671f406d603126926c1b7e2adc169acbcade22",
+  "owner_acceptance_evidence": "docs/evidence/music-dna-fit/owner-review.json",
+  "current_owner_direction": "Music DNA is the required music quality; recorded-band audition rejected",
+  "routes": {
+    "Music DNA": "services/runpod/pipeline.py -> music_dna_song.run -> singing_response.sing -> ACE-Step text2music",
+    "Improvise": "services/runpod/pipeline.py -> singer_studio.make_reply -> singing_response.sing -> separation and local_call_edit.arrange",
+    "Rejected local auditions": "Separate authored signal/note/sample composers, not the neural product generator"
+  },
+  "inference": "Use actual neural Improvise for the next listening candidate; sharing a generator does not itself prove equal quality or good sample integration",
+  "local_available_gib": 3.968,
+  "local_start_floor_gib": 8,
+  "local_model_started": false,
+  "new_paid_request_started": false
+}

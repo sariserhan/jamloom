@@ -1,0 +1,26 @@
+{
+  "url": "http://127.0.0.1:8777/band-phrasing/",
+  "browser": "Installed Chrome with isolated profiles via existing Playwright fallback",
+  "ownerSubmissions": 0,
+  "viewports": [
+    {
+      "name": "desktop",
+      "playbackAndSeek": 6,
+      "exclusivePlayback": true,
+      "overflow": false,
+      "errors": [],
+      "screenshot": "/tmp/jamloom-band-phrasing-desktop.png"
+    },
+    {
+      "name": "mobile",
+      "playbackAndSeek": 6,
+      "exclusivePlayback": true,
+      "overflow": false,
+      "errors": [],
+      "screenshot": "/tmp/jamloom-band-phrasing-mobile.png"
+    }
+  ],
+  "servedHashesVerified": 6,
+  "audioRangeRequests": true,
+  "status": "PASS"
+}

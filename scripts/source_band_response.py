@@ -16,6 +16,12 @@ from source_natural_phrase import select_phrase
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def response_motif(signal, beat):
+    stresses=[r['stress_frame']/(RATE*beat) for r in signal['regions']]
+    scale=min(1,2.5/max(stresses[-1],.01))
+    return sorted(set(round(x*scale*4)/4 for x in stresses))
+
+
 class RecordedBank:
     def __init__(self, root=ROOT):
         self.entries, self.cache, self.used = [], {}, {}
@@ -110,8 +116,9 @@ def compose(pcm, seed=4123, bank=None):
     # Rhythm comes in under the opening, leaving the phrase intelligible and
     # avoiding an empty gap. The full band answers after the phrase, not over it.
     response = np.ceil(len(phrase)/(beat*RATE)*2)/2
-    accents = sorted(set(round(r['stress_frame']/(RATE*beat)*4)/4 for r in signal['regions']))
-    motif = [x for x in accents if x<2.5] or [0,.75,1.5]
+    # Compress the complete stress contour into the answer window. Discarding
+    # later stresses reduced long utterances to a repeated single-note answer.
+    motif = response_motif(signal,beat)
     for bar,(degree,voicing) in enumerate(progression):
         at = bar*4
         root = tonic+degree

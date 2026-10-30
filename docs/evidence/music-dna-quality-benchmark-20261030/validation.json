@@ -1,0 +1,7 @@
+{
+  "isolated_worker_checks": 49,
+  "root_source_and_edit_checks": 28,
+  "budget_checks": 2,
+  "site_typecheck": "PASS",
+  "dry_run": "PASS; one request, 45-second output, one worker, $3, 2400 seconds"
+}

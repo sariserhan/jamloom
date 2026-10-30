@@ -5,6 +5,7 @@ import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from arrange_voice_research import RATE
 from source_natural_phrase import select_phrase
+from source_band_response import response_motif
 
 
 class NaturalPhraseTests(unittest.TestCase):
@@ -40,6 +41,13 @@ class NaturalPhraseTests(unittest.TestCase):
     def test_invalid_sources_fail(self):
         for pcm in (np.zeros((RATE,2)),np.full((RATE,2),np.nan),self.tone(5.1)):
             with self.assertRaises(ValueError):select_phrase(pcm)
+
+    def test_long_phrase_late_stresses_survive_the_musical_answer(self):
+        signal={'regions':[{'stress_frame':round(s*RATE)} for s in (.3,1.8,3.2,4.5)]}
+        motif=response_motif(signal,60/96)
+        self.assertEqual(len(motif),4)
+        self.assertEqual(motif[-1],2.5)
+        self.assertTrue(all(a<b for a,b in zip(motif,motif[1:])))
 
 
 if __name__=='__main__':unittest.main()

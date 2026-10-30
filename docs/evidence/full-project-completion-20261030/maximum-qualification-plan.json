@@ -1,5 +1,5 @@
 {
-  "status": "AWAITING_EXPLICIT_APPROVAL",
+  "status": "CONSUMED",
   "scope": "One maximum-reference Music DNA qualification; no publication or live purchases",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fa5cc3eb457db0eb0657ea3936ea1cf200064e3328a2c04ba86ce8b63a2148cd",
   "image_source_commit": "6abdacc221d0cde89b76a5b35c30d7116243d746",
@@ -56,5 +56,14 @@
     "tests/test_rejected_audio_diagnostic.py": "1cd81bfc51501ba26f1844657f7ee06298267673c0ef4ed065e4d930521c031c",
     ".github/workflows/runpod-image.yml": "186129807009cc7c7d6867fa4ba337d0e06f3ea3446087ff24b15badf536a658"
   },
-  "previous_diagnostic": "PASS; permit consumed; not reused"
+  "previous_diagnostic": "PASS; permit consumed; not reused",
+  "owner_statement": "Approve the one $3 maximum test",
+  "authorized_utc": "2026-10-30T23:03:19.082186+00:00",
+  "execution": {
+    "trial_invocations": 1,
+    "provider_requests_started": 0,
+    "retries": 0,
+    "status": "MAXIMUM_RUNNING",
+    "trial_started_at": "2026-10-30T23:03:24.464606+00:00"
+  }
 }

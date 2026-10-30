@@ -1,14 +1,15 @@
 {
   "status": "PASS",
   "command": ".venv-analysis/bin/python -m unittest discover -s tests -p test_source_natural_phrase.py -v",
-  "tests": 6,
+  "tests": 7,
   "cases": [
     "preserve continuous long speech",
     "ignore short internal gaps",
     "preserve quiet consonants",
     "select only sustained-quiet midpoint with margins",
     "keep compact complete phrase",
-    "reject silent nonfinite and overlong input"
+    "reject silent nonfinite and overlong input",
+    "retain late source stresses in the instrumental answer for long phrases"
   ],
   "word_boundary_ground_truth": "NOT RUN; no semantic correctness inferred from acoustic boundaries"
 }

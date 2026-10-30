@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "views": [
+    {
+      "width": 1280,
+      "seconds": 120,
+      "playback": true,
+      "seek": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "seconds": 120,
+      "playback": true,
+      "seek": true,
+      "overflow": false,
+      "errors": []
+    }
+  ],
+  "ownerListening": "Historical approval preserved; this check is automated playback only"
+}
