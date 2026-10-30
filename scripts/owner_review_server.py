@@ -47,6 +47,31 @@ def validate_music(payload,study):
             if row.get('pairs',{}).get(a+b) not in (a,b,'tie') or row.get('distinct_pairs',{}).get(a+b) not in ('yes','no'):raise ValueError('Complete preference and composition-variety comparisons')
 
 
+def validate_music_draft(payload,study):
+    if payload.get('version')!=2 or payload.get('listener')!='owner' or payload.get('freeze')!=study['freeze'] or payload.get('audio')!=study['blocks']:raise ValueError('Study identity changed')
+    ratings=payload.get('ratings');blocks={b['id'] for b in study['blocks']}
+    if not isinstance(ratings,dict) or not ratings or not set(ratings)<=blocks:raise ValueError('Invalid draft blocks')
+    for row in ratings.values():
+        if not isinstance(row,dict) or set(row)-set(('A','B','C','D','pairs','distinct_pairs','attested')):raise ValueError('Invalid draft fields')
+        if 'attested' in row and type(row['attested']) is not bool:raise ValueError('Invalid attestation')
+        for code in 'ABCD':
+            values=row.get(code,{})
+            if not isinstance(values,dict):raise ValueError('Invalid draft candidate')
+            for field,value in values.items():
+                if field=='notes':
+                    if not isinstance(value,str) or len(value)>2000:raise ValueError('Invalid notes')
+                elif field in ('recognizable','share','technical_failure'):
+                    if value not in ('','yes','no'):raise ValueError('Invalid draft answer')
+                elif field in ('groove','coherence','originality','enjoyment'):
+                    if value not in ('','1','2','3','4','5'):raise ValueError('Invalid draft rating')
+                else:raise ValueError('Unknown draft rating')
+        for field in ('pairs','distinct_pairs'):
+            values=row.get(field,{})
+            if not isinstance(values,dict):raise ValueError('Invalid draft comparisons')
+            for pair,value in values.items():
+                if pair not in ('AB','AC','AD','BC','BD','CD') or value not in (('',*pair,'tie') if field=='pairs' else ('','yes','no')):raise ValueError('Invalid draft comparison')
+
+
 class Handler(review_serve.Handler):
     def do_GET(self):
         if self.path=='/favicon.ico':
@@ -76,6 +101,7 @@ class Handler(review_serve.Handler):
             value=json.loads(self.rfile.read(length));kind=value.get('kind');payload=value.get('payload')
             if not isinstance(payload,dict):raise ValueError('Expected observation object')
             if kind=='music':validate_music(payload,music_study(review_serve.ROOT,payload.get('freeze')))
+            elif kind=='music-draft':validate_music_draft(payload,music_study(review_serve.ROOT,payload.get('freeze')))
             elif kind=='novice':
                 if payload.get('schema')!='jamloom-dj-novice-1' or payload.get('attested') is not True or payload.get('beginner') is not True:raise ValueError('Actual beginner observation required')
                 if any(len(payload.get(p,[]))!=6 or any(x not in ('0','1','2') for x in payload[p]) for p in ('before','after')):raise ValueError('Complete both assessments')

@@ -71,5 +71,15 @@ class LocalSaveBoundary(unittest.TestCase):
         self.assertEqual(self.post(dict(kind='practice',payload=payload))[0],400)
         self.assertEqual(len(list(self.results.glob('*.json'))),1)
 
+    def test_incomplete_music_is_saved_only_as_a_draft_never_as_a_completed_judgment(self):
+        folder=self.public/'music';folder.mkdir();study=dict(freeze='draft-fixture',blocks=[{'id':'b'}]);(folder/'study.json').write_text(json.dumps(study))
+        payload=dict(version=2,listener='owner',freeze=study['freeze'],audio=study['blocks'],ratings={'b':{'A':{'enjoyment':'2'}}})
+        self.assertEqual(self.post(dict(kind='music-draft',payload=payload))[0],200)
+        self.assertEqual(self.post(dict(kind='music',payload=payload))[0],400)
+        receipt=json.loads(next(self.results.glob('*.json')).read_text());self.assertEqual(receipt['kind'],'music-draft');self.assertNotIn('attested',receipt['payload']['ratings']['b'])
+        payload['ratings']['b']['A']['enjoyment']='99'
+        self.assertEqual(self.post(dict(kind='music-draft',payload=payload))[0],400)
+        self.assertEqual(len(list(self.results.glob('*.json'))),1)
+
 
 if __name__=='__main__':unittest.main()

@@ -1,0 +1,42 @@
+{
+  "url": "http://127.0.0.1:18778/music-excerpts/",
+  "flow": "Choose block -> play/seek original and A-D -> save draft -> reload -> export and save completed source-bound judgment",
+  "browser": "Installed Chrome; temporary isolated profiles",
+  "fallback": "Browser runtime execution tool unavailable after both discovery attempts; repository Playwright workflow used",
+  "ratings": "Synthetic fixtures in isolated QA server /tmp results only; no owner ratings saved",
+  "viewports": [
+    {
+      "name": "desktop",
+      "identity": true,
+      "meaningfulContent": true,
+      "overlay": false,
+      "overflow": false,
+      "consoleErrors": [],
+      "blocksPlaybackAndSeek": [
+        1
+      ],
+      "draftRestored": true,
+      "sourceBoundExport": true,
+      "localSave": true,
+      "organizerKeyNotServed": true,
+      "screenshot": "docs/evidence/full-project-completion-20261030/jamloom-study-save-desktop.png"
+    },
+    {
+      "name": "mobile",
+      "identity": true,
+      "meaningfulContent": true,
+      "overlay": false,
+      "overflow": false,
+      "consoleErrors": [],
+      "blocksPlaybackAndSeek": [
+        1
+      ],
+      "draftRestored": true,
+      "sourceBoundExport": true,
+      "localSave": true,
+      "organizerKeyNotServed": true,
+      "screenshot": "docs/evidence/full-project-completion-20261030/jamloom-study-save-mobile.png"
+    }
+  ],
+  "status": "PASS"
+}

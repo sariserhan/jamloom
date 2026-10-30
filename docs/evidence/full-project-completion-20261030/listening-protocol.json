@@ -32,5 +32,13 @@
   "variety_form_clarification": "Before any owner study access or submission, replaced the ambiguous three-of-four question with all six pairwise composition judgments; the hidden control cannot satisfy generated-output variety.",
   "composition_policy": "selected_excerpt_prompt_response",
   "public_folder_not_yet_installed": true,
-  "baseline_length_policy": "Preserve fixed original control calls at 0, 14 and 26 seconds, plus full source and 0.5 second tail; pad every candidate to the same block length"
+  "baseline_length_policy": "Preserve fixed original control calls at 0, 14 and 26 seconds, plus full source and 0.5 second tail; pad every candidate to the same block length",
+  "ui_amendments": [
+    {
+      "at": "2026-10-30T22:45:30.543586+00:00",
+      "reason": "Owner reported incomplete block could not be saved",
+      "change": "Save partial ratings as separately typed private drafts; identify first unanswered field; completed judgment validation and study audio remain unchanged",
+      "drafts_count_as_completed": false
+    }
+  ]
 }

@@ -87,6 +87,9 @@ def evaluate(workspace,review):
         report['music']['freeze']=study['freeze']
         report['music']['composition_policy']=composition_policy
         report['music']['other_study_receipts_preserved']=sum(p.get('freeze')!=study['freeze'] for p in music)
+        drafts=[r for r in observations if r['kind']=='music-draft' and r['payload'].get('freeze')==study['freeze']]
+        report['music']['draft_receipts']=len(drafts)
+        report['music']['drafts_count_as_completed_judgments']=False
     else:report['music']={'status':'PREPARING'}
     novice=[r for r in observations if r['kind']=='novice']
     report['novice']=novice_result(novice[0]['payload']) if novice else {'status':'NOT RUN; awaiting owner beginner exercise'}

@@ -36,9 +36,11 @@ class OwnerWorkspace(unittest.TestCase):
             (root/'review/study.json').write_text(json.dumps(study));(root/'organizer-key.json').write_text(json.dumps(dict(freeze='current',blocks=[])))
             receipt=dict(status='OWNER_SUBMITTED_REQUIRES_EVALUATION',kind='music',payload=dict(freeze='previous'))
             path=root/'results/old.json';path.write_text(json.dumps(receipt));before=path.read_bytes()
+            (root/'results/draft.json').write_text(json.dumps(dict(status='OWNER_SUBMITTED_REQUIRES_EVALUATION',kind='music-draft',payload=dict(freeze='current',ratings={'b':{'A':{'enjoyment':'5'}}}))))
             result=evaluate(root,root)
             self.assertEqual(result['music']['status'],'NOT RUN')
             self.assertEqual(result['music']['other_study_receipts_preserved'],1)
+            self.assertEqual(result['music']['draft_receipts'],1);self.assertFalse(result['music']['drafts_count_as_completed_judgments'])
             self.assertEqual(path.read_bytes(),before)
 
     def test_low_disk_stops_review_before_creating_output(self):
