@@ -22,6 +22,7 @@ DNA_PLAN_MAX_BYTES = 12 * 1024 * 1024
 CODE_REVISION = 'ca1e85fe9430179831e6bc6be790c332190a3866'
 WEIGHT_REVISION = '19671f406d603126926c1b7e2adc169acbcade22'
 ROOT = Path(__file__).resolve().parents[1]
+ENERGIES = json.loads((ROOT / 'assets/manifests/improvise-energy.json').read_text())
 STYLES = {
     'reggae': (84, 'laid-back reggae, offbeat muted guitar, warm rounded electric bass, live one-drop drums, organ replies'),
     'hiphop': (94, 'soulful hip-hop, swung live drums, warm Rhodes, melodic bass, short guitar answers'),
@@ -133,6 +134,14 @@ def variants(seed):
 def caption(case):
     if 'song_caption' in case:
         return case['song_caption']
+    if 'energy' in case:
+        energy = case['energy']
+        if not isinstance(energy,str) or energy not in ENERGIES:raise ValueError('Invalid Improvise energy')
+        delivery = ('Melodic reggae singing, syncopated phrases, offbeat pickups, space for band replies.'
+                    if case['genre']=='reggae' else 'Rhythmic rap with natural breath and varied flow.'
+                    if case['genre']=='rap' else 'Expressive melodic singing with natural breath.')
+        return (f"{STYLES[case['genre']][1]}. {ENERGIES[energy]} {vocal_description(case)}. "
+                f'{delivery} Detailed production, developing arrangement, resolved ending.')
     if case['genre']=='reggae':
         voice=vocal_description(case) if 'vocal_profile' in case else f"adult {case['voice']} singer"
         return (f"{STYLES['reggae'][1]}. {voice}. {REGGAE_DELIVERY} "
@@ -176,6 +185,8 @@ def validate_plan(plan):
             raise ValueError('Invalid or duplicate singer/style')
         seen.add(c['id'])
         vocal_description(c)
+        if not song and 'energy' in c and (not isinstance(c['energy'],str) or c['energy'] not in ENERGIES):
+            raise ValueError('Invalid Improvise energy')
         from vocal_identity import validate_identity
         validate_identity(c)
         reference=c.get('singer_reference')
@@ -294,7 +305,8 @@ def validate_reply_lyrics(lyrics):
     return lyrics
 
 
-def draft(root, phrase, seed, output, voice=None, genre=None, duration=None):
+def draft(root, phrase, seed, output, voice=None, genre=None, duration=None, energy=None):
+    if energy is not None and (not isinstance(energy,str) or energy not in ENERGIES):raise ValueError('Invalid Improvise energy')
     phrase = text_field(phrase, MAX_PHRASE_CHARS, 'source phrase')
     if voice is not None and voice not in VOICES or genre is not None and genre not in STYLES:
         raise ValueError('Unknown voice or genre')
@@ -304,6 +316,7 @@ def draft(root, phrase, seed, output, voice=None, genre=None, duration=None):
     set_seed, generate, make_sampler = planner_functions()
     model, tokenizer, manifest = lyric_model(root)
     for c in cases:
+        if energy is not None:c['energy']=energy
         if duration is not None:c['duration']=validate_duration('improvise',duration)
         cast_singer_reference(c)
         set_seed(c['seed'])
@@ -556,13 +569,14 @@ if __name__ == '__main__':
     p.add_argument('--duration',type=int)
     p.add_argument('--voice', choices=tuple(VOICES))
     p.add_argument('--genre', choices=tuple(STYLES))
+    p.add_argument('--energy', choices=tuple(ENERGIES))
     p.add_argument('--conditioning', type=Path, help='Private source-led research guide; optional')
     p.add_argument('--reference-singer',type=Path,help='Local research only: receipt-bound generated 30-second singer directory')
     p.add_argument('--reference-vocals',action='store_true',help='Research only: use the pinned separated vocal stem from the reference singer')
     p.add_argument('--mac-small-decode',action='store_true',help='Local research: bounded PyTorch MPS decode tiles')
     a = p.parse_args()
     if a.phase == 'draft':
-        draft(runtime(a.runtime), a.phrase, a.seed, a.output, a.voice, a.genre, a.duration)
+        draft(runtime(a.runtime), a.phrase, a.seed, a.output, a.voice, a.genre, a.duration, a.energy)
     else:
         if a.plan is None or a.case is None:
             p.error('sing requires --plan and --case')
