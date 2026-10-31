@@ -1,0 +1,16 @@
+{
+  "status": "FAIL",
+  "scope": "One full vocal Improvise pipeline; not the closed DJ endurance test",
+  "paid_compute": false,
+  "model_requests_max": 1,
+  "retries": 0,
+  "max_seconds": 600,
+  "source_sha256": "9efd519c520b7ff22eb362b5aaaecc9707d12183d6d6feb19efdce210d18a1b0",
+  "fixture": "ls-2086-149220-0047-funk",
+  "peak_rss_bytes": 3886645248,
+  "peak_swap_growth_bytes": 2263220224,
+  "minimum_available_bytes": 993247232,
+  "seconds": 27.430916207995324,
+  "reason": "Available memory floor reached",
+  "child_stopped": true
+}

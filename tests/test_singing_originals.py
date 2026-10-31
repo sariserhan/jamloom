@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 import unittest
 from unittest.mock import patch
+from types import SimpleNamespace
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
@@ -13,6 +14,24 @@ import numpy as np
 
 
 class SingingOriginalTests(unittest.TestCase):
+    def test_single_use_memory_policy_does_not_change_reusable_engine(self):
+        class Handler:
+            def initialize_service(self,**kwargs):return 'ready',True
+            def tiled_encode(self,*args):return args
+            def _decode_generate_music_pred_latents(self,**kwargs):return kwargs
+        modules={'acestep.handler':SimpleNamespace(AceStepHandler=Handler),
+                 'acestep.llm_inference':SimpleNamespace(LLMHandler=lambda:None)}
+        with patch.dict(sys.modules,modules),patch('singing_response.inference_device',return_value='mps'),patch('metal_singer_loader.release_generation_models') as release:
+            reusable,_=load_singer_engine(Path('.'),mac_small_decode=True)
+            once,_=load_singer_engine(Path('.'),mac_small_decode=True,single_use=True)
+            self.assertEqual(reusable.tiled_encode('audio'),('audio',None,None,True))
+            self.assertEqual(once.tiled_encode('audio'),('audio',48000*6,None,True))
+            self.assertEqual(once.tiled_encode('audio',48000*5,48000),('audio',48000*5,48000,True))
+            self.assertEqual(reusable._decode_generate_music_pred_latents(pred_latents='kept'),{'pred_latents':'kept'})
+            release.assert_not_called()
+            self.assertEqual(once._decode_generate_music_pred_latents(pred_latents='kept'),{'pred_latents':'kept'})
+            release.assert_called_once_with(once)
+
     def test_karaoke_preserves_alignment_and_common_gain(self):
         t=np.arange(4800)/48000
         backing=np.repeat((.3*np.sin(2*np.pi*110*t))[:,None],2,axis=1)
@@ -49,6 +68,8 @@ class SingingOriginalTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'Metal'):load_singer_engine(None,mac_small_decode=True)
         with self.assertRaises(ValueError):sing(None,None,None,None,mac_small_decode='true')
         with self.assertRaises(ValueError):load_singer_engine(None,mac_small_decode='true')
+        with self.assertRaises(ValueError):load_singer_engine(None,single_use=True)
+        with self.assertRaises(ValueError):load_singer_engine(None,single_use=1)
 
 
 if __name__=='__main__':unittest.main()

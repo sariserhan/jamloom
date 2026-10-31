@@ -4,12 +4,46 @@ import sys
 import tempfile
 from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts'))
-from metal_singer_loader import load_metal_dit
+from metal_singer_loader import load_metal_dit,load_metal_text,release_generation_models
 
 
 class DirectMetalLoading(unittest.TestCase):
+    def test_text_encoder_preserves_weights_and_inference_precision(self):
+        import torch
+        from transformers import Qwen3Config,Qwen3Model
+        if not torch.backends.mps.is_available():self.skipTest('Actual Metal hardware required')
+        with tempfile.TemporaryDirectory() as folder:
+            checkpoint=Path(folder)/'Qwen3-Embedding-0.6B'
+            original=Qwen3Model(Qwen3Config(vocab_size=32,hidden_size=16,intermediate_size=32,
+                num_hidden_layers=1,num_attention_heads=2,num_key_value_heads=2,head_dim=8)).eval()
+            original.save_pretrained(checkpoint,safe_serialization=True)
+            handler=SimpleNamespace(dtype=torch.bfloat16)
+            with patch('transformers.AutoTokenizer.from_pretrained',return_value='fixture tokenizer'):
+                load_metal_text(handler,checkpoint_dir=folder,device='mps')
+            expected=original.to('mps').to(torch.bfloat16)
+            for name,param in expected.state_dict().items():
+                self.assertTrue(torch.equal(handler.text_encoder.state_dict()[name],param),name)
+            inputs=torch.tensor([[1,2,3]],device='mps')
+            with torch.inference_mode():
+                self.assertTrue(torch.equal(expected(inputs).last_hidden_state,handler.text_encoder(inputs).last_hidden_state))
+            del handler,original,expected
+            torch.mps.empty_cache()
+
+    def test_single_use_release_keeps_latents_and_vae_unchanged(self):
+        import torch
+        if not torch.backends.mps.is_available():self.skipTest('Actual Metal hardware required')
+        handler=SimpleNamespace(device='mps',model=torch.ones(1024*1024,device='mps'),
+            text_encoder=torch.ones(1024,device='mps'),vae=torch.arange(8,device='mps'))
+        latents=torch.arange(12,device='mps');expected=latents.cpu();vae=handler.vae.cpu()
+        release_generation_models(handler)
+        self.assertIsNone(handler.model);self.assertIsNone(handler.text_encoder)
+        self.assertGreaterEqual(handler.released_generation_bytes,4*1024**2)
+        self.assertTrue(torch.equal(latents.cpu(),expected));self.assertTrue(torch.equal(handler.vae.cpu(),vae))
+        with self.assertRaises(ValueError):release_generation_models(handler)
+
     def test_actual_safetensors_weights_and_latent_match_without_cpu_model_copy(self):
         import torch
         from transformers import Qwen3Config, Qwen3Model

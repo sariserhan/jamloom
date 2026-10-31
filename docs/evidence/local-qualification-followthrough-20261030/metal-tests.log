@@ -1,0 +1,12 @@
+W1030 23:53:38.113000 92980 .venv-singer/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+/Users/serhansari/Documents/projects/jamloom/.venv-singer/lib/python3.12/site-packages/torchao/dtypes/uintx/__init__.py:1: DeprecationWarning: Importing from torchao.dtypes.uintx.dyn_int8_act_int4_wei_cpu_layout is deprecated. Please use 'from torchao.prototype.dtypes import Int8DynamicActInt4WeightCPULayout' instead. This import path will be removed in a future release of torchao. See https://github.com/pytorch/ao/issues/2752 for more details.
+  from .dyn_int8_act_int4_wei_cpu_layout import (
+/Users/serhansari/Documents/projects/jamloom/.venv-singer/lib/python3.12/site-packages/torchao/dtypes/uintx/__init__.py:22: DeprecationWarning: Importing from torchao.dtypes.uintx.uintx_layout is deprecated. Please use 'from torchao.prototype.dtypes import UintxLayout, UintxTensor' instead. This import path will be removed in a future release of torchao. See https://github.com/pytorch/ao/issues/2752 for more details.
+  from .uintx_layout import (
+/Users/serhansari/Documents/projects/jamloom/.venv-singer/lib/python3.12/site-packages/torchao/dtypes/__init__.py:23: DeprecationWarning: Importing BlockSparseLayout from torchao.dtypes is deprecated. Please use 'from torchao.prototype.dtypes import BlockSparseLayout' instead. This import path will be removed in a future torchao release. Please check issue: https://github.com/pytorch/ao/issues/2752 for more details. 
+  from .uintx.block_sparse_layout import BlockSparseLayout
+...
+----------------------------------------------------------------------
+Ran 3 tests in 3.135s
+
+OK

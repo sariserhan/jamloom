@@ -1,0 +1,51 @@
+{
+  "technical": "PASS",
+  "case": {
+    "id": "funk-male",
+    "genre": "funk",
+    "voice": "male",
+    "seed": 2338506384,
+    "vocal_profile": "male-bass",
+    "bpm": 108,
+    "duration": 45,
+    "source_repetitions": 2,
+    "energy": "medium",
+    "singer_reference": "voice-2",
+    "lyrics": "You sitting in the parlor?  \nYeah, that\u2019s just what you do.  \nParlor, parlor, calm down.  \nYou got time\u2014take your time.  \nParlor, parlor, breathe deep.  \nYou\u2019re doing just fine.",
+    "lyric_checks": {
+      "version": 2,
+      "passes": 1,
+      "human_review": "NOT RUN"
+    }
+  },
+  "caption": "live funk, syncopated electric bass, tight pocket drums, muted rhythm guitar, clavinet and horn answers. Medium energy: a steady pocket, balanced layers, expressive delivery and dynamic lifts. adult male singer, deep resonant bass, rich low register. Expressive melodic singing with natural breath. Detailed production, developing arrangement, resolved ending.",
+  "model_code": "ca1e85fe9430179831e6bc6be790c332190a3866",
+  "weights": "19671f406d603126926c1b7e2adc169acbcade22",
+  "plan_sha256": "93b7d1e2fca6a2dac1aeffe38784431948baa9500bff9f51b297615b529c865c",
+  "audio_sha256": "fd1a47c7f0a2caf1eff894f76a1f898180f7cd4d6c6b09f6e54a52276327258e",
+  "seconds": 28.529280374998052,
+  "peak": 0.891265869140625,
+  "rms": 0.12872937321662903,
+  "peak_process_rss_bytes": 1561444352,
+  "device": "mps",
+  "dtype": "torch.bfloat16",
+  "torch": "2.10.0",
+  "mlx_vae": false,
+  "mlx_vae_chunk_frames": null,
+  "mac_small_decode": true,
+  "released_generation_bytes": 4788515840,
+  "local_encode_chunk_seconds": 6,
+  "inference_shift": 1.0,
+  "voice_and_lyric_fidelity": "NOT RUN: requires listening",
+  "naturalness": "NOT RUN",
+  "trained_adapter": false,
+  "source_audio_uploaded": false,
+  "vocal_reference": {
+    "audio": "/Users/serhansari/Documents/projects/jamloom/renders/singing-response-20261022/reggae-male/singer.wav",
+    "sha256": "7fa97ed22e3d1f64e2e1accc8c3ea5ef3c9ab8f95b7bd8e5e8caa38753348c64",
+    "receipt_sha256": "a95b0e1eb6336be92017950ce221e5e3dda1f71b2b250393ae72da956738089d",
+    "voice": "male"
+  },
+  "source_conditioning": null,
+  "task_type": "text2music"
+}

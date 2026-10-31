@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/improvise_local_audition.py", line 120, in <module>
+    else:run(args.output,args.fixture)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/improvise_local_audition.py", line 98, in run
+    if problem:raise RuntimeError(problem)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Available memory floor reached

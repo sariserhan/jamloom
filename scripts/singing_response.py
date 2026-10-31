@@ -469,13 +469,36 @@ def isolated_vocal_reference(reference, output):
             'separation_quality':'NOT RUN: estimated vocal stem may contain bleed'}
 
 
-def load_singer_engine(root, mac_small_decode=False):
+def load_singer_engine(root, mac_small_decode=False, single_use=False):
     if type(mac_small_decode) is not bool or mac_small_decode and inference_device() != 'mps':
         raise ValueError('Small local decode requires Metal')
+    if type(single_use) is not bool or single_use and not mac_small_decode:
+        raise ValueError('Single-use release requires small Metal decode')
     import torch
     from acestep.handler import AceStepHandler
     from acestep.llm_inference import LLMHandler
     class MacSingerHandler(AceStepHandler):
+        def tiled_encode(self, audio, chunk_size=None, overlap=None, offload_latent_to_cpu=True):
+            if single_use:
+                # Accepted local singer references are 30 seconds long. The
+                # upstream unified-memory estimate selects a 30-second encode,
+                # which competes with resident generator weights on this Mac.
+                # Keep its two-second overlap but bound each encode to six seconds.
+                chunk_size=min(chunk_size or 48000*6,48000*6)
+            return super().tiled_encode(audio,chunk_size,overlap,offload_latent_to_cpu)
+
+        def _load_text_encoder_and_tokenizer(self, **kwargs):
+            if single_use:
+                from metal_singer_loader import load_metal_text
+                return load_metal_text(self,**kwargs)
+            return super()._load_text_encoder_and_tokenizer(**kwargs)
+
+        def _decode_generate_music_pred_latents(self, **kwargs):
+            if single_use:
+                from metal_singer_loader import release_generation_models
+                release_generation_models(self)
+            return super()._decode_generate_music_pred_latents(**kwargs)
+
         def _load_main_model_from_checkpoint(self, **kwargs):
             if mac_small_decode:
                 from metal_singer_loader import load_metal_dit
@@ -539,7 +562,7 @@ def sing(root, plan_path, output, case_id, conditioning_path=None, reference_sin
     started = time.monotonic()
     torch.set_num_threads(4)
     random.seed(c['seed']); np.random.seed(c['seed']); torch.manual_seed(c['seed'])
-    dit, lm = load_singer_engine(root, mac_small_decode)
+    dit, lm = load_singer_engine(root, mac_small_decode, single_use=mac_small_decode)
     instrumental = c.get('instrumental') is True or bool(conditioning and conditioning['instrumental'])
     source_params = ({'task_type': 'cover', 'src_audio': conditioning['audio'],
                       'audio_cover_strength': conditioning['strength']} if conditioning else {})
@@ -576,6 +599,8 @@ def sing(root, plan_path, output, case_id, conditioning_path=None, reference_sin
               'device': str(dit.device), 'dtype': str(dit.dtype), 'torch': torch.__version__, 'mlx_vae': dit.use_mlx_vae,
               'mlx_vae_chunk_frames': getattr(dit, 'mlx_vae_chunk_size', 512) if dit.use_mlx_vae else None,
               'mac_small_decode': mac_small_decode,
+              'released_generation_bytes': getattr(dit,'released_generation_bytes',0),
+              'local_encode_chunk_seconds': 6 if mac_small_decode else None,
               'inference_shift':params.shift,
               'voice_and_lyric_fidelity': 'NOT RUN: requires listening', 'naturalness': 'NOT RUN',
               'trained_adapter': False, 'source_audio_uploaded': False,

@@ -1,0 +1,17 @@
+{
+  "status": "PASS technical",
+  "audio": "performance.wav",
+  "sha256": "c036d8a15d9f5170d46f9059443e9f8a5c9c336cc20813eb79acc2652fe9404b",
+  "fixture": {
+    "label": "ls-2086-149220-0047-funk",
+    "source_id": "ls-2086-149220-0047",
+    "genre": "funk",
+    "energy": "medium",
+    "voice": "male",
+    "duration_seconds": 45,
+    "visibility": "private"
+  },
+  "source_sha256": "9efd519c520b7ff22eb362b5aaaecc9707d12183d6d6feb19efdce210d18a1b0",
+  "human_listening": "NOT RUN",
+  "hosted_separator_parity": "NOT RUN"
+}

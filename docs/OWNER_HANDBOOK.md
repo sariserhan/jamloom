@@ -1,5 +1,13 @@
 ## Current completion boundaries — 2026-10-30
 
+**Latest checkpoint:** the two-hour AI DJ test is closed for now by the owner; do not request another rental for it. The earlier $21 Improvise permit was used and stopped on failure. A separate local Mac campaign is now running sequentially with unchanged resource guards; no paid work or deployment is authorized by it. [Live local evidence](../renders/local-neural-qualification-20261030/campaign.json).
+
+The owner has accepted the sung question, three style/energy auditions, the instrumental question and all ten candidates in the two-source neural review. Preserve those approvals. New source outputs still need actual listening; no scores or paired preferences are inferred from general acceptance.
+
+Current observation pages: [quiet capture and saved receipts](http://127.0.0.1:8777), [singing word/note drafts](http://127.0.0.1:8777/singing-targets/), [accepted Afro mixes: section/control notes](http://127.0.0.1:8777/afro-sections/), [hands-on observations](http://127.0.0.1:8777/practice-observation.html), and [source/action annotations](http://127.0.0.1:8777/reference/). These save privately on this Mac. General positive feedback is retained; specific missing observations are not invented. Verified scoring and learned-model promotion remain gated on their source evidence.
+
+The dated requests below are historical; the current checkpoint supersedes their obsolete compute and review-link requests.
+
 ## Current nondeployment completion — 2026-10-30
 
 - **[OWNER ACTION REQUIRED] AI DJ compute decision:** the [prepared $6 two-hour customer-flow test](evidence/nondeployment-completion-20261030/hosted-dj-plan.json) is separate from the $21 Improvise study. Both would total at most $27 and run sequentially. No new rental or generation has started.

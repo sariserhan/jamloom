@@ -1,0 +1,569 @@
+{
+  "manifest_sha256": "019918fb9d875a140605951676fbb447c753845469e0c1cad5baf8730d7fad55",
+  "scope": "Local Metal and local separator qualification; hosted parity NOT RUN",
+  "paid_compute": false,
+  "one_gpu_at_a_time": true,
+  "automatic_retries": 0,
+  "maximum_new_generations": 61,
+  "prior_hosted_labels": [
+    "ls-2035-147960-0013-drumandbass",
+    "ls-2035-147960-0013-funk",
+    "ls-2035-147960-0013-jazz",
+    "ls-2086-149220-0047-jazz",
+    "ls-2277-149896-0026-drumandbass",
+    "ls-2277-149896-0026-funk",
+    "ls-2277-149896-0026-jazz"
+  ],
+  "prior_local_pilot": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-funk-tiled-20261030",
+  "fixtures": [
+    {
+      "label": "ls-2086-149220-0047-drumandbass",
+      "source_id": "ls-2086-149220-0047",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-7976-110124-0019-jazz",
+      "source_id": "ls-7976-110124-0019",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-7976-110124-0019-funk",
+      "source_id": "ls-7976-110124-0019",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-7976-110124-0019-drumandbass",
+      "source_id": "ls-7976-110124-0019",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1988-147956-0018-jazz",
+      "source_id": "ls-1988-147956-0018",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1988-147956-0018-funk",
+      "source_id": "ls-1988-147956-0018",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1988-147956-0018-drumandbass",
+      "source_id": "ls-1988-147956-0018",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-777-126732-0074-jazz",
+      "source_id": "ls-777-126732-0074",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-777-126732-0074-funk",
+      "source_id": "ls-777-126732-0074",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-777-126732-0074-drumandbass",
+      "source_id": "ls-777-126732-0074",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-84-121123-0012-jazz",
+      "source_id": "ls-84-121123-0012",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-84-121123-0012-funk",
+      "source_id": "ls-84-121123-0012",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-84-121123-0012-drumandbass",
+      "source_id": "ls-84-121123-0012",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1673-143397-0009-jazz",
+      "source_id": "ls-1673-143397-0009",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1673-143397-0009-funk",
+      "source_id": "ls-1673-143397-0009",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1673-143397-0009-drumandbass",
+      "source_id": "ls-1673-143397-0009",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-8297-275156-0004-jazz",
+      "source_id": "ls-8297-275156-0004",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-8297-275156-0004-funk",
+      "source_id": "ls-8297-275156-0004",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-8297-275156-0004-drumandbass",
+      "source_id": "ls-8297-275156-0004",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-5536-43358-0016-jazz",
+      "source_id": "ls-5536-43358-0016",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-5536-43358-0016-funk",
+      "source_id": "ls-5536-43358-0016",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-5536-43358-0016-drumandbass",
+      "source_id": "ls-5536-43358-0016",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6345-93302-0019-jazz",
+      "source_id": "ls-6345-93302-0019",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6345-93302-0019-funk",
+      "source_id": "ls-6345-93302-0019",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6345-93302-0019-drumandbass",
+      "source_id": "ls-6345-93302-0019",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6295-244435-0035-jazz",
+      "source_id": "ls-6295-244435-0035",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6295-244435-0035-funk",
+      "source_id": "ls-6295-244435-0035",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6295-244435-0035-drumandbass",
+      "source_id": "ls-6295-244435-0035",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6313-66125-0024-jazz",
+      "source_id": "ls-6313-66125-0024",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6313-66125-0024-funk",
+      "source_id": "ls-6313-66125-0024",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6313-66125-0024-drumandbass",
+      "source_id": "ls-6313-66125-0024",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-5338-284437-0012-jazz",
+      "source_id": "ls-5338-284437-0012",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-5338-284437-0012-funk",
+      "source_id": "ls-5338-284437-0012",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-5338-284437-0012-drumandbass",
+      "source_id": "ls-5338-284437-0012",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6319-57405-0007-jazz",
+      "source_id": "ls-6319-57405-0007",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6319-57405-0007-funk",
+      "source_id": "ls-6319-57405-0007",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6319-57405-0007-drumandbass",
+      "source_id": "ls-6319-57405-0007",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1993-147965-0001-jazz",
+      "source_id": "ls-1993-147965-0001",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1993-147965-0001-funk",
+      "source_id": "ls-1993-147965-0001",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1993-147965-0001-drumandbass",
+      "source_id": "ls-1993-147965-0001",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2078-142845-0042-jazz",
+      "source_id": "ls-2078-142845-0042",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2078-142845-0042-funk",
+      "source_id": "ls-2078-142845-0042",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2078-142845-0042-drumandbass",
+      "source_id": "ls-2078-142845-0042",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1272-128104-0001-jazz",
+      "source_id": "ls-1272-128104-0001",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1272-128104-0001-funk",
+      "source_id": "ls-1272-128104-0001",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1272-128104-0001-drumandbass",
+      "source_id": "ls-1272-128104-0001",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-174-50561-0018-jazz",
+      "source_id": "ls-174-50561-0018",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-174-50561-0018-funk",
+      "source_id": "ls-174-50561-0018",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-174-50561-0018-drumandbass",
+      "source_id": "ls-174-50561-0018",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2803-161169-0002-jazz",
+      "source_id": "ls-2803-161169-0002",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2803-161169-0002-funk",
+      "source_id": "ls-2803-161169-0002",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2803-161169-0002-drumandbass",
+      "source_id": "ls-2803-161169-0002",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-laughter-jazz",
+      "source_id": "commons-laughter",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-laughter-funk",
+      "source_id": "commons-laughter",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-laughter-drumandbass",
+      "source_id": "commons-laughter",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-claps-jazz",
+      "source_id": "commons-claps",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-claps-funk",
+      "source_id": "commons-claps",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-claps-drumandbass",
+      "source_id": "commons-claps",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-noise-jazz",
+      "source_id": "commons-noise",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-noise-funk",
+      "source_id": "commons-noise",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-noise-drumandbass",
+      "source_id": "commons-noise",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    }
+  ]
+}
