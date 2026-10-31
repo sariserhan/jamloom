@@ -1,0 +1,32 @@
+✔ DJ session input defaults Public and rejects unsafe fields (1.137625ms)
+▶ isolated DJ session ledger, fresh batches and public set policy
+  ✔ bounded supervisor exits on empty inventory and rejects unsafe watch options (4865.651417ms)
+  ✔ long rental requires an explicit bounded profile and still obeys the same total budget (3.738ms)
+  ✔ hosted supervisor closes a lost controller rental and refunds only after provider absence (29.946ms)
+  ✔ warm rental delivers distinct customer tracks before shutdown and recovers failed work safely (282.65875ms)
+  ✔ one listener stopping drains and refunds only their render while the other continues (201.27425ms)
+  ✔ concurrent Starts cannot overbook a warm worker or consume rejected credits (19.151541ms)
+  ✔ warm deadline, budget and lost heartbeat stop capacity and refund unacknowledged jobs (36.704291ms)
+  ✔ quotes bind owner and sharing, private premium, atomic idempotent Start (5.022542ms)
+  ✔ bounded preparation, fresh seeds, verified output and immutable settlement retries (303.305542ms)
+  ✔ private, local and unplayed recordings never enter public listing or playback (141.903833ms)
+  ✔ credit exhaustion stops new reservations without changing visibility (70.18875ms)
+  ✔ Stop race refunds queued work; running work waits for its shutdown receipt (117.295417ms)
+  ✔ lost settlement response retries once; disconnected sessions cannot dispatch (94.310959ms)
+  ✔ abandoned queued work expires even while its customer keeps heartbeating (4.638333ms)
+  ✔ rising per-track price preserves Private and requires a fresh decision (69.584708ms)
+  ✔ DJ and existing generation queues share one worker capacity (9.270167ms)
+  ✔ frozen accounts cannot complete new public music (45.582917ms)
+  ✔ durable deadlines hold capacity and receipts recover a settlement crash (117.209292ms)
+  ✔ remote shutdown, complete inventory and immutable cost evidence precede delivery (184.162458ms)
+  ✔ customer HTTP protects quotes, account identity, audio and paused launch gates (90.311167ms)
+  ✔ account purge keeps running work and saved recordings protected (7.124542ms)
+✔ isolated DJ session ledger, fresh batches and public set policy (6921.254541ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7262.563209

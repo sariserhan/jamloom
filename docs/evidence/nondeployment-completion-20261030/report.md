@@ -16,7 +16,11 @@
 
 **NOT RUN:** actual quiet recording and hands-on DJ observations; both requested from the owner in the existing private workspace. Nine older concept-quiz receipts remain one assessment sequence, not new outcomes.
 
-**PARTIAL:** sustained hosted AI DJ preparation. Existing two-hour procedural playback and bounded fresh-GPU customer tests remain separate. Current rental/renderer admission limits are 40 minutes; no multi-hour GPU result is claimed.
+**PASS local sustained AI DJ preparation; hosted execution NOT RUN.** Added an explicit 150-minute operator/renderer profile for the two-hour test, preserving the 40-minute default, 30-second per-song rendering deadline and $6 total budget bound. Fresh authorization is hash-bound to all public and private launchers; one rental, 150 tracks/180 model requests maximum, no replacement. Real customer-flow harness includes two-hour playback, private credit exhaustion, third-listener refusal, dispatcher crash/recovery, complete recordings and privacy. Three permit tests, 34 controller tests, seven renderer tests, 23 database tests, Node 22 typecheck and local setup/deck preflight PASS. The initial browser preflight lacked bundled Chromium; the prepared runner now uses installed Chrome and passes without downloading a browser. [Prepared $6 plan](hosted-dj-plan.json) awaits approval. The two campaigns must run sequentially; no new paid work occurred.
+
+**PASS local quiet-selector preparation; actual recording NOT RUN.** Two checks prove missing/changed captures cannot pass and synthetic zero only tests the selector. The current real-results scan has no quiet receipt. The selector hash matches the accepted neural worker; no new model, ASR or upload was run.
+
+**PASS read-only idle audit:** Runpod limits 0/0 with zero workers and queued/running jobs; full Vast inventory empty. Local test databases were removed. [Runpod](runpod-idle.json), [Vast](vast-inventory.json).
 
 **PARTIAL:** produced-song verified sung targets and source/action learning evidence still require actual annotations; automated candidates do not enable scoring or count as training truth. M1 must complete before learned-model benefit qualification. Afro House section/control observations remain separate from the three accepted mixes.
 
@@ -31,3 +35,19 @@ From repository root:
 ```
 
 Restart the existing loopback owner-review server on port 8777 after installing the new study, preserving its results directory. The server code now validates the additional fifth candidate; old studies keep their original requirements. The new study cannot be installed until real outputs exist. Raw ratings, accepted audio, earlier rejected studies and unrelated changes remain preserved.
+
+## Restart for an approved hosted run
+
+Start isolated PostgreSQL with its explicit port:
+
+```sh
+/opt/homebrew/opt/postgresql@18/bin/pg_ctl -D build-song-finish/postgres18 -o '-h 127.0.0.1 -p 55438' -l /tmp/jamloom-nondeployment-postgres.log start
+```
+
+For AI DJ only, start the disposable local development preview from `apps/site`:
+
+```sh
+JAMLOOM_QUALIFICATION_BUILD=1 JAMLOOM_COMING_SOON=false DATABASE_URL='' BETTER_AUTH_SECRET='' node node_modules/next/dist/bin/next dev --hostname 127.0.0.1 --port 3009
+```
+
+Rerun the local UI preflight before rental; never use the intentionally gated production-preview route. The temporary preview and PostgreSQL are stopped after local preparation to conserve memory. Approval remains required before `rent` or any cloud `--apply`.

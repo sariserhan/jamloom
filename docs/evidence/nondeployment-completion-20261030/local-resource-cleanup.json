@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "local_postgresql": "STOPPED after tests; no temporary test databases remained",
+  "temporary_dj_preview_3009": "STOPPED after setup/deck preflight",
+  "owner_review_8777": "PRESERVED",
+  "website_previews": "PRESERVED",
+  "Dia": "PRESERVED open",
+  "paid_requests_started": 0,
+  "new_rentals": 0
+}

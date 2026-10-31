@@ -8,6 +8,8 @@ approval. The owner is the sole required musical listener.
 
 ## Current full-completion increment
 
+- **PASS local AI DJ endurance and quiet-selector preparation; execution NOT RUN:** 67 focused checks plus typecheck and local UI preflight pass. The separate $6/two-hour plan needs approval; existing forty-minute defaults and per-song deadlines remain. The real quiet-recording scan is empty. Both provider inventories are idle. [Current evidence](evidence/nondeployment-completion-20261030/report.md).
+
 - **PASS local broader-neural preparation; paid execution NOT RUN:** 23 recorded sources, 69 requests across seven bounded stages, both old and stock-loop controls, five-candidate blind review with partial save and hash-bound evaluation. Unit/database/type/browser checks PASS. The prepared $21 campaign awaits explicit approval; owner quiet recording and DJ hands-on receipts are pending. [Current evidence](evidence/nondeployment-completion-20261030/report.md).
 
 - **PASS Improvise-only variety implementation and three hosted technical auditions and owner acceptance:** automatic styles avoid the last eight per-owner choices, and energy rotates across low/medium/high. Explicit styles stay selected; Music DNA is unchanged. Low-energy jazz, medium-energy funk and high-energy drum and bass each return 45 seconds with the full confirmed phrase and matching direction. The owner accepts all three: “yes they are good.” Independent cleanup PASS: 0/0, no workers/jobs, nine remote objects removed, test credits settled and local database stopped. The $3 permit is consumed. [Listen to the three new songs](http://127.0.0.1:8777/neural-variety/), [evidence](evidence/improvise-variety-20261030/report.md).

@@ -20,8 +20,8 @@ from dj_vocal import add_hook
 
 
 class Renderer:
-    def __init__(self, deadline, limit, engine=None, generate=ace, render_seconds=30):
-        if not time.time() < deadline <= time.time()+2400 or type(limit) is not int or not 1 <= limit <= 100 or type(render_seconds) is not int or render_seconds not in (30, 120):
+    def __init__(self, deadline, limit, engine=None, generate=ace, render_seconds=30, endurance=False):
+        if type(endurance) is not bool or not time.time() < deadline <= time.time()+(9000 if endurance else 2400) or type(limit) is not int or not 1 <= limit <= (180 if endurance else 100) or type(render_seconds) is not int or render_seconds not in (30, 120):
             raise ValueError('Invalid renderer bounds')
         self.deadline, self.limit, self.engine, self.generate = deadline, limit, engine, generate
         self.identity, self.seen, self.cached = secrets.token_hex(16), set(), None
@@ -149,6 +149,7 @@ def main():
     parser.add_argument('--expires-unix', type=float, required=True)
     parser.add_argument('--max-requests', type=int, required=True)
     modes=parser.add_mutually_exclusive_group()
+    modes.add_argument('--endurance', action='store_true', help='Separately authorized 150-minute, 180-request ceiling; no per-request deadline change')
     modes.add_argument('--arranged', action='store_true', help='Use the unqualified arrangement candidate for a bounded listening trial')
     modes.add_argument('--house-study', action='store_true', help='Paired house-only study; sequence selects the predeclared condition')
     modes.add_argument('--composition-study',action='store_true',help='Paired original-score conditioning experiment')
@@ -166,7 +167,7 @@ def main():
     token = args.token_file.read_text().strip()
     if len(token) != 64 or any(c not in '0123456789abcdef' for c in token):
         raise ValueError('Invalid token')
-    renderer = Renderer(args.expires_unix, args.max_requests, generate=planner_study if args.planner_study else composition_recovery if args.recovery_study else composition_set if args.guided_set else composition_study if args.composition_study else house_study if args.house_study else partial(ace, arranged=args.arranged))
+    renderer = Renderer(args.expires_unix, args.max_requests, generate=planner_study if args.planner_study else composition_recovery if args.recovery_study else composition_set if args.guided_set else composition_study if args.composition_study else house_study if args.house_study else partial(ace, arranged=args.arranged),endurance=args.endurance)
     if args.sung_study:
         from dj_sung_hooks import sung_study
         renderer.generate=sung_study

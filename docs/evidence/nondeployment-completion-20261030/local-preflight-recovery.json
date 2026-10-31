@@ -1,0 +1,11 @@
+{
+  "status": "PASS after local correction",
+  "initial_dj_preflight": "Bundled Playwright Chromium executable unavailable after earlier machine cleanup",
+  "correction": "Use installed Chrome explicitly in the preflight and prepared customer harness; no browser download",
+  "verified": "Setup and deck reachable on localhost:3009; no Start pressed",
+  "initial_readonly_cloud_check": "Trial configuration omitted the conservative rate override and rejected before any network call",
+  "correction_cloud": "Use the same 1000 microdollar/second trial configuration as the harness, including the independent postcheck",
+  "verified_cloud": "Read-only endpoint status confirms 0/0 and no workers or jobs",
+  "paid_requests": 0,
+  "rentals": 0
+}

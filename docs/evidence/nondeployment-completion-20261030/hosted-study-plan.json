@@ -31,7 +31,7 @@
     "apps/site/scripts/cloud-song-trial.ts": "25f25aacf58c551d0baff8984c0a6b45c477bff218e0b47154fe5dfe1207bba2",
     "apps/site/scripts/neural-study-input.ts": "3b2422f33e157e4c0cbd079e27f24d72bf4e7b6693d88f0b7a86e2f87c7923a5",
     "apps/site/scripts/neural-study-permit.ts": "387a8e38832855818cc47a94955c3775e8c163a51f62f66dc07dad7d8f9b1df8",
-    "apps/site/scripts/neural-study-postcheck.ts": "9f0420b3e9604b7094becd9269fd1810343454736b1db4dab25d977ffdfe5731",
+    "apps/site/scripts/neural-study-postcheck.ts": "bb86be887accf6924193763b768a07d8f766e67a2dcf4d7460773058f0cae0a7",
     "apps/site/scripts/cloud-trial-limits.ts": "a6a57a6612a603daef8cf984ad3092fdf0f6f74ea9e96e392073f26f28f6a0f8",
     "apps/site/lib/cloud-songs.ts": "e76697925031c997227d891573a3ec6c46eb738eba3219c5cae5b2b1a531d8ee",
     "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4"
@@ -58,5 +58,6 @@
     "AI DJ rental",
     "Training or performer cloning",
     "Repeated requests or replacement campaign"
-  ]
+  ],
+  "failure_cleanup": "If a stage fails, run its independent postcheck with --cleanup-only. A cleanup PASS with qualification FAIL never permits the next stage."
 }

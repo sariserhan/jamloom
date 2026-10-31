@@ -2,6 +2,8 @@
 
 ## Current nondeployment completion — 2026-10-30
 
+- **[OWNER ACTION REQUIRED] AI DJ compute decision:** the [prepared $6 two-hour customer-flow test](evidence/nondeployment-completion-20261030/hosted-dj-plan.json) is separate from the $21 Improvise study. Both would total at most $27 and run sequentially. No new rental or generation has started.
+
 - **[OWNER ACTION REQUIRED] Compute decision:** review the [prepared $21 neural qualification](evidence/nondeployment-completion-20261030/hosted-study-plan.json). No new cloud work has started. This is private evaluation only and excludes deployment, payments, training and AI DJ rentals.
 - **[OWNER ACTION REQUIRED] Actual observations:** save three quiet seconds at http://127.0.0.1:8777 and complete the hands-on before/lesson/after exercise at http://127.0.0.1:8777/practice-observation.html. These close recording and learner-evidence gaps; automated fixtures cannot substitute for your observations. Prior concept-quiz answers remain saved.
 - The new five-candidate neural study will be installed only after generation and cleanup pass. Its ratings start blank, can be saved partially, and remain separate from the earlier rejected studies and the accepted question auditions.

@@ -41,6 +41,19 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
    const wrong=run(['--apply','--warm','--watch'],{JAMLOOM_WATCHDOG_TARGET:'wrong'});assert.notEqual(wrong.status,0);assert.match(wrong.stderr,/target confirmation/);
   });
   for(const owner of ['alice','bob','tiny','pending','race','queue','retry','capacity','legacy','price','frozen','watch','http','recover','warm-a','warm-b','warm-fail']){await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.com']);await sessions.wallet.grant(owner,{provider:'stripe_test',receipt:'fixture-'+owner,credits:owner==='tiny'?2:100,netMicros:owner==='tiny'?100000:5000000});}
+  await t.test('long rental requires an explicit bounded profile and still obeys the same total budget',async()=>{
+   let inventory=[{id:997,label:'jamloom-endurance-fixture'}];const warm=new DJWarmWorker(sessions,{inventory:async()=>inventory,destroy:async()=>{inventory=[];}});
+   const startedAt=Date.now()-1000,p={account:123,instance:997,label:inventory[0].label,permitSha256:'7'.repeat(64),hourlyMicros:500000,budgetMicros:6000000,startedAt,deadline:startedAt+9000000};
+   await assert.rejects(warm.register(p),/Invalid warm rental permit/);
+   await assert.rejects(warm.register({...p,maxLifetimeSeconds:9000,hourlyMicros:5000000}),/Invalid warm rental permit/);
+   await assert.rejects(warm.register({...p,maxLifetimeSeconds:9000,deadline:p.deadline+1}),/Invalid warm rental permit/);
+   await assert.rejects(warm.register({...p,maxLifetimeSeconds:10000 as any}),/Invalid warm rental permit/);
+   const worker=await warm.register({...p,maxLifetimeSeconds:9000});
+   assert.equal((await pool.query('SELECT deadline FROM dj_warm_workers WHERE id=$1',[worker.id])).rows[0].deadline.getTime(),p.deadline);
+   await assert.rejects(warm.register({...p,maxLifetimeSeconds:9000}),/consumed/);
+   assert.equal(await warm.heartbeat(worker,6000000),false);
+   assert.equal((await warm.sweep())[0].status,'destroy_requested');assert.equal((await warm.sweep())[0].status,'shutdown_confirmed');
+  });
   await t.test('hosted supervisor closes a lost controller rental and refunds only after provider absence',async()=>{
    let inventory=[{id:998,label:'jamloom-hosted-supervisor-fixture'}],destroyed=0;
    const warm=new DJWarmWorker(sessions,{inventory:async()=>inventory,destroy:async()=>{destroyed++;inventory=[];}});

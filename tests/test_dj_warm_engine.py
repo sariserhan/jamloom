@@ -20,6 +20,15 @@ from dj_warm_engine import Renderer, handler
 
 
 class WarmEngineTests(unittest.TestCase):
+    def test_endurance_is_explicit_bounded_and_keeps_per_song_deadline(self):
+        with self.assertRaises(ValueError):Renderer(time.time()+7200,150)
+        with self.assertRaises(ValueError):Renderer(time.time()+100,101)
+        with self.assertRaises(ValueError):Renderer(time.time()+9001,180,endurance=True)
+        with self.assertRaises(ValueError):Renderer(time.time()+7200,181,endurance=True)
+        renderer=Renderer(time.time()+7200,180,endurance=True)
+        self.assertEqual(renderer.render_seconds,30)
+        self.assertEqual(renderer.requests,0)
+
     def test_raw_archive_uses_authenticated_renderer_and_exact_latest_receipt(self):
         from dj_sample_trial import retain_model_raw
         data=b'raw-model-output'*100

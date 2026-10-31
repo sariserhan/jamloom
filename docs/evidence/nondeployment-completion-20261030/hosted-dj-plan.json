@@ -1,0 +1,77 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "campaign": "jamloom-dj-endurance-20261030",
+  "budget_usd": 6,
+  "instances_max": 1,
+  "max_elapsed_seconds": 9000,
+  "actual_public_set_seconds": 7200,
+  "model_requests_max": 180,
+  "customer_tracks_max": 150,
+  "public_activation": false,
+  "stop_on_failure": true,
+  "automatic_cleanup": true,
+  "replacement_rental_authorized": false,
+  "owner_statement": null,
+  "hourly_ceiling_usd": 0.5,
+  "offer_quote_ceiling_usd": 4,
+  "observed_debit_shutdown_usd": 4,
+  "code_sha256": {
+    "scripts/vast_trial.py": "b83d03069140ccec2b6f46e34156e4cfe5a9808384d3cea5789ab18ed0789b0b",
+    "scripts/cloud_dj_warm.sh": "6e494ac551cd7b8341d7feae00a1fdcb63002b0a7a2cd3b624c2b662c9e2038b",
+    "scripts/cloud_music_setup.sh": "842f15e133910fa31c62d687c81203c441b41d013e60a991a133a47b51daa6b0",
+    "scripts/dj_track_worker.py": "3c2de702ce18c8dee8fa9964c4e076fe349e444124b1d80d7fd73866cd8cddae",
+    "scripts/dj_warm_engine.py": "30bbadab67a5c36bbe3f5def823eec807c75cb5d75461c02e926c0d30eb18e6e",
+    "scripts/dj_vocal.py": "902e327bdf2a8a319b3b049cc368415d4c211659a114307b45d9125ff6a88f96",
+    "apps/site/tests/dj-warm-qualification.mjs": "9d59ef2db2a13859229c6292fcaf1f33c11eed2005804e1e888d92544c6fcad3",
+    "apps/site/tests/dj-qualification-process.mjs": "9308a7e76fc4a4a6671999bf4f03cfd091c9db6d6200bb4d6fb105aeb032bd0e",
+    "apps/site/lib/dj-remote-worker.ts": "678ab5ca29cbef35a8d04ddf0576024a9ed536521badbc2027e9b7c903a64fdc",
+    "apps/site/lib/ai-dj-player.ts": "01a0ce19379acbd021d48ee5fdd58c84803388d4c461a2e790424fc4a38c57c8",
+    "apps/site/lib/ai-dj-plan.ts": "19ac44591cb612d972307a7645996fb6aafa4b9384785884fe57812236a4a03d",
+    "scripts/dj_endurance_trial.py": "22fcb412c6c77c142d4e61e15ec5f3b082c500a494350fa0ab1077332f12c9f7",
+    "scripts/dj_renderer_readiness.py": "4a42ca29018a73f07b0dd874382a6ded8d8e72cb03589324a867ffbaf850117f",
+    "apps/site/lib/dj-warm-worker.ts": "a7ba8b201c687720c42ec64b419c1fac3fa12c1c0ffc83ce00cbfdae18a987dc",
+    "apps/site/tests/silent-audio.mjs": "cdc4c981ee7f9c34c182e9bf5ac55d7a3d99ba21cf412ded9d9255ab1712922a",
+    "apps/site/tests/dj-ui-preflight.mjs": "5aaf8717c17c6b65041b0c4e30a777f3eaa13567695f5181a972a5dcdf3e66ac",
+    "build-dj-endurance-20261030/pipeline.py": "577bff72106c5e6c08a9bc42055e47ff6b46fb3429f477f9631d35fd35591554",
+    "build-dj-endurance-20261030/boot.py": "cba2d6465953bf848333ecc460d4ba7b5f90786b40a53f3f518d2360f0a80a2e",
+    "build-dj-endurance-20261030/monitor.py": "cb844cc63b3218cfb841e6eb0b800dcd73e5b88762aa017f1216d674a51db84a",
+    "build-dj-endurance-20261030/run-qualification.py": "66271a37f0031b161e68ae5e122e02daf1a7d7d73ab3b9bce604153468e112f9",
+    "build-dj-endurance-20261030/qualify-when-ready.py": "2a376a079883915df6b3cf4b80f165cc5d3ea40babf2a7eeb8577fd9211d9a16"
+  },
+  "preconditions": [
+    "Fresh explicit approval; no other provider jobs/rentals; complete earlier study cleanup",
+    "Current local customer UI preflight and local PostgreSQL on 55438",
+    "19 GiB free: 15 GiB reserve plus four GiB for peak artifact storage",
+    "Existing proven RTX 3090 host only, immutable base image/model weights; no replacement"
+  ],
+  "checks": [
+    "Two hours of actual public-mode test-account playback, private test-account exhaustion, complete R2 recording and privacy",
+    "150 unique tracks maximum, 180 model requests maximum including optional vocal candidates",
+    "Standalone dispatcher killed after a completed response; recover same receipt/job/deadline",
+    "Third listener refused without reserved or spent credits; memory/source-count bounds",
+    "Final provider inventory empty, R2 test objects removed, isolated accounts/database purged"
+  ],
+  "limits": "Public-mode means visibility inside an isolated test database, not website publication. Existing forty-minute defaults remain; this permit explicitly selects the bounded 150-minute worker profile. Startup, two-hour playback and shutdown share the total deadline. Provider/network outages can delay deletion; watchdog retries cleanup only, never generation.",
+  "excludes": [
+    "Website/app deployment",
+    "Live purchases",
+    "New music acquisition",
+    "Training",
+    "Replacement rental",
+    "Repeated model requests"
+  ],
+  "commands": [
+    "python3 scripts/dj_endurance_trial.py dry-run",
+    "After approval and local UI preflight: python3 scripts/dj_endurance_trial.py rent",
+    "python3 build-dj-endurance-20261030/pipeline.py",
+    "Independent final inventory: python3 scripts/dj_endurance_trial.py status"
+  ],
+  "preparation_checks": {
+    "authorization_and_bootstrap_tests": 3,
+    "controller_tests": 34,
+    "renderer_tests": 7,
+    "database_tests": 23,
+    "local_ui_preflight": "PASS; setup and deck only, no session or rental",
+    "typecheck": "PASS on Node 22"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "status": "NOT RUN",
+  "observations": [],
+  "sampler_sha256": "335c8bf9fd31a0860af5826602cc427710d28c082d9761a40e24d09dd7e75a24",
+  "no_model_generation": true,
+  "no_upload": true,
+  "synthetic_observations_used": false
+}

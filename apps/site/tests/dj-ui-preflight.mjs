@@ -5,7 +5,7 @@ import {chromium} from 'playwright';
 import {silenceSpeakers} from './silent-audio.mjs';
 export async function djUIPreflight(origin){
  assert.ok(['http://localhost:3000','http://localhost:3008','http://localhost:3009'].includes(origin),'Qualification needs an approved loopback preview');
- const browser=await chromium.launch();
+ const browser=await chromium.launch({channel:'chrome'});
  try{
   const page=await browser.newPage(),requests=[],errors=[];await page.addInitScript(silenceSpeakers);page.on('pageerror',e=>errors.push(e.message));
   await page.route('**/api/**',async route=>{
