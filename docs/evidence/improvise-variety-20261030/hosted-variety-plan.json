@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "scope": "Publish Improvise energy worker, then three private musical auditions using the accepted question crop",
   "image_source_commit": "68bf2b39c564157e34bf6628d3d5f9a9af9e8a65",
   "image_base": "2ef31d6954f823aad6e170493783cd25dd0d9af3",
@@ -101,12 +101,21 @@
   ],
   "execution": {
     "image_build_attempts": 1,
-    "trial_invocations": 0,
-    "provider_requests_started": 0,
-    "status": "IMAGE_BUILD_RUNNING",
+    "trial_invocations": 2,
+    "provider_requests_started": 3,
+    "status": "COMPLETE",
     "image_publication_started_at": "2026-10-31T00:19:16.234937+00:00",
     "workflow_run": 41149525821,
-    "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41149525821"
+    "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41149525821",
+    "trial_started_at": "2026-10-31T00:39:14.501737+00:00",
+    "trial_exit": 0,
+    "trial_finished_at": "2026-10-31T00:50:56.403894+00:00",
+    "receipt": "docs/evidence/improvise-finish/cloud/2026-10-31T00-39-14.681Z/trial-result.json",
+    "qualification": "PASS",
+    "cleanup": "PASS",
+    "local_postgres": "STOPPED after independent cleanup check",
+    "owner_listening": "NOT RUN",
+    "audition_url": "http://127.0.0.1:8777/neural-variety/"
   },
   "file_sha256": {
     "scripts/singer_studio.py": "335c8bf9fd31a0860af5826602cc427710d28c082d9761a40e24d09dd7e75a24",
@@ -123,5 +132,16 @@
   },
   "preserved_local_adapter": "Existing diagnostic parser change is preserved; its current hash is pinned separately from the isolated application commit.",
   "owner_statement": "Approve image and three auditions, $3 total",
-  "authorized_utc": "2026-10-31T00:12:30.748232+00:00"
+  "authorized_utc": "2026-10-31T00:12:30.748232+00:00",
+  "local_preflight_attempts": [
+    {
+      "started_at": "2026-10-31T00:38:40.468248+00:00",
+      "finished_at": "2026-10-31T00:38:41.733241+00:00",
+      "exit": 1,
+      "provider_requests": 0,
+      "uploads": 0,
+      "failure": "ECONNREFUSED isolated PostgreSQL port 55438",
+      "recovery": "local-preflight-recovery.json"
+    }
+  ]
 }

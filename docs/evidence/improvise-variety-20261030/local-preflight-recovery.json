@@ -1,0 +1,43 @@
+{
+  "at": "2026-10-31T00:39:03.708Z",
+  "status": "PASS zero paid work after local preflight failure",
+  "failure": "Local PostgreSQL started on port 5432; harness requires isolated port 55438",
+  "operation": "Read-only independent endpoint checks; local database corrected and SELECT verifies no temporary trial databases",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "health": {
+    "jobs": {
+      "completed": 32,
+      "failed": 14,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "endpointVersion": 21,
+    "summary": {
+      "idle": 0,
+      "initializing": 0,
+      "running": 0,
+      "throttled": 0,
+      "total": 0,
+      "unhealthy": 0
+    },
+    "workers": []
+  },
+  "providerRequests": 0,
+  "uploads": 0,
+  "temporaryDatabases": 0,
+  "authorization": "Existing three-audition permit remains bounded to three provider requests total; no provider request is repeated"
+}

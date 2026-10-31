@@ -1,0 +1,19 @@
+{
+  "separatorPython": "/opt/jamloom/.venv-spleeter/bin/python",
+  "command": [
+    "/usr/local/bin/python",
+    "services/runpod/handler.py"
+  ],
+  "at": "2026-10-31T00:38:29.683508+00:00",
+  "sourceCommit": "68bf2b39c564157e34bf6628d3d5f9a9af9e8a65",
+  "conclusion": "success",
+  "workflowRun": 41149525821,
+  "url": "https://github.com/sariserhan/jamloom/actions/runs/41149525821",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1",
+  "registryVerified": true,
+  "verification": "Exact commit tag and immutable digest return identical hashed manifest; linux/amd64 config verified; no image layers downloaded",
+  "compressedLayerBytes": 27194873638,
+  "layers": 23,
+  "architecture": "amd64",
+  "os": "linux"
+}

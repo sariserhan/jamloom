@@ -1,6 +1,6 @@
 {
   "at": "2026-10-31T00:03:28.203366+00:00",
-  "implementation": "PASS local; integrated after maximum test and independent cleanup",
+  "implementation": "PASS integrated and published; hosted technical qualification PASS",
   "scope": "Improvise only",
   "application_commit": "4e22bff2e7e11df6aa8535399232fddf28b6e559",
   "image_commit": "68bf2b39c564157e34bf6628d3d5f9a9af9e8a65",
@@ -41,5 +41,21 @@
     "availability_browser": "PASS both products under closed, failed and ready fixtures; zero writes",
     "regular_test_command": "Includes Improvise direction and trial-limit checks",
     "local_candidate": "http://127.0.0.1:3011; generation and purchases disabled"
+  },
+  "hosted": {
+    "status": "PASS",
+    "receipt": "docs/evidence/improvise-finish/cloud/2026-10-31T00-39-14.681Z/trial-result.json",
+    "provider_requests": 3,
+    "repeated_provider_requests": 0,
+    "worker_bound": 1,
+    "prewarm_seconds": 258,
+    "cleanup": "PASS independent",
+    "remote_objects_removed": 9,
+    "local_postgres": "STOPPED",
+    "full_source_preserved_in_all_three": true,
+    "audio_audit": "PASS duration/hash/PCM/peaks; no near-silent window in the first second after any phrase",
+    "browser": "PASS playback/seek/exclusive playback/phrase jumps at 1280 and 390 pixels",
+    "url": "http://127.0.0.1:8777/neural-variety/",
+    "musical_acceptance": "NOT RUN; owner review requested"
   }
 }

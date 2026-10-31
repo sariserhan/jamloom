@@ -1,0 +1,188 @@
+{
+  "at": "2026-10-31T00:51:03.465983+00:00",
+  "status": "PASS technical only",
+  "auditions": [
+    {
+      "label": "jazz",
+      "energy": "low",
+      "musicalDirection": {
+        "seed": 2446744697,
+        "genre": "jazz",
+        "energy": "low"
+      },
+      "sha256": "6def96c1145b926019ac8bf9f936584cad86fe50311be7e417b9c141e8b423be",
+      "seconds": 45.0,
+      "peak": 0.89129638671875,
+      "clippedSamples": 0,
+      "firstEvent": {
+        "gain": 0.5000799705278334,
+        "rate": 1,
+        "band_rms": 0.07999552753056276,
+        "end_frame": 915529,
+        "processing": {
+          "eq_db": [
+            -3.1198493586963525,
+            -1.9886666480397173,
+            -1.344020452353593,
+            2.055711962429954,
+            4.3068399096317,
+            3.3905321922463987
+          ],
+          "version": 2,
+          "room_wet": 0.06,
+          "time_scale": 1,
+          "highpass_hz": 80,
+          "reference_rms": 0.12368722096027618,
+          "eq_crossovers_hz": [
+            160,
+            400,
+            1000,
+            2500,
+            6000
+          ],
+          "max_compression_db": 4.06858179069135,
+          "pitch_shift_semitones": 0,
+          "formant_shift_semitones": 0,
+          "speaker_identity_listening": "NOT RUN"
+        },
+        "start_frame": 864215,
+        "target_lead_rms": 0.08799508028361903,
+        "transpose_semitones": 0,
+        "vocal_threshold_rms": 0.004189047606651214,
+        "processed_active_rms": 0.08799508028361903,
+        "estimated_vocal_max_rms": 0
+      },
+      "completeSourceSelection": true,
+      "postPhraseFirstSecond": {
+        "windows20ms": 50,
+        "rmsMinimum": 0.0005217449832424355,
+        "longestNearSilentRunSeconds": 0,
+        "nearSilenceRmsThreshold": 0.0001,
+        "interpretation": "Technical measurement only; natural musical phrasing requires owner listening"
+      },
+      "musicalAcceptance": "NOT RUN"
+    },
+    {
+      "label": "funk",
+      "energy": "medium",
+      "musicalDirection": {
+        "seed": 217589844,
+        "genre": "funk",
+        "energy": "medium"
+      },
+      "sha256": "be2ab76baacbf5f6eb9709abe8e78c302c695933b98e90eb5ce5c65f08e0af94",
+      "seconds": 45.0,
+      "peak": 0.89129638671875,
+      "clippedSamples": 0,
+      "firstEvent": {
+        "gain": 0.532236157209743,
+        "rate": 1,
+        "band_rms": 0.12249233882840739,
+        "end_frame": 765097,
+        "processing": {
+          "eq_db": [
+            -2.105014625335594,
+            -2.668394866997359,
+            -0.013607827420172015,
+            1.929565150556939,
+            2.861676777262801,
+            1.396777096115457
+          ],
+          "version": 2,
+          "room_wet": 0.06,
+          "time_scale": 1,
+          "highpass_hz": 80,
+          "reference_rms": 0.11079429090023041,
+          "eq_crossovers_hz": [
+            160,
+            400,
+            1000,
+            2500,
+            6000
+          ],
+          "max_compression_db": 3.862543979204105,
+          "pitch_shift_semitones": 0,
+          "formant_shift_semitones": 0,
+          "speaker_identity_listening": "NOT RUN"
+        },
+        "start_frame": 711964,
+        "target_lead_rms": 0.09417514726519584,
+        "transpose_semitones": 0,
+        "vocal_threshold_rms": 0.003075324557721615,
+        "processed_active_rms": 0.09417514726519584,
+        "estimated_vocal_max_rms": 9.289303852710873e-05
+      },
+      "completeSourceSelection": true,
+      "postPhraseFirstSecond": {
+        "windows20ms": 50,
+        "rmsMinimum": 0.008816538383017757,
+        "longestNearSilentRunSeconds": 0,
+        "nearSilenceRmsThreshold": 0.0001,
+        "interpretation": "Technical measurement only; natural musical phrasing requires owner listening"
+      },
+      "musicalAcceptance": "NOT RUN"
+    },
+    {
+      "label": "drumandbass",
+      "energy": "high",
+      "musicalDirection": {
+        "seed": 707261315,
+        "genre": "drumandbass",
+        "energy": "high"
+      },
+      "sha256": "cfa9f18b4afc8eeeba1bc55b84a869384a5ecf33403898ec33eed5649a969ad3",
+      "seconds": 45.0,
+      "peak": 0.891326904296875,
+      "clippedSamples": 0,
+      "firstEvent": {
+        "gain": 0.47549240629645195,
+        "rate": 1,
+        "band_rms": 0.11973778838881699,
+        "end_frame": 1556922,
+        "processing": {
+          "eq_db": [
+            -6,
+            -6,
+            -0.1365038852304383,
+            3.3816933829756084,
+            2.634988409885123,
+            1.02879031638178
+          ],
+          "version": 2,
+          "room_wet": 0.06,
+          "time_scale": 1,
+          "highpass_hz": 80,
+          "reference_rms": 0.11489909656348896,
+          "eq_crossovers_hz": [
+            160,
+            400,
+            1000,
+            2500,
+            6000
+          ],
+          "max_compression_db": 3.561364960239045,
+          "pitch_shift_semitones": 0,
+          "formant_shift_semitones": 0,
+          "speaker_identity_listening": "NOT RUN"
+        },
+        "start_frame": 1490772,
+        "target_lead_rms": 0.09766423207896562,
+        "transpose_semitones": 0,
+        "vocal_threshold_rms": 0.0030220308545308356,
+        "processed_active_rms": 0.09766423207896562,
+        "estimated_vocal_max_rms": 0
+      },
+      "completeSourceSelection": true,
+      "postPhraseFirstSecond": {
+        "windows20ms": 50,
+        "rmsMinimum": 0.0023206548119865593,
+        "longestNearSilentRunSeconds": 0,
+        "nearSilenceRmsThreshold": 0.0001,
+        "interpretation": "Technical measurement only; natural musical phrasing requires owner listening"
+      },
+      "musicalAcceptance": "NOT RUN"
+    }
+  ],
+  "url": "http://127.0.0.1:8777/neural-variety/",
+  "musicalAcceptance": "NOT RUN"
+}

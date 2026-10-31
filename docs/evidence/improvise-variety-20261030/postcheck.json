@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-31T00:50:59.373Z",
+  "operation": "Independent GET and SELECT only",
+  "receipt": "docs/evidence/improvise-finish/cloud/2026-10-31T00-39-14.681Z/trial-result.json",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "health": {
+    "jobs": {
+      "completed": 35,
+      "failed": 14,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "endpointVersion": 21,
+    "summary": {
+      "idle": 0,
+      "initializing": 0,
+      "running": 0,
+      "throttled": 0,
+      "total": 0,
+      "unhealthy": 0
+    },
+    "workers": []
+  },
+  "billing": [],
+  "billingLimit": "Observed daily billing may lag; not a finalized invoice or exact diagnostic attribution",
+  "temporaryDatabases": [],
+  "cleanup": "PASS",
+  "qualification": "PASS",
+  "rejectedAudio": null,
+  "requests": [
+    {
+      "label": "jazz",
+      "provider_id": "f781ec01-2bf5-4109-8207-d387f5aaf09d-u2",
+      "finalState": "completed",
+      "failure": null,
+      "audioSha256": "6def96c1145b926019ac8bf9f936584cad86fe50311be7e417b9c141e8b423be",
+      "seconds": 45,
+      "musicalDirection": {
+        "seed": 2446744697,
+        "genre": "jazz",
+        "energy": "low"
+      },
+      "completeSourcePreserved": true,
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      }
+    },
+    {
+      "label": "funk",
+      "provider_id": "d3d02ac2-347c-4bba-99ef-574b1743994a-u1",
+      "finalState": "completed",
+      "failure": null,
+      "audioSha256": "be2ab76baacbf5f6eb9709abe8e78c302c695933b98e90eb5ce5c65f08e0af94",
+      "seconds": 45,
+      "musicalDirection": {
+        "seed": 217589844,
+        "genre": "funk",
+        "energy": "medium"
+      },
+      "completeSourcePreserved": true,
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      }
+    },
+    {
+      "label": "drumandbass",
+      "provider_id": "4e051199-b08d-4127-9e69-511d17764d78-u2",
+      "finalState": "completed",
+      "failure": null,
+      "audioSha256": "cfa9f18b4afc8eeeba1bc55b84a869384a5ecf33403898ec33eed5649a969ad3",
+      "seconds": 45,
+      "musicalDirection": {
+        "seed": 707261315,
+        "genre": "drumandbass",
+        "energy": "high"
+      },
+      "completeSourcePreserved": true,
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      }
+    }
+  ],
+  "removedObjects": 9,
+  "retries": 0
+}
