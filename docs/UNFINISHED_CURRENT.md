@@ -6,6 +6,8 @@ The accepted question bass pilot and its exact crop, three Afro House mixes and
 previously accepted karaoke/backings remain accepted. They do not need repeat
 approval. The owner is the sole required musical listener.
 
+**Owner scope decision — 2026-10-30:** The two-hour AI DJ test is closed for the current scope at the owner’s request ("lets call it done two hour dj test for now"). No further endurance run is required now. Historical technical results remain PARTIAL/FAIL; this decision does not assert a successful two-hour run. Other requirements and the deployment/payment holds are unchanged.
+
 ## Current full-completion increment
 
 - **FAIL broader neural campaign; PASS cleanup:** seven tracks completed, one failed `improvise-arrangement`; the remaining 61 generations are NOT RUN. Stop-on-failure closes the campaign. No workers/jobs remain; 27 objects are absent and credits settled. Static arrangement diagnostics now pass local checks, but the discarded failed take cannot be diagnosed from its old receipt.
@@ -75,7 +77,7 @@ This does not authorize AI DJ rentals, website/app release or live purchases.
 | Produced-song scoring | PARTIAL | Actual sung words, notes and timing verified against the [source audio](http://127.0.0.1:8769/). `verified:false` and `scoringEnabled:false` remain until then |
 | Afro House section/control details | PARTIAL; all three target mixes accepted | Heard section names/timing corrections and control preferences in the [existing review](http://127.0.0.1:8771/) |
 | Beginner learning outcomes | PARTIAL; actual concept pilot PASS | Owner scores improved from 1/6 to 3/6. Nine saved receipts are one assessment sequence, not nine learners. Complete the [actual free-deck attempts](http://127.0.0.1:8777/practice-observation.html); general effectiveness and the beginner mini-set remain distinct |
-| Sustained AI DJ operation | PARTIAL; earlier bounded tests pass | Local Metal timing passes; actual two-hour playback/customer-flow evidence still needs sufficient sustained memory; hosted capacity/cost/rental recovery remains distinct. The unused $6 rental was superseded by the owner’s local GPU request |
+| Sustained AI DJ operation | CLOSED FOR NOW by owner; historical technical evidence PARTIAL | The owner removed the two-hour test from the current scope. No further endurance run is required now; no technical PASS is inferred. The unused $6 rental remains superseded by the local GPU request |
 | Release and live sales | HELD by owner | Final release/payment phase, including deployed/native receipt delivery and real refund notification evidence |
 | Excluded hardware | DEFERRED | Physical iPad and unavailable MIDI/cue routes; prior scoped iPhone playback/flow/microphone/Release-install checks remain passed |
 
