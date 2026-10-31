@@ -1,0 +1,10 @@
+{
+  "status": "PASS independent readback",
+  "newSingingWebhookDisabled": true,
+  "singingProductInactive": true,
+  "singingPriceInactive": true,
+  "existingLiveWebhooksUnchanged": 3,
+  "localSigningSecretPresent": true,
+  "providerChargesCreated": 0,
+  "remoteDeploymentChanges": 0
+}

@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { services,accountsConfigured } from '../../../../lib/services';
-import { creditBilling,fulfillCheckout } from '../../../../lib/stripe-payments';
+import { creditBilling,fulfillCheckout,reconcileCreditReversal } from '../../../../lib/stripe-payments';
 import { Wallet } from '../../../../lib/wallet';
 import { boundedAuthRequest } from '../../../../lib/bounded-request';
 export const runtime='nodejs';
@@ -20,10 +20,7 @@ export async function POST(request:Request){
     if(event.type==='checkout.session.completed'||event.type==='checkout.session.async_payment_succeeded'){
       if(event.data.object.payment_status==='paid'&&event.data.object.metadata?.jamloom_product==='song-credits')await fulfillCheckout(stripe,wallet,event.data.object.id);
     }else if(event.type==='charge.refunded'||event.type==='charge.dispute.created'){
-      const object=event.data.object;const intent=object.payment_intent;
-      if(typeof intent!=='string')throw new Error('Missing payment intent');
-      const sessions=await stripe.checkout.sessions.list({payment_intent:intent,limit:2});
-      for(const session of sessions.data)if(session.metadata?.jamloom_product==='song-credits')await wallet.freezePurchase(provider,session.id);
+      await reconcileCreditReversal(stripe,wallet,event);
     }
     await pool.query('UPDATE provider_webhook_events SET handled=true WHERE event_id=$1 AND digest=$2 AND provider=$3',[event.id,hash,provider]);
     return Response.json({received:true});

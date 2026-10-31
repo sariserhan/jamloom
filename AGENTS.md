@@ -1,12 +1,12 @@
 # Jamloom
 
-**Current scope — 2026-10-31:** The owner instructed: “call improvise done for now
-and do 2,3,4.” Close the remaining Improvise qualification campaign for now;
-retain its 47/69 technical results without claiming the unrun cases passed.
-Continue produced-song scoring, custom learned-planner preparation/evaluation,
-and remaining measurements. Individual review requests remain closed under the
-owner's blanket acceptance; do not fabricate annotations, measurements or expert
-demonstrations. Deployment and live payments remain held.
+**Current scope — 2026-10-31:** The owner instructed “yes defer those and lets
+work on payment.” Verified produced-song scoring, custom learned-planner training
+and missing formal measurements are deferred for v1. Keep the two produced songs
+as ungraded practice, retain the accepted generator and preserve actual evidence
+without inventing results. Improvise qualification and the two-hour DJ test remain
+closed for now. Continue payment preparation and tests. Deployment and live-charge
+activation remain held; working on payments does not itself authorize either.
 
 **Listening requirement amendment — 2026-10-30:** The owner instructed: “change
 the specification requires only 1 listener and that is me.” The owner is the sole

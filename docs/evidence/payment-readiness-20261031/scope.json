@@ -1,0 +1,19 @@
+{
+  "owner_instruction": "yes defer those and lets work on payment",
+  "deferred_for_v1": [
+    "verified scoring for the two produced songs",
+    "custom learned-planner training",
+    "missing formal subjective measurements"
+  ],
+  "preserved": [
+    "ungraded produced-song practice",
+    "accepted music generator",
+    "actual prior evidence and owner acceptances"
+  ],
+  "improvise": "CLOSED_FOR_NOW_BY_OWNER",
+  "two_hour_dj": "CLOSED_FOR_NOW_BY_OWNER",
+  "current_work": "Payment preparation, configuration checks and tests",
+  "deployment": "HELD",
+  "live_charges": "HELD",
+  "missing_results_inferred": false
+}

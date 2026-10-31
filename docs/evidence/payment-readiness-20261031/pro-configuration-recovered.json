@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "sourceFiles": [
+    "apps/site/.env.pro-billing",
+    "apps/site/.env.pro-license"
+  ],
+  "restoredFields": [
+    "PRO_STRIPE_LIVE_PRICE_ID",
+    "PRO_STRIPE_LIVE_PRODUCT_ID",
+    "PRO_STRIPE_LIVE_WEBHOOK_SECRET",
+    "PRO_STRIPE_PRICE_ID",
+    "PRO_STRIPE_PRODUCT_ID",
+    "PRO_STRIPE_WEBHOOK_SECRET",
+    "PRO_LICENSE_PRIVATE_KEY"
+  ],
+  "licenseMatchesDesktop": true,
+  "localSalesEnabled": false,
+  "remoteSettingsChanged": false
+}

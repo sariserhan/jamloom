@@ -1,6 +1,7 @@
 import Stripe from 'stripe';
 import { CREDIT_PACKS, integer } from './economics';
 import { Wallet } from './wallet';
+import { paidGenerationReleased } from './product';
 
 export function sandboxStripe(env:Record<string,string|undefined>=process.env){
   if(!env.STRIPE_SECRET_KEY?.startsWith('sk_test_')||!env.STRIPE_WEBHOOK_SECRET?.startsWith('whsec_'))throw new Error('Stripe sandbox not configured');
@@ -11,7 +12,22 @@ export function creditBilling(env:Record<string,string|undefined>=process.env){
  const live=mode==='live',key=live?env.STRIPE_LIVE_SECRET_KEY:env.STRIPE_SECRET_KEY;
  const secret=live?env.CREDIT_STRIPE_LIVE_WEBHOOK_SECRET:env.STRIPE_WEBHOOK_SECRET;
  if(!key?.startsWith(live?'sk_live_':'sk_test_')||!secret?.startsWith('whsec_'))throw Error('Credit billing is not configured');
- return {stripe:new Stripe(key,{maxNetworkRetries:1,timeout:10000}),secret,live,enabled:env.JAMLOOM_CREDIT_PURCHASES_ENABLED==='true'&&/^txcd_[0-9]{8}$/.test(env.CREDIT_STRIPE_TAX_CODE??'')};
+ return {stripe:new Stripe(key,{maxNetworkRetries:1,timeout:10000}),secret,live,enabled:(!live||paidGenerationReleased)&&env.JAMLOOM_CREDIT_PURCHASES_ENABLED==='true'&&/^txcd_[0-9]{8}$/.test(env.CREDIT_STRIPE_TAX_CODE??'')};
+}
+export async function reconcileCreditReversal(stripe:Stripe,wallet:Wallet,event:Stripe.Event){
+ if(event.livemode!==wallet.live)throw Error('Billing environment mismatch');
+ if(event.type!=='charge.refunded'&&event.type!=='charge.dispute.created')return;
+ const intent=event.data.object.payment_intent;
+ // Shared Stripe accounts can send legacy direct-charge events unrelated to Checkout.
+ if(intent===null)return;
+ if(typeof intent!=='string')throw Error('Missing payment intent');
+ const sessions=await stripe.checkout.sessions.list({payment_intent:intent,limit:2});
+ if(sessions.has_more||sessions.data.length>1)throw Error('Ambiguous credit reversal');
+ const session=sessions.data[0];
+ if(session?.metadata?.jamloom_product!=='song-credits')return;
+ if(session.livemode!==wallet.live||session.mode!=='payment'||session.payment_intent!==intent)
+  throw Error('Credit reversal purchase mismatch');
+ await wallet.freezePurchase(wallet.live?'stripe_live':'stripe_test',session.id);
 }
 export async function fulfillCheckout(stripe:Stripe,wallet:Wallet,id:string){
   // Re-read authoritative payment state; browser redirect and event metadata never mint credits.

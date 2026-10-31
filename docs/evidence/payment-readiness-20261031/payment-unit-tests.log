@@ -1,0 +1,19 @@
+✔ tax, Apple fee tier, fixed fees, refunds, FX and overhead reduce spendable proceeds (0.787958ms)
+✔ Stripe signatures require exact body, timestamp and sandbox credentials (1.788459ms)
+✔ Checkout fulfillment rereads paid state, rejects unpaid, wrong totals and live payments (0.390583ms)
+✔ private credits are 25 percent of the base rounded up, bounded and integer (0.083667ms)
+✔ credit checkout binds product, taxes, pack and billing mode (0.295042ms)
+✔ live credit sales cannot bypass the application release hold; sandbox remains usable (0.298125ms)
+✔ credit reversals ignore unrelated purchases and reject ambiguous or mismatched provider state (0.747625ms)
+✔ release preflight reports missing configuration and preserves sales holds without exposing secrets (1.1385ms)
+✔ read-only migration comparison distinguishes missing, changed and unexpected SQL (0.598208ms)
+✔ payment preflight includes Pro signing and live credits without leaking credentials or opening sales (1.741625ms)
+✔ deployment templates include each payment product without enabling purchases (0.434542ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 265.461083

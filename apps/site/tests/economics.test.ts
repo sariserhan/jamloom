@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { netProceeds,quoteCost,privacyCredits,COST_CATEGORIES,type Costs } from '../lib/economics';
 import { paidGenerationReleased } from '../lib/product';
-import { sandboxStripe,fulfillCheckout,checkout,creditBilling } from '../lib/stripe-payments';
+import { sandboxStripe,fulfillCheckout,checkout,creditBilling,reconcileCreditReversal } from '../lib/stripe-payments';
 import Stripe from 'stripe';
 test('tax, Apple fee tier, fixed fees, refunds, FX and overhead reduce spendable proceeds',()=>{
  const net=netProceeds(9_990_000,{tax:1_665_000,provider:2_997_000,refundRisk:500_000,overhead:400_000,discount:300_000,fx:200_000});
@@ -53,4 +53,32 @@ test('credit checkout binds product, taxes, pack and billing mode',async()=>{
  await checkout(stripe as unknown as Stripe,'owner','starter','fixture-key','http://localhost',false,'txcd_10000000');
  assert.equal(captured.metadata.jamloom_product,'song-credits');assert.equal(captured.line_items[0].price_data.tax_behavior,'exclusive');assert.equal(captured.line_items[0].price_data.unit_amount,999);
  assert.throws(()=>creditBilling({CREDIT_BILLING_MODE:'live',STRIPE_LIVE_SECRET_KEY:'sk_test_wrong',CREDIT_STRIPE_LIVE_WEBHOOK_SECRET:'whsec_fixture'}));
+});
+
+test('live credit sales cannot bypass the application release hold; sandbox remains usable',()=>{
+ const env={JAMLOOM_CREDIT_PURCHASES_ENABLED:'true',CREDIT_STRIPE_TAX_CODE:'txcd_10000000',
+  STRIPE_LIVE_SECRET_KEY:'sk_live_fixture',CREDIT_STRIPE_LIVE_WEBHOOK_SECRET:'whsec_live',
+  STRIPE_SECRET_KEY:'sk_test_fixture',STRIPE_WEBHOOK_SECRET:'whsec_test'};
+ assert.equal(creditBilling({...env,CREDIT_BILLING_MODE:'live'}).enabled,false);
+ assert.equal(creditBilling({...env,CREDIT_BILLING_MODE:'test'}).enabled,true);
+ assert.equal(creditBilling({...env,CREDIT_BILLING_MODE:'test',CREDIT_STRIPE_TAX_CODE:''}).enabled,false);
+});
+
+test('credit reversals ignore unrelated purchases and reject ambiguous or mismatched provider state',async()=>{
+ const calls:string[]=[],wallet={live:false,freezePurchase:async(provider:string,id:string)=>{calls.push(provider+':'+id);}};
+ const event=(intent:unknown='pi_credit',type='charge.refunded')=>({id:'evt_reversal',livemode:false,type,data:{object:{payment_intent:intent}}}) as Stripe.Event;
+ const session={id:'cs_credit',metadata:{jamloom_product:'song-credits'},livemode:false,mode:'payment',payment_intent:'pi_credit'};
+ const sdk=(data:unknown[],has_more=false)=>({checkout:{sessions:{list:async()=>({data,has_more})}}}) as unknown as Stripe;
+ await reconcileCreditReversal({} as Stripe,wallet as never,event(null));
+ await reconcileCreditReversal(sdk([]),wallet as never,event());
+ await reconcileCreditReversal(sdk([{metadata:{jamloom_product:'academy-complete'}}]),wallet as never,event());
+ assert.deepEqual(calls,[]);
+ for(const response of [sdk([session],true),sdk([session,session]),sdk([{...session,livemode:true}]),
+  sdk([{...session,mode:'subscription'}]),sdk([{...session,payment_intent:'pi_other'}])])
+  await assert.rejects(reconcileCreditReversal(response,wallet as never,event()));
+ await assert.rejects(reconcileCreditReversal({} as Stripe,wallet as never,event({id:'pi_credit'})));
+ await assert.rejects(reconcileCreditReversal({} as Stripe,wallet as never,{...event(),livemode:true}));
+ assert.deepEqual(calls,[]);
+ for(const type of ['charge.refunded','charge.dispute.created'])await reconcileCreditReversal(sdk([session]),wallet as never,event('pi_credit',type));
+ assert.deepEqual(calls,['stripe_test:cs_credit','stripe_test:cs_credit']);
 });

@@ -1,0 +1,275 @@
+{
+  "checkedAt": "2026-10-31T06:07:06.039Z",
+  "mode": "read_only",
+  "providerChanges": 0,
+  "modes": [
+    {
+      "mode": "test",
+      "configured": true,
+      "charges_enabled": true,
+      "payouts_enabled": true,
+      "currently_due": [],
+      "products": [
+        {
+          "id": "prod_VVy7sy2T2fvFsm",
+          "key": "singing-complete",
+          "active": false,
+          "tax_code": "txcd_20060058",
+          "prices": [
+            {
+              "id": "price_1UUwBiDlEXWDEeHOljaHLOxS",
+              "active": false,
+              "currency": "usd",
+              "unit_amount": 3900,
+              "type": "one_time",
+              "tax_behavior": "exclusive"
+            }
+          ]
+        },
+        {
+          "id": "prod_VVy5NIGldBHsve",
+          "key": "singing-complete",
+          "active": false,
+          "tax_code": "txcd_20060058",
+          "prices": [
+            {
+              "id": "price_1UUw8sDlEXWDEeHOZL1P11ue",
+              "active": false,
+              "currency": "usd",
+              "unit_amount": 3900,
+              "type": "one_time",
+              "tax_behavior": "exclusive"
+            }
+          ]
+        },
+        {
+          "id": "prod_VVy4lpvr5pT40E",
+          "key": "singing-complete",
+          "active": false,
+          "tax_code": null,
+          "prices": [
+            {
+              "id": "price_1UUw8TDlEXWDEeHOVeQfKOtM",
+              "active": false,
+              "currency": "usd",
+              "unit_amount": 3900,
+              "type": "one_time",
+              "tax_behavior": "exclusive"
+            }
+          ]
+        },
+        {
+          "id": "prod_VVy4fxQoYbZfl4",
+          "key": "singing-complete",
+          "active": false,
+          "tax_code": null,
+          "prices": [
+            {
+              "id": "price_1UUw8LDlEXWDEeHOaWDUr8cC",
+              "active": false,
+              "currency": "usd",
+              "unit_amount": 3900,
+              "type": "one_time",
+              "tax_behavior": "exclusive"
+            }
+          ]
+        },
+        {
+          "id": "prod_VVy3BEEFXhSf1G",
+          "key": "singing-complete",
+          "active": false,
+          "tax_code": null,
+          "prices": [
+            {
+              "id": "price_1UUw7nDlEXWDEeHO1hqxRsgt",
+              "active": false,
+              "currency": "usd",
+              "unit_amount": 3900,
+              "type": "one_time",
+              "tax_behavior": "exclusive"
+            }
+          ]
+        },
+        {
+          "id": "prod_VURd2MG0LN9Ju5",
+          "key": "jamloom-pro-v1",
+          "active": true,
+          "tax_code": "txcd_10202000",
+          "prices": [
+            {
+              "id": "price_1UTSkiDlEXWDEeHOKn4WmuLP",
+              "active": true,
+              "currency": "usd",
+              "unit_amount": 4900,
+              "type": "one_time",
+              "tax_behavior": "exclusive"
+            }
+          ]
+        },
+        {
+          "id": "prod_VTzQzUCZg1ycGm",
+          "key": "academy-complete",
+          "active": true,
+          "tax_code": "txcd_20060058",
+          "prices": [
+            {
+              "id": "price_1UT1RrDlEXWDEeHO14x5otG7",
+              "active": true,
+              "currency": "usd",
+              "unit_amount": 7999,
+              "type": "one_time",
+              "tax_behavior": "exclusive"
+            }
+          ]
+        }
+      ],
+      "webhooks": [
+        {
+          "id": "we_1UTSkiDlEXWDEeHOMKFdqb4b",
+          "url": "https://www.jamloom.com/api/pro/stripe?mode=test",
+          "status": "enabled",
+          "api_version": null,
+          "enabled_events": [
+            "checkout.session.completed",
+            "checkout.session.async_payment_succeeded",
+            "charge.refunded",
+            "charge.dispute.created",
+            "charge.dispute.closed"
+          ]
+        },
+        {
+          "id": "we_1UT2HDDlEXWDEeHOpSh8zNfJ",
+          "url": "https://www.jamloom.com/api/academy/stripe?mode=test",
+          "status": "enabled",
+          "api_version": null,
+          "enabled_events": [
+            "checkout.session.completed",
+            "checkout.session.async_payment_succeeded",
+            "charge.refunded",
+            "charge.dispute.created",
+            "charge.dispute.closed"
+          ]
+        }
+      ],
+      "tax": {
+        "status": "active",
+        "default_tax_code": null,
+        "missing_fields": []
+      }
+    },
+    {
+      "mode": "live",
+      "configured": true,
+      "charges_enabled": true,
+      "payouts_enabled": true,
+      "currently_due": [],
+      "products": [
+        {
+          "id": "prod_VWDtZNO7YM75Us",
+          "key": "singing-complete",
+          "active": false,
+          "tax_code": "txcd_20060058",
+          "prices": [
+            {
+              "id": "price_1UVBRGDlEXWDEeHOXlnM9zis",
+              "active": false,
+              "currency": "usd",
+              "unit_amount": 3900,
+              "type": "one_time",
+              "tax_behavior": "exclusive"
+            }
+          ]
+        },
+        {
+          "id": "prod_VURePvuOaXFBvo",
+          "key": "jamloom-pro-v1",
+          "active": true,
+          "tax_code": "txcd_10202000",
+          "prices": [
+            {
+              "id": "price_1UTSkjDlEXWDEeHOfbkBlnlu",
+              "active": true,
+              "currency": "usd",
+              "unit_amount": 4900,
+              "type": "one_time",
+              "tax_behavior": "exclusive"
+            }
+          ]
+        },
+        {
+          "id": "prod_VU0Hye8ICGD4Y8",
+          "key": "academy-complete",
+          "active": true,
+          "tax_code": "txcd_20060058",
+          "prices": [
+            {
+              "id": "price_1UT2HEDlEXWDEeHOvTlDIDVe",
+              "active": true,
+              "currency": "usd",
+              "unit_amount": 7999,
+              "type": "one_time",
+              "tax_behavior": "exclusive"
+            }
+          ]
+        }
+      ],
+      "webhooks": [
+        {
+          "id": "we_1UTdPIDlEXWDEeHODgVnLaTr",
+          "url": "https://www.jamloom.com/api/payments/stripe",
+          "status": "disabled",
+          "api_version": null,
+          "enabled_events": [
+            "checkout.session.completed",
+            "checkout.session.async_payment_succeeded",
+            "charge.refunded",
+            "charge.dispute.created",
+            "charge.dispute.closed"
+          ]
+        },
+        {
+          "id": "we_1UTSkjDlEXWDEeHOCtEKrHcU",
+          "url": "https://www.jamloom.com/api/pro/stripe?mode=live",
+          "status": "enabled",
+          "api_version": null,
+          "enabled_events": [
+            "checkout.session.completed",
+            "checkout.session.async_payment_succeeded",
+            "charge.refunded",
+            "charge.dispute.created",
+            "charge.dispute.closed"
+          ]
+        },
+        {
+          "id": "we_1UT2HEDlEXWDEeHOZdfVxJHC",
+          "url": "https://www.jamloom.com/api/academy/stripe?mode=live",
+          "status": "enabled",
+          "api_version": null,
+          "enabled_events": [
+            "checkout.session.completed",
+            "checkout.session.async_payment_succeeded",
+            "charge.refunded",
+            "charge.dispute.created",
+            "charge.dispute.closed"
+          ]
+        }
+      ],
+      "tax": {
+        "status": "active",
+        "default_tax_code": "txcd_10000000",
+        "missing_fields": []
+      }
+    }
+  ],
+  "localConfiguration": {
+    "CREDIT_STRIPE_LIVE_WEBHOOK_SECRET": true,
+    "CREDIT_STRIPE_TAX_CODE": true,
+    "JAMLOOM_CREDIT_PURCHASES_ENABLED": "false",
+    "SINGING_STRIPE_LIVE_PRICE_ID": true,
+    "SINGING_STRIPE_LIVE_PRODUCT_ID": true,
+    "STRIPE_LIVE_PUBLISHABLE_KEY": true,
+    "STRIPE_LIVE_SECRET_KEY": true,
+    "STRIPE_PUBLISHABLE_KEY": true,
+    "STRIPE_SECRET_KEY": true
+  }
+}

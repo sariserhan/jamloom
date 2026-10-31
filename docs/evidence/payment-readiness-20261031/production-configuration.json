@@ -1,0 +1,63 @@
+{
+  "status": "PARTIAL read-only production inventory",
+  "project": "jamloom",
+  "remoteChanges": 0,
+  "secretRecovery": "NOT AVAILABLE: sensitive values are redacted; no placeholders copied into local configuration",
+  "fields": {
+    "ACADEMY_STRIPE_LIVE_PRICE_ID": {
+      "present": true,
+      "redacted": false
+    },
+    "ACADEMY_STRIPE_LIVE_PRODUCT_ID": {
+      "present": true,
+      "redacted": false
+    },
+    "ACADEMY_STRIPE_LIVE_WEBHOOK_SECRET": {
+      "present": true,
+      "redacted": true
+    },
+    "PRO_STRIPE_LIVE_PRICE_ID": {
+      "present": true,
+      "redacted": true
+    },
+    "PRO_STRIPE_LIVE_PRODUCT_ID": {
+      "present": true,
+      "redacted": true
+    },
+    "PRO_STRIPE_LIVE_WEBHOOK_SECRET": {
+      "present": true,
+      "redacted": true
+    },
+    "PRO_LICENSE_PRIVATE_KEY": {
+      "present": true,
+      "redacted": true
+    },
+    "SINGING_STRIPE_LIVE_PRODUCT_ID": {
+      "present": false,
+      "redacted": false
+    },
+    "SINGING_STRIPE_LIVE_PRICE_ID": {
+      "present": false,
+      "redacted": false
+    },
+    "SINGING_STRIPE_LIVE_WEBHOOK_SECRET": {
+      "present": false,
+      "redacted": false
+    },
+    "CREDIT_STRIPE_LIVE_WEBHOOK_SECRET": {
+      "present": true,
+      "redacted": true
+    }
+  },
+  "flags": {
+    "PRO_SALES_ENABLED": "unknown",
+    "PRO_BILLING_MODE": "unknown",
+    "JAMLOOM_CREDIT_PURCHASES_ENABLED": "unknown",
+    "CREDIT_BILLING_MODE": "unknown",
+    "JAMLOOM_COMING_SOON": "unknown"
+  },
+  "limitations": [
+    "Configured variables are not proof of the currently deployed revision or real provider delivery",
+    "Existing Pro and Academy configuration must be preserved, not rotated because local credentials are absent"
+  ]
+}

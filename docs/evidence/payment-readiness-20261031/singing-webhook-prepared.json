@@ -1,0 +1,25 @@
+{
+  "status": "PASS prepared and disabled",
+  "account": "acct_1TxA3vDlEXWDEeHO",
+  "url": "https://www.jamloom.com/api/academy/stripe?mode=live&course=singing-complete",
+  "product": "prod_VWDtZNO7YM75Us",
+  "price": "price_1UVBRGDlEXWDEeHOXlnM9zis",
+  "productActive": false,
+  "priceActive": false,
+  "events": [
+    "checkout.session.completed",
+    "checkout.session.async_payment_succeeded",
+    "charge.refunded",
+    "charge.dispute.created",
+    "charge.dispute.closed"
+  ],
+  "apiVersion": "2026-09-30.endive",
+  "liveCharges": 0,
+  "deployed": false,
+  "endpoint": {
+    "id": "we_1UWVUODlEXWDEeHOkG0SB6iU",
+    "status": "disabled",
+    "apiVersion": "2026-09-30.endive"
+  },
+  "secretSavedLocally": true
+}

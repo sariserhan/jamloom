@@ -1,0 +1,193 @@
+TAP version 13
+# Subtest: Academy catalog rejects wrong price, recurring, live and foreign products
+ok 1 - Academy catalog rejects wrong price, recurring, live and foreign products
+  ---
+  duration_ms: 2.077875
+  type: 'test'
+  ...
+# Subtest: isolated Postgres Academy receipts, progress, holds and tenant boundaries
+    # Subtest: server catalog checkout is one-time, taxed, owner-bound and separate from credit packs
+    ok 1 - server catalog checkout is one-time, taxed, owner-bound and separate from credit packs
+      ---
+      duration_ms: 0.701416
+      type: 'test'
+      ...
+    # Subtest: parallel receipt delivery grants once, denies owner transfer, never mints credits
+    ok 2 - parallel receipt delivery grants once, denies owner transfer, never mints credits
+      ---
+      duration_ms: 6.109791
+      type: 'test'
+      ...
+    # Subtest: refund before grant, duplicate refund, repurchase and independent dispute holds
+    ok 3 - refund before grant, duplicate refund, repurchase and independent dispute holds
+      ---
+      duration_ms: 5.423292
+      type: 'test'
+      ...
+    # Subtest: authoritative unpaid/live/price evidence cannot grant
+    ok 4 - authoritative unpaid/live/price evidence cannot grant
+      ---
+      duration_ms: 0.3925
+      type: 'test'
+      ...
+    # Subtest: webhook replay conflicts and stale dispute events use current provider status
+    ok 5 - webhook replay conflicts and stale dispute events use current provider status
+      ---
+      duration_ms: 3.856
+      type: 'test'
+      ...
+    # Subtest: shared-account reversals ignore unrelated direct charges and products, but reject ambiguous sessions
+    ok 6 - shared-account reversals ignore unrelated direct charges and products, but reject ambiguous sessions
+      ---
+      duration_ms: 1.793458
+      type: 'test'
+      ...
+    # Subtest: progress reevaluates signals and task order, isolates owners and survives a new store
+    ok 7 - progress reevaluates signals and task order, isolates owners and survives a new store
+      ---
+      duration_ms: 9.976333
+      type: 'test'
+      ...
+    # Subtest: bounded history and daily sync quota survive deleting learning progress
+    ok 8 - bounded history and daily sync quota survive deleting learning progress
+      ---
+      duration_ms: 12.489125
+      type: 'test'
+      ...
+    1..8
+ok 2 - isolated Postgres Academy receipts, progress, holds and tenant boundaries
+  ---
+  duration_ms: 199.439791
+  type: 'test'
+  ...
+# Subtest: published manifests are bounded, versioned and have unambiguous prerequisites
+ok 3 - published manifests are bounded, versioned and have unambiguous prerequisites
+  ---
+  duration_ms: 0.719583
+  type: 'test'
+  ...
+# Subtest: Academy modeled contribution is explicit, bounded and never finances AI inference
+ok 4 - Academy modeled contribution is explicit, bounded and never finances AI inference
+  ---
+  duration_ms: 2.140166
+  type: 'test'
+  ...
+# Subtest: all six stages have runnable assessments and final completion traverses the entire curriculum
+ok 5 - all six stages have runnable assessments and final completion traverses the entire curriculum
+  ---
+  duration_ms: 0.148209
+  type: 'test'
+  ...
+# Subtest: Pro licenses are signed, bounded, expired, tamper-evident and distinct from sandbox
+ok 6 - Pro licenses are signed, bounded, expired, tamper-evident and distinct from sandbox
+  ---
+  duration_ms: 3.190791
+  type: 'test'
+  ...
+# Subtest: Pro purchases, reversals and licensing isolate accounts and environments in real Postgres
+    # Subtest: one-time $49 server price, tax and owner binding
+    ok 1 - one-time $49 server price, tax and owner binding
+      ---
+      duration_ms: 1.119417
+      type: 'test'
+      ...
+    # Subtest: verified receipt grants once across concurrent deliveries, no credits
+    ok 2 - verified receipt grants once across concurrent deliveries, no credits
+      ---
+      duration_ms: 5.197292
+      type: 'test'
+      ...
+    # Subtest: invalid and refunded authoritative payments never grant
+    ok 3 - invalid and refunded authoritative payments never grant
+      ---
+      duration_ms: 1.731
+      type: 'test'
+      ...
+    # Subtest: signed event duplicates are idempotent; refunds, disputes and suspension revoke access
+    ok 4 - signed event duplicates are idempotent; refunds, disputes and suspension revoke access
+      ---
+      duration_ms: 4.169292
+      type: 'test'
+      ...
+    1..4
+ok 7 - Pro purchases, reversals and licensing isolate accounts and environments in real Postgres
+  ---
+  duration_ms: 158.093417
+  type: 'test'
+  ...
+# Subtest: Singing is $39 once and cannot enable live sales or borrow DJ billing configuration
+ok 8 - Singing is $39 once and cannot enable live sales or borrow DJ billing configuration
+  ---
+  duration_ms: 0.520625
+  type: 'test'
+  ...
+# Subtest: Singing receipts grant only the purchased course; retries, refund, dispute and mode stay isolated
+ok 9 - Singing receipts grant only the purchased course; retries, refund, dispute and mode stay isolated
+  ---
+  duration_ms: 138.683042
+  type: 'test'
+  ...
+# Subtest: real Postgres ledger: conservation, concurrency, receipts, tenant isolation and costs
+    # Subtest: private premium is reserved atomically, rounded, captured only on success and bound to retries
+    ok 1 - private premium is reserved atomically, rounded, captured only on success and bound to retries
+      ---
+      duration_ms: 22.852583
+      type: 'test'
+      ...
+    # Subtest: receipt replay grants exactly once and cannot move between accounts
+    ok 2 - receipt replay grants exactly once and cannot move between accounts
+      ---
+      duration_ms: 10.358875
+      type: 'test'
+      ...
+    # Subtest: parallel reservations enforce one active job and no overspend
+    ok 3 - parallel reservations enforce one active job and no overspend
+      ---
+      duration_ms: 11.362
+      type: 'test'
+      ...
+    # Subtest: zero-cost cancellation returns original lots; changed quote rejected
+    ok 4 - zero-cost cancellation returns original lots; changed quote rejected
+      ---
+      duration_ms: 8.200167
+      type: 'test'
+      ...
+    # Subtest: Apple sandbox lots preserve their own economics, ledgers immutable, disputes freeze
+    ok 5 - Apple sandbox lots preserve their own economics, ledgers immutable, disputes freeze
+      ---
+      duration_ms: 9.181375
+      type: 'test'
+      ...
+    # Subtest: unfunded jobs and invalid cost caps rejected without mutation
+    ok 6 - unfunded jobs and invalid cost caps rejected without mutation
+      ---
+      duration_ms: 1.319167
+      type: 'test'
+      ...
+    # Subtest: out-of-order refund and grant races cannot leave spendable disputed credits
+    ok 7 - out-of-order refund and grant races cannot leave spendable disputed credits
+      ---
+      duration_ms: 6.02425
+      type: 'test'
+      ...
+    # Subtest: taste profiles are owner-scoped with optimistic concurrency and deletion
+    ok 8 - taste profiles are owner-scoped with optimistic concurrency and deletion
+      ---
+      duration_ms: 3.24675
+      type: 'test'
+      ...
+    1..8
+ok 10 - real Postgres ledger: conservation, concurrency, receipts, tenant isolation and costs
+  ---
+  duration_ms: 248.420208
+  type: 'test'
+  ...
+1..10
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1274.716583

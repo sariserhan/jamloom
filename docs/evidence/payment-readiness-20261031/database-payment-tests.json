@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "database": "new disposable loopback PostgreSQL 18 cluster",
+  "live_transactions": 0,
+  "cleanup": "PASS server stopped"
+}

@@ -9,17 +9,27 @@ import {djSessionStore} from '../lib/dj-session-store';
 import {cloudSongConfig} from '../lib/cloud-song-config';
 import {djBillingLive} from '../lib/dj-beta-access';
 import {billingReadiness} from '../lib/billing-mode';
+import {proBilling} from '../lib/pro-billing';
+import {creditBilling} from '../lib/stripe-payments';
+import {issueProLicense} from '../lib/pro-license';
 import {singingOffer} from '../../web/singing-offer.js';
 
 // Configuration only: constructors do not contact providers, rent GPUs or enable sales.
 export function releaseConfiguration(env:Record<string,string|undefined>){
  const valid=(check:()=>unknown)=>{try{return Boolean(check());}catch{return false;}};
+ const proConfigured=valid(()=>proBilling(env,'live'));
+ const creditEnv={...env,CREDIT_BILLING_MODE:'live'};
+ const creditsConfigured=valid(()=>creditBilling(creditEnv));
  return {
   accountConfigured:valid(()=>readConfig(env)),libraryStorageConfigured:valid(()=>audioStore(readConfig(env),env)),
   djRecordingStorageConfigured:valid(()=>djSessionStore(env)),
   cloudSongsEnabled:env.JAMLOOM_CLOUD_SONGS_ENABLED==='true',cloudSongConfigValid:valid(()=>!env.JAMLOOM_CLOUD_SONGS_ENABLED||env.JAMLOOM_CLOUD_SONGS_ENABLED==='false'||cloudSongConfig(env)),
   djBillingModeValid:valid(()=>{djBillingLive(env);return true;}),djInvitationsEnabled:env.JAMLOOM_AI_DJ_BETA_ENABLED==='true',
   academy:billingReadiness('live',env),singing:billingReadiness('live',env,'singing-complete'),
+  pro:{mode:'live',configured:proConfigured,checkoutEnabled:proConfigured&&proBilling(env,'live').enabled,
+   licenseSigningConfigured:valid(()=>issueProLicense('configuration-check',true,env))},
+  credits:{mode:'live',configured:creditsConfigured,taxConfigured:/^txcd_[0-9]{8}$/.test(env.CREDIT_STRIPE_TAX_CODE??''),
+   checkoutEnabled:creditsConfigured&&creditBilling(creditEnv).enabled},
   singingPriceUSD:singingOffer.priceCents/100,
  };
 }
