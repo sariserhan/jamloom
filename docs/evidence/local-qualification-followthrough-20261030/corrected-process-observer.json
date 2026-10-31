@@ -1,0 +1,56 @@
+{
+  "scope": "Independent process-group observation from this checkpoint onward; earlier cases retain executor stop receipts",
+  "started_at": "2026-10-31T04:37:03.771731+00:00",
+  "maximum_active_groups": 1,
+  "groups": {
+    "36385": {
+      "pid": 36385,
+      "created_at": 1793421422.74357
+    },
+    "37416": {
+      "pid": 37416,
+      "created_at": 1793421480.3172
+    },
+    "38437": {
+      "pid": 38437,
+      "created_at": 1793421537.551599
+    },
+    "39509": {
+      "pid": 39509,
+      "created_at": 1793421598.37196
+    },
+    "41105": {
+      "pid": 41105,
+      "created_at": 1793421684.070445
+    },
+    "42926": {
+      "pid": 42926,
+      "created_at": 1793421787.679796
+    },
+    "44515": {
+      "pid": 44515,
+      "created_at": 1793421878.548138
+    },
+    "46139": {
+      "pid": 46139,
+      "created_at": 1793421970.099349
+    },
+    "47864": {
+      "pid": 47864,
+      "created_at": 1793422067.51403
+    },
+    "49341": {
+      "pid": 49341,
+      "created_at": 1793422151.162501
+    },
+    "50928": {
+      "pid": 50928,
+      "created_at": 1793422236.258295
+    }
+  },
+  "status": "PASS observed concurrency and final cleanup",
+  "last_active_groups": [],
+  "completed_at_checkpoint": 39,
+  "updated_at": "2026-10-31T04:51:07.720788+00:00",
+  "remaining_observed_processes": []
+}

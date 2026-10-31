@@ -1,0 +1,7 @@
+test_compact_listening_copy_is_lossless_after_level_matching (test_local_neural_review.LocalNeuralReview.test_compact_listening_copy_is_lossless_after_level_matching) ... ok
+test_running_changed_source_and_out_of_bounds_cannot_enter_review (test_local_neural_review.LocalNeuralReview.test_running_changed_source_and_out_of_bounds_cannot_enter_review) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.353s
+
+OK

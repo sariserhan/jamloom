@@ -7,3 +7,63 @@ PASS 3/61 ls-7976-110124-0019-funk
 START 4/61 ls-7976-110124-0019-drumandbass
 PASS 4/61 ls-7976-110124-0019-drumandbass
 START 5/61 ls-1988-147956-0018-jazz
+PASS 5/61 ls-1988-147956-0018-jazz
+START 6/61 ls-1988-147956-0018-funk
+PASS 6/61 ls-1988-147956-0018-funk
+START 7/61 ls-1988-147956-0018-drumandbass
+PASS 7/61 ls-1988-147956-0018-drumandbass
+START 8/61 ls-777-126732-0074-jazz
+PASS 8/61 ls-777-126732-0074-jazz
+START 9/61 ls-777-126732-0074-funk
+PASS 9/61 ls-777-126732-0074-funk
+START 10/61 ls-777-126732-0074-drumandbass
+PASS 10/61 ls-777-126732-0074-drumandbass
+START 11/61 ls-84-121123-0012-jazz
+PASS 11/61 ls-84-121123-0012-jazz
+START 12/61 ls-84-121123-0012-funk
+PASS 12/61 ls-84-121123-0012-funk
+START 13/61 ls-84-121123-0012-drumandbass
+PASS 13/61 ls-84-121123-0012-drumandbass
+START 14/61 ls-1673-143397-0009-jazz
+PASS 14/61 ls-1673-143397-0009-jazz
+START 15/61 ls-1673-143397-0009-funk
+PASS 15/61 ls-1673-143397-0009-funk
+START 16/61 ls-1673-143397-0009-drumandbass
+PASS 16/61 ls-1673-143397-0009-drumandbass
+START 17/61 ls-8297-275156-0004-jazz
+PASS 17/61 ls-8297-275156-0004-jazz
+START 18/61 ls-8297-275156-0004-funk
+PASS 18/61 ls-8297-275156-0004-funk
+START 19/61 ls-8297-275156-0004-drumandbass
+PASS 19/61 ls-8297-275156-0004-drumandbass
+START 20/61 ls-5536-43358-0016-jazz
+PASS 20/61 ls-5536-43358-0016-jazz
+START 21/61 ls-5536-43358-0016-funk
+PASS 21/61 ls-5536-43358-0016-funk
+START 22/61 ls-5536-43358-0016-drumandbass
+PASS 22/61 ls-5536-43358-0016-drumandbass
+START 23/61 ls-6345-93302-0019-jazz
+PASS 23/61 ls-6345-93302-0019-jazz
+START 24/61 ls-6345-93302-0019-funk
+PASS 24/61 ls-6345-93302-0019-funk
+START 25/61 ls-6345-93302-0019-drumandbass
+PASS 25/61 ls-6345-93302-0019-drumandbass
+START 26/61 ls-6295-244435-0035-jazz
+PASS 26/61 ls-6295-244435-0035-jazz
+START 27/61 ls-6295-244435-0035-funk
+PASS 27/61 ls-6295-244435-0035-funk
+START 28/61 ls-6295-244435-0035-drumandbass
+PASS 28/61 ls-6295-244435-0035-drumandbass
+START 29/61 ls-6313-66125-0024-jazz
+PASS 29/61 ls-6313-66125-0024-jazz
+START 30/61 ls-6313-66125-0024-funk
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_improvise_qualification.py", line 57, in <module>
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();qualify(a.output)
+                                                                                                                       ^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_improvise_qualification.py", line 40, in qualify
+    run(trial,fixture['label'])
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/improvise_local_audition.py", line 100, in run
+    if process.returncode:raise RuntimeError('Audition failed; preserve execution.log')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Audition failed; preserve execution.log

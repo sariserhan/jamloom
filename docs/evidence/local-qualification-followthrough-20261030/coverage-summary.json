@@ -1,0 +1,23 @@
+{
+  "status": "PARTIAL broader coverage; PASS completed technical outputs",
+  "completed_new_cases": 39,
+  "prior_local_pilot": 1,
+  "retained_hosted_cases": 7,
+  "total_audio_outputs": 47,
+  "required_audio_outputs": 69,
+  "remaining_audio_outputs": 22,
+  "complete_source_groups": 15,
+  "required_source_groups": 23,
+  "local_execution_seconds": 3061.405438790993,
+  "median_completed_case_seconds": 64.21805199999653,
+  "minimum_completed_available_bytes": 1110638592,
+  "maximum_completed_rss_bytes": 2886287360,
+  "maximum_completed_swap_growth_bytes": 1228603392,
+  "new_paid_compute": false,
+  "publication": "HELD",
+  "live_payments": "HELD",
+  "individual_review_requests": "CLOSED_BY_OWNER",
+  "remaining_generation": "HELD_BY_OWNER: keep apps open and finish available work",
+  "free_disk_bytes": 21194555392,
+  "updated_at": "2026-10-31T04:56:44.427312+00:00"
+}

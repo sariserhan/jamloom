@@ -1,14 +1,14 @@
 {
-  "evaluated_at": "2026-10-31T04:07:52.394793+00:00",
+  "evaluated_at": "2026-10-31T04:56:44.335098+00:00",
   "owner_submissions": 13,
   "automated_answers_used": false,
   "release": "HELD by owner",
   "live_payments": "HELD by owner",
   "music": {
     "status": "NOT RUN",
-    "freeze": "e0704a9b742fbd18960b1c5ab4ce0e37058897ae382f98ffa3ac78d7c3f35fa5",
+    "freeze": "a97ccda7fff22ddc65e69e0438b95d4046b799ba7672e0a4fba652050a54e972",
     "completed_blocks": 0,
-    "required_blocks": 2,
+    "required_blocks": 15,
     "distinct_generated_compositions_by_source": {},
     "results": {},
     "scope": "One owner, source-level uncertainty only; no population listener claim. Recorded quiet rejection and hosted technical evidence are separate required gates.",

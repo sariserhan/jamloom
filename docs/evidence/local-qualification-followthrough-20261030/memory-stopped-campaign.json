@@ -1,0 +1,527 @@
+{
+  "status": "FAIL stopped",
+  "manifest_sha256": "019918fb9d875a140605951676fbb447c753845469e0c1cad5baf8730d7fad55",
+  "scope": "Local Metal and local separator qualification; hosted parity NOT RUN",
+  "paid_compute": false,
+  "one_gpu_at_a_time": true,
+  "automatic_retries": 0,
+  "maximum_new_generations": 32,
+  "prior_hosted_labels": [
+    "ls-2035-147960-0013-drumandbass",
+    "ls-2035-147960-0013-funk",
+    "ls-2035-147960-0013-jazz",
+    "ls-2086-149220-0047-jazz",
+    "ls-2277-149896-0026-drumandbass",
+    "ls-2277-149896-0026-funk",
+    "ls-2277-149896-0026-jazz"
+  ],
+  "prior_local_pilot": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-funk-tiled-20261030",
+  "fixtures": [
+    {
+      "label": "ls-6313-66125-0024-funk",
+      "source_id": "ls-6313-66125-0024",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6313-66125-0024-drumandbass",
+      "source_id": "ls-6313-66125-0024",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-5338-284437-0012-jazz",
+      "source_id": "ls-5338-284437-0012",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-5338-284437-0012-funk",
+      "source_id": "ls-5338-284437-0012",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-5338-284437-0012-drumandbass",
+      "source_id": "ls-5338-284437-0012",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6319-57405-0007-jazz",
+      "source_id": "ls-6319-57405-0007",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6319-57405-0007-funk",
+      "source_id": "ls-6319-57405-0007",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-6319-57405-0007-drumandbass",
+      "source_id": "ls-6319-57405-0007",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1993-147965-0001-jazz",
+      "source_id": "ls-1993-147965-0001",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1993-147965-0001-funk",
+      "source_id": "ls-1993-147965-0001",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1993-147965-0001-drumandbass",
+      "source_id": "ls-1993-147965-0001",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2078-142845-0042-jazz",
+      "source_id": "ls-2078-142845-0042",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2078-142845-0042-funk",
+      "source_id": "ls-2078-142845-0042",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2078-142845-0042-drumandbass",
+      "source_id": "ls-2078-142845-0042",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1272-128104-0001-jazz",
+      "source_id": "ls-1272-128104-0001",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1272-128104-0001-funk",
+      "source_id": "ls-1272-128104-0001",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-1272-128104-0001-drumandbass",
+      "source_id": "ls-1272-128104-0001",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-174-50561-0018-jazz",
+      "source_id": "ls-174-50561-0018",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-174-50561-0018-funk",
+      "source_id": "ls-174-50561-0018",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-174-50561-0018-drumandbass",
+      "source_id": "ls-174-50561-0018",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2803-161169-0002-jazz",
+      "source_id": "ls-2803-161169-0002",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2803-161169-0002-funk",
+      "source_id": "ls-2803-161169-0002",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "ls-2803-161169-0002-drumandbass",
+      "source_id": "ls-2803-161169-0002",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-laughter-jazz",
+      "source_id": "commons-laughter",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-laughter-funk",
+      "source_id": "commons-laughter",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-laughter-drumandbass",
+      "source_id": "commons-laughter",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-claps-jazz",
+      "source_id": "commons-claps",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-claps-funk",
+      "source_id": "commons-claps",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-claps-drumandbass",
+      "source_id": "commons-claps",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-noise-jazz",
+      "source_id": "commons-noise",
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-noise-funk",
+      "source_id": "commons-noise",
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "label": "commons-noise-drumandbass",
+      "source_id": "commons-noise",
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    }
+  ],
+  "completed": [
+    {
+      "label": "ls-2086-149220-0047-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-001",
+      "sha256": "dc8f6dfd86c8be4c2552785d522960b9d83fb42b55e5e387d92abe419eca7a23"
+    },
+    {
+      "label": "ls-7976-110124-0019-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-002",
+      "sha256": "3c43c97b3112377648efb4493b496008c4977162e513bbb7cfb63fc2c43ac069"
+    },
+    {
+      "label": "ls-7976-110124-0019-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-003",
+      "sha256": "b94c0f3d086988d0444c1f606c1b0d04fd2c6e9cbdecc1b2c1bf06bd5ab458c0"
+    },
+    {
+      "label": "ls-7976-110124-0019-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-004",
+      "sha256": "50ab495a86a8768751fa0c940e59696fe5338e52f2ed0eda71e33db6ba5cecf9"
+    },
+    {
+      "label": "ls-1988-147956-0018-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-005",
+      "sha256": "dc408c173d329fb2f36b857834545695bf3b1e97b42075427da2d1125e0c8f75"
+    },
+    {
+      "label": "ls-1988-147956-0018-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-006",
+      "sha256": "a5992da6807c3f3c1aa072581f45043b5576d7f93587e69505921b32d921e76e"
+    },
+    {
+      "label": "ls-1988-147956-0018-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-007",
+      "sha256": "c1eccdf957afb8d41c8e7364bc649cb885060a47d5ab33b1ddec1cf2054046bf"
+    },
+    {
+      "label": "ls-777-126732-0074-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-008",
+      "sha256": "0fbfc023fb0319c317d7f709cd64cfd2f4928508cadbc0bd951f7accafc76934"
+    },
+    {
+      "label": "ls-777-126732-0074-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-009",
+      "sha256": "c1000dd849f85da5507e00d9132629b8a93c6169e90f526bacb7910036b72fe3"
+    },
+    {
+      "label": "ls-777-126732-0074-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-010",
+      "sha256": "481f6854440253079be6617c1afe6345e725c4b099c495f10b8afbddffac5e79"
+    },
+    {
+      "label": "ls-84-121123-0012-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-011",
+      "sha256": "b097d82258ed43df9d0fe00f379bd1efe601734f0f35f38d67606dd7a9ff221d"
+    },
+    {
+      "label": "ls-84-121123-0012-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-012",
+      "sha256": "7604fc29b28d309bceeb753114bc33df3ee366b73c59d94aebf929712a7891d1"
+    },
+    {
+      "label": "ls-84-121123-0012-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-013",
+      "sha256": "e6ceec10544b72e6f855b00c729047aee7df971faeb94fe3efd7ca718e3b8b90"
+    },
+    {
+      "label": "ls-1673-143397-0009-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-014",
+      "sha256": "c741ec7fd88d55a899de8683f43526f68782a8dc48a56927ad98ac89bc3821cc"
+    },
+    {
+      "label": "ls-1673-143397-0009-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-015",
+      "sha256": "5d8a1363028db5cdb39476fb34a72740beecd516b3521a2ecc7c48e9df34c484"
+    },
+    {
+      "label": "ls-1673-143397-0009-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-016",
+      "sha256": "f36495b4c949f7ce887caf7ce13b5a8f8975c0f56675bf0b393db9b7fd675dd7"
+    },
+    {
+      "label": "ls-8297-275156-0004-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-017",
+      "sha256": "654833b338c9336cb34f261a9f84619c24a2ee5318f97ed5943d49da4c8a4a47"
+    },
+    {
+      "label": "ls-8297-275156-0004-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-018",
+      "sha256": "4eb04a59137599e8064780d39944263298c42c11bc93603ac7bac1636f53cbd5"
+    },
+    {
+      "label": "ls-8297-275156-0004-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-019",
+      "sha256": "ca6ef8ec7603568cbf569e94d26c762cbbe095a2951f61038da687e7b5f95eeb"
+    },
+    {
+      "label": "ls-5536-43358-0016-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-020",
+      "sha256": "5f6be860f0783e4971c501688d66dfc08666b93e5ac226b14c0396479ec87ff5"
+    },
+    {
+      "label": "ls-5536-43358-0016-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-021",
+      "sha256": "4b8efdf6c4b58e7870d7d45d49e677ca6afc14977fc380f5bc6174cac9e4b106"
+    },
+    {
+      "label": "ls-5536-43358-0016-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-022",
+      "sha256": "272073a8fad376ac117ab46b46354e54d04461d172009b2ade51821272362202"
+    },
+    {
+      "label": "ls-6345-93302-0019-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-023",
+      "sha256": "ab453d61353b4be585bed404d35ab82a437aeff2ef51ecb4201899655a32e1d2"
+    },
+    {
+      "label": "ls-6345-93302-0019-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-024",
+      "sha256": "4634cd89163f6b40c083867c8172d2fa1b17c191c674f4579493c61d166cdd9f"
+    },
+    {
+      "label": "ls-6345-93302-0019-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-025",
+      "sha256": "28acff8149deb757c05465cb57f3ae8e9c32c2cf783f03139d295aa7d0475cc3"
+    },
+    {
+      "label": "ls-6295-244435-0035-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-026",
+      "sha256": "e65c999a7b8af91aa3233d5b0cfdefb6c4f2177542d65de802be5a7bfc7a82e7"
+    },
+    {
+      "label": "ls-6295-244435-0035-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-027",
+      "sha256": "769748b872fe17ee7e8ae22defbcb851fe3b729e154312596acf227f857a9ff4"
+    },
+    {
+      "label": "ls-6295-244435-0035-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-028",
+      "sha256": "c613fc134b44f36eeee945ccbd16d3cc22c0de7eb4be8e6a95595ab495c42077"
+    },
+    {
+      "label": "ls-6313-66125-0024-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-029",
+      "sha256": "0db0743d16a94bea4ab73f9edc865529c88588e603bd9a2a99fd199497b35bf5"
+    },
+    {
+      "label": "ls-6313-66125-0024-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-001",
+      "sha256": "a9838caa0c6146e15f4599705189457a18d68b5d116f7ae8169ef11a78508918"
+    },
+    {
+      "label": "ls-6313-66125-0024-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-002",
+      "sha256": "913bb603efe2de136fc680e9ecc0fed69f3bcb1e47b97a5c4df9c0e623e158ac"
+    },
+    {
+      "label": "ls-5338-284437-0012-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-003",
+      "sha256": "0039e7ad955e07f718d2eccc7eea0cd0a9dba9b6efe4489046b5bcf75a2d0404"
+    },
+    {
+      "label": "ls-5338-284437-0012-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-004",
+      "sha256": "fc38fd197c518a08ba68e25dfe4b6aae7155f35d6f94f6f18bd4cf36116d3e9e"
+    },
+    {
+      "label": "ls-5338-284437-0012-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-005",
+      "sha256": "e833f89ce63f4803171a34536a04c9e85ed09440a8e5182fd4917b1846d69d5e"
+    },
+    {
+      "label": "ls-6319-57405-0007-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-006",
+      "sha256": "5f77220669e37713e261dc133e42ebed0d8a2fd3a2f7202a6f8f42047f3c5cb2"
+    },
+    {
+      "label": "ls-6319-57405-0007-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-007",
+      "sha256": "601c69c24e04bdec5565c2a462a8969f801411575a33eee27b202529e2c72cc9"
+    },
+    {
+      "label": "ls-6319-57405-0007-drumandbass",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-008",
+      "sha256": "c22aa6b679d7e1fefa3a79e21082b674123b4744990fb9027cac3c3275c11a7e"
+    },
+    {
+      "label": "ls-1993-147965-0001-jazz",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-009",
+      "sha256": "e46d5a63dd1b4f93836d2e094168283f9ab75817740000edcc92b3f40e7a3cd7"
+    },
+    {
+      "label": "ls-1993-147965-0001-funk",
+      "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-010",
+      "sha256": "98f11609915aa5fb492c5bdd6009a10d334d85dcc66f4d6c29cae097e0a01e29"
+    }
+  ],
+  "failures": [
+    {
+      "current": {
+        "label": "ls-1993-147965-0001-drumandbass",
+        "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-011"
+      },
+      "reason": "Swap growth limit reached"
+    }
+  ],
+  "inherited_completed": 29,
+  "prior_seconds": 2217.5281108329946,
+  "previous_campaign": {
+    "path": "/Users/serhansari/Documents/projects/jamloom/renders/local-neural-qualification-20261030/campaign.json",
+    "sha256": "4f9c1cdc8f915004c9b5c044c4054641afc758bd8e5128fe26c4d2497428b508"
+  },
+  "current": {
+    "label": "ls-1993-147965-0001-drumandbass",
+    "directory": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-011"
+  },
+  "seconds": 3061.405438790993,
+  "human_listening": "NOT RUN for new outputs"
+}

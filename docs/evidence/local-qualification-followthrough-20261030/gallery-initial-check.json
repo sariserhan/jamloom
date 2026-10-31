@@ -1,0 +1,13 @@
+{
+  "status": "FAIL incorrect test assumption",
+  "assertion": "All anonymous candidate durations equal 45 seconds",
+  "observed_first_block_seconds": {
+    "A": 45,
+    "B": 45,
+    "C": 34.021271,
+    "D": 31.5,
+    "E": 45
+  },
+  "correction": "Compare browser duration with ffprobe duration of each packaged file; retained generated outputs still require 45 seconds",
+  "product_audio_changed": false
+}

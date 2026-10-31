@@ -97,7 +97,9 @@ def collect_local(root,data,campaign,records):
         archived=folder/'archive.json'
         if archived.exists():
             proof=json.loads(archived.read_text());assert proof['status']=='PASS byte-exact archive'
-            assert digest(folder/'studio-preservation.tar.xz')==proof['archive_sha256']
+            # Studio bundles exceed the recording input limit; hash them as streams.
+            with (folder/'studio-preservation.tar.xz').open('rb') as stream:
+                assert hashlib.file_digest(stream,'sha256').hexdigest()==proof['archive_sha256']
         known.add(sha)
         records[label]=dict(path=str(audio),sha256=sha,source_excerpt=excerpt,peak=peak,seconds=45,direction=direction,
             execution_scope='Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN')

@@ -1,0 +1,31 @@
+START 1/32 ls-6313-66125-0024-funk
+PASS 1/32 ls-6313-66125-0024-funk
+START 2/32 ls-6313-66125-0024-drumandbass
+PASS 2/32 ls-6313-66125-0024-drumandbass
+START 3/32 ls-5338-284437-0012-jazz
+PASS 3/32 ls-5338-284437-0012-jazz
+START 4/32 ls-5338-284437-0012-funk
+PASS 4/32 ls-5338-284437-0012-funk
+START 5/32 ls-5338-284437-0012-drumandbass
+PASS 5/32 ls-5338-284437-0012-drumandbass
+START 6/32 ls-6319-57405-0007-jazz
+PASS 6/32 ls-6319-57405-0007-jazz
+START 7/32 ls-6319-57405-0007-funk
+PASS 7/32 ls-6319-57405-0007-funk
+START 8/32 ls-6319-57405-0007-drumandbass
+PASS 8/32 ls-6319-57405-0007-drumandbass
+START 9/32 ls-1993-147965-0001-jazz
+PASS 9/32 ls-1993-147965-0001-jazz
+START 10/32 ls-1993-147965-0001-funk
+PASS 10/32 ls-1993-147965-0001-funk
+START 11/32 ls-1993-147965-0001-drumandbass
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_improvise_qualification.py", line 84, in <module>
+    a=p.parse_args();qualify(a.output,a.completed_campaign)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_improvise_qualification.py", line 65, in qualify
+    run(trial,fixture['label'])
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/improvise_local_audition.py", line 98, in run
+    if problem:raise RuntimeError(problem)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Swap growth limit reached

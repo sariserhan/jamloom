@@ -30,12 +30,18 @@ class LocalNeuralReview(unittest.TestCase):
             campaign=root/'campaign.json';write(campaign,state)
             with self.assertRaisesRegex(ValueError,'stop'):collect_local(root,data,campaign,{})
             state['status']='PASS local technical coverage';write(campaign,state)
+            archive=folder/'studio-preservation.tar.xz'
+            with archive.open('wb') as stream:stream.truncate(19*1024**2)
+            write(folder/'archive.json',dict(status='PASS byte-exact archive',archive_sha256=sha(archive)))
             with patch('prepare_neural_review.read_pcm',return_value=np.array([.1,-.1])):
                 records={};collect_local(root,data,campaign,records);self.assertEqual(set(records),{'one-funk'})
                 arrangement['source_excerpt']['original_seconds']=[0,5];write(folder/'arrangement.json',arrangement)
                 with self.assertRaises(AssertionError):collect_local(root,data,campaign,{})
                 arrangement['source_excerpt']['original_seconds']=[0,4];write(folder/'arrangement.json',arrangement)
                 result['source_sha256']='wrong';write(folder/'result.json',result)
+                with self.assertRaises(AssertionError):collect_local(root,data,campaign,{})
+                result['source_sha256']='original';write(folder/'result.json',result)
+                with archive.open('ab') as stream:stream.write(b'changed')
                 with self.assertRaises(AssertionError):collect_local(root,data,campaign,{})
 
     def test_compact_listening_copy_is_lossless_after_level_matching(self):

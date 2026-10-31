@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/prepare_neural_review.py", line 155, in <module>
+    prepare(a.manifest,a.controls,a.output,a.partial,a.local_campaign,a.compact)
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/prepare_neural_review.py", line 114, in prepare
+    receipts.extend(collect_local(ROOT,data,local_campaign,records))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/prepare_neural_review.py", line 100, in collect_local
+    assert digest(folder/'studio-preservation.tar.xz')==proof['archive_sha256']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/arrange_voice_research.py", line 21, in digest
+    raise ValueError("Expected a local input no larger than 18 MiB")
+ValueError: Expected a local input no larger than 18 MiB

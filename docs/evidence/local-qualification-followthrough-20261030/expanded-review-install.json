@@ -1,0 +1,11 @@
+{
+  "status": "PASS local installation",
+  "freeze": "a97ccda7fff22ddc65e69e0438b95d4046b799ba7672e0a4fba652050a54e972",
+  "source_groups": 15,
+  "required_source_groups": 23,
+  "candidates": 75,
+  "public_path": "/Users/serhansari/Documents/projects/jamloom/renders/owner-workspace-20261030/public/music-neural-expanded",
+  "audio_copied_bytes": 0,
+  "private_organizer_key_public": false,
+  "existing_freezes_preserved": 3
+}

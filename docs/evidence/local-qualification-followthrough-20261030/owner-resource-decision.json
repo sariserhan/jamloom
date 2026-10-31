@@ -1,0 +1,8 @@
+{
+  "received_at": "2026-10-31T04:57:39.365043+00:00",
+  "owner_response": "Keep apps open; finish available work",
+  "decision": "Keep current apps open and finish available non-GPU work. Remaining 22 generation cases held after swap guard stop.",
+  "remaining_generation": "HELD_BY_OWNER for current resource conditions",
+  "technical_pass_inferred": false,
+  "new_generation_started_after_decision": false
+}

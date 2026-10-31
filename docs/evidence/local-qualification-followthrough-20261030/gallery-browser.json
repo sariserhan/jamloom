@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "browser": "Installed Chrome via Playwright; Browser runtime tool unavailable",
+  "target": "http://127.0.0.1:8777/music-neural-expanded/",
+  "results": [
+    {
+      "width": 1280,
+      "status": "PASS",
+      "sourceCount": 15,
+      "firstAndLastSourcePlayback": true,
+      "seek": true,
+      "onePlayer": true,
+      "navigationStopsPlayback": true,
+      "noOverflow": true,
+      "optionalAnnotationsPlayback": true,
+      "ownerResultsWritten": false
+    },
+    {
+      "width": 390,
+      "status": "PASS",
+      "sourceCount": 15,
+      "firstAndLastSourcePlayback": true,
+      "seek": true,
+      "onePlayer": true,
+      "navigationStopsPlayback": true,
+      "noOverflow": true,
+      "optionalAnnotationsPlayback": true,
+      "ownerResultsWritten": false
+    }
+  ]
+}

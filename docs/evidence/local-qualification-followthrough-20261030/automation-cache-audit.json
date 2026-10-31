@@ -1,0 +1,41 @@
+{
+  "status": "PASS audited inactive automation-cache removal",
+  "targets": [
+    {
+      "path": "/Users/serhansari/.cache/chrome-devtools-mcp/chrome-profile/Default/Cache",
+      "bytes": 1010738325,
+      "classification": "Inactive automation-browser disposable cache only",
+      "active_processes": false,
+      "open_files": false,
+      "symlinks": false,
+      "git_worktree": false,
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/.cache/chrome-devtools-mcp/chrome-profile/Default/Code Cache",
+      "bytes": 314194833,
+      "classification": "Inactive automation-browser disposable cache only",
+      "active_processes": false,
+      "open_files": false,
+      "symlinks": false,
+      "git_worktree": false,
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/.cache/chrome-devtools-mcp/chrome-profile/Default/GPUCache",
+      "bytes": 5953576,
+      "classification": "Inactive automation-browser disposable cache only",
+      "active_processes": false,
+      "open_files": false,
+      "symlinks": false,
+      "git_worktree": false,
+      "removed": true
+    }
+  ],
+  "free_before_bytes": 18996330496,
+  "ordinary_chrome_and_dia_preserved": true,
+  "profile_data_preserved": true,
+  "free_after_bytes": 20362100736,
+  "git_status_unchanged": true,
+  "finished_unix": 1793422259.801594
+}

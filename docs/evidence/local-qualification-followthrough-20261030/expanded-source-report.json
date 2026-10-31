@@ -1,0 +1,1822 @@
+{
+  "manifest_sha256": "019918fb9d875a140605951676fbb447c753845469e0c1cad5baf8730d7fad55",
+  "controls_sha256": "83458289d06649c5430b8c8408fd67d3808689c7e02fb8cd1513ac05640cda24",
+  "receipts": [
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/docs/evidence/improvise-finish/cloud/2026-10-31T01-36-52.887Z/trial-result.json",
+      "sha256": "cdee4a9c3bbc79d2f7e47bb5b266840420af04a877b64be9b33ac819a515b182",
+      "postcheck_sha256": "5971713f4dfe3e263d7d04acfba775ac012ee10acae08b580a0f3de162fd4103"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-funk-tiled-20261030/result.json",
+      "sha256": "74b493a4cbd801a0c82145be935c31865f4fe02b58ba56182cf7b85ee901e52e",
+      "execution_sha256": "4ef3c12d0a558a4938389165a1a00dba6342b3502482e2369b472c4d5e26df9d"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-001/result.json",
+      "sha256": "5e45171772df0722db6b2ddb283282dd4546eb4fb28a4c03fab10fb8fa5aa310",
+      "execution_sha256": "847dcfc24083fd3ef7657c096dd809e9d5455e9b5d804f5cec38ede663f818db"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-002/result.json",
+      "sha256": "7f5ddfca524741523ebd09f1ced903f466fd2e132b01d33cf6ba59cf81bfa76e",
+      "execution_sha256": "78871f1353f3c9dc72dca66ee8bc6a5f0dcd7d966c0a9f6005c26a799bceb490"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-003/result.json",
+      "sha256": "b8252a380d4a32bff86a13fb68ce3c25840ab4ef86eee1e76a606701ad3bcb45",
+      "execution_sha256": "54cf625777f967f514005bcb9ca1815b0af4786d3db807ed55a6389f4f3c500a"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-004/result.json",
+      "sha256": "5813d880a35e1b0d16fc140d7dd5bd5eb2318f6f3938f1928c1c0a9af7e431e2",
+      "execution_sha256": "db567d9740e89d75eaeef9e306f1ee80cc9420ff0237ed1d22bc13963b8c3db4"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-005/result.json",
+      "sha256": "6338562e9c6a63c811d9787864287e87bfe6fe3c63131afb201f7bb1aee71506",
+      "execution_sha256": "393c33febca2870d17241ec7ebc13d831c6c93d7101f59a920840f173b19eca8"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-006/result.json",
+      "sha256": "b028a3da2f24445275f1388d5c14bac6704281496c7113ff62d12146cfcfd5e1",
+      "execution_sha256": "e059a4cf502416c438cb446510e21f3c3cb1fc26220e30176efa3decf7bc452f"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-007/result.json",
+      "sha256": "21266265054146b0e2d6bd236e6e5058df6deed4399f4186ce03de7dd610ef68",
+      "execution_sha256": "af7c6a0b1fe64bcac7ea2f6c8c9db8876f04acc56d061abf4ce67ee233a7369e"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-008/result.json",
+      "sha256": "4fe2164ed57fd695e84137c45e7eb444a9f9a832af76862b57b23c2fddf62657",
+      "execution_sha256": "a55ff6ed3aab5a7d668e49efe98ce7411e23fb5443e80272da7354cc21b154d3"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-009/result.json",
+      "sha256": "e3f97e05f97c186b5b7e910a8621cf0fbecb929433dc31f8a6946a6dc05233f8",
+      "execution_sha256": "3e0b9ea902dd0f69329ef235006fda6c968027e8087531fe9b3661b8366a5cf8"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-010/result.json",
+      "sha256": "ff12cb853633cbe496924abb32b14382b4e405cc34cd29107f18ea085a22ceb3",
+      "execution_sha256": "5fbe28c952ed43b4335c482c3a35b250a5513d0e0eab59c51d1ce5989d8fd128"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-011/result.json",
+      "sha256": "20c034ce125451a98876f476123b766840b500eb6ae295eed9dfe9ec37d834a3",
+      "execution_sha256": "7f290959c8b2e6bffb64e875ecbbcaa3cc603f018e3dfb5670628929546335b3"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-012/result.json",
+      "sha256": "a46c77d8fe7d3e0e35c13f58612d5c772fc59de286009054310431852d50f3a4",
+      "execution_sha256": "4811f2e4ba66d4104f276924bfe278694634eb45f4f59fd90c740349fa36b022"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-013/result.json",
+      "sha256": "755313988df5a373c2c911be2761b356efb8eb6ea1b4f27433e40df04aadded7",
+      "execution_sha256": "edb318a524053c405c4aa8f56934d6fdca04fde5b8d4e1504332e81fea8fcbca"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-014/result.json",
+      "sha256": "6034d4e59dc9a06b6c23fb90f6f2a5cd7c80e7c3f079bfa8ff46680da3230105",
+      "execution_sha256": "496ac982ef53d2b7a43efb04fae59b63c4e08283bc268e19c66a52bf9eba0978"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-015/result.json",
+      "sha256": "e5a9e860da1c64e08ff52b746fec22db9a0c1a5d09057d7251507e23aa5ac9f7",
+      "execution_sha256": "91315e16c55b1eb81451585a52ea76422f21e0487b92a8ebf1e750ef8a85a74d"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-016/result.json",
+      "sha256": "a4a644c095cd9da6bcd4cb9029772473b7ce4427b824ff0b74472dbfa5af6bef",
+      "execution_sha256": "982dc9e262f673c77b507a2530bbe20cc7585a4ccd8ec6e5e25fbe28956f1377"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-017/result.json",
+      "sha256": "f3278aa2fb18c5f50e12381be83e18f15956d5d35f72a89e9f36cb2055817d32",
+      "execution_sha256": "a0e13b6e3f00eb9616b9faeb529d786012c4fbe84352fdf413fea1cd01a7e18f"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-018/result.json",
+      "sha256": "15f23d25adfcb0ff140d69fb46b032ccd39b66ca229effd1118f2c3f8892cff1",
+      "execution_sha256": "5e109d8fa34639a3a24ef99b8d1ee7ac2c166982d28158ed25ad4a21c1be5ff7"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-019/result.json",
+      "sha256": "08a8edd4a21604468915646a01b2de94f42b74f50055f3bfa12ea8b6d8b96cd5",
+      "execution_sha256": "8dd2c6e643d1c85bb318f00c3ac5aa29ae98216d2acdadf22ea914f548a45351"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-020/result.json",
+      "sha256": "311bfdba3d1becbe395285443d9ced095a560e09f3022778eaafdf2f8a902aaa",
+      "execution_sha256": "9615a0169ba84d1c6c6d11261168e12c3ff47ff9a3adeb46e38fca596d9738e7"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-021/result.json",
+      "sha256": "bc6ba5470dba0345ce6c12c298e5f81ff0e9ebd6d51a16f65f0077e8c676c9b4",
+      "execution_sha256": "6296c97723b7df6d0660fef45ee5eb57910cf213120c174e584a673fc9fe83b5"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-022/result.json",
+      "sha256": "290501506f1e3ee278851c8533ed9510f5458c649cd0de8dacfef355831a3d34",
+      "execution_sha256": "d3934ea6a91f1b68243d0ba471b09e358814077b655ce1fccd62ffc08503d14a"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-023/result.json",
+      "sha256": "62b3801934f1caa26c936d144cf29e5a8855c7ffe7c663de7cb7b987a504323c",
+      "execution_sha256": "f9efd497ad4daf7420c8a59f389094c397c78f0f49bbd4180af15a49dd1d6a89"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-024/result.json",
+      "sha256": "18a6c359813312f92eb0c25ebe290b527a88d74bb83e9a6a3968e9bd38608fa1",
+      "execution_sha256": "d447efbab1c7964230a278519bec508c9c041fca827069b7b1c71637c495bfee"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-025/result.json",
+      "sha256": "d9e68176b51b05ed9f968ec30f0455410a620a69dae9d6ef1e03f42ef856707e",
+      "execution_sha256": "b2d7ec2ad46383c7b244f88cf1d2bcf6ec829883ea680771928bea3dd88a4e08"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-026/result.json",
+      "sha256": "e7f4ec6918ca30f590bafe6dacfa757e43faafcc513c08f8d87733f1272a9d2f",
+      "execution_sha256": "527d8022b5809672cdf76984ab677cb7e64309050a2ac5c905563e42f184686c"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-027/result.json",
+      "sha256": "1560c774c0d8468c626403ef88ebfe5ae0e75876a1c7cb7c15fb1419d5c0ef6a",
+      "execution_sha256": "248dad0c69415a2b01345184a1870088f48d302467cf498c73ea2ff3cba2f996"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-028/result.json",
+      "sha256": "e518fd71a8dd27b8b8843f6001d29ec5e8ae737f76aafec5ac7b2b1e728e2c01",
+      "execution_sha256": "f99e3863bebfd809df0fc62608c67f7ed4fbd2969427eb20b59c2522963c792d"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-029/result.json",
+      "sha256": "adc5901bb663af4a44e654cffbd834ac3649372375ad4f786d4499ec2fab71d4",
+      "execution_sha256": "f0a06aaef85f81f5f6027df54ef6b8df4b326af86bf09121abaaf8e1847ed449"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-001/result.json",
+      "sha256": "54e1231b74c7320122162d2c71b11d583b918c038ae2fe334b0f3a32f50b20fd",
+      "execution_sha256": "291ca76c04a750241fed74425338181569808460d27abee23141fd03ffa65652"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-002/result.json",
+      "sha256": "2ab777217ab6c9061ad89c3b5cc8c2617357ebd1b99d6dd133153784b6c6e0f0",
+      "execution_sha256": "26c1fcd27d6641e2d5625d35bf811cd918c9a48f15b035abdfcaa0192aa2dfe2"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-003/result.json",
+      "sha256": "fa7e7725c4692b48e6a78574c53973484fa4caf6e0bfa6e1a3ed3901a7b5a4ad",
+      "execution_sha256": "00bc2c5799d835ca31853cbfe11fd749304b414455eabfc21d01b6a67391da70"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-004/result.json",
+      "sha256": "f6833c2b58e6b074d619909cfcbcbcc6b7e111bdf4357c7ffb975a36b9b21180",
+      "execution_sha256": "cb7f572a2dd4743eb4d10cc6240cdaa132fd1ec4c8ff63efdbce8fb1bd71342d"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-005/result.json",
+      "sha256": "24a4887f70adb05638ac8f04b8446e009f1585a3d6d14268db995aeb0acfa5a2",
+      "execution_sha256": "057b67851bc8575fe1711008ec03d77f6089668ba0f232b726b70fe1852bdb31"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-006/result.json",
+      "sha256": "55303587dca267660b21966202c028ade4212b633f6fc089fa9658ef11b4aa53",
+      "execution_sha256": "d42717aedb7581c9e66c5661773287763ee793f943b117f9caaa1ac4bd8b384f"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-007/result.json",
+      "sha256": "b5052726207228cd58a9b3cea8f734c8c2903998b16cc6c372149390e6f90b5d",
+      "execution_sha256": "a3a32511a08189a2ca062f389231574694f859070214ada49cb4756bcb51b113"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-008/result.json",
+      "sha256": "f93b1f328bef5c277207c3f1e051e3f82379ffb24b84cc55a56f158f83212e88",
+      "execution_sha256": "1d2ce95bc03d09bdf8182e0b1b265da85d528bd1543404a42c24b8689cac346b"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-009/result.json",
+      "sha256": "0552822b24a920cc1d921328faa5157d15ddc8c3549bc15cfad152b99f61393d",
+      "execution_sha256": "2960037321d9c19a41fdcd319f498435c76595402c55b82889382bba02aaae68"
+    },
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-010/result.json",
+      "sha256": "4add796cd410255156f3a848ce2971569ef13ada3053290453b8621bf147e412",
+      "execution_sha256": "07978489f9611289d012e4819b12145b542abebb2a2439aeadd176c6f65a907c"
+    }
+  ],
+  "outputs": {
+    "ls-2277-149896-0026-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-jazz.wav",
+      "sha256": "b39653b5cf8063c6ab11e49a6cdc477e7d303d8043c24797e226e7563e9daff2",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "c9988d609bcd0851297faeefb5ca94b70a563fd6f2d64bc96899f6893bb24cc9",
+          "processed_frames": 236160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 236160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.844451904296875,
+      "seconds": 45,
+      "direction": {
+        "seed": 1501106075,
+        "genre": "jazz",
+        "energy": "low"
+      }
+    },
+    "ls-2277-149896-0026-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-funk.wav",
+      "sha256": "05ce009910d960d3c19a87db0c4db1acf1cc2ed7b005405b7caf620dca112c62",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "c9988d609bcd0851297faeefb5ca94b70a563fd6f2d64bc96899f6893bb24cc9",
+          "processed_frames": 236160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 236160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.901580810546875,
+      "seconds": 45,
+      "direction": {
+        "seed": 2980721242,
+        "genre": "funk",
+        "energy": "medium"
+      }
+    },
+    "ls-2277-149896-0026-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-drumandbass.wav",
+      "sha256": "5189183fabc9d16997b03a408e856df7dbad105952c6323db0296b4896d785aa",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "c9988d609bcd0851297faeefb5ca94b70a563fd6f2d64bc96899f6893bb24cc9",
+          "processed_frames": 236160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 236160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.949981689453125,
+      "seconds": 45,
+      "direction": {
+        "seed": 1378550872,
+        "genre": "drumandbass",
+        "energy": "high"
+      }
+    },
+    "ls-2035-147960-0013-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-jazz.wav",
+      "sha256": "4005eb85a1e7c9d8147c80fb42146db390043183975e629e11bef21deb7d0e31",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "2900568f65a889bb31872f628d6b0c1e326df4210a66e69d54c4b886cc8e97d6",
+          "processed_frames": 128400,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 128400,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.675
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.8857421875,
+      "seconds": 45,
+      "direction": {
+        "seed": 3125094122,
+        "genre": "jazz",
+        "energy": "low"
+      }
+    },
+    "ls-2035-147960-0013-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-funk.wav",
+      "sha256": "a729286df251208089483ab1473c1604d54beb8a80fd7d6c69af360ae54e8ab1",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "896610a6e7f290d3306afbdc7cbb8627b92bf38592784c2875a8b2caae321579",
+          "processed_frames": 102720,
+          "consent_confirmed": true
+        },
+        "selection": "excerpt",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 102720,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0.30000000000000004,
+          2.44
+        ],
+        "rhythm_word_frames": [
+          80640,
+          102720
+        ]
+      },
+      "peak": 0.88726806640625,
+      "seconds": 45,
+      "direction": {
+        "seed": 3779491875,
+        "genre": "funk",
+        "energy": "medium"
+      }
+    },
+    "ls-2035-147960-0013-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-drumandbass.wav",
+      "sha256": "ab6c168ec9b2f69a1253d5a2b8ea1f5749d06ba048ab8b5dac45ef0845eb713b",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "2900568f65a889bb31872f628d6b0c1e326df4210a66e69d54c4b886cc8e97d6",
+          "processed_frames": 128400,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 128400,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.675
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "seed": 2958081157,
+        "genre": "drumandbass",
+        "energy": "high"
+      }
+    },
+    "ls-2086-149220-0047-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2086-149220-0047-jazz.wav",
+      "sha256": "958571c1215c25de81f568a79d6bf9150d1b21e51dfad29d824113e02de72452",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "ac8847f87b771e42a535c652afef85e14382085f051086a6781df2437d72eac2",
+          "processed_frames": 188160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 188160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.949981689453125,
+      "seconds": 45,
+      "direction": {
+        "seed": 2665930007,
+        "genre": "jazz",
+        "energy": "low"
+      }
+    },
+    "ls-2086-149220-0047-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-funk-tiled-20261030/performance.wav",
+      "sha256": "c036d8a15d9f5170d46f9059443e9f8a5c9c336cc20813eb79acc2652fe9404b",
+      "source_excerpt": {
+        "source": {
+          "sha256": "07d8ae815f1f00505334ae819dae99174f8746e58e21edae0f22b47f73c1ca86",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 188160
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 188160
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.92
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 2338506355
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-2086-149220-0047-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-001/performance.wav",
+      "sha256": "dc8f6dfd86c8be4c2552785d522960b9d83fb42b55e5e387d92abe419eca7a23",
+      "source_excerpt": {
+        "source": {
+          "sha256": "07d8ae815f1f00505334ae819dae99174f8746e58e21edae0f22b47f73c1ca86",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 188160
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 188160
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.92
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.949981689453125,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 3945963780
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-7976-110124-0019-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-002/performance.wav",
+      "sha256": "3c43c97b3112377648efb4493b496008c4977162e513bbb7cfb63fc2c43ac069",
+      "source_excerpt": {
+        "source": {
+          "sha256": "ad4657ad7c1ec71855e7c74803409eae8d199c68dbc9509a62c85a83864ec499",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 131760
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 131760
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.745
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 1821597552
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-7976-110124-0019-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-003/performance.wav",
+      "sha256": "b94c0f3d086988d0444c1f606c1b0d04fd2c6e9cbdecc1b2c1bf06bd5ab458c0",
+      "source_excerpt": {
+        "source": {
+          "sha256": "ad4657ad7c1ec71855e7c74803409eae8d199c68dbc9509a62c85a83864ec499",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 131760
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 131760
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.745
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 3738643586
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-7976-110124-0019-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-004/performance.wav",
+      "sha256": "50ab495a86a8768751fa0c940e59696fe5338e52f2ed0eda71e33db6ba5cecf9",
+      "source_excerpt": {
+        "source": {
+          "sha256": "ad4657ad7c1ec71855e7c74803409eae8d199c68dbc9509a62c85a83864ec499",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 131760
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 131760
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.745
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 2156432911
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-1988-147956-0018-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-005/performance.wav",
+      "sha256": "dc408c173d329fb2f36b857834545695bf3b1e97b42075427da2d1125e0c8f75",
+      "source_excerpt": {
+        "source": {
+          "sha256": "e3e14c536e340d538147f9b3f4be1880b3df10d7ce6f7c1a8b1b1e4fb9f8964f",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 169680
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 169680
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.535
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 2290319275
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-1988-147956-0018-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-006/performance.wav",
+      "sha256": "a5992da6807c3f3c1aa072581f45043b5576d7f93587e69505921b32d921e76e",
+      "source_excerpt": {
+        "source": {
+          "sha256": "e3e14c536e340d538147f9b3f4be1880b3df10d7ce6f7c1a8b1b1e4fb9f8964f",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 169680
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 169680
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.535
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 572681548
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-1988-147956-0018-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-007/performance.wav",
+      "sha256": "c1eccdf957afb8d41c8e7364bc649cb885060a47d5ab33b1ddec1cf2054046bf",
+      "source_excerpt": {
+        "source": {
+          "sha256": "e3e14c536e340d538147f9b3f4be1880b3df10d7ce6f7c1a8b1b1e4fb9f8964f",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 169680
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 169680
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.535
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 1722677234
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-777-126732-0074-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-008/performance.wav",
+      "sha256": "0fbfc023fb0319c317d7f709cd64cfd2f4928508cadbc0bd951f7accafc76934",
+      "source_excerpt": {
+        "source": {
+          "sha256": "18d35c679a57505a4456d30f37059dfc176c6fee3adf4693d12ab481c5f38a4b",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 167040
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 167040
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.48
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 944974402
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-777-126732-0074-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-009/performance.wav",
+      "sha256": "c1000dd849f85da5507e00d9132629b8a93c6169e90f526bacb7910036b72fe3",
+      "source_excerpt": {
+        "source": {
+          "sha256": "18d35c679a57505a4456d30f37059dfc176c6fee3adf4693d12ab481c5f38a4b",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 167040
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 167040
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.48
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.972808837890625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 2966480803
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-777-126732-0074-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-010/performance.wav",
+      "sha256": "481f6854440253079be6617c1afe6345e725c4b099c495f10b8afbddffac5e79",
+      "source_excerpt": {
+        "source": {
+          "sha256": "18d35c679a57505a4456d30f37059dfc176c6fee3adf4693d12ab481c5f38a4b",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 167040
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 167040
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.48
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 2914674397
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-84-121123-0012-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-011/performance.wav",
+      "sha256": "b097d82258ed43df9d0fe00f379bd1efe601734f0f35f38d67606dd7a9ff221d",
+      "source_excerpt": {
+        "source": {
+          "sha256": "1155af554ebdf52af86e02804ef8a0ccb0f0986e91d2fe7fcfc0b7d2f5e7b4e1",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 122880
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 122880
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.56
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 3304506493
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-84-121123-0012-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-012/performance.wav",
+      "sha256": "7604fc29b28d309bceeb753114bc33df3ee366b73c59d94aebf929712a7891d1",
+      "source_excerpt": {
+        "source": {
+          "sha256": "1155af554ebdf52af86e02804ef8a0ccb0f0986e91d2fe7fcfc0b7d2f5e7b4e1",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 122880
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 122880
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.56
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 3205112157
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-84-121123-0012-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-013/performance.wav",
+      "sha256": "e6ceec10544b72e6f855b00c729047aee7df971faeb94fe3efd7ca718e3b8b90",
+      "source_excerpt": {
+        "source": {
+          "sha256": "1155af554ebdf52af86e02804ef8a0ccb0f0986e91d2fe7fcfc0b7d2f5e7b4e1",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 122880
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 122880
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.56
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 2275623650
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-1673-143397-0009-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-014/performance.wav",
+      "sha256": "c741ec7fd88d55a899de8683f43526f68782a8dc48a56927ad98ac89bc3821cc",
+      "source_excerpt": {
+        "source": {
+          "sha256": "82b79cac2c2a897df8b1ef84f3c25b1a488ca7c86ec7cafaa8f47fac537bf758",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 172800
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 172800
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.6
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 2401323772
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-1673-143397-0009-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-015/performance.wav",
+      "sha256": "5d8a1363028db5cdb39476fb34a72740beecd516b3521a2ecc7c48e9df34c484",
+      "source_excerpt": {
+        "source": {
+          "sha256": "82b79cac2c2a897df8b1ef84f3c25b1a488ca7c86ec7cafaa8f47fac537bf758",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 172800
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 172800
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.6
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 421423652
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-1673-143397-0009-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-016/performance.wav",
+      "sha256": "f36495b4c949f7ce887caf7ce13b5a8f8975c0f56675bf0b393db9b7fd675dd7",
+      "source_excerpt": {
+        "source": {
+          "sha256": "82b79cac2c2a897df8b1ef84f3c25b1a488ca7c86ec7cafaa8f47fac537bf758",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 172800
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 172800
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.6
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 2535939318
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-8297-275156-0004-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-017/performance.wav",
+      "sha256": "654833b338c9336cb34f261a9f84619c24a2ee5318f97ed5943d49da4c8a4a47",
+      "source_excerpt": {
+        "source": {
+          "sha256": "0cc9bce923d17d0895f1c5fbfe2e37169091fe6dca0cc1da65b9f94fa78edc25",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 157440
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 157440
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.28
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 1601228836
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-8297-275156-0004-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-018/performance.wav",
+      "sha256": "4eb04a59137599e8064780d39944263298c42c11bc93603ac7bac1636f53cbd5",
+      "source_excerpt": {
+        "source": {
+          "sha256": "0cc9bce923d17d0895f1c5fbfe2e37169091fe6dca0cc1da65b9f94fa78edc25",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 157440
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 157440
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.28
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 1908356860
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-8297-275156-0004-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-019/performance.wav",
+      "sha256": "ca6ef8ec7603568cbf569e94d26c762cbbe095a2951f61038da687e7b5f95eeb",
+      "source_excerpt": {
+        "source": {
+          "sha256": "0cc9bce923d17d0895f1c5fbfe2e37169091fe6dca0cc1da65b9f94fa78edc25",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 157440
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 157440
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.28
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 3598352883
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-5536-43358-0016-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-020/performance.wav",
+      "sha256": "5f6be860f0783e4971c501688d66dfc08666b93e5ac226b14c0396479ec87ff5",
+      "source_excerpt": {
+        "source": {
+          "sha256": "573e0e51ed65aa17f2a421acd1bb7f3bc15ce9371c21bec64383a4b27f7ef7e4",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 116400
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 116400
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.425
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 4040261692
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-5536-43358-0016-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-021/performance.wav",
+      "sha256": "4b8efdf6c4b58e7870d7d45d49e677ca6afc14977fc380f5bc6174cac9e4b106",
+      "source_excerpt": {
+        "source": {
+          "sha256": "573e0e51ed65aa17f2a421acd1bb7f3bc15ce9371c21bec64383a4b27f7ef7e4",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 116400
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 116400
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.425
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 3784596825
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-5536-43358-0016-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-022/performance.wav",
+      "sha256": "272073a8fad376ac117ab46b46354e54d04461d172009b2ade51821272362202",
+      "source_excerpt": {
+        "source": {
+          "sha256": "573e0e51ed65aa17f2a421acd1bb7f3bc15ce9371c21bec64383a4b27f7ef7e4",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 116400
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 116400
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.425
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.91961669921875,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 2613793755
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6345-93302-0019-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-023/performance.wav",
+      "sha256": "ab453d61353b4be585bed404d35ab82a437aeff2ef51ecb4201899655a32e1d2",
+      "source_excerpt": {
+        "source": {
+          "sha256": "d1fd4f1ad7b6334258e6b13c4801bfccafdad5e4ab08f1230c7714d6919f7930",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 183120
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 183120
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.815
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 316223695
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6345-93302-0019-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-024/performance.wav",
+      "sha256": "4634cd89163f6b40c083867c8172d2fa1b17c191c674f4579493c61d166cdd9f",
+      "source_excerpt": {
+        "source": {
+          "sha256": "d1fd4f1ad7b6334258e6b13c4801bfccafdad5e4ab08f1230c7714d6919f7930",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 183120
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 183120
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.815
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 3802813957
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6345-93302-0019-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-025/performance.wav",
+      "sha256": "28acff8149deb757c05465cb57f3ae8e9c32c2cf783f03139d295aa7d0475cc3",
+      "source_excerpt": {
+        "source": {
+          "sha256": "d1fd4f1ad7b6334258e6b13c4801bfccafdad5e4ab08f1230c7714d6919f7930",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 183120
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 183120
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.815
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 2687994926
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6295-244435-0035-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-026/performance.wav",
+      "sha256": "e65c999a7b8af91aa3233d5b0cfdefb6c4f2177542d65de802be5a7bfc7a82e7",
+      "source_excerpt": {
+        "source": {
+          "sha256": "f13afc6c8db8ecb59d49286e92f7f9c0a9dfa92ead68507daa47e10196b321aa",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 153360
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 153360
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.195
+        ],
+        "rhythm_word_frames": [
+          135360,
+          153360
+        ],
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 573988256
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6295-244435-0035-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-027/performance.wav",
+      "sha256": "769748b872fe17ee7e8ae22defbcb851fe3b729e154312596acf227f857a9ff4",
+      "source_excerpt": {
+        "source": {
+          "sha256": "f13afc6c8db8ecb59d49286e92f7f9c0a9dfa92ead68507daa47e10196b321aa",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 153360
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 153360
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.195
+        ],
+        "rhythm_word_frames": [
+          135360,
+          153360
+        ],
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 4133228455
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6295-244435-0035-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-028/performance.wav",
+      "sha256": "c613fc134b44f36eeee945ccbd16d3cc22c0de7eb4be8e6a95595ab495c42077",
+      "source_excerpt": {
+        "source": {
+          "sha256": "f13afc6c8db8ecb59d49286e92f7f9c0a9dfa92ead68507daa47e10196b321aa",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 153360
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 153360
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.195
+        ],
+        "rhythm_word_frames": [
+          135360,
+          153360
+        ],
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 1340192421
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6313-66125-0024-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-20261030-029/performance.wav",
+      "sha256": "0db0743d16a94bea4ab73f9edc865529c88588e603bd9a2a99fd199497b35bf5",
+      "source_excerpt": {
+        "source": {
+          "sha256": "a4f04b7fb2252e20202518bba879868e0bd8efa4e2354ea1c673a51414de5e95",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 211680
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 211680
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.41
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 2180148924
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6313-66125-0024-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-001/performance.wav",
+      "sha256": "a9838caa0c6146e15f4599705189457a18d68b5d116f7ae8169ef11a78508918",
+      "source_excerpt": {
+        "source": {
+          "sha256": "a4f04b7fb2252e20202518bba879868e0bd8efa4e2354ea1c673a51414de5e95",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 211680
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 211680
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.41
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.9346923828125,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 4140697932
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6313-66125-0024-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-002/performance.wav",
+      "sha256": "913bb603efe2de136fc680e9ecc0fed69f3bcb1e47b97a5c4df9c0e623e158ac",
+      "source_excerpt": {
+        "source": {
+          "sha256": "a4f04b7fb2252e20202518bba879868e0bd8efa4e2354ea1c673a51414de5e95",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 211680
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 211680
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.41
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 2384529736
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-5338-284437-0012-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-003/performance.wav",
+      "sha256": "0039e7ad955e07f718d2eccc7eea0cd0a9dba9b6efe4489046b5bcf75a2d0404",
+      "source_excerpt": {
+        "source": {
+          "sha256": "9b4ebd64c8ffaeca63e49bd34532fe64839f49b9295c82ccc54e331ded7b8027",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 145200
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 145200
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.025
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.9134521484375,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 1814672654
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-5338-284437-0012-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-004/performance.wav",
+      "sha256": "fc38fd197c518a08ba68e25dfe4b6aae7155f35d6f94f6f18bd4cf36116d3e9e",
+      "source_excerpt": {
+        "source": {
+          "sha256": "9b4ebd64c8ffaeca63e49bd34532fe64839f49b9295c82ccc54e331ded7b8027",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 145200
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 145200
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.025
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 4134164857
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-5338-284437-0012-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-005/performance.wav",
+      "sha256": "e833f89ce63f4803171a34536a04c9e85ed09440a8e5182fd4917b1846d69d5e",
+      "source_excerpt": {
+        "source": {
+          "sha256": "9b4ebd64c8ffaeca63e49bd34532fe64839f49b9295c82ccc54e331ded7b8027",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 145200
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 145200
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.025
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 113699926
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6319-57405-0007-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-006/performance.wav",
+      "sha256": "5f77220669e37713e261dc133e42ebed0d8a2fd3a2f7202a6f8f42047f3c5cb2",
+      "source_excerpt": {
+        "source": {
+          "sha256": "67d742718111295c19d77135f3777fcf5a3e62f82d430ba3a64082d34b7c57f6",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 168240
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 168240
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.505
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 3929856264
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6319-57405-0007-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-007/performance.wav",
+      "sha256": "601c69c24e04bdec5565c2a462a8969f801411575a33eee27b202529e2c72cc9",
+      "source_excerpt": {
+        "source": {
+          "sha256": "67d742718111295c19d77135f3777fcf5a3e62f82d430ba3a64082d34b7c57f6",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 168240
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 168240
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.505
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 1784664631
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-6319-57405-0007-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-008/performance.wav",
+      "sha256": "c22aa6b679d7e1fefa3a79e21082b674123b4744990fb9027cac3c3275c11a7e",
+      "source_excerpt": {
+        "source": {
+          "sha256": "67d742718111295c19d77135f3777fcf5a3e62f82d430ba3a64082d34b7c57f6",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 168240
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 168240
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.505
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "drumandbass",
+        "energy": "high",
+        "seed": 4131040590
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-1993-147965-0001-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-009/performance.wav",
+      "sha256": "e46d5a63dd1b4f93836d2e094168283f9ab75817740000edcc92b3f40e7a3cd7",
+      "source_excerpt": {
+        "source": {
+          "sha256": "0abdaf1f01ceab51bb16e978a9163f3792a9083c69dccc872774ed53eaed51f8",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 128880
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 128880
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.685
+        ],
+        "rhythm_word_frames": null,
+        "selection": "whole-recording"
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "genre": "jazz",
+        "energy": "low",
+        "seed": 2768168715
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    },
+    "ls-1993-147965-0001-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/renders/improvise-local-audition-local-neural-qualification-corrected-20261031-010/performance.wav",
+      "sha256": "98f11609915aa5fb492c5bdd6009a10d334d85dcc66f4d6c29cae097e0a01e29",
+      "source_excerpt": {
+        "source": {
+          "sha256": "d4acdb448019b90ecaafc6e419714b4486887cf05300daa747b9a0b5df6ef358",
+          "kind": "recorded",
+          "consent_confirmed": true,
+          "processed_frames": 117120
+        },
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "start_frame": 0,
+            "end_frame": 117120
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.44
+        ],
+        "rhythm_word_frames": [
+          96000,
+          117120
+        ],
+        "selection": "excerpt"
+      },
+      "peak": 0.891265869140625,
+      "seconds": 45,
+      "direction": {
+        "genre": "funk",
+        "energy": "medium",
+        "seed": 2347753688
+      },
+      "execution_scope": "Local Metal, accepted generated singer reference and Demucs; hosted parity NOT RUN"
+    }
+  },
+  "technical": "PASS",
+  "human_listening": "NOT RUN",
+  "execution_scope": "Mixed retained hosted and local outputs; not hosted qualification"
+}

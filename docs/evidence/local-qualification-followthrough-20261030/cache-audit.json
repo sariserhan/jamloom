@@ -1,0 +1,87 @@
+{
+  "status": "PASS audited cache removal",
+  "targets": [
+    {
+      "path": "/Users/serhansari/Library/Caches/dotslash/bd/ca7d7f918f0cb1fcc2496e8f07601f4394bcfc",
+      "classification": "Regenerable downloaded tool binary cache",
+      "bytes": 269837982,
+      "root_symlink": false,
+      "contained_symlinks": 14,
+      "active_pids": [],
+      "open_files": false,
+      "inside_git_worktree": false,
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/Library/Caches/dotslash/bc/488faa1fc5542c9fb76e25bdefc075c323ed4a",
+      "classification": "Regenerable downloaded tool binary cache",
+      "bytes": 266260131,
+      "root_symlink": false,
+      "contained_symlinks": 14,
+      "active_pids": [],
+      "open_files": false,
+      "inside_git_worktree": false,
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/Library/Caches/dotslash/46/a2fd84bf190bbcce5df2ac4b2e4eb413f6fbd1",
+      "classification": "Regenerable downloaded tool binary cache",
+      "bytes": 269837895,
+      "root_symlink": false,
+      "contained_symlinks": 14,
+      "active_pids": [],
+      "open_files": false,
+      "inside_git_worktree": false,
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/.cache/convex/binaries/precompiled-2026-09-21-0cf49cb",
+      "classification": "Regenerable downloaded tool binary cache",
+      "bytes": 171482256,
+      "root_symlink": false,
+      "contained_symlinks": 0,
+      "active_pids": [],
+      "open_files": false,
+      "inside_git_worktree": false,
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/.cache/convex/binaries/precompiled-2026-07-21-82d5e9f",
+      "classification": "Regenerable downloaded tool binary cache",
+      "bytes": 166380864,
+      "root_symlink": false,
+      "contained_symlinks": 0,
+      "active_pids": [],
+      "open_files": false,
+      "inside_git_worktree": false,
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/.cache/convex/binaries/precompiled-2026-07-06-44f7aa7",
+      "classification": "Regenerable downloaded tool binary cache",
+      "bytes": 164923344,
+      "root_symlink": false,
+      "contained_symlinks": 0,
+      "active_pids": [],
+      "open_files": false,
+      "inside_git_worktree": false,
+      "removed": true
+    },
+    {
+      "path": "/Users/serhansari/.cache/convex/binaries/precompiled-2026-09-28-5c7cb5b",
+      "classification": "Regenerable downloaded tool binary cache",
+      "bytes": 171218656,
+      "root_symlink": false,
+      "contained_symlinks": 0,
+      "active_pids": [],
+      "open_files": false,
+      "inside_git_worktree": false,
+      "removed": true
+    }
+  ],
+  "initial_attempt": "Read-only downloaded bundle directory refused removal; no broadening of paths",
+  "free_before_bytes": 18352787456,
+  "free_after_bytes": 19835351040,
+  "git_status_unchanged": true,
+  "finished_unix": 1793420760.032427
+}

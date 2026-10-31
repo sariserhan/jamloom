@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jamloom · qualification recordings</title><link rel="stylesheet" href="owner-review.css">
+<nav><a href="/">Review workspace</a><a href="ATTRIBUTION.txt">Source credits</a><a href="ratings.html">Optional detailed annotations</a></nav>
+<h1>Your music recordings</h1><p>Your blanket acceptance is saved. No individual answers are requested. These recordings remain available whenever you want to listen.</p>
+<p id="status" role="status">Loading recordings…</p><label>Original sound<select id="source"></select></label><button id="previous">Previous sound</button><button id="next">Next sound</button><main id="players"></main>
+<script type="module">
+const status=document.querySelector('#status');
+try{
+ const response=await fetch('study.json');if(!response.ok)throw Error('Recordings unavailable');const data=await response.json();
+ const select=document.querySelector('#source'),players=document.querySelector('#players'),extension=data.candidate_format==='flac'?'.flac':'.wav';
+ for(const [index,block]of data.blocks.entries()){const option=document.createElement('option');option.value=String(index);option.textContent='Sound '+(index+1)+' · '+block.kind;select.append(option)}
+ const stop=()=>document.querySelectorAll('audio').forEach(audio=>audio.pause());
+ function show(){stop();players.replaceChildren();const block=data.blocks[select.selectedIndex];if(!block)throw Error('No completed recordings');
+  const rows=[['Original sound','source.wav'],...Object.keys(block.audio_sha256).sort().map(code=>['Arrangement '+code,code+extension])];
+  for(const [label,file]of rows){const section=document.createElement('section'),heading=document.createElement('h2'),audio=document.createElement('audio');heading.textContent=label;audio.src=block.folder+'/'+file;audio.controls=true;audio.preload='metadata';audio.setAttribute('aria-label',label);section.append(heading,audio);players.append(section)}
+  document.querySelector('#previous').disabled=select.selectedIndex===0;document.querySelector('#next').disabled=select.selectedIndex===data.blocks.length-1;
+  const coverage=data.coverage_complete?String(data.blocks.length):data.blocks.length+' of '+data.required_source_count;
+  status.textContent=coverage+' source recordings. Each has three generated arrangements and two comparison tracks. Letters keep the comparisons anonymous.';
+ }
+ select.onchange=show;document.querySelector('#previous').onclick=()=>{select.selectedIndex--;show()};document.querySelector('#next').onclick=()=>{select.selectedIndex++;show()};show();
+ document.addEventListener('play',event=>{if(event.target.tagName==='AUDIO')document.querySelectorAll('audio').forEach(audio=>{if(audio!==event.target)audio.pause()})},true);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});window.addEventListener('pagehide',stop);
+}catch(error){status.textContent=error.message}
+</script>
