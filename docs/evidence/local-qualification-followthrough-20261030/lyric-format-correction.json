@@ -1,0 +1,22 @@
+{
+  "status": "PASS exact seed/phrase/style reproduction after correction",
+  "failed_stage": "lyric planning; music generation NOT RUN",
+  "original_first_words": 11,
+  "original_second_lines": 9,
+  "corrected_lines": 8,
+  "distinct_lines_preserved": true,
+  "lyric_checks": {
+    "version": 3,
+    "passes": 2,
+    "removed_repeated_lines": 1,
+    "human_review": "NOT RUN"
+  },
+  "limits_unchanged": true,
+  "tests": 15,
+  "retained_successful_cases": 29,
+  "remaining_cases": 32,
+  "original_campaign": "renders/local-neural-qualification-20261030/campaign.json",
+  "original_campaign_sha256": "4f9c1cdc8f915004c9b5c044c4054641afc758bd8e5128fe26c4d2497428b508",
+  "prior_seconds": 2217.5281108329946,
+  "new_paid_compute": false
+}

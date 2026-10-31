@@ -1,0 +1,30 @@
+test_distinct_lines_and_existing_limits_are_preserved (test_reply_lyric_format.ReplyLyricFormat.test_distinct_lines_and_existing_limits_are_preserved) ... ok
+test_only_redundant_complete_lines_are_removed (test_reply_lyric_format.ReplyLyricFormat.test_only_redundant_complete_lines_are_removed) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+test_accepted_references_preserve_gender_and_validate_pinned_assets (test_singing_response.SingingPlans.test_accepted_references_preserve_gender_and_validate_pinned_assets) ... ok
+test_energy_changes_direction_without_losing_style_or_singer (test_singing_response.SingingPlans.test_energy_changes_direction_without_losing_style_or_singer) ... ok
+test_invalid_or_unbounded_plan_rejected (test_singing_response.SingingPlans.test_invalid_or_unbounded_plan_rejected) ... ok
+test_isolated_reference_requires_bound_separator_stems (test_singing_response.SingingPlans.test_isolated_reference_requires_bound_separator_stems) ... ok
+test_lyric_writer_bounds_invalid_output_retries (test_singing_response.SingingPlans.test_lyric_writer_bounds_invalid_output_retries) ... ok
+test_rap_delivery_differs_from_sung_hiphop (test_singing_response.SingingPlans.test_rap_delivery_differs_from_sung_hiphop) ... ok
+test_reference_research_requires_bound_unconditioned_synthetic_audio (test_singing_response.SingingPlans.test_reference_research_requires_bound_unconditioned_synthetic_audio) ... ok
+test_reggae_directs_the_singer_not_only_the_backing (test_singing_response.SingingPlans.test_reggae_directs_the_singer_not_only_the_backing) ... ok
+test_reggae_lyric_writer_receives_word_direction_not_band_instructions (test_singing_response.SingingPlans.test_reggae_lyric_writer_receives_word_direction_not_band_instructions) ... ok
+test_revision_and_size_checks (test_singing_response.SingingPlans.test_revision_and_size_checks) ... ok
+test_vocal_cast_varies_without_changing_language_or_requested_gender (test_singing_response.SingingPlans.test_vocal_cast_varies_without_changing_language_or_requested_gender) ... ok
+test_voices_and_styles_are_independent_and_repeatable (test_singing_response.SingingPlans.test_voices_and_styles_are_independent_and_repeatable) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.079s
+
+OK
+test_reuses_only_matching_stopped_results_and_preserves_elapsed_budget (test_local_campaign_continuation.LocalContinuation.test_reuses_only_matching_stopped_results_and_preserves_elapsed_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK

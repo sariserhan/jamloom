@@ -318,6 +318,25 @@ def validate_reply_lyrics(lyrics):
     return lyrics
 
 
+def fit_reply_lyrics(lyrics):
+    """Remove only redundant whole repeats; never drop distinct sung material."""
+    try:
+        return validate_reply_lyrics(lyrics), 0
+    except ValueError:
+        lines = [line.strip() for line in text_field(lyrics, 1600, 'reply lyrics').splitlines() if line.strip()]
+        removed = 0
+        while True:
+            sung = [(index, line) for index, line in enumerate(lines) if line not in ('[Verse]', '[Chorus]')]
+            if len(sung) <= 8 and len(' '.join(line for _, line in sung).split()) <= 60:
+                break
+            redundant = [index for index, line in sung if line in lines[:index]]
+            if len(sung) <= 4 or not redundant:
+                break
+            del lines[redundant[-1]]
+            removed += 1
+        return validate_reply_lyrics('\n'.join(lines)), removed
+
+
 def draft(root, phrase, seed, output, voice=None, genre=None, duration=None, energy=None, instrumental=False):
     if type(instrumental) is not bool:raise ValueError('Invalid instrumental choice')
     if energy is not None and (not isinstance(energy,str) or energy not in ENERGIES):raise ValueError('Invalid Improvise energy')
@@ -362,14 +381,15 @@ def draft(root, phrase, seed, output, voice=None, genre=None, duration=None, ene
             revised = generate(model, tokenizer, prompt=prompt, max_tokens=220,
                                sampler=make_sampler(temp=.5 if attempt==0 else .3, top_p=.9), verbose=False).strip()
             try:
-                c['lyrics'] = validate_reply_lyrics(revised)
+                c['lyrics'], removed_repeats = fit_reply_lyrics(revised)
                 break
             except ValueError as error:
                 if attempt:raise
                 messages.extend([{'role':'assistant','content':revised[:1600]},
                                       {'role':'user','content':f'Correct the format: {error}. Return the complete corrected lyrics.'}])
-        c['lyric_checks'] = {'version':2,
-                           'passes':attempt+1, 'human_review':'NOT RUN'}
+        c['lyric_checks'] = {'version':3,
+                           'passes':attempt+1, 'removed_repeated_lines':removed_repeats,
+                           'human_review':'NOT RUN'}
     plan = validate_plan({'schema': 'jamloom-sung-response-1', 'model_code': CODE_REVISION,
                           'weights': WEIGHT_REVISION, 'phrase': phrase,
                           'lyric_origin': 'local Qwen conversational lyrics with bounded format repair; human review pending',

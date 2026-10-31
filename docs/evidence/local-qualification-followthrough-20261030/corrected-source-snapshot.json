@@ -1,0 +1,7 @@
+{
+  "scripts/metal_singer_loader.py": "f0da0c81abaf71aa49f0dbc3ceb740984c3d8925997098d100b96ddfbf29e008",
+  "scripts/singing_response.py": "ad34effaffa9ed53802508845657851fe6675a1cb1cc04c5fb780e95ac173e78",
+  "scripts/archive_local_audition.py": "334c9a64f63d28df3cb574e7a07abdafaaea333a1e7ad0ebbe5a4482c83eb18b",
+  "scripts/run_local_improvise_qualification.py": "9a7882a0c4757ec8aef194a03ebdf8e366c430c94797bd4c47aef3ce3ef9ed02",
+  "scripts/improvise_local_audition.py": "b23f735b076473e5ef21a14ac2a5d71edd8b12ed4b134a00b5d723506715cbfc"
+}
