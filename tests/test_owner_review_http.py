@@ -42,6 +42,16 @@ class LocalSaveBoundary(unittest.TestCase):
             self.assertEqual(json.loads(path.read_text())['status'],'OWNER_SUBMITTED_REQUIRES_EVALUATION')
             conn=http.client.HTTPConnection('127.0.0.1',self.server.server_port);conn.request('GET','/../private/'+path.name);r=conn.getresponse();r.read();conn.close();self.assertEqual(r.status,404)
 
+    def test_receipts_distinguish_knowledge_from_hands_on_and_quiet_saves(self):
+        self.assertEqual(self.post(self.observation())[0],200)
+        conn=http.client.HTTPConnection('127.0.0.1',self.server.server_port)
+        conn.request('GET','/api/session');r=conn.getresponse();session=json.loads(r.read());conn.close()
+        self.assertIn('no-store',r.getheader('Cache-Control').split(', '))
+        self.assertEqual(session['received']['novice']['count'],1)
+        self.assertTrue(session['received']['novice']['latest'].endswith('-novice.json'))
+        for kind in ('practice','silence'):
+            self.assertEqual(session['received'][kind],{'count':0,'latest':None})
+
     def test_registered_studies_preserve_old_saves_and_reject_unknown_freezes(self):
         registry={'old':'music','new':'music-excerpts'}
         (self.public/'music-studies.json').write_text(json.dumps(registry))

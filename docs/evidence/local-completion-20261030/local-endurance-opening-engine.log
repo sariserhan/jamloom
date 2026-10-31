@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/dj_metal_server.py", line 104, in <module>
+    else:supervise(args.output)
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/dj_metal_server.py", line 82, in supervise
+    if problem:raise RuntimeError(problem)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Swap growth limit reached

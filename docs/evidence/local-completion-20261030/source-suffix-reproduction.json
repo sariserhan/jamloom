@@ -1,0 +1,56 @@
+{
+  "status": "PASS local source selection",
+  "source_sha256": "9efd519c520b7ff22eb362b5aaaecc9707d12183d6d6feb19efdce210d18a1b0",
+  "before_spans": [
+    [
+      0,
+      3.92
+    ],
+    [
+      0,
+      3.44
+    ]
+  ],
+  "after": [
+    {
+      "attempt": 0,
+      "span": [
+        0,
+        3.92
+      ],
+      "sha256": "07d8ae815f1f00505334ae819dae99174f8746e58e21edae0f22b47f73c1ca86",
+      "path": "renders/source-suffix-quiet-20261030/source.wav"
+    },
+    {
+      "attempt": 1,
+      "span": [
+        0,
+        3.44
+      ],
+      "sha256": "0fea824d9e2a977bebd85211f11a5311dfe58e0209868901f214b8dc65c8a747",
+      "path": "renders/source-suffix-quiet-20261030/source-1.wav"
+    },
+    {
+      "attempt": 2,
+      "span": [
+        2.42,
+        3.44
+      ],
+      "sha256": "c837c5c12b9d3ae9e68315445bdee44029365f85918525ed8d2223d6c049c665",
+      "path": "renders/source-suffix-quiet-20261030/source-2.wav"
+    },
+    {
+      "attempt": 3,
+      "span": [
+        2.66,
+        3.44
+      ],
+      "sha256": "ef13e9a7a8dcbc4df4037140f473c66eeafb3aa496f385da8d14cf16d3c64901",
+      "path": "renders/source-suffix-quiet-20261030/source-3.wav"
+    }
+  ],
+  "source_unchanged": true,
+  "speech_boundaries": "Model estimates expanded to measured quiet; owner listening NOT RUN",
+  "failed_cloud_take_cause": "Unresolved; take was not retained",
+  "cloud_requests": 0
+}

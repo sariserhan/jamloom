@@ -1,0 +1,172 @@
+TAP version 13
+# Subtest: beat handoffs stay inside strong audio and do not cross gaps in measured regions
+ok 1 - beat handoffs stay inside strong audio and do not cross gaps in measured regions
+  ---
+  duration_ms: 0.7045
+  type: 'test'
+  ...
+# Subtest: measured steady beats enable only short aligned handoffs and reject drift
+ok 2 - measured steady beats enable only short aligned handoffs and reject drift
+  ---
+  duration_ms: 129.216292
+  type: 'test'
+  ...
+# Subtest: phrase matching requires reviewed instrumental regions and bounds tempo changes
+ok 3 - phrase matching requires reviewed instrumental regions and bounds tempo changes
+  ---
+  duration_ms: 0.606083
+  type: 'test'
+  ...
+# Subtest: fallback ends before exhaustion, changes no tempo, and handles late preparation
+ok 4 - fallback ends before exhaustion, changes no tempo, and handles late preparation
+  ---
+  duration_ms: 0.153334
+  type: 'test'
+  ...
+# Subtest: a conservative handoff skips an unsupported opening only with a validated early steady entry
+ok 5 - a conservative handoff skips an unsupported opening only with a validated early steady entry
+  ---
+  duration_ms: 0.062125
+  type: 'test'
+  ...
+# Subtest: review and cached metadata are hash bound and reject fabricated bounds
+ok 6 - review and cached metadata are hash bound and reject fabricated bounds
+  ---
+  duration_ms: 0.137125
+  type: 'test'
+  ...
+# Subtest: upgrading numerical analysis preserves existing human mix-point reviews
+ok 7 - upgrading numerical analysis preserves existing human mix-point reviews
+  ---
+  duration_ms: 23.550167
+  type: 'test'
+  ...
+# Subtest: analysis measures actual audio and exposes uncertainty without inventing a reviewed grid
+ok 8 - analysis measures actual audio and exposes uncertainty without inventing a reviewed grid
+  ---
+  duration_ms: 33.898542
+  type: 'test'
+  ...
+# Subtest: vocal loop requires matching measured beat timing and a brief approved cue
+ok 9 - vocal loop requires matching measured beat timing and a brief approved cue
+  ---
+  duration_ms: 1.260333
+  type: 'test'
+  ...
+# Subtest: section grids tolerate breakdowns but reject noise, drift and unsafe mix edges
+ok 10 - section grids tolerate breakdowns but reject noise, drift and unsafe mix edges
+  ---
+  duration_ms: 129.005875
+  type: 'test'
+  ...
+# Subtest: silent outer padding is skipped without removing internal musical rests or trusting invalid cached edges
+ok 11 - silent outer padding is skipped without removing internal musical rests or trusting invalid cached edges
+  ---
+  duration_ms: 112.090875
+  type: 'test'
+  ...
+# Subtest: sustained energy mix edges avoid weak fade tails while retaining internal breaks
+ok 12 - sustained energy mix edges avoid weak fade tails while retaining internal breaks
+  ---
+  duration_ms: 157.811333
+  type: 'test'
+  ...
+# Subtest: automatic moves use steady measured beats, leave transition space and hold on uncertain audio
+ok 13 - automatic moves use steady measured beats, leave transition space and hold on uncertain audio
+  ---
+  duration_ms: 2.365625
+  type: 'test'
+  ...
+# Subtest: chill holds the track and uses a longer blend; style cooldowns retain beat and safety guards
+ok 14 - chill holds the track and uses a longer blend; style cooldowns retain beat and safety guards
+  ---
+  duration_ms: 0.161916
+  type: 'test'
+  ...
+# Subtest: vocal tracks cannot use an unreviewed one-bar bass exchange
+ok 15 - vocal tracks cannot use an unreviewed one-bar bass exchange
+  ---
+  duration_ms: 0.11325
+  type: 'test'
+  ...
+# Subtest: mix entries ignore isolated intro hits and weak tails without deleting internal breaks
+ok 16 - mix entries ignore isolated intro hits and weak tails without deleting internal breaks
+  ---
+  duration_ms: 194.416166
+  type: 'test'
+  ...
+# Subtest: late sustained groove entries survive validation and reach the transition planner
+ok 17 - late sustained groove entries survive validation and reach the transition planner
+  ---
+  duration_ms: 133.99025
+  type: 'test'
+  ...
+# Subtest: extended instrumental overlap requires complete steady regions and leaves thirty seconds for preparation
+ok 18 - extended instrumental overlap requires complete steady regions and leaves thirty seconds for preparation
+  ---
+  duration_ms: 0.149541
+  type: 'test'
+  ...
+# Subtest: prepared instrumental handoff avoids a late sustained collapse without removing earlier rests
+ok 19 - prepared instrumental handoff avoids a late sustained collapse without removing earlier rests
+  ---
+  duration_ms: 0.091459
+  type: 'test'
+  ...
+# Subtest: body loudness is bounded and energy metadata cannot bypass validation
+ok 20 - body loudness is bounded and energy metadata cannot bypass validation
+  ---
+  duration_ms: 10.583583
+  type: 'test'
+  ...
+# Subtest: local qualification simulates only rental inventory and shutdown, never provider traffic
+ok 21 - local qualification simulates only rental inventory and shutdown, never provider traffic
+  ---
+  duration_ms: 25.555667
+  type: 'test'
+  ...
+# Subtest: lost Start and Next replies replay identical operations and deliver each track once
+ok 22 - lost Start and Next replies replay identical operations and deliver each track once
+  ---
+  duration_ms: 510.574584
+  type: 'test'
+  ...
+# Subtest: session transport retries transient responses once, but not permissions, credits, unknown writes or cancellation
+ok 23 - session transport retries transient responses once, but not permissions, credits, unknown writes or cancellation
+  ---
+  duration_ms: 766.904083
+  type: 'test'
+  ...
+# Subtest: starting direction is requoted without accepting a higher price
+ok 24 - starting direction is requoted without accepting a higher price
+  ---
+  duration_ms: 0.713167
+  type: 'test'
+  ...
+# Subtest: carried DJ allowance may top up within the accepted maximum, but a higher tariff or maximum needs approval
+ok 25 - carried DJ allowance may top up within the accepted maximum, but a higher tariff or maximum needs approval
+  ---
+  duration_ms: 0.616542
+  type: 'test'
+  ...
+# Subtest: DJ price labels distinguish generated time, carried allowance and a whole-credit top-up
+ok 26 - DJ price labels distinguish generated time, carried allowance and a whole-credit top-up
+  ---
+  duration_ms: 18.791041
+  type: 'test'
+  ...
+# Subtest: beat instructions travel with the next request and playback uses delivered batch metadata
+ok 27 - beat instructions travel with the next request and playback uses delivered batch metadata
+  ---
+  duration_ms: 0.782875
+  type: 'test'
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 27
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1399.330792

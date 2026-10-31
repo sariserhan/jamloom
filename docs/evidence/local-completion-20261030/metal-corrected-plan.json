@@ -1,0 +1,16 @@
+{
+  "status": "AUTHORIZED_LOCAL",
+  "owner_request": "finish the remaining works; use this computer gpu; closed unused apps",
+  "scope": "One new local probe after reproduced rotary-buffer dtype correction; preserves prior failed attempt. Same weights, resource and timing limits. No paid compute.",
+  "per_track_seconds": 30,
+  "max_generation_requests": 1,
+  "max_wall_seconds": 600,
+  "limits": "Same existing 4 GiB starting / 1 GiB running available memory, 8 GiB process RSS, 2 GiB additional swap, 15 GiB free disk.",
+  "files": {
+    "scripts/dj_metal_probe.py": "3172d42c8edc2dcf2b5361cf341fb560a6f41772524cc9ee038c5d1923e1a5dd",
+    "scripts/singing_response.py": "b451831280693671e0703e40bbfb64878ce4947c74501b849ec7729b94c8df2d",
+    "scripts/metal_singer_loader.py": "0e20ce29eae1cae41d41653879799ec796deb2e5678889aefca7f3d162775ed4",
+    "scripts/dj_warm_engine.py": "30bbadab67a5c36bbe3f5def823eec807c75cb5d75461c02e926c0d30eb18e6e",
+    "scripts/dj_track_worker.py": "3c2de702ce18c8dee8fa9964c4e076fe349e444124b1d80d7fd73866cd8cddae"
+  }
+}

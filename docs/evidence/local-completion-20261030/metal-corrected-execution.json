@@ -1,0 +1,18 @@
+{
+  "status": "PASS timing probe only",
+  "paid_compute": false,
+  "device_requested": "mps",
+  "model_requests_max": 1,
+  "model_requests_started": 1,
+  "timeout_seconds": 600,
+  "per_track_deadline_ms": 30000,
+  "disk_floor_bytes": 16106127360,
+  "initial_available_bytes": 9749430272,
+  "peak_process_group_rss_bytes": 2716303360,
+  "peak_swap_growth_bytes": 595329024,
+  "minimum_available_bytes": 2481307648,
+  "human_listening": "NOT RUN",
+  "seconds": 30.777275041000394,
+  "exit_code": 0,
+  "compute_ms": 18821
+}

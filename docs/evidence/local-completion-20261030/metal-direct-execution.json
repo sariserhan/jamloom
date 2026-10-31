@@ -1,0 +1,18 @@
+{
+  "status": "FAIL",
+  "paid_compute": false,
+  "device_requested": "mps",
+  "model_requests_max": 1,
+  "model_requests_started": 1,
+  "timeout_seconds": 600,
+  "per_track_deadline_ms": 30000,
+  "disk_floor_bytes": 16106127360,
+  "initial_available_bytes": 9197649920,
+  "peak_process_group_rss_bytes": 1611907072,
+  "peak_swap_growth_bytes": 1453457408,
+  "minimum_available_bytes": 1824800768,
+  "human_listening": "NOT RUN",
+  "seconds": 16.811868249998952,
+  "exit_code": -6,
+  "error": "Metal probe failed; see execution.log"
+}

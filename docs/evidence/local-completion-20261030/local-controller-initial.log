@@ -1,0 +1,27 @@
+EE
+======================================================================
+ERROR: test_startup_failure_stops_only_its_matching_supervisor (tests.test_local_dj_qualification.LocalQualification.test_startup_failure_stops_only_its_matching_supervisor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/tests/test_local_dj_qualification.py", line 21, in test_startup_failure_stops_only_its_matching_supervisor
+    with self.assertRaisesRegex(RuntimeError,'stopped during startup'):runner.run(folder)
+                                                                       ^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_dj_qualification.py", line 16, in run
+    raise ValueError('Expected an isolated local endurance folder')
+ValueError: Expected an isolated local endurance folder
+
+======================================================================
+ERROR: test_waits_for_readiness_and_cleans_up_failed_client (tests.test_local_dj_qualification.LocalQualification.test_waits_for_readiness_and_cleans_up_failed_client)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/tests/test_local_dj_qualification.py", line 35, in test_waits_for_readiness_and_cleans_up_failed_client
+    with self.assertRaisesRegex(RuntimeError,'qualification failed'):runner.run(folder)
+                                                                     ^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_dj_qualification.py", line 16, in run
+    raise ValueError('Expected an isolated local endurance folder')
+ValueError: Expected an isolated local endurance folder
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.006s
+
+FAILED (errors=2)

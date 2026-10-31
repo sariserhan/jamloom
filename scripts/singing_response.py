@@ -134,6 +134,11 @@ def variants(seed):
 def caption(case):
     if 'song_caption' in case:
         return case['song_caption']
+    if case.get('instrumental') is True:
+        from improvise_vocals import INSTRUMENTAL_STYLES
+        return (f"{INSTRUMENTAL_STYLES[case['genre']]}. {ENERGIES.get(case.get('energy'), '')} "
+                'Instrumental performance, no sung or spoken vocals. Detailed production, '
+                'expressive interplay, developing arrangement and resolved ending.')
     if 'energy' in case:
         energy = case['energy']
         if not isinstance(energy,str) or energy not in ENERGIES:raise ValueError('Invalid Improvise energy')
@@ -203,6 +208,14 @@ def validate_plan(plan):
             raise ValueError('Invalid timing or repetition budget')
         code=language(c.get('vocal_language','en'))
         lyrics = text_field(c.get('lyrics'), 4000 if song else 1600, 'lyrics')
+        if 'instrumental' in c:
+            from improvise_vocals import INSTRUMENTAL_STYLES
+            if type(c['instrumental']) is not bool or song:
+                raise ValueError('Instrumental choice is Improvise-only')
+            if c['instrumental']:
+                if genre not in INSTRUMENTAL_STYLES or lyrics != '[Instrumental]' or c.get('vocal_identity') or c.get('singer_reference'):
+                    raise ValueError('Invalid instrumental arrangement or singer reference')
+                continue
         words = re.sub(r'\[[^\]]*\]', '', lyrics).split()
         units,bounds=lyric_units(lyrics,code)
         if not (bounds[0] <= units <= bounds[1] if song else 8 <= len(words) <= 85):
@@ -305,7 +318,8 @@ def validate_reply_lyrics(lyrics):
     return lyrics
 
 
-def draft(root, phrase, seed, output, voice=None, genre=None, duration=None, energy=None):
+def draft(root, phrase, seed, output, voice=None, genre=None, duration=None, energy=None, instrumental=False):
+    if type(instrumental) is not bool:raise ValueError('Invalid instrumental choice')
     if energy is not None and (not isinstance(energy,str) or energy not in ENERGIES):raise ValueError('Invalid Improvise energy')
     phrase = text_field(phrase, MAX_PHRASE_CHARS, 'source phrase')
     if voice is not None and voice not in VOICES or genre is not None and genre not in STYLES:
@@ -313,6 +327,16 @@ def draft(root, phrase, seed, output, voice=None, genre=None, duration=None, ene
     cases = [c for c in variants(seed) if (voice is None or c['voice'] == voice) and (genre is None or c['genre'] == genre)][:4]
     if output.exists():
         raise FileExistsError('Preserving existing lyric plan')
+    if instrumental:
+        for c in cases:
+            c.update(instrumental=True,lyrics='[Instrumental]')
+            if energy is not None:c['energy']=energy
+            if duration is not None:c['duration']=validate_duration('improvise',duration)
+        plan=validate_plan({'schema':'jamloom-sung-response-1','model_code':CODE_REVISION,
+                           'weights':WEIGHT_REVISION,'phrase':phrase,'cases':cases,
+                           'lyric_origin':'Improvise music-led arrangement; no generated lyrics'})
+        with output.open('x') as f:f.write(json.dumps(plan,indent=2)+'\n')
+        return
     set_seed, generate, make_sampler = planner_functions()
     model, tokenizer, manifest = lyric_model(root)
     for c in cases:
@@ -453,6 +477,9 @@ def load_singer_engine(root, mac_small_decode=False):
     from acestep.llm_inference import LLMHandler
     class MacSingerHandler(AceStepHandler):
         def _load_main_model_from_checkpoint(self, **kwargs):
+            if mac_small_decode:
+                from metal_singer_loader import load_metal_dit
+                return load_metal_dit(self, **kwargs)
             # Avoid simultaneous float32 CPU/GPU copies exceeding the 16 GiB Mac.
             self.dtype = torch.bfloat16
             return super()._load_main_model_from_checkpoint(**kwargs)
@@ -482,6 +509,8 @@ def sing(root, plan_path, output, case_id, conditioning_path=None, reference_sin
     if len(cases) != 1:
         raise ValueError('Select a case present in the plan')
     c = cases[0].copy()
+    if c.get('instrumental') and (conditioning_path or reference_singer or reference_vocals):
+        raise ValueError('Instrumental Improvise does not accept singer or conditioning references')
     conditioning = source_conditioning(conditioning_path) if conditioning_path else None
     if c.get('vocal_identity') and (conditioning or reference_singer):
         raise ValueError('Singer identities require original singing without other references')
@@ -511,7 +540,7 @@ def sing(root, plan_path, output, case_id, conditioning_path=None, reference_sin
     torch.set_num_threads(4)
     random.seed(c['seed']); np.random.seed(c['seed']); torch.manual_seed(c['seed'])
     dit, lm = load_singer_engine(root, mac_small_decode)
-    instrumental = bool(conditioning and conditioning['instrumental'])
+    instrumental = c.get('instrumental') is True or bool(conditioning and conditioning['instrumental'])
     source_params = ({'task_type': 'cover', 'src_audio': conditioning['audio'],
                       'audio_cover_strength': conditioning['strength']} if conditioning else {})
     if reference:source_params['reference_audio']=reference['audio']
@@ -570,13 +599,14 @@ if __name__ == '__main__':
     p.add_argument('--voice', choices=tuple(VOICES))
     p.add_argument('--genre', choices=tuple(STYLES))
     p.add_argument('--energy', choices=tuple(ENERGIES))
+    p.add_argument('--instrumental',action='store_true',help='Improvise music-led arrangement without generated singing')
     p.add_argument('--conditioning', type=Path, help='Private source-led research guide; optional')
     p.add_argument('--reference-singer',type=Path,help='Local research only: receipt-bound generated 30-second singer directory')
     p.add_argument('--reference-vocals',action='store_true',help='Research only: use the pinned separated vocal stem from the reference singer')
     p.add_argument('--mac-small-decode',action='store_true',help='Local research: bounded PyTorch MPS decode tiles')
     a = p.parse_args()
     if a.phase == 'draft':
-        draft(runtime(a.runtime), a.phrase, a.seed, a.output, a.voice, a.genre, a.duration, a.energy)
+        draft(runtime(a.runtime), a.phrase, a.seed, a.output, a.voice, a.genre, a.duration, a.energy,a.instrumental)
     else:
         if a.plan is None or a.case is None:
             p.error('sing requires --plan and --case')

@@ -1,0 +1,10 @@
+{
+  status: 'playing',
+  scope: 'Retained real audio; 35-second successor delay; real browser playback and automatic handoff',
+  openingPosition: 0,
+  mixStart: 22.5,
+  history: [ '0', '1' ],
+  elapsed: 55.752,
+  muted: true,
+  humanListening: 'NOT RUN'
+}

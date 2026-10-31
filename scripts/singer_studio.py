@@ -122,6 +122,36 @@ def sample_candidate(work, speech, genre, seconds, seed=0, attempt=0):
     # Random variety must not be a reason to discard a word from a usable call.
     if (0,seconds) in candidates:
         candidates.remove((0,seconds));candidates.insert(0,(0,seconds))
+    # A continuous sentence may have no pause-bounded subclause. After trying
+    # whole phrases, allow a short ending made only of confident complete words.
+    # Keep one such fallback inside the four-attempt budget; never time-slice a word.
+    words=speech.get('words',[])
+    suffixes=[]
+    quiet_spans=[(float(a)/100,float(b)/100) for a,b in intervals(~active) if b-a>=3]
+    if isinstance(words,list):
+        for count in (3,2,1,4):
+            if len(words)<count:continue
+            tail=words[-count:]
+            if not all(isinstance(w,dict) and type(w.get('start_frame')) is int
+                       and type(w.get('end_frame')) is int
+                       and 0<=w['start_frame']<w['end_frame']<=seconds*rate
+                       and type(w.get('confidence')) in (int,float)
+                       and .85<=w['confidence']<=1 for w in tail):continue
+            if any(a['end_frame']>b['start_frame'] or b['start_frame']-a['end_frame']>.3*rate
+                   for a,b in zip(tail,tail[1:])):continue
+            a,b=tail[0]['start_frame']/rate,tail[-1]['end_frame']/rate
+            if .35<=b-a<=2.5:
+                # ASR timing alone can cut a consonant. Expand only to nearby
+                # measured quiet boundaries, retaining a little room on each side.
+                starts=[max(lo,hi-.02) for lo,hi in quiet_spans if a-.3<=hi<=a+.03]
+                ends=[min(seconds,hi,max(b+.04,lo+.03)) for lo,hi in quiet_spans if hi>=b and b-.3<=lo<=b+.3]
+                if a<=.04:starts.append(0.)
+                if seconds-b<=.04:ends.append(seconds)
+                if not starts or not ends:continue
+                span=(max(starts),min(ends))
+                if not .35<=span[1]-span[0]<=2.8:continue
+                if span not in candidates and span not in suffixes:suffixes.append(span)
+    if suffixes:candidates=candidates[:3]+suffixes
     if attempt>=len(candidates):return None
     a,b=candidates[attempt]
     source=work/('source.wav' if attempt==0 else f'source-{attempt}.wav')
@@ -161,6 +191,8 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None)
     duration=choose_duration('improvise',seed,duration)
     chosen_voice = secrets.choice(tuple(VOICES)) if voice == 'surprise' else voice
     chosen_genre = secrets.choice(tuple(STYLES)) if genre == 'surprise' else genre
+    from improvise_vocals import choose_instrumental
+    instrumental=choose_instrumental(chosen_genre,voice,seed)
     work = OUTPUT / uuid.uuid4().hex
     work.mkdir(parents=True)
     (work / '.partial').touch()
@@ -193,10 +225,11 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None)
         stage = 'Writing the lyrics'
         with (work / 'draft-private.log').open('w') as log:
             subprocess.run([*command, 'draft', '--runtime', str(RUNTIME), '--phrase', phrase, '--voice', chosen_voice,
-                            '--genre', chosen_genre, '--duration', str(duration), '--seed', str(seed), '--output', str(plan_path), *(['--energy',energy] if energy is not None else [])],
+                            '--genre', chosen_genre, '--duration', str(duration), '--seed', str(seed), '--output', str(plan_path), *(['--energy',energy] if energy is not None else []), *(['--instrumental'] if instrumental else [])],
                            stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
         plan = load_plan(plan_path)
         case = plan['cases'][0]
+        if bool(case.get('instrumental'))!=instrumental:raise StudioError('The vocal direction was not preserved.')
         if energy is not None and case.get('energy')!=energy:raise StudioError('The energy direction was not preserved.')
         singer = work / 'singer'
         stage = 'Generating the singer and music'
@@ -230,6 +263,8 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None)
             raise StudioError('Could not blend your recording without clashing with the song. Try another style or take; no song without your recording is delivered.')
         if energy is not None:report['musical_direction']={'genre':chosen_genre,'energy':energy,'seed':seed}
         report['meaning_origin']=interpretation
+        report['generated_vocals']=not instrumental
+        report['vocal_policy']='improvise-style-choice-1; explicit singer preserved; musical acceptance requires listening'
         (result_dir/'complete.json').write_text(json.dumps(report,indent=2)+'\n')
     except (ValueError, OSError, subprocess.SubprocessError) as error:
         failure={'stage':stage,'error_type':type(error).__name__}
@@ -242,7 +277,7 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None)
     placement = ('Your sound returns as a rhythmic hook within the song.' if len(report['events'])>1 or report['pattern']=='word-reply' else
                  'Your sound takes a musical turn within the song.')
     return (str(singer/'singer.wav'), str(result_dir/'performance.wav'), case['lyrics'],
-            f"{chosen_voice.title()} · {STYLE_LABELS[chosen_genre]}. Inspired by {interpretation}. {placement}",phrase)
+            f"{'Instrumental' if instrumental else chosen_voice.title()} · {STYLE_LABELS[chosen_genre]}. Inspired by {interpretation}. {placement}",phrase)
 
 
 def generate(*args):

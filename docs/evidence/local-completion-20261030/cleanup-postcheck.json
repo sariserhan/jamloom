@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "scope": "Read-only postcheck of retained test session IDs; unrelated objects not exposed or changed",
+  "testSessions": 5,
+  "matchingR2Objects": 0,
+  "matchingMultipartUploads": 0,
+  "remainingLocalDJTestDatabases": 0,
+  "attempts": [
+    {
+      "folder": "dj-metal-endurance-20261030",
+      "cleanup": {
+        "testOwnersPurged": 2,
+        "recordingObjectsPurged": true,
+        "isolatedDatabaseDropped": true
+      },
+      "watchdogStatus": "STOPPED",
+      "childStopped": true
+    },
+    {
+      "folder": "dj-metal-endurance-20261030-startup",
+      "cleanup": {
+        "testOwnersPurged": 2,
+        "recordingObjectsPurged": true,
+        "isolatedDatabaseDropped": true
+      },
+      "watchdogStatus": "STOPPED",
+      "childStopped": true
+    },
+    {
+      "folder": "dj-metal-endurance-20261030-worklet",
+      "cleanup": {
+        "testOwnersPurged": 3,
+        "recordingObjectsPurged": true,
+        "isolatedDatabaseDropped": true
+      },
+      "watchdogStatus": "STOPPED",
+      "childStopped": true
+    },
+    {
+      "folder": "dj-metal-endurance-20261030-opening",
+      "cleanup": {
+        "testOwnersPurged": 0,
+        "recordingObjectsPurged": true,
+        "isolatedDatabaseDropped": true
+      },
+      "watchdogStatus": "FAIL",
+      "childStopped": true
+    }
+  ]
+}

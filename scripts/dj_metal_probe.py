@@ -66,7 +66,9 @@ def run(output):
         model_requests_max=1, model_requests_started=0, timeout_seconds=600,
         per_track_deadline_ms=30000, disk_floor_bytes=15*GIB,
         initial_available_bytes=psutil.virtual_memory().available,
-        peak_process_group_rss_bytes=0, human_listening='NOT RUN')
+        peak_process_group_rss_bytes=0, peak_swap_growth_bytes=0,
+        minimum_available_bytes=psutil.virtual_memory().available,
+        human_listening='NOT RUN')
     started = time.monotonic()
     swap = psutil.swap_memory().used
     process = None
@@ -91,8 +93,12 @@ def run(output):
                     state['model_requests_started']=1
                     if time.time()-json.loads(phase.read_text())['started_at']>35:
                         raise RuntimeError('30-second generation deadline exceeded; stopping the probe')
-                problem=resource_problem(psutil.virtual_memory().available,shutil.disk_usage(ROOT).free,
-                    rss,time.monotonic()-started,max(0,psutil.swap_memory().used-swap))
+                available=psutil.virtual_memory().available
+                swap_growth=max(0,psutil.swap_memory().used-swap)
+                state['minimum_available_bytes']=min(state['minimum_available_bytes'],available)
+                state['peak_swap_growth_bytes']=max(state['peak_swap_growth_bytes'],swap_growth)
+                problem=resource_problem(available,shutil.disk_usage(ROOT).free,
+                    rss,time.monotonic()-started,swap_growth)
                 if problem: raise RuntimeError(problem)
                 state['seconds']=time.monotonic()-started
                 save(output/'execution.json',state)

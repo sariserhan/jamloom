@@ -1,0 +1,31 @@
+{
+  "base_commit": "f606db3a4cf1eba1876ca8f400396f340ce0ba8c",
+  "deployment": false,
+  "live_payments": false,
+  "files": {
+    "scripts/metal_singer_loader.py": "0e20ce29eae1cae41d41653879799ec796deb2e5678889aefca7f3d162775ed4",
+    "scripts/dj_metal_probe.py": "3172d42c8edc2dcf2b5361cf341fb560a6f41772524cc9ee038c5d1923e1a5dd",
+    "scripts/dj_metal_server.py": "c424874899826ad391fd0d4c91919e274a69958bb34d305d90269454314b6f24",
+    "scripts/run_local_dj_qualification.py": "c11ee052c6356a2ef99d658d62c8f5abe230affe54a9da9039335687eee012d7",
+    "scripts/improvise_vocals.py": "a008a882f330c90c33e3e2a280634e940410fdbfcdc08c78a310089a6c174b0d",
+    "scripts/singer_studio.py": "59b55d5a5bb8beb9de459f8dbf17c4d3b6e82610726114d9f10dd75936339214",
+    "scripts/singing_response.py": "9fcd13546b49b726b513cd3d202a0fc297d4dac559523d13639a446ad6662b80",
+    "scripts/owner_review_server.py": "275b89890c0b2539645d6be0579664f3e8b3865d27f3045287ddfa23703eb51c",
+    "apps/site/lib/ai-dj-player.ts": "8a484019a7db53c83e976ff0cf25943139e80c2d902c7ea480f42af9c7b54556",
+    "apps/site/tests/dj-warm-qualification.mjs": "196995a978006908e9b63af4e9fedf50cc4140cb7576ec8d0d6b94e7d9c04f21",
+    "apps/site/tests/dj-ui-preflight.mjs": "0ee08e7ce0e996922dcddf40c55cb4d4480540d5e8451f19888bacd525da4d98",
+    "apps/site/tests/dj-local-provider.mjs": "ce15611731d915de9b12d1bf0841e27ca64e2207bd85dd7cdf86f5b02c65fd32",
+    "apps/site/tests/dj-generated-opening.mjs": "dad3bfb1845426dfbb2b7edd067bf2c972d0b0df2165ef67c1a951fa88e2aa45",
+    "apps/site/app/improvise/create.tsx": "7dd6ccde15022600d6e0c7b1c9238222811c2894e128bcb72babb260b5d23e9c",
+    "apps/listening/owner-workspace.html": "30c4a114fe7e4f4920e7e19427826cef725d2f7913b0e6d7790bc824ea64594e",
+    "services/runpod/Dockerfile": "d986011a081dd75749e57faad83b93e8e58e22d8699d4f1026a4762a22002eee"
+  },
+  "validation_scope": "Current working tree; unrelated pre-existing changes preserved and not included in this commit.",
+  "test_files": {
+    "tests/test_runpod_worker.py": "0bce6a12cd686aba26ded59b6e7218118ac5bcf3f008f546ccda735e1c26fb52",
+    "tests/test_improvise_vocals.py": "3fd280988a1fc6ad6e66d471041b9cae2154a114eb1bf27219058a4cd1dfa426",
+    "tests/test_singer_studio.py": "3bd8f6121ac2ea6bca9f02377d4c7e55e82ae0f1ffcc1cef2416b767ec4bcfad",
+    "tests/test_singing_response.py": "c64364423a508f90b9eedc7c905d4c9f0f18885032a508fe9d3a1d60c05195da",
+    "tests/test_local_dj_qualification.py": "379ca26508acd32d681e12e9a15dad895b8fedd79eb87a05039fc3dbc70ba16d"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "width": 1280,
+      "status": "PASS",
+      "automaticChoiceExplained": true,
+      "explicitSingerSelectable": true,
+      "noMutations": true
+    },
+    {
+      "width": 390,
+      "status": "PASS",
+      "automaticChoiceExplained": true,
+      "explicitSingerSelectable": true,
+      "noMutations": true
+    }
+  ]
+}

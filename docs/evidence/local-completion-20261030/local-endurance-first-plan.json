@@ -1,0 +1,30 @@
+{
+  "status": "AUTHORIZED_LOCAL",
+  "owner_request": "finish the remaining works; use this computer gpu; closed",
+  "scope": "Two-hour fresh local Metal customer-flow qualification, one model worker, real private R2 recordings and isolated PostgreSQL; rental inventory/cost/shutdown simulated and NOT hosted capacity evidence.",
+  "paid_compute": false,
+  "max_seconds": 9000,
+  "max_requests": 180,
+  "max_tracks": 150,
+  "per_request_seconds": 30,
+  "stop_on_failure": true,
+  "replacement_worker": false,
+  "deployment": false,
+  "live_payments": false,
+  "cleanup": "Stop local renderer; purge test identities, recordings and database; verify recording URLs absent.",
+  "files": {
+    "scripts/dj_metal_server.py": "c424874899826ad391fd0d4c91919e274a69958bb34d305d90269454314b6f24",
+    "scripts/dj_metal_probe.py": "3172d42c8edc2dcf2b5361cf341fb560a6f41772524cc9ee038c5d1923e1a5dd",
+    "scripts/metal_singer_loader.py": "0e20ce29eae1cae41d41653879799ec796deb2e5678889aefca7f3d162775ed4",
+    "scripts/singing_response.py": "b451831280693671e0703e40bbfb64878ce4947c74501b849ec7729b94c8df2d",
+    "scripts/dj_warm_engine.py": "30bbadab67a5c36bbe3f5def823eec807c75cb5d75461c02e926c0d30eb18e6e",
+    "scripts/dj_track_worker.py": "3c2de702ce18c8dee8fa9964c4e076fe349e444124b1d80d7fd73866cd8cddae",
+    "apps/site/tests/dj-warm-qualification.mjs": "eeeb73198a5b85ca623034f70242f30d221d9e2e481cc2b4f577bb702482e396",
+    "apps/site/tests/dj-local-provider.mjs": "ce15611731d915de9b12d1bf0841e27ca64e2207bd85dd7cdf86f5b02c65fd32",
+    "apps/site/tests/dj-qualification-process.mjs": "9308a7e76fc4a4a6671999bf4f03cfd091c9db6d6200bb4d6fb105aeb032bd0e",
+    "apps/site/scripts/dj-warm-worker.ts": "72e5d37f9d474624ca953b407d5b831e636691187721ec434ed5c8ec83460c52",
+    "apps/site/lib/dj-remote-worker.ts": "678ab5ca29cbef35a8d04ddf0576024a9ed536521badbc2027e9b7c903a64fdc",
+    "apps/site/lib/dj-warm-worker.ts": "a7ba8b201c687720c42ec64b419c1fac3fa12c1c0ffc83ce00cbfdae18a987dc",
+    "scripts/run_local_dj_qualification.py": "5460f52d078b42e7e5b12c2fd3dfd94d93bbe269c41f7711d371e767b77cf1e4"
+  }
+}

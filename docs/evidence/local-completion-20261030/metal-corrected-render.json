@@ -1,0 +1,35 @@
+{
+  "receipt": {
+    "version": 1,
+    "engine": "a79063ed2fa9a2cab8291a68f69e7bba",
+    "job": "a96177de-9156-4999-a506-13f661642262",
+    "request": {
+      "version": 1,
+      "session": "50820a30028b4fb3815654c097da5a0f",
+      "sequence": 0,
+      "seed": 20301030,
+      "style": "house",
+      "energy": 4,
+      "mood": "warm"
+    },
+    "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+    "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+    "compute_ms": 18821,
+    "bytes": 11520044,
+    "sha256": "f5cd3a0cb1f6b22b84628ec61887fed40911e5d09fec72e74b95ff4a1cb6558c",
+    "vocal": null,
+    "vocal_check": {
+      "status": "disabled",
+      "generated": false
+    }
+  },
+  "device": "mps",
+  "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+  "weights_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+  "small_metal_decode": true,
+  "bytes": 11520044,
+  "sha256": "f5cd3a0cb1f6b22b84628ec61887fed40911e5d09fec72e74b95ff4a1cb6558c",
+  "per_track_deadline_ms": 30000,
+  "audio_seconds": 60,
+  "human_listening": "NOT RUN"
+}

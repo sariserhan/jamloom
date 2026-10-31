@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "supervisor_pid": 75692,
+  "deadline": 1793426701.0781639,
+  "paid_compute": false,
+  "max_requests": 180,
+  "peak_rss_bytes": 3852599296,
+  "peak_swap_growth_bytes": 2264137728,
+  "minimum_available_bytes": 1594081280,
+  "seconds": 22.70210838317871,
+  "error": "Swap growth limit reached",
+  "child_stopped": true
+}

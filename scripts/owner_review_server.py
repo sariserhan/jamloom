@@ -82,6 +82,10 @@ class Handler(review_serve.Handler):
         if self.path=='/api/session':
             if self.headers.get('Host')!=f'127.0.0.1:{self.server.server_port}':self.send_error(403);return
             session={'token':self.server.review_token}
+            session['received']={}
+            for kind in ('novice','practice','silence'):
+                receipts=sorted(self.server.results.glob('*-'+kind+'.json'))
+                session['received'][kind]={'count':len(receipts),'latest':receipts[-1].name if receipts else None}
             files=sorted(self.server.results.glob('*-novice.json'))
             if files:
                 saved=json.loads(files[-1].read_text())['payload']
@@ -91,7 +95,7 @@ class Handler(review_serve.Handler):
         super().do_GET()
 
     def json_response(self,value,code=200):
-        raw=json.dumps(value).encode();self.send_response(code);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw)
+        raw=json.dumps(value).encode();self.send_response(code);self.send_header('Content-Type','application/json');self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw)
 
     def do_POST(self):
         origin=f'http://127.0.0.1:{self.server.server_port}'

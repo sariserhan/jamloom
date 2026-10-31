@@ -1,0 +1,63 @@
+{
+  "status": "FAIL",
+  "reason": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText(/Recording (public|private) set/) to be visible\u001b[22m\n",
+  "errors": [],
+  "samples": [
+    {
+      "at": 1793417139579,
+      "visibility": "public",
+      "heap": 16373948,
+      "activeSources": 0,
+      "sourceCounts": {
+        "started": 0,
+        "ended": 0,
+        "active": 0,
+        "duplicateEnds": 0,
+        "unstartedEnds": 0
+      },
+      "nodeRss": 205324288
+    },
+    {
+      "at": 1793417139580,
+      "visibility": "private",
+      "heap": 37320443,
+      "activeSources": 0,
+      "sourceCounts": {
+        "started": 0,
+        "ended": 0,
+        "active": 0,
+        "duplicateEnds": 0,
+        "unstartedEnds": 0
+      },
+      "nodeRss": 205520896
+    },
+    {
+      "at": 1793417144578,
+      "visibility": "public",
+      "heap": 19990720,
+      "activeSources": 0,
+      "sourceCounts": {
+        "started": 0,
+        "ended": 0,
+        "active": 0,
+        "duplicateEnds": 0,
+        "unstartedEnds": 0
+      },
+      "nodeRss": 193347584
+    },
+    {
+      "at": 1793417144578,
+      "visibility": "private",
+      "heap": 41060015,
+      "activeSources": 0,
+      "sourceCounts": {
+        "started": 0,
+        "ended": 0,
+        "active": 0,
+        "duplicateEnds": 0,
+        "unstartedEnds": 0
+      },
+      "nodeRss": 193495040
+    }
+  ]
+}

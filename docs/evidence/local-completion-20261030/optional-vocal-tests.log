@@ -1,0 +1,6 @@
+.PASS: actual local singing-model output; naturalness and voice identity await listening
+.........................
+----------------------------------------------------------------------
+Ran 26 tests in 3.109s
+
+OK

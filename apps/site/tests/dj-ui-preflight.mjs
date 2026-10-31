@@ -18,8 +18,11 @@ export async function djUIPreflight(origin){
   await page.getByLabel('Party or venue name',{exact:true}).fill('Local preflight');
   await page.getByRole('button',{name:'Check credits →'}).click();await page.getByRole('button',{name:'Continue to the deck →'}).click();
   await page.getByRole('button',{name:'Start set'}).waitFor();assert.deepEqual(errors,[]);
+  // AudioWorklet requests do not follow Playwright page routing. Exercise the
+  // real same-origin module before allocating a renderer or starting a set.
+  await page.evaluate(async()=>{const context=new AudioContext();try{await context.audioWorklet.addModule('/studio/set-meter-worklet.js');}finally{await context.close();}});
   assert(!requests.some(r=>r.path.endsWith('/start')),'Preflight must not start a session');
-  return {status:'PASS',origin,setupAndDeck:true,realBilling:false,generation:false,requests};
+  return {status:'PASS',origin,setupAndDeck:true,recordingWorklet:true,realBilling:false,generation:false,requests};
  }finally{await browser.close();}
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)console.log(JSON.stringify(await djUIPreflight(process.argv[2]??process.env.JAMLOOM_QUALIFICATION_ORIGIN??'http://localhost:3009')));

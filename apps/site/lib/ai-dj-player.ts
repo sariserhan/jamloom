@@ -84,7 +84,10 @@ export class AIDJPlayer{
    await this.context.resume();if(run!==this.request)return;
    const prepared=await this.loadCandidate();if(run!==this.request)return;if(!prepared)throw Error('No tracks remain');
    if(beforePlay&&!await beforePlay()){if(run===this.request){this.state='error';this.message='Recording could not start. Check the recording status below and try again.';this.emit();}return;}if(run!==this.request)return;
-   this.decks[0]={...prepared,start:0};this.began=this.context.currentTime+.1;this.beginDeck(0,this.began,1,this.mode==='auto'?prepared.analysis.mixBounds?.start??prepared.analysis.audible?.start??0:0);
+   // A mix-in point is for overlapping another track. A fresh generated set
+   // starts at its audible opening, preserving the intro and preparation time.
+   const opening=this.source?prepared.analysis.audible?.start??0:prepared.analysis.mixBounds?.start??prepared.analysis.audible?.start??0;
+   this.decks[0]={...prepared,start:0};this.began=this.context.currentTime+.1;this.beginDeck(0,this.began,1,this.mode==='auto'?opening:0);
    this.history=[prepared.track.id];this.state='playing';this.message='Set started. Preparing the next groove.';this.applyMaster();
    this.interval=setInterval(()=>this.tick(),50);this.emit();void this.prepareNext();
   }catch{if(run===this.request){this.state='error';this.message='The prepared music could not load. Check your connection and try Start set again.';this.emit();}}

@@ -16,6 +16,33 @@ from singing_response import CODE_REVISION, WEIGHT_REVISION, variants
 
 
 class StudioFlow(unittest.TestCase):
+    def test_continuous_sentence_keeps_whole_input_then_offers_complete_word_suffix(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);source=root/'input.wav'
+            samples=np.repeat((.1*np.sin(np.arange(4*RATE)*.1))[:,None],2,axis=1)
+            samples[round(2.35*RATE):round(2.4*RATE)]=0
+            samples[round(3.5*RATE):]=0
+            write_pcm(source,samples)
+            speech={'source_rate':16000,'transcript':'A continuous sentence with a complete ending',
+                    'phrases':[{'text':'A continuous sentence with a complete ending','start_seconds':0,'end_seconds':3.5}],
+                    'words':[{'start_frame':round(a*16000),'end_frame':round(b*16000),'confidence':.95}
+                             for a,b in [(0,1.8),(1.8,2.4),(2.4,2.7),(2.7,3.1),(3.1,3.5)]]}
+            studio.prepare_source(source,root)
+            spans=[]
+            for attempt in range(4):
+                candidate=studio.sample_candidate(root,speech,'funk',4,42,attempt)
+                if candidate:spans.append(json.loads(candidate[1].read_text())['original_seconds'])
+            self.assertEqual(spans[0],[0,4])
+            self.assertTrue(any(abs(a-2.38)<.011 and abs(b-3.53)<.011 for a,b in spans))
+            self.assertTrue(all(a==0 or 2.35<=a<=2.4 for a,b in spans))
+            other=root/'uncertain';other.mkdir();studio.prepare_source(source,other)
+            speech['words'][-1]['confidence']=.4
+            remaining=[]
+            for attempt in range(4):
+                candidate=studio.sample_candidate(other,speech,'funk',4,42,attempt)
+                if candidate:remaining.append(json.loads(candidate[1].read_text())['original_seconds'])
+            self.assertEqual(remaining,[[0,4],[0,3.54]])
+
     def test_short_phrase_is_not_randomly_cut_before_trying_the_whole_input(self):
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);source=root/'input.wav'

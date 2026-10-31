@@ -1,0 +1,13 @@
+{
+  "status": "STOPPED",
+  "supervisor_pid": 70371,
+  "deadline": 1793426380.453229,
+  "paid_compute": false,
+  "max_requests": 180,
+  "peak_rss_bytes": 2612903936,
+  "peak_swap_growth_bytes": 895811584,
+  "minimum_available_bytes": 2271477760,
+  "seconds": 91.66551995277405,
+  "requests": 4,
+  "child_stopped": true
+}

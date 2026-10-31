@@ -1,0 +1,57 @@
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_dj_qualification.py", line 61, in <module>
+    run(parser.parse_args().folder)
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_dj_qualification.py", line 17, in run
+    ready=json.loads((FOLDER/'engine/ready.json').read_text())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/serhansari/Documents/projects/jamloom/renders/dj-metal-endurance-20261030-opening/engine/ready.json'
+{"folder":"/Users/serhansari/Documents/projects/jamloom/renders/dj-metal-endurance-20261030-opening","retainedRehearsal":false}
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:15141:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async checkDJRenderer (/Users/serhansari/Documents/projects/jamloom/apps/site/lib/dj-remote-worker.ts:10:17)
+    at async file:///Users/serhansari/Documents/projects/jamloom/apps/site/tests/dj-warm-qualification.mjs:66:33 {
+  [cause]: Error: connect ECONNREFUSED 127.0.0.1:8768
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1638:16)
+      at TCPConnectWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -61,
+    code: 'ECONNREFUSED',
+    syscall: 'connect',
+    address: '127.0.0.1',
+    port: 8768
+  }
+}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:15141:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async checkDJRenderer (/Users/serhansari/Documents/projects/jamloom/apps/site/lib/dj-remote-worker.ts:10:17)
+    at async file:///Users/serhansari/Documents/projects/jamloom/apps/site/tests/dj-warm-qualification.mjs:66:33 {
+  [cause]: Error: connect ECONNREFUSED 127.0.0.1:8768
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1638:16)
+      at TCPConnectWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -61,
+    code: 'ECONNREFUSED',
+    syscall: 'connect',
+    address: '127.0.0.1',
+    port: 8768
+  }
+}
+
+Node.js v22.23.1
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_dj_qualification.py", line 61, in <module>
+    run(parser.parse_args().folder)
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_dj_qualification.py", line 45, in run
+    if code:raise RuntimeError('Local qualification failed; preserve its failure and cleanup receipts')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Local qualification failed; preserve its failure and cleanup receipts

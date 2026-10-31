@@ -1,0 +1,497 @@
+{"folder":"/Users/serhansari/Documents/projects/jamloom/renders/dj-metal-endurance-20261030-startup","retainedRehearsal":false}
+Preparing public customer
+public deck ready
+Preparing private customer
+private deck ready
+locator.waitFor: Timeout 70000ms exceeded.
+Call log:
+[2m  - waiting for getByText(/Recording (public|private) set/) to be visible[22m
+
+    at /Users/serhansari/Documents/projects/jamloom/apps/site/tests/dj-warm-qualification.mjs:91:205
+    at async file:///Users/serhansari/Documents/projects/jamloom/apps/site/tests/dj-warm-qualification.mjs:91:2 {
+  log: [
+    '  - waiting for getByText(/Recording (public|private) set/) to be visible'
+  ],
+  name: 'TimeoutError'
+}
+public Skip to content
+jamloom
+Start here
+Improvise
+Local Remixes
+Music DNA
+DJ Studio
+AI DJ
+Live DJ
+Learn to DJ
+Learn to sing
+Community
+Account
+?
+
+JAMLOOM AI DJ ORIGINAL SESSION
+
+Your music. Your room.
+Let the set flow.
+
+Public set · At least 0.5 generated min per credit · automatic recording
+
+Party or venue name
+Used to name your recording.
+▶ Start set
+■ Stop
+Plan an original set →
+Public sets →
+Fresh original music
+Output: system audio device
+Pause
+Ready when you are
+Set time 0:00
+Autopilot
+DECK A
+WAITING
+Your next groove
+
+Music loads when you start
+
+— BPM
+PREPARED AUDIO
+0:00
+—:—
+DECK A
+READY
+PERFORMANCE
+−
+JOG
++
+LOOP / ROLL
+OFF
+Release
+01
+Cue 1
+Start
+02
+Cue 2
+8 beats
+03
+½ roll
+Slip
+04
+1 roll
+Slip
+05
+2 loop
+2 beats
+06
+4 loop
+4 beats
+07
+Echo
+Beat FX
+08
+Backspin
+Slip
+○ Standing by
+Room for the groove.
+DECK B
+WAITING
+Your next groove
+
+Music loads when you start
+
+— BPM
+PREPARED AUDIO
+0:00
+—:—
+DECK B
+READY
+PERFORMANCE
+−
+JOG
++
+LOOP / ROLL
+OFF
+Release
+01
+Cue 1
+Start
+02
+Cue 2
+8 beats
+03
+½ roll
+Slip
+04
+1 roll
+Slip
+05
+2 loop
+2 beats
+06
+4 loop
+4 beats
+07
+Echo
+Beat FX
+08
+Backspin
+Slip
+○ Standing by
+Room for the groove.
+
+MIX CONTROL
+
+Master
+65%
+A
+Crossfade
+B
+Autopilot · baseline
+Take control
+A
+HIGH
+MID
+LOW
+FILTER
+LEVEL
+ECHO
+0%
+B
+HIGH
+MID
+LOW
+FILTER
+LEVEL
+ECHO
+0%
+Beat-timed moves. Take control at any time.
+Where next?
+Energy
+Peak
+Mood
+◒
+Warm
+☀
+Bright
+◐
+Deep
+Occasional vocal moments
+Brief original phrases, with space between them.
+◎ Keep this beat
+↻ Change the beat
+↗ More energy
+Keep this vibe
+Mix next →
+Playback command
+↵
+
+Recording could not start. Check the recording status below and try again.
+
+Wrap it up
+After this track
+In 1 minute
+In 5 minutes
+In 10 minutes
+In 30 minutes
+Plan the ending ↘
+Set recording
+Automatic · public · saves as you play
+
+Failed to load worklet module script: http://localhost:3000/studio/set-meter-worklet.js (Network error)
+
+Pause keeps the same recording. Stop finishes it. Your full set will appear on the public page.
+
+Recover captured audio
+Discard pending recording
+This recording was interrupted. Recovery keeps the captured audio off the public page.
+Saved sets
+Your recordings
+Finished recordings save automatically. Keep this page open until saving completes.
+
+No saved sets yet.
+
+LIVE MOVES
+Loops · rolls · jog · filter · echo
+
+Preparing a conservative transition
+
+NOW
+Ready for your first track
+→
+NEXT DIRECTION
+Peak · bright
+→
+NEXT TRANSITION
+Waiting for Mix next
+Make something yours.
+In partnership with Aurowall ↗
+Pro
+Live DJ
+Community
+Product tour
+Cloud library
+Playlists
+Guides
+Help
+Contact
+Support
+Report a bug
+Privacy
+Terms
+Licenses
+Status
+private Skip to content
+jamloom
+Start here
+Improvise
+Local Remixes
+Music DNA
+DJ Studio
+AI DJ
+Live DJ
+Learn to DJ
+Learn to sing
+Community
+Account
+?
+
+JAMLOOM AI DJ ORIGINAL SESSION
+
+Your music. Your room.
+Let the set flow.
+
+Private set · At least 0.4 generated min per credit · automatic recording
+
+Party or venue name
+Used to name your recording.
+▶ Start set
+■ Stop
+Plan an original set →
+Public sets →
+Fresh original music
+Output: system audio device
+Pause
+Ready when you are
+Set time 0:00
+Autopilot
+DECK A
+WAITING
+Your next groove
+
+Music loads when you start
+
+— BPM
+PREPARED AUDIO
+0:00
+—:—
+DECK A
+READY
+PERFORMANCE
+−
+JOG
++
+LOOP / ROLL
+OFF
+Release
+01
+Cue 1
+Start
+02
+Cue 2
+8 beats
+03
+½ roll
+Slip
+04
+1 roll
+Slip
+05
+2 loop
+2 beats
+06
+4 loop
+4 beats
+07
+Echo
+Beat FX
+08
+Backspin
+Slip
+○ Standing by
+Room for the groove.
+DECK B
+WAITING
+Your next groove
+
+Music loads when you start
+
+— BPM
+PREPARED AUDIO
+0:00
+—:—
+DECK B
+READY
+PERFORMANCE
+−
+JOG
++
+LOOP / ROLL
+OFF
+Release
+01
+Cue 1
+Start
+02
+Cue 2
+8 beats
+03
+½ roll
+Slip
+04
+1 roll
+Slip
+05
+2 loop
+2 beats
+06
+4 loop
+4 beats
+07
+Echo
+Beat FX
+08
+Backspin
+Slip
+○ Standing by
+Room for the groove.
+
+MIX CONTROL
+
+Master
+65%
+A
+Crossfade
+B
+Autopilot · baseline
+Take control
+A
+HIGH
+MID
+LOW
+FILTER
+LEVEL
+ECHO
+0%
+B
+HIGH
+MID
+LOW
+FILTER
+LEVEL
+ECHO
+0%
+Beat-timed moves. Take control at any time.
+Where next?
+Energy
+Peak
+Mood
+◒
+Warm
+☀
+Bright
+◐
+Deep
+Occasional vocal moments
+Brief original phrases, with space between them.
+◎ Keep this beat
+↻ Change the beat
+↗ More energy
+Keep this vibe
+Mix next →
+Playback command
+↵
+
+Recording could not start. Check the recording status below and try again.
+
+Wrap it up
+After this track
+In 1 minute
+In 5 minutes
+In 10 minutes
+In 30 minutes
+Plan the ending ↘
+Set recording
+Automatic · private · saves as you play
+
+Failed to load worklet module script: http://localhost:3000/studio/set-meter-worklet.js (Network error)
+
+Pause keeps the same recording. Stop finishes it. Your full set stays private.
+
+Recover captured audio
+Discard pending recording
+This recording was interrupted. Recovery keeps the captured audio off the public page.
+Saved sets
+Your recordings
+Finished recordings save automatically. Keep this page open until saving completes.
+
+No saved sets yet.
+
+LIVE MOVES
+Loops · rolls · jog · filter · echo
+
+Preparing a conservative transition
+
+NOW
+Ready for your first track
+→
+NEXT DIRECTION
+Peak · deep
+→
+NEXT TRANSITION
+Waiting for Mix next
+Make something yours.
+In partnership with Aurowall ↗
+Pro
+Live DJ
+Community
+Product tour
+Cloud library
+Playlists
+Guides
+Help
+Contact
+Support
+Report a bug
+Privacy
+Terms
+Licenses
+Status
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 70000ms exceeded.
+Call log:
+[2m  - waiting for getByText(/Recording (public|private) set/) to be visible[22m
+
+    at /Users/serhansari/Documents/projects/jamloom/apps/site/tests/dj-warm-qualification.mjs:91:205
+    at async file:///Users/serhansari/Documents/projects/jamloom/apps/site/tests/dj-warm-qualification.mjs:91:2 {
+  log: [
+    '  - waiting for getByText(/Recording (public|private) set/) to be visible'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.1
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_dj_qualification.py", line 61, in <module>
+    run(parser.parse_args().folder)
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/run_local_dj_qualification.py", line 45, in run
+    if code:raise RuntimeError('Local qualification failed; preserve its failure and cleanup receipts')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Local qualification failed; preserve its failure and cleanup receipts
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['.venv-singer/bin/python', 'scripts/run_local_dj_qualification.py', '--folder', 'renders/dj-metal-endurance-20261030-startup']' returned non-zero exit status 1.
