@@ -4,13 +4,13 @@ import {applePurchase,appleVerifier,appleEnvironment,reconcileAppleNotification}
 test('Apple consumables bind exact app/account/product/price/environment, reject revocation and offers',()=>{
  const token='11111111-1111-4111-8111-111111111111',bundle='com.djayvo.app';
  const tx={transactionId:'123',bundleId:bundle,environment:Environment.SANDBOX,type:Type.CONSUMABLE,productId:'com.jamloom.credits.starter',appAccountToken:token,quantity:1,inAppOwnershipType:'PURCHASED',currency:'USD',price:9990};
- assert.deepEqual(applePurchase(tx,token,bundle),{provider:'apple_sandbox',receipt:'123',credits:10,netMicros:3996000});
+ assert.deepEqual(applePurchase(tx,token,bundle),{provider:'apple_sandbox',receipt:'123',credits:150,netMicros:3996000});
  for(const patch of [{bundleId:'com.other'},{environment:Environment.PRODUCTION},{appAccountToken:'wrong'},{productId:'unknown'},{revocationDate:1},{revocationReason:0},{price:1},{quantity:2},{currency:'EUR'},{offerType:1}])assert.throws(()=>applePurchase({...tx,...patch},token,bundle));
  assert.throws(()=>appleVerifier({}));
  assert.equal(appleEnvironment({}),Environment.SANDBOX);
  for(const env of [{APPLE_ENVIRONMENT:'wrong'},{APPLE_ENVIRONMENT:'production'},{APPLE_ENVIRONMENT:'production',CREDIT_BILLING_MODE:'live',APPLE_APP_ID:'NaN'}])assert.throws(()=>appleEnvironment(env));
  assert.equal(appleEnvironment({APPLE_ENVIRONMENT:'production',CREDIT_BILLING_MODE:'live',APPLE_APP_ID:'123'}),Environment.PRODUCTION);
- assert.deepEqual(applePurchase({...tx,environment:Environment.PRODUCTION},token,bundle,Environment.PRODUCTION),{provider:'apple_live',receipt:'123',credits:10,netMicros:3996000});
+ assert.deepEqual(applePurchase({...tx,environment:Environment.PRODUCTION},token,bundle,Environment.PRODUCTION),{provider:'apple_live',receipt:'123',credits:150,netMicros:3996000});
  assert.throws(()=>applePurchase(tx,token,bundle,Environment.PRODUCTION));
 });
 

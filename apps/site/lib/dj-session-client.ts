@@ -2,7 +2,7 @@ import {defaultBeat} from './dj-styles';
 import type {DJSessionInput} from './dj-session-input';
 import type {DJTrackSource,DJSnapshot} from './ai-dj-player';
 import type {DJAllowanceQuote} from './dj-allowance';
-export type SessionQuote={token:string;credits:number;privacyCredits:number;expiresAt:number;djAllowance?:DJAllowanceQuote};
+export type SessionQuote={token:string;credits:number;privacyCredits:number;expiresAt:number;maxMinutes?:number;maxSessionCredits?:number;djAllowance?:DJAllowanceQuote};
 export function sessionPrice(q:SessionQuote){
  const a=q.djAllowance;if(!a)return `${q.credits} credit${q.credits===1?'':'s'} maximum per generated minute`;
  if(a.maxCredits===0)return 'No credits required for this account';

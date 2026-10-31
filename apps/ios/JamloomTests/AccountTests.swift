@@ -346,7 +346,7 @@ private final class AccountProtocol: URLProtocol {
         }
         await account.signIn(email: "test@example.test", password: "test-password"); await cloud.connect(account)
         await cloud.reviewTaste(profile); XCTAssertTrue(actions.isEmpty)
-        XCTAssertFalse(cloud.keepPrivate); cloud.keepPrivate = true
+        XCTAssertTrue(cloud.keepPrivate)
         cloud.consent = true; await cloud.reviewTaste(profile); XCTAssertEqual(actions, ["quote"])
         await cloud.submit(); XCTAssertEqual(actions, ["quote", "submit"])
         for _ in 0..<50 { if cloud.state == "completed" { break }; try await Task.sleep(for: .milliseconds(100)) }
@@ -383,7 +383,7 @@ private final class AccountProtocol: URLProtocol {
                 XCTAssertEqual((body["sha256"] as? String)?.count, 64)
                 return (200, Data("{\"id\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\":\"https://aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.r2.cloudflarestorage.com/test/uploads/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa.wav?X-Amz-Signature=test\"}".utf8))
             case "quote":
-                quotes += 1; XCTAssertEqual(submits, 0); XCTAssertEqual(body["visibility"] as? String, "public")
+                quotes += 1; XCTAssertEqual(submits, 0); XCTAssertEqual(body["visibility"] as? String, quotes == 1 ? "private" : "public")
                 return (200, Data("{\"credits\":7,\"token\":\"test-quote\",\"expiresAt\":\(Date().addingTimeInterval(300).timeIntervalSince1970 * 1000)}".utf8))
             case "submit":
                 submits += 1; submittedID = try XCTUnwrap(body["requestId"] as? String)
@@ -400,7 +400,7 @@ private final class AccountProtocol: URLProtocol {
         cloud.consent = true
         await cloud.review(input: input, start: 0, end: 1)
         XCTAssertEqual(uploads, 1); XCTAssertEqual(quotes, 1); XCTAssertEqual(submits, 0); XCTAssertEqual(cloud.quote?.credits, 7, cloud.message)
-        cloud.keepPrivate = true
+        cloud.keepPrivate = false
         XCTAssertNil(cloud.quote, "Changing privacy must invalidate the price before charging")
         cloud.keepPrivate = false
         await cloud.review(input: input, start: 0, end: 1)

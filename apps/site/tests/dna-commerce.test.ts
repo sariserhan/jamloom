@@ -6,6 +6,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {createPool} from '../lib/database';
 import {migrate} from '../lib/migrations';
+import {songCreditPrice} from '../lib/credit-catalog';
 import {DnaCommerce,visibilityInput} from '../lib/dna-commerce';
 import {dnaSong} from '../lib/dna-song';
 import {dnaFeedback} from '../lib/dna-feedback-api';
@@ -35,7 +36,7 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
  try{
   await migrate(pool);assert.deepEqual(await migrate(pool),[]);
   for(const owner of ['alice','bob','empty'])await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.test']);
-  for(const owner of ['alice','bob'])await commerce.wallet.grant(owner,{provider:'stripe_test',receipt:owner,credits:20,netMicros:10_000_000});
+  for(const owner of ['alice','bob'])await commerce.wallet.grant(owner,{provider:'stripe_test',receipt:owner,credits:300,netMicros:10_000_000});
   const context={commerce,owner:'alice'},other={commerce,owner:'bob'},anonymous={commerce,owner:null};
   await t.test('whole playlist account profiles persist all Unicode favorites privately',async()=>{
    const {TasteStore}=await import('../lib/taste-store');const {emptyTaste}=await import('../lib/taste');
@@ -45,7 +46,7 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
   });
   await t.test('song descriptions survive restart and stay bound to owner, billing environment and favorites',async()=>{
    await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',['sound','sound@example.test']);
-   await commerce.wallet.grant('sound',{provider:'stripe_test',receipt:'sound',credits:10,netMicros:1000000});
+   await commerce.wallet.grant('sound',{provider:'stripe_test',receipt:'sound',credits:150,netMicros:1000000});
    const job=id(),quote=await commerce.quote('sound',profile,'private');await commerce.submit('sound',job,profile,'private',quote.token);
    const track={reference:profile.references[0],catalogue_genre:'Pop',version:1,model_revision:'fixture',confidence:'medium'};
    await commerce.finish(job,'completed',{title:'Sound fixture',language:'en',direction:'Pop',plan:{track_profiles:[track]}});
@@ -68,22 +69,22 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
   });
   await t.test('price, atomic reservation and duplicate request binding',async()=>{
    const pub=await commerce.quote('alice',profile,'public'),priv=await commerce.quote('alice',profile,'private');
-   assert.equal(pub.credits,1);assert.equal(priv.credits,2);
+   assert.equal(pub.credits,20);assert.equal(priv.credits,20);
    await assert.rejects(commerce.quote('empty',profile,'public'),/Insufficient/);
    const job=id();
    const results=await Promise.all(Array.from({length:5},()=>commerce.submit('alice',job,profile,'private',priv.token)));
-   assert.equal(new Set(results.map(r=>r.reservation_id)).size,1);assert.deepEqual(await commerce.wallet.balance('alice'),{available:18,reserved:2});
+   assert.equal(new Set(results.map(r=>r.reservation_id)).size,1);assert.deepEqual(await commerce.wallet.balance('alice'),{available:280,reserved:20});
    await assert.rejects(commerce.submit('bob',job,profile,'private',priv.token));
    await assert.rejects(commerce.submit('alice',job,{...profile,references:['changed']},'private',priv.token));
    await assert.rejects(commerce.submit('alice',job,profile,'public',priv.token));
    await assert.rejects(commerce.submit('alice',id(),profile,'public',pub.token),/One active job/);
    await commerce.finish(job,'cancelled');await commerce.finish(job,'cancelled');
-   assert.deepEqual(await commerce.wallet.balance('alice'),{available:20,reserved:0});
+   assert.deepEqual(await commerce.wallet.balance('alice'),{available:300,reserved:0});
    const before=await commerce.wallet.balance('bob');
-   await assert.rejects(commerce.wallet.reserve('bob','rollback_dna_test',50000,5000,undefined,'public',1,{fingerprint:'test',save:async()=>{throw Error('record insertion failed');}}),/insertion failed/);
+   await assert.rejects(commerce.wallet.reserve('bob','rollback_dna_test',50000,5000,undefined,'public',20,{fixedPrice:songCreditPrice('music-dna'),fingerprint:'test',save:async()=>{throw Error('record insertion failed');}}),/insertion failed/);
    assert.deepEqual(await commerce.wallet.balance('bob'),before);
   });
-  await t.test('private audio and notes are owner-only, with full premium charged once',async()=>{
+  await t.test('private audio and notes are owner-only, with fixed catalog price charged once',async()=>{
    const job=id(),quote=await commerce.quote('alice',profile,'private');await commerce.submit('alice',job,profile,'private',quote.token);await commerce.start(job);await output(job);
    // The owner read recovers a finished worker after a server restart and settles exactly once.
    assert.equal((await dnaSong(request('?id='+job),context)).status,200);
@@ -93,8 +94,8 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
     assert.equal((await dnaSong(request('?id='+job+suffix),visitor)).status,404);
    assert.equal((await commerce.list(null,'public')).songs.length,0);
    assert.equal((await commerce.list('alice','mine')).songs.length,1);assert.equal((await commerce.list('bob','mine')).songs.length,0);
-   assert.deepEqual(await commerce.wallet.balance('alice'),{available:18,reserved:0});
-   await dnaSong(request('?id='+job),context);assert.deepEqual(await commerce.wallet.balance('alice'),{available:18,reserved:0});
+   assert.deepEqual(await commerce.wallet.balance('alice'),{available:280,reserved:0});
+   await dnaSong(request('?id='+job),context);assert.deepEqual(await commerce.wallet.balance('alice'),{available:280,reserved:0});
   });
   await t.test('public success enters the feed, without favorites or identities; withdrawal removes access',async()=>{
    const job=id(),quote=await commerce.quote('alice',profile,'public');await commerce.submit('alice',job,profile,'public',quote.token);await commerce.start(job);await output(job);
@@ -106,7 +107,7 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
    assert.equal((await dnaFeedback(rating,other)).status,403);
    assert.equal((await dnaSong(request('?id='+job+'&file=plan'),anonymous)).status,404);
    assert.equal((await dnaSong(request('?id='+job+'&file=audio'),anonymous)).status,200);
-   assert.deepEqual(await commerce.wallet.balance('alice'),{available:17,reserved:0});
+   assert.deepEqual(await commerce.wallet.balance('alice'),{available:260,reserved:0});
    assert.equal((await dnaSong(request('?id='+job,'DELETE'),other)).status,404);
    assert.equal((await dnaSong(request('?id='+job,'DELETE'),context)).status,200);
    assert.equal((await commerce.list(null,'public')).songs.length,0);
@@ -116,7 +117,7 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
   await t.test('failure refunds all held credits and never publishes; anonymous generation is denied',async()=>{
    const job=id(),quote=await commerce.quote('alice',profile,'public');await commerce.submit('alice',job,profile,'public',quote.token);await commerce.start(job);
    const before=await commerce.wallet.balance('alice');await commerce.finish(job,'failed');await commerce.finish(job,'failed');
-   assert.deepEqual(await commerce.wallet.balance('alice'),{available:before.available+1,reserved:0});
+   assert.deepEqual(await commerce.wallet.balance('alice'),{available:before.available+20,reserved:0});
    assert.equal((await commerce.list(null,'public')).songs.length,0);
    assert.equal((await dnaSong(request('','POST',{}),anonymous)).status,401);
    assert.equal((await dnaSong(request('','POST',{}))).status,503);
@@ -168,7 +169,7 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
    assert.deepEqual(await cloud.wallet.balance('bob'),before);
   });
   await t.test('gallery filters cover all pages without exposing private, withdrawn or other-product metadata',async()=>{
-   await commerce.wallet.grant('bob',{provider:'stripe_test',receipt:'gallery-filters',credits:60,netMicros:30_000_000});
+   await commerce.wallet.grant('bob',{provider:'stripe_test',receipt:'gallery-filters',credits:900,netMicros:30_000_000});
    const jobs:string[]=[];
    for(let i=0;i<32;i++){
     const job=id(),visibility=i===26?'private':'public',quote=await commerce.quote('bob',profile,visibility);

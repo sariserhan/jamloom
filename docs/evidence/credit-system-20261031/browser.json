@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "pricingDesktop": true,
+  "pricingMobile": true,
+  "accountDesktop": true,
+  "accountMobile": true,
+  "trialOnce": true,
+  "topupCheckout": true,
+  "creatorCheckout": true,
+  "noRealCharge": true,
+  "consoleErrors": []
+}

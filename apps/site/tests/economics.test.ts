@@ -49,9 +49,9 @@ test('private credits are 25 percent of the base rounded up, bounded and integer
 
 test('credit checkout binds product, taxes, pack and billing mode',async()=>{
  let captured:any;const stripe={checkout:{sessions:{create:async(value:unknown)=>{captured=value;return {};}}}};
- await assert.rejects(checkout(stripe as unknown as Stripe,'owner','starter','fixture-key','http://localhost',false,''),/tax category/);
- await checkout(stripe as unknown as Stripe,'owner','starter','fixture-key','http://localhost',false,'txcd_10000000');
- assert.equal(captured.metadata.jamloom_product,'song-credits');assert.equal(captured.line_items[0].price_data.tax_behavior,'exclusive');assert.equal(captured.line_items[0].price_data.unit_amount,999);
+ await assert.rejects(checkout(stripe as unknown as Stripe,'owner','topup','fixture-key','http://localhost',false,''),/tax category/);
+ await checkout(stripe as unknown as Stripe,'owner','topup','fixture-key','http://localhost',false,'txcd_10000000');
+ assert.equal(captured.metadata.jamloom_product,'song-credits');assert.equal(captured.line_items[0].price_data.tax_behavior,'exclusive');assert.equal(captured.line_items[0].price_data.unit_amount,1000);
  assert.throws(()=>creditBilling({CREDIT_BILLING_MODE:'live',STRIPE_LIVE_SECRET_KEY:'sk_test_wrong',CREDIT_STRIPE_LIVE_WEBHOOK_SECRET:'whsec_fixture'}));
 });
 

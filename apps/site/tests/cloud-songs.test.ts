@@ -125,6 +125,7 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    for(let i=1;i<keys.length;i++){await complete(keys[i]);await songs.tick(keys[i]);assert.equal((await commerce.row(keys[i])).state,'completed');}
   });
   await t.test('duration boundaries settle once and a mismatched saved length refunds',async()=>{
+   await commerce.wallet.grant('user8',{provider:'stripe_test',receipt:'duration-catalog-budget',credits:100,netMicros:30000000});
    for(const seconds of [100,140]){
     const key=await submit('user8');
     await pool.query("UPDATE cloud_song_runs SET payload=jsonb_set(payload,'{duration_seconds}',$2::jsonb) WHERE id=$1",[key,String(seconds)]);

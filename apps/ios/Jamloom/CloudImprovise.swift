@@ -47,7 +47,7 @@ enum CloudSongProduct: String {
     @Published var genre = "surprise"
     @Published var voice = "surprise"
     @Published var consent = false
-    @Published var keepPrivate = false { didSet { if oldValue != keepPrivate { invalidateQuote() } } }
+    @Published var keepPrivate = true { didSet { if oldValue != keepPrivate { invalidateQuote() } } }
     var visibility: String { keepPrivate ? "private" : "public" }
     @Published private(set) var available = false
     @Published private(set) var busy = false
@@ -261,7 +261,7 @@ struct CloudSongActions: View {
     var body: some View {
         if cloud.job == nil {
             Toggle("Keep this song private", isOn: $cloud.keepPrivate).disabled(cloud.controlsLocked || cloud.quote != nil)
-            Label(cloud.keepPrivate ? "Only you can listen. Private songs use more credits." : "Your finished song appears in Community on the website and app.", systemImage: cloud.keepPrivate ? "lock.fill" : "globe").font(.footnote).foregroundStyle(.secondary)
+            Label(cloud.keepPrivate ? "Only you can listen. Private and public songs cost the same." : "Your finished song appears in Community on the website and app.", systemImage: cloud.keepPrivate ? "lock.fill" : "globe").font(.footnote).foregroundStyle(.secondary)
         }
         if !cloud.message.isEmpty { Text(cloud.message).accessibilityIdentifier("cloudSongStatus") }
         if cloud.active {

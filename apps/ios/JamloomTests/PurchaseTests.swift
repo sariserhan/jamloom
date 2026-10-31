@@ -13,7 +13,7 @@ import CryptoKit
         #else
         let token = try XCTUnwrap(UUID(uuidString: env["JAMLOOM_APPLE_ACCOUNT_TOKEN"] ?? ""))
         let id = env["JAMLOOM_APPLE_PRODUCT"] ?? ""
-        guard ["com.jamloom.credits.starter", CreditPurchases.singingProduct].contains(id) else { XCTFail("Unsupported sandbox test product"); return }
+        guard ["com.jamloom.credits.starter", CreditPurchases.creatorProduct, CreditPurchases.topUpProduct, CreditPurchases.singingProduct].contains(id) else { XCTFail("Unsupported sandbox test product"); return }
         if env["JAMLOOM_APPLE_SANDBOX"] == "acknowledge" {
             let expected = try XCTUnwrap(UInt64(env["JAMLOOM_APPLE_ACK_TRANSACTION"] ?? ""))
             for await value in Transaction.unfinished {
@@ -43,7 +43,7 @@ import CryptoKit
         let products = try await Product.products(for: [id])
         let product = try XCTUnwrap(products.first)
         guard product.id == id, product.priceFormatStyle.currencyCode == "USD",
-              product.price == (id == CreditPurchases.singingProduct ? Decimal(39) : Decimal(string: "9.99")!),
+              product.price == (id == CreditPurchases.singingProduct ? Decimal(39) : id == CreditPurchases.creatorProduct ? Decimal(15) : id == CreditPurchases.topUpProduct ? Decimal(10) : Decimal(string: "9.99")!),
               !product.description.contains("Local test") else { XCTFail("Real Apple sandbox product required"); return }
         switch try await product.purchase(options: [.appAccountToken(token)]) {
         case .success(let result):
@@ -66,7 +66,7 @@ import CryptoKit
         #else
         // App-download transactions do not prove an in-app purchase's environment.
         // This opt-in catalogue check never qualifies receipts or starts a purchase.
-        let expected: [String: Decimal] = ["com.jamloom.credits.starter": Decimal(string: "9.99")!, "com.jamloom.credits.creator": Decimal(string: "24.99")!, "com.jamloom.credits.studio": Decimal(string: "49.99")!, CreditPurchases.singingProduct: 39]
+        let expected: [String: Decimal] = [CreditPurchases.creatorProduct: 15, CreditPurchases.topUpProduct: 10, CreditPurchases.singingProduct: 39]
         let products = try await Product.products(for: Array(expected.keys))
         let rows = products.map { ["id": $0.id, "name": $0.displayName, "description": $0.description, "price": NSDecimalNumber(decimal: $0.price).stringValue, "currency": $0.priceFormatStyle.currencyCode, "type": $0.type.rawValue] }
         let proof = XCTAttachment(data: try JSONSerialization.data(withJSONObject: rows, options: .sortedKeys), uniformTypeIdentifier: "public.json")
@@ -74,7 +74,7 @@ import CryptoKit
         XCTAssertEqual(Set(products.map(\.id)), Set(expected.keys))
         for product in products {
             XCTAssertEqual(product.price, expected[product.id]); XCTAssertEqual(product.priceFormatStyle.currencyCode, "USD")
-            XCTAssertEqual(product.type, product.id == CreditPurchases.singingProduct ? .nonConsumable : .consumable)
+            XCTAssertEqual(product.type, product.id == CreditPurchases.singingProduct ? .nonConsumable : product.id == CreditPurchases.creatorProduct ? .autoRenewable : .consumable)
         }
         XCTAssertFalse(CreditPurchases.released); XCTAssertFalse(CreditPurchases.singingReleased)
         #endif
@@ -118,11 +118,35 @@ import CryptoKit
         XCTAssertEqual(delivered, 2, "Finished non-consumable remains restorable; server deduplicates")
         XCTAssertFalse(CreditPurchases.singingReleased)
     }
+    func testCreatorSubscriptionDeliveryAndRestore() async throws {
+        let session = try SKTestSession(configurationFileNamed: "LocalCredits")
+        session.resetToDefaultState(); session.disableDialogs = true; session.clearTransactions()
+        defer { session.clearTransactions() }
+        let token = UUID(), purchases = CreditPurchases()
+        let products = try await purchases.products()
+        let creator = try XCTUnwrap(products.first { $0.id == CreditPurchases.creatorProduct })
+        XCTAssertEqual(creator.type, .autoRenewable); XCTAssertEqual(creator.price, Decimal(15))
+        XCTAssertEqual(creator.subscription?.subscriptionPeriod.unit, .month)
+        XCTAssertEqual(products.first { $0.id == CreditPurchases.topUpProduct }?.price, Decimal(10))
+        _ = try await session.buyProduct(identifier: creator.id, options: [.appAccountToken(token)])
+        let result = try await deliveredTransaction(creator.id)
+        var acknowledged = 0
+        try await purchases.deliverVerified(result, accountToken: token) { jws, account in
+            XCTAssertEqual(account, token); XCTAssertEqual(jws.split(separator: ".").count, 3); acknowledged += 1
+        }
+        for await entitlement in StoreKit.Transaction.currentEntitlements {
+            if case .verified(let tx) = entitlement, tx.productID == creator.id {
+                try await purchases.deliverVerified(entitlement, accountToken: token) { _, _ in acknowledged += 1 }
+            }
+        }
+        XCTAssertGreaterThanOrEqual(acknowledged, 2, "Server deduplicates the same transaction after restore")
+        XCTAssertFalse(CreditPurchases.released)
+    }
     func testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding() async throws {
         let session = try SKTestSession(configurationFileNamed: "LocalCredits")
         session.resetToDefaultState(); session.disableDialogs = true; session.clearTransactions()
         defer { session.clearTransactions() }
-        let product = "com.jamloom.credits.starter", token = UUID(), purchases = CreditPurchases()
+        let product = CreditPurchases.topUpProduct, token = UUID(), purchases = CreditPurchases()
         let products = try await purchases.products()
         let starter = try XCTUnwrap(products.first { $0.id == product })
         XCTAssertFalse(starter.displayPrice.isEmpty)
@@ -140,6 +164,10 @@ import CryptoKit
         XCTAssertEqual(delivered, 0)
         var unfinished: [UInt64] = []
         for await value in StoreKit.Transaction.unfinished { if case .verified(let tx) = value { unfinished.append(tx.id) } }
+        for _ in 0..<50 where !unfinished.contains(transaction.id) {
+            try await Task.sleep(for: .milliseconds(100)); unfinished = []
+            for await value in StoreKit.Transaction.unfinished { if case .verified(let tx) = value { unfinished.append(tx.id) } }
+        }
         XCTAssertTrue(unfinished.contains(transaction.id))
         try await purchases.reconcileUnfinished(accountToken: token) { jws, account in
             XCTAssertEqual(account, token); XCTAssertEqual(jws.split(separator: ".").count, 3); delivered += 1

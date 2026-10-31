@@ -16,20 +16,20 @@ test('real Postgres ledger: conservation, concurrency, receipts, tenant isolatio
  try{
   assert.deepEqual(await migrate(pool), (await readdir(new URL('../migrations/', import.meta.url))).filter(name => name.endsWith('.sql')).sort());assert.deepEqual(await migrate(pool),[]);
   for(const id of ['alice','bob','carol','privacy','poor'])await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[id,id+'@example.test']);
-  await t.test('private premium is reserved atomically, rounded, captured only on success and bound to retries',async()=>{
+  await t.test('private and public legacy requests have no surcharge; failures refund even incurred costs',async()=>{
    await wallet.grant('privacy',{provider:'stripe_test',receipt:'privacy_lot',credits:25,netMicros:10_000_000});
    const id=await wallet.reserve('privacy','private_full',1_200_000,5000,undefined,'private');
-   assert.deepEqual(await wallet.balance('privacy'),{available:17,reserved:8});
+   assert.deepEqual(await wallet.balance('privacy'),{available:19,reserved:6});
    assert.equal(await wallet.reserve('privacy','private_full',1_200_000,5000,undefined,'private'),id);
    await assert.rejects(wallet.reserve('privacy','private_full',1_200_000,5000,undefined,'public'),/Changed quote/);
    await wallet.settle('privacy',id,1_200_000,'completed');await wallet.settle('privacy',id,1_200_000,'completed');
-   assert.deepEqual(await wallet.balance('privacy'),{available:17,reserved:0});
+   assert.deepEqual(await wallet.balance('privacy'),{available:19,reserved:0});
    const partial=await wallet.reserve('privacy','private_partial',800_000,5000,undefined,'private');
-   await wallet.settle('privacy',partial,200001,'completed');assert.deepEqual(await wallet.balance('privacy'),{available:14,reserved:0});
-   const cancelled=await wallet.reserve('privacy','private_cancel',800_000,5000,undefined,'private');await wallet.settle('privacy',cancelled,0,'cancelled');assert.deepEqual(await wallet.balance('privacy'),{available:14,reserved:0});
-   const failed=await wallet.reserve('privacy','private_failure',800_000,5000,undefined,'private');await wallet.settle('privacy',failed,200000,'failed');assert.deepEqual(await wallet.balance('privacy'),{available:13,reserved:0});
-   const publicId=await wallet.reserve('privacy','public_create',800_000,5000,undefined,'public');assert.deepEqual(await wallet.balance('privacy'),{available:9,reserved:4});await wallet.settle('privacy',publicId,800_000,'completed');
-   await wallet.grant('poor',{provider:'stripe_test',receipt:'poor_lot',credits:4,netMicros:1_600_000});await assert.rejects(wallet.reserve('poor','private_unfunded',800_000,5000,undefined,'private'),/private creation/);assert.deepEqual(await wallet.balance('poor'),{available:4,reserved:0});
+   await wallet.settle('privacy',partial,200001,'completed');assert.deepEqual(await wallet.balance('privacy'),{available:17,reserved:0});
+   const cancelled=await wallet.reserve('privacy','private_cancel',800_000,5000,undefined,'private');await wallet.settle('privacy',cancelled,0,'cancelled');assert.deepEqual(await wallet.balance('privacy'),{available:17,reserved:0});
+   const failed=await wallet.reserve('privacy','private_failure',800_000,5000,undefined,'private');await wallet.settle('privacy',failed,200000,'failed');assert.deepEqual(await wallet.balance('privacy'),{available:17,reserved:0});
+   const publicId=await wallet.reserve('privacy','public_create',800_000,5000,undefined,'public');assert.deepEqual(await wallet.balance('privacy'),{available:13,reserved:4});await wallet.settle('privacy',publicId,800_000,'completed');
+   await wallet.grant('poor',{provider:'stripe_test',receipt:'poor_lot',credits:4,netMicros:1_600_000});const poor=await wallet.reserve('poor','private_funded',800_000,5000,undefined,'private');await wallet.settle('poor',poor,0,'cancelled');assert.deepEqual(await wallet.balance('poor'),{available:4,reserved:0});
   });
   await t.test('receipt replay grants exactly once and cannot move between accounts',async()=>{
    const p={provider:'stripe_test' as const,receipt:'cs_test_alice',credits:10,netMicros:4_000_000};

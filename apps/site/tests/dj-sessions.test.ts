@@ -12,8 +12,8 @@ const id=()=>randomUUID().replaceAll('-',''),hash=(b:Buffer)=>createHash('sha256
 const budget={costCapMicros:50000,maxRuntimeMs:60000,hourlyMicros:600000,fixedCostMicros:40000};
 const input=()=>({id:id(),title:'Rooftop Friday',visibility:'public' as 'public'|'private',style:'house',energy:4});
 function wav(pitch=220){const frames=60*48000,b=Buffer.alloc(44+frames*4);b.write('RIFF');b.writeUInt32LE(b.length-8,4);b.write('WAVEfmt ',8);b.writeUInt32LE(16,16);b.writeUInt16LE(1,20);b.writeUInt16LE(2,22);b.writeUInt32LE(48000,24);b.writeUInt32LE(192000,28);b.writeUInt16LE(4,32);b.writeUInt16LE(16,34);b.write('data',36);b.writeUInt32LE(frames*4,40);for(let i=0;i<frames;i++){const v=Math.round(2000*Math.sin(2*Math.PI*pitch*i/48000));b.writeInt16LE(v,44+i*4);b.writeInt16LE(v,46+i*4);}return b;}
-test('DJ session input defaults Public and rejects unsafe fields',()=>{
- const v=input();delete (v as any).visibility;assert.equal(djSessionInput(v).visibility,'public');
+test('DJ session input defaults Private and rejects unsafe fields',()=>{
+ const v=input();delete (v as any).visibility;assert.equal(djSessionInput(v).visibility,'private');
  for(const change of [{id:'../invalid'},{title:''},{visibility:'secret'},{visibility:['public']},{style:['house']},{energy:0},{energy:'4'},{consent:true}])assert.throws(()=>djSessionInput({...v,...change}));
 });
 test('isolated DJ session ledger, fresh batches and public set policy',async t=>{
@@ -146,8 +146,8 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
     assert.equal((await warm.sweep())[0].status,'shutdown_confirmed');assert.equal((await sessions.status('warm-fail',started.v.id)).state,'ended');assert.equal((await sessions.wallet.balance('warm-fail')).reserved,0);
    }
   });
-  await t.test('quotes bind owner and sharing, private premium, atomic idempotent Start',async()=>{
-   const v=input(),pub=await sessions.quote('alice',v),priv=await sessions.quote('alice',{...v,visibility:'private'});assert.equal(pub.credits,2);assert.equal(priv.credits,3);assert.equal(priv.privacyCredits,1);
+  await t.test('quotes bind owner and sharing, equal private price, atomic idempotent Start',async()=>{
+   const v=input(),pub=await sessions.quote('alice',v),priv=await sessions.quote('alice',{...v,visibility:'private'});assert.equal(pub.credits,2);assert.equal(priv.credits,2);assert.equal(priv.privacyCredits,0);
    await assert.rejects(sessions.start('bob',v,pub.token));await assert.rejects(sessions.start('alice',{...v,visibility:'private'},pub.token),/changed/);
    const [a,b]=await Promise.all([sessions.start('alice',v,pub.token),sessions.start('alice',v,pub.token)]);assert.equal(a.reservation,b.reservation);assert.equal((await sessions.start('alice',v,'expired-token')).reservation,a.reservation);await assert.rejects(sessions.start('alice',{...v,visibility:'private'},pub.token),/changed/);assert.equal((await sessions.wallet.balance('alice')).reserved,2);
    await sessions.stop('alice',v.id);assert.deepEqual(await sessions.wallet.balance('alice'),{available:100,reserved:0});await assert.rejects(sessions.next('alice',v.id,1),/ending/);await assert.rejects(sessions.status('bob',v.id),/not found/);
@@ -163,7 +163,7 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
   });
   await t.test('private, local and unplayed recordings never enter public listing or playback',async()=>{
    const {v}=await begin('bob','private'),ready=await finish();await sessions.played('bob',v.id,0);await sessions.stop('bob',v.id);const privateId=await record('bob',v.id),localId=await record('alice');for(const id of [privateId,localId])assert.equal((await djPublicRequest(new Request('https://jamloom.test/api/ai-dj/sets/'+id+'/audio'),recordings,[id,'audio'])).status,404);
-   assert.equal((await sessions.status('bob',v.id)).visibility,'private');assert.equal((await pool.query("SELECT -sum(reserved_delta)::int AS n FROM wallet_ledger_entries WHERE reservation_id=$1 AND kind='capture'",[ready.job.reservation_id])).rows[0].n,3);assert.equal((await pool.query('SELECT privacy_surcharge_bps FROM generation_reservations WHERE id=$1',[ready.job.reservation_id])).rows[0].privacy_surcharge_bps,2500);
+   assert.equal((await sessions.status('bob',v.id)).visibility,'private');assert.equal((await pool.query("SELECT -sum(reserved_delta)::int AS n FROM wallet_ledger_entries WHERE reservation_id=$1 AND kind='capture'",[ready.job.reservation_id])).rows[0].n,2);assert.equal((await pool.query('SELECT privacy_surcharge_bps FROM generation_reservations WHERE id=$1',[ready.job.reservation_id])).rows[0].privacy_surcharge_bps,0);
    const active=await begin('pending');await assert.rejects(record('pending',active.v.id),/finished/);await finish();await sessions.stop('pending',active.v.id);await assert.rejects(record('pending',active.v.id),/finished/);assert.deepEqual((await recordings.publicList()).sets,[]);
   });
   await t.test('credit exhaustion stops new reservations without changing visibility',async()=>{
@@ -185,12 +185,12 @@ test('isolated DJ session ledger, fresh batches and public set policy',async t=>
    assert.equal((await sessions.status('retry',started.v.id)).endReason,'failure');assert.deepEqual(await sessions.wallet.balance('retry'),before);
    assert.equal(await sessions.expire(),0);
   });
-  await t.test('rising per-track price preserves Private and requires a fresh decision',async()=>{
+  await t.test('different purchase fees do not change the fixed per-minute price',async()=>{
    await pool.query("UPDATE credit_lots SET created_at=now()-interval '1 day' WHERE owner_id='price'");
    const ledger=(await pool.query("SELECT id FROM credit_lots WHERE owner_id='price'")).rows[0].id;
    await pool.query("INSERT INTO wallet_ledger_entries(owner_id,lot_id,kind,available_delta,reserved_delta) VALUES('price',$1,'refund',-97,0)",[ledger]);
    await sessions.wallet.grant('price',{provider:'stripe_test',receipt:'price-second-lot',credits:100,netMicros:500000});
-   const {v}=await begin('price','private');await finish();await sessions.played('price',v.id,0);assert.deepEqual(await sessions.next('price',v.id,1),{ending:'price'});assert.equal((await sessions.status('price',v.id)).visibility,'private');assert.equal((await sessions.wallet.balance('price')).reserved,0);
+   const {v}=await begin('price','private');await finish();await sessions.played('price',v.id,0);assert.ok((await sessions.next('price',v.id,1)).reservation);await sessions.stop('price',v.id);assert.equal((await sessions.status('price',v.id)).visibility,'private');assert.equal((await sessions.wallet.balance('price')).reserved,0);
   });
   await t.test('DJ and existing generation queues share one worker capacity',async()=>{
    const {v}=await begin('capacity'),legacy=new GenerationQueue(pool,'q'.repeat(32));const job=await sessions.wallet.reserve('legacy','legacy_capacity',50000,5000,{inputSha256:'a'.repeat(64),planSha256:'b'.repeat(64),maxRuntimeMs:60000,hourlyMicros:600000,fixedCostMicros:40000});

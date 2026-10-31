@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "browserDatabaseDropped": true,
+  "isolatedPostgresStopped": true,
+  "localNextServerStopped": true,
+  "simulator": "already Shutdown",
+  "userAppsClosed": false,
+  "privateBackupPreserved": true
+}

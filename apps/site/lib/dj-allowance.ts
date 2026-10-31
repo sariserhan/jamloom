@@ -1,7 +1,7 @@
 import type {PoolClient} from 'pg';
 import {integer,type CreditLot} from './economics';
 export type DJAllowanceQuote={availableMicros:number;chargeMicros:number;maxCredits:number;minMicrosPer10kCredits:number;topUpMinutes:number};
-export const djCharge=(cap:number,visibility:'public'|'private')=>integer(cap+(visibility==='private'?Math.ceil(cap/4):0),1,6250000);
+export const djCharge=(cap:number,visibility:'public'|'private')=>integer(cap,1,6250000);
 
 // All mutations run under Wallet's owner row lock, including purchases, refunds and settlement.
 export async function djAllowanceLots(db:PoolClient,owner:string,live:boolean){

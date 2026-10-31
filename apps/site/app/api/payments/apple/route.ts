@@ -1,3 +1,4 @@
+import {creditBilling} from '../../../../lib/stripe-payments';
 import {accountsConfigured,services} from '../../../../lib/services';
 import {boundedAuthRequest} from '../../../../lib/bounded-request';
 import {Wallet} from '../../../../lib/wallet';
@@ -13,6 +14,7 @@ export async function POST(request:Request){
  let verifier,environment;try{environment=appleEnvironment();verifier=appleVerifier();}catch{return Response.json({error:'Apple verification unavailable'},{status:503});}
  try{
   const body=await bounded.json(),wallet=new Wallet(pool,environment==='Production');
+  if(body.action==='trial'&&Object.keys(body).length===1){const billing=creditBilling();if(!billing.enabled||billing.live!==wallet.live)throw Error('Trial unavailable');return Response.json({claimed:await wallet.claimTrial(session.user.id)});}
   if(body.action==='account-token'&&Object.keys(body).length===1)return Response.json({appAccountToken:await wallet.accountToken(session.user.id)});
   if(!['verify','verify-course'].includes(body.action)||typeof body.signedTransaction!=='string'||Object.keys(body).length!==2)throw new Error('Invalid request');
   if(body.action==='verify-course')return Response.json({delivered:true,receipt:await grantAppleCourse(verifier,pool,session.user.id,body.signedTransaction,process.env.APPLE_BUNDLE_ID!,environment)});

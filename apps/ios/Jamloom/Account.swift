@@ -158,6 +158,11 @@ struct AccountSnapshot: Decodable {
     let user: AccountUser
     let balance: Balance
     let purchasesReleased: Bool
+    struct Subscription: Decodable {
+        let provider: String; let plan: String; let status: String
+        let period_end: String; let cancel_at_period_end: Bool
+    }
+    var subscriptions: [Subscription]? = nil
     var singing: Singing? = nil
     var deletionRequest: AccountDeletionRequest? = nil
 }
@@ -209,10 +214,29 @@ struct AccountTaste: Decodable { let profile: TasteProfile; let revision: Int }
     var canPurchase: Bool { CreditPurchases.released && snapshot?.purchasesReleased == true }
     func loadProducts() async {
         guard canPurchase else { creditProducts = []; return }
-        await perform { creditProducts = try await purchases.products().sorted { $0.price < $1.price } }
+        await perform { creditProducts = try await purchases.products().filter { $0.priceFormatStyle.currencyCode == "USD" && $0.price == ($0.id == CreditPurchases.creatorProduct ? Decimal(15) : Decimal(10)) }.sorted { $0.price < $1.price } }
+    }
+    var hasSubscription: Bool {
+        snapshot?.subscriptions?.contains { !["canceled", "expired", "revoked", "incomplete_expired"].contains($0.status) } == true
+    }
+    func restoreSubscription() async {
+        await perform {
+            try await purchases.restoreSubscription(accountToken: purchaseToken(), deliver: acknowledgePurchase)
+            try await fetchSnapshot()
+            message = "Apple subscriptions checked. Remaining paid credits never expire."
+        }
+    }
+    func claimTrial() async {
+        guard canPurchase else { return }
+        await perform {
+            struct Receipt: Decodable { let claimed: Bool }
+            let result: Receipt = try await transport.request("/api/payments/apple", method: "POST", body: Data("{\"action\":\"trial\"}".utf8))
+            try await fetchSnapshot()
+            message = result.claimed ? "Your 20 trial credits are ready." : "Your one-time trial has already been claimed."
+        }
     }
     func buy(_ product: Product) async {
-        guard canPurchase, creditProducts.contains(where: { $0.id == product.id }) else { return }
+        guard !(product.id == CreditPurchases.creatorProduct && hasSubscription), canPurchase, creditProducts.contains(where: { $0.id == product.id }) else { return }
         await perform {
             let token = try await purchaseToken()
             try await purchases.purchase(product, accountToken: token, deliver: acknowledgePurchase)
@@ -324,6 +348,7 @@ struct AccountView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var confirmDeletion = false
+    @State private var manageSubscriptions = false
     var body: some View {
         NavigationStack {
             Form {
@@ -345,13 +370,29 @@ struct AccountView: View {
                         Button("Request account deletion", role: .destructive) { confirmDeletion = true }
                             .disabled(snapshot.deletionRequest?.status == "open").accessibilityIdentifier("requestAccountDeletion")
                     }
+                    Section("Your plan") {
+                        Text("Creator adds 300 credits each month. All paid credits remain usable without expiry, even after cancellation. Private and public generation cost the same.")
+                        Text("Improvise: 10 credits per arrangement. Music DNA: 20 credits per song. Playback and downloads of existing results cost no extra credits.")
+                        ForEach(Array((snapshot.subscriptions ?? []).enumerated()), id: \.offset) { _, subscription in
+                            Text("Creator · \(subscription.provider.hasPrefix("apple") ? "Apple" : "Website") · \(subscription.status)\(subscription.cancel_at_period_end ? " · Renewal cancelled" : "")")
+                        }
+                        Button("Manage Apple subscription") { manageSubscriptions = true }
+                        Button("Restore Apple subscription") { Task { await account.restoreSubscription() } }
+                        Text("Manage website subscriptions in your Jamloom website account. Cancelling stops future renewals; your paid balance stays available.").font(.footnote)
+                    }
                     if account.canPurchase {
-                        Section("Add credits") {
+                        Section("Plans and credits") {
                             ForEach(account.creditProducts) { product in
                                 Button { Task { await account.buy(product) } } label: {
-                                    HStack { Label(product.displayName, systemImage: "sparkles"); Spacer(); Text(product.displayPrice).bold() }
+                                    VStack(alignment: .leading) {
+                                        HStack { Label(product.displayName, systemImage: "sparkles"); Spacer(); Text(product.displayPrice + (product.id == CreditPurchases.creatorProduct ? "/month" : " once")).bold() }
+                                        Text(product.id == CreditPurchases.creatorProduct ? "300 credits each month · Renews automatically until cancelled" : "150 credits · No subscription required").font(.caption)
+                                    }
                                 }
                             }
+                            Button("Claim 20 one-time trial credits") { Task { await account.claimTrial() } }
+                            Link("Terms of use", destination: URL(string: "https://www.jamloom.com/terms")!)
+                            Link("Privacy policy", destination: URL(string: "https://www.jamloom.com/privacy")!)
                             if account.creditProducts.isEmpty { Text("Credit packs are temporarily unavailable."); Button("Try again") { Task { await account.loadProducts() } } }
                         }
                     }
@@ -370,7 +411,7 @@ struct AccountView: View {
                 if !account.canPurchase { Text("Credit purchases and public generation remain closed while musical and billing checks are pending.") }
                 if account.busy { ProgressView("Contacting your account…") }
                 if !account.message.isEmpty { Text(account.message).accessibilityIdentifier("accountStatus") }
-            }.disabled(account.busy).navigationTitle("Jamloom account")
+            }.manageSubscriptionsSheet(isPresented: $manageSubscriptions).disabled(account.busy).navigationTitle("Jamloom account")
                 .alert("Request account deletion?", isPresented: $confirmDeletion) {
                     Button("Cancel", role: .cancel) {}
                     Button("Send deletion request", role: .destructive) { Task { await account.requestAccountDeletion() } }

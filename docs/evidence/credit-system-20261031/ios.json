@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "simulator": "iOS 27 iPhone 17",
+  "suites": [
+    "AccountTests",
+    "PurchaseTests"
+  ],
+  "testsExecuted": 27,
+  "explicitOptInSkipped": 4,
+  "failures": 0,
+  "meaning": "23 executed checks passed; 4 provider/device opt-in checks not run",
+  "resultBundle": "build-ios-storekit/Logs/Test/Test-Jamloom-2026.10.31_02-43-14--0400.xcresult",
+  "unsignedDeviceBuild": "PASS",
+  "physicalStoreKitQualification": "NOT RUN",
+  "appSubmission": "NOT RUN",
+  "earlierFailures": "Public-default expectations updated; unfinished StoreKit delivery test polls the asynchronous sequence before asserting recovery. Final combined rerun passes."
+}

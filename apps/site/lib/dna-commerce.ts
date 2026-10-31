@@ -1,3 +1,4 @@
+import {songCreditPrice,CREDIT_CATALOG_VERSION,TARGET_MARGIN_BPS} from './credit-catalog';
 import {MAX_SONG_BYTES} from './song-duration';
 import {createHash} from 'node:crypto';
 import type {Pool,PoolClient} from 'pg';
@@ -26,18 +27,18 @@ export class DnaCommerce{
  get product(){return this.options.product??'music-dna';}
  async quote(owner:string,profile:unknown,visibility:DnaVisibility){
   const budget=this.options.budget??{costCapMicros:COST_CAP,maxRuntimeMs:DNA_RUNTIME_MS,hourlyMicros:100000,fixedCostMicros:25000};
-  const price=await this.wallet.quote(owner,budget.costCapMicros,5000,visibility);
+  const price=await this.wallet.quote(owner,budget.costCapMicros,TARGET_MARGIN_BPS,visibility,songCreditPrice(this.product));
   const quote={version:1 as const,owner,expiresAt:Date.now()+300000,...price,
-   job:{inputSha256:hash(profile),planSha256:hash([this.product+'-v1',visibility,!!this.options.live]),maxRuntimeMs:budget.maxRuntimeMs,hourlyMicros:budget.hourlyMicros,fixedCostMicros:budget.fixedCostMicros}};
+   job:{inputSha256:hash(profile),planSha256:hash([this.product+'-v2',CREDIT_CATALOG_VERSION,visibility,!!this.options.live]),maxRuntimeMs:budget.maxRuntimeMs,hourlyMicros:budget.hourlyMicros,fixedCostMicros:budget.fixedCostMicros}};
   return {...price,expiresAt:quote.expiresAt,token:signQuote(quote,this.secret),mode:this.options.budget?'cloud':'local_credit_rehearsal'};
  }
  async submit(owner:string,id:string,profile:unknown,visibility:DnaVisibility,token:string,save?:(db:PoolClient)=>Promise<void>){
   if(!/^[a-f0-9]{32}$/.test(id))throw new AudioError('Invalid song request.');
   const q=verifyQuote(token,owner,this.secret);
-  if(q.visibility!==visibility||q.job.inputSha256!==hash(profile)||q.job.planSha256!==hash([this.product+'-v1',visibility,!!this.options.live])||q.costCapMicros!==(this.options.budget?.costCapMicros??COST_CAP))
+  if(q.visibility!==visibility||q.job.inputSha256!==hash(profile)||q.job.planSha256!==hash([this.product+'-v2',CREDIT_CATALOG_VERSION,visibility,!!this.options.live])||q.costCapMicros!==(this.options.budget?.costCapMicros??COST_CAP))
    throw new AudioError('Your list or sharing choice changed. Get a new quote.');
   await this.wallet.reserve(owner,'dna_'+id,q.costCapMicros,q.marginBps,undefined,visibility,q.credits,{
-   fingerprint:hash([profile,visibility,this.product,!!this.options.live]),save:async(db,reservation)=>{
+   fixedPrice:songCreditPrice(this.product),fingerprint:hash([profile,visibility,this.product,!!this.options.live]),save:async(db,reservation)=>{
     await db.query(`INSERT INTO dna_song_jobs(id,owner_id,reservation_id,profile,visibility,public_consent_at,cost_cap_micros,quoted_credits,product,billing_live)
      VALUES($1,$2,$3,$4,$5,CASE WHEN $5='public' THEN now() ELSE NULL END,$6,$7,$8,$9)`,[id,owner,reservation,JSON.stringify(profile),visibility,q.costCapMicros,q.credits,this.product,!!this.options.live]);
     if(save)await save(db);
@@ -79,7 +80,7 @@ export class DnaCommerce{
    }else if(audio&&createHash('sha256').update(audio).digest('hex')!==row.audio_sha256)throw Error('Song storage receipt changed');
   }
   // Retry settlement before exposing a song; a crash here must never cause a second charge or render.
-  await this.wallet.settle(row.owner_id,row.reservation_id,state==='completed'?(settlementCost??Number(row.cost_cap_micros)):0,state);
+  await this.wallet.settle(row.owner_id,row.reservation_id,settlementCost??(state==='completed'?Number(row.cost_cap_micros):0),state);
   await this.pool.query(`UPDATE dna_song_jobs SET state=$2,title=$3,language=$4,direction=$5,completed_at=now(),song_plan=COALESCE(song_plan,$6::jsonb)
    WHERE id=$1 AND state IN ('queued','running',$2)`,[id,state,details?.title??null,details?.language??null,details?.direction??null,details?.plan?JSON.stringify(details.plan):null]);
  }

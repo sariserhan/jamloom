@@ -23,7 +23,7 @@ export function TasteNotebook(){
  const [progress,setProgress]=useState<SongProgress|null>(null);
  const [cloud,setCloud]=useState(false);
  const [canCreate,setCanCreate]=useState<boolean|null>(null);
- const [visibility,setVisibility]=useState<'public'|'private'>('public');
+ const [visibility,setVisibility]=useState<'public'|'private'>('private');
  const [quote,setQuote]=useState<{credits:number;token:string;expiresAt:number;key:string}|null>(null);
  const requestId=useRef<string|null>(null),prompt=useRef<HTMLDialogElement>(null),generationButton=useRef<HTMLButtonElement>(null);
  const submittingCloud=useRef<string|null>(null),cancelWanted=useRef(false);
@@ -37,7 +37,7 @@ export function TasteNotebook(){
  const taste=automaticTaste(profile),locked=busy||rendering||playlistBusy;
  const publicConsent=visibility==='public';
  const selectionKey=favoriteKey(snapshot)+':'+visibility;
- const generationPrice=quote?.key===selectionKey?quote.credits:visibility==='public'?1:2;
+ const generationPrice=quote?.key===selectionKey?quote.credits:20;
  useEffect(()=>{setQuote(current=>current?.key===selectionKey?current:null);requestId.current=null;},[selectionKey]);
  const analysis=useRef<AbortController|null>(null),writable=useRef(false),mounted=useRef(true);
  useEffect(()=>{try{const old=localStorage.getItem('jamloom-taste-v1');if(old)setProfile(favoriteList(validateTaste(JSON.parse(old))));writable.current=true;}catch{setMessage('Saved favorites could not be read. You can start a new list.');}finally{setLoaded(true);}},[]);
@@ -134,7 +134,7 @@ export function TasteNotebook(){
     const priced=await fetch('/api/taste/song',{method:'POST',headers:{'Content-Type':'application/json','X-Jamloom-DNA':'1'},body:JSON.stringify({action:'quote',profile:resolved,visibility,publicConsent}),signal:controller.signal});
     const price=await priced.json();if(!priced.ok)throw Error(price.error);
     accepted={...price,key};setQuote(accepted);
-    if(price.credits>(visibility==='public'?1:2)){setRendering(false);setProgress(null);setMessage(`This song needs ${price.credits} credits to cover its generation cost. Review the new price, then confirm the new price to accept it.`);return;}
+    if(price.credits>(20)){setRendering(false);setProgress(null);setMessage(`This song needs ${price.credits} credits to cover its generation cost. Review the new price, then confirm the new price to accept it.`);return;}
    }
    controller.signal.throwIfAborted();
    requestId.current??=crypto.randomUUID().replaceAll('-','');
@@ -200,10 +200,10 @@ export function TasteNotebook(){
  <dialog ref={prompt} className="dna-generation-dialog" aria-labelledby="dna-generation-title" onCancel={event=>{event.preventDefault();void dismissPrompt();}} onClose={()=>{setPromptOpen(false);generationButton.current?.focus();}}>
  <h2 id="dna-generation-title">Make your song</h2><p>Choose who can listen before using your credits.</p><div className="product-controls">
  <fieldset disabled={locked}><legend>Who can listen?</legend>
- <label><input type="radio" name="dna-visibility" checked={visibility==='public'} onChange={()=>{setVisibility('public');setQuote(null);requestId.current=null;}}/>Public · from 1 credit</label><p>Your finished song appears in Community on the website and app. Your favorites and account stay private.</p>
- <label><input type="radio" name="dna-visibility" checked={visibility==='private'} onChange={()=>{setVisibility('private');setQuote(null);requestId.current=null;}}/>Private · from 2 credits</label><p>Only you can listen or download.</p>
+ <label><input type="radio" name="dna-visibility" checked={visibility==='public'} onChange={()=>{setVisibility('public');setQuote(null);requestId.current=null;}}/>Public · same price</label><p>Your finished song appears in Community on the website and app. Your favorites and account stay private.</p>
+ <label><input type="radio" name="dna-visibility" checked={visibility==='private'} onChange={()=>{setVisibility('private');setQuote(null);requestId.current=null;}}/>Private · same price</label><p>Only you can listen or download.</p>
  </fieldset>
- <p>{quote&&quote.key===favoriteKey(snapshot)+':'+visibility?`This song: ${quote.credits} ${quote.credits===1?'credit':'credits'}.`:`Starting price: ${visibility==='public'?'1 credit':'2 credits'}.`} Higher costs need your approval. Failed or cancelled songs return your credits.</p>
+ <p>{quote&&quote.key===favoriteKey(snapshot)+':'+visibility?`This song: ${quote.credits} ${quote.credits===1?'credit':'credits'}.`:'20 credits per song.'} The quoted price is fixed before you start. Failed or cancelled songs return your credits.</p>
  <p><a href="/account/sign-in?callbackURL=%2Fmusic-dna">Sign in</a> · <a href="/account/credits">Your credits</a>. {cloud?'Your song keeps processing if you leave this page.':'Local test credits only. Paid generation is not open.'}</p>
  <div className="product-actions"><button className="primary" disabled={locked} onClick={generate}>{rendering?'Preparing your song…':`Generate song · ${generationPrice} ${generationPrice===1?'credit':'credits'}`}</button><button className="secondary" onClick={dismissPrompt}>{rendering?'Cancel composition':'Cancel'}</button></div>
  {progress&&promptOpen&&<GenerationProgress {...progress}/>}

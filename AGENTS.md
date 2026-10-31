@@ -1,3 +1,5 @@
+**Commercial authorization — 2026-10-31:** The owner authorized the recommended credit system across web and mobile, then explicitly chose “Nonexpiring paid credits everywhere.” Implement Creator $15/300 monthly, $10/150 optional top-ups, a bounded 20-credit trial and fixed operation prices. This supersedes the earlier prepaid-only proposal and authorizes mobile payment implementation. Deployment and live-charge activation remain held. See [current credit system](docs/CREDIT_SYSTEM.md).
+
 # Jamloom
 
 **Current scope — 2026-10-31:** The owner instructed “yes defer those and lets

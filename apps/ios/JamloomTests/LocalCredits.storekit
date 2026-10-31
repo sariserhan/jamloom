@@ -31,6 +31,21 @@
       "productID": "com.jamloom.singing.complete",
       "referenceName": "Singing Academy test",
       "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "10.00",
+      "familyShareable": false,
+      "internalID": "E9716FA6-1EC8-4943-9DD3-950A1408C227",
+      "localizations": [
+        {
+          "description": "150 nonexpiring credits. No subscription required.",
+          "displayName": "150 credits",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.jamloom.credits.topup150",
+      "referenceName": "150 credits test",
+      "type": "Consumable"
     }
   ],
   "settings": {
@@ -38,7 +53,36 @@
     "_locale": "en_US",
     "_storefront": "USA"
   },
-  "subscriptionGroups": [],
+  "subscriptionGroups": [
+    {
+      "id": "53425AF0-1B17-43AF-A310-706051CDF910",
+      "localizations": [],
+      "name": "Jamloom Creator",
+      "subscriptions": [
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "15.00",
+          "familyShareable": false,
+          "groupNumber": 1,
+          "internalID": "3CA8DD54-6141-49B0-BE88-450BFAE1B66B",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "300 nonexpiring credits every month. Renews until cancelled.",
+              "displayName": "Creator monthly",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "com.jamloom.creator.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "Creator monthly test",
+          "subscriptionGroupID": "53425AF0-1B17-43AF-A310-706051CDF910",
+          "type": "RecurringSubscription"
+        }
+      ]
+    }
+  ],
   "version": {
     "major": 3,
     "minor": 0

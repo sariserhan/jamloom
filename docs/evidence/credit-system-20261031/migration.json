@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "target": "ep-flat-hill-b4q0lix4.c-6.us-east-2.aws.neon.tech/neondb",
+  "applied": [
+    "0033_credit_catalog.sql"
+  ],
+  "idempotent": true,
+  "migrations": 33,
+  "backup": {
+    "privatePath": "renders/credit-system-private-20261031/before-0033.dump",
+    "bytes": 147142,
+    "sha256": "f43fc36ab1541dd2fee756c95bba86c45859fe9ec7b5c44bc3ff635b191dcf04"
+  },
+  "livePurchasesEnabled": false
+}

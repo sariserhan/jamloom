@@ -1,3 +1,4 @@
+import {CREDIT_CATALOG_VERSION,LEGACY_CREDIT_MULTIPLIER,creditSalesQualified} from './credit-catalog';
 import Stripe from 'stripe';
 import { CREDIT_PACKS, integer } from './economics';
 import { Wallet } from './wallet';
@@ -12,7 +13,7 @@ export function creditBilling(env:Record<string,string|undefined>=process.env){
  const live=mode==='live',key=live?env.STRIPE_LIVE_SECRET_KEY:env.STRIPE_SECRET_KEY;
  const secret=live?env.CREDIT_STRIPE_LIVE_WEBHOOK_SECRET:env.STRIPE_WEBHOOK_SECRET;
  if(!key?.startsWith(live?'sk_live_':'sk_test_')||!secret?.startsWith('whsec_'))throw Error('Credit billing is not configured');
- return {stripe:new Stripe(key,{maxNetworkRetries:1,timeout:10000}),secret,live,enabled:(!live||paidGenerationReleased)&&env.JAMLOOM_CREDIT_PURCHASES_ENABLED==='true'&&/^txcd_[0-9]{8}$/.test(env.CREDIT_STRIPE_TAX_CODE??'')};
+ return {stripe:new Stripe(key,{maxNetworkRetries:1,timeout:10000}),secret,live,enabled:(!live||(paidGenerationReleased&&creditSalesQualified(env)))&&env.JAMLOOM_CREDIT_PURCHASES_ENABLED==='true'&&/^txcd_[0-9]{8}$/.test(env.CREDIT_STRIPE_TAX_CODE??'')};
 }
 export async function reconcileCreditReversal(stripe:Stripe,wallet:Wallet,event:Stripe.Event){
  if(event.livemode!==wallet.live)throw Error('Billing environment mismatch');
@@ -38,6 +39,7 @@ export async function fulfillCheckout(stripe:Stripe,wallet:Wallet,id:string){
      session.currency!=='usd'||session.amount_subtotal!==pack.cents||session.total_details?.amount_discount!==0||
      session.line_items?.has_more||session.line_items?.data.length!==1||session.line_items.data[0].quantity!==1||
      session.line_items.data[0].amount_subtotal!==pack.cents)throw new Error('Unsupported or unpaid purchase');
+  if(packKey==='topup'&&session.metadata?.catalog!==CREDIT_CATALOG_VERSION)throw Error('Unknown credit catalog');
   if(typeof session.payment_intent!=='string')throw new Error('Missing payment intent');
   const intent=await stripe.paymentIntents.retrieve(session.payment_intent,{expand:['latest_charge.balance_transaction']});
   const charge=intent.latest_charge;
@@ -54,13 +56,13 @@ export async function fulfillCheckout(stripe:Stripe,wallet:Wallet,id:string){
   const reserve=Math.ceil(pack.cents*.2);
   const netMicros=(balance.net-tax!-reserve)*10000;
   integer(netMicros,pack.credits);
-  return wallet.grant(owner,{provider:wallet.live?'stripe_live':'stripe_test',receipt:session.id,credits:pack.credits,netMicros});
+  return wallet.grant(owner,{provider:wallet.live?'stripe_live':'stripe_test',receipt:session.id,credits:packKey==='topup'?pack.credits:pack.credits*LEGACY_CREDIT_MULTIPLIER,netMicros});
 }
 export async function checkout(stripe:Stripe,owner:string,pack:keyof typeof CREDIT_PACKS,key:string,origin:string,live=false,taxCode=process.env.CREDIT_STRIPE_TAX_CODE){
-  if(!CREDIT_PACKS[pack]||!/^https?:\/\//.test(origin)||!/^[a-zA-Z0-9_-]{8,100}$/.test(key))throw new Error('Invalid checkout');
+  if(pack!=='topup'||!CREDIT_PACKS[pack]||!/^https?:\/\//.test(origin)||!/^[a-zA-Z0-9_-]{8,100}$/.test(key))throw new Error('Invalid checkout');
   if(!/^txcd_[0-9]{8}$/.test(taxCode??''))throw Error('Credit tax category is not configured');
   const p=CREDIT_PACKS[pack];
-  return stripe.checkout.sessions.create({mode:'payment',client_reference_id:owner,metadata:{pack,jamloom_product:'song-credits'},
+  return stripe.checkout.sessions.create({mode:'payment',client_reference_id:owner,metadata:{pack,jamloom_product:'song-credits',catalog:CREDIT_CATALOG_VERSION},
     line_items:[{price_data:{currency:'usd',tax_behavior:'exclusive',unit_amount:p.cents,product_data:{tax_code:taxCode,name:`Jamloom ${p.credits} ${live?'':'test '}credits`}},quantity:1}],
     success_url:origin+'/account/credits?payment=complete&session_id={CHECKOUT_SESSION_ID}',cancel_url:origin+'/account/credits?payment=cancelled',
     automatic_tax:{enabled:true}}, {idempotencyKey:`jamloom:inline:${owner}:${key}`});

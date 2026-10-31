@@ -13,7 +13,7 @@ test('audio ranges support seeking and suffix reads, rejecting invalid and multi
 });
 test('credit Checkout uses the secure hosted flow with stable idempotency and server prices',async()=>{
  let body:any,options:any;const stripe={checkout:{sessions:{create:async(b:any,o:any)=>{body=b;options=o;return {};}}}} as unknown as Stripe;
- await checkout(stripe,'owner','starter','retry_key','https://www.jamloom.com',false,'txcd_10000000');assert.equal(body.mode,'payment');assert.equal(body.ui_mode,undefined);assert.equal(body.success_url,'https://www.jamloom.com/account/credits?payment=complete&session_id={CHECKOUT_SESSION_ID}');assert.equal(body.cancel_url,'https://www.jamloom.com/account/credits?payment=cancelled');assert.equal(body.automatic_tax.enabled,true);assert.match(options.idempotencyKey,/inline:owner:retry_key$/);
+ await checkout(stripe,'owner','topup','retry_key','https://www.jamloom.com',false,'txcd_10000000');assert.equal(body.mode,'payment');assert.equal(body.ui_mode,undefined);assert.equal(body.success_url,'https://www.jamloom.com/account/credits?payment=complete&session_id={CHECKOUT_SESSION_ID}');assert.equal(body.cancel_url,'https://www.jamloom.com/account/credits?payment=cancelled');assert.equal(body.automatic_tax.enabled,true);assert.match(options.idempotencyKey,/inline:owner:retry_key$/);
 });
 test('publishable keys must match billing mode; secrets alone cannot open inline checkout',()=>{
  assert.equal(billingPublishableKey('test',{STRIPE_PUBLISHABLE_KEY:'pk_live_wrong'}),null);assert.equal(billingPublishableKey('live',{STRIPE_LIVE_PUBLISHABLE_KEY:'sk_live_wrong'}),null);

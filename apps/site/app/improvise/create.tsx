@@ -8,7 +8,7 @@ const endpoint='/api/improvise/song',historyKey='jamloom-improvise-song';
 type Quote={token:string;credits:number;expiresAt:number};
 export function ImproviseCreate(){
  const [file,setFile]=useState<Blob|null>(null),[name,setName]=useState(''),[preview,setPreview]=useState(''),[genre,setGenre]=useState('surprise'),[voice,setVoice]=useState('surprise');
- const [visibility,setVisibility]=useState<'public'|'private'>('public'),[open,setOpen]=useState(false);
+ const [visibility,setVisibility]=useState<'public'|'private'>('private'),[open,setOpen]=useState(false);
  const [canCreate,setCanCreate]=useState<boolean|null>(null);
  const sharing=visibility==='public';
  const [busy,setBusy]=useState(false),[recording,setRecording]=useState(false),[message,setMessage]=useState(''),[job,setJob]=useState<string|null>(null),[progress,setProgress]=useState<SongProgress|null>(null),[ready,setReady]=useState<string|null>(null),[quote,setQuote]=useState<Quote|null>(null);
@@ -67,7 +67,7 @@ export function ImproviseCreate(){
    }
    const profile={sourceId:sourceId.current,genre,voice,phrase:'',consent:true};
    let price=quote&&quote.expiresAt>Date.now()?quote:null;
-   if(!price){price=await post({action:'quote',profile,visibility,publicConsent:sharing});setQuote(price);if(price!.credits>(visibility==='private'?2:1)){setMessage(`This song needs ${price!.credits} credits. Review the price and confirm to continue.`);setProgress(null);return;}}
+   if(!price){price=await post({action:'quote',profile,visibility,publicConsent:sharing});setQuote(price);if(price!.credits>(10)){setMessage(`This song needs ${price!.credits} credits. Review the price and confirm to continue.`);setProgress(null);return;}}
    requestId.current??=crypto.randomUUID().replaceAll('-','');
    submitting.current=true;try{localStorage.setItem(historyKey,requestId.current);}catch{}
    const result=await post({action:'submit',requestId:requestId.current,token:price!.token,profile,visibility,publicConsent:sharing},true);
@@ -111,9 +111,9 @@ export function ImproviseCreate(){
     <p role="status">{!open?message:''}</p>
    </section>
   </div>
-  <dialog ref={dialog} aria-labelledby="improvise-confirm-title" className="dna-generation-dialog improvise-confirm" onCancel={e=>{e.preventDefault();void cancel();}}><h2 id="improvise-confirm-title">Make your song</h2><fieldset disabled={busy}><legend>Who can listen?</legend><label><input type="radio" checked={visibility==='public'} onChange={()=>{setVisibility('public');}}/>Public · from 1 credit</label><label><input type="radio" checked={visibility==='private'} onChange={()=>{setVisibility('private');}}/>Private · from 2 credits</label>{visibility==='public'&&<p>Your finished song, including parts of your clip used in it, appears in Community on the website and app. Choose Private to keep it to yourself.</p>}</fieldset>
+  <dialog ref={dialog} aria-labelledby="improvise-confirm-title" className="dna-generation-dialog improvise-confirm" onCancel={e=>{e.preventDefault();void cancel();}}><h2 id="improvise-confirm-title">Make your song</h2><fieldset disabled={busy}><legend>Who can listen?</legend><label><input type="radio" checked={visibility==='public'} onChange={()=>{setVisibility('public');}}/>Public · same price</label><label><input type="radio" checked={visibility==='private'} onChange={()=>{setVisibility('private');}}/>Private · same price</label>{visibility==='public'&&<p>Your finished song, including parts of your clip used in it, appears in Community on the website and app. Choose Private to keep it to yourself.</p>}</fieldset>
   <p>Generate sends your recording to create your song. Your source recording is removed after processing. Failed or cancelled songs return reserved credits. A higher price needs your confirmation.</p><p><a href="/account/credits">Your credits</a> · <a href="/account/sign-in?callbackURL=%2Fimprovise">Sign in</a></p>
-  <div className="product-actions"><button className="primary" disabled={busy} onClick={generate}>{busy?'Preparing your song…':`Generate song · ${quote?.credits??(visibility==='private'?2:1)} credits`}</button><button className="secondary" onClick={cancel}>Cancel</button></div>{open&&progress&&<GenerationProgress {...progress}/>}<p role="status">{message}</p></dialog>
+  <div className="product-actions"><button className="primary" disabled={busy} onClick={generate}>{busy?'Preparing your song…':`Generate song · ${quote?.credits??(10)} credits`}</button><button className="secondary" onClick={cancel}>Cancel</button></div>{open&&progress&&<GenerationProgress {...progress}/>}<p role="status">{message}</p></dialog>
   {ready&&<article><h3>Your new song</h3><audio controls preload="none" src={endpoint+'?id='+ready+'&file=audio'} aria-label="Play your new song"/><a href={endpoint+'?id='+ready+'&file=audio&download=1'} download>Download song</a><SongFeedback id={ready} product="improvise" account/></article>}
  </section>;
 }

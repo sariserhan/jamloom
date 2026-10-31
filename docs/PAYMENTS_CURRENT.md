@@ -1,5 +1,9 @@
 # Payments — 2026-10-31
 
+**Current credit catalog:** [Credit system and remaining activation gates](CREDIT_SYSTEM.md). Creator $15/300 monthly, $10/150 top-ups and 20 one-time trial credits are implemented across web/mobile website/iPhone. All paid credits are nonexpiring. Fixed generation prices replace the historical packs below for new sales. Stripe sandbox renewal/refund checks, local StoreKit and browser checks pass; live purchases/deployment remain held. Migration 0033 is applied with a private backup and 33 matching hashes.
+
+## Earlier payment preparation — preserved history
+
 **PASS current local payment checks and scoped preparation; PARTIAL activation.**
 The owner deferred verified produced-song scoring, custom learned-planner
 training and missing formal measurements for v1, then requested payment work.

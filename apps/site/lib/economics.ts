@@ -1,5 +1,5 @@
 // USD microdollars avoid floating-point money and preserve conservative rounding.
-export const CREDIT_PACKS={starter:{cents:999,credits:10},creator:{cents:2499,credits:25},studio:{cents:4999,credits:50}} as const;
+export const CREDIT_PACKS={starter:{cents:999,credits:10},creator:{cents:2499,credits:25},studio:{cents:4999,credits:50},topup:{cents:1000,credits:150}} as const;
 export const COST_CATEGORIES=['gpu','startupIdle','orchestration','storage','bandwidth','inference','retries','support','infrastructure','fxTaxRisk'] as const;
 export type Costs=Record<typeof COST_CATEGORIES[number],number>;
 export function integer(value:number,min=0,max=1_000_000_000_000) {
