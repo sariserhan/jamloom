@@ -51,4 +51,4 @@ export async function proxy(request: NextRequest) {
   response.headers.set('Cache-Control', 'private, no-store');
   return response;
 }
-export const config = { matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:js|mjs|css|wasm|png|svg|jpg|mp3|txt|json|webmanifest)$).*)'] };
+export const config = { matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:js|mjs|css|wasm|png|webp|svg|jpg|mp3|txt|json|webmanifest)$).*)'] };

@@ -2,8 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {NextRequest} from 'next/server';
 import {comingSoonEnabled,comingSoonRecovery,comingSoonResponse} from '../lib/coming-soon';
-import {proxy} from '../proxy';
+import {proxy,config} from '../proxy';
+import testing from 'next/experimental/testing/server';
+import {readdir} from 'node:fs/promises';
 import {homeProducts} from '../lib/home-products';
+// The installed Next version exposes the proxy matcher under its older name.
+const {unstable_doesMiddlewareMatch:doesProxyMatch}=testing;
 
 test('launch gate defaults on and only explicit false disables it',()=>{
  for(const value of [undefined,'','true','FALSE','0'])assert.equal(comingSoonEnabled({JAMLOOM_COMING_SOON:value}),true);
@@ -101,4 +105,15 @@ test('AI DJ public overview passes the launch hold while paid and private APIs r
  const html=await comingSoonResponse(new Request('https://www.jamloom.com/')).text();
  assert.match(html,/href="\/ai-dj">AI DJ<\/a>/);assert.match(html,/product-previews\/ai-dj.webp/);
  assert.match(html,/Explore AI DJ/);
+});
+
+test('public preview images bypass the launch proxy while private and payment routes stay covered',async()=>{
+ const assets=await readdir(new URL('../public/product-previews/',import.meta.url));
+ assert.ok(assets.some(name=>name.endsWith('.webp')));
+ for(const name of assets){
+  assert.equal(doesProxyMatch({config,url:'/product-previews/'+name}),false,name);
+  assert.equal(doesProxyMatch({config,url:'/product-previews/'+name+'?v=1'}),false,name+' with query');
+ }
+ for(const url of ['/api/payments/checkout','/api/generations','/api/taste/song?view=mine','/account/credits','/admin'])
+  assert.equal(doesProxyMatch({config,url}),true,url);
 });
