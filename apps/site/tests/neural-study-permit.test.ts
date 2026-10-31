@@ -19,11 +19,15 @@ test('study stages require fresh approval, unchanged code, single use and prior 
   await claimStudyStage(root,path,'hash',1,receipt);
   await assert.rejects(claimStudyStage(root,path,'hash',1,receipt),/EEXIST/);
   await assert.rejects(claimStudyStage(root,path,'hash',2,receipt),/ENOENT/);
+  await writeFile(receipt,JSON.stringify({studyStage:1,studyManifestSha256:'hash',qualification:'FAIL',cleanup:true,disabled:true,stopped:true}));
+  await assert.rejects(claimStudyStage(root,path,'hash',2,receipt),/FAIL/);
   await writeFile(receipt,JSON.stringify({studyStage:1,studyManifestSha256:'hash',qualification:'PASS',cleanup:true,disabled:true,stopped:true}));
   await assert.rejects(claimStudyStage(root,path,'hash',2,receipt),/ENOENT/);
   const post=join(root,'build-neural-qualification-20261030/claims/stage-1-postcheck.json');
   const check={receipt,cleanup:'PASS',qualification:'PASS',workerLimits:[0,0],workers:{summary:{total:1}},health:{jobs:{inQueue:0,inProgress:0}},temporaryDatabases:[]};
   await writeFile(post,JSON.stringify(check));await assert.rejects(claimStudyStage(root,path,'hash',2,receipt));
   check.workers.summary.total=0;await writeFile(post,JSON.stringify(check));await claimStudyStage(root,path,'hash',2,join(root,'receipt2.json'));
+  permit.status='STOPPED_FAILURE';await save();
+  await assert.rejects(claimStudyStage(root,path,'hash',3,join(root,'receipt3.json')),/approval/);
  }finally{await rm(root,{recursive:true,force:true});}
 });

@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "scope": "Read-only Apple GPU availability and complete pinned runtime/model hash verification; no model loaded or generation run",
+  "platform": "arm64",
+  "memory_bytes": 17179869184,
+  "available_memory_bytes": 3506782208,
+  "free_disk_bytes": 21740331008,
+  "torch": "2.10.0",
+  "mps_available": true,
+  "code_revision": "ca1e85fe9430179831e6bc6be790c332190a3866",
+  "weight_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+  "seconds": 4.00571645799937
+}

@@ -25,8 +25,10 @@ const config=cloudSongConfig({...process.env,CREDIT_BILLING_MODE:'test',JAMLOOM_
 const get=async(path:string)=>{const r=await fetch('https://rest.runpod.io/v1/'+path,{headers:{Authorization:'Bearer '+config.key},signal:AbortSignal.timeout(15000)});assert(r.ok,'Provider GET failed');return r.json();};
 const control=await get('endpoints/'+config.endpoint+'?includeWorkers=true');
 const health=await new RunpodProvider(config.key,config.endpoint).health();
-// REST v1 exposes workers on the endpoint, not through an /endpoints/:id/workers route.
-const inventory=control.workers;
+// Endpoint responses omit workers when empty. The documented filtered Pod list
+// supplies an explicit inventory; missing fields must never stand in for absence.
+const inventory=await get('pods?includeWorkers=true&endpointId='+config.endpoint);
+assert.equal(control.id,config.endpoint);
 assert.equal(control.workersMin,0);assert.equal(control.workersMax,0);
 assert.equal(health.jobs?.inQueue,0);assert.equal(health.jobs?.inProgress,0);
 assert(Object.keys(health.workers??{}).length>0);assert(Object.values(health.workers).every(v=>v===0));

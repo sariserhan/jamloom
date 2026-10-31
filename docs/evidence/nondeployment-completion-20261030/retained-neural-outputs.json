@@ -1,0 +1,66 @@
+{
+  "status": "PASS retention checks only",
+  "qualification": "FAIL",
+  "outputs": [
+    {
+      "case": "ls-2277-149896-0026-jazz",
+      "path": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-jazz.wav",
+      "sha256": "b39653b5cf8063c6ab11e49a6cdc477e7d303d8043c24797e226e7563e9daff2",
+      "seconds": 45,
+      "source_bounds_verified": true,
+      "owner_listening": "NOT RUN"
+    },
+    {
+      "case": "ls-2277-149896-0026-funk",
+      "path": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-funk.wav",
+      "sha256": "05ce009910d960d3c19a87db0c4db1acf1cc2ed7b005405b7caf620dca112c62",
+      "seconds": 45,
+      "source_bounds_verified": true,
+      "owner_listening": "NOT RUN"
+    },
+    {
+      "case": "ls-2277-149896-0026-drumandbass",
+      "path": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-drumandbass.wav",
+      "sha256": "5189183fabc9d16997b03a408e856df7dbad105952c6323db0296b4896d785aa",
+      "seconds": 45,
+      "source_bounds_verified": true,
+      "owner_listening": "NOT RUN"
+    },
+    {
+      "case": "ls-2035-147960-0013-jazz",
+      "path": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-jazz.wav",
+      "sha256": "4005eb85a1e7c9d8147c80fb42146db390043183975e629e11bef21deb7d0e31",
+      "seconds": 45,
+      "source_bounds_verified": true,
+      "owner_listening": "NOT RUN"
+    },
+    {
+      "case": "ls-2035-147960-0013-funk",
+      "path": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-funk.wav",
+      "sha256": "a729286df251208089483ab1473c1604d54beb8a80fd7d6c69af360ae54e8ab1",
+      "seconds": 45,
+      "source_bounds_verified": true,
+      "owner_listening": "NOT RUN"
+    },
+    {
+      "case": "ls-2035-147960-0013-drumandbass",
+      "path": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-drumandbass.wav",
+      "sha256": "ab6c168ec9b2f69a1253d5a2b8ea1f5749d06ba048ab8b5dac45ef0845eb713b",
+      "seconds": 45,
+      "source_bounds_verified": true,
+      "owner_listening": "NOT RUN"
+    },
+    {
+      "case": "ls-2086-149220-0047-jazz",
+      "path": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2086-149220-0047-jazz.wav",
+      "sha256": "958571c1215c25de81f568a79d6bf9150d1b21e51dfad29d824113e02de72452",
+      "seconds": 45,
+      "source_bounds_verified": true,
+      "owner_listening": "NOT RUN"
+    }
+  ],
+  "failed_case": "ls-2086-149220-0047-funk",
+  "failed_take_retained": false,
+  "failure_cause": "Unknown beyond arrangement stage; published worker omitted detailed rejection reason.",
+  "new_diagnostics": "Local source only; no new image publication or request."
+}

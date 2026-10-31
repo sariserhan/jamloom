@@ -1,0 +1,15 @@
+{
+  "status": "FAIL",
+  "paid_compute": false,
+  "device_requested": "mps",
+  "model_requests_max": 1,
+  "model_requests_started": 0,
+  "timeout_seconds": 600,
+  "per_track_deadline_ms": 30000,
+  "disk_floor_bytes": 16106127360,
+  "initial_available_bytes": 4298047488,
+  "peak_process_group_rss_bytes": 391200768,
+  "human_listening": "NOT RUN",
+  "seconds": 10.272630708997895,
+  "error": "Swap growth limit reached"
+}

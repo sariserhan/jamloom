@@ -1,0 +1,14 @@
+{
+  "3011": {
+    "path": "/",
+    "status": 200
+  },
+  "3010": {
+    "path": "/academy/challenges/first-crossfade",
+    "status": 200
+  },
+  "8777": {
+    "path": "/practice-observation.html",
+    "status": 200
+  }
+}

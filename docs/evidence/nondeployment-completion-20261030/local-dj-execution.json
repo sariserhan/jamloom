@@ -1,0 +1,15 @@
+{
+  "status": "NOT RUN",
+  "paid_compute": false,
+  "device_requested": "mps",
+  "model_requests_max": 1,
+  "model_requests_started": 0,
+  "timeout_seconds": 600,
+  "per_track_deadline_ms": 30000,
+  "disk_floor_bytes": 16106127360,
+  "initial_available_bytes": 3956162560,
+  "peak_process_group_rss_bytes": 0,
+  "human_listening": "NOT RUN",
+  "error": "Available memory floor reached",
+  "seconds": 3.6499994166661054e-05
+}

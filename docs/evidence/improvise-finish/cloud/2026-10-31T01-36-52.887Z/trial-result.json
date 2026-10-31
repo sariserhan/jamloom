@@ -1,0 +1,3447 @@
+{
+  "startedAt": "2026-10-31T01:36:52.905Z",
+  "maxUSD": 3,
+  "maxWorkers": 1,
+  "maxSeconds": 2400,
+  "scope": "neural-study-stage-1",
+  "requests": [
+    {
+      "id": "5848fb39c3df4b37903928cabaffd4b4",
+      "owner": "trial-0",
+      "label": "ls-2277-149896-0026-jazz",
+      "studySourceId": "ls-2277-149896-0026",
+      "requestedGenre": "jazz",
+      "requestedEnergy": "low",
+      "sourceSha256": "662d77f12266740ea1ff9105eabbf6b910e04e1fa97ebcb0b92d0604d7bbe253",
+      "product": "improvise",
+      "quotedCredits": 5,
+      "transitions": [
+        {
+          "seconds": 622,
+          "state": "queued",
+          "provider": "IN_QUEUE"
+        },
+        {
+          "seconds": 642,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 756,
+          "state": "completed",
+          "provider": "COMPLETED"
+        }
+      ],
+      "provider_id": "bafbd1d5-4da3-4384-93e8-706d53f14de0-u2",
+      "provider_status": "COMPLETED",
+      "execution_ms": "113718",
+      "delay_ms": "12706",
+      "estimated_cost_micros": "147000",
+      "failure": null,
+      "state": "completed",
+      "pattern": "beat-fitted",
+      "duration": 45,
+      "sourceExcerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "c9988d609bcd0851297faeefb5ca94b70a563fd6f2d64bc96899f6893bb24cc9",
+          "processed_frames": 236160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 236160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "sourceBoundsVerified": true,
+      "musicalDirection": {
+        "seed": 1501106075,
+        "genre": "jazz",
+        "energy": "low"
+      },
+      "saved": true,
+      "audioSha256": "b39653b5cf8063c6ab11e49a6cdc477e7d303d8043c24797e226e7563e9daff2",
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "finalState": "completed",
+      "finalBalance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "expectedCredits": 2
+    },
+    {
+      "id": "8fd58cdd05bf491e9692333619dd0558",
+      "owner": "trial-1",
+      "label": "ls-2277-149896-0026-funk",
+      "studySourceId": "ls-2277-149896-0026",
+      "requestedGenre": "funk",
+      "requestedEnergy": "medium",
+      "sourceSha256": "662d77f12266740ea1ff9105eabbf6b910e04e1fa97ebcb0b92d0604d7bbe253",
+      "product": "improvise",
+      "quotedCredits": 5,
+      "transitions": [
+        {
+          "seconds": 767,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 872,
+          "state": "completed",
+          "provider": "COMPLETED"
+        }
+      ],
+      "provider_id": "9f062bb4-8986-46ec-99d7-9ae8becf9ea5-u1",
+      "provider_status": "COMPLETED",
+      "execution_ms": "92381",
+      "delay_ms": "16",
+      "estimated_cost_micros": "113000",
+      "failure": null,
+      "state": "completed",
+      "pattern": "single-call",
+      "duration": 45,
+      "sourceExcerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "c9988d609bcd0851297faeefb5ca94b70a563fd6f2d64bc96899f6893bb24cc9",
+          "processed_frames": 236160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 236160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "sourceBoundsVerified": true,
+      "musicalDirection": {
+        "seed": 2980721242,
+        "genre": "funk",
+        "energy": "medium"
+      },
+      "saved": true,
+      "audioSha256": "05ce009910d960d3c19a87db0c4db1acf1cc2ed7b005405b7caf620dca112c62",
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "finalState": "completed",
+      "finalBalance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "expectedCredits": 2
+    },
+    {
+      "id": "0fe156f6f0374b57a8c2e2ccba8ba1da",
+      "owner": "trial-2",
+      "label": "ls-2277-149896-0026-drumandbass",
+      "studySourceId": "ls-2277-149896-0026",
+      "requestedGenre": "drumandbass",
+      "requestedEnergy": "high",
+      "sourceSha256": "662d77f12266740ea1ff9105eabbf6b910e04e1fa97ebcb0b92d0604d7bbe253",
+      "product": "improvise",
+      "quotedCredits": 5,
+      "transitions": [
+        {
+          "seconds": 882,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 986,
+          "state": "completed",
+          "provider": "COMPLETED"
+        }
+      ],
+      "provider_id": "ea37c266-9f03-409a-8025-7eefeae4d5c9-u2",
+      "provider_status": "COMPLETED",
+      "execution_ms": "94713",
+      "delay_ms": "17",
+      "estimated_cost_micros": "115000",
+      "failure": null,
+      "state": "completed",
+      "pattern": "single-call",
+      "duration": 45,
+      "sourceExcerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "c9988d609bcd0851297faeefb5ca94b70a563fd6f2d64bc96899f6893bb24cc9",
+          "processed_frames": 236160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 236160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "sourceBoundsVerified": true,
+      "musicalDirection": {
+        "seed": 1378550872,
+        "genre": "drumandbass",
+        "energy": "high"
+      },
+      "saved": true,
+      "audioSha256": "5189183fabc9d16997b03a408e856df7dbad105952c6323db0296b4896d785aa",
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "finalState": "completed",
+      "finalBalance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "expectedCredits": 2
+    },
+    {
+      "id": "21e8fbabb3a542299b0cd7037e77dd36",
+      "owner": "trial-3",
+      "label": "ls-2035-147960-0013-jazz",
+      "studySourceId": "ls-2035-147960-0013",
+      "requestedGenre": "jazz",
+      "requestedEnergy": "low",
+      "sourceSha256": "dc316e4958bfd11aab746235d4ff2693e27b7ae7e66a07280fba37a2da83218b",
+      "product": "improvise",
+      "quotedCredits": 5,
+      "transitions": [
+        {
+          "seconds": 997,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 1111,
+          "state": "completed",
+          "provider": "COMPLETED"
+        }
+      ],
+      "provider_id": "ab0bedfa-6841-410c-904f-96d6df72fe41-u2",
+      "provider_status": "COMPLETED",
+      "execution_ms": "105841",
+      "delay_ms": "48",
+      "estimated_cost_micros": "126000",
+      "failure": null,
+      "state": "completed",
+      "pattern": "beat-fitted",
+      "duration": 45,
+      "sourceExcerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "2900568f65a889bb31872f628d6b0c1e326df4210a66e69d54c4b886cc8e97d6",
+          "processed_frames": 128400,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 128400,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.675
+        ],
+        "rhythm_word_frames": null
+      },
+      "sourceBoundsVerified": true,
+      "musicalDirection": {
+        "seed": 3125094122,
+        "genre": "jazz",
+        "energy": "low"
+      },
+      "saved": true,
+      "audioSha256": "4005eb85a1e7c9d8147c80fb42146db390043183975e629e11bef21deb7d0e31",
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "finalState": "completed",
+      "finalBalance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "expectedCredits": 2
+    },
+    {
+      "id": "2102c9ae565042f193ee371d926953dd",
+      "owner": "trial-4",
+      "label": "ls-2035-147960-0013-funk",
+      "studySourceId": "ls-2035-147960-0013",
+      "requestedGenre": "funk",
+      "requestedEnergy": "medium",
+      "sourceSha256": "dc316e4958bfd11aab746235d4ff2693e27b7ae7e66a07280fba37a2da83218b",
+      "product": "improvise",
+      "quotedCredits": 5,
+      "transitions": [
+        {
+          "seconds": 1122,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 1225,
+          "state": "completed",
+          "provider": "COMPLETED"
+        }
+      ],
+      "provider_id": "d75940af-beb9-4fe8-b40b-d0ec5d912202-u2",
+      "provider_status": "COMPLETED",
+      "execution_ms": "95136",
+      "delay_ms": "17",
+      "estimated_cost_micros": "116000",
+      "failure": null,
+      "state": "completed",
+      "pattern": "beat-fitted",
+      "duration": 45,
+      "sourceExcerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "896610a6e7f290d3306afbdc7cbb8627b92bf38592784c2875a8b2caae321579",
+          "processed_frames": 102720,
+          "consent_confirmed": true
+        },
+        "selection": "excerpt",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 102720,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0.30000000000000004,
+          2.44
+        ],
+        "rhythm_word_frames": [
+          80640,
+          102720
+        ]
+      },
+      "sourceBoundsVerified": true,
+      "musicalDirection": {
+        "seed": 3779491875,
+        "genre": "funk",
+        "energy": "medium"
+      },
+      "saved": true,
+      "audioSha256": "a729286df251208089483ab1473c1604d54beb8a80fd7d6c69af360ae54e8ab1",
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "finalState": "completed",
+      "finalBalance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "expectedCredits": 2
+    },
+    {
+      "id": "c739e8a9e08041b9a7bb5bfbc5dd7f62",
+      "owner": "trial-5",
+      "label": "ls-2035-147960-0013-drumandbass",
+      "studySourceId": "ls-2035-147960-0013",
+      "requestedGenre": "drumandbass",
+      "requestedEnergy": "high",
+      "sourceSha256": "dc316e4958bfd11aab746235d4ff2693e27b7ae7e66a07280fba37a2da83218b",
+      "product": "improvise",
+      "quotedCredits": 5,
+      "transitions": [
+        {
+          "seconds": 1236,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 1339,
+          "state": "completed",
+          "provider": "COMPLETED"
+        }
+      ],
+      "provider_id": "39779fed-bb56-4ab3-81a0-05b7f69550a6-u1",
+      "provider_status": "COMPLETED",
+      "execution_ms": "100225",
+      "delay_ms": "69",
+      "estimated_cost_micros": "121000",
+      "failure": null,
+      "state": "completed",
+      "pattern": "beat-fitted",
+      "duration": 45,
+      "sourceExcerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "2900568f65a889bb31872f628d6b0c1e326df4210a66e69d54c4b886cc8e97d6",
+          "processed_frames": 128400,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 128400,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.675
+        ],
+        "rhythm_word_frames": null
+      },
+      "sourceBoundsVerified": true,
+      "musicalDirection": {
+        "seed": 2958081157,
+        "genre": "drumandbass",
+        "energy": "high"
+      },
+      "saved": true,
+      "audioSha256": "ab6c168ec9b2f69a1253d5a2b8ea1f5749d06ba048ab8b5dac45ef0845eb713b",
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "finalState": "completed",
+      "finalBalance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "expectedCredits": 2
+    },
+    {
+      "id": "a36a7017d49047de8c58808b7afa0bc3",
+      "owner": "trial-6",
+      "label": "ls-2086-149220-0047-jazz",
+      "studySourceId": "ls-2086-149220-0047",
+      "requestedGenre": "jazz",
+      "requestedEnergy": "low",
+      "sourceSha256": "9efd519c520b7ff22eb362b5aaaecc9707d12183d6d6feb19efdce210d18a1b0",
+      "product": "improvise",
+      "quotedCredits": 5,
+      "transitions": [
+        {
+          "seconds": 1350,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 1464,
+          "state": "completed",
+          "provider": "COMPLETED"
+        }
+      ],
+      "provider_id": "8f4fca24-aca4-4716-bf17-1c785e90ca27-u2",
+      "provider_status": "COMPLETED",
+      "execution_ms": "102870",
+      "delay_ms": "21",
+      "estimated_cost_micros": "123000",
+      "failure": null,
+      "state": "completed",
+      "pattern": "single-call",
+      "duration": 45,
+      "sourceExcerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "ac8847f87b771e42a535c652afef85e14382085f051086a6781df2437d72eac2",
+          "processed_frames": 188160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 188160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "sourceBoundsVerified": true,
+      "musicalDirection": {
+        "seed": 2665930007,
+        "genre": "jazz",
+        "energy": "low"
+      },
+      "saved": true,
+      "audioSha256": "958571c1215c25de81f568a79d6bf9150d1b21e51dfad29d824113e02de72452",
+      "balance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "finalState": "completed",
+      "finalBalance": {
+        "available": 48,
+        "reserved": 0
+      },
+      "expectedCredits": 2
+    },
+    {
+      "id": "ffbc73eb871e47989558a4b349f0eeed",
+      "owner": "trial-7",
+      "label": "ls-2086-149220-0047-funk",
+      "studySourceId": "ls-2086-149220-0047",
+      "requestedGenre": "funk",
+      "requestedEnergy": "medium",
+      "sourceSha256": "9efd519c520b7ff22eb362b5aaaecc9707d12183d6d6feb19efdce210d18a1b0",
+      "product": "improvise",
+      "quotedCredits": 5,
+      "transitions": [
+        {
+          "seconds": 1474,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 1576,
+          "state": "failed",
+          "provider": "FAILED"
+        }
+      ],
+      "provider_id": "c6bf3fcc-1e04-4702-9f77-911e45309f33-u2",
+      "provider_status": "FAILED",
+      "execution_ms": "100459",
+      "delay_ms": "18",
+      "estimated_cost_micros": "121000",
+      "failure": "improvise-arrangement",
+      "state": "failed",
+      "finalState": "failed",
+      "finalBalance": {
+        "available": 50,
+        "reserved": 0
+      },
+      "expectedCredits": 0
+    },
+    {
+      "id": "5858eb74571e4c7784edc7be51f7636a",
+      "owner": "trial-8",
+      "label": "ls-2086-149220-0047-drumandbass",
+      "studySourceId": "ls-2086-149220-0047",
+      "requestedGenre": "drumandbass",
+      "requestedEnergy": "high",
+      "sourceSha256": "9efd519c520b7ff22eb362b5aaaecc9707d12183d6d6feb19efdce210d18a1b0",
+      "product": "improvise",
+      "quotedCredits": 5,
+      "transitions": [],
+      "finalState": "cancelled",
+      "state": "cancelled",
+      "finalBalance": {
+        "available": 50,
+        "reserved": 0
+      },
+      "expectedCredits": 0
+    },
+    {
+      "id": "429bad0320024651bde3e3f73a7a1617",
+      "owner": "trial-9",
+      "label": "ls-7976-110124-0019-jazz",
+      "studySourceId": "ls-7976-110124-0019",
+      "requestedGenre": "jazz",
+      "requestedEnergy": "low",
+      "sourceSha256": "2a2f3a78c3fd1727f4b66848153f4057c84c689c699509fec06eb5677035a9eb",
+      "product": "improvise",
+      "quotedCredits": 5,
+      "transitions": [],
+      "finalState": "cancelled",
+      "state": "cancelled",
+      "finalBalance": {
+        "available": 50,
+        "reserved": 0
+      },
+      "expectedCredits": 0
+    }
+  ],
+  "health": [
+    {
+      "seconds": 5,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 16,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 26,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 36,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 46,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 56,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 66,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 76,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 86,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 96,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 106,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 116,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 127,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 137,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 147,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 157,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 167,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 177,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 187,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 197,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 207,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 217,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 227,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 237,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 248,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 258,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 268,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 278,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 288,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 298,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 308,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 318,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 328,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 338,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 348,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 358,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 368,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 379,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 389,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 399,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 409,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 419,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 429,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 439,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 449,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 460,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 470,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 480,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 490,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 500,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 510,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 520,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 530,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 541,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 551,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 561,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 571,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 581,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 591,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 601,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 611,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 621,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 1,
+        "initializing": 0,
+        "ready": 1,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 632,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 1,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 1,
+        "initializing": 0,
+        "ready": 1,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 642,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 652,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 662,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 672,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 683,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 693,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 703,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 713,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 723,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 733,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 743,
+      "jobs": {
+        "completed": 35,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 753,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 767,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 777,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 787,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 797,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 807,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 817,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 828,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 838,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 848,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 858,
+      "jobs": {
+        "completed": 36,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 868,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 882,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 892,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 903,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 913,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 923,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 933,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 943,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 953,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 963,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 974,
+      "jobs": {
+        "completed": 37,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 984,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 997,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1007,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1017,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1027,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1038,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1048,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1058,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1068,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1078,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1088,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1099,
+      "jobs": {
+        "completed": 38,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1109,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1122,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1132,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1142,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1153,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1163,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1173,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1183,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1193,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1203,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1213,
+      "jobs": {
+        "completed": 39,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1224,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1236,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1246,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1256,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1266,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1276,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1287,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1297,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1307,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1317,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1327,
+      "jobs": {
+        "completed": 40,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1337,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1349,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1360,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1370,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1380,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1390,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1400,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1411,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1421,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1431,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1441,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1451,
+      "jobs": {
+        "completed": 41,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1461,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1474,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1484,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1495,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1505,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1515,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1525,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1535,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1545,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1555,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1565,
+      "jobs": {
+        "completed": 42,
+        "failed": 14,
+        "inProgress": 1,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "seconds": 1575,
+      "jobs": {
+        "completed": 42,
+        "failed": 15,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    }
+  ],
+  "cleanup": true,
+  "studyManifestSha256": "019918fb9d875a140605951676fbb447c753845469e0c1cad5baf8730d7fad55",
+  "studyStage": 1,
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1",
+  "disabled": true,
+  "templateId": "jbpcd0xgbf",
+  "endpoint": "jl77hn92npt65k",
+  "billingBefore": [
+    {
+      "amount": 0.07712593488395214,
+      "timeBilledMs": 207204,
+      "diskSpaceBilledGB": 60,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-31 00:00:00"
+    }
+  ],
+  "prewarmSeconds": 621,
+  "error": "Trial stopped after request failure or repeated polling errors",
+  "finalHealth": {
+    "jobs": {
+      "completed": 42,
+      "failed": 15,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "stopped": true,
+  "removedObjects": 27,
+  "removedKeys": [
+    "improvise/private/0fe156f6f0374b57a8c2e2ccba8ba1da/5189183fabc9d16997b03a408e856df7dbad105952c6323db0296b4896d785aa.wav",
+    "uploads/80b92f8e-b788-4e75-8ff4-988dd14d30c6.wav",
+    "improvise/private/2102c9ae565042f193ee371d926953dd/a729286df251208089483ab1473c1604d54beb8a80fd7d6c69af360ae54e8ab1.wav",
+    "uploads/d641f031-465e-424f-8aa6-9b127f1451f9.wav",
+    "improvise/private/5848fb39c3df4b37903928cabaffd4b4/b39653b5cf8063c6ab11e49a6cdc477e7d303d8043c24797e226e7563e9daff2.wav",
+    "uploads/1a5d86a3-75b8-4b62-b674-ef1d353bff37.wav",
+    "uploads/7604af31-6b82-4e55-af06-e513cb6109ef.wav",
+    "uploads/ec96182d-a1a3-418b-bd33-d632d936d64e.wav",
+    "uploads/b1258eb3-7f72-4576-a463-9fc1c5a1330c.wav",
+    "uploads/cdce39b7-95cb-452f-8709-f16506ea6309.wav",
+    "uploads/2bf24b9b-0539-4db4-9f05-9dc7cb236cc0.wav",
+    "uploads/61370409-2ba9-44c4-98eb-2b013b3b25d1.wav",
+    "improvise/private/a36a7017d49047de8c58808b7afa0bc3/958571c1215c25de81f568a79d6bf9150d1b21e51dfad29d824113e02de72452.wav",
+    "uploads/90da7960-762d-4e24-8613-9bbeb610ef64.wav",
+    "uploads/5b665bf2-de63-40ab-b865-d5adf7249a12.wav",
+    "uploads/2d31bbbc-1815-45ff-84a3-3622e3506e48.wav",
+    "uploads/3130cc29-db63-43db-ad47-65291bc2103e.wav",
+    "uploads/7565ed9a-b943-4432-9f12-470936cd8684.wav",
+    "uploads/7bd2747f-f8eb-4c29-9ff4-16c99ec61eb4.wav",
+    "improvise/private/8fd58cdd05bf491e9692333619dd0558/05ce009910d960d3c19a87db0c4db1acf1cc2ed7b005405b7caf620dca112c62.wav",
+    "uploads/f6c828c2-5d1e-4028-a7cc-db6b3eacf84b.wav",
+    "uploads/5b7cbce4-adb1-4619-a4b1-6b1c1bd55f76.wav",
+    "improvise/private/21e8fbabb3a542299b0cd7037e77dd36/4005eb85a1e7c9d8147c80fb42146db390043183975e629e11bef21deb7d0e31.wav",
+    "uploads/77f446c6-10ae-45a4-a336-1d47d8ae28c2.wav",
+    "uploads/3b9cd6c9-9684-4b0b-af94-09726b2f66b2.wav",
+    "uploads/b0db7f29-2679-40c9-b61f-168edb309183.wav",
+    "improvise/private/c739e8a9e08041b9a7bb5bfbc5dd7f62/ab6c168ec9b2f69a1253d5a2b8ea1f5749d06ba048ab8b5dac45ef0845eb713b.wav"
+  ],
+  "creditSettlement": true,
+  "qualification": "FAIL",
+  "billingAfter": [
+    {
+      "amount": 0.2801026706583798,
+      "timeBilledMs": 621899,
+      "diskSpaceBilledGB": 240,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-31 00:00:00"
+    }
+  ],
+  "finishedAt": "2026-10-31T02:03:35.851Z"
+}

@@ -1,0 +1,9 @@
+{"status":"PASS","origin":"http://localhost:3009","setupAndDeck":true,"realBilling":false,"generation":false,"requests":[{"path":"/api/ai-dj/sessions","method":"GET"},{"path":"/api/favorites","method":"GET"},{"path":"/api/site-status","method":"GET"},{"path":"/api/ai-dj/sessions","method":"GET"},{"path":"/api/favorites","method":"GET"},{"path":"/api/ai-dj/sessions/quote","method":"POST"},{"path":"/api/ai-dj/recordings","method":"GET"},{"path":"/api/ai-dj/recordings","method":"GET"}]}
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/dj_endurance_trial.py", line 65, in <module>
+    elif a.action=='rent':rent()
+                          ~~~~^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/dj_endurance_trial.py", line 44, in rent
+    if not math.isfinite(credit) or credit<7:raise RuntimeError('Insufficient provider balance')
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Insufficient provider balance

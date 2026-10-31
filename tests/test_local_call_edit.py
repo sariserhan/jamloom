@@ -252,8 +252,16 @@ class LocalCallEdit(unittest.TestCase):
         self.assertEqual(read_history(history),[first['arrangement_fingerprint']])
         before=history.read_bytes()
         with patch('local_call_edit.add_call',side_effect=ValueError('clash')):
-            with self.assertRaisesRegex(ValueError,'No safe source-inclusive'):
+            with self.assertRaisesRegex(ValueError,'No safe source-inclusive') as caught:
                 arrange(self.hook,self.song_dir,self.root/'fallback',history,43,True)
+        diagnostic=caught.exception.diagnostic
+        self.assertEqual(diagnostic['reason'],'no-safe-mix')
+        self.assertGreater(diagnostic['options_considered'],0)
+        self.assertEqual(diagnostic['options_considered'],diagnostic['rejected_candidates'])
+        with patch('local_call_edit.arrangement_options',return_value=[]):
+            with self.assertRaises(ValueError) as empty:
+                arrange(self.hook,self.song_dir,self.root/'no-placement',history,43,True)
+        self.assertEqual(empty.exception.diagnostic,{'reason':'no-placement','options_considered':0,'rejected_candidates':0})
         self.assertFalse((self.root/'fallback').exists())
         self.assertEqual(history.read_bytes(),before)
         with self.assertRaises(ValueError):arrange(self.hook,self.song_dir,self.root/'no-consent',history,44)

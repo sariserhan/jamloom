@@ -1,5 +1,5 @@
 {
-  "status": "AUTHORIZED",
+  "status": "STOPPED_FAILURE",
   "prepared_at": "2026-10-31T01:16:00.687605+00:00",
   "campaign": "jamloom-neural-qualification-20261030",
   "scope": "Private qualification of accepted neural Improvise across the frozen 23 licensed sources and three style/energy strategies",
@@ -31,7 +31,7 @@
     "apps/site/scripts/cloud-song-trial.ts": "25f25aacf58c551d0baff8984c0a6b45c477bff218e0b47154fe5dfe1207bba2",
     "apps/site/scripts/neural-study-input.ts": "3b2422f33e157e4c0cbd079e27f24d72bf4e7b6693d88f0b7a86e2f87c7923a5",
     "apps/site/scripts/neural-study-permit.ts": "387a8e38832855818cc47a94955c3775e8c163a51f62f66dc07dad7d8f9b1df8",
-    "apps/site/scripts/neural-study-postcheck.ts": "b4ba95090aceed740da4852f06612030bdd9c97cf7a2384ab49b71c05de52a31",
+    "apps/site/scripts/neural-study-postcheck.ts": "447fc771a8b589e04f51897b375aa99c789ca4bfff7466478545d9c454b1c9e0",
     "apps/site/scripts/cloud-trial-limits.ts": "a6a57a6612a603daef8cf984ad3092fdf0f6f74ea9e96e392073f26f28f6a0f8",
     "apps/site/lib/cloud-songs.ts": "e76697925031c997227d891573a3ec6c46eb738eba3219c5cae5b2b1a531d8ee",
     "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4"
@@ -66,9 +66,22 @@
     "at": "2026-10-31T01:41:15.711064+00:00",
     "file": "apps/site/scripts/neural-study-postcheck.ts",
     "previous_sha256": "bb86be887accf6924193763b768a07d8f766e67a2dcf4d7460773058f0cae0a7",
-    "corrected_sha256": "b4ba95090aceed740da4852f06612030bdd9c97cf7a2384ab49b71c05de52a31",
-    "reason": "Unsupported /endpoints/:id/workers GET returned 400. Use documented GET /endpoints/:id?includeWorkers=true; require explicit empty workers array plus all health worker counts zero. Read-only cleanup verification; no generation or scope changes.",
+    "corrected_sha256": "447fc771a8b589e04f51897b375aa99c789ca4bfff7466478545d9c454b1c9e0",
+    "reason": "The endpoint response omits workers when empty. Independently require an explicit empty inventory from documented GET /pods?includeWorkers=true&endpointId=..., limits 0/0 and all health worker counts zero. Read-only cleanup repair; no generation or scope change.",
     "documentation": "https://rest.runpod.io/v1/openapi.json",
     "receipt_schema": "Normalize the explicit REST worker array to the existing summary.total/workers receipt consumed by stage admission."
+  },
+  "result": {
+    "qualification": "FAIL",
+    "cleanup": "PASS",
+    "completed_generations": 7,
+    "failed_generations": 1,
+    "unrun_generations": 61,
+    "failed_case": "ls-2086-149220-0047-funk",
+    "failure": "improvise-arrangement",
+    "finished_at": "2026-10-31T02:03:35.851Z",
+    "receipt": "docs/evidence/improvise-finish/cloud/2026-10-31T01-36-52.887Z/trial-result.json",
+    "postcheck": "docs/evidence/nondeployment-completion-20261030/neural-stage-1-postcheck.json",
+    "repeat_or_resume_authorized": false
   }
 }

@@ -14,6 +14,16 @@ from assemble_sung_response import envelope, intervals, beat_grid
 from source_led_response import faded, rendered, stem
 
 
+class ArrangementRejected(ValueError):
+    """Static diagnostic only; do not retain speech, paths or exception text."""
+    def __init__(self, options, rejected):
+        super().__init__('No safe source-inclusive arrangement; do not deliver the song without the recording')
+        self.diagnostic = {
+            'reason': 'no-placement' if options == 0 else 'no-safe-mix',
+            'options_considered': options, 'rejected_candidates': rejected,
+        }
+
+
 def fit_call_rhythm(hook, recipe):
     """Fit the original phrase to beats; optionally answer with one original word."""
     ratio=recipe.get('duration_ratio') if isinstance(recipe,dict) else None
@@ -394,7 +404,7 @@ def arrange(source, song_dir, output, history_path, seed, consent=False, source_
         except OSError:report['history_saved']=False
         (output/'complete.json').write_text(json.dumps(report,indent=2)+'\n')
         return report
-    raise ValueError('No safe source-inclusive arrangement; do not deliver the song without the recording')
+    raise ArrangementRejected(len(options), rejected)
 
 
 if __name__=='__main__':

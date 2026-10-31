@@ -16,7 +16,7 @@ import uuid
 
 from arrange_voice_research import RATE, digest, read_pcm
 from assemble_sung_response import intervals
-from local_call_edit import arrange
+from local_call_edit import arrange, ArrangementRejected
 from singing_response import ENERGIES, STYLES, STYLE_LABELS, VOICES, MAX_PHRASE_CHARS, digest as file_digest, load_plan, text_field
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -210,6 +210,7 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None)
             subprocess.run([separator_python or sys.executable, str(separator_script), '--input', str(singer/'singer.wav'),
                             '--output', str(singer/'stems')], stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
         report=None
+        arrangement_diagnostics=[]
         for attempt,candidate in enumerate(candidates):
             result_dir=work/f'exchange-{attempt}'
             try:
@@ -222,14 +223,19 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None)
                 break
             except ValueError as error:
                 report=None
-                (work/f'arrangement-rejected-{attempt}.json').write_text(json.dumps({'stage':stage,'error_type':type(error).__name__})+'\n')
+                diagnostic = error.diagnostic if isinstance(error,ArrangementRejected) else {'reason':'validation'}
+                arrangement_diagnostics.append(diagnostic)
+                (work/f'arrangement-rejected-{attempt}.json').write_text(json.dumps({'stage':stage,'error_type':type(error).__name__,'diagnostic':diagnostic})+'\n')
         if report is None:
             raise StudioError('Could not blend your recording without clashing with the song. Try another style or take; no song without your recording is delivered.')
         if energy is not None:report['musical_direction']={'genre':chosen_genre,'energy':energy,'seed':seed}
         report['meaning_origin']=interpretation
         (result_dir/'complete.json').write_text(json.dumps(report,indent=2)+'\n')
     except (ValueError, OSError, subprocess.SubprocessError) as error:
-        (work/'failure.json').write_text(json.dumps({'stage':stage,'error_type':type(error).__name__})+'\n')
+        failure={'stage':stage,'error_type':type(error).__name__}
+        if stage == 'Blending your sound into the song':
+            failure['arrangement_diagnostics']=arrangement_diagnostics
+        (work/'failure.json').write_text(json.dumps(failure)+'\n')
         if isinstance(error,StudioError): raise
         raise StudioError(f'{stage} failed. Your recording is saved. Try Make a song again; you do not need to record it again.') from error
     (work / '.partial').unlink()

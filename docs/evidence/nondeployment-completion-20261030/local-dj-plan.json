@@ -1,5 +1,5 @@
 {
-  "status": "AUTHORIZED_LOCAL_PREPARATION",
+  "status": "BLOCKED_MODEL_LOAD_SWAP",
   "at": "2026-10-31T01:49:39.099582+00:00",
   "owner_statement": "use this computer gpu",
   "scope": "Replace the AI DJ rental with local Apple GPU qualification. First one original 60-second neural track must satisfy the existing 30-second generation deadline. Only then prepare/run continuous two-hour local qualification.",
@@ -29,5 +29,20 @@
     "Musical acceptance of unreviewed output"
   ],
   "deployment": "HELD",
-  "payments": "HELD"
+  "payments": "HELD",
+  "execution": {
+    "receipt": "docs/evidence/nondeployment-completion-20261030/local-dj-execution.json",
+    "model_requests_started": 0,
+    "available_gib": 3.6844635009765625,
+    "required_available_gib": 4,
+    "two_hour_test": "NOT RUN",
+    "future_local_probe": "Do not repeat with unchanged memory conditions. Free substantially more memory or review an independently tested memory reduction first; preserve both attempts.",
+    "memory_recheck": "Passed 4 GiB after pausing own local preview on port 3011.",
+    "model_load_attempt": {
+      "receipt": "docs/evidence/nondeployment-completion-20261030/local-dj-metal-execution.json",
+      "status": "FAIL",
+      "cause": "Swap growth exceeded 2 GiB during model load; watchdog killed the process group after 10.27 seconds.",
+      "model_requests_started": 0
+    }
+  }
 }

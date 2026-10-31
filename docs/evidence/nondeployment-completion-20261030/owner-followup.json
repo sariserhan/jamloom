@@ -1,10 +1,14 @@
 {
   "statement": "they are good but I realized something why moving the disk back and forth does not make a sound",
   "scope": "General positive feedback plus a reported silent platter; not a quiet-recording receipt or a completed hands-on assessment",
-  "platter_issue": "Investigating",
+  "platter_issue": "PASS scoped local repair; actual owner observation not verified",
   "deployment": "HELD",
   "live_payments": "HELD",
   "platter_fix": "PASS: real lesson forward/reverse mixer output, stationary silence, release state and Pause All verified; no new owner listening claim",
   "latest_observation_statement": "all done",
-  "saved_results_check": "No new practice or quiet receipt; server log has a page load but no save POST. Diagnose before counting completion."
+  "saved_results_check": "No new practice or quiet receipt or save POST found. Owner reports completion; the exact receipt/page remains unidentified. No further repeat request issued.",
+  "subsequent_statements": [
+    "I saw a saved confirmation",
+    "test"
+  ]
 }

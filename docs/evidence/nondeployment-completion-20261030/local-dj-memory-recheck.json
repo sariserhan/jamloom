@@ -1,0 +1,11 @@
+{
+  "available_bytes": 4302618624,
+  "available_gib": 4.0071258544921875,
+  "required_gib": 4,
+  "paused_preview_port": 3011,
+  "reason": "Free memory for owner-requested local GPU timing probe",
+  "review_and_lesson_preserved": [
+    8777,
+    3010
+  ]
+}

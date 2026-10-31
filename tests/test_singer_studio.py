@@ -217,6 +217,9 @@ class StudioFlow(unittest.TestCase):
                     studio.make_reply(str(source),'I have a question','female','reggae',True)
             self.assertTrue(list(studio.OUTPUT.glob('*/arrangement-rejected-3.json')))
             self.assertTrue(list(studio.OUTPUT.glob('*/failure.json')))
+            failure=json.loads(next(studio.OUTPUT.glob('*/failure.json')).read_text())
+            self.assertEqual(failure['arrangement_diagnostics'],[{'reason':'validation'}]*4)
+            self.assertNotIn('Invalid optional sample',json.dumps(failure))
 
 
 if __name__ == '__main__':

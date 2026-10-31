@@ -63,6 +63,14 @@ def failure_location(work):
                 'Finding room for your sound':('separation','separate-private.log'),
                 'Blending your sound into the song':('arrangement',None),
             }[failure['stage']]
+            if stage=='arrangement':
+                diagnostics=failure.get('arrangement_diagnostics')
+                if isinstance(diagnostics,list) and 1<=len(diagnostics)<=4:
+                    reasons=[d.get('reason') if isinstance(d,dict) else None for d in diagnostics]
+                    if (all(isinstance(r,str) and r in ('no-placement','no-safe-mix','validation') for r in reasons)
+                            and len(set(reasons))==1):
+                        return 'improvise-arrangement:'+reasons[0]
+                return 'improvise-arrangement'
             if filename is None:return 'improvise-'+stage
             logs.insert(0,('improvise-'+stage,path.parent/filename))
             break

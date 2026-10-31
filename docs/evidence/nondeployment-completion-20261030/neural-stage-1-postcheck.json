@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-31T02:04:10.708Z",
+  "operation": "Independent GET, HEAD and SELECT only",
+  "receipt": "/Users/serhansari/Documents/projects/jamloom/docs/evidence/improvise-finish/cloud/2026-10-31T01-36-52.887Z/trial-result.json",
+  "stage": 1,
+  "workerLimits": [
+    0,
+    0
+  ],
+  "health": {
+    "jobs": {
+      "completed": 42,
+      "failed": 15,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "summary": {
+      "total": 0
+    },
+    "workers": []
+  },
+  "temporaryDatabases": [],
+  "remoteObjectsConfirmedAbsent": 27,
+  "cleanup": "PASS",
+  "qualification": "FAIL"
+}
