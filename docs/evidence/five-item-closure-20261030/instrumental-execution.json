@@ -1,0 +1,14 @@
+{
+  "status": "PASS technical",
+  "scope": "One instrumental Improvise audition; not the closed DJ endurance test",
+  "paid_compute": false,
+  "model_requests_max": 1,
+  "retries": 0,
+  "max_seconds": 600,
+  "source_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "peak_rss_bytes": 4047847424,
+  "peak_swap_growth_bytes": 1278214144,
+  "minimum_available_bytes": 1749925888,
+  "seconds": 42.025351666998176,
+  "child_stopped": true
+}

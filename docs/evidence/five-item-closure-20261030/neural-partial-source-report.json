@@ -1,0 +1,249 @@
+{
+  "manifest_sha256": "019918fb9d875a140605951676fbb447c753845469e0c1cad5baf8730d7fad55",
+  "controls_sha256": "83458289d06649c5430b8c8408fd67d3808689c7e02fb8cd1513ac05640cda24",
+  "receipts": [
+    {
+      "path": "/Users/serhansari/Documents/projects/jamloom/docs/evidence/improvise-finish/cloud/2026-10-31T01-36-52.887Z/trial-result.json",
+      "sha256": "cdee4a9c3bbc79d2f7e47bb5b266840420af04a877b64be9b33ac819a515b182",
+      "postcheck_sha256": "5971713f4dfe3e263d7d04acfba775ac012ee10acae08b580a0f3de162fd4103"
+    }
+  ],
+  "outputs": {
+    "ls-2277-149896-0026-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-jazz.wav",
+      "sha256": "b39653b5cf8063c6ab11e49a6cdc477e7d303d8043c24797e226e7563e9daff2",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "c9988d609bcd0851297faeefb5ca94b70a563fd6f2d64bc96899f6893bb24cc9",
+          "processed_frames": 236160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 236160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.844451904296875,
+      "seconds": 45,
+      "direction": {
+        "seed": 1501106075,
+        "genre": "jazz",
+        "energy": "low"
+      }
+    },
+    "ls-2277-149896-0026-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-funk.wav",
+      "sha256": "05ce009910d960d3c19a87db0c4db1acf1cc2ed7b005405b7caf620dca112c62",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "c9988d609bcd0851297faeefb5ca94b70a563fd6f2d64bc96899f6893bb24cc9",
+          "processed_frames": 236160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 236160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.901580810546875,
+      "seconds": 45,
+      "direction": {
+        "seed": 2980721242,
+        "genre": "funk",
+        "energy": "medium"
+      }
+    },
+    "ls-2277-149896-0026-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-drumandbass.wav",
+      "sha256": "5189183fabc9d16997b03a408e856df7dbad105952c6323db0296b4896d785aa",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "c9988d609bcd0851297faeefb5ca94b70a563fd6f2d64bc96899f6893bb24cc9",
+          "processed_frames": 236160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 236160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          4.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.949981689453125,
+      "seconds": 45,
+      "direction": {
+        "seed": 1378550872,
+        "genre": "drumandbass",
+        "energy": "high"
+      }
+    },
+    "ls-2035-147960-0013-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-jazz.wav",
+      "sha256": "4005eb85a1e7c9d8147c80fb42146db390043183975e629e11bef21deb7d0e31",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "2900568f65a889bb31872f628d6b0c1e326df4210a66e69d54c4b886cc8e97d6",
+          "processed_frames": 128400,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 128400,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.675
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.8857421875,
+      "seconds": 45,
+      "direction": {
+        "seed": 3125094122,
+        "genre": "jazz",
+        "energy": "low"
+      }
+    },
+    "ls-2035-147960-0013-funk": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-funk.wav",
+      "sha256": "a729286df251208089483ab1473c1604d54beb8a80fd7d6c69af360ae54e8ab1",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "896610a6e7f290d3306afbdc7cbb8627b92bf38592784c2875a8b2caae321579",
+          "processed_frames": 102720,
+          "consent_confirmed": true
+        },
+        "selection": "excerpt",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 102720,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0.30000000000000004,
+          2.44
+        ],
+        "rhythm_word_frames": [
+          80640,
+          102720
+        ]
+      },
+      "peak": 0.88726806640625,
+      "seconds": 45,
+      "direction": {
+        "seed": 3779491875,
+        "genre": "funk",
+        "energy": "medium"
+      }
+    },
+    "ls-2035-147960-0013-drumandbass": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-drumandbass.wav",
+      "sha256": "ab6c168ec9b2f69a1253d5a2b8ea1f5749d06ba048ab8b5dac45ef0845eb713b",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "2900568f65a889bb31872f628d6b0c1e326df4210a66e69d54c4b886cc8e97d6",
+          "processed_frames": 128400,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 128400,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          2.675
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.8912353515625,
+      "seconds": 45,
+      "direction": {
+        "seed": 2958081157,
+        "genre": "drumandbass",
+        "energy": "high"
+      }
+    },
+    "ls-2086-149220-0047-jazz": {
+      "path": "/Users/serhansari/Documents/projects/jamloom/build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2086-149220-0047-jazz.wav",
+      "sha256": "958571c1215c25de81f568a79d6bf9150d1b21e51dfad29d824113e02de72452",
+      "source_excerpt": {
+        "source": {
+          "kind": "recorded",
+          "sha256": "ac8847f87b771e42a535c652afef85e14382085f051086a6781df2437d72eac2",
+          "processed_frames": 188160,
+          "consent_confirmed": true
+        },
+        "selection": "whole-recording",
+        "sample_rate": 48000,
+        "voice_clips": [
+          {
+            "id": 0,
+            "end_frame": 188160,
+            "start_frame": 0
+          }
+        ],
+        "original_seconds": [
+          0,
+          3.92
+        ],
+        "rhythm_word_frames": null
+      },
+      "peak": 0.949981689453125,
+      "seconds": 45,
+      "direction": {
+        "seed": 2665930007,
+        "genre": "jazz",
+        "energy": "low"
+      }
+    }
+  },
+  "technical": "PASS",
+  "human_listening": "NOT RUN"
+}

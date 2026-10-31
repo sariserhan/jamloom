@@ -1,0 +1,9 @@
+{
+  "technical": "PASS packaging",
+  "coverage": "PARTIAL",
+  "human_listening": "NOT RUN",
+  "blocks": 2,
+  "required_source_count": 23,
+  "candidates": 10,
+  "freeze": "e0704a9b742fbd18960b1c5ab4ce0e37058897ae382f98ffa3ac78d7c3f35fa5"
+}

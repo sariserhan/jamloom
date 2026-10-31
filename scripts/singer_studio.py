@@ -174,7 +174,9 @@ def sample_candidate(work, speech, genre, seconds, seed=0, attempt=0):
     return source,score
 
 
-def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None):
+def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None, mac_small_decode=False):
+    if type(mac_small_decode) is not bool or mac_small_decode and os.environ.get('JAMLOOM_INFERENCE_DEVICE')!='mps':
+        raise ValueError('Small local decode requires explicit Metal execution')
     if consent is not True:
         raise StudioError('Confirm that you may use this recording.')
     try:
@@ -235,7 +237,7 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None)
         stage = 'Generating the singer and music'
         with (work / 'render-private.log').open('w') as log:
             subprocess.run([*command, 'sing', '--runtime', str(RUNTIME), '--plan', str(plan_path), '--case', case['id'],
-                            '--output', str(singer)], stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
+                            '--output', str(singer), *(['--mac-small-decode'] if mac_small_decode else [])], stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
         stage = 'Finding room for your sound'
         with (work / 'separate-private.log').open('w') as log:
             separator_python=os.environ.get('JAMLOOM_SEPARATOR_PYTHON')

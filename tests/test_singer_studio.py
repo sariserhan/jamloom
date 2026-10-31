@@ -171,6 +171,14 @@ class StudioFlow(unittest.TestCase):
                 with self.assertRaises(ValueError): studio.make_reply(*args)
             self.assertFalse(studio.OUTPUT.exists())
 
+    def test_small_decode_requires_explicit_metal_before_creating_job(self):
+        with tempfile.TemporaryDirectory() as d,patch.object(studio,'OUTPUT',Path(d)/'jobs'):
+            for device,flag in [('cpu',True),('cuda',True),('mps',1)]:
+                with patch.dict(studio.os.environ,{'JAMLOOM_INFERENCE_DEVICE':device}):
+                    with self.assertRaisesRegex(ValueError,'explicit Metal'):
+                        studio.make_reply(None,'hello','male','jazz',True,mac_small_decode=flag)
+            self.assertFalse(studio.OUTPUT.exists())
+
     def test_pipeline_keeps_source_and_singer_distinct(self):
         with tempfile.TemporaryDirectory() as d, patch.object(studio, 'OUTPUT', Path(d)/'jobs'):
             source = Path(d)/'source.wav'
@@ -224,6 +232,7 @@ class StudioFlow(unittest.TestCase):
             self.assertIn('question', lyrics)
             self.assertEqual(digest(source), original_hash)
             self.assertEqual(len(calls), 3)
+            self.assertFalse(any('--mac-small-decode' in args for args,_ in calls))
             self.assertTrue(all(kw['timeout'] == 600 for _, kw in calls))
             self.assertFalse(list(studio.OUTPUT.rglob('.partial')))
             actual_arrange=studio.arrange;attempts=[]
@@ -231,8 +240,9 @@ class StudioFlow(unittest.TestCase):
                 attempts.append(args[0])
                 if len(attempts)==1:raise ValueError('First crop cannot fit')
                 return actual_arrange(*args,**kwargs)
-            with patch.object(studio.subprocess,'run',side_effect=run),patch.object(studio,'arrange',side_effect=retry),patch.object(studio,'understand',return_value={'transcript':'A question','phrases':[{'text':'A question','start_seconds':0.,'end_seconds':1.}]}):
-                _,retried,_,_,_=studio.make_reply(str(source),'A question','female','reggae',True)
+            with patch.dict(studio.os.environ,{'JAMLOOM_INFERENCE_DEVICE':'mps'}),patch.object(studio.subprocess,'run',side_effect=run),patch.object(studio,'arrange',side_effect=retry),patch.object(studio,'understand',return_value={'transcript':'A question','phrases':[{'text':'A question','start_seconds':0.,'end_seconds':1.}]}):
+                _,retried,_,_,_=studio.make_reply(str(source),'A question','female','reggae',True,mac_small_decode=True)
+            self.assertEqual(sum('--mac-small-decode' in args for args,_ in calls),1)
             self.assertGreaterEqual(len(attempts),2)
             self.assertTrue(Path(retried).is_file())
             self.assertNotEqual(attempts[0],attempts[1])

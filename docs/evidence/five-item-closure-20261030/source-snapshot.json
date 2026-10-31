@@ -1,0 +1,21 @@
+{
+  "base_commit": "52c8c0961934d85b4020cabc79a405f56a0ac176",
+  "files": {
+    "scripts/improvise_local_audition.py": "b23f735b076473e5ef21a14ac2a5d71edd8b12ed4b134a00b5d723506715cbfc",
+    "scripts/owner_completion_reviews.py": "92c07425f28c16cbbf9b24c55cf7b924c17b569f1ebf3c3b426f750928a2d6eb",
+    "scripts/prepare_completion_reviews.py": "c361d1e228bd57c5f99dbb8b17caac858d99fe6db7409c51bddc6401ce8118b2",
+    "scripts/prepare_neural_review.py": "c073a5417a9f5199b63c827f704c899f40d4e97e0bbb482d076f195a114f7a01",
+    "scripts/evaluate_neural_review.py": "6cd1063ee0720d0242c01cf65d1e39fd2ac99e23b01ba9366af2dfc476d3ba4a",
+    "scripts/evaluate_owner_workspace.py": "b28e7162766f08ba0068febe8aa558fcdcf8a4cebc98ef4f4f2bd70a37515555",
+    "scripts/owner_review_server.py": "018696c53687af83fb197765f6e7938a7c972a754b091977577bca4743b3b63d",
+    "scripts/singer_studio.py": "e2b195f0da7d586c71123fd84d15821259fd96eddb2d733864575e68f20e487c",
+    "scripts/fixtures/produced-targets.html": "fa2c8d9efb4496d25af95858c23c2aa14403293893d5fa9dcbd4ceea6457679d",
+    "apps/listening/afro-sections.html": "74ada60c836247aec430407ac823afa3574d7f07cbd0463d1d765ca8174afc03",
+    "tests/completion_reviews_browser.mjs": "2dab3988932e5d19cce80c04fc0c9abb94b73210718451175a4d99ba840a0eb1",
+    "tests/test_improvise_local_audition.py": "fcf5263280bfc0a61a9ea2f8950c7b2e4425d0c464cfb30c15d95b6b73893dae",
+    "tests/test_owner_workspace.py": "993e09cc1ec3faabed300542674fe0bb491079054f6d5418a3d76208635e7ea7",
+    "tests/test_owner_review_http.py": "f70a01d344cef3fe87338a6bf0f401fd0f49457c5387f4c85780efb12f612b2e",
+    "tests/test_singer_studio.py": "baa6f5b5a75cbb8b035f5e77c2d1d7bd5e6ddefaad3f55cf43f34ac53ce486cf",
+    "tests/test_neural_review.py": "ae2a345e96520adf2466f4a1bd700f8ff2702e271ae00dc20bd75aa47d311cbf"
+  }
+}

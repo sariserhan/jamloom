@@ -13,6 +13,17 @@ from owner_review_server import validate_music
 
 
 class OwnerWorkspace(unittest.TestCase):
+    def test_general_positive_feedback_does_not_invent_learning_or_annotations(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);(root/'results').mkdir()
+            (root/'results/feedback.json').write_text(json.dumps(dict(status='OWNER_SUBMITTED_REQUIRES_EVALUATION',kind='practice-feedback',payload=dict(answer='yes they are fine'))))
+            result=evaluate(root,root)
+            self.assertEqual(result['hands_on']['general_feedback_receipts'],1)
+            self.assertFalse(result['hands_on']['general_feedback_proves_learning_gain'])
+            self.assertTrue(result['hands_on']['status'].startswith('NOT RUN'))
+            self.assertFalse(result['sung-target']['scoringEnabled'])
+            self.assertEqual(result['afro']['receipts'],0)
+
     def test_recorded_quiet_control_uses_the_frozen_composition_policy(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);(root/'results').mkdir();(root/'review').mkdir()

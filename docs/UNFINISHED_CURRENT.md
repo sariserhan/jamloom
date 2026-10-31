@@ -8,13 +8,15 @@ approval. The owner is the sole required musical listener.
 
 **Owner scope decision — 2026-10-30:** The two-hour AI DJ test is closed for the current scope at the owner’s request ("lets call it done two hour dj test for now"). No further endurance run is required now. Historical technical results remain PARTIAL/FAIL; this decision does not assert a successful two-hour run. Other requirements and the deployment/payment holds are unchanged.
 
+**Five-item follow-through — 2026-10-30: PARTIAL.** The owner accepts the new 45-second neural instrumental question version. Singing drafts and Afro section notes now save locally with verified source identity; desktop/mobile receipt and draft-recovery checks pass. The owner also accepts all ten arrangements across two neural source blocks; 21 sources remain outside this reviewed set. A full vocal pilot stopped safely at the Mac memory floor. Actual singing/section annotations, hands-on/quiet receipts and learned-model evidence remain open. The two-hour DJ test stays closed for now; deployment/payments stay held. [Evidence](evidence/five-item-closure-20261030/report.md).
+
 ## Current full-completion increment
 
 - **FAIL broader neural campaign; PASS cleanup:** seven tracks completed, one failed `improvise-arrangement`; the remaining 61 generations are NOT RUN. Stop-on-failure closes the campaign. No workers/jobs remain; 27 objects are absent and credits settled. Static arrangement diagnostics now pass local checks, but the discarded failed take cannot be diagnosed from its old receipt.
 
 - **PASS local Metal timing and DJ opening correction; PARTIAL endurance:** the 60-second neural original renders in 18.8 seconds. Real retained-audio playback now preserves the first intro and survives a 35-second successor delay. Fresh endurance stopped at the unchanged swap guard during startup; all attempts cleaned up independently. No GPU rented. [Current report](evidence/local-completion-20261030/report.md).
 
-- **PASS local optional-vocal implementation; musical qualification NOT RUN:** per the owner, Improvise can be sung or instrumental when the music suits it. Explicit singer choices retain vocals; the same neural generator and source-preservation gates remain. [Direction addendum](improvise-vocal-direction.md).
+- **PASS local optional-vocal implementation and exact instrumental owner acceptance; broader qualification PARTIAL:** per the owner, Improvise can be sung or instrumental when the music suits it. Explicit singer choices retain vocals; the same neural generator and source-preservation gates remain. [Direction addendum](improvise-vocal-direction.md).
 
 - **PASS lesson platter repair:** the course had replaced the scratch processor with a forward-only buffer. It now retains/creates the real processor; forward/reverse output, stationary silence, release state and Pause All pass in the actual local lesson. 16 transport/DSP and 13 Academy checks pass. The owner reports a saved confirmation, but actual quiet and hands-on receipts remain unverified; no observed-outcome PASS is inferred. [Current evidence](evidence/nondeployment-completion-20261030/report.md).
 

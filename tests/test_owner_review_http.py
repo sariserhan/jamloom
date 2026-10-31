@@ -29,6 +29,39 @@ class LocalSaveBoundary(unittest.TestCase):
 
     def observation(self):return {'kind':'novice','payload':dict(schema='jamloom-dj-novice-1',beginner=True,attested=True,before=['0']*6,after=['1']*6,beforeAt='1',lessonAt='2',afterAt='3',reflection='Synthetic boundary fixture only')}
 
+    def completion_source(self):
+        import hashlib
+        audio=self.public/'test.wav';audio.write_bytes(b'isolated source binding fixture')
+        sha=hashlib.sha256(audio.read_bytes()).hexdigest()
+        row={'id':'fixture','file':'test.wav','sha256':sha,'seconds':120}
+        (self.public/'completion-assets.json').write_text(json.dumps({'singing':[row],'afro':[row]}))
+        return sha
+
+    def test_target_drafts_save_without_enabling_grades_and_reject_bad_source_or_notes(self):
+        sha=self.completion_source()
+        payload={'schema':'jamloom-sung-target-draft-1','recordingId':'fixture','recordingSha256':sha,'seconds':120,
+                 'verified':False,'scoringEnabled':False,'words':[{'at':1,'end':2,'text':'Test'}],'notes':[{'at':1,'end':2,'note':60}]}
+        value={'kind':'sung-target','payload':payload}
+        self.assertEqual(self.post(value)[0],200)
+        saved=json.loads(next(self.results.glob('*.json')).read_text())
+        self.assertFalse(saved['payload']['verified']);self.assertFalse(saved['payload']['scoringEnabled'])
+        payload['verified']=True;self.assertEqual(self.post(value)[0],400);payload['verified']=False
+        payload['notes'][0]['note']=True;self.assertEqual(self.post(value)[0],400);payload['notes'][0]['note']=60
+        payload['notes'][0]['end']=121;self.assertEqual(self.post(value)[0],400);payload['notes'][0]['end']=2
+        (self.public/'test.wav').write_bytes(b'changed');self.assertEqual(self.post(value)[0],400)
+        self.assertEqual(len(list(self.results.glob('*.json'))),1)
+
+    def test_afro_notes_require_actual_attestation_valid_sections_and_controls(self):
+        sha=self.completion_source();payload={'schema':'jamloom-afro-sections-1','id':'fixture','audioSha256':sha,
+            'attested':False,'sections':[{'at':0,'name':'Opening'}],'controls':'Synthetic test preference'}
+        value={'kind':'afro','payload':payload};self.assertEqual(self.post(value)[0],400)
+        payload['attested']=True;self.assertEqual(self.post(value)[0],200)
+        payload['sections'][0]['at']=-.5;self.assertEqual(self.post(value)[0],400)
+        payload['sections'][0]['at']=0
+        payload['sections'].append({'at':0,'name':'Overlap'});self.assertEqual(self.post(value)[0],400)
+        payload['sections'].pop();payload['controls']=' ';self.assertEqual(self.post(value)[0],400)
+        self.assertEqual(len(list(self.results.glob('*.json'))),1)
+
     def test_cross_origin_missing_token_and_incomplete_forms_never_write(self):
         self.assertEqual(self.post(self.observation(),Origin='https://unrelated.example')[0],403)
         self.assertEqual(self.post(self.observation(),**{'X-Review-Token':''})[0],403)

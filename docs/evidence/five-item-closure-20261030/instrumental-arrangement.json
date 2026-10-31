@@ -1,0 +1,164 @@
+{
+  "technical": "PASS",
+  "mode": "vocal-replacement",
+  "song_sha256": "2b519909abaa58ae6e79b9e471efef6e0625e219d55fd7774052a4430dc8e51b",
+  "source_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "repair_sha256": null,
+  "region_frames": [
+    1061280,
+    1226400
+  ],
+  "regions_frames": [
+    [
+      1061280,
+      1226400
+    ]
+  ],
+  "unchanged_seconds": 41.56,
+  "outside_region_max_pcm_error": 0.0,
+  "processed_source_max_pcm_error": 1.5258459883302211e-05,
+  "speaker_identity_listening": "NOT RUN",
+  "repair_gain": 1.0,
+  "event": {
+    "start_frame": 1103009,
+    "end_frame": 1170567,
+    "gain": 0.6357812066630205,
+    "estimated_vocal_max_rms": 0.0,
+    "vocal_threshold_rms": 0.0003,
+    "band_rms": 0.18815487273861684,
+    "target_lead_rms": 0.09407743636930842,
+    "rate": 1.0,
+    "transpose_semitones": 0,
+    "processing": {
+      "version": 2,
+      "highpass_hz": 80,
+      "eq_crossovers_hz": [
+        160,
+        400,
+        1000,
+        2500,
+        6000
+      ],
+      "eq_db": [
+        6.0,
+        -6.0,
+        -4.521810329048081,
+        -2.4401569357331963,
+        -0.27795639343002,
+        1.2412965405089642
+      ],
+      "max_compression_db": 3.5711522201809913,
+      "room_wet": 0.06,
+      "reference_rms": 0.00036533260960697894,
+      "pitch_shift_semitones": 0,
+      "formant_shift_semitones": 0,
+      "time_scale": 1.0,
+      "speaker_identity_listening": "NOT RUN"
+    },
+    "processed_active_rms": 0.0940774363693084
+  },
+  "events": [
+    {
+      "start_frame": 1103009,
+      "end_frame": 1170567,
+      "gain": 0.6357812066630205,
+      "estimated_vocal_max_rms": 0.0,
+      "vocal_threshold_rms": 0.0003,
+      "band_rms": 0.18815487273861684,
+      "target_lead_rms": 0.09407743636930842,
+      "rate": 1.0,
+      "transpose_semitones": 0,
+      "processing": {
+        "version": 2,
+        "highpass_hz": 80,
+        "eq_crossovers_hz": [
+          160,
+          400,
+          1000,
+          2500,
+          6000
+        ],
+        "eq_db": [
+          6.0,
+          -6.0,
+          -4.521810329048081,
+          -2.4401569357331963,
+          -0.27795639343002,
+          1.2412965405089642
+        ],
+        "max_compression_db": 3.5711522201809913,
+        "room_wet": 0.06,
+        "reference_rms": 0.00036533260960697894,
+        "pitch_shift_semitones": 0,
+        "formant_shift_semitones": 0,
+        "time_scale": 1.0,
+        "speaker_identity_listening": "NOT RUN"
+      },
+      "processed_active_rms": 0.0940774363693084
+    }
+  ],
+  "peak": 0.891265869140625,
+  "singer_moved": false,
+  "master_gain": 1.0,
+  "listening": "NOT RUN",
+  "vocal_subtraction": true,
+  "note": "Automatic quiet-boundary selection; estimated vocal subtraction and musical fit still need listening.",
+  "artifacts": {
+    "performance": "5c4ed91e54803e2fc9d2370eb29dd549820b6d94075185d2b8f3269de9baeace",
+    "original": "2b519909abaa58ae6e79b9e471efef6e0625e219d55fd7774052a4430dc8e51b",
+    "music": "a305dd3c72f35d0e1bd3efaa647fa50bf08fc5bc7e61b0948dc2f1c455af38c3",
+    "user": "e79b571167971ade7495548e6c10a48c38ba49980119717ab19e85e965d2dfe4"
+  },
+  "source_rhythm": {
+    "duration_ratio": 1.1536553569986499,
+    "pitch_shift_semitones": 0,
+    "word_gain": 0,
+    "input_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+    "output_sha256": "64f65335ad83ec80ddc898b732e58f165d4f612fd6219cd90b0af20493a8aeed"
+  },
+  "sample_used": true,
+  "selection_seed": 20301034,
+  "grid": {
+    "bpm": 127.89000000000001,
+    "offset_frames": 22080,
+    "confidence": 0.8012254314926468,
+    "method": "drum-stem onset grid; tempo searched within 10 percent; bar phase unverified"
+  },
+  "options_considered": 92,
+  "pattern": "beat-fitted",
+  "rejected_candidates": 0,
+  "arrangement_fingerprint": "vocal-replacement:5:beat-fitted",
+  "rhythm_fallback": null,
+  "history_saved": true,
+  "source_excerpt": {
+    "source": {
+      "sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+      "kind": "recorded",
+      "consent_confirmed": true,
+      "processed_frames": 58560
+    },
+    "sample_rate": 48000,
+    "voice_clips": [
+      {
+        "id": 0,
+        "start_frame": 0,
+        "end_frame": 58560
+      }
+    ],
+    "original_seconds": [
+      0,
+      1.22
+    ],
+    "rhythm_word_frames": null,
+    "selection": "whole-recording"
+  },
+  "original_recording_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "generated_vocals": false,
+  "musical_direction": {
+    "genre": "dj",
+    "energy": "high",
+    "seed": 20301034
+  },
+  "human_listening": "NOT RUN",
+  "scope": "Local Metal generation and local Demucs separator; hosted separator parity NOT RUN"
+}

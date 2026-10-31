@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Afro House sections · Jamloom</title><link rel="stylesheet" href="../owner-review.css">
+<main><h1>Finish the Afro House details</h1><p>You already accepted these three mixes. Add the section names and timings you hear, and any control preferences. Your acceptance stays recorded.</p><p><a href="../">Back to saved results</a></p><div id="tracks"></div><p id="status" role="status"></p></main>
+<script type="module">
+const status=document.querySelector('#status');
+try{
+ const manifest=await(await fetch('../completion-assets.json')).json();
+ for(const track of manifest.afro){
+  const article=document.createElement('article');article.innerHTML='<h2></h2><audio controls preload="metadata"></audio><p class="clock"></p><form><div class="sections"></div><button type="button" class="mark">Mark a section at this position</button><label>Control preferences<textarea name="controls" required maxlength="2000" placeholder="Which controls should stay as they are, or what would you change?"></textarea></label><label><input type="checkbox" name="attested" required>I entered the sections I heard and my own preferences.</label><button>Save section notes to this Mac</button></form><p class="receipt" role="status"></p>';
+  article.querySelector('h2').textContent=track.title;const audio=article.querySelector('audio');audio.src='../'+track.file;audio.setAttribute('aria-label',track.title);
+  const form=article.querySelector('form'),sections=article.querySelector('.sections'),receipt=article.querySelector('.receipt'),key='jamloom-afro-sections:'+track.sha256;
+  const values=()=>({sections:[...sections.children].map(row=>({at:Number(row.querySelector('input').value),name:row.querySelector('textarea').value})),controls:form.elements.controls.value});
+  const draft=()=>{try{localStorage.setItem(key,JSON.stringify(values()))}catch{receipt.textContent='Browser draft storage unavailable; save before leaving.'}};
+  function add(value){const row=document.createElement('fieldset');row.innerHTML='<label>Start in seconds<input type="number" min="0" step=".01" required></label><label>Section name<textarea required maxlength="160"></textarea></label><button type="button">Remove section</button>';row.querySelector('input').value=value.at;row.querySelector('input').max=String(track.seconds-.01);row.querySelector('textarea').value=value.name;row.querySelector('button').onclick=()=>{row.remove();draft()};sections.append(row);}
+  let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch{}for(const row of saved.sections||[])add(row);form.elements.controls.value=saved.controls||'';form.oninput=draft;
+  audio.ontimeupdate=()=>article.querySelector('.clock').textContent=audio.currentTime.toFixed(2)+' seconds';article.querySelector('.mark').onclick=()=>{add({at:+audio.currentTime.toFixed(2),name:''});draft()};
+  form.onsubmit=async event=>{event.preventDefault();if(!form.reportValidity())return;try{const payload={schema:'jamloom-afro-sections-1',id:track.id,audioSha256:track.sha256,attested:true,...values()};payload.sections.sort((a,b)=>a.at-b.at);const session=await(await fetch('/api/session',{cache:'no-store'})).json();const r=await fetch('/api/save',{method:'POST',headers:{'Content-Type':'application/json','X-Review-Token':session.token},body:JSON.stringify({kind:'afro',payload})});const result=await r.json();if(!r.ok||result.saved!==true||typeof result.receipt!=='string')throw Error('Check section times and names; your draft is preserved.');receipt.textContent='Saved receipt: '+result.receipt;}catch(error){receipt.textContent=error.message}};
+  document.querySelector('#tracks').append(article);
+ }
+ status.textContent='Three accepted mixes ready. Notes save locally.';
+}catch(error){status.textContent=error.message;}
+const stop=()=>document.querySelectorAll('audio').forEach(a=>a.pause());document.addEventListener('play',e=>{if(e.target.tagName==='AUDIO')document.querySelectorAll('audio').forEach(a=>{if(a!==e.target)a.pause()})},true);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});window.addEventListener('pagehide',stop);
+</script></html>

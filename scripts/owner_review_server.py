@@ -83,7 +83,7 @@ class Handler(review_serve.Handler):
             if self.headers.get('Host')!=f'127.0.0.1:{self.server.server_port}':self.send_error(403);return
             session={'token':self.server.review_token}
             session['received']={}
-            for kind in ('novice','practice','silence'):
+            for kind in ('novice','practice','silence','sung-target','afro','reference','music','music-draft'):
                 receipts=sorted(self.server.results.glob('*-'+kind+'.json'))
                 session['received'][kind]={'count':len(receipts),'latest':receipts[-1].name if receipts else None}
             files=sorted(self.server.results.glob('*-novice.json'))
@@ -109,6 +109,9 @@ class Handler(review_serve.Handler):
             if not isinstance(payload,dict):raise ValueError('Expected observation object')
             if kind=='music':validate_music(payload,music_study(review_serve.ROOT,payload.get('freeze')))
             elif kind=='music-draft':validate_music_draft(payload,music_study(review_serve.ROOT,payload.get('freeze')))
+            elif kind in ('sung-target','afro'):
+                from owner_completion_reviews import validate_target,validate_afro
+                (validate_target if kind=='sung-target' else validate_afro)(payload,review_serve.ROOT)
             elif kind=='novice':
                 if payload.get('schema')!='jamloom-dj-novice-1' or payload.get('attested') is not True or payload.get('beginner') is not True:raise ValueError('Actual beginner observation required')
                 if any(len(payload.get(p,[]))!=6 or any(x not in ('0','1','2') for x in payload[p]) for p in ('before','after')):raise ValueError('Complete both assessments')
@@ -155,7 +158,7 @@ class Handler(review_serve.Handler):
             observation=dict(receivedAt=time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),kind=kind,status='OWNER_SUBMITTED_REQUIRES_EVALUATION',payload=payload)
             with path.open('x') as f:json.dump(observation,f,indent=2,allow_nan=False);f.write('\n')
             self.json_response({'saved':True,'receipt':path.name})
-        except (ValueError,AssertionError,TypeError,KeyError,subprocess.SubprocessError):self.json_response({'error':'Invalid or incomplete observation; no evaluation was marked passed'},400)
+        except (ValueError,AssertionError,TypeError,KeyError,OSError,subprocess.SubprocessError):self.json_response({'error':'Invalid or incomplete observation; no evaluation was marked passed'},400)
 
 
 if __name__=='__main__':

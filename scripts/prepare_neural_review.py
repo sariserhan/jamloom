@@ -13,23 +13,31 @@ from neural_review_policy import SCHEMA
 
 ROOT=Path(__file__).resolve().parents[1]
 
-def collect(root,manifest,controls,claims):
+def review_page(template,blocks,required,partial):
+    page=template.replace('original sound and four anonymous arrangements','original sound and five anonymous arrangements')
+    if partial:
+        page=page.replace('<h1>',f'<p role="note">Partial review: {blocks} of {required} sources are ready. These judgments cannot qualify the full study.</p><h1>',1)
+    return page
+
+def collect(root,manifest,controls,claims,partial=False):
     data=json.loads(manifest.read_text());control=json.loads(controls.read_text());sha=digest(manifest)
     assert control['manifest_sha256']==sha and control['technical']=='PASS'
     assert len(data['fixtures'])==69 and len(data['sources'])==23 and data['stages']==7
     records={};audio_hashes=set();receipts=[]
     for stage in range(1,8):
+        if partial and not (claims/f'stage-{stage}.json').exists():continue
         claim=json.loads((claims/f'stage-{stage}.json').read_text());assert claim['manifest_sha256']==sha
         path=Path(claim['receipt']);assert path.resolve().is_relative_to(root.resolve())
         receipt=json.loads(path.read_text());post=json.loads((claims/f'stage-{stage}-postcheck.json').read_text())
         assert receipt['studyStage']==stage and receipt['studyManifestSha256']==sha
-        assert receipt['qualification']=='PASS' and receipt['cleanup'] and receipt['creditSettlement']
-        assert post['receipt']==str(path) and post['cleanup']=='PASS' and post['qualification']=='PASS'
+        assert (receipt['qualification'] in ('PASS','FAIL') if partial else receipt['qualification']=='PASS') and receipt['cleanup'] and receipt['creditSettlement']
+        assert post['receipt']==str(path) and post['cleanup']=='PASS' and (post['qualification'] in ('PASS','FAIL') if partial else post['qualification']=='PASS')
         assert post['workerLimits']==[0,0] and post['workers']['summary']['total']==0 and not post['temporaryDatabases']
         expected=data['fixtures'][(stage-1)*10:stage*10]
         assert [r['label'] for r in receipt['requests']]==[r['label'] for r in expected]
         folder=root/'build-improvise-completion/cloud'/path.parent.name
         for row,fixture in zip(receipt['requests'],expected):
+            if partial and row['finalState']!='completed':continue
             source=next(s for s in data['sources'] if s['id']==fixture['source_id'])
             assert row['finalState']=='completed' and row['saved'] and row['sourceBoundsVerified']
             assert row['sourceSha256']==source['sha256'] and row['studySourceId']==source['id']
@@ -41,19 +49,22 @@ def collect(root,manifest,controls,claims):
             records[row['label']]=dict(path=str(audio),sha256=row['audioSha256'],source_excerpt=row['sourceExcerpt'],
                 peak=float(np.max(np.abs(samples))),seconds=45,direction=row['musicalDirection'])
         receipts.append(dict(path=str(path),sha256=digest(path),postcheck_sha256=digest(claims/f'stage-{stage}-postcheck.json')))
-    assert len(records)==69
+    assert records if partial else len(records)==69
     assert {r['id'] for r in control['controls']}=={r['id'] for r in data['sources']}
     for row in control['controls']:
         for field in ('source','old_baseline','stock_baseline'):assert digest(root/row[field])==row[field+'_sha256']
     return data,control,records,receipts
 
-def prepare(manifest,controls,output):
+def prepare(manifest,controls,output,partial=False):
     output=output.resolve()
     if output.exists() or not output.is_relative_to(ROOT/'renders'):raise ValueError('Use a new renders directory')
     if shutil.disk_usage(ROOT).free<17*1024**3:raise RuntimeError('Keep 15 GiB reserve plus two GiB for the review')
-    data,control,records,receipts=collect(ROOT,manifest,controls,ROOT/'build-neural-qualification-20261030/claims')
+    data,control,records,receipts=collect(ROOT,manifest,controls,ROOT/'build-neural-qualification-20261030/claims',partial)
+    required_sources=len(data['sources'])
+    sources=[s for s in data['sources'] if all(s['id']+'-'+direction in records for direction in ('jazz','funk','drumandbass'))]
+    if not sources:raise ValueError('No complete three-direction source block is available')
     output.mkdir();review=output/'review';review.mkdir();blocks=[];keys=[]
-    for source in data['sources']:
+    for source in sources:
         if shutil.disk_usage(ROOT).free<15*1024**3:raise RuntimeError('Disk reserve reached; preserve partial review')
         row=next(r for r in control['controls'] if r['id']==source['id']);folder=review/f'block-{len(blocks)+1:03d}';folder.mkdir()
         os.link(ROOT/row['source'],folder/'source.wav')
@@ -71,15 +82,17 @@ def prepare(manifest,controls,output):
     source_report=dict(manifest_sha256=digest(manifest),controls_sha256=digest(controls),receipts=receipts,outputs=records,technical='PASS',human_listening='NOT RUN')
     (output/'source-report.json').write_text(json.dumps(source_report,indent=2)+'\n')
     study=dict(version=2,review_schema=SCHEMA,freeze=freeze,blocks=blocks,listener='owner',ratings='NOT RUN',
-        source_report_sha256=digest(output/'source-report.json'))
+        source_report_sha256=digest(output/'source-report.json'),coverage_complete=not partial,required_source_count=required_sources)
     (review/'study.json').write_text(json.dumps(study,indent=2)+'\n')
     (output/'organizer-key.json').write_text(json.dumps(dict(freeze=freeze,blocks=keys),indent=2)+'\n')
     for name in ('strategy-review.html','strategy-review.js','owner-review.css'):
         shutil.copyfile(ROOT/'apps/listening'/name,review/('index.html' if name.endswith('.html') else name))
+    page=review/'index.html'
+    page.write_text(review_page(page.read_text(),len(blocks),required_sources,partial))
     shutil.copyfile(manifest.parent/'ATTRIBUTION.txt',review/'ATTRIBUTION.txt')
     shutil.copyfile(ROOT/'docs/evidence/nondeployment-completion-20261030/listening-protocol.json',output/'evaluation-policy.json')
-    (output/'preparation.json').write_text(json.dumps(dict(technical='PASS',human_listening='NOT RUN',blocks=23,candidates=115,freeze=freeze),indent=2)+'\n')
+    (output/'preparation.json').write_text(json.dumps(dict(technical='PASS packaging',coverage='PARTIAL' if partial else 'COMPLETE',human_listening='NOT RUN',blocks=len(blocks),required_source_count=required_sources,candidates=5*len(blocks),freeze=freeze),indent=2)+'\n')
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--manifest',type=Path,required=True);p.add_argument('--controls',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
-    prepare(a.manifest,a.controls,a.output)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--manifest',type=Path,required=True);p.add_argument('--controls',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--partial',action='store_true',help='Review completed source triples only; cannot qualify the full study');a=p.parse_args()
+    prepare(a.manifest,a.controls,a.output,a.partial)

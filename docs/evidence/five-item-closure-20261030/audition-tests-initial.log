@@ -1,0 +1,27 @@
+EE
+======================================================================
+ERROR: test_low_memory_blocks_start_and_records_failure (test_improvise_local_audition.LocalAudition.test_low_memory_blocks_start_and_records_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/tests/test_improvise_local_audition.py", line 32, in test_low_memory_blocks_start_and_records_failure
+    with self.assertRaisesRegex(RuntimeError,'memory floor'):audition.run(output)
+                                                             ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/improvise_local_audition.py", line 77, in run
+    raise ValueError('Use a fresh renders/improvise-local-audition-* directory')
+ValueError: Use a fresh renders/improvise-local-audition-* directory
+
+======================================================================
+ERROR: test_source_identity_and_location_are_required (test_improvise_local_audition.LocalAudition.test_source_identity_and_location_are_required)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/serhansari/Documents/projects/jamloom/tests/test_improvise_local_audition.py", line 21, in test_source_identity_and_location_are_required
+    self.assertEqual(audition.fixture_source('source-funk')[2],audio)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serhansari/Documents/projects/jamloom/scripts/improvise_local_audition.py", line 28, in fixture_source
+    raise ValueError('Qualification source changed')
+ValueError: Qualification source changed
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (errors=2)

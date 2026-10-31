@@ -37,7 +37,8 @@ def summarize(study,key,submissions):
                 mean=measured.get(field,{}).get('mean');checks[field]='NOT RUN' if mean is None else ('PASS' if mean>=minimum else 'FAIL')
             checks['zero_reported_severe_glitches']='PASS' if sum(metrics['technical_failure'])==0 else 'FAIL'
         results[style]=dict(metrics=measured,checks=checks)
-    complete=len(latest)==len(study['blocks']) and len(latest)>=20
+    complete=(study.get('coverage_complete',True) is True and len(latest)==len(study['blocks'])
+              and len(latest)>=max(20,study.get('required_source_count',20)))
     passed=complete and len(distinct)==len(study['blocks']) and all(distinct) and all(
         results.get(style,{}).get('checks') and all(v=='PASS' for v in results[style]['checks'].values()) for style in ('jazz','funk','drumandbass'))
     return dict(status='NOT RUN' if not latest else 'PASS owner listening thresholds' if passed else 'FAIL owner listening thresholds' if complete else 'PARTIAL',

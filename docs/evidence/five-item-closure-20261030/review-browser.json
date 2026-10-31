@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "browser": "Installed Chrome via Playwright; Browser runtime tool unavailable",
+  "results": [
+    {
+      "width": 1280,
+      "status": "PASS",
+      "targetDraftReceipt": true,
+      "afroReceipt": true,
+      "draftRecovered": true,
+      "instrumentalSeconds": 45,
+      "ownerResultsWritten": false
+    },
+    {
+      "width": 390,
+      "status": "PASS",
+      "targetDraftReceipt": true,
+      "afroReceipt": true,
+      "draftRecovered": true,
+      "instrumentalSeconds": 45,
+      "ownerResultsWritten": false
+    }
+  ]
+}

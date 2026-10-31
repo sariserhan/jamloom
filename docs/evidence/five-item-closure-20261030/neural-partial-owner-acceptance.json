@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-30",
+  "listener": "owner",
+  "owner_response": "they are all okay lets accept all",
+  "decision": "accept all arrangements in the two reviewed source blocks",
+  "scope": "General musical acceptance of these exact ten candidates; no numerical ratings or baseline preferences inferred",
+  "review_url": "http://127.0.0.1:8777/music-neural-partial/",
+  "freeze": "e0704a9b742fbd18960b1c5ab4ce0e37058897ae382f98ffa3ac78d7c3f35fa5",
+  "blocks": [
+    {
+      "id": "ls-2277-149896-0026",
+      "source_id": "ls-2277-149896-0026",
+      "kind": "speech",
+      "folder": "block-001",
+      "source_sha256": "0d7c823766b73606ae0a2cee70c47deb80155fe873316802865165f807865906",
+      "audio_sha256": {
+        "A": "f62381029d25a1c2697cfec48e1810ec8719826b6eb437d1674319f5356d376d",
+        "B": "0afe92453e0ddcd758b3c0b4916feaf30f37c442a6a5f9ea223a4186d1c1ba26",
+        "C": "a4eb6c28654d80acfdb52916c3c0a687039e05247522f5f1dd58210932202e6c",
+        "D": "6c9d1d9b64772392cb58ab398e386be445881a036af2fe4fdc727a28670aaef5",
+        "E": "f4aaa0b3a22451b7965099f36c5f2cae3cf9906dd84b5d030891a93a12dd08d6"
+      }
+    },
+    {
+      "id": "ls-2035-147960-0013",
+      "source_id": "ls-2035-147960-0013",
+      "kind": "speech",
+      "folder": "block-002",
+      "source_sha256": "63ed1363858c7f7afea4f6b7bca92387e8aef45f55ffc5d84c7bb1e2b387cff4",
+      "audio_sha256": {
+        "A": "a09653b41848637d57e924cc4d0d5eb66ed45b64824768c5886f35bc0d838e4a",
+        "B": "9e027cb0d03127f230b9235fed0f7c21b776773a6d1d4accf5696c909eb1e3b0",
+        "C": "2067219d739b6e8f8f46b777edef78afec44fb325a123578f423a7612c663fa6",
+        "D": "0a6e6904761684459a67c384a25587a68ceec106514aacc1524302b28ff23417",
+        "E": "7c6864a86c31e103e1f425c5a775ba577976565ac4e92a22ea29635937d9c5cc"
+      }
+    }
+  ],
+  "accepted_sources": 2,
+  "required_sources": 23,
+  "structured_comparison_ratings": "NOT SUBMITTED"
+}

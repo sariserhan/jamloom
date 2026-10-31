@@ -98,6 +98,14 @@ def evaluate(workspace,review):
     practice=[r['payload'] for r in observations if r['kind']=='practice']
     summaries=[dict(before={k:p['before'].get(k) for k in ('outcome','attempts','first_audio_seconds')},after={k:p['after'].get(k) for k in ('outcome','attempts','first_audio_seconds')},clarity=p['clarity'],enjoyment=p['enjoyment']) for p in practice]
     report['hands_on']=dict(status='PARTIAL; owner self-report requires review',observations=summaries,private_notes='Retained locally; omitted here',scope='Actual first-crossfade attempts; no general learning or mini-set claim') if practice else {'status':'NOT RUN; awaiting actual deck attempts'}
+    report['hands_on']['general_feedback_receipts']=sum(r['kind']=='practice-feedback' for r in observations)
+    report['hands_on']['general_feedback_proves_learning_gain']=False
+    from owner_completion_reviews import validate_target,validate_afro
+    for kind,validator in [('sung-target',validate_target),('afro',validate_afro)]:
+        entries=[r['payload'] for r in observations if r['kind']==kind]
+        for payload in entries:validator(payload,workspace/'public')
+        report[kind]=dict(status='PARTIAL; annotations require review' if entries else 'NOT RUN; awaiting source-bound annotations',receipts=len(entries))
+    report['sung-target'].update(verified=False,scoringEnabled=False)
     latest_labels={}
     for row in observations:
         if row['kind']=='reference':

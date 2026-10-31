@@ -36,4 +36,10 @@ class NeuralReview(unittest.TestCase):
         del payload['ratings']['b19']
         self.assertEqual(summarize(study,key,[payload])['status'],'PARTIAL')
 
+    def test_partial_coverage_cannot_pass_even_with_twenty_favorable_blocks(self):
+        study,key,payload=self.fixture();study['coverage_complete']=False
+        self.assertEqual(summarize(study,key,[payload])['status'],'PARTIAL')
+        study['coverage_complete']=True;study['required_source_count']=23
+        self.assertEqual(summarize(study,key,[payload])['status'],'PARTIAL')
+
 if __name__=='__main__':unittest.main()

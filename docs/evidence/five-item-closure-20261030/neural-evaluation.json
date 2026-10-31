@@ -1,0 +1,10 @@
+{
+  "status": "NOT RUN",
+  "freeze": "e0704a9b742fbd18960b1c5ab4ce0e37058897ae382f98ffa3ac78d7c3f35fa5",
+  "completed_blocks": 0,
+  "required_blocks": 2,
+  "distinct_generated_compositions_by_source": {},
+  "results": {},
+  "scope": "One owner, source-level uncertainty only; no population listener claim. Recorded quiet rejection and hosted technical evidence are separate required gates.",
+  "drafts_count_as_judgments": false
+}
