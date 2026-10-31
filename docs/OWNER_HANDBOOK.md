@@ -1,5 +1,12 @@
 ## Current completion boundaries — 2026-10-30
 
+## Current nondeployment completion — 2026-10-30
+
+- **[OWNER ACTION REQUIRED] Compute decision:** review the [prepared $21 neural qualification](evidence/nondeployment-completion-20261030/hosted-study-plan.json). No new cloud work has started. This is private evaluation only and excludes deployment, payments, training and AI DJ rentals.
+- **[OWNER ACTION REQUIRED] Actual observations:** save three quiet seconds at http://127.0.0.1:8777 and complete the hands-on before/lesson/after exercise at http://127.0.0.1:8777/practice-observation.html. These close recording and learner-evidence gaps; automated fixtures cannot substitute for your observations. Prior concept-quiz answers remain saved.
+- The new five-candidate neural study will be installed only after generation and cleanup pass. Its ratings start blank, can be saved partially, and remain separate from the earlier rejected studies and the accepted question auditions.
+
+
 [Current evidence](COMPLETION_CURRENT.md) supersedes older pending work only where a new result is recorded. The current local website preview is http://127.0.0.1:3010 (loopback only; sales remain closed). Local target review is at http://127.0.0.1:8769 while its server is running; restart with `python3 -m http.server 8769 --bind 127.0.0.1 --directory renders/produced-target-review-20261030`.
 
 - Actual scoring requires reviewed sung words, note identities and intervals from both accepted recordings. The editor can save/reload corrections bound to the recording hash. Exports remain unverified drafts; automatic candidates and synthetic editor tests cannot grant scores.

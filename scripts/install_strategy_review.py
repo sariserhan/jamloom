@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+from neural_review_policy import review_fields
 
 
 def install(review,public,folder):
@@ -17,7 +18,7 @@ def install(review,public,folder):
     for block in study['blocks']:
         if not re.fullmatch(r'block-[0-9]{3}',block['folder']):raise ValueError('Invalid block folder')
         for name,sha in {'source':block['source_sha256'],**block['audio_sha256']}.items():
-            if name not in ('source','A','B','C','D'):raise ValueError('Unexpected audio name')
+            if name not in ('source',*review_fields(study)[0]):raise ValueError('Unexpected audio name')
             relative=block['folder']+'/'+name+'.wav';files.append(relative);hashes[relative]=sha
     for relative in files:
         path=source/relative

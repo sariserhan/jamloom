@@ -81,5 +81,17 @@ class LocalSaveBoundary(unittest.TestCase):
         self.assertEqual(self.post(dict(kind='music-draft',payload=payload))[0],400)
         self.assertEqual(len(list(self.results.glob('*.json'))),1)
 
+    def test_five_candidate_study_saves_partial_then_complete_with_exact_freeze(self):
+        from neural_review_policy import SCHEMA,review_fields
+        folder=self.public/'music';folder.mkdir();study=dict(review_schema=SCHEMA,freeze='five-fixture',blocks=[{'id':'b'}]);(folder/'study.json').write_text(json.dumps(study))
+        codes,numeric,binary,pairs=review_fields(study)
+        row={c:{**{f:'3' for f in numeric},**{f:'no' for f in binary}} for c in codes}
+        payload=dict(version=2,listener='owner',freeze=study['freeze'],audio=study['blocks'],ratings={'b':row})
+        self.assertEqual(self.post(dict(kind='music-draft',payload=payload))[0],200)
+        self.assertEqual(self.post(dict(kind='music',payload=payload))[0],400)
+        row.update(attested=True,pairs={p:'tie' for p in pairs},distinct_pairs={p:'no' for p in pairs})
+        self.assertEqual(self.post(dict(kind='music',payload=payload))[0],200)
+        self.assertEqual(len(list(self.results.glob('*.json'))),2)
+
 
 if __name__=='__main__':unittest.main()

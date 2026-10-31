@@ -10,6 +10,7 @@ import subprocess
 import time
 from http.server import ThreadingHTTPServer
 import review_serve
+from neural_review_policy import review_fields
 
 
 def music_study(root,freeze):
@@ -31,45 +32,47 @@ def music_study(root,freeze):
 def validate_music(payload,study):
     if payload.get('version')!=2 or payload.get('listener')!='owner' or payload.get('freeze')!=study['freeze'] or payload.get('audio')!=study['blocks']:
         raise ValueError('Study identity changed')
+    codes,numeric,binary,pairs=review_fields(study)
     ratings=payload.get('ratings');blocks={b['id'] for b in study['blocks']}
     if not isinstance(ratings,dict) or not ratings or not set(ratings)<=blocks:raise ValueError('Invalid rated blocks')
     for row in ratings.values():
         if not isinstance(row,dict):raise ValueError('Invalid rating object')
         if row.get('attested') is not True:raise ValueError('Listening attestation required')
-        for code in 'ABCD':
+        for code in codes:
             values=row.get(code,{})
-            for field in ('recognizable','share','technical_failure'):
+            for field in binary:
                 if values.get(field) not in ('yes','no'):raise ValueError('Complete all listening fields')
-            for field in ('groove','coherence','originality','enjoyment'):
+            for field in numeric:
                 if values.get(field) not in ('1','2','3','4','5'):raise ValueError('Complete all ratings')
             if not isinstance(values.get('notes',''),str) or len(values.get('notes',''))>2000:raise ValueError('Notes too long')
-        for a,b in ('AB','AC','AD','BC','BD','CD'):
+        for a,b in pairs:
             if row.get('pairs',{}).get(a+b) not in (a,b,'tie') or row.get('distinct_pairs',{}).get(a+b) not in ('yes','no'):raise ValueError('Complete preference and composition-variety comparisons')
 
 
 def validate_music_draft(payload,study):
     if payload.get('version')!=2 or payload.get('listener')!='owner' or payload.get('freeze')!=study['freeze'] or payload.get('audio')!=study['blocks']:raise ValueError('Study identity changed')
+    codes,numeric,binary,pairs=review_fields(study)
     ratings=payload.get('ratings');blocks={b['id'] for b in study['blocks']}
     if not isinstance(ratings,dict) or not ratings or not set(ratings)<=blocks:raise ValueError('Invalid draft blocks')
     for row in ratings.values():
-        if not isinstance(row,dict) or set(row)-set(('A','B','C','D','pairs','distinct_pairs','attested')):raise ValueError('Invalid draft fields')
+        if not isinstance(row,dict) or set(row)-set((*codes,'pairs','distinct_pairs','attested')):raise ValueError('Invalid draft fields')
         if 'attested' in row and type(row['attested']) is not bool:raise ValueError('Invalid attestation')
-        for code in 'ABCD':
+        for code in codes:
             values=row.get(code,{})
             if not isinstance(values,dict):raise ValueError('Invalid draft candidate')
             for field,value in values.items():
                 if field=='notes':
                     if not isinstance(value,str) or len(value)>2000:raise ValueError('Invalid notes')
-                elif field in ('recognizable','share','technical_failure'):
+                elif field in binary:
                     if value not in ('','yes','no'):raise ValueError('Invalid draft answer')
-                elif field in ('groove','coherence','originality','enjoyment'):
+                elif field in numeric:
                     if value not in ('','1','2','3','4','5'):raise ValueError('Invalid draft rating')
                 else:raise ValueError('Unknown draft rating')
         for field in ('pairs','distinct_pairs'):
             values=row.get(field,{})
             if not isinstance(values,dict):raise ValueError('Invalid draft comparisons')
             for pair,value in values.items():
-                if pair not in ('AB','AC','AD','BC','BD','CD') or value not in (('',*pair,'tie') if field=='pairs' else ('','yes','no')):raise ValueError('Invalid draft comparison')
+                if pair not in pairs or value not in (('',*pair,'tie') if field=='pairs' else ('','yes','no')):raise ValueError('Invalid draft comparison')
 
 
 class Handler(review_serve.Handler):

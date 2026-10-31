@@ -1,0 +1,110 @@
+{
+  mode: 'dry-run',
+  maxUSD: 3,
+  maxWorkers: 1,
+  maxSeconds: 2400,
+  requests: 10,
+  requires: 'Approved paid trial and JAMLOOM_TRIAL_IMAGE digest',
+  durations: [
+    45, 45, 45, 45, 45,
+    45, 45, 45, 45, 45
+  ],
+  source: 'Licensed recorded-source study; all input hashes verified',
+  websiteDeployment: false,
+  studyManifest: '019918fb9d875a140605951676fbb447c753845469e0c1cad5baf8730d7fad55',
+  stage: 1,
+  stageCount: 7,
+  fixtures: [
+    {
+      label: 'ls-2277-149896-0026-jazz',
+      source_id: 'ls-2277-149896-0026',
+      genre: 'jazz',
+      energy: 'low',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'ls-2277-149896-0026-funk',
+      source_id: 'ls-2277-149896-0026',
+      genre: 'funk',
+      energy: 'medium',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'ls-2277-149896-0026-drumandbass',
+      source_id: 'ls-2277-149896-0026',
+      genre: 'drumandbass',
+      energy: 'high',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'ls-2035-147960-0013-jazz',
+      source_id: 'ls-2035-147960-0013',
+      genre: 'jazz',
+      energy: 'low',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'ls-2035-147960-0013-funk',
+      source_id: 'ls-2035-147960-0013',
+      genre: 'funk',
+      energy: 'medium',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'ls-2035-147960-0013-drumandbass',
+      source_id: 'ls-2035-147960-0013',
+      genre: 'drumandbass',
+      energy: 'high',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'ls-2086-149220-0047-jazz',
+      source_id: 'ls-2086-149220-0047',
+      genre: 'jazz',
+      energy: 'low',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'ls-2086-149220-0047-funk',
+      source_id: 'ls-2086-149220-0047',
+      genre: 'funk',
+      energy: 'medium',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'ls-2086-149220-0047-drumandbass',
+      source_id: 'ls-2086-149220-0047',
+      genre: 'drumandbass',
+      energy: 'high',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'ls-7976-110124-0019-jazz',
+      source_id: 'ls-7976-110124-0019',
+      genre: 'jazz',
+      energy: 'low',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    }
+  ],
+  temporaryPrivateUploads: 10
+}

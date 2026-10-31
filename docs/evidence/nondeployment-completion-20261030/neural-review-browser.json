@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "browser": "Isolated Chromium; browser connection tool unavailable",
+  "syntheticFixture": true,
+  "ownerJudgmentsCreated": 0,
+  "checks": [
+    {
+      "width": 1280,
+      "players": 6,
+      "pairs": 10,
+      "draftRestored": true,
+      "partialSave": true,
+      "completeSave": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "players": 6,
+      "pairs": 10,
+      "draftRestored": true,
+      "partialSave": true,
+      "completeSave": true,
+      "errors": []
+    }
+  ]
+}

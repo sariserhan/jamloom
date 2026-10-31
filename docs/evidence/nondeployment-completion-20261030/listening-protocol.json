@@ -1,0 +1,36 @@
+{
+  "status": "PREREGISTERED_OUTPUTS_NOT_RUN",
+  "manifest_sha256": "019918fb9d875a140605951676fbb447c753845469e0c1cad5baf8730d7fad55",
+  "listener": "owner only",
+  "sources": 23,
+  "recorded_speech_sources": 20,
+  "neural_directions": [
+    "jazz/low",
+    "funk/medium",
+    "drumandbass/high"
+  ],
+  "outputs": 69,
+  "blocks": 23,
+  "candidates_per_block": 5,
+  "baselines": [
+    "Frozen previous local half_time strategy seed 4123 on identical source",
+    "Fixed original stock-loop backing plus identical source"
+  ],
+  "blinding": "Random A-E per block; organizer key stays outside the served directory; no preselected responses",
+  "audio_policy": "Preserve each full original output duration and natural ending; normalize to -23 LUFS; no artificial silence or tempo matching added to controls",
+  "thresholds": {
+    "technical_success_min": 0.85,
+    "speech_recognizable_min": 0.9,
+    "enjoyment_at_least_4_min": 0.7,
+    "share_yes_min": 0.3,
+    "owner_preference_over_old_baseline_min": 0.7,
+    "usable_min": 0.8,
+    "severe_clipping_or_timing_failures_max": 0,
+    "distinct_generated_arrangements_per_source": 3
+  },
+  "aggregation": "Report by strategy and source kind, per-source uncertainty and one-owner limitation; never count unreviewed audio or draft responses. A complete study and actual quiet control are required; no automatic pass from technical evidence.",
+  "quiet_control": "Separate real owner recording; local rejection check only, no extra paid request",
+  "learned_training": "Not authorized by this evaluation corpus or permit",
+  "controls_manifest": "renders/neural-controls-20261030/controls.json",
+  "controls_sha256": "83458289d06649c5430b8c8408fd67d3808689c7e02fb8cd1513ac05640cda24"
+}

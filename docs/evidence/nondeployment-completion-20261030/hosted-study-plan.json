@@ -1,0 +1,62 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "prepared_at": "2026-10-31T01:16:00.687605+00:00",
+  "campaign": "jamloom-neural-qualification-20261030",
+  "scope": "Private qualification of accepted neural Improvise across the frozen 23 licensed sources and three style/energy strategies",
+  "manifest": "renders/neural-qualification-20261030/manifest.json",
+  "manifest_sha256": "019918fb9d875a140605951676fbb447c753845469e0c1cad5baf8730d7fad55",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1",
+  "image_publication": false,
+  "max_usd": 21,
+  "max_provider_requests": 69,
+  "stages": 7,
+  "requests_per_stage": [
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    9
+  ],
+  "max_workers": 1,
+  "max_stage_seconds": 2400,
+  "shutdown_seconds_per_stage": 130,
+  "max_stage_usd": 3,
+  "retries": 0,
+  "stop_on_failure": true,
+  "conservative_total_usd": 19.09,
+  "owner_statement": null,
+  "file_sha256": {
+    "apps/site/scripts/cloud-song-trial.ts": "25f25aacf58c551d0baff8984c0a6b45c477bff218e0b47154fe5dfe1207bba2",
+    "apps/site/scripts/neural-study-input.ts": "3b2422f33e157e4c0cbd079e27f24d72bf4e7b6693d88f0b7a86e2f87c7923a5",
+    "apps/site/scripts/neural-study-permit.ts": "387a8e38832855818cc47a94955c3775e8c163a51f62f66dc07dad7d8f9b1df8",
+    "apps/site/scripts/neural-study-postcheck.ts": "9f0420b3e9604b7094becd9269fd1810343454736b1db4dab25d977ffdfe5731",
+    "apps/site/scripts/cloud-trial-limits.ts": "a6a57a6612a603daef8cf984ad3092fdf0f6f74ea9e96e392073f26f28f6a0f8",
+    "apps/site/lib/cloud-songs.ts": "e76697925031c997227d891573a3ec6c46eb738eba3219c5cae5b2b1a531d8ee",
+    "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4"
+  },
+  "temporary_uploads": "Only the 23 hash-bound licensed source crops, reused in 69 requests; no new owner recordings or maker voice. Private R2 and Runpod. Remove temporary source and result objects after each stage; keep local evidence.",
+  "preconditions": [
+    "Fresh explicit owner approval of this scope and cap",
+    "Exact existing immutable image, zero workers and queued/running jobs, zero pending production jobs",
+    "Local PostgreSQL reachable on 127.0.0.1:55438; independent test database per stage",
+    "At least 15 GiB free disk plus projected remaining study output",
+    "Stage claim is exclusive and single use; never erase a consumed claim",
+    "Before stages 2\u20137, previous receipt and independent GET/HEAD/SELECT postcheck must PASS"
+  ],
+  "commands": [
+    "From apps/site: JAMLOOM_TEST_DATABASE_URL points to the local PostgreSQL admin database; JAMLOOM_TRIAL_IMAGE equals image above. Never use production as test database.",
+    "node --import tsx scripts/cloud-song-trial.ts --improvise-study --qualification-window --study-manifest ../../renders/neural-qualification-20261030/manifest.json --study-stage N --study-permit ../../docs/evidence/nondeployment-completion-20261030/hosted-study-plan.json --apply",
+    "Only after stage PASS: node --import tsx scripts/neural-study-postcheck.ts N",
+    "Advance N only after the independent postcheck succeeds; on any failure stop the entire campaign and preserve evidence."
+  ],
+  "excludes": [
+    "Website/app deployment",
+    "Image publication",
+    "Live payments",
+    "AI DJ rental",
+    "Training or performer cloning",
+    "Repeated requests or replacement campaign"
+  ]
+}

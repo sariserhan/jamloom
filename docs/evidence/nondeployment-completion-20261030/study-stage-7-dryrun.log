@@ -1,0 +1,101 @@
+{
+  mode: 'dry-run',
+  maxUSD: 3,
+  maxWorkers: 1,
+  maxSeconds: 2400,
+  requests: 9,
+  requires: 'Approved paid trial and JAMLOOM_TRIAL_IMAGE digest',
+  durations: [
+    45, 45, 45, 45, 45,
+    45, 45, 45, 45
+  ],
+  source: 'Licensed recorded-source study; all input hashes verified',
+  websiteDeployment: false,
+  studyManifest: '019918fb9d875a140605951676fbb447c753845469e0c1cad5baf8730d7fad55',
+  stage: 7,
+  stageCount: 7,
+  fixtures: [
+    {
+      label: 'commons-laughter-jazz',
+      source_id: 'commons-laughter',
+      genre: 'jazz',
+      energy: 'low',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'commons-laughter-funk',
+      source_id: 'commons-laughter',
+      genre: 'funk',
+      energy: 'medium',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'commons-laughter-drumandbass',
+      source_id: 'commons-laughter',
+      genre: 'drumandbass',
+      energy: 'high',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'commons-claps-jazz',
+      source_id: 'commons-claps',
+      genre: 'jazz',
+      energy: 'low',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'commons-claps-funk',
+      source_id: 'commons-claps',
+      genre: 'funk',
+      energy: 'medium',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'commons-claps-drumandbass',
+      source_id: 'commons-claps',
+      genre: 'drumandbass',
+      energy: 'high',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'commons-noise-jazz',
+      source_id: 'commons-noise',
+      genre: 'jazz',
+      energy: 'low',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'commons-noise-funk',
+      source_id: 'commons-noise',
+      genre: 'funk',
+      energy: 'medium',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    },
+    {
+      label: 'commons-noise-drumandbass',
+      source_id: 'commons-noise',
+      genre: 'drumandbass',
+      energy: 'high',
+      voice: 'male',
+      duration_seconds: 45,
+      visibility: 'private'
+    }
+  ],
+  temporaryPrivateUploads: 9
+}

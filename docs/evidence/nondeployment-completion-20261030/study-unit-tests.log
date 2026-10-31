@@ -1,0 +1,13 @@
+✔ longer qualification keeps every stage under its existing three-dollar conservative budget (0.442875ms)
+✔ diagnostics and historical modes cannot silently acquire a longer window (0.101167ms)
+✔ all stages partition every source/direction once within the approved bounds (8.201375ms)
+✔ local loading verifies exact canonical source bytes and rejects changed or escaped inputs (18.750708ms)
+✔ study stages require fresh approval, unchanged code, single use and prior independent cleanup (16.08825ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 202.018083
