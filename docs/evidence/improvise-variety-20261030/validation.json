@@ -20,7 +20,7 @@
   },
   "quality_reference": "../music-dna-quality-benchmark-20261030/owner-acceptance.json",
   "model_settings": "Existing pinned neural model and inference settings retained; source-preservation and audio checks retained",
-  "new_variation_listening": "NOT RUN",
+  "new_variation_listening": "PASS overall owner acceptance of all three exact auditions",
   "runtime_sha256": {
     "scripts/singer_studio.py": "335c8bf9fd31a0860af5826602cc427710d28c082d9761a40e24d09dd7e75a24",
     "scripts/singing_response.py": "ef63906a48720351edeb4e2ca66c57df4af0fbb678add5d498e6b2343ad156f6",
@@ -56,6 +56,7 @@
     "audio_audit": "PASS duration/hash/PCM/peaks; no near-silent window in the first second after any phrase",
     "browser": "PASS playback/seek/exclusive playback/phrase jumps at 1280 and 390 pixels",
     "url": "http://127.0.0.1:8777/neural-variety/",
-    "musical_acceptance": "NOT RUN; owner review requested"
-  }
+    "musical_acceptance": "PASS for these exact three auditions; broader qualification remains PARTIAL"
+  },
+  "owner_acceptance": "owner-acceptance.json"
 }

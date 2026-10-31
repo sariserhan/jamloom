@@ -114,8 +114,9 @@
     "qualification": "PASS",
     "cleanup": "PASS",
     "local_postgres": "STOPPED after independent cleanup check",
-    "owner_listening": "NOT RUN",
-    "audition_url": "http://127.0.0.1:8777/neural-variety/"
+    "owner_listening": "PASS overall acceptance of all three exact auditions",
+    "audition_url": "http://127.0.0.1:8777/neural-variety/",
+    "owner_acceptance": "owner-acceptance.json"
   },
   "file_sha256": {
     "scripts/singer_studio.py": "335c8bf9fd31a0860af5826602cc427710d28c082d9761a40e24d09dd7e75a24",

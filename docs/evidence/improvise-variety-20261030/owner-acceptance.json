@@ -1,0 +1,42 @@
+{
+  "recorded_at": "2026-10-31T00:54:02.739745+00:00",
+  "owner_date": "2026-10-30",
+  "status": "PASS",
+  "listener": "owner; sole required listener",
+  "statement": "yes they are good",
+  "question": "Please listen at http://127.0.0.1:8777/neural-variety/: A is low-energy jazz, B is medium-energy funk, and C is high-energy drum and bass. The track you accepted is on the same page for comparison. Which of A\u2013C meet that quality, do their energies feel different, and does the phrase fit naturally without an awkward cut or gap?",
+  "question_id": "call_42445b944cc74933a0b9502e516ff797",
+  "auditions": [
+    {
+      "code": "A",
+      "genre": "jazz",
+      "energy": "low",
+      "audio_sha256": "6def96c1145b926019ac8bf9f936584cad86fe50311be7e417b9c141e8b423be",
+      "seconds": 45.0,
+      "seed": 2446744697,
+      "status": "PASS owner acceptance"
+    },
+    {
+      "code": "B",
+      "genre": "funk",
+      "energy": "medium",
+      "audio_sha256": "be2ab76baacbf5f6eb9709abe8e78c302c695933b98e90eb5ce5c65f08e0af94",
+      "seconds": 45.0,
+      "seed": 217589844,
+      "status": "PASS owner acceptance"
+    },
+    {
+      "code": "C",
+      "genre": "drumandbass",
+      "energy": "high",
+      "audio_sha256": "cfa9f18b4afc8eeeba1bc55b84a869384a5ecf33403898ec33eed5649a969ad3",
+      "seconds": 45.0,
+      "seed": 707261315,
+      "status": "PASS owner acceptance"
+    }
+  ],
+  "original_source_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "uploaded_source_sha256": "fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1",
+  "scope": "Overall owner acceptance of these three exact auditions in response to the quality, energy and phrase-fit question. No numeric or separate per-dimension ratings were supplied. This is not blinded source/seed coverage or acceptance of unreviewed audio.",
+  "reference_url": "http://127.0.0.1:8777/neural-variety/"
+}
