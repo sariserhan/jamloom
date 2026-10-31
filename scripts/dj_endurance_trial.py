@@ -32,6 +32,13 @@ def configure():
     v.WORK=WORK;v.STATE=WORK/'trial-state.json';v.LABEL=LABEL
     v.LEASE_SECONDS=9000;v.HOURLY_CEILING=.50;v.QUOTE_CEILING=4
 
+def funded_credit(account):
+    credit=float(account['credit'])
+    # Fund the entire authorized cap; the $4 quote/debit stops already retain
+    # a $2 shutdown margin inside it. No unrelated extra dollar is needed.
+    if not math.isfinite(credit) or credit<6:raise RuntimeError('Insufficient provider balance for the $6 cap')
+    return credit
+
 def rent():
     permit=json.loads(PERMIT.read_text());approved(permit)
     if shutil.disk_usage(ROOT).free<19*1024**3:raise RuntimeError('Keep 15 GiB reserve plus four GiB endurance artifacts')
@@ -40,8 +47,7 @@ def rent():
     if not public_key.startswith('ssh-ed25519 ') or not shutil.which('caffeinate'):raise RuntimeError('Prepared SSH key and sleep inhibitor required')
     if v.STATE.exists() or (WORK/'claimed.json').exists():raise RuntimeError('This attempt is already consumed; no replacement authorized')
     if v.instances():raise RuntimeError('Existing rental prevents isolated accounting')
-    account=v.api('v0/users/current');credit=float(account['credit'])
-    if not math.isfinite(credit) or credit<7:raise RuntimeError('Insufficient provider balance')
+    credit=funded_credit(v.api('v0/users/current'))
     proven=json.loads((ROOT/'build-dj-release-check-20261026-retry/trial-state.json').read_text())['offer']['host_id']
     offers=v.offers(proven);offer=next((o for o in offers if o['host_id']==proven and o['gpu_name']=='RTX 3090'),None)
     if offer is None:raise RuntimeError('Verified host has no offer within the price ceiling')

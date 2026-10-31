@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "at": "2026-10-31T01:39:31.690310+00:00",
+  "initial_check": "Insufficient provider balance",
+  "initial_available_usd": 6.792058815899997,
+  "provider_instances": [],
+  "claim_created": false,
+  "paid_operations": 0,
+  "corrected_minimum_balance_usd": 6,
+  "authorized_cap_usd": 6,
+  "quote_and_observed_debit_stop_usd": 4,
+  "shutdown_reserve_usd": 2,
+  "authorization": "Existing explicit owner $6 approval; no increase or repeated rental",
+  "execution": "Wait for independently confirmed neural campaign cleanup"
+}

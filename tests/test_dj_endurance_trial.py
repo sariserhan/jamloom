@@ -10,6 +10,12 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import dj_endurance_trial as trial
 
 class EnduranceAuthorization(unittest.TestCase):
+    def test_existing_balance_funds_full_cap_without_unrelated_top_up(self):
+        for credit in (6,6.7920588159,7):
+            self.assertEqual(trial.funded_credit({'credit':credit}),credit)
+        for credit in (5.999,-1,float('nan'),float('inf')):
+            with self.assertRaisesRegex(RuntimeError,'balance'):trial.funded_credit({'credit':credit})
+
     def test_unapproved_run_has_no_provider_or_preflight_side_effects(self):
         with tempfile.TemporaryDirectory() as folder:
             permit=Path(folder)/'permit.json';permit.write_text(json.dumps({'status':'PREPARED_NOT_AUTHORIZED'}))

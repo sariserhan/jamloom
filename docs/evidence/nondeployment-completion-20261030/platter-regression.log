@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: key lock retains a tone pitch while transport advances at selected speed
+ok 1 - key lock retains a tone pitch while transport advances at selected speed
+  ---
+  duration_ms: 304.838916
+  type: 'test'
+  ...
+# Subtest: scratch reads PCM backwards, halts when movement stops and resumes without crossing bounds
+ok 2 - scratch reads PCM backwards, halts when movement stops and resumes without crossing bounds
+  ---
+  duration_ms: 1.664458
+  type: 'test'
+  ...
+# Subtest: loops retain the declared timeline and transport remains finite at edges
+ok 3 - loops retain the declared timeline and transport remains finite at edges
+  ---
+  duration_ms: 19.338375
+  type: 'test'
+  ...
+# Subtest: rapid rates are coalesced until pause completes, then resume at the latest rate
+ok 4 - rapid rates are coalesced until pause completes, then resume at the latest rate
+  ---
+  duration_ms: 2.434959
+  type: 'test'
+  ...
+# Subtest: Pause All keeps the requested rate but cancels the pending resume
+ok 5 - Pause All keeps the requested rate but cancels the pending resume
+  ---
+  duration_ms: 0.556
+  type: 'test'
+  ...
+# Subtest: unload/replacement cannot inherit a pending rate or resume from the old source
+ok 6 - unload/replacement cannot inherit a pending rate or resume from the old source
+  ---
+  duration_ms: 0.376834
+  type: 'test'
+  ...
+# Subtest: an immediate manual Play is safely paused again before applying its pending rate
+ok 7 - an immediate manual Play is safely paused again before applying its pending rate
+  ---
+  duration_ms: 0.270459
+  type: 'test'
+  ...
+# Subtest: a four-pad lesson retains hidden Pro cues when restoring and saving an eight-cue set
+ok 8 - a four-pad lesson retains hidden Pro cues when restoring and saving an eight-cue set
+  ---
+  duration_ms: 1.444958
+  type: 'test'
+  ...
+# Subtest: shared-clock playback integrates rate changes without restarting and pause preserves position
+ok 9 - shared-clock playback integrates rate changes without restarting and pause preserves position
+  ---
+  duration_ms: 0.6565
+  type: 'test'
+  ...
+# Subtest: beat loop wraps on the audio clock and exit continues at its actual position
+ok 10 - beat loop wraps on the audio clock and exit continues at its actual position
+  ---
+  duration_ms: 0.820583
+  type: 'test'
+  ...
+# Subtest: seek retires old voice and late ended events cannot stop the new one
+ok 11 - seek retires old voice and late ended events cannot stop the new one
+  ---
+  duration_ms: 0.131167
+  type: 'test'
+  ...
+# Subtest: returning from a beat loop to whole-track repeat preserves the wrapped position and changes source bounds
+ok 12 - returning from a beat loop to whole-track repeat preserves the wrapped position and changes source bounds
+  ---
+  duration_ms: 0.1205
+  type: 'test'
+  ...
+# Subtest: roll returns to the uninterrupted timeline, integrating live rate changes
+ok 13 - roll returns to the uninterrupted timeline, integrating live rate changes
+  ---
+  duration_ms: 0.602125
+  type: 'test'
+  ...
+# Subtest: manual seeks override rolls and replacement cannot retain slip state
+ok 14 - manual seeks override rolls and replacement cannot retain slip state
+  ---
+  duration_ms: 0.224291
+  type: 'test'
+  ...
+# Subtest: a roll released after track end stops instead of restarting at zero
+ok 15 - a roll released after track end stops instead of restarting at zero
+  ---
+  duration_ms: 0.222667
+  type: 'test'
+  ...
+# Subtest: fractional beat loops respect grid origin and resize on the playing audio clock
+ok 16 - fractional beat loops respect grid origin and resize on the playing audio clock
+  ---
+  duration_ms: 1.333167
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 366.019833

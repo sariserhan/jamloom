@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_AUTHORIZED",
+  "status": "AUTHORIZED",
   "prepared_at": "2026-10-31T01:16:00.687605+00:00",
   "campaign": "jamloom-neural-qualification-20261030",
   "scope": "Private qualification of accepted neural Improvise across the frozen 23 licensed sources and three style/energy strategies",
@@ -26,12 +26,12 @@
   "retries": 0,
   "stop_on_failure": true,
   "conservative_total_usd": 19.09,
-  "owner_statement": null,
+  "owner_statement": "Approve the qualification, up to $21",
   "file_sha256": {
     "apps/site/scripts/cloud-song-trial.ts": "25f25aacf58c551d0baff8984c0a6b45c477bff218e0b47154fe5dfe1207bba2",
     "apps/site/scripts/neural-study-input.ts": "3b2422f33e157e4c0cbd079e27f24d72bf4e7b6693d88f0b7a86e2f87c7923a5",
     "apps/site/scripts/neural-study-permit.ts": "387a8e38832855818cc47a94955c3775e8c163a51f62f66dc07dad7d8f9b1df8",
-    "apps/site/scripts/neural-study-postcheck.ts": "bb86be887accf6924193763b768a07d8f766e67a2dcf4d7460773058f0cae0a7",
+    "apps/site/scripts/neural-study-postcheck.ts": "e857f1d691ac2ade2e5a8c47d94d2dbfb8017cef4b5c05b15f970b4bd6a4af7a",
     "apps/site/scripts/cloud-trial-limits.ts": "a6a57a6612a603daef8cf984ad3092fdf0f6f74ea9e96e392073f26f28f6a0f8",
     "apps/site/lib/cloud-songs.ts": "e76697925031c997227d891573a3ec6c46eb738eba3219c5cae5b2b1a531d8ee",
     "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4"
@@ -59,5 +59,15 @@
     "Training or performer cloning",
     "Repeated requests or replacement campaign"
   ],
-  "failure_cleanup": "If a stage fails, run its independent postcheck with --cleanup-only. A cleanup PASS with qualification FAIL never permits the next stage."
+  "failure_cleanup": "If a stage fails, run its independent postcheck with --cleanup-only. A cleanup PASS with qualification FAIL never permits the next stage.",
+  "authorized_at": "2026-10-31T01:34:59.805030+00:00",
+  "execution_order": "Neural campaign first after AI DJ preflight-only stop; then AI DJ after independent cleanup. No concurrent GPU work.",
+  "cleanup_checker_correction": {
+    "at": "2026-10-31T01:41:15.711064+00:00",
+    "file": "apps/site/scripts/neural-study-postcheck.ts",
+    "previous_sha256": "bb86be887accf6924193763b768a07d8f766e67a2dcf4d7460773058f0cae0a7",
+    "corrected_sha256": "e857f1d691ac2ade2e5a8c47d94d2dbfb8017cef4b5c05b15f970b4bd6a4af7a",
+    "reason": "Unsupported /endpoints/:id/workers GET returned 400. Use documented GET /endpoints/:id?includeWorkers=true; require explicit empty workers array plus all health worker counts zero. Read-only cleanup verification; no generation or scope changes.",
+    "documentation": "https://rest.runpod.io/v1/openapi.json"
+  }
 }

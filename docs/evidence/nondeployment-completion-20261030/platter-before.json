@@ -1,0 +1,11 @@
+{
+  "mode": "before",
+  "url": "http://127.0.0.1:3009/academy/challenges/first-crossfade",
+  "title": "Your first crossfade \u00b7 Jamloom DJ Academy",
+  "pausedPeak": 0,
+  "pausedEnd": "Ready",
+  "playingPeak": 0,
+  "playingEnd": "Playing",
+  "scratchMessages": 0,
+  "errors": []
+}

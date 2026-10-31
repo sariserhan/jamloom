@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_AUTHORIZED",
+  "status": "AUTHORIZED",
   "campaign": "jamloom-dj-endurance-20261030",
   "budget_usd": 6,
   "instances_max": 1,
@@ -11,7 +11,7 @@
   "stop_on_failure": true,
   "automatic_cleanup": true,
   "replacement_rental_authorized": false,
-  "owner_statement": null,
+  "owner_statement": "Approve the AI DJ test, up to $6",
   "hourly_ceiling_usd": 0.5,
   "offer_quote_ceiling_usd": 4,
   "observed_debit_shutdown_usd": 4,
@@ -27,7 +27,7 @@
     "apps/site/lib/dj-remote-worker.ts": "678ab5ca29cbef35a8d04ddf0576024a9ed536521badbc2027e9b7c903a64fdc",
     "apps/site/lib/ai-dj-player.ts": "01a0ce19379acbd021d48ee5fdd58c84803388d4c461a2e790424fc4a38c57c8",
     "apps/site/lib/ai-dj-plan.ts": "19ac44591cb612d972307a7645996fb6aafa4b9384785884fe57812236a4a03d",
-    "scripts/dj_endurance_trial.py": "22fcb412c6c77c142d4e61e15ec5f3b082c500a494350fa0ab1077332f12c9f7",
+    "scripts/dj_endurance_trial.py": "04762ccee788b5ca44d05272f55bc70dda4808678096dfd730d5456f36bae978",
     "scripts/dj_renderer_readiness.py": "4a42ca29018a73f07b0dd874382a6ded8d8e72cb03589324a867ffbaf850117f",
     "apps/site/lib/dj-warm-worker.ts": "a7ba8b201c687720c42ec64b419c1fac3fa12c1c0ffc83ce00cbfdae18a987dc",
     "apps/site/tests/silent-audio.mjs": "cdc4c981ee7f9c34c182e9bf5ac55d7a3d99ba21cf412ded9d9255ab1712922a",
@@ -73,5 +73,14 @@
     "database_tests": 23,
     "local_ui_preflight": "PASS; setup and deck only, no session or rental",
     "typecheck": "PASS on Node 22"
+  },
+  "authorized_at": "2026-10-31T01:34:59.807335+00:00",
+  "execution_order": "Neural campaign first after AI DJ preflight-only stop; then AI DJ after independent cleanup. No concurrent GPU work.",
+  "preflight_correction": {
+    "at": "2026-10-31T01:39:22.726568+00:00",
+    "file": "scripts/dj_endurance_trial.py",
+    "previous_sha256": "22fcb412c6c77c142d4e61e15ec5f3b082c500a494350fa0ab1077332f12c9f7",
+    "corrected_sha256": "04762ccee788b5ca44d05272f55bc70dda4808678096dfd730d5456f36bae978",
+    "reason": "Require funding for the full authorized $6 cap, removing an unrelated $1 surplus requirement. $4 quote/debit stops, $2 shutdown reserve, all runtime/request/instance limits and single-use owner authorization unchanged. No rental or claim existed at correction."
   }
 }

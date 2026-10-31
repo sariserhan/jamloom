@@ -23,12 +23,14 @@ if(!cleanupOnly){
 assert(result.requests.every((r:any)=>Number(r.finalBalance?.reserved)===0));
 const config=cloudSongConfig({...process.env,CREDIT_BILLING_MODE:'test',JAMLOOM_CLOUD_SONGS_ENABLED:'true',JAMLOOM_CLOUD_RATE_MICROS_PER_SECOND:'1000'})!;assert.equal(config.endpoint,'jl77hn92npt65k');
 const get=async(path:string)=>{const r=await fetch('https://rest.runpod.io/v1/'+path,{headers:{Authorization:'Bearer '+config.key},signal:AbortSignal.timeout(15000)});assert(r.ok,'Provider GET failed');return r.json();};
-const control=await get('endpoints/'+config.endpoint);
+const control=await get('endpoints/'+config.endpoint+'?includeWorkers=true');
 const health=await new RunpodProvider(config.key,config.endpoint).health();
-const workers=await get('endpoints/'+config.endpoint+'/workers');
+// REST v1 exposes workers on the endpoint, not through an /endpoints/:id/workers route.
+const workers=control.workers;
 assert.equal(control.workersMin,0);assert.equal(control.workersMax,0);
 assert.equal(health.jobs?.inQueue,0);assert.equal(health.jobs?.inProgress,0);
-assert(Object.values(health.workers??{}).every(v=>v===0));assert.equal(workers.summary.total,0);assert.deepEqual(workers.workers,[]);
+assert(Object.keys(health.workers??{}).length>0);assert(Object.values(health.workers).every(v=>v===0));
+assert(Array.isArray(workers),'Provider must return the requested worker inventory');assert.deepEqual(workers,[]);
 const url=new URL(process.env.JAMLOOM_TEST_DATABASE_URL!);assert.equal(url.hostname,'127.0.0.1');
 const pool=createPool(url.href);let temporaryDatabases;
 try{temporaryDatabases=(await pool.query("SELECT datname FROM pg_database WHERE datname LIKE 'jamloom_trial_%'")).rows;assert.deepEqual(temporaryDatabases,[]);}finally{await pool.end();}

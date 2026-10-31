@@ -44,6 +44,9 @@ function controls(deck) {
   $(`seek-${id}`).disabled = !ready || !!deck.loading;
   $(`level-${id}`).disabled = false;
   $(`jog-${id}`).closest('.deck').dataset.playing = String(held ? !!deck.sessionPlaying : !audio.paused);
+  $(`jog-${id}`).closest('.deck').querySelector('.jog-help').textContent = audio.processor
+    ? 'Drag the platter to scratch · hold still to stop'
+    : access.mode === 'basic' ? 'Drag to seek · try Pro demo for scratching' : 'Drag to seek · open Tempo, loops & scratch for scratching';
   $(`state-${id}`).textContent = held ? (deck.sessionPlaying ? 'Prepared · playing' : 'Prepared session') : deck.loading ? 'Loading…' : deck.starting ? 'Starting…' : !deck.url ? 'Empty' : audio.ended ? 'Ended' : audio.paused ? 'Ready' : 'Playing';
   $(`seek-${id}`).max = String(deck.duration);
   $(`seek-${id}`).value = String(audio.currentTime || 0);
@@ -377,10 +380,16 @@ if((location.pathname.startsWith('/academy/')||location.pathname.startsWith('/ac
     if(sha!==track.sha256)throw new Error('Practice track checksum mismatch.');
     const file=new File([bytes],track.title+'.mp3',{type:'audio/mpeg'});
     await loadTrack(decks[i],()=>file);if(decks[i].file!==file)throw new Error('Practice track could not load.');
-    const buffer=await context.decodeAudioData(bytes.slice(0));
+    const revision=decks[i].revision,buffer=decks[i].audio.buffer??await context.decodeAudioData(bytes.slice(0));
     if(buffer.duration>180||buffer.numberOfChannels>2)throw new Error('Course audio exceeds the playback limit.');
-    if(decks[i].file!==file)throw Error('Practice load interrupted.');
-    decks[i].audio.useBuffer(buffer);controls(decks[i]);
+    if(decks[i].file!==file||decks[i].revision!==revision)throw Error('Practice load interrupted.');
+    // Lessons need the same bidirectional scratch transport as the full studio.
+    if(!decks[i].audio.processor){
+     const node=await decks[i].audio.prepareDSP(buffer);
+     if(decks[i].file!==file||decks[i].revision!==revision){node.port.postMessage({type:'dispose'});node.port.close();node.disconnect();throw Error('Practice load interrupted.');}
+     decks[i].audio.useDSP(buffer,node);
+    }
+    controls(decks[i]);
     decks[i].academyAsset=track.id;$(`bpm-${decks[i].id}`).value=track.bpm;
    }
   },assets:()=>decks.map(d=>d.academyAsset)})).catch(()=>{$('mixer-status').textContent='Academy could not load. Your local DJ controls remain available.';});
