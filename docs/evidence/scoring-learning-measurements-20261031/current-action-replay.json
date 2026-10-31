@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "examples": 6,
+  "sessions": 1,
+  "human_expert_examples": 0,
+  "training_authorized": false,
+  "splits": [
+    "test"
+  ],
+  "scope": "Fresh automated regression using retained six test actions; not expert training data",
+  "prior_export_current_policy": "FAIL implementation fingerprint changed; original evidence preserved",
+  "new_export": "renders/scoring-learning-measurements-20261031/action-replay/examples.jsonl",
+  "new_export_sha256": "a85ba5f9e4bf432a53569aa05c68b262527d31c35d1b701631f0e70b4428f822",
+  "policy_sha256": "8d53898a38c3b0259e4a1b4359a5144be3df08f4c9149a1ae58cd8dc155d2d15",
+  "new_optimizer_steps": 0
+}

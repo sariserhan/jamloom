@@ -1,0 +1,16 @@
+{
+  "received_at": "2026-10-31T05:05:37.642450+00:00",
+  "owner_response": "call improvise done for now and do 2,3,4",
+  "improvise_qualification": "CLOSED_FOR_NOW_BY_OWNER",
+  "retained_outputs": 47,
+  "planned_outputs": 69,
+  "technical_full_pass_inferred": false,
+  "active_work": [
+    "produced-song scoring",
+    "custom learned-improvisation training and evaluation",
+    "remaining measurements"
+  ],
+  "deployment": "HELD",
+  "payments": "HELD",
+  "prior_review_requests": "CLOSED_BY_OWNER"
+}

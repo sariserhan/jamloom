@@ -1,5 +1,5 @@
 {
-  "status": "HELD_BY_OWNER; not executed",
+  "status": "CLOSED_FOR_NOW_BY_OWNER; not executed",
   "manifest_sha256": "019918fb9d875a140605951676fbb447c753845469e0c1cad5baf8730d7fad55",
   "completed_outputs": 47,
   "remaining_outputs": 22,
@@ -208,6 +208,7 @@
   "paid_compute": false,
   "publication": false,
   "payments": false,
-  "precondition": "Resume only after resource-dependent work is resumed and memory headroom is adequate; retain existing guards",
-  "command": ".venv-singer/bin/python scripts/run_local_improvise_qualification.py --output renders/local-neural-qualification-final-20261031 --completed-campaign renders/local-neural-qualification-corrected-20261031/campaign.json"
+  "precondition": "Outside current scope after owner request on 2026-10-31; do not run unless explicitly reopened",
+  "command": ".venv-singer/bin/python scripts/run_local_improvise_qualification.py --output renders/local-neural-qualification-final-20261031 --completed-campaign renders/local-neural-qualification-corrected-20261031/campaign.json",
+  "scope_decision": "docs/evidence/scoring-learning-measurements-20261031/owner-scope.json"
 }

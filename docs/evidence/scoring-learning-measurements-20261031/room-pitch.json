@@ -1,0 +1,12 @@
+{
+  "status": "PASS diagnostic execution",
+  "scope": "Actual captured room audio; silence was not attested, so this is not a false-positive-rate claim",
+  "source_sha256": "366c740b370789362daeafd9513bb205f3b62ed2e7e1feceb8963bfceba13afe",
+  "detector_sha256": "f47b9e3816b9cc89dc16a55098bbf50535cc9d2e47aee99ab02d91ed50970deb",
+  "sample_rate": 16000,
+  "window_samples": 4096,
+  "hop_samples": 320,
+  "frames": 121,
+  "pitched_frames": 0,
+  "settings_changed": false
+}

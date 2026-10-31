@@ -1,0 +1,21 @@
+{
+  "status": "PASS actual microphone acquisition",
+  "device": "MacBook Air Microphone",
+  "requested_wall_seconds": 3,
+  "decoded_seconds": 2.6693125,
+  "rate": 16000,
+  "frames": 42709,
+  "channels": 1,
+  "sha256": "366c740b370789362daeafd9513bb205f3b62ed2e7e1feceb8963bfceba13afe",
+  "rms": 0.02222110590932246,
+  "peak": 0.129974365234375,
+  "nonzero_samples": 40752,
+  "source_file": "renders/scoring-learning-measurements-20261031/room-control.wav",
+  "source_kind": "Actual local microphone room control; no synthetic audio, no owner activity attestation inferred",
+  "selector": {
+    "status": "FAIL",
+    "rejected_by": [],
+    "scope": "Accepted neural sample selector only, before model generation; no upload, ASR, GPU or billing request"
+  },
+  "upload": false
+}

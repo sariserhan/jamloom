@@ -1,5 +1,13 @@
 # Jamloom
 
+**Current scope — 2026-10-31:** The owner instructed: “call improvise done for now
+and do 2,3,4.” Close the remaining Improvise qualification campaign for now;
+retain its 47/69 technical results without claiming the unrun cases passed.
+Continue produced-song scoring, custom learned-planner preparation/evaluation,
+and remaining measurements. Individual review requests remain closed under the
+owner's blanket acceptance; do not fabricate annotations, measurements or expert
+demonstrations. Deployment and live payments remain held.
+
 **Listening requirement amendment — 2026-10-30:** The owner instructed: “change
 the specification requires only 1 listener and that is me.” The owner is the sole
 required musical-evaluation listener. This explicitly authorizes the matching

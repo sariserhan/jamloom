@@ -1,0 +1,145 @@
+{
+  "status": "PASS retained-source verification; PARTIAL formal measurements",
+  "afro_source_report_sha256": "66e94f7f81158df2607466f016b63478690edba646549c500d9785ddde229135",
+  "afro_targets": [
+    {
+      "id": "vocal-led-organic-afro-house",
+      "sha256": "118abb3e85591553a9b5e89bba29456a3139e3617bbc0c397346d830fe97ae18",
+      "verified_files": 6,
+      "measured_level": {
+        "input_i": "-19.03",
+        "input_tp": "-6.28",
+        "input_lra": "3.70",
+        "input_thresh": "-29.15"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 94.43,
+          "score": 0.6612
+        },
+        {
+          "seconds": 110.16,
+          "score": 1.0046
+        },
+        {
+          "seconds": 173.11,
+          "score": 0.7994
+        },
+        {
+          "seconds": 188.85,
+          "score": 0.647
+        },
+        {
+          "seconds": 204.59,
+          "score": 1.9537
+        },
+        {
+          "seconds": 236.07,
+          "score": 1.3575
+        },
+        {
+          "seconds": 251.8,
+          "score": 1.4071
+        },
+        {
+          "seconds": 283.28,
+          "score": 1.2707
+        }
+      ],
+      "heard_section_labels": "NOT RUN",
+      "owner_control_preferences": "NOT RUN"
+    },
+    {
+      "id": "bass-driven-organic-afro-house",
+      "sha256": "959f9fb76666f0e97c00002e2f9632fd98a3b0a651c7868f4b10c8537d917d30",
+      "verified_files": 6,
+      "measured_level": {
+        "input_i": "-19.04",
+        "input_tp": "-5.53",
+        "input_lra": "2.50",
+        "input_thresh": "-29.12"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 31.74,
+          "score": 0.2022
+        },
+        {
+          "seconds": 126.94,
+          "score": 1.2101
+        },
+        {
+          "seconds": 142.81,
+          "score": 0.3614
+        },
+        {
+          "seconds": 158.68,
+          "score": 0.6882
+        },
+        {
+          "seconds": 174.55,
+          "score": 0.1941
+        },
+        {
+          "seconds": 269.75,
+          "score": 0.1659
+        },
+        {
+          "seconds": 285.62,
+          "score": 0.243
+        }
+      ],
+      "heard_section_labels": "NOT RUN",
+      "owner_control_preferences": "NOT RUN"
+    },
+    {
+      "id": "percussive-driving-organic-afro-house",
+      "sha256": "4a44b8899de38217f3efa66c01e5253a4e7a38f19b25787c600061e3c425d9f0",
+      "verified_files": 6,
+      "measured_level": {
+        "input_i": "-19.04",
+        "input_tp": "-3.42",
+        "input_lra": "2.40",
+        "input_thresh": "-29.19"
+      },
+      "section_change_candidates": [
+        {
+          "seconds": 92.9,
+          "score": 0.1957
+        },
+        {
+          "seconds": 154.84,
+          "score": 2.8234
+        },
+        {
+          "seconds": 170.32,
+          "score": 2.7638
+        },
+        {
+          "seconds": 278.71,
+          "score": 0.3337
+        },
+        {
+          "seconds": 294.19,
+          "score": 4.8296
+        }
+      ],
+      "heard_section_labels": "NOT RUN",
+      "owner_control_preferences": "NOT RUN"
+    }
+  ],
+  "course_export": {
+    "sha256": "e87549553dfd95c4704843f3174953f469f028d13070e18fb9a243b7a567ed46",
+    "attempts": 1,
+    "completed_attempts": 0,
+    "local_practice_entries": 0,
+    "actual_before_after_gain": "NOT RUN"
+  },
+  "earlier_concept_pilot": {
+    "before": "1/6",
+    "after": "3/6",
+    "scope": "Retained historical observation, not a new learner or hands-on result"
+  },
+  "numeric_musical_ratings": "NOT RUN; blanket acceptance is not a numeric rating",
+  "new_review_requests": 0
+}

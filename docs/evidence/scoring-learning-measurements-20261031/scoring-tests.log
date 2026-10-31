@@ -1,0 +1,44 @@
+TAP version 13
+# Subtest: four-minute score uses bounded phrases and requires actual correct pitch for every section
+ok 1 - four-minute score uses bounded phrases and requires actual correct pitch for every section
+  ---
+  duration_ms: 31.40125
+  type: 'test'
+  ...
+# Subtest: seek, pause and delayed frames cannot bridge scores or earn full-song completion
+ok 2 - seek, pause and delayed frames cannot bridge scores or earn full-song completion
+  ---
+  duration_ms: 0.228917
+  type: 'test'
+  ...
+# Subtest: capture aligns to center of microphone window and rejects stale or interrupted input
+ok 3 - capture aligns to center of microphone window and rejects stale or interrupted input
+  ---
+  duration_ms: 0.080833
+  type: 'test'
+  ...
+# (node:70229) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/serhansari/Documents/projects/jamloom/scripts/fixtures/produced-target-draft.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/serhansari/Documents/projects/jamloom/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: exports source-bound edits without promoting claimed verification or scores
+ok 4 - exports source-bound edits without promoting claimed verification or scores
+  ---
+  duration_ms: 1.393
+  type: 'test'
+  ...
+# Subtest: rejects wrong source, out-of-bounds, overlapping and invalid word/note edits
+ok 5 - rejects wrong source, out-of-bounds, overlapping and invalid word/note edits
+  ---
+  duration_ms: 0.397167
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 66.304834

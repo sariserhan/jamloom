@@ -1,0 +1,11 @@
+test_candidate_notes_never_bridge_uncertainty_or_time_gaps (test_produced_pitch_audit.PitchAuditTests.test_candidate_notes_never_bridge_uncertainty_or_time_gaps) ... ok
+test_harmonics_do_not_force_octave_error (test_produced_pitch_audit.PitchAuditTests.test_harmonics_do_not_force_octave_error) ... ok
+test_invalid_pcm_is_rejected (test_produced_pitch_audit.PitchAuditTests.test_invalid_pcm_is_rejected) ... ok
+test_known_notes_across_singing_range (test_produced_pitch_audit.PitchAuditTests.test_known_notes_across_singing_range) ... ok
+test_short_or_changed_notes_do_not_become_long_note (test_produced_pitch_audit.PitchAuditTests.test_short_or_changed_notes_do_not_become_long_note) ... ok
+test_silence_dc_low_level_and_noise_are_not_known_pitch (test_produced_pitch_audit.PitchAuditTests.test_silence_dc_low_level_and_noise_are_not_known_pitch) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.012s
+
+OK
