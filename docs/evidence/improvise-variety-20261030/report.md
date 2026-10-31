@@ -1,0 +1,11 @@
+# Improvise style and energy variety — 2026-10-30
+
+**PASS local implementation; hosted variation and listening NOT RUN.** The owner accepted the neural question audition as the desired musical quality, then requested a different style and energy for each generation and clarified **Improvise only**. The accepted recording remains unchanged.
+
+Automatic styles avoid the last eight choices per owner; energy rotates across low, medium and high without repeating either of the last two. Explicit style choices remain respected. Choices are persisted inside the existing submit transaction, survive service restarts and duplicate submissions, and use an ordering value independent of transaction timestamps. Existing one-active-job and credit rules remain intact. Music DNA selection and generation behavior are unchanged.
+
+Energy affects arrangement density, groove emphasis, vocal delivery and development in the neural prompt. All combinations preserve the chosen genre and singer and fit within the model caption budget. The worker validates and records energy; the application rejects a result that silently omits or changes the requested direction. The pinned neural engine, model settings, full-short-phrase preference and complete tempo-rendered tails remain in use. This does not prove that the model audibly follows every direction or matches the accepted recording on every take.
+
+**PASS:** 81 Python checks, 19 site/database checks, 61 isolated worker checks, four budget/progress checks, typecheck and dry run. [Validation](validation.json). The real PostgreSQL tests use synthetic audio and mock provider results, never owner judgments or paid compute.
+
+[Three-request audition plan](hosted-variety-plan.json) is prepared for low-energy jazz, medium-energy funk and high-energy drum and bass, all private 45-second outputs using the same approved complete question crop. Publication and paid execution require separate approval after the current maximum-reference test is cleaned up. Broader source/seed qualification, actual owner judgments and the remaining full-product gates stay open. Website/app release and payments remain held.

@@ -1,0 +1,16 @@
+{
+  mode: 'dry-run',
+  maxUSD: 3,
+  maxWorkers: 1,
+  maxSeconds: 2400,
+  requests: 3,
+  requires: 'Approved paid trial and JAMLOOM_TRIAL_IMAGE digest',
+  durations: [ 45, 45, 45 ],
+  source: 'Owner-approved 1.22-second question WAV; hash pinned',
+  websiteDeployment: false,
+  styles: [ 'jazz', 'funk', 'drumandbass' ],
+  energy: [ 'low', 'medium', 'high' ],
+  visibility: 'private',
+  sourceSelection: 'complete approved crop',
+  requestsAreIndependent: true
+}

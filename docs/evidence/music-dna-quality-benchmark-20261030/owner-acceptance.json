@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-30T23:52:10.465022+00:00",
+  "status": "PASS",
+  "listener": "owner; sole required listener",
+  "statement": "yes this is good, this is exactly what I am looking for",
+  "question": "Does the music meet the Music DNA quality you want, and does your phrase fit naturally without an abrupt ending?",
+  "audio_sha256": "5cca42db2fbf53c70399952069f426ad6114dc40f88a8b61cec49e3d62bb2e70",
+  "seconds": 45,
+  "original_source_sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+  "uploaded_source_sha256": "fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1",
+  "source_bounds": [
+    0,
+    1.22
+  ],
+  "scope": "Acceptance of this exact neural question audition and its musical direction; preserves prior rejected candidates as rejected. No acceptance inferred for unreviewed sources, seeds or changed renders.",
+  "reference_url": "http://127.0.0.1:8777/neural-question/"
+}

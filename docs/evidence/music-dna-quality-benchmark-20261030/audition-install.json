@@ -7,6 +7,6 @@
     0,
     1.22
   ],
-  "musical_acceptance": "NOT RUN",
+  "musical_acceptance": "PASS for this exact audition; owner-acceptance.json",
   "audio_files_hardlinked": true
 }

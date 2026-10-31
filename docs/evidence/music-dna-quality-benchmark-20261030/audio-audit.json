@@ -1,7 +1,7 @@
 {
   "at": "2026-10-30T23:46:00.687652+00:00",
   "technical": "PASS",
-  "musical_acceptance": "NOT RUN",
+  "musical_acceptance": "PASS for this exact audition; owner-acceptance.json",
   "receipt": "docs/evidence/improvise-finish/cloud/2026-10-30T23-38-33.870Z/trial-result.json",
   "audio_sha256": "5cca42db2fbf53c70399952069f426ad6114dc40f88a8b61cec49e3d62bb2e70",
   "plan_sha256": "960df1b2c2c80aae05702fc9dc6d5e745e85aa8cf5f14f31665390137a32f2fb",

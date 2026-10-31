@@ -1,0 +1,119 @@
+{
+  "status": "AWAITING_AUTHORIZATION",
+  "scope": "Publish Improvise energy worker, then three private musical auditions using the accepted question crop",
+  "image_source_commit": "68bf2b39c564157e34bf6628d3d5f9a9af9e8a65",
+  "image_base": "2ef31d6954f823aad6e170493783cd25dd0d9af3",
+  "image_checkout": "/tmp/jamloom-improvise-variety-image-20261030",
+  "application_commit": "4e22bff2e7e11df6aa8535399232fddf28b6e559",
+  "publication_branch": "codex/runpod-setup",
+  "website_deployment_enabled_on_branch": false,
+  "mode": "--improvise-variety --qualification-window",
+  "max_usd": 3,
+  "max_workers": 1,
+  "max_provider_requests": 3,
+  "runtime_seconds": 2400,
+  "shutdown_allowance_seconds": 130,
+  "retries": 0,
+  "stop_on_failure": true,
+  "conservative_total_usd": 2.59,
+  "fixtures": [
+    {
+      "genre": "jazz",
+      "energy": "low",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "genre": "funk",
+      "energy": "medium",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    },
+    {
+      "genre": "drumandbass",
+      "energy": "high",
+      "voice": "male",
+      "duration_seconds": 45,
+      "visibility": "private"
+    }
+  ],
+  "source": {
+    "at": "2026-10-30T23:37:48.708270+00:00",
+    "status": "PASS",
+    "operation": "Resample complete source from 48 kHz stereo to product upload format 16 kHz mono; canonical PCM WAV header; no trim, stretch or content substitution",
+    "original": {
+      "path": "renders/question-bass-response-20261030/source.wav",
+      "sha256": "4f37e2d3c35266f627589374812742680fe2d4ae8d7a07c8a9effeffab58588a",
+      "frames": 58560,
+      "rate": 48000,
+      "channels": 2,
+      "seconds": 1.22
+    },
+    "upload": {
+      "path": "renders/neural-question-input-20261030/source-16k-mono.wav",
+      "sha256": "fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1",
+      "frames": 19520,
+      "rate": 16000,
+      "channels": 1,
+      "seconds": 1.22
+    },
+    "pcm_sha256": "5e7d638757dab785783a012ddf04c672db977bbdfa64e7ac1121102043c93254",
+    "command": [
+      "/opt/homebrew/bin/ffmpeg",
+      "-v",
+      "error",
+      "-i",
+      "/Users/serhansari/Documents/projects/jamloom/renders/question-bass-response-20261030/source.wav",
+      "-map",
+      "0:a:0",
+      "-ac",
+      "1",
+      "-ar",
+      "16000",
+      "-f",
+      "s16le",
+      "pipe:1"
+    ],
+    "original_unchanged": true,
+    "authorization": "Same complete owner-approved sample; only required upload-format conversion. Zero provider requests or uploads occurred in failed local preflight."
+  },
+  "preconditions": [
+    "Current approved maximum test must complete with independently verified cleanup before image/template or GPU changes",
+    "Fresh explicit approval for image publication and this three-request paid audition",
+    "Verified exact image digest; limits 0/0, zero workers/jobs and production pending count zero",
+    "Application and source hashes verified; isolated test database only"
+  ],
+  "checks": [
+    "Requested style and energy are bound to each worker receipt",
+    "Whole approved short crop remains selected, output duration/hash/PCM checks",
+    "Owner judges actual music quality, energy difference and natural phrase integration",
+    "Independent zero-worker/job cleanup; remove temporary remote objects/database and settle test credits"
+  ],
+  "limits": "Three independent genre/energy fixtures test the neural directions; persistent automatic selection is separately verified in real local PostgreSQL tests. This is not full source/seed musical qualification.",
+  "excludes": [
+    "Music DNA behavior changes",
+    "Website/app publication",
+    "Live purchases",
+    "AI DJ rentals",
+    "Additional requests or automatic retry"
+  ],
+  "execution": {
+    "image_build_attempts": 0,
+    "trial_invocations": 0,
+    "provider_requests_started": 0
+  },
+  "file_sha256": {
+    "scripts/singer_studio.py": "335c8bf9fd31a0860af5826602cc427710d28c082d9761a40e24d09dd7e75a24",
+    "scripts/singing_response.py": "ef63906a48720351edeb4e2ca66c57df4af0fbb678add5d498e6b2343ad156f6",
+    "services/runpod/handler.py": "24a94a97075d0adfbf570173da9db9ab514b9e38c79b27f6a586483993e56398",
+    "services/runpod/pipeline.py": "aec86bd83e17b67b25c1adf8a5519aa3c6f5354ca0d79f3cc2b368ca1943b6aa",
+    "services/runpod/Dockerfile": "b14fcc30ba94cb1cd9e13433ef5cd452fecb4ccf2fc3932d95366fd837e9ca58",
+    "assets/manifests/improvise-energy.json": "720a5bd0834fa3e6bc79c016c5bf90cf0ea169ec9e8ac7cdf15249114404d8b4",
+    "apps/site/lib/cloud-songs.ts": "e76697925031c997227d891573a3ec6c46eb738eba3219c5cae5b2b1a531d8ee",
+    "apps/site/lib/improvise-direction.ts": "4bd4512f15d51e65fc6757fa939f077d2443d524f7c3592857448df879dd931c",
+    "apps/site/scripts/cloud-song-trial.ts": "039e2c05214e6abb8fe2806dc8c2da71451a0860c86b60d492fe4c79d754f72b",
+    "apps/site/scripts/cloud-trial-limits.ts": "1b33adba6d4d018c8c56109e15e9e33f2fa5782c09d50eb4e8879d617af6a08e"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "status": "AWAITING_AUTHORIZATION",
+  "status": "APPROVED",
   "prepared_at": "2026-10-30T23:48:00.938847+00:00",
   "scope": "Publish only the bounded Music DNA plan-loader fix, then one 5000-reference qualification request",
   "image_source_commit": "2ef31d6954f823aad6e170493783cd25dd0d9af3",
@@ -54,9 +54,12 @@
   ],
   "prior_maximum_permit": "Consumed; previous hosted request failed before audio at the plan-size limit and cleanup passed",
   "execution": {
-    "image_build_attempts": 0,
+    "image_build_attempts": 1,
     "trial_invocations": 0,
-    "provider_requests_started": 0
+    "provider_requests_started": 0,
+    "status": "IMAGE_BUILD_RUNNING",
+    "workflow_run": 41146988049,
+    "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41146988049"
   },
   "file_sha256": {
     "scripts/singing_response.py": "2227f592a0f2918d8817b274ab16164cf5c47142980981ba14554799bd809821",
@@ -64,5 +67,7 @@
     "apps/site/scripts/cloud-trial-limits.ts": "7ad9aed7ba2d6c38d6c957b780cdd7aacb6b1ee554e5ad79d4527afecb9aa946",
     "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4",
     "docs/evidence/full-project-completion-20261030/maximum-plan-isolated-check.py": "a1f379e9f19c6ff54e5f4ca684d57e3d3db7afe669c5cc873ccf0efd70a8f3fc"
-  }
+  },
+  "owner_statement": "Approve image and one $3 maximum test",
+  "authorized_utc": "2026-10-30T23:52:10.465022+00:00"
 }
