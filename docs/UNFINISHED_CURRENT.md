@@ -8,7 +8,7 @@ approval. The owner is the sole required musical listener.
 
 ## Current full-completion increment
 
-- **PARTIAL approved hosted execution:** the owner approved $21 for 69 broader-neural generations and $6 for two-hour AI DJ. Neural stage 1 is running; AI DJ follows independent cleanup. The DJ preflight created no rental; its extra-dollar balance requirement was corrected without changing the $6 cap, $4 stop or $2 shutdown reserve. No top-up is needed.
+- **PARTIAL approved execution:** the $21 broader neural campaign is running. The owner then requested this Mac’s GPU for AI DJ; its unused Vast rental permit is superseded. A bounded local Metal timing probe is prepared, with the same 30-second generation deadline, verified existing model and memory/disk/swap limits. It runs after independently confirmed cloud cleanup; local success cannot establish hosted rental/capacity evidence.
 
 - **PASS lesson platter repair:** the course had replaced the scratch processor with a forward-only buffer. It now retains/creates the real processor; forward/reverse output, stationary silence, release state and Pause All pass in the actual local lesson. 16 transport/DSP and 13 Academy checks pass. Actual quiet and hands-on observation receipts remain NOT RUN. [Current evidence](evidence/nondeployment-completion-20261030/report.md).
 

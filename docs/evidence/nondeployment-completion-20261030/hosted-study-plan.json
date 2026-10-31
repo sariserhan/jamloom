@@ -61,7 +61,7 @@
   ],
   "failure_cleanup": "If a stage fails, run its independent postcheck with --cleanup-only. A cleanup PASS with qualification FAIL never permits the next stage.",
   "authorized_at": "2026-10-31T01:34:59.805030+00:00",
-  "execution_order": "Neural campaign first after AI DJ preflight-only stop; then AI DJ after independent cleanup. No concurrent GPU work.",
+  "execution_order": "Neural campaign first; local Metal DJ probe follows independent cleanup. The owner superseded the unused AI DJ rental with local GPU work.",
   "cleanup_checker_correction": {
     "at": "2026-10-31T01:41:15.711064+00:00",
     "file": "apps/site/scripts/neural-study-postcheck.ts",

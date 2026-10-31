@@ -1,0 +1,33 @@
+{
+  "status": "AUTHORIZED_LOCAL_PREPARATION",
+  "at": "2026-10-31T01:49:39.099582+00:00",
+  "owner_statement": "use this computer gpu",
+  "scope": "Replace the AI DJ rental with local Apple GPU qualification. First one original 60-second neural track must satisfy the existing 30-second generation deadline. Only then prepare/run continuous two-hour local qualification.",
+  "paid_compute": false,
+  "rental_authorized": false,
+  "network_models": false,
+  "starts_after": "Independently confirmed cleanup of the active neural campaign",
+  "resource_limits": {
+    "starting_available_memory_gib": 4,
+    "running_available_memory_gib": 1,
+    "process_group_rss_gib": 8,
+    "additional_swap_gib": 2,
+    "free_disk_gib": 15,
+    "probe_seconds": 600,
+    "probe_model_requests": 1
+  },
+  "files_sha256": {
+    "scripts/dj_metal_probe.py": "ce3803328f71f06c3b148fcd3f8665de39b134f8f30a677a31c61923d828562d",
+    "scripts/dj_track_worker.py": "3c2de702ce18c8dee8fa9964c4e076fe349e444124b1d80d7fd73866cd8cddae",
+    "scripts/dj_warm_engine.py": "30bbadab67a5c36bbe3f5def823eec807c75cb5d75461c02e926c0d30eb18e6e",
+    "scripts/singing_response.py": "ef63906a48720351edeb4e2ca66c57df4af0fbb678add5d498e6b2343ad156f6",
+    "assets/manifests/singing-model.json": "62d691b276501df2f38ce8233e820da10f7669ebf2a521dd4c271d6e6bd9f3bf"
+  },
+  "does_not_prove": [
+    "Hosted GPU capacity or rental recovery",
+    "Customer flow until separately exercised",
+    "Musical acceptance of unreviewed output"
+  ],
+  "deployment": "HELD",
+  "payments": "HELD"
+}

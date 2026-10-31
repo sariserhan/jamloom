@@ -1,5 +1,5 @@
 {
-  "status": "AUTHORIZED",
+  "status": "SUPERSEDED_BY_LOCAL_GPU_REQUEST",
   "campaign": "jamloom-dj-endurance-20261030",
   "budget_usd": 6,
   "instances_max": 1,
@@ -82,5 +82,12 @@
     "previous_sha256": "22fcb412c6c77c142d4e61e15ec5f3b082c500a494350fa0ab1077332f12c9f7",
     "corrected_sha256": "04762ccee788b5ca44d05272f55bc70dda4808678096dfd730d5456f36bae978",
     "reason": "Require funding for the full authorized $6 cap, removing an unrelated $1 surplus requirement. $4 quote/debit stops, $2 shutdown reserve, all runtime/request/instance limits and single-use owner authorization unchanged. No rental or claim existed at correction."
+  },
+  "owner_followup": {
+    "at": "2026-10-31T01:47:54.195197+00:00",
+    "statement": "use this computer gpu",
+    "scope": "AI DJ qualification; no Vast rental. Prepare local Metal feasibility and qualification instead.",
+    "rental_created": false,
+    "claim_created": false
   }
 }

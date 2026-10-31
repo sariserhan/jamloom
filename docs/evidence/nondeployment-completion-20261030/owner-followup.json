@@ -4,5 +4,7 @@
   "platter_issue": "Investigating",
   "deployment": "HELD",
   "live_payments": "HELD",
-  "platter_fix": "PASS: real lesson forward/reverse mixer output, stationary silence, release state and Pause All verified; no new owner listening claim"
+  "platter_fix": "PASS: real lesson forward/reverse mixer output, stationary silence, release state and Pause All verified; no new owner listening claim",
+  "latest_observation_statement": "all done",
+  "saved_results_check": "No new practice or quiet receipt; server log has a page load but no save POST. Diagnose before counting completion."
 }
