@@ -13,6 +13,38 @@ from owner_review_server import validate_music
 
 
 class OwnerWorkspace(unittest.TestCase):
+    def test_neural_review_quiet_check_uses_current_source_selector(self):
+        import wave
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);(root/'results').mkdir();(root/'review').mkdir()
+            source=root/'source-report.json';source.write_text(json.dumps(dict(manifest_sha256='manifest')))
+            study=dict(review_schema='neural-five-v1',freeze='neural',blocks=[],source_report_sha256=hashlib.sha256(source.read_bytes()).hexdigest())
+            (root/'review/study.json').write_text(json.dumps(study));(root/'organizer-key.json').write_text(json.dumps(dict(freeze='neural',blocks=[])))
+            policy=root/'evaluation-policy.json';policy.write_text(json.dumps(dict(manifest_sha256='manifest')))
+            quiet=root/'results/fixture.wav'
+            with wave.open(str(quiet),'wb') as wav:wav.setnchannels(1);wav.setsampwidth(2);wav.setframerate(16000);wav.writeframes(bytes(32000))
+            row=dict(status='OWNER_SUBMITTED_REQUIRES_EVALUATION',kind='silence',payload=dict(file=quiet.name,sha256=hashlib.sha256(quiet.read_bytes()).hexdigest()))
+            (root/'results/fixture.json').write_text(json.dumps(row))
+            with patch('source_strategy_response.compose',side_effect=AssertionError('Old engine cannot qualify new pipeline')):
+                report=evaluate(root,root)
+            self.assertEqual(report['music']['composition_policy'],'neural_source_response')
+            self.assertEqual(report['recorded_silence'][0]['rejected_by'],['jazz','funk','drumandbass'])
+            self.assertEqual(report['recorded_silence'][0]['status'],'PASS')
+            policy.write_text(json.dumps(dict(manifest_sha256='changed')))
+            with self.assertRaisesRegex(ValueError,'policy identity'):evaluate(root,root)
+
+    def test_blanket_acceptance_closes_requests_without_fabricating_evidence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);(root/'results').mkdir()
+            (root/'results/acceptance.json').write_text(json.dumps(dict(status='OWNER_SUBMITTED_REQUIRES_EVALUATION',kind='blanket-feedback',payload=dict(individual_review_requests='CLOSED_BY_OWNER',owner_response='I accept them all'))))
+            report=evaluate(root,root)
+            self.assertEqual(report['individual_review_requests'],'CLOSED_BY_OWNER')
+            self.assertFalse(report['blanket_acceptance_infers_measurements'])
+            self.assertFalse(report['sung-target']['scoringEnabled'])
+            self.assertEqual(report['learned_data']['verified_action_records'],0)
+            self.assertEqual(report['learned_data']['training'],'NOT RUN')
+            self.assertTrue(report['recorded_silence']['status'].startswith('NOT RUN'))
+
     def test_general_positive_feedback_does_not_invent_learning_or_annotations(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);(root/'results').mkdir()

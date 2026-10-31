@@ -33,7 +33,9 @@ def prepare(workspace):
     assert len(manifest['afro'])==3
     shutil.copyfile(ROOT/'apps/listening/afro-sections.html',target/'index.html')
     (public/'completion-assets.json').write_text(json.dumps(manifest,indent=2)+'\n')
-    p=public/'index.html';s=p.read_text();s=s.replace('</main>','<section><h2>Remaining review details</h2><p><a href="singing-targets/">Sung words and notes — save drafts here</a></p><p><a href="afro-sections/">Accepted Afro House mixes — section and control notes</a></p></section></main>');p.write_text(s)
+    p=public/'index.html';s=p.read_text();links='<section><h2>Review details</h2><p><a href="singing-targets/">Sung words and notes — save drafts here</a></p><p><a href="afro-sections/">Accepted Afro House mixes — section and control notes</a></p></section>'
+    if '<script' not in s:raise ValueError('Expected owner workspace script marker')
+    p.write_text(s.replace('<script',links+'<script',1))
     return {'status':'PASS preparation','singing_sources':2,'accepted_afro_mixes':3,'audio_copied_bytes':0,'human_observations':'NOT RUN','scoring_enabled':False}
 
 

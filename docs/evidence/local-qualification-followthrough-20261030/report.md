@@ -27,3 +27,9 @@ Live local state: `renders/local-neural-qualification-20261030/campaign.json`. T
 The existing exact instrumental, sung question, three style/energy and two-source/all-ten-candidate owner acceptances remain saved. No unreviewed output is accepted automatically. Verified produced-song word/note targets, heard Afro section/control annotations, actual hands-on/quiet evidence and cleared expert-action/held-out model evaluation remain evidence-dependent. No learned training proceeds through the M1 hold.
 
 Review packaging can now combine retained hosted outputs with validated completed local outputs, explicitly identifying the mixed execution scope. An optional FLAC review format verifies exact PCM identity after loudness matching and checks the unchanged 15-GiB disk reserve before every candidate. Browser playback of the compact review is NOT RUN until packaging finishes.
+
+## Owner closes individual review requests
+
+The owner states: “this is too long to answer each of them so I accept them all.” General acceptance is recorded and individual review requests are **CLOSED_BY_OWNER**. No more per-item forms are requested. This is not a fabricated quiet recording, numerical musical score, word/note annotation, expert action trace or observation of audio not yet generated. Automated technical work continues; scoring/training safeguards remain intact. [Decision](blanket-owner-acceptance.json).
+
+The owner-workspace evaluator now reports closure of individual requests without inventing data. Its neural-study mode verifies the frozen source report and uses the actual neural-product selector for any quiet-control evaluation, rather than the old arranger. Nine owner-workspace regression checks pass, including a synthetic-only quiet fixture and policy-tampering rejection. The real workspace still has no quiet capture. The workspace home now displays the saved decision and points its editors to the local-save pages.

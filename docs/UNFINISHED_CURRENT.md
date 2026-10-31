@@ -10,6 +10,8 @@ approval. The owner is the sole required musical listener.
 
 **Local qualification follow-through — 2026-10-30: PARTIAL.** The full vocal pipeline now passes on this Mac after bounded reference encoding and single-use model-memory release; all resource limits remain intact. The remaining 61 licensed source cases are running serially, with no new paid compute. Completed intermediates are preserved in verified lossless archives. Existing owner music acceptances remain recorded; new outputs, singing/section annotations, hands-on/quiet evidence and learned-model evaluation remain open. The two-hour DJ test stays closed for now; deployment/payments stay held. [Evidence](evidence/local-qualification-followthrough-20261030/report.md).
 
+**Owner review decision:** individual review requests are **CLOSED_BY_OWNER** after “this is too long to answer each of them so I accept them all.” General acceptance is saved. No recording, exact annotation, paired preference or numerical score is inferred. The missing data below remains unmeasured, without further per-item solicitation. [Decision](evidence/local-qualification-followthrough-20261030/blanket-owner-acceptance.json).
+
 ## Current full-completion increment
 
 - **FAIL broader neural campaign; PASS cleanup:** seven tracks completed, one failed `improvise-arrangement`; the remaining 61 generations are NOT RUN. Stop-on-failure closes the campaign. No workers/jobs remain; 27 objects are absent and credits settled. Static arrangement diagnostics now pass local checks, but the discarded failed take cannot be diagnosed from its old receipt.

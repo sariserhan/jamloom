@@ -83,7 +83,7 @@ class Handler(review_serve.Handler):
             if self.headers.get('Host')!=f'127.0.0.1:{self.server.server_port}':self.send_error(403);return
             session={'token':self.server.review_token}
             session['received']={}
-            for kind in ('novice','practice','silence','sung-target','afro','reference','music','music-draft'):
+            for kind in ('novice','practice','silence','sung-target','afro','reference','music','music-draft','blanket-feedback'):
                 receipts=sorted(self.server.results.glob('*-'+kind+'.json'))
                 session['received'][kind]={'count':len(receipts),'latest':receipts[-1].name if receipts else None}
             files=sorted(self.server.results.glob('*-novice.json'))

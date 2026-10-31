@@ -1,0 +1,60 @@
+{
+  "evaluated_at": "2026-10-31T04:07:52.394793+00:00",
+  "owner_submissions": 13,
+  "automated_answers_used": false,
+  "release": "HELD by owner",
+  "live_payments": "HELD by owner",
+  "music": {
+    "status": "NOT RUN",
+    "freeze": "e0704a9b742fbd18960b1c5ab4ce0e37058897ae382f98ffa3ac78d7c3f35fa5",
+    "completed_blocks": 0,
+    "required_blocks": 2,
+    "distinct_generated_compositions_by_source": {},
+    "results": {},
+    "scope": "One owner, source-level uncertainty only; no population listener claim. Recorded quiet rejection and hosted technical evidence are separate required gates.",
+    "drafts_count_as_judgments": false,
+    "composition_policy": "neural_source_response",
+    "other_study_receipts_preserved": 0,
+    "draft_receipts": 0,
+    "drafts_count_as_completed_judgments": false
+  },
+  "novice": {
+    "observation": "PASS recorded beginner before/after",
+    "before_correct": 1,
+    "after_correct": 3,
+    "questions": 6,
+    "change": 2,
+    "observed_improvement": true,
+    "scope": "One owner beginner concept pilot; not hands-on mixing skill, retention, causal effect or general course effectiveness"
+  },
+  "novice_receipts": 9,
+  "distinct_novice_assessments": 1,
+  "hands_on": {
+    "status": "NOT RUN measured outcomes; general owner acceptance recorded",
+    "general_feedback_receipts": 1,
+    "general_feedback_proves_learning_gain": false
+  },
+  "sung-target": {
+    "status": "NOT RUN exact annotations; general owner acceptance recorded",
+    "receipts": 0,
+    "verified": false,
+    "scoringEnabled": false
+  },
+  "afro": {
+    "status": "NOT RUN exact annotations; general owner acceptance recorded",
+    "receipts": 0
+  },
+  "learned_data": {
+    "status": "NOT RUN",
+    "verified_action_records": 0,
+    "independent_origin_components": 0,
+    "split_ready": false,
+    "training": "NOT RUN",
+    "reason": "Preserve source, session, phrase, user speaker and performer groups. One maker cannot be split across train/dev/test; reference labels alone do not waive M1 or prove model benefit."
+  },
+  "recorded_silence": {
+    "status": "NOT RUN recorded control; individual request closed by owner"
+  },
+  "individual_review_requests": "CLOSED_BY_OWNER",
+  "blanket_acceptance_infers_measurements": false
+}

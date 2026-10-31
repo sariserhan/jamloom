@@ -1,0 +1,9 @@
+{
+  "received_at": "2026-10-31T04:05:37.502099+00:00",
+  "listener": "owner",
+  "owner_response": "this is too long to answer each of them so I accept them all",
+  "decision": "Blanket owner acceptance of pending review items; do not continue asking for individual answers",
+  "scope": "General owner acceptance. No quiet recording, per-candidate numerical ratings, baseline ranking, exact word/note timings or expert action traces were supplied. No unreviewed audio is described as listened to. Automated checks continue.",
+  "individual_review_requests": "CLOSED_BY_OWNER",
+  "measurements_inferred": false
+}

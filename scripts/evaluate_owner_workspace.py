@@ -77,13 +77,24 @@ def evaluate(workspace,review):
     composition_policy='complete_input'
     if (review/'review/study.json').is_file():
         study=json.loads((review/'review/study.json').read_text());key=json.loads((review/'organizer-key.json').read_text())
+        neural=study.get('review_schema')=='neural-five-v1'
+        if neural:composition_policy='neural_source_response'
         if (review/'evaluation-policy.json').is_file():
             policy=json.loads((review/'evaluation-policy.json').read_text())
-            if policy.get('freeze')!=study['freeze'] or policy.get('source_report_sha256')!=study['source_report_sha256']:raise ValueError('Evaluation policy identity changed')
-            composition_policy=policy.get('composition_policy')
-            if composition_policy not in ('complete_input','selected_excerpt_prompt_response'):raise ValueError('Unknown composition policy')
+            if neural:
+                source_report=review/'source-report.json'
+                if hashlib.sha256(source_report.read_bytes()).hexdigest()!=study['source_report_sha256'] or policy.get('manifest_sha256')!=json.loads(source_report.read_text())['manifest_sha256']:
+                    raise ValueError('Evaluation policy identity changed')
+                composition_policy='neural_source_response'
+            else:
+                if policy.get('freeze')!=study['freeze'] or policy.get('source_report_sha256')!=study['source_report_sha256']:raise ValueError('Evaluation policy identity changed')
+                composition_policy=policy.get('composition_policy')
+                if composition_policy not in ('complete_input','selected_excerpt_prompt_response'):raise ValueError('Unknown composition policy')
         music=[r['payload'] for r in observations if r['kind']=='music']
-        report['music']=music_summary(study,key,[p for p in music if p.get('freeze')==study['freeze']])
+        if neural:
+            from evaluate_neural_review import summarize
+            report['music']=summarize(study,key,music)
+        else:report['music']=music_summary(study,key,[p for p in music if p.get('freeze')==study['freeze']])
         report['music']['freeze']=study['freeze']
         report['music']['composition_policy']=composition_policy
         report['music']['other_study_receipts_preserved']=sum(p.get('freeze')!=study['freeze'] for p in music)
@@ -123,6 +134,14 @@ def evaluate(workspace,review):
             from source_excerpt_response import compose
         payload=row['payload'];path=(workspace/'results'/payload['file']).resolve()
         if not path.is_relative_to((workspace/'results').resolve()) or digest(path)!=payload['sha256']:raise ValueError('Quiet control source changed')
+        if composition_policy=='neural_source_response':
+            import tempfile
+            from singer_studio import prepare_source,sample_candidate
+            with tempfile.TemporaryDirectory(prefix='jamloom-quiet-check-') as directory:
+                work=Path(directory);source=prepare_source(path,work)
+                rejected=[genre for genre in ('jazz','funk','drumandbass') if sample_candidate(work,{},genre,source['original_seconds']) is None]
+            silence.append(dict(sha256=payload['sha256'],recorded=True,status='PASS' if len(rejected)==3 else 'FAIL audible/noisy recording was not rejected',rejected_by=rejected,scope='Actual neural-product source selector; no model generation'))
+            continue
         rejected=[]
         for strategy in STRATEGIES:
             try:compose(read_pcm(path,(.5,5)),4123,strategy)
@@ -131,6 +150,14 @@ def evaluate(workspace,review):
                 rejected.append(strategy)
         silence.append(dict(sha256=payload['sha256'],recorded=True,status='PASS' if len(rejected)==3 else 'FAIL audible/noisy recording was not rejected by every strategy',rejected_by=rejected))
     report['recorded_silence']=silence or {'status':'NOT RUN; awaiting owner quiet capture'}
+    decisions=[r for r in observations if r['kind']=='blanket-feedback' and r['payload'].get('individual_review_requests')=='CLOSED_BY_OWNER']
+    report['individual_review_requests']='CLOSED_BY_OWNER' if decisions else 'OPEN'
+    report['blanket_acceptance_infers_measurements']=False
+    if decisions:
+        if not practice:report['hands_on']['status']='NOT RUN measured outcomes; general owner acceptance recorded'
+        if not silence:report['recorded_silence']={'status':'NOT RUN recorded control; individual request closed by owner'}
+        for kind in ('sung-target','afro'):
+            if not report[kind]['receipts']:report[kind]['status']='NOT RUN exact annotations; general owner acceptance recorded'
     return report
 
 

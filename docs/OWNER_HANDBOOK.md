@@ -1,5 +1,7 @@
 ## Current completion boundaries — 2026-10-30
 
+**Latest owner decision:** “this is too long to answer each of them so I accept them all.” Individual review requests are closed by the owner. Preserve this blanket acceptance and stop repeating rating/observation forms. Missing recordings, measured scores and exact annotations remain unmeasured; no numerical result or heard detail is inferred. Automated qualification continues. [Exact decision](evidence/local-qualification-followthrough-20261030/blanket-owner-acceptance.json).
+
 **Latest checkpoint:** the two-hour AI DJ test is closed for now by the owner; do not request another rental for it. The earlier $21 Improvise permit was used and stopped on failure. A separate local Mac campaign is now running sequentially with unchanged resource guards; no paid work or deployment is authorized by it. [Live local evidence](../renders/local-neural-qualification-20261030/campaign.json).
 
 The owner has accepted the sung question, three style/energy auditions, the instrumental question and all ten candidates in the two-source neural review. Preserve those approvals. New source outputs still need actual listening; no scores or paired preferences are inferred from general acceptance.
