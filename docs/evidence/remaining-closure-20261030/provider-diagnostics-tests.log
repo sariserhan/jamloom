@@ -1,0 +1,15 @@
+✔ one-worker trial cannot dispatch later requests while a prior result is running or unverified (1.13225ms)
+✔ failed/cancelled or repeatedly unreadable results stop additional dispatch; worker bounds hold (0.127042ms)
+✔ Runpod submission is bounded, asynchronous, and never retried after uncertain acceptance (23.310584ms)
+✔ Runpod status validates identity, states, timing and receipts without exposing provider errors (1.879334ms)
+✔ dispatch checks disabled capacity without requiring a warm worker or submitting work (0.213959ms)
+✔ only status 404 is an expired-receipt candidate; a submit 404 remains unconfirmed (0.134542ms)
+✔ whole playlists and cached descriptions pass a bounded provider request (9.322708ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 193.359792

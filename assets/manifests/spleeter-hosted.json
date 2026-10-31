@@ -4,6 +4,9 @@
   "archive_bytes": 146308147,
   "archive_sha256": "3adb4a50ad4eb18c7c4d65fcf4cf2367a07d48408a5eb7d03cd20067429dfaa8",
   "model_dir": "build-spleeter/models/4stems",
+  "ignored_archive_files": {
+    "./._checkpoint": {"bytes": 176, "sha256": "1fc5679ab90cd6e07975eed56c55571531149277999dc80158cc394ce7141bb2"}
+  },
   "files": {
     "checkpoint": {"bytes": 67, "sha256": "011c96b970c1f56137037924fe1a0f0851369b0ee6692e120aea798615326f48"},
     "model.data-00000-of-00001": {"bytes": 157228152, "sha256": "3823e0ef50835cca3907c386dc9667a6a9af77b40a20c3ab845a8d6c9592255d"},

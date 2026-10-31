@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Copy one verified frozen block into a fresh, local-only listening form; never supply ratings."""
-import argparse,csv,hashlib,html,io,json,re,shutil
+import argparse,csv,hashlib,html,io,json,re,shutil,subprocess,sys
 from pathlib import Path
 from summarize_listening import RATING_COLUMNS,PAIR_COLUMNS,RATING_FIELDS,STYLES
 
@@ -12,7 +12,8 @@ def bounded(path,limit):
     if len(data)>limit:raise ValueError('packet file exceeds size limit')
     return data
 
-def build_review(batch,clip_id,seed,output):
+def build_review(batch,clip_id,seed,output,*,owner_only=False,clone_audio=False):
+    if clone_audio and sys.platform != "darwin":raise ValueError("APFS audio cloning requires macOS")
     batch=Path(batch).resolve();output=Path(output)
     if output.resolve().is_relative_to(batch):raise ValueError('review output must be outside the frozen batch')
     if output.exists():raise ValueError('choose a fresh output directory; existing responses are preserved')
@@ -54,7 +55,8 @@ def build_review(batch,clip_id,seed,output):
     if clip.get('license') and not attribution.strip():raise ValueError('licensed source attribution is missing')
     if attribution:files['ATTRIBUTION.txt']=attribution
     packet={'block_id':block,'clip_id':key['clip_id'],'codes':codes,'pairs':pairs,
-            'rating_columns':RATING_COLUMNS,'pair_columns':PAIR_COLUMNS,'rating_fields':RATING_FIELDS}
+            'rating_columns':RATING_COLUMNS,'pair_columns':PAIR_COLUMNS,'rating_fields':RATING_FIELDS,
+            'freeze_sha256':report['freeze_sha256'],'owner_only':owner_only}
     esc=html.escape
     def select(name,label,options):
         return '<label>'+esc(label)+'<select required aria-label="'+esc(label)+'" name="'+esc(name)+'"><option value="">Choose…</option>'+''.join('<option value="'+esc(v)+'">'+esc(t)+'</option>' for v,t in options)+'</select></label>'
@@ -68,12 +70,19 @@ def build_review(batch,clip_id,seed,output):
     for i,(left,right) in enumerate(pairs):
         sections+='<fieldset><legend>Comparison '+str(i+1)+'</legend><p>Candidate '+left[-1]+' and candidate '+right[-1]+'. Replay them above as needed.</p>'+select('pair-'+str(i),'Which do you prefer?',[(left,'Candidate '+left[-1]),(right,'Candidate '+right[-1]),('tie','Tie')])+'<label>Comparison notes<textarea name="pair-notes-'+str(i)+'" maxlength="2000"></textarea></label></fieldset>'
     scope_text='This packet is for owner-only listening. Do not send it to independent reviewers.' if scope=='owner_only' else 'This packet is prepared for the declared independent-review scope. The organizer must verify permissions and assign reviewers before sharing.'
-    page='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; media-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'"><title>Jamloom blinded listening review</title><link rel="stylesheet" href="review.css"><script defer src="review.js"></script></head><body><main><h1>Listen. Compare. Tell us what you hear.</h1><p>Use a comfortable volume. Listen to the source, then all four candidates in their assigned order. Ratings start blank; there is no correct answer.</p><p>'''+esc(scope_text)+'''</p><p>Responses stay in this tab. Download both files before closing. Nothing is uploaded. Use your assigned reviewer code, not your name or email.</p><h2>Source</h2><audio controls preload="none" aria-label="Source" src="source.wav"></audio><form><label>Reviewer code<input name="listener_id" required maxlength="64" pattern="[a-zA-Z0-9]([a-zA-Z0-9_]|-){0,63}" autocomplete="off"></label><p>1 means poor; 5 means excellent. Recognition asks whether you can recognize the supplied source, including non-speech sounds. Do not include personal information in notes.</p>'''+sections+'''<label class="check"><input type="checkbox" required>I entered these judgments from my own listening.</label><div class="downloads"><button type="submit" value="ratings">Download ratings</button><button type="submit" value="pairs">Download comparisons</button></div><p id="status" role="status">No observations have been submitted.</p></form><details><summary>Instructions and source credits</summary><pre>'''+esc(files['INSTRUCTIONS.txt'].decode())+'\n'+esc(attribution.decode())+'''</pre></details><small>Blinded block '''+block+''' · Technical validation is not musical-quality acceptance.</small></main><script type="application/json" id="packet">'''+json.dumps(packet).replace('<','\\u003c')+'</script></body></html>'
+    if owner_only:scope_text='You are the sole required listener. This page saves your draft in this browser; download your responses for a separate copy.'
+    page='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; media-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'"><title>Jamloom blinded listening review</title><link rel="stylesheet" href="review.css"><script defer src="review.js"></script></head><body><main><h1>Listen. Compare. Tell us what you hear.</h1><p>Use a comfortable volume. Listen to the source, then all four candidates in their assigned order. Ratings start blank; there is no correct answer.</p><p>'''+esc(scope_text)+'''</p><p>Responses stay in this tab. Download both files before closing. Nothing is uploaded. Use your assigned reviewer code, not your name or email.</p><h2>Source</h2><audio controls preload="none" aria-label="Source" src="source.wav"></audio><form><label>Reviewer code<input name="listener_id" required maxlength="64" pattern="[a-zA-Z0-9]([a-zA-Z0-9_]|-){0,63}" autocomplete="off"></label><p>1 means poor; 5 means excellent. Recognition asks whether you can recognize the supplied source, including non-speech sounds. Do not include personal information in notes.</p>'''+sections+'''<label class="check"><input type="checkbox" name="attested" required>I entered these judgments from my own listening.</label><div class="downloads"><button type="submit" value="ratings">Download ratings</button><button type="submit" value="pairs">Download comparisons</button></div><p id="status" role="status">No observations have been submitted.</p></form><details><summary>Instructions and source credits</summary><pre>'''+esc(files['INSTRUCTIONS.txt'].decode())+'\n'+esc(attribution.decode())+'''</pre></details><small>Blinded block '''+block+''' · Technical validation is not musical-quality acceptance.</small></main><script type="application/json" id="packet">'''+json.dumps(packet).replace('<','\\u003c')+'</script></body></html>'
+    if owner_only:
+        page=page.replace('name="listener_id" required','name="listener_id" value="owner" readonly required').replace('Responses stay in this tab. Download both files before closing. Nothing is uploaded. Use your assigned reviewer code, not your name or email.','Drafts are saved in this browser. You can return later and continue. Download both response files for a separate copy. Nothing is uploaded.').replace('No observations have been submitted.','No completed observations yet.')
     output.mkdir(parents=True,exist_ok=False)
-    for name,data in files.items():(output/name).write_bytes(data)
+    for name,data in files.items():
+        if clone_audio and name.endswith('.wav'):
+            subprocess.run(['cp','-c',str(listener/name),str(output/name)],check=True,capture_output=True)
+            if hashlib.sha256((output/name).read_bytes()).hexdigest()!=hashes[name]:raise ValueError('cloned audio hash mismatch')
+        else:(output/name).write_bytes(data)
     for name in ['review.js','review.css']:shutil.copyfile(ROOT/'apps/listening'/name,output/name)
     (output/'index.html').write_text(page)
-    manifest={'status':'PASS','block_id':block,'freeze_sha256':report['freeze_sha256'],'review_scope':scope,'audio_sha256':hashes,'human_listening':'NOT RUN'}
+    manifest={'status':'PASS','block_id':block,'freeze_sha256':report['freeze_sha256'],'review_scope':scope,'audio_sha256':hashes,'human_listening':'NOT RUN','packet':packet}
     (output/'packet.json').write_text(json.dumps(manifest,indent=2)+'\n')
     return manifest
 

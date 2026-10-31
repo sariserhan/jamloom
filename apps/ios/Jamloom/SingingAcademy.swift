@@ -22,11 +22,10 @@ final class SingingModel: NSObject, ObservableObject, WKNavigationDelegate, WKUI
         #if DEBUG
         if ProcessInfo.processInfo.arguments.contains("--ui-testing") {
             config.userContentController.addUserScript(WKUserScript(source: "window.jamloomMobileMuted=true;", injectionTime: .atDocumentStart, forMainFrameOnly: true))
-            #if targetEnvironment(simulator)
-            // iOS 27 Simulator ends muted MP3 elements immediately. Zero volume
+            // iOS 27 WebKit ends muted MP3 elements immediately on the simulator
+            // and physical iPhone. Zero volume
             // keeps the real decoder/clock running while automation stays silent.
             config.userContentController.addUserScript(WKUserScript(source: "window.jamloomMobileMuteMode='volume';", injectionTime: .atDocumentStart, forMainFrameOnly: true))
-            #endif
         }
         #endif
         webView = WKWebView(frame: .zero, configuration: config)

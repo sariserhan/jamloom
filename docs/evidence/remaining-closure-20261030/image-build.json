@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "source_commit": "0b966eac051157d9d52ac9a1e3ab3f57f2de4cd4",
+  "branch": "codex/runpod-setup",
+  "workflow_run": 41089077953,
+  "url": "https://github.com/sariserhan/jamloom/actions/runs/41089077953",
+  "boundary_tests": "PASS 16",
+  "website_deployment_disabled_for_branch": true,
+  "attempts": 1,
+  "image_digest": null,
+  "failure": "Unexpected Spleeter archive contents: pinned ./._checkpoint metadata omitted from allowlist",
+  "gpu_request_started": false
+}

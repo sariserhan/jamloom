@@ -74,7 +74,14 @@ final class StudioServerTests: XCTestCase {
                                 const metadataDuration = audio.duration;
                                 try { await audio.play(); }
                                 catch (error) { clearTimeout(timer); reject(String(error)); return; }
-                                setTimeout(() => { clearTimeout(timer); resolve({metadataDuration, duration:audio.duration, time:audio.currentTime, paused:audio.paused, readyState:audio.readyState}); }, 400);
+                                const started = performance.now();
+                                const observe = () => {
+                                    if (audio.currentTime > 0.1 || performance.now() - started > 5000) {
+                                        clearTimeout(timer);
+                                        resolve({metadataDuration, duration:audio.duration, time:audio.currentTime, paused:audio.paused, readyState:audio.readyState});
+                                    } else setTimeout(observe, 50);
+                                };
+                                observe();
                             };
                             audio.onerror = () => { clearTimeout(timer); reject('Media error '+audio.error?.code); };
                             audio.src = url;

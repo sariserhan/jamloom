@@ -1,0 +1,465 @@
+{
+  "calibration": {
+    "status": "PASS",
+    "gain_inverted_dc_shifted_copy": {
+      "correlation": 0.9999999999999835,
+      "target_seconds": 3.03075
+    },
+    "noisy_copy": {
+      "correlation": 0.9869169150237775,
+      "target_seconds": 3.03075
+    },
+    "unrelated_noise": {
+      "correlation": 0.04527552911168208,
+      "target_seconds": 2.08725
+    },
+    "brute_force_agreement_silence_nonfinite_nonoverlap": "PASS"
+  },
+  "rows": [
+    {
+      "short": "down",
+      "long": "x",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.19198433262157988,
+          "target_seconds": 293.5385
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.10919095268827662,
+          "target_seconds": 439.022
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.19914243407723434,
+          "target_seconds": 621.66575
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.23148618694824077,
+          "target_seconds": 82.8175
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.34543578010550385,
+          "target_seconds": 82.7645
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.19893230371000048,
+          "target_seconds": 12.7565
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "down",
+      "long": "y",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.18602908670800536,
+          "target_seconds": 273.892
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.12453321623575078,
+          "target_seconds": 36.61325
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.2052646027262985,
+          "target_seconds": 338.21425
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.20709592223348,
+          "target_seconds": 631.8095
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.2580149058113081,
+          "target_seconds": 415.127
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.17513978928220766,
+          "target_seconds": 281.80175
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "down",
+      "long": "z",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.1601745791774829,
+          "target_seconds": 306.6055
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.0871645813909207,
+          "target_seconds": 105.3945
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.2186875650710508,
+          "target_seconds": 6.72875
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.20449769006530627,
+          "target_seconds": 7.75125
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.21788220149936494,
+          "target_seconds": 20.23525
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.19297269408585443,
+          "target_seconds": 4.5695
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "f",
+      "long": "x",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.14145411230069752,
+          "target_seconds": 87.9235
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.17013145001227248,
+          "target_seconds": 5.3935
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.3773216012507834,
+          "target_seconds": 300.45975
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.16404552495303412,
+          "target_seconds": 113.1715
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.290752094338661,
+          "target_seconds": 70.307
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.38043204274220427,
+          "target_seconds": 43.6385
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "f",
+      "long": "y",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.16248545767216632,
+          "target_seconds": 377.89475
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.21365180865485153,
+          "target_seconds": 260.1905
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.2940930994160036,
+          "target_seconds": 323.67225
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.13781666504748494,
+          "target_seconds": 280.21325
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.21220106465217323,
+          "target_seconds": 613.447
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.2970253091020121,
+          "target_seconds": 281.29275
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "f",
+      "long": "z",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.1300798495660224,
+          "target_seconds": 423.25075
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.13084661921511784,
+          "target_seconds": 111.18175
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.3247858155354774,
+          "target_seconds": 147.79625
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.17565914042497063,
+          "target_seconds": 44.94975
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.29431840058192094,
+          "target_seconds": 311.393
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.29044561563557575,
+          "target_seconds": 4.054
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "pipe",
+      "long": "x",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.16019134290286588,
+          "target_seconds": 372.709
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.11253125813198797,
+          "target_seconds": 342.81625
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.22504419663637681,
+          "target_seconds": 73.914
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.3120872121503479,
+          "target_seconds": 44.12675
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.14663187126660535,
+          "target_seconds": 192.056
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.2441615395915639,
+          "target_seconds": 44.8875
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "pipe",
+      "long": "y",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.21518383077018347,
+          "target_seconds": 420.602
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.25504513889770924,
+          "target_seconds": 420.65325
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.25898210232002655,
+          "target_seconds": 228.46875
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.3598749573841166,
+          "target_seconds": 561.6065
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.3113549394701592,
+          "target_seconds": 420.8835
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.21358516555587537,
+          "target_seconds": 608.47625
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "pipe",
+      "long": "z",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.17044372357501536,
+          "target_seconds": 321.4255
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.20476164748476897,
+          "target_seconds": 315.85675
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.23548283423539734,
+          "target_seconds": 28.2365
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.3111869149610886,
+          "target_seconds": 313.3055
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.1798988840433336,
+          "target_seconds": 323.01625
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.321235924512714,
+          "target_seconds": 312.5595
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "question",
+      "long": "x",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.35115096100611354,
+          "target_seconds": 0.42275
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.25205925267630525,
+          "target_seconds": 9.314
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.2744406783898284,
+          "target_seconds": 400.86825
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.33210089512889984,
+          "target_seconds": 50.54375
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.3819048194046206,
+          "target_seconds": 338.09175
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.3296631695411787,
+          "target_seconds": 73.47775
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "question",
+      "long": "y",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.20318828465572464,
+          "target_seconds": 461.31625
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.17064985529252197,
+          "target_seconds": 373.24775
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.28673659369964577,
+          "target_seconds": 351.50175
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.20741831648445597,
+          "target_seconds": 282.02225
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.2988970977740778,
+          "target_seconds": 335.5485
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.3267470017927201,
+          "target_seconds": 359.788
+        }
+      ],
+      "shared_audio_detected": false
+    },
+    {
+      "short": "question",
+      "long": "z",
+      "matches": [
+        {
+          "query_seconds": 0,
+          "correlation": 0.15748417506207332,
+          "target_seconds": 366.02475
+        },
+        {
+          "query_seconds": 5,
+          "correlation": 0.17309910704717785,
+          "target_seconds": 301.05475
+        },
+        {
+          "query_seconds": 15,
+          "correlation": 0.264204363701741,
+          "target_seconds": 6.8045
+        },
+        {
+          "query_seconds": 30,
+          "correlation": 0.3100557839704127,
+          "target_seconds": 6.6145
+        },
+        {
+          "query_seconds": 45,
+          "correlation": 0.3479992768510224,
+          "target_seconds": 4.967
+        },
+        {
+          "query_seconds": 60,
+          "correlation": 0.43361658433560596,
+          "target_seconds": 617.34475
+        }
+      ],
+      "shared_audio_detected": false
+    }
+  ],
+  "limits": "Sparse exact waveform scan; absence of flags does not prove independence. Shared edits must remain in one split."
+}

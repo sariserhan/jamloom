@@ -30,13 +30,18 @@ test('Runpod status validates identity, states, timing and receipts without expo
  await assert.rejects(failed.status('job-1'),/^Error: Runpod request failed \(Provider HTTP 500\)$/);
  const terminal=new RunpodProvider('secret','endpoint',async()=>Response.json({id:'job-1',status:'FAILED',error:'private transcript',executionTime:148}));
  assert.deepEqual(await terminal.status('job-1'),{id:'job-1',status:'FAILED',executionTime:148});
- for(const failure of ['style-rejected:matched-2-of-4','checking-exit--9','checking-timeout','worker-timeout','fit-retry@modeling_clap.py:123','improvise-source','improvise-lyrics@singing_response.py:722','improvise-separation']){
+ for(const failure of ['style-rejected:matched-2-of-4','checking-exit--9','composing-exit-1@singer_v2.py:142','writing-exit-1@planner.py:12','checking-timeout','worker-timeout','fit-retry@modeling_clap.py:123','improvise-source','improvise-lyrics@singing_response.py:722','improvise-separation']){
   const error=`private signed URL https://private.invalid\nJamloom generation failed at ${failure}; no completed song was accepted.\nprivate lyrics`;
   const receipt=await new RunpodProvider('secret','endpoint',async()=>Response.json({id:'job-1',status:'FAILED',error})).status('job-1');
   assert.equal(receipt.failure,failure);assert.doesNotMatch(JSON.stringify(receipt),/private|https/);
  }
  const unsafe=await new RunpodProvider('secret','endpoint',async()=>Response.json({id:'job-1',status:'FAILED',error:'Jamloom generation failed at private lyrics; no completed song was accepted.'})).status('job-1');
  assert.equal(unsafe.failure,undefined);
+ for(const suffix of ['../private.py:12','https://private.invalid/file.py:12','singer.py:12 private lyrics','singer.py:12\nprivate lyrics']){
+  const error=`Jamloom generation failed at composing-exit-1@${suffix}; no completed song was accepted.`;
+  const receipt=await new RunpodProvider('secret','endpoint',async()=>Response.json({id:'job-1',status:'FAILED',error})).status('job-1');
+  assert.equal(receipt.failure,undefined);
+ }
 });
 
 test('dispatch checks disabled capacity without requiring a warm worker or submitting work',async()=>{

@@ -1,0 +1,11 @@
+{
+  "checked_utc": "2026-10-30T16:19:26.048957+00:00",
+  "physical_devices": [
+    {
+      "model": "iPhone 14 Pro",
+      "state": "disconnected",
+      "reality": "physical"
+    }
+  ],
+  "new_physical_tests": "NOT RUN"
+}

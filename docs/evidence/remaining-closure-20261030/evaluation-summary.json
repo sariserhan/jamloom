@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "scope": "technical batch preparation only",
+  "dataset_readiness": {
+    "status": "PARTIAL",
+    "real_clips": 23,
+    "speech_clips": 20,
+    "missing": [
+      "silence coverage"
+    ],
+    "note": "One required listener: the owner (2026-10-30 amendment). Ledger declarations only; source consent authenticity and actual owner judgments still require verification."
+  },
+  "per_style_technical_counts": {
+    "hiphop": {
+      "accepted": 69,
+      "attempted": 69
+    },
+    "reggae": {
+      "accepted": 69,
+      "attempted": 69
+    },
+    "experimental": {
+      "accepted": 69,
+      "attempted": 69
+    }
+  },
+  "preregistration": "PARTIAL",
+  "human_listening": "NOT RUN",
+  "formal_quality": "NOT RUN",
+  "freeze_sha256": "6248872221697e9174f6214ef6c09a15e0ce03a77a59d11752f4961389ac60b5",
+  "blocks": 69,
+  "expected_silence_rejections": 3,
+  "renderer_sha256": "3ff8c4cf7b04951143774fc8244b557229fbcaeaeb3c556ef6958b482bff7304",
+  "engine_source_sha256": "86863a6ab851be93b79040d4cfdee52f2443647e4f7264ae6f1fc782f49795df",
+  "batch": "renders/owner-evaluation-20261030",
+  "review": "renders/owner-blind-study-current-20261030",
+  "review_url": "http://127.0.0.1:8772",
+  "source_count": 24,
+  "historical_audio": "Old 20261018 mix WAVs were retired. Preserved source WAV hashes verified, then newly rendered using current engine; prior freeze not altered."
+}

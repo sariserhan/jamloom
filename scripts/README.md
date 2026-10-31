@@ -10,6 +10,14 @@ a listing is not permission to run a paid trial. See [layout and ownership](../d
 Reference counts exclude generated outputs and historical evidence files. Dynamic imports,
 remote archive flattening and working-directory assumptions still need review before a move.
 
+## Restart recovery and source-first research
+
+- `source_first_improvise.py`: prepare a consented phrase-derived guide before band generation; short phrases retain their duration and can leave a tail rest.
+- `render_source_first.py`: one local 30-second attempt with durable receipts, 15 GiB disk reserve, 8 GiB starting memory, running-memory/swap/RSS limits and a ten-minute deadline. Previous attempts are never overwritten.
+- `study_improvise_references.py`: offline reference indexing; ASR and repeats remain unverified candidates, never automatic speaker/action labels.
+
+See [restart recovery](../docs/RESTART_RECOVERY.md) for historical outcomes and retained attempts. Improvise qualification and formal studies are closed/deferred under the [current v1 scope](../docs/CREDIT_SYSTEM.md). The [recovery audit](../docs/evidence/interrupted-work-20261031/report.md) verifies packaging and restart handling without generating new listening judgments.
+
 ## Build, packaging and local servers
 
 | Script | Purpose | Code references | Documentation references |
@@ -81,7 +89,8 @@ remote archive flattening and working-directory assumptions still need review be
 | [prepare_guitar_bank.py](prepare_guitar_bank.py) | Reproduce the pinned guitar bank using the existing acoustic PCM preparation. | 0 | 2 |
 | [prepare_interpolation.py](prepare_interpolation.py) | Emit the fixed full-band interpolation table; no audio or runtime dependency. | 0 | 2 |
 | [prepare_listening.py](prepare_listening.py) | Prepare one blinded pilot block from three remixes and the fixed-loop control. | 4 | 4 |
-| [prepare_listening_review.py](prepare_listening_review.py) | Copy one verified frozen block into a fresh, local-only listening form; never supply ratings. | 1 | 1 |
+| [prepare_listening_review.py](prepare_listening_review.py) | Copy one verified frozen block into a fresh, local-only listening form; never supply ratings. | 2 | 1 |
+| [prepare_listening_study.py](prepare_listening_study.py) | Prepare every frozen blind block for one resumable owner review; never create ratings. | 2 | 1 |
 | [prepare_local_call_review.py](prepare_local_call_review.py) | Compare bounded edits at the same playback gain, preserving earlier auditions. | 0 | 2 |
 | [prepare_mix_replay.mjs](prepare_mix_replay.mjs) | See script and its caller map. | 1 | 2 |
 | [prepare_musician_candidates.py](prepare_musician_candidates.py) | Prepare four owner-authorized references for review; no training or upload. | 1 | 1 |
@@ -117,7 +126,7 @@ remote archive flattening and working-directory assumptions still need review be
 | [replay_mix.mjs](replay_mix.mjs) | See script and its caller map. | 2 | 3 |
 | [review_academy_grid.py](review_academy_grid.py) | Prepare candidate beat-grid evidence for owner listening, not verified downbeats/keys. | 0 | 2 |
 | [review_house_study.py](review_house_study.py) | Publish audio-only listening copies; keep study condition keys outside the server. | 0 | 1 |
-| [review_serve.py](review_serve.py) | Serve the local listening copies, including byte ranges for native audio controls. | 1 | 5 |
+| [review_serve.py](review_serve.py) | Serve the local listening copies, including byte ranges for native audio controls. | 1 | 6 |
 | [song_duration.py](song_duration.py) | Shared product length bounds; a saved duration survives retries. | 13 | 0 |
 | [source_led_response.py](source_led_response.py) | One private source-led reggae study: guide, band, singer, timed exchange. | 3 | 5 |
 | [summarize_listening.py](summarize_listening.py) | Validate real submitted forms and summarize by source; never invent ratings or pass M1. | 4 | 3 |

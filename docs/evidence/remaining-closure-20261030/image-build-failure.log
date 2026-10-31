@@ -1,0 +1,68 @@
+Full retained build log: renders/remaining-closure-20261030/image-build-failure.log
+SHA-256: 8dc93c28f694fd794326864303ba415354a016744d71a9c6e95401be3054aae0
+
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9843123Z #24 51.82  + protobuf==4.25.9
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9843361Z #24 51.83  + pyasn1==0.6.5
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9843599Z #24 51.83  + pyasn1-modules==0.4.2
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9843874Z #24 51.83  + pycparser==3.12
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9844120Z #24 51.83  + python-dateutil==3.0.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9844379Z #24 51.83  + pytz==2026.6
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9844993Z #24 51.83  + requests==2.34.2
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9845257Z #24 51.83  + requests-oauthlib==2.0.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9845534Z #24 51.83  + rfc3986==1.5.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9845779Z #24 51.83  + scipy==1.10.1
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9846015Z #24 51.83  + setuptools==84.2.1
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9846258Z #24 51.83  + six==1.17.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9846486Z #24 51.83  + sniffio==1.3.1
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9846733Z #24 51.83  + spleeter==2.4.2
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9847116Z #24 51.83  + tensorboard==2.12.3
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9847403Z #24 51.83  + tensorboard-data-server==0.7.2
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9847828Z #24 51.83  + tensorflow==2.12.1
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9848102Z #24 51.83  + tensorflow-estimator==2.12.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9848432Z #24 51.83  + tensorflow-io-gcs-filesystem==0.32.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9848748Z #24 51.83  + termcolor==3.3.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9849167Z #24 51.83  + typer==0.3.2
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9849415Z #24 51.83  + typing-extensions==4.5.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9849686Z #24 51.83  + tzdata==2026.6
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9849933Z #24 51.83  + urllib3==2.8.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9850284Z #24 51.83  + werkzeug==3.1.9
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9850553Z #24 51.83  + wheel==0.48.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:05.9850786Z #24 51.83  + wrapt==1.14.2
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:08.3627388Z #24 54.36 Traceback (most recent call last):
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:08.3629376Z #24 54.36   File "/opt/jamloom/services/runpod/prepare_spleeter_model.py", line 47, in <module>
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:08.5136598Z #24 54.36     prepare()
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:08.5137586Z #24 54.36   File "/opt/jamloom/services/runpod/prepare_spleeter_model.py", line 32, in prepare
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:08.5138294Z #24 54.36     raise ValueError('Unexpected Spleeter archive contents')
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:08.5139127Z #24 54.36 ValueError: Unexpected Spleeter archive contents
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7295315Z #24 ERROR: process "/bin/sh -c uv venv .venv-spleeter --python /usr/bin/python3.11     && uv pip install --python .venv-spleeter/bin/python -r services/runpod/spleeter-requirements.txt     && python services/runpod/prepare_spleeter_model.py     && .venv-spleeter/bin/python -c \"import tensorflow as tf, spleeter; assert tf.__version__ == '2.12.1'\"     && uv cache clean" did not complete successfully: exit code: 1
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7624092Z ------
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7626613Z  > [20/20] RUN uv venv .venv-spleeter --python /usr/bin/python3.11     && uv pip install --python .venv-spleeter/bin/python -r services/runpod/spleeter-requirements.txt     && python services/runpod/prepare_spleeter_model.py     && .venv-spleeter/bin/python -c "import tensorflow as tf, spleeter; assert tf.__version__ == '2.12.1'"     && uv cache clean:
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7629301Z 51.83  + urllib3==2.8.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7629717Z 51.83  + werkzeug==3.1.9
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7630125Z 51.83  + wheel==0.48.0
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7630516Z 51.83  + wrapt==1.14.2
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7630943Z 54.36 Traceback (most recent call last):
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7631736Z 54.36   File "/opt/jamloom/services/runpod/prepare_spleeter_model.py", line 47, in <module>
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7632586Z 54.36     prepare()
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7633282Z 54.36   File "/opt/jamloom/services/runpod/prepare_spleeter_model.py", line 32, in prepare
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7634270Z 54.36     raise ValueError('Unexpected Spleeter archive contents')
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7634963Z 54.36 ValueError: Unexpected Spleeter archive contents
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7635489Z ------
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7644272Z Dockerfile:45
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7644682Z --------------------
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7645733Z   44 |     COPY services/runpod/spleeter-requirements.txt services/runpod/prepare_spleeter_model.py services/runpod/separate_spleeter.py ./services/runpod/
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7647073Z   45 | >>> RUN uv venv .venv-spleeter --python /usr/bin/python3.11 \
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7648020Z   46 | >>>     && uv pip install --python .venv-spleeter/bin/python -r services/runpod/spleeter-requirements.txt \
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7649254Z   47 | >>>     && python services/runpod/prepare_spleeter_model.py \
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7650595Z   48 | >>>     && .venv-spleeter/bin/python -c "import tensorflow as tf, spleeter; assert tf.__version__ == '2.12.1'" \
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7651306Z   49 | >>>     && uv cache clean
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7651973Z   50 |     ENV JAMLOOM_SEPARATOR_PYTHON=/opt/jamloom/.venv-spleeter/bin/python
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7652691Z --------------------
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.7655371Z ERROR: failed to build: failed to solve: process "/bin/sh -c uv venv .venv-spleeter --python /usr/bin/python3.11     && uv pip install --python .venv-spleeter/bin/python -r services/runpod/spleeter-requirements.txt     && python services/runpod/prepare_spleeter_model.py     && .venv-spleeter/bin/python -c \"import tensorflow as tf, spleeter; assert tf.__version__ == '2.12.1'\"     && uv cache clean" did not complete successfully: exit code: 1
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.8090707Z ##[group]Reference
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.9345151Z builder-4ffd2b17-19b1-4190-beee-218087d11cc6/builder-4ffd2b17-19b1-4190-beee-218087d11cc60/ynt1za3umkh914xlhu02dn24q
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.9347143Z ##[endgroup]
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.9348501Z ##[group]Check build summary support
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.9358470Z Build summary supported!
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.9359194Z ##[endgroup]
+image	Run docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8	2026-10-30T16:27:09.9399726Z ##[error]buildx failed with: ERROR: failed to build: failed to solve: process "/bin/sh -c uv venv .venv-spleeter --python /usr/bin/python3.11     && uv pip install --python .venv-spleeter/bin/python -r services/runpod/spleeter-requirements.txt     && python services/runpod/prepare_spleeter_model.py     && .venv-spleeter/bin/python -c \"import tensorflow as tf, spleeter; assert tf.__version__ == '2.12.1'\"     && uv cache clean" did not complete successfully: exit code: 1

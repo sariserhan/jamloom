@@ -1,8 +1,10 @@
 """Temporary synthetic form fixtures only; no study observations are created."""
 import csv,hashlib,json,sys,tempfile,wave
+from unittest.mock import patch
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'scripts'))
 from prepare_listening_review import build_review
+from prepare_listening_study import prepare as prepare_study
 from summarize_listening import RATING_COLUMNS,PAIR_COLUMNS,STYLES,summarize
 
 
@@ -40,6 +42,27 @@ def main():
         assert all(hashlib.sha256((out/name).read_bytes()).hexdigest()==sha for name,sha in manifest['audio_sha256'].items())
         assert summarize(batch,[out/'responses.csv'],[out/'pairs.csv'])['individual_ratings']==0
         count=6
+        study=root/'owner-study'
+        assert prepare_study(batch,study)==1
+        study_data=json.loads((study/'study.json').read_text())
+        assert study_data['listener_id']=='owner' and study_data['blocks'][0]['owner_only'] is True
+        assert summarize(batch,[study/'block-001/responses.csv'],[study/'block-001/pairs.csv'])['individual_ratings']==0
+        assert not list(study.rglob('organizer-key.json'))
+        count+=4
+        # A packaging error must not leave an incomplete destination blocking retry.
+        retry=root/'retry-study'
+        with patch('prepare_listening_study.shutil.copyfile', side_effect=OSError('simulated interrupted copy')):
+            try: prepare_study(batch,retry)
+            except OSError: pass
+            else: raise AssertionError('Expected injected copy failure')
+        assert not retry.exists() and not list(root.glob('.jamloom-study-*'))
+        assert prepare_study(batch,retry)==1
+        preserved=(retry/'study.json').read_bytes()
+        try: prepare_study(batch,retry)
+        except ValueError: pass
+        else: raise AssertionError('Existing review was overwritten')
+        assert (retry/'study.json').read_bytes()==preserved
+        count+=4
         def reject(action):
             nonlocal count
             try:action()

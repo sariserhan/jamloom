@@ -1,0 +1,16 @@
+{
+  "checked_utc": "2026-10-30T16:25:32.231191+00:00",
+  "source": "https://www.runpod.io/pricing",
+  "billing_source": "https://docs.runpod.io/serverless/pricing",
+  "serverless_usd_per_hour": {
+    "NVIDIA GeForce RTX 4090": 1.34,
+    "NVIDIA L40S": 1.75
+  },
+  "disk_usd_per_gb_month": 0.1,
+  "disk_gb": 60,
+  "bounded_seconds": 850,
+  "conservative_configured_gpu_usd_per_second": 0.001,
+  "conservative_compute_plus_fixed_usd": 0.87,
+  "approved_max_usd": 1,
+  "note": "Posted rates verified before launch; software deadline/shutdown bound, not a provider-enforced dollar cap. Actual provider billing reconciled after run."
+}

@@ -1,0 +1,14 @@
+{
+  mode: 'dry-run',
+  maxUSD: 1,
+  maxWorkers: 1,
+  maxSeconds: 720,
+  requests: 1,
+  directory: '/Users/serhansari/Documents/projects/jamloom/build-song-finish/startup/2026-10-30T16-17-19.990Z',
+  evidence: '/Users/serhansari/Documents/projects/jamloom/docs/evidence/song-finish/startup/2026-10-30T16-17-19.990Z',
+  minWorkers: 0,
+  scaling: 'REQUEST_COUNT / 1',
+  activationDelaySeconds: 30,
+  manualReconciliation: false,
+  requires: 'Approved paid trial and JAMLOOM_TRIAL_IMAGE digest'
+}

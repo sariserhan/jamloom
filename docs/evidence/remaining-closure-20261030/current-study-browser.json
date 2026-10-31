@@ -1,0 +1,22 @@
+[
+  {
+    "browser": "chromium",
+    "status": "PASS",
+    "blocks": 69,
+    "playback": {
+      "duration": 32,
+      "time": 0.260147
+    },
+    "judgments_created": 0
+  },
+  {
+    "browser": "webkit",
+    "status": "PASS",
+    "blocks": 69,
+    "playback": {
+      "duration": 32,
+      "time": 0.11944420845247805
+    },
+    "judgments_created": 0
+  }
+]

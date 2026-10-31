@@ -19,7 +19,7 @@ const server=createServer(async(request,response)=>{
 });await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
 try{
   for(const [kind,engine] of [['chromium',chromium],['webkit',webkit]]){
-    const browser=await engine.launch(),context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage();
+    const browser=await engine.launch(kind==='chromium'&&process.env.JAMLOOM_TEST_CHROME==='1'?{channel:'chrome'}:{}),context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage();
     page.setDefaultTimeout(15_000);page.setDefaultNavigationTimeout(15_000);
     const errors=[],consoleErrors=[],external=[],checks=[],warnings=[];let capturing=false,downloads=0;
     const check=name=>{checks.push({name,status:'PASS'});console.log(kind+' PASS: '+name);};

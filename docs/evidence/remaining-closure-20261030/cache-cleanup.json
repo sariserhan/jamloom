@@ -1,0 +1,387 @@
+{
+  "status": "PASS",
+  "free_bytes_before": 2809561088,
+  "candidates": [
+    {
+      "path": "build-ios/Build/Intermediates.noindex",
+      "allocated_kib": 123932,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios/ModuleCache.noindex",
+      "allocated_kib": 33524,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios/SDKExplicitPrecompiledModules",
+      "allocated_kib": 128704,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios/SDKStatCaches.noindex",
+      "allocated_kib": 3128,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios/Index.noindex",
+      "allocated_kib": 45404,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-completion/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-device/Build/Intermediates.noindex",
+      "allocated_kib": 157584,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-device/ModuleCache.noindex",
+      "allocated_kib": 28200,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-device/SDKExplicitPrecompiledModules",
+      "allocated_kib": 128968,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-device/SDKStatCaches.noindex",
+      "allocated_kib": 1548,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-device/Index.noindex",
+      "allocated_kib": 32748,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-device/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-parity/Build/Intermediates.noindex",
+      "allocated_kib": 62396,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-parity/ModuleCache.noindex",
+      "allocated_kib": 16844,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-parity/SDKExplicitPrecompiledModules",
+      "allocated_kib": 64220,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-parity/SDKStatCaches.noindex",
+      "allocated_kib": 1580,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-parity/Index.noindex",
+      "allocated_kib": 32292,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-parity/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-parity-release/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-phone-release/Build/Intermediates.noindex",
+      "allocated_kib": 161908,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-phone-release/ModuleCache.noindex",
+      "allocated_kib": 28224,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-phone-release/SDKExplicitPrecompiledModules",
+      "allocated_kib": 128988,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-phone-release/SDKStatCaches.noindex",
+      "allocated_kib": 1548,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-phone-release/Index.noindex",
+      "allocated_kib": 34952,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-phone-release/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-release-completion/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-simulator/Build/Intermediates.noindex",
+      "allocated_kib": 67008,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-simulator/ModuleCache.noindex",
+      "allocated_kib": 16844,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-simulator/SDKExplicitPrecompiledModules",
+      "allocated_kib": 64228,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-simulator/SDKStatCaches.noindex",
+      "allocated_kib": 1580,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-simulator/Index.noindex",
+      "allocated_kib": 32016,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-simulator/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-storekit/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-visual/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-visual-device/Build/Intermediates.noindex",
+      "allocated_kib": 58304,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-visual-device/ModuleCache.noindex",
+      "allocated_kib": 16728,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-visual-device/SDKExplicitPrecompiledModules",
+      "allocated_kib": 64508,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-visual-device/SDKStatCaches.noindex",
+      "allocated_kib": 1548,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-visual-device/Index.noindex",
+      "allocated_kib": 32636,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios-visual-device/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios27/Build/Intermediates.noindex",
+      "allocated_kib": 66040,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios27/ModuleCache.noindex",
+      "allocated_kib": 16832,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios27/SDKExplicitPrecompiledModules",
+      "allocated_kib": 64220,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios27/SDKStatCaches.noindex",
+      "allocated_kib": 1580,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios27/Index.noindex",
+      "allocated_kib": 32496,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    },
+    {
+      "path": "build-ios27/CompilationCache.noindex",
+      "allocated_kib": 28,
+      "classification": "inactive regenerable build cache",
+      "tracked_files": 0,
+      "open_files": 0,
+      "symlink": false
+    }
+  ],
+  "total_allocated_kib": 1753596,
+  "completed_utc": "2026-10-30T16:23:37.611564+00:00",
+  "free_bytes_after": 4624506880,
+  "git_status_unchanged": true,
+  "free_bytes_gained": 1814945792
+}

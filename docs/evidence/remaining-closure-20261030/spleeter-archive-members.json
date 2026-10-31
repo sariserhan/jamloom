@@ -1,0 +1,30 @@
+{
+  "archive_sha256": "3adb4a50ad4eb18c7c4d65fcf4cf2367a07d48408a5eb7d03cd20067429dfaa8",
+  "members": [
+    {
+      "name": "./._checkpoint",
+      "bytes": 176,
+      "type": "0"
+    },
+    {
+      "name": "checkpoint",
+      "bytes": 67,
+      "type": "0"
+    },
+    {
+      "name": "model.data-00000-of-00001",
+      "bytes": 157228152,
+      "type": "0"
+    },
+    {
+      "name": "model.index",
+      "bytes": 10368,
+      "type": "0"
+    },
+    {
+      "name": "model.meta",
+      "bytes": 1588447,
+      "type": "0"
+    }
+  ]
+}

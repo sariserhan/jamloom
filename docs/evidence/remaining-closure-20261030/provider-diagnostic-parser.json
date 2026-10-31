@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "change": "Preserve new static stage-exit@filename:line diagnostics; reject paths, URLs and private suffixes",
+  "tests": 7,
+  "typecheck": "PASS",
+  "source_sha256": {
+    "apps/site/lib/runpod-provider.ts": "247b26da1d90f2718e1724e420485d04bb679733e9c604014f3837326a31fd6c",
+    "apps/site/tests/runpod-provider.test.ts": "e740ba2c49e308384f1e34349ad2d27a8bac279521ab9795b443cad3a168871e"
+  },
+  "publication": "NOT RUN; local trial parser only"
+}

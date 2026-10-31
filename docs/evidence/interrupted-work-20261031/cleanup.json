@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "temporarySyntheticResponses": "removed by browser and packaging test runners",
+  "browserServers": "closed by test runners",
+  "simulator": "shutdown after completed tests",
+  "ownerAudio": "preserved",
+  "studyReopened": false,
+  "paidComputeRequests": 0,
+  "deployments": 0,
+  "liveCharges": 0
+}

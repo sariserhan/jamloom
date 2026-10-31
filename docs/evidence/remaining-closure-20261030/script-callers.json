@@ -1,0 +1,2700 @@
+{
+  "scope": "Static literal and Python import references; dynamic paths require caller review before moving.",
+  "scripts": [
+    {
+      "path": "scripts/afro_house_qualification.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Offline full-length Afro House quality run; never changes serving defaults.",
+      "code_callers": [
+        "scripts/afro_house_trial.py:24",
+        "scripts/afro_house_trial.py:34",
+        "scripts/afro_house_trial.py:268",
+        "scripts/cloud_dj_warm.sh:27",
+        "scripts/cloud_dj_warm.sh:48",
+        "scripts/cloud_dj_warm.sh:62",
+        "tests/test_afro_house_qualification.py:8"
+      ],
+      "documented_references": [
+        "docs/AFRO_HOUSE_QUALITY.md:25"
+      ]
+    },
+    {
+      "path": "scripts/afro_house_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Run the prepared, one-rental Afro House qualification after exact owner approval.",
+      "code_callers": [
+        "tests/test_afro_house_trial.py:10",
+        "tests/test_afro_house_trial.py:15",
+        "tests/test_afro_house_trial.py:21",
+        "tests/test_afro_house_trial.py:33",
+        "tests/test_afro_house_trial.py:45",
+        "tests/test_afro_house_trial.py:60",
+        "tests/test_afro_house_trial.py:96",
+        "tests/test_afro_house_trial.py:109",
+        "tests/test_afro_house_trial.py:149",
+        "tests/test_afro_house_trial.py:163"
+      ],
+      "documented_references": [
+        "docs/AFRO_HOUSE_QUALITY.md:38"
+      ]
+    },
+    {
+      "path": "scripts/align_word_crops.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Conservatively propose whole-word crops; the native validator still decides acceptance.",
+      "code_callers": [
+        "tests/integration/verify_word_timing.py:5"
+      ],
+      "documented_references": [
+        "ai/analysis/README.md:5",
+        "docs/word-timing.md:20",
+        "docs/word-timing.md:68"
+      ]
+    },
+    {
+      "path": "scripts/analyze_dj_references.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Read owner-provided mixes in bounded chunks; emit research metadata, never training audio.",
+      "code_callers": [
+        "scripts/compare_dj_sound.py:10",
+        "scripts/research_dj_passages.py:10",
+        "tests/test_dj_references.py:5"
+      ],
+      "documented_references": [
+        "docs/dj-reference-styles.md:61"
+      ]
+    },
+    {
+      "path": "scripts/analyze_words.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Offline word timing; --understand privately retains speech for local song creation.",
+      "code_callers": [
+        "scripts/singer_studio.py:57",
+        "tests/integration/verify_word_timing.py:6",
+        "tests/integration/verify_word_timing.py:46",
+        "tests/test_word_audio.py:14"
+      ],
+      "documented_references": [
+        "ai/analysis/README.md:5",
+        "docs/research-input-validation.md:10",
+        "docs/word-timing.md:13",
+        "docs/word-timing.md:67"
+      ]
+    },
+    {
+      "path": "scripts/arrange_voice_research.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Local research only: arrange consented speech into a previously generated bed.",
+      "code_callers": [
+        "scripts/assemble_sung_response.py:11",
+        "scripts/local_call_edit.py:12",
+        "scripts/phrase_articulation.py:10",
+        "scripts/prepare_local_call_review.py:10",
+        "scripts/prepare_singer_review.py:10",
+        "scripts/prepare_voice_led_review.py:10",
+        "scripts/prepare_voice_research.py:13",
+        "scripts/separate_singer.py:10",
+        "scripts/singer_studio.py:17",
+        "scripts/singing_response.py:333",
+        "scripts/singing_response.py:362",
+        "scripts/source_led_response.py:10",
+        "tests/test_local_call_edit.py:11",
+        "tests/test_singer_studio.py:14",
+        "tests/test_source_led_response.py:9",
+        "tests/test_sung_assembly.py:10",
+        "tests/test_voice_research.py:12"
+      ],
+      "documented_references": [
+        "docs/research-input-validation.md:12"
+      ]
+    },
+    {
+      "path": "scripts/assemble_sung_response.py",
+      "area": "Singing and vocal research",
+      "purpose": "Place one intact source phrase in a vocal gap without altering the song.",
+      "code_callers": [
+        "scripts/local_call_edit.py:13",
+        "scripts/prepare_singer_review.py:11",
+        "scripts/singer_studio.py:18",
+        "scripts/source_led_response.py:11",
+        "tests/test_singing_response.py:11",
+        "tests/test_sung_assembly.py:11"
+      ],
+      "documented_references": [
+        "docs/singing-response.md:115"
+      ]
+    },
+    {
+      "path": "scripts/audit_groove_midi.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Verify the approved MIDI-only archive and report coverage, without rendering its audio.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/ai-dj-baseline.md:141"
+      ]
+    },
+    {
+      "path": "scripts/audit_repository.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Map script callers without executing scripts, importing models or reading secrets.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/benchmark_open_source.mjs",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/OPEN_SOURCE_AUDIT.md:255"
+      ]
+    },
+    {
+      "path": "scripts/benchmark_open_source.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Prepare hash-verified real audio and compare the installed librosa offline path. No GPU.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/OPEN_SOURCE_AUDIT.md:253"
+      ]
+    },
+    {
+      "path": "scripts/benchmark_render.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Measure offline render wall time and child-process peak RSS; not a live/device gate.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/workflow-hardening.md:128"
+      ]
+    },
+    {
+      "path": "scripts/benchmark_singing_completion.mjs",
+      "area": "Singing and vocal research",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/benchmark_singing_difference.mjs",
+      "area": "Singing and vocal research",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/NONRELEASE_COMPLETION.md:62",
+        "docs/SINGING_DIFFERENCE.md:26"
+      ]
+    },
+    {
+      "path": "scripts/benchmark_singing_holdout.mjs",
+      "area": "Singing and vocal research",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/SINGING_HOLDOUT.md:25"
+      ]
+    },
+    {
+      "path": "scripts/benchmark_singing_quiet.mjs",
+      "area": "Singing and vocal research",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/LOCAL_AUDIO_FOLLOWTHROUGH.md:9"
+      ]
+    },
+    {
+      "path": "scripts/benchmark_singing_voices.mjs",
+      "area": "Singing and vocal research",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/SINGING_COMPLETION.md:42"
+      ]
+    },
+    {
+      "path": "scripts/build_offline.py",
+      "area": "Build, packaging and local servers",
+      "purpose": "Generate the bounded public-asset list for a standalone or /studio/ build.",
+      "code_callers": [
+        "apps/site/scripts/audit-bundle.mjs:35",
+        "apps/site/scripts/prepare-studio.mjs:23",
+        "apps/web/tests/offline-build.test.js:11",
+        "apps/web/tests/offline.mjs:166",
+        "apps/web/tests/offline.mjs:192",
+        "scripts/verify_web_bundle.py:4",
+        "scripts/web_build.sh:59"
+      ],
+      "documented_references": [
+        "docs/linux-browser.md:80",
+        "docs/linux-browser.md:169",
+        "docs/media-readiness.md:70",
+        "docs/r1-effect-capture.md:147",
+        "docs/r1-mix-automation.md:128",
+        "docs/r1-source-inventory.md:144"
+      ]
+    },
+    {
+      "path": "scripts/check_dj_continuity.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Inspect captured retained-audio rehearsal; energy dips are findings, not listening acceptance.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/LOCAL_AUDIO_FOLLOWTHROUGH.md:46"
+      ]
+    },
+    {
+      "path": "scripts/check_dj_flow_failure.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Free fault injection: two short retained clips, then no third delivery; playback must fail promptly.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/check_dj_vocal_boundaries.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Compare backing preservation on retained originals; not a new vocal-quality candidate.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/DJ_VOCAL_BOUNDARIES.md:33"
+      ]
+    },
+    {
+      "path": "scripts/check_dj_vocal_onsets.mjs",
+      "area": "DJ and arrangement research",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/DJ_VOCAL_BOUNDARIES.md:7"
+      ]
+    },
+    {
+      "path": "scripts/check_dj_vocal_onsets.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Measure onset placement on real backing with a known synthetic timing probe, not singing.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/DJ_VOCAL_BOUNDARIES.md:7"
+      ]
+    },
+    {
+      "path": "scripts/check_dna_audio.py",
+      "area": "Music DNA",
+      "purpose": "Screen a finished Music DNA song for broad style mismatch, never musical quality.",
+      "code_callers": [
+        "scripts/evaluate_dna_screen.py:7",
+        "scripts/evaluate_dna_variants.py:78",
+        "scripts/music_dna_song.py:344",
+        "scripts/research_dj_passages.py:11",
+        "scripts/setup_dna_auditor.py:4",
+        "tests/test_dna_audio.py:6",
+        "tests/test_music_dna_song.py:160",
+        "tests/test_runpod_worker.py:170",
+        "tests/test_runpod_worker.py:171",
+        "tests/test_song_duration.py:23"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/check_style_overlap.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Local waveform-reuse diagnostic; not a perceptual novelty or quality test.",
+      "code_callers": [
+        "scripts/demonstrations.py:33",
+        "scripts/demonstrations.py:132",
+        "tests/integration/verify_demonstration_overlap.py:14",
+        "tests/test_style_overlap.py:12"
+      ],
+      "documented_references": [
+        "docs/blood-training-run.md:174",
+        "docs/musician-training-run.md:100",
+        "docs/style-adapter-effect.md:112",
+        "docs/style-adapter-effect.md:113",
+        "docs/style-waveform-diagnostics.md:87"
+      ]
+    },
+    {
+      "path": "scripts/cloud_blood_run.sh",
+      "area": "Cloud qualification and budgets",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/cloud_blood_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Approved Blood Club research only; execute in the pinned GPU checkout.",
+      "code_callers": [
+        "scripts/cloud_blood_run.sh:39",
+        "scripts/cloud_blood_run.sh:47",
+        "scripts/cloud_blood_run.sh:49",
+        "tests/test_blood_training.py:10"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/cloud_club_benchmark.sh",
+      "area": "Cloud qualification and budgets",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/cloud_dj_warm.sh",
+      "area": "Cloud qualification and budgets",
+      "purpose": "",
+      "code_callers": [
+        "scripts/afro_house_trial.py:25",
+        "scripts/afro_house_trial.py:34",
+        "scripts/dj_sample_trial.py:85",
+        "scripts/dj_sample_trial.py:144",
+        "scripts/dj_sample_trial.py:179",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/vast_trial.py:138",
+        "scripts/vast_trial.py:273",
+        "tests/test_dj_sung_package.py:29",
+        "tests/test_vast_trial.py:19",
+        "tests/test_vast_trial.py:42"
+      ],
+      "documented_references": [
+        "docs/DJ_INTEGRATED_QUALIFICATION.md:13",
+        "docs/ai-dj-warm-worker.md:49",
+        "docs/dj-reference-styles.md:47"
+      ]
+    },
+    {
+      "path": "scripts/cloud_music_batch.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Pinned-model research batch, run from the ACE-Step checkout; no input audio.",
+      "code_callers": [
+        "scripts/cloud_club_benchmark.sh:11",
+        "scripts/cloud_club_benchmark.sh:13",
+        "scripts/cloud_club_benchmark.sh:15",
+        "tests/test_cloud_music_batch.py:87"
+      ],
+      "documented_references": [
+        "docs/cloud-music-trial.md:101"
+      ]
+    },
+    {
+      "path": "scripts/cloud_music_setup.sh",
+      "area": "Cloud qualification and budgets",
+      "purpose": "",
+      "code_callers": [
+        "scripts/afro_house_trial.py:25",
+        "scripts/afro_house_trial.py:34",
+        "scripts/cloud_club_benchmark.sh:10",
+        "scripts/cloud_club_benchmark.sh:14",
+        "scripts/cloud_dj_warm.sh:20",
+        "scripts/cloud_dj_warm.sh:43",
+        "scripts/dj_sample_trial.py:85",
+        "scripts/dj_sample_trial.py:144",
+        "scripts/dj_sample_trial.py:179",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/vast_trial.py:273",
+        "tests/test_afro_house_trial.py:50",
+        "tests/test_cloud_music_batch.py:35",
+        "tests/test_cloud_music_batch.py:69"
+      ],
+      "documented_references": [
+        "docs/DJ_RELIABILITY_QUALIFICATION.md:9",
+        "docs/cloud-music-trial.md:100"
+      ]
+    },
+    {
+      "path": "scripts/cloud_musician_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Execute the bounded, authorized musician-reference trial in the pinned checkout.",
+      "code_callers": [
+        "tests/test_cloud_musician_trial.py:9"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/cloud_style_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Approved isolated adapter research. Run from the pinned ACE-Step checkout.",
+      "code_callers": [
+        "scripts/cloud_blood_trial.py:10",
+        "scripts/cloud_musician_trial.py:13",
+        "tests/test_cloud_style_trial.py:10"
+      ],
+      "documented_references": [
+        "docs/style-training-pilot.md:50"
+      ]
+    },
+    {
+      "path": "scripts/club_benchmark_cases.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Paired text-only club-generation benchmark; no reference audio or adapters.",
+      "code_callers": [
+        "scripts/afro_house_trial.py:28",
+        "scripts/afro_house_trial.py:36",
+        "scripts/afro_house_trial.py:270",
+        "scripts/cloud_club_benchmark.sh:11",
+        "scripts/cloud_club_benchmark.sh:15",
+        "scripts/cloud_dj_warm.sh:22",
+        "scripts/cloud_dj_warm.sh:43",
+        "scripts/cloud_music_batch.py:119",
+        "scripts/cloud_music_batch.py:122",
+        "scripts/dj_sample_trial.py:85",
+        "scripts/dj_sample_trial.py:144",
+        "scripts/dj_sample_trial.py:179",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/dj_track_worker.py:44",
+        "scripts/review_cloud_music.py:63",
+        "tests/test_dj_image.py:14",
+        "tests/test_dj_model_study.py:231"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/club_studies.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Bounded original club studies, using Jamloom's existing procedural palette.",
+      "code_callers": [
+        "scripts/dj_track_worker.py:91",
+        "scripts/dj_track_worker.py:234",
+        "tests/test_club_studies.py:5"
+      ],
+      "documented_references": [
+        "docs/ai-dj-baseline.md:144"
+      ]
+    },
+    {
+      "path": "scripts/compare_dj_sound.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Stream full reference/generated recordings into descriptive stereo and rhythm measurements.",
+      "code_callers": [
+        "tests/test_dj_sound.py:6"
+      ],
+      "documented_references": [
+        "docs/dj-sound-research.md:64"
+      ]
+    },
+    {
+      "path": "scripts/compare_ios_taste.mjs",
+      "area": "Music DNA",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/ios-product-parity.md:101"
+      ]
+    },
+    {
+      "path": "scripts/compare_portability.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Compare actual plans/event frames and PCM; never infer Mac execution from Linux.",
+      "code_callers": [
+        ".github/workflows/core.yml:151",
+        ".github/workflows/core.yml:154",
+        "scripts/mac_smoke.sh:64",
+        "scripts/q0_linux_trial.py:9",
+        "scripts/q0_wasm_trial.py:11",
+        "tests/integration/verify_tools.py:15"
+      ],
+      "documented_references": [
+        "apps/web/README.md:149",
+        "docs/acoustic-review.md:79",
+        "docs/club-direction.md:122",
+        "docs/ios-instant-remix.md:171",
+        "docs/mac-portability.md:81",
+        "docs/r0-report.md:135",
+        "docs/r0-validation-followup.md:151",
+        "docs/web-instant-remix.md:172",
+        "docs/web-recovery.md:77"
+      ]
+    },
+    {
+      "path": "scripts/demonstrations.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "R1 local, offline edit capture. Exports are evaluation material, never training approval.",
+      "code_callers": [
+        "scripts/r1_smoke.py:16",
+        "tests/integration/verify_demonstration_overlap.py:13",
+        "tests/integration/verify_demonstrations.py:14"
+      ],
+      "documented_references": [
+        "docs/r1-demonstrations.md:39",
+        "docs/r1-demonstrations.md:110",
+        "docs/r1-demonstrations.md:112",
+        "docs/r1-demonstrations.md:119",
+        "docs/r1-demonstrations.md:137",
+        "docs/r1-demonstrations.md:140",
+        "docs/r1-demonstrations.md:142"
+      ]
+    },
+    {
+      "path": "scripts/dj_composition.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Original note/stem guides for a bounded house/bass generation experiment.",
+      "code_callers": [
+        "scripts/cloud_dj_warm.sh:32",
+        "scripts/cloud_dj_warm.sh:51",
+        "scripts/dj_sample_trial.py:137",
+        "scripts/dj_sample_trial.py:144",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/dj_track_worker.py:185",
+        "tests/test_dj_composition.py:5",
+        "tests/test_dj_composition.py:24",
+        "tests/test_dj_image.py:14",
+        "tests/test_dj_sample_trial.py:176"
+      ],
+      "documented_references": [
+        "docs/dj-composition-guides.md:40"
+      ]
+    },
+    {
+      "path": "scripts/dj_gpu_qualification.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Three bounded fresh house tracks on the existing pinned GPU environment.",
+      "code_callers": [
+        "tests/test_dj_track_worker.py:11"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/dj_model_study.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Fixed, unqualified base/turbo comparison; never selected by production requests.",
+      "code_callers": [
+        "scripts/afro_house_qualification.py:231",
+        "scripts/afro_house_trial.py:27",
+        "scripts/afro_house_trial.py:36",
+        "scripts/afro_house_trial.py:268",
+        "scripts/cloud_dj_warm.sh:24",
+        "scripts/cloud_dj_warm.sh:45",
+        "scripts/dj_sample_trial.py:65",
+        "scripts/dj_sample_trial.py:85",
+        "scripts/dj_sample_trial.py:341",
+        "scripts/dj_sample_trial.py:388",
+        "scripts/dj_warm_engine.py:174",
+        "scripts/render_dj_local_study.py:13",
+        "scripts/review_dj_models.py:11",
+        "tests/test_dj_model_study.py:18",
+        "tests/test_dj_model_study.py:125",
+        "tests/test_dj_model_study.py:231"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/dj_renderer_readiness.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Bounded startup diagnosis. Caller retains the independent watchdog/finally cleanup.",
+      "code_callers": [
+        "scripts/vast_trial.py:288",
+        "tests/test_dj_renderer_readiness.py:12",
+        "tests/test_vast_trial.py:297",
+        "tests/test_vast_trial.py:345"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/dj_sample_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Owner-approved two-track listening trial; reuses the bounded Vast controller.",
+      "code_callers": [
+        "tests/test_dj_flow_archive.py:11",
+        "tests/test_dj_model_study.py:19",
+        "tests/test_dj_model_study.py:45",
+        "tests/test_dj_model_study.py:51",
+        "tests/test_dj_model_study.py:81",
+        "tests/test_dj_model_study.py:130",
+        "tests/test_dj_model_study.py:258",
+        "tests/test_dj_sample_trial.py:12",
+        "tests/test_dj_sample_trial.py:21",
+        "tests/test_dj_sample_trial.py:62",
+        "tests/test_dj_sample_trial.py:88",
+        "tests/test_dj_sample_trial.py:123",
+        "tests/test_dj_sample_trial.py:234",
+        "tests/test_dj_warm_engine.py:24"
+      ],
+      "documented_references": [
+        "docs/DJ_GENRE_MODELS.md:27",
+        "docs/ai-dj-finish-campaign.md:81",
+        "docs/dj-audible-comparison.md:36",
+        "docs/dj-continuity-flow.md:22",
+        "docs/dj-flow-buffer.md:33",
+        "docs/dj-generation-flow.md:9",
+        "docs/dj-house-consistency.md:13",
+        "docs/dj-http-flow.md:14",
+        "docs/dj-isolated-singing.md:40",
+        "docs/dj-model-comparison.md:69",
+        "docs/dj-preferred-consistency.md:9",
+        "docs/dj-sung-hooks.md:17",
+        "docs/dj-vocal-mode.md:13",
+        "docs/dj-vocal-mode.md:20"
+      ]
+    },
+    {
+      "path": "scripts/dj_spoken_hooks.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Local spoken-hook audition using cached stock voices; never enables serving.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/dj_sung_hooks.py",
+      "area": "Singing and vocal research",
+      "purpose": "Bounded musical-vocal experiment on Jamloom originals; listening required.",
+      "code_callers": [
+        "scripts/cloud_dj_warm.sh:35",
+        "scripts/cloud_dj_warm.sh:54",
+        "scripts/dj_sample_trial.py:152",
+        "scripts/dj_sample_trial.py:179",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/dj_warm_engine.py:171",
+        "tests/test_dj_sung_hooks.py:11"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/dj_track_worker.py",
+      "area": "DJ and arrangement research",
+      "purpose": "One original 60-second source track. No provider rental, source audio or network setup.",
+      "code_callers": [
+        "apps/site/lib/dj-local-worker.ts:24",
+        "scripts/afro_house_qualification.py:232",
+        "scripts/afro_house_trial.py:26",
+        "scripts/afro_house_trial.py:35",
+        "scripts/afro_house_trial.py:269",
+        "scripts/cloud_dj_warm.sh:22",
+        "scripts/cloud_dj_warm.sh:43",
+        "scripts/dj_composition.py:17",
+        "scripts/dj_gpu_qualification.py:9",
+        "scripts/dj_model_study.py:10",
+        "scripts/dj_sample_trial.py:66",
+        "scripts/dj_sample_trial.py:85",
+        "scripts/dj_sample_trial.py:112",
+        "scripts/dj_sample_trial.py:144",
+        "scripts/dj_sample_trial.py:151",
+        "scripts/dj_sample_trial.py:179",
+        "scripts/dj_sample_trial.py:215",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/dj_spoken_hooks.py:14",
+        "scripts/dj_sung_hooks.py:9",
+        "scripts/dj_vocal.py:6",
+        "scripts/dj_warm_engine.py:18",
+        "scripts/render_dj_local_study.py:14",
+        "scripts/review_dj_models.py:12",
+        "scripts/review_dj_sung_hooks.py:11",
+        "scripts/vast_trial.py:273",
+        "tests/test_dj_composition.py:24",
+        "tests/test_dj_composition.py:33",
+        "tests/test_dj_composition.py:41",
+        "tests/test_dj_image.py:6",
+        "tests/test_dj_image.py:14",
+        "tests/test_dj_model_study.py:142",
+        "tests/test_dj_model_study.py:231",
+        "tests/test_dj_track_worker.py:10",
+        "tests/test_dj_track_worker.py:15",
+        "tests/test_dj_track_worker.py:39",
+        "tests/test_dj_track_worker.py:50",
+        "tests/test_dj_track_worker.py:90",
+        "tests/test_dj_track_worker.py:99",
+        "tests/test_dj_track_worker.py:101",
+        "tests/test_dj_warm_engine.py:103"
+      ],
+      "documented_references": [
+        "docs/ai-dj-rolling-worker.md:7"
+      ]
+    },
+    {
+      "path": "scripts/dj_vocal.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Sparse original hook candidate; listening qualification is required before promotion.",
+      "code_callers": [
+        "scripts/afro_house_trial.py:27",
+        "scripts/afro_house_trial.py:35",
+        "scripts/afro_house_trial.py:270",
+        "scripts/check_dj_vocal_boundaries.py:10",
+        "scripts/check_dj_vocal_boundaries.py:17",
+        "scripts/check_dj_vocal_boundaries.py:18",
+        "scripts/check_dj_vocal_onsets.py:10",
+        "scripts/check_dj_vocal_onsets.py:17",
+        "scripts/check_dj_vocal_onsets.py:18",
+        "scripts/cloud_dj_warm.sh:22",
+        "scripts/cloud_dj_warm.sh:43",
+        "scripts/dj_model_study.py:43",
+        "scripts/dj_sample_trial.py:85",
+        "scripts/dj_sample_trial.py:144",
+        "scripts/dj_sample_trial.py:179",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/dj_spoken_hooks.py:15",
+        "scripts/dj_sung_hooks.py:10",
+        "scripts/dj_warm_engine.py:19",
+        "scripts/review_dj_retained_phrase.py:8",
+        "scripts/review_dj_sung_hooks.py:56",
+        "scripts/vast_trial.py:273",
+        "tests/test_dj_image.py:14",
+        "tests/test_dj_sample_trial.py:142",
+        "tests/test_dj_sample_trial.py:161",
+        "tests/test_dj_vocal.py:6"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/dj_warm_engine.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Bounded, authenticated loopback renderer; rental shutdown is independently supervised.",
+      "code_callers": [
+        ".github/workflows/ai-dj-image.yml:53",
+        "scripts/afro_house_trial.py:26",
+        "scripts/afro_house_trial.py:35",
+        "scripts/afro_house_trial.py:269",
+        "scripts/cloud_dj_warm.sh:22",
+        "scripts/cloud_dj_warm.sh:43",
+        "scripts/cloud_dj_warm.sh:65",
+        "scripts/dj_sample_trial.py:85",
+        "scripts/dj_sample_trial.py:144",
+        "scripts/dj_sample_trial.py:179",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/vast_trial.py:273",
+        "tests/test_dj_image.py:14",
+        "tests/test_dj_model_study.py:20",
+        "tests/test_dj_warm_engine.py:19"
+      ],
+      "documented_references": [
+        "services/ai-dj/README.md:23"
+      ]
+    },
+    {
+      "path": "scripts/dna_direction.py",
+      "area": "Music DNA",
+      "purpose": "Shared catalogue-based creative constraints, not measured reference audio features.",
+      "code_callers": [
+        "scripts/dna_sound.py:7",
+        "scripts/evaluate_dna.py:10",
+        "scripts/evaluate_dna_screen.py:8",
+        "scripts/evaluate_music_coverage.py:13",
+        "scripts/music_dna_song.py:17",
+        "scripts/train_dna_feedback.py:32",
+        "services/runpod/handler.py:125",
+        "services/runpod/pipeline.py:17",
+        "tests/test_dna_audio.py:7",
+        "tests/test_dna_expansion.py:12",
+        "tests/test_dna_sound.py:8",
+        "tests/test_music_dna_song.py:14",
+        "tests/test_music_dna_song.py:15"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/dna_language.py",
+      "area": "Music DNA",
+      "purpose": "Pinned singer languages and script-aware lyric bounds; not pronunciation certification.",
+      "code_callers": [
+        "scripts/cloud_dj_warm.sh:35",
+        "scripts/cloud_dj_warm.sh:54",
+        "scripts/dj_sample_trial.py:179",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/dna_sound.py:8",
+        "scripts/evaluate_music_coverage.py:14",
+        "scripts/music_dna_song.py:19",
+        "scripts/singing_response.py:15",
+        "services/runpod/handler.py:126",
+        "tests/test_dna_expansion.py:11",
+        "tests/test_music_dna_song.py:17"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/dna_sound.py",
+      "area": "Music DNA",
+      "purpose": "Confidence-aware song descriptions from model knowledge, never measured audio.",
+      "code_callers": [
+        "scripts/music_dna_song.py:18",
+        "tests/test_dna_sound.py:7",
+        "tests/test_music_dna_song.py:16"
+      ],
+      "documented_references": [
+        "docs/music-dna-completion.md:19"
+      ]
+    },
+    {
+      "path": "scripts/evaluate_dj_cues.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Metadata-only cue prior; never resolves track IDs into audio downloads.",
+      "code_callers": [
+        "tests/test_dj_cues.py:5"
+      ],
+      "documented_references": [
+        "docs/ai-dj-baseline.md:140"
+      ]
+    },
+    {
+      "path": "scripts/evaluate_dna.py",
+      "area": "Music DNA",
+      "purpose": "Reproducible local Music DNA coverage; never creates human ratings or training labels.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/music-dna-expanded.md:73"
+      ]
+    },
+    {
+      "path": "scripts/evaluate_dna_screen.py",
+      "area": "Music DNA",
+      "purpose": "Check the existing cleared catalogue; publisher genre labels are not vocal-song listening judgments.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/song-generation-repair.md:61"
+      ]
+    },
+    {
+      "path": "scripts/evaluate_dna_variants.py",
+      "area": "Music DNA",
+      "purpose": "Render two distinct local seeds from one saved plan; never infer listening quality.",
+      "code_callers": [
+        "tests/test_music_dna_song.py:18",
+        "tests/test_music_dna_song.py:136"
+      ],
+      "documented_references": [
+        "docs/music-validation.md:125"
+      ]
+    },
+    {
+      "path": "scripts/evaluate_groove_timing.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Small MIDI timing/velocity experiment with entire drummers held out.",
+      "code_callers": [
+        "tests/test_groove_timing.py:5"
+      ],
+      "documented_references": [
+        "docs/ai-dj-baseline.md:142"
+      ]
+    },
+    {
+      "path": "scripts/evaluate_music_coverage.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Serial local GPU coverage, with verified R2 publication of every completed test take.",
+      "code_callers": [
+        "scripts/evaluate_dna_variants.py:83",
+        "tests/test_dna_expansion.py:16"
+      ],
+      "documented_references": [
+        "docs/music-validation.md:42"
+      ]
+    },
+    {
+      "path": "scripts/fetch_open_source_audit.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Recreate the reviewed source-only audit cache; never installs or executes upstream code.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/OPEN_SOURCE_AUDIT.md:251"
+      ]
+    },
+    {
+      "path": "scripts/inspect_wav.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Independently decode PCM16 with Python's standard library; no engine imports.",
+      "code_callers": [
+        "scripts/demonstrations.py:16",
+        "scripts/demonstrations.py:31",
+        "scripts/prepare_evaluation.py:13",
+        "scripts/prepare_evaluation.py:119",
+        "scripts/prepare_voice_led_review.py:11",
+        "scripts/prepare_voice_research.py:14",
+        "scripts/q0_audit.py:14",
+        "scripts/r0.py:20",
+        "scripts/review_cloud_music.py:15",
+        "scripts/review_dj_models.py:8",
+        "scripts/review_dj_opening.py:7",
+        "scripts/review_dj_qualification.py:6",
+        "scripts/review_dj_warm.py:10",
+        "scripts/review_style_trial.py:11",
+        "tests/integration/verify_remix.py:18",
+        "tests/integration/verify_render.py:12"
+      ],
+      "documented_references": [
+        "docs/architecture.md:97",
+        "docs/build.md:29",
+        "docs/build.md:68",
+        "docs/m0a-report.md:78"
+      ]
+    },
+    {
+      "path": "scripts/ios_smoke.sh",
+      "area": "Build, packaging and local servers",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "apps/ios/README.md:43",
+        "docs/CLOSURE_FOLLOWTHROUGH.md:10",
+        "docs/COMPLETION_CURRENT.md:25",
+        "docs/ios-instant-remix.md:143"
+      ]
+    },
+    {
+      "path": "scripts/local_call_edit.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Blend recorded calls into a song while preserving the surrounding performance.",
+      "code_callers": [
+        "scripts/singer_studio.py:19",
+        "tests/test_local_call_edit.py:12"
+      ],
+      "documented_references": [
+        "docs/local-call-edit.md:56",
+        "docs/local-call-edit.md:87",
+        "docs/local-call-edit.md:91"
+      ]
+    },
+    {
+      "path": "scripts/mac_smoke.sh",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/arrangement-review.md:36",
+        "docs/arrangement-review.md:117",
+        "docs/club-direction.md:59",
+        "docs/creative-strategies.md:81",
+        "docs/feedback-reverb.md:16",
+        "docs/hiphop-diversity.md:37",
+        "docs/hiphop-diversity.md:93",
+        "docs/instrument-articulation.md:137",
+        "docs/ios-instant-remix.md:75",
+        "docs/ios-instant-remix.md:140",
+        "docs/mac-agent-handoff.md:624",
+        "docs/mac-portability.md:72",
+        "docs/plan-import.md:76",
+        "docs/progress.md:2440",
+        "docs/r0-report.md:40",
+        "docs/r0-report.md:116",
+        "docs/r0-validation-followup.md:128",
+        "docs/source-motif.md:65",
+        "docs/sustained-instruments.md:51",
+        "docs/timeline.md:142",
+        "docs/vocal-boundaries.md:101",
+        "docs/web-instant-remix.md:116",
+        "docs/web-instant-remix.md:167",
+        "docs/workflow-hardening.md:125"
+      ]
+    },
+    {
+      "path": "scripts/make_fixture.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Create a labeled synthetic input; never records a person or microphone.",
+      "code_callers": [
+        ".github/workflows/core.yml:119",
+        "assets/manifests/m0-remix.json:22",
+        "scripts/benchmark_render.py:15",
+        "tests/integration/verify_evaluation.py:12",
+        "tests/integration/verify_plan_import.py:15",
+        "tests/integration/verify_recording.py:11",
+        "tests/integration/verify_remix.py:20",
+        "tests/integration/verify_tools.py:16"
+      ],
+      "documented_references": [
+        "README.md:108",
+        "docs/licenses.md:126",
+        "docs/progress.md:2441"
+      ]
+    },
+    {
+      "path": "scripts/measure_academy_capture.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Inspect actual browser recorder WAVs; signal metrics never imply musical quality.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/ACADEMY_IMPLEMENTATION.md:62",
+        "docs/ACADEMY_IMPLEMENTATION.md:170"
+      ]
+    },
+    {
+      "path": "scripts/measure_academy_endurance.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Decode every retained set with bounded memory; no musical-quality inference.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/academy-release-checks.md:140"
+      ]
+    },
+    {
+      "path": "scripts/measure_academy_sets.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Validate retained browser mini-sets; signal checks do not establish musical quality.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/music_dna_song.py",
+      "area": "Music DNA",
+      "purpose": "Local favorites -> original song plan -> pinned singer. No reference audio.",
+      "code_callers": [
+        "apps/site/lib/dna-song.ts:101",
+        "apps/site/lib/dna-song.ts:119",
+        "apps/site/tests/dna-commerce-browser.mjs:16",
+        "apps/site/tests/dna-song.test.ts:61",
+        "scripts/evaluate_dna.py:26",
+        "scripts/evaluate_dna_variants.py:11",
+        "scripts/train_dna_feedback.py:40",
+        "services/runpod/handler.py:124",
+        "services/runpod/pipeline.py:16",
+        "tests/test_dna_expansion.py:13",
+        "tests/test_music_dna_song.py:12",
+        "tests/test_music_dna_song.py:34",
+        "tests/test_music_dna_song.py:41",
+        "tests/test_music_dna_song.py:66",
+        "tests/test_runpod_worker.py:165",
+        "tests/test_runpod_worker.py:166",
+        "tests/test_runpod_worker.py:176",
+        "tests/test_runpod_worker.py:177"
+      ],
+      "documented_references": [
+        "docs/music-dna-songs.md:42",
+        "docs/music-dna-sound-profiles.md:27"
+      ]
+    },
+    {
+      "path": "scripts/package_handoff.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Bundle committed history and synthetic Linux references for the Mac checkpoint.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/phrase_articulation.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Research-only piano articulation over an existing consented Call & Response score.",
+      "code_callers": [
+        "tests/test_phrase_articulation.py:15"
+      ],
+      "documented_references": [
+        "docs/phrase-articulation.md:94"
+      ]
+    },
+    {
+      "path": "scripts/prepare_academy_audio.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Prepare pinned CC0 artist recordings, independently of the generative engine.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/ACADEMY_IMPLEMENTATION.md:62",
+        "docs/ACADEMY_IMPLEMENTATION.md:169",
+        "docs/OWNER_HANDBOOK.md:603",
+        "docs/academy-completion.md:80"
+      ]
+    },
+    {
+      "path": "scripts/prepare_acoustic_bank.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Reproduce the pinned CC0 instrument bank with Python's standard library only.",
+      "code_callers": [
+        "scripts/prepare_guitar_bank.py:6"
+      ],
+      "documented_references": [
+        "docs/acoustic-review.md:49",
+        "docs/instrument-articulation.md:51",
+        "docs/instrument-articulation.md:59",
+        "docs/licenses.md:95"
+      ]
+    },
+    {
+      "path": "scripts/prepare_blood_training.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Prepare the owner-selected Blood Club pilot locally; never rent or train.",
+      "code_callers": [
+        "tests/test_blood_training.py:9"
+      ],
+      "documented_references": [
+        "docs/blood-training.md:100"
+      ]
+    },
+    {
+      "path": "scripts/prepare_dj_continuity_review.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Retained originals, actual mixer captures; no loudness remastering or new generation.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/prepare_dj_stem_performance.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Bounded local arrangement of one retained original; never new generated music.",
+      "code_callers": [
+        "tests/test_dj_stem_preparation.py:12"
+      ],
+      "documented_references": [
+        "docs/COHERENT_PERFORMANCE.md:28"
+      ]
+    },
+    {
+      "path": "scripts/prepare_electronic_bank.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Build original electronic one-shots from equations; no reference audio input.",
+      "code_callers": [
+        "assets/manifests/electronic-v1.json:3",
+        "assets/manifests/electronic-v2.json:3",
+        "scripts/cloud_dj_warm.sh:32",
+        "scripts/cloud_dj_warm.sh:51",
+        "scripts/club_studies.py:17",
+        "scripts/club_studies.py:171",
+        "scripts/club_studies.py:198",
+        "scripts/dj_composition.py:11",
+        "scripts/dj_sample_trial.py:144",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/dj_track_worker.py:93",
+        "scripts/dj_track_worker.py:234",
+        "scripts/verify_electronic_assets.py:14",
+        "tests/test_dj_composition.py:24",
+        "tests/test_dj_image.py:14"
+      ],
+      "documented_references": [
+        "docs/TRAINING_DATA_REGISTRY.md:19",
+        "docs/ai-dj-baseline.md:89",
+        "docs/licenses.md:109"
+      ]
+    },
+    {
+      "path": "scripts/prepare_evaluation.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Freeze a local consent ledger, render three seeds and prepare blinded packets.",
+      "code_callers": [
+        "tests/integration/verify_evaluation.py:13"
+      ],
+      "documented_references": [
+        "docs/evaluation-batch.md:16",
+        "docs/evaluation-batch.md:73"
+      ]
+    },
+    {
+      "path": "scripts/prepare_guitar_bank.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Reproduce the pinned guitar bank using the existing acoustic PCM preparation.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/guitar.md:87",
+        "docs/licenses.md:177"
+      ]
+    },
+    {
+      "path": "scripts/prepare_interpolation.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Emit the fixed full-band interpolation table; no audio or runtime dependency.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/interpolation-table.md:10",
+        "docs/interpolation-table.md:140"
+      ]
+    },
+    {
+      "path": "scripts/prepare_ios_studio.py",
+      "area": "Build, packaging and local servers",
+      "purpose": "Package the audited shared performance console for the native iOS app.",
+      "code_callers": [
+        "apps/ios/Jamloom.xcodeproj/project.pbxproj:506",
+        "apps/ios/project.yml:52",
+        "tests/test_studio_packaging.py:10"
+      ],
+      "documented_references": [
+        "apps/ios/README.md:12",
+        "docs/KARAOKE_ADOPTION.md:20",
+        "docs/SINGING_FREE_CATALOGUE.md:53"
+      ]
+    },
+    {
+      "path": "scripts/prepare_listening.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Prepare one blinded pilot block from three remixes and the fixed-loop control.",
+      "code_callers": [
+        "scripts/prepare_evaluation.py:14",
+        "scripts/prepare_evaluation.py:119",
+        "scripts/r0.py:21",
+        "tests/integration/verify_tools.py:17"
+      ],
+      "documented_references": [
+        "docs/evaluation-protocol.md:49",
+        "docs/mac-agent-handoff.md:650",
+        "docs/r0-validation-followup.md:163",
+        "docs/workflow-hardening.md:65"
+      ]
+    },
+    {
+      "path": "scripts/prepare_listening_review.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Copy one verified frozen block into a fresh, local-only listening form; never supply ratings.",
+      "code_callers": [
+        "scripts/prepare_listening_study.py:8",
+        "tests/integration/verify_listening_review.py:5"
+      ],
+      "documented_references": [
+        "docs/listening-review.md:42"
+      ]
+    },
+    {
+      "path": "scripts/prepare_listening_study.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Prepare every frozen blind block for one resumable owner review; never create ratings.",
+      "code_callers": [
+        "tests/integration/verify_listening_review.py:6",
+        "tests/listening_study_browser.mjs:17"
+      ],
+      "documented_references": [
+        "docs/REMAINING_CLOSURE.md:24"
+      ]
+    },
+    {
+      "path": "scripts/prepare_local_call_review.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Compare bounded edits at the same playback gain, preserving earlier auditions.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/local-call-edit.md:60",
+        "docs/local-call-edit.md:96"
+      ]
+    },
+    {
+      "path": "scripts/prepare_mix_replay.mjs",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "",
+      "code_callers": [
+        "apps/web/tests/instrument-take.mjs:123"
+      ],
+      "documented_references": [
+        "docs/mix-action-replay.md:26",
+        "docs/mix-action-replay.md:81"
+      ]
+    },
+    {
+      "path": "scripts/prepare_musician_candidates.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Prepare four owner-authorized references for review; no training or upload.",
+      "code_callers": [
+        "tests/test_musician_candidates.py:9"
+      ],
+      "documented_references": [
+        "docs/musician-training-preparation.md:106"
+      ]
+    },
+    {
+      "path": "scripts/prepare_practice_audio.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Rebuild the full-length, CC0 practice catalogue from pinned artist uploads.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/practice-library-ten.md:42",
+        "docs/practice-library-ten.md:68",
+        "docs/practice-library.md:30",
+        "docs/practice-library.md:50"
+      ]
+    },
+    {
+      "path": "scripts/prepare_produced_targets.mjs",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/LOCAL_AUDIO_COMPLETION.md:36"
+      ]
+    },
+    {
+      "path": "scripts/prepare_singer_review.py",
+      "area": "Singing and vocal research",
+      "purpose": "Build the private two-voice listening page from verified singer renders.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/gentle-singer.md:84",
+        "docs/singing-response.md:116"
+      ]
+    },
+    {
+      "path": "scripts/prepare_singing_holdout.py",
+      "area": "Singing and vocal research",
+      "purpose": "Fetch only the frozen evaluation subset; never unpack the full VocalSet archive.",
+      "code_callers": [
+        "tests/test_singing_holdout.py:10"
+      ],
+      "documented_references": [
+        "docs/SINGING_DIFFERENCE.md:25",
+        "docs/SINGING_HOLDOUT.md:24"
+      ]
+    },
+    {
+      "path": "scripts/prepare_singing_recording.mjs",
+      "area": "Singing and vocal research",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/LOCAL_AUDIO_FOLLOWTHROUGH.md:30"
+      ]
+    },
+    {
+      "path": "scripts/prepare_style_candidates.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Prepare local review candidates, never an automatically accepted training set.",
+      "code_callers": [
+        "scripts/prepare_blood_training.py:12",
+        "scripts/prepare_musician_candidates.py:13",
+        "tests/test_style_candidates.py:10"
+      ],
+      "documented_references": [
+        "docs/style-training-pilot.md:165"
+      ]
+    },
+    {
+      "path": "scripts/prepare_voice_led_review.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Private, local voice-led audition using the completed musician trial.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/voice-led-review.md:68"
+      ]
+    },
+    {
+      "path": "scripts/prepare_voice_research.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Render the local owner-only research comparison; never uploads recordings.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/voice-research.md:87"
+      ]
+    },
+    {
+      "path": "scripts/prepare_voice_transforms.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Prepare private voice-transform controls from an existing consented score.",
+      "code_callers": [
+        "scripts/align_word_crops.py:8",
+        "scripts/phrase_articulation.py:11",
+        "tests/integration/verify_plan_import.py:17",
+        "tests/integration/verify_word_timing.py:7"
+      ],
+      "documented_references": [
+        "docs/vocal-echo.md:101",
+        "docs/voice-transforms.md:116",
+        "docs/word-timing.md:51"
+      ]
+    },
+    {
+      "path": "scripts/product_audio_baseline.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Expand the preserved Q0 baseline to ten authorized inputs, without training.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/full-product-implementation.md:22",
+        "docs/full-product-implementation.md:140"
+      ]
+    },
+    {
+      "path": "scripts/q0_audit.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Freeze five authorized local inputs and audit the unchanged renderer for Q0.",
+      "code_callers": [
+        "experiments/songs/night_current.py:16",
+        "scripts/club_studies.py:18",
+        "scripts/product_audio_baseline.py:5",
+        "scripts/q0_authored_evidence.py:9",
+        "scripts/q0_authored_score.py:9",
+        "scripts/q0_authored_trial.py:12",
+        "scripts/q0_decay_build.py:9",
+        "scripts/q0_development.py:11",
+        "scripts/q0_development_trial.py:12",
+        "scripts/q0_expression_trial.py:12",
+        "scripts/q0_groove_reference.py:12",
+        "scripts/q0_guitar_accent_trial.py:13",
+        "scripts/q0_guitar_layer_trial.py:12",
+        "scripts/q0_independent_packet.py:10",
+        "scripts/q0_linux_trial.py:10",
+        "scripts/q0_listening_results.py:9",
+        "scripts/q0_measure_comparisons.py:13",
+        "scripts/q0_phrase_evidence.py:9",
+        "scripts/q0_phrase_form.py:9",
+        "scripts/q0_phrase_trial.py:11",
+        "scripts/q0_probe_review.py:11",
+        "scripts/q0_recovery_evidence.py:9",
+        "scripts/q0_sfz_samples.py:9",
+        "scripts/q0_voice_integrity.py:10",
+        "scripts/q0_wasm_trial.py:12",
+        "scripts/review_afro_house.py:10",
+        "scripts/review_cloud_music.py:65",
+        "scripts/review_dj_comparison.py:8",
+        "scripts/review_dj_composition.py:9",
+        "scripts/review_dj_models.py:9",
+        "scripts/review_dj_opening.py:8",
+        "scripts/review_dj_qualification.py:7",
+        "scripts/review_dj_quality.py:8",
+        "scripts/review_dj_warm.py:11",
+        "scripts/review_house_study.py:8",
+        "scripts/review_singing_arrangements.py:6",
+        "tests/integration/verify_q0.py:29",
+        "tests/integration/verify_q0.py:30"
+      ],
+      "documented_references": [
+        "docs/ai-dj-baseline.md:89",
+        "docs/full-product-implementation.md:22",
+        "docs/q0-final-report.md:71",
+        "docs/q0-quality-recovery.md:226",
+        "docs/q0-quality-recovery.md:361"
+      ]
+    },
+    {
+      "path": "scripts/q0_authored_evidence.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Decode and measure the authored-score study using the existing analysis environment.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-authored-study.md:115"
+      ]
+    },
+    {
+      "path": "scripts/q0_authored_score.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Original Q0 performance study; no reference audio, training or engine edits.",
+      "code_callers": [
+        "scripts/q0_authored_evidence.py:10",
+        "scripts/q0_authored_trial.py:13",
+        "scripts/q0_development.py:10",
+        "scripts/q0_development_trial.py:120",
+        "tests/integration/verify_q0.py:24"
+      ],
+      "documented_references": [
+        "docs/q0-authored-study.md:13",
+        "docs/q0-final-report.md:74"
+      ]
+    },
+    {
+      "path": "scripts/q0_authored_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Render a fixed-score 2x2 palette/expression study through the frozen C++ core.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-authored-study.md:113"
+      ]
+    },
+    {
+      "path": "scripts/q0_composition.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Q0 copied-plan hypothesis: intact calls, a recurring source-rhythm answer, space.",
+      "code_callers": [
+        "scripts/q0_expression_trial.py:15",
+        "tests/integration/verify_q0.py:23"
+      ],
+      "documented_references": [
+        "docs/q0-final-report.md:74",
+        "docs/q0-five-arm-trial.md:28",
+        "docs/q0-reference-reassessment.md:84"
+      ]
+    },
+    {
+      "path": "scripts/q0_decay_build.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Build an isolated native decay candidate; never edit the production core.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-final-report.md:72",
+        "docs/q0-five-arm-trial.md:22",
+        "docs/q0-five-arm-trial.md:128"
+      ]
+    },
+    {
+      "path": "scripts/q0_development.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Composition-only Q0 hypothesis: source prosody, a recurring hook and thematic development.",
+      "code_callers": [
+        "scripts/q0_development_trial.py:13",
+        "scripts/q0_development_trial.py:120",
+        "tests/integration/verify_q0.py:25"
+      ],
+      "documented_references": [
+        "docs/progress.md:3115",
+        "docs/q0-final-report.md:74",
+        "docs/q0-motif-completion.md:23",
+        "docs/q0-source-development.md:34"
+      ]
+    },
+    {
+      "path": "scripts/q0_development_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Compare new composition against frozen Q0 E, keeping instruments and mixing fixed.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-final-report.md:75",
+        "docs/q0-source-development.md:67",
+        "docs/q0-source-development.md:191"
+      ]
+    },
+    {
+      "path": "scripts/q0_expression.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Isolated plan-level expression experiment; never mutates the engine or input plan.",
+      "code_callers": [
+        "scripts/q0_development_trial.py:120",
+        "scripts/q0_expression_trial.py:13",
+        "scripts/q0_performance.py:6",
+        "tests/integration/verify_q0.py:19"
+      ],
+      "documented_references": [
+        "docs/q0-completion-review.md:143",
+        "docs/q0-final-report.md:73",
+        "docs/q0-quality-recovery.md:230"
+      ]
+    },
+    {
+      "path": "scripts/q0_expression_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Render an A/C diagnostic without pretending missing B/D/E experiments exist.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-completion-review.md:60",
+        "docs/q0-completion-review.md:159",
+        "docs/q0-completion-review.md:286",
+        "docs/q0-final-report.md:75",
+        "docs/q0-five-arm-trial.md:35",
+        "docs/q0-five-arm-trial.md:131",
+        "docs/q0-quality-recovery.md:235",
+        "docs/q0-quality-recovery.md:362"
+      ]
+    },
+    {
+      "path": "scripts/q0_groove_reference.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Descriptive GMD audit only: no profile fitting, training or audio downloads.",
+      "code_callers": [
+        "tests/integration/verify_q0.py:501"
+      ],
+      "documented_references": [
+        "docs/q0-quality-recovery.md:244",
+        "docs/q0-quality-recovery.md:367"
+      ]
+    },
+    {
+      "path": "scripts/q0_guitar_accent_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Check unchanged mixes and compare one controlled guitar-accent plan.",
+      "code_callers": [
+        "tests/integration/verify_q0.py:28"
+      ],
+      "documented_references": [
+        "docs/q0-guitar-single-study.md:28",
+        "docs/q0-guitar-single-study.md:138"
+      ]
+    },
+    {
+      "path": "scripts/q0_guitar_layer_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Isolated guitar dynamics experiments using local pinned assets only.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-final-report.md:72",
+        "docs/q0-guitar-layer-study.md:39",
+        "docs/q0-guitar-layer-study.md:133",
+        "docs/q0-guitar-single-study.md:21",
+        "docs/q0-guitar-single-study.md:134"
+      ]
+    },
+    {
+      "path": "scripts/q0_independent_packet.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Prepare only already-cleared Q0 audio for independent review; never publish it.",
+      "code_callers": [
+        "tests/integration/verify_q0.py:22"
+      ],
+      "documented_references": [
+        "docs/q0-completion-review.md:60",
+        "docs/q0-final-report.md:75",
+        "docs/q0-linux-review-followup.md:46",
+        "docs/q0-linux-review-followup.md:101"
+      ]
+    },
+    {
+      "path": "scripts/q0_linux_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Render the frozen Q0 E plans in the existing local Linux portability container.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-final-report.md:76",
+        "docs/q0-linux-review-followup.md:15",
+        "docs/q0-linux-review-followup.md:95",
+        "docs/q0-motif-completion.md:121",
+        "docs/q0-source-development.md:197"
+      ]
+    },
+    {
+      "path": "scripts/q0_listening_results.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Validate packet-bound Q0 listening forms; never infer votes or pass quality.",
+      "code_callers": [
+        "scripts/q0_development_trial.py:14",
+        "scripts/q0_independent_packet.py:11",
+        "tests/integration/verify_q0.py:21"
+      ],
+      "documented_references": [
+        "docs/q0-completion-review.md:176",
+        "docs/q0-completion-review.md:302",
+        "docs/q0-final-report.md:75",
+        "docs/q0-linux-review-followup.md:115",
+        "docs/q0-source-development.md:207"
+      ]
+    },
+    {
+      "path": "scripts/q0_measure_comparisons.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Check frozen A/C events independently and describe waveform differences, not quality.",
+      "code_callers": [
+        "scripts/q0_authored_evidence.py:11",
+        "scripts/q0_authored_trial.py:14",
+        "scripts/q0_development_trial.py:15",
+        "scripts/q0_expression_trial.py:16",
+        "scripts/q0_guitar_accent_trial.py:14",
+        "scripts/q0_guitar_layer_trial.py:108",
+        "scripts/q0_linux_trial.py:11",
+        "scripts/q0_phrase_evidence.py:10",
+        "scripts/q0_phrase_trial.py:12",
+        "scripts/q0_recovery_evidence.py:10",
+        "scripts/q0_voice_integrity.py:11",
+        "scripts/q0_wasm_trial.py:13",
+        "tests/integration/verify_q0.py:514"
+      ],
+      "documented_references": [
+        "docs/q0-final-report.md:71",
+        "docs/q0-quality-recovery.md:237",
+        "docs/q0-quality-recovery.md:364"
+      ]
+    },
+    {
+      "path": "scripts/q0_performance.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Q0 expression v2: intentional phrase shapes and bounded transition pickups.",
+      "code_callers": [
+        "scripts/q0_development.py:12",
+        "scripts/q0_development_trial.py:120",
+        "scripts/q0_expression_trial.py:14",
+        "scripts/q0_expression_trial.py:142",
+        "tests/integration/verify_q0.py:20"
+      ],
+      "documented_references": [
+        "docs/progress.md:3023",
+        "docs/q0-completion-review.md:142",
+        "docs/q0-final-report.md:73"
+      ]
+    },
+    {
+      "path": "scripts/q0_phrase_evidence.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Decode phrase-form or guitar-mix trials and verify their isolated changes.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-guitar-mix-study.md:29",
+        "docs/q0-guitar-mix-study.md:124",
+        "docs/q0-phrase-form-study.md:92"
+      ]
+    },
+    {
+      "path": "scripts/q0_phrase_form.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Q0 copied-plan study: padded source boundaries and phrase-length call sections.",
+      "code_callers": [
+        "scripts/q0_phrase_evidence.py:11",
+        "scripts/q0_phrase_trial.py:13",
+        "tests/integration/verify_q0.py:26"
+      ],
+      "documented_references": [
+        "docs/q0-final-report.md:74",
+        "docs/q0-phrase-form-study.md:24"
+      ]
+    },
+    {
+      "path": "scripts/q0_phrase_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Compare frozen Q0 mixes with a phrase-form or isolated guitar-layer candidate.",
+      "code_callers": [
+        "scripts/q0_guitar_accent_trial.py:15",
+        "tests/integration/verify_q0.py:27"
+      ],
+      "documented_references": [
+        "docs/q0-guitar-mix-study.md:27",
+        "docs/q0-guitar-mix-study.md:122",
+        "docs/q0-guitar-single-study.md:25",
+        "docs/q0-phrase-form-study.md:90"
+      ]
+    },
+    {
+      "path": "scripts/q0_probe_review.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Measure and copy existing native probes into a fresh local listening directory.",
+      "code_callers": [
+        "scripts/q0_recovery_evidence.py:11"
+      ],
+      "documented_references": [
+        "docs/q0-quality-recovery.md:228",
+        "docs/q0-quality-recovery.md:359"
+      ]
+    },
+    {
+      "path": "scripts/q0_recovery_evidence.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Independently audit five-arm renders and retain metadata, never private audio.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-completion-review.md:290",
+        "docs/q0-five-arm-trial.md:40",
+        "docs/q0-five-arm-trial.md:139"
+      ]
+    },
+    {
+      "path": "scripts/q0_sfz_samples.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Create local SFZ probes from existing hash-pinned CC0 samples; never download assets.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-final-report.md:72",
+        "docs/q0-quality-recovery.md:239",
+        "docs/q0-quality-recovery.md:388"
+      ]
+    },
+    {
+      "path": "scripts/q0_voice_integrity.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Independently reconstruct untransformed 48 kHz vocal stems; no recognition claim.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-guitar-layer-study.md:144"
+      ]
+    },
+    {
+      "path": "scripts/q0_wasm_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Execute Q0's same imported E plans in an isolated Node/WebAssembly CLI.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/q0-completion-review.md:293",
+        "docs/q0-final-report.md:76",
+        "docs/q0-source-development.md:193"
+      ]
+    },
+    {
+      "path": "scripts/r0.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Local R0 planning/evaluation adapter. All sound is rendered by the existing C++ engine.",
+      "code_callers": [
+        "datasets/examples/r0-manifest.json:49",
+        "datasets/examples/r0-manifest.json:79",
+        "datasets/examples/r0-manifest.json:109",
+        "datasets/examples/r0-manifest.json:139",
+        "scripts/demonstrations.py:15",
+        "scripts/demonstrations.py:30",
+        "tests/integration/verify_r0.py:13"
+      ],
+      "documented_references": [
+        "datasets/README.md:12",
+        "datasets/README.md:13",
+        "datasets/README.md:14",
+        "docs/improvisation_architecture.md:21",
+        "docs/improvisation_architecture.md:48",
+        "docs/improvisation_architecture.md:109",
+        "docs/r0-evaluation-protocol.md:14",
+        "docs/r0-evaluation-protocol.md:15",
+        "docs/r0-evaluation-protocol.md:17",
+        "docs/r0-evaluation-protocol.md:20",
+        "docs/r0-report.md:50",
+        "docs/r0-report.md:121",
+        "docs/r0-report.md:122",
+        "docs/r0-report.md:130"
+      ]
+    },
+    {
+      "path": "scripts/r1_smoke.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "One bounded synthetic R1 demonstration; no recordings, training or listening claims.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/r1-demonstrations.md:50",
+        "docs/r1-demonstrations.md:108"
+      ]
+    },
+    {
+      "path": "scripts/remix_recording.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Convert a consented local M4A/WAV and render mixes into a fresh folder.",
+      "code_callers": [
+        "tests/integration/verify_recording.py:12"
+      ],
+      "documented_references": [
+        "docs/club-direction.md:107",
+        "docs/workflow-hardening.md:16"
+      ]
+    },
+    {
+      "path": "scripts/render_dj_local_study.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Four original Mac-only studies through the existing pinned singer engine.",
+      "code_callers": [
+        "tests/test_dj_local_study.py:6"
+      ],
+      "documented_references": [
+        "docs/LOCAL_AUDIO_COMPLETION.md:52"
+      ]
+    },
+    {
+      "path": "scripts/render_singing_catalogue.mjs",
+      "area": "Singing and vocal research",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/NONRELEASE_COMPLETION.md:123",
+        "docs/SINGING_FREE_CATALOGUE.md:52"
+      ]
+    },
+    {
+      "path": "scripts/render_singing_originals.py",
+      "area": "Singing and vocal research",
+      "purpose": "Bounded local Metal renders using the existing Music DNA singing pipeline.",
+      "code_callers": [
+        "scripts/render_dj_local_study.py:15",
+        "tests/test_singing_originals.py:9"
+      ],
+      "documented_references": [
+        "docs/SINGING_ORIGINAL_PRODUCTION.md:103",
+        "docs/SINGING_ORIGINAL_PRODUCTION.md:104"
+      ]
+    },
+    {
+      "path": "scripts/replay_audio.mjs",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "",
+      "code_callers": [
+        "apps/web/tests/mix-replay.mjs:5",
+        "scripts/replay_mix.mjs:7"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/replay_dj_flow.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Free real-time rehearsal: reuse twelve verified masters, start at two, release later ones on a 30s cadence.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/LOCAL_AUDIO_FOLLOWTHROUGH.md:42"
+      ]
+    },
+    {
+      "path": "scripts/replay_dj_padding.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Offline timing comparison for retained tracks; not a new generated or R2 session.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/ai-dj-beta-readiness.md:36",
+        "docs/ai-dj-live-performance.md:40"
+      ]
+    },
+    {
+      "path": "scripts/replay_live_take.mjs",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/r1-instrument-capture.md:49",
+        "docs/r1-instrument-capture.md:153",
+        "docs/r1-phrase-response.md:74",
+        "docs/r1-phrase-response.md:130"
+      ]
+    },
+    {
+      "path": "scripts/replay_mix.mjs",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "",
+      "code_callers": [
+        "apps/web/tests/instrument-take.mjs:125",
+        "apps/web/tests/mix-replay.mjs:70"
+      ],
+      "documented_references": [
+        "docs/mix-action-replay.md:27",
+        "docs/mix-action-replay.md:90",
+        "docs/mix-action-replay.md:91"
+      ]
+    },
+    {
+      "path": "scripts/research_dj_passages.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Use the existing pinned CLAP auditor on declared passages; scores are uncalibrated research evidence.",
+      "code_callers": [
+        "tests/test_dj_sound.py:32"
+      ],
+      "documented_references": [
+        "docs/dj-sound-research.md:65"
+      ]
+    },
+    {
+      "path": "scripts/review_academy_grid.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Prepare candidate beat-grid evidence for owner listening, not verified downbeats/keys.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/academy-release-checks.md:119",
+        "docs/academy-release-checks.md:141"
+      ]
+    },
+    {
+      "path": "scripts/review_afro_house.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Prepare hash-checked local listening copies and blank owner review notes.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/CLOSURE_FOLLOWTHROUGH.md:24"
+      ]
+    },
+    {
+      "path": "scripts/review_cloud_music.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Measure the retrieved trial and prepare local, level-matched listening copies.",
+      "code_callers": [
+        "scripts/prepare_local_call_review.py:11",
+        "scripts/prepare_singer_review.py:12",
+        "scripts/prepare_voice_led_review.py:12",
+        "scripts/prepare_voice_research.py:15",
+        "scripts/review_style_trial.py:10",
+        "scripts/source_led_response.py:214",
+        "tests/test_cloud_music_review.py:10"
+      ],
+      "documented_references": [
+        "docs/ai-dj-baseline.md:194",
+        "docs/musician-training-run.md:103"
+      ]
+    },
+    {
+      "path": "scripts/review_dj_comparison.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Make a local, hash-verified listening comparison without copying source recordings.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/dj-audible-comparison.md:37"
+      ]
+    },
+    {
+      "path": "scripts/review_dj_composition.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Prepare local guide/stem audition, or blinded fresh comparison after an approved run.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/ai-dj-finish-campaign.md:81",
+        "docs/dj-composition-guides.md:40",
+        "docs/dj-guided-set.md:73"
+      ]
+    },
+    {
+      "path": "scripts/review_dj_economics.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Offline scenario review, not billing configuration or a final provider invoice.",
+      "code_callers": [
+        "tests/test_dj_economics.py:6"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/review_dj_flow.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Verify the completed fresh flow and prepare local listening using the existing encoder.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/review_dj_models.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Verify the completed model comparison and prepare blinded local listening copies.",
+      "code_callers": [
+        "tests/test_dj_model_study.py:141"
+      ],
+      "documented_references": [
+        "docs/DJ_GENRE_MODELS.md:46",
+        "docs/dj-preferred-consistency.md:11"
+      ]
+    },
+    {
+      "path": "scripts/review_dj_opening.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Reproduce an owner-directed opening comparison without changing the source.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/review_dj_qualification.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Verify the three qualification outputs and prepare quieter local listening copies.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/review_dj_quality.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Level-matched original tracks and real mixer captures; no source recordings.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/review_dj_retained_phrase.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Review one bounded phrase from retained Jamloom audio; never a production selector.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/FINAL_GATES.md:35"
+      ]
+    },
+    {
+      "path": "scripts/review_dj_spoken_hooks.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Publish the retained spoken-hook audition locally, preserving source hashes.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/review_dj_sung_hooks.py",
+      "area": "Singing and vocal research",
+      "purpose": "Hash-verified musical-vocal excerpts plus uncut candidates for word-boundary review.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/dj-isolated-singing.md:41",
+        "docs/dj-vocal-mode.md:13"
+      ]
+    },
+    {
+      "path": "scripts/review_dj_vocal_effects.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Audition real deck effects on an existing original; no generation or reference audio.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/dj-guided-set.md:71"
+      ]
+    },
+    {
+      "path": "scripts/review_dj_warm.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Verify the two-user qualification and publish only audio to the local review server.",
+      "code_callers": [
+        "scripts/review_afro_house.py:11",
+        "scripts/review_dj_comparison.py:9",
+        "scripts/review_dj_composition.py:10",
+        "scripts/review_dj_flow.py:4",
+        "scripts/review_dj_models.py:10",
+        "scripts/review_dj_quality.py:9",
+        "scripts/review_dj_retained_phrase.py:9",
+        "scripts/review_dj_spoken_hooks.py:7",
+        "scripts/review_dj_sung_hooks.py:12",
+        "scripts/review_dj_vocal_effects.py:5",
+        "scripts/review_house_study.py:9",
+        "scripts/review_singing_arrangements.py:7"
+      ],
+      "documented_references": [
+        "docs/DJ_RELEASE_QUALIFICATION.md:41",
+        "docs/ai-dj-hosted-operation.md:49",
+        "docs/ai-dj-warm-worker.md:73"
+      ]
+    },
+    {
+      "path": "scripts/review_house_study.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Publish audio-only listening copies; keep study condition keys outside the server.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/dj-guided-set.md:73"
+      ]
+    },
+    {
+      "path": "scripts/review_serve.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Serve the local listening copies, including byte ranges for native audio controls.",
+      "code_callers": [
+        "tests/test_review_serve.py:9"
+      ],
+      "documented_references": [
+        "TODO.md:739",
+        "docs/CLOSURE_FOLLOWTHROUGH.md:21",
+        "docs/LOCAL_AUDIO_FOLLOWTHROUGH.md:31",
+        "docs/REMAINING_CLOSURE.md:25",
+        "docs/ai-dj-hosted-operation.md:47",
+        "docs/progress.md:742"
+      ]
+    },
+    {
+      "path": "scripts/review_singing_arrangements.py",
+      "area": "Singing and vocal research",
+      "purpose": "Matched-loudness comparison of rejected originals and newly authored local drafts.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/NONRELEASE_COMPLETION.md:124"
+      ]
+    },
+    {
+      "path": "scripts/review_singing_catalogue.py",
+      "area": "Singing and vocal research",
+      "purpose": "Audition the four retained lesson arrangements without generating or changing music.",
+      "code_callers": [],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/review_singing_originals.py",
+      "area": "Singing and vocal research",
+      "purpose": "Local song/karaoke audition from original, receipt-bound Music DNA renders.",
+      "code_callers": [
+        "tests/test_singing_originals.py:11"
+      ],
+      "documented_references": [
+        "docs/SINGING_ORIGINAL_PRODUCTION.md:105"
+      ]
+    },
+    {
+      "path": "scripts/review_style_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Verify retrieved adapter outputs and make private, matched A/B listening pairs.",
+      "code_callers": [
+        "tests/test_style_review.py:14"
+      ],
+      "documented_references": [
+        "docs/blood-training-run.md:180",
+        "docs/musician-training-run.md:114",
+        "docs/style-training-pilot.md:55"
+      ]
+    },
+    {
+      "path": "scripts/separate_singer.py",
+      "area": "Singing and vocal research",
+      "purpose": "Local, pinned separation to leave musical space for the user's sample.",
+      "code_callers": [
+        "scripts/prepare_singer_review.py:33",
+        "scripts/review_singing_originals.py:43",
+        "scripts/singer_studio.py:201",
+        "scripts/vocal_identity.py:138",
+        "tests/test_separate_singer.py:9",
+        "tests/test_singer_studio.py:148"
+      ],
+      "documented_references": [
+        "docs/COHERENT_PERFORMANCE.md:25",
+        "docs/CONTINUITY_FOLLOWTHROUGH.md:67",
+        "docs/integrated-singer.md:51",
+        "docs/source-led-response.md:57",
+        "docs/source-led-response.md:67"
+      ]
+    },
+    {
+      "path": "scripts/separate_spleeter.py",
+      "area": "Singing and vocal research",
+      "purpose": "Offline comparison using the publisher's checksum-pinned Spleeter 2-stem model.",
+      "code_callers": [
+        "scripts/singer_studio.py:201",
+        "tests/test_spleeter_separation.py:6"
+      ],
+      "documented_references": [
+        "docs/LOCAL_AUDIO_COMPLETION.md:28"
+      ]
+    },
+    {
+      "path": "scripts/serve_singer_review.mjs",
+      "area": "Singing and vocal research",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/local-call-edit.md:99",
+        "docs/meaning-singer.md:60",
+        "docs/source-led-response.md:75"
+      ]
+    },
+    {
+      "path": "scripts/setup_dna_auditor.py",
+      "area": "Music DNA",
+      "purpose": "Download the pinned local audio-style auditor using the existing singer environment.",
+      "code_callers": [],
+      "documented_references": [
+        "docs/music-dna-fit.md:70"
+      ]
+    },
+    {
+      "path": "scripts/setup_singer.sh",
+      "area": "Singing and vocal research",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/integrated-singer.md:98",
+        "docs/singing-response.md:49"
+      ]
+    },
+    {
+      "path": "scripts/singer_studio.py",
+      "area": "Singing and vocal research",
+      "purpose": "Local-only musician preview; one queued generation, no cloud services.",
+      "code_callers": [
+        "services/runpod/pipeline.py:33",
+        "tests/test_runpod_worker.py:188",
+        "tests/test_runpod_worker.py:197",
+        "tests/test_singer_studio.py:13"
+      ],
+      "documented_references": [
+        "docs/arrangement-variety.md:77",
+        "docs/gentle-singer.md:93",
+        "docs/improvise-finish.md:37",
+        "docs/integrated-singer.md:47",
+        "docs/singer-styles.md:43",
+        "docs/singing-response.md:23"
+      ]
+    },
+    {
+      "path": "scripts/singing_response.py",
+      "area": "Singing and vocal research",
+      "purpose": "Local lyric-conditioned singers; no TTS, voice cloning, rental or upload.",
+      "code_callers": [
+        "apps/site/tests/runpod-provider.test.ts:33",
+        "scripts/check_dna_audio.py:8",
+        "scripts/cloud_dj_warm.sh:35",
+        "scripts/cloud_dj_warm.sh:54",
+        "scripts/dj_sample_trial.py:179",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/dj_sung_hooks.py:11",
+        "scripts/evaluate_dna_screen.py:9",
+        "scripts/evaluate_dna_variants.py:10",
+        "scripts/evaluate_dna_variants.py:75",
+        "scripts/evaluate_music_coverage.py:15",
+        "scripts/music_dna_song.py:16",
+        "scripts/music_dna_song.py:370",
+        "scripts/prepare_singer_review.py:13",
+        "scripts/render_dj_local_study.py:16",
+        "scripts/render_singing_originals.py:12",
+        "scripts/render_singing_originals.py:35",
+        "scripts/review_singing_originals.py:9",
+        "scripts/separate_singer.py:12",
+        "scripts/setup_singer.sh:24",
+        "scripts/singer_studio.py:20",
+        "scripts/singer_studio.py:185",
+        "scripts/source_led_response.py:12",
+        "scripts/train_dna_feedback.py:20",
+        "scripts/vocal_identity.py:72",
+        "services/runpod/handler.py:142",
+        "services/runpod/pipeline.py:18",
+        "services/runpod/prepare_models.py:9",
+        "tests/test_dj_sung_hooks.py:12",
+        "tests/test_dna_expansion.py:15",
+        "tests/test_dna_expansion.py:49",
+        "tests/test_local_call_edit.py:14",
+        "tests/test_music_dna_song.py:13",
+        "tests/test_music_dna_song.py:206",
+        "tests/test_runpod_worker.py:190",
+        "tests/test_runpod_worker.py:191",
+        "tests/test_runpod_worker.py:219",
+        "tests/test_singer_studio.py:15",
+        "tests/test_singing_originals.py:10",
+        "tests/test_singing_response.py:10",
+        "tests/test_source_led_response.py:10",
+        "tests/test_vocal_identity.py:10",
+        "tests/test_vocal_identity.py:28"
+      ],
+      "documented_references": [
+        "docs/local-call-edit.md:102",
+        "docs/music-validation.md:106",
+        "docs/singing-response.md:114",
+        "docs/singing-response.md:115",
+        "docs/source-led-response.md:52",
+        "docs/source-led-response.md:62"
+      ]
+    },
+    {
+      "path": "scripts/song_duration.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Shared product length bounds; a saved duration survives retries.",
+      "code_callers": [
+        "scripts/check_dna_audio.py:7",
+        "scripts/cloud_dj_warm.sh:35",
+        "scripts/cloud_dj_warm.sh:54",
+        "scripts/dj_sample_trial.py:179",
+        "scripts/dj_sample_trial.py:339",
+        "scripts/music_dna_song.py:8",
+        "scripts/separate_singer.py:6",
+        "scripts/singer_studio.py:6",
+        "scripts/singing_response.py:8",
+        "services/runpod/handler.py:121",
+        "services/runpod/handler.py:201",
+        "services/runpod/pipeline.py:13",
+        "tests/test_song_duration.py:5"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/source_led_response.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "One private source-led reggae study: guide, band, singer, timed exchange.",
+      "code_callers": [
+        "scripts/local_call_edit.py:14",
+        "tests/test_local_call_edit.py:13",
+        "tests/test_source_led_response.py:11"
+      ],
+      "documented_references": [
+        "docs/source-led-response.md:17",
+        "docs/source-led-response.md:48",
+        "docs/source-led-response.md:60",
+        "docs/source-led-response.md:70",
+        "docs/source-led-response.md:72"
+      ]
+    },
+    {
+      "path": "scripts/studio_build_lock.py",
+      "area": "Build, packaging and local servers",
+      "purpose": "Fail closed when two jobs try to mutate the shared generated studio.",
+      "code_callers": [
+        "scripts/prepare_ios_studio.py:10",
+        "scripts/web_build.sh:5",
+        "tests/test_studio_packaging.py:11"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/summarize_listening.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Validate real submitted forms and summarize by source; never invent ratings or pass M1.",
+      "code_callers": [
+        "scripts/prepare_listening_review.py:5",
+        "scripts/q0_listening_results.py:10",
+        "tests/integration/verify_listening_review.py:7",
+        "tests/integration/verify_listening_summary.py:5"
+      ],
+      "documented_references": [
+        "docs/evaluation-batch.md:134",
+        "docs/evaluation-batch.md:141",
+        "docs/r0-evaluation-protocol.md:78"
+      ]
+    },
+    {
+      "path": "scripts/train_dj_structure.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Private numeric research: forecast energy changes, not expert deck actions or audio.",
+      "code_callers": [
+        "tests/test_dj_structure.py:5"
+      ],
+      "documented_references": [
+        "docs/dj-reference-styles.md:62"
+      ]
+    },
+    {
+      "path": "scripts/train_dna_feedback.py",
+      "area": "Music DNA",
+      "purpose": "Consent-bound local QLoRA research candidates from positively reviewed Jamloom songs.",
+      "code_callers": [
+        "apps/site/lib/dna-feedback.ts:8",
+        "apps/site/scripts/train-hosted-feedback.ts:19",
+        "tests/test_dna_expansion.py:14"
+      ],
+      "documented_references": [
+        "docs/music-dna-expanded.md:17",
+        "docs/music-dna-expanded.md:26",
+        "docs/music-dna-expanded.md:27",
+        "docs/music-dna-expanded.md:78"
+      ]
+    },
+    {
+      "path": "scripts/train_song_planner.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Pinned Qwen3 research training with full context and chunked vocabulary loss.",
+      "code_callers": [
+        "scripts/train_dna_feedback.py:152",
+        "scripts/train_dna_feedback.py:204",
+        "tests/test_song_planner_loss.py:9"
+      ],
+      "documented_references": []
+    },
+    {
+      "path": "scripts/vast_trial.py",
+      "area": "Cloud qualification and budgets",
+      "purpose": "Control one explicitly authorized bounded research rental; never upload the key.",
+      "code_callers": [
+        "scripts/afro_house_trial.py:13",
+        "scripts/afro_house_trial.py:28",
+        "scripts/dj_sample_trial.py:20",
+        "tests/test_dj_model_study.py:57",
+        "tests/test_dj_model_study.py:92",
+        "tests/test_dj_model_study.py:237",
+        "tests/test_dj_model_study.py:267",
+        "tests/test_dj_sample_trial.py:194",
+        "tests/test_dj_sample_trial.py:211",
+        "tests/test_dj_sample_trial.py:229",
+        "tests/test_vast_trial.py:12",
+        "tests/test_vast_trial.py:72",
+        "tests/test_vast_trial.py:80",
+        "tests/test_vast_trial.py:98",
+        "tests/test_vast_trial.py:104",
+        "tests/test_vast_trial.py:109",
+        "tests/test_vast_trial.py:125",
+        "tests/test_vast_trial.py:142",
+        "tests/test_vast_trial.py:160",
+        "tests/test_vast_trial.py:172",
+        "tests/test_vast_trial.py:184",
+        "tests/test_vast_trial.py:197",
+        "tests/test_vast_trial.py:214",
+        "tests/test_vast_trial.py:229",
+        "tests/test_vast_trial.py:242",
+        "tests/test_vast_trial.py:308",
+        "tests/test_vast_trial.py:317",
+        "tests/test_vast_trial.py:321"
+      ],
+      "documented_references": [
+        "docs/DJ_RELEASE_QUALIFICATION.md:11",
+        "docs/DJ_RELIABILITY_QUALIFICATION.md:19",
+        "docs/ai-dj-hosted-operation.md:25",
+        "docs/ai-dj-warm-worker.md:47",
+        "docs/cloud-music-trial.md:98"
+      ]
+    },
+    {
+      "path": "scripts/verify_acoustic_assets.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Check the shipped CC0 bank and notices against the pinned asset ledger offline.",
+      "code_callers": [
+        "CMakeLists.txt:105"
+      ],
+      "documented_references": [
+        "docs/acoustic-review.md:50",
+        "docs/instrument-articulation.md:52",
+        "docs/licenses.md:97"
+      ]
+    },
+    {
+      "path": "scripts/verify_electronic_assets.py",
+      "area": "DJ and arrangement research",
+      "purpose": "Verify the original electronic palette and generator provenance offline.",
+      "code_callers": [
+        "CMakeLists.txt:111"
+      ],
+      "documented_references": [
+        "docs/licenses.md:111"
+      ]
+    },
+    {
+      "path": "scripts/verify_export.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Verify a completed Jamloom export before consuming its files.",
+      "code_callers": [
+        ".github/workflows/core.yml:121",
+        ".github/workflows/core.yml:123",
+        ".github/workflows/core.yml:149",
+        ".github/workflows/core.yml:150",
+        ".github/workflows/core.yml:152",
+        ".github/workflows/core.yml:153",
+        "scripts/benchmark_render.py:16",
+        "scripts/demonstrations.py:17",
+        "scripts/demonstrations.py:30",
+        "scripts/mac_smoke.sh:42",
+        "scripts/phrase_articulation.py:12",
+        "scripts/prepare_evaluation.py:15",
+        "scripts/prepare_evaluation.py:119",
+        "scripts/prepare_listening.py:14",
+        "scripts/prepare_voice_transforms.py:12",
+        "scripts/q0_audit.py:15",
+        "scripts/q0_authored_trial.py:15",
+        "scripts/q0_development_trial.py:16",
+        "scripts/q0_expression_trial.py:17",
+        "scripts/q0_guitar_accent_trial.py:16",
+        "scripts/q0_linux_trial.py:12",
+        "scripts/q0_phrase_trial.py:14",
+        "scripts/r0.py:22",
+        "scripts/remix_recording.py:15",
+        "tests/integration/verify_plan_import.py:16",
+        "tests/integration/verify_recording.py:13",
+        "tests/integration/verify_remix.py:19",
+        "tests/integration/verify_tools.py:18"
+      ],
+      "documented_references": [
+        "README.md:120",
+        "docs/club-direction.md:104",
+        "docs/club-refinement.md:113",
+        "docs/plan-import.md:18",
+        "docs/plan-import.md:37",
+        "docs/r0-validation-followup.md:141",
+        "docs/workflow-hardening.md:45"
+      ]
+    },
+    {
+      "path": "scripts/verify_guitar_assets.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Offline rights, selector coverage and PCM integrity checks for the guitar bank.",
+      "code_callers": [
+        "CMakeLists.txt:109"
+      ],
+      "documented_references": [
+        "docs/guitar.md:88",
+        "docs/licenses.md:178",
+        "docs/q0-guitar-layer-study.md:137"
+      ]
+    },
+    {
+      "path": "scripts/verify_ios_bundle.py",
+      "area": "Build, packaging and local servers",
+      "purpose": "Check the built iOS Release bundle, not App Store acceptance.",
+      "code_callers": [
+        ".github/workflows/core.yml:115",
+        "scripts/ios_smoke.sh:53"
+      ],
+      "documented_references": [
+        "docs/COMPLETION_CANDIDATE.md:43",
+        "docs/SPEC_CLOSURE.md:81",
+        "docs/ios-product-parity.md:102",
+        "docs/licenses.md:160"
+      ]
+    },
+    {
+      "path": "scripts/verify_live_instruments.mjs",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/dj-console.md:95",
+        "docs/talk-bass.md:115"
+      ]
+    },
+    {
+      "path": "scripts/verify_session.mjs",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "",
+      "code_callers": [],
+      "documented_references": [
+        "docs/prepared-session.md:143",
+        "docs/session-modes.md:103"
+      ]
+    },
+    {
+      "path": "scripts/verify_sustained_assets.py",
+      "area": "Core audio, fixtures and evaluation",
+      "purpose": "Verify provenance for the original, dependency-free sustained presets.",
+      "code_callers": [
+        "CMakeLists.txt:107"
+      ],
+      "documented_references": [
+        "docs/licenses.md:186"
+      ]
+    },
+    {
+      "path": "scripts/verify_web_bundle.py",
+      "area": "Build, packaging and local servers",
+      "purpose": "Audit the static build for expected files and bundled notices, not release approval.",
+      "code_callers": [
+        "apps/desktop-pro/package.json:12",
+        "apps/site/scripts/prepare-studio.mjs:11",
+        "scripts/prepare_ios_studio.py:11",
+        "scripts/verify_ios_bundle.py:66"
+      ],
+      "documented_references": [
+        "apps/web/README.md:98",
+        "docs/KARAOKE_ADOPTION.md:20",
+        "docs/audio-resume.md:80",
+        "docs/beat-echo.md:147",
+        "docs/deck-effects.md:78",
+        "docs/deck-presentation.md:60",
+        "docs/dj-mixer.md:114",
+        "docs/hiphop-diversity.md:95",
+        "docs/instrument-effects.md:34",
+        "docs/linux-browser.md:159",
+        "docs/media-readiness.md:97",
+        "docs/midi-input.md:72",
+        "docs/midi-learn.md:61",
+        "docs/offline-studio.md:104",
+        "docs/performance-effects.md:93",
+        "docs/practice-library-ten.md:71",
+        "docs/practice-library.md:53",
+        "docs/prepared-session.md:135",
+        "docs/r1-capture-completion.md:150",
+        "docs/r1-effect-capture.md:151",
+        "docs/r1-instrument-capture.md:150",
+        "docs/r1-mix-automation.md:132",
+        "docs/r1-mix-recording.md:138",
+        "docs/r1-phrase-response.md:129",
+        "docs/r1-source-inventory.md:148",
+        "docs/saved-mixes.md:117",
+        "docs/session-modes.md:95",
+        "docs/start-cancellation.md:99",
+        "docs/studio-fullscreen.md:91",
+        "docs/timeline.md:123",
+        "docs/web-installation.md:69",
+        "docs/web-recovery.md:67"
+      ]
+    },
+    {
+      "path": "scripts/vocal_identity.py",
+      "area": "Singing and vocal research",
+      "purpose": "Local singer conversion using pinned synthetic targets and the original backing.",
+      "code_callers": [
+        "scripts/singing_response.py:79",
+        "scripts/singing_response.py:171",
+        "scripts/singing_response.py:562",
+        "services/runpod/handler.py:80",
+        "services/runpod/prepare_models.py:34",
+        "tests/test_runpod_worker.py:213",
+        "tests/test_runpod_worker.py:215",
+        "tests/test_runpod_worker.py:216",
+        "tests/test_vocal_identity.py:6",
+        "tests/test_vocal_identity.py:27"
+      ],
+      "documented_references": [
+        "docs/project-completion-20261023.md:39",
+        "docs/song-follow-through.md:16"
+      ]
+    },
+    {
+      "path": "scripts/web_build.sh",
+      "area": "Build, packaging and local servers",
+      "purpose": "",
+      "code_callers": [
+        "apps/desktop-pro/package.json:12",
+        "apps/ios/Jamloom.xcodeproj/project.pbxproj:506",
+        "apps/ios/project.yml:51",
+        "apps/site/scripts/prepare-studio.mjs:9",
+        "apps/web/package.json:7",
+        "scripts/studio_build_lock.py:29",
+        "scripts/web_serve.py:25",
+        "tests/integration/verify_web_sdk.py:11",
+        "tests/integration/verify_web_sdk.py:45",
+        "tests/integration/verify_web_sdk.py:53",
+        "tests/integration/verify_web_sdk.py:60"
+      ],
+      "documented_references": [
+        "apps/ios/README.md:11",
+        "apps/web/README.md:10",
+        "apps/web/README.md:91",
+        "docs/VERCEL_COST_REVIEW.md:9",
+        "docs/active-vocals.md:94",
+        "docs/analysis-offset.md:95",
+        "docs/audio-resume.md:79",
+        "docs/beat-echo.md:137",
+        "docs/chop-offset.md:104",
+        "docs/dc-input-validation.md:74",
+        "docs/deck-effects.md:70",
+        "docs/dj-console.md:82",
+        "docs/dj-mixer.md:113",
+        "docs/funk.md:50",
+        "docs/hiphop-diversity.md:94",
+        "docs/instrument-effects.md:27",
+        "docs/interpolation-cache.md:153",
+        "docs/interpolation-table.md:151",
+        "docs/linux-browser.md:158",
+        "docs/mac-agent-handoff.md:491",
+        "docs/media-preload.md:137",
+        "docs/media-readiness.md:92",
+        "docs/midi-input.md:65",
+        "docs/midi-learn.md:53",
+        "docs/offline-studio.md:103",
+        "docs/performance-effects.md:83",
+        "docs/pitch-period.md:106",
+        "docs/prepared-session.md:125",
+        "docs/r1-instrument-capture.md:162",
+        "docs/saved-mixes.md:115",
+        "docs/session-modes.md:86",
+        "docs/start-cancellation.md:91",
+        "docs/sustained-instruments.md:98",
+        "docs/talk-bass.md:113",
+        "docs/timeline.md:122",
+        "docs/web-installation.md:62",
+        "docs/web-recovery.md:66"
+      ]
+    },
+    {
+      "path": "scripts/web_serve.py",
+      "area": "Build, packaging and local servers",
+      "purpose": "Serve only the built, public web assets on loopback; never the repository.",
+      "code_callers": [
+        "apps/web/package.json:8",
+        "scripts/web_build.sh:60"
+      ],
+      "documented_references": [
+        "README.md:61",
+        "apps/web/README.md:11",
+        "apps/web/README.md:161",
+        "docs/mac-agent-handoff.md:490",
+        "docs/web-instant-remix.md:7",
+        "docs/web-recovery.md:70"
+      ]
+    }
+  ],
+  "count": 183
+}

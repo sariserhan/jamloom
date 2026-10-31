@@ -3,7 +3,33 @@ const packet=JSON.parse(document.querySelector('#packet').textContent);
 const form=document.querySelector('form'),status=document.querySelector('#status');
 let dirty=false;
 const saved=new Set();
-form.addEventListener('input',()=>{dirty=true;saved.clear();status.textContent='Responses stay in this tab. Download both files before closing.';});
+const draftKey=packet.owner_only?`jamloom-owner-review:${packet.freeze_sha256}:${packet.block_id}`:null;
+if(draftKey){
+  try{
+    const draft=JSON.parse(localStorage.getItem(draftKey)||'null');
+    if(draft?.freeze_sha256===packet.freeze_sha256&&draft?.block_id===packet.block_id){
+      for(const field of form.elements){
+        if(!field.name||field.name==='listener_id')continue;
+        const value=draft.values?.[field.name];
+        if(field.type==='checkbox')field.checked=value===true;
+        else if(typeof value==='string')field.value=value;
+      }
+      status.textContent='Your saved draft is restored. Continue listening or download your responses.';
+    }
+  }catch{status.textContent='This browser could not restore your draft. Download responses before leaving.';}
+}
+form.addEventListener('input',()=>{
+  dirty=true;saved.clear();
+  status.textContent='Responses stay in this tab. Download both files before closing.';
+  if(draftKey){
+    try{
+      const values={};
+      for(const field of form.elements)if(field.name)values[field.name]=field.type==='checkbox'?field.checked:field.value;
+      localStorage.setItem(draftKey,JSON.stringify({freeze_sha256:packet.freeze_sha256,block_id:packet.block_id,values}));
+      dirty=false;status.textContent='Draft saved in this browser. Download responses for a separate copy.';
+    }catch{status.textContent='Draft could not be saved. Download responses before closing this tab.';}
+  }
+});
 window.addEventListener('beforeunload',event=>{if(dirty){event.preventDefault();event.returnValue='';}});
 document.addEventListener('play',event=>{for(const audio of document.querySelectorAll('audio'))if(audio!==event.target)audio.pause();},true);
 const csv=rows=>rows.map(row=>row.map(value=>'"'+String(value).replaceAll('"','""')+'"').join(',')).join('\r\n')+'\r\n';

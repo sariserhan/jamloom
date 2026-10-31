@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "archive_sha256": "3adb4a50ad4eb18c7c4d65fcf4cf2367a07d48408a5eb7d03cd20067429dfaa8",
+  "four_model_hashes": {
+    "checkpoint": true,
+    "model.index": true,
+    "model.data-00000-of-00001": true,
+    "model.meta": true
+  },
+  "metadata_verified_and_ignored": {
+    "./._checkpoint": {
+      "bytes": 176,
+      "sha256": "1fc5679ab90cd6e07975eed56c55571531149277999dc80158cc394ce7141bb2"
+    }
+  },
+  "second_prepare_idempotent": true,
+  "temporary_model_copy_removed": true
+}

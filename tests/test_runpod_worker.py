@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import sys
 import tempfile
+import tarfile
 import unittest
 from unittest.mock import patch
 import wave
@@ -21,6 +22,57 @@ URL = ORIGIN+'/jamloom-audio/uploads/11111111-1111-4111-8111-111111111111.wav?X-
 
 
 class WorkerTests(unittest.TestCase):
+    def test_pinned_spleeter_archive_metadata_is_verified_but_not_installed(self):
+        spec = importlib.util.spec_from_file_location('prepare_spleeter', ROOT/'services/runpod/prepare_spleeter_model.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        def receipt(data): return {'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+        model, metadata = b'model-fixture', b'publisher-metadata-fixture'
+        manifest = {'files': {'checkpoint': receipt(model)}, 'ignored_archive_files': {'./._checkpoint': receipt(metadata)}}
+        for variant in ['valid', 'changed-metadata', 'unknown', 'duplicate', 'symlink']:
+            with self.subTest(variant=variant), tempfile.TemporaryDirectory() as folder:
+                root = Path(folder); archive = root/'model.tar.gz'; target = root/'model'; target.mkdir()
+                members = [('checkpoint', model), ('./._checkpoint', metadata if variant!='changed-metadata' else b'x'*len(metadata))]
+                if variant=='unknown': members.append(('../escape', b'bad'))
+                if variant=='duplicate': members.append(('checkpoint', model))
+                with tarfile.open(archive, 'w:gz') as output:
+                    for name, data in members:
+                        member = tarfile.TarInfo(name); member.size = len(data)
+                        if variant=='symlink' and name=='checkpoint': member.type=tarfile.SYMTYPE; member.linkname='../escape'
+                        output.addfile(member, io.BytesIO(data))
+                if variant=='valid':
+                    module.extract_verified(archive,target,manifest)
+                    self.assertEqual([p.name for p in target.iterdir()], ['checkpoint'])
+                    self.assertEqual((target/'checkpoint').read_bytes(), model)
+                else:
+                    with self.assertRaises(ValueError): module.extract_verified(archive,target,manifest)
+
+    def test_spleeter_prepare_repairs_partial_install_and_preserves_it_on_invalid_download(self):
+        spec = importlib.util.spec_from_file_location('prepare_spleeter', ROOT/'services/runpod/prepare_spleeter_model.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder); target = root/'models'; target.mkdir()
+            (target/'checkpoint').write_bytes(b'interrupted')
+            contents = {'checkpoint': b'complete-checkpoint', 'model.index': b'complete-index'}
+            archive = io.BytesIO()
+            with tarfile.open(fileobj=archive, mode='w:gz') as output:
+                for name, data in contents.items():
+                    member = tarfile.TarInfo(name); member.size = len(data)
+                    output.addfile(member, io.BytesIO(data))
+            data = archive.getvalue()
+            manifest = {'archive_url': 'https://fixture.invalid/model', 'archive_bytes': len(data),
+                'archive_sha256': hashlib.sha256(data).hexdigest(), 'model_dir': 'models',
+                'files': {name: {'bytes': len(value), 'sha256': hashlib.sha256(value).hexdigest()} for name, value in contents.items()}}
+            file = root/'manifest.json'; file.write_text(json.dumps(manifest))
+            with patch.object(module, 'ROOT', root), patch.object(module, 'MANIFEST', file):
+                with patch.object(module.urllib.request, 'urlopen', return_value=io.BytesIO(data+b'overflow')):
+                    with self.assertRaisesRegex(ValueError, 'exceeds pinned size'): module.prepare()
+                self.assertEqual((target/'checkpoint').read_bytes(), b'interrupted')
+                with patch.object(module.urllib.request, 'urlopen', return_value=io.BytesIO(data)):
+                    module.prepare()
+                self.assertEqual({p.name: p.read_bytes() for p in target.iterdir()}, contents)
+                with patch.object(module.urllib.request, 'urlopen', side_effect=AssertionError('must reuse verified model')):
+                    module.prepare()
+
     def setUp(self):
         self.env = patch.dict(os.environ, {'JAMLOOM_R2_ORIGIN': ORIGIN, 'JAMLOOM_R2_BUCKET': 'jamloom-audio'})
         self.env.start();self.addCleanup(self.env.stop)

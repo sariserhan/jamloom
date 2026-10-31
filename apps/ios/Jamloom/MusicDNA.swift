@@ -230,7 +230,14 @@ struct MusicDNAView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) { ProductHelpButton(product: "music-dna") }
                     ToolbarItem(placement: .topBarTrailing) { Button("Account", systemImage: "person.crop.circle") { model.suspendAudio(cancelRender: false); showAccount = true } }
-                    ToolbarItemGroup(placement: .keyboard) { if activeInput == .references { Spacer(); Button("Done editing") { activeInput = nil } } }
+                }
+                .safeAreaInset(edge: .bottom, spacing: 0) {
+                    if activeInput == .references {
+                        HStack {
+                            Spacer()
+                            Button("Done editing") { activeInput = nil }
+                        }.padding().background(.bar)
+                    }
                 }
                 .sheet(isPresented: $showAccount) { AccountView(account: account) }
                 .sheet(isPresented: $showAppleMusic) { AppleMusicFavoritesView(profile: profile) { value, added in

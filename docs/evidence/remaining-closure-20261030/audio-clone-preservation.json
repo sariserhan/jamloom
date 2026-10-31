@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "scope": "Replace only two byte-identical generated Afro House views with APFS copy-on-write clones of the verified full archive; all 48 paths and bytes preserved",
+  "files": [
+    {
+      "file": "matched-house-baseline/mix.wav",
+      "sha256": "bb7e174b572f0fb8d78a747b7b522a2ca31c40075c86a13830298571bd97f958"
+    },
+    {
+      "file": "matched-house-baseline/stems/bass/stem.wav",
+      "sha256": "cc3c72a9562e5c7e4109570ef319d2464c7b100b257c8b70525a7e256d8d1409"
+    },
+    {
+      "file": "matched-house-baseline/stems/drums/stem.wav",
+      "sha256": "b060afdc635a85d941255cb13eeea728656fa155e76cd3b9dd0c83b36fa92006"
+    },
+    {
+      "file": "matched-house-baseline/stems/percussion/stem.wav",
+      "sha256": "473203d007fc380b9920389a554f603650e6e90af59059fb718f11c02bca4419"
+    },
+    {
+      "file": "matched-house-baseline/stems/keyboard/stem.wav",
+      "sha256": "bdbecef7ec6c40b75f018db12438c8856740dd3d64c99816925394cee8bcea7c"
+    },
+    {
+      "file": "matched-house-baseline/stems/synth/stem.wav",
+      "sha256": "39a22e8468d6675b5da94351a65cfd9c507a526067e839f2d11f5aa216851482"
+    },
+    {
+      "file": "vocal-led-organic-afro-house/mix.wav",
+      "sha256": "49218bc483735786b98fc3edd13dddecd754014a648f9224057edc42b14e2f82"
+    },
+    {
+      "file": "vocal-led-organic-afro-house/stems/vocals/stem.wav",
+      "sha256": "c50b23c72459988a8860606821f9406892fde7b9ddad7abfe6ea182a9d082f49"
+    },
+    {
+      "file": "vocal-led-organic-afro-house/stems/bass/stem.wav",
+      "sha256": "067f28ff503fe27f90262b9022b162ba0aaa551d3adc3df950432a191ebd7944"
+    },
+    {
+      "file": "vocal-led-organic-afro-house/stems/drums/stem.wav",
+      "sha256": "631aa8ad0ce5c270a95dbc1d2f262ee573b403424267fd678aadb5b13dc74503"
+    },
+    {
+      "file": "vocal-led-organic-afro-house/stems/percussion/stem.wav",
+      "sha256": "4e1fee4c10dca28c748d2832568876a19f230062465e8b7d0284f92a0ad9cb55"
+    },
+    {
+      "file": "vocal-led-organic-afro-house/stems/keyboard/stem.wav",
+      "sha256": "f03c06d0d64adcc90d31f77d901a853855e556d3c70f966af554d9d9c2a79805"
+    },
+    {
+      "file": "bass-driven-organic-afro-house/mix.wav",
+      "sha256": "e86c748cd17990d7fa67a92755335a266068c0650add9e3abf1f9a3376574522"
+    },
+    {
+      "file": "bass-driven-organic-afro-house/stems/bass/stem.wav",
+      "sha256": "7ba10fd253327e3681c7846488369309976988fec43ce0a6043461de220d2ec8"
+    },
+    {
+      "file": "bass-driven-organic-afro-house/stems/drums/stem.wav",
+      "sha256": "4e6e9b56073da6d8f7af588404e3cb9c89d3aec20dcfeeb8b722478d0837a92b"
+    },
+    {
+      "file": "bass-driven-organic-afro-house/stems/percussion/stem.wav",
+      "sha256": "c3c98e970c37e224d7199efbfdf1aef2b1f589e48219690ca542b080a36856cb"
+    },
+    {
+      "file": "bass-driven-organic-afro-house/stems/keyboard/stem.wav",
+      "sha256": "3274c100c96b964d060df17d258b2648d86182a247f6f6eb01c64211b7109e2a"
+    },
+    {
+      "file": "bass-driven-organic-afro-house/stems/synth/stem.wav",
+      "sha256": "8b6e1cc430ba8f37603d3f533fad2868114758eea8d94ef0df9e2632cb5b9e0f"
+    },
+    {
+      "file": "percussive-driving-organic-afro-house/mix.wav",
+      "sha256": "4dc2b6b5c1f2f66f1ff857b286b2dab5c1efd36f87f2d2d8ebb537064000afb5"
+    },
+    {
+      "file": "percussive-driving-organic-afro-house/stems/drums/stem.wav",
+      "sha256": "728652033715b16aed58a3badee672acc66fc123885b59036c08baa1a35cd087"
+    },
+    {
+      "file": "percussive-driving-organic-afro-house/stems/percussion/stem.wav",
+      "sha256": "1549ace2f9a8619b60f9f62b1caab7e419f922f18dae263f44aa7fae589251e7"
+    },
+    {
+      "file": "percussive-driving-organic-afro-house/stems/bass/stem.wav",
+      "sha256": "fc9a5720ffd3ff14b2c559bcaab3c0e42c28a016b01eb4e31403797bc7acbe72"
+    },
+    {
+      "file": "percussive-driving-organic-afro-house/stems/keyboard/stem.wav",
+      "sha256": "7d8823b1d4b4c86dfec2052ecb21ac3b9b6c4c825f5b134e4f824de98bff082b"
+    },
+    {
+      "file": "percussive-driving-organic-afro-house/stems/synth/stem.wav",
+      "sha256": "dda03e4ee0454f9d296406b16b2646fff44e81b7989184c8d7f01e38902111b0"
+    }
+  ],
+  "free_bytes_before": 4429828096,
+  "free_bytes_after": 6622646272
+}

@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "browser": "149.0.7827.55",
+  "checks": [
+    "blank/incomplete export denied",
+    "owner identity locked",
+    "draft survives block switch and reload",
+    "only complete blocks exported",
+    "CSV accepted by summarizer",
+    "formula escaping",
+    "playback",
+    "desktop/mobile no overflow",
+    "organizer key unavailable",
+    "no external requests or script errors"
+  ],
+  "human_listening": "NOT RUN",
+  "responses": "Synthetic temporary UI fixtures, deleted"
+}

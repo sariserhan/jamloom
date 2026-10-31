@@ -1,0 +1,10 @@
+{
+  "status": "PARTIAL",
+  "source_commit": "85b2ce7ba542af67963376f6ae89c04e8201401e",
+  "workflow_run": 41090499885,
+  "url": "https://github.com/sariserhan/jamloom/actions/runs/41090499885",
+  "boundary_tests": "PASS 17",
+  "website_deployment_disabled_for_branch": true,
+  "image_digest": null,
+  "approval": "Approve corrected image rebuild"
+}
