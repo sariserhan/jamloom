@@ -35,6 +35,11 @@
     "worker_checks_with_preserved_archive_changes": 17,
     "typecheck": "PASS",
     "unrelated_work": "Preserved; owned patch staged separately",
-    "local_postgres": "Stopped after checks"
+    "local_postgres": "Stopped after checks",
+    "website_build": "PASS",
+    "site_regression_checks": 172,
+    "availability_browser": "PASS both products under closed, failed and ready fixtures; zero writes",
+    "regular_test_command": "Includes Improvise direction and trial-limit checks",
+    "local_candidate": "http://127.0.0.1:3011; generation and purchases disabled"
   }
 }
