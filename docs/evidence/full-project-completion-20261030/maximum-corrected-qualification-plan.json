@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "prepared_at": "2026-10-30T23:48:00.938847+00:00",
   "scope": "Publish only the bounded Music DNA plan-loader fix, then one 5000-reference qualification request",
   "image_source_commit": "2ef31d6954f823aad6e170493783cd25dd0d9af3",
@@ -55,11 +55,17 @@
   "prior_maximum_permit": "Consumed; previous hosted request failed before audio at the plan-size limit and cleanup passed",
   "execution": {
     "image_build_attempts": 1,
-    "trial_invocations": 0,
-    "provider_requests_started": 0,
-    "status": "IMAGE_BUILD_RUNNING",
+    "trial_invocations": 1,
+    "provider_requests_started": 1,
+    "status": "COMPLETE",
     "workflow_run": 41146988049,
-    "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41146988049"
+    "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41146988049",
+    "trial_started_at": "2026-10-31T00:09:37.355606+00:00",
+    "trial_exit": 0,
+    "trial_finished_at": "2026-10-31T00:18:51.662011+00:00",
+    "receipt": "docs/evidence/dna-completion/cloud/2026-10-31T00-09-37.567Z/trial-result.json",
+    "qualification": "PASS",
+    "cleanup": "PASS"
   },
   "file_sha256": {
     "scripts/singing_response.py": "2227f592a0f2918d8817b274ab16164cf5c47142980981ba14554799bd809821",

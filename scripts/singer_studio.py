@@ -17,7 +17,7 @@ import uuid
 from arrange_voice_research import RATE, digest, read_pcm
 from assemble_sung_response import intervals
 from local_call_edit import arrange
-from singing_response import STYLES, STYLE_LABELS, VOICES, MAX_PHRASE_CHARS, digest as file_digest, load_plan, text_field
+from singing_response import ENERGIES, STYLES, STYLE_LABELS, VOICES, MAX_PHRASE_CHARS, digest as file_digest, load_plan, text_field
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / 'build-style-training/upstream'
@@ -144,7 +144,7 @@ def sample_candidate(work, speech, genre, seconds, seed=0, attempt=0):
     return source,score
 
 
-def make_reply(audio, phrase, voice, genre, consent, duration=None):
+def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None):
     if consent is not True:
         raise StudioError('Confirm that you may use this recording.')
     try:
@@ -155,6 +155,8 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None):
         raise StudioError('Choose an available voice and style.')
     if not audio or not Path(audio).is_file() or not 44 <= Path(audio).stat().st_size <= 100*1024**2:
         raise StudioError('Record or upload an audio clip, up to 100 MB.')
+    if energy is not None and (not isinstance(energy,str) or energy not in ENERGIES):
+        raise StudioError('Choose an available energy.')
     seed = secrets.randbelow(2**32-2*len(STYLES))
     duration=choose_duration('improvise',seed,duration)
     chosen_voice = secrets.choice(tuple(VOICES)) if voice == 'surprise' else voice
@@ -191,10 +193,11 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None):
         stage = 'Writing the lyrics'
         with (work / 'draft-private.log').open('w') as log:
             subprocess.run([*command, 'draft', '--runtime', str(RUNTIME), '--phrase', phrase, '--voice', chosen_voice,
-                            '--genre', chosen_genre, '--duration', str(duration), '--seed', str(seed), '--output', str(plan_path)],
+                            '--genre', chosen_genre, '--duration', str(duration), '--seed', str(seed), '--output', str(plan_path), *(['--energy',energy] if energy is not None else [])],
                            stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
         plan = load_plan(plan_path)
         case = plan['cases'][0]
+        if energy is not None and case.get('energy')!=energy:raise StudioError('The energy direction was not preserved.')
         singer = work / 'singer'
         stage = 'Generating the singer and music'
         with (work / 'render-private.log').open('w') as log:
@@ -222,6 +225,7 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None):
                 (work/f'arrangement-rejected-{attempt}.json').write_text(json.dumps({'stage':stage,'error_type':type(error).__name__})+'\n')
         if report is None:
             raise StudioError('Could not blend your recording without clashing with the song. Try another style or take; no song without your recording is delivered.')
+        if energy is not None:report['musical_direction']={'genre':chosen_genre,'energy':energy,'seed':seed}
         report['meaning_origin']=interpretation
         (result_dir/'complete.json').write_text(json.dumps(report,indent=2)+'\n')
     except (ValueError, OSError, subprocess.SubprocessError) as error:

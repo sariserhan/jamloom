@@ -1,4 +1,5 @@
 import {songDurations,savedSongDuration,MAX_SONG_BYTES} from './song-duration';
+import {improviseDirection} from './improvise-direction';
 import {cloudPersonalFeedback} from './cloud-song-feedback';
 import {createHash,randomUUID,randomInt} from 'node:crypto';
 import {isDeepStrictEqual} from 'node:util';
@@ -25,8 +26,9 @@ export function recordingInput(v:Record<string,unknown>){
 export function checkSource(audio:Buffer,bytes:number,sha:string){
  if(audio.length!==bytes||hash(audio)!==sha||audio.toString('ascii',0,4)!=='RIFF'||audio.readUInt32LE(4)!==bytes-8||audio.toString('ascii',8,16)!=='WAVEfmt '||audio.readUInt32LE(16)!==16||audio.readUInt16LE(20)!==1||audio.readUInt16LE(22)!==1||audio.readUInt32LE(24)!==16000||audio.readUInt32LE(28)!==32000||audio.readUInt16LE(32)!==2||audio.readUInt16LE(34)!==16||audio.toString('ascii',36,40)!=='data'||audio.readUInt32LE(40)!==bytes-44||(bytes-44)%2||bytes<=44||bytes>9600044)throw new AudioError('The recording could not be verified. Upload it again.');
 }
-export function checkImproviseArrangement(value:unknown,sourceSha:string,audioSha:string,seconds:number){
+export function checkImproviseArrangement(value:unknown,sourceSha:string,audioSha:string,seconds:number,expected?:{genre?:unknown;energy?:unknown}){
  const r=value as any,events=r?.events;
+ if(expected?.energy!==undefined&&(r?.musical_direction?.energy!==expected.energy||r?.musical_direction?.genre!==expected.genre))throw new AudioError('This song did not match your musical direction.',422);
  if(r?.sample_used!==true||r.technical!=='PASS'||r.original_recording_sha256!==sourceSha||r.artifacts?.performance!==audioSha||!Array.isArray(events)||events.length<1||events.length>3)throw new AudioError('Your recording could not be blended into this song.',422);
  let previous=0,total=0;
  for(const event of events){
@@ -78,6 +80,14 @@ export class CloudSongs{
    await db.query("SELECT pg_advisory_xact_lock(hashtextextended('jamloom-cloud-daily-cap',0))");
    const total=(await db.query("SELECT COALESCE(sum(d.cost_cap_micros),0) AS n FROM cloud_song_runs c JOIN dna_song_jobs d ON d.id=c.id WHERE d.created_at>now()-interval '24 hours'")).rows[0];
    if(Number(total.n)+this.config.costCapMicros>this.config.dailyMicros)throw new AudioError('We’ve reached today’s song limit. Your credits haven’t been used. Please try again later.',429);
+   if(this.commerce.product==='improvise'){
+    // The existing transaction-wide submit lock also serializes direction choices.
+    const recent=(await db.query(`SELECT c.payload->>'genre' AS genre,c.payload->>'energy' AS energy,COALESCE((c.payload->>'variation_index')::bigint,0) AS variation_index
+     FROM cloud_song_runs c JOIN dna_song_jobs d ON d.id=c.id
+     WHERE d.owner_id=$1 AND d.product='improvise' AND d.state IN ('queued','running','completed')
+     ORDER BY COALESCE((c.payload->>'variation_index')::bigint,0) DESC,d.created_at DESC,d.id DESC LIMIT 8`,[owner])).rows;
+    Object.assign(payload,improviseDirection((input as {genre:string}).genre,recent),{variation_index:Number(recent[0]?.variation_index??0)+1});
+   }
    await db.query(`INSERT INTO cloud_song_runs(id,endpoint,payload,source_id,output_key,rate_micros,fixed_cost_micros,deadline)
     VALUES($1,$2,$3,$4,$5,$7,$8,now()+($6*interval '1 second'))`,[id,this.config.endpoint,JSON.stringify(payload),source?.id??null,`uploads/${randomUUID()}.wav`,this.config.ttlSeconds,this.config.rate,this.config.fixedCostMicros]);
   });
@@ -157,10 +167,10 @@ export class CloudSongs{
    if(this.commerce.product==='improvise'){
     const source=(await pool.query('SELECT sha256 FROM song_uploads WHERE id=$1',[run.source_id])).rows[0];
     if(!source)throw new AudioError('The recording could not be verified.',422);
-    checkImproviseArrangement(output.arrangement,source.sha256,output.audio_sha256,seconds);
+    checkImproviseArrangement(output.arrangement,source.sha256,output.audio_sha256,seconds,run.payload);
    }
    const savedPlan=this.commerce.product==='music-dna'?plan:{title:'Your new song',language:{code:'auto',label:'Automatic'},cases:[{lyrics:output.lyrics??'',duration:seconds}],arrangement:output.arrangement};
-   await this.commerce.finish(id,'completed',{title:String(savedPlan.title).slice(0,120),language:savedPlan.language?.code??'en',direction:this.commerce.product==='music-dna'?musicDirection(row.profile)!.label:String(row.profile.genre),audio,plan:savedPlan},estimate);
+   await this.commerce.finish(id,'completed',{title:String(savedPlan.title).slice(0,120),language:savedPlan.language?.code??'en',direction:this.commerce.product==='music-dna'?musicDirection(row.profile)!.label:styles[run.payload.genre as keyof typeof styles]??String(row.profile.genre),audio,plan:savedPlan},estimate);
    await this.cleanup(run);
   }catch(error){
    // Invalid output is terminal, but network/storage failures retain the receipt for safe retry.

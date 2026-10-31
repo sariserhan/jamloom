@@ -7,19 +7,37 @@ import unittest
 from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from singing_response import CODE_REVISION, WEIGHT_REVISION, STYLES, STYLE_LABELS, VOCAL_PROFILES, SINGER_REFERENCES, cast_singer_reference, resolve_vocal_reference, isolated_vocal_reference, choose_vocal_profile, vocal_description, generated_vocal_reference, digest, caption, load_plan, validate_plan, variants, draft, validate_reply_lyrics
+from singing_response import ENERGIES, CODE_REVISION, WEIGHT_REVISION, STYLES, STYLE_LABELS, VOCAL_PROFILES, SINGER_REFERENCES, cast_singer_reference, resolve_vocal_reference, isolated_vocal_reference, choose_vocal_profile, vocal_description, generated_vocal_reference, digest, caption, load_plan, validate_plan, variants, draft, validate_reply_lyrics
 from assemble_sung_response import PATTERNS
 
 
 class SingingPlans(unittest.TestCase):
+    def test_energy_changes_direction_without_losing_style_or_singer(self):
+        for genre in STYLES:
+            for profile,(voice,_) in VOCAL_PROFILES.items():
+                prompts=[]
+                for energy,direction in ENERGIES.items():
+                    prompt=caption({'genre':genre,'voice':voice,'vocal_profile':profile,'energy':energy})
+                    self.assertIn(STYLES[genre][1],prompt)
+                    self.assertIn(direction,prompt)
+                    self.assertIn('resolved ending',prompt)
+                    self.assertIn(vocal_description({'voice':voice,'vocal_profile':profile}),prompt)
+                    self.assertLess(len(prompt),512)
+                    prompts.append(prompt)
+                self.assertEqual(len(set(prompts)),3)
+        p=self.plan();p['cases'][0]['energy']='arbitrary prompt'
+        with self.assertRaisesRegex(ValueError,'energy'):validate_plan(p)
+        self.assertEqual(caption({'song_caption':'Existing Music DNA direction','energy':'high'}),'Existing Music DNA direction')
+
     def test_reggae_lyric_writer_receives_word_direction_not_band_instructions(self):
         tokenizer=Mock();generate=Mock(return_value='[Verse]\nYou have a question, I am listening\nTake your time and tell me more\n[Chorus]\nWhat is the thing you want to know\nWe can work it out together')
         with tempfile.TemporaryDirectory() as folder,patch('singing_response.cast_singer_reference'),\
                 patch('singing_response.lyric_model',return_value=(None,tokenizer,{'revision':'test'})),\
                 patch('singing_response.planner_functions',return_value=(Mock(),generate,Mock())):
             output=Path(folder)/'plan.json'
-            draft(Path(folder),'I have a question',42,output,'male','reggae',35)
+            draft(Path(folder),'I have a question',42,output,'male','reggae',35,energy='low')
             self.assertEqual(load_plan(output)['phrase'],'I have a question')
+            self.assertEqual(load_plan(output)['cases'][0]['energy'],'low')
             message=tokenizer.apply_chat_template.call_args_list[0].args[0][-1]['content']
             self.assertIn('short conversational lines',message)
             self.assertIn('not instrument or performance instructions',message)

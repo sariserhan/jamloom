@@ -1,0 +1,179 @@
+TAP version 13
+# Subtest: cloud song configuration is opt-in and requires a bounded rate
+ok 1 - cloud song configuration is opt-in and requires a bounded rate
+  ---
+  duration_ms: 0.571
+  type: 'test'
+  ...
+# Subtest: Improvise receipts require a bounded audible use of this recording and this output
+ok 2 - Improvise receipts require a bounded audible use of this recording and this output
+  ---
+  duration_ms: 0.222542
+  type: 'test'
+  ...
+# Subtest: real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+    # Subtest: Improvise omission or mismatched recording refunds; valid loops settle once
+    ok 1 - Improvise omission or mismatched recording refunds; valid loops settle once
+      ---
+      duration_ms: 427.264834
+      type: 'test'
+      ...
+    # Subtest: Improvise variety survives concurrent submissions, restart and duplicate requests
+    ok 2 - Improvise variety survives concurrent submissions, restart and duplicate requests
+      ---
+      duration_ms: 331.303583
+      type: 'test'
+      ...
+    # Subtest: one request is reserved and dispatched once under duplicate concurrent calls
+    ok 3 - one request is reserved and dispatched once under duplicate concurrent calls
+      ---
+      duration_ms: 13.542417
+      type: 'test'
+      ...
+    # Subtest: several users queue independently; cancellation refunds while other songs continue
+    ok 4 - several users queue independently; cancellation refunds while other songs continue
+      ---
+      duration_ms: 601.451541
+      type: 'test'
+      ...
+    # Subtest: duration boundaries settle once and a mismatched saved length refunds
+    ok 5 - duration boundaries settle once and a mismatched saved length refunds
+      ---
+      duration_ms: 794.590292
+      type: 'test'
+      ...
+    # Subtest: restart after output storage failure uses persisted receipt and charges only once
+    ok 6 - restart after output storage failure uses persisted receipt and charges only once
+      ---
+      duration_ms: 351.760792
+      type: 'test'
+      ...
+    # Subtest: saved descriptions reach the next worker only for their owner
+    ok 7 - saved descriptions reach the next worker only for their owner
+      ---
+      duration_ms: 286.914708
+      type: 'test'
+      ...
+    # Subtest: failed jobs refund all credits and invalid completed output cannot become public
+    ok 8 - failed jobs refund all credits and invalid completed output cannot become public
+      ---
+      duration_ms: 206.305958
+      type: 'test'
+      ...
+    # Subtest: website input, feedback ownership, personalization and consent withdrawal
+    ok 9 - website input, feedback ownership, personalization and consent withdrawal
+      ---
+      duration_ms: 264.13625
+      type: 'test'
+      ...
+    # Subtest: disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+    ok 10 - disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+      ---
+      duration_ms: 10.838833
+      type: 'test'
+      ...
+    # Subtest: lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+    ok 11 - lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+      ---
+      duration_ms: 4.947417
+      type: 'test'
+      ...
+    # Subtest: missing provider receipt refunds only after the full provider TTL and a quiet queue
+    ok 12 - missing provider receipt refunds only after the full provider TTL and a quiet queue
+      ---
+      duration_ms: 5.450625
+      type: 'test'
+      ...
+    # Subtest: test credit lots cannot fund live requests or inflate live balances
+    ok 13 - test credit lots cannot fund live requests or inflate live balances
+      ---
+      duration_ms: 1.388125
+      type: 'test'
+      ...
+    # Subtest: recovery rotates ambiguous jobs and releases credits after persistent storage failure
+    ok 14 - recovery rotates ambiguous jobs and releases credits after persistent storage failure
+      ---
+      duration_ms: 262.802667
+      type: 'test'
+      ...
+    1..14
+ok 3 - real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+  ---
+  duration_ms: 3742.850667
+  type: 'test'
+  ...
+# Subtest: longer qualification keeps every stage under its existing three-dollar conservative budget
+ok 4 - longer qualification keeps every stage under its existing three-dollar conservative budget
+  ---
+  duration_ms: 0.890333
+  type: 'test'
+  ...
+# Subtest: diagnostics and historical modes cannot silently acquire a longer window
+ok 5 - diagnostics and historical modes cannot silently acquire a longer window
+  ---
+  duration_ms: 0.201334
+  type: 'test'
+  ...
+# Subtest: one-worker trial cannot dispatch later requests while a prior result is running or unverified
+ok 6 - one-worker trial cannot dispatch later requests while a prior result is running or unverified
+  ---
+  duration_ms: 1.363792
+  type: 'test'
+  ...
+# Subtest: failed/cancelled or repeatedly unreadable results stop additional dispatch; worker bounds hold
+ok 7 - failed/cancelled or repeatedly unreadable results stop additional dispatch; worker bounds hold
+  ---
+  duration_ms: 0.155708
+  type: 'test'
+  ...
+# Subtest: automatic Improvise changes style and energy across persisted recent choices
+ok 8 - automatic Improvise changes style and energy across persisted recent choices
+  ---
+  duration_ms: 1.762416
+  type: 'test'
+  ...
+# Subtest: explicit style remains selected while energy varies; legacy jobs are safe
+ok 9 - explicit style remains selected while energy varies; legacy jobs are safe
+  ---
+  duration_ms: 0.374042
+  type: 'test'
+  ...
+# Subtest: Runpod submission is bounded, asynchronous, and never retried after uncertain acceptance
+ok 10 - Runpod submission is bounded, asynchronous, and never retried after uncertain acceptance
+  ---
+  duration_ms: 23.7605
+  type: 'test'
+  ...
+# Subtest: Runpod status validates identity, states, timing and receipts without exposing provider errors
+ok 11 - Runpod status validates identity, states, timing and receipts without exposing provider errors
+  ---
+  duration_ms: 3.220208
+  type: 'test'
+  ...
+# Subtest: dispatch checks disabled capacity without requiring a warm worker or submitting work
+ok 12 - dispatch checks disabled capacity without requiring a warm worker or submitting work
+  ---
+  duration_ms: 0.430375
+  type: 'test'
+  ...
+# Subtest: only status 404 is an expired-receipt candidate; a submit 404 remains unconfirmed
+ok 13 - only status 404 is an expired-receipt candidate; a submit 404 remains unconfirmed
+  ---
+  duration_ms: 0.19575
+  type: 'test'
+  ...
+# Subtest: whole playlists and cached descriptions pass a bounded provider request
+ok 14 - whole playlists and cached descriptions pass a bounded provider request
+  ---
+  duration_ms: 30.230375
+  type: 'test'
+  ...
+1..14
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4098.588083

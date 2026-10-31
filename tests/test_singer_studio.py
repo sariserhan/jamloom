@@ -170,6 +170,7 @@ class StudioFlow(unittest.TestCase):
                     seed = int(args[args.index('--seed')+1])
                     c = next(c for c in variants(seed) if c['id'] == 'reggae-female')
                     c['duration']=int(args[args.index('--duration')+1])
+                    if '--energy' in args:c['energy']=args[args.index('--energy')+1]
                     c['lyrics'] = '[Verse]\nYou have a question and I want to know\nLet your question flow'
                     dest.write_text(json.dumps({'schema': 'jamloom-sung-response-1', 'model_code': CODE_REVISION,
                         'weights': WEIGHT_REVISION, 'phrase': 'I have a question', 'cases': [c]}))
@@ -180,7 +181,7 @@ class StudioFlow(unittest.TestCase):
                     (dest/'complete.json').write_text(json.dumps({'technical': 'PASS', 'case': c,
                         'audio_sha256': digest(dest/'singer.wav'), 'plan_sha256': digest(plan)}))
             with patch.object(studio.subprocess, 'run', side_effect=run), patch.object(studio,'understand',return_value={}):
-                singer, exchange, lyrics, status, meaning = studio.make_reply(str(source), 'I have a question', 'female', 'reggae', True)
+                singer, exchange, lyrics, status, meaning = studio.make_reply(str(source), 'I have a question', 'female', 'reggae', True, energy='high')
             self.assertEqual(meaning,'I have a question')
             self.assertNotEqual(singer, exchange)
             self.assertTrue(Path(singer).is_file() and Path(exchange).is_file())
@@ -191,6 +192,8 @@ class StudioFlow(unittest.TestCase):
             self.assertTrue(receipt['sample_used'])
             self.assertTrue(receipt['events'])
             self.assertEqual(receipt['original_recording_sha256'],original_hash)
+            self.assertEqual(receipt['musical_direction']['energy'],'high')
+            self.assertEqual(receipt['musical_direction']['genre'],'reggae')
             self.assertIn('question', lyrics)
             self.assertEqual(digest(source), original_hash)
             self.assertEqual(len(calls), 3)

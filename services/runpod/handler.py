@@ -141,11 +141,13 @@ def validate(value):
         if set(payload) - {'profile', 'seed', 'country', 'feedback', 'duration_seconds', 'track_profiles'}:
             raise ValueError('Unsupported DNA input')
     else:
-        from singing_response import STYLES, VOICES, text_field, MAX_PHRASE_CHARS
+        from singing_response import ENERGIES, STYLES, VOICES, text_field, MAX_PHRASE_CHARS
         if payload.get('consent') is not True:
             raise ValueError('Recording permission required')
         if payload.get('genre') not in ('surprise', *STYLES) or payload.get('voice') not in ('surprise', *VOICES):
             raise ValueError('Invalid style or voice')
+        if 'energy' in payload and (not isinstance(payload['energy'],str) or payload['energy'] not in ENERGIES):
+            raise ValueError('Invalid Improvise energy')
         if payload.get('phrase'):
             text_field(payload['phrase'], MAX_PHRASE_CHARS, 'idea')
         source = value.get('source', {})

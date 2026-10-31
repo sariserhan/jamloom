@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-31T00:19:00.137Z",
+  "operation": "Independent GET and SELECT only",
+  "receipt": "docs/evidence/dna-completion/cloud/2026-10-31T00-09-37.567Z/trial-result.json",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "health": {
+    "jobs": {
+      "completed": 32,
+      "failed": 14,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "endpointVersion": 20,
+    "summary": {
+      "idle": 0,
+      "initializing": 0,
+      "running": 0,
+      "throttled": 0,
+      "total": 0,
+      "unhealthy": 0
+    },
+    "workers": []
+  },
+  "billing": [],
+  "billingLimit": "Observed daily billing may lag; not a finalized invoice or exact diagnostic attribution",
+  "temporaryDatabases": [],
+  "cleanup": "PASS",
+  "qualification": "PASS",
+  "rejectedAudio": null,
+  "requests": [
+    {
+      "label": "maximum-dna",
+      "provider_id": "0e5cf4b4-4141-43d2-ae4f-64622369d72f-u1",
+      "finalState": "completed",
+      "failure": null,
+      "audioSha256": "c35e8389e6574c62a8f6c8d9eee5e642774e3514a34444214090d2a5f5f2fd0c",
+      "seconds": 100,
+      "identity": "am_fenrir",
+      "referenceCounts": {
+        "favorites": 5000,
+        "influences": 5000,
+        "track_profiles": 5000
+      },
+      "balance": {
+        "available": 49,
+        "reserved": 0
+      }
+    }
+  ],
+  "removedObjects": 2,
+  "retries": 0
+}

@@ -1,5 +1,5 @@
 {
-  "status": "AWAITING_AUTHORIZATION",
+  "status": "APPROVED",
   "scope": "Publish Improvise energy worker, then three private musical auditions using the accepted question crop",
   "image_source_commit": "68bf2b39c564157e34bf6628d3d5f9a9af9e8a65",
   "image_base": "2ef31d6954f823aad6e170493783cd25dd0d9af3",
@@ -100,9 +100,13 @@
     "Additional requests or automatic retry"
   ],
   "execution": {
-    "image_build_attempts": 0,
+    "image_build_attempts": 1,
     "trial_invocations": 0,
-    "provider_requests_started": 0
+    "provider_requests_started": 0,
+    "status": "IMAGE_BUILD_RUNNING",
+    "image_publication_started_at": "2026-10-31T00:19:16.234937+00:00",
+    "workflow_run": 41149525821,
+    "workflow_url": "https://github.com/sariserhan/jamloom/actions/runs/41149525821"
   },
   "file_sha256": {
     "scripts/singer_studio.py": "335c8bf9fd31a0860af5826602cc427710d28c082d9761a40e24d09dd7e75a24",
@@ -114,6 +118,10 @@
     "apps/site/lib/cloud-songs.ts": "e76697925031c997227d891573a3ec6c46eb738eba3219c5cae5b2b1a531d8ee",
     "apps/site/lib/improvise-direction.ts": "4bd4512f15d51e65fc6757fa939f077d2443d524f7c3592857448df879dd931c",
     "apps/site/scripts/cloud-song-trial.ts": "039e2c05214e6abb8fe2806dc8c2da71451a0860c86b60d492fe4c79d754f72b",
-    "apps/site/scripts/cloud-trial-limits.ts": "1b33adba6d4d018c8c56109e15e9e33f2fa5782c09d50eb4e8879d617af6a08e"
-  }
+    "apps/site/scripts/cloud-trial-limits.ts": "1b33adba6d4d018c8c56109e15e9e33f2fa5782c09d50eb4e8879d617af6a08e",
+    "apps/site/lib/runpod-provider.ts": "889dc7de5e41007f883472bfc6ed403e618a803927ada0f3fbfd9912c693e1b4"
+  },
+  "preserved_local_adapter": "Existing diagnostic parser change is preserved; its current hash is pinned separately from the isolated application commit.",
+  "owner_statement": "Approve image and three auditions, $3 total",
+  "authorized_utc": "2026-10-31T00:12:30.748232+00:00"
 }

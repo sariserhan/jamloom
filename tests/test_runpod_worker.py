@@ -136,6 +136,12 @@ class WorkerTests(unittest.TestCase):
         job['payload']={'voice':'male','genre':'jazz','consent':True}
         job['source']={'url':URL.replace('11111111-1111','22222222-1111'),'bytes':44,'sha256':'a'*64}
         self.assertEqual(worker.validate(job),job)
+        for energy in ('low','medium','high'):
+            job['payload']['energy']=energy;self.assertEqual(worker.validate(job),job)
+        for energy in ('unknown',None,{},True):
+            job['payload']['energy']=energy
+            with self.assertRaisesRegex(ValueError,'energy'):worker.validate(job)
+        job['payload'].pop('energy')
         job['payload']['consent']=False
         with self.assertRaisesRegex(ValueError,'Recording permission required'):
             worker.validate(job)

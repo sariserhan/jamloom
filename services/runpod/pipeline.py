@@ -33,7 +33,7 @@ def run(work):
         import singer_studio
         singer_studio.OUTPUT = work/'improvise'
         _, audio, lyrics, _, _ = singer_studio.make_reply(str(work/'source'), payload.get('phrase', ''),
-            payload['voice'], payload['genre'], payload['consent'], payload['duration_seconds'])
+            payload['voice'], payload['genre'], payload['consent'], payload['duration_seconds'], energy=payload.get('energy'))
         shutil.copyfile(audio, work/'audio.wav')
         result = {'lyrics': lyrics, 'arrangement': json.loads(Path(audio).with_name('complete.json').read_text())}
     (work/'result.json').write_text(json.dumps(result, allow_nan=False))

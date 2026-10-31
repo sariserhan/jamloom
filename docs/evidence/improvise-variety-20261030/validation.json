@@ -1,6 +1,6 @@
 {
   "at": "2026-10-31T00:03:28.203366+00:00",
-  "implementation": "PASS local; not published",
+  "implementation": "PASS local; integrated after maximum test and independent cleanup",
   "scope": "Improvise only",
   "application_commit": "4e22bff2e7e11df6aa8535399232fddf28b6e559",
   "image_commit": "68bf2b39c564157e34bf6628d3d5f9a9af9e8a65",
@@ -28,5 +28,13 @@
     "services/runpod/pipeline.py": "aec86bd83e17b67b25c1adf8a5519aa3c6f5354ca0d79f3cc2b368ca1943b6aa",
     "services/runpod/Dockerfile": "b14fcc30ba94cb1cd9e13433ef5cd452fecb4ccf2fc3932d95366fd837e9ca58",
     "assets/manifests/improvise-energy.json": "720a5bd0834fa3e6bc79c016c5bf90cf0ea169ec9e8ac7cdf15249114404d8b4"
+  },
+  "integration": {
+    "at": "2026-10-31T00:19:35.831790+00:00",
+    "site_database_provider_budget_checks": 28,
+    "worker_checks_with_preserved_archive_changes": 17,
+    "typecheck": "PASS",
+    "unrelated_work": "Preserved; owned patch staged separately",
+    "local_postgres": "Stopped after checks"
   }
 }

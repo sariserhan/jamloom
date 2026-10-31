@@ -16,7 +16,7 @@ RUN git init build-style-training/upstream \
     && rm -rf acestep/third_parts/nano-vllm/build
 # Explicit copies exclude credentials, recordings, research datasets and generated songs.
 COPY scripts/song_duration.py scripts/vocal_identity.py scripts/singing_response.py scripts/music_dna_song.py scripts/dna_direction.py scripts/dna_sound.py scripts/dna_language.py scripts/check_dna_audio.py scripts/analyze_words.py scripts/arrange_voice_research.py scripts/singer_studio.py scripts/local_call_edit.py scripts/source_led_response.py scripts/assemble_sung_response.py ./scripts/
-COPY assets/manifests/dna-style-reviews.json assets/manifests/song-durations.json assets/manifests/singing-model.json assets/manifests/lyric-planner-cuda.json assets/manifests/dna-auditor.json assets/manifests/dna-directions.json assets/manifests/dna-languages.json assets/manifests/word-timing-tiny.json assets/manifests/spleeter-hosted.json ./assets/manifests/
+COPY assets/manifests/improvise-energy.json assets/manifests/dna-style-reviews.json assets/manifests/song-durations.json assets/manifests/singing-model.json assets/manifests/lyric-planner-cuda.json assets/manifests/dna-auditor.json assets/manifests/dna-directions.json assets/manifests/dna-languages.json assets/manifests/word-timing-tiny.json assets/manifests/spleeter-hosted.json ./assets/manifests/
 COPY services/runpod/handler.py services/runpod/pipeline.py services/runpod/prepare_models.py ./services/runpod/
 ENV PATH="/opt/jamloom/build-style-training/upstream/.venv/bin:$PATH"
 # GHCR limits individual layers to 10 GB; keep each model download separate.

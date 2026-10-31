@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-31T00:19:04.962161+00:00",
+  "status": "PASS technical and maximum-reference integrity",
+  "audio": "build-dna-completion/cloud/2026-10-31T00-09-37.567Z/maximum-dna.wav",
+  "sha256": "c35e8389e6574c62a8f6c8d9eee5e642774e3514a34444214090d2a5f5f2fd0c",
+  "seconds": 100.0,
+  "rate": 48000,
+  "channels": 2,
+  "peak": 0.949981689453125,
+  "clippedSamples": 0,
+  "referenceCounts": {
+    "favorites": 5000,
+    "influences": 5000,
+    "track_profiles": 5000
+  },
+  "orderedReferencesPreserved": true,
+  "planBytes": 4100123,
+  "musicalAcceptance": "NOT RUN for this scale fixture"
+}
