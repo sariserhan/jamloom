@@ -36,7 +36,7 @@ export const information={
  examples:{title:'Real audio examples',description:'Listen to an original local instrument study with clear provenance and limitations.',paragraphs:[
  'The playable study below is rendered by Jamloom’s portable audio engine using its licensed instrument bank. It contains no user recording or sampled artist performance. It demonstrates rendering and instrumentation, not accepted musical quality.',
  'The improvisation baseline has received negative owner feedback. A separate standalone song received “not bad,” which is a useful preference observation rather than an independent study. Those private recordings are not published here.',
- 'Consented public before/after speech examples and an independent listening panel remain release prerequisites. We will not substitute invented ratings, testimonials or audio.']},
+ 'Only recordings cleared for public listening appear here. Private audition results are not presented as public ratings or testimonials.']},
  help:{title:'Help and support',description:'Get started, recover local audio and contact Jamloom support.',paragraphs:[
  'For remixing, start at AI Improvisation. For local track mixing, open DJ Studio on a desktop browser. Allow audio playback after clicking a control; browsers do not allow unattended playback.',
  'If recording fails, check microphone permissions and choose HTTPS or localhost. If a Live Source provides no audio, choose a supported tab with Share audio enabled. Stop capture before changing routing.',

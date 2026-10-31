@@ -14,7 +14,7 @@ export function SaveMix({publicSharing=true}:{publicSharing?:boolean}) {
   const router=useRouter(), form=useRef<HTMLFormElement>(null);
   const request=useRef({identity:'',id:crypto.randomUUID()}),product=useRef('dj-studio');
   const [busy,setBusy]=useState(false), [message,setMessage]=useState(''), [error,setError]=useState('');
-  const [visibility,setVisibility]=useState('public'),[localFile,setLocalFile]=useState<File|null>(null);
+  const [visibility,setVisibility]=useState('private'),[localFile,setLocalFile]=useState<File|null>(null);
   useEffect(()=>{let active=true;void (async()=>{try{
     const saved=sessionStorage.getItem('jamloom-save-selection');if(!saved)return;
     const {id,name}=JSON.parse(saved);if(typeof id!=='string'||typeof name!=='string')throw new Error();
@@ -44,7 +44,7 @@ export function SaveMix({publicSharing=true}:{publicSharing?:boolean}) {
         await result(await fetch(`/api/library/${intent.id}/finalize`,{method:'POST'}));
       }
       setMessage(visibility==='public'?'Saved and submitted for review. It will appear on the homepage after approval.':'Saved privately. It will not appear on public pages.');
-      sessionStorage.removeItem('jamloom-save-selection');setLocalFile(null);product.current='dj-studio';setVisibility('public');
+      sessionStorage.removeItem('jamloom-save-selection');setLocalFile(null);product.current='dj-studio';setVisibility('private');
       form.current?.reset(); request.current={identity:'',id:crypto.randomUUID()}; router.refresh();
     } catch(e) {
       if (e && typeof e==='object' && 'status' in e && e.status===409) request.current.identity='';
@@ -61,7 +61,7 @@ export function SaveMix({publicSharing=true}:{publicSharing?:boolean}) {
     <fieldset className="visibility-choice" disabled={busy}><legend>Who can listen?</legend>
       <label><input type="radio" name="visibility" value="public" checked={visibility==='public'} onChange={()=>setVisibility('public')}/>Public · share after review</label>
       <label><input type="radio" name="visibility" value="private" checked={visibility==='private'} onChange={()=>setVisibility('private')}/>Private · only you</label>
-      <p>Saving this local preview costs 0 credits. When paid cloud generation opens, private creations will cost 25% more credits, rounded up. Taking a public mix down is always free.</p>
+      <p>Saving this local preview costs 0 credits. Private and public cloud generation use the same credits. Taking a public mix down is always free.</p>
     </fieldset>
     {visibility==='public'&&<fieldset disabled={busy}><legend>Public listing</legend>
       {!publicSharing&&<p role="alert">Public sharing is unavailable here. Choose private or try again later.</p>}

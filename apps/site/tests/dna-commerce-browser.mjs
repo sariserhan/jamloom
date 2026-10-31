@@ -34,22 +34,21 @@ fs.mkdirSync(work+'/singer');fs.writeFileSync(work+'/singer/singer.wav',wav);fs.
  }
  const alice=await account('dna-alice@example.test'),bob=await account('dna-bob@example.test');
  const owner=(await pool.query('SELECT id FROM "user" WHERE email=$1',['dna-alice@example.test'])).rows[0].id;
- const wallet=new Wallet(pool);await wallet.grant(owner,{provider:'stripe_test',receipt:name,credits:20,netMicros:10_000_000});
+ const wallet=new Wallet(pool);await wallet.grant(owner,{provider:'stripe_test',receipt:name,credits:100,netMicros:10_000_000});
  assert.equal((await api('/api/taste/song',{method:'POST',body:{}})).status,401);
  assert.equal((await api('/api/taste/song',{method:'POST',body:{},cookie:alice,origin:'https://foreign.example'})).status,503);
  for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
-  const browser=await engine.launch(engineName==='chromium'?{args:['--mute-audio']}:{});
+  const browser=await engine.launch(engineName==='chromium'?{args:['--mute-audio'],...(process.env.JAMLOOM_TEST_CHROME==='1'?{channel:'chrome'}:{})}:{});
   try{
    const context=await browser.newContext({viewport:{width:1280,height:900}});await context.addInitScript(silenceSpeakers);
    await context.addCookies(alice.split('; ').map(pair=>({name:pair.slice(0,pair.indexOf('=')),value:pair.slice(pair.indexOf('=')+1),url:base})));
    await context.addInitScript(()=>localStorage.setItem('jamloom-taste-v1',JSON.stringify({version:1,references:['Private favorite — Private artist'],referenceMetadata:[{reference:'Private favorite — Private artist',genre:'Pop',source:'itunes'}],vocalLanguage:'en',energy:'balanced',tempo:100,instruments:['piano'],novelty:50})));
    await context.route('**/*',r=>new URL(r.request().url()).origin===base?r.continue():r.abort());
-   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(base+'/music-dna');
+   const page=await context.newPage(),errors=[];page.setDefaultTimeout(20000);page.on('pageerror',e=>errors.push(e.message));await page.goto(base+'/music-dna');
    const before=await wallet.balance(owner),jobs=[];
    for(const visibility of ['public','private']){
     await page.getByRole('button',{name:jobs.length?'Make another song':'Make my music',exact:true}).click();
-    await page.getByRole('radio',{name:visibility==='public'?'Public · from 1 credit':'Private · from 2 credits',exact:true}).check();
-    if(visibility==='public')
+    await page.getByRole('radio',{name:visibility==='public'?'Public · same price':'Private · same price',exact:true}).check();
     const submitted=page.waitForResponse(r=>r.url()===base+'/api/taste/song'&&r.request().method()==='POST'&&r.request().postDataJSON().action==='submit');
     await page.getByRole('button',{name:/^Generate song/}).click();
     const response=await submitted;assert.equal(response.status(),202);const {id}=await response.json();jobs.push({id,visibility});
@@ -60,20 +59,20 @@ fs.mkdirSync(work+'/singer');fs.writeFileSync(work+'/singer/singer.wav',wav);fs.
     const detail=await api('/api/taste/song?id='+id,{cookie:bob});if(visibility==='public')assert.ok(!(await detail.text()).includes('Private favorite'));
     const replay=await api('/api/taste/song',{method:'POST',cookie:alice,body:response.request().postDataJSON()});assert.equal(replay.status,202);assert.equal((await replay.json()).id,id);
    }
-   assert.deepEqual(await wallet.balance(owner),{available:before.available-3,reserved:0});
+   assert.deepEqual(await wallet.balance(owner),{available:before.available-40,reserved:0});
    const feed=await(await api('/api/taste/song?view=public')).json();assert.ok(feed.songs.some(s=>s.id===jobs[0].id));assert.ok(!feed.songs.some(s=>s.id===jobs[1].id));
    for(const width of [1280,390,320]){await page.setViewportSize({width,height:900});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
    await page.getByRole('region',{name:'Your songs',exact:true}).scrollIntoViewIfNeeded();await page.screenshot({path:join(folder,engineName+'-songs.png')});
    assert.deepEqual((await new AxeBuilder({page}).include('#dna-notebook').analyze()).violations,[]);assert.deepEqual(errors,[]);
    await page.goto(base+'/');
-   const homeSongs=page.getByRole('region',{name:'Community songs · Music DNA',exact:true});
-   await homeSongs.locator(`audio[src*="id=${jobs[0].id}&"]`).waitFor();
-   assert.equal(await homeSongs.locator(`audio[src*="id=${jobs[1].id}&"]`).count(),0);
+   const homeSongs=page.locator('#music-dna-songs');
+   await homeSongs.locator(`a[href*="id=${jobs[0].id}&"]`).waitFor({state:'attached'});
+   assert.equal(await homeSongs.locator(`a[href*="id=${jobs[1].id}&"]`).count(),0);
    assert.equal((await api('/api/taste/song?id='+jobs[0].id,{method:'DELETE',cookie:alice})).status,200);
-   await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
-   await homeSongs.locator(`audio[src*="id=${jobs[0].id}&"]`).waitFor({state:'detached'});
+   await page.waitForTimeout(1100);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
+   await homeSongs.locator(`a[href*="id=${jobs[0].id}&"]`).waitFor({state:'detached'});
    assert.deepEqual(errors,[]);
-   results.push({homepage_public_only:true,homepage_withdrawal_refresh:true,browser:engineName,status:'PASS',real_auth:true,real_postgres:true,worker:'synthetic process fixture',public_credits:1,private_credits:2,duplicate_charges:0,private_cross_owner_status:404,private_anonymous_status:404,public_feed_excludes_private:true,widths:[1280,390,320],axe_violations:0,errors});
+   results.push({homepage_public_only:true,homepage_withdrawal_refresh:true,browser:engineName,status:'PASS',real_auth:true,real_postgres:true,worker:'synthetic process fixture',public_credits:20,private_credits:20,duplicate_charges:0,private_cross_owner_status:404,private_anonymous_status:404,public_feed_excludes_private:true,widths:[1280,390,320],axe_violations:0,errors});
   }finally{await browser.close();}
  }
  await writeFile('/tmp/jamloom-dna-commerce-browser.json',JSON.stringify({status:'PASS',folder,results},null,2));console.log(JSON.stringify({status:'PASS',folder,results}));

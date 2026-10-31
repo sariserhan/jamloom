@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "browser": "chrome",
+      "route": "/",
+      "decodedImages": 7
+    },
+    {
+      "browser": "chrome",
+      "route": "/tour",
+      "decodedImages": 9
+    },
+    {
+      "browser": "chrome",
+      "creditsAuthentication": true,
+      "creditsPage": true,
+      "purchasesHeld": true,
+      "generationHeld": true,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "route": "/",
+      "decodedImages": 7
+    },
+    {
+      "browser": "webkit",
+      "route": "/tour",
+      "decodedImages": 9
+    },
+    {
+      "browser": "webkit",
+      "creditsAuthentication": true,
+      "creditsPage": true,
+      "purchasesHeld": true,
+      "generationHeld": true,
+      "pageErrors": []
+    }
+  ]
+}

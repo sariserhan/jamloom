@@ -117,3 +117,10 @@ test('public preview images bypass the launch proxy while private and payment ro
  for(const url of ['/api/payments/checkout','/api/generations','/api/taste/song?view=mine','/account/credits','/admin'])
   assert.equal(doesProxyMatch({config,url}),true,url);
 });
+
+test('credits account page reaches its own authentication during preview without opening purchases',async()=>{
+ assert.equal(comingSoonRecovery('/account/credits'),true);
+ assert.equal((await proxy(new NextRequest('https://www.jamloom.com/account/credits'))).headers.get('x-middleware-next'),'1');
+ for(const path of ['/api/payments/checkout','/api/payments/subscription','/account/credits/fake'])
+  assert.equal((await proxy(new NextRequest('https://www.jamloom.com'+path))).status,path.startsWith('/api/')?503:307,path);
+});
