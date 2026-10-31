@@ -40,7 +40,8 @@ test('durable watchdog: lost create/delete responses, restart, cancellation, ide
   assert.equal((await restarted.sweep(true))[0].status,'awaiting_cost_evidence');
   await restarted.recordCost(id,100,costHash);await restarted.recordCost(id,100,costHash);
   await assert.rejects(restarted.recordCost(id,200,costHash),/conflict/);
-  assert.equal((await restarted.sweep(true))[0].status,'settled');assert.deepEqual(await wallet.balance('alice'),{available:49,reserved:0});
+  assert.equal((await restarted.sweep(true))[0].status,'settled');assert.deepEqual(await wallet.balance('alice'),{available:50,reserved:0});
+  assert.deepEqual((await pool.query('SELECT status,actual_cost_micros::int FROM generation_reservations WHERE id=$1',[id])).rows,[{status:'failed',actual_cost_micros:100}]);
   assert.deepEqual(await restarted.sweep(true),[]);assert.deepEqual(deletes,[77]);
   // Label duplication or replacement must not destroy a different rental.
   const b=await wallet.reserve('bob','watch_bob',100000,5000,spec),second=(await queue.claim('worker2'))!;
@@ -53,11 +54,15 @@ test('durable watchdog: lost create/delete responses, restart, cancellation, ide
   instances=[];assert.equal((await watchdog.sweep(true))[0].status,'awaiting_cost_evidence');
   await watchdog.recordCost(b,100,costHash);assert.equal((await watchdog.sweep(true))[0].status,'settled');
   assert.equal((await pool.query('SELECT state FROM generation_jobs WHERE reservation_id=$1',[b])).rows[0].state,'cancelled');
+  assert.deepEqual(await wallet.balance('bob'),{available:50,reserved:0});
+  assert.deepEqual((await pool.query('SELECT status,actual_cost_micros::int FROM generation_reservations WHERE id=$1',[b])).rows,[{status:'cancelled',actual_cost_micros:100}]);
   // Crash after terminal write but before wallet settlement recovers without duplicate capture.
   const c=await wallet.reserve('carol','watch_carol',100000,5000,spec),third=(await queue.claim('worker3'))!;
   await pool.query("UPDATE generation_jobs SET state='failed',actual_cost_micros=100,stop_confirmed_at=now() WHERE reservation_id=$1",[c]);
   assert.equal((await watchdog.sweep(true))[0].status,'settlement_recovered');await queue.reconcile(c);
-  assert.deepEqual(await wallet.balance('carol'),{available:49,reserved:0});
+  assert.deepEqual(await wallet.balance('carol'),{available:50,reserved:0},'Crash recovery refunds failed work without losing its provider cost');
+  assert.deepEqual((await pool.query('SELECT status,actual_cost_micros::int FROM generation_reservations WHERE id=$1',[c])).rows,[{status:'failed',actual_cost_micros:100}]);
+  assert.equal((await pool.query("SELECT count(*)::int n FROM wallet_ledger_entries WHERE reservation_id=ANY($1::uuid[]) AND kind='capture'",[[id,b,c]])).rows[0].n,0);
   await assert.rejects(watchdog.prepare(c,third.leaseToken,42),/lease/);
   // Unbound local jobs are visible and held; unknown provider state never releases credits.
   const d=await wallet.reserve('carol','watch_unbound',100000,5000,spec),fourth=(await queue.claim('worker4'))!;await queue.cancel('carol',d);

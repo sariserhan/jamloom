@@ -1,0 +1,68 @@
+2026-10-31T17:24:57.9651259Z # Subtest: durable local queue: one claim, lease loss, cancellation, crash recovery, funded immutable work
+2026-10-31T17:24:57.9655062Z not ok 7 - durable local queue: one claim, lease loss, cancellation, crash recovery, funded immutable work
+2026-10-31T17:24:57.9656190Z   ---
+2026-10-31T17:24:57.9656698Z   duration_ms: 394.02329
+2026-10-31T17:24:57.9657256Z   type: 'test'
+2026-10-31T17:24:57.9658214Z   location: '/home/runner/work/jamloom/jamloom/apps/site/tests/generation-queue.test.ts:4:1'
+2026-10-31T17:24:57.9659327Z   failureType: 'testCodeFailure'
+2026-10-31T17:24:57.9659938Z   error: |-
+2026-10-31T17:24:57.9660557Z     Expected values to be strictly deep-equal:
+2026-10-31T17:24:57.9661287Z     + actual - expected
+2026-10-31T17:24:57.9661839Z
+2026-10-31T17:24:57.9662302Z       {
+2026-10-31T17:24:57.9662881Z     +   available: 50,
+2026-10-31T17:24:57.9663764Z     -   available: 49,
+2026-10-31T17:24:57.9664241Z         reserved: 0
+2026-10-31T17:24:57.9664630Z       }
+2026-10-31T17:24:57.9664962Z
+2026-10-31T17:24:57.9665315Z   code: 'ERR_ASSERTION'
+2026-10-31T17:24:57.9665750Z   name: 'AssertionError'
+2026-10-31T17:24:57.9666178Z   expected:
+2026-10-31T17:24:57.9666536Z     available: 49
+2026-10-31T17:24:57.9666919Z     reserved: 0
+2026-10-31T17:24:57.9667284Z   actual:
+2026-10-31T17:24:57.9667648Z     available: 50
+2026-10-31T17:24:57.9668028Z     reserved: 0
+2026-10-31T17:24:57.9668434Z   operator: 'deepStrictEqual'
+2026-10-31T17:24:57.9668892Z   stack: |-
+2026-10-31T17:24:57.9669865Z     TestContext.<anonymous> (/home/runner/work/jamloom/jamloom/apps/site/tests/generation-queue.test.ts:25:10)
+2026-10-31T17:24:57.9671221Z     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-10-31T17:24:57.9672277Z     async Test.run (node:internal/test_runner/test:1054:7)
+2026-10-31T17:24:57.9673236Z     async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+2026-10-31T17:24:57.9674489Z   ...
+2026-10-31T17:24:58.6080963Z # Subtest: durable watchdog: lost create/delete responses, restart, cancellation, identity/cost holds and settlement recovery
+2026-10-31T17:24:58.6087226Z not ok 8 - durable watchdog: lost create/delete responses, restart, cancellation, identity/cost holds and settlement recovery
+2026-10-31T17:24:58.6080963Z # Subtest: durable watchdog: lost create/delete responses, restart, cancellation, identity/cost holds and settlement recovery
+2026-10-31T17:24:58.6087226Z not ok 8 - durable watchdog: lost create/delete responses, restart, cancellation, identity/cost holds and settlement recovery
+2026-10-31T17:24:58.6088326Z   ---
+2026-10-31T17:24:58.6088879Z   duration_ms: 410.587257
+2026-10-31T17:24:58.6089447Z   type: 'test'
+2026-10-31T17:24:58.6090284Z   location: '/home/runner/work/jamloom/jamloom/apps/site/tests/generation-watchdog.test.ts:6:1'
+2026-10-31T17:24:58.6091169Z   failureType: 'testCodeFailure'
+2026-10-31T17:24:58.6091585Z   error: |-
+2026-10-31T17:24:58.6092033Z     Expected values to be strictly deep-equal:
+2026-10-31T17:24:58.6092537Z     + actual - expected
+2026-10-31T17:24:58.6092889Z
+2026-10-31T17:24:58.6093073Z       {
+2026-10-31T17:24:58.6093531Z     +   available: 50,
+2026-10-31T17:24:58.6093782Z     -   available: 49,
+2026-10-31T17:24:58.6094004Z         reserved: 0
+2026-10-31T17:24:58.6094204Z       }
+2026-10-31T17:24:58.6094377Z
+2026-10-31T17:24:58.6094563Z   code: 'ERR_ASSERTION'
+2026-10-31T17:24:58.6094791Z   name: 'AssertionError'
+2026-10-31T17:24:58.6095005Z   expected:
+2026-10-31T17:24:58.6095199Z     available: 49
+2026-10-31T17:24:58.6095400Z     reserved: 0
+2026-10-31T17:24:58.6095587Z   actual:
+2026-10-31T17:24:58.6095839Z     available: 50
+2026-10-31T17:24:58.6096223Z     reserved: 0
+2026-10-31T17:24:58.6096621Z   operator: 'deepStrictEqual'
+2026-10-31T17:24:58.6097051Z   stack: |-
+2026-10-31T17:24:58.6098013Z     TestContext.<anonymous> (/home/runner/work/jamloom/jamloom/apps/site/tests/generation-watchdog.test.ts:43:74)
+2026-10-31T17:24:58.6099489Z     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-10-31T17:24:58.6100023Z     async Test.run (node:internal/test_runner/test:1054:7)
+2026-10-31T17:24:58.6100594Z     async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+2026-10-31T17:24:58.6101298Z   ...
+2026-10-31T17:24:58.8394660Z # Subtest: listening references reject untrusted metadata, routes and malformed identities
+2026-10-31T17:24:58.8398187Z ok 9 - listening references reject untrusted metadata, routes and malformed identities

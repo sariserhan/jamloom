@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-31",
+  "platform": "macOS arm64, Node 22, PostgreSQL 16.14",
+  "sdk": {
+    "status": "PASS",
+    "shells": [
+      "system sh",
+      "dash"
+    ],
+    "cases": [
+      "fresh-and-warm",
+      "partial-cache-and-warm",
+      "conflicting-user-file-preserved",
+      "concurrent-build-rejected"
+    ],
+    "inheritedLockFlagCleared": true
+  },
+  "studioPackaging": {
+    "status": "PASS",
+    "tests": 2,
+    "note": "Existing TemporaryDirectory ResourceWarning during intentional failure cleanup; assertions pass"
+  },
+  "academySteps": [
+    {
+      "step": "studio",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "build-ci-repair-20261031/studio.log",
+      "sha256": "c49911d3ba2ec20ed89a9ea17ee6565cb773b2c0ed0db7eb35cd259ea53cefa6"
+    },
+    {
+      "step": "web-tests",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "build-ci-repair-20261031/web-tests.log",
+      "sha256": "1cf07794534bd6700db55361686e32b66eb057b705e6cc925e40b6af83ad13f6",
+      "tests": 201,
+      "pass": 201,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "step": "academy",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "build-ci-repair-20261031/academy.log",
+      "sha256": "4ae4191f5bdb9e30e94769d19d625e896f2a5f99cb0fbee08ebd4b85000a1885",
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "step": "admin",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "build-ci-repair-20261031/admin.log",
+      "sha256": "304b36074f4e2e4ac8049af1a557f20d6fe4b832da9bd59741a8d816a49e9ed0",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "step": "wallet",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "build-ci-repair-20261031/wallet.log",
+      "sha256": "eb771f13a96dd15625b1a3e9e6ffdb2f3de1c3e2fca4e3e0be93aba0d71b672b",
+      "tests": 57,
+      "pass": 57,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "step": "ai-dj-sessions",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "build-ci-repair-20261031/ai-dj-sessions.log",
+      "sha256": "e13575837fc5dd3ac04095b3b022055e3601ca3687c98658d9a122e7c57d6e16",
+      "tests": 35,
+      "pass": 35,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "step": "pro",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "build-ci-repair-20261031/pro.log",
+      "sha256": "8be433493944a811a10e68367c0bffb31656336850657a318bfda4cf6fb0c913",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "step": "typecheck",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "build-ci-repair-20261031/typecheck.log",
+      "sha256": "76d575f32c96b28d06783b82331bc5d133a4feed0a9804f0aa5139880abaa7c6"
+    }
+  ],
+  "databaseCleanup": {
+    "status": "PASS",
+    "remainingTestDatabases": 0,
+    "temporaryServerStopped": true
+  },
+  "remoteRerun": "NOT RUN: fixes are local until pushed",
+  "providers": "Mocked; no real charges or GPU execution",
+  "productionCodeChanged": false
+}
