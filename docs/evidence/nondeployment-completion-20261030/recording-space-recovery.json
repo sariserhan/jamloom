@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-31T01:44:50.790557+00:00",
+  "status": "PASS",
+  "targets": [
+    {
+      "path": "apps/site/.next/cache/turbopack",
+      "bytes": 658030244,
+      "tracked_files": 0,
+      "symlinks": 0,
+      "open_handles": 0,
+      "classification": "regenerable inactive production build cache"
+    },
+    {
+      "path": "apps/site/.next-qualification/cache/turbopack",
+      "bytes": 223422613,
+      "tracked_files": 0,
+      "symlinks": 0,
+      "open_handles": 0,
+      "classification": "regenerable inactive production build cache"
+    }
+  ],
+  "free_before_bytes": 20960358400,
+  "free_after_bytes": 21841928192,
+  "source_status_unchanged": true,
+  "active_dev_cache_preserved": true,
+  "recordings_models_release_bundles_preserved": true
+}

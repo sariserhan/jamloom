@@ -26,11 +26,13 @@ const get=async(path:string)=>{const r=await fetch('https://rest.runpod.io/v1/'+
 const control=await get('endpoints/'+config.endpoint+'?includeWorkers=true');
 const health=await new RunpodProvider(config.key,config.endpoint).health();
 // REST v1 exposes workers on the endpoint, not through an /endpoints/:id/workers route.
-const workers=control.workers;
+const inventory=control.workers;
 assert.equal(control.workersMin,0);assert.equal(control.workersMax,0);
 assert.equal(health.jobs?.inQueue,0);assert.equal(health.jobs?.inProgress,0);
 assert(Object.keys(health.workers??{}).length>0);assert(Object.values(health.workers).every(v=>v===0));
-assert(Array.isArray(workers),'Provider must return the requested worker inventory');assert.deepEqual(workers,[]);
+assert(Array.isArray(inventory),'Provider must return the requested worker inventory');assert.deepEqual(inventory,[]);
+// Keep the durable postcheck schema consumed by the next-stage admission guard.
+const workers={summary:{total:inventory.length},workers:inventory};
 const url=new URL(process.env.JAMLOOM_TEST_DATABASE_URL!);assert.equal(url.hostname,'127.0.0.1');
 const pool=createPool(url.href);let temporaryDatabases;
 try{temporaryDatabases=(await pool.query("SELECT datname FROM pg_database WHERE datname LIKE 'jamloom_trial_%'")).rows;assert.deepEqual(temporaryDatabases,[]);}finally{await pool.end();}
