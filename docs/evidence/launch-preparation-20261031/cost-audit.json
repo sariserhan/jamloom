@@ -1,0 +1,414 @@
+{
+  "at": "2026-10-31T17:14:18.502Z",
+  "status": "FAIL_CAP_COMPATIBILITY",
+  "catalog": "2026-10-31-v2",
+  "products": [
+    {
+      "product": "improvise",
+      "version": "2026-10-31-v2",
+      "credits": 10,
+      "budgetMicros": 70000
+    },
+    {
+      "product": "music-dna",
+      "version": "2026-10-31-v2",
+      "credits": 20,
+      "budgetMicros": 140000
+    },
+    {
+      "product": "ai-dj",
+      "version": "2026-10-31-v2",
+      "credits": 2,
+      "budgetMicros": 14000
+    }
+  ],
+  "checks": [
+    {
+      "product": "improvise",
+      "version": "2026-10-31-v2",
+      "credits": 10,
+      "budgetMicros": 70000,
+      "configuredQualificationCapMicros": 920000,
+      "fitsPublishedBudget": false,
+      "maxRateMicrosPerSecondAtCurrentTTL": 55,
+      "minimumCreditsAtUnchangedCap": 132
+    },
+    {
+      "product": "music-dna",
+      "version": "2026-10-31-v2",
+      "credits": 20,
+      "budgetMicros": 140000,
+      "configuredQualificationCapMicros": 920000,
+      "fitsPublishedBudget": false,
+      "maxRateMicrosPerSecondAtCurrentTTL": 133,
+      "minimumCreditsAtUnchangedCap": 132
+    }
+  ],
+  "configuredLocalCapMicros": null,
+  "historicalStats": [
+    {
+      "product": "improvise",
+      "requests": 18,
+      "completed": 16,
+      "unsuccessful": 2,
+      "estimatedSuccessfulMicros": {
+        "min": 107000,
+        "max": 299000
+      }
+    },
+    {
+      "product": "music-dna",
+      "requests": 5,
+      "completed": 3,
+      "unsuccessful": 2,
+      "estimatedSuccessfulMicros": {
+        "min": 157000,
+        "max": 229000
+      }
+    },
+    {
+      "product": "ai-dj",
+      "requests": 0,
+      "completed": 0,
+      "unsuccessful": 0,
+      "estimatedSuccessfulMicros": null
+    }
+  ],
+  "trials": [
+    {
+      "path": "docs/evidence/improvise-finish/cloud/2026-10-30T17-54-27.986Z/trial-result.json",
+      "sha256": "00c455405afa641999155c6f09105f08cd5b5e081ef6a05ac87b8830d485eb8c",
+      "scope": "single-reggae-diagnostic",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:8411a6143b2134ac61d6ab6a00e0d22f86f0bce074a0a636fc090883009067ea",
+      "startedAt": "2026-10-30T17:54:27.988Z",
+      "finishedAt": "2026-10-30T18:10:39.112Z",
+      "requests": [
+        {
+          "product": "improvise",
+          "state": "failed",
+          "providerState": "FAILED",
+          "executionMs": 42476,
+          "delayMs": 1620,
+          "estimatedCostMicros": 65000
+        }
+      ],
+      "cleanup": true
+    },
+    {
+      "path": "docs/evidence/improvise-finish/cloud/2026-10-30T19-54-03.275Z/trial-result.json",
+      "sha256": "ac2ffc3f813eccd498905431cd6fe841ac7887c4771471d6f8503f283af235d0",
+      "scope": "single-reggae-diagnostic",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "startedAt": "2026-10-30T19:54:03.277Z",
+      "finishedAt": "2026-10-30T20:10:49.656Z",
+      "requests": [
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 83157,
+          "delayMs": 13751,
+          "estimatedCostMicros": 117000,
+          "seconds": 30
+        }
+      ],
+      "cleanup": true
+    },
+    {
+      "path": "docs/evidence/improvise-finish/cloud/2026-10-30T20-27-32.535Z/trial-result.json",
+      "sha256": "d53e48b25d05196062b98b075976eb0fab97bcc65ce76d5c13ca00fe837b0901",
+      "scope": "qualification",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "startedAt": "2026-10-30T20:27:32.538Z",
+      "finishedAt": "2026-10-30T20:43:45.400Z",
+      "requests": [
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 98677,
+          "delayMs": 179683,
+          "estimatedCostMicros": 299000,
+          "seconds": 30
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 86740,
+          "delayMs": 20,
+          "estimatedCostMicros": 107000,
+          "seconds": 35
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 106772,
+          "delayMs": 18,
+          "estimatedCostMicros": 127000,
+          "seconds": 40
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 92185,
+          "delayMs": 23,
+          "estimatedCostMicros": 113000,
+          "seconds": 45
+        }
+      ],
+      "cleanup": true
+    },
+    {
+      "path": "docs/evidence/improvise-finish/cloud/2026-10-30T23-36-59.160Z/trial-result.json",
+      "sha256": "e984356f13f96870bb2e4bbed1b7d5123c0e16dec2811b075d1fbabfeb2a085a",
+      "scope": "single-owner-source-quality",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:85b4afb0821ba571460bbeab6c56c10f7640844cdf92ade0b3ce549782e16dce",
+      "startedAt": "2026-10-30T23:36:59.162Z",
+      "finishedAt": "2026-10-30T23:37:00.951Z",
+      "requests": [],
+      "cleanup": true
+    },
+    {
+      "path": "docs/evidence/improvise-finish/cloud/2026-10-30T23-38-33.870Z/trial-result.json",
+      "sha256": "1dab67a2793dfc5e0523ba1ac58223912306185f1331c519b3b3d37b66c361fb",
+      "scope": "single-owner-source-quality",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:85b4afb0821ba571460bbeab6c56c10f7640844cdf92ade0b3ce549782e16dce",
+      "startedAt": "2026-10-30T23:38:33.873Z",
+      "finishedAt": "2026-10-30T23:45:15.230Z",
+      "requests": [
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 118010,
+          "delayMs": 10015,
+          "estimatedCostMicros": 149000,
+          "seconds": 45
+        }
+      ],
+      "cleanup": true
+    },
+    {
+      "path": "docs/evidence/improvise-finish/cloud/2026-10-31T00-39-14.681Z/trial-result.json",
+      "sha256": "71ed341113ca844e7d2cb5c847fa0bd0e3a2350b0edc50966e24addcce54d079",
+      "scope": "three-style-energy-source-audition",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1",
+      "startedAt": "2026-10-31T00:39:14.683Z",
+      "finishedAt": "2026-10-31T00:50:56.343Z",
+      "requests": [
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 122830,
+          "delayMs": 31020,
+          "estimatedCostMicros": 174000,
+          "seconds": 45
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 108929,
+          "delayMs": 34,
+          "estimatedCostMicros": 129000,
+          "seconds": 45
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 101719,
+          "delayMs": 21,
+          "estimatedCostMicros": 122000,
+          "seconds": 45
+        }
+      ],
+      "cleanup": true
+    },
+    {
+      "path": "docs/evidence/improvise-finish/cloud/2026-10-31T01-36-52.887Z/trial-result.json",
+      "sha256": "cdee4a9c3bbc79d2f7e47bb5b266840420af04a877b64be9b33ac819a515b182",
+      "scope": "neural-study-stage-1",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1",
+      "startedAt": "2026-10-31T01:36:52.905Z",
+      "finishedAt": "2026-10-31T02:03:35.851Z",
+      "requests": [
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 113718,
+          "delayMs": 12706,
+          "estimatedCostMicros": 147000,
+          "seconds": 45
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 92381,
+          "delayMs": 16,
+          "estimatedCostMicros": 113000,
+          "seconds": 45
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 94713,
+          "delayMs": 17,
+          "estimatedCostMicros": 115000,
+          "seconds": 45
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 105841,
+          "delayMs": 48,
+          "estimatedCostMicros": 126000,
+          "seconds": 45
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 95136,
+          "delayMs": 17,
+          "estimatedCostMicros": 116000,
+          "seconds": 45
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 100225,
+          "delayMs": 69,
+          "estimatedCostMicros": 121000,
+          "seconds": 45
+        },
+        {
+          "product": "improvise",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 102870,
+          "delayMs": 21,
+          "estimatedCostMicros": 123000,
+          "seconds": 45
+        },
+        {
+          "product": "improvise",
+          "state": "failed",
+          "providerState": "FAILED",
+          "executionMs": 100459,
+          "delayMs": 18,
+          "estimatedCostMicros": 121000
+        }
+      ],
+      "cleanup": true
+    },
+    {
+      "path": "docs/evidence/dna-completion/cloud/2026-10-30T20-44-17.142Z/trial-result.json",
+      "sha256": "ceac7b98d07ea98e023d086b5646d08fb9f22daa6abc2cbe202fdf9b98aed550",
+      "scope": "qualification",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:9c726241c7d281c2643f68121011ef9b6f4ff22f97c94bc3bacedfb8756ab751",
+      "startedAt": "2026-10-30T20:44:17.144Z",
+      "finishedAt": "2026-10-30T20:57:53.587Z",
+      "requests": [
+        {
+          "product": "music-dna",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 198544,
+          "delayMs": 10166,
+          "estimatedCostMicros": 229000,
+          "seconds": 140
+        },
+        {
+          "product": "music-dna",
+          "state": "failed",
+          "providerState": "FAILED",
+          "executionMs": 264643,
+          "delayMs": 27,
+          "estimatedCostMicros": 285000
+        }
+      ],
+      "cleanup": true
+    },
+    {
+      "path": "docs/evidence/dna-completion/cloud/2026-10-30T22-47-07.503Z/trial-result.json",
+      "sha256": "29a8d33315e7454982bb63c5dbbeaa63b10549303cd597cbaeda22fabf4fae54",
+      "scope": "single-german-jazz-diagnostic",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fa5cc3eb457db0eb0657ea3936ea1cf200064e3328a2c04ba86ce8b63a2148cd",
+      "startedAt": "2026-10-30T22:47:07.505Z",
+      "finishedAt": "2026-10-30T22:54:39.637Z",
+      "requests": [
+        {
+          "product": "music-dna",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 128412,
+          "delayMs": 8026,
+          "estimatedCostMicros": 157000,
+          "seconds": 100
+        }
+      ],
+      "cleanup": true
+    },
+    {
+      "path": "docs/evidence/dna-completion/cloud/2026-10-30T23-03-24.644Z/trial-result.json",
+      "sha256": "87d20dd01e5dcfefcb60b2a25958687f7abf3f0b12118300d112bf17d1f3b0d7",
+      "scope": "qualification",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fa5cc3eb457db0eb0657ea3936ea1cf200064e3328a2c04ba86ce8b63a2148cd",
+      "startedAt": "2026-10-30T23:03:24.645Z",
+      "finishedAt": "2026-10-30T23:24:15.857Z",
+      "requests": [
+        {
+          "product": "music-dna",
+          "state": "failed",
+          "providerState": "FAILED",
+          "executionMs": 46474,
+          "delayMs": 11254,
+          "estimatedCostMicros": 78000
+        }
+      ],
+      "cleanup": true
+    },
+    {
+      "path": "docs/evidence/dna-completion/cloud/2026-10-31T00-09-37.567Z/trial-result.json",
+      "sha256": "17f93b311485e1c63f50d3ae6c510f22c62852293ca09967bcc2cb055c8c31d6",
+      "scope": "qualification",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:eeb074dc5f7a78712d8d90dc94c56f89cc89326b27d0a02134f230d621b4406f",
+      "startedAt": "2026-10-31T00:09:37.569Z",
+      "finishedAt": "2026-10-31T00:18:51.597Z",
+      "requests": [
+        {
+          "product": "music-dna",
+          "state": "completed",
+          "providerState": "COMPLETED",
+          "executionMs": 190210,
+          "delayMs": 6575,
+          "estimatedCostMicros": 217000,
+          "seconds": 100
+        }
+      ],
+      "cleanup": true
+    }
+  ],
+  "qualification": "NOT RUN: no complete attributable cost evidence for the live catalog",
+  "providerCosts": "Read the independently retained provider billing report; these job estimates are not invoices",
+  "missing": [
+    "Finalized allocation of cold start, idle, failed work and cancellations by worker version",
+    "Storage, retention, orchestration and support allocation",
+    "Current enforceable production caps that fit the catalog",
+    "Fresh production generation/payment delivery qualification"
+  ],
+  "next": "Do not enable sales or lower the guard merely to pass. Optimize and qualify lower enforceable cost bounds, or obtain owner approval for a revised price/margin. No new paid benchmark is useful until a viable cap design is reviewed.",
+  "paidCompute": false,
+  "priceChanges": false,
+  "qualificationEnabled": false
+}

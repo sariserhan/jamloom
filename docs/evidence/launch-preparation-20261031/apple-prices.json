@@ -1,0 +1,105 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "kind": "topupSchedule",
+      "data": {
+        "type": "inAppPurchasePriceSchedules",
+        "id": "6829266772",
+        "relationships": {
+          "baseTerritory": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6829266772/relationships/baseTerritory",
+              "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6829266772/baseTerritory"
+            }
+          },
+          "manualPrices": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6829266772/relationships/manualPrices",
+              "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6829266772/manualPrices"
+            }
+          },
+          "automaticPrices": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6829266772/relationships/automaticPrices",
+              "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6829266772/automaticPrices"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6829266772"
+        }
+      }
+    },
+    {
+      "kind": "inAppPurchaseAvailabilities",
+      "id": "6829266772",
+      "territories": [
+        "USA"
+      ],
+      "availableInNewTerritories": false
+    },
+    {
+      "kind": "subscriptionAvailabilities",
+      "id": "6829266841",
+      "territories": [
+        "USA"
+      ],
+      "availableInNewTerritories": false
+    },
+    {
+      "kind": "subscriptionPrice",
+      "data": [
+        {
+          "type": "subscriptionPrices",
+          "id": "eyJhIjoiNjgyOTI2Njg0MSIsImMiOiJVUyIsImQiOjAsInAiOiIwIn0",
+          "attributes": {
+            "startDate": null,
+            "preserved": false,
+            "planType": "UPFRONT"
+          },
+          "relationships": {
+            "subscriptionPricePoint": {
+              "data": {
+                "type": "subscriptionPricePoints",
+                "id": "eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ"
+              }
+            }
+          },
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/subscriptionPrices/eyJhIjoiNjgyOTI2Njg0MSIsImMiOiJVUyIsImQiOjAsInAiOiIwIn0"
+          }
+        }
+      ],
+      "included": [
+        {
+          "type": "subscriptionPricePoints",
+          "id": "eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ",
+          "attributes": {
+            "customerPrice": "15.0",
+            "proceeds": "10.5",
+            "proceedsYear2": "12.75"
+          },
+          "relationships": {
+            "equalizations": {
+              "links": {
+                "self": "https://api.appstoreconnect.apple.com/v1/subscriptionPricePoints/eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ/relationships/equalizations",
+                "related": "https://api.appstoreconnect.apple.com/v1/subscriptionPricePoints/eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ/equalizations"
+              }
+            },
+            "adjustedEqualizations": {
+              "links": {
+                "related": "https://api.appstoreconnect.apple.com/v1/subscriptionPricePoints/eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ/adjustedEqualizations"
+              }
+            }
+          },
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/subscriptionPricePoints/eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ"
+          }
+        }
+      ]
+    }
+  ],
+  "submitted": false,
+  "livePurchases": false
+}

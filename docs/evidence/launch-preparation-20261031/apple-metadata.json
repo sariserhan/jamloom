@@ -1,0 +1,82 @@
+[
+  {
+    "id": "a3979560-9bdd-4318-88d0-fb5453524f55",
+    "type": "inAppPurchaseLocalizations",
+    "attributes": {
+      "name": "150 Jamloom credits",
+      "locale": "en-US",
+      "description": "150 credits for songs and DJ sets. No expiry.",
+      "state": "PREPARE_FOR_SUBMISSION"
+    }
+  },
+  {
+    "id": "1fd38f79-38c2-4b70-9edf-76ec6a6f34de",
+    "type": "subscriptionLocalizations",
+    "attributes": {
+      "name": "Jamloom Creator",
+      "locale": "en-US",
+      "description": "300 credits every month. Paid credits never expire.",
+      "state": "PREPARE_FOR_SUBMISSION"
+    }
+  },
+  {
+    "id": "80cbcfde-a20b-4ecc-8ffa-ba8b853f666e",
+    "type": "subscriptionGroupLocalizations",
+    "attributes": {
+      "name": "Jamloom Creator",
+      "customAppName": null,
+      "locale": "en-US",
+      "state": "PREPARE_FOR_SUBMISSION"
+    }
+  },
+  {
+    "type": "iap",
+    "price": {
+      "type": "inAppPurchasePricePoints",
+      "id": "eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgifQ",
+      "attributes": {
+        "customerPrice": "10.0",
+        "proceeds": "7.0"
+      },
+      "relationships": {
+        "equalizations": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgifQ/relationships/equalizations",
+            "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgifQ/equalizations"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgifQ"
+      }
+    }
+  },
+  {
+    "type": "subscription",
+    "price": {
+      "type": "subscriptionPricePoints",
+      "id": "eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ",
+      "attributes": {
+        "customerPrice": "15.0",
+        "proceeds": "10.5",
+        "proceedsYear2": "12.75"
+      },
+      "relationships": {
+        "equalizations": {
+          "links": {
+            "self": "https://api.appstoreconnect.apple.com/v1/subscriptionPricePoints/eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ/relationships/equalizations",
+            "related": "https://api.appstoreconnect.apple.com/v1/subscriptionPricePoints/eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ/equalizations"
+          }
+        },
+        "adjustedEqualizations": {
+          "links": {
+            "related": "https://api.appstoreconnect.apple.com/v1/subscriptionPricePoints/eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ/adjustedEqualizations"
+          }
+        }
+      },
+      "links": {
+        "self": "https://api.appstoreconnect.apple.com/v1/subscriptionPricePoints/eyJzIjoiNjgyOTI2Njg0MSIsInQiOiJVU0EiLCJwIjoiMTAxNTMifQ"
+      }
+    }
+  }
+]

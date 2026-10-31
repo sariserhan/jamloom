@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-31T17:16:04.698Z",
+  "project": "prj_5YKnovNWcvnyr3cBeVW4jNmRdRQP",
+  "status": "PASS",
+  "variables": [
+    {
+      "key": "CREATOR_STRIPE_LIVE_PRODUCT_ID",
+      "status": "ADDED_SENSITIVE"
+    },
+    {
+      "key": "CREATOR_STRIPE_LIVE_PRICE_ID",
+      "status": "ADDED_SENSITIVE"
+    },
+    {
+      "key": "CREATOR_STRIPE_LIVE_PORTAL_CONFIGURATION",
+      "status": "ADDED_SENSITIVE"
+    },
+    {
+      "key": "SINGING_STRIPE_LIVE_PRODUCT_ID",
+      "status": "ADDED_SENSITIVE"
+    },
+    {
+      "key": "SINGING_STRIPE_LIVE_PRICE_ID",
+      "status": "ADDED_SENSITIVE"
+    },
+    {
+      "key": "SINGING_STRIPE_LIVE_WEBHOOK_SECRET",
+      "status": "ADDED_SENSITIVE"
+    }
+  ],
+  "valuesLogged": false,
+  "existingVariablesPreserved": true,
+  "webhookSecretReplacement": "HELD until matching release",
+  "deployment": false,
+  "purchaseSwitchesChanged": false
+}

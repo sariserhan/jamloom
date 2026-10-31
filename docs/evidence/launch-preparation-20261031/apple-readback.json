@@ -1,0 +1,57 @@
+{
+  "at": "2026-10-31T17:17:08.996Z",
+  "status": "PARTIAL",
+  "results": [
+    {
+      "path": "/v2/inAppPurchases/6829266772",
+      "id": "6829266772",
+      "attributes": {
+        "name": "Jamloom 150 credits",
+        "productId": "com.jamloom.credits.topup150",
+        "inAppPurchaseType": "CONSUMABLE",
+        "state": "MISSING_METADATA",
+        "reviewNote": "Prepared draft only; no submission or sales activation. 2026-10-31 v2 credit catalog: paid credits never expire. Requires verified Jamloom account. Production generation, purchase delivery and physical-device sandbox qualification remain held.",
+        "familySharable": false,
+        "contentHosting": null
+      }
+    },
+    {
+      "path": "/v1/subscriptions/6829266841",
+      "id": "6829266841",
+      "attributes": {
+        "name": "Jamloom Creator monthly",
+        "productId": "com.jamloom.creator.monthly",
+        "familySharable": false,
+        "state": "MISSING_METADATA",
+        "subscriptionPeriod": "ONE_MONTH",
+        "reviewNote": "Prepared draft only; no submission or sales activation. 2026-10-31 v2 credit catalog: paid credits never expire. Requires verified Jamloom account. Production generation, purchase delivery and physical-device sandbox qualification remain held.",
+        "groupLevel": 1,
+        "multiSeatStatus": "ENABLED",
+        "marketSettings": [
+          "APP_STORE",
+          "APPLE_BUSINESS",
+          "APPLE_SCHOOL"
+        ]
+      }
+    },
+    {
+      "path": "/v1/subscriptionGroups/22532513",
+      "id": "22532513",
+      "attributes": {
+        "referenceName": "Jamloom Creator"
+      }
+    },
+    {
+      "path": "/v2/inAppPurchases/6829266772/appStoreReviewScreenshot",
+      "id": null,
+      "attributes": null
+    },
+    {
+      "path": "/v1/subscriptions/6829266841/appStoreReviewScreenshot",
+      "id": null,
+      "attributes": null
+    }
+  ],
+  "submitted": false,
+  "physicalSandbox": "NOT RUN"
+}

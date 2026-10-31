@@ -1,0 +1,41 @@
+{
+  "mode": "live-preparation",
+  "catalog": "2026-10-31-v2",
+  "creator": {
+    "key": "creator",
+    "cents": 1500,
+    "credits": 300,
+    "interval": "month",
+    "appleProduct": "com.jamloom.creator.monthly"
+  },
+  "taxCode": "txcd_10000000",
+  "productActive": false,
+  "priceActive": false,
+  "portalLoginEnabled": false,
+  "cancellation": "at_period_end",
+  "proration": "none",
+  "webhook": {
+    "url": "https://www.jamloom.com/api/payments/stripe?catalog=2026-10-31-v2",
+    "apiVersion": "2026-09-30.endive",
+    "events": [
+      "checkout.session.completed",
+      "checkout.session.async_payment_succeeded",
+      "invoice.paid",
+      "invoice.payment_failed",
+      "customer.subscription.created",
+      "customer.subscription.updated",
+      "customer.subscription.deleted",
+      "charge.refunded",
+      "charge.dispute.created"
+    ],
+    "status": "disabled"
+  },
+  "existing": {
+    "product": "prod_VXlMg867UjAY5B",
+    "price": "price_1UWfq5DlEXWDEeHOohZJG7PI",
+    "portal": "bpc_1UWfq5DlEXWDEeHOHhRCQY1f",
+    "hook": "we_1UWfqYDlEXWDEeHOuJRHbAos"
+  },
+  "deployment": false,
+  "livePurchases": false
+}

@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-31T17:10:56.867Z",
+  "endpoint": "jl77hn92npt65k",
+  "records": [
+    {
+      "amount": 0.028195693623274565,
+      "timeBilledMs": 56574,
+      "diskSpaceBilledGB": 120,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 18:00:00"
+    },
+    {
+      "amount": 0.5447215219028294,
+      "timeBilledMs": 1230991,
+      "diskSpaceBilledGB": 480,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 20:00:00"
+    },
+    {
+      "amount": 0.07100284658372402,
+      "timeBilledMs": 146063,
+      "diskSpaceBilledGB": 60,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 22:00:00"
+    },
+    {
+      "amount": 0.09769451292231679,
+      "timeBilledMs": 199543,
+      "diskSpaceBilledGB": 180,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-30 23:00:00"
+    },
+    {
+      "amount": 0.2801026706583798,
+      "timeBilledMs": 621899,
+      "diskSpaceBilledGB": 240,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-31 00:00:00"
+    },
+    {
+      "amount": 0.3535334011539817,
+      "timeBilledMs": 722983,
+      "diskSpaceBilledGB": 180,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-31 01:00:00"
+    },
+    {
+      "amount": 0.1162782646715641,
+      "timeBilledMs": 239201,
+      "diskSpaceBilledGB": 60,
+      "endpointId": "jl77hn92npt65k",
+      "time": "2026-10-31 02:00:00"
+    }
+  ],
+  "finality": "Provider observation only; not an invoice-finality guarantee"
+}

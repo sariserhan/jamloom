@@ -34,12 +34,12 @@ These are **allowable budgets, not measured production costs or a claim that cur
 
 `JAMLOOM_CREDIT_COST_QUALIFICATION` remains empty, public generation and native purchase release flags remain false, and live purchase switches remain off. The live trial pool is zero until an explicit promotional budget is set; the isolated test pool is 1,000 accounts. A verified email is required, with authentication rate limits and an atomic global claim cap.
 
-Remaining activation work:
+Remaining activation work ([preparation evidence](evidence/launch-preparation-20261031/report.md), [ordered handoff](LAUNCH_ACTIVATION.md)):
 
-1. **NOT RUN:** measured attributable cost qualification for this exact catalog, supported currencies and worker versions. Record actual invoices/costs, failure distribution and enforceable per-job caps, then review the qualification version and funded trial cap.
-2. **PARTIAL:** Stripe sandbox Creator catalog/portal and real renewal/refund lifecycle pass. Create/review corresponding live catalog and end-of-period cancellation portal; configure signed production event delivery, validate tax/category/settlement and reconciliation, then explicitly authorize activation. Existing live endpoints are unchanged and credit sales remain held.
-3. **NOT RUN:** create the two new App Store Connect products, complete metadata/territories/prices and obtain approval. Qualify their actual sandbox transactions, renewal, refund and account sync on a physical iPhone. Local StoreKit fixtures do not prove these provider/device gates. This session has no configured App Store Connect administration tool or credentials for these new records.
-4. **NOT RUN:** deploy the website and submit/release the mobile build after approval. No production charge, public deployment, app submission or GPU rental occurred in this increment.
+1. **FAIL cap compatibility / NOT RUN measured qualification:** the retained qualification setup allows $0.92/song, exceeding $0.07/$0.14. Historical timing estimates and mixed hourly provider bills do not qualify the catalog. Review a viable enforceable cap before approving new paid measurement; prices, margin and guards remain unchanged.
+2. **PARTIAL:** live Creator product/price are prepared inactive, its cancellation portal exists with hosted login disabled, and the new nine-event credit webhook is disabled. Creator and Singing variables are added to Vercel production without deploying; the new credit webhook secret remains private and has not replaced the existing deployed secret. Signed deployed delivery, tax/settlement reconciliation and explicit activation remain open. Existing endpoints/settings are preserved.
+3. **PARTIAL:** Apple API access is resolved. Both new products exist with English metadata, exact USD $10/$15 prices and USA-only availability. They remain unsubmitted and `MISSING_METADATA`, with absent review screenshots. Final review metadata, physical-iPhone sandbox transactions/renewal/refund/account sync and approval remain open. Local StoreKit fixtures do not close these gates.
+4. **NOT RUN:** deployment, app upload/submission/release and live sales activation. Signed/audited iPhone 0.11.0 (35) is exported locally with purchase flags still disabled; a final enabled candidate requires separate validation. No production charge, public deployment or GPU rental occurred in this preparation.
 
 ## Validation and reproduction
 

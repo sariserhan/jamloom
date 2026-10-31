@@ -1,0 +1,71 @@
+{
+  "configuration": {
+    "accountConfigured": true,
+    "libraryStorageConfigured": true,
+    "djRecordingStorageConfigured": true,
+    "cloudPriceCompatibility": [
+      {
+        "product": "improvise",
+        "credits": 10,
+        "budgetMicros": 70000,
+        "costCapMicros": null,
+        "status": "NOT_CONFIGURED"
+      },
+      {
+        "product": "music-dna",
+        "credits": 20,
+        "budgetMicros": 140000,
+        "costCapMicros": null,
+        "status": "NOT_CONFIGURED"
+      }
+    ],
+    "cloudSongsEnabled": false,
+    "cloudSongConfigValid": true,
+    "djBillingModeValid": true,
+    "djInvitationsEnabled": false,
+    "academy": {
+      "mode": "live",
+      "configured": false,
+      "academyCheckoutEnabled": false,
+      "generationCheckoutEnabled": false
+    },
+    "singing": {
+      "mode": "live",
+      "configured": true,
+      "academyCheckoutEnabled": false,
+      "generationCheckoutEnabled": false
+    },
+    "pro": {
+      "mode": "live",
+      "configured": true,
+      "checkoutEnabled": false,
+      "licenseSigningConfigured": true
+    },
+    "credits": {
+      "mode": "live",
+      "configured": true,
+      "taxConfigured": true,
+      "checkoutEnabled": false,
+      "costQualified": false,
+      "creatorPriceConfigured": true,
+      "creatorPortalConfigured": true
+    },
+    "singingPriceUSD": 39
+  },
+  "database": {
+    "status": "PASS",
+    "applied": 33,
+    "pending": [],
+    "changed": [],
+    "unknown": [],
+    "settings": {
+      "maintenance": false,
+      "billing_mode": "test"
+    }
+  },
+  "limitations": [
+    "Reads this process environment, not deployed configuration",
+    "Configured credentials are not provider delivery evidence",
+    "No quality, payment, publication or sales approval is inferred"
+  ]
+}

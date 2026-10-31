@@ -32,3 +32,12 @@ test('deployment templates include each payment product without enabling purchas
   for(const key of ['PRO_SALES_ENABLED','SINGING_STRIPE_SANDBOX_ENABLED','ACADEMY_STRIPE_SANDBOX_ENABLED','JAMLOOM_CREDIT_PURCHASES_ENABLED'])assert.equal(env[key],'false');
  }
 });
+
+test('recorded cost qualification cannot hide an incompatible generation cap',()=>{
+ const env={RUNPOD_API_KEY:'never-expose-this',RUNPOD_ENDPOINT_ID:'test-endpoint',JAMLOOM_CLOUD_RATE_MICROS_PER_SECOND:'1000',JAMLOOM_CREDIT_COST_QUALIFICATION:'2026-10-31-v2'};
+ const report=releaseConfiguration(env);assert.equal(report.credits.costQualified,true);
+ assert.deepEqual(report.cloudPriceCompatibility.map(p=>[p.product,p.budgetMicros,p.costCapMicros,p.status]),[['improvise',70000,920000,'FAIL_CAP'],['music-dna',140000,920000,'FAIL_CAP']]);
+ assert.equal(JSON.stringify(report).includes('never-expose-this'),false);
+ assert.ok(releaseConfiguration({}).cloudPriceCompatibility.every(p=>p.status==='NOT_CONFIGURED'));
+ assert.ok(releaseConfiguration({...env,JAMLOOM_CLOUD_RATE_MICROS_PER_SECOND:'50'}).cloudPriceCompatibility.every(p=>p.status==='PASS_CAP_ONLY'));
+});

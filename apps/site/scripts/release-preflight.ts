@@ -10,7 +10,7 @@ import {cloudSongConfig} from '../lib/cloud-song-config';
 import {djBillingLive} from '../lib/dj-beta-access';
 import {billingReadiness} from '../lib/billing-mode';
 import {proBilling} from '../lib/pro-billing';
-import {creditSalesQualified} from '../lib/credit-catalog';
+import {creditSalesQualified,songCreditPrice,NET_MICROS_PER_CREDIT_FLOOR,TARGET_MARGIN_BPS} from '../lib/credit-catalog';
 import {creditBilling} from '../lib/stripe-payments';
 import {issueProLicense} from '../lib/pro-license';
 import {singingOffer} from '../../web/singing-offer.js';
@@ -21,9 +21,15 @@ export function releaseConfiguration(env:Record<string,string|undefined>){
  const proConfigured=valid(()=>proBilling(env,'live'));
  const creditEnv={...env,CREDIT_BILLING_MODE:'live'};
  const creditsConfigured=valid(()=>creditBilling(creditEnv));
+ let cloudCostCapMicros:number|null=null;try{cloudCostCapMicros=cloudSongConfig({...env,JAMLOOM_CLOUD_SONGS_ENABLED:'true'})?.costCapMicros??null;}catch{}
+ const cloudPriceCompatibility=(['improvise','music-dna'] as const).map(product=>{
+  const credits=songCreditPrice(product).credits,budgetMicros=Math.floor(credits*NET_MICROS_PER_CREDIT_FLOOR*(10000-TARGET_MARGIN_BPS)/10000);
+  return {product,credits,budgetMicros,costCapMicros:cloudCostCapMicros,status:cloudCostCapMicros===null?'NOT_CONFIGURED':cloudCostCapMicros<=budgetMicros?'PASS_CAP_ONLY':'FAIL_CAP'};
+ });
  return {
   accountConfigured:valid(()=>readConfig(env)),libraryStorageConfigured:valid(()=>audioStore(readConfig(env),env)),
   djRecordingStorageConfigured:valid(()=>djSessionStore(env)),
+  cloudPriceCompatibility,
   cloudSongsEnabled:env.JAMLOOM_CLOUD_SONGS_ENABLED==='true',cloudSongConfigValid:valid(()=>!env.JAMLOOM_CLOUD_SONGS_ENABLED||env.JAMLOOM_CLOUD_SONGS_ENABLED==='false'||cloudSongConfig(env)),
   djBillingModeValid:valid(()=>{djBillingLive(env);return true;}),djInvitationsEnabled:env.JAMLOOM_AI_DJ_BETA_ENABLED==='true',
   academy:billingReadiness('live',env),singing:billingReadiness('live',env,'singing-complete'),

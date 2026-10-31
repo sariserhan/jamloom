@@ -1,0 +1,250 @@
+{
+  "privateDirectory": "build-launch-preparation-20261031",
+  "files": [
+    {
+      "path": "build-launch-preparation-20261031/vercel-prepare.mjs",
+      "sha256": "20ae1b6420f9e136dfad23a407a6245b5df7a980184eab3de3ee1c6675069903"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-prices.log",
+      "sha256": "234a2a6acd628b30d757cc5aace6e86b26a130423e99fd4654af85c97b04aba7"
+    },
+    {
+      "path": "build-launch-preparation-20261031/vercel-env-help.txt",
+      "sha256": "90a70cfb9eeb4cb4da7123413b7e0d5b83759385ab1bb9727378da7f72f000c4"
+    },
+    {
+      "path": "build-launch-preparation-20261031/stripe-live-plan.json",
+      "sha256": "27f390710454e00b26a1b2a873e1a7ad846978f46008398f970a3ef523a183b2"
+    },
+    {
+      "path": "build-launch-preparation-20261031/stripe-readback-plan.json",
+      "sha256": "1a1ae943f22164f7638de82e7ccd5b763aa7c92aa112de19b8101d05c5c715f0"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-subscription-price.json",
+      "sha256": "6e28a240a9cea4acc55c77db86090a5b7b7e7539c0e7f9369e55225bb9045aff"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-iap-price.json",
+      "sha256": "3b3aea4e65df5bbbea11a0a865dcd64a7b0e8dfd23dda4fdc6759d273998b6d3"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-docs.py",
+      "sha256": "6bfbc9160658b6af1c9d768046d297c41321d93df4696f95cecc3247933dcb03"
+    },
+    {
+      "path": "build-launch-preparation-20261031/post-v1-inapppurchaseavailabilities.json",
+      "sha256": "8ce0c7a97ec499d05728df51b79a154fb9e5f237450273b0401cfb0ece661895"
+    },
+    {
+      "path": "build-launch-preparation-20261031/simulators.json",
+      "sha256": "fd5a780b6406a571a36c686b79139ea9940fc4fab7c02aa017e42e08e43c25ee"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-products.json",
+      "sha256": "4a3c9008bc09ee0e4628110d0d41d6521ae004640efe6aab7b8dd037ffecdc4e"
+    },
+    {
+      "path": "build-launch-preparation-20261031/release-preflight.json",
+      "sha256": "7aa62265ac1ea33f92d36efb969386c540585103c16f4a583edb261dd0ef36cf"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-api.mjs",
+      "sha256": "4f7c5762e2e111865b002a5bfef1a3173f2764bf0694de7203506b5b1b731973"
+    },
+    {
+      "path": "build-launch-preparation-20261031/post-v1-inapppurchaselocalizations.json",
+      "sha256": "4866a9c52af6894b9d51a50f477b119a5bca81258373d06582e481afbe34c279"
+    },
+    {
+      "path": "build-launch-preparation-20261031/post-v1-subscriptiongrouplocalizations.json",
+      "sha256": "1104c904b67c0af3082f147a0dc9e36db1863370184b24f699e7dc2e8aab5ce3"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-jwt-doc.json",
+      "sha256": "b026c191170a769950103a4c6bd65fef08e1ac43ed8bc933b8fe0ab71e3d481b"
+    },
+    {
+      "path": "build-launch-preparation-20261031/runpod-inventory.json",
+      "sha256": "9d7e71c31fbbcd4d8efe6f07e3182a9314151fc1a725335afbab36a267fb3ccc"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-inventory.mjs",
+      "sha256": "515421d65776ecd0c122e9950b5eb7f8c3ebbe1b8219e1773a80189df93e22c2"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-readback.json",
+      "sha256": "613a7bae187b0a5b4c6c318eb303b747d46ac9919f1bab57c96876ad0137454d"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-topup-price-readback.json",
+      "sha256": "07c84093e4d6ac20f1cfd28e03e80c056e3f0c580a08892af5f1ba554b134045"
+    },
+    {
+      "path": "build-launch-preparation-20261031/vercel-prepared.json",
+      "sha256": "12d62bd03747f762dcddf72b37e3c48b211cf7f040403e3a5510fef0286f8b5f"
+    },
+    {
+      "path": "build-launch-preparation-20261031/runpod-billing.json",
+      "sha256": "5a23d6c18dc8b1295f343bf4f33da725542462b5f2294e6d6a34b6180cde5212"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-prices.mjs",
+      "sha256": "110dbe5f3399c83fa8b615e5cfd4390bea19025d1061aa2c789c9fff03f57c4d"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-prices.json",
+      "sha256": "e4e0ae87c0e5966a50698141c44cbd1705a6474809535e00061396f97699efa1"
+    },
+    {
+      "path": "build-launch-preparation-20261031/typecheck.log",
+      "sha256": "76d575f32c96b28d06783b82331bc5d133a4feed0a9804f0aa5139880abaa7c6"
+    },
+    {
+      "path": "build-launch-preparation-20261031/ios-archive.log",
+      "sha256": "bbcb3e677ba732e59ec9b44b0ace2d9aed0e79b239670e487b56cd04db386ff2"
+    },
+    {
+      "path": "build-launch-preparation-20261031/stripe-live-error.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build-launch-preparation-20261031/post-v1-subscriptiongroups.json",
+      "sha256": "437b57536467f333c7b07c52da16a0f8888f22c86b0b9ffa5834d30d7029f43f"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-schemas.log",
+      "sha256": "e272bd54e2fb690022615b9f0a6614dbb4744ff501b619cc78447f333d91c352"
+    },
+    {
+      "path": "build-launch-preparation-20261031/unit-tests.log",
+      "sha256": "3c3ae9930e2cc58fe44d0684afbec6458db60ae802e8f887c0e579a8db4ea7ab"
+    },
+    {
+      "path": "build-launch-preparation-20261031/billing.mjs",
+      "sha256": "f2654f582a8f9469074a03a2836d1f6952bfe744f373575a862f9bb4a2d48cd5"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-inventory.json",
+      "sha256": "36bbb8b07d8a3fc936897e471cee8ab320e64946dfca834dfb6e4d10a73a1e25"
+    },
+    {
+      "path": "build-launch-preparation-20261031/ExportOptions.plist",
+      "sha256": "47b110e3ef50afaf0680eef3e23b1d9d842376906c8d289154a2a41d26094b74"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-readback.mjs",
+      "sha256": "90fdd9c0e1c1a1647331f78cfe6d7ec10672eaed7308e3874422ca3692c9f303"
+    },
+    {
+      "path": "build-launch-preparation-20261031/post-v1-subscriptionlocalizations.json",
+      "sha256": "f63e48b11a87b309be1e4b7b191e20cc6f91d74fe1458f4e867a5889ac73cc25"
+    },
+    {
+      "path": "build-launch-preparation-20261031/cost-audit.json",
+      "sha256": "3ef8b022c60c7504959ad42f17af37d88e8e420c91ecb8f5d08abe93b134d385"
+    },
+    {
+      "path": "build-launch-preparation-20261031/post-v1-subscriptionprices.json",
+      "sha256": "d2ebf25edce3fc78d3e85c96c7e3fd663647a71e02724ad892534f6198524685"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-list.log",
+      "sha256": "07401e839dc5cf33921d456faa8d6ed3d02ab116dd1692560d20fde309760d36"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-create.mjs",
+      "sha256": "a87e33dbb5b72080740e05cd20e2d9fb851e2d5b3fa7da586f16149911993c9b"
+    },
+    {
+      "path": "build-launch-preparation-20261031/ios-export.log",
+      "sha256": "3578961442eab5ee26006de9f612faeab2dc67b664904cb7b31d2a42c151ba6f"
+    },
+    {
+      "path": "build-launch-preparation-20261031/ios-export.json",
+      "sha256": "a6937def12bf20756c6f2fcd8a2e11d20283f2b532f21049857f27866866d486"
+    },
+    {
+      "path": "build-launch-preparation-20261031/inventory.mjs",
+      "sha256": "f876451de27168ff55173f3bb350c8cca07113826ecabdd81019f9ec820de0c1"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-metadata.mjs",
+      "sha256": "c51e9a9b704ca0c3f5ff9ffb161a7926c49096b6ba816ca77471a07fca060cdb"
+    },
+    {
+      "path": "build-launch-preparation-20261031/ios-export-bundle.json",
+      "sha256": "f0951c06f4a515c006e870262c82592a3ee7657bbc78793ff1dd4bbda75472e3"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-access.json",
+      "sha256": "fb567a52f096fa224251bf4c41d491dd782a5d6c6d23f07dffc76ecd7af2813a"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-list.mjs",
+      "sha256": "d814e07723b352b1844f9c13eb1cad42666174bbe404dcd0213726396f690add"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-create.log",
+      "sha256": "33618bfd024e67334b882ca39e72e83122b99849422a53416ad315e92f290aea"
+    },
+    {
+      "path": "build-launch-preparation-20261031/post-v1-inapppurchasepriceschedules.json",
+      "sha256": "fb2ef40f007e501923b1be429813365b501aa4b942a18ca9c71dcf35bc7f95de"
+    },
+    {
+      "path": "build-launch-preparation-20261031/vercel-prepared.log",
+      "sha256": "565ba78d9e87b41ef8bd4d0e43e2740fdaba66e2d43d5d55c541d8b508ed81a4"
+    },
+    {
+      "path": "build-launch-preparation-20261031/post-v1-subscriptions.json",
+      "sha256": "dca6e56773e78087408e93eee33ee28e3c4f9b549cd0e7bf8815d2bcceacc88f"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-readback.log",
+      "sha256": "c9acc7ded0c470da6c7a06a191e83068d5c2637ed9de4642984f3cdc35d3a497"
+    },
+    {
+      "path": "build-launch-preparation-20261031/post-v1-subscriptionavailabilities.json",
+      "sha256": "e72134e9d168fd419d22753a0a1b2344ccdd662d1726661e8fb6e8ba74c5f193"
+    },
+    {
+      "path": "build-launch-preparation-20261031/post-v2-inapppurchases.json",
+      "sha256": "f9f80ae5e224d82c4c6878977f9d1080fd955e9af50d0536c256b41f49f8fbbc"
+    },
+    {
+      "path": "build-launch-preparation-20261031/stripe-live-prepared.json",
+      "sha256": "0899db2e584a249d711eff17cee2c0819cdd8dffa929af3f7626611c65a3235e"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-metadata.log",
+      "sha256": "3342f8a56dc71bccce9af33f38c71812c0f92abaed8f59321da3da8914a95c54"
+    },
+    {
+      "path": "build-launch-preparation-20261031/vercel-env-list.txt",
+      "sha256": "2f4ac61c3bb1d3ec8ff2b0fff3a24aae8800514429a987bd0ceecefbe48e70e3"
+    },
+    {
+      "path": "build-launch-preparation-20261031/stripe-inventory.json",
+      "sha256": "5ef0127347916a98cc169526bfb6841ed5ac7527ab012f80365ad0ce59e5d24a"
+    },
+    {
+      "path": "build-launch-preparation-20261031/inventory.log",
+      "sha256": "c079a287cf3be02b8969f14b241b1afd79c9c4da580dc5b4bcc0f32d00785fbf"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-request-schemas.json",
+      "sha256": "adf0cbd5d848eb39fa86c8d0b57e7be04b3159197d7379af26f33bfbb96df6d6"
+    },
+    {
+      "path": "build-launch-preparation-20261031/apple-metadata.json",
+      "sha256": "c25870765c7cc3e9f8ab4ef427d54a3494141f82ce7c8bef0e66d2a33a6df465"
+    },
+    {
+      "path": "build-launch-preparation-20261031/ios-bundle.json",
+      "sha256": "484964198fcf7378460e21a4c67a9f9248ec456a58b2dd767aaa3fea46987ae2"
+    }
+  ],
+  "note": "Local operational scripts and raw logs, not release or permission to replay mutations. Secrets are excluded from this manifest."
+}

@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "data": {
+    "data": [
+      {
+        "type": "inAppPurchasePrices",
+        "id": "eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgiLCJzZCI6MC4wLCJlZCI6MC4wfQ",
+        "attributes": {
+          "startDate": null,
+          "endDate": null,
+          "manual": true
+        },
+        "relationships": {
+          "inAppPurchasePricePoint": {
+            "data": {
+              "type": "inAppPurchasePricePoints",
+              "id": "eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgifQ"
+            }
+          },
+          "territory": {
+            "data": {
+              "type": "territories",
+              "id": "USA"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePrices/eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgiLCJzZCI6MC4wLCJlZCI6MC4wfQ"
+        }
+      }
+    ],
+    "included": [
+      {
+        "type": "inAppPurchasePricePoints",
+        "id": "eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgifQ",
+        "attributes": {
+          "customerPrice": "10.0",
+          "proceeds": "7.0"
+        },
+        "relationships": {
+          "territory": {},
+          "equalizations": {
+            "links": {
+              "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgifQ/relationships/equalizations",
+              "related": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgifQ/equalizations"
+            }
+          }
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePricePoints/eyJzIjoiNjgyOTI2Njc3MiIsInQiOiJVU0EiLCJwIjoiMTAxMjgifQ"
+        }
+      },
+      {
+        "type": "territories",
+        "id": "USA",
+        "attributes": {
+          "currency": "USD"
+        },
+        "links": {
+          "self": "https://api.appstoreconnect.apple.com/v1/territories/USA"
+        }
+      }
+    ],
+    "links": {
+      "self": "https://api.appstoreconnect.apple.com/v1/inAppPurchasePriceSchedules/6829266772/manualPrices?include=inAppPurchasePricePoint%2Cterritory&limit=200"
+    },
+    "meta": {
+      "paging": {
+        "total": 1,
+        "limit": 200
+      }
+    }
+  }
+}
