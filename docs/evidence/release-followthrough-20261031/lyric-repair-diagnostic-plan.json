@@ -1,5 +1,5 @@
 {
-  "status": "AWAITING_OWNER_APPROVAL",
+  "status": "IMAGE_BUILD_RUNNING",
   "preparedAt": "2026-11-01T03:50:13.593834+00:00",
   "scope": "Publish the isolated lyric-section repair, then one German Jazz diagnostic on L4 using the failed fixture seed",
   "imageSourceCommit": "e8d54bf39139ddf9fcc59c2df1b89b0ab33d2e03",
@@ -79,5 +79,13 @@
     "apps/site/scripts/cloud-song-trial.ts": "9b9c699222160a19153d7dedb62b8e920dbf17a1747ba7d2a4b93bee1b457f4f",
     "apps/site/scripts/cloud-cost-diagnostic.ts": "b2a9e73ebc61c0a0d61d752a079fc8f40220862688aace8533cf1728cbd4780e",
     "apps/site/scripts/cloud-trial-limits.ts": "08c059c0da631b98bead186714aa546a905e8973e8449667edb19eba71886f97"
+  },
+  "ownerApproval": "Approve image and one $3 diagnostic",
+  "approvedAt": "2026-11-01T03:51:13.811406+00:00",
+  "imagePublication": {
+    "workflowRun": 41270805492,
+    "url": "https://github.com/sariserhan/jamloom/actions/runs/41270805492",
+    "sourcePushed": true,
+    "providerRequestsStarted": 0
   }
 }

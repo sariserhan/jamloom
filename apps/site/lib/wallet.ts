@@ -12,10 +12,11 @@ export type SubscriptionGrant={id:string;customer?:string;start:Date;end:Date;st
 export type Purchase={provider:'stripe_test'|'stripe_live'|'apple_sandbox'|'apple_live';receipt:string;credits:number;netMicros:number;subscription?:SubscriptionGrant};
 export class Wallet {
   constructor(private pool:Pool,readonly live=false,readonly djAllowance=false){}
-  private async atomic<T>(owner:string,fn:(db:PoolClient)=>Promise<T>,allowFrozen=false,receiptKey?:string):Promise<T>{
+  private async atomic<T>(owner:string,fn:(db:PoolClient)=>Promise<T>,allowFrozen=false,receiptKey?:string|string[]):Promise<T>{
     const db=await this.pool.connect();
     try{await db.query('BEGIN');
-      if(receiptKey)await db.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))',[receiptKey]);
+      for(const key of (Array.isArray(receiptKey)?receiptKey:receiptKey?[receiptKey]:[]).sort())
+        await db.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))',[key]);
       await db.query('INSERT INTO credit_wallets(owner_id) VALUES($1) ON CONFLICT DO NOTHING',[owner]);
       const wallet=(await db.query('SELECT frozen FROM credit_wallets WHERE owner_id=$1 FOR UPDATE',[owner])).rows[0];
       if(!allowFrozen&&(await db.query('SELECT suspended FROM "user" WHERE id=$1 FOR SHARE',[owner])).rows[0]?.suspended)throw new Error('Account suspended');
@@ -97,7 +98,9 @@ export class Wallet {
       }
       const id=result.rows[0].id;
       await db.query("INSERT INTO wallet_ledger_entries(owner_id,lot_id,kind,available_delta,reserved_delta) VALUES($1,$2,'grant',$3,0)",[owner,id,p.credits]);return id as string;
-    },false,p.subscription?`${p.provider}:subscription:${p.subscription.id}`:`${p.provider}:${p.receipt}`);
+    // Record verified payments even during reconciliation or suspension. The receipt
+    // hold above still rejects refunded purchases, and no spending lock is cleared.
+    },true,[`${p.provider}:${p.receipt}`,...(p.subscription?[`${p.provider}:subscription:${p.subscription.id}`]:[])]);
   }
   async quote(owner:string,cap:number,marginBps=5000,visibility:'public'|'private'='private',fixed?:FixedCreditPrice){
     integer(cap,1,5_000_000);integer(marginBps,3000,9000);

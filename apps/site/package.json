@@ -60,7 +60,7 @@
     "test:ai-dj-sessions": "node --import tsx --test tests/dj-sessions.test.ts tests/dj-allowance.test.ts tests/dj-worker-process.test.ts",
     "test:ai-dj-session-browser": "node tests/dj-session-browser.mjs",
     "test:feedback": "node --import tsx --test tests/creation-feedback.test.ts",
-    "test:credit-catalog": "tsx --test --test-concurrency=1 tests/credit-catalog.test.ts tests/credit-subscriptions.test.ts tests/economics.test.ts tests/apple-payments.test.ts tests/wallet.test.ts tests/dj-sessions.test.ts tests/dna-commerce.test.ts tests/cloud-songs.test.ts tests/dj-allowance.test.ts",
+    "test:credit-catalog": "tsx --test --test-concurrency=1 tests/credit-catalog.test.ts tests/credit-subscriptions.test.ts tests/economics.test.ts tests/apple-payments.test.ts tests/wallet.test.ts tests/wallet-reconciliation.test.ts tests/dj-sessions.test.ts tests/dna-commerce.test.ts tests/cloud-songs.test.ts tests/dj-allowance.test.ts",
     "credits:prepare": "tsx scripts/prepare-credit-catalog.ts",
     "test:creator-provider": "node --import tsx tests/creator-provider.mjs"
   },

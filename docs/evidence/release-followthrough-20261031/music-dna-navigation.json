@@ -1,0 +1,10 @@
+{
+  "status": "PASS_DIAGNOSIS",
+  "observedAt": "2026-11-01T04:03:06.004786+00:00",
+  "url": "https://www.jamloom.com/music-dna",
+  "httpStatus": 307,
+  "location": "/tour#music-dna",
+  "cause": "Coming-soon product access gate",
+  "adminBypass": "Verified owner account",
+  "publicAccessChanged": false
+}

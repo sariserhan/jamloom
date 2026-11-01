@@ -1,0 +1,24 @@
+{
+  "status": "PASS_LOCAL",
+  "observedAt": "2026-11-01T04:03:06.004438+00:00",
+  "regressionBefore": "FAIL Wallet frozen for reconciliation",
+  "checks": 94,
+  "failures": 0,
+  "skips": 0,
+  "typecheck": "PASS",
+  "providers": [
+    "apple_sandbox",
+    "apple_live",
+    "stripe_test",
+    "stripe_live"
+  ],
+  "behavior": [
+    "Verified payments recorded while frozen or suspended",
+    "Refunded receipts remain held",
+    "Concurrent receipt refunds serialize with subscription grants",
+    "Duplicate receipts and duplicate subscription periods cannot mint credits",
+    "Spending and trials stay blocked; live and test wallets stay isolated"
+  ],
+  "deployed": "NOT RUN",
+  "actualRenewalNotification": "NOT RECEIVED"
+}
