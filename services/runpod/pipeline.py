@@ -20,9 +20,10 @@ def run(work):
         (work/'input.json').write_text(json.dumps(request))
         music_dna_song.run(work)
         if json.loads((work/'status.json').read_text())['state'] != 'completed':
-            raise ValueError('Song did not pass the style check')
+            raise ValueError('Song did not pass technical checks')
         fit = json.loads((work/'fit.json').read_text())
-        if not fit['accepted'] or fit['audio_sha256'] != digest(work/'singer/singer.wav'):
+        if (fit.get('technical') != 'PASS' or fit.get('delivery_policy') != 'style-guidance-v1' or
+                type(fit.get('accepted')) is not bool or fit['audio_sha256'] != digest(work/'singer/singer.wav')):
             raise ValueError('Song receipt mismatch')
         shutil.copyfile(work/'singer/singer.wav', work/'audio.wav')
         performance=json.loads((work/'singer/complete.json').read_text())
