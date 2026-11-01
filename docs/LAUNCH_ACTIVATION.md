@@ -1,11 +1,11 @@
 # Launch activation — 2026-11-01
 
-**PARTIAL.** Release follow-through is authorized once its gates pass. The owner-approved two-request diagnostic is consumed: Improvise passed, Music DNA failed its Jazz style check, and cleanup passed. It does not fund ongoing reviewer or customer GPU availability. [Current evidence](evidence/release-completion-20261101/report.md) supersedes the earlier launch handoff. Deferred research/scoring and accepted musical studies remain closed for v1.
+**PARTIAL.** Language filters and advisory Music DNA delivery are implemented and validated. Native build 37 is VALID and selected; the corrected worker image is verified. The owner approved one $3 cold-start Music DNA verification; execution is being prepared. [Current evidence](evidence/style-guidance-20261101/report.md). Release follow-through is authorized once its gates pass. The owner-approved two-request diagnostic is consumed: Improvise passed, Music DNA failed its Jazz style check, and cleanup passed. It does not fund ongoing reviewer or customer GPU availability. [Current evidence](evidence/release-completion-20261101/report.md) supersedes the earlier launch handoff. Deferred research/scoring and accepted musical studies remain closed for v1.
 
 ## Completed
 
 - Website source `49a9b5d1` includes the Apple notification-size repair, correct renewal/refund reconciliation and bounded production/reviewer generation. Actual signed renewal replay grants once in the test wallet; it never grants live credits.
-- Physical iPhone purchase, Restore and refund reconciliation pass. Native 0.11.0 (36) is uploaded, VALID and selected for manual release.
+- Physical iPhone purchase, Restore and refund reconciliation pass. Native 0.11.0 (37), including language filters and style guidance, is uploaded, VALID and selected for manual release.
 - Creator, top-up and Singing metadata are ready. Real native screenshots are accepted. The app is free to download, categorized Music, and the five app/product/group items are assembled in an unsubmitted review draft.
 - Stripe charges/payouts and tax settings are ready. The existing Creator product/price and webhook remain inactive/disabled pending activation; do not create duplicates.
 - The unchanged catalog is Creator $15/300 monthly, top-up $10/150, Improvise 10, Music DNA 20, and AI DJ 2/minute. Paid credits never expire.

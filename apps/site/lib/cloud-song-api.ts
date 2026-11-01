@@ -13,8 +13,10 @@ export async function cloudSongAPI(request:Request,songs:CloudSongs,owner:string
  try{
   if(request.method==='GET'&&view)return storedDnaSong(request,{commerce:songs.commerce,owner,readOnly:true,origin});
   if(request.method==='GET'&&!id){
+   let available=true;
+   try{songs.assertNewRequestAllowed(owner??'');}catch(error){if(!(error instanceof AudioError))throw error;available=false;}
    const active=owner?(await songs.commerce.pool.query("SELECT id FROM dna_song_jobs WHERE owner_id=$1 AND product=$2 AND billing_live=$3 AND state IN ('queued','running') ORDER BY created_at DESC LIMIT 1",[owner,songs.commerce.product,!!songs.commerce.options.live])).rows[0]?.id:undefined;
-   return json({available:true,creditsEnabled:true,signedIn:!!owner,mode:'cloud',active,balance:owner?await songs.commerce.wallet.balance(owner):null});
+   return json({available,creditsEnabled:true,signedIn:!!owner,mode:'cloud',active,balance:owner?await songs.commerce.wallet.balance(owner):null});
   }
   if(request.method==='GET'&&id){
    if(!songId(id))return json({error:'Song not found.'},404);

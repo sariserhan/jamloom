@@ -6,8 +6,10 @@ Web and native generation results, song cards, public song pages, favorites, pla
 
 Validation: 201 site tests; 30 isolated PostgreSQL checks; 20 final focused receipt/database checks; typecheck; production build and secret/protected-course bundle audit PASS. The isolated worker boundary suite passes 22 checks; 47 local Python checks pass. Real PostgreSQL tests prove one fixed 20-credit capture for a delivered uncertain song, full release on technical failure, original score retention and private preferences absent from public responses.
 
-Worker source `b33aec2ee1a9e9e2d27463cc3e8dcf0bbe39eadf` is isolated on `codex/runpod-setup`; [image build](https://github.com/sariserhan/jamloom/actions/runs/41342615183) passed; the immutable image digest is verified and the disabled endpoint template is updated. A published image does not prove hosted generation. No new paid request or live purchase has been started. Earlier failures and consumed permits remain unchanged.
+Worker source `b33aec2ee1a9e9e2d27463cc3e8dcf0bbe39eadf` is isolated on `codex/runpod-setup`; [image build](https://github.com/sariserhan/jamloom/actions/runs/41342615183) passed; the immutable image digest is verified and the disabled endpoint template is updated. A published image does not prove hosted generation. The single approved cold-start request is now running; no live purchase has been started. Earlier failures and consumed permits remain unchanged.
 
-The owner approved one private Music DNA cold-start check, capped at $3 with no retries; the [exact plan](hosted-plan.json) is prepared and not yet consumed.
+The owner approved one private Music DNA cold-start check, capped at $3 with no retries; the [exact plan](hosted-plan.json) is consumed by this one request.
 
 Remaining release work: deployed generation/cold-start/cost qualification, operating-cost/capacity allocation, finite App Review funding, final review submission and Apple approval. Owner-deferred research/listening/endurance studies remain closed. Language and native evidence: [report](../song-language-20261101/report.md).
+
+**PASS local availability correction:** the disabled review configuration already rejected new submissions, but its GET response incorrectly advertised availability. The response now follows the same owner/enable/expiry guard while retaining active-job and balance information. Nineteen real PostgreSQL checks and typecheck pass. This does not alter the running qualification or its bounds.

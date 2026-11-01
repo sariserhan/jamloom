@@ -1,0 +1,43 @@
+{
+  "status": "PROVISIONAL",
+  "checkedAt": "2026-11-01T19:57:31.228Z",
+  "scope": "Prior cost/lyric diagnostics and current deployed check and approved style diagnostic, identified by exact worker IDs",
+  "reportedUSD": 0.28615881813311717,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "mutations": false,
+  "reportedWorkers": 6,
+  "unreportedWorkers": 1,
+  "rows": [
+    {
+      "worker": "c87enhf0usylla",
+      "amountUSD": 0.032424999633803964,
+      "timeBilledMs": 155640
+    },
+    {
+      "worker": "jy397xuwd32938",
+      "amountUSD": 0.050389651289151516,
+      "timeBilledMs": 238537
+    },
+    {
+      "worker": "heqnwqyffbstur",
+      "amountUSD": 0.03025208436883986,
+      "timeBilledMs": 145210
+    },
+    {
+      "worker": "gtvf0rxc4ovyia",
+      "amountUSD": 0.05579194356687367,
+      "timeBilledMs": 264468
+    },
+    {
+      "worker": "odqpqwfgee900u",
+      "amountUSD": 0.03775854129344225,
+      "timeBilledMs": 181241
+    },
+    {
+      "worker": "xgk04hzck429os",
+      "amountUSD": 0.07954159798100591,
+      "timeBilledMs": 375133
+    }
+  ]
+}

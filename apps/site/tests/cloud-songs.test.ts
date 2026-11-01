@@ -61,6 +61,10 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    for(const owner of owners){await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.test']);await commerce.wallet.grant(owner,{provider:'stripe_test',receipt:owner,credits:50,netMicros:30000000});}
    const review={owners,enabled:true,expiresAt:Date.now()+3600000,capMicros:settings.costCapMicros};
    const service=new CloudSongs(commerce,{...settings,review},provider),keys=owners.map(()=>id());
+   const availability=async(owner:string|null)=>await(await cloudSongAPI(new Request('http://localhost/api/taste/song'),service,owner,()=>{throw Error('Availability must not dispatch work');}))!.json();
+   assert.equal((await availability(owners[0])).available,true);
+   assert.equal((await availability('user0')).available,false);
+   assert.equal((await availability(null)).available,false);
    const quotes=await Promise.all(owners.map(o=>commerce.quote(o,profile,'private')));
    assert.throws(()=>service.assertNewRequestAllowed('user0'),/unavailable/);
    await assert.rejects(service.submit(owners[0],id(),profile,'public',quotes[0].token),/private/);
@@ -69,11 +73,14 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    const index=outcomes.findIndex(x=>x.status==='fulfilled'),key=keys[index];
    await service.submit(owners[index],key,profile,'private',quotes[index].token);
    assert.equal((await pool.query('SELECT count(*)::int AS n FROM cloud_song_runs WHERE id=ANY($1::text[])',[keys])).rows[0].n,1);
-   const before=submits;review.enabled=false;await service.tick(key);assert.equal(submits,before);assert.equal((await commerce.row(key)).state,'failed');
+   const before=submits;review.enabled=false;
+   const held=await availability(owners[index]);assert.equal(held.available,false);assert.equal(held.active,key);assert.equal(held.balance.reserved,20);
+   await service.tick(key);assert.equal(submits,before);assert.equal((await commerce.row(key)).state,'failed');
    assert.equal((await commerce.wallet.balance(owners[index])).available,50);
    review.enabled=true;const q=await commerce.quote(owners[index],profile,'private');
    await assert.rejects(service.submit(owners[index],id(),profile,'private',q.token),/allowance is used up/);
    review.expiresAt=Date.now()-1;assert.throws(()=>service.assertNewRequestAllowed(owners[0]),/unavailable/);
+   assert.equal((await availability(owners[0])).available,false);
    const live=new DnaCommerce(pool,'fixture-secret-'.repeat(4),store,{live:true,budget:settings.budget});
    assert.throws(()=>new CloudSongs(live,{...settings,review},provider),/isolated test ledger/);
   });
