@@ -10,6 +10,6 @@ Filters normalize language codes and legacy names. Missing/automatic metadata is
 
 **PASS** physical iPhone 14 Pro (iOS 27.0.1): two account/language checks, the language/favorites UI flow, and style-note decoding/persistence. [Language receipt](native-language.json), [style receipt](native-style-note.json). Initial signing configuration and a Swift expression error were corrected before these passing runs; they were not counted as passes.
 
-**PASS** native 0.11.0 (37) signed archive/export and bundle audit; uploaded to App Store Connect, processing pending. It includes these changes and the owner-approved Music DNA style guidance. Upload is not App Review approval. [Bundle audit](native-archive-audit.json).
+**PASS** native 0.11.0 (37) signed archive/export and bundle audit; uploaded to App Store Connect, processing VALID and selected in the existing unsubmitted review draft. [Upload receipt](native-upload.json). It includes these changes and the owner-approved Music DNA style guidance. Upload is not App Review approval. [Bundle audit](native-archive-audit.json).
 
 The website production build, typecheck, 201 site tests, 30 database tests and bundle audit pass. Public activation remains held by the separately tracked hosted/economic/review requirements. [Style delivery and release work](../style-guidance-20261101/report.md).

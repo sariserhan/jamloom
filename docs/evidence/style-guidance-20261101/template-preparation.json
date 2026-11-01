@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "at": "2026-11-01T19:53:53.196Z",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:f7b5844bc704986f6e7b8f217a55921e1d9803020deec39f370de74154de5bb4",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "newPaidCompute": false,
+  "settingsPreserved": true
+}

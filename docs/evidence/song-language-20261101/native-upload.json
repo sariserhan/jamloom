@@ -1,0 +1,14 @@
+{
+  "at": "2026-11-01T19:49:44.721Z",
+  "version": "0.11.0",
+  "build": "37",
+  "buildId": "2b7e8683-1532-4040-9437-fe496b96b734",
+  "archive": "build-ios-store/Jamloom-0.11.0-37.xcarchive",
+  "ipaSHA256": "fe545f9e45e096950bf4c600069817a3a06dba196c21018b0d5efe97f081c2fe",
+  "upload": "PASS",
+  "appleProcessing": "VALID",
+  "selectedForVersion": "0.11.0",
+  "previousBuild": "36",
+  "submitted": false,
+  "automaticRelease": false
+}

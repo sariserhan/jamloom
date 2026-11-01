@@ -1,0 +1,72 @@
+{
+  "status": "APPROVED",
+  "preparedAt": "2026-11-01T19:52:37.943118+00:00",
+  "scope": "One deployed Music DNA request from zero workers, after the owner-approved advisory-style repair",
+  "workerSourceCommit": "b33aec2ee1a9e9e2d27463cc3e8dcf0bbe39eadf",
+  "imageBuild": "https://github.com/sariserhan/jamloom/actions/runs/41342615183",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:f7b5844bc704986f6e7b8f217a55921e1d9803020deec39f370de74154de5bb4",
+  "imageMustBeVerifiedBeforeApply": true,
+  "endpoint": "jl77hn92npt65k",
+  "maxUSD": 3,
+  "maxRequests": 1,
+  "maxWorkers": 1,
+  "gpu": "NVIDIA L4",
+  "maxSeconds": 2400,
+  "shutdownAllowanceSeconds": 130,
+  "prewarm": false,
+  "retries": 0,
+  "stopOnFailure": true,
+  "profile": {
+    "reference": "Take Five \u2014 Dave Brubeck",
+    "genre": "Jazz",
+    "language": "de",
+    "durationSeconds": [
+      100,
+      140
+    ],
+    "credits": 20,
+    "requestCostCapMicros": 138800
+  },
+  "userRecordingUploaded": false,
+  "publicVisibility": false,
+  "normalCustomerFlow": true,
+  "reviewOnly": true,
+  "reviewExpiryMinutes": 45,
+  "reviewAllowance": "Existing lifetime operator-cost reservations plus exactly 138800 microdollars; no allowance reset",
+  "harnessSHA256": {
+    "build-release-style-guidance-20261101/deployed-common.mts": "30a51de9c9a11fa4c1275f05909a272a873a0d88947f55014913e89f8c8d6eb6",
+    "build-release-style-guidance-20261101/control.mts": "0a02a2edfffe5ce0e96da19f3dc7a07b5d7e77de3063875efde1703890115324",
+    "build-release-style-guidance-20261101/http.mts": "443a1481dc5b30e80ac84e2b4a70adf21671c9583b1a082560f3e75e67defcfc",
+    "build-release-style-guidance-20261101/watchdog.mts": "ba2b11613838afa2074b881781bbe45e08d72e0b0e2762ca7d823ee3c8cea4ce",
+    "build-release-style-guidance-20261101/cleanup.mts": "d3dc076f89ee0784ae2b4a56c9dfbfa284312791aa89ab4d4ef2398986f27de7"
+  },
+  "commands": [
+    "From apps/site: node --import tsx ../../build-release-style-guidance-20261101/http.mts --dry-run",
+    "From apps/site: node --import tsx ../../build-release-style-guidance-20261101/control.mts --dry-run",
+    "After explicit approval, verified image/source/deployment and disabled endpoint: start http.mts --apply, then control.mts --apply after HTTP preflight receipt",
+    "After controller shutdown: node --import tsx ../../build-release-style-guidance-20261101/cleanup.mts"
+  ],
+  "checks": [
+    "Zero existing jobs and workers before activation; independent shutdown watchdog before enabling one worker",
+    "Existing authenticated review account and isolated test ledger; deployed quote passes before activation",
+    "One new HTTP submit; no resubmission after ambiguous response",
+    "Unchanged technical audio checks, original genre score, persisted style note if uncertain, 20-credit capture exactly once or full failure release",
+    "Anonymous status/audio inaccessible; customer generation and purchases stay closed",
+    "Independent zero-worker/job inventory, source-free test output removed with HEAD absence proof; immutable ledger retained",
+    "Disable temporary review generation and restore held configuration; report billed costs separately"
+  ],
+  "excludes": [
+    "Improvise rerender",
+    "AI DJ rental/endurance test",
+    "Training",
+    "Real customer charges",
+    "Full App Review funding",
+    "App Review submission or sales activation based only on this test"
+  ],
+  "previousPermitsConsumed": true,
+  "imageVerification": "PASS",
+  "ownerApproval": "Approve one Music DNA check, up to $3",
+  "approvedAt": "2026-11-01T19:54:07.561918+00:00",
+  "implementationCommit": "89de02ef",
+  "productionProfileSHA256": "d5d40a52d8c84d709e6b3f433d987db92c474e8ddeaf66c83d1686c7dd2b145c"
+}
