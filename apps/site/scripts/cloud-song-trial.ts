@@ -16,6 +16,7 @@ import {DnaCommerce} from '../lib/dna-commerce';
 import {CloudSongs,checkSource} from '../lib/cloud-songs';
 import {cloudSongConfig} from '../lib/cloud-song-config';
 import {costDiagnosticConfig,trialSettlement} from './cloud-cost-diagnostic';
+import {germanJazzFixture,verifyGermanJazzReceipt} from './german-jazz-fixture';
 import {RunpodProvider} from '../lib/runpod-provider';
 import {rejectedAudioDiagnostic} from './rejected-audio-diagnostic';
 
@@ -38,6 +39,17 @@ const stamp=new Date().toISOString().replaceAll(':','-');
 const root=resolve('../..'),directory=resolve(root,improvise?'build-improvise-completion/cloud/'+stamp:completion?'build-dna-completion/cloud/'+stamp:startup?'build-song-finish/startup/'+stamp:repair?'build-song-repair/cloud':'build-hosted-song-trial/final'),evidence=resolve(root,improvise?'docs/evidence/improvise-finish/cloud/'+stamp:completion?'docs/evidence/dna-completion/cloud/'+stamp:startup?'docs/evidence/song-finish/startup/'+stamp:repair?'docs/evidence/song-generation-repair':'docs/evidence/hosted-songs');
 const costDiagnostic=process.argv.includes('--cost-diagnostic');
 if(costDiagnostic)assert(['improvise-quality','dna-completion','dna-diagnostic'].includes(mode)&&process.argv.includes('--qualification-window'),'Cost diagnostic requires one explicit completion profile and the bounded qualification window');
+const diagnosticFixtureArg=process.argv.indexOf('--diagnostic-fixture');
+let diagnosticFixture:ReturnType<typeof germanJazzFixture>|undefined,diagnosticFixtureSHA256:string|undefined;
+if(diagnosticFixtureArg>=0){
+ assert(dnaDiagnostic&&costDiagnostic,'A receipt-bound fixture requires the single German Jazz cost diagnostic');
+ const path=process.argv[diagnosticFixtureArg+1];assert(path&&!path.startsWith('--'),'Provide the diagnostic fixture path');
+ const bytes=await readFile(resolve(path));assert(bytes.length<=4096,'Diagnostic fixture is too large');
+ diagnosticFixture=germanJazzFixture(JSON.parse(bytes.toString()));diagnosticFixtureSHA256=createHash('sha256').update(bytes).digest('hex');
+ const receipt=await readFile(resolve(root,diagnosticFixture.sourceProofPath));
+ assert.equal(createHash('sha256').update(receipt).digest('hex'),diagnosticFixture.sourceProofSHA256,'Diagnostic source receipt changed');
+ verifyGermanJazzReceipt(diagnosticFixture,JSON.parse(receipt.toString()));
+}
 const baseConfig=cloudSongConfig({...process.env,CREDIT_BILLING_MODE:'test',JAMLOOM_CLOUD_SONGS_ENABLED:'true',JAMLOOM_CLOUD_RATE_MICROS_PER_SECOND:'1000'})!;
 const config=costDiagnostic?costDiagnosticConfig(baseConfig,improvise?'improvise':'music-dna'):baseConfig;
 assert.equal(config.endpoint,'jl77hn92npt65k');
@@ -60,11 +72,11 @@ if(sourceAudition&&!study){
  checkSource(qualitySource,qualitySource.length,sha);
  assert.equal(sha,'fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1','Use only the complete approved question crop in product upload format');
 }
-if(!process.argv.includes('--apply')){console.log({mode:'dry-run',maxUSD,maxWorkers,maxSeconds,requests:fixtures.length,...(costDiagnostic?{costDiagnostic:true,gpuTypeIds:['NVIDIA L4'],candidate:{rateMicrosPerSecond:config.rate,executionSeconds:config.executionSeconds,ttlSeconds:config.ttlSeconds,requestCapMicros:config.costCapMicros},productionQualified:false,prewarmAndIdleRequireSeparateBilling:true}:{} ),...(startup?{directory,evidence,minWorkers:0,scaling:'REQUEST_COUNT / 1',activationDelaySeconds:30,manualReconciliation:false}:{}),...(repair||startup||completion||improvise?{requires:'Approved paid trial and JAMLOOM_TRIAL_IMAGE digest'}:{}),...(improvise?{durations:fixtures.map((_,i)=>sourceAudition?45:jazzDiagnostic?35:30+5*i),source:study?'Licensed recorded-source study; all input hashes verified':sourceAudition?'Owner-approved 1.22-second question WAV; hash pinned':'--source synthetic WAV required',websiteDeployment:false,...(improviseVariety?{styles:fixtures.map(x=>x[0]),energy:varietyEnergy,visibility:'private',sourceSelection:'complete approved crop',requestsAreIndependent:true}:{} )}:{}),...(study?{studyManifest:study.manifestSha256,stage:Number(process.argv[stageArg+1]),stageCount:study.manifest.stages,fixtures:study.fixtures,temporaryPrivateUploads:study.fixtures.length}:{}),...(completion?{durations:maximumDNA||dnaDiagnostic?[100]:[140,100],retainRejectedAudio:dnaDiagnostic,references:maximumDNA?5000:1,identityConversion:true,websiteDeployment:false}:{}),...(repair?{seeds:fixtures.map((_,i)=>6302301+i)}:{})});process.exit(0);}
+if(!process.argv.includes('--apply')){console.log({mode:'dry-run',maxUSD,maxWorkers,maxSeconds,requests:fixtures.length,...(costDiagnostic?{costDiagnostic:true,gpuTypeIds:['NVIDIA L4'],candidate:{rateMicrosPerSecond:config.rate,executionSeconds:config.executionSeconds,ttlSeconds:config.ttlSeconds,requestCapMicros:config.costCapMicros},productionQualified:false,prewarmAndIdleRequireSeparateBilling:true}:{} ),...(startup?{directory,evidence,minWorkers:0,scaling:'REQUEST_COUNT / 1',activationDelaySeconds:30,manualReconciliation:false}:{}),...(repair||startup||completion||improvise?{requires:'Approved paid trial and JAMLOOM_TRIAL_IMAGE digest'}:{}),...(improvise?{durations:fixtures.map((_,i)=>sourceAudition?45:jazzDiagnostic?35:30+5*i),source:study?'Licensed recorded-source study; all input hashes verified':sourceAudition?'Owner-approved 1.22-second question WAV; hash pinned':'--source synthetic WAV required',websiteDeployment:false,...(improviseVariety?{styles:fixtures.map(x=>x[0]),energy:varietyEnergy,visibility:'private',sourceSelection:'complete approved crop',requestsAreIndependent:true}:{} )}:{}),...(study?{studyManifest:study.manifestSha256,stage:Number(process.argv[stageArg+1]),stageCount:study.manifest.stages,fixtures:study.fixtures,temporaryPrivateUploads:study.fixtures.length}:{}),...(completion?{durations:maximumDNA?[100]:dnaDiagnostic?[diagnosticFixture?.seconds??100]:[140,100],...(diagnosticFixture?{diagnosticFixture,diagnosticFixtureSHA256}:{}),retainRejectedAudio:dnaDiagnostic,references:maximumDNA?5000:1,identityConversion:true,websiteDeployment:false}:{}),...(repair?{seeds:fixtures.map((_,i)=>6302301+i)}:{})});process.exit(0);}
 if(study)assert.equal(process.env.JAMLOOM_TRIAL_IMAGE,study.manifest.image,'Study must use its reviewed image');
 const db=new URL(process.env.JAMLOOM_TEST_DATABASE_URL??'');assert.equal(db.hostname,'127.0.0.1');
 await mkdir(directory,{recursive:true});await mkdir(evidence,{recursive:true});
-const state:any={startedAt:new Date().toISOString(),maxUSD,maxWorkers,maxSeconds,scope:study?'neural-study-stage-'+process.argv[stageArg+1]:improviseVariety?'three-style-energy-source-audition':improviseQuality?'single-owner-source-quality':dnaDiagnostic?'single-german-jazz-diagnostic':diagnostic?'single-improvise-diagnostic':'qualification',requests:[],health:[],cleanup:false,...(study?{studyManifestSha256:study.manifestSha256,studyStage:Number(process.argv[stageArg+1])}:{})};
+const state:any={startedAt:new Date().toISOString(),maxUSD,maxWorkers,maxSeconds,scope:study?'neural-study-stage-'+process.argv[stageArg+1]:improviseVariety?'three-style-energy-source-audition':improviseQuality?'single-owner-source-quality':dnaDiagnostic?'single-german-jazz-diagnostic':diagnostic?'single-improvise-diagnostic':'qualification',requests:[],health:[],cleanup:false,...(diagnosticFixture?{diagnosticFixture,diagnosticFixtureSHA256}:{}),...(study?{studyManifestSha256:study.manifestSha256,studyStage:Number(process.argv[stageArg+1])}:{})};
 const save=()=>writeFile(resolve(evidence,'trial-result.json'),JSON.stringify(state,(_,v)=>typeof v==='bigint'?String(v):v,2)+'\n');
 await writeFile(resolve(directory,'intent.json'),JSON.stringify(state),{flag:'wx',mode:0o600});
 const rest=async(path:string,method='GET',body?:unknown)=>{const response=await fetch('https://rest.runpod.io/v1/'+path,{method,headers:{Authorization:`Bearer ${config.key}`,'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(15000)});assert(response.ok,`Runpod control HTTP ${response.status}`);return response.json();};
@@ -121,7 +133,7 @@ try{
   const quote=await songs.commerce.quote(owner,input,sourceAudition||costDiagnostic||i%2?'private':'public');await songs.submit(owner,id,input,sourceAudition||costDiagnostic||i%2?'private':'public',quote.token);
   if(repair)await pool.query("UPDATE cloud_song_runs SET payload=jsonb_set(payload,'{seed}',$2::jsonb) WHERE id=$1 AND provider_id IS NULL",[id,JSON.stringify(6302301+i)]);
   if(improvise)await pool.query("UPDATE cloud_song_runs SET payload=payload||$2::jsonb WHERE id=$1 AND provider_id IS NULL",[id,JSON.stringify({duration_seconds:sourceAudition?45:jazzDiagnostic?35:30+5*i,...(studyFixture?{energy:studyFixture.energy}:improviseVariety?{energy:varietyEnergy[i]}:{})})]);
-  if(completion)await pool.query("UPDATE cloud_song_runs SET payload=payload||$2::jsonb WHERE id=$1 AND provider_id IS NULL",[id,JSON.stringify({seed:dnaDiagnostic?9102402:9102401+i,duration_seconds:maximumDNA||dnaDiagnostic?100:i?100:140})]);
+  if(completion)await pool.query("UPDATE cloud_song_runs SET payload=payload||$2::jsonb WHERE id=$1 AND provider_id IS NULL",[id,JSON.stringify({seed:dnaDiagnostic?(diagnosticFixture?.seed??9102402):9102401+i,duration_seconds:maximumDNA?100:dnaDiagnostic?(diagnosticFixture?.seconds??100):i?100:140})]);
   state.requests.push({id,owner,label,...(studyFixture?{studySourceId:studyFixture.source_id,requestedGenre:studyFixture.genre,requestedEnergy:studyFixture.energy,sourceSha256:createHash('sha256').update(uploadSource).digest('hex')}:{}),product:songs.commerce.product,quotedCredits:quote.credits,transitions:[]});
  }
  await save();

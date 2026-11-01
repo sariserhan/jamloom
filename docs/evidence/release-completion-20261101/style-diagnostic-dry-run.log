@@ -1,0 +1,34 @@
+{
+  mode: 'dry-run',
+  maxUSD: 3,
+  maxWorkers: 1,
+  maxSeconds: 2400,
+  requests: 1,
+  costDiagnostic: true,
+  gpuTypeIds: [ 'NVIDIA L4' ],
+  candidate: {
+    rateMicrosPerSecond: 220,
+    executionSeconds: 480,
+    ttlSeconds: 540,
+    requestCapMicros: 138800
+  },
+  productionQualified: false,
+  prewarmAndIdleRequireSeparateBilling: true,
+  requires: 'Approved paid trial and JAMLOOM_TRIAL_IMAGE digest',
+  durations: [ 134 ],
+  diagnosticFixture: {
+    seed: 998959027,
+    seconds: 134,
+    reference: 'Take Five — Dave Brubeck',
+    genre: 'Jazz',
+    language: 'de',
+    failedJobId: 'bac8631fc7c249d9ad302a5d055681e3',
+    sourceProofPath: 'docs/evidence/release-completion-20261101/deployed-generation-result.json',
+    sourceProofSHA256: '078b3040ea53c3f8db0f8d36a638919ce06ead505833e96e9e57cad81be51ec0'
+  },
+  diagnosticFixtureSHA256: '122f4f22c9e90c348b4e9c7c981b03806355fc4419c2f86dddadd5b9670dda8e',
+  retainRejectedAudio: true,
+  references: 1,
+  identityConversion: true,
+  websiteDeployment: false
+}

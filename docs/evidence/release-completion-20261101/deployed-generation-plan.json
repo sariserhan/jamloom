@@ -1,0 +1,90 @@
+{
+  "status": "CONSUMED",
+  "scope": "Verify the deployed normal Improvise and Music DNA routes with the actual authenticated Sandbox review account and the production cost profile",
+  "sourceCommit": "49a9b5d1",
+  "websiteAlreadyDeployed": "dpl_T8i4N7uMqbSoazHL1NiZ2bT87Zc8",
+  "endpoint": "jl77hn92npt65k",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
+  "requests": 2,
+  "maxGPUCount": 1,
+  "maxWorkers": 1,
+  "gpu": "NVIDIA L4",
+  "maxTotalUSD": 3,
+  "maxSeconds": 2400,
+  "shutdownAllowanceSeconds": 130,
+  "repeatedRequests": 0,
+  "stopOnFailure": true,
+  "products": [
+    {
+      "name": "improvise",
+      "durationSeconds": [
+        30,
+        45
+      ],
+      "credits": 10,
+      "reservedCostMicros": 68400,
+      "source": {
+        "path": "renders/neural-question-input-20261030/source-16k-mono.wav",
+        "sha256": "fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1",
+        "seconds": 1.22,
+        "rights": "Previously approved owner sample; no performer voice"
+      }
+    },
+    {
+      "name": "music-dna",
+      "durationSeconds": [
+        100,
+        140
+      ],
+      "credits": 20,
+      "reservedCostMicros": 138800,
+      "profile": "German Jazz; catalog reference Take Five - Dave Brubeck"
+    }
+  ],
+  "temporaryDeployment": {
+    "ordinaryCustomerCloudGeneration": false,
+    "ordinaryCustomerPurchases": false,
+    "AI_DJ": false,
+    "reviewAccounts": "Existing explicit authenticated allowlist only",
+    "reviewOperatorCapMicros": 207200,
+    "reviewGenerationExpiry": "At most 45 minutes from activation; disable afterward",
+    "reviewGenerationFlag": true,
+    "publicWebsiteRelease": false
+  },
+  "procedure": [
+    "Verify no pending production jobs; endpoint 0/0 and zero workers/jobs; immutable image and source SHA match",
+    "Set bounded temporary review config only; verify authenticated account and separate test balance; do not grant live credits",
+    "Start independent 40-minute shutdown watchdog before enabling one L4; prewarm at min=max=1 then set min=0/max=1 before any customer-route submission",
+    "Verify exact L4 pool/exclusions, image, current catalog hourly price and production capacity contract",
+    "Use the real HTTP upload/quote/submit/poll/download flow once for Improvise, then once for Music DNA only if the first passes",
+    "Verify private ownership, WAV hash/duration, fixed 10/20 test-credit settlements, no duplicate provider submissions or live grants",
+    "Disable endpoint 0/0, restore its prior hardware selection, independently confirm zero workers/queued/running jobs",
+    "Remove only these test source/output objects; keep sanitized ledger/evidence and private local audio; disable review generation and retain cleanup configuration until no pending rows",
+    "Read attributable provider billing separately; delayed records remain provisional"
+  ],
+  "validation": {
+    "siteChecks": 194,
+    "focusedDatabaseAndConfigurationChecks": 21,
+    "typecheck": "PASS",
+    "deployedAuthenticationAndSignedRenewal": "PASS",
+    "nativeBuild36": "VALID; selected for manual release"
+  },
+  "excludes": [
+    "New worker image publication",
+    "Price changes",
+    "Real customer charges",
+    "AI DJ rental or another endurance test",
+    "Model training",
+    "New musical-listening study",
+    "Final App Store submission or public sales activation from diagnostic success alone"
+  ],
+  "additionalAppReviewFunding": "Not authorized by this diagnostic; prepare a separate bounded review allowance after measured production qualification passes",
+  "ownerApproval": "Approve the two requests, $3 maximum",
+  "approvedAt": "2026-11-01T04:50:28.971072+00:00",
+  "submittedGenerationRequests": 2,
+  "executionStatus": "FAIL",
+  "noFurtherGenerationRequestsAuthorized": true,
+  "consumedAt": "2026-11-01T05:19:10.890434+00:00",
+  "cleanup": "PASS",
+  "result": "deployed-generation-result.json"
+}

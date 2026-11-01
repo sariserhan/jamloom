@@ -1,0 +1,15 @@
+{
+  "count": 5,
+  "states": [
+    "READY_FOR_REVIEW",
+    "READY_FOR_REVIEW",
+    "READY_FOR_REVIEW",
+    "READY_FOR_REVIEW",
+    "READY_FOR_REVIEW"
+  ],
+  "submitted": false,
+  "version": "0.11.0",
+  "build": "36",
+  "draftId": "cf0d1567-e845-4aac-87aa-358a7fd55166",
+  "releaseType": "MANUAL"
+}

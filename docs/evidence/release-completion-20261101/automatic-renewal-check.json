@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-11-01T05:15:59.444Z",
+  "operation": "Provider GET, signature verification and database SELECT only",
+  "manualReplay": false,
+  "notices": [
+    {
+      "signedDate": 1793509162057,
+      "notificationSHA256": "ab6a2778dd4860111f2da5e7bf7bd23a1ad272196cd18b547f8fefeed79ff70c",
+      "automaticAttempts": [
+        {
+          "attemptDate": 1793509162206,
+          "sendAttemptResult": "SUCCESS"
+        }
+      ],
+      "storedDigestMatches": true,
+      "grants": [
+        {
+          "credits": 300,
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

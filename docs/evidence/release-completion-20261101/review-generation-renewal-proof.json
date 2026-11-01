@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "observedAt": "2026-11-01T04:47:25.747Z",
+  "deployment": "https://jamloom-qkyy1spc9-ssari.vercel.app",
+  "realSignedRenewal": true,
+  "bodyBytes": 18965,
+  "notificationSHA256": "486ed307e1b49dceefeffbeea5cc337a78230bd00d562686f49b8396eb6b7d0b",
+  "checks": [
+    {
+      "path": "/api/payments/apple/notifications/sandbox",
+      "status": 200
+    },
+    {
+      "path": "/api/payments/apple/notifications/sandbox",
+      "status": 200
+    },
+    {
+      "path": "/api/payments/apple/notifications",
+      "status": 503
+    },
+    {
+      "path": "/api/payments/apple/notifications/sandbox",
+      "status": 503
+    },
+    {
+      "path": "/api/payments/apple/notifications/sandbox",
+      "status": 413
+    },
+    {
+      "path": "/api/payments/checkout",
+      "status": 503
+    }
+  ],
+  "renewalGrants": 1,
+  "renewalCredits": 300,
+  "liveGrants": 0,
+  "liveCharges": 0,
+  "providerAutomaticDelivery": [
+    {
+      "attemptDate": 1793505549747,
+      "sendAttemptResult": "UNSUCCESSFUL_HTTP_RESPONSE_CODE"
+    }
+  ],
+  "manualVerifiedReplay": true
+}

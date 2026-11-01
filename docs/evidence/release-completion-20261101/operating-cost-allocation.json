@@ -1,0 +1,47 @@
+{
+  "status": "PARTIAL",
+  "at": "2026-11-01T04:55:40.901370+00:00",
+  "catalogUnchanged": true,
+  "productionProfile": "l4-2026-11-01",
+  "requestFixedReserveUSD": 0.02,
+  "sources": {
+    "runpod": "https://docs.runpod.io/serverless/pricing",
+    "r2": "https://developers.cloudflare.com/r2/pricing/",
+    "vercel": "https://vercel.com/docs/functions/usage-and-pricing"
+  },
+  "publishedRates": {
+    "r2StandardGBMonthUSD": 0.015,
+    "r2ClassAPerMillionUSD": 4.5,
+    "r2ClassBPerMillionUSD": 0.36,
+    "r2EgressUSD": 0,
+    "vercelIad1ActiveCPUHourUSD": 0.128,
+    "vercelIad1MemoryGBHourUSD": 0.0106,
+    "runpodContainerDiskGBMonthUSDApproximate": 0.1
+  },
+  "storageScenarios": [
+    {
+      "product": "improvise",
+      "maximumWavBytes": 8640044,
+      "perMonthUSD": 0.00012960066,
+      "twelveMonthsUSD": 0.00155520792,
+      "sixtyMonthsUSD": 0.0077760395999999996,
+      "examplesNotRetentionLimits": true
+    },
+    {
+      "product": "music-dna",
+      "maximumWavBytes": 26880044,
+      "perMonthUSD": 0.00040320065999999995,
+      "twelveMonthsUSD": 0.004838407919999999,
+      "sixtyMonthsUSD": 0.024192039599999996,
+      "examplesNotRetentionLimits": true
+    }
+  ],
+  "limitations": [
+    "Storage figures are marginal planning scenarios before account billing-unit rounding, not measured invoices or a newly imposed retention policy.",
+    "Output retention and future playback continue beyond the initial request. No deletion/retention policy was changed.",
+    "Vercel CPU/memory and database/support allocation must use actual usage; the fixed reserve is not proof of these costs.",
+    "Provider invoice attribution includes initialization, execution, idle and failed/cancelled work. Missing delayed records are not zero.",
+    "AI DJ economics and capacity are separate from the owner-closed endurance/music study."
+  ],
+  "activation": "HOLD pending completed qualification and operating allocation"
+}

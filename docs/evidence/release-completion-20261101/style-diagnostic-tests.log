@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: candidate cost profiles fit catalog budgets without changing customer configuration or campaign limits
+ok 1 - candidate cost profiles fit catalog budgets without changing customer configuration or campaign limits
+  ---
+  duration_ms: 1.303708
+  type: 'test'
+  ...
+# Subtest: hosted diagnostics require fixed catalog settlement and full failure refunds
+ok 2 - hosted diagnostics require fixed catalog settlement and full failure refunds
+  ---
+  duration_ms: 0.095834
+  type: 'test'
+  ...
+# Subtest: longer qualification keeps every stage under its existing three-dollar conservative budget
+ok 3 - longer qualification keeps every stage under its existing three-dollar conservative budget
+  ---
+  duration_ms: 0.632917
+  type: 'test'
+  ...
+# Subtest: generic diagnostics and historical modes cannot silently acquire a longer window
+ok 4 - generic diagnostics and historical modes cannot silently acquire a longer window
+  ---
+  duration_ms: 0.106875
+  type: 'test'
+  ...
+# Subtest: diagnostic preserves the failed seed and duration instead of the older default case
+ok 5 - diagnostic preserves the failed seed and duration instead of the older default case
+  ---
+  duration_ms: 0.733291
+  type: 'test'
+  ...
+# Subtest: diagnostic rejects out-of-scope language, genre and reference
+ok 6 - diagnostic rejects out-of-scope language, genre and reference
+  ---
+  duration_ms: 0.119416
+  type: 'test'
+  ...
+# Subtest: diagnostic enforces product duration and reproducible unsigned seeds
+ok 7 - diagnostic enforces product duration and reproducible unsigned seeds
+  ---
+  duration_ms: 0.187375
+  type: 'test'
+  ...
+# Subtest: diagnostic requires a valid source receipt identity and digest
+ok 8 - diagnostic requires a valid source receipt identity and digest
+  ---
+  duration_ms: 0.066
+  type: 'test'
+  ...
+# Subtest: diagnostic is bound to the exact failed style receipt, not another request or success
+ok 9 - diagnostic is bound to the exact failed style receipt, not another request or success
+  ---
+  duration_ms: 0.115125
+  type: 'test'
+  ...
+# Subtest: private diagnostic capture precedes failed-job cleanup without accepting or resubmitting
+ok 10 - private diagnostic capture precedes failed-job cleanup without accepting or resubmitting
+  ---
+  duration_ms: 1.378541
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 99.97175

@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "at": "2026-11-01T05:22:11.057Z",
+  "operation": "Independent provider GET, object HEAD and database SELECT only",
+  "qualification": "FAIL",
+  "liveCreditLots": 0,
+  "workerLimits": [
+    0,
+    0
+  ],
+  "gpuPlacementRestored": true,
+  "health": {
+    "jobs": {
+      "completed": 46,
+      "failed": 17,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workerInventory": {
+    "idle": 0,
+    "initializing": 0,
+    "running": 0,
+    "throttled": 0,
+    "total": 0,
+    "unhealthy": 0
+  },
+  "removedObjectsAbsent": 4,
+  "submissions": 2,
+  "distinctProviderRequests": 2,
+  "creditSettlements": [
+    {
+      "product": "music-dna",
+      "state": "failed",
+      "capturedCredits": 0,
+      "billingLive": false,
+      "costCapMicros": 138800
+    },
+    {
+      "product": "improvise",
+      "state": "completed",
+      "capturedCredits": 10,
+      "billingLive": false,
+      "costCapMicros": 68400
+    }
+  ],
+  "pendingJobs": 0,
+  "sourceAndOutputObjectsRemoved": true,
+  "auditCostReservationsPreserved": true
+}

@@ -1,0 +1,78 @@
+{
+  "status": "AWAITING_OWNER_APPROVAL",
+  "preparedAt": "2026-11-01T05:24:22.905344+00:00",
+  "scope": "One exact-seed German Jazz reproduction with private rejected-audio capture to diagnose the deployed style rejection",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
+  "imagePublicationRequired": false,
+  "endpoint": "jl77hn92npt65k",
+  "maxUSD": 3,
+  "maxWorkers": 1,
+  "gpu": "NVIDIA L4",
+  "maxProviderRequests": 1,
+  "maxSeconds": 2400,
+  "shutdownAllowanceSeconds": 130,
+  "repeatedRequestsWithinThisDiagnostic": 0,
+  "stopOnFailure": true,
+  "conservativeCampaignCeilingUSD": 2.55,
+  "fixture": {
+    "version": 1,
+    "seed": 998959027,
+    "seconds": 134,
+    "reference": "Take Five — Dave Brubeck",
+    "genre": "Jazz",
+    "language": "de",
+    "failedJobId": "bac8631fc7c249d9ad302a5d055681e3",
+    "sourceProofSHA256": "078b3040ea53c3f8db0f8d36a638919ce06ead505833e96e9e57cad81be51ec0",
+    "sourceProofPath": "docs/evidence/release-completion-20261101/deployed-generation-result.json"
+  },
+  "retainRejectedAudioPrivately": true,
+  "userAudioUpload": false,
+  "visibility": "private",
+  "command": [
+    "node",
+    "--import",
+    "tsx",
+    "scripts/cloud-song-trial.ts",
+    "--cost-diagnostic",
+    "--german-jazz-diagnostic",
+    "--qualification-window",
+    "--diagnostic-fixture",
+    "../../docs/evidence/release-completion-20261101/style-rejection-fixture.json",
+    "--apply"
+  ],
+  "requiredEnvironment": {
+    "JAMLOOM_TRIAL_IMAGE": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
+    "JAMLOOM_TEST_DATABASE_URL": "Approved loopback-only disposable database administrator; no production test ledger"
+  },
+  "preconditions": [
+    "Fresh approval; the two-request deployed permit is consumed",
+    "Verify exact file hashes and source failure receipt before any paid activation",
+    "Verify endpoint 0/0, zero workers/jobs, no pending production jobs, and correct immutable image",
+    "Start independent shutdown watchdog before enabling one L4"
+  ],
+  "cleanup": [
+    "Disable endpoint and restore prior GPU placement",
+    "Independently verify zero workers/queued/running jobs",
+    "Download any private rejected take before removing all remote test audio",
+    "Retain local evidence privately; remove disposable test database; no repeated request"
+  ],
+  "validation": {
+    "siteTests": 199,
+    "focusedDiagnosticChecks": 10,
+    "typecheck": "PASS",
+    "dryRun": "PASS: one request, 134 seconds, seed 998959027, L4, 40 minutes, $3"
+  },
+  "limitations": [
+    "This diagnoses the failed musical-style check; a captured rejected take is not a qualified customer song",
+    "No style threshold is lowered and no successful result is promised",
+    "Complete provider billing and operating-cost allocation remain separate",
+    "No website/app publication, new image publication, customer purchases, AI DJ rental or training"
+  ],
+  "fileSHA256": {
+    "apps/site/scripts/cloud-song-trial.ts": "c9ff01125cfda62b498840201039555336e02c568ffad8a85b3b80d6a62a9b85",
+    "apps/site/scripts/german-jazz-fixture.ts": "e068a26625b63e8da5a3661edd022f7169e5b883d5ce0f79b5e72ac17e50160a",
+    "apps/site/scripts/rejected-audio-diagnostic.ts": "4732379df794affc49ea712659594a47feebd58d4a2da53b6e3a1a477ee8cafc",
+    "apps/site/tests/german-jazz-fixture.test.ts": "f09a2fbd022e6ddd115fc79ac062a747ecc3535d96097ad69fd49378102aa4f5",
+    "docs/evidence/release-completion-20261101/style-rejection-fixture.json": "122f4f22c9e90c348b4e9c7c981b03806355fc4419c2f86dddadd5b9670dda8e"
+  }
+}

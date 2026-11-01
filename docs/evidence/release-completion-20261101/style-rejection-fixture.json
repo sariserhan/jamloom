@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "seed": 998959027,
+  "seconds": 134,
+  "reference": "Take Five — Dave Brubeck",
+  "genre": "Jazz",
+  "language": "de",
+  "failedJobId": "bac8631fc7c249d9ad302a5d055681e3",
+  "sourceProofSHA256": "078b3040ea53c3f8db0f8d36a638919ce06ead505833e96e9e57cad81be51ec0",
+  "sourceProofPath": "docs/evidence/release-completion-20261101/deployed-generation-result.json"
+}

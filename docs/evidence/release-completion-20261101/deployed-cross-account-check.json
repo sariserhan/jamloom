@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-11-01T05:20:15.851Z",
+  "distinctAuthenticatedReviewAccount": true,
+  "checks": [
+    {
+      "product": "improvise",
+      "file": "metadata",
+      "status": 404
+    },
+    {
+      "product": "improvise",
+      "file": "audio",
+      "status": 404
+    }
+  ],
+  "generationRequests": 0
+}
+

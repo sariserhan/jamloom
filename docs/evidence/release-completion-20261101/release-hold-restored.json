@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "at": "2026-11-01T05:22:54.407Z",
+  "restoredDeployment": "dpl_T8i4N7uMqbSoazHL1NiZ2bT87Zc8",
+  "reviewGenerationDisabled": true,
+  "ordinaryPurchasesDisabled": true,
+  "checks": [
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "available": false
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "available": false
+    },
+    {
+      "path": "/api/payments/checkout",
+      "status": 503
+    }
+  ],
+  "temporaryDiagnosticDeploymentRemoved": true,
+  "removedDeployment": "dpl_ErTBzc4KbfeGxZE1zWmBHjqHEfyp"
+}

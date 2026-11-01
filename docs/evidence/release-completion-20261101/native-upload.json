@@ -5,7 +5,9 @@
   "ipaSHA256": "23695a85cf61056a83a52c1fe9b01e9656dc26511ff5dce91863fb021582cb0b",
   "upload": "PASS",
   "uploadedAt": "2026-11-01T04:42:48Z",
-  "appleProcessing": "PENDING",
+  "appleProcessing": "VALID",
   "submitted": false,
-  "automaticRelease": false
+  "automaticRelease": false,
+  "buildId": "4fd5819d-4b15-4d49-9401-1ff26a7eadd9",
+  "selectedForVersion": "0.11.0"
 }

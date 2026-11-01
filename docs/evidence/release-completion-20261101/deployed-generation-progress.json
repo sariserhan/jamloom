@@ -1,0 +1,34 @@
+{
+  "status": "PARTIAL",
+  "approvedRequests": 2,
+  "completedRequests": 1,
+  "request": {
+    "product": "improvise",
+    "id": "3f0d9a0d8ad742c9befded7e3cb92427",
+    "state": "completed",
+    "submitCalls": 1,
+    "quote": {
+      "credits": 10,
+      "costCapMicros": 68400
+    },
+    "executionMs": "172962",
+    "delayMs": "1338",
+    "estimatedCostMicros": 58500,
+    "durationSeconds": 38,
+    "audio": {
+      "sha256": "2c55040f6b7c695c46531e86909f7192297e7808bc79fd37f29a21e5a31ba3f0",
+      "bytes": 7296044,
+      "validation": "PASS"
+    },
+    "anonymousStatus": 503,
+    "anonymousAudioStatus": 404,
+    "privacy": "PASS"
+  },
+  "harnessCorrection": "Original status privacy assertion omitted the expected coming-soon 503. Independent status body has only the launch error and audio is 404. No output was exposed and no generation failed.",
+  "firstWorkerShutdownConfirmed": true,
+  "originalDeadlineRetained": true,
+  "generationRetries": 0,
+  "providerInvoiceFinal": false,
+  "historicalCheckpoint": true,
+  "supersededBy": "deployed-generation-result.json"
+}

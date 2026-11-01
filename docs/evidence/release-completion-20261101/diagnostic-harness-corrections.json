@@ -1,0 +1,25 @@
+{
+  "generationRetries": 0,
+  "originalShutdownDeadlinePreserved": true,
+  "maximumConcurrentWorkers": 1,
+  "corrections": [
+    {
+      "stage": "Improvise privacy assertion",
+      "observation": "Anonymous status returned the expected launch-gate 503 with only an error; audio returned 404. Another authenticated account also received 404 for metadata/audio.",
+      "productFailure": false,
+      "generationCompleted": true,
+      "generationSubmissions": 1
+    },
+    {
+      "stage": "Music DNA quote payload",
+      "observation": "Diagnostic omitted the complete preference defaults. HTTP 400 occurred at quote, before submit or credit reservation. The corrected full profile passed local validation and the deployed quote endpoint before further warmup.",
+      "productFailure": false,
+      "generationSubmissions": 0
+    }
+  ],
+  "preservedPrivateReceipts": [
+    "deployed-http-result.json",
+    "deployed-dna-http-result.json"
+  ],
+  "timeAndBudget": "Same original 40-minute/$3 approval; no fresh clock or repeated generation"
+}

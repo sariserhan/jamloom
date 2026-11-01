@@ -1,0 +1,31 @@
+{
+  "status": "PROVISIONAL",
+  "checkedAt": "2026-11-01T05:25:09.676Z",
+  "scope": "Prior cost/lyric diagnostics and current deployed check, identified by exact worker IDs",
+  "rows": [
+    {
+      "amount": 0.032424999633803964,
+      "timeBilledMs": 155640,
+      "diskSpaceBilledGB": 60,
+      "podId": "c87enhf0usylla",
+      "time": "2026-11-01 03:00:00"
+    },
+    {
+      "amount": 0.050389651289151516,
+      "timeBilledMs": 238537,
+      "diskSpaceBilledGB": 120,
+      "podId": "jy397xuwd32938",
+      "time": "2026-11-01 03:00:00"
+    }
+  ],
+  "notYetReported": [
+    "heqnwqyffbstur",
+    "odqpqwfgee900u",
+    "a3om0pgwek6w5g",
+    "xgk04hzck429os"
+  ],
+  "reportedUSD": 0.08281465092295548,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "mutations": false
+}

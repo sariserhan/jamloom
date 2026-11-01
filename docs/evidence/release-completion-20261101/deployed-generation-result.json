@@ -1,0 +1,69 @@
+{
+  "status": "FAIL",
+  "sourceCommit": "49a9b5d1",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
+  "startedAt": "2026-11-01T04:53:56.476Z",
+  "finishedAt": "2026-11-01T05:20:04.057Z",
+  "generationRequests": 2,
+  "generationRetries": 0,
+  "maximumConcurrentGPUs": 1,
+  "maximumUSD": 3,
+  "requests": [
+    {
+      "product": "improvise",
+      "id": "3f0d9a0d8ad742c9befded7e3cb92427",
+      "state": "completed",
+      "submitCalls": 1,
+      "quote": {
+        "credits": 10,
+        "costCapMicros": 68400
+      },
+      "providerStatus": "COMPLETED",
+      "providerId": "f67d0fbd-65f7-4694-b3bf-a9fd0aabf9a5-u2",
+      "executionMs": "172962",
+      "delayMs": "1338",
+      "estimatedCostMicros": 58500,
+      "durationSeconds": 38,
+      "status": "PASS",
+      "capturedCredits": 10,
+      "audio": {
+        "sha256": "2c55040f6b7c695c46531e86909f7192297e7808bc79fd37f29a21e5a31ba3f0",
+        "bytes": 7296044,
+        "validation": "PASS"
+      },
+      "privacy": "PASS"
+    },
+    {
+      "product": "music-dna",
+      "id": "bac8631fc7c249d9ad302a5d055681e3",
+      "state": "failed",
+      "submitCalls": 1,
+      "quote": {
+        "credits": 20,
+        "costCapMicros": 138800
+      },
+      "providerStatus": "FAILED",
+      "providerId": "febe22d7-84eb-4c18-83dd-eac2483f6bbe-u1",
+      "executionMs": "363204",
+      "delayMs": "10663",
+      "estimatedCostMicros": 102280,
+      "durationSeconds": 134,
+      "status": "FAIL",
+      "capturedCredits": 0,
+      "failure": "style-rejected:matched-2-of-4",
+      "releasedCredits": 20,
+      "failedSeed": 998959027,
+      "rejectedAudioRetained": false
+    }
+  ],
+  "cleanup": "PASS",
+  "automaticAppleRenewal": "PASS",
+  "customerSalesEnabled": false,
+  "providerBillingFinal": false,
+  "limitations": [
+    "Diagnostic used prewarmed capacity; it does not establish cold-start availability.",
+    "Request cost estimates are not complete provider bills.",
+    "Music DNA musical style qualification failed; no gate was relaxed.",
+    "Diagnostic-harness corrections are recorded separately; original receipts are retained."
+  ]
+}

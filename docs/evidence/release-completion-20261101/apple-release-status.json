@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-11-01T04:41:28.391Z",
+  "checkedAt": "2026-11-01T04:47:52.992Z",
   "operation": "GET only",
   "versions": [
     {
-      "version": "0.10.2",
+      "version": "0.11.0",
       "state": "PREPARE_FOR_SUBMISSION",
       "releaseType": "MANUAL"
     }
@@ -15,7 +15,7 @@
     },
     {
       "product": "com.jamloom.creator.monthly",
-      "state": "MISSING_METADATA"
+      "state": "READY_TO_SUBMIT"
     }
   ],
   "reviewScreenshots": [
