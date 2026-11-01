@@ -1,0 +1,136 @@
+{
+  "startedAt": "2026-11-01T03:33:25.442Z",
+  "finishedAt": "2026-11-01T03:44:52.521Z",
+  "maxUSD": 3,
+  "maxWorkers": 1,
+  "maxSeconds": 2400,
+  "scope": "qualification",
+  "costDiagnostic": {
+    "gpuTypeIds": [
+      "NVIDIA L4"
+    ],
+    "previousGpuTypeIds": [
+      "NVIDIA GeForce RTX 4090",
+      "NVIDIA L40S"
+    ],
+    "candidate": {
+      "costCapMicros": 138800,
+      "maxRuntimeMs": 480000,
+      "hourlyMicros": 792000,
+      "fixedCostMicros": 33200
+    },
+    "productionQualified": false,
+    "prewarmAndIdleRequireSeparateBilling": true
+  },
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1",
+  "endpoint": "jl77hn92npt65k",
+  "templateId": "jbpcd0xgbf",
+  "prewarmSeconds": 419,
+  "disabled": true,
+  "stopped": true,
+  "cleanup": true,
+  "creditSettlement": true,
+  "qualification": "FAIL",
+  "error": "Trial stopped after request failure or repeated polling errors",
+  "finalHealth": {
+    "jobs": {
+      "completed": 44,
+      "failed": 16,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "removedObjects": 3,
+  "requests": [
+    {
+      "id": "e00cc269a4c34a8f95a99028599034d3",
+      "label": "metal",
+      "product": "music-dna",
+      "quotedCredits": 20,
+      "transitions": [
+        {
+          "seconds": 420,
+          "state": "queued",
+          "provider": "IN_QUEUE"
+        },
+        {
+          "seconds": 440,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 596,
+          "state": "completed",
+          "provider": "COMPLETED"
+        }
+      ],
+      "provider_id": "bd0d1764-9044-4cf2-99f9-5f82f81ef645-u1",
+      "provider_status": "COMPLETED",
+      "execution_ms": "158616",
+      "delay_ms": "10314",
+      "estimated_cost_micros": "57180",
+      "failure": null,
+      "state": "completed",
+      "duration": 140,
+      "saved": true,
+      "audioSha256": "e8ee043353f1cb77135c631feeef2c03067ce3da5dc30bb5922e165200087076",
+      "finalState": "completed",
+      "finalBalance": {
+        "available": 30,
+        "reserved": 0
+      },
+      "expectedCredits": 20
+    },
+    {
+      "id": "326df485d3734250a14029c80b074247",
+      "label": "jazz",
+      "product": "music-dna",
+      "quotedCredits": 20,
+      "transitions": [
+        {
+          "seconds": 607,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 658,
+          "state": "failed",
+          "provider": "FAILED"
+        }
+      ],
+      "provider_id": "a321ca5f-42b2-4eec-914f-644e1416c375-u1",
+      "provider_status": "FAILED",
+      "execution_ms": "41663",
+      "delay_ms": "20",
+      "estimated_cost_micros": "29240",
+      "failure": "writing-exit-1@music_dna_song.py:51",
+      "state": "failed",
+      "finalState": "failed",
+      "finalBalance": {
+        "available": 50,
+        "reserved": 0
+      },
+      "expectedCredits": 0
+    }
+  ],
+  "sanitized": true,
+  "privateRawReceipt": {
+    "path": "build-release-closure-20261031/cost-stage-2-private.json",
+    "sha256": "f6243b896fbfe25e297a32433a4ba4b7c3d21a9df790623b321118f4a827e1cf"
+  },
+  "billing": {
+    "beforeRows": 0,
+    "afterRows": 0,
+    "status": "PENDING_PROVIDER_BILLING",
+    "finalInvoice": false
+  }
+}

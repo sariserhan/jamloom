@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_STAGE_2",
+  "status": "CONSUMED",
   "scope": "Diagnostic only: test whether the accepted model can satisfy the unchanged credit catalog on L4; not a production cost qualification",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1",
   "endpoint": "jl77hn92npt65k",
@@ -97,5 +97,17 @@
   "stage1Evidence": "docs/evidence/improvise-finish/cloud/2026-11-01T03-21-00.252Z/trial-result.json",
   "stage1Status": "PASS",
   "stage1IndependentCleanup": "PASS",
-  "stage2Evidence": "docs/evidence/dna-completion/cloud/2026-11-01T03-33-25.439Z/trial-result.json"
+  "stage2Evidence": "docs/evidence/dna-completion/cloud/2026-11-01T03-33-25.439Z/trial-result.json",
+  "stage2Status": "FAIL",
+  "stage2IndependentCleanup": "PASS",
+  "requestsStarted": 3,
+  "repeatedRequests": 0,
+  "workerLimitsAfter": [
+    0,
+    0
+  ],
+  "privateRawReceipts": [
+    "build-release-closure-20261031/cost-stage-1-private.json",
+    "build-release-closure-20261031/cost-stage-2-private.json"
+  ]
 }

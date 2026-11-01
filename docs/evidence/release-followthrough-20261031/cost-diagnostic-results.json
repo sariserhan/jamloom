@@ -1,0 +1,68 @@
+{
+  "status": "FAIL_DIAGNOSTIC",
+  "economicQualification": "NOT QUALIFIED",
+  "authorizationUSD": 6,
+  "requests": 3,
+  "completed": 2,
+  "failed": 1,
+  "providerRetries": 0,
+  "temporaryDataCleanup": "PASS both stages independently",
+  "workerLimitsAfter": [
+    0,
+    0
+  ],
+  "billing": {
+    "checkedAt": "2026-11-01T03:45:21.353Z",
+    "status": "PENDING_PROVIDER_BILLING",
+    "endpoint": "jl77hn92npt65k",
+    "workerIds": [
+      "c87enhf0usylla",
+      "jy397xuwd32938"
+    ],
+    "rows": [],
+    "unattributedRows": 0,
+    "observedUSD": null,
+    "finalInvoice": false
+  },
+  "results": [
+    {
+      "product": "improvise",
+      "fixture": "drumandbass",
+      "state": "completed",
+      "seconds": 45,
+      "executionMs": 134126,
+      "queueDelayMs": 10293,
+      "requestEstimateUSD": 0.0519,
+      "creditsCharged": 10,
+      "failure": null
+    },
+    {
+      "product": "music-dna",
+      "fixture": "metal",
+      "state": "completed",
+      "seconds": 140,
+      "executionMs": 158616,
+      "queueDelayMs": 10314,
+      "requestEstimateUSD": 0.05718,
+      "creditsCharged": 20,
+      "failure": null
+    },
+    {
+      "product": "music-dna",
+      "fixture": "jazz",
+      "state": "failed",
+      "seconds": null,
+      "executionMs": 41663,
+      "queueDelayMs": 20,
+      "requestEstimateUSD": 0.02924,
+      "creditsCharged": 0,
+      "failure": "writing-exit-1@music_dna_song.py:51"
+    }
+  ],
+  "limitations": [
+    "Request estimates include the diagnostic fixed allocation but are not a complete worker invoice.",
+    "Cold preparation took 510 and 419 seconds; image preparation and billable initialization cannot be equated.",
+    "No production cost qualification or sale activation; customer prices/configuration unchanged.",
+    "The failed request consumed provider work even though all customer test credits were returned."
+  ]
+}

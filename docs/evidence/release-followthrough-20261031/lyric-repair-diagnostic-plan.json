@@ -1,0 +1,83 @@
+{
+  "status": "AWAITING_OWNER_APPROVAL",
+  "preparedAt": "2026-11-01T03:50:13.593834+00:00",
+  "scope": "Publish the isolated lyric-section repair, then one German Jazz diagnostic on L4 using the failed fixture seed",
+  "imageSourceCommit": "e8d54bf39139ddf9fcc59c2df1b89b0ab33d2e03",
+  "imageBase": "68bf2b39c564157e34bf6628d3d5f9a9af9e8a65",
+  "imageCheckout": "/tmp/jamloom-lyric-repair-image-20261031",
+  "publicationBranch": "codex/runpod-setup",
+  "websiteDeploymentEnabledOnBranch": false,
+  "runtimeDiff": [
+    "scripts/music_dna_song.py: repair malformed lyric arrays without replacing valid sections; same validation and four planner attempts"
+  ],
+  "maxUSD": 3,
+  "maxWorkers": 1,
+  "gpuTypeIds": [
+    "NVIDIA L4"
+  ],
+  "maxProviderRequests": 1,
+  "maxSeconds": 2400,
+  "shutdownAllowanceSeconds": 130,
+  "repeatedRequests": 0,
+  "stopOnFailure": true,
+  "conservativeCampaignCostUSD": 2.55,
+  "fixture": {
+    "reference": "Take Five \u2014 Dave Brubeck",
+    "catalogueGenre": "Jazz",
+    "vocalLanguage": "de",
+    "durationSeconds": 100,
+    "seed": 9102402,
+    "visibility": "private",
+    "userAudio": false
+  },
+  "command": [
+    "node",
+    "--import",
+    "tsx",
+    "scripts/cloud-song-trial.ts",
+    "--cost-diagnostic",
+    "--german-jazz-diagnostic",
+    "--qualification-window",
+    "--apply"
+  ],
+  "candidateBudget": {
+    "rateMicrosPerSecond": 220,
+    "executionSeconds": 480,
+    "ttlSeconds": 540,
+    "requestCapMicros": 138800,
+    "productionQualified": false
+  },
+  "preconditions": [
+    "New explicit image-publication and bounded paid-request authorization; the prior $6 permit is consumed",
+    "Exact source commit image publication and immutable digest verification, then readback of the disabled trial template",
+    "Both previous stages independently cleaned up; current limits 0/0, no workers/jobs, no production pending work",
+    "Exact file hashes match; loopback disposable database only; capture private billing and worker inventory before activation"
+  ],
+  "cleanup": [
+    "Independent deadline watchdog disables the endpoint and restores original GPU placement",
+    "Disable at terminal state; verify no workers/jobs independently",
+    "Delete private remote output including any rejected-audio diagnostic staging; remove temporary database",
+    "Full 20-credit release for technical failure, fixed 20 on success; no duplicate paid request"
+  ],
+  "validation": {
+    "localPythonTests": 79,
+    "isolatedImageChecks": 23,
+    "harnessChecks": 6,
+    "typecheck": "PASS",
+    "dryRun": "PASS one request; L4; 40 minutes; $3",
+    "regression": "Same class of malformed-section failure reproduced without a model; failing before, passing after",
+    "modelGeneratedRepair": "NOT RUN; exact failed private draft was not retained"
+  },
+  "limitations": [
+    "This request verifies the repaired worker and candidate cost profile, not production cost qualification",
+    "Attributable full-worker billing, failure/idle/initialization/storage/operations allocation and production enforcement remain separate",
+    "No change to catalog prices, customer credit balances, sales or website/app publication"
+  ],
+  "fileSHA256": {
+    "scripts/music_dna_song.py": "ba23f9baf917f2c52c58615f615b1492ed9d5cfc54043b496d4b7dd0bdd6ec9f",
+    "tests/test_dna_lyric_repair.py": "554cf1ea49c9f68ff2b3315937bafc4cea528d11c091077879cfe2b4ca46a544",
+    "apps/site/scripts/cloud-song-trial.ts": "9b9c699222160a19153d7dedb62b8e920dbf17a1747ba7d2a4b93bee1b457f4f",
+    "apps/site/scripts/cloud-cost-diagnostic.ts": "b2a9e73ebc61c0a0d61d752a079fc8f40220862688aace8533cf1728cbd4780e",
+    "apps/site/scripts/cloud-trial-limits.ts": "08c059c0da631b98bead186714aa546a905e8973e8449667edb19eba71886f97"
+  }
+}

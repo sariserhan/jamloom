@@ -1,0 +1,105 @@
+{
+  "startedAt": "2026-11-01T03:21:00.255Z",
+  "finishedAt": "2026-11-01T03:32:21.098Z",
+  "maxUSD": 3,
+  "maxWorkers": 1,
+  "maxSeconds": 2400,
+  "scope": "single-owner-source-quality",
+  "costDiagnostic": {
+    "gpuTypeIds": [
+      "NVIDIA L4"
+    ],
+    "previousGpuTypeIds": [
+      "NVIDIA GeForce RTX 4090",
+      "NVIDIA L40S"
+    ],
+    "candidate": {
+      "costCapMicros": 68400,
+      "maxRuntimeMs": 190000,
+      "hourlyMicros": 792000,
+      "fixedCostMicros": 26600
+    },
+    "productionQualified": false,
+    "prewarmAndIdleRequireSeparateBilling": true
+  },
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1",
+  "endpoint": "jl77hn92npt65k",
+  "templateId": "jbpcd0xgbf",
+  "prewarmSeconds": 510,
+  "disabled": true,
+  "stopped": true,
+  "cleanup": true,
+  "creditSettlement": true,
+  "qualification": "PASS",
+  "finalHealth": {
+    "jobs": {
+      "completed": 43,
+      "failed": 15,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "removedObjects": 3,
+  "requests": [
+    {
+      "id": "486a80600c09416189a3f9c3851b9ab6",
+      "label": "drumandbass",
+      "product": "improvise",
+      "quotedCredits": 10,
+      "transitions": [
+        {
+          "seconds": 511,
+          "state": "queued",
+          "provider": "IN_QUEUE"
+        },
+        {
+          "seconds": 531,
+          "state": "running",
+          "provider": "IN_PROGRESS"
+        },
+        {
+          "seconds": 665,
+          "state": "completed",
+          "provider": "COMPLETED"
+        }
+      ],
+      "provider_id": "5f0a06ab-d2ed-42e5-8402-9019903732f3-u1",
+      "provider_status": "COMPLETED",
+      "execution_ms": "134126",
+      "delay_ms": "10293",
+      "estimated_cost_micros": "51900",
+      "failure": null,
+      "state": "completed",
+      "duration": 45,
+      "completeSourcePreserved": true,
+      "saved": true,
+      "audioSha256": "663b02a5408d3fb6b0903b7765bbd2af36f0b416b3e9bcd21b4d4aad46dec57f",
+      "finalState": "completed",
+      "finalBalance": {
+        "available": 40,
+        "reserved": 0
+      },
+      "expectedCredits": 10
+    }
+  ],
+  "sanitized": true,
+  "privateRawReceipt": {
+    "path": "build-release-closure-20261031/cost-stage-1-private.json",
+    "sha256": "e358e584916463dbb239a7b7fefebfc560bdf5e28c148f31af4779ac5c3efa3e"
+  },
+  "billing": {
+    "beforeRows": 0,
+    "afterRows": 0,
+    "status": "PENDING_PROVIDER_BILLING",
+    "finalInvoice": false
+  }
+}

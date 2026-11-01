@@ -1,0 +1,24 @@
+...............................................................................
+----------------------------------------------------------------------
+Ran 79 tests in 1.442s
+
+OK
+
+Isolated accepted-worker base: malformed-section regression FAIL before / PASS after (2 tests).
+.................
+----------------------------------------------------------------------
+Ran 17 tests in 0.220s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.003s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.109s
+
+OK
+
+Harness: 6 passed, no skips. Typecheck: PASS. Dry run: one 100-second German Jazz request, one L4, $3, 2400 seconds plus shutdown.

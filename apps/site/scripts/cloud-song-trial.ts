@@ -37,7 +37,7 @@ assert([repair,startup,completion,improvise].filter(Boolean).length<=1,'Choose o
 const stamp=new Date().toISOString().replaceAll(':','-');
 const root=resolve('../..'),directory=resolve(root,improvise?'build-improvise-completion/cloud/'+stamp:completion?'build-dna-completion/cloud/'+stamp:startup?'build-song-finish/startup/'+stamp:repair?'build-song-repair/cloud':'build-hosted-song-trial/final'),evidence=resolve(root,improvise?'docs/evidence/improvise-finish/cloud/'+stamp:completion?'docs/evidence/dna-completion/cloud/'+stamp:startup?'docs/evidence/song-finish/startup/'+stamp:repair?'docs/evidence/song-generation-repair':'docs/evidence/hosted-songs');
 const costDiagnostic=process.argv.includes('--cost-diagnostic');
-if(costDiagnostic)assert(['improvise-quality','dna-completion'].includes(mode)&&process.argv.includes('--qualification-window'),'Cost diagnostic requires one explicit completion profile and the bounded qualification window');
+if(costDiagnostic)assert(['improvise-quality','dna-completion','dna-diagnostic'].includes(mode)&&process.argv.includes('--qualification-window'),'Cost diagnostic requires one explicit completion profile and the bounded qualification window');
 const baseConfig=cloudSongConfig({...process.env,CREDIT_BILLING_MODE:'test',JAMLOOM_CLOUD_SONGS_ENABLED:'true',JAMLOOM_CLOUD_RATE_MICROS_PER_SECOND:'1000'})!;
 const config=costDiagnostic?costDiagnosticConfig(baseConfig,improvise?'improvise':'music-dna'):baseConfig;
 assert.equal(config.endpoint,'jl77hn92npt65k');
@@ -79,7 +79,9 @@ if(costDiagnostic){
  state.costDiagnostic={gpuTypeIds:['NVIDIA L4'],previousGpuTypeIds:before.gpuTypeIds,candidate:config.budget,productionQualified:false,prewarmAndIdleRequireSeparateBilling:true};
 }
 if(startup){assert.equal(before.scalerType,'REQUEST_COUNT');assert.equal(before.scalerValue,1);state.activationDelaySeconds=30;state.manualReconciliation=false;}
-if(repair||startup||completion||improvise){const image=process.env.JAMLOOM_TRIAL_IMAGE;assert(image&&/^ghcr\.io\/sariserhan\/jamloom\/music-worker@sha256:[a-f0-9]{64}$/.test(image),'A reviewed immutable worker image is required');const template=await rest('templates/'+encodeURIComponent(before.templateId)+'?includeEndpointBoundTemplates=true');assert.equal(template.imageName,image);if(completion)assert.equal(template.env?.JAMLOOM_VOCAL_IDENTITY_ENABLED,'true','Prepared trial template must enable approved voice conversion');state.image=image;if(costDiagnostic)assert.equal(image,'ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1','Use the owner-accepted immutable worker');}
+// A separately approved German Jazz repair diagnostic binds JAMLOOM_TRIAL_IMAGE
+// to the reviewed publication digest; the original cost campaign stays pinned.
+if(repair||startup||completion||improvise){const image=process.env.JAMLOOM_TRIAL_IMAGE;assert(image&&/^ghcr\.io\/sariserhan\/jamloom\/music-worker@sha256:[a-f0-9]{64}$/.test(image),'A reviewed immutable worker image is required');const template=await rest('templates/'+encodeURIComponent(before.templateId)+'?includeEndpointBoundTemplates=true');assert.equal(template.imageName,image);if(completion)assert.equal(template.env?.JAMLOOM_VOCAL_IDENTITY_ENABLED,'true','Prepared trial template must enable approved voice conversion');state.image=image;if(costDiagnostic&&!dnaDiagnostic)assert.equal(image,'ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1','Use the owner-accepted immutable worker');}
 state.disabled=true;state.templateId=before.templateId;state.endpoint=config.endpoint;
 const billing=()=>rest(`billing/endpoints?endpointId=${config.endpoint}&bucketSize=hour&startTime=${new Date().toISOString().slice(0,10)}T00:00:00Z&endTime=${new Date(Date.now()+86400000).toISOString().slice(0,10)}T00:00:00Z`);
 state.billingBefore=await billing();
