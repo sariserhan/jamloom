@@ -158,6 +158,7 @@ struct AccountSnapshot: Decodable {
     let user: AccountUser
     let balance: Balance
     let purchasesReleased: Bool
+    var sandboxReview: Bool? = nil
     struct Subscription: Decodable {
         let provider: String; let plan: String; let status: String
         let period_end: String; let cancel_at_period_end: Bool
@@ -371,6 +372,7 @@ struct AccountView: View {
                             .disabled(snapshot.deletionRequest?.status == "open").accessibilityIdentifier("requestAccountDeletion")
                     }
                     Section("Your plan") {
+                        if snapshot.sandboxReview == true { Text("Apple sandbox review account · Test credits only") }
                         Text("Creator adds 300 credits each month. All paid credits remain usable without expiry, even after cancellation. Private and public generation cost the same.")
                         Text("Improvise: 10 credits per arrangement. Music DNA: 20 credits per song. Playback and downloads of existing results cost no extra credits.")
                         ForEach(Array((snapshot.subscriptions ?? []).enumerated()), id: \.offset) { _, subscription in

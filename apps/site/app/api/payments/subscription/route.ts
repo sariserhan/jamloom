@@ -3,11 +3,13 @@ import {Wallet} from '../../../../lib/wallet';
 import {creditBilling} from '../../../../lib/stripe-payments';
 import {subscriptionCheckout} from '../../../../lib/credit-subscriptions';
 import {boundedAuthRequest} from '../../../../lib/bounded-request';
+import {appleReviewAccount} from '../../../../lib/apple-review';
 export const runtime='nodejs';
 export async function POST(request:Request){
  try{
   const {auth,pool,config}=services();if(request.headers.get('origin')!==config.baseURL)return new Response(null,{status:403});
   const session=await auth.api.getSession({headers:request.headers});if(!session?.user.emailVerified)return new Response(null,{status:401});
+  if(appleReviewAccount(session.user.id))return Response.json({error:'This App Review account uses Apple sandbox purchases.'},{status:403});
   const bounded=await boundedAuthRequest(request,4096);if(!bounded)return new Response(null,{status:413});
   const body=await bounded.json(),billing=creditBilling(),wallet=new Wallet(pool,billing.live);
   if(body.action==='manage'){

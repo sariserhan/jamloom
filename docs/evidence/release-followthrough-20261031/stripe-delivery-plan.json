@@ -1,0 +1,19 @@
+{
+  "scope": "Verify the prepared live Stripe callback using a nonfinancial product.updated event only",
+  "sourceCommit": "3f6124e10f8f4d85d88808d27f3c5d26f6622fad",
+  "rollbackDeployment": "https://jamloom-bbcx1825g-ssari.vercel.app",
+  "webhook": "we_1UWfqYDlEXWDEeHOuJRHbAos",
+  "secretSource": "private prepared credit webhook secret; no rotation",
+  "product": "prod_VXlMg867UjAY5B",
+  "mutations": [
+    "Save matching secret in Vercel production",
+    "Deploy reviewed source with purchases/generation disabled",
+    "Stage-check signature rejection, then promote",
+    "Temporarily enable only product.updated on the prepared webhook",
+    "Add diagnostic metadata to the inactive product and verify signed delivery",
+    "Restore webhook disabled with original event list; remove diagnostic metadata"
+  ],
+  "charges": 0,
+  "pricesChanged": false,
+  "productionCreditGrantsExpected": 0
+}

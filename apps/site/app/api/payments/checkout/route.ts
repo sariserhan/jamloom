@@ -3,11 +3,13 @@ import {creditBilling,checkout,fulfillCheckout} from '../../../../lib/stripe-pay
 import {Wallet} from '../../../../lib/wallet';
 import {boundedAuthRequest} from '../../../../lib/bounded-request';
 import {fulfillSubscriptionInvoice} from '../../../../lib/credit-subscriptions';
+import {appleReviewAccount} from '../../../../lib/apple-review';
 export const runtime='nodejs';
 export async function POST(request:Request){
  try{
   const {auth,config}=services();if(request.headers.get('origin')!==config.baseURL)return new Response(null,{status:403});
   const session=await auth.api.getSession({headers:request.headers});if(!session?.user.emailVerified)return Response.json({error:'Sign in with a verified account first.'},{status:401});
+  if(appleReviewAccount(session.user.id))return Response.json({error:'This App Review account uses Apple sandbox purchases.'},{status:403});
   const billing=creditBilling();if(!billing.enabled)return Response.json({error:'Credit purchases are not open yet.'},{status:503});
   const bounded=await boundedAuthRequest(request,4096);if(!bounded)return new Response(null,{status:413});
   const body=await bounded.json();if(!body||body.pack!=='topup'||typeof body.key!=='string')return Response.json({error:'Choose a credit pack.'},{status:400});

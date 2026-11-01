@@ -1,0 +1,12 @@
+{
+  "environment": "Sandbox",
+  "status": "PASS",
+  "sendAttempts": [
+    {
+      "attemptDate": 1793502880444,
+      "sendAttemptResult": "SUCCESS"
+    }
+  ],
+  "endpoint": "https://www.jamloom.com/api/payments/apple/notifications/sandbox",
+  "liveCharges": 0
+}

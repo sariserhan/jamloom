@@ -1,0 +1,16 @@
+[
+  {
+    "path": "/api/payments/apple/notifications",
+    "status": 400,
+    "body": {
+      "error": "Invalid notification"
+    }
+  },
+  {
+    "path": "/api/payments/apple/notifications/sandbox",
+    "status": 400,
+    "body": {
+      "error": "Invalid notification"
+    }
+  }
+]

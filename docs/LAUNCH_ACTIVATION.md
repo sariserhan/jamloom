@@ -1,6 +1,8 @@
 # Launch activation handoff — 2026-10-31
 
-**Release is held.** [Current preparation evidence](evidence/apple-payment-closure-20261031/report.md) records completed work. These are remaining steps, not an authorization to execute paid compute, publication or live sales. Research/scoring deferrals and owner music acceptance are unchanged.
+**Release follow-through is authorized after gates pass.** The owner said “do all of those”; root AGENTS.md records this scope. Public Apple callback deployment/delivery now passes; see [current evidence](evidence/release-followthrough-20261031/report.md). New paid compute still requires a bounded permit. The detailed steps below describe preparation and must be read with this newer evidence.
+
+**Earlier handoff (historical):** [Current preparation evidence](evidence/apple-payment-closure-20261031/report.md) records completed work. These are remaining steps, not an authorization to execute paid compute, publication or live sales. Research/scoring deferrals and owner music acceptance are unchanged.
 
 ## 1. Resolve generation economics
 

@@ -2,12 +2,13 @@ import XCTest
 import StoreKit
 import StoreKitTest
 import CryptoKit
+import UIKit
 @testable import Jamloom
 
 @MainActor final class PurchaseTests: XCTestCase {
     func testLiveSandboxReceiptWhenExplicitlyRequested() async throws {
         let env = ProcessInfo.processInfo.environment
-        try XCTSkipUnless(env["JAMLOOM_APPLE_SANDBOX"] == "purchase" || env["JAMLOOM_APPLE_SANDBOX"] == "acknowledge" || env["JAMLOOM_APPLE_SANDBOX"] == "restore", "Explicit Apple sandbox qualification only")
+        try XCTSkipUnless(["purchase", "acknowledge", "restore", "refund"].contains(env["JAMLOOM_APPLE_SANDBOX"] ?? ""), "Explicit Apple sandbox qualification only")
         #if targetEnvironment(simulator)
         throw XCTSkip("Physical sandbox device required")
         #else
@@ -29,6 +30,19 @@ import CryptoKit
         let executable = try XCTUnwrap(Bundle.main.executableURL)
         let actualHash = SHA256.hash(data: try Data(contentsOf: executable)).map { String(format: "%02x", $0) }.joined()
         guard expectedHash.count == 64, actualHash == expectedHash else { XCTFail("Development-signing preflight required for this exact test host"); return }
+        if env["JAMLOOM_APPLE_SANDBOX"] == "refund" {
+            let expected = try XCTUnwrap(UInt64(env["JAMLOOM_APPLE_ACK_TRANSACTION"] ?? ""))
+            let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first { $0.activationState == .foregroundActive })
+            for await value in Transaction.all {
+                if case .verified(let transaction) = value, transaction.id == expected {
+                    guard transaction.environment == .sandbox, transaction.appAccountToken == token, transaction.productID == id else { XCTFail("Sandbox refund mismatch"); return }
+                    let status = try await transaction.beginRefundRequest(in: scene)
+                    XCTAssertEqual(status, .success, "This confirms submission only; independent REFUND verification is still required")
+                    return
+                }
+            }
+            XCTFail("Expected verified sandbox purchase before requesting refund"); return
+        }
         if env["JAMLOOM_APPLE_SANDBOX"] == "restore" {
             guard id == CreditPurchases.singingProduct || id == CreditPurchases.creatorProduct else { XCTFail("Only the course and subscription are restorable"); return }
             var delivered = 0

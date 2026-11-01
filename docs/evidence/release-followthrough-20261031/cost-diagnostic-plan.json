@@ -1,0 +1,96 @@
+{
+  "status": "AUTHORIZED_NOT_RUN",
+  "scope": "Diagnostic only: test whether the accepted model can satisfy the unchanged credit catalog on L4; not a production cost qualification",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1",
+  "endpoint": "jl77hn92npt65k",
+  "gpuTypeIds": [
+    "NVIDIA L4"
+  ],
+  "maxWorkers": 1,
+  "maxTotalUSD": 6,
+  "maxUSDPerStage": 3,
+  "maxSecondsPerStage": 2400,
+  "shutdownAllowanceSeconds": 130,
+  "requests": 3,
+  "stages": [
+    {
+      "order": 1,
+      "product": "improvise",
+      "requests": 1,
+      "durationSeconds": [
+        45
+      ],
+      "args": [
+        "--cost-diagnostic",
+        "--improvise-quality",
+        "--qualification-window",
+        "--source",
+        "../../renders/neural-question-input-20261030/source-16k-mono.wav"
+      ],
+      "candidateRateMicrosPerSecond": 220,
+      "executionSeconds": 190,
+      "ttlSeconds": 220,
+      "requestCapMicros": 68400
+    },
+    {
+      "order": 2,
+      "product": "music-dna",
+      "requests": 2,
+      "durationSeconds": [
+        140,
+        100
+      ],
+      "args": [
+        "--cost-diagnostic",
+        "--dna-completion",
+        "--qualification-window"
+      ],
+      "candidateRateMicrosPerSecond": 220,
+      "executionSeconds": 480,
+      "ttlSeconds": 540,
+      "requestCapMicros": 138800
+    }
+  ],
+  "source": {
+    "path": "renders/neural-question-input-20261030/source-16k-mono.wav",
+    "sha256": "fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1",
+    "rights": "Previously confirmed owner sample; no Mr Wobble voice",
+    "transfer": "Temporary private R2 and Runpod; delete remote test input/output after each stage"
+  },
+  "preconditions": [
+    "Fresh bounded spending authorization",
+    "Endpoint disabled; zero workers and queued/running jobs; production pending count zero",
+    "Exact immutable image and source hashes match",
+    "Loopback disposable database only",
+    "Run stage 2 only after stage 1 passes and independent cleanup confirms disabled endpoint, no workers/jobs and removed remote test objects"
+  ],
+  "shutdown": [
+    "Independent detached watchdog disables endpoint and restores original GPU placement",
+    "No repeated requests or automatic campaign retries; stop campaign on first failure",
+    "Retain sanitized evidence and private local outputs; remove remote test objects and disposable databases"
+  ],
+  "costLimitations": [
+    "Candidate request caps are not attributable whole-worker bills",
+    "Account for cold initialization, idle, failure, cancellation, disk/storage and operational allocation separately",
+    "Compare billing snapshots after shutdown; delayed billing is provisional",
+    "Do not set qualification version or enable sales from diagnostic success alone"
+  ],
+  "excludes": [
+    "Image publication",
+    "Customer sales",
+    "Model training",
+    "AI DJ rental/endurance",
+    "Catalog price changes"
+  ],
+  "pricingSources": [
+    "https://www.runpod.io/pricing",
+    "https://docs.runpod.io/serverless/pricing"
+  ],
+  "harnessHashes": {
+    "apps/site/scripts/cloud-song-trial.ts": "94422af3979bbb00077ccedec24e517aed82687bece1cbc6d473a5b4213cbcbb",
+    "apps/site/scripts/cloud-cost-diagnostic.ts": "b2a9e73ebc61c0a0d61d752a079fc8f40220862688aace8533cf1728cbd4780e",
+    "apps/site/scripts/neural-study-input.ts": "3b2422f33e157e4c0cbd079e27f24d72bf4e7b6693d88f0b7a86e2f87c7923a5"
+  },
+  "ownerApproval": "Approve diagnostic, up to $6",
+  "approvalLimitsUnchanged": true
+}

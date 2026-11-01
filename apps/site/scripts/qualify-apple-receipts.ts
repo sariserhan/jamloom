@@ -40,6 +40,11 @@ for(const path of receipts){const bytes=await readFile(path);assert(bytes.length
 }
 const admin=createPool(url.href),name='jamloom_apple_receipts_'+randomUUID().replaceAll('-','');await admin.query(`CREATE DATABASE "${name}"`);url.pathname='/'+name;const pool=createPool(url.href),wallet=new Wallet(pool);
 let server:ChildProcess|undefined,scratch:string|undefined;
+async function stopHTTP(){
+ const running=server;
+ if(running&&running.exitCode===null&&running.signalCode===null){const stopped=once(running,'exit');running.kill('SIGTERM');await stopped;}
+ server=undefined;
+}
 try{
  await migrate(pool);for(const owner of ['owner','other'])await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@apple-fixture.test']);
  await wallet.accountToken('owner');await pool.query('UPDATE credit_wallets SET app_account_token=$1 WHERE owner_id=$2',[token,'owner']);
@@ -49,8 +54,8 @@ try{
   const reservation=createServer();reservation.listen(0,'127.0.0.1');await once(reservation,'listening');const address=reservation.address();assert(address&&typeof address==='object');const port=address.port;await new Promise<void>((resolve,reject)=>reservation.close(error=>error?reject(error):resolve()));
   const base='http://127.0.0.1:'+port;scratch=await mkdtemp(join(tmpdir(),'jamloom-apple-receipts-'));
   const env={...process.env,JAMLOOM_QUALIFICATION_BUILD:'1',DATABASE_URL:url.href,BETTER_AUTH_URL:base,BETTER_AUTH_SECRET:randomUUID()+randomUUID(),JAMLOOM_COMING_SOON:'false',JAMLOOM_LOCAL_OUTBOX:join(scratch,'mail'),RESEND_API_KEY:'',APPLE_ENVIRONMENT:'sandbox',APPLE_BUNDLE_ID:bundle,CREDIT_BILLING_MODE:'test',JAMLOOM_CLOUD_SONGS_ENABLED:'false',JAMLOOM_AI_DJ_BETA_ENABLED:'false',VERCEL:''};
-  async function startHTTP(production=false){
-   server=spawn(process.execPath,['node_modules/next/dist/bin/next','start','--hostname','127.0.0.1','--port',String(port)],{env:{...env,...(production?{APPLE_ENVIRONMENT:'production',CREDIT_BILLING_MODE:'live'}:{})},stdio:'ignore'});
+  async function startHTTP(production=false,review=false){
+   server=spawn(process.execPath,['node_modules/next/dist/bin/next','start','--hostname','127.0.0.1','--port',String(port)],{env:{...env,JAMLOOM_APPLE_REVIEW_ENABLED:'false',...(production?{APPLE_ENVIRONMENT:'production',CREDIT_BILLING_MODE:'live'}:{}),...(review?{JAMLOOM_APPLE_REVIEW_ENABLED:'true',JAMLOOM_APPLE_REVIEW_USER_IDS:'owner',JAMLOOM_APPLE_REVIEW_EXPIRES_AT:new Date(Date.now()+3600000).toISOString()}:{})},stdio:'ignore'});
    let ready=false;for(let n=0;n<100;n++){if(server.exitCode!==null)break;try{if((await fetch(base+'/api/site-status')).ok){ready=true;break;}}catch{}await delay(100);}assert(ready,'Qualification build did not start');
   }
   await startHTTP();
@@ -75,20 +80,32 @@ try{
   }
   await send('/api/auth/sign-out',{},ownerCookie);await send('/api/auth/sign-out',{},otherCookie);
   if(notification){
-   assert(server);const stopped=once(server,'exit');server.kill('SIGTERM');await stopped;server=undefined;
+   await stopHTTP();
    await startHTTP(true);
    // Production defaults cannot redirect a verified sandbox event into the live ledger.
    assert.equal((await send('/api/payments/apple/notifications',{signedPayload:notification})).status,503);
    const response=await send('/api/payments/apple/notifications/sandbox',{signedPayload:notification});assert.equal(response.status,200);assert.deepEqual(await response.json(),{received:true,manualReview:false});
    assert.deepEqual((await pool.query('SELECT provider,count(*)::int n FROM provider_webhook_events GROUP BY provider')).rows,[{provider:'apple_sandbox',n:1}]);
+   await stopHTTP();
+   await startHTTP(true,true);
+   const reviewCookie=await login('owner'),customerCookie=await login('other');
+   for(const {jws} of inputs){
+    assert.equal((await send('/api/payments/apple',{action:'verify',signedTransaction:jws},reviewCookie)).status,200);
+    assert.equal((await send('/api/payments/apple',{action:'verify',signedTransaction:jws},customerCookie)).status,400);
+   }
+   const review=await (await fetch(base+'/api/account',{headers:{cookie:reviewCookie}})).json();assert.equal(review.sandboxReview,true);assert.equal(review.balance.available,(await wallet.balance('owner')).available);
+   const customer=await (await fetch(base+'/api/account',{headers:{cookie:customerCookie}})).json();assert.equal(customer.sandboxReview,false);assert.equal(customer.balance.available,0);
+   assert.equal((await send('/api/payments/checkout',{pack:'topup',key:'review-test'},reviewCookie)).status,403);
+   assert.equal((await send('/api/payments/subscription',{action:'subscribe',key:'review-test'},reviewCookie)).status,403);
+   await send('/api/auth/sign-out',{},reviewCookie);await send('/api/auth/sign-out',{},customerCookie);
   }
  }
  let expected=0;const ids=new Set<string>();
  for(const {jws,purchase} of inputs){await assert.rejects(fulfillApple(sandbox,wallet,'other',jws,bundle));const lot=await fulfillApple(sandbox,wallet,'owner',jws,bundle);assert.equal(await fulfillApple(sandbox,wallet,'owner',jws,bundle),lot);if(!ids.has(purchase.receipt)){expected+=purchase.credits;ids.add(purchase.receipt);}}
  assert.deepEqual(await wallet.balance('owner'),{available:expected,reserved:0});assert.deepEqual(await new Wallet(pool,true).balance('owner'),{available:0,reserved:0});
  assert.equal((await pool.query('SELECT count(*)::int n FROM credit_lots')).rows[0].n,ids.size);
- console.log(JSON.stringify({status:'PASS',environment:'real Apple Sandbox + disposable local PostgreSQL',receipts:inputs.map(x=>({sha256:x.sha256,product:x.tx.productId,credits:x.purchase.credits,subscription:!!x.purchase.subscription})),uniqueGrants:ids.size,totalCredits:expected,duplicateDelivery:'PASS',wrongAccount:'PASS',productionIsolation:'PASS',forgedPayloadRejected:'PASS',authenticatedLocalHTTP:http?'PASS':'NOT RUN',providerSignedTestNotification:notification?'PASS local HTTP verification and deduplication':'NOT RUN',liveCharges:0,hostedDelivery:'NOT RUN',nativeHTTPTransport:'NOT RUN'}));
+ console.log(JSON.stringify({status:'PASS',environment:'real Apple Sandbox + disposable local PostgreSQL',receipts:inputs.map(x=>({sha256:x.sha256,product:x.tx.productId,credits:x.purchase.credits,subscription:!!x.purchase.subscription})),uniqueGrants:ids.size,totalCredits:expected,duplicateDelivery:'PASS',wrongAccount:'PASS',productionIsolation:'PASS',forgedPayloadRejected:'PASS',authenticatedLocalHTTP:http?'PASS':'NOT RUN',providerSignedTestNotification:notification?'PASS local HTTP verification and deduplication':'NOT RUN',reviewAccountIsolation:notification?'PASS receipt, account balance and web checkout rejection':'NOT RUN',liveCharges:0,hostedDelivery:'NOT RUN',nativeHTTPTransport:'NOT RUN'}));
 }finally{
- if(server&&server.exitCode===null){const stopped=once(server,'exit');server.kill('SIGTERM');await stopped;}
- await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();if(scratch)await rm(scratch,{recursive:true,force:true});console.log(JSON.stringify({cleanup:'PASS',databaseRemoved:true,localHTTPStopped:!!server}));
+ const hadServer=!!server;await stopHTTP();
+ await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();if(scratch)await rm(scratch,{recursive:true,force:true});console.log(JSON.stringify({cleanup:'PASS',databaseRemoved:true,localHTTPStopped:hadServer}));
 }
