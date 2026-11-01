@@ -1,0 +1,11 @@
+{
+  "product": "topup",
+  "productId": "6829266772",
+  "screenshotId": "c17b5aaa-16d8-42fd-a75b-3e6c001a610a",
+  "status": "COMPLETE",
+  "sourceSHA256": "d1c28aef8ad2d803258e84b21c88258c920721098ae27df6f3f33102512a985c",
+  "nativeVersion": "0.11.0",
+  "nativeBuild": "36",
+  "capture": "Physical iPhone; normal native StoreKit offer; no purchase initiated",
+  "observedAt": "2026-11-01T04:40:42.842Z"
+}

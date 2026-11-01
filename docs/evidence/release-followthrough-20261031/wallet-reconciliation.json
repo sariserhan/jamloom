@@ -20,5 +20,5 @@
     "Spending and trials stay blocked; live and test wallets stay isolated"
   ],
   "deployed": "NOT RUN",
-  "actualRenewalNotification": "NOT RECEIVED"
+  "actualRenewalNotification": "PASS independent signature and disposable ledger replay; deployed delivery unsuccessful"
 }

@@ -23,12 +23,18 @@ final class PurchaseReviewTests: XCTestCase {
             let shot = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); shot.name = "Singing Academy actual StoreKit offer"; shot.lifetime = .keepAlways; add(shot)
         } else {
             let creator = app.buttons["purchase-com.jamloom.creator.monthly"], topup = app.buttons["purchase-com.jamloom.credits.topup150"]
+            // Form creates off-screen rows lazily; scroll before asserting they exist.
+            for _ in 0..<8 { if creator.exists && topup.exists && creator.isHittable && topup.isHittable { break }; app.swipeUp() }
             XCTAssertTrue(creator.waitForExistence(timeout: 30)); XCTAssertTrue(topup.exists)
-            for _ in 0..<8 { if creator.isHittable && topup.isHittable { break }; app.swipeUp() }
             XCTAssertTrue(creator.isHittable); XCTAssertTrue(topup.isHittable)
             XCTAssertTrue(creator.label.contains("15")); XCTAssertTrue(topup.label.contains("10"))
             let shot = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); shot.name = "Creator and topup actual StoreKit offers"; shot.lifetime = .keepAlways; add(shot)
         }
         // This captures the normal offer UI. It never taps a purchase or refund.
+        if env["JAMLOOM_REVIEW_NATIVE_CAPTURE"] == "1" {
+            // CoreDevice captures the physical 1179-pixel screen; XCTest rounds it to 1178.
+            print("JAMLOOM_REVIEW_CAPTURE_READY")
+            Thread.sleep(forTimeInterval: 25)
+        }
     }
 }

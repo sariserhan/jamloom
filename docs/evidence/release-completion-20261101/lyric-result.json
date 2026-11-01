@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "cleanup": "PASS",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
+  "sourceCommit": "e8d54bf39139ddf9fcc59c2df1b89b0ab33d2e03",
+  "durationSeconds": 100,
+  "executionMs": 128232,
+  "delayMs": 8220,
+  "requestEstimateUSD": 0.05014,
+  "requestEstimateIsProviderInvoice": false,
+  "chargedTestCredits": 20,
+  "reservedTestCredits": 0,
+  "workerImagePreparationSeconds": 1328,
+  "privateSourceSHA256": "093083ed712ee11aae4f844453234efbaf4a965dc9dd1eecd6b94995b1ad6577"
+}

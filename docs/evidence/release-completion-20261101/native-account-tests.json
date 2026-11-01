@@ -1,0 +1,49 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64e",
+        "deviceId" : "00008120-001E28663CE3C01E",
+        "deviceName" : "Ssari phone",
+        "modelName" : "iPhone 14 Pro",
+        "osBuildNumber" : "24A446",
+        "osVersion" : "27.0.1",
+        "platform" : "iOS"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 0,
+      "passedTests" : 21,
+      "skippedTests" : 2,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "JamloomAppleSandbox · Built with macOS 26.7.1",
+  "expectedFailures" : 0,
+  "failedTests" : 0,
+  "finishTime" : 1793507365.832,
+  "passedTests" : 21,
+  "result" : "Passed",
+  "runtimeWarnings" : [
+
+  ],
+  "skippedTests" : 2,
+  "startTime" : 1793507357.79,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+
+  ],
+  "title" : "Test - JamloomAppleSandbox",
+  "topInsights" : [
+    {
+      "category" : "Longest Test Runs",
+      "impact" : "47% of duration",
+      "text" : "1 longest test run with outlier durations exceeding 0.13s (three standard deviations)"
+    }
+  ],
+  "totalTestCount" : 23
+}

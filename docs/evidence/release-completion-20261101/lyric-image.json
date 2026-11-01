@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "workflow": {
+    "conclusion": "success",
+    "headSha": "e8d54bf39139ddf9fcc59c2df1b89b0ab33d2e03",
+    "status": "completed",
+    "url": "https://github.com/sariserhan/jamloom/actions/runs/41270805492"
+  },
+  "sourceCommit": "e8d54bf39139ddf9fcc59c2df1b89b0ab33d2e03",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
+  "platform": "linux/amd64",
+  "registryTagDigestVerified": true,
+  "configDigestVerified": true,
+  "layerCount": 23,
+  "imageLayersDownloaded": false
+}

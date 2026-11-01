@@ -1,4 +1,5 @@
 import {readBody} from './audio-validation';
+import {CLOUD_COST_PROFILE,assertProductionEndpoint} from './cloud-production-profile';
 
 const states=['IN_QUEUE','IN_PROGRESS','COMPLETED','FAILED','CANCELLED','TIMED_OUT'] as const;
 export type RunpodState=typeof states[number];
@@ -12,8 +13,9 @@ export type RunpodResult={id:string;status:RunpodState;output?:Record<string,unk
 export class RunpodMissingJob extends Error{constructor(){super('Provider job is no longer available');}}
 
 export class RunpodProvider{
- constructor(private key:string,readonly endpoint:string,private request:typeof fetch=fetch){
+ constructor(private key:string,readonly endpoint:string,private request:typeof fetch=fetch,private productionProfile?:string){
   if(!key.trim()||! /^[a-zA-Z0-9_-]{1,80}$/.test(endpoint))throw Error('Runpod configuration is incomplete');
+  if(productionProfile&&productionProfile!==CLOUD_COST_PROFILE)throw Error('Unknown song cost profile');
  }
  private async api(path:string,method='GET',body?:unknown){
   try{
@@ -31,7 +33,13 @@ export class RunpodProvider{
   if(!response.ok){await response.body?.cancel();throw Error('Song capacity could not be checked');}
   const value=JSON.parse((await readBody(response.body,16*1024*1024)).toString());
   if(value?.id!==this.endpoint||!Number.isSafeInteger(value.workers?.max)||value.workers.max<0)throw Error('Invalid song capacity receipt');
-  return value.workers.max>0;
+  if(value.workers.max===0)return false;
+  if(this.productionProfile){
+   const catalog=await this.request('https://api.runpod.io/v2/catalog/gpus',{headers:{Authorization:`Bearer ${this.key}`},redirect:'error',signal:AbortSignal.timeout(15000)});
+   if(!catalog.ok){await catalog.body?.cancel();throw Error('Song hardware pricing could not be checked');}
+   assertProductionEndpoint(value,JSON.parse((await readBody(catalog.body,1024*1024)).toString()));
+  }
+  return true;
  }
  async submit(job:RunpodJob):Promise<RunpodResult>{
   if(!/^[a-f0-9]{32}$/.test(job.id)||!['music-dna','improvise'].includes(job.product)||

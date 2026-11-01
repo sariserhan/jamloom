@@ -1,0 +1,11 @@
+{
+  "version": "0.11.0",
+  "build": "36",
+  "archive": "build-ios-store/Jamloom-0.11.0-36.xcarchive",
+  "ipaSHA256": "23695a85cf61056a83a52c1fe9b01e9656dc26511ff5dce91863fb021582cb0b",
+  "upload": "PASS",
+  "uploadedAt": "2026-11-01T04:42:48Z",
+  "appleProcessing": "PENDING",
+  "submitted": false,
+  "automaticRelease": false
+}

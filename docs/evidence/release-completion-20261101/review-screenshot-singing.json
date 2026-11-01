@@ -1,0 +1,11 @@
+{
+  "product": "singing",
+  "productId": "6827398987",
+  "screenshotId": "15fcd2d0-c4fe-420a-90b2-acfafb1cfdc4",
+  "status": "COMPLETE",
+  "sourceSHA256": "e2d79923cbf60d9bf8ac7223f53d5b4f8e3ae1036180f7853c218ea94764cc81",
+  "nativeVersion": "0.11.0",
+  "nativeBuild": "36",
+  "capture": "Physical iPhone; normal native StoreKit offer; no purchase initiated",
+  "observedAt": "2026-11-01T04:41:24.122Z"
+}

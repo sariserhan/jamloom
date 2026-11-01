@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import {readConfig} from './lib/config';
 import {cachedSiteSettings} from './lib/site-settings';
 import {isAdmin} from './lib/admin-access';
+import {appleReviewAccount} from './lib/apple-review';
+import {reviewSongPath} from './lib/cloud-review-config';
 import {comingSoonEnabled,comingSoonRecovery,comingSoonResponse,publicSongRead} from './lib/coming-soon';
 
 export async function proxy(request: NextRequest) {
@@ -10,7 +12,7 @@ export async function proxy(request: NextRequest) {
   let configured=false;try{readConfig();configured=true;}catch{}
   let launchBypass=false;
   if(comingSoonEnabled()&&!comingSoonRecovery(path)&&!publicSongRead(request)){
-    try{if(configured&&request.headers.has('cookie')){const {services}=await import('./lib/services');const session=await services().auth.api.getSession({headers:request.headers});launchBypass=isAdmin(session?.user);}}catch{/* Unavailable authentication never opens the preview. */}
+    try{if(configured&&request.headers.has('cookie')){const {services}=await import('./lib/services');const session=await services().auth.api.getSession({headers:request.headers});launchBypass=isAdmin(session?.user)||!!(session?.user.emailVerified&&reviewSongPath(path)&&appleReviewAccount(session.user.id));}}catch{/* Unavailable authentication never opens the preview. */}
     if(!launchBypass)return comingSoonResponse(request);
   }
   if(!recovery&&configured){

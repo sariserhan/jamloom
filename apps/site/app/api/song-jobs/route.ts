@@ -4,6 +4,8 @@ export async function GET(request:Request){
  const secret=process.env.CRON_SECRET;
  if(!secret||secret.length<32)return new Response(null,{status:503});
  if(request.headers.get('authorization')!==`Bearer ${secret}`)return new Response(null,{status:401});
- try{const result=await Promise.all((['music-dna','improvise'] as const).map(product=>hostedSongs(product)?.sweep()));return Response.json({result});}
+ // Retain the review allowance configuration after disabling new work, until
+ // outstanding test jobs are cancelled/settled and their temporary data is gone.
+ try{const result=await Promise.all((['music-dna','improvise'] as const).flatMap(product=>[hostedSongs(product)?.sweep(),hostedSongs(product,true)?.sweep()]));return Response.json({result});}
  catch{return Response.json({error:'Song recovery pending'},{status:503});}
 }

@@ -1,5 +1,5 @@
 {
-  "status": "IMAGE_BUILD_RUNNING",
+  "status": "CONSUMED",
   "preparedAt": "2026-11-01T03:50:13.593834+00:00",
   "scope": "Publish the isolated lyric-section repair, then one German Jazz diagnostic on L4 using the failed fixture seed",
   "imageSourceCommit": "e8d54bf39139ddf9fcc59c2df1b89b0ab33d2e03",
@@ -87,5 +87,11 @@
     "url": "https://github.com/sariserhan/jamloom/actions/runs/41270805492",
     "sourcePushed": true,
     "providerRequestsStarted": 0
-  }
+  },
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
+  "startedAt": "2026-11-01T04:09:38.649998+00:00",
+  "processExit": 0,
+  "evidence": [
+    "docs/evidence/dna-completion/cloud/2026-11-01T04-09-38.857Z/trial-result.json"
+  ]
 }

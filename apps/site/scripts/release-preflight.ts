@@ -22,8 +22,8 @@ export function releaseConfiguration(env:Record<string,string|undefined>){
  const proConfigured=valid(()=>proBilling(env,'live'));
  const creditEnv={...env,CREDIT_BILLING_MODE:'live'};
  const creditsConfigured=valid(()=>creditBilling(creditEnv));
- let cloudCostCapMicros:number|null=null;try{cloudCostCapMicros=cloudSongConfig({...env,JAMLOOM_CLOUD_SONGS_ENABLED:'true'})?.costCapMicros??null;}catch{}
  const cloudPriceCompatibility=(['improvise','music-dna'] as const).map(product=>{
+  let cloudCostCapMicros:number|null=null;try{cloudCostCapMicros=cloudSongConfig({...env,JAMLOOM_CLOUD_SONGS_ENABLED:'true'},product)?.costCapMicros??null;}catch{}
   const credits=songCreditPrice(product).credits,budgetMicros=Math.floor(credits*NET_MICROS_PER_CREDIT_FLOOR*(10000-TARGET_MARGIN_BPS)/10000);
   return {product,credits,budgetMicros,costCapMicros:cloudCostCapMicros,status:cloudCostCapMicros===null?'NOT_CONFIGURED':cloudCostCapMicros<=budgetMicros?'PASS_CAP_ONLY':'FAIL_CAP'};
  });
@@ -31,7 +31,7 @@ export function releaseConfiguration(env:Record<string,string|undefined>){
   accountConfigured:valid(()=>readConfig(env)),libraryStorageConfigured:valid(()=>audioStore(readConfig(env),env)),
   djRecordingStorageConfigured:valid(()=>djSessionStore(env)),
   cloudPriceCompatibility,
-  cloudSongsEnabled:env.JAMLOOM_CLOUD_SONGS_ENABLED==='true',cloudSongConfigValid:valid(()=>!env.JAMLOOM_CLOUD_SONGS_ENABLED||env.JAMLOOM_CLOUD_SONGS_ENABLED==='false'||cloudSongConfig(env)),
+  cloudSongsEnabled:env.JAMLOOM_CLOUD_SONGS_ENABLED==='true',cloudSongConfigValid:valid(()=>!env.JAMLOOM_CLOUD_SONGS_ENABLED||env.JAMLOOM_CLOUD_SONGS_ENABLED==='false'||(['improvise','music-dna'] as const).every(p=>cloudSongConfig(env,p))),
   djBillingModeValid:valid(()=>{djBillingLive(env);return true;}),djInvitationsEnabled:env.JAMLOOM_AI_DJ_BETA_ENABLED==='true',
   academy:billingReadiness('live',env),singing:billingReadiness('live',env,'singing-complete'),
   pro:{mode:'live',configured:proConfigured,checkoutEnabled:proConfigured&&proBilling(env,'live').enabled,

@@ -38,10 +38,16 @@ export function checkImproviseArrangement(value:unknown,sourceSha:string,audioSh
  if(total>6*48000)throw new AudioError('Your recording could not be blended into this song.',422);
 }
 export class CloudSongs{
- constructor(readonly commerce:DnaCommerce,readonly config:CloudSongConfig,readonly provider:Pick<RunpodProvider,'submit'|'status'|'cancel'|'health'|'dispatchEnabled'>=new RunpodProvider(config.key,config.endpoint)){
+ constructor(readonly commerce:DnaCommerce,readonly config:CloudSongConfig,readonly provider:Pick<RunpodProvider,'submit'|'status'|'cancel'|'health'|'dispatchEnabled'>=new RunpodProvider(config.key,config.endpoint,fetch,config.productionProfile)){
   if(!commerce.store)throw Error('Song storage is required');
+  if(config.review&&(config.live||commerce.options.live))throw Error('Review generation requires its isolated test ledger');
+ }
+ assertNewRequestAllowed(owner:string){
+  const review=this.config.review;
+  if(review&&(!review.enabled||review.expiresAt<=Date.now()||!review.owners.includes(owner)))throw new AudioError('This review generation allowance is unavailable.',503);
  }
  async upload(owner:string,value:Record<string,unknown>){
+  this.assertNewRequestAllowed(owner);
   const {bytes,sha256}=sourceReceipt(value),id=randomUUID().replaceAll('-',''),key=`uploads/${randomUUID()}.wav`;
   // Limit abandoned upload grants per account without reading or accepting arbitrary object keys.
   const count=await this.commerce.pool.query("SELECT count(*)::int AS n FROM song_uploads WHERE owner_id=$1 AND created_at>now()-interval '1 day'",[owner]);
@@ -64,6 +70,8 @@ export class CloudSongs{
    if(prior.owner_id!==owner||prior.visibility!==visibility||!isDeepStrictEqual(prior.profile,input))throw new AudioError('This request belongs to different song choices.',409);
    return {id,state:prior.state};
   }
+  this.assertNewRequestAllowed(owner);
+  if(this.config.review&&visibility!=='private')throw new AudioError('Review generations must stay private.');
   let source:any;
   if(this.commerce.product==='improvise'){
    source=(await this.commerce.pool.query('SELECT * FROM song_uploads WHERE id=$1 AND owner_id=$2 AND expires_at>now()',[(input as {sourceId:string}).sourceId,owner])).rows[0];
@@ -78,6 +86,13 @@ export class CloudSongs{
   }
   await this.commerce.submit(owner,id,input,visibility,token,async db=>{
    await db.query("SELECT pg_advisory_xact_lock(hashtextextended('jamloom-cloud-daily-cap',0))");
+   if(this.config.review){
+    this.assertNewRequestAllowed(owner);
+    const review=this.config.review;
+    const spent=(await db.query(`SELECT COALESCE(sum(d.cost_cap_micros),0) AS n FROM cloud_song_runs c
+     JOIN dna_song_jobs d ON d.id=c.id WHERE NOT d.billing_live AND d.owner_id=ANY($1::text[])`,[review.owners])).rows[0];
+    if(Number(spent.n)+this.config.costCapMicros>review.capMicros)throw new AudioError('The operator-funded review allowance is used up. Your credits have not been used.',429);
+   }
    const total=(await db.query("SELECT COALESCE(sum(d.cost_cap_micros),0) AS n FROM cloud_song_runs c JOIN dna_song_jobs d ON d.id=c.id WHERE d.created_at>now()-interval '24 hours'")).rows[0];
    if(Number(total.n)+this.config.costCapMicros>this.config.dailyMicros)throw new AudioError('We’ve reached today’s song limit. Your credits haven’t been used. Please try again later.',429);
    if(this.commerce.product==='improvise'){
@@ -114,7 +129,9 @@ export class CloudSongs{
    let row=await this.commerce.row(id);if(!row)return;
    if(terminal(row.state)){await this.cleanup(run);return;}
    const suspended=(await pool.query('SELECT u.suspended,w.frozen FROM "user" u JOIN credit_wallets w ON w.owner_id=u.id WHERE u.id=$1',[row.owner_id])).rows[0];
-   const stop=run.cancel_requested||suspended?.suspended||suspended?.frozen||Date.now()>=new Date(run.deadline).getTime();
+   const review=this.config.review;
+   const stop=run.cancel_requested||suspended?.suspended||suspended?.frozen||Date.now()>=new Date(run.deadline).getTime()||
+    review&&(!review.enabled||review.expiresAt<=Date.now()||!review.owners.includes(row.owner_id));
    if(!run.provider_id){
     if(run.submitted_at){
      // A lost POST may have incurred spend. Never submit it again or free its source while it may still run.

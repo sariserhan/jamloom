@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-11-01T04:41:28.391Z",
+  "operation": "GET only",
+  "versions": [
+    {
+      "version": "0.10.2",
+      "state": "PREPARE_FOR_SUBMISSION",
+      "releaseType": "MANUAL"
+    }
+  ],
+  "products": [
+    {
+      "product": "com.jamloom.credits.topup150",
+      "state": "READY_TO_SUBMIT"
+    },
+    {
+      "product": "com.jamloom.creator.monthly",
+      "state": "MISSING_METADATA"
+    }
+  ],
+  "reviewScreenshots": [
+    {
+      "present": true,
+      "error": false
+    },
+    {
+      "present": true,
+      "error": false
+    }
+  ],
+  "mutations": false
+}

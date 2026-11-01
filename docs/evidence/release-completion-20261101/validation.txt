@@ -1,0 +1,5 @@
+PASS 194 site unit checks; typecheck.
+PASS 21 focused production/review/database checks; no skips.
+PASS physical purchase UI: credits 1/0; singing 1/0.
+PASS direct device captures 1179x2556 accepted for all three products.
+Earlier capture-only attempts failed: notification interruption, then overlapping test sessions; original independent credits test and final independent singing test pass. No purchase was tapped.

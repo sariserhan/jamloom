@@ -1,0 +1,26 @@
+{
+  "observedAt": "2026-11-01T04:31:17.977Z",
+  "chargesEnabled": true,
+  "payoutsEnabled": true,
+  "requirements": {},
+  "taxStatus": "active",
+  "creatorProductActive": false,
+  "creatorPriceActive": false,
+  "webhook": {
+    "id": "we_1UWfqYDlEXWDEeHOuJRHbAos",
+    "url": "https://www.jamloom.com/api/payments/stripe?catalog=2026-10-31-v2",
+    "status": "disabled",
+    "events": [
+      "checkout.session.completed",
+      "checkout.session.async_payment_succeeded",
+      "invoice.paid",
+      "invoice.payment_failed",
+      "customer.subscription.created",
+      "customer.subscription.updated",
+      "customer.subscription.deleted",
+      "charge.refunded",
+      "charge.dispute.created"
+    ],
+    "apiVersion": "2026-09-30.endive"
+  }
+}
