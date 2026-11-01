@@ -1,3 +1,4 @@
+import {checkedDnaStyle} from './dna-style';
 import {MAX_TASTE_BYTES} from './taste-limits';
 import {MAX_SONG_BYTES} from './song-duration';
 import {randomInt,createHash} from 'node:crypto';
@@ -45,7 +46,7 @@ async function songFiles(root:string,id:string){
   const status=JSON.parse(await readFile(join(work,'status.json'),'utf8'));
   const inputBytes=await readFile(join(work,'input.json'));
   const input=JSON.parse(inputBytes.toString());
-  let plan,planBytes:Buffer|undefined,fit;
+  let plan,planBytes:Buffer|undefined,fit,styleMatch;
   try{planBytes=await readFile(join(work,'plan.json'));plan=JSON.parse(planBytes.toString());}catch{}
   const legacy=!input.direction&&!plan?.input_sha256;
   if(status.state==='completed'&&!legacy){
@@ -54,14 +55,15 @@ async function songFiles(root:string,id:string){
    const receipt=JSON.parse(await readFile(join(work,'singer/complete.json'),'utf8'));
    const audioPath=join(work,'singer/singer.wav');
    if((await stat(audioPath)).size>MAX_SONG_BYTES)throw Error('Invalid output');
-   if(!planBytes||!plan||fit?.accepted!==true||fit.target!==input.direction?.id||JSON.stringify(plan.direction)!==JSON.stringify(input.direction)||
+   try{styleMatch=checkedDnaStyle(fit,receipt.audio_sha256,input.direction?.id);}catch{}
+   if(!planBytes||!plan||!styleMatch||fit.target!==input.direction?.id||JSON.stringify(plan.direction)!==JSON.stringify(input.direction)||
       plan.input_sha256!==sha(inputBytes)||fit.input_sha256!==sha(inputBytes)||fit.plan_sha256!==sha(planBytes)||receipt.plan_sha256!==sha(planBytes)||
       fit.audio_sha256!==receipt.audio_sha256||fit.audio_sha256!==sha(await readFile(audioPath))){
     const message='This song could not be matched to its saved favorites. Your list is safe; please make another take.';
     status.state='rejected';status.message=message;
    }
   }
- return {status,input,plan,fit,legacy};
+ return {status,input,plan:status.state==='completed'&&styleMatch?{...plan,styleMatch}:plan,fit,legacy,styleMatch};
 }
 export async function dnaSong(request:Request,context?:DnaContext){
  if(context?.readOnly)return json({error:unavailable},503);
@@ -213,7 +215,7 @@ export async function dnaSong(request:Request,context?:DnaContext){
    return json({error:'Unknown file.'},404);
   }
   const publicPlan=plan?{title:plan.title,language:plan.language,cases:plan.cases?.map((c:{lyrics:string;voice:string;bpm:number})=>({lyrics:c.lyrics,voice:c.voice,bpm:c.bpm}))}:undefined;
-  return json({...status,id,plan:example||owns?plan:publicPlan,...(example||owns?{profile:input.profile}:{}),direction:example||owns?input.direction:{id:input.direction?.id,label:input.direction?.label},legacy,styleChecked:!legacy&&status.state==='completed'&&fit?.accepted===true,visibility:record?.visibility,withdrawn:!!record?.withdrawn_at,owned:owns});
+  return json({...status,id,plan:example||owns?plan:publicPlan,...(example||owns?{profile:input.profile}:{}),direction:example||owns?input.direction:{id:input.direction?.id,label:input.direction?.label},legacy,styleChecked:!legacy&&status.state==='completed'&&!!result.styleMatch,...(status.state==='completed'?{styleMatch:result.styleMatch}:{}),visibility:record?.visibility,withdrawn:!!record?.withdrawn_at,owned:owns});
  }catch(error){
   if(error instanceof AudioError)return json({error:error.message},error.status);
   if(error instanceof Error&&/Insufficient credits|Quote changed|Changed quote|Invalid quote|One active job|frozen|suspended/.test(error.message))return json({error:error.message},409);

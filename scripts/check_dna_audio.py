@@ -97,7 +97,7 @@ def check(work):
     if plan['direction'] != direction or plan.get('input_sha256') != hashes['input_sha256'] or any(receipt.get(key) != hashes[key] for key in ('plan_sha256','audio_sha256')):
         raise ValueError('Song evidence does not belong to its saved favorites')
     report = {**assess(score_audio(work/'singer/singer.wav'), direction['id']), **hashes,
-              'model_revision': MANIFEST['revision'], 'direction_version': POLICY['version'], 'screen_version': 1}
+              'model_revision': MANIFEST['revision'], 'direction_version': POLICY['version'], 'screen_version': 1, 'technical': 'PASS', 'delivery_policy': 'style-guidance-v1'}
     report=apply_style_review(report)
     with (work/'fit.json').open('x') as output:json.dump(report, output, indent=2)
     return report

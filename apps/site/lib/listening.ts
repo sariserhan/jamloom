@@ -1,4 +1,4 @@
-export type ListeningTrack={id:string;title:string;artist:string;url?:string;href?:string;kind?:string;mood?:string;language?:string;created?:string};
+export type ListeningTrack={id:string;title:string;artist:string;url?:string;href?:string;kind?:string;mood?:string;language?:string;styleMatch?:string;created?:string};
 export function audioURL(track:ListeningTrack){
  const url=track.url;
  if(url&&(/^\/api\/(taste|improvise)\/song\?id=[a-f0-9]{32}&file=audio$/.test(url)||/^\/api\/ai-dj\/sets\/[a-f0-9]{32}\/audio$/.test(url)||/^\/api\/aurowall\/[a-f0-9]{24}$/.test(url)))return url;

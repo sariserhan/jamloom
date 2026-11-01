@@ -1,3 +1,4 @@
+import {checkedDnaStyle} from './dna-style';
 import {createHash} from 'node:crypto';
 import {isDeepStrictEqual} from 'node:util';
 import type {Pool} from 'pg';
@@ -16,9 +17,10 @@ export async function hostedTrainingSnapshot(pool:Pool,live=true){
   try{
    const feedback=validateFeedback(row.feedback),output=row.provider_receipt?.output;
    if(feedback.rating!=='like'){negative++;continue;}
+   const expectedPlan=row.song_plan?.styleMatch===undefined?output?.plan:{...output?.plan,styleMatch:checkedDnaStyle(output?.fit,row.audio_sha256,output?.plan?.direction?.id)};
    if(row.provider_receipt?.status!=='COMPLETED'||output?.id!==row.id||output?.product!=='music-dna'||
     output.fit?.accepted!==true||output.audio_sha256!==row.audio_sha256||output.fit.audio_sha256!==row.audio_sha256||
-    !/^[a-f0-9]{64}$/.test(row.audio_sha256)||!isDeepStrictEqual(output.plan,row.song_plan)||
+    !/^[a-f0-9]{64}$/.test(row.audio_sha256)||!isDeepStrictEqual(expectedPlan,row.song_plan)||
     !Array.isArray(row.profile?.references)||!row.profile.references.length)throw Error('Unverified song');
    const names=[...new Set<string>(row.profile.references.map((name:string)=>name.normalize('NFKC').trim().toLowerCase()))].sort((a,b)=>Buffer.compare(Buffer.from(a),Buffer.from(b)));
    const group=createHash('sha256').update('['+names.map(name=>JSON.stringify(name)).join(', ')+']').digest('hex');

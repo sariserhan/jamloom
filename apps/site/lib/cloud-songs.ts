@@ -1,3 +1,4 @@
+import {checkedDnaStyle} from './dna-style';
 import {songDurations,savedSongDuration,MAX_SONG_BYTES} from './song-duration';
 import {improviseDirection} from './improvise-direction';
 import {cloudPersonalFeedback} from './cloud-song-feedback';
@@ -179,14 +180,15 @@ export class CloudSongs{
    try{if(validateWav(audio,Number(output.audio_bytes),output.audio_sha256,MAX_SONG_BYTES)!==seconds*1000)throw Error();}
    catch{throw new AudioError('The finished song could not be verified.',422);}
    const plan=output.plan as any,fit=output.fit as any;
-   if(this.commerce.product==='music-dna'&&(fit?.accepted!==true||fit.audio_sha256!==output.audio_sha256||fit.target!==musicDirection(row.profile)?.id||typeof plan?.title!=='string'||!plan.title.trim()||plan.title.length>100||!Array.isArray(plan.cases)||plan.cases.length!==1||(run.payload.duration_seconds!==undefined&&plan.cases[0]?.duration!==seconds)||typeof plan.cases[0]?.lyrics!=='string'||!plan.cases[0].lyrics.trim()||plan.cases[0].lyrics.length>4000))throw new AudioError('This song did not match your musical direction.',422);
+   const styleMatch=this.commerce.product==='music-dna'?checkedDnaStyle(fit,output.audio_sha256,musicDirection(row.profile)!.id):undefined;
+   if(this.commerce.product==='music-dna'&&(typeof plan?.title!=='string'||!plan.title.trim()||plan.title.length>100||!Array.isArray(plan.cases)||plan.cases.length!==1||(run.payload.duration_seconds!==undefined&&plan.cases[0]?.duration!==seconds)||typeof plan.cases[0]?.lyrics!=='string'||!plan.cases[0].lyrics.trim()||plan.cases[0].lyrics.length>4000))throw new AudioError('This song did not match your musical direction.',422);
    if(this.commerce.product==='improvise'&&(typeof output.lyrics!=='string'||!output.lyrics.trim()||output.lyrics.length>8000||!output.arrangement||typeof output.arrangement!=='object'))throw new AudioError('The finished song could not be verified.',422);
    if(this.commerce.product==='improvise'){
     const source=(await pool.query('SELECT sha256 FROM song_uploads WHERE id=$1',[run.source_id])).rows[0];
     if(!source)throw new AudioError('The recording could not be verified.',422);
     checkImproviseArrangement(output.arrangement,source.sha256,output.audio_sha256,seconds,run.payload);
    }
-   const savedPlan=this.commerce.product==='music-dna'?plan:{title:'Your new song',language:{code:'auto',label:'Automatic'},cases:[{lyrics:output.lyrics??'',duration:seconds}],arrangement:output.arrangement};
+   const savedPlan=this.commerce.product==='music-dna'?{...plan,styleMatch}:{title:'Your new song',language:{code:'auto',label:'Automatic'},cases:[{lyrics:output.lyrics??'',duration:seconds}],arrangement:output.arrangement};
    await this.commerce.finish(id,'completed',{title:String(savedPlan.title).slice(0,120),language:savedPlan.language?.code??'en',direction:this.commerce.product==='music-dna'?musicDirection(row.profile)!.label:styles[run.payload.genre as keyof typeof styles]??String(row.profile.genre),audio,plan:savedPlan},estimate);
    await this.cleanup(run);
   }catch(error){

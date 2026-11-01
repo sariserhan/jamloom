@@ -1,0 +1,192 @@
+TAP version 13
+# Subtest: cloud song configuration is opt-in and requires a bounded rate
+ok 1 - cloud song configuration is opt-in and requires a bounded rate
+  ---
+  duration_ms: 0.595125
+  type: 'test'
+  ...
+# Subtest: Improvise receipts require a bounded audible use of this recording and this output
+ok 2 - Improvise receipts require a bounded audible use of this recording and this output
+  ---
+  duration_ms: 0.184083
+  type: 'test'
+  ...
+# Subtest: real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+    # Subtest: operator-funded review is atomic, finite, private and stops after disable or expiry
+    ok 1 - operator-funded review is atomic, finite, private and stops after disable or expiry
+      ---
+      duration_ms: 24.5415
+      type: 'test'
+      ...
+    # Subtest: Improvise omission or mismatched recording refunds; valid loops settle once
+    ok 2 - Improvise omission or mismatched recording refunds; valid loops settle once
+      ---
+      duration_ms: 466.228333
+      type: 'test'
+      ...
+    # Subtest: Improvise variety survives concurrent submissions, restart and duplicate requests
+    ok 3 - Improvise variety survives concurrent submissions, restart and duplicate requests
+      ---
+      duration_ms: 296.376125
+      type: 'test'
+      ...
+    # Subtest: one request is reserved and dispatched once under duplicate concurrent calls
+    ok 4 - one request is reserved and dispatched once under duplicate concurrent calls
+      ---
+      duration_ms: 26.460709
+      type: 'test'
+      ...
+    # Subtest: several users queue independently; cancellation refunds while other songs continue
+    ok 5 - several users queue independently; cancellation refunds while other songs continue
+      ---
+      duration_ms: 589.940584
+      type: 'test'
+      ...
+    # Subtest: duration boundaries settle once and a mismatched saved length refunds
+    ok 6 - duration boundaries settle once and a mismatched saved length refunds
+      ---
+      duration_ms: 806.645125
+      type: 'test'
+      ...
+    # Subtest: restart after output storage failure uses persisted receipt and charges only once
+    ok 7 - restart after output storage failure uses persisted receipt and charges only once
+      ---
+      duration_ms: 421.52725
+      type: 'test'
+      ...
+    # Subtest: saved descriptions reach the next worker only for their owner
+    ok 8 - saved descriptions reach the next worker only for their owner
+      ---
+      duration_ms: 314.342667
+      type: 'test'
+      ...
+    # Subtest: uncertain style delivers once with a public note; technical failure refunds
+    ok 9 - uncertain style delivers once with a public note; technical failure refunds
+      ---
+      duration_ms: 541.942334
+      type: 'test'
+      ...
+    # Subtest: failed jobs refund all credits and invalid completed output cannot become public
+    ok 10 - failed jobs refund all credits and invalid completed output cannot become public
+      ---
+      duration_ms: 246.316625
+      type: 'test'
+      ...
+    # Subtest: website input, feedback ownership, personalization and consent withdrawal
+    ok 11 - website input, feedback ownership, personalization and consent withdrawal
+      ---
+      duration_ms: 263.083
+      type: 'test'
+      ...
+    # Subtest: disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+    ok 12 - disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+      ---
+      duration_ms: 15.106542
+      type: 'test'
+      ...
+    # Subtest: lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+    ok 13 - lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+      ---
+      duration_ms: 7.225958
+      type: 'test'
+      ...
+    # Subtest: missing provider receipt refunds only after the full provider TTL and a quiet queue
+    ok 14 - missing provider receipt refunds only after the full provider TTL and a quiet queue
+      ---
+      duration_ms: 7.337416
+      type: 'test'
+      ...
+    # Subtest: test credit lots cannot fund live requests or inflate live balances
+    ok 15 - test credit lots cannot fund live requests or inflate live balances
+      ---
+      duration_ms: 2.831917
+      type: 'test'
+      ...
+    # Subtest: recovery rotates ambiguous jobs and releases credits after persistent storage failure
+    ok 16 - recovery rotates ambiguous jobs and releases credits after persistent storage failure
+      ---
+      duration_ms: 297.079958
+      type: 'test'
+      ...
+    1..16
+ok 3 - real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+  ---
+  duration_ms: 4577.987625
+  type: 'test'
+  ...
+# Subtest: DNA requires explicit visibility and public-sharing permission
+ok 4 - DNA requires explicit visibility and public-sharing permission
+  ---
+  duration_ms: 0.432875
+  type: 'test'
+  ...
+# Subtest: real Postgres Music DNA credits, privacy, idempotence, failure and recovery
+    # Subtest: whole playlist account profiles persist all Unicode favorites privately
+    ok 1 - whole playlist account profiles persist all Unicode favorites privately
+      ---
+      duration_ms: 15.582042
+      type: 'test'
+      ...
+    # Subtest: song descriptions survive restart and stay bound to owner, billing environment and favorites
+    ok 2 - song descriptions survive restart and stay bound to owner, billing environment and favorites
+      ---
+      duration_ms: 68.989791
+      type: 'test'
+      ...
+    # Subtest: price, atomic reservation and duplicate request binding
+    ok 3 - price, atomic reservation and duplicate request binding
+      ---
+      duration_ms: 14.914291
+      type: 'test'
+      ...
+    # Subtest: private audio and notes are owner-only, with fixed catalog price charged once
+    ok 4 - private audio and notes are owner-only, with fixed catalog price charged once
+      ---
+      duration_ms: 24.404333
+      type: 'test'
+      ...
+    # Subtest: public success enters the feed, without favorites or identities; withdrawal removes access
+    ok 5 - public success enters the feed, without favorites or identities; withdrawal removes access
+      ---
+      duration_ms: 15.990541
+      type: 'test'
+      ...
+    # Subtest: failure refunds all held credits and never publishes; anonymous generation is denied
+    ok 6 - failure refunds all held credits and never publishes; anonymous generation is denied
+      ---
+      duration_ms: 7.37675
+      type: 'test'
+      ...
+    # Subtest: interrupted startup and missing worker files recover without stranded credits
+    ok 7 - interrupted startup and missing worker files recover without stranded credits
+      ---
+      duration_ms: 13.390041
+      type: 'test'
+      ...
+    # Subtest: cloud storage failure holds completion; durable private/public songs survive without renderer files
+    ok 8 - cloud storage failure holds completion; durable private/public songs survive without renderer files
+      ---
+      duration_ms: 23.341958
+      type: 'test'
+      ...
+    # Subtest: gallery filters cover all pages without exposing private, withdrawn or other-product metadata
+    ok 9 - gallery filters cover all pages without exposing private, withdrawn or other-product metadata
+      ---
+      duration_ms: 92.458667
+      type: 'test'
+      ...
+    1..9
+ok 5 - real Postgres Music DNA credits, privacy, idempotence, failure and recovery
+  ---
+  duration_ms: 403.950583
+  type: 'test'
+  ...
+1..5
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5487.478666

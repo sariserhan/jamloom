@@ -100,10 +100,17 @@ private final class AccountProtocol: URLProtocol {
     }
 
     func testLanguageNamesFromLegacyExamplesUseSameFilterCodes() {
-        for (raw, code) in [("English", "en"), (" Turkish ", "tr"), ("tr", "tr"), ("zh", "zh"), ("", "")] {
+        for (raw, code) in [("English", "en"), (" Turkish ", "tr"), ("tr", "tr"), ("zh", "zh"), ("", "und"), ("auto", "und"), ("Instrumental", "zxx")] {
             let song = LibrarySong(id: String(repeating: "a", count: 32), title: "Example", language: raw, direction: nil, product: nil, visibility: nil, withdrawn_at: nil)
             XCTAssertEqual(song.languageCode, code)
         }
+    }
+    func testStyleGuidanceSurvivesSongAndFavoriteDecoding() throws {
+        let body = #"{"id":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","title":"Jazz","language":"de","kind":"music-dna","styleMatch":"uncertain"}"#
+        let song = try JSONDecoder().decode(LibrarySong.self, from: Data(body.utf8))
+        let favorite = try JSONDecoder().decode(SyncedMusic.self, from: Data(body.utf8)).song()
+        XCTAssertEqual(song.styleMatch, "uncertain"); XCTAssertEqual(favorite.styleMatch, "uncertain")
+        XCTAssertEqual(favorite.languageCode, "de")
     }
     func testCommunityLanguageUsesFullCatalogueAndKeepsPaginationFiltered() async throws {
         let transport = transport(), account = AccountModel(transport: transport), library = SongLibraryModel()

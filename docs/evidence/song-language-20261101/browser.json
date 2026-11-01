@@ -1,0 +1,26 @@
+[
+  {
+    "browser": "chromium",
+    "status": "PASS",
+    "mobileOverflow": false,
+    "communityLanguage": true,
+    "personalPagination": true,
+    "favorites": true,
+    "missingMetadata": true,
+    "styleNote": true,
+    "singingLanguages": true,
+    "partnerCollection": true
+  },
+  {
+    "browser": "webkit",
+    "status": "PASS",
+    "mobileOverflow": false,
+    "communityLanguage": true,
+    "personalPagination": true,
+    "favorites": true,
+    "missingMetadata": true,
+    "styleNote": true,
+    "singingLanguages": true,
+    "partnerCollection": true
+  }
+]

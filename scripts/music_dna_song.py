@@ -385,30 +385,19 @@ def run(work):
         plan = json.loads((work/'plan.json').read_text())
         if plan.get('input_sha256') != digest(work/'input.json') or plan.get('direction') != direction_for(favorites(json.loads((work/'input.json').read_text())['profile'])):
             raise ValueError('Song plan does not match its saved favorites')
-        for attempt in range(2):
-            status(work, 'running', 'Recording the AI singer and band. This can take several minutes…' if not attempt else
-                   'The first take missed your style. Recording one more performance with the same favorites…', 'retrying' if attempt else 'composing')
-            with (work/'singer.log').open('x') as log:
-                subprocess.run([sys.executable, str(ROOT/'scripts/singing_response.py'), 'sing', '--runtime', str(RUNTIME),
-                                '--plan', str(work/'plan.json'), '--case', plan['cases'][0]['id'], '--output', str(work/'singer')],
-                               env=env, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=1200)
-            status(work, 'running', 'Checking the finished audio against your musical direction…', 'checking')
-            check_render(work,env)
-            fit = json.loads((work/'fit.json').read_text())
-            if fit['accepted']:
-                status(work, 'completed', 'Your song is ready. Press Play to listen.')
-                return
-            if not attempt:
-                archive = work/'rejected-1'
-                archive.mkdir()
-                shutil.copy2(work/'input.json', archive/'input.json')
-                for name in ('plan.json', 'fit.json', 'singer', 'singer.log', 'fit.log'):
-                    (work/name).rename(archive/name)
-                for name in ('fit-retry.log','fit-interrupted.json','check-attempts.json'):
-                    if (work/name).exists():(work/name).rename(archive/name)
-                plan = retry_direction(plan)
-                with (work/'plan.json').open('x') as output:json.dump(plan, output, indent=2, ensure_ascii=False)
-        status(work, 'rejected', 'Neither take passed the style check for your list. Your favorites are saved. Please try again later.')
+        status(work, 'running', 'Recording the AI singer and band. This can take several minutes…', 'composing')
+        with (work/'singer.log').open('x') as log:
+            subprocess.run([sys.executable, str(ROOT/'scripts/singing_response.py'), 'sing', '--runtime', str(RUNTIME),
+                           '--plan', str(work/'plan.json'), '--case', plan['cases'][0]['id'], '--output', str(work/'singer')],
+                           env=env, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=1200)
+        status(work, 'running', 'Checking the finished audio and describing its style match…', 'checking')
+        check_render(work,env)
+        fit = json.loads((work/'fit.json').read_text())
+        if fit.get('technical') != 'PASS' or fit.get('delivery_policy') != 'style-guidance-v1' or type(fit.get('accepted')) is not bool:
+            raise ValueError('Missing technical audio verification')
+        # Owner-authorized 2026-11-01: genre similarity is guidance, not a quality veto.
+        # Preserve the actual screen result; do not rerender or mark it accepted.
+        status(work, 'completed', 'Your song is ready. Press Play to listen.')
     except (OSError, ValueError, subprocess.SubprocessError) as error:
         if isinstance(error,subprocess.CalledProcessError):
             phase=json.loads((work/'status.json').read_text()).get('phase')

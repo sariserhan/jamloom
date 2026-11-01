@@ -179,6 +179,26 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    const other=await submit('user5');await songs.tick(other);
    assert.equal(jobs.get(other)!.payload.track_profiles,undefined);await songs.cancel('user5',other);
   });
+  await t.test('uncertain style delivers once with a public note; technical failure refunds',async()=>{
+   const owner='style-note';await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.test']);
+   await commerce.wallet.grant(owner,{provider:'stripe_test',receipt:owner,credits:80,netMicros:30000000});
+   for(const technical of ['PASS','FAIL']){
+    const before=await commerce.wallet.balance(owner),key=await submit(owner);await songs.tick(key);await complete(key);
+    const receipt=results.get('provider-'+key)!.output!;
+    receipt.fit={...(receipt.fit as object),accepted:false,technical,delivery_policy:'style-guidance-v1',screen_version:1,matching_windows:1};
+    await songs.tick(key);await songs.tick(key);
+    assert.equal((await commerce.row(key)).state,technical==='PASS'?'completed':'failed');
+    assert.deepEqual(await commerce.wallet.balance(owner),{available:before.available-(technical==='PASS'?20:0),reserved:0});
+    const listed=(await commerce.list(null,'public')).songs.find(s=>s.id===key);
+    if(technical==='PASS'){
+     assert.equal(listed?.styleMatch,'uncertain');
+     const view=await(await cloudSongAPI(new Request('http://localhost/api/taste/song?id='+key),songs,null,()=>{}))!.json();
+     assert.equal(view.styleMatch,'uncertain');assert.equal(view.profile,undefined);assert.equal(view.plan.language.country,undefined);
+     const saved=(await pool.query('SELECT provider_receipt FROM cloud_song_runs WHERE id=$1',[key])).rows[0].provider_receipt;
+     assert.equal(saved.output.fit.accepted,false);assert.equal(saved.output.fit.matching_windows,1);
+    }else assert.equal(listed,undefined);
+   }
+  });
   await t.test('failed jobs refund all credits and invalid completed output cannot become public',async()=>{
    const key=await submit('user4');await songs.tick(key);results.set('provider-'+key,{id:'provider-'+key,status:'FAILED',executionTime:50000,failure:'style-rejected:matched-2-of-4'});await songs.tick(key);assert.deepEqual(await commerce.wallet.balance('user4'),{available:50,reserved:0});
    assert.equal((await pool.query('SELECT provider_receipt FROM cloud_song_runs WHERE id=$1',[key])).rows[0].provider_receipt.failure,'style-rejected:matched-2-of-4');

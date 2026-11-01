@@ -33,5 +33,5 @@ export async function storedDnaSong(request:Request,context?:DnaContext):Promise
  if(file==='plan'&&owns)return new Response(JSON.stringify(row.song_plan),{headers:{...privateHeaders,'Content-Type':'application/json','Content-Disposition':'attachment; filename="jamloom-song.json"'}});
  if(file)return json({error:'Unknown file.'},404);
  const plan=row.song_plan;
- return json({id,state:'completed',plan:owns?plan:{title:plan.title,language:plan.language?{code:plan.language.code,label:plan.language.label}:undefined,cases:plan.cases?.map((c:{lyrics:string;voice:string;bpm:number})=>({lyrics:c.lyrics,voice:c.voice,bpm:c.bpm}))},...(owns?{profile:row.profile}:{}),direction:{label:row.direction},styleChecked:row.product!=='improvise',visibility:row.visibility,withdrawn:!!row.withdrawn_at,owned:owns});
+ return json({id,state:'completed',plan:owns?plan:{title:plan.title,language:plan.language?{code:plan.language.code,label:plan.language.label}:undefined,cases:plan.cases?.map((c:{lyrics:string;voice:string;bpm:number})=>({lyrics:c.lyrics,voice:c.voice,bpm:c.bpm}))},...(owns?{profile:row.profile}:{}),direction:{label:row.direction},styleChecked:row.product!=='improvise',styleMatch:['matched','uncertain'].includes(plan.styleMatch)?plan.styleMatch:undefined,visibility:row.visibility,withdrawn:!!row.withdrawn_at,owned:owns});
 }

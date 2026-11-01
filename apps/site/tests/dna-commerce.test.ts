@@ -194,6 +194,12 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
    assert.deepEqual((await commerce.list(null,'public','',{language:'tr',genre:'Rock'})).songs,[]);
    assert.deepEqual((await commerce.list(null,'public','',{language:"en' OR true --",genre:''})).songs,[]);
    await assert.rejects(commerce.list(null,'public','',{language:'x'.repeat(51),genre:''}),/Invalid song filters/);
+   assert.deepEqual((await commerce.list('bob','mine','',{language:'fr',genre:''})).songs.map(s=>s.id),[jobs[26]]);
+   await pool.query("UPDATE dna_song_jobs SET language=' Turkish ' WHERE id=$1",[jobs[0]]);
+   assert.deepEqual((await commerce.list(null,'public','',{language:'tr',genre:''})).songs.map(s=>s.id),[jobs[1],jobs[0]]);
+   await pool.query("UPDATE dna_song_jobs SET language='auto' WHERE id=$1",[jobs[0]]);
+   assert.deepEqual((await commerce.list(null,'public','',{language:'und',genre:''})).songs.map(s=>s.id),[jobs[0]]);
+   assert.ok((await commerce.list(null,'public')).filters.languages.includes('und'));
   });
  }finally{if(old===undefined)delete process.env.JAMLOOM_DNA_SINGER_ROOT;else process.env.JAMLOOM_DNA_SINGER_ROOT=old;await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();await rm(root,{recursive:true,force:true});}
 });

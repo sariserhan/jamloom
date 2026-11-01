@@ -1,3 +1,4 @@
+import {languageAliases} from './song-language';
 import {songCreditPrice,CREDIT_CATALOG_VERSION,TARGET_MARGIN_BPS} from './credit-catalog';
 import {MAX_SONG_BYTES} from './song-duration';
 import {createHash} from 'node:crypto';
@@ -92,19 +93,20 @@ export class DnaCommerce{
   if(after&&!/^[a-f0-9]{32}$/.test(after))throw new AudioError('Invalid song cursor.');
   if(filters.language.length>50||filters.genre.length>100)throw new AudioError('Invalid song filters.');
   const result=(await this.pool.query(`WITH visible AS (
-   SELECT d.id,d.title,d.language,d.direction,d.visibility,d.withdrawn_at,d.created_at
+   SELECT d.id,d.title,COALESCE($8::jsonb->>lower(btrim(d.language)),NULLIF(lower(btrim(d.language)),''),'und') AS language,d.direction,d.visibility,d.withdrawn_at,d.created_at,
+    CASE WHEN d.song_plan->>'styleMatch' IN ('matched','uncertain') THEN d.song_plan->>'styleMatch' END AS "styleMatch"
    FROM dna_song_jobs d JOIN generation_reservations r ON r.id=d.reservation_id
    WHERE d.state='completed' AND r.status='completed' AND d.product=$4 AND d.billing_live=$5
    AND (($1='mine' AND d.owner_id=$2) OR ($1='public' AND d.visibility='public' AND d.public_consent_at IS NOT NULL AND d.withdrawn_at IS NULL))
   ), page AS (
-   SELECT * FROM visible WHERE ($6='' OR language=$6) AND ($7='' OR direction=$7)
+   SELECT * FROM visible WHERE ($6='' OR language=lower($6)) AND ($7='' OR direction=$7)
    AND ($3='' OR (created_at,id)<(SELECT created_at,id FROM visible WHERE id=$3))
    ORDER BY created_at DESC,id DESC LIMIT 25
   ) SELECT COALESCE((SELECT json_agg(page ORDER BY created_at DESC,id DESC) FROM page),'[]') AS songs,
    ARRAY(SELECT DISTINCT language FROM visible WHERE language IS NOT NULL ORDER BY language) AS languages,
    ARRAY(SELECT DISTINCT direction FROM visible WHERE direction IS NOT NULL ORDER BY direction) AS genres`,
-   [scope,owner,after,this.product,!!this.options.live,filters.language,filters.genre])).rows[0];
-  const rows: {id:string;title:string;language:string;direction:string;visibility:DnaVisibility;withdrawn_at:string|null;created_at:string}[]=result.songs;
+   [scope,owner,after,this.product,!!this.options.live,filters.language,filters.genre,JSON.stringify(languageAliases)])).rows[0];
+  const rows: {id:string;title:string;language:string;styleMatch?:'matched'|'uncertain';direction:string;visibility:DnaVisibility;withdrawn_at:string|null;created_at:string}[]=result.songs;
   return {songs:rows.slice(0,24),next:rows.length>24?rows[23].id:null,filters:{languages:result.languages,genres:result.genres}};
  }
 }

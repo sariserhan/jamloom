@@ -43,7 +43,7 @@ enum CloudSongProduct: String {
 @MainActor final class CloudSongModel: ObservableObject {
     struct Availability: Decodable, Sendable { let creditsEnabled: Bool?; let signedIn: Bool?; let active: String? }
     struct Quote: Decodable, Sendable { let credits: Int; let token: String; let expiresAt: Double }
-    struct Job: Decodable, Sendable { let id: String?; let state: String?; let phase: String?; let cancelling: Bool? }
+    struct Job: Decodable, Sendable { let id: String?; let state: String?; let phase: String?; let cancelling: Bool?; let styleMatch: String? }
     @Published var genre = "surprise"
     @Published var voice = "surprise"
     @Published var consent = false
@@ -166,7 +166,7 @@ enum CloudSongProduct: String {
                     self.message = result.phase?.replacingOccurrences(of: "_", with: " ").capitalized ?? ""
                     if ["completed", "failed", "cancelled"].contains(self.state) {
                         self.quote = nil
-                        if self.state == "completed" { self.message = "Your song is ready." }
+                        if self.state == "completed" { self.message = result.styleMatch == "uncertain" ? "Your song is ready. " + LibrarySong.styleMatchNote : "Your song is ready." }
                         else { self.message = self.state == "failed" ? "Your song could not finish. Check your account for released credits." : "Song cancelled." }
                         return
                     }

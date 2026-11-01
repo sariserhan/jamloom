@@ -1,13 +1,15 @@
 'use client';
+import {LanguageFilter} from '../language-filter';
+import {languageMatches,languageLabel,songLanguage} from '../../lib/song-language';
+import {STYLE_MATCH_NOTE} from '../../lib/dna-style-note';
 import {useEffect,useRef,useState} from 'react';
 import {PlayTrack,FavoriteTrack} from '../player';
 import {songTrack} from '../../lib/listening';
 import Link from 'next/link';
 import {SongFeedback} from './song-feedback';
-import languages from '../../../../assets/manifests/dna-languages.json';
 import {visibleRefresh} from '../../lib/visible-refresh';
 import {galleryRead} from '../../lib/gallery-read';
-type Entry={id:string;title:string;language:string;direction?:string;historical?:boolean;visibility?:string;withdrawn_at?:string;check?:'owner-reviewed'|'passed'|'style-mismatch'|'not-checked';product?:string};
+type Entry={styleMatch?:string;id:string;title:string;language:string;direction?:string;historical?:boolean;visibility?:string;withdrawn_at?:string;check?:'owner-reviewed'|'passed'|'style-mismatch'|'not-checked';product?:string};
 export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'examples'|'mine'|'public'|'validation'|'showcase';title:string;product?:'music-dna'|'improvise';rows?:3|6;id?:string}){
  const curated=scope==='validation'||scope==='showcase';
  const paginated=curated||scope==='examples';
@@ -29,14 +31,14 @@ export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'
  const [feedbackAvailable,setFeedbackAvailable]=useState(true),[accountFeedback,setAccountFeedback]=useState(false);
  const [language,setLanguage]=useState(''),[genre,setGenre]=useState('');
  const [options,setOptions]=useState<{languages:string[];genres:string[]}>({languages:[],genres:[]});
- const requestId=useRef(0),filterable=scope!=='mine';
- const publicLanguage=scope==='public'?language:'',publicGenre=scope==='public'?genre:'';
+ const requestId=useRef(0),filterable=true;
+ const publicLanguage=['public','mine','showcase'].includes(scope)?language:'',publicGenre=['public','mine','showcase'].includes(scope)?genre:'';
  async function load(after='',fresh=false){
   const current=++requestId.current;setBusy(true);
   try{
    const query=new URLSearchParams({view:scope==='showcase'?(after?'public':'validation'):scope});
    if(after)query.set('after',after);if(publicLanguage)query.set('language',publicLanguage);if(publicGenre)query.set('genre',publicGenre);
-   const [response,shared]=await Promise.all([galleryRead(`${endpoint}?${query}`,fresh),scope==='showcase'&&!after?galleryRead(`${endpoint}?view=public`,fresh):null]),result=await response.json();
+   const [response,shared]=await Promise.all([galleryRead(`${endpoint}?${query}`,fresh),scope==='showcase'&&!after?galleryRead(`${endpoint}?${new URLSearchParams({view:'public',language:publicLanguage,genre:publicGenre})}`,fresh):null]),result=await response.json();
    if(current!==requestId.current)return;
    if(!response.ok)throw Error(result.error??'Songs could not load.');
    if(!Array.isArray(result.songs))throw Error('Invalid song collection');
@@ -46,7 +48,7 @@ export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'
     const feed=await shared!.json();
     if(current!==requestId.current)return;
     if(!shared!.ok||!Array.isArray(feed.songs))throw Error('Public songs could not load.');
-    collection=[...feed.songs,...collection.toReversed()];result.next=feed.next;
+    collection=[...feed.songs,...collection.toReversed()];result.next=feed.next;if(feed.filters)setOptions(feed.filters);
    }
    setSongs(old=>Array.from(new Map((after?[...old,...collection]:collection).map(song=>[song.id,song])).values()));setNext(result.next);setFeedbackAvailable(result.feedbackAvailable!==false);setAccountFeedback(result.accountFeedback===true);
    setMessage(result.signIn?'Sign in to see all your songs.':result.available===false?'Song collections are not enabled on this server yet.':collection.length?'':(publicLanguage||publicGenre)?'No songs match these filters.':scope==='public'?'Public songs will appear here after successful generation.':'No songs yet. Make your first song above.');
@@ -59,7 +61,7 @@ export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'
  async function withdraw(id:string){
   setBusy(true);try{const response=await fetch(endpoint+'?id='+id,{method:'DELETE',headers:{'X-Jamloom-DNA':'1'}});if(!response.ok)throw Error();window.dispatchEvent(new Event('jamloom-dna-completed'));}catch{setMessage('Could not remove this song from the public page. Try again.');}finally{setBusy(false);}
  }
- const filtered=songs.filter(song=>(!language||song.language===language)&&(!genre||song.direction===genre));
+ const filtered=songs.filter(song=>languageMatches(song.language,language)&&(!genre||song.direction===genre));
  const ordered=filtered;
  const pageSize=columns*rows,pageCount=Math.max(1,Math.ceil(ordered.length/pageSize));
  const currentPage=Math.min(page,pageCount);
@@ -75,7 +77,7 @@ export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'
  return <section id={scope==='showcase'?(id??'public-songs'):undefined} className="product-panel" aria-label={title}><h2>{title}</h2>
   <p>{scope==='showcase'?'Every song from our listening collection. Choose a language or genre, then press play.':scope==='validation'?'Listen to our test songs. Automated checks do not judge pronunciation or musical quality.':scope==='examples'?'Press play. Original AI songs inspired by example favorites.':scope==='mine'?'All your songs. Private stays private.':'Made by listeners. Shared with everyone.'}</p>
   {filterable&&<div className="product-actions song-filters">
-   <label>Language <select aria-label="Language" value={language} onChange={e=>{setLanguage(e.target.value);setPage(1);}}><option value="">All languages</option>{(scope==='public'?[...options.languages]:[...new Set(songs.map(s=>s.language))]).sort((a,b)=>((languages.languages as Record<string,string>)[a]??a).localeCompare((languages.languages as Record<string,string>)[b]??b)).map(code=><option key={code} value={code}>{(languages.languages as Record<string,string>)[code]??code}</option>)}</select></label>
+   <LanguageFilter value={language} onChange={value=>{setLanguage(value);setPage(1);}} languages={[...options.languages,...songs.map(s=>s.language)]}/>
    <label>Genre <select aria-label="Genre" value={genre} onChange={e=>{setGenre(e.target.value);setPage(1);}}><option value="">All genres</option>{(scope==='public'?[...options.genres]:[...new Set(songs.flatMap(s=>s.direction?[s.direction]:[]))]).sort().map(value=><option key={value} value={value}>{value}</option>)}</select></label>
    {(language||genre)&&<button className="secondary" onClick={()=>{setLanguage('');setGenre('');setPage(1);}}>Clear filters</button>}
   </div>}
@@ -83,8 +85,9 @@ export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'
 
   {filterable&&scope!=='public'&&<p role="status">{filtered.length?`${filtered.length} songs`:songs.length?'No songs match these filters.':''}</p>}
   {pagination('top')}
-  <div ref={grid} className={`dna-song-grid${paginated?' song-paged-grid':''}`} aria-busy={busy} hidden={scope==='public'&&busy}>{displayed.map(song=><article key={song.id}><h3>{song.title}</h3><p>{(languages.languages as Record<string,string>)[song.language]??song.language}{song.direction?' · '+song.direction:''}{scope==='mine'?' · '+(song.withdrawn_at?'Removed from public page':song.visibility):''}</p>
+  <div ref={grid} className={`dna-song-grid${paginated?' song-paged-grid':''}`} aria-busy={busy} hidden={scope==='public'&&busy}>{displayed.map(song=><article key={song.id}><h3>{song.title}</h3><p>{languageLabel(songLanguage(song.language))}{song.direction?' · '+song.direction:''}{scope==='mine'?' · '+(song.withdrawn_at?'Removed from public page':song.visibility):''}</p>
    {scope==='validation'&&song.check&&<p>Sample {song.id.slice(0,6)} · {song.product==='improvise'?'Improvise':'Music DNA'} · {song.check==='owner-reviewed'?'Backing style approved by a listener':song.check==='passed'?'Passed automated style check':song.check==='style-mismatch'?'Flagged by automated style check':'Test take · style not verified'}. Automated checks can be wrong; they do not judge lyrics or singing.</p>}
+   {song.styleMatch==='uncertain'&&<p>{STYLE_MATCH_NOTE}</p>}
    {song.historical&&<p>Earlier experiment · style match not checked.</p>}
    <div className="product-actions">{scope==='mine'?<audio controls preload="none" aria-label={`Listen to ${song.title}`} src={`${endpoint}?id=${song.id}&file=audio`} onPlay={event=>document.querySelectorAll('audio').forEach(a=>{if(a!==event.currentTarget)a.pause();})}/>:<PlayTrack track={songTrack(song,product)} queue={displayed.map(s=>songTrack(s,product))}/>}{scope!=='mine'&&<><FavoriteTrack track={songTrack(song,product)}/><Link href={`/listen/${product}/${song.id}`}>Song page ↗</Link></>}</div>
    <div className="product-actions"><a className="secondary" href={`${endpoint}?id=${song.id}&file=audio&download=1`} download>Download song</a>

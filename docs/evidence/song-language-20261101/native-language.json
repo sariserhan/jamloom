@@ -1,0 +1,35 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "modelName": "iPhone 14 Pro",
+        "osBuildNumber": "24A446",
+        "osVersion": "27.0.1",
+        "platform": "iOS"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 3,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "Jamloom \u00b7 Built with macOS 26.7.1",
+  "expectedFailures": 0,
+  "failedTests": 0,
+  "finishTime": 1793562127.519,
+  "passedTests": 3,
+  "result": "Passed",
+  "runtimeWarnings": [],
+  "skippedTests": 0,
+  "startTime": 1793562072.582,
+  "statistics": [],
+  "testFailures": [],
+  "title": "Test - Jamloom",
+  "topInsights": [],
+  "totalTestCount": 3
+}

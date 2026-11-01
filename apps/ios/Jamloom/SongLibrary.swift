@@ -16,25 +16,31 @@ struct LibrarySong: Codable, Identifiable, Equatable {
     let visibility: String?
     let withdrawn_at: String?
     var source: CloudSongProduct = .musicDNA
+    static let styleMatchNote = "This song explores your musical direction, but its style match is uncertain. Listen and decide what works for you."
+    var styleMatch: String? = nil
     var listeningKind: String? = nil
-    enum CodingKeys: String, CodingKey { case id, title, language, direction, product, visibility, withdrawn_at, listeningKind }
+    enum CodingKeys: String, CodingKey { case id, title, language, direction, product, visibility, withdrawn_at, listeningKind, styleMatch }
     var key: String { (listeningKind == "sets" ? "ai-dj" : listeningKind ?? source.rawValue) + ":" + id }
     var productName: String { listeningKind == "catalogue" ? "Community mix" : listeningKind == "aurowall" ? "Aurowall" : source == .aiDJ ? "DJ sets" : source == .improvise ? "Improvise" : "Music DNA" }
     var languageCode: String {
         let value = language.trimmingCharacters(in: .whitespacesAndNewlines)
+        if value.isEmpty || ["auto", "unknown", "und"].contains(value.lowercased()) { return "und" }
+        if ["instrumental", "zxx"].contains(value.lowercased()) { return "zxx" }
         return TasteProfile.languages.first { $0.value.caseInsensitiveCompare(value) == .orderedSame }?.key ?? value.lowercased()
     }
-    var languageName: String { Locale.current.localizedString(forLanguageCode: languageCode) ?? language }
+    static func languageLabel(_ code: String) -> String { code == "und" ? "Language not specified" : code == "zxx" ? "Instrumental" : Locale.current.localizedString(forLanguageCode: code) ?? code }
+    var languageName: String { Self.languageLabel(languageCode) }
     static func validLanguage(_ value: String) -> Bool { value.count <= 32 && value.range(of: "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$", options: .regularExpression) != nil }
 }
 struct SyncedMusic: Decodable {
     let id: String; let kind: String; let title: String; let language: String?; let mood: String?
+    var styleMatch: String? = nil
     func song() throws -> LibrarySong {
         let pattern = kind == "catalogue" ? "^[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}$" : kind == "aurowall" ? "^[a-f0-9]{24}$" : "^[a-f0-9]{32}$"
         guard ["music-dna", "improvise", "sets", "catalogue", "aurowall"].contains(kind), id.range(of: pattern, options: .regularExpression) != nil,
               !title.isEmpty, title.count <= 300, (language?.count ?? 0) <= 32, (mood?.count ?? 0) <= 100 else { throw URLError(.cannotParseResponse) }
         let source: CloudSongProduct = kind == "sets" ? .aiDJ : kind == "improvise" ? .improvise : .musicDNA
-        return LibrarySong(id: id, title: title, language: language ?? "", direction: mood, product: source.rawValue, visibility: nil, withdrawn_at: nil, source: source, listeningKind: kind)
+        return LibrarySong(id: id, title: title, language: language ?? "", direction: mood, product: source.rawValue, visibility: nil, withdrawn_at: nil, source: source, styleMatch: styleMatch, listeningKind: kind)
     }
 }
 struct SyncedFavorites: Decodable {
@@ -246,7 +252,7 @@ struct SongLibraryView: View {
     private let accent = Color(red: 0.78, green: 0.96, blue: 0.32)
     private var selection: String { collection.rawValue + ":" + (account.snapshot?.user.id ?? "") + ":" + language }
     private var languageOptions: [String] {
-        Set((collection == .favorites ? library.favorites.map(\.languageCode) : Array(library.languages)) + [language]).filter { LibrarySong.validLanguage($0) }.sorted {
+        Set((collection == .device ? ["und"] : collection == .favorites ? library.favorites.map(\.languageCode) : Array(library.languages)) + [language]).filter { LibrarySong.validLanguage($0) }.sorted {
             (Locale.current.localizedString(forLanguageCode: $0) ?? $0).localizedStandardCompare(Locale.current.localizedString(forLanguageCode: $1) ?? $1) == .orderedAscending
         }
     }
@@ -277,16 +283,16 @@ struct SongLibraryView: View {
                             Picker("Product", selection: $product) { Text("All music").tag(""); Text("Improvise").tag("improvise"); Text("Music DNA").tag("music-dna"); Text("DJ sets").tag("ai-dj") }
                             Picker("Genre", selection: $genre) { Text("All genres").tag(""); ForEach(Array(Set((collection == .favorites ? library.favorites : library.songs).compactMap(\.direction) + [genre])).filter { !$0.isEmpty }.sorted(), id: \.self) { Text($0).tag($0) } }
                         }.labelsHidden()
-                        Picker(selection: $language) {
-                            Text("All languages").tag("")
-                            ForEach(languageOptions, id: \.self) { Text(Locale.current.localizedString(forLanguageCode: $0) ?? $0).tag($0) }
-                        } label: { Label("Language", systemImage: "globe") }
-                        .pickerStyle(.menu).accessibilityIdentifier("communityLanguage")
                     }
+                    Picker(selection: $language) {
+                        Text("All languages").tag("")
+                        ForEach(languageOptions, id: \.self) { Text(LibrarySong.languageLabel($0)).tag($0) }
+                    } label: { Label("Language", systemImage: "globe") }
+                    .pickerStyle(.menu).accessibilityIdentifier("communityLanguage")
                 }
                 if collection == .device {
                     Section("Your local mixes") {
-                        ForEach(model.sessions) { session in
+                        ForEach(language.isEmpty || language == "und" ? model.sessions : []) { session in
                             ForEach(session.styles, id: \.self) { style in
                                 if let url = model.library?.wav(session, style: style) {
                                     Button {
@@ -299,6 +305,7 @@ struct SongLibraryView: View {
                                 }
                             }
                         }
+                        if !language.isEmpty && language != "und" { Text("No local mixes in this language."); Button("Clear language filter") { language = "" } }
                         if model.sessions.isEmpty { ContentUnavailableView("No local mixes", systemImage: "waveform", description: Text("Your on-device creations will appear here.")) }
                     }
                 } else {
@@ -330,6 +337,7 @@ struct SongLibraryView: View {
                                 Image(systemName: playing ? "stop.circle.fill" : "play.circle.fill").font(.system(size: 38)).foregroundStyle(accent)
                                 VStack(alignment: .leading, spacing: 5) {
                                     Text(song.title).font(.headline).foregroundStyle(.primary)
+                                    if song.styleMatch == "uncertain" { Text(LibrarySong.styleMatchNote).font(.caption).foregroundStyle(.secondary) }
                                     Text([song.productName, song.languageName, song.direction].compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: " · ")).font(.caption).foregroundStyle(.secondary)
                                     if collection == .mine { Label(song.visibility == "private" ? "Private" : song.withdrawn_at == nil ? "Public" : "Unlisted", systemImage: song.visibility == "private" ? "lock.fill" : "globe").font(.caption2) }
                                 }

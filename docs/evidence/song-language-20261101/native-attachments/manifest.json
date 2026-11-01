@@ -1,0 +1,15 @@
+[
+  {
+    "attachments": [
+      {
+        "configurationName": "Test Scheme Action",
+        "exportedFileName": "4DA70FE0-D8E6-44B0-8D23-8F4B87128478.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "Community language filter_0_52E0165C-EE62-4063-BBC3-A09019C3E1BE.png",
+        "timestamp": 1793562126.916
+      }
+    ],
+    "testIdentifier": "FlowTests/testCommunityLanguageFilterAndFavorites()",
+    "testIdentifierURL": "test://com.apple.xcode/Jamloom/JamloomUITests/FlowTests/testCommunityLanguageFilterAndFavorites"
+  }
+]

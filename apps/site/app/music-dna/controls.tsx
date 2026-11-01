@@ -1,4 +1,7 @@
 'use client';
+import {LanguageFilter,LanguageCollection} from '../language-filter';
+import {languageMatches} from '../../lib/song-language';
+import {STYLE_MATCH_NOTE} from '../../lib/dna-style-note';
 import {useEffect,useRef,useState} from 'react';
 import {emptyTaste,validateTaste,type Taste} from '../../lib/taste';
 import {automaticTaste,favoriteList,resolveFavoriteMetadata} from '../../lib/taste-auto';
@@ -11,13 +14,14 @@ import {PlaylistPicker} from './playlist-picker';
 import {tasteCatalogue,type ReferenceMetadata} from '../../lib/taste-catalogue';
 import {GenerationProgress,type SongProgress} from '../generation-progress';
 type SongPlan={sound_guidance?:{total:number;interpreted?:number;described:number};language?:{code:string;label:string;basis:string};musical_traits?:Record<string,string>;title:string;summary:string;favorites?:{reference:string}[];influences:{reference:string;basis:string;description:string}[];cases:{lyrics:string;song_caption:string;bpm:number;voice:string}[]};
-type Song={id:string;state:string;phase?:string;message:string;plan?:SongPlan;profile?:FavoriteSnapshot;direction?:{label:string};legacy?:boolean;styleChecked?:boolean};
+type Song={id:string;state:string;phase?:string;message:string;plan?:SongPlan;profile?:FavoriteSnapshot;direction?:{label:string};legacy?:boolean;styleChecked?:boolean;styleMatch?:string};
 const songUrl=(id:string)=>`/api/taste/song?id=${id}`;
 const pendingKey='jamloom-dna-pending';
 export function TasteNotebook(){
  const [profile,setProfile]=useState<Taste>(emptyTaste),[message,setMessage]=useState(''),[revision,setRevision]=useState(0),[busy,setBusy]=useState(false),[loaded,setLoaded]=useState(false);
  const [rendering,setRendering]=useState(false),[search,setSearch]=useState(''),[job,setJob]=useState<string|null>(null),[draft,setDraft]=useState<SongPlan|null>(null);
- const [takes,setTakes]=useState<Song[]>([]);
+ const [takes,setTakes]=useState<Song[]>([]),[takeLanguage,setTakeLanguage]=useState('');
+ const takeLang=(s:Song)=>s.plan?.language?.code??s.profile?.vocalLanguage;
  const [playlistBusy,setPlaylistBusy]=useState(false),[favoriteCount,setFavoriteCount]=useState(12);
  const [playlistQuery,setPlaylistQuery]=useState<{text:string}|null>(null);
  const [progress,setProgress]=useState<SongProgress|null>(null);
@@ -161,7 +165,7 @@ export function TasteNotebook(){
  <p><strong>Made from:</strong> {take.profile?.references.slice(0,12).join(' · ')??'Original list unavailable'}{(take.profile?.references.length??0)>12?` · and ${take.profile!.references.length-12} more`:''}</p>
  {take.plan?.sound_guidance?.interpreted!==undefined&&<p>All {take.plan.sound_guidance.total} favorites contribute their available genre metadata. Detailed interpretation covers {take.plan.sound_guidance.interpreted}; {take.plan.sound_guidance.described} have recognizable sound traits. These are model estimates, including language, not audio analysis.</p>}
  {take.profile?.referenceMetadata?.length? <p>{[...new Set(take.profile.referenceMetadata.map(m=>m.genre))].join(' · ')}</p>:null}
- <p>{take.styleChecked?'Broad style check passed. Listen to judge the song and singing.':'Earlier take: style match has not been checked.'}</p>
+ <p>{take.styleMatch==='uncertain'?STYLE_MATCH_NOTE:take.styleChecked?'Broad style check matched. Listen to judge the song and singing.':'Earlier take: style match has not been checked.'}</p>
  <audio aria-label={`Play ${take.plan?.title??`song ${i+1}`}`} controls preload="metadata" src={`${songUrl(take.id)}&file=audio`} onPlay={event=>{document.querySelectorAll<HTMLAudioElement>('audio').forEach(audio=>{if(audio!==event.currentTarget)audio.pause();});}} onError={()=>setMessage('This song could not load. Your favorites are safe. Reload to reconnect.')}/>
  <div className="product-actions"><a className="secondary" href={`${songUrl(take.id)}&file=audio&download=1`} download>Download song</a><a className="secondary" href={`${songUrl(take.id)}&file=plan`} download>Download song notes</a></div>
  {take.styleChecked&&<SongFeedback id={take.id} account={cloud}/>}
@@ -210,8 +214,10 @@ export function TasteNotebook(){
  {promptOpen&&<p role="status">{message}</p>}
  </div></dialog>
  {draft&&rendering&&<div><h3>{draft.title}</h3>{draft.favorites&&<p><strong>Making a song from:</strong> {draft.favorites.map(f=>f.reference).join(' · ')}</p>}<p>{draft.summary}</p></div>}
- {current.length>0&&<section aria-label="Songs for this list"><h3>Songs for this list</h3>{current.map(songCard)}</section>}
- {earlier.length>0&&<details><summary>Earlier songs and other lists ({earlier.length})</summary><p>These songs belong to the favorites shown with each player. Older takes have not passed the new style check.</p>{earlier.map(songCard)}</details>}
+ {takes.length>0&&<LanguageFilter label="Recent song language" value={takeLanguage} onChange={setTakeLanguage} languages={takes.map(takeLang)}/>}
+ {current.length>0&&<section aria-label="Songs for this list"><h3>Songs for this list</h3>{current.filter(s=>languageMatches(takeLang(s),takeLanguage)).map(songCard)}</section>}
+ {earlier.length>0&&<details><summary>Earlier songs and other lists ({earlier.length})</summary><p>These songs belong to the favorites shown with each player. Older takes have not passed the new style check.</p>{earlier.filter(s=>languageMatches(takeLang(s),takeLanguage)).map(songCard)}</details>}
+ {takeLanguage&&!takes.some(s=>languageMatches(takeLang(s),takeLanguage))&&<p role="status">No recent songs in this language.</p>}
  {takes.length>0&&<p>Your latest two results appear here. Your account’s full collection is in Your songs below.</p>}
  <div className="dna-tools"><FeedbackSettings account={cloud}/>
  <details><summary>Saved favorites</summary>
@@ -220,10 +226,10 @@ export function TasteNotebook(){
  </details>
  <details><summary>Discover practice tracks</summary><p>Listen to cleared tracks and add any you like to the same favorites list.</p>
  <label>Search cleared tracks<input type="search" maxLength={120} value={search} onChange={e=>setSearch(e.target.value)}/></label>
- {tasteCatalogue.filter(t=>`${t.title} ${t.artist}`.toLowerCase().includes(search.toLowerCase())).map(track=><article key={track.id}><strong>{track.title} — {track.artist}</strong><p>{track.edition} · {track.genre} · <a href={track.source} target="_blank" rel="noreferrer">CC0 source</a></p>
+ <LanguageCollection label="Practice track language" items={tasteCatalogue.filter(t=>`${t.title} ${t.artist}`.toLowerCase().includes(search.toLowerCase())).map(track=>({id:track.id,content:<article key={track.id}><strong>{track.title} — {track.artist}</strong><p>{track.edition} · {track.genre} · <a href={track.source} target="_blank" rel="noreferrer">CC0 source</a></p>
   <audio aria-label={`Listen to ${track.title}`} controls preload="none" src={track.audio} onPlay={event=>{document.querySelectorAll<HTMLAudioElement>('audio').forEach(audio=>{if(audio!==event.currentTarget)audio.pause();});}} onError={()=>setMessage('This preview could not load. Try again or open its source link.')} />
   <button className="secondary" disabled={locked} onClick={()=>addSong(`${track.title} — ${track.artist}`)}>Add {track.title} to favorites</button>
- </article>)}
+ </article>}))}/>
  </details></div>
  </div></section>;
 }

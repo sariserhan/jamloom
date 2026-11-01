@@ -1,0 +1,14 @@
+{
+  "at": "2026-11-01T19:46:55.000293+00:00",
+  "status": "AUTHORIZED",
+  "ownerChoice": "Deliver with a style-match note (Recommended)",
+  "genreSimilarity": "advisory",
+  "unchangedHardChecks": [
+    "technical audio",
+    "receipt integrity",
+    "privacy",
+    "credits"
+  ],
+  "styleOnlyRerenders": false,
+  "newPaidComputeAuthorized": false
+}

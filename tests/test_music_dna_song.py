@@ -217,8 +217,8 @@ class MusicDnaSong(unittest.TestCase):
         self.assertEqual(parse_draft('{"a":{"b":"hello]"}}'), {'a':{'b':'hello]'}})
         with self.assertRaisesRegex(ValueError, 'required musical direction'):song_plan(self.data, self.refs, 1)
 
-    def test_style_retry_is_bounded_and_preserves_rejected_evidence(self):
-        for accepted in ([False,True],[False,False],[True]):
+    def test_uncertain_style_is_delivered_without_an_extra_render(self):
+        for accepted in ([False],[True]):
             with self.subTest(accepted=accepted), tempfile.TemporaryDirectory() as folder:
                 work=Path(folder)
                 profile={'references':[r['reference'] for r in self.refs], 'referenceMetadata':[{'reference':self.refs[0]['reference'],'genre':'Soul'}]}
@@ -237,13 +237,12 @@ class MusicDnaSong(unittest.TestCase):
                         (work/'singer').mkdir();(work/'singer/singer.wav').write_bytes(b'fixture')
                     else:
                         self.assertEqual(phase, 'checking')
-                        (work/'fit.json').write_text(json.dumps({'accepted':accepted[len(rendered)-1]}))
+                        (work/'fit.json').write_text(json.dumps({'accepted':accepted[len(rendered)-1], 'technical':'PASS', 'delivery_policy':'style-guidance-v1'}))
                 with patch('music_dna_song.subprocess.run',side_effect=process):run(work)
-                self.assertEqual(rendered,[123] if len(accepted)==1 else [123,124])
-                self.assertEqual(json.loads((work/'status.json').read_text())['state'],'completed' if any(accepted) else 'rejected')
-                if not accepted[0]:
-                    self.assertEqual((work/'rejected-1/input.json').read_bytes(),(work/'input.json').read_bytes())
-                    self.assertEqual(json.loads((work/'rejected-1/plan.json').read_text())['cases'][0]['seed'],123)
+                self.assertEqual(rendered,[123])
+                self.assertEqual(json.loads((work/'status.json').read_text())['state'],'completed')
+                self.assertEqual(json.loads((work/'fit.json').read_text())['accepted'],accepted[0])
+                self.assertFalse((work/'rejected-1').exists())
 
     def test_heavy_list_cannot_be_softened_by_the_planner(self):
         refs = [{'reference': 'Heavy favorite', 'catalogue_genre': 'Metal'}]

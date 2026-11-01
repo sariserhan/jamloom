@@ -1,3 +1,4 @@
+import {LanguageCollection} from '../language-filter';
 import { headers } from 'next/headers';
 import { redirect, notFound } from 'next/navigation';
 import { accountsConfigured, services } from '../../lib/services';
@@ -18,7 +19,7 @@ export default async function Library({ searchParams }: { searchParams: Promise<
   return <section><h1>Your cloud library.</h1>
     <p className="library-note">New saves default to private. Choose public sharing and give explicit permission to submit a mix for catalogue review. Existing saves keep their chosen visibility. Your existing local mixes stay in this browser’s studio. {audio?.store.local ? 'This development site stores account audio on this Mac.' : !audio ? 'Account audio saving is not configured yet.' : ''}</p>
     {audio && <SaveMix publicSharing={!!catalogue}/>}
-    {tracks.length ? <ul className="library-list">{tracks.map(track => <li key={track.id}><strong>{track.title}</strong><p className="muted">{track.strategy} · {(track.duration_ms / 1000).toFixed(0)} seconds</p>{track.playable && audio && <><TrackControls id={track.id} title={track.title}/>{catalogue&&<SubmitTrack id={track.id}/>}</>}</li>)}</ul>
+    {tracks.length ? <LanguageCollection as="ul" className="library-list" items={tracks.map(track=>({id:track.id,content:<li key={track.id}><strong>{track.title}</strong><p className="muted">{track.strategy} · {(track.duration_ms / 1000).toFixed(0)} seconds</p>{track.playable && audio && <><TrackControls id={track.id} title={track.title}/>{catalogue&&<SubmitTrack id={track.id}/>}</>}</li>}))}/>
       : <div className="empty"><p>No cloud-saved tracks yet.</p><a href="/" className="primary">Make music</a></div>}
     {nextCursor && <a href={`/library?cursor=${encodeURIComponent(nextCursor)}`}>Older tracks</a>}
     {!!submissions.length&&<section><h2>Your catalogue submissions</h2>{submissions.map(row=><div key={row.id}><strong>{row.title}</strong><p>Status: {row.state}</p>{row.review_note&&<p>Review note: {row.review_note}</p>}{row.state!=='withdrawn'&&<Withdraw id={row.id}/>}</div>)}</section>}

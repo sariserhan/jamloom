@@ -261,12 +261,15 @@ function practiceSelection() {
   decks.forEach(controls);
 }
 $('practice-track').onchange = practiceSelection;
+const practiceGroups=[];
+function renderPracticeTracks(){
+ const selected=$('practice-track').value,language=$('practice-language').value;$('practice-track').replaceChildren();
+ for(const {tracks,label} of practiceGroups){const visible=tracks.filter(track=>!language||(track.language||'und')===language);if(!visible.length)continue;const group=document.createElement('optgroup');group.label=label;group.append(...visible.map(track=>new Option(`${track.title} — ${track.artist} · ${track.genre}`,track.id)));$('practice-track').append(group);}
+ if([...$('practice-track').options].some(option=>option.value===selected))$('practice-track').value=selected;practiceSelection();
+}
+$('practice-language').onchange=renderPracticeTracks;
 function addPracticeTracks(tracks,label) {
-  const selected=$('practice-track').value;practiceTracks.push(...tracks);
-  if(!selected&&!practiceTracks.slice(0,-tracks.length).length)$('practice-track').replaceChildren();
-  const group=document.createElement('optgroup');group.label=label;
-  group.append(...tracks.map(track=>new Option(`${track.title} — ${track.artist} · ${track.genre}`,track.id)));
-  $('practice-track').append(group);if(selected)$('practice-track').value=selected;practiceSelection();
+ practiceTracks.push(...tracks);practiceGroups.push({tracks,label});renderPracticeTracks();
 }
 fetch(new URL('./practice-audio/manifest.json', import.meta.url)).then(async response => {
   if (!response.ok) throw new Error('Practice list unavailable. Reconnect and reload this page.');
