@@ -20,6 +20,8 @@ from dna_language import LANGUAGES, language, validate_script, choose_language
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / 'build-style-training/upstream'
+LYRIC_LINE_LIMITS = {'verse_1': (4, 4), 'chorus': (4, 4), 'verse_2': (4, 4),
+                     'bridge': (2, 4), 'outro': (1, 2)}
 
 
 def favorites(value):
@@ -37,16 +39,23 @@ def favorites(value):
     return [{'reference': r, 'catalogue_genre': genres.get(r)} for r in refs]
 
 
+def lyric_count_repairs(value):
+    if not isinstance(value, dict) or set(value) != set(LYRIC_LINE_LIMITS):
+        return {}
+    return {key: bounds for key, bounds in LYRIC_LINE_LIMITS.items()
+            if not isinstance(value[key], list) or not bounds[0] <= len(value[key]) <= bounds[1]}
+
+
 def structured_lyrics(value):
     if isinstance(value, str):
         return value
-    keys = ('verse_1', 'chorus', 'verse_2', 'bridge', 'outro')
+    keys = tuple(LYRIC_LINE_LIMITS)
     if not isinstance(value, dict) or set(value) != set(keys):
         raise ValueError('Lyrics need verse_1, chorus, verse_2, bridge and outro arrays')
     sections = {}
     for key in keys:
         lines = value[key]
-        low, high = (1, 2) if key == 'outro' else (2, 4) if key == 'bridge' else (4, 4)
+        low, high = LYRIC_LINE_LIMITS[key]
         if not isinstance(lines, list) or not low <= len(lines) <= high:
             raise ValueError(f'Lyrics {key} needs {low} to {high} sung lines')
         lines = [text_field(line, 220, 'lyric line') for line in lines]
@@ -288,14 +297,19 @@ For Chinese, Japanese or Thai use 250–650 characters instead of the word count
     cast_singer_reference(cast)
     selected_profile=cast['vocal_profile']
     base_messages = [{'role': 'system', 'content': system}, {'role': 'user', 'content': json.dumps({'favorites': [{'index':i+1,**ref} for i,ref in enumerate(refs)], 'favorite_count':len(refs), 'required_direction': direction, 'required_sound':{k:v for k,v in guidance.items() if k not in ('references','groups')}, 'required_singer':{'voice':selected_voice,'character':VOCAL_PROFILES[selected_profile][1]}, 'requested_language':requested_language, 'required_duration_seconds':duration, 'supported_languages':LANGUAGES, 'listener_feedback':request.get('feedback',[])}, ensure_ascii=False)}]
-    messages=base_messages;candidate=None;lyric_repair=False
+    messages=base_messages;candidate=None;lyric_repair=False;section_repairs={}
     for attempt in range(4):
         prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         raw = generate(model, tokenizer, prompt=prompt, max_tokens=4000, sampler=make_sampler(temp=.75 if not attempt else .65 if lyric_repair else .3, top_p=.9), verbose=False).strip()
         (work/f'draft-{attempt}-private.txt').write_text(raw)
         try:
             parsed=parse_draft(raw)
-            if lyric_repair:
+            if section_repairs:
+                if (not isinstance(parsed,dict) or set(parsed)!={'lyrics'} or
+                        not isinstance(parsed['lyrics'],dict) or set(parsed['lyrics'])!=set(section_repairs)):
+                    raise ValueError('Return only the requested lyric sections; preserve the other sections')
+                candidate={**candidate,'lyrics':{**candidate['lyrics'],**parsed['lyrics']}}
+            elif lyric_repair:
                 if not isinstance(parsed,dict) or 'lyrics' not in parsed or not set(parsed)<={'lyrics','title'}:raise ValueError('Return only a JSON object with corrected lyrics and an optional title')
                 candidate={**candidate,**parsed}
             else:candidate=parsed
@@ -307,8 +321,16 @@ For Chinese, Japanese or Thai use 250–650 characters instead of the word count
             break
         except (ValueError, TypeError, KeyError) as error:
             if attempt==3:raise
+            section_repairs=lyric_count_repairs(candidate.get('lyrics')) if isinstance(candidate,dict) else {}
             lyric_repair=isinstance(candidate,dict) and isinstance(candidate.get('lyrics'),(str,dict)) and bool(re.search('lyrics|chorus|verse|section|writing system',str(error),re.I)) and not re.search('production|musical_traits|sound|in English',str(error),re.I)
-            if lyric_repair:
+            if section_repairs:
+                # Repair the malformed arrays, never truncate lyrics or regenerate valid sections.
+                # This uses the same four-attempt budget as full-plan/lyric repair.
+                lyric_repair=True
+                messages=[{'role':'system','content':'''Repair only the lyric sections listed in repair_sections. Each pair gives the minimum and maximum number of sung lines in that array. Return ONLY {"lyrics":{"requested_section":["sung line", "sung line"]}} with exactly the requested section keys. Do not return a title, production fields or other sections.
+Write original, natural, grammatical lyrics in the supplied language, consistent with the draft story and musical direction. Use 5–9 words per line for languages with spaces, or a short singable phrase in the normal script for Chinese, Japanese or Thai. Each array entry is one complete sung line: no headings, embedded newlines or backslashes. Verse 2 must develop the story; the ending must resolve it. Do not repeat one line to fill an array. Do not copy existing songs. Check every requested array's length before returning it.'''},
+                    {'role':'user','content':json.dumps({'language':requested_language if requested_language!='auto' else candidate.get('vocal_language','en'),'musical_direction':direction['label'],'duration_seconds':duration,'problem':str(error),'repair_sections':section_repairs,'draft_lyrics':candidate['lyrics']},ensure_ascii=False)}]
+            elif lyric_repair:
                 messages=[{'role':'system','content':'''You are an original songwriter editing a song of the supplied duration in the requested language. Rewrite awkward wording into natural, grammatical, singable lines with a coherent concrete story and a matching short title. Do not copy existing songs. Fix the reported problem, not just punctuation. Return ONLY {"title":"...","lyrics":{"verse_1":["..."],"chorus":["..."],"verse_2":["..."],"bridge":["..."],"outro":["..."]}}.
 Use these five English JSON keys and arrays of sung lines. No headings, embedded newlines or backslashes inside lines. Write four different lines for each verse and chorus, 6–9 words per line in languages with spaces. Verse 2 develops the story. Return the chorus once; the application repeats it three times. Bridge: 2-4 contrasting lines. Outro: a short resolved ending. Lyrics: 120-200 words; for Japanese, Chinese or Thai, 250-650 characters. Use the language's normal script. Replace the bad phrasing rather than reproducing it.'''.replace('120-200',word_target).replace('250-650',character_target).replace('6–9 words','5–9 words')},
                     {'role':'user','content':json.dumps({'language':requested_language if requested_language!='auto' else candidate.get('vocal_language','en'),'musical_direction':direction['label'],'duration_seconds':duration,'problem':str(error),'draft_lyrics':candidate['lyrics']},ensure_ascii=False)}]
