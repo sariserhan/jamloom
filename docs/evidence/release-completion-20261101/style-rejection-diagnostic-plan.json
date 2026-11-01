@@ -74,5 +74,6 @@
     "apps/site/scripts/rejected-audio-diagnostic.ts": "4732379df794affc49ea712659594a47feebd58d4a2da53b6e3a1a477ee8cafc",
     "apps/site/tests/german-jazz-fixture.test.ts": "f09a2fbd022e6ddd115fc79ac062a747ecc3535d96097ad69fd49378102aa4f5",
     "docs/evidence/release-completion-20261101/style-rejection-fixture.json": "122f4f22c9e90c348b4e9c7c981b03806355fc4419c2f86dddadd5b9670dda8e"
-  }
+  },
+  "harnessSourceCommit": "34a895c4"
 }
