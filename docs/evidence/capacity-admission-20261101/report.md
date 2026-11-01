@@ -21,3 +21,7 @@ The private read-only Vercel probe confirms the expected endpoint/image, API acc
 A [prepared resumption](hosted-resume-plan.json) waits for the deployed app's own readiness instead of treating the first provider-ready signal as sufficient. It permits repeated read-only readiness checks, then at most one quote and generation submission across both attempts. It retains the original aggregate $3 cap, original 21:32:04 UTC hard deadline and unchanged shutdown allowance; only the unused preparation time remains. Dry runs and typecheck pass. NOT APPROVED; the stopped-on-failure attempt is not silently restarted.
 
 Both temporary private diagnostic deployments were removed after the read-only check. The public domain remains on the held `9f134abc` deployment; no probe route was added to the production source. [Probe cleanup](probe-cleanup.json).
+
+## Approved resumption — running
+
+The owner approved “Resume within the same $3 cap.” Preparation resumed at 21:08:57 UTC after verifying the endpoint had zero workers/jobs and the parent attempt had submitted nothing. The original 21:32:04 UTC deadline, aggregate $3 budget, existing review expiry and operator allowance remain unchanged. The resumption reserves the final 12 minutes for the single request and cleanup, so readiness preparation ends by 21:20:04 UTC. Sales remain closed. [Amended permit](hosted-resume-plan.json).

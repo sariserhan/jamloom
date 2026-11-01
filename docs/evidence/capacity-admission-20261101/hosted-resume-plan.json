@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "preparedAt": "2026-11-01T21:04:16.280753+00:00",
   "scope": "Resume stopped readiness preparation within the same original $3 aggregate cap and original absolute deadline; wait for deployed application readiness before the only generation request",
   "workerSourceCommit": "ff6d4836bcd8768497012f94f8106fa86ee17935",
@@ -106,5 +106,6 @@
   "reviewExpiryUnchanged": true,
   "reviewAllowanceUnchanged": true,
   "approvedAt": "2026-11-01T21:08:33.520751+00:00",
-  "ownerApproval": "Resume within the same $3 cap"
+  "ownerApproval": "Resume within the same $3 cap",
+  "activatedAt": "2026-11-01T21:08:57.658Z"
 }
