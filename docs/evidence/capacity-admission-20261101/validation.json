@@ -1,5 +1,5 @@
 {
-  "status": "PASS local checks; deployment pending",
+  "status": "PASS local checks and held production deployment; Apple processing pending",
   "at": "2026-11-01T20:45:00.016685+00:00",
   "siteTests": 202,
   "focusedDatabaseAndProfileTests": 24,
@@ -16,7 +16,9 @@
     "version": "0.11.0",
     "build": 38,
     "status": "PASS",
-    "appleProcessing": "NOT RUN"
+    "appleProcessing": "PENDING",
+    "upload": "PASS",
+    "deliveryID": "8e99ad1c-d700-4e6c-840b-17613de6afc2"
   },
   "browser": [
     {
@@ -43,5 +45,12 @@
     }
   ],
   "providerFixtures": true,
-  "paidCompute": false
+  "paidCompute": false,
+  "deployment": {
+    "id": "dpl_FFuUnBQxXyYo9S1YcMJsERKew67r",
+    "url": "https://jamloom-lq7mqh2ui-ssari.vercel.app",
+    "readyState": "READY"
+  },
+  "sourceCommit": "9f134abc",
+  "productionVerification": "PASS; private/public generation and checkout held; no GPU requests"
 }
