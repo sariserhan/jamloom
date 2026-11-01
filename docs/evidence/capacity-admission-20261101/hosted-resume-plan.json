@@ -107,5 +107,7 @@
   "reviewAllowanceUnchanged": true,
   "approvedAt": "2026-11-01T21:08:33.520751+00:00",
   "ownerApproval": "Resume within the same $3 cap",
-  "activatedAt": "2026-11-01T21:08:57.658Z"
+  "activatedAt": "2026-11-01T21:08:57.658Z",
+  "result": "FAIL: one request expired in queue before model execution; full refund, independent cleanup and held restoration PASS",
+  "finishedAt": "2026-11-01T21:31:17.877Z"
 }

@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "at": "2026-11-01T21:31:27.237Z",
+  "qualification": "FAIL",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "previousHardwareRestored": true,
+  "health": {
+    "jobs": {
+      "completed": 46,
+      "failed": 18,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workerInventory": [],
+  "remoteObjectsConfirmedAbsent": 1,
+  "pendingJobs": 0,
+  "testReservedCredits": 0,
+  "costReservationsPreserved": true,
+  "rows": [
+    {
+      "id": "5818e56dadde46b6acbde29c9912428a",
+      "product": "music-dna",
+      "state": "failed",
+      "providerId": "5b92fff6-d7ce-4e1e-b3e8-09e647a59123-u1",
+      "providerStatus": "IN_QUEUE"
+    }
+  ]
+}

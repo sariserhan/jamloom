@@ -1,0 +1,16 @@
+{
+  "status": "PROVISIONAL",
+  "at": "2026-11-01T21:31:41.825Z",
+  "scope": "Aggregate exact worker IDs observed during original readiness attempt and approved resumption; same $3 cap",
+  "rows": [],
+  "notYetReported": [
+    "ry8oy00u8nmqnu",
+    "rs6fjbuenl36g6",
+    "o65i85qgm75vsp",
+    "71d1zwn1ghd7f7"
+  ],
+  "reportedUSD": 0,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "mutations": false
+}

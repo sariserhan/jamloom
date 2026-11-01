@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "at": "2026-11-01T21:32:02.930Z",
+  "qualification": "FAIL",
+  "requestsSubmitted": 1,
+  "newJobs": 1,
+  "creditsHeld": 0,
+  "testCreditsCaptured": 0,
+  "testBalanceUnchanged": true,
+  "liveBalanceUnchanged": true,
+  "workerLimits": [
+    0,
+    0
+  ],
+  "zeroWorkersAndJobs": true,
+  "reviewGenerationAvailable": false,
+  "reviewAvailabilityHTTPStatus": 503,
+  "reviewExpiryElapsed": true,
+  "newQuoteStatus": 503,
+  "publicCheckoutStatus": 503
+}

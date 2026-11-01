@@ -1,0 +1,43 @@
+{
+  "status": "FAIL",
+  "reason": "Single request expired in queue without model execution after transient readiness",
+  "ownerApproval": "Resume within the same $3 cap",
+  "aggregateBudgetUSD": 3,
+  "additionalBudgetUSD": 0,
+  "originalAbsoluteDeadline": "2026-11-01T21:32:04.628Z",
+  "parentRequests": 0,
+  "resumeRequests": 1,
+  "generationRetries": 0,
+  "activatedAt": "2026-11-01T21:08:57.658Z",
+  "providerReadyAt": "2026-11-01T21:16:12.118Z",
+  "applicationReadinessPolls": 38,
+  "applicationReadyAt": "2026-11-01T21:20:09.531Z",
+  "preparationCutoff": "2026-11-01T21:20:04.628Z",
+  "preparationCutoffObservation": "Last readiness fetch began within the window; its response arrived about five seconds after the cutoff. Original overall deadline and request TTL were unchanged.",
+  "finishedAt": "2026-11-01T21:31:17.877Z",
+  "disabledAt": "2026-11-01T21:31:23.300Z",
+  "request": {
+    "product": "music-dna",
+    "id": "5818e56dadde46b6acbde29c9912428a",
+    "startedAt": "2026-11-01T21:20:09.533Z",
+    "submitCalls": 1,
+    "quote": {
+      "credits": 20,
+      "costCapMicros": 138800
+    },
+    "submitIntentAt": "2026-11-01T21:20:10.543Z",
+    "state": "failed",
+    "providerStatus": "IN_QUEUE",
+    "providerId": "5b92fff6-d7ce-4e1e-b3e8-09e647a59123-u1",
+    "executionMs": null,
+    "delayMs": null,
+    "estimatedCostMicros": 138800,
+    "durationSeconds": 118
+  },
+  "independentCleanup": "PASS",
+  "creditSettlement": "PASS full 20-credit release, no live wallet change",
+  "heldRestoration": "PASS",
+  "reviewedHarnessHashes": "PASS unchanged",
+  "providerBilling": "PROVISIONAL, missing rows are not zero",
+  "release": "PARTIAL; customer sales closed"
+}

@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-01T21:17:24.867Z",
+  "dispatchEnabled": true,
+  "health": {
+    "jobs": {
+      "completed": 46,
+      "failed": 18,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 1,
+      "unhealthy": 0
+    }
+  }
+}
