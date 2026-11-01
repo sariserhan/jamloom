@@ -1,0 +1,19 @@
+{
+  "status": "FAIL",
+  "reason": "Cold image preparation exceeded the 540-second application request lifetime; provider job expired before model execution.",
+  "requestsSubmitted": 1,
+  "providerRetries": 0,
+  "modelExecutionObserved": false,
+  "maximumHealthWorkers": 1,
+  "workerRecordsObserved": 3,
+  "startedAt": "2026-11-01T19:59:43.879Z",
+  "finishedAt": "2026-11-01T20:11:03.451Z",
+  "sourceCommit": "3a628511f7f4a62173c0d7b65d8cb1c45278908a",
+  "durationSeconds": 120,
+  "requestCostEstimateMicros": 138800,
+  "estimateIsNotProviderBill": true,
+  "retryPerformed": false,
+  "ownerPermit": "CONSUMED",
+  "cleanup": "PASS",
+  "outputObjectsAbsent": 1
+}

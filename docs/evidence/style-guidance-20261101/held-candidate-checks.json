@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "deployment": "https://jamloom-qwdpln6sc-ssari.vercel.app",
+  "generationSubmitted": false,
+  "checks": [
+    {
+      "path": "/api/auth/sign-in/email",
+      "status": 200,
+      "available": null,
+      "sandboxReview": null,
+      "error": null
+    },
+    {
+      "path": "/api/account",
+      "status": 200,
+      "available": null,
+      "sandboxReview": true,
+      "error": null
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "available": false,
+      "sandboxReview": null,
+      "error": null
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 503,
+      "available": null,
+      "sandboxReview": null,
+      "error": "Jamloom is coming soon. Public access is not open yet."
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 503,
+      "available": null,
+      "sandboxReview": null,
+      "error": "Jamloom is coming soon. Public access is not open yet."
+    },
+    {
+      "path": "/api/payments/checkout",
+      "status": 503,
+      "available": null,
+      "sandboxReview": null,
+      "error": "Jamloom is coming soon. Public access is not open yet."
+    },
+    {
+      "path": "/api/auth/sign-out",
+      "status": 200,
+      "available": null,
+      "sandboxReview": null,
+      "error": null
+    }
+  ]
+}

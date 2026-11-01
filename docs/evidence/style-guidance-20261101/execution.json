@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING",
+  "status": "FAIL",
   "permitStatus": "CONSUMED",
   "activatedAt": "2026-11-01T19:59:52.827Z",
   "submittedAt": "2026-11-01T19:59:56.106Z",
@@ -16,5 +16,15 @@
     "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_7C1tukBwJf47sdyZKsUsGhXxmNBa"
   },
   "sourceCommit": "3a628511f7f4a62173c0d7b65d8cb1c45278908a",
-  "ordinarySalesEnabled": false
+  "ordinarySalesEnabled": false,
+  "cleanup": "PASS",
+  "heldDeployment": {
+    "id": "dpl_CmyLAr9fcXGbr5SmYMbACaPkkpqp",
+    "url": "https://jamloom-qwdpln6sc-ssari.vercel.app",
+    "inspectorUrl": "https://vercel.com/ssari/jamloom/CmyLAr9fcXGbr5SmYMbACaPkkpqp",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_CmyLAr9fcXGbr5SmYMbACaPkkpqp"
+  },
+  "heldSourceCommit": "bf0d68ae9e4c659634642cb439e1da6e3afee7cd"
 }

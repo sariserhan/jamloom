@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "preparedAt": "2026-11-01T19:52:37.943118+00:00",
   "scope": "One deployed Music DNA request from zero workers, after the owner-approved advisory-style repair",
   "workerSourceCommit": "b33aec2ee1a9e9e2d27463cc3e8dcf0bbe39eadf",
@@ -68,5 +68,7 @@
   "ownerApproval": "Approve one Music DNA check, up to $3",
   "approvedAt": "2026-11-01T19:54:07.561918+00:00",
   "implementationCommit": "89de02ef",
-  "productionProfileSHA256": "d5d40a52d8c84d709e6b3f433d987db92c474e8ddeaf66c83d1686c7dd2b145c"
+  "productionProfileSHA256": "d5d40a52d8c84d709e6b3f433d987db92c474e8ddeaf66c83d1686c7dd2b145c",
+  "result": "FAIL cold startup; no generation retry",
+  "cleanup": "PASS"
 }

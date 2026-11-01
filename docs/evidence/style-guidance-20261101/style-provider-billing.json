@@ -1,0 +1,15 @@
+{
+  "status": "PROVISIONAL",
+  "at": "2026-11-01T20:09:52.908Z",
+  "scope": "Exact worker IDs observed during the single approved cold-start request",
+  "rows": [],
+  "notYetReported": [
+    "6stigspfr656kg",
+    "pdfb4q9iwylrwx",
+    "kvu0mbgky2nk57"
+  ],
+  "reportedUSD": 0,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "mutations": false
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "at": "2026-11-01T20:11:38.695Z",
+  "qualification": "FAIL",
+  "testCreditsFullyReleased": 20,
+  "testBalanceUnchanged": true,
+  "liveBalanceUnchanged": true,
+  "reservationState": "failed",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "zeroWorkersAndJobs": true,
+  "reviewGenerationAvailable": false,
+  "newQuoteStatus": 503,
+  "publicCheckoutStatus": 503
+}

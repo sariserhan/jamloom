@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "baseSourceCommit": "e8d54bf39139ddf9fcc59c2df1b89b0ab33d2e03",
+  "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
+  "currentImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:f7b5844bc704986f6e7b8f217a55921e1d9803020deec39f370de74154de5bb4",
+  "baseCompressedBytes": 27194943712,
+  "currentCompressedBytes": 27194917548,
+  "reusedLayers": 4,
+  "changedLayers": 19,
+  "changedCompressedBytes": 27149649614,
+  "imageLayersDownloaded": false
+}
