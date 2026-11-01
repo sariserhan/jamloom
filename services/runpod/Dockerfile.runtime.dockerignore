@@ -1,0 +1,7 @@
+**
+!scripts/
+!scripts/check_dna_audio.py
+!scripts/music_dna_song.py
+!services/
+!services/runpod/
+!services/runpod/pipeline.py

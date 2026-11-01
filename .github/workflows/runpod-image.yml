@@ -4,6 +4,12 @@ on:
     branches: [codex/runpod-setup]
     paths: [services/runpod/**, scripts/**, assets/manifests/**, assets/singer-identities/**, .github/workflows/runpod-image.yml]
   workflow_dispatch:
+    inputs:
+      recipe:
+        description: Full model build or validated runtime-only overlay
+        type: choice
+        options: [full, runtime]
+        default: full
 permissions:
   contents: read
   packages: write
@@ -21,6 +27,11 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_hosted_identity_separator.py'
           python3 -m unittest discover -s tests -p 'test_rejected_audio_diagnostic.py'
           python3 -m unittest discover -s tests -p 'test_dna_style_delivery.py'
+      - name: Verify immutable runtime base inputs
+        if: github.event_name == 'workflow_dispatch' && inputs.recipe == 'runtime'
+        run: |
+          python3 scripts/check_worker_runtime_base.py
+          python3 -m unittest discover -s tests -p 'test_worker_runtime_base.py'
       - name: Free preinstalled SDK space on the disposable build runner
         run: sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc
       - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
@@ -35,7 +46,7 @@ jobs:
         id: build
         with:
           context: .
-          file: services/runpod/Dockerfile
+          file: ${{ github.event_name == 'workflow_dispatch' && inputs.recipe == 'runtime' && 'services/runpod/Dockerfile.runtime' || 'services/runpod/Dockerfile' }}
           platforms: linux/amd64
           push: true
           tags: ${{ env.WORKER_IMAGE }}:${{ github.sha }}

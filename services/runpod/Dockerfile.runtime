@@ -1,0 +1,6 @@
+# Reuse the verified model/dependency layers; runtime-only updates must not rebuild them.
+# check_worker_runtime_base.py rejects any change to the base build inputs.
+FROM ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573
+WORKDIR /opt/jamloom
+COPY scripts/check_dna_audio.py scripts/music_dna_song.py ./scripts/
+COPY services/runpod/pipeline.py ./services/runpod/
