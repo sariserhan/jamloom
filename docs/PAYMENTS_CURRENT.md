@@ -1,4 +1,4 @@
-**Latest — 2026-10-31:** Public Apple callback deployment/delivery passes. Reviewer isolation and corrected refund submission pass locally/on device, with signed lifecycle events pending. Stripe verification and the separately approved bounded cost diagnostic are in progress; customer sales remain off pending gates. [Current report](evidence/release-followthrough-20261031/report.md). Earlier held/undeployed statements below are historical.
+**Latest — 2026-11-01:** Deployed Apple/Stripe delivery and native purchase/Restore/refund/renewal checks pass in the linked release evidence. Native build 37 is VALID and selected; the review draft remains unsubmitted. Customer sales remain closed because generation startup and operating-cost qualification are incomplete. The latest single Music DNA check timed out during image preparation; all twenty test credits returned and independent cleanup passed. [Current report](evidence/style-guidance-20261101/report.md), [release handoff](LAUNCH_ACTIVATION.md). Earlier dated preparation statements below are historical.
 
 # Payments — 2026-10-31
 

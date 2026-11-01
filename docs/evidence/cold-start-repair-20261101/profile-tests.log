@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: production candidate preserves fixed prices and enforces the measured product deadlines
+ok 1 - production candidate preserves fixed prices and enforces the measured product deadlines
+  ---
+  duration_ms: 1.62125
+  type: 'test'
+  ...
+# Subtest: capacity refuses changed image, hardware, price, scaling and extra storage before dispatch
+ok 2 - capacity refuses changed image, hardware, price, scaling and extra storage before dispatch
+  ---
+  duration_ms: 3.852459
+  type: 'test'
+  ...
+# Subtest: review credits require a separate finite operator allowance and never select the live ledger
+ok 3 - review credits require a separate finite operator allowance and never select the live ledger
+  ---
+  duration_ms: 1.751417
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 491.378459

@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "workflow": {
+    "conclusion": "success",
+    "headSha": "ff6d4836bcd8768497012f94f8106fa86ee17935",
+    "status": "completed",
+    "url": "https://github.com/sariserhan/jamloom/actions/runs/41345870580"
+  },
+  "sourceCommit": "ff6d4836bcd8768497012f94f8106fa86ee17935",
+  "baseSourceCommit": "e8d54bf39139ddf9fcc59c2df1b89b0ab33d2e03",
+  "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
+  "platform": "linux/amd64",
+  "baseLayersPreserved": 23,
+  "additionalLayers": 3,
+  "additionalCompressedBytes": 14564,
+  "baseCompressedBytes": 27194943712,
+  "runtimeConfigurationUnchanged": true,
+  "modelLayersDownloaded": false,
+  "emptyWorkdirLayerVerified": true,
+  "emptyWorkdirLayerBytes": 32,
+  "runtimeCopyLayers": 2,
+  "hostCacheHitGuaranteed": false
+}

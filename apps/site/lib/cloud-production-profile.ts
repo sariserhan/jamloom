@@ -1,6 +1,6 @@
 // Explicitly selected release candidate, not proof of provider billing or permission to enable sales.
 export const CLOUD_COST_PROFILE='l4-2026-11-01';
-export const CLOUD_WORKER_IMAGE='ghcr.io/sariserhan/jamloom/music-worker@sha256:f7b5844bc704986f6e7b8f217a55921e1d9803020deec39f370de74154de5bb4';
+export const CLOUD_WORKER_IMAGE='ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161';
 export function productionSongBudget(product:'improvise'|'music-dna'){
  const rate=220,fixedCostMicros=20000;
  const [executionSeconds,ttlSeconds]=product==='improvise'?[190,220]:[480,540];

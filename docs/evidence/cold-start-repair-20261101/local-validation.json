@@ -8,6 +8,9 @@
   "separatorBoundaryTests": 2,
   "diagnosticReceiptTests": 2,
   "singleRenderStyleTests": 1,
-  "imagePublished": false,
-  "paidRequests": 0
+  "imagePublished": true,
+  "paidRequests": 0,
+  "imageVerification": "PASS",
+  "disabledTemplatePreparation": "PASS",
+  "hostedQualification": "NOT RUN; fresh approval required"
 }

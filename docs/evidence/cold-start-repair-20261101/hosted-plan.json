@@ -3,7 +3,7 @@
   "preparedAt": "2026-11-01T20:13:51.193700+00:00",
   "scope": "One cold-start deployed Music DNA check after preserving existing verified model/dependency image layers",
   "workerSourceCommit": "ff6d4836bcd8768497012f94f8106fa86ee17935",
-  "image": null,
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
   "imageMustBeVerifiedBeforeApply": true,
   "endpoint": "jl77hn92npt65k",
   "maxUSD": 3,
@@ -46,7 +46,7 @@
     "After controller shutdown: node --import tsx ../../build-release-cold-start-20261101/cleanup.mts"
   ],
   "checks": [
-    "Build the reviewed commit using recipe=runtime; verify the immutable image has the exact prior model-layer prefix and only the two source COPY layers, with less than 1 MiB additional compressed data",
+    "Published image verified: exact 23-layer base prefix, two runtime source COPY layers and one verified-empty 32-byte WORKDIR layer; 14564 added compressed bytes",
     "Pin and deploy the verified image only after publication; preserve the unchanged 480-second execution and 540-second request limits",
     "Fresh host cache misses remain possible; never describe cache reuse as guaranteed provider readiness",
     "Zero existing jobs and workers before activation; independent shutdown watchdog before enabling one worker",
@@ -69,7 +69,7 @@
   "imageRecipe": "services/runpod/Dockerfile.runtime",
   "workerBranch": "codex/runtime-image-20261101",
   "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
-  "imagePublicationRequired": true,
+  "imagePublicationRequired": false,
   "unchangedBaseInputs": 36,
   "changedRuntimeFiles": 3,
   "localChecks": 26,
@@ -78,7 +78,12 @@
   "preparationValidation": {
     "workerChecks": "PASS 26",
     "httpDryRun": "PASS; no provider operations",
-    "controllerDryRun": "PASS; image verification remains NOT RUN until publication",
+    "controllerDryRun": "PASS; verified published image",
     "harnessTypecheck": "PASS"
-  }
+  },
+  "imageVerification": "PASS",
+  "imageBuild": "https://github.com/sariserhan/jamloom/actions/runs/41345870580",
+  "baseLayersPreserved": 23,
+  "additionalCompressedBytes": 14564,
+  "productionProfileSHA256": "68ed547196bfa3d73957e3850bb8ced753f34dd5dbce255e7ac6ded4a3940014"
 }
