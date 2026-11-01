@@ -1,0 +1,13 @@
+{
+  "status": "PROVISIONAL",
+  "at": "2026-11-01T20:59:17.024Z",
+  "scope": "Exact worker ID observed during the approved readiness-first preparation; zero generation requests",
+  "rows": [],
+  "notYetReported": [
+    "71d1zwn1ghd7f7"
+  ],
+  "reportedUSD": 0,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "mutations": false
+}

@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "preparedAt": "2026-11-01T20:45:56.870098+00:00",
   "scope": "One private Music DNA request only after cached usable L4 capacity is observed; no warmup generation",
   "workerSourceCommit": "ff6d4836bcd8768497012f94f8106fa86ee17935",
@@ -95,5 +95,9 @@
   "coldStartQualification": false,
   "prewarmDefinition": "No warmup generation, /run or /runsync; bounded background image/capacity preparation is explicitly required before the only customer request",
   "ownerApproval": "Approve readiness-first check, up to $3",
-  "approvedAt": "2026-11-01T20:48:41.798394+00:00"
+  "approvedAt": "2026-11-01T20:48:41.798394+00:00",
+  "activatedAt": "2026-11-01T20:52:06.932Z",
+  "execution": "FAIL_BEFORE_SUBMISSION",
+  "requestsSubmitted": 0,
+  "cleanup": "PASS"
 }

@@ -1,0 +1,36 @@
+{
+  "readOnly": true,
+  "generationAllowed": false,
+  "endpointStatus": 200,
+  "catalogStatus": 200,
+  "endpointMatches": true,
+  "imageMatches": true,
+  "workers": {
+    "max": 0,
+    "min": 0
+  },
+  "configurationCheck": "Song capacity differs from the reviewed cost profile",
+  "approvedConfigurationReplay": "PASS",
+  "adapterHealth": "PASS",
+  "ready": false,
+  "health": {
+    "jobs": {
+      "completed": 46,
+      "failed": 18,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "applicationBusy": false,
+  "reviewOwnerMatches": true,
+  "reviewExpiryValid": true
+}

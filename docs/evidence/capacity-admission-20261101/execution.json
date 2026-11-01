@@ -1,0 +1,23 @@
+{
+  "status": "FAIL_BEFORE_SUBMISSION",
+  "permitStatus": "CONSUMED",
+  "activatedAt": "2026-11-01T20:52:06.932Z",
+  "deadline": "2026-11-01T21:32:04.628000+00:00",
+  "preparationMaxSeconds": 1200,
+  "maxUSD": 3,
+  "maxRequests": 1,
+  "requestsSubmitted": 0,
+  "sourceCommit": "1e24292d136ccfa616844410a522c975cc2dc316",
+  "deployment": "https://jamloom-5y1t0fjmz-ssari.vercel.app",
+  "heldRestoreDeployment": "https://jamloom-lq7mqh2ui-ssari.vercel.app",
+  "retries": 0,
+  "warmupGenerations": 0,
+  "salesEnabled": false,
+  "finishedAt": "2026-11-01T20:54:43.423Z",
+  "readyAt": "2026-11-01T20:54:38.998Z",
+  "disabledAt": "2026-11-01T20:54:44.900Z",
+  "creditsHeld": 0,
+  "reason": "Controller observed cached ready capacity, but the immediate deployed availability response was false; cause under read-only investigation",
+  "cleanup": "PASS",
+  "heldRestore": "PASS"
+}

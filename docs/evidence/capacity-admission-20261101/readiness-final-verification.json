@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "at": "2026-11-01T20:57:04.209Z",
+  "qualification": "FAIL before submission",
+  "requestsSubmitted": 0,
+  "newJobs": 0,
+  "creditsHeld": 0,
+  "testBalanceUnchanged": true,
+  "liveBalanceUnchanged": true,
+  "workerLimits": [
+    0,
+    0
+  ],
+  "zeroWorkersAndJobs": true,
+  "reviewGenerationAvailable": false,
+  "newQuoteStatus": 503,
+  "publicCheckoutStatus": 503
+}

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "at": "2026-11-01T20:48:47.259Z",
+  "version": "0.11.0",
+  "build": 38,
+  "buildID": "8e99ad1c-d700-4e6c-840b-17613de6afc2",
+  "processingState": "VALID",
+  "selected": true,
+  "reviewState": "READY_FOR_REVIEW",
+  "submitted": false,
+  "releaseType": "MANUAL"
+}

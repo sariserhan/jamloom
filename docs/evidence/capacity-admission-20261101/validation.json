@@ -1,5 +1,5 @@
 {
-  "status": "PASS local checks and held production deployment; Apple processing pending",
+  "status": "PASS local checks, held production deployment and Apple build processing",
   "at": "2026-11-01T20:45:00.016685+00:00",
   "siteTests": 202,
   "focusedDatabaseAndProfileTests": 24,
@@ -16,9 +16,11 @@
     "version": "0.11.0",
     "build": 38,
     "status": "PASS",
-    "appleProcessing": "PENDING",
+    "appleProcessing": "VALID",
     "upload": "PASS",
-    "deliveryID": "8e99ad1c-d700-4e6c-840b-17613de6afc2"
+    "deliveryID": "8e99ad1c-d700-4e6c-840b-17613de6afc2",
+    "selected": true,
+    "submitted": false
   },
   "browser": [
     {
