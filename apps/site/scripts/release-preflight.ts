@@ -12,6 +12,7 @@ import {billingReadiness} from '../lib/billing-mode';
 import {proBilling} from '../lib/pro-billing';
 import {creditSalesQualified,songCreditPrice,NET_MICROS_PER_CREDIT_FLOOR,TARGET_MARGIN_BPS} from '../lib/credit-catalog';
 import {creditBilling} from '../lib/stripe-payments';
+import {appleVerifier,appleEnvironment} from '../lib/apple-payments';
 import {issueProLicense} from '../lib/pro-license';
 import {singingOffer} from '../../web/singing-offer.js';
 
@@ -37,6 +38,7 @@ export function releaseConfiguration(env:Record<string,string|undefined>){
    licenseSigningConfigured:valid(()=>issueProLicense('configuration-check',true,env))},
   credits:{mode:'live',configured:creditsConfigured,taxConfigured:/^txcd_[0-9]{8}$/.test(env.CREDIT_STRIPE_TAX_CODE??''),
    checkoutEnabled:creditsConfigured&&creditBilling(creditEnv).enabled,costQualified:creditSalesQualified(env),creatorPriceConfigured:/^price_[A-Za-z0-9]+$/.test(env.CREATOR_STRIPE_LIVE_PRICE_ID??''),creatorPortalConfigured:/^bpc_[A-Za-z0-9]+$/.test(env.CREATOR_STRIPE_LIVE_PORTAL_CONFIGURATION??'')},
+  apple:{configured:valid(()=>appleVerifier(env)),environment:valid(()=>appleEnvironment(env))?appleEnvironment(env):'INVALID',sandboxVerifierConfigured:valid(()=>appleVerifier({...env,APPLE_ENVIRONMENT:'sandbox'}))},
   singingPriceUSD:singingOffer.priceCents/100,
  };
 }

@@ -1,0 +1,13 @@
+{
+  "status": "PASS_CONFIGURATION",
+  "app": "6826480059",
+  "attributes": {
+    "subscriptionStatusUrl": "https://www.jamloom.com/api/payments/apple/notifications",
+    "subscriptionStatusUrlVersion": "V2",
+    "subscriptionStatusUrlForSandbox": "https://www.jamloom.com/api/payments/apple/notifications/sandbox",
+    "subscriptionStatusUrlVersionForSandbox": "V2"
+  },
+  "readbackInitiallyStale": true,
+  "delivery": "FAIL public sandbox HTTP response; PASS local signed TEST verification",
+  "purchasesEnabled": false
+}

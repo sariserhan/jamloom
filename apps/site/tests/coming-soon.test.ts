@@ -62,6 +62,20 @@ test('anonymous requests cannot bypass the default gate with request headers or 
  assert.equal(response.status,503);assert.match(await response.text(),/Jamloom is coming soon/);
 });
 
+test('Apple notification URLs reach signature verification during launch and maintenance holds',async()=>{
+ const previous={...process.env};
+ try{
+  Object.assign(process.env,{DATABASE_URL:'postgresql://fixture@127.0.0.1:1/never-connect',BETTER_AUTH_URL:'http://127.0.0.1:3000',BETTER_AUTH_SECRET:'isolated-notification-routing-secret',JAMLOOM_LOCAL_OUTBOX:'/tmp/jamloom-notification-routing'});
+  delete process.env.VERCEL;
+  for(const path of ['/api/payments/apple/notifications','/api/payments/apple/notifications/sandbox']){
+   assert.equal(comingSoonRecovery(path),true);
+   const response=await proxy(new NextRequest('https://www.jamloom.com'+path,{method:'POST'}));
+   assert.equal(response.headers.get('x-middleware-next'),'1','Webhooks must not query maintenance/session state before signature verification');
+  }
+  for(const path of ['/api/payments/apple','/api/payments/apple/notifications/fake','/api/payments/apple/notifications/sandbox/fake'])assert.equal(comingSoonRecovery(path),false);
+ }finally{for(const key of Object.keys(process.env))if(!(key in previous))delete process.env[key];Object.assign(process.env,previous);}
+});
+
 test('published Live DJ preview is accessible while other product routes remain gated',async()=>{
  assert.equal(comingSoonRecovery('/live-dj'),true);
  assert.equal(comingSoonRecovery('/live-dj/fake'),false);

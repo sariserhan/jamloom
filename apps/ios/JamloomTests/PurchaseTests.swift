@@ -30,13 +30,18 @@ import CryptoKit
         let actualHash = SHA256.hash(data: try Data(contentsOf: executable)).map { String(format: "%02x", $0) }.joined()
         guard expectedHash.count == 64, actualHash == expectedHash else { XCTFail("Development-signing preflight required for this exact test host"); return }
         if env["JAMLOOM_APPLE_SANDBOX"] == "restore" {
-            guard id == CreditPurchases.singingProduct else { XCTFail("Only the course is restorable"); return }
+            guard id == CreditPurchases.singingProduct || id == CreditPurchases.creatorProduct else { XCTFail("Only the course and subscription are restorable"); return }
             var delivered = 0
-            try await CreditPurchases(course: true).restoreCourse(accountToken: token) { jws, restoredToken in
+            let record: (String, UUID) async throws -> Void = { jws, restoredToken in
                 XCTAssertEqual(restoredToken, token)
                 let proof = XCTAttachment(string: jws)
                 proof.name = "Private Apple restored JWS - do not publish"; proof.lifetime = .keepAlways; self.add(proof)
                 delivered += 1
+            }
+            if id == CreditPurchases.singingProduct {
+                try await CreditPurchases(course: true).restoreCourse(accountToken: token, deliver: record)
+            } else {
+                try await CreditPurchases().restoreSubscription(accountToken: token, deliver: record)
             }
             XCTAssertEqual(delivered, 1); return
         }

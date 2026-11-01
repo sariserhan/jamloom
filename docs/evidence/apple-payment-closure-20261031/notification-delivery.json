@@ -1,0 +1,17 @@
+{
+  "environment": "Sandbox",
+  "status": "TEST_REQUEST_ACCEPTED",
+  "signedPayloadReceived": true,
+  "sendAttempts": [
+    {
+      "attemptDate": 1793502280659,
+      "sendAttemptResult": "UNSUCCESSFUL_HTTP_RESPONSE_CODE"
+    }
+  ],
+  "productionAPI": {
+    "status": "PARTIAL",
+    "http": 401,
+    "interpretation": "Consistent with the unreleased-app prerequisite; not a sandbox authentication failure",
+    "source": "https://developer.apple.com/forums/thread/806452"
+  }
+}

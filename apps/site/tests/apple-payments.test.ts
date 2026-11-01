@@ -28,6 +28,19 @@ test('Apple official verifier rejects forged unsigned transactions',async()=>{
  await assert.rejects(verifier.verifyAndDecodeTransaction('eyJhbGciOiJub25lIn0.eyJ0cmFuc2FjdGlvbklkIjoiMTIzIn0.'));
 });
 
+test('Apple TEST notifications verify app and environment without granting or freezing credits',async()=>{
+ const bundle='com.djayvo.app',id='11111111-1111-4111-8111-111111111111';
+ let environment=Environment.SANDBOX,bundleId=bundle;
+ const verifier={verifyAndDecodeNotification:async()=>({version:'2.0',notificationUUID:id,notificationType:'TEST',data:{bundleId,environment}}),verifyAndDecodeTransaction:async()=>{throw Error('TEST must not decode a purchase');}};
+ const wallet={freezePurchase:async()=>{throw Error('TEST must not change credits');}};
+ assert.deepEqual(await reconcileAppleNotification(verifier,wallet,'signed-test',bundle),{id,type:'TEST',manualReview:false});
+ await assert.rejects(reconcileAppleNotification(verifier,wallet,'signed-test',bundle,Environment.PRODUCTION));
+ environment=Environment.PRODUCTION;
+ assert.deepEqual(await reconcileAppleNotification(verifier,wallet,'signed-test',bundle,Environment.PRODUCTION),{id,type:'TEST',manualReview:false});
+ await assert.rejects(reconcileAppleNotification(verifier,wallet,'signed-test',bundle));
+ bundleId='com.other.app';await assert.rejects(reconcileAppleNotification(verifier,wallet,'signed-test',bundle,Environment.PRODUCTION));
+});
+
 test('Apple sandbox refund notifications verify both signatures and hold the exact consumable receipt',async()=>{
  const bundle='com.djayvo.app',id='11111111-1111-4111-8111-111111111111',held:string[]=[];
  let notice={version:'2.0',notificationUUID:id,notificationType:'REFUND',data:{bundleId:bundle,environment:Environment.SANDBOX,signedTransactionInfo:'signed-tx'}};

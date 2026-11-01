@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "disposableDatabasesRemaining": 0,
+  "ownedPostgresStopped": true,
+  "qualificationHTTPServersStopped": true,
+  "rawReceiptsRetainedPrivately": true
+}

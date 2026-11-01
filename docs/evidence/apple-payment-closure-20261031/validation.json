@@ -1,0 +1,14 @@
+{
+  "siteTests": {
+    "status": "PASS",
+    "passed": 184,
+    "failed": 0,
+    "skipped": 0
+  },
+  "typecheck": "PASS",
+  "qualificationProductionBuild": "PASS",
+  "bundleAudit": "PASS",
+  "physicalRestoreTestBuild": "PASS",
+  "publication": "NOT RUN",
+  "liveCharges": 0
+}

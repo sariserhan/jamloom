@@ -1,6 +1,6 @@
 # Launch activation handoff — 2026-10-31
 
-**Release is held.** [Current preparation evidence](evidence/launch-preparation-20261031/report.md) records completed work. These are remaining steps, not an authorization to execute paid compute, publication or live sales. Research/scoring deferrals and owner music acceptance are unchanged.
+**Release is held.** [Current preparation evidence](evidence/apple-payment-closure-20261031/report.md) records completed work. These are remaining steps, not an authorization to execute paid compute, publication or live sales. Research/scoring deferrals and owner music acceptance are unchanged.
 
 ## 1. Resolve generation economics
 
@@ -18,8 +18,10 @@ Review settlement/tax/account configuration, then separately authorize product/p
 
 ## 3. Apple review and device qualification
 
-API access is resolved. App `6826480059` has both new products, exact USD 10/15 prices, English localization and USA-only availability. Both remain `MISSING_METADATA`; neither has a review screenshot. Confirm any additional required metadata in App Store Connect. Complete actual final purchase-screen screenshots and subscription disclosures, review account/instructions, server-notification environment URLs and tax/banking agreements. Do not use a simulated or hidden purchase screen as proof of a purchasable release UI.
+API access is resolved. App `6826480059` has both new products, exact USD 10/15 prices, English localization and USA-only availability. Both remain `MISSING_METADATA`; neither has a review screenshot. Confirm any additional required metadata in App Store Connect. Server-notification V2 URLs and missing Vercel Apple verification variables are now saved. Actual iPhone top-up/Creator purchases and Creator Restore pass with independent local HTTP receipt verification. The supplied IAP key works for sandbox TEST notifications; production API access currently returns401, consistent with the unreleased-app restriction documented by Apple. Complete actual final purchase-screen screenshots and subscription disclosures, review account/instructions and tax/banking agreements. Do not use a simulated or hidden purchase screen as proof of a purchasable release UI.
 
-Agent work: prepare the final approved purchase-enabled candidate, configure metadata/notification URLs, verify signed transaction/notification reconciliation and build/archive/export. Owner/device work: Apple sign-in or legal/tax acceptance when required, actual physical-iPhone sandbox purchase/renewal/restore/refund/account-sync interactions. Provider work: product/app review and approval. Local StoreKit fixtures do not replace these observations.
+Agent work: prepare the final approved purchase-enabled candidate, configure metadata/notification URLs, verify signed transaction/notification reconciliation and build/archive/export. Owner/device work: Apple sign-in or legal/tax acceptance when required, actual renewal/refund/account-sync interactions. The initial purchases and Creator Restore are complete. Provider work: product/app review and approval. Local StoreKit fixtures do not replace these observations.
 
 Current IPA `build-ios-store/export-0.11.0-35/Jamloom.ipa` is signed/audited but keeps purchases disabled; no upload or submission occurred. Its existing build 35 must not be represented as the final enabled release. Upload/submit only the final validated candidate after authorization. Website-first release does not require claiming App Store approval, and must not advertise native paid availability before it exists.
+
+Before App Review, qualify sandbox receipt handling against the deployed review configuration and corresponding test wallet. Current production-only receipt verification must not be assumed to accept App Review sandbox transactions. Sandbox notification isolation is already implemented and locally verified, but notification routing alone does not solve native review purchase delivery. Preserve the separation from live balances.

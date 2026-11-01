@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-31T19:40:03.539Z",
+  "project": "prj_5YKnovNWcvnyr3cBeVW4jNmRdRQP",
+  "status": "PASS",
+  "variables": [
+    {
+      "key": "APPLE_APP_ID",
+      "status": "ADDED_SENSITIVE"
+    },
+    {
+      "key": "APPLE_BUNDLE_ID",
+      "status": "ADDED_SENSITIVE"
+    },
+    {
+      "key": "APPLE_ENVIRONMENT",
+      "status": "ADDED_SENSITIVE"
+    },
+    {
+      "key": "APPLE_ROOT_CERTIFICATES_BASE64",
+      "status": "ADDED_SENSITIVE"
+    }
+  ],
+  "valuesLogged": false,
+  "existingVariablesPreserved": true,
+  "webhookSecretReplacement": "HELD until matching release",
+  "deployment": false,
+  "purchaseSwitchesChanged": false
+}

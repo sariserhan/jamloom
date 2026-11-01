@@ -2,7 +2,7 @@
 
 **Current credit catalog:** [Credit system and remaining activation gates](CREDIT_SYSTEM.md). Creator $15/300 monthly, $10/150 top-ups and 20 one-time trial credits are implemented across web/mobile website/iPhone. All paid credits are nonexpiring. Fixed generation prices replace the historical packs below for new sales. Stripe sandbox renewal/refund checks, local StoreKit and browser checks pass; live purchases/deployment remain held. Migration 0033 is applied with a private backup and 33 matching hashes.
 
-**Latest provider preparation:** inactive live Creator catalog, disabled credit webhook, Vercel Creator/Singing variables and priced Apple drafts are prepared. Signed iPhone 0.11.0 (35) is exported locally. Cost-cap compatibility fails; measured economics, deployed payment delivery, physical Apple sandbox and publication remain open. [Evidence](evidence/launch-preparation-20261031/report.md), [activation handoff](LAUNCH_ACTIVATION.md).
+**Latest provider/device preparation:** real iPhone top-up and Creator purchases plus Creator Restore pass; independent server/local authenticated HTTP replay grants 450 test credits exactly once. Signed Apple TEST notification verification passes locally. Apple V2 URLs and missing Vercel Apple variables are prepared, but public delivery still fails against the undeployed route. Creator live catalog/webhook remain inactive/disabled. Real renewal/refund notifications, native deployed transport, final Apple review and cost qualification remain open. [Latest evidence](evidence/apple-payment-closure-20261031/report.md), [activation handoff](LAUNCH_ACTIVATION.md).
 
 ## Earlier payment preparation — preserved history
 
