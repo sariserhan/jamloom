@@ -47,7 +47,8 @@ export function TasteNotebook(){
  useEffect(()=>{try{const old=localStorage.getItem('jamloom-taste-v1');if(old)setProfile(favoriteList(validateTaste(JSON.parse(old))));writable.current=true;}catch{setMessage('Saved favorites could not be read. You can start a new list.');}finally{setLoaded(true);}},[]);
  useEffect(()=>{if(!loaded||!writable.current)return;try{if(profile.references.length)localStorage.setItem('jamloom-taste-v1',JSON.stringify(profile));else localStorage.removeItem('jamloom-taste-v1');}catch{setMessage('Your list is available for this session, but this browser could not save it.');}},[profile,loaded]);
  useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;analysis.current?.abort();};},[]);
- useEffect(()=>{void fetch('/api/taste/song',{signal:AbortSignal.timeout(10000)}).then(r=>r.ok?r.json():null).then(data=>{if(mounted.current){setCanCreate(data?.creditsEnabled===true);if(data?.mode==='cloud'){setCloud(true);if(data.active){setJob(data.active);setRendering(true);}}}}).catch(()=>{if(mounted.current)setCanCreate(false);});},[]);
+ function refreshAvailability(){setCanCreate(null);void fetch('/api/taste/song',{signal:AbortSignal.timeout(10000)}).then(r=>r.ok?r.json():null).then(data=>{if(mounted.current){setCanCreate(data?.creditsEnabled===true&&data?.available===true);if(data?.mode==='cloud'){setCloud(true);if(data.active){setJob(data.active);setRendering(true);}}}}).catch(()=>{if(mounted.current)setCanCreate(false);});}
+ useEffect(()=>{refreshAvailability();},[]);
  useEffect(()=>{
   let stopped=false;
   void (async()=>{
@@ -131,6 +132,7 @@ export function TasteNotebook(){
    if(readiness.creditsEnabled===false)throw Error('Credit-backed generation is not enabled here yet. Listen to the examples below.');
    if(readiness.signedIn===false)throw Error('Sign in with a verified account to use your credits.');
    if(readiness.active||readiness.busy)throw Error('Your other song is still being made. Your favorites are saved; try again when it finishes.');
+   if(readiness.available!==true){setCanCreate(false);throw Error('Song creation is temporarily unavailable. Please try again shortly. Your credits have not been used.');}
    const resolved=quote?.key===selectionKey&&quote.expiresAt>Date.now()?profile:await resolveFavoriteMetadata(profile,controller.signal);controller.signal.throwIfAborted();setProfile(resolved);
    const key=favoriteKey({...resolved,referenceMetadata:resolved.referenceMetadata??[]})+':'+visibility;
    let accepted=quote?.key===key&&quote.expiresAt>Date.now()?quote:null;
@@ -195,6 +197,7 @@ export function TasteNotebook(){
  {canCreate!==true&&<p role="status">{canCreate===null?'Checking song availability…':'Song creation is currently unavailable. Build your favorites list and listen to examples below.'}</p>}
  {progress&&!promptOpen&&<GenerationProgress {...progress}/>}
  {rendering&&!promptOpen&&<button className="secondary" onClick={cancel}>Cancel composition</button>}
+ {canCreate===false&&<button className="secondary" disabled={locked} onClick={refreshAvailability}>Check availability</button>}
  {canCreate===true&&<small>One song each time · Ready in a few minutes</small>}
  <details className="dna-language"><summary>Song language <span>{(languages.languages as Record<string,string>)[profile.vocalLanguage??'auto']??'Automatic'}</span></summary>
  <label>Singing language<select disabled={locked||!loaded} value={profile.vocalLanguage??'auto'} onChange={e=>{writable.current=true;setProfile({...profile,vocalLanguage:e.target.value});}}><option value="auto">Choose from my favorites</option>{Object.entries(languages.languages).map(([code,label])=><option key={code} value={code}>{label}</option>)}</select></label>

@@ -53,7 +53,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
     dnaId=body.requestId;dnaSubmits++;await new Promise(resolve=>setTimeout(resolve,3000));dnaAccepted=true;return r.abort();
    }
    if(req.method()==='DELETE'){dnaCancelled=true;return r.fulfill({json:{state:'cancelled'}});}
-   if(!url.searchParams.has('id'))return r.fulfill({json:{mode:'cloud',creditsEnabled:true,signedIn:true,active:dnaAccepted&&!dnaCancelled?dnaId:null}});
+   if(!url.searchParams.has('id'))return r.fulfill({json:{mode:'cloud',available:true,creditsEnabled:true,signedIn:true,active:dnaAccepted&&!dnaCancelled?dnaId:null}});
    if(!dnaAccepted)return r.fulfill({status:404,json:{error:'Not yet accepted'}});
    return r.fulfill({json:{id:dnaId,state:dnaCancelled?'cancelled':'queued'}});
   });

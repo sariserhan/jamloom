@@ -32,7 +32,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   let searches=0;const quotes=[],submissions=[];
   await page.route('**/api/music-search',async route=>{searches++;const query=route.request().postDataJSON().query;const reference=query.replace(' Test artist',' — Test artist');await route.fulfill({json:{suggestions:[{reference,metadata:{reference,genre:'Jazz',source:'itunes'}}]}});});
   await page.route('**/api/taste/song*',async route=>{
-   if(route.request().method()==='GET')return route.fulfill({json:{mode:'local',signedIn:true,creditsEnabled:true}});
+   if(route.request().method()==='GET')return route.fulfill({json:{mode:'local',available:true,signedIn:true,creditsEnabled:true}});
    const body=route.request().postDataJSON();
    if(body.action==='quote'){quotes.push(body);return route.fulfill({json:{credits:3,token:'local-quote-fixture',expiresAt:Date.now()+60000}});}
    submissions.push(body);await route.fulfill({status:409,json:{error:'Qualification stopped before generation'}});

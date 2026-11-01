@@ -1,4 +1,5 @@
 import {checkedDnaStyle} from './dna-style';
+import {hasReadySongWorker,SONG_CAPACITY_MESSAGE} from './cloud-readiness';
 import {songDurations,savedSongDuration,MAX_SONG_BYTES} from './song-duration';
 import {improviseDirection} from './improvise-direction';
 import {cloudPersonalFeedback} from './cloud-song-feedback';
@@ -47,6 +48,18 @@ export class CloudSongs{
   const review=this.config.review;
   if(review&&(!review.enabled||review.expiresAt<=Date.now()||!review.owners.includes(owner)))throw new AudioError('This review generation allowance is unavailable.',503);
  }
+ private async capacityAvailable(){
+  if(!this.config.productionProfile)return true;
+  if((await this.commerce.pool.query("SELECT 1 FROM cloud_song_runs c JOIN dna_song_jobs d ON d.id=c.id WHERE c.endpoint=$1 AND d.state IN ('queued','running') LIMIT 1",[this.config.endpoint])).rowCount)return false;
+  return await this.provider.dispatchEnabled()&&hasReadySongWorker(await this.provider.health());
+ }
+ async available(owner:string|null){
+  try{this.assertNewRequestAllowed(owner??'');return await this.capacityAvailable();}catch{return false;}
+ }
+ async assertCapacityReady(){
+  let ready=false;try{ready=await this.capacityAvailable();}catch{/* Provider uncertainty closes admission, without changing existing jobs. */}
+  if(!ready)throw new AudioError(SONG_CAPACITY_MESSAGE,503);
+ }
  async upload(owner:string,value:Record<string,unknown>){
   this.assertNewRequestAllowed(owner);
   const {bytes,sha256}=sourceReceipt(value),id=randomUUID().replaceAll('-',''),key=`uploads/${randomUUID()}.wav`;
@@ -72,6 +85,7 @@ export class CloudSongs{
    return {id,state:prior.state};
   }
   this.assertNewRequestAllowed(owner);
+  await this.assertCapacityReady();
   if(this.config.review&&visibility!=='private')throw new AudioError('Review generations must stay private.');
   let source:any;
   if(this.commerce.product==='improvise'){
@@ -87,6 +101,8 @@ export class CloudSongs{
   }
   await this.commerce.submit(owner,id,input,visibility,token,async db=>{
    await db.query("SELECT pg_advisory_xact_lock(hashtextextended('jamloom-cloud-daily-cap',0))");
+   if(this.config.productionProfile&&(await db.query("SELECT 1 FROM cloud_song_runs c JOIN dna_song_jobs d ON d.id=c.id WHERE c.endpoint=$1 AND d.state IN ('queued','running') LIMIT 1",[this.config.endpoint])).rowCount)
+    throw new AudioError(SONG_CAPACITY_MESSAGE,503);
    if(this.config.review){
     this.assertNewRequestAllowed(owner);
     const review=this.config.review;

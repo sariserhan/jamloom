@@ -13,8 +13,7 @@ export async function cloudSongAPI(request:Request,songs:CloudSongs,owner:string
  try{
   if(request.method==='GET'&&view)return storedDnaSong(request,{commerce:songs.commerce,owner,readOnly:true,origin});
   if(request.method==='GET'&&!id){
-   let available=true;
-   try{songs.assertNewRequestAllowed(owner??'');}catch(error){if(!(error instanceof AudioError))throw error;available=false;}
+   const available=await songs.available(owner);
    const active=owner?(await songs.commerce.pool.query("SELECT id FROM dna_song_jobs WHERE owner_id=$1 AND product=$2 AND billing_live=$3 AND state IN ('queued','running') ORDER BY created_at DESC LIMIT 1",[owner,songs.commerce.product,!!songs.commerce.options.live])).rows[0]?.id:undefined;
    return json({available,creditsEnabled:true,signedIn:!!owner,mode:'cloud',active,balance:owner?await songs.commerce.wallet.balance(owner):null});
   }
@@ -37,7 +36,7 @@ export async function cloudSongAPI(request:Request,songs:CloudSongs,owner:string
   if(!body||typeof body!=='object'||Array.isArray(body))throw new AudioError('Invalid song request.');
   if(body.action==='upload'&&songs.commerce.product==='improvise')return json(await songs.upload(owner,body));
   const input=await songs.input(owner,body.profile),visibility=visibilityInput(body.visibility,body.publicConsent);
-  if(body.action==='quote')return json(await songs.commerce.quote(owner,input,visibility));
+  if(body.action==='quote'){await songs.assertCapacityReady();return json(await songs.commerce.quote(owner,input,visibility));}
   if(body.action!=='submit')throw new AudioError('Review the price before making your song.');
   const result=await songs.submit(owner,body.requestId,input,visibility,body.token,songs.commerce.product==='music-dna'&&(!(input as {vocalLanguage?:string}).vocalLanguage||(input as {vocalLanguage?:string}).vocalLanguage==='auto')?await songCountry(request):null);schedule(result.id);return json(result,202);
  }catch(error){

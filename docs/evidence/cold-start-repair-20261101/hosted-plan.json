@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "preparedAt": "2026-11-01T20:13:51.193700+00:00",
   "scope": "One cold-start deployed Music DNA check after preserving existing verified model/dependency image layers",
   "workerSourceCommit": "ff6d4836bcd8768497012f94f8106fa86ee17935",
@@ -88,5 +88,8 @@
   "productionProfileSHA256": "68ed547196bfa3d73957e3850bb8ced753f34dd5dbce255e7ac6ded4a3940014",
   "ownerApproval": "Approve one new check, up to $3",
   "approvedAt": "2026-11-01T20:28:23.857054+00:00",
-  "implementationCommit": "2878d52220aba59a6de1c71773cb5984f4e03b20"
+  "implementationCommit": "2878d52220aba59a6de1c71773cb5984f4e03b20",
+  "result": "FAIL",
+  "resultEvidence": "execution.json",
+  "cleanup": "PASS"
 }

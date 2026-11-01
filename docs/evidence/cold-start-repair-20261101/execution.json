@@ -1,0 +1,30 @@
+{
+  "status": "FAIL",
+  "permitStatus": "CONSUMED",
+  "activatedAt": "2026-11-01T20:30:50.074Z",
+  "submittedAt": "2026-11-01T20:30:51.603Z",
+  "maxUSD": 3,
+  "maxRequests": 1,
+  "retries": 0,
+  "prewarm": false,
+  "sourceCommit": "fd1743682fd517091e4c325e860e47de4a306b77",
+  "deployment": {
+    "id": "dpl_DCcrz1X2Ty3ibY9KT3QgsvrPjTLf",
+    "url": "https://jamloom-drevy6kf8-ssari.vercel.app",
+    "inspectorUrl": "https://vercel.com/ssari/jamloom/DCcrz1X2Ty3ibY9KT3QgsvrPjTLf",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_DCcrz1X2Ty3ibY9KT3QgsvrPjTLf"
+  },
+  "salesEnabled": false,
+  "finishedAt": "2026-11-01T20:41:58.231Z",
+  "reason": "Request expired in queue before model execution; L4 worker remained throttled.",
+  "requestsSubmitted": 1,
+  "providerRetries": 0,
+  "executionObserved": false,
+  "durationSeconds": 114,
+  "testCreditsFullyReleased": 20,
+  "cleanup": "PASS",
+  "heldDeployment": "https://jamloom-18l3qbucq-ssari.vercel.app",
+  "billing": "PROVISIONAL; provider has not reported worker billing rows"
+}

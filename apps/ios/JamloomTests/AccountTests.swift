@@ -356,7 +356,7 @@ private final class AccountProtocol: URLProtocol {
             if url.path == "/api/auth/sign-in/email" { return (200, Data("{\"user\":{\"id\":\"\(user)\",\"email\":\"test@example.test\"}}".utf8)) }
             if url.path == "/api/account" { return (200, Data("{\"user\":{\"id\":\"\(user)\",\"email\":\"test@example.test\"},\"balance\":{\"available\":20,\"reserved\":0},\"purchasesReleased\":false}".utf8)) }
             XCTAssertEqual(url.path, "/api/taste/song")
-            if request.httpMethod == "GET" { return (200, Data((url.query == nil ? "{\"creditsEnabled\":true,\"signedIn\":true}" : "{\"id\":\"\(submitted)\",\"state\":\"completed\"}").utf8)) }
+            if request.httpMethod == "GET" { return (200, Data((url.query == nil ? "{\"available\":true,\"creditsEnabled\":true,\"signedIn\":true}" : "{\"id\":\"\(submitted)\",\"state\":\"completed\"}").utf8)) }
             var data = request.httpBody ?? Data()
             if let stream = request.httpBodyStream { stream.open(); defer { stream.close() }; var bytes = [UInt8](repeating: 0, count: 4096); while stream.hasBytesAvailable { let count = stream.read(&bytes, maxLength: bytes.count); if count <= 0 { break }; data.append(contentsOf: bytes.prefix(count)) } }
             let body = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any]), input = try XCTUnwrap(body["profile"] as? [String: Any])
@@ -400,7 +400,7 @@ private final class AccountProtocol: URLProtocol {
             if url.path == "/api/auth/sign-in/email" { return (200, Data("{\"user\":{\"id\":\"\(user)\",\"email\":\"test@example.test\"}}".utf8)) }
             if url.path == "/api/account" { return (200, Data("{\"user\":{\"id\":\"\(user)\",\"email\":\"test@example.test\"},\"balance\":{\"available\":20,\"reserved\":0},\"purchasesReleased\":false}".utf8)) }
             if request.httpMethod == "GET" {
-                return (200, Data((url.query == nil ? "{\"creditsEnabled\":true,\"signedIn\":true}" : "{\"id\":\"\(submittedID)\",\"state\":\"completed\"}").utf8))
+                return (200, Data((url.query == nil ? "{\"available\":true,\"creditsEnabled\":true,\"signedIn\":true}" : "{\"id\":\"\(submittedID)\",\"state\":\"completed\"}").utf8))
             }
             var data = request.httpBody ?? Data()
             if let stream = request.httpBodyStream { stream.open(); defer { stream.close() }; var bytes = [UInt8](repeating: 0, count: 4096); while stream.hasBytesAvailable { let count = stream.read(&bytes, maxLength: bytes.count); if count <= 0 { break }; data.append(contentsOf: bytes.prefix(count)) } }
@@ -466,12 +466,18 @@ private final class AccountProtocol: URLProtocol {
         do { let _: CloudSongModel.Job = try await transport.request("/api/improvise/song", method: "POST"); XCTFail("Expected credit failure") }
         catch let error as SongRequestError { XCTAssertEqual(error.status, 402); XCTAssertEqual(error.message, "You need more credits.") }
     }
+    func testCloudAdmissionRequiresReadyCapacityEvenWithCreditsEnabled() throws {
+        for body in [#"{"creditsEnabled":true}"#, #"{"creditsEnabled":true,"available":false}"#, #"{"creditsEnabled":false,"available":true}"#] {
+            XCTAssertFalse(try JSONDecoder().decode(CloudSongModel.Availability.self, from: Data(body.utf8)).canCreate)
+        }
+        XCTAssertTrue(try JSONDecoder().decode(CloudSongModel.Availability.self, from: Data(#"{"creditsEnabled":true,"available":true}"#.utf8)).canCreate)
+    }
     func testCloudUnavailableAndNoConsentNeverUpload() async throws {
         let account = AccountModel(transport: transport()), cloud = CloudSongModel()
         var calls = 0
         AccountProtocol.handle = { request in
             calls += 1; XCTAssertEqual(request.httpMethod, "GET"); XCTAssertEqual(request.url?.path, "/api/improvise/song")
-            return (200, Data("{\"available\":false,\"creditsEnabled\":false}".utf8))
+            return (200, Data("{\"available\":false,\"creditsEnabled\":true}".utf8))
         }
         await cloud.connect(account)
         XCTAssertFalse(cloud.available)

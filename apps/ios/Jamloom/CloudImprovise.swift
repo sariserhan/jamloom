@@ -41,7 +41,10 @@ enum CloudSongProduct: String {
 }
 
 @MainActor final class CloudSongModel: ObservableObject {
-    struct Availability: Decodable, Sendable { let creditsEnabled: Bool?; let signedIn: Bool?; let active: String? }
+    struct Availability: Decodable, Sendable {
+        let available: Bool?; let creditsEnabled: Bool?; let signedIn: Bool?; let active: String?
+        var canCreate: Bool { available == true && creditsEnabled == true }
+    }
     struct Quote: Decodable, Sendable { let credits: Int; let token: String; let expiresAt: Double }
     struct Job: Decodable, Sendable { let id: String?; let state: String?; let phase: String?; let cancelling: Bool?; let styleMatch: String? }
     @Published var genre = "surprise"
@@ -87,12 +90,12 @@ enum CloudSongProduct: String {
         owner = account.snapshot?.user.id; transport = account.transport
         do {
             let status: Availability = try await account.transport.request(product.path)
-            available = status.creditsEnabled == true
+            available = status.canCreate
             if owner != nil {
                 let saved = status.active ?? UserDefaults.standard.string(forKey: historyKey)
                 if let saved, saved.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil { job = saved; state = "reconnecting"; watch() }
             }
-            if !available { message = "Cloud song creation is not open yet. Your inputs stay here."; return }
+            if !available { message = "New song creation is temporarily unavailable. Your inputs stay here."; return }
             guard owner != nil, status.signedIn == true else { message = "Sign in to make a cloud song."; return }
             message = ""
         } catch { available = false; message = error.localizedDescription }
@@ -264,6 +267,9 @@ struct CloudSongActions: View {
             Label(cloud.keepPrivate ? "Only you can listen. Private and public songs cost the same." : "Your finished song appears in Community on the website and app.", systemImage: cloud.keepPrivate ? "lock.fill" : "globe").font(.footnote).foregroundStyle(.secondary)
         }
         if !cloud.message.isEmpty { Text(cloud.message).accessibilityIdentifier("cloudSongStatus") }
+        if !cloud.available && !cloud.active {
+            Button("Check availability") { Task { await cloud.connect(account) } }.disabled(cloud.busy)
+        }
         if cloud.active {
             ProgressView(cloud.state.capitalized)
             Button("Cancel song", role: .destructive) { Task { await cloud.cancel() } }
@@ -277,7 +283,7 @@ struct CloudSongActions: View {
         } else if ["failed", "cancelled"].contains(cloud.state) {
             Button("Try another song") { cloud.newSong() }
         } else if let price = cloud.quote {
-            Button("Create song · \(price.credits) credits", systemImage: "sparkles") { Task { await cloud.submit() } }.buttonStyle(.borderedProminent).disabled(cloud.controlsLocked || !cloud.consent)
+            Button("Create song · \(price.credits) credits", systemImage: "sparkles") { Task { await cloud.submit() } }.buttonStyle(.borderedProminent).disabled(cloud.controlsLocked || !cloud.consent || !cloud.available)
             Button("Change choices") { cloud.invalidateQuote() }
         } else {
             Button(reviewTitle, systemImage: "sparkles", action: review)

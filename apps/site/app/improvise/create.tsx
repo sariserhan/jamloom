@@ -21,8 +21,11 @@ export function ImproviseCreate(){
  useEffect(()=>{if(open)dialog.current?.showModal();else dialog.current?.close();},[open]);
  useEffect(()=>{
   try{const id=localStorage.getItem(historyKey);if(id&&/^[a-f0-9]{32}$/.test(id))setJob(id);}catch{}
-  void fetch(endpoint,{signal:AbortSignal.timeout(10000)}).then(r=>r.ok?r.json():null).then(data=>{if(alive.current){setCanCreate(data?.creditsEnabled===true);if(data?.active)setJob(data.active);}}).catch(()=>{if(alive.current)setCanCreate(false);});
+  refreshAvailability();
  },[]);
+ function refreshAvailability(){
+  setCanCreate(null);void fetch(endpoint,{signal:AbortSignal.timeout(10000)}).then(r=>r.ok?r.json():null).then(data=>{if(alive.current){setCanCreate(data?.creditsEnabled===true&&data?.available===true);if(data?.active)setJob(data.active);}}).catch(()=>{if(alive.current)setCanCreate(false);});
+ }
  useEffect(()=>{
   if(!job)return;let stopped=false,timer:ReturnType<typeof setTimeout>;const checkingUntil=Date.now()+60000;
   try{localStorage.setItem(historyKey,job);}catch{}
@@ -59,6 +62,7 @@ export function ImproviseCreate(){
    if(!status.creditsEnabled)throw Error('Song creation is not open here yet. Your recording stays on your device.');
    if(!status.signedIn)throw Error('Sign in with a verified account first.');
    if(status.active){setJob(status.active);setOpen(false);return;}
+   if(status.available!==true){setCanCreate(false);throw Error('Song creation is temporarily unavailable. Please try again shortly. Your credits have not been used.');}
    if(!sourceId.current){
     const source=await songRecording(file);upload.current.signal.throwIfAborted();
     // The final Generate action confirms sending this recording for processing.
@@ -82,6 +86,7 @@ export function ImproviseCreate(){
  }
  return <section id="improvise-create" className="improvise-create" aria-label="Create with Improvise">
   {canCreate!==true&&<p role="status">{canCreate===null?'Checking song availability…':'Song creation is currently unavailable. Listen to examples below, or try free Local Remixes. Your recording stays on your device.'}</p>}
+  {canCreate===false&&<button className="secondary" disabled={locked} onClick={refreshAvailability}>Check availability</button>}
   <div className="studio-grid">
    <section className="capture-panel" aria-labelledby="improvise-sound-title">
     <div className="panel-heading"><h2 id="improvise-sound-title">Your sound</h2><span className="step-label">01 / Capture</span></div>

@@ -1,0 +1,47 @@
+{
+  "status": "PASS local checks; deployment pending",
+  "at": "2026-11-01T20:45:00.016685+00:00",
+  "siteTests": 202,
+  "focusedDatabaseAndProfileTests": 24,
+  "typecheck": "PASS",
+  "productionBuild": "PASS",
+  "bundleAudit": "PASS",
+  "nativeAccountTests": {
+    "passed": 22,
+    "skipped": 2,
+    "failures": 0,
+    "skips": "Explicit live/local HTTP integration tests require their separate harnesses; not claimed passed"
+  },
+  "nativeArchive": {
+    "version": "0.11.0",
+    "build": 38,
+    "status": "PASS",
+    "appleProcessing": "NOT RUN"
+  },
+  "browser": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "unavailableBeforeCreditHold": true,
+      "manualRecovery": true,
+      "favoritesPreserved": true,
+      "recordingAndStylePreserved": true,
+      "activeJobResumesWhileUnavailable": true,
+      "posts": 0,
+      "consoleErrors": []
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "unavailableBeforeCreditHold": true,
+      "manualRecovery": true,
+      "favoritesPreserved": true,
+      "recordingAndStylePreserved": true,
+      "activeJobResumesWhileUnavailable": true,
+      "posts": 0,
+      "consoleErrors": []
+    }
+  ],
+  "providerFixtures": true,
+  "paidCompute": false
+}
