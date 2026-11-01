@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "deployment": {
+    "id": "dpl_F5b4g9j1mwjP6qVw9SRCiVKNJqsX",
+    "url": "https://jamloom-j0m6mbgem-ssari.vercel.app",
+    "inspectorUrl": "https://vercel.com/ssari/jamloom/F5b4g9j1mwjP6qVw9SRCiVKNJqsX",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_F5b4g9j1mwjP6qVw9SRCiVKNJqsX"
+  },
+  "authenticatedReviewAccount": true,
+  "purchasesReleased": false,
+  "testBalance": 0,
+  "nativeReceiptDelivery": "NOT RUN yet"
+}

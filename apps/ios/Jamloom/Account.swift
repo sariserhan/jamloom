@@ -296,7 +296,7 @@ struct AccountTaste: Decodable { let profile: TasteProfile; let revision: Int }
         let response: Receipt = try await transport.request("/api/payments/apple", method: "POST", body: JSONSerialization.data(withJSONObject: ["action": "verify", "signedTransaction": jws]))
         guard response.delivered, UUID(uuidString: response.lotId) != nil else { throw URLError(.cannotParseResponse) }
     }
-    private func deliverPurchase(_ result: VerificationResult<StoreKit.Transaction>) async throws {
+    func deliverPurchase(_ result: VerificationResult<StoreKit.Transaction>) async throws {
         let token = try await purchaseToken()
         if case .verified(let transaction) = result, transaction.productID == CreditPurchases.singingProduct {
             try await singingPurchases.deliverVerified(result, accountToken: token, deliver: acknowledgeCourse)

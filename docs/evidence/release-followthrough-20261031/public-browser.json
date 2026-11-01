@@ -1,0 +1,100 @@
+[
+  {
+    "width": 1440,
+    "title": "Privacy and recording · Jamloom",
+    "imageDecode": [
+      {
+        "name": "music-dna",
+        "width": 594,
+        "height": 423
+      },
+      {
+        "name": "improvise",
+        "width": 1326,
+        "height": 499
+      },
+      {
+        "name": "dj-studio",
+        "width": 584,
+        "height": 755
+      },
+      {
+        "name": "singing-academy",
+        "width": 998,
+        "height": 516
+      },
+      {
+        "name": "academy",
+        "width": 1376,
+        "height": 957
+      },
+      {
+        "name": "ai-dj",
+        "width": 1440,
+        "height": 765
+      },
+      {
+        "name": "live-dj",
+        "width": 1142,
+        "height": 451
+      },
+      {
+        "name": "local-remixes",
+        "width": 1326,
+        "height": 441
+      }
+    ],
+    "privacyNavigation": "PASS",
+    "pageErrors": [],
+    "horizontalOverflow": false
+  },
+  {
+    "width": 390,
+    "title": "Privacy and recording · Jamloom",
+    "imageDecode": [
+      {
+        "name": "music-dna",
+        "width": 594,
+        "height": 423
+      },
+      {
+        "name": "improvise",
+        "width": 1326,
+        "height": 499
+      },
+      {
+        "name": "dj-studio",
+        "width": 584,
+        "height": 755
+      },
+      {
+        "name": "singing-academy",
+        "width": 998,
+        "height": 516
+      },
+      {
+        "name": "academy",
+        "width": 1376,
+        "height": 957
+      },
+      {
+        "name": "ai-dj",
+        "width": 1440,
+        "height": 765
+      },
+      {
+        "name": "live-dj",
+        "width": 1142,
+        "height": 451
+      },
+      {
+        "name": "local-remixes",
+        "width": 1326,
+        "height": 441
+      }
+    ],
+    "privacyNavigation": "PASS",
+    "pageErrors": [],
+    "horizontalOverflow": false
+  }
+]

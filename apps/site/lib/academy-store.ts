@@ -4,9 +4,11 @@ import {siteSettings} from './site-settings';
 import {adminAccount} from './admin-access';
 import {academyLesson,ACADEMY_VERSION} from './academy-content';
 import {evaluateTask,EVALUATOR_VERSION} from '../../web/academy-evaluator.js';
+import {appleReviewAccount} from './apple-review';
 export class AcademyStore {
  constructor(private pool:Pool){}
  async access(owner:string,db:Pool|PoolClient=this.pool,live?:boolean,course:AcademyProduct='academy-complete'){
+  if(appleReviewAccount(owner))live=false;
   live??=(await siteSettings(db)).billing_mode==='live';
   return !!(await db.query('SELECT 1 FROM academy_purchases WHERE owner_id=$1 AND sandbox=$2 AND product_key=$3 AND NOT refund_hold AND NOT dispute_hold LIMIT 1',[owner,!live,academyProductKey(course)])).rowCount;
  }

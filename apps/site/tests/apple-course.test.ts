@@ -15,6 +15,14 @@ test('Apple course purchase and restore are account-bound, idempotent, refund-sa
   const grant=()=>grantAppleCourse(verifier,pool,'learner','verified-test-fixture',bundle);
   assert.deepEqual(await Promise.all([grant(),grant(),grant()]),Array(3).fill('apple_sandbox:123456'));
   assert.equal(await store.access('learner',pool,false,'singing-complete'),true);assert.equal(await store.access('learner',pool,true,'singing-complete'),false);assert.equal(await store.access('learner',pool,false),false);
+  const reviewKeys=['JAMLOOM_APPLE_REVIEW_ENABLED','JAMLOOM_APPLE_REVIEW_USER_IDS','JAMLOOM_APPLE_REVIEW_EXPIRES_AT'] as const,previous=reviewKeys.map(key=>process.env[key]);
+  try{
+   Object.assign(process.env,{JAMLOOM_APPLE_REVIEW_ENABLED:'true',JAMLOOM_APPLE_REVIEW_USER_IDS:'learner',JAMLOOM_APPLE_REVIEW_EXPIRES_AT:new Date(Date.now()+3600000).toISOString()});
+   assert.equal(await store.access('learner',pool,true,'singing-complete'),true,'Allowlisted reviewer uses the sandbox course even with production defaults');
+   assert.equal(await store.access('other',pool,true,'singing-complete'),false,'Review access does not spill into other accounts');
+   process.env.JAMLOOM_APPLE_REVIEW_EXPIRES_AT=new Date(Date.now()-1000).toISOString();
+   assert.equal(await store.access('learner',pool,true,'singing-complete'),false,'Expired review configuration cannot unlock the live course');
+  }finally{reviewKeys.forEach((key,i)=>{if(previous[i]===undefined)delete process.env[key];else process.env[key]=previous[i];});}
   await assert.rejects(grantAppleCourse(verifier,pool,'other','verified-test-fixture',bundle));
   tx={...original,appAccountToken:await wallet.accountToken('other')};await assert.rejects(grantAppleCourse(verifier,pool,'other','verified-test-fixture',bundle),/conflict/);
   for(const patch of [{price:3900},{price:79990},{currency:'EUR'},{quantity:2},{offerType:1},{revocationDate:1},{revocationReason:0},{appAccountToken:undefined},{environment:Environment.PRODUCTION},{inAppOwnershipType:'FAMILY_SHARED'},{type:Type.CONSUMABLE},{originalTransactionId:'not-a-receipt'},{bundleId:'wrong'}]){tx={...original,...patch};await assert.rejects(grant());}

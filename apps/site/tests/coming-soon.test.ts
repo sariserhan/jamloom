@@ -67,12 +67,12 @@ test('Apple notification URLs reach signature verification during launch and mai
  try{
   Object.assign(process.env,{DATABASE_URL:'postgresql://fixture@127.0.0.1:1/never-connect',BETTER_AUTH_URL:'http://127.0.0.1:3000',BETTER_AUTH_SECRET:'isolated-notification-routing-secret',JAMLOOM_LOCAL_OUTBOX:'/tmp/jamloom-notification-routing'});
   delete process.env.VERCEL;
-  for(const path of ['/api/payments/apple/notifications','/api/payments/apple/notifications/sandbox']){
+  for(const path of ['/api/payments/apple','/api/payments/apple/notifications','/api/payments/apple/notifications/sandbox']){
    assert.equal(comingSoonRecovery(path),true);
    const response=await proxy(new NextRequest('https://www.jamloom.com'+path,{method:'POST'}));
    assert.equal(response.headers.get('x-middleware-next'),'1','Webhooks must not query maintenance/session state before signature verification');
   }
-  for(const path of ['/api/payments/apple','/api/payments/apple/notifications/fake','/api/payments/apple/notifications/sandbox/fake'])assert.equal(comingSoonRecovery(path),false);
+  for(const path of ['/api/payments/apple/fake','/api/payments/apple/notifications/fake','/api/payments/apple/notifications/sandbox/fake'])assert.equal(comingSoonRecovery(path),false);
  }finally{for(const key of Object.keys(process.env))if(!(key in previous))delete process.env[key];Object.assign(process.env,previous);}
 });
 
@@ -137,4 +137,12 @@ test('credits account page reaches its own authentication during preview without
  assert.equal((await proxy(new NextRequest('https://www.jamloom.com/account/credits'))).headers.get('x-middleware-next'),'1');
  for(const path of ['/api/payments/checkout','/api/payments/subscription','/account/credits/fake'])
   assert.equal((await proxy(new NextRequest('https://www.jamloom.com'+path))).status,path.startsWith('/api/')?503:307,path);
+});
+
+test('Apple receipt recovery reaches authenticated verification during preview while new checkout stays closed',async()=>{
+ assert.equal(comingSoonRecovery('/api/payments/apple'),true);
+ const response=await proxy(new NextRequest('https://www.jamloom.com/api/payments/apple',{method:'POST',body:'{"action":"account-token"}'}));
+ assert.equal(response.headers.get('x-middleware-next'),'1');
+ for(const path of ['/api/payments/apple/fake','/api/payments/checkout','/api/payments/subscription'])
+  assert.equal((await proxy(new NextRequest('https://www.jamloom.com'+path,{method:'POST'}))).status,503,path);
 });

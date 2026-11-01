@@ -8,7 +8,7 @@ import UIKit
 @MainActor final class PurchaseTests: XCTestCase {
     func testLiveSandboxReceiptWhenExplicitlyRequested() async throws {
         let env = ProcessInfo.processInfo.environment
-        try XCTSkipUnless(["purchase", "acknowledge", "restore", "refund"].contains(env["JAMLOOM_APPLE_SANDBOX"] ?? ""), "Explicit Apple sandbox qualification only")
+        try XCTSkipUnless(["purchase", "acknowledge", "restore", "refund", "server"].contains(env["JAMLOOM_APPLE_SANDBOX"] ?? ""), "Explicit Apple sandbox qualification only")
         #if targetEnvironment(simulator)
         throw XCTSkip("Physical sandbox device required")
         #else
@@ -30,6 +30,29 @@ import UIKit
         let executable = try XCTUnwrap(Bundle.main.executableURL)
         let actualHash = SHA256.hash(data: try Data(contentsOf: executable)).map { String(format: "%02x", $0) }.joined()
         guard expectedHash.count == 64, actualHash == expectedHash else { XCTFail("Development-signing preflight required for this exact test host"); return }
+        if env["JAMLOOM_APPLE_SANDBOX"] == "server" {
+            guard id == CreditPurchases.creatorProduct else { XCTFail("Only the existing sandbox subscription is used for deployed transport"); return }
+            let expected = try XCTUnwrap(UInt64(env["JAMLOOM_APPLE_ACK_TRANSACTION"] ?? ""))
+            let transport = AccountTransport(), account = AccountModel(transport: transport)
+            defer { transport.clearCookies(); transport.session.invalidateAndCancel() }
+            await account.signIn(email: try XCTUnwrap(env["JAMLOOM_REVIEW_EMAIL"]), password: try XCTUnwrap(env["JAMLOOM_REVIEW_PASSWORD"]))
+            guard account.snapshot?.sandboxReview == true, account.snapshot?.user.id == env["JAMLOOM_REVIEW_USER_ID"] else { XCTFail("Expected authenticated deployed review account"); return }
+            XCTAssertFalse(account.canPurchase, "This receipt check must not open customer sales")
+            for await value in Transaction.all {
+                if case .verified(let transaction) = value, transaction.id == expected {
+                    guard transaction.environment == .sandbox, transaction.appAccountToken == token, transaction.productID == id else { XCTFail("Sandbox transport mismatch"); return }
+                    try await account.deliverPurchase(value)
+                    let balance = try XCTUnwrap(account.snapshot?.balance.available)
+                    XCTAssertGreaterThanOrEqual(balance, 300)
+                    try await account.deliverPurchase(value)
+                    XCTAssertEqual(account.snapshot?.balance.available, balance, "Duplicate native delivery must not grant twice")
+                    XCTAssertEqual(account.snapshot?.balance.reserved, 0)
+                    await account.signOut(); XCTAssertNil(account.snapshot)
+                    return
+                }
+            }
+            XCTFail("Existing sandbox Creator receipt unavailable"); return
+        }
         if env["JAMLOOM_APPLE_SANDBOX"] == "refund" {
             let expected = try XCTUnwrap(UInt64(env["JAMLOOM_APPLE_ACK_TRANSACTION"] ?? ""))
             let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first { $0.activationState == .foregroundActive })

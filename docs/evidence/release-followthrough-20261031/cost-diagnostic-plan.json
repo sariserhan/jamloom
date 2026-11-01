@@ -1,5 +1,5 @@
 {
-  "status": "AUTHORIZED_NOT_RUN",
+  "status": "RUNNING_STAGE_1",
   "scope": "Diagnostic only: test whether the accepted model can satisfy the unchanged credit catalog on L4; not a production cost qualification",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:14b230760c1ab28a67bd2a596d179df2849025b7035a8a69b7fe203ef325dee1",
   "endpoint": "jl77hn92npt65k",
@@ -92,5 +92,7 @@
     "apps/site/scripts/neural-study-input.ts": "3b2422f33e157e4c0cbd079e27f24d72bf4e7b6693d88f0b7a86e2f87c7923a5"
   },
   "ownerApproval": "Approve diagnostic, up to $6",
-  "approvalLimitsUnchanged": true
+  "approvalLimitsUnchanged": true,
+  "executionSourceCommit": "86034e2d",
+  "stage1Evidence": "docs/evidence/improvise-finish/cloud/2026-11-01T03-21-00.252Z/trial-result.json"
 }

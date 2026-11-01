@@ -1,10 +1,12 @@
 import {academyProductKey} from '../../../../lib/academy-products';
+import {appleReviewAccount} from '../../../../lib/apple-review';
 import {services,accountsConfigured} from '../../../../lib/services';import {academyStripe,billingReadiness,billingPublishableKey} from '../../../../lib/billing-mode';import {siteSettings} from '../../../../lib/site-settings';import {academyCheckout} from '../../../../lib/academy-payments';import {boundedAuthRequest} from '../../../../lib/bounded-request';
 export const runtime='nodejs';
 export async function POST(request:Request){
  if(!accountsConfigured())return Response.json({error:'Academy purchases are not open. The introduction remains free.'},{status:503});
  const {auth,pool,config}=services();if(request.headers.get('origin')!==config.baseURL)return new Response(null,{status:403});
  const session=await auth.api.getSession({headers:request.headers});if(!session?.user.emailVerified)return new Response(null,{status:401});
+ if(appleReviewAccount(session.user.id))return Response.json({error:'This App Review account uses Apple sandbox purchases.'},{status:403});
  const bounded=await boundedAuthRequest(request);if(!bounded)return new Response(null,{status:413});
  try{const data=await bounded.json();if(typeof data.key!=='string'||Object.keys(data).length!==1)throw new Error('Invalid request');
   const course=academyProductKey(new URL(request.url).searchParams.get('course'));

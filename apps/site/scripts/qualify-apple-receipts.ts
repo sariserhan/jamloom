@@ -97,6 +97,7 @@ try{
    const customer=await (await fetch(base+'/api/account',{headers:{cookie:customerCookie}})).json();assert.equal(customer.sandboxReview,false);assert.equal(customer.balance.available,0);
    assert.equal((await send('/api/payments/checkout',{pack:'topup',key:'review-test'},reviewCookie)).status,403);
    assert.equal((await send('/api/payments/subscription',{action:'subscribe',key:'review-test'},reviewCookie)).status,403);
+   assert.equal((await send('/api/academy/checkout?course=singing-complete',{key:'review-test'},reviewCookie)).status,403);
    await send('/api/auth/sign-out',{},reviewCookie);await send('/api/auth/sign-out',{},customerCookie);
   }
  }

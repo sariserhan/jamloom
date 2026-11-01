@@ -1,0 +1,27 @@
+{
+  "deployment": {
+    "id": "dpl_8CXN8rX1C5YyKRA2yBRDNGFJK4Ri",
+    "url": "https://jamloom-kd5j7fh5r-ssari.vercel.app",
+    "inspectorUrl": "https://vercel.com/ssari/jamloom/8CXN8rX1C5YyKRA2yBRDNGFJK4Ri",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_8CXN8rX1C5YyKRA2yBRDNGFJK4Ri"
+  },
+  "checks": [
+    {
+      "path": "/api/payments/stripe",
+      "status": 400,
+      "expected": 400
+    },
+    {
+      "path": "/api/payments/apple/notifications",
+      "status": 400,
+      "expected": 400
+    },
+    {
+      "path": "/api/payments/apple/notifications/sandbox",
+      "status": 200,
+      "expected": 200
+    }
+  ]
+}

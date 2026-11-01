@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "webhook": "we_1UWfqYDlEXWDEeHOuJRHbAos",
+  "product": "prod_VXlMg867UjAY5B",
+  "liveCharges": 0,
+  "event": "evt_1UWpLTDlEXWDEeHOisfJvRKF",
+  "verifiedPayloadSHA256": "4059de667860b1080de1c53cdfa0d8738a9185c08eb8fa939573a0df684bc265",
+  "invalidSignatureRejected": true,
+  "liveCreditGrants": 0,
+  "eventType": "product.updated",
+  "purchaseLifecycle": "NOT RUN by this nonfinancial delivery probe",
+  "cleanup": "PASS endpoint disabled, event list and product metadata restored",
+  "finishedAt": "2026-11-01T03:22:14.899Z"
+}
