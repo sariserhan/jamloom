@@ -1,0 +1,23 @@
+{
+  "status": "PASS_READ_ONLY_SIGNATURE_VERIFICATION",
+  "observedAt": "2026-11-01T03:41:24.202Z",
+  "subscriptions": [
+    {
+      "status": 1,
+      "product": "com.jamloom.creator.monthly",
+      "originalAccountMatches": true,
+      "expiresAt": "2026-11-01T04:00:04.000Z",
+      "autoRenewStatus": 1,
+      "renewalDate": "2026-11-01T04:00:04.000Z",
+      "expirationIntent": null
+    }
+  ],
+  "refunds": [
+    {
+      "product": "com.jamloom.credits.topup150",
+      "matchesCreatorAccount": true,
+      "revoked": true
+    }
+  ],
+  "mutations": false
+}

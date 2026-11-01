@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "environment": "Production database; isolated Apple Sandbox account",
+  "nativeHTTP": "PASS physical iPhone normal AccountModel path",
+  "duplicateNativeDelivery": "PASS one grant only",
+  "lots": [
+    {
+      "provider": "apple_sandbox",
+      "grants": 1,
+      "credits": 300
+    }
+  ],
+  "balance": {
+    "available": 300,
+    "reserved": 0
+  },
+  "subscriptions": [
+    {
+      "provider": "apple_sandbox",
+      "plan": "creator",
+      "status": "active"
+    }
+  ],
+  "liveGrants": 0,
+  "liveCharges": 0,
+  "readOnly": true,
+  "observedAt": "2026-11-01T03:31:26.513Z"
+}

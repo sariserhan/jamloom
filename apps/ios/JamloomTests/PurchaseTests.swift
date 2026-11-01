@@ -31,19 +31,24 @@ import UIKit
         let actualHash = SHA256.hash(data: try Data(contentsOf: executable)).map { String(format: "%02x", $0) }.joined()
         guard expectedHash.count == 64, actualHash == expectedHash else { XCTFail("Development-signing preflight required for this exact test host"); return }
         if env["JAMLOOM_APPLE_SANDBOX"] == "server" {
-            guard id == CreditPurchases.creatorProduct else { XCTFail("Only the existing sandbox subscription is used for deployed transport"); return }
+            guard [CreditPurchases.creatorProduct, CreditPurchases.singingProduct].contains(id) else { XCTFail("Only existing sandbox subscription/course receipts are used for deployed transport"); return }
             let expected = try XCTUnwrap(UInt64(env["JAMLOOM_APPLE_ACK_TRANSACTION"] ?? ""))
             let transport = AccountTransport(), account = AccountModel(transport: transport)
             defer { transport.clearCookies(); transport.session.invalidateAndCancel() }
             await account.signIn(email: try XCTUnwrap(env["JAMLOOM_REVIEW_EMAIL"]), password: try XCTUnwrap(env["JAMLOOM_REVIEW_PASSWORD"]))
             guard account.snapshot?.sandboxReview == true, account.snapshot?.user.id == env["JAMLOOM_REVIEW_USER_ID"] else { XCTFail("Expected authenticated deployed review account"); return }
             XCTAssertFalse(account.canPurchase, "This receipt check must not open customer sales")
+            let initialBalance = account.snapshot?.balance.available
             for await value in Transaction.all {
                 if case .verified(let transaction) = value, transaction.id == expected {
                     guard transaction.environment == .sandbox, transaction.appAccountToken == token, transaction.productID == id else { XCTFail("Sandbox transport mismatch"); return }
                     try await account.deliverPurchase(value)
                     let balance = try XCTUnwrap(account.snapshot?.balance.available)
-                    XCTAssertGreaterThanOrEqual(balance, 300)
+                    if id == CreditPurchases.creatorProduct { XCTAssertGreaterThanOrEqual(balance, 300) }
+                    else {
+                        XCTAssertEqual(balance, initialBalance, "Course delivery must not grant credits")
+                        XCTAssertEqual(account.snapshot?.singing?.access, true)
+                    }
                     try await account.deliverPurchase(value)
                     XCTAssertEqual(account.snapshot?.balance.available, balance, "Duplicate native delivery must not grant twice")
                     XCTAssertEqual(account.snapshot?.balance.reserved, 0)

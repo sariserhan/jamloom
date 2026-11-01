@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "actualPhysicalRestore": true,
+  "signatureVerification": "PASS Apple trust roots and Sandbox identity",
+  "originalAccountAndTransactionPreserved": true,
+  "receiptSHA256": "458baaed86d57315289fa4c7b21854515985071738a85256709cf81282723ca0",
+  "deployedDuplicateDelivery": "PASS",
+  "statuses": [
+    {
+      "path": "/api/auth/sign-in/email",
+      "status": 200
+    },
+    {
+      "path": "/api/payments/apple",
+      "status": 200
+    },
+    {
+      "path": "/api/payments/apple",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/sign-out",
+      "status": 200
+    }
+  ],
+  "newPurchase": false,
+  "liveCharge": false,
+  "observedAt": "2026-11-01T03:40:41.169Z"
+}

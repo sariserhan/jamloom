@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "environment": "Production database; isolated original Apple Sandbox course account",
+  "nativeHTTP": "PASS physical iPhone normal AccountModel path",
+  "duplicateNativeDelivery": "PASS one course purchase only",
+  "originalAppleOwnershipPreserved": true,
+  "newPurchaseRequired": false,
+  "purchases": [
+    {
+      "product_key": "singing-complete",
+      "amount_cents": 3900,
+      "currency": "usd",
+      "sandbox": true,
+      "refund_hold": false,
+      "dispute_hold": false
+    }
+  ],
+  "balance": {
+    "available": 0,
+    "reserved": 0
+  },
+  "liveGrants": 0,
+  "liveCharges": 0,
+  "readOnly": true,
+  "observedAt": "2026-11-01T03:39:53.918Z",
+  "deployment": {
+    "id": "dpl_3uXq2EYVHLtwXCAZ2DU8UbvcR6rR",
+    "url": "https://jamloom-5faco7zkk-ssari.vercel.app",
+    "inspectorUrl": "https://vercel.com/ssari/jamloom/3uXq2EYVHLtwXCAZ2DU8UbvcR6rR",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_3uXq2EYVHLtwXCAZ2DU8UbvcR6rR"
+  },
+  "testResult": {
+    "tests": 1,
+    "failures": 0,
+    "skips": 0,
+    "privateResult": "build-release-closure-20261031/native-course-http.xcresult"
+  }
+}

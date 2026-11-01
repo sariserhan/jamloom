@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "observedAt": "2026-11-01T03:41:56.005Z",
+  "realSignedRefund": "PASS",
+  "providerDelivery": [
+    {
+      "attemptDate": 1793503473748,
+      "sendAttemptResult": "SUCCESS"
+    }
+  ],
+  "notificationSHA256": "6746420e17ac1cd41ced90802deb21bcabe140c62b1c13b2a68ad2c4cb7c92f9",
+  "deployedDuplicateNotification": "PASS",
+  "refundHoldRecorded": true,
+  "oldPurchaseReceiptRejected": true,
+  "refundedPurchaseGrants": 0,
+  "liveGrants": 0,
+  "liveCharges": 0
+}
