@@ -10,3 +10,8 @@ export function appleReviewAccount(owner:string,env:Record<string,string|undefin
 export function accountCreditLive(owner:string,env:Record<string,string|undefined>=process.env){
  return env.CREDIT_BILLING_MODE==='live'&&!appleReviewAccount(owner,env);
 }
+// Enables the real native StoreKit offer only for the operator-selected review
+// account. It neither opens public checkout nor funds GPU work.
+export function appleReviewPurchases(owner:string,env:Record<string,string|undefined>=process.env){
+ return env.JAMLOOM_APPLE_REVIEW_PURCHASES_ENABLED==='true'&&appleReviewAccount(owner,env);
+}

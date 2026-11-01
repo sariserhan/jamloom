@@ -23,6 +23,27 @@ private final class AccountProtocol: URLProtocol {
     override func stopLoading() {}
 }
 @MainActor final class AccountTests: XCTestCase {
+    func testNativePurchaseAvailabilityFollowsAuthenticatedServerAndClearsOnSignOut() async throws {
+        let transport = transport(), account = AccountModel(transport: transport)
+        defer { transport.session.invalidateAndCancel() }
+        var credits = false, singing = false
+        AccountProtocol.headers = ["Content-Type": "application/json"]
+        AccountProtocol.handle = { request in
+            if request.url?.path == "/api/auth/sign-in/email" { return (200, Data(#"{"user":{"id":"owner","email":"test@example.test"}}"#.utf8)) }
+            if request.url?.path == "/api/auth/sign-out" { return (200, Data(#"{"success":true}"#.utf8)) }
+            XCTAssertEqual(request.url?.path, "/api/account")
+            return (200, Data("{\"user\":{\"id\":\"owner\",\"email\":\"test@example.test\"},\"balance\":{\"available\":0,\"reserved\":0},\"purchasesReleased\":\(credits),\"singing\":{\"released\":\(singing),\"access\":false}}".utf8))
+        }
+        XCTAssertFalse(account.canPurchase); XCTAssertFalse(account.canPurchaseSinging)
+        await account.signIn(email: "test@example.test", password: "fixture-password")
+        XCTAssertNotNil(account.snapshot); XCTAssertFalse(account.canPurchase); XCTAssertFalse(account.canPurchaseSinging)
+        credits = true; await account.refresh()
+        XCTAssertTrue(account.canPurchase); XCTAssertFalse(account.canPurchaseSinging)
+        credits = false; singing = true; await account.refresh()
+        XCTAssertFalse(account.canPurchase); XCTAssertTrue(account.canPurchaseSinging)
+        await account.signOut()
+        XCTAssertFalse(account.canPurchase); XCTAssertFalse(account.canPurchaseSinging)
+    }
     func testCollectionChangeRejectsOlderFavoritesResponse() async throws {
         let transport = transport(), account = AccountModel(transport: transport), library = SongLibraryModel()
         defer { AccountProtocol.hold = nil; transport.session.invalidateAndCancel() }

@@ -390,9 +390,9 @@ struct AccountView: View {
                                         HStack { Label(product.displayName, systemImage: "sparkles"); Spacer(); Text(product.displayPrice + (product.id == CreditPurchases.creatorProduct ? "/month" : " once")).bold() }
                                         Text(product.id == CreditPurchases.creatorProduct ? "300 credits each month · Renews automatically until cancelled" : "150 credits · No subscription required").font(.caption)
                                     }
-                                }
+                                }.accessibilityIdentifier("purchase-\(product.id)")
                             }
-                            Button("Claim 20 one-time trial credits") { Task { await account.claimTrial() } }
+                            if snapshot.sandboxReview != true { Button("Claim 20 one-time trial credits") { Task { await account.claimTrial() } } }
                             Link("Terms of use", destination: URL(string: "https://www.jamloom.com/terms")!)
                             Link("Privacy policy", destination: URL(string: "https://www.jamloom.com/privacy")!)
                             if account.creditProducts.isEmpty { Text("Credit packs are temporarily unavailable."); Button("Try again") { Task { await account.loadProducts() } } }

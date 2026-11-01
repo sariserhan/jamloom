@@ -103,7 +103,6 @@ import UIKit
         case .userCancelled: XCTFail("Sandbox purchase cancelled")
         @unknown default: XCTFail("Unknown sandbox result")
         }
-        XCTAssertFalse(CreditPurchases.released); XCTAssertFalse(CreditPurchases.singingReleased)
         #endif
     }
     func testLiveAppleCatalogueWhenExplicitlyRequested() async throws {
@@ -123,7 +122,6 @@ import UIKit
             XCTAssertEqual(product.price, expected[product.id]); XCTAssertEqual(product.priceFormatStyle.currencyCode, "USD")
             XCTAssertEqual(product.type, product.id == CreditPurchases.singingProduct ? .nonConsumable : product.id == CreditPurchases.creatorProduct ? .autoRenewable : .consumable)
         }
-        XCTAssertFalse(CreditPurchases.released); XCTAssertFalse(CreditPurchases.singingReleased)
         #endif
     }
     func testSingingFreeLessonGateUsesPackagedCourseIds() throws {
@@ -163,7 +161,6 @@ import UIKit
             try await course.deliverVerified(entitlement, accountToken: token) { _, _ in delivered += 1 }
         }
         XCTAssertEqual(delivered, 2, "Finished non-consumable remains restorable; server deduplicates")
-        XCTAssertFalse(CreditPurchases.singingReleased)
     }
     func testCreatorSubscriptionDeliveryAndRestore() async throws {
         let session = try SKTestSession(configurationFileNamed: "LocalCredits")
@@ -187,7 +184,6 @@ import UIKit
             }
         }
         XCTAssertGreaterThanOrEqual(acknowledged, 2, "Server deduplicates the same transaction after restore")
-        XCTAssertFalse(CreditPurchases.released)
     }
     func testLocalStoreKitAcknowledgmentRecoveryAndAccountBinding() async throws {
         let session = try SKTestSession(configurationFileNamed: "LocalCredits")
@@ -223,6 +219,5 @@ import UIKit
         unfinished = []
         for await value in StoreKit.Transaction.unfinished { if case .verified(let tx) = value { unfinished.append(tx.id) } }
         XCTAssertFalse(unfinished.contains(transaction.id))
-        XCTAssertFalse(CreditPurchases.released)
     }
 }

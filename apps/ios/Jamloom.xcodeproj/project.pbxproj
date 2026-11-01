@@ -23,6 +23,7 @@
 		37DA10713F6BFBEBC0D27BD2 /* taste.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051D4A855C4E9FEC22F210C7 /* taste.cpp */; };
 		38EA691D92774BD4CCBEE428 /* dna-examples.json in Resources */ = {isa = PBXBuildFile; fileRef = F531D0ECDF5653CF768308FD /* dna-examples.json */; };
 		3A7CF37B82608DC8B6B0DCE5 /* CommunityFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5385816A3574CAD4FDCAFFF8 /* CommunityFixture.swift */; };
+		3E61200097FCA00C7AC421B3 /* PurchaseReviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512C6B867D5F0ED10A1A566 /* PurchaseReviewTests.swift */; };
 		3FFAC8FE5D21643B13F1F976 /* MusicDNA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D63F9E78BE8A4E9C10828F /* MusicDNA.swift */; };
 		4F29BC4EA06E5FB1EF6404B8 /* remix_plan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EC5EFD29381443D7AC7792F /* remix_plan.cpp */; };
 		500B28424A444A961F83AA56 /* remix_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3629937B433702DD137C634 /* remix_file.cpp */; };
@@ -104,6 +105,7 @@
 		32D3D83B51DF8B7F58A197A3 /* JamloomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamloomApp.swift; sourceTree = "<group>"; };
 		349507E6CB1B4CAF64C016D2 /* c_api.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = c_api.cpp; sourceTree = "<group>"; };
 		34C3D65EB06A5BB9B9CC86B6 /* Jamloom.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Jamloom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3512C6B867D5F0ED10A1A566 /* PurchaseReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTests.swift; sourceTree = "<group>"; };
 		38BE595F5B448234847174E4 /* wav.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = wav.cpp; sourceTree = "<group>"; };
 		3B9E46D0F0B6F3890F3CD11F /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		41F5DCCD4669793436DBDB99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				C782D6233C48A1956FF7EC86 /* FlowTests.swift */,
+				3512C6B867D5F0ED10A1A566 /* PurchaseReviewTests.swift */,
 			);
 			path = JamloomUITests;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C78A24BDBDE4EAA07938ED9A /* FlowTests.swift in Sources */,
+				3E61200097FCA00C7AC421B3 /* PurchaseReviewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,7 +648,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -728,7 +732,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;

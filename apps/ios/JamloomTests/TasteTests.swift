@@ -88,8 +88,7 @@ final class TasteTests: XCTestCase {
         do { _ = try await worker.value; XCTFail("Expected cancellation") } catch RemixError.cancelled { }
         XCTAssertTrue(try FileManager.default.contentsOfDirectory(atPath: store.root.path).isEmpty)
     }
-    @MainActor func testPurchasesClosedBeforeQualityAndServerDelivery() async {
-        XCTAssertFalse(CreditPurchases.released)
+    @MainActor func testPurchasesRequireAuthenticatedServerAvailability() async {
         let account = AccountModel(); XCTAssertFalse(account.canPurchase)
         await account.loadProducts(); XCTAssertTrue(account.creditProducts.isEmpty)
     }

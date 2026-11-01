@@ -129,7 +129,7 @@ struct SingingAcademyView: View {
                     }
                     if account.snapshot != nil {
                         Button("Restore Singing Academy purchase") { Task { await account.restoreSinging() } }.disabled(account.busy)
-                    } else { Text("Use the Account tab to sign in before buying or restoring a course.") }
+                    } else { Text("Open Account from Improvise or Music DNA to sign in before buying or restoring a course.") }
                     if !account.message.isEmpty { Text(account.message) }
                 }
                 .navigationTitle("Your course")

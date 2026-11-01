@@ -1,11 +1,11 @@
 import Foundation
 import StoreKit
 
-// No public purchase UI until server verification, account binding and quality pass.
+// Native capability; AccountModel also requires the authenticated server's release flag.
 @MainActor final class CreditPurchases {
     enum PurchaseError: Error { case unavailable, unverified, wrongAccount, wrongProduct }
-    static let released = false
-    static let singingReleased = false
+    static let released = true
+    static let singingReleased = true
     static let singingProduct = "com.jamloom.singing.complete"
     static let creatorProduct = "com.jamloom.creator.monthly"
     static let topUpProduct = "com.jamloom.credits.topup150"
