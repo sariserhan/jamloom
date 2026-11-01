@@ -1,0 +1,49 @@
+{
+  "at": "2026-11-01T05:33:04.566Z",
+  "operation": "Independent GET, HEAD and SELECT only",
+  "receipt": "/Users/serhansari/Documents/projects/jamloom/docs/evidence/dna-completion/cloud/2026-11-01T05-27-29.150Z/trial-result.json",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "gpuRestored": true,
+  "health": {
+    "jobs": {
+      "completed": 46,
+      "failed": 18,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workers": {
+    "summary": {
+      "total": 0
+    },
+    "workers": []
+  },
+  "v2workers": {
+    "endpointVersion": 36,
+    "summary": {
+      "idle": 0,
+      "initializing": 0,
+      "running": 0,
+      "throttled": 0,
+      "total": 0,
+      "unhealthy": 0
+    },
+    "workers": []
+  },
+  "temporaryDatabases": [],
+  "remoteObjectsConfirmedAbsent": 1,
+  "cleanup": "PASS",
+  "qualification": "FAIL"
+}

@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-01T05:34:44.165568+00:00",
+  "reviewer": "owner",
+  "audio_sha256": "b972071f1c3293545ca1fdaf9e1bc02da8f7e123d0c297955007ae63d7ad91d1",
+  "seconds": 134,
+  "reviewURL": "http://127.0.0.1:8777/jazz-diagnostic-20261101/",
+  "question": "From listening, does its backing music fit Jazz, or does it sound like another style? Mention any quality problem too.",
+  "statement": "it is good",
+  "acceptedExactTake": true,
+  "scope": "Positive owner musical judgment of this exact diagnostic take. No explicit genre label, native-language assessment or approval of other recordings is inferred.",
+  "automatedScreen": {
+    "accepted": false,
+    "matchingWindows": 1,
+    "thresholdChanged": false
+  },
+  "runtimeOverrideAdded": false
+}

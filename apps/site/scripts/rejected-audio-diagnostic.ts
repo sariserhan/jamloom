@@ -1,5 +1,6 @@
 import type {RunpodJob,RunpodProvider,RunpodResult} from '../lib/runpod-provider';
 import type {AudioStore} from '../lib/audio-store';
+import {songDurations} from '../lib/song-duration';
 
 type Provider=Pick<RunpodProvider,'submit'|'status'|'cancel'|'health'|'dispatchEnabled'>;
 // Trial-only adapter. Copy a failed take privately before normal failed-job
@@ -17,11 +18,12 @@ export function rejectedAudioDiagnostic(provider:Provider,store:Pick<AudioStore,
  };
  return {
   async submit(job:RunpodJob){
-   if(job.product!=='music-dna'||job.payload.duration_seconds!==100)throw Error('Diagnostic requires one 100-second Music DNA fixture');
+   const seconds=job.payload.duration_seconds,bounds=songDurations['music-dna'];
+   if(job.product!=='music-dna'||typeof seconds!=='number'||!Number.isSafeInteger(seconds)||seconds<bounds.min||seconds>bounds.max)throw Error('Diagnostic requires one bounded Music DNA fixture');
    const key=new URL(job.output_url).pathname.split('/').slice(-2).join('/');
    if(!/^uploads\/[a-f0-9-]{36}\.wav$/.test(key))throw Error('Invalid diagnostic staging key');
    const result=await provider.submit({...job,retain_rejected_audio:true});
-   pending.set(result.id,{id:job.id,key,bytes:100*192000+44});
+   pending.set(result.id,{id:job.id,key,bytes:seconds*192000+44});
    return inspect(result);
   },
   async status(id){return inspect(await provider.status(id));},

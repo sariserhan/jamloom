@@ -1,0 +1,83 @@
+{
+  "status": "PASS_DIAGNOSTIC_REPRODUCED_REJECTION",
+  "songQualification": "FAIL",
+  "at": "2026-11-01T05:34:04.362426+00:00",
+  "permitStatus": "CONSUMED",
+  "providerRequests": 1,
+  "additionalRequests": 0,
+  "maxUSD": 3,
+  "workerId": "gtvf0rxc4ovyia",
+  "rawReceipt": "docs/evidence/dna-completion/cloud/2026-11-01T05-27-29.150Z/trial-result.json",
+  "rawReceiptSHA256": "f02656b4e88a7b2472d06ad7c6414de10a35a862b775f2c4b6ed67dc4325dbd0",
+  "fixtureSHA256": "122f4f22c9e90c348b4e9c7c981b03806355fc4419c2f86dddadd5b9670dda8e",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e51912853e80d8ef7e20233d5cf524cfa7450a727b88e72496b90173c0914573",
+  "request": {
+    "id": "1416aff7a32f4377a4b5b9fa72bb965e",
+    "owner": "trial-0",
+    "label": "german-jazz",
+    "product": "music-dna",
+    "quotedCredits": 20,
+    "transitions": [
+      {
+        "seconds": 37,
+        "state": "running",
+        "provider": "IN_PROGRESS"
+      },
+      {
+        "seconds": 290,
+        "state": "failed",
+        "provider": "FAILED"
+      }
+    ],
+    "provider_id": "b8b840e7-a6cc-44f6-9776-13696d8c0e37-u2",
+    "provider_status": "FAILED",
+    "execution_ms": "251325",
+    "delay_ms": "19",
+    "estimated_cost_micros": "75440",
+    "failure": "style-rejected:matched-1-of-4",
+    "state": "failed",
+    "finalState": "failed",
+    "finalBalance": {
+      "available": 50,
+      "reserved": 0
+    },
+    "expectedCredits": 0
+  },
+  "rejectedAudio": {
+    "id": "1416aff7a32f4377a4b5b9fa72bb965e",
+    "bytes": 25728044,
+    "sha256": "b972071f1c3293545ca1fdaf9e1bc02da8f7e123d0c297955007ae63d7ad91d1",
+    "accepted": false,
+    "seconds": 134.0,
+    "localPath": "build-dna-completion/cloud/2026-11-01T05-27-29.150Z/1416aff7a32f4377a4b5b9fa72bb965e-rejected.wav",
+    "committed": false,
+    "remoteRemoved": true
+  },
+  "localAnalysis": {
+    "file": "style-capture-analysis.json",
+    "matchingWindows": 1,
+    "meanJazzScore": 0.6037452220916748,
+    "highestMeanStyle": "soul",
+    "meanSoulScore": 0.6415688097476959,
+    "unchangedMargin": 0.03,
+    "resourceCheck": {
+      "exit": 0,
+      "stopReason": null,
+      "elapsedSeconds": 6.05,
+      "maxRSSMiB": 1052.23,
+      "initialSwapMiB": 2115.56,
+      "finalSwapMiB": 2115.56,
+      "appsClosed": false,
+      "cloudRequests": 0
+    }
+  },
+  "independentCleanup": "PASS: style-independent-postcheck.json",
+  "requestEstimateUSD": 0.07544,
+  "providerBilling": "PENDING; request estimate excludes complete startup/idle/operations attribution",
+  "ownerListening": "PASS: owner says \u201cit is good\u201d for this exact take; see style-owner-feedback.json. Specific genre and other recordings are not inferred.",
+  "reviewURL": "http://127.0.0.1:8777/jazz-diagnostic-20261101/",
+  "sourceCorrection": "Trial-only capture now accepts the already approved 134 seconds within product 100\u2013140 second bounds; 12 focused checks and typecheck PASS",
+  "thresholdsChanged": false,
+  "customerSalesEnabled": false,
+  "appSubmitted": false
+}

@@ -1,7 +1,7 @@
 {
   "status": "PROVISIONAL",
-  "checkedAt": "2026-11-01T05:25:09.676Z",
-  "scope": "Prior cost/lyric diagnostics and current deployed check, identified by exact worker IDs",
+  "checkedAt": "2026-11-01T05:34:04.273Z",
+  "scope": "Prior cost/lyric diagnostics and current deployed check and approved style diagnostic, identified by exact worker IDs",
   "rows": [
     {
       "amount": 0.032424999633803964,
@@ -16,15 +16,22 @@
       "diskSpaceBilledGB": 120,
       "podId": "jy397xuwd32938",
       "time": "2026-11-01 03:00:00"
+    },
+    {
+      "amount": 0.03025208436883986,
+      "timeBilledMs": 145210,
+      "diskSpaceBilledGB": 60,
+      "podId": "heqnwqyffbstur",
+      "time": "2026-11-01 04:00:00"
     }
   ],
   "notYetReported": [
-    "heqnwqyffbstur",
     "odqpqwfgee900u",
     "a3om0pgwek6w5g",
-    "xgk04hzck429os"
+    "xgk04hzck429os",
+    "gtvf0rxc4ovyia"
   ],
-  "reportedUSD": 0.08281465092295548,
+  "reportedUSD": 0.11306673529179534,
   "finalInvoice": false,
   "missingRowsAreNotZero": true,
   "mutations": false
