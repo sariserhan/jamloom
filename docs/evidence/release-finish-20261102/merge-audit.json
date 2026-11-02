@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "integrationParent": "a0eacb500e6dfb715c9d7f0a06be963075d42c93",
+  "preservedMainFiles": [
+    ".github/workflows/core.yml",
+    "apps/site/vercel.json",
+    "scripts/singer_studio.py",
+    "scripts/singing_response.py",
+    "scripts/local_call_edit.py",
+    "services/runpod/Dockerfile",
+    "services/runpod/handler.py",
+    "services/runpod/prepare_spleeter_model.py",
+    "tests/test_runpod_worker.py",
+    "tests/test_local_call_edit.py",
+    "tests/test_singer_studio.py",
+    "tests/test_hosted_separator_contract.py",
+    "docs/runpod-setup.md"
+  ],
+  "workerBranchesIncluded": [
+    "codex/dna-worker-completion",
+    "codex/identity-stems-20261101",
+    "codex/improvise-timing-20261101",
+    "codex/improvise-worker",
+    "codex/runpod-refresh-20261027",
+    "codex/runpod-setup",
+    "codex/runtime-image-20261101"
+  ],
+  "noUnresolvedConflicts": true,
+  "push": "NOT RUN",
+  "deployment": "NOT RUN"
+}

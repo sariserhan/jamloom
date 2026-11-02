@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "tests": 67,
+  "failures": 0,
+  "errors": 0,
+  "patterns": [
+    "test_runpod_worker.py",
+    "test_generation_timing.py",
+    "test_identity_stems.py",
+    "test_vocal_identity.py",
+    "test_singer_studio.py",
+    "test_hosted_identity_separator.py",
+    "test_rejected_audio_diagnostic.py",
+    "test_dna_style_delivery.py",
+    "test_arrangement_ranking.py",
+    "test_worker_runtime_base.py"
+  ]
+}

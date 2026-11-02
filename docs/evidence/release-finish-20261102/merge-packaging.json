@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "workflowYaml": "PASS",
+  "workflowShellSyntax": "PASS",
+  "defaultRecipe": "full",
+  "mainOverlayRefused": "Base input changed: scripts/local_call_edit.py; build and verify a new full base image first",
+  "isolatedApprovedBase": {
+    "status": "PASS",
+    "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
+    "unchangedInputs": 37,
+    "runtimeFiles": 3
+  },
+  "newImagePublished": false
+}

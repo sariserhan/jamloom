@@ -1,0 +1,59 @@
+{
+  "status": "PASS_READ_ONLY",
+  "provider": {
+    "at": "2026-11-02T05:19:08.728Z",
+    "workers": {
+      "max": 0,
+      "min": 0
+    },
+    "health": {
+      "jobs": {
+        "completed": 48,
+        "failed": 21,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    }
+  },
+  "apple": {
+    "at": "2026-11-02T05:19:09.481Z",
+    "versions": [
+      {
+        "id": "02c3b180-6e57-47bb-9963-fedfe1915fcf",
+        "version": "0.11.0",
+        "state": "READY_FOR_REVIEW",
+        "releaseType": "MANUAL",
+        "build": {
+          "version": "38",
+          "processingState": "VALID"
+        }
+      }
+    ],
+    "submissions": [
+      {
+        "id": "cf0d1567-e845-4aac-87aa-358a7fd55166",
+        "state": "READY_FOR_REVIEW",
+        "submittedDate": null
+      }
+    ]
+  },
+  "stripe": {
+    "at": "2026-11-02T05:19:08.730Z",
+    "chargesEnabled": true,
+    "payoutsEnabled": true,
+    "taxStatus": "active",
+    "creatorProductActive": false,
+    "creatorPriceActive": false,
+    "webhookStatus": "disabled"
+  },
+  "mutations": false
+}
