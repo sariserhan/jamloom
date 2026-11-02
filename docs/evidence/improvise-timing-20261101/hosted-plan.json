@@ -130,5 +130,17 @@
     "sourceUploads": 0,
     "resumeRequiresExplicitApproval": true,
     "stoppedAt": "2026-11-02T04:17:41.523795+00:00"
+  },
+  "resumeApproval": "Approve one deployment retry within original limits",
+  "resumePlan": "deployment-resume-plan.json",
+  "resumeResult": {
+    "status": "STOPPED_CLI_MONITOR_FAILURE",
+    "error": "fetch failed while waiting for deployment",
+    "deploymentStateIndependentlyVerified": "READY",
+    "deploymentId": "dpl_BhfVnBMLSEgS14nm58bLvS6YjfbR",
+    "gpuActivated": false,
+    "generationRequests": 0,
+    "sourceUploads": 0,
+    "at": "2026-11-02T04:23:00.407109+00:00"
   }
 }

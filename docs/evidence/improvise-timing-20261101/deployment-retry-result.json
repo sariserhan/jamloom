@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-02T04:23:00.407109+00:00",
+  "deployment": "PASS: READY confirmed independently",
+  "deploymentId": "dpl_BhfVnBMLSEgS14nm58bLvS6YjfbR",
+  "deploymentURL": "jamloom-r2cqaucla-ssari.vercel.app",
+  "source": "2571ab20b23648f85cda2642bddf7b9619acb1fb",
+  "cli": "FAIL: fetch failed while monitoring deployment readiness",
+  "approvedDeploymentRetriesUsed": 1,
+  "furtherDeploymentNeeded": false,
+  "causeOfFirstAuthorizationFailure": "Unresolved; did not recur",
+  "gpuActivated": false,
+  "generation": "NOT RUN",
+  "sourceUploads": 0,
+  "shutdownGuard": "PASS; capacity stopped=false before activation",
+  "currentSpendPerHr": 0,
+  "billingReadAt": "2026-11-02T04:22:29.712Z",
+  "previousBillingFinal": false,
+  "heldWebsiteUnchanged": true,
+  "safeState": "retry-stopped-verification.json",
+  "rawDebugLogs": "Private local files only; not committed"
+}

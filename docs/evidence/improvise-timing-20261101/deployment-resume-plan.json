@@ -1,5 +1,5 @@
 {
-  "status": "AWAITING_EXPLICIT_RESUME",
+  "status": "STOPPED",
   "scope": "One deployment retry with private debug logs, then original single Improvise check only if deployment and existing safeguards pass",
   "originalPlan": "hosted-plan.json",
   "originalPlanSHA256": "46d1120b689ff577ba2fbbeebc1fd44375b7ff1be4cff70ec7c3c17b0e8edf02",
@@ -29,5 +29,17 @@
     "Price changes",
     "Repeated generation requests"
   ],
-  "cleanup": "Original independent cleanup and held-site restoration required if activation occurs"
+  "cleanup": "Original independent cleanup and held-site restoration required if activation occurs",
+  "ownerApproval": "Approve one deployment retry within original limits",
+  "approvedAt": "2026-11-02T04:20:10.666092+00:00",
+  "result": {
+    "status": "STOPPED_CLI_MONITOR_FAILURE",
+    "error": "fetch failed while waiting for deployment",
+    "deploymentStateIndependentlyVerified": "READY",
+    "deploymentId": "dpl_BhfVnBMLSEgS14nm58bLvS6YjfbR",
+    "gpuActivated": false,
+    "generationRequests": 0,
+    "sourceUploads": 0,
+    "at": "2026-11-02T04:23:00.407109+00:00"
+  }
 }
