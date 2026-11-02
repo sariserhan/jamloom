@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T03:27:08.136Z",
+  "qualification": "FAIL",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "previousHardwareRestored": true,
+  "health": {
+    "jobs": {
+      "completed": 47,
+      "failed": 20,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workerInventory": [],
+  "remoteObjectsConfirmedAbsent": 2,
+  "pendingJobs": 0,
+  "testReservedCredits": 0,
+  "costReservationsPreserved": true,
+  "rows": [
+    {
+      "id": "5cfbf315b84e44be968c5471cc6d78a9",
+      "product": "improvise",
+      "state": "failed",
+      "providerId": "281c6e64-e3a6-430c-919a-b69c40ad19fa-u1",
+      "providerStatus": "FAILED"
+    }
+  ]
+}

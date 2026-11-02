@@ -1,0 +1,72 @@
+{
+  "status": "FAIL_RUNTIME",
+  "at": "2026-11-02T03:27:57.029191+00:00",
+  "source": "14b9d38a34e1d31b49ca1c7bccfc899441c1fa5f",
+  "activatedAt": "2026-11-02T03:12:34.440Z",
+  "readyAt": "2026-11-02T03:23:41.552Z",
+  "disabledAt": "2026-11-02T03:26:17.518Z",
+  "leaseDeadline": 1793591304513,
+  "submitCalls": 1,
+  "requests": [
+    {
+      "product": "improvise",
+      "state": "failed",
+      "submitCalls": 1,
+      "submitIntentAt": "2026-11-02T03:24:05.525Z",
+      "providerStatus": "FAILED",
+      "executionMs": "120564",
+      "delayMs": "19",
+      "estimatedCostMicros": 65980,
+      "durationSeconds": 33
+    }
+  ],
+  "staticFailure": "worker-timeout",
+  "failureVerifiedInPrivateProviderLog": true,
+  "internalFailureStage": "UNKNOWN",
+  "observedWorkers": [
+    {
+      "id": "nb0a8pnuv0c7mg",
+      "gpuTypeId": "NVIDIA GeForce RTX 4090",
+      "status": "INITIALIZING",
+      "startedAt": "2026-11-02T03:12:34.811Z"
+    },
+    {
+      "id": "iknno73d5ughjm",
+      "gpuTypeId": "NVIDIA GeForce RTX 4090",
+      "status": "INITIALIZING",
+      "startedAt": "2026-11-02T03:17:38.448Z"
+    },
+    {
+      "id": "iec6hnxyrcqfn6",
+      "gpuTypeId": "NVIDIA GeForce RTX 4090",
+      "status": "RUNNING",
+      "startedAt": "2026-11-02T03:23:31.184Z"
+    }
+  ],
+  "maxObservedRunningWorkers": 1,
+  "cleanup": "PASS",
+  "remoteObjectsConfirmedAbsent": 2,
+  "restoredHeldWebsite": true,
+  "testBalance": {
+    "available": 2970,
+    "reserved": 0
+  },
+  "liveBalance": {
+    "available": 0,
+    "reserved": 0
+  },
+  "capturedCredits": 0,
+  "failedImproviseCreditsReleased": 10,
+  "customerSalesEnabled": false,
+  "appleSubmission": false,
+  "budget": {
+    "stageMaxUSD": 1,
+    "aggregateMaxUSD": 3,
+    "priorReservedUSD": 2,
+    "conservativeFullLeaseBoundUSD": 0.9814,
+    "requestEstimateUSD": 0.06598,
+    "finalInvoice": false
+  },
+  "billing": "PROVISIONAL; current worker/endpoint charges not yet posted",
+  "permitReusable": false
+}

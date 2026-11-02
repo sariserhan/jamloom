@@ -1,0 +1,15 @@
+{
+  "status": "PROVISIONAL",
+  "at": "2026-11-02T03:27:16.096Z",
+  "scope": "All exact worker IDs observed during active-worker qualification, including startup and idle; $1 stage cap within $3 aggregate",
+  "rows": [],
+  "notYetReported": [
+    "nb0a8pnuv0c7mg",
+    "iknno73d5ughjm",
+    "iec6hnxyrcqfn6"
+  ],
+  "reportedUSD": 0,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "mutations": false
+}

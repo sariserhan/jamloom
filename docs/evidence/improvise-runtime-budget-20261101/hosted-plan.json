@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_APPROVED",
+  "status": "CONSUMED",
   "scope": "One additional Improvise request after the completed two-request campaign; use existing reserved time for execution without raising TTL, credit price or cost cap",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
   "endpoint": "jl77hn92npt65k",
@@ -105,5 +105,15 @@
   "priorReservedUSD": 2,
   "priorBoundMicros": 1962800,
   "newLeaseCapMicros": 1000000,
-  "maxRequestsAcrossCampaign": 3
+  "maxRequestsAcrossCampaign": 3,
+  "ownerApproval": "Approve one extra request within $3 total",
+  "approvedAt": "2026-11-02T03:08:17.274048+00:00",
+  "applicationCommit": "14b9d38a34e1d31b49ca1c7bccfc899441c1fa5f",
+  "absoluteDeadline": "2026-11-02T03:48:24.513000+00:00",
+  "consumedAt": "2026-11-02T03:27:57.029191+00:00",
+  "result": "FAIL_RUNTIME",
+  "cleanup": "PASS",
+  "submitCalls": 1,
+  "executionEvidence": "execution-result.json",
+  "permitReusable": false
 }
