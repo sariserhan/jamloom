@@ -492,6 +492,33 @@ private final class AccountProtocol: URLProtocol {
         let config = URLSessionConfiguration.ephemeral; config.protocolClasses = [AccountProtocol.self]
         return AccountTransport(configuration: config)
     }
+    func testCapacityPreparationIsExplicitAndDoesNotUploadOrGenerate() async throws {
+        let transport = transport(), account = AccountModel(transport: transport)
+        defer { transport.session.invalidateAndCancel() }
+        var posts = 0, ready = false
+        AccountProtocol.handle = { request in
+            let path = request.url!.path
+            if path == "/api/auth/sign-in/email" { return (200, Data(#"{"user":{"id":"capacity","email":"capacity@example.test"}}"#.utf8)) }
+            if path == "/api/account" { return (200, Data(#"{"user":{"id":"capacity","email":"capacity@example.test"},"balance":{"available":40,"reserved":0},"purchasesReleased":false}"#.utf8)) }
+            XCTAssertTrue(["/api/improvise/song", "/api/taste/song"].contains(path))
+            if request.httpMethod == "POST" {
+                posts += 1
+                return (202, Data(#"{"state":"preparing","creditsUsed":0}"#.utf8))
+            }
+            return (200, Data("{\"available\":\(ready),\"creditsEnabled\":true,\"signedIn\":true,\"canPrepare\":true,\"capacityState\":\"\(ready ? "ready" : "off")\"}".utf8))
+        }
+        await account.signIn(email: "capacity@example.test", password: "example-password")
+        for product in [CloudSongProduct.improvise, .musicDNA] {
+            ready = false
+            let cloud = CloudSongModel(product: product), before = posts
+            await cloud.connect(account); await cloud.connect(account)
+            XCTAssertTrue(cloud.canPrepare); XCTAssertFalse(cloud.available); XCTAssertEqual(posts, before)
+            await cloud.prepareCapacity(account)
+            XCTAssertEqual(posts, before + 1); XCTAssertNil(cloud.quote); XCTAssertNil(cloud.job)
+            ready = true; await cloud.connect(account)
+            XCTAssertTrue(cloud.available); XCTAssertEqual(posts, before + 1)
+        }
+    }
     func testAccountBalanceTasteConflictAndSignout() async throws {
         let transport = transport(), account = AccountModel(transport: transport)
         var conflict = false, saves = 0

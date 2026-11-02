@@ -43,6 +43,7 @@ enum CloudSongProduct: String {
 @MainActor final class CloudSongModel: ObservableObject {
     struct Availability: Decodable, Sendable {
         let available: Bool?; let creditsEnabled: Bool?; let signedIn: Bool?; let active: String?
+        let canPrepare: Bool?; let capacityState: String?
         var canCreate: Bool { available == true && creditsEnabled == true }
     }
     struct Quote: Decodable, Sendable { let credits: Int; let token: String; let expiresAt: Double }
@@ -53,6 +54,8 @@ enum CloudSongProduct: String {
     @Published var keepPrivate = true { didSet { if oldValue != keepPrivate { invalidateQuote() } } }
     var visibility: String { keepPrivate ? "private" : "public" }
     @Published private(set) var available = false
+    @Published private(set) var canPrepare = false
+    @Published private(set) var capacityState = ""
     @Published private(set) var busy = false
     @Published private(set) var quote: Quote?
     @Published private(set) var job: String?
@@ -84,6 +87,7 @@ enum CloudSongProduct: String {
     func connect(_ account: AccountModel) async {
         guard !busy else { return }
         if owner != account.snapshot?.user.id {
+            canPrepare = false; capacityState = ""
             clearDownloadedAudio()
             polling?.cancel(); polling = nil; job = nil; source = nil; sourceDigest = nil; quote = nil; tasteInput = nil; audio = nil; requestID = nil; state = ""; consent = false
         }
@@ -91,14 +95,34 @@ enum CloudSongProduct: String {
         do {
             let status: Availability = try await account.transport.request(product.path)
             available = status.canCreate
+            canPrepare = owner != nil && status.canPrepare == true
+            capacityState = status.capacityState ?? ""
             if owner != nil {
                 let saved = status.active ?? UserDefaults.standard.string(forKey: historyKey)
                 if let saved, saved.range(of: "^[a-f0-9]{32}$", options: .regularExpression) != nil { job = saved; state = "reconnecting"; watch() }
             }
-            if !available { message = "New song creation is temporarily unavailable. Your inputs stay here."; return }
+            if !available {
+                message = ["preparing", "ready", "stopping"].contains(capacityState)
+                    ? "Preparing song creation. This can take several minutes. No credits have been used."
+                    : "New song creation is temporarily unavailable. Your inputs stay here."
+                return
+            }
             guard owner != nil, status.signedIn == true else { message = "Sign in to make a cloud song."; return }
             message = ""
         } catch { available = false; message = error.localizedDescription }
+    }
+    func prepareCapacity(_ account: AccountModel) async {
+        guard canPrepare, !controlsLocked, let transport else { return }
+        busy = true
+        do {
+            struct Prepared: Decodable, Sendable { let state: String; let creditsUsed: Int }
+            let response: Prepared = try await transport.request(product.path, method: "POST", body: JSONSerialization.data(withJSONObject: ["action": "prepare"]))
+            guard response.creditsUsed == 0 else { throw URLError(.cannotParseResponse) }
+            capacityState = response.state
+            message = "Preparing song creation. No credits have been used. Check availability in a moment."
+        } catch { canPrepare = false; message = error.localizedDescription + " Check availability before trying again."; busy = false; return }
+        busy = false
+        await connect(account)
     }
     func review(input: AudioInput, start: Double, end: Double) async {
         guard product == .improvise, consent, available, owner != nil, !controlsLocked, let transport else { return }
@@ -268,6 +292,10 @@ struct CloudSongActions: View {
         }
         if !cloud.message.isEmpty { Text(cloud.message).accessibilityIdentifier("cloudSongStatus") }
         if !cloud.available && !cloud.active {
+            if cloud.canPrepare && !["preparing", "ready", "stopping"].contains(cloud.capacityState) {
+                Button("Prepare song creation") { Task { await cloud.prepareCapacity(account) } }
+                    .disabled(cloud.busy || (account.snapshot?.balance.available ?? 0) < (cloud.product == .improvise ? 10 : 20))
+            }
             Button("Check availability") { Task { await cloud.connect(account) } }.disabled(cloud.busy)
         }
         if cloud.active {

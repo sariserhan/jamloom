@@ -1,4 +1,5 @@
 'use client';
+import {CapacityPreparation} from '../capacity-preparation';
 import {generationAccount,GenerationAccountNotice,type GenerationAccount} from '../generation-account';
 import {LanguageFilter,LanguageCollection} from '../language-filter';
 import {languageMatches} from '../../lib/song-language';
@@ -215,7 +216,7 @@ export function TasteNotebook(){
  </fieldset>
  <p>{quote&&quote.key===favoriteKey(snapshot)+':'+visibility?`This song: ${quote.credits} ${quote.credits===1?'credit':'credits'}.`:'20 credits per song.'} The quoted price is fixed before you start. Failed or cancelled songs return your credits.</p>
  <GenerationAccountNotice account={account} credits={generationPrice} returnTo="/music-dna" onRefresh={()=>void checkAccount()}/>
- {account.state==='ready'&&canCreate!==true&&<div><p role="status">{canCreate===null?'Checking song availability…':'Song creation is currently unavailable. Your favorites are saved and no credits have been used.'}</p><button className="secondary" disabled={locked} onClick={refreshAvailability}>Check availability</button></div>}
+ {account.state==='ready'&&canCreate!==true&&<CapacityPreparation endpoint="/api/taste/song" onAvailable={refreshAvailability} disabled={locked||account.available<generationPrice} inputs="Your favorites are saved"/>}
  <div className="product-actions"><button className="primary" disabled={locked||account.state!=='ready'||account.available<generationPrice||canCreate!==true} onClick={generate}>{rendering?'Preparing your song…':`Generate song · ${generationPrice} ${generationPrice===1?'credit':'credits'}`}</button><button className="secondary" onClick={dismissPrompt}>{rendering?'Cancel composition':'Cancel'}</button></div>
  {progress&&promptOpen&&<GenerationProgress {...progress}/>}
  {promptOpen&&<p role="status">{message}</p>}

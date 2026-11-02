@@ -1,4 +1,6 @@
 import {checkedDnaStyle} from './dna-style';
+import {CloudCapacity,capacityProvider} from './cloud-capacity';
+import {songCreditPrice} from './credit-catalog';
 import {assertActiveWorkerLease} from './cloud-capacity-lease';
 import {hasReadySongWorker,SONG_CAPACITY_MESSAGE} from './cloud-readiness';
 import {songDurations,savedSongDuration,MAX_SONG_BYTES} from './song-duration';
@@ -41,9 +43,11 @@ export function checkImproviseArrangement(value:unknown,sourceSha:string,audioSh
  if(total>6*48000)throw new AudioError('Your recording could not be blended into this song.',422);
 }
 export class CloudSongs{
- constructor(readonly commerce:DnaCommerce,readonly config:CloudSongConfig,readonly provider:Pick<RunpodProvider,'submit'|'status'|'cancel'|'health'|'dispatchEnabled'>=new RunpodProvider(config.key,config.endpoint,fetch,config.productionProfile,config.activeLease)){
+ readonly capacity?:CloudCapacity;
+ constructor(readonly commerce:DnaCommerce,readonly config:CloudSongConfig,readonly provider:Pick<RunpodProvider,'submit'|'status'|'cancel'|'health'|'dispatchEnabled'>=new RunpodProvider(config.key,config.endpoint,fetch,config.demandPermit?undefined:config.productionProfile,config.activeLease),capacity?:CloudCapacity){
   if(!commerce.store)throw Error('Song storage is required');
   if(config.review&&(config.live||commerce.options.live))throw Error('Review generation requires its isolated test ledger');
+  this.capacity=capacity??(config.demandPermit&&config.productionProfile?new CloudCapacity(commerce.pool,config.endpoint,config.productionProfile,config.demandPermit,capacityProvider(config.key,config.endpoint)):undefined);
  }
  assertNewRequestAllowed(owner:string){
   if(this.config.activeLease){try{assertActiveWorkerLease(this.config.activeLease,Date.now(),(this.config.ttlSeconds+120)*1000);}catch{throw new AudioError('Song creation is unavailable while capacity is being renewed. Your credits have not been used.',503);}}
@@ -53,7 +57,18 @@ export class CloudSongs{
  private async capacityAvailable(){
   if(!this.config.productionProfile)return true;
   if((await this.commerce.pool.query("SELECT 1 FROM cloud_song_runs c JOIN dna_song_jobs d ON d.id=c.id WHERE c.endpoint=$1 AND d.state IN ('queued','running') LIMIT 1",[this.config.endpoint])).rowCount)return false;
+  if(this.capacity)return this.capacity.ready((this.config.ttlSeconds+120)*1000);
   return await this.provider.dispatchEnabled()&&hasReadySongWorker(await this.provider.health());
+ }
+ async prepareCapacity(owner:string){
+  this.assertNewRequestAllowed(owner);
+  if(!this.capacity)throw new AudioError('Song preparation is currently unavailable.',503);
+  const user=(await this.commerce.pool.query('SELECT suspended FROM "user" WHERE id=$1',[owner])).rows[0];
+  const frozen=(await this.commerce.pool.query('SELECT frozen FROM credit_wallets WHERE owner_id=$1',[owner])).rows[0];
+  const balance=await this.commerce.wallet.balance(owner);
+  if(!user||user.suspended||frozen?.frozen)throw new AudioError('This account cannot prepare song creation.',403);
+  if(balance.available<songCreditPrice(this.commerce.product).credits)throw new AudioError('You need more credits before preparing this song.',402);
+  return {state:await this.capacity.prepare(owner),creditsUsed:0};
  }
  async available(owner:string|null){
   try{this.assertNewRequestAllowed(owner??'');return await this.capacityAvailable();}catch{return false;}
@@ -103,6 +118,7 @@ export class CloudSongs{
   }
   await this.commerce.submit(owner,id,input,visibility,token,async db=>{
    await db.query("SELECT pg_advisory_xact_lock(hashtextextended('jamloom-cloud-daily-cap',0))");
+   if(this.capacity)await this.capacity.assertAdmission(db,(this.config.ttlSeconds+120)*1000);
    if(this.config.productionProfile&&(await db.query("SELECT 1 FROM cloud_song_runs c JOIN dna_song_jobs d ON d.id=c.id WHERE c.endpoint=$1 AND d.state IN ('queued','running') LIMIT 1",[this.config.endpoint])).rowCount)
     throw new AudioError(SONG_CAPACITY_MESSAGE,503);
    if(this.config.review){
@@ -162,7 +178,8 @@ export class CloudSongs{
     }
     if(stop){await this.commerce.finish(id,run.cancel_requested?'cancelled':'failed');await this.cleanup(run);return;}
     // Disabled endpoints reject submissions; keep the durable queue without an ambiguous paid intent.
-    if(!await this.provider.dispatchEnabled())return;
+    if(this.capacity){if(!await this.capacity.ready((this.config.ttlSeconds+120)*1000))return;}
+    else if(!await this.provider.dispatchEnabled())return;
     const job:RunpodJob={id,product:this.commerce.product,timeout_seconds:this.config.executionSeconds,ttl_seconds:this.config.ttlSeconds,
      output_url:await store!.uploadURL(run.output_key,savedSongDuration(this.commerce.product,run.payload)*192000+44,this.config.ttlSeconds+300),payload:run.payload};
     if(run.source_id){

@@ -7,6 +7,7 @@ import {createPool} from '../lib/database';
 import {audioStore} from '../lib/audio-store';
 import {djSessionStore} from '../lib/dj-session-store';
 import {cloudSongConfig} from '../lib/cloud-song-config';
+import {capacityPermit} from '../lib/cloud-capacity-permit';
 import {djBillingLive} from '../lib/dj-beta-access';
 import {billingReadiness} from '../lib/billing-mode';
 import {proBilling} from '../lib/pro-billing';
@@ -31,6 +32,8 @@ export function releaseConfiguration(env:Record<string,string|undefined>){
   accountConfigured:valid(()=>readConfig(env)),libraryStorageConfigured:valid(()=>audioStore(readConfig(env),env)),
   djRecordingStorageConfigured:valid(()=>djSessionStore(env)),
   cloudPriceCompatibility,
+  demandCapacity:{configured:!!env.JAMLOOM_CLOUD_CAPACITY_PERMIT,valid:valid(()=>!env.JAMLOOM_CLOUD_CAPACITY_PERMIT||capacityPermit(env,env.JAMLOOM_CLOUD_COST_PROFILE)),
+   guardian:'REQUIRES_LIVE_CHECK',operatingEconomics:'REQUIRES_MEASURED_EVIDENCE'},
   cloudSongsEnabled:env.JAMLOOM_CLOUD_SONGS_ENABLED==='true',cloudSongConfigValid:valid(()=>!env.JAMLOOM_CLOUD_SONGS_ENABLED||env.JAMLOOM_CLOUD_SONGS_ENABLED==='false'||(['improvise','music-dna'] as const).every(p=>cloudSongConfig(env,p))),
   djBillingModeValid:valid(()=>{djBillingLive(env);return true;}),djInvitationsEnabled:env.JAMLOOM_AI_DJ_BETA_ENABLED==='true',
   academy:billingReadiness('live',env),singing:billingReadiness('live',env,'singing-complete'),

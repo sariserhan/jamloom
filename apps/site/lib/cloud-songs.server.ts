@@ -8,6 +8,17 @@ import {cloudSongConfig} from './cloud-song-config';
 import {cloudSongAPI} from './cloud-song-api';
 import {reviewSongConfig} from './cloud-review-config';
 import {appleReviewAccount} from './apple-review';
+import {CloudCapacity,capacityProvider,stopOrphanedCapacity} from './cloud-capacity';
+import {capacityPermit} from './cloud-capacity-permit';
+export async function reconcileSongCapacity(){
+ const profile=process.env.JAMLOOM_CLOUD_COST_PROFILE;
+ const endpoint=process.env.RUNPOD_ENDPOINT_ID,key=process.env.RUNPOD_API_KEY;
+ if(!key||!endpoint||!/^[a-zA-Z0-9_-]{1,80}$/.test(endpoint))return {state:'unavailable'};
+ let permit;try{permit=capacityPermit(process.env,profile);}catch{/* Invalid configuration must still shut down recorded capacity. */}
+ if(!permit)return stopOrphanedCapacity(services().pool,endpoint,capacityProvider(key,endpoint));
+ // Recovery remains active when new generation/purchases are disabled.
+ return new CloudCapacity(services().pool,endpoint,profile!,permit,capacityProvider(key,endpoint)).reconcile();
+}
 export function hostedSongs(product:'music-dna'|'improvise',review=false){
  const settings=review?reviewSongConfig(product):cloudSongConfig(process.env,product);if(!settings)return null;
  const {pool,config}=services();

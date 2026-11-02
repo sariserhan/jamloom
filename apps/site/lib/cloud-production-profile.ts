@@ -28,11 +28,11 @@ export function productionSongBudget(product:'improvise'|'music-dna',profile=CLO
 }
 // Runpod selects pools minus exclusions. Check the current catalog too: new pool members
 // must never silently widen the qualified hardware or increase the hourly rate.
-export function assertProductionEndpoint(endpoint:any,catalog:any,activeLease?:ActiveWorkerLease,profile=CLOUD_COST_PROFILE){
+export function assertProductionEndpoint(endpoint:any,catalog:any,activeLease?:ActiveWorkerLease,profile=CLOUD_COST_PROFILE,now=Date.now()){
  if(!CLOUD_PROFILES.includes(profile))throw Error('Unknown song cost profile');
  validateProfileLease(profile,activeLease);
  const faster=profile===CLOUD_4090_DIAGNOSTIC_PROFILE;
- if(activeLease)assertActiveWorkerLease(activeLease);
+ if(activeLease)assertActiveWorkerLease(activeLease,now);
  const gpu=endpoint?.gpu,workers=endpoint?.workers;
  // Runpod omits excludedTypes when the configured list is empty. Absence
  // means no exclusions; the live catalog must still resolve to one exact GPU.
