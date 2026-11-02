@@ -1,4 +1,8 @@
-# Launch activation — 2026-11-01
+# Launch activation — updated 2026-11-02
+
+**Local completion on main — 2026-11-02: PASS implementation and validation; PARTIAL release.** Explicit song preparation now works across web/mobile web/iPhone with durable operator budgets, one activation attempt, independent watchdog admission, idle/expiry shutdown and configuration-rollback recovery. The feature remains disabled. 208 site tests, 85 isolated database/Academy checks, four SDK bootstrap cases, 23 simulator account tests (two integration skips), build/typecheck/audit and desktop/mobile Chromium/WebKit checks pass. No push, deployment, production migration, paid request or sales/App Review activation. Hosted lifecycle/runtime/economics and final release remain external gates. [Current evidence](evidence/local-release-20261102/report.md). [Migration, watchdog, qualification and activation order](CLOUD_CAPACITY.md). The owner will push; do not infer deployment authorization from this local handoff.
+
+## Historical checkpoints
 
 **Current update — November 2: PASS one optimized Improvise delivery and branch integration; PARTIAL release.** The verified image delivered one 43-second song, captured ten test credits and passed independent cleanup; workers remain 0/0. The pipeline had 352 ms headroom. A subsequent order-preserving ranking optimization passes locally and is merged into main with all worker branches; its hosted impact is NOT RUN. Full attributable economics, automatic capacity lifecycle and final activation remain open. [Delivery](evidence/identity-stems-20261101/report.md); [merge and current provider status](evidence/release-finish-20261102/report.md). Historical entries follow.
 

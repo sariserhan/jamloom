@@ -1,3 +1,5 @@
+**Current — 2026-11-02:** Payment implementation and scoped provider checks are preserved. The new local song-capacity implementation adds no customer charge and changes no credit prices. Sales remain inactive pending hosted operating economics and final activation. No push/deployment/paid call occurred in this increment. [Current release evidence](evidence/local-release-20261102/report.md); [ordered handoff](CLOUD_CAPACITY.md). All dated checkpoints below are historical.
+
 **Latest — 2026-11-01:** Deployed Apple/Stripe delivery and native purchase/Restore/refund/renewal checks pass in the linked release evidence. Native build 37 is VALID and selected; the review draft remains unsubmitted. Customer sales remain closed because generation startup and operating-cost qualification are incomplete. The latest single Music DNA check timed out during image preparation; all twenty test credits returned and independent cleanup passed. [Current report](evidence/style-guidance-20261101/report.md), [release handoff](LAUNCH_ACTIVATION.md). Earlier dated preparation statements below are historical.
 
 # Payments — 2026-10-31

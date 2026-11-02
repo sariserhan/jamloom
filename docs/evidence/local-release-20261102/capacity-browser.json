@@ -1,0 +1,38 @@
+[
+  {
+    "browser": "chromium",
+    "width": 1440,
+    "status": "PASS",
+    "explicitPreparations": 3,
+    "automaticRetries": 0,
+    "generationRequests": 0,
+    "pageErrors": []
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "status": "PASS",
+    "explicitPreparations": 3,
+    "automaticRetries": 0,
+    "generationRequests": 0,
+    "pageErrors": []
+  },
+  {
+    "browser": "webkit",
+    "width": 1440,
+    "status": "PASS",
+    "explicitPreparations": 3,
+    "automaticRetries": 0,
+    "generationRequests": 0,
+    "pageErrors": []
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "status": "PASS",
+    "explicitPreparations": 3,
+    "automaticRetries": 0,
+    "generationRequests": 0,
+    "pageErrors": []
+  }
+]

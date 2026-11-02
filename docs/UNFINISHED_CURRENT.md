@@ -1,3 +1,11 @@
+# Current unfinished work — updated 2026-11-02
+
+Local implementation and testing of bounded song preparation are complete on `main`; nothing was pushed. See [current evidence and exact external gates](evidence/local-release-20261102/report.md) and the [ordered release handoff](CLOUD_CAPACITY.md). Full release remains PARTIAL: hosted lifecycle/runtime/cost qualification, production deployment/migration, final sales activation and Apple review/release remain. Previously closed studies and deferred v1 research stay closed/deferred.
+
+## Historical scope and evidence
+
+The dated statements below describe earlier checkpoints; they do not supersede the current release handoff.
+
 # Current unfinished work — 2026-10-30
 
 **PARTIAL overall. The owner chose “Finish the full project before publishing.”**

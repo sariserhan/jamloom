@@ -1,0 +1,63 @@
+{
+  "status": "PASS_LOCAL",
+  "siteTests": 208,
+  "isolatedDatabaseChecks": 85,
+  "nativeAccountTests": {
+    "passed": 23,
+    "skipped": 2,
+    "failures": 0,
+    "skips": [
+      "ActualLocalAccountAndProfileSync requires local integration environment",
+      "ActualPublicWebsiteSongsWithoutSignIn requires local production server"
+    ]
+  },
+  "sdkBootstrapCases": 4,
+  "typecheck": "PASS",
+  "productionBuild": "PASS",
+  "bundleAudit": "PASS",
+  "hostedLifecycle": "NOT_RUN",
+  "productionMigration": "NOT_RUN",
+  "push": "NOT_RUN",
+  "logs": {
+    "product-entry-browser.log": {
+      "sha256": "54c010e964bb9b63a2c6b108d7ca0f9a11eced3d53f3ee854f058bbbdf69c6f2",
+      "bytes": 4013
+    },
+    "typecheck.log": {
+      "sha256": "76d575f32c96b28d06783b82331bc5d133a4feed0a9804f0aa5139880abaa7c6",
+      "bytes": 48
+    },
+    "bundle.log": {
+      "sha256": "08130a8d60b3306b8ea05901ed4191af19e63859183db9ac70df7487fbd46f98",
+      "bytes": 308
+    },
+    "database-release-tests.log": {
+      "sha256": "ee4bd27d96b72fa5d3089ba7ff4dfdae6b0b195369c4317d4d9f7b2d136b5f93",
+      "bytes": 21402
+    },
+    "server.log": {
+      "sha256": "28b791105d45a4066110024f271480057f32e769eee545af473188ecb06e3760",
+      "bytes": 153
+    },
+    "ios-account-tests.log": {
+      "sha256": "ca6557ef88ddd65941823e7a1bb0c255349c50ec7dac29c71f548cf238afd190",
+      "bytes": 365751
+    },
+    "web-sdk.log": {
+      "sha256": "7de0eb3337d1813aff2e1191456a80b09480f0b9c4a07881a5c15208f395d017",
+      "bytes": 120
+    },
+    "site-tests.log": {
+      "sha256": "9f84d877932b6fa6a4fb52521beb698fc657810a17955ac9427ad8d9c79d9e98",
+      "bytes": 51001
+    },
+    "cloud-capacity-browser.log": {
+      "sha256": "f6c132b2e19a0715eaad55e877c5eda67400aa13a81b62c0e73fc706f32cb51f",
+      "bytes": 737
+    },
+    "build.log": {
+      "sha256": "5b0c816b587d1edd9e5acae61bfa28c900ac8561c306b9ac02fdc8c8c6fcb06b",
+      "bytes": 18089
+    }
+  }
+}
