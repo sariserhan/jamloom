@@ -19,6 +19,7 @@ from arrange_voice_research import RATE, digest, read_pcm
 from assemble_sung_response import intervals
 from local_call_edit import arrange, ArrangementRejected
 from singing_response import ENERGIES, STYLES, STYLE_LABELS, VOICES, MAX_PHRASE_CHARS, digest as file_digest, load_plan, text_field
+from vocal_identity import identity_stems_ready
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / 'build-style-training/upstream'
@@ -27,6 +28,14 @@ OUTPUT = ROOT / 'renders/singer-studio'
 
 class StudioError(ValueError):
     """A safe, actionable message for the studio listener."""
+
+
+def separate_for_arrangement(singer,env,log):
+    if identity_stems_ready(singer):return
+    separator_python=os.environ.get('JAMLOOM_SEPARATOR_PYTHON')
+    separator_script=ROOT/'services/runpod/separate_spleeter.py' if separator_python else ROOT/'scripts/separate_singer.py'
+    subprocess.run([separator_python or sys.executable,str(separator_script),'--input',str(singer/'singer.wav'),
+                    '--output',str(singer/'stems')],stdout=log,stderr=subprocess.STDOUT,env=env,timeout=600,check=True)
 
 
 @timed('source')
@@ -242,13 +251,10 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None,
         stage = 'Generating the singer and music'
         with phase('singing'), (work / 'render-private.log').open('w') as log:
             subprocess.run([*command, 'sing', '--runtime', str(RUNTIME), '--plan', str(plan_path), '--case', case['id'],
-                            '--output', str(singer), *(['--mac-small-decode'] if mac_small_decode else [])], stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
+                            '--output', str(singer), *(['--mac-small-decode'] if mac_small_decode else [])], stdout=log, stderr=subprocess.STDOUT, env={**env,'JAMLOOM_IDENTITY_STEMS':'1'}, timeout=600, check=True)
         stage = 'Finding room for your sound'
         with phase('separation'), (work / 'separate-private.log').open('w') as log:
-            separator_python=os.environ.get('JAMLOOM_SEPARATOR_PYTHON')
-            separator_script=ROOT/'services/runpod/separate_spleeter.py' if separator_python else ROOT/'scripts/separate_singer.py'
-            subprocess.run([separator_python or sys.executable, str(separator_script), '--input', str(singer/'singer.wav'),
-                            '--output', str(singer/'stems')], stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
+            separate_for_arrangement(singer,env,log)
         report=None
         arrangement_diagnostics=[]
         for attempt,candidate in enumerate(candidates):

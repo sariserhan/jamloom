@@ -8,7 +8,8 @@ import time
 
 PHASES = frozenset(('pipeline', 'improvise', 'source', 'transcription', 'selection',
     'lyrics', 'runtime-verify', 'lyric-load', 'lyric-generate', 'singing',
-    'sing-import', 'sing-load', 'sing-generate', 'separation', 'arrangement', 'identity'))
+    'sing-import', 'sing-load', 'sing-generate', 'separation', 'arrangement', 'identity',
+    'identity-separate', 'identity-verify', 'identity-load', 'identity-generate', 'identity-stems'))
 MAX_BYTES = 32768
 MAX_EVENTS = 128
 MAX_MS = 1200000
