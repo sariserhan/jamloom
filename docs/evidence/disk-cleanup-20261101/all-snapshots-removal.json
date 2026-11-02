@@ -1,0 +1,26 @@
+[
+  {
+    "path": "~/Documents/projects/jamloom/build-release-closure-20261031/review-generation-deploy-source",
+    "sourceCommit": "49a9b5d1e9e71f140cd033c3433d1d686400961e",
+    "status": "REMOVED_VERIFIED_GIT_SNAPSHOT",
+    "bytesBefore": 370634752
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-release-closure-20261031/review-deploy-source",
+    "sourceCommit": "6a228d34e520dd8fc7fc5dcc4a8f38178168d0f3",
+    "status": "REMOVED_VERIFIED_GIT_SNAPSHOT",
+    "bytesBefore": 370409472
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-release-style-guidance-20261101/deploy-source",
+    "sourceCommit": "bf0d68ae9e4c659634642cb439e1da6e3afee7cd",
+    "status": "REMOVED_VERIFIED_GIT_SNAPSHOT",
+    "bytesBefore": 372584448
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ready-capacity-20261101/deploy-source",
+    "sourceCommit": "1e24292d136ccfa616844410a522c975cc2dc316",
+    "status": "REMOVED_VERIFIED_GIT_SNAPSHOT",
+    "bytesBefore": 372711424
+  }
+]

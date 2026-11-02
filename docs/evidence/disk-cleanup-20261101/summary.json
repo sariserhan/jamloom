@@ -1,0 +1,11 @@
+{
+  "at": "2026-11-02T00:54:07.707961+00:00",
+  "status": "PASS",
+  "approxFreeBeforeGiB": 4.9,
+  "freeAfterBytes": 21935280128,
+  "auditedBytesRemoved": 8322154496,
+  "removedPaths": 42,
+  "sourceGitStatusUnchangedBeforeDocumentation": true,
+  "appsClosed": false,
+  "recordingsModelsCredentialsReleasesDeleted": false
+}

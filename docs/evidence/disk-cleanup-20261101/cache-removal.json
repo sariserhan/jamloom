@@ -1,0 +1,182 @@
+[
+  {
+    "path": "~/.npm/_cacache",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 45056
+  },
+  {
+    "path": "~/Documents/projects/jamloom/apps/site/.next-qualification",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 709304320
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios/Build/Intermediates.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 62074880
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios/ModuleCache.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 17256448
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-device/Build/Intermediates.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 128454656
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-device/ModuleCache.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 23019520
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-launch-20261031/Build/Intermediates.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 58007552
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-launch-20261031/ModuleCache.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 5894144
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-release-completion/Build/Intermediates.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 69353472
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-release-completion/ModuleCache.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 17141760
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-store/derived-36/Build/Intermediates.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 58593280
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-store/derived-36/CompilationCache.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 28672
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-store/derived-36/ModuleCache.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 5894144
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-store/derived-36/SDKExplicitPrecompiledModules",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 66064384
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-store/derived-36/SDKStatCaches.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 1585152
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-storekit/Build/Intermediates.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 117751808
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-ios-storekit/ModuleCache.noindex",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 23138304
+  },
+  {
+    "path": "~/Library/Caches/colima/caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 332357632
+  },
+  {
+    "path": "~/Library/Caches/com.apple.amp.itmstransporter",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 108843008
+  },
+  {
+    "path": "~/Library/Caches/notion-updater",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 249188352
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/04B38988-0B0F-4668-9704-1CD6DA91D43B/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 0
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/283D0042-2A0D-4FD9-B4FC-5FD66243823C/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 410165248
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/309B362A-F926-4F8C-BB40-662059D0848A/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 150441984
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/3834DCD3-308E-4484-B945-0FCA50652152/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 0
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/4CC8AEAE-22B5-4FA4-BA57-929EC53E5DAE/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 517087232
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/5C4376F8-FBDF-4A17-83A1-22B1F6763607/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 390647808
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/623D6C2B-F386-47FA-9CF3-C0D9B1A95A8E/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 638758912
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/72D8581D-3128-4182-B101-4F1844301421/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 214089728
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/97D4D9E6-9DFD-4798-8C77-A385DB05F900/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 218476544
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/A54EF0B9-7932-4E9C-BD3A-2303D6516BA4/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 0
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/B9396DF9-5E59-4C5B-BF13-4B71F23FA9A2/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 554807296
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/C4D676EE-B1C4-47B0-B70A-31877E118523/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 612139008
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/C84EFBBC-CBAB-4366-BC33-197ACDB18762/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 150179840
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/D7257B56-6E4A-4FBC-BEEA-C8220CBAEE7D/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 0
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/EBA98A0D-BD23-43CD-8736-AF6D697FAC3C/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 0
+  },
+  {
+    "path": "~/Library/Developer/CoreSimulator/Devices/EEB1A316-40E5-4F11-9805-CD51177CD8CC/data/Library/Caches",
+    "status": "REMOVED_CACHE",
+    "bytesBefore": 178954240
+  }
+]

@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: admission requires running and ready capacity, not a scaled-down cached worker
+ok 1 - admission requires running and ready capacity, not a scaled-down cached worker
+  ---
+  duration_ms: 0.57
+  type: 'test'
+  ...
+# Subtest: production candidate preserves fixed prices and enforces the measured product deadlines
+ok 2 - production candidate preserves fixed prices and enforces the measured product deadlines
+  ---
+  duration_ms: 1.340584
+  type: 'test'
+  ...
+# Subtest: capacity refuses changed image, hardware, price, scaling and extra storage before dispatch
+ok 3 - capacity refuses changed image, hardware, price, scaling and extra storage before dispatch
+  ---
+  duration_ms: 3.342666
+  type: 'test'
+  ...
+# Subtest: active capacity is finite, explicitly funded, hardware-bound and closed before expiry
+ok 4 - active capacity is finite, explicitly funded, hardware-bound and closed before expiry
+  ---
+  duration_ms: 1.149459
+  type: 'test'
+  ...
+# Subtest: hosted watchdog disables only expired owned capacity and verifies the stop receipt
+ok 5 - hosted watchdog disables only expired owned capacity and verifies the stop receipt
+  ---
+  duration_ms: 1.218
+  type: 'test'
+  ...
+# Subtest: launch gate defaults on and only explicit false disables it
+ok 6 - launch gate defaults on and only explicit false disables it
+  ---
+  duration_ms: 0.568916
+  type: 'test'
+  ...
+# Subtest: public song collections and playback pass the launch gate without opening generation or private collections
+ok 7 - public song collections and playback pass the launch gate without opening generation or private collections
+  ---
+  duration_ms: 4.733459
+  type: 'test'
+  ...
+# Subtest: public DJ set playback is open while creation and private recordings stay protected
+ok 8 - public DJ set playback is open while creation and private recordings stay protected
+  ---
+  duration_ms: 0.289333
+  type: 'test'
+  ...
+# Subtest: account-free native catalogue suggestions pass the launch gate without opening creation or purchases
+ok 9 - account-free native catalogue suggestions pass the launch gate without opening creation or purchases
+  ---
+  duration_ms: 0.143708
+  type: 'test'
+  ...
+# Subtest: coming-soon recovery allows login, support and signed callbacks, Pro registration but not unrelated product APIs
+ok 10 - coming-soon recovery allows login, support and signed callbacks, Pro registration but not unrelated product APIs
+  ---
+  duration_ms: 0.090583
+  type: 'test'
+  ...
+# Subtest: launch responses contain real navigation, one tracker and private caching; product APIs stay closed
+ok 11 - launch responses contain real navigation, one tracker and private caching; product APIs stay closed
+  ---
+  duration_ms: 0.879209
+  type: 'test'
+  ...
+# Subtest: anonymous requests cannot bypass the default gate with request headers or query flags
+ok 12 - anonymous requests cannot bypass the default gate with request headers or query flags
+  ---
+  duration_ms: 0.139459
+  type: 'test'
+  ...
+# Subtest: Apple notification URLs reach signature verification during launch and maintenance holds
+ok 13 - Apple notification URLs reach signature verification during launch and maintenance holds
+  ---
+  duration_ms: 0.310333
+  type: 'test'
+  ...
+# Subtest: published Live DJ preview is accessible while other product routes remain gated
+ok 14 - published Live DJ preview is accessible while other product routes remain gated
+  ---
+  duration_ms: 0.353167
+  type: 'test'
+  ...
+# Subtest: retention cron reaches its own authorization while launch access stays closed
+ok 15 - retention cron reaches its own authorization while launch access stays closed
+  ---
+  duration_ms: 0.225125
+  type: 'test'
+  ...
+# Subtest: free Local Remixes opens directly while cloud creation remains gated
+ok 16 - free Local Remixes opens directly while cloud creation remains gated
+  ---
+  duration_ms: 0.217333
+  type: 'test'
+  ...
+# Subtest: DJ cleanup reaches its own auth during a launch hold without opening session APIs
+ok 17 - DJ cleanup reaches its own auth during a launch hold without opening session APIs
+  ---
+  duration_ms: 0.05225
+  type: 'test'
+  ...
+# Subtest: AI DJ public overview passes the launch hold while paid and private APIs remain closed
+ok 18 - AI DJ public overview passes the launch hold while paid and private APIs remain closed
+  ---
+  duration_ms: 0.227791
+  type: 'test'
+  ...
+# Subtest: public preview images bypass the launch proxy while private and payment routes stay covered
+ok 19 - public preview images bypass the launch proxy while private and payment routes stay covered
+  ---
+  duration_ms: 5.184375
+  type: 'test'
+  ...
+# Subtest: credits account page reaches its own authentication during preview without opening purchases
+ok 20 - credits account page reaches its own authentication during preview without opening purchases
+  ---
+  duration_ms: 0.630125
+  type: 'test'
+  ...
+# Subtest: Apple receipt recovery reaches authenticated verification during preview while new checkout stays closed
+ok 21 - Apple receipt recovery reaches authenticated verification during preview while new checkout stays closed
+  ---
+  duration_ms: 0.224125
+  type: 'test'
+  ...
+# Subtest: product browsing opens the requested workspace while generation and purchase mutations remain closed
+ok 22 - product browsing opens the requested workspace while generation and purchase mutations remain closed
+  ---
+  duration_ms: 2.061084
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 390.329792

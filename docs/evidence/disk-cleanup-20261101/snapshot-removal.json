@@ -1,0 +1,14 @@
+[
+  {
+    "path": "~/Documents/projects/jamloom/build-product-entry-20261101/deploy-source",
+    "status": "REMOVED_VERIFIED_GIT_SNAPSHOT",
+    "bytesBefore": 373383168,
+    "sourceCommit": "f3fdfd63"
+  },
+  {
+    "path": "~/Documents/projects/jamloom/build-capacity-admission-20261101/deploy-source",
+    "status": "REMOVED_VERIFIED_GIT_SNAPSHOT",
+    "bytesBefore": 372686848,
+    "sourceCommit": "9f134abc"
+  }
+]
