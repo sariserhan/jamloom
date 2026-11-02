@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "scope": "Synthetic 422-option ranking on this Mac; not hosted latency",
+  "options": 422,
+  "sameCompleteSeededOrder": true,
+  "medianSeconds": {
+    "before": 1.9283995830046479,
+    "after": 0.01674724998883903
+  },
+  "speedup": 115.1472381608803,
+  "hostedPerformance": "NOT RUN for ranking change"
+}

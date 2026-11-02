@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Blend recorded calls into a song while preserving the surrounding performance."""
 import argparse
+from collections import Counter
 import json
 import random
 from pathlib import Path
@@ -327,15 +328,23 @@ def performance_options(options, hook, grid, song_frames):
 
 def rank_options(options, history, seed):
     rng=random.Random(seed); remaining=list(options); ranked=[]
+    # Counts change only when one option is removed. Recounting every group for
+    # every weight made ranking cubic in the number of valid placements. Keep
+    # the same list order, weights and RNG calls so seeded music is unchanged.
+    groups=Counter((c['mode'],c.get('treatment')) for c in remaining)
+    fingerprints=Counter(c['fingerprint'] for c in remaining)
+    recent=Counter(history)
+    recent_modes=Counter(h.split(':')[0] for h in history[-4:])
     while remaining:
         # Penalize recent shapes, not A or B outright: A-A and B-B can still occur at different entrances.
-        weights=[1/(sum((other['mode'],other.get('treatment'))==(c['mode'],c.get('treatment')) for other in remaining)*
-                    (1+3*history.count(c['fingerprint'])+
-                     sum(h.split(':')[0]==c['mode'] for h in history[-4:]))) for c in remaining]
-        if history and any(c['fingerprint']!=history[-1] for c in remaining):
+        weights=[1/(groups[(c['mode'],c.get('treatment'))]*
+                    (1+3*recent[c['fingerprint']]+recent_modes[c['mode']])) for c in remaining]
+        if history and fingerprints[history[-1]]<len(remaining):
             weights=[0 if c['fingerprint']==history[-1] else w for c,w in zip(remaining,weights)]
         i=rng.choices(range(len(remaining)),weights=weights,k=1)[0]
-        ranked.append(remaining.pop(i))
+        chosen=remaining.pop(i);ranked.append(chosen)
+        groups[(chosen['mode'],chosen.get('treatment'))]-=1
+        fingerprints[chosen['fingerprint']]-=1
     return ranked
 
 
