@@ -1,0 +1,10 @@
+{
+  "at": "2026-11-02T01:31:09.057Z",
+  "mutations": false,
+  "balanceCoversApprovedCap": true,
+  "underBalance": false,
+  "currentSpendPerHr": 0,
+  "maxServerlessConcurrency": 10,
+  "observedWorkers": 0,
+  "interpretation": "Account reports sufficient balance and concurrency. This does not identify the provider placement failure or prove final cost."
+}

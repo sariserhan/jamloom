@@ -1,37 +1,31 @@
 # Continuous release follow-through — 2026-11-01
 
-**PARTIAL overall; PASS local preparation and current read-only checks.** The owner asked to complete release work in one run. No new paid compute was authorized by that request; every previous bounded permit is consumed. Existing authorization covers local work and staged deployment/activation after gates pass. Apple approval remains an external provider decision.
+**PARTIAL release; FAIL hosted admission; PASS cleanup and local repair.** The owner approved the prepared two-request/$3 A5000 diagnostic. It was stopped before either generation when a deterministic readiness bug was identified. The permit is consumed; no retry or deadline extension occurred. [Execution and repair](execution.md).
 
-## Current state verified
+## What the approved run established
 
-- Apple 0.11.0 build 38 is **VALID**, selected for **MANUAL** release. Version and submission are **READY_FOR_REVIEW**, with no submitted date. No App Review or product submission was made.
-- Runpod has endpoint min/max **0/0**, no workers, no queued/in-progress jobs and no retried jobs. The prior endpoint hardware selection remains restored. No GPU was activated.
-- The catalog reports **LOW** L4 Serverless availability in EU-RO-1, and **LOW** A5000 Serverless availability in US-CA-2 and US-IL-1. Both have 24 GB and listed Serverless price $0.75/hour. Availability is an ephemeral provider estimate, not reserved capacity. This motivates an alternate-hardware experiment; it does not establish a resolved root cause or sufficient stock.
-- Latest endpoint billing for the preceding active-capacity attempt still has no posted records. This is provisional and is not a confirmed zero-cost result.
-- Read-only schema verification passes: 33 migrations, none pending/changed/unknown. No database migration was required. The preflight configuration describes the local process, not proof of currently deployed billing flags.
+The exact reviewed source `d5c49101` built successfully and passed private-account, public-route and hosted-expiry checks. One A5000 downloaded/extracted the existing model image, was briefly throttled, then reached RUNNING. The account reported enough balance and no funding restriction. This was not simply an absence of GPU capacity.
 
-## Prepared change
+Our admission predicate required both `workers.running > 0` and `workers.ready > 0`. Four actual running health samples reported `running=1, ready=0`. Runpod's [CLI documentation](https://github.com/runpod/runpodctl#waiting-until-a-resource-is-usable) explains that active workers stay running and do not enter the cached-ready counter. This conjunction incorrectly prevented admission. Neither counter alone proves a loaded handler or successful generation. [Observed health](running-health.json), [exact hardware](observed-hardware.json), [account check](account-capacity.json).
 
-Added an explicit **A5000 diagnostic-only profile**. The existing L4 production profile remains unchanged and cannot select A5000. Ordinary generation configuration rejects the diagnostic profile. Only the private review-account path can construct it, with an existing valid 40-minute/$3 maximum active-worker lease; the provider verifies exactly one A5000, unchanged published image, one active/max worker, no additional storage, and the same $0.75/hour ceiling. Mixed/new GPU types, unknown profiles, expired/missing leases and higher prices are rejected.
+Stopped through the existing controller failure path at 01:40:51 UTC, before the fixed 01:59:41 deadline. **Zero requests, uploads, credit reservations or model executions were submitted.** Independent cleanup confirms limits 0/0, previous hardware restored, empty provider inventory/queue, no pending database jobs and no test objects. Test balance remains 2,990 with zero reserved; live balance remains zero. The held public deployment `f3fdfd63` is restored; all four product workspaces return 200 and customer generation/purchases remain closed. [Cleanup](style-cleanup.json), [final verification](final-verification.json).
 
-Retail credit prices, request cost caps, model code/weights, output quality checks and generation deadlines are unchanged. This does not qualify A5000 for customers or enable checkout. It prepares a controlled test of whether the exact same model can execute on an alternate 24-GB GPU.
+Provider worker and endpoint billing have no posted rows yet. This is provisional, not proof of zero charges or viable operating costs. [Worker billing](style-provider-billing.json), [endpoint billing](endpoint-billing.json). Raw provider logs stay private; only [keyword counts](log-summary.json) are recorded here, without interpreting them as model readiness.
 
-The [prepared plan](hosted-plan.json) requests one aggregate **$3** permit: one A5000, one private Music DNA request followed only on success by one private Improvise request, maximum 40 minutes including deployment/preparation plus 130 seconds shutdown, no repeated submissions, stop on failure. Improvise uploads only the previously confirmed 1.22-second crop; test objects are independently deleted afterward. No worker image publication, AI DJ rental, ongoing review funding, live charge or public activation is included.
+## Local repair
 
-The archived harness preserves absolute deadlines, single-use submission claims, at least 16 minutes reserved after preparation, full test/live ledger isolation, local and hosted shutdown guards, remote-object cleanup and held-site restoration. It now captures bounded private system/container logs while short-lived workers exist, rather than depending on retired-worker logs that return 404. Startup failure remains unresolved until provider execution supplies evidence.
+The admission condition now accepts a running placement with an empty queue while rejecting cached-only, initializing, throttled, unhealthy or malformed states. Fixed credit prices, one-worker limits, reservation concurrency, request TTL, execution deadline and full failed-job credit release remain enforced. The same check serves web and native requests.
 
-## Validation
+**PASS:** actual-state regression fails before the fix and passes afterward; 206 site tests, 11 focused provider/profile checks, 20 disposable-Postgres checks and typecheck. The database checks include availability, credit holds, simultaneous requests, cancellation, privacy and ambiguous submission. Disposable test data was removed. [Validation](readiness-repair-validation.json).
 
-**PASS:** 206 site tests, 12 focused profile/provider tests, site typecheck, isolated production build, harness typecheck, both no-operation dry runs, the exact approved source checksum and the 113-file public studio bundle audit. Tests cover private-only alternate hardware, unchanged L4 behavior, exact hardware/price/concurrency bounds, finite-lease enforcement and unchanged credit budgets.
+**NOT RUN:** deployment and hosted song verification of this repair. The completed diagnostic's archived harness and plan remain unchanged apart from outcome metadata; it must not be reused as permission to resume.
 
-**NOT RUN:** A5000 hosted execution; current-image successful Music DNA delivery; final complete operating-cost qualification; separately funded AI DJ operating qualification; ongoing App Review capacity; customer activation; Apple submission/approval/public release. Owner-deferred scoring/training and closed listening/endurance studies remain closed.
+## Remaining release gates
 
-## Documentation consulted
+Successful deployed Music DNA and Improvise delivery on the repaired admission path; complete attributable operating costs; separately bounded AI DJ operating qualification and ongoing App Review capacity; final sales activation and Apple submission/approval/release. Apple 0.11.0 build 38 is VALID in the unsubmitted MANUAL-release draft. Stripe setup is ready but the existing product/price/webhook remain inactive or disabled. [Apple](apple-readonly.json), [Stripe](stripe-readiness.json), [activation sequence](../../LAUNCH_ACTIVATION.md).
 
-Context7 was unavailable. Official Runpod [worker states](https://docs.runpod.io/serverless/workers/overview), [product-specific GPU availability](https://docs.runpod.io/api-reference-v2/catalog/get-a-gpu-type), [worker log streaming](https://docs.runpod.io/api-reference-v2/serverless/stream-serverless-worker-logs), and [failure billing](https://www.runpod.io/blog/failed-requests-real-charges-how-runpod-serverless-billing-works-when-workers-fail) were consulted. No provider support message was sent. The image-loading observation alone does not prove a model, registry or hardware defect.
+Owner-deferred scoring/training and closed listening/endurance studies stay closed. No new model/image, price change, live charge, Apple submission or provider support message was made.
 
-Reviewed application and harness source: `d5c49101f029a5207401010b91e2f7223286ad59`. Deployment and paid execution remain pending the bounded permit.
+## Prior preparation
 
-## Final read-only release checks
-
-Stripe reports charges/payouts enabled and tax settings active; the existing Creator product and price remain inactive and the credit webhook remains disabled. No Stripe object was changed and no payment was attempted. All four public product pages return 200; anonymous Music DNA/Improvise status remains unavailable with no login or generation request. [Stripe](stripe-readiness.json), [public HTTP](public-http.json).
+The private A5000 diagnostic profile is lease-bound and cannot widen ordinary L4 production hardware. Earlier source validation passed 206 tests, typechecks, isolated production build, 33-migration read-only verification, the 113-file public bundle audit and both no-operation harness dry runs. The existing model/image and approved 1.22-second crop were preserved. Context7 was unavailable; current official Runpod documentation was used for provider behavior, including [worker states](https://docs.runpod.io/serverless/workers/overview), [availability](https://docs.runpod.io/api-reference-v2/catalog/get-a-gpu-type) and [logs](https://docs.runpod.io/api-reference-v2/serverless/stream-serverless-worker-logs).

@@ -1,0 +1,485 @@
+{
+  "scope": "Literal keyword counts only, not model readiness or root-cause proof; raw logs remain private",
+  "captures": [
+    {
+      "file": "worker-32s22cnyhw1vnf-0-private.log",
+      "bytes": 62917,
+      "events": 552,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 511,
+        "extracting": 34,
+        "download complete": 1,
+        "pull complete": 5,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-1-private.log",
+      "bytes": 58216,
+      "events": 511,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 450,
+        "extracting": 58,
+        "download complete": 1,
+        "pull complete": 0,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-2-private.log",
+      "bytes": 50971,
+      "events": 447,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 445,
+        "extracting": 0,
+        "download complete": 1,
+        "pull complete": 0,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-3-private.log",
+      "bytes": 46297,
+      "events": 406,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 404,
+        "extracting": 0,
+        "download complete": 1,
+        "pull complete": 0,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-4-private.log",
+      "bytes": 41294,
+      "events": 362,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 358,
+        "extracting": 0,
+        "download complete": 2,
+        "pull complete": 0,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-5-private.log",
+      "bytes": 41497,
+      "events": 364,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 335,
+        "extracting": 25,
+        "download complete": 2,
+        "pull complete": 0,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-6-private.log",
+      "bytes": 41750,
+      "events": 368,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 166,
+        "extracting": 202,
+        "download complete": 0,
+        "pull complete": 0,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-7-private.log",
+      "bytes": 38227,
+      "events": 337,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 139,
+        "extracting": 197,
+        "download complete": 1,
+        "pull complete": 0,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-8-private.log",
+      "bytes": 38041,
+      "events": 336,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 54,
+        "extracting": 277,
+        "download complete": 1,
+        "pull complete": 4,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-9-private.log",
+      "bytes": 38322,
+      "events": 339,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 334,
+        "download complete": 0,
+        "pull complete": 5,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-10-private.log",
+      "bytes": 38313,
+      "events": 339,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 337,
+        "download complete": 0,
+        "pull complete": 2,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-11-private.log",
+      "bytes": 38087,
+      "events": 337,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 335,
+        "download complete": 0,
+        "pull complete": 2,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-12-private.log",
+      "bytes": 37968,
+      "events": 336,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 336,
+        "download complete": 0,
+        "pull complete": 0,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-13-private.log",
+      "bytes": 37873,
+      "events": 335,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 329,
+        "download complete": 0,
+        "pull complete": 6,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-14-private.log",
+      "bytes": 38099,
+      "events": 337,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 331,
+        "download complete": 0,
+        "pull complete": 6,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-15-private.log",
+      "bytes": 37516,
+      "events": 332,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 332,
+        "download complete": 0,
+        "pull complete": 0,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-16-private.log",
+      "bytes": 38084,
+      "events": 337,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 336,
+        "download complete": 0,
+        "pull complete": 1,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-17-private.log",
+      "bytes": 34587,
+      "events": 306,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 303,
+        "download complete": 0,
+        "pull complete": 3,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-18-private.log",
+      "bytes": 37070,
+      "events": 328,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 326,
+        "download complete": 0,
+        "pull complete": 2,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 0
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-19-private.log",
+      "bytes": 34089,
+      "events": 300,
+      "sources": [
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 291,
+        "download complete": 0,
+        "pull complete": 6,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 1
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-20-private.log",
+      "bytes": 36330,
+      "events": 308,
+      "sources": [
+        "container",
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 285,
+        "download complete": 0,
+        "pull complete": 6,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 2
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-21-private.log",
+      "bytes": 36330,
+      "events": 308,
+      "sources": [
+        "container",
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 285,
+        "download complete": 0,
+        "pull complete": 6,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 2
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-22-private.log",
+      "bytes": 36330,
+      "events": 308,
+      "sources": [
+        "container",
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 285,
+        "download complete": 0,
+        "pull complete": 6,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 2
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-23-private.log",
+      "bytes": 36330,
+      "events": 308,
+      "sources": [
+        "container",
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 285,
+        "download complete": 0,
+        "pull complete": 6,
+        "loading container image from cache": 0,
+        "error": 0,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 2
+      }
+    },
+    {
+      "file": "worker-32s22cnyhw1vnf-24-private.log",
+      "bytes": 36878,
+      "events": 310,
+      "sources": [
+        "container",
+        "system"
+      ],
+      "recognizedStates": {
+        "downloading": 0,
+        "extracting": 285,
+        "download complete": 0,
+        "pull complete": 6,
+        "loading container image from cache": 0,
+        "error": 1,
+        "out of memory": 0,
+        "handler": 0,
+        "ready": 2
+      }
+    }
+  ]
+}

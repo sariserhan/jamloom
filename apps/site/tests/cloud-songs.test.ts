@@ -98,7 +98,7 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    assert.equal((await cloudSongAPI(request(),service,owners[0],()=>{}))!.status,503);
    assert.deepEqual(await Promise.all(owners.map(o=>commerce.wallet.balance(o))),before);
    workers={...workers,initializing:0,idle:1,ready:1};assert.equal(await service.available(owners[0]),false);
-   workers={...workers,idle:0,running:1};assert.equal(await service.available(owners[0]),true);
+   workers={...workers,idle:0,ready:0,running:1};assert.equal(await service.available(owners[0]),true);
    const quotes=await Promise.all(owners.map(async o=>{const response=await cloudSongAPI(request(),service,o,()=>{});assert.equal(response!.status,200);return response!.json();}));
    gate=true;const outcomes=await Promise.allSettled(owners.map((o,i)=>service.submit(o,keys[i],profile,'private',quotes[i].token)));gate=false;
    assert.equal(arrivals,2);assert.equal(outcomes.filter(x=>x.status==='fulfilled').length,1);

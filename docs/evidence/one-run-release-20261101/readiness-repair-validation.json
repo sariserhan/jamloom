@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "scope": "Local repair only; no deployment or hosted generation after repair",
+  "regressionBeforeFix": "FAIL as expected on observed running=1,ready=0 state",
+  "focusedChecks": 11,
+  "siteTests": 206,
+  "disposableDatabaseChecks": 20,
+  "typecheck": "PASS",
+  "isolatedDatabaseRemoved": true,
+  "hostedQualification": "NOT RUN",
+  "salesEnabled": false,
+  "sourceFiles": [
+    "apps/site/lib/cloud-readiness.ts",
+    "apps/site/tests/cloud-production-profile.test.ts",
+    "apps/site/tests/cloud-songs.test.ts"
+  ]
+}

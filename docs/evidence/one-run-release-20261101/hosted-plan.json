@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "scope": "Private A5000 capacity and two-product qualification; not ongoing review funding or permission to open sales",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
   "endpoint": "jl77hn92npt65k",
@@ -104,5 +104,8 @@
   "applicationCommit": "d5c49101f029a5207401010b91e2f7223286ad59",
   "ownerApproval": "Approve the two requests, $3 total",
   "approvedAt": "2026-11-02T01:19:32.776031+00:00",
-  "absoluteDeadline": "2026-11-02T01:59:41.861000+00:00"
+  "absoluteDeadline": "2026-11-02T01:59:41.861000+00:00",
+  "finishedAt": "2026-11-02T01:41:36.881Z",
+  "outcome": "FAIL admission; PASS independent cleanup. Zero requests submitted. Readiness predicate repaired locally afterward; no resume or retry.",
+  "executionEvidence": "execution-result.json"
 }

@@ -1,6 +1,6 @@
 ## Current credit catalog setup — 2026-10-31
 
-**2026-11-01 release follow-through:** Local checks pass and Apple build 38 remains valid but unsubmitted. The next concrete operator decision is the [two-request, one-A5000, $3 maximum diagnostic](evidence/one-run-release-20261101/hosted-plan.json). It tests alternate capacity with unchanged model/credit prices and independently removes test data; it does not fund ongoing review or open sales. Previous GPU permits are consumed. [Current results and remaining gates](evidence/one-run-release-20261101/report.md).
+**2026-11-01 release follow-through:** The approved A5000 attempt reached a running worker but exposed an incorrect running-plus-cached-ready admission check. No song request was submitted; cleanup and held-site restoration pass. The local fix passes 206 site tests, 20 disposable-database checks and typecheck. The permit is consumed; repair deployment and hosted delivery/cost qualification remain open. Apple build 38 is valid but unsubmitted. [Current results and remaining gates](evidence/one-run-release-20261101/report.md).
 
 The owner-approved catalog is [documented here](CREDIT_SYSTEM.md), with nonexpiring monthly and top-up credits across web/iPhone. Earlier pack IDs below are historical receipt compatibility only.
 

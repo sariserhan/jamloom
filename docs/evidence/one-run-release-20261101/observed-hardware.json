@@ -1,0 +1,14 @@
+{
+  "workers": [
+    {
+      "id": "32s22cnyhw1vnf",
+      "gpuTypeId": "NVIDIA RTX A5000",
+      "gpuCount": 1,
+      "status": "RUNNING",
+      "startedAt": "2026-11-02T01:39:06.412Z",
+      "uptimeSeconds": 61,
+      "isStale": false,
+      "observedAt": "2026-11-02T01:40:50.657Z"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T01:26:56.026Z",
+  "scope": "Anonymous public routes during private A5000 lease",
+  "mutations": false,
+  "rows": [
+    {
+      "path": "/music-dna",
+      "status": 200
+    },
+    {
+      "path": "/improvise",
+      "status": 200
+    },
+    {
+      "path": "/academy",
+      "status": 200
+    },
+    {
+      "path": "/singing-academy",
+      "status": 200
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "available": false,
+      "signedIn": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "available": false,
+      "signedIn": false
+    }
+  ]
+}

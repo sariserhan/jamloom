@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: admission accepts the observed active-worker counter without requiring cached readiness
+ok 1 - admission accepts the observed active-worker counter without requiring cached readiness
+  ---
+  duration_ms: 0.51375
+  type: 'test'
+  ...
+# Subtest: production candidate preserves fixed prices and enforces the measured product deadlines
+ok 2 - production candidate preserves fixed prices and enforces the measured product deadlines
+  ---
+  duration_ms: 1.107583
+  type: 'test'
+  ...
+# Subtest: capacity refuses changed image, hardware, price, scaling and extra storage before dispatch
+ok 3 - capacity refuses changed image, hardware, price, scaling and extra storage before dispatch
+  ---
+  duration_ms: 3.23975
+  type: 'test'
+  ...
+# Subtest: alternate GPU qualification cannot widen live production or escape its private lease
+ok 4 - alternate GPU qualification cannot widen live production or escape its private lease
+  ---
+  duration_ms: 1.10225
+  type: 'test'
+  ...
+# Subtest: active capacity is finite, explicitly funded, hardware-bound and closed before expiry
+ok 5 - active capacity is finite, explicitly funded, hardware-bound and closed before expiry
+  ---
+  duration_ms: 0.304667
+  type: 'test'
+  ...
+# Subtest: hosted watchdog disables only expired owned capacity and verifies the stop receipt
+ok 6 - hosted watchdog disables only expired owned capacity and verifies the stop receipt
+  ---
+  duration_ms: 1.051792
+  type: 'test'
+  ...
+# Subtest: Runpod submission is bounded, asynchronous, and never retried after uncertain acceptance
+ok 7 - Runpod submission is bounded, asynchronous, and never retried after uncertain acceptance
+  ---
+  duration_ms: 18.565375
+  type: 'test'
+  ...
+# Subtest: Runpod status validates identity, states, timing and receipts without exposing provider errors
+ok 8 - Runpod status validates identity, states, timing and receipts without exposing provider errors
+  ---
+  duration_ms: 2.472209
+  type: 'test'
+  ...
+# Subtest: dispatch checks disabled capacity without requiring a warm worker or submitting work
+ok 9 - dispatch checks disabled capacity without requiring a warm worker or submitting work
+  ---
+  duration_ms: 0.284375
+  type: 'test'
+  ...
+# Subtest: only status 404 is an expired-receipt candidate; a submit 404 remains unconfirmed
+ok 10 - only status 404 is an expired-receipt candidate; a submit 404 remains unconfirmed
+  ---
+  duration_ms: 0.144916
+  type: 'test'
+  ...
+# Subtest: whole playlists and cached descriptions pass a bounded provider request
+ok 11 - whole playlists and cached descriptions pass a bounded provider request
+  ---
+  duration_ms: 26.330042
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 295.400875

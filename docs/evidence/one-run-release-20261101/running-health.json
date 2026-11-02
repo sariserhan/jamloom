@@ -1,0 +1,78 @@
+{
+  "mutations": false,
+  "samples": [
+    {
+      "at": "2026-11-02T01:39:33.499Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T01:39:53.990Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T01:40:14.290Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T01:40:34.748Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 1,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    }
+  ],
+  "note": "Observed active worker has ready=0; cached-ready and running are separate counters. Counts alone do not prove handler readiness."
+}

@@ -12,12 +12,16 @@ import {hasReadySongWorker} from '../lib/cloud-readiness';
 const env={JAMLOOM_CLOUD_SONGS_ENABLED:'true',RUNPOD_API_KEY:'fixture',RUNPOD_ENDPOINT_ID:'fixture',CREDIT_BILLING_MODE:'live',VERCEL:'1',JAMLOOM_CLOUD_COST_PROFILE:CLOUD_COST_PROFILE};
 const endpoint={id:'fixture',image:CLOUD_WORKER_IMAGE,type:'QUEUE',disk:60,gpu:{count:1,pools:['AMPERE_24'],excludedTypes:['other']},workers:{min:0,max:1},scaling:{type:'REQUEST_COUNT',requestCount:1},flashboot:'FLASHBOOT',networkVolumes:[],mounts:{network:[],global:[]}};
 const catalog={gpus:[{id:'NVIDIA L4',pool:'AMPERE_24',price:{serverless:.75}},{id:'other',pool:'AMPERE_24',price:{serverless:3}}]};
-test('admission requires running and ready capacity, not a scaled-down cached worker',()=>{
+test('admission accepts the observed active-worker counter without requiring cached readiness',()=>{
  const empty={idle:0,ready:0,running:0,initializing:0,throttled:0,unhealthy:0},jobs={inQueue:0,inProgress:0};
+ // Actual A5000 health at 2026-11-02T01:39:33.500Z. Active workers do not
+ // enter the separate cached-ready counter; requiring both blocks every job.
+ assert.equal(hasReadySongWorker({jobs:{completed:46,failed:18,inProgress:0,inQueue:0,retried:0},workers:{...empty,running:1}}),true);
  assert.equal(hasReadySongWorker({jobs,workers:{...empty,running:1,ready:1}}),true);
- for(const state of ['idle','ready','running'])assert.equal(hasReadySongWorker({jobs,workers:{...empty,[state]:1}}),false);
+ for(const state of ['idle','ready'])assert.equal(hasReadySongWorker({jobs,workers:{...empty,[state]:1}}),false);
  assert.equal(hasReadySongWorker({jobs,workers:{...empty,idle:1,ready:1}}),false);
- for(const state of ['initializing','throttled','unhealthy'])assert.equal(hasReadySongWorker({jobs,workers:{...empty,[state]:1}}),false);
+ for(const state of ['initializing','throttled','unhealthy'])for(const running of [0,1])assert.equal(hasReadySongWorker({jobs,workers:{...empty,running,[state]:1}}),false);
+ for(const state of ['inQueue','inProgress'])assert.equal(hasReadySongWorker({jobs:{...jobs,[state]:1},workers:{...empty,running:1}}),false);
  for(const bad of [null,{}, {jobs}, {jobs,workers:empty}, {jobs:{...jobs,inQueue:1},workers:{...empty,idle:1}}, {jobs:{...jobs,inProgress:1},workers:{...empty,ready:1}}, {jobs,workers:{...empty,idle:'1'}}, {jobs,workers:{...empty,idle:-1}}, {jobs,workers:{idle:1}}])assert.equal(hasReadySongWorker(bad),false);
 });
 test('production candidate preserves fixed prices and enforces the measured product deadlines',()=>{

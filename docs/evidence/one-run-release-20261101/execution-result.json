@@ -1,0 +1,46 @@
+{
+  "at": "2026-11-02T01:42:18.013220+00:00",
+  "qualification": "FAIL",
+  "controllerError": "HTTP preflight stopped",
+  "httpError": "Capacity stopped: HTTP preflight stopped",
+  "activatedAt": "2026-11-02T01:23:42.409Z",
+  "disabledAt": "2026-11-02T01:40:51.641Z",
+  "leaseDeadline": 1793584781861,
+  "cleanup": "PASS",
+  "providerSamples": 62,
+  "workerRecordsObserved": 1,
+  "maxWorkerStates": {
+    "idle": 1,
+    "initializing": 1,
+    "ready": 1,
+    "running": 1,
+    "throttled": 1,
+    "unhealthy": 0
+  },
+  "logCaptureResponses": 25,
+  "requestCount": 0,
+  "submitCalls": 0,
+  "requests": [],
+  "beforeTest": {
+    "available": 2990,
+    "reserved": 0
+  },
+  "afterTest": {
+    "available": 2990,
+    "reserved": 0
+  },
+  "beforeLive": {
+    "available": 0,
+    "reserved": 0
+  },
+  "afterLive": {
+    "available": 0,
+    "reserved": 0
+  },
+  "customerSalesEnabled": false,
+  "finalInvoice": false,
+  "permitReusable": false,
+  "diagnosis": "Incorrect admission predicate required running and cached-ready counters simultaneously. Owner-approved attempt stopped before any submission.",
+  "stoppedOnFailure": true,
+  "heldDeploymentRestored": "https://jamloom-of9eta19v-ssari.vercel.app"
+}
