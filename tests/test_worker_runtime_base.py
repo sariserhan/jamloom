@@ -25,7 +25,7 @@ class RuntimeBaseTests(unittest.TestCase):
 
     def test_verified_base_and_current_overlay(self):
         result = module.validate(self.root)
-        self.assertEqual(result["runtimeFiles"], 3)
+        self.assertEqual(result["runtimeFiles"], 5)
         self.assertEqual(result["status"], "PASS")
 
     def test_changed_model_or_dependency_is_rejected(self):

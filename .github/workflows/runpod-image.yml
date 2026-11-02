@@ -8,8 +8,8 @@ on:
       recipe:
         description: Full model build or validated runtime-only overlay
         type: choice
-        options: [full, runtime]
-        default: full
+        options: [runtime]
+        default: runtime
 permissions:
   contents: read
   packages: write
@@ -24,6 +24,7 @@ jobs:
       - name: Verify worker boundary contracts
         run: |
           python3 -m unittest discover -s tests -p 'test_runpod_worker.py'
+          python3 -m unittest discover -s tests -p 'test_generation_timing.py'
           python3 -m unittest discover -s tests -p 'test_hosted_identity_separator.py'
           python3 -m unittest discover -s tests -p 'test_rejected_audio_diagnostic.py'
           python3 -m unittest discover -s tests -p 'test_dna_style_delivery.py'

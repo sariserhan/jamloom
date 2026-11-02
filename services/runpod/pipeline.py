@@ -6,8 +6,10 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'scripts'))
+from generation_timing import timed
 
 
+@timed('pipeline')
 def run(work):
     payload = json.loads((work/'request.json').read_text())
     from song_duration import LIMITS
