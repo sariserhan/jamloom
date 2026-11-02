@@ -1,7 +1,7 @@
 import './env';
 import {setTimeout as delay} from 'node:timers/promises';
 import {createPool} from '../lib/database';
-import {CloudCapacity,capacityProvider,stopOrphanedCapacity} from '../lib/cloud-capacity';
+import {CloudCapacity,capacityProvider,stopOrphanedCapacity,emergencyCapacityStop} from '../lib/cloud-capacity';
 import {capacityPermit} from '../lib/cloud-capacity-permit';
 
 // Supervise independently of the web deployment. Never starts or renews a GPU.
@@ -27,7 +27,12 @@ try{
     if(capacity&&watch&&!stopping&&Date.now()<permit!.expiresAt)await capacity.guardianHeartbeat();
     console.log(JSON.stringify({at:new Date().toISOString(),...result}));
     if(permit&&Date.now()>=permit.expiresAt&&result.state==='off')break;
-   }catch{console.error('Capacity shutdown check failed; no activation attempted.');if(!watch)process.exitCode=2;}
+   }catch{
+    console.error('Capacity shutdown check failed; no activation attempted.');
+    if(capacity){try{const result=await emergencyCapacityStop(endpoint,provider);console.log(JSON.stringify({emergencyShutdown:true,...result}));}
+     catch{console.error('Emergency shutdown remains unconfirmed; provider recovery required.');}}
+    if(!watch)process.exitCode=2;
+   }
    if(watch&&!stopping)await delay(10000);
   }while(watch&&!stopping);
   // Graceful termination also revokes any recorded cycle. A failed shutdown

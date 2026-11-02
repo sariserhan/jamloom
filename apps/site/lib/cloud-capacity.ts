@@ -6,7 +6,7 @@ import {capacityLease,capacityPermitHash,type CapacityPermit} from './cloud-capa
 import {assertProductionEndpoint,CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 import {hasReadySongWorker} from './cloud-readiness';
 
-type Cycle={id:string;permit_id:string;endpoint:string;image:string;starts_at:bigint;expires_at:bigint;cap_micros:bigint;state:string;ready_at:bigint|null;busy_at:bigint|null};
+type Cycle={id:string;permit_id:string;endpoint:string;image:string;starts_at:bigint;expires_at:bigint;cap_micros:bigint;state:string;ready_at:bigint|null;busy_at:bigint|null;reason:string|null};
 export type CapacityState='off'|'preparing'|'ready'|'stopping'|'unavailable';
 export type CapacityProvider={endpoint:()=>Promise<any>;catalog:()=>Promise<any>;health:()=>Promise<any>;setWorkers:(count:0|1)=>Promise<any>};
 export function capacityProvider(key:string,endpoint:string,request:typeof fetch=fetch):CapacityProvider{
@@ -117,6 +117,13 @@ export class CloudCapacity{
    const now=this.clock(),e=await this.provider.endpoint();this.identity(e,r.image);
    const h=await this.provider.health();
    const busy=(await db.query("SELECT 1 FROM cloud_song_runs c JOIN dna_song_jobs d ON c.id=d.id WHERE c.endpoint=$1 AND d.state IN ('queued','running') LIMIT 1",[this.endpoint])).rowCount||h.jobs?.inQueue>0||h.jobs?.inProgress>0;
+   // A provider can briefly report running before replacing/reinitializing a
+   // worker. Unusable capacity is preparation, not customer idle time. Retain
+   // the original startup deadline so flapping cannot extend the allowance.
+   if(r.state==='ready'&&!busy&&!hasReadySongWorker(h)){
+    await db.query("UPDATE cloud_capacity_cycles SET state='starting',ready_at=NULL,busy_at=NULL WHERE id=$1",[r.id]);
+    r.state='starting';r.ready_at=null;r.busy_at=null;
+   }
    let reason:string|undefined;
    if(shutdownOnly)reason='configuration-removed';
    else if(r.permit_id!==this.permit.id||now>=this.permit.expiresAt||now>=Number(r.expires_at))reason='expired';
@@ -131,7 +138,7 @@ export class CloudCapacity{
    if(!reason){try{assertProductionEndpoint(e,await this.provider.catalog(),lease(r),this.profile,now);}
     catch{reason='profile-unconfirmed';}}
    if(reason){
-    await db.query("UPDATE cloud_capacity_cycles SET state='stopping',reason=$2 WHERE id=$1",[r.id,reason]);
+    await db.query("UPDATE cloud_capacity_cycles SET state='stopping',reason=COALESCE(reason,$2) WHERE id=$1",[r.id,reason]);
     // Idempotent shutdown may repeat. Never turn a worker back on during recovery.
     if(e.workers?.min!==0||e.workers?.max!==0){const stopped=await this.provider.setWorkers(0);this.identity(stopped,r.image);
      if(stopped.workers?.min!==0||stopped.workers?.max!==0)throw Error('Capacity shutdown unconfirmed');}
@@ -155,4 +162,16 @@ export async function stopOrphanedCapacity(pool:Pool,endpoint:string,provider:Ca
   WHERE c.endpoint=$1 AND c.state<>'stopped'`,[endpoint])).rows[0];
  if(!r)return {state:'off' as CapacityState};
  return new CloudCapacity(pool,endpoint,r.profile,r.config,provider,clock).reconcile(true,true);
+}
+
+// The independently configured guardian must still stop its exact worker when
+// database access fails. This path cannot start capacity or modify another image.
+export async function emergencyCapacityStop(endpoint:string,provider:CapacityProvider){
+ const e=await provider.endpoint();
+ if(e?.id!==endpoint||e?.image!==CLOUD_WORKER_IMAGE||![0,1].includes(e.workers?.min)||![0,1].includes(e.workers?.max))throw Error('Emergency capacity identity unconfirmed');
+ if(e.workers.min!==0||e.workers.max!==0){
+  const stopped=await provider.setWorkers(0);
+  if(stopped?.id!==endpoint||stopped?.image!==CLOUD_WORKER_IMAGE||stopped.workers?.min!==0||stopped.workers?.max!==0)throw Error('Emergency shutdown unconfirmed');
+ }
+ return {state:(empty(await provider.health())?'off':'stopping') as CapacityState};
 }

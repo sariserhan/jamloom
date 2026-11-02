@@ -6,7 +6,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {createPool} from '../lib/database';
 import {migrate} from '../lib/migrations';
-import {CloudCapacity,stopOrphanedCapacity,type CapacityProvider} from '../lib/cloud-capacity';
+import {CloudCapacity,stopOrphanedCapacity,emergencyCapacityStop,type CapacityProvider} from '../lib/cloud-capacity';
 import {capacityPermit,type CapacityPermit} from '../lib/cloud-capacity-permit';
 import {CLOUD_COST_PROFILE,CLOUD_4090_DIAGNOSTIC_PROFILE,CLOUD_WORKER_IMAGE} from '../lib/cloud-production-profile';
 import {cloudSongConfig} from '../lib/cloud-song-config';
@@ -25,6 +25,17 @@ test('demand capacity is opt-in, finite, funded and cannot widen diagnostic acce
  assert.throws(()=>cloudSongConfig({...config(p),JAMLOOM_CLOUD_COST_PROFILE:CLOUD_4090_DIAGNOSTIC_PROFILE},'improvise'),/private/);
  assert(cloudSongConfig({...config(p),JAMLOOM_CLOUD_COST_PROFILE:CLOUD_4090_DIAGNOSTIC_PROFILE},'improvise',true)?.demandPermit);
  assert.throws(()=>cloudSongConfig({...config(p),JAMLOOM_CLOUD_ACTIVE_LEASE_START:new Date(p.startsAt).toISOString(),JAMLOOM_CLOUD_ACTIVE_LEASE_END:new Date(p.startsAt+2400000).toISOString(),JAMLOOM_CLOUD_ACTIVE_LEASE_CAP_MICROS:'1000000'},'improvise'),/one capacity/);
+});
+
+test('database-independent emergency cleanup only stops the configured endpoint/image',async()=>{
+ let image=CLOUD_WORKER_IMAGE,limits={min:1,max:1},stops=0;
+ const provider:CapacityProvider={endpoint:async()=>({id:'fixture',image,workers:limits}),catalog:async()=>{throw Error('Not needed');},
+  health:async()=>({jobs:{inQueue:0,inProgress:0},workers:{idle:0,ready:0,running:0,initializing:0,throttled:0,unhealthy:0}}),
+  setWorkers:async n=>{assert.equal(n,0);stops++;limits={min:0,max:0};return {id:'fixture',image,workers:limits};}};
+ assert.deepEqual(await emergencyCapacityStop('fixture',provider),{state:'off'});assert.equal(stops,1);
+ await emergencyCapacityStop('fixture',provider);assert.equal(stops,1);
+ image='foreign';await assert.rejects(emergencyCapacityStop('fixture',provider),/identity/);assert.equal(stops,1);
+ image=CLOUD_WORKER_IMAGE;await assert.rejects(emergencyCapacityStop('another-endpoint',provider),/identity/);assert.equal(stops,1);
 });
 
 test('durable demand capacity: concurrent starts, full budget, lost responses, idle and expiry',async t=>{
@@ -100,6 +111,21 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    const c=fresh();await start(c,'owner9');await wake(c);price=2;
    assert.equal(await c.ready(300000),false);assert.equal((await c.reconcile(true)).reason,'profile-unconfirmed');
    assert.equal(e.workers.max,0);price=.75;
+  });
+  await t.test('a transient running signal followed by initialization does not consume the idle window',async()=>{
+   const c=fresh();await start(c,'owner10');await wake(c);
+   now+=50000;h.workers={...emptyWorkers,initializing:1};await c.guardianHeartbeat();
+   assert.equal((await c.reconcile()).state,'preparing');assert.equal(e.workers.max,1);
+   now+=90000;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'preparing');
+   assert.equal(await c.ready(300000),false);assert.equal(e.workers.max,1);
+   await wake(c);now+=110000;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'ready');
+   await cool(c);
+  });
+  await t.test('repeated readiness regression retains the original startup deadline',async()=>{
+   const c=fresh(),started=now;await start(c,'owner11');await wake(c);
+   now=started+1200001;h.workers={...emptyWorkers,initializing:1};await c.guardianHeartbeat();
+   assert.equal((await c.reconcile()).reason,'startup-timeout');assert.equal(e.workers.max,0);
+   assert.equal((await pool.query('SELECT reason FROM cloud_capacity_cycles WHERE permit_id=$1',[c.permit.id])).rows[0].reason,'startup-timeout');
   });
  }finally{await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();await rm(directory,{recursive:true,force:true});}
 });

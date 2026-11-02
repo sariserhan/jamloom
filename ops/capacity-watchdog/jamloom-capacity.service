@@ -1,0 +1,24 @@
+[Unit]
+Description=Jamloom bounded capacity shutdown guardian
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=%h/.config/jamloom-capacity/enabled
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.local/share/jamloom-capacity/current
+EnvironmentFile=%h/.config/jamloom-capacity/capacity.env
+ExecStart=/usr/bin/node watchdog.mjs --apply --watch
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=140
+KillMode=control-group
+NoNewPrivileges=true
+UMask=0077
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
