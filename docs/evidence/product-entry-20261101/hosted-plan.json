@@ -29,12 +29,14 @@
   "harnessSHA256": {
     "build-active-capacity-20261101/billing.mts": "038320dd93cb2765a87af442051bbe1e72b061a9e2423d3f9e04cbf44fceb425",
     "build-active-capacity-20261101/cleanup.mts": "d3dc076f89ee0784ae2b4a56c9dfbfa284312791aa89ab4d4ef2398986f27de7",
-    "build-active-capacity-20261101/control.mts": "7cb01779e2befe893d5389be75ac4cea780b6f1c49ae8f64ec19e6a4ec96e030",
-    "build-active-capacity-20261101/deployed-common.mts": "30a51de9c9a11fa4c1275f05909a272a873a0d88947f55014913e89f8c8d6eb6",
+    "build-active-capacity-20261101/control.mts": "08d5b211558da961eb8d6a5b0b2291176ede6d496f51a5137bccec171160455e",
+    "build-active-capacity-20261101/deployed-common.mts": "194791493fd53a536cb182a2becd835d5d9af06942a1ac168bcc9eeeafee6050",
     "build-active-capacity-20261101/http.mts": "ff903c6a18f51b454ff5ee632bc24cda7ca1f04b7f1d03345f14e113a873c28d",
     "build-active-capacity-20261101/observe.mts": "fe275209469dfea0689ec3f4c8d140d2ccbf3152bdf050350d1098dd06b06198",
     "build-active-capacity-20261101/prepare-deploy.mts": "103b549f14e7645c64da395f3fb5d008d7878674728feb59b00138c4524fc099",
-    "build-active-capacity-20261101/watchdog.mts": "ba2b11613838afa2074b881781bbe45e08d72e0b0e2762ca7d823ee3c8cea4ce"
+    "build-active-capacity-20261101/watchdog.mts": "e5f2ef70248dcef6c582418499f242ceec14f5fbe320ee9c7951582c7e343fdf",
+    "apps/site/lib/cloud-capacity-shutdown.ts": "8c970095e8a6f62dfc92d36b9f1ba273b509a2935eb5f20107b3c5404631c781",
+    "apps/site/app/api/song-jobs/route.ts": "78252aaebcdfdf82a7099ac3db6180063302405c7609554e8ddcb68954602875"
   },
   "checks": [
     "A single active L4, not a scaled-down cached worker; unchanged verified image and price/hardware guards",
@@ -44,7 +46,8 @@
     "Test wallet only; capture exactly 20 credits on success or release all on failure; live balance unchanged",
     "Download/receipt/hash/WAV/style-note/privacy verification; independent zero-worker/job and remote-audio cleanup",
     "Operator active startup/idle charges accounted separately from customer reservation; pending billing never treated as zero",
-    "Restore held public configuration and remove temporary lease; no sales or mobile release activation"
+    "Restore held public configuration and remove temporary lease; no sales or mobile release activation",
+    "Authenticated hosted minute recovery cron verifies lease expiry and disables capacity independently of the local computer; check deployment before any activation"
   ],
   "excludes": [
     "Improvise rerender",
@@ -58,5 +61,16 @@
     "From apps/site: node --import tsx ../../build-active-capacity-20261101/control.mts --dry-run",
     "From apps/site: node --import tsx ../../build-active-capacity-20261101/http.mts --dry-run",
     "After approval only: bind lease and review allowance, deploy private review configuration, start observer and HTTP preflight, then controller; finally independent cleanup, held restore and billing read"
-  ]
+  ],
+  "applicationCommit": "f3fdfd63 plus the separately reviewed hosted-expiry shutdown follow-up",
+  "validation": {
+    "siteTests": 205,
+    "isolatedDatabaseChecks": 20,
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "controllerDryRun": "PASS; zero provider operations",
+    "httpDryRun": "PASS; zero provider operations",
+    "harnessTypecheck": "PASS",
+    "publicBrowserFlows": "PASS Chrome and WebKit desktop/phone; no generation requests"
+  }
 }

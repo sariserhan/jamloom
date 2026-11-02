@@ -1,3 +1,4 @@
+import {stopExpiredActiveCapacity} from '../lib/cloud-capacity-shutdown';
 import test from 'node:test';
 import {activeWorkerLease,assertActiveWorkerLease} from '../lib/cloud-capacity-lease';
 import assert from 'node:assert/strict';
@@ -59,4 +60,17 @@ test('active capacity is finite, explicitly funded, hardware-bound and closed be
  let submissions=0;
  const provider=new RunpodProvider('fixture','fixture',async url=>{if(String(url).endsWith('/run'))submissions++;return Response.json(String(url).endsWith('/catalog/gpus')?catalog:active);},CLOUD_COST_PROFILE,lease);
  assert.equal(await provider.dispatchEnabled(),true);assert.equal(submissions,0);
+});
+
+test('hosted watchdog disables only expired owned capacity and verifies the stop receipt',async()=>{
+ const now=Date.now(),leaseEnv={...env,JAMLOOM_CLOUD_ACTIVE_LEASE_START:new Date(now-2400000).toISOString(),JAMLOOM_CLOUD_ACTIVE_LEASE_END:new Date(now).toISOString(),JAMLOOM_CLOUD_ACTIVE_LEASE_CAP_MICROS:'3000000'};
+ let mutations=0;
+ const request:typeof fetch=async(url,options)=>{assert.equal(String(url),'https://api.runpod.io/v2/serverless/fixture');if(options?.method==='PATCH'){mutations++;assert.deepEqual(JSON.parse(String(options.body)),{workers:{min:0,max:0}});return Response.json({...endpoint,workers:{min:0,max:0}});}return Response.json({...endpoint,workers:{min:1,max:1}});};
+ assert.deepEqual(await stopExpiredActiveCapacity({},request,now),{stopped:false});
+ assert.deepEqual(await stopExpiredActiveCapacity(leaseEnv,request,now-1),{stopped:false});assert.equal(mutations,0);
+ assert.deepEqual(await stopExpiredActiveCapacity(leaseEnv,request,now),{stopped:true,alreadyDisabled:false});assert.equal(mutations,1);
+ assert.deepEqual(await stopExpiredActiveCapacity(leaseEnv,async()=>Response.json({...endpoint,workers:{min:0,max:0}}),now),{stopped:true,alreadyDisabled:true});
+ await assert.rejects(stopExpiredActiveCapacity(leaseEnv,async()=>Response.json({...endpoint,id:'another'}),now),/identity/);
+ await assert.rejects(stopExpiredActiveCapacity(leaseEnv,async(_url,o)=>o?.method==='PATCH'?new Response(null,{status:503}):Response.json(endpoint),now),/pending/);
+ await assert.rejects(stopExpiredActiveCapacity(leaseEnv,async()=>Response.json(endpoint),now),/unconfirmed/);
 });

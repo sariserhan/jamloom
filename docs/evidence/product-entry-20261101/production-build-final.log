@@ -1,0 +1,146 @@
+▲ Next.js 16.4.2 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 11ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1877ms
+  Running TypeScript ...
+
+  We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+  	- include was updated to add '.next-qualification/types/**/*.ts'
+  	- include was updated to add '.next-qualification/dev/types/**/*.ts'
+
+  Finished TypeScript in 2.4s ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/69) ...
+  Generating static pages using 9 workers (17/69) 
+  Generating static pages using 9 workers (34/69) 
+  Generating static pages using 9 workers (51/69) 
+✓ Generating static pages using 9 workers (69/69) in 332ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├   /[info]
+│ ├ ● /pricing
+│ ├ ● /examples
+│ ├ ● /help
+│ └ ● [+5 more paths]
+├ ○ /academy
+├ ƒ /academy/challenges/[challengeId]
+├ ƒ /academy/checkout
+├ ○ /academy/learn
+├ ƒ /academy/lessons/[lessonId]
+├   /academy/levels/[levelSlug]
+│ ├ ● /academy/levels/intro
+│ ├ ● /academy/levels/beginner
+│ ├ ● /academy/levels/elementary
+│ └ ● [+3 more paths]
+├ ƒ /academy/practice
+├ ○ /academy/progress
+├ ƒ /academy/success
+├ ƒ /account
+├ ƒ /account/[action]
+├ ƒ /account/credits
+├ ƒ /account/generations
+├ ƒ /account/purchases
+├ ƒ /admin
+├ ƒ /admin/billing
+├ ƒ /admin/feedback
+├ ƒ /admin/inbox
+├ ƒ /admin/inbox/[id]
+├ ƒ /admin/operations
+├ ƒ /admin/users
+├ ƒ /ai-dj
+├ ƒ /ai-dj/audio
+├ ○ /ai-dj/session
+├ ƒ /ai-dj/sets
+├ ƒ /api/academy/[...path]
+├ ƒ /api/academy/checkout
+├ ƒ /api/academy/stripe
+├ ƒ /api/account
+├ ƒ /api/account/deletion
+├ ƒ /api/admin/[...path]
+├ ƒ /api/ai-dj/recordings/[[...path]]
+├ ƒ /api/ai-dj/sessions/[[...path]]
+├ ƒ /api/ai-dj/sets/[[...path]]
+├ ƒ /api/ai-dj/supervisor
+├ ƒ /api/aurowall
+├ ƒ /api/aurowall/[id]
+├ ƒ /api/auth/[...all]
+├ ƒ /api/catalogue/[[...path]]
+├ ƒ /api/contact
+├ ƒ /api/creation-feedback
+├ ƒ /api/favorites
+├ ƒ /api/generations
+├ ƒ /api/improvise/song
+├ ƒ /api/library
+├ ƒ /api/library/[id]/[action]
+├ ƒ /api/maintenance
+├ ƒ /api/music-search
+├ ƒ /api/notifications
+├ ƒ /api/payments/apple
+├ ƒ /api/payments/apple/notifications
+├ ƒ /api/payments/apple/notifications/sandbox
+├ ƒ /api/payments/checkout
+├ ƒ /api/payments/stripe
+├ ƒ /api/payments/subscription
+├ ƒ /api/playlist-import
+├ ƒ /api/playlists/[[...path]]
+├ ƒ /api/pro/access
+├ ƒ /api/pro/checkout
+├ ƒ /api/pro/license
+├ ƒ /api/pro/refresh
+├ ƒ /api/pro/stripe
+├ ƒ /api/singing-course
+├ ƒ /api/singing-recordings/[id]/[kind]
+├ ƒ /api/site-status
+├ ƒ /api/song-jobs
+├ ƒ /api/taste
+├ ƒ /api/taste/feedback
+├ ƒ /api/taste/song
+├ ƒ /catalogue
+├ ƒ /catalogue/[id]
+├ ○ /community
+├ ƒ /contact
+├ ƒ /creators/[credit]
+├ ○ /dj-studio
+├ ○ /improvise
+├ ○ /learn
+├   /learn/[slug]
+│ ├ ● /learn/how-to-become-a-dj
+│ ├ ● /learn/voice-remix
+│ ├ ● /learn/laptop-dj
+│ └ ● /learn/live-source
+├ ƒ /library
+├ ƒ /listen/[kind]/[id]
+├ ƒ /listen/[kind]/[id]/opengraph-image
+├ ○ /listening
+├ ○ /live-dj
+├ ○ /music-dna
+├ ○ /opengraph-image
+├ ƒ /playlists
+├ ƒ /playlists/[id]
+├ ƒ /pro
+├ ƒ /report-bug
+├ ƒ /review
+├ ƒ /robots.txt
+├ ○ /singing-academy
+├ ƒ /singing-academy/checkout
+├ ƒ /singing-academy/lessons/[id]
+├ ○ /singing-academy/warmups
+├ ƒ /sitemap.xml
+├ ○ /start
+├ ƒ /support
+└ ○ /tour
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
