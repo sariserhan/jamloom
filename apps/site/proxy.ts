@@ -4,14 +4,14 @@ import {cachedSiteSettings} from './lib/site-settings';
 import {isAdmin} from './lib/admin-access';
 import {appleReviewAccount} from './lib/apple-review';
 import {reviewSongPath} from './lib/cloud-review-config';
-import {comingSoonEnabled,comingSoonRecovery,comingSoonResponse,publicSongRead} from './lib/coming-soon';
+import {comingSoonEnabled,comingSoonRecovery,comingSoonResponse,publicSongRead,publicProductRead} from './lib/coming-soon';
 
 export async function proxy(request: NextRequest) {
   const path=request.nextUrl.pathname;
   const recovery=/^\/(admin|account|contact|support|report-bug)(\/|$)/.test(path)||['/maintenance','/api/maintenance','/api/ai-dj/supervisor','/api/site-status','/api/contact','/api/notifications','/api/song-jobs','/api/payments/stripe','/api/payments/apple','/api/payments/apple/notifications','/api/payments/apple/notifications/sandbox','/api/academy/stripe','/api/pro/stripe','/api/pro/refresh'].includes(path)||path.startsWith('/api/admin/')||path.startsWith('/api/auth/');
   let configured=false;try{readConfig();configured=true;}catch{}
   let launchBypass=false;
-  if(comingSoonEnabled()&&!comingSoonRecovery(path)&&!publicSongRead(request)){
+  if(comingSoonEnabled()&&!comingSoonRecovery(path)&&!publicSongRead(request)&&!publicProductRead(request)){
     try{if(configured&&request.headers.has('cookie')){const {services}=await import('./lib/services');const session=await services().auth.api.getSession({headers:request.headers});launchBypass=isAdmin(session?.user)||!!(session?.user.emailVerified&&reviewSongPath(path)&&appleReviewAccount(session.user.id));}}catch{/* Unavailable authentication never opens the preview. */}
     if(!launchBypass)return comingSoonResponse(request);
   }

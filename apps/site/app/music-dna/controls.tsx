@@ -1,4 +1,5 @@
 'use client';
+import {generationAccount,GenerationAccountNotice,type GenerationAccount} from '../generation-account';
 import {LanguageFilter,LanguageCollection} from '../language-filter';
 import {languageMatches} from '../../lib/song-language';
 import {STYLE_MATCH_NOTE} from '../../lib/dna-style-note';
@@ -27,13 +28,15 @@ export function TasteNotebook(){
  const [progress,setProgress]=useState<SongProgress|null>(null);
  const [cloud,setCloud]=useState(false);
  const [canCreate,setCanCreate]=useState<boolean|null>(null);
+ const [account,setAccount]=useState<GenerationAccount>({state:'loading'});
  const [visibility,setVisibility]=useState<'public'|'private'>('private');
  const [quote,setQuote]=useState<{credits:number;token:string;expiresAt:number;key:string}|null>(null);
  const requestId=useRef<string|null>(null),prompt=useRef<HTMLDialogElement>(null),generationButton=useRef<HTMLButtonElement>(null);
  const submittingCloud=useRef<string|null>(null),cancelWanted=useRef(false);
  const [promptOpen,setPromptOpen]=useState(false);
  useEffect(()=>{if(promptOpen)prompt.current?.showModal();else prompt.current?.close();},[promptOpen]);
- function openPrompt(){setMessage('');setProgress(null);setPromptOpen(true);}
+ async function checkAccount(){setAccount({state:'loading'});const next=await generationAccount();if(mounted.current){setAccount(next);if(next.state==='ready')refreshAvailability();}}
+ function openPrompt(){setMessage('');setProgress(null);setPromptOpen(true);void checkAccount();}
  async function dismissPrompt(){if(analysis.current)await cancel();setPromptOpen(false);}
  const snapshot={references:profile.references,referenceMetadata:profile.referenceMetadata??[],vocalLanguage:profile.vocalLanguage},direction=musicDirection(snapshot);
  const current=takes.filter(s=>s.styleChecked&&s.profile&&favoriteKey(s.profile)===favoriteKey(snapshot));
@@ -122,15 +125,15 @@ export function TasteNotebook(){
   setRendering(false);setProgress({state:'cancelled'});requestId.current=null;setQuote(null);setMessage('');
  }
  async function generate(){
-  if(analysis.current||job)return;
+  if(analysis.current||job||account.state!=='ready'||account.available<generationPrice)return;
   let cloudRequest:string|null=null;const controller=new AbortController();analysis.current=controller;setRendering(true);setDraft(null);setProgress({state:'running',phase:'preparing'});setMessage('');
   cancelWanted.current=false;
   try{
    if(!profile.references.length)throw Error('Add at least one favorite first.');
    const available=await fetch('/api/taste/song',{signal:AbortSignal.any([controller.signal,AbortSignal.timeout(10000)])});
    const readiness=await available.json();if(!available.ok)throw Error(readiness.error);
-   if(readiness.creditsEnabled===false)throw Error('Credit-backed generation is not enabled here yet. Listen to the examples below.');
-   if(readiness.signedIn===false)throw Error('Sign in with a verified account to use your credits.');
+   if(readiness.signedIn===false){setAccount({state:'signed-out'});throw Error('Sign in with a verified account to use your credits.');}
+   if(readiness.creditsEnabled===false)throw Error('Song creation is not open yet. Your favorites are saved.');
    if(readiness.active||readiness.busy)throw Error('Your other song is still being made. Your favorites are saved; try again when it finishes.');
    if(readiness.available!==true){setCanCreate(false);throw Error('Song creation is temporarily unavailable. Please try again shortly. Your credits have not been used.');}
    const resolved=quote?.key===selectionKey&&quote.expiresAt>Date.now()?profile:await resolveFavoriteMetadata(profile,controller.signal);controller.signal.throwIfAborted();setProfile(resolved);
@@ -193,11 +196,11 @@ export function TasteNotebook(){
  <div className="dna-summary"><h3>{profile.references.length?'Your music DNA':'Your next favorite?'}</h3>
  {taste.genres.length?<div className="dna-genre-tags">{taste.genres.map(g=><span key={g.name}>{g.name}</span>)}</div>:<p>{profile.references.length?'We’ll find your sound from your list.':'An original song with AI vocals, inspired by your favorites.'}</p>}
  {profile.references.length>0&&<details><summary>How we choose your sound</summary>{direction&&<p><strong>Song direction: {direction.label}</strong> · {direction.energy}. Based on {direction.coverage} of {direction.total} favorites with recognized catalogue genres.</p>}<p>We consider your whole list to choose a groove, instruments, mood and vocal delivery, then write original lyrics and music.</p><p>Catalogue genres and the model’s knowledge guide this interpretation. We don’t listen to or sample the original recordings, and unfamiliar names may not provide enough information.</p></details>}</div>
- <button ref={generationButton} className="primary" disabled={locked||!loaded||!profile.references.length||canCreate!==true} onClick={openPrompt}>{rendering?'Making your music…':takes.length?'Make another song':'Make my music'}</button>
- {canCreate!==true&&<p role="status">{canCreate===null?'Checking song availability…':'Song creation is currently unavailable. Build your favorites list and listen to examples below.'}</p>}
+ <button ref={generationButton} className="primary" disabled={locked||!loaded||!profile.references.length} onClick={openPrompt}>{rendering?'Making your music…':takes.length?'Make another song':'Make my music'}</button>
+ <small>Explore free. Sign in and review credits when you’re ready to generate.</small>
  {progress&&!promptOpen&&<GenerationProgress {...progress}/>}
  {rendering&&!promptOpen&&<button className="secondary" onClick={cancel}>Cancel composition</button>}
- {canCreate===false&&<button className="secondary" disabled={locked} onClick={refreshAvailability}>Check availability</button>}
+
  {canCreate===true&&<small>One song each time · Ready in a few minutes</small>}
  <details className="dna-language"><summary>Song language <span>{(languages.languages as Record<string,string>)[profile.vocalLanguage??'auto']??'Automatic'}</span></summary>
  <label>Singing language<select disabled={locked||!loaded} value={profile.vocalLanguage??'auto'} onChange={e=>{writable.current=true;setProfile({...profile,vocalLanguage:e.target.value});}}><option value="auto">Choose from my favorites</option>{Object.entries(languages.languages).map(([code,label])=><option key={code} value={code}>{label}</option>)}</select></label>
@@ -211,8 +214,9 @@ export function TasteNotebook(){
  <label><input type="radio" name="dna-visibility" checked={visibility==='private'} onChange={()=>{setVisibility('private');setQuote(null);requestId.current=null;}}/>Private · same price</label><p>Only you can listen or download.</p>
  </fieldset>
  <p>{quote&&quote.key===favoriteKey(snapshot)+':'+visibility?`This song: ${quote.credits} ${quote.credits===1?'credit':'credits'}.`:'20 credits per song.'} The quoted price is fixed before you start. Failed or cancelled songs return your credits.</p>
- <p><a href="/account/sign-in?callbackURL=%2Fmusic-dna">Sign in</a> · <a href="/account/credits">Your credits</a>. {cloud?'Your song keeps processing if you leave this page.':'Local test credits only. Paid generation is not open.'}</p>
- <div className="product-actions"><button className="primary" disabled={locked} onClick={generate}>{rendering?'Preparing your song…':`Generate song · ${generationPrice} ${generationPrice===1?'credit':'credits'}`}</button><button className="secondary" onClick={dismissPrompt}>{rendering?'Cancel composition':'Cancel'}</button></div>
+ <GenerationAccountNotice account={account} credits={generationPrice} returnTo="/music-dna" onRefresh={()=>void checkAccount()}/>
+ {account.state==='ready'&&canCreate!==true&&<div><p role="status">{canCreate===null?'Checking song availability…':'Song creation is currently unavailable. Your favorites are saved and no credits have been used.'}</p><button className="secondary" disabled={locked} onClick={refreshAvailability}>Check availability</button></div>}
+ <div className="product-actions"><button className="primary" disabled={locked||account.state!=='ready'||account.available<generationPrice||canCreate!==true} onClick={generate}>{rendering?'Preparing your song…':`Generate song · ${generationPrice} ${generationPrice===1?'credit':'credits'}`}</button><button className="secondary" onClick={dismissPrompt}>{rendering?'Cancel composition':'Cancel'}</button></div>
  {progress&&promptOpen&&<GenerationProgress {...progress}/>}
  {promptOpen&&<p role="status">{message}</p>}
  </div></dialog>

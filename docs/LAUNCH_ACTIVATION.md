@@ -2,6 +2,10 @@
 
 **PARTIAL.** Language filters, advisory Music DNA delivery and capacity-aware credit admission are implemented and validated. Native build 38 is VALID and selected in the manual-release review draft. The repaired image preserves all 23 model layers, but its cold-start check expired in queue with throttled L4 capacity; full credit release, independent cleanup and held website restoration pass. The readiness-first check stopped before any request when provider readiness and deployed availability disagreed; cleanup passed. The approved resumption submitted once after transient readiness, but the song expired in queue without execution. All 20 test credits were released, independent cleanup and held restoration passed, and the original aggregate $3 permit/deadline are consumed. Reliable execution capacity and full cost qualification remain unresolved. [Current evidence](evidence/capacity-admission-20261101/report.md). No ongoing reviewer/customer GPU allocation is implied. Deferred research/scoring and owner-closed musical/endurance studies remain closed for v1.
 
+## Product entry update
+
+Public product workspaces, free lessons and catalogs now open without login; generation asks for a verified account and credits at its confirmation step. The routing change is locally verified and awaiting staged website deployment. A finite active-worker diagnostic is prepared but not authorized; no new GPU work or sales activation has occurred. [Evidence](evidence/product-entry-20261101/report.md).
+
 ## Completed
 
 - Held website source `9f134abc` includes language filters, style notes, capacity-aware admission before credit reservation and non-destructive availability refresh, and the Apple notification-size repair, correct renewal/refund reconciliation and bounded production/reviewer generation. Actual signed renewal replay grants once in the test wallet; it never grants live credits.

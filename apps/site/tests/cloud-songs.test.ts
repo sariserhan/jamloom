@@ -97,7 +97,8 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    assert.equal(await service.available(owners[0]),false);
    assert.equal((await cloudSongAPI(request(),service,owners[0],()=>{}))!.status,503);
    assert.deepEqual(await Promise.all(owners.map(o=>commerce.wallet.balance(o))),before);
-   workers={...workers,initializing:0,idle:1};assert.equal(await service.available(owners[0]),true);
+   workers={...workers,initializing:0,idle:1,ready:1};assert.equal(await service.available(owners[0]),false);
+   workers={...workers,idle:0,running:1};assert.equal(await service.available(owners[0]),true);
    const quotes=await Promise.all(owners.map(async o=>{const response=await cloudSongAPI(request(),service,o,()=>{});assert.equal(response!.status,200);return response!.json();}));
    gate=true;const outcomes=await Promise.allSettled(owners.map((o,i)=>service.submit(o,keys[i],profile,'private',quotes[i].token)));gate=false;
    assert.equal(arrivals,2);assert.equal(outcomes.filter(x=>x.status==='fulfilled').length,1);
@@ -109,7 +110,7 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    await service.submit(owners[winner],keys[winner],profile,'private',quotes[winner].token);
    const count=submits;await service.cancel(owners[winner],keys[winner]);assert.equal(submits,count);
    assert.deepEqual(await Promise.all(owners.map(o=>commerce.wallet.balance(o))),before);
-   workers={...workers,idle:0,throttled:1};await assert.rejects(service.submit(owners[loser],id(),profile,'private',quotes[loser].token),/temporarily unavailable/);
+   workers={...workers,idle:0,ready:0,running:0,throttled:1};await assert.rejects(service.submit(owners[loser],id(),profile,'private',quotes[loser].token),/temporarily unavailable/);
    outage=true;assert.equal(await service.available(owners[0]),false);assert.equal((await cloudSongAPI(request(),service,owners[0],()=>{}))!.status,503);
    assert.deepEqual(await Promise.all(owners.map(o=>commerce.wallet.balance(o))),before);
   });

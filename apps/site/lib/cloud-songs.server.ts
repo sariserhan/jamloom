@@ -17,7 +17,13 @@ export async function hostedSongRequest(request:Request,product:'music-dna'|'imp
  if(process.env.JAMLOOM_CLOUD_SONGS_ENABLED!=='true'&&!process.env.JAMLOOM_APPLE_REVIEW_GENERATION_CAP_MICROS)return null;
  const {auth,config}=services(),session=await auth.api.getSession({headers:request.headers});
  const owner=session?.user.emailVerified?session.user.id:null,review=!!owner&&appleReviewAccount(owner);
- const songs=hostedSongs(product,review);if(!songs)return null;
+ const songs=hostedSongs(product,review);
+ if(!songs){
+  // Product previews can explain sign-in and credit requirements while sales and
+  // generation remain held. This read never contacts or starts a GPU worker.
+  if(request.method==='GET'&&!new URL(request.url).search)return Response.json({available:false,creditsEnabled:false,signedIn:!!owner,mode:'cloud'},{headers:{'Cache-Control':'private, no-store','Vary':'Cookie'}});
+  return null;
+ }
  return cloudSongAPI(request,songs,owner,id=>{
   after(async()=>{try{await songs.tick(id);}catch{console.error('Song update pending; scheduled recovery will retry.');}});
  },config.baseURL);

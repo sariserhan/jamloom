@@ -1,4 +1,5 @@
 import {checkedDnaStyle} from './dna-style';
+import {assertActiveWorkerLease} from './cloud-capacity-lease';
 import {hasReadySongWorker,SONG_CAPACITY_MESSAGE} from './cloud-readiness';
 import {songDurations,savedSongDuration,MAX_SONG_BYTES} from './song-duration';
 import {improviseDirection} from './improvise-direction';
@@ -40,11 +41,12 @@ export function checkImproviseArrangement(value:unknown,sourceSha:string,audioSh
  if(total>6*48000)throw new AudioError('Your recording could not be blended into this song.',422);
 }
 export class CloudSongs{
- constructor(readonly commerce:DnaCommerce,readonly config:CloudSongConfig,readonly provider:Pick<RunpodProvider,'submit'|'status'|'cancel'|'health'|'dispatchEnabled'>=new RunpodProvider(config.key,config.endpoint,fetch,config.productionProfile)){
+ constructor(readonly commerce:DnaCommerce,readonly config:CloudSongConfig,readonly provider:Pick<RunpodProvider,'submit'|'status'|'cancel'|'health'|'dispatchEnabled'>=new RunpodProvider(config.key,config.endpoint,fetch,config.productionProfile,config.activeLease)){
   if(!commerce.store)throw Error('Song storage is required');
   if(config.review&&(config.live||commerce.options.live))throw Error('Review generation requires its isolated test ledger');
  }
  assertNewRequestAllowed(owner:string){
+  if(this.config.activeLease){try{assertActiveWorkerLease(this.config.activeLease,Date.now(),(this.config.ttlSeconds+120)*1000);}catch{throw new AudioError('Song creation is unavailable while capacity is being renewed. Your credits have not been used.',503);}}
   const review=this.config.review;
   if(review&&(!review.enabled||review.expiresAt<=Date.now()||!review.owners.includes(owner)))throw new AudioError('This review generation allowance is unavailable.',503);
  }

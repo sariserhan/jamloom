@@ -1,4 +1,6 @@
 'use client';
+import {generationAccount,GenerationAccountNotice,type GenerationAccount} from '../generation-account';
+import {saveImproviseDraft,takeImproviseDraft,type ImproviseDraft} from '../../lib/improvise-draft';
 import {SongFeedback} from '../music-dna/song-feedback';
 import {useEffect,useRef,useState} from 'react';
 import styles from '../../../../assets/manifests/improvise-styles.json';
@@ -10,11 +12,17 @@ export function ImproviseCreate(){
  const [file,setFile]=useState<Blob|null>(null),[name,setName]=useState(''),[preview,setPreview]=useState(''),[genre,setGenre]=useState('surprise'),[voice,setVoice]=useState('surprise');
  const [visibility,setVisibility]=useState<'public'|'private'>('private'),[open,setOpen]=useState(false);
  const [canCreate,setCanCreate]=useState<boolean|null>(null);
+ const [account,setAccount]=useState<GenerationAccount>({state:'loading'});
+ const draft=useRef<Promise<ImproviseDraft|null>|null>(null);
  const sharing=visibility==='public';
  const [busy,setBusy]=useState(false),[recording,setRecording]=useState(false),[message,setMessage]=useState(''),[job,setJob]=useState<string|null>(null),[progress,setProgress]=useState<SongProgress|null>(null),[ready,setReady]=useState<string|null>(null),[quote,setQuote]=useState<Quote|null>(null);
  const recorder=useRef<MediaRecorder|null>(null),stream=useRef<MediaStream|null>(null),recordTimer=useRef<ReturnType<typeof setTimeout>|undefined>(undefined),dialog=useRef<HTMLDialogElement>(null),alive=useRef(true),sourceId=useRef<string|null>(null),requestId=useRef<string|null>(null),upload=useRef<AbortController|null>(null),submitting=useRef(false),cancelWanted=useRef(false);
  const fileInput=useRef<HTMLInputElement>(null),previewPlayer=useRef<HTMLAudioElement>(null);
  const locked=busy||!!job||recording;
+ useEffect(()=>{let cancelled=false;draft.current??=takeImproviseDraft();void draft.current.then(value=>{if(cancelled||!value)return;setFile(value.file);setName(typeof value.name==='string'?value.name:'Your recording');setGenre(value.genre==='surprise'||value.genre in styles?value.genre:'surprise');setVoice(['surprise','female','male'].includes(value.voice)?value.voice:'surprise');setVisibility(value.visibility==='public'?'public':'private');setMessage('Your recording and choices are restored on this device.');}).catch(()=>{});return()=>{cancelled=true;};},[]);
+ async function checkAccount(){setAccount({state:'loading'});const next=await generationAccount();if(alive.current){setAccount(next);if(next.state==='ready')refreshAvailability();}}
+ function openPrompt(){previewPlayer.current?.pause();setMessage('');setOpen(true);void checkAccount();}
+ async function signIn(){if(!file)return;setBusy(true);try{await saveImproviseDraft({file,name,genre,voice,visibility,savedAt:Date.now()});window.location.assign('/account/sign-in?callbackURL=%2Fimprovise');}catch(error){setMessage((error instanceof Error?error.message:'Could not save your draft.')+' Keep this tab open and sign in from another tab, then check your account again.');}finally{setBusy(false);}}
  useEffect(()=>{alive.current=true;return()=>{alive.current=false;upload.current?.abort();clearTimeout(recordTimer.current);if(recorder.current?.state==='recording')recorder.current.stop();stream.current?.getTracks().forEach(t=>t.stop());};},[]);
  useEffect(()=>{if(!file)return;const url=URL.createObjectURL(file);setPreview(url);sourceId.current=null;setQuote(null);return()=>URL.revokeObjectURL(url);},[file]);
  useEffect(()=>{setQuote(null);requestId.current=null;},[genre,voice,visibility]);
@@ -56,11 +64,12 @@ export function ImproviseCreate(){
  }
  async function post(body:unknown,submit=false){const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','X-Jamloom-DNA':'1'},body:JSON.stringify(body),signal:submit?AbortSignal.timeout(20000):upload.current?.signal});const data=await r.json();if(!r.ok)throw Error(data.error??'Could not start your song.');return data;}
  async function generate(){
-  if(!file||busy||job)return;setBusy(true);setMessage('');setProgress({state:'running',phase:'preparing'});upload.current=new AbortController();cancelWanted.current=false;
+  if(!file||busy||job||account.state!=='ready'||account.available<(quote?.credits??10))return;setBusy(true);setMessage('');setProgress({state:'running',phase:'preparing'});upload.current=new AbortController();cancelWanted.current=false;
   try{
    const availability=await fetch(endpoint,{signal:upload.current.signal}),status=await availability.json();
-   if(!status.creditsEnabled)throw Error('Song creation is not open here yet. Your recording stays on your device.');
-   if(!status.signedIn)throw Error('Sign in with a verified account first.');
+   if(!status.signedIn){setAccount({state:'signed-out'});throw Error('Sign in with a verified account first.');}
+   if(!availability.ok||!status.creditsEnabled)throw Error('Song creation is not open here yet. Your recording stays on your device.');
+   if(status.balance&&status.balance.available<(quote?.credits??10))throw Error('You need more credits before sending your recording.');
    if(status.active){setJob(status.active);setOpen(false);return;}
    if(status.available!==true){setCanCreate(false);throw Error('Song creation is temporarily unavailable. Please try again shortly. Your credits have not been used.');}
    if(!sourceId.current){
@@ -85,8 +94,7 @@ export function ImproviseCreate(){
   try{const r=await fetch(endpoint+'?id='+job,{method:'DELETE',headers:{'X-Jamloom-DNA':'1'}});if(!r.ok)throw Error();setProgress({state:'cancelling'});}catch{setMessage('Could not confirm cancellation. We’re still checking your song.');}
  }
  return <section id="improvise-create" className="improvise-create" aria-label="Create with Improvise">
-  {canCreate!==true&&<p role="status">{canCreate===null?'Checking song availability…':'Song creation is currently unavailable. Listen to examples below, or try free Local Remixes. Your recording stays on your device.'}</p>}
-  {canCreate===false&&<button className="secondary" disabled={locked} onClick={refreshAvailability}>Check availability</button>}
+
   <div className="studio-grid">
    <section className="capture-panel" aria-labelledby="improvise-sound-title">
     <div className="panel-heading"><h2 id="improvise-sound-title">Your sound</h2><span className="step-label">01 / Capture</span></div>
@@ -110,15 +118,16 @@ export function ImproviseCreate(){
     <div className="improvise-selects"><div><label htmlFor="improvise-genre">All styles</label><select id="improvise-genre" value={genre} disabled={locked} onChange={e=>setGenre(e.target.value)}><option value="surprise">Surprise me</option>{Object.entries(styles).map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></div><div><label htmlFor="improvise-singer">Singer</label><select id="improvise-singer" value={voice} disabled={locked} onChange={e=>setVoice(e.target.value)}><option value="surprise">Surprise me</option><option value="female">Female</option><option value="male">Male</option></select></div></div>
     <p className="muted improvise-song-note">Music with AI singing or an instrumental performance—Surprise me lets the style guide the choice. Your phrase, loop or whole short recording becomes part of the song. Choose a singer when you want vocals.</p>
     <p className="muted improvise-song-note">30–45 seconds · Inspired by your words or sound</p>
-    <button className="primary generate" disabled={!file||locked||canCreate!==true} onClick={()=>{previewPlayer.current?.pause();setMessage('');setOpen(true);}}>Make my song <span aria-hidden="true">↗</span></button>
-    <p className="muted improvise-song-note">Choose public or private and review credits next.</p>
+    <button className="primary generate" disabled={!file||locked} onClick={openPrompt}>Make my song <span aria-hidden="true">↗</span></button>
+    <p className="muted improvise-song-note">Explore free. Sign in and review credits when you’re ready to generate.</p>
     {progress&&!open&&<GenerationProgress {...progress}/>} {!!job&&<button className="secondary" onClick={cancel}>Cancel song</button>}
     <p role="status">{!open?message:''}</p>
    </section>
   </div>
   <dialog ref={dialog} aria-labelledby="improvise-confirm-title" className="dna-generation-dialog improvise-confirm" onCancel={e=>{e.preventDefault();void cancel();}}><h2 id="improvise-confirm-title">Make your song</h2><fieldset disabled={busy}><legend>Who can listen?</legend><label><input type="radio" checked={visibility==='public'} onChange={()=>{setVisibility('public');}}/>Public · same price</label><label><input type="radio" checked={visibility==='private'} onChange={()=>{setVisibility('private');}}/>Private · same price</label>{visibility==='public'&&<p>Your finished song, including parts of your clip used in it, appears in Community on the website and app. Choose Private to keep it to yourself.</p>}</fieldset>
-  <p>Generate sends your recording to create your song. Your source recording is removed after processing. Failed or cancelled songs return reserved credits. A higher price needs your confirmation.</p><p><a href="/account/credits">Your credits</a> · <a href="/account/sign-in?callbackURL=%2Fimprovise">Sign in</a></p>
-  <div className="product-actions"><button className="primary" disabled={busy} onClick={generate}>{busy?'Preparing your song…':`Generate song · ${quote?.credits??(10)} credits`}</button><button className="secondary" onClick={cancel}>Cancel</button></div>{open&&progress&&<GenerationProgress {...progress}/>}<p role="status">{message}</p></dialog>
+  <p>Generate sends your recording to create your song. Your source recording is removed after processing. Failed or cancelled songs return reserved credits. A higher price needs your confirmation.</p><GenerationAccountNotice account={account} credits={quote?.credits??10} returnTo="/improvise" onSignIn={()=>void signIn()} onRefresh={()=>void checkAccount()}/>
+  {account.state==='ready'&&canCreate!==true&&<div><p role="status">{canCreate===null?'Checking song availability…':'Song creation is currently unavailable. Your recording stays on your device and no credits have been used.'}</p><button className="secondary" disabled={locked} onClick={refreshAvailability}>Check availability</button></div>}
+  <div className="product-actions"><button className="primary" disabled={busy||account.state!=='ready'||account.available<(quote?.credits??10)||canCreate!==true} onClick={generate}>{busy?'Preparing your song…':`Generate song · ${quote?.credits??(10)} credits`}</button><button className="secondary" onClick={cancel}>Cancel</button></div>{open&&progress&&<GenerationProgress {...progress}/>}<p role="status">{message}</p></dialog>
   {ready&&<article><h3>Your new song</h3><audio controls preload="none" src={endpoint+'?id='+ready+'&file=audio'} aria-label="Play your new song"/><a href={endpoint+'?id='+ready+'&file=audio&download=1'} download>Download song</a><SongFeedback id={ready} product="improvise" account/></article>}
  </section>;
 }

@@ -1,3 +1,4 @@
+import {assertActiveWorkerLease,type ActiveWorkerLease} from './cloud-capacity-lease';
 // Explicitly selected release candidate, not proof of provider billing or permission to enable sales.
 export const CLOUD_COST_PROFILE='l4-2026-11-01';
 export const CLOUD_WORKER_IMAGE='ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161';
@@ -10,11 +11,12 @@ export function productionSongBudget(product:'improvise'|'music-dna'){
 }
 // Runpod selects pools minus exclusions. Check the current catalog too: new pool members
 // must never silently widen the qualified hardware or increase the hourly rate.
-export function assertProductionEndpoint(endpoint:any,catalog:any){
+export function assertProductionEndpoint(endpoint:any,catalog:any,activeLease?:ActiveWorkerLease){
+ if(activeLease)assertActiveWorkerLease(activeLease);
  const gpu=endpoint?.gpu,workers=endpoint?.workers;
  if(endpoint?.image!==CLOUD_WORKER_IMAGE||endpoint.type!=='QUEUE'||endpoint.disk!==60||
   gpu?.count!==1||!Array.isArray(gpu.pools)||gpu.pools.length!==1||gpu.pools[0]!=='AMPERE_24'||
-  !Array.isArray(gpu.excludedTypes)||workers?.min!==0||workers.max!==1||
+  !Array.isArray(gpu.excludedTypes)||workers?.min!==(activeLease?1:0)||workers.max!==1||
   endpoint.scaling?.type!=='REQUEST_COUNT'||endpoint.scaling.requestCount!==1||
   !['OFF','FLASHBOOT'].includes(endpoint.flashboot)||
   endpoint.networkVolumes?.length!==0||endpoint.mounts?.network?.length!==0||endpoint.mounts?.global?.length!==0)

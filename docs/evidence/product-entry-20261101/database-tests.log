@@ -1,0 +1,131 @@
+TAP version 13
+# Subtest: cloud song configuration is opt-in and requires a bounded rate
+ok 1 - cloud song configuration is opt-in and requires a bounded rate
+  ---
+  duration_ms: 0.814875
+  type: 'test'
+  ...
+# Subtest: Improvise receipts require a bounded audible use of this recording and this output
+ok 2 - Improvise receipts require a bounded audible use of this recording and this output
+  ---
+  duration_ms: 0.218875
+  type: 'test'
+  ...
+# Subtest: real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+    # Subtest: operator-funded review is atomic, finite, private and stops after disable or expiry
+    ok 1 - operator-funded review is atomic, finite, private and stops after disable or expiry
+      ---
+      duration_ms: 44.30125
+      type: 'test'
+      ...
+    # Subtest: production admission refuses cold or occupied capacity without credit holds and serializes the final slot
+    ok 2 - production admission refuses cold or occupied capacity without credit holds and serializes the final slot
+      ---
+      duration_ms: 30.597208
+      type: 'test'
+      ...
+    # Subtest: Improvise omission or mismatched recording refunds; valid loops settle once
+    ok 3 - Improvise omission or mismatched recording refunds; valid loops settle once
+      ---
+      duration_ms: 556.165833
+      type: 'test'
+      ...
+    # Subtest: Improvise variety survives concurrent submissions, restart and duplicate requests
+    ok 4 - Improvise variety survives concurrent submissions, restart and duplicate requests
+      ---
+      duration_ms: 410.778917
+      type: 'test'
+      ...
+    # Subtest: one request is reserved and dispatched once under duplicate concurrent calls
+    ok 5 - one request is reserved and dispatched once under duplicate concurrent calls
+      ---
+      duration_ms: 74.787417
+      type: 'test'
+      ...
+    # Subtest: several users queue independently; cancellation refunds while other songs continue
+    ok 6 - several users queue independently; cancellation refunds while other songs continue
+      ---
+      duration_ms: 1165.735584
+      type: 'test'
+      ...
+    # Subtest: duration boundaries settle once and a mismatched saved length refunds
+    ok 7 - duration boundaries settle once and a mismatched saved length refunds
+      ---
+      duration_ms: 1133.52625
+      type: 'test'
+      ...
+    # Subtest: restart after output storage failure uses persisted receipt and charges only once
+    ok 8 - restart after output storage failure uses persisted receipt and charges only once
+      ---
+      duration_ms: 430.404833
+      type: 'test'
+      ...
+    # Subtest: saved descriptions reach the next worker only for their owner
+    ok 9 - saved descriptions reach the next worker only for their owner
+      ---
+      duration_ms: 390.249167
+      type: 'test'
+      ...
+    # Subtest: uncertain style delivers once with a public note; technical failure refunds
+    ok 10 - uncertain style delivers once with a public note; technical failure refunds
+      ---
+      duration_ms: 829.631417
+      type: 'test'
+      ...
+    # Subtest: failed jobs refund all credits and invalid completed output cannot become public
+    ok 11 - failed jobs refund all credits and invalid completed output cannot become public
+      ---
+      duration_ms: 253.643333
+      type: 'test'
+      ...
+    # Subtest: website input, feedback ownership, personalization and consent withdrawal
+    ok 12 - website input, feedback ownership, personalization and consent withdrawal
+      ---
+      duration_ms: 486.493125
+      type: 'test'
+      ...
+    # Subtest: disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+    ok 13 - disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+      ---
+      duration_ms: 21.020292
+      type: 'test'
+      ...
+    # Subtest: lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+    ok 14 - lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+      ---
+      duration_ms: 19.961625
+      type: 'test'
+      ...
+    # Subtest: missing provider receipt refunds only after the full provider TTL and a quiet queue
+    ok 15 - missing provider receipt refunds only after the full provider TTL and a quiet queue
+      ---
+      duration_ms: 16.308667
+      type: 'test'
+      ...
+    # Subtest: test credit lots cannot fund live requests or inflate live balances
+    ok 16 - test credit lots cannot fund live requests or inflate live balances
+      ---
+      duration_ms: 6.149084
+      type: 'test'
+      ...
+    # Subtest: recovery rotates ambiguous jobs and releases credits after persistent storage failure
+    ok 17 - recovery rotates ambiguous jobs and releases credits after persistent storage failure
+      ---
+      duration_ms: 510.285959
+      type: 'test'
+      ...
+    1..17
+ok 3 - real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+  ---
+  duration_ms: 6680.512458
+  type: 'test'
+  ...
+1..3
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6983.180042

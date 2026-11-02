@@ -1,0 +1,62 @@
+{
+  "status": "PREPARED",
+  "scope": "One active-worker Music DNA delivery and attributable cost diagnostic; not proof of ongoing economics or App Review availability",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
+  "endpoint": "jl77hn92npt65k",
+  "maxUSD": 3,
+  "maxRequests": 1,
+  "maxWorkers": 1,
+  "activeWorkers": 1,
+  "gpu": "NVIDIA L4",
+  "maxSeconds": 2400,
+  "shutdownAllowanceSeconds": 130,
+  "preparationSeconds": 1200,
+  "retries": 0,
+  "stopOnFailure": true,
+  "noWarmupGeneration": true,
+  "userRecordingUploaded": false,
+  "request": {
+    "product": "music-dna",
+    "reference": "Take Five \u2014 Dave Brubeck",
+    "language": "de",
+    "visibility": "private",
+    "credits": 20,
+    "requestCostCapMicros": 138800
+  },
+  "customerSales": false,
+  "freshApprovalRequired": true,
+  "priorPermitsConsumed": true,
+  "harnessSHA256": {
+    "build-active-capacity-20261101/billing.mts": "038320dd93cb2765a87af442051bbe1e72b061a9e2423d3f9e04cbf44fceb425",
+    "build-active-capacity-20261101/cleanup.mts": "d3dc076f89ee0784ae2b4a56c9dfbfa284312791aa89ab4d4ef2398986f27de7",
+    "build-active-capacity-20261101/control.mts": "7cb01779e2befe893d5389be75ac4cea780b6f1c49ae8f64ec19e6a4ec96e030",
+    "build-active-capacity-20261101/deployed-common.mts": "30a51de9c9a11fa4c1275f05909a272a873a0d88947f55014913e89f8c8d6eb6",
+    "build-active-capacity-20261101/http.mts": "ff903c6a18f51b454ff5ee632bc24cda7ca1f04b7f1d03345f14e113a873c28d",
+    "build-active-capacity-20261101/observe.mts": "fe275209469dfea0689ec3f4c8d140d2ccbf3152bdf050350d1098dd06b06198",
+    "build-active-capacity-20261101/prepare-deploy.mts": "103b549f14e7645c64da395f3fb5d008d7878674728feb59b00138c4524fc099",
+    "build-active-capacity-20261101/watchdog.mts": "ba2b11613838afa2074b881781bbe45e08d72e0b0e2762ca7d823ee3c8cea4ce"
+  },
+  "checks": [
+    "A single active L4, not a scaled-down cached worker; unchanged verified image and price/hardware guards",
+    "Absolute start/expiry set once after approval, bounded 40 minutes including preparation/deployment; independent shutdown watchdog before capacity activation",
+    "At most 20 minutes preparation; require running AND ready plus deployed available=true; no quote/submit after preparation deadline",
+    "One submit, no repeat after failure or ambiguity; unchanged 540-second TTL and 480-second execution limit",
+    "Test wallet only; capture exactly 20 credits on success or release all on failure; live balance unchanged",
+    "Download/receipt/hash/WAV/style-note/privacy verification; independent zero-worker/job and remote-audio cleanup",
+    "Operator active startup/idle charges accounted separately from customer reservation; pending billing never treated as zero",
+    "Restore held public configuration and remove temporary lease; no sales or mobile release activation"
+  ],
+  "excludes": [
+    "Improvise rerender",
+    "AI DJ rental or endurance study",
+    "Training",
+    "Full App Review funding",
+    "Real-money charges",
+    "Price changes"
+  ],
+  "commands": [
+    "From apps/site: node --import tsx ../../build-active-capacity-20261101/control.mts --dry-run",
+    "From apps/site: node --import tsx ../../build-active-capacity-20261101/http.mts --dry-run",
+    "After approval only: bind lease and review allowance, deploy private review configuration, start observer and HTTP preflight, then controller; finally independent cleanup, held restore and billing read"
+  ]
+}

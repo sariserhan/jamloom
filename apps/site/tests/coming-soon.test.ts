@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {NextRequest} from 'next/server';
-import {comingSoonEnabled,comingSoonRecovery,comingSoonResponse} from '../lib/coming-soon';
+import {comingSoonEnabled,comingSoonRecovery,comingSoonResponse,publicProductRead} from '../lib/coming-soon';
 import {proxy,config} from '../proxy';
 import testing from 'next/experimental/testing/server';
 import {readdir} from 'node:fs/promises';
@@ -20,7 +20,7 @@ test('public song collections and playback pass the launch gate without opening 
    const response=await proxy(new NextRequest('https://www.jamloom.com'+path+'?'+query));
    assert.equal(response.headers.get('x-middleware-next'),'1',query);
   }
-  for(const query of ['', 'view=mine','view=public&view=mine','view=public&id='+id,'id='+id,'id='+id+'&file=plan','id='+id+'&file=input','id=invalid&file=audio','id='+id+'&file=audio&action=submit']){
+  for(const query of ['view=public&view=mine','view=public&id='+id,'id='+id,'id='+id+'&file=plan','id='+id+'&file=input','id=invalid&file=audio','id='+id+'&file=audio&action=submit']){
    assert.equal((await proxy(new NextRequest('https://www.jamloom.com'+path+'?'+query))).status,503,query);
   }
   for(const method of ['POST','DELETE','PUT'])assert.equal((await proxy(new NextRequest('https://www.jamloom.com'+path+'?view=public',{method}))).status,503);
@@ -48,7 +48,7 @@ test('launch responses contain real navigation, one tracker and private caching;
  assert.equal(home.status,200);assert.equal(home.headers.get('cache-control'),'private, no-store');assert.equal(home.headers.get('vary'),'Cookie');
  const html=await home.text();assert.match(html,/Jamloom is coming soon/);assert.equal((html.match(/vp_QBDH92AC.js/g)||[]).length,1);assert.match(html,/href="\/account\/sign-in"/);assert.ok(!html.includes('mini-deck'));
  for(const product of homeProducts){assert.ok(html.includes(`id="${product.slug}"`));assert.ok(html.includes(product.headline));assert.ok(html.includes(`href="#${product.slug}"`));}
- assert.match(html,/other product access is not open yet/);
+ assert.match(html,/Explore every product without an account/);
  assert.match(html,/<a href="\/report-bug">Report a bug<\/a>/);
  assert.equal(comingSoonRecovery('/report-bug'),true);
  assert.equal(comingSoonRecovery('/singing-academy'),false);
@@ -145,4 +145,17 @@ test('Apple receipt recovery reaches authenticated verification during preview w
  assert.equal(response.headers.get('x-middleware-next'),'1');
  for(const path of ['/api/payments/apple/fake','/api/payments/checkout','/api/payments/subscription'])
   assert.equal((await proxy(new NextRequest('https://www.jamloom.com'+path,{method:'POST'}))).status,503,path);
+});
+
+
+test('product browsing opens the requested workspace while generation and purchase mutations remain closed',async()=>{
+ const pages=['/music-dna','/improvise','/academy','/academy/learn','/academy/levels/beginner','/academy/lessons/first-crossfade','/academy/practice','/academy/challenges/first-crossfade','/singing-academy','/singing-academy/warmups','/singing-academy/lessons/first-light'];
+ const reads=['/api/taste/song','/api/improvise/song','/api/taste/song?view=mine','/api/improvise/song?view=mine&language=en','/api/academy/lesson/first-crossfade','/api/academy/progress','/api/singing-course','/api/singing-recordings/first-song/karaoke'];
+ for(const path of [...pages,...reads]){
+  const request=new NextRequest('https://www.jamloom.com'+path);
+  assert.equal(publicProductRead(request),true,path);
+  const response=await proxy(request);assert.equal(response.headers.get('x-middleware-next'),'1',path);assert.equal(response.headers.get('location'),null,path);
+  for(const method of ['POST','PUT','DELETE']){const mutation=await proxy(new NextRequest(request.url,{method}));if(path==='/api/academy/progress')assert.equal(mutation.headers.get('x-middleware-next'),'1');else assert.equal(mutation.status,503,method+' '+path);}
+ }
+ for(const path of ['/api/payments/checkout','/api/academy/checkout','/api/generations','/api/library','/academy/unknown/path','/music-dna/fake','/api/taste/song?id='+'a'.repeat(32),'/api/academy/lesson/first-crossfade/extra'])assert.equal(publicProductRead(new Request('https://www.jamloom.com'+path)),false,path);
 });
