@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "sourceCommit": "f3fdfd63",
+  "hostedShutdownFollowupCommit": "2720f8c5",
+  "deploymentId": "dpl_6bA5QCLSMvBSXZ178kxHzFMBUqgC",
+  "deploymentURL": "https://jamloom-of9eta19v-ssari.vercel.app",
+  "productionURL": "https://www.jamloom.com",
+  "generationEnabled": false,
+  "purchasesEnabled": false,
+  "paidComputeStarted": false,
+  "rollbackURL": "https://jamloom-lq7mqh2ui-ssari.vercel.app"
+}

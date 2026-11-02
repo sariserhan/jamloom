@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-02T00:27:28.644Z",
+  "status": "PASS",
+  "mutations": false,
+  "workerLimits": {
+    "max": 0,
+    "min": 0
+  },
+  "health": {
+    "jobs": {
+      "completed": 46,
+      "failed": 18,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "source": "f3fdfd63",
+  "url": "https://www.jamloom.com",
+  "checks": [
+    {
+      "path": "/music-dna",
+      "method": "GET",
+      "status": 200,
+      "headings": [
+        "Music DNA"
+      ]
+    },
+    {
+      "path": "/improvise",
+      "method": "GET",
+      "status": 200,
+      "headings": [
+        "Improvise"
+      ]
+    },
+    {
+      "path": "/academy",
+      "method": "GET",
+      "status": 200,
+      "headings": [
+        "DJ Academy"
+      ]
+    },
+    {
+      "path": "/singing-academy",
+      "method": "GET",
+      "status": 200,
+      "headings": [
+        "Singing Academy"
+      ]
+    },
+    {
+      "path": "/academy/lessons/first-crossfade",
+      "method": "GET",
+      "status": 200,
+      "headings": [
+        "Performance studio"
+      ]
+    },
+    {
+      "path": "/singing-academy/lessons/first-light",
+      "method": "GET",
+      "status": 200,
+      "headings": [
+        "Find your note"
+      ]
+    },
+    {
+      "path": "/api/taste/song",
+      "method": "GET",
+      "status": 200,
+      "available": false,
+      "creditsEnabled": false,
+      "signedIn": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "method": "GET",
+      "status": 200,
+      "available": false,
+      "creditsEnabled": false,
+      "signedIn": false
+    },
+    {
+      "path": "/api/taste/song",
+      "method": "POST",
+      "status": 503,
+      "error": "Jamloom is coming soon. Public access is not open yet."
+    },
+    {
+      "path": "/api/improvise/song",
+      "method": "POST",
+      "status": 503,
+      "error": "Jamloom is coming soon. Public access is not open yet."
+    },
+    {
+      "path": "/api/payments/checkout",
+      "method": "POST",
+      "status": 503,
+      "error": "Jamloom is coming soon. Public access is not open yet."
+    }
+  ],
+  "generationSubmitted": false,
+  "purchasesEnabled": false
+}

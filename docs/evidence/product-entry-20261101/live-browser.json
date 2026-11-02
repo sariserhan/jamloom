@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-02T00:28:17.703Z",
+  "base": "https://www.jamloom.com",
+  "source": "f3fdfd63",
+  "rows": [
+    {
+      "browser": "chromium",
+      "status": "PASS",
+      "publicProductRoutes": 4,
+      "anonymousLoginAtGeneration": true,
+      "generationDisabledWithoutLogin": true,
+      "localRecordingNeverUploaded": true,
+      "mutations": 0,
+      "pageErrors": []
+    },
+    {
+      "browser": "webkit",
+      "status": "PASS",
+      "publicProductRoutes": 4,
+      "anonymousLoginAtGeneration": true,
+      "generationDisabledWithoutLogin": true,
+      "localRecordingNeverUploaded": true,
+      "mutations": 0,
+      "pageErrors": []
+    }
+  ]
+}

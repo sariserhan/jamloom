@@ -4,7 +4,7 @@
 
 ## Product entry update
 
-Public product workspaces, free lessons and catalogs now open without login; generation asks for a verified account and credits at its confirmation step. The routing change is locally verified and awaiting staged website deployment. A finite active-worker diagnostic is prepared but not authorized; no new GPU work or sales activation has occurred. [Evidence](evidence/product-entry-20261101/report.md).
+Public product workspaces, free lessons and catalogs now open without login; generation asks for a verified account and credits at its confirmation step. The routing change from `f3fdfd63` is live at www.jamloom.com and passes anonymous route/free-lesson and held-generation checks. A finite active-worker diagnostic is prepared but not authorized; no new GPU work or sales activation has occurred. [Evidence](evidence/product-entry-20261101/report.md).
 
 ## Completed
 

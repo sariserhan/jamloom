@@ -62,7 +62,7 @@
     "From apps/site: node --import tsx ../../build-active-capacity-20261101/http.mts --dry-run",
     "After approval only: bind lease and review allowance, deploy private review configuration, start observer and HTTP preflight, then controller; finally independent cleanup, held restore and billing read"
   ],
-  "applicationCommit": "f3fdfd63 plus the separately reviewed hosted-expiry shutdown follow-up",
+  "applicationCommit": "2720f8c5",
   "validation": {
     "siteTests": 205,
     "isolatedDatabaseChecks": 20,
@@ -72,5 +72,6 @@
     "httpDryRun": "PASS; zero provider operations",
     "harnessTypecheck": "PASS",
     "publicBrowserFlows": "PASS Chrome and WebKit desktop/phone; no generation requests"
-  }
+  },
+  "harnessArchive": "qualification-harness/ (restore byte-for-byte to build-active-capacity-20261101/)"
 }

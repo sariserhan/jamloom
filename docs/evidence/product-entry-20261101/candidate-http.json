@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "source": "f3fdfd63",
+  "deployment": "https://jamloom-of9eta19v-ssari.vercel.app",
+  "checks": [
+    {
+      "path": "/music-dna",
+      "status": 200,
+      "headings": [
+        "Music DNA"
+      ]
+    },
+    {
+      "path": "/improvise",
+      "status": 200,
+      "headings": [
+        "Improvise"
+      ]
+    },
+    {
+      "path": "/academy",
+      "status": 200,
+      "headings": [
+        "DJ Academy"
+      ]
+    },
+    {
+      "path": "/singing-academy",
+      "status": 200,
+      "headings": [
+        "Singing Academy"
+      ]
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "available": false,
+      "creditsEnabled": false,
+      "signedIn": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "available": false,
+      "creditsEnabled": false,
+      "signedIn": false
+    }
+  ],
+  "generationSubmitted": false
+}

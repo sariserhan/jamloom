@@ -1,6 +1,6 @@
 # Direct product entry — 2026-11-01
 
-**PASS implementation and local verification; deployment pending. Full release PARTIAL.**
+**PASS implementation, local verification and website deployment. Full release PARTIAL.**
 
 The owner requested the actual product on each public product URL, with account and credit requirements at generation. The coming-soon proxy previously redirected these routes to the multi-product tour. Music DNA, Improvise, DJ Academy and Singing Academy now render their own workspaces anonymously. Free lessons and course catalogs remain browseable; existing paid lesson entitlements remain enforced.
 
@@ -22,3 +22,11 @@ The [prepared diagnostic](hosted-plan.json) needs a fresh $3 permit: one request
 Prior permit billing remains provisional: four observed workers have no returned billing rows. Missing billing is not zero cost. AI DJ operating-cost qualification, complete generation economics, finite reviewer funding, final App Review submission/approval and customer activation remain open. Previously deferred research and owner-closed listening/endurance studies stay closed.
 
 The current Apple read-only check confirms 0.11.0 build 38 VALID, all five draft items READY_FOR_REVIEW and MANUAL release. No submission or activation was performed. The cost audit remains PARTIAL_PROVIDER_COSTS. Hosted lease expiry recovery is prepared as a follow-up to website source `f3fdfd63`; it must be present and verified in the diagnostic deployment before any worker is activated.
+
+## Website deployment
+
+Source `f3fdfd63` is live at https://www.jamloom.com via `dpl_6bA5QCLSMvBSXZ178kxHzFMBUqgC` (`https://jamloom-of9eta19v-ssari.vercel.app`). The isolated candidate passed before promotion. All four public workspaces and both free lessons return 200; anonymous generation and checkout remain 503, and status reports unavailable. No credits were spent or recording uploaded. Provider read-only verification confirms limits 0/0, no workers and no pending jobs. Rollback remains `https://jamloom-lq7mqh2ui-ssari.vercel.app`.
+
+The separate hosted lease-expiry guard is committed in `2720f8c5` and must be deployed with the new private diagnostic configuration after approval. Its production build, typecheck and updated 205-test suite pass. The new $3 permit is requested, not inferred from prior consumed permissions. Prices, research deferrals and prior musical approvals remain unchanged.
+
+**PASS live browser verification:** Chrome at desktop size and WebKit at phone size open all four product workspaces directly. Both generation dialogs request sign-in; generation stays disabled. Zero mutation requests, no uploaded audio and zero page errors. These checks use real anonymous deployed account/status responses. See `live-browser.json`, `live-http.json` and the live screenshots. The harness waits for the actual controls, avoiding a network-idle wait on a live polling site.
