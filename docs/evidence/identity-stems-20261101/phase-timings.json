@@ -1,0 +1,253 @@
+{
+  "status": "PASS",
+  "receipts": [
+    {
+      "schema": "jamloom-phase-timing-1",
+      "events": [
+        {
+          "phase": "pipeline",
+          "event": "start",
+          "ms": 33
+        },
+        {
+          "phase": "improvise",
+          "event": "start",
+          "ms": 1993
+        },
+        {
+          "phase": "source",
+          "event": "start",
+          "ms": 1994
+        },
+        {
+          "phase": "source",
+          "event": "end",
+          "ms": 2087
+        },
+        {
+          "phase": "transcription",
+          "event": "start",
+          "ms": 2088
+        },
+        {
+          "phase": "transcription",
+          "event": "end",
+          "ms": 3505
+        },
+        {
+          "phase": "selection",
+          "event": "start",
+          "ms": 3505
+        },
+        {
+          "phase": "selection",
+          "event": "end",
+          "ms": 3628
+        },
+        {
+          "phase": "selection",
+          "event": "start",
+          "ms": 3628
+        },
+        {
+          "phase": "selection",
+          "event": "end",
+          "ms": 3743
+        },
+        {
+          "phase": "selection",
+          "event": "start",
+          "ms": 3743
+        },
+        {
+          "phase": "selection",
+          "event": "end",
+          "ms": 3744
+        },
+        {
+          "phase": "lyrics",
+          "event": "start",
+          "ms": 3744
+        },
+        {
+          "phase": "runtime-verify",
+          "event": "start",
+          "ms": 3795
+        },
+        {
+          "phase": "runtime-verify",
+          "event": "end",
+          "ms": 3889
+        },
+        {
+          "phase": "lyric-load",
+          "event": "start",
+          "ms": 5424
+        },
+        {
+          "phase": "lyric-load",
+          "event": "end",
+          "ms": 17782
+        },
+        {
+          "phase": "lyric-generate",
+          "event": "start",
+          "ms": 17794
+        },
+        {
+          "phase": "lyric-generate",
+          "event": "end",
+          "ms": 19590
+        },
+        {
+          "phase": "lyrics",
+          "event": "end",
+          "ms": 20391
+        },
+        {
+          "phase": "singing",
+          "event": "start",
+          "ms": 20392
+        },
+        {
+          "phase": "runtime-verify",
+          "event": "start",
+          "ms": 20437
+        },
+        {
+          "phase": "runtime-verify",
+          "event": "end",
+          "ms": 28458
+        },
+        {
+          "phase": "sing-import",
+          "event": "start",
+          "ms": 28464
+        },
+        {
+          "phase": "sing-import",
+          "event": "end",
+          "ms": 30119
+        },
+        {
+          "phase": "sing-load",
+          "event": "start",
+          "ms": 30127
+        },
+        {
+          "phase": "sing-load",
+          "event": "end",
+          "ms": 41234
+        },
+        {
+          "phase": "sing-generate",
+          "event": "start",
+          "ms": 41234
+        },
+        {
+          "phase": "sing-generate",
+          "event": "end",
+          "ms": 43432
+        },
+        {
+          "phase": "identity",
+          "event": "start",
+          "ms": 43858
+        },
+        {
+          "phase": "identity-separate",
+          "event": "start",
+          "ms": 43860
+        },
+        {
+          "phase": "identity-separate",
+          "event": "end",
+          "ms": 68883
+        },
+        {
+          "phase": "identity-verify",
+          "event": "start",
+          "ms": 72528
+        },
+        {
+          "phase": "identity-verify",
+          "event": "end",
+          "ms": 74418
+        },
+        {
+          "phase": "identity-load",
+          "event": "start",
+          "ms": 74793
+        },
+        {
+          "phase": "identity-load",
+          "event": "end",
+          "ms": 96648
+        },
+        {
+          "phase": "identity-generate",
+          "event": "start",
+          "ms": 96649
+        },
+        {
+          "phase": "identity-generate",
+          "event": "end",
+          "ms": 102293
+        },
+        {
+          "phase": "identity-stems",
+          "event": "start",
+          "ms": 103082
+        },
+        {
+          "phase": "identity-stems",
+          "event": "end",
+          "ms": 104944
+        },
+        {
+          "phase": "identity",
+          "event": "end",
+          "ms": 106352
+        },
+        {
+          "phase": "singing",
+          "event": "end",
+          "ms": 107460
+        },
+        {
+          "phase": "separation",
+          "event": "start",
+          "ms": 107461
+        },
+        {
+          "phase": "separation",
+          "event": "end",
+          "ms": 107711
+        },
+        {
+          "phase": "arrangement",
+          "event": "start",
+          "ms": 107712
+        },
+        {
+          "phase": "arrangement",
+          "event": "end",
+          "ms": 119542
+        },
+        {
+          "phase": "improvise",
+          "event": "end",
+          "ms": 119543
+        },
+        {
+          "phase": "pipeline",
+          "event": "end",
+          "ms": 119547
+        }
+      ],
+      "active": [],
+      "outcome": "completed",
+      "elapsed_ms": 119648
+    }
+  ]
+}

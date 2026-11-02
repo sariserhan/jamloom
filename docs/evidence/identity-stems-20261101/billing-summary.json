@@ -1,0 +1,16 @@
+{
+  "status": "PARTIAL",
+  "at": "2026-11-02T05:15:50.265Z",
+  "currentSpendPerHr": 0,
+  "finalInvoice": false,
+  "requestEstimateUSD": 0.06598,
+  "requestEstimateIsFullBill": false,
+  "exactWorkerBilling": {
+    "reportedWorkers": 0,
+    "pendingWorkers": 2
+  },
+  "endpointBucketRecords": 0,
+  "missingRowsAreNotZero": true,
+  "maxAuthorizedUSD": 1,
+  "futureWorkersAuthorized": false
+}

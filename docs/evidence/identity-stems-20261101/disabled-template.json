@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T05:02:37.975Z",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e5a0050e6405b59e7168a03d2fe93e3bc49cf38273245ae9461798f8f6130b0e",
+  "workers": {
+    "max": 0,
+    "min": 0
+  },
+  "gpu": {
+    "allowedCudaVersions": [],
+    "count": 1,
+    "excludedTypes": [
+      "NVIDIA RTX 6000 Ada Generation",
+      "NVIDIA L40"
+    ],
+    "minCudaVersion": "12.8",
+    "pools": [
+      "ADA_24",
+      "ADA_48_PRO"
+    ]
+  },
+  "health": {
+    "jobs": {
+      "completed": 47,
+      "failed": 21,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "hardwareAndStorageUnchanged": true,
+  "gpuActivated": false
+}

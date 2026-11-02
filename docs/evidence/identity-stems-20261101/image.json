@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "sourceCommit": "a0eacb500e6dfb715c9d7f0a06be963075d42c93",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e5a0050e6405b59e7168a03d2fe93e3bc49cf38273245ae9461798f8f6130b0e",
+  "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
+  "basePlatformDigest": "sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
+  "baseLayersPreserved": 29,
+  "additionalLayers": 2,
+  "additionalCompressedBytes": 13154,
+  "runtimeConfigurationUnchanged": true,
+  "modelLayersDownloaded": false,
+  "runtimeFiles": {
+    "scripts/generation_timing.py": "132592beca58512edd685ad0adac0c9892fea145aeee3a5a5d360e48ecef26dc",
+    "scripts/singer_studio.py": "03430f1eb0a55e8398b6661dd3e0f6edc6b0e1dddf095f40eca44bd7a9b99f62",
+    "scripts/vocal_identity.py": "6bae8334cd9ccf0425f20ea6f02827f079a2d48fb6ccf26f9524091c7f45eefa"
+  },
+  "workflow": {
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/sariserhan/jamloom/actions/runs/41390835167"
+  }
+}

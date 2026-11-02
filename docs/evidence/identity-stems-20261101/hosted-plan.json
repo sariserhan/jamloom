@@ -1,7 +1,7 @@
 {
-  "status": "STOPPED",
+  "status": "CONSUMED",
   "scope": "Publish the reviewed converted-component worker, verify the image, then one private Improvise runtime check",
-  "image": null,
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e5a0050e6405b59e7168a03d2fe93e3bc49cf38273245ae9461798f8f6130b0e",
   "endpoint": "jl77hn92npt65k",
   "maxUSD": 1,
   "maxRequests": 1,
@@ -39,7 +39,7 @@
     "build-identity-stems-20261101/verify-image.py": "90c087be72c4028c9f1fa5e742987b188abacb2a0e0dd252dbfc27baaf820a81",
     "build-identity-stems-20261101/check-logs.py": "782bf7951e13e3520aa74520abb5a2eeb3287d31996f99d2ec3cce34d3f84df7",
     "build-identity-stems-20261101/status.py": "2a0949974d966963ac8cb5b70ddfad9f398e2bacdb9e2d9c4206f36c16432b7c",
-    "apps/site/lib/cloud-production-profile.ts": "ce4600fc71d2bf688f5d5cec8b87433339ecf95684562d0d796e5f755c2b3fa6",
+    "apps/site/lib/cloud-production-profile.ts": "9cb0dfd08638ba0177822c7b58088678b35ec8c8b644720f6173b46a5b07fe62",
     "apps/site/lib/cloud-songs.ts": "c2809f3fa635737fe5eaa73e01da3a8d6371d1517baf222b41c08e50c87c91c6",
     "apps/site/lib/runpod-provider.ts": "563674d0aceaa40c659d0c362385e661a9e46603da77a40f3804c48e16009e44",
     "apps/site/lib/cloud-readiness.ts": "59ef1effef568a411d2f2d8a8510d991d841996924dc82ce4dfb516cadb04d5b",
@@ -47,10 +47,11 @@
     "apps/site/lib/cloud-capacity-shutdown.ts": "8c970095e8a6f62dfc92d36b9f1ba273b509a2935eb5f20107b3c5404631c781",
     "apps/site/app/api/song-jobs/route.ts": "78252aaebcdfdf82a7099ac3db6180063302405c7609554e8ddcb68954602875",
     "apps/site/lib/cloud-song-config.ts": "337cb939c54e21e613c61a18eef7d24a49ca034981b7adaae7adf600ec8a5d0f",
-    "apps/site/lib/cloud-review-config.ts": "4b797e017aa2f6fa3b9b033987100ab94501dad8926fa6b6fe78d8bcf916a69f"
+    "apps/site/lib/cloud-review-config.ts": "4b797e017aa2f6fa3b9b033987100ab94501dad8926fa6b6fe78d8bcf916a69f",
+    "docs/evidence/identity-stems-20261101/image.json": "539eb204642e83953ba24bd9035edae4892fb67b1c9fe6f35d489fc15cf53cf2"
   },
   "checks": [
-    "Publish only worker commit 99b1682bed75777a0dde402277d9ca39933ab724; 37 unchanged model/dependency inputs, exactly three runtime source overlays. Verify immutable layers, configuration and all overlay bytes before endpoint use.",
+    "Publish only worker commit a0eacb500e6dfb715c9d7f0a06be963075d42c93; 37 unchanged model/dependency inputs, exactly three runtime source overlays. Verify immutable layers, configuration and all overlay bytes before endpoint use.",
     "Preserve model revisions, seeds, conversion settings, source crop, price, 120-second execution and 130-second TTL. Reuse derived converted components only after integrity checks; no old-vocal substitution.",
     "Exactly one private Improvise request from the approved 1.22-second question crop. At most one RTX 4090 at a time; provider-managed initializing replacements stay within that endpoint limit. No generation retries or warmup request.",
     "Fresh $1 total cap; one 40-minute lease including app deployment and GPU preparation plus 130 seconds shutdown. At most 20 minutes preparation; retain at least six minutes before generation. No ongoing workers.",
@@ -89,28 +90,35 @@
     }
   ],
   "validation": {
-    "status": "PASS_LOCAL_ONLY",
+    "status": "PASS_LOCAL_AND_SINGLE_HOSTED_REQUEST",
     "mainChecks": 86,
     "isolatedChecks": 73,
     "unchangedBaseInputs": 37,
     "runtimeOverlayFiles": 3,
     "componentBenchmark": "PASS synthetic 30/39/45 seconds; no full model inference",
-    "hostedPerformance": "NOT RUN",
-    "imagePublication": "NOT RUN",
-    "postImageBindingChecks": "REQUIRED BEFORE APPLY",
+    "hostedPerformance": "PASS one 43-second Improvise request; 352 ms internal deadline headroom",
+    "imagePublication": "PASS; workflow 41390835167",
+    "postImageBindingChecks": "PASS",
     "musicalSettingsChanged": false,
     "liveActivation": false,
     "controllerDryRun": "PASS; zero provider operations",
     "httpDryRun": "PASS; approved sample hash and format; zero provider operations",
-    "harnessTypecheck": "PASS"
+    "harnessTypecheck": "PASS",
+    "imageIntegrity": "PASS; 29 base layers retained, 13154 compressed bytes added, all three runtime files verified",
+    "profileChecks": 8,
+    "siteTypecheck": "PASS",
+    "productionBuild": "PASS",
+    "bundleAudit": "PASS",
+    "disabledTemplate": "PASS; 0/0, zero workers/jobs, hardware unchanged",
+    "fullProviderCost": "PARTIAL; billing unposted"
   },
   "aggregateMaxUSD": 1,
   "priorReservedUSD": 0,
   "priorBoundMicros": 0,
   "newLeaseCapMicros": 1000000,
   "maxRequestsAcrossCampaign": 1,
-  "workerSourceCommit": "99b1682bed75777a0dde402277d9ca39933ab724",
-  "applicationCommit": "49a8b16201eba14dd3d148ad8234f97534470c3d",
+  "workerSourceCommit": "a0eacb500e6dfb715c9d7f0a06be963075d42c93",
+  "applicationCommit": "c504624b775f0166e2cd3f9e3bce70cb0971dfea",
   "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
   "imageBinding": "Before apply: bind only the digest verified against the worker commit, preserve base layers/runtime configuration, update the application image pin and its hash, rerun profile tests, typecheck, build and dry runs. No model or other application changes.",
   "leaseStart": "After image publication/verification with workers 0/0; start one 40-minute lease before application deployment and GPU preparation",
@@ -133,5 +141,11 @@
     "generationRequests": 0,
     "leaseStarted": false,
     "resumeRequiresApproval": true
-  }
+  },
+  "resumeApproval": "Resume publication and check within same $1",
+  "resumePlan": "ci-resume-plan.json",
+  "absoluteDeadline": "2026-11-02T05:43:13.630000+00:00",
+  "completedAt": "2026-11-02T05:16:14.385508+00:00",
+  "result": "hosted-result.json",
+  "cleanup": "PASS; zero workers/jobs, remote audio absent, held website restored"
 }

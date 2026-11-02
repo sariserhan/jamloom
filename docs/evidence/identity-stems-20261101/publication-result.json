@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T05:06:37.880409+00:00",
+  "workerSourceCommit": "a0eacb500e6dfb715c9d7f0a06be963075d42c93",
+  "applicationCommit": "c504624b775f0166e2cd3f9e3bce70cb0971dfea",
+  "workflow": "https://github.com/sariserhan/jamloom/actions/runs/41390835167",
+  "linuxTestCounts": [
+    17,
+    6,
+    10,
+    8,
+    10,
+    2,
+    2,
+    1,
+    5
+  ],
+  "linuxChecks": 61,
+  "profileChecks": 8,
+  "siteTypecheck": "PASS",
+  "harnessTypecheck": "PASS",
+  "siteBuild": "PASS",
+  "bundleAudit": "PASS",
+  "controllerDryRun": "PASS",
+  "httpDryRun": "PASS",
+  "imageVerification": "image.json",
+  "initialDisabledEndpoint": "disabled-template.json",
+  "hostedCheck": "PASS; hosted-result.json"
+}
