@@ -1,0 +1,65 @@
+[
+  {
+    "page": "/neural-question/",
+    "status": "PASS",
+    "audio": [
+      {
+        "path": "/neural-question/question.wav",
+        "status": 206,
+        "header": "RIFF"
+      },
+      {
+        "path": "/neural-question/song.wav",
+        "status": 206,
+        "header": "RIFF"
+      }
+    ]
+  },
+  {
+    "page": "/neural-variety/",
+    "status": "PASS",
+    "audio": [
+      {
+        "path": "/neural-variety/question.wav",
+        "status": 206,
+        "header": "RIFF"
+      },
+      {
+        "path": "/neural-variety/jazz.wav",
+        "status": 206,
+        "header": "RIFF"
+      },
+      {
+        "path": "/neural-variety/funk.wav",
+        "status": 206,
+        "header": "RIFF"
+      },
+      {
+        "path": "/neural-variety/drumandbass.wav",
+        "status": 206,
+        "header": "RIFF"
+      },
+      {
+        "path": "/neural-variety/accepted.wav",
+        "status": 206,
+        "header": "RIFF"
+      }
+    ]
+  },
+  {
+    "page": "/instrumental-question/",
+    "status": "PASS",
+    "audio": [
+      {
+        "path": "/instrumental-question/song.wav",
+        "status": 206,
+        "header": "RIFF"
+      },
+      {
+        "path": "/instrumental-question/source.wav",
+        "status": 206,
+        "header": "RIFF"
+      }
+    ]
+  }
+]

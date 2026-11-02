@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": [
+    "byte identity",
+    "independent inodes",
+    "mode/mtime/xattr preservation",
+    "independent modification",
+    "clone survives source deletion"
+  ]
+}

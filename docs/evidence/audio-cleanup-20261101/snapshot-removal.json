@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "removed": [
+    {
+      "path": "build-release-closure-20261031/offer-deploy-source",
+      "eligible": true,
+      "sourceCommit": "140095196bcbfae713f9b9d68a8f9dcc47a716f9",
+      "verifiedFiles": 8406,
+      "allocatedBytes": 370487296,
+      "filesVerifiedAgain": 8406
+    },
+    {
+      "path": "build-release-closure-20261031/deploy-source",
+      "eligible": true,
+      "sourceCommit": "3f6124e10f8f4d85d88808d27f3c5d26f6622fad",
+      "verifiedFiles": 8368,
+      "allocatedBytes": 370290688,
+      "filesVerifiedAgain": 8368
+    },
+    {
+      "path": "build-release-closure-20261031/renewal-deploy-source",
+      "eligible": true,
+      "sourceCommit": "8253678f0ae7c476cd85397ec370c029a483773b",
+      "verifiedFiles": 8405,
+      "allocatedBytes": 370483200,
+      "filesVerifiedAgain": 8405
+    },
+    {
+      "path": "build-active-capacity-20261101/deploy-source",
+      "eligible": true,
+      "sourceCommit": "2720f8c522ae16065c1740bfb5dee28da2c559a6",
+      "verifiedFiles": 8573,
+      "allocatedBytes": 373473280,
+      "filesVerifiedAgain": 8573
+    },
+    {
+      "path": "build-release-cold-start-20261101/deploy-source",
+      "eligible": true,
+      "sourceCommit": "fd1743682fd517091e4c325e860e47de4a306b77",
+      "verifiedFiles": 8513,
+      "allocatedBytes": 372609024,
+      "filesVerifiedAgain": 8513
+    }
+  ],
+  "allocatedBytes": 1857343488
+}

@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "duplicateCopiesConsolidated": 5176,
+  "duplicateLogicalBytesConsolidated": 33353101140,
+  "skippedSafetyChecks": 44,
+  "deletedSnapshots": 5,
+  "deletedSnapshotAllocatedBytes": 1857343488,
+  "freeBeforeBytes": 23161208832,
+  "freeAfterBytes": 52220833792,
+  "observedFreeIncreaseBytes": 29059624960,
+  "note": "Observed disk change includes other macOS activity. APFS sharing means logical file sizes do not shrink. Initial free measurement followed a few small replacements.",
+  "remoteChanges": false,
+  "openAppsClosed": false,
+  "checks": {
+    "audioIntegrity": "PASS",
+    "localAudioDemoLessonTests": {
+      "pass": 18,
+      "fail": 0
+    },
+    "isolatedPostgresAcademy": "NOT RUN: no isolated database URL configured; excluded from the focused rerun",
+    "localListeningPages": 3,
+    "audioRangeReads": 9
+  },
+  "localAuditFiles": {
+    "audit.py": {
+      "path": "build-audio-cleanup-20261101/audit.py",
+      "sha256": "c85cd5532d9fa4f5a784d3235d67880894c0dc489dfabddf155ca85822ceeb6a"
+    },
+    "deduplicate.py": {
+      "path": "build-audio-cleanup-20261101/deduplicate.py",
+      "sha256": "7c6f93a5ae24783ec6032d14097511bd5bc4aebf5a17fc4c7e0113a00fef3c9e"
+    },
+    "remove-snapshots.py": {
+      "path": "build-audio-cleanup-20261101/remove-snapshots.py",
+      "sha256": "4ce002fbb82c8a72449acd0d583687532a5816be013d301535658f289b521bf0"
+    },
+    "verify.py": {
+      "path": "build-audio-cleanup-20261101/verify.py",
+      "sha256": "c9fa9e9a0ebd5a996a181633a3e711c12102e55bcf57eed7f5a13564c2a13dec"
+    },
+    "inventory.json": {
+      "path": "build-audio-cleanup-20261101/inventory.json",
+      "sha256": "a3bccf3e766d4cd8068ec3ad3908bcb6595fa92883340a17d11d0b94e7f6c723"
+    },
+    "dedup-plan.json": {
+      "path": "build-audio-cleanup-20261101/dedup-plan.json",
+      "sha256": "075746ac5f1027686aa7cc855e4e96c8ad22106c0f4e7e9f819e2bf7f535831d"
+    },
+    "dedup-completed.jsonl": {
+      "path": "build-audio-cleanup-20261101/dedup-completed.jsonl",
+      "sha256": "6eb34945f20ed838358c989e5c7f5e9de90c1e052cf0ffab036b603d23ec3387"
+    }
+  }
+}

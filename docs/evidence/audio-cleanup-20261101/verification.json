@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "inventoryFilesPreserved": 12090,
+  "replacedCopiesRehashed": 5176,
+  "allOriginalNamesSizesModificationTimesModesPreserved": true,
+  "independentInodes": true,
+  "unchangedFilesKeptOriginalInodes": true,
+  "gitStatusUnchanged": true,
+  "noTemporaryCloneFiles": true,
+  "freeBytes": 52220833792
+}
