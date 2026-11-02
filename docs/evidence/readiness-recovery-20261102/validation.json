@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "controllerDryRun": "PASS",
+  "httpDryRun": "PASS",
+  "harnessTypecheck": "PASS",
+  "pythonSyntax": "PASS",
+  "remotePreview": "PASS",
+  "remoteServiceActive": false,
+  "providerOperations": 0,
+  "fixtureCreditsGranted": 0,
+  "generationRequests": 0,
+  "approval": "PENDING"
+}

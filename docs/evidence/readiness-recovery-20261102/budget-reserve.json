@@ -1,0 +1,14 @@
+{
+  "status": "CONSERVATIVE_RESERVE",
+  "observedWorkerIdentities": 2,
+  "controllerToVerifiedEmptySeconds": 289.907,
+  "extraShutdownSecondsPerWorker": 130,
+  "profileUSDPerSecond": 0.00022,
+  "fixedAllowanceUSD": 0.02,
+  "conservativeModelUpperUSD": 0.20475907999999998,
+  "priorReservedUSD": 0.25,
+  "remainingStageMaxUSD": 0.75,
+  "aggregateMaxUSD": 1,
+  "notProviderInvoice": true,
+  "billingStillProvisional": true
+}

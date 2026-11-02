@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-02T05:51:32.494Z",
+  "workers": {
+    "max": 0,
+    "min": 0
+  },
+  "health": {
+    "jobs": {
+      "completed": 48,
+      "failed": 21,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "cycles": [
+    {
+      "state": "stopped",
+      "reason": "shutdown-pending",
+      "starts_at": "1793598412889",
+      "expires_at": "1793600812889",
+      "ready_at": "1793598498637",
+      "busy_at": null
+    }
+  ],
+  "guardianAgeMs": null
+}

@@ -1,0 +1,17 @@
+{
+  "status": "FAIL",
+  "error": "Capacity stopped: Preparation stopped",
+  "requests": 0,
+  "beforeTest": {
+    "available": 2960,
+    "reserved": 0
+  },
+  "beforeLive": {
+    "available": 0,
+    "reserved": 0
+  },
+  "cleanup": "PASS",
+  "inputUploaded": false,
+  "creditsUsed": 0,
+  "fixedLocally": "37a0d0be"
+}

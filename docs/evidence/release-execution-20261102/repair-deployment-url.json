@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_3ymBfyzD4dShP6J1pDTwMeX9zA3L",
+    "url": "https://jamloom-52zn6fde6-ssari.vercel.app",
+    "inspectorUrl": "https://vercel.com/ssari/jamloom/3ymBfyzD4dShP6J1pDTwMeX9zA3L",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_3ymBfyzD4dShP6J1pDTwMeX9zA3L"
+  },
+  "message": "Deployment jamloom-52zn6fde6-ssari.vercel.app ready.",
+  "next": [
+    {
+      "command": "vercel curl https://jamloom-52zn6fde6-ssari.vercel.app",
+      "when": "Verify deployment, including when Deployment Protection is enabled"
+    },
+    {
+      "command": "vercel inspect jamloom-52zn6fde6-ssari.vercel.app",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod",
+      "when": "Promote to production"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "host": "existing headless server",
+  "node": "v24.19.0",
+  "sourceCommit": "37a0d0be146c701cee43419fa7f51508db4994a7",
+  "sha256": "1cab10e5c0ef52ee1a4773fffb6173934d1f594c3f3e6a55b840ad85100f0d5e",
+  "syntax": "PASS",
+  "databasePreview": "PASS",
+  "cycles": 0,
+  "unitVerification": "PASS",
+  "service": "inactive",
+  "enabledMarker": false,
+  "operatorPermitConfigured": false,
+  "gpuOperations": 0,
+  "supervisedReadOnlyPreview": "PASS"
+}

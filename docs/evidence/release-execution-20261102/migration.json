@@ -1,0 +1,157 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T05:37:32.798Z",
+  "target": "ep-flat-hill-b4q0lix4.c-6.us-east-2.aws.neon.tech/neondb",
+  "applied": [
+    "0034_cloud_capacity.sql"
+  ],
+  "repeatApply": [],
+  "allHashesMatch": 34,
+  "unchangedCounts": {
+    "songs": 10,
+    "ledger": 30
+  },
+  "backup": {
+    "privatePath": "build-release-execution-20261102/before-0034.dump",
+    "sha256": "2bfcf9eb89bdd880d6613172a5658d60de305aa7313e5997ec2b57603a5080a7",
+    "restore": "PASS"
+  },
+  "ledger": [
+    {
+      "name": "0001_auth.sql",
+      "sha256": "8443db247668c553310d8514d2c851e99b54b9558e74c4d58a07b7df4bc5b1eb"
+    },
+    {
+      "name": "0002_tracks.sql",
+      "sha256": "a5aeca74c852dfba35bdfa4a72c565e4d0248c4b6d44f7e70f29e4fe91b92a42"
+    },
+    {
+      "name": "0003_private_audio.sql",
+      "sha256": "c725e42d70ef3e6c299886810683e0482ad191ac559134f1979071723efe5e5f"
+    },
+    {
+      "name": "0004_catalogue.sql",
+      "sha256": "bb9cdbcf054941f650ab9ed1392ccbf3b50d94375ba2fa2fbcb9b9efa0dc0280"
+    },
+    {
+      "name": "0005_auth_expiry.sql",
+      "sha256": "bbfae1ae6ca9c521d262ca1cbedcf12353ba6b92699011ea4cb21bfdb3124dc1"
+    },
+    {
+      "name": "0006_credit_ledger.sql",
+      "sha256": "3838df17d96d27b76b60c4d9ffb9fb170297c8c1eaecedb69e42910105061579"
+    },
+    {
+      "name": "0007_taste_profiles.sql",
+      "sha256": "f096a4260ae1c20cd63a96c579092583bfdb59a115bf7eef94711aed0223bf7b"
+    },
+    {
+      "name": "0008_generation_jobs.sql",
+      "sha256": "39ee93a7025da0d93008c5953713ac02fdfb54b3f41cb4f2c373de42a85a4a96"
+    },
+    {
+      "name": "0009_generation_rentals.sql",
+      "sha256": "aad5e5cd69a979820d083ddf9e6b46b5f210e0cbf461f1fe2e78665f0d4ac3c2"
+    },
+    {
+      "name": "0010_academy.sql",
+      "sha256": "1b2201196bf3cbdf488ac65a8b34c434a5ee0356c43dba9885096ce36aff6aad"
+    },
+    {
+      "name": "0011_administration.sql",
+      "sha256": "2df7437d00da05741a8ac12188de05e19d37142e95894873a61abce94d82ea8c"
+    },
+    {
+      "name": "0012_creation_visibility.sql",
+      "sha256": "6adb95ad324dae59e9b0c17764bd9f5651e3651d7ea6ab203c21f042c02784b4"
+    },
+    {
+      "name": "0013_audio_duration.sql",
+      "sha256": "54626b1f1d9aaac9b854407e635724177a6d06a2da3a226796034b48646f419f"
+    },
+    {
+      "name": "0014_pro_licenses.sql",
+      "sha256": "8826bf995805e572ce4cfe7eedc391c82e6d7edbc7e053ecaac5bddf38217fe2"
+    },
+    {
+      "name": "0015_taste_metadata_size.sql",
+      "sha256": "0897a0dcc4b6d5d834c0070a597d90edbe7c183d9813dfc9a3cdc2edcaa9740b"
+    },
+    {
+      "name": "0016_dna_songs.sql",
+      "sha256": "70f93fc12a247b6515ce4e9144c98691f217b73854f7e9e8c2e8fe5575281179"
+    },
+    {
+      "name": "0017_music_storage.sql",
+      "sha256": "2685139bc0c0b66dff249495d250bb79721913aeec609120574d94755bb35925"
+    },
+    {
+      "name": "0018_hosted_songs.sql",
+      "sha256": "2fbb540b55dbdbdcc815cf1d5284c9742a752626344facbebc5d72baa51c86f3"
+    },
+    {
+      "name": "0019_song_duration_range.sql",
+      "sha256": "7d6ef8b58e99fe808166f7ce50875a857385b4c070706ff88928b4c6166cc23a"
+    },
+    {
+      "name": "0020_whole_playlist_profiles.sql",
+      "sha256": "48ab9f456edfc1c0d91550abdb3ae605e62e0e768b1fcf4b4582f0a546c4b68f"
+    },
+    {
+      "name": "0021_apple_production.sql",
+      "sha256": "2ab0404d85343421a4305a2a7c615662321e2c039e69b3d09afe3b0b43a07f73"
+    },
+    {
+      "name": "0022_dj_recordings.sql",
+      "sha256": "a08bccce1917d0c48e0c7f6cd9f5231f18650cd1efb01efd0b8c45bbebb63f6b"
+    },
+    {
+      "name": "0023_dj_sessions.sql",
+      "sha256": "d3730a88d12934dea9b055a3e5870ab616afa90bc6831424ff36f43e56033c2a"
+    },
+    {
+      "name": "0024_dj_worker_leases.sql",
+      "sha256": "75f0aeb5ce8ed1024642fb115397a942b779a7c4275a84c23bcb34454ceadd40"
+    },
+    {
+      "name": "0025_dj_stream_recordings.sql",
+      "sha256": "909bf43f51d22ac373e4e651094a202f45935599e1d973e1f1e5db3056433929"
+    },
+    {
+      "name": "0026_dj_warm_workers.sql",
+      "sha256": "7e507389039cea8596bcb12ef07ef6880e3efdb758c63842a057c596ef778afd"
+    },
+    {
+      "name": "0027_dj_allowance.sql",
+      "sha256": "43c3885fe1d677eb543fcde24d35460f645ef2876abc40a9783cd91cf2c43387"
+    },
+    {
+      "name": "0028_dj_allowance_rate.sql",
+      "sha256": "8a7123413b876bba5cc4e2e9a799ec40bbf72ddfc2af91a16c6045c8f91211ae"
+    },
+    {
+      "name": "0029_listening_collections.sql",
+      "sha256": "130ddba014a8722a87f2a923865682130d5fb7659160b55c50975277a246d9b2"
+    },
+    {
+      "name": "0030_creation_feedback.sql",
+      "sha256": "3ae714ccf7de4e8ee66210bf4bf64fdde7b4df1db311eb5727efc77fedb6cf2d"
+    },
+    {
+      "name": "0031_singing_price.sql",
+      "sha256": "f681e6788cbb4316af042ea3f9dfcb7a1c1f01c39fd2f75e50eaacb3714da641"
+    },
+    {
+      "name": "0032_account_deletion.sql",
+      "sha256": "cc24fc7aa06b55096602ecf7c2f33ce9c12ef832f0b51376251eb90e0a3455ea"
+    },
+    {
+      "name": "0033_credit_catalog.sql",
+      "sha256": "b401631fcb0240aa6c4adea108d181ca547e70ca74cd11afcd935c2299785edf"
+    },
+    {
+      "name": "0034_cloud_capacity.sql",
+      "sha256": "e3469095193a9bfca4f91421353b7ceaba8be713e2ad4bfffced61049e29be28"
+    }
+  ]
+}

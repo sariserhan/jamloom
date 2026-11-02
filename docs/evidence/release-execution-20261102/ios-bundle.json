@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "version": "0.11.0",
+  "build": "39",
+  "bundle": "com.djayvo.app",
+  "archiveSignature": "PASS",
+  "exportSHA256": "b703cd0ad6b8cafd69e7eeaece4bbe9c9adf0638ae6581019e4ca5774f849787",
+  "exportBytes": 91923585,
+  "privateFixturesAbsent": true
+}

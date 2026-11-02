@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "applicationCommit": "37a0d0be146c701cee43419fa7f51508db4994a7",
+  "siteTests": 208,
+  "isolatedDatabaseTests": 88,
+  "failures": 0,
+  "typecheck": "PASS",
+  "productionBuild": "PASS",
+  "bundleAudit": "PASS",
+  "hostedRepairQualification": "NOT RUN",
+  "logs": {
+    "build-release-execution-20261102/database-regression-tests.log": "1fe7c81ab94c6f487e295918841912a0ed9e0a59dd171effdd4a0c3a969e0824",
+    "build-release-execution-20261102/site-tests.log": "46a290f2b5b696b7bdeb2614b11980b1c88d8ee4ae454040f8f30a94dec8ccba",
+    "build-release-execution-20261102/typecheck.log": "76d575f32c96b28d06783b82331bc5d133a4feed0a9804f0aa5139880abaa7c6",
+    "build-release-execution-20261102/repair-build.log": "b93866b1ddc4f50dec656275c1b1cca9c8fe13a696140d7f7fc2fa66a516261f"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "at": "2026-11-02T06:00:02.855Z",
+  "mutations": false,
+  "endpoint": {
+    "id": "jl77hn92npt65k",
+    "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e5a0050e6405b59e7168a03d2fe93e3bc49cf38273245ae9461798f8f6130b0e",
+    "type": "QUEUE",
+    "disk": 60,
+    "gpu": {
+      "allowedCudaVersions": [],
+      "count": 1,
+      "excludedTypes": [
+        "NVIDIA RTX 6000 Ada Generation",
+        "NVIDIA L40"
+      ],
+      "minCudaVersion": "12.8",
+      "pools": [
+        "ADA_24",
+        "ADA_48_PRO"
+      ]
+    },
+    "workers": {
+      "max": 0,
+      "min": 0
+    },
+    "scaling": {
+      "requestCount": 1,
+      "type": "REQUEST_COUNT"
+    },
+    "flashboot": "FLASHBOOT"
+  },
+  "health": {
+    "jobs": {
+      "completed": 48,
+      "failed": 21,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "gpuCatalog": [
+    {
+      "community": true,
+      "id": "NVIDIA GeForce RTX 4090",
+      "manufacturer": "NVIDIA",
+      "maxCount": {
+        "community": 8,
+        "secure": 8
+      },
+      "memory": 24,
+      "name": "RTX 4090",
+      "pool": "ADA_24",
+      "price": {
+        "community": 0.34,
+        "secure": 0.89,
+        "serverless": 1.34
+      },
+      "secure": true
+    },
+    {
+      "community": false,
+      "id": "NVIDIA L4",
+      "manufacturer": "NVIDIA",
+      "maxCount": {
+        "community": 1,
+        "secure": 9
+      },
+      "memory": 24,
+      "name": "L4",
+      "pool": "AMPERE_24",
+      "price": {
+        "community": 0.44,
+        "secure": 0.59,
+        "serverless": 0.75
+      },
+      "secure": true
+    },
+    {
+      "community": true,
+      "id": "NVIDIA L40S",
+      "manufacturer": "NVIDIA",
+      "maxCount": {
+        "community": 8,
+        "secure": 8
+      },
+      "memory": 48,
+      "name": "L40S",
+      "pool": "ADA_48_PRO",
+      "price": {
+        "community": 0.79,
+        "secure": 1.09,
+        "serverless": 1.75
+      },
+      "secure": true
+    },
+    {
+      "community": true,
+      "id": "NVIDIA RTX 4000 Ada Generation",
+      "manufacturer": "NVIDIA",
+      "maxCount": {
+        "community": 8,
+        "secure": 8
+      },
+      "memory": 20,
+      "name": "RTX 4000 Ada",
+      "pool": "AMPERE_16",
+      "price": {
+        "community": 0.2,
+        "secure": 0.28,
+        "serverless": 0.58
+      },
+      "secure": true
+    },
+    {
+      "community": true,
+      "id": "NVIDIA RTX A5000",
+      "manufacturer": "NVIDIA",
+      "maxCount": {
+        "community": 10,
+        "secure": 10
+      },
+      "memory": 24,
+      "name": "RTX A5000",
+      "pool": "AMPERE_24",
+      "price": {
+        "community": 0.16,
+        "secure": 0.27,
+        "serverless": 0.75
+      },
+      "secure": true
+    }
+  ]
+}

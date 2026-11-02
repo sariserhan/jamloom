@@ -1,5 +1,9 @@
 # Launch activation — updated 2026-11-02
 
+**Release execution — 2026-11-02: PASS migration, held deployment and build 39; PARTIAL release.** All 34 production migration hashes match after a verified backup/restore. iPhone build 39 is VALID and selected, unsubmitted. The approved $1 capacity check stopped on a readiness regression before either song request; independent cleanup confirms workers 0/0, no jobs/uploads and no credits used. The repair is committed/deployed and passes 208 site tests, 88 database checks, build/typecheck/audit and live route checks. An independent guardian is installed on the existing headless server but disabled. A same-$1 continuation is prepared, pending explicit resume; operating economics, ongoing capacity and final activation remain open. No Git push. [Current evidence](evidence/release-execution-20261102/report.md).
+
+## Previous local handoff
+
 **Local completion on main — 2026-11-02: PASS implementation and validation; PARTIAL release.** Explicit song preparation now works across web/mobile web/iPhone with durable operator budgets, one activation attempt, independent watchdog admission, idle/expiry shutdown and configuration-rollback recovery. The feature remains disabled. 208 site tests, 85 isolated database/Academy checks, four SDK bootstrap cases, 23 simulator account tests (two integration skips), build/typecheck/audit and desktop/mobile Chromium/WebKit checks pass. No push, deployment, production migration, paid request or sales/App Review activation. Hosted lifecycle/runtime/economics and final release remain external gates. [Current evidence](evidence/local-release-20261102/report.md). [Migration, watchdog, qualification and activation order](CLOUD_CAPACITY.md). The owner will push; do not infer deployment authorization from this local handoff.
 
 ## Historical checkpoints
@@ -25,7 +29,7 @@ Public product workspaces, free lessons and catalogs now open without login; gen
 ## Completed
 
 - Held website source `9f134abc` includes language filters, style notes, capacity-aware admission before credit reservation and non-destructive availability refresh, and the Apple notification-size repair, correct renewal/refund reconciliation and bounded production/reviewer generation. Actual signed renewal replay grants once in the test wallet; it never grants live credits.
-- Physical iPhone purchase, Restore and refund reconciliation pass. Native 0.11.0 (38), including language filters, style guidance and capacity-aware creation, is uploaded, VALID and selected for manual release.
+- Physical iPhone purchase, Restore and refund reconciliation pass. Native 0.11.0 (39), including language filters, style guidance and explicit preparation controls, is uploaded, VALID and selected for manual release.
 - Creator, top-up and Singing metadata are ready. Real native screenshots are accepted. The app is free to download, categorized Music, and the five app/product/group items are assembled in an unsubmitted review draft.
 - Stripe charges/payouts and tax settings are ready. The existing Creator product/price and webhook remain inactive/disabled pending activation; do not create duplicates.
 - The unchanged catalog is Creator $15/300 monthly, top-up $10/150, Improvise 10, Music DNA 20, and AI DJ 2/minute. Paid credits never expire.

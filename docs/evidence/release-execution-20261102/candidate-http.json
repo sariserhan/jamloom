@@ -1,0 +1,35 @@
+{
+  "deployment": "https://jamloom-lh6yx6i3e-ssari.vercel.app",
+  "checks": [
+    {
+      "path": "/music-dna",
+      "status": "PASS",
+      "html": true
+    },
+    {
+      "path": "/improvise",
+      "status": "PASS",
+      "html": true
+    },
+    {
+      "path": "/academy",
+      "status": "PASS",
+      "html": true
+    },
+    {
+      "path": "/singing-academy",
+      "status": "PASS",
+      "html": true
+    },
+    {
+      "path": "/api/taste/song",
+      "status": "PASS",
+      "generationHeld": true
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": "PASS",
+      "generationHeld": true
+    }
+  ]
+}

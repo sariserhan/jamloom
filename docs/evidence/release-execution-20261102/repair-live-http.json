@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "source": "37a0d0be146c701cee43419fa7f51508db4994a7",
+  "at": "2026-11-02T05:59:10.488Z",
+  "rows": [
+    {
+      "path": "/music-dna",
+      "status": 200
+    },
+    {
+      "path": "/improvise",
+      "status": 200
+    },
+    {
+      "path": "/academy",
+      "status": 200
+    },
+    {
+      "path": "/singing-academy",
+      "status": 200
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200
+    }
+  ]
+}
