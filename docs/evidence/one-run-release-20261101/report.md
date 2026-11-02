@@ -31,3 +31,7 @@ The archived harness preserves absolute deadlines, single-use submission claims,
 Context7 was unavailable. Official Runpod [worker states](https://docs.runpod.io/serverless/workers/overview), [product-specific GPU availability](https://docs.runpod.io/api-reference-v2/catalog/get-a-gpu-type), [worker log streaming](https://docs.runpod.io/api-reference-v2/serverless/stream-serverless-worker-logs), and [failure billing](https://www.runpod.io/blog/failed-requests-real-charges-how-runpod-serverless-billing-works-when-workers-fail) were consulted. No provider support message was sent. The image-loading observation alone does not prove a model, registry or hardware defect.
 
 Reviewed application and harness source: `d5c49101f029a5207401010b91e2f7223286ad59`. Deployment and paid execution remain pending the bounded permit.
+
+## Final read-only release checks
+
+Stripe reports charges/payouts enabled and tax settings active; the existing Creator product and price remain inactive and the credit webhook remains disabled. No Stripe object was changed and no payment was attempted. All four public product pages return 200; anonymous Music DNA/Improvise status remains unavailable with no login or generation request. [Stripe](stripe-readiness.json), [public HTTP](public-http.json).

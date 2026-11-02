@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "method": "Unauthenticated GET only",
+  "checks": [
+    {
+      "path": "/music-dna",
+      "status": 200
+    },
+    {
+      "path": "/improvise",
+      "status": 200
+    },
+    {
+      "path": "/academy",
+      "status": 200
+    },
+    {
+      "path": "/singing-academy",
+      "status": 200
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "mode": "cloud",
+      "available": false,
+      "signedIn": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "mode": "cloud",
+      "available": false,
+      "signedIn": false
+    }
+  ]
+}
