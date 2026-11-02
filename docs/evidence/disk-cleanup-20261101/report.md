@@ -7,3 +7,5 @@ Removed inactive Xcode intermediate/module/index caches, the stopped local Next.
 All simulators were confirmed shut down. Candidate paths were checked for symlinks, tracked files and open handles. Simulator app data, application support, installed models, source recordings, generated audio/evidence, project source, credentials, signed builds and release archives remain. Dia and the other open applications stayed open; their active browser caches were left alone. The stopped Docker VM and its data were preserved.
 
 Git status matched the pre-cleanup snapshot before this documentation was added. Focused routing/capacity tests and the active diagnostic harness hash/dry-run check pass. The running controller, independent watchdog, remote capacity check and their dependencies were not removed or interrupted. Deleted caches will regenerate when needed.
+
+A final disk check after diagnostic shutdown showed approximately **21 GiB available**. The directly audited removal total remains 7.75 GiB; additional free-space recovery is not attributed to deleted files.

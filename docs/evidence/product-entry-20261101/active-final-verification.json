@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T00:57:53.781Z",
+  "qualification": "FAIL_CAPACITY",
+  "requests": 0,
+  "workerLimits": {
+    "max": 0,
+    "min": 0
+  },
+  "health": {
+    "jobs": {
+      "completed": 46,
+      "failed": 18,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "balanceTest": {
+    "available": 2990,
+    "reserved": 0
+  },
+  "balanceLive": {
+    "available": 0,
+    "reserved": 0
+  },
+  "balancesUnchanged": true,
+  "publicProductRoutesPreserved": true,
+  "publicGenerationClosed": true,
+  "checks": [
+    {
+      "path": "/music-dna",
+      "status": 200
+    },
+    {
+      "path": "/improvise",
+      "status": 200
+    },
+    {
+      "path": "/academy",
+      "status": 200
+    },
+    {
+      "path": "/singing-academy",
+      "status": 200
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,2167 @@
+{
+  "startedAt": "2026-11-02T00:36:27.588Z",
+  "deadline": 1793581927596,
+  "requests": [],
+  "cleanup": true,
+  "previousGpu": {
+    "allowedCudaVersions": [],
+    "count": 1,
+    "excludedTypes": [
+      "NVIDIA RTX 6000 Ada Generation",
+      "NVIDIA L40"
+    ],
+    "minCudaVersion": "12.8",
+    "pools": [
+      "ADA_24",
+      "ADA_48_PRO"
+    ]
+  },
+  "activatedAt": "2026-11-02T00:36:31.021Z",
+  "preparationDeadline": 1793580991858,
+  "preparationSamples": [
+    {
+      "at": "2026-11-02T00:36:31.902Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:36:42.004Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:36:52.110Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:37:02.185Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:37:12.261Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:37:22.336Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:37:32.422Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:37:42.510Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:37:53.104Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:38:03.179Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:38:13.256Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:38:23.335Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:38:33.418Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:38:43.494Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:38:53.573Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:39:03.649Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:39:13.735Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:39:23.840Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:39:33.949Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:39:44.041Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:39:54.112Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:40:04.190Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:40:14.261Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:40:24.343Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:40:34.427Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:40:44.521Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:40:54.600Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:41:04.700Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:41:14.781Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:41:24.871Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:41:34.973Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:41:45.070Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:41:55.154Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:42:05.229Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:42:15.561Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:42:25.662Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:42:35.757Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:42:45.854Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:42:55.927Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:43:06.011Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:43:16.100Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:43:26.200Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:43:36.295Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:43:46.388Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:43:56.522Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:44:06.591Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:44:16.695Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:44:26.787Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:44:36.884Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:44:46.952Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:44:57.025Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:45:07.102Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:45:17.208Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:45:27.286Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:45:37.364Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:45:47.447Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:45:57.534Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:46:07.640Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:46:17.720Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:46:27.795Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:46:37.866Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:46:47.944Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:46:58.061Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:47:08.152Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:47:18.237Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:47:28.337Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:47:38.423Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:47:48.510Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:47:58.590Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:48:08.661Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:48:18.767Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:48:28.859Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:48:38.938Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:48:49.029Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:48:59.117Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:49:09.201Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:49:19.305Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:49:29.380Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:49:39.488Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:49:49.563Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:49:59.663Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:50:09.747Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:50:19.839Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:50:29.909Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:50:39.993Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:50:50.074Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:51:00.145Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:51:10.223Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:51:20.296Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:51:30.375Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:51:40.454Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:51:50.533Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:52:00.615Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:52:10.716Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:52:20.783Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:52:30.849Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:52:40.919Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:52:50.991Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:53:01.058Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:53:11.136Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:53:21.219Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:53:31.300Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:53:41.371Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:53:51.455Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:54:01.533Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:54:11.609Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:54:21.687Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:54:31.774Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:54:41.896Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:54:51.968Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:55:02.060Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:55:12.134Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:55:22.204Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:55:32.278Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:55:42.359Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:55:52.432Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:56:02.506Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 1,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:56:12.576Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    {
+      "at": "2026-11-02T00:56:22.676Z",
+      "jobs": {
+        "completed": 46,
+        "failed": 18,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 1,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    }
+  ],
+  "error": "No active running and ready L4 within preparation limit; no generation request authorized",
+  "disabledAt": "2026-11-02T00:56:33.675Z"
+}

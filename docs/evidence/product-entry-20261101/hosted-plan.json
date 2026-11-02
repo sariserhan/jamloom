@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "scope": "One active-worker Music DNA delivery and attributable cost diagnostic; not proof of ongoing economics or App Review availability",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
   "endpoint": "jl77hn92npt65k",
@@ -79,5 +79,7 @@
   "activatedAt": "2026-11-02T00:36:31.021Z",
   "absoluteDeadline": "2026-11-02T01:12:07.596000+00:00",
   "diagnosticDeployment": "https://jamloom-lnxsomcjb-ssari.vercel.app",
-  "heldRestoreDeployment": "https://jamloom-of9eta19v-ssari.vercel.app"
+  "heldRestoreDeployment": "https://jamloom-of9eta19v-ssari.vercel.app",
+  "result": "FAIL_CAPACITY: no running/ready L4 before preparation cutoff; zero generation requests; independent cleanup and held restore PASS",
+  "finishedAt": "2026-11-02T00:56:49.137Z"
 }

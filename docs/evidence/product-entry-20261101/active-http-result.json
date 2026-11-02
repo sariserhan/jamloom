@@ -1,0 +1,16 @@
+{
+  "status": "FAIL",
+  "startedAt": "2026-11-02T00:36:06.054Z",
+  "requests": [],
+  "operatorCapBaselineMicros": 623600,
+  "beforeTest": {
+    "available": 2990,
+    "reserved": 0
+  },
+  "beforeLive": {
+    "available": 0,
+    "reserved": 0
+  },
+  "error": "Capacity stopped: No active running and ready L4 within preparation limit; no generation request authorized",
+  "finishedAt": "2026-11-02T00:56:49.137Z"
+}
