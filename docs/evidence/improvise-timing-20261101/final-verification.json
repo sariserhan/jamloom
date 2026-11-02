@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T04:36:31.468Z",
+  "workerLimits": {
+    "max": 0,
+    "min": 0
+  },
+  "previousHardwareRestored": true,
+  "health": {
+    "jobs": {
+      "completed": 47,
+      "failed": 21,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "pendingJobs": 0,
+  "testBalance": {
+    "available": 2970,
+    "reserved": 0
+  },
+  "liveBalance": {
+    "available": 0,
+    "reserved": 0
+  },
+  "capturedTestCredits": 0,
+  "liveWalletUnchanged": true,
+  "publicRoutes": [
+    {
+      "path": "/music-dna",
+      "status": 200
+    },
+    {
+      "path": "/improvise",
+      "status": 200
+    },
+    {
+      "path": "/academy",
+      "status": 200
+    },
+    {
+      "path": "/singing-academy",
+      "status": 200
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "available": false,
+      "signedIn": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "available": false,
+      "signedIn": false
+    }
+  ],
+  "restoredAliasVerified": true,
+  "heldDeploymentId": "dpl_6bA5QCLSMvBSXZ178kxHzFMBUqgC"
+}

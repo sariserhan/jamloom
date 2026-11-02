@@ -1,5 +1,5 @@
 {
-  "status": "STOPPED",
+  "status": "CONSUMED",
   "scope": "One Improvise runtime repair check with content-free phase timings; no Music DNA repetition",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
   "endpoint": "jl77hn92npt65k",
@@ -131,8 +131,8 @@
     "resumeRequiresExplicitApproval": true,
     "stoppedAt": "2026-11-02T04:17:41.523795+00:00"
   },
-  "resumeApproval": "Approve one deployment retry within original limits",
-  "resumePlan": "deployment-resume-plan.json",
+  "resumeApproval": "Resume verified deployment within original limits",
+  "resumePlan": "ready-candidate-resume-plan.json",
   "resumeResult": {
     "status": "STOPPED_CLI_MONITOR_FAILURE",
     "error": "fetch failed while waiting for deployment",
@@ -142,5 +142,10 @@
     "generationRequests": 0,
     "sourceUploads": 0,
     "at": "2026-11-02T04:23:00.407109+00:00"
-  }
+  },
+  "completedAt": "2026-11-02T04:37:33.936245+00:00",
+  "qualification": "FAIL: worker timeout",
+  "requestsSubmitted": 1,
+  "cleanup": "PASS",
+  "additionalRunsAuthorized": false
 }

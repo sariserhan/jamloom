@@ -1,5 +1,5 @@
 {
-  "status": "AWAITING_EXPLICIT_RESUME",
+  "status": "CONSUMED",
   "scope": "Promote existing independently verified READY diagnostic; run the original one Improvise request only after existing account and shutdown safeguards pass",
   "deploymentId": "dpl_BhfVnBMLSEgS14nm58bLvS6YjfbR",
   "deploymentURL": "jamloom-r2cqaucla-ssari.vercel.app",
@@ -20,7 +20,7 @@
   "noDeadlineExtension": true,
   "monitoring": "Read-only status reconnection permitted after a transport error; never repeat a mutation or generation. Stop on confirmed deployment, safeguard, GPU or generation failure, and on unresolved state uncertainty.",
   "pricesAndExecutionLimitsUnchanged": true,
-  "cleanup": "Disable workers to 0/0, remove private remote test audio, verify credits and zero jobs, restore held website",
+  "cleanup": "PASS",
   "heldRestoreDeployment": "https://jamloom-of9eta19v-ssari.vercel.app",
   "excludes": [
     "AI DJ rentals or owner-closed endurance study",
@@ -30,5 +30,11 @@
     "Live charges or customer-sales activation",
     "Price changes",
     "Repeated generation requests"
-  ]
+  ],
+  "ownerApproval": "Resume verified deployment within original limits",
+  "approvedAt": "2026-11-02T04:23:28.584384+00:00",
+  "completedAt": "2026-11-02T04:37:33.936245+00:00",
+  "qualification": "FAIL: worker timeout",
+  "requestsSubmitted": 1,
+  "additionalRunsAuthorized": false
 }
