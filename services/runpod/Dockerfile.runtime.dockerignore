@@ -1,7 +1,5 @@
 **
 !scripts/
-!scripts/check_dna_audio.py
-!scripts/music_dna_song.py
-!services/
-!services/runpod/
-!services/runpod/pipeline.py
+!scripts/generation_timing.py
+!scripts/singer_studio.py
+!scripts/vocal_identity.py

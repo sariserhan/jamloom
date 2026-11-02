@@ -17,7 +17,7 @@ class RuntimeBaseTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         manifest = json.loads((ROOT / "services/runpod/runtime-base.json").read_text())
-        files = list(manifest["unchangedInputs"]) + manifest["runtimeFiles"] + ["services/runpod/runtime-base.json", "services/runpod/Dockerfile.runtime"]
+        files = list(manifest["unchangedInputs"]) + manifest["runtimeFiles"] + ["services/runpod/runtime-base.json", "services/runpod/Dockerfile.runtime", "services/runpod/Dockerfile.runtime.dockerignore"]
         for name in files:
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -25,8 +25,16 @@ class RuntimeBaseTests(unittest.TestCase):
 
     def test_verified_base_and_current_overlay(self):
         result = module.validate(self.root)
-        self.assertEqual(result["runtimeFiles"], 5)
+        self.assertEqual(result["runtimeFiles"], 3)
         self.assertEqual(result["status"], "PASS")
+
+    def test_missing_or_extra_build_context_is_rejected(self):
+        path = self.root / "services/runpod/Dockerfile.runtime.dockerignore"
+        original = path.read_text()
+        for changed in (original.replace("!scripts/vocal_identity.py\n", ""), original + "!.env\n"):
+            path.write_text(changed)
+            with self.assertRaisesRegex(AssertionError, "build context"):
+                module.validate(self.root)
 
     def test_changed_model_or_dependency_is_rejected(self):
         path = self.root / "assets/manifests/singing-model.json"

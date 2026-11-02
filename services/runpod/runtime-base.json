@@ -1,12 +1,10 @@
 {
-  "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
-  "baseSourceCommit": "ff6d4836bcd8768497012f94f8106fa86ee17935",
+  "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
+  "baseSourceCommit": "bdbc4a377bc659d51fca538aae376490878ca0a7",
   "runtimeFiles": [
     "scripts/generation_timing.py",
     "scripts/singer_studio.py",
-    "scripts/singing_response.py",
-    "services/runpod/handler.py",
-    "services/runpod/pipeline.py"
+    "scripts/vocal_identity.py"
   ],
   "unchangedInputs": {
     "assets/manifests/dna-auditor.json": "efd260cb8470edb8be0555a3fe4a85afb93795652320ce61f79a7ed47001c468",
@@ -35,7 +33,6 @@
     "scripts/local_call_edit.py": "37fef21660e6b9f56c551744f51c2341f86cdbc3ffcf52d9afbb031a27fee84f",
     "scripts/song_duration.py": "a843f99bfa304f201f7d54b11fa290843f23c485cb34a83f8a9fcc72175968dd",
     "scripts/source_led_response.py": "722427303184c6ad92d87d253bf741b6054e17070dc746e94b327af39e7ceb01",
-    "scripts/vocal_identity.py": "f00bf48f0b17212479970782b3ae6b67a6207e249bfbbbac58098de0df42e8c6",
     "services/runpod/Dockerfile": "b14fcc30ba94cb1cd9e13433ef5cd452fecb4ccf2fc3932d95366fd837e9ca58",
     "services/runpod/prepare_models.py": "447819a3aee795d1fb8beb5c51322d648db2c25c555585a294323a41278efc70",
     "services/runpod/prepare_spleeter_model.py": "bb07ea2127927e8979e7e26f29a0caa8a33005235eec2de0c398782eb80d4e80",
@@ -43,6 +40,9 @@
     "services/runpod/spleeter-requirements.txt": "1bd20275db7d2eff27a7399f7c62431e9947d225fa7c44647c217fc990f29051",
     "services/runpod/vocal-identity-requirements.txt": "c5dd50d156c863caac4636c1687b6eb409b7b27e45eece8414e9aae8256bca34",
     "scripts/check_dna_audio.py": "6635bdfc0fa96a36651bfcec764792086669b4c477bba8e3d8c6a61440fb323e",
-    "scripts/music_dna_song.py": "3b1c60a9def289460bcaf0c72d1f05696e239eb74e4e73a827b8b8243f8ed10c"
+    "scripts/music_dna_song.py": "3b1c60a9def289460bcaf0c72d1f05696e239eb74e4e73a827b8b8243f8ed10c",
+    "scripts/singing_response.py": "8bc4ea0d18707939182fd823096fe9baab4ee7e660985e445c2bcd3de414edbe",
+    "services/runpod/handler.py": "26656ed3127bf091407de86e6f024e4575150626e07623a4a164e89e0b38709f",
+    "services/runpod/pipeline.py": "1d4244e5847012b4b44e062fb247c2eeda65d52caa1b2791ea1a9a53112ab940"
   }
 }

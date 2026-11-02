@@ -19,6 +19,9 @@ def validate(root: Path) -> dict:
     copied = [p for line in recipe if line.startswith("COPY ") for p in line.split()[1:-1]]
     assert sorted(copied) == sorted(manifest["runtimeFiles"]), "Runtime overlay file list changed"
     assert set(copied).isdisjoint(manifest["unchangedInputs"])
+    rules = (root / "services/runpod/Dockerfile.runtime.dockerignore").read_text().splitlines()
+    allowed = {"**", *["!" + str(Path(name).parent) + "/" for name in copied], *["!" + name for name in copied]}
+    assert set(rules) == allowed, "Runtime build context must include exactly its reviewed source files"
     for name, expected in manifest["unchangedInputs"].items():
         assert hashlib.sha256((root / name).read_bytes()).hexdigest() == expected, f"Base input changed: {name}; build and verify a new full base image first"
     for name in copied:

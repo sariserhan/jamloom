@@ -8,6 +8,7 @@ from pathlib import Path
 import subprocess
 import sys
 import time
+from generation_timing import phase
 
 ROOT=Path(__file__).resolve().parents[1]
 IDENTITIES={
@@ -68,6 +69,115 @@ def mix_identity(original,stem,vocal):
     return mix,{'vocal_gain':gain,'source_vocal_rms':target_rms,'converted_vocal_rms':rms,'master_gain':trim,'frame_adjustment':difference,'backing_sha256':hashlib.sha256(backing.tobytes()).hexdigest()}
 
 
+def _identity_json(path):
+    if path.is_symlink() or not path.is_file() or path.stat().st_size>1024**2:
+        raise ValueError('Invalid identity receipt')
+    result=json.loads(path.read_text())
+    if not isinstance(result,dict):raise ValueError('Invalid identity receipt')
+    return result
+
+
+def _identity_pcm(path):
+    import wave
+    import numpy as np
+    limits=json.loads((ROOT/'assets/manifests/song-durations.json').read_text())
+    maximum=max(bound['max'] for bound in limits.values())*48000
+    if path.is_symlink() or not path.is_file() or path.stat().st_size>maximum*4+65536:
+        raise ValueError('Invalid identity audio')
+    with wave.open(str(path),'rb') as audio:
+        frames=audio.getnframes()
+        if (audio.getparams()[:3]!=(2,2,48000) or audio.getcomptype()!='NONE'
+                or not any(b['min']*48000<=frames<=b['max']*48000 for b in limits.values())):
+            raise ValueError('Invalid identity audio format or duration')
+        raw=audio.readframes(frames)
+    if len(raw)!=frames*4:raise ValueError('Truncated identity audio')
+    return np.frombuffer(raw,dtype='<i2').reshape(-1,2).astype(np.float32)/32768
+
+
+def _identity_array(path,expected_hash,shape):
+    import numpy as np
+    from singing_response import digest
+    if (path.is_symlink() or not path.is_file() or path.stat().st_size>shape[0]*8+4096
+            or digest(path)!=expected_hash):
+        raise ValueError('Identity stem provenance mismatch')
+    pcm=np.load(path,allow_pickle=False)
+    if pcm.dtype!=np.float32 or pcm.shape!=shape or not np.isfinite(pcm).all() or np.max(np.abs(pcm))>=4:
+        raise ValueError('Invalid identity stem samples')
+    return pcm
+
+
+def publish_identity_stems(output,master_gain):
+    """Keep the converted vocal and original drums in the final mix's gain domain.
+
+    The residual uses the actual PCM export, retaining its quantization error.
+    It is not a copy of the unconverted vocal estimate or a second separation.
+    """
+    import numpy as np
+    from singing_response import digest
+    if type(master_gain) not in (float,int) or not 0<master_gain<=1:
+        raise ValueError('Invalid identity master gain')
+    base=output/'base.wav';dest=output/'singer.wav';source=output/'identity-stems'
+    if source.is_symlink() or (source/'.partial').exists():raise ValueError('Incomplete identity separation')
+    receipt=_identity_json(output/'base.complete.json');separation=_identity_json(source/'complete.json')
+    base_hash=digest(base)
+    if (receipt.get('technical')!='PASS' or receipt.get('audio_sha256')!=base_hash
+            or separation.get('technical')!='PASS' or separation.get('source_sha256')!=base_hash):
+        raise ValueError('Identity base provenance mismatch')
+    original=_identity_pcm(base);final=_identity_pcm(dest)
+    if final.shape!=original.shape:raise ValueError('Identity mix changed duration')
+    hashes=separation.get('stems')
+    if not isinstance(hashes,dict):raise ValueError('Invalid identity stem receipt')
+    vocal=_identity_array(source/'vocals.npy',hashes.get('vocals'),original.shape)
+    drums=_identity_array(source/'drums.npy',hashes.get('drums'),original.shape)
+    # Match mix_identity's float32 subtraction before applying the master gain.
+    backing=(original-vocal).astype(np.float64)*master_gain
+    components={'vocals':final.astype(np.float64)-backing,'drums':drums.astype(np.float64)*master_gain}
+    for pcm in components.values():
+        if not np.isfinite(pcm).all() or np.max(np.abs(pcm))>=4:raise ValueError('Invalid converted components')
+    target=output/'stems';target.mkdir(exist_ok=False);(target/'.partial').touch()
+    hashes={}
+    for name,pcm in components.items():
+        path=target/(name+'.npy');np.save(path,pcm.astype(np.float32),allow_pickle=False);hashes[name]=digest(path)
+    report={'technical':'PASS','method':'identity-components-1','source_sha256':digest(dest),
+            'base_audio_sha256':base_hash,'source_stems_sha256':digest(source/'complete.json'),
+            'master_gain':master_gain,'stems':hashes,'sample_rate':48000,'frames':len(final),
+            'separation_quality':'Derived conversion components; no new separator or listening result'}
+    path=target/'complete.json';path.write_text(json.dumps(report,indent=2)+'\n');(target/'.partial').unlink()
+    return digest(path)
+
+
+def identity_stems_ready(output):
+    """False for legacy/non-converted songs; declared but invalid stems fail closed."""
+    from singing_response import digest
+    receipt=_identity_json(output/'complete.json')
+    if 'identity_stems_sha256' not in receipt:return False
+    target=output/'stems';base=output/'identity-stems'
+    if (target.is_symlink() or base.is_symlink() or (output/'.partial').exists()
+            or (target/'.partial').exists() or (base/'.partial').exists()):
+        raise ValueError('Incomplete converted stems')
+    report=_identity_json(target/'complete.json');identity=receipt.get('vocal_identity')
+    if not isinstance(identity,dict) or not isinstance(receipt.get('case'),dict):
+        raise ValueError('Missing converted singer identity')
+    audio_hash=digest(output/'singer.wav')
+    if (receipt.get('technical')!='PASS' or receipt.get('audio_sha256')!=audio_hash
+            or digest(target/'complete.json')!=receipt['identity_stems_sha256']
+            or report.get('technical')!='PASS' or report.get('method')!='identity-components-1'
+            or report.get('source_sha256')!=audio_hash or report.get('sample_rate')!=48000
+            or report.get('base_audio_sha256')!=identity.get('base_audio_sha256')
+            or report.get('base_audio_sha256')!=digest(output/'base.wav')
+            or report.get('source_stems_sha256')!=digest(base/'complete.json')
+            or report.get('master_gain')!=identity.get('master_gain')
+            or validate_identity(receipt['case'])!=identity.get('id') or not identity.get('id')):
+        raise ValueError('Converted stem receipt mismatch')
+    pcm=_identity_pcm(output/'singer.wav')
+    if report.get('frames')!=len(pcm) or receipt['case'].get('duration')!=len(pcm)/48000:
+        raise ValueError('Converted stem duration mismatch')
+    hashes=report.get('stems')
+    if not isinstance(hashes,dict):raise ValueError('Invalid converted stem receipt')
+    for name in ('vocals','drums'):_identity_array(target/(name+'.npy'),hashes.get(name),pcm.shape)
+    return True
+
+
 def convert(output,identity):
     from singing_response import digest
     import numpy as np
@@ -81,9 +191,10 @@ def convert(output,identity):
     if subprocess.check_output(['git','rev-parse','HEAD'],cwd=upstream,text=True).strip()!=CODE or subprocess.check_output(['git','diff','--name-only','HEAD'],cwd=upstream):raise ValueError('Voice runtime revision mismatch')
     manifest=json.loads((MODEL_MANIFEST).read_text())
     # Verify every local dependency, including files loaded directly by Transformers.
-    for repo,entry in manifest.items():
-        for name,info in entry['files'].items():
-            if digest(models/repo.replace('/','--')/name)!=info['sha256']:raise ValueError('Voice model hash mismatch')
+    with phase('identity-verify'):
+        for repo,entry in manifest.items():
+            for name,info in entry['files'].items():
+                if digest(models/repo.replace('/','--')/name)!=info['sha256']:raise ValueError('Voice model hash mismatch')
     target=ROOT/'assets/singer-identities'/f'{identity}.wav'
     reference_info=json.loads(REFERENCE_MANIFEST.read_text())['references'][identity]
     if reference_info['source_sha256']!=IDENTITIES[identity]['sha256'] or digest(target)!=reference_info['sha256']:raise ValueError('Singer target changed')
@@ -111,10 +222,14 @@ def convert(output,identity):
     args=SimpleNamespace(source=str(work/'source.wav'),target=str(work/'reference.wav'),output=str(work/'raw'),diffusion_steps=30,length_adjust=1.0,inference_cfg_rate=IDENTITIES[identity].get('guidance',.7),f0_condition=True,auto_f0_adjust=False,semi_tone_shift=0,checkpoint=pinned('Plachta/Seed-VC','DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema_v2.pth'),config=str(config_path),fp16=True)
     torch.set_num_threads(4);torch.manual_seed(receipt['case']['seed']);np.random.seed(receipt['case']['seed'])
     torchaudio.save=lambda path,audio,rate:sf.write(path,audio.detach().cpu().numpy().T,rate,subtype='FLOAT')
-    started=time.monotonic();loaded=inference.load_models(args);f0=loaded[2]
+    started=time.monotonic()
+    with phase('identity-load'):
+        loaded=inference.load_models(args)
+    f0=loaded[2]
     loaded=(*loaded[:2],lambda *a,**kw:np.asarray(f0(*a,**kw),dtype=np.float32),*loaded[3:])
     inference.load_models=lambda args:loaded
-    inference.main(args)
+    with phase('identity-generate'):
+        inference.main(args)
     wavs=list((work/'raw').glob('*.wav'))
     if len(wavs)!=1:raise ValueError('Missing converted singer')
     vocal,rate=sf.read(wavs[0])
@@ -125,6 +240,9 @@ def convert(output,identity):
     report={**receipt,'audio_sha256':digest(dest),'peak':float(np.max(np.abs(mix))),'rms':float(np.sqrt(np.mean(mix**2))),
         'vocal_identity':{'id':identity,'code':CODE,'target_sha256':digest(target),'target_source_sha256':reference_info['source_sha256'],'base_audio_sha256':receipt['audio_sha256'],'models_manifest_sha256':digest(MODEL_MANIFEST),
             'inference_cfg_rate':args.inference_cfg_rate,'reference_seconds':len(reference)/reference_rate,'reference_sha256':digest(work/'reference.wav'),'pitch_shift':0,'auto_pitch_adjust':False,'seconds':time.monotonic()-started,**balance,'listening':'NOT RUN for this song'}}
+    if os.environ.get('JAMLOOM_IDENTITY_STEMS')=='1':
+        with phase('identity-stems'):
+            report['identity_stems_sha256']=publish_identity_stems(output,balance['master_gain'])
     (output/'complete.json').write_text(json.dumps(report,indent=2)+'\n');(output/'.partial').unlink()
 
 
@@ -136,16 +254,16 @@ def finish_identity(output,identity=None):
     if receipt.get('source_conditioning') is not None:raise ValueError('Identity conversion requires original singing')
     (output/'.partial').touch();(output/'complete.json').rename(output/'base.complete.json');(output/'singer.wav').rename(output/'base.wav')
     separator_python=os.environ.get('JAMLOOM_SEPARATOR_PYTHON')
-    if separator_python:
-        # The hosted image deliberately excludes the research-only Demucs model.
-        # Use the same isolated, pinned separator as the hosted arrangement stage.
-        subprocess.run([separator_python,str(ROOT/'services/runpod/separate_spleeter.py'),
-                        '--input',str((output/'base.wav').resolve()),
-                        '--output',str((output/'identity-stems').resolve())],
-                       check=True,timeout=600)
-    else:
-        from separate_singer import separate
-        separate(output/'base.wav',output/'identity-stems')
+    with phase('identity-separate'):
+        if separator_python:
+            # The hosted image deliberately excludes the research-only Demucs model.
+            subprocess.run([separator_python,str(ROOT/'services/runpod/separate_spleeter.py'),
+                            '--input',str((output/'base.wav').resolve()),
+                            '--output',str((output/'identity-stems').resolve())],
+                           check=True,timeout=600)
+        else:
+            from separate_singer import separate
+            separate(output/'base.wav',output/'identity-stems')
     python=ROOT/'.venv-vocal-identity/bin/python'
     if not python.is_file():raise ValueError('Singer identity runtime is unavailable')
     args=[str(python),str(Path(__file__).resolve()),'--output',str(output.resolve()),'--identity',identity,'--parent-pid',str(os.getpid())]

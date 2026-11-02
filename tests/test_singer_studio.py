@@ -197,6 +197,7 @@ class StudioFlow(unittest.TestCase):
             self.assertIn('question', lyrics)
             self.assertEqual(digest(source), original_hash)
             self.assertEqual(len(calls), 3)
+            self.assertEqual([kw['env'].get('JAMLOOM_IDENTITY_STEMS') for args,kw in calls if args[2]=='sing'],['1'])
             self.assertTrue(all(kw['timeout'] == 600 for _, kw in calls))
             self.assertFalse(list(studio.OUTPUT.rglob('.partial')))
             actual_arrange=studio.arrange;attempts=[]

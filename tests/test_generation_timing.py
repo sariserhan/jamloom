@@ -19,6 +19,19 @@ import singing_response as singing
 
 
 class GenerationTimingTests(unittest.TestCase):
+    def test_identity_subprocess_phases_keep_a_valid_nested_trace(self):
+        with tempfile.TemporaryDirectory() as folder:
+            target=Path(folder)/'timing.jsonl';target.touch()
+            with patch.dict(os.environ,JAMLOOM_TIMING_FILE=str(target),
+                            JAMLOOM_TIMING_START_NS=str(time.monotonic_ns())):
+                with timing.phase('identity'):
+                    for name in ('identity-separate','identity-verify','identity-load','identity-generate','identity-stems'):
+                        code="from generation_timing import phase\nwith phase(%r): pass" % name
+                        subprocess.run([sys.executable,'-c',code],cwd=ROOT/'scripts',check=True,capture_output=True)
+            trace=timing.snapshot(target)
+            self.assertEqual(trace['active'],[])
+            self.assertEqual(len(trace['events']),12)
+
     def test_trace_contains_only_fixed_names_and_elapsed_times(self):
         with tempfile.TemporaryDirectory() as folder:
             target = Path(folder)/'timing.jsonl'
