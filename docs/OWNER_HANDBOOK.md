@@ -1,5 +1,7 @@
 ## Current credit catalog setup — 2026-10-31
 
+**2026-11-01 release follow-through:** Local checks pass and Apple build 38 remains valid but unsubmitted. The next concrete operator decision is the [two-request, one-A5000, $3 maximum diagnostic](evidence/one-run-release-20261101/hosted-plan.json). It tests alternate capacity with unchanged model/credit prices and independently removes test data; it does not fund ongoing review or open sales. Previous GPU permits are consumed. [Current results and remaining gates](evidence/one-run-release-20261101/report.md).
+
 The owner-approved catalog is [documented here](CREDIT_SYSTEM.md), with nonexpiring monthly and top-up credits across web/iPhone. Earlier pack IDs below are historical receipt compatibility only.
 
 - **Stripe sandbox — PASS:** Creator monthly price and cancellation-only portal are saved privately in `CREATOR_STRIPE_PRICE_ID` and `CREATOR_STRIPE_PORTAL_CONFIGURATION`. Real first-payment/renewal/duplicate/cancellation/refund reconciliation passes. Use `npm run credits:prepare` in `apps/site` to inspect the preparation plan. Never substitute live credentials into this test-only script.

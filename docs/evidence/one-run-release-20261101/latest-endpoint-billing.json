@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-02T01:11:16.564Z",
+  "mutations": false,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "receipt": {
+    "metadata": {
+      "query": {
+        "bucketSize": "hour",
+        "endTime": "2026-11-02T02:00:00Z",
+        "serverlessId": "jl77hn92npt65k",
+        "startTime": "2026-11-02T00:00:00Z"
+      },
+      "recordCount": 0,
+      "totals": {
+        "cpuAmount": 0,
+        "diskAmount": 0,
+        "feeAmount": 0,
+        "gpuAmount": 0,
+        "totalAmount": 0
+      },
+      "uniqueServerlessCount": 0
+    },
+    "records": []
+  }
+}

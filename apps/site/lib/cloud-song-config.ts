@@ -1,7 +1,7 @@
 import {integer} from './economics';
 import {activeWorkerLease} from './cloud-capacity-lease';
-import {CLOUD_COST_PROFILE,productionSongBudget} from './cloud-production-profile';
-export function cloudSongConfig(env:Record<string,string|undefined>=process.env,product?:'improvise'|'music-dna'){
+import {CLOUD_COST_PROFILE,CLOUD_DIAGNOSTIC_PROFILE,productionSongBudget} from './cloud-production-profile';
+export function cloudSongConfig(env:Record<string,string|undefined>=process.env,product?:'improvise'|'music-dna',privateQualification=false){
  if(env.JAMLOOM_CLOUD_SONGS_ENABLED!=='true')return null;
  const endpoint=env.RUNPOD_ENDPOINT_ID,key=env.RUNPOD_API_KEY;
  if(!key||!endpoint||!/^[a-zA-Z0-9_-]{1,80}$/.test(endpoint))throw Error('Song service is not configured');
@@ -10,7 +10,8 @@ export function cloudSongConfig(env:Record<string,string|undefined>=process.env,
  const profile=env.JAMLOOM_CLOUD_COST_PROFILE;
  const activeLease=activeWorkerLease(env);
  if(activeLease&&!profile)throw Error('Active capacity requires the reviewed production profile');
- if(profile&&profile!==CLOUD_COST_PROFILE)throw Error('Unknown song cost profile');
+ if(profile&&profile!==CLOUD_COST_PROFILE&&profile!==CLOUD_DIAGNOSTIC_PROFILE)throw Error('Unknown song cost profile');
+ if(profile===CLOUD_DIAGNOSTIC_PROFILE&&(!privateQualification||!activeLease))throw Error('Diagnostic hardware is restricted to private qualification with a finite lease');
  if(profile){
   if(!product)throw Error('Song cost profile requires a product');
   const candidate=productionSongBudget(product);

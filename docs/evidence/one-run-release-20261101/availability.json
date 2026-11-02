@@ -1,0 +1,76 @@
+{
+  "at": "2026-11-02T01:13:01.514Z",
+  "mutations": false,
+  "notCapacityReservation": true,
+  "gpus": [
+    {
+      "availability": "LOW",
+      "community": false,
+      "cudaVersions": [
+        {
+          "available": true,
+          "version": "13.2"
+        }
+      ],
+      "dataCenters": [
+        {
+          "availability": "LOW",
+          "id": "EU-RO-1",
+          "name": "EU-RO-1"
+        }
+      ],
+      "id": "NVIDIA L4",
+      "manufacturer": "NVIDIA",
+      "maxCount": {
+        "community": 1,
+        "secure": 9
+      },
+      "memory": 24,
+      "name": "L4",
+      "pool": "AMPERE_24",
+      "price": {
+        "community": 0.44,
+        "secure": 0.59,
+        "serverless": 0.75
+      },
+      "secure": true
+    },
+    {
+      "availability": "LOW",
+      "community": true,
+      "cudaVersions": [
+        {
+          "available": true,
+          "version": "13.2"
+        }
+      ],
+      "dataCenters": [
+        {
+          "availability": "LOW",
+          "id": "US-CA-2",
+          "name": "US-CA-2"
+        },
+        {
+          "availability": "LOW",
+          "id": "US-IL-1",
+          "name": "US-IL-1"
+        }
+      ],
+      "id": "NVIDIA RTX A5000",
+      "manufacturer": "NVIDIA",
+      "maxCount": {
+        "community": 10,
+        "secure": 10
+      },
+      "memory": 24,
+      "name": "RTX A5000",
+      "pool": "AMPERE_24",
+      "price": {
+        "community": 0.16,
+        "secure": 0.27,
+        "serverless": 0.75
+      },
+      "secure": true
+    }
+  ]
+}

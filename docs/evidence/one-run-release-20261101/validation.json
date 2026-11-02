@@ -1,0 +1,29 @@
+{
+  "status": "PASS local preparation only",
+  "siteTests": 206,
+  "focusedTests": 12,
+  "typecheck": "PASS",
+  "build": "PASS",
+  "dryRuns": 2,
+  "harnessTypecheck": "PASS",
+  "databaseSchema": {
+    "status": "PASS",
+    "applied": 33,
+    "pending": [],
+    "changed": [],
+    "unknown": [],
+    "settings": {
+      "maintenance": false,
+      "billing_mode": "test"
+    }
+  },
+  "studioBundle": {
+    "gate": "PASS",
+    "file_count": 113,
+    "bytes": 59022746,
+    "private_audio_and_test_files_absent": "PASS",
+    "license_notices": "PASS"
+  },
+  "hostedCandidate": "NOT RUN; no new paid permit",
+  "liveMutations": false
+}

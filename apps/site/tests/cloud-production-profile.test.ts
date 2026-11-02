@@ -2,8 +2,9 @@ import {stopExpiredActiveCapacity} from '../lib/cloud-capacity-shutdown';
 import test from 'node:test';
 import {activeWorkerLease,assertActiveWorkerLease} from '../lib/cloud-capacity-lease';
 import assert from 'node:assert/strict';
-import {CLOUD_COST_PROFILE,CLOUD_WORKER_IMAGE,assertProductionEndpoint} from '../lib/cloud-production-profile';
+import {CLOUD_COST_PROFILE,CLOUD_DIAGNOSTIC_PROFILE,CLOUD_WORKER_IMAGE,assertProductionEndpoint} from '../lib/cloud-production-profile';
 import {cloudSongConfig} from '../lib/cloud-song-config';
+import {reviewSongConfig} from '../lib/cloud-review-config';
 import {assertCatalogBudget,songCreditPrice} from '../lib/credit-catalog';
 import {RunpodProvider} from '../lib/runpod-provider';
 import {releaseConfiguration} from '../scripts/release-preflight';
@@ -39,6 +40,30 @@ test('capacity refuses changed image, hardware, price, scaling and extra storage
  assert.equal(await new RunpodProvider('fixture','fixture',request,CLOUD_COST_PROFILE).dispatchEnabled(),true);assert.equal(calls,2);
  const disabled=new RunpodProvider('fixture','fixture',async()=>Response.json({id:'fixture',workers:{min:0,max:0}}),CLOUD_COST_PROFILE);
  assert.equal(await disabled.dispatchEnabled(),false);
+});
+
+test('alternate GPU qualification cannot widen live production or escape its private lease',async()=>{
+ const now=Date.now(),lease={startsAt:now-1000,expiresAt:now+30*60000,maxMicros:3000000};
+ const candidate={...endpoint,gpu:{...endpoint.gpu,excludedTypes:['NVIDIA L4','other']},workers:{min:1,max:1}};
+ const stock={gpus:[...catalog.gpus,{id:'NVIDIA RTX A5000',pool:'AMPERE_24',price:{serverless:.75}}]};
+ assert.throws(()=>assertProductionEndpoint(candidate,stock,lease),/hardware or price/);
+ assert.throws(()=>assertProductionEndpoint(candidate,stock,undefined,CLOUD_DIAGNOSTIC_PROFILE),/finite/);
+ assertProductionEndpoint(candidate,stock,lease,CLOUD_DIAGNOSTIC_PROFILE);
+ for(const bad of [{...candidate,gpu:{...candidate.gpu,excludedTypes:['other']}},{...candidate,workers:{min:0,max:1}},{...candidate,workers:{min:1,max:2}}])assert.throws(()=>assertProductionEndpoint(bad,stock,lease,CLOUD_DIAGNOSTIC_PROFILE));
+ assert.throws(()=>assertProductionEndpoint(candidate,{gpus:stock.gpus.map(g=>g.id==='NVIDIA RTX A5000'?{...g,price:{serverless:.76}}:g)},lease,CLOUD_DIAGNOSTIC_PROFILE));
+ assert.throws(()=>assertProductionEndpoint(candidate,stock,{...lease,expiresAt:now-1},CLOUD_DIAGNOSTIC_PROFILE),/lease/);
+ const privateEnv={...env,JAMLOOM_CLOUD_COST_PROFILE:CLOUD_DIAGNOSTIC_PROFILE,JAMLOOM_CLOUD_ACTIVE_LEASE_START:new Date(lease.startsAt).toISOString(),JAMLOOM_CLOUD_ACTIVE_LEASE_END:new Date(lease.expiresAt).toISOString(),JAMLOOM_CLOUD_ACTIVE_LEASE_CAP_MICROS:'3000000',JAMLOOM_APPLE_REVIEW_ENABLED:'true',JAMLOOM_APPLE_REVIEW_USER_IDS:'reviewer',JAMLOOM_APPLE_REVIEW_EXPIRES_AT:new Date(lease.expiresAt).toISOString(),JAMLOOM_APPLE_REVIEW_GENERATION_ENABLED:'true',JAMLOOM_APPLE_REVIEW_GENERATION_CAP_MICROS:'3000000'};
+ for(const product of ['improvise','music-dna'] as const){
+  assert.throws(()=>cloudSongConfig(privateEnv,product),/restricted to private/);
+  const review=reviewSongConfig(product,privateEnv,now)!;
+  assert.equal(review.live,false);assert.deepEqual(review.review?.owners,['reviewer']);assert.equal(review.productionProfile,CLOUD_DIAGNOSTIC_PROFILE);
+  assert.equal(review.costCapMicros,cloudSongConfig(env,product)!.costCapMicros);
+ }
+ assert.throws(()=>reviewSongConfig('music-dna',{...privateEnv,JAMLOOM_CLOUD_ACTIVE_LEASE_START:undefined,JAMLOOM_CLOUD_ACTIVE_LEASE_END:undefined,JAMLOOM_CLOUD_ACTIVE_LEASE_CAP_MICROS:undefined},now),/finite lease/);
+ assert.throws(()=>new RunpodProvider('fixture','fixture',fetch,CLOUD_DIAGNOSTIC_PROFILE),/finite/);
+ let calls=0;
+ const provider=new RunpodProvider('fixture','fixture',async url=>{calls++;assert(!String(url).endsWith('/run'));return Response.json(String(url).endsWith('/catalog/gpus')?stock:candidate);},CLOUD_DIAGNOSTIC_PROFILE,lease);
+ assert.equal(await provider.dispatchEnabled(),true);assert.equal(calls,2);
 });
 
 

@@ -1,5 +1,7 @@
 # Launch activation — 2026-11-01
 
+Latest follow-through: current Apple/provider reads and a private A5000 diagnostic candidate are recorded in [the one-run report](evidence/one-run-release-20261101/report.md). The diagnostic is prepared, not approved; all release/economics gates below remain open.
+
 **PARTIAL.** Language filters, advisory Music DNA delivery and capacity-aware credit admission are implemented and validated. Native build 38 is VALID and selected in the manual-release review draft. The repaired image preserves all 23 model layers, but its cold-start check expired in queue with throttled L4 capacity; full credit release, independent cleanup and held website restoration pass. The readiness-first check stopped before any request when provider readiness and deployed availability disagreed; cleanup passed. The approved resumption submitted once after transient readiness, but the song expired in queue without execution. All 20 test credits were released, independent cleanup and held restoration passed, and the original aggregate $3 permit/deadline are consumed. Reliable execution capacity and full cost qualification remain unresolved. [Current evidence](evidence/capacity-admission-20261101/report.md). No ongoing reviewer/customer GPU allocation is implied. Deferred research/scoring and owner-closed musical/endurance studies remain closed for v1.
 
 ## Product entry update
