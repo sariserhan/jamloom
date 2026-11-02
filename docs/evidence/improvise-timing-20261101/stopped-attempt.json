@@ -1,0 +1,27 @@
+{
+  "status": "STOPPED",
+  "at": "2026-11-02T04:17:41.523795+00:00",
+  "deployment": "FAIL: Not authorized",
+  "generation": "NOT RUN",
+  "gpuActivated": false,
+  "generationRequests": 0,
+  "uploads": 0,
+  "newGPUActivity": false,
+  "currentSpendPerHr": 0,
+  "billingReadAt": "2026-11-02T04:16:19.537Z",
+  "priorBillingFinal": false,
+  "authenticationChecks": {
+    "sameExpectedAccountFromRootAndDeploymentSource": true,
+    "teamOwnerConfirmed": true,
+    "projectRead": "PASS",
+    "billingPlan": "pro",
+    "billingStatus": "active",
+    "teamBlocked": false,
+    "teamLimited": false,
+    "tokenExpired": false,
+    "deploymentAuthorizationCause": "UNRESOLVED"
+  },
+  "retryPerformed": false,
+  "independentVerification": "stopped-verification.json",
+  "fixedDeadline": "2026-11-02T04:52:24.346000+00:00"
+}

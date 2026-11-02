@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T04:17:02.848Z",
+  "mutations": false,
+  "workerLimits": {
+    "max": 0,
+    "min": 0
+  },
+  "health": {
+    "jobs": {
+      "completed": 47,
+      "failed": 20,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workerInventoryEmpty": true,
+  "pendingJobs": 0,
+  "newReviewJobs": 0,
+  "newReviewUploads": 0,
+  "testBalance": {
+    "available": 2970,
+    "reserved": 0
+  },
+  "liveBalance": {
+    "available": 0,
+    "reserved": 0
+  },
+  "heldDeploymentUnchanged": true,
+  "heldDeploymentId": "dpl_6bA5QCLSMvBSXZ178kxHzFMBUqgC",
+  "routes": [
+    {
+      "path": "/music-dna",
+      "status": 200
+    },
+    {
+      "path": "/improvise",
+      "status": 200
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "available": false,
+      "signedIn": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "available": false,
+      "signedIn": false
+    }
+  ],
+  "gpuActivated": false,
+  "generationSubmitted": false,
+  "remoteCleanup": "NOT NEEDED; no source upload or generation started"
+}

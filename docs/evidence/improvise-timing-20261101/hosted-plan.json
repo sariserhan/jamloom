@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED",
+  "status": "STOPPED",
   "scope": "One Improvise runtime repair check with content-free phase timings; no Music DNA repetition",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
   "endpoint": "jl77hn92npt65k",
@@ -118,5 +118,17 @@
   "newLeaseCapMicros": 1000000,
   "maxRequestsAcrossCampaign": 1,
   "workerSourceCommit": "bdbc4a377bc659d51fca538aae376490878ca0a7",
-  "applicationCommit": "2571ab20b23648f85cda2642bddf7b9619acb1fb"
+  "applicationCommit": "2571ab20b23648f85cda2642bddf7b9619acb1fb",
+  "ownerApproval": "Approve one check, up to $1",
+  "approvedAt": "2026-11-02T04:12:16.007137+00:00",
+  "absoluteDeadline": "2026-11-02T04:52:24.346000+00:00",
+  "attemptResult": {
+    "status": "FAIL_DEPLOYMENT",
+    "reason": "Vercel Not authorized",
+    "gpuActivated": false,
+    "generationRequests": 0,
+    "sourceUploads": 0,
+    "resumeRequiresExplicitApproval": true,
+    "stoppedAt": "2026-11-02T04:17:41.523795+00:00"
+  }
 }
