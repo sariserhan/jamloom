@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED",
+  "status": "APPROVED",
   "scope": "One active-worker Music DNA delivery and attributable cost diagnostic; not proof of ongoing economics or App Review availability",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
   "endpoint": "jl77hn92npt65k",
@@ -73,5 +73,11 @@
     "harnessTypecheck": "PASS",
     "publicBrowserFlows": "PASS Chrome and WebKit desktop/phone; no generation requests"
   },
-  "harnessArchive": "qualification-harness/ (restore byte-for-byte to build-active-capacity-20261101/)"
+  "harnessArchive": "qualification-harness/ (restore byte-for-byte to build-active-capacity-20261101/)",
+  "ownerApproval": "Approve one active-GPU check, up to $3",
+  "approvedAt": "2026-11-02T00:32:04.138571+00:00",
+  "activatedAt": "2026-11-02T00:36:31.021Z",
+  "absoluteDeadline": "2026-11-02T01:12:07.596000+00:00",
+  "diagnosticDeployment": "https://jamloom-lnxsomcjb-ssari.vercel.app",
+  "heldRestoreDeployment": "https://jamloom-of9eta19v-ssari.vercel.app"
 }
