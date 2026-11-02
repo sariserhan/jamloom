@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T02:30:29.501Z",
+  "mutations": false,
+  "health": {
+    "jobs": {
+      "completed": 46,
+      "failed": 18,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "pages": [
+    {
+      "path": "/music-dna",
+      "status": 200
+    },
+    {
+      "path": "/improvise",
+      "status": 200
+    },
+    {
+      "path": "/academy",
+      "status": 200
+    },
+    {
+      "path": "/singing-academy",
+      "status": 200
+    }
+  ],
+  "hostedQualification": "NOT RUN"
+}

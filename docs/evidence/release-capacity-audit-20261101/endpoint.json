@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-02T02:24:18.473Z",
+  "mutations": false,
+  "endpoint": {
+    "id": "jl77hn92npt65k",
+    "type": "QUEUE",
+    "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
+    "disk": 60,
+    "gpu": {
+      "allowedCudaVersions": [],
+      "count": 1,
+      "excludedTypes": [
+        "NVIDIA RTX 6000 Ada Generation",
+        "NVIDIA L40"
+      ],
+      "minCudaVersion": "12.8",
+      "pools": [
+        "ADA_24",
+        "ADA_48_PRO"
+      ]
+    },
+    "workers": {
+      "max": 0,
+      "min": 0
+    },
+    "scaling": {
+      "requestCount": 1,
+      "type": "REQUEST_COUNT"
+    },
+    "flashboot": "FLASHBOOT",
+    "networkVolumes": 0,
+    "mounts": {
+      "network": 0,
+      "global": 0
+    },
+    "dataCenterIds": [],
+    "timeout": 900000
+  }
+}

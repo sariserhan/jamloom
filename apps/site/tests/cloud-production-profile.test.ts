@@ -2,7 +2,7 @@ import {stopExpiredActiveCapacity} from '../lib/cloud-capacity-shutdown';
 import test from 'node:test';
 import {activeWorkerLease,assertActiveWorkerLease} from '../lib/cloud-capacity-lease';
 import assert from 'node:assert/strict';
-import {CLOUD_COST_PROFILE,CLOUD_DIAGNOSTIC_PROFILE,CLOUD_WORKER_IMAGE,assertProductionEndpoint} from '../lib/cloud-production-profile';
+import {CLOUD_COST_PROFILE,CLOUD_DIAGNOSTIC_PROFILE,CLOUD_4090_DIAGNOSTIC_PROFILE,CLOUD_WORKER_IMAGE,assertProductionEndpoint} from '../lib/cloud-production-profile';
 import {cloudSongConfig} from '../lib/cloud-song-config';
 import {reviewSongConfig} from '../lib/cloud-review-config';
 import {assertCatalogBudget,songCreditPrice} from '../lib/credit-catalog';
@@ -102,4 +102,33 @@ test('hosted watchdog disables only expired owned capacity and verifies the stop
  await assert.rejects(stopExpiredActiveCapacity(leaseEnv,async()=>Response.json({...endpoint,id:'another'}),now),/identity/);
  await assert.rejects(stopExpiredActiveCapacity(leaseEnv,async(_url,o)=>o?.method==='PATCH'?new Response(null,{status:503}):Response.json(endpoint),now),/pending/);
  await assert.rejects(stopExpiredActiveCapacity(leaseEnv,async()=>Response.json(endpoint),now),/unconfirmed/);
+});
+
+
+test('4090 diagnostic preserves catalog budgets and rejects live access, underfunding and hardware drift',async()=>{
+ const now=Date.now(),lease={startsAt:now-1000,expiresAt:now+30*60000,maxMicros:3000000};
+ const candidate={...endpoint,gpu:{count:1,pools:['ADA_24'],excludedTypes:['other']},workers:{min:1,max:1}};
+ const stock={gpus:[...catalog.gpus,{id:'NVIDIA GeForce RTX 4090',pool:'ADA_24',price:{serverless:1.34}}]};
+ const privateEnv={...env,JAMLOOM_CLOUD_COST_PROFILE:CLOUD_4090_DIAGNOSTIC_PROFILE,JAMLOOM_CLOUD_ACTIVE_LEASE_START:new Date(lease.startsAt).toISOString(),JAMLOOM_CLOUD_ACTIVE_LEASE_END:new Date(lease.expiresAt).toISOString(),JAMLOOM_CLOUD_ACTIVE_LEASE_CAP_MICROS:'3000000',JAMLOOM_APPLE_REVIEW_ENABLED:'true',JAMLOOM_APPLE_REVIEW_USER_IDS:'reviewer',JAMLOOM_APPLE_REVIEW_EXPIRES_AT:new Date(lease.expiresAt).toISOString(),JAMLOOM_APPLE_REVIEW_GENERATION_ENABLED:'true',JAMLOOM_APPLE_REVIEW_GENERATION_CAP_MICROS:'3000000'};
+ for(const [product,cap,execution,ttl] of [['improvise',69400,100,130],['music-dna',137800,250,310]] as const){
+  assert.throws(()=>cloudSongConfig(privateEnv,product),/restricted to private/);
+  const review=reviewSongConfig(product,privateEnv,now)!;
+  assert.equal(review.live,false);assert.equal(review.productionProfile,CLOUD_4090_DIAGNOSTIC_PROFILE);
+  assert.equal(review.rate,380);assert.equal(review.costCapMicros,cap);assert.equal(review.executionSeconds,execution);assert.equal(review.ttlSeconds,ttl);
+  assertCatalogBudget(songCreditPrice(product),cap,true);
+  assert.equal(review.budget.maxRuntimeMs/1000*review.rate+review.budget.fixedCostMicros,cap);
+  assert.throws(()=>reviewSongConfig(product,{...privateEnv,JAMLOOM_CLOUD_ACTIVE_LEASE_CAP_MICROS:'500000'},now),/selected hardware rate/);
+ }
+ assertProductionEndpoint(candidate,stock,lease,CLOUD_4090_DIAGNOSTIC_PROFILE);
+ for(const profile of [CLOUD_COST_PROFILE,CLOUD_DIAGNOSTIC_PROFILE])assert.throws(()=>assertProductionEndpoint(candidate,stock,lease,profile));
+ assert.throws(()=>assertProductionEndpoint(candidate,stock,undefined,CLOUD_4090_DIAGNOSTIC_PROFILE),/finite/);
+ assert.throws(()=>assertProductionEndpoint(candidate,stock,{...lease,maxMicros:500000},CLOUD_4090_DIAGNOSTIC_PROFILE),/selected hardware rate/);
+ for(const change of [{workers:{min:0,max:1}},{workers:{min:1,max:2}},{image:'changed'},{gpu:{...candidate.gpu,count:2}},{gpu:{...candidate.gpu,pools:['AMPERE_24']}}])assert.throws(()=>assertProductionEndpoint({...candidate,...change},stock,lease,CLOUD_4090_DIAGNOSTIC_PROFILE));
+ for(const price of [1.35,0,NaN,Infinity])assert.throws(()=>assertProductionEndpoint(candidate,{gpus:[{...stock.gpus[2],price:{serverless:price}}]},lease,CLOUD_4090_DIAGNOSTIC_PROFILE));
+ assert.throws(()=>assertProductionEndpoint(candidate,{gpus:[...stock.gpus,{id:'new-card',pool:'ADA_24',price:{serverless:1}}]},lease,CLOUD_4090_DIAGNOSTIC_PROFILE));
+ assert.throws(()=>new RunpodProvider('fixture','fixture',fetch,CLOUD_4090_DIAGNOSTIC_PROFILE),/finite/);
+ assert.throws(()=>new RunpodProvider('fixture','fixture',fetch,CLOUD_4090_DIAGNOSTIC_PROFILE,{...lease,maxMicros:500000}),/selected hardware rate/);
+ let calls=0;
+ const provider=new RunpodProvider('fixture','fixture',async url=>{calls++;assert(!String(url).endsWith('/run'));return Response.json(String(url).endsWith('/catalog/gpus')?stock:candidate);},CLOUD_4090_DIAGNOSTIC_PROFILE,lease);
+ assert.equal(await provider.dispatchEnabled(),true);assert.equal(calls,2);
 });

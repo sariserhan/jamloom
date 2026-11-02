@@ -1,0 +1,101 @@
+{
+  "status": "PARTIAL_UNATTRIBUTABLE",
+  "at": "2026-11-02T02:26:27.647Z",
+  "from": "2026-10-31T00:00:00.000Z",
+  "to": "2026-11-02T02:26:27.398Z",
+  "mutations": false,
+  "finalInvoice": false,
+  "rows": {
+    "serverless": [
+      {
+        "time": "2026-11-01T05:00:00.000Z",
+        "amount": 0.1756389579968527,
+        "timeBilledSeconds": 843,
+        "endpointId": null,
+        "gpuTypeId": null,
+        "instanceId": null,
+        "slsWorkerType": null
+      },
+      {
+        "time": "2026-11-01T04:00:00.000Z",
+        "amount": 0.03025208436883986,
+        "timeBilledSeconds": 145,
+        "endpointId": null,
+        "gpuTypeId": null,
+        "instanceId": null,
+        "slsWorkerType": null
+      },
+      {
+        "time": "2026-11-01T03:00:00.000Z",
+        "amount": 0.08212020651990315,
+        "timeBilledSeconds": 394,
+        "endpointId": null,
+        "gpuTypeId": null,
+        "instanceId": null,
+        "slsWorkerType": null
+      },
+      {
+        "time": "2026-10-31T02:00:00.000Z",
+        "amount": 0.1162782646715641,
+        "timeBilledSeconds": 239,
+        "endpointId": null,
+        "gpuTypeId": null,
+        "instanceId": null,
+        "slsWorkerType": null
+      },
+      {
+        "time": "2026-10-31T01:00:00.000Z",
+        "amount": 0.3514500679448247,
+        "timeBilledSeconds": 722,
+        "endpointId": null,
+        "gpuTypeId": null,
+        "instanceId": null,
+        "slsWorkerType": null
+      },
+      {
+        "time": "2026-10-31T00:00:00.000Z",
+        "amount": 0.27871378185227513,
+        "timeBilledSeconds": 621,
+        "endpointId": null,
+        "gpuTypeId": null,
+        "instanceId": null,
+        "slsWorkerType": null
+      }
+    ],
+    "storage": [
+      {
+        "time": "2026-10-31T00:00:00.000Z",
+        "slsStorageAmount": 0.00138888880610466,
+        "slsDiskSpaceBilledGB": 60
+      },
+      {
+        "time": "2026-10-31T01:00:00.000Z",
+        "slsStorageAmount": 0.00208333320915699,
+        "slsDiskSpaceBilledGB": 60
+      },
+      {
+        "time": "2026-10-31T02:00:00.000Z",
+        "slsStorageAmount": 0,
+        "slsDiskSpaceBilledGB": 60
+      },
+      {
+        "time": "2026-11-01T03:00:00.000Z",
+        "slsStorageAmount": 0.00069444440305233,
+        "slsDiskSpaceBilledGB": 60
+      },
+      {
+        "time": "2026-11-01T04:00:00.000Z",
+        "slsStorageAmount": 0,
+        "slsDiskSpaceBilledGB": 60
+      },
+      {
+        "time": "2026-11-01T05:00:00.000Z",
+        "slsStorageAmount": 0.00208333320915699,
+        "slsDiskSpaceBilledGB": 60
+      }
+    ]
+  },
+  "serverlessUSD": 1.0344533633542596,
+  "storageUSD": 0.00624999962747097,
+  "limitation": "All endpoint, GPU, instance and worker type identifiers are null despite INSTANCE_ID grouping. No per-request or recent-attempt cost qualification can be inferred. Empty recent time windows are not zero cost."
+}

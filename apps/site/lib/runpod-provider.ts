@@ -1,5 +1,5 @@
 import {readBody} from './audio-validation';
-import {CLOUD_COST_PROFILE,CLOUD_DIAGNOSTIC_PROFILE,assertProductionEndpoint} from './cloud-production-profile';
+import {CLOUD_PROFILES,validateProfileLease,assertProductionEndpoint} from './cloud-production-profile';
 import type {ActiveWorkerLease} from './cloud-capacity-lease';
 
 const states=['IN_QUEUE','IN_PROGRESS','COMPLETED','FAILED','CANCELLED','TIMED_OUT'] as const;
@@ -16,8 +16,8 @@ export class RunpodMissingJob extends Error{constructor(){super('Provider job is
 export class RunpodProvider{
  constructor(private key:string,readonly endpoint:string,private request:typeof fetch=fetch,private productionProfile?:string,private activeLease?:ActiveWorkerLease){
   if(!key.trim()||! /^[a-zA-Z0-9_-]{1,80}$/.test(endpoint))throw Error('Runpod configuration is incomplete');
-  if(productionProfile&&![CLOUD_COST_PROFILE,CLOUD_DIAGNOSTIC_PROFILE].includes(productionProfile))throw Error('Unknown song cost profile');
-  if(productionProfile===CLOUD_DIAGNOSTIC_PROFILE&&!activeLease)throw Error('Diagnostic hardware requires a finite active-worker lease');
+  if(productionProfile&&!CLOUD_PROFILES.includes(productionProfile))throw Error('Unknown song cost profile');
+  if(productionProfile)validateProfileLease(productionProfile,activeLease);
  }
  private async api(path:string,method='GET',body?:unknown){
   try{
