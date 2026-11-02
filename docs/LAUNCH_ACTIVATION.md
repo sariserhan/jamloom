@@ -35,3 +35,6 @@ Before submitting, verify the actual review account can use the normal deployed 
 After economic qualification, enable the existing Stripe webhook/products and qualified purchase/generation flags under the release authorization. Confirm deployed account, balance, private upload, generation confirmation and image delivery on desktop/mobile. Keep a rollback that disables new sales/generation while preserving history and downloads. No real-money charge or refund test is authorized by the current diagnostic.
 
 Only advertise native paid availability after Apple approval and actual release. Report web, App Review submission, Apple approval and public app release separately.
+
+
+The [corrected continuation](evidence/readiness-correction-20261101/report.md) is prepared for explicit approval: fresh 40-minute window, $2 new-lease cap with $1 reserved for the prior attempt, within the original $3 aggregate. No additional aggregate funding or paid execution is implied.
