@@ -1,0 +1,27 @@
+{
+  "status": "PROVISIONAL",
+  "aggregateMaxUSD": 3,
+  "priorReservedUSD": 1,
+  "continuationMaxUSD": 2,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "attempts": [
+    {
+      "evidence": "../one-run-release-20261101/execution-result.json",
+      "requests": 0,
+      "workersObserved": 1,
+      "cleanup": "PASS",
+      "billing": "unposted worker record"
+    },
+    {
+      "evidence": "execution-result.json",
+      "requests": 0,
+      "workersObserved": 0,
+      "cleanup": "PASS",
+      "billing": "no posted endpoint rows"
+    }
+  ],
+  "totalGenerationSubmissions": 0,
+  "salesEnabled": false,
+  "furtherAttemptsAuthorized": false
+}

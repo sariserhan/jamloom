@@ -1,5 +1,5 @@
 {
-  "status": "APPROVED",
+  "status": "CONSUMED",
   "scope": "Explicit continuation after readiness bug repair; fresh 40-minute window within the original aggregate $3, not an additional $3",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
   "endpoint": "jl77hn92npt65k",
@@ -116,5 +116,8 @@
   "absoluteDeadline": "2026-11-02T02:36:27.627000+00:00",
   "priorExecution": "../one-run-release-20261101/execution-result.json",
   "ownerApproval": "Approve continuation within original $3 total",
-  "approvedAt": "2026-11-02T01:56:26.982150+00:00"
+  "approvedAt": "2026-11-02T01:56:26.982150+00:00",
+  "finishedAt": "2026-11-02T02:20:03.553Z",
+  "outcome": "FAIL capacity; PASS independent cleanup and held-site restoration. Zero workers observed and zero generation submissions; no retry.",
+  "executionEvidence": "execution-result.json"
 }

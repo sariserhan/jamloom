@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-02T02:00:08.594Z",
+  "workers": {
+    "max": 1,
+    "min": 1
+  },
+  "gpu": {
+    "allowedCudaVersions": [],
+    "count": 1,
+    "excludedTypes": [
+      "NVIDIA GeForce RTX 3090",
+      "NVIDIA L4",
+      "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 1g.24gb"
+    ],
+    "minCudaVersion": "12.8",
+    "pools": [
+      "AMPERE_24"
+    ]
+  }
+}

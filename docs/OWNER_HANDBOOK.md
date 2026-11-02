@@ -1,6 +1,6 @@
 ## Current credit catalog setup — 2026-10-31
 
-**2026-11-01 release follow-through:** The approved A5000 attempt reached a running worker but exposed an incorrect running-plus-cached-ready admission check. No song request was submitted; cleanup and held-site restoration pass. The local fix passes 206 site tests, 20 disposable-database checks and typecheck. The permit is consumed; repair deployment and hosted delivery/cost qualification remain open. Apple build 38 is valid but unsubmitted. [Current results and remaining gates](evidence/one-run-release-20261101/report.md).
+**2026-11-01 release follow-through:** The readiness bug is fixed in `2465f108`. Its approved continuation deployed and passed preflight but received no A5000 worker within 20 minutes, so neither song was submitted. Zero-worker cleanup, unchanged balances and held-site restoration pass. Both attempts within the original $3 aggregate are consumed; billing is provisional. Successful hosted generation/cost qualification and Apple review/release remain open. [Current execution](evidence/readiness-correction-20261101/execution.md).
 
 The owner-approved catalog is [documented here](CREDIT_SYSTEM.md), with nonexpiring monthly and top-up credits across web/iPhone. Earlier pack IDs below are historical receipt compatibility only.
 

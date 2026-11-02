@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "deployment": "https://jamloom-945cr17tv-ssari.vercel.app",
+  "source": "2465f108",
+  "hostedExpiryGuardPresent": true,
+  "capacity": {
+    "stopped": false
+  },
+  "customerGenerationEnabled": false,
+  "generationSubmitted": false
+}

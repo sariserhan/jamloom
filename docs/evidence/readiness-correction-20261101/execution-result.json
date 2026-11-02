@@ -1,0 +1,50 @@
+{
+  "at": "2026-11-02T02:20:05.519062+00:00",
+  "qualification": "FAIL",
+  "controllerError": "No active running A5000 within preparation limit; no generation request authorized",
+  "httpError": "Capacity stopped: No active running A5000 within preparation limit; no generation request authorized",
+  "activatedAt": "2026-11-02T01:59:18.294Z",
+  "disabledAt": "2026-11-02T02:19:22.428Z",
+  "leaseDeadline": 1793586987627,
+  "cleanup": "PASS",
+  "providerSamples": 80,
+  "workerRecordsObserved": 0,
+  "maxWorkerStates": {
+    "idle": 0,
+    "initializing": 0,
+    "ready": 0,
+    "running": 0,
+    "throttled": 0,
+    "unhealthy": 0
+  },
+  "logCaptureResponses": 0,
+  "requestCount": 0,
+  "submitCalls": 0,
+  "requests": [],
+  "beforeTest": {
+    "available": 2990,
+    "reserved": 0
+  },
+  "afterTest": {
+    "available": 2990,
+    "reserved": 0
+  },
+  "beforeLive": {
+    "available": 0,
+    "reserved": 0
+  },
+  "afterLive": {
+    "available": 0,
+    "reserved": 0
+  },
+  "customerSalesEnabled": false,
+  "finalInvoice": false,
+  "permitReusable": false,
+  "stoppedOnFailure": true,
+  "outcome": "FAIL_CAPACITY; no worker record appeared and no generation was submitted",
+  "heldDeploymentRestored": "https://jamloom-of9eta19v-ssari.vercel.app",
+  "applicationCommit": "2465f1081df7d121294abda7750ced04f4519ef4",
+  "aggregateMaxUSD": 3,
+  "continuationMaxUSD": 2,
+  "priorReservedUSD": 1
+}
