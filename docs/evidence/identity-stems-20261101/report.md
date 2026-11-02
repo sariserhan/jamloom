@@ -1,6 +1,10 @@
 # Converted components for Improvise — November 1, 2026 (New York)
 
-**PASS local implementation, regression checks and preparation; PARTIAL release; NOT RUN changed-image hosted qualification.**
+**PASS local implementation; FAIL initial CI setup; PARTIAL release; NOT RUN changed-image hosted qualification.**
+
+**Publication attempt — FAIL CI setup; PASS unchanged-runtime repair; NOT RUN GPU check.** The owner approved image publication and one $1 check. Worker `99b1682b` was pushed and workflow [41390558360](https://github.com/sariserhan/jamloom/actions/runs/41390558360) ran. The first 41 Linux checks passed; studio decoding tests failed because the Ubuntu runner lacked `ffmpeg`. Image build/publication never started. No GPU activation, upload, generation, private app deployment or lease occurred. The stop-on-failure condition was honored; no workflow retry was submitted. Fresh independent provider state remains 0/0 with zero workers/jobs.
+
+Prepared worker commit `a0eacb50` adds only five workflow lines to install/check FFmpeg before tests. All three worker runtime files, model/dependency inputs and image recipe are byte-identical to approved `99b1682b`. Workflow YAML and shell syntax pass. The main full-build workflow now declares the same audio-tool/test dependencies. This is not a new Linux execution pass. A [same-$1 resume plan](ci-resume-plan.json) is ready; the original single generation is unused and its 40-minute lease has not begun. [Stopped-attempt evidence](ci-publication-stop.json).
 
 The previous [one-request diagnostic](../improvise-timing-20261101/hosted-result.json) timed out at 120.394 seconds. Identity processing took 61.042 seconds, including its own separation and conversion. A second separator started at 106.868 seconds and was still running at timeout. The prior permit is consumed and cleanup passed.
 
@@ -26,7 +30,7 @@ The new component representation can affect arrangement placement because it rep
 
 Main implementation: `49a8b16201eba14dd3d148ad8234f97534470c3d`.
 Isolated worker: `99b1682bed75777a0dde402277d9ca39933ab724`, based on `bdbc4a37`.
-Neither commit has been pushed or published by this increment. The isolated branch includes only the runtime patch, packaging/validation changes and required existing test fixtures; unrelated main-tree musical experiments are excluded.
+At initial preparation neither commit had been pushed or published. The publication attempt and its stopped state are recorded above. The isolated branch includes only the runtime patch, packaging/validation changes and required existing test fixtures; unrelated main-tree musical experiments are excluded.
 
 The [prepared plan](hosted-plan.json) requests publication of that exact worker, immutable-image verification, and one private Improvise check: fresh **$1 total**, one RTX 4090, one request, a single 40-minute lease including deployment/preparation plus 130 seconds shutdown, no generation retry or warmup. Image publication/verification happens first while workers remain 0/0. Before use, bind the verified image digest, update only the app image pin, rerun required checks/build/dry runs, then deploy once. Read-only monitoring can reconnect after a transport error; confirmed failure or unresolved mutation state stops the attempt. Independent cleanup restores workers 0/0, deletes remote test audio, verifies credits, and restores the held website. Sales activation and Apple submission are excluded.
 

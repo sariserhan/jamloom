@@ -1,5 +1,5 @@
 {
-  "status": "AWAITING_APPROVAL",
+  "status": "STOPPED",
   "scope": "Publish the reviewed converted-component worker, verify the image, then one private Improvise runtime check",
   "image": null,
   "endpoint": "jl77hn92npt65k",
@@ -118,5 +118,20 @@
   "activationAttempts": 1,
   "readOnlyReconnects": true,
   "stopPolicy": "Stop on confirmed image/deployment/safeguard/GPU/generation failure or unresolved state uncertainty. Read-only monitoring may reconnect after transport errors; never repeat deployment creation, activation or generation. Idempotent cleanup may retry inside the shutdown allowance.",
-  "sourceIntegritySHA256": "2b88ea9fc01eef8b18d7b52a1d2270eb26fa293c99b172db92fd10587641bbd0"
+  "sourceIntegritySHA256": "2b88ea9fc01eef8b18d7b52a1d2270eb26fa293c99b172db92fd10587641bbd0",
+  "ownerApproval": "Approve image and one $1 check",
+  "approvedAt": "2026-11-02T04:49:09.490304+00:00",
+  "stoppedAt": "2026-11-02T04:51:59.130883+00:00",
+  "attemptResult": {
+    "stage": "Linux CI checks before image build",
+    "status": "FAIL",
+    "cause": "ffmpeg missing on Ubuntu runner",
+    "workflowRun": 41390558360,
+    "workerSourceCommit": "99b1682bed75777a0dde402277d9ca39933ab724",
+    "imagePublished": false,
+    "GPUActivated": false,
+    "generationRequests": 0,
+    "leaseStarted": false,
+    "resumeRequiresApproval": true
+  }
 }

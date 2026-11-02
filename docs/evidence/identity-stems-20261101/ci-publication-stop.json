@@ -1,0 +1,23 @@
+{
+  "status": "FAIL_CI_SETUP",
+  "at": "2026-11-02T04:51:59.130883+00:00",
+  "workflow": "https://github.com/sariserhan/jamloom/actions/runs/41390558360",
+  "commit": "99b1682bed75777a0dde402277d9ca39933ab724",
+  "cause": "FileNotFoundError: ffmpeg",
+  "linuxPassingChecksBeforeFailure": 41,
+  "linuxStudioSuite": "FAIL: unavailable ffmpeg; 10 cases, 2 assertion failures and 14 errors including parameterized cases",
+  "imageBuilt": false,
+  "imagePublished": false,
+  "gpuActivated": false,
+  "generationRequests": 0,
+  "sampleUploaded": false,
+  "leaseStarted": false,
+  "providerSafeState": "ci-stopped-provider.json",
+  "repairCommit": "a0eacb500e6dfb715c9d7f0a06be963075d42c93",
+  "repairScope": "Five-line workflow-only change installs and checks ffmpeg before audio tests",
+  "workerRuntimeBytesUnchanged": true,
+  "recipeAndModelInputsUnchanged": true,
+  "workflowYAMLAndShellSyntax": "PASS",
+  "repairedLinuxRun": "NOT RUN",
+  "retryPerformed": false
+}

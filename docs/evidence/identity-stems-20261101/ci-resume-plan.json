@@ -1,0 +1,37 @@
+{
+  "status": "AWAITING_EXPLICIT_RESUME",
+  "scope": "Publish the same worker runtime after installing its missing CI audio tool; then the original single Improvise check",
+  "originalPlan": "hosted-plan.json",
+  "originalPlanSHA256": "2792fb0103321b91cf7dca7d8881b2f4bbe2ef83a1f78da0945c94769046d3d1",
+  "previousWorkerCommit": "99b1682bed75777a0dde402277d9ca39933ab724",
+  "workerSourceCommit": "a0eacb500e6dfb715c9d7f0a06be963075d42c93",
+  "unchangedRuntimeFiles": {
+    "scripts/generation_timing.py": "132592beca58512edd685ad0adac0c9892fea145aeee3a5a5d360e48ecef26dc",
+    "scripts/singer_studio.py": "03430f1eb0a55e8398b6661dd3e0f6edc6b0e1dddf095f40eca44bd7a9b99f62",
+    "scripts/vocal_identity.py": "6bae8334cd9ccf0425f20ea6f02827f079a2d48fb6ccf26f9524091c7f45eefa"
+  },
+  "repairOnly": ".github/workflows/runpod-image.yml installs ffmpeg before audio tests; no runtime/model/price/timeout changes",
+  "maxUSD": 1,
+  "additionalBudgetUSD": 0,
+  "generationRequestsAcrossBothAttempts": 1,
+  "publicationRetryAttempts": 1,
+  "leaseAlreadyStarted": false,
+  "maxSeconds": 2400,
+  "shutdownAllowanceSeconds": 130,
+  "preparationSeconds": 1200,
+  "leaseStart": "After successful image publication/verification; before private deployment and GPU preparation, as originally approved",
+  "maxWorkers": 1,
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "generationRetries": 0,
+  "stopOnFailure": true,
+  "monitoring": "Stop on confirmed image/deployment/safeguard/GPU/generation failure or unresolved state uncertainty. Read-only monitoring may reconnect after transport errors; never repeat deployment creation, activation or generation. Idempotent cleanup may retry inside the shutdown allowance.",
+  "cleanup": "Original independent cleanup: workers 0/0, no jobs, remote audio removed, credit settlement checked, held website restored",
+  "excludes": [
+    "AI DJ rentals or owner-closed endurance study",
+    "Training",
+    "Ongoing App Review funding or submission",
+    "Live charges or customer-sales activation",
+    "Price changes",
+    "Repeated generation requests"
+  ]
+}
