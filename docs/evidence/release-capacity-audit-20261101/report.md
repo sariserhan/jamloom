@@ -1,6 +1,8 @@
 # Release capacity audit — 2026-11-01 local date
 
-**PASS local preparation; PARTIAL release; hosted 4090 qualification NOT RUN.**
+**FAIL hosted admission; PASS cleanup and local repair; PARTIAL release.**
+
+The approved attempt stopped immediately after activation, before any request/upload. Independent cleanup confirms zero workers/jobs, unchanged wallets and restored held website. An unpaid disabled-capacity probe reproduced Runpod omitting an empty `gpu.excludedTypes` list; our validator incorrectly required it to be present. The active readback itself was not retained, so the reproduction is distinct from the historical receipt. [Execution](execution-result.json), [disabled configuration probe](disabled-config-probe.json). The original preparation snapshot follows.
 
 The prior A5000 continuation is consumed: no worker was allocated in its preparation window and no song was submitted. Cleanup and held-site restoration passed. This audit made no provider configuration, billing, deployment, sales or App Review mutations.
 

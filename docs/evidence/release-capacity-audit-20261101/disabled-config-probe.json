@@ -1,0 +1,181 @@
+{
+  "at": "2026-11-02T02:37:22.908Z",
+  "scope": "Disabled configuration roundtrip; workers remain 0/0; no GPU or generation authorized",
+  "before": {
+    "id": "jl77hn92npt65k",
+    "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
+    "type": "QUEUE",
+    "disk": 60,
+    "gpu": {
+      "allowedCudaVersions": [],
+      "count": 1,
+      "excludedTypes": [
+        "NVIDIA RTX 6000 Ada Generation",
+        "NVIDIA L40"
+      ],
+      "minCudaVersion": "12.8",
+      "pools": [
+        "ADA_24",
+        "ADA_48_PRO"
+      ]
+    },
+    "workers": {
+      "max": 0,
+      "min": 0
+    },
+    "scaling": {
+      "requestCount": 1,
+      "type": "REQUEST_COUNT"
+    },
+    "flashboot": "FLASHBOOT",
+    "networkVolumes": [],
+    "mounts": {
+      "global": [],
+      "network": []
+    }
+  },
+  "requestedGpu": {
+    "allowedCudaVersions": [],
+    "count": 1,
+    "excludedTypes": [],
+    "minCudaVersion": "12.8",
+    "pools": [
+      "ADA_24"
+    ]
+  },
+  "samples": [
+    {
+      "at": "2026-11-02T02:37:23.954Z",
+      "id": "jl77hn92npt65k",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
+      "type": "QUEUE",
+      "disk": 60,
+      "gpu": {
+        "allowedCudaVersions": [],
+        "count": 1,
+        "minCudaVersion": "12.8",
+        "pools": [
+          "ADA_24"
+        ]
+      },
+      "workers": {
+        "max": 0,
+        "min": 0
+      },
+      "scaling": {
+        "requestCount": 1,
+        "type": "REQUEST_COUNT"
+      },
+      "flashboot": "FLASHBOOT",
+      "networkVolumes": [],
+      "mounts": {
+        "global": [],
+        "network": []
+      }
+    },
+    {
+      "at": "2026-11-02T02:37:25.115Z",
+      "id": "jl77hn92npt65k",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
+      "type": "QUEUE",
+      "disk": 60,
+      "gpu": {
+        "allowedCudaVersions": [],
+        "count": 1,
+        "minCudaVersion": "12.8",
+        "pools": [
+          "ADA_24"
+        ]
+      },
+      "workers": {
+        "max": 0,
+        "min": 0
+      },
+      "scaling": {
+        "requestCount": 1,
+        "type": "REQUEST_COUNT"
+      },
+      "flashboot": "FLASHBOOT",
+      "networkVolumes": [],
+      "mounts": {
+        "global": [],
+        "network": []
+      }
+    },
+    {
+      "at": "2026-11-02T02:37:28.293Z",
+      "id": "jl77hn92npt65k",
+      "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
+      "type": "QUEUE",
+      "disk": 60,
+      "gpu": {
+        "allowedCudaVersions": [],
+        "count": 1,
+        "minCudaVersion": "12.8",
+        "pools": [
+          "ADA_24"
+        ]
+      },
+      "workers": {
+        "max": 0,
+        "min": 0
+      },
+      "scaling": {
+        "requestCount": 1,
+        "type": "REQUEST_COUNT"
+      },
+      "flashboot": "FLASHBOOT",
+      "networkVolumes": [],
+      "mounts": {
+        "global": [],
+        "network": []
+      }
+    }
+  ],
+  "patchReceipt": {
+    "id": "jl77hn92npt65k",
+    "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
+    "type": "QUEUE",
+    "disk": 60,
+    "gpu": {
+      "allowedCudaVersions": [],
+      "count": 1,
+      "minCudaVersion": "12.8",
+      "pools": [
+        "ADA_24"
+      ]
+    },
+    "workers": {
+      "max": 0,
+      "min": 0
+    },
+    "scaling": {
+      "requestCount": 1,
+      "type": "REQUEST_COUNT"
+    },
+    "flashboot": "FLASHBOOT",
+    "networkVolumes": [],
+    "mounts": {
+      "global": [],
+      "network": []
+    }
+  },
+  "restored": true,
+  "finalHealth": {
+    "jobs": {
+      "completed": 46,
+      "failed": 18,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  }
+}

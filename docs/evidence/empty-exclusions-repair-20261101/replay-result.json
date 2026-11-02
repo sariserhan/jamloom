@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "actualDisabledReceipts": 4,
+  "providerOperations": 0,
+  "activeWorkerLimits": "SIMULATED_FOR_VALIDATION_ONLY",
+  "newHardwareStillRejected": true
+}

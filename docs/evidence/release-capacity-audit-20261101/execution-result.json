@@ -1,0 +1,29 @@
+{
+  "status": "FAIL_ADMISSION",
+  "at": "2026-11-02T02:38:54.477103+00:00",
+  "source": "5c85b0f80e09ceb352e1c794177b9e19ba03ed9d",
+  "activatedAt": "2026-11-02T02:35:20.848Z",
+  "disabledAt": "2026-11-02T02:35:22.350Z",
+  "leaseDeadline": 1793589172426,
+  "controllerError": "Song capacity differs from the reviewed cost profile",
+  "httpError": "Capacity stopped: Song capacity differs from the reviewed cost profile",
+  "requests": [],
+  "submitCalls": 0,
+  "sourceUploaded": false,
+  "observedWorkers": 0,
+  "cleanup": "PASS",
+  "restoredHeldWebsite": true,
+  "testBalance": {
+    "available": 2990,
+    "reserved": 0
+  },
+  "liveBalance": {
+    "available": 0,
+    "reserved": 0
+  },
+  "capturedCredits": 0,
+  "customerSalesEnabled": false,
+  "rootCauseReproduction": "Disabled endpoint PATCH with excludedTypes:[] omits excludedTypes in PATCH/GET receipts; validator incorrectly required an array. Direct failing regression reproduces the same error. Active readback itself was not retained.",
+  "billing": "PROVISIONAL; no observed worker is not proof of zero cost",
+  "permitReusable": false
+}

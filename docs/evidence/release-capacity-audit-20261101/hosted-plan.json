@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_APPROVED",
+  "status": "CONSUMED",
   "scope": "Private 4090 feasibility check on the accepted model after A5000 capacity failure; new permit required",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
   "endpoint": "jl77hn92npt65k",
@@ -110,5 +110,12 @@
     "hosted4090Performance": "NOT RUN",
     "fullOperatingEconomics": "PARTIAL",
     "approvedSourceSHA256": "fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1"
-  }
+  },
+  "ownerApproval": "Approve the two requests, $3 total",
+  "approvedAt": "2026-11-02T02:32:46.512468+00:00",
+  "applicationCommit": "5c85b0f80e09ceb352e1c794177b9e19ba03ed9d",
+  "absoluteDeadline": "2026-11-02T03:12:52.426000+00:00",
+  "finishedAt": "2026-11-02T02:38:54.477103+00:00",
+  "outcome": "Stopped on configuration-validation failure before any song submission; independent cleanup and held restoration PASS",
+  "executionEvidence": "execution-result.json"
 }

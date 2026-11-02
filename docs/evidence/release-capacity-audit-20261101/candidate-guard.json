@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "deployment": "https://jamloom-kbt1z8ajf-ssari.vercel.app",
+  "source": "5c85b0f8",
+  "hostedExpiryGuardPresent": true,
+  "capacity": {
+    "stopped": false
+  },
+  "customerGenerationEnabled": false,
+  "generationSubmitted": false
+}

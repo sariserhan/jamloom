@@ -132,3 +132,17 @@ test('4090 diagnostic preserves catalog budgets and rejects live access, underfu
  const provider=new RunpodProvider('fixture','fixture',async url=>{calls++;assert(!String(url).endsWith('/run'));return Response.json(String(url).endsWith('/catalog/gpus')?stock:candidate);},CLOUD_4090_DIAGNOSTIC_PROFILE,lease);
  assert.equal(await provider.dispatchEnabled(),true);assert.equal(calls,2);
 });
+
+
+test('Runpod omits an empty exclusion list without widening the allowed hardware',()=>{
+ const now=Date.now(),lease={startsAt:now-1000,expiresAt:now+30*60000,maxMicros:3000000};
+ // Reproduced with a disabled endpoint: PATCH excludedTypes:[] is returned
+ // without excludedTypes by both PATCH and repeated GET receipts.
+ const observed={...endpoint,gpu:{count:1,pools:['ADA_24'],allowedCudaVersions:[],minCudaVersion:'12.8'},workers:{min:1,max:1}};
+ const stock={gpus:[{id:'NVIDIA GeForce RTX 4090',pool:'ADA_24',price:{serverless:1.34}}]};
+ assertProductionEndpoint(observed,stock,lease,CLOUD_4090_DIAGNOSTIC_PROFILE);
+ assertProductionEndpoint({...observed,gpu:{...observed.gpu,excludedTypes:[]}},stock,lease,CLOUD_4090_DIAGNOSTIC_PROFILE);
+ for(const excludedTypes of [null,'',{},[12]])assert.throws(()=>assertProductionEndpoint({...observed,gpu:{...observed.gpu,excludedTypes}},stock,lease,CLOUD_4090_DIAGNOSTIC_PROFILE));
+ assert.throws(()=>assertProductionEndpoint(observed,{gpus:[...stock.gpus,{id:'new-card',pool:'ADA_24',price:{serverless:.5}}]},lease,CLOUD_4090_DIAGNOSTIC_PROFILE),/hardware or price/);
+ assert.throws(()=>assertProductionEndpoint(observed,{gpus:[{...stock.gpus[0],price:{serverless:1.35}}]},lease,CLOUD_4090_DIAGNOSTIC_PROFILE),/hardware or price/);
+});

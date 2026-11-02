@@ -34,15 +34,18 @@ export function assertProductionEndpoint(endpoint:any,catalog:any,activeLease?:A
  const faster=profile===CLOUD_4090_DIAGNOSTIC_PROFILE;
  if(activeLease)assertActiveWorkerLease(activeLease);
  const gpu=endpoint?.gpu,workers=endpoint?.workers;
+ // Runpod omits excludedTypes when the configured list is empty. Absence
+ // means no exclusions; the live catalog must still resolve to one exact GPU.
+ const excludedTypes=gpu?.excludedTypes===undefined?[]:gpu.excludedTypes;
  if(endpoint?.image!==CLOUD_WORKER_IMAGE||endpoint.type!=='QUEUE'||endpoint.disk!==60||
   gpu?.count!==1||!Array.isArray(gpu.pools)||gpu.pools.length!==1||gpu.pools[0]!==(faster?'ADA_24':'AMPERE_24')||
-  !Array.isArray(gpu.excludedTypes)||workers?.min!==(activeLease?1:0)||workers.max!==1||
+  (!Array.isArray(excludedTypes)||excludedTypes.some((id:unknown)=>typeof id!=='string'))||workers?.min!==(activeLease?1:0)||workers.max!==1||
   endpoint.scaling?.type!=='REQUEST_COUNT'||endpoint.scaling.requestCount!==1||
   !['OFF','FLASHBOOT'].includes(endpoint.flashboot)||
   endpoint.networkVolumes?.length!==0||endpoint.mounts?.network?.length!==0||endpoint.mounts?.global?.length!==0)
   throw Error('Song capacity differs from the reviewed cost profile');
  if(!Array.isArray(catalog?.gpus))throw Error('Song hardware pricing could not be checked');
- const eligible=catalog.gpus.filter((g:any)=>gpu.pools.includes(g.pool)&&!gpu.excludedTypes.includes(g.id));
+ const eligible=catalog.gpus.filter((g:any)=>gpu.pools.includes(g.pool)&&!excludedTypes.includes(g.id));
  const expectedGpu=faster?'NVIDIA GeForce RTX 4090':profile===CLOUD_DIAGNOSTIC_PROFILE?'NVIDIA RTX A5000':'NVIDIA L4';
  if(eligible.length!==1||eligible[0].id!==expectedGpu||typeof eligible[0].price?.serverless!=='number'||
   !Number.isFinite(eligible[0].price.serverless)||eligible[0].price.serverless<=0||eligible[0].price.serverless>(faster?1.34:0.75))

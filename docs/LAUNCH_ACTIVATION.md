@@ -1,5 +1,7 @@
 # Launch activation — 2026-11-01
 
+Latest outcome: the 4090 check stopped before submission due to our empty-exclusion-list validation bug. Independent cleanup and held-site restoration pass; the locally verified repair and continuation plan preserve the original $3 total, pending explicit resume permission. No successful hosted qualification or activation is claimed. [Repair](evidence/empty-exclusions-repair-20261101/report.md).
+
 Latest preparation: a private RTX 4090 diagnostic profile and bounded two-request/$3 plan pass local validation; hosted performance is NOT RUN and fresh approval is required. Historical aggregate billing is available but not attributable. Customer/reviewer capacity lifecycle, full costs and final activation remain open. [Audit and prepared plan](evidence/release-capacity-audit-20261101/report.md).
 
 Latest follow-through: the owner-approved corrected continuation is consumed. Source `2465f108` built/deployed and passed preflight, but no A5000 was allocated during the 20-minute preparation window. No song request or upload occurred; independent cleanup, unchanged balances and held-site restoration pass. Billing remains provisional. Successful hosted delivery and full costs remain open; no repeat, sales activation or Apple submission occurred. [Execution](evidence/readiness-correction-20261101/execution.md).
