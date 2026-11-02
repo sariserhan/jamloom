@@ -100,5 +100,6 @@
     "httpDryRun": "PASS; zero provider operations",
     "harnessTypecheck": "PASS",
     "approvedSourceSHA256": "fd7752a9aead13dcbb15c6313e4834820bfecbf68160196ac9ca59deff9d0ea1"
-  }
+  },
+  "applicationCommit": "d5c49101f029a5207401010b91e2f7223286ad59"
 }
