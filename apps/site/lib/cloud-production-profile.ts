@@ -21,7 +21,7 @@ export function productionSongBudget(product:'improvise'|'music-dna',profile=CLO
  const faster=profile===CLOUD_4090_DIAGNOSTIC_PROFILE;
  const rate=faster?380:220,fixedCostMicros=20000;
  // Diagnostic deadlines are hypotheses to measure, not verified 4090 performance.
- const [executionSeconds,ttlSeconds]=faster?(product==='improvise'?[100,130]:[250,310]):(product==='improvise'?[190,220]:[480,540]);
+ const [executionSeconds,ttlSeconds]=faster?(product==='improvise'?[120,130]:[250,310]):(product==='improvise'?[190,220]:[480,540]);
  const costCapMicros=rate*ttlSeconds+fixedCostMicros;
  return {rate,fixedCostMicros,executionSeconds,ttlSeconds,costCapMicros,
   budget:{costCapMicros,maxRuntimeMs:executionSeconds*1000,hourlyMicros:rate*3600,fixedCostMicros:rate*(ttlSeconds-executionSeconds)+fixedCostMicros}};

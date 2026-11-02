@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T02:59:36.223Z",
+  "qualification": "FAIL",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "previousHardwareRestored": true,
+  "health": {
+    "jobs": {
+      "completed": 47,
+      "failed": 19,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "workerInventory": [],
+  "remoteObjectsConfirmedAbsent": 4,
+  "pendingJobs": 0,
+  "testReservedCredits": 0,
+  "costReservationsPreserved": true,
+  "rows": [
+    {
+      "id": "1142caeeff8a4a58a6429526b31388d8",
+      "product": "music-dna",
+      "state": "completed",
+      "providerId": "88ebe071-7f2b-4e5f-9e79-b516902f4779-u2",
+      "providerStatus": "COMPLETED"
+    },
+    {
+      "id": "7841d80f56764764b900c5bab8a10c20",
+      "product": "improvise",
+      "state": "failed",
+      "providerId": "268879f4-57e2-4d0f-9c70-8e79704ff6d0-u1",
+      "providerStatus": "FAILED"
+    }
+  ]
+}

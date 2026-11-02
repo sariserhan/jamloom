@@ -1,0 +1,86 @@
+{
+  "status": "PASS_ENDPOINT_ATTRIBUTION_PARTIAL_COST_QUALIFICATION",
+  "at": "2026-11-02T02:49:49.204Z",
+  "endpoint": "jl77hn92npt65k",
+  "query": {
+    "bucketSize": "hour",
+    "endTime": "2026-11-02T03:00:00Z",
+    "startTime": "2026-10-31T00:00:00Z"
+  },
+  "mutations": false,
+  "finalInvoice": false,
+  "records": [
+    {
+      "cpuAmount": 0,
+      "diskAmount": 0.00138888880610466,
+      "endTime": "2026-10-31T01:00:00Z",
+      "feeAmount": 0,
+      "gpuAmount": 0.27871378185227513,
+      "serverlessId": "jl77hn92npt65k",
+      "startTime": "2026-10-31T00:00:00Z",
+      "totalAmount": 0.2801026706583798
+    },
+    {
+      "cpuAmount": 0,
+      "diskAmount": 0.00208333320915699,
+      "endTime": "2026-10-31T02:00:00Z",
+      "feeAmount": 0,
+      "gpuAmount": 0.3514500679448247,
+      "serverlessId": "jl77hn92npt65k",
+      "startTime": "2026-10-31T01:00:00Z",
+      "totalAmount": 0.3535334011539817
+    },
+    {
+      "cpuAmount": 0,
+      "diskAmount": 0,
+      "endTime": "2026-10-31T03:00:00Z",
+      "feeAmount": 0,
+      "gpuAmount": 0.1162782646715641,
+      "serverlessId": "jl77hn92npt65k",
+      "startTime": "2026-10-31T02:00:00Z",
+      "totalAmount": 0.1162782646715641
+    },
+    {
+      "cpuAmount": 0,
+      "diskAmount": 0.00069444440305233,
+      "endTime": "2026-11-01T04:00:00Z",
+      "feeAmount": 0,
+      "gpuAmount": 0.08212020651990315,
+      "serverlessId": "jl77hn92npt65k",
+      "startTime": "2026-11-01T03:00:00Z",
+      "totalAmount": 0.08281465092295548
+    },
+    {
+      "cpuAmount": 0,
+      "diskAmount": 0,
+      "endTime": "2026-11-01T05:00:00Z",
+      "feeAmount": 0,
+      "gpuAmount": 0.03025208436883986,
+      "serverlessId": "jl77hn92npt65k",
+      "startTime": "2026-11-01T04:00:00Z",
+      "totalAmount": 0.03025208436883986
+    },
+    {
+      "cpuAmount": 0,
+      "diskAmount": 0.00208333320915699,
+      "endTime": "2026-11-01T06:00:00Z",
+      "feeAmount": 0,
+      "gpuAmount": 0.1756389579968527,
+      "serverlessId": "jl77hn92npt65k",
+      "startTime": "2026-11-01T05:00:00Z",
+      "totalAmount": 0.17772229120600969
+    },
+    {
+      "cpuAmount": 0,
+      "diskAmount": 0.0006944445194676518,
+      "endTime": "2026-11-02T02:00:00Z",
+      "feeAmount": 0,
+      "gpuAmount": 0.021913125179708004,
+      "serverlessId": "jl77hn92npt65k",
+      "startTime": "2026-11-02T01:00:00Z",
+      "totalAmount": 0.022607569699175656
+    }
+  ],
+  "reportedUSD": 1.0633109326809063,
+  "limitation": "Historical endpoint-level buckets, not per-job allocation. Current continuation bucket is not yet reported. Late records/adjustments remain possible."
+}

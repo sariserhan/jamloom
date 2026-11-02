@@ -1,0 +1,69 @@
+{
+  "status": "PARTIAL_DELIVERY_FAIL_QUALIFICATION",
+  "at": "2026-11-02T03:03:22.937410+00:00",
+  "source": "3fbfbededa03e80d59310f6d9e561a4dd9548ccf",
+  "activatedAt": "2026-11-02T02:44:30.258Z",
+  "disabledAt": "2026-11-02T02:58:26.589Z",
+  "leaseDeadline": 1793589710909,
+  "submitCalls": 2,
+  "requests": [
+    {
+      "product": "music-dna",
+      "state": "completed",
+      "submitCalls": 1,
+      "executionMs": "181924",
+      "delayMs": "21",
+      "estimatedCostMicros": 89160,
+      "durationSeconds": 115,
+      "audio": {
+        "sha256": "8def9c273c85c29aeb99691ea26f29262cadcf03faec5431d67edcc5b36d4cea",
+        "bytes": 22080044,
+        "validation": "PASS"
+      },
+      "privacy": "PASS",
+      "styleMatch": "uncertain"
+    },
+    {
+      "product": "improvise",
+      "state": "failed",
+      "submitCalls": 1,
+      "executionMs": "100360",
+      "delayMs": "21",
+      "estimatedCostMicros": 58380,
+      "durationSeconds": 33,
+      "audio": null,
+      "privacy": null,
+      "styleMatch": null
+    }
+  ],
+  "staticFailure": "worker-timeout",
+  "observedWorkers": [
+    {
+      "id": "bcsvcjv4t1tgyg",
+      "gpuTypeId": "NVIDIA GeForce RTX 4090",
+      "status": "INITIALIZING",
+      "startedAt": "2026-11-02T02:44:30.627Z"
+    },
+    {
+      "id": "p7zdybmeagewof",
+      "gpuTypeId": "NVIDIA GeForce RTX 4090",
+      "status": "RUNNING",
+      "startedAt": "2026-11-02T02:52:35.639Z"
+    }
+  ],
+  "cleanup": "PASS",
+  "restoredHeldWebsite": true,
+  "testBalance": {
+    "available": 2970,
+    "reserved": 0
+  },
+  "liveBalance": {
+    "available": 0,
+    "reserved": 0
+  },
+  "capturedCredits": 20,
+  "failedImproviseCreditsReleased": 10,
+  "customerSalesEnabled": false,
+  "billing": "PROVISIONAL; current worker/endpoint charges not yet posted",
+  "permitReusable": false
+}

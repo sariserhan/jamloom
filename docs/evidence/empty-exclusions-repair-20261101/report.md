@@ -1,6 +1,8 @@
 # Empty GPU exclusion-list repair — 2026-11-01 local date
 
-**PASS repair and local validation; PARTIAL release; paid continuation NOT RUN.**
+**PASS repair and Music DNA technical delivery; FAIL Improvise execution deadline; PASS cleanup; PARTIAL release.**
+
+The approved continuation is complete and consumed: exactly two requests, Music DNA delivered successfully with an uncertain-style note, and Improvise timed out at 100 seconds with full credit release. Independent cleanup and held-site restoration pass. [Execution](execution.md). The preparation snapshot follows.
 
 The owner approved the private two-request 4090 diagnostic from `5c85b0f8`, up to $3 total. Its deployment and authenticated expiry guard passed. At 2026-11-02 02:35:20.848 UTC the controller activated capacity, then stopped because its immediate endpoint readback failed the profile validator. Capacity was disabled at 02:35:22.350. No worker was observed and no generation/upload/credit hold occurred. Independent cleanup and held-site restoration pass. This does not establish zero provider cost. [Execution](../release-capacity-audit-20261101/execution-result.json).
 

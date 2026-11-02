@@ -110,7 +110,7 @@ test('4090 diagnostic preserves catalog budgets and rejects live access, underfu
  const candidate={...endpoint,gpu:{count:1,pools:['ADA_24'],excludedTypes:['other']},workers:{min:1,max:1}};
  const stock={gpus:[...catalog.gpus,{id:'NVIDIA GeForce RTX 4090',pool:'ADA_24',price:{serverless:1.34}}]};
  const privateEnv={...env,JAMLOOM_CLOUD_COST_PROFILE:CLOUD_4090_DIAGNOSTIC_PROFILE,JAMLOOM_CLOUD_ACTIVE_LEASE_START:new Date(lease.startsAt).toISOString(),JAMLOOM_CLOUD_ACTIVE_LEASE_END:new Date(lease.expiresAt).toISOString(),JAMLOOM_CLOUD_ACTIVE_LEASE_CAP_MICROS:'3000000',JAMLOOM_APPLE_REVIEW_ENABLED:'true',JAMLOOM_APPLE_REVIEW_USER_IDS:'reviewer',JAMLOOM_APPLE_REVIEW_EXPIRES_AT:new Date(lease.expiresAt).toISOString(),JAMLOOM_APPLE_REVIEW_GENERATION_ENABLED:'true',JAMLOOM_APPLE_REVIEW_GENERATION_CAP_MICROS:'3000000'};
- for(const [product,cap,execution,ttl] of [['improvise',69400,100,130],['music-dna',137800,250,310]] as const){
+ for(const [product,cap,execution,ttl] of [['improvise',69400,120,130],['music-dna',137800,250,310]] as const){
   assert.throws(()=>cloudSongConfig(privateEnv,product),/restricted to private/);
   const review=reviewSongConfig(product,privateEnv,now)!;
   assert.equal(review.live,false);assert.equal(review.productionProfile,CLOUD_4090_DIAGNOSTIC_PROFILE);

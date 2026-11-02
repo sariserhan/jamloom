@@ -1,5 +1,5 @@
 {
-  "status": "PREPARED_NOT_APPROVED",
+  "status": "CONSUMED",
   "scope": "Explicit continuation after omitted-empty-exclusions repair; new 40-minute window within original aggregate $3, not an additional $3",
   "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:2de0a4b3c897edbc80aa74cdc7b9a9f6f58d5cbcb312f09d86b190693ae96161",
   "endpoint": "jl77hn92npt65k",
@@ -118,5 +118,12 @@
   "priorReservedUSD": 1,
   "priorBoundMicros": 981400,
   "newLeaseCapMicros": 2000000,
-  "requiresExplicitResumeApproval": true
+  "requiresExplicitResumeApproval": true,
+  "ownerApproval": "Resume within the original $3 total",
+  "approvedAt": "2026-11-02T02:41:43.994796+00:00",
+  "applicationCommit": "3fbfbededa03e80d59310f6d9e561a4dd9548ccf",
+  "absoluteDeadline": "2026-11-02T03:21:50.909000+00:00",
+  "finishedAt": "2026-11-02T03:03:22.937410+00:00",
+  "outcome": "Music DNA PASS; Improvise worker-timeout at 100 seconds with full 10-credit release. Independent cleanup and held website restoration PASS.",
+  "executionEvidence": "execution-result.json"
 }
