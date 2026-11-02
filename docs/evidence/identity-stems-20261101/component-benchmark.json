@@ -1,0 +1,27 @@
+{
+  "status": "PASS_LOCAL_SYNTHETIC_ONLY",
+  "at": "2026-11-02T04:46:12.991717+00:00",
+  "modelInference": false,
+  "GPUUsed": false,
+  "hostedSpeedup": "NOT RUN",
+  "cases": [
+    {
+      "seconds": 30,
+      "publishSeconds": 0.03962024999782443,
+      "verifySeconds": 0.01615487501840107,
+      "generatedWAVUnchanged": true
+    },
+    {
+      "seconds": 39,
+      "publishSeconds": 0.0537298749841284,
+      "verifySeconds": 0.021473041007993743,
+      "generatedWAVUnchanged": true
+    },
+    {
+      "seconds": 45,
+      "publishSeconds": 0.06507283300743438,
+      "verifySeconds": 0.025549416983267292,
+      "generatedWAVUnchanged": true
+    }
+  ]
+}

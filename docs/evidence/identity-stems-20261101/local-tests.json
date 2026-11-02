@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checks": 86,
+  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "python": "3.12.13",
+  "counts": {
+    "test_identity_stems.py": 10,
+    "test_vocal_identity.py": 8,
+    "test_singer_studio.py": 12,
+    "test_generation_timing.py": 6,
+    "test_hosted_identity_separator.py": 2,
+    "test_local_call_edit.py": 18,
+    "test_singing_response.py": 12,
+    "test_runpod_worker.py": 18
+  }
+}

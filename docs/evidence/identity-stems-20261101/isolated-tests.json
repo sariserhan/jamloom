@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checks": 73,
+  "counts": {
+    "test_identity_stems.py": 10,
+    "test_vocal_identity.py": 8,
+    "test_singer_studio.py": 10,
+    "test_generation_timing.py": 6,
+    "test_worker_runtime_base.py": 5,
+    "test_runpod_worker.py": 17,
+    "test_hosted_identity_separator.py": 2,
+    "test_rejected_audio_diagnostic.py": 2,
+    "test_dna_style_delivery.py": 1,
+    "test_singing_response.py": 12
+  }
+}
