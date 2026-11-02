@@ -45,3 +45,5 @@
 !assets/singer-identities/manifest.json
 !assets/singer-identities/README.md
 !assets/manifests/dna-style-reviews.json
+
+!scripts/generation_timing.py

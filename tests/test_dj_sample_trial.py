@@ -50,7 +50,7 @@ class SamplePermitTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate_sung({**plan,"status":"PREPARED"},isolated=True)
         plan.update(status='AUTHORIZED',owner_statement='Approve the capped $3 isolated-singing comparison')
         with self.assertRaisesRegex(ValueError,'worker changed'):validate_sung(plan,isolated=True)
-        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in {*plan['worker_sha256'],'generation_timing.py'}}
         validate_sung(plan,isolated=True)
         for key,value in [('max_requests',5),('budget_usd',4),('owner_statement','finish everything'),('public_activation',True)]:
             with self.assertRaises(ValueError):validate_sung({**plan,key:value},isolated=True)
@@ -63,7 +63,7 @@ class SamplePermitTests(unittest.TestCase):
         plan=json.loads((ROOT/'docs/evidence/dj-sung-aggressive-20261026/replacement-plan.json').read_text())
         refresh_style_manifest(plan)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve one replacement within the original cap'
-        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in {*plan['worker_sha256'],'generation_timing.py'}}
         with patch.object(trial.vast,'LEASE_SECONDS',plan['remaining_rental_seconds']):
             validate_sung(plan,replacement=True,aggressive=True)
             for key,value in [('budget_usd_total',4),('remaining_rental_seconds',1200),('original_permit_sha256','0'*64)]:
@@ -76,7 +76,7 @@ class SamplePermitTests(unittest.TestCase):
         plan['status']='PREPARED'
         with self.assertRaises(ValueError):validate_sung(plan,aggressive=True)
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve the capped $3 vocal-mode comparison'
-        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in {*plan['worker_sha256'],'generation_timing.py'}}
         validate_sung(plan,aggressive=True)
         with self.assertRaises(ValueError):validate_sung(plan,aggressive=True,replacement=True)
         with self.assertRaises(ValueError):validate_sung(plan)
@@ -91,7 +91,7 @@ class SamplePermitTests(unittest.TestCase):
         plan['status']='AUTHORIZED';plan['owner_statement']='Approve one replacement within the original cap'
         with patch.object(trial.vast,'LEASE_SECONDS',plan['remaining_rental_seconds']):
             with self.assertRaisesRegex(ValueError,'worker changed'):validate_sung(plan,replacement=True)
-            plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
+            plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in {*plan['worker_sha256'],'generation_timing.py'}}
             validate_sung(plan,replacement=True)
             for key,value in [('budget_usd_total',4),('remaining_rental_seconds',1200),('original_permit_sha256','0'*64),('owner_statement','Approve the capped $3 musical-vocal comparison')]:
                 changed=copy.deepcopy(plan);changed[key]=value
@@ -100,7 +100,7 @@ class SamplePermitTests(unittest.TestCase):
     def test_sung_study_requires_fresh_four_edit_approval_and_original_sources(self):
         plan=json.loads((ROOT/'docs/evidence/dj-sung-hooks-20261026/gpu-plan.json').read_text())
         refresh_style_manifest(plan)
-        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in plan['worker_sha256']}
+        plan['worker_sha256']={name:hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest() for name in {*plan['worker_sha256'],'generation_timing.py'}}
         plan['dna_manifest_sha256']={name:hashlib.sha256((ROOT/'assets/manifests'/name).read_bytes()).hexdigest()for name in ['song-durations.json','dna-languages.json']}
         pending=copy.deepcopy(plan);pending['status']='PREPARED'
         with self.assertRaises(ValueError):validate_sung(pending)

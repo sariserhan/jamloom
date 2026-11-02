@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 from song_duration import choose_duration
+from generation_timing import phase, timed
 import secrets
 import random
 import shutil
@@ -28,6 +29,7 @@ class StudioError(ValueError):
     """A safe, actionable message for the studio listener."""
 
 
+@timed('source')
 def prepare_source(audio, work):
     original = work/'original-recording'
     shutil.copyfile(audio, original)
@@ -50,6 +52,7 @@ def prepare_source(audio, work):
     return report
 
 
+@timed('transcription')
 def understand(work, env):
     speech_python=Path(sys.executable) if os.environ.get('JAMLOOM_INFERENCE_DEVICE') == 'cuda' else ROOT/'.venv-speech/bin/python'
     try:
@@ -68,6 +71,7 @@ def understand(work, env):
     return result
 
 
+@timed('selection')
 def sample_candidate(work, speech, genre, seconds, seed=0, attempt=0):
     candidates=[]
     for phrase in speech.get('phrases',[]):
@@ -174,6 +178,7 @@ def sample_candidate(work, speech, genre, seconds, seed=0, attempt=0):
     return source,score
 
 
+@timed('improvise')
 def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None, mac_small_decode=False):
     if type(mac_small_decode) is not bool or mac_small_decode and os.environ.get('JAMLOOM_INFERENCE_DEVICE')!='mps':
         raise ValueError('Small local decode requires explicit Metal execution')
@@ -225,7 +230,7 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None,
         plan_path = work / 'reply.json'
         command = [sys.executable, str(ROOT / 'scripts/singing_response.py')]
         stage = 'Writing the lyrics'
-        with (work / 'draft-private.log').open('w') as log:
+        with phase('lyrics'), (work / 'draft-private.log').open('w') as log:
             subprocess.run([*command, 'draft', '--runtime', str(RUNTIME), '--phrase', phrase, '--voice', chosen_voice,
                             '--genre', chosen_genre, '--duration', str(duration), '--seed', str(seed), '--output', str(plan_path), *(['--energy',energy] if energy is not None else []), *(['--instrumental'] if instrumental else [])],
                            stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
@@ -235,11 +240,11 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None,
         if energy is not None and case.get('energy')!=energy:raise StudioError('The energy direction was not preserved.')
         singer = work / 'singer'
         stage = 'Generating the singer and music'
-        with (work / 'render-private.log').open('w') as log:
+        with phase('singing'), (work / 'render-private.log').open('w') as log:
             subprocess.run([*command, 'sing', '--runtime', str(RUNTIME), '--plan', str(plan_path), '--case', case['id'],
                             '--output', str(singer), *(['--mac-small-decode'] if mac_small_decode else [])], stdout=log, stderr=subprocess.STDOUT, env=env, timeout=600, check=True)
         stage = 'Finding room for your sound'
-        with (work / 'separate-private.log').open('w') as log:
+        with phase('separation'), (work / 'separate-private.log').open('w') as log:
             separator_python=os.environ.get('JAMLOOM_SEPARATOR_PYTHON')
             separator_script=ROOT/'services/runpod/separate_spleeter.py' if separator_python else ROOT/'scripts/separate_singer.py'
             subprocess.run([separator_python or sys.executable, str(separator_script), '--input', str(singer/'singer.wav'),
@@ -250,7 +255,8 @@ def make_reply(audio, phrase, voice, genre, consent, duration=None, energy=None,
             result_dir=work/f'exchange-{attempt}'
             try:
                 stage = 'Blending your sound into the song'
-                report = arrange(candidate[0],singer,result_dir,OUTPUT/'arrangement-history.json',seed+attempt,True,source_score=candidate[1])
+                with phase('arrangement'):
+                    report = arrange(candidate[0],singer,result_dir,OUTPUT/'arrangement-history.json',seed+attempt,True,source_score=candidate[1])
                 if report.get('sample_used') is not True or not report.get('events'):
                     raise ValueError('Arrangement omitted the recording')
                 report['source_excerpt']=json.loads(candidate[1].read_text())

@@ -35,7 +35,7 @@ if [[ $mode == --composition-study || $mode == --guided-set || $mode == --recove
   cp /workspace/dj_composition.py /workspace/prepare_electronic_bank.py /workspace/ace-step/
 fi
 if [[ $mode == --sung-study ]]; then
-  cp /workspace/dj_sung_hooks.py /workspace/singing_response.py /workspace/song_duration.py /workspace/dna_language.py /workspace/sung-fixtures.json /workspace/ace-step/
+  cp /workspace/dj_sung_hooks.py /workspace/generation_timing.py /workspace/singing_response.py /workspace/song_duration.py /workspace/dna_language.py /workspace/sung-fixtures.json /workspace/ace-step/
   mkdir -p /workspace/assets/manifests
   cp /workspace/song-durations.json /workspace/dna-languages.json /workspace/assets/manifests/
   cp /workspace/house-1.wav /workspace/ace-step/sung-house-1.wav
@@ -54,7 +54,7 @@ if [[ $mode == --composition-study || $mode == --guided-set || $mode == --recove
   sha256sum dj_composition.py prepare_electronic_bank.py >> /workspace/results/executed-scripts.sha256
 fi
 if [[ $mode == --sung-study ]]; then
-  sha256sum dj_sung_hooks.py singing_response.py song_duration.py dna_language.py sung-fixtures.json sung-house-1.wav sung-house-7.wav >> /workspace/results/executed-scripts.sha256
+  sha256sum dj_sung_hooks.py generation_timing.py singing_response.py song_duration.py dna_language.py sung-fixtures.json sung-house-1.wav sung-house-7.wav >> /workspace/results/executed-scripts.sha256
   sha256sum /workspace/assets/manifests/song-durations.json /workspace/assets/manifests/dna-languages.json >> /workspace/results/executed-scripts.sha256
 fi
 find checkpoints -type f -name '*.safetensors' -exec sha256sum '{}' + > /workspace/results/weights.sha256

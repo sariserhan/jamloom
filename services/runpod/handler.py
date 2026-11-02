@@ -8,6 +8,7 @@ import signal
 import subprocess
 import sys
 import tempfile
+import time
 import urllib.parse
 import urllib.request
 import wave
@@ -181,14 +182,22 @@ def download(source, target):
 
 
 def execute(work, timeout):
+    from generation_timing import snapshot
+    timing = work/'phase-timing.jsonl'
+    timing.touch(mode=0o600, exist_ok=False)
+    started = time.monotonic_ns()
+    outcome = 'failed'
     with (work/'private.log').open('wb') as log:
         child = subprocess.Popen([str(ROOT/'build-style-training/upstream/.venv/bin/python'), str(Path(__file__).with_name('pipeline.py')), str(work)],
             stdout=log, stderr=subprocess.STDOUT, start_new_session=True,
-            env={**os.environ, 'JAMLOOM_INFERENCE_DEVICE': 'cuda', 'HF_HUB_OFFLINE': '1', 'HF_HUB_DISABLE_TELEMETRY': '1'})
+            env={**os.environ, 'JAMLOOM_INFERENCE_DEVICE': 'cuda', 'HF_HUB_OFFLINE': '1', 'HF_HUB_DISABLE_TELEMETRY': '1',
+                 'JAMLOOM_TIMING_FILE': str(timing), 'JAMLOOM_TIMING_START_NS': str(started)})
         try:
             if child.wait(timeout=timeout):
                 raise GenerationFailure(failure_location(work))
+            outcome = 'completed'
         except subprocess.TimeoutExpired:
+            outcome = 'timeout'
             raise GenerationFailure('worker-timeout') from None
         finally:
             # Kill descendants too: a timed-out planner must not keep consuming GPU time.
@@ -197,6 +206,10 @@ def execute(work, timeout):
             except ProcessLookupError:
                 pass
             child.wait()
+            timings = snapshot(timing)
+            if timings:
+                print('JAMLOOM_PHASE_TIMINGS ' + json.dumps({**timings, 'outcome': outcome,
+                    'elapsed_ms': (time.monotonic_ns()-started)//1000000}), flush=True)
 
 
 def handler(job):

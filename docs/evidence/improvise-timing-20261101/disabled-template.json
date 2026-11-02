@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T03:47:53.310Z",
+  "image": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
+  "workerLimits": {
+    "max": 0,
+    "min": 0
+  },
+  "hardwareUnchanged": true,
+  "health": {
+    "jobs": {
+      "completed": 47,
+      "failed": 20,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "generationSubmitted": false
+}

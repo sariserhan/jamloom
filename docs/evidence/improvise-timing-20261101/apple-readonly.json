@@ -1,0 +1,23 @@
+{
+  "at": "2026-11-02T03:37:30.865Z",
+  "mutations": false,
+  "versions": [
+    {
+      "id": "02c3b180-6e57-47bb-9963-fedfe1915fcf",
+      "version": "0.11.0",
+      "state": "READY_FOR_REVIEW",
+      "releaseType": "MANUAL",
+      "build": {
+        "version": "38",
+        "processingState": "VALID"
+      }
+    }
+  ],
+  "submissions": [
+    {
+      "id": "cf0d1567-e845-4aac-87aa-358a7fd55166",
+      "state": "READY_FOR_REVIEW",
+      "submittedDate": null
+    }
+  ]
+}

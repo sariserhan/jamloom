@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: admission accepts the observed active-worker counter without requiring cached readiness
+ok 1 - admission accepts the observed active-worker counter without requiring cached readiness
+  ---
+  duration_ms: 0.674958
+  type: 'test'
+  ...
+# Subtest: production candidate preserves fixed prices and enforces the measured product deadlines
+ok 2 - production candidate preserves fixed prices and enforces the measured product deadlines
+  ---
+  duration_ms: 1.280458
+  type: 'test'
+  ...
+# Subtest: capacity refuses changed image, hardware, price, scaling and extra storage before dispatch
+ok 3 - capacity refuses changed image, hardware, price, scaling and extra storage before dispatch
+  ---
+  duration_ms: 3.688167
+  type: 'test'
+  ...
+# Subtest: alternate GPU qualification cannot widen live production or escape its private lease
+ok 4 - alternate GPU qualification cannot widen live production or escape its private lease
+  ---
+  duration_ms: 1.32275
+  type: 'test'
+  ...
+# Subtest: active capacity is finite, explicitly funded, hardware-bound and closed before expiry
+ok 5 - active capacity is finite, explicitly funded, hardware-bound and closed before expiry
+  ---
+  duration_ms: 0.370416
+  type: 'test'
+  ...
+# Subtest: hosted watchdog disables only expired owned capacity and verifies the stop receipt
+ok 6 - hosted watchdog disables only expired owned capacity and verifies the stop receipt
+  ---
+  duration_ms: 1.206
+  type: 'test'
+  ...
+# Subtest: 4090 diagnostic preserves catalog budgets and rejects live access, underfunding and hardware drift
+ok 7 - 4090 diagnostic preserves catalog budgets and rejects live access, underfunding and hardware drift
+  ---
+  duration_ms: 0.4405
+  type: 'test'
+  ...
+# Subtest: Runpod omits an empty exclusion list without widening the allowed hardware
+ok 8 - Runpod omits an empty exclusion list without widening the allowed hardware
+  ---
+  duration_ms: 0.154416
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 424.894125

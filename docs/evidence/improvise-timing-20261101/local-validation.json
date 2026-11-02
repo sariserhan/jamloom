@@ -1,0 +1,22 @@
+{
+  "status": "PASS_LOCAL_ONLY",
+  "mainPythonChecks": 64,
+  "isolatedWorkerChecks": 53,
+  "siteTests": 208,
+  "siteTypecheck": "PASS",
+  "harnessTypecheck": "PASS",
+  "runtimeWeightBytesSkippedDuringDraft": 10029206151,
+  "singerVerificationBeforeUse": true,
+  "lyricVerificationBeforeUse": true,
+  "realSubprocessTimeoutTest": "PASS; active phase retained, private stdout excluded, process killed",
+  "hostedPerformance": "NOT RUN",
+  "musicalSettingsChanged": false,
+  "productionBuild": "PASS; image pin subsequently changed, profile regression and harness typecheck pass",
+  "liveActivation": false,
+  "bundleAudit": "PASS",
+  "controllerDryRun": "PASS; zero provider operations",
+  "httpDryRun": "PASS; exact audio hash/format; zero provider operations",
+  "imagePublication": "PASS",
+  "imageIntegrity": "PASS; 26 base layers preserved, 24996 added compressed bytes",
+  "disabledTemplate": "PASS; workers 0/0, zero jobs"
+}

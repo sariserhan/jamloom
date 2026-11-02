@@ -176,7 +176,7 @@ def validate_sung(plan,replacement=False,aggressive=False,isolated=False):
             or case['phrase']!=('Feel alive' if i<2 else 'We rise') or row['vocals'] is not False or row['seconds']!=60
             or row['caption']!=caption(case) or not 0<case['cue']['seconds']<=2):raise ValueError('Prepared sung case changed')
         if hashlib.sha256((ROOT/'renders/dj-planner-20261026'/source.removeprefix('sung-')).read_bytes()).hexdigest()!=expected_sources[source]:raise ValueError('Original source changed')
-    names={'cloud_music_setup.sh','cloud_dj_warm.sh','dj_track_worker.py','dj_warm_engine.py','dj_vocal.py','club_benchmark_cases.py','dj_sung_hooks.py','singing_response.py','song_duration.py','dna_language.py'}
+    names={'cloud_music_setup.sh','cloud_dj_warm.sh','dj_track_worker.py','dj_warm_engine.py','dj_vocal.py','club_benchmark_cases.py','dj_sung_hooks.py','generation_timing.py','singing_response.py','song_duration.py','dna_language.py'}
     if set(plan['worker_sha256'])!=names or any(hashlib.sha256((ROOT/'scripts'/name).read_bytes()).hexdigest()!=digest for name,digest in plan['worker_sha256'].items()):raise ValueError('Prepared sung worker changed')
     if hashlib.sha256((ROOT/'assets/manifests/dj-styles.json').read_bytes()).hexdigest()!=plan['manifest_sha256']:raise ValueError('Style manifest changed')
     manifests={name:hashlib.sha256((ROOT/'assets/manifests'/name).read_bytes()).hexdigest() for name in ['song-durations.json','dna-languages.json']}
@@ -336,7 +336,7 @@ def run():
             time.sleep(10)
         else: raise RuntimeError('SSH startup deadline failed')
         scp = ['scp', *options, '-P', str(item['ssh_port'])]
-        files = [ROOT/'scripts'/name for name in ['cloud_music_setup.sh', 'cloud_dj_warm.sh', 'dj_track_worker.py', 'dj_warm_engine.py', 'dj_vocal.py', 'club_benchmark_cases.py',*(['dj_composition.py','prepare_electronic_bank.py'] if COMPOSITION else []),*(['dj_sung_hooks.py','singing_response.py','song_duration.py','dna_language.py'] if SUNG else [])]]
+        files = [ROOT/'scripts'/name for name in ['cloud_music_setup.sh', 'cloud_dj_warm.sh', 'dj_track_worker.py', 'dj_warm_engine.py', 'dj_vocal.py', 'club_benchmark_cases.py',*(['dj_composition.py','prepare_electronic_bank.py'] if COMPOSITION else []),*(['dj_sung_hooks.py','generation_timing.py','singing_response.py','song_duration.py','dna_language.py'] if SUNG else [])]]
         files += [ROOT/'assets/manifests/dj-styles.json', WORK/'renderer-token']
         if MODEL_STUDY:files[-1:-1]=[ROOT/'scripts/dj_model_study.py',ROOT/'assets/manifests/dj-base-model.json']
         subprocess.run([*scp, *map(str, files), 'root@'+item['ssh_host']+':/workspace/'], check=True, capture_output=True, timeout=60)

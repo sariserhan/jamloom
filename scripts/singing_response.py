@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 from song_duration import choose_duration, validate_duration
+from generation_timing import phase, timed
 import random
 import re
 import resource
@@ -239,25 +240,32 @@ def load_plan(path):
     return validate_plan(plan)
 
 
-def runtime(path):
+@timed('runtime-verify')
+def runtime(path, *, singer_weights=True):
+    if type(singer_weights) is not bool:
+        raise ValueError('Invalid runtime verification mode')
     root = Path(path).resolve()
     if not (root / 'acestep/inference.py').is_file():
         raise ValueError('Missing pinned ACE-Step runtime')
-    manifest = json.loads((Path(__file__).resolve().parents[1] / 'assets/manifests/singing-model.json').read_text())
+    manifest = json.loads((ROOT / 'assets/manifests/singing-model.json').read_text())
     tree = hashlib.sha256()
     files = sorted(p for p in (root / 'acestep').rglob('*.py') if '__pycache__' not in p.parts)
     for p in files:
         tree.update(str(p.relative_to(root)).encode() + b'\0' + bytes.fromhex(digest(p)))
     if len(files) != manifest['code_files'] or tree.hexdigest() != manifest['code_tree_sha256']:
         raise ValueError('Runtime code does not match the pinned singing model')
-    for name, expected in manifest['weights_sha256'].items():
-        if digest(root / name) != expected:
-            raise ValueError('Singing checkpoint checksum mismatch')
+    # Lyric drafting never loads the singer. Verify these 10 GB once, before
+    # the singing command; lyric_model independently verifies its own weights.
+    if singer_weights:
+        for name, expected in manifest['weights_sha256'].items():
+            if digest(root / name) != expected:
+                raise ValueError('Singing checkpoint checksum mismatch')
     os.environ.update(HF_HUB_OFFLINE='1', HF_HUB_DISABLE_TELEMETRY='1', ACESTEP_DISABLE_TQDM='1', TOKENIZERS_PARALLELISM='false')
     sys.path.insert(0, str(root))
     return root
 
 
+@timed('lyric-load')
 def lyric_model(root):
     cuda = inference_device() == 'cuda'
     name = 'lyric-planner-cuda' if cuda else 'lyric-planner'
@@ -378,8 +386,9 @@ def draft(root, phrase, seed, output, voice=None, genre=None, duration=None, ene
         # shortcut: format checks cannot prove meaning or musical quality; retain listening checks.
         for attempt in range(2):
             prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-            revised = generate(model, tokenizer, prompt=prompt, max_tokens=220,
-                               sampler=make_sampler(temp=.5 if attempt==0 else .3, top_p=.9), verbose=False).strip()
+            with phase('lyric-generate'):
+                revised = generate(model, tokenizer, prompt=prompt, max_tokens=220,
+                                   sampler=make_sampler(temp=.5 if attempt==0 else .3, top_p=.9), verbose=False).strip()
             try:
                 c['lyrics'], removed_repeats = fit_reply_lyrics(revised)
                 break
@@ -489,6 +498,7 @@ def isolated_vocal_reference(reference, output):
             'separation_quality':'NOT RUN: estimated vocal stem may contain bleed'}
 
 
+@timed('sing-load')
 def load_singer_engine(root, mac_small_decode=False, single_use=False):
     if type(mac_small_decode) is not bool or mac_small_decode and inference_device() != 'mps':
         raise ValueError('Small local decode requires Metal')
@@ -575,10 +585,11 @@ def sing(root, plan_path, output, case_id, conditioning_path=None, reference_sin
     output.mkdir(parents=True, exist_ok=False)
     (output / '.partial').write_text('Incomplete singing render.\n')
     if reference_vocals:reference=isolated_vocal_reference(reference,output/'reference-vocals.wav')
-    import numpy as np
-    import soundfile as sf
-    import torch
-    from acestep.inference import GenerationParams, GenerationConfig, generate_music
+    with phase('sing-import'):
+        import numpy as np
+        import soundfile as sf
+        import torch
+        from acestep.inference import GenerationParams, GenerationConfig, generate_music
     started = time.monotonic()
     torch.set_num_threads(4)
     random.seed(c['seed']); np.random.seed(c['seed']); torch.manual_seed(c['seed'])
@@ -597,7 +608,8 @@ def sing(root, plan_path, output, case_id, conditioning_path=None, reference_sin
                               instrumental=instrumental, lyrics='[Instrumental]' if instrumental else c['lyrics'],
                               vocal_language=c.get('vocal_language','en'), inference_steps=8, **source_params,
                               thinking=False, use_cot_metas=False, use_cot_caption=False, use_cot_language=False, use_cot_lyrics=False)
-    result = generate_music(dit, lm, params, GenerationConfig(batch_size=1, audio_format='wav', use_random_seed=False, seeds=[c['seed']]), save_dir=str(output / 'raw'))
+    with phase('sing-generate'):
+        result = generate_music(dit, lm, params, GenerationConfig(batch_size=1, audio_format='wav', use_random_seed=False, seeds=[c['seed']]), save_dir=str(output / 'raw'))
     if not result.success or len(result.audios) != 1:
         raise RuntimeError(result.error or 'Expected exactly one singing output')
     pcm, rate = sf.read(result.audios[0]['path'], dtype='float32', always_2d=True)
@@ -651,7 +663,7 @@ if __name__ == '__main__':
     p.add_argument('--mac-small-decode',action='store_true',help='Local research: bounded PyTorch MPS decode tiles')
     a = p.parse_args()
     if a.phase == 'draft':
-        draft(runtime(a.runtime), a.phrase, a.seed, a.output, a.voice, a.genre, a.duration, a.energy,a.instrumental)
+        draft(runtime(a.runtime, singer_weights=False), a.phrase, a.seed, a.output, a.voice, a.genre, a.duration, a.energy,a.instrumental)
     else:
         if a.plan is None or a.case is None:
             p.error('sing requires --plan and --case')
@@ -662,4 +674,5 @@ if __name__ == '__main__':
         if torch.backends.mps.is_available():torch.mps.empty_cache()
         if torch.cuda.is_available():torch.cuda.empty_cache()
         from vocal_identity import finish_identity
-        finish_identity(a.output)
+        with phase('identity'):
+            finish_identity(a.output)
