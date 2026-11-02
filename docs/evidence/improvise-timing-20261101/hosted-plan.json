@@ -117,5 +117,6 @@
   "priorBoundMicros": 0,
   "newLeaseCapMicros": 1000000,
   "maxRequestsAcrossCampaign": 1,
-  "workerSourceCommit": "bdbc4a377bc659d51fca538aae376490878ca0a7"
+  "workerSourceCommit": "bdbc4a377bc659d51fca538aae376490878ca0a7",
+  "applicationCommit": "2571ab20b23648f85cda2642bddf7b9619acb1fb"
 }
