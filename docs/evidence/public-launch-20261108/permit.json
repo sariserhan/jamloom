@@ -1,0 +1,8 @@
+{
+  "id": "release-d263e690-0899-4e29-b50d-595464a15539",
+  "startsAt": 1794196197659,
+  "expiresAt": 1794800997659,
+  "capMicros": 10000000,
+  "cycleMicros": 750000,
+  "cycleSeconds": 2400
+}

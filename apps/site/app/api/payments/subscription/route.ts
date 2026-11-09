@@ -4,6 +4,7 @@ import {creditBilling} from '../../../../lib/stripe-payments';
 import {subscriptionCheckout} from '../../../../lib/credit-subscriptions';
 import {boundedAuthRequest} from '../../../../lib/bounded-request';
 import {appleReviewAccount} from '../../../../lib/apple-review';
+import {creditCapacityForSales} from '../../../../lib/credit-release';
 export const runtime='nodejs';
 export async function POST(request:Request){
  try{
@@ -23,6 +24,7 @@ export async function POST(request:Request){
    return Response.json({url:portal.url},{headers:{'Cache-Control':'private, no-store'}});
   }
   if(!billing.enabled)return Response.json({error:'Purchases and trial generation are not open yet.'},{status:503});
+  if(billing.live&&!await creditCapacityForSales(pool))return Response.json({error:'Song capacity is temporarily unavailable. Please try again before purchasing credits.'},{status:503});
   if(body.action==='trial')return Response.json({claimed:await wallet.claimTrial(session.user.id),balance:await wallet.balance(session.user.id)});
   if(body.action!=='subscribe'||typeof body.key!=='string')return new Response(null,{status:400});
   const checkout=await subscriptionCheckout(billing.stripe,pool,session.user.id,body.key,config.baseURL,billing.live);

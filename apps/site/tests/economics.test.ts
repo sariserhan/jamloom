@@ -15,7 +15,7 @@ test('tax, Apple fee tier, fixed fees, refunds, FX and overhead reduce spendable
  assert.throws(()=>quoteCost({gpu:5} as Costs,100));
  assert.throws(()=>quoteCost(Object.fromEntries(COST_CATEGORIES.map(k=>[k,1])) as Costs,10,2999));
  assert.throws(()=>netProceeds(100,{tax:100,provider:1,refundRisk:0,overhead:0,discount:0,fx:0}));
- assert.equal(paidGenerationReleased,false);
+ assert.equal(paidGenerationReleased,true);
 });
 test('Stripe signatures require exact body, timestamp and sandbox credentials',()=>{
  const stripe=new Stripe('sk_test_fixture');const secret='whsec_fixture',payload=JSON.stringify({id:'evt_test',livemode:false});
@@ -55,7 +55,7 @@ test('credit checkout binds product, taxes, pack and billing mode',async()=>{
  assert.throws(()=>creditBilling({CREDIT_BILLING_MODE:'live',STRIPE_LIVE_SECRET_KEY:'sk_test_wrong',CREDIT_STRIPE_LIVE_WEBHOOK_SECRET:'whsec_fixture'}));
 });
 
-test('live credit sales cannot bypass the application release hold; sandbox remains usable',()=>{
+test('live credit sales still require explicit financial authorization; sandbox remains usable',()=>{
  const env={JAMLOOM_CREDIT_PURCHASES_ENABLED:'true',CREDIT_STRIPE_TAX_CODE:'txcd_10000000',
   STRIPE_LIVE_SECRET_KEY:'sk_live_fixture',CREDIT_STRIPE_LIVE_WEBHOOK_SECRET:'whsec_live',
   STRIPE_SECRET_KEY:'sk_test_fixture',STRIPE_WEBHOOK_SECRET:'whsec_test'};

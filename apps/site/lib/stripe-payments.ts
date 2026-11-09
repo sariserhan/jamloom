@@ -1,4 +1,5 @@
-import {CREDIT_CATALOG_VERSION,LEGACY_CREDIT_MULTIPLIER,creditCatalog,creditSalesQualified} from './credit-catalog';
+import {CREDIT_CATALOG_VERSION,LEGACY_CREDIT_MULTIPLIER,creditCatalog} from './credit-catalog';
+import {creditSalesAuthorized} from './credit-release';
 import Stripe from 'stripe';
 import { CREDIT_PACKS, integer } from './economics';
 import { Wallet } from './wallet';
@@ -13,7 +14,7 @@ export function creditBilling(env:Record<string,string|undefined>=process.env){
  const live=mode==='live',key=live?env.STRIPE_LIVE_SECRET_KEY:env.STRIPE_SECRET_KEY;
  const secret=live?env.CREDIT_STRIPE_LIVE_WEBHOOK_SECRET:env.STRIPE_WEBHOOK_SECRET;
  if(!key?.startsWith(live?'sk_live_':'sk_test_')||!secret?.startsWith('whsec_'))throw Error('Credit billing is not configured');
- return {stripe:new Stripe(key,{maxNetworkRetries:1,timeout:10000}),secret,live,enabled:(!live||(paidGenerationReleased&&creditSalesQualified(env)))&&env.JAMLOOM_CREDIT_PURCHASES_ENABLED==='true'&&/^txcd_[0-9]{8}$/.test(env.CREDIT_STRIPE_TAX_CODE??'')};
+ return {stripe:new Stripe(key,{maxNetworkRetries:1,timeout:10000}),secret,live,enabled:(!live||(paidGenerationReleased&&creditSalesAuthorized(env)))&&env.JAMLOOM_CREDIT_PURCHASES_ENABLED==='true'&&/^txcd_[0-9]{8}$/.test(env.CREDIT_STRIPE_TAX_CODE??'')};
 }
 export async function reconcileCreditReversal(stripe:Stripe,wallet:Wallet,event:Stripe.Event){
  if(event.livemode!==wallet.live)throw Error('Billing environment mismatch');

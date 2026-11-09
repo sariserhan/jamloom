@@ -1,4 +1,5 @@
 import {creditBilling} from '../../../lib/stripe-payments';
+import {creditCapacityForSales} from '../../../lib/credit-release';
 import {CREATOR_PLAN,TOP_UP,TRIAL_CREDITS,CREDIT_CATALOG_VERSION} from '../../../lib/credit-catalog';
 import {accountsConfigured,services} from '../../../lib/services';
 import {Wallet} from '../../../lib/wallet';
@@ -14,7 +15,7 @@ export async function GET(request:Request){
   const {auth,pool}=services();
   const session=await auth.api.getSession({headers:request.headers});
   if(!session?.user.emailVerified)return Response.json({error:'Verified sign-in required.'},{status:401,headers});
-  let purchasesReleased=false;try{purchasesReleased=creditBilling().enabled;}catch{}
+  let purchasesReleased=false;try{const billing=creditBilling();purchasesReleased=billing.enabled&&(!billing.live||await creditCapacityForSales(pool));}catch{}
   const sandboxReview=appleReviewAccount(session.user.id),wallet=new Wallet(pool,accountCreditLive(session.user.id)),balance=await wallet.balance(session.user.id),subscriptions=await wallet.subscriptions(session.user.id);
   const reviewPurchases=appleReviewPurchases(session.user.id);
   purchasesReleased=purchasesReleased||reviewPurchases;

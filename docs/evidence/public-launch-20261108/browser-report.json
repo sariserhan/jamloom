@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "browser": "chromium",
+      "widths": [
+        1280,
+        390
+      ],
+      "displayPricesUSD": [
+        35,
+        20
+      ],
+      "checkoutAmountsCents": [
+        3500,
+        2000
+      ],
+      "actualStripeTestSessions": true,
+      "charges": 0,
+      "errors": []
+    },
+    {
+      "browser": "webkit",
+      "widths": [
+        1280,
+        390
+      ],
+      "displayPricesUSD": [
+        35,
+        20
+      ],
+      "checkoutAmountsCents": [
+        3500,
+        2000
+      ],
+      "actualStripeTestSessions": true,
+      "charges": 0,
+      "errors": []
+    }
+  ],
+  "liveCharges": 0,
+  "gpuRequests": 0,
+  "creditGrants": 0
+}

@@ -2,7 +2,7 @@
 import {useEffect,useRef,useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {CREATOR_PLAN,TOP_UP,TRIAL_CREDITS} from '../../../lib/credit-catalog';
-export function CreditBuy({enabled,live,subscribed=false}:{enabled:boolean;live:boolean;subscribed?:boolean}){
+export function CreditBuy({enabled,live,subscribed=false,trialEnabled=false}:{enabled:boolean;live:boolean;subscribed?:boolean;trialEnabled?:boolean}){
  const [busy,setBusy]=useState(false),[message,setMessage]=useState(''),keys=useRef<Record<string,string>>({}),router=useRouter();
  useEffect(()=>{
   const id=new URL(location.href).searchParams.get('session_id');if(!id)return;
@@ -30,7 +30,7 @@ export function CreditBuy({enabled,live,subscribed=false}:{enabled:boolean;live:
  return <><h2>Creator · ${CREATOR_PLAN.cents/100}/month</h2><p>{CREATOR_PLAN.credits} credits after every successful monthly payment. All paid credits stay in your account without expiry, including after cancellation. Same musical quality on every paid plan.</p>
  <div className="product-actions"><button className="primary" disabled={!enabled||busy||subscribed} onClick={()=>subscription('subscribe')}>{subscribed?'Already subscribed':'Subscribe to Creator'}</button><button className="secondary" disabled={busy} onClick={()=>subscription('manage')}>Manage subscription</button></div>
  <h2>Add credits without a subscription</h2><p>{TOP_UP.credits} credits · ${TOP_UP.cents/100} once. No expiry. No automatic top-ups.</p><button className="primary" disabled={!enabled||busy} onClick={()=>buy('topup')}>Buy {TOP_UP.credits} credits · ${TOP_UP.cents/100}</button>
- <h2>Try your first creations</h2><p>{TRIAL_CREDITS} one-time trial credits per verified account, while trial capacity is available.</p><button className="secondary" disabled={!enabled||busy} onClick={()=>subscription('trial')}>Claim trial credits</button>
- <p>Prices are USD before applicable tax. Improvise: 10 credits per arrangement. Music DNA: 20 credits per song. Private and public creation cost the same. Failed or cancelled generations return their credits. Listening and downloading an existing result cost no extra credits.</p>
- {!live&&<p>Test mode · no real payment or cash value.</p>}{!enabled&&<p>Purchases remain closed while payment and generation-cost validation is completed.</p>}<p role="status">{message}</p></>;
+ <h2>Try your first creations</h2><p>{TRIAL_CREDITS} one-time trial credits per verified account, while trial capacity is available.</p><button className="secondary" disabled={!enabled||!trialEnabled||busy} onClick={()=>subscription('trial')}>Claim trial credits</button>
+ <p>Initial song capacity is limited. Preparation may take time or be temporarily unavailable. Paid credits do not expire.</p><p>Prices are USD before applicable tax. Improvise: 10 credits per arrangement. Music DNA: 20 credits per song. Private and public creation cost the same. Failed or cancelled generations return their credits. Listening and downloading an existing result cost no extra credits.</p>
+ {!live&&<p>Test mode · no real payment or cash value.</p>}{!enabled&&<p>New purchases are temporarily unavailable. Existing credits and subscription management remain available.</p>}<p role="status">{message}</p></>;
 }
