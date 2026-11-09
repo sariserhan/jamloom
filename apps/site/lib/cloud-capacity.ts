@@ -98,7 +98,7 @@ export class CloudCapacity{
   try{assertActiveWorkerLease(lease(r),this.clock(),remainingMs);}catch{throw new AudioError('Song preparation has expired. Your credits have not been used.',503);}
   await db.query('UPDATE cloud_capacity_cycles SET busy_at=$2 WHERE id=$1',[r.id,this.clock()]);
  }
- async prepare(owner:string):Promise<CapacityState>{
+ async prepare(owner:string,review?:{enabled:boolean;expiresAt:number;owners:readonly string[]}):Promise<CapacityState>{
   this.permitOpen();let created:Cycle|undefined;
   const state=await this.lock(async db=>{
    const existing=await this.current(db);if(existing)return existing.permit_id===this.permit.id?(existing.state==='ready'?'ready':existing.state==='starting'?'preparing':'stopping'):'unavailable';
@@ -106,7 +106,10 @@ export class CloudCapacity{
    if(!await this.guarded(db))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
    if(next.expiresAt>p.expiresAt)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
    const recent=await db.query('SELECT 1 FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>$2 LIMIT 1',[owner,now-86400000]);
-   if(recent.rowCount)throw new AudioError('You have already prepared song creation today. Please try again later.',429);
+   // Only trusted server review configuration relaxes the per-owner daily limit.
+   // Every new cycle still reserves the full cost under the same finite permit.
+   const fundedReviewer=review?.enabled===true&&review.expiresAt>now&&review.owners.includes(owner);
+   if(recent.rowCount&&!fundedReviewer)throw new AudioError('You have already prepared song creation today. Please try again later.',429);
    const before=await this.provider.endpoint();this.identity(before);
    if(before.workers?.min!==0||before.workers?.max!==0||!empty(await this.provider.health()))throw Error('Capacity is not independently disabled');
    assertProductionEndpoint({...before,workers:{min:1,max:1}},await this.provider.catalog(),next,this.profile,now);

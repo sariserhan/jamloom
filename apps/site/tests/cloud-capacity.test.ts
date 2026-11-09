@@ -55,7 +55,7 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
  const cool=async(c:CloudCapacity)=>{now+=120001;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'off');};
  try{
   await migrate(pool);assert.deepEqual(await migrate(pool),[]);
-  for(let n=0;n<12;n++)await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',['owner'+n,`owner${n}@example.test`]);
+  for(let n=0;n<13;n++)await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',['owner'+n,`owner${n}@example.test`]);
   await t.test('reads and recovery never start; concurrent explicit prepares activate once and reserve once',async()=>{
    const c=fresh();assert.equal(await c.state(),'off');assert.equal(await c.ready(300000),false);await c.reconcile();assert.equal(starts,0);
    assert.deepEqual(await Promise.all([start(c,'owner0'),start(c,'owner1')]),['preparing','preparing']);assert.equal(starts,1);
@@ -106,6 +106,8 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    await c.guardianHeartbeat();const prepared=await api(req('POST'),'owner6');assert.equal(prepared.status,202);assert.deepEqual(await prepared.json(),{state:'preparing',creditsUsed:0});
    assert.deepEqual(await commerce.wallet.balance('owner6'),balance);assert.equal((await pool.query('SELECT count(*)::int n FROM dna_song_jobs')).rows[0].n,0);
    await wake(c);await cool(c);
+   const forged=new Request('http://localhost/api/improvise/song',{method:'POST',headers:{Origin:'http://localhost','Content-Type':'application/json','X-Jamloom-DNA':'1'},body:JSON.stringify({action:'prepare',review:{enabled:true,owners:['owner6'],expiresAt:now+86400000}})});
+   assert.equal((await api(forged,'owner6')).status,429);
   });
   await t.test('a changed provider price stops the existing worker immediately',async()=>{
    const c=fresh();await start(c,'owner9');await wake(c);price=2;
@@ -126,6 +128,22 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    now=started+1200001;h.workers={...emptyWorkers,initializing:1};await c.guardianHeartbeat();
    assert.equal((await c.reconcile()).reason,'startup-timeout');assert.equal(e.workers.max,0);
    assert.equal((await pool.query('SELECT reason FROM cloud_capacity_cycles WHERE permit_id=$1',[c.permit.id])).rows[0].reason,'startup-timeout');
+  });
+  await t.test('funded reviewers can prepare again, but public daily limits and aggregate reservations remain enforced',async()=>{
+   const c=fresh(),settings=cloudSongConfig(config(c.permit),'improvise')!,review={enabled:true,owners:['owner12'],expiresAt:now+86400000,capMicros:1000000};
+   const commerce=new DnaCommerce(pool,'fixture-secret-'.repeat(4),localAudioStore(directory),{product:'improvise',budget:settings.budget});
+   await commerce.wallet.grant('owner12',{provider:'stripe_test',receipt:'review-capacity-test',credits:40,netMicros:30000000});
+   const noGeneration={dispatchEnabled:async()=>false,health:async()=>h,submit:async()=>{throw Error('Unexpected generation');},status:async()=>{throw Error('Unexpected generation');},cancel:async()=>{throw Error('Unexpected generation');}};
+   const songs=new CloudSongs(commerce,{...settings,review},noGeneration,c),before=starts,balance=await commerce.wallet.balance('owner12');
+   await c.guardianHeartbeat();assert.equal((await songs.prepareCapacity('owner12')).state,'preparing');await wake(c);await cool(c);
+   await assert.rejects(c.prepare('owner12'),/already prepared/);
+   for(const invalid of [{...review,enabled:false},{...review,expiresAt:now},{...review,owners:['owner0']}])await assert.rejects(c.prepare('owner12',invalid),/already prepared/);
+   await assert.rejects(songs.prepareCapacity('owner0'),/allowance is unavailable/);
+   assert.equal(starts,before+1);
+   assert.equal((await songs.prepareCapacity('owner12')).state,'preparing');await wake(c);await cool(c);
+   await assert.rejects(songs.prepareCapacity('owner12'),/currently unavailable/);assert.equal(starts,before+2);
+   assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[c.permit.id])).rows[0].reserved_micros),2000000);
+   assert.deepEqual(await commerce.wallet.balance('owner12'),balance);
   });
  }finally{await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();await rm(directory,{recursive:true,force:true});}
 });

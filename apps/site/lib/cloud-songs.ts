@@ -68,7 +68,7 @@ export class CloudSongs{
   const balance=await this.commerce.wallet.balance(owner);
   if(!user||user.suspended||frozen?.frozen)throw new AudioError('This account cannot prepare song creation.',403);
   if(balance.available<songCreditPrice(this.commerce.product).credits)throw new AudioError('You need more credits before preparing this song.',402);
-  return {state:await this.capacity.prepare(owner),creditsUsed:0};
+  return {state:await this.capacity.prepare(owner,this.config.review),creditsUsed:0};
  }
  async available(owner:string|null){
   try{this.assertNewRequestAllowed(owner??'');return await this.capacityAvailable();}catch{return false;}
