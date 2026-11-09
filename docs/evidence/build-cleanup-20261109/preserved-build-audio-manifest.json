@@ -1,0 +1,4106 @@
+{
+ "created": "2026-11-09",
+ "deleted_build_dirs": [
+  "build-academy",
+  "build-academy-ci-20261109",
+  "build-academy-completion",
+  "build-academy-endurance",
+  "build-academy-endurance-silent",
+  "build-academy-provider",
+  "build-academy-release",
+  "build-academy-review",
+  "build-active-capacity-20261101",
+  "build-afro-house-qualification-20261028",
+  "build-afro-house-qualification-20261028-followup-003",
+  "build-afro-house-qualification-20261028-followup-004",
+  "build-afro-house-qualification-20261028-replacement",
+  "build-apple-sandbox-followthrough-20261027",
+  "build-audio-cleanup-20261101",
+  "build-aurowall-release",
+  "build-blood-training-20261019",
+  "build-capacity-admission-20261101",
+  "build-capacity-probe-20261101",
+  "build-capacity-retest-20261108",
+  "build-ci-repair-20261031",
+  "build-cleanup-20261020",
+  "build-cloud",
+  "build-club-benchmark-20261024",
+  "build-club-benchmark-revision-20261024",
+  "build-credit-repricing-20261108",
+  "build-deploy-repair",
+  "build-disk-cleanup-20261101",
+  "build-dj-composition-20261025",
+  "build-dj-continuity-flow-20261026",
+  "build-dj-endurance-20261030",
+  "build-dj-flow-buffer-20261026",
+  "build-dj-flow-http-20261026",
+  "build-dj-flow-qualification-20261026",
+  "build-dj-genre-models-20261027",
+  "build-dj-guided-set-20261025",
+  "build-dj-house-consistency-20261025",
+  "build-dj-integrated-20261026",
+  "build-dj-isolated-hooks-20261026",
+  "build-dj-model-comparison-20261026",
+  "build-dj-planner-20261026",
+  "build-dj-preferred-consistency-20261026",
+  "build-dj-qualification-20261024",
+  "build-dj-qualification-20261024-retry",
+  "build-dj-qualification-20261024-sessions",
+  "build-dj-qualification-20261024-sessions-finish",
+  "build-dj-qualification-20261024-sessions-finish-launch-fix",
+  "build-dj-qualification-20261024-sessions-finish-resume",
+  "build-dj-qualification-20261024-sessions-finish-retry",
+  "build-dj-qualification-20261024-sessions-retry",
+  "build-dj-qualification-20261025-beta",
+  "build-dj-qualification-20261025-hosted",
+  "build-dj-quality-20261025",
+  "build-dj-recovery-20261025",
+  "build-dj-recovery-20261025-replacement",
+  "build-dj-release-check-20261026",
+  "build-dj-release-check-20261026-retry",
+  "build-dj-reliability-20261026",
+  "build-dj-style-samples-20261025",
+  "build-dj-style-samples-20261025-replacement",
+  "build-dj-sung-aggressive-20261026",
+  "build-dj-sung-aggressive-20261026-replacement",
+  "build-dj-sung-hooks-20261026",
+  "build-dj-sung-hooks-20261026-replacement",
+  "build-dna-completion",
+  "build-duration-sanitize",
+  "build-economic-closure-20261108",
+  "build-empty-exclusions-repair-20261101",
+  "build-final-audit-20261108",
+  "build-final-preparation-20261108",
+  "build-final-security-20261108",
+  "build-finance-followthrough-20261109",
+  "build-finish",
+  "build-finish-asan",
+  "build-hosted-song-trial",
+  "build-identity-preload-20261108",
+  "build-identity-stems-20261101",
+  "build-identity-stems-worker-20261101",
+  "build-improvise-completion",
+  "build-improvise-runtime-budget-20261101",
+  "build-improvise-timing-20261101",
+  "build-improvise-timing-worker-20261101",
+  "build-ios",
+  "build-ios-completion",
+  "build-ios-device",
+  "build-ios-device-20261108",
+  "build-ios-jamloom",
+  "build-ios-launch-20261031",
+  "build-ios-measured",
+  "build-ios-parity",
+  "build-ios-parity-release",
+  "build-ios-phone-release",
+  "build-ios-physical",
+  "build-ios-release-completion",
+  "build-ios-simulator",
+  "build-ios-store",
+  "build-ios-storekit",
+  "build-ios-studio",
+  "build-ios-visual",
+  "build-ios-visual-device",
+  "build-ios27",
+  "build-jamloom",
+  "build-jamloom-legacy-options",
+  "build-launch-audit-20261108",
+  "build-launch-preparation-20261031",
+  "build-lean-cleanup-20261109",
+  "build-live-source",
+  "build-local-release-20261102",
+  "build-mac",
+  "build-mac-sanitize",
+  "build-margin-verification-20261109",
+  "build-musician-training-20261021",
+  "build-neon",
+  "build-neural-qualification-20261030",
+  "build-one-run-release-20261101",
+  "build-open-source-audit",
+  "build-operating-automation-20261109",
+  "build-operations-20261108",
+  "build-owner-evaluation-20261030",
+  "build-payment-closure-20261031",
+  "build-playlist-taste",
+  "build-product",
+  "build-product-entry-20261101",
+  "build-product-ios",
+  "build-project-completion",
+  "build-public-launch-20261108",
+  "build-q0-decay-20261020",
+  "build-q0-tools",
+  "build-r2",
+  "build-readiness-correction-20261101",
+  "build-readiness-recovery-20261102",
+  "build-ready-capacity-20261101",
+  "build-ready-capacity-resume-20261101",
+  "build-recovery-validation-20261108",
+  "build-release-capacity-audit-20261101",
+  "build-release-closure-20261031",
+  "build-release-cold-start-20261101",
+  "build-release-execution-20261102",
+  "build-release-finish-20261102",
+  "build-release-followthrough-20261027",
+  "build-release-followthrough-20261027-pg18",
+  "build-release-followthrough-20261027-pg18-final",
+  "build-release-followthrough-20261027-pg18-verified",
+  "build-release-style-guidance-20261101",
+  "build-revenue-funding-20261109",
+  "build-review-phase-20261108",
+  "build-runpod",
+  "build-singing-benchmark",
+  "build-singing-difference",
+  "build-singing-difference-new",
+  "build-singing-holdout-20261027",
+  "build-site",
+  "build-song-duration",
+  "build-song-finish",
+  "build-song-qualification",
+  "build-song-repair",
+  "build-spec-closure",
+  "build-speech-tools",
+  "build-spleeter",
+  "build-storage-cleanup-20261109",
+  "build-style-guidance-worker-20261101",
+  "build-style-training",
+  "build-style-training-retry",
+  "build-transients",
+  "build-ui",
+  "build-vercel-clean",
+  "build-vercel-config",
+  "build-vercel-mac",
+  "build-visitorping",
+  "build-web",
+  "build-web-before-relocation-20261021",
+  "build-web-growth-20261109",
+  "build-web-tools"
+ ],
+ "archives": [
+  {
+   "original": "build-ios-store/Jamloom-0.11.0-39.xcarchive",
+   "stored": "dist/ios-archives/Jamloom-0.11.0-39.xcarchive",
+   "files": 155
+  },
+  {
+   "original": "build-ios-store/Jamloom-0.11.0-40.xcarchive",
+   "stored": "dist/ios-archives/Jamloom-0.11.0-40.xcarchive",
+   "files": 155
+  }
+ ],
+ "audio_files": 652,
+ "unique_audio": 391,
+ "audio": [
+  {
+   "original": "build-academy/chromium-first-crossfade.wav",
+   "sha256": "a4afd23f8e43aaac163c834ce30f1ee11096ec6ce7a87c4f5bc0f78bb979185f",
+   "bytes": 788524,
+   "stored": "renders/preserved-build-audio-20261109/a4afd23f8e43aaac163c.wav"
+  },
+  {
+   "original": "build-academy/theories-teaching.wav",
+   "sha256": "773d5fd6d8cde1d77580d30c3d119d985e206d58339473eb3da0057a988b6cff",
+   "bytes": 18432102,
+   "stored": "renders/preserved-build-audio-20261109/773d5fd6d8cde1d77580.wav"
+  },
+  {
+   "original": "build-academy/theories-teaching-v2.wav",
+   "sha256": "f3553bf72615bf7153ef737c2895935a8eb5883817c238575efe405a45e05e1c",
+   "bytes": 18432102,
+   "stored": "renders/preserved-build-audio-20261109/f3553bf72615bf7153ef.wav"
+  },
+  {
+   "original": "build-academy/7_t.o.e.wav",
+   "sha256": "8c4033f4a17de2a19ccdd25e0c2bd95e885912592f2324c474c7384c83cb9b83",
+   "bytes": 32110312,
+   "stored": "renders/preserved-build-audio-20261109/8c4033f4a17de2a19ccd.wav"
+  },
+  {
+   "original": "build-academy/5_extended.wav",
+   "sha256": "e71d83f5dba0187618354847fb86ae0f497d1016d1c7ac566a96b5325b75c5e1",
+   "bytes": 34844512,
+   "stored": "renders/preserved-build-audio-20261109/e71d83f5dba018761835.wav"
+  },
+  {
+   "original": "build-academy/extended-teaching.wav",
+   "sha256": "3497c60846ac636deb0d9f17b0d4a89eae8d896b0eb76a99f33dd3cac42fb42a",
+   "bytes": 18432102,
+   "stored": "renders/preserved-build-audio-20261109/3497c60846ac636deb0d.wav"
+  },
+  {
+   "original": "build-academy/extended-teaching-v2.wav",
+   "sha256": "d4ab00568e25cddbdab3a0de65982768a96015e3e45e639c30bfee944ac3a5b0",
+   "bytes": 18432102,
+   "stored": "renders/preserved-build-audio-20261109/d4ab00568e25cddbdab3.wav"
+  },
+  {
+   "original": "build-academy/webkit-first-crossfade.wav",
+   "sha256": "8354b55f9cdaa4eb288447c9027f0822034533c85977cdfc10b7571800aa65a2",
+   "bytes": 771628,
+   "stored": "renders/preserved-build-audio-20261109/8354b55f9cdaa4eb2884.wav"
+  },
+  {
+   "original": "build-academy/practice/midnight-moon.mp3",
+   "sha256": "c85d74fa04783b290d949cbfcddf317fd1edc2a9c3c83c98a203b1e2e098b54d",
+   "bytes": 6280007,
+   "stored": "renders/preserved-build-audio-20261109/c85d74fa04783b290d94.mp3"
+  },
+  {
+   "original": "build-academy/practice/black-diamond.mp3",
+   "sha256": "9fd1c9a97740411e7dcaebdc9af17ab017cf070a82089a48503765a24b7bedf4",
+   "bytes": 4033222,
+   "stored": "renders/preserved-build-audio-20261109/9fd1c9a97740411e7dca.mp3"
+  },
+  {
+   "original": "build-academy/practice/midnight-cruiser.mp3",
+   "sha256": "be0285ba239d85c47c6a0de6466123e3fe8dbc4ad4d9419ccd224ab8ea2b54fc",
+   "bytes": 5778728,
+   "stored": "renders/preserved-build-audio-20261109/be0285ba239d85c47c6a.mp3"
+  },
+  {
+   "original": "build-academy/practice/funked-up.mp3",
+   "sha256": "57cd81254a0f4e068535c5421f93b586514332ad2377f81aea190dd91659fff3",
+   "bytes": 1329549,
+   "stored": "renders/preserved-build-audio-20261109/57cd81254a0f4e068535.mp3"
+  },
+  {
+   "original": "build-academy/practice/wednesday-night.mp3",
+   "sha256": "6187f62385f94db5feda3360da6309d90664c5410dda1351f837f978df2c5861",
+   "bytes": 7065807,
+   "stored": "renders/preserved-build-audio-20261109/6187f62385f94db5feda.mp3"
+  },
+  {
+   "original": "build-academy/practice/atmosphere.mp3",
+   "sha256": "d544b971a06f51d21cd14ab8c933eb07aef5144f81f288d3c4c187d14d88cb1e",
+   "bytes": 5502502,
+   "stored": "renders/preserved-build-audio-20261109/d544b971a06f51d21cd1.mp3"
+  },
+  {
+   "original": "build-academy/practice/next-to-you.mp3",
+   "sha256": "95d620e1ad7bd7c73366979e384f172be21ebc5fe68bdc1af3908faf8a7c7b44",
+   "bytes": 1674888,
+   "stored": "renders/preserved-build-audio-20261109/95d620e1ad7bd7c73366.mp3"
+  },
+  {
+   "original": "build-academy/practice/party-sector.mp3",
+   "sha256": "77e1ad0bd0a7c5625a12eaa1c8099408ede6959b2ee2dbf5bace85d09a602ada",
+   "bytes": 1925141,
+   "stored": "renders/preserved-build-audio-20261109/77e1ad0bd0a7c5625a12.mp3"
+  },
+  {
+   "original": "build-academy-completion/chromium-first-crossfade.wav",
+   "sha256": "1cb233ffbb363907d54df69fec7bfc3f4f62eb431dc8fce882e7c911e8b9c12a",
+   "bytes": 833068,
+   "stored": "renders/preserved-build-audio-20261109/1cb233ffbb363907d54d.wav"
+  },
+  {
+   "original": "build-academy-completion/webkit-first-crossfade.wav",
+   "sha256": "4d680cb092bd035aa505d114f28f16f70c4daf78fccf1a4d3917ba74a7f8b282",
+   "bytes": 784940,
+   "stored": "renders/preserved-build-audio-20261109/4d680cb092bd035aa505.wav"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/academy-audio/extended-v2.mp3",
+   "sha256": "6d68a252436e16cf4b86d745e43f9564198d68ee6fe10f1a4368b235864a3c78",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/6d68a252436e16cf4b86.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/academy-audio/extended.mp3",
+   "sha256": "0ca55afaff18a296a32126f449f91d1d5708398faa6a803ef0c505a46cf75284",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/0ca55afaff18a296a321.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/academy-audio/theories-v2.mp3",
+   "sha256": "661938922885b5114d78cc5a6070010924f1ae832e6b6ad2a0ad6d28f9198203",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/661938922885b5114d78.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/academy-audio/theories.mp3",
+   "sha256": "7f54e84a9d303f42bc51ffca0b1811e47ab9294c6666af9ed5f64861abb28568",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/7f54e84a9d303f42bc51.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/audio/instrument-study.mp3",
+   "sha256": "f883f555beb73a8352e9e92aa110edadbfa92910d9e85c05b6a5a4fa3b0f6c7e",
+   "bytes": 279980,
+   "stored": "renders/preserved-build-audio-20261109/f883f555beb73a8352e9.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/studio/practice-audio/midnight-moon.mp3",
+   "sha256": "87d73adf16a0dcc659dec06b7f186fe533e44500f8a8cc603d6c4ea356ca3a3e",
+   "bytes": 4146764,
+   "stored": "renders/preserved-build-audio-20261109/87d73adf16a0dcc659de.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/studio/practice-audio/black-diamond.mp3",
+   "sha256": "53d1f393008ad8d25fa71d53dac003f3d4e8d87cdff59ef288969f6ea63b5697",
+   "bytes": 4030604,
+   "stored": "renders/preserved-build-audio-20261109/53d1f393008ad8d25fa7.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/studio/practice-audio/rhythm-garden.mp3",
+   "sha256": "1ed6ce4e83e66d673be3f34657baa9572cbc184306726c0cedf693a900cc8400",
+   "bytes": 4144364,
+   "stored": "renders/preserved-build-audio-20261109/1ed6ce4e83e66d673be3.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/studio/practice-audio/midnight-cruiser.mp3",
+   "sha256": "c0ae886684ffec38efc75d97c2d60718ec9f3cc6a4257a4c845348ea6c872a7e",
+   "bytes": 2889164,
+   "stored": "renders/preserved-build-audio-20261109/c0ae886684ffec38efc7.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/studio/practice-audio/funked-up.mp3",
+   "sha256": "306420edbf7493f1d660c219f42d1c6b24231b209f14745e91299ba5bf700086",
+   "bytes": 1326764,
+   "stored": "renders/preserved-build-audio-20261109/306420edbf7493f1d660.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/studio/practice-audio/wednesday-night.mp3",
+   "sha256": "e73f3d5fbebeb9d8d70a966a2c5595393e0b765eea6121069a979b4538bb7d21",
+   "bytes": 3533804,
+   "stored": "renders/preserved-build-audio-20261109/e73f3d5fbebeb9d8d70a.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/studio/practice-audio/funky-hip-hop-lofi-jam.mp3",
+   "sha256": "aac0f301ef3982270389d6cb2e55a23324e5e55beceeb68ac0826cb360ced2f5",
+   "bytes": 3787724,
+   "stored": "renders/preserved-build-audio-20261109/aac0f301ef3982270389.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/studio/practice-audio/atmosphere.mp3",
+   "sha256": "c7ea5e6c6b2a8902797c1e2c52df96af7a396d8a798782a26c5d16b038b1cb4d",
+   "bytes": 2752364,
+   "stored": "renders/preserved-build-audio-20261109/c7ea5e6c6b2a8902797c.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/studio/practice-audio/next-to-you.mp3",
+   "sha256": "3a886a7e9e599d5441b9478bcae00821daf5aabfc98f0f0fe1ef1978af0475c4",
+   "bytes": 1671884,
+   "stored": "renders/preserved-build-audio-20261109/3a886a7e9e599d5441b9.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/site/public/studio/practice-audio/party-sector.mp3",
+   "sha256": "e77886794bc0c408332b1c6f75cb3d753b59260669eada04ee2983c82f471ff2",
+   "bytes": 1922444,
+   "stored": "renders/preserved-build-audio-20261109/e77886794bc0c408332b.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/web/practice-audio/midnight-moon.mp3",
+   "sha256": "87d73adf16a0dcc659dec06b7f186fe533e44500f8a8cc603d6c4ea356ca3a3e",
+   "bytes": 4146764,
+   "stored": "renders/preserved-build-audio-20261109/87d73adf16a0dcc659de.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/web/practice-audio/black-diamond.mp3",
+   "sha256": "53d1f393008ad8d25fa71d53dac003f3d4e8d87cdff59ef288969f6ea63b5697",
+   "bytes": 4030604,
+   "stored": "renders/preserved-build-audio-20261109/53d1f393008ad8d25fa7.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/web/practice-audio/rhythm-garden.mp3",
+   "sha256": "1ed6ce4e83e66d673be3f34657baa9572cbc184306726c0cedf693a900cc8400",
+   "bytes": 4144364,
+   "stored": "renders/preserved-build-audio-20261109/1ed6ce4e83e66d673be3.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/web/practice-audio/midnight-cruiser.mp3",
+   "sha256": "c0ae886684ffec38efc75d97c2d60718ec9f3cc6a4257a4c845348ea6c872a7e",
+   "bytes": 2889164,
+   "stored": "renders/preserved-build-audio-20261109/c0ae886684ffec38efc7.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/web/practice-audio/funked-up.mp3",
+   "sha256": "306420edbf7493f1d660c219f42d1c6b24231b209f14745e91299ba5bf700086",
+   "bytes": 1326764,
+   "stored": "renders/preserved-build-audio-20261109/306420edbf7493f1d660.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/web/practice-audio/wednesday-night.mp3",
+   "sha256": "e73f3d5fbebeb9d8d70a966a2c5595393e0b765eea6121069a979b4538bb7d21",
+   "bytes": 3533804,
+   "stored": "renders/preserved-build-audio-20261109/e73f3d5fbebeb9d8d70a.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/web/practice-audio/funky-hip-hop-lofi-jam.mp3",
+   "sha256": "aac0f301ef3982270389d6cb2e55a23324e5e55beceeb68ac0826cb360ced2f5",
+   "bytes": 3787724,
+   "stored": "renders/preserved-build-audio-20261109/aac0f301ef3982270389.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/web/practice-audio/atmosphere.mp3",
+   "sha256": "c7ea5e6c6b2a8902797c1e2c52df96af7a396d8a798782a26c5d16b038b1cb4d",
+   "bytes": 2752364,
+   "stored": "renders/preserved-build-audio-20261109/c7ea5e6c6b2a8902797c.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/web/practice-audio/next-to-you.mp3",
+   "sha256": "3a886a7e9e599d5441b9478bcae00821daf5aabfc98f0f0fe1ef1978af0475c4",
+   "bytes": 1671884,
+   "stored": "renders/preserved-build-audio-20261109/3a886a7e9e599d5441b9.mp3"
+  },
+  {
+   "original": "build-academy-release/source/apps/web/practice-audio/party-sector.mp3",
+   "sha256": "e77886794bc0c408332b1c6f75cb3d753b59260669eada04ee2983c82f471ff2",
+   "bytes": 1922444,
+   "stored": "renders/preserved-build-audio-20261109/e77886794bc0c408332b.mp3"
+  },
+  {
+   "original": "build-academy-release/source/docs/evidence/academy/audio/chromium-first-crossfade.wav",
+   "sha256": "a4afd23f8e43aaac163c834ce30f1ee11096ec6ce7a87c4f5bc0f78bb979185f",
+   "bytes": 788524,
+   "stored": "renders/preserved-build-audio-20261109/a4afd23f8e43aaac163c.wav"
+  },
+  {
+   "original": "build-academy-release/source/docs/evidence/academy/audio/webkit-first-crossfade.wav",
+   "sha256": "8354b55f9cdaa4eb288447c9027f0822034533c85977cdfc10b7571800aa65a2",
+   "bytes": 771628,
+   "stored": "renders/preserved-build-audio-20261109/8354b55f9cdaa4eb2884.wav"
+  },
+  {
+   "original": "build-academy-review/extended-candidate-grid.wav",
+   "sha256": "19aa3e1d40acc6099877551498466d6cb5d9977dc1b435d6bb3837016a593457",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/19aa3e1d40acc6099877.wav"
+  },
+  {
+   "original": "build-academy-review/theories-candidate-grid.wav",
+   "sha256": "43105498227fb629eb0c6ba8b0a82b20d8fd35c33ab2f019c759030a3f678ab2",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/43105498227fb629eb0c.wav"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/site/public/academy-audio/extended-v2.mp3",
+   "sha256": "6d68a252436e16cf4b86d745e43f9564198d68ee6fe10f1a4368b235864a3c78",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/6d68a252436e16cf4b86.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/site/public/academy-audio/extended.mp3",
+   "sha256": "0ca55afaff18a296a32126f449f91d1d5708398faa6a803ef0c505a46cf75284",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/0ca55afaff18a296a321.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/site/public/academy-audio/theories-v2.mp3",
+   "sha256": "661938922885b5114d78cc5a6070010924f1ae832e6b6ad2a0ad6d28f9198203",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/661938922885b5114d78.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/site/public/academy-audio/theories.mp3",
+   "sha256": "7f54e84a9d303f42bc51ffca0b1811e47ab9294c6666af9ed5f64861abb28568",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/7f54e84a9d303f42bc51.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/site/public/audio/instrument-study.mp3",
+   "sha256": "f883f555beb73a8352e9e92aa110edadbfa92910d9e85c05b6a5a4fa3b0f6c7e",
+   "bytes": 279980,
+   "stored": "renders/preserved-build-audio-20261109/f883f555beb73a8352e9.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/web/practice-audio/midnight-moon.mp3",
+   "sha256": "87d73adf16a0dcc659dec06b7f186fe533e44500f8a8cc603d6c4ea356ca3a3e",
+   "bytes": 4146764,
+   "stored": "renders/preserved-build-audio-20261109/87d73adf16a0dcc659de.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/web/practice-audio/black-diamond.mp3",
+   "sha256": "53d1f393008ad8d25fa71d53dac003f3d4e8d87cdff59ef288969f6ea63b5697",
+   "bytes": 4030604,
+   "stored": "renders/preserved-build-audio-20261109/53d1f393008ad8d25fa7.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/web/practice-audio/rhythm-garden.mp3",
+   "sha256": "1ed6ce4e83e66d673be3f34657baa9572cbc184306726c0cedf693a900cc8400",
+   "bytes": 4144364,
+   "stored": "renders/preserved-build-audio-20261109/1ed6ce4e83e66d673be3.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/web/practice-audio/midnight-cruiser.mp3",
+   "sha256": "c0ae886684ffec38efc75d97c2d60718ec9f3cc6a4257a4c845348ea6c872a7e",
+   "bytes": 2889164,
+   "stored": "renders/preserved-build-audio-20261109/c0ae886684ffec38efc7.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/web/practice-audio/funked-up.mp3",
+   "sha256": "306420edbf7493f1d660c219f42d1c6b24231b209f14745e91299ba5bf700086",
+   "bytes": 1326764,
+   "stored": "renders/preserved-build-audio-20261109/306420edbf7493f1d660.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/web/practice-audio/wednesday-night.mp3",
+   "sha256": "e73f3d5fbebeb9d8d70a966a2c5595393e0b765eea6121069a979b4538bb7d21",
+   "bytes": 3533804,
+   "stored": "renders/preserved-build-audio-20261109/e73f3d5fbebeb9d8d70a.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/web/practice-audio/funky-hip-hop-lofi-jam.mp3",
+   "sha256": "aac0f301ef3982270389d6cb2e55a23324e5e55beceeb68ac0826cb360ced2f5",
+   "bytes": 3787724,
+   "stored": "renders/preserved-build-audio-20261109/aac0f301ef3982270389.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/web/practice-audio/atmosphere.mp3",
+   "sha256": "c7ea5e6c6b2a8902797c1e2c52df96af7a396d8a798782a26c5d16b038b1cb4d",
+   "bytes": 2752364,
+   "stored": "renders/preserved-build-audio-20261109/c7ea5e6c6b2a8902797c.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/web/practice-audio/next-to-you.mp3",
+   "sha256": "3a886a7e9e599d5441b9478bcae00821daf5aabfc98f0f0fe1ef1978af0475c4",
+   "bytes": 1671884,
+   "stored": "renders/preserved-build-audio-20261109/3a886a7e9e599d5441b9.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/apps/web/practice-audio/party-sector.mp3",
+   "sha256": "e77886794bc0c408332b1c6f75cb3d753b59260669eada04ee2983c82f471ff2",
+   "bytes": 1922444,
+   "stored": "renders/preserved-build-audio-20261109/e77886794bc0c408332b.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/assets/singer-identities/af_nicole.wav",
+   "sha256": "303efbf1961ca95a479b4c784e05ad86147949d4b894b657732494452e676456",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/303efbf1961ca95a479b.wav"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/assets/singer-identities/am_michael.wav",
+   "sha256": "cc192e2651bc081d869baf0bc5287d0fa6576022c2d7f879dbc682bab0832bcb",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/cc192e2651bc081d869b.wav"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/assets/singer-identities/af_bella.wav",
+   "sha256": "3bb1fb4c62997ca6d854c785f3a1c8951774bb05e9cd161bd760fae7a33dd26f",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/3bb1fb4c62997ca6d854.wav"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/assets/singer-identities/am_fenrir.wav",
+   "sha256": "e3f7104e196c1a50cbd8abc66dc9b8d52250b8e30f47f2aff219cdadd082fc35",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/e3f7104e196c1a50cbd8.wav"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/assets/singing-recordings/long-way-home-song.mp3",
+   "sha256": "ddf9f188f41196859c7200e8e3d7534e92dbb65b5aa30a58f9daaa1a11b66ef7",
+   "bytes": 2881196,
+   "stored": "renders/preserved-build-audio-20261109/ddf9f188f41196859c72.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/assets/singing-recordings/long-way-home-karaoke.mp3",
+   "sha256": "86da4419f57c41a438910c82cacabad7d4b0be7862cfad355030b8535f2a40ef",
+   "bytes": 2881196,
+   "stored": "renders/preserved-build-audio-20261109/86da4419f57c41a43891.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/assets/singing-recordings/leave-it-all-outside-song.mp3",
+   "sha256": "fbda0c46fef760e7c6611872130d58b407bcc44ca3284d3cdea54e0b431bc2cb",
+   "bytes": 2881196,
+   "stored": "renders/preserved-build-audio-20261109/fbda0c46fef760e7c661.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/assets/singing-recordings/leave-it-all-outside-karaoke.mp3",
+   "sha256": "e31b9691412a4d2a11c539a7451aad921d9d4b9c4fe1cf008eb482cbcb6e25d6",
+   "bytes": 2881196,
+   "stored": "renders/preserved-build-audio-20261109/e31b9691412a4d2a11c5.mp3"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/docs/evidence/academy/audio/chromium-first-crossfade.wav",
+   "sha256": "a4afd23f8e43aaac163c834ce30f1ee11096ec6ce7a87c4f5bc0f78bb979185f",
+   "bytes": 788524,
+   "stored": "renders/preserved-build-audio-20261109/a4afd23f8e43aaac163c.wav"
+  },
+  {
+   "original": "build-capacity-probe-20261101/deploy-source/docs/evidence/academy/audio/webkit-first-crossfade.wav",
+   "sha256": "8354b55f9cdaa4eb288447c9027f0822034533c85977cdfc10b7571800aa65a2",
+   "bytes": 771628,
+   "stored": "renders/preserved-build-audio-20261109/8354b55f9cdaa4eb2884.wav"
+  },
+  {
+   "original": "build-capacity-retest-20261108/deployed-improvise.wav",
+   "sha256": "67531f674bab4c66cbc1466394ab282c30754a8c88bde29bc42893be6c98c2ef",
+   "bytes": 8448044,
+   "stored": "renders/preserved-build-audio-20261109/67531f674bab4c66cbc1.wav"
+  },
+  {
+   "original": "build-dna-completion/cloud/2026-11-01T04-09-38.857Z/german-jazz.wav",
+   "sha256": "91c49330f27d01b54758a92f552468031b342ae167259dc61196e2b87dc8c0ba",
+   "bytes": 19200044,
+   "stored": "renders/preserved-build-audio-20261109/91c49330f27d01b54758.wav"
+  },
+  {
+   "original": "build-dna-completion/cloud/2026-10-30T22-47-07.503Z/german-jazz.wav",
+   "sha256": "c335f98e0639ab46fad8c48486258ad8763429385c3ab686e2649770f8b69bd4",
+   "bytes": 19200044,
+   "stored": "renders/preserved-build-audio-20261109/c335f98e0639ab46fad8.wav"
+  },
+  {
+   "original": "build-dna-completion/cloud/2026-11-01T05-27-29.150Z/1416aff7a32f4377a4b5b9fa72bb965e-rejected.wav",
+   "sha256": "b972071f1c3293545ca1fdaf9e1bc02da8f7e123d0c297955007ae63d7ad91d1",
+   "bytes": 25728044,
+   "stored": "renders/preserved-build-audio-20261109/b972071f1c3293545ca1.wav"
+  },
+  {
+   "original": "build-dna-completion/cloud/2026-10-31T00-09-37.567Z/maximum-dna.wav",
+   "sha256": "c35e8389e6574c62a8f6c8d9eee5e642774e3514a34444214090d2a5f5f2fd0c",
+   "bytes": 19200044,
+   "stored": "renders/preserved-build-audio-20261109/c35e8389e6574c62a8f6.wav"
+  },
+  {
+   "original": "build-dna-completion/cloud/2026-10-23T21-51-43.738Z/metal.wav",
+   "sha256": "35e3efd6199f68f59679008eebe64a1107c5fc941e8adad88df556f8865bb568",
+   "bytes": 26880044,
+   "stored": "renders/preserved-build-audio-20261109/35e3efd6199f68f59679.wav"
+  },
+  {
+   "original": "build-dna-completion/cloud/2026-10-23T21-51-43.738Z/jazz.wav",
+   "sha256": "05ec601f2b9c9eeebc37ff7f4053c0d96ccdb65a05c3e98b6c27c9dbe677cba2",
+   "bytes": 19200044,
+   "stored": "renders/preserved-build-audio-20261109/05ec601f2b9c9eeebc37.wav"
+  },
+  {
+   "original": "build-dna-completion/cloud/2026-11-01T03-33-25.439Z/metal.wav",
+   "sha256": "e8ee043353f1cb77135c631feeef2c03067ce3da5dc30bb5922e165200087076",
+   "bytes": 26880044,
+   "stored": "renders/preserved-build-audio-20261109/e8ee043353f1cb77135c.wav"
+  },
+  {
+   "original": "build-dna-completion/cloud/2026-10-30T20-44-17.142Z/metal.wav",
+   "sha256": "7f43fe6446441e223b16b49d619a1dc83fa846b18335bb414ac40f6d17f5a62d",
+   "bytes": 26880044,
+   "stored": "renders/preserved-build-audio-20261109/7f43fe6446441e223b16.wav"
+  },
+  {
+   "original": "build-duration-sanitize/taste-test.wav",
+   "sha256": "a4b8e873677acf7ee380d599f486d3e42416f78ef648f640e493edde15e7d978",
+   "bytes": 5829864,
+   "stored": "renders/preserved-build-audio-20261109/a4b8e873677acf7ee380.wav"
+  },
+  {
+   "original": "build-duration-sanitize/taste-long-test.wav",
+   "sha256": "6c137bf1bb612017d28a94403eb6817a1bbc1280b0d03caa757e348d5cb8359e",
+   "bytes": 34432044,
+   "stored": "renders/preserved-build-audio-20261109/6c137bf1bb612017d28a.wav"
+  },
+  {
+   "original": "build-duration-sanitize/c-api-input.wav",
+   "sha256": "5476bf6a47eb6d00e109680ad0c6b1b299e1a13603be28d118e323faaf529e6b",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/5476bf6a47eb6d00e109.wav"
+  },
+  {
+   "original": "build-duration-sanitize/integration/repeat.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-duration-sanitize/integration/m0a.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-duration-sanitize/integration/changed.wav",
+   "sha256": "8a406f0f849017e509211131c988ae6ef682c91a9e8956615ac3a60a1a05a48e",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/8a406f0f849017e50921.wav"
+  },
+  {
+   "original": "build-duration-sanitize/integration/rate44100.wav",
+   "sha256": "237d59d566abbae0ae53f247fc24804c413cfd253a45673b35c5f116733a1530",
+   "bytes": 2046284,
+   "stored": "renders/preserved-build-audio-20261109/237d59d566abbae0ae53.wav"
+  },
+  {
+   "original": "build-empty-exclusions-repair-20261101/deployed-music-dna.wav",
+   "sha256": "8def9c273c85c29aeb99691ea26f29262cadcf03faec5431d67edcc5b36d4cea",
+   "bytes": 22080044,
+   "stored": "renders/preserved-build-audio-20261109/8def9c273c85c29aeb99.wav"
+  },
+  {
+   "original": "build-finish/taste-test.wav",
+   "sha256": "a4b8e873677acf7ee380d599f486d3e42416f78ef648f640e493edde15e7d978",
+   "bytes": 5829864,
+   "stored": "renders/preserved-build-audio-20261109/a4b8e873677acf7ee380.wav"
+  },
+  {
+   "original": "build-finish/taste-long-test.wav",
+   "sha256": "6c137bf1bb612017d28a94403eb6817a1bbc1280b0d03caa757e348d5cb8359e",
+   "bytes": 34432044,
+   "stored": "renders/preserved-build-audio-20261109/6c137bf1bb612017d28a.wav"
+  },
+  {
+   "original": "build-finish/c-api-input.wav",
+   "sha256": "5476bf6a47eb6d00e109680ad0c6b1b299e1a13603be28d118e323faaf529e6b",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/5476bf6a47eb6d00e109.wav"
+  },
+  {
+   "original": "build-finish/integration/repeat.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-finish/integration/m0a.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-finish/integration/changed.wav",
+   "sha256": "8a406f0f849017e509211131c988ae6ef682c91a9e8956615ac3a60a1a05a48e",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/8a406f0f849017e50921.wav"
+  },
+  {
+   "original": "build-finish/integration/rate44100.wav",
+   "sha256": "237d59d566abbae0ae53f247fc24804c413cfd253a45673b35c5f116733a1530",
+   "bytes": 2046284,
+   "stored": "renders/preserved-build-audio-20261109/237d59d566abbae0ae53.wav"
+  },
+  {
+   "original": "build-finish-asan/taste-test.wav",
+   "sha256": "a4b8e873677acf7ee380d599f486d3e42416f78ef648f640e493edde15e7d978",
+   "bytes": 5829864,
+   "stored": "renders/preserved-build-audio-20261109/a4b8e873677acf7ee380.wav"
+  },
+  {
+   "original": "build-finish-asan/taste-long-test.wav",
+   "sha256": "6c137bf1bb612017d28a94403eb6817a1bbc1280b0d03caa757e348d5cb8359e",
+   "bytes": 34432044,
+   "stored": "renders/preserved-build-audio-20261109/6c137bf1bb612017d28a.wav"
+  },
+  {
+   "original": "build-hosted-song-trial/source.wav",
+   "sha256": "73ea0812901cb6233d5e34537d3a222b22976806a9a005401f790111f1da17f8",
+   "bytes": 79698,
+   "stored": "renders/preserved-build-audio-20261109/73ea0812901cb6233d5e.wav"
+  },
+  {
+   "original": "build-hosted-song-trial/retry/source.wav",
+   "sha256": "73ea0812901cb6233d5e34537d3a222b22976806a9a005401f790111f1da17f8",
+   "bytes": 79698,
+   "stored": "renders/preserved-build-audio-20261109/73ea0812901cb6233d5e.wav"
+  },
+  {
+   "original": "build-hosted-song-trial/final/turkish.wav",
+   "sha256": "a2e0e7d275596c0e5ef85e87a390370bee6f7c28fa619b18ffbd2d9635e9b1f5",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/a2e0e7d275596c0e5ef8.wav"
+  },
+  {
+   "original": "build-hosted-song-trial/final/rock.wav",
+   "sha256": "195a5f5e8b630a3ad9e84c6123cb556ee51e753816f9eb89b622d72e4880d04b",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/195a5f5e8b630a3ad9e8.wav"
+  },
+  {
+   "original": "build-hosted-song-trial/final/funk.wav",
+   "sha256": "b104382f786873b7e52be70bdfe849734a665061920e24feb437bd17ea6828e8",
+   "bytes": 5760044,
+   "stored": "renders/preserved-build-audio-20261109/b104382f786873b7e52b.wav"
+  },
+  {
+   "original": "build-hosted-song-trial/final/russian.wav",
+   "sha256": "ac3a900c4a1395d4c2ecb9627b278c1d17391cebbeaa31d9078a9e50b1da759f",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/ac3a900c4a1395d4c2ec.wav"
+  },
+  {
+   "original": "build-hosted-song-trial/final/source.wav",
+   "sha256": "73ea0812901cb6233d5e34537d3a222b22976806a9a005401f790111f1da17f8",
+   "bytes": 79698,
+   "stored": "renders/preserved-build-audio-20261109/73ea0812901cb6233d5e.wav"
+  },
+  {
+   "original": "build-hosted-song-trial/final/jazz-phrase.wav",
+   "sha256": "e808081f64491e8091c8df2c3a377bd2ff56759c28b7f63993aab2f2550b69fc",
+   "bytes": 5760044,
+   "stored": "renders/preserved-build-audio-20261109/e808081f64491e8091c8.wav"
+  },
+  {
+   "original": "build-hosted-song-trial/final/reggae.wav",
+   "sha256": "de0ed96b66cafe369124c66fe49b891598d083cd3ef9acc9de56ebfaf4ee8df6",
+   "bytes": 5760044,
+   "stored": "renders/preserved-build-audio-20261109/de0ed96b66cafe369124.wav"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/site/public/academy-audio/extended-v2.mp3",
+   "sha256": "6d68a252436e16cf4b86d745e43f9564198d68ee6fe10f1a4368b235864a3c78",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/6d68a252436e16cf4b86.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/site/public/academy-audio/extended.mp3",
+   "sha256": "0ca55afaff18a296a32126f449f91d1d5708398faa6a803ef0c505a46cf75284",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/0ca55afaff18a296a321.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/site/public/academy-audio/theories-v2.mp3",
+   "sha256": "661938922885b5114d78cc5a6070010924f1ae832e6b6ad2a0ad6d28f9198203",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/661938922885b5114d78.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/site/public/academy-audio/theories.mp3",
+   "sha256": "7f54e84a9d303f42bc51ffca0b1811e47ab9294c6666af9ed5f64861abb28568",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/7f54e84a9d303f42bc51.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/site/public/audio/instrument-study.mp3",
+   "sha256": "f883f555beb73a8352e9e92aa110edadbfa92910d9e85c05b6a5a4fa3b0f6c7e",
+   "bytes": 279980,
+   "stored": "renders/preserved-build-audio-20261109/f883f555beb73a8352e9.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/web/practice-audio/midnight-moon.mp3",
+   "sha256": "87d73adf16a0dcc659dec06b7f186fe533e44500f8a8cc603d6c4ea356ca3a3e",
+   "bytes": 4146764,
+   "stored": "renders/preserved-build-audio-20261109/87d73adf16a0dcc659de.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/web/practice-audio/black-diamond.mp3",
+   "sha256": "53d1f393008ad8d25fa71d53dac003f3d4e8d87cdff59ef288969f6ea63b5697",
+   "bytes": 4030604,
+   "stored": "renders/preserved-build-audio-20261109/53d1f393008ad8d25fa7.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/web/practice-audio/rhythm-garden.mp3",
+   "sha256": "1ed6ce4e83e66d673be3f34657baa9572cbc184306726c0cedf693a900cc8400",
+   "bytes": 4144364,
+   "stored": "renders/preserved-build-audio-20261109/1ed6ce4e83e66d673be3.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/web/practice-audio/midnight-cruiser.mp3",
+   "sha256": "c0ae886684ffec38efc75d97c2d60718ec9f3cc6a4257a4c845348ea6c872a7e",
+   "bytes": 2889164,
+   "stored": "renders/preserved-build-audio-20261109/c0ae886684ffec38efc7.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/web/practice-audio/funked-up.mp3",
+   "sha256": "306420edbf7493f1d660c219f42d1c6b24231b209f14745e91299ba5bf700086",
+   "bytes": 1326764,
+   "stored": "renders/preserved-build-audio-20261109/306420edbf7493f1d660.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/web/practice-audio/wednesday-night.mp3",
+   "sha256": "e73f3d5fbebeb9d8d70a966a2c5595393e0b765eea6121069a979b4538bb7d21",
+   "bytes": 3533804,
+   "stored": "renders/preserved-build-audio-20261109/e73f3d5fbebeb9d8d70a.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/web/practice-audio/funky-hip-hop-lofi-jam.mp3",
+   "sha256": "aac0f301ef3982270389d6cb2e55a23324e5e55beceeb68ac0826cb360ced2f5",
+   "bytes": 3787724,
+   "stored": "renders/preserved-build-audio-20261109/aac0f301ef3982270389.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/web/practice-audio/atmosphere.mp3",
+   "sha256": "c7ea5e6c6b2a8902797c1e2c52df96af7a396d8a798782a26c5d16b038b1cb4d",
+   "bytes": 2752364,
+   "stored": "renders/preserved-build-audio-20261109/c7ea5e6c6b2a8902797c.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/web/practice-audio/next-to-you.mp3",
+   "sha256": "3a886a7e9e599d5441b9478bcae00821daf5aabfc98f0f0fe1ef1978af0475c4",
+   "bytes": 1671884,
+   "stored": "renders/preserved-build-audio-20261109/3a886a7e9e599d5441b9.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/apps/web/practice-audio/party-sector.mp3",
+   "sha256": "e77886794bc0c408332b1c6f75cb3d753b59260669eada04ee2983c82f471ff2",
+   "bytes": 1922444,
+   "stored": "renders/preserved-build-audio-20261109/e77886794bc0c408332b.mp3"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/assets/singer-identities/af_nicole.wav",
+   "sha256": "303efbf1961ca95a479b4c784e05ad86147949d4b894b657732494452e676456",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/303efbf1961ca95a479b.wav"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/assets/singer-identities/am_michael.wav",
+   "sha256": "cc192e2651bc081d869baf0bc5287d0fa6576022c2d7f879dbc682bab0832bcb",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/cc192e2651bc081d869b.wav"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/assets/singer-identities/af_bella.wav",
+   "sha256": "3bb1fb4c62997ca6d854c785f3a1c8951774bb05e9cd161bd760fae7a33dd26f",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/3bb1fb4c62997ca6d854.wav"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/assets/singer-identities/am_fenrir.wav",
+   "sha256": "e3f7104e196c1a50cbd8abc66dc9b8d52250b8e30f47f2aff219cdadd082fc35",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/e3f7104e196c1a50cbd8.wav"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/docs/evidence/academy/audio/chromium-first-crossfade.wav",
+   "sha256": "a4afd23f8e43aaac163c834ce30f1ee11096ec6ce7a87c4f5bc0f78bb979185f",
+   "bytes": 788524,
+   "stored": "renders/preserved-build-audio-20261109/a4afd23f8e43aaac163c.wav"
+  },
+  {
+   "original": "build-identity-preload-20261108/source/docs/evidence/academy/audio/webkit-first-crossfade.wav",
+   "sha256": "8354b55f9cdaa4eb288447c9027f0822034533c85977cdfc10b7571800aa65a2",
+   "bytes": 771628,
+   "stored": "renders/preserved-build-audio-20261109/8354b55f9cdaa4eb2884.wav"
+  },
+  {
+   "original": "build-identity-stems-20261101/deployed-improvise.wav",
+   "sha256": "bb082fb1f96aa9688023891aec3c19ebc38cd7720ba581cdc5b4ce7b860487c9",
+   "bytes": 8256044,
+   "stored": "renders/preserved-build-audio-20261109/bb082fb1f96aa9688023.wav"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/site/public/academy-audio/extended-v2.mp3",
+   "sha256": "6d68a252436e16cf4b86d745e43f9564198d68ee6fe10f1a4368b235864a3c78",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/6d68a252436e16cf4b86.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/site/public/academy-audio/extended.mp3",
+   "sha256": "0ca55afaff18a296a32126f449f91d1d5708398faa6a803ef0c505a46cf75284",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/0ca55afaff18a296a321.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/site/public/academy-audio/theories-v2.mp3",
+   "sha256": "661938922885b5114d78cc5a6070010924f1ae832e6b6ad2a0ad6d28f9198203",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/661938922885b5114d78.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/site/public/academy-audio/theories.mp3",
+   "sha256": "7f54e84a9d303f42bc51ffca0b1811e47ab9294c6666af9ed5f64861abb28568",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/7f54e84a9d303f42bc51.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/site/public/audio/instrument-study.mp3",
+   "sha256": "f883f555beb73a8352e9e92aa110edadbfa92910d9e85c05b6a5a4fa3b0f6c7e",
+   "bytes": 279980,
+   "stored": "renders/preserved-build-audio-20261109/f883f555beb73a8352e9.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/web/practice-audio/midnight-moon.mp3",
+   "sha256": "87d73adf16a0dcc659dec06b7f186fe533e44500f8a8cc603d6c4ea356ca3a3e",
+   "bytes": 4146764,
+   "stored": "renders/preserved-build-audio-20261109/87d73adf16a0dcc659de.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/web/practice-audio/black-diamond.mp3",
+   "sha256": "53d1f393008ad8d25fa71d53dac003f3d4e8d87cdff59ef288969f6ea63b5697",
+   "bytes": 4030604,
+   "stored": "renders/preserved-build-audio-20261109/53d1f393008ad8d25fa7.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/web/practice-audio/rhythm-garden.mp3",
+   "sha256": "1ed6ce4e83e66d673be3f34657baa9572cbc184306726c0cedf693a900cc8400",
+   "bytes": 4144364,
+   "stored": "renders/preserved-build-audio-20261109/1ed6ce4e83e66d673be3.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/web/practice-audio/midnight-cruiser.mp3",
+   "sha256": "c0ae886684ffec38efc75d97c2d60718ec9f3cc6a4257a4c845348ea6c872a7e",
+   "bytes": 2889164,
+   "stored": "renders/preserved-build-audio-20261109/c0ae886684ffec38efc7.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/web/practice-audio/funked-up.mp3",
+   "sha256": "306420edbf7493f1d660c219f42d1c6b24231b209f14745e91299ba5bf700086",
+   "bytes": 1326764,
+   "stored": "renders/preserved-build-audio-20261109/306420edbf7493f1d660.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/web/practice-audio/wednesday-night.mp3",
+   "sha256": "e73f3d5fbebeb9d8d70a966a2c5595393e0b765eea6121069a979b4538bb7d21",
+   "bytes": 3533804,
+   "stored": "renders/preserved-build-audio-20261109/e73f3d5fbebeb9d8d70a.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/web/practice-audio/funky-hip-hop-lofi-jam.mp3",
+   "sha256": "aac0f301ef3982270389d6cb2e55a23324e5e55beceeb68ac0826cb360ced2f5",
+   "bytes": 3787724,
+   "stored": "renders/preserved-build-audio-20261109/aac0f301ef3982270389.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/web/practice-audio/atmosphere.mp3",
+   "sha256": "c7ea5e6c6b2a8902797c1e2c52df96af7a396d8a798782a26c5d16b038b1cb4d",
+   "bytes": 2752364,
+   "stored": "renders/preserved-build-audio-20261109/c7ea5e6c6b2a8902797c.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/web/practice-audio/next-to-you.mp3",
+   "sha256": "3a886a7e9e599d5441b9478bcae00821daf5aabfc98f0f0fe1ef1978af0475c4",
+   "bytes": 1671884,
+   "stored": "renders/preserved-build-audio-20261109/3a886a7e9e599d5441b9.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/apps/web/practice-audio/party-sector.mp3",
+   "sha256": "e77886794bc0c408332b1c6f75cb3d753b59260669eada04ee2983c82f471ff2",
+   "bytes": 1922444,
+   "stored": "renders/preserved-build-audio-20261109/e77886794bc0c408332b.mp3"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/assets/singer-identities/af_nicole.wav",
+   "sha256": "303efbf1961ca95a479b4c784e05ad86147949d4b894b657732494452e676456",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/303efbf1961ca95a479b.wav"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/assets/singer-identities/am_michael.wav",
+   "sha256": "cc192e2651bc081d869baf0bc5287d0fa6576022c2d7f879dbc682bab0832bcb",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/cc192e2651bc081d869b.wav"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/assets/singer-identities/af_bella.wav",
+   "sha256": "3bb1fb4c62997ca6d854c785f3a1c8951774bb05e9cd161bd760fae7a33dd26f",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/3bb1fb4c62997ca6d854.wav"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/assets/singer-identities/am_fenrir.wav",
+   "sha256": "e3f7104e196c1a50cbd8abc66dc9b8d52250b8e30f47f2aff219cdadd082fc35",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/e3f7104e196c1a50cbd8.wav"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/docs/evidence/academy/audio/chromium-first-crossfade.wav",
+   "sha256": "a4afd23f8e43aaac163c834ce30f1ee11096ec6ce7a87c4f5bc0f78bb979185f",
+   "bytes": 788524,
+   "stored": "renders/preserved-build-audio-20261109/a4afd23f8e43aaac163c.wav"
+  },
+  {
+   "original": "build-identity-stems-worker-20261101/docs/evidence/academy/audio/webkit-first-crossfade.wav",
+   "sha256": "8354b55f9cdaa4eb288447c9027f0822034533c85977cdfc10b7571800aa65a2",
+   "bytes": 771628,
+   "stored": "renders/preserved-build-audio-20261109/8354b55f9cdaa4eb2884.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-30T23-38-33.870Z/drumandbass.wav",
+   "sha256": "5cca42db2fbf53c70399952069f426ad6114dc40f88a8b61cec49e3d62bb2e70",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/5cca42db2fbf53c70399.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-30T19-54-03.275Z/reggae.wav",
+   "sha256": "01d0418f00d1e359bbff6687aaa553cdc9a3afd184b2d199a2fec11278f7365b",
+   "bytes": 5760044,
+   "stored": "renders/preserved-build-audio-20261109/01d0418f00d1e359bbff.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-30T20-27-32.535Z/acousticpop.wav",
+   "sha256": "1552982002a32138c7d275ad9ec1d5b33f89899f3111ba066db638e7453fe3bf",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/1552982002a32138c7d2.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-30T20-27-32.535Z/edm.wav",
+   "sha256": "d61a8d396f97e3d5791777d32199f4eeda328b6714fa23a60a8a31767350f675",
+   "bytes": 7680044,
+   "stored": "renders/preserved-build-audio-20261109/d61a8d396f97e3d57917.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-30T20-27-32.535Z/reggae.wav",
+   "sha256": "bd2776fa7ed1605109d2ce6c5101a83e4d29102c6bfa662b233d81e00a557d7d",
+   "bytes": 5760044,
+   "stored": "renders/preserved-build-audio-20261109/bd2776fa7ed1605109d2.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-30T20-27-32.535Z/jazz.wav",
+   "sha256": "8475d0ec9cda8d4f553f302e425d8bf55222caa597b97393226ce0a5ade0be74",
+   "bytes": 6720044,
+   "stored": "renders/preserved-build-audio-20261109/8475d0ec9cda8d4f553f.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-jazz.wav",
+   "sha256": "4005eb85a1e7c9d8147c80fb42146db390043183975e629e11bef21deb7d0e31",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/4005eb85a1e7c9d8147c.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-jazz.wav",
+   "sha256": "b39653b5cf8063c6ab11e49a6cdc477e7d303d8043c24797e226e7563e9daff2",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/b39653b5cf8063c6ab11.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-funk.wav",
+   "sha256": "a729286df251208089483ab1473c1604d54beb8a80fd7d6c69af360ae54e8ab1",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/a729286df25120808948.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-drumandbass.wav",
+   "sha256": "5189183fabc9d16997b03a408e856df7dbad105952c6323db0296b4896d785aa",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/5189183fabc9d16997b0.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2277-149896-0026-funk.wav",
+   "sha256": "05ce009910d960d3c19a87db0c4db1acf1cc2ed7b005405b7caf620dca112c62",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/05ce009910d960d3c19a.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2086-149220-0047-jazz.wav",
+   "sha256": "958571c1215c25de81f568a79d6bf9150d1b21e51dfad29d824113e02de72452",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/958571c1215c25de81f5.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-31T01-36-52.887Z/ls-2035-147960-0013-drumandbass.wav",
+   "sha256": "ab6c168ec9b2f69a1253d5a2b8ea1f5749d06ba048ab8b5dac45ef0845eb713b",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/ab6c168ec9b2f69a1253.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-24T02-42-53.828Z/reggae.wav",
+   "sha256": "ef0b1f4f111795b9345a012ab4c4c9ecf3b2cf4dcf8c58f3ffd6c8e7a2ad7b57",
+   "bytes": 5760044,
+   "stored": "renders/preserved-build-audio-20261109/ef0b1f4f111795b9345a.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-24T01-11-15.765Z/acousticpop.wav",
+   "sha256": "9e267134804a11371afcdd2029e37ebdd6bfa735aae55c612476579b0491c45a",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/9e267134804a11371afc.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-24T01-11-15.765Z/jazz.wav",
+   "sha256": "bb7bb31c25aabc6d8938c01a0af8a26e4baa8472599405e0bd2510ddf5bc97eb",
+   "bytes": 6720044,
+   "stored": "renders/preserved-build-audio-20261109/bb7bb31c25aabc6d8938.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-11-01T03-21-00.252Z/drumandbass.wav",
+   "sha256": "663b02a5408d3fb6b0903b7765bbd2af36f0b416b3e9bcd21b4d4aad46dec57f",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/663b02a5408d3fb6b090.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-24T03-13-58.610Z/acousticpop.wav",
+   "sha256": "1738741c2523205ae2429c1913f33cce5aeb2c19c65df8d246912d3b0ffd24f7",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/1738741c2523205ae242.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-24T03-13-58.610Z/edm.wav",
+   "sha256": "7b4ab6875cce8719a23d61f73afb6a5e2fa5b98f33673ec15160821dc5153866",
+   "bytes": 7680044,
+   "stored": "renders/preserved-build-audio-20261109/7b4ab6875cce8719a23d.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-24T03-13-58.610Z/reggae.wav",
+   "sha256": "63f46055c34de0c47e816a2173790ae9f3af9592aa84be72c70528eafd9ea677",
+   "bytes": 5760044,
+   "stored": "renders/preserved-build-audio-20261109/63f46055c34de0c47e81.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-24T01-43-02.725Z/acousticpop.wav",
+   "sha256": "023c5bdf42bb2d73283291ee6db4e2ce60b59095cb9fd0f1cf929b2555cd05d5",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/023c5bdf42bb2d732832.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-24T01-43-02.725Z/edm.wav",
+   "sha256": "3046dac6db5464422180225a57beb2c1ce5ca5ce8efce77ba47f4573cc034ae9",
+   "bytes": 7680044,
+   "stored": "renders/preserved-build-audio-20261109/3046dac6db5464422180.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-24T01-43-02.725Z/jazz.wav",
+   "sha256": "8a6d842d96bb1542f2af26a75ab3c68f74b2cc77337284c717d74a9a34d00815",
+   "bytes": 6720044,
+   "stored": "renders/preserved-build-audio-20261109/8a6d842d96bb1542f2af.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-31T00-39-14.681Z/drumandbass.wav",
+   "sha256": "cfa9f18b4afc8eeeba1bc55b84a869384a5ecf33403898ec33eed5649a969ad3",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/cfa9f18b4afc8eeeba1b.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-31T00-39-14.681Z/funk.wav",
+   "sha256": "be2ab76baacbf5f6eb9709abe8e78c302c695933b98e90eb5ce5c65f08e0af94",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/be2ab76baacbf5f6eb97.wav"
+  },
+  {
+   "original": "build-improvise-completion/cloud/2026-10-31T00-39-14.681Z/jazz.wav",
+   "sha256": "6def96c1145b926019ac8bf9f936584cad86fe50311be7e417b9c141e8b423be",
+   "bytes": 8640044,
+   "stored": "renders/preserved-build-audio-20261109/6def96c1145b926019ac.wav"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/site/public/academy-audio/extended-v2.mp3",
+   "sha256": "6d68a252436e16cf4b86d745e43f9564198d68ee6fe10f1a4368b235864a3c78",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/6d68a252436e16cf4b86.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/site/public/academy-audio/extended.mp3",
+   "sha256": "0ca55afaff18a296a32126f449f91d1d5708398faa6a803ef0c505a46cf75284",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/0ca55afaff18a296a321.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/site/public/academy-audio/theories-v2.mp3",
+   "sha256": "661938922885b5114d78cc5a6070010924f1ae832e6b6ad2a0ad6d28f9198203",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/661938922885b5114d78.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/site/public/academy-audio/theories.mp3",
+   "sha256": "7f54e84a9d303f42bc51ffca0b1811e47ab9294c6666af9ed5f64861abb28568",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/7f54e84a9d303f42bc51.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/site/public/audio/instrument-study.mp3",
+   "sha256": "f883f555beb73a8352e9e92aa110edadbfa92910d9e85c05b6a5a4fa3b0f6c7e",
+   "bytes": 279980,
+   "stored": "renders/preserved-build-audio-20261109/f883f555beb73a8352e9.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/web/practice-audio/midnight-moon.mp3",
+   "sha256": "87d73adf16a0dcc659dec06b7f186fe533e44500f8a8cc603d6c4ea356ca3a3e",
+   "bytes": 4146764,
+   "stored": "renders/preserved-build-audio-20261109/87d73adf16a0dcc659de.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/web/practice-audio/black-diamond.mp3",
+   "sha256": "53d1f393008ad8d25fa71d53dac003f3d4e8d87cdff59ef288969f6ea63b5697",
+   "bytes": 4030604,
+   "stored": "renders/preserved-build-audio-20261109/53d1f393008ad8d25fa7.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/web/practice-audio/rhythm-garden.mp3",
+   "sha256": "1ed6ce4e83e66d673be3f34657baa9572cbc184306726c0cedf693a900cc8400",
+   "bytes": 4144364,
+   "stored": "renders/preserved-build-audio-20261109/1ed6ce4e83e66d673be3.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/web/practice-audio/midnight-cruiser.mp3",
+   "sha256": "c0ae886684ffec38efc75d97c2d60718ec9f3cc6a4257a4c845348ea6c872a7e",
+   "bytes": 2889164,
+   "stored": "renders/preserved-build-audio-20261109/c0ae886684ffec38efc7.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/web/practice-audio/funked-up.mp3",
+   "sha256": "306420edbf7493f1d660c219f42d1c6b24231b209f14745e91299ba5bf700086",
+   "bytes": 1326764,
+   "stored": "renders/preserved-build-audio-20261109/306420edbf7493f1d660.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/web/practice-audio/wednesday-night.mp3",
+   "sha256": "e73f3d5fbebeb9d8d70a966a2c5595393e0b765eea6121069a979b4538bb7d21",
+   "bytes": 3533804,
+   "stored": "renders/preserved-build-audio-20261109/e73f3d5fbebeb9d8d70a.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/web/practice-audio/funky-hip-hop-lofi-jam.mp3",
+   "sha256": "aac0f301ef3982270389d6cb2e55a23324e5e55beceeb68ac0826cb360ced2f5",
+   "bytes": 3787724,
+   "stored": "renders/preserved-build-audio-20261109/aac0f301ef3982270389.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/web/practice-audio/atmosphere.mp3",
+   "sha256": "c7ea5e6c6b2a8902797c1e2c52df96af7a396d8a798782a26c5d16b038b1cb4d",
+   "bytes": 2752364,
+   "stored": "renders/preserved-build-audio-20261109/c7ea5e6c6b2a8902797c.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/web/practice-audio/next-to-you.mp3",
+   "sha256": "3a886a7e9e599d5441b9478bcae00821daf5aabfc98f0f0fe1ef1978af0475c4",
+   "bytes": 1671884,
+   "stored": "renders/preserved-build-audio-20261109/3a886a7e9e599d5441b9.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/apps/web/practice-audio/party-sector.mp3",
+   "sha256": "e77886794bc0c408332b1c6f75cb3d753b59260669eada04ee2983c82f471ff2",
+   "bytes": 1922444,
+   "stored": "renders/preserved-build-audio-20261109/e77886794bc0c408332b.mp3"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/assets/singer-identities/af_nicole.wav",
+   "sha256": "303efbf1961ca95a479b4c784e05ad86147949d4b894b657732494452e676456",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/303efbf1961ca95a479b.wav"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/assets/singer-identities/am_michael.wav",
+   "sha256": "cc192e2651bc081d869baf0bc5287d0fa6576022c2d7f879dbc682bab0832bcb",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/cc192e2651bc081d869b.wav"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/assets/singer-identities/af_bella.wav",
+   "sha256": "3bb1fb4c62997ca6d854c785f3a1c8951774bb05e9cd161bd760fae7a33dd26f",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/3bb1fb4c62997ca6d854.wav"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/assets/singer-identities/am_fenrir.wav",
+   "sha256": "e3f7104e196c1a50cbd8abc66dc9b8d52250b8e30f47f2aff219cdadd082fc35",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/e3f7104e196c1a50cbd8.wav"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/docs/evidence/academy/audio/chromium-first-crossfade.wav",
+   "sha256": "a4afd23f8e43aaac163c834ce30f1ee11096ec6ce7a87c4f5bc0f78bb979185f",
+   "bytes": 788524,
+   "stored": "renders/preserved-build-audio-20261109/a4afd23f8e43aaac163c.wav"
+  },
+  {
+   "original": "build-improvise-timing-worker-20261101/docs/evidence/academy/audio/webkit-first-crossfade.wav",
+   "sha256": "8354b55f9cdaa4eb288447c9027f0822034533c85977cdfc10b7571800aa65a2",
+   "bytes": 771628,
+   "stored": "renders/preserved-build-audio-20261109/8354b55f9cdaa4eb2884.wav"
+  },
+  {
+   "original": "build-ios-studio/Studio/singing-audio/long-way-home-song.mp3",
+   "sha256": "ddf9f188f41196859c7200e8e3d7534e92dbb65b5aa30a58f9daaa1a11b66ef7",
+   "bytes": 2881196,
+   "stored": "renders/preserved-build-audio-20261109/ddf9f188f41196859c72.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/singing-audio/long-way-home-karaoke.mp3",
+   "sha256": "86da4419f57c41a438910c82cacabad7d4b0be7862cfad355030b8535f2a40ef",
+   "bytes": 2881196,
+   "stored": "renders/preserved-build-audio-20261109/86da4419f57c41a43891.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/singing-audio/leave-it-all-outside-song.mp3",
+   "sha256": "fbda0c46fef760e7c6611872130d58b407bcc44ca3284d3cdea54e0b431bc2cb",
+   "bytes": 2881196,
+   "stored": "renders/preserved-build-audio-20261109/fbda0c46fef760e7c661.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/singing-audio/leave-it-all-outside-karaoke.mp3",
+   "sha256": "e31b9691412a4d2a11c539a7451aad921d9d4b9c4fe1cf008eb482cbcb6e25d6",
+   "bytes": 2881196,
+   "stored": "renders/preserved-build-audio-20261109/e31b9691412a4d2a11c5.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/practice-audio/midnight-moon.mp3",
+   "sha256": "87d73adf16a0dcc659dec06b7f186fe533e44500f8a8cc603d6c4ea356ca3a3e",
+   "bytes": 4146764,
+   "stored": "renders/preserved-build-audio-20261109/87d73adf16a0dcc659de.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/practice-audio/black-diamond.mp3",
+   "sha256": "53d1f393008ad8d25fa71d53dac003f3d4e8d87cdff59ef288969f6ea63b5697",
+   "bytes": 4030604,
+   "stored": "renders/preserved-build-audio-20261109/53d1f393008ad8d25fa7.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/practice-audio/rhythm-garden.mp3",
+   "sha256": "1ed6ce4e83e66d673be3f34657baa9572cbc184306726c0cedf693a900cc8400",
+   "bytes": 4144364,
+   "stored": "renders/preserved-build-audio-20261109/1ed6ce4e83e66d673be3.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/practice-audio/midnight-cruiser.mp3",
+   "sha256": "c0ae886684ffec38efc75d97c2d60718ec9f3cc6a4257a4c845348ea6c872a7e",
+   "bytes": 2889164,
+   "stored": "renders/preserved-build-audio-20261109/c0ae886684ffec38efc7.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/practice-audio/funked-up.mp3",
+   "sha256": "306420edbf7493f1d660c219f42d1c6b24231b209f14745e91299ba5bf700086",
+   "bytes": 1326764,
+   "stored": "renders/preserved-build-audio-20261109/306420edbf7493f1d660.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/practice-audio/wednesday-night.mp3",
+   "sha256": "e73f3d5fbebeb9d8d70a966a2c5595393e0b765eea6121069a979b4538bb7d21",
+   "bytes": 3533804,
+   "stored": "renders/preserved-build-audio-20261109/e73f3d5fbebeb9d8d70a.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/practice-audio/funky-hip-hop-lofi-jam.mp3",
+   "sha256": "aac0f301ef3982270389d6cb2e55a23324e5e55beceeb68ac0826cb360ced2f5",
+   "bytes": 3787724,
+   "stored": "renders/preserved-build-audio-20261109/aac0f301ef3982270389.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/practice-audio/atmosphere.mp3",
+   "sha256": "c7ea5e6c6b2a8902797c1e2c52df96af7a396d8a798782a26c5d16b038b1cb4d",
+   "bytes": 2752364,
+   "stored": "renders/preserved-build-audio-20261109/c7ea5e6c6b2a8902797c.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/practice-audio/next-to-you.mp3",
+   "sha256": "3a886a7e9e599d5441b9478bcae00821daf5aabfc98f0f0fe1ef1978af0475c4",
+   "bytes": 1671884,
+   "stored": "renders/preserved-build-audio-20261109/3a886a7e9e599d5441b9.mp3"
+  },
+  {
+   "original": "build-ios-studio/Studio/practice-audio/party-sector.mp3",
+   "sha256": "e77886794bc0c408332b1c6f75cb3d753b59260669eada04ee2983c82f471ff2",
+   "bytes": 1922444,
+   "stored": "renders/preserved-build-audio-20261109/e77886794bc0c408332b.mp3"
+  },
+  {
+   "original": "build-jamloom/c-api-input.wav",
+   "sha256": "5476bf6a47eb6d00e109680ad0c6b1b299e1a13603be28d118e323faaf529e6b",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/5476bf6a47eb6d00e109.wav"
+  },
+  {
+   "original": "build-jamloom/integration/repeat.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-jamloom/integration/m0a.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-jamloom/integration/changed.wav",
+   "sha256": "8a406f0f849017e509211131c988ae6ef682c91a9e8956615ac3a60a1a05a48e",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/8a406f0f849017e50921.wav"
+  },
+  {
+   "original": "build-jamloom/integration/rate44100.wav",
+   "sha256": "237d59d566abbae0ae53f247fc24804c413cfd253a45673b35c5f116733a1530",
+   "bytes": 2046284,
+   "stored": "renders/preserved-build-audio-20261109/237d59d566abbae0ae53.wav"
+  },
+  {
+   "original": "build-mac/c-api-render.hiphop.wav",
+   "sha256": "8d02cb12726173f4b03ba49c7ec4d93d86c8f44cde997ae1855fa883dcfd8cf4",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/8d02cb12726173f4b03b.wav"
+  },
+  {
+   "original": "build-mac/c-api-input.wav",
+   "sha256": "5476bf6a47eb6d00e109680ad0c6b1b299e1a13603be28d118e323faaf529e6b",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/5476bf6a47eb6d00e109.wav"
+  },
+  {
+   "original": "build-mac/integration/repeat.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-mac/integration/m0a.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-mac/integration/changed.wav",
+   "sha256": "8a406f0f849017e509211131c988ae6ef682c91a9e8956615ac3a60a1a05a48e",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/8a406f0f849017e50921.wav"
+  },
+  {
+   "original": "build-mac/integration/rate44100.wav",
+   "sha256": "237d59d566abbae0ae53f247fc24804c413cfd253a45673b35c5f116733a1530",
+   "bytes": 2046284,
+   "stored": "renders/preserved-build-audio-20261109/237d59d566abbae0ae53.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/bad-unsupported.wav",
+   "sha256": "63bbc30a42294ac986844b61e7046a7fea015692761abc7356abd496618f718f",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/63bbc30a42294ac98684.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/hardlink.hiphop.wav",
+   "sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/6531e2794da1ca5dd914.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/format-1-32.hiphop.wav",
+   "sha256": "e4e2185829298feab03b2af9bae92ae1cbf6a7a94f83117a50480eabfb66aadd",
+   "bytes": 1024044,
+   "stored": "renders/preserved-build-audio-20261109/e4e2185829298feab03b.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/bad-chunk-overflow.wav",
+   "sha256": "66faa585dbfe17f321ce20ca70cdb9a12c8fe23cbc35443168500c3f61002c31",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/66faa585dbfe17f321ce.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.experimental.wav",
+   "sha256": "a234b6429f64155877d6e24e4815564fa5a5c1241974922c26d04cb4c93555e2",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/a234b6429f64155877d6.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.hiphop.piano.wav",
+   "sha256": "da2550cee7caf08275eedf334b24261d0398ddd796d1a41e3152111698f68254",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/da2550cee7caf08275ee.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.hiphop.drums.wav",
+   "sha256": "5475c33614d97933a447e397ee950cdef2af6ce11cd0f02030e4e76f7f3faf71",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/5475c33614d97933a447.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/format-1-24.hiphop.wav",
+   "sha256": "c61c2ce4ce2d06e36e39dea9ac7d7b72ac00172fcab2af3a2842ecd32faba5b1",
+   "bytes": 1024044,
+   "stored": "renders/preserved-build-audio-20261109/c61c2ce4ce2d06e36e39.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/synthetic.wav",
+   "sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/6531e2794da1ca5dd914.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.hiphop.bass.wav",
+   "sha256": "6a13082bb4cad0dd8f092b67f38a815c6ec8ca65959958a7d0fadddd942e1114",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/6a13082bb4cad0dd8f09.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/format-3-32.wav",
+   "sha256": "07b91752078c60f30d8e20932d6f7b0bcc9e19d010ececba5ab6e82726e6458f",
+   "bytes": 384054,
+   "stored": "renders/preserved-build-audio-20261109/07b91752078c60f30d8e.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/shifted-control.baseline.wav",
+   "sha256": "9716a15da4d1a9ffbafdda2d742acebbb76d90a82afe85377f6007962ea94d1f",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/9716a15da4d1a9ffbafd.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.reggae.drums.wav",
+   "sha256": "7294e4f6997d6633543b9dba07040e16fc2ed57195b4c957701005a41e6dfb74",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/7294e4f6997d6633543b.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/format-1-32.wav",
+   "sha256": "ecfdd88eef594334970a9db2fb6a72356b4d3643cd12bec66c2e35839f05aa26",
+   "bytes": 192054,
+   "stored": "renders/preserved-build-audio-20261109/ecfdd88eef594334970a.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.reggae.piano.wav",
+   "sha256": "891237369ceb3ffa54dc4d7857cc0d2ac0c0709d80d2f5c58302106ba40171cf",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/891237369ceb3ffa54dc.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/repeat.hiphop.wav",
+   "sha256": "9992d9d6763efccd1e0d21bcd98cec5292a8f0af4a4b21388d85b668938cd351",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/9992d9d6763efccd1e0d.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/bad-truncated.wav",
+   "sha256": "eae865b3d21125aa63e5de326afc0f2321a5f487b4fec63eca7f07f0c6c01ff3",
+   "bytes": 96043,
+   "stored": "renders/preserved-build-audio-20261109/eae865b3d21125aa63e5.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.reggae.wav",
+   "sha256": "fd2c21d44076ccdf5a16099366481b6c331b6506464622e2461b91e8aa616c13",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/fd2c21d44076ccdf5a16.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/format-1-24.wav",
+   "sha256": "30928058fd7e25185af42bf79b02f06d31fb24922bd2fe2c09dc5381376792c0",
+   "bytes": 288054,
+   "stored": "renders/preserved-build-audio-20261109/30928058fd7e25185af4.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.reggae.bass.wav",
+   "sha256": "262cc4dec9d3a787f9bb14b52c38a08d8bf59a45e81b6ce0d0b9b31287a07210",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/262cc4dec9d3a787f9bb.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.experimental.piano.wav",
+   "sha256": "1d36ea4bbc6c36227243a74aec212b7ee365317fab5673cf02b7b48b374432ea",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/1d36ea4bbc6c36227243.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.reggae.vocals.wav",
+   "sha256": "41c2a3ecce0424edb6c9ef8e67fa33af86a0ac29ef82ef5a582e864179adb724",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/41c2a3ecce0424edb6c9.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.experimental.drums.wav",
+   "sha256": "0e44418c3a6bb7fbffc9e42890f634fd8161fb55f7238126c378fc8d2f1490ea",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/0e44418c3a6bb7fbffc9.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/control.baseline.wav",
+   "sha256": "2e024bbf4a0566286a8742f46516b3240319d2aecbc7859e5c7577e044c76d14",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/2e024bbf4a0566286a87.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.hiphop.wav",
+   "sha256": "9992d9d6763efccd1e0d21bcd98cec5292a8f0af4a4b21388d85b668938cd351",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/9992d9d6763efccd1e0d.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.experimental.vocals.wav",
+   "sha256": "397c84fde837715ac7945797ce35f49e168d910b7881985546e830a23aec6cfb",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/397c84fde837715ac794.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.hiphop.vocals.wav",
+   "sha256": "1a686c28a6d75fcb30d2dce4026deb730b2f54839d589ee907c797898ae25dfa",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/1a686c28a6d75fcb30d2.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/bad-silence.wav",
+   "sha256": "d303811b8c84619667cd0501342f84ec6cbe69f7aa3856dcf52fabda374c92b8",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/d303811b8c84619667cd.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/repeat.reggae.wav",
+   "sha256": "fd2c21d44076ccdf5a16099366481b6c331b6506464622e2461b91e8aa616c13",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/fd2c21d44076ccdf5a16.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/bad-short.wav",
+   "sha256": "9598543e7418e6ab8ab9efe72e47dfe4b957b29782a5105a020fa10407ef75fb",
+   "bytes": 2044,
+   "stored": "renders/preserved-build-audio-20261109/9598543e7418e6ab8ab9.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/bad-nan.wav",
+   "sha256": "850b7b7e62038b7f275bdbea381d3fb0e119edd75eeb2ec9e5a490ba6983cb44",
+   "bytes": 192044,
+   "stored": "renders/preserved-build-audio-20261109/850b7b7e62038b7f275b.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/shifted.hiphop.wav",
+   "sha256": "df15e7473b5f1731ef60a567eb0c4b5326153f20916707ddce922bc49b8927aa",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/df15e7473b5f1731ef60.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/three.experimental.bass.wav",
+   "sha256": "76e0ccc084d82390a92ad77d168dc13d5a6c8b356340585f242e1316a2f225f8",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/76e0ccc084d82390a92a.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/protect.hiphop.vocals.wav",
+   "sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/6531e2794da1ca5dd914.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/shifted.wav",
+   "sha256": "f462f110ce87ecf6a88e03218b3de26a61b4027692a9b20dec885e7af458f50e",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/f462f110ce87ecf6a88e.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/repeat.experimental.wav",
+   "sha256": "a234b6429f64155877d6e24e4815564fa5a5c1241974922c26d04cb4c93555e2",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/a234b6429f64155877d6.wav"
+  },
+  {
+   "original": "build-mac/remix-integration/format-3-32.hiphop.wav",
+   "sha256": "794e44307299fd4797d2d68919b113da83da6a31bf464193f18d7e8f8e524ebc",
+   "bytes": 1024044,
+   "stored": "renders/preserved-build-audio-20261109/794e44307299fd4797d2.wav"
+  },
+  {
+   "original": "build-mac-sanitize/c-api-render.hiphop.wav",
+   "sha256": "8d02cb12726173f4b03ba49c7ec4d93d86c8f44cde997ae1855fa883dcfd8cf4",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/8d02cb12726173f4b03b.wav"
+  },
+  {
+   "original": "build-mac-sanitize/c-api-input.wav",
+   "sha256": "5476bf6a47eb6d00e109680ad0c6b1b299e1a13603be28d118e323faaf529e6b",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/5476bf6a47eb6d00e109.wav"
+  },
+  {
+   "original": "build-mac-sanitize/integration/repeat.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-mac-sanitize/integration/m0a.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-mac-sanitize/integration/changed.wav",
+   "sha256": "8a406f0f849017e509211131c988ae6ef682c91a9e8956615ac3a60a1a05a48e",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/8a406f0f849017e50921.wav"
+  },
+  {
+   "original": "build-mac-sanitize/integration/rate44100.wav",
+   "sha256": "237d59d566abbae0ae53f247fc24804c413cfd253a45673b35c5f116733a1530",
+   "bytes": 2046284,
+   "stored": "renders/preserved-build-audio-20261109/237d59d566abbae0ae53.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/bad-unsupported.wav",
+   "sha256": "63bbc30a42294ac986844b61e7046a7fea015692761abc7356abd496618f718f",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/63bbc30a42294ac98684.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/hardlink.hiphop.wav",
+   "sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/6531e2794da1ca5dd914.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/format-1-32.hiphop.wav",
+   "sha256": "e4e2185829298feab03b2af9bae92ae1cbf6a7a94f83117a50480eabfb66aadd",
+   "bytes": 1024044,
+   "stored": "renders/preserved-build-audio-20261109/e4e2185829298feab03b.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/bad-chunk-overflow.wav",
+   "sha256": "66faa585dbfe17f321ce20ca70cdb9a12c8fe23cbc35443168500c3f61002c31",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/66faa585dbfe17f321ce.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.experimental.wav",
+   "sha256": "a234b6429f64155877d6e24e4815564fa5a5c1241974922c26d04cb4c93555e2",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/a234b6429f64155877d6.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.hiphop.piano.wav",
+   "sha256": "da2550cee7caf08275eedf334b24261d0398ddd796d1a41e3152111698f68254",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/da2550cee7caf08275ee.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.hiphop.drums.wav",
+   "sha256": "5475c33614d97933a447e397ee950cdef2af6ce11cd0f02030e4e76f7f3faf71",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/5475c33614d97933a447.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/format-1-24.hiphop.wav",
+   "sha256": "c61c2ce4ce2d06e36e39dea9ac7d7b72ac00172fcab2af3a2842ecd32faba5b1",
+   "bytes": 1024044,
+   "stored": "renders/preserved-build-audio-20261109/c61c2ce4ce2d06e36e39.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/synthetic.wav",
+   "sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/6531e2794da1ca5dd914.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.hiphop.bass.wav",
+   "sha256": "6a13082bb4cad0dd8f092b67f38a815c6ec8ca65959958a7d0fadddd942e1114",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/6a13082bb4cad0dd8f09.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/format-3-32.wav",
+   "sha256": "07b91752078c60f30d8e20932d6f7b0bcc9e19d010ececba5ab6e82726e6458f",
+   "bytes": 384054,
+   "stored": "renders/preserved-build-audio-20261109/07b91752078c60f30d8e.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/shifted-control.baseline.wav",
+   "sha256": "9716a15da4d1a9ffbafdda2d742acebbb76d90a82afe85377f6007962ea94d1f",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/9716a15da4d1a9ffbafd.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.reggae.drums.wav",
+   "sha256": "7294e4f6997d6633543b9dba07040e16fc2ed57195b4c957701005a41e6dfb74",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/7294e4f6997d6633543b.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/format-1-32.wav",
+   "sha256": "ecfdd88eef594334970a9db2fb6a72356b4d3643cd12bec66c2e35839f05aa26",
+   "bytes": 192054,
+   "stored": "renders/preserved-build-audio-20261109/ecfdd88eef594334970a.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.reggae.piano.wav",
+   "sha256": "891237369ceb3ffa54dc4d7857cc0d2ac0c0709d80d2f5c58302106ba40171cf",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/891237369ceb3ffa54dc.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/repeat.hiphop.wav",
+   "sha256": "9992d9d6763efccd1e0d21bcd98cec5292a8f0af4a4b21388d85b668938cd351",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/9992d9d6763efccd1e0d.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/bad-truncated.wav",
+   "sha256": "eae865b3d21125aa63e5de326afc0f2321a5f487b4fec63eca7f07f0c6c01ff3",
+   "bytes": 96043,
+   "stored": "renders/preserved-build-audio-20261109/eae865b3d21125aa63e5.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.reggae.wav",
+   "sha256": "fd2c21d44076ccdf5a16099366481b6c331b6506464622e2461b91e8aa616c13",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/fd2c21d44076ccdf5a16.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/format-1-24.wav",
+   "sha256": "30928058fd7e25185af42bf79b02f06d31fb24922bd2fe2c09dc5381376792c0",
+   "bytes": 288054,
+   "stored": "renders/preserved-build-audio-20261109/30928058fd7e25185af4.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.reggae.bass.wav",
+   "sha256": "262cc4dec9d3a787f9bb14b52c38a08d8bf59a45e81b6ce0d0b9b31287a07210",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/262cc4dec9d3a787f9bb.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.experimental.piano.wav",
+   "sha256": "1d36ea4bbc6c36227243a74aec212b7ee365317fab5673cf02b7b48b374432ea",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/1d36ea4bbc6c36227243.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.reggae.vocals.wav",
+   "sha256": "41c2a3ecce0424edb6c9ef8e67fa33af86a0ac29ef82ef5a582e864179adb724",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/41c2a3ecce0424edb6c9.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.experimental.drums.wav",
+   "sha256": "0e44418c3a6bb7fbffc9e42890f634fd8161fb55f7238126c378fc8d2f1490ea",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/0e44418c3a6bb7fbffc9.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/control.baseline.wav",
+   "sha256": "2e024bbf4a0566286a8742f46516b3240319d2aecbc7859e5c7577e044c76d14",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/2e024bbf4a0566286a87.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.hiphop.wav",
+   "sha256": "9992d9d6763efccd1e0d21bcd98cec5292a8f0af4a4b21388d85b668938cd351",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/9992d9d6763efccd1e0d.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.experimental.vocals.wav",
+   "sha256": "397c84fde837715ac7945797ce35f49e168d910b7881985546e830a23aec6cfb",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/397c84fde837715ac794.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.hiphop.vocals.wav",
+   "sha256": "1a686c28a6d75fcb30d2dce4026deb730b2f54839d589ee907c797898ae25dfa",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/1a686c28a6d75fcb30d2.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/bad-silence.wav",
+   "sha256": "d303811b8c84619667cd0501342f84ec6cbe69f7aa3856dcf52fabda374c92b8",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/d303811b8c84619667cd.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/repeat.reggae.wav",
+   "sha256": "fd2c21d44076ccdf5a16099366481b6c331b6506464622e2461b91e8aa616c13",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/fd2c21d44076ccdf5a16.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/bad-short.wav",
+   "sha256": "9598543e7418e6ab8ab9efe72e47dfe4b957b29782a5105a020fa10407ef75fb",
+   "bytes": 2044,
+   "stored": "renders/preserved-build-audio-20261109/9598543e7418e6ab8ab9.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/bad-nan.wav",
+   "sha256": "850b7b7e62038b7f275bdbea381d3fb0e119edd75eeb2ec9e5a490ba6983cb44",
+   "bytes": 192044,
+   "stored": "renders/preserved-build-audio-20261109/850b7b7e62038b7f275b.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/shifted.hiphop.wav",
+   "sha256": "df15e7473b5f1731ef60a567eb0c4b5326153f20916707ddce922bc49b8927aa",
+   "bytes": 2048044,
+   "stored": "renders/preserved-build-audio-20261109/df15e7473b5f1731ef60.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/three.experimental.bass.wav",
+   "sha256": "76e0ccc084d82390a92ad77d168dc13d5a6c8b356340585f242e1316a2f225f8",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/76e0ccc084d82390a92a.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/protect.hiphop.vocals.wav",
+   "sha256": "6531e2794da1ca5dd91451c8f71e2692d128dd39c03600ba80d5ce72f242fe36",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/6531e2794da1ca5dd914.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/shifted.wav",
+   "sha256": "f462f110ce87ecf6a88e03218b3de26a61b4027692a9b20dec885e7af458f50e",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/f462f110ce87ecf6a88e.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/repeat.experimental.wav",
+   "sha256": "a234b6429f64155877d6e24e4815564fa5a5c1241974922c26d04cb4c93555e2",
+   "bytes": 2109980,
+   "stored": "renders/preserved-build-audio-20261109/a234b6429f64155877d6.wav"
+  },
+  {
+   "original": "build-mac-sanitize/remix-integration/format-3-32.hiphop.wav",
+   "sha256": "794e44307299fd4797d2d68919b113da83da6a31bf464193f18d7e8f8e524ebc",
+   "bytes": 1024044,
+   "stored": "renders/preserved-build-audio-20261109/794e44307299fd4797d2.wav"
+  },
+  {
+   "original": "build-open-source-audit/piano_72_v55_take0.wav",
+   "sha256": "e0d5353f67afe55e4d6d49253651f2a8aa0c456603f538175e103769e1e1e73c",
+   "bytes": 1573878,
+   "stored": "renders/preserved-build-audio-20261109/e0d5353f67afe55e4d6d.wav"
+  },
+  {
+   "original": "build-open-source-audit/piano_48_v55_take0.wav",
+   "sha256": "2fbe80d44b96c24980762eb805594cff6b84a5b4ed06ddfed70a8f8c692b856f",
+   "bytes": 1252962,
+   "stored": "renders/preserved-build-audio-20261109/2fbe80d44b96c2498076.wav"
+  },
+  {
+   "original": "build-open-source-audit/librosa-stretch.wav",
+   "sha256": "0e2bbe0d9860e51eead24fabab3fce6d918d6b9e4bbf96789969664cadc05498",
+   "bytes": 237116,
+   "stored": "renders/preserved-build-audio-20261109/0e2bbe0d9860e51eead2.wav"
+  },
+  {
+   "original": "build-open-source-audit/piano_60_v55_take0.wav",
+   "sha256": "0354bf405b644eb16b0d1223e304de93b4abef4e2191c552665563784d40f1ea",
+   "bytes": 1948154,
+   "stored": "renders/preserved-build-audio-20261109/0354bf405b644eb16b0d.wav"
+  },
+  {
+   "original": "build-playlist-taste/local-request/storage/music-dna/private/f270e5933b694a7b96fafd9b8e5a4f8b/d91e8ad681b0b831f9ba8a4873203bac2ff33dbd5a4800e9a3f54051d33bda30.wav",
+   "sha256": "d91e8ad681b0b831f9ba8a4873203bac2ff33dbd5a4800e9a3f54051d33bda30",
+   "bytes": 26880044,
+   "stored": "renders/preserved-build-audio-20261109/d91e8ad681b0b831f9ba.wav"
+  },
+  {
+   "original": "build-product/c-api-input.wav",
+   "sha256": "5476bf6a47eb6d00e109680ad0c6b1b299e1a13603be28d118e323faaf529e6b",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/5476bf6a47eb6d00e109.wav"
+  },
+  {
+   "original": "build-product/integration/repeat.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-product/integration/m0a.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-product/integration/changed.wav",
+   "sha256": "8a406f0f849017e509211131c988ae6ef682c91a9e8956615ac3a60a1a05a48e",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/8a406f0f849017e50921.wav"
+  },
+  {
+   "original": "build-product/integration/rate44100.wav",
+   "sha256": "237d59d566abbae0ae53f247fc24804c413cfd253a45673b35c5f116733a1530",
+   "bytes": 2046284,
+   "stored": "renders/preserved-build-audio-20261109/237d59d566abbae0ae53.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/benchmarks/sample.flac",
+   "sha256": "ecd23254f1cd2dd4fc47027bc7a9395cc2dd38ce2fe09db91b3798703935cef9",
+   "bytes": 3191310,
+   "stored": "renders/preserved-build-audio-20261109/ecd23254f1cd2dd4fc47.flac"
+  },
+  {
+   "original": "build-q0-tools/sfizz/benchmarks/sample.wav",
+   "sha256": "3cdd2838d87eb7d900080e84e617ec661e6f3f707e8bd655cbc33206112d0282",
+   "bytes": 7800712,
+   "stored": "renders/preserved-build-audio-20261109/3cdd2838d87eb7d90008.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/external/st_audiofile/thirdparty/dr_libs/tests/external/miniaudio/tests/_build/res/sine_s16_mono_48000.wav",
+   "sha256": "f65d38a33755f3f54ae29228e0de92a0a95089eea4d01390c844f1514cb6332e",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/f65d38a33755f3f54ae2.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/36-CajonCenter-2.wav",
+   "sha256": "e161e527ec6e5bce8c445ba18b9bb0dacb3e73612eeeea2d6ae8f7275c5bce01",
+   "bytes": 92148,
+   "stored": "renders/preserved-build-audio-20261109/e161e527ec6e5bce8c44.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/36-CajonCenter-3.wav",
+   "sha256": "87a0a0bad03eef25be72eff7c20b7215d271e288a34eea3bfa6e0e49829a2e80",
+   "bytes": 92322,
+   "stored": "renders/preserved-build-audio-20261109/87a0a0bad03eef25be72.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/36-CajonCenter-1.wav",
+   "sha256": "3ed1da7f0bd7148d3e101b56d4f34fe359fa258b47ebcb7120c6c01eef83d0bb",
+   "bytes": 92120,
+   "stored": "renders/preserved-build-audio-20261109/3ed1da7f0bd7148d3e10.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/root_key_62.wav",
+   "sha256": "09e70b5fe01bc6ed4b280a32a4479cc1ba6abe95770edd047472629c6d60af40",
+   "bytes": 4572,
+   "stored": "renders/preserved-build-audio-20261109/09e70b5fe01bc6ed4b28.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/root_key_38.flac",
+   "sha256": "463068d0c9ce05019cc44195d41852d5f53c8a4c650546050051610aec5764cd",
+   "bytes": 12935,
+   "stored": "renders/preserved-build-audio-20261109/463068d0c9ce05019cc4.flac"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/36-CajonCenter-4.wav",
+   "sha256": "66e168cbeb3289f2260bb22a3c70f9d77912962f5af8fafd8b3d39eb1ddf1d66",
+   "bytes": 87472,
+   "stored": "renders/preserved-build-audio-20261109/66e168cbeb3289f2260b.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/36-CajonCenter-5.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/root_key_62.flac",
+   "sha256": "784319fcec518a4dbd4edf8be0b33fbbfc7ecc36ce1f80476de8d8406e63db8d",
+   "bytes": 12935,
+   "stored": "renders/preserved-build-audio-20261109/784319fcec518a4dbd4e.flac"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/closedhat.wav",
+   "sha256": "3ed1da7f0bd7148d3e101b56d4f34fe359fa258b47ebcb7120c6c01eef83d0bb",
+   "bytes": 92120,
+   "stored": "renders/preserved-build-audio-20261109/3ed1da7f0bd7148d3e10.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/root_key_38.wav",
+   "sha256": "15269f0025712b628d3d2a24982c42c5ebda4c42e5c998d1046bd7849bba448e",
+   "bytes": 4572,
+   "stored": "renders/preserved-build-audio-20261109/15269f0025712b628d3d.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/dummy2.wav",
+   "sha256": "3ed1da7f0bd7148d3e101b56d4f34fe359fa258b47ebcb7120c6c01eef83d0bb",
+   "bytes": 92120,
+   "stored": "renders/preserved-build-audio-20261109/3ed1da7f0bd7148d3e10.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/ramp_wave.wav",
+   "sha256": "8e867507ff7942bba544d00e93737dd01aa00639b3cbd4e2620d1d159ab5ec9b",
+   "bytes": 2092,
+   "stored": "renders/preserved-build-audio-20261109/8e867507ff7942bba544.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/dummy1.wav",
+   "sha256": "3ed1da7f0bd7148d3e101b56d4f34fe359fa258b47ebcb7120c6c01eef83d0bb",
+   "bytes": 92120,
+   "stored": "renders/preserved-build-audio-20261109/3ed1da7f0bd7148d3e10.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/kick.wav",
+   "sha256": "3ed1da7f0bd7148d3e101b56d4f34fe359fa258b47ebcb7120c6c01eef83d0bb",
+   "bytes": 92120,
+   "stored": "renders/preserved-build-audio-20261109/3ed1da7f0bd7148d3e10.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/looped_flute.wav",
+   "sha256": "553ce3f51e8079e80327249948baf84997719c088802ceca697459be3ee34ada",
+   "bytes": 746480,
+   "stored": "renders/preserved-build-audio-20261109/553ce3f51e8079e80327.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/dummy16.wav",
+   "sha256": "3ed1da7f0bd7148d3e101b56d4f34fe359fa258b47ebcb7120c6c01eef83d0bb",
+   "bytes": 92120,
+   "stored": "renders/preserved-build-audio-20261109/3ed1da7f0bd7148d3e10.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/wavetable_with_loop_at_endings.wav",
+   "sha256": "fb67c920e473dacf774c027cb4c8bf5940776a22f73e1b4befd4aa91ecbe6f7d",
+   "bytes": 33004,
+   "stored": "renders/preserved-build-audio-20261109/fb67c920e473dacf774c.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/silence.wav",
+   "sha256": "b203b874ea164fe179e845134288046023ccd07f18a96ed09d7dc0b2646d6810",
+   "bytes": 4044,
+   "stored": "renders/preserved-build-audio-20261109/b203b874ea164fe179e8.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/snare.wav",
+   "sha256": "3ed1da7f0bd7148d3e101b56d4f34fe359fa258b47ebcb7120c6c01eef83d0bb",
+   "bytes": 92120,
+   "stored": "renders/preserved-build-audio-20261109/3ed1da7f0bd7148d3e10.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/kick.flac",
+   "sha256": "46da98e1bbc61248c00baa562b87755e35389d6a555168066ca8875b6a9e804e",
+   "bytes": 28122,
+   "stored": "renders/preserved-build-audio-20261109/46da98e1bbc61248c00b.flac"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/stereo_sample.wav",
+   "sha256": "c295e0adfef65874c35a2748154fe972b33ac7bada2dd90d8488e02f6655b614",
+   "bytes": 571868,
+   "stored": "renders/preserved-build-audio-20261109/c295e0adfef65874c35a.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/short_non_wavetable.wav",
+   "sha256": "516a378a540279b993fbc254f4d8d70b5650d2ebc8b1a27772a94abf1894cfba",
+   "bytes": 5860,
+   "stored": "renders/preserved-build-audio-20261109/516a378a540279b993fb.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/mono_sample.wav",
+   "sha256": "3ed1da7f0bd7148d3e101b56d4f34fe359fa258b47ebcb7120c6c01eef83d0bb",
+   "bytes": 92120,
+   "stored": "renders/preserved-build-audio-20261109/3ed1da7f0bd7148d3e10.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/wavetables/clm.wav",
+   "sha256": "beb4b7c66770b97d4cd4d42abd1210fa9312b18cc8412c35fa0267a63bab21f0",
+   "bytes": 2152,
+   "stored": "renders/preserved-build-audio-20261109/beb4b7c66770b97d4cd4.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/wavetables/surge.wav",
+   "sha256": "51cb9735fde4b5de024593d25f485df17645e5b1d46eaf7f96e05c527ce51cc4",
+   "bytes": 1080,
+   "stored": "renders/preserved-build-audio-20261109/51cb9735fde4b5de0245.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/Regions/dummy.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/Regions/dummy.1.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/Regions/dummy.2.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/Includes/dummy_recursive2.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/Includes/dummy.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/Includes/dummy_recursive1.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/Includes/dummy2.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/Includes/dummy_subdir.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/Includes/dummy_loop1.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/Includes/dummy_loop2.wav",
+   "sha256": "7650063cf077a9200c9113d7712cde6be168ac230ca828f6758d238a6f641649",
+   "bytes": 92318,
+   "stored": "renders/preserved-build-audio-20261109/7650063cf077a9200c91.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/DefaultPath/SubPath2/sample2.wav",
+   "sha256": "e161e527ec6e5bce8c445ba18b9bb0dacb3e73612eeeea2d6ae8f7275c5bce01",
+   "bytes": 92148,
+   "stored": "renders/preserved-build-audio-20261109/e161e527ec6e5bce8c44.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/DefaultPath/SubPath1/sample1.wav",
+   "sha256": "3ed1da7f0bd7148d3e101b56d4f34fe359fa258b47ebcb7120c6c01eef83d0bb",
+   "bytes": 92120,
+   "stored": "renders/preserved-build-audio-20261109/3ed1da7f0bd7148d3e10.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/SpecificBugs/Xylo/Subfolder/closedhat.wav",
+   "sha256": "3ed1da7f0bd7148d3e101b56d4f34fe359fa258b47ebcb7120c6c01eef83d0bb",
+   "bytes": 92120,
+   "stored": "renders/preserved-build-audio-20261109/3ed1da7f0bd7148d3e10.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/SpecificBugs/MeatBassPizz/Samples/pizz/a0_vl4_rr3.wav",
+   "sha256": "4759c37ef09b3a517a205e93a950b7939accc4c9bc09f1dfaa94cabbda3d154e",
+   "bytes": 664302,
+   "stored": "renders/preserved-build-audio-20261109/4759c37ef09b3a517a20.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/SpecificBugs/MeatBassPizz/Samples/pizz/a0_vl4_rr2.wav",
+   "sha256": "f978561292fcb1f0078e6cb562f528529f39102cc7028ed04668c54316d736e7",
+   "bytes": 664302,
+   "stored": "renders/preserved-build-audio-20261109/f978561292fcb1f0078e.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/SpecificBugs/MeatBassPizz/Samples/pizz/a0_vl4_rr1.wav",
+   "sha256": "cb879bd1fd62e2ab668accf868e2e775cde7ad1d5784ef865bc4571ca8ee7b4e",
+   "bytes": 664302,
+   "stored": "renders/preserved-build-audio-20261109/cb879bd1fd62e2ab668a.wav"
+  },
+  {
+   "original": "build-q0-tools/sfizz/tests/TestFiles/SpecificBugs/MeatBassPizz/Samples/pizz/a0_vl4_rr4.wav",
+   "sha256": "8a76d08b982d5248bd426d27a1fcf0af1cefd01225e70fc3c94c980fee1c5e7d",
+   "bytes": 664302,
+   "stored": "renders/preserved-build-audio-20261109/8a76d08b982d5248bd42.wav"
+  },
+  {
+   "original": "build-readiness-recovery-20261102/deployed-music-dna.wav",
+   "sha256": "6f2e078a9497d835bce0f05709f621eb00c4f13dba04ecec5c548bfe8ebba742",
+   "bytes": 20544044,
+   "stored": "renders/preserved-build-audio-20261109/6f2e078a9497d835bce0.wav"
+  },
+  {
+   "original": "build-release-closure-20261031/deployed-improvise.wav",
+   "sha256": "2c55040f6b7c695c46531e86909f7192297e7808bc79fd37f29a21e5a31ba3f0",
+   "bytes": 7296044,
+   "stored": "renders/preserved-build-audio-20261109/2c55040f6b7c695c4653.wav"
+  },
+  {
+   "original": "build-review-phase-20261108/review-check-private.wav",
+   "sha256": "604688da0dadc0b4ab6896eed301dbfecc97420d76b6d4f034f4c882d894d46d",
+   "bytes": 7296044,
+   "stored": "renders/preserved-build-audio-20261109/604688da0dadc0b4ab68.wav"
+  },
+  {
+   "original": "build-runpod/music-dna/song.wav",
+   "sha256": "aa84335e51c64bb341702a377ca0371f6a53ed37ef504e6c6218264e68ea3222",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/aa84335e51c64bb34170.wav"
+  },
+  {
+   "original": "build-runpod/improvise/song.wav",
+   "sha256": "13d3abc4f773e9d9761bcca8359941fb9f5d45b2e195f50874a1ec851a4479e9",
+   "bytes": 5760044,
+   "stored": "renders/preserved-build-audio-20261109/13d3abc4f773e9d9761b.wav"
+  },
+  {
+   "original": "build-runpod/fixtures/question.wav",
+   "sha256": "187dac2fb79f6d9a5c3ffbd907a23fb82b6afa95f82096386bb181e159197934",
+   "bytes": 79732,
+   "stored": "renders/preserved-build-audio-20261109/187dac2fb79f6d9a5c3f.wav"
+  },
+  {
+   "original": "build-runpod/fixtures/question.aiff",
+   "sha256": "d3f94681b89a37334d938fb50000e4abf4cc40a7c71d43a19fd46bded089f98a",
+   "bytes": 113868,
+   "stored": "renders/preserved-build-audio-20261109/d3f94681b89a37334d93.aiff"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_31.wav",
+   "sha256": "c3e68dddd4d6a6d34d135042f76ed74cf4b85208c2483a2d4a331d717af99356",
+   "bytes": 1237798,
+   "stored": "renders/preserved-build-audio-20261109/c3e68dddd4d6a6d34d13.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_25.wav",
+   "sha256": "cf155e4fd681331d34f316e421803255c449acb0393fa55cd23079ed103b37af",
+   "bytes": 1292864,
+   "stored": "renders/preserved-build-audio-20261109/cf155e4fd681331d34f3.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_19.wav",
+   "sha256": "8f6d828d65f723ca602abaf8b28a5e8bdc510d37951556b86ff8b6d07889af28",
+   "bytes": 2689570,
+   "stored": "renders/preserved-build-audio-20261109/8f6d828d65f723ca602a.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_18.wav",
+   "sha256": "4f2a3712dd912b235990f3505593200172da3f386c80db91dfaeb04fc641c929",
+   "bytes": 2570088,
+   "stored": "renders/preserved-build-audio-20261109/4f2a3712dd912b235990.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_24.wav",
+   "sha256": "22fb2df57dc7b68987cda67b30171c626a7818b9ab7db02185e8ea0a0a6db7ee",
+   "bytes": 1301684,
+   "stored": "renders/preserved-build-audio-20261109/22fb2df57dc7b68987cd.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_30.wav",
+   "sha256": "ce2128d9bfcd434a9c1507d1f2fcd504677e0b1e0fb5fe8bbe07406158df144f",
+   "bytes": 1148216,
+   "stored": "renders/preserved-build-audio-20261109/ce2128d9bfcd434a9c15.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_26.wav",
+   "sha256": "27fcfb7c6150b412be3f22199202dfc2aab46e59e16cddd675b71c8325b3f66d",
+   "bytes": 1134104,
+   "stored": "renders/preserved-build-audio-20261109/27fcfb7c6150b412be3f.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_32.wav",
+   "sha256": "1776573e0a80e0618258501c1fa877a75c36c3368ab24014aaebb522f92768b7",
+   "bytes": 2207998,
+   "stored": "renders/preserved-build-audio-20261109/1776573e0a80e0618258.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_33.wav",
+   "sha256": "896ae8828bfdc7eefc46a4781c328b979f519fea310c04c32cf5859c54ba4c7a",
+   "bytes": 2646044,
+   "stored": "renders/preserved-build-audio-20261109/896ae8828bfdc7eefc46.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_27.wav",
+   "sha256": "6300e1fc5981ea458074a24a1c32a1011a095df4162fbc8911d6b0240d182419",
+   "bytes": 1236416,
+   "stored": "renders/preserved-build-audio-20261109/6300e1fc5981ea458074.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_23.wav",
+   "sha256": "3cade4af7d869e3175e3684075782a23f6af936942a8684bfbb4fdbe3a4f10e7",
+   "bytes": 1590980,
+   "stored": "renders/preserved-build-audio-20261109/3cade4af7d869e3175e3.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_37.wav",
+   "sha256": "53cb202ddabf1cb7591be49da9160f508cb81c6078c50c7e41a13efe109a0622",
+   "bytes": 3416560,
+   "stored": "renders/preserved-build-audio-20261109/53cb202ddabf1cb7591b.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_36.wav",
+   "sha256": "2e4eacabc71019752feb17da9e1b0228b9b5ba0ae97ec41107f80dac65750dbb",
+   "bytes": 2053148,
+   "stored": "renders/preserved-build-audio-20261109/2e4eacabc71019752feb.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_22.wav",
+   "sha256": "6629d0ecd7acddd1ce2877d00bc7ef80dc01fdd20f3225b9c2ed907da12f989e",
+   "bytes": 1617058,
+   "stored": "renders/preserved-build-audio-20261109/6629d0ecd7acddd1ce28.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_34.wav",
+   "sha256": "60cefc716230c7783889b1b46f8dcfba48669cf5be6cddb522c04e810c8d38d8",
+   "bytes": 2192122,
+   "stored": "renders/preserved-build-audio-20261109/60cefc716230c7783889.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_20.wav",
+   "sha256": "feb3c31e77b7779bdfb302c7819644535804f22a90a8e21f63c393d667ec5181",
+   "bytes": 768574,
+   "stored": "renders/preserved-build-audio-20261109/feb3c31e77b7779bdfb3.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_21.wav",
+   "sha256": "d9d3c20794fd3b42e8f7693b91e8194844a6b80b3932ae4fc06d8e0e277687a7",
+   "bytes": 1940444,
+   "stored": "renders/preserved-build-audio-20261109/d9d3c20794fd3b42e8f7.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_35.wav",
+   "sha256": "85c1c4268527cc53240e9f4f0d557d92f3bf9856d6d42ca50e80c7cbb02bea72",
+   "bytes": 1217204,
+   "stored": "renders/preserved-build-audio-20261109/85c1c4268527cc53240e.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_3.wav",
+   "sha256": "73b6fe13bc3435ae9173ee1bdec247e2943526c70cd9b69ab2b35002fa4cb04d",
+   "bytes": 1917188,
+   "stored": "renders/preserved-build-audio-20261109/73b6fe13bc3435ae9173.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_2.wav",
+   "sha256": "8dcc99c3b08a9a5800b793e3d65cccfb4464961f15cf8ccde25bd4c8b853d519",
+   "bytes": 3105390,
+   "stored": "renders/preserved-build-audio-20261109/8dcc99c3b08a9a5800b7.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_1.wav",
+   "sha256": "b509768315efad8120183b48e01d6090f1649d5bcc691241940dc7a100274ab8",
+   "bytes": 2929364,
+   "stored": "renders/preserved-build-audio-20261109/b509768315efad812018.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_5.wav",
+   "sha256": "7cecfd126a9437f88db0a297cdab3075bb38faeef10f1a98f22ba22a2a939220",
+   "bytes": 2049106,
+   "stored": "renders/preserved-build-audio-20261109/7cecfd126a9437f88db0.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_40.wav",
+   "sha256": "add1fc90659541163158bf025eeb0c09b7f738bdfcc812a835654ca1e8544b04",
+   "bytes": 1638608,
+   "stored": "renders/preserved-build-audio-20261109/add1fc90659541163158.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_4.wav",
+   "sha256": "fc07b202eb609c975d1549be5320db116a49be1bd1fc6904e70e31cd7e44ec23",
+   "bytes": 1627864,
+   "stored": "renders/preserved-build-audio-20261109/fc07b202eb609c975d15.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_6.wav",
+   "sha256": "13816752a6366f2d66f21e71a70d55e22b6a44f0d1712d97abff5390bc0c1f3b",
+   "bytes": 2102026,
+   "stored": "renders/preserved-build-audio-20261109/13816752a6366f2d66f2.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_7.wav",
+   "sha256": "db9542f0626f4c43ab1e4f26ae9e40834bcfe5f061b07c75a3925d95aaa79676",
+   "bytes": 1717064,
+   "stored": "renders/preserved-build-audio-20261109/db9542f0626f4c43ab1e.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_9.wav",
+   "sha256": "f980cc7df935c0c9e839b25759de72fadad6763c069be96645be46f8dd3ffd32",
+   "bytes": 1797120,
+   "stored": "renders/preserved-build-audio-20261109/f980cc7df935c0c9e839.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_8.wav",
+   "sha256": "05ce2b3f1991035d08db269df1c39b198d9ddc22130ce88f9a8d97e46cd7a310",
+   "bytes": 1503116,
+   "stored": "renders/preserved-build-audio-20261109/05ce2b3f1991035d08db.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_10.wav",
+   "sha256": "0978bde1c130ae26a9cfcd90012f12fdaf9877bbe45cf21c5237ba7ac9b8703b",
+   "bytes": 802472,
+   "stored": "renders/preserved-build-audio-20261109/0978bde1c130ae26a9cf.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_38.wav",
+   "sha256": "2113abf18ddfb0e789021b8e2a2e42743b80d82c51aaca5fe9d228636883a239",
+   "bytes": 2455532,
+   "stored": "renders/preserved-build-audio-20261109/2113abf18ddfb0e78902.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_39.wav",
+   "sha256": "23badef22642b2e00b676cf3b998d2f2d2d1ee9949888dcd6f038b0b6621b9db",
+   "bytes": 2794220,
+   "stored": "renders/preserved-build-audio-20261109/23badef22642b2e00b67.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_11.wav",
+   "sha256": "c4d669eca7e25c5037b191805b54b2c990d5e31bc77c9c77188b140100297197",
+   "bytes": 1145232,
+   "stored": "renders/preserved-build-audio-20261109/c4d669eca7e25c5037b1.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_13.wav",
+   "sha256": "5a26861f99c4d02a3efe2355215de2774fb51257cc2d2bf6021827b64e25ec94",
+   "bytes": 1972196,
+   "stored": "renders/preserved-build-audio-20261109/5a26861f99c4d02a3efe.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_12.wav",
+   "sha256": "5a342e32b20b3764a9ab9784abbf7bac6db69583ec529fc9027f96c69df04e00",
+   "bytes": 1336582,
+   "stored": "renders/preserved-build-audio-20261109/5a342e32b20b3764a9ab.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_16.wav",
+   "sha256": "595e80b5382812702e64d5b6a8f453d9744391166d47c7020cc1d6e71e310e25",
+   "bytes": 1523888,
+   "stored": "renders/preserved-build-audio-20261109/595e80b5382812702e64.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_17.wav",
+   "sha256": "4b144cdbbcdb318f19c0aa5ac1e2675dbe8d6cb8941286d251959f25e4c96998",
+   "bytes": 2078742,
+   "stored": "renders/preserved-build-audio-20261109/4b144cdbbcdb318f19c0.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_29.wav",
+   "sha256": "46a831ed09f60728c6bfb051e27582d2d47021805ea8c4500bf4b2d6396a71cb",
+   "bytes": 1313650,
+   "stored": "renders/preserved-build-audio-20261109/46a831ed09f60728c6bf.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_15.wav",
+   "sha256": "0bc39b00e14881b20756f48530a4688e1bb7aa1c24ee09d4351a327e3acce28d",
+   "bytes": 1788740,
+   "stored": "renders/preserved-build-audio-20261109/0bc39b00e14881b20756.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_14.wav",
+   "sha256": "a41e814df6ee5840f0beaea5da2ab3ad6b38be62b169da08962a722bcc06cdd1",
+   "bytes": 1075892,
+   "stored": "renders/preserved-build-audio-20261109/a41e814df6ee5840f0be.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/Audio/vocadito_28.wav",
+   "sha256": "f50830862faff98314bb7b28de452754ef2d939e187a6d89e5fb1ad56749aeb6",
+   "bytes": 1137632,
+   "stored": "renders/preserved-build-audio-20261109/f50830862faff98314bb.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_5.wav",
+   "sha256": "ff61dbfeaf5d9c3f0599f8666a4f6e1266e117de60333719bde6a8e5ea17b4f3",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/ff61dbfeaf5d9c3f0599.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_4.wav",
+   "sha256": "20337452fc621606d57d56a76334da30d177fc6e5514de738bc76e73a9a43b6b",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/20337452fc621606d57d.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_6.wav",
+   "sha256": "9440ae82d2ab831ef513007a82aca3c9da91fe4a369cca41c6e854b1b966aa7c",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/9440ae82d2ab831ef513.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_7.wav",
+   "sha256": "c8b9b6eb6efdabcfe158702a0f4572227a0936990a005981ba9f35218270dd19",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/c8b9b6eb6efdabcfe158.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_3.wav",
+   "sha256": "cf91840dc8f9af46cd6bcfde8c440adf8d070099c58c79a0a9471cb2a60e885c",
+   "bytes": 269,
+   "stored": "renders/preserved-build-audio-20261109/cf91840dc8f9af46cd6b.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_2.wav",
+   "sha256": "0d56acaf6b2d1a6c77c40f5c3559e9c26a1fa88a88cc9d4ab66474ded2c0fedd",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/0d56acaf6b2d1a6c77c4.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_1.wav",
+   "sha256": "d07ab9d6b122bc8426b5fb311996fe1bb8834dd9321f3f2ae907008b668dd6ee",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/d07ab9d6b122bc8426b5.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_12.wav",
+   "sha256": "3ef659ddbd5e47830d7c281da1cdb7ff78980e2d2aa6f7704a18fa115883756b",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/3ef659ddbd5e47830d7c.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_13.wav",
+   "sha256": "43a1e528aaf69bc9090f62e4d8684846bf6b791a037d9e5cfa010d65c4ff86a6",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/43a1e528aaf69bc9090f.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_11.wav",
+   "sha256": "7c67a332511d4280a5056e768d8ef876e45a5c93fe852caa2f7b080cf98063e8",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/7c67a332511d4280a505.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_39.wav",
+   "sha256": "aafdfabb62729f671cabc22a1a32a70852448034b9a56ac8653836fabfd7c327",
+   "bytes": 269,
+   "stored": "renders/preserved-build-audio-20261109/aafdfabb62729f671cab.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_38.wav",
+   "sha256": "8436f023cd6a4014797526d5434334c1da68494e7757d7c5682cfde379702341",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/8436f023cd6a40147975.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_10.wav",
+   "sha256": "1167122e9b554fb7c006b12622c9df22b85d68c5bdd37015cd3372c181b91fac",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/1167122e9b554fb7c006.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_28.wav",
+   "sha256": "433b974486a679ca4834063a6e1231e9b8239661dd599917087910e78f0d5287",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/433b974486a679ca4834.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_14.wav",
+   "sha256": "d193d29b59bee8310369747f10c0a2b0bbc27cab33f892a5349e49f48394a0e9",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/d193d29b59bee8310369.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_15.wav",
+   "sha256": "40321c7f6fef042b3efb452aafca58a96a2bd3069870eabff7536aad93b23d8d",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/40321c7f6fef042b3efb.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_29.wav",
+   "sha256": "cfdb7c86930246476997108f227ad480b20aac3254d3b40394672a4d55b661d8",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/cfdb7c86930246476997.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_17.wav",
+   "sha256": "7331f6b3594d55b8728c22d7bbbbfac794877353f268afa5a813559065185db8",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/7331f6b3594d55b8728c.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_16.wav",
+   "sha256": "fb1133f89daa0b073d68740ab57cda899059c7f7d5241f4536b00709d2b8e980",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/fb1133f89daa0b073d68.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_27.wav",
+   "sha256": "dfe7686e0f74d3057c54f5695b13fa3703a512c61a42105af684b67c05c2f7d4",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/dfe7686e0f74d3057c54.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_33.wav",
+   "sha256": "549ea142e3c9c8146dae0938f1f7cdbecf6380d13f99aaf0c91d6f099bbffcb8",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/549ea142e3c9c8146dae.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_32.wav",
+   "sha256": "86dd2ab692b17325efb830eee11c1226ec22a58f9cb379ef1dab84a2dfdfcd74",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/86dd2ab692b17325efb8.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_26.wav",
+   "sha256": "98ccb9c5ed28cf0a373a90ae3734a186de35b33ad0e697c0ab37328d35c111f7",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/98ccb9c5ed28cf0a373a.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_30.wav",
+   "sha256": "c8bbb00de48eb98a18e87332b982f62ed08124a9fccaa1c77f5e7af683d215da",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/c8bbb00de48eb98a18e8.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_24.wav",
+   "sha256": "448b0057b765569705757c16872b3f57aa2a93ae5f13519cdbce5061a2cb859a",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/448b0057b76556970575.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_18.wav",
+   "sha256": "89d5c3527f8dba6ee5bdc3df76f5b02dcedb5bc19dd612b6120f493b8c2a90d7",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/89d5c3527f8dba6ee5bd.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_19.wav",
+   "sha256": "9af2207fc6876b3f1d08f690ef15a44b1c71fbfcd2481210f9006656c72df3b7",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/9af2207fc6876b3f1d08.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_25.wav",
+   "sha256": "c0d6db7c2ba4c35cdbd17daa7d8285edd19ff9344addad3d71fa635c46bd0d1f",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/c0d6db7c2ba4c35cdbd1.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_31.wav",
+   "sha256": "024d231f21a857139dda63ed72972b0d258151e6b6b5982c2234e1d893795c16",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/024d231f21a857139dda.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_35.wav",
+   "sha256": "42957658fdc12272982dc51caf35ef8aaaf1d666498ed26cadbb24d611bddabf",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/42957658fdc12272982d.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_21.wav",
+   "sha256": "3a825f43939c7a8da4ad56a570cabe029b5dad3b3a42e2f2e1cf9d4319f45af3",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/3a825f43939c7a8da4ad.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_20.wav",
+   "sha256": "7ca007eeb8a0fa66fa1bb8351d72c3fce0f238aad2fdc351334046a16d818ca2",
+   "bytes": 269,
+   "stored": "renders/preserved-build-audio-20261109/7ca007eeb8a0fa66fa1b.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_34.wav",
+   "sha256": "dba4aceec6f5af0de26f672d066da9ebd47d1b8bcad0c685a704ac0e2c0633bd",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/dba4aceec6f5af0de26f.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_22.wav",
+   "sha256": "1186db67cb15a0b8adde5b49bae5008b6e7634f47dbc7431c74bbd3b660e5e05",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/1186db67cb15a0b8adde.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_36.wav",
+   "sha256": "47c58b227870d78ed3696211cbc46932245ec7098f68ef7961212bb5f4b2e07c",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/47c58b227870d78ed369.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_37.wav",
+   "sha256": "459eddc119694502ac841ca32cacdf795b92afc93347d121f5f5c65e489d31b7",
+   "bytes": 269,
+   "stored": "renders/preserved-build-audio-20261109/459eddc119694502ac84.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_23.wav",
+   "sha256": "ab8ac0b497ec347653416549f0c4ad3e5ecb4c82e868b3e9155062dd7a5bcb94",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/ab8ac0b497ec34765341.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_9.wav",
+   "sha256": "07e63e116ef343c65c164b5736c547837653837c14a5fe2a596d855d6d252af6",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/07e63e116ef343c65c16.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_40.wav",
+   "sha256": "e2f07669c764bc28d892ecb93efc7f9c94c23a952e9fe8af4e8754f163d66ca6",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/e2f07669c764bc28d892.wav"
+  },
+  {
+   "original": "build-singing-benchmark/vocadito/__MACOSX/Audio/._vocadito_8.wav",
+   "sha256": "d29183a7c9d5c4be69ad5b65ca6d4edf10fb5126f8843eff13f1597b5e0ef78f",
+   "bytes": 270,
+   "stored": "renders/preserved-build-audio-20261109/d29183a7c9d5c4be69ad.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f6_scales_c_slow_piano_a.wav",
+   "sha256": "8b448fbe86f33b218c7a96df133beda66ed12a31a3937e1158c8f18e6e3066f1",
+   "bytes": 898420,
+   "stored": "renders/preserved-build-audio-20261109/8b448fbe86f33b218c7a.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m1_scales_c_slow_piano_a.wav",
+   "sha256": "7aecd6fe2036c714c7ba567392ea07a894f05479bd92dd1424bd48af263d531f",
+   "bytes": 1336044,
+   "stored": "renders/preserved-build-audio-20261109/7aecd6fe2036c714c7ba.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m7_scales_c_fast_forte_a.wav",
+   "sha256": "1c6a8515dd34cf68b7f0a96635c392bd9863b72c4c86870e4eee742f9cc02c0a",
+   "bytes": 307294,
+   "stored": "renders/preserved-build-audio-20261109/1c6a8515dd34cf68b7f0.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m9_scales_c_slow_piano_a.wav",
+   "sha256": "ec7d093eb79b5f8b9711389918227ca64ead2218ba6dd82cd7653d7cf50f866a",
+   "bytes": 1041328,
+   "stored": "renders/preserved-build-audio-20261109/ec7d093eb79b5f8b9711.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f8_scales_c_fast_forte_a.wav",
+   "sha256": "bba8790d8dfb958c844842c5afc88c97c27b84735115c60e38222ad66e9c7427",
+   "bytes": 414688,
+   "stored": "renders/preserved-build-audio-20261109/bba8790d8dfb958c8448.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m10_scales_c_slow_piano_a.wav",
+   "sha256": "eb9154a29692024b6cbf2f01a59fc4bdbfdeb87b6f8ddda82e0680a497c85725",
+   "bytes": 950622,
+   "stored": "renders/preserved-build-audio-20261109/eb9154a29692024b6cbf.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m11_scales_c_fast_forte_a.wav",
+   "sha256": "721f9ec5741777c41728ec0f68110f25136acccca8ee8f92c1431969a4c91a19",
+   "bytes": 345354,
+   "stored": "renders/preserved-build-audio-20261109/721f9ec5741777c41728.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m8_scales_c_fast_forte_a.wav",
+   "sha256": "ff3754f57337349ebd6e2aa03ed7d9ec0c561b5abbd7d3c03438445073c4d368",
+   "bytes": 343548,
+   "stored": "renders/preserved-build-audio-20261109/ff3754f57337349ebd6e.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f9_scales_c_slow_piano_a.wav",
+   "sha256": "1915062d04cafbb8a78cfad95ea00243b6db9a35ceb536e65e3c647fd31c6e5b",
+   "bytes": 964552,
+   "stored": "renders/preserved-build-audio-20261109/1915062d04cafbb8a78c.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f7_scales_c_fast_forte_a.wav",
+   "sha256": "26a7278fd700f00dd6c0097e10d998b3de7bde343782745faa611cd5ae390e2e",
+   "bytes": 318600,
+   "stored": "renders/preserved-build-audio-20261109/26a7278fd700f00dd6c0.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m6_scales_c_slow_piano_a.wav",
+   "sha256": "a3550582ebdfd7e1af0848be3fbdb7383610f771af4eb3f7477a5011426f73e8",
+   "bytes": 1462964,
+   "stored": "renders/preserved-build-audio-20261109/a3550582ebdfd7e1af08.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f1_scales_c_slow_piano_a.wav",
+   "sha256": "ece06f58ccee95288de83a583abed54598d7c67ad41b898d1a24ec53b463f301",
+   "bytes": 1177258,
+   "stored": "renders/preserved-build-audio-20261109/ece06f58ccee95288de8.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f4_scales_c_slow_piano_a.wav",
+   "sha256": "c67cc33a9ed76861d7f5320413b822a470961683b53fb5f2b7979bd1bb9615f5",
+   "bytes": 1118388,
+   "stored": "renders/preserved-build-audio-20261109/c67cc33a9ed76861d7f5.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m3_scales_c_slow_piano_a.wav",
+   "sha256": "49bea64cc6d9f192c652c98a975c08a14c6885a834c7448db40f2ae04f50fb12",
+   "bytes": 1284942,
+   "stored": "renders/preserved-build-audio-20261109/49bea64cc6d9f192c652.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m5_scales_c_fast_forte_a.wav",
+   "sha256": "fca3829a67532321ec3bb4363bfd179902976484cebb147976adf32516f7eb57",
+   "bytes": 515700,
+   "stored": "renders/preserved-build-audio-20261109/fca3829a67532321ec3b.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f2_scales_c_fast_forte_a.wav",
+   "sha256": "d5a63106a856dbc0f503efd21ea05bc0c7de387d86ebb7ed8230f4af6fd00135",
+   "bytes": 358754,
+   "stored": "renders/preserved-build-audio-20261109/d5a63106a856dbc0f503.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m1_scales_f_fast_forte_o.wav",
+   "sha256": "6de8f6755193736ae9de3bd7bb9400c931816a7163e869c64dd6a01f9f1fbba0",
+   "bytes": 355394,
+   "stored": "renders/preserved-build-audio-20261109/6de8f6755193736ae9de.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f5_scales_c_fast_forte_a.wav",
+   "sha256": "ec31cc4a272ccea86b14478781d391c8f816cb30cdfa5b17a371a3dee884ea40",
+   "bytes": 350768,
+   "stored": "renders/preserved-build-audio-20261109/ec31cc4a272ccea86b14.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m2_scales_c_fast_forte_a.wav",
+   "sha256": "d14ec4e4d581afdf1c809a7134bdd38ba7f83fd765a22b075744039b629eacf9",
+   "bytes": 303182,
+   "stored": "renders/preserved-build-audio-20261109/d14ec4e4d581afdf1c80.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m4_scales_c_slow_piano_a.wav",
+   "sha256": "02e0581766c3fc48182dbbb758ebd6c8cffcfc5fd59d0a66dfcfaad55bf0cf0f",
+   "bytes": 1136078,
+   "stored": "renders/preserved-build-audio-20261109/02e0581766c3fc48182d.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f3_scales_c_slow_piano_a.wav",
+   "sha256": "40e80bc3c7a8869ed07fe1c33730b810cdd6c9f623fa134215d97eae2f46e7ee",
+   "bytes": 1070796,
+   "stored": "renders/preserved-build-audio-20261109/40e80bc3c7a8869ed07f.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f4_scales_c_fast_forte_a.wav",
+   "sha256": "8d4bbbb17aa1a901f03126374e5e1da42ed19ebb4992807a22099bbaa619c5fb",
+   "bytes": 351778,
+   "stored": "renders/preserved-build-audio-20261109/8d4bbbb17aa1a901f031.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m3_scales_c_fast_forte_a.wav",
+   "sha256": "25e3268821a474cca6c25022f2ed8f861c7033e1f2e78c85fd1720357a91369d",
+   "bytes": 363338,
+   "stored": "renders/preserved-build-audio-20261109/25e3268821a474cca6c2.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m5_scales_c_slow_piano_a.wav",
+   "sha256": "64536fd992468cc090cbe4076d5146e0b9bced9bc28cb02e941fb4612092dc24",
+   "bytes": 647042,
+   "stored": "renders/preserved-build-audio-20261109/64536fd992468cc090cb.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f2_scales_c_slow_piano_a.wav",
+   "sha256": "4a96d46716b0bd710b61a92c9999d8157c32ae04db7869be2a9500bcfb214c6e",
+   "bytes": 1013988,
+   "stored": "renders/preserved-build-audio-20261109/4a96d46716b0bd710b61.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f5_scales_c_slow_piano_a.wav",
+   "sha256": "6c953f826d648f365dc6bc91e311a1e061b3311c78934e2990082e24d4249c04",
+   "bytes": 884558,
+   "stored": "renders/preserved-build-audio-20261109/6c953f826d648f365dc6.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m2_scales_c_slow_piano_a.wav",
+   "sha256": "bf79442751a707d2a314183a8312489c6e7059181a04a7f3317e89f2a13d8c7e",
+   "bytes": 1032192,
+   "stored": "renders/preserved-build-audio-20261109/bf79442751a707d2a314.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f3_scales_c_fast_forte_a.wav",
+   "sha256": "80b9cd026312d71e6e66bccacc1a40c2c402df3545f911a5263d64f258257050",
+   "bytes": 302830,
+   "stored": "renders/preserved-build-audio-20261109/80b9cd026312d71e6e66.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f6_scales_c_fast_forte_a.wav",
+   "sha256": "dd5f802e3eef6188fbaec653a1817921b112dc2794bfe852b7bd6389640b1c77",
+   "bytes": 339518,
+   "stored": "renders/preserved-build-audio-20261109/dd5f802e3eef6188fbae.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m7_scales_c_slow_piano_a.wav",
+   "sha256": "2d19e99a84e4ab2a47d803922d0261f82f5a5f39c67294771db2543d8862b4a1",
+   "bytes": 968224,
+   "stored": "renders/preserved-build-audio-20261109/2d19e99a84e4ab2a47d8.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m9_scales_c_fast_forte_a.wav",
+   "sha256": "49879ed08d1abfdd39152518f216e4d31ef791168ed2249161a3977df601b50c",
+   "bytes": 322660,
+   "stored": "renders/preserved-build-audio-20261109/49879ed08d1abfdd3915.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f8_scales_c_slow_piano_a.wav",
+   "sha256": "cd98030d2061ebeb4fa1db38aacd696f2180e52cc728b96ca333ceefc3a4b02e",
+   "bytes": 1140194,
+   "stored": "renders/preserved-build-audio-20261109/cd98030d2061ebeb4fa1.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m11_scales_c_slow_piano_a.wav",
+   "sha256": "0892df8cc379c83b0cac64aa7769efd13dd3694d5f60278047f285277d21f958",
+   "bytes": 852068,
+   "stored": "renders/preserved-build-audio-20261109/0892df8cc379c83b0cac.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m8_scales_c_slow_piano_a.wav",
+   "sha256": "9b93c16853adeef6fec6a65e80d0c714d33c91bb2a60537ae5e5b5db50d3bc56",
+   "bytes": 740374,
+   "stored": "renders/preserved-build-audio-20261109/9b93c16853adeef6fec6.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f9_scales_c_fast_forte_a.wav",
+   "sha256": "6028a2509820077fa41921580640260e7216b1b1f54e7a4e1f3fd57e9559e20c",
+   "bytes": 365928,
+   "stored": "renders/preserved-build-audio-20261109/6028a2509820077fa419.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f7_scales_c_slow_piano_a.wav",
+   "sha256": "02eb2535cbd30457b17abc5239de2757821ea4000bde111dc7007bcfb1ff583c",
+   "bytes": 1161922,
+   "stored": "renders/preserved-build-audio-20261109/02eb2535cbd30457b17a.wav"
+  },
+  {
+   "original": "build-singing-difference-new/m6_scales_c_fast_forte_a.wav",
+   "sha256": "bd35eaf64f63c9e795af869ff0e6f6b1a6c9965ac06ef47b31d4e1cc46c8e0cf",
+   "bytes": 353666,
+   "stored": "renders/preserved-build-audio-20261109/bd35eaf64f63c9e795af.wav"
+  },
+  {
+   "original": "build-singing-difference-new/f1_scales_c_fast_forte_a.wav",
+   "sha256": "6d2b4a3c4dddcc4f134cf1ab25e4dc23d1bc04347b7cf4da0cb070467b322289",
+   "bytes": 328550,
+   "stored": "renders/preserved-build-audio-20261109/6d2b4a3c4dddcc4f134c.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f1_scales_c_fast_piano_a.wav",
+   "sha256": "c9af28eea7aedb61d7c078f9f5563eeecf951ac0107cde58338e56ee50d8d0f7",
+   "bytes": 374724,
+   "stored": "renders/preserved-build-audio-20261109/c9af28eea7aedb61d7c0.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f9_scales_c_fast_piano_a.wav",
+   "sha256": "2b595a45b32ba29b4c02112c26973978b739bf9e5458a41946a783d89f39572d",
+   "bytes": 327238,
+   "stored": "renders/preserved-build-audio-20261109/2b595a45b32ba29b4c02.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m8_scales_c_slow_forte_a.wav",
+   "sha256": "418a2d606bfc4e238fa2c9f438dc37d1ebffaf1dbf26dc613e958568701c491b",
+   "bytes": 696126,
+   "stored": "renders/preserved-build-audio-20261109/418a2d606bfc4e238fa2.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m9_scales_c_fast_piano_a.wav",
+   "sha256": "ee9da0b06ddcae9002aac7ebc5b7a6d3d49ef48e71dcb9c75bcaa71ce8ac0b8e",
+   "bytes": 327566,
+   "stored": "renders/preserved-build-audio-20261109/ee9da0b06ddcae9002aa.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f6_scales_c_fast_piano_a.wav",
+   "sha256": "0045348aba28f99e324dc7f9ed597562892e087013f81e77ec13bd816b86f913",
+   "bytes": 345894,
+   "stored": "renders/preserved-build-audio-20261109/0045348aba28f99e324d.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m1_scales_c_fast_piano_a.wav",
+   "sha256": "16029b9ede080f342a5b7719b2cbbdf5f68adf97a4cc40ec11025a549124074e",
+   "bytes": 343878,
+   "stored": "renders/preserved-build-audio-20261109/16029b9ede080f342a5b.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m6_scales_c_fast_piano_e.wav",
+   "sha256": "5f5db24860e407d889e68236d2c768bac91791aeea7001284688f885a0b206ab",
+   "bytes": 346138,
+   "stored": "renders/preserved-build-audio-20261109/5f5db24860e407d889e6.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m4_scales_c_fast_piano_a.wav",
+   "sha256": "a5d3dfacd0a7be71f791f1807e3e522765dc8309af5a45dc6d1a8c846ef9ba1c",
+   "bytes": 403290,
+   "stored": "renders/preserved-build-audio-20261109/a5d3dfacd0a7be71f791.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f3_scales_c_fast_piano_a.wav",
+   "sha256": "896df3a7e5fc5975e18018386e4ff9fc33222098aeadc5e4a26e606c720ece9b",
+   "bytes": 343982,
+   "stored": "renders/preserved-build-audio-20261109/896df3a7e5fc5975e180.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f4_scales_c_fast_piano_a.wav",
+   "sha256": "1f39ba1bbbb7b3761b5b678c7236bb37a65e002974331b107141733762800cca",
+   "bytes": 324794,
+   "stored": "renders/preserved-build-audio-20261109/1f39ba1bbbb7b3761b5b.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m3_scales_c_fast_piano_a.wav",
+   "sha256": "837090abd82c34c997e0df64e8ad7b119f1e7d62395e7dee62cdd78e1a1decb6",
+   "bytes": 351702,
+   "stored": "renders/preserved-build-audio-20261109/837090abd82c34c997e0.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f5_scales_c_fast_piano_a.wav",
+   "sha256": "576811d03b7a7746868fbfef8aca6b20ee766984a537e84ae0d9403862fdca19",
+   "bytes": 304074,
+   "stored": "renders/preserved-build-audio-20261109/576811d03b7a7746868f.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m2_scales_c_fast_piano_a.wav",
+   "sha256": "b6d54e52e4cb1d9331b25f102cc7e962b1e731dc3917f009cab138e41c39818c",
+   "bytes": 296698,
+   "stored": "renders/preserved-build-audio-20261109/b6d54e52e4cb1d9331b2.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m5_scales_c_fast_piano_a.wav",
+   "sha256": "663ecb12fb9f5d0dff91121624bb8abbb8bfdef6f14f691532e13a766641fcb3",
+   "bytes": 544994,
+   "stored": "renders/preserved-build-audio-20261109/663ecb12fb9f5d0dff91.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f2_scales_c_fast_piano_a.wav",
+   "sha256": "3d0f70f94a31615a3c5debd738d2290dfff9b554ea0a0e2f3dc380518b5edbcb",
+   "bytes": 342050,
+   "stored": "renders/preserved-build-audio-20261109/3d0f70f94a31615a3c5d.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m2_scales_c_slow_forte_o.wav",
+   "sha256": "aee09588bfcacbd850f06dc107c1641c61ffd666cfd3d89c9ec935ad740dc781",
+   "bytes": 1006028,
+   "stored": "renders/preserved-build-audio-20261109/aee09588bfcacbd850f0.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f5_scales_c_slow_forte_o.wav",
+   "sha256": "72f1049d03f4ea14090f05dd0c36a85dece25ea5f989d0483c5ce0e2fe976ec8",
+   "bytes": 863344,
+   "stored": "renders/preserved-build-audio-20261109/72f1049d03f4ea14090f.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m3_scales_c_slow_forte_u.wav",
+   "sha256": "09f6555cd0ced6efba5adc2e51bf43984be2fecf5b901827bbb7f92a48023c10",
+   "bytes": 1205132,
+   "stored": "renders/preserved-build-audio-20261109/09f6555cd0ced6efba5a.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f4_scales_c_slow_forte_u.wav",
+   "sha256": "075ac835afeb9d466e4d7e7b6df4c88b8f050f96bfd6e5ba073046647554c505",
+   "bytes": 1107342,
+   "stored": "renders/preserved-build-audio-20261109/075ac835afeb9d466e4d.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m11_scales_c_slow_forte_i.wav",
+   "sha256": "d0cb008764ccfeddf4eb54ab43a53f6e66c0ebc13b80a754c0e4ff2d013c8f5a",
+   "bytes": 862412,
+   "stored": "renders/preserved-build-audio-20261109/d0cb008764ccfeddf4eb.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m5_scales_f_slow_forte_i.wav",
+   "sha256": "a36f51d4f63ba1822671ebaa2b9decba2ed5613e6dd25b25abdf75e4e19365d7",
+   "bytes": 1071326,
+   "stored": "renders/preserved-build-audio-20261109/a36f51d4f63ba1822671.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f2_scales_f_slow_forte_i.wav",
+   "sha256": "7a206506703aa463585937b64fc41d755192540b1b1f90d9947054c7ef6dbb17",
+   "bytes": 1170780,
+   "stored": "renders/preserved-build-audio-20261109/7a206506703aa4635859.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m6_scales_c_slow_forte_a.wav",
+   "sha256": "f469291f9adb85a3462f28631e1a635006dd6b11ac1b7cd98f5885376d3c49e7",
+   "bytes": 1690712,
+   "stored": "renders/preserved-build-audio-20261109/f469291f9adb85a3462f.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f1_scales_c_slow_forte_a.wav",
+   "sha256": "b712125f2180d09d762df44cde78f8146a95410a7f7443eefc4578d0f5d61a5f",
+   "bytes": 1072036,
+   "stored": "renders/preserved-build-audio-20261109/b712125f2180d09d762d.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f7_scales_c_fast_piano_a.wav",
+   "sha256": "523d30cc857e673ccdd76680fc5fac7a22ed39543ef0c3114a3874d241092d47",
+   "bytes": 319824,
+   "stored": "renders/preserved-build-audio-20261109/523d30cc857e673ccdd7.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f7_scales_c_slow_forte_i.wav",
+   "sha256": "389fbb578d0ba213d9f5240e15d6025426a6433295b4dc9a16549040ba364836",
+   "bytes": 1021668,
+   "stored": "renders/preserved-build-audio-20261109/389fbb578d0ba213d9f5.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f9_scales_c_slow_forte_a.wav",
+   "sha256": "b34c190369d4426aa0ae18ecdee398be9bd7ed4b556a4b425ec3bd29e5764b4c",
+   "bytes": 977272,
+   "stored": "renders/preserved-build-audio-20261109/b34c190369d4426aa0ae.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m8_scales_c_fast_piano_a.wav",
+   "sha256": "14ed455fa467d0f0bea8cd9f321ac39b53c1d244377df448fbde156d0a30f195",
+   "bytes": 329236,
+   "stored": "renders/preserved-build-audio-20261109/14ed455fa467d0f0bea8.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f8_scales_c_fast_piano_a.wav",
+   "sha256": "4c694d6ff7fedce514ea96b7ffaa592392c7ac6a01c53320af4735d91119183c",
+   "bytes": 451750,
+   "stored": "renders/preserved-build-audio-20261109/4c694d6ff7fedce514ea.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m9_scales_c_slow_forte_a.wav",
+   "sha256": "ee7a2999e0e17b47f3d9b1564f41fcfc53f75c905bd17b014bc2e37a04cf92e7",
+   "bytes": 980646,
+   "stored": "renders/preserved-build-audio-20261109/ee7a2999e0e17b47f3d9.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f3_scales_f_slow_forte_a.wav",
+   "sha256": "9fed659c646bbd2241de7ad2d9ffac4281f243ee19186b5e0ad52cc40f61a5b8",
+   "bytes": 1034830,
+   "stored": "renders/preserved-build-audio-20261109/9fed659c646bbd2241de.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m4_scales_f_slow_forte_a.wav",
+   "sha256": "db41e8b09b1e045f8c83bf045b96583d63afd640cfb341f6b202084ebd17a60f",
+   "bytes": 1375248,
+   "stored": "renders/preserved-build-audio-20261109/db41e8b09b1e045f8c83.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m7_scales_c_slow_forte_i.wav",
+   "sha256": "7e97aa2d6f6ddea14537335bc36c4969014e212dd6b0a0af51113f57d60e94c7",
+   "bytes": 829878,
+   "stored": "renders/preserved-build-audio-20261109/7e97aa2d6f6ddea14537.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m7_scales_c_fast_piano_a.wav",
+   "sha256": "26abeda5087e7f409399cf34003eda9a30a845cb236be354dd341a2113310f80",
+   "bytes": 258472,
+   "stored": "renders/preserved-build-audio-20261109/26abeda5087e7f409399.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f8_scales_c_slow_forte_i.wav",
+   "sha256": "879c93f962b9aaa828986aa9e0ea30256684a7ddddd36c81d879b3787bfcb9e1",
+   "bytes": 1137394,
+   "stored": "renders/preserved-build-audio-20261109/879c93f962b9aaa82898.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/f6_scales_c_slow_forte_a.wav",
+   "sha256": "7a3c0d21111edb3491fd2123a400f534ea14e40b4316bd3f85bc262e3cf240a6",
+   "bytes": 887994,
+   "stored": "renders/preserved-build-audio-20261109/7a3c0d21111edb3491fd.wav"
+  },
+  {
+   "original": "build-singing-holdout-20261027/m11_scales_c_fast_piano_e.wav",
+   "sha256": "809f53a29d67afe29771a8d9db1f7d70e52d8ee9fe92a44f224e3a3625ff6213",
+   "bytes": 349664,
+   "stored": "renders/preserved-build-audio-20261109/809f53a29d67afe29771.wav"
+  },
+  {
+   "original": "build-song-finish/startup/startup.wav",
+   "sha256": "7acca79fd82bea848887ea17ff66110b91f6faa551d6ee2c997aa792ba892138",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/7acca79fd82bea848887.wav"
+  },
+  {
+   "original": "build-song-finish/startup/2026-10-23T08-21-47.977Z/startup.wav",
+   "sha256": "4f138dd36c6d18ba6266d683f541f2b1a3275e6fc2605c282b21056bd63a07a0",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/4f138dd36c6d18ba6266.wav"
+  },
+  {
+   "original": "build-song-finish/latin-distinct/6302303/singer/singer.wav",
+   "sha256": "39e11f68e808611c9b1b76334d0b337d098bf05a6592d52c8da99776254f494a",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/39e11f68e808611c9b1b.wav"
+  },
+  {
+   "original": "build-song-finish/latin-distinct/6302303/singer/raw/273e90fc-bce0-4873-4f74-5d356f867787.wav",
+   "sha256": "39e11f68e808611c9b1b76334d0b337d098bf05a6592d52c8da99776254f494a",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/39e11f68e808611c9b1b.wav"
+  },
+  {
+   "original": "build-song-finish/latin-distinct/6302304/singer/singer.wav",
+   "sha256": "7e23e6c67581cf368d5b4376dc8a16a6833e3aa3dd84ec25e568dfe6dd0e3520",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/7e23e6c67581cf368d5b.wav"
+  },
+  {
+   "original": "build-song-finish/latin-distinct/6302304/singer/raw/8654cdbe-1697-c491-1efb-d4907df17ee2.wav",
+   "sha256": "7e23e6c67581cf368d5b4376dc8a16a6833e3aa3dd84ec25e568dfe6dd0e3520",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/7e23e6c67581cf368d5b.wav"
+  },
+  {
+   "original": "build-song-finish/latin-0/singer/singer.wav",
+   "sha256": "e813a06aedee01724520682f628425a5563413b8967384139a7afe95d8fa17dd",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/e813a06aedee01724520.wav"
+  },
+  {
+   "original": "build-song-finish/latin-0/singer/raw/0a4802e9-d11f-af5f-79f9-ba162ac8d47c.wav",
+   "sha256": "e813a06aedee01724520682f628425a5563413b8967384139a7afe95d8fa17dd",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/e813a06aedee01724520.wav"
+  },
+  {
+   "original": "build-song-finish/latin-1/singer/singer.wav",
+   "sha256": "e813a06aedee01724520682f628425a5563413b8967384139a7afe95d8fa17dd",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/e813a06aedee01724520.wav"
+  },
+  {
+   "original": "build-song-finish/latin-1/singer/raw/0a4802e9-d11f-af5f-79f9-ba162ac8d47c.wav",
+   "sha256": "e813a06aedee01724520682f628425a5563413b8967384139a7afe95d8fa17dd",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/e813a06aedee01724520.wav"
+  },
+  {
+   "original": "build-song-qualification/jazz-focused/singer/singer.wav",
+   "sha256": "e86600b20385f565d5da126a2fab48b930453e6e1cffb48e7d3adeca35310342",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/e86600b20385f565d5da.wav"
+  },
+  {
+   "original": "build-song-qualification/jazz-focused/singer/raw/9a17e709-cc81-ffdf-6bbe-6ee43648cff5.wav",
+   "sha256": "e86600b20385f565d5da126a2fab48b930453e6e1cffb48e7d3adeca35310342",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/e86600b20385f565d5da.wav"
+  },
+  {
+   "original": "build-song-qualification/jazz-tags/singer/singer.wav",
+   "sha256": "9c8e937395cf3ce0a3e42d96f280b4426db2d493bcdfd4d6ce9c40fb59a1de01",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/9c8e937395cf3ce0a3e4.wav"
+  },
+  {
+   "original": "build-song-qualification/jazz-tags/singer/raw/f1c6dc5b-5411-0fa5-992b-cb23c744c011.wav",
+   "sha256": "9c8e937395cf3ce0a3e42d96f280b4426db2d493bcdfd4d6ce9c40fb59a1de01",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/9c8e937395cf3ce0a3e4.wav"
+  },
+  {
+   "original": "build-song-qualification/jazz-2/singer/singer.wav",
+   "sha256": "210417454ef9dfee0e649701e6ca6310ff13fabc88757a36acbfc6f672b2b479",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/210417454ef9dfee0e64.wav"
+  },
+  {
+   "original": "build-song-qualification/jazz-2/singer/raw/a8dd0f14-570c-b9a3-3ecc-7e05294a9f01.wav",
+   "sha256": "210417454ef9dfee0e649701e6ca6310ff13fabc88757a36acbfc6f672b2b479",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/210417454ef9dfee0e64.wav"
+  },
+  {
+   "original": "build-song-qualification/jazz-2/rejected-1/singer/singer.wav",
+   "sha256": "292315fed34fcccde0d228cb311378cb2b344851a7efbbd02c0e2fbbf68bb051",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/292315fed34fcccde0d2.wav"
+  },
+  {
+   "original": "build-song-qualification/jazz-2/rejected-1/singer/raw/0e57f7e2-0a96-6ead-95f8-28792fc3f0cf.wav",
+   "sha256": "292315fed34fcccde0d228cb311378cb2b344851a7efbbd02c0e2fbbf68bb051",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/292315fed34fcccde0d2.wav"
+  },
+  {
+   "original": "build-song-repair/cloud/jazz-2.wav",
+   "sha256": "deee55e0c4fd4462c5f84bc504063b21de13491076b5d97434f1705862091097",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/deee55e0c4fd4462c5f8.wav"
+  },
+  {
+   "original": "build-song-repair/cloud/jazz-1.wav",
+   "sha256": "9d695e6ef9fa51f5af665507941b8d89a588c32df365279e0eb99ac5813a975e",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/9d695e6ef9fa51f5af66.wav"
+  },
+  {
+   "original": "build-song-repair/worker/apps/site/public/academy-audio/extended-v2.mp3",
+   "sha256": "6d68a252436e16cf4b86d745e43f9564198d68ee6fe10f1a4368b235864a3c78",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/6d68a252436e16cf4b86.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/site/public/academy-audio/extended.mp3",
+   "sha256": "0ca55afaff18a296a32126f449f91d1d5708398faa6a803ef0c505a46cf75284",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/0ca55afaff18a296a321.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/site/public/academy-audio/theories-v2.mp3",
+   "sha256": "661938922885b5114d78cc5a6070010924f1ae832e6b6ad2a0ad6d28f9198203",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/661938922885b5114d78.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/site/public/academy-audio/theories.mp3",
+   "sha256": "7f54e84a9d303f42bc51ffca0b1811e47ab9294c6666af9ed5f64861abb28568",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/7f54e84a9d303f42bc51.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/site/public/audio/instrument-study.mp3",
+   "sha256": "f883f555beb73a8352e9e92aa110edadbfa92910d9e85c05b6a5a4fa3b0f6c7e",
+   "bytes": 279980,
+   "stored": "renders/preserved-build-audio-20261109/f883f555beb73a8352e9.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/web/practice-audio/midnight-moon.mp3",
+   "sha256": "87d73adf16a0dcc659dec06b7f186fe533e44500f8a8cc603d6c4ea356ca3a3e",
+   "bytes": 4146764,
+   "stored": "renders/preserved-build-audio-20261109/87d73adf16a0dcc659de.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/web/practice-audio/black-diamond.mp3",
+   "sha256": "53d1f393008ad8d25fa71d53dac003f3d4e8d87cdff59ef288969f6ea63b5697",
+   "bytes": 4030604,
+   "stored": "renders/preserved-build-audio-20261109/53d1f393008ad8d25fa7.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/web/practice-audio/rhythm-garden.mp3",
+   "sha256": "1ed6ce4e83e66d673be3f34657baa9572cbc184306726c0cedf693a900cc8400",
+   "bytes": 4144364,
+   "stored": "renders/preserved-build-audio-20261109/1ed6ce4e83e66d673be3.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/web/practice-audio/midnight-cruiser.mp3",
+   "sha256": "c0ae886684ffec38efc75d97c2d60718ec9f3cc6a4257a4c845348ea6c872a7e",
+   "bytes": 2889164,
+   "stored": "renders/preserved-build-audio-20261109/c0ae886684ffec38efc7.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/web/practice-audio/funked-up.mp3",
+   "sha256": "306420edbf7493f1d660c219f42d1c6b24231b209f14745e91299ba5bf700086",
+   "bytes": 1326764,
+   "stored": "renders/preserved-build-audio-20261109/306420edbf7493f1d660.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/web/practice-audio/wednesday-night.mp3",
+   "sha256": "e73f3d5fbebeb9d8d70a966a2c5595393e0b765eea6121069a979b4538bb7d21",
+   "bytes": 3533804,
+   "stored": "renders/preserved-build-audio-20261109/e73f3d5fbebeb9d8d70a.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/web/practice-audio/funky-hip-hop-lofi-jam.mp3",
+   "sha256": "aac0f301ef3982270389d6cb2e55a23324e5e55beceeb68ac0826cb360ced2f5",
+   "bytes": 3787724,
+   "stored": "renders/preserved-build-audio-20261109/aac0f301ef3982270389.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/web/practice-audio/atmosphere.mp3",
+   "sha256": "c7ea5e6c6b2a8902797c1e2c52df96af7a396d8a798782a26c5d16b038b1cb4d",
+   "bytes": 2752364,
+   "stored": "renders/preserved-build-audio-20261109/c7ea5e6c6b2a8902797c.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/web/practice-audio/next-to-you.mp3",
+   "sha256": "3a886a7e9e599d5441b9478bcae00821daf5aabfc98f0f0fe1ef1978af0475c4",
+   "bytes": 1671884,
+   "stored": "renders/preserved-build-audio-20261109/3a886a7e9e599d5441b9.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/apps/web/practice-audio/party-sector.mp3",
+   "sha256": "e77886794bc0c408332b1c6f75cb3d753b59260669eada04ee2983c82f471ff2",
+   "bytes": 1922444,
+   "stored": "renders/preserved-build-audio-20261109/e77886794bc0c408332b.mp3"
+  },
+  {
+   "original": "build-song-repair/worker/docs/evidence/academy/audio/chromium-first-crossfade.wav",
+   "sha256": "a4afd23f8e43aaac163c834ce30f1ee11096ec6ce7a87c4f5bc0f78bb979185f",
+   "bytes": 788524,
+   "stored": "renders/preserved-build-audio-20261109/a4afd23f8e43aaac163c.wav"
+  },
+  {
+   "original": "build-song-repair/worker/docs/evidence/academy/audio/webkit-first-crossfade.wav",
+   "sha256": "8354b55f9cdaa4eb288447c9027f0822034533c85977cdfc10b7571800aa65a2",
+   "bytes": 771628,
+   "stored": "renders/preserved-build-audio-20261109/8354b55f9cdaa4eb2884.wav"
+  },
+  {
+   "original": "build-song-repair/jazz-shift1/singer/singer.wav",
+   "sha256": "3d3858a42452e0b17fa3b4ec32959bbc8b514f2d73cc0706b350aa78cab411f7",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/3d3858a42452e0b17fa3.wav"
+  },
+  {
+   "original": "build-song-repair/jazz-shift1/singer/raw/cb58229e-2970-db47-dd67-e9e18b7a5478.wav",
+   "sha256": "3d3858a42452e0b17fa3b4ec32959bbc8b514f2d73cc0706b350aa78cab411f7",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/3d3858a42452e0b17fa3.wav"
+  },
+  {
+   "original": "build-song-repair/spanish-shift1/singer/singer.wav",
+   "sha256": "22a6137848b35703fbd568120d58084b61a23b15376ac0a3f623f354d03a046b",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/22a6137848b35703fbd5.wav"
+  },
+  {
+   "original": "build-song-repair/spanish-shift1/singer/raw/4cb98920-cfff-c5f0-3f3f-8f53912676e5.wav",
+   "sha256": "22a6137848b35703fbd568120d58084b61a23b15376ac0a3f623f354d03a046b",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/22a6137848b35703fbd5.wav"
+  },
+  {
+   "original": "build-song-repair/jazz-lm-mlx/singer/singer.wav",
+   "sha256": "88cd816f4090490d5f89b426f4a1c45ceb192655f5fbf39cf1f3d25dedc7ffb7",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/88cd816f4090490d5f89.wav"
+  },
+  {
+   "original": "build-song-repair/jazz-lm-mlx/singer/raw/48949474-bcec-a7f1-6bfb-9acd884ef156.wav",
+   "sha256": "88cd816f4090490d5f89b426f4a1c45ceb192655f5fbf39cf1f3d25dedc7ffb7",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/88cd816f4090490d5f89.wav"
+  },
+  {
+   "original": "build-song-repair/spanish-lm-mlx/singer/singer.wav",
+   "sha256": "ecfc227b3f69b48aed40ebab3016b2251f1f04962634ebd5e71d24e35445b2e8",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/ecfc227b3f69b48aed40.wav"
+  },
+  {
+   "original": "build-song-repair/spanish-lm-mlx/singer/raw/c845bf18-87b8-0cd2-18d3-e2e7053bf05a.wav",
+   "sha256": "ecfc227b3f69b48aed40ebab3016b2251f1f04962634ebd5e71d24e35445b2e8",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/ecfc227b3f69b48aed40.wav"
+  },
+  {
+   "original": "build-song-repair/spanish-repaired/singer/singer.wav",
+   "sha256": "26343dfcd6e18d271b60688e15becd1db2855c61e64ea5f908914d095efd42de",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/26343dfcd6e18d271b60.wav"
+  },
+  {
+   "original": "build-song-repair/spanish-repaired/singer/raw/c19beab1-6e94-a7a8-28ec-6f4a4744b63c.wav",
+   "sha256": "26343dfcd6e18d271b60688e15becd1db2855c61e64ea5f908914d095efd42de",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/26343dfcd6e18d271b60.wav"
+  },
+  {
+   "original": "build-song-repair/spanish-repaired/rejected-1/singer/singer.wav",
+   "sha256": "3c1572f14193ce64676e34280dea28771f3372419aee722d91415321d06b4fbf",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/3c1572f14193ce64676e.wav"
+  },
+  {
+   "original": "build-song-repair/spanish-repaired/rejected-1/singer/raw/6eb1cbb7-3439-f7cb-4471-0369c9af565e.wav",
+   "sha256": "3c1572f14193ce64676e34280dea28771f3372419aee722d91415321d06b4fbf",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/3c1572f14193ce64676e.wav"
+  },
+  {
+   "original": "build-song-repair/jazz-repaired/singer/singer.wav",
+   "sha256": "ca78454e7957058cf843c228a496f6d93b669bb3fce43fc3dc47976cb8f881d6",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/ca78454e7957058cf843.wav"
+  },
+  {
+   "original": "build-song-repair/jazz-repaired/singer/raw/c7e6e995-bd6b-8f2c-93d9-e65aa0d65be7.wav",
+   "sha256": "ca78454e7957058cf843c228a496f6d93b669bb3fce43fc3dc47976cb8f881d6",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/ca78454e7957058cf843.wav"
+  },
+  {
+   "original": "build-song-repair/jazz-repaired/rejected-1/singer/singer.wav",
+   "sha256": "4fc96dc4a46eced5e40c3da87d9555bb5a87b2f286079a5e5523ec9f9ec8eddc",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/4fc96dc4a46eced5e40c.wav"
+  },
+  {
+   "original": "build-song-repair/jazz-repaired/rejected-1/singer/raw/6222c435-236c-0b8d-d78c-4913edef7b37.wav",
+   "sha256": "4fc96dc4a46eced5e40c3da87d9555bb5a87b2f286079a5e5523ec9f9ec8eddc",
+   "bytes": 23040044,
+   "stored": "renders/preserved-build-audio-20261109/4fc96dc4a46eced5e40c.wav"
+  },
+  {
+   "original": "build-spleeter/synthetic-30s.wav",
+   "sha256": "b5df4969c4dc1f9aff701c6596ec6067f5dadbd2af9ed8308b05173f7d0e357e",
+   "bytes": 5760044,
+   "stored": "renders/preserved-build-audio-20261109/b5df4969c4dc1f9aff70.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-45bit.wav",
+   "sha256": "7bded7a0facf1890c887c9ceea68a2fff562639c95966b783a73d0a03375763b",
+   "bytes": 134,
+   "stored": "renders/preserved-build-audio-20261109/7bded7a0facf1890c887.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-1ch-1byte-ulaw.wav",
+   "sha256": "0685020dcb771a263f24957f1e88211779b301e6d3d7c8f4d9cf8c3a7d7d2b15",
+   "bytes": 70,
+   "stored": "renders/preserved-build-audio-20261109/0685020dcb771a263f24.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-36bit.wav",
+   "sha256": "a22315b1057dfaa181cff670b1f024800f416573635db1f8cf1086bef753d116",
+   "bytes": 120,
+   "stored": "renders/preserved-build-audio-20261109/a22315b1057dfaa181cf.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-24bit.wav",
+   "sha256": "c82bf4ba1faec7fb2426cc5e3a3ce88346019376503bf930e4724732ab55c88d",
+   "bytes": 90,
+   "stored": "renders/preserved-build-audio-20261109/c82bf4ba1faec7fb2426.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-24bit-rf64.wav",
+   "sha256": "8921b2aa8b97e7735a101df7b732976b5d4d44863dec61b8d3fa6a585fe4e4b4",
+   "bytes": 126,
+   "stored": "renders/preserved-build-audio-20261109/8921b2aa8b97e7735a10.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-44100Hz-2ch-32bit-float-le.wav",
+   "sha256": "1f42cbcafda573682ecd81a7c780d65d4eaf079ec9ad15fe1bd0dde2a1a1d213",
+   "bytes": 3586,
+   "stored": "renders/preserved-build-audio-20261109/1f42cbcafda573682ecd.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes.wav",
+   "sha256": "f6a4c2be981dcf7ada79c54dd558a08073e742305fe3bc665e877d8820ec1229",
+   "bytes": 17720,
+   "stored": "renders/preserved-build-audio-20261109/f6a4c2be981dcf7ada79.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-44100Hz-be-1ch-4bytes.wav",
+   "sha256": "28acfd497bff477817fc055e103dafca16278f806f0f5bb20e22a9093dee959d",
+   "bytes": 17720,
+   "stored": "renders/preserved-build-audio-20261109/28acfd497bff477817fc.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-48000Hz-2ch-64bit-float-le-wavex.wav",
+   "sha256": "12a6019c4813c532af69302d740e47225e3b0821488def77cb885ac11e8fcaed",
+   "bytes": 7792,
+   "stored": "renders/preserved-build-audio-20261109/12a6019c4813c532af69.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-53bit.wav",
+   "sha256": "c1ba272a5cefcd0fdb418c81b23f86c278a164e867d2ec5f2a12ff9c434218d7",
+   "bytes": 150,
+   "stored": "renders/preserved-build-audio-20261109/c1ba272a5cefcd0fdb41.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-5ch-9S-5bit.wav",
+   "sha256": "4c9bc653b1a9817742addae3ccc943b6989e0cc9c32be95630caa55a34f6dc16",
+   "bytes": 89,
+   "stored": "renders/preserved-build-audio-20261109/4c9bc653b1a9817742ad.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-4ch-9S-12bit.wav",
+   "sha256": "d45ebb87cb6bdb1cf40b92b6d53f72f60b29706034aa748ecec976be302b00cb",
+   "bytes": 116,
+   "stored": "renders/preserved-build-audio-20261109/d45ebb87cb6bdb1cf40b.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-early-eof.wav",
+   "sha256": "6c5aec46ac344179ac683b630fa4c53fc859e631183326829adfa46bf0ba18d9",
+   "bytes": 1024,
+   "stored": "renders/preserved-build-audio-20261109/6c5aec46ac344179ac68.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-be-3ch-5S-24bit.wav",
+   "sha256": "84661c8714058ebb6f642068d142e2fb1759f24aea5dc29d4e5dcd4947ea7bc9",
+   "bytes": 90,
+   "stored": "renders/preserved-build-audio-20261109/84661c8714058ebb6f64.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-rf64.wav",
+   "sha256": "1922690ae7b396f1db84fdc2af88cd5a6cf8cc6e3a5d9ea3722d9f5ad88c3749",
+   "bytes": 17756,
+   "stored": "renders/preserved-build-audio-20261109/1922690ae7b396f1db84.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-incomplete-chunk.wav",
+   "sha256": "ccc9e1bd9beb3f893239629529f6c19decafd37c6fce0a976211cdc6c0310c9e",
+   "bytes": 13,
+   "stored": "renders/preserved-build-audio-20261109/ccc9e1bd9beb3f893239.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-2ch-1byteu.wav",
+   "sha256": "47a109b21bd0a79615478181f6ee0a867e4733554c7c9523d3cda2f2d901209f",
+   "bytes": 1644,
+   "stored": "renders/preserved-build-audio-20261109/47a109b21bd0a7961547.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-1234Hz-le-1ch-10S-20bit-extra.wav",
+   "sha256": "87c097b16e7f4a1291d7deedfddf935139600ea399fbbc0afc47151ae711f9a6",
+   "bytes": 74,
+   "stored": "renders/preserved-build-audio-20261109/87c097b16e7f4a1291d7.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-64bit.wav",
+   "sha256": "52ee503d071bb671659f139de33146c698930b8c20769e893a8609d95319214d",
+   "bytes": 164,
+   "stored": "renders/preserved-build-audio-20261109/52ee503d071bb671659f.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-44100Hz-2ch-32bit-float-be.wav",
+   "sha256": "823bfffe783dc47fec9b7e21cb109b0a03b800ffbe3d901f0ce02b1f9a269233",
+   "bytes": 3586,
+   "stored": "renders/preserved-build-audio-20261109/823bfffe783dc47fec9b.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-early-eof-no-data.wav",
+   "sha256": "617d60f2a7423801b5eaf5fd1baab84ac7c28f6655935f7d8f30d0f12d335982",
+   "bytes": 72,
+   "stored": "renders/preserved-build-audio-20261109/617d60f2a7423801b5ea.wav"
+  },
+  {
+   "original": "build-spleeter/venv/lib/python3.11/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-24bit-inconsistent.wav",
+   "sha256": "b76320ae2de1e892d00de92bc0884304e686e3a394cc7ca7533d2929bbcea4d5",
+   "bytes": 90,
+   "stored": "renders/preserved-build-audio-20261109/b76320ae2de1e892d00d.wav"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/site/public/academy-audio/extended-v2.mp3",
+   "sha256": "6d68a252436e16cf4b86d745e43f9564198d68ee6fe10f1a4368b235864a3c78",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/6d68a252436e16cf4b86.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/site/public/academy-audio/extended.mp3",
+   "sha256": "0ca55afaff18a296a32126f449f91d1d5708398faa6a803ef0c505a46cf75284",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/0ca55afaff18a296a321.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/site/public/academy-audio/theories-v2.mp3",
+   "sha256": "661938922885b5114d78cc5a6070010924f1ae832e6b6ad2a0ad6d28f9198203",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/661938922885b5114d78.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/site/public/academy-audio/theories.mp3",
+   "sha256": "7f54e84a9d303f42bc51ffca0b1811e47ab9294c6666af9ed5f64861abb28568",
+   "bytes": 1537388,
+   "stored": "renders/preserved-build-audio-20261109/7f54e84a9d303f42bc51.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/site/public/audio/instrument-study.mp3",
+   "sha256": "f883f555beb73a8352e9e92aa110edadbfa92910d9e85c05b6a5a4fa3b0f6c7e",
+   "bytes": 279980,
+   "stored": "renders/preserved-build-audio-20261109/f883f555beb73a8352e9.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/web/practice-audio/midnight-moon.mp3",
+   "sha256": "87d73adf16a0dcc659dec06b7f186fe533e44500f8a8cc603d6c4ea356ca3a3e",
+   "bytes": 4146764,
+   "stored": "renders/preserved-build-audio-20261109/87d73adf16a0dcc659de.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/web/practice-audio/black-diamond.mp3",
+   "sha256": "53d1f393008ad8d25fa71d53dac003f3d4e8d87cdff59ef288969f6ea63b5697",
+   "bytes": 4030604,
+   "stored": "renders/preserved-build-audio-20261109/53d1f393008ad8d25fa7.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/web/practice-audio/rhythm-garden.mp3",
+   "sha256": "1ed6ce4e83e66d673be3f34657baa9572cbc184306726c0cedf693a900cc8400",
+   "bytes": 4144364,
+   "stored": "renders/preserved-build-audio-20261109/1ed6ce4e83e66d673be3.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/web/practice-audio/midnight-cruiser.mp3",
+   "sha256": "c0ae886684ffec38efc75d97c2d60718ec9f3cc6a4257a4c845348ea6c872a7e",
+   "bytes": 2889164,
+   "stored": "renders/preserved-build-audio-20261109/c0ae886684ffec38efc7.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/web/practice-audio/funked-up.mp3",
+   "sha256": "306420edbf7493f1d660c219f42d1c6b24231b209f14745e91299ba5bf700086",
+   "bytes": 1326764,
+   "stored": "renders/preserved-build-audio-20261109/306420edbf7493f1d660.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/web/practice-audio/wednesday-night.mp3",
+   "sha256": "e73f3d5fbebeb9d8d70a966a2c5595393e0b765eea6121069a979b4538bb7d21",
+   "bytes": 3533804,
+   "stored": "renders/preserved-build-audio-20261109/e73f3d5fbebeb9d8d70a.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/web/practice-audio/funky-hip-hop-lofi-jam.mp3",
+   "sha256": "aac0f301ef3982270389d6cb2e55a23324e5e55beceeb68ac0826cb360ced2f5",
+   "bytes": 3787724,
+   "stored": "renders/preserved-build-audio-20261109/aac0f301ef3982270389.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/web/practice-audio/atmosphere.mp3",
+   "sha256": "c7ea5e6c6b2a8902797c1e2c52df96af7a396d8a798782a26c5d16b038b1cb4d",
+   "bytes": 2752364,
+   "stored": "renders/preserved-build-audio-20261109/c7ea5e6c6b2a8902797c.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/web/practice-audio/next-to-you.mp3",
+   "sha256": "3a886a7e9e599d5441b9478bcae00821daf5aabfc98f0f0fe1ef1978af0475c4",
+   "bytes": 1671884,
+   "stored": "renders/preserved-build-audio-20261109/3a886a7e9e599d5441b9.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/apps/web/practice-audio/party-sector.mp3",
+   "sha256": "e77886794bc0c408332b1c6f75cb3d753b59260669eada04ee2983c82f471ff2",
+   "bytes": 1922444,
+   "stored": "renders/preserved-build-audio-20261109/e77886794bc0c408332b.mp3"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/assets/singer-identities/af_nicole.wav",
+   "sha256": "303efbf1961ca95a479b4c784e05ad86147949d4b894b657732494452e676456",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/303efbf1961ca95a479b.wav"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/assets/singer-identities/am_michael.wav",
+   "sha256": "cc192e2651bc081d869baf0bc5287d0fa6576022c2d7f879dbc682bab0832bcb",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/cc192e2651bc081d869b.wav"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/assets/singer-identities/af_bella.wav",
+   "sha256": "3bb1fb4c62997ca6d854c785f3a1c8951774bb05e9cd161bd760fae7a33dd26f",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/3bb1fb4c62997ca6d854.wav"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/assets/singer-identities/am_fenrir.wav",
+   "sha256": "e3f7104e196c1a50cbd8abc66dc9b8d52250b8e30f47f2aff219cdadd082fc35",
+   "bytes": 288044,
+   "stored": "renders/preserved-build-audio-20261109/e3f7104e196c1a50cbd8.wav"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/docs/evidence/academy/audio/chromium-first-crossfade.wav",
+   "sha256": "a4afd23f8e43aaac163c834ce30f1ee11096ec6ce7a87c4f5bc0f78bb979185f",
+   "bytes": 788524,
+   "stored": "renders/preserved-build-audio-20261109/a4afd23f8e43aaac163c.wav"
+  },
+  {
+   "original": "build-style-guidance-worker-20261101/docs/evidence/academy/audio/webkit-first-crossfade.wav",
+   "sha256": "8354b55f9cdaa4eb288447c9027f0822034533c85977cdfc10b7571800aa65a2",
+   "bytes": 771628,
+   "stored": "renders/preserved-build-audio-20261109/8354b55f9cdaa4eb2884.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/source/TECHNOPOLIS - 2085 [vocals]_[cut_14sec].wav",
+   "sha256": "87087ca5260ce96659b01a647edb30bb08527ed7d0c074fb5ae1e8338cc733e5",
+   "bytes": 2796016,
+   "stored": "renders/preserved-build-audio-20261109/87087ca5260ce96659b0.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/source/Wiz Khalifa,Charlie Puth - See You Again [vocals]_[cut_28sec].wav",
+   "sha256": "c7ff68178df50fc5f4f497099af8efe0b4508e7ff13665ee72d780159e6d1875",
+   "bytes": 5411452,
+   "stored": "renders/preserved-build-audio-20261109/c7ff68178df50fc5f4f4.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/source/jay_0.wav",
+   "sha256": "1d30f1500acacb597c3b27d7a5937dd088b8029b27e9db8bf5982085f26f4457",
+   "bytes": 1270124,
+   "stored": "renders/preserved-build-audio-20261109/1d30f1500acacb597c3b.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/source/yae_0.wav",
+   "sha256": "543afcfdbf20c6fc9fdf04d97faa6d545f4b99a92e3fc90655f1cf75172b3abd",
+   "bytes": 528044,
+   "stored": "renders/preserved-build-audio-20261109/543afcfdbf20c6fc9fdf.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/source/source_s4.wav",
+   "sha256": "ee7ccf45748bf8918c17e9bf80f79af423cefd78d9c8eebb717a395305272b9f",
+   "bytes": 1068360,
+   "stored": "renders/preserved-build-audio-20261109/ee7ccf45748bf8918c17.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/source/glados_0.wav",
+   "sha256": "cb84353440fe0bcd44968fce96916074e9d573bfcf0da34a6d6c9a24fd3075e0",
+   "bytes": 640058,
+   "stored": "renders/preserved-build-audio-20261109/cb84353440fe0bcd4496.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/source/source_s1.wav",
+   "sha256": "b91167bc3b5b310da093f8dfd228c209398b180930fb889ab9388180518a3475",
+   "bytes": 599038,
+   "stored": "renders/preserved-build-audio-20261109/b91167bc3b5b310da093.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/source/source_s3.wav",
+   "sha256": "0e784fc21f6eade4633db4050528110a9fc307686487fcec257ad3db35a65c8d",
+   "bytes": 1168780,
+   "stored": "renders/preserved-build-audio-20261109/0e784fc21f6eade4633d.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/source/source_s2.wav",
+   "sha256": "32bf74dfb8342ccc8284f47a9e5fe1f41b458a983a00938ed170f76951ce638f",
+   "bytes": 675496,
+   "stored": "renders/preserved-build-audio-20261109/32bf74dfb8342ccc8284.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/s2p2.wav",
+   "sha256": "e6f73146fcfd25044317b377b0f2e8ae03ab43bd43ae8713f37889357babbd5e",
+   "bytes": 564012,
+   "stored": "renders/preserved-build-audio-20261109/e6f73146fcfd25044317.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/s2p1.wav",
+   "sha256": "308a38a5ac0a133a7d4742a95494d9670042fd9a233e60448f8370a9eba98a98",
+   "bytes": 664838,
+   "stored": "renders/preserved-build-audio-20261109/308a38a5ac0a133a7d47.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/s4p2.wav",
+   "sha256": "a2c71e9e60b1eb772c9bc50ceea66566c9797a58a265289486715afe37bea813",
+   "bytes": 651098,
+   "stored": "renders/preserved-build-audio-20261109/a2c71e9e60b1eb772c9b.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/s4p1.wav",
+   "sha256": "53892ece071342958403bc5643f84169a30b89cc0fc79eb69508bfa11dd85e68",
+   "bytes": 618528,
+   "stored": "renders/preserved-build-audio-20261109/53892ece071342958403.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/s1p2.wav",
+   "sha256": "07e937b52271380eeb52415428dc3fab6d530f767bf34b5e5cb52337ad294b17",
+   "bytes": 526116,
+   "stored": "renders/preserved-build-audio-20261109/07e937b52271380eeb52.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/s3p1.wav",
+   "sha256": "0cc05439406e44eeaa7be15742aa71e2ca8b9c43adbcd496ea1672d9283aa9b0",
+   "bytes": 557386,
+   "stored": "renders/preserved-build-audio-20261109/0cc05439406e44eeaa7b.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/s1p1.wav",
+   "sha256": "be291f04e9c239218082552e9e7c0dba9bad5ce6306d2c9d2104195840214b5a",
+   "bytes": 700714,
+   "stored": "renders/preserved-build-audio-20261109/be291f04e9c239218082.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/s3p2.wav",
+   "sha256": "0d28df338203ad8b3c7485474fac41d9ee2891cf27bc0c0239e3249e6c0efadb",
+   "bytes": 1140390,
+   "stored": "renders/preserved-build-audio-20261109/0d28df338203ad8b3c74.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/trump_0.wav",
+   "sha256": "716becc9daf00351dfe324398edea9e8378f9453408b27612d92b6721f80ddbc",
+   "bytes": 1379484,
+   "stored": "renders/preserved-build-audio-20261109/716becc9daf00351dfe3.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/teio_0.wav",
+   "sha256": "97af2b2fa7a950243f800bd5920d58841a1f602f7ccd23fc6479369956168842",
+   "bytes": 366402,
+   "stored": "renders/preserved-build-audio-20261109/97af2b2fa7a950243f80.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/dingzhen_0.wav",
+   "sha256": "3db260824d11f56cdf2fccf2b84ad83c95a732ddfa2f8cb8a20b68ca06ea9ff8",
+   "bytes": 1088420,
+   "stored": "renders/preserved-build-audio-20261109/3db260824d11f56cdf2f.wav"
+  },
+  {
+   "original": "build-style-training/seed-vc/examples/reference/azuma_0.wav",
+   "sha256": "3930141e927be50e7f3d666db5890ef9a4bda0623645483a6afaad241c82fb70",
+   "bytes": 628910,
+   "stored": "renders/preserved-build-audio-20261109/3930141e927be50e7f3d.wav"
+  },
+  {
+   "original": "build-transients/c-api-input.wav",
+   "sha256": "5476bf6a47eb6d00e109680ad0c6b1b299e1a13603be28d118e323faaf529e6b",
+   "bytes": 96044,
+   "stored": "renders/preserved-build-audio-20261109/5476bf6a47eb6d00e109.wav"
+  },
+  {
+   "original": "build-transients/integration/repeat.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-transients/integration/m0a.wav",
+   "sha256": "9368c2169f52ccc28819c3a22716b3986de4cb4c8df06224fca34a9a98f65b05",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/9368c2169f52ccc28819.wav"
+  },
+  {
+   "original": "build-transients/integration/changed.wav",
+   "sha256": "8a406f0f849017e509211131c988ae6ef682c91a9e8956615ac3a60a1a05a48e",
+   "bytes": 2227244,
+   "stored": "renders/preserved-build-audio-20261109/8a406f0f849017e50921.wav"
+  },
+  {
+   "original": "build-transients/integration/rate44100.wav",
+   "sha256": "237d59d566abbae0ae53f247fc24804c413cfd253a45673b35c5f116733a1530",
+   "bytes": 2046284,
+   "stored": "renders/preserved-build-audio-20261109/237d59d566abbae0ae53.wav"
+  },
+  {
+   "original": "build-web-tools/emsdk/upstream/emscripten/test/sounds/alarmcreatemiltaryfoot_1.wav",
+   "sha256": "0358ae8ee7c005b61d84a75ad3d3352f84dac980edc27adcc0b5c7e82acdd4dd",
+   "bytes": 443856,
+   "stored": "renders/preserved-build-audio-20261109/0358ae8ee7c005b61d84.wav"
+  },
+  {
+   "original": "build-web-tools/emsdk/upstream/emscripten/test/sounds/pudinha.mp3",
+   "sha256": "09b7b2ee349885ab97c62637a6defda2e258933d37d2c9d8f873fede064a0081",
+   "bytes": 125621,
+   "stored": "renders/preserved-build-audio-20261109/09b7b2ee349885ab97c6.mp3"
+  },
+  {
+   "original": "build-web-tools/emsdk/upstream/emscripten/test/sounds/the_entertainer.wav",
+   "sha256": "08b78807e504bbdd2cce1fd3d924e022bbddc5acba04e6fbff1eaaee91407f47",
+   "bytes": 264644,
+   "stored": "renders/preserved-build-audio-20261109/08b78807e504bbdd2cce.wav"
+  },
+  {
+   "original": "build-web-tools/emsdk/upstream/emscripten/test/sounds/audio.wav",
+   "sha256": "8911f043f385a56932dff6b9cee23340906be67cac859978aa945a546644d8cc",
+   "bytes": 190764,
+   "stored": "renders/preserved-build-audio-20261109/8911f043f385a56932df.wav"
+  },
+  {
+   "original": "build-web-tools/emsdk/upstream/emscripten/test/webaudio/audio_files/emscripten-bass-left.mp3",
+   "sha256": "d68bc40a141d5c230ee7f18473129ed20ff0720ec789429588d17417a90d46a2",
+   "bytes": 134854,
+   "stored": "renders/preserved-build-audio-20261109/d68bc40a141d5c230ee7.mp3"
+  },
+  {
+   "original": "build-web-tools/emsdk/upstream/emscripten/test/webaudio/audio_files/emscripten-bass-mono.mp3",
+   "sha256": "6879efb83d033ae04456b8c0802f61b42a7a6d7d151edfb7211f74529d70ba12",
+   "bytes": 129532,
+   "stored": "renders/preserved-build-audio-20261109/6879efb83d033ae04456.mp3"
+  },
+  {
+   "original": "build-web-tools/emsdk/upstream/emscripten/test/webaudio/audio_files/emscripten-beat.mp3",
+   "sha256": "c57d31dc0096a7983c3bdbaba3ce1b395cd33006d3e1c2eee6735a2231b4823e",
+   "bytes": 251827,
+   "stored": "renders/preserved-build-audio-20261109/c57d31dc0096a7983c3b.mp3"
+  },
+  {
+   "original": "build-web-tools/emsdk/upstream/emscripten/test/webaudio/audio_files/emscripten-beat-right.mp3",
+   "sha256": "96d15525bc135b404581aac4d17780db111e5be38f1f17815001f82488a3a7a6",
+   "bytes": 131978,
+   "stored": "renders/preserved-build-audio-20261109/96d15525bc135b404581.mp3"
+  },
+  {
+   "original": "build-web-tools/emsdk/upstream/emscripten/test/webaudio/audio_files/emscripten-bass.mp3",
+   "sha256": "bfd680a9c7fa8e7f4db4e03f0e514030ae421b156550e05dff828228b4f52b15",
+   "bytes": 263804,
+   "stored": "renders/preserved-build-audio-20261109/bfd680a9c7fa8e7f4db4.mp3"
+  },
+  {
+   "original": "build-web-tools/emsdk/upstream/emscripten/test/webaudio/audio_files/emscripten-beat-mono.mp3",
+   "sha256": "45536b1647fa4badb0576518384f4e636c6fd33d1dfb3489e8c6e2b03b5d4e0e",
+   "bytes": 128123,
+   "stored": "renders/preserved-build-audio-20261109/45536b1647fa4badb057.mp3"
+  }
+ ]
+}
