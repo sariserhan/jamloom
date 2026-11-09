@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:35:08.151Z",
+  "product": "topup",
+  "productId": "6829266772",
+  "screenshotId": "343064c1-930c-4c4d-ab88-0753157e86ab",
+  "assetState": "COMPLETE",
+  "sourceSHA256": "fc9aff265b40cac3f45719e90752d33e7cd68ee390138f76bd4e537f4572cc41",
+  "build": 40,
+  "physicalDevice": true,
+  "storeKitFixture": false,
+  "purchaseRequests": 0,
+  "adjustment": "Owner-approved single background pixel column; original pixels preserved"
+}

@@ -1,16 +1,23 @@
 {
   "status": "PROVISIONAL",
-  "at": "2026-11-09T03:09:25.439Z",
+  "at": "2026-11-09T03:31:53.717Z",
   "scope": "Observed review-cycle worker IDs; full provider reconciliation remains required; $1.50 reserved across two validation cycles, $7.50 permit ceiling",
-  "rows": [],
+  "rows": [
+    {
+      "amount": 0.05358798522502184,
+      "timeBilledMs": 253889,
+      "diskSpaceBilledGB": 120,
+      "podId": "s2ltxvi4scscnc",
+      "time": "2026-11-09 02:00:00"
+    }
+  ],
   "notYetReported": [
     "mlqupne061frfm",
-    "s2ltxvi4scscnc",
     "761w03inzbj2eh",
     "9mnknjowsu1asr",
     "17hnj60eljdvrf"
   ],
-  "reportedUSD": 0,
+  "reportedUSD": 0.05358798522502184,
   "finalInvoice": false,
   "missingRowsAreNotZero": true,
   "mutations": false

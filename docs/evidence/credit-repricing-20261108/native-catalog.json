@@ -1,0 +1,26 @@
+[
+  {
+    "currency": "USD",
+    "description": "Original songs, lyrics and live pitch lessons.",
+    "id": "com.jamloom.singing.complete",
+    "name": "Jamloom Singing Academy",
+    "price": "39",
+    "type": "Non-Consumable"
+  },
+  {
+    "currency": "USD",
+    "description": "150 credits for songs and DJ sets. No expiry.",
+    "id": "com.jamloom.credits.topup150",
+    "name": "150 Jamloom credits",
+    "price": "20",
+    "type": "Consumable"
+  },
+  {
+    "currency": "USD",
+    "description": "300 credits every month. Paid credits never expire.",
+    "id": "com.jamloom.creator.monthly",
+    "name": "Jamloom Creator",
+    "price": "35",
+    "type": "Auto-Renewable Subscription"
+  }
+]

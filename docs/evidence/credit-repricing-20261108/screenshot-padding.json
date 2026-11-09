@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:33:07.505Z",
+  "authorization": "Owner explicitly approved one background-colored pixel column using a local script",
+  "source": "build-credit-repricing-20261108/device-prices-png-attachments/7F85B802-E7D3-422A-A86E-1483D515F2B5.png",
+  "sourceSHA256": "00bb0d2bebe650f107603187f27f527ce2749377d7874373e4ef2463ba79b59e",
+  "output": "build-credit-repricing-20261108/native-price-screen-review.png",
+  "outputSHA256": "fc9aff265b40cac3f45719e90752d33e7cd68ee390138f76bd4e537f4572cc41",
+  "sourceDimensions": [
+    1178,
+    2556
+  ],
+  "outputDimensions": [
+    1179,
+    2556
+  ],
+  "originalPixelsPreserved": true,
+  "addedColumn": "rightmost only, background color",
+  "backgroundColor": {
+    "r": 28,
+    "g": 28,
+    "b": 30
+  },
+  "contentChanges": false
+}

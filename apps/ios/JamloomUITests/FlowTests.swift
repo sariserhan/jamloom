@@ -1,6 +1,42 @@
 import XCTest
 
 final class FlowTests: XCTestCase {
+    func testLiveReviewPurchaseScreenWhenExplicitlyRequested() throws {
+        let env = ProcessInfo.processInfo.environment
+        try XCTSkipUnless(env["JAMLOOM_REVIEW_PRICE_SCREEN"] == "1", "Explicit read-only reviewer price-screen check")
+        let email = try XCTUnwrap(env["JAMLOOM_REVIEW_EMAIL"])
+        let password = try XCTUnwrap(env["JAMLOOM_REVIEW_PASSWORD"])
+        let app = XCUIApplication()
+        app.launch(); app.buttons["Account"].tap()
+        XCTAssertTrue(app.textFields["Email"].waitForExistence(timeout: 10))
+        app.textFields["Email"].tap(); app.textFields["Email"].typeText(email)
+        app.secureTextFields["Password"].tap(); app.secureTextFields["Password"].typeText(password)
+        app.buttons["Sign in"].tap()
+        XCTAssertTrue(app.buttons["Sign out"].waitForExistence(timeout: 30))
+        waitUntilEnabled(app.buttons["Sign out"])
+        let creator = app.buttons["purchase-com.jamloom.creator.monthly"]
+        let topup = app.buttons["purchase-com.jamloom.credits.topup150"]
+        for _ in 0..<12 {
+            if creator.exists && topup.exists && creator.isHittable && topup.isHittable { break }
+            app.swipeUp()
+        }
+        XCTAssertTrue(creator.exists); XCTAssertTrue(topup.exists)
+        XCTAssertTrue(creator.label.contains("$35.00/month")); XCTAssertTrue(topup.label.contains("$20.00 once"))
+        XCTAssertTrue(creator.isEnabled); XCTAssertTrue(topup.isEnabled)
+        XCTAssertFalse(app.buttons["Claim 20 one-time trial credits"].exists)
+        let proof = XCTAttachment(data: XCUIScreen.main.screenshot().pngRepresentation, uniformTypeIdentifier: "public.png")
+        proof.name = "Reviewer purchase offers - no purchase started"; proof.lifetime = .keepAlways; add(proof)
+        // Read-only offer check: never tap a purchase, Restore, trial or generation control.
+        let signOut = app.buttons["Sign out"]
+        for _ in 0..<12 {
+            if signOut.exists && !signOut.frame.isEmpty && app.frame.contains(signOut.frame)
+                && signOut.frame.minY > app.navigationBars.firstMatch.frame.maxY { break }
+            app.swipeDown()
+        }
+        tapVisible(signOut, in: app)
+        XCTAssertTrue(app.buttons["Sign in"].waitForExistence(timeout: 15))
+    }
+
     func testCommunityRatingExplainsSignInAndDismisses() {
         let app = XCUIApplication(); app.launchArguments = ["--ui-testing", "--community-fixture"]
         app.launch(); app.buttons["Community"].firstMatch.tap()

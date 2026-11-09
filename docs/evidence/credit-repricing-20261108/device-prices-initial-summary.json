@@ -1,0 +1,52 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64e",
+        "deviceId" : "00008120-001E28663CE3C01E",
+        "deviceName" : "Ssari phone",
+        "modelName" : "iPhone 14 Pro",
+        "osBuildNumber" : "24B119",
+        "osVersion" : "27.2",
+        "platform" : "iOS"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 1,
+      "passedTests" : 1,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "JamloomAppleSandbox · Built with macOS 26.7.1",
+  "expectedFailures" : 0,
+  "failedTests" : 1,
+  "finishTime" : 1794194436.075,
+  "passedTests" : 1,
+  "result" : "Failed",
+  "runtimeWarnings" : [
+
+  ],
+  "skippedTests" : 0,
+  "startTime" : 1794194159.024,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "XCTAssertTrue failed",
+      "targetName" : "JamloomUITests",
+      "testIdentifier" : 2,
+      "testIdentifierString" : "FlowTests/testLiveReviewPurchaseScreenWhenExplicitlyRequested()",
+      "testIdentifierURL" : "test://com.apple.xcode/Jamloom/JamloomUITests/FlowTests/testLiveReviewPurchaseScreenWhenExplicitlyRequested",
+      "testName" : "testLiveReviewPurchaseScreenWhenExplicitlyRequested()"
+    }
+  ],
+  "title" : "Test - JamloomAppleSandbox",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 2
+}

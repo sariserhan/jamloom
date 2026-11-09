@@ -1,0 +1,18 @@
+{
+  "status": "PASS submitted; Apple approval pending",
+  "at": "2026-11-09T03:35:22.561Z",
+  "submission": "fc5aa1cf-21ac-4b55-983e-2ad514cca816",
+  "state": "WAITING_FOR_REVIEW",
+  "submittedDate": "2026-11-09T03:35:21.119Z",
+  "build": 40,
+  "versionState": "WAITING_FOR_REVIEW",
+  "items": 5,
+  "releaseType": "MANUAL",
+  "pricesUSD": [
+    35,
+    20
+  ],
+  "reviewExpiresAt": "2026-11-16T02:06:50.894Z",
+  "remainingReviewAllowanceUSD": 6,
+  "publicRelease": false
+}

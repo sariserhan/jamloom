@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:17:25.292Z",
+  "productionUpdated": [
+    "CREATOR_STRIPE_LIVE_PREVIOUS_PRICE_ID",
+    "CREATOR_STRIPE_LIVE_PRICE_ID"
+  ],
+  "localUpdated": [
+    "CREATOR_STRIPE_PREVIOUS_PRICE_ID",
+    "CREATOR_STRIPE_PRICE_ID",
+    "CREATOR_STRIPE_LIVE_PREVIOUS_PRICE_ID",
+    "CREATOR_STRIPE_LIVE_PRICE_ID"
+  ],
+  "publicSalesFlagsChanged": false,
+  "existingStripeSubscriptionsChanged": false,
+  "existingProductsUnchanged": true,
+  "localBackupPrivate": true,
+  "productionExportRedactsSensitiveValues": true,
+  "previousPriceVerifiedAgainstProviderPreparation": true
+}

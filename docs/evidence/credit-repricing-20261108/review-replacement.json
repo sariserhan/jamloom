@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:15:02.923Z",
+  "priorSubmission": "cf0d1567-e845-4aac-87aa-358a7fd55166",
+  "newSubmission": "fc5aa1cf-21ac-4b55-983e-2ad514cca816",
+  "selectedBuild": 40,
+  "buildId": "adcb0a6d-0a39-4805-acb6-fd9cbaed75a7",
+  "releaseType": "MANUAL",
+  "items": [
+    {
+      "id": "ZmM1YWExY2YtMjFhYy00YjU1LTk4M2UtMmFkNTE0Y2NhODE2fDE4fGQ0NWFjMjc1LTY1NWMtNGM1Ny04ZmZjLWE5YzQ5NjZhYjFmZg",
+      "state": "READY_FOR_REVIEW",
+      "relationship": "subscriptionVersion",
+      "target": {
+        "type": "subscriptionVersions",
+        "id": "d45ac275-655c-4c57-8ffc-a9c4966ab1ff"
+      }
+    },
+    {
+      "id": "ZmM1YWExY2YtMjFhYy00YjU1LTk4M2UtMmFkNTE0Y2NhODE2fDE5fDg5ZDFlYTFiLTU5OTItNDJlZC05ZTdkLTdjNjFkNDg0MDgyMA",
+      "state": "READY_FOR_REVIEW",
+      "relationship": "subscriptionGroupVersion",
+      "target": {
+        "type": "subscriptionGroupVersions",
+        "id": "89d1ea1b-5992-42ed-9e7d-7c61d4840820"
+      }
+    },
+    {
+      "id": "ZmM1YWExY2YtMjFhYy00YjU1LTk4M2UtMmFkNTE0Y2NhODE2fDE3fGY5MzdiZmViLTc5MmEtNDY5MS05ZTNlLWU2OWIxMWQ4ODdhMg",
+      "state": "READY_FOR_REVIEW",
+      "relationship": "inAppPurchaseVersion",
+      "target": {
+        "type": "inAppPurchaseVersions",
+        "id": "f937bfeb-792a-4691-9e3e-e69b11d887a2"
+      }
+    },
+    {
+      "id": "ZmM1YWExY2YtMjFhYy00YjU1LTk4M2UtMmFkNTE0Y2NhODE2fDE3fDA1NzcyYzQ2LWI4ZGMtNDEwZi1iNjZlLTNlYmE4Y2JjM2I4ZA",
+      "state": "READY_FOR_REVIEW",
+      "relationship": "inAppPurchaseVersion",
+      "target": {
+        "type": "inAppPurchaseVersions",
+        "id": "05772c46-b8dc-410f-b66e-3eba8cbc3b8d"
+      }
+    },
+    {
+      "id": "ZmM1YWExY2YtMjFhYy00YjU1LTk4M2UtMmFkNTE0Y2NhODE2fDZ8ODkzNzg3MTE0",
+      "state": "READY_FOR_REVIEW",
+      "relationship": "appStoreVersion",
+      "target": {
+        "type": "appStoreVersions",
+        "id": "02c3b180-6e57-47bb-9963-fedfe1915fcf"
+      }
+    }
+  ],
+  "submitted": false,
+  "publicRelease": false
+}

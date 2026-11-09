@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:32:30.101283+00:00",
+  "build": 40,
+  "physicalDevice": "iPhone 14 Pro",
+  "catalogUSD": [
+    35,
+    20,
+    39
+  ],
+  "displayedCreatorUSD": 35,
+  "displayedTopupUSD": 20,
+  "storeKitFixture": false,
+  "authenticatedDeployedAccount": true,
+  "signOut": "PASS",
+  "purchaseRequests": 0,
+  "generationRequests": 0,
+  "screenshot": "build-credit-repricing-20261108/native-price-screen-review.png",
+  "screenshotSHA256": "fc9aff265b40cac3f45719e90752d33e7cd68ee390138f76bd4e537f4572cc41",
+  "finalTestsPassed": 2,
+  "earlierAttempt": "Price assertions passed; off-screen sign-out test helper failed; second attempt interrupted after animation-idle stalls; final corrected test passed",
+  "originalDimensions": [
+    1178,
+    2556
+  ],
+  "rawPNGRecapture": "PASS two device checks; same original dimensions",
+  "originalScreenshot": "build-credit-repricing-20261108/device-prices-png-attachments/7F85B802-E7D3-422A-A86E-1483D515F2B5.png",
+  "originalScreenshotSHA256": "00bb0d2bebe650f107603187f27f527ce2749377d7874373e4ef2463ba79b59e",
+  "reviewImageAdjustment": "Owner-approved single background column; all original pixels unchanged"
+}

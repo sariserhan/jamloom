@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:33:30.446Z",
+  "origin": "https://www.jamloom.com",
+  "catalog": {
+    "version": "2026-11-08-v3",
+    "creator": {
+      "key": "creator",
+      "cents": 3500,
+      "credits": 300,
+      "interval": "month",
+      "appleProduct": "com.jamloom.creator.monthly"
+    },
+    "topup": {
+      "key": "topup",
+      "cents": 2000,
+      "credits": 150,
+      "appleProduct": "com.jamloom.credits.topup150"
+    },
+    "trialCredits": 20,
+    "paidCreditsExpire": false
+  },
+  "publicPricingUpdated": true,
+  "anonymousGenerationHeld": true,
+  "publicCheckoutStatus": 503,
+  "reviewAccountAuthenticated": true,
+  "reviewNativeOffersEnabled": true,
+  "heldCredits": 0,
+  "prepareCalls": 0,
+  "generationSubmissions": 0,
+  "checks": [
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "publicAvailability": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "publicAvailability": false
+    }
+  ]
+}

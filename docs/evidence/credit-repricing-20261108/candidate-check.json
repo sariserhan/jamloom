@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:13:31.964Z",
+  "deployment": "https://jamloom-7qluacl2o-ssari.vercel.app",
+  "catalog": {
+    "version": "2026-11-08-v3",
+    "creator": {
+      "key": "creator",
+      "cents": 3500,
+      "credits": 300,
+      "interval": "month",
+      "appleProduct": "com.jamloom.creator.monthly"
+    },
+    "topup": {
+      "key": "topup",
+      "cents": 2000,
+      "credits": 150,
+      "appleProduct": "com.jamloom.credits.topup150"
+    },
+    "trialCredits": 20,
+    "paidCreditsExpire": false
+  },
+  "reviewAuthenticated": true,
+  "reviewPurchases": true,
+  "reviewAccounts": 2,
+  "anonymous": [
+    {
+      "path": "/api/taste/song",
+      "available": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "available": false
+    }
+  ],
+  "generationSubmissions": 0,
+  "prepareCalls": 0,
+  "publicSales": false,
+  "publicGeneration": false,
+  "protectedCandidate": true
+}

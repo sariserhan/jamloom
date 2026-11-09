@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:15:55.247621+00:00",
+  "deployment": "dpl_Aj7ZfGt9SkYSZNFEgxwQ7m7WaDiP",
+  "url": "https://jamloom-7qluacl2o-ssari.vercel.app",
+  "source": "4bde975e",
+  "reviewAccounts": 2,
+  "publicSales": false,
+  "publicGeneration": false,
+  "newComputeBudget": false
+}

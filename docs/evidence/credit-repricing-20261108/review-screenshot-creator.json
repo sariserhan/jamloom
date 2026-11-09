@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:35:07.993Z",
+  "product": "creator",
+  "productId": "6829266841",
+  "screenshotId": "3681c855-4332-4e64-9662-717e7e25419c",
+  "assetState": "COMPLETE",
+  "sourceSHA256": "fc9aff265b40cac3f45719e90752d33e7cd68ee390138f76bd4e537f4572cc41",
+  "build": 40,
+  "physicalDevice": true,
+  "storeKitFixture": false,
+  "purchaseRequests": 0,
+  "adjustment": "Owner-approved single background pixel column; original pixels preserved"
+}

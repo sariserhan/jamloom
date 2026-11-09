@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:14:23.413Z",
+  "realAppleSignedHistoricalRenewal": true,
+  "originalUSD": 15,
+  "currentUSD": 35,
+  "originalCredits": 300,
+  "originalNetMicros": 6000000,
+  "duplicateDeliveries": 2,
+  "newGrants": 0,
+  "liveWalletUnchanged": true,
+  "testWalletUnchanged": true,
+  "newPurchase": false,
+  "liveCharge": false,
+  "receiptSHA256": "a99f5326afa256cbe14f25b637496d73838b9c0a2c3e0d0ab263599e379ce111"
+}

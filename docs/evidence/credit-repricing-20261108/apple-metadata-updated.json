@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:17:54.946Z",
+  "appDescriptionPricesUSD": [
+    35,
+    20
+  ],
+  "reviewNotesBuild": 40,
+  "reviewNotesPricesUSD": [
+    35,
+    20
+  ],
+  "existingReviewCredentialsUnchanged": true,
+  "publicRelease": false
+}

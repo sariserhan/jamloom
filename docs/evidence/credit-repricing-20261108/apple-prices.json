@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:15:30.404Z",
+  "creatorUSD": 35,
+  "creatorCredits": 300,
+  "topupUSD": 20,
+  "topupCredits": 150,
+  "territories": [
+    "USA"
+  ],
+  "preserveExistingSubscriberPrice": true,
+  "publicRelease": false,
+  "storeKitPropagationVerified": false
+}

@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "at": "2026-11-09T03:09:27.956Z",
+  "at": "2026-11-09T03:35:13.881Z",
   "workerLimits": [
     0,
     0
@@ -26,7 +26,7 @@
   ],
   "permitReservedMicros": 1500000,
   "permitRemainingMicros": 6000000,
-  "guardianAgeMs": 5328,
+  "guardianAgeMs": 2875,
   "guardianActiveForReview": true,
   "reviewAccessExpiresAt": "2026-11-16T02:06:50.894Z",
   "publicLaunch": false

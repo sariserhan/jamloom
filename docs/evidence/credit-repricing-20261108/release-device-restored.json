@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:34:15.203007+00:00",
+  "version": "0.11.0",
+  "build": 40,
+  "device": "iPhone 14 Pro",
+  "signedReleaseArchiveRestored": true,
+  "launch": "PASS",
+  "purchaseRequests": 0,
+  "generationRequests": 0,
+  "sourceArtifact": "native-artifact.json"
+}

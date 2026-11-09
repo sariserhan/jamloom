@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "build": 40,
+  "version": "0.11.0",
+  "bundle": "com.djayvo.app",
+  "sourceCommit": "4bde975e",
+  "archive": "build-ios-store/Jamloom-0.11.0-40.xcarchive",
+  "ipa": "build-ios-store/Jamloom-0.11.0-40-export/Jamloom.ipa",
+  "appBinarySHA256": "4006e2e867ab8df0459e38ffb915558e4665c338a655c0f69d21e3cd415ce0f8",
+  "ipaSHA256": "2acff2a33172d6eaece8b2bd7818e3f6a95138861da423ea94c0edeea60eb520",
+  "signatureVerified": true,
+  "deliveryId": "adcb0a6d-0a39-4805-acb6-fd9cbaed75a7",
+  "appleProcessing": "VALID"
+}
