@@ -1,7 +1,7 @@
 {
  "created": "2026-11-09",
  "note": "kept after 2026-11-09 deletion: used by code or linked to owner approvals",
- "total_bytes": 18586496554,
+ "total_bytes": 18561167402,
  "used_by_code_bytes": 10795361015,
  "entries": [
   {
@@ -753,12 +753,6 @@
    "bytes": 1998614,
    "files": 17,
    "used_by_code": true
-  },
-  {
-   "path": "renders/worklet-load-webkit-mRMrJ6",
-   "bytes": 25329152,
-   "files": 6,
-   "used_by_code": false
   }
  ]
 }
