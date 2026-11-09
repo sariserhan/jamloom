@@ -27,5 +27,12 @@
   "webBundle": "PASS 113 files; private/test audio absent",
   "database": "Disposable localhost PostgreSQL, all migrations; stopped and removed",
   "productionWrites": false,
-  "gpuStarts": 0
+  "gpuStarts": 0,
+  "dependencyFollowthrough": {
+    "exactPackage": "@vercel/functions@3.11.0",
+    "npmAuditAllDependencies": "PASS zero known advisories",
+    "siteTests": 242,
+    "typecheck": "PASS",
+    "productionBuild": "PASS"
+  }
 }

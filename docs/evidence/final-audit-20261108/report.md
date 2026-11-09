@@ -12,6 +12,12 @@ The independent guardian now checks the exact provider endpoint/image even when 
 
 [Local validation](local-validation.json): 16 capacity/database checks, 242 site checks, five alert checks and eight cost-report checks pass. Typecheck, production build and the 113-file bundle audit pass. The temporary database was stopped and removed. Tests cover warm joins at 119 seconds, no polling keepalive, unchanged funding/expiry, stale guardian, expiry and unrecorded/foreign/unconfirmed workers. Proxy tests use an unavailable database under both launch settings.
 
+## Dependency audit
+
+The additional production dependency audit identified one high-severity [Zod resource-exhaustion advisory](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5), reported through four affected packages in one dependency chain. Upgrading the exact `@vercel/functions` pin from 3.10.1 to 3.11.0 updates its OIDC/config dependencies and removes the vulnerable nested Zod. No override or audit suppression was added. The installed SDK and [official database-pool API reference](https://vercel.com/docs/functions/functions-api-reference/vercel-functions-package#attachdatabasepool) confirm the existing `attachDatabasePool` integration remains supported.
+
+[Before](dependency-audit-before.json) and [after](dependency-audit-after.json): the complete npm audit, including development dependencies, now reports zero known advisories. This is an advisory check, not proof of universal security. All 242 site tests, typecheck and production build passed again after the dependency change. The first protected candidate was not promoted; the replacement includes this fix.
+
 ## Operations and costs
 
 [Scheduled Vercel requests](scheduled-monitor.json) now demonstrate the five-minute monitor executing on the deployment domain; the separate host timer and delivered alert were already verified. Request attribution uses cadence and absence of matching agent requests; this log export does not include a user agent.
