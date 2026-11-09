@@ -31,7 +31,10 @@ export async function revokeGpuProceeds(db:PoolClient,receipt:string){
 }
 export async function gpuRevenueBalance(db:Query){
  const r=(await db.query(`SELECT
-  COALESCE((SELECT sum(allocation_micros) FROM gpu_payment_proceeds WHERE settled AND NOT revoked),0)::text AS funded,
+  (COALESCE((SELECT sum(allocation_micros) FROM gpu_payment_proceeds WHERE settled AND NOT revoked),0)+
+   COALESCE((SELECT sum(CASE WHEN net_usd_micros<0 THEN floor(net_usd_micros::numeric/5)
+    WHEN state='settled' AND NOT EXISTS(SELECT 1 FROM apple_finance_holds) THEN floor(settled_usd_micros::numeric/5) ELSE 0 END)
+    FROM apple_finance_reports),0))::text AS funded,
   COALESCE((SELECT sum(micros) FROM gpu_revenue_reservations),0)::text AS reserved`)).rows[0];
  const available=BigInt(r.funded)-BigInt(r.reserved);
  if(available>BigInt(Number.MAX_SAFE_INTEGER)||available<BigInt(Number.MIN_SAFE_INTEGER))throw Error('GPU funding exceeds supported range');

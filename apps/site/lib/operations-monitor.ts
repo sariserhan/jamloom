@@ -2,11 +2,15 @@ import {createHash} from 'node:crypto';
 import type {Pool} from 'pg';
 import {capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from './cloud-capacity-permit';
 import {CLOUD_WORKER_IMAGE} from './cloud-production-profile';
-import {protectCreatorRenewals} from './creator-renewals';
+import {protectCreatorRenewals,resumeFundedCreatorRenewals} from './creator-renewals';
+import {providerReplenishmentPlan} from './provider-replenishment';
 import {gpuRevenueBalance,gpuRevenueEnabled,runpodBalanceMicros,settleGpuProceeds} from './gpu-revenue';
 import {creditBilling} from './stripe-payments';
 
 export const operationMessages={
+ 'provider-recharge-ready':'Settled revenue can cover a $10 provider recharge and prepaid capacity is low. Review Runpod Billing and replenish within the recorded revenue-backed shortfall. Native auto-pay is not revenue-capped; do not enable an unbounded reload.',
+ 'apple-finance-read-failed':'The scheduled Apple financial report read failed. Check the report credential, vendor and service logs. No unverified proceeds were added to GPU funding.',
+ 'apple-finance-review':'An Apple financial report changed or a live refund requires reconciliation. Apple GPU funding is held pending verified payment/refund evidence.',
  'budget-low':'Fewer than three funded preparation cycles remain. Check settled payment allocations and provider credit. Do not add unapproved owner funds.',
  'budget-expiring':'The finite seed allowance expires within 48 hours. Revenue continuation requires settled allocations and provider credit.',
  'budget-unavailable':'Operating funding is expired, exhausted or missing. New sales/generation must remain closed; paid credits remain valid.',
@@ -41,6 +45,7 @@ export function operationAlerts(s:OperationSnapshot):OperationAlert[]{
  if(!expired&&!s.guardianOK)alerts.push('guardian-stale');
  if(s.shutdownFailed||s.providerMismatch||expired&&s.workers>0)alerts.push('shutdown-unconfirmed');
  if(s.liveFailures>0||s.overdueCleanup>0)alerts.push('generation-failed');
+ if(s.revenueMicros!==undefined&&s.providerMicros!==undefined&&providerReplenishmentPlan(s.revenueMicros,s.providerMicros,s.cycleMicros).suggestedMicros>0)alerts.push('provider-recharge-ready');
  return alerts;
 }
 export async function inspectOperations(pool:Pick<Pool,'query'>,env:Record<string,string|undefined>=process.env,request:typeof fetch=fetch,now=Date.now()){
@@ -80,7 +85,8 @@ export async function runOperations(pool:Pool,env:Record<string,string|undefined
  const alerts=new Set<OperationAlert>();let snapshot:OperationSnapshot|undefined,renewals;
  try{if(gpuRevenueEnabled(env)){const b=creditBilling(env);if(!b.live)throw Error('Revenue settlement requires live billing');await settleGpuProceeds(pool,b.stripe);}
   const result=await inspectOperations(pool,env);snapshot=result.snapshot;result.alerts.forEach(a=>alerts.add(a));}catch{alerts.add('monitor-check-failed');}
- try{const b=creditBilling(env);renewals=await protectCreatorRenewals(b.stripe,pool,b.live,env);}catch{alerts.add('renewal-check-failed');}
+ try{const b=creditBilling(env);renewals={...await protectCreatorRenewals(b.stripe,pool,b.live,env),continuation:await resumeFundedCreatorRenewals(b.stripe,pool,b.live,env)};}catch{alerts.add('renewal-check-failed');}
+ try{if((await pool.query("SELECT 1 FROM apple_finance_reports WHERE state='held' UNION ALL SELECT 1 FROM apple_finance_holds LIMIT 1")).rowCount)alerts.add('apple-finance-review');}catch{alerts.add('monitor-check-failed');}
  const deliveries=[];for(const code of alerts)deliveries.push(await sendOperationAlert(code,env));
  return {at:new Date().toISOString(),snapshot,renewals,alerts:[...alerts],deliveries};
 }

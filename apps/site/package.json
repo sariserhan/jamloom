@@ -27,7 +27,7 @@
     "db:usage": "tsx scripts/usage.ts",
     "audio:cleanup": "tsx scripts/cleanup-audio.ts",
     "auth:cleanup": "tsx scripts/cleanup-auth.ts",
-    "test:wallet": "tsx --test --test-concurrency=1 tests/wallet.test.ts tests/dj-allowance.test.ts tests/generation-queue.test.ts tests/generation-watchdog.test.ts tests/vast-provider.test.ts tests/dna-commerce.test.ts tests/cloud-songs.test.ts tests/cloud-capacity.test.ts tests/gpu-revenue.test.ts tests/listening-library.test.ts tests/neural-study-deadline.test.ts",
+    "test:wallet": "tsx --test --test-concurrency=1 tests/wallet.test.ts tests/dj-allowance.test.ts tests/generation-queue.test.ts tests/generation-watchdog.test.ts tests/vast-provider.test.ts tests/dna-commerce.test.ts tests/cloud-songs.test.ts tests/cloud-capacity.test.ts tests/gpu-revenue.test.ts tests/apple-finance.test.ts tests/listening-library.test.ts tests/neural-study-deadline.test.ts",
     "capacity:watchdog": "tsx scripts/capacity-watchdog.ts",
     "generation:watchdog": "tsx scripts/generation-watchdog.ts",
     "test:product-browser": "node --import tsx tests/product-browser.mjs",
@@ -65,7 +65,8 @@
     "credits:prepare": "tsx scripts/prepare-credit-catalog.ts",
     "test:creator-provider": "node --import tsx tests/creator-provider.mjs",
     "cost:report": "tsx scripts/operating-cost-report.ts",
-    "operations:check": "tsx scripts/operations-monitor.ts"
+    "operations:check": "tsx scripts/operations-monitor.ts",
+    "finance:apple": "tsx scripts/apple-finance.ts"
   },
   "dependencies": {
     "@apple/app-store-server-library": "3.1.0",

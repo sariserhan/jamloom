@@ -35,3 +35,17 @@ test('an already-paid renewal raises operator review rather than pretending it w
 test('scheduled reconciliation protects related subscriptions and pending invoices only',async()=>{
  const f=fixture();assert.deepEqual(await protectCreatorRenewals(f.stripe,f.pool,false,env),{checked:1,protected:1});assert.equal(f.invoice.status,'void');
 });
+
+test('resumption keeps the margin gate and never resurrects catch-up invoices or foreign pauses',async()=>{
+ const {resumeFundedCreatorRenewals}=await import('../lib/creator-renewals');
+ const f=fixture();assert.equal((await resumeFundedCreatorRenewals(f.stripe,f.pool,true,{JAMLOOM_CREATOR_RENEWALS_ENABLED:'true'})).status,'held');assert.equal(f.calls.length,0);
+ const enabled={CREATOR_STRIPE_PRICE_ID:'price_current',JAMLOOM_TEST_RENEWAL_PROTECTION:'true',JAMLOOM_CREATOR_RENEWALS_ENABLED:'true',JAMLOOM_CREDIT_COST_QUALIFICATION:CREDIT_CATALOG_VERSION};
+ f.sub.pause_collection={behavior:'void'};f.sub.metadata.jamloom_renewal_hold='operating-funding';f.sub.collection_method='charge_automatically';f.sub.discounts=[];f.sub.items={has_more:false,data:[{quantity:1,price:{id:'price_current',currency:'usd',unit_amount:3500,recurring:{interval:'month',interval_count:1}},current_period_end:Math.floor(Date.now()/1000)+86400}]};
+ f.stripe.subscriptions.update=async(_id:string,p:any)=>{f.calls.push(['resume',p]);f.sub.pause_collection=null;return f.sub;};
+ f.stripe.invoices.list=async()=>({data:[f.invoice],has_more:false});
+ assert.equal((await resumeFundedCreatorRenewals(f.stripe,f.pool,false,enabled)).resumed,0);
+ f.stripe.invoices.list=async()=>({data:[],has_more:false});
+ f.sub.cancel_at_period_end=true;assert.equal((await resumeFundedCreatorRenewals(f.stripe,f.pool,false,enabled)).resumed,0);f.sub.cancel_at_period_end=false;
+ assert.equal((await resumeFundedCreatorRenewals(f.stripe,f.pool,false,enabled)).resumed,1);assert.deepEqual(f.calls[0],['resume',{pause_collection:'',proration_behavior:'none',metadata:{jamloom_renewal_hold:''}}]);
+ assert.equal((await resumeFundedCreatorRenewals(f.stripe,f.pool,false,enabled)).resumed,0);
+});

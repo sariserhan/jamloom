@@ -215,6 +215,10 @@ export class Wallet {
       for(const lot of lots)if(lot.available>0)await db.query("INSERT INTO wallet_ledger_entries(owner_id,lot_id,kind,available_delta,reserved_delta) VALUES($1,$2,'refund',$3,0)",[lot.owner_id,lot.id,-lot.available]);
       await db.query("UPDATE generation_jobs SET cancel_requested=true,state='stopping' WHERE owner_id IN (SELECT owner_id FROM credit_lots WHERE provider=$1 AND receipt=$2) AND state IN ('running','stopping')",[provider,receipt]);
       if(provider==='stripe_live')await revokeGpuProceeds(db,receipt);
+      if(provider==='apple_live'){
+        await db.query("SELECT pg_advisory_xact_lock(hashtextextended('jamloom-gpu-revenue',0))");
+        await db.query('INSERT INTO apple_finance_holds(receipt) VALUES($1) ON CONFLICT DO NOTHING',[receipt]);
+      }
       await db.query('COMMIT');
     }catch(e){await db.query('ROLLBACK');throw e;}finally{db.release();}
   }
