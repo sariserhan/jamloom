@@ -1,0 +1,149 @@
+{
+  "at": "2026-11-09T15:15:05.375Z",
+  "lab": true,
+  "network": "unthrottled localhost",
+  "viewport": 390,
+  "lcp": 268,
+  "cls": 0,
+  "ttfb": 201.10000002384186,
+  "resources": [
+    {
+      "path": "/product-previews/academy.webp",
+      "kind": "img",
+      "bytes": 435264,
+      "duration": 3.1999999284744263
+    },
+    {
+      "path": "/product-previews/ai-dj.webp",
+      "kind": "img",
+      "bytes": 191128,
+      "duration": 2.5999999046325684
+    },
+    {
+      "path": "/_next/static/chunks/0v1a_e0gqvp6e.js",
+      "kind": "script",
+      "bytes": 73563,
+      "duration": 21.100000023841858
+    },
+    {
+      "path": "/api/taste/song",
+      "kind": "fetch",
+      "bytes": 47301,
+      "duration": 8.600000023841858
+    },
+    {
+      "path": "/_next/static/chunks/01qqjcomq7erf.js",
+      "kind": "script",
+      "bytes": 44609,
+      "duration": 18
+    },
+    {
+      "path": "/api/improvise/song",
+      "kind": "fetch",
+      "bytes": 17105,
+      "duration": 4
+    },
+    {
+      "path": "/_next/static/chunks/2zuzotxrsa552.js",
+      "kind": "script",
+      "bytes": 14594,
+      "duration": 14
+    },
+    {
+      "path": "/_next/static/chunks/1g8bzzy_8jbg-.css",
+      "kind": "link",
+      "bytes": 14087,
+      "duration": 5
+    },
+    {
+      "path": "/_next/static/chunks/1jwp3q63c0pfi.js",
+      "kind": "script",
+      "bytes": 13593,
+      "duration": 12.5
+    },
+    {
+      "path": "/_next/static/chunks/1nc36vi_hms7p.js",
+      "kind": "script",
+      "bytes": 8473,
+      "duration": 9.899999976158142
+    },
+    {
+      "path": "/_next/static/chunks/0t3lksh1bf6ne.js",
+      "kind": "script",
+      "bytes": 6670,
+      "duration": 11.699999928474426
+    },
+    {
+      "path": "/_next/static/chunks/turbopack-2c3mg3r-05n1w.js",
+      "kind": "script",
+      "bytes": 4696,
+      "duration": 11.5
+    },
+    {
+      "path": "/_next/static/chunks/3sk6jr1hu8ffn.js",
+      "kind": "script",
+      "bytes": 3848,
+      "duration": 14.5
+    },
+    {
+      "path": "/_next/static/chunks/3-ktgou29oms1.js",
+      "kind": "link",
+      "bytes": 2771,
+      "duration": 8.5
+    },
+    {
+      "path": "/_next/static/chunks/3liujdfawt50v.css",
+      "kind": "link",
+      "bytes": 1124,
+      "duration": 3.200000047683716
+    },
+    {
+      "path": "/_next/static/chunks/17c8c370m_qlk.js",
+      "kind": "script",
+      "bytes": 1045,
+      "duration": 14.400000095367432
+    },
+    {
+      "path": "/_next/static/chunks/0ruk2r3_w5nij.js",
+      "kind": "script",
+      "bytes": 854,
+      "duration": 15.100000023841858
+    },
+    {
+      "path": "/studio/icon.svg",
+      "kind": "link",
+      "bytes": 567,
+      "duration": 3
+    },
+    {
+      "path": "/api/improvise/song",
+      "kind": "fetch",
+      "bytes": 412,
+      "duration": 222.20000004768372
+    },
+    {
+      "path": "/api/taste/song",
+      "kind": "fetch",
+      "bytes": 411,
+      "duration": 56
+    },
+    {
+      "path": "/api/ai-dj/sets",
+      "kind": "fetch",
+      "bytes": 323,
+      "duration": 112.20000004768372
+    },
+    {
+      "path": "/api/site-status",
+      "kind": "fetch",
+      "bytes": 313,
+      "duration": 28
+    },
+    {
+      "path": "/api/catalogue",
+      "kind": "fetch",
+      "bytes": 313,
+      "duration": 84
+    }
+  ]
+}

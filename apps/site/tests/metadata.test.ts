@@ -26,3 +26,13 @@ test('metadata follows runtime launch mode and never advertises private routes',
   }
  }finally{if(previous===undefined)delete process.env.JAMLOOM_COMING_SOON;else process.env.JAMLOOM_COMING_SOON=previous;}
 });
+
+test('published learning guides have complete links and real modification dates',async()=>{
+ const {guides,information}=await import('../lib/editorial');
+ const previous=process.env.JAMLOOM_COMING_SOON;process.env.JAMLOOM_COMING_SOON='false';
+ try{const urls=new Set(sitemap().map(p=>new URL(p.url).pathname));
+  for(const [slug,g] of Object.entries(guides)){assert.ok(urls.has('/learn/'+slug));for(const id of g.related??[])assert.ok(guides[id],slug+' has broken related link '+id);if(g.workspace)assert.ok(urls.has(g.workspace.href));if(g.updated)assert.ok(Number.isFinite(Date.parse(g.updated)));}
+  for(const path of ['/about','/learn','/start','/tour','/community'])assert.ok(urls.has(path));
+  assert.ok(information.about);
+ }finally{if(previous===undefined)delete process.env.JAMLOOM_COMING_SOON;else process.env.JAMLOOM_COMING_SOON=previous;}
+});

@@ -2,14 +2,30 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "ignoreCommand": "node scripts/ignore-build.mjs",
   "crons": [
-    {"path":"/api/operations","schedule":"*/5 * * * *"},
-    {"path":"/api/maintenance","schedule":"0 * * * *"},
-    {"path":"/api/song-jobs","schedule":"* * * * *"},
+    {
+      "path": "/api/operations",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/maintenance",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/song-jobs",
+      "schedule": "* * * * *"
+    },
     {
       "path": "/api/notifications",
       "schedule": "*/5 * * * *"
     },
-    {"path":"/api/ai-dj/supervisor","schedule":"* * * * *"}
+    {
+      "path": "/api/ai-dj/supervisor",
+      "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/finance/apple",
+      "schedule": "2 13 * * *"
+    }
   ],
   "git": {
     "deploymentEnabled": {

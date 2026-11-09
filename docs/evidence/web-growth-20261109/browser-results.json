@@ -1,0 +1,278 @@
+{
+  "at": "2026-11-09T15:17:40.473Z",
+  "base": "http://127.0.0.1:4289",
+  "results": [
+    {
+      "browser": "chromium",
+      "path": "/",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "chromium",
+      "path": "/learn",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "chromium",
+      "path": "/learn/make-a-song-from-favorite-music",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "chromium",
+      "path": "/learn/record-sound-for-ai-song",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "chromium",
+      "path": "/learn/ai-music-credits",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "chromium",
+      "path": "/learn/voice-remix",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "chromium",
+      "path": "/music-dna",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "chromium",
+      "path": "/improvise",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "chromium",
+      "path": "/start",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "chromium",
+      "path": "/tour",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "chromium",
+      "path": "/community",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "chromium",
+      "path": "/about",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "chromium",
+      "path": "/terms",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "chromium",
+      "path": "/status",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "chromium",
+      "path": "/privacy",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "webkit",
+      "path": "/",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "webkit",
+      "path": "/learn",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "webkit",
+      "path": "/learn/make-a-song-from-favorite-music",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "webkit",
+      "path": "/learn/record-sound-for-ai-song",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "webkit",
+      "path": "/learn/ai-music-credits",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "webkit",
+      "path": "/learn/voice-remix",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "webkit",
+      "path": "/music-dna",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "webkit",
+      "path": "/improvise",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 1
+    },
+    {
+      "browser": "webkit",
+      "path": "/start",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "webkit",
+      "path": "/tour",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "webkit",
+      "path": "/community",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "webkit",
+      "path": "/about",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "webkit",
+      "path": "/terms",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "webkit",
+      "path": "/status",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    },
+    {
+      "browser": "webkit",
+      "path": "/privacy",
+      "status": 200,
+      "canonical": true,
+      "indexable": true,
+      "mobileOverflow": false,
+      "schemas": 0
+    }
+  ],
+  "serverRenderedContent": true,
+  "noAutoplayInteraction": true
+}
