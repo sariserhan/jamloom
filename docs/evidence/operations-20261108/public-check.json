@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T04:40:17.805Z",
+  "scope": "public",
+  "authenticatedOrdinaryAccount": true,
+  "reviewAccount": false,
+  "catalog": {
+    "version": "2026-11-08-v3",
+    "creator": {
+      "key": "creator",
+      "cents": 3500,
+      "credits": 300,
+      "interval": "month",
+      "appleProduct": "com.jamloom.creator.monthly"
+    },
+    "topup": {
+      "key": "topup",
+      "cents": 2000,
+      "credits": 150,
+      "appleProduct": "com.jamloom.credits.topup150"
+    },
+    "trialCredits": 20,
+    "paidCreditsExpire": false
+  },
+  "purchasesReleased": true,
+  "checks": [
+    {
+      "path": "/api/taste/song",
+      "creditsEnabled": true,
+      "availableWithoutPreparedWorker": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "creditsEnabled": true,
+      "availableWithoutPreparedWorker": false
+    },
+    {
+      "path": "/api/payments/checkout",
+      "status": 200,
+      "realLiveStripeSession": true,
+      "cents": 2000,
+      "paid": false,
+      "expired": true
+    },
+    {
+      "path": "/api/payments/subscription",
+      "status": 200,
+      "realLiveStripeSession": true,
+      "cents": 3500,
+      "paid": false,
+      "expired": true
+    }
+  ],
+  "charges": 0,
+  "creditGrants": 0,
+  "prepareRequests": 0,
+  "generationRequests": 0
+}

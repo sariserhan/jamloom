@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T04:39:41.262434+00:00",
+  "realSimulatorBootedByWrapper": true,
+  "intentionalChildExit": 7,
+  "childFailurePreserved": true,
+  "automaticallyShutDown": true,
+  "freshPosterBoardCrashes": [],
+  "secondBootPosterBoardLastExit": 0
+}

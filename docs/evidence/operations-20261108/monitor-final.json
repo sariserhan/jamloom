@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "timerEnabled": true,
+  "timerActive": true,
+  "userLinger": true,
+  "automaticTimerInvocationObserved": true,
+  "lastRun": {
+    "at": "2026-11-09T04:41:24.115Z",
+    "snapshot": {
+      "now": 1794199283033,
+      "expiresAt": 1794800997659,
+      "remainingMicros": 10000000,
+      "cycleMicros": 750000,
+      "guardianOK": true,
+      "shutdownFailed": false,
+      "providerMismatch": false,
+      "workers": 0,
+      "liveFailures": 0,
+      "overdueCleanup": 0
+    },
+    "renewals": {
+      "checked": 0,
+      "protected": 0
+    },
+    "alerts": [],
+    "deliveries": []
+  }
+}

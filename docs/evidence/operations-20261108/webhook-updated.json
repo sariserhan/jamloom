@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T04:39:51.020Z",
+  "id": "we_1UWfqYDlEXWDEeHOuJRHbAos",
+  "added": [
+    "invoice.created",
+    "invoice.finalized"
+  ],
+  "previousEventsPreserved": true,
+  "urlUnchanged": true,
+  "liveCharges": 0
+}

@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: live renewals require separate enabled and qualified approval; ordinary sandbox unchanged
+ok 1 - live renewals require separate enabled and qualified approval; ordinary sandbox unchanged
+  ---
+  duration_ms: 0.41
+  type: 'test'
+  ...
+# Subtest: pause future collections permanently without cancelling or modifying paid credits; duplicate is harmless
+ok 2 - pause future collections permanently without cancelling or modifying paid credits; duplicate is harmless
+  ---
+  duration_ms: 0.60375
+  type: 'test'
+  ...
+# Subtest: unrelated, incomplete and cancelled subscriptions are untouched
+ok 3 - unrelated, incomplete and cancelled subscriptions are untouched
+  ---
+  duration_ms: 0.089792
+  type: 'test'
+  ...
+# Subtest: environment and account mismatches fail before mutation
+ok 4 - environment and account mismatches fail before mutation
+  ---
+  duration_ms: 0.138042
+  type: 'test'
+  ...
+# Subtest: first purchase invoices are untouched; renewal drafts disable auto collection before voiding
+ok 5 - first purchase invoices are untouched; renewal drafts disable auto collection before voiding
+  ---
+  duration_ms: 0.237041
+  type: 'test'
+  ...
+# Subtest: an already-paid renewal raises operator review rather than pretending it was prevented
+ok 6 - an already-paid renewal raises operator review rather than pretending it was prevented
+  ---
+  duration_ms: 0.119292
+  type: 'test'
+  ...
+# Subtest: scheduled reconciliation protects related subscriptions and pending invoices only
+ok 7 - scheduled reconciliation protects related subscriptions and pending invoices only
+  ---
+  duration_ms: 0.17125
+  type: 'test'
+  ...
+# Subtest: Creator invoice requires a real paid period, exact price and charge evidence
+ok 8 - Creator invoice requires a real paid period, exact price and charge evidence
+  ---
+  duration_ms: 0.759667
+  type: 'test'
+  ...
+# Subtest: Apple renewals and topups bind account, type, period and amount; historical paid credits can be recovered
+ok 9 - Apple renewals and topups bind account, type, period and amount; historical paid credits can be recovered
+  ---
+  duration_ms: 0.183458
+  type: 'test'
+  ...
+# Subtest: subscription refund finds exact invoice rather than minting or revoking a different period
+ok 10 - subscription refund finds exact invoice rather than minting or revoking a different period
+  ---
+  duration_ms: 0.528334
+  type: 'test'
+  ...
+# Subtest: healthy service is quiet; low, exhausted and expiring allowance are actionable
+ok 11 - healthy service is quiet; low, exhausted and expiring allowance are actionable
+  ---
+  duration_ms: 0.873125
+  type: 'test'
+  ...
+# Subtest: failed shutdown, stale guardian, identity mismatch and failed song/cleanup are detected
+ok 12 - failed shutdown, stale guardian, identity mismatch and failed song/cleanup are detected
+  ---
+  duration_ms: 0.068167
+  type: 'test'
+  ...
+# Subtest: expired permit with zero workers is safe shutdown; remaining workers alert independently
+ok 13 - expired permit with zero workers is safe shutdown; remaining workers alert independently
+  ---
+  duration_ms: 0.0805
+  type: 'test'
+  ...
+# Subtest: two monitors share stable idempotency, repeat incidents bounded and payload excludes customer records
+ok 14 - two monitors share stable idempotency, repeat incidents bounded and payload excludes customer records
+  ---
+  duration_ms: 1.643375
+  type: 'test'
+  ...
+# Subtest: transport failure remains a failure; missing address never silently sends elsewhere
+ok 15 - transport failure remains a failure; missing address never silently sends elsewhere
+  ---
+  duration_ms: 0.219083
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 272.180583

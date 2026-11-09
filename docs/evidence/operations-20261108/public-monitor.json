@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "unauthorizedStatus": 401,
+  "authenticatedStatus": 200,
+  "at": "2026-11-09T04:40:24.934Z",
+  "snapshot": {
+    "now": 1794199224309,
+    "expiresAt": 1794800997659,
+    "remainingMicros": 10000000,
+    "cycleMicros": 750000,
+    "guardianOK": true,
+    "shutdownFailed": false,
+    "providerMismatch": false,
+    "workers": 0,
+    "liveFailures": 0,
+    "overdueCleanup": 0
+  },
+  "renewals": {
+    "checked": 0,
+    "protected": 0
+  },
+  "alerts": [],
+  "deliveries": []
+}

@@ -1,0 +1,7 @@
+Running as unit: run-p505012-i75626512.service; invocation ID: 262c4f62cb924e86a7243652d44f48e5
+{"code":"test","emailID":"01a1be93-4b75-7a11-ae2f-c6c65f5d1b7e"}
+          Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+               Service runtime: 300ms
+             CPU time consumed: 164ms
+                   Memory peak: 29.9M (swap: 0B)

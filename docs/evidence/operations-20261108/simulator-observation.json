@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T04:38:32.783574+00:00",
+  "observationSeconds": 359,
+  "newPosterBoardCrashes": [],
+  "posterBoardRunning": true,
+  "lastExitStatus": 0,
+  "prebootedWrapperDevicePreserved": true
+}

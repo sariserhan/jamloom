@@ -1,10 +1,43 @@
-**Operating follow-through — November 8: PASS local protections and delivered alert; PARTIAL rollout, economics and iOS.** Creator renewal protection and two independent operating-monitor entrypoints are prepared. A real Stripe test-clock renewal and pre-existing draft both void with zero payment; the owner-approved test email is delivered. 241 site tests and four simulator-cleanup checks pass. PosterBoard’s failing wallpaper state was backed up byte-for-byte and reset without touching app containers; observation continues. The original $10 permit is unchanged. [Evidence](evidence/operations-20261108/report.md).
+# Launch and operations — current November 8, 2026
+
+**PASS public web release and deployed protections; PARTIAL iOS release and measured economics.** Source `054b8a8c` is READY at **https://www.jamloom.com**. [Current evidence](evidence/operations-20261108/report.md).
+
+## Current service
+
+- Public Music DNA and Improvise generation use explicit preparation, private-by-default delivery, fixed credit prices and the existing finite allowance. Creator is $35/300 and optional top-ups are $20/150; paid credits never expire.
+- The first web Creator payment grants credits normally; future Stripe collections pause with no automatic resume or catch-up billing. Account/pricing/Checkout disclose this. Recovery, refunds and cancellation remain available. Real Stripe test-clock renewal and existing draft protection pass; no real customer charge was made.
+- The existing live product/price/webhook are active. Invoice creation/finalization events are enabled alongside the original event list. Public checkout, actual Stripe webhook delivery and Chromium/WebKit phone/desktop checks pass.
+- Operating alerts reach the privately configured owner address. Vercel's authenticated five-minute monitor and an independent headless-server timer are installed; the latter has executed automatically. Both can pause related Creator collections, neither can start a GPU or renew funding.
+- Trial credits remain unfunded. AI DJ generation and paid courses/Pro launches remain separately held. Previously deferred scoring, learned planner and formal measurements remain deferred.
+
+## Funding and economics
+
+The owner-approved **$10 maximum for seven days** is unchanged: one L4, at most thirteen full $0.75 preparation cycles, automatic idle/expiry shutdown, no renewal. At the final readback all $10 remains, workers are zero and the guardian is healthy. The retired review allowance is not added back. Public and the two App Review accounts share this allowance.
+
+Expiry is **November 15 at 10:49:57 p.m. Eastern**. Low balance and 48-hour expiry warnings are configured. New purchases/work close on insufficient or expired funding; future web Creator collections stay paused. A new allowance needs explicit owner approval.
+
+The **65% target remains unqualified**. Posted provider charges reconcile, but scenario margins depend on utilization and shared/storage allowances. At 30,000 redeemed credits/month the recorded forecasts pass; at 10,000 they fail. Allocating a full $0.75 cycle requires at least 11 Improvise or 6 Music DNA deliveries under the recorded 30,000-credit assumptions. These are sensitivity calculations, not proven throughput or actual future bills. Keep the qualification flag unset and do not count unpublished optimizations as savings.
+
+## iOS
+
+Build **40**, version **0.11.0**, remains VALID and **WAITING_FOR_REVIEW**, with release **MANUAL**, verified again at 04:40 UTC November 9. Existing physical-device and actual StoreKit $35/$20 evidence remains valid for its recorded scope. Apple approval cannot be marked complete in advance.
+
+Before manual distribution, confirm approval, funded availability and the native renewal policy. Stripe collection pauses do not pause Apple subscriptions. Do not advertise public iPhone availability before actual release.
+
+## Recovery and handoff
+
+Keep the independent guardian and operating monitor active if new generation is disabled. Close new purchases/generation when required, preserving paid credits, private downloads, refunds/cancellation and webhook recovery. Keep renewal collections paused until a separately reviewed resumption; never automatically collect skipped months. The previous public deployment is retained, but rolling back code does not authorize an old permit or remove the need for renewal protection.
+
+No Git push or extra paid compute occurred. [Implementation, tests, deployment and cleanup receipts](evidence/operations-20261108/report.md).
+
+<details>
+<summary>Historical launch checkpoints — superseded by the current status above</summary>
 
 **Public web launch — November 8: PASS, live.** Source `8f5701d0` is deployed READY at www.jamloom.com. Ordinary-account $35/month Creator and $20 top-up live checkout sessions, actual Stripe webhook delivery and Chromium/WebKit desktop/phone screens pass without a charge or new GPU run. The owner approved launch despite unqualified economics and a new $10/seven-day allowance: one L4, up to thirteen $0.75 cycles, idle/expiry shutdown, no renewal. Guardian matches; workers are 0/0; all $10 remains. Permit ends November 15 at 10:49:57 p.m. Eastern. New checkouts close on exhausted/expired capacity or stale guardian. Existing renewals require operating-budget follow-through. Old unused review funding is not reused; trials remain unfunded. iOS build 40 remains WAITING_FOR_REVIEW, release MANUAL. [Evidence](evidence/public-launch-20261108/report.md).
 
-**Historical prelaunch checkpoint — 2026-11-08: PASS posted-cost reconciliation; PARTIAL economics; NOT RUN public launch.** Build 40 remains VALID and WAITING_FOR_REVIEW with MANUAL release. Independent endpoint/worker billing totals agree exactly for the DNA/failed-Improvise and review windows; absent worker rows are not automatically delayed bills. Updated 30,000-credit/month, five-year scenarios are Improvise 66.77%, DNA 73.29% and DJ 71.71%; all fail at 10,000 credits/month with the same infrastructure allowance. Full supported-cycle costs/shared allocation/lifetime storage remain unqualified. Workers are 0/0, the guardian is healthy and $6/eight review cycles remain until November 15 at 9:06 p.m. Eastern. Public purchases/generation stay closed. No new compute, charge, deployment or Git push. [Current evidence](evidence/launch-audit-20261108/report.md).
+**Launch follow-through — 2026-11-08: PASS posted-cost reconciliation; PARTIAL economics; NOT RUN public launch.** Build 40 remains VALID and WAITING_FOR_REVIEW with MANUAL release. Independent endpoint/worker billing totals agree exactly for the DNA/failed-Improvise and review windows; absent worker rows are not automatically delayed bills. Updated 30,000-credit/month, five-year scenarios are Improvise 66.77%, DNA 73.29% and DJ 71.71%; all fail at 10,000 credits/month with the same infrastructure allowance. Full supported-cycle costs/shared allocation/lifetime storage remain unqualified. Workers are 0/0, the guardian is healthy and $6/eight review cycles remain until November 15 at 9:06 p.m. Eastern. Public purchases/generation stay closed. No new compute, charge, deployment or Git push. [Current evidence](evidence/launch-audit-20261108/report.md).
 
-**Historical repricing checkpoint — 2026-11-08: PASS catalog, payment checks and build-40 device checks; PARTIAL release.** Creator is $35/300 monthly and optional top-ups $20/150, with nonexpiring credits and unchanged operation prices. Catalog v3 preserves v2 receipts/proceeds and fails stale economic qualification. 227 site tests, 102 database checks, Stripe sandbox lifecycle, Chromium/WebKit checkout checks, simulator/StoreKit checks, 28 physical-iPhone checks, build/typecheck/audit pass. Build 40 is uploaded/VALID and the replacement five-item bundle is WAITING_FOR_REVIEW with MANUAL release. The reviewer-only backend and USA Apple prices are updated; live Stripe prices remain inactive and public sales/generation/trials remain closed. Real Apple $35/$20 catalog and authenticated purchase-screen checks pass. Both updated review images are COMPLETE; the owner-approved one-column padding preserves every original pixel. The signed release build is restored/running on the iPhone. Full costs and Apple approval still block commercial release. [Evidence](evidence/credit-repricing-20261108/report.md).
+**Authorized repricing — 2026-11-08: PASS catalog, payment checks and build-40 device checks; PARTIAL release.** Creator is $35/300 monthly and optional top-ups $20/150, with nonexpiring credits and unchanged operation prices. Catalog v3 preserves v2 receipts/proceeds and fails stale economic qualification. 227 site tests, 102 database checks, Stripe sandbox lifecycle, Chromium/WebKit checkout checks, simulator/StoreKit checks, 28 physical-iPhone checks, build/typecheck/audit pass. Build 40 is uploaded/VALID and the replacement five-item bundle is WAITING_FOR_REVIEW with MANUAL release. The reviewer-only backend and USA Apple prices are updated; live Stripe prices remain inactive and public sales/generation/trials remain closed. Real Apple $35/$20 catalog and authenticated purchase-screen checks pass. Both updated review images are COMPLETE; the owner-approved one-column padding preserves every original pixel. The signed release build is restored/running on the iPhone. Full costs and Apple approval still block commercial release. [Evidence](evidence/credit-repricing-20261108/report.md).
 
 **Earlier margin decision — November 8:** The owner retains 65% and requires cost reductions first. The [isolated preload candidate](evidence/cost-reduction-20261108/report.md) passes local checks but remains disabled/unpublished; full operating costs still fail or lack complete receipts. Build 39 is submitted and WAITING_FOR_REVIEW. Review funding does not authorize new optimization runs. Public commercial activation remains last, after the existing economic/provider gates pass.
 
@@ -76,3 +109,5 @@ Only advertise native paid availability after Apple approval and actual release.
 
 
 The [corrected continuation](evidence/readiness-correction-20261101/report.md) was explicitly approved and is now consumed: $2 new-lease cap with $1 reserved for the prior attempt, within the original $3 aggregate. No further attempt is authorized.
+
+</details>
