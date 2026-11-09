@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "topupUSD": 20,
+  "credits": 150,
+  "checkoutOpened": true,
+  "sessionExpired": true,
+  "charges": 0,
+  "scope": "protected candidate"
+}

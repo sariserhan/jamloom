@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "source": "052660110056edd01d495212e221a3f81b2fe0ac",
+  "guardianActive": true,
+  "monitorTimerActive": true,
+  "monitorInitialRun": "success",
+  "seedUnchanged": true,
+  "revenueShareBps": 2000,
+  "gpuStarts": 0,
+  "priorRevisions": {
+    "capacity": "/home/ssari/.local/share/jamloom-capacity/39f567155235fe8cd59c2e84b20776df55b93714",
+    "operations": "/home/ssari/.local/share/jamloom-operations/39f567155235fe8cd59c2e84b20776df55b93714"
+  }
+}

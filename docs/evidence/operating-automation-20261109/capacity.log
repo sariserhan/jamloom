@@ -1,0 +1,319 @@
+TAP version 13
+# Subtest: Apple reports use exact USD net proceeds, returns, quoted fields and bound product IDs
+ok 1 - Apple reports use exact USD net proceeds, returns, quoted fields and bound product IDs
+  ---
+  duration_ms: 4.700208
+  type: 'test'
+  ...
+# Subtest: Apple client authenticates to fixed host and distinguishes no sales from unavailable and denied access
+ok 2 - Apple client authenticates to fixed host and distinguishes no sales from unavailable and denied access
+  ---
+  duration_ms: 43.162959
+  type: 'test'
+  ...
+# Subtest: recharge proposals stay within settled revenue shortfall and never authorize a charge
+ok 3 - recharge proposals stay within settled revenue shortfall and never authorize a charge
+  ---
+  duration_ms: 0.284875
+  type: 'test'
+  ...
+# Subtest: Apple financial ledger: report alone cannot fund spending; payment, corrections and refunds conserve funds
+ok 4 - Apple financial ledger: report alone cannot fund spending; payment, corrections and refunds conserve funds
+  ---
+  duration_ms: 611.850875
+  type: 'test'
+  ...
+# Subtest: demand capacity is opt-in, finite, funded and cannot widen diagnostic access
+ok 5 - demand capacity is opt-in, finite, funded and cannot widen diagnostic access
+  ---
+  duration_ms: 7.311125
+  type: 'test'
+  ...
+# Subtest: database-independent emergency cleanup only stops the configured endpoint/image
+ok 6 - database-independent emergency cleanup only stops the configured endpoint/image
+  ---
+  duration_ms: 0.419375
+  type: 'test'
+  ...
+# Subtest: durable demand capacity: concurrent starts, full budget, lost responses, idle and expiry
+    # Subtest: reads and recovery never start; concurrent explicit prepares activate once and reserve once
+    ok 1 - reads and recovery never start; concurrent explicit prepares activate once and reserve once
+      ---
+      duration_ms: 39.583083
+      type: 'test'
+      ...
+    # Subtest: warm joins refresh idle time without extending the funded lease or reserving another cycle
+    ok 2 - warm joins refresh idle time without extending the funded lease or reserving another cycle
+      ---
+      duration_ms: 16.304041
+      type: 'test'
+      ...
+    # Subtest: guardian stops workers without a durable activation record and never starts or reserves them
+    ok 3 - guardian stops workers without a durable activation record and never starts or reserves them
+      ---
+      duration_ms: 4.154917
+      type: 'test'
+      ...
+    # Subtest: a lost activation response stops and never retries or refunds its operator reservation
+    ok 4 - a lost activation response stops and never retries or refunds its operator reservation
+      ---
+      duration_ms: 6.616291
+      type: 'test'
+      ...
+    # Subtest: startup timeout and finite expiry shut down even with provider work
+    ok 5 - startup timeout and finite expiry shut down even with provider work
+      ---
+      duration_ms: 13.759625
+      type: 'test'
+      ...
+    # Subtest: durable activation intent without a provider call is closed, not replayed
+    ok 6 - durable activation intent without a provider call is closed, not replayed
+      ---
+      duration_ms: 5.0955
+      type: 'test'
+      ...
+    # Subtest: wrong endpoint identity or insufficient remaining permit cannot activate
+    ok 7 - wrong endpoint identity or insufficient remaining permit cannot activate
+      ---
+      duration_ms: 2.635
+      type: 'test'
+      ...
+    # Subtest: independent guardian is mandatory; stale heartbeat and removed configuration stop capacity
+    ok 8 - independent guardian is mandatory; stale heartbeat and removed configuration stop capacity
+      ---
+      duration_ms: 13.106458
+      type: 'test'
+      ...
+    # Subtest: API requires verified owner, same origin, spendable credits and explicit prepare; no wallet hold
+    ok 9 - API requires verified owner, same origin, spendable credits and explicit prepare; no wallet hold
+      ---
+      duration_ms: 50.931208
+      type: 'test'
+      ...
+    # Subtest: a changed provider price stops the existing worker immediately
+    ok 10 - a changed provider price stops the existing worker immediately
+      ---
+      duration_ms: 8.459
+      type: 'test'
+      ...
+    # Subtest: a transient running signal followed by initialization does not consume the idle window
+    ok 11 - a transient running signal followed by initialization does not consume the idle window
+      ---
+      duration_ms: 8.499209
+      type: 'test'
+      ...
+    # Subtest: repeated readiness regression retains the original startup deadline
+    ok 12 - repeated readiness regression retains the original startup deadline
+      ---
+      duration_ms: 3.959875
+      type: 'test'
+      ...
+    # Subtest: funded reviewers can prepare again, but public daily limits and aggregate reservations remain enforced
+    ok 13 - funded reviewers can prepare again, but public daily limits and aggregate reservations remain enforced
+      ---
+      duration_ms: 27.940083
+      type: 'test'
+      ...
+    1..13
+ok 7 - durable demand capacity: concurrent starts, full budget, lost responses, idle and expiry
+  ---
+  duration_ms: 594.908959
+  type: 'test'
+  ...
+# Subtest: live renewals require separate enabled and qualified approval; ordinary sandbox unchanged
+ok 8 - live renewals require separate enabled and qualified approval; ordinary sandbox unchanged
+  ---
+  duration_ms: 1.672417
+  type: 'test'
+  ...
+# Subtest: pause future collections permanently without cancelling or modifying paid credits; duplicate is harmless
+ok 9 - pause future collections permanently without cancelling or modifying paid credits; duplicate is harmless
+  ---
+  duration_ms: 2.460916
+  type: 'test'
+  ...
+# Subtest: unrelated, incomplete and cancelled subscriptions are untouched
+ok 10 - unrelated, incomplete and cancelled subscriptions are untouched
+  ---
+  duration_ms: 0.452083
+  type: 'test'
+  ...
+# Subtest: environment and account mismatches fail before mutation
+ok 11 - environment and account mismatches fail before mutation
+  ---
+  duration_ms: 0.412208
+  type: 'test'
+  ...
+# Subtest: first purchase invoices are untouched; renewal drafts disable auto collection before voiding
+ok 12 - first purchase invoices are untouched; renewal drafts disable auto collection before voiding
+  ---
+  duration_ms: 0.565541
+  type: 'test'
+  ...
+# Subtest: an already-paid renewal raises operator review rather than pretending it was prevented
+ok 13 - an already-paid renewal raises operator review rather than pretending it was prevented
+  ---
+  duration_ms: 3.870583
+  type: 'test'
+  ...
+# Subtest: scheduled reconciliation protects related subscriptions and pending invoices only
+ok 14 - scheduled reconciliation protects related subscriptions and pending invoices only
+  ---
+  duration_ms: 0.993084
+  type: 'test'
+  ...
+# Subtest: resumption keeps the margin gate and never resurrects catch-up invoices or foreign pauses
+ok 15 - resumption keeps the margin gate and never resurrects catch-up invoices or foreign pauses
+  ---
+  duration_ms: 1.716459
+  type: 'test'
+  ...
+# Subtest: Creator invoice requires a real paid period, exact price and charge evidence
+ok 16 - Creator invoice requires a real paid period, exact price and charge evidence
+  ---
+  duration_ms: 1.368709
+  type: 'test'
+  ...
+# Subtest: Apple renewals and topups bind account, type, period and amount; historical paid credits can be recovered
+ok 17 - Apple renewals and topups bind account, type, period and amount; historical paid credits can be recovered
+  ---
+  duration_ms: 0.3925
+  type: 'test'
+  ...
+# Subtest: subscription refund finds exact invoice rather than minting or revoking a different period
+ok 18 - subscription refund finds exact invoice rather than minting or revoking a different period
+  ---
+  duration_ms: 2.652541
+  type: 'test'
+  ...
+# Subtest: revenue funding verifies cash, survives duplicate/refund events and reserves before activation
+    # Subtest: only approved share/profile continues after seed expiry; legacy hash stays unchanged
+    ok 1 - only approved share/profile continues after seed expiry; legacy hash stays unchanged
+      ---
+      duration_ms: 0.908375
+      type: 'test'
+      ...
+    # Subtest: expired seed and pending or test proceeds cannot activate or open checkout
+    ok 2 - expired seed and pending or test proceeds cannot activate or open checkout
+      ---
+      duration_ms: 18.404916
+      type: 'test'
+      ...
+    # Subtest: settlement reads authoritative charge and credits precisely 20% after fees and tax once
+    ok 3 - settlement reads authoritative charge and credits precisely 20% after fees and tax once
+      ---
+      duration_ms: 22.36675
+      type: 'test'
+      ...
+    # Subtest: empty provider balance rejects despite ledger funds; concurrent prepares reserve and start once
+    ok 4 - empty provider balance rejects despite ledger funds; concurrent prepares reserve and start once
+      ---
+      duration_ms: 11.40875
+      type: 'test'
+      ...
+    # Subtest: refund after spending creates debt; duplicate and delayed events cannot revive funds
+    ok 5 - refund after spending creates debt; duplicate and delayed events cannot revive funds
+      ---
+      duration_ms: 11.15175
+      type: 'test'
+      ...
+    # Subtest: new proceeds first cover refund debt; lost activation response retains its reservation
+    ok 6 - new proceeds first cover refund debt; lost activation response retains its reservation
+      ---
+      duration_ms: 10.2995
+      type: 'test'
+      ...
+    # Subtest: finite seed remains independently bounded when revenue is enabled
+    ok 7 - finite seed remains independently bounded when revenue is enabled
+      ---
+      duration_ms: 7.834583
+      type: 'test'
+      ...
+    1..7
+ok 19 - revenue funding verifies cash, survives duplicate/refund events and reserves before activation
+  ---
+  duration_ms: 498.716208
+  type: 'test'
+  ...
+# Subtest: provider credit checks fail closed and cannot issue mutations
+ok 20 - provider credit checks fail closed and cannot issue mutations
+  ---
+  duration_ms: 3.423709
+  type: 'test'
+  ...
+# Subtest: revenue policy has no calendar-expiry alert and still alerts at funding exhaustion
+ok 21 - revenue policy has no calendar-expiry alert and still alerts at funding exhaustion
+  ---
+  duration_ms: 0.268792
+  type: 'test'
+  ...
+# Subtest: verified renewals survive unrelated refunds without reopening spending
+ok 22 - verified renewals survive unrelated refunds without reopening spending
+  ---
+  duration_ms: 775.637
+  type: 'test'
+  ...
+# Subtest: real Postgres ledger: conservation, concurrency, receipts, tenant isolation and costs
+    # Subtest: private and public legacy requests have no surcharge; failures refund even incurred costs
+    ok 1 - private and public legacy requests have no surcharge; failures refund even incurred costs
+      ---
+      duration_ms: 51.447875
+      type: 'test'
+      ...
+    # Subtest: receipt replay grants exactly once and cannot move between accounts
+    ok 2 - receipt replay grants exactly once and cannot move between accounts
+      ---
+      duration_ms: 27.103958
+      type: 'test'
+      ...
+    # Subtest: parallel reservations enforce one active job and no overspend
+    ok 3 - parallel reservations enforce one active job and no overspend
+      ---
+      duration_ms: 30.771458
+      type: 'test'
+      ...
+    # Subtest: zero-cost cancellation returns original lots; changed quote rejected
+    ok 4 - zero-cost cancellation returns original lots; changed quote rejected
+      ---
+      duration_ms: 30.219583
+      type: 'test'
+      ...
+    # Subtest: Apple sandbox lots preserve their own economics, ledgers immutable, disputes freeze
+    ok 5 - Apple sandbox lots preserve their own economics, ledgers immutable, disputes freeze
+      ---
+      duration_ms: 26.171667
+      type: 'test'
+      ...
+    # Subtest: unfunded jobs and invalid cost caps rejected without mutation
+    ok 6 - unfunded jobs and invalid cost caps rejected without mutation
+      ---
+      duration_ms: 4.81175
+      type: 'test'
+      ...
+    # Subtest: out-of-order refund and grant races cannot leave spendable disputed credits
+    ok 7 - out-of-order refund and grant races cannot leave spendable disputed credits
+      ---
+      duration_ms: 12.272042
+      type: 'test'
+      ...
+    # Subtest: taste profiles are owner-scoped with optimistic concurrency and deletion
+    ok 8 - taste profiles are owner-scoped with optimistic concurrency and deletion
+      ---
+      duration_ms: 7.31025
+      type: 'test'
+      ...
+    1..8
+ok 23 - real Postgres ledger: conservation, concurrency, receipts, tenant isolation and costs
+  ---
+  duration_ms: 806.785
+  type: 'test'
+  ...
+1..23
+# tests 51
+# suites 0
+# pass 51
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1093.514125

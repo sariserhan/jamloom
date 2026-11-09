@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T06:52:23.332Z",
+  "unauthorizedStatus": 401,
+  "authenticatedStatus": 200,
+  "snapshot": {
+    "now": 1794207142735,
+    "expiresAt": null,
+    "remainingMicros": 9750000,
+    "revenueMicros": 0,
+    "providerMicros": 11384561,
+    "cycleMicros": 750000,
+    "guardianOK": true,
+    "shutdownFailed": false,
+    "providerMismatch": false,
+    "workers": 0,
+    "liveFailures": 0,
+    "overdueCleanup": 0
+  },
+  "renewals": {
+    "checked": 0,
+    "protected": 0,
+    "continuation": {
+      "status": "held",
+      "reason": "economics-or-renewal-configuration",
+      "resumed": 0
+    }
+  },
+  "alerts": [],
+  "deliveries": []
+}

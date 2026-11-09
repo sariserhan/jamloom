@@ -1,0 +1,56 @@
+{
+  "at": "2026-11-09T06:49:20.496Z",
+  "status": "PASS",
+  "scope": "protected candidate",
+  "ordinaryAccount": true,
+  "authenticatedAccountRead": true,
+  "unauthorizedAccountStatus": 401,
+  "catalog": {
+    "version": "2026-11-08-v3",
+    "creator": {
+      "key": "creator",
+      "cents": 3500,
+      "credits": 300,
+      "interval": "month",
+      "appleProduct": "com.jamloom.creator.monthly"
+    },
+    "topup": {
+      "key": "topup",
+      "cents": 2000,
+      "credits": 150,
+      "appleProduct": "com.jamloom.credits.topup150"
+    },
+    "trialCredits": 20,
+    "paidCreditsExpire": false
+  },
+  "checks": [
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "signedIn": false,
+      "available": false
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "signedIn": false,
+      "available": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "signedIn": true,
+      "available": false
+    },
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "signedIn": true,
+      "available": false
+    }
+  ],
+  "purchases": 0,
+  "creditGrants": 0,
+  "prepareRequests": 0,
+  "generationRequests": 0
+}

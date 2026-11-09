@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "source": "052660110056edd01d495212e221a3f81b2fe0ac",
+  "timerActive": true,
+  "dailyUTC": "13:00 + up to 5 minutes",
+  "keyMode": "0600",
+  "configurationMode": "0600",
+  "automaticCashAllocation": false,
+  "firstSync": {
+    "at": "2026-11-09T06:49:09.499Z",
+    "reports": [
+      {
+        "month": "2026-11",
+        "status": "no_sales"
+      },
+      {
+        "month": "2026-10",
+        "status": "no_sales"
+      },
+      {
+        "month": "2026-09",
+        "status": "no_sales"
+      }
+    ],
+    "automaticCashAllocation": false
+  }
+}

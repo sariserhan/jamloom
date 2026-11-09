@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T06:52:41.777Z",
+  "ownSessionsExpired": true,
+  "ownCustomersDeleted": 0,
+  "temporaryAccountDeleted": true,
+  "charges": 0,
+  "creditGrants": 0,
+  "generationRequests": 0
+}
