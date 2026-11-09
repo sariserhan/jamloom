@@ -1,0 +1,21 @@
+19 files, 17.58 GiB
+build-style-training/upstream/checkpoints/Qwen3-Embedding-0.6B/model.safetensors
+build-style-training/upstream/checkpoints/acestep-5Hz-lm-1.7B/model.safetensors
+build-style-training/upstream/checkpoints/acestep-v15-turbo/silence_latent.pt
+build-style-training/upstream/checkpoints/acestep-v15-turbo/model.safetensors
+build-style-training/upstream/checkpoints/vae/diffusion_pytorch_model.safetensors
+build-style-training/lyric-planner/merges.txt
+build-style-training/lyric-planner/model.safetensors
+build-style-training/lyric-planner/tokenizer.json
+build-style-training/lyric-planner/vocab.json
+build-style-training/taste-auditor/pytorch_model.bin
+build-style-training/taste-auditor/tokenizer.json
+build-style-training/vocal-identity/Plachta--Seed-VC/DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema_v2.pth
+build-style-training/vocal-identity/lj1995--VoiceConversionWebUI/rmvpe.pt
+build-style-training/vocal-identity/funasr--campplus/campplus_cn_common.bin
+build-style-training/vocal-identity/nvidia--bigvgan_v2_44khz_128band_512x/bigvgan_generator.pt
+build-style-training/vocal-identity/openai--whisper-small/model.safetensors
+build-style-training/separator/hdemucs_high_trained.pt
+build-style-training/taste-auditor-music/pytorch_model.bin
+build-style-training/taste-auditor-music-original/music_audioset_epoch_15_esc_90.14.pt
+No downloads made. Pass --restore to recover these local model files.

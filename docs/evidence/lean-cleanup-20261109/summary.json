@@ -1,0 +1,141 @@
+{
+  "status": "PARTIAL cleanup; FAIL preservation for two early accepted development auditions",
+  "freeBeforeBytes": 38986125312,
+  "freeAfterBytes": 82537443328,
+  "observedFreeIncreaseBytes": 43551318016,
+  "projectAllocatedKiB": 76567248,
+  "retiredGeneratedWavFiles": 7637,
+  "retiredGeneratedAudioLogicalBytes": 48173124362,
+  "removedPublicModelFiles": 19,
+  "removedPublicModelBytes": 18874469882,
+  "retainedAudioFilesRehashed": 6968,
+  "retainedAudioBytes": 34746736492,
+  "siteChecks": {
+    "pass": 18,
+    "fail": 0
+  },
+  "modelRestoreChecks": {
+    "pass": 5,
+    "fail": 0
+  },
+  "accidentallyRetiredAcceptedAuditions": 2,
+  "accidentallyRetiredAcceptedFiles": 4,
+  "recovery": "NOT RECOVERED",
+  "remoteMutation": false,
+  "appsStopped": false,
+  "localModelGenerationRequiresExplicitRestore": true,
+  "auditArtifacts": {
+    "before.json": {
+      "bytes": 60,
+      "sha256": "3789ce375d8ae973c3052f4884f383c1e7f230f725e46553988188e0c77d2804"
+    },
+    "audio-removal.log": {
+      "bytes": 3012,
+      "sha256": "627280ca73d1d90142bd8ac4c9e4c05f93b8e02cc3c4c1932034ecb500104c99"
+    },
+    "models.json": {
+      "bytes": 9902,
+      "sha256": "f56e0d80723704fbfe5c64d7508c6616a9d0dabd4ac03dcdb17bcb5e2d201011"
+    },
+    "verify-retained.py": {
+      "bytes": 1053,
+      "sha256": "c291e267af06438bc2e622de2db1c4e801d6aa498dd2fa665b71d9db34b67742"
+    },
+    "models-audit.log": {
+      "bytes": 2503,
+      "sha256": "dcf222c0c583c1915d42b571263083ad7121f7ceb9842e9b97b42c3c4b63f043"
+    },
+    "checks.log": {
+      "bytes": 4369,
+      "sha256": "f9ff17a7e9fc2d0a5c3311a19bda04d238187fa03efd30e853edabee92ecb0c9"
+    },
+    "model-removal.log": {
+      "bytes": 87,
+      "sha256": "a6feecd0d78a0854eaed5c494c1d35a8d054d1e0eb5851e3a38a14c1b456b8e7"
+    },
+    "remove-audio.py": {
+      "bytes": 3143,
+      "sha256": "df6b9b45cb463cd167ff6eb242d548a5110b38c62db04a3d9b011a50f37a6c72"
+    },
+    "check-restore.py": {
+      "bytes": 1632,
+      "sha256": "bcf226ba8b383e7238d9706f774544e3a77965b4708397ecac9732bb57f07c96"
+    },
+    "retained-verification.json": {
+      "bytes": 287,
+      "sha256": "0ef0dc46a1a61d062da8f06496af2e3256d8ef8f41a05d4534fa1995e50cd29f"
+    },
+    "restore-checks.log": {
+      "bytes": 167,
+      "sha256": "8ec9c9e12688cb42b29ad0838ca213e93cd25eeb48029833da942e9783f58424"
+    },
+    "recover-browser.py": {
+      "bytes": 757,
+      "sha256": "dce4b8e9c458d1c1ace90959106eafc31ed6ace447c90a5d0d2f34c0c5ed8ed2"
+    },
+    "protected-hashes.json": {
+      "bytes": 275391,
+      "sha256": "c0116f8c7500c10a984d1111aecc1966ffd86bdb00db5a52df2918a17131a91f"
+    },
+    "removed-models.jsonl": {
+      "bytes": 8588,
+      "sha256": "8f1a3ff389e5c2c4c6d3847705b346ed09b30a2dcdf45107bbbe4600df20ebab"
+    },
+    "audio-delete-plan.json": {
+      "bytes": 3172588,
+      "sha256": "b2803d9d96ac50d89a776cf7b7d006b2114e5e99e69d0e17debd85e5f778840b"
+    },
+    "audio-audit.log": {
+      "bytes": 2958,
+      "sha256": "3c3aba4d49292e7aa9cd7da6c397d1da7ef5c54d769ce09c57454daae92607ba"
+    },
+    "retained-verification.log": {
+      "bytes": 483,
+      "sha256": "fd1258a8e8174df482238c0988a4e36b65232c38f9e14029bf0674a7564e9147"
+    },
+    "audio-plan-summary.json": {
+      "bytes": 2958,
+      "sha256": "3c3aba4d49292e7aa9cd7da6c397d1da7ef5c54d769ce09c57454daae92607ba"
+    },
+    "removed-audio.jsonl": {
+      "bytes": 2706728,
+      "sha256": "2a42ebdcb1a86a9edfe19c000b68894ba2e0b1ff58cfd02055ac8ddaaba7d61b"
+    },
+    "audit-audio.py": {
+      "bytes": 6867,
+      "sha256": "81eb90157005adb634c45ef9242d1b0e0dde9effa50c3b8faa931b033c551ef4"
+    },
+    "restore-dry-run.log": {
+      "bytes": 1428,
+      "sha256": "5f6193c55e36ce936c14aff2708704590dba077f34eafe0e5c506617a170d627"
+    },
+    "remove-models.py": {
+      "bytes": 1038,
+      "sha256": "e67cf392d4115e05546b3d09823cb98c38ff1e9b1bb22fddcfd2f7de7b6789d9"
+    },
+    "audio-removal-summary.json": {
+      "bytes": 1986,
+      "sha256": "2b44596c9ac1e0e2e8f94c20fe6fccce5dd2e013b507aea77db5f3d2f1d23a2e"
+    },
+    "audio-preserve-plan.json": {
+      "bytes": 2608231,
+      "sha256": "0ba658e5db27c1e0b972afd7932d652f6bd07cedd1e4f5a57e6b2d7e524df838"
+    },
+    "git-before.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "owner-decision-records.json": {
+      "bytes": 15738,
+      "sha256": "039afb005736fe453973cdeb7fa002ac7c89b0239c45b9f8c6760c41e5c80a1d"
+    },
+    "current-fixtures-preserved.json": {
+      "bytes": 735,
+      "sha256": "3d53921cd7bc51c95ad3381f90fb8ffacbb48c2b8b6c1ca9fc0814c4549355da"
+    },
+    "audit-models.py": {
+      "bytes": 3387,
+      "sha256": "ff92bf0366c7072ee73517ba066fbcde3c4143c5ff7a13aa7a28a83ed9034d37"
+    }
+  }
+}

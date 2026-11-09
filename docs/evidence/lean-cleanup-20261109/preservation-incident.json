@@ -1,0 +1,43 @@
+{
+  "status": "FAIL preservation for two early accepted development auditions",
+  "files": [
+    {
+      "path": "renders/club-studies-20261024/gpu-comparison/house-baseline.wav",
+      "sha256": "79fce3a5824cb1bb758892a1d6037ac43a2e6ea20074b77005bfc14ffe6ea00f",
+      "status": "MISSING_AFTER_CLEANUP",
+      "recovery": "NOT RECOVERED"
+    },
+    {
+      "path": "renders/club-studies-20261024/gpu-comparison/review/listen-01.wav",
+      "sha256": "7c58b562e54bf14d6e185a38d895a6d74ac5a7d45cfcd46de229c06e8067cf6a",
+      "status": "MISSING_AFTER_CLEANUP",
+      "recovery": "NOT RECOVERED"
+    },
+    {
+      "path": "renders/club-studies-20261024/gpu-comparison/house-phrased.wav",
+      "sha256": "26b2503a9497094eda3fcbc8ef10477b6778151c6b517ebac39661a0530c16bd",
+      "status": "MISSING_AFTER_CLEANUP",
+      "recovery": "NOT RECOVERED"
+    },
+    {
+      "path": "renders/club-studies-20261024/gpu-comparison/review/listen-05.wav",
+      "sha256": "02e3c4ead7a2246f74a6bae0b45022fb004013b21ba1c831b6ee417fed7e71c1",
+      "status": "MISSING_AFTER_CLEANUP",
+      "recovery": "NOT RECOVERED"
+    }
+  ],
+  "cause": "Acceptance was recorded by numbered listening filename and case name, with hashes in a separate measurements manifest. The first protection index did not resolve that indirect mapping before retiring the study.",
+  "sourceDecision": "docs/evidence/ai-dj-baseline-20261024/gpu/listening-feedback.json",
+  "manifest": "docs/evidence/ai-dj-baseline-20261024/gpu/measurements.json",
+  "recoveryChecks": {
+    "remainingProjectFilesSameSizesAndHashes": "No matching copies",
+    "temporaryDownloadsAndDownloadsFolder": "No matching copies",
+    "headlessProjectCheckout": "No copies at original paths",
+    "localTimeMachineSnapshots": "None listed",
+    "spotlightExactFilenames": "No matches",
+    "DiaCacheLocalStudyKeys": "0 matching entries among 301952 cache files",
+    "trashExactProjectClipNames": "No matches; no access errors"
+  },
+  "furtherDeletionStopped": true,
+  "replacedWithNewlyGeneratedAudio": false
+}

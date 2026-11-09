@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: Academy catalog rejects wrong price, recurring, live and foreign products
+ok 1 - Academy catalog rejects wrong price, recurring, live and foreign products
+  ---
+  duration_ms: 5.575917
+  type: 'test'
+  ...
+# Subtest: published manifests are bounded, versioned and have unambiguous prerequisites
+ok 2 - published manifests are bounded, versioned and have unambiguous prerequisites
+  ---
+  duration_ms: 1.051
+  type: 'test'
+  ...
+# Subtest: Academy modeled contribution is explicit, bounded and never finances AI inference
+ok 3 - Academy modeled contribution is explicit, bounded and never finances AI inference
+  ---
+  duration_ms: 1.853
+  type: 'test'
+  ...
+# Subtest: all six stages have runnable assessments and final completion traverses the entire curriculum
+ok 4 - all six stages have runnable assessments and final completion traverses the entire curriculum
+  ---
+  duration_ms: 0.234708
+  type: 'test'
+  ...
+# Subtest: private save validates consent, bounded metadata and canonical metadata-free PCM
+ok 5 - private save validates consent, bounded metadata and canonical metadata-free PCM
+  ---
+  duration_ms: 148.661042
+  type: 'test'
+  ...
+# Subtest: product storage keys isolate namespaces while keeping old masters readable
+ok 6 - product storage keys isolate namespaces while keeping old masters readable
+  ---
+  duration_ms: 0.222083
+  type: 'test'
+  ...
+# Subtest: storage is opt-in, local files cannot be hosted, R2 grants bind content length and type
+ok 7 - storage is opt-in, local files cannot be hosted, R2 grants bind content length and type
+  ---
+  duration_ms: 12.554875
+  type: 'test'
+  ...
+# Subtest: brand transition preserves legacy storage config without overriding explicit opt-outs
+ok 8 - brand transition preserves legacy storage config without overriding explicit opt-outs
+  ---
+  duration_ms: 0.1365
+  type: 'test'
+  ...
+# Subtest: new public saves require publication consent; legacy and private saves never queue sharing
+ok 9 - new public saves require publication consent; legacy and private saves never queue sharing
+  ---
+  duration_ms: 31.325625
+  type: 'test'
+  ...
+# Subtest: audio errors retain safe status across duplicated route modules
+ok 10 - audio errors retain safe status across duplicated route modules
+  ---
+  duration_ms: 1.233625
+  type: 'test'
+  ...
+# Subtest: extended output accepts exact 15/60 second boundaries and rejects outside them
+ok 11 - extended output accepts exact 15/60 second boundaries and rejects outside them
+  ---
+  duration_ms: 246.747166
+  type: 'test'
+  ...
+# Subtest: song duration contracts retain old jobs and bound both products without widening ordinary uploads
+ok 12 - song duration contracts retain old jobs and bound both products without widening ordinary uploads
+  ---
+  duration_ms: 440.48125
+  type: 'test'
+  ...
+# Subtest: test songs expose only published audio and label unaccepted takes without enabling training
+ok 13 - test songs expose only published audio and label unaccepted takes without enabling training
+  ---
+  duration_ms: 37.384083
+  type: 'test'
+  ...
+# Subtest: hosted account context cannot spend credits through the Mac renderer
+ok 14 - hosted account context cannot spend credits through the Mac renderer
+  ---
+  duration_ms: 1.392334
+  type: 'test'
+  ...
+# Subtest: hosted examples work without the Mac or account DB and only sign allowlisted audio
+ok 15 - hosted examples work without the Mac or account DB and only sign allowlisted audio
+  ---
+  duration_ms: 1.71075
+  type: 'test'
+  ...
+# Subtest: R2 sample grants preserve the default private-audio lifetime and allow longer listening
+ok 16 - R2 sample grants preserve the default private-audio lifetime and allow longer listening
+  ---
+  duration_ms: 26.106292
+  type: 'test'
+  ...
+# Subtest: the explicit jazz review is shown as a human verdict rather than an automated pass
+ok 17 - the explicit jazz review is shown as a human verdict rather than an automated pass
+  ---
+  duration_ms: 0.109625
+  type: 'test'
+  ...
+# Subtest: Improvise exposes its existing public samples without crossing account or product boundaries
+ok 18 - Improvise exposes its existing public samples without crossing account or product boundaries
+  ---
+  duration_ms: 1.62375
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1262.871375

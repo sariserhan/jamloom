@@ -1,0 +1,3 @@
+Restored and verified: build-style-training/test/model.bin
+Already verified: build-style-training/test/model.bin
+PASS: 5 restore checks; no network or model downloads
