@@ -1,0 +1,32 @@
+import '../apps/site/scripts/env';
+import assert from 'node:assert/strict';
+import {readFile,writeFile} from 'node:fs/promises';
+import {randomUUID} from 'node:crypto';
+import {createPool} from '../apps/site/lib/database';
+import {migrate} from '../apps/site/lib/migrations';
+import {Wallet} from '../apps/site/lib/wallet';
+import {hashPassword} from '../apps/site/node_modules/better-auth/dist/crypto/password.mjs';
+const name='jamloom_stage_20261108',dir=new URL('./',import.meta.url);
+const plan=JSON.parse(await readFile(new URL('../docs/evidence/release-recovery-20261108/hosted-plan.json',import.meta.url),'utf8'));
+assert.equal(plan.status,'APPROVED');assert.equal(plan.publicDeploymentLast,true);
+const direct=new URL(process.env.DATABASE_URL_UNPOOLED??process.env.DATABASE_URL!),pooled=new URL(process.env.DATABASE_URL!);
+assert(direct.hostname.endsWith('.neon.tech'));assert.equal(direct.pathname,'/neondb');assert.equal(pooled.pathname,'/neondb');
+const admin=createPool(direct.href);let pool;
+try{
+ const identity=(await admin.query('SELECT current_database() AS db,current_user AS role')).rows[0];assert.equal(identity.db,'neondb');assert.equal(identity.role,'neondb_owner');
+ assert.equal((await admin.query('SELECT 1 FROM pg_database WHERE datname=$1',[name])).rowCount,0,'Never reuse an existing test database');
+ const before=(await admin.query('SELECT (SELECT count(*)::int FROM dna_song_jobs) AS songs,(SELECT count(*)::int FROM wallet_ledger_entries) AS ledger')).rows[0];
+ await writeFile(new URL('staging-db-claimed.json',dir),JSON.stringify({name,at:new Date().toISOString(),before}),{flag:'wx',mode:0o600});
+ await admin.query('CREATE DATABASE "jamloom_stage_20261108"');
+ direct.pathname='/'+name;pooled.pathname='/'+name;pool=createPool(direct.href);
+ assert.equal((await pool.query('SELECT current_database() AS db')).rows[0].db,name);
+ const applied=await migrate(pool);assert.equal(applied.length,34);assert.deepEqual(await migrate(pool),[]);
+ const account=JSON.parse(await readFile(new URL('../build-release-closure-20261031/course-review-account-private.json',import.meta.url),'utf8'));
+ await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$2,$3,true)',[account.id,'Private staging qualification',account.email]);
+ await pool.query('INSERT INTO account(id,"accountId","providerId","userId",password,"updatedAt") VALUES($1,$2,$3,$2,$4,now())',[randomUUID(),account.id,'credential',await hashPassword(account.password)]);
+ await new Wallet(pool,false).grant(account.id,{provider:'stripe_test',receipt:'synthetic-staging-20261108',credits:10,netMicros:350000});
+ const after=(await admin.query('SELECT (SELECT count(*)::int FROM dna_song_jobs) AS songs,(SELECT count(*)::int FROM wallet_ledger_entries) AS ledger')).rows[0];assert.deepEqual(after,before);
+ await writeFile(new URL('staging-database-private.json',dir),JSON.stringify({name,url:pooled.href,direct:direct.href}),{flag:'wx',mode:0o600});
+ const result={status:'PASS',at:new Date().toISOString(),database:name,migrations:applied.length,repeatApply:'NO_OP',productionCountsUnchanged:true,customerRowsCopied:0,syntheticTestCredits:10,liveCredits:0,providerOperations:0};
+ await writeFile(new URL('staging-database.json',dir),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
+}finally{await pool?.end();await admin.end();}

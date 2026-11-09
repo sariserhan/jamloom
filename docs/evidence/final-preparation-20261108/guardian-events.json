@@ -1,0 +1,311 @@
+{
+  "status": "PASS",
+  "events": [
+    {
+      "at": "2026-11-09T01:32:23.736Z",
+      "state": "off"
+    },
+    {
+      "at": "2026-11-09T01:32:35.405Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:32:46.900Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:32:58.241Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:33:09.853Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:33:21.489Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:33:32.958Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:33:44.119Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:33:55.653Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:34:07.187Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:34:18.540Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:34:29.905Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:34:41.332Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:34:52.678Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:35:04.198Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:35:15.628Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:35:26.926Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:35:38.463Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:35:49.787Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:36:01.290Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:36:12.776Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:36:24.040Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:36:35.510Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:36:46.969Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:36:58.540Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:37:10.274Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:37:22.236Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:37:33.765Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:37:45.235Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:37:56.908Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:38:08.378Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:38:19.950Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:38:31.520Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:38:42.988Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:38:54.364Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:39:05.882Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:39:17.398Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:39:28.967Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:39:40.435Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:39:52.104Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:40:03.862Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:40:15.558Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:40:27.222Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:40:38.804Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:40:50.346Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:41:02.461Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:41:14.006Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:41:25.555Z",
+      "state": "preparing"
+    },
+    {
+      "at": "2026-11-09T01:41:36.928Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:41:48.095Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:41:59.597Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:42:11.280Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:42:23.311Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:42:34.955Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:42:46.497Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:42:58.268Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:43:09.844Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:43:21.518Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:43:33.270Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:43:44.808Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:43:56.347Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:44:08.008Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:44:19.458Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:44:30.947Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:44:42.483Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:44:53.947Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:45:05.597Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:45:17.190Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:45:28.642Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:45:40.104Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:45:51.535Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:46:03.208Z",
+      "state": "ready"
+    },
+    {
+      "at": "2026-11-09T01:46:14.982Z",
+      "state": "stopping",
+      "reason": "idle"
+    },
+    {
+      "at": "2026-11-09T01:46:25.979Z",
+      "state": "stopping",
+      "reason": "shutdown-pending"
+    },
+    {
+      "at": "2026-11-09T01:46:37.000Z",
+      "state": "off",
+      "reason": "shutdown-pending"
+    }
+  ],
+  "failureCount": 0,
+  "unconfirmedShutdownCount": 0,
+  "sanitized": true
+}

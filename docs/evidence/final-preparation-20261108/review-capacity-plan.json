@@ -1,0 +1,30 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "purpose": "Finite App Review access after technical and economic qualification; no customer launch",
+  "additionalMaxUSD": 7.5,
+  "durationDays": 7,
+  "maxCycles": 10,
+  "cycleMaxUSD": 0.75,
+  "cycleSeconds": 2400,
+  "shutdownAllowanceSeconds": 130,
+  "preparationMaxSeconds": 1200,
+  "idleStopSeconds": 120,
+  "maxWorkers": 1,
+  "profile": "l4-2026-11-01",
+  "generationAllowanceMicros": 2072000,
+  "generationAllowanceIsWithinCapacityBudget": true,
+  "reviewAccountsMax": 2,
+  "publicGeneration": false,
+  "customerSales": false,
+  "automaticRenewal": false,
+  "afterExpiry": "Stop capacity and require a new explicit bounded authorization; never silently extend",
+  "requiredEvidence": [
+    "Successful staged Improvise lifecycle",
+    "Complete cost allocation under unchanged credit catalog",
+    "Fresh reviewer login and normal quote/upload/generation/download flow",
+    "Matching independent guardian heartbeat and fixed deadline recovery",
+    "Final review notes and existing five Apple items checked"
+  ],
+  "notAnInvoice": true,
+  "notAnAppleReviewTimeEstimate": true
+}

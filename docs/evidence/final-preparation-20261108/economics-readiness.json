@@ -1,0 +1,65 @@
+{
+  "status": "PARTIAL",
+  "catalog": "2026-10-31-v2",
+  "priceChanges": false,
+  "qualificationEnabled": false,
+  "products": [
+    {
+      "product": "improvise",
+      "credits": 10,
+      "netFloorUSD": 0.2,
+      "attributableBudgetUSD": 0.07,
+      "requestCapUSD": 0.0684,
+      "remainingOutsideRequestCapUSD": 0.0016
+    },
+    {
+      "product": "music-dna",
+      "credits": 20,
+      "netFloorUSD": 0.4,
+      "attributableBudgetUSD": 0.14,
+      "requestCapUSD": 0.1388,
+      "remainingOutsideRequestCapUSD": 0.0012
+    },
+    {
+      "product": "ai-dj",
+      "creditsPerGeneratedMinute": 2,
+      "netFloorUSDPerMinute": 0.04,
+      "attributableBudgetUSDPerMinute": 0.014,
+      "operatingCostQualification": "NOT RUN; closed endurance study is not reopened"
+    }
+  ],
+  "operatorCapacity": {
+    "cycleReservedUSD": 0.75,
+    "maxSeconds": 2400,
+    "reservationIsNotActualCost": true,
+    "startupIdleAndFailuresMustBeAllocated": true
+  },
+  "missingMeasurements": [
+    "Complete attributable GPU startup/idle/failed-execution billing",
+    "Storage/retention, orchestration and support allocation",
+    "Sustained capacity and AI DJ per-minute cost qualification"
+  ],
+  "warning": "Comparing request quotes to the catalog does not account for separately funded capacity overhead. No assumed traffic/utilization, support cost or missing billing row is counted as zero.",
+  "allocationRule": "Allocate actual provider startup, idle and failed-job costs to delivered jobs in the same defined operating cohort; add measured storage/retention, request handling and support. A reserve is not an expense; do not double-count per-job GPU estimates and the same billed GPU time.",
+  "qualificationRule": "Attributable total must fit the catalog budget using the conservative net floor; missing billing, delivery count zero or unknown recurring overhead keeps qualification unset.",
+  "singleCycleReservationStressCase": {
+    "reservationUSD": 0.75,
+    "illustrativeNotObservedSpend": true,
+    "minimumImproviseDeliveriesIfEntireReservationWereSpent": 11,
+    "minimumMusicDNADeliveriesIfEntireReservationWereSpent": 6,
+    "excludesAdditionalNonGPUCosts": true,
+    "trafficAssumption": false,
+    "feasibilityClaim": false
+  },
+  "observedRetest": {
+    "product": "improvise",
+    "deliveredSeconds": 44,
+    "providerExecutionMs": 136493,
+    "queueMs": 17,
+    "executionEstimateUSD": 0.05014,
+    "estimatedHeadroomToCatalogBudgetUSD": 0.01986,
+    "fullCycleBill": "NOT POSTED",
+    "knownObservedWorkerCount": 1,
+    "finalInvoice": false
+  }
+}

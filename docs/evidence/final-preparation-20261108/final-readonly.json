@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T01:49:19.210Z",
+  "mutations": false,
+  "workerLimits": [
+    0,
+    0
+  ],
+  "health": {
+    "jobs": {
+      "completed": 50,
+      "failed": 22,
+      "inProgress": 0,
+      "inQueue": 0,
+      "retried": 0
+    },
+    "workers": {
+      "idle": 0,
+      "initializing": 0,
+      "ready": 0,
+      "running": 0,
+      "throttled": 0,
+      "unhealthy": 0
+    }
+  },
+  "inventory": [],
+  "routes": [
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "available": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "available": false
+    }
+  ]
+}

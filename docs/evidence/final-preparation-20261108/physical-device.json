@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T01:36:23.820729+00:00",
+  "device": "iPhone 14 Pro",
+  "os": "27.2",
+  "version": "0.11.0",
+  "build": "39",
+  "tests": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 2,
+    "accountTestsPassed": 23,
+    "uiTestsPassed": 2,
+    "runtimeWarnings": [],
+    "skippedNames": [
+      "testActualLocalAccountAndProfileSync",
+      "testActualPublicWebsiteSongsWithoutSignIn"
+    ]
+  },
+  "initialAttempt": "NOT RUN; locked device prevented development services",
+  "unlockedRerun": "PASS",
+  "testScope": "Account admission, explicit preparation, credit/consent flow with transport fixtures; two separate local HTTP integration harnesses were not selected",
+  "signedReleaseRestored": true,
+  "releaseProcessAliveAtReadback": true,
+  "releaseIdentity": {
+    "status": "PASS",
+    "build": "39",
+    "version": "0.11.0",
+    "matchesUploadedReleaseAudit": true,
+    "binarySHA256": "2b254b8c2c33551fd94469a783db8e0329e7876a91a2e0c1768d30241a3e6101"
+  },
+  "newProviderPurchaseOrGeneration": false,
+  "ownerListening": "NOT RUN; no new listening claim"
+}

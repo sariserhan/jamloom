@@ -1,0 +1,31 @@
+# Final preparation — November 8, 2026
+
+**PASS private hosted lifecycle, device checks and scoped preparation; PARTIAL release.** The approved one-cycle/$0.75 retest delivered one private Improvise song, captured ten synthetic credits, shut down automatically and passed independent cleanup. The permit is **CONSUMED**. Public deployment remains last and unchanged; sales and Apple submission remain held by incomplete economic/review gates.
+
+## Hosted result
+
+Candidate `9932696f0fb33a4c858298a2e33306bfa42e56f7` ran on protected staging with an empty temporary database on the existing Neon compute. No customer data was copied and no production credit grant was made. Ten isolated synthetic credits replaced reusing the ten refunded production test credits, so the public recovery cron and staging cycle could operate independently.
+
+[HTTP evidence](style-http-result.json) records exactly one Improvise submit, a **44-second** private WAV, **136.493 seconds** provider execution and **17 ms** queue delay. Hash, byte length, WAV validation, download, private defaults and anonymous rejection pass. Ten synthetic credits were captured; none remain reserved; the live wallet stayed zero. The local private audio is retained with SHA256 `67531f674bab4c66cbc1466394ab282c30754a8c88bde29bc42893be6c98c2ef`. No Music DNA rerender, generation retry, owner listening judgment or new musical study occurred.
+
+[Controller](style-control-result.json) and [guardian](guardian-events.json) confirm off → preparing → ready → delivery → automatic idle shutdown. The guardian recorded 75 sanitized events, zero check failures and zero unconfirmed emergency shutdowns. This passes the ordinary hosted lifecycle; it does not recreate the historical transport failure or constitute a hosted crash/fault-injection test. Provider preparation took approximately nine minutes before application admission.
+
+[Independent cleanup](style-cleanup.json) confirms endpoint limits 0/0, empty worker inventory/health, no queued/running jobs or reserved credits, three remote test objects absent and original hardware restored. [Guardian restoration](guardian-restored.json) confirms inactive service, absent enable marker/permit and production configuration restored byte-for-byte. Temporary staging deployments and database are retired after preserving the private database backup and sanitized receipts; see [deployment retirement](staging-deployments-removed.json), [database retirement](staging-database-retired.json) and the [final independent read](final-readonly.json). Public alias remains `dpl_JAJN6SrY6zU2sVsv76Eu17joV8Tu` (`jamloom-2xv2d06z9-ssari.vercel.app`).
+
+The hosted HTTP harness uses the CLI's deployment-protection bypass and the application's configured production Origin. It proves hosted API behavior; it is not a normal-browser login test on the private deployment hostname. Existing browser evidence is retained separately. [Archived harness and documentation references](qualification-harness/README.md).
+
+## Repair and validation
+
+The first private candidate's shared recovery route rejected the Improvise-only allowance because it also constructed Music DNA configuration. Commit `9932696f` accepts the smaller structurally valid allowance while keeping Music DNA admission disabled. The budget was not increased. The repaired private shutdown route and authenticated isolation preflight pass; no GPU started under the failed preflight.
+
+**PASS** 214 website tests, seven focused review-configuration cases included in that total, TypeScript, private production build, harness typecheck and controller dry run. The earlier resilience change `3849153a` retains one GET recovery within its original deadline, no PATCH retry and privacy-safe guardian diagnostics. Its 38 isolated checks, bundle audit and package validation are preserved in the [recovery report](../release-recovery-20261108/report.md). [Current validation](validation.json).
+
+**PASS** physical iPhone 14 Pro, iOS 27.2: 23 account tests and two UI consent flows, zero failures/runtime warnings. Two separate local HTTP integration harnesses were skipped. The initial locked-device attempt never ran tests; the unlocked rerun passed. The signed 0.11.0 build 39 archive matches the prior uploaded-release binary, is restored, launches and remains running. [Device evidence](physical-device.json), [Improvise](iphone-improvise-consent.png), [Music DNA](iphone-dna-consent.png). This does not claim a new live purchase, native hosted song submission or owner audio acceptance.
+
+## Costs, review and public release
+
+[Billing](provider-billing.json) remains **PROVISIONAL**: the one observed worker has no posted billing row. Reported zero is not zero cost. The job estimate is $0.05014, leaving $0.01986 within its $0.07 catalog budget before unallocated costs. Startup, idle, failed work, storage/retention and recurring operational/support allocation still need complete evidence. [Economic worksheet](economics-readiness.json). No cost-qualification flag or price was changed. AI DJ's separate per-minute operating economics also remains unqualified; the owner-closed endurance study stays closed.
+
+[Read-only preparation](preflight.json) confirms 34 production migration fingerprints. [Stripe](stripe-readiness.json) retains the existing inactive Creator product/price and disabled webhook. [Apple](apple-readiness.json) retains VALID build 39, manual release and five READY_FOR_REVIEW items in the unsubmitted draft. Final [reviewer instructions](apple-review-notes.txt) are prepared locally, not uploaded as a claim of current availability. The [seven-day/$7.50 review-capacity proposal](review-capacity-plan.json) is **PREPARED_NOT_AUTHORIZED** and cannot use this consumed diagnostic permit.
+
+Remaining order: complete attributable economics and applicable recovery evidence; approve a bounded review-capacity allowance; verify reviewer access and finalize/submit the existing Apple draft; complete provider approval and authorized activation; perform public deployment/release last. Apple approval and future billing cannot be reported as completed by local checks. Owner-closed studies and deferred v1 scoring/training remain closed/deferred. No Git push, public promotion, customer charge, sales activation or Apple submission occurred.

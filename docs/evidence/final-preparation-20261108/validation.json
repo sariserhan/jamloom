@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "applicationCommit": "9932696f0fb33a4c858298a2e33306bfa42e56f7",
+  "websiteTests": {
+    "pass": 214,
+    "fail": 0
+  },
+  "typecheck": "PASS",
+  "privateProductionBuild": "PASS",
+  "sharedReviewConfigRegressionTests": 7,
+  "harnessTypecheck": "PASS",
+  "guardianPackageSyntax": "PASS",
+  "controllerDryRun": "PASS",
+  "privateHostedPreflight": "PASS",
+  "physicalDevice": {
+    "status": "PASS",
+    "passed": 25,
+    "failed": 0,
+    "optionalIntegrationSkipped": 2,
+    "signedReleaseRestoredAndLaunched": true
+  },
+  "hostedGeneration": "PASS",
+  "publicDeployment": "NOT RUN; ordered last",
+  "idleShutdown": "PASS",
+  "independentCleanup": "PASS",
+  "fullOperatingEconomics": "PARTIAL",
+  "scope": "Scoped technical preparation only; full release remains PARTIAL"
+}

@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "build": "39",
+  "version": "0.11.0",
+  "matchesUploadedReleaseAudit": true,
+  "binarySHA256": "2b254b8c2c33551fd94469a783db8e0329e7876a91a2e0c1768d30241a3e6101"
+}

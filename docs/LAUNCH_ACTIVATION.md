@@ -1,4 +1,10 @@
-# Launch activation — updated 2026-11-02
+# Launch activation — updated 2026-11-08
+
+**Final preparation — 2026-11-08: PASS staged delivery, automatic shutdown and build-39 device checks; PARTIAL release.** Protected candidate `9932696f` delivered one private 44-second Improvise song (136.493 s provider execution), captured ten isolated test credits and shut down automatically. Independent cleanup confirms workers 0/0, no jobs/held credits, three remote objects absent, guardian inactive/restored, and temporary deployments/database removed after private backup. Public deployment is unchanged. 214 site tests and 25 physical-iPhone checks pass (two optional local HTTP skips); signed build 39 is restored/running. Full attributable billing is unposted, operating economics remains unqualified, and funded Apple review/approval plus final activation remain open. The $0.75 permit is consumed; no retry or Git push. Public deployment remains last. [Current evidence](evidence/final-preparation-20261108/report.md).
+
+Final [reviewer instructions](evidence/final-preparation-20261108/apple-review-notes.txt) and the [bounded review-capacity proposal](evidence/final-preparation-20261108/review-capacity-plan.json) are prepared only. No new approval is needed for already authorized preparation; the proposal requires its own compute authorization after the economic gates pass.
+
+## Historical execution checkpoint
 
 **Release execution — 2026-11-02: PASS migration, held deployment and build 39; PARTIAL release.** All 34 production migration hashes match after a verified backup/restore. iPhone build 39 is VALID and selected, unsubmitted. The approved $1 capacity check stopped on a readiness regression before either song request; independent cleanup confirms workers 0/0, no jobs/uploads and no credits used. The repair is committed/deployed and passes 208 site tests, 88 database checks, build/typecheck/audit and live route checks. An independent guardian is installed on the existing headless server but disabled. A same-$1 continuation is prepared, pending explicit resume; operating economics, ongoing capacity and final activation remain open. No Git push. [Current evidence](evidence/release-execution-20261102/report.md).
 

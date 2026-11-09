@@ -1,0 +1,85 @@
+{
+  "startedAt": "2026-11-09T01:32:11.621Z",
+  "deadline": 1794190331621,
+  "cleanup": true,
+  "previousGpu": {
+    "allowedCudaVersions": [],
+    "count": 1,
+    "excludedTypes": [
+      "NVIDIA RTX 6000 Ada Generation",
+      "NVIDIA L40"
+    ],
+    "minCudaVersion": "12.8",
+    "pools": [
+      "ADA_24",
+      "ADA_48_PRO"
+    ]
+  },
+  "remoteGuardianAttempted": true,
+  "preparationDeadline": 1794189144181,
+  "result": {
+    "status": "PASS",
+    "startedAt": "2026-11-09T01:32:11.830Z",
+    "requests": [
+      {
+        "product": "improvise",
+        "id": "76448bda89284c528786a9559c4b42dd",
+        "startedAt": "2026-11-09T01:41:46.334Z",
+        "submitCalls": 1,
+        "sourceId": "5e6ac3a3cbe84537a59bdfc7d6ca11f4",
+        "quote": {
+          "credits": 10,
+          "costCapMicros": 68400
+        },
+        "submitIntentAt": "2026-11-09T01:41:49.996Z",
+        "state": "completed",
+        "providerStatus": "COMPLETED",
+        "providerId": "d9d9f133-2e4c-4414-8717-75a19811fb0e-u2",
+        "executionMs": "136493",
+        "delayMs": "17",
+        "estimatedCostMicros": 50140,
+        "durationSeconds": 44,
+        "failure": null,
+        "reservation": {
+          "status": "completed",
+          "actual_cost_micros": "50140"
+        },
+        "audio": {
+          "sha256": "67531f674bab4c66cbc1466394ab282c30754a8c88bde29bc42893be6c98c2ef",
+          "bytes": 8448044,
+          "validation": "PASS"
+        },
+        "anonymousStatus": 503,
+        "anonymousAudioStatus": 404,
+        "privacy": "PASS"
+      }
+    ],
+    "operatorCapBaselineMicros": 0,
+    "beforeTest": {
+      "available": 10,
+      "reserved": 0
+    },
+    "beforeLive": {
+      "available": 0,
+      "reserved": 0
+    },
+    "readiness": [
+      {
+        "at": "2026-11-09T01:41:44.452Z",
+        "available": true,
+        "signedIn": true
+      }
+    ],
+    "afterTest": {
+      "available": 0,
+      "reserved": 0
+    },
+    "afterLive": {
+      "available": 0,
+      "reserved": 0
+    },
+    "finishedAt": "2026-11-09T01:44:22.565Z"
+  },
+  "idleShutdown": true,
+  "remoteGuardianStopped": true
+}

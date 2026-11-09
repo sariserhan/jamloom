@@ -1,0 +1,12 @@
+import {readFile} from 'node:fs/promises';
+import '../apps/site/scripts/env';
+import {writeFile} from 'node:fs/promises';
+const read=async(name:string)=>JSON.parse(await readFile(new URL(name,import.meta.url),'utf8'));
+const save=async(name:string,data:any)=>writeFile(new URL(name,import.meta.url),JSON.stringify(data,null,2),{mode:0o600});
+import assert from 'node:assert/strict';
+const observation=await read('style-observation-private.json'),ids=new Set(observation.workers.map((w:any)=>w.id));
+const started=Date.parse((await read('style-control-intent.json')).startedAt);
+const params=new URLSearchParams({bucketSize:'hour',grouping:'podId',startTime:new Date(Math.floor(started/3600000)*3600000).toISOString(),endTime:new Date().toISOString()});
+const r=await fetch('https://rest.runpod.io/v1/billing/endpoints?'+params,{headers:{Authorization:'Bearer '+process.env.RUNPOD_API_KEY},signal:AbortSignal.timeout(20000)});assert(r.ok,'Billing HTTP '+r.status);const all=await r.json();assert(Array.isArray(all));
+const rows=all.filter((row:any)=>ids.has(row.podId)),reported=new Set(rows.map((x:any)=>x.podId));
+const result={status:'PROVISIONAL',at:new Date().toISOString(),scope:'All exact worker IDs observed during active-worker qualification, including startup and idle; $0.75 current cycle cap, $1.75 aggregate reserved ceiling',rows,notYetReported:[...ids].filter(id=>!reported.has(id)),reportedUSD:rows.reduce((sum:number,row:any)=>sum+Number(row.amount),0),finalInvoice:false,missingRowsAreNotZero:true,mutations:false};await save('provider-billing.json',result);console.log(JSON.stringify({status:result.status,reportedWorkers:reported.size,pendingWorkers:result.notYetReported.length,reportedUSD:result.reportedUSD}));

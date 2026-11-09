@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "serviceActive": false,
+  "enabledMarker": false,
+  "permitConfigured": false,
+  "productionEnvironmentRestoredByteForByte": true,
+  "guardianSource": "3849153a01bba5b751c66fb48df4195becd60016"
+}

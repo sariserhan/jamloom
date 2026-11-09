@@ -1,3 +1,5 @@
+**Subsequent execution:** the owner approved private staging and the concrete $0.75 plan. Its one-request run and cleanup passed; the permit is consumed. [Final preparation and remaining gates](../final-preparation-20261108/report.md) supersede the historical prepared/unapproved status below.
+
 # Release recovery — November 8, 2026
 
 **PASS recovered evidence, local resilience changes and current shutdown checks; PARTIAL release.** The approved November 2 continuation already ran. Its permit is now correctly marked **CONSUMED**, not pending approval. No new paid execution, deployment, Git push, customer charge or Apple submission occurred in this recovery.

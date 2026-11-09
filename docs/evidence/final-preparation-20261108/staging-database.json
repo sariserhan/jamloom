@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T01:23:40.937Z",
+  "database": "jamloom_stage_20261108",
+  "migrations": 34,
+  "repeatApply": "NO_OP",
+  "productionCountsUnchanged": true,
+  "customerRowsCopied": 0,
+  "syntheticTestCredits": 10,
+  "liveCredits": 0,
+  "providerOperations": 0
+}

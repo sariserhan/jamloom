@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T01:32:04.814Z",
+  "deployment": "https://jamloom-d0tx2fs69-ssari.vercel.app",
+  "protectionStatus": 302,
+  "authenticatedAccount": true,
+  "syntheticLedgerOnly": true,
+  "available": false,
+  "capacityCycles": 0,
+  "generationSubmissions": 0,
+  "publicAliasAssigned": false
+}

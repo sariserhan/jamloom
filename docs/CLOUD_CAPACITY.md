@@ -1,6 +1,6 @@
 # Bounded song preparation
 
-Implementation `1e811c05`; readiness/emergency-stop repair `37a0d0be`. **PASS deployed with sales/generation held; PARTIAL hosted qualification.** The initial check and its approved continuation are consumed. The continuation delivered Music DNA, then Improvise failed during a guardian monitoring-error/shutdown sequence; cleanup and current zero-worker checks pass. Local commit `3849153a` adds one GET retry within the existing eight-second deadline and sanitized guardian error diagnostics, with no PATCH retry or weaker shutdown gate. It is not deployed. [Current evidence and fresh one-request proposal](evidence/release-recovery-20261108/report.md). An empty `JAMLOOM_CLOUD_CAPACITY_PERMIT` cannot start a worker; no ongoing permit is configured.
+Implementation `1e811c05`; readiness repair `37a0d0be`; guardian resilience `3849153a`; single-product review recovery `9932696f`. **PASS ordinary lifecycle on private staging; PARTIAL operating/release qualification.** One private 44-second Improvise song delivered, credit/privacy checks and automatic idle shutdown passed, and independent cleanup confirms workers 0/0. The protected candidates and temporary database are retired; the updated guardian remains installed but inactive with its production configuration restored. The public alias is unchanged. The one-cycle/$0.75 permit is consumed. [Current evidence](evidence/final-preparation-20261108/report.md).
 
 Signed-in customers with enough spendable credits can explicitly select **Prepare song creation** in Music DNA or Improvise on the web, mobile web and native iPhone app. Browsing, availability refresh and recovery never start a GPU. Preparation uploads no recording, creates no song and holds no customer credits. Generation still requires the normal price/consent confirmation. Preparation is operator-funded; it is not free infrastructure or proof that the credit catalog is profitable.
 
@@ -41,12 +41,12 @@ If ready capacity returns to initializing without admitted jobs, the cycle retur
 
 ## Release order
 
-1. The owner will push reviewed main; do not push on their behalf. Production migration 0034 and its backup/hash checks are complete. Direct CLI deployment was separately authorized and completed; hosted Git CI still follows the owner's push.
-2. Publish/verify an image containing any desired worker optimization separately. The current application pin remains unchanged; local ranking speedups are not hosted evidence.
-3. The repaired candidate is deployed with sales held and no demand permit. The independently supervised watchdog is installed and verified on the existing headless server, inactive with no permit. [Service operations](../ops/capacity-watchdog/README.md). The authenticated shutdown route passes on the deployed candidate.
-4. Prepare an exact, separately approved finite private qualification permit. Verify off → preparing → ready → delivery → idle/expiry → independently confirmed zero workers, including lost-response/crash recovery. Do not reuse a consumed diagnostic permit.
-5. Reconcile attributable startup, idle, failed work, execution, storage and fees against the unchanged catalog. Keep cost qualification unset until the evidence passes. AI DJ capacity/economics is separate; do not reopen the owner-closed endurance study.
-6. Build 39 contains the preparation controls, is VALID and selected in the unsubmitted review draft. Finish funded App Review and existing Stripe activation only after the release gates pass. Apple approval and public availability remain external steps.
+1. Preserve the owner's Git-push control and public-deployment-last instruction. Necessary production migration 0034, backup/hash checks and build-39 upload are complete. Private staging is authorized.
+2. The private candidate and independent guardian have passed ordinary preparation → delivery → idle shutdown, with no monitored errors. GET recovery and lost-response/crash/configuration recovery have local test evidence; the successful ordinary run is not hosted fault injection.
+3. Reconcile complete attributable startup, idle, failed work, execution, storage and operational costs against the unchanged catalog. Keep cost qualification unset until the evidence passes. AI DJ economics is separate; the owner-closed endurance study stays closed.
+4. Obtain the separate concrete review-capacity funding authorization, verify reviewer access for the finite period and finalize the existing Apple draft. The prepared seven-day/$7.50 proposal is not authorized and cannot reuse the consumed diagnostic.
+5. Complete Apple submission/approval and qualified existing Stripe activation under the release authorization. Report Apple submission, approval and public availability separately. Build 39 is VALID and selected; release remains MANUAL.
+6. Perform public deployment/release last, after applicable readiness/provider/economic gates pass. Never promote a temporary diagnostic with its synthetic database or expired permit.
 
 For rollback, disable new generation and purchases first; retain the shutdown process, cron and provider/database credentials until the ledger and live provider both show no work. Existing results/downloads remain accessible. Removing the permit is not a substitute for verifying shutdown.
 

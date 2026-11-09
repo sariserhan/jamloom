@@ -1,6 +1,13 @@
-# Current unfinished work — updated 2026-11-02
+# Current unfinished work — updated 2026-11-08
 
-Local implementation and testing of bounded song preparation are complete on `main`; nothing was pushed. See [current evidence and exact external gates](evidence/local-release-20261102/report.md) and the [ordered release handoff](CLOUD_CAPACITY.md). Full release remains PARTIAL: hosted lifecycle/runtime/cost qualification, production deployment/migration, final sales activation and Apple review/release remain. Previously closed studies and deferred v1 research stay closed/deferred.
+**PARTIAL release.** Private Improvise delivery, credit/privacy checks, automatic idle shutdown, independent cleanup and build-39 physical-iPhone checks now pass. The $0.75 permit is consumed; no retry is authorized. Public deployment remains unchanged and must be last. [Current evidence](evidence/final-preparation-20261108/report.md).
+
+- Complete attributable operating economics. The observed worker has no posted billing row; execution estimates omit unallocated startup/idle/failure and recurring overhead. Keep cost qualification unset. AI DJ's separate per-minute economics is also unqualified.
+- Fund and verify bounded reviewer access after the gates pass. Final instructions and a $7.50/seven-day review proposal are prepared, not activated or authorized for spending.
+- Finalize/submit the existing five-item Apple draft and obtain provider approval. Build 39 is VALID and selected; release remains manual.
+- Activate the qualified existing payment products and perform public deployment/release last. The owner retains Git-push control.
+
+Previously closed studies and deferred v1 scoring, training and formal measurements stay closed/deferred. Migration 0034, the successful ordinary hosted lifecycle and scoped physical-device checks are no longer pending implementation tasks. [Release order](CLOUD_CAPACITY.md).
 
 ## Historical scope and evidence
 
