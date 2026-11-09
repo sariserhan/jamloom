@@ -34,5 +34,12 @@
     "siteTests": 242,
     "typecheck": "PASS",
     "productionBuild": "PASS"
-  }
+  },
+  "uniqueChecksBeforeImage": 258,
+  "focusedRechecksAlreadyIncludedInSiteSuite": [
+    "operating",
+    "operations"
+  ],
+  "imageChecks": 15,
+  "totalDistinctChecks": 273
 }

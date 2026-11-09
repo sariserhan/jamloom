@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "sourceCommit": "2b443f5cbf53276b7c5544f08b83513a3a19a345",
+  "deployment": {
+    "id": "dpl_6hDvuWcaKN2QfoAStR1iReSQd7Rh",
+    "url": "https://jamloom-o53nzpz2n-ssari.vercel.app",
+    "readyState": "READY"
+  },
+  "publicURL": "https://www.jamloom.com",
+  "previousDeployment": "dpl_AhCnzGTJ8azFRW3e8n8rCnr8YD9n",
+  "promotedAfterValidation": true,
+  "permitChanged": false,
+  "workerImageChanged": false,
+  "gitPushed": false,
+  "at": 1794202211.9126248
+}

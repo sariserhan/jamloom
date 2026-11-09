@@ -36,3 +36,8 @@ The candidate is retained at `build-identity-preload-20261108/source`; the repro
 4. After economics/provider gates pass, activate the existing qualified payment/generation settings, complete deployed smoke checks and perform public release last. iOS public availability additionally requires Apple's approval.
 
 The earlier funded reviewer flow, physical-device checks, signed sandbox payment evidence and successful delivery receipts remain valid within their recorded scopes. No closed listening/endurance study was restarted and no deferred v1 research was reopened.
+
+
+## Later CPU image follow-through — November 9
+
+The retained isolated candidate has now completed a Linux image build on the existing headless CPU server, with exact runtime/context hashes and 15 in-image fixture checks passing. [Current image evidence](../final-audit-20261108/worker-image.json). It remains unpublished and disabled; actual CUDA throughput/memory/audio comparison and representative 65% operating economics are unproven. The earlier prices and release holds above describe that historical checkpoint; [current launch and funding status](../final-audit-20261108/report.md) supersedes them. No hypothetical optimization savings are counted.

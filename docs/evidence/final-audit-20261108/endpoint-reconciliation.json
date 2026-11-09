@@ -1,6 +1,6 @@
 {
   "status": "PASS posted endpoint-to-worker reconciliation; PARTIAL final operating qualification",
-  "at": "2026-11-09T04:51:46.538Z",
+  "at": "2026-11-09T05:32:05.706Z",
   "reports": [
     {
       "id": "dna-and-failed-improvise",
@@ -70,7 +70,7 @@
       "id": "review-two-cycles",
       "window": {
         "startTime": "2026-11-09T02:00:00.000Z",
-        "endTime": "2026-11-09T04:51:44.907Z"
+        "endTime": "2026-11-09T05:32:03.965Z"
       },
       "endpointId": "jl77hn92npt65k",
       "endpointRows": [

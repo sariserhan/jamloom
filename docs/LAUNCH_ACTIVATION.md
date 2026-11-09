@@ -1,13 +1,15 @@
-# Launch and operations — current November 8, 2026
+# Launch and operations — current November 9, 2026
 
-**PASS public web release and deployed protections; PARTIAL iOS release and measured economics.** Source `054b8a8c` is READY at **https://www.jamloom.com**. [Current evidence](evidence/operations-20261108/report.md).
+**PASS public web release and deployed protections; PARTIAL iOS release and measured economics.** Source `2b443f5c` is READY at **https://www.jamloom.com**. [Current evidence](evidence/final-audit-20261108/report.md).
+
+**Identified engineering work for this audit is complete.** The monitor now remains reachable during maintenance, warm joins preserve the upload window within the fixed lease, the guardian checks unrecorded workers, and the runtime dependency audit is clear. [Validation and rollout](evidence/final-audit-20261108/report.md).
 
 ## Current service
 
 - Public Music DNA and Improvise generation use explicit preparation, private-by-default delivery, fixed credit prices and the existing finite allowance. Creator is $35/300 and optional top-ups are $20/150; paid credits never expire.
 - The first web Creator payment grants credits normally; future Stripe collections pause with no automatic resume or catch-up billing. Account/pricing/Checkout disclose this. Recovery, refunds and cancellation remain available. Real Stripe test-clock renewal and existing draft protection pass; no real customer charge was made.
 - The existing live product/price/webhook are active. Invoice creation/finalization events are enabled alongside the original event list. Public checkout, actual Stripe webhook delivery and Chromium/WebKit phone/desktop checks pass.
-- Operating alerts reach the privately configured owner address. Vercel's authenticated five-minute monitor and an independent headless-server timer are installed; the latter has executed automatically. Both can pause related Creator collections, neither can start a GPU or renew funding.
+- Operating alerts reach the privately configured owner address. Vercel's authenticated five-minute monitor and an independent headless-server timer are installed; both have been observed executing automatically. Both can pause related Creator collections, neither can start a GPU or renew funding.
 - Trial credits remain unfunded. AI DJ generation and paid courses/Pro launches remain separately held. Previously deferred scoring, learned planner and formal measurements remain deferred.
 
 ## Funding and economics
@@ -20,7 +22,7 @@ The **65% target remains unqualified**. Posted provider charges reconcile, but s
 
 ## iOS
 
-Build **40**, version **0.11.0**, remains VALID and **WAITING_FOR_REVIEW**, with release **MANUAL**, verified again at 04:40 UTC November 9. Existing physical-device and actual StoreKit $35/$20 evidence remains valid for its recorded scope. Apple approval cannot be marked complete in advance.
+The last iOS readback at 04:40 UTC November 9 recorded build **40**, version **0.11.0**, VALID and **WAITING_FOR_REVIEW**, with release **MANUAL**. This engineering audit did not change or recheck that external review state. Existing physical-device and actual StoreKit $35/$20 evidence remains valid for its recorded scope. Apple approval cannot be marked complete in advance.
 
 Before manual distribution, confirm approval, funded availability and the native renewal policy. Stripe collection pauses do not pause Apple subscriptions. Do not advertise public iPhone availability before actual release.
 
@@ -28,7 +30,7 @@ Before manual distribution, confirm approval, funded availability and the native
 
 Keep the independent guardian and operating monitor active if new generation is disabled. Close new purchases/generation when required, preserving paid credits, private downloads, refunds/cancellation and webhook recovery. Keep renewal collections paused until a separately reviewed resumption; never automatically collect skipped months. The previous public deployment is retained, but rolling back code does not authorize an old permit or remove the need for renewal protection.
 
-No Git push or extra paid compute occurred. [Implementation, tests, deployment and cleanup receipts](evidence/operations-20261108/report.md).
+No Git push or extra paid compute occurred. [Implementation, tests, deployment and cleanup receipts](evidence/final-audit-20261108/report.md).
 
 <details>
 <summary>Historical launch checkpoints — superseded by the current status above</summary>

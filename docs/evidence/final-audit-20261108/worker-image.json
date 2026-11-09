@@ -1,0 +1,43 @@
+{
+  "status": "PASS Linux CPU image build and fixture verification",
+  "imageID": "sha256:c0620e79ea072dcce42922d5f946fa5665b02991b56d8587df42e209a230a53a",
+  "imageBytes": 27195020920,
+  "architecture": "amd64",
+  "os": "linux",
+  "runtimeChecks": {
+    "status": "PASS",
+    "python": "3.12.15",
+    "tests": 15,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "runtimeSHA256": {
+      "scripts/generation_timing.py": "c338321c20352779fbcd030085bcbaaeffebccecf08e965b8e82c642a2ef3011",
+      "scripts/singer_studio.py": "03430f1eb0a55e8398b6661dd3e0f6edc6b0e1dddf095f40eca44bd7a9b99f62",
+      "scripts/vocal_identity.py": "d38466cedc8a8ce2ec85f75135199f72b73450358ed57ba2b431d9cc88abe129"
+    },
+    "realGPUInference": false
+  },
+  "network": "disabled",
+  "gpuDevices": 0,
+  "containerRemoved": true,
+  "temporaryTestDirectoryRemovedOnExit": true,
+  "imagePublished": false,
+  "liveEndpointChanged": false,
+  "candidateEnabled": false,
+  "candidateCommit": "bf57ca04830843c1b554e0c611c188fcbf405dee",
+  "baseInputValidation": {
+    "status": "PASS",
+    "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
+    "unchangedInputs": 37,
+    "runtimeFiles": 3
+  },
+  "archiveSHA256": "bda7285afc184f792828fc3ebca332d0d41442c65fca3b810787f042a3d83b51",
+  "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
+  "testSHA256": {
+    "tests/test_identity_preload.py": "8f30270410a8cb5f0e2798fd043822f3eba6a954968603fbade4d9276d21afca",
+    "tests/test_generation_timing.py": "5eca2e6bb947e35efe4688726343e5826d42fce435a8d87b3f13ad74a97d80dd"
+  },
+  "at": "2026-11-09T05:30:00.532149+00:00",
+  "buildLogSHA256": "cef0b29930c581290299534c4141214281e3c449b363785522552176a67a0d8c"
+}

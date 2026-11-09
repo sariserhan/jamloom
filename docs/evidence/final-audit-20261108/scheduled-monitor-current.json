@@ -1,0 +1,37 @@
+{
+  "status": "PASS registration on promoted deployment",
+  "productionDeployment": "dpl_6hDvuWcaKN2QfoAStR1iReSQd7Rh",
+  "crons": {
+    "enabledAt": 1792452292735,
+    "disabledAt": null,
+    "updatedAt": 1794202208458,
+    "deploymentId": "dpl_6hDvuWcaKN2QfoAStR1iReSQd7Rh",
+    "definitions": [
+      {
+        "host": "jamloom-o53nzpz2n-ssari.vercel.app",
+        "path": "/api/ai-dj/supervisor",
+        "schedule": "* * * * *"
+      },
+      {
+        "host": "jamloom-o53nzpz2n-ssari.vercel.app",
+        "path": "/api/maintenance",
+        "schedule": "0 * * * *"
+      },
+      {
+        "host": "jamloom-o53nzpz2n-ssari.vercel.app",
+        "path": "/api/notifications",
+        "schedule": "*/5 * * * *"
+      },
+      {
+        "host": "jamloom-o53nzpz2n-ssari.vercel.app",
+        "path": "/api/operations",
+        "schedule": "*/5 * * * *"
+      },
+      {
+        "host": "jamloom-o53nzpz2n-ssari.vercel.app",
+        "path": "/api/song-jobs",
+        "schedule": "* * * * *"
+      }
+    ]
+  }
+}

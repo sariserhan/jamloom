@@ -30,11 +30,20 @@ const configuredLocalCaps=Object.fromEntries((['improvise','music-dna'] as const
 }));
 const records=trials.flatMap(t=>t.requests.map((r:any)=>({...r,path:t.path,image:t.image})));
 const stats=products.map(p=>{const rows=records.filter((r:any)=>r.product===p.product),completed=rows.filter((r:any)=>r.state==='completed');return {product:p.product,requests:rows.length,completed:completed.length,unsuccessful:rows.length-completed.length,estimatedSuccessfulMicros:completed.length?{min:Math.min(...completed.map((r:any)=>r.estimatedCostMicros)),max:Math.max(...completed.map((r:any)=>r.estimatedCostMicros))}:null};});
-const deployedPath='docs/evidence/release-completion-20261101/deployed-generation-result.json';
-let deployedQualification:{status:string;path:string;sha256?:string}={status:'NOT RUN',path:deployedPath};
-try{const bytes=await readFile(resolve(root,deployedPath)),result=JSON.parse(bytes.toString());deployedQualification={status:result.status??'UNKNOWN',path:deployedPath,sha256:createHash('sha256').update(bytes).digest('hex')};}catch(error){if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error;}
+const deployedHistory:{status:string;path:string;sha256?:string;scope:string}[]=[];
+for(const [path,scope] of [
+ ['docs/evidence/release-completion-20261101/deployed-generation-result.json','Historical stopped hosted check; preserved failure evidence'],
+ ['docs/evidence/final-preparation-20261108/style-http-result.json','One private staged Improvise delivery; test credits, not customer economics'],
+ ['docs/evidence/review-phase-20261108/live-check-result.json','One private Improvise delivery on the review backend, with test settlement and idle shutdown; not full cost qualification'],
+]){
+ const entry:{status:string;path:string;sha256?:string;scope:string}={status:'NOT RUN',path,scope};
+ try{const bytes=await readFile(resolve(root,path)),result=JSON.parse(bytes.toString());entry.status=result.status??'UNKNOWN';entry.sha256=createHash('sha256').update(bytes).digest('hex');}
+ catch(error){if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error;}
+ deployedHistory.push(entry);
+}
+const deployedQualification=deployedHistory.at(-1)!;
 console.log(JSON.stringify({at:new Date().toISOString(),status:checks.every(c=>c.fitsPublishedBudget)?'PARTIAL_PROVIDER_COSTS':'FAIL_CAP_COMPATIBILITY',catalog:CREDIT_CATALOG_VERSION,products,checks,configuredLocalCaps,historicalStats:stats,trials,
- deployedQualification,
+ deployedQualification,deployedHistory,
  qualification:'PARTIAL: bounded public launch is authorized; representative complete-cost qualification remains unproven',providerCosts:'Read the independently retained provider billing report; these job estimates are not invoices',
  missing:['Finalized allocation of cold start, idle, failed work and cancellations by worker version','Representative measured utilization and overhead versus recorded conservative allowances',...(deployedQualification.status==='PASS'?[]:['Deployed generation under the reviewed production caps']),'AI DJ capacity and operating-cost qualification at the unchanged catalog'],
  next:'The bounded public launch operates under its separately approved finite permit. Reconcile whole-cycle billing and actual utilization against docs/LAUNCH_ACTIVATION.md and docs/evidence/final-audit-20261108/report.md before any funding renewal or qualification change; catalog compatibility alone is not qualification.',paidCompute:false,priceChanges:false,qualificationEnabled:false},null,2));

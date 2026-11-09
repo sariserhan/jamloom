@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "capacityService": "active",
+  "operationsTimer": "active",
+  "guardianChecks": [
+    {
+      "at": "2026-11-09T05:31:43.230Z",
+      "state": "off"
+    },
+    {
+      "at": "2026-11-09T05:31:54.635Z",
+      "state": "off"
+    }
+  ],
+  "lastAutomaticMonitor": {
+    "at": "2026-11-09T05:27:54.648Z",
+    "snapshot": {
+      "now": 1794202073007,
+      "expiresAt": 1794800997659,
+      "remainingMicros": 10000000,
+      "cycleMicros": 750000,
+      "guardianOK": true,
+      "shutdownFailed": false,
+      "providerMismatch": false,
+      "workers": 0,
+      "liveFailures": 0,
+      "overdueCleanup": 0
+    },
+    "renewals": {
+      "checked": 0,
+      "protected": 0
+    },
+    "alerts": [],
+    "deliveries": []
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-09T04:52:59.750Z",
+  "at": "2026-11-09T05:07:00.263Z",
   "status": "PARTIAL_PROVIDER_COSTS",
   "catalog": "2026-11-08-v3",
   "products": [
@@ -496,16 +496,36 @@
     }
   ],
   "deployedQualification": {
-    "status": "FAIL",
-    "path": "docs/evidence/release-completion-20261101/deployed-generation-result.json",
-    "sha256": "078b3040ea53c3f8db0f8d36a638919ce06ead505833e96e9e57cad81be51ec0"
+    "status": "PASS",
+    "path": "docs/evidence/review-phase-20261108/live-check-result.json",
+    "scope": "One private Improvise delivery on the review backend, with test settlement and idle shutdown; not full cost qualification",
+    "sha256": "d6777a086bd36afa9320ae5cacb9f309c71412ee25be65b96f6e59ac4f4afefd"
   },
+  "deployedHistory": [
+    {
+      "status": "FAIL",
+      "path": "docs/evidence/release-completion-20261101/deployed-generation-result.json",
+      "scope": "Historical stopped hosted check; preserved failure evidence",
+      "sha256": "078b3040ea53c3f8db0f8d36a638919ce06ead505833e96e9e57cad81be51ec0"
+    },
+    {
+      "status": "PASS",
+      "path": "docs/evidence/final-preparation-20261108/style-http-result.json",
+      "scope": "One private staged Improvise delivery; test credits, not customer economics",
+      "sha256": "dee2d7eb4cfe0081e9acd459ec88f6d77440a3b712dc7579711c14e588e8c8c8"
+    },
+    {
+      "status": "PASS",
+      "path": "docs/evidence/review-phase-20261108/live-check-result.json",
+      "scope": "One private Improvise delivery on the review backend, with test settlement and idle shutdown; not full cost qualification",
+      "sha256": "d6777a086bd36afa9320ae5cacb9f309c71412ee25be65b96f6e59ac4f4afefd"
+    }
+  ],
   "qualification": "PARTIAL: bounded public launch is authorized; representative complete-cost qualification remains unproven",
   "providerCosts": "Read the independently retained provider billing report; these job estimates are not invoices",
   "missing": [
     "Finalized allocation of cold start, idle, failed work and cancellations by worker version",
     "Representative measured utilization and overhead versus recorded conservative allowances",
-    "Deployed generation under the reviewed production caps",
     "AI DJ capacity and operating-cost qualification at the unchanged catalog"
   ],
   "next": "The bounded public launch operates under its separately approved finite permit. Reconcile whole-cycle billing and actual utilization against docs/LAUNCH_ACTIVATION.md and docs/evidence/final-audit-20261108/report.md before any funding renewal or qualification change; catalog compatibility alone is not qualification.",
