@@ -9,15 +9,39 @@ import {hasReadySongWorker} from './cloud-readiness';
 type Cycle={id:string;permit_id:string;endpoint:string;image:string;starts_at:bigint;expires_at:bigint;cap_micros:bigint;state:string;ready_at:bigint|null;busy_at:bigint|null;reason:string|null};
 export type CapacityState='off'|'preparing'|'ready'|'stopping'|'unavailable';
 export type CapacityProvider={endpoint:()=>Promise<any>;catalog:()=>Promise<any>;health:()=>Promise<any>;setWorkers:(count:0|1)=>Promise<any>};
+class CapacityProviderError extends Error{
+ constructor(readonly operation:'endpoint'|'catalog'|'health'|'activate'|'stop',readonly kind:'http'|'timeout'|'transport'|'response',readonly status?:number){super('Capacity provider unavailable');}
+}
+// Never log raw provider/database messages: they can contain URLs or credentials.
+export function capacityFailureDiagnostic(error:unknown){
+ if(error instanceof CapacityProviderError)return {source:'provider',operation:error.operation,kind:error.kind,...(error.status===undefined?{}:{status:error.status})};
+ const code=error&&typeof error==='object'&&'code' in error?error.code:undefined;
+ if(typeof code==='string'&&['08000','08003','08006','08001','08004','40001','40P01','53300','53400','57014','57P01','57P02','57P03','ECONNRESET','ECONNREFUSED','ETIMEDOUT','EPIPE','ENOTFOUND','EAI_AGAIN'].includes(code))return {source:'database-or-network',code};
+ return {source:'unknown'};
+}
 export function capacityProvider(key:string,endpoint:string,request:typeof fetch=fetch):CapacityProvider{
- async function api(url:string,count?:0|1){
-  const response=await request(url,{method:count===undefined?'GET':'PATCH',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},
-   ...(count===undefined?{}:{body:JSON.stringify({workers:{min:count,max:count}})}),redirect:'error',signal:AbortSignal.timeout(8000)});
-  if(!response.ok){await response.body?.cancel();throw Error('Capacity provider unavailable');}
-  return JSON.parse((await readBody(response.body,1024*1024)).toString());
+ async function api(url:string,operation:CapacityProviderError['operation'],count?:0|1){
+  // Both GET attempts share the original deadline. Mutations are never retried.
+  const signal=AbortSignal.timeout(8000);
+  for(let attempt=0;;attempt++){
+   let response:Response;
+   try{response=await request(url,{method:count===undefined?'GET':'PATCH',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},
+    ...(count===undefined?{}:{body:JSON.stringify({workers:{min:count,max:count}})}),redirect:'error',signal});}
+   catch{
+    if(count===undefined&&attempt===0&&!signal.aborted)continue;
+    throw new CapacityProviderError(operation,signal.aborted?'timeout':'transport');
+   }
+   if(!response.ok){
+    await response.body?.cancel().catch(()=>{});
+    if(count===undefined&&attempt===0&&!signal.aborted&&[502,503,504].includes(response.status))continue;
+    throw new CapacityProviderError(operation,'http',response.status);
+   }
+   try{return JSON.parse((await readBody(response.body,1024*1024)).toString());}
+   catch{throw new CapacityProviderError(operation,signal.aborted?'timeout':'response');}
+  }
  }
- return {endpoint:()=>api('https://api.runpod.io/v2/serverless/'+endpoint),catalog:()=>api('https://api.runpod.io/v2/catalog/gpus'),
-  health:()=>api('https://api.runpod.ai/v2/'+endpoint+'/health'),setWorkers:n=>api('https://api.runpod.io/v2/serverless/'+endpoint,n)};
+ return {endpoint:()=>api('https://api.runpod.io/v2/serverless/'+endpoint,'endpoint'),catalog:()=>api('https://api.runpod.io/v2/catalog/gpus','catalog'),
+  health:()=>api('https://api.runpod.ai/v2/'+endpoint+'/health','health'),setWorkers:n=>api('https://api.runpod.io/v2/serverless/'+endpoint,n?'activate':'stop',n)};
 }
 const lease=(r:Cycle):ActiveWorkerLease=>({startsAt:Number(r.starts_at),expiresAt:Number(r.expires_at),maxMicros:Number(r.cap_micros)});
 const empty=(h:any)=>h?.jobs?.inQueue===0&&h?.jobs?.inProgress===0&&h.workers&&
