@@ -8,7 +8,7 @@ import {gpuRevenueBalance,gpuRevenueEnabled,runpodBalanceMicros,settleGpuProceed
 import {creditBilling} from './stripe-payments';
 
 export const operationMessages={
- 'provider-autopay-mismatch':'Runpod auto-pay no longer matches the owner-approved cash buffer: enabled, $50 per reload, below $5. Inspect Billing. Deposits do not increase the 20% GPU usage allowance.',
+ 'provider-autopay-mismatch':'Runpod auto-pay no longer matches the owner-approved cash buffer: enabled, $25 per reload, below $10. Inspect Billing. Deposits do not increase the 20% GPU usage allowance.',
  'provider-recharge-ready':'Settled revenue can cover a $10 provider recharge and prepaid capacity is low. Review Runpod Billing and replenish within the recorded revenue-backed shortfall. Native auto-pay is not revenue-capped; do not enable an unbounded reload.',
  'apple-finance-read-failed':'The scheduled Apple financial report read failed. Check the report credential, vendor and service logs. No unverified proceeds were added to GPU funding.',
  'apple-finance-review':'An Apple financial report changed or a live refund requires reconciliation. Apple GPU funding is held pending verified payment/refund evidence.',

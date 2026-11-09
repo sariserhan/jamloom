@@ -22,21 +22,21 @@ test('transport failure remains a failure; missing address never silently sends 
  await assert.rejects(sendOperationAlert('test',{JAMLOOM_OPERATIONS_EMAIL:'owner@example.test',EMAIL_FROM:'ops@example.test',RESEND_API_KEY:'test'},async()=>new Response(null,{status:500})),/500/);
 });
 test('approved native reload suppresses manual recharge reminders without increasing funded capacity',()=>{
- const s={...healthy,revenueMicros:15000000,providerMicros:1000000,providerAutoPay:{enabled:true,amountUSD:50,thresholdUSD:5,matchesApprovedPolicy:true}};
+ const s={...healthy,revenueMicros:15000000,providerMicros:1000000,providerAutoPay:{enabled:true,amountUSD:25,thresholdUSD:10,matchesApprovedPolicy:true}};
  assert.deepEqual(operationAlerts(s),[]);
  assert.deepEqual(operationAlerts({...s,remainingMicros:0}),['budget-unavailable']);
  assert.deepEqual(operationAlerts({...s,providerAutoPay:{...s.providerAutoPay,thresholdUSD:100,matchesApprovedPolicy:false}}),['provider-autopay-mismatch']);
  const {providerAutoPay,...manual}=s;assert.deepEqual(operationAlerts(manual),['provider-recharge-ready']);
 });
 test('native reload verification reads exact approved settings and refuses malformed or failed evidence',async()=>{
- const env={JAMLOOM_PROVIDER_AUTO_PAY_POLICY:'50-below-5',RUNPOD_API_KEY:'test'};let calls=0;
- const request:any=async(url:string,options:RequestInit)=>{calls++;assert.equal(url,'https://api.runpod.io/graphql');assert.match(String(options.body),/query/);assert.doesNotMatch(String(options.body),/mutation/);return Response.json({data:{myself:{isAutoPayEnabled:true,stripeAutoReloadAmount:50,stripeAutoPaymentThreshold:5}}});};
+ const env={JAMLOOM_PROVIDER_AUTO_PAY_POLICY:'25-below-10',RUNPOD_API_KEY:'test'};let calls=0;
+ const request:any=async(url:string,options:RequestInit)=>{calls++;assert.equal(url,'https://api.runpod.io/graphql');assert.match(String(options.body),/query/);assert.doesNotMatch(String(options.body),/mutation/);return Response.json({data:{myself:{isAutoPayEnabled:true,stripeAutoReloadAmount:25,stripeAutoPaymentThreshold:10}}});};
  assert.equal(await inspectProviderAutoPay({},request),undefined);assert.equal(calls,0);
- assert.deepEqual(await inspectProviderAutoPay(env,request),{enabled:true,amountUSD:50,thresholdUSD:5,matchesApprovedPolicy:true});
- for(const value of [{isAutoPayEnabled:false,stripeAutoReloadAmount:50,stripeAutoPaymentThreshold:5},{isAutoPayEnabled:true,stripeAutoReloadAmount:50,stripeAutoPaymentThreshold:100}]){
+ assert.deepEqual(await inspectProviderAutoPay(env,request),{enabled:true,amountUSD:25,thresholdUSD:10,matchesApprovedPolicy:true});
+ for(const value of [{isAutoPayEnabled:false,stripeAutoReloadAmount:25,stripeAutoPaymentThreshold:10},{isAutoPayEnabled:true,stripeAutoReloadAmount:25,stripeAutoPaymentThreshold:100}]){
   assert.equal((await inspectProviderAutoPay(env,async()=>Response.json({data:{myself:value}})))?.matchesApprovedPolicy,false);
  }
  await assert.rejects(inspectProviderAutoPay(env,async()=>new Response(null,{status:503})),/read failed/);
- await assert.rejects(inspectProviderAutoPay(env,async()=>Response.json({data:{myself:{isAutoPayEnabled:true,stripeAutoReloadAmount:'50',stripeAutoPaymentThreshold:5}}})),/Invalid/);
+ await assert.rejects(inspectProviderAutoPay(env,async()=>Response.json({data:{myself:{isAutoPayEnabled:true,stripeAutoReloadAmount:'25',stripeAutoPaymentThreshold:10}}})),/Invalid/);
  await assert.rejects(inspectProviderAutoPay({...env,JAMLOOM_PROVIDER_AUTO_PAY_POLICY:'unlimited'},request),/Invalid/);
 });
