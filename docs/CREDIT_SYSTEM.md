@@ -53,7 +53,7 @@ Current follow-through ([evidence](evidence/operations-20261108/report.md)):
 1. **PARTIAL economics:** posted endpoint/worker charges reconcile; the 65% target remains unqualified at low volume and for full cycle/lifetime costs. No savings from the unpublished preload candidate are assumed.
 2. **PASS public web activation:** Creator, top-ups and bounded song capacity are live; exact checkout and webhook delivery checks passed without a charge. Renewal protection and delivered operating alerts are deployed.
 3. **PASS submission/device scope; PARTIAL iOS release:** build 40 remains VALID and WAITING_FOR_REVIEW with MANUAL release. Apple approval is external; the two review accounts share the new public $10 permit, not the retired $6 remainder.
-4. **PARTIAL continuing operations:** permit ends November 15 at 10:49:57 p.m. Eastern. No automatic refill. Preserve paid credits, subscription management and receipt recovery if funding stops. Trials and separate AI DJ/course launches remain unfunded/held.
+4. **PASS revenue allocation; PARTIAL cash automation:** 20% of settled net web payment proceeds now funds additional bounded one-L4 cycles. The original seed still ends November 15 at 10:49:57 p.m. Eastern; it is not refilled. Provider recharge, actual Apple settlement funding and Creator renewal qualification remain separate. Paid credits, subscription management and receipt recovery survive funding exhaustion. Trials and separate AI DJ/course launches remain unfunded/held. [Current policy](GPU_REVENUE.md).
 
 ## Validation and reproduction
 

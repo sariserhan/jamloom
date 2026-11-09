@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "removed": "own disposable deploy-source",
+  "sourceCommit": "39f567155235fe8cd59c2e84b20776df55b93714",
+  "bytes": 358549084,
+  "originalRepositoryChanged": false
+}

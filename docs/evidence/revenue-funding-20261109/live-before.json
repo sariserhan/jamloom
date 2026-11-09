@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-09T06:20:16.696Z",
+  "providerCreditUSD": 11.384561,
+  "receipts": [],
+  "permits": [
+    {
+      "id": "release-c62a47bb-92a9-4f5e-ab20-823c79e1ce30",
+      "cap_micros": 7500000,
+      "reserved_micros": 1500000
+    },
+    {
+      "id": "release-7d881927-4bd3-4661-8293-212390007133",
+      "cap_micros": 750000,
+      "reserved_micros": 750000
+    }
+  ],
+  "cycles": [],
+  "mutations": false
+}

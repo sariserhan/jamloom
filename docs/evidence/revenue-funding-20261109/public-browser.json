@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T06:29:50.504Z",
+  "origin": "https://www.jamloom.com",
+  "results": [
+    {
+      "browser": "chromium",
+      "widths": [
+        1280,
+        390
+      ],
+      "liveOffersEnabled": true,
+      "pricesUSD": [
+        35,
+        20
+      ],
+      "unfundedTrialDisabled": true,
+      "comingSoonRemoved": true,
+      "errors": [],
+      "purchasesClicked": 0,
+      "generationRequests": 0
+    },
+    {
+      "browser": "webkit",
+      "widths": [
+        1280,
+        390
+      ],
+      "liveOffersEnabled": true,
+      "pricesUSD": [
+        35,
+        20
+      ],
+      "unfundedTrialDisabled": true,
+      "comingSoonRemoved": true,
+      "errors": [],
+      "purchasesClicked": 0,
+      "generationRequests": 0
+    }
+  ]
+}
