@@ -1,0 +1,111 @@
+{
+  "proceeds": [
+    {
+      "receipts": 0,
+      "settled_receipts": 0,
+      "settled_net_micros": "0"
+    }
+  ],
+  "apple": [],
+  "lots": [
+    {
+      "provider": "stripe_test",
+      "lots": 1,
+      "granted_credits": "30",
+      "recorded_net_micros": "1050000"
+    },
+    {
+      "provider": "apple_sandbox",
+      "lots": 10,
+      "granted_credits": "3000",
+      "recorded_net_micros": "60000000"
+    }
+  ],
+  "songs": [
+    {
+      "product": "music-dna",
+      "billing_live": false,
+      "state": "failed",
+      "jobs": 4,
+      "audio_bytes": "0",
+      "max_audio_bytes": "0"
+    },
+    {
+      "product": "improvise",
+      "billing_live": false,
+      "state": "failed",
+      "jobs": 4,
+      "audio_bytes": "0",
+      "max_audio_bytes": "0"
+    },
+    {
+      "product": "improvise",
+      "billing_live": false,
+      "state": "completed",
+      "jobs": 3,
+      "audio_bytes": "7296044",
+      "max_audio_bytes": "7296044"
+    },
+    {
+      "product": "music-dna",
+      "billing_live": false,
+      "state": "completed",
+      "jobs": 2,
+      "audio_bytes": "0",
+      "max_audio_bytes": "0"
+    }
+  ],
+  "recordings": [],
+  "cycles": [
+    {
+      "endpoint": "jl77hn92npt65k",
+      "starts_at": "1793598412889",
+      "expires_at": "1793600812889",
+      "ready_at": "1793598498637",
+      "stopped_at": "1793598678567",
+      "cap_micros": "1000000",
+      "state": "stopped",
+      "reason": "shutdown-pending"
+    },
+    {
+      "endpoint": "jl77hn92npt65k",
+      "starts_at": "1793599698412",
+      "expires_at": "1793602098412",
+      "ready_at": "1793600661262",
+      "stopped_at": "1793600973892",
+      "cap_micros": "750000",
+      "state": "stopped",
+      "reason": "activation-unconfirmed"
+    },
+    {
+      "endpoint": "jl77hn92npt65k",
+      "starts_at": "1794190172987",
+      "expires_at": "1794192572987",
+      "ready_at": "1794190976575",
+      "stopped_at": "1794191221352",
+      "cap_micros": "750000",
+      "state": "stopped",
+      "reason": "idle"
+    },
+    {
+      "endpoint": "jl77hn92npt65k",
+      "starts_at": "1794191250752",
+      "expires_at": "1794193650752",
+      "ready_at": null,
+      "stopped_at": "1794191252358",
+      "cap_micros": "750000",
+      "state": "stopped",
+      "reason": "configuration-removed"
+    }
+  ],
+  "support": [],
+  "subscriptions": [
+    {
+      "provider": "apple_sandbox",
+      "status": "expired",
+      "subscriptions": 1
+    }
+  ],
+  "at": "2026-11-09T14:45:51.243Z",
+  "mutations": false
+}

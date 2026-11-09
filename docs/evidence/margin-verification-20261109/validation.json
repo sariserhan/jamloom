@@ -1,0 +1,7 @@
+{
+  "calculatorDeterministic": true,
+  "zeroRevenueNotDivided": true,
+  "lowVolumeFails": true,
+  "qualificationAndRenewalsRemainDisabled": true,
+  "privateKeysOrAudioWritten": false
+}

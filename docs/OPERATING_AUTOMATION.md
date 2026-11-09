@@ -25,3 +25,5 @@ Renewal continuation is configured but remains held until the current catalog’
 The live qualification remains `held`. Refreshed posted provider totals still reconcile with zero residual, but the $150/month shared-cost assumption fails the 65% scenario at low volume and full supported lifecycle/retention evidence is still incomplete. A configuration switch cannot supply that evidence. No new qualification GPU request is included in this work.
 
 See [financial follow-through](evidence/finance-followthrough-20261109/report.md) and [Apple reconciliation implementation](evidence/operating-automation-20261109/report.md).
+
+**November 9 margin verification:** [Fresh evidence and explicit closure criteria](evidence/margin-verification-20261109/report.md) confirm no settled customer revenue, reconciled posted endpoint costs and held production renewal continuation. Current conservative 10,000-credit scenarios fail (Improvise 45.34%, DNA 51.87%). Shared expense allocation, lifetime retention funding and representative complete cycles remain open; no qualification flag changed.

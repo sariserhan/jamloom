@@ -1,0 +1,16 @@
+{
+  "JAMLOOM_CREDIT_COST_QUALIFICATION": "held",
+  "JAMLOOM_CREATOR_RENEWALS_ENABLED": "true",
+  "JAMLOOM_GPU_REVENUE_SHARE_BPS": "2000",
+  "JAMLOOM_CLOUD_CAPACITY_PERMIT": {
+    "id": "release-d263e690-0899-4e29-b50d-595464a15539",
+    "startsAt": 1794196197659,
+    "expiresAt": 1794800997659,
+    "capMicros": 10000000,
+    "cycleMicros": 750000,
+    "cycleSeconds": 2400
+  },
+  "JAMLOOM_CLOUD_COST_PROFILE": "l4-2026-11-01",
+  "at": "2026-11-09T14:46:48.729031+00:00",
+  "scope": "Read-only independent operations service configuration; no production setting changed"
+}

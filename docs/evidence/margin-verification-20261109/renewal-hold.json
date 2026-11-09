@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-09T14:48:31.576Z",
+  "status": 200,
+  "renewals": {
+    "checked": 0,
+    "protected": 0,
+    "continuation": {
+      "status": "held",
+      "reason": "economics-or-renewal-configuration",
+      "resumed": 0
+    }
+  },
+  "guardianOK": true,
+  "workers": 0,
+  "remainingSeedMicros": 9750000,
+  "revenueMicros": 0,
+  "providerMicros": 61384561,
+  "alertCount": 0,
+  "scope": "Existing authenticated operating monitor reconciles state; no configuration changed or manual renewal resumed"
+}

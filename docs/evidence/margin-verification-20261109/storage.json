@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-09T14:45:52.836Z",
+  "objects": 167,
+  "bytes": 2874823348,
+  "pages": 1,
+  "groups": {
+    "improvise": {
+      "objects": 57,
+      "bytes": 332738508
+    },
+    "music-dna": {
+      "objects": 110,
+      "bytes": 2542084840
+    }
+  },
+  "lifecycle": {
+    "status": "UNAVAILABLE",
+    "code": "AccessDenied",
+    "httpStatus": 403
+  },
+  "standardStorageTariffUSDPerGBMonth": 0.015,
+  "unroundedMonthlyStorageUSDAtCurrentBytes": 0.04312235022,
+  "scope": "Current bytes only, not historical GB-months, operations, account rounding, free-tier allocation, invoice or future lifetime.",
+  "audioDownloaded": false,
+  "mutations": false
+}
