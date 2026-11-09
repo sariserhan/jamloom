@@ -1,6 +1,6 @@
 # Credits — current implementation, 2026-11-08
 
-The owner approved implementation across web and phone and selected **nonexpiring paid credits everywhere**. Implementation and scoped sandbox checks are complete; live activation remains **PARTIAL** pending the explicit gates below. This supersedes older prepaid-only proposals and the one-month rollover suggestion.
+The owner approved implementation across web and phone and selected **nonexpiring paid credits everywhere**. Public web payments and bounded song capacity are **live** under the explicit November 8 launch exception below; iOS approval and measured economic qualification remain separate. This supersedes older prepaid-only proposals and the one-month rollover suggestion.
 
 | Offer | USD before applicable tax | Credits |
 |---|---:|---:|
@@ -27,6 +27,8 @@ Apple uses a consumable `com.jamloom.credits.topup150` and auto-renewable `com.j
 Catalog-v2 receipts and renewals remain verifiable at their exact original amounts. The current and previous Stripe price IDs are separate environment settings; old subscriptions are not automatically migrated. Pending old Creator checkouts are expired before quoting the current offer. Legacy receipts remain verifiable. Available old credits convert once at **15:1** after old active reservations finish. Historical ledger entries remain immutable. Unspent legacy DJ allowance returns as new credits, rounded up in the customer's favor. Migration 0033 is additive; its default unit version remains 1 for compatibility with old code. New grants explicitly use version 2. The reviewed migration was applied to the verified Neon production target after a private full backup; all 33 migration hashes and a second no-op migration pass match. This does not deploy the new application.
 
 ## Economics and release gates
+
+**Public launch exception, November 8:** After the cost-based hold was explained, the owner instructed “lets do public launch now” and approved **$10 maximum for seven days**. Source `8f5701d0` is publicly deployed; existing Stripe Creator product/price/webhook are active. `JAMLOOM_CREDIT_LAUNCH_APPROVAL=2026-11-08-v3` records this exception separately from the still-unset measured cost qualification. New checkout requires a valid funded permit and fresh matching guardian. The permit ends November 15 at 10:49:57 p.m. Eastern; it does not renew. Thirteen $0.75 cycles maximum; the unused former review allowance is not reused. Existing subscription renewals are unchanged and require operating-budget follow-through. Free trials remain unfunded; iOS build 40 is WAITING_FOR_REVIEW. [Live checks and exact limits](evidence/public-launch-20261108/report.md). The earlier hold statements below describe superseded checkpoints.
 
 **Latest launch audit, November 8:** [Endpoint and worker posted totals reconcile](evidence/launch-audit-20261108/report.md); six DNA-window workers without bills were last observed throttled, rather than confirmed billable work. Assigning the entire posted mixed cohort to its one DNA result gives a 73.29% scenario margin at 30,000 monthly redeemed credits and five-year storage. All three product scenarios fail at 10,000 monthly redeemed credits under the same shared-cost assumption. These remain conditional forecasts; full operating qualification is not enabled. Build 40 is still WAITING_FOR_REVIEW.
 

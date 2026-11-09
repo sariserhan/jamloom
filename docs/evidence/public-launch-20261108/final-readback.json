@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:56:29.790Z",
+  "workers": [
+    0,
+    0
+  ],
+  "queuedJobs": 0,
+  "runningJobs": 0,
+  "guardianMatches": true,
+  "guardianAgeMs": 9833,
+  "newPermitCapUSD": 10,
+  "newPermitReservedUSD": 0,
+  "maximumCycles": 13,
+  "expiresAt": "2026-11-16T03:49:57.659Z",
+  "oldPermitReservedUSD": 1.5,
+  "oldUnusedUSDNotReallocated": 6,
+  "ownerAuthorizedLaunch": true,
+  "costQualified": false,
+  "liveTrialPool": 0,
+  "noPaidVerificationRun": true
+}

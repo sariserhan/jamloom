@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:57:24.928025+00:00",
+  "origin": "https://www.jamloom.com",
+  "deployment": "dpl_6scAZBUzQJsnXqt7FuSj8YDrTtUg",
+  "url": "https://jamloom-m0478ev2y-ssari.vercel.app",
+  "sourceCommit": "8f5701d07c516ff61edb2ed5b68ce6ada3c26ad1",
+  "readyState": "READY",
+  "target": "production",
+  "publicAliasVerifiedByInspect": true,
+  "gitPush": false
+}

@@ -1,0 +1,23 @@
+Jamloom 0.11.0 build 40 provides DJ practice, Singing Academy, Music DNA song creation, and Improvise arrangements from a recording supplied with consent.
+
+Sign in using the App Review credentials in the dedicated account fields. Open Account from Music DNA or Improvise. Purchases and credits are tied to that account. No external web checkout is used in the native app.
+
+Plans and credits:
+- Creator: $35 per month for 300 credits per successful payment period.
+- Top-up: $20 once for 150 credits; no subscription is required.
+- Paid credits never expire, including after cancellation.
+- Improvise costs 10 credits per delivered 30–45-second arrangement. Music DNA costs 20 credits per delivered 100–140-second song. The price is confirmed before creation. Technical failures and cancellations return held credits.
+- Use Restore Apple subscription or Manage Apple subscription on the account screen. Consumable credits use the signed-in server balance; repeat delivery of a transaction cannot grant twice.
+
+Cloud creation:
+1. Sign in and obtain test credits through Apple's sandbox purchase flow.
+2. In Music DNA or Improvise, select Prepare song creation. This prepares capacity without using credits or uploading a recording. The first preparation can take up to 20 minutes; the interface reports availability or an unsuccessful preparation.
+3. When ready, choose the musical direction. In Improvise, record a short sound you have permission to use and confirm cloud processing. In Music DNA, enter musical preferences and select the language.
+4. Review the fixed credit quote and confirm creation. The finished song is private by default. Play or download it from the result/library. If the automatic Music DNA genre matcher is uncertain, a style-match note accompanies a technically valid song.
+
+Singing Academy:
+Open Sing and Course. Unlock course is a separate one-time $39 purchase. Restore Singing Academy purchase is on the same screen. The two produced-song recordings are ungraded practice; they do not claim verified word-by-word or note-by-note scoring.
+
+Microphone access is requested only for recording/practice. Cloud uploads require confirmation. No recording runs unattended. Account deletion is available in Account. App distribution uses manual release after approval.
+
+Review access is funded through 2026-11-16T02:06:50.894Z. If additional review time is needed, please contact the review contact before expiry. The public website now offers Creator subscriptions and credit top-ups with limited cloud capacity. Native app distribution remains pending App Review and manual release; these review accounts continue to use isolated Apple sandbox purchases.

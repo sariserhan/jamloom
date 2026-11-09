@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:53:37.220Z",
+  "product": {
+    "id": "prod_VXlMg867UjAY5B",
+    "active": true
+  },
+  "price": {
+    "id": "price_1UZipcDlEXWDEeHO0deFnbm3",
+    "active": true,
+    "cents": 3500
+  },
+  "webhook": {
+    "id": "we_1UWfqYDlEXWDEeHOuJRHbAos",
+    "status": "enabled",
+    "url": "https://www.jamloom.com/api/payments/stripe?catalog=2026-10-31-v2"
+  },
+  "existingObjectsReused": true,
+  "existingSubscriptionsChanged": false,
+  "chargesCreated": 0
+}

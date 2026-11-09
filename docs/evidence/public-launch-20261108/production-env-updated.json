@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T03:54:26.049Z",
+  "keys": [
+    "JAMLOOM_COMING_SOON",
+    "JAMLOOM_CREDIT_PURCHASES_ENABLED",
+    "JAMLOOM_CLOUD_SONGS_ENABLED",
+    "JAMLOOM_CLOUD_CAPACITY_PERMIT",
+    "JAMLOOM_CREDIT_LAUNCH_APPROVAL"
+  ],
+  "costQualificationUnchanged": true,
+  "previousPricesUnchanged": true
+}

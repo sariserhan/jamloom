@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "oldPermitRetired": "release-c62a47bb-92a9-4f5e-ab20-823c79e1ce30",
+  "newPermit": "release-d263e690-0899-4e29-b50d-595464a15539",
+  "capUSD": 10,
+  "maxCycles": 13,
+  "serviceActive": true,
+  "automaticRenewal": false,
+  "workerActivation": false,
+  "heartbeatMatches": true,
+  "at": "2026-11-09T03:53:30.184Z"
+}
