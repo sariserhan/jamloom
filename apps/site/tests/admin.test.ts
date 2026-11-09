@@ -5,7 +5,9 @@ const message={kind:'support',name:'Listener <tag>',email:'listener@example.test
 test('admin boundaries reject unverified identities, invalid settings and mixed Stripe environments',()=>{
  assert.equal(isAdmin({email:OWNER_EMAIL,emailVerified:false}),false);assert.equal(isAdmin({email:'other@example.test',emailVerified:true}),false);assert.equal(isAdmin({email:OWNER_EMAIL.toUpperCase(),emailVerified:true}),true);
  assert.throws(()=>settingsInput({...defaultSettings,billing_mode:['test']}));assert.throws(()=>settingsInput({...defaultSettings,extra:true}));assert.throws(()=>settingsInput({...defaultSettings,banner:'x'.repeat(501)}));assert.throws(()=>ticketInput({...message,email:'x\r\nbcc@example.com'}));assert.throws(()=>ticketInput({...message,subject:'Bad\nSubject'}));
- assert.equal(billingReadiness('live',liveEnv).configured,true);assert.equal(billingReadiness('live',liveEnv).academyCheckoutEnabled,false);assert.equal(billingReadiness('live',liveEnv).generationCheckoutEnabled,false);
+ assert.equal(billingReadiness('live',liveEnv).configured,true);assert.equal(billingReadiness('live',liveEnv).academyCheckoutEnabled,false);
+ // Public song generation launched on November 8; Academy sales remain held.
+ assert.equal(billingReadiness('live',liveEnv).generationCheckoutEnabled,true);
  assert.equal(billingReadiness('live',{...liveEnv,STRIPE_LIVE_SECRET_KEY:'sk_test_wrong'}).configured,false);assert.throws(()=>academyStripe('test',liveEnv));
 });
 test('real Postgres administration, durable mail, credit exemption and billing isolation',async t=>{
