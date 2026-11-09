@@ -19,6 +19,38 @@ import singing_response as singing
 
 
 class GenerationTimingTests(unittest.TestCase):
+    def test_concurrent_processes_record_crossing_phase_boundaries(self):
+        with tempfile.TemporaryDirectory() as folder:
+            target=Path(folder)/'timing.jsonl';target.touch();children=[]
+            prefix='from generation_timing import phase; from pathlib import Path; import sys,time; p=Path(sys.argv[1])\n'
+            separator=prefix+"with phase('identity-separate'):\n while not (p/'loaded').exists(): time.sleep(.01)\n(p/'separated').touch()"
+            loader=prefix+"with phase('identity-load'):\n (p/'loaded').touch()\n while not (p/'separated').exists(): time.sleep(.01)"
+            try:
+                with patch.dict(os.environ,JAMLOOM_TIMING_FILE=str(target),JAMLOOM_TIMING_START_NS=str(time.monotonic_ns())):
+                    for code in (separator,loader):children.append(subprocess.Popen([sys.executable,'-c',code,folder],cwd=ROOT/'scripts'))
+                    for child in children:self.assertEqual(child.wait(timeout=5),0)
+                self.assertEqual(timing.snapshot(target)['active'],[])
+                self.assertEqual(len(timing.snapshot(target)['events']),4)
+            finally:
+                for child in children:
+                    if child.poll() is None:child.kill()
+                for child in children:child.wait()
+
+    def test_overlapping_phases_are_valid_but_duplicate_starts_are_not(self):
+        with tempfile.TemporaryDirectory() as folder:
+            target=Path(folder)/'timing.jsonl'
+            events=[('identity','start'),('identity-separate','start'),('identity-load','start'),
+                    ('identity-separate','end'),('identity-load','end'),('identity','end')]
+            def write(items):
+                target.write_text(''.join(json.dumps({'phase':name,'event':event,'ms':i})+'\n'
+                                         for i,(name,event) in enumerate(items)))
+            write(events)
+            self.assertEqual(timing.snapshot(target)['active'],[])
+            write(events[:3])
+            self.assertEqual(timing.snapshot(target)['active'],['identity','identity-separate','identity-load'])
+            write(events[:3]+[('identity-load','start')])
+            self.assertIsNone(timing.snapshot(target))
+
     def test_identity_subprocess_phases_keep_a_valid_nested_trace(self):
         with tempfile.TemporaryDirectory() as folder:
             target=Path(folder)/'timing.jsonl';target.touch()

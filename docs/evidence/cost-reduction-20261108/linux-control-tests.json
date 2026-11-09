@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.43",
+  "python": "3.14.4",
+  "checks": 2,
+  "output": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.971s\n\nOK\n",
+  "realGPUInference": false,
+  "temporaryDirectoryRemovedOnExit": true,
+  "sourceSHA256": {
+    "scripts/generation_timing.py": "c338321c20352779fbcd030085bcbaaeffebccecf08e965b8e82c642a2ef3011",
+    "scripts/vocal_identity.py": "d38466cedc8a8ce2ec85f75135199f72b73450358ed57ba2b431d9cc88abe129",
+    "tests/test_identity_preload.py": "8f30270410a8cb5f0e2798fd043822f3eba6a954968603fbade4d9276d21afca"
+  },
+  "scope": "Linux x86_64 process overlap, failure, launch-error and timeout cleanup only; no model/audio execution"
+}

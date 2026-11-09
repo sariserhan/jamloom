@@ -1,0 +1,31 @@
+{
+  "status": "PASS isolated source and build-context integrity; NOT RUN image build/publication",
+  "candidateCommit": "bf57ca04830843c1b554e0c611c188fcbf405dee",
+  "acceptedWorkerSource": "a0eacb500e6dfb715c9d7f0a06be963075d42c93",
+  "acceptedWorkerImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:e5a0050e6405b59e7168a03d2fe93e3bc49cf38273245ae9461798f8f6130b0e",
+  "baseValidation": {
+    "status": "PASS",
+    "baseImage": "ghcr.io/sariserhan/jamloom/music-worker@sha256:fc903cdc7f41404c7bbe5067a467379106959c39b2172a7629a20bc8b7d8e9bc",
+    "unchangedInputs": 37,
+    "runtimeFiles": 3
+  },
+  "runtimeSHA256": {
+    "scripts/generation_timing.py": "c338321c20352779fbcd030085bcbaaeffebccecf08e965b8e82c642a2ef3011",
+    "scripts/singer_studio.py": "03430f1eb0a55e8398b6661dd3e0f6edc6b0e1dddf095f40eca44bd7a9b99f62",
+    "scripts/vocal_identity.py": "d38466cedc8a8ce2ec85f75135199f72b73450358ed57ba2b431d9cc88abe129"
+  },
+  "archiveSHA256": "bda7285afc184f792828fc3ebca332d0d41442c65fca3b810787f042a3d83b51",
+  "archiveBytes": 13958,
+  "fileNames": [
+    ".dockerignore",
+    "Dockerfile",
+    "scripts/generation_timing.py",
+    "scripts/singer_studio.py",
+    "scripts/vocal_identity.py"
+  ],
+  "preloadEnabledByDefault": false,
+  "liveBackendChanged": false,
+  "modelOrDependencyChanges": false,
+  "imageBuild": "NOT RUN",
+  "cudaQualification": "NOT RUN"
+}

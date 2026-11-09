@@ -178,7 +178,28 @@ def identity_stems_ready(output):
     return True
 
 
-def convert(output,identity):
+def conversion_source(output,receipt,work,wait=False):
+    """Read only completed, receipt-bound stems; loading models needs no source PCM."""
+    import numpy as np
+    import soundfile as sf
+    from singing_response import digest
+    stems=output/'identity-stems';deadline=time.monotonic()+600
+    while wait and (not (stems/'complete.json').exists() or (stems/'.partial').exists()):
+        if time.monotonic()>=deadline:raise TimeoutError('Identity separation did not complete')
+        time.sleep(.05)
+    if stems.is_symlink() or (stems/'.partial').exists():raise ValueError('Incomplete identity separation')
+    separation=_identity_json(stems/'complete.json');base=output/'base.wav'
+    if (separation.get('technical')!='PASS' or separation.get('source_sha256')!=digest(base)
+            or receipt['audio_sha256']!=digest(base)):
+        raise ValueError('Changed separated voice')
+    original,rate=sf.read(base,dtype='float32')
+    if rate!=48000 or original.shape!=(receipt['case']['duration']*rate,2):raise ValueError('Unexpected source duration')
+    stem=_identity_array(stems/'vocals.npy',separation['stems']['vocals'],original.shape)
+    sf.write(work/'source.wav',stem.mean(axis=1),rate,subtype='FLOAT')
+    return original,stem
+
+
+def convert(output,identity,preload=False):
     from singing_response import digest
     import numpy as np
     import soundfile as sf
@@ -198,12 +219,8 @@ def convert(output,identity):
     target=ROOT/'assets/singer-identities'/f'{identity}.wav'
     reference_info=json.loads(REFERENCE_MANIFEST.read_text())['references'][identity]
     if reference_info['source_sha256']!=IDENTITIES[identity]['sha256'] or digest(target)!=reference_info['sha256']:raise ValueError('Singer target changed')
-    stems=output/'identity-stems';separation=json.loads((stems/'complete.json').read_text())
-    if separation['source_sha256']!=digest(base) or separation['stems']['vocals']!=digest(stems/'vocals.npy'):raise ValueError('Changed separated voice')
-    original,rate=sf.read(base,dtype='float32');stem=np.load(stems/'vocals.npy',allow_pickle=False)
-    if rate!=48000 or original.shape!=(receipt['case']['duration']*rate,2) or stem.shape!=original.shape:raise ValueError('Unexpected source duration')
     work=output/'identity';work.mkdir(exist_ok=False)
-    sf.write(work/'source.wav',stem.mean(axis=1),rate,subtype='FLOAT')
+    if not preload:original,stem=conversion_source(output,receipt,work)
     # Long reference speech consumes the conversion context and multiplies full-song work.
     reference,reference_rate=sf.read(target,dtype='float32');reference=reference[:6*reference_rate]
     sf.write(work/'reference.wav',reference,reference_rate,subtype='PCM_16')
@@ -225,6 +242,7 @@ def convert(output,identity):
     started=time.monotonic()
     with phase('identity-load'):
         loaded=inference.load_models(args)
+    if preload:original,stem=conversion_source(output,receipt,work,wait=True)
     f0=loaded[2]
     loaded=(*loaded[:2],lambda *a,**kw:np.asarray(f0(*a,**kw),dtype=np.float32),*loaded[3:])
     inference.load_models=lambda args:loaded
@@ -246,6 +264,28 @@ def convert(output,identity):
     (output/'complete.json').write_text(json.dumps(report,indent=2)+'\n');(output/'.partial').unlink()
 
 
+def run_preloaded_identity(conversion_args,separation_args,env,timeout=720):
+    """One bounded attempt; either subprocess failing stops its peer immediately."""
+    children=[];deadline=time.monotonic()+timeout
+    try:
+        with phase('identity-separate'):
+            separator=subprocess.Popen(separation_args,env=env);children.append(separator)
+            converter=subprocess.Popen(conversion_args,env=env);children.append(converter)
+            separation_deadline=min(deadline,time.monotonic()+600)
+            while separator.poll() is None:
+                if converter.poll() not in (None,0):raise RuntimeError('Singer identity conversion failed during separation')
+                if time.monotonic()>=separation_deadline:raise TimeoutError('Identity separation timed out')
+                time.sleep(.05)
+            if separator.returncode:raise RuntimeError('Identity separation failed')
+        if converter.wait(timeout=max(.001,deadline-time.monotonic())):
+            raise RuntimeError('Singer identity conversion failed')
+    finally:
+        # Kill both before waiting, including failure to launch the second child.
+        for child in children:
+            if child.poll() is None:child.kill()
+        for child in children:child.wait()
+
+
 def finish_identity(output,identity=None):
     """Run after ACE releases GPU memory; a failure leaves no completed song."""
     import signal
@@ -254,20 +294,27 @@ def finish_identity(output,identity=None):
     if receipt.get('source_conditioning') is not None:raise ValueError('Identity conversion requires original singing')
     (output/'.partial').touch();(output/'complete.json').rename(output/'base.complete.json');(output/'singer.wav').rename(output/'base.wav')
     separator_python=os.environ.get('JAMLOOM_SEPARATOR_PYTHON')
+    python=ROOT/'.venv-vocal-identity/bin/python'
+    args=[str(python),str(Path(__file__).resolve()),'--output',str(output.resolve()),'--identity',identity,'--parent-pid',str(os.getpid())]
+    env={**os.environ,'HF_HUB_OFFLINE':'1','HF_HUB_DISABLE_TELEMETRY':'1'}
+    separation_args=[separator_python,str(ROOT/'services/runpod/separate_spleeter.py'),
+                     '--input',str((output/'base.wav').resolve()),
+                     '--output',str((output/'identity-stems').resolve())] if separator_python else None
+    # Candidate only: never change the accepted sequential path by default.
+    if separator_python and os.environ.get('JAMLOOM_IDENTITY_PRELOAD')=='1':
+        if not python.is_file():raise ValueError('Singer identity runtime is unavailable')
+        if (output/'identity-stems').exists() or (output/'identity-stems').is_symlink():raise ValueError('Identity separation already exists')
+        run_preloaded_identity(args+['--preload'],separation_args,env)
+        return
     with phase('identity-separate'):
         if separator_python:
             # The hosted image deliberately excludes the research-only Demucs model.
-            subprocess.run([separator_python,str(ROOT/'services/runpod/separate_spleeter.py'),
-                            '--input',str((output/'base.wav').resolve()),
-                            '--output',str((output/'identity-stems').resolve())],
-                           check=True,timeout=600)
+            subprocess.run(separation_args,check=True,timeout=600)
         else:
             from separate_singer import separate
             separate(output/'base.wav',output/'identity-stems')
-    python=ROOT/'.venv-vocal-identity/bin/python'
     if not python.is_file():raise ValueError('Singer identity runtime is unavailable')
-    args=[str(python),str(Path(__file__).resolve()),'--output',str(output.resolve()),'--identity',identity,'--parent-pid',str(os.getpid())]
-    child=subprocess.Popen(args,env={**os.environ,'HF_HUB_OFFLINE':'1','HF_HUB_DISABLE_TELEMETRY':'1'})
+    child=subprocess.Popen(args,env=env)
     try:
         if child.wait(timeout=720):raise RuntimeError('Singer identity conversion failed')
     finally:
@@ -277,4 +324,5 @@ def finish_identity(output,identity=None):
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--identity',choices=IDENTITIES,required=True)
     parser.add_argument('--parent-pid',type=int,default=os.getppid())
-    args=parser.parse_args();watch_parent(args.parent_pid);convert(args.output,args.identity)
+    parser.add_argument('--preload',action='store_true',help='Candidate: load models while the parent separates stems')
+    args=parser.parse_args();watch_parent(args.parent_pid);convert(args.output,args.identity,args.preload)

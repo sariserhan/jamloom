@@ -1,0 +1,24 @@
+{
+  "status": "FAIL",
+  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "python": "3.12.13",
+  "checks": 98,
+  "failures": 0,
+  "errors": 1,
+  "skipped": 0,
+  "counts": {
+    "test_identity_preload": 7,
+    "test_generation_timing": 8,
+    "test_hosted_identity_separator": 2,
+    "test_vocal_identity": 8,
+    "test_identity_stems": 10,
+    "test_singer_studio": 10,
+    "test_singing_response": 12,
+    "test_runpod_worker": 17,
+    "test_runpod_spleeter": 1,
+    "test_local_call_edit": 18,
+    "test_worker_runtime_base": 5
+  },
+  "realGPUInference": false,
+  "hostedSpeedupMeasured": false
+}

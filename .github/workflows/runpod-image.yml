@@ -34,6 +34,7 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_generation_timing.py'
           python3 -m unittest discover -s tests -p 'test_identity_stems.py'
           python3 -m unittest discover -s tests -p 'test_vocal_identity.py'
+          python3 -m unittest discover -s tests -p 'test_identity_preload.py'
           python3 -m unittest discover -s tests -p 'test_singer_studio.py'
           python3 -m unittest discover -s tests -p 'test_hosted_identity_separator.py'
           python3 -m unittest discover -s tests -p 'test_rejected_audio_diagnostic.py'

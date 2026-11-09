@@ -1,0 +1,110 @@
+{
+  "status": "PASS retained timing extraction; NOT RUN candidate CUDA benchmark",
+  "sourceLogSHA256": "74bb27c705ad87706dc033dfb8fdbc32050a97e59471cb7aea43686f6f977e46",
+  "observedPhaseDurationsMS": {
+    "source": 70,
+    "transcription": 1120,
+    "selection": 145,
+    "runtime-verify": 5891,
+    "lyric-load": 10038,
+    "lyric-generate": 2000,
+    "lyrics": 14047,
+    "sing-import": 1270,
+    "sing-load": 8789,
+    "sing-generate": 2898,
+    "identity-separate": 19008,
+    "identity-verify": 1492,
+    "identity-load": 16577,
+    "identity-generate": 10607,
+    "identity-stems": 83,
+    "identity": 52154,
+    "singing": 72433,
+    "separation": 77,
+    "arrangement": 1827,
+    "improvise": 89721,
+    "pipeline": 91343
+  },
+  "observedPhaseIntervalsMS": {
+    "source": [
+      70
+    ],
+    "transcription": [
+      1120
+    ],
+    "selection": [
+      74,
+      71,
+      0
+    ],
+    "runtime-verify": [
+      62,
+      5829
+    ],
+    "lyric-load": [
+      10038
+    ],
+    "lyric-generate": [
+      2000
+    ],
+    "lyrics": [
+      14047
+    ],
+    "sing-import": [
+      1270
+    ],
+    "sing-load": [
+      8789
+    ],
+    "sing-generate": [
+      2898
+    ],
+    "identity-separate": [
+      19008
+    ],
+    "identity-verify": [
+      1492
+    ],
+    "identity-load": [
+      16577
+    ],
+    "identity-generate": [
+      10607
+    ],
+    "identity-stems": [
+      83
+    ],
+    "identity": [
+      52154
+    ],
+    "singing": [
+      72433
+    ],
+    "separation": [
+      77
+    ],
+    "arrangement": [
+      1827
+    ],
+    "improvise": [
+      89721
+    ],
+    "pipeline": [
+      91343
+    ]
+  },
+  "nestedDurationsMustNotBeSummed": true,
+  "hypotheticalLoadOnlyOverlapSavingMS": 16577,
+  "planningUSDPerGPUSecond": 0.00022,
+  "hypotheticalLoadOnlyOverlapSavingUSD": 0.003647,
+  "observedSavingsUSD": null,
+  "conservative44SecondCohortCostUSD": 0.095307,
+  "hypotheticalCostIf44SecondCohortSavedSameLoadTimeUSD": 0.09166,
+  "unitBudgetUSD": 0.07,
+  "remainingReductionUSDUnderThatHypothesis": 0.02166,
+  "commercialQualification": false,
+  "limits": [
+    "Observed timings belong to the 38-second review take, not the 44-second planning take.",
+    "Parallel CPU contention, RAM pressure, imports and GPU allocation can erase the saving.",
+    "No actual speedup, full invoice, owner listening acceptance or launch margin is established."
+  ]
+}

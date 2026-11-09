@@ -1,6 +1,7 @@
 """Bounded, content-free stage timings shared by one job's subprocesses."""
 from contextlib import contextmanager
 from functools import wraps
+import fcntl
 import json
 import os
 from pathlib import Path
@@ -23,12 +24,14 @@ def mark(name, event):
         return
     # Diagnostics must never turn an otherwise valid generation into a failure.
     try:
-        elapsed = (time.monotonic_ns() - int(os.environ['JAMLOOM_TIMING_START_NS'])) // 1000000
-        if not 0 <= elapsed <= MAX_MS:
-            return
-        data = (json.dumps({'phase': name, 'event': event, 'ms': elapsed}) + '\n').encode()
         fd = os.open(target, os.O_WRONLY | os.O_APPEND | os.O_NOFOLLOW)
         try:
+            # Parallel subprocesses must timestamp and append in the same order.
+            fcntl.flock(fd, fcntl.LOCK_EX)
+            elapsed = (time.monotonic_ns() - int(os.environ['JAMLOOM_TIMING_START_NS'])) // 1000000
+            if not 0 <= elapsed <= MAX_MS:
+                return
+            data = (json.dumps({'phase': name, 'event': event, 'ms': elapsed}) + '\n').encode()
             if os.fstat(fd).st_size + len(data) <= MAX_BYTES:
                 os.write(fd, data)
         finally:
@@ -78,9 +81,11 @@ def snapshot(path):
                 return None
             previous = event['ms']
             if event['event'] == 'start':
+                if event['phase'] in active:return None
                 active.append(event['phase'])
-            elif not active or active.pop() != event['phase']:
-                return None
+            else:
+                if event['phase'] not in active:return None
+                active.remove(event['phase'])
             events.append(event)
         return {'schema': 'jamloom-phase-timing-1', 'events': events, 'active': active}
     except (OSError, ValueError, TypeError, KeyError):
