@@ -1,0 +1,100 @@
+{
+  "status": "PASS funding preparation; PARTIAL measured sustainability",
+  "asOf": "2026-11-09T04:52:24.638Z",
+  "currentPermit": {
+    "expiresAt": 1794800997659,
+    "capUSD": 10.0,
+    "remainingUSD": 10.0,
+    "remainingFullCycles": 13,
+    "unusedTailUSD": 0.25,
+    "automaticRenewal": false
+  },
+  "actualCustomerEvidence": {
+    "liveJobsSincePermitStart": [],
+    "paidCreditLots": [],
+    "observedCustomerMargin": null
+  },
+  "planning": {
+    "sharedInfrastructureUSDPerMonth": 150,
+    "support": "5% of purchases require 10 minutes at $30/hour, allocated across 150 credits",
+    "retentionMonthsForecast": 60,
+    "retentionPolicy": "Until account/content deletion; 60 months is an estimate, not automatic deletion",
+    "channelProceeds": "Existing conservative net credit floor; no hypothetical fee savings counted",
+    "fullCycleMicros": 750000,
+    "rows": [
+      {
+        "product": "improvise",
+        "creditsPerUnit": 10,
+        "assumedMonthlyRedeemedCredits": 30000,
+        "targetUnitCostMicros": 163331,
+        "forecastNonProviderMicros": 89101,
+        "providerBudgetPerUnitMicros": 74230,
+        "minimumDeliveredUnitsPerFullyReservedSongCycle": 11,
+        "minimumMonthlyCreditsAtPostedCostAndAllowances": 25747,
+        "throughputProven": false
+      },
+      {
+        "product": "music-dna",
+        "creditsPerUnit": 20,
+        "assumedMonthlyRedeemedCredits": 30000,
+        "targetUnitCostMicros": 326662,
+        "forecastNonProviderMicros": 185301,
+        "providerBudgetPerUnitMicros": 141361,
+        "minimumDeliveredUnitsPerFullyReservedSongCycle": 6,
+        "minimumMonthlyCreditsAtPostedCostAndAllowances": 16910,
+        "throughputProven": false
+      },
+      {
+        "product": "ai-dj",
+        "creditsPerUnit": 2,
+        "assumedMonthlyRedeemedCredits": 30000,
+        "targetUnitCostMicros": 32666,
+        "forecastNonProviderMicros": 18401,
+        "providerBudgetPerUnitMicros": 14265,
+        "minimumDeliveredUnitsPerFullyReservedSongCycle": null,
+        "minimumMonthlyCreditsAtPostedCostAndAllowances": 18445,
+        "throughputProven": false
+      }
+    ]
+  },
+  "continuationProposal": {
+    "approved": false,
+    "maximumAdditionalUSD": 10,
+    "durationDays": 7,
+    "maximumNewCycles": 13,
+    "maxCycleUSD": 0.75,
+    "sameL4EndpointAndImage": true,
+    "automaticRenewal": false,
+    "notBefore": "Current permit ends or is explicitly retired; never combine unused balances",
+    "condition": "Review actual customer usage, complete posted charges, support demand and 65% margin. Any renewal is a new bounded introductory allowance, not qualified sustainable economics. Without approval, allow shutdown and keep Creator renewals paused."
+  },
+  "optimizationExperiment": {
+    "approved": false,
+    "maximumAdditionalUSD": 1.5,
+    "maximumCycles": 2,
+    "maximumSongRequests": 2,
+    "durationMinutesPerCycle": 40,
+    "maxCycleUSD": 0.75,
+    "gpu": "one L4",
+    "baselineRequests": 1,
+    "candidateRequests": 1,
+    "retries": 0,
+    "publicCustomerPermitUsed": false,
+    "preconditions": [
+      "CPU image verification passes",
+      "Exact candidate image digest and two-cycle permit are reviewed",
+      "Same consented input and seed; accepted audio recipe unchanged",
+      "Separate independent stop-only guardian and isolated credits",
+      "No output publication; account for complete cycle charges and failures"
+    ],
+    "acceptance": [
+      "Compare actual output and owner listening if output differs",
+      "Record elapsed time and peak memory",
+      "Reconcile all provider charges; do not add duplicate job estimates",
+      "Keep disabled unless technical and cost checks pass"
+    ],
+    "limitation": "Two observations compare the optimization; they cannot establish representative customer economics."
+  },
+  "costQualificationEnabled": false,
+  "newSpendingAuthorized": false
+}

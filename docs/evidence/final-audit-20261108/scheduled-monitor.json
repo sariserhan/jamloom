@@ -1,0 +1,25 @@
+{
+  "status": "PASS scheduled Vercel invocation observed",
+  "requests": [
+    {
+      "timestamp": 1794199546246,
+      "deploymentId": "dpl_AhCnzGTJ8azFRW3e8n8rCnr8YD9n",
+      "domain": "jamloom-eb1t3l56h-ssari.vercel.app",
+      "source": "serverless-middleware",
+      "requestMethod": "GET",
+      "requestPath": "/api/operations",
+      "responseStatusCode": 200
+    },
+    {
+      "timestamp": 1794199246094,
+      "deploymentId": "dpl_AhCnzGTJ8azFRW3e8n8rCnr8YD9n",
+      "domain": "jamloom-eb1t3l56h-ssari.vercel.app",
+      "source": "serverless",
+      "requestMethod": "GET",
+      "requestPath": "/api/operations",
+      "responseStatusCode": 200
+    }
+  ],
+  "schedule": "*/5 * * * *",
+  "attribution": "Deployment-domain requests at five-minute cadence; no agent request at 04:40:46 or 04:45:46 UTC. User agent is not exposed by this log export."
+}

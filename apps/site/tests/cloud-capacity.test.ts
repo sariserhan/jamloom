@@ -55,7 +55,7 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
  const cool=async(c:CloudCapacity)=>{now+=120001;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'off');};
  try{
   await migrate(pool);assert.deepEqual(await migrate(pool),[]);
-  for(let n=0;n<13;n++)await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',['owner'+n,`owner${n}@example.test`]);
+  for(let n=0;n<14;n++)await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',['owner'+n,`owner${n}@example.test`]);
   await t.test('reads and recovery never start; concurrent explicit prepares activate once and reserve once',async()=>{
    const c=fresh();assert.equal(await c.state(),'off');assert.equal(await c.ready(300000),false);await c.reconcile();assert.equal(starts,0);
    assert.deepEqual(await Promise.all([start(c,'owner0'),start(c,'owner1')]),['preparing','preparing']);assert.equal(starts,1);
@@ -66,6 +66,28 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    await assert.rejects(start(c,'owner2'),/currently unavailable/);assert.equal(starts,2);assert.equal(stops,2);
    assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[c.permit.id])).rows[0].reserved_micros),2000000);
    await assert.rejects(start(fresh({...c.permit,capMicros:3000000}),'owner2'),/changed after use/);
+  });
+  await t.test('warm joins refresh idle time without extending the funded lease or reserving another cycle',async()=>{
+   const c=fresh();await start(c,'owner13');await wake(c);
+   const initial=(await pool.query('SELECT * FROM cloud_capacity_cycles WHERE permit_id=$1',[c.permit.id])).rows[0],before=starts;
+   now+=119000;await c.guardianHeartbeat();assert.equal(await c.state(),'ready');assert.equal(await c.ready(660000),true);
+   assert.equal((await pool.query('SELECT busy_at FROM cloud_capacity_cycles WHERE id=$1',[initial.id])).rows[0].busy_at,null,'Read polling must not extend idle time');
+   assert.equal(await c.prepare('owner0'),'ready');now+=2000;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'ready');
+   const joined=(await pool.query('SELECT * FROM cloud_capacity_cycles WHERE id=$1',[initial.id])).rows[0];
+   assert.equal(joined.expires_at,initial.expires_at);assert.equal(starts,before);
+   assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[c.permit.id])).rows[0].reserved_micros),1000000);
+   now+=90001;await assert.rejects(c.prepare('owner0'),/unavailable/);
+   now=Number(initial.expires_at)-119999;await c.guardianHeartbeat();assert.equal(await c.prepare('owner0'),'unavailable');
+   now=Number(initial.expires_at);assert.equal((await c.reconcile(true)).reason,'expired');assert.equal(e.workers.max,0);
+  });
+  await t.test('guardian stops workers without a durable activation record and never starts or reserves them',async()=>{
+   const c=fresh(),before=starts,beforeStops=stops;
+   e.workers={min:1,max:1};h.workers={...emptyWorkers,running:1};
+   assert.equal((await c.reconcile()).state,'off');assert.equal(e.workers.max,1,'Ordinary reads do not mutate the provider');
+   assert.equal((await c.reconcile(true)).state,'off');assert.equal(stops,beforeStops+1);assert.equal(starts,before);
+   assert.equal((await pool.query('SELECT 1 FROM cloud_capacity_permits WHERE id=$1',[c.permit.id])).rowCount,0);
+   e.image='foreign';await assert.rejects(c.reconcile(true),/identity/);e.image=CLOUD_WORKER_IMAGE;
+   h.workers={...emptyWorkers,initializing:1};await assert.rejects(c.reconcile(true),/shutdown unconfirmed/);h.workers={...emptyWorkers};
   });
   await t.test('a lost activation response stops and never retries or refunds its operator reservation',async()=>{
    const c=fresh(),before=starts;loseActivation=true;assert.equal(await start(c,'owner2'),'stopping');loseActivation=false;

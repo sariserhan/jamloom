@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "suites": [
+    {
+      "suite": "capacity",
+      "pass": 16,
+      "fail": 0
+    },
+    {
+      "suite": "site",
+      "pass": 242,
+      "fail": 0
+    },
+    {
+      "suite": "operating",
+      "pass": 8,
+      "fail": 0
+    },
+    {
+      "suite": "operations",
+      "pass": 5,
+      "fail": 0
+    }
+  ],
+  "typecheck": "PASS after explicit reconcile return type corrected inference",
+  "productionBuild": "PASS",
+  "webBundle": "PASS 113 files; private/test audio absent",
+  "database": "Disposable localhost PostgreSQL, all migrations; stopped and removed",
+  "productionWrites": false,
+  "gpuStarts": 0
+}

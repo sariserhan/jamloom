@@ -159,3 +159,18 @@ test('product browsing opens the requested workspace while generation and purcha
  }
  for(const path of ['/api/payments/checkout','/api/academy/checkout','/api/generations','/api/library','/academy/unknown/path','/music-dna/fake','/api/taste/song?id='+'a'.repeat(32),'/api/academy/lesson/first-crossfade/extra'])assert.equal(publicProductRead(new Request('https://www.jamloom.com'+path)),false,path);
 });
+
+
+test('operating cron reaches its own authorization through launch holds and an unavailable maintenance database',async()=>{
+ const previous={...process.env};
+ try{
+  Object.assign(process.env,{DATABASE_URL:'postgresql://fixture@127.0.0.1:1/never-connect',BETTER_AUTH_URL:'http://127.0.0.1:3000',BETTER_AUTH_SECRET:'isolated-operations-routing-secret',JAMLOOM_LOCAL_OUTBOX:'/tmp/jamloom-operations-routing'});
+  delete process.env.VERCEL;
+  for(const gate of ['true','false']){
+   process.env.JAMLOOM_COMING_SOON=gate;
+   const response=await proxy(new NextRequest('https://www.jamloom.com/api/operations'));
+   assert.equal(response.headers.get('x-middleware-next'),'1','The monitor must reach its authenticated route without querying maintenance state');
+  }
+  assert.equal(comingSoonRecovery('/api/operations/fake'),false);
+ }finally{for(const key of Object.keys(process.env))if(!(key in previous))delete process.env[key];Object.assign(process.env,previous);}
+});

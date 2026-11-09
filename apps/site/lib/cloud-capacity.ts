@@ -101,7 +101,17 @@ export class CloudCapacity{
  async prepare(owner:string,review?:{enabled:boolean;expiresAt:number;owners:readonly string[]}):Promise<CapacityState>{
   this.permitOpen();let created:Cycle|undefined;
   const state=await this.lock(async db=>{
-   const existing=await this.current(db);if(existing)return existing.permit_id===this.permit.id?(existing.state==='ready'?'ready':existing.state==='starting'?'preparing':'stopping'):'unavailable';
+   const existing=await this.current(db);
+   if(existing){
+    if(existing.permit_id!==this.permit.id)return 'unavailable';
+    if(existing.state==='stopping')return 'stopping';
+    if(!await this.guarded(db))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
+    try{assertActiveWorkerLease(lease(existing),this.clock(),120000);}catch{return 'unavailable';}
+    // A deliberate warm join gets the same upload window as a new session.
+    // Polls never keep workers alive, and the original funded expiry is fixed.
+    if(existing.state==='ready')await db.query('UPDATE cloud_capacity_cycles SET busy_at=$2 WHERE id=$1',[existing.id,this.clock()]);
+    return existing.state==='ready'?'ready':'preparing';
+   }
    const now=this.clock(),p=this.permit,next=capacityLease(p,now);
    if(!await this.guarded(db))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
    if(next.expiresAt>p.expiresAt)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
@@ -138,9 +148,15 @@ export class CloudCapacity{
   }
   return state;
  }
- async reconcile(guardian=false,shutdownOnly=false){
+ async reconcile(guardian=false,shutdownOnly=false):Promise<{state:CapacityState;reason?:string}>{
   return this.lock(async db=>{
-   const r=await this.current(db);if(!r)return {state:'off' as CapacityState};
+   const r=await this.current(db);
+   if(!r){
+    // A healthy database with no activation record is not proof the provider is
+    // off. Only the independent stop-only guardian checks this orphan case.
+    if(guardian){const stopped=await emergencyCapacityStop(this.endpoint,this.provider);if(stopped.state!=='off')throw Error('Unrecorded capacity shutdown unconfirmed');return stopped;}
+    return {state:'off' as CapacityState};
+   }
    const now=this.clock(),e=await this.provider.endpoint();this.identity(e,r.image);
    const h=await this.provider.health();
    const busy=(await db.query("SELECT 1 FROM cloud_song_runs c JOIN dna_song_jobs d ON c.id=d.id WHERE c.endpoint=$1 AND d.state IN ('queued','running') LIMIT 1",[this.endpoint])).rowCount||h.jobs?.inQueue>0||h.jobs?.inProgress>0;
