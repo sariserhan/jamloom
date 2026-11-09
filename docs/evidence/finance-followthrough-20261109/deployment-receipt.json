@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "at": 1794234252.896055,
+  "sourceCommit": "e87d62413c842222c914b9381f09732d6e2a1f90",
+  "deployment": {
+    "id": "dpl_9kLCefJuEiiCQFCFuAJs3vrUK7A1",
+    "url": "https://jamloom-k1wo0sakw-ssari.vercel.app",
+    "readyState": "READY"
+  },
+  "publicURL": "https://www.jamloom.com",
+  "previousDeployment": "dpl_D3tx11SwQGhyLXMr11PK1iK3zuye",
+  "promotedAfterValidation": true,
+  "cashPolicy": {
+    "reloadUSD": 25,
+    "thresholdUSD": 10
+  },
+  "revenueShareBps": 2000,
+  "seedUnchanged": true,
+  "qualification": "held",
+  "gitPushed": false
+}

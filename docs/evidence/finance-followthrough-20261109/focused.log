@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: live renewals require separate enabled and qualified approval; ordinary sandbox unchanged
+ok 1 - live renewals require separate enabled and qualified approval; ordinary sandbox unchanged
+  ---
+  duration_ms: 0.918958
+  type: 'test'
+  ...
+# Subtest: pause future collections permanently without cancelling or modifying paid credits; duplicate is harmless
+ok 2 - pause future collections permanently without cancelling or modifying paid credits; duplicate is harmless
+  ---
+  duration_ms: 2.135084
+  type: 'test'
+  ...
+# Subtest: unrelated, incomplete and cancelled subscriptions are untouched
+ok 3 - unrelated, incomplete and cancelled subscriptions are untouched
+  ---
+  duration_ms: 1.367292
+  type: 'test'
+  ...
+# Subtest: environment and account mismatches fail before mutation
+ok 4 - environment and account mismatches fail before mutation
+  ---
+  duration_ms: 0.439875
+  type: 'test'
+  ...
+# Subtest: first purchase invoices are untouched; renewal drafts disable auto collection before voiding
+ok 5 - first purchase invoices are untouched; renewal drafts disable auto collection before voiding
+  ---
+  duration_ms: 0.450958
+  type: 'test'
+  ...
+# Subtest: an already-paid renewal raises operator review rather than pretending it was prevented
+ok 6 - an already-paid renewal raises operator review rather than pretending it was prevented
+  ---
+  duration_ms: 0.314167
+  type: 'test'
+  ...
+# Subtest: scheduled reconciliation protects related subscriptions and pending invoices only
+ok 7 - scheduled reconciliation protects related subscriptions and pending invoices only
+  ---
+  duration_ms: 0.373917
+  type: 'test'
+  ...
+# Subtest: resumption keeps the margin gate and never resurrects catch-up invoices or foreign pauses
+ok 8 - resumption keeps the margin gate and never resurrects catch-up invoices or foreign pauses
+  ---
+  duration_ms: 0.941334
+  type: 'test'
+  ...
+# Subtest: healthy service is quiet; low, exhausted and expiring allowance are actionable
+ok 9 - healthy service is quiet; low, exhausted and expiring allowance are actionable
+  ---
+  duration_ms: 0.799667
+  type: 'test'
+  ...
+# Subtest: failed shutdown, stale guardian, identity mismatch and failed song/cleanup are detected
+ok 10 - failed shutdown, stale guardian, identity mismatch and failed song/cleanup are detected
+  ---
+  duration_ms: 0.068666
+  type: 'test'
+  ...
+# Subtest: expired permit with zero workers is safe shutdown; remaining workers alert independently
+ok 11 - expired permit with zero workers is safe shutdown; remaining workers alert independently
+  ---
+  duration_ms: 0.086333
+  type: 'test'
+  ...
+# Subtest: two monitors share stable idempotency, repeat incidents bounded and payload excludes customer records
+ok 12 - two monitors share stable idempotency, repeat incidents bounded and payload excludes customer records
+  ---
+  duration_ms: 1.431375
+  type: 'test'
+  ...
+# Subtest: transport failure remains a failure; missing address never silently sends elsewhere
+ok 13 - transport failure remains a failure; missing address never silently sends elsewhere
+  ---
+  duration_ms: 0.252167
+  type: 'test'
+  ...
+# Subtest: approved native reload suppresses manual recharge reminders without increasing funded capacity
+ok 14 - approved native reload suppresses manual recharge reminders without increasing funded capacity
+  ---
+  duration_ms: 0.075375
+  type: 'test'
+  ...
+# Subtest: native reload verification reads exact approved settings and refuses malformed or failed evidence
+ok 15 - native reload verification reads exact approved settings and refuses malformed or failed evidence
+  ---
+  duration_ms: 0.603416
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 275.225375

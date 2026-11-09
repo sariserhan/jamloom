@@ -1,0 +1,8 @@
+{
+  "status": "PASS plan read; NOT AVAILABLE metered history API on free plan",
+  "project": "misty-cherry-32516479",
+  "plan": "free",
+  "consumptionAPI": "Requires Launch or above",
+  "qualificationEnabled": false,
+  "scope": "No database plan upgrade or spending-limit change. A free plan is not proof that future production usage or other costs are zero."
+}

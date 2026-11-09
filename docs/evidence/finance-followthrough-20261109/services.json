@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "source": "e87d62413c842222c914b9381f09732d6e2a1f90",
+  "monitorTimerActive": true,
+  "initialRun": "success",
+  "guardianUnchangedActive": true,
+  "financeTimerUnchangedActive": true,
+  "cashPolicy": {
+    "reloadUSD": 25,
+    "thresholdUSD": 10
+  },
+  "gpuRevenueShareBps": 2000,
+  "qualification": "held",
+  "providerMutations": false
+}

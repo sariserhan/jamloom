@@ -1,0 +1,33 @@
+{
+  "status": "SCENARIO ONLY",
+  "currentSharedAllowanceUSD": 150,
+  "rows": [
+    {
+      "product": "improvise",
+      "maximumSharedMonthlyCostUSDAt10000RedeemedCredits": 58.26,
+      "maximumSharedMonthlyCostUSDAt30000RedeemedCredits": 174.78,
+      "qualification": false,
+      "basis": "Same posted cohort plus conservative nonfixed allowances; five-year storage forecast, not a lifetime bound"
+    },
+    {
+      "product": "music-dna",
+      "maximumSharedMonthlyCostUSDAt10000RedeemedCredits": 88.7065,
+      "maximumSharedMonthlyCostUSDAt30000RedeemedCredits": 266.1195,
+      "qualification": false,
+      "basis": "Same posted cohort plus conservative nonfixed allowances; five-year storage forecast, not a lifetime bound"
+    },
+    {
+      "product": "ai-dj",
+      "maximumSharedMonthlyCostUSDAt10000RedeemedCredits": 81.325,
+      "maximumSharedMonthlyCostUSDAt30000RedeemedCredits": 243.975,
+      "qualification": false,
+      "basis": "Same posted cohort plus conservative nonfixed allowances; five-year storage forecast, not a lifetime bound"
+    }
+  ],
+  "missing": [
+    "Complete bill and shared-cost allocation",
+    "Representative complete GPU lifecycle costs",
+    "Long-term retention exposure",
+    "Actual usage and support demand"
+  ]
+}

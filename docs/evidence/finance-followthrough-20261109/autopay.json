@@ -1,0 +1,19 @@
+{
+  "balanceUSD": 61.3845615143,
+  "autoPay": true,
+  "reloadUSD": 25,
+  "thresholdUSD": 10,
+  "lowBalanceNotifications": true,
+  "notificationThresholdUSD": 5,
+  "recentReloads": [
+    {
+      "amount": 50,
+      "medium": "STRIPE",
+      "type": "RELOAD",
+      "transactionCompletedAt": "2026-11-09T14:19:24.004Z"
+    }
+  ],
+  "mutations": false,
+  "at": "2026-11-09T14:23:41.324251+00:00",
+  "status": "PASS configured"
+}
