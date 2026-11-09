@@ -1,0 +1,12 @@
+import '../apps/site/scripts/env';
+import {readFile,writeFile} from 'node:fs/promises';import assert from 'node:assert/strict';import {randomUUID} from 'node:crypto';
+import {capacityPermit} from '../apps/site/lib/cloud-capacity-permit';import {reviewSongConfig} from '../apps/site/lib/cloud-review-config';import {creditSalesQualified} from '../apps/site/lib/credit-catalog';import {CLOUD_COST_PROFILE} from '../apps/site/lib/cloud-production-profile';
+const plan=JSON.parse(await readFile(new URL('../docs/evidence/review-phase-20261108/approved-plan.json',import.meta.url),'utf8'));assert.equal(plan.status,'APPROVED');assert.equal(plan.additionalMaxUSD,7.5);
+const accounts=await Promise.all(['review-account-private.json','course-review-account-private.json'].map(async n=>JSON.parse(await readFile(new URL('../build-release-closure-20261031/'+n,import.meta.url),'utf8'))));
+const ready=JSON.parse(await readFile(new URL('../build-economic-closure-20261108/review-readiness.json',import.meta.url),'utf8'));assert.equal(ready.status,'PASS');assert(Date.now()-Date.parse(ready.at)<3600000);
+const now=Date.now(),permit={id:'release-'+randomUUID(),startsAt:now,expiresAt:now+7*86400000,capMicros:7500000,cycleMicros:750000,cycleSeconds:2400};
+const held=JSON.parse(await readFile(new URL('../build-capacity-retest-20261108/held-environment.json',import.meta.url),'utf8'));
+const env={...held,JAMLOOM_CLOUD_COST_PROFILE:CLOUD_COST_PROFILE,JAMLOOM_CLOUD_CAPACITY_PERMIT:JSON.stringify(permit),JAMLOOM_APPLE_REVIEW_ENABLED:'true',JAMLOOM_APPLE_REVIEW_USER_IDS:accounts.map(x=>x.id).join(','),JAMLOOM_APPLE_REVIEW_EXPIRES_AT:new Date(permit.expiresAt).toISOString(),JAMLOOM_APPLE_REVIEW_PURCHASES_ENABLED:'true',JAMLOOM_APPLE_REVIEW_GENERATION_ENABLED:'true',JAMLOOM_APPLE_REVIEW_GENERATION_CAP_MICROS:String(ready.configuredAggregateGenerationAllowanceMicros)};
+assert(capacityPermit({...process.env,...env},CLOUD_COST_PROFILE));assert(!creditSalesQualified({...process.env,...env}));for(const p of ['improvise','music-dna'] as const)assert(reviewSongConfig(p,{...process.env,...env})?.review?.enabled);
+for(const [name,value] of [['permit.json',permit],['review-environment-private.json',env]])await writeFile(new URL(name as string,import.meta.url),JSON.stringify(value,null,2)+'\n',{flag:'wx',mode:0o600});
+console.log(JSON.stringify({status:'PASS',startsAt:new Date(now).toISOString(),expiresAt:new Date(permit.expiresAt).toISOString(),maxUSD:7.5,maxCycles:10,reviewAccounts:2,publicSales:false,publicGeneration:false,providerActivationCalls:0}));

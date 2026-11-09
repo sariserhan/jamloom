@@ -5,6 +5,7 @@ p=Path(__file__).resolve().parent
 assumptions={
  'authorized':'Owner: Calculate conservative allowances',
  'support':{'purchaseContactFraction':0.05,'minutesPerContact':10,'hourlyUSD':30,'creditsPerPurchase':150},
+ 'improviseExecutionEstimateUSD':0.03014,'improviseIdleSecondsPerSingleSongCycle':120,'improvisePlanningUSDPerSecond':0.00022,
  'fixedMonthlyUSD':150,'redeemedCreditsPerMonthScenarios':[30000,150000,300000],
  'fixedMonthlyCompositionUSD':{'webAndScheduledOperations':40,'database':40,'monitoringGuardianBackups':40,'billingRoundingAndContingency':30},
  'storageUSDPerGBMonth':0.015,'retainedMonthsScenarios':[12,60],
@@ -15,10 +16,11 @@ assumptions={
  'Storage horizon is not a deletion rule: completed songs and ready saved sets remain until deleted. Longer retention costs more.',
  'DJ storage assumes every generated minute is saved at 2 MB/minute, above twice the requested 128 kbit/s recording rate. Browser bitrate is advisory, so actual file bytes still require measurement.',
  'Saved songs and sets use signed R2 download redirects with free R2 egress. Bandwidth reserve covers metadata and other traffic, not an invented charge for those audio downloads.',
- 'GPU startup, idle and failures must be included in complete provider costs; they are not covered by the shared hosting reserve.',
+ 'The recorded Improvise estimate of USD 0.05014 contains USD 0.02000 fixed allowance. Replace that allowance with the itemized overhead; do not add both. GPU estimate is 137 rounded seconds times USD 0.00022.',
+ 'Add 120 idle seconds for the observed single-song capacity cycle. Multiple songs sharing a cycle would share this idle allocation; this is not measured production throughput. Startup and failures still need complete provider receipts.',
  'Additional inference is a contingency for non-GPU calls, not a second charge for included model execution.',
  'Fixed hosting is a planning envelope, not a measured ceiling; verify invoices and actual redemptions before qualification.']}
-products=[('improvise',10,9,0.003,0.05014,'execution estimate only; startup/idle/failure missing'),('music-dna',20,27,0.005,None,'no complete attributable cohort'),('ai-dj',2,2,0.001,0.008,'posted whole-instance cohort, including failed startup')]
+products=[('improvise',10,9,0.003,0.03014+120*0.00022,'execution plus 120-second idle estimate for one delivered song per cycle; startup/failure missing'),('music-dna',20,27,0.005,None,'no complete attributable cohort'),('ai-dj',2,2,0.001,0.008,'posted whole-instance cohort, including failed startup')]
 rows=[]
 for months in assumptions['retainedMonthsScenarios']:
  for volume in assumptions['redeemedCreditsPerMonthScenarios']:

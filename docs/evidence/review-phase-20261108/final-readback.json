@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T02:28:28.956Z",
+  "workerLimits": [
+    0,
+    0
+  ],
+  "workerInventory": [],
+  "queuedJobs": 0,
+  "runningJobs": 0,
+  "liveWalletUnchanged": true,
+  "heldTestCredits": 0,
+  "privateCompletedAudioVerified": true,
+  "temporarySourceCleanupRecorded": true,
+  "cycles": [
+    {
+      "state": "stopped",
+      "reason": "idle",
+      "reservedMicros": 750000
+    },
+    {
+      "state": "stopped",
+      "reason": "configuration-removed",
+      "reservedMicros": 750000
+    }
+  ],
+  "permitReservedMicros": 1500000,
+  "permitRemainingMicros": 6000000,
+  "guardianAgeMs": 1689,
+  "guardianActiveForReview": true,
+  "reviewAccessExpiresAt": "2026-11-16T02:06:50.894Z",
+  "publicLaunch": false
+}

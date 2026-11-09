@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "sourceCommit": "30dbe5bb1afaa269c41281249a68c29dfba0f1e8",
+  "hostname": "www.jamloom.com",
+  "purpose": "Owner-authorized review-only backend update",
+  "publicSales": false,
+  "publicGeneration": false,
+  "gitPushed": false,
+  "previousDeployment": "dpl_JAJN6SrY6zU2sVsv76Eu17joV8Tu",
+  "initialDeployment": {
+    "id": "dpl_E9R5m6yjcPw4Traso6FDcnaUjmVq",
+    "url": "https://jamloom-a034wjnyx-ssari.vercel.app",
+    "inspectorUrl": "https://vercel.com/ssari/jamloom/E9R5m6yjcPw4Traso6FDcnaUjmVq",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_E9R5m6yjcPw4Traso6FDcnaUjmVq"
+  },
+  "initialSourceCommit": "9932696f0fb33a4c858298a2e33306bfa42e56f7",
+  "deployment": {
+    "id": "dpl_7AQDYJEFm4TYe23V6Q2vW5fQ3Px3",
+    "url": "https://jamloom-zadox5t0w-ssari.vercel.app",
+    "inspectorUrl": "https://vercel.com/ssari/jamloom/7AQDYJEFm4TYe23V6Q2vW5fQ3Px3",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_7AQDYJEFm4TYe23V6Q2vW5fQ3Px3"
+  },
+  "hostedRepeatPreparationVerified": true
+}

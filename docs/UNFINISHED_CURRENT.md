@@ -1,13 +1,12 @@
 # Current unfinished work — updated 2026-11-08
 
-**PARTIAL release.** Private Improvise delivery, credit/privacy checks, automatic idle shutdown, independent cleanup and build-39 physical-iPhone checks now pass. The $0.75 permit is consumed; no retry is authorized. Public deployment remains unchanged and must be last. [Current evidence](evidence/final-preparation-20261108/report.md).
+**PARTIAL release.** Private Improvise lifecycle and scoped build-39 physical checks pass. The owner approved a review-only update of `www.jamloom.com` and a new maximum $7.50/seven-day permit while economics continues. The reviewed backend is live, the reviewer flow passes, and build 39 plus all five Apple items are WAITING_FOR_REVIEW with manual release; ordinary public sales, generation and promotional trials remain disabled. The prior $0.75 diagnostic permit is consumed. [Economics](evidence/economic-closure-20261108/report.md), [approved review scope](evidence/review-phase-20261108/approved-plan.json).
 
-- Complete attributable operating economics. The observed worker has no posted billing row; execution estimates omit unallocated startup/idle/failure and recurring overhead. Keep cost qualification unset. AI DJ's separate per-minute economics is also unqualified.
-- Fund and verify bounded reviewer access after the gates pass. Final instructions and a $7.50/seven-day review proposal are prepared, not activated or authorized for spending.
-- Finalize/submit the existing five-item Apple draft and obtain provider approval. Build 39 is VALID and selected; release remains manual.
-- Activate the qualified existing payment products and perform public deployment/release last. The owner retains Git-push control.
+- Obtain Apple approval. Submission and reviewer creation/privacy/credit/idle checks pass. The finite review permit has $6/eight cycles remaining until November 16 02:06 UTC; no automatic renewal. [Current review evidence](evidence/review-phase-20261108/report.md).
+- Close commercial operating economics. Posted DJ charges are $0.16/20 generated minutes, including failed startup. Conservative overhead scenarios do not qualify the unchanged catalog; complete new Improvise billing remains unposted. Keep qualification unset.
+- Complete qualified existing payment activation and commercial public release last. Build 39 remains manual release; the owner retains Git-push control.
 
-Previously closed studies and deferred v1 scoring, training and formal measurements stay closed/deferred. Migration 0034, the successful ordinary hosted lifecycle and scoped physical-device checks are no longer pending implementation tasks. [Release order](CLOUD_CAPACITY.md).
+Previously closed studies and deferred v1 scoring, training and formal measurements stay closed/deferred. Migration 0034 and the scoped physical-device checks are complete. The funded reviewer phase is separate from customer launch and cannot renew its permit automatically.
 
 ## Historical scope and evidence
 

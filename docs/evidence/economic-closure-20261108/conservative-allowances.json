@@ -8,6 +8,9 @@
       "hourlyUSD": 30,
       "creditsPerPurchase": 150
     },
+    "improviseExecutionEstimateUSD": 0.03014,
+    "improviseIdleSecondsPerSingleSongCycle": 120,
+    "improvisePlanningUSDPerSecond": 0.00022,
     "fixedMonthlyUSD": 150,
     "redeemedCreditsPerMonthScenarios": [
       30000,
@@ -35,7 +38,8 @@
       "Storage horizon is not a deletion rule: completed songs and ready saved sets remain until deleted. Longer retention costs more.",
       "DJ storage assumes every generated minute is saved at 2 MB/minute, above twice the requested 128 kbit/s recording rate. Browser bitrate is advisory, so actual file bytes still require measurement.",
       "Saved songs and sets use signed R2 download redirects with free R2 egress. Bandwidth reserve covers metadata and other traffic, not an invented charge for those audio downloads.",
-      "GPU startup, idle and failures must be included in complete provider costs; they are not covered by the shared hosting reserve.",
+      "The recorded Improvise estimate of USD 0.05014 contains USD 0.02000 fixed allowance. Replace that allowance with the itemized overhead; do not add both. GPU estimate is 137 rounded seconds times USD 0.00022.",
+      "Add 120 idle seconds for the observed single-song capacity cycle. Multiple songs sharing a cycle would share this idle allocation; this is not measured production throughput. Startup and failures still need complete provider receipts.",
       "Additional inference is a contingency for non-GPU calls, not a second charge for included model execution.",
       "Fixed hosting is a planning envelope, not a measured ceiling; verify invoices and actual redemptions before qualification."
     ]
@@ -46,8 +50,8 @@
       "retainedMonths": 12,
       "monthlyRedeemedCredits": 30000,
       "unitBudgetUSD": 0.07,
-      "providerUSD": 0.05014,
-      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "providerUSD": 0.05654,
+      "providerBasis": "execution plus 120-second idle estimate for one delivered song per cycle; startup/failure missing",
       "allowancesUSD": {
         "support": 0.016667,
         "storage": 0.00162,
@@ -59,7 +63,7 @@
       },
       "allowancesTotalUSD": 0.077287,
       "maximumWholeProviderUSD": -0.007287,
-      "knownOrEstimatedPlusAllowancesUSD": 0.127427,
+      "knownOrEstimatedPlusAllowancesUSD": 0.133827,
       "planningStatus": "FAIL",
       "commercialQualification": false
     },
@@ -112,8 +116,8 @@
       "retainedMonths": 12,
       "monthlyRedeemedCredits": 150000,
       "unitBudgetUSD": 0.07,
-      "providerUSD": 0.05014,
-      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "providerUSD": 0.05654,
+      "providerBasis": "execution plus 120-second idle estimate for one delivered song per cycle; startup/failure missing",
       "allowancesUSD": {
         "support": 0.016667,
         "storage": 0.00162,
@@ -125,7 +129,7 @@
       },
       "allowancesTotalUSD": 0.037287,
       "maximumWholeProviderUSD": 0.032713,
-      "knownOrEstimatedPlusAllowancesUSD": 0.087427,
+      "knownOrEstimatedPlusAllowancesUSD": 0.093827,
       "planningStatus": "FAIL",
       "commercialQualification": false
     },
@@ -178,8 +182,8 @@
       "retainedMonths": 12,
       "monthlyRedeemedCredits": 300000,
       "unitBudgetUSD": 0.07,
-      "providerUSD": 0.05014,
-      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "providerUSD": 0.05654,
+      "providerBasis": "execution plus 120-second idle estimate for one delivered song per cycle; startup/failure missing",
       "allowancesUSD": {
         "support": 0.016667,
         "storage": 0.00162,
@@ -191,7 +195,7 @@
       },
       "allowancesTotalUSD": 0.032287,
       "maximumWholeProviderUSD": 0.037713,
-      "knownOrEstimatedPlusAllowancesUSD": 0.082427,
+      "knownOrEstimatedPlusAllowancesUSD": 0.088827,
       "planningStatus": "FAIL",
       "commercialQualification": false
     },
@@ -244,8 +248,8 @@
       "retainedMonths": 60,
       "monthlyRedeemedCredits": 30000,
       "unitBudgetUSD": 0.07,
-      "providerUSD": 0.05014,
-      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "providerUSD": 0.05654,
+      "providerBasis": "execution plus 120-second idle estimate for one delivered song per cycle; startup/failure missing",
       "allowancesUSD": {
         "support": 0.016667,
         "storage": 0.0081,
@@ -257,7 +261,7 @@
       },
       "allowancesTotalUSD": 0.083767,
       "maximumWholeProviderUSD": -0.013767,
-      "knownOrEstimatedPlusAllowancesUSD": 0.133907,
+      "knownOrEstimatedPlusAllowancesUSD": 0.140307,
       "planningStatus": "FAIL",
       "commercialQualification": false
     },
@@ -310,8 +314,8 @@
       "retainedMonths": 60,
       "monthlyRedeemedCredits": 150000,
       "unitBudgetUSD": 0.07,
-      "providerUSD": 0.05014,
-      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "providerUSD": 0.05654,
+      "providerBasis": "execution plus 120-second idle estimate for one delivered song per cycle; startup/failure missing",
       "allowancesUSD": {
         "support": 0.016667,
         "storage": 0.0081,
@@ -323,7 +327,7 @@
       },
       "allowancesTotalUSD": 0.043767,
       "maximumWholeProviderUSD": 0.026233,
-      "knownOrEstimatedPlusAllowancesUSD": 0.093907,
+      "knownOrEstimatedPlusAllowancesUSD": 0.100307,
       "planningStatus": "FAIL",
       "commercialQualification": false
     },
@@ -376,8 +380,8 @@
       "retainedMonths": 60,
       "monthlyRedeemedCredits": 300000,
       "unitBudgetUSD": 0.07,
-      "providerUSD": 0.05014,
-      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "providerUSD": 0.05654,
+      "providerBasis": "execution plus 120-second idle estimate for one delivered song per cycle; startup/failure missing",
       "allowancesUSD": {
         "support": 0.016667,
         "storage": 0.0081,
@@ -389,7 +393,7 @@
       },
       "allowancesTotalUSD": 0.038767,
       "maximumWholeProviderUSD": 0.031233,
-      "knownOrEstimatedPlusAllowancesUSD": 0.088907,
+      "knownOrEstimatedPlusAllowancesUSD": 0.095307,
       "planningStatus": "FAIL",
       "commercialQualification": false
     },

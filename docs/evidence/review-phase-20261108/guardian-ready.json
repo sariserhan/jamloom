@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T02:08:58.649Z",
+  "productionDatabase": true,
+  "providerWorkers": [
+    0,
+    0
+  ],
+  "maxUSD": 7.5,
+  "expiresAt": "2026-11-16T02:06:50.894Z"
+}

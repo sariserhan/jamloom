@@ -28,7 +28,7 @@
   ],
   "notAnInvoice": true,
   "notAnAppleReviewTimeEstimate": true,
-  "applicationCommit": "9932696f0fb33a4c858298a2e33306bfa42e56f7",
+  "applicationCommit": "30dbe5bb1afaa269c41281249a68c29dfba0f1e8",
   "nativeBuild": "0.11.0 (39)",
   "nativeAllowedOrigin": "https://www.jamloom.com",
   "publicAliasBefore": "dpl_JAJN6SrY6zU2sVsv76Eu17joV8Tu",
@@ -44,5 +44,11 @@
   "originalEconomicGate": "Not waived: commercial activation still requires complete attributable operating economics; private review would use its explicitly funded operator allowance.",
   "ownerApproval": "Allow review-only update and bounded review funding",
   "publicBackendUpdateAuthorized": true,
-  "commercialEconomicGateRetained": true
+  "commercialEconomicGateRetained": true,
+  "initialApplicationCommit": "9932696f0fb33a4c858298a2e33306bfa42e56f7",
+  "reviewReadinessFix": "Allow only server-authorized reviewers to prepare another fully reserved cycle under the unchanged finite permit",
+  "phaseStatus": "ACTIVE_WAITING_FOR_APPLE_REVIEW",
+  "reservedMicrosAfterValidation": 1500000,
+  "remainingMicrosAfterValidation": 6000000,
+  "noAutomaticRenewal": true
 }

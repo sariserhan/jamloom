@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T02:09:14.436Z",
+  "anonymous": [
+    {
+      "path": "/api/taste/song",
+      "available": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "available": false
+    }
+  ],
+  "reviewAuthenticated": true,
+  "sandboxReview": true,
+  "availableBeforePreparation": false,
+  "generationSubmissions": 0
+}

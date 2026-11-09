@@ -28,6 +28,8 @@ Legacy receipts remain verifiable. Available old credits convert once at **15:1*
 
 ## Economics and release gates
 
+**November 8:** The owner-approved finite review-only backend is active and build 39 is WAITING_FOR_REVIEW with manual release. Commercial prices/qualification remain unchanged. Posted DJ resource charges are $0.008/generated minute before non-GPU overhead; conservative complete-cost planning does not qualify the catalog. [Cost analysis](evidence/economic-closure-20261108/report.md), [review access and remaining allowance](evidence/review-phase-20261108/report.md).
+
 Catalog version: `2026-10-31-v2`. The conservative supported-channel planning floor is **$0.02 net per credit**, with a **65% contribution-margin target**. Live generation must satisfy both the catalog cap and the actual allocated purchase-lot proceeds; a low-net purchase cannot bypass the budget guard. At that floor, the maximum attributable cost is $0.07 per Improvise, $0.14 per Music DNA song and $0.014 per DJ generated minute.
 
 These are **allowable budgets, not measured production costs or a claim that current workers meet them**. Qualification must include startup/idle allocation, generation, failed work, storage/operations, support, tax and provider fees. If measured reliable caps exceed these budgets, optimize the service or review the catalog with the owner before activation. Do not silently charge a different number of credits. A paid request fails closed when its cap exceeds budget.

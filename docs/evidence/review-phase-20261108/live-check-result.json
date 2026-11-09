@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "startedAt": "2026-11-09T02:09:30.357Z",
+  "prepareCalls": 1,
+  "submitCalls": 1,
+  "beforeTest": {
+    "available": 2960,
+    "reserved": 0
+  },
+  "beforeLive": {
+    "available": 0,
+    "reserved": 0
+  },
+  "capacityState": "ready",
+  "observedAt": "2026-11-09T02:22:59.243Z",
+  "readyAt": "2026-11-09T02:23:10.617Z",
+  "sourceId": "ad18a28494a34f06a4a5aebf87d3dbb7",
+  "requestId": "c51e1c2c53684b19a6678991fc49cfea",
+  "result": {
+    "state": "completed",
+    "credits": 10,
+    "seconds": 38,
+    "bytes": 7296044,
+    "sha256": "604688da0dadc0b4ab6896eed301dbfecc97420d76b6d4f034f4c882d894d46d",
+    "executionMs": "93188",
+    "estimatedCostMicros": 40680,
+    "visibility": "private"
+  },
+  "privateAudioProtected": true,
+  "afterTest": {
+    "available": 2950,
+    "reserved": 0
+  },
+  "afterLive": {
+    "available": 0,
+    "reserved": 0
+  },
+  "idleShutdown": true,
+  "finishedAt": "2026-11-09T02:27:19.393Z"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "siteTests": 222,
+  "isolatedCapacityAndCloudSongTests": 34,
+  "typecheck": "PASS",
+  "productionBuild": "PASS on Vercel",
+  "localTestDatabaseRemoved": true,
+  "hostedCreation": "PASS on initial review candidate",
+  "hostedRepeatPreparation": "PASS on 30dbe5bb",
+  "independentFinalReadback": "PASS",
+  "harnessConsoleIssue": "Initial verification saved its complete PASS receipt, then its final console formatter rejected a BigInt. No assertions failed. Safe formatting is fixed in the archived harness; independent database/audio/object/capacity readback passes. No song rerun."
+}

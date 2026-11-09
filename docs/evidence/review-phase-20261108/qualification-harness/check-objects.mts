@@ -1,0 +1,7 @@
+import {read,database,save} from './deployed-common.mts';import {r2Client} from '../apps/site/lib/audio-store';import {createRequire} from 'node:module';import assert from 'node:assert/strict';
+const require=createRequire(new URL('../apps/site/package.json',import.meta.url)),{HeadObjectCommand}=require('@aws-sdk/client-s3');const pool=database(),client=r2Client(),result=await read('live-check-result.json');try{
+ const row=(await pool.query('SELECT d.audio_key,c.output_key,s.object_key FROM dna_song_jobs d JOIN cloud_song_runs c ON c.id=d.id JOIN song_uploads s ON s.id=c.source_id WHERE d.id=$1',[result.requestId])).rows[0];let absent=0;
+ for(const key of [row.output_key,row.object_key]){let missing=false;try{await client.send(new HeadObjectCommand({Bucket:process.env.R2_BUCKET,Key:key}),{abortSignal:AbortSignal.timeout(15000)});}catch(e:any){if(e?.$metadata?.httpStatusCode===404)missing=true;else throw e;}assert(missing);absent++;}
+ const audio=await client.send(new HeadObjectCommand({Bucket:process.env.R2_BUCKET,Key:row.audio_key}),{abortSignal:AbortSignal.timeout(15000)});assert.equal(audio.ContentLength,result.result.bytes);
+ const report={status:'PASS',at:new Date().toISOString(),temporaryObjectsAbsent:absent,completedPrivateSongRetained:true,bytes:audio.ContentLength,mutations:false};await save('object-readback.json',report);console.log(JSON.stringify(report));
+}finally{client.destroy();await pool.end();}
