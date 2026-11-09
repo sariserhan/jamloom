@@ -1,0 +1,55 @@
+{
+  "id": "dj-release-check-20261026-with-failed-start",
+  "catalog": "2026-10-31-v2",
+  "product": "ai-dj",
+  "deliveredUnits": 20,
+  "failedRequests": 0,
+  "resources": [
+    "57860455",
+    "57869284"
+  ],
+  "charges": [
+    {
+      "id": "vast-instance-57860455",
+      "resource": "57860455",
+      "micros": 58000,
+      "evidence": "dj-billing.json#sha256=4c72f2fbc8bb5e2d25b184cc1ef8ab0e452d1a080f9aaa7cbbfcfa564ed8ecab"
+    },
+    {
+      "id": "vast-instance-57869284",
+      "resource": "57869284",
+      "micros": 102000,
+      "evidence": "dj-billing.json#sha256=c2ac1c0f8d8ef63f47f52c70e843062bebde6a91f9846a7e6cdf982e2e4d7eb5"
+    }
+  ],
+  "overhead": {
+    "orchestration": {
+      "micros": null,
+      "evidence": null
+    },
+    "storage": {
+      "micros": null,
+      "evidence": null
+    },
+    "bandwidth": {
+      "micros": null,
+      "evidence": null
+    },
+    "inference": {
+      "micros": null,
+      "evidence": null
+    },
+    "support": {
+      "micros": null,
+      "evidence": null
+    },
+    "infrastructure": {
+      "micros": null,
+      "evidence": null
+    },
+    "fxTaxRisk": {
+      "micros": null,
+      "evidence": null
+    }
+  }
+}

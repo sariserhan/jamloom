@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-09T01:54:55.337Z",
+  "mutations": false,
+  "version": "0.11.0",
+  "state": "READY_FOR_REVIEW",
+  "releaseType": "MANUAL",
+  "build": {
+    "version": "39",
+    "state": "VALID"
+  },
+  "review": {
+    "credentialsPresent": true,
+    "contactPresent": true,
+    "notesStillDraft": true
+  },
+  "submission": {
+    "state": "READY_FOR_REVIEW",
+    "submittedDate": null,
+    "itemCount": 5,
+    "items": [
+      {
+        "id": "Y2YwZDE1NjctZTg0NS00YWFjLTg3YWEtMzU4YTdmZDU1MTY2fDE4fGQ0NWFjMjc1LTY1NWMtNGM1Ny04ZmZjLWE5YzQ5NjZhYjFmZg",
+        "state": "READY_FOR_REVIEW"
+      },
+      {
+        "id": "Y2YwZDE1NjctZTg0NS00YWFjLTg3YWEtMzU4YTdmZDU1MTY2fDE5fDg5ZDFlYTFiLTU5OTItNDJlZC05ZTdkLTdjNjFkNDg0MDgyMA",
+        "state": "READY_FOR_REVIEW"
+      },
+      {
+        "id": "Y2YwZDE1NjctZTg0NS00YWFjLTg3YWEtMzU4YTdmZDU1MTY2fDE3fGY5MzdiZmViLTc5MmEtNDY5MS05ZTNlLWU2OWIxMWQ4ODdhMg",
+        "state": "READY_FOR_REVIEW"
+      },
+      {
+        "id": "Y2YwZDE1NjctZTg0NS00YWFjLTg3YWEtMzU4YTdmZDU1MTY2fDE3fDA1NzcyYzQ2LWI4ZGMtNDEwZi1iNjZlLTNlYmE4Y2JjM2I4ZA",
+        "state": "READY_FOR_REVIEW"
+      },
+      {
+        "id": "Y2YwZDE1NjctZTg0NS00YWFjLTg3YWEtMzU4YTdmZDU1MTY2fDZ8ODkzNzg3MTE0",
+        "state": "READY_FOR_REVIEW"
+      }
+    ]
+  }
+}

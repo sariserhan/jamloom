@@ -1,0 +1,441 @@
+{
+  "scope": "Conservative planning sensitivity only; no tariff, retention or release change",
+  "assumptions": {
+    "authorized": "Owner: Calculate conservative allowances",
+    "support": {
+      "purchaseContactFraction": 0.05,
+      "minutesPerContact": 10,
+      "hourlyUSD": 30,
+      "creditsPerPurchase": 150
+    },
+    "fixedMonthlyUSD": 150,
+    "redeemedCreditsPerMonthScenarios": [
+      30000,
+      150000,
+      300000
+    ],
+    "fixedMonthlyCompositionUSD": {
+      "webAndScheduledOperations": 40,
+      "database": 40,
+      "monitoringGuardianBackups": 40,
+      "billingRoundingAndContingency": 30
+    },
+    "storageUSDPerGBMonth": 0.015,
+    "retainedMonthsScenarios": [
+      12,
+      60
+    ],
+    "metadataBandwidthReserveUSDPerCredit": 0.0001,
+    "additionalInferenceReserveUSDPerCredit": 0.0001,
+    "fxTaxRiskFractionOfNetFloor": 0.02,
+    "netUSDPerCreditFloor": 0.02,
+    "targetMargin": 0.65,
+    "notes": [
+      "Planning allowances, not invoices or observed traffic. No free-tier discounts.",
+      "Storage horizon is not a deletion rule: completed songs and ready saved sets remain until deleted. Longer retention costs more.",
+      "DJ storage assumes every generated minute is saved at 2 MB/minute, above twice the requested 128 kbit/s recording rate. Browser bitrate is advisory, so actual file bytes still require measurement.",
+      "Saved songs and sets use signed R2 download redirects with free R2 egress. Bandwidth reserve covers metadata and other traffic, not an invented charge for those audio downloads.",
+      "GPU startup, idle and failures must be included in complete provider costs; they are not covered by the shared hosting reserve.",
+      "Additional inference is a contingency for non-GPU calls, not a second charge for included model execution.",
+      "Fixed hosting is a planning envelope, not a measured ceiling; verify invoices and actual redemptions before qualification."
+    ]
+  },
+  "scenarios": [
+    {
+      "product": "improvise",
+      "retainedMonths": 12,
+      "monthlyRedeemedCredits": 30000,
+      "unitBudgetUSD": 0.07,
+      "providerUSD": 0.05014,
+      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "allowancesUSD": {
+        "support": 0.016667,
+        "storage": 0.00162,
+        "bandwidth": 0.001,
+        "orchestration": 0.003,
+        "inference": 0.001,
+        "fxTaxRisk": 0.004,
+        "infrastructure": 0.05
+      },
+      "allowancesTotalUSD": 0.077287,
+      "maximumWholeProviderUSD": -0.007287,
+      "knownOrEstimatedPlusAllowancesUSD": 0.127427,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "music-dna",
+      "retainedMonths": 12,
+      "monthlyRedeemedCredits": 30000,
+      "unitBudgetUSD": 0.14,
+      "providerUSD": null,
+      "providerBasis": "no complete attributable cohort",
+      "allowancesUSD": {
+        "support": 0.033334,
+        "storage": 0.00486,
+        "bandwidth": 0.002,
+        "orchestration": 0.005,
+        "inference": 0.002,
+        "fxTaxRisk": 0.008,
+        "infrastructure": 0.1
+      },
+      "allowancesTotalUSD": 0.155194,
+      "maximumWholeProviderUSD": -0.015194,
+      "knownOrEstimatedPlusAllowancesUSD": null,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "ai-dj",
+      "retainedMonths": 12,
+      "monthlyRedeemedCredits": 30000,
+      "unitBudgetUSD": 0.014,
+      "providerUSD": 0.008,
+      "providerBasis": "posted whole-instance cohort, including failed startup",
+      "allowancesUSD": {
+        "support": 0.003334,
+        "storage": 0.00036,
+        "bandwidth": 0.0002,
+        "orchestration": 0.001,
+        "inference": 0.0002,
+        "fxTaxRisk": 0.0008,
+        "infrastructure": 0.01
+      },
+      "allowancesTotalUSD": 0.015894,
+      "maximumWholeProviderUSD": -0.001894,
+      "knownOrEstimatedPlusAllowancesUSD": 0.023894,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "improvise",
+      "retainedMonths": 12,
+      "monthlyRedeemedCredits": 150000,
+      "unitBudgetUSD": 0.07,
+      "providerUSD": 0.05014,
+      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "allowancesUSD": {
+        "support": 0.016667,
+        "storage": 0.00162,
+        "bandwidth": 0.001,
+        "orchestration": 0.003,
+        "inference": 0.001,
+        "fxTaxRisk": 0.004,
+        "infrastructure": 0.01
+      },
+      "allowancesTotalUSD": 0.037287,
+      "maximumWholeProviderUSD": 0.032713,
+      "knownOrEstimatedPlusAllowancesUSD": 0.087427,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "music-dna",
+      "retainedMonths": 12,
+      "monthlyRedeemedCredits": 150000,
+      "unitBudgetUSD": 0.14,
+      "providerUSD": null,
+      "providerBasis": "no complete attributable cohort",
+      "allowancesUSD": {
+        "support": 0.033334,
+        "storage": 0.00486,
+        "bandwidth": 0.002,
+        "orchestration": 0.005,
+        "inference": 0.002,
+        "fxTaxRisk": 0.008,
+        "infrastructure": 0.02
+      },
+      "allowancesTotalUSD": 0.075194,
+      "maximumWholeProviderUSD": 0.064806,
+      "knownOrEstimatedPlusAllowancesUSD": null,
+      "planningStatus": "PARTIAL",
+      "commercialQualification": false
+    },
+    {
+      "product": "ai-dj",
+      "retainedMonths": 12,
+      "monthlyRedeemedCredits": 150000,
+      "unitBudgetUSD": 0.014,
+      "providerUSD": 0.008,
+      "providerBasis": "posted whole-instance cohort, including failed startup",
+      "allowancesUSD": {
+        "support": 0.003334,
+        "storage": 0.00036,
+        "bandwidth": 0.0002,
+        "orchestration": 0.001,
+        "inference": 0.0002,
+        "fxTaxRisk": 0.0008,
+        "infrastructure": 0.002
+      },
+      "allowancesTotalUSD": 0.007894,
+      "maximumWholeProviderUSD": 0.006106,
+      "knownOrEstimatedPlusAllowancesUSD": 0.015894,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "improvise",
+      "retainedMonths": 12,
+      "monthlyRedeemedCredits": 300000,
+      "unitBudgetUSD": 0.07,
+      "providerUSD": 0.05014,
+      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "allowancesUSD": {
+        "support": 0.016667,
+        "storage": 0.00162,
+        "bandwidth": 0.001,
+        "orchestration": 0.003,
+        "inference": 0.001,
+        "fxTaxRisk": 0.004,
+        "infrastructure": 0.005
+      },
+      "allowancesTotalUSD": 0.032287,
+      "maximumWholeProviderUSD": 0.037713,
+      "knownOrEstimatedPlusAllowancesUSD": 0.082427,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "music-dna",
+      "retainedMonths": 12,
+      "monthlyRedeemedCredits": 300000,
+      "unitBudgetUSD": 0.14,
+      "providerUSD": null,
+      "providerBasis": "no complete attributable cohort",
+      "allowancesUSD": {
+        "support": 0.033334,
+        "storage": 0.00486,
+        "bandwidth": 0.002,
+        "orchestration": 0.005,
+        "inference": 0.002,
+        "fxTaxRisk": 0.008,
+        "infrastructure": 0.01
+      },
+      "allowancesTotalUSD": 0.065194,
+      "maximumWholeProviderUSD": 0.074806,
+      "knownOrEstimatedPlusAllowancesUSD": null,
+      "planningStatus": "PARTIAL",
+      "commercialQualification": false
+    },
+    {
+      "product": "ai-dj",
+      "retainedMonths": 12,
+      "monthlyRedeemedCredits": 300000,
+      "unitBudgetUSD": 0.014,
+      "providerUSD": 0.008,
+      "providerBasis": "posted whole-instance cohort, including failed startup",
+      "allowancesUSD": {
+        "support": 0.003334,
+        "storage": 0.00036,
+        "bandwidth": 0.0002,
+        "orchestration": 0.001,
+        "inference": 0.0002,
+        "fxTaxRisk": 0.0008,
+        "infrastructure": 0.001
+      },
+      "allowancesTotalUSD": 0.006894,
+      "maximumWholeProviderUSD": 0.007106,
+      "knownOrEstimatedPlusAllowancesUSD": 0.014894,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "improvise",
+      "retainedMonths": 60,
+      "monthlyRedeemedCredits": 30000,
+      "unitBudgetUSD": 0.07,
+      "providerUSD": 0.05014,
+      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "allowancesUSD": {
+        "support": 0.016667,
+        "storage": 0.0081,
+        "bandwidth": 0.001,
+        "orchestration": 0.003,
+        "inference": 0.001,
+        "fxTaxRisk": 0.004,
+        "infrastructure": 0.05
+      },
+      "allowancesTotalUSD": 0.083767,
+      "maximumWholeProviderUSD": -0.013767,
+      "knownOrEstimatedPlusAllowancesUSD": 0.133907,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "music-dna",
+      "retainedMonths": 60,
+      "monthlyRedeemedCredits": 30000,
+      "unitBudgetUSD": 0.14,
+      "providerUSD": null,
+      "providerBasis": "no complete attributable cohort",
+      "allowancesUSD": {
+        "support": 0.033334,
+        "storage": 0.0243,
+        "bandwidth": 0.002,
+        "orchestration": 0.005,
+        "inference": 0.002,
+        "fxTaxRisk": 0.008,
+        "infrastructure": 0.1
+      },
+      "allowancesTotalUSD": 0.174634,
+      "maximumWholeProviderUSD": -0.034634,
+      "knownOrEstimatedPlusAllowancesUSD": null,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "ai-dj",
+      "retainedMonths": 60,
+      "monthlyRedeemedCredits": 30000,
+      "unitBudgetUSD": 0.014,
+      "providerUSD": 0.008,
+      "providerBasis": "posted whole-instance cohort, including failed startup",
+      "allowancesUSD": {
+        "support": 0.003334,
+        "storage": 0.0018,
+        "bandwidth": 0.0002,
+        "orchestration": 0.001,
+        "inference": 0.0002,
+        "fxTaxRisk": 0.0008,
+        "infrastructure": 0.01
+      },
+      "allowancesTotalUSD": 0.017334,
+      "maximumWholeProviderUSD": -0.003334,
+      "knownOrEstimatedPlusAllowancesUSD": 0.025334,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "improvise",
+      "retainedMonths": 60,
+      "monthlyRedeemedCredits": 150000,
+      "unitBudgetUSD": 0.07,
+      "providerUSD": 0.05014,
+      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "allowancesUSD": {
+        "support": 0.016667,
+        "storage": 0.0081,
+        "bandwidth": 0.001,
+        "orchestration": 0.003,
+        "inference": 0.001,
+        "fxTaxRisk": 0.004,
+        "infrastructure": 0.01
+      },
+      "allowancesTotalUSD": 0.043767,
+      "maximumWholeProviderUSD": 0.026233,
+      "knownOrEstimatedPlusAllowancesUSD": 0.093907,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "music-dna",
+      "retainedMonths": 60,
+      "monthlyRedeemedCredits": 150000,
+      "unitBudgetUSD": 0.14,
+      "providerUSD": null,
+      "providerBasis": "no complete attributable cohort",
+      "allowancesUSD": {
+        "support": 0.033334,
+        "storage": 0.0243,
+        "bandwidth": 0.002,
+        "orchestration": 0.005,
+        "inference": 0.002,
+        "fxTaxRisk": 0.008,
+        "infrastructure": 0.02
+      },
+      "allowancesTotalUSD": 0.094634,
+      "maximumWholeProviderUSD": 0.045366,
+      "knownOrEstimatedPlusAllowancesUSD": null,
+      "planningStatus": "PARTIAL",
+      "commercialQualification": false
+    },
+    {
+      "product": "ai-dj",
+      "retainedMonths": 60,
+      "monthlyRedeemedCredits": 150000,
+      "unitBudgetUSD": 0.014,
+      "providerUSD": 0.008,
+      "providerBasis": "posted whole-instance cohort, including failed startup",
+      "allowancesUSD": {
+        "support": 0.003334,
+        "storage": 0.0018,
+        "bandwidth": 0.0002,
+        "orchestration": 0.001,
+        "inference": 0.0002,
+        "fxTaxRisk": 0.0008,
+        "infrastructure": 0.002
+      },
+      "allowancesTotalUSD": 0.009334,
+      "maximumWholeProviderUSD": 0.004666,
+      "knownOrEstimatedPlusAllowancesUSD": 0.017334,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "improvise",
+      "retainedMonths": 60,
+      "monthlyRedeemedCredits": 300000,
+      "unitBudgetUSD": 0.07,
+      "providerUSD": 0.05014,
+      "providerBasis": "execution estimate only; startup/idle/failure missing",
+      "allowancesUSD": {
+        "support": 0.016667,
+        "storage": 0.0081,
+        "bandwidth": 0.001,
+        "orchestration": 0.003,
+        "inference": 0.001,
+        "fxTaxRisk": 0.004,
+        "infrastructure": 0.005
+      },
+      "allowancesTotalUSD": 0.038767,
+      "maximumWholeProviderUSD": 0.031233,
+      "knownOrEstimatedPlusAllowancesUSD": 0.088907,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    },
+    {
+      "product": "music-dna",
+      "retainedMonths": 60,
+      "monthlyRedeemedCredits": 300000,
+      "unitBudgetUSD": 0.14,
+      "providerUSD": null,
+      "providerBasis": "no complete attributable cohort",
+      "allowancesUSD": {
+        "support": 0.033334,
+        "storage": 0.0243,
+        "bandwidth": 0.002,
+        "orchestration": 0.005,
+        "inference": 0.002,
+        "fxTaxRisk": 0.008,
+        "infrastructure": 0.01
+      },
+      "allowancesTotalUSD": 0.084634,
+      "maximumWholeProviderUSD": 0.055366,
+      "knownOrEstimatedPlusAllowancesUSD": null,
+      "planningStatus": "PARTIAL",
+      "commercialQualification": false
+    },
+    {
+      "product": "ai-dj",
+      "retainedMonths": 60,
+      "monthlyRedeemedCredits": 300000,
+      "unitBudgetUSD": 0.014,
+      "providerUSD": 0.008,
+      "providerBasis": "posted whole-instance cohort, including failed startup",
+      "allowancesUSD": {
+        "support": 0.003334,
+        "storage": 0.0018,
+        "bandwidth": 0.0002,
+        "orchestration": 0.001,
+        "inference": 0.0002,
+        "fxTaxRisk": 0.0008,
+        "infrastructure": 0.001
+      },
+      "allowancesTotalUSD": 0.008334,
+      "maximumWholeProviderUSD": 0.005666,
+      "knownOrEstimatedPlusAllowancesUSD": 0.016334,
+      "planningStatus": "FAIL",
+      "commercialQualification": false
+    }
+  ]
+}

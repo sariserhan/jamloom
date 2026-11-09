@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T02:02:34.664Z",
+  "scope": "Authentication and local configuration validation only",
+  "accounts": [
+    {
+      "authenticated": true,
+      "signedOut": true,
+      "testCredits": 2960,
+      "reserved": 0,
+      "liveWalletUnchanged": true
+    },
+    {
+      "authenticated": true,
+      "signedOut": true,
+      "testCredits": 10,
+      "reserved": 0,
+      "liveWalletUnchanged": true
+    }
+  ],
+  "priorGenerationCapReservationsMicros": 1246200,
+  "additionalGenerationAllowanceMicros": 2072000,
+  "configuredAggregateGenerationAllowanceMicros": 3318200,
+  "products": [
+    {
+      "product": "improvise",
+      "capMicros": 68400,
+      "testLedger": true
+    },
+    {
+      "product": "music-dna",
+      "capMicros": 138800,
+      "testLedger": true
+    }
+  ],
+  "permitIssued": false,
+  "providerActivationCalls": 0,
+  "deploymentPerformed": false,
+  "capacityMaxUSD": 7.5,
+  "maxCycles": 10,
+  "publicGeneration": false,
+  "publicSales": false,
+  "costQualification": false,
+  "nativeOrigin": "https://www.jamloom.com",
+  "requiresBackendOrderingDecision": true
+}

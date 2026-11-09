@@ -1,0 +1,41 @@
+{
+  "id": "improvise-private-20261108",
+  "catalog": "2026-10-31-v2",
+  "product": "improvise",
+  "deliveredUnits": 1,
+  "failedRequests": 0,
+  "resources": [
+    "degkrzuva589xs"
+  ],
+  "charges": [],
+  "overhead": {
+    "orchestration": {
+      "micros": null,
+      "evidence": null
+    },
+    "storage": {
+      "micros": null,
+      "evidence": null
+    },
+    "bandwidth": {
+      "micros": null,
+      "evidence": null
+    },
+    "inference": {
+      "micros": null,
+      "evidence": null
+    },
+    "support": {
+      "micros": null,
+      "evidence": null
+    },
+    "infrastructure": {
+      "micros": null,
+      "evidence": null
+    },
+    "fxTaxRisk": {
+      "micros": null,
+      "evidence": null
+    }
+  }
+}

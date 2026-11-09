@@ -1,0 +1,24 @@
+{
+  "at": "2026-11-09T01:57:52.338Z",
+  "mutations": false,
+  "inventoryEmpty": true,
+  "rows": [
+    {
+      "instance": 57860455,
+      "label": "jamloom-dj-release-check-20261026",
+      "status": "PASS",
+      "observedCostMicros": 58000,
+      "sha256": "4c72f2fbc8bb5e2d25b184cc1ef8ab0e452d1a080f9aaa7cbbfcfa564ed8ecab",
+      "finalInvoice": false
+    },
+    {
+      "instance": 57869284,
+      "label": "jamloom-dj-release-check-20261026-retry",
+      "status": "PASS",
+      "observedCostMicros": 102000,
+      "sha256": "c2ac1c0f8d8ef63f47f52c70e843062bebde6a91f9846a7e6cdf982e2e4d7eb5",
+      "finalInvoice": false
+    }
+  ],
+  "totalPostedMicros": 160000
+}

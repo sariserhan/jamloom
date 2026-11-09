@@ -1,0 +1,31 @@
+{
+  "id": "improvise-private-20261108",
+  "catalog": "2026-10-31-v2",
+  "product": "improvise",
+  "status": "PARTIAL",
+  "scope": "Measured cohort only; not production qualification or permission to enable sales",
+  "deliveredUnits": 1,
+  "failedRequests": 0,
+  "unitBudgetMicros": 70000,
+  "budgetMicros": 70000,
+  "postedProviderMicros": 0,
+  "knownOverheadMicros": 0,
+  "knownCostMicros": 0,
+  "costPerDeliveredUnitMicros": 0,
+  "remainingBudgetMicros": 70000,
+  "missingResources": [
+    "degkrzuva589xs"
+  ],
+  "missingOverhead": [
+    "orchestration",
+    "storage",
+    "bandwidth",
+    "inference",
+    "support",
+    "infrastructure",
+    "fxTaxRisk"
+  ],
+  "completeCostEvidence": false,
+  "missingCostsAreNotZero": true,
+  "qualificationEnabled": false
+}

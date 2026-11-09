@@ -1,0 +1,13 @@
+{
+  "status": "PROVISIONAL",
+  "at": "2026-11-09T01:58:54.649Z",
+  "scope": "All exact worker IDs observed during active-worker qualification, including startup and idle; $0.75 current cycle cap, $1.75 aggregate reserved ceiling",
+  "rows": [],
+  "notYetReported": [
+    "degkrzuva589xs"
+  ],
+  "reportedUSD": 0,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "mutations": false
+}

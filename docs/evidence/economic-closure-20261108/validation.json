@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "siteTests": 222,
+  "focusedCostTests": 8,
+  "typecheck": "PASS",
+  "planningScenarios": 18,
+  "productionQualificationEnabled": false
+}

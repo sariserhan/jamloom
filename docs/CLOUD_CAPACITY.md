@@ -41,10 +41,12 @@ If ready capacity returns to initializing without admitted jobs, the cycle retur
 
 ## Release order
 
+**November 8 owner exception:** “Allow review-only update and bounded review funding.” The approved seven-day/$7.50 review phase may update `www.jamloom.com` for exactly two allowlisted accounts while commercial economics continues. This is necessary because native build 39 accepts only that origin. Public purchases/generation remain disabled; commercial deployment/release still comes last. [Approved scope](evidence/review-phase-20261108/approved-plan.json). This supersedes the former cost-before-private-review ordering below, not commercial qualification.
+
 1. Preserve the owner's Git-push control and public-deployment-last instruction. Necessary production migration 0034, backup/hash checks and build-39 upload are complete. Private staging is authorized.
 2. The private candidate and independent guardian have passed ordinary preparation → delivery → idle shutdown, with no monitored errors. GET recovery and lost-response/crash/configuration recovery have local test evidence; the successful ordinary run is not hosted fault injection.
 3. Reconcile complete attributable startup, idle, failed work, execution, storage and operational costs against the unchanged catalog. Keep cost qualification unset until the evidence passes. AI DJ economics is separate; the owner-closed endurance study stays closed.
-4. Obtain the separate concrete review-capacity funding authorization, verify reviewer access for the finite period and finalize the existing Apple draft. The prepared seven-day/$7.50 proposal is not authorized and cannot reuse the consumed diagnostic.
+4. The separate seven-day/$7.50 review-capacity authorization is approved. Verify reviewer access for its finite period and finalize the existing Apple draft. It uses a new permit, never the consumed diagnostic.
 5. Complete Apple submission/approval and qualified existing Stripe activation under the release authorization. Report Apple submission, approval and public availability separately. Build 39 is VALID and selected; release remains MANUAL.
 6. Perform public deployment/release last, after applicable readiness/provider/economic gates pass. Never promote a temporary diagnostic with its synthetic database or expired permit.
 

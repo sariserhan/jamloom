@@ -1,0 +1,29 @@
+{
+  "id": "dj-release-check-20261026-with-failed-start",
+  "catalog": "2026-10-31-v2",
+  "product": "ai-dj",
+  "status": "PARTIAL",
+  "scope": "Measured cohort only; not production qualification or permission to enable sales",
+  "deliveredUnits": 20,
+  "failedRequests": 0,
+  "unitBudgetMicros": 14000,
+  "budgetMicros": 280000,
+  "postedProviderMicros": 160000,
+  "knownOverheadMicros": 0,
+  "knownCostMicros": 160000,
+  "costPerDeliveredUnitMicros": 8000,
+  "remainingBudgetMicros": 120000,
+  "missingResources": [],
+  "missingOverhead": [
+    "orchestration",
+    "storage",
+    "bandwidth",
+    "inference",
+    "support",
+    "infrastructure",
+    "fxTaxRisk"
+  ],
+  "completeCostEvidence": false,
+  "missingCostsAreNotZero": true,
+  "qualificationEnabled": false
+}
