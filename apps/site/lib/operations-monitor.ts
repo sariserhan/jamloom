@@ -3,11 +3,12 @@ import type {Pool} from 'pg';
 import {capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from './cloud-capacity-permit';
 import {CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 import {protectCreatorRenewals,resumeFundedCreatorRenewals} from './creator-renewals';
-import {providerReplenishmentPlan} from './provider-replenishment';
+import {providerReplenishmentPlan,inspectProviderAutoPay,type ProviderAutoPay} from './provider-replenishment';
 import {gpuRevenueBalance,gpuRevenueEnabled,runpodBalanceMicros,settleGpuProceeds} from './gpu-revenue';
 import {creditBilling} from './stripe-payments';
 
 export const operationMessages={
+ 'provider-autopay-mismatch':'Runpod auto-pay no longer matches the owner-approved cash buffer: enabled, $50 per reload, below $5. Inspect Billing. Deposits do not increase the 20% GPU usage allowance.',
  'provider-recharge-ready':'Settled revenue can cover a $10 provider recharge and prepaid capacity is low. Review Runpod Billing and replenish within the recorded revenue-backed shortfall. Native auto-pay is not revenue-capped; do not enable an unbounded reload.',
  'apple-finance-read-failed':'The scheduled Apple financial report read failed. Check the report credential, vendor and service logs. No unverified proceeds were added to GPU funding.',
  'apple-finance-review':'An Apple financial report changed or a live refund requires reconciliation. Apple GPU funding is held pending verified payment/refund evidence.',
@@ -34,7 +35,7 @@ export async function sendOperationAlert(code:OperationAlert,env:Record<string,s
  const result=await response.json();if(typeof result.id!=='string')throw Error('Operating alert receipt missing');
  return {code,emailID:result.id};
 }
-export type OperationSnapshot={now:number;expiresAt:number|null;remainingMicros:number;revenueMicros?:number;providerMicros?:number;cycleMicros:number;guardianOK:boolean;shutdownFailed:boolean;providerMismatch:boolean;workers:number;liveFailures:number;overdueCleanup:number};
+export type OperationSnapshot={now:number;expiresAt:number|null;remainingMicros:number;revenueMicros?:number;providerMicros?:number;providerAutoPay?:ProviderAutoPay;cycleMicros:number;guardianOK:boolean;shutdownFailed:boolean;providerMismatch:boolean;workers:number;liveFailures:number;overdueCleanup:number};
 export function operationAlerts(s:OperationSnapshot):OperationAlert[]{
  const alerts:OperationAlert[]=[],expired=s.expiresAt!==null&&s.now>=s.expiresAt;
  if(expired||s.remainingMicros<s.cycleMicros)alerts.push('budget-unavailable');
@@ -45,7 +46,8 @@ export function operationAlerts(s:OperationSnapshot):OperationAlert[]{
  if(!expired&&!s.guardianOK)alerts.push('guardian-stale');
  if(s.shutdownFailed||s.providerMismatch||expired&&s.workers>0)alerts.push('shutdown-unconfirmed');
  if(s.liveFailures>0||s.overdueCleanup>0)alerts.push('generation-failed');
- if(s.revenueMicros!==undefined&&s.providerMicros!==undefined&&providerReplenishmentPlan(s.revenueMicros,s.providerMicros,s.cycleMicros).suggestedMicros>0)alerts.push('provider-recharge-ready');
+ if(s.providerAutoPay){if(!s.providerAutoPay.matchesApprovedPolicy)alerts.push('provider-autopay-mismatch');}
+ else if(s.revenueMicros!==undefined&&s.providerMicros!==undefined&&providerReplenishmentPlan(s.revenueMicros,s.providerMicros,s.cycleMicros).suggestedMicros>0)alerts.push('provider-recharge-ready');
  return alerts;
 }
 export async function inspectOperations(pool:Pick<Pool,'query'>,env:Record<string,string|undefined>=process.env,request:typeof fetch=fetch,now=Date.now()){
@@ -74,7 +76,8 @@ export async function inspectOperations(pool:Pick<Pool,'query'>,env:Record<strin
   const revenue=await gpuRevenueBalance(pool);revenueMicros=revenue;providerMicros=providerBalance;
   remaining=Math.min(providerBalance,Math.floor(remaining/p.cycleMicros)*p.cycleMicros+Math.max(0,Math.floor(revenue/p.cycleMicros))*p.cycleMicros);
  }
- const snapshot:OperationSnapshot={now,expiresAt:p.revenueShareBps===2000?null:p.expiresAt,remainingMicros:remaining,...(revenueMicros===undefined?{}:{revenueMicros,providerMicros}),cycleMicros:p.cycleMicros,
+ const providerAutoPay=await inspectProviderAutoPay(env,request);
+ const snapshot:OperationSnapshot={now,expiresAt:p.revenueShareBps===2000?null:p.expiresAt,remainingMicros:remaining,...(revenueMicros===undefined?{}:{revenueMicros,providerMicros}),...(providerAutoPay?{providerAutoPay}:{}),cycleMicros:p.cycleMicros,
   guardianOK:!!g&&g.config_sha256===hash&&Number(g.checked_at)<=now&&now-Number(g.checked_at)<90000,
   shutdownFailed:Number(cycles.rows[0]?.failed)>0||!capacityWindowOpen(p,now)&&(c.workers?.min!==0||c.workers?.max!==0),
   providerMismatch:c.id!==endpoint||c.image!==CLOUD_WORKER_IMAGE||!!grantRow&&grantRow.config_sha256!==capacityPermitHash(seedPermit(p),endpoint,profile,CLOUD_WORKER_IMAGE),

@@ -1,0 +1,35 @@
+{
+  "status": "PASS read-only snapshot",
+  "at": "2026-11-09T14:15:53.260Z",
+  "stripe": {
+    "receipts": 0,
+    "settled_receipts": 0,
+    "settled_net_micros": "0"
+  },
+  "apple": [],
+  "checks": [
+    {
+      "fiscal_month": "2026-09",
+      "result": "no_sales",
+      "checked_at": "2026-11-09T13:04:29.555Z"
+    },
+    {
+      "fiscal_month": "2026-10",
+      "result": "no_sales",
+      "checked_at": "2026-11-09T13:04:28.751Z"
+    },
+    {
+      "fiscal_month": "2026-11",
+      "result": "no_sales",
+      "checked_at": "2026-11-09T13:04:28.011Z"
+    }
+  ],
+  "provider": [
+    {
+      "balance_micros": "11384561",
+      "checked_at": "1794233573325"
+    }
+  ],
+  "availableMicros": 0,
+  "mutations": false
+}

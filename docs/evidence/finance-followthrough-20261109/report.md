@@ -1,0 +1,9 @@
+# Financial follow-through — November 9, 2026
+
+PARTIAL configuration in progress. The owner approved a separate native Runpod cash buffer: reload $50 below a $5 balance, recurring with no monthly cap shown. This does not change the 20% net-proceeds GPU usage policy, one-L4 limit, existing seed or economic qualification. The signed-in console save and API verification are pending. A monitoring change validates the exact approved settings and suppresses obsolete manual recharge reminders when this policy is configured. It cannot charge a card or mint revenue.
+
+The owner identified the payout bank privately. Finances was offered as a possible transaction source; connection and usable transaction evidence are not yet confirmed. A ChatGPT connection alone is not evidence of an unattended server bank feed. Apple reporting already runs daily; September–November remain `no_sales`. The read-only live ledger has zero Stripe payment proceeds, zero Apple financial reports and zero revenue-funded GPU balance. There is no current Jamloom payout to allocate.
+
+Current Vercel project usage is $2.656881 effective / $1.119091 billed for the selected November 1–8 period. This includes $1.344 effective build CPU, and excludes unattributed plan charges and other providers. These are usage snapshots, not a final invoice, a complete shared-cost allocation or customer demand evidence. The $150/month planning allowance is not silently replaced with this partial measurement. Startup/idle/failure exposure, complete overhead and indefinite retention still prevent the 65% qualification from being asserted. Renewals remain held.
+
+Sources: [Runpod auto-pay](https://docs.runpod.io/accounts-billing/billing), [Apple payment versus received bank amount](https://developer.apple.com/help/app-store-connect/getting-paid/view-payments-and-proceeds/). Context7 was unavailable; current official documentation was checked directly.
