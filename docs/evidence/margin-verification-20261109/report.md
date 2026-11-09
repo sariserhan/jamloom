@@ -2,6 +2,8 @@
 
 **PASS available-source collection and deployed renewal hold; FAIL low-volume planning scenarios; PARTIAL complete 65% qualification.** This audit does not qualify the catalog. The task remains open for actual expense evidence, a supported retention model and representative complete GPU cycles. No cost, funding or release setting was changed.
 
+**Owner decision after the audit — November 9:** “keep it at $150.” Retain **$150/month** for shared operating costs in planning. This resolves the requested choice of allowance; no replacement expense amount is requested. It does not turn the allowance into a measured invoice or change the 65% target, prices, storage policy, GPU authority or renewal hold. Existing scenario calculations already use $150 and remain unchanged.
+
 ## What was verified
 
 - [Live ledger](ledger.json), read in a repeatable-read, read-only Neon transaction at 9:45 a.m. Eastern: zero settled Stripe proceeds, no Apple proceeds, no live paid credit lots or live Creator subscriptions. Existing receipts are test/sandbox. No observed customer margin can be divided by zero revenue. Support tickets and saved DJ recordings are empty; that does not establish future zero support or recording cost.
@@ -45,9 +47,9 @@ The current **$0.75 cycle reservation is not an actual $0.75 bill**. Nevertheles
 
 ## What closes the task
 
-1. Supply or independently verify the actual shared expenses requested from the owner, and document their allocation. Under the other existing assumptions, all-song support at 10,000 credits/month requires at most **$58.26/month** shared overhead. An expense estimate or a larger assumed user base alone does not close measured qualification.
+1. Retain the owner-confirmed **$150/month** shared allowance. The planning-input decision is complete. Under the other existing assumptions, the Improvise scenario requires at least **25,747 redeemed credits/month** at this allowance; 10,000 credits/month remains a failing scenario. Actual invoices and customer utilization remain operating evidence to collect, rather than grounds to silently lower the selected allowance or assume more customers.
 2. Establish a funded retained-output model: retain the current policy with an explicit, supportable lifetime reserve, or obtain owner approval for a different storage policy. Paid credits remain nonexpiring. This audit cannot silently delete saved music to manufacture margin.
-3. Qualify representative current-image complete GPU lifecycles and failure exposure, then reconcile their provider charges and delivered results. New paid qualification requires a concrete bounded permit under AGENTS.md; neither the customer/review seed nor native card auto-pay automatically authorizes an optimization study. No new paid test is proposed before the non-GPU cost decision, since a test cannot fix a failing shared-cost assumption.
+3. Qualify representative current-image complete GPU lifecycles and failure exposure, then reconcile their provider charges and delivered results. New paid qualification requires a concrete bounded permit under AGENTS.md; neither the customer/review seed nor native card auto-pay automatically authorizes an optimization study. The shared allowance is now confirmed at $150. No new paid test is authorized by that decision; a test cannot by itself make the low-volume scenario pass.
 4. Recalculate using the supported workload, actual receipt mix or the conservative floor, and all attributable cost/reserve evidence. Only a passing reviewed qualification may set the catalog gate; guarded continuation must then independently confirm funded capacity. Actual realized customer margin additionally requires settled customer revenue and corresponding costs.
 
 **Renewals remain held.** Source `creator-renewals.ts` requires both the renewal configuration and matching economic qualification; a passing illustrative cohort cannot enable it. There are currently no live Creator subscriptions to unpause.
