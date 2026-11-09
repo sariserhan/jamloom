@@ -9,6 +9,11 @@ if [ "$(uname -s)" != Darwin ]; then
     exit 1
 fi
 : "${JAMLOOM_SIMULATOR_ID:?Set JAMLOOM_SIMULATOR_ID from xcrun simctl list devices available}"
+# The wrapper preserves already-running simulators and cleans up a device this
+# test run starts, including failed tests and interrupted runs.
+if [ "${JAMLOOM_SIMULATOR_MANAGED-}" != "$JAMLOOM_SIMULATOR_ID" ]; then
+    exec python3 scripts/with_ios_simulator.py --device "$JAMLOOM_SIMULATOR_ID" -- sh scripts/ios_smoke.sh
+fi
 OUTPUT=${JAMLOOM_IOS_OUTPUT:-renders/ios-$(date +%Y%m%d-%H%M%S)}
 if [ -e "$OUTPUT" ]; then
     echo "FAIL: preserving existing evidence: $OUTPUT" >&2

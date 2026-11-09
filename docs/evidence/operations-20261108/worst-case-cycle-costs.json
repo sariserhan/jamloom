@@ -1,0 +1,86 @@
+{
+  "basis": "Full approved cycle reservation, not an actual provider charge; 30000 redeemed credits/month and 60-month storage allowance",
+  "scenarios": [
+    {
+      "product": "improvise",
+      "deliveredSongsPerFullyReservedCycle": 1,
+      "providerCycleReserveUSD": 0.75,
+      "fullyAllocatedCostMicros": 839101,
+      "margin": -0.7980992585608366,
+      "targetPass": false,
+      "minimumSongsPerFullCycleAtTheseAssumptions": 11,
+      "qualification": false
+    },
+    {
+      "product": "improvise",
+      "deliveredSongsPerFullyReservedCycle": 5,
+      "providerCycleReserveUSD": 0.75,
+      "fullyAllocatedCostMicros": 239101,
+      "margin": 0.48763339476278234,
+      "targetPass": false,
+      "minimumSongsPerFullCycleAtTheseAssumptions": 11,
+      "qualification": false
+    },
+    {
+      "product": "improvise",
+      "deliveredSongsPerFullyReservedCycle": 10,
+      "providerCycleReserveUSD": 0.75,
+      "fullyAllocatedCostMicros": 164101,
+      "margin": 0.6483499764282347,
+      "targetPass": false,
+      "minimumSongsPerFullCycleAtTheseAssumptions": 11,
+      "qualification": false
+    },
+    {
+      "product": "improvise",
+      "deliveredSongsPerFullyReservedCycle": 15,
+      "providerCycleReserveUSD": 0.75,
+      "fullyAllocatedCostMicros": 139101,
+      "margin": 0.7019221703167189,
+      "targetPass": true,
+      "minimumSongsPerFullCycleAtTheseAssumptions": 11,
+      "qualification": false
+    },
+    {
+      "product": "music-dna",
+      "deliveredSongsPerFullyReservedCycle": 1,
+      "providerCycleReserveUSD": 0.75,
+      "fullyAllocatedCostMicros": 935301,
+      "margin": -0.0021225303218617153,
+      "targetPass": false,
+      "minimumSongsPerFullCycleAtTheseAssumptions": 6,
+      "qualification": false
+    },
+    {
+      "product": "music-dna",
+      "deliveredSongsPerFullyReservedCycle": 5,
+      "providerCycleReserveUSD": 0.75,
+      "fullyAllocatedCostMicros": 335301,
+      "margin": 0.6407437963399477,
+      "targetPass": false,
+      "minimumSongsPerFullCycleAtTheseAssumptions": 6,
+      "qualification": false
+    },
+    {
+      "product": "music-dna",
+      "deliveredSongsPerFullyReservedCycle": 10,
+      "providerCycleReserveUSD": 0.75,
+      "fullyAllocatedCostMicros": 260301,
+      "margin": 0.7211020871726739,
+      "targetPass": true,
+      "minimumSongsPerFullCycleAtTheseAssumptions": 6,
+      "qualification": false
+    },
+    {
+      "product": "music-dna",
+      "deliveredSongsPerFullyReservedCycle": 15,
+      "providerCycleReserveUSD": 0.75,
+      "fullyAllocatedCostMicros": 235301,
+      "margin": 0.7478881841169159,
+      "targetPass": true,
+      "minimumSongsPerFullCycleAtTheseAssumptions": 6,
+      "qualification": false
+    }
+  ],
+  "conclusion": "A launch allowance caps cash exposure but does not prove 65 percent margin for sparsely used cycles."
+}

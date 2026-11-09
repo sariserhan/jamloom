@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "at": "2026-11-09T04:31:47.046Z",
+  "firstPayment": "paid in sandbox",
+  "nextRenewal": "void, zero paid",
+  "existingDraft": "void, zero paid",
+  "duplicateSafe": true,
+  "autoResumeRemoved": true,
+  "successfulSandboxPayments": 1,
+  "liveCharges": 0
+}

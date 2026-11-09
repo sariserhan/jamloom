@@ -1,0 +1,15 @@
+{
+  "snapshot": {
+    "now": 1794198685650,
+    "expiresAt": 1794800997659,
+    "remainingMicros": 10000000,
+    "cycleMicros": 750000,
+    "guardianOK": true,
+    "shutdownFailed": false,
+    "providerMismatch": false,
+    "workers": 0,
+    "liveFailures": 0,
+    "overdueCleanup": 0
+  },
+  "alerts": []
+}

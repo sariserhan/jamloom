@@ -2,7 +2,7 @@
 import {useEffect,useRef,useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {CREATOR_PLAN,TOP_UP,TRIAL_CREDITS} from '../../../lib/credit-catalog';
-export function CreditBuy({enabled,live,subscribed=false,trialEnabled=false}:{enabled:boolean;live:boolean;subscribed?:boolean;trialEnabled?:boolean}){
+export function CreditBuy({enabled,live,subscribed=false,trialEnabled=false,renewalsPaused=false}:{enabled:boolean;live:boolean;subscribed?:boolean;trialEnabled?:boolean;renewalsPaused?:boolean}){
  const [busy,setBusy]=useState(false),[message,setMessage]=useState(''),keys=useRef<Record<string,string>>({}),router=useRouter();
  useEffect(()=>{
   const id=new URL(location.href).searchParams.get('session_id');if(!id)return;
@@ -28,6 +28,7 @@ export function CreditBuy({enabled,live,subscribed=false,trialEnabled=false}:{en
   }catch(e){setMessage(e instanceof Error?e.message:'Payment service unavailable.');setBusy(false);}
  }
  return <><h2>Creator · ${CREATOR_PLAN.cents/100}/month</h2><p>{CREATOR_PLAN.credits} credits after every successful monthly payment. All paid credits stay in your account without expiry, including after cancellation. Same musical quality on every paid plan.</p>
+ {renewalsPaused&&<p>During this limited launch, your first Creator payment adds 300 credits. Future web renewal payments are paused until continuing service is funded. Paused months add no credits or catch-up charges. Your paid credits never expire.</p>}
  <div className="product-actions"><button className="primary" disabled={!enabled||busy||subscribed} onClick={()=>subscription('subscribe')}>{subscribed?'Already subscribed':'Subscribe to Creator'}</button><button className="secondary" disabled={busy} onClick={()=>subscription('manage')}>Manage subscription</button></div>
  <h2>Add credits without a subscription</h2><p>{TOP_UP.credits} credits · ${TOP_UP.cents/100} once. No expiry. No automatic top-ups.</p><button className="primary" disabled={!enabled||busy} onClick={()=>buy('topup')}>Buy {TOP_UP.credits} credits · ${TOP_UP.cents/100}</button>
  <h2>Try your first creations</h2><p>{TRIAL_CREDITS} one-time trial credits per verified account, while trial capacity is available.</p><button className="secondary" disabled={!enabled||!trialEnabled||busy} onClick={()=>subscription('trial')}>Claim trial credits</button>

@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import {creatorRenewalsEnabled,protectCreatorRenewal} from './creator-renewals';
 import type {Pool} from 'pg';
 import {Wallet,type SubscriptionGrant} from './wallet';
 import {CREATOR_PLAN,CREDIT_CATALOG_VERSION,PREVIOUS_CREDIT_CATALOG_VERSION,creditCatalog} from './credit-catalog';
@@ -45,6 +46,7 @@ async function createSubscriptionCheckout(stripe:Stripe,pool:Pick<Pool,'query'>,
  const active=await stripe.subscriptions.list({customer,status:'all',limit:100});
  if(active.has_more||active.data.some(s=>s.metadata.jamloom_product==='creator-subscription'&&!['canceled','incomplete_expired'].includes(s.status)))throw Error('A subscription already exists');
  return stripe.checkout.sessions.create({mode:'subscription',customer,client_reference_id:owner,
+   ...(!creatorRenewalsEnabled(live)?{custom_text:{submit:{message:'Limited launch: first payment adds 300 nonexpiring credits. Future renewal payments are paused until continuing service is funded. No catch-up charges for paused months.'}}}:{}),
    metadata:{jamloom_product:'creator-subscription',catalog:CREDIT_CATALOG_VERSION},
    subscription_data:{metadata:{jamloom_product:'creator-subscription',jamloom_owner:owner,catalog:CREDIT_CATALOG_VERSION}},
    line_items:[{price:priceID,quantity:1}],automatic_tax:{enabled:true},customer_update:{address:'auto'},
@@ -80,7 +82,9 @@ export async function fulfillSubscriptionInvoice(stripe:Stripe,pool:Pool,wallet:
  // Reserve Billing plus support/refund costs. Revenue evidence never changes retail credit prices.
  const netMicros=(balance.net-tax-Math.ceil(plan.cents*.207))*10000;
  const s={...subscriptionGrant(subscription),start:new Date(line.period.start*1000),end:new Date(line.period.end*1000)};
- return wallet.grant(owner,{provider:provider(wallet.live),receipt:id,credits:plan.credits,netMicros,subscription:s});
+ const grant=await wallet.grant(owner,{provider:provider(wallet.live),receipt:id,credits:plan.credits,netMicros,subscription:s});
+ await protectCreatorRenewal(stripe,pool,subscription.id,wallet.live);
+ return grant;
 }
 export async function reconcileSubscription(stripe:Stripe,pool:Pool,wallet:Wallet,id:string){
  const s=await stripe.subscriptions.retrieve(id);if(s.metadata.jamloom_product!=='creator-subscription')return;
@@ -88,6 +92,7 @@ export async function reconcileSubscription(stripe:Stripe,pool:Pool,wallet:Walle
  const c=(await pool.query('SELECT owner_id FROM credit_customers WHERE customer_id=$1 AND billing_live=$2',[idOf(s.customer),wallet.live])).rows[0];
  if(s.livemode!==wallet.live||!owner||c?.owner_id!==owner)throw Error('Subscription account mismatch');
  await wallet.updateSubscription(owner,provider(wallet.live),subscriptionGrant(s));
+ await protectCreatorRenewal(stripe,pool,s.id,wallet.live);
 }
 export async function reverseSubscriptionPayment(stripe:Stripe,wallet:Wallet,intent:string){
  const payments=await stripe.invoicePayments.list({payment:{type:'payment_intent',payment_intent:intent},limit:2});

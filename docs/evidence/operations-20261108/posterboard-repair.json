@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-09T04:32:33.362186+00:00",
+  "device": "97D4D9E6-9DFD-4798-8C77-A385DB05F900",
+  "backup": "/Users/serhansari/Library/Developer/CoreSimulator/PosterBoardBackups/20261108-97D4D9E6-9DFD-4798-8C77-A385DB05F900",
+  "filesPreserved": 3584,
+  "bytesPreserved": 1519877488,
+  "movedPaths": [
+    "Library/Application Support/PRBPosterExtensionDataStore",
+    "Library/Application Support/com.apple.PosterKit",
+    "Library/Preferences/com.apple.PosterBoard.plist",
+    "Library/Preferences/com.apple.PosterBoard.unprotectedUserDefaults.plist"
+  ],
+  "hashesVerified": true,
+  "appsAndAppContainersMoved": false
+}

@@ -1,4 +1,5 @@
 import {fulfillSubscriptionInvoice,reconcileSubscription,reverseSubscriptionPayment} from '../../../../lib/credit-subscriptions';
+import {protectCreatorInvoice} from '../../../../lib/creator-renewals';
 import { createHash } from 'node:crypto';
 import { services,accountsConfigured } from '../../../../lib/services';
 import { creditBilling,fulfillCheckout,reconcileCreditReversal } from '../../../../lib/stripe-payments';
@@ -20,6 +21,8 @@ export async function POST(request:Request){
     if(!claimed.rowCount)throw Error('Webhook conflict');if(claimed.rows[0].handled)return Response.json({received:true});
     if(event.type==='checkout.session.completed'||event.type==='checkout.session.async_payment_succeeded'){
       if(event.data.object.payment_status==='paid'&&event.data.object.metadata?.jamloom_product==='song-credits')await fulfillCheckout(stripe,wallet,event.data.object.id);
+    }else if(event.type==='invoice.created'||event.type==='invoice.finalized'){
+      await protectCreatorInvoice(stripe,pool,event.data.object.id,live);
     }else if(event.type==='invoice.paid'){
       await fulfillSubscriptionInvoice(stripe,pool,wallet,event.data.object.id);
     }else if(event.type==='invoice.payment_failed'){

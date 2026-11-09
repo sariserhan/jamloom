@@ -2,6 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "ignoreCommand": "node scripts/ignore-build.mjs",
   "crons": [
+    {"path":"/api/operations","schedule":"*/5 * * * *"},
     {"path":"/api/maintenance","schedule":"0 * * * *"},
     {"path":"/api/song-jobs","schedule":"* * * * *"},
     {

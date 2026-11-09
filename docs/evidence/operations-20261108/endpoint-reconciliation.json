@@ -1,0 +1,126 @@
+{
+  "status": "PASS posted endpoint-to-worker reconciliation; PARTIAL final operating qualification",
+  "at": "2026-11-09T04:31:06.204Z",
+  "reports": [
+    {
+      "id": "dna-and-failed-improvise",
+      "window": {
+        "startTime": "2026-11-02T06:00:00.000Z",
+        "endTime": "2026-11-02T07:00:00.000Z"
+      },
+      "endpointId": "jl77hn92npt65k",
+      "endpointRows": [
+        {
+          "amount": 0.06394756981171668,
+          "timeBilledMs": 303615,
+          "diskSpaceBilledGB": 120,
+          "endpointId": "jl77hn92npt65k",
+          "time": "2026-11-02 06:00:00"
+        }
+      ],
+      "workerRows": [
+        {
+          "amount": 0.06394756981171668,
+          "timeBilledMs": 303615,
+          "diskSpaceBilledGB": 120,
+          "podId": "ybpibs13h4nnvx",
+          "time": "2026-11-02 06:00:00"
+        }
+      ],
+      "postedTotalUSD": 0.06394756981171668,
+      "postedWorkerTotalUSD": 0.06394756981171668,
+      "postedReconciliationResidualUSD": 0,
+      "observedWorkersWithoutPostedCharge": [
+        {
+          "id": "sldiz8yqo86h0y",
+          "lastObservedStatus": "THROTTLED",
+          "observedAt": "2026-11-02T06:16:04.479Z"
+        },
+        {
+          "id": "czv7jc0nt8rcix",
+          "lastObservedStatus": "THROTTLED",
+          "observedAt": "2026-11-02T06:16:43.803Z"
+        },
+        {
+          "id": "cndte8sxwgehuh",
+          "lastObservedStatus": "THROTTLED",
+          "observedAt": "2026-11-02T06:17:23.277Z"
+        },
+        {
+          "id": "8k99psdwjgx10j",
+          "lastObservedStatus": "THROTTLED",
+          "observedAt": "2026-11-02T06:19:01.645Z"
+        },
+        {
+          "id": "l4tptuvx9gh7rn",
+          "lastObservedStatus": "THROTTLED",
+          "observedAt": "2026-11-02T06:19:40.725Z"
+        },
+        {
+          "id": "bbpv3fxfmsqst7",
+          "lastObservedStatus": "THROTTLED",
+          "observedAt": "2026-11-02T06:23:16.252Z"
+        }
+      ],
+      "chargedWorkersAbsentFromObservation": [],
+      "scope": "All posted endpoint charges within full hourly buckets; absence is not a provider-certified zero or final invoice",
+      "finalInvoice": false
+    },
+    {
+      "id": "review-two-cycles",
+      "window": {
+        "startTime": "2026-11-09T02:00:00.000Z",
+        "endTime": "2026-11-09T04:31:04.883Z"
+      },
+      "endpointId": "jl77hn92npt65k",
+      "endpointRows": [
+        {
+          "amount": 0.05358798522502184,
+          "timeBilledMs": 253889,
+          "diskSpaceBilledGB": 120,
+          "endpointId": "jl77hn92npt65k",
+          "time": "2026-11-09 02:00:00"
+        }
+      ],
+      "workerRows": [
+        {
+          "amount": 0.05358798522502184,
+          "timeBilledMs": 253889,
+          "diskSpaceBilledGB": 120,
+          "podId": "s2ltxvi4scscnc",
+          "time": "2026-11-09 02:00:00"
+        }
+      ],
+      "postedTotalUSD": 0.05358798522502184,
+      "postedWorkerTotalUSD": 0.05358798522502184,
+      "postedReconciliationResidualUSD": 0,
+      "observedWorkersWithoutPostedCharge": [
+        {
+          "id": "mlqupne061frfm",
+          "lastObservedStatus": "THROTTLED",
+          "observedAt": "2026-11-09T02:22:19.388Z"
+        },
+        {
+          "id": "761w03inzbj2eh",
+          "lastObservedStatus": "EXITED",
+          "observedAt": null
+        },
+        {
+          "id": "9mnknjowsu1asr",
+          "lastObservedStatus": "EXITED",
+          "observedAt": null
+        },
+        {
+          "id": "17hnj60eljdvrf",
+          "lastObservedStatus": "EXITED",
+          "observedAt": null
+        }
+      ],
+      "chargedWorkersAbsentFromObservation": [],
+      "scope": "All posted endpoint charges within full hourly buckets; absence is not a provider-certified zero or final invoice",
+      "finalInvoice": false
+    }
+  ],
+  "mutations": false,
+  "qualificationEnabled": false
+}
