@@ -82,7 +82,8 @@ export async function fulfillSubscriptionInvoice(stripe:Stripe,pool:Pool,wallet:
  // Reserve Billing plus support/refund costs. Revenue evidence never changes retail credit prices.
  const netMicros=(balance.net-tax-Math.ceil(plan.cents*.207))*10000;
  const s={...subscriptionGrant(subscription),start:new Date(line.period.start*1000),end:new Date(line.period.end*1000)};
- const grant=await wallet.grant(owner,{provider:provider(wallet.live),receipt:id,credits:plan.credits,netMicros,subscription:s});
+ const grant=await wallet.grant(owner,{provider:provider(wallet.live),receipt:id,credits:plan.credits,netMicros,subscription:s,
+  ...(wallet.live?{gpuProceeds:{chargeID:charge.id,balanceID:balance.id,grossCents:balance.amount,feeCents:balance.fee,taxCents:tax,settled:balance.status==='available'}}:{})});
  await protectCreatorRenewal(stripe,pool,subscription.id,wallet.live);
  return grant;
 }

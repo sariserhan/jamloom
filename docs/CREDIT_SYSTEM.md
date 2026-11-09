@@ -18,6 +18,8 @@ All paid credits, including subscription grants, remain after cancellation. No a
 
 Private is the default and costs the same as public. Quality does not depend on plan or payment channel. Existing-result playback/download costs nothing. Technical failure or cancellation returns all held credits; actual incurred provider cost remains recorded. Completed portions of DJ sessions remain charged; crossfades make playback shorter than generated minutes. The chosen minute limit and maximum session credits appear before starting.
 
+**November 9 revenue continuation:** The owner approved 20% of settled net proceeds for further one-L4 preparation cycles. The seed grant retains its expiry; revenue funding has no calendar expiry and requires available allocations plus provider credit. [Policy and limits](GPU_REVENUE.md). Creator renewal protection remains active.
+
 ## Accounting and recovery
 
 During the bounded web launch, Creator’s first payment grants 300 credits, then future Stripe collections are paused with no automatic resume, no credits for paused months and no catch-up invoices. Paid credits remain nonexpiring. Webhook reconciliation and independent monitoring enforce this policy. Pricing, account credits and Checkout disclose it. This does not control Apple renewals; native ongoing funding must be checked before manual iOS distribution. [Current operating evidence](evidence/operations-20261108/report.md).

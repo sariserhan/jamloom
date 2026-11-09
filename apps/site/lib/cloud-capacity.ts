@@ -2,13 +2,14 @@ import {randomUUID} from 'node:crypto';
 import type {Pool,PoolClient} from 'pg';
 import {readBody,AudioError} from './audio-validation';
 import {assertActiveWorkerLease,type ActiveWorkerLease} from './cloud-capacity-lease';
-import {capacityLease,capacityPermitHash,type CapacityPermit} from './cloud-capacity-permit';
+import {capacityLease,capacityPermitHash,capacityWindowOpen,seedPermit,type CapacityPermit} from './cloud-capacity-permit';
+import {gpuRevenueBalance,lockGpuFunding,runpodBalanceMicros} from './gpu-revenue';
 import {assertProductionEndpoint,CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 import {hasReadySongWorker} from './cloud-readiness';
 
 type Cycle={id:string;permit_id:string;endpoint:string;image:string;starts_at:bigint;expires_at:bigint;cap_micros:bigint;state:string;ready_at:bigint|null;busy_at:bigint|null;reason:string|null};
 export type CapacityState='off'|'preparing'|'ready'|'stopping'|'unavailable';
-export type CapacityProvider={endpoint:()=>Promise<any>;catalog:()=>Promise<any>;health:()=>Promise<any>;setWorkers:(count:0|1)=>Promise<any>};
+export type CapacityProvider={endpoint:()=>Promise<any>;catalog:()=>Promise<any>;health:()=>Promise<any>;setWorkers:(count:0|1)=>Promise<any>;balanceMicros?:()=>Promise<number>};
 class CapacityProviderError extends Error{
  constructor(readonly operation:'endpoint'|'catalog'|'health'|'activate'|'stop',readonly kind:'http'|'timeout'|'transport'|'response',readonly status?:number){super('Capacity provider unavailable');}
 }
@@ -41,7 +42,7 @@ export function capacityProvider(key:string,endpoint:string,request:typeof fetch
   }
  }
  return {endpoint:()=>api('https://api.runpod.io/v2/serverless/'+endpoint,'endpoint'),catalog:()=>api('https://api.runpod.io/v2/catalog/gpus','catalog'),
-  health:()=>api('https://api.runpod.ai/v2/'+endpoint+'/health','health'),setWorkers:n=>api('https://api.runpod.io/v2/serverless/'+endpoint,n?'activate':'stop',n)};
+  health:()=>api('https://api.runpod.ai/v2/'+endpoint+'/health','health'),setWorkers:n=>api('https://api.runpod.io/v2/serverless/'+endpoint,n?'activate':'stop',n),balanceMicros:()=>runpodBalanceMicros(key,request)};
 }
 const lease=(r:Cycle):ActiveWorkerLease=>({startsAt:Number(r.starts_at),expiresAt:Number(r.expires_at),maxMicros:Number(r.cap_micros)});
 const empty=(h:any)=>h?.jobs?.inQueue===0&&h?.jobs?.inProgress===0&&h.workers&&
@@ -62,7 +63,7 @@ export class CloudCapacity{
  }
  private identity(e:any,image=CLOUD_WORKER_IMAGE){if(e?.id!==this.endpoint||e?.image!==image)throw Error('Capacity identity changed');}
  private permitOpen(now=this.clock()){
-  if(now<this.permit.startsAt||now>=this.permit.expiresAt)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
+  if(!capacityWindowOpen(this.permit,now))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
  }
  private async guarded(db:Pool|PoolClient=this.pool){
   const r=(await db.query('SELECT * FROM cloud_capacity_guardians WHERE endpoint=$1',[this.endpoint])).rows[0];
@@ -77,7 +78,7 @@ export class CloudCapacity{
  }
  async state():Promise<CapacityState>{
   const r=await this.current();if(!r)return 'off';
-  if(r.permit_id!==this.permit.id||this.clock()>=Number(r.expires_at)||this.clock()>=this.permit.expiresAt)return 'unavailable';
+  if(r.permit_id!==this.permit.id||this.clock()>=Number(r.expires_at)||!capacityWindowOpen(this.permit,this.clock()))return 'unavailable';
   return r.state==='ready'?'ready':r.state==='starting'?'preparing':'stopping';
  }
  async ready(remainingMs:number){
@@ -114,7 +115,7 @@ export class CloudCapacity{
    }
    const now=this.clock(),p=this.permit,next=capacityLease(p,now);
    if(!await this.guarded(db))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
-   if(next.expiresAt>p.expiresAt)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
+   if(!capacityWindowOpen(p,now,p.cycleSeconds*1000))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
    const recent=await db.query('SELECT 1 FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>$2 LIMIT 1',[owner,now-86400000]);
    // Only trusted server review configuration relaxes the per-owner daily limit.
    // Every new cycle still reserves the full cost under the same finite permit.
@@ -124,14 +125,27 @@ export class CloudCapacity{
    if(before.workers?.min!==0||before.workers?.max!==0||!empty(await this.provider.health()))throw Error('Capacity is not independently disabled');
    assertProductionEndpoint({...before,workers:{min:1,max:1}},await this.provider.catalog(),next,this.profile,now);
    if((await db.query("SELECT 1 FROM cloud_song_runs c JOIN dna_song_jobs d ON c.id=d.id WHERE c.endpoint=$1 AND d.state IN ('queued','running') LIMIT 1",[this.endpoint])).rowCount)throw Error('Songs still pending');
-   const sha=capacityPermitHash(p,this.endpoint,this.profile,CLOUD_WORKER_IMAGE);
-   await db.query('INSERT INTO cloud_capacity_permits(id,config_sha256,cap_micros,config,profile) VALUES($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING',[p.id,sha,p.capMicros,JSON.stringify(p),this.profile]);
+   const sha=capacityPermitHash(seedPermit(p),this.endpoint,this.profile,CLOUD_WORKER_IMAGE);
+   await db.query('INSERT INTO cloud_capacity_permits(id,config_sha256,cap_micros,config,profile) VALUES($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING',[p.id,sha,p.capMicros,JSON.stringify(seedPermit(p)),this.profile]);
    const grant=(await db.query('SELECT * FROM cloud_capacity_permits WHERE id=$1 FOR UPDATE',[p.id])).rows[0];
    if(grant.config_sha256!==sha)throw Error('Capacity permit was changed after use');
-   if(Number(grant.reserved_micros)+p.cycleMicros>p.capMicros)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
-   await db.query('UPDATE cloud_capacity_permits SET reserved_micros=reserved_micros+$2 WHERE id=$1',[p.id,p.cycleMicros]);
+   const seedFunded=next.expiresAt<=p.expiresAt&&Number(grant.reserved_micros)+p.cycleMicros<=p.capMicros;
+   if(p.revenueShareBps===2000){
+    // An internal allocation cannot fund an empty provider account. Read actual
+    // prepaid balance before every activation; this never tops up a card.
+    const balance=await this.provider.balanceMicros?.();
+    if(balance===undefined||!Number.isSafeInteger(balance)||balance<p.cycleMicros)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
+    await db.query(`INSERT INTO gpu_provider_funding(endpoint,balance_micros,checked_at) VALUES($1,$2,$3)
+     ON CONFLICT(endpoint) DO UPDATE SET balance_micros=excluded.balance_micros,checked_at=excluded.checked_at`,[this.endpoint,balance,now]);
+   }
+   if(!seedFunded){
+    if(p.revenueShareBps!==2000)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
+    await lockGpuFunding(db);
+    if(await gpuRevenueBalance(db)<p.cycleMicros)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
+   }else await db.query('UPDATE cloud_capacity_permits SET reserved_micros=reserved_micros+$2 WHERE id=$1',[p.id,p.cycleMicros]);
    created=(await db.query(`INSERT INTO cloud_capacity_cycles(id,permit_id,endpoint,image,owner_id,starts_at,expires_at,cap_micros,state)
     VALUES($1,$2,$3,$4,$5,$6,$7,$8,'starting') RETURNING *`,[randomUUID(),p.id,this.endpoint,CLOUD_WORKER_IMAGE,owner,now,next.expiresAt,p.cycleMicros])).rows[0];
+   if(!seedFunded)await db.query('INSERT INTO gpu_revenue_reservations(cycle_id,micros) VALUES($1,$2)',[created!.id,p.cycleMicros]);
    return 'preparing' as const;
   });
   if(created){
@@ -169,7 +183,7 @@ export class CloudCapacity{
    }
    let reason:string|undefined;
    if(shutdownOnly)reason='configuration-removed';
-   else if(r.permit_id!==this.permit.id||now>=this.permit.expiresAt||now>=Number(r.expires_at))reason='expired';
+   else if(r.permit_id!==this.permit.id||!capacityWindowOpen(this.permit,now)||now>=Number(r.expires_at))reason='expired';
    else if(r.state==='stopping')reason='shutdown-pending';
    else if(!guardian&&!await this.guarded(db))reason='guardian-unavailable';
    else if(h.workers?.unhealthy>0)reason='unhealthy';

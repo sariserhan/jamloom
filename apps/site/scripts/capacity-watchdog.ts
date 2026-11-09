@@ -2,7 +2,7 @@ import './env';
 import {setTimeout as delay} from 'node:timers/promises';
 import {createPool} from '../lib/database';
 import {CloudCapacity,capacityProvider,stopOrphanedCapacity,emergencyCapacityStop,capacityFailureDiagnostic} from '../lib/cloud-capacity';
-import {capacityPermit} from '../lib/cloud-capacity-permit';
+import {capacityPermit,capacityWindowOpen} from '../lib/cloud-capacity-permit';
 
 // Supervise independently of the web deployment. Never starts or renews a GPU.
 const args=process.argv.slice(2);
@@ -26,9 +26,9 @@ try{
    try{
     const result=capacity?await capacity.reconcile(true):await stopOrphanedCapacity(pool,endpoint,provider);
     stage='heartbeat';
-    if(capacity&&watch&&!stopping&&Date.now()<permit!.expiresAt)await capacity.guardianHeartbeat();
+    if(capacity&&watch&&!stopping&&capacityWindowOpen(permit!,Date.now()))await capacity.guardianHeartbeat();
     console.log(JSON.stringify({at:new Date().toISOString(),...result}));
-    if(permit&&Date.now()>=permit.expiresAt&&result.state==='off')break;
+    if(permit&&!capacityWindowOpen(permit,Date.now())&&result.state==='off')break;
    }catch(error){
     console.error(JSON.stringify({at:new Date().toISOString(),event:'capacity-check-failed',stage,...capacityFailureDiagnostic(error)}));
     if(capacity){try{const result=await emergencyCapacityStop(endpoint,provider);console.log(JSON.stringify({emergencyShutdown:true,...result}));}

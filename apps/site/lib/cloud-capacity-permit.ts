@@ -1,8 +1,11 @@
 import {createHash} from 'node:crypto';
 import {CLOUD_PROFILES,productionSongBudget,validateProfileLease} from './cloud-production-profile';
 import type {ActiveWorkerLease} from './cloud-capacity-lease';
+import {gpuRevenueEnabled} from './gpu-revenue';
 
-export type CapacityPermit={id:string;startsAt:number;expiresAt:number;capMicros:number;cycleMicros:number;cycleSeconds:number};
+// The original finite grant remains immutable. Revenue funding is a separate
+// authorization: it extends availability, never the seed grant's money or dates.
+export type CapacityPermit={id:string;startsAt:number;expiresAt:number;capMicros:number;cycleMicros:number;cycleSeconds:number;revenueShareBps?:2000};
 export function capacityPermit(env:Record<string,string|undefined>,profile?:string):CapacityPermit|undefined{
  const value=env.JAMLOOM_CLOUD_CAPACITY_PERMIT;if(!value)return;
  if(!profile||!CLOUD_PROFILES.includes(profile))throw Error('Demand capacity requires a reviewed hardware profile');
@@ -18,11 +21,23 @@ export function capacityPermit(env:Record<string,string|undefined>,profile?:stri
  // Admission needs a complete preparation window and the longest product TTL.
  if(p.cycleSeconds<1200+productionSongBudget('music-dna',profile).ttlSeconds+120)
   throw Error('Capacity cycle cannot cover preparation and song completion');
+ if(gpuRevenueEnabled(env)){
+  if(profile!=='l4-2026-11-01')throw Error('Revenue capacity requires the approved L4 profile');
+  return {...p,revenueShareBps:2000};
+ }
  return p;
+}
+export function capacityWindowOpen(p:CapacityPermit,now:number,remainingMs=0){
+ return now>=p.startsAt&&(p.revenueShareBps===2000||(remainingMs>0?now+remainingMs<=p.expiresAt:now<p.expiresAt));
+}
+export function seedPermit(p:CapacityPermit):CapacityPermit{
+ const {revenueShareBps:_,...seed}=p;return seed;
 }
 export function capacityLease(p:CapacityPermit,now:number):ActiveWorkerLease{
  return {startsAt:now,expiresAt:now+p.cycleSeconds*1000,maxMicros:p.cycleMicros};
 }
 export function capacityPermitHash(p:CapacityPermit,endpoint:string,profile:string,image:string){
- return createHash('sha256').update(JSON.stringify([p.id,p.startsAt,p.expiresAt,p.capMicros,p.cycleMicros,p.cycleSeconds,endpoint,profile,image])).digest('hex');
+ const values:unknown[]=[p.id,p.startsAt,p.expiresAt,p.capMicros,p.cycleMicros,p.cycleSeconds,endpoint,profile,image];
+ if(p.revenueShareBps===2000)values.push('settled-net-revenue',2000);
+ return createHash('sha256').update(JSON.stringify(values)).digest('hex');
 }

@@ -1,13 +1,14 @@
 import {createHash} from 'node:crypto';
 import type {Pool} from 'pg';
-import {capacityPermit,capacityPermitHash} from './cloud-capacity-permit';
+import {capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from './cloud-capacity-permit';
 import {CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 import {protectCreatorRenewals} from './creator-renewals';
+import {gpuRevenueBalance,gpuRevenueEnabled,runpodBalanceMicros,settleGpuProceeds} from './gpu-revenue';
 import {creditBilling} from './stripe-payments';
 
 export const operationMessages={
- 'budget-low':'Fewer than three preparation cycles remain. Review operating funding; do not automatically renew the permit.',
- 'budget-expiring':'Operating funding expires within 48 hours. Arrange an explicitly approved allowance or keep generation and renewals paused.',
+ 'budget-low':'Fewer than three funded preparation cycles remain. Check settled payment allocations and provider credit. Do not add unapproved owner funds.',
+ 'budget-expiring':'The finite seed allowance expires within 48 hours. Revenue continuation requires settled allocations and provider credit.',
  'budget-unavailable':'Operating funding is expired, exhausted or missing. New sales/generation must remain closed; paid credits remain valid.',
  'guardian-stale':'The shutdown guardian heartbeat is missing, stale or does not match this permit. New work must remain closed. Check the guardian service.',
  'shutdown-unconfirmed':'A capacity shutdown failed, a worker remains after expiry, or provider identity differs. Check the provider and stop unapproved capacity.',
@@ -22,20 +23,20 @@ export async function sendOperationAlert(code:OperationAlert,env:Record<string,s
  if(!to||!/^[^\s@<>,;]+@[^\s@<>,;]+\.[^\s@<>,;]+$/.test(to)||!from||/[\r\n]/.test(from)||!key)throw Error('Operating alert transport is not configured');
  // Stable payload + provider idempotency deduplicates the two independent
  // monitors and retries. Persistent incidents repeat at most once per six hours.
- const payload={from,to:[to],subject:`Jamloom ${code==='test'?'TEST alert':'operations: '+code}`,text:operationMessages[code]+'\n\nService: https://www.jamloom.com\nNo automatic funding renewal or generation retry is authorized.'};
+ const payload={from,to:[to],subject:`Jamloom ${code==='test'?'TEST alert':'operations: '+code}`,text:operationMessages[code]+'\n\nService: https://www.jamloom.com\nOnly the approved share of verified settled proceeds may fund additional cycles. No unapproved card top-up or generation retry is authorized.'};
  const id=createHash('sha256').update(JSON.stringify(payload)+Math.floor(now/21600000)).digest('hex');
  const response=await request('https://api.resend.com/emails',{method:'POST',signal:AbortSignal.timeout(10000),headers:{Authorization:`Bearer ${key}`,'Content-Type':'application/json','Idempotency-Key':`jamloom-ops-${id}`},body:JSON.stringify(payload)});
  if(!response.ok)throw Error(`Operating alert delivery failed (${response.status})`);
  const result=await response.json();if(typeof result.id!=='string')throw Error('Operating alert receipt missing');
  return {code,emailID:result.id};
 }
-export type OperationSnapshot={now:number;expiresAt:number;remainingMicros:number;cycleMicros:number;guardianOK:boolean;shutdownFailed:boolean;providerMismatch:boolean;workers:number;liveFailures:number;overdueCleanup:number};
+export type OperationSnapshot={now:number;expiresAt:number|null;remainingMicros:number;revenueMicros?:number;providerMicros?:number;cycleMicros:number;guardianOK:boolean;shutdownFailed:boolean;providerMismatch:boolean;workers:number;liveFailures:number;overdueCleanup:number};
 export function operationAlerts(s:OperationSnapshot):OperationAlert[]{
- const alerts:OperationAlert[]=[],expired=s.now>=s.expiresAt;
+ const alerts:OperationAlert[]=[],expired=s.expiresAt!==null&&s.now>=s.expiresAt;
  if(expired||s.remainingMicros<s.cycleMicros)alerts.push('budget-unavailable');
  else{
   if(s.remainingMicros<3*s.cycleMicros)alerts.push('budget-low');
-  if(s.expiresAt-s.now<=48*3600000)alerts.push('budget-expiring');
+  if(s.expiresAt!==null&&s.expiresAt-s.now<=48*3600000)alerts.push('budget-expiring');
  }
  if(!expired&&!s.guardianOK)alerts.push('guardian-stale');
  if(s.shutdownFailed||s.providerMismatch||expired&&s.workers>0)alerts.push('shutdown-unconfirmed');
@@ -58,16 +59,27 @@ export async function inspectOperations(pool:Pick<Pool,'query'>,env:Record<strin
  const hash=capacityPermitHash(p,endpoint,profile,CLOUD_WORKER_IMAGE);
  const counts=Object.values(h.workers??{});if(!counts.length||!counts.every(v=>typeof v==='number'&&Number.isFinite(v)&&v>=0))throw Error('Invalid worker readback');
  const workers=(counts as number[]).reduce((sum,v)=>sum+v,0);
- const snapshot:OperationSnapshot={now,expiresAt:p.expiresAt,remainingMicros:p.capMicros-Number(grantRow?.reserved_micros??0),cycleMicros:p.cycleMicros,
+ let remaining=now+p.cycleSeconds*1000<=p.expiresAt?p.capMicros-Number(grantRow?.reserved_micros??0):0;
+ let revenueMicros:number|undefined,providerMicros:number|undefined;
+ if(p.revenueShareBps===2000){
+  const providerBalance=await runpodBalanceMicros(env.RUNPOD_API_KEY,request);
+  await pool.query(`INSERT INTO gpu_provider_funding(endpoint,balance_micros,checked_at) VALUES($1,$2,$3)
+   ON CONFLICT(endpoint) DO UPDATE SET balance_micros=excluded.balance_micros,checked_at=excluded.checked_at`,[endpoint,providerBalance,now]);
+  // Seed and revenue cannot be combined to fund a partial cycle.
+  const revenue=await gpuRevenueBalance(pool);revenueMicros=revenue;providerMicros=providerBalance;
+  remaining=Math.min(providerBalance,Math.floor(remaining/p.cycleMicros)*p.cycleMicros+Math.max(0,Math.floor(revenue/p.cycleMicros))*p.cycleMicros);
+ }
+ const snapshot:OperationSnapshot={now,expiresAt:p.revenueShareBps===2000?null:p.expiresAt,remainingMicros:remaining,...(revenueMicros===undefined?{}:{revenueMicros,providerMicros}),cycleMicros:p.cycleMicros,
   guardianOK:!!g&&g.config_sha256===hash&&Number(g.checked_at)<=now&&now-Number(g.checked_at)<90000,
-  shutdownFailed:Number(cycles.rows[0]?.failed)>0||now>=p.expiresAt&&(c.workers?.min!==0||c.workers?.max!==0),
-  providerMismatch:c.id!==endpoint||c.image!==CLOUD_WORKER_IMAGE||!!grantRow&&grantRow.config_sha256!==hash,
+  shutdownFailed:Number(cycles.rows[0]?.failed)>0||!capacityWindowOpen(p,now)&&(c.workers?.min!==0||c.workers?.max!==0),
+  providerMismatch:c.id!==endpoint||c.image!==CLOUD_WORKER_IMAGE||!!grantRow&&grantRow.config_sha256!==capacityPermitHash(seedPermit(p),endpoint,profile,CLOUD_WORKER_IMAGE),
   workers,liveFailures:Number(jobs.rows[0]?.failures??0),overdueCleanup:Number(jobs.rows[0]?.overdue??0)};
  return {snapshot,alerts:operationAlerts(snapshot)};
 }
-export async function runOperations(pool:Pick<Pool,'query'>,env:Record<string,string|undefined>=process.env){
+export async function runOperations(pool:Pool,env:Record<string,string|undefined>=process.env){
  const alerts=new Set<OperationAlert>();let snapshot:OperationSnapshot|undefined,renewals;
- try{const result=await inspectOperations(pool,env);snapshot=result.snapshot;result.alerts.forEach(a=>alerts.add(a));}catch{alerts.add('monitor-check-failed');}
+ try{if(gpuRevenueEnabled(env)){const b=creditBilling(env);if(!b.live)throw Error('Revenue settlement requires live billing');await settleGpuProceeds(pool,b.stripe);}
+  const result=await inspectOperations(pool,env);snapshot=result.snapshot;result.alerts.forEach(a=>alerts.add(a));}catch{alerts.add('monitor-check-failed');}
  try{const b=creditBilling(env);renewals=await protectCreatorRenewals(b.stripe,pool,b.live,env);}catch{alerts.add('renewal-check-failed');}
  const deliveries=[];for(const code of alerts)deliveries.push(await sendOperationAlert(code,env));
  return {at:new Date().toISOString(),snapshot,renewals,alerts:[...alerts],deliveries};

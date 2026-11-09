@@ -5,11 +5,12 @@ import {assertAllocationBudget,assertCatalogBudget,fixedAllocation,LEGACY_CREDIT
 import {adminAccount} from './admin-access';
 import {validatePermit,type WorkerPermit} from './generation-budget';
 import {djCharge,planDJAllowance,reserveDJAllowance,settleDJAllowance} from './dj-allowance';
+import {recordGpuProceeds,revokeGpuProceeds,type GpuProceeds} from './gpu-revenue';
 
 export type JobBudget=Pick<WorkerPermit,'inputSha256'|'planSha256'|'maxRuntimeMs'|'hourlyMicros'|'fixedCostMicros'>;
 
 export type SubscriptionGrant={id:string;customer?:string;start:Date;end:Date;status:string;cancelAtPeriodEnd:boolean;observedAt?:number};
-export type Purchase={provider:'stripe_test'|'stripe_live'|'apple_sandbox'|'apple_live';receipt:string;credits:number;netMicros:number;subscription?:SubscriptionGrant};
+export type Purchase={provider:'stripe_test'|'stripe_live'|'apple_sandbox'|'apple_live';receipt:string;credits:number;netMicros:number;subscription?:SubscriptionGrant;gpuProceeds?:GpuProceeds};
 export class Wallet {
   constructor(private pool:Pool,readonly live=false,readonly djAllowance=false){}
   private async atomic<T>(owner:string,fn:(db:PoolClient)=>Promise<T>,allowFrozen=false,receiptKey?:string|string[]):Promise<T>{
@@ -77,6 +78,10 @@ export class Wallet {
     if(!['stripe_test','stripe_live','apple_sandbox','apple_live'].includes(p.provider)||(['stripe_live','apple_live'].includes(p.provider))!==this.live||!p.receipt||p.receipt.length>255)throw new Error('Invalid receipt');
     return this.atomic(owner,async db=>{
       if((await db.query('SELECT 1 FROM purchase_holds WHERE provider=$1 AND receipt=$2',[p.provider,p.receipt])).rowCount)throw new Error('Purchase held for reconciliation');
+      if(p.gpuProceeds){
+        if(p.provider!=='stripe_live')throw Error('Only verified live Stripe proceeds can fund GPUs');
+        await recordGpuProceeds(db,p.receipt,p.gpuProceeds);
+      }
       const delivered=(await db.query('SELECT * FROM credit_lots WHERE provider=$1 AND receipt=$2',[p.provider,p.receipt])).rows[0];
       if(delivered){
         if(delivered.owner_id!==owner||delivered.credits!==p.credits||Number(delivered.net_micros)!==p.netMicros||delivered.subscription_id!==(p.subscription?.id??null))throw Error('Receipt conflict');
@@ -209,6 +214,7 @@ export class Wallet {
         FROM credit_lots l JOIN wallet_ledger_entries e ON e.lot_id=l.id WHERE l.provider=$1 AND l.receipt=$2 GROUP BY l.id`,[provider,receipt])).rows;
       for(const lot of lots)if(lot.available>0)await db.query("INSERT INTO wallet_ledger_entries(owner_id,lot_id,kind,available_delta,reserved_delta) VALUES($1,$2,'refund',$3,0)",[lot.owner_id,lot.id,-lot.available]);
       await db.query("UPDATE generation_jobs SET cancel_requested=true,state='stopping' WHERE owner_id IN (SELECT owner_id FROM credit_lots WHERE provider=$1 AND receipt=$2) AND state IN ('running','stopping')",[provider,receipt]);
+      if(provider==='stripe_live')await revokeGpuProceeds(db,receipt);
       await db.query('COMMIT');
     }catch(e){await db.query('ROLLBACK');throw e;}finally{db.release();}
   }
