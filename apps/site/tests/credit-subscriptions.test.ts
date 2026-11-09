@@ -3,10 +3,10 @@ import Stripe from 'stripe';
 import {Environment,Type} from '@apple/app-store-server-library';
 import {applePurchase} from '../lib/apple-payments';
 import {fulfillSubscriptionInvoice,reverseSubscriptionPayment} from '../lib/credit-subscriptions';
-import {CREATOR_PLAN,CREDIT_CATALOG_VERSION} from '../lib/credit-catalog';
+import {CREATOR_PLAN,CREDIT_CATALOG_VERSION,PREVIOUS_CREDIT_CATALOG_VERSION} from '../lib/credit-catalog';
 test('Creator invoice requires a real paid period, exact price and charge evidence',async()=>{
- process.env.CREATOR_STRIPE_PRICE_ID='price_creator';
- const sub={id:'sub_one',metadata:{jamloom_product:'creator-subscription',jamloom_owner:'owner',catalog:CREDIT_CATALOG_VERSION},livemode:false,customer:'cus_one',status:'active',cancel_at_period_end:false,items:{data:[{current_period_start:1790812800,current_period_end:1793491200}]}};
+ process.env.CREATOR_STRIPE_PREVIOUS_PRICE_ID='price_creator';
+ const sub={id:'sub_one',metadata:{jamloom_product:'creator-subscription',jamloom_owner:'owner',catalog:PREVIOUS_CREDIT_CATALOG_VERSION},livemode:false,customer:'cus_one',status:'active',cancel_at_period_end:false,items:{data:[{current_period_start:1790812800,current_period_end:1793491200}]}};
  const invoice:any={id:'in_one',parent:{subscription_details:{subscription:'sub_one'}},customer:'cus_one',livemode:false,status:'paid',amount_remaining:0,billing_reason:'subscription_cycle',currency:'usd',subtotal:1500,amount_paid:1500,total_taxes:[],lines:{data:[{quantity:1,amount:1500,pricing:{price_details:{price:'price_creator'}},parent:{subscription_item_details:{proration:false}},period:{start:1790812800,end:1793491200}}]}};
  const charge={id:'ch_one',payment_intent:'pi_one',livemode:false,paid:true,captured:true,amount:1500,currency:'usd',balance_transaction:{source:'ch_one',currency:'usd',amount:1500,net:1426,fee:74,exchange_rate:null}};
  const stripe={invoices:{retrieve:async()=>invoice},subscriptions:{retrieve:async()=>sub},invoicePayments:{list:async()=>({data:[{payment:{payment_intent:'pi_one'},amount_paid:1500}]})},paymentIntents:{retrieve:async()=>({id:'pi_one',livemode:false,status:'succeeded',latest_charge:charge})}} as unknown as Stripe;

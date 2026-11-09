@@ -33,7 +33,7 @@
       "type": "NonConsumable"
     },
     {
-      "displayPrice": "10.00",
+      "displayPrice": "20.00",
       "familyShareable": false,
       "internalID": "E9716FA6-1EC8-4943-9DD3-950A1408C227",
       "localizations": [
@@ -62,7 +62,7 @@
         {
           "adHocOffers": [],
           "codeOffers": [],
-          "displayPrice": "15.00",
+          "displayPrice": "35.00",
           "familyShareable": false,
           "groupNumber": 1,
           "internalID": "3CA8DD54-6141-49B0-BE88-450BFAE1B66B",

@@ -1,0 +1,632 @@
+
+> jamloom-site@0.1.0 test:credit-catalog
+> tsx --test --test-concurrency=1 tests/credit-catalog.test.ts tests/credit-subscriptions.test.ts tests/credit-repricing.test.ts tests/economics.test.ts tests/apple-payments.test.ts tests/wallet.test.ts tests/wallet-reconciliation.test.ts tests/dj-sessions.test.ts tests/dna-commerce.test.ts tests/cloud-songs.test.ts tests/dj-allowance.test.ts
+
+TAP version 13
+# Subtest: Apple consumables bind exact app/account/product/price/environment, reject revocation and offers
+ok 1 - Apple consumables bind exact app/account/product/price/environment, reject revocation and offers
+  ---
+  duration_ms: 1.994958
+  type: 'test'
+  ...
+# Subtest: production refunds cannot act on sandbox transactions or ledger providers
+ok 2 - production refunds cannot act on sandbox transactions or ledger providers
+  ---
+  duration_ms: 0.290792
+  type: 'test'
+  ...
+# Subtest: Apple official verifier rejects forged unsigned transactions
+ok 3 - Apple official verifier rejects forged unsigned transactions
+  ---
+  duration_ms: 0.389417
+  type: 'test'
+  ...
+# Subtest: Apple TEST notifications verify app and environment without granting or freezing credits
+ok 4 - Apple TEST notifications verify app and environment without granting or freezing credits
+  ---
+  duration_ms: 0.162
+  type: 'test'
+  ...
+# Subtest: Apple sandbox refund notifications verify both signatures and hold the exact consumable receipt
+ok 5 - Apple sandbox refund notifications verify both signatures and hold the exact consumable receipt
+  ---
+  duration_ms: 0.375417
+  type: 'test'
+  ...
+# Subtest: cloud song configuration is opt-in and requires a bounded rate
+ok 6 - cloud song configuration is opt-in and requires a bounded rate
+  ---
+  duration_ms: 0.870583
+  type: 'test'
+  ...
+# Subtest: Improvise receipts require a bounded audible use of this recording and this output
+ok 7 - Improvise receipts require a bounded audible use of this recording and this output
+  ---
+  duration_ms: 0.203625
+  type: 'test'
+  ...
+# Subtest: real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+    # Subtest: operator-funded review is atomic, finite, private and stops after disable or expiry
+    ok 1 - operator-funded review is atomic, finite, private and stops after disable or expiry
+      ---
+      duration_ms: 43.067667
+      type: 'test'
+      ...
+    # Subtest: production admission refuses cold or occupied capacity without credit holds and serializes the final slot
+    ok 2 - production admission refuses cold or occupied capacity without credit holds and serializes the final slot
+      ---
+      duration_ms: 23.199
+      type: 'test'
+      ...
+    # Subtest: Improvise omission or mismatched recording refunds; valid loops settle once
+    ok 3 - Improvise omission or mismatched recording refunds; valid loops settle once
+      ---
+      duration_ms: 463.297292
+      type: 'test'
+      ...
+    # Subtest: Improvise variety survives concurrent submissions, restart and duplicate requests
+    ok 4 - Improvise variety survives concurrent submissions, restart and duplicate requests
+      ---
+      duration_ms: 314.411958
+      type: 'test'
+      ...
+    # Subtest: one request is reserved and dispatched once under duplicate concurrent calls
+    ok 5 - one request is reserved and dispatched once under duplicate concurrent calls
+      ---
+      duration_ms: 12.742041
+      type: 'test'
+      ...
+    # Subtest: several users queue independently; cancellation refunds while other songs continue
+    ok 6 - several users queue independently; cancellation refunds while other songs continue
+      ---
+      duration_ms: 675.93625
+      type: 'test'
+      ...
+    # Subtest: duration boundaries settle once and a mismatched saved length refunds
+    ok 7 - duration boundaries settle once and a mismatched saved length refunds
+      ---
+      duration_ms: 963.113708
+      type: 'test'
+      ...
+    # Subtest: restart after output storage failure uses persisted receipt and charges only once
+    ok 8 - restart after output storage failure uses persisted receipt and charges only once
+      ---
+      duration_ms: 776.590459
+      type: 'test'
+      ...
+    # Subtest: saved descriptions reach the next worker only for their owner
+    ok 9 - saved descriptions reach the next worker only for their owner
+      ---
+      duration_ms: 475.861166
+      type: 'test'
+      ...
+    # Subtest: uncertain style delivers once with a public note; technical failure refunds
+    ok 10 - uncertain style delivers once with a public note; technical failure refunds
+      ---
+      duration_ms: 670.704209
+      type: 'test'
+      ...
+    # Subtest: failed jobs refund all credits and invalid completed output cannot become public
+    ok 11 - failed jobs refund all credits and invalid completed output cannot become public
+      ---
+      duration_ms: 226.136042
+      type: 'test'
+      ...
+    # Subtest: website input, feedback ownership, personalization and consent withdrawal
+    ok 12 - website input, feedback ownership, personalization and consent withdrawal
+      ---
+      duration_ms: 466.9275
+      type: 'test'
+      ...
+    # Subtest: disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+    ok 13 - disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+      ---
+      duration_ms: 12.591208
+      type: 'test'
+      ...
+    # Subtest: lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+    ok 14 - lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+      ---
+      duration_ms: 6.074
+      type: 'test'
+      ...
+    # Subtest: missing provider receipt refunds only after the full provider TTL and a quiet queue
+    ok 15 - missing provider receipt refunds only after the full provider TTL and a quiet queue
+      ---
+      duration_ms: 8.18075
+      type: 'test'
+      ...
+    # Subtest: test credit lots cannot fund live requests or inflate live balances
+    ok 16 - test credit lots cannot fund live requests or inflate live balances
+      ---
+      duration_ms: 3.079459
+      type: 'test'
+      ...
+    # Subtest: recovery rotates ambiguous jobs and releases credits after persistent storage failure
+    ok 17 - recovery rotates ambiguous jobs and releases credits after persistent storage failure
+      ---
+      duration_ms: 282.19225
+      type: 'test'
+      ...
+    1..17
+ok 8 - real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+  ---
+  duration_ms: 5624.253167
+  type: 'test'
+  ...
+# Subtest: catalog prices are independent of channel, privacy, style and voice; live budgets fail closed
+ok 9 - catalog prices are independent of channel, privacy, style and voice; live budgets fail closed
+  ---
+  duration_ms: 0.558042
+  type: 'test'
+  ...
+# Subtest: real Postgres: catalog conservation, renewals, refunds, nonexpiry, trial caps and legacy conversion
+    # Subtest: same published price and no private premium across fees; full technical-failure refund
+    ok 1 - same published price and no private premium across fees; full technical-failure refund
+      ---
+      duration_ms: 24.737792
+      type: 'test'
+      ...
+    # Subtest: monthly grants are unique by receipt AND period; cancel does not remove paid credits
+    ok 2 - monthly grants are unique by receipt AND period; cancel does not remove paid credits
+      ---
+      duration_ms: 14.639084
+      type: 'test'
+      ...
+    # Subtest: signed Apple expiry reconciles without renewal info and preserves credits
+    ok 3 - signed Apple expiry reconciles without renewal info and preserves credits
+      ---
+      duration_ms: 3.423208
+      type: 'test'
+      ...
+    # Subtest: trial is once per verified account, globally capped, isolated from production
+    ok 4 - trial is once per verified account, globally capped, isolated from production
+      ---
+      duration_ms: 7.475542
+      type: 'test'
+      ...
+    # Subtest: unused legacy DJ capacity returns as new credits exactly once
+    ok 5 - unused legacy DJ capacity returns as new credits exactly once
+      ---
+      duration_ms: 3.844333
+      type: 'test'
+      ...
+    # Subtest: legacy conversion is once, preserves receipts, and leaves historic ledger immutable
+    ok 6 - legacy conversion is once, preserves receipts, and leaves historic ledger immutable
+      ---
+      duration_ms: 4.591333
+      type: 'test'
+      ...
+    1..6
+ok 10 - real Postgres: catalog conservation, renewals, refunds, nonexpiry, trial caps and legacy conversion
+  ---
+  duration_ms: 226.273333
+  type: 'test'
+  ...
+# Subtest: approved prices preserve credits, reject stale qualification and retain real purchase-lot limits
+ok 11 - approved prices preserve credits, reject stale qualification and retain real purchase-lot limits
+  ---
+  duration_ms: 1.325042
+  type: 'test'
+  ...
+# Subtest: Apple accepts exact current and historical signed prices without inflating old proceeds
+ok 12 - Apple accepts exact current and historical signed prices without inflating old proceeds
+  ---
+  duration_ms: 0.294584
+  type: 'test'
+  ...
+# Subtest: Stripe top-up delivery binds each catalog to its original amount and proceeds
+ok 13 - Stripe top-up delivery binds each catalog to its original amount and proceeds
+  ---
+  duration_ms: 0.513542
+  type: 'test'
+  ...
+# Subtest: Stripe renewal history uses its exact configured price and catalog instead of the current retail amount
+ok 14 - Stripe renewal history uses its exact configured price and catalog instead of the current retail amount
+  ---
+  duration_ms: 0.460667
+  type: 'test'
+  ...
+# Subtest: a superseded open Creator checkout is expired before issuing the new advertised price
+ok 15 - a superseded open Creator checkout is expired before issuing the new advertised price
+  ---
+  duration_ms: 0.32775
+  type: 'test'
+  ...
+# Subtest: Creator invoice requires a real paid period, exact price and charge evidence
+ok 16 - Creator invoice requires a real paid period, exact price and charge evidence
+  ---
+  duration_ms: 1.056083
+  type: 'test'
+  ...
+# Subtest: Apple renewals and topups bind account, type, period and amount; historical paid credits can be recovered
+ok 17 - Apple renewals and topups bind account, type, period and amount; historical paid credits can be recovered
+  ---
+  duration_ms: 0.285875
+  type: 'test'
+  ...
+# Subtest: subscription refund finds exact invoice rather than minting or revoking a different period
+ok 18 - subscription refund finds exact invoice rather than minting or revoking a different period
+  ---
+  duration_ms: 0.876958
+  type: 'test'
+  ...
+# Subtest: DJ allowance retains unused value without changing whole-credit account balances
+    # Subtest: one credit funds ten public or private minutes, with no per-minute rounding
+    ok 1 - one credit funds ten public or private minutes, with no per-minute rounding
+      ---
+      duration_ms: 135.640667
+      type: 'test'
+      ...
+    # Subtest: cancelled and failed work refunds unused top-ups, with immutable settlement retries
+    ok 2 - cancelled and failed work refunds unused top-ups, with immutable settlement retries
+      ---
+      duration_ms: 14.998333
+      type: 'test'
+      ...
+    # Subtest: a partial top-up survives Stop and process restart; failure restores its reserved allowance
+    ok 3 - a partial top-up survives Stop and process restart; failure restores its reserved allowance
+      ---
+      duration_ms: 19.151917
+      type: 'test'
+      ...
+    # Subtest: quote mismatch and racing starts cannot convert twice or overdraw allowance
+    ok 4 - quote mismatch and racing starts cannot convert twice or overdraw allowance
+      ---
+      duration_ms: 15.494541
+      type: 'test'
+      ...
+    # Subtest: purchase disputes cannot return converted or held credits into spendable allowance
+    ok 5 - purchase disputes cannot return converted or held credits into spendable allowance
+      ---
+      duration_ms: 16.936959
+      type: 'test'
+      ...
+    # Subtest: mixed purchase lots preserve carried value and return only an untouched failed top-up
+    ok 6 - mixed purchase lots preserve carried value and return only an untouched failed top-up
+      ---
+      duration_ms: 50.473417
+      type: 'test'
+      ...
+    # Subtest: new DJ sessions use fixed credits and stop at the signed minute limit
+    ok 7 - new DJ sessions use fixed credits and stop at the signed minute limit
+      ---
+      duration_ms: 197.093833
+      type: 'test'
+      ...
+    # Subtest: a change of purchase lot cannot change the signed price
+    ok 8 - a change of purchase lot cannot change the signed price
+      ---
+      duration_ms: 11.04825
+      type: 'test'
+      ...
+    # Subtest: unavailable capacity rolls back the fixed price without buying allowance
+    ok 9 - unavailable capacity rolls back the fixed price without buying allowance
+      ---
+      duration_ms: 4.597833
+      type: 'test'
+      ...
+    1..9
+ok 19 - DJ allowance retains unused value without changing whole-credit account balances
+  ---
+  duration_ms: 733.851167
+  type: 'test'
+  ...
+# Subtest: DJ session input defaults Private and rejects unsafe fields
+ok 20 - DJ session input defaults Private and rejects unsafe fields
+  ---
+  duration_ms: 1.404083
+  type: 'test'
+  ...
+# Subtest: isolated DJ session ledger, fresh batches and public set policy
+    # Subtest: bounded supervisor exits on empty inventory and rejects unsafe watch options
+    ok 1 - bounded supervisor exits on empty inventory and rejects unsafe watch options
+      ---
+      duration_ms: 5272.335542
+      type: 'test'
+      ...
+    # Subtest: long rental requires an explicit bounded profile and still obeys the same total budget
+    ok 2 - long rental requires an explicit bounded profile and still obeys the same total budget
+      ---
+      duration_ms: 5.525292
+      type: 'test'
+      ...
+    # Subtest: hosted supervisor closes a lost controller rental and refunds only after provider absence
+    ok 3 - hosted supervisor closes a lost controller rental and refunds only after provider absence
+      ---
+      duration_ms: 34.253458
+      type: 'test'
+      ...
+    # Subtest: warm rental delivers distinct customer tracks before shutdown and recovers failed work safely
+    ok 4 - warm rental delivers distinct customer tracks before shutdown and recovers failed work safely
+      ---
+      duration_ms: 353.35375
+      type: 'test'
+      ...
+    # Subtest: one listener stopping drains and refunds only their render while the other continues
+    ok 5 - one listener stopping drains and refunds only their render while the other continues
+      ---
+      duration_ms: 256.209708
+      type: 'test'
+      ...
+    # Subtest: concurrent Starts cannot overbook a warm worker or consume rejected credits
+    ok 6 - concurrent Starts cannot overbook a warm worker or consume rejected credits
+      ---
+      duration_ms: 23.247334
+      type: 'test'
+      ...
+    # Subtest: warm deadline, budget and lost heartbeat stop capacity and refund unacknowledged jobs
+    ok 7 - warm deadline, budget and lost heartbeat stop capacity and refund unacknowledged jobs
+      ---
+      duration_ms: 43.137792
+      type: 'test'
+      ...
+    # Subtest: quotes bind owner and sharing, equal private price, atomic idempotent Start
+    ok 8 - quotes bind owner and sharing, equal private price, atomic idempotent Start
+      ---
+      duration_ms: 6.089958
+      type: 'test'
+      ...
+    # Subtest: bounded preparation, fresh seeds, verified output and immutable settlement retries
+    ok 9 - bounded preparation, fresh seeds, verified output and immutable settlement retries
+      ---
+      duration_ms: 377.668458
+      type: 'test'
+      ...
+    # Subtest: private, local and unplayed recordings never enter public listing or playback
+    ok 10 - private, local and unplayed recordings never enter public listing or playback
+      ---
+      duration_ms: 266.372833
+      type: 'test'
+      ...
+    # Subtest: credit exhaustion stops new reservations without changing visibility
+    ok 11 - credit exhaustion stops new reservations without changing visibility
+      ---
+      duration_ms: 102.707833
+      type: 'test'
+      ...
+    # Subtest: Stop race refunds queued work; running work waits for its shutdown receipt
+    ok 12 - Stop race refunds queued work; running work waits for its shutdown receipt
+      ---
+      duration_ms: 193.609875
+      type: 'test'
+      ...
+    # Subtest: lost settlement response retries once; disconnected sessions cannot dispatch
+    ok 13 - lost settlement response retries once; disconnected sessions cannot dispatch
+      ---
+      duration_ms: 134.602167
+      type: 'test'
+      ...
+    # Subtest: abandoned queued work expires even while its customer keeps heartbeating
+    ok 14 - abandoned queued work expires even while its customer keeps heartbeating
+      ---
+      duration_ms: 6.931042
+      type: 'test'
+      ...
+    # Subtest: different purchase fees do not change the fixed per-minute price
+    ok 15 - different purchase fees do not change the fixed per-minute price
+      ---
+      duration_ms: 122.298708
+      type: 'test'
+      ...
+    # Subtest: DJ and existing generation queues share one worker capacity
+    ok 16 - DJ and existing generation queues share one worker capacity
+      ---
+      duration_ms: 13.056791
+      type: 'test'
+      ...
+    # Subtest: frozen accounts cannot complete new public music
+    ok 17 - frozen accounts cannot complete new public music
+      ---
+      duration_ms: 82.870125
+      type: 'test'
+      ...
+    # Subtest: durable deadlines hold capacity and receipts recover a settlement crash
+    ok 18 - durable deadlines hold capacity and receipts recover a settlement crash
+      ---
+      duration_ms: 195.600375
+      type: 'test'
+      ...
+    # Subtest: remote shutdown, complete inventory and immutable cost evidence precede delivery
+    ok 19 - remote shutdown, complete inventory and immutable cost evidence precede delivery
+      ---
+      duration_ms: 244.676708
+      type: 'test'
+      ...
+    # Subtest: customer HTTP protects quotes, account identity, audio and paused launch gates
+    ok 20 - customer HTTP protects quotes, account identity, audio and paused launch gates
+      ---
+      duration_ms: 123.591916
+      type: 'test'
+      ...
+    # Subtest: account purge keeps running work and saved recordings protected
+    ok 21 - account purge keeps running work and saved recordings protected
+      ---
+      duration_ms: 8.323958
+      type: 'test'
+      ...
+    1..21
+ok 21 - isolated DJ session ledger, fresh batches and public set policy
+  ---
+  duration_ms: 8121.674875
+  type: 'test'
+  ...
+# Subtest: DNA requires explicit visibility and public-sharing permission
+ok 22 - DNA requires explicit visibility and public-sharing permission
+  ---
+  duration_ms: 1.040833
+  type: 'test'
+  ...
+# Subtest: real Postgres Music DNA credits, privacy, idempotence, failure and recovery
+    # Subtest: whole playlist account profiles persist all Unicode favorites privately
+    ok 1 - whole playlist account profiles persist all Unicode favorites privately
+      ---
+      duration_ms: 25.028541
+      type: 'test'
+      ...
+    # Subtest: song descriptions survive restart and stay bound to owner, billing environment and favorites
+    ok 2 - song descriptions survive restart and stay bound to owner, billing environment and favorites
+      ---
+      duration_ms: 148.447625
+      type: 'test'
+      ...
+    # Subtest: price, atomic reservation and duplicate request binding
+    ok 3 - price, atomic reservation and duplicate request binding
+      ---
+      duration_ms: 62.164167
+      type: 'test'
+      ...
+    # Subtest: private audio and notes are owner-only, with fixed catalog price charged once
+    ok 4 - private audio and notes are owner-only, with fixed catalog price charged once
+      ---
+      duration_ms: 84.874375
+      type: 'test'
+      ...
+    # Subtest: public success enters the feed, without favorites or identities; withdrawal removes access
+    ok 5 - public success enters the feed, without favorites or identities; withdrawal removes access
+      ---
+      duration_ms: 94.829167
+      type: 'test'
+      ...
+    # Subtest: failure refunds all held credits and never publishes; anonymous generation is denied
+    ok 6 - failure refunds all held credits and never publishes; anonymous generation is denied
+      ---
+      duration_ms: 35.657375
+      type: 'test'
+      ...
+    # Subtest: interrupted startup and missing worker files recover without stranded credits
+    ok 7 - interrupted startup and missing worker files recover without stranded credits
+      ---
+      duration_ms: 40.552958
+      type: 'test'
+      ...
+    # Subtest: cloud storage failure holds completion; durable private/public songs survive without renderer files
+    ok 8 - cloud storage failure holds completion; durable private/public songs survive without renderer files
+      ---
+      duration_ms: 75.218209
+      type: 'test'
+      ...
+    # Subtest: gallery filters cover all pages without exposing private, withdrawn or other-product metadata
+    ok 9 - gallery filters cover all pages without exposing private, withdrawn or other-product metadata
+      ---
+      duration_ms: 351.273625
+      type: 'test'
+      ...
+    1..9
+ok 23 - real Postgres Music DNA credits, privacy, idempotence, failure and recovery
+  ---
+  duration_ms: 1296.93575
+  type: 'test'
+  ...
+# Subtest: tax, Apple fee tier, fixed fees, refunds, FX and overhead reduce spendable proceeds
+ok 24 - tax, Apple fee tier, fixed fees, refunds, FX and overhead reduce spendable proceeds
+  ---
+  duration_ms: 1.276583
+  type: 'test'
+  ...
+# Subtest: Stripe signatures require exact body, timestamp and sandbox credentials
+ok 25 - Stripe signatures require exact body, timestamp and sandbox credentials
+  ---
+  duration_ms: 2.719208
+  type: 'test'
+  ...
+# Subtest: Checkout fulfillment rereads paid state, rejects unpaid, wrong totals and live payments
+ok 26 - Checkout fulfillment rereads paid state, rejects unpaid, wrong totals and live payments
+  ---
+  duration_ms: 0.600875
+  type: 'test'
+  ...
+# Subtest: private credits are 25 percent of the base rounded up, bounded and integer
+ok 27 - private credits are 25 percent of the base rounded up, bounded and integer
+  ---
+  duration_ms: 0.1285
+  type: 'test'
+  ...
+# Subtest: credit checkout binds product, taxes, pack and billing mode
+ok 28 - credit checkout binds product, taxes, pack and billing mode
+  ---
+  duration_ms: 0.399625
+  type: 'test'
+  ...
+# Subtest: live credit sales cannot bypass the application release hold; sandbox remains usable
+ok 29 - live credit sales cannot bypass the application release hold; sandbox remains usable
+  ---
+  duration_ms: 0.557417
+  type: 'test'
+  ...
+# Subtest: credit reversals ignore unrelated purchases and reject ambiguous or mismatched provider state
+ok 30 - credit reversals ignore unrelated purchases and reject ambiguous or mismatched provider state
+  ---
+  duration_ms: 1.224958
+  type: 'test'
+  ...
+# Subtest: verified renewals survive unrelated refunds without reopening spending
+ok 31 - verified renewals survive unrelated refunds without reopening spending
+  ---
+  duration_ms: 415.030375
+  type: 'test'
+  ...
+# Subtest: real Postgres ledger: conservation, concurrency, receipts, tenant isolation and costs
+    # Subtest: private and public legacy requests have no surcharge; failures refund even incurred costs
+    ok 1 - private and public legacy requests have no surcharge; failures refund even incurred costs
+      ---
+      duration_ms: 48.98775
+      type: 'test'
+      ...
+    # Subtest: receipt replay grants exactly once and cannot move between accounts
+    ok 2 - receipt replay grants exactly once and cannot move between accounts
+      ---
+      duration_ms: 17.350541
+      type: 'test'
+      ...
+    # Subtest: parallel reservations enforce one active job and no overspend
+    ok 3 - parallel reservations enforce one active job and no overspend
+      ---
+      duration_ms: 17.391458
+      type: 'test'
+      ...
+    # Subtest: zero-cost cancellation returns original lots; changed quote rejected
+    ok 4 - zero-cost cancellation returns original lots; changed quote rejected
+      ---
+      duration_ms: 19.775958
+      type: 'test'
+      ...
+    # Subtest: Apple sandbox lots preserve their own economics, ledgers immutable, disputes freeze
+    ok 5 - Apple sandbox lots preserve their own economics, ledgers immutable, disputes freeze
+      ---
+      duration_ms: 21.89425
+      type: 'test'
+      ...
+    # Subtest: unfunded jobs and invalid cost caps rejected without mutation
+    ok 6 - unfunded jobs and invalid cost caps rejected without mutation
+      ---
+      duration_ms: 4.740041
+      type: 'test'
+      ...
+    # Subtest: out-of-order refund and grant races cannot leave spendable disputed credits
+    ok 7 - out-of-order refund and grant races cannot leave spendable disputed credits
+      ---
+      duration_ms: 10.635833
+      type: 'test'
+      ...
+    # Subtest: taste profiles are owner-scoped with optimistic concurrency and deletion
+    ok 8 - taste profiles are owner-scoped with optimistic concurrency and deletion
+      ---
+      duration_ms: 6.275041
+      type: 'test'
+      ...
+    1..8
+ok 32 - real Postgres ledger: conservation, concurrency, receipts, tenant isolation and costs
+  ---
+  duration_ms: 408.037208
+  type: 'test'
+  ...
+1..32
+# tests 102
+# suites 0
+# pass 102
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 19802.592458

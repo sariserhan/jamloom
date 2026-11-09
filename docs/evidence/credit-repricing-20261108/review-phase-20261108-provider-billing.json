@@ -1,0 +1,17 @@
+{
+  "status": "PROVISIONAL",
+  "at": "2026-11-09T03:09:25.439Z",
+  "scope": "Observed review-cycle worker IDs; full provider reconciliation remains required; $1.50 reserved across two validation cycles, $7.50 permit ceiling",
+  "rows": [],
+  "notYetReported": [
+    "mlqupne061frfm",
+    "s2ltxvi4scscnc",
+    "761w03inzbj2eh",
+    "9mnknjowsu1asr",
+    "17hnj60eljdvrf"
+  ],
+  "reportedUSD": 0,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "mutations": false
+}

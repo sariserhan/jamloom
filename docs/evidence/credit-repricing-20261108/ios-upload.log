@@ -1,0 +1,10 @@
+Running altool at path '/Applications/Xcode.app/Contents/SharedFrameworks/ContentDelivery.framework/Resources/altool'...
+
+2026-11-08 22:08:54.751 ERROR: [ContentDelivery.Uploader.833041140] Failed to create URL for 'CDUploaderStateInfoResumeFilePath'. The file doesn’t exist. (4) The file doesn’t exist.
+2026-11-08 22:08:54.753  INFO: [ContentDelivery.Uploader.833041140] 
+==========================================
+UPLOAD SUCCEEDED with no errors
+Delivery UUID: adcb0a6d-0a39-4805-acb6-fd9cbaed75a7
+Transferred 91930158 bytes in 4.391 seconds (20.9MB/s, 167.488Mbps)
+==========================================
+No errors uploading archive at 'build-ios-store/Jamloom-0.11.0-40-export/Jamloom.ipa'.

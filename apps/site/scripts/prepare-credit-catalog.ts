@@ -10,6 +10,7 @@ if((await stripe.accounts.retrieve(null)).id!=='acct_1TxA3vDlEXWDEeHO')throw Err
 if(!process.argv.includes('--apply-test')){
  console.log(JSON.stringify({mode:'test',action:'dry-run',creator:CREATOR_PLAN,version:CREDIT_CATALOG_VERSION,livePurchases:false}));
 }else{
+ if(process.env.CREATOR_STRIPE_PRICE_ID){const existing=await stripe.prices.retrieve(process.env.CREATOR_STRIPE_PRICE_ID);if(existing.unit_amount!==CREATOR_PLAN.cents)throw Error('Existing Creator catalog: use reprice-credit-catalog.ts; do not create duplicate products');}
  const taxCode=process.env.CREDIT_STRIPE_TAX_CODE;if(!/^txcd_[0-9]{8}$/.test(taxCode??''))throw Error('Reviewed tax category required');
  const product=await stripe.products.create({name:'Jamloom Creator',description:'300 nonexpiring credits per month. Cancel future renewals anytime.',tax_code:taxCode,metadata:{jamloom_catalog:CREDIT_CATALOG_VERSION}},{idempotencyKey:`jamloom:creator:product:${CREDIT_CATALOG_VERSION}`});
  const price=await stripe.prices.create({product:product.id,currency:'usd',unit_amount:CREATOR_PLAN.cents,recurring:{interval:'month'},tax_behavior:'exclusive',metadata:{jamloom_catalog:CREDIT_CATALOG_VERSION}},{idempotencyKey:`jamloom:creator:price:${CREDIT_CATALOG_VERSION}`});

@@ -1,0 +1,2 @@
+{"status":"PASS","environment":"Stripe test mode + disposable local Postgres","checkoutDeduplication":"PASS","firstPayment":"PASS","monthlyRenewal":"PASS","duplicateInvoices":"PASS","cancellationPreservesCredits":"PASS","refund":"PASS","liveCharges":0,"gpuRequests":0}
+{"cleanup":"PASS","testClockRemoved":true,"localDatabaseRemoved":true}

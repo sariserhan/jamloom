@@ -23,6 +23,22 @@ private final class AccountProtocol: URLProtocol {
     override func stopLoading() {}
 }
 @MainActor final class AccountTests: XCTestCase {
+    func testRetailPricesFollowAuthenticatedCatalogWithoutChangingCredits() throws {
+        for (version, monthly, topup) in [("2026-10-31-v2", 1500, 1000), ("2026-11-08-v3", 3500, 2000)] {
+            let data = try JSONSerialization.data(withJSONObject: ["version": version,
+                "creator": ["cents": monthly, "credits": 300, "appleProduct": CreditPurchases.creatorProduct],
+                "topup": ["cents": topup, "credits": 150, "appleProduct": CreditPurchases.topUpProduct]])
+            let catalog = try JSONDecoder().decode(AccountSnapshot.CreditCatalog.self, from: data)
+            XCTAssertEqual(catalog.price(for: CreditPurchases.creatorProduct), Decimal(monthly) / 100)
+            XCTAssertEqual(catalog.price(for: CreditPurchases.topUpProduct), Decimal(topup) / 100)
+            XCTAssertNil(catalog.price(for: "unknown"))
+        }
+        let invalid = AccountSnapshot.CreditCatalog(version: "v3",
+            creator: .init(cents: 3500, credits: 301, appleProduct: CreditPurchases.creatorProduct),
+            topup: .init(cents: 2000, credits: 150, appleProduct: "unknown"))
+        XCTAssertNil(invalid.price(for: CreditPurchases.creatorProduct))
+        XCTAssertNil(invalid.price(for: CreditPurchases.topUpProduct))
+    }
     func testNativePurchaseAvailabilityFollowsAuthenticatedServerAndClearsOnSignOut() async throws {
         let transport = transport(), account = AccountModel(transport: transport)
         defer { transport.session.invalidateAndCancel() }

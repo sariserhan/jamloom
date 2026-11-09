@@ -90,7 +90,7 @@ import UIKit
         let products = try await Product.products(for: [id])
         let product = try XCTUnwrap(products.first)
         guard product.id == id, product.priceFormatStyle.currencyCode == "USD",
-              product.price == (id == CreditPurchases.singingProduct ? Decimal(39) : id == CreditPurchases.creatorProduct ? Decimal(15) : id == CreditPurchases.topUpProduct ? Decimal(10) : Decimal(string: "9.99")!),
+              product.price == (id == CreditPurchases.singingProduct ? Decimal(39) : id == CreditPurchases.creatorProduct ? Decimal(35) : id == CreditPurchases.topUpProduct ? Decimal(20) : Decimal(string: "9.99")!),
               !product.description.contains("Local test") else { XCTFail("Real Apple sandbox product required"); return }
         switch try await product.purchase(options: [.appAccountToken(token)]) {
         case .success(let result):
@@ -112,7 +112,7 @@ import UIKit
         #else
         // App-download transactions do not prove an in-app purchase's environment.
         // This opt-in catalogue check never qualifies receipts or starts a purchase.
-        let expected: [String: Decimal] = [CreditPurchases.creatorProduct: 15, CreditPurchases.topUpProduct: 10, CreditPurchases.singingProduct: 39]
+        let expected: [String: Decimal] = [CreditPurchases.creatorProduct: 35, CreditPurchases.topUpProduct: 20, CreditPurchases.singingProduct: 39]
         let products = try await Product.products(for: Array(expected.keys))
         let rows = products.map { ["id": $0.id, "name": $0.displayName, "description": $0.description, "price": NSDecimalNumber(decimal: $0.price).stringValue, "currency": $0.priceFormatStyle.currencyCode, "type": $0.type.rawValue] }
         let proof = XCTAttachment(data: try JSONSerialization.data(withJSONObject: rows, options: .sortedKeys), uniformTypeIdentifier: "public.json")
@@ -169,9 +169,9 @@ import UIKit
         let token = UUID(), purchases = CreditPurchases()
         let products = try await purchases.products()
         let creator = try XCTUnwrap(products.first { $0.id == CreditPurchases.creatorProduct })
-        XCTAssertEqual(creator.type, .autoRenewable); XCTAssertEqual(creator.price, Decimal(15))
+        XCTAssertEqual(creator.type, .autoRenewable); XCTAssertEqual(creator.price, Decimal(35))
         XCTAssertEqual(creator.subscription?.subscriptionPeriod.unit, .month)
-        XCTAssertEqual(products.first { $0.id == CreditPurchases.topUpProduct }?.price, Decimal(10))
+        XCTAssertEqual(products.first { $0.id == CreditPurchases.topUpProduct }?.price, Decimal(20))
         _ = try await session.buyProduct(identifier: creator.id, options: [.appAccountToken(token)])
         let result = try await deliveredTransaction(creator.id)
         var acknowledged = 0

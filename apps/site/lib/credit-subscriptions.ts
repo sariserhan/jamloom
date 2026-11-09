@@ -1,12 +1,14 @@
 import Stripe from 'stripe';
 import type {Pool} from 'pg';
 import {Wallet,type SubscriptionGrant} from './wallet';
-import {CREATOR_PLAN,CREDIT_CATALOG_VERSION} from './credit-catalog';
+import {CREATOR_PLAN,CREDIT_CATALOG_VERSION,PREVIOUS_CREDIT_CATALOG_VERSION,creditCatalog} from './credit-catalog';
 
 const idOf=(v:string|{id:string}|null|undefined)=>typeof v==='string'?v:v?.id;
 const provider=(live:boolean)=>live?'stripe_live' as const:'stripe_test' as const;
-export function creatorPriceID(live:boolean,env:Record<string,string|undefined>=process.env){
- const id=env[live?'CREATOR_STRIPE_LIVE_PRICE_ID':'CREATOR_STRIPE_PRICE_ID'];
+export function creatorPriceID(live:boolean,env:Record<string,string|undefined>=process.env,catalog:string=CREDIT_CATALOG_VERSION){
+ if(!creditCatalog(catalog))throw Error('Unknown Creator catalog');
+ const previous=catalog===PREVIOUS_CREDIT_CATALOG_VERSION;
+ const id=env[live?(previous?'CREATOR_STRIPE_LIVE_PREVIOUS_PRICE_ID':'CREATOR_STRIPE_LIVE_PRICE_ID'):(previous?'CREATOR_STRIPE_PREVIOUS_PRICE_ID':'CREATOR_STRIPE_PRICE_ID')];
  if(!/^price_[A-Za-z0-9]+$/.test(id??''))throw Error('Creator subscription is not configured');return id!;
 }
 function subscriptionGrant(s:Stripe.Subscription):SubscriptionGrant{
@@ -32,7 +34,14 @@ async function createSubscriptionCheckout(stripe:Stripe,pool:Pick<Pool,'query'>,
  // Reuse an open session across tabs/devices, then let Stripe's customer subscription check prevent duplicates.
  const open=await stripe.checkout.sessions.list({customer,status:'open',limit:100});
  if(open.has_more)throw Error('Checkout reconciliation required');
- const pending=open.data.find(s=>s.metadata?.jamloom_product==='creator-subscription');if(pending)return pending;
+ const pending=open.data.filter(s=>s.metadata?.jamloom_product==='creator-subscription');
+ if(pending.length>1)throw Error('Checkout reconciliation required');
+ if(pending[0]){
+  if(pending[0].metadata?.catalog===CREDIT_CATALOG_VERSION)return pending[0];
+  if(!creditCatalog(pending[0].metadata?.catalog))throw Error('Checkout reconciliation required');
+  // Never return an open checkout quoting a superseded retail price.
+  await stripe.checkout.sessions.expire(pending[0].id);
+ }
  const active=await stripe.subscriptions.list({customer,status:'all',limit:100});
  if(active.has_more||active.data.some(s=>s.metadata.jamloom_product==='creator-subscription'&&!['canceled','incomplete_expired'].includes(s.status)))throw Error('A subscription already exists');
  return stripe.checkout.sessions.create({mode:'subscription',customer,client_reference_id:owner,
@@ -40,7 +49,7 @@ async function createSubscriptionCheckout(stripe:Stripe,pool:Pick<Pool,'query'>,
    subscription_data:{metadata:{jamloom_product:'creator-subscription',jamloom_owner:owner,catalog:CREDIT_CATALOG_VERSION}},
    line_items:[{price:priceID,quantity:1}],automatic_tax:{enabled:true},customer_update:{address:'auto'},
    success_url:origin+'/account/credits?payment=complete&session_id={CHECKOUT_SESSION_ID}',cancel_url:origin+'/account/credits?payment=cancelled'
- },{idempotencyKey:`jamloom:creator:${live}:${owner}:${key}`});
+ },{idempotencyKey:`jamloom:creator:${CREDIT_CATALOG_VERSION}:${live}:${owner}:${key}`});
 }
 export async function fulfillSubscriptionInvoice(stripe:Stripe,pool:Pool,wallet:Wallet,id:string){
  const invoice=await stripe.invoices.retrieve(id,{expand:['lines','payments']});
@@ -48,14 +57,16 @@ export async function fulfillSubscriptionInvoice(stripe:Stripe,pool:Pool,wallet:
  if(!subscriptionID)return null;
  const subscription=await stripe.subscriptions.retrieve(subscriptionID);
  if(subscription.metadata.jamloom_product!=='creator-subscription')return null;
+ const catalog=creditCatalog(subscription.metadata.catalog),plan=catalog?.creator;
+ if(!plan)throw Error('Unsupported Creator invoice catalog');
  const owner=subscription.metadata.jamloom_owner,line=invoice.lines.data[0];
  const customer=(await pool.query('SELECT owner_id FROM credit_customers WHERE customer_id=$1 AND billing_live=$2',[idOf(subscription.customer),wallet.live])).rows[0];
- if(subscription.livemode!==wallet.live||invoice.livemode!==wallet.live||subscription.metadata.catalog!==CREDIT_CATALOG_VERSION||
+ if(subscription.livemode!==wallet.live||invoice.livemode!==wallet.live||
     !owner||customer?.owner_id!==owner||idOf(invoice.customer)!==idOf(subscription.customer)||invoice.status!=='paid'||invoice.amount_remaining!==0||
-    !['subscription_create','subscription_cycle'].includes(invoice.billing_reason??'')||invoice.currency!=='usd'||invoice.subtotal!==CREATOR_PLAN.cents||
+    !['subscription_create','subscription_cycle'].includes(invoice.billing_reason??'')||invoice.currency!=='usd'||invoice.subtotal!==plan.cents||
     invoice.total_discount_amounts?.some(d=>d.amount!==0)||invoice.post_payment_credit_notes_amount||invoice.pre_payment_credit_notes_amount||
-    invoice.lines.has_more||invoice.lines.data.length!==1||!line||line.quantity!==1||line.amount!==CREATOR_PLAN.cents||
-    line.pricing?.price_details?.price!==creatorPriceID(wallet.live)||line.parent?.subscription_item_details?.proration||line.period.end<=line.period.start)
+    invoice.lines.has_more||invoice.lines.data.length!==1||!line||line.quantity!==1||line.amount!==plan.cents||
+    line.pricing?.price_details?.price!==creatorPriceID(wallet.live,process.env,subscription.metadata.catalog)||line.parent?.subscription_item_details?.proration||line.period.end<=line.period.start)
    throw Error('Unsupported Creator invoice');
  const payments=await stripe.invoicePayments.list({invoice:id,status:'paid',limit:2});
  const payment=payments.data[0],intentID=idOf(payment?.payment.payment_intent);
@@ -67,9 +78,9 @@ export async function fulfillSubscriptionInvoice(stripe:Stripe,pool:Pool,wallet:
  if(!balance||typeof balance==='string'||balance.currency!=='usd'||balance.source!==charge.id||balance.amount!==charge.amount||balance.net!==balance.amount-balance.fee||balance.exchange_rate!==null)throw Error('Subscription fee evidence pending');
  const tax=(invoice.total_taxes??[]).reduce((sum,t)=>sum+t.amount,0);
  // Reserve Billing plus support/refund costs. Revenue evidence never changes retail credit prices.
- const netMicros=(balance.net-tax-Math.ceil(CREATOR_PLAN.cents*.207))*10000;
+ const netMicros=(balance.net-tax-Math.ceil(plan.cents*.207))*10000;
  const s={...subscriptionGrant(subscription),start:new Date(line.period.start*1000),end:new Date(line.period.end*1000)};
- return wallet.grant(owner,{provider:provider(wallet.live),receipt:id,credits:CREATOR_PLAN.credits,netMicros,subscription:s});
+ return wallet.grant(owner,{provider:provider(wallet.live),receipt:id,credits:plan.credits,netMicros,subscription:s});
 }
 export async function reconcileSubscription(stripe:Stripe,pool:Pool,wallet:Wallet,id:string){
  const s=await stripe.subscriptions.retrieve(id);if(s.metadata.jamloom_product!=='creator-subscription')return;

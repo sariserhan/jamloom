@@ -1,4 +1,4 @@
-import {CREATOR_PLAN,TOP_UP,LEGACY_CREDIT_MULTIPLIER} from './credit-catalog';
+import {CREATOR_PLAN,TOP_UP,CREDIT_CATALOGS,LEGACY_CREDIT_MULTIPLIER} from './credit-catalog';
 import { Environment,SignedDataVerifier,Type, type JWSTransactionDecodedPayload } from '@apple/app-store-server-library';
 import {CREDIT_PACKS} from './economics';
 import {Wallet} from './wallet';
@@ -25,7 +25,8 @@ export function appleVerifier(env:Record<string,string|undefined>=process.env){
 // This validator accepts only the output of Apple's independent JWS verifier.
 export function applePurchase(transaction:JWSTransactionDecodedPayload,token:string,bundle:string,environment:AppleEnvironment=Environment.SANDBOX){
  const recurring=transaction.productId===CREATOR_PLAN.appleProduct;
- const pack=recurring?CREATOR_PLAN:products[transaction.productId as keyof typeof products];
+ const retail=recurring?'creator':transaction.productId===TOP_UP.appleProduct?'topup':null;
+ const pack=retail?Object.values(CREDIT_CATALOGS).map(c=>c[retail]).find(p=>transaction.price===p.cents*10):products[transaction.productId as keyof typeof products];
  if(transaction.environment!==environment||transaction.bundleId!==bundle||transaction.type!==(recurring?Type.AUTO_RENEWABLE_SUBSCRIPTION:Type.CONSUMABLE)||
  transaction.quantity!==1||transaction.inAppOwnershipType!=='PURCHASED'||transaction.revocationDate!==undefined||transaction.revocationReason!==undefined||
  transaction.appAccountToken?.toLowerCase()!==token.toLowerCase()||!pack||!transaction.transactionId||

@@ -26,13 +26,14 @@ for(const p of [product,price])if(p)assert.equal(p.active,false,'Existing prepar
 if(hook){assert.equal(hook.status,'disabled');assert.equal(hook.url,url);}
 const plan={mode:'live-preparation',catalog:CREDIT_CATALOG_VERSION,creator:CREATOR_PLAN,taxCode,productActive:false,priceActive:false,portalLoginEnabled:false,cancellation:'at_period_end',proration:'none',webhook:{url,apiVersion:Stripe.API_VERSION,events,status:'disabled'},existing:{product:product?.id,price:price?.id,portal:portal?.id,hook:hook?.id},deployment:false,livePurchases:false};
 if(!apply){console.log(JSON.stringify(plan,null,2));process.exit(0);}
+if(process.env.CREATOR_STRIPE_LIVE_PRICE_ID){const existing=await stripe.prices.retrieve(process.env.CREATOR_STRIPE_LIVE_PRICE_ID);assert.equal(existing.unit_amount,CREATOR_PLAN.cents,'Existing Creator catalog: use reprice-credit-catalog.ts; do not create duplicate products');}
 const folder=resolve('../../build-launch-preparation-20261031');await mkdir(folder,{recursive:true,mode:0o700});
 await writeFile(resolve(folder,'stripe-preparation-intent.json'),JSON.stringify(plan,null,2),{mode:0o600});
 const options=(part:string)=>({idempotencyKey:`jamloom:inactive:${CREDIT_CATALOG_VERSION}:${part}`});
 product??=await stripe.products.create({name:'Jamloom Creator',description:'300 nonexpiring credits per month. Cancel future renewals anytime.',active:false,tax_code:taxCode,metadata},options('product'));
 assert.equal(product.active,false);assert.equal(product.tax_code,taxCode);
 price??=await stripe.prices.create({product:product.id,active:false,currency:'usd',unit_amount:CREATOR_PLAN.cents,recurring:{interval:'month'},tax_behavior:'exclusive',metadata},options('price'));
-assert.equal(price.product,product.id);assert.equal(price.active,false);assert.equal(price.unit_amount,1500);assert.equal(price.currency,'usd');assert.equal(price.recurring?.interval,'month');assert.equal(price.recurring?.interval_count,1);assert.equal(price.tax_behavior,'exclusive');
+assert.equal(price.product,product.id);assert.equal(price.active,false);assert.equal(price.unit_amount,CREATOR_PLAN.cents);assert.equal(price.currency,'usd');assert.equal(price.recurring?.interval,'month');assert.equal(price.recurring?.interval_count,1);assert.equal(price.tax_behavior,'exclusive');
 if(!portal){
  const created=await stripe.billingPortal.configurations.create({name:'Jamloom Creator — release held',business_profile:{headline:'Manage your Jamloom Creator subscription',privacy_policy_url:'https://www.jamloom.com/privacy',terms_of_service_url:'https://www.jamloom.com/terms'},default_return_url:'https://www.jamloom.com/account/credits',features:{subscription_cancel:{enabled:true,mode:'at_period_end',proration_behavior:'none'},subscription_update:{enabled:false},payment_method_update:{enabled:true},invoice_history:{enabled:true}},login_page:{enabled:false},metadata},options('portal'));
  // Stripe's first configuration becomes the default and cannot be deactivated.

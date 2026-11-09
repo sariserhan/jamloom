@@ -1,0 +1,31 @@
+{
+  "mode": "test",
+  "catalog": "2026-11-08-v3",
+  "creator": {
+    "key": "creator",
+    "cents": 3500,
+    "credits": 300,
+    "interval": "month",
+    "appleProduct": "com.jamloom.creator.monthly"
+  },
+  "topup": {
+    "key": "topup",
+    "cents": 2000,
+    "credits": 150,
+    "appleProduct": "com.jamloom.credits.topup150"
+  },
+  "product": "prod_VXb6CwLD61OS9v",
+  "priorPrice": "price_1UWVuCDlEXWDEeHOOI7JspHx",
+  "candidatePrice": "price_1UZipUDlEXWDEeHOeVEjxPt8",
+  "createPrice": true,
+  "reuseProduct": true,
+  "existingSubscriptionsChanged": false,
+  "existingPricesChanged": false,
+  "webhookChanged": false,
+  "livePurchases": false,
+  "deployment": false,
+  "topupImplementation": "Version-bound inline Checkout price; no duplicate Stripe product required",
+  "status": "PASS",
+  "privateCandidateConfigurationSaved": true,
+  "defaultEnvironmentChanged": false
+}

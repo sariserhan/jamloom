@@ -159,6 +159,21 @@ struct AccountSnapshot: Decodable {
     let balance: Balance
     let purchasesReleased: Bool
     var sandboxReview: Bool? = nil
+    struct CreditCatalog: Decodable {
+        struct Offer: Decodable { let cents: Int; let credits: Int; let appleProduct: String }
+        let version: String
+        let creator: Offer
+        let topup: Offer
+        @MainActor func price(for product: String) -> Decimal? {
+            let offer: Offer
+            if product == CreditPurchases.creatorProduct && creator.credits == 300 { offer = creator }
+            else if product == CreditPurchases.topUpProduct && topup.credits == 150 { offer = topup }
+            else { return nil }
+            guard offer.appleProduct == product, (1...100000).contains(offer.cents), !version.isEmpty else { return nil }
+            return Decimal(offer.cents) / 100
+        }
+    }
+    var creditCatalog: CreditCatalog? = nil
     struct Subscription: Decodable {
         let provider: String; let plan: String; let status: String
         let period_end: String; let cancel_at_period_end: Bool
@@ -215,7 +230,7 @@ struct AccountTaste: Decodable { let profile: TasteProfile; let revision: Int }
     var canPurchase: Bool { CreditPurchases.released && snapshot?.purchasesReleased == true }
     func loadProducts() async {
         guard canPurchase else { creditProducts = []; return }
-        await perform { creditProducts = try await purchases.products().filter { $0.priceFormatStyle.currencyCode == "USD" && $0.price == ($0.id == CreditPurchases.creatorProduct ? Decimal(15) : Decimal(10)) }.sorted { $0.price < $1.price } }
+        await perform { creditProducts = try await purchases.products().filter { $0.priceFormatStyle.currencyCode == "USD" && $0.price == snapshot?.creditCatalog?.price(for: $0.id) }.sorted { $0.price < $1.price } }
     }
     var hasSubscription: Bool {
         snapshot?.subscriptions?.contains { !["canceled", "expired", "revoked", "incomplete_expired"].contains($0.status) } == true

@@ -1,4 +1,4 @@
-import {CREDIT_CATALOG_VERSION,LEGACY_CREDIT_MULTIPLIER,creditSalesQualified} from './credit-catalog';
+import {CREDIT_CATALOG_VERSION,LEGACY_CREDIT_MULTIPLIER,creditCatalog,creditSalesQualified} from './credit-catalog';
 import Stripe from 'stripe';
 import { CREDIT_PACKS, integer } from './economics';
 import { Wallet } from './wallet';
@@ -33,13 +33,13 @@ export async function reconcileCreditReversal(stripe:Stripe,wallet:Wallet,event:
 export async function fulfillCheckout(stripe:Stripe,wallet:Wallet,id:string){
   // Re-read authoritative payment state; browser redirect and event metadata never mint credits.
   const session=await stripe.checkout.sessions.retrieve(id,{expand:['line_items']});
-  const packKey=session.metadata?.pack as keyof typeof CREDIT_PACKS,pack=CREDIT_PACKS[packKey];
+  const packKey=session.metadata?.pack as keyof typeof CREDIT_PACKS;
+  const pack=packKey==='topup'?creditCatalog(session.metadata?.catalog)?.topup:CREDIT_PACKS[packKey];
   const owner=session.client_reference_id;
   if(session.livemode!==wallet.live||session.metadata?.jamloom_product!=='song-credits'||session.mode!=='payment'||session.payment_status!=='paid'||!owner||!pack||
      session.currency!=='usd'||session.amount_subtotal!==pack.cents||session.total_details?.amount_discount!==0||
      session.line_items?.has_more||session.line_items?.data.length!==1||session.line_items.data[0].quantity!==1||
      session.line_items.data[0].amount_subtotal!==pack.cents)throw new Error('Unsupported or unpaid purchase');
-  if(packKey==='topup'&&session.metadata?.catalog!==CREDIT_CATALOG_VERSION)throw Error('Unknown credit catalog');
   if(typeof session.payment_intent!=='string')throw new Error('Missing payment intent');
   const intent=await stripe.paymentIntents.retrieve(session.payment_intent,{expand:['latest_charge.balance_transaction']});
   const charge=intent.latest_charge;
@@ -65,5 +65,5 @@ export async function checkout(stripe:Stripe,owner:string,pack:keyof typeof CRED
   return stripe.checkout.sessions.create({mode:'payment',client_reference_id:owner,metadata:{pack,jamloom_product:'song-credits',catalog:CREDIT_CATALOG_VERSION},
     line_items:[{price_data:{currency:'usd',tax_behavior:'exclusive',unit_amount:p.cents,product_data:{tax_code:taxCode,name:`Jamloom ${p.credits} ${live?'':'test '}credits`}},quantity:1}],
     success_url:origin+'/account/credits?payment=complete&session_id={CHECKOUT_SESSION_ID}',cancel_url:origin+'/account/credits?payment=cancelled',
-    automatic_tax:{enabled:true}}, {idempotencyKey:`jamloom:inline:${owner}:${key}`});
+    automatic_tax:{enabled:true}}, {idempotencyKey:`jamloom:inline:${CREDIT_CATALOG_VERSION}:${owner}:${key}`});
 }

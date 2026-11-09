@@ -113,15 +113,17 @@ Specify protocol/versioned schemas for note events, timebase (sample index / bea
 
 **Provider integration strategy:** Manual search and catalog metadata are release-safe default (verify metadata license). Apple Music library metadata integration only upon terms review; Spotify developer-policy restrictions on AI use and user profiling make deep integration non-default; YouTube playlists only if API/terms allow the actual requested purpose. No scraping music catalogs or circumventing barriers. Expose import status to user honestly.
 
-## 9. Monetization — owner-approved credit catalog, 2026-10-31
+## 9. Monetization — owner-approved credit catalog, updated 2026-11-08
 
 The owner authorized implementation across web and phone and explicitly selected **nonexpiring paid credits everywhere**, including subscription grants. This amendment supersedes the earlier prepaid-only launch proposal, variable fee-dependent retail quotes and private-generation surcharge. The immutable master is unchanged. [Implementation and release gates](../../docs/CREDIT_SYSTEM.md).
 
 | Offer | USD before applicable tax | Credits |
 |---|---:|---:|
 | Free studio and one-time verified-account trial | Free, capacity limited | 20 |
-| Creator monthly subscription | $15/month | 300 each successful payment |
-| Optional top-up, no subscription required | $10 once | 150 |
+| Creator monthly subscription | $35/month | 300 each successful payment |
+| Optional top-up, no subscription required | $20 once | 150 |
+
+On November 8 the owner explicitly approved these higher prices while retaining the 65% margin target. Preserve original $15/$10 receipts and renewals at their original amounts/proceeds; no automatic subscription migration. The price increase does not establish full economic qualification.
 
 Studio $29/700, annual plans and unlimited generation are deferred. Paid credits never expire and remain after subscription cancellation. Existing Pro and course purchases retain separate entitlements. One account shares its server wallet across web and iPhone. Launch purchase verification currently supports USD; additional storefront currencies require verified pricing and net-proceeds support.
 

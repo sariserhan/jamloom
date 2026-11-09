@@ -14,7 +14,7 @@ test('catalog prices are independent of channel, privacy, style and voice; live 
  const lots=[{id:'apple',credits:150,available:150,net_micros:4_000_000}];
  assert.equal(fixedAllocation(lots,10)[0].n,10);
  assert.equal(fixedAllocation([{...lots[0],net_micros:9_000_000}],10)[0].n,10);
- assertCatalogBudget(price,70000,true);assert.throws(()=>assertCatalogBudget(price,70001,true),/budget/);
+ assertCatalogBudget(price,163331,true);assert.throws(()=>assertCatalogBudget(price,163332,true),/budget/);
  assert.throws(()=>assertAllocationBudget([{n:10,net:1000}],70000,true),/proceeds/);
  assertAllocationBudget([{n:10,net:20000}],70000,true);
  assert.throws(()=>fixedAllocation(lots,151),/Insufficient/);

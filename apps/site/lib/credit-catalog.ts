@@ -1,12 +1,24 @@
 // Shared retail units. Provider fees affect internal accounting, never an owner's job price.
-export const CREDIT_CATALOG_VERSION = '2026-10-31-v2';
+export const CREDIT_CATALOG_VERSION = '2026-11-08-v3';
+export const PREVIOUS_CREDIT_CATALOG_VERSION = '2026-10-31-v2';
 export const LEGACY_CREDIT_MULTIPLIER = 15;
-export const CREATOR_PLAN = {key:'creator',cents:1500,credits:300,interval:'month',appleProduct:'com.jamloom.creator.monthly'} as const;
-export const TOP_UP = {key:'topup',cents:1000,credits:150,appleProduct:'com.jamloom.credits.topup150'} as const;
+export const CREATOR_PLAN = {key:'creator',cents:3500,credits:300,interval:'month',appleProduct:'com.jamloom.creator.monthly'} as const;
+export const TOP_UP = {key:'topup',cents:2000,credits:150,appleProduct:'com.jamloom.credits.topup150'} as const;
+// Receipt history is immutable: older purchases keep their original proceeds and credits.
+export const CREDIT_CATALOGS = {
+ [CREDIT_CATALOG_VERSION]:{creator:CREATOR_PLAN,topup:TOP_UP},
+ [PREVIOUS_CREDIT_CATALOG_VERSION]:{
+  creator:{key:'creator',cents:1500,credits:300,interval:'month',appleProduct:'com.jamloom.creator.monthly'},
+  topup:{key:'topup',cents:1000,credits:150,appleProduct:'com.jamloom.credits.topup150'},
+ },
+} as const;
+export function creditCatalog(version:string|undefined){
+ return version&&Object.hasOwn(CREDIT_CATALOGS,version)?CREDIT_CATALOGS[version as keyof typeof CREDIT_CATALOGS]:undefined;
+}
 export const TRIAL_CREDITS = 20;
 export const TARGET_MARGIN_BPS = 6500;
 // Conservative planning floor includes the lowest supported channel; not a measured provider cost.
-export const NET_MICROS_PER_CREDIT_FLOOR = 20_000;
+export const NET_MICROS_PER_CREDIT_FLOOR = Math.min(...[CREATOR_PLAN,TOP_UP].map(p=>Math.floor(p.cents*10000*.4/p.credits)));
 export type FixedCreditPrice = {version:typeof CREDIT_CATALOG_VERSION;credits:number};
 export function songCreditPrice(product:'improvise'|'music-dna'):FixedCreditPrice {
   // One delivered arrangement, throughout the currently supported duration range.
