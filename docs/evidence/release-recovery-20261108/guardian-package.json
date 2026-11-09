@@ -1,0 +1,7 @@
+{
+  "sourceCommit": "3849153a01bba5b751c66fb48df4195becd60016",
+  "sha256": "28a7e6a4c19f91be3ce6ce054ded39d1ee75c10bac0055deec00c2c6c5a94699",
+  "bytes": 210871,
+  "node": "22 or 24",
+  "canActivate": false
+}

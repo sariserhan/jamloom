@@ -1,0 +1,1 @@
+{"extends": "../apps/site/tsconfig.json", "compilerOptions": {"incremental": false, "typeRoots": ["../apps/site/node_modules/@types"], "allowImportingTsExtensions": true}, "include": ["*.mts"], "exclude": []}

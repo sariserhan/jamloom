@@ -1,0 +1,26 @@
+{
+  "status": "PROVISIONAL",
+  "at": "2026-11-09T01:13:21.443Z",
+  "scope": "All exact worker IDs observed during active-worker qualification, including startup and idle; $1 total cap",
+  "rows": [
+    {
+      "amount": 0.06394756981171668,
+      "timeBilledMs": 303615,
+      "diskSpaceBilledGB": 120,
+      "podId": "ybpibs13h4nnvx",
+      "time": "2026-11-02 06:00:00"
+    }
+  ],
+  "notYetReported": [
+    "sldiz8yqo86h0y",
+    "czv7jc0nt8rcix",
+    "cndte8sxwgehuh",
+    "8k99psdwjgx10j",
+    "l4tptuvx9gh7rn",
+    "bbpv3fxfmsqst7"
+  ],
+  "reportedUSD": 0.06394756981171668,
+  "finalInvoice": false,
+  "missingRowsAreNotZero": true,
+  "mutations": false
+}

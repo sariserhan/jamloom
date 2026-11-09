@@ -1,0 +1,96 @@
+{
+  "startedAt": "2026-11-02T06:08:08.521Z",
+  "deadline": 1793602088521,
+  "cleanup": true,
+  "previousGpu": {
+    "allowedCudaVersions": [],
+    "count": 1,
+    "excludedTypes": [
+      "NVIDIA RTX 6000 Ada Generation",
+      "NVIDIA L40"
+    ],
+    "minCudaVersion": "12.8",
+    "pools": [
+      "ADA_24",
+      "ADA_48_PRO"
+    ]
+  },
+  "remoteGuardianAttempted": true,
+  "preparationDeadline": 1793600896592,
+  "result": {
+    "status": "FAIL",
+    "startedAt": "2026-11-02T06:08:08.754Z",
+    "requests": [
+      {
+        "product": "music-dna",
+        "id": "b47f7a26874a4097be41ce6bea050b7e",
+        "startedAt": "2026-11-02T06:24:29.005Z",
+        "submitCalls": 1,
+        "quote": {
+          "credits": 20,
+          "costCapMicros": 138800
+        },
+        "submitIntentAt": "2026-11-02T06:24:30.029Z",
+        "state": "completed",
+        "providerStatus": "COMPLETED",
+        "providerId": "ea9a9141-98eb-4b54-b459-59f423079849-u2",
+        "executionMs": "194919",
+        "delayMs": "130",
+        "estimatedCostMicros": 63120,
+        "durationSeconds": 107,
+        "styleMatch": "uncertain",
+        "reservation": {
+          "status": "completed",
+          "actual_cost_micros": "63120"
+        },
+        "audio": {
+          "sha256": "6f2e078a9497d835bce0f05709f621eb00c4f13dba04ecec5c548bfe8ebba742",
+          "bytes": 20544044,
+          "validation": "PASS"
+        },
+        "anonymousStatus": 503,
+        "anonymousAudioStatus": 404,
+        "privacy": "PASS"
+      },
+      {
+        "product": "improvise",
+        "id": "d6285a95f8914d97a5346c3a5b249e0d",
+        "startedAt": "2026-11-02T06:27:55.093Z",
+        "submitCalls": 1,
+        "sourceId": "a70ff8e77cd8449fb159b180d3eb0a43",
+        "quote": {
+          "credits": 10,
+          "costCapMicros": 68400
+        },
+        "submitIntentAt": "2026-11-02T06:27:56.369Z",
+        "state": "failed",
+        "providerStatus": "FAILED",
+        "providerId": "9a8392ed-a3ee-4a4b-a41a-0d04bef2290a-u2",
+        "executionMs": "94350",
+        "delayMs": "281",
+        "estimatedCostMicros": 40900,
+        "durationSeconds": 43
+      }
+    ],
+    "operatorCapBaselineMicros": 0,
+    "beforeTest": {
+      "available": 30,
+      "reserved": 0
+    },
+    "beforeLive": {
+      "available": 0,
+      "reserved": 0
+    },
+    "readiness": [
+      {
+        "at": "2026-11-02T06:24:27.980Z",
+        "available": true,
+        "signedIn": true
+      }
+    ],
+    "error": "improvise did not complete\n+ actual - expected\n\n+ 'failed'\n- 'completed'\n",
+    "finishedAt": "2026-11-02T06:29:41.708Z"
+  },
+  "error": "Generation did not pass\n\n'FAIL' !== 'PASS'\n",
+  "remoteGuardianStopped": true
+}

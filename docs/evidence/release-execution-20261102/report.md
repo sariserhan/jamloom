@@ -25,7 +25,7 @@ Commit `37a0d0be` returns a ready cycle to preparation if running capacity disap
 
 ## Remaining gates
 
-1. A corrected capacity lifecycle and the two unsubmitted requests, including independent shutdown proof. A [same-$1 continuation](../readiness-recovery-20261102/hosted-plan.json) is PREPARED, not approved: $0.25 reserved for the stopped attempt and $0.75 maximum for one additional cycle. Original reservations remain immutable; this is an explicit proposed allocation, not an automatic refund.
+1. A corrected capacity lifecycle and the two unsubmitted requests, including independent shutdown proof. A [same-$1 continuation](../readiness-recovery-20261102/hosted-plan.json) was subsequently APPROVED and CONSUMED: Music DNA delivered, Improvise failed, and independent cleanup passed. [Recovered execution and current next step](../release-recovery-20261108/report.md). Its original allocation was $0.25 reserved for the stopped attempt and $0.75 maximum for one additional cycle. Original reservations remain immutable; this is an explicit proposed allocation, not an automatic refund.
 2. Attributable operating economics and bounded ongoing customer/reviewer capacity. A diagnostic allowance does not fund ongoing hosting. Prices and request caps remain unchanged.
 3. After those gates pass: sales activation, funded App Review submission, then Apple's approval and manual public release. Apple approval is external.
 

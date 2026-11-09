@@ -1,0 +1,240 @@
+TAP version 13
+# Subtest: capacity reads recover one transient failure within the same eight-second deadline
+ok 1 - capacity reads recover one transient failure within the same eight-second deadline
+  ---
+  duration_ms: 21.831792
+  type: 'test'
+  ...
+# Subtest: exhausted reads and invalid responses stop with sanitized diagnostics
+ok 2 - exhausted reads and invalid responses stop with sanitized diagnostics
+  ---
+  duration_ms: 1.000375
+  type: 'test'
+  ...
+# Subtest: activation and shutdown mutations are never replayed after ambiguous responses
+ok 3 - activation and shutdown mutations are never replayed after ambiguous responses
+  ---
+  duration_ms: 0.195791
+  type: 'test'
+  ...
+# Subtest: an elapsed provider deadline prevents retry and identifies timeout
+ok 4 - an elapsed provider deadline prevents retry and identifies timeout
+  ---
+  duration_ms: 0.115417
+  type: 'test'
+  ...
+# Subtest: guardian diagnostics expose only known error codes, never private error fields
+ok 5 - guardian diagnostics expose only known error codes, never private error fields
+  ---
+  duration_ms: 0.1285
+  type: 'test'
+  ...
+# Subtest: demand capacity is opt-in, finite, funded and cannot widen diagnostic access
+ok 6 - demand capacity is opt-in, finite, funded and cannot widen diagnostic access
+  ---
+  duration_ms: 1.930167
+  type: 'test'
+  ...
+# Subtest: database-independent emergency cleanup only stops the configured endpoint/image
+ok 7 - database-independent emergency cleanup only stops the configured endpoint/image
+  ---
+  duration_ms: 0.181334
+  type: 'test'
+  ...
+# Subtest: durable demand capacity: concurrent starts, full budget, lost responses, idle and expiry
+    # Subtest: reads and recovery never start; concurrent explicit prepares activate once and reserve once
+    ok 1 - reads and recovery never start; concurrent explicit prepares activate once and reserve once
+      ---
+      duration_ms: 12.788292
+      type: 'test'
+      ...
+    # Subtest: a lost activation response stops and never retries or refunds its operator reservation
+    ok 2 - a lost activation response stops and never retries or refunds its operator reservation
+      ---
+      duration_ms: 2.27675
+      type: 'test'
+      ...
+    # Subtest: startup timeout and finite expiry shut down even with provider work
+    ok 3 - startup timeout and finite expiry shut down even with provider work
+      ---
+      duration_ms: 6.77875
+      type: 'test'
+      ...
+    # Subtest: durable activation intent without a provider call is closed, not replayed
+    ok 4 - durable activation intent without a provider call is closed, not replayed
+      ---
+      duration_ms: 2.100542
+      type: 'test'
+      ...
+    # Subtest: wrong endpoint identity or insufficient remaining permit cannot activate
+    ok 5 - wrong endpoint identity or insufficient remaining permit cannot activate
+      ---
+      duration_ms: 1.214
+      type: 'test'
+      ...
+    # Subtest: independent guardian is mandatory; stale heartbeat and removed configuration stop capacity
+    ok 6 - independent guardian is mandatory; stale heartbeat and removed configuration stop capacity
+      ---
+      duration_ms: 5.994542
+      type: 'test'
+      ...
+    # Subtest: API requires verified owner, same origin, spendable credits and explicit prepare; no wallet hold
+    ok 7 - API requires verified owner, same origin, spendable credits and explicit prepare; no wallet hold
+      ---
+      duration_ms: 60.780042
+      type: 'test'
+      ...
+    # Subtest: a changed provider price stops the existing worker immediately
+    ok 8 - a changed provider price stops the existing worker immediately
+      ---
+      duration_ms: 27.71725
+      type: 'test'
+      ...
+    # Subtest: a transient running signal followed by initialization does not consume the idle window
+    ok 9 - a transient running signal followed by initialization does not consume the idle window
+      ---
+      duration_ms: 7.05975
+      type: 'test'
+      ...
+    # Subtest: repeated readiness regression retains the original startup deadline
+    ok 10 - repeated readiness regression retains the original startup deadline
+      ---
+      duration_ms: 11.979209
+      type: 'test'
+      ...
+    1..10
+ok 8 - durable demand capacity: concurrent starts, full budget, lost responses, idle and expiry
+  ---
+  duration_ms: 373.268542
+  type: 'test'
+  ...
+# Subtest: cloud song configuration is opt-in and requires a bounded rate
+ok 9 - cloud song configuration is opt-in and requires a bounded rate
+  ---
+  duration_ms: 1.928416
+  type: 'test'
+  ...
+# Subtest: Improvise receipts require a bounded audible use of this recording and this output
+ok 10 - Improvise receipts require a bounded audible use of this recording and this output
+  ---
+  duration_ms: 0.356791
+  type: 'test'
+  ...
+# Subtest: real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+    # Subtest: operator-funded review is atomic, finite, private and stops after disable or expiry
+    ok 1 - operator-funded review is atomic, finite, private and stops after disable or expiry
+      ---
+      duration_ms: 98.059542
+      type: 'test'
+      ...
+    # Subtest: production admission refuses cold or occupied capacity without credit holds and serializes the final slot
+    ok 2 - production admission refuses cold or occupied capacity without credit holds and serializes the final slot
+      ---
+      duration_ms: 53.971375
+      type: 'test'
+      ...
+    # Subtest: Improvise omission or mismatched recording refunds; valid loops settle once
+    ok 3 - Improvise omission or mismatched recording refunds; valid loops settle once
+      ---
+      duration_ms: 650.82825
+      type: 'test'
+      ...
+    # Subtest: Improvise variety survives concurrent submissions, restart and duplicate requests
+    ok 4 - Improvise variety survives concurrent submissions, restart and duplicate requests
+      ---
+      duration_ms: 607.013875
+      type: 'test'
+      ...
+    # Subtest: one request is reserved and dispatched once under duplicate concurrent calls
+    ok 5 - one request is reserved and dispatched once under duplicate concurrent calls
+      ---
+      duration_ms: 36.324667
+      type: 'test'
+      ...
+    # Subtest: several users queue independently; cancellation refunds while other songs continue
+    ok 6 - several users queue independently; cancellation refunds while other songs continue
+      ---
+      duration_ms: 614.686625
+      type: 'test'
+      ...
+    # Subtest: duration boundaries settle once and a mismatched saved length refunds
+    ok 7 - duration boundaries settle once and a mismatched saved length refunds
+      ---
+      duration_ms: 698.637417
+      type: 'test'
+      ...
+    # Subtest: restart after output storage failure uses persisted receipt and charges only once
+    ok 8 - restart after output storage failure uses persisted receipt and charges only once
+      ---
+      duration_ms: 350.706209
+      type: 'test'
+      ...
+    # Subtest: saved descriptions reach the next worker only for their owner
+    ok 9 - saved descriptions reach the next worker only for their owner
+      ---
+      duration_ms: 350.776625
+      type: 'test'
+      ...
+    # Subtest: uncertain style delivers once with a public note; technical failure refunds
+    ok 10 - uncertain style delivers once with a public note; technical failure refunds
+      ---
+      duration_ms: 622.422833
+      type: 'test'
+      ...
+    # Subtest: failed jobs refund all credits and invalid completed output cannot become public
+    ok 11 - failed jobs refund all credits and invalid completed output cannot become public
+      ---
+      duration_ms: 219.406875
+      type: 'test'
+      ...
+    # Subtest: website input, feedback ownership, personalization and consent withdrawal
+    ok 12 - website input, feedback ownership, personalization and consent withdrawal
+      ---
+      duration_ms: 316.118458
+      type: 'test'
+      ...
+    # Subtest: disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+    ok 13 - disabled service waits without dispatch intent; enabling dispatches once and cancellation refunds
+      ---
+      duration_ms: 12.706167
+      type: 'test'
+      ...
+    # Subtest: lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+    ok 14 - lost submit response never retries paid work; quiet endpoint after TTL releases reservation
+      ---
+      duration_ms: 5.454667
+      type: 'test'
+      ...
+    # Subtest: missing provider receipt refunds only after the full provider TTL and a quiet queue
+    ok 15 - missing provider receipt refunds only after the full provider TTL and a quiet queue
+      ---
+      duration_ms: 6.79125
+      type: 'test'
+      ...
+    # Subtest: test credit lots cannot fund live requests or inflate live balances
+    ok 16 - test credit lots cannot fund live requests or inflate live balances
+      ---
+      duration_ms: 3.08125
+      type: 'test'
+      ...
+    # Subtest: recovery rotates ambiguous jobs and releases credits after persistent storage failure
+    ok 17 - recovery rotates ambiguous jobs and releases credits after persistent storage failure
+      ---
+      duration_ms: 261.200625
+      type: 'test'
+      ...
+    1..17
+ok 11 - real Postgres cloud songs: concurrency, credits, recovery, privacy, cancellation and ambiguous submission
+  ---
+  duration_ms: 5192.098375
+  type: 'test'
+  ...
+1..11
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6682.7135

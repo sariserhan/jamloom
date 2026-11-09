@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "at": "2026-11-02T06:30:27.848Z",
+  "deployment": "https://jamloom-52zn6fde6-ssari.vercel.app",
+  "rows": [
+    {
+      "path": "/api/taste/song",
+      "status": 200,
+      "available": false,
+      "signedIn": false
+    },
+    {
+      "path": "/api/improvise/song",
+      "status": 200,
+      "available": false,
+      "signedIn": false
+    }
+  ]
+}

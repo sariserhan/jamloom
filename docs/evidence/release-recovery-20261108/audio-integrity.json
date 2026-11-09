@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "product": "music-dna",
+  "sha256": "6f2e078a9497d835bce0f05709f621eb00c4f13dba04ecec5c548bfe8ebba742",
+  "bytes": 20544044,
+  "durationSeconds": 107,
+  "ownerListening": "NOT RUN",
+  "scope": "Retained local output hash and length match the validated hosted receipt; no rerender or upload"
+}

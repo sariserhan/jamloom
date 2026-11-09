@@ -1,0 +1,15 @@
+{"at":"2026-11-02T06:27:03.040Z","state":"ready"}
+{"at":"2026-11-02T06:27:14.376Z","state":"ready"}
+{"at":"2026-11-02T06:27:25.964Z","state":"ready"}
+{"at":"2026-11-02T06:27:37.564Z","state":"ready"}
+{"at":"2026-11-02T06:27:49.344Z","state":"ready"}
+{"at":"2026-11-02T06:28:01.143Z","state":"ready"}
+{"at":"2026-11-02T06:28:12.717Z","state":"ready"}
+{"at":"2026-11-02T06:28:24.219Z","state":"ready"}
+{"at":"2026-11-02T06:28:35.700Z","state":"ready"}
+Capacity shutdown check failed; no activation attempted.
+Emergency shutdown remains unconfirmed; provider recovery required.
+{"at":"2026-11-02T06:28:58.825Z","state":"stopping","reason":"activation-unconfirmed"}
+{"at":"2026-11-02T06:29:10.135Z","state":"stopping","reason":"shutdown-pending"}
+{"at":"2026-11-02T06:29:23.447Z","state":"stopping","reason":"shutdown-pending"}
+{"at":"2026-11-02T06:29:34.584Z","state":"off","reason":"shutdown-pending"}

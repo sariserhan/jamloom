@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "applicationCommit": "3849153a01bba5b751c66fb48df4195becd60016",
+  "siteTests": {
+    "pass": 213,
+    "fail": 0
+  },
+  "isolatedCapacityAndCloudSongTests": {
+    "pass": 38,
+    "fail": 0,
+    "database": "Disposable PostgreSQL 18 on 127.0.0.1; stopped afterward",
+    "includesFiveProviderTestsAlsoInSiteSuite": true
+  },
+  "typecheck": "PASS",
+  "productionBuild": "PASS",
+  "bundleAudit": "PASS",
+  "guardianPackageSyntax": "PASS",
+  "harnessTypecheck": "PASS",
+  "harnessPythonSyntax": "PASS",
+  "controllerDryRun": {
+    "status": "PASS",
+    "requests": 1,
+    "maxUSD": 0.75,
+    "providerOperations": 0
+  },
+  "httpDryRun": {
+    "status": "PASS",
+    "requests": 1,
+    "credits": 10,
+    "providerOperations": 0
+  },
+  "newHostedExecution": "NOT RUN",
+  "newDeployment": "NOT RUN"
+}

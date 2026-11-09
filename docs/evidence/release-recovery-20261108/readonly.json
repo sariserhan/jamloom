@@ -1,0 +1,102 @@
+{
+  "at": "2026-11-09T01:13:20.665Z",
+  "mutations": false,
+  "provider": {
+    "status": "PASS",
+    "workers": {
+      "max": 0,
+      "min": 0
+    },
+    "health": {
+      "jobs": {
+        "completed": 49,
+        "failed": 22,
+        "inProgress": 0,
+        "inQueue": 0,
+        "retried": 0
+      },
+      "workers": {
+        "idle": 0,
+        "initializing": 0,
+        "ready": 0,
+        "running": 0,
+        "throttled": 0,
+        "unhealthy": 0
+      }
+    },
+    "inventory": []
+  },
+  "database": {
+    "rows": [
+      {
+        "product": "music-dna",
+        "state": "completed",
+        "quoted_credits": 20,
+        "billing_live": false,
+        "audio_removed": true,
+        "withdrawn": true,
+        "failure": null,
+        "execution_ms": "194919",
+        "estimated_cost_micros": "63120",
+        "cleanup_at": "2026-11-02T06:29:52.630Z",
+        "reservation_status": "completed",
+        "actual_cost_micros": "63120"
+      },
+      {
+        "product": "improvise",
+        "state": "failed",
+        "quoted_credits": 10,
+        "billing_live": false,
+        "audio_removed": true,
+        "withdrawn": true,
+        "failure": null,
+        "execution_ms": "94350",
+        "estimated_cost_micros": "40900",
+        "cleanup_at": "2026-11-02T06:29:52.630Z",
+        "reservation_status": "failed",
+        "actual_cost_micros": "0"
+      }
+    ],
+    "balances": [
+      {
+        "live": false,
+        "available": 10,
+        "reserved": 0
+      }
+    ],
+    "cycles": [
+      {
+        "state": "stopped",
+        "reason": "activation-unconfirmed",
+        "starts_at": "1793599698412",
+        "expires_at": "1793602098412",
+        "ready_at": "1793600661262",
+        "busy_at": "1793600914643",
+        "stopped_at": "1793600973892",
+        "cap_micros": "750000"
+      }
+    ]
+  },
+  "guardian": {
+    "status": "PASS",
+    "action": "preview",
+    "serviceActive": false,
+    "permitConfigured": false,
+    "sourceCommit": "37a0d0be146c701cee43419fa7f51508db4994a7"
+  },
+  "website": {
+    "status": "PASS",
+    "rows": [
+      {
+        "path": "/api/taste/song",
+        "status": 200,
+        "available": false
+      },
+      {
+        "path": "/api/improvise/song",
+        "status": 200,
+        "available": false
+      }
+    ]
+  }
+}
