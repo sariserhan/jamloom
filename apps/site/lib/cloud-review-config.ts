@@ -1,6 +1,6 @@
 import {appleReviewAccount} from './apple-review';
 import {cloudSongConfig,type CloudSongConfig} from './cloud-song-config';
-import {CLOUD_PROFILES} from './cloud-production-profile';
+import {CLOUD_PROFILES,productionSongBudget} from './cloud-production-profile';
 import {integer} from './economics';
 
 // A sandbox receipt is not funding. This independent, finite operator allowance is
@@ -11,7 +11,10 @@ export function reviewSongConfig(product:'improvise'|'music-dna',env:Record<stri
  const owners=(env.JAMLOOM_APPLE_REVIEW_USER_IDS??'').split(',').map(s=>s.trim()),expiresAt=Date.parse(env.JAMLOOM_APPLE_REVIEW_EXPIRES_AT??'');
  if(owners.length<1||owners.length>5||owners.some(id=>!/^[A-Za-z0-9_-]{1,128}$/.test(id))||new Set(owners).size!==owners.length||!Number.isFinite(expiresAt)||expiresAt>now+30*86400000)throw Error('Invalid review generation allowance');
  const settings=cloudSongConfig({...env,JAMLOOM_CLOUD_SONGS_ENABLED:'true',CREDIT_BILLING_MODE:'live'},product,true)!;
- const capMicros=integer(Number(env.JAMLOOM_APPLE_REVIEW_GENERATION_CAP_MICROS),settings.costCapMicros,10000000);
- return {...settings,live:false,review:{owners,expiresAt,capMicros,enabled:env.JAMLOOM_APPLE_REVIEW_GENERATION_ENABLED==='true'&&appleReviewAccount(owners[0],env,now)}};
+ // Recovery initializes both products. An Improvise-only allowance must not
+ // prevent cleanup merely because it cannot fund the more expensive product.
+ const minimum=Math.min(...(['improvise','music-dna'] as const).map(p=>productionSongBudget(p,env.JAMLOOM_CLOUD_COST_PROFILE).costCapMicros));
+ const capMicros=integer(Number(env.JAMLOOM_APPLE_REVIEW_GENERATION_CAP_MICROS),minimum,10000000);
+ return {...settings,live:false,review:{owners,expiresAt,capMicros,enabled:capMicros>=settings.costCapMicros&&env.JAMLOOM_APPLE_REVIEW_GENERATION_ENABLED==='true'&&appleReviewAccount(owners[0],env,now)}};
 }
 export function reviewSongPath(path:string){return ['/api/improvise/song','/api/taste/song'].includes(path);}
