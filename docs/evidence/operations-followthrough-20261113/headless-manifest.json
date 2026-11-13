@@ -1,0 +1,19 @@
+{
+  "sourceCommit": "e63138679813798df703a604baa055015d17282a",
+  "files": {
+    "watchdog.mjs": {
+      "sha256": "8c7c53c823ad5b9dfce299741ea012bf9465b5cb32d58e28e61193feab0cf2ee",
+      "bytes": 215620
+    },
+    "operations.mjs": {
+      "sha256": "08ded0bae28cd7d27ec9f6aa98f580ad6c18809661651caac7bc68cb2f1eb86a",
+      "bytes": 925695
+    },
+    "finance.mjs": {
+      "sha256": "31dfc781a5a79e245d2f8e16d765e699d21f8d4dc9edadc1ee84e1dc129e3493",
+      "bytes": 909356
+    }
+  },
+  "node": "22 or 24",
+  "guardianCanActivate": false
+}

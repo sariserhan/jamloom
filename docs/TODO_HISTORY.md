@@ -2,6 +2,8 @@
 
 Verbatim copy of the former `TODO.md`; only relative links were adjusted for the new location. Active work is in [TODO.md](../TODO.md).
 
+**Operations follow-through — November 13: PASS.** Song-jobs failure alert (migration 0037, verified backup/restore), local-only integration tests (32/32), all three headless bundles rebuilt and installed from one commit, progress log archived, Vercel CLI upgraded. Earlier pre-migration backups were lost in the Nov 9 build cleanup; a fresh verified backup exists. [Evidence](evidence/operations-followthrough-20261113/report.md).
+
 **Customer-funded GPU timing — November 13: PASS deployed.** Owner rule: spend when customers pay more than it costs; owner selected only immediate counting. Captured live Stripe charges now fund their 20% GPU share at once instead of after Stripe payout availability; refunds/disputes still revoke. 90 wallet/capacity database tests and 248 site tests pass; the 3 integration tests fail identically on unchanged code (environment setup). [Policy](GPU_REVENUE.md).
 
 **Tracker and operations follow-through — November 13: PASS.** Re-enabled the headless guardian at boot as a second stop path beside the hosted cron (both publish the heartbeat). Apple finance failures now log Apple's error code (Vercel); the 403 cause still needs owner action in App Store Connect. Free production checks pass: both public song APIs return 200 in cloud mode. Reset `TODO.md` to active tasks; archived the full former TODO as [work history](TODO_HISTORY.md) and the dated owner decisions as the [authorization record](AUTHORIZATIONS.md), with `AGENTS.md` now a current-rules summary.

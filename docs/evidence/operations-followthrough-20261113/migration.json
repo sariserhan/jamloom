@@ -1,0 +1,15 @@
+{
+ "status": "PASS",
+ "at": "2026-11-13T15:48:00Z",
+ "target": "ep-flat-hill-b4q0lix4.c-6.us-east-2.aws.neon.tech/neondb",
+ "applied": ["0037_operation_heartbeats.sql"],
+ "repeatApply": [],
+ "migrationsAfter": 37,
+ "unchangedCounts": {"songs": 13, "ledger": 37, "users": 4},
+ "backup": {
+  "privatePath": "backups/neon-before-0037-20261113/before-0037.dump",
+  "tool": "pg_dump 18 custom format (server 18.6)",
+  "sha256": "38c87b23e4ef57892e56b2a0ff6e16567645d7eb0c5fca15427d5bc82b094d39",
+  "restore": "PASS: temporary local Postgres 18, zero restore errors, 36 migrations/13 songs/37 ledger/4 users; temporary copy deleted"
+ }
+}
