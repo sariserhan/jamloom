@@ -2,6 +2,8 @@
 
 Recent dated results, newest first (launch and operations, from November 8). Older entries: [progress archive](PROGRESS_ARCHIVE.md). Active tasks: [TODO](../TODO.md).
 
+**Review permit applied — November 13: PASS.** Owner ran the prepared script: Vercel and both headless env files carry the $3/7-day permit; reviewer song allowance enabled. Production checks: monitor remaining $3.00, guardianOK, no alerts; guardian and song-jobs heartbeats 3 s old; no open cycle; song API 200. Reviewer-account song creation itself was not exercised.
+
 **Apple agreement — November 13: PASS.** Owner accepted the pending App Store Connect agreement; the headless finance job succeeds again (September–November: no sales).
 
 **Operations follow-through — November 13: PASS.** Song-jobs failure alert (migration 0037, verified backup/restore), local-only integration tests (32/32), all three headless bundles rebuilt and installed from one commit, progress log archived, Vercel CLI upgraded. Earlier pre-migration backups were lost in the Nov 9 build cleanup; a fresh verified backup exists. [Evidence](evidence/operations-followthrough-20261113/report.md).
