@@ -1303,7 +1303,7 @@ This status decision does not spend on compute, promote production AI or perform
 
 ## Academy CI migration expectations — 2026-10-22
 
-- [x] **CI-MIGRATIONS-001 — PASS, local:** Reproduce `13 !== 12` and replace stale migration counts in admin, wallet and account tests with exact sorted SQL filenames. All 184 relevant tests, studio preparation and typecheck pass on Node 22/PostgreSQL 16. Migration idempotence, rollback/checksum protection and the duration upgrade regression remain covered. [Commands and results](progress.md#academy-ci-migration-expectations--2026-10-22). GitHub Actions rerun NOT RUN; no push or deployment.
+- [x] **CI-MIGRATIONS-001 — PASS, local:** Reproduce `13 !== 12` and replace stale migration counts in admin, wallet and account tests with exact sorted SQL filenames. All 184 relevant tests, studio preparation and typecheck pass on Node 22/PostgreSQL 16. Migration idempotence, rollback/checksum protection and the duration upgrade regression remain covered. [Commands and results](PROGRESS_ARCHIVE.md#academy-ci-migration-expectations--2026-10-22). GitHub Actions rerun NOT RUN; no push or deployment.
 
 ## Full product landing page — 2026-10-22
 

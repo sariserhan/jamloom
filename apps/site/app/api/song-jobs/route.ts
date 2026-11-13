@@ -1,6 +1,8 @@
 import {stopExpiredActiveCapacity} from '../../../lib/cloud-capacity-shutdown';
 import {hostedSongs,reconcileSongCapacity} from '../../../lib/cloud-songs.server';
 import {capacityFailureDiagnostic} from '../../../lib/cloud-capacity';
+import {recordOperationSuccess} from '../../../lib/operations-monitor';
+import {services} from '../../../lib/services';
 export const runtime='nodejs';export const maxDuration=180;
 export async function GET(request:Request){
  const secret=process.env.CRON_SECRET;
@@ -9,7 +11,7 @@ export async function GET(request:Request){
  // Retain the review allowance configuration after disabling new work, until
  // outstanding test jobs are cancelled/settled and their temporary data is gone.
  let stage='expired-lease';
- try{const capacity=await stopExpiredActiveCapacity();stage='guardian';const demandCapacity=await reconcileSongCapacity();stage='song-sweep';const result=await Promise.all((['music-dna','improvise'] as const).flatMap(product=>[hostedSongs(product)?.sweep(),hostedSongs(product,true)?.sweep()]));return Response.json({capacity,demandCapacity,result});}
+ try{const capacity=await stopExpiredActiveCapacity();stage='guardian';const demandCapacity=await reconcileSongCapacity();stage='song-sweep';const result=await Promise.all((['music-dna','improvise'] as const).flatMap(product=>[hostedSongs(product)?.sweep(),hostedSongs(product,true)?.sweep()]));stage='heartbeat';await recordOperationSuccess(services().pool,'song-jobs');return Response.json({capacity,demandCapacity,result});}
  catch(error){
   // Sanitized: never log raw provider/database messages.
   console.error(JSON.stringify({event:'song-jobs-failed',stage,...capacityFailureDiagnostic(error),name:error instanceof Error?error.constructor.name:typeof error}));

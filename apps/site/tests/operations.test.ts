@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {operationAlerts,sendOperationAlert,type OperationSnapshot} from '../lib/operations-monitor';
+import {operationAlerts,sendOperationAlert,songJobsStale,SONG_JOBS_STALE_MS,type OperationSnapshot} from '../lib/operations-monitor';
 import {inspectProviderAutoPay} from '../lib/provider-replenishment';
 const healthy:OperationSnapshot={now:1000000000,expiresAt:1000000000+7*86400000,remainingMicros:10000000,cycleMicros:750000,guardianOK:true,shutdownFailed:false,providerMismatch:false,workers:0,liveFailures:0,overdueCleanup:0};
 test('healthy service is quiet; low, exhausted and expiring allowance are actionable',()=>{
@@ -39,4 +39,11 @@ test('native reload verification reads exact approved settings and refuses malfo
  await assert.rejects(inspectProviderAutoPay(env,async()=>new Response(null,{status:503})),/read failed/);
  await assert.rejects(inspectProviderAutoPay(env,async()=>Response.json({data:{myself:{isAutoPayEnabled:true,stripeAutoReloadAmount:'25',stripeAutoPaymentThreshold:10}}})),/Invalid/);
  await assert.rejects(inspectProviderAutoPay({...env,JAMLOOM_PROVIDER_AUTO_PAY_POLICY:'unlimited'},request),/Invalid/);
+});
+
+test('song-jobs heartbeat alerts when missing or older than ten minutes',()=>{
+ const now=1_800_000_000_000;
+ assert.equal(songJobsStale(undefined,now),true);assert.equal(songJobsStale(Number.NaN,now),true);
+ assert.equal(songJobsStale(now-60_000,now),false);assert.equal(songJobsStale(now-SONG_JOBS_STALE_MS,now),false);
+ assert.equal(songJobsStale(now-SONG_JOBS_STALE_MS-1,now),true);
 });

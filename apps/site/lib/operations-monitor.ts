@@ -19,6 +19,7 @@ export const operationMessages={
  'shutdown-unconfirmed':'A capacity shutdown failed, a worker remains after expiry, or provider identity differs. Check the provider and stop unapproved capacity.',
  'generation-failed':'A recent live song failed or its cleanup is overdue. Check private operational records and credit returns; do not retry automatically.',
  'renewal-check-failed':'Creator renewal protection could not be confirmed. Inspect Stripe collection pauses and outstanding renewal invoices immediately.',
+ 'song-jobs-failing':'The every-minute song recovery and guardian job has not succeeded for over 10 minutes. Song creation may be failing or closed. Check /api/song-jobs logs (song-jobs-failed shows the failing stage) and Vercel configuration.',
  'monitor-check-failed':'An operating check failed. Inspect the database, provider and monitor services. This alert contains no customer data.',
  'test':'TEST ONLY: Jamloom operating alerts are connected. Simulated checks cover low/expired funding, failed songs, stale guardian and failed shutdown. No customer charge or GPU request was made.'
 } as const;
@@ -84,12 +85,20 @@ export async function inspectOperations(pool:Pick<Pool,'query'>,env:Record<strin
   workers,liveFailures:Number(jobs.rows[0]?.failures??0),overdueCleanup:Number(jobs.rows[0]?.overdue??0)};
  return {snapshot,alerts:operationAlerts(snapshot)};
 }
+// The song-jobs cron runs every minute; 10 minutes tolerates brief Vercel delays.
+export const SONG_JOBS_STALE_MS=600000;
+export const songJobsStale=(okAt:number|undefined,now:number)=>okAt===undefined||!Number.isFinite(okAt)||now-okAt>SONG_JOBS_STALE_MS;
+export async function recordOperationSuccess(pool:Pick<Pool,'query'>,name:string){
+ await pool.query('INSERT INTO operation_heartbeats(name,ok_at) VALUES($1,now()) ON CONFLICT(name) DO UPDATE SET ok_at=excluded.ok_at',[name]);
+}
 export async function runOperations(pool:Pool,env:Record<string,string|undefined>=process.env){
  const alerts=new Set<OperationAlert>();let snapshot:OperationSnapshot|undefined,renewals;
  try{if(gpuRevenueEnabled(env)){const b=creditBilling(env);if(!b.live)throw Error('Revenue settlement requires live billing');await settleGpuProceeds(pool,b.stripe);}
   const result=await inspectOperations(pool,env);snapshot=result.snapshot;result.alerts.forEach(a=>alerts.add(a));}catch{alerts.add('monitor-check-failed');}
  try{const b=creditBilling(env);renewals={...await protectCreatorRenewals(b.stripe,pool,b.live,env),continuation:await resumeFundedCreatorRenewals(b.stripe,pool,b.live,env)};}catch{alerts.add('renewal-check-failed');}
  try{if((await pool.query("SELECT 1 FROM apple_finance_reports WHERE state='held' UNION ALL SELECT 1 FROM apple_finance_holds LIMIT 1")).rowCount)alerts.add('apple-finance-review');}catch{alerts.add('monitor-check-failed');}
+ try{const r=await pool.query("SELECT extract(epoch FROM ok_at)*1000 AS ok FROM operation_heartbeats WHERE name='song-jobs'");
+  if(songJobsStale(r.rows[0]?Number(r.rows[0].ok):undefined,Date.now()))alerts.add('song-jobs-failing');}catch{alerts.add('monitor-check-failed');}
  const deliveries=[];for(const code of alerts)deliveries.push(await sendOperationAlert(code,env));
  return {at:new Date().toISOString(),snapshot,renewals,alerts:[...alerts],deliveries};
 }
