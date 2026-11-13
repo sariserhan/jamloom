@@ -3,6 +3,9 @@ import type Stripe from 'stripe';
 
 export const GPU_REVENUE_SHARE_BPS=2000;
 type Query=Pick<Pool,'query'>;
+// Owner 2026-11-13: a captured, paid, unrefunded live charge funds its share immediately;
+// Stripe 'pending' (not yet paid out) counts. Refunds/disputes still revoke via freezePurchase.
+export const capturedFunds=(status:string)=>status==='available'||status==='pending';
 export type GpuProceeds={chargeID:string;balanceID:string;grossCents:number;feeCents:number;taxCents:number;settled:boolean};
 export function gpuRevenueEnabled(env:Record<string,string|undefined>){
  const value=env.JAMLOOM_GPU_REVENUE_SHARE_BPS;
@@ -73,8 +76,8 @@ export async function settleGpuProceeds(pool:Pool,stripe:Stripe){
    else{
     const b=charge.balance_transaction;
     if(!b||typeof b==='string'||b.id!==r.balance_id||b.source!==charge.id||b.currency!=='usd'||b.amount!==Number(r.gross_cents)||b.fee!==Number(r.fee_cents)||b.net!==b.amount-b.fee||b.exchange_rate!==null||!['available','pending'].includes(b.status))throw Error('GPU settlement evidence changed');
-    await recordGpuProceeds(db,receipt,{chargeID:charge.id,balanceID:b.id,grossCents:b.amount,feeCents:b.fee,taxCents:Number(r.tax_cents),settled:b.status==='available'});
-    if(b.status==='available')settled++;
+    await recordGpuProceeds(db,receipt,{chargeID:charge.id,balanceID:b.id,grossCents:b.amount,feeCents:b.fee,taxCents:Number(r.tax_cents),settled:capturedFunds(b.status)});
+    if(capturedFunds(b.status))settled++;
    }
    await db.query('UPDATE gpu_payment_proceeds SET checked_at=now() WHERE receipt=$1',[receipt]);
    await db.query('COMMIT');

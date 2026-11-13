@@ -4,6 +4,7 @@ import Stripe from 'stripe';
 import { CREDIT_PACKS, integer } from './economics';
 import { Wallet } from './wallet';
 import { paidGenerationReleased } from './product';
+import {capturedFunds} from './gpu-revenue';
 
 export function sandboxStripe(env:Record<string,string|undefined>=process.env){
   if(!env.STRIPE_SECRET_KEY?.startsWith('sk_test_')||!env.STRIPE_WEBHOOK_SECRET?.startsWith('whsec_'))throw new Error('Stripe sandbox not configured');
@@ -58,7 +59,7 @@ export async function fulfillCheckout(stripe:Stripe,wallet:Wallet,id:string){
   const netMicros=(balance.net-tax!-reserve)*10000;
   integer(netMicros,pack.credits);
   return wallet.grant(owner,{provider:wallet.live?'stripe_live':'stripe_test',receipt:session.id,credits:packKey==='topup'?pack.credits:pack.credits*LEGACY_CREDIT_MULTIPLIER,netMicros,
-   ...(wallet.live?{gpuProceeds:{chargeID:charge.id,balanceID:balance.id,grossCents:balance.amount,feeCents:balance.fee,taxCents:tax!,settled:balance.status==='available'}}:{})});
+   ...(wallet.live?{gpuProceeds:{chargeID:charge.id,balanceID:balance.id,grossCents:balance.amount,feeCents:balance.fee,taxCents:tax!,settled:capturedFunds(balance.status)}}:{})});
 }
 export async function checkout(stripe:Stripe,owner:string,pack:keyof typeof CREDIT_PACKS,key:string,origin:string,live=false,taxCode=process.env.CREDIT_STRIPE_TAX_CODE){
   if(pack!=='topup'||!CREDIT_PACKS[pack]||!/^https?:\/\//.test(origin)||!/^[a-zA-Z0-9_-]{8,100}$/.test(key))throw new Error('Invalid checkout');

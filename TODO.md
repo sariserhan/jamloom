@@ -18,5 +18,7 @@ When something finishes, add one dated line to the history and remove it here.
 
 ## Operating notes
 
+- GPU funding: captured live Stripe charges fund their 20% share immediately (owner, Nov 13); Creator renewals stay paused and no new review permit was approved.
+
 - Guardian: the every-minute Vercel `/api/song-jobs` cron and the headless `jamloom-capacity.service` (enabled at boot since Nov 13) both run the stop-only sweep and publish the heartbeat; either is sufficient. [Design](docs/CLOUD_CAPACITY.md).
 - Deferred for v1 by owner: produced-song scoring, custom learned planner, formal measurements, Improvise qualification, two-hour DJ test. See history for decisions.

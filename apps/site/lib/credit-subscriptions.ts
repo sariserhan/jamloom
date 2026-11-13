@@ -3,6 +3,7 @@ import {creatorRenewalsEnabled,protectCreatorRenewal} from './creator-renewals';
 import type {Pool} from 'pg';
 import {Wallet,type SubscriptionGrant} from './wallet';
 import {CREATOR_PLAN,CREDIT_CATALOG_VERSION,PREVIOUS_CREDIT_CATALOG_VERSION,creditCatalog} from './credit-catalog';
+import {capturedFunds} from './gpu-revenue';
 
 const idOf=(v:string|{id:string}|null|undefined)=>typeof v==='string'?v:v?.id;
 const provider=(live:boolean)=>live?'stripe_live' as const:'stripe_test' as const;
@@ -83,7 +84,7 @@ export async function fulfillSubscriptionInvoice(stripe:Stripe,pool:Pool,wallet:
  const netMicros=(balance.net-tax-Math.ceil(plan.cents*.207))*10000;
  const s={...subscriptionGrant(subscription),start:new Date(line.period.start*1000),end:new Date(line.period.end*1000)};
  const grant=await wallet.grant(owner,{provider:provider(wallet.live),receipt:id,credits:plan.credits,netMicros,subscription:s,
-  ...(wallet.live?{gpuProceeds:{chargeID:charge.id,balanceID:balance.id,grossCents:balance.amount,feeCents:balance.fee,taxCents:tax,settled:balance.status==='available'}}:{})});
+  ...(wallet.live?{gpuProceeds:{chargeID:charge.id,balanceID:balance.id,grossCents:balance.amount,feeCents:balance.fee,taxCents:tax,settled:capturedFunds(balance.status)}}:{})});
  await protectCreatorRenewal(stripe,pool,subscription.id,wallet.live);
  return grant;
 }

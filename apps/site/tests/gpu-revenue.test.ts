@@ -44,8 +44,8 @@ test('revenue funding verifies cash, survives duplicate/refund events and reserv
   });
   await t.test('settlement reads authoritative charge and credits precisely 20% after fees and tax once',async()=>{
    let status='pending';const stripe={charges:{retrieve:async(id:string)=>({id,livemode:true,paid:true,captured:true,currency:'usd',refunded:false,amount_refunded:0,disputed:false,balance_transaction:{id:'txn_pending',source:id,currency:'usd',amount:2200,fee:100,net:2100,exchange_rate:null,status}})}};
-   assert.deepEqual(await settleGpuProceeds(pool,stripe as never),{checked:1,settled:0});assert.equal(await gpuRevenueBalance(pool),0);
-   status='available';assert.deepEqual(await settleGpuProceeds(pool,stripe as never),{checked:1,settled:1});assert.equal(await gpuRevenueBalance(pool),3800000);
+   assert.deepEqual(await settleGpuProceeds(pool,stripe as never),{checked:1,settled:1},'A captured pending charge funds immediately');assert.equal(await gpuRevenueBalance(pool),3800000);
+   status='available';assert.deepEqual(await settleGpuProceeds(pool,stripe as never),{checked:0,settled:0});assert.equal(await gpuRevenueBalance(pool),3800000);
    await Promise.all(Array.from({length:5},()=>wallet.grant('user0',purchase('pending'))));assert.equal(await gpuRevenueBalance(pool),3800000);
    await assert.rejects(wallet.grant('user0',{...purchase('pending'),gpuProceeds:{...purchase('pending').gpuProceeds!,taxCents:0}}),/conflict/);
    await assert.rejects(wallet.grant('user1',{...purchase('duplicatecharge'),gpuProceeds:purchase('pending').gpuProceeds}),/unique/);
