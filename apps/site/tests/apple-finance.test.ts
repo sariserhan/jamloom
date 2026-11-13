@@ -22,7 +22,8 @@ test('Apple client authenticates to fixed host and distinguishes no sales from u
  const missing=(detail:string):any=>async()=>Response.json({errors:[{code:'NOT_FOUND',detail}]},{status:404});
  assert.equal((await downloadAppleFinance(config,'2026-10',missing('There were no sales for the date specified.'))).status,'no_sales');
  assert.equal((await downloadAppleFinance(config,'2026-10',missing('Not yet available'))).status,'unavailable');
- await assert.rejects(downloadAppleFinance(config,'2026-10',async()=>new Response('',{status:403})),/403/);
+ await assert.rejects(downloadAppleFinance(config,'2026-10',async()=>new Response('',{status:403})),/\(403\)$/);
+ await assert.rejects(downloadAppleFinance(config,'2026-10',async()=>Response.json({errors:[{code:'FORBIDDEN.REQUIRED_AGREEMENTS_MISSING_OR_EXPIRED',detail:'secret-ish text'}]},{status:403})),/^Error: Apple finance report request failed \(403 FORBIDDEN\.REQUIRED_AGREEMENTS_MISSING_OR_EXPIRED\)$/);
 });
 test('recharge proposals stay within settled revenue shortfall and never authorize a charge',()=>{
  assert.equal(providerReplenishmentPlan(0,11000000,750000).status,'waiting_for_revenue');

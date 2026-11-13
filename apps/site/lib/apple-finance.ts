@@ -64,7 +64,11 @@ export async function downloadAppleFinance(config:AppleFinanceConfig,month:strin
   if(!Array.isArray(errors)||!errors.length||!errors.every(e=>e.code==='NOT_FOUND'))throw Error('Apple finance report unavailable');
   return {status:errors.every(e=>e.detail==='There were no sales for the date specified.')?'no_sales' as const:'unavailable' as const};
  }
- if(!r.ok)throw Error('Apple finance report request failed ('+r.status+')');
+ if(!r.ok){
+  // Apple error codes (e.g. FORBIDDEN.REQUIRED_AGREEMENTS_MISSING_OR_EXPIRED) are fixed labels, safe to log.
+  let codes='';try{codes=(JSON.parse(bytes.toString()).errors??[]).map((e:any)=>String(e.code)).filter((c:string)=>/^[A-Z_.]{1,80}$/.test(c)).join(',');}catch{}
+  throw Error('Apple finance report request failed ('+r.status+(codes?' '+codes:'')+')');
+ }
  return {status:'downloaded' as const,...parseAppleFinance(bytes,config.products)};
 }
 export async function syncAppleFinance(pool:Pool,config:AppleFinanceConfig,months:string[],request:typeof fetch=fetch){
