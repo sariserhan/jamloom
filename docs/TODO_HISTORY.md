@@ -2,6 +2,8 @@
 
 Verbatim copy of the former `TODO.md`; only relative links were adjusted for the new location. Active work is in [TODO.md](../TODO.md).
 
+**Apple agreement — November 13: PASS.** Owner accepted the pending App Store Connect agreement; the headless finance job succeeds again (September–November: no sales).
+
 **Operations follow-through — November 13: PASS.** Song-jobs failure alert (migration 0037, verified backup/restore), local-only integration tests (32/32), all three headless bundles rebuilt and installed from one commit, progress log archived, Vercel CLI upgraded. Earlier pre-migration backups were lost in the Nov 9 build cleanup; a fresh verified backup exists. [Evidence](evidence/operations-followthrough-20261113/report.md).
 
 **Customer-funded GPU timing — November 13: PASS deployed.** Owner rule: spend when customers pay more than it costs; owner selected only immediate counting. Captured live Stripe charges now fund their 20% GPU share at once instead of after Stripe payout availability; refunds/disputes still revoke. 90 wallet/capacity database tests and 248 site tests pass; the 3 integration tests fail identically on unchanged code (environment setup). [Policy](GPU_REVENUE.md).
