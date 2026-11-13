@@ -1,6 +1,7 @@
 /build*/
 /renders/
 /dist/
+/backups/
 /.venv*/
 /.cache/acestep/
 __pycache__/
