@@ -76,7 +76,7 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    const joined=(await pool.query('SELECT * FROM cloud_capacity_cycles WHERE id=$1',[initial.id])).rows[0];
    assert.equal(joined.expires_at,initial.expires_at);assert.equal(starts,before);
    assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[c.permit.id])).rows[0].reserved_micros),1000000);
-   now+=90001;await assert.rejects(c.prepare('owner0'),/unavailable/);
+   now+=180001;await assert.rejects(c.prepare('owner0'),/unavailable/);
    now=Number(initial.expires_at)-119999;await c.guardianHeartbeat();assert.equal(await c.prepare('owner0'),'unavailable');
    now=Number(initial.expires_at);assert.equal((await c.reconcile(true)).reason,'expired');assert.equal(e.workers.max,0);
   });
@@ -110,7 +110,7 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
   });
   await t.test('independent guardian is mandatory; stale heartbeat and removed configuration stop capacity',async()=>{
    const c=fresh();const before=starts;await assert.rejects(c.prepare('owner7'),/unavailable/);assert.equal(starts,before);
-   await start(c,'owner7');await wake(c);now+=90001;assert.equal(await c.ready(300000),false);
+   await start(c,'owner7');await wake(c);now+=179000;assert.equal(await c.ready(300000),true);now+=1001;assert.equal(await c.ready(300000),false);
    assert.equal((await c.reconcile()).reason,'guardian-unavailable');assert.equal(e.workers.max,0);
    const d=fresh();await start(d,'owner8');assert.equal((await stopOrphanedCapacity(pool,'fixture',provider,()=>now)).state,'off');
    assert.equal(e.workers.max,0);assert.equal(await d.state(),'off');

@@ -5,6 +5,8 @@ import {gpuRevenueEnabled} from './gpu-revenue';
 
 // The original finite grant remains immutable. Revenue funding is a separate
 // authorization: it extends availability, never the seed grant's money or dates.
+// The every-minute hosted cron publishes the heartbeat; 3 min tolerates one late or failed run.
+export const GUARDIAN_FRESH_MS=180000;
 export type CapacityPermit={id:string;startsAt:number;expiresAt:number;capMicros:number;cycleMicros:number;cycleSeconds:number;revenueShareBps?:2000};
 export function capacityPermit(env:Record<string,string|undefined>,profile?:string):CapacityPermit|undefined{
  const value=env.JAMLOOM_CLOUD_CAPACITY_PERMIT;if(!value)return;

@@ -1,6 +1,6 @@
 import {createHash} from 'node:crypto';
 import type {Pool} from 'pg';
-import {capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from './cloud-capacity-permit';
+import {GUARDIAN_FRESH_MS,capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from './cloud-capacity-permit';
 import {CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 import {protectCreatorRenewals,resumeFundedCreatorRenewals} from './creator-renewals';
 import {providerReplenishmentPlan,inspectProviderAutoPay,type ProviderAutoPay} from './provider-replenishment';
@@ -78,7 +78,7 @@ export async function inspectOperations(pool:Pick<Pool,'query'>,env:Record<strin
  }
  const providerAutoPay=await inspectProviderAutoPay(env,request);
  const snapshot:OperationSnapshot={now,expiresAt:p.revenueShareBps===2000?null:p.expiresAt,remainingMicros:remaining,...(revenueMicros===undefined?{}:{revenueMicros,providerMicros}),...(providerAutoPay?{providerAutoPay}:{}),cycleMicros:p.cycleMicros,
-  guardianOK:!!g&&g.config_sha256===hash&&Number(g.checked_at)<=now&&now-Number(g.checked_at)<90000,
+  guardianOK:!!g&&g.config_sha256===hash&&Number(g.checked_at)<=now&&now-Number(g.checked_at)<GUARDIAN_FRESH_MS,
   shutdownFailed:Number(cycles.rows[0]?.failed)>0||!capacityWindowOpen(p,now)&&(c.workers?.min!==0||c.workers?.max!==0),
   providerMismatch:c.id!==endpoint||c.image!==CLOUD_WORKER_IMAGE||!!grantRow&&grantRow.config_sha256!==capacityPermitHash(seedPermit(p),endpoint,profile,CLOUD_WORKER_IMAGE),
   workers,liveFailures:Number(jobs.rows[0]?.failures??0),overdueCleanup:Number(jobs.rows[0]?.overdue??0)};

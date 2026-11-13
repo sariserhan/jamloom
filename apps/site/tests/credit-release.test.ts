@@ -22,7 +22,7 @@ test('new purchases close on exhausted or changed funding, stale guardian and re
  assert(await check());grant={config_sha256:hash,reserved_micros:9000000};assert(await check());
  grant.reserved_micros=9750000;assert.equal(await check(),false);
  grant={config_sha256:'changed',reserved_micros:0};assert.equal(await check(),false);grant=undefined;
- for(const value of [undefined,{config_sha256:'old-permit',checked_at:now},{config_sha256:hash,checked_at:now-90000},{config_sha256:hash,checked_at:now+1}]){guardian=value;assert.equal(await check(),false);}
+ for(const value of [undefined,{config_sha256:'old-permit',checked_at:now},{config_sha256:hash,checked_at:now-180000},{config_sha256:hash,checked_at:now+1}]){guardian=value;assert.equal(await check(),false);}
  assert.equal(await creditCapacityForSales({query:async()=>{throw Error('offline');}} as never,env,now),false);
  assert(queries.every(sql=>sql.startsWith('SELECT ')));
 });

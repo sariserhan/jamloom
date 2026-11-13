@@ -2,7 +2,7 @@ import {randomUUID} from 'node:crypto';
 import type {Pool,PoolClient} from 'pg';
 import {readBody,AudioError} from './audio-validation';
 import {assertActiveWorkerLease,type ActiveWorkerLease} from './cloud-capacity-lease';
-import {capacityLease,capacityPermitHash,capacityWindowOpen,seedPermit,type CapacityPermit} from './cloud-capacity-permit';
+import {GUARDIAN_FRESH_MS,capacityLease,capacityPermitHash,capacityWindowOpen,seedPermit,type CapacityPermit} from './cloud-capacity-permit';
 import {gpuRevenueBalance,lockGpuFunding,runpodBalanceMicros} from './gpu-revenue';
 import {assertProductionEndpoint,CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 import {hasReadySongWorker} from './cloud-readiness';
@@ -68,9 +68,9 @@ export class CloudCapacity{
  private async guarded(db:Pool|PoolClient=this.pool){
   const r=(await db.query('SELECT * FROM cloud_capacity_guardians WHERE endpoint=$1',[this.endpoint])).rows[0];
   return !!r&&r.config_sha256===capacityPermitHash(this.permit,this.endpoint,this.profile,CLOUD_WORKER_IMAGE)&&
-   Number(r.checked_at)<=this.clock()&&this.clock()-Number(r.checked_at)<90000;
+   Number(r.checked_at)<=this.clock()&&this.clock()-Number(r.checked_at)<GUARDIAN_FRESH_MS;
  }
- // Only the separately supervised shutdown process calls this after a successful sweep.
+ // Called only after a successful guardian-mode sweep (hosted cron or optional headless watchdog).
  async guardianHeartbeat(){
   await this.pool.query(`INSERT INTO cloud_capacity_guardians(endpoint,config_sha256,checked_at) VALUES($1,$2,$3)
    ON CONFLICT(endpoint) DO UPDATE SET config_sha256=excluded.config_sha256,checked_at=excluded.checked_at`,
