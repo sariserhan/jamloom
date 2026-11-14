@@ -2,6 +2,8 @@
 
 Verbatim copy of the former `TODO.md`; only relative links were adjusted for the new location. Active work is in [TODO.md](../TODO.md).
 
+**Neon scale-to-zero redesign — November 14: PASS deployed; usage reduction NOT YET MEASURED.** Guardians check Runpod first and sweep the database every tick only while capacity is active, otherwise at :00/:30 (headless aligned, 35-minute backstop); monitors, notification retries and finance moved to :00/:30/13:00. Security review: provider idle check now requires endpoint id (fixed); relaxed 35-minute start heartbeat and up-to-30-minute idle song sweeps accepted as documented trade-offs. Observed after deploy: the compute was still woken by non-guardian traffic (02:11 UTC) and had not yet suspended. Baseline 80.0 CU-hours at 02:15 UTC; compare the daily rate (was 6.1). 251 site, 90 database and 32 integration tests pass. [Design](CLOUD_CAPACITY.md).
+
 **Review permit applied — November 13: PASS.** Owner ran the prepared script: Vercel and both headless env files carry the $3/7-day permit; reviewer song allowance enabled. Production checks: monitor remaining $3.00, guardianOK, no alerts; guardian and song-jobs heartbeats 3 s old; no open cycle; song API 200. Reviewer-account song creation itself was not exercised.
 
 **Apple agreement — November 13: PASS.** Owner accepted the pending App Store Connect agreement; the headless finance job succeeds again (September–November: no sales).

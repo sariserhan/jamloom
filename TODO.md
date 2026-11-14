@@ -9,7 +9,7 @@ When something finishes, add one dated line to the history and remove it here.
 
 ## Open
 
-- [ ] **[OWNER] Neon Free plan reset before Nov 17, 09:00 UTC.** In the Neon Console: Billing → Change plan → Launch, then straight back to Free (resets the month's 100 CU-hours at no cost). Before the redesign, usage was 6.1 CU-hours/day (~80 used); after it, verify the new daily rate stays well under 3.3/day.
+- [ ] **[OWNER] Neon Free plan reset before Nov 17, 09:00 UTC.** In the Neon Console: Billing → Change plan → Launch, then straight back to Free (resets the month's 100 CU-hours at no cost). Before the redesign, usage was 6.1 CU-hours/day (~80 used); after the Nov 14 redesign, compare against the baseline of 80.0 CU-hours at 02:15 UTC; target well under 3.3/day. If other traffic still keeps it awake, the paid Launch plan (~$20/month) remains the fallback.
 - [ ] **[OWNER] GPU permit expires Nov 20, 15:59 UTC.** Applied Nov 13: a $3/7-day permit (`review-55178491…`, four $0.75 cycles) replaced the unused $10 one, and a $3 reviewer song allowance is on (reviewer access to Dec 12). Captured Stripe payments fund further cycles at 20%. Before Nov 20, decide whether to renew, especially if Apple review is still open.
 - [ ] **[OWNER] Apple App Review (build 40).** The 4.3/4.2.6 response was submitted Nov 9; awaiting Apple. After approval, release manually. Stripe renewal pauses do not pause Apple subscriptions; confirm native operating funding before release.
 - [ ] **Verify one real song after the Nov 13 configuration fix.** Free checks pass (public song APIs 200, hosted guardian heartbeat fresh). A signed-in generation has not run since `JAMLOOM_CLOUD_COST_PROFILE` was restored on Vercel; it spends permit funds.
