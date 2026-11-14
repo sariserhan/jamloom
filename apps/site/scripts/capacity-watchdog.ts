@@ -1,8 +1,8 @@
 import './env';
 import {setTimeout as delay} from 'node:timers/promises';
 import {createPool} from '../lib/database';
-import {CloudCapacity,capacityProvider,stopOrphanedCapacity,emergencyCapacityStop,capacityFailureDiagnostic} from '../lib/cloud-capacity';
-import {capacityPermit,capacityWindowOpen} from '../lib/cloud-capacity-permit';
+import {CloudCapacity,capacityProvider,stopOrphanedCapacity,emergencyCapacityStop,capacityFailureDiagnostic,providerIdle,guardianNeedsDatabase} from '../lib/cloud-capacity';
+import {capacityPermit,capacityWindowOpen,GUARDIAN_IDLE_SWEEP_MS} from '../lib/cloud-capacity-permit';
 
 // Supervise independently of the web deployment. Never starts or renews a GPU.
 const args=process.argv.slice(2);
@@ -21,13 +21,20 @@ try{
   const provider=capacityProvider(process.env.RUNPOD_API_KEY!,endpoint);
   let permit;try{permit=capacityPermit(process.env,profile);}catch{/* Revoked/invalid permits must still stop recorded work. */}
   const capacity=permit?new CloudCapacity(pool,endpoint,profile!,permit,provider):null;
+  // Provider-first: while the endpoint is idle the database is swept every 30 min (and
+  // once right after activity) so Neon can scale to zero; any activity sweeps every tick.
+  let wasActive=true,lastSweep=0;
   do{
-   let stage='reconcile';
+   let stage='provider';
    try{
+    let idle=false;try{idle=await providerIdle(provider);}catch{/* Unknown provider state: full sweep. */}
+    if(watch&&!guardianNeedsDatabase(idle,wasActive,Date.now()-lastSweep,GUARDIAN_IDLE_SWEEP_MS)){if(!stopping)await delay(10000);continue;}
+    stage='reconcile';
     const result=capacity?await capacity.reconcile(true):await stopOrphanedCapacity(pool,endpoint,provider);
     stage='heartbeat';
     if(capacity&&watch&&!stopping&&capacityWindowOpen(permit!,Date.now()))await capacity.guardianHeartbeat();
-    console.log(JSON.stringify({at:new Date().toISOString(),...result}));
+    lastSweep=Date.now();wasActive=!idle;
+    console.log(JSON.stringify({at:new Date().toISOString(),idle,...result}));
     if(permit&&!capacityWindowOpen(permit,Date.now())&&result.state==='off')break;
    }catch(error){
     console.error(JSON.stringify({at:new Date().toISOString(),event:'capacity-check-failed',stage,...capacityFailureDiagnostic(error)}));

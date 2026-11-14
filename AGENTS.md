@@ -15,7 +15,7 @@ Record new owner decisions there, then update this summary.
 - Owner principle (2026-11-13): spending is acceptable when customers pay more than it costs. Still confirm each concrete spending change with the owner.
 - Runpod native auto-pay is approved at $25 below $10 with a $5 notification. It replenishes prepaid cash only; it is not a generation allowance.
 - Any other paid compute, new permit, worker-limit change or retry needs explicit owner approval with a concrete bound.
-- The guardian runs from the every-minute Vercel `/api/song-jobs` cron and the headless `jamloom-capacity.service`; keep both stop-only. Heartbeat freshness is 3 minutes.
+- The guardian runs from the every-minute Vercel `/api/song-jobs` cron and the headless `jamloom-capacity.service`; keep both stop-only. Both check Runpod first and touch the database every tick only while capacity is active (every 30 minutes when idle) so Neon can scale to zero; start-of-capacity accepts a 35-minute heartbeat, song admission 3 minutes.
 
 **Pricing and economics**
 - Catalog: Creator $35/month for 300 credits, $20 for 150-credit top-ups, nonexpiring credits, fixed operation prices. Preserve old receipts and subscriptions at their original amounts.

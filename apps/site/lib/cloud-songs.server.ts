@@ -8,8 +8,15 @@ import {cloudSongConfig} from './cloud-song-config';
 import {cloudSongAPI} from './cloud-song-api';
 import {reviewSongConfig} from './cloud-review-config';
 import {appleReviewAccount} from './apple-review';
-import {CloudCapacity,capacityProvider,stopOrphanedCapacity} from './cloud-capacity';
+import {CloudCapacity,capacityProvider,stopOrphanedCapacity,providerIdle} from './cloud-capacity';
 import {capacityPermit,capacityWindowOpen} from './cloud-capacity-permit';
+// Provider-only idle check so the minute cron can skip the database (Neon scale-to-zero).
+// Missing configuration or a failed read counts as active: the full sweep then runs.
+export async function songCapacityIdle(){
+ const endpoint=process.env.RUNPOD_ENDPOINT_ID,key=process.env.RUNPOD_API_KEY;
+ if(!key||!endpoint||!/^[a-zA-Z0-9_-]{1,80}$/.test(endpoint))return false;
+ try{return await providerIdle(capacityProvider(key,endpoint));}catch{return false;}
+}
 export async function reconcileSongCapacity(){
  const profile=process.env.JAMLOOM_CLOUD_COST_PROFILE;
  const endpoint=process.env.RUNPOD_ENDPOINT_ID,key=process.env.RUNPOD_API_KEY;

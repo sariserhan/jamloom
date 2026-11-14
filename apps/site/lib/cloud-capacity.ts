@@ -2,7 +2,7 @@ import {randomUUID} from 'node:crypto';
 import type {Pool,PoolClient} from 'pg';
 import {readBody,AudioError} from './audio-validation';
 import {assertActiveWorkerLease,type ActiveWorkerLease} from './cloud-capacity-lease';
-import {GUARDIAN_FRESH_MS,capacityLease,capacityPermitHash,capacityWindowOpen,seedPermit,type CapacityPermit} from './cloud-capacity-permit';
+import {GUARDIAN_FRESH_MS,GUARDIAN_IDLE_FRESH_MS,capacityLease,capacityPermitHash,capacityWindowOpen,seedPermit,type CapacityPermit} from './cloud-capacity-permit';
 import {gpuRevenueBalance,lockGpuFunding,runpodBalanceMicros} from './gpu-revenue';
 import {assertProductionEndpoint,CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 import {hasReadySongWorker} from './cloud-readiness';
@@ -65,10 +65,10 @@ export class CloudCapacity{
  private permitOpen(now=this.clock()){
   if(!capacityWindowOpen(this.permit,now))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
  }
- private async guarded(db:Pool|PoolClient=this.pool){
+ private async guarded(db:Pool|PoolClient=this.pool,maxAge=GUARDIAN_FRESH_MS){
   const r=(await db.query('SELECT * FROM cloud_capacity_guardians WHERE endpoint=$1',[this.endpoint])).rows[0];
   return !!r&&r.config_sha256===capacityPermitHash(this.permit,this.endpoint,this.profile,CLOUD_WORKER_IMAGE)&&
-   Number(r.checked_at)<=this.clock()&&this.clock()-Number(r.checked_at)<GUARDIAN_FRESH_MS;
+   Number(r.checked_at)<=this.clock()&&this.clock()-Number(r.checked_at)<maxAge;
  }
  // Called only after a successful guardian-mode sweep (hosted cron or optional headless watchdog).
  async guardianHeartbeat(){
@@ -106,7 +106,7 @@ export class CloudCapacity{
    if(existing){
     if(existing.permit_id!==this.permit.id)return 'unavailable';
     if(existing.state==='stopping')return 'stopping';
-    if(!await this.guarded(db))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
+    if(!await this.guarded(db,GUARDIAN_IDLE_FRESH_MS))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
     try{assertActiveWorkerLease(lease(existing),this.clock(),120000);}catch{return 'unavailable';}
     // A deliberate warm join gets the same upload window as a new session.
     // Polls never keep workers alive, and the original funded expiry is fixed.
@@ -114,7 +114,7 @@ export class CloudCapacity{
     return existing.state==='ready'?'ready':'preparing';
    }
    const now=this.clock(),p=this.permit,next=capacityLease(p,now);
-   if(!await this.guarded(db))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
+   if(!await this.guarded(db,GUARDIAN_IDLE_FRESH_MS))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
    if(!capacityWindowOpen(p,now,p.cycleSeconds*1000))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
    const recent=await db.query('SELECT 1 FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>$2 LIMIT 1',[owner,now-86400000]);
    // Only trusted server review configuration relaxes the per-owner daily limit.
@@ -212,6 +212,19 @@ export class CloudCapacity{
  }
 }
 
+// Provider-only check (no database): true when the exact endpoint is disabled (0/0)
+// with no workers or jobs. Anything else, including a changed identity, is "active"
+// so callers fall through to the full database sweep and its shutdown paths.
+export async function providerIdle(provider:CapacityProvider){
+ const e=await provider.endpoint();
+ if(e?.image!==CLOUD_WORKER_IMAGE||e.workers?.min!==0||e.workers?.max!==0)return false;
+ return empty(await provider.health());
+}
+// Guardian tick policy: touch the database every tick while anything is active, once
+// more after activity ends, and every GUARDIAN_IDLE_SWEEP_MS while idle.
+export function guardianNeedsDatabase(idle:boolean,wasActive:boolean,sinceSweepMs:number,idleSweepMs:number){
+ return !idle||wasActive||sinceSweepMs>=idleSweepMs;
+}
 // Configuration rollback cannot abandon a worker whose activation is recorded.
 // This path only stops the exact endpoint/image in the durable ledger.
 export async function stopOrphanedCapacity(pool:Pool,endpoint:string,provider:CapacityProvider,clock=Date.now){

@@ -1,0 +1,11 @@
+[Unit]
+Description=Check Jamloom operating funding and renewal protection at :00 and :30 (aligned with the hosted database sweep so Neon can scale to zero)
+
+[Timer]
+OnCalendar=*-*-* *:00,30:00
+Persistent=true
+AccuracySec=15s
+Unit=jamloom-operations.service
+
+[Install]
+WantedBy=timers.target

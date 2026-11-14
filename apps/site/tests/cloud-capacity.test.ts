@@ -76,7 +76,7 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    const joined=(await pool.query('SELECT * FROM cloud_capacity_cycles WHERE id=$1',[initial.id])).rows[0];
    assert.equal(joined.expires_at,initial.expires_at);assert.equal(starts,before);
    assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[c.permit.id])).rows[0].reserved_micros),1000000);
-   now+=180001;await assert.rejects(c.prepare('owner0'),/unavailable/);
+   now+=2100001;await assert.rejects(c.prepare('owner0'),/unavailable/);
    now=Number(initial.expires_at)-119999;await c.guardianHeartbeat();assert.equal(await c.prepare('owner0'),'unavailable');
    now=Number(initial.expires_at);assert.equal((await c.reconcile(true)).reason,'expired');assert.equal(e.workers.max,0);
   });

@@ -1,6 +1,6 @@
 import {createHash} from 'node:crypto';
 import type {Pool} from 'pg';
-import {GUARDIAN_FRESH_MS,capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from './cloud-capacity-permit';
+import {GUARDIAN_IDLE_FRESH_MS,capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from './cloud-capacity-permit';
 import {CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 import {protectCreatorRenewals,resumeFundedCreatorRenewals} from './creator-renewals';
 import {providerReplenishmentPlan,inspectProviderAutoPay,type ProviderAutoPay} from './provider-replenishment';
@@ -19,7 +19,7 @@ export const operationMessages={
  'shutdown-unconfirmed':'A capacity shutdown failed, a worker remains after expiry, or provider identity differs. Check the provider and stop unapproved capacity.',
  'generation-failed':'A recent live song failed or its cleanup is overdue. Check private operational records and credit returns; do not retry automatically.',
  'renewal-check-failed':'Creator renewal protection could not be confirmed. Inspect Stripe collection pauses and outstanding renewal invoices immediately.',
- 'song-jobs-failing':'The every-minute song recovery and guardian job has not succeeded for over 10 minutes. Song creation may be failing or closed. Check /api/song-jobs logs (song-jobs-failed shows the failing stage) and Vercel configuration.',
+ 'song-jobs-failing':'The song recovery and guardian job has not completed a database sweep for over 35 minutes. Song creation may be failing or closed. Check /api/song-jobs logs (song-jobs-failed shows the failing stage) and Vercel configuration.',
  'monitor-check-failed':'An operating check failed. Inspect the database, provider and monitor services. This alert contains no customer data.',
  'test':'TEST ONLY: Jamloom operating alerts are connected. Simulated checks cover low/expired funding, failed songs, stale guardian and failed shutdown. No customer charge or GPU request was made.'
 } as const;
@@ -79,14 +79,15 @@ export async function inspectOperations(pool:Pick<Pool,'query'>,env:Record<strin
  }
  const providerAutoPay=await inspectProviderAutoPay(env,request);
  const snapshot:OperationSnapshot={now,expiresAt:p.revenueShareBps===2000?null:p.expiresAt,remainingMicros:remaining,...(revenueMicros===undefined?{}:{revenueMicros,providerMicros}),...(providerAutoPay?{providerAutoPay}:{}),cycleMicros:p.cycleMicros,
-  guardianOK:!!g&&g.config_sha256===hash&&Number(g.checked_at)<=now&&now-Number(g.checked_at)<GUARDIAN_FRESH_MS,
+  guardianOK:!!g&&g.config_sha256===hash&&Number(g.checked_at)<=now&&now-Number(g.checked_at)<GUARDIAN_IDLE_FRESH_MS,
   shutdownFailed:Number(cycles.rows[0]?.failed)>0||!capacityWindowOpen(p,now)&&(c.workers?.min!==0||c.workers?.max!==0),
   providerMismatch:c.id!==endpoint||c.image!==CLOUD_WORKER_IMAGE||!!grantRow&&grantRow.config_sha256!==capacityPermitHash(seedPermit(p),endpoint,profile,CLOUD_WORKER_IMAGE),
   workers,liveFailures:Number(jobs.rows[0]?.failures??0),overdueCleanup:Number(jobs.rows[0]?.overdue??0)};
  return {snapshot,alerts:operationAlerts(snapshot)};
 }
-// The song-jobs cron runs every minute; 10 minutes tolerates brief Vercel delays.
-export const SONG_JOBS_STALE_MS=600000;
+// The song-jobs cron sweeps the database every 30 min while the GPU is idle (every
+// minute while active); 35 min tolerates one late run.
+export const SONG_JOBS_STALE_MS=2100000;
 export const songJobsStale=(okAt:number|undefined,now:number)=>okAt===undefined||!Number.isFinite(okAt)||now-okAt>SONG_JOBS_STALE_MS;
 export async function recordOperationSuccess(pool:Pick<Pool,'query'>,name:string){
  await pool.query('INSERT INTO operation_heartbeats(name,ok_at) VALUES($1,now()) ON CONFLICT(name) DO UPDATE SET ok_at=excluded.ok_at',[name]);

@@ -5,8 +5,12 @@ import {gpuRevenueEnabled} from './gpu-revenue';
 
 // The original finite grant remains immutable. Revenue funding is a separate
 // authorization: it extends availability, never the seed grant's money or dates.
-// The every-minute hosted cron publishes the heartbeat; 3 min tolerates one late or failed run.
+// While a GPU is active, guardians publish every tick; 3 min tolerates one late cron run.
 export const GUARDIAN_FRESH_MS=180000;
+// While the provider is idle, guardians touch the database every 30 min so Neon can
+// scale to zero; starting new capacity accepts a heartbeat up to 35 min old.
+export const GUARDIAN_IDLE_SWEEP_MS=1800000;
+export const GUARDIAN_IDLE_FRESH_MS=2100000;
 export type CapacityPermit={id:string;startsAt:number;expiresAt:number;capMicros:number;cycleMicros:number;cycleSeconds:number;revenueShareBps?:2000};
 export function capacityPermit(env:Record<string,string|undefined>,profile?:string):CapacityPermit|undefined{
  const value=env.JAMLOOM_CLOUD_CAPACITY_PERMIT;if(!value)return;

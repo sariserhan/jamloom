@@ -4,7 +4,7 @@
   "crons": [
     {
       "path": "/api/operations",
-      "schedule": "*/5 * * * *"
+      "schedule": "0,30 * * * *"
     },
     {
       "path": "/api/maintenance",
@@ -16,7 +16,7 @@
     },
     {
       "path": "/api/notifications",
-      "schedule": "*/5 * * * *"
+      "schedule": "0,30 * * * *"
     },
     {
       "path": "/api/ai-dj/supervisor",
@@ -24,7 +24,7 @@
     },
     {
       "path": "/api/finance/apple",
-      "schedule": "2 13 * * *"
+      "schedule": "0 13 * * *"
     }
   ],
   "git": {

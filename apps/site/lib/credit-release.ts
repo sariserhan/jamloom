@@ -1,6 +1,6 @@
 import type {Pool} from 'pg';
 import {CREDIT_CATALOG_VERSION,creditSalesQualified} from './credit-catalog';
-import {GUARDIAN_FRESH_MS,capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from './cloud-capacity-permit';
+import {GUARDIAN_IDLE_FRESH_MS,capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from './cloud-capacity-permit';
 import {gpuRevenueBalance,providerFundingFresh} from './gpu-revenue';
 import {CLOUD_COST_PROFILE,CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 
@@ -26,7 +26,7 @@ export async function creditCapacityForSales(pool:Pick<Pool,'query'>,env:Record<
   if(!permit||!endpoint||!profile||!capacityWindowOpen(permit,now,permit.cycleSeconds*1000))return false;
   const hash=capacityPermitHash(permit,endpoint,profile,CLOUD_WORKER_IMAGE);
   const guardian=(await pool.query('SELECT config_sha256,checked_at FROM cloud_capacity_guardians WHERE endpoint=$1',[endpoint])).rows[0];
-  if(!guardian||guardian.config_sha256!==hash||Number(guardian.checked_at)>now||now-Number(guardian.checked_at)>=GUARDIAN_FRESH_MS)return false;
+  if(!guardian||guardian.config_sha256!==hash||Number(guardian.checked_at)>now||now-Number(guardian.checked_at)>=GUARDIAN_IDLE_FRESH_MS)return false;
   const grant=(await pool.query('SELECT config_sha256,reserved_micros FROM cloud_capacity_permits WHERE id=$1',[permit.id])).rows[0];
   if(grant&&grant.config_sha256!==capacityPermitHash(seedPermit(permit),endpoint,profile,CLOUD_WORKER_IMAGE))return false;
   const seedFunded=now+permit.cycleSeconds*1000<=permit.expiresAt&&Number(grant?.reserved_micros??0)+permit.cycleMicros<=permit.capMicros;
