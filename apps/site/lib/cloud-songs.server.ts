@@ -15,7 +15,7 @@ import {capacityPermit,capacityWindowOpen} from './cloud-capacity-permit';
 export async function songCapacityIdle(){
  const endpoint=process.env.RUNPOD_ENDPOINT_ID,key=process.env.RUNPOD_API_KEY;
  if(!key||!endpoint||!/^[a-zA-Z0-9_-]{1,80}$/.test(endpoint))return false;
- try{return await providerIdle(capacityProvider(key,endpoint));}catch{return false;}
+ try{return await providerIdle(capacityProvider(key,endpoint),endpoint);}catch{return false;}
 }
 export async function reconcileSongCapacity(){
  const profile=process.env.JAMLOOM_CLOUD_COST_PROFILE;

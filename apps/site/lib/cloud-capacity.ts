@@ -215,15 +215,18 @@ export class CloudCapacity{
 // Provider-only check (no database): true when the exact endpoint is disabled (0/0)
 // with no workers or jobs. Anything else, including a changed identity, is "active"
 // so callers fall through to the full database sweep and its shutdown paths.
-export async function providerIdle(provider:CapacityProvider){
+export async function providerIdle(provider:CapacityProvider,endpoint:string){
  const e=await provider.endpoint();
- if(e?.image!==CLOUD_WORKER_IMAGE||e.workers?.min!==0||e.workers?.max!==0)return false;
+ if(e?.id!==endpoint||e?.image!==CLOUD_WORKER_IMAGE||e.workers?.min!==0||e.workers?.max!==0)return false;
  return empty(await provider.health());
 }
 // Guardian tick policy: touch the database every tick while anything is active, once
-// more after activity ends, and every GUARDIAN_IDLE_SWEEP_MS while idle.
-export function guardianNeedsDatabase(idle:boolean,wasActive:boolean,sinceSweepMs:number,idleSweepMs:number){
- return !idle||wasActive||sinceSweepMs>=idleSweepMs;
+// more after activity ends, and while idle in the first minute of each half hour (aligned
+// with the hosted cron so both share one Neon wake), with a backstop after idleSweepMs+5min.
+export function guardianNeedsDatabase(idle:boolean,wasActive:boolean,sinceSweepMs:number,idleSweepMs:number,now=Date.now()){
+ if(!idle||wasActive)return true;
+ const aligned=new Date(now).getUTCMinutes()%30===0&&sinceSweepMs>=120000;
+ return aligned||sinceSweepMs>=idleSweepMs+300000;
 }
 // Configuration rollback cannot abandon a worker whose activation is recorded.
 // This path only stops the exact endpoint/image in the durable ledger.

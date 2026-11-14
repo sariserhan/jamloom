@@ -27,7 +27,7 @@ try{
   do{
    let stage='provider';
    try{
-    let idle=false;try{idle=await providerIdle(provider);}catch{/* Unknown provider state: full sweep. */}
+    let idle=false;try{idle=await providerIdle(provider,endpoint);}catch{/* Unknown provider state: full sweep. */}
     if(watch&&!guardianNeedsDatabase(idle,wasActive,Date.now()-lastSweep,GUARDIAN_IDLE_SWEEP_MS)){if(!stopping)await delay(10000);continue;}
     stage='reconcile';
     const result=capacity?await capacity.reconcile(true):await stopOrphanedCapacity(pool,endpoint,provider);
