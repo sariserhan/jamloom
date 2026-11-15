@@ -6,6 +6,7 @@ import {GUARDIAN_FRESH_MS,GUARDIAN_IDLE_FRESH_MS,capacityLease,capacityPermitHas
 import {gpuRevenueBalance,lockGpuFunding,runpodBalanceMicros} from './gpu-revenue';
 import {adminAccount} from './admin-access';
 export const OWNER_GPU_MONTHLY_MICROS=10_000_000;
+export const FIRST_READY_GRACE_MS=300000;
 import {assertProductionEndpoint,CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 import {hasReadySongWorker} from './cloud-readiness';
 
@@ -203,7 +204,8 @@ export class CloudCapacity{
    else if(e.workers?.min!==1||e.workers?.max!==1){
     if(now-Number(r.starts_at)<30000&&r.state==='starting')return {state:'preparing' as CapacityState};
     reason='activation-unconfirmed';
-   }else if(r.state==='ready'&&!busy&&now-Number(r.busy_at??r.ready_at)>=120000)reason='idle';
+   // After a long cold start the customer gets FIRST_READY_GRACE_MS to press Generate; later idle gaps stop at 2 min.
+   }else if(r.state==='ready'&&!busy&&now-Number(r.busy_at??r.ready_at)>=(r.busy_at?120000:FIRST_READY_GRACE_MS))reason='idle';
    if(!reason){try{assertProductionEndpoint(e,await this.provider.catalog(),lease(r),this.profile,now);}
     catch{reason='profile-unconfirmed';}}
    if(reason){

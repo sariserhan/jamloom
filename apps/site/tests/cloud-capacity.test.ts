@@ -52,7 +52,7 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
  const fresh=(p=permit(now))=>new CloudCapacity(pool,'fixture',CLOUD_COST_PROFILE,p,provider,()=>now);
  const start=async(c:CloudCapacity,owner:string)=>{await c.guardianHeartbeat();return c.prepare(owner);};
  const wake=async(c:CloudCapacity)=>{now+=1000;await c.guardianHeartbeat();h.workers={...emptyWorkers,running:1};assert.equal((await c.reconcile()).state,'ready');};
- const cool=async(c:CloudCapacity)=>{now+=120001;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'off');};
+ const cool=async(c:CloudCapacity)=>{now+=300001;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'off');};
  try{
   await migrate(pool);assert.deepEqual(await migrate(pool),[]);
   for(let n=0;n<14;n++)await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',['owner'+n,`owner${n}@example.test`]);
@@ -166,6 +166,12 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    await assert.rejects(songs.prepareCapacity('owner12'),/currently unavailable/);assert.equal(starts,before+2);
    assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[c.permit.id])).rows[0].reserved_micros),2000000);
    assert.deepEqual(await commerce.wallet.balance('owner12'),balance);
+  });
+  await t.test('first readiness waits five minutes for the customer before an idle stop',async()=>{
+   await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',['grace','grace@example.test']);
+   const c=fresh();assert.equal(await start(c,'grace'),'preparing');await wake(c);
+   now+=120001;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'ready','Two minutes after a cold start is too short to stop');
+   now+=180000;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'off');
   });
  }finally{await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();await rm(directory,{recursive:true,force:true});}
 });

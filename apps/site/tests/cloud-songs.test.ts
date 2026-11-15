@@ -1,4 +1,5 @@
 import {hostedTrainingSnapshot} from '../lib/hosted-training';
+import {songCreditPrice} from '../lib/credit-catalog';
 import {emptyTaste} from '../lib/taste';
 import {cloudSongFeedback,cloudPersonalFeedback} from '../lib/cloud-song-feedback';
 import test from 'node:test';
@@ -75,7 +76,7 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    await service.submit(owners[index],key,profile,'private',quotes[index].token);
    assert.equal((await pool.query('SELECT count(*)::int AS n FROM cloud_song_runs WHERE id=ANY($1::text[])',[keys])).rows[0].n,1);
    const before=submits;review.enabled=false;
-   const held=await availability(owners[index]);assert.equal(held.available,false);assert.equal(held.active,key);assert.equal(held.balance.reserved,20);
+   const held=await availability(owners[index]);assert.equal(held.available,false);assert.equal(held.active,key);assert.equal(held.balance.reserved,songCreditPrice('music-dna','private').credits);
    await service.tick(key);assert.equal(submits,before);assert.equal((await commerce.row(key)).state,'failed');
    assert.equal((await commerce.wallet.balance(owners[index])).available,50);
    review.enabled=true;const q=await commerce.quote(owners[index],profile,'private');
@@ -104,7 +105,7 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
    assert.equal(arrivals,2);assert.equal(outcomes.filter(x=>x.status==='fulfilled').length,1);
    const winner=outcomes.findIndex(x=>x.status==='fulfilled'),loser=1-winner;
    assert.deepEqual(await commerce.wallet.balance(owners[loser]),before[loser]);
-   assert.equal((await commerce.wallet.balance(owners[winner])).reserved,20);
+   assert.equal((await commerce.wallet.balance(owners[winner])).reserved,songCreditPrice('music-dna','private').credits);
    const state=await(await cloudSongAPI(new Request('http://localhost/api/taste/song'),service,owners[winner],()=>{throw Error('Availability cannot dispatch');}))!.json();
    assert.equal(state.available,false);assert.equal(state.active,keys[winner]);
    await service.submit(owners[winner],keys[winner],profile,'private',quotes[winner].token);
@@ -138,7 +139,7 @@ test('real Postgres cloud songs: concurrency, credits, recovery, privacy, cancel
   await t.test('Improvise variety survives concurrent submissions, restart and duplicate requests',async()=>{
    const owner='variety';await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[owner,owner+'@example.test']);
    const c=new DnaCommerce(pool,'fixture-secret-'.repeat(4),store,{budget:settings.budget,product:'improvise'});
-   await c.wallet.grant(owner,{provider:'stripe_test',receipt:owner,credits:50,netMicros:30000000});
+   await c.wallet.grant(owner,{provider:'stripe_test',receipt:owner,credits:100,netMicros:60000000});
    const source=Buffer.alloc(32044);source.write('RIFF');source.writeUInt32LE(source.length-8,4);source.write('WAVEfmt ',8);source.writeUInt32LE(16,16);source.writeUInt16LE(1,20);source.writeUInt16LE(1,22);source.writeUInt32LE(16000,24);source.writeUInt32LE(32000,28);source.writeUInt16LE(2,32);source.writeUInt16LE(16,34);source.write('data',36);source.writeUInt32LE(source.length-44,40);
    async function prepare(genre='surprise'){
     const service=new CloudSongs(c,settings,provider),upload=await service.upload(owner,{bytes:source.length,sha256:sha(source),consent:true});

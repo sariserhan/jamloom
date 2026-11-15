@@ -10,7 +10,10 @@ export function CapacityPreparation({endpoint,onAvailable,disabled=false,inputs}
   try{
    const r=await fetch(endpoint,{signal:AbortSignal.timeout(10000)});if(!r.ok)throw Error('Could not check song availability.');
    const data=await r.json();if(!alive.current)return;
-   if(data.available===true&&data.creditsEnabled===true){callback.current();return;}
+   if(data.available===true&&data.creditsEnabled===true){
+    // After a wait, make readiness visible from other tabs: the GPU idles off after five minutes.
+    if(last.current==='preparing')document.title='▶ Ready — generate your song · Jamloom';
+    callback.current();return;}
    setCanPrepare(data.canPrepare===true);const next=data.capacityState??'unavailable';
    // A start that ends without becoming available almost always means the GPU provider had no free card.
    if(last.current==='preparing'&&!['preparing','ready'].includes(next))setNotice('No music studio GPU was free this time, so it was switched off. Nothing was charged and no credits were used. Please try again in 15–30 minutes.');
@@ -35,7 +38,7 @@ export function CapacityPreparation({endpoint,onAvailable,disabled=false,inputs}
   {waiting||state==='checking'?<div className="generation-progress">
    <div className="generation-progress-art" aria-hidden="true">{[0,1,2,3,4].map(i=><i key={i}/>)}</div>
    <div className="generation-progress-copy"><strong role="status">{waiting?'Starting the music studio…':'Checking song availability…'}</strong>
-    {waiting&&<p>Waiting {clock}. This usually takes 10–15 minutes while a GPU is found and the music model loads. Keep this page open; Generate unlocks by itself. No credits have been used.</p>}</div>
+    {waiting&&<p>Waiting {clock}. This usually takes 5–10 minutes while a GPU is found and the music model loads. Keep this page open; Generate unlocks by itself and stays available for 5 minutes. No credits have been used.</p>}</div>
   </div>:<p role="status">{`Song creation is currently unavailable. ${inputs} and no credits have been used.`}</p>}
   {error&&<p role="alert">{error}</p>}{notice&&!error&&<p role="alert">{notice}</p>}
   {canPrepare&&!waiting&&!error&&<button className="secondary" disabled={disabled||busy} onClick={prepare}>{busy?'Preparing…':'Prepare song creation'}</button>}

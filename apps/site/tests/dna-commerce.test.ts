@@ -69,11 +69,11 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
   });
   await t.test('price, atomic reservation and duplicate request binding',async()=>{
    const pub=await commerce.quote('alice',profile,'public'),priv=await commerce.quote('alice',profile,'private');
-   assert.equal(pub.credits,20);assert.equal(priv.credits,20);
+   assert.equal(pub.credits,20);assert.equal(priv.credits,25,'Private costs 25% more');
    await assert.rejects(commerce.quote('empty',profile,'public'),/Insufficient/);
    const job=id();
    const results=await Promise.all(Array.from({length:5},()=>commerce.submit('alice',job,profile,'private',priv.token)));
-   assert.equal(new Set(results.map(r=>r.reservation_id)).size,1);assert.deepEqual(await commerce.wallet.balance('alice'),{available:280,reserved:20});
+   assert.equal(new Set(results.map(r=>r.reservation_id)).size,1);assert.deepEqual(await commerce.wallet.balance('alice'),{available:300-songCreditPrice('music-dna','private').credits,reserved:songCreditPrice('music-dna','private').credits});
    await assert.rejects(commerce.submit('bob',job,profile,'private',priv.token));
    await assert.rejects(commerce.submit('alice',job,{...profile,references:['changed']},'private',priv.token));
    await assert.rejects(commerce.submit('alice',job,profile,'public',priv.token));
@@ -94,8 +94,8 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
     assert.equal((await dnaSong(request('?id='+job+suffix),visitor)).status,404);
    assert.equal((await commerce.list(null,'public')).songs.length,0);
    assert.equal((await commerce.list('alice','mine')).songs.length,1);assert.equal((await commerce.list('bob','mine')).songs.length,0);
-   assert.deepEqual(await commerce.wallet.balance('alice'),{available:280,reserved:0});
-   await dnaSong(request('?id='+job),context);assert.deepEqual(await commerce.wallet.balance('alice'),{available:280,reserved:0});
+   assert.deepEqual(await commerce.wallet.balance('alice'),{available:275,reserved:0});
+   await dnaSong(request('?id='+job),context);assert.deepEqual(await commerce.wallet.balance('alice'),{available:275,reserved:0});
   });
   await t.test('public success enters the feed, without favorites or identities; withdrawal removes access',async()=>{
    const job=id(),quote=await commerce.quote('alice',profile,'public');await commerce.submit('alice',job,profile,'public',quote.token);await commerce.start(job);await output(job);
@@ -107,7 +107,7 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
    assert.equal((await dnaFeedback(rating,other)).status,403);
    assert.equal((await dnaSong(request('?id='+job+'&file=plan'),anonymous)).status,404);
    assert.equal((await dnaSong(request('?id='+job+'&file=audio'),anonymous)).status,200);
-   assert.deepEqual(await commerce.wallet.balance('alice'),{available:260,reserved:0});
+   assert.deepEqual(await commerce.wallet.balance('alice'),{available:255,reserved:0});
    assert.equal((await dnaSong(request('?id='+job,'DELETE'),other)).status,404);
    assert.equal((await dnaSong(request('?id='+job,'DELETE'),context)).status,200);
    assert.equal((await commerce.list(null,'public')).songs.length,0);
@@ -117,7 +117,7 @@ test('real Postgres Music DNA credits, privacy, idempotence, failure and recover
   await t.test('failure refunds all held credits and never publishes; anonymous generation is denied',async()=>{
    const job=id(),quote=await commerce.quote('alice',profile,'public');await commerce.submit('alice',job,profile,'public',quote.token);await commerce.start(job);
    const before=await commerce.wallet.balance('alice');await commerce.finish(job,'failed');await commerce.finish(job,'failed');
-   assert.deepEqual(await commerce.wallet.balance('alice'),{available:before.available+20,reserved:0});
+   assert.deepEqual(await commerce.wallet.balance('alice'),{available:before.available+songCreditPrice('music-dna','public').credits,reserved:0});
    assert.equal((await commerce.list(null,'public')).songs.length,0);
    assert.equal((await dnaSong(request('','POST',{}),anonymous)).status,401);
    assert.equal((await dnaSong(request('','POST',{}))).status,503);
