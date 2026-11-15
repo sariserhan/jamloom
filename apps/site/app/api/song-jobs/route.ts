@@ -3,6 +3,7 @@ import {hostedSongs,reconcileSongCapacity,songCapacityIdle} from '../../../lib/c
 import {capacityFailureDiagnostic} from '../../../lib/cloud-capacity';
 import {recordOperationSuccess} from '../../../lib/operations-monitor';
 import {services} from '../../../lib/services';
+import {deliverNotifications} from '../../../lib/notifications';
 export const runtime='nodejs';export const maxDuration=180;
 export async function GET(request:Request){
  const secret=process.env.CRON_SECRET;
@@ -15,7 +16,7 @@ export async function GET(request:Request){
   // While the GPU endpoint is idle, sweep the database only in the first two minutes of
   // each half hour (one Neon wake); otherwise run the full guardian sweep every minute.
   if(new Date().getUTCMinutes()%30>=2&&await songCapacityIdle())return Response.json({capacity,idle:true});
-  stage='guardian';const demandCapacity=await reconcileSongCapacity();stage='song-sweep';const result=await Promise.all((['music-dna','improvise'] as const).flatMap(product=>[hostedSongs(product)?.sweep(),hostedSongs(product,true)?.sweep()]));stage='heartbeat';await recordOperationSuccess(services().pool,'song-jobs');return Response.json({capacity,demandCapacity,result});}
+  stage='guardian';const demandCapacity=await reconcileSongCapacity();stage='song-sweep';const result=await Promise.all((['music-dna','improvise'] as const).flatMap(product=>[hostedSongs(product)?.sweep(),hostedSongs(product,true)?.sweep()]));stage='notifications';await deliverNotifications(services().pool,services().config);stage='heartbeat';await recordOperationSuccess(services().pool,'song-jobs');return Response.json({capacity,demandCapacity,result});}
  catch(error){
   // Sanitized: never log raw provider/database messages.
   console.error(JSON.stringify({event:'song-jobs-failed',stage,...capacityFailureDiagnostic(error),name:error instanceof Error?error.constructor.name:typeof error}));

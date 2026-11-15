@@ -1,3 +1,5 @@
+**November 15 update — one-click songs (web):** Generate now starts the GPU when it is off and queues the song with its credits held; the song is dispatched automatically once capacity is ready and its deadline is the cycle expiry. A queued song counts as activity, so the cycle cannot idle off while it waits. If the cycle stops before readiness (usually no free GPU), the song fails, credits are released and the customer is emailed; completed songs also send a “Your song is ready” email, delivered from the every-minute song-jobs run. The `prepare` API action remains for the native app. The first readiness of a cycle allows 5 minutes before an idle stop.
+
 **November 9 update:** Revenue-funded continuation is live. The owner-approved 20% of settled net web proceeds funds additional bounded cycles, retaining one L4 worker and independent stop-only supervision. The original seed dates/cap stay unchanged. [Current funding policy and limits](GPU_REVENUE.md) supersedes finite-only statements below for revenue-backed cycles.
 
 # Bounded song preparation
@@ -60,6 +62,6 @@ For rollback, disable new generation and purchases first; retain the shutdown pr
 
 ## Validation
 
-`tests/cloud-capacity.test.ts` exercises real disposable PostgreSQL transactions, concurrent starts, immutable aggregate budgets, same-origin/auth/credit admission, lost activation responses, startup/idle/expiry shutdown, guardian failure and configuration removal. `tests/cloud-capacity-browser.mjs` renders explicit preparation and ambiguous-response recovery on desktop/mobile Chromium and WebKit. Native `AccountTests` covers both product preparation flows. These use provider fixtures and never rent a GPU.
+`tests/cloud-capacity.test.ts` exercises real disposable PostgreSQL transactions, concurrent starts, immutable aggregate budgets, same-origin/auth/credit admission, lost activation responses, startup/idle/expiry shutdown, guardian failure and configuration removal. Native `AccountTests` covers both product preparation flows. These use provider fixtures and never rent a GPU.
 
 Provider semantics were checked against the official [endpoint update API](https://docs.runpod.io/api-reference-v2/serverless/update-a-serverless-endpoint) and [worker configuration](https://docs.runpod.io/serverless/endpoints/endpoint-configurations). Context7 was unavailable. Active workers bill while idle, so the implementation always records and supervises a finite operator allowance before enabling them.

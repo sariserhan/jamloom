@@ -1,4 +1,5 @@
 import {checkedDnaStyle} from './dna-style';
+import {enqueueEmail} from './notifications';
 import {CloudCapacity,capacityProvider} from './cloud-capacity';
 import {songCreditPrice} from './credit-catalog';
 import {assertActiveWorkerLease} from './cloud-capacity-lease';
@@ -102,7 +103,12 @@ export class CloudSongs{
    return {id,state:prior.state};
   }
   this.assertNewRequestAllowed(owner);
-  await this.assertCapacityReady();
+  if(this.capacity){
+   // One click: start the GPU if needed; the song waits in the queue until it is ready.
+   const state=await this.capacity.state();
+   if(state==='off')await this.prepareCapacity(owner);
+   else if(!['preparing','ready'].includes(state))throw new AudioError(SONG_CAPACITY_MESSAGE,503);
+  }else await this.assertCapacityReady();
   if(this.config.review&&visibility!=='private')throw new AudioError('Review generations must stay private.');
   let source:any;
   if(this.commerce.product==='improvise'){
@@ -118,7 +124,8 @@ export class CloudSongs{
   }
   await this.commerce.submit(owner,id,input,visibility,token,async db=>{
    await db.query("SELECT pg_advisory_xact_lock(hashtextextended('jamloom-cloud-daily-cap',0))");
-   if(this.capacity)await this.capacity.assertAdmission(db,(this.config.ttlSeconds+120)*1000);
+   let deadline=Date.now()+this.config.ttlSeconds*1000;
+   if(this.capacity)deadline=await this.capacity.assertQueueable(db,(this.config.ttlSeconds+120)*1000);
    if(this.config.productionProfile&&(await db.query("SELECT 1 FROM cloud_song_runs c JOIN dna_song_jobs d ON d.id=c.id WHERE c.endpoint=$1 AND d.state IN ('queued','running') LIMIT 1",[this.config.endpoint])).rowCount)
     throw new AudioError(SONG_CAPACITY_MESSAGE,503);
    if(this.config.review){
@@ -139,7 +146,7 @@ export class CloudSongs{
     Object.assign(payload,improviseDirection((input as {genre:string}).genre,recent),{variation_index:Number(recent[0]?.variation_index??0)+1});
    }
    await db.query(`INSERT INTO cloud_song_runs(id,endpoint,payload,source_id,output_key,rate_micros,fixed_cost_micros,deadline)
-    VALUES($1,$2,$3,$4,$5,$7,$8,now()+($6*interval '1 second'))`,[id,this.config.endpoint,JSON.stringify(payload),source?.id??null,`uploads/${randomUUID()}.wav`,this.config.ttlSeconds,this.config.rate,this.config.fixedCostMicros]);
+    VALUES($1,$2,$3,$4,$5,$7,$8,to_timestamp($6/1000.0))`,[id,this.config.endpoint,JSON.stringify(payload),source?.id??null,`uploads/${randomUUID()}.wav`,deadline,this.config.rate,this.config.fixedCostMicros]);
   });
   return {id,state:'queued'};
  }
@@ -151,8 +158,8 @@ export class CloudSongs{
  }
  async status(owner:string,id:string){
   const row=await this.commerce.row(id);if(!row||row.owner_id!==owner)throw new AudioError('Song not found.',404);
-  const run=(await this.commerce.pool.query('SELECT phase,cancel_requested FROM cloud_song_runs WHERE id=$1',[id])).rows[0];
-  return {id,state:row.state,credits:['failed','cancelled'].includes(row.state)?'released':row.state==='completed'?'settled':'reserved',phase:run?.phase,cancelling:!!run?.cancel_requested&&!terminal(row.state)};
+  const run=(await this.commerce.pool.query('SELECT phase,cancel_requested,submitted_at FROM cloud_song_runs WHERE id=$1',[id])).rows[0];
+  return {id,state:row.state,credits:['failed','cancelled'].includes(row.state)?'released':row.state==='completed'?'settled':'reserved',phase:run&&!run.submitted_at&&!terminal(row.state)?'starting':run?.phase,cancelling:!!run?.cancel_requested&&!terminal(row.state)};
  }
  async tick(id:string){
   const {pool,store}=this.commerce,token=randomUUID();
@@ -178,7 +185,11 @@ export class CloudSongs{
     }
     if(stop){await this.commerce.finish(id,run.cancel_requested?'cancelled':'failed');await this.cleanup(run);return;}
     // Disabled endpoints reject submissions; keep the durable queue without an ambiguous paid intent.
-    if(this.capacity){if(!await this.capacity.ready((this.config.ttlSeconds+120)*1000))return;}
+    if(this.capacity){
+     // The GPU stopped before it was ready (usually no free card): release the credits now.
+     if(['off','unavailable'].includes(await this.capacity.state())){await this.commerce.finish(id,'failed');await this.notify(row,'failed');await this.cleanup(run);return;}
+     if(!await this.capacity.ready((this.config.ttlSeconds+120)*1000))return;
+    }
     else if(!await this.provider.dispatchEnabled())return;
     const job:RunpodJob={id,product:this.commerce.product,timeout_seconds:this.config.executionSeconds,ttl_seconds:this.config.ttlSeconds,
      output_url:await store!.uploadURL(run.output_key,savedSongDuration(this.commerce.product,run.payload)*192000+44,this.config.ttlSeconds+300),payload:run.payload};
@@ -225,6 +236,7 @@ export class CloudSongs{
    }
    const savedPlan=this.commerce.product==='music-dna'?{...plan,styleMatch}:{title:'Your new song',language:{code:'auto',label:'Automatic'},cases:[{lyrics:output.lyrics??'',duration:seconds}],arrangement:output.arrangement};
    await this.commerce.finish(id,'completed',{title:String(savedPlan.title).slice(0,120),language:savedPlan.language?.code??'en',direction:this.commerce.product==='music-dna'?musicDirection(row.profile)!.label:styles[run.payload.genre as keyof typeof styles]??String(row.profile.genre),audio,plan:savedPlan},estimate);
+   await this.notify(row,'completed');
    await this.cleanup(run);
   }catch(error){
    // Invalid output is terminal, but network/storage failures retain the receipt for safe retry.
@@ -235,6 +247,14 @@ export class CloudSongs{
    else if(error instanceof AudioError&&error.status===422){await this.commerce.finish(id,'failed');await this.cleanup(run);}
    else throw error;
   }finally{await pool.query('UPDATE cloud_song_runs SET lease_until=NULL,lease_token=NULL WHERE id=$1 AND lease_token=$2',[id,token]);}
+ }
+ // Customers may close the page while the GPU starts; email the outcome once per song.
+ private async notify(row:{id:string;owner_id:string},outcome:'completed'|'failed'){
+  const user=(await this.commerce.pool.query('SELECT email FROM "user" WHERE id=$1 AND "emailVerified"',[row.owner_id])).rows[0];if(!user)return;
+  const base=process.env.BETTER_AUTH_URL??'https://www.jamloom.com',page=this.commerce.product==='improvise'?'/improvise':'/music-dna';
+  await enqueueEmail(this.commerce.pool,`song-${outcome}:${row.id}`,outcome==='completed'
+   ?{to:user.email,subject:'Your Jamloom song is ready',text:'Your new song has finished. Open Jamloom to listen, download or share it.',action:{label:'Listen to your song',url:base+page}}
+   :{to:user.email,subject:'We couldn’t start your Jamloom song',text:'No music studio GPU was free in time, so your song didn’t start. Your credits have been returned. Please try again in a little while.',action:{label:'Try again',url:base+page}});
  }
  private async cleanup(run:any){
   await this.commerce.store!.remove(run.output_key);

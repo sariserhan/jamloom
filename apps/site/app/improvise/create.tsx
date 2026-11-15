@@ -1,6 +1,6 @@
 'use client';
+import {announceSong} from '../generation-dock';
 import {songCreditPrice} from '../../lib/credit-catalog';
-import {CapacityPreparation} from '../capacity-preparation';
 import {generationAccount,GenerationAccountNotice,type GenerationAccount} from '../generation-account';
 import {saveImproviseDraft,takeImproviseDraft,type ImproviseDraft} from '../../lib/improvise-draft';
 import {SongFeedback} from '../music-dna/song-feedback';
@@ -13,7 +13,7 @@ type Quote={token:string;credits:number;expiresAt:number};
 export function ImproviseCreate(){
  const [file,setFile]=useState<Blob|null>(null),[name,setName]=useState(''),[preview,setPreview]=useState(''),[genre,setGenre]=useState('surprise'),[voice,setVoice]=useState('surprise');
  const [visibility,setVisibility]=useState<'public'|'private'>('private'),[open,setOpen]=useState(false);
- const [canCreate,setCanCreate]=useState<boolean|null>(null);
+ const [canCreate,setCanCreate]=useState<boolean|null>(null),[canPrepare,setCanPrepare]=useState(false);
  const [account,setAccount]=useState<GenerationAccount>({state:'loading'});
  const draft=useRef<Promise<ImproviseDraft|null>|null>(null);
  const sharing=visibility==='public';
@@ -34,7 +34,7 @@ export function ImproviseCreate(){
   refreshAvailability();
  },[]);
  function refreshAvailability(){
-  setCanCreate(null);void fetch(endpoint,{signal:AbortSignal.timeout(10000)}).then(r=>r.ok?r.json():null).then(data=>{if(alive.current){setCanCreate(data?.creditsEnabled===true&&data?.available===true);if(data?.active)setJob(data.active);}}).catch(()=>{if(alive.current)setCanCreate(false);});
+  setCanCreate(null);void fetch(endpoint,{signal:AbortSignal.timeout(10000)}).then(r=>r.ok?r.json():null).then(data=>{if(alive.current){setCanCreate(data?.creditsEnabled===true&&data?.available===true);setCanPrepare(data?.creditsEnabled===true&&data?.canPrepare===true);if(data?.active)setJob(data.active);}}).catch(()=>{if(alive.current)setCanCreate(false);});
  }
  useEffect(()=>{
   if(!job)return;let stopped=false,timer:ReturnType<typeof setTimeout>;const checkingUntil=Date.now()+60000;
@@ -73,7 +73,8 @@ export function ImproviseCreate(){
    if(!availability.ok||!status.creditsEnabled)throw Error('Song creation is not open here yet. Your recording stays on your device.');
    if(status.balance&&status.balance.available<(quote?.credits??songCreditPrice('improvise',visibility).credits))throw Error('You need more credits before sending your recording.');
    if(status.active){setJob(status.active);setOpen(false);return;}
-   if(status.available!==true){setCanCreate(false);throw Error('Song creation is temporarily unavailable. Please try again shortly. Your credits have not been used.');}
+   // One click: when the music studio is off, the submit starts it and the song waits in line.
+   if(status.available!==true&&status.canPrepare!==true){setCanCreate(false);throw Error('Song creation is temporarily unavailable. Please try again shortly. Your credits have not been used.');}
    if(!sourceId.current){
     const source=await songRecording(file);upload.current.signal.throwIfAborted();
     // The final Generate action confirms sending this recording for processing.
@@ -82,11 +83,11 @@ export function ImproviseCreate(){
    }
    const profile={sourceId:sourceId.current,genre,voice,phrase:'',consent:true};
    let price=quote&&quote.expiresAt>Date.now()?quote:null;
-   if(!price){price=await post({action:'quote',profile,visibility,publicConsent:sharing});setQuote(price);if(price!.credits>(10)){setMessage(`This song needs ${price!.credits} credits. Review the price and confirm to continue.`);setProgress(null);return;}}
+   if(!price){price=await post({action:'quote',profile,visibility,publicConsent:sharing});setQuote(price);if(price!.credits>songCreditPrice('improvise',visibility).credits){setMessage(`This song needs ${price!.credits} credits. Review the price and confirm to continue.`);setProgress(null);return;}}
    requestId.current??=crypto.randomUUID().replaceAll('-','');
    submitting.current=true;try{localStorage.setItem(historyKey,requestId.current);}catch{}
    const result=await post({action:'submit',requestId:requestId.current,token:price!.token,profile,visibility,publicConsent:sharing},true);
-   setJob(result.id);setProgress({state:result.state});setOpen(false);
+   setJob(result.id);setProgress({state:result.state});setOpen(false);announceSong(result.id,'improvise');
   }catch(error){if(submitting.current&&requestId.current){if(alive.current){setJob(requestId.current);setOpen(false);setProgress({state:'reconnecting'});}return;}if(alive.current&&!upload.current?.signal.aborted){setProgress({state:'failed'});setMessage(error instanceof Error?error.message:'Unable to start your song.');}}
   finally{submitting.current=false;setBusy(false);upload.current=null;}
  }
@@ -128,8 +129,8 @@ export function ImproviseCreate(){
   </div>
   <dialog ref={dialog} aria-labelledby="improvise-confirm-title" className="dna-generation-dialog improvise-confirm" onCancel={e=>{e.preventDefault();void cancel();}}><h2 id="improvise-confirm-title">Make your song</h2><fieldset disabled={busy}><legend>Who can listen?</legend><label><input type="radio" checked={visibility==='public'} onChange={()=>{setVisibility('public');}}/>Public · {songCreditPrice('improvise','public').credits} credits</label><label><input type="radio" checked={visibility==='private'} onChange={()=>{setVisibility('private');}}/>Private · {songCreditPrice('improvise','private').credits} credits</label>{visibility==='public'&&<p>Your finished song, including parts of your clip used in it, appears in Community on the website and app. Choose Private to keep it to yourself.</p>}</fieldset>
   <p>Generate sends your recording to create your song. Your source recording is removed after processing. Failed or cancelled songs return reserved credits. A higher price needs your confirmation.</p><GenerationAccountNotice account={account} credits={quote?.credits??songCreditPrice('improvise',visibility).credits} returnTo="/improvise" onSignIn={()=>void signIn()} onRefresh={()=>void checkAccount()}/>
-  {account.state==='ready'&&canCreate!==true&&<CapacityPreparation endpoint={endpoint} onAvailable={refreshAvailability} disabled={locked||account.available<(quote?.credits??songCreditPrice('improvise',visibility).credits)} inputs="Your recording stays on your device"/>}
-  <div className="product-actions"><button className="primary" disabled={busy||account.state!=='ready'||account.available<(quote?.credits??songCreditPrice('improvise',visibility).credits)||canCreate!==true} onClick={generate}>{busy?'Preparing your song…':`Generate song · ${quote?.credits??songCreditPrice('improvise',visibility).credits} credits`}</button><button className="secondary" onClick={cancel}>Cancel</button></div>{open&&progress&&<GenerationProgress {...progress}/>}<p role="status">{message}</p></dialog>
+  {account.state==='ready'&&canCreate!==true&&(canPrepare?<p>If the music studio is off, pressing Generate starts it. That usually takes 5–10 minutes, then your song begins automatically. You can close this page; we’ll email you when your song is ready.</p>:canCreate===false&&<p role="status">Song creation is unavailable right now. Your recording stays on your device and no credits have been used. Please try again later.</p>)}
+  <div className="product-actions"><button className="primary" disabled={busy||account.state!=='ready'||account.available<(quote?.credits??songCreditPrice('improvise',visibility).credits)||(canCreate!==true&&!canPrepare)} onClick={generate}>{busy?'Preparing your song…':`Generate song · ${quote?.credits??songCreditPrice('improvise',visibility).credits} credits`}</button><button className="secondary" onClick={cancel}>Cancel</button></div>{open&&progress&&<GenerationProgress {...progress}/>}<p role="status">{message}</p></dialog>
   {ready&&<article><h3>Your new song</h3><audio controls preload="none" src={endpoint+'?id='+ready+'&file=audio'} aria-label="Play your new song"/><a href={endpoint+'?id='+ready+'&file=audio&download=1'} download>Download song</a><SongFeedback id={ready} product="improvise" account/></article>}
  </section>;
 }

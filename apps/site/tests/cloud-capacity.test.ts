@@ -14,6 +14,7 @@ import {CloudSongs} from '../lib/cloud-songs';
 import {cloudSongAPI} from '../lib/cloud-song-api';
 import {DnaCommerce} from '../lib/dna-commerce';
 import {localAudioStore} from '../lib/audio-store';
+import {emptyTaste} from '../lib/taste';
 
 const permit=(now=Date.now()):CapacityPermit=>({id:'permit-'+randomUUID(),startsAt:now-1000,expiresAt:now+86400000,capMicros:2000000,cycleMicros:1000000,cycleSeconds:2400});
 const config=(p:CapacityPermit)=>({JAMLOOM_CLOUD_SONGS_ENABLED:'true',RUNPOD_API_KEY:'fixture',RUNPOD_ENDPOINT_ID:'fixture',JAMLOOM_CLOUD_COST_PROFILE:CLOUD_COST_PROFILE,JAMLOOM_CLOUD_CAPACITY_PERMIT:JSON.stringify(p)});
@@ -172,6 +173,28 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    const c=fresh();assert.equal(await start(c,'grace'),'preparing');await wake(c);
    now+=120001;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'ready','Two minutes after a cold start is too short to stop');
    now+=180000;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'off');
+  });
+  await t.test('one click: Generate starts the GPU, queues the song, dispatches when ready; a failed start refunds and emails',async()=>{
+   for(const u of ['oneclick1','oneclick2'])await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[u,u+'@example.test']);
+   const taste={...emptyTaste,references:['Heavy song'],referenceMetadata:[{reference:'Heavy song',genre:'Metal',source:'itunes' as const}],vocalLanguage:'en'};
+   const run=async(owner:string)=>{
+    const c=fresh(),settings=cloudSongConfig(config(c.permit),'music-dna')!,commerce=new DnaCommerce(pool,'fixture-secret-'.repeat(4),localAudioStore(directory),{product:'music-dna',budget:settings.budget});
+    let dispatched=0;const songs=new CloudSongs(commerce,settings,{dispatchEnabled:async()=>true,health:async()=>h,submit:async()=>{dispatched++;return {id:'provider-'+owner,status:'IN_QUEUE'} as never;},status:async()=>({status:'CANCELLED'}) as never,cancel:async()=>({}) as never},c);
+    await commerce.wallet.grant(owner,{provider:'stripe_test',receipt:'oneclick-'+owner,credits:60,netMicros:30000000});
+    const balance=await commerce.wallet.balance(owner),input=await songs.input(owner,taste),quote=await commerce.quote(owner,input,'private'),key=randomUUID().replaceAll('-','');
+    await c.guardianHeartbeat();const before=starts;
+    assert.deepEqual(await songs.submit(owner,key,input,'private',quote.token),{id:key,state:'queued'});
+    assert.equal(starts,before+1,'Generate started the GPU');assert.equal((await commerce.wallet.balance(owner)).reserved,quote.credits);
+    await songs.tick(key);assert.equal(dispatched,0,'Nothing is sent before the GPU is ready');
+    assert.equal((await songs.status(owner,key)).phase,'starting');
+    return {c,songs,commerce,key,balance,dispatched:()=>dispatched};
+   };
+   const ok=await run('oneclick1');await wake(ok.c);await ok.songs.tick(ok.key);assert.equal(ok.dispatched(),1,'Sent automatically once ready');
+   await ok.songs.cancel('oneclick1',ok.key);assert.deepEqual(await ok.commerce.wallet.balance('oneclick1'),ok.balance);await cool(ok.c);
+   const slow=await run('oneclick2');now+=1200001;await slow.c.guardianHeartbeat();assert.equal((await slow.c.reconcile()).state,'off');
+   await slow.songs.tick(slow.key);assert.equal(slow.dispatched(),0);assert.equal((await slow.commerce.row(slow.key))!.state,'failed');
+   assert.deepEqual(await slow.commerce.wallet.balance('oneclick2'),slow.balance,'No GPU: credits returned');
+   assert.equal((await pool.query('SELECT count(*)::int n FROM notification_outbox WHERE event_key=$1',['song-failed:'+slow.key])).rows[0].n,1);
   });
  }finally{await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();await rm(directory,{recursive:true,force:true});}
 });

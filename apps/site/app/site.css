@@ -79,3 +79,16 @@
 .admin-stats p[data-tone=busy] strong::before{content:"";display:inline-block;width:.6em;height:.6em;margin-right:.45em;border-radius:50%;background:#c3ef69;vertical-align:middle;animation:admin-pulse 1.4s ease-in-out infinite}
 @keyframes admin-pulse{50%{opacity:.25}}@media(prefers-reduced-motion:reduce){.admin-stats p[data-tone=busy] strong::before{animation:none}}
 .pricing-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}.pricing-card{border:1px solid #3a4a3c;border-radius:16px;padding:1.4rem;background:#151d18}.pricing-card.best{border-color:#c3ef69;box-shadow:0 0 0 1px #c3ef69}.pricing-card h2{margin:0 0 .5rem;font-size:1.2rem}.pricing-price strong{font-size:2rem}.pricing-credits{color:#c3ef69;font-weight:700}.pricing-card ul{padding-left:1.1rem;margin:.5rem 0 0}
+
+.generation-dock{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:60;width:min(720px,calc(100% - 24px));padding:.8rem 1rem;border:1px solid #466146;border-radius:14px;background:#14241d;color:#f4f8ee;box-shadow:0 10px 30px #000a}
+.generation-dock .dock-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}.generation-dock .dock-row strong{margin-right:auto}.generation-dock .dock-hint{font-size:.85rem;color:#c4d0c5}
+.generation-dock a{color:#c3ef69}.generation-dock audio{width:100%;margin:.6rem 0}
+.dock-dot{width:.65rem;height:.65rem;border-radius:50%;background:#c3ef69;animation:admin-pulse 1.4s ease-in-out infinite}
+.dock-bar{position:relative;height:6px;margin-top:.6rem;border-radius:3px;background:#2b3d30;overflow:hidden}.dock-bar span{position:absolute;inset:0 auto 0 0;background:#c3ef69;transition:width .8s ease}
+.dock-bar:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#ffffff40,transparent);animation:dock-sweep 1.6s linear infinite}
+@keyframes dock-sweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.dock-close{background:none!important;border:0!important;color:#f4f8ee!important;font-size:1.4rem;line-height:1;padding:0 .3rem!important;cursor:pointer}
+body:has(.generation-dock){padding-bottom:9rem}
+@media(prefers-reduced-motion:reduce){.dock-dot,.dock-bar:after{animation:none}}
+.site-shell:has(.music-player:not([hidden])) .generation-dock{bottom:150px}
+.site-shell:has(.music-player:not([hidden])):has(.generation-dock){padding-bottom:300px}

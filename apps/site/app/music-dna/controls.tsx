@@ -1,6 +1,6 @@
 'use client';
+import {announceSong} from '../generation-dock';
 import {songCreditPrice} from '../../lib/credit-catalog';
-import {CapacityPreparation} from '../capacity-preparation';
 import {generationAccount,GenerationAccountNotice,type GenerationAccount} from '../generation-account';
 import {LanguageFilter,LanguageCollection} from '../language-filter';
 import {languageMatches} from '../../lib/song-language';
@@ -29,7 +29,7 @@ export function TasteNotebook(){
  const [playlistQuery,setPlaylistQuery]=useState<{text:string}|null>(null);
  const [progress,setProgress]=useState<SongProgress|null>(null);
  const [cloud,setCloud]=useState(false);
- const [canCreate,setCanCreate]=useState<boolean|null>(null);
+ const [canCreate,setCanCreate]=useState<boolean|null>(null),[canPrepare,setCanPrepare]=useState(false);
  const [account,setAccount]=useState<GenerationAccount>({state:'loading'});
  const [visibility,setVisibility]=useState<'public'|'private'>('private');
  const [quote,setQuote]=useState<{credits:number;token:string;expiresAt:number;key:string}|null>(null);
@@ -52,7 +52,7 @@ export function TasteNotebook(){
  useEffect(()=>{try{const old=localStorage.getItem('jamloom-taste-v1');if(old)setProfile(favoriteList(validateTaste(JSON.parse(old))));writable.current=true;}catch{setMessage('Saved favorites could not be read. You can start a new list.');}finally{setLoaded(true);}},[]);
  useEffect(()=>{if(!loaded||!writable.current)return;try{if(profile.references.length)localStorage.setItem('jamloom-taste-v1',JSON.stringify(profile));else localStorage.removeItem('jamloom-taste-v1');}catch{setMessage('Your list is available for this session, but this browser could not save it.');}},[profile,loaded]);
  useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;analysis.current?.abort();};},[]);
- function refreshAvailability(){setCanCreate(null);void fetch('/api/taste/song',{signal:AbortSignal.timeout(10000)}).then(r=>r.ok?r.json():null).then(data=>{if(mounted.current){setCanCreate(data?.creditsEnabled===true&&data?.available===true);if(data?.mode==='cloud'){setCloud(true);if(data.active){setJob(data.active);setRendering(true);}}}}).catch(()=>{if(mounted.current)setCanCreate(false);});}
+ function refreshAvailability(){setCanCreate(null);void fetch('/api/taste/song',{signal:AbortSignal.timeout(10000)}).then(r=>r.ok?r.json():null).then(data=>{if(mounted.current){setCanCreate(data?.creditsEnabled===true&&data?.available===true);setCanPrepare(data?.creditsEnabled===true&&data?.canPrepare===true);if(data?.mode==='cloud'){setCloud(true);if(data.active){setJob(data.active);setRendering(true);}}}}).catch(()=>{if(mounted.current)setCanCreate(false);});}
  useEffect(()=>{refreshAvailability();},[]);
  useEffect(()=>{
   let stopped=false;
@@ -137,7 +137,8 @@ export function TasteNotebook(){
    if(readiness.signedIn===false){setAccount({state:'signed-out'});throw Error('Sign in with a verified account to use your credits.');}
    if(readiness.creditsEnabled===false)throw Error('Song creation is not open yet. Your favorites are saved.');
    if(readiness.active||readiness.busy)throw Error('Your other song is still being made. Your favorites are saved; try again when it finishes.');
-   if(readiness.available!==true){setCanCreate(false);throw Error('Song creation is temporarily unavailable. Please try again shortly. Your credits have not been used.');}
+   // One click: when the music studio is off, the submit below starts it and the song waits in line.
+   if(readiness.available!==true&&readiness.canPrepare!==true){setCanCreate(false);throw Error('Song creation is temporarily unavailable. Please try again shortly. Your credits have not been used.');}
    const resolved=quote?.key===selectionKey&&quote.expiresAt>Date.now()?profile:await resolveFavoriteMetadata(profile,controller.signal);controller.signal.throwIfAborted();setProfile(resolved);
    const key=favoriteKey({...resolved,referenceMetadata:resolved.referenceMetadata??[]})+':'+visibility;
    let accepted=quote?.key===key&&quote.expiresAt>Date.now()?quote:null;
@@ -145,7 +146,7 @@ export function TasteNotebook(){
     const priced=await fetch('/api/taste/song',{method:'POST',headers:{'Content-Type':'application/json','X-Jamloom-DNA':'1'},body:JSON.stringify({action:'quote',profile:resolved,visibility,publicConsent}),signal:controller.signal});
     const price=await priced.json();if(!priced.ok)throw Error(price.error);
     accepted={...price,key};setQuote(accepted);
-    if(price.credits>(20)){setRendering(false);setProgress(null);setMessage(`This song needs ${price.credits} credits to cover its generation cost. Review the new price, then confirm the new price to accept it.`);return;}
+    if(price.credits>songCreditPrice('music-dna',visibility).credits){setRendering(false);setProgress(null);setMessage(`This song needs ${price.credits} credits to cover its generation cost. Review the new price, then confirm the new price to accept it.`);return;}
    }
    controller.signal.throwIfAborted();
    requestId.current??=crypto.randomUUID().replaceAll('-','');
@@ -155,7 +156,7 @@ export function TasteNotebook(){
    const result=await response.json();if(!response.ok){if(response.status<500){cloudRequest=null;setJob(null);try{localStorage.removeItem(pendingKey);}catch{}}throw Error(result.error);}
    if(!mounted.current){if(cloudRequest)try{localStorage.setItem('jamloom-dna-songs-v1',JSON.stringify([result.id]));}catch{}return;}
    if(controller.signal.aborted){await fetch(songUrl(result.id),{method:'DELETE',headers:{'X-Jamloom-DNA':'1'}});return;}
-   setPromptOpen(false);setJob(result.id);setProgress({state:result.state??'running',phase:result.phase??'preparing'});setMessage('');
+   setPromptOpen(false);setJob(result.id);announceSong(result.id,'music-dna');setProgress({state:result.state??'running',phase:result.phase??'preparing'});setMessage('');
   }catch(error){if(cloudRequest&&mounted.current&&!controller.signal.aborted){setPromptOpen(false);setJob(cloudRequest);setProgress({state:'reconnecting'});return;}if(!controller.signal.aborted&&mounted.current){setRendering(false);setProgress({state:'failed'});setMessage(error instanceof Error?error.message:'Unable to make this song.');}}
   finally{submittingCloud.current=null;if(analysis.current===controller)analysis.current=null;}
  }
@@ -215,10 +216,10 @@ export function TasteNotebook(){
  <label><input type="radio" name="dna-visibility" checked={visibility==='public'} onChange={()=>{setVisibility('public');setQuote(null);requestId.current=null;}}/>Public · {songCreditPrice('music-dna','public').credits} credits</label><p>Your finished song appears in Community on the website and app. Your favorites and account stay private.</p>
  <label><input type="radio" name="dna-visibility" checked={visibility==='private'} onChange={()=>{setVisibility('private');setQuote(null);requestId.current=null;}}/>Private · {songCreditPrice('music-dna','private').credits} credits</label><p>Only you can listen or download.</p>
  </fieldset>
- <p>{quote&&quote.key===favoriteKey(snapshot)+':'+visibility?`This song: ${quote.credits} ${quote.credits===1?'credit':'credits'}.`:'20 credits per song.'} The quoted price is fixed before you start. Failed or cancelled songs return your credits.</p>
+ <p>{quote&&quote.key===favoriteKey(snapshot)+':'+visibility?`This song: ${quote.credits} ${quote.credits===1?'credit':'credits'}.`:`${songCreditPrice('music-dna',visibility).credits} credits per song.`} The quoted price is fixed before you start. Failed or cancelled songs return your credits.</p>
  <GenerationAccountNotice account={account} credits={generationPrice} returnTo="/music-dna" onRefresh={()=>void checkAccount()}/>
- {account.state==='ready'&&canCreate!==true&&<CapacityPreparation endpoint="/api/taste/song" onAvailable={refreshAvailability} disabled={locked||account.available<generationPrice} inputs="Your favorites are saved"/>}
- <div className="product-actions"><button className="primary" disabled={locked||account.state!=='ready'||account.available<generationPrice||canCreate!==true} onClick={generate}>{rendering?'Preparing your song…':`Generate song · ${generationPrice} ${generationPrice===1?'credit':'credits'}`}</button><button className="secondary" onClick={dismissPrompt}>{rendering?'Cancel composition':'Cancel'}</button></div>
+ {account.state==='ready'&&canCreate!==true&&(canPrepare?<p>If the music studio is off, pressing Generate starts it. That usually takes 5–10 minutes, then your song begins automatically. You can close this page; we’ll email you when your song is ready.</p>:canCreate===false&&<p role="status">Song creation is unavailable right now. Your favorites are saved and no credits have been used. Please try again later.</p>)}
+ <div className="product-actions"><button className="primary" disabled={locked||account.state!=='ready'||account.available<generationPrice||(canCreate!==true&&!canPrepare)} onClick={generate}>{rendering?'Preparing your song…':`Generate song · ${generationPrice} ${generationPrice===1?'credit':'credits'}`}</button><button className="secondary" onClick={dismissPrompt}>{rendering?'Cancel composition':'Cancel'}</button></div>
  {progress&&promptOpen&&<GenerationProgress {...progress}/>}
  {promptOpen&&<p role="status">{message}</p>}
  </div></dialog>

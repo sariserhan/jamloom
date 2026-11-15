@@ -95,12 +95,16 @@ export class CloudCapacity{
  }
  // Called while the generation transaction holds the endpoint lock, preventing
  // an idle shutdown from racing the durable song admission.
- async assertAdmission(db:PoolClient,remainingMs:number){
+ // One-click songs: accept a song while this cycle is starting or ready and return the cycle
+ // expiry as its deadline. tick() dispatches only once ready() passes; a cycle that stops
+ // before readiness fails the song and releases its credits.
+ async assertQueueable(db:PoolClient,remainingMs:number){
   await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))",['jamloom-capacity:'+this.endpoint]);
   this.permitOpen();const r=await this.current(db);
-  if(!r||r.permit_id!==this.permit.id||r.state!=='ready'||!await this.guarded(db))throw new AudioError('Song preparation is not ready. Your credits have not been used.',503);
+  if(!r||r.permit_id!==this.permit.id||!['starting','ready'].includes(r.state)||!await this.guarded(db))throw new AudioError('Song preparation is not ready. Your credits have not been used.',503);
   try{assertActiveWorkerLease(lease(r),this.clock(),remainingMs);}catch{throw new AudioError('Song preparation has expired. Your credits have not been used.',503);}
-  await db.query('UPDATE cloud_capacity_cycles SET busy_at=$2 WHERE id=$1',[r.id,this.clock()]);
+  if(r.state==='ready')await db.query('UPDATE cloud_capacity_cycles SET busy_at=$2 WHERE id=$1',[r.id,this.clock()]);
+  return Number(r.expires_at);
  }
  async prepare(owner:string,review?:{enabled:boolean;expiresAt:number;owners:readonly string[]}):Promise<CapacityState>{
   this.permitOpen();let created:Cycle|undefined;

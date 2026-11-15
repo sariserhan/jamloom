@@ -10,6 +10,7 @@ import '../../web/style.css';
 import './site.css';
 import './product.css';
 import '../../web/generation-progress.css';
+import {GenerationDock} from './generation-dock';
 
 export const metadata: Metadata = {
   title: { default: 'Jamloom', template: '%s · Jamloom' },
@@ -29,7 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     </div></header>
     <SiteBanner/><main id="content" className="account-main"><ProductHelp/>{children}</main>
     <footer className="site-footer"><span>Make something yours. <a href="https://aurowall.com" target="_blank" rel="noopener noreferrer">In partnership with Aurowall ↗</a></span><nav aria-label="Footer"><Link prefetch={false} href="/about">About</Link><Link prefetch={false} href="/pricing">Pricing</Link><Link prefetch={false} href="/pro">Pro</Link><Link prefetch={false} href="/ai-dj">AI DJ</Link><Link prefetch={false} href="/studio/index.html">Local Remixes</Link><Link prefetch={false} href="/live-dj">Live DJ</Link><Link prefetch={false} href="/community">Community</Link><Link prefetch={false} href="/tour">Product tour</Link><Link prefetch={false} href="/library">Cloud library</Link><Link prefetch={false} href="/playlists">Playlists</Link><Link prefetch={false} href="/learn">Guides</Link><Link prefetch={false} href="/help">Help</Link><Link prefetch={false} href="/contact">Contact</Link><Link prefetch={false} href="/support">Support</Link><Link prefetch={false} href="/report-bug">Report a bug</Link><Link prefetch={false} href="/privacy">Privacy</Link><Link prefetch={false} href="/terms">Terms</Link><Link prefetch={false} href="/licenses">Licenses</Link><Link prefetch={false} href="/status">Status</Link></nav></footer>
-  </MusicPlayer>
+  <GenerationDock/></MusicPlayer>
     <VisitorPing/>
   </body></html>;
 }

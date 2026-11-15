@@ -1,5 +1,6 @@
 const stages = {
   preparing: ['Getting your song ready', 'We’re preparing your request.', 0],
+  starting: ['Starting the music studio', 'A GPU is being prepared for your song. This usually takes 5–10 minutes, then your song starts automatically. You can close this page — we’ll email you when it’s ready.', 0],
   queued: ['You’re in the queue', 'Your request is waiting to be processed. We’ll start your song as soon as it’s your turn.', 0],
   writing: ['Finding your sound', 'We’re shaping the words and musical direction for your song.', 1],
   composing: ['Creating your music', 'We’re bringing your song to life. This can take a few minutes.', 1],
@@ -17,12 +18,12 @@ const stages = {
 /** Public-facing copy is allowlisted: never display raw provider diagnostics. */
 export function generationProgress(state, phase, credits) {
   const terminal = ['completed', 'failed', 'rejected', 'cancelled'].includes(state);
-  const key = terminal ? state : (state === 'queued' ? 'queued' : state === 'cancelling' ? 'cancelling' : state === 'reconnecting' ? 'reconnecting' :
-    ['preparing', 'writing', 'composing', 'retrying', 'checking', 'saving'].includes(phase) ? phase : 'composing');
+  const key = terminal ? state : phase === 'starting' && ['queued', 'running'].includes(state) ? 'starting' : (state === 'queued' ? 'queued' : state === 'cancelling' ? 'cancelling' : state === 'reconnecting' ? 'reconnecting' :
+    ['starting', 'preparing', 'writing', 'composing', 'retrying', 'checking', 'saving'].includes(phase) ? phase : 'composing');
   const [title, originalDetail, step] = stages[key];
   const detail=originalDetail+(credits==='released'&&['failed','cancelled'].includes(state)?' Credit reservation released. Check Your credits for the available balance; then retry when ready.':key==='reconnecting'?' Keep this request open rather than starting another paid request.':'');
   const active = !terminal;
-  return {key, title, detail, step, active, steps: [key === 'queued' ? 'Waiting' : 'Preparing', 'Creating', 'Finishing', 'Ready']};
+  return {key, title, detail, step, active, steps: [key === 'queued' ? 'Waiting' : key === 'starting' ? 'Starting studio' : 'Preparing', 'Creating', 'Finishing', 'Ready']};
 }
 
 export function showGenerationProgress(root, state, phase, credits) {

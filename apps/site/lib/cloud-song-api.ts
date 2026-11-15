@@ -38,7 +38,7 @@ export async function cloudSongAPI(request:Request,songs:CloudSongs,owner:string
   if(body.action==='prepare')return json(await songs.prepareCapacity(owner),202);
   if(body.action==='upload'&&songs.commerce.product==='improvise')return json(await songs.upload(owner,body));
   const input=await songs.input(owner,body.profile),visibility=visibilityInput(body.visibility,body.publicConsent);
-  if(body.action==='quote'){await songs.assertCapacityReady();return json(await songs.commerce.quote(owner,input,visibility));}
+  if(body.action==='quote'){if(!songs.capacity)await songs.assertCapacityReady();return json(await songs.commerce.quote(owner,input,visibility));}
   if(body.action!=='submit')throw new AudioError('Review the price before making your song.');
   const result=await songs.submit(owner,body.requestId,input,visibility,body.token,songs.commerce.product==='music-dna'&&(!(input as {vocalLanguage?:string}).vocalLanguage||(input as {vocalLanguage?:string}).vocalLanguage==='auto')?await songCountry(request):null);schedule(result.id);return json(result,202);
  }catch(error){
