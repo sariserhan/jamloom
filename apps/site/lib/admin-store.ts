@@ -7,6 +7,9 @@ import {enqueueEmail} from './notifications';
 import {settingsInput,invalidateSiteSettings} from './site-settings';
 import {GenerationQueue} from './generation-queue';
 import {billingReadiness} from './billing-mode';
+import {randomUUID} from 'node:crypto';
+import {accountCreditLive} from './apple-review';
+import {NET_MICROS_PER_CREDIT_FLOOR} from './credit-catalog';
 
 function field(v:unknown,max:number){if(typeof v!=='string'||!v.trim()||v.length>max||/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(v))throw new AudioError('Check the message fields and length.');return v.trim();}
 export function ticketInput(v:Record<string,unknown>){
@@ -51,6 +54,23 @@ export class AdminStore{
    const queue=new GenerationQueue(this.pool,'');
    for(const job of (await this.pool.query("SELECT reservation_id FROM generation_jobs WHERE owner_id=$1 AND state='queued'",[id])).rows)await queue.cancel(id,job.reservation_id);
   }return result;
+ }
+ // Owner decision 2026-11-14: admins may gift any number of credits (repeat for more than one lot's 100,000 cap).
+ // Gifts are promo lots: they never fund GPU spending, which stays bounded by the permit and paid revenue.
+ async credits(actor:string,id:string,credits:number,env:Record<string,string|undefined>=process.env){
+  if(!Number.isSafeInteger(credits)||credits<1||credits>100000||!id||id.length>128)throw new AudioError('Enter a whole number of credits from 1 to 100,000.');
+  const live=accountCreditLive(id,env);
+  return this.change(actor,'user.credits',id,async db=>{
+   const user=(await db.query('SELECT email FROM "user" WHERE id=$1 FOR SHARE',[id])).rows[0];
+   if(!user)throw new AudioError('User not found.',404);
+   await db.query('INSERT INTO credit_wallets(owner_id) VALUES($1) ON CONFLICT DO NOTHING',[id]);
+   await db.query('SELECT 1 FROM credit_wallets WHERE owner_id=$1 FOR UPDATE',[id]);
+   const receipt='admin-gift:'+randomUUID();
+   const lot=(await db.query(`INSERT INTO credit_lots(owner_id,provider,receipt,credits,net_micros,grant_kind,unit_version)
+    VALUES($1,$2,$3,$4,$5,'topup',2) RETURNING id`,[id,live?'promo_live':'promo_test',receipt,credits,credits*NET_MICROS_PER_CREDIT_FLOOR])).rows[0];
+   await db.query("INSERT INTO wallet_ledger_entries(owner_id,lot_id,kind,available_delta,reserved_delta) VALUES($1,$2,'grant',$3,0)",[id,lot.id,credits]);
+   return {credits,live,receipt};
+  });
  }
  async contact(value:Record<string,unknown>,ip:string,owner?:string){
   const v=ticketInput(value),db=await this.pool.connect();try{await db.query('BEGIN');

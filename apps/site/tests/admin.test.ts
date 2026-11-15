@@ -46,6 +46,10 @@ test('real Postgres administration, durable mail, credit exemption and billing i
   await wallet.grant('alice',{provider:'stripe_test',receipt:'cs_test_suspend',credits:10,netMicros:5_000_000});const id=await wallet.reserve('alice','queued_to_cancel',100_000,5000,{inputSha256:'a'.repeat(64),planSha256:'b'.repeat(64),maxRuntimeMs:1000,hourlyMicros:10000,fixedCostMicros:0});
   await pool.query('INSERT INTO "session"(id,token,"userId","expiresAt","updatedAt") VALUES(\'session1\',\'secret-fixture\',\'alice\',now()+interval \'1 day\',now())');await assert.rejects(store.user('alice','owner',true),/Administrator/);await assert.rejects(store.user('owner','owner',true),/cannot be suspended/);
   await store.user('owner','alice',true);assert.equal((await pool.query('SELECT count(*)::int n FROM "session" WHERE "userId"=\'alice\'')).rows[0].n,0);assert.equal((await pool.query('SELECT status FROM generation_reservations WHERE id=$1',[id])).rows[0].status,'cancelled');assert.deepEqual(await wallet.balance('alice'),{available:10,reserved:0});await assert.rejects(wallet.reserve('alice','suspended_request',1),/suspended/);await store.user('owner','alice',false);assert.equal((await pool.query('SELECT suspended FROM "user" WHERE id=\'alice\'')).rows[0].suspended,false);
+  const before=(await wallet.balance('alice')).available;await assert.rejects(store.credits('alice','alice',5),/Administrator/);
+  for(const bad of [0,1.5,100001,NaN])await assert.rejects(store.credits('owner','alice',bad),/whole number/);
+  const gift=await store.credits('owner','alice',250,{});assert.equal(gift.live,false);await store.credits('owner','alice',100000,{});assert.equal((await wallet.balance('alice')).available,before+100250);
+  assert.equal((await pool.query("SELECT count(*)::int n FROM admin_audit WHERE action='user.credits' AND target='alice'")).rows[0].n,2);
  });
  await t.test('owner course preview requires verified active identity and preserves prerequisites and receipts',async()=>{
   const academy=new AcademyStore(pool);

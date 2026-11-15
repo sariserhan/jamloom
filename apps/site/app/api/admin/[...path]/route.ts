@@ -20,6 +20,7 @@ export async function POST(request:Request,{params}:{params:Promise<{path:string
   if(path.length===1&&path[0]==='training')result=await store.training(session!.user.id,v);
   else if(path.length===1&&path[0]==='settings')result=await store.settings(session!.user.id,v);
   else if(path.length===2&&path[0]==='users'&&Object.keys(v).join(',')==='suspended')result=await store.user(session!.user.id,path[1],v.suspended);
+  else if(path.length===3&&path[0]==='users'&&path[2]==='credits'&&Object.keys(v).join(',')==='credits')result=await store.credits(session!.user.id,path[1],v.credits);
   else if(path.length===2&&path[0]==='deletions'&&Object.keys(v).join(',')==='confirmOwner'&&typeof v.confirmOwner==='string'){
    if(Date.now()-new Date(session!.session.createdAt).getTime()>5*60_000)throw new AudioError('Sign in again before fulfilling account deletion.',403);
    const {audio}=services();if(!audio)throw new AudioError('Audio storage is not configured.',503);
