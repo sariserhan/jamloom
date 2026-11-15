@@ -7,6 +7,8 @@ const titles: Record<Mode, string> = {
   'sign-in': 'Welcome back.', 'sign-up': 'Make yourself at home.',
   'forgot-password': 'Forgot your password?', 'reset-password': 'A fresh password.', verify: 'Verify your email.',
 };
+const tabTitles:Record<Mode,string>={'sign-in':'Sign in','sign-up':'Create your account','forgot-password':'Reset your password','reset-password':'Choose a new password',verify:'Verify your email'};
+export async function generateMetadata({params}:{params:Promise<{action:string}>}){const {action}=await params;return {title:tabTitles[action as Mode]??'Account',robots:{index:false,follow:false}};}
 export default async function AccountAction({ params, searchParams }: {
   params: Promise<{ action: string }>; searchParams: Promise<{ token?: string; error?: string }>;
 }) {

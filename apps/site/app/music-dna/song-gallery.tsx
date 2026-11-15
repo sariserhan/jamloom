@@ -75,7 +75,7 @@ export function SongGallery({scope,title,product='music-dna',rows=6,id}:{scope:'
   <button className="secondary" disabled={currentPage===pageCount} onClick={()=>changePage(currentPage+1)}>Next</button>
  </nav>;
  return <section id={scope==='showcase'?(id??'public-songs'):undefined} className="product-panel" aria-label={title}><h2>{title}</h2>
-  <p>{scope==='showcase'?'Every song from our listening collection. Choose a language or genre, then press play.':scope==='validation'?'Listen to our test songs. Automated checks do not judge pronunciation or musical quality.':scope==='examples'?'Press play. Original AI songs inspired by example favorites.':scope==='mine'?'All your songs. Private stays private.':'Made by listeners. Shared with everyone.'}</p>
+  <p>{scope==='showcase'?'Songs made with Jamloom. Choose a language or genre, then press play.':scope==='validation'?'Listen to our test songs. Automated checks do not judge pronunciation or musical quality.':scope==='examples'?'Press play. Original AI songs inspired by example favorites.':scope==='mine'?'All your songs. Private stays private.':'Made by listeners. Shared with everyone.'}</p>
   {filterable&&<div className="product-actions song-filters">
    <LanguageFilter value={language} onChange={value=>{setLanguage(value);setPage(1);}} languages={[...options.languages,...songs.map(s=>s.language)]}/>
    <label>Genre <select aria-label="Genre" value={genre} onChange={e=>{setGenre(e.target.value);setPage(1);}}><option value="">All genres</option>{(scope==='public'?[...options.genres]:[...new Set(songs.flatMap(s=>s.direction?[s.direction]:[]))]).sort().map(value=><option key={value} value={value}>{value}</option>)}</select></label>

@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "apps/site/app/product.css"
+        ],
+        "createdAt": "2026-11-15T20:14:44.224Z",
+        "reason": "Claude: DJ deck chassis edge (.mini-deck), intentional hardware look"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "apps/site/app/ai-dj/studio.css"
+        ],
+        "createdAt": "2026-11-15T20:14:44.240Z",
+        "reason": "Claude: AI DJ pad keycap depth (.aidj-pads button), intentional hardware look"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "apps/web/style.css"
+        ],
+        "createdAt": "2026-11-15T20:14:44.253Z",
+        "reason": "Claude: .waveform-surface is a measuring canvas the waveform is drawn on"
+      }
+    ]
+  }
+}

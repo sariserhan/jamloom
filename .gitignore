@@ -44,3 +44,5 @@ apps/desktop-companion/.swiftpm/
 /.cursor/
 /.gemini/
 /.codex/hooks.json
+/.impeccable/hook.cache.json
+/.impeccable/config.local.json

@@ -4,6 +4,7 @@ import {services,accountsConfigured} from '../../../lib/services';
 import {siteSettings} from '../../../lib/site-settings';
 import {billingReadiness} from '../../../lib/billing-mode';
 import {AcademyBuy} from '../../academy/checkout/buy';
+export const metadata={title:'Singing Academy full course',robots:{index:false,follow:true}};
 export const dynamic='force-dynamic';
 export default async function SingingCheckout(){
  let enabled=false,mode:'test'|'live'='test';if(accountsConfigured())try{mode=(await siteSettings(services().pool)).billing_mode;enabled=billingReadiness(mode,process.env,'singing-complete').academyCheckoutEnabled;}catch{}

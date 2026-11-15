@@ -7,7 +7,7 @@ const since=(ms:number)=>{const m=Math.max(0,Math.round((Date.now()-ms)/60000));
 const ACTIONS:Record<string,string>={'user.credits':'Gave credits','user.suspend':'Suspended account','user.restore':'Restored account','site.settings':'Changed site settings','ticket.reply':'Replied to a message','ticket.status':'Changed message status','notifications.retry':'Retried email delivery','training.review':'Reviewed training permission','account.deleted':'Deleted an account','credits.exempt-reservation':'Owner song (no credits used)'};
 
 function studio(cycle:{state:string;starts_at:unknown;ready_at:unknown;expires_at:unknown;reason:string|null}|undefined){
- if(!cycle||cycle.state==='stopped')return {tone:'ok',title:'Off',detail:'No GPU is running, so nothing is being spent. A customer clicking “Prepare song creation” starts it.'};
+ if(!cycle||cycle.state==='stopped')return {tone:'ok',title:'Off',detail:'No GPU is running, so nothing is being spent. A customer pressing Generate starts it.'};
  if(cycle.state==='starting')return {tone:'busy',title:`Starting · ${since(Number(cycle.starts_at))}`,detail:'A GPU is warming up. A cold start usually takes 10–15 minutes while the music model loads.'};
  if(cycle.state==='ready')return {tone:'busy',title:'On · ready for songs',detail:`Ready for ${since(Number(cycle.ready_at??cycle.starts_at))}. It switches off by itself when idle.`};
  return {tone:'busy',title:'Switching off',detail:'The GPU is being stopped.'};

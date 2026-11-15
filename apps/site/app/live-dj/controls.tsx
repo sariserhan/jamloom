@@ -44,5 +44,5 @@ export function LiveSource(){
  <label><input type="checkbox" checked={bypass} disabled={!active} onChange={e=>setBypass(e.target.checked)}/>Bypass effects</label>
  <output>Measured output peak: {peak>0?20*Math.log10(peak)<-90?'below −90 dBFS':`${(20*Math.log10(peak)).toFixed(1)} dBFS`:'silent'}</output>
  <button className="secondary" onClick={()=>{setIsolated(false);stop();}} disabled={!active&&!pending}>Stop capture / panic</button>
- <p>No cloud charge. Browser capture cannot guarantee isolation; Mac native capture and effects are available in the companion owner preview. Use headphones while testing.</p></div></section></>;
+ <p>No cloud charge. Browser capture cannot guarantee isolation; Mac app capture and effects come with the Mac companion, which is in private preview. Use headphones while testing.</p></div></section></>;
 }

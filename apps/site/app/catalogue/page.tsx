@@ -4,6 +4,7 @@ import { accountsConfigured, services } from '../../lib/services';
 import { CatalogueFilters } from './controls';
 import { PlayTrack } from '../player';
 import type { PublicTrack } from '../../lib/catalogue';
+export const metadata={title:'Community mixes',robots:{index:false,follow:true}};
 export const dynamic='force-dynamic';
 export default async function CataloguePage({searchParams}:{searchParams:Promise<Record<string,string|undefined>>}) {
   const filters=await searchParams;

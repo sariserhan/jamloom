@@ -13,8 +13,8 @@ export default async function Account() {
   if (!session?.user.emailVerified) redirect('/account/sign-in');
   return <section className="account-panel"><h1>Your account.</h1>
     <p>Signed in as {session.user.email}</p>
-    <p>Your recordings and browser mixes remain on this device. Choose a finished mix in the cloud library to save privately or submit separately for catalogue review.</p>
-    <div className="account-links"><a href="/pro">My Pro license</a><a href="/improvise">Make music</a><a href="/library">Cloud library</a><a href="/account/credits">Credits</a><a href="/account/purchases">Purchases</a><a href="/my-songs">Your songs</a></div>
+    <p>Your songs, credits and purchases are all here. Mixes you make in the browser studio stay on this device unless you save them to your cloud library.</p>
+    <div className="account-links"><a href="/my-songs">Your songs</a><a href="/pro">My Pro license</a><a href="/improvise">Make music</a><a href="/library">Cloud library</a><a href="/account/credits">Credits</a><a href="/account/purchases">Purchases</a></div>
     {isAdmin(session.user)&&<p><a href="/admin">Admin dashboard</a></p>}
     {isReviewer(session.user)&&services().catalogue&&<p><a href="/review">Catalogue review</a></p>}
     <hr /><DeleteAccount pending={(await deletionRequest(services().pool,session.user.id))?.status==='open'}/><SignOut />

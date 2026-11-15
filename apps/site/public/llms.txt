@@ -1,0 +1,27 @@
+# Jamloom
+
+> Jamloom is an AI music app on the web and iPhone. Music DNA turns your favorite artists and songs into an original song with AI vocals; Improvise turns a recorded sound into a short arrangement. Jamloom also offers a free in-browser DJ studio, DJ lessons and a singing course.
+
+## Make songs
+- [Music DNA](https://www.jamloom.com/music-dna): pick favorite artists or songs (or a YouTube playlist), press Generate once, and get an original song of about two minutes with AI vocals, in your chosen language. You can close the page; Jamloom emails you when the song is ready.
+- [Improvise](https://www.jamloom.com/improvise): record or import a sound (a hum, a beat, a sentence) and get a 30–45 second arrangement around it.
+- [Community](https://www.jamloom.com/community): listen to songs people chose to share. Songs are private unless their creator makes them public.
+
+## Pricing
+- [Pricing](https://www.jamloom.com/pricing): a Music DNA song costs 20 credits and an Improvise arrangement 10 credits; private songs cost 25% more. 150 credits cost $20 (one time), or the Creator plan gives 300 credits for $35 a month. Credits never expire, and songs that fail return their credits.
+
+## Learn and mix
+- [DJ Studio](https://www.jamloom.com/dj-studio): two decks in the browser, no equipment needed, free.
+- [DJ Academy](https://www.jamloom.com/academy): learn to DJ on a laptop, starting with a free first lesson.
+- [Singing Academy](https://www.jamloom.com/singing-academy): sing originals and familiar melodies with pitch feedback.
+- [Live DJ](https://www.jamloom.com/live-dj): mix audio playing in a supported browser tab; capture from Mac apps is in private preview.
+
+## Guides
+- [Make a song from your favorite music](https://www.jamloom.com/learn/make-a-song-from-favorite-music)
+- [Record a sound for an AI song](https://www.jamloom.com/learn/record-sound-for-ai-song)
+- [What a Jamloom song costs](https://www.jamloom.com/learn/ai-music-credits)
+- [How to become a DJ](https://www.jamloom.com/learn/how-to-become-a-dj)
+- [All guides](https://www.jamloom.com/learn)
+
+## Help
+- [Help](https://www.jamloom.com/help) · [Contact](https://www.jamloom.com/contact) · [Privacy](https://www.jamloom.com/privacy) · [Terms](https://www.jamloom.com/terms)
