@@ -2,6 +2,10 @@
 
 Verbatim copy of the former `TODO.md`; only relative links were adjusted for the new location. Active work is in [TODO.md](../TODO.md).
 
+**Neon free reset — November 15: PASS.** Owner switched Launch→Free; Neon reports a new period from 05:29:45 UTC with 0.0 CU-hours used.
+
+**GPU fallbacks, owner allowance and idle tabs — November 15: PASS local (252 unit; capacity 16, revenue 11, songs 20, admin 9 database tests).** Production song hardware accepts L4, A5000 and 3090 at ≤$0.75/h. Owner songs get a $10/UTC-month allowance after the permit and skip the daily limit; customers rely on the sales share. Display refreshes pause after 5 idle minutes so unattended tabs stop waking Neon (6 h logs: ~180–380 polls per endpoint, 16 home views). Neon at 86.8/100 CU-hours; free reset not yet done.
+
 **Site review and admin rework — November 15: PASS local (117 browser page visits clean: no errors, overflow or WCAG AA violations; 251 unit, 11 admin, 32 integration tests).** Fixed admin Billing BigInt crash and dead `/review` links. Admin Overview (attention list, GPU status, 7-day summary, readable audit log) and fuller Billing page. Pricing page plan cards and cost table; Pricing added to menu and footer; menu trimmed to 9 items; song makers first on home/Start; clearer credits balance, sign-up copy and animated GPU preparation with an honest no-GPU-available notice. Production GPU start at 02:15 UTC timed out after 20 minutes: Runpod reported the worker throttled (no L4 free); nothing spent.
 
 **Admin credit gifts — November 14: PASS local (deploy pending owner approval).** Users page has a Give credits form per account (owner included): any whole number from 1 to 100,000 per gift, repeatable. Each gift is an audited promo lot (`user.credits`), live or test by the account's billing mode; it never adds GPU funding. Tests: 251 unit, 11 admin database PASS.

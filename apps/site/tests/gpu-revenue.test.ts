@@ -6,7 +6,8 @@ import {migrate} from '../lib/migrations';
 import {Wallet,type Purchase} from '../lib/wallet';
 import {gpuRevenueBalance,settleGpuProceeds,runpodBalanceMicros} from '../lib/gpu-revenue';
 import {capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from '../lib/cloud-capacity-permit';
-import {CloudCapacity,type CapacityProvider} from '../lib/cloud-capacity';
+import {CloudCapacity,OWNER_GPU_MONTHLY_MICROS,type CapacityProvider} from '../lib/cloud-capacity';
+import {OWNER_EMAIL} from '../lib/admin-access';
 import {CLOUD_COST_PROFILE,CLOUD_WORKER_IMAGE} from '../lib/cloud-production-profile';
 import {creditCapacityForSales,creditLaunchAuthorized} from '../lib/credit-release';
 import {CREDIT_CATALOG_VERSION,creditSalesQualified} from '../lib/credit-catalog';
@@ -76,6 +77,18 @@ test('revenue funding verifies cash, survives duplicate/refund events and reserv
    const current={...liveSeed,revenueShareBps:2000 as const};const s=new CloudCapacity(pool,'fixture',CLOUD_COST_PROFILE,current,{...provider,setWorkers:async n=>{endpoint.workers={min:n,max:n};workers={...empty,...(n?{initializing:1}:{})};return structuredClone(endpoint);}},()=>now);
    await s.guardianHeartbeat();assert.equal(await s.prepare('user4'),'preparing');now+=2400000;assert.equal((await s.reconcile(true)).state,'off');await s.guardianHeartbeat();await assert.rejects(s.prepare('user5'),/unavailable/);
    assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[liveSeed.id])).rows[0].reserved_micros),750000);
+  });
+  await t.test('owner allowance: $10 per UTC month of provider cash, no daily limit, never touches sales funds',async()=>{
+   await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',['owner',OWNER_EMAIL]);
+   const month=new Date(now);month.setUTCDate(1);month.setUTCHours(0,0,0,0);
+   await pool.query('DELETE FROM cloud_capacity_cycles WHERE owner_id=$1',['owner']);
+   const before=await gpuRevenueBalance(pool);await c.guardianHeartbeat();
+   await assert.rejects(c.prepare('user6'),/unavailable/,'Customers still need sales funding');
+   const allowed=Math.floor(OWNER_GPU_MONTHLY_MICROS/750000);
+   for(let i=0;i<allowed;i++){assert.equal(await c.prepare('owner'),'preparing');await shutdown();}
+   await assert.rejects(c.prepare('owner'),/unavailable/,'Monthly owner allowance is bounded');
+   assert.equal(await gpuRevenueBalance(pool),before,'Owner songs never spend the sales share');
+   assert.ok(Number((await pool.query('SELECT sum(cap_micros) s FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>=$2',['owner',month.getTime()])).rows[0].s)<=OWNER_GPU_MONTHLY_MICROS);
   });
  }finally{await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();}
 });

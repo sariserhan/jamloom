@@ -50,7 +50,14 @@ test('alternate GPU qualification cannot widen live production or escape its pri
  const now=Date.now(),lease={startsAt:now-1000,expiresAt:now+30*60000,maxMicros:3000000};
  const candidate={...endpoint,gpu:{...endpoint.gpu,excludedTypes:['NVIDIA L4','other']},workers:{min:1,max:1}};
  const stock={gpus:[...catalog.gpus,{id:'NVIDIA RTX A5000',pool:'AMPERE_24',price:{serverless:.75}}]};
- assert.throws(()=>assertProductionEndpoint(candidate,stock,lease),/hardware or price/);
+ assertProductionEndpoint(candidate,stock,lease);// A5000 is an approved same-price production fallback.
+ const pool={...endpoint,gpu:{...endpoint.gpu,excludedTypes:['NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 1g.24gb']}};
+ const card=(id:string,serverless=.75)=>({id,pool:'AMPERE_24',price:{serverless}});
+ const fallback={gpus:[card('NVIDIA L4'),card('NVIDIA RTX A5000'),card('NVIDIA GeForce RTX 3090'),card('NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 1g.24gb')]};
+ assertProductionEndpoint(pool,fallback);
+ assert.throws(()=>assertProductionEndpoint({...pool,gpu:{...pool.gpu,excludedTypes:[]}},fallback),/hardware or price/);
+ assert.throws(()=>assertProductionEndpoint(pool,{gpus:[...fallback.gpus,card('new-card')]}),/hardware or price/);
+ assert.throws(()=>assertProductionEndpoint(pool,{gpus:fallback.gpus.map(g=>g.id==='NVIDIA GeForce RTX 3090'?card(g.id,.76):g)}),/hardware or price/);
  assert.throws(()=>assertProductionEndpoint(candidate,stock,undefined,CLOUD_DIAGNOSTIC_PROFILE),/finite/);
  assertProductionEndpoint(candidate,stock,lease,CLOUD_DIAGNOSTIC_PROFILE);
  for(const bad of [{...candidate,gpu:{...candidate.gpu,excludedTypes:['other']}},{...candidate,workers:{min:0,max:1}},{...candidate,workers:{min:1,max:2}}])assert.throws(()=>assertProductionEndpoint(bad,stock,lease,CLOUD_DIAGNOSTIC_PROFILE));

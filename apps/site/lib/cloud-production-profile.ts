@@ -5,6 +5,8 @@ export const CLOUD_COST_PROFILE='l4-2026-11-01';
 // It is not a qualified production fallback and must never widen the L4 profile.
 export const CLOUD_DIAGNOSTIC_PROFILE='a5000-diagnostic-2026-11-01';
 export const CLOUD_4090_DIAGNOSTIC_PROFILE='4090-diagnostic-2026-11-01';
+// Owner decision 2026-11-15: L4 with A5000 and 3090 as same-price ($0.75/h) fallbacks when L4s run out.
+export const PRODUCTION_GPUS=['NVIDIA L4','NVIDIA RTX A5000','NVIDIA GeForce RTX 3090'];
 export const CLOUD_PROFILES=[CLOUD_COST_PROFILE,CLOUD_DIAGNOSTIC_PROFILE,CLOUD_4090_DIAGNOSTIC_PROFILE];
 export function diagnosticSongProfile(profile:string){return [CLOUD_DIAGNOSTIC_PROFILE,CLOUD_4090_DIAGNOSTIC_PROFILE].includes(profile);}
 export function validateProfileLease(profile:string,lease?:ActiveWorkerLease){
@@ -46,8 +48,8 @@ export function assertProductionEndpoint(endpoint:any,catalog:any,activeLease?:A
   throw Error('Song capacity differs from the reviewed cost profile');
  if(!Array.isArray(catalog?.gpus))throw Error('Song hardware pricing could not be checked');
  const eligible=catalog.gpus.filter((g:any)=>gpu.pools.includes(g.pool)&&!excludedTypes.includes(g.id));
- const expectedGpu=faster?'NVIDIA GeForce RTX 4090':profile===CLOUD_DIAGNOSTIC_PROFILE?'NVIDIA RTX A5000':'NVIDIA L4';
- if(eligible.length!==1||eligible[0].id!==expectedGpu||typeof eligible[0].price?.serverless!=='number'||
-  !Number.isFinite(eligible[0].price.serverless)||eligible[0].price.serverless<=0||eligible[0].price.serverless>(faster?1.34:0.75))
+ const allowed=faster?['NVIDIA GeForce RTX 4090']:profile===CLOUD_DIAGNOSTIC_PROFILE?['NVIDIA RTX A5000']:PRODUCTION_GPUS;
+ if(!eligible.length||eligible.some((g:any)=>!allowed.includes(g.id)||typeof g.price?.serverless!=='number'||
+  !Number.isFinite(g.price.serverless)||g.price.serverless<=0||g.price.serverless>(faster?1.34:0.75)))
   throw Error('Song hardware or price differs from the reviewed cost profile');
 }

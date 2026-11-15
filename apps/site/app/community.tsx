@@ -5,14 +5,15 @@ import Link from 'next/link';
 import LoadingState from './loading-state';
 import {PlayTrack} from './player';
 import type {PublicTrack} from '../lib/catalogue';
+import {visibleRefresh} from '../lib/visible-refresh';
 
 export function CommunityMusic(){
  const [tracks,setTracks]=useState<PublicTrack[]>([]),[status,setStatus]=useState('Loading community music…');
  useEffect(()=>{let active=true,inFlight=false;const controller=new AbortController();
   async function refresh(){if(document.hidden||inFlight)return;inFlight=true;try{const response=await fetch('/api/catalogue?sort=latest',{cache:'no-store',signal:controller.signal});if(!response.ok)throw new Error();const data=await response.json();if(active){setTracks(data.tracks);setStatus(data.available===false?'Community sharing is not enabled here yet.':data.tracks.length?'':'The first releases start with you.');}}
    catch{if(active){setTracks([]);setStatus('Community music is unavailable right now. Try again shortly.');}}finally{inFlight=false;}}
-  void refresh();const timer=setInterval(()=>void refresh(),60000);document.addEventListener('visibilitychange',refresh);
-  return()=>{active=false;controller.abort();clearInterval(timer);document.removeEventListener('visibilitychange',refresh);};
+  const stop=visibleRefresh(refresh);
+  return()=>{active=false;controller.abort();stop();};
  },[]);
  return <section className="community-section" aria-labelledby="community-heading"><div className="section-heading"><div><p className="eyebrow">Made here. Heard here.</p><h2 id="community-heading">The community, on repeat.</h2></div><Link prefetch={false} href="/catalogue">Explore music ↗</Link></div>
   <p className="section-caption">Public mixes from DJ Studio, AI Improvisation and our other studios, after review. Your private music never appears here.</p>

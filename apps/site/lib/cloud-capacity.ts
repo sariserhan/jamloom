@@ -4,6 +4,8 @@ import {readBody,AudioError} from './audio-validation';
 import {assertActiveWorkerLease,type ActiveWorkerLease} from './cloud-capacity-lease';
 import {GUARDIAN_FRESH_MS,GUARDIAN_IDLE_FRESH_MS,capacityLease,capacityPermitHash,capacityWindowOpen,seedPermit,type CapacityPermit} from './cloud-capacity-permit';
 import {gpuRevenueBalance,lockGpuFunding,runpodBalanceMicros} from './gpu-revenue';
+import {adminAccount} from './admin-access';
+export const OWNER_GPU_MONTHLY_MICROS=10_000_000;
 import {assertProductionEndpoint,CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 import {hasReadySongWorker} from './cloud-readiness';
 
@@ -120,7 +122,8 @@ export class CloudCapacity{
    // Only trusted server review configuration relaxes the per-owner daily limit.
    // Every new cycle still reserves the full cost under the same finite permit.
    const fundedReviewer=review?.enabled===true&&review.expiresAt>now&&review.owners.includes(owner);
-   if(recent.rowCount&&!fundedReviewer)throw new AudioError('You have already prepared song creation today. Please try again later.',429);
+   const owner_=await adminAccount(db,owner);
+   if(recent.rowCount&&!fundedReviewer&&!owner_)throw new AudioError('You have already prepared song creation today. Please try again later.',429);
    const before=await this.provider.endpoint();this.identity(before);
    if(before.workers?.min!==0||before.workers?.max!==0||!empty(await this.provider.health()))throw Error('Capacity is not independently disabled');
    assertProductionEndpoint({...before,workers:{min:1,max:1}},await this.provider.catalog(),next,this.profile,now);
@@ -138,14 +141,23 @@ export class CloudCapacity{
     await db.query(`INSERT INTO gpu_provider_funding(endpoint,balance_micros,checked_at) VALUES($1,$2,$3)
      ON CONFLICT(endpoint) DO UPDATE SET balance_micros=excluded.balance_micros,checked_at=excluded.checked_at`,[this.endpoint,balance,now]);
    }
-   if(!seedFunded){
+   // Owner decision 2026-11-15: the owner's own songs may use up to OWNER_GPU_MONTHLY_MICROS of
+   // prepaid provider cash per UTC month once the permit is spent. Every owner cycle this month
+   // counts its full reservation, so the bound holds even if actual cost is lower.
+   let ownerFunded=false;
+   if(!seedFunded&&owner_){
+    const month=new Date(now);month.setUTCDate(1);month.setUTCHours(0,0,0,0);
+    const used=(await db.query('SELECT COALESCE(sum(cap_micros),0)::text AS used FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>=$2',[owner,month.getTime()])).rows[0].used;
+    ownerFunded=BigInt(used)+BigInt(p.cycleMicros)<=BigInt(OWNER_GPU_MONTHLY_MICROS);
+   }
+   if(!seedFunded&&!ownerFunded){
     if(p.revenueShareBps!==2000)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
     await lockGpuFunding(db);
     if(await gpuRevenueBalance(db)<p.cycleMicros)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
    }else await db.query('UPDATE cloud_capacity_permits SET reserved_micros=reserved_micros+$2 WHERE id=$1',[p.id,p.cycleMicros]);
    created=(await db.query(`INSERT INTO cloud_capacity_cycles(id,permit_id,endpoint,image,owner_id,starts_at,expires_at,cap_micros,state)
     VALUES($1,$2,$3,$4,$5,$6,$7,$8,'starting') RETURNING *`,[randomUUID(),p.id,this.endpoint,CLOUD_WORKER_IMAGE,owner,now,next.expiresAt,p.cycleMicros])).rows[0];
-   if(!seedFunded)await db.query('INSERT INTO gpu_revenue_reservations(cycle_id,micros) VALUES($1,$2)',[created!.id,p.cycleMicros]);
+   if(!seedFunded&&!ownerFunded)await db.query('INSERT INTO gpu_revenue_reservations(cycle_id,micros) VALUES($1,$2)',[created!.id,p.cycleMicros]);
    return 'preparing' as const;
   });
   if(created){
