@@ -4,28 +4,16 @@
     "label": "Start here"
   },
   {
-    "href": "/improvise",
-    "label": "Improvise"
-  },
-  {
-    "href": "/studio/index.html",
-    "label": "Local Remixes"
-  },
-  {
     "href": "/music-dna",
     "label": "Music DNA"
   },
   {
+    "href": "/improvise",
+    "label": "Improvise"
+  },
+  {
     "href": "/dj-studio",
     "label": "DJ Studio"
-  },
-  {
-    "href": "/ai-dj",
-    "label": "AI DJ"
-  },
-  {
-    "href": "/live-dj",
-    "label": "Live DJ"
   },
   {
     "href": "/academy",
@@ -38,6 +26,10 @@
   {
     "href": "/community",
     "label": "Community"
+  },
+  {
+    "href": "/pricing",
+    "label": "Pricing"
   },
   {
     "href": "/account",

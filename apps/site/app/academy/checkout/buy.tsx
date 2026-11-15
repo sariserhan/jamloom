@@ -21,7 +21,7 @@ export function AcademyBuy({enabled,mode,course='academy-complete'}:{enabled:boo
  }
  return <>{enabled&&<Script src="https://js.stripe.com/endive/stripe.js" onReady={()=>setReady(true)} onError={()=>setMessage('Secure payment form could not load. Reload this page to retry.')}/>}
   {!open&&!complete&&<button disabled={!enabled||!ready||busy} onClick={buy}>{busy?'Loading payment form…':enabled?(mode==='test'?'Pay securely on Jamloom · test mode':'Pay securely on Jamloom'):'Complete Pass sales are not open'}</button>}
-  <div ref={container} className="inline-checkout" aria-label="Secure payment form"/>
+  <div ref={container} className="inline-checkout" role="region" aria-label="Secure payment form"/>
   {open&&<button className="secondary" onClick={()=>{checkout.current?.destroy();checkout.current=null;setOpen(false);setMessage('Payment form closed. You can reopen it here.');}}>Close payment form</button>}
   <p role="status">{message}</p>
   {complete&&<div className="checkout-confirmation"><h2>{status==='active'?'Academy access verified':'Payment confirmation'}</h2>{status!=='active'&&<button className="secondary" onClick={()=>void check()}>Check payment status</button>}<a href={home}>Open your learning dashboard →</a><p>No generation credits were charged or granted.</p></div>}

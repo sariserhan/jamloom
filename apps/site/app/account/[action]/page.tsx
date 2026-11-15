@@ -16,7 +16,8 @@ export default async function AccountAction({ params, searchParams }: {
   const query = await searchParams;
   const token = typeof query.token === 'string' && query.token.length <= 512 ? query.token : undefined;
   return <section className="account-panel"><p className="eyebrow">Your Jamloom account</p><h1>{titles[mode]}</h1>
-    <p>Your local mixes stay on this device. Signing in does not upload or publish them.</p>
+    {mode==='sign-up'?<p>With an account you can make AI songs, keep your favorites and songs in one place, and try song creation with free trial credits while places last.</p>:mode==='sign-in'?<p>Sign in to make songs, use your credits and find everything you’ve made.</p>:null}
+    <p><small>Your local mixes stay on this device. Signing in does not upload or publish them.</small></p>
     {query.error && <p role="alert" className="account-error">This link is invalid or expired. Request a new one below.</p>}
     {accountsConfigured() ? <AccountForm mode={mode} token={token} />
       : <p role="status">Accounts are not available yet. You can still make music in the studio.</p>}
