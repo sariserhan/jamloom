@@ -2,6 +2,8 @@
 
 Recent dated results, newest first (launch and operations, from November 8). Older entries: [progress archive](PROGRESS_ARCHIVE.md). Active tasks: [TODO](../TODO.md).
 
+**One-click queue fix — November 15: PASS local.** The owner's first one-click Generate (20:40 UTC) started the GPU but the song submit returned 503: queuing required a guardian heartbeat under 3 minutes while idle guardians check in every 30 minutes. Queuing now accepts the 35-minute idle heartbeat; dispatch still requires ready() with a fresh one. Regression test reproduces the failure before the fix.
+
 **Site-wide polish — November 15: PASS local.** Live crawl of 101 pages: no broken links. Fixed: 16 customer-visible internal/outdated phrases (listening collection, ‘paid generation not open’, preparation, qualification, owner preview, validation); tab titles for sign-in/up, checkout, practice path and each singing lesson; switched-off catalogue page and its Community filter hidden and noindexed; account page copy and link order; two side-bar callouts restyled; three intentional hardware/canvas styles recorded as design-detector exceptions (0 findings); added llms.txt. Open for the owner: an internal legal-review note on /privacy.
 
 **Home page redesign — November 15: PASS local.** One promise and one action: AI song generator hero with the playable Concrete Roots example, three steps (one click, email when ready), real songs, two ways to start, price block, compact list of other products, four-question FAQ with FAQPage data, and an absolute brand title. Phone page height 14,826 → 6,975 px; axe WCAG AA clean on desktop and phone; design detector clean; 252 unit tests PASS. Removed home-only components and the empty community notice.

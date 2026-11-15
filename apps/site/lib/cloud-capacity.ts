@@ -101,7 +101,9 @@ export class CloudCapacity{
  async assertQueueable(db:PoolClient,remainingMs:number){
   await db.query("SELECT pg_advisory_xact_lock(hashtextextended($1,0))",['jamloom-capacity:'+this.endpoint]);
   this.permitOpen();const r=await this.current(db);
-  if(!r||r.permit_id!==this.permit.id||!['starting','ready'].includes(r.state)||!await this.guarded(db))throw new AudioError('Song preparation is not ready. Your credits have not been used.',503);
+  // Queuing accepts the idle heartbeat (guardians check in every 30 minutes while idle); the song is
+  // only dispatched after ready(), which requires a fresh heartbeat.
+  if(!r||r.permit_id!==this.permit.id||!['starting','ready'].includes(r.state)||!await this.guarded(db,GUARDIAN_IDLE_FRESH_MS))throw new AudioError('Song preparation is not ready. Your credits have not been used.',503);
   try{assertActiveWorkerLease(lease(r),this.clock(),remainingMs);}catch{throw new AudioError('Song preparation has expired. Your credits have not been used.',503);}
   if(r.state==='ready')await db.query('UPDATE cloud_capacity_cycles SET busy_at=$2 WHERE id=$1',[r.id,this.clock()]);
   return Number(r.expires_at);

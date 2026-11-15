@@ -190,7 +190,8 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
     let dispatched=0;const songs=new CloudSongs(commerce,settings,{dispatchEnabled:async()=>true,health:async()=>h,submit:async()=>{dispatched++;return {id:'provider-'+owner,status:'IN_QUEUE'} as never;},status:async()=>({status:'CANCELLED'}) as never,cancel:async()=>({}) as never},c);
     await commerce.wallet.grant(owner,{provider:'stripe_test',receipt:'oneclick-'+owner,credits:60,netMicros:30000000});
     const balance=await commerce.wallet.balance(owner),input=await songs.input(owner,taste),quote=await commerce.quote(owner,input,'private'),key=randomUUID().replaceAll('-','');
-    await c.guardianHeartbeat();const before=starts;
+    // Regression (2026-11-15): after a quiet period the guardian heartbeat is up to 30 minutes old.
+    await c.guardianHeartbeat();now+=10*60000;const before=starts;
     assert.deepEqual(await songs.submit(owner,key,input,'private',quote.token),{id:key,state:'queued'});
     assert.equal(starts,before+1,'Generate started the GPU');assert.equal((await commerce.wallet.balance(owner)).reserved,quote.credits);
     await songs.tick(key);assert.equal(dispatched,0,'Nothing is sent before the GPU is ready');
