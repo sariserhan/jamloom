@@ -1,11 +1,10 @@
 import { notFound } from 'next/navigation';
 import { information } from '../../lib/editorial';
 import { pageMetadata } from '../../lib/product';
-import { CREATOR_PLAN,TOP_UP,TRIAL_CREDITS,songCreditPrice } from '../../lib/credit-catalog';
+import { CREATOR_PLAN,TOP_UP,songCreditPrice } from '../../lib/credit-catalog';
 
 function PricingSummary(){
  const plans=[
-  {name:'Free trial',price:'Free',per:'once',credits:TRIAL_CREDITS,points:['For verified accounts','Enough for one Music DNA song','While trial places last']},
   {name:'Top-up',price:`$${TOP_UP.cents/100}`,per:'one time',credits:TOP_UP.credits,points:['No subscription','Credits never expire','Buy again whenever you like']},
   {name:'Creator',price:`$${CREATOR_PLAN.cents/100}`,per:'per month',credits:CREATOR_PLAN.credits,points:['Best value per credit','Credits never expire','Cancel any time'],best:true},
  ];

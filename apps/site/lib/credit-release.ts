@@ -1,7 +1,7 @@
 import type {Pool} from 'pg';
 import {CREDIT_CATALOG_VERSION,creditSalesQualified} from './credit-catalog';
 import {GUARDIAN_IDLE_FRESH_MS,capacityPermit,capacityPermitHash,capacityWindowOpen,seedPermit} from './cloud-capacity-permit';
-import {gpuRevenueBalance,providerFundingFresh} from './gpu-revenue';
+import {providerFundingFresh} from './gpu-revenue';
 import {CLOUD_COST_PROFILE,CLOUD_WORKER_IMAGE} from './cloud-production-profile';
 
 // Owner-authorized public launch is separate from measured cost qualification.
@@ -31,7 +31,10 @@ export async function creditCapacityForSales(pool:Pick<Pool,'query'>,env:Record<
   if(grant&&grant.config_sha256!==capacityPermitHash(seedPermit(permit),endpoint,profile,CLOUD_WORKER_IMAGE))return false;
   const seedFunded=now+permit.cycleSeconds*1000<=permit.expiresAt&&Number(grant?.reserved_micros??0)+permit.cycleMicros<=permit.capMicros;
   if(permit.revenueShareBps!==2000)return seedFunded;
-  if(!await providerFundingFresh(pool,endpoint,permit.cycleMicros,now))return false;
-  return seedFunded||await gpuRevenueBalance(pool)>=permit.cycleMicros;
+  // The monitor reads the provider balance every 30 minutes; activation re-reads it live.
+  if(!await providerFundingFresh(pool,endpoint,permit.cycleMicros,now,GUARDIAN_IDLE_FRESH_MS))return false;
+  // Owner decision 2026-11-15: keep sales open without banked GPU revenue. A captured live Stripe
+  // charge funds 20% immediately, so the buyer's own payment pays for their songs.
+  return true;
  }catch{return false;}
 }

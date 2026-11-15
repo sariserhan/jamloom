@@ -106,7 +106,7 @@ export class CloudCapacity{
   if(r.state==='ready')await db.query('UPDATE cloud_capacity_cycles SET busy_at=$2 WHERE id=$1',[r.id,this.clock()]);
   return Number(r.expires_at);
  }
- async prepare(owner:string,review?:{enabled:boolean;expiresAt:number;owners:readonly string[]}):Promise<CapacityState>{
+ async prepare(owner:string,review?:{enabled:boolean;expiresAt:number;owners:readonly string[];capMicros?:number}):Promise<CapacityState>{
   this.permitOpen();let created:Cycle|undefined;
   const state=await this.lock(async db=>{
    const existing=await this.current(db);
@@ -123,7 +123,8 @@ export class CloudCapacity{
    const now=this.clock(),p=this.permit,next=capacityLease(p,now);
    if(!await this.guarded(db,GUARDIAN_IDLE_FRESH_MS))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
    if(!capacityWindowOpen(p,now,p.cycleSeconds*1000))throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
-   const recent=await db.query('SELECT 1 FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>$2 LIMIT 1',[owner,now-86400000]);
+   // A start that never got a GPU does not use up the customer's daily start.
+   const recent=await db.query("SELECT 1 FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>$2 AND COALESCE(reason,'') NOT IN ('startup-timeout','activation-unconfirmed') LIMIT 1",[owner,now-86400000]);
    // Only trusted server review configuration relaxes the per-owner daily limit.
    // Every new cycle still reserves the full cost under the same finite permit.
    const fundedReviewer=review?.enabled===true&&review.expiresAt>now&&review.owners.includes(owner);
@@ -146,23 +147,23 @@ export class CloudCapacity{
     await db.query(`INSERT INTO gpu_provider_funding(endpoint,balance_micros,checked_at) VALUES($1,$2,$3)
      ON CONFLICT(endpoint) DO UPDATE SET balance_micros=excluded.balance_micros,checked_at=excluded.checked_at`,[this.endpoint,balance,now]);
    }
-   // Owner decision 2026-11-15: the owner's own songs may use up to OWNER_GPU_MONTHLY_MICROS of
-   // prepaid provider cash per UTC month once the permit is spent. Every owner cycle this month
-   // counts its full reservation, so the bound holds even if actual cost is lower.
-   let ownerFunded=false;
-   if(!seedFunded&&owner_){
-    const month=new Date(now);month.setUTCDate(1);month.setUTCHours(0,0,0,0);
-    const used=(await db.query('SELECT COALESCE(sum(cap_micros),0)::text AS used FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>=$2',[owner,month.getTime()])).rows[0].used;
-    ownerFunded=BigInt(used)+BigInt(p.cycleMicros)<=BigInt(OWNER_GPU_MONTHLY_MICROS);
-   }
-   if(!seedFunded&&!ownerFunded){
+   // Funding order (owner decisions 2026-11-15): the owner's monthly allowance, then the Apple
+   // reviewer allowance, then the finite permit, then the 20% sales share. Each allowance counts
+   // full cycle reservations, so its bound holds even when actual GPU cost is lower.
+   const sum=async(sql:string,args:unknown[])=>BigInt((await db.query(sql,args)).rows[0].used);
+   let source:'owner'|'review'|'seed'|'revenue'='revenue';
+   const month=new Date(now);month.setUTCDate(1);month.setUTCHours(0,0,0,0);
+   if(owner_&&await sum('SELECT COALESCE(sum(cap_micros),0)::text AS used FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>=$2',[owner,month.getTime()])+BigInt(p.cycleMicros)<=BigInt(OWNER_GPU_MONTHLY_MICROS))source='owner';
+   else if(fundedReviewer&&review?.capMicros&&await sum('SELECT COALESCE(sum(cap_micros),0)::text AS used FROM cloud_capacity_cycles WHERE owner_id=ANY($1::text[])',[review.owners])+BigInt(p.cycleMicros)<=BigInt(review.capMicros))source='review';
+   else if(seedFunded)source='seed';
+   if(source==='revenue'){
     if(p.revenueShareBps!==2000)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
     await lockGpuFunding(db);
     if(await gpuRevenueBalance(db)<p.cycleMicros)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);
-   }else await db.query('UPDATE cloud_capacity_permits SET reserved_micros=reserved_micros+$2 WHERE id=$1',[p.id,p.cycleMicros]);
+   }else if(source==='seed')await db.query('UPDATE cloud_capacity_permits SET reserved_micros=reserved_micros+$2 WHERE id=$1',[p.id,p.cycleMicros]);
    created=(await db.query(`INSERT INTO cloud_capacity_cycles(id,permit_id,endpoint,image,owner_id,starts_at,expires_at,cap_micros,state)
     VALUES($1,$2,$3,$4,$5,$6,$7,$8,'starting') RETURNING *`,[randomUUID(),p.id,this.endpoint,CLOUD_WORKER_IMAGE,owner,now,next.expiresAt,p.cycleMicros])).rows[0];
-   if(!seedFunded&&!ownerFunded)await db.query('INSERT INTO gpu_revenue_reservations(cycle_id,micros) VALUES($1,$2)',[created!.id,p.cycleMicros]);
+   if(source==='revenue')await db.query('INSERT INTO gpu_revenue_reservations(cycle_id,micros) VALUES($1,$2)',[created!.id,p.cycleMicros]);
    return 'preparing' as const;
   });
   if(created){

@@ -39,3 +39,8 @@ apps/desktop-companion/.swiftpm/
 
 # Prepared, hash-checked private singing recordings
 /apps/site/private/singing-recordings/
+
+# Local editor/agent hook settings (written by the Impeccable updater)
+/.cursor/
+/.gemini/
+/.codex/hooks.json

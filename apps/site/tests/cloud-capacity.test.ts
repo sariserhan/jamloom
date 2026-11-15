@@ -164,7 +164,9 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    await assert.rejects(songs.prepareCapacity('owner0'),/allowance is unavailable/);
    assert.equal(starts,before+1);
    assert.equal((await songs.prepareCapacity('owner12')).state,'preparing');await wake(c);await cool(c);
-   await assert.rejects(songs.prepareCapacity('owner12'),/currently unavailable/);assert.equal(starts,before+2);
+   // The first reviewer start used the reviewer allowance, so the permit funds one more.
+   assert.equal((await songs.prepareCapacity('owner12')).state,'preparing');await wake(c);await cool(c);
+   await assert.rejects(songs.prepareCapacity('owner12'),/currently unavailable/);assert.equal(starts,before+3);
    assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[c.permit.id])).rows[0].reserved_micros),2000000);
    assert.deepEqual(await commerce.wallet.balance('owner12'),balance);
   });
@@ -173,6 +175,12 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    const c=fresh();assert.equal(await start(c,'grace'),'preparing');await wake(c);
    now+=120001;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'ready','Two minutes after a cold start is too short to stop');
    now+=180000;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'off');
+  });
+  await t.test('a start that never got a GPU does not use up the daily start',async()=>{
+   await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',['retry','retry@example.test']);
+   const c=fresh();assert.equal(await start(c,'retry'),'preparing');now+=1200001;await c.guardianHeartbeat();assert.equal((await c.reconcile()).state,'off');
+   const again=fresh();assert.equal(await start(again,'retry'),'preparing','Retry allowed after startup-timeout');
+   now+=1200001;await again.guardianHeartbeat();assert.equal((await again.reconcile()).state,'off');
   });
   await t.test('one click: Generate starts the GPU, queues the song, dispatches when ready; a failed start refunds and emails',async()=>{
    for(const u of ['oneclick1','oneclick2'])await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[u,u+'@example.test']);

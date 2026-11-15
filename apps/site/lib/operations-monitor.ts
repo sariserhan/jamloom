@@ -14,7 +14,7 @@ export const operationMessages={
  'apple-finance-review':'An Apple financial report changed or a live refund requires reconciliation. Apple GPU funding is held pending verified payment/refund evidence.',
  'budget-low':'Fewer than three funded preparation cycles remain. Check settled payment allocations and provider credit. Do not add unapproved owner funds.',
  'budget-expiring':'The finite seed allowance expires within 48 hours. Revenue continuation requires settled allocations and provider credit.',
- 'budget-unavailable':'Operating funding is expired, exhausted or missing. New sales/generation must remain closed; paid credits remain valid.',
+ 'budget-unavailable':'GPU funding is unavailable: the finite allowance is spent or expired, or the Runpod prepaid balance is below one GPU start. New sales and GPU starts stay closed; paid credits remain valid. Check Runpod Billing (auto-pay should reload below $10).',
  'guardian-stale':'The shutdown guardian heartbeat is missing, stale or does not match this permit. New work must remain closed. Check the guardian service.',
  'shutdown-unconfirmed':'A capacity shutdown failed, a worker remains after expiry, or provider identity differs. Check the provider and stop unapproved capacity.',
  'generation-failed':'A recent live song failed or its cleanup is overdue. Check private operational records and credit returns; do not retry automatically.',
@@ -39,8 +39,11 @@ export async function sendOperationAlert(code:OperationAlert,env:Record<string,s
 export type OperationSnapshot={now:number;expiresAt:number|null;remainingMicros:number;revenueMicros?:number;providerMicros?:number;providerAutoPay?:ProviderAutoPay;cycleMicros:number;guardianOK:boolean;shutdownFailed:boolean;providerMismatch:boolean;workers:number;liveFailures:number;overdueCleanup:number};
 export function operationAlerts(s:OperationSnapshot):OperationAlert[]{
  const alerts:OperationAlert[]=[],expired=s.expiresAt!==null&&s.now>=s.expiresAt;
- if(expired||s.remainingMicros<s.cycleMicros)alerts.push('budget-unavailable');
- else{
+ // Sales-share mode (owner decision 2026-11-15): sales stay open and each buyer's payment funds
+ // their songs, so no banked revenue is normal. Only an empty provider account blocks everything.
+ if(s.revenueMicros!==undefined&&s.providerMicros!==undefined){if(s.providerMicros<s.cycleMicros)alerts.push('budget-unavailable');}
+ else if(expired||s.remainingMicros<s.cycleMicros)alerts.push('budget-unavailable');
+ else if(s.revenueMicros===undefined){
   if(s.remainingMicros<3*s.cycleMicros)alerts.push('budget-low');
   if(s.expiresAt!==null&&s.expiresAt-s.now<=48*3600000)alerts.push('budget-expiring');
  }

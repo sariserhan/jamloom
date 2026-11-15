@@ -1,26 +1,100 @@
 import Link from 'next/link';
+import type {Metadata} from 'next';
 import {pageMetadata,origin} from '../lib/product';
 import {homeProducts} from '../lib/home-products';
-import practice from '../../web/practice-audio/manifest.json';
-import {MiniDeck} from './mini-deck';
-import {CommunityMusic} from './community';
-import {CommunitySets} from './community-sets';
+import {CREATOR_PLAN,TOP_UP,songCreditPrice} from '../lib/credit-catalog';
 import {SongGallery} from './music-dna/song-gallery';
-import {MusicDnaPreview} from './music-dna-preview';
-import {validationSongs} from '../lib/music-validation';
-import {AurowallMusic} from './aurowall-music';
-import {ProductShowcase} from './product-showcase';
-export const metadata=pageMetadata('Make AI Songs & Mix Music Online','Create AI songs from your sounds or favorite music. Practise DJ mixing in your browser, explore free lessons and hear original Jamloom examples.','/');
-export default function Home(){return <div className="product-home visual-home"><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':'Organization','@id':origin+'/#organization',name:'Jamloom',url:origin,logo:origin+'/studio/icon.svg',email:'support@jamloom.com'},{'@type':'WebSite','@id':origin+'/#website',name:'Jamloom',url:origin,publisher:{'@id':origin+'/#organization'}}]})}}/>
- <ProductShowcase/>
- <div className="start-strip"><div><strong>New here?</strong><span>Find the right studio for your idea.</span></div><Link className="primary" href="/start">Choose your starting point →</Link><Link className="secondary" href="/community">Just listen ♫</Link></div>
- <section id="products" className="feature-list product-chapters" aria-label="Explore Jamloom products">{homeProducts.map(p=><article id={p.slug} key={p.slug} aria-labelledby={p.slug+'-title'}><div className="chapter-copy"><p className="eyebrow">{p.name}</p><h2 id={p.slug+'-title'}>{p.headline}</h2><p>{p.description}</p><Link prefetch={false} className="primary" href={p.href}>{p.action}</Link><details className="chapter-availability"><summary>What’s included</summary><ul>{p.highlights.map(point=><li key={point}>{point}</li>)}</ul><p>{p.availability}</p></details></div>{p.slug==='dj-studio'?<MiniDeck tracks={practice.tracks.slice(0,2).map(t=>({title:t.title,artist:t.artist,url:'/studio/'+t.url.slice(2),source_page:t.source_page}))}/>:p.slug==='music-dna'?<MusicDnaPreview songs={validationSongs.filter(song=>song.product==='music-dna').toReversed().map(({id,title,language,direction})=>({id,title,language,direction}))}/>:<Link prefetch={false} className="product-preview" href={p.href}><span className="preview-caption"><span>{p.name}</span><span aria-hidden="true">↗</span></span><img src={'/product-previews/'+p.slug+'.webp'} alt={p.previewAlt} loading="lazy" width={p.previewWidth} height={p.previewHeight}/><span className="preview-open">{p.action} →</span></Link>}</article>)}</section>
- <SongGallery id="improvise-songs" scope="showcase" title="Made with Improvise" product="improvise" rows={3}/>
- <SongGallery id="music-dna-songs" scope="showcase" title="Made with Music DNA" product="music-dna" rows={3}/>
- <section className="sharing-panel"><h2>Your next song<br/>could be here.</h2><div><p>Make something only you could make. Your music stays private unless you choose to share it.</p><div className="product-actions"><Link prefetch={false} className="primary" href="/improvise">Start with a sound ↗</Link><Link prefetch={false} className="secondary" href="/music-dna">Start with your favorites ↗</Link></div></div></section>
- <section className="product-document"><h2>Make your first musical idea.</h2><p>Practical guides for recording a source, turning favorites into a song and learning a transition.</p><ul><li><Link href="/learn/record-sound-for-ai-song">Record a clear sound for an AI song</Link></li><li><Link href="/learn/make-a-song-from-favorite-music">Create a song inspired by your favorites</Link></li><li><Link href="/learn/how-to-become-a-dj">Start learning to DJ on your laptop</Link></li></ul><Link href="/learn">Explore all guides →</Link></section>
- <AurowallMusic/>
- <CommunityMusic/>
- <CommunitySets/>
- <section className="product-faq"><h2>Before you press play.</h2><details><summary>Is Jamloom only for learning to DJ?</summary><p>No. Learn with DJ Academy, mix in DJ Studio, create AI songs with Improvise, make free instrumental Local Remixes, turn your favorites into songs with Music DNA, shape computer audio with Live DJ, or explore AI DJ’s original party sets. Each has its own workspace.</p></details><details><summary>Can Live DJ work with anything playing on my computer?</summary><p>Live DJ can process a permitted app through the Mac companion or audio from a supported browser tab. Availability depends on your system, browser and source permissions. You keep using the source app to play, pause or change tracks.</p></details><details><summary>Can I learn to DJ as a complete beginner?</summary><p>Yes. Start with the free Academy introduction to learn your first crossfade. Practise on the same decks at your own pace, then use the studio to try your own mixes. <Link prefetch={false} href="/learn/how-to-become-a-dj">Read the beginner DJ guide.</Link></p></details><details><summary>Is learning to DJ with Jamloom free?</summary><p>The beginner introduction and local DJ studio are free. The full Academy course is planned as a one-time purchase; complete-course sales are not open yet.</p></details><details><summary>Do you upload my DJ tracks or microphone recordings?</summary><p>Local DJ playback and Local Remixes stay on your device. Improvise uploads your recording only after you confirm cloud creation. Cloud songs and AI DJ sets are private by default. They appear in Community only when you choose public sharing.</p></details><details><summary>Can I mix without a controller?</summary><p>Yes. Open the DJ studio for real on-screen controls, keyboard shortcuts and ten cleared practice tracks.</p></details><details><summary>Can I take a public mix down?</summary><p>Yes. Withdraw its catalogue listing from your library at any time, without a fee. Previously downloaded copies cannot be recalled.</p></details></section>
-</div>;}
+import {HomeDemo} from './home-demo';
+import './home.css';
+
+const title='Jamloom — AI Song Generator from Your Favorite Music';
+const description='Turn your favorite artists and songs into an original AI song with vocals. Press Generate once and get an email when it’s ready. Also: free DJ studio and lessons.';
+const base=pageMetadata(title,description,'/');
+export const metadata:Metadata={...base,title:{absolute:title}};
+
+const dna=songCreditPrice('music-dna').credits,improvise=songCreditPrice('improvise').credits;
+// Plain, quotable answers: shown on the page and published as FAQPage data for search and AI answers.
+const faq:[string,string][]=[
+ ['What is Jamloom?',`Jamloom is an AI music app. Music DNA turns favorite artists and songs into an original song of about two minutes with AI vocals. Improvise turns a recorded sound into a 30–45 second arrangement. Jamloom also has a free in-browser DJ studio, DJ lessons and a singing course.`],
+ ['How long does a song take?','Usually 5–10 minutes when the music studio needs to start, and a few minutes when it is already running. You press Generate once, can keep browsing or close the page, and get an email when your song is ready.'],
+ ['How much does it cost?',`A Music DNA song costs ${dna} credits and an Improvise arrangement ${improvise} credits; private songs cost 25% more. ${TOP_UP.credits} credits cost $${TOP_UP.cents/100}, or the Creator plan gives ${CREATOR_PLAN.credits} credits for $${CREATOR_PLAN.cents/100} a month. Credits never expire, and failed songs return their credits.`],
+ ['Are my songs private?','Your songs are private unless you choose to share them. Public songs appear in Community; you can remove them at any time.'],
+];
+
+export default function Home(){
+ const more=homeProducts.filter(p=>!['music-dna','improvise'].includes(p.slug));
+ const schema={'@context':'https://schema.org','@graph':[
+  {'@type':'Organization','@id':origin+'/#organization',name:'Jamloom',url:origin,logo:origin+'/studio/icon.svg',email:'support@jamloom.com'},
+  {'@type':'WebSite','@id':origin+'/#website',name:'Jamloom',url:origin,publisher:{'@id':origin+'/#organization'}},
+  {'@type':'FAQPage',mainEntity:faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))},
+ ]};
+ return <div className="home">
+  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/>
+
+  <section className="home-hero" aria-labelledby="home-title">
+   <div className="home-hero-copy">
+    <h1 id="home-title">Turn the songs you love into <span>a song that’s yours.</span></h1>
+    <p className="home-lede">Jamloom is an AI song generator. Add a few favorite artists or songs, press Generate once, and get an original song with AI vocals — in your language.</p>
+    <div className="home-actions">
+     <Link prefetch={false} className="primary home-cta" href="/music-dna">Make your song</Link>
+     <a className="home-link" href="#songs">Hear songs people made</a>
+    </div>
+    <p className="home-note">{dna} credits a song · {TOP_UP.credits} credits for ${TOP_UP.cents/100} · We email you when it’s ready</p>
+   </div>
+   <HomeDemo/>
+  </section>
+
+  <section className="home-steps" aria-labelledby="steps-title">
+   <h2 id="steps-title">One click. Then go do something else.</h2>
+   <ol>
+    <li><strong>Pick your favorites</strong><span>Search any artist or song, or bring a YouTube playlist.</span></li>
+    <li><strong>Press Generate</strong><span>We start the music studio, then write, compose and sing your song.</span></li>
+    <li><strong>Get an email</strong><span>Browse the site or close it. A progress bar follows you, and we email you when it’s ready.</span></li>
+   </ol>
+  </section>
+
+  <SongGallery id="songs" scope="showcase" title="Songs made with Jamloom" product="music-dna" rows={3}/>
+
+  <section className="home-ways" aria-labelledby="ways-title">
+   <h2 id="ways-title">Start from your favorites, or from a sound.</h2>
+   <div className="home-way">
+    <h3>Music DNA</h3>
+    <p>Pick the artists and songs you love. Get an original two-minute song with AI vocals, inspired by their style.</p>
+    <Link prefetch={false} href="/music-dna">Make a song from favorites</Link>
+   </div>
+   <div className="home-way">
+    <h3>Improvise</h3>
+    <p>Record a hum, a beat or a sentence. Jamloom turns it into a 30–45 second arrangement around your sound.</p>
+    <Link prefetch={false} href="/improvise">Make a song from a sound</Link>
+   </div>
+  </section>
+
+  <section className="home-price" aria-labelledby="price-title">
+   <div>
+    <h2 id="price-title">Simple credits. They never expire.</h2>
+    <p>A Music DNA song is {dna} credits and Improvise is {improvise}; private songs cost 25% more. If a song fails, its credits come back.</p>
+   </div>
+   <dl>
+    <div><dt>Top-up</dt><dd><strong>${TOP_UP.cents/100}</strong> {TOP_UP.credits} credits</dd></div>
+    <div><dt>Creator</dt><dd><strong>${CREATOR_PLAN.cents/100}</strong> {CREATOR_PLAN.credits} credits a month</dd></div>
+   </dl>
+   <Link prefetch={false} className="home-link" href="/pricing">See pricing</Link>
+  </section>
+
+  <section className="home-more" aria-labelledby="more-title">
+   <h2 id="more-title">More ways to make music</h2>
+   <ul>{more.map(p=><li key={p.slug}><Link prefetch={false} href={p.href}><strong>{p.name}</strong><span>{p.description}</span><small>{p.badge}</small></Link></li>)}</ul>
+  </section>
+
+  <section className="home-faq" aria-labelledby="faq-title">
+   <h2 id="faq-title">Questions</h2>
+   {faq.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}
+   <p className="home-guides">Guides: <Link href="/learn/make-a-song-from-favorite-music">Make a song from your favorite music</Link> · <Link href="/learn/record-sound-for-ai-song">Record a sound for an AI song</Link> · <Link href="/learn/how-to-become-a-dj">Start learning to DJ</Link> · <Link href="/learn">All guides</Link></p>
+  </section>
+
+  <section className="home-close" aria-labelledby="close-title">
+   <h2 id="close-title">Your next favorite song doesn’t exist yet.</h2>
+   <Link prefetch={false} className="primary home-cta" href="/music-dna">Make your song</Link>
+  </section>
+ </div>;
+}

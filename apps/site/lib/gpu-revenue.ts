@@ -37,15 +37,21 @@ export async function gpuRevenueBalance(db:Query){
   (COALESCE((SELECT sum(allocation_micros) FROM gpu_payment_proceeds WHERE settled AND NOT revoked),0)+
    COALESCE((SELECT sum(CASE WHEN net_usd_micros<0 THEN floor(net_usd_micros::numeric/5)
     WHEN state='settled' AND NOT EXISTS(SELECT 1 FROM apple_finance_holds) THEN floor(settled_usd_micros::numeric/5) ELSE 0 END)
-    FROM apple_finance_reports),0))::text AS funded,
+    FROM apple_finance_reports),0)+
+   -- Owner decision 2026-11-15: a verified live App Store purchase funds 20% of its conservative net
+   -- immediately, as an advance until that month's Apple payment is confirmed (then the report counts).
+   COALESCE((SELECT sum(floor(l.net_micros::numeric/5)) FROM credit_lots l
+    WHERE l.provider='apple_live' AND NOT EXISTS(SELECT 1 FROM apple_finance_holds)
+     AND NOT EXISTS(SELECT 1 FROM purchase_holds h WHERE h.provider=l.provider AND h.receipt=l.receipt)
+     AND to_char(l.created_at AT TIME ZONE 'UTC','YYYY-MM')>COALESCE((SELECT max(fiscal_month) FROM apple_finance_reports WHERE state='settled'),'0000-00')),0))::text AS funded,
   COALESCE((SELECT sum(micros) FROM gpu_revenue_reservations),0)::text AS reserved`)).rows[0];
  const available=BigInt(r.funded)-BigInt(r.reserved);
  if(available>BigInt(Number.MAX_SAFE_INTEGER)||available<BigInt(Number.MIN_SAFE_INTEGER))throw Error('GPU funding exceeds supported range');
  return Number(available);
 }
-export async function providerFundingFresh(db:Query,endpoint:string,needed:number,now=Date.now()){
+export async function providerFundingFresh(db:Query,endpoint:string,needed:number,now=Date.now(),maxAgeMs=600000){
  const r=(await db.query('SELECT balance_micros,checked_at FROM gpu_provider_funding WHERE endpoint=$1',[endpoint])).rows[0];
- return !!r&&Number(r.checked_at)<=now&&now-Number(r.checked_at)<600000&&Number(r.balance_micros)>=needed;
+ return !!r&&Number(r.checked_at)<=now&&now-Number(r.checked_at)<maxAgeMs&&Number(r.balance_micros)>=needed;
 }
 export async function runpodBalanceMicros(key:string,request:typeof fetch=fetch){
  const response=await request('https://api.runpod.io/graphql',{method:'POST',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},

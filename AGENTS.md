@@ -11,7 +11,7 @@ Record new owner decisions there, then update this summary.
 
 **Spending and GPU capacity**
 - Public launch permit: at most $10 over seven days (expires 2026-11-15 22:49 ET), one L4, at most thirteen $0.75 preparation cycles, automatic idle shutdown, no automatic permit renewal.
-- After the seed permit: 20% of each payment's net proceeds (after payment fees, taxes and refunds) funds GPU use, one worker. A captured live Stripe charge counts immediately (owner, 2026-11-13); refunds/disputes revoke it. Apple proceeds still count only after bank-payment confirmation. This does not renew the seed grant or authorize unbounded card top-ups.
+- After the seed permit: 20% of each payment's net proceeds (after payment fees, taxes and refunds) funds GPU use, one worker. A captured live Stripe charge counts immediately (owner, 2026-11-13); a verified live App Store purchase counts immediately on its conservative net as an advance until Apple's payment is confirmed (owner, 2026-11-15); refunds/disputes revoke both. Credit sales stay open while the guardian is healthy and Runpod is funded. GPU starts are funded: owner $10/month, Apple reviewer $3, permit, then sales share. This does not renew the seed grant or authorize unbounded card top-ups.
 - Owner principle (2026-11-13): spending is acceptable when customers pay more than it costs. Still confirm each concrete spending change with the owner.
 - Song hardware: L4 with RTX A5000 and RTX 3090 as same-price ($0.75/h) fallbacks (owner, 2026-11-15); never wider or pricier without approval.
 - After the review permit ends (2026-11-20): no new permits; customer songs use only the sales share. Owner songs may use up to $10 per UTC month of prepaid Runpod cash (owner, 2026-11-15).

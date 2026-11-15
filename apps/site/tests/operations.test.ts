@@ -7,6 +7,8 @@ test('healthy service is quiet; low, exhausted and expiring allowance are action
 });
 test('failed shutdown, stale guardian, identity mismatch and failed song/cleanup are detected',()=>{
  assert.deepEqual(operationAlerts({...healthy,guardianOK:false,shutdownFailed:true,liveFailures:1}),['guardian-stale','shutdown-unconfirmed','generation-failed']);
+ assert.deepEqual(operationAlerts({...healthy,expiresAt:null,remainingMicros:0,revenueMicros:0,providerMicros:61000000}),[],'Sales-share mode: no banked revenue is normal');
+ assert.deepEqual(operationAlerts({...healthy,expiresAt:null,remainingMicros:0,revenueMicros:0,providerMicros:500000}),['budget-unavailable'],'Empty provider account blocks everything');
  assert.deepEqual(operationAlerts({...healthy,providerMismatch:true}),['shutdown-unconfirmed']);assert.deepEqual(operationAlerts({...healthy,overdueCleanup:1}),['generation-failed']);
 });
 test('expired permit with zero workers is safe shutdown; remaining workers alert independently',()=>{
@@ -24,7 +26,8 @@ test('transport failure remains a failure; missing address never silently sends 
 test('approved native reload suppresses manual recharge reminders without increasing funded capacity',()=>{
  const s={...healthy,revenueMicros:15000000,providerMicros:1000000,providerAutoPay:{enabled:true,amountUSD:25,thresholdUSD:10,matchesApprovedPolicy:true}};
  assert.deepEqual(operationAlerts(s),[]);
- assert.deepEqual(operationAlerts({...s,remainingMicros:0}),['budget-unavailable']);
+ assert.deepEqual(operationAlerts({...s,remainingMicros:0}),[],'Sales-share mode: funded provider, no banked revenue is not an incident');
+ assert.deepEqual(operationAlerts({...s,providerMicros:0}),['budget-unavailable']);
  assert.deepEqual(operationAlerts({...s,providerAutoPay:{...s.providerAutoPay,thresholdUSD:100,matchesApprovedPolicy:false}}),['provider-autopay-mismatch']);
  const {providerAutoPay,...manual}=s;assert.deepEqual(operationAlerts(manual),['provider-recharge-ready']);
 });

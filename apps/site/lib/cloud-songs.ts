@@ -1,4 +1,5 @@
 import {checkedDnaStyle} from './dna-style';
+import {adminAccount} from './admin-access';
 import {enqueueEmail} from './notifications';
 import {CloudCapacity,capacityProvider} from './cloud-capacity';
 import {songCreditPrice} from './credit-catalog';
@@ -68,7 +69,8 @@ export class CloudSongs{
   const frozen=(await this.commerce.pool.query('SELECT frozen FROM credit_wallets WHERE owner_id=$1',[owner])).rows[0];
   const balance=await this.commerce.wallet.balance(owner);
   if(!user||user.suspended||frozen?.frozen)throw new AudioError('This account cannot prepare song creation.',403);
-  if(balance.available<songCreditPrice(this.commerce.product).credits)throw new AudioError('You need more credits before preparing this song.',402);
+  // The owner is credit-exempt; everyone else needs at least one song's credits before a GPU starts.
+  if(balance.available<songCreditPrice(this.commerce.product).credits&&!await adminAccount(this.commerce.pool,owner))throw new AudioError('You need more credits before preparing this song.',402);
   return {state:await this.capacity.prepare(owner,this.config.review),creditsUsed:0};
  }
  async available(owner:string|null){
@@ -187,7 +189,7 @@ export class CloudSongs{
     // Disabled endpoints reject submissions; keep the durable queue without an ambiguous paid intent.
     if(this.capacity){
      // The GPU stopped before it was ready (usually no free card): release the credits now.
-     if(['off','unavailable'].includes(await this.capacity.state())){await this.commerce.finish(id,'failed');await this.notify(row,'failed');await this.cleanup(run);return;}
+     if(['off','unavailable','stopping'].includes(await this.capacity.state())){await this.commerce.finish(id,'failed');await this.notify(row,'failed');await this.cleanup(run);return;}
      if(!await this.capacity.ready((this.config.ttlSeconds+120)*1000))return;
     }
     else if(!await this.provider.dispatchEnabled())return;

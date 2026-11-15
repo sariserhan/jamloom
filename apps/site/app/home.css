@@ -1,0 +1,85 @@
+/* Home: one promise, one action. Incumbent palette (ink #101211, paper #f0f3eb, lime #c3ef69). */
+.home{--home-ink:#101211;--home-paper:#f0f3eb;--home-soft:#c9d0c3;--home-line:#2f382f;--home-panel:#151a16;
+ max-width:1200px;margin-inline:auto;padding-bottom:40px;color:var(--home-paper)}
+.home ::selection{background:#c3ef69;color:#101211}
+.home h2{font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.03em;margin:0 0 20px;text-wrap:balance}
+.home section{margin-block:clamp(72px,10vw,128px)}
+.home a:focus-visible,.home button:focus-visible,.home summary:focus-visible{outline:3px solid #c3ef69;outline-offset:3px;border-radius:6px}
+
+/* Hero */
+.home-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,72px);align-items:center;margin-top:clamp(40px,7vw,96px)!important}
+.home-hero h1{font-size:clamp(42px,6.2vw,84px);line-height:.98;letter-spacing:-.035em;margin:0 0 24px;text-wrap:balance;font-weight:800}
+.home-hero h1 span{color:#c3ef69}
+.home-lede{font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:var(--home-soft);max-width:34em;margin:0 0 32px}
+.home-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px}
+.home-cta{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:14px 30px;border-radius:10px;font-size:18px;text-decoration:none}
+.home-link{color:var(--home-paper);font-weight:600;text-decoration:underline;text-decoration-color:#c3ef69;text-underline-offset:6px;text-decoration-thickness:2px}
+.home-link:hover{color:#c3ef69}
+.home-note{margin:28px 0 0;font-size:15px;color:var(--home-soft);font-variant-numeric:tabular-nums}
+
+/* Hero demo: favorites flow into a real song */
+.home-demo{margin:0;padding:clamp(24px,3vw,36px);border-radius:16px;background:radial-gradient(120% 90% at 100% 0,#1f2b1c 0,var(--home-panel) 60%);box-shadow:0 30px 60px -30px #000,0 2px 0 #ffffff08 inset}
+.home-demo-label{display:block;font-size:13px;color:var(--home-soft);margin-bottom:10px}
+.home-demo-chips{display:flex;flex-wrap:wrap;gap:8px}
+.home-demo-chips span{padding:8px 14px;border-radius:999px;background:#222a22;font-size:15px}
+.home-demo-flow{display:block;width:20px;height:34px;margin:18px 0 18px 14px;color:#c3ef69}
+.home-demo-song{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;gap:18px 18px;align-items:center}
+.home-demo-play{width:64px;height:64px;border-radius:50%;border:0;background:#c3ef69;color:#101211;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 24px -8px #c3ef6999;transition:transform .2s cubic-bezier(.16,1,.3,1)}
+.home-demo-play:hover{transform:scale(1.05)}.home-demo-play svg{width:28px;height:28px}
+.home-demo-meta strong{display:block;font-size:clamp(24px,2.4vw,32px);letter-spacing:-.02em;line-height:1.1;margin-bottom:4px}
+.home-demo-meta>span:last-child{color:var(--home-soft);font-size:15px}
+.home-demo-bars{grid-column:1/-1;display:flex;align-items:flex-end;gap:5px;height:44px}
+.home-demo-bars i{flex:1;height:30%;border-radius:3px;background:#3b4a35;transform-origin:bottom;transition:background .3s}
+.home-demo[data-playing=true] .home-demo-bars i{background:#c3ef69;animation:home-bar .9s cubic-bezier(.16,1,.3,1) infinite alternate}
+.home-demo-bars i:nth-child(3n){height:55%}.home-demo-bars i:nth-child(4n+1){height:80%}.home-demo-bars i:nth-child(5n+2){height:42%}
+@keyframes home-bar{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
+.home-demo-error{margin:16px 0 0;color:#ffd18a}
+
+/* Steps: a sequence the reader follows, so numbers carry meaning */
+.home-steps ol{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);counter-reset:step}
+.home-steps li{counter-increment:step;display:grid;gap:8px;padding-top:22px;border-top:2px solid var(--home-line);position:relative}
+.home-steps li::before{content:counter(step);position:absolute;top:-17px;left:0;width:32px;height:32px;border-radius:50%;background:#c3ef69;color:#101211;font-weight:800;display:grid;place-items:center;font-size:15px}
+.home-steps li strong{font-size:21px;letter-spacing:-.01em;margin-top:8px}
+.home-steps li span{color:var(--home-soft);line-height:1.55}
+
+/* Two ways */
+.home-ways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
+.home-ways h2{grid-column:1/-1}
+.home-way{display:flex;flex-direction:column;gap:10px;padding-top:24px;border-top:1px solid var(--home-line)}
+.home-way h3{font-size:26px;margin:0;letter-spacing:-.02em}
+.home-way p{color:var(--home-soft);line-height:1.6;margin:0 0 6px;max-width:38em}
+.home-way a{color:#c3ef69;font-weight:650;text-underline-offset:5px}
+
+/* Price */
+.home-price{display:grid;grid-template-columns:minmax(0,1.2fr) auto auto;gap:24px 56px;align-items:center;padding:clamp(28px,4vw,48px);border-radius:16px;background:var(--home-panel)}
+.home-price h2{margin-bottom:10px}.home-price p{margin:0;color:var(--home-soft);line-height:1.6;max-width:36em}
+.home-price dl{display:flex;gap:40px;margin:0}
+.home-price dt{font-size:14px;color:var(--home-soft)}
+.home-price dd{margin:4px 0 0;font-variant-numeric:tabular-nums;color:var(--home-soft)}
+.home-price dd strong{display:block;font-size:34px;color:var(--home-paper);letter-spacing:-.02em}
+
+/* More ways: a quiet list, not a card grid */
+.home-more ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}
+.home-more li a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:18px 0;border-bottom:1px solid var(--home-line);color:inherit;text-decoration:none}
+.home-more li a:hover strong{color:#c3ef69}
+.home-more strong{font-size:19px}.home-more small{color:#c3ef69;font-size:13px;align-self:center;text-align:right}
+.home-more span{grid-column:1/-1;color:var(--home-soft);line-height:1.5}
+
+/* FAQ */
+.home-faq{max-width:820px}
+.home-faq details{border-bottom:1px solid var(--home-line);padding:6px 0}
+.home-faq summary{cursor:pointer;font-size:19px;font-weight:650;padding:14px 0;list-style-position:outside}
+.home-faq details p{color:var(--home-soft);line-height:1.65;margin:0 0 18px;max-width:68ch}
+.home-guides{margin-top:28px;color:var(--home-soft);line-height:1.8}.home-guides a{color:var(--home-paper);text-underline-offset:4px}
+
+/* Close */
+.home-close{text-align:center;padding:clamp(48px,7vw,88px) 20px;border-radius:16px;background:radial-gradient(80% 120% at 50% 0,#22311d 0,var(--home-panel) 70%)}
+.home-close h2{max-width:16em;margin-inline:auto;margin-bottom:28px}
+
+@media(max-width:900px){
+ .home-hero,.home-ways,.home-price{grid-template-columns:minmax(0,1fr)}
+ .home-steps ol{grid-template-columns:minmax(0,1fr);gap:40px}
+ .home-more ul{grid-template-columns:minmax(0,1fr)}
+ .home-price dl{gap:32px}
+}
+@media(prefers-reduced-motion:reduce){.home-demo[data-playing=true] .home-demo-bars i{animation:none}.home-demo-play{transition:none}}

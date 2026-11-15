@@ -90,6 +90,41 @@ test('revenue funding verifies cash, survives duplicate/refund events and reserv
    assert.equal(await gpuRevenueBalance(pool),before,'Owner songs never spend the sales share');
    assert.ok(Number((await pool.query('SELECT sum(cap_micros) s FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>=$2',['owner',month.getTime()])).rows[0].s)<=OWNER_GPU_MONTHLY_MICROS);
   });
+  await t.test('owner and Apple reviewer starts use their own allowances, never the permit or sales share',async()=>{
+   const liveSeed={...seed,id:'allowance-seed',startsAt:now-1000,expiresAt:now+86400000,capMicros:750000};
+   const current={...liveSeed,revenueShareBps:2000 as const};
+   const s=new CloudCapacity(pool,'fixture',CLOUD_COST_PROFILE,current,{...provider,setWorkers:async n=>{endpoint.workers={min:n,max:n};workers={...empty,...(n?{initializing:1}:{})};return structuredClone(endpoint);}},()=>now);
+   const stop=async()=>{now+=2400000;assert.equal((await s.reconcile(true)).state,'off');await s.guardianHeartbeat();};
+   await pool.query('DELETE FROM cloud_capacity_cycles WHERE owner_id=$1',['owner']);
+   await s.guardianHeartbeat();const before=await gpuRevenueBalance(pool);
+   assert.equal(await s.prepare('owner'),'preparing');await stop();
+   assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[liveSeed.id])).rows[0].reserved_micros),0,'The owner never spends the permit');
+   for(const u of ['reviewer'])await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[u,u+'@example.test']);
+   const review={enabled:true,expiresAt:now+30*86400000,owners:['reviewer'],capMicros:1500000};
+   assert.equal(await s.prepare('reviewer',review),'preparing');await stop();
+   assert.equal(await s.prepare('reviewer',review),'preparing');await stop();
+   assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[liveSeed.id])).rows[0].reserved_micros),0,'Reviewer allowance is separate from the permit');
+   assert.equal(await s.prepare('reviewer',review),'preparing','Allowance used up: the permit funds the next start');await stop();
+   assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[liveSeed.id])).rows[0].reserved_micros),750000);
+   await assert.rejects(s.prepare('reviewer',review),/unavailable/,'Then nothing is left: no sales share');
+   assert.equal(await gpuRevenueBalance(pool),before,'Neither allowance spends the sales share');
+  });
+  await t.test('a verified live App Store purchase funds 20% immediately; a refund hold removes it',async()=>{
+   await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',['iphone','iphone@example.test']);
+   const before=await gpuRevenueBalance(pool);
+   await wallet.grant('iphone',{provider:'apple_live',receipt:'apple-advance',credits:150,netMicros:8000000});
+   assert.equal(await gpuRevenueBalance(pool),before+1600000,'Advance of 20% of the conservative net');
+   await wallet.freezePurchase('apple_live','apple-advance');
+   assert.ok(await gpuRevenueBalance(pool)<=before,'A refunded App Store purchase funds nothing');
+  });
+  await t.test('sales stay open without banked GPU revenue while the provider is funded and recently read',async()=>{
+   const funding=async(ageMs:number,balance=10000000)=>{await pool.query(`INSERT INTO gpu_provider_funding(endpoint,balance_micros,checked_at) VALUES('fixture',$1,$2)
+    ON CONFLICT(endpoint) DO UPDATE SET balance_micros=excluded.balance_micros,checked_at=excluded.checked_at`,[balance,now-ageMs]);await c.guardianHeartbeat();};
+   assert(await gpuRevenueBalance(pool)<p.cycleMicros,'No banked revenue in this fixture');
+   await funding(20*60000);assert.equal(await creditCapacityForSales(pool,env,now),true,'A 20-minute-old balance read keeps the shop open');
+   await funding(40*60000);assert.equal(await creditCapacityForSales(pool,env,now),false,'A stale balance read closes sales');
+   await funding(60000,0);assert.equal(await creditCapacityForSales(pool,env,now),false,'An empty provider account closes sales');
+  });
  }finally{await pool.end();await admin.query(`DROP DATABASE "${name}" WITH (FORCE)`);await admin.end();}
 });
 
