@@ -13,7 +13,7 @@ export function musicSearchResults(value:unknown, tracksOnly=false):TasteSuggest
   seen.add(key);
   const id=kind==='Artist'?row.artistId:row.trackId,genre=typeof row.primaryGenreName==='string'?row.primaryGenreName.trim():'';
   const metadata=genre&&genre.length<=80&&!/[\u0000-\u001f\u007f]/.test(genre)&&Number.isSafeInteger(id)&&id>0?{reference,genre,source:'itunes' as const,id}:undefined;
-  (kind==='Artist'?artists:tracks).push({reference,kind,detail:typeof row.collectionName==='string'?`${row.collectionName.slice(0,100)} · iTunes`:'iTunes catalogue',...(metadata?{metadata}:{})});
+  (kind==='Artist'?artists:tracks).push({reference,kind,detail:[metadata?.genre,typeof row.collectionName==='string'?row.collectionName.slice(0,100):'',kind==='Artist'&&!metadata?'iTunes catalogue':'iTunes'].filter(Boolean).join(' · '),...(metadata?{metadata}:{})});
  }
  return tracksOnly?tracks:[...artists.slice(0,4),...tracks.slice(0,8)];
 }

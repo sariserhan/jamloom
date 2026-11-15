@@ -2,6 +2,8 @@
 
 Recent dated results, newest first (launch and operations, from November 8). Older entries: [progress archive](PROGRESS_ARCHIVE.md). Active tasks: [TODO](../TODO.md).
 
+**Private surcharge, genre labels and slimmer worker — November 15: PASS local; hosted switch in progress.** Private songs +25% (DNA 25, Improvise 13). Music search and saved favorites show genre (TOOL vs TOOL$ mix-up). Worker `fdf64e2e` (19.3 GB vs 27.2 GB) takes singer weights from Runpod's cached ACE-Step/Ace-Step1.5 at the pinned revision; 11 worker suites and 252 site tests PASS. Measured: the 12-minute cold start is image download, not model load; a song ran 184 s GPU (~$0.06).
+
 **GPU fallback rollout — November 15: PASS.** Deployed `df5da070` (Vercel Ready); headless capacity/operations/finance bundles switched to `df5da070` (hashes match manifest; guardian active, idle/off; monitor guardianOK, no alerts). Runpod endpoint now excludes only the RTX PRO 6000 MIG slice; live check PASS with L4, A5000 and 3090 each $0.75/h, workers 0/0. A song on A5000/3090 is NOT RUN yet.
 
 **GPU fallbacks, owner allowance and idle tabs — November 15: PASS local (252 unit; capacity 16, revenue 11, songs 20, admin 9 database tests).** Production song hardware accepts L4, A5000 and 3090 at ≤$0.75/h. Owner songs get a $10/UTC-month allowance after the permit and skip the daily limit; customers rely on the sales share. Display refreshes pause after 5 idle minutes so unattended tabs stop waking Neon (6 h logs: ~180–380 polls per endpoint, 16 home views). Neon at 86.8/100 CU-hours; free reset not yet done.

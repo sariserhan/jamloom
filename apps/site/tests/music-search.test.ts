@@ -19,7 +19,7 @@ test('music search exposes bounded artist/song names, not audio or artwork',()=>
  assert.throws(()=>musicSearchResults({error:'bad'}));assert.deepEqual(musicSearchResults({results:[]}),[]);
  assert.ok(musicSearchResults({results:Array.from({length:100},(_,i)=>({...results[i%2],artistName:String(i)}))}).length<=12);
  const enriched=musicSearchResults({results:[{...results[0],artistId:12,primaryGenreName:'R&B/Soul'}]});
- assert.deepEqual(enriched[0].metadata,{reference:'Beyoncé',genre:'R&B/Soul',source:'itunes',id:12});
+ assert.deepEqual(enriched[0].metadata,{reference:'Beyoncé',genre:'R&B/Soul',source:'itunes',id:12});assert.equal(enriched[0].detail,'R&B/Soul · iTunes','Genre tells same-name artists apart (TOOL vs TOOL$)');
 });
 
 test('requests use the fixed music endpoint, coalesce and cache, and expire',async()=>{

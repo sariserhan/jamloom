@@ -21,6 +21,7 @@ Record new owner decisions there, then update this summary.
 
 **Pricing and economics**
 - Catalog: Creator $35/month for 300 credits, $20 for 150-credit top-ups, nonexpiring credits, fixed operation prices. Preserve old receipts and subscriptions at their original amounts.
+- Private songs cost 25% more than public (Music DNA 25 vs 20, Improvise 13 vs 10; owner, 2026-11-15).
 - The 65% contribution-margin target is retained and not yet verified. Never report it as passing without measured evidence.
 - Admins may gift any number of credits from the Users page (audited promo lots, up to 100,000 per gift, repeatable); gifts never fund GPU spending.
 - Future web Creator collections are paused; renewal continuation stays held until economic qualification passes. Preserve paid credits and initial purchase/recovery.

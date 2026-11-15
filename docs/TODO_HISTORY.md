@@ -2,6 +2,8 @@
 
 Verbatim copy of the former `TODO.md`; only relative links were adjusted for the new location. Active work is in [TODO.md](../TODO.md).
 
+**Private surcharge, genre labels and slimmer worker — November 15: PASS local; hosted switch in progress.** Private songs +25% (DNA 25, Improvise 13). Music search and saved favorites show genre (TOOL vs TOOL$ mix-up). Worker `fdf64e2e` (19.3 GB vs 27.2 GB) takes singer weights from Runpod's cached ACE-Step/Ace-Step1.5 at the pinned revision; 11 worker suites and 252 site tests PASS. Measured: the 12-minute cold start is image download, not model load; a song ran 184 s GPU (~$0.06).
+
 **GPU fallback rollout — November 15: PASS.** Deployed `df5da070` (Vercel Ready); headless capacity/operations/finance bundles switched to `df5da070` (hashes match manifest; guardian active, idle/off; monitor guardianOK, no alerts). Runpod endpoint now excludes only the RTX PRO 6000 MIG slice; live check PASS with L4, A5000 and 3090 each $0.75/h, workers 0/0. A song on A5000/3090 is NOT RUN yet.
 
 **Neon free reset — November 15: PASS.** Owner switched Launch→Free; Neon reports a new period from 05:29:45 UTC with 0.0 CU-hours used.

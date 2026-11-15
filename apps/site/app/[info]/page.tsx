@@ -9,14 +9,14 @@ function PricingSummary(){
   {name:'Top-up',price:`$${TOP_UP.cents/100}`,per:'one time',credits:TOP_UP.credits,points:['No subscription','Credits never expire','Buy again whenever you like']},
   {name:'Creator',price:`$${CREATOR_PLAN.cents/100}`,per:'per month',credits:CREATOR_PLAN.credits,points:['Best value per credit','Credits never expire','Cancel any time'],best:true},
  ];
- const dna=songCreditPrice('music-dna').credits,imp=songCreditPrice('improvise').credits;
+ const dna=songCreditPrice('music-dna').credits,imp=songCreditPrice('improvise').credits,dnaPrivate=songCreditPrice('music-dna','private').credits,impPrivate=songCreditPrice('improvise','private').credits;
  return <><div className="pricing-cards">{plans.map(p=><section key={p.name} className={p.best?'pricing-card best':'pricing-card'}><h2>{p.name}</h2><p className="pricing-price"><strong>{p.price}</strong> {p.per}</p><p className="pricing-credits">{p.credits} credits</p><ul>{p.points.map(x=><li key={x}>{x}</li>)}</ul></section>)}</div>
-  <h2>What things cost</h2><div className="admin-table"><table><thead><tr><th>You make</th><th>Credits</th><th>Creator plan covers</th></tr></thead><tbody>
-   <tr><td>Music DNA song (about 2 minutes, with vocals)</td><td>{dna}</td><td>{Math.floor(CREATOR_PLAN.credits/dna)} songs a month</td></tr>
-   <tr><td>Improvise arrangement (30–45 seconds)</td><td>{imp}</td><td>{Math.floor(CREATOR_PLAN.credits/imp)} a month</td></tr>
-   <tr><td>Replaying or downloading something you made</td><td>Free</td><td>—</td></tr>
+  <h2>What things cost</h2><div className="admin-table"><table><thead><tr><th>You make</th><th>Public</th><th>Private</th><th>Creator plan covers (public)</th></tr></thead><tbody>
+   <tr><td>Music DNA song (about 2 minutes, with vocals)</td><td>{dna}</td><td>{dnaPrivate}</td><td>{Math.floor(CREATOR_PLAN.credits/dna)} songs a month</td></tr>
+   <tr><td>Improvise arrangement (30–45 seconds)</td><td>{imp}</td><td>{impPrivate}</td><td>{Math.floor(CREATOR_PLAN.credits/imp)} a month</td></tr>
+   <tr><td>Replaying or downloading something you made</td><td>Free</td><td>Free</td><td>—</td></tr>
   </tbody></table></div>
-  <p>Public or private, a song costs the same. If a song fails, its credits come back automatically.</p>
+  <p>Public songs appear in Community; private songs are only for you and cost 25% more. If a song fails, its credits come back automatically.</p>
   <p className="product-actions"><a className="primary" href="/account/credits">Get credits →</a></p></>;
 }
 export function generateStaticParams(){return Object.keys(information).map(info=>({info}));}

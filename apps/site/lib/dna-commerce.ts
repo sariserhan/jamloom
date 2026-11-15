@@ -28,7 +28,7 @@ export class DnaCommerce{
  get product(){return this.options.product??'music-dna';}
  async quote(owner:string,profile:unknown,visibility:DnaVisibility){
   const budget=this.options.budget??{costCapMicros:COST_CAP,maxRuntimeMs:DNA_RUNTIME_MS,hourlyMicros:100000,fixedCostMicros:25000};
-  const price=await this.wallet.quote(owner,budget.costCapMicros,TARGET_MARGIN_BPS,visibility,songCreditPrice(this.product));
+  const price=await this.wallet.quote(owner,budget.costCapMicros,TARGET_MARGIN_BPS,visibility,songCreditPrice(this.product,visibility));
   const quote={version:1 as const,owner,expiresAt:Date.now()+300000,...price,
    job:{inputSha256:hash(profile),planSha256:hash([this.product+'-v2',CREDIT_CATALOG_VERSION,visibility,!!this.options.live]),maxRuntimeMs:budget.maxRuntimeMs,hourlyMicros:budget.hourlyMicros,fixedCostMicros:budget.fixedCostMicros}};
   return {...price,expiresAt:quote.expiresAt,token:signQuote(quote,this.secret),mode:this.options.budget?'cloud':'local_credit_rehearsal'};
@@ -39,7 +39,7 @@ export class DnaCommerce{
   if(q.visibility!==visibility||q.job.inputSha256!==hash(profile)||q.job.planSha256!==hash([this.product+'-v2',CREDIT_CATALOG_VERSION,visibility,!!this.options.live])||q.costCapMicros!==(this.options.budget?.costCapMicros??COST_CAP))
    throw new AudioError('Your list or sharing choice changed. Get a new quote.');
   await this.wallet.reserve(owner,'dna_'+id,q.costCapMicros,q.marginBps,undefined,visibility,q.credits,{
-   fixedPrice:songCreditPrice(this.product),fingerprint:hash([profile,visibility,this.product,!!this.options.live]),save:async(db,reservation)=>{
+   fixedPrice:songCreditPrice(this.product,visibility),fingerprint:hash([profile,visibility,this.product,!!this.options.live]),save:async(db,reservation)=>{
     await db.query(`INSERT INTO dna_song_jobs(id,owner_id,reservation_id,profile,visibility,public_consent_at,cost_cap_micros,quoted_credits,product,billing_live)
      VALUES($1,$2,$3,$4,$5,CASE WHEN $5='public' THEN now() ELSE NULL END,$6,$7,$8,$9)`,[id,owner,reservation,JSON.stringify(profile),visibility,q.costCapMicros,q.credits,this.product,!!this.options.live]);
     if(save)await save(db);

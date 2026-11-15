@@ -274,7 +274,17 @@ def retain_rejected_audio(work,value):
         if response.status not in (200,201,204):raise ValueError('Diagnostic staging failed')
 
 
+def provide_singer():
+    # HF_HUB_OFFLINE is set image-wide; only this pinned fallback download may go online.
+    venv = ROOT/'build-style-training/upstream/.venv/bin/python'
+    env = {**os.environ, 'HF_HUB_OFFLINE': '0'}
+    result = subprocess.run([str(venv), '-c', 'from services.runpod.prepare_models import link_singer; print(link_singer())'],
+        cwd=ROOT, env=env, check=True, capture_output=True, text=True, timeout=900)
+    print('singer weights:', result.stdout.strip().splitlines()[-1], flush=True)
+
+
 if __name__ == '__main__':
     sys.path.insert(0, str(ROOT/'scripts'))
+    provide_singer()
     import runpod
     runpod.serverless.start({'handler': handler})

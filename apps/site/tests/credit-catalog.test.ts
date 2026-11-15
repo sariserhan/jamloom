@@ -10,7 +10,7 @@ import {CREDIT_CATALOG_VERSION,assertAllocationBudget,assertCatalogBudget,songCr
 
 test('catalog prices are independent of channel, privacy, style and voice; live budgets fail closed',()=>{
  const price=songCreditPrice('improvise');assert.equal(price.credits,10);
- assert.equal(songCreditPrice('music-dna').credits,20);
+ assert.equal(songCreditPrice('music-dna').credits,20);assert.equal(songCreditPrice('music-dna','private').credits,25);assert.equal(songCreditPrice('improvise','private').credits,13);assert.equal(songCreditPrice('improvise','public').credits,10);
  const lots=[{id:'apple',credits:150,available:150,net_micros:4_000_000}];
  assert.equal(fixedAllocation(lots,10)[0].n,10);
  assert.equal(fixedAllocation([{...lots[0],net_micros:9_000_000}],10)[0].n,10);

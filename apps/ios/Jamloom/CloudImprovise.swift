@@ -288,7 +288,7 @@ struct CloudSongActions: View {
     var body: some View {
         if cloud.job == nil {
             Toggle("Keep this song private", isOn: $cloud.keepPrivate).disabled(cloud.controlsLocked || cloud.quote != nil)
-            Label(cloud.keepPrivate ? "Only you can listen. Private and public songs cost the same." : "Your finished song appears in Community on the website and app.", systemImage: cloud.keepPrivate ? "lock.fill" : "globe").font(.footnote).foregroundStyle(.secondary)
+            Label(cloud.keepPrivate ? "Only you can listen. Private songs cost 25% more than public ones." : "Your finished song appears in Community on the website and app.", systemImage: cloud.keepPrivate ? "lock.fill" : "globe").font(.footnote).foregroundStyle(.secondary)
         }
         if !cloud.message.isEmpty { Text(cloud.message).accessibilityIdentifier("cloudSongStatus") }
         if !cloud.available && !cloud.active {

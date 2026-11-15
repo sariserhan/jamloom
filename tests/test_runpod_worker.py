@@ -297,3 +297,38 @@ class WorkerTests(unittest.TestCase):
 
 
 if __name__ == '__main__':unittest.main()
+
+
+class SingerWeightTests(unittest.TestCase):
+    """Runpod cached model supplies singer weights only at the exact pinned revision."""
+    def load(self):
+        import types
+        sys.modules.setdefault('huggingface_hub', types.SimpleNamespace(snapshot_download=None))
+        spec = importlib.util.spec_from_file_location('prepare_models', ROOT/'services/runpod/prepare_models.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module); return module
+
+    def test_cache_hit_links_pinned_snapshot_and_miss_downloads(self):
+        pm = self.load()
+        revision = json.loads((ROOT/'assets/manifests/singing-model.json').read_text())['weight_revision']
+        parts = ('README.md', 'config.json') + pm.SINGER_COMPONENTS
+        with tempfile.TemporaryDirectory() as folder:
+            base = Path(folder); cache = base/'snapshots'; calls = []
+            for p in parts:
+                path = cache/revision/p
+                (path.mkdir(parents=True) if p in pm.SINGER_COMPONENTS else (path.parent.mkdir(parents=True, exist_ok=True), path.write_text('x')))
+            self.assertEqual(pm.link_singer(base/'hit', cache, calls.append), 'runpod-cache')
+            self.assertEqual(calls, [])
+            for p in parts:
+                self.assertEqual((base/'hit/checkpoints'/p).resolve(), (cache/revision/p).resolve())
+            self.assertEqual(pm.link_singer(base/'hit', cache, calls.append), 'baked')
+            (cache/'other-revision').mkdir()
+            self.assertEqual(pm.link_singer(base/'miss', base/'empty', calls.append), 'downloaded')
+            self.assertEqual(calls, list(pm.SINGER_COMPONENTS))
+            calls.clear()
+            (cache/revision/'vae').rmdir()
+            self.assertEqual(pm.link_singer(base/'partial', cache, calls.append), 'downloaded', 'An incomplete cache is never used')
+
+    def test_image_no_longer_bakes_singer_weights(self):
+        dockerfile = (ROOT/'services/runpod/Dockerfile').read_text()
+        self.assertNotIn("singer('acestep-v15-turbo')", dockerfile)
+        self.assertIn('provide_singer()', (ROOT/'services/runpod/handler.py').read_text())

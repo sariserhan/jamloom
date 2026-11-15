@@ -20,9 +20,11 @@ export const TARGET_MARGIN_BPS = 6500;
 // Conservative planning floor includes the lowest supported channel; not a measured provider cost.
 export const NET_MICROS_PER_CREDIT_FLOOR = Math.min(...[CREATOR_PLAN,TOP_UP].map(p=>Math.floor(p.cents*10000*.4/p.credits)));
 export type FixedCreditPrice = {version:typeof CREDIT_CATALOG_VERSION;credits:number};
-export function songCreditPrice(product:'improvise'|'music-dna'):FixedCreditPrice {
+// Owner decision 2026-11-15: private songs cost 25% more (rounded up); public keeps the base price.
+export function songCreditPrice(product:'improvise'|'music-dna',visibility:'public'|'private'='public'):FixedCreditPrice {
   // One delivered arrangement, throughout the currently supported duration range.
-  return {version:CREDIT_CATALOG_VERSION,credits:product==='improvise'?10:20};
+  const base=product==='improvise'?10:20;
+  return {version:CREDIT_CATALOG_VERSION,credits:visibility==='private'?Math.ceil(base*1.25):base};
 }
 export const DJ_CREDITS_PER_MINUTE = 2;
 export function fixedAllocation(lots:{id:string;credits:number;net_micros:number|string;available:number}[],count:number){

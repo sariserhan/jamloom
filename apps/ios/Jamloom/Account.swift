@@ -388,8 +388,8 @@ struct AccountView: View {
                     }
                     Section("Your plan") {
                         if snapshot.sandboxReview == true { Text("Apple sandbox review account · Test credits only") }
-                        Text("Creator adds 300 credits each month. All paid credits remain usable without expiry, even after cancellation. Private and public generation cost the same.")
-                        Text("Improvise: 10 credits per arrangement. Music DNA: 20 credits per song. Playback and downloads of existing results cost no extra credits.")
+                        Text("Creator adds 300 credits each month. All paid credits remain usable without expiry, even after cancellation. Private songs cost 25% more than public ones.")
+                        Text("Improvise: 10 credits per arrangement (13 private). Music DNA: 20 credits per song (25 private). Playback and downloads of existing results cost no extra credits.")
                         ForEach(Array((snapshot.subscriptions ?? []).enumerated()), id: \.offset) { _, subscription in
                             Text("Creator · \(subscription.provider.hasPrefix("apple") ? "Apple" : "Website") · \(subscription.status)\(subscription.cancel_at_period_end ? " · Renewal cancelled" : "")")
                         }

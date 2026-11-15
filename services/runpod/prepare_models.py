@@ -26,6 +26,35 @@ def singer(component):
         allow_patterns=['README.md', 'config.json', component+'/*'])
 
 
+SINGER_COMPONENTS = ('acestep-v15-turbo', 'acestep-5Hz-lm-1.7B', 'Qwen3-Embedding-0.6B', 'vae')
+# Runpod "cached models" places the Hugging Face repo here on hosts that already hold it.
+RUNPOD_CACHE = Path('/runpod-volume/huggingface-cache/hub/models--ACE-Step--Ace-Step1.5/snapshots')
+
+
+def link_singer(upstream=ROOT/'build-style-training/upstream', cache=RUNPOD_CACHE, download=singer):
+    """Provide the pinned singer weights at startup without baking 8 GB into the image.
+
+    Uses Runpod's cached snapshot only when its directory is exactly the pinned revision;
+    otherwise downloads that revision. runtime() still checks every weight's SHA-256
+    before singing, so a wrong or corrupted copy fails instead of changing the sound.
+    """
+    target = upstream/'checkpoints'
+    if all((target/c).is_dir() for c in SINGER_COMPONENTS):
+        return 'baked'
+    revision = json.loads((ROOT/'assets/manifests/singing-model.json').read_text())['weight_revision']
+    snapshot = cache/revision
+    parts = ('README.md', 'config.json') + SINGER_COMPONENTS
+    if all((snapshot/p).exists() for p in parts):
+        target.mkdir(parents=True, exist_ok=True)
+        for p in parts:
+            if not (target/p).exists():
+                (target/p).symlink_to(snapshot/p)
+        return 'runpod-cache'
+    for c in SINGER_COMPONENTS:
+        download(c)
+    return 'downloaded'
+
+
 def planner():
     fetch('lyric-planner-cuda.json', ROOT/'build-style-training/lyric-planner-cuda')
 
@@ -52,7 +81,8 @@ def finish():
     for name, receipt in speech['files'].items():
         if digest(target/name) != receipt['sha256']:
             raise ValueError('Speech model checksum mismatch')
-    runtime(ROOT/'build-style-training/upstream')
+    # Singer weights arrive at startup (link_singer); runtime() verifies them before each song.
+    runtime(ROOT/'build-style-training/upstream', singer_weights=False)
     print('PASS: pinned DNA worker models verified')
 
 

@@ -19,10 +19,8 @@ COPY scripts/generation_timing.py scripts/song_duration.py scripts/vocal_identit
 COPY assets/manifests/improvise-energy.json assets/manifests/dna-style-reviews.json assets/manifests/song-durations.json assets/manifests/singing-model.json assets/manifests/lyric-planner-cuda.json assets/manifests/dna-auditor.json assets/manifests/dna-directions.json assets/manifests/dna-languages.json assets/manifests/word-timing-tiny.json assets/manifests/spleeter-hosted.json ./assets/manifests/
 COPY services/runpod/handler.py services/runpod/pipeline.py services/runpod/prepare_models.py ./services/runpod/
 ENV PATH="/opt/jamloom/build-style-training/upstream/.venv/bin:$PATH"
-# GHCR limits individual layers to 10 GB; keep each model download separate.
-RUN python -c "from services.runpod.prepare_models import singer; singer('acestep-v15-turbo')"
-RUN python -c "from services.runpod.prepare_models import singer; singer('acestep-5Hz-lm-1.7B')"
-RUN python -c "from services.runpod.prepare_models import singer; singer('Qwen3-Embedding-0.6B'); singer('vae')"
+# Singer weights (~8 GB) are not baked in: Runpod's cached model for ACE-Step/Ace-Step1.5
+# supplies them at startup (prepare_models.link_singer), with a pinned download fallback.
 RUN python -c "from services.runpod.prepare_models import planner; planner()"
 RUN python services/runpod/prepare_models.py && mkdir -p renders \
     && python -c "import torch, transformers, faster_whisper; assert torch.__version__.startswith('2.10.0')" \

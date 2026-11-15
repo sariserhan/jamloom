@@ -1,4 +1,5 @@
 'use client';
+import {songCreditPrice} from '../../lib/credit-catalog';
 import {CapacityPreparation} from '../capacity-preparation';
 import {generationAccount,GenerationAccountNotice,type GenerationAccount} from '../generation-account';
 import {LanguageFilter,LanguageCollection} from '../language-filter';
@@ -45,7 +46,7 @@ export function TasteNotebook(){
  const taste=automaticTaste(profile),locked=busy||rendering||playlistBusy;
  const publicConsent=visibility==='public';
  const selectionKey=favoriteKey(snapshot)+':'+visibility;
- const generationPrice=quote?.key===selectionKey?quote.credits:20;
+ const generationPrice=quote?.key===selectionKey?quote.credits:songCreditPrice('music-dna',visibility).credits;
  useEffect(()=>{setQuote(current=>current?.key===selectionKey?current:null);requestId.current=null;},[selectionKey]);
  const analysis=useRef<AbortController|null>(null),writable=useRef(false),mounted=useRef(true);
  useEffect(()=>{try{const old=localStorage.getItem('jamloom-taste-v1');if(old)setProfile(favoriteList(validateTaste(JSON.parse(old))));writable.current=true;}catch{setMessage('Saved favorites could not be read. You can start a new list.');}finally{setLoaded(true);}},[]);
@@ -185,7 +186,7 @@ export function TasteNotebook(){
  <PlaylistPicker disabled={locked||!loaded} onSearch={text=>setPlaylistQuery({text})} onAdd={addPlaylist} onBusy={setPlaylistBusy}/>
  <FavoriteSearch saved={profile.references} disabled={locked||!loaded} onSelect={(reference,metadata)=>{addSong(reference,metadata);setPlaylistQuery(null);}} playlistQuery={playlistQuery}/>
  <div className="dna-favorites">{[...new Set(profile.references)].slice(0,favoriteCount).map(reference=><div className="dna-favorite" role="group" aria-label={reference} key={reference}>
-  <span className="dna-favorite-icon" aria-hidden="true">♫</span><strong>{reference}</strong><button className="secondary" disabled={locked} aria-label={`Remove favorite ${reference}`} onClick={()=>remove(reference)}>×</button>
+  <span className="dna-favorite-icon" aria-hidden="true">♫</span><strong>{reference}</strong>{profile.referenceMetadata?.find(m=>m.reference===reference)?.genre&&<small> · {profile.referenceMetadata.find(m=>m.reference===reference)!.genre}</small>}<button className="secondary" disabled={locked} aria-label={`Remove favorite ${reference}`} onClick={()=>remove(reference)}>×</button>
   <details><summary>Listen elsewhere</summary><div className="product-actions"><a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(reference)}`} target="_blank" rel="noreferrer">Find on YouTube ↗</a><a href={`https://open.spotify.com/search/${encodeURIComponent(reference)}`} target="_blank" rel="noreferrer">Find on Spotify ↗</a></div></details>
  </div>)}</div>
  {profile.references.length>favoriteCount&&<button className="secondary" onClick={()=>setFavoriteCount(n=>n+24)}>Show more favorites ({profile.references.length-favoriteCount} remaining)</button>}
@@ -211,8 +212,8 @@ export function TasteNotebook(){
  <dialog ref={prompt} className="dna-generation-dialog" aria-labelledby="dna-generation-title" onCancel={event=>{event.preventDefault();void dismissPrompt();}} onClose={()=>{setPromptOpen(false);generationButton.current?.focus();}}>
  <h2 id="dna-generation-title">Make your song</h2><p>Choose who can listen before using your credits.</p><div className="product-controls">
  <fieldset disabled={locked}><legend>Who can listen?</legend>
- <label><input type="radio" name="dna-visibility" checked={visibility==='public'} onChange={()=>{setVisibility('public');setQuote(null);requestId.current=null;}}/>Public · same price</label><p>Your finished song appears in Community on the website and app. Your favorites and account stay private.</p>
- <label><input type="radio" name="dna-visibility" checked={visibility==='private'} onChange={()=>{setVisibility('private');setQuote(null);requestId.current=null;}}/>Private · same price</label><p>Only you can listen or download.</p>
+ <label><input type="radio" name="dna-visibility" checked={visibility==='public'} onChange={()=>{setVisibility('public');setQuote(null);requestId.current=null;}}/>Public · {songCreditPrice('music-dna','public').credits} credits</label><p>Your finished song appears in Community on the website and app. Your favorites and account stay private.</p>
+ <label><input type="radio" name="dna-visibility" checked={visibility==='private'} onChange={()=>{setVisibility('private');setQuote(null);requestId.current=null;}}/>Private · {songCreditPrice('music-dna','private').credits} credits</label><p>Only you can listen or download.</p>
  </fieldset>
  <p>{quote&&quote.key===favoriteKey(snapshot)+':'+visibility?`This song: ${quote.credits} ${quote.credits===1?'credit':'credits'}.`:'20 credits per song.'} The quoted price is fixed before you start. Failed or cancelled songs return your credits.</p>
  <GenerationAccountNotice account={account} credits={generationPrice} returnTo="/music-dna" onRefresh={()=>void checkAccount()}/>
