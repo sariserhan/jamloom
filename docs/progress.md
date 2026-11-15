@@ -2,6 +2,8 @@
 
 Recent dated results, newest first (launch and operations, from November 8). Older entries: [progress archive](PROGRESS_ARCHIVE.md). Active tasks: [TODO](../TODO.md).
 
+**Stale Music DNA request fix — November 15: PASS local.** After the 20:40 refusal the page kept the refused request id in localStorage as ‘in progress’, so every visit showed ‘We couldn’t finish this time’ and cancel attempts returned 404 (five at 20:52). The page now forgets a request when the server answered with a reason, and removes a saved request that does not exist. Browser regression check PASS.
+
 **One-click queue fix — November 15: PASS local.** The owner's first one-click Generate (20:40 UTC) started the GPU but the song submit returned 503: queuing required a guardian heartbeat under 3 minutes while idle guardians check in every 30 minutes. Queuing now accepts the 35-minute idle heartbeat; dispatch still requires ready() with a fresh one. Regression test reproduces the failure before the fix.
 
 **Site-wide polish — November 15: PASS local.** Live crawl of 101 pages: no broken links. Fixed: 16 customer-visible internal/outdated phrases (listening collection, ‘paid generation not open’, preparation, qualification, owner preview, validation); tab titles for sign-in/up, checkout, practice path and each singing lesson; switched-off catalogue page and its Community filter hidden and noindexed; account page copy and link order; two side-bar callouts restyled; three intentional hardware/canvas styles recorded as design-detector exceptions (0 findings); added llms.txt. Open for the owner: an internal legal-review note on /privacy.

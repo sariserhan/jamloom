@@ -78,7 +78,10 @@ export function TasteNotebook(){
    try{
     const response=await fetch(songUrl(job),{signal:AbortSignal.any([controller.signal,AbortSignal.timeout(10000)])});
     const song=await response.json();if(stopped)return;
-    if(!response.ok){if(response.status===404&&Date.now()<checkingUntil)throw Error();if(response.status===404||response.status===409){setRendering(false);setJob(null);setProgress({state:'failed'});setMessage(song.error??'This song is unavailable. Your favorites are safe.');return;}throw Error(song.error);}
+    if(!response.ok){if(response.status===404&&Date.now()<checkingUntil)throw Error();if(response.status===404||response.status===409){
+     // The saved request never became a song: forget it so it cannot reappear on the next visit.
+     try{if(localStorage.getItem(pendingKey)===job)localStorage.removeItem(pendingKey);if(localStorage.getItem(pendingKey+'-cancel')===job)localStorage.removeItem(pendingKey+'-cancel');}catch{}
+     setRendering(false);setJob(null);requestId.current=null;setProgress({state:'failed'});setMessage(song.error??'This song is unavailable. Your favorites are safe.');return;}throw Error(song.error);}
     let cancelPending=cancelWanted.current;try{cancelPending ||= localStorage.getItem(pendingKey+'-cancel')===job;}catch{}
     if(cancelPending&&['queued','running'].includes(song.state)){const cancelled=await fetch(songUrl(job),{method:'DELETE',headers:{'X-Jamloom-DNA':'1'},signal:AbortSignal.timeout(10000)});if(!cancelled.ok)throw Error();}
     setProgress({state:song.cancelling?'cancelling':song.state,phase:song.phase,credits:song.credits});setMessage('');if(song.plan)setDraft(song.plan);
@@ -153,7 +156,9 @@ export function TasteNotebook(){
    if(readiness.mode==='cloud'){cloudRequest=requestId.current;submittingCloud.current=cloudRequest;setCloud(true);setJob(cloudRequest);setPromptOpen(false);try{localStorage.setItem(pendingKey,cloudRequest);}catch{}}
    // Retain the same request id if the response is lost; retries cannot charge or generate twice.
    const response=await fetch('/api/taste/song',{method:'POST',headers:{'Content-Type':'application/json','X-Jamloom-DNA':'1',...listenerHeaders()},body:JSON.stringify({action:'submit',profile:resolved,visibility,publicConsent,token:accepted!.token,requestId:requestId.current}),signal:AbortSignal.timeout(15000)});
-   const result=await response.json();if(!response.ok){if(response.status<500){cloudRequest=null;setJob(null);try{localStorage.removeItem(pendingKey);}catch{}}throw Error(result.error);}
+   const result=await response.json();if(!response.ok){
+    // The server answered with its reason, so no song was created; only a lost reply stays pending.
+    if(response.status<500||typeof result?.error==='string'){cloudRequest=null;setJob(null);requestId.current=null;try{localStorage.removeItem(pendingKey);}catch{}}throw Error(result.error);}
    if(!mounted.current){if(cloudRequest)try{localStorage.setItem('jamloom-dna-songs-v1',JSON.stringify([result.id]));}catch{}return;}
    if(controller.signal.aborted){await fetch(songUrl(result.id),{method:'DELETE',headers:{'X-Jamloom-DNA':'1'}});return;}
    setPromptOpen(false);setJob(result.id);announceSong(result.id,'music-dna');setProgress({state:result.state??'running',phase:result.phase??'preparing'});setMessage('');

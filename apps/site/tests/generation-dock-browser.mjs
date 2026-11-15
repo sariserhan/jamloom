@@ -32,7 +32,12 @@ try{
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'No sideways scroll on phones');
   const r=await page.goto(base+'/my-songs');assert.equal(r.status(),200);await page.getByRole('heading',{level:1,name:'Your songs'}).waitFor();
   await page.setViewportSize({width:1280,height:900});await page.screenshot({path:join(out,'my-songs.png')});
-  console.log('errors:',errors.length?errors.join(' | ').slice(0,800):'none');
+  // Regression (2026-11-15): a request the server refused must not stay 'in progress' forever.
+  await page.goto(base+'/music-dna');await page.evaluate(()=>localStorage.setItem('jamloom-dna-pending','b'.repeat(32)));
+  await page.reload();await page.waitForFunction(()=>localStorage.getItem('jamloom-dna-pending')===null,null,{timeout:90000});
+  await page.reload();await delay(3000);assert.equal(await page.evaluate(()=>localStorage.getItem('jamloom-dna-pending')),null,'Stale request does not come back');
+  console.log('stale pending request cleared');
+  console.log('errors:',errors.filter(e=>!/404/.test(e)).length?errors.join(' | ').slice(0,800):'none');
  }finally{await browser.close();}
  console.log('PASS dock and Your songs');
 }finally{server?.kill();await pool.end();await root.query(`DROP DATABASE "${name}" WITH (FORCE)`);await root.end();await rm(folder,{recursive:true,force:true});}
