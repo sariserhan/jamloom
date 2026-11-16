@@ -23,7 +23,7 @@ final class FlowTests: XCTestCase {
         XCTAssertTrue(creator.exists); XCTAssertTrue(topup.exists)
         XCTAssertTrue(creator.label.contains("$35.00/month")); XCTAssertTrue(topup.label.contains("$20.00 once"))
         XCTAssertTrue(creator.isEnabled); XCTAssertTrue(topup.isEnabled)
-        XCTAssertFalse(app.buttons["Claim 20 one-time trial credits"].exists)
+        XCTAssertFalse(app.buttons["Claim 25 one-time trial credits"].exists)
         let proof = XCTAttachment(data: XCUIScreen.main.screenshot().pngRepresentation, uniformTypeIdentifier: "public.png")
         proof.name = "Reviewer purchase offers - no purchase started"; proof.lifetime = .keepAlways; add(proof)
         // Read-only offer check: never tap a purchase, Restore, trial or generation control.

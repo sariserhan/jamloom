@@ -93,3 +93,5 @@ body:has(.generation-dock){padding-bottom:9rem}
 .site-shell:has(.music-player:not([hidden])) .generation-dock{bottom:150px}
 .site-shell:has(.music-player:not([hidden])):has(.generation-dock){padding-bottom:300px}
 .dock-cancel{background:none!important;border:1px solid #466146!important;color:#f4f8ee!important;border-radius:8px;padding:.35rem .8rem!important;min-height:0!important;font:inherit;cursor:pointer}.dock-cancel:disabled{opacity:.6;cursor:wait}
+.trial-offer{padding:1.25rem 1.4rem;margin:0 0 2rem;border:1px solid #c3ef69;border-radius:14px;background:#17220f}.trial-offer h2{margin-top:0}
+.share-video{display:block;width:min(100%,320px);aspect-ratio:9/16;height:auto;margin:12px 0;border-radius:12px;background:#000}

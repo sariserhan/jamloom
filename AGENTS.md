@@ -15,6 +15,7 @@ Record new owner decisions there, then update this summary.
 - Owner principle (2026-11-13): spending is acceptable when customers pay more than it costs. Still confirm each concrete spending change with the owner.
 - Song hardware: L4 with RTX A5000 and RTX 3090 as same-price ($0.75/h) fallbacks (owner, 2026-11-15); never wider or pricier without approval.
 - After the review permit ends (2026-11-20): no new permits; customer songs use only the sales share. Owner songs may use up to $10 per UTC month of prepaid Runpod cash (owner, 2026-11-15).
+- Free trial: 66 places of 25 credits (one free song), each with one funded GPU start, total ≤ $49.50 of the owner's $50 allocation (owner, 2026-11-16).
 - Runpod native auto-pay is approved at $25 below $10 with a $5 notification. It replenishes prepaid cash only; it is not a generation allowance.
 - Any other paid compute, new permit, worker-limit change or retry needs explicit owner approval with a concrete bound.
 - The guardian runs from the every-minute Vercel `/api/song-jobs` cron and the headless `jamloom-capacity.service`; keep both stop-only. Both check Runpod first and touch the database every tick only while capacity is active (every 30 minutes when idle) so Neon can scale to zero; start-of-capacity accepts a 35-minute heartbeat, song admission 3 minutes.

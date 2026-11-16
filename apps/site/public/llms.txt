@@ -8,15 +8,19 @@
 - [Community](https://www.jamloom.com/community): listen to songs people chose to share. Songs are private unless their creator makes them public.
 
 ## Pricing
-- [Pricing](https://www.jamloom.com/pricing): a Music DNA song costs 20 credits and an Improvise arrangement 10 credits; private songs cost 25% more. 150 credits cost $20 (one time), or the Creator plan gives 300 credits for $35 a month. Credits never expire, and songs that fail return their credits.
+- [Pricing](https://www.jamloom.com/pricing): a Music DNA song costs 20 credits and an Improvise arrangement 10 credits; private songs cost 25% more. 150 credits cost $20 (one time), or the Creator plan gives 300 credits for $35 a month. Credits never expire, and songs that fail return their credits. New accounts can claim a free first song while places last.
 
 ## Learn and mix
 - [DJ Studio](https://www.jamloom.com/dj-studio): two decks in the browser, no equipment needed, free.
 - [DJ Academy](https://www.jamloom.com/academy): learn to DJ on a laptop, starting with a free first lesson.
 - [Singing Academy](https://www.jamloom.com/singing-academy): sing originals and familiar melodies with pitch feedback.
+- [Local Remixes](https://www.jamloom.com/local-remixes): turn a short recording into instrumental remixes in your browser, free; audio stays on your device.
 - [Live DJ](https://www.jamloom.com/live-dj): mix audio playing in a supported browser tab; capture from Mac apps is in private preview.
 
 ## Guides
+- [AI song generator from your favorite artists](https://www.jamloom.com/learn/ai-song-generator-from-favorite-artists)
+- [Make a personal birthday song with AI](https://www.jamloom.com/learn/make-a-birthday-song-with-ai)
+- [Make an AI song in 50 languages](https://www.jamloom.com/learn/ai-song-in-your-language)
 - [Make a song from your favorite music](https://www.jamloom.com/learn/make-a-song-from-favorite-music)
 - [Record a sound for an AI song](https://www.jamloom.com/learn/record-sound-for-ai-song)
 - [What a Jamloom song costs](https://www.jamloom.com/learn/ai-music-credits)

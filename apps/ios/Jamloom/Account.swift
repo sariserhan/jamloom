@@ -248,7 +248,7 @@ struct AccountTaste: Decodable { let profile: TasteProfile; let revision: Int }
             struct Receipt: Decodable { let claimed: Bool }
             let result: Receipt = try await transport.request("/api/payments/apple", method: "POST", body: Data("{\"action\":\"trial\"}".utf8))
             try await fetchSnapshot()
-            message = result.claimed ? "Your 20 trial credits are ready." : "Your one-time trial has already been claimed."
+            message = result.claimed ? "Your 25 trial credits are ready." : "Your one-time trial has already been claimed."
         }
     }
     func buy(_ product: Product) async {
@@ -407,7 +407,7 @@ struct AccountView: View {
                                     }
                                 }.accessibilityIdentifier("purchase-\(product.id)")
                             }
-                            if snapshot.sandboxReview != true { Button("Claim 20 one-time trial credits") { Task { await account.claimTrial() } } }
+                            if snapshot.sandboxReview != true { Button("Claim 25 one-time trial credits") { Task { await account.claimTrial() } } }
                             Link("Terms of use", destination: URL(string: "https://www.jamloom.com/terms")!)
                             Link("Privacy policy", destination: URL(string: "https://www.jamloom.com/privacy")!)
                             if account.creditProducts.isEmpty { Text("Credit packs are temporarily unavailable."); Button("Try again") { Task { await account.loadProducts() } } }

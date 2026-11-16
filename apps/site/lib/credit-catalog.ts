@@ -15,7 +15,8 @@ export const CREDIT_CATALOGS = {
 export function creditCatalog(version:string|undefined){
  return version&&Object.hasOwn(CREDIT_CATALOGS,version)?CREDIT_CATALOGS[version as keyof typeof CREDIT_CATALOGS]:undefined;
 }
-export const TRIAL_CREDITS = 20;
+// Owner decision 2026-11-16: one free song of either visibility (private Music DNA is 25 credits).
+export const TRIAL_CREDITS = 25;
 export const TARGET_MARGIN_BPS = 6500;
 // Conservative planning floor includes the lowest supported channel; not a measured provider cost.
 export const NET_MICROS_PER_CREDIT_FLOOR = Math.min(...[CREATOR_PLAN,TOP_UP].map(p=>Math.floor(p.cents*10000*.4/p.credits)));

@@ -6,7 +6,7 @@ import {migrate} from '../lib/migrations';
 import {Wallet} from '../lib/wallet';
 import {reconcileAppleNotification} from '../lib/apple-payments';
 import {Environment,Type,NotificationTypeV2} from '@apple/app-store-server-library';
-import {CREDIT_CATALOG_VERSION,assertAllocationBudget,assertCatalogBudget,songCreditPrice,fixedAllocation} from '../lib/credit-catalog';
+import {CREDIT_CATALOG_VERSION,assertAllocationBudget,assertCatalogBudget,songCreditPrice,fixedAllocation,TRIAL_CREDITS} from '../lib/credit-catalog';
 
 test('catalog prices are independent of channel, privacy, style and voice; live budgets fail closed',()=>{
  const price=songCreditPrice('improvise');assert.equal(price.credits,10);
@@ -72,7 +72,7 @@ test('real Postgres: catalog conservation, renewals, refunds, nonexpiry, trial c
    await pool.query('UPDATE credit_trial_budgets SET max_claims=2 WHERE NOT billing_live');
    const claims=await Promise.all(Array.from({length:5},()=>wallet.claimTrial('trial1')));assert.equal(claims.filter(Boolean).length,1);
    await wallet.claimTrial('trial2');await assert.rejects(wallet.claimTrial('trial3'),/unavailable/);
-   assert.deepEqual(await wallet.balance('trial1'),{available:20,reserved:0});
+   assert.deepEqual(await wallet.balance('trial1'),{available:TRIAL_CREDITS,reserved:0});
    assert.deepEqual(await new Wallet(pool,true).balance('trial1'),{available:0,reserved:0});
    await assert.rejects(new Wallet(pool,true).claimTrial('trial1'),/unavailable/);
   });

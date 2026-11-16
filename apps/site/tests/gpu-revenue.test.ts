@@ -126,6 +126,21 @@ test('revenue funding verifies cash, survives duplicate/refund events and reserv
    now+=2400000;assert.equal((await s.reconcile(true)).state,'off');await s.guardianHeartbeat();
    assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[old.id])).rows[0].reserved_micros),0,'Old-image permit money stays unspent');
   });
+  await t.test('free-trial accounts get one funded GPU start; failed starts do not count; buyers are not trials',async()=>{
+   for(const u of ['trial1','trial2'])await pool.query('INSERT INTO "user"(id,name,email,"emailVerified") VALUES($1,$1,$2,true)',[u,u+'@example.test']);
+   await pool.query('INSERT INTO credit_trial_budgets(billing_live,max_claims) VALUES(true,50) ON CONFLICT(billing_live) DO UPDATE SET max_claims=50');
+   for(const u of ['trial1','trial2'])assert.equal(await wallet.claimTrial(u),true);
+   const before=await gpuRevenueBalance(pool);await c.guardianHeartbeat();
+   assert.equal(await c.prepare('trial1'),'preparing','Trial start is funded without sales money');
+   now+=1200001;await c.guardianHeartbeat();assert.equal((await c.reconcile(true)).state,'off');await c.guardianHeartbeat();
+   now+=86400001;await c.guardianHeartbeat();
+   assert.equal(await c.prepare('trial1'),'preparing','A start that never got a GPU does not use the trial');await shutdown();
+   now+=86400001;await c.guardianHeartbeat();
+   await assert.rejects(c.prepare('trial1'),/unavailable/,'Only one funded trial start');
+   await wallet.grant('trial2',{provider:'stripe_live',receipt:'trial2-bought',credits:150,netMicros:15000000});
+   await assert.rejects(c.prepare('trial2'),/unavailable/,'A buyer is funded by sales, not the trial');
+   assert.equal(await gpuRevenueBalance(pool),before,'Trial starts never spend the sales share');
+  });
   await t.test('sales stay open without banked GPU revenue while the provider is funded and recently read',async()=>{
    const funding=async(ageMs:number,balance=10000000)=>{await pool.query(`INSERT INTO gpu_provider_funding(endpoint,balance_micros,checked_at) VALUES('fixture',$1,$2)
     ON CONFLICT(endpoint) DO UPDATE SET balance_micros=excluded.balance_micros,checked_at=excluded.checked_at`,[balance,now-ageMs]);await c.guardianHeartbeat();};

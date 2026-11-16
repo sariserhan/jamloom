@@ -4,12 +4,12 @@ import robots from '../app/robots';
 import sitemap from '../app/sitemap';
 import {origin,features} from '../lib/product';
 
-test('metadata follows runtime launch mode and never advertises private routes',()=>{
+test('metadata follows runtime launch mode and never advertises private routes',async()=>{
  const previous=process.env.JAMLOOM_COMING_SOON;
  try{
   for(const mode of [undefined,'true','false']){
    if(mode===undefined)delete process.env.JAMLOOM_COMING_SOON;else process.env.JAMLOOM_COMING_SOON=mode;
-   const map=sitemap(),bot=robots(),rules=bot.rules;
+   const map=await sitemap(),bot=robots(),rules=bot.rules;
    assert.ok(!Array.isArray(rules));
    assert.equal(bot.sitemap,origin+'/sitemap.xml');
    assert.equal(new Set(map.map(p=>p.url)).size,map.length);
@@ -30,7 +30,7 @@ test('metadata follows runtime launch mode and never advertises private routes',
 test('published learning guides have complete links and real modification dates',async()=>{
  const {guides,information}=await import('../lib/editorial');
  const previous=process.env.JAMLOOM_COMING_SOON;process.env.JAMLOOM_COMING_SOON='false';
- try{const urls=new Set(sitemap().map(p=>new URL(p.url).pathname));
+ try{const urls=new Set((await sitemap()).map(p=>new URL(p.url).pathname));
   for(const [slug,g] of Object.entries(guides)){assert.ok(urls.has('/learn/'+slug));for(const id of g.related??[])assert.ok(guides[id],slug+' has broken related link '+id);if(g.workspace)assert.ok(urls.has(g.workspace.href));if(g.updated)assert.ok(Number.isFinite(Date.parse(g.updated)));}
   for(const path of ['/about','/learn','/start','/tour','/community'])assert.ok(urls.has(path));
   assert.ok(information.about);

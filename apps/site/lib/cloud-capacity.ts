@@ -154,10 +154,16 @@ export class CloudCapacity{
    // reviewer allowance, then the finite permit, then the 20% sales share. Each allowance counts
    // full cycle reservations, so its bound holds even when actual GPU cost is lower.
    const sum=async(sql:string,args:unknown[])=>BigInt((await db.query(sql,args)).rows[0].used);
-   let source:'owner'|'review'|'seed'|'revenue'='revenue';
+   let source:'owner'|'review'|'trial'|'seed'|'revenue'='revenue';
    const month=new Date(now);month.setUTCDate(1);month.setUTCHours(0,0,0,0);
    if(owner_&&await sum('SELECT COALESCE(sum(cap_micros),0)::text AS used FROM cloud_capacity_cycles WHERE owner_id=$1 AND starts_at>=$2',[owner,month.getTime()])+BigInt(p.cycleMicros)<=BigInt(OWNER_GPU_MONTHLY_MICROS))source='owner';
    else if(fundedReviewer&&review?.capMicros&&await sum('SELECT COALESCE(sum(cap_micros),0)::text AS used FROM cloud_capacity_cycles WHERE owner_id=ANY($1::text[])',[review.owners])+BigInt(p.cycleMicros)<=BigInt(review.capMicros))source='review';
+   // Owner decision 2026-11-16: free-trial accounts (50 places) get one funded GPU start for their
+   // free song until they buy credits; a start that never got a GPU does not count.
+   else if(await sum(`SELECT CASE WHEN EXISTS(SELECT 1 FROM credit_trial_claims WHERE owner_id=$1 AND billing_live)
+     AND NOT EXISTS(SELECT 1 FROM credit_lots WHERE owner_id=$1 AND provider IN ('stripe_live','apple_live'))
+     AND NOT EXISTS(SELECT 1 FROM cloud_capacity_cycles WHERE owner_id=$1 AND COALESCE(reason,'') NOT IN ('startup-timeout','activation-unconfirmed'))
+     THEN '1' ELSE '0' END AS used`,[owner])===1n)source='trial';
    else if(seedFunded)source='seed';
    if(source==='revenue'){
     if(p.revenueShareBps!==2000)throw new AudioError('Song preparation is currently unavailable. Your credits have not been used.',503);

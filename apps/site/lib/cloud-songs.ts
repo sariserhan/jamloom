@@ -62,7 +62,7 @@ export class CloudSongs{
   if(this.capacity)return this.capacity.ready((this.config.ttlSeconds+120)*1000);
   return await this.provider.dispatchEnabled()&&hasReadySongWorker(await this.provider.health());
  }
- async prepareCapacity(owner:string){
+ async prepareCapacity(owner:string,credits=songCreditPrice(this.commerce.product).credits){
   this.assertNewRequestAllowed(owner);
   if(!this.capacity)throw new AudioError('Song preparation is currently unavailable.',503);
   const user=(await this.commerce.pool.query('SELECT suspended FROM "user" WHERE id=$1',[owner])).rows[0];
@@ -70,7 +70,7 @@ export class CloudSongs{
   const balance=await this.commerce.wallet.balance(owner);
   if(!user||user.suspended||frozen?.frozen)throw new AudioError('This account cannot prepare song creation.',403);
   // The owner is credit-exempt; everyone else needs at least one song's credits before a GPU starts.
-  if(balance.available<songCreditPrice(this.commerce.product).credits&&!await adminAccount(this.commerce.pool,owner))throw new AudioError('You need more credits before preparing this song.',402);
+  if(balance.available<credits&&!await adminAccount(this.commerce.pool,owner))throw new AudioError('You need more credits before preparing this song.',402);
   return {state:await this.capacity.prepare(owner,this.config.review),creditsUsed:0};
  }
  async available(owner:string|null){
@@ -108,7 +108,8 @@ export class CloudSongs{
   if(this.capacity){
    // One click: start the GPU if needed; the song waits in the queue until it is ready.
    const state=await this.capacity.state();
-   if(state==='off')await this.prepareCapacity(owner);
+   // Check the song's real price (private costs more) before a GPU starts for it.
+   if(state==='off')await this.prepareCapacity(owner,songCreditPrice(this.commerce.product,visibility).credits);
    else if(!['preparing','ready'].includes(state))throw new AudioError(SONG_CAPACITY_MESSAGE,503);
   }else await this.assertCapacityReady();
   if(this.config.review&&visibility!=='private')throw new AudioError('Review generations must stay private.');
