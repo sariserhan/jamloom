@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {providerIdle,guardianNeedsDatabase,type CapacityProvider} from '../lib/cloud-capacity';
+import {providerIdle,guardianNeedsDatabase,type CapacityProvider,guardianShouldEmergencyStop,GUARDIAN_FAILURES_BEFORE_STOP} from '../lib/cloud-capacity';
 import {CLOUD_WORKER_IMAGE} from '../lib/cloud-production-profile';
 import {GUARDIAN_FRESH_MS,GUARDIAN_IDLE_FRESH_MS,GUARDIAN_IDLE_SWEEP_MS} from '../lib/cloud-capacity-permit';
 
@@ -27,4 +27,11 @@ test('guardian sweeps the database on activity, once after it, and on the idle i
  assert.equal(guardianNeedsDatabase(true,false,60000,GUARDIAN_IDLE_SWEEP_MS,at(2,30)),false,'already swept this window');
  assert.equal(guardianNeedsDatabase(true,false,GUARDIAN_IDLE_SWEEP_MS+300000,GUARDIAN_IDLE_SWEEP_MS,at(2,17)),true,'backstop');
  assert(GUARDIAN_IDLE_FRESH_MS>=GUARDIAN_IDLE_SWEEP_MS+300000&&GUARDIAN_FRESH_MS<GUARDIAN_IDLE_SWEEP_MS);
+});
+
+test('one failed guardian check does not stop a GPU; repeated failures do',()=>{
+ assert.equal(guardianShouldEmergencyStop(1,true),false,'A momentary DNS failure (2026-11-15 22:07) must not kill a start');
+ assert.equal(guardianShouldEmergencyStop(GUARDIAN_FAILURES_BEFORE_STOP-1,true),false);
+ assert.equal(guardianShouldEmergencyStop(GUARDIAN_FAILURES_BEFORE_STOP,true),true);
+ assert.equal(guardianShouldEmergencyStop(1,false),true,'A one-shot check still stops immediately');
 });

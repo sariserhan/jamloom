@@ -244,6 +244,14 @@ export async function providerIdle(provider:CapacityProvider,endpoint:string){
 // Guardian tick policy: touch the database every tick while anything is active, once
 // more after activity ends, and while idle in the first minute of each half hour (aligned
 // with the hosted cron so both share one Neon wake), with a backstop after idleSweepMs+5min.
+// A single failed check (e.g. a momentary DNS failure on the guardian host) must not kill a paid
+// start (observed: runs of up to 3 failed checks, ~3% of checks); persistent failure still stops
+// capacity within ~60 s (10 s ticks), and the hosted cron
+// guardian keeps reconciling independently.
+export const GUARDIAN_FAILURES_BEFORE_STOP=6;
+export function guardianShouldEmergencyStop(consecutiveFailures:number,watch:boolean){
+ return !watch||consecutiveFailures>=GUARDIAN_FAILURES_BEFORE_STOP;
+}
 export function guardianNeedsDatabase(idle:boolean,wasActive:boolean,sinceSweepMs:number,idleSweepMs:number,now=Date.now()){
  if(!idle||wasActive)return true;
  const aligned=new Date(now).getUTCMinutes()%30===0&&sinceSweepMs>=120000;

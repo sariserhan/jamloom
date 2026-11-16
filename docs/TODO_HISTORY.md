@@ -2,6 +2,8 @@
 
 Verbatim copy of the former `TODO.md`; only relative links were adjusted for the new location. Active work is in [TODO.md](../TODO.md).
 
+**Guardian hiccup tolerance — November 15: PASS local.** The owner's 22:00 one-click song queued correctly, but at 22:07:36 the headless guardian had one DNS failure (ENOTFOUND) and emergency-stopped the starting GPU; the song failed, credits were returned and the failure email was sent. Last 24 h: 15 failed checks of ~534 (≈3%), in runs of up to 3. The headless guardian now emergency-stops only after 6 consecutive failed checks (~60 s); one-shot runs still stop immediately and the hosted cron guardian is unchanged.
+
 **Stale Music DNA request fix — November 15: PASS local.** After the 20:40 refusal the page kept the refused request id in localStorage as ‘in progress’, so every visit showed ‘We couldn’t finish this time’ and cancel attempts returned 404 (five at 20:52). The page now forgets a request when the server answered with a reason, and removes a saved request that does not exist. Browser regression check PASS.
 
 **One-click queue fix — November 15: PASS local.** The owner's first one-click Generate (20:40 UTC) started the GPU but the song submit returned 503: queuing required a guardian heartbeat under 3 minutes while idle guardians check in every 30 minutes. Queuing now accepts the 35-minute idle heartbeat; dispatch still requires ready() with a fresh one. Regression test reproduces the failure before the fix.

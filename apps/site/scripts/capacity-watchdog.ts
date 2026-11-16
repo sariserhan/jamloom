@@ -1,7 +1,7 @@
 import './env';
 import {setTimeout as delay} from 'node:timers/promises';
 import {createPool} from '../lib/database';
-import {CloudCapacity,capacityProvider,stopOrphanedCapacity,emergencyCapacityStop,capacityFailureDiagnostic,providerIdle,guardianNeedsDatabase} from '../lib/cloud-capacity';
+import {CloudCapacity,capacityProvider,stopOrphanedCapacity,emergencyCapacityStop,capacityFailureDiagnostic,providerIdle,guardianNeedsDatabase,guardianShouldEmergencyStop} from '../lib/cloud-capacity';
 import {capacityPermit,capacityWindowOpen,GUARDIAN_IDLE_SWEEP_MS} from '../lib/cloud-capacity-permit';
 
 // Supervise independently of the web deployment. Never starts or renews a GPU.
@@ -23,7 +23,7 @@ try{
   const capacity=permit?new CloudCapacity(pool,endpoint,profile!,permit,provider):null;
   // Provider-first: while the endpoint is idle the database is swept every 30 min (and
   // once right after activity) so Neon can scale to zero; any activity sweeps every tick.
-  let wasActive=true,lastSweep=0;
+  let wasActive=true,lastSweep=0,failures=0;
   do{
    let stage='provider';
    try{
@@ -33,12 +33,13 @@ try{
     const result=capacity?await capacity.reconcile(true):await stopOrphanedCapacity(pool,endpoint,provider);
     stage='heartbeat';
     if(capacity&&watch&&!stopping&&capacityWindowOpen(permit!,Date.now()))await capacity.guardianHeartbeat();
-    lastSweep=Date.now();wasActive=!idle;
+    lastSweep=Date.now();wasActive=!idle;failures=0;
     console.log(JSON.stringify({at:new Date().toISOString(),idle,...result}));
     if(permit&&!capacityWindowOpen(permit,Date.now())&&result.state==='off')break;
    }catch(error){
-    console.error(JSON.stringify({at:new Date().toISOString(),event:'capacity-check-failed',stage,...capacityFailureDiagnostic(error)}));
-    if(capacity){try{const result=await emergencyCapacityStop(endpoint,provider);console.log(JSON.stringify({emergencyShutdown:true,...result}));}
+    failures++;
+    console.error(JSON.stringify({at:new Date().toISOString(),event:'capacity-check-failed',stage,failures,...capacityFailureDiagnostic(error)}));
+    if(capacity&&guardianShouldEmergencyStop(failures,watch)){try{const result=await emergencyCapacityStop(endpoint,provider);console.log(JSON.stringify({emergencyShutdown:true,...result}));}
      catch(error){console.error(JSON.stringify({at:new Date().toISOString(),event:'emergency-shutdown-unconfirmed',...capacityFailureDiagnostic(error)}));}}
     if(!watch)process.exitCode=2;
    }
