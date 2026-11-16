@@ -4,6 +4,7 @@ import importlib.util
 import io
 import json
 import os
+import shutil
 from pathlib import Path
 import sys
 import tempfile
@@ -315,17 +316,34 @@ class SingerWeightTests(unittest.TestCase):
             base = Path(folder); cache = base/'snapshots'; calls = []
             for p in parts:
                 path = cache/revision/p
-                (path.mkdir(parents=True) if p in pm.SINGER_COMPONENTS else (path.parent.mkdir(parents=True, exist_ok=True), path.write_text('x')))
-            self.assertEqual(pm.link_singer(base/'hit', cache, calls.append), 'runpod-cache')
-            self.assertEqual(calls, [])
-            for p in parts:
-                self.assertEqual((base/'hit/checkpoints'/p).resolve(), (cache/revision/p).resolve())
-            self.assertEqual(pm.link_singer(base/'hit', cache, calls.append), 'baked')
-            (cache/'other-revision').mkdir()
-            self.assertEqual(pm.link_singer(base/'miss', base/'empty', calls.append), 'downloaded')
-            self.assertEqual(calls, list(pm.SINGER_COMPONENTS))
+                if p in pm.SINGER_COMPONENTS:
+                    path.mkdir(parents=True)
+                    (path/'config.json').write_text('{}')
+                    with (path/'model.safetensors').open('wb') as f: f.truncate(pm.LINK_MIN_BYTES)
+                else:
+                    path.parent.mkdir(parents=True, exist_ok=True); path.write_text('x')
+            for f in (cache/revision).rglob('*'):
+                if f.is_file(): f.chmod(0o444)
+            for d in sorted((cache/revision).rglob('*'), reverse=True):
+                if d.is_dir(): d.chmod(0o555)
+            try:
+                self.assertEqual(pm.link_singer(base/'hit', cache, calls.append), 'runpod-cache')
+                self.assertEqual(calls, [])
+                for c in pm.SINGER_COMPONENTS:
+                    folder_ = base/'hit/checkpoints'/c
+                    self.assertTrue(folder_.is_dir() and not folder_.is_symlink(), 'Model folders are real and writable')
+                    self.assertTrue((folder_/'model.safetensors').is_symlink(), 'Large weights stay in the cache')
+                    self.assertFalse((folder_/'config.json').is_symlink(), 'Small files are ordinary copies')
+                    # ACE-Step syncs its model code into the folder with shutil.copy2 at load time (2026-11-15 failure).
+                    src = base/'modeling.py'; src.write_text('code'); shutil.copy2(src, folder_/'modeling.py')
+                self.assertEqual(pm.link_singer(base/'hit', cache, calls.append), 'baked')
+                self.assertEqual(pm.link_singer(base/'miss', base/'empty', calls.append), 'downloaded')
+                self.assertEqual(calls, list(pm.SINGER_COMPONENTS))
+            finally:
+                for d in (cache/revision).rglob('*'):
+                    if d.is_dir(): d.chmod(0o755)
             calls.clear()
-            (cache/revision/'vae').rmdir()
+            shutil.rmtree(cache/revision/'vae')
             self.assertEqual(pm.link_singer(base/'partial', cache, calls.append), 'downloaded', 'An incomplete cache is never used')
 
     def test_image_no_longer_bakes_singer_weights(self):
