@@ -84,7 +84,8 @@ export async function inspectOperations(pool:Pick<Pool,'query'>,env:Record<strin
  const snapshot:OperationSnapshot={now,expiresAt:p.revenueShareBps===2000?null:p.expiresAt,remainingMicros:remaining,...(revenueMicros===undefined?{}:{revenueMicros,providerMicros}),...(providerAutoPay?{providerAutoPay}:{}),cycleMicros:p.cycleMicros,
   guardianOK:!!g&&g.config_sha256===hash&&Number(g.checked_at)<=now&&now-Number(g.checked_at)<GUARDIAN_IDLE_FRESH_MS,
   shutdownFailed:Number(cycles.rows[0]?.failed)>0||!capacityWindowOpen(p,now)&&(c.workers?.min!==0||c.workers?.max!==0),
-  providerMismatch:c.id!==endpoint||c.image!==CLOUD_WORKER_IMAGE||!!grantRow&&grantRow.config_sha256!==capacityPermitHash(seedPermit(p),endpoint,profile,CLOUD_WORKER_IMAGE),
+  // A permit approved for an earlier worker image only loses its own money (see prepare); not an incident.
+  providerMismatch:c.id!==endpoint||c.image!==CLOUD_WORKER_IMAGE,
   workers,liveFailures:Number(jobs.rows[0]?.failures??0),overdueCleanup:Number(jobs.rows[0]?.overdue??0)};
  return {snapshot,alerts:operationAlerts(snapshot)};
 }

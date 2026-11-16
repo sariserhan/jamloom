@@ -17,7 +17,7 @@ export function validateProfileLease(profile:string,lease?:ActiveWorkerLease){
   if(lease.maxMicros<Math.ceil((lease.expiresAt-lease.startsAt)/1000+130)*rate+20000)throw Error('Active-worker lease does not cover the selected hardware rate');
  }
 }
-export const CLOUD_WORKER_IMAGE='ghcr.io/sariserhan/jamloom/music-worker@sha256:fdf64e2e3a4244c1fce49f2cf1867fbf7c9d3bd8ad0c7bde8ab7c098593d6de4';
+export const CLOUD_WORKER_IMAGE='ghcr.io/sariserhan/jamloom/music-worker@sha256:cb506d35633d5c2b230969f080cac2ba5a77a17577adc150503c4e1978b43ee2';
 export function productionSongBudget(product:'improvise'|'music-dna',profile=CLOUD_COST_PROFILE){
  if(!CLOUD_PROFILES.includes(profile))throw Error('Unknown song cost profile');
  const faster=profile===CLOUD_4090_DIAGNOSTIC_PROFILE;

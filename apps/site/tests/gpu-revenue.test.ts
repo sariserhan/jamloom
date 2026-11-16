@@ -117,6 +117,15 @@ test('revenue funding verifies cash, survives duplicate/refund events and reserv
    await wallet.freezePurchase('apple_live','apple-advance');
    assert.ok(await gpuRevenueBalance(pool)<=before,'A refunded App Store purchase funds nothing');
   });
+  await t.test('after a worker image update the old permit funds nothing, but other funding still starts GPUs',async()=>{
+   const old={...seed,id:'old-image-seed',startsAt:now-1000,expiresAt:now+86400000,capMicros:3000000};
+   await pool.query('INSERT INTO cloud_capacity_permits(id,config_sha256,cap_micros,config,profile) VALUES($1,$2,$3,$4,$5)',[old.id,'f'.repeat(64),old.capMicros,JSON.stringify(old),CLOUD_COST_PROFILE]);
+   const s=new CloudCapacity(pool,'fixture',CLOUD_COST_PROFILE,{...old,revenueShareBps:2000},{...provider,setWorkers:async n=>{endpoint.workers={min:n,max:n};workers={...empty,...(n?{initializing:1}:{})};return structuredClone(endpoint);}},()=>now);
+   await pool.query('DELETE FROM cloud_capacity_cycles WHERE owner_id=$1',['owner']);await s.guardianHeartbeat();
+   assert.equal(await s.prepare('owner'),'preparing','Owner allowance is unaffected by an image change');
+   now+=2400000;assert.equal((await s.reconcile(true)).state,'off');await s.guardianHeartbeat();
+   assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[old.id])).rows[0].reserved_micros),0,'Old-image permit money stays unspent');
+  });
   await t.test('sales stay open without banked GPU revenue while the provider is funded and recently read',async()=>{
    const funding=async(ageMs:number,balance=10000000)=>{await pool.query(`INSERT INTO gpu_provider_funding(endpoint,balance_micros,checked_at) VALUES('fixture',$1,$2)
     ON CONFLICT(endpoint) DO UPDATE SET balance_micros=excluded.balance_micros,checked_at=excluded.checked_at`,[balance,now-ageMs]);await c.guardianHeartbeat();};

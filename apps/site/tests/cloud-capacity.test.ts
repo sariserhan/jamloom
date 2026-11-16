@@ -66,7 +66,7 @@ test('durable demand capacity: concurrent starts, full budget, lost responses, i
    assert.equal(await start(c,'owner1'),'preparing');await wake(c);await cool(c);
    await assert.rejects(start(c,'owner2'),/currently unavailable/);assert.equal(starts,2);assert.equal(stops,2);
    assert.equal(Number((await pool.query('SELECT reserved_micros FROM cloud_capacity_permits WHERE id=$1',[c.permit.id])).rows[0].reserved_micros),2000000);
-   await assert.rejects(start(fresh({...c.permit,capMicros:3000000}),'owner2'),/changed after use/);
+   await assert.rejects(start(fresh({...c.permit,capMicros:3000000}),'owner2'),/unavailable/);
   });
   await t.test('warm joins refresh idle time without extending the funded lease or reserving another cycle',async()=>{
    const c=fresh();await start(c,'owner13');await wake(c);

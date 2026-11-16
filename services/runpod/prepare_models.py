@@ -1,5 +1,6 @@
 """Build-time public downloads only; private project files never enter the image."""
 import json
+import shutil
 from pathlib import Path
 import sys
 from huggingface_hub import snapshot_download
@@ -26,6 +27,7 @@ def singer(component):
         allow_patterns=['README.md', 'config.json', component+'/*'])
 
 
+LINK_MIN_BYTES = 8*1024*1024
 SINGER_COMPONENTS = ('acestep-v15-turbo', 'acestep-5Hz-lm-1.7B', 'Qwen3-Embedding-0.6B', 'vae')
 # Runpod "cached models" places the Hugging Face repo here on hosts that already hold it.
 RUNPOD_CACHE = Path('/runpod-volume/huggingface-cache/hub/models--ACE-Step--Ace-Step1.5/snapshots')
@@ -45,10 +47,21 @@ def link_singer(upstream=ROOT/'build-style-training/upstream', cache=RUNPOD_CACH
     snapshot = cache/revision
     parts = ('README.md', 'config.json') + SINGER_COMPONENTS
     if all((snapshot/p).exists() for p in parts):
-        target.mkdir(parents=True, exist_ok=True)
+        # ACE-Step writes its model code into each model folder at load time (model_downloader
+        # sync, shutil.copy2), and Runpod's cache is read-only. Build real writable folders: link
+        # only the large weight files, copy the small config/code files as ordinary files.
         for p in parts:
-            if not (target/p).exists():
-                (target/p).symlink_to(snapshot/p)
+            src = snapshot/p
+            files = [src] if src.is_file() else [f for f in src.rglob('*') if f.is_file()]
+            for f in files:
+                dst = target/p if src.is_file() else target/p/f.relative_to(src)
+                if dst.exists() or dst.is_symlink():
+                    continue
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                if f.stat().st_size >= LINK_MIN_BYTES:
+                    dst.symlink_to(f.resolve())
+                else:
+                    shutil.copyfile(f, dst)
         return 'runpod-cache'
     for c in SINGER_COMPONENTS:
         download(c)

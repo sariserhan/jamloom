@@ -118,3 +118,5 @@ explicit approval required for paid services, publication and monetization.
 
 **Privacy page note — 2026-11-15:** The owner asked to remove the public sentence “Consent, retention, jurisdiction and provider disclosures still require owner/legal review before commercial launch.” from /privacy (“remove that sentence and push after that”). No other legal text changed.
 
+**Permit and worker image — 2026-11-16:** To stop worker updates from blocking all song creation, a GPU permit approved for an earlier worker image now only loses its own money (it can no longer fund starts) instead of failing every start. No spending bound changes: the owner, reviewer and sales-share allowances keep their limits, and a permit for a new image still requires owner approval.
+

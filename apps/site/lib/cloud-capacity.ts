@@ -139,8 +139,9 @@ export class CloudCapacity{
    const sha=capacityPermitHash(seedPermit(p),this.endpoint,this.profile,CLOUD_WORKER_IMAGE);
    await db.query('INSERT INTO cloud_capacity_permits(id,config_sha256,cap_micros,config,profile) VALUES($1,$2,$3,$4,$5) ON CONFLICT DO NOTHING',[p.id,sha,p.capMicros,JSON.stringify(seedPermit(p)),this.profile]);
    const grant=(await db.query('SELECT * FROM cloud_capacity_permits WHERE id=$1 FOR UPDATE',[p.id])).rows[0];
-   if(grant.config_sha256!==sha)throw Error('Capacity permit was changed after use');
-   const seedFunded=next.expiresAt<=p.expiresAt&&Number(grant.reserved_micros)+p.cycleMicros<=p.capMicros;
+   // A permit is bound to the worker image it was approved for. After a worker update its own money
+   // stays unusable until a permit is issued for the new image; other funding sources are unaffected.
+   const seedFunded=grant.config_sha256===sha&&next.expiresAt<=p.expiresAt&&Number(grant.reserved_micros)+p.cycleMicros<=p.capMicros;
    if(p.revenueShareBps===2000){
     // An internal allocation cannot fund an empty provider account. Read actual
     // prepaid balance before every activation; this never tops up a card.
