@@ -124,7 +124,10 @@ export function TasteNotebook(){
   if(submittingCloud.current){cancelWanted.current=true;try{localStorage.setItem(pendingKey+'-cancel',submittingCloud.current);}catch{}setProgress({state:'cancelling'});return;}
   analysis.current?.abort();analysis.current=null;
   if(job){
-   try{const response=await fetch(songUrl(job),{method:'DELETE',headers:{'X-Jamloom-DNA':'1'},signal:AbortSignal.timeout(15000)});const result=await response.json();if(!response.ok)throw Error(result.error);if(['queued','running'].includes(result.state)){setProgress({state:'cancelling'});return;}setJob(null);}
+   try{const response=await fetch(songUrl(job),{method:'DELETE',headers:{'X-Jamloom-DNA':'1'},signal:AbortSignal.timeout(15000)});const result=await response.json();
+    // Nothing to cancel: the request never became a song. Forget it instead of showing an error.
+    if(response.status===404){try{if(localStorage.getItem(pendingKey)===job)localStorage.removeItem(pendingKey);localStorage.removeItem(pendingKey+'-cancel');}catch{}setJob(null);}
+    else if(!response.ok)throw Error(result.error);if(['queued','running'].includes(result.state)){setProgress({state:'cancelling'});return;}setJob(null);}
    catch(error){setMessage(error instanceof Error?error.message:'Could not stop the song.');return;}
   }
   setRendering(false);setProgress({state:'cancelled'});requestId.current=null;setQuote(null);setMessage('');

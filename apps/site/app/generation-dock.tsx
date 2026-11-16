@@ -51,6 +51,13 @@ export function GenerationDock(){
   const timer=setInterval(()=>{setNow(Date.now());},1000),polling=setInterval(poll,5000);void poll();
   return()=>{stopped=true;clearInterval(timer);clearInterval(polling);};
  },[songs.map(s=>s.id+s.state).join()]); // eslint-disable-line react-hooks/exhaustive-deps
+ const [cancelling,setCancelling]=useState<string|null>(null);
+ async function cancel(s:Song){
+  setCancelling(s.id);
+  try{const r=await fetch(`${ENDPOINT[s.product]}?id=${s.id}`,{method:'DELETE',headers:{'X-Jamloom-DNA':'1'}});const v=await r.json().catch(()=>({}));
+   setSongs(list=>list.map(x=>x.id===s.id?{...x,state:r.status===404?'cancelled':v.state??'cancelled'}:x));}
+  catch{/* The next poll shows the real state. */}finally{setCancelling(null);}
+ }
  const close=(id:string)=>{dismissed.current=[...dismissed.current,id].slice(-20);write(DISMISSED,dismissed.current);setSongs(list=>list.filter(s=>s.id!==id));};
  const song=songs[0];if(!song)return null;
  const [label,fraction]=STAGES[song.phase??'']??STAGES[song.state]??['Creating your music',.5];
@@ -59,7 +66,7 @@ export function GenerationDock(){
   {active(song)?<>
    <div className="dock-row"><span className="dock-dot" aria-hidden="true"/><strong role="status">{label}{clock}</strong>
     <span className="dock-hint">{song.phase==='starting'?'Usually 5–10 minutes. Keep browsing — we’ll email you too.':'Keep browsing — it follows you.'}</span>
-    <Link prefetch={false} href="/my-songs">Your songs</Link></div>
+    <Link prefetch={false} href="/my-songs">Your songs</Link><button type="button" className="dock-cancel" disabled={cancelling===song.id} onClick={()=>void cancel(song)}>{cancelling===song.id?'Stopping…':'Cancel'}</button></div>
    <div className="dock-bar" role="progressbar" aria-label="Song progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(fraction*100)}><span style={{width:`${fraction*100}%`}}/></div>
   </>:song.state==='completed'?<div className="dock-done">
    <div className="dock-row"><strong role="status">Your song is ready{song.title?`: ${song.title}`:''}</strong><button type="button" className="dock-close" aria-label="Close" onClick={()=>close(song.id)}>×</button></div>

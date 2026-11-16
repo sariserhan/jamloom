@@ -26,6 +26,10 @@ try{
   await page.evaluate(()=>{localStorage.setItem('jamloom-song-owner','true');window.dispatchEvent(new CustomEvent('jamloom-song-started',{detail:{id:'a'.repeat(32),product:'music-dna'}}));});
   await page.locator('.generation-dock').waitFor();assert.match(await page.locator('.generation-dock').innerText(),/Starting the music studio/);
   await page.screenshot({path:join(out,'dock-desktop.png')});
+  // Cancel from the bar works even when the request never became a song.
+  await page.locator('.dock-cancel').click();await page.locator('.generation-dock').getByText('Song stopped.').waitFor();
+  await page.locator('.dock-close').click();assert.equal(await page.locator('.generation-dock').count(),0);
+  await page.evaluate(()=>window.dispatchEvent(new CustomEvent('jamloom-song-started',{detail:{id:'c'.repeat(32),product:'music-dna'}})));await page.locator('.generation-dock').waitFor();
   await page.getByRole('navigation',{name:'Main'}).getByRole('link',{name:'Community'}).click();await page.waitForURL(/community/);
   assert.equal(await page.locator('.generation-dock').count(),1,'Bar follows client navigation');
   await page.setViewportSize({width:390,height:844});await delay(300);await page.screenshot({path:join(out,'dock-phone.png')});

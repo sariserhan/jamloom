@@ -2,6 +2,8 @@
 
 Recent dated results, newest first (launch and operations, from November 8). Older entries: [progress archive](PROGRESS_ARCHIVE.md). Active tasks: [TODO](../TODO.md).
 
+**Cancel fixes — November 15: PASS local.** All six cancel requests today (20:52, 21:49) targeted the request that never became a song; the server answered 404 and the page treated that as an error, leaving the stuck song on screen. Cancelling a missing song now clears it, and the progress bar gained a Cancel button usable from any page. Browser check PASS.
+
 **Guardian hiccup tolerance — November 15: PASS local.** The owner's 22:00 one-click song queued correctly, but at 22:07:36 the headless guardian had one DNS failure (ENOTFOUND) and emergency-stopped the starting GPU; the song failed, credits were returned and the failure email was sent. Last 24 h: 15 failed checks of ~534 (≈3%), in runs of up to 3. The headless guardian now emergency-stops only after 6 consecutive failed checks (~60 s); one-shot runs still stop immediately and the hosted cron guardian is unchanged.
 
 **Stale Music DNA request fix — November 15: PASS local.** After the 20:40 refusal the page kept the refused request id in localStorage as ‘in progress’, so every visit showed ‘We couldn’t finish this time’ and cancel attempts returned 404 (five at 20:52). The page now forgets a request when the server answered with a reason, and removes a saved request that does not exist. Browser regression check PASS.

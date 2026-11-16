@@ -92,3 +92,4 @@ body:has(.generation-dock){padding-bottom:9rem}
 @media(prefers-reduced-motion:reduce){.dock-dot,.dock-bar:after{animation:none}}
 .site-shell:has(.music-player:not([hidden])) .generation-dock{bottom:150px}
 .site-shell:has(.music-player:not([hidden])):has(.generation-dock){padding-bottom:300px}
+.dock-cancel{background:none!important;border:1px solid #466146!important;color:#f4f8ee!important;border-radius:8px;padding:.35rem .8rem!important;min-height:0!important;font:inherit;cursor:pointer}.dock-cancel:disabled{opacity:.6;cursor:wait}
