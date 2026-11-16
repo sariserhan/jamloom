@@ -14,6 +14,9 @@ import urllib.request
 import wave
 
 ROOT = Path(__file__).resolve().parents[2]
+# Reported with each result so the site can see how this worker started (cache or download).
+PROCESS_START = time.monotonic()
+STARTUP = {}
 MAX_SECONDS = 900
 
 
@@ -247,7 +250,7 @@ def handler(job):
                     raise ValueError('Storage write failed')
             return {'schema': 'jamloom-runpod-1', 'id': value['id'], 'product': value['product'],
                     'audio_sha256': hashlib.sha256(data).hexdigest(), 'audio_bytes': len(data),
-                    'seconds': seconds, **result}
+                    'seconds': seconds, **result, **({'startup': STARTUP} if STARTUP else {})}
     except GenerationFailure as error:
         raise RuntimeError(f'Jamloom generation failed at {error}; no completed song was accepted.') from None
     except Exception:
@@ -280,7 +283,9 @@ def provide_singer():
     env = {**os.environ, 'HF_HUB_OFFLINE': '0'}
     result = subprocess.run([str(venv), '-c', 'from services.runpod.prepare_models import link_singer; print(link_singer())'],
         cwd=ROOT, env=env, check=True, capture_output=True, text=True, timeout=900)
-    print('singer weights:', result.stdout.strip().splitlines()[-1], flush=True)
+    source = result.stdout.strip().splitlines()[-1]
+    STARTUP.update(singer_weights=source, ready_seconds=round(time.monotonic()-PROCESS_START, 1))
+    print('singer weights:', source, flush=True)
 
 
 if __name__ == '__main__':

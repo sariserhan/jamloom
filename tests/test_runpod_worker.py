@@ -350,3 +350,14 @@ class SingerWeightTests(unittest.TestCase):
         dockerfile = (ROOT/'services/runpod/Dockerfile').read_text()
         self.assertNotIn("singer('acestep-v15-turbo')", dockerfile)
         self.assertIn('provide_singer()', (ROOT/'services/runpod/handler.py').read_text())
+
+
+class StartupReportTests(unittest.TestCase):
+    def test_startup_source_is_recorded_for_results(self):
+        class Done:
+            stdout = 'linking\nrunpod-cache\n'
+        worker.STARTUP.clear()
+        with patch('subprocess.run', return_value=Done()):
+            worker.provide_singer()
+        self.assertEqual(worker.STARTUP['singer_weights'], 'runpod-cache')
+        self.assertIsInstance(worker.STARTUP['ready_seconds'], float)
