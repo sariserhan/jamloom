@@ -19,10 +19,6 @@
       "schedule": "0,30 * * * *"
     },
     {
-      "path": "/api/ai-dj/supervisor",
-      "schedule": "* * * * *"
-    },
-    {
       "path": "/api/finance/apple",
       "schedule": "0 13 * * *"
     }
@@ -30,6 +26,11 @@
   "git": {
     "deploymentEnabled": {
       "codex/runpod-setup": false
+    }
+  },
+  "functions": {
+    "app/api/song-jobs/route.ts": {
+      "memory": 1024
     }
   }
 }
